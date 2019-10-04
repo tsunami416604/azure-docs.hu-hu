@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937390"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947851"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Adatok beolvasása IoT Hubból az Azure Adatkezelőba (előzetes verzió)
 
@@ -76,11 +76,11 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
 
     **Beállítás** | **Mező leírása**
     |---|---|
-    | Adatkapcsolat neve | Az Azure Data Explorerben létrehozni kívánt kapcsolat neve.
-    | IoT Hub | IoT Hub neve. |
-    | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie. |
-    | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport. |
-    | Esemény rendszertulajdonságai | A IoT Hub eseményrendszer tulajdonságai Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. |
+    | Adatkapcsolat neve | Az Azure-Adatkezelő létrehozni kívánt kapcsolódás neve
+    | IoT Hub | IoT Hub neve |
+    | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie |
+    | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport |
+    | Esemény rendszertulajdonságai | A [IoT hub eseményrendszer tulajdonságai](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) , ha az eseményeken több rekord van, a rendszer tulajdonságai hozzáadódnak az elsőhöz.|
     | | 
 
     > [!NOTE]
@@ -94,7 +94,7 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **testdb**-ben létrehozott tábla. |
-    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. |
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE és TXT. |
     | Oszlop-hozzárendelés | *TestMapping* | A **testdb**-ben létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
     | | |
 

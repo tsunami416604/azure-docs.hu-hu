@@ -1,20 +1,20 @@
 ---
 title: Szerepkör-hozzárendelések létrehozása és kezelése – Azure digitális Twins | Microsoft Docs
 description: További információ a szerepkör-hozzárendelések létrehozásáról és kezeléséről az Azure digitális Twins szolgáltatásban.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827697"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949829"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
 
@@ -39,10 +39,10 @@ Az alábbi táblázat az egyes attribútumokat ismerteti:
 | Attribútum | Name (Név) | Szükséges | Típus | Leírás |
 | --- | --- | --- | --- | --- |
 | Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
-| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId `“@”` karakterrel kell kezdődnie. |
+| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType esetében a objectId a `“@”` karakterrel kell kezdődnie. |
 | objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
-| path | Hely elérési útja | Igen | Sztring | Az `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha az azonosítónak a teljes gráf szerepkör-hozzárendelésére van szüksége `"/"`, akkor a következőt kell megadnia:. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
-| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. A és `DeviceId` `TenantId` a ObjectIdTypes nem engedélyezett. A és `UserId` `ServicePrincipalId` a ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
+| path | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor a `"/"` értéket kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
+| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. @No__t-0 és `TenantId` ObjectIdTypes esetében nem engedélyezett. @No__t-0 és `ServicePrincipalId` ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíciós azonosítók
 
@@ -58,7 +58,7 @@ Korábban a **objectIdType** attribútum lett bevezetve.
 
 ## <a name="role-assignment-operations"></a>Szerepkör-hozzárendelési műveletek
 
-Az Azure digitális Twins támogatjaa szerepkör-hozzárendelések teljes létrehozási, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
+Az Azure digitális Twins támogatja a szerepkör-hozzárendelések teljes *létrehozási*, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
 
 [@no__t – 1Role-hozzárendelési végpontok](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
 
@@ -76,7 +76,7 @@ Az Azure-beli digitális Twins-használat során az első lépések egyike az, h
 1. Az egyszerű szolgáltatásnév adatainak beszerzése.
 1. Rendelje hozzá a kívánt szerepkört az egyszerű szolgáltatáshoz.
 
-Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne megtudni a Active Directory Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a gyors üzembe helyezési [útmutatót.](./quickstart-view-occupancy-dotnet.md)
+Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne [megtudni a Active Directory](./quickstart-view-occupancy-dotnet.md)Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a gyors üzembe helyezési útmutatót.
 
 Miután elvégezte az alkalmazás AZONOSÍTÓját, hajtsa végre a következő parancsok egyikét. Az Azure CLI-ben:
 
@@ -168,7 +168,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | YOUR_ACCESS_TYPE |  True | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
 | YOUR_RESOURCE_TYPE | True | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*,  *Definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System* , *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
-Egy sikeres kérelem egy logikai értéket `true` `false` ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
+Egy sikeres kérelem egy Boolean `true` vagy `false` értéket ad vissza, amely azt jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
 
 ### <a name="get-role-assignments-by-path"></a>Szerepkör-hozzárendelések beolvasása elérési út alapján
 
@@ -230,7 +230,7 @@ Győződjön meg arról, hogy a JSON-törzs megfelel a következő sémának:
 }
 ```
 
-Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott szerepkör-hozzárendelés azonosítóját fogja visszaadni:
+Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott szerepkör-hozzárendelés **azonosítóját** fogja visszaadni:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"

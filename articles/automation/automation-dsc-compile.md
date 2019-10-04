@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265132"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959987"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -43,20 +43,20 @@ A kívánt állapot-konfiguráció (DSC) konfigurációk kétféleképpen fordí
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A segítségével megkezdheti a fordítást a Windows PowerShell használatával [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) . Az alábbi mintakód elindítja a **SampleConfig**nevű DSC-konfiguráció fordítását.
+A [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) segítségével megkezdheti a fordítást a Windows PowerShell használatával. Az alábbi mintakód elindítja a **SampleConfig**nevű DSC-konfiguráció fordítását.
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob`egy fordítási feladattípust ad vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően használhatja ezt a fordítási feladattípust a következővel[`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob)
-a fordítási feladatok állapotának megállapítása, és[`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
+@no__t – 0 – a fordítási feladatok azon objektumát adja vissza, amelyet az állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladatot a [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) paranccsal használhatja
+a fordítási feladatok állapotának megállapítása és [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput)
 a streamek (kimenet) megtekintéséhez. Az alábbi mintakód elindítja a **SampleConfig** -konfiguráció fordítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 
-while($CompilationJob.EndTime –eq $null -and $CompilationJob.Exception –eq $null)
+while($null -eq $CompilationJob.EndTime -and $null -eq $CompilationJob.Exception)
 {
     $CompilationJob = $CompilationJob | Get-AzureRmAutomationDscCompilationJob
     Start-Sleep -Seconds 3
@@ -124,7 +124,7 @@ További információ a PSCredentials paraméterként való átadásáról: az a
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Összetett erőforrásokat tartalmazó Azure Automation konfigurációk fordítása
 
-Az **összetett erőforrások** lehetővé teszik a DSC-konfigurációk használatát beágyazott erőforrásként egy konfiguráción belül. Ez lehetővé teszi, hogy több konfigurációt alkalmazzon egyetlen erőforrásra. Lásd [az összetett erőforrásokat: A DSC-konfiguráció erőforrásként](/powershell/dsc/authoringresourcecomposite) való használatával többet tudhat meg az **összetett erőforrásokról**.
+Az **összetett erőforrások** lehetővé teszik a DSC-konfigurációk használatát beágyazott erőforrásként egy konfiguráción belül. Ez lehetővé teszi, hogy több konfigurációt alkalmazzon egyetlen erőforrásra. Lásd: [Composite-erőforrások: A DSC-konfiguráció használata a @ no__t-0 erőforráshoz az **összetett erőforrások**megismeréséhez.
 
 > [!NOTE]
 > Ahhoz, hogy az **összetett erőforrásokat** tartalmazó konfigurációk helyesen legyenek lefordítva, először be kell állítani a Azure Automationba, hogy a rendszer először importálja azokat a DSC-erőforrásokat, amelyekre az összetett támaszkodik.
@@ -198,11 +198,11 @@ Az eszközök hivatkozásai megegyeznek a Azure Automation állapot-konfiguráci
 
 #### <a name="credential-assets"></a>Hitelesítőadat-eszközök
 
-A Azure Automation DSC-konfigurációk hivatkozhatnak az Automation hitelesítőadat- `Get-AutomationPSCredential` eszközeire a parancsmag használatával. Ha egy konfigurációhoz tartozik egy **PSCredential** típusú paraméter, akkor a `Get-AutomationPSCredential` parancsmagot a hitelesítő adatok beolvasásához egy Azure Automation hitelesítőadat-eszköz sztring nevének átadásával a parancsmagba. Ezt az objektumot használhatja a **PSCredential** objektumot igénylő paraméterhez. A színfalak mögött a rendszer beolvassa a Azure Automation hitelesítő adatokat, és átadja a konfigurációnak. Az alábbi példa ezt mutatja be működés közben.
+A Azure Automation DSC-konfigurációk hivatkozhatnak az Automation hitelesítőadat-eszközökre a `Get-AutomationPSCredential` parancsmag használatával. Ha egy konfiguráció egy **PSCredential** típusú paraméterrel rendelkezik, akkor az `Get-AutomationPSCredential` parancsmagot használhatja, ha egy Azure Automation hitelesítőadat-eszköz sztring nevét átadja a parancsmagnak a hitelesítő adat lekéréséhez. Ezt az objektumot használhatja a **PSCredential** objektumot igénylő paraméterhez. A színfalak mögött a rendszer beolvassa a Azure Automation hitelesítő adatokat, és átadja a konfigurációnak. Az alábbi példa ezt mutatja be működés közben.
 
 A hitelesítő adatok biztonságos tárolásához a csomópont-konfigurációkban (MOF konfigurációs dokumentumok) a hitelesítő adatok titkosítását igényli a csomópont-konfiguráció MOF-fájljában. Jelenleg azonban meg kell adnia a PowerShell DSC-t, hogy a hitelesítő adatok egyszerű szövegként legyenek kiválasztva a csomópont-konfiguráció MOF-generációja során, mert a PowerShell DSC nem tudja, hogy Azure Automation a teljes MOF-fájlt a létrehozás után titkosítja. fordítási feladatokon keresztül.
 
-Megadhatja a PowerShell DSC-t, hogy a hitelesítő adatok egyszerű szövegként legyenek leképezve a generált csomópont-konfigurációs MOF a konfigurációs adatok használatával. A **ConfigurationData** a `PSDscAllowPlainTextPassword = $true` DSC-konfigurációban megjelenő és a hitelesítő adatokat használó minden csomópont-blokk neveként át kell haladnia.
+Megadhatja a PowerShell DSC-t, hogy a hitelesítő adatok egyszerű szövegként legyenek leképezve a generált csomópont-konfigurációs MOF a konfigurációs adatok használatával. A **ConfigurationData** a DSC-konfigurációban megjelenő és a hitelesítő adatokat használó minden csomópont-blokk neveként át kell adnia `PSDscAllowPlainTextPassword = $true` értéket.
 
 Az alábbi példa egy olyan DSC-konfigurációt mutat be, amely egy Automation hitelesítőadat-eszközt használ.
 

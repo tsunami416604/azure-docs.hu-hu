@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240279"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959966"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezet változásainak követése a Change Tracking megoldással
 
@@ -134,7 +134,7 @@ A rekurzió lehetővé teszi, hogy helyettesítő karakterek megadásával egysz
 * Több fájl nyomon követéséhez helyettesítő karakterek szükségesek
 * Helyettesítő karakterek használata esetén csak az elérési út utolsó szegmensében használhatók. (például `c:\folder\*file*` vagy `/etc/*.conf`)
 * Ha egy környezeti változónak érvénytelen az elérési útja, az érvényesítés sikeres lesz, de az elérési út sikertelen lesz a leltár futtatásakor.
-* Kerülje az általános elérési `c:\*.*` utakat, például az elérési út beállításakor, mert túl sok mappát fog áthaladni.
+* Az elérési út beállításakor Kerülje az általános elérési utakat, például a `c:\*.*` értéket, mivel ez túl sok mappa átjárását eredményezheti.
 
 ## <a name="configure-file-content-tracking"></a>Fájl tartalmának nyomon követésének konfigurálása
 
@@ -176,7 +176,7 @@ Egyéb korlátozások:
 A Change Tracking megoldás jelenleg a következő problémákba ütközik:
 
 * A gyorsjavítások frissítései nem lesznek összegyűjtve a Windows Server 2016 Core RS3-gépeken.
-* A Linux-démonok módosult állapotot is megjeleníthetnek, bár nem történt változás. Ennek oka a `SvcRunLevels` mező rögzítésének módja.
+* A Linux-démonok módosult állapotot is megjeleníthetnek, bár nem történt változás. Ennek oka a `SvcRunLevels` mező rögzítése.
 
 ## <a name="change-tracking-data-collection-details"></a>Change Tracking adatgyűjtési adatok
 
@@ -221,42 +221,25 @@ Az ügynök csak a változásokat követi nyomon, ez optimalizálja az ügynök 
 A beállításkulcsok változásainak figyelése az a bővíthetőségi pontok kiértékelése, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi lista az előre konfigurált beállításkulcsok listáját tartalmazza. Ezek a kulcsok konfigurálva vannak, de nincs engedélyezve. A beállításkulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |  |
-> |---------|
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.    |
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Az indításkor futó parancsfájlokat figyeli.     |
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown**    |
-|&nbsp;&nbsp;&nbsp;&nbsp;A leállításkor futó parancsfájlokat figyeli.     |
-> |**HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyeli azokat a kulcsokat, amelyek betöltődik, mielőtt a felhasználó bejelentkezik a Windows-fiókjába. A kulcs a 64 bites számítógépeken futó 32 bites programokhoz használatos.    |
-> |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components-összetevők**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Az Alkalmazásbeállítások változásainak figyelése.     |
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.|
-> |**HKEY\_helyi\_MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyelők az ikon átfedését kezelő regisztrációja.|
-|**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyelők a 64 bites számítógépeken futó 32 bites programokhoz tartozó ikon átfedési kezelői regisztrációja.|
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser segítő objektumai**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére és a Navigálás vezérlésére szolgál.|
-> |**HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser segítő objektumai**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére, valamint a 64 bites számítógépeken futó 32 bites programok navigálásának vezérlésére használatos.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Microsoft\Internet Explorer\Extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Figyelők az új Internet Explorer-bővítményekhez, például az egyéni eszközök menüihez és az egyéni eszköztárak gombjaihoz.|
-> |**HKEY\_LOCAL\_MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Az új Internet Explorer-bővítmények, például a 64 bites számítógépeken futó 32 bites programok egyéni eszköztárait és az egyéni eszköztárak gombjait figyeli.|
-> |**HKEY\_helyi\_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a SYSTEM [Drivers] szakaszához. INI-fájl.|
-> |**HKEY\_helyi\_MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli a 64 bites számítógépeken futó 32 bites programokhoz. Hasonló a SYSTEM [Drivers] szakaszához. INI-fájl.|
-> |**HKEY\_helyi\_MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Az ismert vagy leggyakrabban használt rendszer DLL-fájljainak listáját figyeli; Ez a rendszer megakadályozza, hogy a felhasználók a rendszer DLL-fájljainak ledobásával kihasználják a gyenge alkalmazásspecifikus címtárbeli engedélyeket.|
-> |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
-|&nbsp;&nbsp;&nbsp;&nbsp;A Windows operációs rendszer interaktív bejelentkezési támogatási modelljét figyeli azon csomagok listáján, amelyek képesek értesítéseket fogadni a Winlogon-ból.|
+> |Beállításkulcs | Cél |
+> |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Figyeli azokat a kulcsokat, amelyek betöltődik, mielőtt a felhasználó bejelentkezik a Windows-fiókjába. A kulcs a 64 bites számítógépeken futó 32 bites programokhoz használatos.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Az Alkalmazásbeállítások változásainak figyelése.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Figyeli az olyan általános indítási bejegyzéseket, amelyek közvetlenül a Windows Intézőben kapcsolódnak, és általában az Explorer. exe használatával futtatják a folyamatot.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők az ikon átfedését kezelő regisztrációja.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Figyelők a 64 bites számítógépeken futó 32 bites programokhoz tartozó ikon átfedési kezelői regisztrációja.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére és a Navigálás vezérlésére szolgál.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Figyelők az Internet Explorer új böngésző Helper Object beépülő moduljaihoz. Az aktuális oldal Document Object Model (DOM) elérésére, valamint a 64 bites számítógépeken futó 32 bites programok navigálásának vezérlésére használatos.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Figyelők az új Internet Explorer-bővítményekhez, például az egyéni eszközök menüihez és az egyéni eszköztárak gombjaihoz.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | Az új Internet Explorer-bővítmények, például a 64 bites számítógépeken futó 32 bites programok egyéni eszköztárait és az egyéni eszköztárak gombjait figyeli.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli. Hasonló a SYSTEM [Drivers] szakaszához. INI-fájl.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | A Wavemapper, a wave1 és a Wave2, a MSACM. imaadpcm, a. msadpcm, a. msgsm610 és a vidc társított 32 bites illesztőprogramokat figyeli a 64 bites számítógépeken futó 32 bites programokhoz. Hasonló a SYSTEM [Drivers] szakaszához. INI-fájl.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Az ismert vagy leggyakrabban használt rendszer DLL-fájljainak listáját figyeli; Ez a rendszer megakadályozza, hogy a felhasználók a rendszer DLL-fájljainak ledobásával kihasználják a gyenge alkalmazásspecifikus címtárbeli engedélyeket.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | A Windows operációs rendszer interaktív bejelentkezési támogatási modelljét figyeli azon csomagok listáján, amelyek képesek értesítéseket fogadni a Winlogon-ból.
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -298,11 +281,11 @@ A következő táblázat a megoldás által gyűjtött változási rekordokra vo
 
 Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy riasztást küldjön a konfigurációs állapotról, valamint a hibrid környezet konfigurációs állapotának változásairól.
 
-A következő példában a képernyőképen látható, hogy a fájl `C:\windows\system32\drivers\etc\hosts` módosult a gépen. Ez a fájl azért fontos, mert a Windows a gazdagépek által használt IP-címek feloldására használja, és elsőbbséget élvez a DNS-sel szemben, ami csatlakozási problémákat eredményezhet, vagy a forgalom rosszindulatú vagy más veszélyes webhelyekre való átirányítását okozhatja.
+A következő példában a képernyőképen látható, hogy a `C:\windows\system32\drivers\etc\hosts` fájl módosult a gépen. Ez a fájl azért fontos, mert a Windows a gazdagépek által használt IP-címek feloldására használja, és elsőbbséget élvez a DNS-sel szemben, ami csatlakozási problémákat eredményezhet, vagy a forgalom rosszindulatú vagy más veszélyes webhelyekre való átirányítását okozhatja.
 
 ![A gazdagépek fájljának módosítását bemutató diagram](./media/change-tracking/changes.png)
 
-Ha tovább szeretné elemezni a változást, lépjen a keresés a **log Analytics**gombra kattintva. A naplóbeli keresés után keresse meg a tartalom módosításait a Hosts fájlban a `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`lekérdezéssel. Ez a lekérdezés olyan módosításokat keres, amelyekben szerepel a fájl tartalmának módosítása azon fájlok esetében, amelyek teljes elérési útja tartalmazza a "hosts" szót. Egy adott fájlt is kérhet, ha az elérési út részét a teljes űrlapra módosítja (például `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
+Ha tovább szeretné elemezni a változást, lépjen a keresés a **log Analytics**gombra kattintva. A naplóbeli keresés után keresse meg a Content Changes to the hosts fájlt a `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` lekérdezéssel. Ez a lekérdezés olyan módosításokat keres, amelyekben szerepel a fájl tartalmának módosítása azon fájlok esetében, amelyek teljes elérési útja tartalmazza a "hosts" szót. Egy adott fájlt is kérhet, ha az elérési út részét a teljes űrlapra módosítja (például `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Miután a lekérdezés visszaadja a kívánt eredményeket, kattintson az **új riasztási szabály** gombra a napló keresési felületén a riasztás létrehozása lap megnyitásához. Ezt a folyamatot a Azure Portal **Azure monitor** is elérheti. A riasztás-létrehozási élményben tekintse meg újra a lekérdezést, és módosítsa a riasztási logikát. Ebben az esetben azt szeretné, hogy a riasztás akkor aktiválódik, ha a környezetben lévő összes gépen még egy változás észlelhető.
 
@@ -320,14 +303,14 @@ A Hosts fájl változásairól való riasztás a riasztások Change Tracking vag
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|ConfigurationChange <br>&#124;ahol a ConfigChangeType = = "files" és a FileSystemPath a "\\c\\:\\Windows\\system32 drivers" kifejezést tartalmazza|Hasznos a rendszerkritikus fájlok változásainak nyomon követéséhez|
-|ConfigurationChange <br>&#124;ahol a FieldsChanged tartalmazza a "FileContentChecksum" és a FileSystemPath = =\\"\\c\\: Windows\\system32-illesztőprogramokat\\stb. gazdagépeket"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez|
+|ConfigurationChange <br>&#124;ahol a ConfigChangeType = = "files" és a FileSystemPath tartalmazza a "c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4"|Hasznos a rendszerkritikus fájlok változásainak nyomon követéséhez|
+|ConfigurationChange <br>&#124;ahol a FieldsChanged tartalmazza a "FileContentChecksum" és a FileSystemPath = = "c: \\windows @ no__t-2system32 @ no__t-3drivers @ no__t-4etc @ no__t-5hosts"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez|
 |ConfigurationChange <br>&#124;ahol a ConfigChangeType = = "WindowsServices" és a SvcName tartalmazza a "W3SVC" és a SvcState = = "leállítva"|Hasznos a kritikus fontosságú szolgáltatások változásainak nyomon követéséhez|
 |ConfigurationChange <br>&#124;ahol a ConfigChangeType = = "DAEMONS" és a SvcName tartalmazza az "SSH" és a SvcState! = "Running"|Hasznos a kritikus fontosságú szolgáltatások változásainak nyomon követéséhez|
 |ConfigurationChange <br>&#124;ahol a ConfigChangeType = = "szoftver" és a ChangeCategory = = "hozzáadva"|Olyan környezetekhez hasznos, amelyeknek szükségük van a zárolt szoftveres konfigurációkra|
 |ConfigurationData <br>&#124;ahol a SoftwareName a "monitoring Agent" és a CurrentVersion! = "8.0.11081.0" kifejezést tartalmazza|Hasznos, ha azt látja, hogy mely gépeken van telepítve elavult vagy nem megfelelő szoftververzió. A legutóbbi jelentett konfigurációs állapotot jelenti, nem módosul.|
-|ConfigurationChange <br>&#124;where RegistryKey = = "HKEY_LOCAL_MACHINE\\szoftver\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Hasznos a kritikus víruskeresési kulcsok változásainak követéséhez|
-|ConfigurationChange <br>&#124;ahol a RegistryKey tartalmazza a\\"\\HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Services\\SharedAccess Parameters FirewallPolicy"| A tűzfalbeállítások változásainak követéséhez hasznos|
+|ConfigurationChange <br>&#124;where RegistryKey = = @ "HKEY_LOCAL_MACHINE @ no__t-1SOFTWARE @ no__t-2Microsoft @ no__t-3Windows @ no__t-4CurrentVersion @ no__t-5QualityCompat"| Hasznos a kritikus víruskeresési kulcsok változásainak követéséhez|
+|ConfigurationChange <br>&#124;ahol a RegistryKey a következőt tartalmazza: @ "HKEY_LOCAL_MACHINE @ no__t-1SYSTEM @ no__t-2CurrentControlSet @ no__t-3Services @ no__t-4SharedAccess @ no__t-5Parameters @ no__t-6FirewallPolicy"| A tűzfalbeállítások változásainak követéséhez hasznos|
 
 ## <a name="next-steps"></a>További lépések
 

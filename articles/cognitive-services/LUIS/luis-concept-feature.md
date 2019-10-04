@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624573"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949597"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>A LUIS-alkalmazás kifejezés-listájának funkciói
 
@@ -46,14 +46,7 @@ A kifejezések listája nem kapcsolódik egy adott szándékhoz vagy entitáshoz
 
 Ha néhány szót vagy kifejezést adott meg, a **javasolt** funkció használatával megkeresheti a kapcsolódó értékeket. Tekintse át a kapcsolódó értékeket, mielőtt hozzáadja a kifejezés-lista értékeihez.
 
-|Lista típusa|Cél|
-|--|--|
-|Felcserélhetők|Szinonimák vagy szavak, amelyek, ha a lista egy másik szavára módosulnak, ugyanazzal a szándékkal és az entitások kinyerésével rendelkeznek.|
-|Nem felcserélhető|Az alkalmazáshoz tartozó szókincs, amely az adott nyelvhez képest több, mint általában más szavakat tartalmaz.|
-
-### <a name="interchangeable-lists"></a>Felcserélhető listája
-
-A megváltoztathatatlan kifejezések listája olyan értékekre mutat, amelyek szinonimák. Ha például azt szeretné, hogy az összes víztest található, és van például hosszúságú kimondott szöveg, például: 
+A kifejezések listája szinonimákat tartalmazó értékekre mutat. Ha például azt szeretné, hogy az összes víztest található, és van például hosszúságú kimondott szöveg, például: 
 
 * Milyen városokhoz közelítenek a Nagy tavak? 
 * Milyen úton fut a Lake Havasu?
@@ -65,17 +58,7 @@ Minden Kimondás esetén a kiértékelést és az entitásokat a víztesttől f�
 * Milyen úton fut a [bodyOfWater]?
 * Hol tart a [bodyOfWater] kezdete és vége? 
 
-Mivel a víz törzsének szavai vagy kifejezései szinonimák, és a hosszúságú kimondott szöveg szinonimaként használhatók, használja a kifejezések listájának **felcserélhető** beállítását. 
-
-### <a name="non-interchangeable-lists"></a>Nem felcserélhető felsorolások
-
-A nem felcserélhető kifejezések listája egy olyan jel, amely növeli az észlelést a LUIS számára. A kifejezés lista a más szavaknál jelentősebb szavakat vagy kifejezéseket jelöl. Ez segít a szándékok és az entitások észlelésének meghatározásában. Tegyük fel például, hogy van egy olyan tulajdonosi tartománya, mint a globális utazás (azaz a kultúrák között, de még mindig egyetlen nyelven). Vannak olyan szavak és kifejezések, amelyek fontosak az alkalmazáshoz, de nem szinonimák. 
-
-Egy másik példa a ritka, tulajdonosi és idegen szavakat nem felcserélhető kifejezések listáját használja. Előfordulhat, hogy a LUIS nem ismeri fel a ritka és a szellemi tulajdont képező szavak, valamint a külső szavakat (kívül az alkalmazás kulturális környezet). A nem cserélhető beállítás azt jelzi, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással.
-
-Ne adjon hozzá minden lehetséges szót vagy kifejezést egy kifejezés listához, adjon hozzá néhány szót vagy kifejezést egyszerre, majd végezze el az újratanítást és a közzétételt. 
-
-Ahogy a kifejezések listája az idő múlásával növekszik, előfordulhat, hogy néhány kifejezésnek számos formája van (szinonimák). Ezt kibonthatja egy másik, egymással megváltoztatható kifejezési listára. 
+Mivel a víz törzsének szavai vagy kifejezései szinonimák, és a hosszúságú kimondott szöveg szinonimaként is használhatók. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 

@@ -9,23 +9,26 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066372"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960528"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat valós eszközt a Microsoft Azure IoT Central-alkalmazásához.
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat valós eszközt a Microsoft Azure IoT Central-alkalmazásához. 
+@no__t – 0 * nincs szüksége saját külső eszközre az oktatóanyag elvégzéséhez. A "valódi eszköz" a parancssori környezetben futó, kódolt alkalmazásként lesz felépítve. _ 
 
 Ez az oktatóanyag két részből áll:
 
 * Először operátorként megismeri, hogyan adhat hozzá és konfigurálhat valós eszközt az Azure IoT Central -alkalmazásban. A jelen rész végén lekér egy kapcsolati sztringet, amelyet a második részben fog használni.
 * Ezt követően eszközfejlesztőként megismeri a valós eszközben lévő kódot. Az első részben lévő kapcsolati sztringet hozzáadja a mintakódhoz.
+
+
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -40,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt elkezdené, a szerkesztőnek el kell végeznie legalább az Azure IoT Central-alkalmazás létrehozásának első szerkesztői oktatóanyagát: [Új eszköztípus definiálása](tutorial-define-device-type.md) (Kötelező)
 
-Telepítse a [Node. js](https://nodejs.org/) -verziót 8.0.0 vagy újabb verzióra a fejlesztői gépen. A parancssorban `node --version` futtatva ellenőrizhető a verzió. A Node.js az operációs rendszerek széles körében elérhető.
+Telepítse a [Node. js](https://nodejs.org/) -verziót 8.0.0 vagy újabb verzióra a fejlesztői gépen. A parancssorban futtathatja a `node --version` parancsot a verziójának vizsgálatához. A Node.js az operációs rendszerek széles körében elérhető.
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
@@ -52,11 +55,11 @@ Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új esz
 
    A **Device Explorer** megjeleníti a **csatlakoztatott légkondicionáló** eszköz sablonját és egy szimulált eszközt. Amikor létrehoz egy eszközt, IoT Central automatikusan létrehoz egy szimulált eszközt.
 
-2. A valódi csatlakoztatott légkondicionáló eszköz csatlakoztatásának megkezdéséhez válassza **+** a (z), majd a **Real**:
+2. Figyelje meg, hogy a **csatlakoztatott légkondicionáló** eszköz sablonja a **Device Explorer**kiválasztott. A sablont használó, valódi légkondicionáló eszköz csatlakoztatásának megkezdéséhez válassza az **+** , majd a **Real**:
 
    ![Új, valós csatlakoztatott légkondicionáló eszköz hozzáadásának megkezdése](media/tutorial-add-device/newreal.png)
 
-3. Adja meg az eszköz AZONOSÍTÓját (kisbetűnek kell lennie), vagy használja a javasolt eszköz AZONOSÍTÓját. Vagy megadhatja az új eszköz nevét, és kiválaszthatja a **Létrehozás** lehetőséget.
+3. Adja meg a saját **eszköz azonosítóját** (kisbetűsnek kell lennie), vagy a javasolt értéket kell használnia. Megadhatja az új eszköz **nevét** is, és a **Létrehozás**elemet is választhatja.
 
    ![Az eszköz átnevezése](media/tutorial-add-device/rename.png)
 
@@ -76,9 +79,9 @@ A valós eszköz a **Csatlakoztatott légkondicionáló** eszközsablonból jön
 
 ## <a name="prepare-the-client-code"></a>Az ügyfélkód előkészítése
 
-A cikkben szereplő mintakód a [Node. js](https://nodejs.org/) -ben van megírva, és az alábbihoz elég kódot mutat:
+A cikkben szereplő mintakód a [Node. js](https://nodejs.org/) -ben van megírva, és az eszközhöz elegendő kódot jelenít meg:
 
-* Csatlakozás eszközként az Azure IoT Central-alkalmazáshoz.
+* Csatlakozás az Azure IoT Central-alkalmazáshoz
 * Hőmérséklet-telemetria küldése csatlakoztatott légkondicionáló eszközként.
 * Eszköztulajdonságok elküldése az Azure IoT Central-alkalmazásnak.
 * Válasz a **Megadott hőmérséklet** beállítást használó operátornak.
@@ -96,7 +99,7 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
-1. Jegyezze fel a **hatókör-azonosítót**, az **eszköz azonosítóját** és az **elsődleges kulcs** értékeit az eszköz csatlakoztatása lapon. Ezeket az értékeket az oktatóanyag későbbi részében használhatja.
+1. Jegyezze fel a **hatókör-azonosítót**, az **eszköz azonosítóját** és az **elsődleges kulcs** értékeit az **eszköz csatlakoztatása** lapon. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni.
 
    ![Kapcsolat részletei](media/tutorial-add-device/device-connect.png)
 
@@ -133,13 +136,13 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
     var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. Adja hozzá a következő változó deklarációkat a fájlhoz. Cserélje le a `{your Scope ID}`helyőrzőket `{your Device ID}`, és `{your Primary Key}` a korábban feljegyzett eszköz-csatlakoztatási adatokra:
+1. Adja hozzá a következő változó deklarációkat a fájlhoz. Cserélje le a `{your Scope ID}`, `{your Device ID}` és `{your Primary Key}` helyőrzőket a korábban feljegyzett eszköz-csatlakoztatási információkkal:
 
     ```javascript
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -150,7 +153,7 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
 ## <a name="review-client-code"></a>Ügyfél kódjának áttekintése
 
-Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Central-alkalmazáshoz kapcsolódó alkalmazáshoz. A következő lépés a kód hozzáadása:
+Az előző szakaszban létrehozott egy csontváz Node. js-projektet egy olyan eszköz-alkalmazáshoz, amely csatlakozik az Azure IoT Central-alkalmazáshoz. A következő lépés a kód hozzáadása:
 
 * Csatlakozás az Azure IoT Central-alkalmazáshoz
 * Telemetria küldése az Azure IoT Central-alkalmazásnak

@@ -54,7 +54,7 @@
     - name: Találatok kiemelésének kezelése
       href: hit-highlighting.md
     - name: Lapozás az eredmények között
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Miniatűrök átméretezése és körülvágása
       href: resize-and-crop-thumbnails.md
     - name: Frissítés 5-ös verzióról 7-es verzióra

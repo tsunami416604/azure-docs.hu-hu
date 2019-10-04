@@ -1,19 +1,19 @@
 ---
-title: Adatfeldolgozási és felhasználó által definiált függvények az Azure Digital Twins szolgáltatással | Microsoft Docs
+title: Adatfeldolgozási és felhasználó által definiált függvények – Azure digitális Twins | Microsoft Docs
 description: Az Azure Digital Twins adatfeldolgozási,-egyeztető és felhasználó által definiált függvények áttekintése.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178256"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949971"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -23,7 +23,7 @@ Az Azure Digital Twins speciális számítási funkciókat kínál. A fejlesztő
 
 Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba, a fejlesztők négy fázisban dolgozhatnak fel adatokkal: *Érvényesítés*, *egyezés*, *számítás*és *Küldés*.
 
-[![Azure digitális ikrek adatfeldolgozási folyamata](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
+[@no__t – 1Azure digitális Twins adatfeldolgozási folyamat](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Az érvényesítési fázis átalakítja a bejövő telemetria üzenetet egy gyakran értelmezhető [adatátviteli objektum](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) formátumára. Ez a fázis az eszköz-és érzékelő érvényesítését is végrehajtja.
 1. Az egyeztetési fázis megkeresi a megfelelő, felhasználó által definiált függvényeket a futtatáshoz. Az előre definiált egyeztetések a felhasználó által definiált függvényeket a bejövő telemetria üzenetből származó eszköz, az érzékelő és a lemezterület adatai alapján megtalálják.
@@ -34,17 +34,17 @@ Miután az eszközök telemetria-adatok küldését az Azure digitális Twinsba,
 
 Az Azure Digital Twins adatfeldolgozása három objektumot határoz meg: a *megfeleltetéseket*, a *felhasználó által definiált függvényeket*és a *szerepkör-hozzárendeléseket*.
 
-[![Azure digitális Twins adatfeldolgozási objektumok](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
+[@no__t – 1Azure digitális Twins adatfeldolgozási objektumok](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Egyezők
 
 Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hogy milyen műveleteket kell végrehajtani a bejövő érzékelők telemetria alapján. A egyezés meghatározására szolgáló feltételek tartalmazhatják az érzékelő, az érzékelő szülő eszköze és az érzékelő fölérendelt területének tulajdonságait is. A feltételek a [JSON-útvonal](https://jsonpath.com/) összehasonlításával vannak megadva, az alábbi példában látható módon:
 
-- Az összes olyan adattípusi **hőmérséklet** -érzékelő, amelyet az Escape-karakterlánc értéke képvisel`\"Temperature\"`
-- A `01` portján belül
-- A kibővített tulajdonságot **gyártó** eszközökhöz tartozó, az Escape-karakterlánc értékére beállított`\"GoodCorp\"`
-- Az Escape-karakterlánc által megadott típusú szóközökhöz tartozik`\"Venue\"`
-- A szülő **SpaceId** leszármazottai`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Az összes olyan adattípusi **hőmérsékletet** , amelyet az Escape-sztring `\"Temperature\"` érték képvisel.
+- @No__t – 0 a portján
+- A kibővített tulajdonsághoz tartozó @no__t **gyártóhoz** tartozó eszközökhöz tartozó
+- Az Escape-sztring által megadott típusú szóközökhöz tartozó `\"Venue\"`
+- A szülő **SpaceId** leszármazottai `DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
 
 ```JSON
 {
@@ -83,9 +83,9 @@ Az egyeztetések olyan feltételeket határoznak meg, amelyek kiértékelik, hog
 > [!IMPORTANT]
 > - A JSON-elérési utak kis-és nagybetűk.
 > - A JSON-adattartalom megegyezik a által visszaadott adattartalommal:
->   - `/sensors/{id}?includes=properties,types`az érzékelőhöz.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`az érzékelő fölérendelt eszköze számára.
->   - `/spaces/{id}?includes=properties,types,location,timezone`az érzékelő fölérendelt területéhez.
+>   - @no__t – 0 az érzékelőhöz.
+>   - @no__t – 0 az érzékelő szülő eszközéhez.
+>   - @no__t – 0 az érzékelő szülő területéhez.
 > - Az összehasonlítás a kis-és nagybetűk megkülönböztetése.
 
 ### <a name="user-defined-functions"></a>Felhasználó által meghatározott függvények

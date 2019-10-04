@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839634"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947604"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -51,14 +51,22 @@ Ez a szakasz bemutatja, hogyan hozhatja létre a Azure Active Directory alkalmaz
 >Az API-engedélyek a Windows rendszerű virtuális asztali gépek, a Log Analytics és az Microsoft Graph API-engedélyek hozzáadódnak a Azure Active Directory alkalmazáshoz.
 
 1. Nyissa meg a PowerShellt rendszergazdaként.
-2. Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa az **ad-alkalmazás regisztrációjának létrehozása diagnosztikai. ps1** parancsfájlhoz a PowerShellben.
-3.  Ha a parancsfájl megkéri az alkalmazás nevének megadására, adjon meg egy egyedi nevet.
-4.  A szkript ezután megkéri, hogy jelentkezzen be egy rendszergazdai fiókkal. Adja meg a [delegált rendszergazdai hozzáféréssel](delegated-access-virtual-desktop.md)rendelkező felhasználó hitelesítő adatait. A rendszergazdának rendelkeznie kell az RDS tulajdonos vagy a közreműködő jogosultsággal.
+2. Jelentkezzen be az Azure-ba egy olyan fiókkal, amely tulajdonosi vagy közreműködői engedélyekkel rendelkezik a diagnosztikai eszközhöz használni kívánt Azure-előfizetéshez:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Jelentkezzen be az Azure AD-be ugyanazzal a fiókkal:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateADAppRegistrationforDiagnostics. ps1** parancsfájlt a PowerShellben.
+5.  Ha a parancsfájl megkéri az alkalmazás nevének megadására, adjon meg egy egyedi nevet.
+
 
 A szkript sikeres futtatása után a kimenetében a következő dolgokat kell megjeleníteni:
 
 -  Egy üzenet, amely megerősíti, hogy az alkalmazás most már rendelkezik egy egyszerű szolgáltatás szerepkör-hozzárendeléssel.
--  A nyomtató ügyfél-azonosítója és az ügyfél titkos kulcsa, amelyre szüksége lesz a diagnosztikai eszköz telepítésekor.
+-  Az ügyfél-azonosító és az ügyfél titkos kulcsa, amelyre szüksége lesz a diagnosztikai eszköz telepítésekor.
 
 Most, hogy regisztrálta az alkalmazást, itt az ideje, hogy konfigurálja a Log Analytics munkaterületet.
 
@@ -76,7 +84,7 @@ PowerShell-parancsfájl futtatásával Log Analytics munkaterületet hozhat lét
 A PowerShell-parancsfájl futtatása:
 
 1.  Nyissa meg a PowerShellt rendszergazdaként.
-2.  Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **LogAnalyticsWorkspace létrehozása a Diagnostics. ps1** parancsfájlhoz a PowerShellben.
+2.  Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateLogAnalyticsWorkspaceforDiagnostics. ps1** parancsfájlt a PowerShellben.
 3. Adja meg a következő értékeket a paraméterekhez:
 
     - A **ResourceGroupName**mezőben adja meg az erőforráscsoport nevét.

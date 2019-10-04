@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: f771b6b0416c5777c1ebde7e2cf2c4ffc6f375ff
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 178fa7d5f129a12736ec068fca605ba24cd37839
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155300"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955865"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
 
@@ -23,7 +23,7 @@ Az adatvesztés és a kihagyott üzenetek elvesztése miatt fontos a folyamatos 
 - [Application Insights engedélyezése](../articles/azure-functions/functions-monitoring.md)
 - [Strukturált hibakezelés használata](#use-structured-error-handling)
 - [Idempotencia tervezése](../articles/azure-functions/functions-idempotent.md)
-- Újrapróbálkozási szabályzatok implementálása (ha szükséges)
+- [Újrapróbálkozási szabályzatok implementálása](../articles/azure-functions/functions-reliable-event-processing.md) (ha szükséges)
 
 ### <a name="use-structured-error-handling"></a>Strukturált hibakezelés használata
 

@@ -60,8 +60,9 @@
     - name: Találatok kiemelésének kezelése
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Lapozás a webhelyek között
-      href: page-webpages.md
+    - name: Keresési eredmények közötti lapozás
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Referencia
   items:
     - name: Bing Custom Autosuggest API-referencia

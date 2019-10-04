@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327164"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947781"
 ---
 # <a name="service-limits-in-azure-search"></a>Szolgáltatási korlátozások a Azure Search
 A tárterületre, a munkaterhelésekre és az indexek, dokumentumok és egyéb objektumok mennyiségére vonatkozó maximális korlátok attól függnek, hogy a Azure Search **ingyenes**, **alapszintű**, **standard**vagy **Storage optimalizált** árképzési szinteken van-e [kiépítve](search-create-service-portal.md) .
@@ -84,7 +84,7 @@ A dokumentumok korlátja alá eső szolgáltatások esetében a következő maxi
 
 |  Free | Alapszintű | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1&nbsp;millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
+|  10,000 |1 @ no__t – 0million |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
 Ha a szolgáltatás korlátozásokat blokkol, hozzon létre egy új szolgáltatást, majd tegye közzé újra az összes tartalmat a szolgáltatásban. Nincs olyan mechanizmus, amellyel zökkenőmentesen újra kiépítheti a szolgáltatást a színfalak mögötti új hardverre.
 
@@ -105,7 +105,7 @@ A dokumentum méretének megőrzéséhez ne felejtse el kizárni a kérelemből 
 A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és stabilitást biztosít, de a nagyobb adatkészletek esetében a maximálisan megengedettnél több indexelési időt is igénybe vehet. Ha egy indexelési feladatok nem hajthatók végre a maximálisan engedélyezett időtartamon belül, futtassa az ütemezett futtatást. Az ütemező nyomon követi az indexelési állapotot. Ha egy ütemezett indexelési feladatot valamilyen oknál fogva megszakítanak, az indexelő kiválaszthatja, hogy a következő ütemezett futtatásnál melyik utolsó marad.
 
 
-| Resource | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2\. |
+| Resource | Ingyenes @ no__t – 0<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |2\. |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |10 |10 |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |10 |10 |
@@ -115,7 +115,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 | Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
 | A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
 | BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32,000 |64,000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32,000 |64,000 |4 @ no__t – 0million |4 @ no__t – 0million |4 @ no__t – 0million |– |4 @ no__t – 0million |4 @ no__t – 0million |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -146,7 +146,19 @@ A tárterületre optimalizált csomagok esetében az alacsonyabb lekérdezési s
 
 ## <a name="data-limits-cognitive-search"></a>Adatkorlátok (kognitív keresés)
 
-Egy olyan [kognitív keresési folyamat](cognitive-search-concept-intro.md) , amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakternek kell lennie, a [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)következőképpen mérve:. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+Egy olyan [kognitív keresési folyamat](cognitive-search-concept-intro.md) , amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakterből kell állnia [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)értékkel mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+
+## <a name="throttling-limits"></a>Szabályozási korlátok
+
+A keresési lekérdezési és indexelési kérelmeket a rendszer a maximális kapacitásának megfelelően szabályozza. A szabályozás eltérően viselkedik a különböző API-kkal. A szolgáltatás terhelése alapján a lekérdezési API-k (keresés/javaslat/automatikus kiegészítés) és az indexelő API-k szabályozása dinamikusan történik. Az API-k indexe statikus kérelmekre vonatkozó korlátozásokkal rendelkezik. 
+
+Az indexhez kapcsolódó műveletekre vonatkozó statikus díjszabási kérelmek:
+
++ Indexek listázása (/Indexes beolvasása): másodpercenként 5/keresési egység
++ Index beolvasása (/Indexes/myindex beolvasása): másodpercenként 10 másodpercenként
++ Index létrehozása (/Indexes utáni): 12 percenként/keresési egységenként
++ Index létrehozása vagy frissítése (PUT/Indexes/myindex): 6 másodpercenként/keresési egységenként
++ Index törlése (/Indexes/myindex törlése): 12 percenként/keresési egységenként 
 
 ## <a name="api-request-limits"></a>API-kérelmek korlátai
 * Legfeljebb 16 MB/kérelem <sup>1</sup>

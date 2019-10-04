@@ -87,9 +87,9 @@ Ebben a cikkben egy ExpressRoute-áramköri kapcsolat magas rendelkezésre áll�
 Ahhoz, hogy tervezési megfontolások legyenek olyan geo-redundáns hálózati kapcsolatok kiépítéséhez a Microsoft-gerinchez, amelyek a teljes régiót érintő katasztrofális hibákat okozhatnak, lásd: a vész- [helyreállítás megtervezése a ExpressRoute privát][DR]társításával.
 
 <!--Image References-->
-[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png  "Ajánlott módszer a ExpressRoute használatával való kapcsolódásra"
-[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png Az  "utolsó mérföldes kapcsolat optimális" állapota
-[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png  "NAT-beállítások"
+[1]: ./media/designing-for-high-availability-with-expressroute/exr-reco.png "Ajánlott módszer a ExpressRoute használatával való kapcsolódásra"
+[2]: ./media/designing-for-high-availability-with-expressroute/suboptimal-lastmile-connectivity.png "Az utolsó mérföldes kapcsolat optimális állapota"
+[3]: ./media/designing-for-high-availability-with-expressroute/nat-options.png "NAT-beállítások"
 
 
 <!--Link References-->

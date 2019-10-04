@@ -10,14 +10,14 @@ ms.reviewer: jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b9bd4b3516ee03ce78fcf255eba011f86f9c29c
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d4f206b63be38c902f93a084889e60184ce03e07
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883937"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958039"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Azure Time Series Insights-környezethez tartozó GA-referenciák kezelése a használatávalC#
 
@@ -27,20 +27,20 @@ Ez a cikk egy példaként C# szolgáló projektet ismertet, amely a Azure Time S
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. [Hozzon létre egy hivatkozási](time-series-insights-add-reference-data-set.md)adatkészletet.
+1. [Hozzon létre egy hivatkozási adatkészletet](time-series-insights-add-reference-data-set.md).
 
-1. Konfigurálja az alkalmazáshoz tartozó engedélyezési hozzáférési tokent. Győződjön meg arról, hogy a jogkivonat a Azure Active Directory API-n keresztül szerezhető be. Ezt a tokent minden lekérdezési `Authorization` API-kérelem fejlécében át kell adni.
+1. Konfigurálja az alkalmazáshoz tartozó engedélyezési hozzáférési tokent. Győződjön meg arról, hogy a jogkivonat a Azure Active Directory API-n keresztül szerezhető be. Ezt a tokent minden lekérdezési API-kérelem `Authorization` fejlécében kell átadni.
 
    A nem interaktív alkalmazások beállításával kapcsolatos további információkért lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md).
 
 1. Szerkessze a mintakód értékét, hogy lecserélje a (z) **#DUMMY #** , a kód elején megjelenő – példa konstansokat.
 
 > [!NOTE]
-> Tekintse meg a GA minta [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)kódját a következő címen:.
+> Tekintse meg a GA mintakód a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 
-Adja hozzá a `Microsoft.IdentityModel.Clients.ActiveDirectory` NuGet `Newtonsoft.Json` -csomagokat, és ehhez a példához.
+Ehhez a példához `Microsoft.IdentityModel.Clients.ActiveDirectory` és `Newtonsoft.Json` NuGet-csomagokat adhat hozzá.
 
 ## <a name="c-sample-code"></a>C#mintakód
 

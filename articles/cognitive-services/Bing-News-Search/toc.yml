@@ -49,8 +49,8 @@
     - name: Találatok kiemelésének kezelése
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Lapozás a hírek között
-      href: paging-news.md
+    - name: Keresési eredmények közötti lapozás
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Miniatűrök átméretezése és körülvágása
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7b5ee5bfe4b7498bc13ff0c8582b49fed8478e0a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 1b53d8a15e6ca1d4fc5a8ed6d58e526fadd12466
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337779"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949003"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Felügyeleti csoportok létrehozása az erőforrás-szervezethez és-kezeléshez
 
@@ -31,9 +31,13 @@ A felügyeleti csoportot a portál, a PowerShell vagy az Azure CLI használatáv
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Válassza **a minden szolgáltatás** > **felügyeleti csoportok**lehetőséget.
+1. Válassza **a minden szolgáltatás** > **felügyelet + irányítás**lehetőséget.
 
-1. A főoldalon válassza az **új felügyeleti csoport**elemet.
+1. **Cost Management és számlázás** kiválasztása
+
+1. A Cost Management + számlázási felügyeleti csoportok lapon válassza a **Management groups**
+
+1. Válassza a **+ felügyeleti csoport hozzáadása**lehetőséget.
 
    ![A felügyeleti csoportok használatáról szóló oldal](./media/main.png)
 

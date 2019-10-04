@@ -1,19 +1,19 @@
 ---
 title: A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz | Microsoft Docs
 description: A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844502"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949208"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -39,11 +39,11 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
     
     1. `Azure Digital Twins`. Válassza ki az **Azure Digital Twins** API-t.
 
-        [![Keresés az API-ban vagy az Azure Digital Twins-ban](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
+        [![Search API vagy Azure digitális Twins](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
     1. Vagy keressen rá a `Azure Smart Spaces Service` kifejezésre. Válassza ki az **Azure Smart Spaces szolgáltatás** API-ját.
 
-        [![Azure intelligens Spaces-API keresése](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
+        [@no__t – 1Search API az Azure intelligens tárhelyekhez](../../includes/media/digital-twins-permissions/aad-app-search-api.png)](../../includes/media/digital-twins-permissions/aad-app-search-api.png#lightbox)
 
     > [!IMPORTANT]
     > A megjelenő Azure AD API-név és-azonosító a bérlőtől függ:
@@ -69,7 +69,7 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
 1. Másolja és őrizze meg Azure Active Directory **alkalmazásának azonosítóját** . Ezt az alábbi lépések használják.
 
-   [![Azure Active Directory alkalmazás azonosítója](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
+   [@no__t – 1Azure Active Directory alkalmazás azonosítója](../../includes/media/digital-twins-permissions/aad-app-reg-app-id.png)](../../includes/media//digital-twins-permissions/aad-app-reg-app-id.png#lightbox)
 
 
 ## <a name="obtain-an-oauth-20-token"></a>OAuth 2,0 token beszerzése

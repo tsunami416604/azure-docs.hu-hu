@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195693"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803527"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: Kérdések és válaszok hozzáadása QnA Maker portálon
 
@@ -61,7 +61,7 @@ Az URL-cím importálása után csak egy kérdés lett létrehozva.
 
 Ebben az eljárásban további kérdéseket is megadhat.
 
-1. A **Szerkesztés** lapon használja a kérdés-és Levelesláda fölötti keresési szövegmezőt a kérdés megtalálásához.`How large a knowledge base can I create?`
+1. A **Szerkesztés** lapon a kérdés-és Levelesláda fölötti keresési szövegmezőben keresse meg a következő kérdést: `How large a knowledge base can I create?`
 
 1. A **kérdés** oszlopban válassza az **+ alternatív megfogalmazás hozzáadása** lehetőséget, majd adja hozzá a következő táblázatban megadott összes új megfogalmazást.
 
@@ -76,7 +76,7 @@ Ebben az eljárásban további kérdéseket is megadhat.
 
     `What GB size can a knowledge base be?`
 
-    A megfelelő választ a rendszer Markdown formátumban adja vissza:`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    A megfelelő választ a rendszer Markdown formátumban adja vissza: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     Ha a visszaadott válasz alatt bejelöli a **vizsgálat** lehetőséget, további válaszok jelenhetnek meg a kérdésben, de nem ugyanazzal a magas szintű megbízhatósággal. 
 
@@ -92,14 +92,14 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
 
 1. Válassza a **megtekintési beállítások**, majd a **metaadatok megjelenítése**lehetőséget. 
 
-1. Az imént hozzáadott kérdés és válasz beállításnál válassza a **metaadatok hozzáadása**, majd a `service` `service:search`és a `search`értékének hozzáadása elemet.
+1. Az imént hozzáadott kérdés és válasz esetében válassza a **metaadatok hozzáadása**elemet, majd adja hozzá a `service` és a `search`, `service:search` érték nevét.
 
-1. Adjon hozzá egy másik metaadat-címkét `link_in_answer` `false`, `link_in_answer:false`amelynek a neve és értéke.
+1. Adjon hozzá egy másik metaadat-címkét, amelynek neve `link_in_answer`, `false`, `link_in_answer:false` értékkel.
 
-1. Keresse meg az első választ a táblában `How large a knowledge base can I create?`. 
+1. Keresse meg az első választ a táblázatban, `How large a knowledge base can I create?`. 
 1. Metaadat-párok hozzáadása ugyanahhoz a két metaadat-címkéhez:
 
-    `link_in_answer`:`true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     Most már két kérdés van ugyanazzal a metaadatokkal, amelyek különböző értékeket tartalmaznak. 
@@ -121,7 +121,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Figyelje meg, hogy a kérdés csak egyetlen szó `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse. 
+    Figyelje meg, hogy a kérdés csak egyetlen szó, `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
     }
     ```
 
-    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános `No good match found in KB.` választ adja vissza.
+    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a `No good match found in KB.` általános választ adja vissza.
 
     Ügyeljen rá, hogy a metaadatok neve és értéke párokat a szükséges korlátok között tartsa. 
 

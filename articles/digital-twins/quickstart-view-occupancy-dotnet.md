@@ -1,6 +1,7 @@
 ---
 title: Elérhető szobák keresése – Azure digitális Twins | Microsoft Docs
 description: Ebben a rövid útmutatóban két .NET Core-alkalmazást futtathat egy adott tér szimulált mozgás- és szén-dioxid-telemetriaadatainak az Azure Digital Twinsbe való elküldésére. A cél a friss levegővel rendelkező és szabad szobák keresése a Management API-kon keresztül az adatok a felhőben való számítási feldolgozását követően.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
@@ -8,14 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 10/03/2019
+ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640286"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958910"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető szobák keresése az Azure Digital Twins használatával
 
@@ -51,13 +51,13 @@ Ez a szakasz a mintaalkalmazást az Azure Active Directory (Azure AD) regisztrá
 
 Hozza létre az foglaltsága alkalmazást az alábbi lépéseket.
 
-1. Nyisson meg egy parancssort. Nyissa meg azt a mappát `digital-twins-samples-csharp-master.zip` , ahová a fájlokat kibontotta.
+1. Nyisson meg egy parancssort. Lépjen arra a mappára, ahol a `digital-twins-samples-csharp-master.zip` fájlokat kibontotta.
 1. Futtassa az `cd occupancy-quickstart/src` parancsot.
 1. Futtassa az `dotnet restore` parancsot.
 1. Az [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) fájlban módosítsa az alábbi változókat:
     - **ClientId**: Adja meg az Azure AD-alkalmazás regisztrációs AZONOSÍTÓját az előző szakaszban leírtak szerint.
     - **Bérlő**: Adja meg az Azure AD-bérlő címtár-AZONOSÍTÓját, amelyet az előző szakaszban is fel kell tüntetni.
-    - **BaseUrl**: A digitális Twins-példány felügyeleti API URL-címe formátuma `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Cserélje le a helyőrzőket a URL-CÍMBEN szereplő értékek a példány az előző szakaszban.
+    - **BaseUrl**: A digitális Twins-példány felügyeleti API URL-címének formátuma `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Cserélje le a helyőrzőket a URL-CÍMBEN szereplő értékek a példány az előző szakaszban.
 
 ## <a name="provision-graph"></a>Diagram kiépítése
 
@@ -81,11 +81,11 @@ A térbeli graph használatával van kiépítve a [provisionSample.yaml](https:/
 
 1. A kiépítési lépés néhány percet is igénybe vehet. Azt is látja el a digitális Twins példány belül az IoT hubra. Ez végighalad mindaddig, amíg az IoT Hub állapotát jeleníti meg =`Running`.
 
-    [![Minta kiépítése](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
+    [@no__t – 1Provision minta](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample1.png#lightbox)
 
 1. A végrehajtás végén, másolja a `ConnectionString` az eszköz az eszköz szimulátor minta használható. Csak a képen leírt karakterlánc másolja.
 
-    [![A kapcsolatok karakterláncának másolása](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [@no__t – a 1Copy](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
     >[!TIP]
     > Megtekintheti és módosíthatja a térbeli graph használatával a [Azure digitális Twins Graph megjelenítő](https://github.com/Azure/azure-digital-twins-graph-viewer).
@@ -100,7 +100,7 @@ Alkalmazás összeállítása és futtatása az érzékelő szimulátort az alá
 1. Szerkesztés [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) frissíteni **DeviceConnectionString** az előző `ConnectionString`.
 1. Futtatás `dotnet run` érzékelőktől kapott adatok küldésének elkezdésére. Láthatja, küldve digitális Twins az alábbi képen látható módon.
 
-     [![Eszköz kapcsolata](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [@no__t – 1Device-kapcsolat](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
 1. Lehetővé teszik a szimulátor futtatni, hogy párhuzamosan lesz a következő lépés művelet eredményeit tekintheti meg. Ebben az ablakban látható digitális Twins küldött szimulált érzékelőadatokat. A következő lépés lekérdezések friss vezeték nélkül regisztrálja az elérhető teremkeresés valós időben.
 
@@ -119,7 +119,7 @@ Az érzékelő minta szimulálja véletlenszerű adatértékek két érzékelő 
    - Friss levegővel rendelkező szabad szobák.
    - Foglalt vagy nem megfelelő levegővel rendelkező terem.
 
-     [![Szabad helyek beolvasása friss levegővel](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [@no__t – 1Get elérhető szóközök friss levegővel](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
 
 Szeretné megtudni, mi történt, ebben a rövid, és milyen API-k hívták, nyissa meg a [Visual Studio Code](https://code.visualstudio.com/Download) a kód munkaterület projekttel digitális-twins-samples-csharp található. Használja az alábbi parancsot:
 
@@ -160,4 +160,4 @@ Továbbra is az oktatóanyagok, hogy ne törölje az erőforrásokat létrehozot
 Ez a rövid útmutató egy egyszerű forgatókönyvet használja bemutatják, hogyan teremkeresés használata feltételekkel. Ez a forgatókönyv részletes elemzéséhez ebben az oktatóanyagban talál:
 
 >[!div class="nextstepaction"]
->[Oktatóanyag: Azure digitális Twins üzembe helyezése és térbeli gráf konfigurálása](tutorial-facilities-setup.md)
+>[Oktatóanyag: Azure digitális Twins üzembe helyezése és térbeli gráf konfigurálása @ no__t-0

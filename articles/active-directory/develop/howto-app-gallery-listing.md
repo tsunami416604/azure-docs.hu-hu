@@ -18,16 +18,16 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a97c10303a1ce74e53f46c21176c876faed307e7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176842"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958656"
 ---
-# <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
-Ez a cikk bemutatja, hogyan listázhat egy alkalmazást az Azure AD-alkalmazás-katalógusban, hogyan alkalmazhat egyszeri bejelentkezést (SSO), és hogyan kezelheti az adatokat.
+Ez a cikk bemutatja, hogyan listázhat alkalmazást az Azure Active Directory (Azure AD) alkalmazás-katalógusban, hogyan implementálhat egyszeri bejelentkezést (SSO), és hogyan kezelheti az adatokat.
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Mi az Azure AD Application Gallery?
 
@@ -36,106 +36,102 @@ Ez a cikk bemutatja, hogyan listázhat egy alkalmazást az Azure AD-alkalmazás-
 - A gyors keresés megkeresi az alkalmazást a galériában.
 - Az ingyenes, alapszintű és prémium szintű Azure AD-ügyfelek használhatják ezt az integrációt.
 - A kölcsönös ügyfelek részletes konfigurációs oktatóanyagot kapnak.
-- A SCIM-t használó ügyfelek ugyanazt az alkalmazást használhatják a kiépítés során.
+- Azok a felhasználók, akik a rendszert használják a tartományok közötti Identitáskezelés (SCIM) számára, használhatják a kiépítés használatát ugyanahhoz az alkalmazáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Összevont alkalmazások esetében (Open ID és SAML/WS-Fed) az alkalmazásnak támogatnia kell az SaaS modellt az Azure AD Galleryben való ismerkedéshez. A nagyvállalati katalógus alkalmazásai több ügyfél-konfigurációt is támogatnak, és nem adott ügyfelet.
-
-- A nyitott AZONOSÍTÓk összekapcsolásához az alkalmazásnak több-bérlős és [Azure ad-engedélyezési keretrendszert](consent-framework.md) kell alkalmaznia az alkalmazáshoz. A felhasználó elküldheti a bejelentkezési kérést egy közös végpontnak, így bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a tokenben kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja.
-
-- Az SAML 2.0/WS-fed esetében az alkalmazásnak képesnek kell lennie az SAML/WS-fed SSO-integráció SP-vagy IDENTITÁSSZOLGÁLTATÓ módban történő elvégzésére. Győződjön meg arról, hogy ez megfelelően működik a kérelem elküldése előtt.
-
-- A jelszó egyszeri bejelentkezéséhez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolók a várt módon működjenek az egyszeri bejelentkezéshez.
-
-- Állandó fiókra van szükség a 2. atleast regisztrált felhasználóval való teszteléshez.
+- Összevont alkalmazások esetében (Open ID és SAML/WS-Fed) az alkalmazásnak támogatnia kell az Azure AD-katalógusban való ismerkedéshez szükséges szoftveres (SaaS) modellt. A nagyvállalati katalógus alkalmazásainak több ügyfél-konfigurációt kell támogatnia, és nem adott ügyfelet.
+- A nyitott AZONOSÍTÓk összekapcsolásához az alkalmazásnak több-Bérlőnek kell lennie, és az [Azure ad-beli engedélyezési keretrendszert](consent-framework.md) megfelelően kell megvalósítani az alkalmazáshoz. A felhasználó elküldheti a bejelentkezési kérést egy közös végpontnak, így bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a tokenben kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja.
+- Az SAML 2.0/WS-fed esetében az alkalmazásnak képesnek kell lennie az SAML/WS-fed SSO-integráció SP-vagy IDENTITÁSSZOLGÁLTATÓ módban történő elvégzésére. Győződjön meg arról, hogy ez a funkció megfelelően működik a kérelem elküldése előtt.
+- Az egyszeri jelszavas bejelentkezéshez győződjön meg arról, hogy az alkalmazás támogatja az űrlapos hitelesítést, hogy a jelszó-tárolót úgy lehessen elvégezni, hogy az egyszeri bejelentkezés a várt módon működjön.
+- Állandó fiókra van szükség legalább két regisztrált felhasználó teszteléséhez.
 
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 
-Miután tesztelte az alkalmazás-integrációt az Azure AD-vel, küldje el a hozzáférési kérelmét az [Application Network](https://microsoft.sharepoint.com/teams/apponboarding/Apps)-portálon. Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt (például az Outlookot vagy a Hotmailt) a bejelentkezéshez.
+Miután tesztelte az alkalmazás-integrációt az Azure AD-vel, küldje el a hozzáférési kérelmét az [Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt, például az Outlookot vagy a Hotmailt a bejelentkezéshez.
 
-Ha a bejelentkezés után a következő oldal jelenik meg, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) , és adja meg azt az e-mail-fiókot, amelyet a kérelem elküldéséhez használni kíván. Ezt követően az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
+Ha a bejelentkezés után a következő oldal jelenik meg, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Adja meg a kérelem elküldéséhez használni kívánt e-mail-fiókot. Az Azure AD csapata felveszi a fiókot a Microsoft Application Network portálon.
 
-![Hozzáférési kérelem a SharePoint-portálon](./media/howto-app-gallery-listing/errorimage.png)
+![Hozzáférési kérelemre vonatkozó üzenet a SharePoint-portálon](./media/howto-app-gallery-listing/errorimage.png)
 
 A fiók hozzáadása után bejelentkezhet a Microsoft Application Network portálra.
 
-Ha a bejelentkezés után a következő oldal jelenik meg, adjon meg egy üzleti indoklást a hozzáférés igénybe lépéséhez a szövegmezőben, majd válassza a **hozzáférés kérése**lehetőséget.
+Ha a bejelentkezés után a következő oldal jelenik meg, adjon meg egy üzleti indoklást a szövegmezőben való hozzáféréshez. Ezután válassza a **hozzáférés kérése**lehetőséget.
 
-  ![Hozzáférési kérelem a SharePoint-portálon](./media/howto-app-gallery-listing/accessrequest.png)
+  ![Üzleti indoklási mező a SharePoint-portálon](./media/howto-app-gallery-listing/accessrequest.png)
 
-Csapatunk áttekinti a részleteket, és ennek megfelelően hozzáférést biztosít Önnek. A kérelem jóváhagyását követően bejelentkezhet a portálra, és elküldheti a kérést, ha a kezdőlapon a **küldési kérelem (ISV)** csempére kattint.
+Csapatunk áttekinti a részleteket, és ennek megfelelően hozzáférést biztosít Önnek. A kérelem jóváhagyását követően bejelentkezhet a portálra, és elküldheti a kérést, ha a kezdőlapon a **küldési kérelem (ISV)** csempét választja.
 
-![SharePoint-portál kezdőlapja](./media/howto-app-gallery-listing/homepage.png)
+![A beküldési kérelem (ISV) csempéje a kezdőlapon](./media/howto-app-gallery-listing/homepage.png)
 
 > [!NOTE]
-> Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+> Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="implementing-sso-using-federation-protocol"></a>SSO implementálása összevonási protokoll használatával
+## <a name="implement-sso-by-using-the-federation-protocol"></a>Egyszeri bejelentkezés implementálása az összevonási protokoll használatával
 
-Egy alkalmazás az Azure AD-katalógusban való listázásához először a következő, az Azure AD által támogatott összevonási protokollok egyikét kell végrehajtania, és el kell fogadnia az Azure AD Application Gallery használati feltételeit. Olvassa el az Azure AD Application Gallery használati feltételeit innen [.](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)
+Egy alkalmazás az Azure AD-katalógusban való listázásához először meg kell valósítania az Azure AD által támogatott alábbi összevonási protokollok egyikét. Emellett el kell fogadnia az Azure AD Application Gallery használati feltételeit is. Olvassa el [ezen a webhelyen](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)az Azure ad Application Gallery használati feltételeit.
 
-- **OpenID Connect**: Az alkalmazás az Azure AD-val való integrálásához az Open ID csatlakozási protokoll használatával kövesse a [fejlesztők utasításait](authentication-scenarios.md).
+- **OpenID Connect**: Az alkalmazás Azure AD-val való integrálásához az Open ID csatlakozási protokoll használatával kövesse a [fejlesztők utasításait](authentication-scenarios.md).
 
-    ![Az OpenID Connect-alkalmazás katalógusba helyezésének idővonala](./media/howto-app-gallery-listing/openid.png)
+    ![OpenID Connect-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/openid.png)
 
-    * Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katalógusban szereplő listára, válassza az **OpenID connect & OAuth 2,0** lehetőséget a fentiekben leírtak szerint.
-    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+    * Ha az OpenID Connect használatával szeretné felvenni az alkalmazást a katalógusban szereplő listára, válassza az **OpenID connect & OAuth 2,0** lehetőséget a képen látható módon.
+    * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-- **SAML 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, azt közvetlenül integrálhatja egy Azure AD-Bérlővel az [egyéni alkalmazások hozzáadására szolgáló utasítások](../active-directory-saas-custom-apps.md)segítségével.
+- **SAML 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure AD-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../active-directory-saas-custom-apps.md)követésével.
 
-  ![Az SAML 2,0-vagy WS-fed-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/saml.png)
+  ![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 
-  * Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza a fent látható **SAML 2.0/ws-fed** lehetőséget.
-  * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+  * Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
+  * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="implementing-sso-using-password-sso"></a>SSO implementálása jelszó-SSO használatával
+## <a name="implement-sso-by-using-the-password-sso"></a>Egyszeri bejelentkezés implementálása a jelszó-SSO használatával
 
 Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési oldalt a [jelszó alapú egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md)konfigurálásához. A jelszó-alapú egyszeri bejelentkezés (más néven a jelszó-tároló) lehetővé teszi a felhasználók hozzáférésének és jelszavának kezelését az identitás-összevonást nem támogató webalkalmazásokhoz. Olyan helyzetekben is hasznos, amikor több felhasználónak egyetlen fiókot kell megosztania, például a szervezete közösségi Media app-fiókjaival.
 
-![Jelszó-SSO-alkalmazás listázási idővonala a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
+![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-* Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó-SSO használatával, válassza a fenti **jelszó egyszeri bejelentkezés** lehetőséget.
-* Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+* Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használatával, válassza a **jelszó egyszeri bejelentkezés** lehetőséget.
+* Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="requesting-for-user-provisioning"></a>Felhasználói kiépítés kérelmezése
+## <a name="request-for-user-provisioning"></a>A felhasználó kiépítési kérelme
 
-A felhasználók üzembe helyezéséhez kövesse az alábbi eljárást:
+A felhasználó kiépítés igényléséhez kövesse az alábbi képen látható eljárást.
 
-   ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/user-provisioning.png)
+   ![A felhasználó kiépítési kérelme](./media/howto-app-gallery-listing/user-provisioning.png)
 
-## <a name="updateremove-existing-listing"></a>Meglévő lista frissítése/eltávolítása
+## <a name="update-or-remove-an-existing-listing"></a>Meglévő lista frissítése vagy eltávolítása
 
-Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy eltávolításához először el kell küldenie a kérést az [Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt (például az Outlookot vagy a Hotmailt) a bejelentkezéshez.
+Egy meglévő alkalmazás Azure AD-katalógusban való frissítéséhez vagy eltávolításához először el kell küldenie a kérést az [Application Network portálon](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Ha rendelkezik Office 365-fiókkal, akkor jelentkezzen be a portálra. Ha nem, használja a Microsoft-fiókt, például az Outlookot vagy a Hotmailt a bejelentkezéshez.
 
-- Válassza ki a megfelelő beállítást, ahogy az az alábbi képen is látható:
+- Válassza ki a megfelelő beállítást, ahogy az az alábbi képen is látható.
 
-    ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/updateorremove.png)
+    ![SAML-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Ha egy meglévő alkalmazást szeretne frissíteni, válassza a megfelelő lehetőséget a követelménynek megfelelően.
-    * Ha el szeretne távolítani egy meglévő alkalmazást az Azure AD-katalógusból, válassza az **alkalmazás listázása elemet a gyűjteményből**lehetőséget.
-    * Ha problémák merülnek fel a hozzáféréssel kapcsolatban, lépjen kapcsolatba az [Azure ad SSO integrációs csapatával](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+    * Egy meglévő alkalmazás frissítéséhez válassza ki a megfelelő beállítást a követelménynek megfelelően.
+    * Ha el szeretne távolítani egy meglévő alkalmazást az Azure AD-alkalmazás- **katalógusból, válassza az alkalmazás listájának eltávolítása lehetőséget a gyűjteményből**.
+    * Ha bármilyen probléma merül fel a hozzáféréssel kapcsolatban, forduljon az [Azure ad SSO Integration csapatához](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-## <a name="listing-requests-by-customers"></a>Ügyfelek kéréseinek listázása
+## <a name="list-requests-by-customers"></a>Ügyfelek által küldött kérések listázása
 
-Az ügyfelek az alkalmazásra **vonatkozó kérelmeket** -> az**új kérelem**beküldésére kattintva küldhetik be az alkalmazások listázására.
+Az ügyfelek az alkalmazásra **vonatkozó kérelmeket az ügyfelek által** > **új kérelem beküldése**lehetőség kiválasztásával kérhetik az alkalmazások listázására.
 
 ![Az ügyfél által kért alkalmazások csempe megjelenítése](./media/howto-app-gallery-listing/customer-submit-request.png)
 
-Alább látható az ügyfél által kért alkalmazások folyamata –
+Az ügyfél által kért alkalmazások folyamata.
 
 ![Az ügyfél által kért alkalmazások folyamatát jeleníti meg](./media/howto-app-gallery-listing/customer-request.png)
 
 ## <a name="timelines"></a>Ütemtervek
 
-Az SAML 2,0 vagy a WS-fed alkalmazás a katalógusban való listázásának ütemterve 7-10 munkanap.
+Az SAML 2,0 vagy WS-fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
 
-  ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline.png)
+  ![Az SAML-alkalmazások katalógusban való listázásának ütemterve](./media/howto-app-gallery-listing/timeline.png)
 
-A katalógusban található OpenID Connect-alkalmazás listázási folyamatának idővonala 2-5 munkanap.
+A katalógusban található OpenID Connect-alkalmazás listázási folyamatának ütemterve 2 – 5 munkanap.
 
-  ![Az SAML-alkalmazás katalógusba való felvételének ütemterve](./media/howto-app-gallery-listing/timeline2.png)
+  ![Az OpenID Connect alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Azok következményeinek
 
-Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) , SaaSApplicationIntegrations@service.microsoft.com amely a lehető leghamarabb válaszol.
+Minden eszkaláció esetében küldjön e-mailt az [Azure ad SSO integrációs csapatának](mailto:SaaSApplicationIntegrations@service.microsoft.com) SaaSApplicationIntegrations@service.microsoft.com címen, és a lehető leghamarabb válaszoljon.

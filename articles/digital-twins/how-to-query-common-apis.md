@@ -1,19 +1,19 @@
 ---
 title: Azure digitális Twins – gyakori lekérdezési minták | Microsoft Docs
 description: Ismerje meg az Azure digitális Twins felügyeleti API-k lekérdezésének gyakori mintáit.
-author: kingdomofends
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: v-adgera
-ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1d1c0e2f12d5a971cf08933e5d469093eb1f6d52
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172793"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949876"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Azure digitális Twins API-k lekérdezése gyakori feladatokhoz
 
@@ -56,7 +56,7 @@ Ez a szakasz példákat mutat be a kiépített területekre vonatkozó további 
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Szerezzen be szóközöket a *AreaInSqMeters* nevű tulajdonsággal, értéke pedig 30. Karakterlánc-műveleteket is végezhet, például lekérheti a tulajdonságot tartalmazó szóközöket `name = X contains Y`a következővel:.
+- Szerezzen be szóközöket a *AreaInSqMeters* nevű tulajdonsággal, értéke pedig 30. Karakterlánc-műveleteket is végrehajthat, például beolvashatja a `name = X contains Y` tulajdonságot tartalmazó szóközöket.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30

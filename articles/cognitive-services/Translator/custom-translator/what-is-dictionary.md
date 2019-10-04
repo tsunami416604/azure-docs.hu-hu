@@ -9,18 +9,18 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 5103526956b5041771a1d8e4abb5e8800b971059
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595384"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947687"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az a szótár?
 
-A szótár olyan igazított pár dokumentum, amely a mondatok vagy mondatok listáját és a hozzájuk tartozó fordításokat határozza meg. Használjon szótárt a képzésben, ha azt szeretné, hogy a Microsoft Translator mindig lefordítsa a forrás kifejezés vagy mondat bármely példányát a szótárban megadott fordítás használatával. A szótárakat más néven szószedeteknek vagy kifejezéseknek nevezzük. A szótárt a lista összes feltételének "másolás és csere" kifejezésével lehet meggondolni.
+A szótár olyan igazított pár dokumentum, amely a mondatok vagy mondatok listáját és a hozzájuk tartozó fordításokat határozza meg. Használjon szótárt a képzésben, ha azt szeretné, hogy a Microsoft Translator mindig lefordítsa a forrás kifejezés vagy mondat bármely példányát a szótárban megadott fordítás használatával. A szótárakat más néven szószedeteknek vagy kifejezéseknek nevezzük. A szótárt a lista összes feltételének "másolás és csere" kifejezésével lehet meggondolni. Emellett a Microsoft Custom Translator Service saját általános célú szótárakat is létrehoz és használ a fordítás minőségének javítása érdekében. Az ügyfél által megadott szótár azonban precedenst kap, és először a szavak vagy mondatok keresésére keres rá.
 
-A szótárak csak olyan nyelvi párokban működő projektekhez működnek, amelyek teljes mértékben támogatottak a Microsoft neurális gépi fordítási (NMT) rendszer mögött. [Tekintse meg a nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
+A szótárak csak olyan nyelvi párokban működő projektekhez működnek, amelyek teljes mértékben támogatottak a Microsoft általános neurális hálózati modellje mögött. [Tekintse meg a nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Szótár kifejezése
 Ha egy kifejezés szótárt is tartalmaz a modell tanításához, a felsorolt szavak vagy kifejezések a megadott módon vannak lefordítva. A mondat többi része a szokásos módon lesz lefordítva. A kifejezéseket tartalmazó szótár segítségével megadhatja azokat a kifejezéseket, amelyek nem fordíthatók le a szótárban található forrás-és célfájl azonos fordított kifejezésének megadásával.
@@ -36,11 +36,11 @@ A modelleket csak a szótárak adatai alapján lehet betanítani. Ehhez válassz
 
 ## <a name="recommendations"></a>Javaslatok
 
-- A szótárak nem helyettesíthetik a betanított modellt a betanítási adattal.  A szótárak alapvetően szavakat vagy mondatokat találnak és cserélnek.  Ha úgy dönt, hogy a rendszer a teljes mondatok alapján tanulja meg a képzési anyagokat, általában jobb választás, mint a szótár használata.
-- A kifejezés szótárát takarékosan kell használni. Ha a mondaton belüli kifejezést lecserélik, a mondaton belüli környezet elveszett vagy korlátozott a mondat hátralévő részének lefordítása érdekében. Ennek az az oka, hogy a mondaton belüli kifejezés vagy szó a kifejezés szótárának megfelelően lesz lefordítva, a mondat teljes fordítási minősége gyakran fog szenvedni.
-- A kifejezés szótára jól működik az olyan összetett nevek esetében, mint például a Terméknév ("Microsoft SQL Server"), a megfelelő nevek ("Hamburg városa") vagy a termék funkciói ("pivot Table"). Nem működik együtt a műveletekhez és a melléknevekhez, mert ezek általában erősen ragozott a forrásban vagy a célként megadott nyelven. Kerülje a szótár bejegyzéseinek kifejezését az összetett nevekhez.
-- Ha szótárt használ, a fordításban a kihasználás és a központozás a megcélzott fájlban megadott tőkésítés és írásjelek alapján jelenik meg. A rendszer figyelmen kívül hagyja a nagybetűket és a központozást, ha a bemeneti mondat és a szótárban lévő mondatok közötti egyezések azonosítására tesz kísérletet. Tegyük fel például, hogy egy angolról a spanyol rendszerre tanította a "Hamburg városa" nevű szótárt a forrásfájlban, a "Ciudad de Hamburg" kifejezést pedig a célfájl "a" fájljában. Ha egy olyan mondat fordítását kértem, amely tartalmazza a "Hamburg városa" kifejezést, akkor a "Hamburg városa" kifejezés megfelel a "Hamburg városa" bejegyzéshez tartozó "" Ciudad de Hamburg "szövegnek, és a végső fordításban a" Ciudad de Hamburg "értékre lesz leképezve.
-- Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. A szótár nem tartalmazhat ugyanazon szó több fordítását.
+- A szótárak nem helyettesíthetik a modell betanítását a betanítási adatai használatával. Javasoljuk, hogy elkerülje őket, és hagyja, hogy a rendszer tanuljanak a betanítási adatokból. Ha azonban a mondatokat vagy az összetett főcímeket a-ként kell megjeleníteni, használjon szótárt.
+- A kifejezés szótárát takarékosan kell használni. Ezért ügyeljen arra, hogy ha egy mondaton belüli kifejezést cserél le, a mondaton belüli környezet elveszett vagy korlátozott a mondat hátralévő részének lefordítása érdekében. Ennek eredményeképpen a mondatban szereplő kifejezés vagy szó a megadott szótár szerint lesz lefordítva, a mondat általános fordítási minősége gyakran csökken.
+- A kifejezés szótára jól működik az olyan összetett nevek esetében, mint például a Terméknév ("Microsoft SQL Server"), a megfelelő nevek ("Hamburg városa") vagy a termék funkciói ("pivot Table"). Nem működik együtt a műveletekhez és a melléknevekhez, mert ezek általában erősen ragozott a forrásban vagy a célként megadott nyelven. Az ajánlott eljárás az, hogy elkerülje a szótárbeli bejegyzéseket bármilyen, de összetett kifejezésre.
+- Ha szótárt használ, a nagybetűk és a központozás fontos. A szótár bejegyzései csak azokat a szavakat és kifejezéseket egyeznek meg, amelyeknek ugyanaz a kihasználása és a központozás, mint a szótárban található bejegyzés. A fordítások tükrözik a szótárak céljaként megadott nagybetűssé és központozást. Tegyük fel például, hogy angolról spanyol modellre tanít egy olyan szótárt, amely a forrásfájlban a "Hello" kifejezést adta meg a "Buenos Dias" kifejezésre a célfájl számára. Ha olyan mondat fordítását kéri, amely tartalmazza a "Hello" kifejezést, a rendszer először a szótárban keres, és egy egyezést ("Hello") fog keresni, és a végső fordításban "Buenos Dias" értéket ad vissza.
+- Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. Ezért a szótár nem tartalmazhat ugyanazon szó több fordítását.
 
 ## <a name="next-steps"></a>További lépések
 

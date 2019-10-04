@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce8c74e5c194dbd971ecb65659c4fc8a7150146d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: cad57e3e7e52ec291819110bab9d8d79f51e5a2f
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882920"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958154"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Egyéni nézet megosztása paraméteres URL-cím használatával
 
@@ -55,18 +55,18 @@ A `&relativeMillis=3600000` például a legutóbbi 60 perc adatait jeleníti meg
 
 Az elfogadott értékek a Time Series Insights Explorer **gyors idő** menüjének felelnek meg, és a következők:
 
-* `1800000`(Az elmúlt 30 perc)
-* `3600000`(Utolsó 60 perc)
-* `10800000`(Az elmúlt 3 óra)
-* `21600000`(Az elmúlt 6 óra)
-* `43200000`(Az elmúlt 12 óra)
-* `86400000`(Az elmúlt 24 óra)
-* `604800000`(Az elmúlt 7 nap)
-* `2592000000`(Az elmúlt 30 óra)
+* @no__t – 0 (utolsó 30 perc)
+* @no__t – 0 (utolsó 60 perc)
+* @no__t – 0 (elmúlt 3 óra)
+* @no__t – 0 (elmúlt 6 óra)
+* @no__t – 0 (utolsó 12 óra)
+* @no__t – 0 (az elmúlt 24 óra)
+* @no__t – 0 (az elmúlt 7 nap)
+* @no__t – 0 (utolsó 30 óra)
 
 ### <a name="optional-parameters"></a>Választható paraméterek
 
-A `timeSeriesDefinitions=<collection of term objects>` paraméter a Time Series Insights nézetek feltételeit adja meg:
+A `timeSeriesDefinitions=<collection of term objects>` paraméter határozza meg egy Time Series Insights nézet feltételeit:
 
 | Paraméter | URL-tétel | Leírás |
 | --- | --- | --- |
@@ -74,17 +74,17 @@ A `timeSeriesDefinitions=<collection of term objects>` paraméter a Time Series 
 | **splitBy** | `\<string>` | A *felosztás* alapjául szolgáló oszlop neve. |
 | **measureName** | `\<string>` | A *mérték* oszlopneve. |
 | **predikátum** | `\<string>` | A kiszolgálóoldali szűrés *where* záradéka. |
-| **useSum** | `true` | Egy opcionális paraméter, amely a mérték összegének használatát határozza meg. </br>  Megjegyzés: Ha `Events` a kiválasztott mérték, a darabszám alapértelmezés szerint ki van választva.  </br>  Ha `Events` nincs bejelölve, az átlag alapértelmezés szerint ki van választva. |
+| **useSum** | `true` | Egy opcionális paraméter, amely a mérték összegének használatát határozza meg. </br>  Vegye figyelembe, hogy ha `Events` a kiválasztott mérték, a darabszám alapértelmezés szerint ki van választva.  </br>  Ha a `Events` nincs bejelölve, az átlag alapértelmezés szerint ki van választva. |
 
-* A `multiChartStack=<true/false>` kulcs-érték párok lehetővé teszik a diagramon belüli halmozást.
-* A `multiChartSameScale=<true/false>` kulcs-érték pár lehetővé teszi, hogy ugyanaz az Y tengely skálája a feltételek között egy opcionális paraméteren belül legyen.  
-* A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszkájának módosítását, hogy a diagram részletesebb vagy simább legyen.  
-* A `timezoneOffset=<integer>` paraméter lehetővé teszi, hogy beállítsa a diagram időzónáját, amelyet az UTC szerint kell megtekinteni.
+* A `multiChartStack=<true/false>` kulcs-érték pár lehetővé teszi a halmozást a diagramon.
+* A `multiChartSameScale=<true/false>` kulcs-érték pár lehetővé teszi, hogy a választható paraméteren belül ugyanazt az Y tengelyt méretezheti a feltételek között.  
+* A `timeBucketUnit=<Unit>&timeBucketSize=<integer>` lehetővé teszi az intervallum csúszkájának módosítását a diagram részletesebb vagy simább, összesített nézetének megadásához.  
+* A `timezoneOffset=<integer>` paraméterrel beállíthatja, hogy a diagram időzónája az UTC szerint legyen megtekinthető.
 
 | Pár (ok) | Leírás |
 | --- | --- |
-| `multiChartStack=false` | `true`Alapértelmezés szerint engedélyezve van, ezért `false` adja át a stack-nek. |
-| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  `false` Alapértelmezés szerint ez a funkció lehetővé teszi a "true" értéket. |
+| `multiChartStack=false` | a `true` alapértelmezés szerint engedélyezve van, így `false` értéket kell átadni a veremnek. |
+| `multiChartStack=false&multiChartSameScale=true` | A rétegezést engedélyeznie kell az azonos Y tengely irányú skálázás több feltételben való használatához.  Alapértelmezés szerint @no__t – 0, ezért a "true" értékkel való átadás lehetővé teszi ezt a funkciót. |
 | `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Egységek = nap, óra, perc, másodperc, ezredmásodperc.  Az egység nevét mindig nagybetűvel írja. </br> Az egységek számának megadásához adja át a kívánt egész számot a timeBucketSize paraméterhez.  Vegye figyelembe, hogy a részletesség legfeljebb 7 napos lehet.  |
 | `timezoneOffset=-<integer>` | Az egész számot mindig ezredmásodpercben kell megadnia. </br> Vegye figyelembe, hogy ez a funkció némileg eltér a Time Series Insights Explorerben, ahol engedélyezheti a helyi (böngésző idő) vagy az UTC használatát. |
 
@@ -114,14 +114,14 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 A fenti URL-cím leírja és létrehozza a Time Series Insights Explorer nézetet:
 
-[![Time Series Insights Explorer használati feltételei](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
+[@no__t – 1Time sorozatú adatáttekintési Explorer-kifejezések](media/parameterized-url/url1.png)](media/parameterized-url/url1.png#lightbox)
 
 A teljes nézet (beleértve a diagramot is):
 
-[![Diagram nézet](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
+[@no__t – 1Chart nézet](media/parameterized-url/url2.png)](media/parameterized-url/url2.png#lightbox)
 
 ## <a name="next-steps"></a>További lépések
 
-* Útmutató az adatlekérdezéshez [a C#használatával ](time-series-insights-query-data-csharp.md).
+* Útmutató az [adatlekérdezéshez a C#használatával ](time-series-insights-query-data-csharp.md).
 
 * Ismerkedjen meg a [Time Series Insights Explorerrel](./time-series-insights-explorer.md).

@@ -1,23 +1,23 @@
 ---
 title: Kimenő és végpontok az Azure Digital Twinsban | Microsoft Docs
 description: Útmutató a végpontok Azure digitális ikrekkel való létrehozásához.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013943"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959119"
 ---
 # <a name="egress-and-endpoints"></a>Kimenő és végpontok
 
-Az Azure Digital Twins-végpontok egy üzenetet vagy egy esemény-közvetítőt jelentenek a felhasználó Azure-előfizetésén belül. Az események és üzenetek elküldhetők az Azure Event Hubs, Azure Event Grid és Azure Service Bus témakörökbe.
+Az Azure Digital Twins- *végpontok* egy üzenetet vagy egy esemény-közvetítőt jelentenek a felhasználó Azure-előfizetésén belül. Az események és üzenetek elküldhetők az Azure Event Hubs, Azure Event Grid és Azure Service Bus témakörökbe.
 
 Az eseményeket a rendszer az előre meghatározott útválasztási beállítások szerint irányítja a végpontokhoz. A felhasználók határozzák meg, hogy az egyes végpontok milyen *eseménytípus* fogadására jogosultak.
 
@@ -54,16 +54,16 @@ Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik e
 | data | object | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
 | eventType | string | Az eseményforrás egyik regisztrált eseménytípus. |
 | eventTime | string | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| dataVersion | string | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
+| metadataVersion | string | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
 | topic | string | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
 
 További információ a Event Grid esemény sémával kapcsolatban:
 
 - Tekintse át a [Azure Event Grid esemény sémájának referenciáját](../event-grid/event-schema.md).
-- Olvassa el az [Azure EventGrid Node. js SDK EventGridEvent](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest)-referenciáját.
+- Olvassa el az [Azure EventGrid Node. js SDK EventGridEvent-referenciáját](https://docs.microsoft.com/javascript/api/azure-eventgrid/eventgridevent?view=azure-node-latest).
 
-## <a name="event-types"></a>Események típusai
+## <a name="event-types"></a>Eseménytípusok
 
 Az események típusai osztályozzák az esemény természetét, és a **EventType** mezőben vannak beállítva. Az elérhető eseménytípus a következő lista szerint adható meg:
 
@@ -320,7 +320,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
     | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
     | YOUR_EVENT_HUB_NAME | Az Event hub neve |
 
-- Útvonal Event Hubs eseménytípus **DeviceMessage**. A `EntityPath` **ConnectionString** -ben való felvétel kötelező:
+- Útvonal Event Hubs eseménytípus **DeviceMessage**. A **connectionString** `EntityPath` belefoglalása kötelező:
 
   ```JSON
   {

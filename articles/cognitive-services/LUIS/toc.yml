@@ -101,10 +101,6 @@
             - name: 2. Telemetria hozzáadása az Application Insightshoz
               displayName: 'Application insight, kusto'
               href: luis-tutorial-bot-nodejs-appinsights.md
-- name: Példák
-  items:
-    - name: Kódminták
-      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások
@@ -411,6 +407,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: További források
   items:
+    - name: Kódminták
+      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Nyelvi és régiós támogatás

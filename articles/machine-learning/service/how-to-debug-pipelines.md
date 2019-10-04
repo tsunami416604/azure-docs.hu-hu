@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813807"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959662"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Gépi tanulási folyamatok hibakeresése és hibaelhárítása
 
@@ -27,7 +27,7 @@ A következő szakaszokban áttekintheti a folyamatok összeállításakor előf
 
 A folyamat egyik leggyakoribb meghibásodása, hogy egy csatolt parancsfájl (adattisztítási parancsfájl, pontozási parancsfájl stb.) nem a kívánt módon fut, vagy futásidejű hibákat tartalmaz a távoli számítási környezetben, amelyek nehezen olvashatók be a munkaterületen a Azure Portal. 
 
-Maguk a folyamatok nem futtathatók helyileg, de a mögöttes parancsfájlok tesztelése egyszerű módja annak, hogy a szkriptek a teljes folyamat futtatási időtartamára való várakozás nélkül meggyőződjenek arról, hogy a parancsfájlokat elvégzi. Ehhez szükség van egy fejlesztési munkára:
+Maguk a folyamatok nem futtathatók helyileg, de a parancsfájlok a helyi gépen való elkülönítése lehetővé teszi a gyorsabb hibakeresést, mivel nem kell megvárnia a számítási és a környezeti felépítési folyamatra. Ehhez szükség van egy fejlesztési munkára:
 
 * Ha az adatai egy felhőalapú adattárban találhatók, le kell töltenie az adatait, és elérhetővé kell tennie azt a parancsfájl számára. Az adat kis mintájának használatával lerövidítheti a futtatókörnyezetet, és gyors visszajelzést kaphat a parancsfájlok működéséről
 * Ha egy közbenső folyamat lépését kísérli meg szimulálni, előfordulhat, hogy manuálisan kell létrehoznia az adott parancsfájlnak az előző lépésből várt típusú objektumokat.
@@ -38,6 +38,9 @@ Ha a parancsfájl beállítása a helyi környezetben való futtatásra van beá
 * Egyéni hibakeresési konfiguráció csatolása
 * A végrehajtás felfüggesztése és az objektum állapotának vizsgálata
 * Olyan típusú vagy logikai hibák, amelyek nem lesznek elérhetők a futtatókörnyezetig
+
+> [!TIP] 
+> Ha ellenőrizni szeretné, hogy a parancsfájl a várt módon fut-e, egy jó következő lépés futtatja a szkriptet egy egylépéses folyamaton, mielőtt egy több lépésből álló folyamaton próbálja futtatni azt.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresése távoli környezetből
 

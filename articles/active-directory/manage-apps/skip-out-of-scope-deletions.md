@@ -1,6 +1,6 @@
 ---
 title: A hatókörön kívüli felhasználók törlésének kihagyása | Microsoft Docs
-description: Megtudhatja, hogyan bírálhatja felül a hatókör felhasználói törlésének alapértelmezett viselkedését.
+description: Megtudhatja, hogyan bírálhatja felül a kiépítés alapértelmezett viselkedését a hatókör felhasználói közül.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 10/03/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a753d8cce3f3b610abab2f78d54d76a05d8bc5cb
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815984"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958638"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
-Alapértelmezés szerint az Azure AD-kiépítési motor törli vagy letiltja a hatókörön kívüli felhasználókat. Azonban előfordulhat, hogy bizonyos forgatókönyvek, például az AD-felhasználó bejövő üzembe helyezése esetén ez a viselkedés nem a várt, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
+Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Azonban előfordulhat, hogy bizonyos forgatókönyvek, például az AD-felhasználó bejövő üzembe helyezése esetén ez a viselkedés nem a várt, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
 
 Ez az útmutató ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozását vezérlő ***SkipOutOfScopeDeletions*** beállításához. 
 * Ha a ***SkipOutOfScopeDeletions*** 0 (hamis) értékre van állítva, akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen
@@ -53,7 +53,7 @@ Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active 
 A Microsoft Graph Explorerben futtassa a következő GET lekérdezést a [servicePrincipalId] helyett az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert **servicePrincipalId** .
 
 ```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
+   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
    ![Feladatok lekérdezésének beolvasása](./media/skip-out-of-scope-deletions/skip-03.png)

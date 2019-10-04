@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 09/25/2019
+ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812601"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960232"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
 
@@ -48,10 +48,10 @@ A Azure AD Connect futtatásához használt három fiókon kívül a Azure AD Co
 
 - **SQL SA-fiók (nem kötelező)** : a AdSync-adatbázis létrehozásához használatos az SQL Server teljes verziójának használatakor.  Ez a SQL Server lehet helyi vagy távoli a Azure AD Connect telepítéshez.  Ez a fiók lehet a vállalati rendszergazda fiókja.  Az adatbázis üzembe helyezése mostantól az SQL-rendszergazda sávon kívül is elvégezhető, majd a Azure AD Connect rendszergazdája telepítheti az adatbázis-tulajdonosi jogosultságokkal.  További információ: [Install Azure ad Connect az SQL meghatalmazott rendszergazdai engedélyeivel](how-to-connect-install-sql-delegation.md)
 
-<<<<<<< HEAD
+
 >[!IMPORTANT]
 > A build 1.4. # # #. # alapján már nem támogatott vállalati rendszergazda vagy tartományi rendszergazdai fiók használata AD DS-összekötő fiókként.  Ha olyan fiókot próbál meg megadni, amely vállalati rendszergazda vagy tartományi rendszergazda a **meglévő fiók használatakor**, hibaüzenetet fog kapni.
-=======
+
 > [!NOTE]
 > A ESAE felügyeleti erdőben Azure AD Connect használt rendszergazdai fiókok felügyelete (más néven "vörös erdő") támogatott.
 > A dedikált felügyeleti erdők lehetővé teszik a szervezetek számára a rendszergazdai fiókok, munkaállomások és csoportok üzemeltetését olyan környezetben, amely erősebb biztonsági szabályozással rendelkezik, mint az éles környezet.
@@ -134,7 +134,7 @@ A következő összefoglalja az egyéni telepítővarázsló oldalait, a gyűjt�
 >[!IMPORTANT]
 >A ADSyncConfig. psm1 nevű új PowerShell-modult a Build **1.1.880.0** (2018 augusztusában kiadott verzió) vezette be, amely a parancsmagok gyűjteményét tartalmazza, amely segítséget nyújt az Azure AD DS Connector-fiókhoz tartozó helyes Active Directory engedélyek konfigurálásában.
 >
->További információ [: Azure ad Connect: AD DS-összekötő fiók engedélyének konfigurálása](how-to-connect-configure-ad-ds-connector-account.md)
+>További információ: [Azure AD-kapcsolat: AD DS-összekötő fiókjának konfigurálása engedély @ no__t-0
 
 A telepítés előtt a **címtár összekapcsolása** lapon megadott fióknak jelen kell lennie Active Directoryban.  Azure AD Connect verzió 1.1.524.0 és újabb verziója lehetővé teszi, hogy a Azure AD Connect varázsló létrehozza a Active Directoryhoz való kapcsolódáshoz használt **AD DS-összekötő fiókját** .  
 
@@ -249,9 +249,9 @@ Annak a kiszolgálónak a neve, amelyen a fiók használatban van, a Felhasznál
 
 A fiók olyan hosszú, összetett jelszóval jön létre, amely nem jár le. Olyan speciális szerepkörű címtár- **szinkronizálási fiókokat** kap, amelyek csak a címtár-szinkronizálási feladatok végrehajtásához szükségesek. Ez a speciális beépített szerepkör nem adható meg a Azure AD Connect varázslón kívül. A Azure Portal megjeleníti ezt a fiókot a szerepkör **felhasználójának**.
 
-Az Azure AD-ben legfeljebb 20 szinkronizálási szolgáltatásfiók szerepel. Az Azure ad-beli meglévő Azure AD-szolgáltatásfiókok listájának lekéréséhez futtassa a következő Azure AD PowerShell-parancsmagot:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Az Azure AD-ben legfeljebb 20 szinkronizálási szolgáltatásfiók szerepel. Az Azure ad-beli meglévő Azure AD-szolgáltatásfiókok listájának lekéréséhez futtassa a következő Azure AD PowerShell-parancsmagot: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a következő Azure AD PowerShell-parancsmagot:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+A nem használt Azure AD-szolgáltatásfiókok eltávolításához futtassa a következő Azure AD PowerShell-parancsmagot: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
 >A fenti PowerShell-parancsok használata előtt telepítenie kell a [Graph modulhoz tartozó Azure Active Directory PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) , és csatlakoznia kell az Azure ad-példányához a [AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) használatával

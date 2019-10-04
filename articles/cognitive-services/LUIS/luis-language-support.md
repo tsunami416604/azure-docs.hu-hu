@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316352"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949551"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -54,7 +54,7 @@ Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-
 
  - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
  - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
- - Tekintse meg az előre [elkészített tartományok hivatkozását](luis-reference-prebuilt-domains.md) , amely alapján az előre elkészített `zh-cn` tartományok a kulturális környezetekben támogatottak.
+ - A `zh-cn` kulturális környezet által támogatott előre összeépített tartományokkal kapcsolatos információkért tekintse meg az előre [elkészített tartományok referenciáját](luis-reference-prebuilt-domains.md) .
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Japán támogatja a jegyzeteket
@@ -73,7 +73,9 @@ Tekintse meg a beszédfelismerés [támogatott nyelvek](https://docs.microsoft.c
 Tekintse meg a Bing Spell Check [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) támogatott nyelvek és állapot listáját.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Ritka vagy külső szavak egy alkalmazásban
-Az a `en-us` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb angol szavak, beleértve a szleng felismerését. Az a `zh-cn` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb kínai karaktereket. Egy ritka kifejezése használatakor `en-us` karakter vagy `zh-cn`, és láthatja, hogy a LUIS úgy tűnik, nem tesz különbséget az adott szó vagy karakter lehet, adja hozzá az adott szó vagy a karakter egy [kifejezéslista funkció](luis-how-to-add-features.md). Például szavak kívül az alkalmazás –, hogy külső szavak--kulturális környezete kell adni egy kifejezéslista szolgáltatás. Ez a kifejezés a lista nem cserélhető, annak jelzésére, hogy a ritka szavak készletét képezi egy osztályt, amely a LUIS kell további ismeri fel, de azok nem szinonimák vagy cserélhető, egymással kell megjelölni.
+Az a `en-us` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb angol szavak, beleértve a szleng felismerését. Az a `zh-cn` kulturális környezet, LUIS megtanulja különbséget tenni a legtöbb kínai karaktereket. Egy ritka kifejezése használatakor `en-us` karakter vagy `zh-cn`, és láthatja, hogy a LUIS úgy tűnik, nem tesz különbséget az adott szó vagy karakter lehet, adja hozzá az adott szó vagy a karakter egy [kifejezéslista funkció](luis-how-to-add-features.md). Például szavak kívül az alkalmazás –, hogy külső szavak--kulturális környezete kell adni egy kifejezéslista szolgáltatás. 
+
+<!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>Hibrid nyelvek
 Hibrid nyelvek szó azoktól, például az angol és kínai két kulturális környezetek egyesítése. Ezeken a nyelveken nem támogatottak a LUIS, mivel az alkalmazás egyetlen kulturális környezetet alapul.
@@ -103,8 +105,8 @@ A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
 |Kulturális környezet|Version|Cél|
 |--|--|--|
-|német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, a rendszer a következőre `Ich fahre einen kranken wagen`vált:. A `kranken` és`wagen` a különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
-|német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
+|német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó @no__t – 0 értéket ad meg, a rendszer `Ich fahre einen kranken wagen` értékre vált. A `kranken` és a `wagen` jelölésének engedélyezése a különböző entitások egymástól függetlenül.|
+|német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha a felhasználó a `Ich fahre einen krankenwagen` értéket adja meg, akkor egyetlen token marad. Így a `krankenwagen` egyetlen entitásként van megjelölve. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Áttelepítés tokenizer-verziók között
 <!--

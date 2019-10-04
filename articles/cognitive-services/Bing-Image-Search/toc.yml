@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: Népszerű képek lekérése
       href: trending-images.md
-    - name: Lapozás a képek között
-      href: paging-images.md
+    - name: Keresési eredmények közötti lapozás
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Miniatűrök átméretezése és körülvágása
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

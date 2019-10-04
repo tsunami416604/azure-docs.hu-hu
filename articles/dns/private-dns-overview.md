@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774623"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959355"
 ---
 # <a name="what-is-azure-private-dns"></a>Mi az Azure Private DNS?
-
-> [!IMPORTANT]
-> Az Azure saját DNS jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A tartománynévrendszer vagy a DNS felelős a szolgáltatás nevének az IP-címére való fordításához (vagy feloldásához).  A Azure DNS a DNS-tartományok üzemeltetési szolgáltatása, amely névfeloldást biztosít a Microsoft Azure-infrastruktúra használatával. Az internetre irányuló DNS-tartományok támogatása mellett Azure DNS is támogatja a magánhálózati DNS-zónákat.
 
@@ -60,22 +55,14 @@ Azure DNS a következő képességeket biztosítja:
 
 * **A fordított DNS-keresés a virtuális hálózat hatókörén belül támogatott**. A privát zónákhoz rendelt virtuális hálózaton belüli magánhálózati IP-címek névkeresési DNS-címkeresés a gazdagép/rekord nevét és a zóna nevét tartalmazó teljes tartománynevet adja vissza utótagként.
 
-## <a name="known-issues"></a>Ismert problémák
-A következő elemek ismert hibákat és problémákat észleltek az előzetes kiadásban:
-* Ha egy magánhálózati DNS-zónához csatolt virtuális hálózatot töröl, nem törli a magánhálózati DNS-zónára mutató hivatkozásokat. A hivatkozás meghiúsul, ha a virtuális hálózatot ugyanazzal a névvel és erőforráscsoporthoz hozza létre, és megpróbálja újra csatolni a saját DNS-zónához. A probléma megkerüléséhez hozzon létre egy másik erőforráscsoporthoz tartozó virtuális hálózatot, vagy adjon meg egy másik nevet ugyanabban az erőforráscsoporthoz.
-* Ha egy virtuális hálózatot másik erőforráscsoporthoz vagy előfizetésbe helyez át, a nem frissíti a magánhálózati DNS-zónára mutató hivatkozásokat. Az áthelyezett virtuális hálózat névfeloldása továbbra is működik, azonban a virtuális hálózat régi ARM-azonosítóit látja, amikor megtekinti a magánhálózati DNS-zóna virtuális hálózati kapcsolatait.
-* Jelenleg az Egyesült Arab Emírségek északi régiójában, az Egyesült Királyság nyugati régiójában, Dél-Afrikában, Dél-Afrikában, Észak-Kanadában, Kelet-Kanada, Dél-Afrika, és előfordulhat, hogy időszakos DNS-feloldási problémák merülhetnek fel. 
-
-
 ## <a name="other-considerations"></a>Egyéb szempontok
 
 A Azure DNS a következő korlátozásokkal rendelkezik:
 
 * Egy adott virtuális hálózat csak egy privát zónához kapcsolható, ha engedélyezve van a virtuális gépek DNS-rekordjainak automatikus regisztrálása. Azonban több virtuális hálózatot is csatolhat egyetlen DNS-zónához.
 * A fordított DNS csak a társított virtuális hálózat magánhálózati IP-címére működik
-* A csatolt virtuális hálózat magánhálózati IP-címéhez fordított DNS a "internal.cloudapp.net" értéket adja vissza a virtuális gép alapértelmezett utótagjának. Az automatikus regisztrációt engedélyező privát zónához kapcsolt virtuális hálózatok esetében a magánhálózati IP-címek fordított DNS-je 2 teljes tartománynevet ad vissza, egyet az alapértelmezett utótag *Internal.cloudapp.net* , a másik pedig a privát zóna utótagját.
-* A feltételes továbbítás jelenleg nem támogatott natív módon. Az Azure és a helyszíni hálózatok közötti megoldás engedélyezéséhez lásd [a virtuális gépek és a szerepkör](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)-példányok névfeloldását ismertető témakört.
-
+* A csatolt virtuális hálózat magánhálózati IP-címei fordított DNS-je a virtuális gép alapértelmezett utótagját adja vissza a *Internal.cloudapp.net* . Az automatikus regisztrációt engedélyező privát zónához kapcsolt virtuális hálózatok esetében a magánhálózati IP-címek fordított DNS-je két teljes tartománynevet ad vissza: egyet a *Internal.cloudapp.net* utótaggal, a másik pedig a privát zóna utótagját.
+* A feltételes továbbítás jelenleg nem támogatott natív módon. Az Azure és a helyszíni hálózatok közötti megoldás engedélyezése. Lásd: [virtuális gépek és szerepkör-példányok](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) névfeloldása
  
 ## <a name="pricing"></a>Díjszabás
 
@@ -85,7 +72,7 @@ A díjszabással kapcsolatos információkért tekintse meg a [Azure DNS díjsza
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNSban [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 
-* További információ a privát [](./private-dns-scenarios.md) zónák Azure DNS-beli privát zónákkal való használatával kapcsolatban.
+* További információ [a privát zónák](./private-dns-scenarios.md) Azure DNS-beli privát zónákkal való használatával kapcsolatban.
 
 * A Azure DNS privát zónákkal kapcsolatos gyakori kérdések és válaszok, beleértve a bizonyos típusú műveletek várható viselkedését, [saját DNS a gyakori](./dns-faq-private.md)kérdések című témakört.
 

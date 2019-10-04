@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: b4fd931142f8a3daf11b0540241323453e25ea4f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839061"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950392"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -295,11 +295,12 @@ Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-ü
 
 Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. 
 
-#### <a name="javascriptpython"></a>JavaScript/Python
+
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-#### <a name="c-class-library"></a>C#osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. Futtassa a következő [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a terminál ablakban a tárolási bővítmény csomagjának a projekthez való hozzáadásához.
 
@@ -310,35 +311,41 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 > [!TIP]
 > A Visual Studio használata esetén a NuGet csomagkezelő használatával is hozzáadhatja ezt a csomagot.
 
+---
+
 Most hozzáadhat egy tárolási kimeneti kötést a projekthez.
 
 ### <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
 A functions esetében minden típusú kötéshez `direction`, `type` és egy egyedi `name` szükséges, amely a function. JSON fájlban adható meg. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
 
-####  <a name="javascriptpython"></a>JavaScript/Python
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-#### <a name="c-class-library"></a>C#osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+---
 
 ### <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
 A kötés meghatározása után a kötés `name` értékkel férhet hozzá a függvény aláírása attribútumként. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-#### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-#### <a name="c-class-library"></a>C#osztály könyvtára
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+---
 
 ### <a name="update-the-hosted-container"></a>Az üzemeltetett tároló frissítése
 

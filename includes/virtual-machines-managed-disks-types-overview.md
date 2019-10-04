@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997632"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955864"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen típusú lemezek érhetők el az Azure-ban?
 
@@ -27,7 +27,7 @@ Az alábbi táblázat az ultra Disks, a prémium szintű SSD-meghajtók (SSD), a
 |---------|---------|---------|---------|---------|
 |Lemez típusa   |SSD   |SSD   |SSD   |HDD   |
 |Forgatókönyv   |I/o-igényes számítási feladatok, mint például a SAP HANA, a legfelső szintű adatbázisok (például SQL, Oracle) és az egyéb tranzakció-nagy számítási feladatok.   |Éles, teljesítményérzékeny számítási feladatok   |Webkiszolgálók, enyhén használt Nagyvállalati alkalmazások és fejlesztés/tesztelés   |Biztonsági mentés, nem kritikus, ritka hozzáférés   |
-|Lemezméret   |65 536 gibibájtnak (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
+|Maximális lemez mérete   |65 536 gibibájtnak (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
 |Maximális átviteli sebesség   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
 |Maximális IOPS-érték   |160 000    |20,000   |6,000   |2,000   |
 

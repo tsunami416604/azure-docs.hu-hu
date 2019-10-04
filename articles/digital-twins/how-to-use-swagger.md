@@ -1,26 +1,26 @@
 ---
 title: Ismerje meg, hogyan használhatja az Azure digitális Twins-referenciát | Microsoft Docs
 description: Az Azure Digital Twins hencegő dokumentációjának használatának ismertetése.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.author: v-adgera
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1344b86b9fa922dc22870dda495ff367a511b8ca
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640263"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958868"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure digitális ikrek – dokumentáció
 
 Minden egyes kiépített Azure-beli digitális Twins-példány magában foglalja a saját automatikusan generált hencegő dokumentációját.
 
-[](https://swagger.io/)A hencegés vagy a [OpenAPI](https://www.openapis.org/)összetett API-információkat egyesít egy interaktív és nyelv – agnosztikus hivatkozási erőforrásba. A hencegés kritikus fontosságú segédanyagot biztosít a JSON-adattartalom, a HTTP-metódusok és az API-k elleni műveletek végrehajtásához használható végpontok számára.
+A [hencegés](https://swagger.io/)vagy a [OpenAPI](https://www.openapis.org/)összetett API-információkat egyesít egy interaktív és nyelv – agnosztikus hivatkozási erőforrásba. A hencegés kritikus fontosságú segédanyagot biztosít a JSON-adattartalom, a HTTP-metódusok és az API-k elleni műveletek végrehajtásához használható végpontok számára.
 
 ## <a name="swagger-summary"></a>Hencegés összegzése
 
@@ -42,15 +42,15 @@ Az automatikusan generált hencegő anyagminta gyors áttekintést nyújt a font
 
 A tömör összefoglalás leírja az API-t.
 
-[![Legfelső szintű](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[@no__t – 1Swagger felül](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 A felügyeleti API-objektumok modelljei is fel vannak sorolva.
 
-[![Hencegő modellek](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[@no__t – 1Swagger modellek](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 A főbb attribútumok részletesebb összefoglalásához kiválaszthatja az egyes felsorolt objektummodell-modelleket.
 
-[![Hencegő modell](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[@no__t – 1Swagger modell](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 A létrehozott hencegő objektumok modelljei kényelmesek az összes elérhető Azure digitális Twins [-objektum és API](./concepts-objectmodel-spatialgraph.md)megjelenítéséhez. A fejlesztők használhatják ezt az erőforrást, amikor az Azure Digital Twins megoldásait építenek.
 
@@ -64,7 +64,7 @@ A felsorolt végpontok a kért információkat is tartalmazzák, például a kö
 * A kötelező paraméter adattípusai.
 * Az erőforrás eléréséhez használt HTTP-metódus.
 
-[![Hencegő végpontok](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[@no__t – 1Swagger-végpontok](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Ha részletesebb áttekintést szeretne látni, válassza ki az egyes erőforrásokat.
 
@@ -72,13 +72,13 @@ Ha részletesebb áttekintést szeretne látni, válassza ki az egyes erőforrá
 
 Az egyik hatékony funkció, amely lehetővé teszi az API-végpontok közvetlen tesztelését a dokumentációs felhasználói felületen.
 
-Egy adott végpont kiválasztása után kipróbálhatja a **kipróbálást**.
+Egy adott végpont kiválasztása után **kipróbálhatja a kipróbálást**.
 
-[![Hencegés kipróbálása](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[@no__t – 1Swagger kipróbálása](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Bontsa ki a szakaszt, hogy minden szükséges és választható paraméterhez bevigye a beviteli mezőket. Adja meg a helyes értékeket, majd kattintson a **végrehajtás**gombra.
 
-[![Kipróbált hencegés](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[@no__t – 1Swagger próbált](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 A teszt végrehajtása után ellenőrizheti a válaszokat.
 
@@ -86,7 +86,7 @@ A teszt végrehajtása után ellenőrizheti a válaszokat.
 
 A felsorolt végpontok a válasz törzsének adatait is tartalmazzák a fejlesztés és a tesztek ellenőrzéséhez. Ilyenek például a sikeres HTTP-kérésekhez használni kívánt állapotkódok és JSON-kódok.
 
-[![Hencegő válasz](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[@no__t – 1Swagger válasz](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 A példák olyan hibakódokat is tartalmaznak, amelyek segítenek a hibakeresésben vagy a sikertelen tesztek tökéletesítésében.
 
@@ -112,15 +112,15 @@ A Azure Active Directory regisztrációjának befejezése után:
 
 1. Kattintson az **Engedélyezés** gombra a hencegő oldalon.
 
-    [![Válassza a hencegés engedélyezése gombot](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
+    [@no__t – 1 – a hencegés engedélyezése gomb](media/how-to-use-swagger/swagger-select-authorize-btn.png)](media/how-to-use-swagger/swagger-select-authorize-btn.png#lightbox)
 
 1. Illessze be az alkalmazás AZONOSÍTÓját a **client_id** mezőbe.
 
-    [![Hencegő client_id mező](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
+    [@no__t – 1Swagger client_id mező](media/how-to-use-swagger/swagger-auth-form.png)](media/how-to-use-swagger/swagger-auth-form.png#lightbox)
 
 1. Ezt követően a rendszer átirányítja a következő sikeres modális állapotba.
 
-    [![Hencegő átirányítási modális](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
+    [@no__t – 1Swagger átirányítási modális](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
 Ha többet szeretne megtudni a OAuth 2,0 által védett, interaktívan tesztelő kérelmekről, tekintse meg a [hivatalos dokumentációt](https://swagger.io/docs/specification/authentication/oauth2/).
 

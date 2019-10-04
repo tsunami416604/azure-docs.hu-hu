@@ -1,6 +1,6 @@
 ---
-title: Az Azure DNS – Azure CLI-vel DNS-zónák kezelése |} A Microsoft Docs
-description: DNS-zónák az Azure CLI használatával kezelheti. Ez a cikk bemutatja, hogyan frissítése, törlése és az Azure DNS DNS-zónák létrehozását.
+title: DNS-zónák kezelése a Azure DNSban – Azure CLI | Microsoft Docs
+description: A DNS-zónák az Azure CLI használatával kezelhetők. Ez a cikk bemutatja, hogyan frissíthet, törölhet és hozhat létre DNS-zónákat Azure DNS.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: df741b34e1268c547723af87401760197d395780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14d0512a10329f36872d111825261ebc5ef71976
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293829"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959387"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Hogyan kezelheti a DNS-zónák az Azure DNS az Azure CLI használatával
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Azure DNS DNS-zónák kezelése az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](dns-operations-dnszones-portal.md)
@@ -28,9 +28,9 @@ ms.locfileid: "61293829"
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
-Ez az útmutató bemutatja, hogyan kezelheti a DNS-zónák használatával a platformfüggetlen Azure parancssori felület, amely Windows, Mac és Linux rendszereken érhető el. Emellett a DNS-zónák használata kezelheti [Azure PowerShell-lel](dns-operations-dnszones.md) vagy az Azure Portalon.
+Ez az útmutató bemutatja, hogyan kezelheti a DNS-zónákat a platformfüggetlen Azure CLI használatával, amely Windows, Mac és Linux rendszereken is elérhető. A DNS-zónákat [Azure PowerShell](dns-operations-dnszones.md) vagy a Azure Portal használatával is kezelheti.
 
-Ez az útmutató kifejezetten a nyilvános DNS-zónák foglalkozik. Kezelheti az Azure DNS saját zónák az Azure parancssori felület használatával kapcsolatos információkért lásd: [Ismerkedés az Azure CLI-vel az Azure DNS Private Zones](private-dns-getstarted-cli.md).
+Ez az útmutató kifejezetten a nyilvános DNS-zónákat tárgyalja. További információ az Azure CLI Azure DNS-beli privát zónák kezeléséhez való használatáról: Ismerkedés [a Azure DNS Private Zones az Azure CLI használatával](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -68,8 +68,8 @@ Válassza ki, hogy melyik Azure előfizetést fogja használni.
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>Nem kötelező: Az Azure DNS saját zónák funkció (nyilvános előzetes verzió) telepítése és használata
-Az Azure DNS saját zóna funkció nyilvános előzetes verziója az Azure CLI bővítményeként jelent meg. A „dns” Azure CLI-bővítmény telepítése 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>Nem kötelező: Azure DNS Private Zones szolgáltatás telepítése/használata
+Az Azure DNS privát zóna funkció az Azure CLI-n keresztül érhető el egy bővítménnyel. A „dns” Azure CLI-bővítmény telepítése 
 ```
 az extension add --name dns
 ``` 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Segítség kérése
 
-Az összes Azure CLI-parancsok az Azure DNS-vonatkozó kezdődnie `az network dns`. Súgó érhető el minden parancs használatával a `--help` lehetőséget (krátká forma `-h`).  Példa:
+A Azure DNShoz kapcsolódó összes Azure CLI-parancs `az network dns` értékkel kezdődik. A súgó minden parancshoz elérhető a `--help` kapcsoló használatával (rövid űrlap `-h`).  Példa:
 
 ```azurecli
 az network dns --help
@@ -98,25 +98,25 @@ az network dns zone create --help
 
 A DNS-zóna az `az network dns zone create` parancs használatával hozható létre. További segítségért lásd: `az network dns zone create -h`.
 
-A következő példában létrehozunk egy DNS-zónát *contoso.com* az erőforráscsoport neve *MyResourceGroup*:
+A következő példa egy *contoso.com* nevű DNS-zónát hoz létre az *MyResourceGroup*nevű erőforráscsoporthoz:
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com
 ```
 
-### <a name="to-create-a-dns-zone-with-tags"></a>A címkékkel rendelkező DNS-zóna létrehozása
+### <a name="to-create-a-dns-zone-with-tags"></a>DNS-zóna létrehozása címkékkel
 
-Az alábbi példa bemutatja, hogyan hozhat létre két DNS-zóna [Azure Resource Manager-címkék](dns-zones-records.md#tags), *project = demo* és *env = test*, használatával a `--tags` paraméter () rövid alak `-t`):
+Az alábbi példa bemutatja, hogyan hozhat létre egy DNS-zónát két [Azure Resource Manager címkével](dns-zones-records.md#tags), *projekt = bemutatóval* és *env = teszttel*a `--tags` paraméter használatával (rövid űrlap `-t`):
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com --tags "project=demo" "env=test"
 ```
 
-## <a name="get-a-dns-zone"></a>DNS-zóna lekérése
+## <a name="get-a-dns-zone"></a>DNS-zóna beszerzése
 
-DNS-zóna lekéréséhez használja `az network dns zone show`. További segítségért lásd: `az network dns zone show --help`.
+DNS-zóna lekéréséhez használja a következőt: `az network dns zone show`. További segítségért lásd: `az network dns zone show --help`.
 
-Az alábbi példa adja vissza a DNS-zóna *contoso.com* és a hozzá tartozó adatokat erőforráscsoportból *MyResourceGroup*. 
+A következő példa a DNS-zóna *contoso.com* és a hozzá tartozó, az erőforráscsoport *MyResourceGroup*tartozó adatait adja vissza. 
 
 ```azurecli
 az network dns zone show --resource-group myresourcegroup --name contoso.com
@@ -167,9 +167,9 @@ az network dns zone list
 
 A DNS-zóna erőforrásai az `az network dns zone update` paranccsal módosíthatók. További segítségért lásd: `az network dns zone update --help`.
 
-Ez a parancs nem frissíti a zóna egy DNS-rekordhalmazát sem (lásd: [DNS-rekordok kezelése](dns-operations-recordsets-cli.md)). Csak a zónaerőforrás tulajdonságainak frissítésére használatos. Ezek a tulajdonságok akkor jelenleg csak a [Azure Resource Manager "címkék"](dns-zones-records.md#tags) a zóna erőforrás.
+Ez a parancs nem frissíti a zóna egy DNS-rekordhalmazát sem (lásd: [DNS-rekordok kezelése](dns-operations-recordsets-cli.md)). Csak a zónaerőforrás tulajdonságainak frissítésére használatos. Ezek a tulajdonságok jelenleg a zóna-erőforráshoz tartozó ["címkék" Azure Resource Manager](dns-zones-records.md#tags) korlátozódnak.
 
-Az alábbi példa bemutatja, hogyan frissítheti a a címkéket a DNS-zóna. A meglévő címkéket helyébe a megadott érték.
+Az alábbi példa bemutatja, hogyan frissítheti a címkéket egy DNS-zónában. A meglévő címkéket a megadott érték váltja fel.
 
 ```azurecli
 az network dns zone update --resource-group myresourcegroup --name contoso.com --set tags.team=support
@@ -186,7 +186,7 @@ A DNS-zónák törléséhez használja az `az network dns zone delete` parancsot
 
 Ez a parancs megerősítést kér. A választható `--yes` kapcsoló kiiktatja a megerősítés kérését.
 
-Az alábbi példa bemutatja, hogyan lehet törölni a zóna *contoso.com* erőforráscsoportból *MyResourceGroup*.
+Az alábbi példa bemutatja, hogyan törölheti a zóna *contoso.com* az erőforráscsoport *MyResourceGroup*.
 
 ```azurecli
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
@@ -194,7 +194,7 @@ az network dns zone delete --resource-group myresourcegroup --name contoso.com
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan [rekordhalmazok és -rekordok kezelése](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
+Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
 
-Ismerje meg, hogyan [tartomány delegálása az Azure DNS](dns-domain-delegation.md).
+Ismerje meg, hogyan [delegálhatja a tartományt Azure DNSre](dns-domain-delegation.md).
 

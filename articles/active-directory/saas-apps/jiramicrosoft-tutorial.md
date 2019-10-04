@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d69d5ffcae77e7144f97cb423d5bee93cb88fb27
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 713b43f720e3bccae3b9c6457a3317427fb3fc1a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121587"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960060"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -60,8 +60,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="supported-versions-of-jira"></a>A JIRA támogatott verziói
 
-* JIRA Core és szoftver: 6,4 – 8,0
-* JIRA Service Desk 3.0.0 – 3.5.0
+* JIRA Core és szoftver: 6,4 – 8.2.4
+* JIRA Service Desk 3.0.0 – 4.2.1
 * A JIRA a 5,2-es frissítést is támogatja. További részletekért kattintson [Microsoft Azure Active Directory egyszeri bejelentkezés a JIRA 5,2](jira52microsoft-tutorial.md)
 
 > [!NOTE]
@@ -107,13 +107,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<domain:port>/plugins/servlet/saml/auth`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<domain:port>/`
+    b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<domain:port>/`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<domain:port>/plugins/servlet/saml/auth`
+    c. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
@@ -130,7 +130,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -181,11 +181,11 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 5. Miután telepítette a beépülő modult, megjelenik a felhasználói bővítmények **kezelése** szakasz a **felhasználó által telepített** bővítmények szakaszában. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon13.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Hajtsa végre a következő lépéseket a konfiguráció lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon53.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy az alkalmazáshoz csak egy tanúsítvány van hozzárendelve, így nincs hiba a metaadatok feloldásakor. Ha több tanúsítvány is van, a metaadatok feloldásakor a rendszergazda hibaüzenetet kap.
@@ -195,6 +195,8 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
     1. Másolja ki az **azonosítót, a válasz URL-címét és a bejelentkezési URL-** értékeket, majd illessze be őket az **azonosító, a válasz URL** -cím mezőbe, és JELENTKEZZen be az URL-címek szövegmezőbe az **SAML SSO JIRA a Microsoft tartomány és URL** -címek szakaszban Azure Portal
 
     1. A **bejelentkezési gomb neve** mezőbe írja be annak a gombnak a nevét, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
+    
+    1. A **bejelentkezési gomb leírása** mezőbe írja be annak a gombnak a leírását, amelyet a szervezet a felhasználók számára látni kíván a bejelentkezési képernyőn.
 
     1. Az **SAML felhasználói azonosító helyein** válassza **a felhasználói azonosító elemet a tulajdonos utasítás NameIdentifier elemében** , vagy a **felhasználói azonosító egy attribútum elemben**.  Ennek az AZONOSÍTÓnak a JIRA felhasználói AZONOSÍTÓnak kell lennie. Ha a felhasználói azonosító nem egyezik, a rendszer nem engedélyezi a felhasználók számára a bejelentkezést.
 
@@ -212,7 +214,7 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
     1. Ha csak az Azure AD-beli hitelesítő adatokkal szeretne bejelentkezni, engedélyezze az **Azure-bejelentkezés kényszerítése** jelölőnégyzetet.
     
        > [!Note]
-       > Ha engedélyezni szeretné az alapértelmezett bejelentkezési űrlapot a rendszergazdai bejelentkezéshez a bejelentkezési oldalon, akkor adja hozzá a lekérdezési paramétert a böngésző URL-címéhez.
+       >Ha engedélyezni szeretné az alapértelmezett bejelentkezési űrlapot a rendszergazdai bejelentkezéshez a bejelentkezési oldalon, akkor adja hozzá a lekérdezési paramétert a böngésző URL-címéhez.
        > `https://<domain:port>/login.action?force_azure_login=false`
 
     1. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
@@ -244,11 +246,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a JI
 
     ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user4.png) 
 
-    a. Az **e-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló B.simon@contoso.come-mail címet.
+    a. Az **e-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például B.simon@contoso.com.
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például: B. Simon.
 
-    c. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló B.simon@contoso.come-mail címet.
+    c. A **Felhasználónév** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: B.simon@contoso.com.
 
     d. A **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
 

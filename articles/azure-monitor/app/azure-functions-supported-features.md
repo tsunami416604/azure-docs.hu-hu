@@ -1,9 +1,9 @@
 ---
-title: Az Azure Application Insights – az Azure Functions támogatott funkciók |} A Microsoft Docs
-description: Az Application Insights az Azure Functions támogatott szolgáltatások
+title: Azure Application Insights – Azure Functions támogatott funkciók | Microsoft Docs
+description: A Azure Functions által támogatott szolgáltatások Application Insights
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: ''
 ms.service: application-insights
 ms.workload: TBD
@@ -12,63 +12,63 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: 0199d8f0c4a76a10fffcab7cf2819643d0ac2d68
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075343"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959921"
 ---
-# <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights az Azure Functions támogatott szolgáltatások
+# <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
 
-Azure Functions-ajánlatok [beépített integráció](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) az Application insights szolgáltatással, amely a ILogger felületen keresztül érhető el. Az alábbi, a jelenleg támogatott funkciók listáját. Tekintse át az Azure Functions útmutatója [bevezetés](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
+A Azure Functions [beépített integrációt](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) biztosít Application Insightsekkel, amely a ILogger felületen keresztül érhető el. Alább látható a jelenleg támogatott funkciók listája. Tekintse át a Azure Functions útmutatót az [első lépésekhez](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
 
 ## <a name="supported-features"></a>Támogatott funkciók
 
-| Azure Functions                       | 1\. verzió                | V2 (az Ignite 2018.)  | 
+| Azure Functions                       | 1-es verzió                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
-| **Automatikus gyűjteménye**        |                 |                   |               
-| &bull; Kérelmek                     | Igen             | Igen               | 
-| &bull; Kivételek                   | Igen             | Igen               | 
-| &bull; Teljesítményszámlálók         | Igen             | Igen               |
-| &bull; Függőségek                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Szolgáltatásbusz|                 | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash; az eventHub  |                 | Igen               | 
+| **Automatikus gyűjtemény**        |                 |                   |               
+| @no__t – 0 kérelem                     | Igen             | Igen               | 
+| @no__t – 0 kivétel                   | Igen             | Igen               | 
+| @no__t – 0 teljesítményszámlálók         | Igen             | Igen               |
+| @no__t – 0 függőség                   |                   |                   |               
+| &nbsp; @ NO__T-1 @ NO__T-2 @ NO__T-3 HTTP      |                 | Igen               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Igen               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Igen               | 
 | &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
-| **Támogatott szolgáltatások**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash; Biztonságos vezérlőcsatorna|                 | Igen               | 
-| &bull; Mintavétel                     | Igen             | Igen               | 
-| &bull; A szívverések                   |                 | Igen               | 
+| **Támogatott funkciók**                |                   |                   |               
+| @no__t – 0 QuickPulse/LiveMetrics       | Igen             | Igen               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 biztonságos vezérlési csatorna|                 | Igen               | 
+| @no__t – 0 mintavételezés                     | Igen             | Igen               | 
+| @no__t – 0 szívverés                   |                 | Igen               | 
 | | | | 
-| **Korreláció**                       |                   |                   |               
-| &bull; Szolgáltatásbusz                     |                   | Igen               | 
-| &bull; az eventHub                       |                   | Igen               | 
+| **Korrelációs**                       |                   |                   |               
+| @no__t – 0 ServiceBus                     |                   | Igen               | 
+| @no__t – 0 EventHub                       |                   | Igen               | 
 | | | | 
 | **Konfigurálható**                      |                   |                   |           
-| &bull;Teljes mértékben konfigurálhatók.<br/>Lásd: [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) útmutatást.<br/>Lásd: [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) összes beállításának.               |                   | Igen                   | 
+| @no__t – a 0Fully konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 
-A teljesítményszámlálók automatikus gyűjtését csak a Windows-gépek működik.
+A teljesítményszámlálók automatikus gyűjtése csak a Windows rendszerű gépeken működik.
 
 
-## <a name="live-metrics--secure-control-channel"></a>Élő metrikák és biztonságos vezérlőcsatorna
+## <a name="live-metrics--secure-control-channel"></a>Élő metrikák & biztonságos vezérlési csatornán
 
-A megadott egyéni szűrők feltételek lesznek visszaküldve az élő mérőszámok az Application Insights SDK összetevőt. A szűrők potenciálisan bizalmas adatokat például customerIDs tartalmazhatnak. Hogy a csatorna biztonságos titkos API-kulccsal. Lásd: [a vezérlőcsatorna biztonságos](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) útmutatást.
+Az egyéni szűrők megadott feltételeit a rendszer visszaküldi a Application Insights SDK élő metrikák összetevőjére. A szűrők potenciálisan bizalmas adatokat is tartalmazhatnak, például customerIDs. A csatornát titkos API-kulccsal is biztonságossá teheti. További útmutatásért lásd [a vezérlési csatorna biztonságossá](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) tételét ismertető témakört.
 
 ## <a name="sampling"></a>Mintavételezés
 
-Az Azure Functions lehetővé teszi a mintavétel a konfigurálásukban alapértelmezés szerint. További információkért lásd: [mintavétel konfigurálása](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
+A Azure Functions alapértelmezés szerint engedélyezi a mintavételezést a konfigurációban. További információ: a [mintavételezés konfigurálása](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
 
-A projekt függőséget vesz fel az Application Insights SDK manuális telemetriai követési tennie, ha rendellenes viselkedés tapasztalhat, ha a mintavételi konfiguráció eltér attól az a funkciók mintavételi konfiguráció. 
+Ha a projektben a manuális telemetria követése függ a Application Insights SDK-tól, akkor furcsa viselkedést tapasztalhat, ha a mintavételezési konfiguráció eltér a függvények mintavételezési konfigurációjával. 
 
-Funkciókként ugyanaz a konfiguráció használatát javasoljuk. A **funkciók v2**, kérheti, hogy ugyanazt a konfigurációt a konstruktorban függőségi beszúrást használatával:
+Azt javasoljuk, hogy ugyanazt a konfigurációt használja, mint a függvények. A **functions v2**használatával ugyanazt a konfigurációt veheti igénybe, ha függőségi befecskendezést használ a konstruktorban:
 
 ```csharp
 using Microsoft.ApplicationInsights;

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969650"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950366"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek az AK-ban lévő alk
 
 Az alkalmazásokhoz való hozzáférés engedélyezéséhez, illetve az alkalmazás-összetevők közötti kommunikációhoz a Kubernetes egy absztrakt réteget biztosít a virtuális hálózat számára. A Kubernetes-csomópontok egy virtuális hálózathoz csatlakoznak, és a hüvelyek számára biztosítanak bejövő és kimenő kapcsolatokat. A *Kube-proxy* összetevő minden csomóponton fut, hogy megadja ezeket a hálózati szolgáltatásokat.
 
-A Kubernetes-ben a *szolgáltatások* logikailag csoportosítják a hüvelyeket, amelyek lehetővé teszik a közvetlen hozzáférést egy IP-cím vagy DNS-név és egy adott porton keresztül. A forgalom a terheléselosztó használatával is terjeszthető. Az alkalmazások forgalmának összetettebb útválasztási lehetőségeit a *bejövő vezérlőkkel*is megvalósíthatja. A hüvelyek hálózati forgalmának biztonsága és szűrése Kubernetes *hálózati házirendekkel* lehetséges (előzetes verzióban, AK-ban).
+A Kubernetes-ben a *szolgáltatások* logikailag csoportosítják a hüvelyeket, amelyek lehetővé teszik a közvetlen hozzáférést egy IP-cím vagy DNS-név és egy adott porton keresztül. A forgalom *a terheléselosztó használatával is terjeszthető.* Az alkalmazások forgalmának összetettebb útválasztási lehetőségeit a *bejövő vezérlőkkel*is megvalósíthatja. A hüvelyek hálózati forgalmának biztonsága és szűrése Kubernetes *hálózati házirendekkel*lehetséges.
 
 Az Azure platform emellett segít leegyszerűsíteni az AK-fürtök virtuális hálózatkezelését. Kubernetes terheléselosztó létrehozásakor létrejön és konfigurálva lesz az alapul szolgáló Azure Load Balancer erőforrás. Amikor hálózati portokat nyit meg a hüvelyekhez, a megfelelő Azure hálózati biztonsági csoportra vonatkozó szabályokat konfigurálja a rendszer. A HTTP-alkalmazások útválasztásához az Azure a *külső DNS-* t is konfigurálhatja, mivel az új bejövő útvonalak vannak konfigurálva.
 
@@ -49,7 +49,7 @@ Az alkalmazások számítási feladatainak hálózati konfigurációjának leegy
 
     ![Egy AK-fürtön Load Balancer forgalom áramlását bemutató diagram][aks-loadbalancer]
 
-    A bejövő forgalom további vezérléséhez és útválasztásához Ehelyett használjon bejövő vezérlőt. [](#ingress-controllers)
+    A bejövő forgalom további vezérléséhez és útválasztásához Ehelyett használjon bejövő [vezérlőt](#ingress-controllers).
 
 - **ExternalName** – egy adott DNS-bejegyzést hoz létre az alkalmazások egyszerűbb eléréséhez.
 
@@ -70,7 +70,7 @@ Az *kubenet* hálózatkezelési beállítás az az alapértelmezett konfiguráci
 
 A csomópontok a [kubenet][kubenet] Kubernetes beépülő modult használják. Lehetővé teheti, hogy az Azure platform létrehozza és konfigurálja a virtuális hálózatokat, vagy dönthet úgy, hogy egy meglévő virtuális hálózati alhálózatra telepíti az AK-fürtöt. Megint csak a csomópontok kapnak egy irányítható IP-címet, és a hüvelyek a NAT használatával kommunikálnak az AK-fürtön kívüli más erőforrásokkal. Ez a megközelítés nagy mértékben csökkenti azon IP-címek számát, amelyeket a hüvelyek számára a hálózati térben le kell foglalni.
 
-További információ: [kubenet hálózatkezelés konfigurálása AK][aks-configure-kubenet-networking]-fürthöz.
+További információ: [kubenet hálózatkezelés konfigurálása AK-fürthöz][aks-configure-kubenet-networking].
 
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI (speciális) hálózatkezelés
 
@@ -80,7 +80,7 @@ A csomópontok az [Azure Container Network Interface (CNI)][cni-networking] Kube
 
 ![Diagram, amely két csomópontot mutat be egyetlen Azure-VNet csatlakozó hidakkal][advanced-networking-diagram]
 
-További információ: az [Azure CNI konfigurálása az AK][aks-configure-advanced-networking]-fürtökhöz.
+További információ: az [Azure CNI konfigurálása az AK-fürtökhöz][aks-configure-advanced-networking].
 
 ### <a name="compare-network-models"></a>Hálózati modellek összehasonlítása
 
@@ -132,7 +132,7 @@ Az AK-ban létrehozhat egy bejövő erőforrásokat, például NGINX-et, vagy ha
 
 A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-kapcsolaton keresztül elért nagyméretű webalkalmazások esetében a TLS-megszakítást a bejövő erőforrások nem az alkalmazáson belül, hanem a bejövő erőforrással is tudják kezelni. A TLS-hitelesítés automatikus létrehozásához és konfigurálásához beállíthatja, hogy a bejövő erőforrások olyan szolgáltatók használatára legyenek használhatók, mint például a titkosítás. Az NGINX beáramlási vezérlőnek a titkosítással való konfigurálásával kapcsolatos további információkért lásd: [bejövő és TLS][aks-ingress-tls].
 
-A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürt egyik tárolójába irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrásának IP-címe nem lesz elérhető a cél tárolóban. Ha engedélyezi az *ügyfél forrás IP-* címének megőrzését, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja az SSL-áteresztőt. Az ügyfél-forrás IP-megőrzés és az SSL-továbbítás más szolgáltatásokkal is használható, például a *terheléselosztó* típussal.
+A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürt egyik tárolójába irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrásának IP-címe nem lesz elérhető a cél tárolóban. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja az SSL-áteresztőt. Az ügyfél-forrás IP-megőrzés és az SSL-továbbítás más szolgáltatásokkal is használható, például a *terheléselosztó* típussal.
 
 ## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 

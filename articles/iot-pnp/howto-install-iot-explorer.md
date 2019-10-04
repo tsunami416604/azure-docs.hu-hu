@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4e23a440f46b52633a88d0212e08c7b584f61a38
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f59e449589c7f3027dc8a9daf9d8d12f04831dd7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932478"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960569"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése és használata
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következőket:
 Az Azure IoT Explorer eszköz használatához a következőkre lesz szüksége:
 
 - Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [egy IoT hub létrehozását az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT Explorer eszköz futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- Az IoT hub-ban regisztrált eszköz. Egy eszköz regisztrálásához használja az alábbi Azure CLI-parancsot. Ügyeljen rá, hogy a `{YourIoTHubName}` és `{YourDeviceID}` a helyőrzőket cserélje le az értékekre:
+- Az IoT hub-ban regisztrált eszköz. Egy eszköz regisztrálásához használja az alábbi Azure CLI-parancsot. Ügyeljen arra, hogy a `{YourIoTHubName}` és a `{YourDeviceID}` helyőrzőt cserélje le az értékekre:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -65,29 +65,27 @@ A forrás prioritásának módosítása:
 
 A modell definíciós forrásainak egyikét áthúzással áthelyezheti egy másik rangsorba a listában. Ha ütközés lép fel, a magasabb prioritású definíciós források felülbírálják az alacsonyabb rangsorú forrásokat.
 
-### <a name="overview-page"></a>Áttekintő lap
+### <a name="view-devices"></a>Eszközök megtekintése
 
-#### <a name="device-overview"></a>Eszközök áttekintése
+Miután az eszköz csatlakozik az IoT hubhoz, megjeleníti az **eszközök** listája oldalt, amely felsorolja az IoT hub-ban regisztrált eszköz identitásait. A lista bármely bejegyzését kibontva további információkat tekinthet meg.
 
-Miután az eszköz csatlakozik az IoT hubhoz, megjelenik egy áttekintő oldal, amely felsorolja az Azure IoT hub-ban regisztrált összes eszköz identitását. Válasszon ki egy eszközt a további részletek megtekintéséhez.
+Az **eszközök** listája lapon a következőket teheti:
 
-#### <a name="device-management"></a>Eszközkezelés
-
-- Ha új eszközt szeretne regisztrálni a hubhoz, válassza a **Hozzáadás**lehetőséget. Adja meg az eszköz AZONOSÍTÓját. Az alapértelmezett beállítások használatával automatikusan generálhatja a hitelesítési kulcsokat, és engedélyezheti a kapcsolódást a hubhoz.
-- Az eszköz identitásának törléséhez válassza a **Törlés**lehetőséget. A művelet elvégzése előtt tekintse át az eszköz részleteit, és győződjön meg róla, hogy a megfelelő eszköz identitását törli.
-- Az eszköz támogatja a `capabilityID` és `interfaceID`a lekérdezését. Adja hozzá a `capabilityID` vagy `interfaceID` az paramétert az eszközök lekérdezéséhez.
+- A **Hozzáadás** gombra kattintva regisztrálhat egy új eszközt a hubhoz. Ezután adja meg az eszköz AZONOSÍTÓját. Az alapértelmezett beállítások használatával automatikusan generálhat hitelesítési kulcsokat, és engedélyezheti a kapcsolódást a hubhoz.
+- Válasszon ki egy eszközt, majd válassza a **Törlés** lehetőséget az eszköz identitásának törléséhez. A művelet elvégzése előtt tekintse át az eszköz részleteit, és győződjön meg róla, hogy a megfelelő eszköz identitását törli.
+- Lekérdezés: `capabilityID` és `interfaceID`. Adja hozzá a `capabilityID` vagy a `interfaceID` paramétert az eszközök lekérdezéséhez.
 
 ## <a name="interact-with-a-device"></a>Eszköz használata
 
-Kattintson duplán az eszközre az Áttekintés lapon a részletek következő szintjének megtekintéséhez. Két részből áll: **Eszköz** -és **digitális Twin**.
+Az **eszközök** listája lapon válasszon ki egy értéket az **eszköz azonosítója** oszlopban a regisztrált eszköz részletes oldalának megtekintéséhez. Az eszköz két részből áll: **Eszköz** -és **digitális Twin**.
 
 ### <a name="device"></a>Eszköz
 
-Ez a szakasz tartalmazza az **eszköz identitását**, a **telemetria**és az **eszköz két** lapját.
+Ez a szakasz az **eszköz identitását**, az **eszköz Twin**és a **telemetria** lapjait tartalmazza.
 
-- **Az Eszközállapot lapon** megtekintheti és frissítheti az eszköz identitásának adatait.
-- Ha egy eszköz csatlakoztatva van, és aktívan küld adatokat, megtekintheti a telemetria a **telemetria** lapon.
-- A Device Twin **(eszközök Twin) lapon érheti** el az eszköz két adatát.
+- Az Eszközállapot **lapon** megtekintheti és frissítheti az [eszköz identitásának](../iot-hub/iot-hub-devguide-identity-registry.md) adatait.
+- A Device Twin **(eszközök Twin) lapon érheti** el az [eszköz két](../iot-hub/iot-hub-devguide-device-twins.md) adatát.
+- Ha egy eszköz csatlakoztatva van, és aktívan küld adatokat, megtekintheti a [telemetria](../iot-hub/iot-hub-devguide-messages-read-builtin.md) a **telemetria** lapon.
 
 ### <a name="digital-twin"></a>Digitális Twin
 

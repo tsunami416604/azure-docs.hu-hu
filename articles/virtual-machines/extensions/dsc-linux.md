@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084721"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960408"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC Extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
 A kívánt állapot-konfiguráció (DSC) egy olyan felügyeleti platform, amely lehetővé teszi az informatikai és fejlesztési infrastruktúra kezelését kóddal.
+
+> ! Vegye figyelembe, hogy a Linux rendszerhez készült DSC-bővítmény és a [linux Azure monitor virtuálisgép-bővítménye](/virtual-machines/extensions/oms-linux) jelenleg ütközést okoz, és az egymás melletti konfigurálás nem támogatott.  Ez azt jelenti, hogy a két megoldást együttesen nem használhatja ugyanazon a virtuális gépen.
 
 A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítmény telepíti a és a DSC-ügynököt az Azure Virtual Machines szolgáltatásban. A DSC-bővítmény a következő műveleteket is végrehajthatja
 
@@ -39,7 +41,7 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A DSC Linux-bővítmény támogatja az [Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -ban támogatott összes Linux-disztribúciót, kivéve a következőket:
+A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](/virtual-machines/linux/endorsed-distros) , kivéve a következőket:
 
 | Disztribúció | Version |
 |---|---|
@@ -56,11 +58,11 @@ A DSCForLinux-bővítmény megköveteli, hogy a célként megadott virtuális g�
 
 Az összes támogatott nyilvános konfigurációs paraméter:
 
-* `FileUri`: (nem kötelező, karakterlánc) a MOF-fájl/meta MOF-fájl/egyéni erőforrás ZIP-fájljának URI-ja.
-* `ResourceName`: (nem kötelező, karakterlánc) az egyéni erőforrás-modul neve
+* `FileUri`: (opcionális, karakterlánc) a MOF-fájl/meta MOF-fájl/egyéni erőforrás ZIP-fájljának URI-ja.
+* `ResourceName`: (opcionális, karakterlánc) az egyéni erőforrás-modul neve
 * `ExtensionAction`: (nem kötelező, karakterlánc) megadja a bővítményt. érvényes értékek: Regisztráció, küldés, lekérés, telepítés, eltávolítás. Ha nincs megadva, a rendszer alapértelmezés szerint leküldéses műveletnek tekinti.
 * `NodeConfigurationName`: (nem kötelező, karakterlánc) az alkalmazandó csomópont-konfiguráció neve.
-* `RefreshFrequencyMins`: (opcionális, int) Megadja, hogy a DSC milyen gyakran próbálja meg beolvasni a konfigurációt a lekérési kiszolgálóról. 
+* `RefreshFrequencyMins`: (opcionális, int) Megadja, hogy a DSC milyen gyakran próbálja megszerezni a konfigurációt a lekérési kiszolgálóról. 
        Ha a lekérési kiszolgálón a konfiguráció eltér az aktuálistól, a rendszer átmásolja a függőben lévő tárolóba, és alkalmazza azokat.
 * `ConfigurationMode`: (nem kötelező, karakterlánc) Megadja, hogy a DSC hogyan alkalmazza a konfigurációt. Érvényes értékek a következők: ApplyOnly, ApplyAndMonitor, ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (opcionális, int) Megadja, hogy milyen gyakran (percben) a DSC biztosítja, hogy a konfiguráció a kívánt állapotban legyen.
@@ -74,7 +76,7 @@ Az összes támogatott nyilvános konfigurációs paraméter:
 A támogatott védett konfigurációs paraméterek a következők:
 
 * `StorageAccountName`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók neve
-* `StorageAccountKey`: (nem kötelező, karakterlánc) a fájlt tartalmazó Storage-fiók kulcsa
+* `StorageAccountKey`: (opcionális, karakterlánc) a fájlt tartalmazó Storage-fiók kulcsa
 * `RegistrationUrl`: (nem kötelező, karakterlánc) a Azure Automation-fiók URL-címe
 * `RegistrationKey`: (nem kötelező, karakterlánc) a Azure Automation fiók hozzáférési kulcsa
 
@@ -284,7 +286,7 @@ Azure Resource Manager sablonnal kapcsolatos további információkért látogas
 ## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
 
 ### <a name="21-using-azure-cliazure-cli"></a>2.1. Az [**Azure CLI**] használata [Azure-CLI]
-A DSCForLinux-bővítmény telepítése előtt konfigurálnia kell a `public.json` és `protected.json`a, a 3. szakasz különböző forgatókönyvei alapján.
+A DSCForLinux-bővítmény telepítése előtt konfigurálnia kell a `public.json` és a `protected.json` értéket a 3. szakasz különböző forgatókönyvei alapján.
 
 #### <a name="211-classic"></a>2.1.1. Klasszikus
 A klasszikus módot Azure Service Management üzemmódnak is nevezik. A következő futtatásával válthat:
@@ -316,7 +318,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> Azure Resource Manager módban `azure vm extension list` jelenleg nem érhető el.
+> Azure Resource Manager módban a `azure vm extension list` most nem érhető el.
 >
 
 ### <a name="22-using-azure-powershellazure-powershell"></a>2.2. A [**Azure PowerShell**] [Azure-PowerShell] használata

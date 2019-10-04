@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300685"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947903"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>A Service Fabric-alkalmazás hibakeresése a Visual Studio használatával
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "71300685"
 Időt és pénzt takaríthat meg az Azure Service Fabric-alkalmazás üzembe helyezésével és hibakeresésével egy helyi számítógép-fejlesztési fürtben. A Visual Studio 2019 vagy a 2015 képes telepíteni az alkalmazást a helyi fürtre, és automatikusan összekapcsolja a hibakeresőt az alkalmazás összes példányával. A hibakeresőhöz a Visual studiót rendszergazdaként kell futtatni.
 
 1. Indítsa el a helyi fejlesztési fürtöt a [Service Fabric fejlesztői környezet beállítása](service-fabric-get-started.md)című témakör lépéseit követve.
-2. Nyomja le az **F5** billentyűt, **vagy kattintson a hibakeresés** > **indítása**gombra.
+2. Nyomja le az **F5** billentyűt, vagy kattintson a **hibakeresés**@no__t – 2**Indítás indítása**lehetőségre.
    
     ![Alkalmazás hibakeresésének megkezdése][startdebugging]
 3. A **hibakeresés** menüben a parancsok elemre kattintva adja meg a töréspontokat a kódban, és lépjen az alkalmazásba.
@@ -76,14 +76,10 @@ Ha a Service Fabric-alkalmazások egy Azure-beli Service Fabric-fürtön futnak,
 
 > [!NOTE]
 > A szolgáltatáshoz [Service FABRIC SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) és [Az Azure sdk for .NET 2,9](https://azure.microsoft.com/downloads/)szükséges.    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > A távoli hibakeresés fejlesztési és tesztelési forgatókönyvekhez készült, és nem használható éles környezetben, a futó alkalmazásokra gyakorolt hatás miatt.
-> 
-> 
 
 1. Navigáljon a fürthöz a **Cloud Explorerben**. Kattintson a jobb gombbal, és válassza a **hibakeresés engedélyezése** lehetőséget.
    
@@ -128,8 +124,6 @@ A nyomkövetéseket közvetlenül egy távoli fürtcsomóponton is képes továb
 > [!WARNING]
 > A folyamatos átviteli Nyomkövetések fejlesztési és tesztelési célokra szolgálnak, és nem használhatók éles környezetekben a futó alkalmazásokra gyakorolt hatás miatt.
 > Éles környezetben érdemes a Azure Diagnostics használatával továbbítani az eseményeket.
-> 
-> 
 
 1. Navigáljon a fürthöz a **Cloud Explorerben**. Kattintson a jobb gombbal, és válassza a **folyamatos átviteli nyomkövetés engedélyezése** lehetőséget.
    

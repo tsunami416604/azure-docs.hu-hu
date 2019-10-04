@@ -6,16 +6,16 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/3/2019
+ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191989"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950160"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Data Science virtuális gép adatfeldolgozási eszközök
 
@@ -30,7 +30,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Eszköz az adatok Azure Blob Storage-ból Azure Data Lake Storeba való másolásához. Azt is másolja az adatokat két Azure Data Lake Store-fiókok között.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Gyakori használati      | Több blob importálása az Azure Blob Storage-ból Azure Data Lake Storeba.      |
-|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, `adlcopy` és írja be, hogy segítséget kapjon.    |
+|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, és írja be a `adlcopy` parancsot a súgó eléréséhez.    |
 | A minták mutató hivatkozások      | [Az AdlCopy használata](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | A DSVM kapcsolódó eszközök      | AzCopy, Azure CLI     |
 
@@ -41,7 +41,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Az Azure felügyeleti eszköz. Emellett parancssori műveleteket is tartalmaz az Azure-beli adatplatformok, például az Azure Blob Storage és a Azure Data Lake Store adatainak áthelyezéséhez.     |
 | Támogatott DSVM-verziók      | Windows, Linux     |
 | Gyakori használati      | Adatok importálása és exportálása az Azure Storage-ba és a Azure Data Lake Storeba.      |
-|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, `az` és írja be, hogy segítséget kapjon.    |
+|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, és írja be a `az` parancsot a súgó eléréséhez.    |
 | A minták mutató hivatkozások      | [Az Azure parancssori felület használata](https://docs.microsoft.com/cli/azure)     |
 | A DSVM kapcsolódó eszközök      | Az AzCopy, az AdlCopy      |
 
@@ -53,7 +53,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Eszköz helyi fájlokba, Azure Blob Storage-ba, fájlokba és táblákba másolt adatok másolására.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Gyakori használati      | Fájlok másolása az Azure Blob Storage-ba és a Blobok másolása a fiókok között.      |
-|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, `azcopy` és írja be, hogy segítséget kapjon.    |
+|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, és írja be a `azcopy` parancsot a súgó eléréséhez.    |
 | A minták mutató hivatkozások      | [AzCopy Windowson](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | A DSVM kapcsolódó eszközök      | Az AdlCopy     |
 
@@ -65,7 +65,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Eszköz különböző forrásokból származó adatok Azure Cosmos DBba történő importálásához. Ezek a források közé tartoznak a JSON-fájlok, a CSV-fájlok, az SQL, a MongoDB, az Azure Table Storage, az Amazon DynamoDB és a Azure Cosmos DB SQL API-gyűjtemények.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Gyakori használati      | Fájlok importálása egy virtuális gépről a CosmosDB, adatok importálása az Azure Table Storage-ból a CosmosDB, és adatok importálása egy Microsoft SQL Server adatbázisból a CosmosDB-be.     |
-|  Hogyan futtathatja / használata?    |   A parancssori verzió használatához nyisson meg egy parancssort, és írja be a `dt`következőt:. A grafikus felhasználói felület eszköz használatához nyisson meg egy parancssort, `dtui`és írja be a következőt:.    |
+|  Hogyan futtathatja / használata?    |   A parancssori verzió használatához nyisson meg egy parancssort, és írja be a következőt: `dt`. A grafikus felhasználói felület eszköz használatához nyisson meg egy parancssort, és írja be a következőt: `dtui`.    |
 | A minták mutató hivatkozások      | [CosmosDB importálása](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | A DSVM kapcsolódó eszközök      | Az AzCopy, az AdlCopy      |
 
@@ -77,7 +77,7 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 | Mi ez?   | Az SQL Server eszköz adatokat másolhat az SQL Server és a egy adatfájlt között.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Gyakori használati      | CSV-fájl importálása SQL Server táblába, és SQL Server táblázat exportálása fájlba.      |
-|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, `bcp` és írja be, hogy segítséget kapjon.    |
+|  Hogyan futtathatja / használata?    |   Nyisson meg egy parancssort, és írja be a `bcp` parancsot a súgó eléréséhez.    |
 | A minták mutató hivatkozások      | [BCP segédprogram](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | A DSVM kapcsolódó eszközök      | SQL Server, az Sqlcmd-t      |
 
@@ -91,15 +91,3 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 |  Hogyan kell használni és futtatni?    |   Futtatás _blobfuse_ a terminálon.    |
 | A minták mutató hivatkozások      | [a Githubon blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | A DSVM kapcsolódó eszközök      | Azure CLI      |
-
-
-## <a name="microsoft-data-management-gateway"></a>A Microsoft adatkezelési átjáró
-
-|    |           |
-| ------------- | ------------- |
-| Mi ez?   | Egy eszköz csatlakozni a helyszíni adatforrások, a felhőalapú szolgáltatások felhasználásra.      |
-| Támogatott DSVM-verziók      | Windows      |
-| Gyakori használati      | Virtuális gép egy helyszíni adatforráshoz való kapcsolódáshoz.      |
-|  Hogyan futtathatja / használata?    |   Nyissa meg a Microsoft adatkezelés Gateway alkalmazást a Start menüből.    |
-| A minták mutató hivatkozások      | [Adatkezelési átjáró](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| A DSVM kapcsolódó eszközök      | Az AzCopy, az AdlCopy, BCP használatával    |

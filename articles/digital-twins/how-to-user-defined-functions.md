@@ -1,24 +1,24 @@
 ---
 title: Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban | Microsoft Docs
 description: Felhasználó által definiált függvények, egyeztetések és szerepkör-hozzárendelések létrehozása az Azure digitális Twins-ban.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
+ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336910"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959096"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
-[Felhasználó által definiált függvények](./concepts-user-defined-functions.md) lehetővé teszik a felhasználók számára, hogy egyéni logikát konfiguráljanak a bejövő telemetria üzenetekből és a térbeli gráf metaadatainak. A felhasználók az előre meghatározott végpontokra [](./how-to-egress-endpoints.md)is küldhetnek eseményeket.
+[Felhasználó által definiált függvények](./concepts-user-defined-functions.md) lehetővé teszik a felhasználók számára, hogy egyéni logikát konfiguráljanak a bejövő telemetria üzenetekből és a térbeli gráf metaadatainak. A felhasználók az előre meghatározott [végpontokra](./how-to-egress-endpoints.md)is küldhetnek eseményeket.
 
 Ez az útmutató egy olyan példát mutat be, amely bemutatja, hogyan észlelheti és figyelmeztetheti az olyan olvasásokat, amelyek meghaladják az adott hőmérsékleti eseményektől kapott hőmérsékletet.
 
@@ -191,7 +191,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Az összetettebb, felhasználó által definiált függvényekre vonatkozó példákért tekintse meg a használati útmutatót. [](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
+Az összetettebb, felhasználó által definiált függvényekre vonatkozó példákért tekintse meg a használati [útmutatót.](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
 
 ## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 

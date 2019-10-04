@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845699"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948164"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
@@ -44,6 +44,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 > [!NOTE] 
 > Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok nem rendezhetők automatikusan.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  
+
+## <a name="query-performance"></a>Lekérdezési teljesítmény
+
+Egy lekérdezésnek a rendezett CCI-ből származó teljesítménybeli nyeresége a lekérdezési mintáktól, az adatok méretétől, az adatok rendezési módjától, a szegmensek fizikai struktúrájától, valamint a DWU és az erőforrás osztálytól függ.  A felhasználóknak át kell tekinteniük ezeket a tényezőket, mielőtt kiválasztja a rendezési oszlopokat a rendezett CCI-táblázat tervezésekor.
+
+Az ezekkel a mintázatokkal rendelkező lekérdezések általában gyorsabban futnak a rendezett KKU-val.  
+1. A lekérdezések egyenlőséggel, egyenlőtlenséggel vagy tartományon alapuló predikátumokkal rendelkeznek
+1. A predikátum oszlopai és a rendezett CCI-oszlopok azonosak.  
+1. A predikátum oszlopai a rendezett CCI-oszlopok oszlopának sorszámával azonos sorrendben használatosak.  
+ 
+Ebben a példában a T1 tábla egy fürtözött oszlopcentrikus indextel rendelkezik, amely a Col_C, a Col_B és a Col_A sorrendjében van rendezve.
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+Az 1. lekérdezés teljesítménye jobban kihasználhatja a megrendelt CCI-t, mint a többi 3 lekérdezést. 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
 
 ## <a name="data-loading-performance"></a>Adattöltési teljesítmény
 
@@ -85,7 +122,7 @@ A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó
 
 ## <a name="examples"></a>Példák
 
-**EGY. A rendezett oszlopok és a sorrend sorszámának keresése:**
+@NO__T – 0A. A rendezett oszlopok és a sorrend sorszámának keresése: **
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -93,7 +130,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. Az oszlopok sorszámának módosításához, oszlopok hozzáadásához vagy eltávolításához a sorrend listából, vagy a CCI-ből a rendezett CCI-re való váltáshoz:**
+@NO__T – 0B. Az oszlopok sorszámának módosításához, oszlopok hozzáadásához vagy eltávolításához a sorrend listából, vagy a CCI-ből a rendezett CCI-re való váltáshoz: **
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)

@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins felhasználó által definiált függvények ügyféloldali függvénytár-referenciája | Microsoft Docs
 description: Azure Digital Twins felhasználó által definiált függvények ügyféloldali függvénytár-referenciája.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: alinast
 ms.custom: seodec18
-ms.openlocfilehash: 14c153a6e5837da28060122a629c8cc5df8262cf
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013775"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948901"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Felhasználó által definiált függvények ügyféloldali függvénytár-referenciája
 
@@ -24,7 +24,7 @@ Ez a dokumentum az Azure Digital Twins felhasználó által definiált functions
 
 Az ügyféloldali kódtár a gyakran használt műveletekhez biztosít segítő metódusokat.
 
-### <a name="getspacemetadataid--space"></a>getSpaceMetadata (azonosító) ⇒`space`
+### <a name="getspacemetadataid--space"></a>getSpaceMetadata (azonosító) ⇒ `space`
 
 A szóközzel megadott azonosító alapján a függvény lekéri a helyet a gráfból.
 
@@ -34,7 +34,7 @@ A szóközzel megadott azonosító alapján a függvény lekéri a helyet a grá
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Lemezterület-azonosító |
 
-### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (azonosító) ⇒`sensor`
+### <a name="getsensormetadataid--sensor"></a>getSensorMetadata (azonosító) ⇒ `sensor`
 
 Ez a függvény az érzékelő azonosítóját adja vissza a gráfból.
 
@@ -44,7 +44,7 @@ Ez a függvény az érzékelő azonosítóját adja vissza a gráfból.
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | Érzékelő azonosítója |
 
-### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (azonosító) ⇒`device`
+### <a name="getdevicemetadataid--device"></a>getDeviceMetadata (azonosító) ⇒ `device`
 
 Az eszköz azonosítója miatt ez a függvény lekéri az eszközt a gráfból.
 
@@ -54,7 +54,7 @@ Az eszköz azonosítója miatt ez a függvény lekéri az eszközt a gráfból.
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | Eszköz azonosítója |
 
-### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, adattípus) ⇒`value`
+### <a name="getsensorvaluesensorid-datatype--value"></a>getSensorValue (sensorId, adattípus) ⇒ @no__t – 0
 
 Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő aktuális értékét kérdezi le.
 
@@ -65,7 +65,7 @@ Az érzékelő azonosítójának és adattípusának megadásakor ez a függvén
 | *sensorId*  | `guid` | Érzékelő azonosítója |
 | *Adattípus*  | `string` | Érzékelő adattípusa |
 
-### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, valueName) ⇒`value`
+### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, valueName) ⇒ @no__t – 0
 
 A Space azonosító és az érték neve miatt ez a függvény lekéri az aktuális értéket a szóköz tulajdonsághoz.
 
@@ -76,7 +76,7 @@ A Space azonosító és az érték neve miatt ez a függvény lekéri az aktuál
 | *spaceId*  | `guid` | Lemezterület-azonosító |
 | *valueName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, adattípus) ⇒`value[]`
+### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues (sensorId, adattípus) ⇒ @no__t – 0
 
 Az érzékelő azonosítójának és adattípusának megadásakor ez a függvény az adott érzékelő korábbi értékeit kérdezi le.
 
@@ -87,7 +87,7 @@ Az érzékelő azonosítójának és adattípusának megadásakor ez a függvén
 | *sensorId* | `guid` | Érzékelő azonosítója |
 | *Adattípus* | `string` | Érzékelő adattípusa |
 
-### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, adattípus) ⇒`value[]`
+### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, adattípus) ⇒ @no__t – 0
 
 A Space azonosító és az érték neve miatt ez a függvény az adott tulajdonsághoz tartozó korábbi értékeket kérdezi le a tárhelyen.
 
@@ -98,7 +98,7 @@ A Space azonosító és az érték neve miatt ez a függvény az adott tulajdons
 | *spaceId* | `guid` | Lemezterület-azonosító |
 | *valueName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒`space[]`
+### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces (spaceId) ⇒ `space[]`
 
 A szóközzel megadott azonosító miatt a függvény lekérdezi az adott szülő terület gyermekeit.
 
@@ -108,7 +108,7 @@ A szóközzel megadott azonosító miatt a függvény lekérdezi az adott szül�
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒`sensor[]`
+### <a name="getspacechildsensorsspaceid--sensor"></a>getSpaceChildSensors (spaceId) ⇒ `sensor[]`
 
 A Space azonosító megadásakor ez a függvény lekéri a gyermek érzékelőket az adott szülő területhez.
 
@@ -118,7 +118,7 @@ A Space azonosító megadásakor ez a függvény lekéri a gyermek érzékelőke
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒`device[]`
+### <a name="getspacechilddevicesspaceid--device"></a>getSpaceChildDevices (spaceId) ⇒ `device[]`
 
 A szóközzel megadott azonosító miatt a függvény lekéri a gyermekeket az adott szülő területhez.
 
@@ -128,7 +128,7 @@ A szóközzel megadott azonosító miatt a függvény lekéri a gyermekeket az a
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Lemezterület-azonosító |
 
-### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒`sensor[]`
+### <a name="getdevicechildsensorsdeviceid--sensor"></a>getDeviceChildSensors (deviceId) ⇒ `sensor[]`
 
 Az eszköz azonosítója miatt ez a függvény lekérdezi az adott szülő eszköz gyermek-érzékelőkét.
 
@@ -138,7 +138,7 @@ Az eszköz azonosítója miatt ez a függvény lekérdezi az adott szülő eszk�
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | Eszköz azonosítója |
 
-### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒`space`
+### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace (childSpaceId) ⇒ `space`
 
 A szóközzel megadott azonosító alapján a függvény lekéri a szülő területét.
 
@@ -158,7 +158,7 @@ A függvény az érzékelő azonosítójának alapján lekéri a szülő terüle
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Érzékelő azonosítója |
 
-### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒`space`
+### <a name="getdeviceparentspacechilddeviceid--space"></a>getDeviceParentSpace (childDeviceId) ⇒ `space`
 
 Az eszköz azonosítója miatt ez a függvény lekéri a szülő területét.
 
@@ -178,7 +178,7 @@ A függvény az érzékelő azonosítója alapján lekéri a fölérendelt eszk�
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | Érzékelő azonosítója |
 
-### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, propertyName) ⇒`extendedProperty`
+### <a name="getspaceextendedpropertyspaceid-propertyname--extendedproperty"></a>getSpaceExtendedProperty (spaceId, propertyName) ⇒ @no__t – 0
 
 A szóközzel megadott azonosító alapján a függvény lekéri a tulajdonságot és annak értékét a területről.
 
@@ -189,7 +189,7 @@ A szóközzel megadott azonosító alapján a függvény lekéri a tulajdonságo
 | *spaceId* | `guid` | Lemezterület-azonosító |
 | *propertyName* | `string` | Terület tulajdonságának neve |
 
-### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, propertyName) ⇒`extendedProperty`
+### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty (sensorId, propertyName) ⇒ @no__t – 0
 
 A függvény az érzékelő azonosítója alapján lekéri a tulajdonságot és annak értékét az érzékelőből.
 
@@ -200,7 +200,7 @@ A függvény az érzékelő azonosítója alapján lekéri a tulajdonságot és 
 | *sensorId* | `guid` | Érzékelő azonosítója |
 | *propertyName* | `string` | Érzékelő tulajdonságának neve |
 
-### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, propertyName) ⇒`extendedProperty`
+### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty (deviceId, propertyName) ⇒ `extendedProperty`
 
 Az eszköz azonosítója miatt ez a függvény a tulajdonságot és annak értékét kérdezi le az eszközről.
 
@@ -276,19 +276,19 @@ Az ügyfél-referenciák segítő módszereiből visszaadott válaszok modelljei
 
 ### <a name="space-methods"></a>Szóköz metódusok
 
-#### <a name="parent--space"></a>Szülő () ⇒`space`
+#### <a name="parent--space"></a>Szülő () ⇒ @no__t – 0
 
 Ez a függvény az aktuális terület szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>ChildSensors () ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ @no__t – 0
 
 Ez a függvény az aktuális terület alárendelt érzékelőkből áll vissza.
 
-#### <a name="childdevices--device"></a>ChildDevices () ⇒`device[]`
+#### <a name="childdevices--device"></a>ChildDevices () ⇒ @no__t – 0
 
 Ez a függvény az aktuális terület alárendelt eszközeit adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
 Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális területhez.
 
@@ -296,7 +296,7 @@ Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza 
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="valuevaluename--value"></a>Érték (valueName) ⇒`value`
+#### <a name="valuevaluename--value"></a>Value (valueName) ⇒ @no__t – 0
 
 Ez a függvény az aktuális terület értékét adja vissza.
 
@@ -304,7 +304,7 @@ Ez a függvény az aktuális terület értékét adja vissza.
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | Az érték neve |
 
-#### <a name="historyvaluename--value"></a>Előzmények (valueName) ⇒`value[]`
+#### <a name="historyvaluename--value"></a>Előzmények (valueName) ⇒ `value[]`
 
 Ez a függvény az aktuális terület korábbi értékeit adja vissza.
 
@@ -340,15 +340,15 @@ Ez a függvény értesítést küld a megadott adattartalommal.
 
 ### <a name="device-methods"></a>Eszközmetódusok
 
-#### <a name="parent--space"></a>Szülő () ⇒`space`
+#### <a name="parent--space"></a>Szülő () ⇒ @no__t – 0
 
 Ez a függvény az aktuális eszköz szülő területét adja vissza.
 
-#### <a name="childsensors--sensor"></a>ChildSensors () ⇒`sensor[]`
+#### <a name="childsensors--sensor"></a>ChildSensors () ⇒ @no__t – 0
 
 Ez a függvény az aktuális eszköz gyermek-érzékelőkét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
 Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális eszközhöz.
 
@@ -392,11 +392,11 @@ Ez a függvény értesítést küld a megadott adattartalommal.
 
 Ez a függvény az aktuális érzékelő szülő területét adja vissza.
 
-#### <a name="device--device"></a>Eszköz () ⇒`device`
+#### <a name="device--device"></a>Eszköz () ⇒ @no__t – 0
 
 Ez a függvény az aktuális érzékelő fölérendelt eszközét adja vissza.
 
-#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒`extendedProperty`
+#### <a name="extendedpropertypropertyname--extendedproperty"></a>ExtendedProperty (propertyName) ⇒ `extendedProperty`
 
 Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza az aktuális érzékelőhöz.
 
@@ -404,11 +404,11 @@ Ez a függvény a kiterjesztett tulajdonságot és annak értékét adja vissza 
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | A kiterjesztett tulajdonság neve |
 
-#### <a name="value--value"></a>Érték () ⇒`value`
+#### <a name="value--value"></a>Value () ⇒ @no__t – 0
 
 Ez a függvény az aktuális érzékelő értékét adja vissza.
 
-#### <a name="history--value"></a>Előzmények () ⇒`value[]`
+#### <a name="history--value"></a>Előzmények () ⇒ @no__t – 0
 
 Ez a függvény az aktuális érzékelő korábbi értékeit adja vissza.
 

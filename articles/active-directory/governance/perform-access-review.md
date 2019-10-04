@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499632"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948248"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Csoportok vagy alkalmazások hozzáférésének áttekintése az Azure AD hozzáférési felülvizsgálatokban
 
 A Azure Active Directory (Azure AD) leegyszerűsíti, hogy a vállalatok hogyan kezelhetik az Azure AD-ben és más Microsoft Online Servicesben lévő csoportokhoz és alkalmazásokhoz való hozzáférést az Azure AD hozzáférési felülvizsgálatok szolgáltatásával.
 
 Ez a cikk azt ismerteti, hogy a kijelölt véleményező hogyan hajt végre hozzáférési felülvizsgálatot egy csoport tagjai vagy egy alkalmazáshoz hozzáféréssel rendelkező felhasználók számára.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-- Azure AD Premium P2
-
-További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
 
 ## <a name="open-the-access-review"></a>A hozzáférési felülvizsgálat megnyitása
 
@@ -46,7 +40,7 @@ A hozzáférési felülvizsgálat végrehajtásának első lépése a hozzáfér
 
 Ha nem rendelkezik az e-mail-címmel, a következő lépésekkel megkeresheti a függőben lévő hozzáférési felülvizsgálatokat.
 
-1. Jelentkezzen be a MyApps portálra [https://myapps.microsoft.com](https://myapps.microsoft.com)a címen.
+1. Jelentkezzen be a MyApps portálra a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
     ![A MyApps-portál felsorolja azokat az alkalmazásokat, amelyekre jogosult](./media/perform-access-review/myapps-access-panel.png)
 

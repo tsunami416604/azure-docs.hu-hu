@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – nyilvános |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés TOPdesk – nyilvános és az Azure Active Directory között.
+title: 'Oktatóanyag: Azure Active Directory integráció a TOPdesk – nyilvános | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és TOPdesk között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,49 +15,49 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: a2a0ffd670a03aeaaa262b83127a385be9efc978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5575a2e8f776e87fcd4e6f4a7a9244752ebfd9a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088480"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950422"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TOPdesk – nyilvános
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Oktatóanyag: Azure Active Directory integráció a TOPdesk-vel – nyilvános
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan integrálhatja TOPdesk - nyilvános, az Azure Active Directoryval (Azure AD).
-TOPdesk – nyilvános és az Azure AD integrálása nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a TOPdesk-t a Azure Active Directory (Azure AD) szolgáltatással.
+A TOPdesk integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá TOPdesk – nyilvános Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve TOPdesk – nyilvános (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a TOPdesk.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a TOPdesk (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az TOPdesk - nyilvános, a következőkre van szüksége:
+Az Azure AD-integráció a TOPdesk-mel való konfigurálásához a következő elemek szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* TOPdesk – nyilvános egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* TOPdesk – nyilvános egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Támogatja a TOPdesk – nyilvános **SP** által kezdeményezett egyszeri bejelentkezés
+* TOPdesk – az **SP** által kezdeményezett SSO-t támogatja
 
-## <a name="adding-topdesk---public-from-the-gallery"></a>Hozzáadás TOPdesk – nyilvános a katalógusból
+## <a name="adding-topdesk---public-from-the-gallery"></a>Nyilvános TOPdesk hozzáadása a katalógusból
 
-TOPdesk – az Azure AD-be nyilvános integráció konfigurálásához hozzá kell TOPdesk – nyilvános a galériából a felügyelt SaaS-alkalmazások listájára.
+A TOPdesk és az Azure AD integrálásának konfigurálásához hozzá kell adnia a TOPdesk-Public elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Adja hozzá a TOPdesk – nyilvános katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha TOPdesk szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
     ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
@@ -65,46 +65,46 @@ TOPdesk – az Azure AD-be nyilvános integráció konfigurálásához hozzá ke
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **TOPdesk – nyilvános**, jelölje be **TOPdesk – nyilvános** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **TOPdesk-Public**kifejezést, válassza a **TOPdesk-Public** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![TOPdesk – nyilvános a találatok listájában](common/search-new-app.png)
+     ![TOPdesk – nyilvános az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az TOPdesk – nyilvános alapján nevű tesztfelhasználó **Britta Simon**.
-Az egyszeri bejelentkezés a munkahelyi Azure AD-felhasználót és a kapcsolódó felhasználó TOPdesk - hivatkozás kapcsolata nyilvános kell létrehozni.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a TOPdesk-Public alapján egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TOPdesk-nyilvános felhasználó közötti kapcsolat létesítésére van szükség.
 
-A konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés TOPdesk – a nyilvános, az alábbi építőelemeket végrehajtásához szükséges:
+Az Azure AD egyszeri bejelentkezés TOPdesk-nyilvános használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[TOPdesk - nyilvános egyszeri bejelentkezés konfigurálása](#configure-topdesk---public-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[TOPdesk konfigurálása – nyilvános egyszeri bejelentkezés](#configure-topdesk---public-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre TOPdesk – nyilvános tesztfelhasználó](#create-topdesk---public-test-user)**  – egy megfelelője a Britta Simon TOPdesk – a felhasználó Azure ad-ben ábrázolása csatolt nyilvános van.
+5. **[TOPdesk létrehozása – nyilvános tesztelési felhasználó](#create-topdesk---public-test-user)** – a TOPdesk-Public Britta, amely a felhasználó Azure ad-képviseletéhez van társítva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása TOPdesk - nyilvános, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezés az TOPdesk-Public használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **TOPdesk – nyilvános** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. A [Azure Portal](https://portal.azure.com/) **TOPdesk-Public** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4.  Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik **szolgáltató metaadatait tartalmazó fájl**, hajtsa végre az alábbi lépéseket:
+4.  Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal**rendelkezik, hajtsa végre a következő lépéseket:
 
     >[!NOTE]
-    >Megjelenik a **szolgáltató metaadatait tartalmazó fájl** a a **konfigurálása TOPdesk – nyilvános egyszeri bejelentkezés** szakaszban, az oktatóanyag későbbi részében ismertetett.
+    >A **szolgáltatói metaadatokat tartalmazó fájlt** a **TOPdesk konfigurálása – nyilvános egyszeri bejelentkezés** szakasz ismerteti, amely az oktatóanyag későbbi részében is megtalálható.
 
     a. Kattintson a **metaadatfájl feltöltése**.
     
@@ -112,26 +112,28 @@ Az Azure AD egyszeri bejelentkezés konfigurálása TOPdesk - nyilvános, hajtsa
 
     b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
-    ![metaadatfájl kiválasztása](common/browse-upload-metadata.png)
+    ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
 
-    c. A metaadatfájl sikeres feltöltése után a **azonosító** és **válasz URL-cím** értékeket automatikusan alapszintű SAML-konfigurációja szakasz első.
+    c. A metaadat-fájl feltöltése után a rendszer az alapszintű SAML-konfiguráció szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket.
 
-    ![TOPdesk – a nyilvános tartomány és URL-címek egyszeri bejelentkezési adatait](common/sp-identifier-reply.png)
+    ![TOPdesk – nyilvános tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier-reply.png)
 
-    d. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<companyname>.topdesk.net`
+    d. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.topdesk.net`
 
-    e. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.topdesk.net/tas/public/login/verify`
-
+    e. Az **azonosító URL-címe** szövegmezőbe írja be a TOPdesk metaadat URL-címét, amelyet a TOPdesk-konfigurációból kérhet le. A következő mintát kell használnia: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    
+    f. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<companyname>.topdesk.net/tas/public/login/verify`
+    
     > [!NOTE] 
-    > Ha a **azonosító** és **válasz URL-cím** értékek nem kérdezhető le automatikusan, meg kell adni őket manuálisan. Azonosító, kövesse a minta, ahogy korábban említettük, és a válasz URL-címet kap a **konfigurálása TOPdesk – nyilvános egyszeri bejelentkezés** az oktatóanyag későbbi részében ismertetett szakaszban. A **bejelentkezési URL-** értéke nem valódi, így frissítse az értéket a tényleges bejelentkezési URL-cím szükséges. Kapcsolattartó [TOPdesk – nyilvános ügyfél-támogatási csapatának](https://help.topdesk.com/saas/enterprise/user/) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ha az **azonosító** és a **Válasz URL-címe** nem lesz automatikusan feltöltve, manuálisan kell megadnia azokat. Az azonosító esetében kövesse a fentiekben említett mintát, és a válasz URL-cím értékének **megadásával adja meg a TOPdesk-nyilvános egyszeri bejelentkezés** szakaszát, amelyet az oktatóanyag későbbi részében talál. A **bejelentkezési URL-cím** értéke nem valódi, ezért frissítenie kell az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [TOPdesk – nyilvános ügyfél-támogatási csapattal](https://help.topdesk.com/saas/enterprise/user/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
-6. Az a **TOPdesk – nyilvános beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **TOPdesk-Public beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
@@ -139,63 +141,63 @@ Az Azure AD egyszeri bejelentkezés konfigurálása TOPdesk - nyilvános, hajtsa
 
     c. Kijelentkezési URL
 
-### <a name="configure-topdesk---public-single-sign-on"></a>TOPdesk - nyilvános egyszeri bejelentkezés konfigurálása
+### <a name="configure-topdesk---public-single-sign-on"></a>TOPdesk konfigurálása – nyilvános egyszeri bejelentkezés
 
-1. Jelentkezzen be a **TOPdesk – nyilvános** rendszergazdaként a vállalati webhely.
+1. Jelentkezzen be a **TOPdesk-nyilvános** vállalati webhelyre rendszergazdaként.
 
-2. Az a **TOPdesk** menüben kattintson a **beállítások**.
+2. A **TOPdesk** menüben kattintson a **Beállítások**elemre.
    
     ![Beállítások](./media/topdesk-public-tutorial/ic790598.png "beállításai")
 
-3. Kattintson a **bejelentkezés beállításai**.
+3. Kattintson a **bejelentkezési beállítások**elemre.
    
-    ![Bejelentkezési beállítások](./media/topdesk-public-tutorial/ic790599.png "bejelentkezési beállítások")
+    ![Bejelentkezési beállítások](./media/topdesk-public-tutorial/ic790599.png "bejelentkezési beállításai")
 
-4. Bontsa ki a **bejelentkezési beállítások** menüre, majd **általános**.
+4. Bontsa ki a **bejelentkezési beállítások** menüt, majd kattintson az **általános**elemre.
    
     ![Általános](./media/topdesk-public-tutorial/ic790600.png "általános")
 
-5. Az a **nyilvános** szakaszában a **SAML bejelentkezési** konfigurációs szakaszban, hajtsa végre az alábbi lépéseket:
+5. Az **SAML bejelentkezési** konfiguráció szakasz **nyilvános** részében hajtsa végre a következő lépéseket:
    
-    ![Műszaki beállítások](./media/topdesk-public-tutorial/ic790601.png "műszaki beállítások")
+    ![Technikai beállítások]–(./media/topdesk-public-tutorial/ic790601.png "technikai beállítások")
    
-    a. Kattintson a **letöltése** töltse le a nyilvános metaadatait tartalmazó fájl, és mentse helyileg a számítógépen.
+    a. Kattintson a **Letöltés** gombra a nyilvános metaadat-fájl letöltéséhez, majd mentse helyileg a számítógépén.
    
-    b. Nyissa meg a letöltött metaadat-fájlt, és keresse meg a **AssertionConsumerService** csomópont.
+    b. Nyissa meg a letöltött metaadat-fájlt, és keresse meg a **AssertionConsumerService** csomópontot.
 
     ![AssertionConsumerService](./media/topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. Másolás a **AssertionConsumerService** értékét, illessze be ezt az értéket a **válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban.      
+    c. Másolja a **AssertionConsumerService** értéket, illessze be ezt az értéket a **Válasz URL-címe** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszban.      
    
-6. A tanúsítványfájl létrehozásához hajtsa végre az alábbi lépéseket:
+6. Tanúsítványfájl létrehozásához hajtsa végre a következő lépéseket:
     
-    ![Tanúsítvány](./media/topdesk-public-tutorial/ic790606.png "tanúsítvány")
+    ![Tanúsítvány](./media/topdesk-public-tutorial/ic790606.png "tanúsítványa")
     
-    a. Az Azure Portalról nyissa meg a letöltött metaadatait tartalmazó fájl.
+    a. Nyissa meg a letöltött metaadat-fájlt a Azure Portal.
     
-    b. Bontsa ki a **található Securitytokenservicetype** csomópont, amely rendelkezik egy **xsi: type** , **megváltoztat: ApplicationServiceType**.
+    b. Bontsa ki a **securitytokenservicetype** csomópontot, amely egy **xsi: Type** of **Fed: ApplicationServiceType**.
     
-    c. Másolja az értéket, a **X509Certificate** csomópont.
+    c. Másolja a **x509** csomópont értékét.
     
-    d. Mentse a másolt **X509Certificate** érték helyileg a számítógépen egy fájlban.
+    d. Mentse a másolt **x509** -értéket helyileg a számítógépen egy fájlba.
 
-7. Az a **nyilvános** területén kattintson **Hozzáadás**.
+7. A **nyilvános** szakaszban kattintson a **Hozzáadás**gombra.
     
-    ![SAML-bejelentkezési](./media/topdesk-public-tutorial/ic790625.png "SAML-bejelentkezés")
+    ![SAML-bejelentkezés](./media/topdesk-public-tutorial/ic790625.png "SAML-bejelentkezés")
 
-8. Az a **SAML-konfigurációja Segéd** párbeszédpanel lapon, a következő lépésekkel:
+8. A **SAML konfigurációs segéd** párbeszédpanelen hajtsa végre a következő lépéseket:
     
-    ![SAML-konfigurációja Segéd](./media/topdesk-public-tutorial/ic790608.png "SAML-konfigurációja Segéd")
+    ![SAML konfigurációs asszisztens](./media/topdesk-public-tutorial/ic790608.png "SAML konfigurációs asszisztens")
     
-    a. Az Azure Portalról letöltött metaadatfájl feltöltése a **összevonási metaadatok**, kattintson a **Tallózás**.
+    a. A letöltött metaadat-fájl Azure Portalból való feltöltéséhez az **összevonási metaadatok**területen kattintson a **Tallózás**gombra.
 
-    b. A feltölteni a tanúsítványfájlt, **tanúsítvány (RSA)** , kattintson a **Tallózás**.
+    b. A tanúsítványfájl feltöltéséhez a **tanúsítvány (RSA)** alatt kattintson a **Tallózás**gombra.
 
-    c. A kapott az TOPdesk ügyfélszolgálathoz alatt embléma fájlt feltölteni **embléma ikon**, kattintson a **Tallózás**.
+    c. Ha fel szeretné tölteni a TOPdesk támogatási csapatának emblémáját, kattintson a **logo ikon**alatt található **Tallózás**gombra.
 
-    d. Az a **felhasználói név attribútum** szövegmezőbe írja be `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. A **Felhasználónév attribútum** szövegmezőbe írja be a következőt: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    e. Az a **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
+    e. A **megjelenítendő név** szövegmezőbe írja be a konfiguráció nevét.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
@@ -215,72 +217,72 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mezőbe írja be a következőt: brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított TOPdesk - nyilvános hozzáférés Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a nyilvános TOPdesk.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **TOPdesk – nyilvános**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **TOPdesk-Public**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **TOPdesk – nyilvános**.
+2. Az alkalmazások listában válassza a **TOPdesk-Public**elemet.
 
-    ![A TOPdesk – nyilvános hivatkozást alkalmazásainak listájában](common/all-applications.png)
+    ![TOPdesk – nyilvános hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-topdesk---public-test-user"></a>TOPdesk – nyilvános tesztfelhasználó létrehozása
+### <a name="create-topdesk---public-test-user"></a>TOPdesk létrehozása – nyilvános teszt felhasználó
 
-Ahhoz, hogy Azure AD-felhasználók TOPdesk - ba való bejelentkezéshez, ki kell építeni TOPdesk - nyilvános, nyilvános. TOPdesk - esetén nyilvános kiépítése a manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a TOPdesk-Nyilvánosba, a TOPdesk-nyilvánosságnak kell kiépíteni őket. TOPdesk esetén a kiépítés manuális feladat.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Felhasználók átadásának konfigurálása, hajtsa végre az alábbi lépéseket:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>A felhasználók üzembe helyezésének konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a **TOPdesk – nyilvános** rendszergazdaként a vállalati webhely.
+1. Jelentkezzen be a **TOPdesk-nyilvános** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson **TOPdesk \> új \> támogatófájljait \> személy**.
+2. A felső menüben kattintson a **TOPdesk \> új \> támogatási fájl @no__t – 3 személy**lehetőségre.
    
-    ![Személy](./media/topdesk-public-tutorial/ic790628.png "személy")
+    ![Személy](./media/topdesk-public-tutorial/ic790628.png "személye")
 
-3. Új személy párbeszédpanelen hajtsa végre az alábbi lépéseket:
+3. Az új személy párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Új személy](./media/topdesk-public-tutorial/ic790629.png "új személy")
+    ![Új]személy új(./media/topdesk-public-tutorial/ic790629.png "személy")
    
-    a. Kattintson az Általános lapon.
+    a. Kattintson az általános fülre.
 
-    b. Az a **Vezetéknév** szövegmezőbe írja be például a Simon a felhasználó vezetékneve
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például Simon
  
-    c. Válassza ki a **hely** a fiókhoz.
+    c. Válasszon egy **helyet** a fiókhoz.
  
     d. Kattintson a **Save** (Mentés) gombra.
 
 > [!NOTE]
-> Bármely más TOPdesk – nyilvános felhasználói fiók létrehozása eszközöket használhatja, vagy TOPdesk – az Azure AD-felhasználói fiókok kiépítése nyilvános által biztosított API-k.
+> Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a TOPdesk által biztosított TOPdesk-nyilvános felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Kattint a TOPdesk – nyilvános csempére a hozzáférési panelen, amikor meg kell automatikusan jelentkeznie TOPdesk - nyilvános, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a TOPdesk-nyilvános csempére kattint, akkor automatikusan be kell jelentkeznie arra a TOPdesk, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -288,4 +290,4 @@ Kattint a TOPdesk – nyilvános csempére a hozzáférési panelen, amikor meg 
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

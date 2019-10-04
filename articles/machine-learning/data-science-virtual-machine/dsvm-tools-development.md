@@ -6,22 +6,22 @@ keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 6ff4d92cb3730716c532332bf426132fcbb8e122
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/3/2019
+ms.openlocfilehash: 62eb5f72d4b4395602b2665c0d1b3da4f6bb459b
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191951"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950195"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Fejlesztői eszközök az Azure Data Science Virtual Machine
 
 A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy rendkívül hatékony integrált fejlesztési környezetbe (IDE). Íme néhány a DSVM lévő eszközök.
 
-## <a name="visual-studio-2019"></a>Visual Studio 2019  
+## <a name="visual-studio-2017"></a>Visual Studio 2017
 
 |    |           |
 | ------------- | ------------- |
@@ -29,7 +29,7 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Támogatott DSVM-verziók      | Windows      |
 | Gyakori használati      | Szoftverfejlesztés    |
 | Hogyan van konfigurálva és telepítve a DSVM?      | Adatok tudományos munkaterhelés (Python- és R-eszközök), az Azure-beli számítási (Hadoop, a Data Lake), a Node.js, SQL Server-eszközök [a Visual Studio Code az Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
-| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`)    |
+| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | A DSVM kapcsolódó eszközök      |     A Visual Studio Code-ban, az RStudio Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
@@ -39,8 +39,8 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Mi ez?   | Általános célú IDE      |
 | Támogatott DSVM-verziók      | Windows, Linux     |
 | Gyakori használati      | A kód és a Git-integráció   |
-| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) a Windowsban, asztali parancsikon vagy terminál`code`() a Linux rendszerben    |
-| A DSVM kapcsolódó eszközök      |     Visual Studio 2019, RStudio, Juno  |
+| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`) a Windowsban, asztali parancsikonban vagy terminálban (`code`) a Linux rendszerben    |
+| A DSVM kapcsolódó eszközök      |     A Visual Studio 2017, az RStudio, Juno  |
 
 ## <a name="rstudio--desktop"></a>Az RStudio Desktop 
 
@@ -49,8 +49,8 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Mi ez?   | Ügyfél IDE az R nyelvhez   |
 | Támogatott DSVM-verziók      | Windows, Linux      |
 | Gyakori használati      |  R-fejlesztés     |
-| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files\RStudio\bin\rstudio.exe`) Windows rendszeren, asztali parancsikon (`/usr/bin/rstudio`) Linuxon      |
-| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| Használat és Futtatás      | Asztali parancsikon (`C:\Program Files\RStudio\bin\rstudio.exe`) Windowson, asztali parancsikon (`/usr/bin/rstudio`) Linuxon      |
+| A DSVM kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
 
 ## <a name="rstudio--server"></a>RStudio  Server 
 
@@ -60,8 +60,8 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Mi ez?   | Webes IDE az r nyelvhez    |
 | Támogatott DSVM-verziók      | Linux      |
 | Gyakori használati      |  R-fejlesztés     |
-| Használat és Futtatás      | Engedélyezze a szolgáltatást a _systemctl Enable rstudio-Server engedélyezésével_, majd indítsa el a szolgáltatást a _systemctl Start rstudio-Server kiszolgálóval_. Ezután jelentkezzen be a RStudio-kiszolgálóra a\/http:/Your-VM-IP: 8787 címen.       |
-| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, RStudio Desktop      |
+| Használat és Futtatás      | Engedélyezze a szolgáltatást a _systemctl Enable rstudio-Server engedélyezésével_, majd indítsa el a szolgáltatást a _systemctl Start rstudio-Server kiszolgálóval_. Ezután jelentkezzen be a RStudio-kiszolgálóra a http: \//a-VM-IP: 8787.       |
+| A DSVM kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban az RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 
@@ -70,8 +70,8 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Mi ez?   | Ügyfél IDE a Julia nyelvhez   |
 | Támogatott DSVM-verziók      | Windows, Linux      |
 | Gyakori használati      |  Julia fejlesztés     |
-| Használat és Futtatás      | Asztali parancsikon (`C:\JuliaPro-0.5.1.1\Juno.bat`) Windows rendszeren, asztali parancsikon (`/opt/JuliaPro-VERSION/Juno`) Linuxon      |
-| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, RStudio      |
+| Használat és Futtatás      | Asztali parancsikon (`C:\JuliaPro-0.5.1.1\Juno.bat`) Windowson, asztali parancsikon (`/opt/JuliaPro-VERSION/Juno`) Linuxon      |
+| A DSVM kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ot, az RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
 
@@ -81,7 +81,7 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Támogatott DSVM-verziók      | Linux      |
 | Gyakori használati      |  Python-fejlesztés     |
 | Használat és Futtatás      | Asztali parancsikon (`/usr/bin/pycharm`) Linuxon      |
-| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, RStudio      |
+| A DSVM kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ot, az RStudio      |
 
 
 
@@ -93,5 +93,5 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 | Támogatott DSVM-verziók      | Windows  |
 | Gyakori használati      |  Adatvizualizációk és az irányítópultok fejlesztése   |
 | Használat és Futtatás      | Asztali parancsikon (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
-| A DSVM kapcsolódó eszközök      |   Visual Studio 2019, Visual Studio Code, Juno      |
+| A DSVM kapcsolódó eszközök      |   A Visual Studio 2017, a Visual Studio Code-ban Juno      |
 

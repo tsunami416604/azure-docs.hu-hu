@@ -2,18 +2,19 @@
 title: 'Oktatóanyag: Azure Digital Twins-környezet eseményeinek elemzése | Microsoft Docs'
 description: Megtudhatja, hogyan jelenítheti meg és elemezheti az Azure digitális Twins-tárhelyek eseményeit az oktatóanyag lépéseinek használatával Azure Time Series Insightsával.
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
-ms.author: alinast
-ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: af776372026bf9affcda03fa9188b854ebedfc73
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300063"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949804"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Oktatóanyag: Az Azure digitális Twins-tárhelyek eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -57,10 +58,10 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. A Event Hubs névtér üzembe helyezése lapon válassza az **Áttekintés** panelt, majd válassza az **Ugrás az erőforráshoz**lehetőséget.
 
-    [![Névtér Event Hubs az üzembe helyezést követően](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
+    [![Event hubok névtere az üzembe helyezés után](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. A Event Hubs névtér **Áttekintés** ablaktábláján kattintson a felül található **Event hub** gombra.
-    [![Event hub gomb](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
+    [@no__t – 1Event hub gomb](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Adja meg az Event hub **nevét** , majd válassza a **Létrehozás**lehetőséget.
 
@@ -68,13 +69,13 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. Válassza a Top ( **fogyasztói csoport** ) gombot, és adjon meg egy nevet, például **tsievents** a fogyasztói csoport számára. Kattintson a **Létrehozás** gombra.
 
-    [![Event hub fogyasztói csoport](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
+    [@no__t – 1Event hub fogyasztói csoport](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    A fogyasztói csoport létrehozása után megjelenik az Event hub **Áttekintés** paneljének alján található listában.
 
 1. Nyissa meg az Event hub **megosztott hozzáférési szabályzatok** paneljét, és kattintson a **Hozzáadás** gombra. Adja meg a **ManageSend** nevet a szabályzat neveként, győződjön meg róla, hogy az összes jelölőnégyzet be van jelölve, majd válassza a **Létrehozás**lehetőséget.
 
-    [![Event hub kapcsolati karakterláncai](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
+    [@no__t – 1Event hub-kapcsolatok karakterláncai](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. Nyissa meg a létrehozott ManageSend-szabályzatot, és másolja a **kapcsolódási karakterláncot – elsődleges kulcs** és a **kapcsolódási karakterlánc – másodlagos kulcs** értékét egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz az Event hub végpontjának létrehozásához a következő szakaszban.
 
@@ -102,19 +103,19 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
       path: Name_of_your_Event_Hub
     ```
 
-1. Cserélje le a helyőrzőket `Primary_connection_string_for_your_event_hub` az Event hub **kapcsolati karakterláncának értékére – elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
+1. Cserélje le a `Primary_connection_string_for_your_event_hub` helyőrzőket az Event hub **kapcsolati karakterláncának értékére – elsődleges kulcs** . Győződjön meg arról, hogy a következő karakterlánc formátuma a következő:
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Cserélje le a helyőrzőket `Secondary_connection_string_for_your_event_hub` a **kapcsolati sztring – másodlagos kulcs** értékére az Event hub esetében. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
+1. Cserélje le a `Secondary_connection_string_for_your_event_hub` helyőrzőt a **kapcsolati karakterlánc – másodlagos kulcs** értékeként az Event hub értékére. Győződjön meg arról, hogy a következő karakterlánc formátuma a következő: 
 
    ```plaintext
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. Cserélje le a helyőrzőket `Name_of_your_Event_Hub` az Event hub nevére.
+1. Cserélje le a helyőrzőket `Name_of_your_Event_Hub` értékre az Event hub nevével.
 
     > [!IMPORTANT]
     > Az értékeket idézőjelek nélkül adja meg. Győződjön meg arról, hogy legalább egy szóköz karakter szerepel a YAML-fájlban lévő kettőspontok után. A YAML fájl tartalmát bármely online YAML-érvényesítő, például [az eszköz](https://onlineyamltools.com/validate-yaml)használatával is érvényesítheti.
@@ -127,7 +128,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
    Két végpontot hoz létre az Event hub számára.
 
-   [![Event Hubs végpontok](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
+   [@no__t – a Event Hubs 1Endpoints](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Elemzés a Time Series Insights használatával
 
@@ -135,13 +136,13 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. Keresse meg és válassza ki a **Time Series Insights** általánosan elérhető (GA) erőforrást. Kattintson a **Létrehozás** gombra.
 
-1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a digitális Twins-példányhoz használt **erőforráscsoportot** , valamint a **helyét**. Válassza **a Next (tovább) lehetőséget: Eseményforrás gomb vagy az eseményforrás lap.**
+1. Adja meg a Time Series Insights-példány **nevét**, majd válassza ki az **előfizetését**. Válassza ki a digitális Twins-példányhoz használt **erőforráscsoportot** , valamint a **helyét**. @No__t kiválasztása – 0Next: Eseményforrás @ no__t – 0 gomb vagy az **eseményforrás** lap.
 
-    [![Time Series Insights példány létrehozásához kiválasztott beállítások](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
+    [@no__t – 1Selections Time Series Insights példány létrehozásához](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. Az **eseményforrás** lapon adjon meg egy **nevet**, válassza az **Event hub** lehetőséget a **forrás típusaként**, és győződjön meg arról, hogy a többi érték helyesen van kiválasztva. Válassza az **ManageSend** lehetőséget az **Event hub hozzáférési házirendjének neveként**, majd válassza ki azt a fogyasztói csoportot, amelyet az **Event hub fogyasztói csoportjának**előző szakaszában hozott létre. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    [![Az eseményforrás létrehozásához szükséges beállítások](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
+    [@no__t – 1Selections létrehozásához](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. A **felülvizsgálat + létrehozás** ablaktáblán tekintse át a megadott adatokat, majd válassza a **Létrehozás**lehetőséget.
 
@@ -149,17 +150,17 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. Válassza az **Ugrás a környezetre** gombra a felső részen. Ha adatelérési figyelmeztetés jelenik meg, nyissa meg az **adatelérési házirendek** panelt Time Series Insights példányához, válassza a **Hozzáadás**lehetőséget, válassza a **közreműködő** szerepkört, és válassza ki a megfelelő felhasználót.
 
-1. A **Ugrás a környezetre** gombra kattintva megnyílik a [Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md). Ha nem jelennek meg események, az eszköz eseményeinek szimulálása a digitális Twins **-minta eszköz-kapcsolati** projektjeinek tallózásával és `dotnet run`a futtatásával.
+1. A **Ugrás a környezetre** gombra kattintva megnyílik a [Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md). Ha nem jelenít meg eseményeket, szimulálja az eszközök eseményeit, és megkeresi a digitális Twins **-minta eszköz-csatlakozási** projektjét, és `dotnet run`-et futtat.
 
 1. Néhány szimulált esemény generálása után térjen vissza a Time Series Insights Explorerrel, és kattintson a felül található frissítés gombra. Meg kell jelennie a szimulált érzékelő adataihoz létrehozott analitikai diagramoknak. 
 
-    [![Diagram a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
+    [@no__t – 1Chart a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. A Time Series Insights Explorerben létrehozhat diagramokat és intenzitástérképei a különböző eseményekhez és adatokhoz a szobákból, érzékelőkből és egyéb erőforrásokból. A bal oldalon a **mérték** és a **felosztás** legördülő lista használatával hozhat létre saját vizualizációkat. 
 
    Válassza például az **események** a **mértékhez** és a **DigitalTwins-SensorHardwareId** a **felosztáshoz**lehetőséget, hogy az egyes érzékelőkhöz hő állítson elő. A hő az alábbi képhez hasonló lesz:
 
-   [![Hő a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
+   [@no__t – 1Heatmap a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 09/30/2019
 ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310647"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949521"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
 
@@ -21,11 +21,14 @@ Az Azure Container registryben zárolhatja a rendszerkép verzióját vagy a tá
 
 Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
+> [!IMPORTANT]
+> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/resource-group-lock-resources.md)érdekében.
+
 ## <a name="scenarios"></a>Forgatókönyvek
 
-Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség [](container-registry-delete.md) szerint is törölheti. Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
+Alapértelmezés szerint a Azure Container Registryban lévő címkézett képek *változhatnak*, ezért a megfelelő engedélyekkel többször is frissítheti és leküldheti a rendszerképet ugyanazzal a címkével egy beállításjegyzékbe. A tároló lemezképeit szükség szerint is [törölheti](container-registry-delete.md) . Ez a viselkedés akkor hasznos, ha képeket fejleszt, és a beállításjegyzéknek meg kell őriznie a méretet.
 
-Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat, hogy egy nem módosítható *tároló-* lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni. A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
+Ha azonban éles környezetben helyez üzembe egy tároló-lemezképet, előfordulhat *, hogy egy* nem módosítható tároló-lemezképre van szüksége. Egy nem módosítható rendszerkép az egyik, hogy véletlenül nem lehet törölni vagy felülírni. A tárház attribútumainak beállításához használja az az [ACR adattár Update][az-acr-repository-update] parancsot, így a következőket teheti:
 
 * Rendszerkép verziójának vagy teljes tárházának zárolása
 
@@ -67,7 +70,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Rendszerkép zárolása manifest Digest használatával
 
-A manifest Digest által azonosított *myrepo-vagy MyImage* 256 `sha256:...`-rendszerkép zárolásához futtassa a következő parancsot: (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
+A manifest Digest által azonosított *myrepo-vagy MyImage* -rendszerkép zárolásához (SHA-256 kivonat, `sha256:...` néven) futtassa a következő parancsot. (Egy vagy több képcímkéhez társított jegyzékfájl megkereséséhez futtassa az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancsot.)
 
 ```azurecli
 az acr repository update \

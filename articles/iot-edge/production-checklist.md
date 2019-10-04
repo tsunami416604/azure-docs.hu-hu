@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899403"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958756"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -83,7 +83,7 @@ Miután csatlakozik az IoT Edge-eszköz, ügyeljen arra, folytathatja a később
 
 ### <a name="be-consistent-with-upstream-protocol"></a>Használja következetesen a felsőbb rétegbeli protokoll
 
-Ha úgy konfigurálta a IoT Edge ügynököt a IoT Edge eszközön, hogy az alapértelmezett AMQP eltérő protokollt használjon, akkor minden jövőbeli telepítésnél ugyanazt a protokollt kell deklarálnia. Például ha az IoT Edge-eszköz, amely blokkolja az AMQP-portok proxykiszolgáló mögött található, valószínűleg konfigurálta az eszköz felett WebSocket (AMQPWS) amqp-n keresztül csatlakozhat. Amikor modulokat telepít az eszközre, konfigurálja ugyanazt a APQPWS protokollt a IoT Edge-ügynökhöz és a IoT Edge hub-hoz, különben az alapértelmezett AMQP felülbírálja a beállításokat, és megakadályozza a csatlakozást. 
+Ha úgy konfigurálta a IoT Edge ügynököt a IoT Edge eszközön, hogy az alapértelmezett AMQP eltérő protokollt használjon, akkor minden jövőbeli telepítésnél ugyanazt a protokollt kell deklarálnia. Például ha az IoT Edge-eszköz, amely blokkolja az AMQP-portok proxykiszolgáló mögött található, valószínűleg konfigurálta az eszköz felett WebSocket (AMQPWS) amqp-n keresztül csatlakozhat. Amikor modulokat telepít az eszközre, konfigurálja ugyanazt a AMQPWS protokollt a IoT Edge-ügynökhöz és a IoT Edge hub-hoz, különben az alapértelmezett AMQP felülbírálja a beállításokat, és megakadályozza a csatlakozást. 
 
 A UpstreamProtocol környezeti változót csak a IoT Edge ügynökhöz és IoT Edge hub-modulokhoz kell konfigurálnia. Minden további modulok fogad el, függetlenül a protokoll van beállítva, a futásidejű modulok. 
 
@@ -172,14 +172,14 @@ Ezenkívül a **Container-motor** tárolójegyzékek-hívást hajt végre a HTTP
 
 Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
 
-   | URL-\* cím (= helyettesítő karakter) | Kimenő TCP-portok | Használat |
+   | URL-cím (\* = helyettesítő karakter) | Kimenő TCP-portok | Használat |
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS-hozzáférés (nem kötelező) |
    | \*.azurecr.io | 443 | Személyes és harmadik féltől származó tároló-nyilvántartások |
    | \*.blob.core.windows.net | 443 | Rendszerkép-különbözetek letöltése | 
-   | \*. azure-devices.net | 5671, 8883, 443 | IoT Hub hozzáférés |
-   | \*. docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
+   | @no__t – 0.azure-devices.net | 5671, 8883, 443 | IoT Hub hozzáférés |
+   | @no__t – 0.docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Egy proxyn keresztül történő kommunikáció konfigurálása
 
@@ -205,9 +205,9 @@ Amikor egy IoT Edge-példányban tesztel, kérheti le a naplókat és hárítsa 
 
 Alapértelmezés szerint a Moby Container Engine nem állítja be a tároló naplójának méretére vonatkozó korlátozásokat. Az idő múlásával az eszköz betöltődik a naplókba, és elfogyott a szabad lemezterület. Ennek elkerüléséhez vegye figyelembe a következő lehetőségeket:
 
-**Beállítás Az összes tároló modulra érvényes globális korlátok megadása**
+@no__t – 0Option: Az összes tároló modulra érvényes globális korlátok beállítása @ no__t-0
 
-Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor naplójának beállításaiban. A következő példa a log illesztőprogramot `json-file` a (javasolt) értékre állítja be, amely korlátozza a méretet és a fájlok számát:
+Az összes tároló-naplófájl méretét korlátozhatja a tároló-motor naplójának beállításaiban. A következő példa a `json-file` (ajánlott) értékre állítja be a napló illesztőprogramját a méret és a fájlok számának korlátozásával:
 
 ```JSON
 {
@@ -228,7 +228,7 @@ Adja hozzá (vagy fűzze hozzá) ezt az információt egy `daemon.json` nevű f�
 
 A módosítások életbe léptetéséhez újra kell indítani a tároló motorját.
 
-**Beállítás Az egyes tároló modulok naplózási beállításainak módosítása**
+@no__t – 0Option: A naplózási beállítások módosítása a @ no__t-0 tároló-moduloknál
 
 Ezt megteheti az egyes modulok **createOptions** . Példa:
 
@@ -248,7 +248,7 @@ Ezt megteheti az egyes modulok **createOptions** . Példa:
 
 **További beállítások Linux rendszereken**
 
-* Konfigurálja úgy a tároló motort, hogy `systemd` az alapértelmezett naplózási illesztőprogram beállításával [](https://docs.docker.com/config/containers/logging/journald/) `journald` küldje el a naplókat a naplókba. 
+* Konfigurálja úgy a tároló motort, hogy a naplókat a `systemd` [naplóba](https://docs.docker.com/config/containers/logging/journald/) küldje el az alapértelmezett naplózási illesztőprogram `journald` beállításával. 
 
 * A logrotate eszköz telepítésével rendszeresen távolítsa el a régi naplókat az eszközről. Használja a következő fájl megadása: 
 

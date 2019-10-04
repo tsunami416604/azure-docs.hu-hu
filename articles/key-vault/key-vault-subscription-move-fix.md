@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 2159b5b515e22458edf3ba0eb5b6f23f3f37ce95
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 87025767725142cc2f861ff8b390d6ea916f8e38
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990102"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947732"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Kulcstartó bérlőazonosítójának módosítása az előfizetés áthelyezése után
 
@@ -44,6 +44,8 @@ Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties  # Mod
 Mivel ez a tár az áthelyezés előtt volt az A bérlőn, a $vault eredeti értéke **. A Properties. TenantId** az a bérlő, a **(Get-AzContext). A bérlő. TenantId** a bérlő B.
 
 Most, hogy a tároló hozzá van rendelve a megfelelő bérlői AZONOSÍTÓhoz, és a régi hozzáférési szabályzatok bejegyzései törlődnek, állítsa be az új hozzáférési szabályzat bejegyzéseit a [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy).
+
+Ha az MSI-t használja, frissítenie kell az MSI-identitást is, mivel a régi identitás többé nem lesz a megfelelő HRE-bérlőben.
 
 ## <a name="next-steps"></a>További lépések
 

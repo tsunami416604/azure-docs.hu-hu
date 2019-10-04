@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552953"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959024"
 ---
 # <a name="scenario-availability"></a>Forgatókönyv rendelkezésre állása
 
@@ -26,6 +26,10 @@ A Speech Service SDK számos különböző forgatókönyvet tartalmaz a programo
 - **Szöveg – beszéd (TTS)**
   - C++/Windows & Linux
   - C#/Windows & UWP & Unity
+  - Java (JRE és Android)
+  - Python
+  - Swift
+  - Objective-C
   - A TTS REST API minden más helyzetben használható.
 - **Wake Word (kulcsszó-megfigyelő/KWS)**
   - C++/Windows & Linux
@@ -46,4 +50,4 @@ A Speech Service SDK számos különböző forgatókönyvet tartalmaz a programo
 - **Codec tömörített hangbemenet**
   - C++/Linux
   - C#/Linux
-  - Java/Linux & Android
+  - Java/Linux, Android és iOS

@@ -1,20 +1,20 @@
 ---
-title: A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban | Microsoft Docs
+title: A monitorozás konfigurálása – Azure digitális Twins | Microsoft Docs
 description: A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 3fb00977a2e1dba5cf9627b8081aee2f76bc8bd4
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845462"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950001"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban
 
@@ -40,17 +40,17 @@ Az Azure Digital Twins tevékenység-naplózása alapértelmezés szerint enged�
 1. Válassza ki az Azure Digital Twins-példányt.
 1. A megjelenítési panel felépítéséhez válassza a **műveletnapló** elemet:
 
-    [![Műveletnapló](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
+    [@no__t – 1Activity napló](media/how-to-configure-monitoring/activity-log.png)](media/how-to-configure-monitoring/activity-log.png#lightbox)
 
 A speciális tevékenységek naplózása:
 
 1. Válassza a **naplók** lehetőséget a **Activity log Analytics áttekintésének**megjelenítéséhez:
 
-    [![Kijelölés](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
+    [@no__t – 1Selection](media/how-to-configure-monitoring/activity-log-select.png)](media/how-to-configure-monitoring/activity-log-select.png#lightbox)
 
 1. A **Activity log Analytics áttekintése** összefoglalja az alapvető tevékenység naplójának adatait:
 
-    [![A Activity log Analytics áttekintése]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
+    [@no__t – 1Activity log Analytics – áttekintés]( media/how-to-configure-monitoring/log-analytics-overview.png)]( media/how-to-configure-monitoring/log-analytics-overview.png#lightbox)
 
 >[!TIP]
 >A **Tevékenységnaplók** használatával gyors elemzéseket készíthet az előfizetési szintű eseményekről.
@@ -70,12 +70,12 @@ Diagnosztikai naplók engedélyezése egy példányhoz:
 1. Hozza létre az erőforrást Azure Portal.
 1. **Diagnosztikai beállítások**kiválasztása:
 
-    [![Diagnosztikai beállítások – egy](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [@no__t – 1Diagnostic-beállítások](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Jelölje be **a diagnosztika bekapcsolása** az adatok gyűjtéséhez (ha korábban nem engedélyezett) lehetőséget.
 1. Adja meg a kért mezőket, és válassza ki, hogyan és hol lesznek mentve az adat:
 
-    [![Diagnosztikai beállítások – kettő](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [@no__t – 1Diagnostic beállítások – kettő](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     A diagnosztikai naplókat gyakran az [Azure file Storage](../storage/files/storage-files-deployment-guide.md) és az [Azure monitor-naplók](../azure-monitor/log-query/get-started-portal.md)megosztva használják. Mindkét lehetőség kiválasztható.
 
@@ -97,17 +97,17 @@ Példák a következőkre:
 A teljes naplózási lekérdezéseket [Azure monitor naplókon](../azure-monitor/log-query/log-query-overview.md)keresztül biztosítjuk. A következő hatékony funkciók beállítása:
 
 1. **Log Analytics** keresése a Azure Portalban.
-1. Megjelenik az elérhető **log Analytics munkaterület** -példányok. Válasszon egyet, és válassza ki a lekérdezni kívánt naplókat:
+1. Megjelenik az elérhető **log Analytics munkaterület** -példányok. Válasszon egyet, és válassza ki a lekérdezni kívánt **naplókat** :
 
-    [![Log Analytics](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
+    [@no__t – 1Log-elemzés](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
 1. Ha még nem rendelkezik **log Analytics munkaterület** -példánnyal, létrehozhat egy munkaterületet az **Add (Hozzáadás** ) gomb kiválasztásával:
 
-    [![OMS létrehozása](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [@no__t – 1Create OMS](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 A **log Analytics munkaterület** -példány üzembe helyezése után hatékony lekérdezéseket használhat a több naplóban található bejegyzések kereséséhez, vagy adott feltételek alapján kereshet a **naplózási**szolgáltatás használatával:
 
-   [![Naplózás kezelése](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [@no__t – 1Log-kezelés](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 A hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Bevezetés a lekérdezések](../azure-monitor/log-query/get-started-queries.md)használatába.
 
@@ -116,7 +116,7 @@ A hatékony lekérdezési műveletekkel kapcsolatos további információkért l
 
 Azure Monitor a naplók hatékony és riasztási értesítési szolgáltatásokat is biztosítanak, amelyek megtekinthetők a **problémák diagnosztizálásával és megoldásával**:
 
-   [![Riasztási és hibajelentési értesítések](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [@no__t – 1Alert és hibákra vonatkozó értesítések](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Több alkalmazás-funkció, előfizetés vagy szolgáltatás esetén **log Analytics munkaterület** használatával kérdezheti le a napló előzményeit.

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874672"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949530"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -82,9 +82,7 @@ Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai tá
 
 Ha még nem tette meg,
 
-- Regisztráljon a [Microsoft Partner Network](https://partner.microsoft.com/membership).
-- Hozzon létre egy [Microsoft-fiókot](https://account.microsoft.com/account/) (az Azure Marketplace Transact-ajánlatokhoz szükséges, mások számára ajánlott).
-- Küldje el a [piactér regisztrációs űrlapot](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv). További információt a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) című témakörben talál.
+- [Regisztráljon](https://azuremarketplace.microsoft.com/sell) a piactéren.
 
 Ha regisztrálva van, és új ajánlatot hoz létre, vagy dolgozik egy meglévőn,
 

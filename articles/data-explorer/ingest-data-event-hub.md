@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: a83e2163c9aa970932f2eea8e2e04a715107ac7f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937398"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950256"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
@@ -114,6 +114,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     | Eseményközpont-névtér | A névtér egyedi neve | A korábban a névtér azonosításához választott név. |
     | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
+    | Esemény rendszertulajdonságai | Válassza ki a megfelelő tulajdonságokat | Az [Event hub rendszertulajdonságai](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) |
     | | |
 
     Céltábla:
@@ -124,7 +125,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Tábla | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, rendszerállapot-kimutatás, SCSV, TSV és TXT. Támogatott tömörítési beállítások: GZip |
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE és TXT. Támogatott tömörítési beállítások: GZip |
     | Oszlop-hozzárendelés | *TestMapping* | A **TestDatabase** adatbázisban létrehozott leképezés, amely a bejövő JSON-adatokat leképezi a **TestTable** tábla esetében használt oszlopnevekre és adattípusokra. JSON-, többsoros JSON-vagy AVRO szükséges, és más formátumokhoz nem kötelező.|
     | | |
 

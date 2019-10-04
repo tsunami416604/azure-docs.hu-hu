@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: c39db870e44d4e810817b70e2793b8805088180e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 325e84ec4489eb2f1f530585af7d3c4bc4b201fc
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932540"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949570"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK az SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -45,7 +45,15 @@ ms.locfileid: "70932540"
 > [!NOTE]
 > Ha .NET Core-t használ, tekintse meg a .net-szabványt megcélzó [.net SDK](sql-api-sdk-dotnet-standard.md)legújabb 3. x verzióját. 
 
-### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
+### <a name="a-name270270"></a>@no__t – 02.7.0
+
+* Tömbök és objektumok támogatása lekérdezési sorrendben
+* Hatékony partíciós kulcsok ütközésének kezelése
+* LINQ-támogatás hozzáadva több OrderBy operátorhoz a ThenBy-kezelővel
+* Az egyéni szerializálási beállítások mostantól az összes upsert és a Replace műveletre lesznek alkalmazva
+* Rögzített AysncCache holtponti probléma, hogy egy egyszálas Feladatütemezővel működjön
+
+### <a name="a-name260260"></a>@no__t – 02.6.0
 
 * PortReusePolicy hozzáadva a ConnectionPolicy-hoz
 * Rögzített ntdll! RtlGetVersion TypeLoadException probléma, ha az SDK-t egy UWP-alkalmazásban használják
@@ -254,7 +262,7 @@ Az Azure Cosmos DB .NET Core előzetes SDK funkcióparitás legújabb verziójá
 * [A particionált gyűjtemények](partition-data.md).
 * [Többrégiós adatbázisfiókhoz és georeplikáció útján](distribute-data-globally.md).
 
-Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy a [GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues)-tárházban található problémát.
+Ha az SDK-val kapcsolatos kérdése van, tegye közzé a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), vagy a [GitHub-tárházban](https://github.com/Azure/azure-documentdb-dotnet/issues)található problémát.
 
 ## <a name="release--retirement-dates"></a>Kiadási & nyugdíjazási dátumok
 A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
@@ -272,6 +280,7 @@ A szolgáltatás elutasítja a kivont SDK használatával Azure Cosmos DB kérel
 
 | Version | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.7.0](#2.7.0) |Szeptember 23., 2019 |--- |
 | [2.6.0](#2.6.0) |2019. augusztus 30-ig |--- |
 | [2.5.1](#2.5.1) |Július 02, 2019 |--- |
 | [2.4.1](#2.4.1) |2019. június 20. |--- |

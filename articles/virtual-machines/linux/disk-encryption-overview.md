@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14e82bc5f58383c37bfd82d793851fc7e927b2f4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828441"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948192"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -57,6 +57,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | Ubuntu | 18,04| Operációsrendszer- és lemez |
 | Ubuntu | 16.04| Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | Operációsrendszer- és lemez |
+| RHEL | 7,7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7,6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
@@ -64,6 +65,7 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 | RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
 | RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
+| CentOS | 7,7 | Operációsrendszer- és lemez |
 | CentOS | 7,6 | Operációsrendszer- és lemez |
 | CentOS | 7.5 | Operációsrendszer- és lemez |
 | CentOS | 7.4 | Operációsrendszer- és lemez |

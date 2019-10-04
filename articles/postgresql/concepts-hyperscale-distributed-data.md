@@ -1,18 +1,18 @@
 ---
 title: Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
-description: A kiszolgálói csoportban elosztott táblák és szegmensek.
+description: Ismerje meg az elosztott táblákat, a táblákat, a helyi táblákat és a szegmenseket Azure Database for PostgreSQLban.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998040"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947489"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Elosztott adatforgalom Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -51,7 +51,7 @@ A helyi táblák jó jelöltje olyan kis adminisztrációs táblák, amelyek nem
 
 Az előző szakasz azt ismerteti, hogy az elosztott táblák hogyan tárolódnak a munkavégző csomópontokon. Ez a szakasz a technikai részleteket ismerteti.
 
-A `pg_dist_shard` koordinátor metaadat-táblázata a rendszeren lévő összes elosztott tábla minden szegmensének sorát tartalmazza. A sor egy egész számmal rendelkező szegmens-AZONOSÍTÓra illeszkedik egy kivonatoló térben (shardminvalue, shardmaxvalue).
+A koordinátor `pg_dist_shard` metaadat-táblázata tartalmaz egy sort a rendszeren lévő egyes elosztott táblák mindegyik szegmenséhez. A sor egy egész számmal rendelkező szegmens-AZONOSÍTÓra illeszkedik egy kivonatoló térben (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Ha a koordinátor-csomópont meg szeretné állapítani `github_events`, hogy melyik szegmens tartalmaz egy sort, akkor a sorban lévő eloszlás oszlop értékét kivonata. Ezután a csomópont ellenőrzi\', hogy a szegmens k tartománya tartalmazza-e a kivonatos értéket. A tartományok úgy vannak meghatározva, hogy a kivonatoló függvény képe a különálló Unió legyen.
+Ha a koordinátor-csomópont szeretné meghatározni, hogy melyik szegmens tartalmaz egy `github_events` sort, akkor az a sorban lévő eloszlás oszlop értékét kivonata. Ezután a csomópont ellenőrzi, hogy a szegmens @ no__t-0s tartomány tartalmazza-e a kivonatos értéket. A tartományok úgy vannak meghatározva, hogy a kivonatoló függvény képe a különálló Unió legyen.
 
 ### <a name="shard-placements"></a>Szilánkok
 
-Tegyük fel, hogy a szegmens 102027 a kérdéses sorhoz van társítva. A sor olvasása vagy írása egy feldolgozónak `github_events_102027` nevezett táblában történik. Melyik feldolgozót? Ezt teljes mértékben a metaadat-táblázatok határozzák meg. A szegmensek feldolgozóra való hozzárendelését nevezzük a szilánkok elhelyezésének.
+Tegyük fel, hogy a szegmens 102027 a kérdéses sorhoz van társítva. A sor olvasása vagy írása egy `github_events_102027` nevű táblázatban történik az egyik feldolgozóban. Melyik feldolgozót? Ezt teljes mértékben a metaadat-táblázatok határozzák meg. A szegmensek feldolgozóra való hozzárendelését nevezzük a szilánkok elhelyezésének.
 
-A koordinátor csomópontja a lekérdezéseket olyan töredékekre írja, amelyek az adott táblákra `github_events_102027` hivatkoznak, például a megfelelő munkatársain futtatják ezeket a töredékeket. Íme egy példa arra, hogy egy lekérdezés a háttérben fusson, hogy megtalálja a csomópontot, amely a 102027-es szegmens AZONOSÍTÓját tárolja.
+A koordinátor csomópontja átírja a lekérdezéseket olyan töredékekre, amelyek az adott táblákra (például @no__t – 0) hivatkoznak, és futtatják ezeket a töredékeket a megfelelő munkavállalókon. Íme egy példa arra, hogy egy lekérdezés a háttérben fusson, hogy megtalálja a csomópontot, amely a 102027-es szegmens AZONOSÍTÓját tárolja.
 
 ```sql
 SELECT

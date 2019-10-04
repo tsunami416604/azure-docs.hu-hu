@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 6327f0c14b46ceaadbf7adaa58a70c32b39b7c2a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967230"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960496"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Összetevők hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -38,7 +38,7 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    – vagy –
 
-   Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
+   Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integráció** > **logikai alkalmazás**lehetőséget.
 
 1. Adja meg a logikai alkalmazáshoz használni kívánt nevet, Azure-előfizetést és Azure-erőforráscsoportot (új vagy meglévő).
 
@@ -59,18 +59,17 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
 ## <a name="create-integration-accounts"></a>Integrációs fiókok létrehozása
 
-A létrehozáskor kiválasztott [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) alapján az ISE külön díj nélkül tartalmazza az integrációs fiók használatát. Az integrációs szolgáltatási környezetekben (ISE) található logikai alkalmazások csak olyan integrációs fiókokra hivatkozhatnak, amelyek ugyanabban az ISE-ban találhatók. Tehát ahhoz, hogy egy integrációs fiók működjön a Logic apps szolgáltatással egy ISE-ben, az integrációs fióknak és a Logic apps-nek *ugyanazt a környezetet* kell használnia, mint a helyük. Az integrációs fiókokkal és a ISEs kapcsolatos további [információkért lásd: integrációs fiókok és ISE.](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
-)
+A létrehozáskor kiválasztott [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) alapján az ISE külön díj nélkül tartalmazza az integrációs fiók használatát. Az integrációs szolgáltatási környezetekben (ISE) található logikai alkalmazások csak olyan integrációs fiókokra hivatkozhatnak, amelyek ugyanabban az ISE-ban találhatók. Tehát ahhoz, hogy egy integrációs fiók működjön a Logic apps szolgáltatással egy ISE-ben, az integrációs fióknak és a Logic apps-nek *ugyanazt a környezetet* kell használnia, mint a helyük. Az integrációs fiókokkal és a ISEs kapcsolatos további információkért lásd: [integrációs fiókok és ISE](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment).
 
 ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lépéseket:
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **integrációs fiókok**@no__t – 2**Hozzáadás**lehetőséget.
 
    ![Új integrációs fiók hozzáadása az ISE-hez](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
    – vagy –
 
-   Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **integrációs fiók**lehetőséget.
+   Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integrációs** > **integrációs fiók**lehetőséget.
 
 1. Adja meg az integrációs fiókjához használni kívánt nevet, Azure-előfizetést, Azure-erőforráscsoportot (új vagy meglévő) és díjszabási szintet.
 
@@ -106,7 +105,7 @@ Felveheti a Microsoft által felügyelt összekötőket, amelyek elérhetők az 
 
 Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket az egyéni összekötőket közvetlenül az ISE-ben.
 
-1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **Egyéni összekötők** > **Hozzáadás**elemet.
+1. Keresse meg és nyissa meg az ISE-t, ha még nincs megnyitva. Az ISE menü **Beállítások**területén válassza az **egyéni összekötők** > **Hozzáadás**elemet.
 
    ![Egyéni összekötő létrehozása](./media/add-artifacts-integration-service-environment-ise/add-custom-connector-to-ise.png)
 

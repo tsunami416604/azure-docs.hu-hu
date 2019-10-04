@@ -1,19 +1,19 @@
 ---
-title: A digitális Twins Object models és a térbeli intelligencia Graph ismertetése | Microsoft Docs
+title: Az Azure digitális Twins Object models és a térbeli intelligencia Graph ismertetése | Microsoft Docs
 description: Az Azure Digital Twins szolgáltatással emberek, helyek és eszközök közötti összefüggéseket modellezhet
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177065"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950015"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A digitális ikrek Object models és a térbeli intelligencia Graph ismertetése
 
@@ -23,7 +23,7 @@ A digitális Twins-objektumok modelljei a tartományra jellemző fogalmakat, kat
 
 A Digital ikrek Object models és az ontológia a helyén egy _térbeli gráfot_is feltölthet. A térbeli diagramok a helyek, az eszközök és a IoT-megoldásokhoz kapcsolódó személyek közötti kapcsolatok számos kapcsolatának virtuális ábrázolásai. Ez az ábra egy intelligens épületben lévő ontológia-t használó térbeli gráf példáját mutatja be.
 
-[![Digitális Twins térbeli gráf-összeállítás](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
+[@no__t – 1Digital Twins térbeli gráf-összeállítás](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 A térbeli gráf a szóközöket, az eszközöket, az érzékelőket és a felhasználókat egyesíti. Mindegyik össze van kapcsolva oly módon, hogy a valós világban modellezhető legyen. Ebben a példában a 43-es helyszín négy emelettel rendelkezik, amelyek mindegyike számos különböző területtel rendelkezik. A felhasználók a munkaállomásokhoz vannak társítva, és hozzáférést kapnak a gráf egyes részeihez. A rendszergazdának joga van a térbeli gráf módosítására, míg a látogató jogosult arra, hogy csak bizonyos építési adatszolgáltatásokat tekintse meg.
 
@@ -31,28 +31,28 @@ A térbeli gráf a szóközöket, az eszközöket, az érzékelőket és a felha
 
 A digitális Twins-objektumok modelljei a következő fő kategóriákat támogatják:
 
-- **A szóközök** virtuális vagy fizikai helyek `Tenant`, például `Customer` `Region`,, és `Venue`.
-- Az **eszközök** virtuális vagy fizikai berendezések, például `AwesomeCompany Device` és. `Raspberry Pi 3`
-- Az **érzékelők** olyan objektumok, amelyek azonosítják az eseményeket `AwesomeCompany Temperature Sensor` , `AwesomeCompany Presence Sensor`például és.
+- A **szóközök** virtuális vagy fizikai helyek, például `Tenant`, `Customer`, `Region` és `Venue`.
+- Az **eszközök** virtuális vagy fizikai berendezések, például `AwesomeCompany Device` és `Raspberry Pi 3`.
+- Az **érzékelők** olyan objektumok, amelyek az eseményeket (például `AwesomeCompany Temperature Sensor` és `AwesomeCompany Presence Sensor`) azonosítják.
 - A **felhasználók** azonosítják az utasokat és azok jellemzőit.
 
 Az objektumok egyéb kategóriái a következők:
 
-- Az **erőforrások** egy szóközzel vannak csatolva, és jellemzően olyan Azure-erőforrásokat jelölnek, amelyeket a térbeli gráf objektumai használnak `IoTHub`. például:.
-- A **Blobok** objektumokhoz (például szóközökhöz, eszközökhöz, érzékelőkhöz és felhasználókhoz) vannak csatolva. A rendszer a MIME-típust és a metaadatokat (például `maps` `pictures`,, és `manuals`) tartalmazó fájlként használja.
-- A **kiterjesztett típusok** olyan bővíthető enumerálások, amelyek meghatározott jellemzőkkel (például `SpaceType` és `SpaceSubtype`) bővítik az entitásokat.
-- **A ontológiákat** kiterjesztett típusok `Default`(például `Building` `BACnet`,,, és `EnergyGrid`) halmazát jelölik.
-- A **Tulajdonságok kulcsai és értékei** a szóközök, eszközök, érzékelők és felhasználók egyéni jellemzői. Használhatók a beépített jellemzőkkel együtt, például `DeltaProcessingRefreshTime` kulcsként és `10` értékként.
-- A **szerepkörök** a térbeli gráf felhasználóihoz és eszközeihez rendelt engedélyek készletei, például `Space Administrator` `User Administrator`,, és `Device Administrator`.
+- Az **erőforrások** egy szóközzel vannak csatolva, és jellemzően a térbeli gráf objektumai által használt Azure-erőforrásokat jelölik, például `IoTHub`.
+- A **Blobok** objektumokhoz (például szóközökhöz, eszközökhöz, érzékelőkhöz és felhasználókhoz) vannak csatolva. A MIME-típust és metaadatokat tartalmazó fájlként használják, például `maps`, `pictures` és `manuals`.
+- A **kiterjesztett típusok** olyan bővíthető enumerálások, amelyek adott jellemzőkkel bővítik az entitásokat, például: `SpaceType` és `SpaceSubtype`.
+- A **ontológiákat** kiterjesztett típusok (például `Default`, `Building`, `BACnet` és `EnergyGrid`) halmazát jelölik.
+- A **Tulajdonságok kulcsai és értékei** a szóközök, eszközök, érzékelők és felhasználók egyéni jellemzői. A beépített jellemzőkkel együtt használhatók, például @no__t – 0, kulcs és `10` értékként.
+- A **szerepkörök** a térbeli gráf felhasználóihoz és eszközeihez rendelt engedélyek készletei, például `Space Administrator`, `User Administrator` és `Device Administrator`.
 - A **szerepkör-hozzárendelések** egy szerepkör és egy, a térbeli gráfban található objektum közötti társítások. Előfordulhat például, hogy egy felhasználó vagy egy szolgáltatásnév engedélyt kap a térbeli gráfban található terület kezelésére.
 - A **biztonsági kulcsok tárolói** biztosítják a hierarchiában lévő összes eszköz biztonsági kulcsait, hogy az eszköz biztonságosan tudjon kommunikálni a digitális ikrekkel.
-- **Felhasználó által definiált függvények** (UDF) lehetővé teszi a testreszabható érzékelő telemetria feldolgozását a térbeli gráfon belül. Az UDF például a következőket teheti:
+- A **felhasználó által definiált függvények** (UDF) lehetővé teszik a testreszabható érzékelő telemetria feldolgozását a térbeli gráfon belül. Az UDF például a következőket teheti:
   - Állítsa be az érzékelő értékét.
   - Végezzen egyéni logikát az érzékelő beolvasása alapján, és állítsa be a kimenetet egy szóközzel.
   - Metaadatok csatolása egy szóközzel.
   - Értesítések küldése, ha az előre meghatározott feltételek teljesülnek. A UDF jelenleg JavaScript nyelven is megírhatók.
 - Az **egyeztető** olyan objektumok, amelyek meghatározzák, hogy mely UDF kell végrehajtani egy adott telemetria-üzenet esetében.
-- A **végpontok** azok a helyszínek, ahol a telemetria üzenetek és a digitális ikrek eseményei irányíthatók, például `Event Hub` `Service Bus`:, és `Event Grid`.
+- A **végpontok** azok a helyszínek, ahol a telemetria üzenetek és a digitális ikrek eseményei irányíthatók, például `Event Hub`, `Service Bus` és `Event Grid`.
 
 ## <a name="spatial-intelligence-graph"></a>Térbeliintelligencia-diagramok
 

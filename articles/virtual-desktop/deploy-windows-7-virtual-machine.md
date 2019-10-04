@@ -5,16 +5,16 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679918"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947571"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése Windows rendszerű virtuális asztalon
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
 Windows 7 rendszerű virtuális gép (VM) Windows rendszerű virtuális asztalon való üzembe helyezésének folyamata némileg eltér a Windows újabb verzióit futtató virtuális gépeknél. Ebből az útmutatóból megtudhatja, hogyan helyezheti üzembe a Windows 7 rendszert.
 
@@ -43,9 +43,15 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
      shutdown /r /t 0
      ```
     
+11. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) található utasításokat.
+12. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+13. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
+14. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 11. lépésben létrehozott regisztrációs kulcsot.
+15. Nyissa meg a Windows rendszerű virtuális asztali telepítőt, és kövesse az utasításokat.
+16. Ha szeretné, tiltsa le a TCP/3389 portot a virtuális géphez való közvetlen RDP protokoll-hozzáférés eltávolításához.
+
 ## <a name="next-steps"></a>További lépések
 
-A Windows 7 rendszerű virtuális gép most már készen áll a Windows rendszerű virtuális asztali telepítésre. A telepítés befejezéséhez kövesse a [virtuális gépek előkészítése a Windows rendszerű virtuális asztali ügynök telepítéséhez](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations) című témakör utasításait.
+A Windows rendszerű virtuális asztal üzembe helyezése most már készen áll a használatra. A kezdéshez [töltse le a Windows rendszerű virtuális asztali ügyfél legújabb verzióját](https://aka.ms/wvd/clients/windows) .
 
 Az ismert problémák és a Windows 7 rendszerhez készült hibaelhárítási utasítások listáját a Windows rendszerű virtuális asztalon tekintse meg a hibaelhárítási cikket a Windows 7 rendszerű virtuális [gépek hibaelhárítása a Windows rendszerű virtuális asztalon](troubleshoot-windows-7-vm.md)című cikkben.
-

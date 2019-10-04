@@ -1,26 +1,26 @@
 ---
-title: Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban – Azure
-description: Hogyan oldhatók meg a bérlők és a munkamenet-gazdagépek virtuális gépe (VM) Windows rendszerű virtuális asztali környezetben való konfigurálásakor felmerülő problémák.
+title: A munkamenet-gazdagép virtuális gép konfigurációja – Azure
+description: A Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek konfigurálásakor felmerülő problémák megoldása.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174129"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841298"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
+# <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
 Ez a cikk a Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek (VM-EK) konfigurálásakor felmerülő problémák elhárítására használható.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 
-Jelenleg nem veszünk fel támogatási eseteket, amíg a Windows rendszerű virtuális asztal előzetes verzióban érhető el. Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , és beszéljen a Windows Virtual Desktop szolgáltatásról a termék csapatával és az aktív közösség tagjaival.
+Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , és beszéljen a Windows Virtual Desktop szolgáltatásról a termék csapatával és az aktív közösség tagjaival.
 
 ## <a name="vms-are-not-joined-to-the-domain"></a>A virtuális gépek nem csatlakoznak a tartományhoz
 
@@ -329,7 +329,7 @@ A Windows 10 1903-es verzióra való frissítéshez:
 1. Ha még nem tette meg, töltse le és telepítse a [Windows 10 május 2019 frissítését](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
 2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
 3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
 5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
 6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
     
@@ -344,7 +344,7 @@ A gazdagép-készlet újbóli üzembe helyezése a legújabb képpel:
 1. Kövesse a [gazdagép létrehozása az Azure Marketplace](create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg meg nem kérdezi, hogy kiválassza-e a rendszerkép operációs rendszerének verzióját. Az Office 365 ProPlus vagy anélkül is választhat Windows 10 Enterprise-alapú több munkamenetet.
 2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
 3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
 5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
 6. A megnyíló ablakban először válassza az **engedélyezve**lehetőséget, majd a beállítások alatt adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**.
 7. Kattintson az **Alkalmaz** gombra.
@@ -357,7 +357,7 @@ Ha a verziószáma "1903" értéket ad meg, kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
 2. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-3. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre.
+3. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
 4. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
 6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
     
@@ -374,7 +374,7 @@ Ha a verziószáma "1903" értéket ad meg, kövesse az alábbi utasításokat:
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához lásd: [Távoli asztal ügyfélkapcsolatok](troubleshoot-client-connection.md).
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
-- Az előzetes verziójú szolgáltatással kapcsolatos további tudnivalókért lásd: a [Windows rendszerű virtuális asztali előnézet környezete](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)című témakört.
 - A következő témakörben talál útmutatást [a hibakereséshez: oktatóanyag: Resource Manager-sablonok központi telepítésének](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)hibája.
 - További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

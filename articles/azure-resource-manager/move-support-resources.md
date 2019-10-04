@@ -4,14 +4,14 @@ description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthely
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: b34c244708c52ec7324c766286aff8ee9340db0b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 81096a4299ec190cb4299f1b8ea4f9c2533d37ad
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687118"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948031"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet-támogatás áthelyezése az erőforrásokhoz
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -711,7 +711,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | activitylogalerts | Nem | Nem |
 > | alertrules | Igen | Igen |
 > | autoscalesettings | Igen | Igen |
-> | Összetevők | Igen | Igen |
+> | összetevők | Igen | Igen |
 > | guestdiagnosticsettings | Nem | Nem |
 > | metricalerts | Nem | Nem |
 > | notificationgroups | Nem | Nem |
@@ -988,7 +988,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | Irányítópultok | Igen | Igen |
+> | irányítópultok | Igen | Igen |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
@@ -1330,6 +1330,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
 ## <a name="next-steps"></a>További lépések
-Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy](resource-group-move-resources.md)előfizetésbe.
+Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](resource-group-move-resources.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket, töltse le a [Move-support-Resources. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv)fájlt.

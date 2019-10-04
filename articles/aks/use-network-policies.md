@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 1339fe66a4925104d459c0491caccdd7db5998a7
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114463"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950312"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,14 +22,14 @@ Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és hogy
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 > [!TIP]
 > Ha az előzetes verzióban használta a hálózati házirend szolgáltatást, azt javasoljuk, hogy [hozzon létre egy új fürtöt](#create-an-aks-cluster-and-enable-network-policy).
 > 
 > Ha továbbra is használni szeretné a hálózati házirendet használó meglévő tesztelési fürtöket az előzetes verzióban, frissítse a fürtöt a legújabb GA-kiadás új Kubernetes-verziójára, majd telepítse a következő YAML-jegyzéket az összeomlási metrikák kiszolgálójának és Kubernetes kijavításához. műszerfal. Ez a javítás csak a tarka hálózati házirend-motort használó fürtök esetében szükséges.
 >
-> Ajánlott biztonsági eljárásként tekintse [át ennek a YAML][calico-aks-cleanup] -jegyzéknek a tartalmát annak megismeréséhez, hogy mi történik az AK-fürtön való üzembe helyezéssel.
+> Ajánlott biztonsági eljárásként [tekintse át ennek a YAML-jegyzéknek a tartalmát][calico-aks-cleanup] annak megismeréséhez, hogy mi történik az AK-fürtön való üzembe helyezéssel.
 >
 > `kubectl delete -f https://raw.githubusercontent.com/Azure/aks-engine/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml`
 
@@ -46,23 +46,18 @@ Ezek a hálózati házirend-szabályok YAML-jegyzékként vannak meghatározva. 
 Az Azure két módszert biztosít a hálózati házirend megvalósítására. Ha AK-fürtöt hoz létre, válasszon hálózati házirend-beállítást. A fürt létrehozása után a házirend-beállítás nem módosítható:
 
 * Az Azure saját implementációja, az *Azure hálózati szabályzatok*.
-* *Tarka hálózati házirendek*, a tigera által alapított nyílt forráskódú hálózati és hálózati biztonsági [][tigera]megoldás.
+* *Tarka hálózati házirendek*, a [tigera][tigera]által alapított nyílt forráskódú hálózati és hálózati biztonsági megoldás.
 
 Mindkét implementáció Linux *iptables* -t használ a megadott házirendek betartatására. A szabályzatok az engedélyezett és a nem engedélyezett IP-párok készletében vannak lefordítva. Ezeket a párokat ezután az iptables-szűrési szabályokként kell programozni.
-
-A hálózati házirend csak az Azure CNI (speciális) beállítással működik. A megvalósítás eltérő a két lehetőség esetében:
-
-* *Azure hálózati házirendek* – az Azure CNI egy hidat állít be a virtuálisgép-gazdagépen a csomóponton belüli hálózatkezeléshez. A szűrési szabályok akkor lépnek életbe, amikor a csomagok áthaladnak a hídon.
-* *Tarka hálózati házirendek* – az Azure CNI helyi kernel-útvonalakat állít be a csomóponton belüli forgalomhoz. A szabályzatok a pod hálózati adapterén lesznek alkalmazva.
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Az Azure-és a tarka-szabályzatok és azok képességei közötti különbségek
 
 | Képesség                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Támogatott platformok                      | Linux                      | Linux                       |
-| Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI                   |
+| Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI és kubenet       |
 | Megfelelőség a Kubernetes-specifikációval | Minden támogatott házirend-típus |  Minden támogatott házirend-típus |
-| További funkciók                      | Nincsenek                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. További információ a `calicoctl` parancssori felület ezen Kiterjesztett funkciók kezeléséhez való használatáról: [calicoctl felhasználói referenciája][calicoctl]. |
+| További funkciók                      | Nincsenek                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. A kibővített funkciók kezeléséhez a `calicoctl` CLI használatával kapcsolatos további információkért lásd: [calicoctl felhasználói referenciája][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat támogatja | A tarka közösségi támogatás. A további fizetős támogatással kapcsolatos további információkért lásd a [Project tarka támogatási lehetőségeit][calico-support]. |
 | Naplózás                                  | Az iptables-ben hozzáadott vagy törölt szabályok minden gazdagépen bejelentkezve vannak a */var/log/Azure-NPM.log* alá | További információ: a [tarka összetevő naplói][calico-logs] |
 
@@ -76,7 +71,7 @@ Ha működés közben szeretné megtekinteni a hálózati házirendeket, hozzon 
 
 Először hozzon létre egy AK-fürtöt, amely támogatja a hálózati házirendet. A hálózati házirend szolgáltatás csak akkor engedélyezhető, ha a fürt létrejött. A hálózati házirend nem engedélyezhető egy meglévő AK-fürtön.
 
-Ha a hálózati házirendet AK-fürthöz szeretné használni, az [Azure CNI beépülő modult][azure-cni] kell használnia, és meg kell határoznia a saját virtuális hálózatát és alhálózatait. A szükséges alhálózati tartományok megtervezésével kapcsolatos részletes információkért lásd: [speciális hálózatkezelés konfigurálása][use-advanced-networking].
+Az Azure hálózati házirendjének használatához az [Azure CNI beépülő modult][azure-cni] kell használnia, és meg kell határoznia a saját virtuális hálózatát és alhálózatait. A szükséges alhálózati tartományok megtervezésével kapcsolatos részletes információkért lásd: [speciális hálózatkezelés konfigurálása][use-advanced-networking]. A tarka hálózati házirend ugyanazzal az Azure CNI beépülő modullal vagy a Kubenet CNI beépülő modullal is használható.
 
 A következő példa szkriptet:
 
@@ -84,7 +79,7 @@ A következő példa szkriptet:
 * Létrehoz egy Azure Active Directory (Azure AD) szolgáltatásnevet az AK-fürthöz való használatra.
 * *Közreműködői* engedélyeket rendel a virtuális hálózaton található AK-fürtszolgáltatási egyszerű szolgáltatáshoz.
 * Létrehoz egy AK-fürtöt a megadott virtuális hálózatban, és engedélyezi a hálózati házirendet.
-    * Az *Azure* hálózati házirend-beállítás használatos. Ha ehelyett hálózati házirendként szeretné használni a tarkat, használja `--network-policy calico` a paramétert.
+    * Az *Azure* hálózati házirend-beállítás használatos. Ha ehelyett hálózati házirendként szeretné használni a Tarkat, használja a `--network-policy calico` paramétert. Megjegyzés: A tarkat `--network-plugin azure` vagy `--network-plugin kubenet` értékkel lehet használni.
 
 Adja meg saját biztonságos *SP_PASSWORD*. Lecserélheti a *RESOURCE_GROUP_NAME* és a *CLUSTER_NAME* változót:
 
@@ -139,7 +134,7 @@ az aks create \
     --network-policy azure
 ```
 
-A fürt létrehozása néhány percet vesz igénybe. Ha a fürt elkészült, konfigurálja `kubectl` úgy a Kubernetes-fürthöz való csatlakozást, hogy az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot használja. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára:
+A fürt létrehozása néhány percet vesz igénybe. Ha a fürt elkészült, konfigurálja `kubectl` értéket a Kubernetes-fürthöz való csatlakozáshoz az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancs használatával. Ez a parancs letölti a hitelesítő adatokat, és konfigurálja a Kubernetes CLI-t a használatára:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $CLUSTER_NAME
@@ -168,7 +163,7 @@ Hozzon létre egy másik hüvelyt, és csatoljon egy terminál-munkamenetet anna
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
+A rendszerhéj parancssorába `wget` használatával ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend
@@ -192,7 +187,7 @@ exit
 
 ### <a name="create-and-apply-a-network-policy"></a>Hálózati házirend létrehozása és alkalmazása
 
-Most, hogy megerősítettük, használhatja az alapszintű NGINX-weblapot a minta háttér Pod-on, hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Hozzon létre egy `backend-policy.yaml` nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a jegyzékfájl egy *podSelector* használatával csatolja a szabályzatot a következő alkalmazással rendelkező hüvelyekhez *: WebApp, szerepkör: háttér* felirat, például a minta NGINX Pod. Nincsenek szabályok meghatározva abejövő forgalomban, így a pod-ra irányuló bejövő forgalom megtagadva:
+Most, hogy megerősítettük, használhatja az alapszintű NGINX-weblapot a minta háttér Pod-on, hozzon létre egy hálózati házirendet az összes forgalom elutasításához. Hozzon létre egy `backend-policy.yaml` nevű fájlt, és illessze be a következő YAML-jegyzéket. Ez a jegyzékfájl egy *podSelector* használatával csatolja a szabályzatot a következő alkalmazással rendelkező hüvelyekhez *: WebApp, szerepkör: háttér* felirat, például a minta NGINX Pod. Nincsenek szabályok meghatározva a *bejövő forgalomban, így*a pod-ra irányuló bejövő forgalom megtagadva:
 
 ```yaml
 kind: NetworkPolicy
@@ -223,7 +218,7 @@ Nézzük meg, hogy újra használhatja-e az NGINX-weblapot a háttérben futó P
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. Ezúttal az időtúllépési értéket állítsa *2* másodpercre. A hálózati házirend mostantól blokkolja az összes bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
+A rendszerhéj parancssorába a `wget` lehetőség használatával ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. Ezúttal az időtúllépési értéket állítsa *2* másodpercre. A hálózati házirend mostantól blokkolja az összes bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -264,7 +259,7 @@ spec:
 ```
 
 > [!NOTE]
-> Ez a hálózati házirend egy *namespaceSelector* és egy *podSelector* elemet használ a bejövő szabályokhoz. A YAML szintaxisa fontos, hogy a bejövő szabályok adalékanyagnak legyenek. Ebben a példában mindkét elemnek egyeznie kell az alkalmazni kívánt bejövő szabályokkal. Előfordulhat, hogy a *1,12* előtti Kubernetes-verziók nem értelmezik megfelelően ezeket az elemeket, és a várt módon korlátozzák a hálózati forgalmat. További információ erről a viselkedésről: a [és][policy-rules]a választóinak viselkedése.
+> Ez a hálózati házirend egy *namespaceSelector* és egy *podSelector* elemet használ a bejövő szabályokhoz. A YAML szintaxisa fontos, hogy a bejövő szabályok adalékanyagnak legyenek. Ebben a példában mindkét elemnek egyeznie kell az alkalmazni kívánt bejövő szabályokkal. Előfordulhat, hogy a *1,12* előtti Kubernetes-verziók nem értelmezik megfelelően ezeket az elemeket, és a várt módon korlátozzák a hálózati forgalmat. További információ erről a viselkedésről: a [és a választóinak viselkedése][policy-rules].
 
 Alkalmazza a frissített hálózati házirendet az [kubectl Apply][kubectl-apply] parancs használatával, és adja meg a YAML-jegyzékfájl nevét:
 
@@ -278,7 +273,7 @@ Egy *app = WebApp, role = frontend* címkével ellátott Pod-t ütemezhet, és c
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
+A rendszerhéj parancssorában a `wget` lehetőség használatával ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend
@@ -308,7 +303,7 @@ A hálózati házirend lehetővé teszi, hogy a hüvelyek által címkézett *al
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. A hálózati házirend blokkolja a bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
+A rendszerhéj parancssorába a `wget` lehetőség használatával ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap. A hálózati házirend blokkolja a bejövő forgalmat, így a lap nem tölthető be, ahogy az alábbi példában is látható:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -339,7 +334,7 @@ Egy teszt Pod-t az *app = WebApp, role = frontend*néven jelölt *üzemi* névt�
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
+A rendszerhéj parancssorába `wget` használatával ellenőrizze, hogy elérhető-e az alapértelmezett NGINX-weblap:
 
 ```console
 wget -qO- http://backend.development
@@ -403,7 +398,7 @@ Egy másik Pod-t ütemezhet az *üzemi* névtérben, és csatlakoztathat egy ter
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` láthatja, hogy a hálózati házirend most megtagadja a forgalmat:
+A rendszerhéj parancssorában a `wget` lehetőség használatával ellenőrizze, hogy a hálózati házirend most megtagadja-e a forgalmat:
 
 ```console
 $ wget -qO- --timeout=2 http://backend.development
@@ -423,7 +418,7 @@ Az *üzemi* névtértől megtagadott forgalom esetén a rendszer visszairányít
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-A rendszerhéj parancssorában a használatával `wget` ellenőrizze, hogy a hálózati házirend engedélyezi-e a forgalmat:
+A rendszerhéj parancssorában a `wget` lehetőség használatával ellenőrizze, hogy a hálózati házirend engedélyezi-e a forgalmat:
 
 ```console
 wget -qO- http://backend
@@ -447,7 +442,7 @@ exit
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ebben a cikkben két névteret hoztunk létre, és alkalmazunk egy hálózati házirendet. Az erőforrások törléséhez használja a [kubectl delete][kubectl-delete] parancsot, és határozza meg az erőforrások nevét:
+Ebben a cikkben két névteret hoztunk létre, és alkalmazunk egy hálózati házirendet. Az erőforrások [törléséhez használja a kubectl delete][kubectl-delete] parancsot, és határozza meg az erőforrások nevét:
 
 ```console
 kubectl delete namespace production
@@ -468,9 +463,9 @@ A szabályzatokkal kapcsolatos további információkért lásd: [Kubernetes há
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
-[calicoctl]: https://docs.projectcalico.org/v3.6/reference/calicoctl/
+[calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
 [calico-support]: https://www.projectcalico.org/support
-[calico-logs]: https://docs.projectcalico.org/v3.6/maintenance/component-logs
+[calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 
 <!-- LINKS - internal -->

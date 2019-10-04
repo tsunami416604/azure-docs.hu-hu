@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612673"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958543"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Csoportházirend felügyelete Azure AD Domain Services felügyelt tartományban
 
@@ -32,12 +32,15 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Aktív Azure-előfizetés.
     * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure][associate-azure-ad-tenant]-előfizetést a fiókjához.
+    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
 * Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Windows Server rendszerű virtuális gép létrehozásához és egy felügyelt tartományhoz való csatlakoztatásához][create-join-windows-vm].
 * Egy felhasználói fiók, amely tagja az Azure ad *DC-rendszergazdák* csoportnak az Azure ad-bérlőben.
+
+> [!NOTE]
+> Mivel az [Azure AD DS nem fér hozzá](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)a tartományvezérlőkhöz, nem hozhat létre és nem használhat központi tárolót a csoportházirend felügyeleti sablonjaihoz a felügyelt tartományokban. A [SYSVOL nem része a helyszíni Azure ad Connect szinkronizálásnak](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), ezért nem hozható létre helyszíni központi tároló, és nem szinkronizálható az Azure AD DS az Azure ad-n keresztül.
 
 ## <a name="install-group-policy-management-tools"></a>Csoportházirend felügyeleti eszközök telepítése
 
@@ -46,7 +49,7 @@ Csoportházirend objektum (GPO-k) létrehozásához és konfigurálásához tele
 1. Jelentkezzen be a felügyeleti virtuális gépre. A Azure Portal használatával történő kapcsolódás lépéseiért lásd: [Kapcsolódás Windows Server rendszerű virtuális géphez][connect-windows-server-vm].
 1. A **Kiszolgálókezelő** alapértelmezés szerint meg van nyitva, amikor bejelentkezik a virtuális gépre. Ha nem, a **Start** menüben válassza a **Kiszolgálókezelő**lehetőséget.
 1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek lapján kattintson a **Tovább gombra**.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
 1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
 1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.contoso.com*, majd kattintson a **tovább**gombra.
 1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
@@ -77,7 +80,7 @@ Két beépített Csoportházirend objektum (GPO) van egy Azure AD DS felügyelt 
 
     ![Az alapértelmezett "AADDC Computers" és "AADDC Users" tárolók esetében alkalmazott beépített csoportházirend-objektumok](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Ezek a beépített csoportházirend-objektumok testreszabhatók meghatározott csoportházirendek konfigurálásához az Azure AD DS felügyelt tartományon. Kattintson a jobb gombbal valamelyik csoportházirend-objektumra, például a *AADDC számítógépek csoportházirend*-objektumára, majd válassza a **Szerkesztés...** lehetőséget.
+1. Ezek a beépített csoportházirend-objektumok testreszabhatók meghatározott csoportházirendek konfigurálásához az Azure AD DS felügyelt tartományon. Kattintson a jobb gombbal valamelyik csoportházirend-objektumra, például a *AADDC számítógépek csoportházirend-objektumára*, majd válassza a **Szerkesztés...** lehetőséget.
 
     ![Válassza a beépített csoportházirend-objektumok egyikének szerkesztésére szolgáló lehetőséget.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 

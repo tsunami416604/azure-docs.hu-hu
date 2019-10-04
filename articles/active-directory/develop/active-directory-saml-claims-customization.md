@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936777"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949361"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -83,6 +83,20 @@ Válassza ki a `NameIdentifier` (vagy NameID) jogcím kívánt forrását. A kö
 | Bővítmény attribútumai 1-15 | Az Azure AD-séma kibővítéséhez használt helyszíni bővítmény attribútumai |
 
 További információ: [Table 3: Érvényes azonosító értékek: Source @ no__t-0.
+
+Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben definiált jogcímekhez. Állandó érték hozzárendeléséhez kövesse az alábbi lépéseket:
+
+1. A [Azure Portal](https://portal.azure.com/)a **felhasználói attribútumok & jogcímek** szakaszban kattintson a **Szerkesztés** ikonra a jogcímek szerkesztéséhez.
+
+1. Kattintson arra a szükséges jogcímere, amelyet módosítani szeretne.
+
+1. Adja meg az állandó értéket a **forrás attribútumban** a szervezetnek megfelelően, majd kattintson a **Mentés**gombra.
+
+    ![Nyissa meg a felhasználói attribútumok & jogcímek szakaszt a Azure Portal](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. Az állandó érték az alábbiak szerint fog megjelenni.
+
+    ![Nyissa meg a felhasználói attribútumok & jogcímek szakaszt a Azure Portal](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Speciális jogcímek – átalakítások
 

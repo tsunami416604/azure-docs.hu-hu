@@ -1,20 +1,20 @@
 ---
-title: Blobok hozzáadása objektumokhoz az Azure Digital Twinsban | Microsoft Docs
+title: Blobok hozzáadása objektumokhoz – Azure digitális Twins | Microsoft Docs
 description: Megtudhatja, hogyan adhat blobokat az objektumokhoz az Azure Digital Twinsban.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 35bc5a4532f040aeb464a91b14adcb540ccc113a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845482"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949150"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása objektumokhoz az Azure digitális Ikrekben
 
@@ -57,7 +57,7 @@ A JSON-blob metaadatai a következő modellnek felelnek meg:
 | **name** |String | A blob egy emberi felhasználóbarát neve |
 | **type** | String | A blob típusa – a *típus* -és *typeId* nem használható  |
 | **typeId** | Integer | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
-| **subtype** | String | A blob altípusa-nem használhatja az altípust és a *subtypeId* |
+| **subtype** | String | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
 | **subtypeId** | Integer | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
 | **description** | String | A blob testreszabott leírása |
 | **sharing** | String | Azt jelzi, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
@@ -113,7 +113,7 @@ Az egyénileg visszaadott Blobok megfelelnek a következő JSON-sémának:
 | **parentId** | String | A blob és a (szóközök, eszközök vagy felhasználók) hozzárendelése a szülő entitáshoz |
 | **type** | String | A blob típusa – a *típus* -és *typeId* nem használható  |
 | **typeId** | Integer | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
-| **subtype** | String | A blob altípusa-nem használhatja az altípust és a *subtypeId* |
+| **subtype** | String | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
 | **subtypeId** | Integer | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
 | **sharing** | String | Azt jelzi, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
 | **description** | String | A blob testreszabott leírása |
@@ -278,7 +278,7 @@ A hiba megoldásához ellenőrizze, hogy a teljes kérelem megfelelő **Content-
 * `multipart/mixed`
 * `multipart/form-data`
 
-Győződjön meg arról is, hogy a többrészes adattömbök esetében szükség van egy megfelelő tartalomtípusra.
+Győződjön meg arról is, hogy a többrészes adattömbök esetében szükség van egy megfelelő **tartalomtípusra** .
 
 ## <a name="next-steps"></a>További lépések
 

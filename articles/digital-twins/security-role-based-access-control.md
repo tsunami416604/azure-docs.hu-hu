@@ -1,23 +1,23 @@
 ---
 title: A szerepköralapú hozzáférés-vezérlés ismertetése – Azure digitális Twins | Microsoft Docs
 description: Ismerje meg a szerepköralapú hozzáférés-vezérlést és az engedélyek kezelését az Azure digitális Twins szolgáltatásban.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
-ms.translationtype: HT
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827035"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949015"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Szerepköralapú hozzáférés-vezérlés az Azure-beli digitális Ikrekben
 
-Az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé a térbeli gráf bizonyos adataihoz, erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyek kezelése teszi lehetővé. A RBAC _szerepkörökből_ és _szerepkör_-hozzárendelésből áll. A szerepkörök határozzák meg az engedélyek szintjét. A szerepkör-hozzárendelések egy szerepkört társítanak egy felhasználóhoz vagy eszközhöz.
+Az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé a térbeli gráf bizonyos adataihoz, erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyek kezelése teszi lehetővé. A RBAC _szerepkörökből_ és _szerepkör-hozzárendelésből_áll. A szerepkörök határozzák meg az engedélyek szintjét. A szerepkör-hozzárendelések egy szerepkört társítanak egy felhasználóhoz vagy eszközhöz.
 
 A RBAC használatával a következő engedélyek adhatók meg:
 
@@ -67,14 +67,14 @@ A szerepkör-definíció az engedélyek és a szerepkört alkotó egyéb attrib�
 Az alábbi dokumentációs cikkek a következőket írják le:
 
 - [Lekérdezés vagy a felhasználó objektumazonosító-azonosítója](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0).
-- [Egy egyszerű szolgáltatásnév azonosítójának](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)beszerzése.
-- [Az Azure ad-bérlőhöz tartozó objektumazonosító](../active-directory/develop/quickstart-create-new-tenant.md)beolvasása.
+- [Egy egyszerű szolgáltatásnév azonosítójának beszerzése](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal).
+- [Az Azure ad-bérlőhöz tartozó objektumazonosító beolvasása](../active-directory/develop/quickstart-create-new-tenant.md).
 
 ## <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
 Egy Azure digitális Twins szerepkör-hozzárendelés társít egy objektumot, például egy felhasználót vagy egy Azure AD-bérlőt egy szerepkörrel és egy hellyel. A rendszer engedélyeket kap az adott területhez tartozó összes objektumra. A terület az alatta lévő teljes térbeli gráfot tartalmazza.
 
-A felhasználó például egy olyan szerepkör-hozzárendelést kap, amely egy `DeviceInstaller` épületet jelképező térbeli gráf gyökérszintű csomópontjának szerepkörét adja meg. A felhasználó ezután elolvashatja és frissítheti az adott csomóponthoz tartozó eszközöket, valamint az épületben lévő összes többi gyermeket is.
+A felhasználó például egy olyan szerepkör-hozzárendelést kap, amely egy épületet jelképező térbeli gráf gyökérszintű csomópontjának `DeviceInstaller` szerepkörét adja meg. A felhasználó ezután elolvashatja és frissítheti az adott csomóponthoz tartozó eszközöket, valamint az épületben lévő összes többi gyermeket is.
 
 Ha engedélyeket szeretne adni egy címzettnek, hozzon létre egy szerepkör-hozzárendelést. Az engedélyek visszavonásához távolítsa el a szerepkör-hozzárendelést.
 
