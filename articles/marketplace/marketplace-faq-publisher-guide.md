@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/26/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350382"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827985"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
@@ -155,7 +155,7 @@ Ezek a leggyakoribb lehetőségek az ajánlat típusa szerint:
 
 **Milyen típusú próbaverziók támogatottak?**
 
-Az ingyenes próbaverziós ajánlatok a próbaverziót kezdeményező műveletre irányuló hívással rendelkeznek. Ezek az ügyfelet egy, a közzétevő által definiált webhelyre vezetik a próbaverzió beállításához. A próbaverziók olyan fizetős ajánlatokhoz is hozzáadhatók, ahol az első hónap ingyenes. 
+A kiadók hozzáadhatnak egy ingyenes hónapot a fizetős SaaS-ajánlatok számára, valamint egy vagy három ingyenes hónapot a virtuálisgép-lemezképekhez. Az ingyenes próbaverziós ajánlatok a próbaverziót kezdeményező műveletre irányuló hívással rendelkeznek. Ezek az ügyfelet egy, a közzétevő által definiált webhelyre vezetik a próbaverzió beállításához. A próbaverziók olyan fizetős ajánlatokhoz is hozzáadhatók, ahol az első hónap ingyenes. 
 
 **Szükség van-e egy fizetési eszközre (például bankkártya) a fájlon az ingyenes csomag üzembe helyezéséhez vagy a saját licencek (BYOL) ajánlatokhoz?**
 
@@ -169,6 +169,10 @@ Nagyvállalati Szerződés (EA) közvetett ügyfeleknek az Azure Marketplace dí
 
 Igen, Nagyvállalati Szerződés (EA) ügyfelek esetében a beléptetési rendszergazda kikapcsolhatja a beléptetéshez tartozó összes fiókra vonatkozó vásárlási jogosultságokat, és a vásárláshoz elég hosszú ideig visszakapcsolhat. Emellett az összes ügyfél használhatja a Azure Policy az Azure-előfizetések üzembe helyezési lehetőségeinek korlátozására, beleértve az Azure Marketplace-erőforrások kezelését is.
 
+**Milyen fizetési módok támogatottak a kereskedelmi piactéren történő vásárlások esetében?**
+
+Az ügyfelek vásárolhatnak ajánlatokat az Azure piactéren, és bankkártyával Microsoft AppSource. Ha már rendelkezik Azure-előfizetéssel, az Azure Marketplace-en keresztüli vásárlások a fiókon konfigurált fizetési módot fogják használni, és ugyanazon a számlán jelennek meg, amely külön sorban szerepel. Egyes ajánlatok Azure-beli pénzügyi kötelezettségvállalást használnak, de a legtöbb ommercial Marketplace-vásárlás nem vonja le Nagyvállalati Szerződés kötelezettségvállalásokat, noha az Azure-infrastruktúra fogyasztása is megtörténik.
+
 **Használhatom-e az Azure-előfizetések kreditjét vagy a fiókomban lévő pénzügyi kötelezettségvállalási forrásokat az Azure Marketplace-ajánlatokhoz?**
 
 Meghatározott Azure Marketplace-ajánlatok használhatják az Azure-előfizetések kreditjeit és a felhasználható kereteket. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure pénzügyi kötelezettségvállalását](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Ezek az ajánlatok nem tartalmaznak BYOL-vagy BYOS-beállításokat. A többi Azure Marketplace-ajánlat nem használhatja az Azure-előfizetési krediteket vagy a pénzügyi kötelezettségvállalást: ilyen például az egy hónapos ingyenes próbaverziós kredit, a havi MSDN-kreditek, az Azure-promóciókból származó kreditek, a pénzügyi kötelezettségvállalás egyenlege, valamint a Azure.
@@ -176,12 +180,6 @@ Meghatározott Azure Marketplace-ajánlatok használhatják az Azure-előfizeté
 **A mennyiségi licencekre vonatkozó kedvezmények az Azure piactér-beli vásárlásokra is érvényesek?**
 
 Nem. Az Azure Marketplace-en található megoldásokat birtokló közzétevők díjszabást állíthatnak be.  A Microsoft mennyiségi licencének szabványos kedvezményei nem alkalmazhatók az Azure Marketplace-beli vásárlásokra.
-
-**Hogyan fizetni ezeknek az előfizetéseknek? Megjelenjenek az Azure Marketplace-beli vásárlások az Azure-számlán, vagy van még egy másik számla?**
-
-MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (például a web-Direct) ügyfeleinek ugyanarra a hitelkártyára kell fizetniük, amely az Azure-előfizetési profilhoz tartozó fájlban található. Ha nem rendelkezik bankkártyával a fájlban, akkor nem vásárolhat az Azure piactéren. Ebben az esetben különleges mentesítést kapott, hogy az Azure-díjak számlázása megtörténjen.
-
-A Nagyvállalati Szerződés (EA) ügyfeleket a nagyvállalati szerződésben foglaltak szerint számítjuk fel. Az itt felsorolt Azure Marketplace-ajánlatokat először le kell vonni az összes rendelkezésre álló pénzügyi kötelezettségvállalásból, majd egy negyedéves számlán felül kell fizetni. Az EA közvetett, oktatási és kormányzati ügyfeleiért a licencelési megoldás szolgáltatója (LSP) díjköteles.
 
 **Hol tekinthetem meg az Azure Marketplace-előfizetés részleteit és a számlázási adatokat?**
 
@@ -197,7 +195,7 @@ Mivel a bővítmény az Azure-beli virtuális géphez (VM) van társítva, az Az
 
 **Milyen gyakran fizetnem kell az Azure Marketplace-beli vásárlásért?**
 
-Nagyvállalati Szerződés az ügyfelek számára a megadott szolgáltatások esetében először a rendelkezésre álló pénzügyi kötelezettségvállalás összegét kell csökkenteni a szolgáltatások teljes költsége alapján a felhasznált hónapban. Minden olyan Azure Marketplace-ajánlat, amely nem a pénzügyi kötelezettségvállalásból származik, a számlázást havonta kell fizetni. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatás esetén történik.
+Minden olyan Azure Marketplace-ajánlat, amely nem a pénzügyi kötelezettségvállalásból származik, a számlázást havonta kell fizetni. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatás esetén történik.
 
 MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/) (web Direct) ügyfeleinek havonta, az Azure-előfizetési profilhoz tartozó bankkártyán kell fizetniük. Az éves SaaS-előfizetések számlázása egy teljes éves szolgáltatás esetén történik.
 
@@ -210,10 +208,6 @@ Ha az Azure piactéren vásárolt egyéb szolgáltatásokat egy nagyvállalati s
 **Mi a különbség az *Ár*, a *szoftver ára*és a *teljes díj* között az Azure piactéren a virtuális gépekre vonatkozó díjszabásban?**
 
 Az *Ár* a szoftver futtatásához szükséges Azure-beli virtuális gép költségére utal. A *szoftver ára* a piactér-közzétevő Azure-beli virtuális gépen futó szoftverének költségére utal. A *teljes díj* az Azure-beli virtuális gép és a piactér-közzétevő Azure-beli virtuális gépen futó szoftverének összesített teljes költségére utal.
-
-**Használhatom-e az Azure-előfizetési krediteket vagy a fiókomban lévő pénzügyi forrásokat az Azure Marketplace-ajánlatok futtatásához szükséges Azure-termékek és-szolgáltatások esetében?**
-
-Igen. Az Azure-előfizetési kreditek vagy a fiókra vonatkozó pénzügyi kötelezettségvállalás az Azure-termékek és az Azure Marketplace-ajánlatok felé is használható. Az Azure-beli pénzügyi kötelezettségvállalási alapok például az Azure Marketplace-en található virtuálisgép-ajánlat *Ár* összetevőjére is alkalmazhatók. Az Azure-előfizetési kreditek és a pénzügyi kötelezettségvállalási alapok azonban csak az Azure-beli virtuális gépen futó egyes Piactéri közzétevők szoftverére (*szoftver árára*) alkalmazhatók.
 
 **Hogyan megtudhatja, mennyibe került az Azure Marketplace-beli vásárlásom?**
 
