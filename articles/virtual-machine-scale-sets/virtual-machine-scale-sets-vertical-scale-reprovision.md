@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: d12fde33ec9d55c891c801f1b89143b4db6f8ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035756"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958144"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automata méretezés a virtuálisgép-méretezési csoportokkal
 
-Ez a cikk azt ismerteti, hogyan lehet [](https://azure.microsoft.com/services/virtual-machine-scale-sets/) vertikálisan méretezni az Azure Virtual Machine Scale Setst az Újraépítés nélkül vagy anélkül. A nem méretezési csoportokban lévő virtuális gépek vertikális skálázásához tekintse meg az Azure-beli [virtuális gép vertikális](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)skálázását Azure Automation.
+Ez a cikk azt ismerteti, hogyan lehet vertikálisan méretezni az Azure [Virtual Machine Scale Setst](https://azure.microsoft.com/services/virtual-machine-scale-sets/) az Újraépítés nélkül vagy anélkül. 
 
-A vertikális skálázás, más néven vertikális *fel* -ésleskálázás, a virtuális gépek (VM) méretének növelését és csökkentését jelenti a számítási feladatokra válaszul. Hasonlítsa össze ezt a viselkedést [horizontális skálázással](virtual-machine-scale-sets-autoscale-overview.md), más néven kibővíthető és *méretezhető*, ahol a virtuális gépek száma a munkaterheléstől függően módosul.
+A vertikális skálázás, más néven vertikális *fel* *-és leskálázás,* a virtuális gépek (VM) méretének növelését és csökkentését jelenti a számítási feladatokra válaszul. Hasonlítsa össze ezt a viselkedést [horizontális skálázással](virtual-machine-scale-sets-autoscale-overview.md), más néven *kibővíthető* és *méretezhető*, ahol a virtuális gépek száma a munkaterheléstől függően módosul.
 
 Az Újraépítés azt jelenti, hogy egy meglévő virtuális gépet eltávolítanak, és egy újat cserélnek. A virtuálisgép-méretezési csoportokban lévő virtuális gépek méretének növelésével vagy csökkentésével bizonyos esetekben a meglévő virtuális gépeket szeretné átméretezni, és megőrizni az adatait, míg más esetekben új virtuális gépeket kell telepítenie az új méretre. Ez a dokumentum mindkét esetet magában foglalja.
 
@@ -124,7 +124,7 @@ Miután importálta a runbookok, vegyen fel egy webhookot a runbook, hogy egy vi
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>Riasztás hozzáadása a virtuálisgép-méretezési csoporthoz
 
-Az alábbiakban egy PowerShell-szkript látható, amely bemutatja, hogyan adhat hozzá riasztást a virtuálisgép-méretezési csoportokhoz. A következő cikkből megtudhatja, hogyan kérheti le a metrika nevét a riasztás bekapcsolásához: [Azure monitor általános mérőszámok](../azure-monitor/platform/autoscale-common-metrics.md)automatikus skálázása.
+Az alábbiakban egy PowerShell-szkript látható, amely bemutatja, hogyan adhat hozzá riasztást a virtuálisgép-méretezési csoportokhoz. A következő cikkből megtudhatja, hogyan kérheti le a metrika nevét a riasztás bekapcsolásához: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/platform/autoscale-common-metrics.md).
 
 ```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com

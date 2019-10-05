@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f68bc211be3cffb61b3381390ae2eeacaffa4213
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875492"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960418"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
@@ -41,7 +41,7 @@ Mielőtt belekezdene, a szerkesztőnek el kell végeznie az Azure IoT Central al
 
 Az Azure IoT Central e-mail-üzenetekként küld értesítéseket az eszközökről. A szerkesztő hozzáadott egy szabályt, amely értesítést küld, amikor a csatlakoztatott légkondicionáló készülék hőmérséklete túllép egy küszöbértéken. Ellenőrizze a szerkesztő által az értesítések fogadásához választott fiókra küldött e-maileket.
 
-Nyissa meg [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) című oktatóanyag végén kapott e-mail-üzenetet. Az e-mailben válassza a **Kattintson ide az eszköz megnyitásához** lehetőséget:
+Nyissa meg [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) című oktatóanyag végén kapott e-mail-üzenetet. Az e-mailben válassza ki az eszköz **neve** melletti hivatkozást a **részletek** szakaszban:
 
 ![Riasztási értesítő e-mail](media/tutorial-monitor-devices/email.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615756"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950335"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelé
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>A saját alhálózat kubenet hálózatkezelésének áttekintése
 
@@ -38,9 +38,9 @@ A *kubenet*csak a csomópontok kapnak IP-címet a virtuális hálózat alhálóz
 
 ![Kubenet hálózati modell egy AK-fürttel](media/use-kubenet/kubenet-overview.png)
 
-Az Azure legfeljebb 400 útvonalat támogat egy UDR, így nem rendelkezhet 400 csomópontnál nagyobb AK-fürttel. Az AK-funkciók, például a [virtuális csomópontok][virtual-nodes] vagy a hálózati házirendek nem támogatottak a *kubenet*.
+Az Azure legfeljebb 400 útvonalat támogat egy UDR, így nem rendelkezhet 400 csomópontnál nagyobb AK-fürttel. Az AK-beli [virtuális csomópontok][virtual-nodes] és az Azure-hálózati házirendek nem támogatottak a *kubenet*.  A kubenet által támogatott, a [tarka hálózati házirendeket][calico-network-policies]is használhatja.
 
-Az *Azure CNI*minden Pod IP-címet kap az IP-alhálózatban, és közvetlenül tud kommunikálni más hüvelyekkel és szolgáltatásokkal. A fürtök mérete lehet a megadott IP-címtartomány. Az IP-címtartományt azonban előre meg kell tervezni, és az összes IP-címet az AK-csomópontok használják az általa támogatott hüvelyek maximális száma alapján. Az *Azure CNI*támogatja a speciális hálózati szolgáltatásokat és forgatókönyveket, például a [virtuális csomópontokat][virtual-nodes] vagy a hálózati házirendeket.
+Az *Azure CNI*minden Pod IP-címet kap az IP-alhálózatban, és közvetlenül tud kommunikálni más hüvelyekkel és szolgáltatásokkal. A fürtök mérete lehet a megadott IP-címtartomány. Az IP-címtartományt azonban előre meg kell tervezni, és az összes IP-címet az AK-csomópontok használják az általa támogatott hüvelyek maximális száma alapján. Az *Azure CNI*támogatja a speciális hálózati szolgáltatásokat és forgatókönyveket, például a [virtuális csomópontokat][virtual-nodes] vagy a hálózati házirendeket (akár az Azure-t, akár a tarkat is).
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-cím rendelkezésre állása és kimerülése
 
@@ -62,7 +62,7 @@ A következő alapvető számítások összehasonlítják a hálózati modellek 
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Virtuális hálózati és ExpressRoute kapcsolatok
 
-A helyszíni kapcsolat biztosításához mind a *kubenet* , mind az *Azure-CNI* hálózati megközelítések használhatják az [Azure Virtual Network][vnet-peering] -peering vagy a [ExpressRoute-kapcsolatokat][express-route]. Körültekintően tervezze meg az IP-címtartományt, hogy elkerülje az átfedést és a helytelen forgalmi útválasztást. Például számos helyszíni hálózat olyan *10.0.0.0/8* címtartományt használ, amelyet a ExpressRoute-kapcsolaton keresztül hirdettek meg. Azt javasoljuk, hogy hozzon létre egy AK-fürtöt az Azure-beli virtuális hálózati alhálózatokban ezen a címtartományból kívül, például *172.16.0.0/16*.
+A helyszíni kapcsolat biztosításához mind a *kubenet* , mind az *Azure-CNI* hálózati megközelítések használhatják az [Azure Virtual Network-peering][vnet-peering] vagy a [ExpressRoute-kapcsolatokat][express-route]. Körültekintően tervezze meg az IP-címtartományt, hogy elkerülje az átfedést és a helytelen forgalmi útválasztást. Például számos helyszíni hálózat olyan *10.0.0.0/8* címtartományt használ, amelyet a ExpressRoute-kapcsolaton keresztül hirdettek meg. Azt javasoljuk, hogy hozzon létre egy AK-fürtöt az Azure-beli virtuális hálózati alhálózatokban ezen a címtartományból kívül, például *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Válassza ki a használni kívánt hálózati modellt
 
@@ -72,19 +72,16 @@ Az AK-fürthöz használandó hálózati beépülő modul kiválasztása által�
 
 - Korlátozott IP-címtartomány áll rendelkezésre.
 - A pod-kommunikáció nagy része a fürtön belül van.
-- Nincs szükség speciális funkciókra, például virtuális csomópontokra vagy hálózati házirendre.
+- Nincs szüksége olyan speciális AK-funkciókra, mint a virtuális csomópontok vagy az Azure hálózati házirendje.  A [tarka hálózati házirendek][calico-network-policies]használata.
 
 Az *Azure CNI* használata:
 
 - Rendelkezésre áll az IP-címtartomány.
 - A pod-kommunikáció nagy része a fürtön kívüli erőforrások.
 - Nem szeretné kezelni a UDR.
-- Speciális funkciókra, például virtuális csomópontokra vagy hálózati házirendre van szükség.
+- Szükség van egy olyan speciális szolgáltatásra, mint a virtuális csomópontok vagy az Azure hálózati házirendje.  A [tarka hálózati házirendek][calico-network-policies]használata.
 
 További információ a használni kívánt hálózati modell eldöntéséhez: [hálózati modellek összehasonlítása és a támogatási hatókörük][network-comparisons].
-
-> [!NOTE]
-> A Kuberouter lehetővé teszi a hálózati házirend engedélyezését a kubenet használatakor, és daemonset elemet is telepíthető egy AK-fürtben. Kérjük, vegye figyelembe, hogy a Kube-útválasztó még mindig bétaverzióban van, és a Microsoft nem támogatja a projekt támogatását.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 
@@ -134,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg saját  *\<AppID >* az előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
+Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg saját *@no__t 1appId >* az előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -142,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
 
-Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját egyszerű  *\<AppID >* és  *\<a jelszó >* , ahogy az előző parancs kimenetében látható az egyszerű szolgáltatásnév létrehozásához.
+Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját egyszerű szolgáltatásnevet *\<appId >* és *@no__t 3password >* , ahogy az előző parancs kimenetében is látható az egyszerű szolgáltatásnév létrehozásához.
 
 A következő IP-címtartományok a fürt létrehozási folyamatának részeként is definiálva vannak:
 
@@ -172,6 +169,24 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> Ha engedélyezni szeretné, hogy egy AK-fürt tartalmazzon egy [kartonos hálózati házirendet][calico-network-policies] , a következő parancsot használhatja.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 AK-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és egy útválasztási tábla. Ezeket a hálózati erőforrásokat az AK vezérlő síkja kezeli. A hálózati biztonsági csoport automatikusan a csomópontokon lévő virtuális hálózati adapterekhez van társítva. Az útválasztási táblázat automatikusan a virtuális hálózat alhálózatához van társítva. A hálózati biztonsági csoport szabályai és útválasztási táblái és a szolgáltatások létrehozásakor és közzétételekor automatikusan frissülnek.
 
 ## <a name="next-steps"></a>További lépések
@@ -182,6 +197,7 @@ A meglévő virtuális hálózati alhálózatba üzembe helyezett AK-fürttel mo
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

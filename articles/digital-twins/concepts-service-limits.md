@@ -1,19 +1,19 @@
 ---
 title: Az Azure Digital Twins nyilvános előzetes verziójának szolgáltatási korlátai | Microsoft Docs
 description: Ismerje meg az Azure Digital Twins nyilvános előzetes verziójának szolgáltatási korlátait.
-author: dwalthermsft
-manager: deshner
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: dwalther
-ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 10/03/2019
+ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638478"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949244"
 ---
 # <a name="public-preview-service-limits"></a>A szolgáltatás nyilvános előzetes verziójának korlátozásai
 
@@ -74,4 +74,4 @@ Az alábbi korlátok az eszközök által az Azure Digital Twins-példányba kü
 
 ## <a name="next-steps"></a>További lépések
 
-- Egy Azure-beli digitális Twins-minta kipróbálásához lépjen a gyors üzembe helyezési lehetőségre, [és keresse meg az elérhető szobákat](./quickstart-view-occupancy-dotnet.md).
+- Egy Azure-beli digitális Twins-minta kipróbálásához lépjen a gyors üzembe helyezési [lehetőségre, és keresse meg az elérhető szobákat](./quickstart-view-occupancy-dotnet.md).

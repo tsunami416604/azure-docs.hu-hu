@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 412bfee12e50b66a780f33b2bca8c4ecc61d83f7
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 8fee8692b2e09f9e4f5580d60d2f7a5a5cea2858
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219353"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950348"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -60,7 +60,7 @@ Az ebben a szerepkörben lévő felhasználók létrehozhatnak alkalmazás-regis
 
 ### <a name="authentication-administratorauthentication-administrator-permissions"></a>[Hitelesítés rendszergazdája](#authentication-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók a jelszóval nem rendelkező hitelesítő adatokat állíthatnak be vagy állíthatnak vissza, és frissíthetik az összes felhasználó jelszavát. A hitelesítési rendszergazdák megkövetelhetik, hogy a felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy pont), és visszavonják **az MFA**-t az eszközön, amely a nem rendszergazdák vagy a felhasználók következő bejelentkezésére kéri az MFA-t csak a következő szerepköröket rendeli hozzá:
+Az ezzel a szerepkörrel rendelkező felhasználók a jelszóval nem rendelkező hitelesítő adatokat állíthatnak be vagy állíthatnak vissza, és frissíthetik az összes felhasználó jelszavát. A hitelesítési rendszergazdák megkövetelhetik, hogy a felhasználók újra regisztráljanak a meglévő, nem jelszóval nem rendelkező hitelesítő adatokkal (például MFA vagy pont), és visszavonják **az MFA-t az eszközön**, amely a nem rendszergazdák vagy a felhasználók következő bejelentkezésére kéri az MFA-t csak a következő szerepköröket rendeli hozzá:
 
 * Hitelesítési rendszergazda
 * Címtárolvasó
@@ -169,7 +169,10 @@ Ez a szerepkör csak az [eszközbeállítások](https://aad.portal.azure.com/#bl
 
 ### <a name="directory-readersdirectory-readers-permissions"></a>[Directory-olvasók](#directory-readers-permissions)
 
-Ez a szerepkör csak olyan örökölt alkalmazásokhoz rendelhető hozzá, amelyek nem támogatják az [engedélyezési keretrendszert](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Ne rendelje hozzá a felhasználókhoz.
+Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű címtár-információkat. A következő szerepkört kell használni:
+* A vendég felhasználói számára az olvasási hozzáférés megadása helyett egy adott készletet adjon meg.
+* A nem rendszergazda felhasználók adott készletének megadása az Azure Portalhoz, amikor "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes".
+* Egyszerű szolgáltatásokhoz való hozzáférés biztosítása a címtár. Read. All nem lehetőség.
 
 ### <a name="directory-synchronization-accountsdirectory-synchronization-accounts-permissions"></a>[Címtár-szinkronizálási fiókok](#directory-synchronization-accounts-permissions)
 
@@ -198,7 +201,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 Ez a rendszergazda kezeli az Azure Active Directory bérlők és a külső identitás-szolgáltatók közötti összevonást. Ezzel a szerepkörrel a felhasználók új identitás-szolgáltatókat adhatnak hozzá, és konfigurálhatják az összes rendelkezésre álló beállítást (például a hitelesítési útvonalat, a szolgáltatás AZONOSÍTÓját, a hozzárendelt kulcstárolókat). Ez a felhasználó lehetővé teheti a bérlő számára, hogy megbízzon a külső identitás-szolgáltatóktól érkező hitelesítésekben. A végfelhasználói tapasztalatok eredményének következményei a bérlő típusától függenek:
 
 * Azure Active Directory bérlők alkalmazottai és partnerei számára: A Szövetség (például a Gmail) hozzáadása azonnal hatással lesz az összes olyan vendég meghívóra, amely még nincs beváltva. Lásd: [a Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)számára.
-* Azure Active Directory B2C bérlők: Az összevonások (például a Facebook vagy egy másik Azure AD-szervezet) hozzáadása nem befolyásolja azonnal a végfelhasználói folyamatokat, amíg az identitás-szolgáltatót nem adja hozzá felhasználói folyamatként (más néven beépített szabályzatnak). Lásd: [Microsoft-fiók konfigurálása identitás](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) -szolgáltatóként egy példához. A felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazdája" korlátozott szerepkörre van szükség.
+* Azure Active Directory B2C bérlők: Az összevonások (például a Facebook vagy egy másik Azure AD-szervezet) hozzáadása nem befolyásolja azonnal a végfelhasználói folyamatokat, amíg az identitás-szolgáltatót nem adja hozzá felhasználói folyamatként (más néven beépített szabályzatnak). Lásd: [Microsoft-fiók konfigurálása identitás-szolgáltatóként](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) egy példához. A felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazdája" korlátozott szerepkörre van szükség.
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[Globális rendszergazda/vállalati rendszergazda](#company-administrator-permissions)
 

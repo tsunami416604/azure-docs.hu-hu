@@ -5,20 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 1f13a56941a137397fbb849093feaeb19b897131
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 79b626ef6beaad3a8f15da08b882fc7d596540b0
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156253"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960389"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Private DNS-zónát a Azure Portal használatával
 
 Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord létrehozásának lépésein a Azure Portal használatával.
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
@@ -94,10 +92,10 @@ Most hozzon létre két virtuális gépet, amelyekkel tesztelheti saját DNS-zó
 2. Írja be a jelszó **Azure12345678** , és erősítse meg a jelszót.
 
 5. A **nyilvános bejövő portok**esetében válassza a **kiválasztott portok engedélyezése**lehetőséget, majd válassza az **RDP (3389)** lehetőséget a **bejövő portok kiválasztásához**.
-10. Fogadja el az oldal többi alapértelmezett beállítását, majd **kattintson a Tovább gombra: Lemezek >** .
-11. Fogadja el az alapértelmezett értékeket a **lemezek** lapon, majd **kattintson a Tovább gombra: Hálózatkezelés >** .
+10. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson a **Next: Lemezek >** .
+11. Fogadja el az alapértelmezett értékeket a **lemezek** lapon, majd kattintson a **Next: Hálózatkezelés >** .
 1. Győződjön meg arról, hogy a virtuális hálózat **myAzureVNet** van kiválasztva.
-1. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson **a Next (tovább) gombra: Felügyeleti >** .
+1. Fogadja el az oldal többi alapértelmezett beállítását, majd kattintson a **Next: Felügyeleti >** .
 2. A **rendszerindítási diagnosztika**esetében válassza a **ki**lehetőséget, fogadja el a többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás**elemet.
 1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 

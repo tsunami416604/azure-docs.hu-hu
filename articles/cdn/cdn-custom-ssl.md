@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: b6ac528d0d2916f513be4e2a72bff061bdad8e58
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 5506e4e4bb41725fd8791d3c6e47bb0b94584923
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718651"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959438"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -48,9 +48,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
-Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy CDN-profilt, és legalább egy CDN-végpontot. További információ: gyors útmutató [: Hozzon létre egy Azure CDN profilt](cdn-create-new-endpoint.md)és végpontot.
+Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy CDN-profilt, és legalább egy CDN-végpontot. További információt a következő témakörben talál: [Quickstart: Hozzon létre egy Azure CDN-profilt és egy @ no__t-0 végpontot.
 
-Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információ [: oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md) 
+Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt. További információt a következő témakörben talál: [Tutorial: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md) 
 
 > [!IMPORTANT]
 > A CDN által felügyelt tanúsítványok nem érhetők el gyökér-vagy APEX-tartományokhoz. Ha a Azure CDN az egyéni tartomány egy gyökér-vagy APEX-tartomány, akkor a saját tanúsítvány használata funkciót kell használnia. 
@@ -62,13 +62,13 @@ Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt.
 Ha HTTPS protokollt szeretne engedélyezni egy egyéni Azure CDN-tartomány tartalmának biztonságos továbbítása érdekében, SSL-tanúsítványt kell használnia. Az Azure CDN által kezelt vagy saját tanúsítványt használhat.
 
 
-# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>[1. lehetőség (alapértelmezett): HTTPS engedélyezése CDN által felügyelt tanúsítvánnyal](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
+# <a name="option-1-default-enable-https-with-a-cdn-managed-certificatetaboption-1-default-enable-https-with-a-cdn-managed-certificate"></a>@no__t – 0Option 1 (alapértelmezett): HTTPS engedélyezése CDN által felügyelt tanúsítvánnyal @ no__t-0
 
 HA a CDN által kezelt tanúsítványt használ, a HTTPS szolgáltatás mindössze néhány kattintással bekapcsolható. Az Azure CDN elvégzi az összes tanúsítványkezelési feladatot, például a beszerzést és a megújítást. A szolgáltatás engedélyezése után a folyamat azonnal elindul. Ha az egyéni tartomány már le van képezve a CDN-végpontra, nincs további teendő. Az Azure CDN automatikusan feldolgozza a lépéseket és végrehajtja a kérést. Ha azonban az egyéni tartomány más helyre van leképezve, meg kell erősítenie a tartomány tulajdonjogát e-mailben.
 
 Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartományon:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a microsofttól a **Azure CDN standardot**, **Azure CDN standard from Akamai**, **Azure CDN standard from Verizon** vagy **Azure CDN Premium from Verizon** Profile.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a **microsofttól a Azure CDN standardot**, **Azure CDN standard from Akamai**, **Azure CDN standard from Verizon** vagy **Azure CDN Premium from Verizon** Profile.
 
 2. A CDN-végpont listájából válassza ki az egyéni tartományt tartalmazó végpontot.
 
@@ -91,7 +91,7 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 6. Folytassa [A tartomány érvényesítése](#validate-the-domain) című szakasszal.
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[2. lehetőség: A HTTPS engedélyezése a saját tanúsítvánnyal](#tab/option-2-enable-https-with-your-own-certificate)
+# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>@no__t – 0Option 2: A HTTPS engedélyezése saját tanúsítvánnyal @ no__t-0
 
 > [!IMPORTANT]
 > Ez a beállítás csak a **Microsoft Azure CDN** és **Azure CDN Verizon** -profilokból érhető el. 
@@ -190,7 +190,7 @@ Az automatikus érvényesítés általában néhány órát vesz igénybe. Ha ne
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Az egyéni tartomány nincs leképezve a CDN-végpontra
 
 >[!NOTE]
->Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge. <custom domain hostname> -> CNAME-> <custom domain hostname>.ak-acme-challenge.azureedge.net "
+>Ha **Azure CDNt**használ a Akamai-ból, a következő CNAME-t be kell állítani az automatikus tartomány-ellenőrzés engedélyezéséhez. "_acme-Challenge. &lt;custom tartomány hostname @ no__t-1-> CNAME-> &lt;custom tartomány hostname&gt;.ak-acme-challenge.azureedge.net"
 
 Ha a CNAME rekord bejegyzése tartalmazza a cdnverify altartományt, kövesse az ebben a lépésben szereplő további utasításokat.
 
@@ -330,5 +330,5 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Lépjen tovább a következő oktatóanyagra, amely bemutatja, hogyan lehet konfigurálni a gyorsítótárat a CDN-végponton.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Azure CDN gyorsítótárazási szabályok beállítása](cdn-caching-rules-tutorial.md)
+> [Oktatóanyag: Azure CDN gyorsítótárazási szabályok beállítása @ no__t-0
 

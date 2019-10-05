@@ -1,28 +1,28 @@
 ---
-title: Csomópontok az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
-description: A kiszolgálócsoport csomópontok két típusa.
+title: Csomópontok Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
+description: Ismerkedjen meg a csomópontok, a koordinátorok és a feldolgozók két típusával a Azure Database for PostgreSQL egy kiszolgálói csoportjában.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: c6b948ed63f43f1597103d123be5ed39f42bd276
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077275"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947562"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Csomópontok az Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Csomópontok Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió)
 
-A nagy kapacitású (Citus) (előzetes verzió) típusú futtató lehetővé teszi, hogy a "megosztás nélküli" architektúra egy másik egyeztessen az Azure Database for PostgreSQL-kiszolgálók (a csomópontok). A csomópontok egy kiszolgálócsoport együttesen további adatok tárolásához, és használja, mint egy kiszolgálón több processzormag. Az architektúra emellett lehetővé teszi az adatbázis méretezése a kiszolgálócsoport a további fürtcsomópontok hozzáadásával.
+A nagy kapacitású (Citus) (előzetes verzió) üzemeltetési típusa lehetővé teszi, hogy az Azure Database for PostgreSQL-kiszolgálók (más néven csomópontok) összehangolják egymással a "shared nothing" architektúrában. A kiszolgálócsoport csomópontjai közösen több adattal rendelkeznek, és több CPU-magot használnak, mint amennyit egyetlen kiszolgálón lehet használni. Az architektúra azt is lehetővé teszi, hogy az adatbázis méretezhető legyen, ha további csomópontokat ad hozzá a kiszolgálói csoporthoz.
 
 ## <a name="coordinator-and-workers"></a>Koordinátor és feldolgozók
 
-Minden kiszolgálócsoport a koordinátor-csomópont és a feldolgozó rendelkezik. Alkalmazások küldése a lekérdezéseket az koordinátor-csomóponton, amely továbbítja azt a megfelelő Worker és összegzi az eredményeiket. Alkalmazások, amelyek nem képesek közvetlenül kapcsolódni a munkavállalók.
+Minden kiszolgálócsoport rendelkezik egy koordinátori csomóponttal és több feldolgozóval. Az alkalmazások a koordinátori csomópontba küldik a lekérdezéseket, amelyek továbbítják az érintett munkavállalóknak, és felhalmozzák eredményeiket. Az alkalmazások nem tudnak közvetlenül csatlakozni a feldolgozókhoz.
 
-Az egyes lekérdezésekhez a koordinátor továbbítja azt egyetlen munkavégző csomópont vagy parallelizes, attól függően, hogy a szükséges adattárolás egyetlen csomópont, vagy több több között. A koordinátor úgy dönt, hogy mi a teendő metaadat-táblát consulting által. Ezek a táblák nyomon követheti a DNS-neveit és a feldolgozó csomópontok állapotát, és az adatok a terjesztési csomópontok között.
+Az egyes lekérdezésekhez a koordinátor vagy egyetlen munkavégző csomópontra irányítja, vagy parallelizes azt attól függően, hogy a szükséges adat egyetlen vagy több csomóponton van-e. A koordinátor eldönti, hogy mi a teendő a metaadatokkal folytatott konzultációk során. Ezek a táblák nyomon követik a munkavégző csomópontok DNS-neveit és állapotát, valamint az adateloszlást a csomópontok között.
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg, hogyan tárolhatja a csomópontok [elosztott adatok](concepts-hyperscale-distributed-data.md)
+- Ismerje meg, hogyan tárolják a csomópontok [az elosztott információkat](concepts-hyperscale-distributed-data.md)

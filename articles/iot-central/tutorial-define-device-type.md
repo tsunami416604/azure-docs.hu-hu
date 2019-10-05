@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3faa76c1506664a075648edc7d57fbba542b011
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099609"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960533"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköz típusának meghatározása az Azure IoT Central alkalmazásban
 
@@ -75,7 +75,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure IoT Central-alkalmazá
 
      További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 
-## <a name="create-a-device-template"></a>Eszköz sablonjának létrehozása
+## <a name="create-a-device-template"></a>Eszközsablon létrehozása
 
 Szerkesztőként létrehozhatja és szerkesztheti az alkalmazásban lévő eszközsablonokat. Egy eszközsablon létrehozásakor az Azure IoT Central létrehoz egy szimulált eszközt a sablonból. A szimulált eszköz olyan telemetria hoz létre, amely lehetővé teszi az alkalmazás viselkedésének tesztelését a valódi eszköz csatlakoztatása előtt.
 
@@ -99,9 +99,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
     ![Egyéni eszköz](./media/tutorial-define-device-type/createcustomdevice.png)
 
-4. A **csatlakoztatott légkondicionáló** eszköz sablonjában ellenőrizze, hogy a mérések lapon a telemetria határozza meg. Minden egyes definiált sablon külön lapokkal rendelkezik a következő eszközökhöz:
+4. A **csatlakoztatott légkondicionáló** eszköz sablonjában ellenőrizze, hogy a **mérések** lapon a telemetria határozza meg. Minden egyes definiált sablon külön lapokkal rendelkezik a következő eszközökhöz:
 
-   * Adja megaz eszköz által eljuttatott mértékeket, például a telemetria, az eseményt és az állapotot.
+   * Adja meg az eszköz által eljuttatott _mértékeket_, például a telemetria, az eseményt és az állapotot.
 
    * Az eszköz vezérléséhez használt _Beállítások_ megadása.
 
@@ -111,7 +111,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
    * Az eszközhöz társított _szabályok_ megadása.
 
-   * Szabja testre az eszköz irányítópultját a kezelők számára.
+   * Szabja testre az eszköz _irányítópultját_ a kezelők számára.
 
      ![A légkondicionáló mérései](./media/tutorial-define-device-type/airconmeasurements.png)
 
@@ -145,7 +145,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
 
      ![Hőmérsékleti szimuláció konfigurálása](./media/tutorial-define-device-type/temperaturesimulation.png)
 
-7. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszköz hőmérsékleti telemetria diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, az összesítést, vagy szerkesztheti a telemetria definícióját:
+7. Rövid idő elteltével a **mérések** lap a szimulált csatlakoztatott légkondicionáló eszköz hőmérsékleti telemetria diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, az összesítést, vagy szerkesztheti a telemetria definícióját:
  
     > [!NOTE]
     > A telemetria esetében az **átlag** az alapértelmezett összesítésként van beállítva. 
@@ -184,7 +184,7 @@ Az események segítségével meghatározhatja az adott időponthoz tartozó ada
 
      ![Esemény mérésének konfigurálása](./media/tutorial-define-device-type/eventconfiguration.png)
 
-3. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált események diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az esemény definícióját:
+3. Rövid idő elteltével a **mérések** lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált események diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az esemény definícióját:
 
     ![Esemény szimulációjának megtekintése](./media/tutorial-define-device-type/eventview.png)
 
@@ -225,7 +225,7 @@ Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy
 
      ![Állapot mérésének konfigurálása](./media/tutorial-define-device-type/stateconfiguration.png)
 
-3. Rövid idő elteltével a mérések lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált állapotok diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az állapot definícióját:
+3. Rövid idő elteltével a **mérések** lap a szimulált csatlakoztatott légkondicionáló eszközből véletlenszerűen generált állapotok diagramját jeleníti meg. A vezérlőkkel kezelheti a láthatóságot, vagy szerkesztheti az állapot definícióját:
 
     ![Állapot szimulációjának megtekintése](./media/tutorial-define-device-type/stateview.png)
 
@@ -275,7 +275,7 @@ A beállítások, a tulajdonságok és a parancsok az eszközsablonban meghatár
     > [!NOTE]
     > Amikor az eszköz elfogadja a beállítás módosítását, a beállítás **szinkronizálva** állapotra változik.
 
-4. A beállítások lap elrendezését a beállítások csempék áthelyezésével és átméretezésével szabhatja testre:
+4. **A beállítások lap** elrendezését a beállítások csempék áthelyezésével és átméretezésével szabhatja testre:
 
     ![A beállítások elrendezésének testreszabása](./media/tutorial-define-device-type/settingslayout.png)
 
@@ -365,10 +365,10 @@ A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül a
     | Megjelenítendő név         | Echo parancs    |
     | Mező neve           | echo            |
     | Alapértelmezett határidő-túllépés      | 30              |
-    | Megjelenítés típusa         | text            |
+    | Adattípus         | text            |
     | Leírás          | Eszközparancs  |  
 
-    További bemeneteket is hozzáadhat a parancshoz a **+** **beviteli mezők**kiválasztásával.
+    További bemeneteket is hozzáadhat a parancshoz, ha a **beviteli mezőkhöz**a **+** elemet választja.
 
     ![Felkészülés beállítás hozzáadására](./media/tutorial-define-device-type/commandsecho1.png)
 
@@ -382,7 +382,7 @@ Most, hogy meghatározta a **csatlakoztatott légkondicionáló** eszköz sablon
 
 1. Válassza az **irányítópult** fület a **csatlakoztatott légkondicionáló** eszköz sablonhoz.
 
-1. Válassza ki a diagramot, és adja hozzá az összetevőt az **irányítópulthoz**.
+1. Válassza ki a **diagramot** , és adja hozzá az összetevőt az **irányítópulthoz**.
 
 1. Konfigurálja a **Vonaldiagram** összetevőt a következő táblázatban lévő információk használatával:
 
