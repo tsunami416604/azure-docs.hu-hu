@@ -1,33 +1,37 @@
 ---
-title: BLOB létrehozása az Azure Storage-ban a Java v7-hez készült ügyféloldali kódtár használatával | Microsoft Docs
-description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Java v7-hez, és töltsön fel egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár Java SDK V8-hoz'
+description: Létre fog hozni egy tárfiókot és egy tárolót egy objektumtárban (Blobtárban). Ezután használja az Azure Storage ügyféloldali kódtárat a Java SDK V8-hoz a Blobok Azure Storage-ba való feltöltéséhez, egy blob letöltéséhez és a tárolóban lévő Blobok listázásához.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390320"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971990"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Blobok feltöltése, letöltése és listázása a Java v7-hez készült ügyféloldali kódtár használatával
+# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár Java SDK V8-hoz
 
-Ebben a útmutatóban megtudhatja, hogyan használhatja a Java v7-hez készült ügyféloldali kódtárat az Azure Blob Storage-tárolóban lévő tárolók felfeltöltésére, letöltésére és listázására.
+Ismerkedjen meg a Javához készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+
+A Javához készült Azure Blob Storage ügyféloldali kódtár a következőhöz használható:
+
+* Tároló létrehozása
+* Engedélyek beállítása tárolón
+* BLOB létrehozása az Azure Storage-ban
+* A blob letöltése a helyi számítógépre
+* Egy tároló összes blobjának listázása
+* Tároló törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-Hozzon létre egy Azure Storage-fiókot is a [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
-
-Győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
-
-* Telepítsen egy Maven-integrációval rendelkező IDE-t.
-
+* Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
+* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Maven-integrációt tartalmazó IDE.
 * Másik lehetőségként telepítse és konfigurálja a Mavent a parancssorból való működésre.
 
 Ez az útmutató az [Eclipse](https://www.eclipse.org/downloads/) -t használja az "Eclipse ide for Java Developers" konfigurációval.
@@ -205,6 +209,5 @@ sourceFile.deleteOnExit();
 Ebben a cikkben megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure Storage SDK v10 a Java](https://github.com/azure/azure-storage-java) 
-> Javához készült[API-hivatkozási](https://docs.microsoft.com/java/azure/)
+> [Java API-referenciák](https://docs.microsoft.com/java/azure/)
 > [kód minták a Javához](../common/storage-samples-java.md)

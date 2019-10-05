@@ -1,57 +1,57 @@
 ---
-title: Az Azure Database for MariaDB üzletmenet-folytonossági funkcióinak áttekintése
-description: Az Azure Database for MariaDB üzletmenet-folytonossági funkcióinak áttekintése.
+title: Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
+description: Ismerje meg az üzletmenet folytonosságát (az időponthoz tartozó visszaállítást, az adatközpont-kimaradást, a Geo-visszaállítást) Azure Database for MariaDB szolgáltatás használatakor.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4c64f920bf56195ad53ac8acbf3f9199090f0a8b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d364c3a5fafaca514baade25cd3f5b4c0f10dc26
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043016"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973609"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mariadb"></a>Az Azure Database for MariaDB üzletmenet-folytonossági funkcióinak áttekintése
+# <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
 
-Ez az áttekintés, Azure Database for MariaDB biztosítja az üzletmenet-folytonosság és vészhelyreállítás funkcióit írja le. Ismerje meg azokat a káros eseményeket, amelyek adatvesztéshez vezethetnek vagy az adatbázis és az alkalmazás elérhetetlenné okozhat a beállításokat. Ismerje meg, mi a teendő, ha egy felhasználó vagy alkalmazás hiba hatással van az adatok integritásának megőrzése, egy Azure-régióban van kimaradás vagy az alkalmazás karbantartásra szorul.
+Ez a cikk azokat a képességeket ismerteti, amelyeket a Azure Database for MariaDB az üzletmenet folytonosságát és a vész-helyreállítást biztosítja. Megtudhatja, hogyan lehet helyreállítani az adatvesztést okozó, vagy az adatbázis és az alkalmazás elérhetetlenné válását okozó zavaró események helyreállításának lehetőségeit. Megtudhatja, mi a teendő, ha egy felhasználói vagy alkalmazáshiba hatással van az adatok integritására, egy Azure-régió leáll, vagy az alkalmazás karbantartást igényel.
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Üzletmenet-folytonosságot biztosító használó szolgáltatások
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Az üzletmenet folytonosságának biztosítására használható funkciók
 
-Azure Database for MariaDB kínál üzletmenet-folytonossági funkciókat, beleértve az automatikus biztonsági mentést és a felhasználók a geo-visszaállítás kezdeményezni. Minden más paraméterekkel rendelkezik a becsült helyreállítási idő (ERT) és az esetleges adatvesztés. Ha már megismerte, hogy ezek a beállítások, válogathat közülük, és a különböző helyzetekhez együtt használja azokat. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell megérteni a maximális elfogadható idő, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának – ez a helyreállítási időre vonatkozó célkitűzés (RTO). Emellett ismernie kell a legújabb adatok maximális mérete (időintervallum) frissítéseket az alkalmazás működését a zavaró eseményeket követő helyreállítása során elvesztése – Ez a helyreállítási időkorlátot (RPO).
+A Azure Database for MariaDB olyan üzletmenet-folytonossági funkciókat biztosít, amelyek automatikus biztonsági mentést tartalmaznak, és lehetővé teszi a felhasználók számára a Geo-visszaállítás kezdeményezését. Mindegyik különböző tulajdonságokkal rendelkezik a becsült helyreállítási idő (ERT) és a lehetséges adatvesztés tekintetében. Ha megértette ezeket a lehetőségeket, választhat közülük, és együtt használhatja őket különböző forgatókönyvek esetén. Az üzletmenet-folytonossági terv kidolgozása során meg kell ismernie a maximális elfogadható időtartamot, mielőtt az alkalmazás teljesen helyreáll a zavaró esemény után – ez a helyreállítási idő célkitűzése (RTO). Meg kell ismernie a legutóbbi adatfrissítések (időintervallum) maximális mennyiségét is, ha az alkalmazás a zavaró esemény utáni helyreállítás során elveszíti az adatvesztést – ez a helyreállítási pont célkitűzése (RPO).
 
-Az alábbi táblázat összehasonlítja a ERT és RPO elérhető funkciók:
+A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Basic** | **Általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
-| Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belül bármely visszaállítási pont | A megőrzési időtartamon belül bármely visszaállítási pont | A megőrzési időtartamon belül bármely visszaállítási pont |
-| Georedundáns visszaállítás georeplikált biztonsági másolatokból | Nem támogatott | ERT < 12 óra<br/>RPO < 1 óra | ERT < 12 óra<br/>RPO < 1 óra |
+| Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
+| Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
 
 > [!IMPORTANT]
-> Ha törli a kiszolgálót, a kiszolgálón található összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló törlése nem állítható vissza.
+> Ha törli a kiszolgálót, a kiszolgálón található összes adatbázis is törlődik, és nem állítható helyre. Törölt kiszolgálót nem lehet visszaállítani.
 
-## <a name="recover-a-server-after-a-user-or-application-error"></a>A kiszolgáló helyreállítása után a felhasználó vagy alkalmazás hiba
+## <a name="recover-a-server-after-a-user-or-application-error"></a>Kiszolgáló helyreállítása felhasználói vagy alkalmazáshiba miatt
 
-A szolgáltatás biztonsági mentések használatával egy kiszolgáló helyreállítása a különféle zavaró eseményeket. A felhasználó előfordulhat, hogy véletlenül törölhet néhány adatot, véletlenül dobja el egy fontos táblát, vagy még dobja el a teljes adatbázisra vonatkozóan. Egy alkalmazás előfordulhat, hogy véletlenül felülírja a helyes adatokat rossz adatokkal egy alkalmazás valamilyen alkalmazáshiba miatt, és így tovább.
+A szolgáltatás biztonsági másolatai segítségével helyreállíthat egy kiszolgálót a különböző zavaró eseményekről. Előfordulhat, hogy A felhasználók véletlenül törölhetnek bizonyos adatfájlokat, és véletlenül eldobják egy fontos táblát, vagy akár el is dobják a teljes adatbázist. Előfordulhat, hogy egy alkalmazás helytelenül írja felül a megfelelő adatmennyiséget az alkalmazás hibája miatt, és így tovább.
 
-A pont a-időponthoz kötött visszaállítás hozhat létre a kiszolgáló számára ismert jó pont másolatát időben hajthat végre. Az időponthoz kötött konfigurálta, a kiszolgáló a biztonsági másolatok megőrzési időszakán belül kell lennie. Az adatok az új kiszolgáló visszaállítása után az eredeti kiszolgáló cserélje le az újonnan visszaállított kiszolgáló, vagy átmásolhatja a szükséges adatokat a visszaállított kiszolgáló az eredeti kiszolgálóra.
+Elvégezheti egy időponthoz való visszaállítást, hogy a kiszolgálóról egy ismert jó időpontra készítsen másolatot. Az időpontnak a kiszolgálón beállított biztonsági mentési megőrzési időtartamon belül kell lennie. Miután az adatok vissza lettek állítva az új kiszolgálóra, lecserélheti az eredeti kiszolgálót az újonnan visszaállított kiszolgálóra, vagy átmásolhatja a szükséges adatait a visszaállított kiszolgálóról az eredeti kiszolgálóra.
 
-## <a name="recover-from-an-azure-regional-data-center-outage"></a>Az Azure regionális adatközpontjának leállása esetén helyreállítható
+## <a name="recover-from-an-azure-regional-data-center-outage"></a>Helyreállítás Azure Regional adatközpont-kimaradásból
 
-Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Szolgáltatáskimaradás esetén előfordulhat, hogy csak az elmúlt pár perc alatt, de sikerült az elmúlt óra üzletmenet okoz.
+Bár ritka, mégis előfordulhat, hogy valamelyik Azure-adatközpont leáll. Leállás esetén az üzleti megszakadást okoz, amely csak néhány percet vesz igénybe, de az elmúlt órákban is tarthat.
 
-Az egyik lehetőség, hogy Várjon, amíg a kiszolgáló ismét online állapotú lesz, ha a tartós adatközponti üzemkimaradások keresztül. Az alkalmazásokat, amelyek esetében megengedhető, a kiszolgáló offline állapotba kell bizonyos ideig, például egy fejlesztési környezetben működik. Amikor adatközpontban szolgáltatáskimaradás következik, nem tudja, mennyi ideig a szolgáltatáskimaradás elhárítása után előfordulhat, hogy a legutóbbi, így ez a beállítás csak akkor működik, ha már nincs szüksége a kiszolgáló egy ideig.
+Az egyik lehetőség, hogy megvárja, amíg a kiszolgáló ismét online állapotba kerül, amikor az adatközpont kimaradása meghalad. Ez olyan alkalmazásokhoz használható, amelyek megengedhetik maguknak, hogy a kiszolgáló bizonyos ideig offline állapotba kerüljön, például egy fejlesztési környezetben. Ha az adatközpont leáll, nem tudja, mennyi ideig tarthat a leállás, így ez a lehetőség csak akkor működik, ha egy ideig nincs szüksége a kiszolgálóra.
 
-A másik lehetőség, hogy az Azure-adatbázis számára használja a MariaDB geo-visszaállítás szolgáltatást, amely visszaállítja az a kiszolgáló georedundáns biztonsági másolatokból. Ezeket a biztonsági másolatokat elérhetők, még akkor is, ha a régió, a kiszolgáló üzemel, a kapcsolat nélküli üzemmódban. Ezek a biztonsági mentések visszaállítása bármelyik régióban, és a kiszolgáló ismét online állapotba.
+A másik lehetőség a Azure Database for MariaDB geo-visszaállítási funkciójának használata, amely a-kiszolgálót a Geo-redundáns biztonsági másolatok használatával állítja vissza. Ezek a biztonsági másolatok akkor is elérhetők, ha a kiszolgáló által üzemeltetett régió offline állapotban van. Ezeket a biztonsági másolatokból bármely más régióba visszaállíthatja, és a kiszolgáló ismét online állapotba helyezhető.
 
 > [!IMPORTANT]
-> A GEO-visszaállítás csak akkor lehetséges, a kiszolgáló georedundáns biztonsági mentési tároló üzembe helyezése.
+> A Geo-visszaállítás csak akkor lehetséges, ha a kiszolgálót geo-redundáns biztonsági mentési tárolóval kiépített.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az automatikus biztonsági másolatok kapcsolatos további információkért lásd: [, Azure Database for MariaDB lévő biztonsági másolatok](concepts-backup.md).
-- Visszaállítását egy időpontra az Azure portal használatával, lásd: [database visszaállítása egy időpontra az Azure portal használatával](howto-restore-server-portal.md).
+- Az automatikus biztonsági mentéssel kapcsolatos további tudnivalókért tekintse meg a [biztonsági mentések a Azure Database for MariaDBban](concepts-backup.md)című témakört.
+- Ha a Azure Portal használatával szeretne visszaállítani egy adott időpontra, tekintse meg [az adatbázis visszaállítása egy időpontra a Azure Portal használatával](howto-restore-server-portal.md)című témakört.
 
 <!--
 - To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md). 

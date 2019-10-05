@@ -4,27 +4,26 @@ description: Futtassa a Jupyter notebookok felhőalapú az ingyenes Azure-jegyze
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 12d9a1a92c0b008244c7db4ec23d5a28888b042a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60634320"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973166"
 ---
 # <a name="overview-of-azure-notebooks"></a>Az Azure notebookok áttekintése
 
 Az Azure Notebooks egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. [Jupyter](https://jupyter.org/) (korábbi nevén IPython-) egy nyílt forráskódú projekt, amely lehetővé teszi egyszerű egyesítése Markdown szöveget, végrehajtható kódok, állandó adatait, képeket és a Vizualizációk egyetlen, a megosztható vászonra, akkor a *notebook* (képe ajánlatának jupyter.org):
 
-[![Példák a Jupyter notebookok](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[@no__t – Jupyter notebookok 1Examples](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 A kód, a grafikus és magyarázó szöveg hatékony kombinációja, miatt Jupyter számos célra, beleértve a data science utasítás, adatok tisztítása és átalakítása, numerikus szimuláció, statisztikai modellezési és fejlesztését a legnépszerűbb vált Machine learning-modellek.
 
@@ -55,11 +54,11 @@ Röviden az Azure-jegyzetfüzetek segítségével munkája hatékonyabbá és í
 
 ## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
 
-Azure notebookok egy ingyenes szolgáltatás, de minden projekt korlátozódik, 4GB memória, és 1 GB-os adatok visszaélések megelőzése érdekében. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
+Azure Notebooks egy ingyenes szolgáltatás, de az egyes projektek 4 GB memóriával és 1 GB-nyi adattal rendelkeznek a visszaélések elkerülése érdekében. Ezeket a korlátokat keretet túllépő legitim felhasználók továbbra is fut a notebookok a Captcha kihívást lásd:.
 
-Minden korlátokat feloldásához jelentkezzen be Azure-jegyzetfüzetek egy olyan fiókkal, az Azure Active Directoryval (például egy vállalati fiók). Ha a fiókhoz társított Azure-előfizetés, csatlakozhat bármely Azure adatelemzési virtuális gép példányok adott előfizetésen belül. További információkért lásd: [kezelése és konfigurálása a projektek - számítási kapacitás](configure-manage-azure-notebooks-projects.md#compute-tier).
+Az összes korlát felszabadításához jelentkezzen be Azure Notebooks egy olyan fiókkal, amely Azure Active Directory (például egy vállalati fiók) használatával. Ha ez a fiók Azure-előfizetéshez van társítva, az adott előfizetéshez tartozó Azure Data Science Virtual Machine-példányokhoz is csatlakozhat. További információ: [projektek kezelése és konfigurálása – számítási réteg](configure-manage-azure-notebooks-projects.md#compute-tier).
 
-Notebook kiszolgálók garantáltan legfeljebb 8 órán át létezik. A legtöbb esetben a tároló nem ez a korlátozás vonatkozik, és továbbra is ezen időpont utáni fut, de hosszú élettartamú munkamenetek előfordulhat, hogy időnként le kell állítani a rendszer stabilitását.
+A notebook-kiszolgálók legfeljebb 8 órán keresztül vannak garantálva. A legtöbb esetben a tároló nem vonatkozik erre a korlátozásra, és továbbra is az idő függvényében fut, de a hosszú élettartamú munkamenetek időnként leállíthatók a rendszer stabilitására.
 
 ## <a name="available-kernels-and-environments"></a>Notebookokhoz elérhető kernelek és környezetek
 
@@ -68,12 +67,12 @@ Minden egyes notebook válassza ki a kernel (azaz a futtatókörnyezet) bármily
 - Python 2.7 + Anaconda2-5.3.0
 - A Python 3.6-os + Anaconda3-5.3.0
 - Python 3.5-ös + Anaconda3 4.2.0 (elavulttá válik)
-- R 3.4.1 + Microsoft R 3.4.1 megnyitása
+- R 3.4.1 + Microsoft R Open 3.4.1
 - F#4.1.9
 
 Az Azure notebookok további csomagokat az alap disztribúciók túl is tartalmaz. A Python kernelekkel, például a numpy, a pandas, a scikit-ismerje meg, matplotlib és bokeh kódtárakat.
 
-A környezet összes jegyzetfüzet létrehozása a projektben egy projektet is testreszabhatja. További információkért lásd: [a rövid útmutató: Hozzon létre egy projektet egy egyéni környezettel rendelkező](quickstart-create-jupyter-notebook-project-environment.md).
+A környezet összes jegyzetfüzet létrehozása a projektben egy projektet is testreszabhatja. További információt a következő témakörben talál: [Quickstart: Hozzon létre egy projektet a @ no__t-0 egyéni környezettel.
 
 Az alap disztribúciók mellett Azure notebookok további csomagok száma, amelyek hasznosak a adatszakértők számára előre telepítve áll rendelkezésre. A saját csomagokat a tipikus folyamat segítségével az egyes nyelvekhez is telepítheti.
 
@@ -81,11 +80,11 @@ Az alap disztribúciók mellett Azure notebookok további csomagok száma, amely
 
 Az Azure notebookok előre konfigurálva, a következő Jupyter kiterjesztésű:
 
-- [EZÉRT](https://github.com/damianavila/RISE): A Jupyter diavetítés bővítmény (más néven live_reveal). További információkért lásd: [futtatása egy jegyzetfüzetet Diavetítés](present-jupyter-notebooks-slideshow.md).
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): A Jupyter notebookok használata teljes számítási környezetet.
-- [Altair](https://github.com/ellisonbg/altair): Deklaratív statisztikai Vizualizáció kódtára a Pythonhoz.
-- [BQPlot](https://github.com/bloomberg/bqplot): Egy interaktív ábrázolási keretrendszer Jupyter notebookokhoz.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktív HTML widgetek Jupyter notebookokhoz.
+- [NÖVEKEDÉS](https://github.com/damianavila/RISE): Jupyter Slideshow-bővítmény (más néven live_reveal). További információkért lásd: [futtatása egy jegyzetfüzetet Diavetítés](present-jupyter-notebooks-slideshow.md).
+- [JupyterLab](https://github.com/jupyterlab/jupyterlab): Teljes számítási környezet a Jupyter-jegyzetfüzetek használatához.
+- [Altair](https://github.com/ellisonbg/altair): Egy deklaratív statisztikai vizualizációs kódtár a Pythonhoz.
+- [BQPlot](https://github.com/bloomberg/bqplot): Interaktív ábrázolási keretrendszer a Jupyter notebookokhoz.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interaktív HTML widgetek a Jupyter notebookokhoz.
 
 ## <a name="issues-and-getting-help"></a>Problémák és segítség kérése
 

@@ -6,18 +6,18 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/02/2019
 ms.author: danlep
-ms.openlocfilehash: 36d27bc6089bbe3f4ada6862a9c1be1fa0bdbae7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71306002"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972650"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési szabályzat beállítása a címkézetlen jegyzékekhez
 
-Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha a `delete-enabled` címkézetlen jegyzékfájl attribútuma a értékre van `false`állítva, a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
+Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha egy címkézetlen jegyzékfájl `delete-enabled` attribútuma `false` értékre van beállítva, a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
 
 Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathatja a jelen cikkben szereplő példákat. Ha helyileg szeretné használni, a 2.0.74 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
@@ -27,12 +27,17 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathat
 > [!WARNING]
 > Adatmegőrzési házirend beállítása gondossággal – törölt képadatokkal nem állítható helyre. Ha olyan rendszerekkel rendelkezik, amelyekben a manifest Digest (a rendszerkép neve helyett) lekéri a képeket, ne állítson be adatmegőrzési szabályt a címkézetlen jegyzékekhez. A címkézetlen lemezképek törlésével megakadályozhatja, hogy ezek a rendszerek kihúzzanak a lemezképeket a beállításjegyzékből. A jegyzékfájlok helyett érdemes lehet egy *egyedi címkézési* sémát alkalmazni, amely [ajánlott eljárás](container-registry-image-tag-version.md).
 
-Ha egyetlen képcímkét vagy jegyzékfájlokat szeretne törölni az Azure CLI-parancsokkal, tekintse meg [a tároló lemezképek törlése a Azure Container Registryban](container-registry-delete.md)című témakört.
-
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
 * Csak a **prémium** szintű tároló-beállításjegyzék állítható be adatmegőrzési házirenddel. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban.
 * Csak a címkézetlen jegyzékek adatmegőrzési szabályzata állítható be.
+* Az adatmegőrzési szabály jelenleg csak azokra a jegyzékfájlokra vonatkozik, amelyeket a szabályzat engedélyezése *után* címkéztek. A beállításjegyzékben meglévő címkézetlen jegyzékek nem vonatkoznak a szabályzatra. Meglévő címkézetlen jegyzékfájlok törléséhez tekintse meg a példák a [tároló lemezképének törlése a Azure Container Registry](container-registry-delete.md)-ben című témakört.
+
+## <a name="about-the-retention-policy"></a>Tudnivalók az adatmegőrzési szabályzatról
+
+A Azure Container Registry a beállításjegyzékben lévő jegyzékfájlok leltározását végzi. Ha egy jegyzékfájl címkézetlen, ellenőrzi az adatmegőrzési szabályt. Ha egy adatmegőrzési szabály engedélyezve van, egy jegyzékfájl törlési művelete várólistára kerül, egy adott dátummal, a szabályzatban beállított napok száma szerint.
+
+Egy külön üzenetsor-kezelési feladatokkal folyamatosan dolgozza fel az üzeneteket, igény szerint méretezhető. Tegyük fel például, hogy egy 30 napos adatmegőrzési szabályzattal rendelkező beállításjegyzékben a két jegyzékfájlt (1 óra) megcímkézte. Két üzenet várólistára kerül. Ezután 30 nappal később, körülbelül 1 órával az üzenetek lekérése a sorból és a feldolgozás után történik, feltételezve, hogy a házirend még érvényben volt.
 
 ## <a name="set-a-retention-policy---cli"></a>Adatmegőrzési szabály beállítása – parancssori felület
 
@@ -45,27 +50,38 @@ Alapértelmezés szerint a tároló-beállításjegyzékben nincs beállítva ad
 A következő példa egy 30 napos adatmegőrzési szabályzatot állít be címkézetlen jegyzékekhez a beállításjegyzék *myregistry*:
 
 ```azurecli
-az acr config retention update --name myregistry --status enabled --days 30 --type UntaggedManifests
+az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-A következő példa egy szabályzatot állít be a beállításjegyzékben lévő összes jegyzékfájl törlésére, amint a címke fel van jelölve. Hozza létre ezt a házirendet 0 napos megőrzési időtartam beállításával:
+A következő példa egy szabályzatot állít be a beállításjegyzékben lévő összes jegyzékfájl törlésére, amint a címke fel van jelölve. Hozza létre ezt a házirendet 0 napos megőrzési időtartam beállításával. 
 
 ```azurecli
-az acr config retention update --name myregistry --status enabled --days 0 --type UntaggedManifests
+az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
+
+### <a name="validate-a-retention-policy"></a>Adatmegőrzési szabály érvényesítése
+
+Ha az előző szabályzatot 0 napos megőrzési időtartammal engedélyezi, gyorsan ellenőrizheti, hogy a címkézetlen jegyzékfájlok törlődnek-e:
+
+1. Küldjön le egy `hello-world:latest` rendszerképet a beállításjegyzékbe, vagy helyezzen be egy másik, választott tesztelési képet.
+1. Jelölését az `hello-world:latest` képet, például az az [ACR adattár jelölését][az-acr-repository-untag] parancs használatával. A címkézetlen jegyzékfájl a beállításjegyzékben marad.
+    ```azurecli
+    az acr repository untag --name myregistry --image hello-world:latest
+    ```
+1. Néhány másodpercen belül töröljük a címkézetlen jegyzékfájlt. A törlést a tárház jegyzékfájlok listázásával ellenőrizheti, például az az [ACR repository show-Manifests][az-acr-repository-show-manifests] parancs használatával. Ha a rendszerkép csak egyetlen a tárházban, a tárház törlődik.
 
 ### <a name="disable-a-retention-policy"></a>Adatmegőrzési szabály letiltása
 
 Ha meg szeretné tekinteni a beállításjegyzékben beállított adatmegőrzési szabályzatot, futtassa az az [ACR config adatmegőrzési show][az-acr-config-retention-show] parancsot:
 
 ```azurecli
-az acr config retention show --name myregistry
+az acr config retention show --registry myregistry
 ```
 
-Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config megőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be `--status disabled`a következőt:
+Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config adatmegőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be az `--status disabled` beállítást:
 
 ```azurecli
-az acr config retention update --name myregistry --status disabled
+az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
 ## <a name="set-a-retention-policy---portal"></a>Adatmegőrzési szabályzat beállítása – portál
@@ -101,3 +117,5 @@ A beállításjegyzék adatmegőrzési házirendjét is beállíthatja a [Azure 
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-config-retention-update]: /cli/azure/acr/config/retention#az-acr-config-retention-update
 [az-acr-config-retention-show]: /cli/azure/acr/config/retention#az-acr-config-retention-show
+[az-acr-repository-untag]: /cli/azure/acr/repository#az-acr-repository-untag
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests

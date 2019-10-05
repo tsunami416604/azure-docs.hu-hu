@@ -1,220 +1,220 @@
 ---
-title: 'Oktatóanyag: Az ASP.NET-alkalmazás és az Azure SQL Database-kód telepítése az Azure DevOps Projects használatával'
-description: A DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects üzembe helyezheti az ASP.NET-alkalmazás és az Azure SQL Database-kódot néhány gyors lépéssel.
+title: 'Oktatóanyag: ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata Azure DevOps Projects'
+description: DevOps Projects megkönnyíti az Azure megkezdését. A DevOps Projects segítségével néhány gyors lépésben telepítheti a ASP.NET alkalmazást, és Azure SQL Database kódot.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 0d05a2f3de92791572f0a5e6313777b5388af3df
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 560b16a40d73d07df6c9f446c7196cd930e2274e
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554928"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971504"
 ---
-# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Oktatóanyag: Az ASP.NET-alkalmazás és az Azure SQL Database-kód telepítése az Azure DevOps Projects használatával
+# <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-projects"></a>Oktatóanyag: ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata Azure DevOps Projects
 
-Az Azure DevOps Projects megjelenít egy egyszerűsített felület, ahol a meglévő kódot és a Git-adattár, vagy válasszon egy mintaalkalmazást, hozzon létre egy folyamatos integrációs (CI) és a folyamatos továbbítás (CD) folyamatot az Azure-bA. 
+Azure DevOps Projects egy egyszerűsített felhasználói felülettel rendelkezik, ahol meglévő kód-és git-tárházat hozhat létre, vagy kiválaszthat egy minta alkalmazást, amellyel folyamatos integrációs (CI) és folyamatos átviteli (CD) folyamatokat hozhat létre az Azure-ba. 
 
-DevOps-projektek is:
-* Azure-erőforrások, például egy Azure SQL database automatikusan létrehozza.
-* Hoz létre, és konfigurálja a kibocsátási folyamat, amely tartalmazza a folyamatos integrációhoz buildelési folyamat Azure folyamatokban.
-* CD beállítja a kibocsátási folyamat. 
-* Az Azure Application Insights-erőforrás, figyelés hoz létre.
+DevOps Projects is:
+* Automatikusan létrehoz Azure-erőforrásokat, például egy Azure SQL Database-adatbázist.
+* Létrehoz és konfigurál egy kiadási folyamatot az Azure-folyamatokban, amely tartalmazza a CI-hez készült Build folyamatát.
+* Egy kiadási folyamat beállítása a CD-hez. 
+* Létrehoz egy Azure Application Insights-erőforrást a figyeléshez.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Az Azure DevOps Projects használata az ASP.NET-alkalmazás és az Azure SQL Database-kód
+> * A ASP.NET-alkalmazás és a Azure SQL Database-kód üzembe helyezése a Azure DevOps Projects használatával
 > * Az Azure DevOps és az Azure-előfizetés konfigurálása 
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
-> * Véglegesítse a módosításokat az Azure-Adattárakkal, és automatikusan telepíthet az Azure-bA
-> * Csatlakozás az Azure SQL database 
+> * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
+> * Kapcsolódás az Azure SQL Database-hez 
 > * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
-## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Hozzon létre egy projektet egy ASP.NET-alkalmazás és a egy Azure SQL database fejlesztési és üzemeltetési projektek
+## <a name="create-a-project-in-devops-projects-for-an-aspnet-app-and-an-azure-sql-database"></a>Projekt létrehozása DevOps Projectsban egy ASP.NET-alkalmazáshoz és egy Azure SQL Database-adatbázishoz
 
-A DevOps Projects a CI/CD-folyamat Azure folyamatokat hoz létre. Hozzon létre egy új Azure DevOps szervezetet, vagy használjon egy már meglévő szervezet. A DevOps Projects is létrehoz az Azure-erőforrások, például egy Azure SQL database tetszőleges Azure-előfizetésben.
+A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects Azure-erőforrásokat, például egy Azure SQL Database-adatbázist is létrehoz az Ön által választott Azure-előfizetésben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása**.
+1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget.
 
-1. A Keresés mezőbe írja be a **DevOps Projects**, majd válassza ki **létrehozás**.
+1. A keresőmezőbe írja be a **DevOps projects**kifejezést, majd válassza a **Létrehozás**lehetőséget.
 
-    ![A DevOps Projects-irányítópult](_img/azure-devops-project-github/fullbrowser.png)
+    ![A DevOps Projects irányítópult](_img/azure-devops-project-github/fullbrowser.png)
 
-1. Válassza ki **.NET**, majd válassza ki **tovább**.
+1. Válassza a **.net**lehetőséget, majd kattintson a **tovább**gombra.
 
-1. A **válasszon alkalmazási keretrendszert**válassza **ASP.NET**.
+1. Az **alkalmazás-keretrendszer kiválasztása**területen válassza a **ASP.net**lehetőséget.
 
-1. Válassza ki **adatbázis hozzáadása**, majd válassza ki **tovább**.  
-    Az alkalmazási keretrendszer, amely az előző lépésben kiválasztott szabja meg, amely innen érhető el az Azure szolgáltatás üzembe helyezési cél típusát. 
+1. Válassza **az adatbázis hozzáadása**lehetőséget, majd kattintson a **tovább**gombra.  
+    Az alkalmazás-keretrendszer, amelyet az előző lépésben választott, az itt elérhető Azure-szolgáltatás telepítési célját diktálja be. 
     
 1. Kattintson a **Tovább** gombra.
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása
 
-1. Hozzon létre egy új Azure DevOps szervezetet, vagy válasszon ki egy már meglévő szervezet. 
+1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon ki egy meglévő szervezetet. 
 
 1. Adja meg az Azure DevOps-projekt nevét. 
 
-1. Válassza ki az Azure-előfizetés szolgáltatásait.  
-    Igény szerint további Azure-konfigurációs beállítások megtekintése, és azonosíthatja a szereplő felhasználónév a **adatbázis-kiszolgálói bejelentkezés adatai** szakaszban kiválaszthatja **módosítás**. A későbbi lépésekben tartozó felhasználónév Store ebben az oktatóanyagban. Ha ez a lépés nem kötelező végrehajtani, lépjen ki az Azure konfigurációs terület kiválasztása előtt **kész**.
+1. Válassza ki az Azure-előfizetési szolgáltatásokat.  
+    Ha szeretné megtekinteni a további Azure-konfigurációs beállításokat, és azonosítani a felhasználónevet az **adatbázis-kiszolgáló bejelentkezési adatai** szakaszban, akkor válassza a **módosítás**lehetőséget. Az oktatóanyag későbbi lépéseihez tárolja a felhasználónevet. Ha ezt a választható lépést hajtja végre, lépjen ki az Azure konfigurációs területén a **kész**gombra kattintva.
  
 1. Válassza a **Done** (Kész) lehetőséget.  
-    Néhány perc múlva a folyamat befejezése és a DevOps Projects-irányítópult megnyitása az Azure Portalon. Közvetlenül az irányítópulton is elérheti **összes erőforrás** az Azure Portalon. Válassza ki a jobb **Tallózás** a futó alkalmazás megtekintéséhez.
+    Néhány perc elteltével a folyamat befejeződik, és megnyílik a DevOps Projects irányítópult a Azure Portal. Közvetlenül az irányítópulton is megnyithatja a Azure Portal **összes erőforrását** . A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
     
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
-A DevOps Projects egy teljes CI/CD-folyamat automatikusan konfigurálja az Azure-Adattárakkal. Megvizsgálhatja és testre szabhatja a folyamatot. Ismerje meg az Azure DevOps-build folyamattal, tegye a következőket:
+DevOps Projects automatikusan konfigurál egy teljes CI/CD-folyamatot az Azure Reposben. Megvizsgálhatja és testre szabhatja a folyamatot. Az Azure DevOps Build folyamatának megismeréséhez tegye a következőket:
 
-1. Válassza ki a DevOps Projects irányítópult tetején lévő **folyamatok alakíthatók ki**.  
-    Egy böngészőben lap megjeleníti a buildelési folyamat az új projekt.
+1. A DevOps Projects irányítópult tetején válassza a **folyamatok létrehozása**lehetőséget.  
+    Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
-1. Mutasson a **állapot** mezőben, majd válassza ki a három pontra (...).  
-    Menü megjelenítése több beállítások, például az üzenetsor új build, készítsen felfüggesztetéssel és a buildelési folyamat szerkesztése.
+1. Mutasson az **állapot** mezőre, majd válassza a három pontot (...).  
+    A menüben számos lehetőség látható, például az új buildek várólistába helyezése, egy Build felfüggesztése és a build folyamat szerkesztése.
 
 1. Válassza a **Szerkesztés** elemet.
 
 1. Ezen az ablaktáblán keresse meg a különböző feladatok a a buildelési folyamat.  
-    A build különböző feladatokat, hajt végre, például beolvasásakor a Git-tárházban, a függőségek visszaállítását és közzétételi kimenete-forrásokat az központi telepítésére használatos.
+    A build különböző feladatokat hajt végre, például a git-tárházból beolvassa a forrásokat, visszaállítja a függőségeket, és közzéteszi az üzembe helyezéshez használt kimeneteket.
 
 1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
 
 1. Módosítsa a buildelési folyamat nevét egy leíró, jelölje be **várólistára & mentése**, majd válassza ki **mentése**.
 
 1. A buildelési folyamat neve alatt válassza az **Előzményeket**.  
-    Ezen a panelen a legutóbbi módosítások build auditnaplót jeleníti meg. Az Azure folyamatok nyomon követi a végzett módosítások a buildelési folyamat, és lehetővé teszi, hogy verziójának összehasonlítása.
+    Ez az ablaktábla a Build legutóbbi változásainak naplózási nyomvonalát jeleníti meg. Az Azure-folyamatok nyomon követik a felépítési folyamaton végrehajtott módosításokat, és lehetővé teszik a verziók összehasonlítását.
 
 1. Válassza az **Eseményindítókat**.  
-    DevOps-projektek automatikus CI eseményindítót hoz létre, és a tárházban minden véglegesítéshez elindul egy új létrehozást. Igény szerint kiválaszthatja, hogy belefoglalja vagy kizárja az ágak a CI folyamat.
+    A DevOps Projects automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Lehetőség van arra is, hogy az ágakat belefoglalja vagy kizárja a CI-folyamatból.
 
 1. Válassza a **Megtartást**.  
     A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
 
 ## <a name="examine-the-cd-pipeline"></a>A CD-folyamat vizsgálata
 
-A DevOps Projects automatikusan létrehozza és konfigurálja az Azure-előfizetéshez az Azure DevOps-szervezet telepítéséhez szükséges lépéseket. Ide tartozik az Azure DevOps hitelesítéséhez az Azure-előfizetéshez az Azure service-kapcsolat beállítása. Az automation is létrehoz egy CD-folyamat, amely biztosít a CD az Azure virtuális gépen. További információ az Azure DevOps CD-folyamat, tegye a következőket:
+DevOps Projects automatikusan létrehozza és konfigurálja a szükséges lépéseket az Azure DevOps-szervezet Azure-előfizetéséhez való üzembe helyezéshez. Ezek a lépések az Azure-DevOps Azure-előfizetéshez való hitelesítéséhez szükséges Azure-szolgáltatási kapcsolatok konfigurálását is tartalmazzák. Az Automation egy CD-folyamatot is létrehoz, amely biztosítja a CD-t az Azure-beli virtuális géphez. Ha többet szeretne megtudni az Azure DevOps CD-folyamatáról, tegye a következőket:
 
-1. Válassza ki **készítése és kiadása**, majd válassza ki **kiadásokban**.  
-    DevOps-projektek az Azure-bA központi telepítések felügyeletéhez szükséges kiadási folyamatot hoz létre.
+1. Válassza a **Létrehozás és kiadás**, majd a **kiadások**lehetőséget.  
+    DevOps Projects létrehoz egy kiadási folyamatot az Azure-ba történő üzembe helyezések kezeléséhez.
 
-1. A kibocsátási folyamat melletti három pontra (...), majd válassza ki és **szerkesztése**.  
+1. Válassza a kiadási folyamat melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.  
     A kiadási folyamat tartalmaz egy *folyamatot*, amely meghatározza a kiadási folyamatot.
 
 1. Az **Összetevők** alatt válassza az **Elvetést**.  
-    A buildelési folyamat, az előző lépésekben vizsgálni összetevő szolgálja ki a kimenetet eredményez. 
+    Az előző lépések során megvizsgált összeállítási folyamat létrehozza az összetevőhöz használt kimenetet. 
 
-1. Jobb oldalán a **Drop** ikonra, válassza ki **a folyamatos készregyártás eseményindítója**.  
-    A kibocsátási folyamat rendelkezik egy engedélyezett CD eseményindító, amely végrehajtja a központi telepítés minden alkalommal, amikor egy új buildösszetevő érhető el. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
+1. A **drop** ikon jobb oldalán válassza a **folyamatos üzembe helyezés trigger**lehetőséget.  
+    Ez a kiadási folyamat egy engedélyezett CD-triggerrel rendelkezik, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
 
-    A DevOps Projects állít be egy véletlenszerű SQL-jelszó, és a kibocsátási folyamat használja.
+    DevOps Projects beállítja a véletlenszerű SQL-jelszót, és a kiadási folyamathoz használja azt.
     
-1. Válassza a bal oldali **változók**. 
+1. A bal oldalon válassza a **változók**lehetőséget. 
 
    > [!NOTE]
-   > Csak akkor, ha az SQL Server jelszót módosította, hajtsa végre a következő lépéssel. Nincs egyetlen jelszó változót.
+   > Csak akkor hajtsa végre a következő lépést, ha módosította a SQL Server jelszavát. Egyetlen jelszó-változó van.
   
-1. Mellett a **érték** mezőbe, kattintson a lakat ikonra, adja meg az új jelszót, és válassza **mentése**.
+1. Az **érték** mező mellett válassza a lakat ikont, adja meg az új jelszót, majd kattintson a **Mentés**gombra.
 
-1. Válassza a bal oldali **feladatok**, majd válassza ki a környezetben.  
-    Feladatok olyan tevékenységek, amely végrehajtja a központi telepítési folyamat, és fázisban vannak csoportosítva. A kibocsátási folyamat rendelkezik egy fázisban, amely tartalmaz egy *Azure App Service üzembe helyezése* és *Azure SQL Database-telepítés* feladat.
+1. A bal oldalon válassza a **feladatok**lehetőséget, majd válassza ki a környezetet.  
+    A tevékenységek a telepítési folyamat által végrehajtandó tevékenységek, és fázisokban vannak csoportosítva. Ez a kiadási folyamat egyetlen fázissal rendelkezik, amely egy *Azure app Service üzembe helyezési* és *Azure SQL Database üzembe helyezési* feladatot tartalmaz.
 
-1. Válassza ki a *Azure SQL végrehajtása* feladat, és vizsgálja meg az SQL-telepítéshez használt különböző tulajdonságait.  
-    A **központi telepítési csomag**, a feladat használja egy *SQL adatrétegbeli ALKALMAZÁSCSOMAGOT* fájlt.
+1. Válassza az *Azure SQL* -feladat végrehajtása lehetőséget, és vizsgálja meg az SQL-telepítéshez használt különböző tulajdonságokat.  
+    A **központi telepítési csomag**területen a feladat egy *SQL-DACPAC* fájlt használ.
 
-1. Válassza ki a jobb **verziók megtekintéséhez** kiadások előzményeinek megjelenítéséhez.
+1. A jobb oldalon válassza a **kiadások megtekintése** lehetőséget a kiadások előzményeinek megjelenítéséhez.
 
-1. Egy kiadási melletti három pontra (...), majd válassza ki és **nyílt**.  
-     Áttekintheti a több menük, például a kiadás összegzését, a társított munkaelemekhez és a teszteket.
+1. Válassza a kiadás melletti három pontot (...), majd kattintson a **Megnyitás**gombra.  
+     Több menüt is megvizsgálhat, például a kiadás összegzését, a kapcsolódó munkaelemeket és teszteket.
 
 1. Válassza a **Véglegesítéseket**.  
-     Ez a nézet megjeleníti az ehhez a központi telepítéshez rendelt kódja véglegesítéseket. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
+     Ez a nézet a telepítéshez társított kód-véglegesítő kódokat jeleníti meg. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
 
 1. Válassza a **Naplókat**.  
-     A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Megtekintheti őket alatt és után a központi telepítések.
+     A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Véglegesítse a módosításokat az Azure-Adattárakkal, és automatikusan telepíthet az Azure-bA 
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban 
 
  > [!NOTE]
- > Az alábbi eljárás teszteli a CI/CD-folyamat, és egyszerű szöveges módosul. Az SQL-üzembe helyezési folyamat teszteléséhez, igény szerint módosítsa a tábla egy SQL Server-sémát is felvehető.
+ > Az alábbi eljárással tesztelheti a CI/CD folyamatot egy egyszerű szöveges módosítással. Az SQL telepítési folyamatának teszteléséhez beállíthatja, hogy SQL Server séma módosítható legyen a táblára.
 
-Most már készen áll, az alkalmazás a csapat együttműködhet egy CI/CD-folyamat, amely automatikusan telepíti a legújabb munkáját a webhely használatával. Minden módosítás a Git-tárház egy build elindítja az Azure DevOps, és a egy CD-folyamat végrehajtja a központi telepítés az Azure-bA. Kövesse az ebben a szakaszban az eljárást, vagy egy másik módszer használatával véglegesítse a módosításokat a tárházba. A kód módosításait a CI/CD-folyamat kezdeményezése, és automatikusan telepítheti őket a módosításokat az Azure-bA.
+Most már készen áll az alkalmazásban lévő csapattal való együttműködésre egy CI/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkát a webhelyén. A git-tárház minden módosítása egy buildet indít az Azure DevOps, és egy CD-folyamat végrehajtja az Azure-ba történő üzembe helyezést. Kövesse az ebben a szakaszban leírt eljárást, vagy használjon másik technikát a tárház változásainak érvényesítéséhez. A kód módosításai kezdeményezik a CI/CD folyamatot, és automatikusan telepítik a módosításokat az Azure-ba.
 
-1. A bal oldali panelen válassza ki a **kód**, és folytassa a tárházhoz.
+1. A bal oldali panelen válassza a **kód**lehetőséget, majd nyissa meg a tárházat.
 
-1. Nyissa meg a *SampleWebApplication\Views\Home* könyvtár, válassza a három pontra (...), a *Index.cshtml* fájlt, és válassza ki **szerkesztése**. 
+1. Nyissa meg a *SampleWebApplication\Views\Home* könyvtárat, válassza az *index. cshtml* fájl melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget. 
 
-1. Módosítja a fájlt, például a valamilyen szöveget a div címkék egyikében. 
+1. Végezze el a fájl módosítását, például a div-címkék egyikén belüli szöveg hozzáadását. 
 
-1. Jobb felső sarokban, válassza ki a **véglegesítése**, majd válassza ki **véglegesítése** újra, hogy a módosítás leküldése.  
-    Néhány pillanat múlva build elindítja az Azure DevOps, és egy kiadási üzembe helyezéséhez a módosításokat hajt végre. A DevOps Projects információközpontban vagy a böngészőben az Azure DevOps vállalattal build állapotának figyelésére.
+1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**  
+    Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Projects irányítópulton vagy a böngészőben az Azure DevOps-szervezettel.
 
-1. A kiadás befejezése után frissítse az alkalmazás ellenőrizheti a módosításokat.
+1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="connect-to-the-azure-sql-database"></a>Csatlakozás az Azure SQL database
+## <a name="connect-to-the-azure-sql-database"></a>Kapcsolódás az Azure SQL Database-hez
 
-Az Azure SQL adatbázishoz való kapcsolódáshoz megfelelő engedélyek szükségesek.
+Megfelelő engedélyekkel kell rendelkeznie az Azure SQL Database-adatbázishoz való kapcsolódáshoz.
 
-1. A DevOps Projects irányítópultján válassza ki a **SQL Database** , nyissa meg az SQL database felügyeleti oldalára.
+1. Az DevOps Projects irányítópulton válassza a **SQL Database** lehetőséget az SQL Database felügyeleti lapjára való ugráshoz.
    
-1. Válassza ki **kiszolgálótűzfal beállítása**, majd válassza ki **ügyfél IP-cím hozzáadása**. 
+1. Válassza a **kiszolgáló tűzfal beállítása**lehetőséget, majd kattintson az **ügyfél IP-** címének hozzáadása elemre. 
 
 1. Kattintson a **Mentés** gombra.  
-    Az ügyfél IP-Címét most már rendelkezik az SQL Server Azure-erőforrás elérésére.
+    Az ügyfél IP-címe mostantól hozzáfér a SQL Server Azure-erőforráshoz.
 
-1. Lépjen vissza a **SQL Database** ablaktáblán. 
+1. Lépjen vissza a **SQL Database** ablaktáblára. 
 
-1. Jobb válassza ki a kiszolgáló nevét, nyissa meg a konfigurációs oldalára **SQL Server**.
+1. A jobb oldalon válassza ki a kiszolgáló nevét, és navigáljon a **SQL Server**konfigurációs lapjára.
 
-1. Válassza ki **jelszó alaphelyzetbe állítása**, az SQL Server-rendszergazdai bejelentkezési jelszót adjon meg, és válassza **mentése**.  
-    Mindenképp ezt a jelszót használja az oktatóanyag későbbi részében.
+1. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget, adjon meg egy jelszót a SQL Server rendszergazdai bejelentkezéshez, majd kattintson a **Mentés**gombra.  
+    Ügyeljen rá, hogy ezt a jelszót ne használja az oktatóanyag későbbi részében.
 
-    Most már igény szerint használhat ügyféleszközökkel például az SQL Server Management Studio vagy a Visual Studio csatlakozni az SQL Server és az Azure SQL database. A kapcsolódáshoz használja a **Kiszolgáló neve** tulajdonságot.
+    A SQL Serverhoz és az Azure SQL Database-hez való kapcsolódáshoz igény szerint használhatja a SQL Server Management Studio vagy a Visual Studio eszközt is. A kapcsolódáshoz használja a **Kiszolgáló neve** tulajdonságot.
 
-    A DevOps Projects a projekt első konfigurációja nem módosította az adatbázis felhasználónevének, ha a felhasználónév része a helyi az e-mail-címét. Például, ha az e-mail-cím *johndoe\@microsoft.com*, a felhasználónév *johndoe*.
+    Ha nem módosította az adatbázis-felhasználónevet, amikor először konfigurálta a projektet DevOps Projectsban, a Felhasználónév az e-mail cím helyi része. Ha például az e-mail-címe *johndoe\@microsoft.com*, a Felhasználónév a *johndoe*.
 
    > [!NOTE]
-   > Ha az SQL-bejelentkezési jelszó megváltoztatása, módosítania kell a jelszót a kibocsátási folyamat változót, a "Vizsgálja meg a CD-folyamat" szakaszban leírtak szerint.
+   > Ha megváltoztatja a jelszavát az SQL-bejelentkezéshez, módosítania kell a kiadási folyamat változóban található jelszót a "CD-folyamat vizsgálata" című szakaszban leírtak szerint.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha teszteli, elkerülheti a halmoz fel díjak szerint az erőforrások törlése. Ha már nincs szüksége, törölheti az Azure SQL database és a kapcsolódó erőforrásokat, ebben az oktatóanyagban létrehozott. Ehhez használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
+Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az oktatóanyagban létrehozott Azure SQL Database-adatbázist és kapcsolódó erőforrásokat. Ehhez használja a **Törlés** funkciót a DevOps projects irányítópulton.
 
 > [!IMPORTANT]
-> Az alábbi eljárás véglegesen törli az erőforrást. A *törlése* funkció tárolt a DevOps Projects, Azure-beli és az Azure DevOps a projekt által létrehozott adatok megsemmisülnek, és nem lehet beolvasni. Ezzel az eljárással csak azután alaposan elolvasta a megjelenő utasításokat.
+> Az alábbi eljárás véglegesen törli az erőforrásokat. A *delete* funkció megsemmisíti a projekt által az Azure-ban és az Azure-DevOps található DevOps projects által létrehozott összes adatát, és nem fogja tudni beolvasni. Ezt az eljárást csak akkor használja, ha alaposan elolvasta a kérdéseit.
 
-1. Az Azure Portalon nyissa meg a DevOps Projects-irányítópultot.
-2. Jobb felső sarokban, válassza ki a **törlése**. 
-3. Amikor a rendszer kéri, válassza ki a **Igen** való *véglegesen törli* az erőforrásokat.
+1. A Azure Portal nyissa meg a DevOps Projects irányítópultot.
+2. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
+3. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
 ## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az Azure DevOps Projects használata az ASP.NET-alkalmazás és az Azure SQL Database-kód
+> * A ASP.NET-alkalmazás és a Azure SQL Database-kód üzembe helyezése a Azure DevOps Projects használatával
 > * Az Azure DevOps és az Azure-előfizetés konfigurálása 
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
-> * Véglegesítse a módosításokat az Azure-Adattárakkal, és automatikusan telepíthet az Azure-bA
-> * Csatlakozás az Azure SQL database 
+> * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
+> * Kapcsolódás az Azure SQL Database-hez 
 > * Az erőforrások eltávolítása
 
-A CI/CD-folyamat kapcsolatos további információkért lásd:
+A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A többfázisú folyamatos készregyártás (CD) folyamat meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Videók
 

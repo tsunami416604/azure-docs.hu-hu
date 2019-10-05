@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626344"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975307"
 ---
 | Resource | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "69626344"
 | Címke kulcsának hossza |512 |512 |
 | Címke értékének hossza |256 |256 |
 
-<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. Törölheti az előzményekből származó bejegyzéseket az [](/cli/azure/group/deployment) az Azure CLI, illetve a [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) használatával a PowerShellben.  Egy PowerShell-parancsfájlhoz, amely automatizálja az üzemelő példányok folyamatos integrációs és folyamatos teljesítési (CI/CD) forgatókönyvben történő törlését, lásd: [Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Ha eléri a 800-es üzemelő példányok számát egy erőforráscsoport esetében, törölje a már nem szükséges előzményekből származó központi telepítéseket. Az üzembe helyezési előzményekből származó bejegyzések törlése nem befolyásolja az üzembe helyezett erőforrásokat. További információ: a [hiba elhárítása, ha a központi telepítés száma meghaladja a 800](../articles/azure-resource-manager/deployment-quota-exceeded.md)-at.
 
 #### <a name="template-limits"></a>Sablonok korlátai
 

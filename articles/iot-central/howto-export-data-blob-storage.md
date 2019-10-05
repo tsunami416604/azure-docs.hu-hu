@@ -4,27 +4,27 @@ description: Adatok exportálása az Azure IoT Central alkalmazásból az Azure-
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 7ee9d2bf32fcec5f5f4435fe09916f437d6323ee
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876052"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971667"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportálja adatait az Azure Blob Storageba
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *Ez a témakör a rendszergazdákra vonatkozik.*
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az **Azure Blob Storage**-fiókba való rendszeres adatexportáláshoz. Az Apache Avroformátumban is exportálhatja a mértékeket, **eszközöket**és az eszközök **sablonjait** . Az exportált adatokat felhasználhatja a ritkán használt módszerekhez, például a Azure Machine Learning vagy a Microsoft Power BI hosszú távú trendek elemzéséhez.
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az **Azure Blob Storage-fiókba** vagy **Azure Data Lake Storage Gen2 Storage-fiókba**való rendszeres adatexportáláshoz. A fájlokat JSON vagy ApacheAvro formátumban **is exportálhatja** **a** fájlokra. Az exportált adatokat felhasználhatja a ritkán használt módszerekhez, például a Azure Machine Learning vagy a Microsoft Power BI hosszú távú trendek elemzéséhez.
 
 > [!Note]
-> Ha ismét bekapcsolja a folyamatos adatexportálást, az adott pillanattól kezdve csak az adott adatot kapja meg. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
+> Ha bekapcsolja a folyamatos adatexportálást, a rendszer csak az adott pillanattól kezdve kapja meg az adott adatot. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -36,17 +36,15 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos ad
 
 Ha nem rendelkezik meglévő tárolóval az exportáláshoz, kövesse az alábbi lépéseket:
 
-## <a name="create-storage-account"></a>Storage-fiók létrehozása
-
-1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információt az [Azure Storage docs](https://aka.ms/blobdocscreatestorageaccount)-ban olvashat.
-2. A fiók típusa területen válassza az **általános célú** vagy a **blob Storage**lehetőséget.
-3. Válasszon egy előfizetést. 
+1. Hozzon létre egy [új Storage-fiókot a Azure Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További információ: új [Azure Blob Storage-fiókok](https://aka.ms/blobdocscreatestorageaccount) vagy [Azure Data Lake Storage v2 Storage-fiókok](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account)létrehozása.
 
     > [!Note] 
-    > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
+    > Ha **úgy dönt,** hogy ADLS v2 Storage-fiókba exportálja az adatexportálást, akkor a **BlobStorage**lehetőséget kell választania. 
 
-4. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
+    > [!Note] 
+    > Az egyes előfizetésekhez tartozó Storage-fiókokba exportálhatja az adatait, mint az utólagos elszámolású IoT Central alkalmazás esetében. Ebben az esetben kapcsolati sztringet fog használni.
 
+2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
 
 ## <a name="set-up-continuous-data-export"></a>Folyamatos adatexportálás beállítása
 
@@ -54,82 +52,87 @@ Most, hogy van egy tárolási célhelye az adatexportáláshoz, kövesse az alá
 
 1. Jelentkezzen be IoT Central alkalmazásba.
 
-2. A bal oldali menüben válassza a **folyamatos adatexportálás**lehetőséget.
+2. A bal oldali menüben válassza az **adatexportálás**elemet.
 
     > [!Note]
-    > Ha a bal oldali menüben nem látja a folyamatos adatexportálást, akkor Ön nem rendszergazda az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
-
-    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_menu1.png)
+    > Ha nem látja az adatexportálást a bal oldali menüben, nem Ön az alkalmazás rendszergazdája. Az adatexportálás beállításához forduljon a rendszergazdához.
 
 3. Kattintson a jobb felső sarokban található **+ új** gombra. Válassza az **Azure Blob Storage** lehetőséget az Exportálás célhelye. 
 
     > [!NOTE] 
     > Az alkalmazások exportálásának maximális száma öt. 
 
-    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export_new1.png)
+    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export-new2.png)
 
 4. A legördülő listában válassza ki a **Storage-fiók névterét**. A lista utolsó elemét is kiválaszthatja, amely a **kapcsolatok karakterláncát adja meg**. 
 
     > [!NOTE] 
-    > A Storage-fiókok névtereit a **IoT Central alkalmazással megegyező**előfizetésben fogja látni. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
+    > A Storage-fiókok névtereit a **IoT Central alkalmazással megegyező előfizetésben**fogja látni. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
 
     > [!NOTE] 
     > A 7 napos próbaverziós alkalmazások esetében az egyetlen módszer a folyamatos adatexportálás konfigurálására egy kapcsolódási karakterláncon keresztül. Ennek az az oka, hogy a 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export-create-blob.png)
+    ![Új Exportálás létrehozása a Blobba](media/howto-export-data/export-create-blob2.png)
 
-5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
-    - A Storage-fiókban nyissa meg a Azure Portal Storage-fiókját.
-        - A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
-        - Másolja a key1-vagy a key2-kapcsolatok karakterláncát
+5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A Storage-fiókhoz tartozó kapcsolati karakterlánc beszerzéséhez nyissa meg a Storage-fiókot a Azure Portal: – **Beállítások**területen, majd válassza a **hozzáférési kulcsok** lehetőséget – másolja a key1 kapcsolati karakterláncát vagy a key2 kapcsolati karakterláncát.
  
-6. Válasszon egy tárolót a legördülő listából.
+6. Válasszon egy tárolót a legördülő listából. Ha nem rendelkezik tárolóval, nyissa meg a Storage-fiókját a Azure Portalban:
+    - A **blob Service**alatt válassza a **Blobok**elemet. Kattintson a **+ tároló** elemre, és adja meg a tároló nevét. Válasszon egy nyilvános hozzáférési szintet az adataihoz (a folyamatos adatexportálással együtt). További információ az [Azure Storage docs](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)-ról.
 
-7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre állítja.
+7. Válassza ki a kívánt **adatformátumot** : JSON-vagy [Apache Avro](https://avro.apache.org/docs/current/index.html) -formátum.
 
-6. A folyamatos adatexportálás bekapcsolásához ellenőrizze, hogy be van-e **kapcsolva**az adatexportálás. Kattintson a **Mentés** gombra.
+8. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat **, ha a**típust be értékre állítja.
 
-   ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export-list-blob.png)
+9. A folyamatos adatexportálás bekapcsolásához győződjön meg arról, hogy az **adatexportálási** váltógomb be van **kapcsolva**. Kattintson a **Mentés** gombra.
 
-7. Néhány perc elteltével az adatai megjelennek a választott célhelyen.
+   ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export-list-blob2.png)
+
+10. Néhány perc elteltével az adatai megjelennek a Storage-fiókban.
 
 
-## <a name="export-to-azure-blob-storage"></a>Exportálás az Azure Blob Storageba
+## <a name="path-structure"></a>Elérési út szerkezete
 
-A mérések, az eszközök és az eszközök sablonjainak adatai percenként egyszer lesznek exportálva a Storage-fiókba, és minden olyan fájl, amely tartalmazza a legutóbbi exportált fájl változási kötegét. Az exportált adatértékek [Apache Avro](https://avro.apache.org/docs/current/index.html) formátumban jelennek meg, és három mappába lesznek exportálva. A Storage-fiók alapértelmezett elérési útjai a következők:
-- Üzenetek: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Eszközök: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Eszközök sablonjai: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+A mérések, az eszközök és az eszközök sablonjainak adatai percenként egyszer lesznek exportálva a Storage-fiókba, és minden olyan fájl, amely tartalmazza a legutóbbi exportált fájl változási kötegét. Az exportált adatfájlok a JSON-vagy Avro-formátumú három mappában vannak elhelyezve. A Storage-fiók alapértelmezett elérési útjai a következők:
+- Üzenetek: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Eszközök: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- Eszközök sablonjai: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+
+Az exportált fájlok tallózásával tallózhat a Azure Portalban, ha a fájlra navigál, és a **blob szerkesztése** lapot választja.
+
+## <a name="data-format"></a>Adatformátum 
 
 ### <a name="measurements"></a>Mérések
 
 Az exportált mérések adatainak minden olyan új üzenete van, amelyet az összes eszköz IoT Central fogadott az adott idő alatt. Az exportált fájlok ugyanazt a formátumot használják, mint a blob Storage-ba [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) által exportált üzenet-fájlok.
 
 > [!NOTE]
-> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének lekéréséhez exportálja az eszköz pillanatképeit. Az egyes üzeneteket az **connectionDeviceId** megegyező, az eszközhöz tartozó rekordra vonatkozó adatokkal korrelálhatja.
+> Győződjön meg arról, hogy az eszközök olyan üzeneteket küldenek, amelyek `contentType: application/JSON` és `contentEncoding:utf-8` (vagy `utf-16`, `utf-32`) rendelkeznek. Példaként tekintse meg [IoT hub dokumentációját](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body) .
+
+> [!NOTE]
+> A méréseket küldő eszközöket az eszközök azonosítói jelölik (lásd a következő részeket). Az eszközök nevének lekéréséhez exportálja az eszköz pillanatképeit. Az egyes üzeneteket az **connectionDeviceId** megegyező, az eszközhöz **tartozó rekordra vonatkozó** adatokkal korrelálhatja.
 
 A következő példa egy olyan rekordot mutat be a dekódolású Avro fájlban:
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-06-11T00:00:08.2250000Z",
+  "Properties":{},
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceId>",
+    "connectionAuthMethod":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"<generationId>",
+    "enqueuedTime":"2019-06-11T00:00:08.2250000Z"
+  },
+  "Body":"{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
 }
 ```
 
 ### <a name="devices"></a>Eszközök
 
 Ha a folyamatos adatexportálás be van kapcsolva, az összes eszközön egyetlen pillanatkép lesz exportálva. Minden eszköz a következőket tartalmazza:
-- `id`az eszköz IoT Central
-- `name`az eszköz
-- `deviceId`a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
+- @no__t – az eszköz 0 IoT Central
+- az eszköz @no__t – 0
+- @no__t – 0 a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
 - Eszköz sablonjának adatai
 - Tulajdonságok értékei
 - Értékek beállítása
@@ -144,42 +147,42 @@ Az új Pillanatképek percenként egyszer írhatók. A pillanatkép a következ�
 >
 > Az eszközök sablonja, amelyhez az egyes eszközök tartoznak, egy eszköz-sablon azonosítója jelöli. Az eszköz sablonjának lekéréséhez exportálja az eszköz sablonjának pillanatképeit.
 
-A dekódolású Avro fájlban található egyik rekord a következőképpen néz ki:
+Az exportált fájlok rekordokban egyetlen sort tartalmaznak. Az alábbi példa egy Avro formátumú rekordot mutat be, dekódolva:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "id":"<id>",
+  "name":"Refrigerator 2",
+  "simulated":true,
+  "deviceId":"<deviceId>",
+  "deviceTemplate":{ 
+    "id":"<template id>",
+    "version":"1.0.0"
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":"New York",
+      "maintCon":true,
+      "tempThresh":20
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
+    "device":{ 
+      "lastReboot":"2018-02-09T22:22:47.156Z"
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":0
+    }
+  }
 }
 ```
 
-### <a name="device-templates"></a>Eszközök sablonjai
+### <a name="device-templates"></a>Eszközsablonok
 
 Ha a folyamatos adatexportálás be van kapcsolva, az összes eszköz sablonja egyetlen pillanatképet exportál. Minden eszköz sablonja a következőket tartalmazza:
-- `id`az eszköz sablonja
-- `name`az eszköz sablonja
-- `version`az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
 - Mérési adattípusok és minimális/maximális értékek.
 - A tulajdonság adattípusai és az alapértelmezett értékek.
 - Az adattípusok és az alapértelmezett értékek beállítása.
@@ -192,79 +195,79 @@ Az új Pillanatképek percenként egyszer írhatók. A pillanatkép a következ�
 > [!NOTE]
 > A legutóbbi pillanatkép óta törölt eszközök sablonjai nem lesznek exportálva. Jelenleg a pillanatképek nem rendelkeznek kijelzővel a törölt eszközök sablonjaihoz.
 
-A dekódolású Avro fájlban található egyik rekord a következőképpen néz ki:
+Az exportált fájlok rekordokban egyetlen sort tartalmaznak. Az alábbi példa egy Avro formátumú rekordot mutat be, dekódolva:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
+{ 
+  "id":"<id>",
+  "name":"Refrigerated Vending Machine",
+  "version":"1.0.0",
+  "measurements":{ 
+    "telemetry":{ 
+      "humidity":{ 
+        "dataType":"double",
+        "name":"Humidity"
+      },
+      "magnetometerX":{ 
+        "dataType":"double",
+        "name":"Magnetometer X"
+      },
+      "magnetometerY":{ 
+        "dataType":"double",
+        "name":"Magnetometer Y"
+      },
+      "magnetometerZ":{ 
+        "dataType":"double",
+        "name":"Magnetometer Z"
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
+    "states":{ 
+      "connectivity":{ 
+        "dataType":"enum",
+        "name":"Connectivity"
+      }
     },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
+    "events":{ 
+      "opened":{ 
+        "name":"Door Opened",
+        "category":"informational"
+      }
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":{ 
+        "dataType":"double",
+        "name":"Fan Speed",
+        "initialValue":0
+      }
+    }
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":{ 
+        "dataType":"string",
+        "name":"Location",
+        "initialValue":"Seattle"
+      },
+      "maintCon":{ 
+        "dataType":"boolean",
+        "name":"Maintenance Contract",
+        "initialValue":true
+      },
+      "tempThresh":{ 
+        "dataType":"double",
+        "name":"Temperature Alert Threshold",
+        "initialValue":30
+      }
+    },
+    "device":{ 
+      "lastReboot":{ 
+        "dataType":"dateTime",
+        "name":"Last Reboot"
+      }
+    }
+  }
 }
 ```
 

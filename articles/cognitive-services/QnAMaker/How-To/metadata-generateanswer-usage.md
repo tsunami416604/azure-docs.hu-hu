@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300250"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971809"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -48,7 +48,7 @@ Miután közzétette a tudásbázist, vagy a [QnA Maker portálról](https://www
 A végpont részleteinek beszerzése:
 1. Jelentkezzen be itt: [https://www.qnamaker.ai](https://www.qnamaker.ai).
 1. A **saját Tudásbázisban**válassza a Tudásbázisban a **kód megtekintése** lehetőséget.
-    ![A tudásbázisok képernyőképe](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+    @no__t 0Screenshot @ no__t-1
 1. A GenerateAnswer-végpont részleteinek beolvasása.
 
     ![A végpont részleteinek képernyőképe](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -64,7 +64,7 @@ A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívás
 A POST kérelem a következőket használja:
 
 * Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Szükséges [fejléc](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)-tulajdonság `Authorization`, biztonsági
+* Kötelező [fejléc-tulajdonság](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, biztonság érdekében
 * A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
 
 A GenerateAnswer URL-címének formátuma a következő: 
@@ -73,7 +73,7 @@ A GenerateAnswer URL-címének formátuma a következő:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Ne feledje, hogy állítsa be a http `Authorization` -fejléc tulajdonságát a karakterlánc `EndpointKey` értékével egy záró szóközzel, a **Beállítások** lapon található Endpoint (végpont) kulccsal.
+Ne felejtse el megadni a (z) `Authorization` HTTP-fejléc tulajdonságát a (z) `EndpointKey` karakterlánc értékével, amely egy szóköz, a **Beállítások** lapon található végponti kulcs.
 
 A JSON-törzs például a következőképpen néz ki:
 
@@ -161,7 +161,7 @@ A támogatási robotnak van [egy példája](https://github.com/microsoft/BotBuil
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Metaadatok használata egyéni metaadat-címkék alapján történő szűréshez
 
-A metaadatok hozzáadása lehetővé teszi a válaszok szűrését a metaadatok címkéi alapján. Adja hozzá a metaadatok oszlopot a **nézet beállításai** menüből. A metaadatokat a **+** metaadatok ikonra kattintva adhat hozzá a tudásbázishoz. Ez a pár egy kulcsból és egy értékből áll.
+A metaadatok hozzáadása lehetővé teszi a válaszok szűrését a metaadatok címkéi alapján. Adja hozzá a metaadatok oszlopot a **nézet beállításai** menüből. Metaadatok hozzáadása a tudásbázishoz a metaadatok **+** ikon kiválasztásával adhat hozzá metaadat-párokat. Ez a pár egy kulcsból és egy értékből áll.
 
 ![A metaadatok hozzáadásának képernyőképe](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -219,9 +219,9 @@ A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és a válaszfájl
 
 ## <a name="match-questions-only-by-text"></a>Csak kérdések egyeztetése szöveg szerint
 
-Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GenerateAnswer kérelem post törzsében.
+Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` értéket a GenerateAnswer kérelem POST törzsében.
 
-A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis használatával `isTest=true`kereshet.
+A közzétett Tudásbázisban `isTest=false` vagy az `isTest=true` használatával kereshet a tesztelési Tudásbázisban.
 
 ```json
 {
@@ -249,4 +249,4 @@ A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis has
 A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel választ kaphat a [Poster](../Quickstarts/get-answer-from-kb-using-postman.md) és a [curl](../Quickstarts/get-answer-from-kb-using-curl.md)használatával. 
 
 > [!div class="nextstepaction"]
-> [Tudásbázis létrehozása](./create-knowledge-base.md)
+> [Tudásbázis-robot létrehozása](../tutorials/integrate-qnamaker-luis.md)

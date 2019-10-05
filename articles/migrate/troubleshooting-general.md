@@ -1,17 +1,18 @@
 ---
 title: Azure Migrate problémák elhárítása | Microsoft Docs
 description: Áttekintést nyújt a Azure Migrate szolgáltatás ismert problémáiról, valamint a gyakori hibákkal kapcsolatos hibaelhárítási tippekről.
-author: rayne-wiselman
+author: musa-57
+ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: raynew
-ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.author: hamusa
+ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067815"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970650"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -87,8 +88,8 @@ Egy projekt törlése a Azure Migrate korábbi verziójában:
 ### <a name="delete-a-workspace"></a>Munkaterület törlése
 
 Tallózással keresse meg a projekthez csatolt Log Analytics munkaterületet.
-* Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials** > -**kiszolgáló értékelése**területen találja.
-       ![LA munkaterület](./media/troubleshooting-general/loganalytics-workspace.png)
+* Ha nem törölte a Azure Migrate projektet, akkor a munkaterületre mutató hivatkozást az **Essentials** > **kiszolgáló értékelése**területen találja.
+       @no__t 0LA-munkaterület @ no__t-1
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -111,7 +112,7 @@ Ha a következő hibaüzenet jelenik meg: "a megadott jegyzékfájl érvénytele
 2. Ha a telepítés továbbra is meghiúsul, és a VMware vSphere ügyfél használatával telepíti a OVF-fájlt, próbálja meg telepíteni a vSphere webes ügyfelén keresztül. Ha az üzembe helyezés továbbra is sikertelen, próbálkozzon más böngészővel.
 3. Ha a vSphere webes ügyfélprogramot használja, és vCenter Server 6,5-es vagy 6,7-es számítógépen szeretné telepíteni, próbálja meg közvetlenül telepíteni a PETESEJTeket az ESXi-gazdagépre:
    - Kapcsolódjon közvetlenül az ESXi-gazdagéphez (vCenter Server helyett) a webes ügyféllel (https://<*gazdagép IP-címe*>/UI).
-   - A **saját** > **leltár**területen válassza a **fájl** > **központi telepítése OVF sablont**. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
+   - A **Home** > **leltárban**válassza a **fájl** > **OVF-sablon telepítése**lehetőséget. Tallózással keresse meg a PETESEJTeket, és fejezze be a telepítést.
 4. Ha az üzembe helyezés továbbra is sikertelen, forduljon Azure Migrate támogatási szolgálathoz.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>A készülék nem tud csatlakozni az internethez
@@ -332,7 +333,7 @@ Miután telepítette a függőségi vizualizációs ügynököket a helyszíni v
 
 Windows rendszerű virtuális gépek esetén:
 1. A Vezérlőpulton indítsa el az MMA-t.
-2. A **Microsoft monitoring Agent tulajdonságok** > **Azure log Analytics (OMS)** területén ellenőrizze, hogy a munkaterület **állapota** zöld.
+2. A **Microsoft monitoring Agent tulajdonságai** > **Azure log Analytics (OMS)** területen győződjön meg arról, hogy a munkaterület **állapota** zöld.
 3. Ha az állapot nem zöld, próbálja meg eltávolítani a munkaterületet, és adja hozzá újra az MMA-hoz.
 
       ![MMA tulajdonságai párbeszédpanel](./media/troubleshooting-general/mma-status.png)

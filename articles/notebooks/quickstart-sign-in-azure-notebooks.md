@@ -4,21 +4,20 @@ description: Gyorsan jelentkezzen be Azure notebookok, és állítsa be a felhas
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: a9ba6fcc0c8b74664f5c4b32e54530fb4aaa2881
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 0c12c8673ff61dcca62c72addcbf0d9b33c2c252
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751723"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973058"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Bejelentkezés és felhasználói azonosító beállítása
 
@@ -35,7 +34,7 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
     ![Hozzon létre új Microsoft-fiók parancs bejelentkezési kérések jelenhetnek](media/accounts/create-new-microsoft-account.png)
 
     > [!Tip]
-    > Hozzon létre egy új fiókot, amely már rendelkezik fiókkal társított e-mail-címmel próbál jelenhet meg az üzenetet, a "nem itt jelentkezzen be munkahelyi vagy iskolai e-mail-címét. Egy személyes e-mail, például a Gmailes vagy Yahoo!-s, vagy szerezze be egy új Outlook e-mailt." Ebben az esetben próbáljon meg azzal bejelentkezni a munkahelyi e-mail címét, egy új fiók létrehozása nélkül.
+    > Ha olyan e-mail-címmel próbál meg létrehozni egy új fiókot, amelyhez már tartozik fiók társítva, akkor a következő üzenet jelenhet meg: "nem lehet regisztrálni egy munkahelyi vagy iskolai e-mail-címmel. Használjon személyes e-maileket, például a Gmailt vagy a Yahoo!-t, vagy szerezzen be egy új Outlook e-mail címet. " Ebben az esetben próbáljon meg bejelentkezni a munkahelyi e-mail-címmel új fiók létrehozása nélkül.
 
 1. Adja meg a jelszót, amikor a rendszer kéri.
 
@@ -56,7 +55,7 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
     ![Egy Azure-jegyzetfüzetek profilu kezdeti megtekintése](media/accounts/profile-page-new.png)
 
 > [!NOTE]
-> Ha a "Felhasználói azonosító már használatban van," üzenetet látja, próbálja meg másik azonosítót. Felhasználói azonosítók egyediek legyenek az összes Azure-jegyzetfüzetek fiókokat, és az Azure notebookok is fenntartja az egyes felhasználói azonosítókat, például a Microsoft márkanevek.
+> Ha a "felhasználói azonosító már használatban van" üzenet jelenik meg, próbálkozzon egy másik AZONOSÍTÓval. A felhasználói azonosítók minden Azure Notebooks-fiókban egyediek, és Azure Notebooks bizonyos felhasználói azonosítókat, például a Microsoft márkaneveket is fenntartanak.
 
 ## <a name="sign-out"></a>Kijelentkezés
 
@@ -67,4 +66,4 @@ Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónev�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Hozzon létre és osszon meg a notebook](quickstart-create-share-jupyter-notebook.md)
+> [Rövid útmutató: Jegyzetfüzet létrehozása és megosztása @ no__t-0

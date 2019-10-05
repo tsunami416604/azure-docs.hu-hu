@@ -1,62 +1,62 @@
 ---
-title: MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása |} A Microsoft Docs
-description: Ismerje meg, hogyan lehet a MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása.
-keywords: MySQL-kapcsolat, a kapcsolati karakterlánc, a kapcsolódási problémák, a átmeneti hiba, a kapcsolódási hiba
+title: A Azure Database for MySQL kapcsolódási problémáinak elhárítása
+description: Ismerje meg, hogy miként lehet elhárítani a Azure Database for MySQL kapcsolódási problémáit, beleértve az újrapróbálkozásokat igénylő átmeneti hibákat, a tűzfal problémáit és az kimaradásokat.
+keywords: MySQL-kapcsolat, kapcsolati karakterlánc, csatlakozási problémák, átmeneti hiba, kapcsolódási hiba
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: faf378a81a6db24acc676bed82fe495cfb108612
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a0203ceeb36352a16814345f5ecdff8271691fd0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61421842"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972842"
 ---
-# <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
+# <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>A Azure Database for MySQL kapcsolódási problémáinak elhárítása
 
-Csatlakozási problémák oka lehet a különböző dolgok, többek között:
+A kapcsolódási problémákat számos különböző dolog okozhatja, többek között:
 
 * Tűzfalbeállítások
-* A kapcsolat időkorlátja
-* Helytelen bejelentkezési információk
-* Az egyes, Azure Database for MySQL erőforrás elérte a maximális korlátját
-* A szolgáltatás az infrastruktúrával kapcsolatos problémák
-* A szolgáltatásban végzett karbantartási
-* A kiszolgáló számítási lefoglalt módosítja a virtuális magok vagy áthelyezése egy másik szolgáltatásszinthez számának méretezése
+* A kapcsolatok időtúllépése
+* Helytelen bejelentkezési adatok
+* Néhány Azure Database for MySQL erőforráshoz elérte a maximális korlátot
+* A szolgáltatás infrastruktúrájának problémái
+* A szolgáltatásban végrehajtott karbantartás
+* A kiszolgáló számítási kiosztását a virtuális mag számának méretezésével vagy egy másik szolgáltatási szinten való áthelyezéssel módosítjuk.
 
-Általában a kapcsolódási problémák, Azure database for MySQL segítségével osztályozzák:
+A Azure Database for MySQLhoz való kapcsolódási problémák általában a következőképpen sorolhatók be:
 
-* Átmeneti hibák (rövid ideig tartó vagy időszakos)
-* Állandó és nem átmeneti hibák (, rendszeresen ismétlődő hibák)
+* Átmeneti hibák (rövid életű vagy időszakos)
+* Állandó vagy nem átmeneti hibák (a rendszeresen ismétlődő hibák)
 
 ## <a name="troubleshoot-transient-errors"></a>Átmeneti hibák elhárítása
 
-Átmeneti hibák fordulhatnak elő, amikor a karbantartásra azért, a rendszer a hardveres vagy szoftveres hiba fordul elő, vagy a kiszolgáló virtuális magok vagy szolgáltatási szintjének módosítása. Az Azure Database for MySQL-szolgáltatás beépített magas szinten rendelkezésre áll, és célja, hogy az ilyen típusú problémák megoldásához automatikusan. Azonban az alkalmazás megszakad a kapcsolat a kiszolgálóval általában kevesebb, mint 60 másodpercre, rövid ideig legfeljebb. Egyes események időnként több időt vesz igénybe, például ha olyan nagy tranzakciót miatt a hosszú futású helyreállítási csökkentése érdekében.
+Átmeneti hibák történnek a karbantartás végrehajtásakor, a rendszer hibát észlel a hardverrel vagy a szoftverrel kapcsolatban, vagy megváltoztatja a kiszolgáló virtuális mag vagy szolgáltatási szintjét. A Azure Database for MySQL szolgáltatás beépített magas rendelkezésre állással rendelkezik, és úgy van kialakítva, hogy az ilyen típusú problémákat automatikusan enyhítse. Az alkalmazás azonban nem éri el a kiszolgálóval való kapcsolatát egy rövid ideig, amely általában kevesebb, mint 60 másodperc. Egyes események esetenként hosszabb időt vehetnek igénybe, például ha egy nagy tranzakció hosszan futó helyreállítást okoz.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Átmeneti kapcsolódási problémák megoldásának lépései
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Az átmeneti kapcsolódási problémák megoldásának lépései
 
-1. Ellenőrizze a [a Microsoft Azure-szolgáltatások irányítópultját](https://azure.microsoft.com/status) , amelyben a jelenített meg az alkalmazás az idő során fellépő ismert szolgáltatáskimaradások.
-2. Az alkalmazásokat, amelyek csatlakozni a cloud service, Azure Database for MySQL kell átmeneti hibák várhatóan és megvalósításához újrapróbálkozási logika kezelje ezeket a hibákat, felszínre hozza a ezeket az adatokat az alkalmazáshibák felhasználók helyett. Felülvizsgálat [átmeneti kapcsolati hibákat kezelése az Azure Database for MySQL-hez](concepts-connectivity.md) ajánlott eljárások és tervezési útmutatást az átmeneti hibák kezelése.
-3. Egy kiszolgáló megközelíti az erőforrás-korlátozások, mint hibák úgy is tűnik, hogy átmeneti kapcsolati probléma. Lásd: [korlátozások az Azure Database for MySQL-hez](concepts-limits.md).
-4. Ha csatlakozási problémák továbbra is, vagy ha, amelynek az alkalmazás a hiba lép fel, mint 60 másodperc, vagy ha a hiba több példányban jelenik meg egy adott napon egy Azure-támogatáskérést fájl kiválasztásával **első támogatja**a a [Azure-támogatási](https://azure.microsoft.com/support/options) hely.
+1. Győződjön meg arról, hogy a [Microsoft Azure szolgáltatás irányítópultján](https://azure.microsoft.com/status) az alkalmazás által jelentett hibák ideje alatt bekövetkezett ismert kimaradások szerepelnek.
+2. A felhőalapú szolgáltatásokhoz, például Azure Database for MySQLokhoz csatlakozó alkalmazásoknak átmeneti hibákat kell elvárniuk, és az újrapróbálkozási logikát kell végrehajtaniuk, hogy ezeket a hibákat az alkalmazás hibáiként felhasználja a felhasználók számára. Az átmeneti hibák kezelésével kapcsolatos ajánlott eljárásokért és tervezési útmutatóért tekintse át [Azure Database for MySQL átmeneti csatlakozási hibák kezelését](concepts-connectivity.md) .
+3. Mivel a kiszolgáló megközelíti az erőforrás-korlátait, úgy tűnik, hogy a hibák átmeneti kapcsolódási problémát jelentenek. Tekintse [meg a Azure Database for MySQL korlátozásait](concepts-limits.md).
+4. Ha a kapcsolódási problémák továbbra is fennállnak, vagy ha az alkalmazás az időtartamot meghaladja a 60 másodpercnél, vagy ha egy adott nap több előfordulását látja a hibával, az Azure-támogatási kérést az Azure- **támogatás beszerzése** lehetőség választásával kérheti le. [ Támogatási](https://azure.microsoft.com/support/options) webhely.
 
-## <a name="troubleshoot-persistent-errors"></a>Az állandó hibák elhárítása
+## <a name="troubleshoot-persistent-errors"></a>Állandó hibák elhárítása
 
-Ha az alkalmazás nem állandó csatlakozás az Azure Database for MySQL, azt általában azt jelzi, hogy probléma az alábbi lehetőségek közül:
+Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for MySQLhoz, általában a következők egyikével kapcsolatos problémát jelez:
 
-* Kiszolgálói tűzfal-konfiguráció: Győződjön meg arról, hogy az Azure Database for MySQL-kiszolgáló tűzfalához az ügyfélről, beleértve a proxy-kiszolgálók és az átjárók kapcsolatok engedélyezésére van konfigurálva.
-* Ügyfél tűzfal-konfiguráció: Az ügyfélen a tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz csatlakozhat. IP-címek és portok nem lehet a kiszolgáló és az egyes tűzfalak például MySQL alkalmazásnevek engedélyezni kell.
-* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte  *\@servername* utótagot a felhasználó nevében.
+* Kiszolgáló tűzfalának konfigurációja: Győződjön meg arról, hogy a Azure Database for MySQL kiszolgálói tűzfal úgy van konfigurálva, hogy engedélyezze az ügyfélről érkező kapcsolatokat, beleértve a proxykiszolgálót és az átjárókat is.
+* Az ügyfél tűzfalának konfigurációja: Az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások neveit, például a MySQL-t egyes tűzfalakon.
+* Felhasználói hiba: Lehet, hogy hibás típusú kapcsolatok vannak megadva, például a kiszolgáló neve a (z) vagy egy hiányzó *@no__t 1servername* utótaggal a felhasználónévben.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 
-1. Állítsa be a [tűzfalszabályok](howto-manage-firewall-using-portal.md) lehetővé teszi az ügyfél IP-címet. Ideiglenes kizárólag tesztelési célra egy tűzfalszabályt 0.0.0.0 használja, mint a kezdő IP-cím és a 255.255.255.255 használja, mint a záró IP-cím beállított. Ekkor megnyílik a kiszolgáló összes IP-címet. A kapcsolódási probléma így megoldódik, amennyiben ez a szabály eltávolításához, és hozzon létre egy tűzfalszabályt megfelelően korlátozott IP-címet vagy címtartományt.
-2. Az ügyfél és az internet közötti összes tűzfalnak győződjön meg arról, hogy a 3306-os porton a kimenő kapcsolatok számára nyitva-e.
-3. Ellenőrizze a kapcsolati karakterláncot, és egyéb kapcsolati beállításokat. Felülvizsgálat [alkalmazások az Azure Database for MySQL-hez csatlakoztatása](howto-connection-string.md).
-4. Ellenőrizze a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy van egy regionális kimaradás, [üzletmenet-folytonossági funkcióinak áttekintése az Azure Database for MySQL](concepts-business-continuity.md) a lépéseket egy új régióban helyreállításához.
+1. [Tűzfalszabályok](howto-manage-firewall-using-portal.md) beállítása az ügyfél IP-címének engedélyezéséhez. Csak ideiglenes tesztelési célokra állítson be egy tűzfalszabály használatát a 0.0.0.0 értékkel a kezdő IP-címként, és használja a 255.255.255.255 a záró IP-címként. Ekkor megnyílik a kiszolgáló minden IP-címre. Ha ezzel feloldja a kapcsolódási problémát, távolítsa el ezt a szabályt, és hozzon létre egy tűzfalszabályot a megfelelő korlátozott IP-címhez vagy címtartomány létrehozásához.
+2. Az ügyfél és az Internet közötti összes tűzfalon ellenőrizze, hogy a 3306-es port nyitva van-e a kimenő kapcsolatok számára.
+3. Ellenőrizze a kapcsolatok karakterláncát és az egyéb kapcsolatbeállításokat. Tekintse át az [alkalmazások Azure Database for MySQLhoz való kapcsolódásának módját](howto-connection-string.md).
+4. Keresse meg a szolgáltatás állapotát az irányítópulton. Ha úgy gondolja, hogy regionális leállás van, tekintse meg az [üzletmenet folytonosságának áttekintése](concepts-business-continuity.md) című témakört, amely az új régióba való helyreállítás lépéseit Azure Database for MySQL.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Átmeneti kapcsolati hibákat kezelése az Azure Database for MySQL-hez](concepts-connectivity.md)
+* [Azure Database for MySQL átmeneti kapcsolódási hibáinak kezelése](concepts-connectivity.md)

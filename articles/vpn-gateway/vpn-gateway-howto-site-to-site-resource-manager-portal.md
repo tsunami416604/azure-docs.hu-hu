@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9fb62d74025869c3442308f9e4ac9fb8fc02669b
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 96a8b8d33f713faf96e7a96b32e9e41ca669e6cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266556"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970792"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Helyek közötti kapcsolat létrehozása az Azure Portalon
 
@@ -42,16 +42,15 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 A cikkben szereplő példák a következő értékeket használják. Ezekkel az értékekkel létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. További információkat a VPN Gateway beállításairól általánosságban [a VPN Gateway beállításaival kapcsolatos](vpn-gateway-about-vpn-gateway-settings.md) cikkben találhat.
 
-* **VNet neve:** VNet1
+* **Virtuális hálózat neve:** VNet1
 * **Címtér:** 10.1.0.0/16
 * **Előfizetés** A használni kívánt előfizetés
 * **Erőforráscsoport:** TestRG1
-* **Location** (Hely): East US
+* **Régió** East US
 * **Alhálózat** FrontEnd 10.1.0.0/24, háttérrendszer: 10.1.1.0/24 (nem kötelező ehhez a gyakorlathoz)
-* **Átjáró alhálózatának neve:** GatewaySubnet (ez automatikusan kitölti a portált)
 * **Átjáró-alhálózati címtartomány:** 10.1.255.0/27
-* **Virtual Network átjáró neve:** VNet1GW
-* **Nyilvános IP-cím:** VNet1GWIP
+* **Virtuális hálózati átjáró neve:** VNet1GW
+* **Nyilvános IP-cím neve:** VNet1GWIP
 * **VPN típusa:** Útvonalalapú
 * **Kapcsolattípus:** Helyek közötti (IPsec)
 * **Átjáró típusa:** VPN
@@ -69,6 +68,16 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
+### <a name="example-settings"></a>Példabeállítások
+
+* **Példány részletei > régió:** East US
+* **Virtual Network > virtuális hálózat:** VNet1
+* **Példány részletei > neve:** VNet1GW
+* **Példány részletei > átjáró típusa:** VPN
+* **Példány részletei > VPN-típus:** Útvonalalapú
+* **Virtual Network > átjáró-alhálózati címtartomány:** 10.1.255.0/27
+* **Nyilvános IP-cím > nyilvános IP-cím neve:** VNet1GWIP
+
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 [!INCLUDE [NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
@@ -77,6 +86,13 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 ## <a name="LocalNetworkGateway"></a>3. A helyi hálózati átjáró létrehozása
 
 A helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon a helynek, amellyel az Azure hivatkozhat rá, majd határozza meg annak a helyszíni VPN-eszköznek az IP-címét, amellyel létre kívánja hozni a kapcsolatot. Emellett megadhatja azokat az IP-címelőtagokat, amelyek a VPN-átjárón keresztül a VPN-eszközre lesznek irányítva. Az Ön által meghatározott címelőtagok a helyszíni hálózatán található előtagok. Ha a helyszíni hálózat megváltozik, vagy módosítania kell a VPN-eszköz nyilvános IP-címét, könnyen frissítheti az értékeket később.
+
+**Példa értékek**
+
+* **név:** Hely1
+* **Erőforráscsoport:** TestRG1
+* **Location** (Hely): East US
+
 
 [!INCLUDE [Add a local network gateway](../../includes/vpn-gateway-add-local-network-gateway-portal-include.md)]
 

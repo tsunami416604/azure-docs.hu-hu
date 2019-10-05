@@ -4,40 +4,39 @@ description: Hogyan kezelheti a projekt metaadatok, soubory projektu, a projekt 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: kraigb
-ms.openlocfilehash: 0440e498451ee141fa03851b78418caf911d0e32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65596746"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973130"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
 A projekt Azure notebookok lényegében a mögöttes Linux rendszerű virtuális gép, amelyben Jupyter notebookok futtatja, a fájl mappa és a leíró metaadatok együtt egy konfigurációs. Az Azure-jegyzetfüzetekben projekt-irányítópult lehetővé teszi a fájlok kezelése és egyéb konfigurálása a projekt jellemzői:
 
-- A számítási kapacitás, amelyen futtatja a projektet, amely lehet az ingyenes szint vagy egy Azure virtuális gépen.
-- Projekt metaadatok, amely tartalmaz egy név, leírás, a projekt megosztása, és hogy a projekt nyilvános vagy privát használt azonosító.
-- A projekt jegyzetfüzet, adatokat és egyéb fájlokat, amelyek akkor kezelheti, mint bármely más fájlrendszer.
-- A projekt környezetet, ezáltal az indítási parancsfájlok vagy közvetlenül a terminálban keresztül kezelheti.
-- Naplók, amelyet a terminál segítségével fér hozzá.
+- A projekt futtatásának számítási szintje, amely lehet az ingyenes vagy az Azure-beli virtuális gép.
+- A projekt metaadatai, beleértve a nevet, a leírást, a projekt megosztásakor használt azonosítót, valamint azt, hogy a projekt nyilvános vagy privát.
+- A projekt notebook-, adat-és egyéb fájljai, amelyeket más fájlrendszerhez hasonlóan kezel.
+- Egy projekt környezete, amelyet indítási parancsfájlok vagy közvetlenül a terminálon keresztül kezelhet.
+- A terminálon keresztül hozzáférő naplók.
 
 > [!Note]
-> Csak a projekt tulajdonosa, aki eredetileg létrehozta a projektet, az itt leírtak szerint a felügyeleti és konfigurációs funkciók érhetők el. Akkor is, azonban a-projekt klónozása a saját fiókba, ebben az esetben tulajdonosa lenni, és konfigurálhatja a projekt igény szerint.
+> Az itt ismertetett kezelési és konfigurációs funkciók csak a projekt tulajdonosa számára érhetők el, aki eredetileg létrehozta a projektet. A projektet azonban saját fiókjába is bemásolhatja, ebben az esetben Ön lesz a tulajdonos, és igény szerint konfigurálhatja a projektet.
 
 Azure notebookok a mögöttes virtuális gép elindul, ha a jegyzetfüzet vagy más fájl futtatását. A kiszolgáló automatikusan menti a fájlokat, és 60 perc inaktivitás után leáll. A kiszolgáló is bármikor leállíthatja a **leállítási** parancsot (billentyűparancs: h).
 
-## <a name="compute-tier"></a>COMPUTE-kapacitás
+## <a name="compute-tier"></a>Számítási szint
 
-Alapértelmezés szerint a projektek futnak a **ingyenes számítási** szint, amely a 4 GB memóriát és 1 GB adatot visszaélések megelőzése érdekében. Ezek a korlátozások megkerülésére, és növelheti a számítási teljesítmény már kiépített egy Azure-előfizetésében lévő másik virtuális gép használatával. További információkért lásd: [Adatelemző Virtuális Gépek Használata](use-data-science-virtual-machine.md).
+Alapértelmezés szerint a projektek az **ingyenes számítási** szinten futnak, amely legfeljebb 4 GB memóriával és 1 GB-nyi adattal használható a visszaélések megelőzése érdekében. Megkerülheti ezeket a korlátozásokat, és növelheti a számítási teljesítményt az Azure-előfizetésben üzembe helyezett másik virtuális géppel. További információ: az [Adatelemzési Virtual Machines használata](use-data-science-virtual-machine.md).
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 
@@ -46,7 +45,7 @@ A projekt irányítópultján válassza ki a **Projektbeállítások**, majd vá
 | Beállítás | Leírás |
 | --- | --- |
 | Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például "Hello World a Python". |
-| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
+| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános projekt | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | Klónok elrejtése | Ha a beállított, más felhasználók nem látják, amelyek a projekt klónok listáját. Elrejtés klónok akkor hasznos, ha sok számára, akiknek nem részei ugyanazon a szervezeten belül, például megosztott projektek a pedagógiai osztály a notebook használatakor. |
 
@@ -71,7 +70,7 @@ A **+ új** parancsot (billentyűparancs: n) hoz létre az új fájlokat vagy ma
 
 ### <a name="upload-files"></a>Fájlok feltöltése
 
-A **feltöltése** parancs adatok importálása más két lehetőséget biztosít: **URL-címről** és **számítógépről**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
+A **feltöltési** parancs két lehetőséget kínál az adatok más helyekről történő importálására: **Az URL** -címről és **a számítógépről**. További információkért lásd: [használata az adatfájlokat az Azure-jegyzetfüzet projektek](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Válassza ki a fájl-specifikus parancsok
 
@@ -132,11 +131,11 @@ Adjon hozzá egy lépést, először válassza **+ Hozzáadás**, majd válassza
 
 Az adatokat, majd a projekt választott művelet típusától függ:
 
-- **A Requirements.txt**: A második legördülő listában válassza ki a *requirements.txt* fájlt, amely a projektben már van. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
+- **Követelmények. txt**: A második legördülő listában válasszon ki egy, a projektben már szereplő *követelmény. txt* fájlt. Ezután válassza ki a harmadik legördülő listában megjelenő egy Python-verzió. Használatával egy *requirements.txt* fájlt, az Azure-jegyzetfüzetek futtatása `pip install -r` együtt a *requirements.txt* fájl a notebook server indítása során. Nincs explicit módon telepíteni szeretné a notebook magát a csomagok.
 
-- **Héjszkript**: A második legördülő listában válassza ki a projekt bash héjparancsfájl (általában egy fájl a *.sh* kiterjesztéssel), amely tartalmazza a környezet inicializálása futtatni kívánt parancs.
+- **Rendszerhéj-parancsfájl**: A második legördülő listában válasszon ki egy bash rendszerhéj-parancsfájlt a projektben (jellemzően egy *. sh* kiterjesztésű fájl), amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza.
 
-- **Environment.yml**: A második legördülő listában válassza ki egy *environments.yml* fájl Pro projekty v Pythonu egy conda-környezetben.
+- **Environment. YML**: A második legördülő listában válasszon ki egy *Environments. YML* fájlt a Python-projektekhez Conda-környezet használatával.
 
 Ha elkészült a lépések hozzáadásával, válassza ki a **mentése**.
 
@@ -191,5 +190,5 @@ A parancs egy Python-jegyzetfüzetet egyik kódcellájába is használja:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: Soubory projektu adatok használata](work-with-project-data-files.md)
+- [Útmutató: Project-adatfájlok használata @ no__t-0
 - [Hozzáférés felhőbeli adatok történő használatát](access-data-resources-jupyter-notebooks.md)

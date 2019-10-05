@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877459"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973774"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
 
@@ -29,14 +29,21 @@ Az Azure IoT Central Power BI megoldásával hatékony Power BI irányítópulto
 - Az eszközök mérésének korábbi trendjeinek megfigyelése
 - Olyan problémás eszközök azonosítása, amelyek sok kritikus eseményt küldenek
 
-Ez a megoldás állítja be azt a folyamatot, amely az Azure Blob Storage-fiókban lévő adatok [folyamatos](howto-export-data.md)adatexportálásból való elvégzését végzi. Ezek az adatfolyamatok Azure Functions, Azure Data Factory és Azure SQL Database az adatfeldolgozásra és-átalakításra. A kimenet megjeleníthető és elemezhető egy Power BI jelentésben, amelyet PBIX fájlként tölthet le. Az összes ilyen erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
+Ez a megoldás állítja be azt a folyamatot, amely az Azure Blob Storage-fiókban lévő adatok [folyamatos adatexportálásból](howto-export-data.md)való elvégzését végzi. Ezek az adatfolyamatok Azure Functions, Azure Data Factory és Azure SQL Database az adatfeldolgozásra és-átalakításra. A kimenet megjeleníthető és elemezhető egy Power BI jelentésben, amelyet PBIX fájlként tölthet le. Az összes ilyen erőforrás az Azure-előfizetésében jön létre, így az egyes összetevők igényei szerint testreszabhatók.
 
-## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Szerezze [be az Azure IoT Central Power bi](https://aka.ms/iotcentralpowerbisolutiontemplate) -megoldását Microsoft AppSource.
+> [!Note] 
+> Az Azure IoT Central Power BI megoldása olyan IoT Central alkalmazásokkal működik, amelyek nem támogatják a IoT Plug and Play (előzetes verziójú alkalmazások ma)
+
+## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Szerezze [be az Azure IoT Central Power bi-megoldását](https://aka.ms/iotcentralpowerbisolutiontemplate) Microsoft AppSource.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A megoldás beállításához a következők szükségesek:
 - Hozzáférés egy Azure-előfizetéshez
-- A IoT Central alkalmazásból származó [folyamatos](howto-export-data.md) adatexportálással exportált adatok. Javasoljuk, hogy kapcsolja be a méréseket, eszközöket és az eszközök sablonjait, hogy a lehető legtöbbet hozza ki a Power BI irányítópulton.
+- IoT Central IoT-Plug and Playt nem támogató alkalmazás (az előzetes verziójú alkalmazások ma)
+- Folyamatos adatexportálás az Azure Blob Storage-be a IoT Central alkalmazásból
+    - Győződjön meg arról, hogy az adatformátum Avro
+    - Javasoljuk, hogy kapcsolja be a méréseket, eszközöket és az eszközök sablonjait, hogy a lehető legtöbbet hozza ki a Power BI irányítópulton.
+    - Ismerje meg [, hogyan állíthatja be a folyamatos adatexportálást](howto-export-data-blob-storage.md)
 - Power BI Desktop (legújabb verzió)
 - Power BI Pro (ha az irányítópultot másokkal is meg szeretné osztani)
 

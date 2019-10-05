@@ -4,21 +4,20 @@ description: Hogyan telepítheti a Python, R, és F# belül Jupyter notebook az 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 6f089c12-128b-4dbd-96e3-1320d37eeba4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e6582bb21cb6d383e298bdf68bdb2f565147c20a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274422"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969933"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Egy jegyzetfüzetet a csomagok telepítése
 
@@ -40,7 +39,7 @@ Ha a parancs kimenete azt jelzi, hogy már teljesülnek a feltételek, majd Azur
 
 ## <a name="r"></a>R
 
-Az R-csomagok a Cran vagy a GitHub használatával telepíthetők `install.packages` a kód cellájában lévő függvénnyel:
+Az R csomagok a CRAN vagy a GitHub használatával telepíthetők a Code cella `install.packages` függvényével:
 
 ```r
 install.packages("package_name")
@@ -83,5 +82,5 @@ open MathNet.Numerics
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: Projektek konfigurálása és kezelése](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: Bemutató megjelenítése](present-jupyter-notebooks-slideshow.md)
+- [Útmutató: Projektek konfigurálása és kezelése @ no__t-0
+- [Útmutató: Bemutató megjelenítése @ no__t-0

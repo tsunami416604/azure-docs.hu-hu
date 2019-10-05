@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL a kapcsolódó adatbázis-szolgáltatás áttekintése
-description: A Azure Database for MySQL a kapcsolódó adatbázis-szolgáltatás áttekintése.
-ms.service: mysql
+description: Ismerkedjen meg az Azure Database for MySQL szolgáltatással, amely a Microsoft Cloud-on alapuló, a MySQL Community Edition rendszerre épülő, kapcsolódó adatbázis-szolgáltatás.
 author: ajlam
+ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 08/13/2019
-ms.openlocfilehash: 1299f82c28181d1c24f68a0d36ba13c6b40d21ee
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 03fe0b091939b3281d0cc0cb5e35bf055fb307e1
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013406"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970380"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Mi az Azure Database for MySQL?
 
@@ -55,7 +55,7 @@ A Azure Database for MySQL szolgáltatás tárolási titkosítást használ a RE
 Alapértelmezés szerint a Azure Database for MySQL szolgáltatás úgy van konfigurálva, hogy [SSL-kapcsolati biztonságot](./concepts-ssl-connection-security.md) igényeljen a hálózaton belüli adatmozgáshoz. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
 
 ## <a name="contacts"></a>Névjegyek
-Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([ @Ask a MySQL-hez készült Azure-adatbázis](mailto:AskAzureDBforMySQL@service.microsoft.com)). Ne feledje, hogy ez nem műszaki támogatás.
+Ha bármilyen kérdése vagy javaslata van a Azure Database for MySQL használatáról, küldjön e-mailt a Azure Database for MySQL csapatnak ([@Ask Azure-adatbázis MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)-re). Ez az e-mail-cím nem technikai támogatási alias.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 
@@ -64,8 +64,8 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy elolvasta a Azure Database for MySQL bevezetését, és megválaszolta a "mi az Azure Database for MySQL?" kérdést, készen áll a következőre:
+Most, hogy elolvasta a Azure Database for MySQL bevezetését, és megválaszolta a "mi az Azure Database for MySQL?" kérdést? készen áll a következőre:
 
 - Tekintse meg az árképzést ismertető oldalt a költségek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/mysql/)
 - Első lépésként hozza létre első kiszolgálóját. [Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával](quickstart-create-mysql-server-database-using-azure-portal.md)
-- Hozza létre első alkalmazását a kívánt nyelv használatával: [Python](./connect-python.md)[Node. js](./connect-nodejs.md)[](./connect-java.md)[](./connect-go.md) [](./connect-php.md)[Java Ruby](./connect-ruby.md)php[.net (C#)](./connect-csharp.md)go |  |  |  |  |  | 
+- Hozza létre első alkalmazását a kívánt nyelv használatával: [Python](./connect-python.md) | [Node. js](./connect-nodejs.md) | [Java](./connect-java.md) | [Ruby](./connect-ruby.md) | [php](./connect-php.md) | [.net (C#)](./connect-csharp.md)2[Go](./connect-go.md)

@@ -4,14 +4,14 @@ description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 10/4/2019
 ms.author: tomfitz
-ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194740"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973323"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -37,9 +37,13 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * lemezek
-* rendszerképek
+* lemezképek
 * pillanatképek
 * virtualMachines
+
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+
+* containerGroups
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -68,7 +72,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
-* services
+* szolgáltatás
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
 
@@ -81,6 +85,14 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 * integrationAccounts
 * munkafolyamatok
+
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
+
+* netAppAccounts
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/kötetek
+* netAppAccounts/capacityPools/kötetek/mountTargets
+* netAppAccounts/capacityPools/kötetek/Pillanatképek
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -132,6 +144,15 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * feladatgyűjtemények
+
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+
+* alkalmazások
+* containerGroups
+* átjárók
+* hálózatok
+* titkos kódok
+* kötetek
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

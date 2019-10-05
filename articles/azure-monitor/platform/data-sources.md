@@ -6,18 +6,17 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: bwren
-ms.openlocfilehash: dabc336a1f92169ab573e7cf29e1a7a069ae20b1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 164d1db1a80ef577792740f67a27a856a4ba4c3b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262047"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972931"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.
@@ -61,8 +60,8 @@ Az Azure-bérlőhöz kapcsolódó telemetria a bérlői szintű szolgáltatások
 | Destination | Leírás | Hivatkozás |
 |:---|:---|:---|
 | Azure Monitor-naplók | Konfigurálja az Azure AD-naplókat a Azure Monitorba való gyűjtéshez, hogy elemezze azokat más figyelési adatokkal. | [Azure AD-naplók integrálása Azure Monitor naplókkal (előzetes verzió)](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure Storage | Azure AD-naplók exportálása az Azure Storage-ba archiválás céljából. | [Oktatóanyag: Azure AD-naplók archiválása Azure Storage-fiókba (előzetes verzió)](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Eseményközpont | Azure AD-naplók továbbítása más helyszínekre Event Hubs használatával. | [Oktatóanyag: Stream Azure Active Directory naplók egy Azure Event hub-ba (előzetes](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)verzió). |
+| Azure Storage | Azure AD-naplók exportálása az Azure Storage-ba archiválás céljából. | [Oktatóanyag: Azure AD-naplók archiválása Azure Storage-fiókba (előzetes verzió) @no__t – 0 |
+| Eseményközpont | Azure AD-naplók továbbítása más helyszínekre Event Hubs használatával. | [Oktatóanyag: Stream Azure Active Directory naplók egy Azure Event hub-ba (előzetes verzió) ](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md). |
 
 
 
@@ -104,7 +103,7 @@ A legtöbb Azure-szolgáltatás olyan [platform-metrikákat](data-platform-metri
 | Azure Monitor-naplók | A platform metrikáinak másolása a trendek és egyéb elemzések naplókba Log Analytics használatával. | [Az Azure Diagnostics közvetlen Log Analytics](resource-logs-collect-workspace.md) |
 | Event Hubs | Stream metrikák más helyszínekre Event Hubs használatával. |[Az Azure monitoring-adattovábbítása egy Event hub-ba külső eszköz általi felhasználás céljából](stream-monitoring-data-event-hubs.md) |
 
-### <a name="resource-logs"></a>Erőforrás-naplók
+### <a name="resource-logs"></a>Erőforrásnaplók
 Az [erőforrás-naplók](resource-logs-overview.md) betekintést nyújtanak az Azure-erőforrások _belső_ műveleteibe.  Az erőforrás-naplók automatikusan létrejönnek, de létre kell hoznia egy diagnosztikai beállítást, amely meghatározza, hogy az egyes erőforrásokhoz hogyan kell gyűjteni a célhelyet.
 
 A konfigurációs követelmények és az erőforrás-naplók tartalma az erőforrástípus szerint változik, és nem minden szolgáltatás hozza létre őket. Az egyes szolgáltatásokról és a részletes konfigurációs eljárásokra mutató hivatkozásokról a [támogatott szolgáltatások, sémák és kategóriák találhatók az Azure-erőforrás naplóiban](diagnostic-logs-schema.md) . Ha a szolgáltatás nem szerepel ebben a cikkben, akkor a szolgáltatás jelenleg nem hoz létre erőforrás-naplókat.

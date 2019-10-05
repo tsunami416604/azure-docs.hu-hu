@@ -4,21 +4,20 @@ description: Azure-jegyzetfüzetek projektek jegyzetfüzetek és a kapcsolódó 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237527"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970090"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -30,7 +29,7 @@ Egy projektet is fenntartják, metaadatokat és egyéb konfigurációs beállít
 
 A **saját projektek** : Irányítópult `https://notebooks.azure.com/<userID>/projects` ahol megtekintése, kezelése és hozható létre:
 
-[![Az Azure-jegyzetfüzetekben projektek irányítópult](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[@no__t 1My-projektek irányítópultja Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amely a felhasználói azonosító tulajdonosa:
 
@@ -42,7 +41,7 @@ Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amel
 | **Törlés** | Tulajdonos | Törli a kiválasztott projekthez. Ez a művelet nem vonható vissza. |
 | **Terminálszolgáltatások** | Tulajdonos | A project server kezdődik, majd megnyílik egy új böngészőablakot a bash, terminál, hogy a kiszolgáló. |
 | **+ Új projekt** | Tulajdonos | Létrehoz egy új projektet. Lásd: [hozzon létre egy új projektet](#create-a-new-project). |
-| **Töltse fel a GitHub-adattár** | Tulajdonos | Importál egy projektet a Githubról. [A projekt importálása a Githubról](#import-a-project-from-github). |
+| **GitHub-adattár feltöltése** | Tulajdonos | Importál egy projektet a Githubról. [A projekt importálása a Githubról](#import-a-project-from-github). |
 | **Klónozás** | Mindenki számára | Másolja át a kiválasztott projekt a saját fiókba. Kéri, ha még nem már bejelentkezhet. Lásd: [-projekt klónozása](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Szerezzen be egy indítási jelvény
@@ -67,26 +66,26 @@ Használatakor a **+ új projekt** parancsot, az Azure-jegyzetfüzetek jeleníti
 
 | Mező | Leírás |
 | --- | --- |
-| Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például "saját Notebook projekt". |
-| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
+| Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például: "My notebook Project". |
+| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | Ez a projekt és a egy információs fájl inicializálása | Ha a beállítása, létrehoz egy alapértelmezett *README.md* fájlt a projektben. A *README.md* fájl az dokumentáció adni a projekthez, ha szükséges. |
 
-### <a name="reserved-project-ids"></a>Fenntartott projekt azonosítók
+### <a name="reserved-project-ids"></a>Fenntartott projektek azonosítói
 
-A következő fenntartott szavakat azonosítók projektként önmagukban nem használható. E szolgáltatás számára fenntartott szavak is, azonban nem hosszabb projekt azonosítók részeként használatos.
+A következő fenntartott szavak önmagukban nem használhatók projekt-azonosítóként. Ezek a fenntartott szavak azonban a hosszú projekt-azonosítók részeként is használhatók.
 
 | | | | | | |
 | --- | --- | --- | --- | --- | --- |
-| tudnivalók | account | Felügyelet | api | Blog | tanterem |
-| content | irányítópult | Fedezze fel | Gyakori kérdések | help | html |
-| Kezdőlap | import | könyvtár | Felügyeleti | új | Notebook |
-| Notebookok | PDF-fájl | előzetes verzió | Díjszabás | Profil | Keresés |
-| status | Támogatás | test | | | |
+| körülbelül | fiók | felügyeleti | api | blog | osztályteremben |
+| tartalom | irányítópult | Ismerkedés | – gyakori kérdések | help | html |
+| Kezdőlap | importálása | erőforrástár | felügyelet | új | notebook |
+| notebookok | PDF | előzetes verzió | díjszabás | profile | keresés |
+| status | támogatás | test | | | |
 
-Ha ezeknek a szavaknak közül a projekt Azonosítóját használja a **új projekt létrehozása** és **Projektbeállítások** ablakok azt jelzik, "könyvtár azonosítója fenntartott azonosító is."
+Ha a következő szavak egyikét próbálja meg projekt-AZONOSÍTÓként használni, az **új projekt létrehozása** és a **projekt beállításainak** előugró ablakai jelzik, hogy a "könyvtár azonosítója fenntartott azonosító".
 
-Mivel a projekt Azonosítóját is a projekt URL-cím része, ad blocker szoftver előfordulhat, hogy letiltja a bizonyos kulcsszavakat, például a "hirdetmény." Ezekben az esetekben használja egy másik szót a projekt azonosítóját.
+Mivel a projekt-azonosító egy projekt URL-címéhez is tartozik, az ad blocker szoftver blokkolhatja bizonyos kulcsszavak használatát, például a "hirdetést". Ilyen esetekben használjon egy másik szót a projekt-AZONOSÍTÓban.
 
 ## <a name="import-a-project-from-github"></a>A projekt importálása a Githubról
 
@@ -97,7 +96,7 @@ Egy teljes nyilvános GitHub-adattár segítségével egyszerűen importálhatja
 | GitHub-adattár | A github.com tárházban neve. Például az Azure Cognitive Services, a Jupyter notebookok klónozása [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks), adja meg a "Microsoft/cognitive-services-notebookok".  |
 | Klónozza a rekurzív módon | GitHub-adattárak több gyermek-tárházakat is tartalmazhat. Állítsa be ezt a beállítást, ha azt szeretné, a szülő-tárházat és az összes gyermekre a klónozásához. Szeretné, hogy számos gyermek-tárházhoz lehetőség, mert hagyja törölje ezt a beállítást, ha tudja, szüksége lesz rá. |
 | Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. |
-| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
+| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 
 Az előzményeket is importálja egy tárház GitHub importálja. A terminálból a normál Git-parancsok használatával véglegesítse a módosításokat, kérje le a módosításokat a Githubról, és így tovább.
@@ -121,9 +120,9 @@ A projekt klónozása:
 ## <a name="next-steps"></a>További lépések
 
 - [Ismerkedés a mintafüzetek](azure-notebooks-samples.md)
-- [Útmutató: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
-- [Útmutató: Egy jegyzetfüzetet a csomagok telepítése](install-packages-jupyter-notebook.md)
-- [Útmutató: Diavetítés bemutatásához](present-jupyter-notebooks-slideshow.md)
-- [Útmutató: Adatfájlok használata](work-with-project-data-files.md)
-- [Útmutató: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
-- [Útmutató: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)
+- [Útmutató: Projektek konfigurálása és kezelése @ no__t-0
+- [Útmutató: Csomagok telepítése jegyzetfüzetből @ no__t-0
+- [Útmutató: Bemutató megjelenítése @ no__t-0
+- [Útmutató: Az adatfájlok használata @ no__t-0
+- [Útmutató: Hozzáférés az adaterőforrásokhoz @ no__t-0
+- [Útmutató: Azure Machine Learning Services @ no__t-0 használata

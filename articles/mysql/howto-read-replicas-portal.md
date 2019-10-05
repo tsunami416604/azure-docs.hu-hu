@@ -1,17 +1,17 @@
 ---
-title: Létrehozása és kezelése olvasható replikák az Azure Database for MySQL-hez
-description: Ez a cikk bemutatja, hogyan állíthatja be és kezelheti az olvasási replikákat a Azure Database for MySQL a portál használatával.
+title: '& Létrehozása olvasási replikák kezeléséhez (Azure Portal) – Azure Database for MySQL'
+description: Megtudhatja, hogyan állíthatja be és kezelheti az olvasási replikákat a Azure Database for MySQL a Azure Portal használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a90e9cccf8b59dabbee8415818c0e819ba1b26c3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309498"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972878"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a Azure Portal használatával
 
@@ -130,11 +130,11 @@ A főkiszolgáló a Azure Portalból való törléséhez kövesse az alábbi lé
 
 4. Válassza ki a megtekinteni kívánt időtartományt. Az alábbi képen egy 30 perces időtartomány van kiválasztva.
 
-   ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
+   ![Időintervallum kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range.png)
 
 5. A kijelölt időtartomány replikációs késésének megtekintése. Az alábbi képen az elmúlt 30 perc látható.
 
-   ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Időintervallum kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>További lépések
 

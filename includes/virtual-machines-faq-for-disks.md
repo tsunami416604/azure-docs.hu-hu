@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266874"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973014"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Gyakori kérdések az Azure IaaS VM-lemezekről, valamint a felügyelt és a nem felügyelt prémium szintű lemezekről
 
@@ -218,8 +218,8 @@ Igen, Azure Backup már elérhető.
 **Hogyan standard SSD lemezeket létrehozni?**
 Standard SSD lemezeket a Azure Resource Manager sablonok, az SDK, a PowerShell vagy a parancssori felület használatával hozhat létre. Az alábbi paraméterek szükségesek a Resource Manager-sablonban standard SSD lemezek létrehozásához:
 
-* a Microsoft *apiVersion* . a számítást `2018-04-01` (vagy újabb) kell beállítani
-* A *managedDisk. tárfióktípus* a következőképpen adható meg:`StandardSSD_LRS`
+* a Microsoft *apiVersion* . a számítást `2018-04-01` (vagy újabb) értékre kell beállítani.
+* A *managedDisk. tárfióktípus* a következőképpen adható meg: `StandardSSD_LRS`
 
 A következő példa egy standard SSD lemezeket használó virtuális gép *Properties. storageProfile. osDisk* szakaszát mutatja be:
 
@@ -293,6 +293,10 @@ Igen
 **A felügyelt lemez létrehozásakor alapértelmezés szerint engedélyezve van-e az Azure Storage Service Encryption?**
 
 Igen.
+
+**A rendszerindító kötetet alapértelmezés szerint titkosították a felügyelt lemezeken?**
+
+Igen. Alapértelmezés szerint minden felügyelt lemez titkosítva van, beleértve az operációsrendszer-lemezt is.
 
 **Kik kezelik a titkosítási kulcsokat?**
 

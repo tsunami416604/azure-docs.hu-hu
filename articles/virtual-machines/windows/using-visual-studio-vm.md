@@ -15,28 +15,31 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 09/24/2019
 ms.author: phillee
 keywords: VisualStudio
-ms.openlocfilehash: 4664007bf892b2ae445d6b5174e4f346944e620b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3cdec1bb9d4cb44c4cead6d2d208d661bf5da6ae
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272296"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971874"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
 A Visual Studio egy előre konfigurált Azure-beli virtuális gépen (VM) gyorsan és egyszerűen elvégezhető, hogy ne legyenek elérhetők a felhasználható fejlesztési környezetek. A különböző Visual Studio-konfigurációkkal rendelkező rendszerképek az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure)érhetők el.
 
 Most ismerkedik az Azure-ral? [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free).
 
+> [!NOTE]
+> Nem minden előfizetés beküld szabályok minősít a Windows 10-es lemezképek központi telepítéséhez. További információ: [Windows-ügyfél használata az Azure-ban fejlesztési és tesztelési helyzetekben](https://docs.microsoft.com/azure/virtual-machines/windows/client-images)
+
 ## <a name="what-configurations-and-versions-are-available"></a>Milyen konfigurációk és verziók érhetők el?
 A legújabb főverziók, a Visual Studio 2019, a Visual Studio 2017 és a Visual Studio 2015 rendszerképei az Azure piactéren találhatók.  Az egyes kiadott főverziók esetében az eredeti "megjelent a web" (RTW) és a legújabb frissített verziók láthatók.  Ezen verziók mindegyike a Visual Studio Enterprise és a Visual Studio Community kiadásait kínálja.  Ezek a lemezképek legalább minden hónapban frissülnek, hogy tartalmazzák a legújabb Visual Studio-és Windows-frissítéseket.  Míg a képek nevei változatlanok maradnak, az egyes képek leírása tartalmazza a telepített termék verzióját és a lemezkép "as of" dátumát.
 
 | Kiadás verziója                                                                                                                                                | Kiadások              | Termék verziója   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Legújabb (16,2-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Vállalat, Közösség | 16.0.8 verziója    |
-| [Visual Studio 2017: Legújabb (15,9-es verzió)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.16 verziója   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Vállalat, Közösség | 15.0.25 verziója   |
-| [Visual Studio 2015: Legutóbbi (3. frissítés)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Vállalat, Közösség | 14.0.25431.01 verziója |
+| [Visual Studio 2019: Legújabb (16,2-es verzió) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Vállalat, Közösség | 16.3.0 verziója    |
+| [Visual Studio 2019: RTW @ NO__T – 0                         | Vállalat, Közösség | 16.0.8 verziója    |
+| [Visual Studio 2017: Legújabb (15,9-es verzió) ](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Vállalat, Közösség | 15.9.16 verziója   |
+| [Visual Studio 2017: RTW @ NO__T – 0                             | Vállalat, Közösség | 15.0.25 verziója   |
+| [Visual Studio 2015: Legutóbbi (3. frissítés) @no__t – 0               | Vállalat, Közösség | 14.0.25431.01 verziója |
 
 > [!NOTE]
 > A Microsoft karbantartási szabályzatának megfelelően a Visual Studio 2015 eredetileg kiadott (RTW) verziója lejárt a karbantartáshoz. A Visual Studio 2015 Update 3 az egyetlen, a Visual Studio 2015 termékcsalád számára elérhető verzió.
@@ -94,7 +97,7 @@ További információ: [Bejelentkezés a Visual studióba](/visualstudio/ide/sig
 
 A fejlesztési környezetek spektruma óriási, és a bonyolultabb környezetek kiépítéséhez is valós díjak tartoznak. A környezet konfigurációjától függetlenül elmentheti vagy rögzítheti a konfigurált virtuális gépet "alaprendszerképként" a későbbi használatra, illetve a csapat más tagjai számára. Ezután az új virtuális gép indításakor kiépítheti azt az alaprendszerképből, nem az Azure Marketplace-rendszerképből.
 
-Gyors Összefoglalás: Használja a rendszer-előkészítő eszközt (Sysprep), és állítsa le a futó virtuális gépet, majd rögzítse *(1. ábra)* a virtuális gépet lemezképként a Azure Portal felhasználói felületén. Az Azure menti `.vhd` a képet tartalmazó fájlt a választott Storage-fiókban. Az új rendszerkép megjelenik a rendszerkép-erőforrásként az előfizetés erőforrásainak listájában.
+Gyors Összefoglalás: Használja a rendszer-előkészítő eszközt (Sysprep), és állítsa le a futó virtuális gépet, majd rögzítse *(1. ábra)* a virtuális gépet lemezképként a Azure Portal felhasználói felületén. Az Azure menti a `.vhd` fájlt, amely tartalmazza a képet a választott Storage-fiókban. Az új rendszerkép megjelenik a rendszerkép-erőforrásként az előfizetés erőforrásainak listájában.
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(1. ábra) Rendszerkép rögzítése a Azure Portal felhasználói felületén keresztül.* </center>
 

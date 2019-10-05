@@ -4,21 +4,20 @@ description: Konfigurálja a felhasználói fiók Azure notebookokhoz Microsoft-
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 0d657fcc-26bc-41dd-abf0-3e5cfd66e0e0
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bc93f55a3349498fa82095c2bc2b3178e234c107
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632058"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973141"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>A felhasználói fiók Azure-notebookokhoz
 
@@ -43,7 +42,7 @@ Ha Ön nem tudja biztosan, válassza ki a **hozzon létre egy** parancsot a fió
 ![A parancs egy új Microsoft-fiók létrehozása](media/accounts/create-new-microsoft-account.png)
 
 > [!Note]
-> Hozzon létre egy új fiókot, amely már rendelkezik fiókkal társított e-mail-címmel próbál jelenhet meg az üzenetet, a "nem itt jelentkezzen be munkahelyi vagy iskolai e-mail-címét. Egy személyes e-mail, például a Gmailes vagy Yahoo!-s, vagy szerezze be egy új Outlook e-mailt." Ebben az esetben próbáljon meg azzal bejelentkezni a munkahelyi e-mail címét, egy új fiók létrehozása nélkül.
+> Ha olyan e-mail-címmel próbál meg létrehozni egy új fiókot, amelyhez már tartozik fiók társítva, akkor a következő üzenet jelenhet meg: "nem lehet regisztrálni egy munkahelyi vagy iskolai e-mail-címmel. Használjon személyes e-maileket, például a Gmailt vagy a Yahoo!-t, vagy szerezzen be egy új Outlook e-mail címet. " Ebben az esetben próbáljon meg bejelentkezni a munkahelyi e-mail-címmel új fiók létrehozása nélkül.
 
 Gyermek-fiókok esetében a hozzáférést az Azure-jegyzetfüzetek alapértelmezés szerint le van tiltva. A gyermek fiókkal történő bejelentkezés alább látható hibaüzenetet jeleníti meg:
 

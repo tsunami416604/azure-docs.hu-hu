@@ -1,17 +1,17 @@
 ---
 title: Lekérdezési tároló Azure Database for MySQL
-description: Ez a cikk a Azure Database for MySQL lekérdezés-tárolási szolgáltatását ismerteti.
+description: További információ a Azure Database for MySQL található lekérdezés-tárolási szolgáltatásról, amely segítséget nyújt a teljesítmény időbeli nyomon követéséhez.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 884824b6f6fd8bf5b4c7730813c4363fae018375
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950574"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972800"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
@@ -37,7 +37,7 @@ A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem 
 ### <a name="enable-query-store-using-the-azure-portal"></a>A lekérdezési tároló engedélyezése a Azure Portal használatával
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for MySQL-kiszolgálót.
-1. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
+1. Válassza ki a **kiszolgáló paramétereit** in a menü **Beállítások** section.
 1. Keresse meg a query_store_capture_mode paramétert.
 1. Állítsa az értéket az összes értékre, és **mentse**.
 
@@ -78,10 +78,10 @@ A várakozási eseménytípus hasonló módon kombinálja a különböző várak
 | **Általi képernyőfigyelés** | **Művelet** |
 |---|---|
 |Magas zárolási várakozások | Jelölje be az érintett lekérdezésekhez tartozó lekérdezési szövegeket, és azonosítsa a célként megadott entitásokat. A lekérdezési tárolóban megtekintheti azokat a lekérdezéseket, amelyek ugyanazt az entitást módosítják, amely gyakran és/vagy magas időtartammal van végrehajtva. A lekérdezések azonosítása után érdemes lehet módosítani az alkalmazás logikáját, hogy javítsa a párhuzamosságot, vagy használjon kevésbé korlátozó elkülönítési szintet. |
-|Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálja a lekérdezéseket. |
-|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
+|Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a **teljesítménnyel kapcsolatos ajánlásokat**@no__t – 1for a kiszolgálót a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálni szeretné a lekérdezéseket. |
+|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a **teljesítménnyel kapcsolatos ajánlásokat**@no__t – 1for a kiszolgálót a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
 
-## <a name="configuration-options"></a>Beállítási lehetőségek
+## <a name="configuration-options"></a>Konfigurációs lehetőségek
 
 Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesítési ablakokban tárolja az adatvesztést, és ablakban akár 500 különböző lekérdezést is beállíthat.
 
@@ -89,7 +89,7 @@ A lekérdezési tároló paramétereinek konfigurálásához a következő beál
 
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma-eszközök egy részét. | Összes | NINCS, AZ ÖSSZES |
+| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma-eszközök egy részét. | ÖSSZES | NINCS, AZ ÖSSZES |
 | query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Be-és kikapcsolás a rendszeren futtatott összes segédprogram-lekérdezés rögzítéséhez. | NO | IGEN, NEM |
 | query_store_retention_period_in_days | A lekérdezési tárolóban tárolt adatmegőrzési idő (nap). | 7 | 1 - 30 |
@@ -104,11 +104,11 @@ A következő lehetőségek kifejezetten a várakozási statisztikára vonatkozn
 > [!NOTE]
 > Jelenleg a **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, hogy a **query_store_capture_mode** és a **query_store_wait_sampling_capture_mode** egyaránt engedélyezve kell lennie mind a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema által engedélyezett és a lekérdezési tároló által rögzített query_text is használják.
 
-A [Azure Portal](howto-server-parameters.md) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md) használatával beolvashatja vagy beállíthatja a paraméter egy másik értékét.
+Használja a [Azure Portal](howto-server-parameters.md)  V [Azure CLI](howto-configure-server-parameters-using-cli.md) to, vagy állítson be egy másik értéket a paraméterhez.
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **mysql** database érhetők el.
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
@@ -171,10 +171,10 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
-- Ha a MySQL-kiszolgáló rendelkezik a `default_transaction_read_only` paraméterrel, a Query Store nem tudja rögzíteni az adatmennyiséget.
-- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket\>(= 6000 bájt) tapasztal.
+- Ha a MySQL-kiszolgáló `default_transaction_read_only` paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
+- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezések (@no__t – 0 = 6000 bájt) fordulnak elő.
 - A várakozási statisztikák megőrzési időtartama 24 óra.
-- A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság módosítható a paraméter `query_store_wait_sampling_frequency`használatával.
+- A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
 
 ## <a name="next-steps"></a>További lépések
 

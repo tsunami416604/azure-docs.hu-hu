@@ -1,19 +1,19 @@
 ---
-title: Tárolt eljárások Azure Database for MariaDB
-description: Ez a cikk a Azure Database for MariaDBra vonatkozó tárolt eljárásokat mutatja be.
+title: Azure Database for MariaDB felügyelet tárolt eljárásai
+description: Megtudhatja, hogy az Azure Database for MySQL tárolt eljárásai hasznosak-e az adatreplikáció konfigurálásához, az időzóna és a lekérdezési lekérdezések megadásához.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: d9daaf619a19c0f4e4a591d4bbb4925679fd1fcb
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0a33edeac735502964427ddc3b05076fb9fac969
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174902"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973475"
 ---
-# <a name="azure-database-for-mariadb-stored-procedures"></a>Tárolt eljárások Azure Database for MariaDB
+# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB felügyelet tárolt eljárásai
 
 A tárolt eljárások Azure Database for MariaDB-kiszolgálókon érhetők el a MariaDB-kiszolgáló kezelésének elősegítése érdekében. Ide tartozik a kiszolgáló kapcsolatainak kezelése, a lekérdezések és a felhőbe irányuló replikálás beállítása.  
 
@@ -39,9 +39,9 @@ A következő tárolt eljárások érhetők el Azure Database for MariaDB a kisz
 
 |**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL. az _Kill*|processlist_id|–|Egyenértékű a [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. A leállítja a megadott processlist_id társított kapcsolatokat a kapcsolatok végrehajtásához szükséges összes utasítás megszakítása után.|
-|*MySQL. az _kill_query*|processlist_id|–|Egyenértékű a [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
-|*MySQL. az _load_timezone*|–|–|Betölti az időzóna-táblákat, hogy a `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
+|*MySQL. az _Kill*|processlist_id|–|[@No__t-1](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal egyenértékű. A leállítja a megadott processlist_id társított kapcsolatokat a kapcsolatok végrehajtásához szükséges összes utasítás megszakítása után.|
+|*MySQL. az _kill_query*|processlist_id|–|[@No__t-1](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal egyenértékű. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
+|*MySQL. az _load_timezone*|–|–|Betölti az időzóna-táblákat, hogy az `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
 
 ## <a name="next-steps"></a>További lépések
 - További információ a [felhőbe irányuló replikálás](howto-data-in-replication.md) beállításáról

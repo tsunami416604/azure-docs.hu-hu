@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8e732496c4523646f02ef461b7d3c52314c28dae
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 19852fe3a6925ada3dea141a1472683ee264f6d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932831"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973292"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -63,9 +63,9 @@ Az áttelepítési folyamat késleltethető az ablak megszakításával. A rends
 
 * A Luis portál alkalmazások listájáról is készíthet biztonsági másolatot az alkalmazásokról az egyes alkalmazások exportálásával vagy az exportálási [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)használatával.
 * **Szükség**esetén mentse az egyes alkalmazások collaborator's listáját. Az e-mail-lista az áttelepítési folyamat részeként van megadva.
-* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A Luis használata esetén azonban használhatja az ingyenes`F0`() díjszabási szintet. 
+* **Szükséges**, rendelkeznie kell egy Azure- [előfizetéssel](https://azure.microsoft.com/free/). Az előfizetési folyamat egy része számlázási adatokat igényel. A LUIS használata esetén azonban használhatja az ingyenes (`F0`) díjszabási szintet. 
 
-A **Luis-alkalmazás készítése ingyenes**, a `F0` szintet is jelzi. [További információ a díjszabási szintekről](luis-boundaries.md#key-limits).
+A **Luis-alkalmazás készítése ingyenes**, amelyet a `F0` szinten jelez. [További információ a díjszabási szintekről](luis-boundaries.md#key-limits).
 
 Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon](https://azure.microsoft.com/free/). 
 
@@ -99,6 +99,10 @@ Dönthet úgy, hogy olyan alkalmazást exportál, amelyhez Ön is közreműköd�
 Az alkalmazás tulajdonosának [hozzá kell adnia az e-maileket az Azure authoring-erőforráshoz közreműködőként](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource). 
 
 Az áttelepítési folyamat után az Ön tulajdonában lévő alkalmazások a LUIS portál **saját alkalmazások** lapján érhetők el.  
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+A LUIS authoring Keys csak az áttelepítési folyamat befejezése után látható a LUIS-portálon. Ha létrehoz egy szerzői kulcsot, például a LUIS CLI-vel, a felhasználónak továbbra is végre kell hajtania az áttelepítési folyamatot. 
 
 ## <a name="next-steps"></a>További lépések
 

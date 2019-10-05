@@ -4,21 +4,20 @@ description: Hogyan lehet a Jupyter notebook fájlok, a REST API-k, az adatbázi
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359802"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970257"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Hozzáférés felhőbeli adatok történő használatát
 
@@ -80,12 +79,12 @@ Ha működik a Cosmos DB használatával, használhatja a [azure-cosmos DB-table
 
 Az Azure számos más adatbázistípusok használható. Ezeket az adatbázisokat a Python elérése útmutatást nyújtanak az az alábbi cikkeket:
 
-- [Azure Database for PostgreSQL: A Python használata a kapcsolódáshoz és az adatlekérdezéshez](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [Rövid útmutató: Azure Redis Cache használata a Python használatával](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
-- [Azure Database for MySQL: A Python használata a kapcsolódáshoz és az adatlekérdezéshez](https://docs.microsoft.com/azure/mysql/connect-python)
+- @no__t 0Azure-adatbázis PostgreSQL-hez: A Python használata a kapcsolódáshoz és az adatlekérdezéshez @ no__t-0
+- [Rövid útmutató: Azure Redis Cache használata a Python @ no__t-0 használatával
+- [Azure-adatbázis a MySQL-hez: A Python használata a kapcsolódáshoz és az adatlekérdezéshez @ no__t-0
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Az Azure Data Factory másolás varázsló](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>További lépések
 
-- [Útmutató: Project-adatfájlok használata](work-with-project-data-files.md)
+- [Útmutató: Project-adatfájlok használata @ no__t-0

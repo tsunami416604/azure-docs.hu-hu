@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a4aac8afb7974be402ee98bb65c920133d4c118f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 36b449c4c4ca30eb658c9519ce8e870a4f1fab32
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947687"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970729"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az a szótár?
 
@@ -39,7 +39,7 @@ A modelleket csak a szótárak adatai alapján lehet betanítani. Ehhez válassz
 - A szótárak nem helyettesíthetik a modell betanítását a betanítási adatai használatával. Javasoljuk, hogy elkerülje őket, és hagyja, hogy a rendszer tanuljanak a betanítási adatokból. Ha azonban a mondatokat vagy az összetett főcímeket a-ként kell megjeleníteni, használjon szótárt.
 - A kifejezés szótárát takarékosan kell használni. Ezért ügyeljen arra, hogy ha egy mondaton belüli kifejezést cserél le, a mondaton belüli környezet elveszett vagy korlátozott a mondat hátralévő részének lefordítása érdekében. Ennek eredményeképpen a mondatban szereplő kifejezés vagy szó a megadott szótár szerint lesz lefordítva, a mondat általános fordítási minősége gyakran csökken.
 - A kifejezés szótára jól működik az olyan összetett nevek esetében, mint például a Terméknév ("Microsoft SQL Server"), a megfelelő nevek ("Hamburg városa") vagy a termék funkciói ("pivot Table"). Nem működik együtt a műveletekhez és a melléknevekhez, mert ezek általában erősen ragozott a forrásban vagy a célként megadott nyelven. Az ajánlott eljárás az, hogy elkerülje a szótárbeli bejegyzéseket bármilyen, de összetett kifejezésre.
-- Ha szótárt használ, a nagybetűk és a központozás fontos. A szótár bejegyzései csak azokat a szavakat és kifejezéseket egyeznek meg, amelyeknek ugyanaz a kihasználása és a központozás, mint a szótárban található bejegyzés. A fordítások tükrözik a szótárak céljaként megadott nagybetűssé és központozást. Tegyük fel például, hogy angolról spanyol modellre tanít egy olyan szótárt, amely a forrásfájlban a "Hello" kifejezést adta meg a "Buenos Dias" kifejezésre a célfájl számára. Ha olyan mondat fordítását kéri, amely tartalmazza a "Hello" kifejezést, a rendszer először a szótárban keres, és egy egyezést ("Hello") fog keresni, és a végső fordításban "Buenos Dias" értéket ad vissza.
+- Kifejezés szótárának használatakor fontos a nagybetűk és a központozás. A szótár bejegyzései csak a beviteli mondatban szereplő szavakat és kifejezéseket egyeznek meg, amelyek pontosan ugyanazt a kihasználat és írásjelet használják, mint a forrás-szótár fájljában. Emellett a fordítások tükrözik a célként megadott szótárban található nagybetűket és a központozást is. Ha például egy angol nyelvről spanyol rendszerre tanít ki egy kifejezést, amely a forrásfájl "US" kifejezését, "EE"-t használ. UU. " a célfájl. Ha olyan mondat fordítását kéri, amely tartalmazza a "US" szót (nem tőkésített), akkor ez nem felel meg a szótárnak. Ha azonban egy olyan mondat fordítását kéri, amely tartalmazza a "US" szót (tőkésített), akkor az megfelel a szótárnak, és a fordítás "EE"-t tartalmaz. UU. " Vegye figyelembe, hogy a fordításban a nagybetűk és a központozás eltérő lehet, mint a szótárbeli célfájl esetében, és a forrásban lévő tőkésítés és írásjelek eltérőek lehetnek. A cél nyelvének szabályait követi.
 - Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. Ezért a szótár nem tartalmazhat ugyanazon szó több fordítását.
 
 ## <a name="next-steps"></a>További lépések

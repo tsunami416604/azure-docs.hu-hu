@@ -1,194 +1,194 @@
 ---
-title: 'Oktatóanyag: Az ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével'
-description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects telepítheti az ASP.NET Core-alkalmazás és az Azure Kubernetes Service (AKS) néhány gyors lépéssel.
+title: 'Oktatóanyag: ASP.NET Core alkalmazások üzembe helyezése az Azure Kubernetes szolgáltatásban Azure DevOps Projects'
+description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects segítségével néhány gyors lépésben üzembe helyezheti a ASP.NET Core alkalmazást az Azure Kubernetes szolgáltatással (ak).
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2aa103b36f60a84aaafc47f03a6cf6d5b6b66160
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b27d56d78296dc5500f97802f811a8923c4e87a8
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554930"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969673"
 ---
-# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Oktatóanyag: Az ASP.NET Core-alkalmazások üzembe helyezése az Azure Kubernetes Service az Azure DevOps Projects segítségével
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Oktatóanyag: ASP.NET Core alkalmazások üzembe helyezése az Azure Kubernetes szolgáltatásban Azure DevOps Projects
 
-Az Azure DevOps Projects megjelenít egy egyszerűsített felület, ahol a meglévő kódot és a Git-adattár, vagy válasszon egy mintaalkalmazást, hozzon létre egy folyamatos integrációs (CI) és a folyamatos továbbítás (CD) folyamatot az Azure-bA. 
+Azure DevOps Projects egy egyszerűsített felhasználói felülettel rendelkezik, ahol meglévő kód-és git-tárházat hozhat létre, vagy kiválaszthat egy minta alkalmazást, amellyel folyamatos integrációs (CI) és folyamatos átviteli (CD) folyamatokat hozhat létre az Azure-ba. 
 
-DevOps-projektek is:
-* Automatikusan létrehozza az Azure-erőforrások, például az Azure Kubernetes Service (AKS).
-* Hoz létre, és konfigurálja a kibocsátási folyamat, amely beállítja a buildelési és kiadási folyamatot a CI/CD Azure devops.
-* Az Azure Application Insights-erőforrás, figyelés hoz létre.
-* Lehetővé teszi, hogy [-tárolókhoz az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) az AKS-fürtön a tárolóalapú számítási feladatok teljesítményének figyelése
+DevOps Projects is:
+* Automatikusan létrehozza az Azure-erőforrásokat, például az Azure Kubernetes szolgáltatást (ak).
+* Létrehoz és konfigurál egy kiadási folyamatot az Azure DevOps-ben, amely létrehoz egy létrehozási és kiadási folyamatot a CI/CD számára.
+* Létrehoz egy Azure Application Insights-erőforrást a figyeléshez.
+* Lehetővé teszi [Azure monitor számára](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) a tárolók számára a tároló munkaterhelések teljesítményének figyelését az AK-fürtön
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * ASP.NET Core-alkalmazás üzembe az aks-ben a DevOps Projects segítségével
+> * A DevOps Projects használatával telepíthet egy ASP.NET Core alkalmazást az AK-ra
 > * Az Azure DevOps és az Azure-előfizetés konfigurálása 
 > * Az AKS-fürt vizsgálata
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
-> * Véglegesítse a módosításokat a Git, és automatikusan telepíthet az Azure-bA
+> * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
-## <a name="use-devops-projects-to-deploy-an-aspnet-core-app-to-aks"></a>ASP.NET Core-alkalmazás üzembe az aks-ben a DevOps Projects segítségével
+## <a name="use-devops-projects-to-deploy-an-aspnet-core-app-to-aks"></a>A DevOps Projects használatával telepíthet egy ASP.NET Core alkalmazást az AK-ra
 
-A DevOps Projects a CI/CD-folyamat Azure folyamatokat hoz létre. Hozzon létre egy új Azure DevOps szervezetet, vagy használjon egy már meglévő szervezet. DevOps-projektek Azure-erőforrások, például egy AKS-fürtöt is létrehoz a választott Azure-előfizetésben.
+A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects Azure-erőforrásokat is létrehoz, például egy AK-fürtöt az Ön által választott Azure-előfizetésben.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása**.
+1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget.
 
-1. A Keresés mezőbe írja be a **DevOps Projects**, majd válassza ki **létrehozás**.
+1. A keresőmezőbe írja be a **DevOps projects**kifejezést, majd válassza a **Létrehozás**lehetőséget.
 
-    ![A DevOps Projects-irányítópult](_img/azure-devops-project-github/fullbrowser.png)
+    ![A DevOps Projects irányítópult](_img/azure-devops-project-github/fullbrowser.png)
 
-1. Válassza ki **.NET**, majd válassza ki **tovább**.
+1. Válassza a **.net**lehetőséget, majd kattintson a **tovább**gombra.
 
-1. A **válasszon alkalmazási keretrendszert**válassza **ASP.NET Core**.
+1. Az **alkalmazás-keretrendszer kiválasztása**területen válassza a **ASP.net Core**lehetőséget.
 
-1. Válassza ki **Kubernetes-szolgáltatást**, majd válassza ki **tovább**. 
+1. Válassza a **Kubernetes szolgáltatás**lehetőséget, majd kattintson a **tovább**gombra. 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Az Azure DevOps és az Azure-előfizetés konfigurálása
 
-1. Hozzon létre egy új Azure DevOps szervezetet, vagy válasszon ki egy már meglévő szervezet. 
+1. Hozzon létre egy új Azure DevOps-szervezetet, vagy válasszon ki egy meglévő szervezetet. 
 
 1. Adja meg az Azure DevOps-projekt nevét. 
 
 1. Válassza ki az Azure-előfizetését.
 
-1. További Azure-konfigurációs beállítások megtekintéséhez, és válassza ki az AKS-fürtöt a csomópontok számának azonosításához **módosítás**.  
-    Ezen a panelen típusát és helyét az Azure-szolgáltatások konfigurálása különböző lehetőségeit jeleníti meg.
+1. A további Azure-konfigurációs beállítások megtekintéséhez és a csomópontok számának azonosításához az AK-fürthöz válassza a **módosítás**lehetőséget.  
+    Ez a panel az Azure-szolgáltatások típusának és helyének konfigurálására szolgáló különböző beállításokat jeleníti meg.
  
-1. Lépjen ki az Azure konfigurációs terület, és válassza ki **kész**.  
-    Néhány perc múlva a folyamat befejezése. Egy mintául szolgáló ASP.NET Core-alkalmazást a Git-adattár a szervezet Azure DevOps állítható be, egy AKS-fürt létrehozása, a CI/CD-folyamat végrehajtása és az alkalmazás van üzembe helyezve az Azure-bA. 
+1. Lépjen ki az Azure-beli konfigurációs területen, majd válassza a **kész**lehetőséget.  
+    Néhány perc elteltével a folyamat befejeződött. Egy minta ASP.NET Core alkalmazás egy git-tárházban van beállítva az Azure DevOps-szervezetben, egy AK-fürt létrehozása, egy CI/CD-folyamat végrehajtása, és az alkalmazás üzembe helyezése az Azure-ban történik. 
 
-    Miután ez befejeződött, az Azure Portalon az Azure DevOps-projekt-irányítópult jelenik meg. Ha ellátogat a DevOps Projects irányítópultra közvetlenül a **összes erőforrás** az Azure Portalon. 
+    Az összes befejezése után az Azure DevOps projekt irányítópultja megjelenik a Azure Portal. A DevOps Projects irányítópultot közvetlenül a Azure Portal **összes erőforrásáról** is megtekintheti. 
 
-    Ezt az irányítópultot az Azure DevOps-kódtár a CI/CD-folyamat és az AKS-fürt rálátást biztosít. További CI/CD-beállításokat konfigurálhatja az Azure DevOps-folyamat. Válassza ki a jobb **Tallózás** a futó alkalmazás megtekintéséhez.
+    Ez az irányítópult az Azure DevOps-adattárba, a CI/CD-folyamatba és az AK-fürtbe is betekintést nyújt. Az Azure DevOps-folyamat további CI/CD-beállításokat is konfigurálhat. A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
 
 ## <a name="examine-the-aks-cluster"></a>Az AKS-fürt vizsgálata
 
-A DevOps Projects automatikusan beállítja az AKS-fürt, ismerje meg, és testre szabhatja. Ismerkedjen meg az AKS-fürtöt, tegye a következőket:
+DevOps Projects automatikusan konfigurál egy AK-fürtöt, amelyet felderítheti és testreszabhatja. Az AK-fürt megismeréséhez tegye a következőket:
 
-1. Nyissa meg a DevOps Projects-irányítópultot.
+1. Nyissa meg a DevOps Projects irányítópultot.
 
-1. A jobb oldalon válassza az AKS szolgáltatás.  
-    Az AKS-fürtöt megnyílik egy panel. Ebben a nézetben hajtsa végre különböző műveleteket, például a tároló állapotának monitorozása, naplók keresése és a Kubernetes-irányítópult megnyitása.
+1. A jobb oldalon válassza ki az AK szolgáltatást.  
+    Megnyílik egy ablaktábla az AK-fürthöz. Ebből a nézetből különböző műveleteket hajthat végre, például a tároló állapotának figyelését, a naplók keresését és a Kubernetes irányítópultjának megnyitását.
 
-1. Válassza ki a jobb **megtekintése a Kubernetes-irányítópult**.  
-    Ha szeretné kövesse a Kubernetes-irányítópult megnyitásához.
+1. A jobb oldalon válassza az **Kubernetes-irányítópult megtekintése**lehetőséget.  
+    Szükség esetén a Kubernetes-irányítópult megnyitásához kövesse a lépéseket.
 
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
-A DevOps Projects automatikusan konfigurálja a CI/CD-folyamat a szervezet Azure DevOps. Megvizsgálhatja és testre szabhatja a folyamatot. Ismerje meg az azt, tegye a következőket:
+DevOps Projects automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-szervezetben. Megvizsgálhatja és testre szabhatja a folyamatot. A következők megismeréséhez tegye a következőket:
 
-1. Nyissa meg a DevOps Projects-irányítópultot.
+1. Nyissa meg a DevOps Projects irányítópultot.
 
 1. Válassza ki a DevOps Projects irányítópult tetején lévő **hozhat létre folyamatokat**.  
-    Egy böngészőben lap megjeleníti a buildelési folyamat az új projekt.
+    Egy böngésző lap megjeleníti az új projekt összeállítási folyamatát.
 
-1. Mutasson a **állapot** mezőben, majd válassza ki a három pontra (...).  
-    Menü megjelenítése több beállítások, például az üzenetsor új build, készítsen felfüggesztetéssel és a buildelési folyamat szerkesztése.
+1. Mutasson az **állapot** mezőre, majd válassza a három pontot (...).  
+    A menüben számos lehetőség látható, például az új buildek várólistába helyezése, egy Build felfüggesztése és a build folyamat szerkesztése.
 
 1. Válassza a **Szerkesztés** elemet.
 
 1. Ezen az ablaktáblán keresse meg a különböző feladatok a a buildelési folyamat.  
-    A build különböző feladatokat, hajt végre, például beolvasásakor a Git-tárházban, a függőségek visszaállítását és közzétételi kimenete-forrásokat az központi telepítésére használatos.
+    A build különböző feladatokat hajt végre, például a git-tárházból beolvassa a forrásokat, visszaállítja a függőségeket, és közzéteszi az üzembe helyezéshez használt kimeneteket.
 
 1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
 
 1. Módosítsa a buildelési folyamat nevét egy leíró, jelölje be **várólistára & mentése**, majd válassza ki **mentése**.
 
 1. A buildelési folyamat neve alatt válassza az **Előzményeket**.  
-    Ezen a panelen a legutóbbi módosítások build auditnaplót jeleníti meg. Az Azure DevOps nyomon követi a végzett módosítások a buildelési folyamat, és lehetővé teszi, hogy verziójának összehasonlítása.
+    Ez az ablaktábla a Build legutóbbi változásainak naplózási nyomvonalát jeleníti meg. Az Azure DevOps nyomon követi a felépítési folyamaton végrehajtott módosításokat, és lehetővé teszi a verziók összehasonlítását.
 
 1. Válassza az **Eseményindítókat**.  
-    A DevOps Projects automatikusan CI eseményindítót hoz létre, és minden véglegesítéshez az adattárhoz elindul egy új létrehozást. Igény szerint kiválaszthatja, hogy belefoglalja vagy kizárja az ágak a CI folyamat.
+    A DevOps Projects automatikusan létrehoz egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el. Lehetőség van arra is, hogy az ágakat belefoglalja vagy kizárja a CI-folyamatból.
 
 1. Válassza a **Megtartást**.  
     A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
 
-## <a name="examine-the-cd-release-pipeline"></a>Vizsgálja meg a CD-kiadási folyamatok
+## <a name="examine-the-cd-release-pipeline"></a>A CD-kiadási folyamat vizsgálata
 
-A DevOps Projects automatikusan létrehozza és konfigurálja az Azure-előfizetéshez az Azure DevOps-szervezet telepítéséhez szükséges lépéseket. Ide tartozik az Azure DevOps hitelesítéséhez az Azure-előfizetéshez az Azure service-kapcsolat beállítása. Az automation is létrehoz egy kiadási folyamatot, amely biztosítja a CD-ről az Azure-bA. További információ a kiadási folyamathoz, tegye a következőket:
+DevOps Projects automatikusan létrehozza és konfigurálja a szükséges lépéseket az Azure DevOps-szervezet Azure-előfizetéséhez való üzembe helyezéshez. Ezek a lépések az Azure-DevOps Azure-előfizetéshez való hitelesítéséhez szükséges Azure-szolgáltatási kapcsolatok konfigurálását is tartalmazzák. Az Automation egy kiadási folyamatot is létrehoz, amely biztosítja a CD-t az Azure-hoz. Ha többet szeretne megtudni a kiadási folyamatról, tegye a következőket:
 
-1. Válassza ki **készítése és kiadása**, majd válassza ki **kiadásokban**.  
-    DevOps-projektek az Azure-bA központi telepítések felügyeletéhez szükséges kiadási folyamatot hoz létre.
+1. Válassza a **Létrehozás és kiadás**, majd a **kiadások**lehetőséget.  
+    DevOps Projects létrehoz egy kiadási folyamatot az Azure-ba történő üzembe helyezések kezeléséhez.
 
-1. A kibocsátási folyamat melletti három pontra (...), majd válassza ki és **szerkesztése**.  
+1. Válassza a kiadási folyamat melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.  
     A kiadási folyamat tartalmaz egy *folyamatot*, amely meghatározza a kiadási folyamatot.
 
 1. Az **Összetevők** alatt válassza az **Elvetést**.  
-    A buildelési folyamat, az előző lépésekben vizsgálni összetevő szolgálja ki a kimenetet eredményez. 
+    Az előző lépések során megvizsgált összeállítási folyamat létrehozza az összetevőhöz használt kimenetet. 
 
-1. Jobb oldalán a **Drop** ikonra, válassza ki **a folyamatos készregyártás eseményindítója**.  
-    A kibocsátási folyamat rendelkezik egy engedélyezett CD eseményindító, amely végrehajtja a központi telepítés minden alkalommal, amikor egy új buildösszetevő érhető el. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
+1. A **drop** ikon jobb oldalán válassza a **folyamatos üzembe helyezés trigger**lehetőséget.  
+    Ez a kiadási folyamat egy engedélyezett CD-triggerrel rendelkezik, amely minden alkalommal végrehajt egy központi telepítést, amikor új Build-összetevő érhető el. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását. 
 
-1. Válassza ki a jobb **verziók megtekintéséhez** kiadások előzményeinek megjelenítéséhez.
+1. A jobb oldalon válassza a **kiadások megtekintése** lehetőséget a kiadások előzményeinek megjelenítéséhez.
 
-1. Egy kiadási melletti három pontra (...), majd válassza ki és **nyílt**.  
-    Áttekintheti a több menük, például a kiadás összegzését, a társított munkaelemekhez és a teszteket.
+1. Válassza a kiadás melletti három pontot (...), majd kattintson a **Megnyitás**gombra.  
+    Több menüt is megvizsgálhat, például a kiadás összegzését, a kapcsolódó munkaelemeket és teszteket.
 
 1. Válassza a **Véglegesítéseket**.  
-    Ez a nézet megjeleníti az ehhez a központi telepítéshez rendelt kódja véglegesítéseket. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
+    Ez a nézet a telepítéshez társított kód-véglegesítő kódokat jeleníti meg. Az üzembe helyezések közötti véglegesítési különbségek megtekintéséhez hasonlítsa össze a kiadásokat.
 
 1. Válassza a **Naplókat**.  
-    A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Megtekintheti őket alatt és után a központi telepítések.
+    A naplók hasznos információkat tartalmaznak az üzembehelyezési folyamattal kapcsolatban. Ezeket az üzembe helyezések során és után is megtekintheti.
 
-## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Véglegesítse a módosításokat az Azure-Adattárakkal, és automatikusan telepíthet az Azure-bA 
+## <a name="commit-changes-to-azure-repos-and-automatically-deploy-them-to-azure"></a>Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban 
 
  > [!NOTE]
- > Az alábbi eljárás teszteli a CI/CD-folyamat egy egyszerű szöveges változtatásokat.
+ > Az alábbi eljárással a CI/CD-folyamat egy egyszerű szöveg módosításával tesztelhető.
 
-Most már készen áll, az alkalmazás a csapat együttműködhet egy CI/CD-folyamat, amely automatikusan telepíti a legújabb munkáját a webhely használatával. Minden módosítás a Git-tárház egy build elindítja az Azure DevOps, és a egy CD-folyamat végrehajtja a központi telepítés az Azure-bA. Kövesse az ebben a szakaszban az eljárást, vagy egy másik módszer használatával véglegesítse a módosításokat az adattárhoz. Például a Git-tárház a kedvenc eszköz vagy az IDE klónozhat, és leküldéses átvált ebben a tárházban.
+Most már készen áll az alkalmazásban lévő csapattal való együttműködésre egy CI/CD-folyamat használatával, amely automatikusan üzembe helyezi a legújabb munkát a webhelyén. A git-tárház minden módosítása egy buildet indít az Azure DevOps, és egy CD-folyamat végrehajtja az Azure-ba történő üzembe helyezést. Kövesse az ebben a szakaszban leírt eljárást, vagy használjon másik technikát a tárház változásainak érvényesítéséhez. Megteheti például, hogy a git-tárházat a kedvenc eszközén vagy IDE helyezi, majd leküldi a módosításokat a tárházban.
 
-1. Az Azure DevOps menüjében válassza **kód** > **fájlok**, és folytassa az adattárhoz.
+1. Az Azure DevOps menüben válassza ki a **Code** > **Files**elemet, majd nyissa meg a tárházat.
 
-1. Nyissa meg a *Views\Home* könyvtár, válassza a három pontra (...), a *Index.cshtml* fájlt, és válassza ki **szerkesztése**.
+1. Nyissa meg a *Views\Home* könyvtárat, válassza az *index. cshtml* fájl melletti három pontot (...), majd válassza a **Szerkesztés**lehetőséget.
 
-1. Módosítja a fájlt, például a valamilyen szöveget a div címkék egyikében. 
+1. Végezze el a fájl módosítását, például a div-címkék egyikén belüli szöveg hozzáadását. 
 
-1. Jobb felső sarokban, válassza ki a **véglegesítése**, majd válassza ki **véglegesítése** újra, hogy a módosítás leküldése.  
-    Néhány pillanat múlva build elindítja az Azure DevOps, és egy kiadási üzembe helyezéséhez a módosításokat hajt végre. A DevOps Projects irányítópulton vagy a böngészőben az Azure DevOps vállalattal build állapotának figyelésére.
+1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**  
+    Néhány pillanat elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Projects irányítópulton vagy a böngészőben az Azure DevOps-szervezettel.
 
-1. A kiadás befejezése után frissítse az alkalmazásba és ellenőrizze a módosításokat.
+1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha teszteli, elkerülheti a halmoz fel díjak szerint az erőforrások törlése. Ha már nincs szüksége, törölheti az AKS-fürt és a kapcsolódó erőforrásokat, ebben az oktatóanyagban létrehozott. Ehhez használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
+Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforrások tisztításával. Ha már nincs rájuk szükség, törölheti az ebben az oktatóanyagban létrehozott AK-fürtöt és a kapcsolódó erőforrásokat. Ehhez használja a **Törlés** funkciót a DevOps projects irányítópulton.
 
 > [!IMPORTANT]
-> Az alábbi eljárás véglegesen törli az erőforrást. A *törlése* funkció tárolt a DevOps Projects, Azure-beli és az Azure DevOps a projekt által létrehozott adatok megsemmisülnek, és nem lehet beolvasni. Ezzel az eljárással csak azután alaposan elolvasta a megjelenő utasításokat.
+> Az alábbi eljárás véglegesen törli az erőforrásokat. A *delete* funkció megsemmisíti a projekt által az Azure-ban és az Azure-DevOps található DevOps projects által létrehozott összes adatát, és nem fogja tudni beolvasni. Ezt az eljárást csak akkor használja, ha alaposan elolvasta a kérdéseit.
 
-1. Az Azure Portalon nyissa meg a DevOps Projects-irányítópultot.
-2. Jobb felső sarokban, válassza ki a **törlése**. 
-3. Amikor a rendszer kéri, válassza ki a **Igen** való *véglegesen törli* az erőforrásokat.
+1. A Azure Portal nyissa meg a DevOps Projects irányítópultot.
+2. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
+3. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
 ## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * ASP.NET Core-alkalmazás üzembe az aks-ben a DevOps Projects segítségével
+> * A DevOps Projects használatával telepíthet egy ASP.NET Core alkalmazást az AK-ra
 > * Az Azure DevOps és az Azure-előfizetés konfigurálása 
 > * Az AKS-fürt vizsgálata
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
-> * Véglegesítse a módosításokat a Git, és automatikusan telepíthet az Azure-bA
+> * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
-A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért lásd:
+A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
 > [A Kubernetes-irányítópult használata](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)

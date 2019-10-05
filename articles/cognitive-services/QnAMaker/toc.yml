@@ -4,10 +4,12 @@
   items:
     - name: Mi a QnA Maker?
       href: Overview/overview.md
+    - name: Újdonságok
+      href: whats-new.md
 - name: Gyors útmutatók
   items:
     - name: Új tudásbázis létrehozása
-      href: How-To/create-knowledge-base.md
+      href: quickstarts/create-publish-knowledge-base.md
     - name: Metaadatokkal rendelkező kérdések felvétele
       href: quickstarts/add-question-metadata-portal.md
     - name: Válasz kérése

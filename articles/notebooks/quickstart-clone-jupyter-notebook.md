@@ -4,21 +4,20 @@ description: Gyorsan klónozza a GitHub-adattárból egy Jupyter notebookot, és
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e180192ed8375e00464ed9ec96080cde10295e5c
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: ed239c470a49fc045bd436668f83dff32eac3a66
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754048"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970120"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Notebook klónozása
 
@@ -34,19 +33,19 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
     ![A böngésző ablakának felső részén saját projektek hivatkozás](media/quickstarts/my-projects-link.png)
 
-1. Az a **saját projektek** lapon, válassza ki a felfelé mutató nyílra (billentyűparancs: U. a gomb akkor jelenik meg, mint **GitHub-adattár feltöltése** Ha a böngészőablak elég széles):
+1. A **saját projektek** lapon kattintson a felfelé mutató nyíl gombra (billentyűparancs: U a gomb a GitHub-tárház **feltöltésével** jelenik meg, ha a böngészőablak elég széles):
 
-    ![Töltse fel a GitHub-adattárat a parancs a saját projektek lapon](media/quickstarts/upload-github-repo-command.png)
+    ![GitHub-tárház-parancs feltöltése a saját projektek oldalon](media/quickstarts/upload-github-repo-command.png)
 
-1. Az a **GitHub-adattár feltöltése** , amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza **importálás**:
+1. A megjelenő **GitHub-tárház feltöltése** lapon adja meg vagy állítsa be a következő adatokat, majd válassza az **Importálás**lehetőséget:
 
-   - **GitHub-adattár**: A Microsoft/cognitive-services-jegyzetfüzetek (ezt a nevet a Jupyter notebookok klónozza az Azure Cognitive Services: [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **GitHub-adattár**: Microsoft/kognitív-szolgáltatások – jegyzetfüzetek (ez a név az Azure Cognitive Services Jupyter notebookjának klónozását [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
    - **Klónozza a rekurzív módon**: (törölve)
-   - **Projektnév**: A cognitive Services-klón
+   - **Projekt neve**: Cognitive Services klón
    - **A projekt Azonosítóját**: cognitive services-klón
    - **Nyilvános**: (törölve)
 
-     ![GitHub-adattár helyi menü tárház kapcsolatos információk összegyűjtéséhez feltöltése](media/quickstarts/upload-github-repo-popup.png)
+     ![A GitHub-tárház felugró ablakának feltöltése a tárház adatainak összegyűjtéséhez](media/quickstarts/upload-github-repo-popup.png)
 
 1. Türelemmel, amíg a folyamat befejeződése után; a tárház klónozása pár percet is igénybe vehet.
 

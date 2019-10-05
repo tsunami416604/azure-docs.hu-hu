@@ -1,17 +1,17 @@
 ---
-title: A Azure Database for MySQL támogatott verziói
-description: A Azure Database for MySQL támogatott verzióit ismerteti.
+title: Támogatott verziók – Azure Database for MySQL
+description: Megtudhatja, hogy a MySQL-kiszolgáló mely verziói támogatottak a Azure Database for MySQL szolgáltatásban.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962583"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970531"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure Database for MySQL Server-verziók
 
@@ -48,7 +48,7 @@ Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/re
 ## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
 A szolgáltatás automatikusan kezeli a hibajavítások verziófrissítésének javítását. Például 5.7.20 telepítése a 5.7.21.  
 
-Jelenleg a másodlagos és a főverzió frissítése nem támogatott. Például a MySQL 5,6-ről a MySQL 5,7-re való frissítés nem támogatott. Ha 5,6-ről 5,7-re szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](./concepts-migrate-dump-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
+Az al- vagy a főverzió frissítései jelenleg nem támogatottak. Például a MySQL 5.6-os verzióról a MySQL 5.7-es verzióra történő frissítés nem támogatott. Ha az 5.6-os verzióról az 5.7-es verzióra szeretne frissíteni, készítsen [biztonsági másolatot, és végezzen visszaállítást](./concepts-migrate-dump-restore.md) az új motorverzióval létrehozott kiszolgálón.
 
 ## <a name="next-steps"></a>További lépések
 

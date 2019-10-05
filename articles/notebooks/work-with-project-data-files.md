@@ -4,21 +4,20 @@ description: Hogyan lehet egy Azure-jegyzetfüzetek projekt külső forrásból 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240435"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970212"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Az adatfájlokat az Azure-jegyzetfüzet projektek használata
 
@@ -42,17 +41,17 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Válassza ki a **feltöltése** parancsot, majd vagy **URL-CÍMRŐL** vagy **számítógépről** és a projekt az importálni kívánt adatok a szükséges adatokat:
 
-   - **URL-címről**: Adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
+   - **URL-** címről: Adja meg a forrás címét a **fájl URL-címe** mezőben, valamint a **Fájlnév mezőben a** projektben lévő jegyzetfüzethez rendelendő fájlnevet. Válassza ki **+ fájl hozzáadása** az URL-cím hozzáadása a feltöltési listájához. Ismételje meg a folyamatot minden olyan további URL-címet, majd válassza a **kész**.
 
      ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
 
-   - **A számítógép**: Húzza és fájlok betett az előugró ablak, vagy bejelölheti **fájlok kiválasztása**, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
+   - **Számítógépről**: Húzza a fájlokat a felugró ablakba, vagy válassza a **fájlok kiválasztása**lehetőséget, majd keresse meg és válassza ki az importálni kívánt adatfájlokat. Dobja el, vagy fájlokat, bármilyen típusú és formátumú tetszőleges számú választható, mert a kódhoz a notebook nyissa meg a fájlt, és elemezni az adatokat a szolgáltatás.
 
      ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
 
 1. Importálás után a notebook kód tartalmazó mappába relatív forráskódfájlok használatával érhető el, és fájlokat a projekt irányítópultján jelenik meg.
 
-### <a name="import-files-from-the-file-menu-in-a-notebook"></a>A Fájl menüből egy jegyzetfüzetet a fájlok importálása
+### <a name="import-files-from-the-file-menu-in-a-notebook"></a>Fájlok importálása egy jegyzetfüzet fájl menüjéből
 
 1. Belül futó jegyzetfüzet, válassza ki a **fájl** > **feltöltése** parancsot:
 
@@ -62,7 +61,7 @@ Közzétehet fájlokat a projektbe a projekt irányítópultján, illetve egy fu
 
 1. Az a **feltöltési állapot** előugró ablak, amely akkor jelenik meg, válassza ki a **célmappa** a legördülő listából:
 
-    - Munkamenet-mappa ( *~/* ): Feltölti az aktuális munkamenetbe notebook fájlokat, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /* .
+    - Munkamenet mappája ( *~/* ): Feltölti a fájlokat az aktuális jegyzetfüzet-munkamenetbe, de nem hoz létre fájlokat a projektben. A munkamenet mappa társ a mappájára, de nem tárol, miután a munkamenet azért ér véget. A kódban munkamenet fájlok eléréséhez, a fájlneveket, a következő relatív elérési előtag *... /* .
 
         A munkamenet mappa használata Kísérletezési hasznos, és elkerülhető, hogy a projekt elárasztanák rendelkező fájlokat is, illetve előfordulhat, hogy nem kell a hosszú távon. A munkamenet-mappába, amelyeket azonos nevek a projekt fájlokat anélkül, hogy ez ütközéseket, és nevezze át a fájlokat anélkül is feltölthet fájlokat. Tegyük fel például, a egy verziójával rendelkezik *data.csv* a projektben már, de szeretné kísérletezhet a különböző verzióit *data.csv*. A fájl feltöltésével a munkamenet-mappába, a jegyzetfüzet-adatok a feltöltött fájl a futtathatja (az arra való hivatkozás a kód használatával *... /Data.csv*) ahelyett, hogy a projekt fájlban lévő adatokat.
 

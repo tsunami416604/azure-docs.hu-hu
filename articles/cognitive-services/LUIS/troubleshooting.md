@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 8adc052e732fdc54bd3b51873fdcf13a55f1f490
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382340"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971969"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding gyakori kérdések (GYIK)
 
@@ -220,6 +220,10 @@ További információért lásd: a [403](#i-received-an-http-403-error-status-co
 
 További információért lásd: a [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) -es és a [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) -es http-állapotkód javítása.
 
+### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Létrehoztam egy szerzői kulcsot, de nem jelenik meg a LUIS-portálon. Mi történt?
+
+A szerzői kulcsok a [szerzői műveletek elvégzése](luis-migration-authoring.md)után érhetők el a Luis-portálon.  
+
 ## <a name="app-management"></a>Alkalmazáskezelés
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan töltse le a felhasználó utterances naplózása?
@@ -267,11 +271,11 @@ Az első probléma az, hogy elkülöníti a problémát, ha a probléma LUIS-hez
 #### <a name="resolve-issue-in-luis"></a>Probléma megoldása a LUIS-ben
 A Luis- [végponttal](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)azonos Kimondás a Luis-nek. Ha hibaüzenetet kap, oldja meg a problémát a LUIS-ben, amíg a hibát már nem adja vissza. Gyakori hibák a következők:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`– Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier). 
+* `Out of call volume quota. Quota will be replenished in <time>.` – Ez a probléma azt jelzi, hogy egy szerzői kulcsból egy [végponti kulcsra](luis-how-to-azure-subscription.md) kell váltania, vagy módosítania kell a [szolgáltatási szinteket](luis-how-to-azure-subscription.md#change-pricing-tier). 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása Azure Bot Service
 
-Ha a Azure bot Service használja, és a probléma az, hogy a **webes csevegésben** a teszt `Sorry, my bot code is having an issue`visszaadja, ellenőrizze a naplókat:
+Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésben a teszt** `Sorry, my bot code is having an issue` értéket ad vissza, ellenőrizze a naplókat:
 
 1. A robot Azure Portal a robot **kezelése** szakaszban válassza a **Létrehozás**lehetőséget.
 1. Nyissa meg az online Kódszerkesztő alkalmazást. 

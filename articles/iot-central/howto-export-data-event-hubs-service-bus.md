@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875998"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971582"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálja adatait az Azure IoT Central
 
@@ -21,7 +21,7 @@ ms.locfileid: "69875998"
 
 *Ez a témakör a rendszergazdákra vonatkozik.*
 
-Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az adatai saját **Azure**-Event Hubsba és **Azure Service Bus** példányokra való exportálására. A saját céljára exportálhatja a **méréseket**, az eszközöket és az **eszközöket**, így a meleg elérési utat és az elemzést is elvégezheti. Ez magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását Azure Logic Appsekben, illetve az adatátalakítást és a Azure Functionson keresztüli átadását. 
+Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos adatexportálás funkciója az adatai saját **Azure-Event Hubsba**és **Azure Service Bus** példányokra való exportálására. A saját céljára exportálhatja a **méréseket**, az **eszközöket** **és az eszközöket, így a** meleg elérési utat és az elemzést is elvégezheti. Ez magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását Azure Logic Appsekben, illetve az adatátalakítást és a Azure Functionson keresztüli átadását. 
 
 > [!Note]
 > Ha ismét bekapcsolja a folyamatos adatexportálást, az adott pillanattól kezdve csak az adott adatot kapja meg. Jelenleg nem lehet lekérni az adatgyűjtési időt, amikor a folyamatos adatexportálás ki lett kapcsolva. Több korábbi adat megtartásához kapcsolja be a folyamatos adatexportálást.
@@ -33,9 +33,9 @@ Ez a cikk azt ismerteti, hogyan használható az Azure IoT Central folyamatos ad
 
 ## <a name="set-up-export-destination"></a>Exportálás célhelyének beállítása
 
-Ha nem rendelkezik meglévő Event Hubs/Service Bus az exportáláshoz, kövesse az alábbi lépéseket:
+Ha nem rendelkezik meglévő Event Hubs/Service Bus az exportáláshoz, a következő lépésekkel hozhat létre egyet:
 
-## <a name="create-event-hubs-namespace"></a>Event Hubs névtér létrehozása
+### <a name="create-event-hubs-namespace"></a>Event Hubs névtér létrehozása
 
 1. Hozzon létre egy [új Event Hubs névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.EventHub). További információt az [Azure Event Hubs dokumentációjában](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)olvashat.
 2. Válasszon egy előfizetést. 
@@ -44,7 +44,7 @@ Ha nem rendelkezik meglévő Event Hubs/Service Bus az exportáláshoz, kövesse
     > Mostantól exportálhat más előfizetésekre is, amelyek **nem egyeznek** meg az utólagos elszámolású IoT Central alkalmazása során. Ebben az esetben kapcsolati sztringet fog használni.
 3. Hozzon létre egy Event hubot a Event Hubs névtérben. Nyissa meg a névteret, és a felül található **+ Event hub** elemet választva hozzon létre egy Event hub-példányt.
 
-## <a name="create-service-bus-namespace"></a>Service Bus névtér létrehozása
+### <a name="create-service-bus-namespace"></a>Service Bus névtér létrehozása
 
 1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . [Azure Service Bus dokumentációban](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)bővebben is olvashat.
 2. Válasszon egy előfizetést. 
@@ -66,24 +66,22 @@ Most, hogy rendelkezik egy Event Hubs/Service Bus céllal, hogy exportálja az a
     > [!Note]
     > Ha a bal oldali menüben nem látja a folyamatos adatexportálást, akkor Ön nem rendszergazda az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_menu1.png)
-
 3. Kattintson a jobb felső sarokban található **+ új** gombra. Válasszon ki egy **Azure-Event Hubs** vagy **Azure Service Bus** az Exportálás célhelye. 
 
     > [!NOTE] 
     > Az alkalmazások exportálásának maximális száma öt. 
 
-    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export_new1.png)
+    ![Új folyamatos adatexportálás létrehozása](media/howto-export-data/export-new2.png)
 
 4. A legördülő listában válassza ki a **Event Hubs névtér/Service Bus névteret**. A lista utolsó elemét is kiválaszthatja, amely a **kapcsolatok karakterláncát adja meg**. 
 
     > [!NOTE] 
-    > A Storage-fiókok/Event Hubs névterek/Service Bus névterek a **IoT Central alkalmazással megegyező**előfizetésben jelennek meg. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
+    > A Storage-fiókok/Event Hubs névterek/Service Bus névterek a **IoT Central alkalmazással megegyező előfizetésben**jelennek meg. Ha az előfizetésen kívüli célhelyre szeretne exportálni, válassza **az adja meg a kapcsolati karakterláncot** , és tekintse meg az 5. lépést.
 
     > [!NOTE] 
     > A 7 napos próbaverziós alkalmazások esetében az egyetlen módszer a folyamatos adatexportálás konfigurálására egy kapcsolódási karakterláncon keresztül. Ennek az az oka, hogy a 7 napos próbaverziós alkalmazások nem rendelkeznek társított Azure-előfizetéssel.
 
-    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export_create1.png)
+    ![Új CDE-esemény hub létrehozása](media/howto-export-data/export-eh.png)
 
 5. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
     - Event Hubs vagy Service Bus, lépjen a Azure Portal névtér elemére.
@@ -93,21 +91,19 @@ Most, hogy rendelkezik egy Event Hubs/Service Bus céllal, hogy exportálja az a
  
 6. Válassza ki az Event hub/üzenetsor vagy a témakört a legördülő listából.
 
-7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat, ha a típust be értékre állítja.
+7. Az **exportálni kívánt adat**területen adja meg az exportálandó adattípusokat **, ha a**típust be értékre állítja.
 
-6. A folyamatos adatexportálás bekapcsolásához ellenőrizze, hogy be van-e **kapcsolva**az adatexportálás. Kattintson a **Mentés** gombra.
+8. A folyamatos adatexportálás bekapcsolásához győződjön meg arról, hogy az **adatexportálási** váltógomb be van **kapcsolva**. Kattintson a **Mentés** gombra.
 
-    ![Folyamatos adatexportálás konfigurálása](media/howto-export-data/export_list1.png)
-
-7. Néhány perc elteltével az adatai megjelennek a választott célhelyen.
+9. Néhány perc elteltével az adatai megjelennek a választott célhelyen.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Exportálás az Azure Event Hubsba és Azure Service Bus
+## <a name="data-format"></a>Adatformátum
 
 A mérések, az eszközök és az eszközök sablonjainak adatai exportálva lesznek az Event hub-ba, vagy Service Bus üzenetsor vagy témakör a közel valós időben. Az exportált mérési adatok teljes egészében tartalmazzák az eszközök által IoT Central küldött üzenetet, nem csak a mérések értékeit. Az exportált eszközök az összes eszköz tulajdonságainak és beállításainak módosításait tartalmazzák, az exportált sablonok pedig az összes eszközosztály változásait tartalmazzák. Az exportált érték a "Body" tulajdonságban van, és JSON formátumú.
 
 > [!NOTE]
-> Service Bus exportálási célhelyként való kiválasztásakor a várólisták és a témakörök nem rendelkezhetnek a munkamenetek és az **ismétlődő észlelések engedélyezésével**. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
+> Service Bus exportálási célhelyként való kiválasztásakor a várólisták és a témakörök **nem rendelkezhetnek a munkamenetek és az ismétlődő észlelések engedélyezésével**. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
 
 ### <a name="measurements"></a>Mérések
 
@@ -146,7 +142,7 @@ Az alábbi példa egy üzenetet jelenít meg az Event hub-ban vagy Service Bus-v
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -162,9 +158,9 @@ Az eszköz adatait tartalmazó üzeneteket a rendszer néhány percenként egysz
 - Módosított tulajdonsággal rendelkező és beállított értékeket tartalmazó eszközök
 
 Minden üzenet az eszköz egy vagy több módosítását jelöli az utolsó exportált üzenet óta. Az egyes üzenetekben küldendő információk a következők:
-- `id`az eszköz IoT Central
-- `name`az eszköz
-- `deviceId`a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
+- @no__t – az eszköz 0 IoT Central
+- az eszköz @no__t – 0
+- @no__t – 0 a [Device kiépítési szolgáltatásból](https://aka.ms/iotcentraldocsdps)
 - Eszköz sablonjának adatai
 - Tulajdonságok értékei
 - Értékek beállítása
@@ -211,21 +207,21 @@ Az alábbi példa egy üzenetet jelenít meg az Event hub-ban vagy Service Bus �
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
 
-### <a name="device-templates"></a>Eszközök sablonjai
+### <a name="device-templates"></a>Eszközsablonok
 
 A rendszer néhány percenként egyszer elküldi az eszköz-sablonok adatait tartalmazó üzeneteket az Event hub-nak vagy Service Bus üzenetsor vagy témakör számára. Ez azt jelenti, hogy minden percben egy köteg üzenet érkezik a
 - Új, hozzáadott eszköz-sablonok
 - Megváltoztatott mértékegységekkel, tulajdonsággal és beállítási definíciókkal rendelkező eszközök sablonjai
 
 Minden üzenet a legutóbbi exportált üzenet óta egy vagy több módosítást jelképez az eszközön. Az egyes üzenetekben küldendő információk a következők:
-- `id`az eszköz sablonja
-- `name`az eszköz sablonja
-- `version`az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
+- @no__t – 0 az eszköz sablonja
 - Mérési adattípusok és minimális/maximális értékek
 - Tulajdonság adattípusai és alapértelmezett értékei
 - Az adattípusok és az alapértelmezett értékek beállítása
@@ -236,62 +232,62 @@ Minden üzenet a legutóbbi exportált üzenet óta egy vagy több módosítást
 Az alábbi példa egy üzenetet jelenít meg az Event hub vagy Service Bus üzenetsor vagy témakör eszköz sablonjaival kapcsolatos adatainak:
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

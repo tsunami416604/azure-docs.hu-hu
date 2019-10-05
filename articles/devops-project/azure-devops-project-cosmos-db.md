@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: Azure Cosmos DB által működtetett Node. js-alkalmazások üzembe helyezése Azure DevOps Projects'
 description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. A DevOps Projects segítségével néhány gyors lépéssel telepítheti a Node. js-alkalmazást, amelyet Azure Cosmos DB a Windows Web App-hoz.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884422"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969662"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>Azure Cosmos DB által működtetett Node. js-alkalmazások üzembe helyezése DevOps Projects
 
@@ -55,7 +55,7 @@ A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létre
 
 1. Válassza ki a **Node. js** -t futtatókörnyezetként, majd kattintson a **tovább**gombra. Az **alkalmazás-keretrendszer kiválasztása**területen válassza az **Express. js**elemet.
 
-1. Engedélyezze az **adatbázis hozzáadása** a Cosmos DBhozszakaszt, majd kattintson a **tovább**gombra.
+1. Engedélyezze az **adatbázis hozzáadása** a **Cosmos DBhoz**szakaszt, majd kattintson a **tovább**gombra.
 
     ![Adatbázis hozzáadása](_img/azure-devops-project-cosmos-db/add-database.png)
 
@@ -111,7 +111,7 @@ DevOps Projects automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-s
 
 1. A létrehozási folyamat elején jelölje ki a buildelési folyamat neve.
 
-1. Módosítsa a felépítési folyamat nevét egy ennél több leíró értékre, majd válassza a Mentés lehetőséget a **Mentés & üzenetsor** legördülő menüből.
+1. Módosítsa a felépítési folyamat nevét egy ennél több leíró értékre, **majd válassza a mentés lehetőséget** a **Mentés & üzenetsor** legördülő menüből.
 
 1. A buildelési folyamat neve alatt válassza az **Előzményeket**. Ez az ablaktábla a Build legutóbbi változásainak naplózási nyomvonalát jeleníti meg. Az Azure DevOps nyomon követi a felépítési folyamaton végrehajtott módosításokat, és lehetővé teszi a verziók összehasonlítását.
 
@@ -119,7 +119,7 @@ DevOps Projects automatikusan konfigurálja a CI/CD-folyamatot az Azure DevOps-s
 
 DevOps Projects automatikusan létrehozza és konfigurálja a szükséges lépéseket az Azure DevOps-szervezet Azure-előfizetéséhez való üzembe helyezéshez. Ezek a lépések az Azure-DevOps Azure-előfizetéshez való hitelesítéséhez szükséges Azure-szolgáltatási kapcsolatok konfigurálását is tartalmazzák. Az Automation egy kiadási folyamatot is létrehoz, amely biztosítja a CD-t az Azure-hoz. Ha többet szeretne megtudni a kiadási folyamatról, tegye a következőket:
 
-1. Nyissa meg a folyamatokat, és válassza a **kiadások**lehetőséget.
+1. Nyissa meg a **folyamatokat** , és válassza a **kiadások**lehetőséget.
 
 1. Válassza a **Szerkesztés** elemet.
 
@@ -148,7 +148,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. Válassza a **Szerkesztés**lehetőséget, majd végezze el a **15. számú sor**módosítását. Megváltoztathatja például a következőre: "az első központi telepítés Azure App Service powered by Azure Cosmos DB."
 
-1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** újra lehetőséget.
+1. A jobb felső sarokban válassza a végrehajtás lehetőséget, majd a módosítás elküldéséhez válassza a **véglegesítés** **újra lehetőséget.**
 
      Néhány másodperc elteltével a buildek az Azure DevOps-ben kezdődnek, és a kiadásokat a rendszer a módosítások üzembe helyezésével hajtja végre. Figyelje a Build állapotát a DevOps Projects irányítópulton vagy a böngészőben az Azure DevOps-szervezettel.
 
@@ -169,6 +169,6 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
-További információkat és további lépéseket a többfázisú [folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
+További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
 
 

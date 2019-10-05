@@ -4,21 +4,20 @@ description: Gyorsan létrehozása és futtatása a Jupyter notebook Azure noteb
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 42f5d3abda715d83d58b0d341aed784de639e460
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751797"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970177"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Notebook létrehozása és megosztása
 
@@ -34,7 +33,7 @@ ms.locfileid: "66751797"
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-   - **Projektnév**: Hello World Python-ben
+   - **Projekt neve**: "Helló világ!" alkalmazás a Pythonban
    - **A projekt Azonosítóját**: hello-world – python
    - **Nyilvános projekt**: (törölve)
    - **Hozzon létre egy README.md**: (törölve)
@@ -83,7 +82,7 @@ ms.locfileid: "66751797"
     print(msg)
     ```
 
-1. Válassza ki **futtatása** (billentyűparancs: Shift + Enter) futtassa a kódot. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
+1. **Futtatás** kiválasztása (billentyűparancs: SHIFT + ENTER) a kód futtatásához. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -93,7 +92,7 @@ ms.locfileid: "66751797"
 
     ![Mentés ikonra a Jupyter notebook eszköztár](media/quickstarts/hello-results-save-icon.png)
 
-1. Válassza ki a **fájl** > **zárja be és Halt** menü paranccsal állíthatja le a kiszolgálón, és zárja be a böngészőablakot.
+1. Válassza a **fájl** > **Bezárás és** leállítás menüpontot a kiszolgáló leállításához és a böngészőablak bezárásához.
 
 ## <a name="share-the-notebook"></a>A notebook megosztása
 

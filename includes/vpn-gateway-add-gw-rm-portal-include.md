@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273791"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970832"
 ---
 1. A portál bal oldalán kattintson az **+ Erőforrás létrehozása** gombra, és írja be a „Virtuális hálózati átjáró” kifejezést a keresőmezőbe. A keresési eredmények között keresse meg a **Virtuális hálózati átjáró** elemet, és kattintson a bejegyzésre. A **virtuális hálózati átjáró** lapon kattintson a **Létrehozás**gombra. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** lapot.
 
@@ -37,7 +37,7 @@ ms.locfileid: "71273791"
 
       **Virtuális hálózat**: Válassza ki azt a virtuális hálózatot, amelyhez hozzá kívánja adni az átjárót.
 
-      **Átjáró-alhálózati címtartomány**: Ez a mező csak akkor jelenik meg, ha a kiválasztott virtuális hálózat nem rendelkezik átjáró-alhálózattal. Adja meg a tartományt, ha még nem rendelkezik átjáró-alhálózattal. Ha lehetséges, végezze el a tartományt/27 vagy nagyobb (/26,/25 stb.)
+      **Átjáró-alhálózati címtartomány**: Ez a mező csak akkor jelenik meg, ha a VNet nem rendelkezik átjáró-alhálózattal. Ha lehetséges, végezze el a tartományt/27 vagy nagyobb (/26,/25 stb.). Nem javasoljuk, hogy a/28-nál kisebb tartományt hozzon létre. Ha már rendelkezik átjáró-alhálózattal, a virtuális hálózatra navigálva megtekintheti a GatewaySubnet adatait. Az **alhálózatok** elemre kattintva megtekintheti a tartományt. Ha módosítani szeretné a tartományt, törölheti és újból létrehozhatja a GatewaySubnet.
 
    **Nyilvános IP-cím**: Ezzel a beállítással adható meg a VPN-átjáróhoz társított nyilvános IP-cím objektum. A nyilvános IP-címet a rendszer dinamikusan rendeli hozzá ehhez az objektumhoz a VPN-átjáró létrehozásakor. A nyilvános IP-cím kizárólag abban az esetben változik, ha az átjárót törli, majd újra létrehozza. Nem módosul átméretezés, alaphelyzetbe állítás, illetve a VPN Gateway belső karbantartása/frissítése során.
 

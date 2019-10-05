@@ -2,19 +2,18 @@
 title: Az Azure Kubernetes üzembe helyezési központja
 description: Az Azure DevOps üzembe helyezési központja leegyszerűsíti a robusztus Azure DevOps-folyamat beállítását az alkalmazáshoz
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618722"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972977"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
 
@@ -60,13 +59,13 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    ![beállítások](media/deployment-center-launcher/settings.png)
 
-1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** -repók vagy **GitHub**.
+1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure-repók](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
 
     Az Azure Repos olyan verziókövetés-eszközök összessége, amelyek segítenek a kód kezelésében. Azt jelzi, hogy a szoftveres projekt mérete nagy vagy kicsi, jó ötlet a verziókövetés a lehető leghamarabb.
 
-    - **Azure**-repók: Válasszon egy tárházat a meglévő projektből és szervezetből.
+    - **Azure-repók**: Válasszon egy tárházat a meglévő projektből és szervezetből.
 
-        ![Azure-beli adattárak](media/deployment-center-launcher/azure-repos.gif)
+        ![Azure Repos](media/deployment-center-launcher/azure-repos.gif)
 
     - **GitHub**: Engedélyezze és válassza ki a GitHub-fiók adattárát.
 
@@ -79,9 +78,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     Ha a tárház nem tartalmazza a Docker, a rendszer megjelenít egy üzenetet, amelyet véglegesíteni kell.
 
-    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Docker](media/deployment-center-launcher/dockerfile.png)
 
-1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops)-folyamatokban.
+1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure-folyamatokban](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
 
     Az Azure-folyamatok egy felhőalapú szolgáltatás, amellyel automatikusan felépítheti és tesztelheti a kód projektjét, és elérhetővé teheti azokat más felhasználók számára. Az Azure-folyamatok folyamatosan és következetesen tesztelik és felépítik a folyamatos integrációt és a folyamatos teljesítést, és minden célra elszállítják a kódot.
 
@@ -123,11 +122,11 @@ A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-
 
 1. A kiadási folyamat szerkesztéséhez válassza a **Szerkesztés**lehetőséget.
 
-1. Válassza a **drop** elemet az **összetevők listából.** Az előző lépésekben a megvizsgált szerkezeti folyamat létrehozza az összetevőhöz használt kimenetet. 
+1. Válassza a **drop** elemet **az összetevők listából.** Az előző lépésekben a megvizsgált szerkezeti folyamat létrehozza az összetevőhöz használt kimenetet. 
 
 1. Válassza ki a **folyamatos üzembe helyezési** triggert a **drop** kapcsoló jobb oldalán. Ez a kiadási folyamat egy olyan engedélyezett CD-triggerrel rendelkezik, amely egy üzembe helyezést futtat, amikor új Build-összetevő érhető el. Letilthatja az indítást is, ha manuális végrehajtást kíván végrehajtani az üzemelő példányokhoz.
 
-1. A folyamat összes feladatának vizsgálatához válassza a **feladatok**lehetőséget. A kiadás beállítja a kormányrúd környezetet, konfigurálja a `imagePullSecrets` (z) paramétert, telepíti a Helm-eszközöket, és üzembe helyezi a Helm-diagramokat a Kubernetes-fürtön.
+1. A folyamat összes feladatának vizsgálatához válassza a **feladatok**lehetőséget. A kiadás beállítja a kormányrúd környezetet, konfigurálja a `imagePullSecrets` paramétert, telepíti a Helm-eszközöket, és üzembe helyezi a Helm-diagramokat a Kubernetes-fürtön.
 
 1. A kiadási előzmények megtekintéséhez válassza a **kiadások megtekintése**lehetőséget.
 

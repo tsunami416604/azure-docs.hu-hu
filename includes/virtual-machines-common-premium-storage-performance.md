@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036032"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975306"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -76,7 +76,7 @@ Ezután mérje fel az alkalmazás maximális teljesítményre vonatkozó követe
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
-| Átlagos processzorhasználat | | | |
+| Átlagos CPU | | | |
 | Legfeljebb Memory (Memória) | | | |
 | Átlagos memória | | | |
 | Várólista mélysége | | | |
@@ -100,7 +100,7 @@ A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló m
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
-| **Max. Memória** |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória%-ban használatban |Vmstat használata |
+| **Max. Memória @ no__t – 0 |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória%-ban használatban |Vmstat használata |
 | **Max. CPU** |Az alkalmazás zökkenőmentes futtatásához szükséges mennyiségű CPU |Processzoridő (%) |% util |
 
 További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](https://msdn.microsoft.com/library/aa645516.aspx)szolgáltatásról.
@@ -135,12 +135,12 @@ A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a
 
 ## <a name="nature-of-io-requests"></a>Az IO-kérések természete
 
-Az i/o-kérések az alkalmazás által elvégezhető bemeneti/kimeneti műveletek egységei. Az i/o-kérések, véletlenszerű vagy szekvenciális, olvasási vagy írási, kis-és nagybetűk azonosításához segítséget nyújt az alkalmazás teljesítménybeli követelményeinek meghatározásában. Fontos megérteni az IO-kérelmek természetét, hogy a megfelelő döntéseket hozza az alkalmazás-infrastruktúra tervezésekor.
+Az i/o-kérések az alkalmazás által elvégezhető bemeneti/kimeneti műveletek egységei. Az i/o-kérések, véletlenszerű vagy szekvenciális, olvasási vagy írási, kis-és nagybetűk azonosításához segítséget nyújt az alkalmazás teljesítménybeli követelményeinek meghatározásában. Fontos megérteni az IO-kérelmek természetét, hogy a megfelelő döntéseket hozza az alkalmazás-infrastruktúra tervezésekor. Az IOs-t egyenletesen kell terjeszteni a lehető legjobb teljesítmény eléréséhez.
 
 Az IO-méret az egyik legfontosabb tényező. Az i/o-méret az alkalmazás által generált bemeneti/kimeneti műveletre vonatkozó kérelem mérete. Az i/o-méret jelentős hatással van a teljesítményre, különösen a IOPS és a sávszélességre, amelyet az alkalmazás képes elérni. A következő képlet a IOPS, az i/o-méret és a sávszélesség/átviteli sebesség közötti kapcsolatot mutatja.  
     ![](media/premium-storage-performance/image1.png)
 
-Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [\_db-blokk\_méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
+Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [db @ no__t-1BLOCK @ no__t-2SIZE](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
 
 Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Például:
 
@@ -152,7 +152,7 @@ Ha olyan alkalmazást használ, amely lehetővé teszi az IO-méret módosítás
 * Kisebb i/o-méret, hogy magasabb IOPS kapjon. Például 8 KB egy OLTP-alkalmazáshoz.  
 * Nagyobb IO-méret a nagyobb sávszélesség/teljesítmény eléréséhez. Például 1024 KB egy adatraktár-alkalmazáshoz.
 
-Itt látható egy példa arra, hogyan számítható ki az alkalmazás IOPS és átviteli sebessége/sávszélessége. Vegye fontolóra egy alkalmazás P30 lemez használatával történő használatát. A P30-lemez maximális IOPS és átviteli sebessége/sávszélessége 5000 IOPS és 200 MB/másodperc. Ha az alkalmazása megköveteli a maximális IOPS a P30-lemezről, és kisebb i/o-méretet (például 8 KB) használ, az eredményül kapott sávszélesség 40 MB/s lesz. Ha azonban az alkalmazás a maximális átviteli sebességet/sávszélességet igényli a P30 lemezről, és nagyobb i/o-méretet használ, mint például a 1024 KB, az eredményül kapott IOPS kevesebb lesz, 200 IOPS. Ezért állítsa be úgy az IO-méretet, hogy az megfeleljen az alkalmazás IOPS, valamint az átviteli sebességre/sávszélességre vonatkozó követelménynek. Az alábbi táblázat összefoglalja a különböző i/o-méreteket, valamint a P30-lemezek megfelelő IOPS és átviteli sebességét.
+Itt látható egy példa arra, hogyan számítható ki az alkalmazás IOPS és átviteli sebessége/sávszélessége. Vegye fontolóra egy alkalmazás P30 lemez használatával történő használatát. A P30-lemez maximális IOPS és átviteli sebessége/sávszélessége 5000 IOPS és 200 MB/másodperc. Ha az alkalmazása megköveteli a maximális IOPS a P30-lemezről, és kisebb i/o-méretet (például 8 KB) használ, az eredményül kapott sávszélesség 40 MB/s lesz. Ha azonban az alkalmazás a maximális átviteli sebességet/sávszélességet igényli a P30 lemezről, és nagyobb i/o-méretet használ, mint például a 1024 KB, az eredményül kapott IOPS kevesebb lesz, 200 IOPS. Ezért állítsa be úgy az IO-méretet, hogy az megfeleljen az alkalmazás IOPS, valamint az átviteli sebességre/sávszélességre vonatkozó követelménynek. A következő táblázat összefoglalja a különböző i/o-méreteket, valamint a P30-lemezek megfelelő IOPS és átviteli sebességét.
 
 | Alkalmazásra vonatkozó követelmény | I/O-méret | IOPS | Átviteli sebesség/sávszélesség |
 | --- | --- | --- | --- |
@@ -174,12 +174,12 @@ Amikor elkezd megtervezni egy alkalmazást, az egyik első teendő, válasszon e
 
 A nagy léptékű virtuális gépek különböző méretekben érhetők el, különböző számú CPU-mag, memória, operációs rendszer és ideiglenes lemez mérete miatt. Minden virtuálisgép-mérethez a virtuális géphez csatolható adatlemezek maximális száma is tartozik. Ezért a kiválasztott virtuálisgép-méret befolyásolja, hogy mennyi feldolgozási, memória-és tárolókapacitás érhető el az alkalmazás számára. Emellett a számítási és tárolási költségeket is befolyásolja. Az alábbiakban például a DS-sorozatok, a DSv2-sorozatok és a GS-sorozatok legnagyobb virtuálisgép-méretének specifikációi szerepelnek:
 
-| Virtuális gép mérete | Processzormagok | Memory (Memória) | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IOPS | Sávszélesség-gyorsítótár i/o-korlátai |
+| Virtuális gép mérete | CPU-magok | Memory (Memória) | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IOPS | Sávszélesség-gyorsítótár i/o-korlátai |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Helyi SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB/másodperc |4 000 IOPS és 33 MB/másodperc |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Helyi SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB/másodperc |5 000 IOPS és 50 MB/másodperc |
 
-Az összes elérhető Azure-beli virtuálisgép-méret teljes listájának megtekintéséhez tekintse meg a [Windows rendszerű virtuális](../articles/virtual-machines/windows/sizes.md) gépek méreteit vagy a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md). Válasszon olyan virtuálisgép-méretet, amely képes megfelelni és méretezni a kívánt alkalmazás teljesítményére vonatkozó követelményeket. Emellett a virtuális gépek méretének kiválasztásakor figyelembe kell vennie a következő fontos szempontokat is.
+Az összes elérhető Azure-beli virtuálisgép-méret teljes listájának megtekintéséhez tekintse meg a [Windows rendszerű virtuális gépek méreteit](../articles/virtual-machines/windows/sizes.md) vagy a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md). Válasszon olyan virtuálisgép-méretet, amely képes megfelelni és méretezni a kívánt alkalmazás teljesítményére vonatkozó követelményeket. Emellett a virtuális gépek méretének kiválasztásakor figyelembe kell vennie a következő fontos szempontokat is.
 
 *Skálázási korlátok*  
 A maximális IOPS korlátja virtuális gépenként és lemezenként eltérő, egymástól független. Győződjön meg arról, hogy az alkalmazás a virtuális gép korlátain belül IOPS, valamint a hozzá csatolt prémium lemezeken. Ellenkező esetben az alkalmazás teljesítménye a szabályozást fogja tapasztalni.
@@ -189,15 +189,15 @@ Tegyük fel például, hogy egy alkalmazásra vonatkozó követelmény legfeljeb
 *Működési díj*  
 Sok esetben előfordulhat, hogy az Premium Storage használatával járó általános üzemeltetési díj alacsonyabb, mint a standard Storage használata.
 
-Vegyünk például egy 16 000-IOPS igénylő alkalmazást. Ennek a teljesítménynek a megvalósításához szüksége lesz egy\_standard D14 Azure IaaS virtuális gépre, amely maximális IOPS biztosít a 16 000 32 standard Storage 1 TB lemez használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
+Vegyünk például egy 16 000-IOPS igénylő alkalmazást. A teljesítmény eléréséhez szüksége lesz egy standard @ no__t-0D14 Azure IaaS VM-re, amely maximális 16 000 IOPS biztosít a 32 standard Storage 1 TB-os lemezek használatával. Mindegyik 1 TB-os standard Storage-lemez legfeljebb 500 IOPS érhet el. A virtuális gép havi becsült díja $1 570 lesz. A standard szintű Storage-lemezek havi 32 díja $1 638. A becsült teljes havi költség $3 208 lesz.
 
-Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard\_DS13 virtuális gép négy P30-lemezzel képes megfelelni az 16 000 IOPS-követelménynek. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
+Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virtuális gép mérete és a kevesebb prémium szintű Storage-lemez szükséges, így csökkentve a teljes költségeket. A standard @ no__t-0DS13 virtuális gép négy P30-lemezzel képes megfelelni a 16 000 IOPS-követelménynek. A DS13 virtuális gép 25 600 maximális IOPS rendelkezik, és az egyes P30-lemezek maximális IOPS 5 000. Ez a konfiguráció összességében elérheti a 5 000 x 4 = 20 000 IOPS. A virtuális gép havi becsült díja $1 003 lesz. A négy P30 Premium Storage-lemez havi díja $544,34 lesz. A becsült teljes havi költség $1 544 lesz.
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
 | &nbsp; | **Standard** | **Prémium** |
 | --- | --- | --- |
-| **Virtuális gép ára havonta** |$1 570,58 (szabványos\_D14) |$1 003,66 (szabványos\_DS13) |
+| **Virtuális gép ára havonta** |$1 570,58 (szabványos @ no__t-0D14) |$1 003,66 (szabványos @ no__t-0DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
 | **Teljes díj havonta** |$3,208.98 |$1,544.34 |
 
@@ -209,13 +209,9 @@ A Linux és a Premium Storage használatával a nagy teljesítmény biztosítás
 
 ## <a name="premium-storage-disk-sizes"></a>Prémium szintű Storage-lemezek mérete
 
-Az Azure Premium Storage nyolc GA-lemezes méretet és három lemezes méretet kínál, amelyek jelenleg előzetes verzióban érhetők el. Az egyes lemezek mérete eltérő a IOPS, a sávszélességet és a tárterületet illetően. Az alkalmazás követelményeitől és a nagy méretű virtuális gép méretétől függően válassza ki a megfelelő Premium Storage a lemez méretét. Az alábbi táblázat a 11 lemez méretét és azok képességeit mutatja be. A P4, a P6, a P15, a P60, a P70 és a P80 méretek jelenleg csak Managed Disks támogatottak.
+Az Azure Premium Storage különböző méreteket kínál, így kiválaszthatja az igényeinek leginkább megfelelőt. Az egyes lemezek mérete eltérő a IOPS, a sávszélességet és a tárterületet illetően. Az alkalmazás követelményeitől és a nagy méretű virtuális gép méretétől függően válassza ki a megfelelő Premium Storage a lemez méretét. Az alábbi táblázat a lemezek méretét és azok képességeit mutatja be. A P4, a P6, a P15, a P60, a P70 és a P80 méretek jelenleg csak Managed Disks támogatottak.
 
-| Prémium szintű lemezek típusa  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Lemezméret           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16 384 GiB (16 TiB)    | 32 767 GiB (32 TiB)    |
-| IOPS-érték lemezenként       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15,000              | 20,000              |
-| Adattovábbítás lemezenként | másodpercenként 25 MiB  | 50 MiB másodpercenként  | 100 MiB másodpercenként |125 MiB másodpercenként | 150 MiB másodpercenként | 200 MiB másodpercenként | 250 MiB másodpercenként | 250 MiB másodpercenként | 480 MiB másodpercenként | 750 MiB másodpercenként | 750 MiB másodpercenként |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 A választott lemezek számától függ, hogy hány lemez van kiválasztva. Az alkalmazási követelményeknek való megfelelés érdekében egyetlen P50-lemezt vagy több P10-lemezt is használhat. A választás során vegye figyelembe az alább felsorolt szempontokat.
 
@@ -284,11 +280,11 @@ Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQ
 
 Az összes olyan prémium szintű SSD-vagy Ultra-lemez esetében, amelynek a gyorsítótára **readonly** vagy **none**értékre van állítva, le kell tiltania a "korlátok" kifejezést a fájlrendszer csatlakoztatásakor. Ebben az esetben nincs szükség korlátokra, mert a Premium Storage-lemezekre való írás a gyorsítótár beállításainál tartós. Az írási kérelem sikeres befejeződése után a szolgáltatás az adattárolást az állandó tárolóba írja. A "korlátok" letiltásához használja az alábbi módszerek egyikét. Válassza ki a fájlrendszerhez tartozó egyet:
   
-* A **reiserFS**az akadályok letiltásához használja a `barrier=none` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier=flush`a következőt:.)
-* Az **ext3/ext4**esetében az akadályok letiltásához használja `barrier=0` a csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier=1`a következőt:.)
-* A **XFS**az akadályok letiltásához használja a `nobarrier` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja `barrier`a következőt:.)
+* A **reiserFS**a korlátok letiltásához használja az `barrier=none` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=flush`.)
+* Az **ext3/ext4**esetén a korlátok letiltásához használja az `barrier=0` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=1`.)
+* A **XFS**a korlátok letiltásához használja az `nobarrier` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier`.)
 * A prémium szintű Storage-lemezek esetében a cache a **READWRITE**beállításnál engedélyezze a korlátokat az írási tartósság érdekében.
-* Ahhoz, hogy a kötetek a virtuális gép újraindítása után is fennmaradnak, frissítenie kell az/etc/fstabet az univerzálisan egyedi azonosítóval (UUID) a lemezekre mutató hivatkozásokkal. További információ: felügyelt [lemez hozzáadása Linux rendszerű virtuális géphez](../articles/virtual-machines/linux/add-disk.md).
+* Ahhoz, hogy a kötetek a virtuális gép újraindítása után is fennmaradnak, frissítenie kell az/etc/fstabet az univerzálisan egyedi azonosítóval (UUID) a lemezekre mutató hivatkozásokkal. További információ: [felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../articles/virtual-machines/linux/add-disk.md).
 
 A prémium SSD-k esetében a következő Linux-disztribúciók lettek érvényesítve. A prémium SSD-k jobb teljesítményének és stabilitásának érdekében javasoljuk, hogy a virtuális gépeket a fenti vagy újabb verzióra frissítse. 
 
