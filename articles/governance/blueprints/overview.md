@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146105"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981714"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Az Azure BluePrints szolgáltatás áttekintése
 
@@ -46,7 +45,7 @@ A [szabályzatok](../policy/overview.md) olyan alapértelmezett engedélyezési 
 
 Ha a tervekbe belefoglal egy szabályzatot, lehetővé teszi a megfelelő minta vagy kialakítás létrehozását a terv hozzárendelésekor. A szabályzat belefoglalásával azt is biztosíthatja, hogy a környezeten csak jóváhagyott vagy várt módosításokat lehessen végrehajtani, így folyamatosan megfeleljen a terv által kijelölt rendeltetési célnak.
 
-A szabályzatok a tervrajzok definíciójában szereplő számos összetevő egyike lehet. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
+A szabályzatok a tervrajzok definíciójában szereplő _számos összetevő_ egyike lehet. A tervek a szabályzatokhoz és kezdeményezésekhez paraméterek használatát is támogatják.
 
 ## <a name="blueprint-definition"></a>Tervdefiníció
 
@@ -118,7 +117,7 @@ A következő beépített szerepkörök érhetők el:
 Ha ezek a beépített szerepkörök nem felelnek meg a biztonsági követelményeinek, létrehozhat [egyéni szerepköröket](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
-> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás tulajdonosi szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell tulajdonosi engedélyeket létrehoznia.
+> Ha rendszer által hozzárendelt felügyelt identitást használ, az Azure-tervezetekhez tartozó egyszerű szolgáltatás **tulajdonosi** szerepkört igényel a hozzárendelt előfizetésben az üzembe helyezés engedélyezése érdekében. A portál használata esetén ezt a szerepkört a rendszer automatikusan biztosítja és visszavonja az üzembe helyezéshez. A REST API használata esetén a szerepkört manuálisan kell biztosítani, de az üzembe helyezés befejeződése a rendszer szintén automatikusan visszavonja. Ha felhasználó által hozzárendelt felügyelt identitást használ, csak a terv-hozzárendelést létrehozó felhasználónak kell **tulajdonosi** engedélyeket létrehoznia.
 
 ## <a name="naming-limits"></a>Elnevezési korlátok
 
@@ -133,7 +132,7 @@ Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 ## <a name="video-overview"></a>Videó – áttekintés
 
-Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A videók letöltéséhez látogasson el az Azure Fridays szolgáltatásra, amely áttekintést nyújt a Channel 9 [Azure-tervezetekről](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) .
+Az Azure-tervezetek az alábbi áttekintést nyújtanak az Azure Fridays-ről. A videók letöltéséhez látogasson el az Azure Fridays szolgáltatásra, amely [áttekintést nyújt a Channel 9 Azure-tervezetekről](https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints) .
 
 > [!VIDEO https://www.youtube.com/embed/cQ9D-d6KkMY]
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257175"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978228"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Az Azure-tervezetekkel kapcsolatos hibák elhárítása
 
@@ -59,11 +58,11 @@ A függvények feldolgozására szolgáló tervrajzi paramétereket a rendszer a
 
 #### <a name="cause"></a>Ok
 
-Egy függvényt (például `[resourceGroup().tags.myTag]`) használó tervrajzi paraméter átadása az összetevőnek a dinamikus függvény helyett a tárgyban beállított függvény feldolgozott eredményét eredményezi.
+Egy függvényt (például `[resourceGroup().tags.myTag]`) használó tervrajzi paraméter átadása egy összetevőnek, amely a dinamikus függvény helyett a tárgyon beállított függvény feldolgozott eredményét eredményezi.
 
 #### <a name="resolution"></a>Megoldás:
 
-Egy függvény paraméterként való átadásához escape a teljes karakterláncot `[` oly módon, hogy a terv paramétere `[[resourceGroup().tags.myTag]`hasonlítson. Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/template-expressions.md).
+Ha paraméterként át szeretne adni egy függvényt, a teljes karakterláncot a `[` értékkel kell elmenekülnie, hogy a terv paraméter a következőhöz hasonlóan néz ki: `[[resourceGroup().tags.myTag]`. Az escape-karakter olyan tervrajzokat okoz, amelyek az értéket karakterláncként kezelik a terv feldolgozásakor. A tervrajzok ezután elhelyezik a függvényt az adott összetevőn, ami lehetővé teszi, hogy a várt módon dinamikus legyen. További információ: [szintaxis és kifejezések Azure Resource Manager sablonokban](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>További lépések
 

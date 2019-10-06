@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161978"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978110"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -94,7 +93,7 @@ A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definíci
 |A jelenlegi értéknek nagyobbnak vagy egyenlőnek kell lennie a célként megadott értékkel. |greaterOrEquals vagy **nem** kevesebb |
 |A jelenlegi értéknek nagyobbnak kell lennie a célként megadott értéknél. |nagyobb vagy **nem** lessOrEquals |
 |A jelenlegi érték nem lehet kisebb a célként megadott értéknél. |lessOrEquals vagy **nem** nagyobb |
-|A jelenlegi értéknek léteznie kell. |Létezik |
+|A jelenlegi értéknek léteznie kell. |létezik |
 |A jelenlegi értéknek a célként megadott értéknek kell lennie. |vagy **nem** notIn |
 |A jelenlegi értéknek a célként megadott értéknek kell lennie. |hasonló vagy **nem** notLike |
 |A jelenlegi értéknek a kis-és nagybetűk megkülönböztetésével egyezőnek kell lennie. |egyezés vagy **nem** notMatch |
@@ -192,7 +191,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Változási előzmények (előzetes verzió)
+## <a name="a-namechange-historychange-history-preview"></a>@no__t – 0Change előzmények (előzetes verzió)
 
 Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
@@ -219,7 +218,7 @@ Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/o
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](getting-compliance-data.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](remediate-resources.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

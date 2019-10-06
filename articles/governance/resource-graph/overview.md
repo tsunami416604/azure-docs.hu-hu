@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001652"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976818"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -26,8 +25,8 @@ Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrá
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
+> Az Azure Resource Graph a Azure Portal keresési sávjára, az új "minden erőforrás" felületre, valamint a Azure Policy [változási előzményeire](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _Visual diff_-re mutat. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -35,7 +34,7 @@ Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 Azure Resource Manager jelenleg a lekérdezéseket támogatja az alapszintű erőforrások mezőin, különösen az erőforrás neve, az azonosító, a típus, az erőforráscsoport, az előfizetés és a hely alapján. A Resource Manager emellett olyan létesítményeket is biztosít, amelyekkel az egyes erőforrás-szolgáltatók meghívhatók a részletes tulajdonságok egy erőforrással egyidejűleg.
 
-Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [teljes módú központi telepítések](../../azure-resource-manager/complete-mode-deletion.md) táblázatának erőforrásait ismertető részében tekintheti meg. A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
+Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [teljes módú központi telepítések táblázatának erőforrásait](../../azure-resource-manager/complete-mode-deletion.md) **ismertető részében** tekintheti meg. A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
 
 Az Azure Resource Graph segítségével a következőket teheti:
 
@@ -63,7 +62,7 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 > [!NOTE]
 > Az erőforrás-diagram a rendszerbiztonsági tag számára elérhető előfizetéseket használja a bejelentkezés során. Egy aktív munkamenet során hozzáadott új előfizetés erőforrásainak megtekintéséhez a rendszerbiztonsági tag frissítenie kell a környezetet. Ez a művelet automatikusan megtörténik a kijelentkezéskor és vissza.
 
-Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– listázza](/rest/api/resources/resourcegroups/list) \- azokat az erőforráscsoportokat, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
+Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– lista](/rest/api/resources/resourcegroups/list) \- – az Ön által elérhetővé tett erőforráscsoportok beolvasása anélkül, hogy az eredmény részleges lenne.
 Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
 ## <a name="throttling"></a>Szabályozás
@@ -73,8 +72,8 @@ Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a vissz
 
 Az erőforrás-gráf a lekérdezéseket a felhasználói szinten szabályozza. A szolgáltatás válasza a következő HTTP-fejléceket tartalmazza:
 
-- `x-ms-user-quota-remaining`(int): A felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
-- `x-ms-user-quota-resets-after`(óó: PP: mm): Az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
+- @no__t – 0 (int): A felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- @no__t – 0 (óó: PP: SS): Az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
 
 További információ: [útmutatás a szabályozott kérelmekhez](./concepts/guidance-for-throttled-requests.md).
 

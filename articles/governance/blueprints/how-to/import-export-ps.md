@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/03/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f7bc3610841bcc3c40435f077073ffa0d55acd93
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 30e734c99a87364acfba9a58d83fe9a377958607
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243177"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978438"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Terv-definíciók importálása és exportálása a PowerShell-lel
 
@@ -25,7 +24,7 @@ Az Azure-tervezetek teljes mértékben kezelhetők Azure Portalon keresztül. Ah
   - Tervrajz-definíciók automatizált tesztelése tesztkörnyezetben
   - Folyamatos integráció és folyamatos üzembe helyezés (CI/CD) folyamatok támogatása
 
-Az Ön igényeinek megfelelően a tervrajz-definíciók kódként való kezelésének előnyei is vannak. Ez a cikk bemutatja, hogyan használhatja `Import-AzBlueprintWithArtifact` a `Export-AzBlueprintWithArtifact` és a parancsokat az az [. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modulban.
+Az Ön igényeinek megfelelően a tervrajz-definíciók kódként való kezelésének előnyei is vannak. Ez a cikk bemutatja, hogyan használható az `Import-AzBlueprintWithArtifact` és a `Export-AzBlueprintWithArtifact` parancs az az [. Blueprint](https://powershellgallery.com/packages/Az.Blueprint/) modulban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +43,7 @@ A tervrajzok exportálásának és importálásának megkezdése előtt nézzük
 > [!IMPORTANT]
 > Ha nem ad át értéket a `Import-AzBlueprintWithArtifact` parancsmag **Name** paraméterének, a rendszer a terv definícióját tároló mappa nevét használja.
 
-A terv definíciójának, amelynek a neve `blueprint.json`, a terv definíciója. Minden összetevőnek szerepelnie kell a nevű `artifacts`almappában.
+A terv definíciója mellett `blueprint.json` nevűnek kell lennie, a terv definícióját tartalmazó összetevők. Minden összetevőnek a `artifacts` nevű almappába kell esnie.
 Együttesen a terv definíciójának struktúráját a mappákban található JSON-fájloknak a következőképpen kell kinéznie:
 
 ```text
@@ -64,16 +63,16 @@ Együttesen a terv definíciójának struktúráját a mappákban található JS
 
 A terv definíciójának exportálásának lépései egyszerűek. A terv definíciójának exportálása hasznos lehet a forrás-vezérlőelemek megosztására, biztonsági mentésére vagy behelyezésére.
 
-- **Terv** szükséges
+- **Terv** [kötelező]
   - Meghatározza a terv definícióját
-  - A `Get-AzBlueprint` hivatkozási objektum beolvasásához használja
-- **OutputPath** szükséges
+  - A Reference objektum lekérése `Get-AzBlueprint` használatával
+- **OutputPath** [kötelező]
   - Megadja azt az elérési utat, amellyel a terv-definíció JSON-fájljait menteni kell
   - A kimeneti fájlok egy olyan almappában találhatók, amely a terv definíciójának nevét adja meg
-- **Verziója** választható
+- **Verzió** (nem kötelező)
   - Megadja a kimeneti verziót, ha a **terv** hivatkozási objektuma több verzióra mutató hivatkozásokat tartalmaz.
 
-1. Tekintse át az előfizetésből az alábbiak szerint `{subId}`exportált terv definícióját:
+1. Tekintse át az előfizetésből az `{subId}` értékkel jelölt terv definícióját:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -82,7 +81,7 @@ A terv definíciójának exportálásának lépései egyszerűek. A terv definí
    $bpDefinition = Get-AzBlueprint -SubscriptionId '{subId}' -Name 'MyBlueprint' -Version '1.1'
    ```
 
-1. `Export-AzBlueprintWithArtifact` A parancsmag használatával exportálja a megadott terv definícióját:
+1. A `Export-AzBlueprintWithArtifact` parancsmag használatával exportálja a megadott terv definícióját:
 
    ```azurepowershell-interactive
    Export-AzBlueprintWithArtifact -Blueprint $bpDefinition -OutputPath 'C:\Blueprints'
@@ -94,19 +93,19 @@ Ha az [exportált terv definíciója](#export-your-blueprint-definition) vagy ma
 
 A beépített tervrajzok leírását a [Azure Blueprint GitHub](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)-tárházban találhatja meg.
 
-- **Név** szükséges
+- **Név** [kötelező]
   - Megadja az új terv definíciójának nevét
-- **InputPath** szükséges
+- **InputPath** [kötelező]
   - Meghatározza a terv definíciójának létrehozási útvonalát a következőből:
   - Meg kell egyeznie a [szükséges mappastruktúrát](#folder-structure-of-a-blueprint-definition)
-- **ManagementGroupId** választható
+- **ManagementGroupId** (nem kötelező)
   - A felügyeleti csoport azonosítója, amelybe menteni szeretné a terv definícióját, hogy ha nem az aktuális környezeti hiba
   - Meg kell adni a **ManagementGroupId** vagy a **SubscriptionId** értéket.
-- **SubscriptionId** választható
+- **SubscriptionId** (nem kötelező)
   - Az előfizetés-azonosító a terv definíciójának mentéséhez, ha nem az aktuális környezet alapértelmezett értéke
   - Meg kell adni a **ManagementGroupId** vagy a **SubscriptionId** értéket.
 
-1. `Import-AzBlueprintWithArtifact` A parancsmag segítségével importálja a megadott terv definícióját:
+1. A `Import-AzBlueprintWithArtifact` parancsmag használatával importálja a megadott terv definícióját:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell

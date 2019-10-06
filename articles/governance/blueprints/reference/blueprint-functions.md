@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232850"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978403"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Az Azure-tervezetekhez használható függvények
 
@@ -109,7 +108,7 @@ Néhány példa az adatok a _myTemplateArtifact_ mintából való beolvasására
 
 | Kifejezés | Type | Value |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["első", "Second"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \[ "első", "Second" \] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Sztring | első |
 |`[artifacts("myTemplateArtifact").outputs.myString]` | Sztring | "saját karakterlánc értéke" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "saját érték", "anotherProperty": true} |
@@ -185,7 +184,7 @@ Adja meg a _principalIds_ paramétert a terv definíciójában:
 }
 ```
 
-Ezután használja a _principalIds_ argumentumként `parameters()` egy tervrajz-összetevőben:
+Ezután használja a _principalIds_ paramétert `parameters()` argumentumként egy tervrajz-összetevőben:
 
 ```json
 {
@@ -221,7 +220,7 @@ A visszaadott objektum a következő formátumban kell megadni:
 
 A Azure Blueprint függvény eltér a Azure Resource Manager sablon függvénytől. A `resourceGroup()` függvény nem használható előfizetési szintű összetevőben vagy a terv definíciójában. Csak olyan tervrajz-összetevőkben használható, amelyek egy erőforráscsoport-összetevő részét képezik.
 
-A `resourceGroup()` függvény gyakori funkciója, hogy az erőforrásokat az erőforráscsoport-összetevővel megegyező helyen hozza létre.
+A `resourceGroup()` függvény gyakori használata, ha az erőforrásokat az erőforráscsoport-összetevővel megegyező helyen hozza létre.
 
 ### <a name="example"></a>Példa
 
@@ -266,7 +265,7 @@ Ezután használja a `resourceGroup()` függvényt egy olyan tervrajz-összetev�
 
 `resourceGroups(placeholderName)`
 
-Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt jelképezi. A `resourceGroup()`(z) rendszertől eltérően, amely az összetevő környezetét igényli, ez a függvény egy adott erőforráscsoport-helyőrző tulajdonságainak beolvasására szolgál, ha az adott erőforráscsoport kontextusában nem.
+Egy olyan objektumot ad vissza, amely a megadott erőforráscsoport-összetevőt jelképezi. A `resourceGroup()` értéktől eltérően, amely az összetevő környezetét igényli, ez a függvény egy adott erőforráscsoport-helyőrző tulajdonságainak beolvasására szolgál, ha az adott erőforráscsoport kontextusában nem.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -303,7 +302,7 @@ Ha az erőforráscsoport helyét szeretné használni a terv definíciójában v
 }
 ```
 
-Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetevő környezetében, hogy beolvassa az erőforráscsoport helyőrző objektumra mutató hivatkozást. Ebben a példában a sablon összetevőt a _NetworkingPlaceholder_ -erőforráscsoport kívül helyezi üzembe, és a _artifactLocation_ dinamikusan kitöltött paramétert biztosít a _NetworkingPlaceholder_ erőforráscsoport helyéről sablon. A _NetworkingPlaceholder_ erőforráscsoport helye statikusan definiálva lett a terv definíciójában, vagy dinamikusan definiálva lett a hozzárendelés során. Mindkét esetben a sablon összetevő az információ paraméterként van megadva, és a használatával telepíti az erőforrásokat a megfelelő helyre.
+Ezután használja a `resourceGroups()` függvényt bármely tervrajzi összetevő környezetében, hogy az erőforráscsoport-helyőrzőre mutató hivatkozást kapjon. Ebben a példában a sablon összetevőt a _NetworkingPlaceholder_ -erőforráscsoport kívül helyezi üzembe, és a _artifactLocation_ dinamikusan kitöltött paramétert biztosít a _NetworkingPlaceholder_ erőforráscsoport helyéről sablon. A _NetworkingPlaceholder_ erőforráscsoport helye statikusan definiálva lett a terv definíciójában, vagy dinamikusan definiálva lett a hozzárendelés során. Mindkét esetben a sablon összetevő az információ paraméterként van megadva, és a használatával telepíti az erőforrásokat a megfelelő helyre.
 
 ```json
 {
@@ -368,7 +367,7 @@ Használja az előfizetés megjelenített nevét és a `concat()` függvényt a 
 
 ## <a name="next-steps"></a>További lépések
 
-- A [terv életciklusának](../concepts/lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

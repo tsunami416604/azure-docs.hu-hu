@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: da4e9626b2bf5b180cddba012af81059dd8b67fe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6d2395dcfae5d512412048a683a7f1397967499e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883282"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978650"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Adatok lekérdezése a Azure Time Series Insights előnézet környezetből a következő használatával:C#
 
@@ -25,13 +25,13 @@ Ez C# a példa azt mutatja be, hogyan lehet lekérdezni az adatok a Azure Time S
 
 A minta számos alapszintű példát is tartalmat a Query API használatára:
 
-1. Előkészítési lépésként szerezze be a hozzáférési jogkivonatot a Azure Active Directory API-n keresztül. Adja át ezt a tokent minden lekérdezési API- `Authorization` kérelem fejlécében. Nem interaktív alkalmazások beállításával kapcsolatban lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md). Győződjön meg arról is, hogy a minta elején definiált összes állandó megfelelően van beállítva.
+1. Előkészítési lépésként szerezze be a hozzáférési jogkivonatot a Azure Active Directory API-n keresztül. Adja át ezt a tokent minden lekérdezési API-kérelem `Authorization` fejlécében. Nem interaktív alkalmazások beállításával kapcsolatban lásd: [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md). Győződjön meg arról is, hogy a minta elején definiált összes állandó megfelelően van beállítva.
 1. Azon környezetek listája, amelyekhez a felhasználónak hozzáférése van. Az egyik környezet a fontos környezet, a további adatlekérdezések pedig erre a környezetre vannak lekérdezve.
 1. A HTTPS-kérés példájaként a rendszer lekéri az érintett környezet rendelkezésreállási adatait.
 1. A websocket-kérés példájaként a rendszer lekéri az érintett környezet összesített eseményadatait. Az adatokat a rendszer a teljes rendelkezésre állási időtartamra lekéri.
 
 > [!NOTE]
-> Ez a mintakód a következő címen is [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample)elérhető:.
+> Ez a mintakód a következő címen is elérhető: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
 
 ## <a name="c-example"></a>C#például
 
@@ -42,6 +42,6 @@ A minta számos alapszintű példát is tartalmat a Query API használatára:
 
 ## <a name="next-steps"></a>További lépések
 
-- A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)-referenciát.
+- A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/preview-query).
 
-- Olvassa el, hogyan [csatlakozhat egy JavaScript egyoldalas alkalmazást](tutorial-create-tsi-sample-spa.md) Time Series Insightshoz.
+- Olvassa el, hogyan [csatlakozhat egy JavaScript-alkalmazást az ügyfél-SDK](https://github.com/microsoft/tsiclient) -val Time Series Insights.

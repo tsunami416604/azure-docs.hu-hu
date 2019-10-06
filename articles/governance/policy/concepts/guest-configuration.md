@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338384"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978058"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
@@ -70,7 +69,7 @@ Az alábbi táblázat az egyes támogatott operációs rendszeren használja a h
 
 ### <a name="validation-frequency"></a>Ellenőrzés gyakorisága
 
-A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [](../how-to/get-compliance-data.md#evaluation-triggers) kiértékelésének bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ez a frissítés Azure Policyt okoz a Azure Resource Manager tulajdonságainak kiértékeléséhez. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
+A vendég konfigurációs ügyfél 5 percenként keres új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 percenként ellenőrzi a beállításokat. A rendszer a naplózás befejeződése után azonnal elküldi az eredményeket a vendég konfiguráció erőforrás-szolgáltatójának. A szabályzatok [kiértékelésének](../how-to/get-compliance-data.md#evaluation-triggers) bekövetkeztekor a számítógép állapota a vendég konfiguráció erőforrás-szolgáltatóba íródik. Ez a frissítés Azure Policyt okoz a Azure Resource Manager tulajdonságainak kiértékeléséhez. Az igény szerinti Azure Policy kiértékelése a vendég konfiguráció erőforrás-szolgáltató legújabb értékét kérdezi le. Azonban nem aktiválja a számítógép konfigurációjának új naplózását.
 
 ## <a name="supported-client-types"></a>Támogatott ügyfél típusú
 
@@ -122,7 +121,7 @@ Az Azure Policy használja a Vendég-konfigurációs erőforrás-szolgáltatók 
 > [!NOTE]
 > Az **DeployIfNotExists** szabályzat szükséges ahhoz, hogy a **AuditIfNotExists** -házirend eredményét visszaállítsa. A **DeployIfNotExists**nélkül a **AuditIfNotExists** házirend "0/0" erőforrást jelenít meg állapotként.
 
-Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A  *[előzetes verzió] nevű beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows* rendszerű gépeken 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
+Beépített Vendég konfigurációs szabályzatainak csoportra vonatkozó definíciókat használja a hozzárendelések kezdeményezések szerepelnek. A * [előzetes verzió] nevű beépített kezdeményezés: A jelszó biztonsági beállításainak naplózása Linux és Windows rendszerű gépeken @ no__t-0 18 szabályzatot tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** Windows és Linux-három pár párokat. A [szabályzat-definíció](definition-structure.md#policy-rule) logikája ellenőrzi, hogy csak a cél operációs rendszer van-e kiértékelve.
 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
@@ -141,11 +140,11 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-Ahol `<version>` az aktuális verziószámra hivatkozik.
+Ahol a `<version>` a jelenlegi verziószámra hivatkozik.
 
 ### <a name="collecting-logs-remotely"></a>Naplók távoli gyűjtése
 
-A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként a `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.
+A vendég konfigurációs konfigurációk vagy modulok hibaelhárításának első lépéseként az `Test-GuestConfigurationPackage` parancsmagot kell használnia, amely a [vendég konfigurációs csomag tesztelésének](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)lépéseit követi.
 Ha ez nem sikerül, az ügyfél naplói összegyűjtése segíthet a problémák diagnosztizálásában.
 
 #### <a name="windows"></a>Windows
@@ -182,7 +181,7 @@ A házirend vendég konfigurációjának mintái a következő helyszíneken ér
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](../how-to/programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](../how-to/getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](../how-to/getting-compliance-data.md).
 - Ismerje meg, hogyan javíthatja a [nem megfelelő erőforrásokat](../how-to/remediate-resources.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

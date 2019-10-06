@@ -1,51 +1,50 @@
 ---
-title: Útmutató a szabályozott kérelmeinek száma
-description: Ismerje meg, hatékonyabb lekérdezések elkerülése érdekében kérelmek szabályozva az Azure erőforrás-diagramhoz.
+title: Útmutatás szabályozott kérésekhez
+description: Megtudhatja, hogyan hozhat létre jobb lekérdezéseket az Azure Resource Graph-ba irányuló kérések szabályozásának elkerülése érdekében.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/19/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276898"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980304"
 ---
-# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmeinek száma az Azure Erőforrás-grafikon
+# <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
-Programozott és gyakori használatát az Azure-erőforrás gráfadatok létrehozásakor figyelembe kell hozni hogyan szabályozási hatással van a lekérdezések eredményeit. Az adatok megjelenítésének, a rendszer lekéri segítséget, valamint a szervezet elkerülése érdekében a szabályozás alatt áll, és az Azure-erőforrások időben adatok fenntartása érdekében.
+Ha programozott és gyakori Azure Resource Graph-alapú adathasználatot hoz létre, érdemes figyelembe venni, hogy a szabályozás milyen hatással van a lekérdezések eredményeire. Az adatkérések módosításának megváltoztatásával a szervezet elkerülheti a szabályozást, és megtarthatja az Azure-erőforrásokkal kapcsolatos időben továbbított adatmennyiséget.
 
-Ez a cikk ismerteti a négy területek és a lekérdezések az Azure Erőforrás-grafikon létrehozása kapcsolatos minták:
+Ez a cikk az Azure Resource Graph lekérdezések létrehozásával kapcsolatos négy területet és mintázatot ismerteti:
 
-- Sávszélesség-szabályozási fejlécek ismertetése
-- Lekérdezések kötegelés
-- Elképesztő lekérdezések
-- Tördelés hatása
+- A szabályozási fejlécek ismertetése
+- Kötegelt lekérdezések
+- Lekérdezések lépcsőzetes elosztása
+- A tördelés hatása
 
-## <a name="understand-throttling-headers"></a>Sávszélesség-szabályozási fejlécek ismertetése
+## <a name="understand-throttling-headers"></a>A szabályozási fejlécek ismertetése
 
-Az Azure Erőforrás-grafikon kvóta száma minden felhasználó egy olyan időkeretet alapján foglalja le. Például egy felhasználó is küldhetnek legfeljebb 15 lekérdezést minden 5 másodperces időtartamon belül nem szabályozás alatt áll. A kvótaérték számos tényező határozza meg, és változhatnak.
+Az Azure Resource Graph az egyes felhasználók számára időintervallum alapján foglal le kvóta-számot. A felhasználók például legfeljebb 15 lekérdezést küldhetnek minden 5 másodperces ablakban a szabályozás nélkül. A kvóta értékét számos tényező határozza meg, és a változás változhat.
 
-Minden lekérdezés válaszban az Azure-erőforrás Graph két szabályozási fejléceket ad hozzá:
+Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejlécet hoz létre:
 
-- `x-ms-user-quota-remaining` (int): A felhasználó többi erőforrás kvótáját. Ez az érték lekérdezés száma képezi le.
-- `x-ms-user-quota-resets-after` (ÓÓ:) Az időtartam, amíg a felhasználó kvóta fogyasztás alaphelyzetbe áll.
+- @no__t – 0 (int): A felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- @no__t – 0 (óó: PP: SS): Az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
 
-Megmutatják, hogyan működnek a fejlécek, nézzük meg, amelynek a fejlécet és értékeit lekérdezési válasz `x-ms-user-quota-remaining: 10` és `x-ms-user-quota-resets-after: 00:00:03`.
+A fejlécek működésének szemléltetéséhez nézzük meg a lekérdezési választ, amely a `x-ms-user-quota-remaining: 10` és a `x-ms-user-quota-resets-after: 00:00:03` fejlécét és értékeit tartalmazta.
 
-- A következő 3 másodpercen belül legfeljebb 10 lekérdezések szabályozva nélkül lehet benyújtani.
-- 3 másodperc, értékeit `x-ms-user-quota-remaining` és `x-ms-user-quota-resets-after` visszaáll `15` és `00:00:05` jelölik.
+- A következő 3 másodpercen belül legfeljebb 10 lekérdezés lehet elküldve a szabályozás nélkül.
+- 3 másodpercen belül a `x-ms-user-quota-remaining` és a `x-ms-user-quota-resets-after` értékek a `15` és a `00:00:05` értékre lesznek visszaállítva.
 
-A fejlécek történő használatának példájáért tekintse meg a _leállítási_ a lekérdezésekre vonatkozó kérelmek, tekintse meg a mintát, a [párhuzamos lekérdezés](#query-in-parallel).
+Ha szeretné megtekinteni, hogyan használhatja a fejléceket a lekérdezési kérelmek _leállítási_ , tekintse meg [párhuzamosan a lekérdezésben](#query-in-parallel)szereplő mintát.
 
-## <a name="batching-queries"></a>Lekérdezések kötegelés
+## <a name="batching-queries"></a>Kötegelt lekérdezések
 
-Az előfizetés, erőforráscsoport vagy egyéni erőforrás lekérdezések kötegelés hatékonyabb, mint a párhuzamosan futtatni a lekérdezést. A nagyobb lekérdezés kvóta költsége gyakran kisebb, mint a sok kis méretű, célzott lekérdezések kvóta költségét. Ajánlott a Köteg mérete lehet kisebb, mint _300_.
+Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lekérdezései hatékonyabbak, mint a tetszés-lekérdezések. A nagyobb lekérdezések kvóta-díja általában kisebb, mint a több kis-és a célként megadott lekérdezések kvótájának díja. A köteg mérete ajánlott _300_-nál kisebb.
 
-- Egy rosszul optimalizált megközelítésre példa
+- Példa a rosszul optimalizált megközelítésre
 
   ```csharp
   // NOT RECOMMENDED
@@ -66,7 +65,7 @@ Az előfizetés, erőforráscsoport vagy egyéni erőforrás lekérdezések köt
   }
   ```
 
-- Optimalizált kötegelés megközelítés #1. példa
+- Példa egy optimalizált batch-módszer #1
 
   ```csharp
   // RECOMMENDED
@@ -89,7 +88,7 @@ Az előfizetés, erőforráscsoport vagy egyéni erőforrás lekérdezések köt
   }
   ```
 
-- Optimalizált kötegelés megközelítés #2. példa
+- Példa egy optimalizált batch-módszer #2
 
   ```csharp
   // RECOMMENDED
@@ -113,23 +112,23 @@ Az előfizetés, erőforráscsoport vagy egyéni erőforrás lekérdezések köt
   }
   ```
 
-## <a name="staggering-queries"></a>Elképesztő lekérdezések
+## <a name="staggering-queries"></a>Lekérdezések lépcsőzetes elosztása
 
-Módja miatt szabályozás van érvényben, javasoljuk, hogy a lekérdezések során. Vagyis helyett 60 lekérdezéseket küld egyszerre, szinkronizálások eltolása lekérdezések négy 5 másodperces Windows:
+A szabályozás érvénybe léptetése miatt a lekérdezéseket érdemes lépcsőzetesen megfogalmazni. Vagyis a 60-lekérdezések egyidejű küldése helyett a lekérdezéseket négy, 5 másodperces Windows rendszerre kell osztani:
 
-- A nem egyenletesen elosztani lekérdezés ütemezése
+- Nem lépcsőzetes lekérdezés ütemezése
 
-  | Lekérdezés száma         | 60  | 0    | 0     | 0     |
+  | Lekérdezések száma         | 60  | 0    | 0     | 0     |
   |---------------------|-----|------|-------|-------|
-  | Időköz (másodperc) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Időtartam (mp) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-- Egyenletesen elosztani a lekérdezés ütemezése
+- Lépcsőzetes lekérdezés ütemezése
 
-  | Lekérdezés száma         | 15  | 15   | 15    | 15    |
+  | Lekérdezések száma         | 15  | 15   | 15    | 15    |
   |---------------------|-----|------|-------|-------|
-  | Időköz (másodperc) | 0-5 | 5-10 | 10-15 | 15-20 |
+  | Időtartam (mp) | 0-5 | 5-10 | 10-15 | 15-20 |
 
-Az alábbi, az Azure Erőforrás-grafikon lekérdezésekor tiszteletben tartja a sávszélesség-szabályozási fejlécek példát:
+Az alábbi példa a szabályozási fejlécek betartását mutatja be az Azure Resource Graph lekérdezése során:
 
 ```csharp
 while (/* Need to query more? */)
@@ -151,9 +150,9 @@ while (/* Need to query more? */)
 }
 ```
 
-### <a name="query-in-parallel"></a>Párhuzamos lekérdezés
+### <a name="query-in-parallel"></a>Lekérdezés párhuzamosan
 
-Annak ellenére, hogy a kötegelés keresztül ezerszer használata javasolt, vannak olyan helyzetek, ahol lekérdezéseket nem lehet könnyen kötegelni. Ezekben az esetekben érdemes az Azure-erőforrás gráf lekérdezése több lekérdezés párhuzamos módon küldésével. Alul látható egy példa bemutatja, hogyan _leállítási_ szabályozás ilyen forgatókönyvek például a fejlécek alapján:
+Annak ellenére, hogy a kötegelt feldolgozás ajánlott a párhuzamos felett, vannak olyan időpontok, amikor a lekérdezések nem könnyen kötegeltek. Ezekben az esetekben érdemes lehet lekérdezni az Azure Resource Graphot több lekérdezés párhuzamos módon történő elküldésével. Az alábbi példa bemutatja, hogyan _leállítási_ az ilyen helyzetekben a fejlécek szabályozása:
 
 ```csharp
 IEnumerable<IEnumerable<string>> queryBatches = /* Batches of queries  */
@@ -187,11 +186,11 @@ async Task ExecuteQueries(IEnumerable<string> queries)
 
 ## <a name="pagination"></a>Tördelés
 
-Mivel az Azure-erőforrás Graph legfeljebb 1000 bejegyzés egyetlen lekérdezés választ ad vissza, szükség lehet [böngész](./work-with-data.md#paging-results) a lekérdezéseket a keresett teljes adatkészleten. Azonban egyes Azure-erőforrás Graph-ügyfelek kezeléséhez tördelés eltérően, mint mások.
+Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 bejegyzést ad vissza, lehetséges, hogy a lekérdezéseket [oldalszámozással](./work-with-data.md#paging-results) kell megadnia, hogy megkapja a teljes adatkészletet. Egyes Azure Resource Graph-ügyfelek azonban eltérő módon kezelik a tördelést.
 
 - C# SDK
 
-  ResourceGraph SDK használatakor adja át az előző lekérdezésekre adott válaszok a következő többoldalas lekérdezésre a visszaadott kihagyandó lexikális tördelés kezelni kell. Ez a kialakítás azt jelenti, hogy kell gyűjteni az eredmények összes többoldalas hívás és összevonni őket a végén. Ebben az esetben minden egyes többoldalas lekérdezést küld egy lekérdezés kvóta hajtja végre:
+  A ResourceGraph SDK használatakor a tördelést úgy kell kezelni, hogy az előző lekérdezés válaszában visszaadott kihagyási tokent átadja a következő többoldalas lekérdezésre. Ez a kialakítás azt jelenti, hogy az összes többoldalas hívás eredményét össze kell gyűjteni, és a végén össze kell kapcsolni őket. Ebben az esetben minden elküldött többoldalas lekérdezés egy lekérdezési kvótát fog kapni:
 
   ```csharp
   var results = new List<object>();
@@ -214,9 +213,9 @@ Mivel az Azure-erőforrás Graph legfeljebb 1000 bejegyzés egyetlen lekérdezé
   }
   ```
 
-- Az Azure CLI- / Azure PowerShell
+- Azure CLI/Azure PowerShell
 
-  Azure CLI-vel vagy az Azure PowerShell használatakor az Azure-erőforrás Graph-lekérdezések vannak automatikusan többoldalas legfeljebb 5000 bejegyzés beolvasni. A lekérdezési eredmények visszaadása minden többoldalas hívások tételek kombinált listája. Ebben az esetben a lekérdezés eredménye a bejegyzések számától függően egyetlen többoldalas lekérdezés felhasználható egynél több lekérdezés kvótát. Például az alábbi példában a lekérdezés egyetlen futtatással felhasználható legfeljebb öt lekérdezés kvóta:
+  Az Azure CLI vagy a Azure PowerShell használatakor a rendszer automatikusan lekérdezi az Azure Resource Graph lekérdezéseit, hogy a legtöbb 5000 bejegyzést beolvassa. A lekérdezés eredménye a bejegyzések összesített listáját jeleníti meg az összes többoldalas hívásból. Ebben az esetben a lekérdezési eredmény bejegyzéseinek számától függően egy többoldalas lekérdezés egynél több lekérdezési kvótát is használhat. Az alábbi példában például a lekérdezés egyetlen futtatása akár öt lekérdezési kvótát is felhasználhat:
 
   ```azurecli-interactive
   az graph query -q 'project id, name, type' -top 5000
@@ -226,19 +225,19 @@ Mivel az Azure-erőforrás Graph legfeljebb 1000 bejegyzés egyetlen lekérdezé
   Search-AzGraph -Query 'project id, name, type' -Top 5000
   ```
 
-## <a name="still-get-throttled"></a>Továbbra is leszabályozza?
+## <a name="still-get-throttled"></a>Továbbra is szabályozható?
 
-Ha, még a fenti javaslatok gyakorlása után első szabályozva, lépjen kapcsolatba a csapatának [ resourcegraphsupport@microsoft.com ](mailto:resourcegraphsupport@microsoft.com).
+Ha a fenti javaslatok gyakorlása után is szabályozza a szabályozást, lépjen kapcsolatba a csapatával [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)címen.
 
-Adja meg az alábbi adatokat:
+Adja meg a következő adatokat:
 
-- Az adott használati esetekre és üzleti illesztőprogram szabályozási nagyobb Korlátértékre van szüksége.
-- Hány erőforrások rendelkezik hozzáféréssel? A rendszer hány egy lekérdezés által visszaadott egyetlen?
-- Milyen típusú erőforrások szeretne?
-- Mi az a lekérdezés minta? Lekérdezések Y másodpercenként stb.
+- A speciális használati eset és az üzleti illesztőprogram magasabb szabályozási korlátot igényel.
+- Hány erőforráshoz férhet hozzá? Hányat ad vissza egyetlen lekérdezésből?
+- Milyen típusú erőforrások érdeklik?
+- Mi a lekérdezési minta? X lekérdezés/Y másodperc stb.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezéseket](../samples/starter.md).
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md).
-- Ismerje meg, hogyan [források](explore-resources.md).
+- Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
+- Ismerje meg az [erőforrások feltárását](explore-resources.md).

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338195"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978560"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Gyors útmutató: Terv meghatározása és hozzárendelése a portálon
 
@@ -32,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A megfelelőségi szabványminták definiálásának első lépése, hogy összeállítunk egy tervet az elérhető erőforrásokból. Ebben a példában hozzon létre egy **MyBlueprint** nevű új tervet az előfizetés szerepkör-és szabályzat-hozzárendeléseinek konfigurálásához. Ezután vegyen fel egy új erőforráscsoportot, és hozzon létre egy Resource Manager-sablont és egy szerepkör-hozzárendelést az új erőforráscsoporthoz.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** elemet, majd a lap tetején kattintson a **+ terv létrehozása** gombra.
 

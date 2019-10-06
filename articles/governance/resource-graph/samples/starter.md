@@ -1,18 +1,17 @@
 ---
-title: Kezdő lekérdezési minták
+title: Kezdő lekérdezési példák
 description: Az Azure Resource Graph használatával néhány kezdő lekérdezést futtathat, beleértve az erőforrások számlálását, az erőforrások megrendelését vagy egy adott címkét.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 14bac2299505214b8b087946222c5560a9d90efd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241095"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976861"
 ---
 # <a name="starter-resource-graph-queries"></a>Alapszintű Resource Graph-lekérdezések
 
@@ -40,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Resource Graph-ot az Azure CLI (bővítményen keresztül) és az Azure PowerShell (modulon keresztül) támogatja. Mielőtt a következő lekérdezések bármelyikét végrehajtaná, ellenőrizze, hogy a környezet készen áll-e. A kiválasztott parancshéj környezet telepítéséhez és ellenőrzéséhez lásd: [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) és [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module).
 
-## <a name="a-namecount-resourcescount-azure-resources"></a><a name="count-resources"/>Azure-erőforrások számlálása
+## <a name="a-namecount-resourcescount-azure-resources"></a>@no__t – Azure-erőforrások 0Count
 
 Ez a lekérdezés az Ön által elérhető előfizetésekben lévő Azure-erőforrások számát adja vissza. Ez a lekérdezés emellett annak ellenőrzésére is jól használható, hogy a kiválasztott parancshéj rendelkezik-e a megfelelő, telepített és működőképes Azure Resource Graph-összetevőkkel.
 
@@ -56,7 +55,7 @@ az graph query -q "summarize count()"
 Search-AzGraph -Query "summarize count()"
 ```
 
-## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a><a name="list-resources"/>Erőforrások listázása név szerint rendezve
+## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a>@no__t 0List-erőforrások név szerint rendezve
 
 Ez a lekérdezés bármilyen típusú erőforrást vissza tud adni, de csak a **név**, **típus** és **hely** tulajdonságokkal. Az `order by` paranccsal rendezi a tulajdonságokat a **név** tulajdonság alapján növekvő (`asc`) sorrendben.
 
@@ -73,7 +72,7 @@ az graph query -q "project name, type, location | order by name asc"
 Search-AzGraph -Query "project name, type, location | order by name asc"
 ```
 
-## <a name="a-nameshow-vmsshow-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms"/>A név szerint rendezett összes virtuális gép megjelenítése csökkenő sorrendben
+## <a name="a-nameshow-vmsshow-all-virtual-machines-ordered-by-name-in-descending-order"></a>@no__t – az összes virtuális gép 0Show sorrendben rendezve
 
 Ha csak a (`Microsoft.Compute/virtualMachines` típusú) virtuális gépeket kívánja listázni, megfeleltetheti a **típus** tulajdonságot az eredmények között. Az előző lekérdezéshez hasonlóan a `desc` paraméter az `order by` paramétert csökkenő sorrendre módosítja. A típusegyezésben megadott `=~` esetén a Resource Graph megkülönbözteti a kis- és a nagybetűt.
 
@@ -91,7 +90,7 @@ az graph query -q "project name, location, type| where type =~ 'Microsoft.Comput
 Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
-## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Első öt virtuális gép megjelenítése név és operációsrendszer-típus szerint
+## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a>@no__t – 0Show első öt virtuális gép neve és az operációs rendszer típusa szerint
 
 Ez a lekérdezés a `top` paramétert használja ahhoz, hogy a feltételeknek megfelelőkből csak öt rekordot kérjen le, amelyek név szerint vannak rendezve. Az Azure-erőforrás típusa `Microsoft.Compute/virtualMachines`. A `project` adja meg az Azure Resource Graph-nak, hogy a lekérdezés mely tulajdonságokat tartalmazza.
 
@@ -109,7 +108,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
-## <a name="a-namecount-oscount-virtual-machines-by-os-type"></a><a name="count-os"/>Virtuális gépek darabszáma operációs rendszer típusa szerint
+## <a name="a-namecount-oscount-virtual-machines-by-os-type"></a><a name="count-os"/>Count virtuális gépek operációsrendszer-típus szerint
 
 Az előző lekérdezésre épülve a listánk továbbra is a `Microsoft.Compute/virtualMachines` típusú Azure-erőforrásokra korlátozódik, viszont a visszaadott rekordok száma szerint már nincs szűrve.
 Ehelyett a `summarize` és a `count()` paramétert használtuk annak meghatározásához, hogyan csoportosítsa és összesítse az értékeket tulajdonság alapján, amely ebben a példában a `properties.storageProfile.osDisk.osType`. Az alábbi helyen talál példát arra, hogy hogyan néz ki ez a sztring a teljes objektumban: [erőforrások felfedezése – virtuális gépek felderítése](../concepts/explore-resources.md#virtual-machine-discovery).
@@ -146,7 +145,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | exten
 > [!NOTE]
 > Vegye figyelembe, hogy míg az `=~` paraméter lehetővé teszi a kis- és nagybetűk megkülönböztetése nélküli lekérdezést, ha tulajdonságokat (például **properties.storageProfile.osDisk.osType**) használ a lekérdezésben, a kis- és nagybetűt helyesen kell megadni. Ha a tulajdonság nevében helytelen a kis- és nagybetűk használata, attól még adhat vissza értéket, viszont a csoportosítás vagy az összegzés helytelen lehet.
 
-## <a name="a-nameshow-storageshow-resources-that-contain-storage"></a><a name="show-storage"/>Tárolót tartalmazó erőforrások megjelenítése
+## <a name="a-nameshow-storageshow-resources-that-contain-storage"></a>@no__t – tárolót tartalmazó 0Show-erőforrások
 
 Ahelyett, hogy explicit módon meghatározná a típust az egyező találatok lekéréséhez, ez a példaként megadott lekérdezés bármely Azure-erőforrást megtalálja, amely tartalmazza (`contains`) a **storage** szót.
 
@@ -162,11 +161,11 @@ az graph query -q "where type contains 'storage' | distinct type"
 Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ```
 
-## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a><a name="list-publicip"/>Az összes nyilvános IP-cím listázása
+## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a>@no__t – az összes nyilvános IP-cím 0List
 
 Az előző lekérdezéshez hasonlóan minden olyan elemet megtalál, amelynek a típusa tartalmazza a **publicIPAddresses** sztringet.
-Ez a lekérdezés csak olyan eredményeket tartalmaz, amelyekben a **Properties. IP**
-`isnotempty`-cím csak `limit` a Properties. **IP**-cím és a fent látható eredményekre tér vissza.
+Ez a lekérdezés csak olyan eredményeket tartalmaz, amelyekben a **Properties. ip_cím**
+ @ no__t-2, csak a **Properties. IP_cím**értéket adja vissza, és az eredményeket felülről `limit` értékre.
 100. A kiválasztott parancshéjtól függően szükség lehet az idézőjelek escape-elésére.
 
 ```kusto
@@ -183,7 +182,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
-## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip"/>Az előfizetés által konfigurált IP-címmel rendelkező erőforrások száma
+## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a>@no__t – az előfizetés által konfigurált IP-címmel rendelkező 0Count-erőforrások
 
 Ha maradunk az előző lekérdezéspéldánál, és hozzáadjuk a `summarize` és a `count()` paramétert, megkaphatjuk a konfigurált IP-címekkel rendelkező erőforrások előfizetés szerinti listáját.
 
@@ -200,7 +199,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
-## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a><a name="list-tag"/>Adott címke értékkel rendelkező erőforrások listázása
+## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a>@no__t 0List-erőforrások egy adott címke értékkel
 
 Az eredményeket az Azure-erőforrás típusán kívül más tulajdonságok, pl. a címke alapján is korlátozhatjuk. Ebben a példában azokra az **Environment** címkenévvel rendelkező Azure-erőforrásokra szűrünk, amelyek értéke **Internal**.
 
@@ -232,7 +231,7 @@ az graph query -q "where tags.environment=~'internal' | project name, tags"
 Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 ```
 
-## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag"/>Az összes olyan Storage-fiók listázása, amely adott címke értékkel rendelkezik
+## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a>@no__t – az összes 0List megadott címke értékű
 
 Kombinálhatja az előző példa szűrőfunkcióját, és **type** tulajdonság alapján szűrheti az Azure-erőforrásokat. Ez a lekérdezés az Azure-erőforrások adott típusainak keresését is adott címkenévre és -értékre korlátozza.
 
@@ -252,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 > [!NOTE]
 > Ez példa az egyező találatok kereséséhez az `==` paramétert használja az `=~` feltételes helyett. Az `==` kis- és nagybetűket megkülönböztető találatot ad.
 
-## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"/>Virtuális gép erőforrásaihoz tartozó aliasok megjelenítése
+## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a>@no__t – 0Show-aliasok a virtuális gép erőforrásaihoz
 
 A Azure Policy az [Azure Policy aliasokat](../../policy/concepts/definition-structure.md#aliases) használja az erőforrások megfelelőségének kezeléséhez. Az Azure Resource Graph egy erőforrástípus _aliasneveit_ is visszaállíthatja. Ezek az értékek hasznosak az aliasok aktuális értékének összehasonlításához az egyéni házirend-definíció létrehozásakor. Az _aliasok_ tömbje alapértelmezés szerint nincs megadva a lekérdezés eredményeiben. A `project aliases` használatával explicit módon adhatja hozzá az eredményekhez.
 
@@ -270,7 +269,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 |
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
-## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Egy adott alias különböző értékeinek megjelenítése
+## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a>@no__t – egy adott alias 0Show egyedi értékei
 
 Az aliasok értékének egyetlen erőforráson való megjelenítése hasznos lehet, de nem jeleníti meg a valódi értéket az Azure Resource Graph használatával az előfizetések közötti lekérdezéshez. Ez a példa egy adott alias összes értékét áttekinti, és a különböző értékeket adja vissza.
 

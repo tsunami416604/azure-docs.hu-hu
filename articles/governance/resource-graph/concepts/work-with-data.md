@@ -1,33 +1,32 @@
 ---
 title: Nagy méretű adathalmazok kezelése
-description: Megtudhatja, hogyan, és szabályozhatja a nagy méretű adatkészleteket az Azure-erőforrás Graph használata során.
+description: A nagyméretű adathalmazok beszerzésének és vezérlésének megismerése az Azure Resource Graph használata közben.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: d04f46dbc60a7242e44d76915e15281cc6248d20
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786534"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980322"
 ---
-# <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
+# <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
-Az Azure erőforrás-Graph úgy lett kialakítva, használata és erőforrásaival kapcsolatos információk lekérése az Azure-környezetben. Erőforrás-grafikon teszi, hogy ezek az adatok gyors, első akár több ezer olyan rekordok lekérdezésekor. Erőforrás-grafikon rendelkezik-e nagy adatkészletek használata számos lehetőség közül választhat.
+Az Azure Resource Graph az Azure-környezetben található erőforrásokkal való munkavégzésre és információk beszerzésére szolgál. Az erőforrás-gráf az adatok gyors beolvasását is lehetővé teszi, még akkor is, ha több ezer rekordot kérdez le. Az erőforrás-gráf számos lehetőséget kínál a nagyméretű adatkészletek használatához.
 
-A nagy gyakorisággal lekérdezések való használatáról további útmutatóért lásd: [szabályozott kérelmeinek útmutatást](./guidance-for-throttled-requests.md).
+A lekérdezések magas gyakorisággal történő kezelésével kapcsolatos útmutatásért lásd: [útmutató a szabályozott kérelmekhez](./guidance-for-throttled-requests.md).
 
-## <a name="data-set-result-size"></a>Adatkészlet eredményének mérete
+## <a name="data-set-result-size"></a>Az adatkészlet eredményének mérete
 
-Alapértelmezés szerint erőforrás Graph korlátozza az adatszolgáltató csak minden lekérdezés **100** rögzíti. Ez a vezérlő megvédi a felhasználói és a szolgáltatás a véletlen lekérdezések, amelyek nagy méretű adatkészleteket eredményezne. Ez az esemény leggyakrabban akkor fordul elő, egy ügyfél keresése és erőforrások adott igényeiknek leginkább megfelelő módon szűrése lekérdezésekkel van kísérletezgetést. Ez a vezérlő eltér attól a [felső](/azure/kusto/query/topoperator) vagy [korlát](/azure/kusto/query/limitoperator) Azure adatkezelő nyelvi operátorokat korlátozza az eredményeket.
+Alapértelmezés szerint az erőforrás-gráf korlátozza a lekérdezéseket, hogy csak **100** rekordokat adjanak vissza. Ez a vezérlő védi a felhasználót és a szolgáltatást olyan véletlen lekérdezésektől, amelyek nagy adatkészleteket eredményezhetnek. Ez az esemény leggyakrabban akkor fordul elő, amikor az ügyfél a lekérdezésekkel kísérletezik, és az adott igényeknek megfelelő módon keresi és szűri az erőforrásokat. Ez a vezérlő más, mint a [felső](/azure/kusto/query/topoperator) vagy [Az Azure adatkezelő](/azure/kusto/query/limitoperator) nyelvi operátorok használatának korlátozása az eredmények korlátozásához.
 
 > [!NOTE]
-> Használata esetén **első**, azt javasoljuk, hogy legalább egy oszlopot az eredmények rendezés `asc` vagy `desc`. Rendezés, nélkül adatsorban visszaadott a véletlenszerű, és nem ismételhető.
+> **Első**használata esetén ajánlott az eredményeket legalább egy olyan oszlop szerint rendelni, amelynek `asc` vagy `desc` értékűnek kell lennie. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
-Az alapértelmezett korlát felülbírálható az Erőforrás-grafikon folytatott összes módszer használatával. Az alábbi példák bemutatják az adatkészlet méretének korlátját történő megváltoztatása _200_:
+Az alapértelmezett korlát felülbírálható az erőforrás-Gráftal való interakció minden módszerén keresztül. Az alábbi példák bemutatják, hogyan módosíthatja az adathalmaz méretének korlátját a _200_értékre:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --first 200 --output table
@@ -37,20 +36,20 @@ az graph query -q "project name | order by name asc" --first 200 --output table
 Search-AzGraph -Query "project name | order by name asc" -First 200
 ```
 
-Az a [REST API-val](/rest/api/azureresourcegraph/resources/resources), a vezérlő **$top** és része **QueryRequestOptions**.
+A [REST API](/rest/api/azureresourcegraph/resources/resources)a vezérlő **$Top** , és a **QueryRequestOptions**része.
 
-A vezérlő, amely _leginkább korlátozó_ legyőzi. Például, ha a lekérdezés használ a **felső** vagy **korlát** operátorok és -nál több rekordot eredményezne **első**, a rekordok maximális visszaadott egyenlőlenne**Első**. Hasonlóképpen ha **felső** vagy **korlát** kisebb, mint **első**, a rekordhalmaz visszaadott értékének által konfigurált lenne **felső** vagy **korlát**.
+A _legszigorúbb_ vezérlő fog nyerni. Ha például a lekérdezés a **felső** vagy a **korlátot** használja, és az **elsőnél**több rekordot fog eredményezni, akkor a visszaadott maximális rekordok megegyeznek az **elsővel**. Hasonlóképpen, ha a **felső** vagy a **korlát** kisebb, mint az **első**, a visszaadott rekord a **felső** vagy a **korlát**által konfigurált kisebb érték lesz.
 
-**Első** jelenleg rendelkezik a megengedett maximális értékét _5000_.
+Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelkezik.
 
-## <a name="skipping-records"></a>Átugorja a rekordokat
+## <a name="skipping-records"></a>Rekordok kihagyása
 
-A következő lehetőség a nagy adatkészletekkel dolgozik, a **kihagyása** vezérlő. Ez a vezérlő lehetővé teszi, hogy a jump keresztül, vagy hagyja ki a megadott számú rekord előtt az eredményt adnak vissza a lekérdezést. **Kihagyás** akkor hasznos, ha lekérdezéseket, ahol a célja a rekordok valahol az eredményhalmaz közepén található első értelmezhető módon rendezheti az eredményeket. Ha az eredmények szükséges a végén a visszaadott adatkészlet, sokkal hatékonyabban eltérő rendezési konfigurációt használja, és helyette az adatkészlet elejétől kérje le az eredményeket.
+A nagyméretű adatkészletek használatának következő lehetősége a **kihagyás** vezérlőelem. Ez a vezérlő lehetővé teszi, hogy a lekérdezés átugorjon vagy kihagyja a megadott számú rekordot, mielőtt visszaadná az eredményeket. A **skip (kihagyás** ) olyan lekérdezések esetében hasznos, amelyek értelmes módon jelenítik meg az eredményeket. Ha a szükséges eredmények a visszaadott adathalmaz végén találhatók, akkor hatékonyabb, ha más rendezési konfigurációt használ, és az eredményeket az adathalmaz elejéről kéri le.
 
 > [!NOTE]
-> Használata esetén **kihagyása**, azt javasoljuk, hogy legalább egy oszlopot az eredmények rendezés `asc` vagy `desc`. Rendezés, nélkül adatsorban visszaadott a véletlenszerű, és nem ismételhető.
+> A **skip**használata esetén ajánlott az eredményeket legalább egy olyan oszlop szerint rendelni, amelynek `asc` vagy `desc` értékűnek kell lennie. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
-Az alábbi példák bemutatják az első kihagyása _10_ rekordok egy lekérdezést eredményez, és a 11 rekordot tartalmazó állítsa helyette indítása a visszaadott eredmény:
+Az alábbi példák azt mutatják be, hogyan lehet kihagyni az első _10_ rekordot, amely a lekérdezés eredményét eredményezi, ehelyett a visszaadott eredményhalmaz 11. rekorddal való megadásával:
 
 ```azurecli-interactive
 az graph query -q "project name | order by name asc" --skip 10 --output table
@@ -60,16 +59,16 @@ az graph query -q "project name | order by name asc" --skip 10 --output table
 Search-AzGraph -Query "project name | order by name asc" -Skip 10
 ```
 
-Az a [REST API-val](/rest/api/azureresourcegraph/resources/resources), a vezérlő **$skip** és része **QueryRequestOptions**.
+A [REST API](/rest/api/azureresourcegraph/resources/resources)a vezérlő **$skip** , és a **QueryRequestOptions**része.
 
 ## <a name="paging-results"></a>Lapozás eredményei
 
-Szükséges egy eredményhalmazt bemásolja a feldolgozáshoz kisebb rekordhalmazok esetén, vagy mert az eredményhalmaz túllépné a megengedett maximális értékét _1000_ lapozással adja vissza a rekordokat. A [REST API-val](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** értékek jelzésére egy készlet rendelkezik lett osztva az eredmények itt: **resultTruncated** és **$skipToken** .
-**resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztó további rekordok léteznek. Ha nem a válaszban visszaadott. Ez az állapot akkor is azonosítható, ha a **száma** tulajdonság értéke kisebb, mint a **totalRecords** tulajdonság. **totalRecords** határozza meg, hogy hány rögzíti a lekérdezésnek megfelelő.
+Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resources/resources) **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**.
+a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
 
-Amikor **resultTruncated** van **igaz**, a **$skipToken** tulajdonság értéke a válaszban. Ez az érték szolgál ugyanazon lekérdezés és az előfizetés értékekkel lekérése a következő rekordkészletet, amely megfelel a lekérdezést.
+Ha a **resultTruncated** értéke **igaz**, a válaszban a **$skipToken** tulajdonság van beállítva. Ez az érték ugyanazokkal a lekérdezési és előfizetési értékekkel együtt használható a lekérdezésnek megfelelő rekordok következő készletének beolvasásához.
 
-Az alábbi példák mutatják hogyan **kihagyása** az első 3000 rekordok, és lépjen vissza a **első** 1000 rekordot ezek után kihagyja az Azure CLI és az Azure PowerShell-lel:
+Az alábbi példák bemutatják, hogyan **hagyhatja** ki az első 3000 rekordot, és az **első** 1000 rekordot visszaküldheti az Azure CLI-vel kihagyott és a Azure PowerShell:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -80,12 +79,12 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 ```
 
 > [!IMPORTANT]
-> A lekérdezés kell **projekt** a **azonosító** ahhoz, hogy működjön tördelés mezőt. Hiányzik a lekérdezésből, ha a válasz nem tartalmazza a **$skipToken**.
+> A lekérdezésnek az **azonosító** mezőt kell megadnia ahhoz, **hogy a tördelés** működjön. Ha hiányzik a lekérdezésből, a válasz nem tartalmazza a **$skipToken**.
 
-Egy vonatkozó példáért lásd: [következő lap lekérdezés](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API-dokumentumokhoz.
+Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API docs webhelyen.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezéseket](../samples/starter.md).
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md).
-- Ismerje meg, hogyan [források](explore-resources.md).
+- Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
+- Ismerje meg az [erőforrások feltárását](explore-resources.md).

@@ -1,50 +1,49 @@
 ---
 title: Erőforrás-módosítások lekérése
-description: Megismerheti, hogyan találhatja meg, amikor egy erőforrás változott, és a módosított tulajdonságok listája.
+description: Megtudhatja, hogyan keresheti meg az erőforrást, és hogyan kérheti le a megváltoztatott tulajdonságok listáját.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 05/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: b6ef57a3f39c82be30d92aef72c1bbe03b653768
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236507"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980282"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
-Erőforrások használ napi újrakonfigurálása és még akkor is, újbóli üzembe helyezés során módosul.
-Változás bármikor visszatérhet, egyéni vagy egy automatikus folyamat alapján. A legtöbb módosítása a rendszer kialakításából fakad, de néha nem. Az elmúlt 14 napban a változások nyomon követése, az Azure-erőforrás Graph teszi lehetővé:
+Az erőforrások a napi használat, az újrakonfigurálás és még az újratelepítés során változnak.
+A módosítás egy egyedi vagy egy automatizált folyamat alapján is elvégezhető. A legtöbb változás a tervezés szerint történik, de néha nem. Az elmúlt 14 napban az Azure Resource Graph a következőket teszi lehetővé:
 
 - Megtudhatja, mikor történtek módosítások az Azure Resource Manager-tulajdonságokban.
 - Megnézheti, mely tulajdonságok változtak meg a módosítási esemény részeként.
 
-Címváltozásának felderítését és a részletek hasznosak az alábbi példák a következők:
+Az észlelés és a részletek változása az alábbi példák esetében hasznos:
 
-- Incidenskezelés ismertetése során _potenciálisan_ kapcsolódó változásairól. Állapotváltozási események idő adott időszak alatt lekérdezheti, és kiértékelheti a változás részleteit.
-- Konfigurációkezelési adatbázis tartja, más néven a cmdb-JÉBEN, naprakész. Frissítés helyett az összes erőforrás és a egy ütemezett gyakoriságát, a teljes tulajdonság beállítása csak a get mi változott.
-- Milyen egyéb tulajdonságok Módosíthatott erőforrás megfelelőségi állapotok megváltozásakor ismertetése. Ezek a további tulajdonságok kiértékelése is szükség lehet egy Azure szabályzat-definíció kezelendő egyéb tulajdonságok betekintést nyújtson.
+- Az incidensek kezelése során a _potenciálisan_ kapcsolódó változások megismeréséhez. Egy adott időintervallumban megjelenő változási események lekérdezése és a módosítás részleteinek kiértékelése.
+- A CMDB néven ismert Configuration Management-adatbázis naprakészen tartása. Ahelyett, hogy az összes erőforrást és a teljes tulajdonságokat egy ütemezett gyakoriságon frissítse, csak a megváltoztatott értéket adja meg.
+- Annak megértése, hogy milyen egyéb tulajdonságok változtak, amikor egy erőforrás megváltoztatta a megfelelőségi állapotot. Ezeknek a további tulajdonságoknak a kiértékelése további, Azure Policy-definíción keresztül felügyelhető tulajdonságokkal is rendelkezhet.
 
-Ez a cikk bemutatja, hogyan erőforrás Graph SDK-n keresztül az információk gyűjtésére. Ez az információ az Azure Portalon, olvassa el az Azure Policy [módosítási előzmények](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenységnapló [módosítási előzmények](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-gráf SDK-n keresztül. Ha szeretné megtekinteni ezeket az információkat a Azure Portalban, tekintse meg a Azure Policy [változási előzményeit](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenység naplójának [módosításait](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
 
 > [!NOTE]
-> Változások részleteinek Erőforrás-grafikon a Resource Manager-tulajdonságok vannak. A virtuális gépen belüli változásainak követése, tekintse meg az Azure Automation [Change tracking](../../../automation/automation-change-tracking.md) vagy az Azure Policy [Vendég virtuális gépek konfigurációjának](../../policy/concepts/guest-configuration.md).
+> Az erőforrás-diagram adatainak módosítása a Resource Manager-tulajdonságok. A virtuális gépek változásainak nyomon követéséhez tekintse meg a Azure Automation [változások követése](../../../automation/automation-change-tracking.md) vagy a Azure Policy a virtuális gépekhez [tartozó vendég konfigurációját](../../policy/concepts/guest-configuration.md).
 
 > [!IMPORTANT]
-> Változások nyomon követése az Azure-erőforrás Graph jelenleg nyilvános előzetes verzióban.
+> Az Azure Resource Graph változási előzményei nyilvános előzetes verzióban érhetők el.
 
-## <a name="find-when-changes-were-detected"></a>Keresse meg, ha módosításokat észlelt
+## <a name="find-when-changes-were-detected"></a>A változások észlelésének megkeresése
 
-Az első lépés jelenik meg, mi változott, egy erőforráson, hogy az idő időtartamon belül erőforráshoz kapcsolódó események megtalálja. Ebben a lépésben keresztül történik a **resourceChanges** REST-végpont.
+Az erőforrás változásának első lépése, hogy megkeresse az adott erőforráshoz kapcsolódó módosítási eseményeket az adott időintervallumon belül. Ez a lépés a **resourceChanges** Rest-végponton keresztül történik.
 
-A **resourceChanges** végpont a kérelem törzsében szereplő két paraméter szükséges:
+A **resourceChanges** végpontjának két paramétert kell megadnia a kérelem törzsében:
 
-- **resourceId**: Az Azure-erőforráshoz módosításait keressen.
-- **Intervallum**: Tulajdonságot _start_ és _záró_ mikor ellenőrizze a módosítási esemény a dátumokat a **Zulu időzóna (Z)** .
+- **resourceId**: Az Azure-erőforrás, melyen változásokat keres.
+- **időköz**: Egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
 
 A példában a kérés törzse:
 
@@ -58,13 +57,13 @@ A példában a kérés törzse:
 }
 ```
 
-A fenti kérés törzse, a REST API URI-azonosítóját az **resourceChanges** van:
+A fenti kérelem törzsével a **resourceChanges** REST API URI-ja a következő:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-A válasz a példához hasonlóan néz ki:
+A válasz a következőhöz hasonlóan néz ki:
 
 ```json
 {
@@ -90,17 +89,17 @@ A válasz a példához hasonlóan néz ki:
 }
 ```
 
-Esemény a rendszer minden egyes észlelt a **resourceId** rendelkezik egy **changeId** Ez az egyedi ennek az erőforrásnak. Bár a **changeId** karakterlánc időnként előfordulhat, hogy tartalmazzák a többi tulajdonság, csak garantálta egyedinek kell lennie. A módosító rekord tartalmazza az időpontokat, amely a előtt és után pillanatképek származnak.
-Az esemény történt olyan pont, ebben az ablakban idő.
+A **resourceId** minden észlelt változási eseményéhez tartozik egy **changeId** , amely egyedi az adott erőforráshoz. Habár a **changeId** karakterlánc esetenként más tulajdonságokat is tartalmazhat, csak egyedinek kell lennie. A módosítási rekord tartalmazza azokat az időpontokat, amikor az előtte és utána Pillanatképek készültek.
+A változási esemény ezen az időablakon belül egy adott időpontban fordult elő.
 
-## <a name="see-what-properties-changed"></a>Tulajdonságok változott
+## <a name="see-what-properties-changed"></a>A tulajdonságok változásának megtalálása
 
-Az a **changeId** származó a **resourceChanges** végpont, a **resourceChangeDetails** REST-végpont majd kéri le az esemény tulajdonságairól.
+A **resourceChanges** végpont **changeId** a **resourceChangeDetails** Rest-végpontot használja a változási esemény részletes adatainak beolvasásához.
 
-A **resourceChangeDetails** végpont a kérelem törzsében szereplő két paraméter szükséges:
+A **resourceChangeDetails** végpontjának két paramétert kell megadnia a kérelem törzsében:
 
-- **resourceId**: Az Azure-erőforráshoz módosításait keressen.
-- **changeId**: Az egyedi esemény esetében a **resourceId** összeállításunkat **resourceChanges**.
+- **resourceId**: Az Azure-erőforrás, melyen változásokat keres.
+- **changeId**: A **resourceChanges**-ből összegyűjtött **resourceId** egyedi változási eseménye.
 
 A példában a kérés törzse:
 
@@ -111,13 +110,13 @@ A példában a kérés törzse:
 }
 ```
 
-A fenti kérés törzse, a REST API URI-azonosítóját az **resourceChangeDetails** van:
+A fenti kérelem törzsével a **resourceChangeDetails** REST API URI-ja a következő:
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-A válasz a példához hasonlóan néz ki:
+A válasz a következőhöz hasonlóan néz ki:
 
 ```json
 {
@@ -219,12 +218,12 @@ A válasz a példához hasonlóan néz ki:
 }
 ```
 
-**beforeSnapshot** és **afterSnapshot** egyes meg kell adni az idő a pillanatkép és a Tulajdonságok időpontjában. A módosítás történt a pillanatképek közé. A fenti példa megnézzük, láthatjuk, hogy a megváltozott tulajdonság volt **supportsHttpsTrafficOnly**.
+a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. A fenti példában látható, hogy a módosított tulajdonság **supportsHttpsTrafficOnly**volt.
 
-Az eredmények összehasonlítása a programozott módon, hasonlítsa össze a **tartalom** minden pillanatkép különbség meghatározására része. Ha a teljes pillanatkép összehasonlítja a **időbélyeg** mindig jeleníti meg, annak ellenére, hogy folyamatban van a várt számít.
+Ha programozott módon szeretné összehasonlítani az eredményeket, hasonlítsa össze az egyes Pillanatképek **tartalmi** részét a különbség megállapításához. Ha összehasonlítja a teljes pillanatképet, az **időbélyeg** mindig különbséget mutat a vártnál.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a használt nyelv [alapszintű lekérdezéseket](../samples/starter.md).
-- Tekintse meg a speciális használ [összetettebb lekérdezésekhez](../samples/advanced.md).
-- Ismerje meg, hogyan [források](../concepts/explore-resources.md).
+- Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
+- Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
+- Ismerje meg az [erőforrások feltárását](../concepts/explore-resources.md).

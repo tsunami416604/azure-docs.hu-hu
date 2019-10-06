@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 27f7c747dfd39fed7a67924da71b9293979e0f94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 8c6d3a4d30d8b0b5ec361584846f31a7714b43ec
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231891"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978469"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>A környezet konfigurálása Blueprint Operatorhoz
 
@@ -30,17 +29,17 @@ Első lépésként adja meg a **terv operátori** szerepkört ahhoz a fiókhoz v
 
 ## <a name="user-assign-managed-identity"></a>Felhasználó – felügyelt identitások kiosztása
 
-A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitásokat használhat. A **terv operátori** szerepkör használatakor azonban a terv definícióját a felhasználó által hozzárendelt felügyelt identitás használatára kell beállítani. Emellett a **terv operátori** szerepkörrel rendelkező fiókot vagy biztonsági csoportot meg kell adni a felügyelt **identitás-kezelő** szerepkörnek a felhasználó által hozzárendelt felügyelt identitáson. Ezen engedély nélkül a terv-hozzárendelések sikertelenek az engedélyek hiánya miatt.
+A tervrajzok definíciója rendszer által hozzárendelt vagy felhasználó által hozzárendelt felügyelt identitásokat használhat. A **terv operátori** szerepkör használatakor azonban a terv definícióját a felhasználó által hozzárendelt felügyelt identitás használatára kell beállítani. Emellett a **terv operátori** szerepkörrel rendelkező fiókot vagy biztonsági csoportot meg kell adni a **felügyelt identitás-kezelő** szerepkörnek a felhasználó által hozzárendelt felügyelt identitáson. Ezen engedély nélkül a terv-hozzárendelések sikertelenek az engedélyek hiánya miatt.
 
 1. [Felhasználó által hozzárendelt felügyelt identitás létrehozása](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) egy hozzárendelt terv általi használatra
 
-1. [Adja hozzá](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a felügyelt **identitás-kezelő** szerepkör-hozzárendelését a fiókhoz vagy a biztonsági csoporthoz. Hatókör a szerepkör-hozzárendelés az új, felhasználó által hozzárendelt felügyelt identitáshoz.
+1. [Adja hozzá](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) a **felügyelt identitás-kezelő** szerepkör-hozzárendelését a fiókhoz vagy a biztonsági csoporthoz. Hatókör a szerepkör-hozzárendelés az új, felhasználó által hozzárendelt felügyelt identitáshoz.
 
 1. A **terv operátorként** [rendeljen hozzá egy tervet](../create-blueprint-portal.md#assign-a-blueprint) , amely az új, felhasználó által hozzárendelt felügyelt identitást használja.
 
 ## <a name="next-steps"></a>További lépések
 
-- A [terv életciklusának](../concepts/lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

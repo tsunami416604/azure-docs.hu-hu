@@ -1,62 +1,61 @@
 ---
 title: Terv üzembe helyezésének szakaszai
-description: Az Azure tervezet szolgáltatások halad át a telepítés során szükséges lépések ismertetése.
+description: Megtudhatja, hogyan haladnak végig a Azure Blueprint szolgáltatások a telepítés során.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: d7000813b51fb9c9aae9a21cbded3ae0028e83f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684692"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978525"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 
-Tervrajz megtörténik, amikor több csökken az Azure-tervek szolgáltatás által definiált a tervezet az erőforrásokat üzembe kívánja. Ez a cikk részletesen, mi minden lépésnek része.
+Egy terv üzembe helyezése után az Azure BluePrints szolgáltatás számos műveletet végez a tervben meghatározott erőforrások üzembe helyezéséhez. Ez a cikk részletesen ismerteti az egyes lépések részleteit.
 
-Tervrajz telepítési váltja ki a tervezet hozzárendelése egy előfizetést vagy [a meglévő hozzárendelések módosítása](../how-to/update-existing-assignments.md). Tervezetek az üzembe helyezés során a következő magas szintű lépéseket hajtja végre:
+A terv üzembe helyezése egy tervnek egy előfizetéshez rendelésével vagy [egy meglévő hozzárendelés frissítésével](../how-to/update-existing-assignments.md)aktiválódik. Az üzembe helyezés során a tervek a következő magas szintű lépéseket végzik el:
 
 > [!div class="checklist"]
-> - Tervezetek ügyfélbérlői
-> - A tervezet-hozzárendelés objektum létrehozása
-> - Választható - tervek hoz létre **alapértelmezett** identitás
-> - A felügyelt identitás tervezetösszetevők helyez üzembe.
-> - Szolgáltatás tervezetet és **alapértelmezett** felügyelt identitás rights visszavonódnak.
+> - Tulajdonosi jogosultságokat kapott tervrajzok
+> - A terv-hozzárendelési objektum létrejött
+> - Opcionális – a tervrajzok **rendszer által hozzárendelt** felügyelt identitást hoznak létre
+> - A felügyelt identitás üzembe helyezi a tervrajz-összetevőket
+> - A terv szolgáltatás és a **rendszer által hozzárendelt** felügyelt identitási jogosultságok visszavonása
 
-## <a name="blueprints-granted-owner-rights"></a>Tervezetek ügyfélbérlői
+## <a name="blueprints-granted-owner-rights"></a>Tulajdonosi jogosultságokat kapott tervrajzok
 
-Az Azure-tervek egyszerű szolgáltatás egy ügyfélbérlői a hozzárendelt előfizetés vagy az előfizetések. A megadott szerepkör lehetővé teszi, hogy a tervek létrehozása, és a későbbiekben visszavonja, a [alapértelmezett felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md).
+Az Azure BluePrints egyszerű szolgáltatás tulajdonosi jogosultságokat kap a hozzárendelt előfizetéshez vagy előfizetésekhez. A megadott szerepkör lehetővé teszi, hogy a tervek a [rendszer által hozzárendelt felügyelt identitást](../../../active-directory/managed-identities-azure-resources/overview.md)hozzanak létre, majd később visszavonják.
 
-A jogosultságokat automatikusan Ha a hozzárendelés a portálon keresztül történik. Azonban a hozzárendelés történik a REST API-n keresztül kell lennie a jogosultságok biztosítása egy külön API-val hívjuk. Az Azure tervezet AppID `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, azonban az egyszerű szolgáltatás bérlői függően változik. Használat [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) és REST-végpont [szolgáltatásnevek](/graph/api/resources/serviceprincipal) beolvasni az egyszerű szolgáltatás. Ezt követően adja meg az Azure-tervek a _tulajdonosa_ szerepkör keresztül a [portál](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI-vel](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md), vagy egy [Resource Manager-sablon](../../../role-based-access-control/role-assignments-template.md).
+A jogosultságok automatikusan megadhatók, ha a hozzárendelés a portálon keresztül történik. Ha azonban a hozzárendelés a REST APIon keresztül történik, a jogokat külön API-hívással kell megadnia. A Azure Blueprint AppId `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, az egyszerű szolgáltatás azonban a bérlőtől függ. Az egyszerű szolgáltatás beszerzéséhez használja a [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) és a REST-végpont [servicePrincipals](/graph/api/resources/serviceprincipal) . Ezután adja meg az Azure a _tulajdonosi_ szerepkört a [portálon](../../../role-based-access-control/role-assignments-portal.md), az [Azure CLI](../../../role-based-access-control/role-assignments-cli.md)-n, a [Azure PowerShellon](../../../role-based-access-control/role-assignments-powershell.md), a [Rest APIon](../../../role-based-access-control/role-assignments-rest.md)vagy egy [Resource Manager-sablonon](../../../role-based-access-control/role-assignments-template.md)keresztül.
 
-A tervrajzok szolgáltatás nem helyezheti közvetlenül üzembe az erőforrásokat.
+A tervrajzok szolgáltatás nem telepíti közvetlenül az erőforrásokat.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>A tervezet-hozzárendelés objektum létrehozása
+## <a name="the-blueprint-assignment-object-is-created"></a>A terv-hozzárendelési objektum létrejött
 
-Egy felhasználó, csoport vagy szolgáltatásnév tervrajz rendel egy előfizetést. A hozzárendelési objektum létezik az előfizetés szintjén, ahol a tervezet hozzá volt rendelve. A központi telepítés által létrehozott erőforrásokat a környezetben a központi telepítés entitás nem történik.
+Egy felhasználó, csoport vagy szolgáltatásnév egy tervezetet rendel egy előfizetéshez. A hozzárendelési objektum létezik az előfizetés szintjén, ahol a terv hozzá lett rendelve. A központi telepítés által létrehozott erőforrások nem az üzembe helyezési entitás kontextusában vannak végrehajtva.
 
-A tervezet-hozzárendelést, milyen típusú létrehozásakor [identitás](../../../active-directory/managed-identities-azure-resources/overview.md) van kiválasztva. Az alapértelmezett érték egy **alapértelmezett** identitás. A **felhasználó által hozzárendelt** felügyelt identitás választható ki. Használata esetén egy **felhasználó által hozzárendelt** felügyelt identitást, azt kell meghatározni és jogosultságot kap a tervezet-hozzárendelés létrehozása előtt.
+A terv-hozzárendelés létrehozásakor a [felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) típusa van kiválasztva. Az alapértelmezett érték egy **rendszerhez rendelt** felügyelt identitás. A **felhasználó által hozzárendelt** felügyelt identitás választható. **Felhasználó által hozzárendelt** felügyelt identitás használatakor a terv-hozzárendelés létrehozása előtt meg kell határozni és engedélyeket adni.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Választható - tervek hoz létre a rendszer által hozzárendelt felügyelt identitás
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Opcionális – a tervrajzok rendszer által hozzárendelt felügyelt identitást hoznak létre
 
-Amikor [alapértelmezett felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) van kiválasztva, hozzárendelés során tervek az eszközidentitást hoz létre, és a felügyelt identitást biztosít a [tulajdonosa](../../../role-based-access-control/built-in-roles.md#owner) szerepkör. Ha egy [frissítve van a meglévő hozzárendelést](../how-to/update-existing-assignments.md), tervek a korábban létrehozott felügyelt identitást használja.
+Ha a hozzárendelés során a [rendszerhez rendelt felügyelt identitás](../../../active-directory/managed-identities-azure-resources/overview.md) van kiválasztva, a tervrajzok létrehozzák az identitást, és a [tulajdonos](../../../role-based-access-control/built-in-roles.md#owner) szerepkört a felügyelt identitás számára engedélyezik [Meglévő hozzárendelés frissítésekor](../how-to/update-existing-assignments.md)a tervrajzok a korábban létrehozott felügyelt identitást használják.
 
-A felügyelt identitás a tervezet-hozzárendelést kapcsolódó központi telepítése, illetve helyeznie az erőforrásokat a tervezet meghatározott szolgál. Ez a kialakítás elkerülhető a hozzárendelések véletlenül ütköznének egymással.
-Ez a kialakítás is támogatja a [erőforrás zárolása](./resource-locking.md) a szolgáltatás szabályozásával a tervezet egyes üzembe helyezett erőforrások biztonságát.
+A terv-hozzárendeléshez kapcsolódó felügyelt identitás a tervben meghatározott erőforrások üzembe helyezésére vagy újratelepítésére szolgál. Ez a kialakítás megakadályozza, hogy a hozzárendelések véletlenül zavarják egymással.
+Ez a kialakítás az [erőforrás-zárolási](./resource-locking.md) funkciót is támogatja azáltal, hogy az egyes üzembe helyezett erőforrások biztonságát a tervezetből szabályozza.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>A felügyelt identitás tervezetösszetevők helyez üzembe.
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>A felügyelt identitás üzembe helyezi a tervrajz-összetevőket
 
-A felügyelt identitás majd elindítják a Resource Manager üzembe helyezések a tervezet a a definiált összetevőinak [alkalmazás-előkészítés rendelés](./sequencing-order.md). A sorrend módosítható, annak érdekében, hogy más összetevők függő összetevők a megfelelő sorrendben legyenek telepítve.
+A felügyelt identitás ezt követően elindítja az összetevők Resource Manager általi telepítését a tervben a meghatározott sorrend szerinti [sorrendben](./sequencing-order.md). A sorrend beállítható úgy, hogy a többi összetevőtől függő összetevők megfelelő sorrendben legyenek telepítve.
 
-Központi telepítés által hozzáférési hibát gyakran a felügyelt identitás számára biztosított hozzáférési szintet eredménye. A tervrajzok szolgáltatás a biztonsági életciklusát felügyeli a **alapértelmezett** identitás. Azonban a felhasználó felelős a jogok és életciklusának kezelése egy **felhasználó által hozzárendelt** identitás.
+Az üzemelő példányok hozzáférési meghibásodása gyakran a felügyelt identitáshoz megadott hozzáférési szint eredményét eredményezi. A tervrajzok szolgáltatás kezeli a **rendszer által hozzárendelt** felügyelt identitás biztonsági életciklusát. A felhasználó azonban felelős a **felhasználóhoz rendelt** felügyelt identitások jogainak és életciklusának kezeléséért.
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Tervrajz szolgáltatás és a felügyelt identitás rendszer által hozzárendelt jogosultságok visszavonása
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>A terv szolgáltatás és a rendszer által hozzárendelt felügyelt identitási jogosultságok visszavonása
 
-A központi telepítések követően tervezetek visszavonja jogait a **alapértelmezett** felügyelt identitás az előfizetésből. Ezt követően a tervek szolgáltatás visszavonása a az előfizetésből származó jogosultságok. Jogosultságok eltávolítása megakadályozza, hogy a tervek egy állandó tulajdonos egy adott előfizetés váljon.
+A központi telepítések befejezése után a tervrajzok visszavonják a **rendszer által hozzárendelt** felügyelt identitás jogosultságait az előfizetésből. Ezt követően a tervrajzok szolgáltatás visszavonja a jogosultságait az előfizetésből. A Rights eltávolítása megakadályozza, hogy a tervezetek állandó tulajdonosként legyenek előfizetésben.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 6112f6f2834f02cec970af886360844c5314150d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 154e66366d4a687e60d7bddd28278414e3a4ccd7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678991"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981034"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure Blueprint életciklusának megismerése
 
@@ -33,26 +32,26 @@ A tervrajzok és a szakaszok teljes körű megismeréséhez a standard életcikl
 
 Tervrajz létrehozásakor vegyen fel összetevőket hozzá, mentse egy felügyeleti csoportba vagy előfizetésbe, és adjon meg egy egyedi nevet és egy egyedi verziót. A terv most már **Vázlat** módban van, és még nem rendelhető hozzá. A **Piszkozat** módban továbbra is frissíthető és módosítható.
 
-A **Piszkozat** módban soha nem közzétett tervezetek egy másik ikont jelenítenek meg a **terv definíciók** lapján, amely **közzé lett téve**. A **legújabb verzió** piszkozatként jelenik meg a soha nem közzétett tervekhez.
+A **Piszkozat** módban soha nem közzétett tervezetek egy másik ikont jelenítenek meg a **terv definíciók** lapján, amely **közzé lett téve**. A **legújabb verzió** **piszkozatként** jelenik meg a soha nem közzétett tervekhez.
 
 Hozzon létre és szerkesszen egy tervet [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) vagy [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
 ## <a name="publishing-a-blueprint"></a>Tervezet közzététele
 
 Ha az összes tervezett módosítás **vázlatos** módban történt, **közzé** kell tenni a hozzárendeléshez, és elérhetővé teheti azt. A terv **közzétett** verziója nem módosítható.
-A **Közzététel**után a terv egy másik ikonnal jelenik meg, mint a tervezetek, és a megadott verziószámot jeleníti meg a **legújabb verzió** oszlopban.
+A **Közzététel**után a terv egy másik ikonnal jelenik meg, mint a **tervezetek** , és a megadott verziószámot jeleníti meg a **legújabb verzió** oszlopban.
 
 Tegyen közzé egy tervet [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) vagy [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
 ## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>A terv új verziójának létrehozása és szerkesztése
 
-A terv **közzétett** verziója nem módosítható. A terv új verziója azonban felvehető a meglévő tervbe, és szükség szerint módosítható. Módosításokat végezhet egy meglévő terv szerkesztésével. Az új módosítások mentésekor a terv már nem **közzétett módosításokat**tartalmaz. Ezek a változások a terv új vázlatos változata.
+A terv **közzétett** verziója nem módosítható. A terv új verziója azonban felvehető a meglévő tervbe, és szükség szerint módosítható. Módosításokat végezhet egy meglévő terv szerkesztésével. Az új módosítások mentésekor a terv már nem **közzétett módosításokat**tartalmaz. Ezek a változások a terv új **vázlatos** változata.
 
 Szerkesszen egy tervet a [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
 
 ## <a name="publishing-a-new-version-of-the-blueprint"></a>A terv új verziójának közzététele
 
-A terv minden szerkesztett verzióját **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni. Ha nem **közzétett módosításokat** hajtottak végre egy tervben, de még nem **tették közzé**, a terv **szerkesztése gomb elérhető** a terv szerkesztése lapon. Ha a gomb nem látható, a terv már közzé van **téve** , és nincsenek **közzé nem tett módosítások**.
+A terv minden szerkesztett verzióját **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni. Ha nem **közzétett módosításokat** hajtottak végre egy tervben, de még nem **tették közzé**, **a terv szerkesztése gomb elérhető** a terv szerkesztése lapon. Ha a gomb nem látható, a terv már közzé van **téve** , és nincsenek **közzé nem tett módosítások**.
 
 > [!NOTE]
 > Egyetlen tervezet több **közzétett** verziót is tartalmazhat, amelyek mindegyike előfizetésekhez rendelhető.
@@ -66,9 +65,9 @@ A tervrajzok minden verziója egy egyedi objektum, amelyet egyénileg lehet **k�
 > [!NOTE]
 > Aktív hozzárendelésekkel rendelkező tervet nem lehet törölni. Először törölje a hozzárendeléseket, majd törölje az eltávolítani kívánt verziót.
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
-1. Válassza ki a bal oldalon található **tervezet** -definíciókat, és a szűrési beállítások segítségével keresse meg azt a tervet, amelynek a verzióját törölni szeretné. Kattintson rá a Szerkesztés lap megnyitásához.
+1. Válassza ki a bal oldalon található **tervezet-definíciókat** , és a szűrési beállítások segítségével keresse meg azt a tervet, amelynek a verzióját törölni szeretné. Kattintson rá a Szerkesztés lap megnyitásához.
 
 1. Kattintson a **közzétett verziók** lapra, és keresse meg a törölni kívánt verziót.
 
@@ -76,7 +75,7 @@ A tervrajzok minden verziója egy egyedi objektum, amelyet egyénileg lehet **k�
 
 ## <a name="deleting-the-blueprint"></a>A terv törlése
 
-A központi terv is törölhető. Az alapszintű terv törlése szintén törli az adott terv tervrajzait, beleértve a vázlatos és a **közzétett** tervezeteket is. A tervrajzok egy verziójának törléséhez hasonlóan az alapterv törlése nem távolítja el a tervrajzok bármely verziójának meglévő hozzárendeléseit.
+A központi terv is törölhető. Az alapszintű terv törlése szintén törli az adott terv tervrajzait, beleértve a **vázlatos** és a **közzétett** tervezeteket is. A tervrajzok egy verziójának törléséhez hasonlóan az alapterv törlése nem távolítja el a tervrajzok bármely verziójának meglévő hozzárendeléseit.
 
 > [!NOTE]
 > Aktív hozzárendelésekkel rendelkező tervet nem lehet törölni. Először törölje a hozzárendeléseket, majd törölje az eltávolítani kívánt verziót.
@@ -85,7 +84,7 @@ Egy terv törlése a [Azure Portal](../create-blueprint-portal.md#delete-a-bluep
 
 ## <a name="assignments"></a>Hozzárendelések
 
-Az életciklus során több pont is van, és egy terv rendelhető hozzá egy előfizetéshez. Ha közzéteszi a terv egy verziójának a módját, az adott verziót hozzá lehet rendelni egy előfizetéshez. Ez az életciklus lehetővé teszi, hogy egy terv egy újabb verziójának fejlesztésekor felhasználja és aktívan hozzárendelje a tervrajzok verzióját.
+Az életciklus során több pont is van, és egy terv rendelhető hozzá egy előfizetéshez. Ha **közzéteszi**a terv egy verziójának a módját, az adott verziót hozzá lehet rendelni egy előfizetéshez. Ez az életciklus lehetővé teszi, hogy egy terv egy újabb verziójának fejlesztésekor felhasználja és aktívan hozzárendelje a tervrajzok verzióját.
 
 A tervrajzok verziójának kiosztásakor fontos megérteni, hogy hol vannak hozzárendelve, és hogy milyen paramétereket rendeltek hozzájuk. A paraméterek lehetnek statikusak vagy dinamikusak. További információ: [statikus és dinamikus paraméterek](parameters.md).
 
@@ -103,7 +102,7 @@ További információ: a [meglévő hozzárendelések frissítése](../how-to/up
 
 Ha a terv már nem szükséges, a felügyeleti csoportból vagy előfizetésből nem lehet kiosztani. A terv hozzárendelésének megszüntetése során a következők történnek:
 
-- A [terv erőforrás](resource-locking.md) -zárolásának eltávolítása
+- A [terv erőforrás-zárolásának](resource-locking.md) eltávolítása
 - A terv-hozzárendelési objektum törlése
 - Feltételes Ha egy **rendszerhez rendelt felügyelt identitást** használt, akkor azt is törli
 

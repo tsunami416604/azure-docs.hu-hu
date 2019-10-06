@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231919"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981018"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az üzembe helyezési folyamat ismertetése az Azure-tervezetekben
 
@@ -30,15 +29,15 @@ A JSON-példákban változók szerepelnek, amelyeket a saját értékeivel kell 
 
 Ha a terv meghatározása nem tartalmaz irányelvet az összetevők üzembe helyezéséhez, vagy ha a direktíva null értékű, a rendszer a következő sorrendet használja:
 
-- Előfizetés szintű **szerepkör** -hozzárendelési összetevők az összetevő neve szerint rendezve
+- Előfizetés szintű **szerepkör-hozzárendelési** összetevők az összetevő neve szerint rendezve
 - Az előfizetési szint **házirendjének hozzárendelési** összetevői az összetevő neve szerint rendezve
 - Az előfizetési szint **Azure Resource Manager a sablon** az összetevő neve alapján rendezve
 - **Erőforráscsoport** -összetevők (beleértve a gyermekeket is) helyőrző név szerint rendezve
 
 Minden **erőforráscsoport** -összetevőn belül a következő sorrendet használja a rendszer az adott erőforráscsoport-beli összetevők létrehozásához:
 
-- Erőforráscsoport alárendelt **szerepkör** -hozzárendelési összetevői az összetevő neve szerint rendezve
-- Erőforráscsoport-alárendelt **házirend** -hozzárendelési összetevők az összetevő neve alapján rendezve
+- Erőforráscsoport alárendelt **szerepkör-hozzárendelési** összetevői az összetevő neve szerint rendezve
+- Erőforráscsoport-alárendelt **házirend-hozzárendelési** összetevők az összetevő neve alapján rendezve
 - Erőforráscsoport-gyermek **Azure Resource Manager sablon** -összetevők az összetevő neve alapján rendezve
 
 > [!NOTE]
@@ -48,15 +47,15 @@ Minden **erőforráscsoport** -összetevőn belül a következő sorrendet haszn
 
 Nagyméretű tervrajzok meghatározásakor szükség lehet arra, hogy az erőforrások egy adott sorrendben jöjjenek létre. Ennek a forgatókönyvnek a leggyakoribb felhasználási módja az, amikor a terv definíciója több Azure Resource Manager sablont tartalmaz. A tervrajzok úgy kezelik ezt a mintát, hogy lehetővé teszik az előkészítési sorrend meghatározását.
 
-A rendelés a JSON-ban található `dependsOn` tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. `dependsOn`egy olyan karakterlánc-tömb, amelyben az adott összetevőt létre kell hozni a létrehozás előtt.
+A rendelés a JSON-ban található `dependsOn` tulajdonság definiálásával valósítható meg. A terv definíciója, az erőforráscsoportok és az összetevő-objektumok támogatják ezt a tulajdonságot. a `dependsOn` egy olyan karakterlánc-tömb, amelyben az adott összetevő létrehozása előtt létre kell hozni az adott összetevőt.
 
 > [!NOTE]
-> A tervrajzi objektumok létrehozásakor minden összetevő-erőforrás megkapja a nevét a fájlnévből, [](/powershell/module/az.blueprint/new-azblueprintartifact)ha a PowerShellt használja, vagy az URL-végpontot, ha [REST API](/rest/api/blueprints/artifacts/createorupdate)használ.
+> A tervrajzi objektumok létrehozásakor minden összetevő-erőforrás megkapja a nevét a fájlnévből, ha a [PowerShellt](/powershell/module/az.blueprint/new-azblueprintartifact)használja, vagy az URL-végpontot, ha [REST API](/rest/api/blueprints/artifacts/createorupdate)használ.
 > az összetevőkben található _resourceGroup_ -hivatkozásoknak meg kell egyezniük a terv definíciójában definiált értékekkel.
 
 ### <a name="example---ordered-resource-group"></a>Példa szerint rendezett erőforráscsoport
 
-Ebben a példában a terv definíciója egy olyan erőforráscsoportot tartalmaz `dependsOn`, amely egyéni sorrendi sorrendet definiált egy érték beírásával, valamint egy szabványos erőforráscsoporthoz. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
+Ebben a példában a terv definíciója olyan erőforráscsoportot tartalmaz, amely egyéni sorrendi sorrendet definiált a `dependsOn` értéknek a szabványos erőforráscsoporthoz való deklarálása mellett. Ebben az esetben a **assignPolicyTags** nevű összetevő feldolgozása a **rendezett-RG** erőforráscsoport előtt történik.
 a **standard-RG** az alapértelmezett sorrend szerint lesz feldolgozva.
 
 ```json
@@ -145,7 +144,7 @@ Ha olyan összetevő-függőség van deklarálva, amely nem változtatja meg az 
 
 ## <a name="next-steps"></a>További lépések
 
-- A [terv életciklusának](lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](lifecycle.md).
 - A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása.
 - A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek.
 - A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása.

@@ -7,12 +7,12 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203926"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981212"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása Python-val
 
@@ -50,7 +50,7 @@ Az alkalmazásban adja meg a tárfiók nevét és a fiókkulcsot, hogy létrehoz
 
 1. Nyissa meg az *example.py* fájlt az IDE Megoldáskezelőjéből.
 
-1. Cserélje le `accountname` az `accountkey` és az értékeket a Storage-fiók nevére és kulcsára:
+1. Cserélje le a `accountname` és a `accountkey` értékeket a Storage-fiók nevére és kulcsára:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -96,8 +96,8 @@ A minta program egy tesztoldalt hoz létre a *dokumentumok* mappában, feltölti
 
 1. A folytatás előtt lépjen a *dokumentumok* mappájába, és keresse meg a két fájlt.
 
-    * *QuickStart_\<univerzálisan egyedi azonosító\>*
-    * *QuickStart_\<univerzálisan egyedi azonosítóval\>rendelkező _DOWNLOADED*
+    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2*
+    * *QuickStart_ @ no__t-1universally-Unique-Identifier @ no__t-2_DOWNLOADED*
 
 1. Ha megnyitja őket, láthatja, hogy megegyeznek.
 
@@ -111,7 +111,7 @@ Most, hogy tisztában van a minta működésével, nyissa meg az *example.py* f�
 
 ### <a name="get-references-to-the-storage-objects"></a>Referenciák beszerzése a tárolóobjektumokhoz
 
-Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. Meghívja a tárolót `quickstartblobs`. 
+Ebben a szakaszban létre fogja hozni az objektumok példányát és egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. Hívja meg `quickstartblobs` tárolót. 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -144,7 +144,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Ha szeretne feltölteni egy fájlt a blobba, szüksége lesz a fájl teljes útvonalára, amelyet a helyi meghajtón található könyvtárnév és fájlnév összefűzésével kap meg. Ezt követően feltöltheti a fájlt a megadott útvonalra a `create_blob_from_path` metódus használatával. 
 
-A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat a *full_path_to_file* és a blob nevével *local_file_name*. Ez a példa feltölti a fájlt a tárolóba `quickstartblobs`:
+A mintakód létrehoz egy helyi fájlt, amelyet a rendszer a feltöltéshez és a letöltéshez használ, tárolja a rendszerfeltöltő fájlokat a *full_path_to_file* és a blob nevével *local_file_name*. Ez a példa feltölti a fájlt a `quickstartblobs` nevű tárolóba:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -169,7 +169,7 @@ A Blob-tárolóval többféle feltöltési módszer használható. Ha például 
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Az alábbi kód létrehoz egy `generator` metódust `list_blobs` a metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
+A következő kód egy `generator` értéket hoz létre a `list_blobs` metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
 
 ```python
 # List the blobs in the container.
@@ -182,8 +182,8 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>A blobok letöltése
 
 
-Töltse le a blobokat a helyi lemezre a `get_blob_to_path` metódus használatával.
-A következő kód letölti a korábban feltöltött blobot. A rendszer hozzáfűzi a *_DOWNLOADED* a blob nevéhez, így mindkét fájlt láthatja a helyi lemezen. "
+A `get_blob_to_path` metódus használatával töltse le a blobokat a helyi lemezre.
+A következő kód letölti a korábban feltöltött blobot. A rendszer hozzáfűzi a *_DOWNLOADED* a blob nevéhez, így mindkét fájlt láthatja a helyi lemezen.
 
 ```python
 # Download the blob(s).

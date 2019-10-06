@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 706960f18080b4883735195b21ed05c3763e8617
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264505"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981198"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
@@ -31,7 +31,7 @@ A Time Series Insights négy fő feladata:
 - A Time Series Insights a Time Series Insights Explorerben elérhetővé teszi a beépített vizualizációkat. 
 - A Time Series Insights egy lekérdezési szolgáltatást is biztosít, amely a Time Series Insights Explorerben és a könnyen integrálható API-kkal is használható az idősorozat-adathalmazok egyéni alkalmazásokba való beágyazásához.
 
-Ha belső felhasználásra vagy külső ügyfelek használatára vonatkozó alkalmazást hoz létre, használhatja a Time Series Insightst háttérként. Használhatja az idősorozat-adatokat indexelni, tárolni és összesíteni. Az egyéni vizualizációk és felhasználói élmények létrehozásához használja az [ügyfél-SDK](tutorial-explore-js-client-lib.md)-t. A Time Series Insights több [lekérdezési API](how-to-shape-query-json.md) -val is rendelkezik a testreszabott forgatókönyvek engedélyezéséhez.
+Ha belső felhasználásra vagy külső ügyfelek használatára vonatkozó alkalmazást hoz létre, használhatja a Time Series Insightst háttérként. Használhatja az idősorozat-adatokat indexelni, tárolni és összesíteni. Az egyéni vizualizációk és felhasználói élmények létrehozásához használja az [ügyfél-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. A Time Series Insights több [lekérdezési API](how-to-shape-query-json.md) -val is rendelkezik a testreszabott forgatókönyvek engedélyezéséhez.
 
 Az idősorozat-adatok mutatják be, hogy hogyan változik az idők során egy adategység vagy folyamat. Az idősorozat-adatsorok az időbélyegzők szerint vannak indexelve, és az idő az a legértelmesebb tengely, amely az ilyen jellegű adatrendezést végzi. Az idősorozat-adatsorok általában szekvenciális sorrendben érkeznek, ezért a rendszer az adatbázis frissítése helyett beszúrásként kezeli.
 

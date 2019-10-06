@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: e5697d00c2b0a869667d74e93c3ccae593bf200b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231931"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978481"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -24,7 +23,7 @@ Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzá
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válasszaki a tervrajzokat.
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **tervrajzokat**.
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról.
 
@@ -34,11 +33,11 @@ Tervezet hozzárendelésekor a hozzárendelés frissíthető. A meglévő hozzá
 
 1. A **terv hozzárendelése** lapon a rendszer az eredeti hozzárendelés összes értékével előre kitöltött értéket fogja betölteni. Megváltoztathatja a **terv definíciójának verzióját**, a **zárolás hozzárendelésének** állapotát, valamint a terv definíciójában létező dinamikus paramétereket. Kattintson a **hozzárendelés** gombra a módosítások végrehajtásakor.
 
-1. A frissített hozzárendelés részletei lapon tekintse meg az új állapotot. Ebben a példában a hozzárendelést felvettük a zárolásra.
+1. A frissített hozzárendelés részletei lapon tekintse meg az új állapotot. Ebben a példában a hozzárendelést felvettük a **zárolásra** .
 
    ![Egy meglévő terv hozzárendelésének frissítése – a zárolási mód módosult](../media/update-existing-assignments/updated-assignment.png)
 
-1. A legördülő lista használatával megismerheti a többi **hozzárendelési művelet** részleteit. A felügyelt **erőforrások** a kijelölt hozzárendelési művelet által frissülő táblázata.
+1. A legördülő lista használatával megismerheti a többi **hozzárendelési művelet** részleteit. A **felügyelt erőforrások** a kijelölt hozzárendelési művelet által frissülő táblázata.
 
    ![Tervrajz-hozzárendelés hozzárendelési műveletei](../media/update-existing-assignments/assignment-operations.png)
 
@@ -67,7 +66,7 @@ Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapíts
 
 ## <a name="next-steps"></a>További lépések
 
-- A [terv életciklusának](../concepts/lifecycle.md)megismerése.
+- Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.
 - A [tervekkel kapcsolatos műveleti sorrend](../concepts/sequencing-order.md) testreszabásának elsajátítása.
 - A [tervek erőforrás-zárolásának](../concepts/resource-locking.md) alkalmazásával kapcsolatos részletek.

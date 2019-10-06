@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3814b5169a687a854cb977eee90fbf6c3fd45afe
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918697"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980976"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
 A következő cikk azt ismerteti, hogy az Azure-tervrajzok CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintáját a CIS-Microsoft Azure a Founds-referenciaértékekre vonatkozó ajánlások alapján. A javaslatokkal kapcsolatos további információkért lásd: a [CIS Microsoft Azure alapítványok alapjai](https://www.cisecurity.org/benchmark/azure/).
 
 A következő leképezések a **CIS Microsoft Azure alapítványok teljesítményteszt v 1.1.0** javaslataira vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy konkrét javaslat-hozzárendelésre ugorhat.
-A leképezett javaslatok többsége [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósul meg. A teljes kezdeményezés áttekintéséhez nyissa meg a szabályzatot a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki  **\[az\] előzetes verziójú audit CIS Microsoft Azure a founds benchmark v 1.1.0 javaslatokat, és telepítsen speciális virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
+A leképezett javaslatok többsége [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósul meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[Preview @ no__t-2 audit CIS Microsoft Azure a founds benchmark v 1.1.0 javaslatait, és telepítsen konkrét virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezés támogatására.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -201,7 +200,7 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely az ehhez a CIS-javaslathoz igazodik.
 
-- \[Előzetes\]verzió: Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban
+- \[Preview @ no__t-1: Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Ellenőrizze, hogy a webalkalmazás átirányítja-e az összes HTTP-forgalmat a HTTPS-re Azure App Service
 
@@ -214,8 +213,7 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 Most, hogy áttekintette a CIS Microsoft Azure Founds teljesítményteszt-tervezetének vezérlési leképezését, a következő cikkben tájékozódhat a tervről, vagy felkeresheti a Azure Policy a Azure Portal a kezdeményezés hozzárendeléséhez:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure alapítványok teljesítményteszt-tervezete – áttekintés](./index.md)
-> [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
+> [CIS Microsoft Azure alapítványok teljesítményteszt-tervezete – áttekintés](./index.md)@no__t – 1[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
 További cikkek a tervekről és azok használatáról:
 
