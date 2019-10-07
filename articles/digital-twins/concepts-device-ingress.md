@@ -1,19 +1,19 @@
 ---
-title: Eszközök csatlakoztatása és telemetria az Azure digitális Twins szolgáltatással | Microsoft Docs
+title: Az eszközök csatlakoztatása és a telemetria bejövő állapota – Azure digitális Twins | Microsoft Docs
 description: Az eszközök Azure digitális Twins-beli üzembe helyezésének áttekintése
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: alinast
-ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.date: 09/17/2019
+ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638521"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950019"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -21,7 +21,7 @@ Az eszközök és érzékelők által továbbított telemetria-adatmennyiség b�
 
 Első lépésként hozzon létre egy Azure IoT Hub-erőforrást a térbeli gráf gyökerében. A IoT Hub erőforrás lehetővé teszi az összes eszköz számára a legfelső szintű terület elérését az üzenetek küldéséhez. A IoT Hub létrehozása után regisztrálja az eszközöket a digitális Twins-példányon belüli érzékelőkkel. Az eszközök az [Azure IoT ESZKÖZOLDALI SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)-n keresztül küldhetnek az adatfájlokat egy digitális Twins szolgáltatásba.
 
-Az eszközök előkészítésének lépésenkénti útmutatója a [digitális ikrek üzembe helyezését és konfigurálását](tutorial-facilities-setup.md)ismertető oktatóanyagban található. Egy pillantással a lépések a következők:
+Az eszközök előkészítésének lépésenkénti útmutatója a [digitális ikrek üzembe helyezését és konfigurálását ismertető oktatóanyagban](tutorial-facilities-setup.md)található. Egy pillantással a lépések a következők:
 
 - Helyezzen üzembe egy digitális Twins-példányt a [Azure Portal](https://portal.azure.com).
 - Hozzon létre szóközt a gráfban.
@@ -39,7 +39,7 @@ A következő részekben megtudhatja, hogyan kérheti le a IoT Hub eszköz kapcs
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-A IoT hub eszköz kapcsolódási karakterláncának beszerzéséhez `includes=ConnectionString` egy paraméterrel megadhatja az eszköz API-ját. Az eszköz GUID azonosítóját vagy a hardver AZONOSÍTÓját szűrheti az adott eszköz kereséséhez.
+Az eszköz API-ját egy `includes=ConnectionString` paraméterrel megadhatja az IoT Hub eszköz kapcsolódási karakterláncának beolvasásához. Az eszköz GUID azonosítóját vagy a hardver AZONOSÍTÓját szűrheti az adott eszköz kereséséhez.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -65,9 +65,9 @@ Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, ho
 
 ### <a name="telemetry-properties"></a>Telemetria tulajdonságai
 
- Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típus tulajdonságainál néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
+ Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típusú tulajdonságok esetében néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
 
-| Tulajdonság neve | Érték | Kötelező | Leírás |
+| Tulajdonság neve | Value | Szükséges | Leírás |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az **üzenetet**küldő érzékelő egyedi azonosítója. Ennek az értéknek meg kell egyeznie egy objektum **HardwareId** tulajdonságával, hogy a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |

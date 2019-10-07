@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
-ms.translationtype: HT
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716693"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063810"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A **RelyingParty** elem határozza meg, hogy a rendszer hogyan kényszerítse ki a Azure Active Directory (Azure ad) B2C aktuális kérelmét. Azon jogcímek listáját is meghatározza, amelyeknek a függő entitás (RP) alkalmazásnak a kiállított jogkivonat részeként kell szerepelnie. Egy RP-alkalmazás, például web-, mobil-vagy asztali alkalmazás, meghívja az RP-házirend fájlját. Az RP-házirend fájl egy adott feladatot hajt végre, például bejelentkezik, jelszó alaphelyzetbe állítása vagy profil szerkesztése. Több alkalmazás is használhatja ugyanazt az RP-szabályzatot, és egyetlen alkalmazás több házirendet is használhat. Minden RP-alkalmazás ugyanazt a jogkivonatot fogadja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad.
+A **RelyingParty** elem határozza meg, hogy a felhasználó milyen útra kényszeríti az aktuális kérelem Azure Active Directory B2C (Azure ad B2C). Azon jogcímek listáját is meghatározza, amelyeknek a függő entitás (RP) alkalmazásnak a kiállított jogkivonat részeként kell szerepelnie. Egy RP-alkalmazás, például web-, mobil-vagy asztali alkalmazás, meghívja az RP-házirend fájlját. Az RP-házirend fájl egy adott feladatot hajt végre, például bejelentkezik, jelszó alaphelyzetbe állítása vagy profil szerkesztése. Több alkalmazás is használhatja ugyanazt az RP-szabályzatot, és egyetlen alkalmazás több házirendet is használhat. Minden RP-alkalmazás ugyanazt a jogkivonatot fogadja a jogcímekkel, és a felhasználó ugyanazon a felhasználói úton halad.
 
 A következő példa egy **RelyingParty** elemet mutat be a *B2C_1A_signup_signin* -házirend fájljában:
 
@@ -82,7 +82,7 @@ A választható **RelyingParty** elem a következő elemeket tartalmazza:
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
-Az `DefaultUserJourney` elem az alap-vagy a kiterjesztési szabályzatban általában meghatározott felhasználói út azonosítójának hivatkozását adja meg. Az alábbi példák a **RelyingParty** elemben megadott regisztrációs vagy bejelentkezési felhasználói utat mutatják be:
+A `DefaultUserJourney` elem az alap-vagy a kiterjesztési szabályzatban általában meghatározott felhasználói út azonosítójának hivatkozását adja meg. Az alábbi példák a **RelyingParty** elemben megadott regisztrációs vagy bejelentkezési felhasználói utat mutatják be:
 
 *B2C_1A_signup_signin* házirend:
 
@@ -102,7 +102,7 @@ Az `DefaultUserJourney` elem az alap-vagy a kiterjesztési szabályzatban által
 
 A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
 
@@ -113,7 +113,7 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Az egyszeri bejelentkezés (SSO) munkamenet-viselkedésének hatóköre a felhasználói úton. |
-| SessionExpiryType |0:1 | A munkamenet hitelesítési viselkedése. Lehetséges értékek: `Rolling` vagy `Absolute`. Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a felhasználó addig marad bejelentkezve, amíg a felhasználó folyamatosan aktív az alkalmazásban. Az `Absolute` érték azt jelzi, hogy a felhasználónak az alkalmazás-munkamenet élettartama által megadott időszak után újra hitelesítenie kell magát. |
+| SessionExpiryType |0:1 | A munkamenet hitelesítési viselkedése. Lehetséges értékek: `Rolling` vagy `Absolute`. A @no__t 0 érték (alapértelmezett) azt jelzi, hogy a felhasználó mindaddig bejelentkezett marad, amíg a felhasználó folyamatosan aktív az alkalmazásban. A @no__t 0 érték azt jelzi, hogy a felhasználónak az alkalmazás-munkamenet élettartama által megadott időszak után újra hitelesítenie kell magát. |
 | SessionExpiryInSeconds | 0:1 | Az Azure AD B2C's munkamenet-cookie élettartama a sikeres hitelesítés után a felhasználó böngészőjében tárolt egész számként van megadva. |
 | JourneyInsights | 0:1 | A használni kívánt Azure Application Insights-kialakítási kulcs. |
 | ContentDefinitionParameters | 0:1 | A Content definition Load URI-hoz hozzáfűzni kívánt kulcs érték párok listája. |
@@ -122,23 +122,23 @@ A **UserJourneyBehaviors** elem a következő elemeket tartalmazza:
 
 A **SingleSignon** elem a következő attribútumban szerepel:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Scope | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed` `Tenant` `Policy`,,, vagy. `Application` Az `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. Az `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
-| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a bejelentkezett [](active-directory-b2c-reference-kmsi-custom.md)adatok megtartása című témakörben talál. |
+| Scope | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed`, `Tenant`, `Application` vagy `Policy`. A @no__t 0 érték azt jelzi, hogy a viselkedés le van tiltva. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. A @no__t 0 érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. A @no__t 0 érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. A @no__t 0 érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. A @no__t 0 érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
+| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](active-directory-b2c-reference-kmsi-custom.md)című témakörben talál. |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| TelemetryEngine | Igen | Az értéknek a `ApplicationInsights`számnak kell lennie. |
+| TelemetryEngine | Igen | Az értéknek `ApplicationInsights` értékűnek kell lennie. |
 | InstrumentationKey | Igen | Az Application ininsights elem kialakítási kulcsát tartalmazó karakterlánc. |
-| DeveloperMode | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`a Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás kiválóan alkalmas a fejlesztésre, de nagy mennyiségű korlátozott méretekben a részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, `true`ha ez az érték be van állítva.|
-| ClientEnabled | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`a a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési oldal és az ügyféloldali hibák nyomon követéséhez. |
-| ServerEnabled | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`a, a a meglévő UserJourneyRecorder JSON-t a Application Insights egyéni eseményként küldi el. |
-| TelemetryVersion | Igen | Az értéknek a `1.0.0`számnak kell lennie. |
+| DeveloperMode | Igen | Lehetséges értékek: `true` vagy `false`. Ha @no__t – 0, Application Insights felgyorsítja a telemetria a feldolgozási folyamaton keresztül. Ez a beállítás kiválóan alkalmas a fejlesztésre, de nagy mennyiségű korlátozott méretekben a részletes tevékenységi naplók csak az egyéni szabályzatok fejlesztéséhez nyújtanak segítséget. Ne használja a fejlesztési módot éles környezetben. A naplók összegyűjtik az identitás-szolgáltatók által és a fejlesztés során eljuttatott összes jogcímet. Ha éles környezetben használja, a fejlesztő vállalja a személyes azonosításra alkalmas információk beszedésének felelősségét az App bepillantást tartalmazó naplóban. Ezeket a részletes naplókat csak akkor gyűjti a rendszer, ha az érték értéke `true`.|
+| ClientEnabled | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`, a Application Insights ügyféloldali parancsfájlt küld a nyomkövetési és ügyféloldali hibák nyomon követéséhez. |
+| ServerEnabled | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`, a meglévő UserJourneyRecorder JSON-t küldi el egyéni eseményként Application Insights. |
+| TelemetryVersion | Igen | Az értéknek `1.0.0` értékűnek kell lennie. |
 
 További információkért lásd: [naplók gyűjtése](active-directory-b2c-troubleshoot-custom.md)
 
@@ -146,7 +146,7 @@ További információkért lásd: [naplók gyűjtése](active-directory-b2c-trou
 
 A Azure AD B2Cban lévő egyéni szabályzatok használatával a paramétereket egy lekérdezési karakterláncban lehet elküldeni. A paraméterek a HTML-végpontnak való átadásával dinamikusan változtathatja az oldal tartalmát. Például megváltoztathatja a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalán egy olyan paraméter alapján, amelyet a web- vagy mobilalkalmazásából ad át. Azure AD B2C átadja a lekérdezési karakterlánc paramétereit a dinamikus HTML-fájlba, például az aspx-fájlba.
 
-A következő példa egy nevű `campaignId` paramétert ad át `hawaii` a lekérdezési karakterláncban szereplő értékkel:
+A következő példa egy `campaignId` nevű paramétert ad át `hawaii` értékkel a lekérdezési karakterláncban:
 
 `https://login.microsoft.com/contoso.onmicrosoft.com/oauth2/v2.0/authorize?pB2C_1A_signup_signin&client_id=a415078a-0402-4ce3-a9c6-ec1947fcfb3f&nonce=defaultNonce&redirect_uri=http%3A%2F%2Fjwt.io%2F&scope=openid&response_type=id_token&prompt=login&campaignId=hawaii`
 
@@ -158,7 +158,7 @@ A **ContentDefinitionParameters** elem a következő elemet tartalmazza:
 
 A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Name (Név) | Igen | A kulcs-érték párok neve. |
 
@@ -168,9 +168,9 @@ További információ: [a felhasználói felület konfigurálása dinamikus tart
 
 A **kivonatjogcím** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | Az értéknek a `PolicyProfile`számnak kell lennie. |
+| Id | Igen | Az értéknek `PolicyProfile` értékűnek kell lennie. |
 
 A **kivonatjogcím** a következő elemeket tartalmazza:
 
@@ -185,9 +185,9 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 
 A **protokoll** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. Az `OpenIdConnect` érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll szabványát jelöli az Oasis-specifikációnak megfelelően. Ne használjon SAML-jogkivonatot éles környezetben. |
+| Name (Név) | Igen | A technikai profil részeként használt Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek: `OpenIdConnect` vagy `SAML2`. A @no__t 0 érték az OpenID Connect 1,0 protokoll standard értékét jelöli az OpenID Foundation-specifikációnak megfelelően. A `SAML2` az SAML 2,0 protokoll standard értéket jelöli az OASIS-specifikációnak megfelelően. Ne használjon SAML-jogkivonatot éles környezetben. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
@@ -199,7 +199,7 @@ A **OutputClaims** elem a következő elemet tartalmazza:
 
 A **OutputClaim** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Igen | A házirend fájljának **ClaimsSchema** szakaszában már definiált **claimType** mutató hivatkozás. |
 | DefaultValue | Nem | Alapértelmezett érték, amely akkor használható, ha a jogcím értéke üres. |
@@ -208,16 +208,16 @@ A **OutputClaim** elem a következő attribútumokat tartalmazza:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 A **SubjectNameingInfo** elemmel szabályozhatja a jogkivonat tulajdonosának értékét:
-- **JWT-jogkivonat** – `sub` a jogcím. Ez az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Felhasználható a biztonságos engedélyezési ellenőrzések elvégzésére, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. További információ: [jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](active-directory-b2c-token-session-sso.md).
-- **SAML-jogkivonat** – `<Subject><NameID>` a tárgy elemet azonosító elem.
+- **JWT token** – a `sub` jogcím. Ez az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat, például egy alkalmazás felhasználóját érvényesíti. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Felhasználható a biztonságos engedélyezési ellenőrzések elvégzésére, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel. További információ: [jogkivonat, munkamenet és egyszeri bejelentkezés konfigurálása](active-directory-b2c-token-session-sso.md).
+- **SAML-jogkivonat** – a `<Subject><NameID>` elem, amely a tárgy elemet azonosítja.
 
 A **SubjectNamingInfo** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ClaimType | Igen | A kimeneti jogcímek **PartnerClaimType**mutató hivatkozás. A kimeneti jogcímeket a függő entitások házirendjének **OutputClaims** -gyűjteményében kell meghatározni. |
 
-Az alábbi példa bemutatja, hogyan határozhat meg egy OpenID Connect függő entitást. A tulajdonos neve információ a következőképpen `objectId`van konfigurálva:
+Az alábbi példa bemutatja, hogyan határozhat meg egy OpenID Connect függő entitást. A tulajdonos neve információ a `objectId` értékkel van konfigurálva:
 
 ```XML
 <RelyingParty>
@@ -237,7 +237,7 @@ Az alábbi példa bemutatja, hogyan határozhat meg egy OpenID Connect függő e
   </TechnicalProfile>
 </RelyingParty>
 ```
-Az JWT token tartalmazza a `sub` felhasználó objectId rendelkező jogcímet:
+Az JWT token tartalmazza a `sub` jogcímet a felhasználó objectId:
 
 ```JSON
 {
