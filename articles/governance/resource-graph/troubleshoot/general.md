@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000525"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976606"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -69,11 +68,11 @@ Az Azure Resource Graph REST API lekérdező ügyfelek megkapják a _500_ (bels�
 
 #### <a name="cause"></a>Ok
 
-Az Azure Resource Graph REST API csak `Content-Type` az **alkalmazás-vagy JSON-** t támogatja. Néhány REST-eszköz vagy-ügynök alapértelmezett értéke **text/plain**, amelyet a REST API nem támogat.
+Az Azure Resource Graph REST API csak az **Application/json**`Content-Type` használatát támogatja. Néhány REST-eszköz vagy-ügynök alapértelmezett értéke **text/plain**, amelyet a REST API nem támogat.
 
 #### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök rendelkezik-e az `Content-Type` **alkalmazáshoz/JSON-** hoz konfigurált REST API fejléctel.
+Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök REST API fejléce `Content-Type` van-e konfigurálva az **alkalmazáshoz/JSON**-hoz.
 ### <a name="rest-403"></a>Forgatókönyv Nincs olvasási engedélye a listában szereplő összes előfizetéshez
 
 #### <a name="issue"></a>Probléma

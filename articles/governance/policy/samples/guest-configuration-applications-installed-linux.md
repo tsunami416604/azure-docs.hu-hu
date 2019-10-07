@@ -1,27 +1,26 @@
 ---
-title: Minta - naplózási, ha az alkalmazásokat a Linux rendszerű virtuális gépeken belül nincsenek telepítve
-description: Ez a minta Vendég Szabályzatkonfiguráció-kezdeményezéshez és definíciók naplózása a megadott alkalmazások nem települnek a Linux rendszerű virtuális gépeken belül.
+title: Minta – naplózás, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépeken
+description: Ez a példa a házirend vendég konfigurációs kezdeményezésére és a definíciók naplózására, ha a megadott alkalmazások nem települnek a linuxos virtuális gépeken belül.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204015"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977033"
 ---
-# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Minta - naplózási, ha a megadott alkalmazások nincsenek telepítve a Linux rendszerű virtuális gépeken belül
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Minta – naplózás, ha a megadott alkalmazások nincsenek telepítve a Linux rendszerű virtuális gépeken
 
-A Szabályzatkonfiguráció Vendég-kezdeményezéshez a megadott alkalmazás nem telepítése Linux rendszerű virtuális gépeken belül naplózási eseményt hoz létre. A beépített kezdeményezés csomagazonosítója `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Ez a házirend-vendég konfigurációs kezdeményezés egy naplózási eseményt hoz létre, ha a megadott alkalmazások nem települnek a linuxos virtuális gépeken belül. A beépített kezdeményezés azonosítója `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
 
 > [!IMPORTANT]
-> Az összes Vendég konfigurációs kezdeményezések épülnek fel, **naplózási** és **deployIfNotExists** szabályzat-definíciókat. Hozzárendelés, csak a szabályzatdefiníciók egyik Vendég konfiguráció nem megfelelő működéséhez vezethet.
+> Az összes vendég konfigurációs kezdeményezés **naplózási** és **deployIfNotExists** szabályzat-definícióból áll. Ha csak az egyik házirend-definíciót rendeli hozzá, a vendég konfigurációja nem működik megfelelően.
 
-Ez a minta használatával rendelheti hozzá:
+Ezt a mintát a következő használatával rendelheti hozzá:
 
 - Az [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
@@ -30,29 +29,29 @@ Ez a minta használatával rendelheti hozzá:
 
 ## <a name="components-of-the-initiative"></a>A kezdeményezés összetevői
 
-Ez [Vendég konfigurációs](../concepts/guest-configuration.md) kezdeményezés a következő házirendek épül fel:
+A [vendég konfigurációs](../concepts/guest-configuration.md) kezdeményezés a következő szabályzatokból áll:
 
-- [naplózási](#audit-definition) -alkalmazás nem telepítése Linux rendszerű virtuális gépeken belül naplózása
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [deployIfNotExists](#deployIfNotExists-definition) -naplózása, amikor alkalmazásokat a Linux rendszerű virtuális gépeken belül nincsenek telepítve a virtuális gép üzembe helyezése bővítmény
-  - ID: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
+- [naplózás](#audit-definition) – naplózás, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépekre
+  - AZONOSÍTÓ: @NO__T – 0
+- [deployIfNotExists](#deployIfNotExists-definition) – virtuálisgép-bővítmény üzembe helyezése naplózásra, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépeken
+  - AZONOSÍTÓ: @NO__T – 0
 
-### <a name="initiative-definition"></a>Kezdeményezésdefiníció
+### <a name="initiative-definition"></a>Kezdeményezési definíció
 
-A kezdeményezés van létrehozva a **naplózása** és **deployIfNotExists** együtt definíciók és a [kezdeményezés paraméterek](#initiative-parameters). Ez az a JSON a definíció.
+A kezdeményezést úgy hozza létre, hogy összekapcsolja a **naplózási** és a **deployIfNotExists** -definíciókat, valamint a [kezdeményezés paramétereit](#initiative-parameters). Ez a definíció JSON-értéke.
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
-### <a name="initiative-parameters"></a>Kezdeményezésparaméterek
+### <a name="initiative-parameters"></a>Kezdeményezési paraméterek
 
 |Name (Név) |Típus |Leírás |
 |---|---|---|
-|applicationName |String |Alkalmazás neve. Példa: "python", "powershell" vagy "python, powershell" például egy vesszővel tagolt lista. Használat \* helyettesítő, például a "power\*". |
+|applicationName |Sztring |Az alkalmazások nevei. Például: "Python", "PowerShell" vagy vesszővel tagolt lista, például "Python, PowerShell". Használjon \* karaktert a helyettesítő karakterekkel való egyezéshez, például: "Power @ no__t-1". |
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
 
-Ebben a példában a paraméterben, alkalmazások telepítése _python_ és _powershell_ ellenőrzi.
+Ebben a példában a _Python_ és a _PowerShell_ alkalmazások telepítése naplózva van.
 
 ```json
 {
@@ -62,64 +61,64 @@ Ebben a példában a paraméterben, alkalmazások telepítése _python_ és _pow
 }
 ```
 
-Csak a **deployIfNotExists** szabályzat-definíció a kezdeményezési paraméterek használ.
+Csak a **deployIfNotExists** szabályzat definíciója használja a kezdeményezés paramétereit.
 
-### <a name="audit-definition"></a>definíció naplózása
+### <a name="audit-definition"></a>naplózási definíció
 
-A JSON-szabályok definiálása a **naplózási** szabályzat-definíció.
+A **naplózási** házirend definíciójának szabályait definiáló JSON.
 
 [!code-json[audit-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/audit/azurepolicy.rules.json "audit policy rules (JSON)")]
 
-### <a name="deployifnotexists-definition"></a>deployIfNotExists definíciója
+### <a name="deployifnotexists-definition"></a>deployIfNotExists-definíció
 
-A JSON-szabályok definiálása a **deployIfNotExists** szabályzat-definíció.
+A JSON a **deployIfNotExists** szabályzat definíciójának szabályait határozza meg.
 
 [!code-json[deployIfNotExists-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/deployIfNotExists/azurepolicy.rules.json "deployIfNotExists policy rules (JSON)")]
 
-A **deployIfNotExists** a szabályzatdefiníció határozza meg a csoportházirend érvényesítése az Azure-rendszerképek:
+A **deployIfNotExists** szabályzat definíciója meghatározza azokat az Azure-lemezképeket, amelyeken a házirend ellenőrzése megtörtént:
 
-|Gyártó |Ajánlat |Termékváltozat |
+|Kiadó |Ajánlat |SKU |
 |-|-|-|
-|OpenLogic |CentOS\* |Mindenhol, kivéve 6\* |
-|RedHat |RHEL |Mindenhol, kivéve 6\* |
-|RedHat |osa | Az összes |
-|credativ |Debian | Mindenhol, kivéve 7\* |
-|SUSE |SLES\* |Mindenhol, kivéve 11\* |
-|Kanonikus| UbuntuServer |Mindenhol, kivéve 12\* |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Az összes |
-|microsoft-dsvm |azureml |Az összes |
-|cloudera |cloudera-centos-os |Mindenhol, kivéve 6\* |
-|cloudera |cloudera-altus-centos-os |Az összes |
-|microsoft-ads |linux\* |Az összes |
-|microsoft-aks |Az összes |Az összes |
-|AzureDatabricks |Az összes |Az összes |
-|qubole-Inc vállalattól |Az összes |Az összes |
-|datastax |Az összes |Az összes |
-|A Couchbase |Az összes |Az összes |
-|scalegrid |Az összes |Az összes |
-|Ellenőrzőpont |Az összes |Az összes |
-|paloaltonetworks |Az összes |Az összes |
+|OpenLogic |CentOS @ no__t – 0 |Mind a 6 @ no__t-0 kivételével |
+|RedHat |RHEL |Mind a 6 @ no__t-0 kivételével |
+|RedHat |OSA | Összes |
+|credativ |Debian | Mind a 7 @ no__t-0 kivételével |
+|SUSE |SLES @ NO__T – 0 |Mind a 11 @ no__t-0 kivételével |
+|Canonical| UbuntuServer |Mind a 12 @ no__t-0 kivételével |
+|Microsoft – dsvm |linux-data-science-vm-ubuntu |Összes |
+|Microsoft – dsvm |azureml |Összes |
+|cloudera |cloudera-centos-os |Mind a 6 @ no__t-0 kivételével |
+|cloudera |cloudera-altus-centos-os |Összes |
+|microsoft-ads |linux\* |Összes |
+|microsoft-aks |Összes |Összes |
+|AzureDatabricks |Összes |Összes |
+|qubole-Inc |Összes |Összes |
+|datastax |Összes |Összes |
+|couchbase |Összes |Összes |
+|scalegrid |Összes |Összes |
+|Checkpoint |Összes |Összes |
+|paloaltonetworks |Összes |Összes |
 
-A **üzembe helyezési** a szabály részét adja át a _installedApplication_ paramétert a virtuális gépen Vendég konfigurációja ügynökhöz. Ez a konfiguráció lehetővé teszi, hogy az ügynök az ellenőrzések elvégzéséhez és a jelentés megfelelőség biztonsági keresztül a **naplózási** szabályzat-definíció.
+A szabály **központi telepítési** része a _installedApplication_ paramétert átadja a virtuális gép vendég konfigurációs ügynökének. Ez a konfiguráció lehetővé teszi az ügynök számára, hogy a **naplózási** házirend definícióján keresztül visszaállítsa a megfelelőségi és jelentési megfelelőségi műveleteket.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Után az **naplózási** és **deployIfNotExists** definíciók jönnek létre a portálon, azt javasoljuk, hogy be őket egy [kezdeményezés](../concepts/definition-structure.md#initiatives) hozzárendelés.
+Miután a rendszer létrehozta a **naplózási** és **deployIfNotExists** -definíciókat a portálon, azt javasoljuk, hogy csoportosítsa azokat egy hozzárendelési [kezdeményezésre](../concepts/definition-structure.md#initiatives) .
 
-### <a name="create-copy-of-audit-definition"></a>Naplózási definíció másolatának létrehozása
+### <a name="create-copy-of-audit-definition"></a>A naplózási definíció másolatának létrehozása
 
-[![A házirend-minta üzembe helyezése Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![Deploy az Azure gov-hoz](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
-A gombok segítségével üzembe helyezése a portálon keresztül másolatot készít a **naplózási** szabályzat-definíció.
-Anélkül a párosított **deployIfNotExists** szabályzatdefiníciót, a Vendég-konfiguráció nem fog megfelelően működni.
+Ha ezeket a gombokat a portálon keresztül telepíti, a a **naplózási** házirend definíciójának másolatát hozza létre.
+A párosított **deployIfNotExists** házirend-definíció nélkül a vendég konfigurációja nem fog megfelelően működni.
 
-### <a name="create-copy-of-deployifnotexists-definition"></a>Másolat deployIfNotExists-definíció létrehozása
+### <a name="create-copy-of-deployifnotexists-definition"></a>DeployIfNotExists-definíció másolatának létrehozása
 
-[![A házirend-minta üzembe helyezése Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![Deploy az Azure gov-hoz](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
-A gombok segítségével üzembe helyezése a portálon keresztül másolatot készít a **deployIfNotExists** szabályzat-definíció. Anélkül a párosított **naplózási** szabályzatdefiníciót, a Vendég-konfiguráció nem fog megfelelően működni.
+Ha ezeket a gombokat használja a portálon keresztül történő üzembe helyezéshez, a létrehoz egy másolatot a **deployIfNotExists** házirend-definícióról. A párosított **naplózási** házirend meghatározása nélkül a vendég konfigurációja nem fog megfelelően működni.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -127,9 +126,9 @@ A gombok segítségével üzembe helyezése a portálon keresztül másolatot k�
 
 ### <a name="deploy-with-azure-powershell"></a>Üzembe helyezés az Azure PowerShell-lel
 
-#### <a name="copy-and-assign-the-initiative"></a>Másolja, majd a kezdeményezés hozzárendelése
+#### <a name="copy-and-assign-the-initiative"></a>A kezdeményezés másolása és kiosztása
 
-Ezeket a lépéseket, hozzon létre egy másolatot a kezdeményezés, amely tartalmazza a beépített szabályzatokat is **naplózási** és **deployIfNotExists** és a kezdeményező rendel egy erőforráscsoportot.
+Ezek a lépések létrehozzák a kezdeményezés egy példányát, amely magában foglalja a **naplózási** és **deployIfNotExists** beépített szabályzatait, és hozzárendeli a kezdeményezést egy erőforráscsoporthoz.
 
 ```azurepowershell-interactive
 # Create the policy initiative (Subscription scope)
@@ -164,9 +163,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicySetDefinition -Id $initDef
 ```
 
-#### <a name="copy-and-assign-the-audit-definition"></a>Másolja ki és a naplózási definíció hozzárendelése
+#### <a name="copy-and-assign-the-audit-definition"></a>A naplózási definíció másolása és kiosztása
 
-Ezeket a lépéseket, hozzon létre egy példányát a **naplózási** definícióját, és rendelje hozzá egy erőforráscsoportot. Ez a definíció nem fog megfelelően működni anélkül a párosított **deployIfNotExists** definícióját is hozzárendeli.
+Ezek a lépések létrehozzák a **naplózási** definíció másolatát, és hozzárendelik azt egy erőforráscsoporthoz. Ez a definíció nem fog megfelelően működni a párosított **deployIfNotExists** -definíció hozzárendelése nélkül is.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -189,10 +188,10 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Másolja, majd a deployIfNotExists-definíció hozzárendelése
+#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>A deployIfNotExists-definíció másolása és kiosztása
 
-Ezeket a lépéseket, hozzon létre egy példányát a **deployIfNotExists** definícióját, és rendelje hozzá egy erőforráscsoportot.
-Ez a definíció nem fog megfelelően működni anélkül a párosított **naplózási** definícióját is hozzárendeli.
+Ezek a lépések létrehozzák a **deployIfNotExists** definíciójának másolatát, és hozzárendelik azt egy erőforráscsoporthoz.
+Ez a definíció nem fog megfelelően működni a párosított **naplózási** definíció hozzárendelése nélkül is.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -233,17 +232,17 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Létrehoz egy Azure szabályzat-kezdeményezéshez. |
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Létrehoz egy Azure szabályzat-definíció. |
+| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Létrehoz egy Azure Policy kezdeményezést. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Létrehoz egy Azure Policy definíciót. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Egyetlen erőforráscsoportot kér le. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Létrehoz egy új Azure szabályzat-hozzárendelés-kezdeményezéshez vagy definíciója. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | A megadott egyszerű hozzáférést biztosít egy meglévő szerepkör-hozzárendelés. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Új Azure Policy-hozzárendelést hoz létre egy kezdeményezéshez vagy definícióhoz. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Egy meglévő szerepkör-hozzárendelést ad az adott rendszerbiztonsági tag számára. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Eltávolítja a kezdeményezések. |
+| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Egy kezdeményezés eltávolítása. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Eltávolít egy definíciót. |
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át további [Azure Policy minták](index.md).
-- Tudjon meg többet [Azure Vendég Szabályzatkonfiguráció](../concepts/guest-configuration.md).
-- Felülvizsgálat [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md).
+- Tekintse át a további [Azure Policy mintákat](index.md).
+- További információ a [Azure Policy vendég konfigurációról](../concepts/guest-configuration.md).
+- Tekintse át [Azure Policy definíciós struktúráját](../concepts/definition-structure.md).

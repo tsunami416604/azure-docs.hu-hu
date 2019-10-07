@@ -1,22 +1,21 @@
 ---
-title: Minta - naplózási Key vault-Kulcstartók nincs virtuális hálózat végpontok
-description: A szabályzatdefiníció-minta naplózza a Key Vault-tárolók nem virtuális hálózati szolgáltatásvégpontokkal rendelkező példányok észleléséhez.
+title: Minta – naplózási kulcstartók virtuális hálózati végpontok nélkül
+description: Ez a példa a házirend-definícióban naplózza Key Vault tárolókat a virtuális hálózati szolgáltatási végpontokat nem tartalmazó példányok észleléséhez.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: bc5ce4a6a2e52ed8d21de8db8da1f815293b61f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60506994"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976965"
 ---
-# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Minta – nincs virtuális hálózat végpontokkal rendelkező Key Vault-tárolók
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Minta – Key Vault tárolók virtuális hálózati végpontok nélkül
 
-Ez a szabályzat naplózza a Key Vault tároló, amely nem virtuális hálózati végpontokat. Használatával érvényesíti a biztonsági követelményeknek. További információkért lásd: [virtuális hálózati Szolgáltatásvégpontok a Key vaultban](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
+Ez a házirend olyan Key Vault-tárolók naplózását vizsgálja, amelyek nem rendelkeznek virtuális hálózati végpontokkal. A használatával kényszerítheti ki a biztonsági követelményeket. További információ: [virtuális hálózati szolgáltatás végpontjai Key Vault](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -46,12 +45,12 @@ A szabályzat szabályait Azure CLI és Azure PowerShell segítségével meghat�
 
 ### <a name="policy-parameters"></a>Szabályzatparaméterek
 
-A szabályzatdefiníció-minta nem tartozik paraméter definiálva.
+Ehhez a minta házirend-definícióhoz nincsenek definiálva paraméterek.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![A házirend-minta üzembe helyezése Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
-[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
+[![Deploy az Azure gov-hoz](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -180,10 +179,10 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív: [Hozzon létre, amikor a felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív: [A felügyeleti csoport törlése](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>További lépések
 

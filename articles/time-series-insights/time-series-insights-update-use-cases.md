@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264516"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981174"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights előzetes verzió használati esetei
 
@@ -38,7 +38,7 @@ Azure Time Series Insights egy teljes körű platformot kínáló szolgáltatás
 
 Több milliárd eseményt vizsgálhat meg és elemezhet azonnal, és feltárhatja a rendellenességeket, és megismerheti az adatok rejtett trendjeit. A Time Series Insights közel valós idejű teljesítményt nyújt az IoT- és DevOps-alapú elemzési számítási feladatoknál.
 
-[![Adatkezelő](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
+[@no__t – 1Data Explorer](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
 A legtöbb ügyfél egyetért azzal, hogy az információk beszerzéséhez szükséges minimális idő az Time Series Insights egyik kiemelkedő funkciója:
 
@@ -56,11 +56,11 @@ A Time Series Insightsban tárolt adatkezelés három fő módja van:
 
 - A második módszer a JavaScript SDK használata a hatékony diagramok és diagramok gyors beágyazásához a webalkalmazásban. A kód mindössze néhány sornyi kódot használhat a hatékony lekérdezések létrehozásához. A táblázatok, a tortadiagramok, a sávdiagramok, a intenzitástérképei és az adatrácsok feltöltésére használhatók. Ezen elemek mindegyike az SDK használatával létezik. Az SDK emellett absztrakt Time Series Insights lekérdezési API-kat is. Az SQL-hez hasonló predikátumok létrehozásához használhatja őket az irányítópulton megjeleníteni kívánt adatlekérdezéshez. Hibrid megjelenítési rétegbeli megoldások esetén a Time Series Insights paraméteres URL-címeket is kínál. Zökkenőmentes csatlakozást biztosítanak a Time Series Insights betekintő Explorerrel az adatelemzéshez.
 
-    * A JavaScript SDK-val kapcsolatos további információért olvassa el a [Time Series INSIGHTS js ügyféloldali kódtár](tutorial-explore-js-client-lib.md) és a [Time Series Insights ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.
+    * A JavaScript SDK-val kapcsolatos további információkért olvassa el a [Time Series INSIGHTS js ügyféloldali kódtár](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) és a [Time Series Insights ügyfél](https://github.com/Microsoft/tsiclient) dokumentációja című témakört.
 
     * További információ az URL-címek és az új felhasználói felület megosztásáról: [a Azure Time Series Insights Preview Explorerben](time-series-insights-update-explorer.md)tekintheti meg az adatmegjelenítést.
 
-- A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights rendelkezik olyan időbeli operátorokkal `from`, `to`mint `first`a, `last`, és. Olyan összesítésekkel és átalakításokkal rendelkezik, mint `average`a `min` `max`, `split by` `order by`,,, és `DateHistogram`. Emellett olyan `has`szűrési operátorokat is tartalmaz, mint a `greater than` `and`, `in` `or`, `REGEX`,, és. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja őket a saját készítésű vizualizációk kitöltésére a rendellenességek észlelése érdekében.
+- A harmadik módszer a hatékony API-k használata a Time Series Insights tárolt adatlekérdezéshez. Time Series Insights olyan időbeli operátorokkal rendelkezik, mint például a `from`, `to`, `first` és `last`. Olyan összesítésekkel és átalakításokkal rendelkezik, mint például a `average`, `min`, `max`, `split by`, `order by` és `DateHistogram`. Emellett olyan szűrési operátorokat is tartalmaz, mint például a `has`, `in`, `and`, `or`, `greater than` és `REGEX`. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja őket a saját készítésű vizualizációk kitöltésére a rendellenességek észlelése érdekében.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Üzemeltetéselemzés és a folyamatok hatékonyságának növelése
 
@@ -86,7 +86,7 @@ A Time Series Insights közel valós idejű adatfeltárást és adatelemzést k�
 
 Integrálja a fejlett elemzési szolgáltatásokkal, például a Machine Learning és a Azure Databricksokkal. Time Series Insights több millió eszközről ingresses a nyers adatok mennyiségét. Olyan környezetfüggő adatok hozzáadására szolgál, amelyeket az Azure Analytics-szolgáltatások egy csomagja zökkenőmentesen felhasználhat.
 
-[![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[@no__t – 1Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
 A fejlett elemzési és gépi tanulási szolgáltatás nagy mennyiségű adatmennyiséget használ fel és dolgoz fel. Ezek az adatok az adatvezérelt döntések végrehajtásához és a prediktív elemzések elvégzéséhez használatosak. A IoT-használati esetekben a fejlett elemzési algoritmusok a több millió eszközről gyűjtött adatokból tanulnak. Ezek az eszközök többször továbbítanak adatokat másodpercenként. A IoT-eszközökről gyűjtött adatok nyersek. Nem rendelkezik a kontextussal kapcsolatos információkkal, például az eszköz helyével és az érzékelő olvasásának egységével. Ennek eredményeképpen a nyers adatfeldolgozást nehéz közvetlenül a speciális elemzésekhez használni.
 

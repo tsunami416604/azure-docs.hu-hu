@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 8fd50ed571e42a1eb6673c56a61314d2adfe27f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172462"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977978"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -62,9 +61,9 @@ Ha a konfigurációban csak a vendég konfigurációs ügynök telepítésével 
 
 ### <a name="requirements-for-guest-configuration-custom-resources"></a>A vendég-konfiguráció egyéni erőforrásaira vonatkozó követelmények
 
-Amikor a vendég konfigurációja naplóz egy gépet, először a futtatásával `Test-TargetResource` megállapítja, hogy a megfelelő állapotban van-e. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager állapotának megfelelőnek vagy nem megfelelőnek kell lennie. Ha a logikai érték `$false` a konfiguráció egyik erőforrása, akkor a szolgáltató fog futni. `Get-TargetResource` Ha a logikai értéket `$true` a `Get-TargetResource` rendszer nem hívja meg.
+Amikor a vendég konfigurációja naplóz egy gépet, először a `Test-TargetResource` futtatásával határozza meg, hogy megfelelő állapotban van-e. A függvény által visszaadott logikai érték határozza meg, hogy a vendég-hozzárendelés Azure Resource Manager állapotának megfelelőnek vagy nem megfelelőnek kell lennie. Ha a logikai érték `$false` a konfigurációban lévő bármelyik erőforráshoz, akkor a szolgáltató `Get-TargetResource`-et fog futni. Ha a logikai érték `$true`, akkor `Get-TargetResource` nem lesz meghívva.
 
-A függvény `Get-TargetResource` speciális követelményekkel rendelkezik a Windows kívánt állapotának konfigurálásához nem szükséges vendég-konfigurációhoz.
+A `Get-TargetResource` függvény speciális követelményeket tartalmaz a Windows kívánt állapotának konfigurálásához nem szükséges vendég-konfigurációhoz.
 
 - A visszaadott szórótábla tartalmaznia kell **egy nevű**tulajdonságot.
 - A Reason tulajdonságnak tömbnek kell lennie.
@@ -75,9 +74,9 @@ A szolgáltatás az okok tulajdonságát arra használja, hogy egységesítse, h
 A szolgáltatás a tulajdonságok **kódját** és a **kifejezést** is elvárta. Egyéni erőforrás létrehozásakor állítsa be azt a szöveget (jellemzően StdOut), amelyet az erőforrás nem felel meg a **kifejezés**értékének. A **kód** meghatározott formázási követelményekkel rendelkezik, így a jelentéskészítés egyértelműen megjeleníti a naplózás végrehajtásához használt erőforrás adatait. Ez a megoldás a vendég konfigurációját bővíthetővé teszi. Bármely parancs futtatható a gép naplózásához, ha a kimenet rögzíthető, és karakterlánc-értékként lesz visszaadva a **kifejezés** tulajdonsághoz.
 
 - **Kód** (karakterlánc): Az erőforrás neve, ismétlődő, majd egy rövid név, amely nem tartalmazhat szóközt azonosítóként az OK értékhez. Ez a három érték csak kettősponttal tagolható szóközök nélkül.
-  - Példa erre`registry:registry:keynotpresent`
+  - Példa `registry:registry:keynotpresent`
 - **Kifejezés** (karakterlánc): Ember által olvasható szöveg, amelyből megtudhatja, miért nem megfelelő a beállítás.
-  - Példa erre`The registry key $key is not present on the machine.`
+  - Példa `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -96,9 +95,9 @@ Azoknak a fejlesztőknek, akik szeretnék felgyorsítani az első lépések és 
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Egyéni vendég konfigurációs konfiguráció Linuxon
 
-A Linuxon futó vendég-konfiguráció DSC-konfigurációja `ChefInSpecResource` az erőforrást használja, hogy a motor a [Chef inspec](https://www.chef.io/inspec/) definíciójának nevét adja meg. A **név** az egyetlen szükséges erőforrás-tulajdonság.
+A Linuxon futó vendég-konfiguráció DSC-konfigurációja a `ChefInSpecResource` erőforrást használja, hogy a motor a [Chef inspec](https://www.chef.io/inspec/) definíciójának nevét adja meg. A **név** az egyetlen szükséges erőforrás-tulajdonság.
 
-Az alábbi példa létrehoz egy alapkonfigurációt, importálja a **GuestConfiguration** erőforrás-modult, `ChefInSpecResource` **és**az erőforrást az inspec definíciójának neve alapján állítja be a **Linux-patch-alapterv**értékre:
+Az alábbi példa létrehoz egy alapkonfigurációt, importálja a **GuestConfiguration** erőforrás-modult **, és**a `ChefInSpecResource` erőforrást használja az inspec definíciójának a **Linux-patch-alapterv**néven való beállításához:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -122,7 +121,7 @@ További információt a [konfiguráció írása, fordítása és alkalmazása](
 
 A Azure Policy vendég konfigurációjának DSC-konfigurációját csak a vendég konfigurációs ügynök használja, nem ütközik a Windows PowerShell kívánt állapotának konfigurációjával.
 
-A következő példa létrehoz egy **AuditBitLocker**nevű konfigurációt, importálja a **GuestConfiguration** erőforrás-modult `Service` , és az erőforrást egy futó szolgáltatás naplózására használja:
+A következő példa létrehoz egy **AuditBitLocker**nevű konfigurációt, importálja a **GuestConfiguration** erőforrás-modult, és a `Service` erőforrást használja a futó szolgáltatás naplózásához:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -191,7 +190,7 @@ Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelés�
 
 1. Végül az egyéni erőforráson belül a fentiekben generált ügyfél-azonosítót használva férhet hozzá Key Vault a számítógépről elérhető token használatával.
 
-   A Key Vault példányának [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) ésURL-címénekértékekéntadhatókátazerőforrásnak,ígyazerőforrástnemkelltöbbkörnyezetesetébenfrissíteni,vagyhaazértékeketmódosítani`client_id` kell.
+   A Key Vault példányhoz tartozó `client_id` és URL-cím [tulajdonságként](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) adható át az erőforrásnak, így az erőforrást nem kell több környezet esetében frissíteni, vagy ha az értékeket módosítani kell.
 
 Az alábbi mintakód egy egyéni erőforrásban használható a titkos kulcsok Key Vault felhasználó által hozzárendelt identitással való lekéréséhez. A kérelemből Key Vault egyszerű szövegként visszaadott érték. Ajánlott eljárásként tárolja azt egy hitelesítőadat-objektumon belül.
 
@@ -209,7 +208,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>Vendég konfigurációs csomag tesztelése
 
-A konfigurációs csomag létrehozása után, de az Azure-ba való közzététel előtt tesztelheti a csomag funkcióit a munkaállomás vagy a CI/CD-környezet használatával. A GuestConfiguration modul egy olyan parancsmagot `Test-GuestConfigurationPackage` tartalmaz, amely az Azure-gépeken belül használt fejlesztési környezetben ugyanazt az ügynököt tölti be. Ezzel a megoldással helyileg is elvégezheti az integrációs tesztelést, mielőtt kiadná a kiszámlázott tesztelési/QA/éles környezeteket.
+A konfigurációs csomag létrehozása után, de az Azure-ba való közzététel előtt tesztelheti a csomag funkcióit a munkaállomás vagy a CI/CD-környezet használatával. A GuestConfiguration modul tartalmaz egy `Test-GuestConfigurationPackage` parancsmagot, amely az Azure-gépeken belül használt fejlesztési környezetben ugyanazt az ügynököt tölti be. Ezzel a megoldással helyileg is elvégezheti az integrációs tesztelést, mielőtt kiadná a kiszámlázott tesztelési/QA/éles környezeteket.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -221,7 +220,7 @@ A `Test-GuestConfigurationPackage` parancsmag paraméterei:
 - **Paraméter**: Szórótábla formátumban megadott házirend-paraméterek.
 - **Elérési út**: A vendég konfigurációs csomag teljes elérési útja.
 
-A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A `New-GuestConfigurationPackage` parancsmag kimenetének átadása `Test-GuestConfigurationPackage` a parancsmagnak.
+A parancsmag a PowerShell-folyamatból is támogatja a bemenetet. A `New-GuestConfigurationPackage` parancsmag kimenetét átadja a `Test-GuestConfigurationPackage` parancsmagnak.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
@@ -256,7 +255,7 @@ A `New-GuestConfigurationPolicy` parancsmag paraméterei:
 - **Elérési út**: A cél elérési útja, ahol a szabályzat-definíciók létrejönnek.
 - **Platform**: Cél platform (Windows/Linux) a vendég konfigurációs házirendjéhez és a tartalmi csomaghoz.
 
-A következő fájlokat hozza létre `New-GuestConfigurationPolicy`:
+A következő fájlokat hozza létre a `New-GuestConfigurationPolicy`:
 
 - **auditIfNotExists. JSON**
 - **deployIfNotExists. JSON**
@@ -270,7 +269,7 @@ Ha ezt a parancsot egy egyéni házirend-projekt beépítéséhez szeretné hasz
 
 A vendég konfiguráció futási időben támogatja a konfiguráció felülírási tulajdonságait. Ez a funkció azt jelenti, hogy a csomagban lévő MOF-fájlban lévő értékeket nem kell statikusnak tekinteni. A felülbírálási értékek a Azure Policyon keresztül érhetők el, és nem befolyásolják a konfigurációk létrehozási vagy fordítási módját.
 
-A parancsmagok `New-GuestConfigurationPolicy` `Test-GuestConfigurationPolicyPackage` tartalmazzák a **Paraméterek**nevű paramétert. Ez a paraméter egy szórótábla-definíciót vesz fel, amely tartalmazza az egyes paraméterek összes részletét, és automatikusan létrehozza az egyes Azure Policy-definíciók létrehozásához használt fájlok összes szükséges részét.
+A `New-GuestConfigurationPolicy` és `Test-GuestConfigurationPolicyPackage` parancsmagok tartalmazzák a **Paraméterek**nevű paramétert. Ez a paraméter egy szórótábla-definíciót vesz fel, amely tartalmazza az egyes paraméterek összes részletét, és automatikusan létrehozza az egyes Azure Policy-definíciók létrehozásához használt fájlok összes szükséges részét.
 
 A következő példa egy Azure Policyt hoz létre a szolgáltatás naplózásához, ahol a felhasználó a szabályzat-hozzárendelés időpontjában kiválasztja a szolgáltatások listáját.
 
@@ -339,14 +338,14 @@ Minden további paraméterhez adjon hozzá egy szórótábla a tömbhöz. A ház
 
 ## <a name="publish-to-azure-policy"></a>Közzététel Azure Policy
 
-A **GuestConfiguration** -erőforrás modul lehetővé teszik, hogy mindkét házirend-definíciót és az Azure-beli kezdeményezési definíciót `Publish-GuestConfigurationPolicy` a parancsmagon keresztül egy lépéssel hozza létre.
-A parancsmag csak a **path** paraméterrel rendelkezik, amely a által `New-GuestConfigurationPolicy`létrehozott három JSON-fájl helyére mutat.
+A **GuestConfiguration** erőforrás-modul lehetővé teszik a házirend-definíciók és a kezdeményezési definíciók létrehozását az Azure-ban egy lépéssel az `Publish-GuestConfigurationPolicy` parancsmaggal.
+A parancsmag csak a **path** paraméterrel rendelkezik, amely a `New-GuestConfigurationPolicy` által létrehozott három JSON-fájl helyére mutat.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
 ```
 
-A `Publish-GuestConfigurationPolicy` parancsmag fogadja az elérési utat a PowerShell-folyamatból. Ez a funkció azt jelenti, hogy létrehozhatja a házirend-fájlokat, és közzéteheti őket egyetlen vezetékes parancsban.
+A `Publish-GuestConfigurationPolicy` parancsmag elfogadja a PowerShell-folyamat elérési útját. Ez a funkció azt jelenti, hogy létrehozhatja a házirend-fájlokat, és közzéteheti őket egyetlen vezetékes parancsban.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
@@ -362,13 +361,13 @@ Az Azure-ban létrehozott házirend-és kezdeményezési definíciókkal az utol
 Miután közzétett egy egyéni Azure Policy az egyéni tartalomkezelő csomag használatával, két mezőt kell frissíteni, ha új kiadást szeretne közzétenni.
 
 - **Verzió**: A `New-GuestConfigurationPolicy` parancsmag futtatásakor meg kell adnia egy verziószámot, amely nagyobb a jelenleg közzétettnél. A tulajdonság frissíti a vendég konfiguráció-hozzárendelés verzióját az új házirend-fájlban, így a bővítmény felismeri, hogy a csomag frissítve lett.
-- **contentHash**: Ezt a tulajdonságot a `New-GuestConfigurationPolicy` parancsmag automatikusan frissíti. Ez a csomag által `New-GuestConfigurationPackage`létrehozott kivonatoló érték. A tulajdonságnak megfelelőnek kell lennie a `.zip` közzétett fájlhoz. Ha csak a **contentUri** tulajdonság frissül, például abban az esetben, ha valaki manuálisan módosíthatja a házirend-definíciót a portálon, a bővítmény nem fogadja el a tartalmi csomagot.
+- **contentHash**: Ezt a tulajdonságot a `New-GuestConfigurationPolicy` parancsmag automatikusan frissíti. Ez a `New-GuestConfigurationPackage` által létrehozott csomag kivonatának értéke. A tulajdonságnak megfelelőnek kell lennie a közzétenni kívánt `.zip` fájlhoz. Ha csak a **contentUri** tulajdonság frissül, például abban az esetben, ha valaki manuálisan módosíthatja a házirend-definíciót a portálon, a bővítmény nem fogadja el a tartalmi csomagot.
 
 Egy frissített csomag kiadásának legegyszerűbb módja, ha megismétli a jelen cikkben ismertetett folyamatot, és megadja a verziószámot. Ez a folyamat garantálja az összes tulajdonság megfelelő frissítését.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows Csoportházirend tartalom konvertálása Azure Policy vendég konfigurációra
 
-A vendég konfigurációja a Windows rendszerű gépek naplózásakor a PowerShell desired State Configuration szintaxisának implementációja. A DSC-Közösség közzétette az exportált Csoportházirend-sablonok DSC formátumra való konvertálásának eszközét. Az eszköznek a fent ismertetett vendég konfigurációs parancsmagokkal együtt történő használatával átalakíthatja a Windows Csoportházirend tartalmát, és becsomagolhatja vagy közzéteheti a Azure Policy a naplózáshoz. Az eszköz használatával kapcsolatos részletekért lásd a gyors üzembe [helyezést ismertető cikket. Csoportházirend konvertálása a DSC](/powershell/dsc/quickstarts/gpo-quickstart)-be.
+A vendég konfigurációja a Windows rendszerű gépek naplózásakor a PowerShell desired State Configuration szintaxisának implementációja. A DSC-Közösség közzétette az exportált Csoportházirend-sablonok DSC formátumra való konvertálásának eszközét. Az eszköznek a fent ismertetett vendég konfigurációs parancsmagokkal együtt történő használatával átalakíthatja a Windows Csoportházirend tartalmát, és becsomagolhatja vagy közzéteheti a Azure Policy a naplózáshoz. Az eszköz használatáról az [Quickstart című cikk nyújt tájékoztatást: Csoportházirend átalakítása a DSC @ no__t-0 értékre.
 A tartalom konvertálása után a fenti lépéseket követve hozzon létre egy csomagot, és tegye közzé Azure Policyként, ugyanúgy, mint bármely DSC-tartalomhoz.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>VÁLASZTHATÓ Vendég konfigurációs csomagjainak aláírása
@@ -392,7 +391,7 @@ A `Protect-GuestConfigurationPackage` parancsmag paraméterei:
 - **PrivateGpgKeyPath**: Saját GPG-kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
 - **PublicGpgKeyPath**: Nyilvános GPG kulcs elérési útja. Ez a paraméter csak a Linux-tartalmak aláírása esetén támogatott.
 
-A GuestConfiguration-ügynök elvárja, hogy a tanúsítvány nyilvános kulcsa a Windows rendszerű gépeken és a Linux-gépek elérési útjában `/usr/local/share/ca-certificates/extra` legyen jelen a "megbízható legfelső szintű hitelesítésszolgáltatók" szolgáltatásban. Ahhoz, hogy a csomópont ellenőrizze az aláírt tartalmat, az egyéni házirend alkalmazása előtt telepítse a tanúsítvány nyilvános kulcsát a gépre. Ez a folyamat a virtuális gépen belüli bármely technikával vagy Azure Policy használatával végezhető el. [Itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)található egy példa erre a sablonra.
+A GuestConfiguration-ügynök elvárja, hogy a tanúsítvány nyilvános kulcsa a Windows rendszerű gépeken a "megbízható legfelső szintű hitelesítésszolgáltatók" szolgáltatásban legyen jelen, és az elérési út `/usr/local/share/ca-certificates/extra` a Linux rendszerű gépeken. Ahhoz, hogy a csomópont ellenőrizze az aláírt tartalmat, az egyéni házirend alkalmazása előtt telepítse a tanúsítvány nyilvános kulcsát a gépre. Ez a folyamat a virtuális gépen belüli bármely technikával vagy Azure Policy használatával végezhető el. [Itt](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)található egy példa erre a sablonra.
 Az Key Vault hozzáférési szabályzatnak lehetővé kell tennie a számítási erőforrás-szolgáltató számára a tanúsítványok elérését a központi telepítések során. A részletes lépésekért lásd: [Key Vault beállítása virtuális gépekhez a Azure Resource Managerban](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Az alábbi példa a nyilvános kulcs exportálását írja elő egy aláíró tanúsítványból a gépre való importáláshoz.
@@ -404,7 +403,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 A Linux rendszerű gépekhez használható GPG-kulcsok létrehozásának jó referenciája a GitHubon található cikk, [új GPG-kulcs](https://help.github.com/en/articles/generating-a-new-gpg-key)létrehozása.
 
-A tartalom közzététele után fűzze hozzá a nevet `GuestConfigPolicyCertificateValidation` és az értéket `enabled` tartalmazó címkét az összes olyan virtuális géphez, amelynél szükség van a kód aláírására. Ezt a címkét a Azure Policy használatával lehet méretezni. Lásd: [címke alkalmazása és az alapértelmezett érték](../samples/apply-tag-default-value.md) minta. A címke betartása után a `New-GuestConfigurationPolicy` parancsmag használatával generált szabályzat-definíció engedélyezi a követelményt a vendég konfigurációs bővítményen keresztül.
+A tartalom közzététele után fűzze hozzá a (z) `GuestConfigPolicyCertificateValidation` nevű címkét, és adja meg a `enabled` értéket az összes olyan virtuális géphez, amelynél szükség van a kód aláírására. Ezt a címkét a Azure Policy használatával lehet méretezni. Lásd: [címke alkalmazása és az alapértelmezett érték](../samples/apply-tag-default-value.md) minta. A címke betartása után a `New-GuestConfigurationPolicy` parancsmag használatával generált házirend-definíció lehetővé teszi a követelményt a vendég konfigurációs bővítményen keresztül.
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>ELŐNÉZET Vendég-konfigurációs szabályzatok hozzárendeléseinek hibaelhárítása
 
@@ -415,5 +414,5 @@ Az eszköz parancsmagokkal kapcsolatos további információkért használja a P
 ## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
-- Megtudhatja, hogyan [hozhat létre programozott](programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](getting-compliance-data.md).

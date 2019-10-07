@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 047e9cab8d7776fc3b5353aebc571e28ad780ae8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155572"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977951"
 ---
 # <a name="programmatically-create-policies"></a>Szabályzatok létrehozása programozott módon
 
@@ -91,10 +90,10 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
-   A **hatókör** -paraméter `New-AzPolicyAssignment` a felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}`
-   `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   A `New-AzPolicyAssignment` **hatókör** -paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le a `{rName}`, `{rgName}`, `{subId}` és `{mgName}` értéket az erőforrás nevével, az erőforráscsoport nevével, az előfizetés-AZONOSÍTÓval és a felügyeleti csoport nevével.
+   a `{rType}` a virtuális gép erőforrás- **típusával** (például `Microsoft.Compute/virtualMachines`) lesz lecserélve.
 
-   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subId}/`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`
@@ -220,9 +219,9 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   A **--scope** paraméter a `az policy assignment create` felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le `{rName}`a,, `{mgName}` , és az erőforrás nevét, az erőforráscsoport nevét, az előfizetés azonosítóját és a felügyeleti csoport nevét. `{subId}` `{rgName}` `{rType}`lecserélve az erőforrás erőforrástípus, például `Microsoft.Compute/virtualMachines` egy virtuális gép esetében.
+   A (z) `az policy assignment create` **hatókör-** paramétere felügyeleti csoporttal, előfizetéssel, erőforráscsoporthoz vagy egyetlen erőforrással működik. A paraméter teljes erőforrás-elérési utat használ. Az egyes tárolók **hatóköre** a következő. Cserélje le a `{rName}`, `{rgName}`, `{subId}` és `{mgName}` értéket az erőforrás nevével, az erőforráscsoport nevével, az előfizetés-AZONOSÍTÓval és a felügyeleti csoport nevével. a `{rType}` a virtuális gép erőforrás- **típusával** (például `Microsoft.Compute/virtualMachines`) lesz lecserélve.
 
-   - Erőforrás`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Erőforrás-`/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subID}/resourceGroups/{rgName}`
    - Előfizetés – `/subscriptions/{subID}`
    - Felügyeleti csoport – `/providers/Microsoft.Management/managementGroups/{mgName}`

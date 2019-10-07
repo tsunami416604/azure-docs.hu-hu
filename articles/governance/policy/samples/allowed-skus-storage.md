@@ -1,20 +1,19 @@
 ---
-title: Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
-description: A szabályzatdefiníció-minta megköveteli, hogy storage-fiókok és a virtuális gépek használata engedélyezett termékváltozatok.
+title: Példa – engedélyezett SKU-ket a Storage-fiókok és a virtuális gépek számára
+description: A példában szereplő házirend-definíció megköveteli, hogy a Storage-fiókok és a virtuális gépek jóváhagyott SKU-t használjanak.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333512"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980602"
 ---
-# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Minta - engedélyezett termékváltozatok a storage-fiókok és a virtuális gépek
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Példa – engedélyezett SKU-ket a Storage-fiókok és a virtuális gépek számára
 
 Ez a szabályzat megköveteli, hogy a tárfiókok és a virtuális gépek engedélyezett termékváltozatokat használjanak. Beépített szabályzatok használatával biztosítja az engedélyezett termékváltozatok alkalmazását. Megadhatja az engedélyezett virtuálisgép-termékváltozatok és az engedélyezett tárfiók-termékváltozatok tömbjét.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal) vagy a [PowerShell](#deploy-
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

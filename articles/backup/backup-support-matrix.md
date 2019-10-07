@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6b79b34b1db6c201a8f132e4c608e251edb3666a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735421"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981092"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -37,7 +37,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 **Adatforrások a tárolóban** | Maximális 54 400 GB. Az Azure-beli virtuális gépek biztonsági mentései nem megengedettek.
 **Biztonsági mentések a tárba** | **Azure-beli virtuális gépek:** Naponta egyszer.<br/><br/>**DPM/MABS által védett gépek:** Naponta kétszer.<br/><br/> **A közvetlenül a MARS-ügynök használatával biztonsági mentést készít a gépekről:** Naponta háromszor.
 **Tárolók közötti biztonsági másolatok** | A biztonsági mentés egy régión belül található.<br/><br/> Minden olyan Azure-régióban szüksége van egy tárolóra, amely tartalmazza a biztonsági mentésre használni kívánt virtuális gépeket. Nem lehet biztonsági másolatot készíteni egy másik régióra.
-**Tárolók áthelyezése** | A tárolókat áthelyezheti előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is. [](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)
+**Tárolók áthelyezése** | A tárolókat [áthelyezheti](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) előfizetések között, illetve az azonos előfizetésben található erőforráscsoportok között is.
 **Adatáthelyezés a tárolók között** | A biztonsági másolatok tárolók közötti áthelyezése nem támogatott.
 **Tár tárolási típusának módosítása** | A tároló replikációs típusát (vagy a Geo-redundáns tárterületet vagy a helyileg redundáns tárolást) a biztonsági másolatok tárolása előtt módosíthatja. Miután a biztonsági mentések megkezdődnek a tárolóban, a replikálás típusa nem módosítható.
 
@@ -59,7 +59,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 **Korlát** | **Részletek**
 --- | ---
 **Azure-beli VM-adatlemezek** | Legfeljebb 16
-**Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek akár 4 095 GB méretűek is lehetnek
+**Azure-beli virtuális gép adatlemezének mérete** | A támogatja a virtuális gépek biztonsági mentését, amely minden lemez mérete legfeljebb 30 TB, és legfeljebb 256 TB a virtuális gép összes lemeze számára.
 
 ### <a name="azure-vm-backup-options"></a>Azure virtuális gépek biztonsági mentési lehetőségei
 

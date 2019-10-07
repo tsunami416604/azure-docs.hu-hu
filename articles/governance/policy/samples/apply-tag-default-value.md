@@ -1,20 +1,19 @@
 ---
-title: Minta – címke és az alapértelmezett címkeérték alkalmazása
-description: A szabályzatdefiníció-minta fűzi hozzá egy megadott tag nevét és értékét, ha a címke nem biztosított.
+title: Minta – a címke és az alapértelmezett érték alkalmazása
+description: Ez a minta házirend-definíció hozzáfűzi a megadott címke nevét és értékét, ha a címke nincs megadva.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a9ad211ac1ef9889fcff9646f30fe306458c3538
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 03c5c1de3713d2d7a2b2914b7b9bff9fa8b01320
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60549699"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977594"
 ---
-# <a name="sample---apply-tag-and-its-default-value"></a>Minta – címke és az alapértelmezett címkeérték alkalmazása
+# <a name="sample---apply-tag-and-its-default-value"></a>Minta – a címke és az alapértelmezett érték alkalmazása
 
 Ez a szabályzat hozzáfűz egy megadott címkenevet és -értéket, ha a címke nem található. Az alkalmazandó címkenevet és -értéket Ön határozza meg.
 
@@ -50,10 +49,10 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Név) |Típus |Mező |Leírás |
+|Name (Név) |Type |Mező |Leírás |
 |---|---|---|---|
-|tagName |String |tags |A címke neve, például costCenter|
-|tagValue |String |tags |A címke értéke, például headquarter|
+|tagName |Sztring |címkék |A címke neve, például costCenter|
+|tagValue |Sztring |címkék |A címke értéke, például headquarter|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -73,8 +72,8 @@ Ebben a példaparaméterben a _tagName_ a **costCenter**, a _tagValue_ pedig a *
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![A házirend-minta üzembe helyezése Azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
-[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
+[![Deploy az Azure gov-hoz](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -217,10 +216,10 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív: [Hozzon létre, amikor a felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív: [A felügyeleti csoport törlése](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231513"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976757"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure Resource Graph lekérdezési nyelvének megismerése
 
@@ -54,21 +53,21 @@ Az alábbi lista a támogatott függvények listáját tartalmazza az erőforrá
 
 ## <a name="escape-characters"></a>Escape-karakterek
 
-Egyes tulajdonságokat, például `.` a vagy `$`a karaktert tartalmazó neveket be kell csomagolni, vagy el kell menekülni a lekérdezésben, vagy a tulajdonság nevét nem megfelelően értelmezi a rendszer, és nem biztosítja a várt eredményeket.
+Egyes tulajdonságnév, például a `.` vagy a `$`, be kell csomagolni vagy megszökni a lekérdezésben, vagy a tulajdonságnév helytelenül van értelmezve, és nem biztosítja a várt eredményeket.
 
-- `.`– A tulajdonság nevét a következőképpen csomagolja be:`['propertyname.withaperiod']`
+- @no__t – 0 – a tulajdonság nevének becsomagolása: `['propertyname.withaperiod']`
   
-  Példa lekérdezésre, amely a OData tulajdonságot csomagolja _. írja be_a következőt:
+  Példa lekérdezésre, amely a OData tulajdonságot csomagolja _. írja be a következőt_:
 
   ```kusto
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-Escape a tulajdonság nevében szereplő karakter. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
+- @no__t – 0 – a tulajdonság nevében lévő karakter elkerülhető. A használatban lévő escape-karakter a rendszerhéj-erőforrás Gráftól függ.
 
   - **bash** - `\`
 
-    Példa olyan lekérdezésre, amely megmenekül a tulajdonság  _\$típusa_ a bashben:
+    Példa olyan lekérdezésre, amely a bash _\$type_ tulajdonságát megmenekül:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
@@ -78,7 +77,7 @@ Egyes tulajdonságokat, például `.` a vagy `$`a karaktert tartalmazó neveket 
 
   - **PowerShell** - ``` ` ```
 
-    Példa olyan lekérdezésre, amely megmenekül a tulajdonság  _\$típusa_ a PowerShellben:
+    Példa a _\$type_ tulajdonságot a PowerShellben elkerülő lekérdezésre:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type
@@ -86,6 +85,6 @@ Egyes tulajdonságokat, például `.` a vagy `$`a karaktert tartalmazó neveket 
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtekintheti az alapszintű [lekérdezésekben](../samples/starter.md) használt nyelvet
+- Megtekintheti az [alapszintű lekérdezésekben](../samples/starter.md) használt nyelvet
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md)
 - Információ az [erőforrások felfedezéséről](explore-resources.md)

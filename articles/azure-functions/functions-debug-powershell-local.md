@@ -1,6 +1,6 @@
 ---
-title: PowerShell az Azure Functions helyi hibakeresése
-description: Megismerheti, hogyan hozhat létre függvényeket a PowerShell használatával.
+title: PowerShell-Azure Functions helyi hibakeresése
+description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell használatával.
 services: functions
 documentationcenter: na
 author: tylerleonhardt
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: fc30a2efb21d5b7f3168d9229ec5baf9a7f05eb1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5b396ef6b00d53a313ed4fb426685c12e2c1549d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706416"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981843"
 ---
-# <a name="debug-powershell-azure-functions-locally"></a>PowerShell az Azure Functions helyi hibakeresése
+# <a name="debug-powershell-azure-functions-locally"></a>PowerShell-Azure Functions helyi hibakeresése
 
-Az Azure Functions lehetővé teszi a függvények, PowerShell-parancsfájlok fejlesztése.
+Azure Functions lehetővé teszi a függvények PowerShell-parancsfájlokként való fejlesztését.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-A PowerShell-funkciók is hibakeresése helyileg, minden olyan PowerShell-parancsfájlok a következő szabványos fejlesztői eszközökkel, mint:
+A PowerShell-függvényeket helyileg is felhasználhatja, ahogy bármelyik PowerShell-szkriptet a következő szabványos fejlesztői eszközök használatával:
 
-* [A Visual Studio Code](https://code.visualstudio.com/): A Microsoft ingyenes, könnyen használható és nyílt forráskódú szövegszerkesztő a PowerShell-bővítmény, amely egy teljes PowerShell fejlesztői felületet kínál.
-* A PowerShell-konzolt: A hibakeresési használja ugyanazokat a parancsokat minden más PowerShell-folyamattal hibakeresése szeretné használni.
+* [Visual Studio Code](https://code.visualstudio.com/): A Microsoft ingyenes, könnyű és nyílt forráskódú szövegszerkesztője a PowerShell-bővítményt, amely teljes körű PowerShell-fejlesztési élményt nyújt.
+* Egy PowerShell-konzol: A hibakereséshez ugyanazokat a parancsokat használja, amelyeket bármilyen más PowerShell-folyamat hibakereséséhez használni kíván.
 
-[Az Azure Functions Core Tools](functions-run-local.md) helyi Hibakeresés az Azure Functions, beleértve a PowerShell-funkciókat is támogatja.
+[Azure functions Core Tools](functions-run-local.md) támogatja a Azure functions helyi hibakeresését, beleértve a PowerShell-függvényeket is.
 
-## <a name="example-function-app"></a>Példa függvényalkalmazás
+## <a name="example-function-app"></a>Példa a Function alkalmazásra
 
-A cikk ezt használja a függvényalkalmazást egy HTTP által aktivált funkcióval rendelkezik, és a következő fájlokat:
+A cikkben használt Function alkalmazás egyetlen HTTP által aktivált függvényt tartalmaz, és a következő fájlokat használja:
 
 ```
 PSFunctionApp
@@ -45,9 +45,9 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-A függvényalkalmazás a hasonló kap, amikor befejeződik a [PowerShell rövid](functions-create-first-function-powershell.md).
+Ez a Function-alkalmazás a [PowerShell](functions-create-first-function-powershell.md)rövid útmutatójának elvégzéséhez hasonlóan fog megjelenni.
 
-A függvény kódját a `run.ps1` tűnik, az alábbi parancsfájlt:
+A `run.ps1` függvény kódjának a következő parancsfájlhoz hasonlóan kell kinéznie:
 
 ```powershell
 param($Request)
@@ -69,11 +69,11 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 })
 ```
 
-## <a name="set-the-attach-point"></a>A csatolás pont beállítása
+## <a name="set-the-attach-point"></a>A csatolási pont beállítása
 
-Hibakeresés a PowerShell-függvényeket, a függvény kell csatolni a hibakereső leállítása. A `Wait-Debugger` parancsmag leállítja a végrehajtást, és megvárja, amíg a hibakereső funkcióját.
+A PowerShell-függvények hibakereséséhez a funkciónak le kell állnia a hibakereső csatolásához. A `Wait-Debugger` parancsmag leállítja a végrehajtást, és megvárja a hibakeresőt.
 
-Ehhez mindössze, adja hozzá a hívást a `Wait-Debugger` parancsmag feladatállapotában a `if` utasítás, az alábbiak szerint:
+Mindössze annyit kell tennie, hogy felveszi a `Wait-Debugger` parancsmagot a `if` utasítás fölé, a következőképpen:
 
 ```powershell
 param($Request)
@@ -90,100 +90,103 @@ if($name) {
 # ...
 ```
 
-Hibakeresés kezdődik a `if` utasítást. 
+A hibakeresés a `if` utasításban kezdődik. 
 
-A `Wait-Debugger` helyen, hibakeresés most már az a Funkciók, a Visual Studio Code-ot vagy a PowerShell-konzolt.
+A `Wait-Debugger` értékkel mostantól a Visual Studio Code vagy a PowerShell-konzol használatával is lehet hibakeresést végezni a függvényekben.
 
 ## <a name="debug-in-visual-studio-code"></a>Hibakeresés a Visual Studio Code-ban
 
-Hibakeresés a Visual Studio Code-ban a PowerShell-függvényeket, a következőkkel kell rendelkeznie:
+A Visual Studio Code-ban a PowerShell-függvények hibakereséséhez a következőkre van szükség:
 
-* [PowerShell-bővítmény a Visual Studio Code](/powershell/scripting/components/vscode/using-vscode)
+* [PowerShell-bővítmény a Visual Studio Code-hoz](/powershell/scripting/components/vscode/using-vscode)
 * [Azure Functions-bővítmény a Visual Studio Code-hoz](functions-create-first-function-vs-code.md)
-* [A PowerShell Core 6.2-es vagy újabb](/powershell/scripting/install/installing-powershell-core-on-windows)
+* [PowerShell Core 6,2 vagy újabb](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-Miután telepítette ezeket a függőségeket, egy meglévő PowerShell-Functions-projekt betöltése vagy [az első PowerShell-Functions-projekt létrehozása](functions-create-first-function-powershell.md).
+A függőségek telepítése után töltsön be egy meglévő PowerShell functions-projektet, vagy [hozza létre az első PowerShell functions projektet](functions-create-first-function-powershell.md).
 
 >[!NOTE]
-> A projekt nem kell a szükséges konfigurációs fájlokat, kéri, adja hozzá őket.
+> Ha a projekt nem rendelkezik a szükséges konfigurációs fájlokkal, a rendszer kéri, hogy adja hozzá őket.
 
-### <a name="set-the-powershell-version"></a>A PowerShell-verzió beállítása
+### <a name="set-the-powershell-version"></a>A PowerShell verziójának beállítása
 
-A PowerShell Core telepítése Windows PowerShell párhuzamosan lesz. A PowerShell Core a PowerShell-verzió, a PowerShell-bővítmény használata a Visual Studio Code állítja be.
+A PowerShell Core a Windows PowerShell-lel párhuzamosan települ. Állítsa be a PowerShell Core-t PowerShell-verzióként a Visual Studio Code PowerShell-bővítménnyel való használatra.
 
-1. A parancs raklap megjelenítéséhez, majd keresse meg az F1 billentyűt `Session`.
+1. Nyomja meg az F1 billentyűt a parancs raklapjának megjelenítéséhez, majd keressen rá a `Session` kifejezésre.
 
-1. Válasszon **PowerShell: Munkamenet menü megjelenítése**.
+1. Válassza a **PowerShell: A munkamenet menü @ no__t-0 megjelenítése.
 
-1. Ha a **aktuális munkamenet** nem **PowerShell Core 6-os**, válassza a **váltani: A PowerShell Core 6**.
+1. Ha az **aktuális munkamenet** nem a **PowerShell Core 6**, válassza a **Switch lehetőséget a következőre: PowerShell Core 6 @ no__t-0.
 
-Nyisson meg egy PowerShell-fájllal rendelkezik, ha a verzió, az ablak jobb alsó zöld színnel megjelenik. Válassza ezt a szöveget is a munkamenet menü jeleníti meg. További tudnivalókért tekintse meg a [kiválasztása a PowerShell használata a bővítmény verziója](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
+Ha meg van nyitva egy PowerShell-fájl, az ablak jobb alsó sarkában látható zöld színnel jelenik meg. Ha ezt a szöveget választja, a munkamenet menüt is megjeleníti. További információ: a [PowerShell verziójának kiválasztása a bővítménnyel való használatra](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension).
 
-### <a name="start-the-function-app"></a>Indítsa el a függvényalkalmazás
+### <a name="start-the-function-app"></a>A Function alkalmazás elindítása
 
-Ellenőrizze, hogy `Wait-Debugger` állítja be a függvény ahol társítsa a hibakeresőt szeretné.  A `Wait-Debugger` hozzáadott, a függvényalkalmazás a Visual Studio Code is hibakereséséhez.
+Ellenőrizze, hogy a `Wait-Debugger` be van-e állítva abban a függvényben, amelyhez csatolni szeretné a hibakeresőt.  @No__t – 0 hozzáadásával a Function alkalmazást a Visual Studio Code használatával lehet hibakeresésre használni.
 
-Válassza ki a **Debug** ablaktáblán, majd **PowerShell-függvény csatlakoztatása**.
+Válassza a **hibakeresés** ablaktáblát, majd **csatolja a PowerShell-függvényt**.
 
-![Ladicí program](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
+![hibakereső](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
-Nyomja le a az F5 billentyűt, a hibakeresés is.
+Az F5 billentyű lenyomásával is elindíthatja a hibakeresést.
 
-A művelet hibakeresés indítása a következő feladatokat hajtja végre:
+A hibakeresés indítása művelet a következő feladatokat hajtja végre:
 
-* Futtatások `func extensions install` által az függvényalkalmazás bármely Azure Functions-bővítmény telepítéséhez a terminálon.
-* Futtatások `func host start` indítsa el a függvényalkalmazás a függvények fogadó parancsot a terminálon.
-* A PowerShell-Hibakereső csatlakoztatása a PowerShell futási térben a Functions futtatókörnyezete belül.
+* A (`func extensions install`) futtatásával a terminálon telepítheti a Function alkalmazás által igényelt Azure Functions-bővítményeket.
+* A (z) `func host start` csomópontot futtatja a terminálon, hogy elindítsa a Function alkalmazást a functions gazdagépen.
+* Csatolja a PowerShell-hibakeresőt a PowerShell-RunSpace a functions futtatókörnyezeten belül.
 
-A függvényalkalmazás fut, a HTTP által aktivált függvény egy külön PowerShell-konzolt kell.
+>[!NOTE]
+> Győződjön meg arról, hogy a PSWorkerInProcConcurrencyUpperBound értéke 1, hogy a hibakeresési élmény helyes legyen a Visual Studio Code-ban. Ez az alapértelmezett érték.
 
-Ebben az esetben a PowerShell-konzol az ügyfél. A `Invoke-RestMethod` szolgál, hogy elindítsa a függvényt.
+Ha a Function alkalmazás fut, külön PowerShell-konzolra van szükség a HTTP-triggert használó függvény meghívásához.
 
-A PowerShell-konzol futtassa a következő parancsot:
+Ebben az esetben a PowerShell-konzol az ügyfél. A `Invoke-RestMethod` a függvény aktiválására szolgál.
+
+A PowerShell-konzolon futtassa a következő parancsot:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Láthatja, hogy a nem azonnal adott vissza választ. Ez azért van, `Wait-Debugger` csatlakoztatva van a hibakeresőt és a PowerShell végrehajtási történt break üzemmódra vált, amint ez sikerült. Mert ez az a [BreakAll fogalom](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), amelyek később kifejtett. Ezt követően a `continue` gombra, a hibakereső most működésképtelenné válik a sor jobb után `Wait-Debugger`.
+Megfigyelheti, hogy a rendszer nem küld azonnal visszajelzést. Ennek az az oka, hogy `Wait-Debugger` csatolta a hibakeresőt, és a PowerShell-végrehajtás a lehető leghamarabb elmenti a megszakítási módot. Ennek oka az [BreakAll koncepció](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place), amelyet később ismertetünk. A `continue` gomb megnyomása után a hibakereső most a `Wait-Debugger` után azonnal elromlik a sorban.
 
-Ezen a ponton a hibakereső van csatolva, és megteheti a normál hibakereső műveletek. A hibakereső használatával a Visual Studio Code további információkért lásd: [a hivatalos dokumentáció](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
+Ezen a ponton a hibakereső csatlakoztatva van, és elvégezheti az összes normál hibakereső műveletet. A Debugger a Visual Studio Code-ban való használatával kapcsolatos további információkért tekintse meg [a hivatalos dokumentációt](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions).
 
-Miután továbbra is, és a parancsfájl teljes meghívása, láthatja, hogy:
+Miután folytatta és teljes mértékben meghívta a szkriptet, megfigyelheti, hogy:
 
-* A PowerShell-konzolon korábban a `Invoke-RestMethod` eredményt adott vissza
-* A beépített PowerShell-konzolt, a Visual Studio Code egy szkriptet futtatandó vár
+* A `Invoke-RestMethod` nevű PowerShell-konzol eredményt adott vissza
+* A Visual Studio Code-ban a PowerShell integrált konzolja arra vár, hogy végrehajtsa a parancsfájlt.
 
-Később megfelelő után mikor hívhat meg ugyanezt a funkciót, a PowerShell-bővítmény a hibakeresőt megsérti a `Wait-Debugger`.
+Később, amikor meghívja ugyanezt a függvényt, a PowerShell-bővítményben lévő hibakereső közvetlenül a `Wait-Debugger` után megtöri.
 
-## <a name="debugging-in-a-powershell-console"></a>Hibakeresés a PowerShell-konzol
+## <a name="debugging-in-a-powershell-console"></a>Hibakeresés egy PowerShell-konzolon
 
 >[!NOTE]
-> Ez a szakasz azt feltételezi, hogy elolvasta a [Azure Functions Core Tools docs](functions-run-local.md) , és tudja, hogyan használható a `func host start` parancsot a függvényalkalmazást.
+> Ez a szakasz azt feltételezi, hogy elolvasta a [Azure functions Core Tools dokumentumokat](functions-run-local.md) , és tudja, hogyan használhatja a `func host start` parancsot a Function alkalmazás elindításához.
 
-Nyisson meg egy konzol `cd` a könyvtárba, a függvényalkalmazást, és futtassa a következő parancsot:
+Nyisson meg egy konzolt, `cd` a Function alkalmazás könyvtárába, és futtassa a következő parancsot:
 
 ```sh
 func host start
 ```
 
-A futó függvényalkalmazást és a `Wait-Debugger` teljesülnek, a folyamat is csatolhat. Két további PowerShell-konzolt kell.
+Ha a Function alkalmazás fut, és a `Wait-Debugger`, akkor a folyamathoz csatolható. Ehhez két PowerShell-konzolra van szükség.
 
-Az ügyfél a konzolok egyik funkcionál. Ennek a hívás `Invoke-RestMethod` , aktiválja a függvényt. Ha például is futtassa a következő parancsot:
+Az egyik konzol ügyfélként működik. Ettől kezdve a `Invoke-RestMethod` meghívásával aktiválhatja a függvényt. Futtathatja például a következő parancsot:
 
 ```powershell
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-Láthatja, hogy azt nem ad vissza a választ, amely egy eredményt a rendszer, a `Wait-Debugger`. A PowerShell futási térben már vár egy hibakereső van csatlakoztatva. Folytassuk, amely csatolva.
+Megfigyelheti, hogy nem ad vissza választ, ami a `Wait-Debugger` eredményét jelenti. A PowerShell-RunSpace most már arra vár, hogy csatolja a hibakeresőt. Lássuk, hogy csatolva van.
 
-A többi PowerShell konzolon futtassa a következő parancsot:
+A másik PowerShell-konzolon futtassa a következő parancsot:
 
 ```powershell
 Get-PSHostProcessInfo
 ```
 
-Ez a parancsmag adja vissza egy táblát, amely a következő példához hasonlóan néz ki:
+Ez a parancsmag egy táblázatot ad vissza, amely a következő kimenethez hasonlít:
 
 ```output
 ProcessName ProcessId AppDomainName
@@ -198,7 +201,7 @@ pwsh            32071 None
 pwsh            88785 None
 ```
 
-Jegyezze fel a `ProcessId` a cikk a táblában a `ProcessName` , `dotnet`. Ez a folyamat a függvényalkalmazás lesz.
+Jegyezze fel a `ProcessId` értéket a táblában található tételhez a (z) `ProcessName` értékkel, `dotnet`. Ez a folyamat a Function alkalmazás.
 
 Ezután futtassa a következő kódrészletet:
 
@@ -211,7 +214,7 @@ Enter-PSHostProcess -Id $ProcessId
 Debug-Runspace 1
 ```
 
-Megkezdése után a hibakeresőt működésképtelenné válik, és a például a következő kimenet látható:
+Az indítás után a hibakereső megszakítja és megjeleníti a következő kimenethez hasonlót:
 
 ```
 Debugging Runspace: Runspace1
@@ -224,29 +227,29 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-Ezen a ponton még egy töréspontot a következő leállt a [PowerShell hibakereső](/powershell/module/microsoft.powershell.core/about/about_debuggers). Itt is ezt a a szokásos hibakeresési műveletek, ugorja át, lépjen be, továbbra is, lépjen ki, és másokkal. A konzolon elérhető hibakeresési parancsok teljes készletének megtekintéséhez futtassa a `h` vagy `?` parancsokat.
+Ezen a ponton a [PowerShell-hibakereső](/powershell/module/microsoft.powershell.core/about/about_debuggers)töréspontján leállt. Innen elvégezheti az összes szokásos hibakeresési műveletet, a lépéseket, a beléptetést, a folytatást, a kilépést és egyebeket. Ha szeretné megtekinteni a konzolon elérhető hibakeresési parancsok teljes készletét, futtassa a `h` vagy `?` parancsot.
 
-Töréspontokat állíthat be az ezen a szinten a `Set-PSBreakpoint` parancsmagot.
+A töréspontok ezen a szinten is megadhatók a `Set-PSBreakpoint` parancsmaggal.
 
-Továbbra is, és a parancsfájl teljes meghívása után láthatja, hogy:
+Ha folytatja, és teljes mértékben meghívja a szkriptet, láthatja, hogy:
 
-* A PowerShell-konzol, ahol hajtja végre `Invoke-RestMethod` mostantól adott vissza eredményt.
-* A PowerShell-konzol, ahol hajtja végre `Debug-Runspace` várakozik egy parancsfájl hajtható végre.
+* A `Invoke-RestMethod` művelet végrehajtásához megadott PowerShell-konzol sikeresen visszaadott egy eredményt.
+* A PowerShell-konzol, amelyen végrehajtotta `Debug-Runspace`, egy parancsfájl végrehajtására vár.
 
-Újra hívhatók meg ugyanezt a funkciót (használatával `Invoke-RestMethod` például) és a hibakeresőt után jobb működésképtelenné válik a `Wait-Debugger` parancsot.
+Ugyanezt a függvényt meghívhatja újra (például `Invoke-RestMethod` használatával), a hibakereső pedig közvetlenül az `Wait-Debugger` parancs után.
 
-## <a name="considerations-for-debugging"></a>Hibakeresés szempontjai
+## <a name="considerations-for-debugging"></a>Hibakeresési megfontolások
 
-Vegye figyelembe a következő problémák a Functions-kódhoz történő hibakeresése során.
+A functions-kód hibakeresése során vegye figyelembe a következő problémákat.
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` a hibakereső váratlan helyen hibájához vezethet
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>a `BreakAll` okozhatja, hogy a hibakereső nem várt helyre törik
 
-A PowerShell-bővítmény által használt `Debug-Runspace`, amely támaszkodik a PowerShell `BreakAll` funkció. Ez a funkció arra utasítja a PowerShell használatával az első parancs végrehajtott állni. Ez a viselkedés lehetővé teszi, hogy a állítson be töréspontokat a hibakeresésen futási térben belül.
+A PowerShell-bővítmény `Debug-Runspace` protokollt használ, amely viszont a PowerShell `BreakAll` szolgáltatására támaszkodik. Ez a funkció azt jelzi, hogy a PowerShell leáll az első parancs végrehajtásakor. Ez a viselkedés lehetővé teszi a töréspontok beállítását a hibakereső RunSpace belül.
 
-Az Azure Functions runtime néhány parancsot futtatja ténylegesen meghívása előtt a `run.ps1` szkriptet, így lehetséges, hogy a hibakeresőt említi használhatatlanná tévő belül a `Microsoft.Azure.Functions.PowerShellWorker.psm1` vagy `Microsoft.Azure.Functions.PowerShellWorker.psd1`.
+A Azure Functions Runtime néhány parancsot futtat, mielőtt ténylegesen meghívja a `run.ps1` parancsfájlt, ezért lehetséges, hogy a hibakereső véget ér a `Microsoft.Azure.Functions.PowerShellWorker.psm1` vagy a `Microsoft.Azure.Functions.PowerShellWorker.psd1` között.
 
-Történjen, ez a megszakítás, futtassa a `continue` vagy `c` kihagyni a töréspont parancsot. Ezután állni a várt töréspontig.
+Ha ez a szünet történik, futtassa a `continue` vagy a `c` parancsot a Töréspont átugrásához. Ezután leállíthatja a várt töréspontot.
 
 ## <a name="next-steps"></a>További lépések
 
-Függvények PowerShell-lel kapcsolatos további információkért lásd: [fejlesztői útmutató az Azure Functions PowerShell](functions-reference-powershell.md).
+További információ a függvények a PowerShell használatával történő fejlesztéséről: [Azure functions PowerShell fejlesztői útmutató](functions-reference-powershell.md).

@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a51a8e02ec08b9a4ee353c2c45345c4d01246894
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719514"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981831"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Gyors útmutató: A Node. js-hez készült ügyféloldali kódtár Computer Vision
 
@@ -25,7 +25,7 @@ A Node. js-hez készült Computer Vision ügyféloldali kódtár a következőh�
 * [Kép elemzése](#analyze-an-image)
 * [Nyomtatott és kézzel írt szöveg olvasása](#read-printed-and-handwritten-text)
 
-[A dokumentációs](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [-csomagjához (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)@no__t – 1[könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [csomag (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-computervision) | [minta](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `COMPUTER_VISION_SUBSCRIPTION_KEY` kulcs `COMPUTER_VISION_ENDPOINT` és a végpont URL-címéhez, valamint a nevét.
+Miután megszerezte a kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és végpont URL-címéhez, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
  
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
@@ -51,7 +51,7 @@ Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon lét
 mkdir myapp && cd myapp
 ```
 
-Futtassa a `npm init` parancsot egy `package.json` Node-alkalmazás fájlhoz való létrehozásához. 
+A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json` fájllal. 
 
 ```console
 npm init
@@ -59,7 +59,7 @@ npm init
 
 ### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése
 
-Telepítse a `ms-rest-azure` és `azure-cognitiveservices-computervision` a NPM csomagokat:
+Telepítse a `ms-rest-azure` és a `azure-cognitiveservices-computervision` NPM csomagokat:
 
 ```console
 npm install azure-cognitiveservices-computervision ms-rest-azure
@@ -73,7 +73,7 @@ Hozzon létre egy új fájlt, az *index. js*fájlt, és nyissa meg egy szövegsz
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
-Ezután Definiáljon egy függvényt `computerVision` , és deklaráljon egy aszinkron sorozatot az elsődleges függvény és a visszahívási függvénnyel. Adja hozzá a rövid útmutató kódját az elsődleges függvényhez, és hívja `computerVision` meg a szkript alján.
+Ezután Definiáljon egy függvényt @no__t – 0, és deklaráljon egy aszinkron sorozatot az elsődleges függvény és a visszahívási függvénnyel. Adja hozzá a rövid útmutató kódját az elsődleges függvényhez, és hívja meg `computerVision` értéket a parancsfájl alján.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
@@ -131,7 +131,7 @@ A következő kód lekéri a rendszerkép észlelt kategóriáját. További ré
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories)]
 
-A segítő függvény `formatCategories`megadása:
+Adja meg a segítő függvényt `formatCategories`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_categories_format)]
 
@@ -141,7 +141,7 @@ A következő kód beolvassa az észlelt címkék készletét a képen. További
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tags)]
 
-A segítő függvény `formatTags`megadása:
+Adja meg a segítő függvényt `formatTags`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_tagsformat)]
 
@@ -151,7 +151,7 @@ A következő kód észleli a rendszerképben szereplő általános objektumokat
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-A segítő függvény `formatRectObjects`megadása:
+Adja meg a segítő függvényt `formatRectObjects`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -167,7 +167,7 @@ A következő kód az észlelt arcokat adja vissza a képen a téglalap koordin�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_faces)]
 
-A segítő függvény `formatRectFaces`megadása:
+Adja meg a segítő függvényt `formatRectFaces`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_formatfaces)]
 
@@ -189,7 +189,7 @@ A következő kód az észlelt színattribútumokat nyomtatja ki a képen, péld
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors)]
 
-Adja meg a segítő `printColorScheme` függvényt a színséma adatainak a konzolra való kinyomtatásához.
+Adja meg a segítő függvényt @no__t – 0, hogy kinyomtassa a színsémának a konzolra vonatkozó részleteit.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_colors_print)]
 
@@ -205,17 +205,17 @@ A következő kód az észlelt tereptárgyak adatait elemzi a képen.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks)]
 
-Adja meg a segítő `formatRectDomain` függvényt az észlelt tereptárgyak hely adatainak elemzéséhez.
+Adja meg `formatRectDomain` segítő függvényt az észlelt tereptárgyak hely adatainak elemzéséhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_landmarks_rect)]
 
 ### <a name="get-the-image-type"></a>A rendszerkép típusának beolvasása
 
-A következő kód a képtípussal&mdash;kapcsolatos információkat jeleníti meg, legyen szó ClipArt vagy vonalas rajzolásról.
+A következő kód a no__t-0whether kép típusával kapcsolatos információkat jeleníti meg. Ez a ClipArt vagy a vonal rajzolása.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype)]
 
-A segítő függvény `describeType`megadása:
+Adja meg a segítő függvényt `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
@@ -228,27 +228,27 @@ A Computer Vision a képen látható szöveget olvashatja, és átalakíthatja a
 
 ### <a name="set-up-test-images"></a>Tesztelési lemezképek beállítása
 
-Mentse el a képek URL-címét, amelyből szöveget szeretne kinyerni.
+Mentse annak a lemezképnek az URL-címét, amelyből szöveget szeretne kinyerni.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 ### <a name="call-the-recognize-api"></a>Az felismerő API meghívása
 
-Adja hozzá az alábbi kódot, amely meghívja a `recognizeText` függvényt az adott lemezképekhez.
+Adja hozzá az alábbi kódot, amely meghívja az `recognizeText` függvényt az adott lemezképekhez.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Adja meg `recognizeText` a függvényt. Ez meghívja a **recognizeText** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a műveletet egy másodperces időközönként, amíg vissza nem adja az eredményeket. Ezután a kinyert eredményeket adja vissza.
+Adja meg a `recognizeText` függvényt. Ez meghívja a **recognizeText** metódust az ügyfél objektumon, amely egy műveleti azonosítót ad vissza, és egy aszinkron folyamatot indít el a rendszerkép tartalmának olvasásához. Ezután a műveleti azonosító használatával vizsgálja meg a műveletet egy másodperces időközönként, amíg vissza nem adja az eredményeket. Ezután a kinyert eredményeket adja vissza.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-Ezután adja meg a segítő függvényt `printRecText`, amely egy felismerési művelet eredményét kiírja a-konzolra.
+Ezután adja meg a segítő függvényt @no__t – 0, amely egy felismerési művelet eredményét kiírja a konzolra.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `node` a gyors üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a `node` paranccsal a gyors üzembe helyezési fájlban.
 
 ```console
 node index.js

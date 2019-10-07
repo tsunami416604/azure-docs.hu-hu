@@ -1,20 +1,19 @@
 ---
-title: Minta - címke-egyeztetési minta kényszerítése
-description: A szabályzatdefiníció-minta megköveteli, hogy az erőforrások megfelelnek az egyeztetési minta címke értéke.
+title: Minta – a címkézési egyeztetési minta alkalmazása
+description: Ez a minta házirend-definíció megköveteli, hogy az erőforrások megfeleljenek a címke értékének egyezési mintájának.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7c758cf2dd7ae6a1fcc59502fe671b5fb7067e5c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9af0000d61c358450cf7fc51dca667af8cf903a7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545927"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980499"
 ---
-# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Minta – kényszerítése a címkeértékeket címke-egyeztetési minta
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>Minta-kikényszerítő címke egyezési mintája a címke értékeihez
 
 A mintával való megegyezést követeli meg a címkék értékétől. Az engedélyezett mintát a szabályzatban adhatja meg.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FTextPatterns%2Fenforce-tag-match-pattern%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

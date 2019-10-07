@@ -9,12 +9,12 @@ ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841850"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981237"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -135,7 +135,7 @@ Az IoT hub mellett egy Azure App Service webalkalmazás lett létrehozva, amely 
    Paraméter|Leírás
    ---|---
    **Cél IoT Hub** | Válassza **az előre kiépített IoT hub használata**lehetőséget.
-   **Eszközmodell** | Válasszaa Chiller lehetőséget.
+   **Eszközmodell** | Válassza a **Chiller**lehetőséget.
    **Eszközök száma**  | Adja meg a `1000` értéket a **mennyiség**mezőben.
    **Telemetria gyakorisága** | @No__t – 0 másodpercet adjon meg.
    **Szimuláció időtartama** | Válassza **a Befejezés elemet:** , és írja be `5` percet.
@@ -196,4 +196,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy már tudja, hogyan hozhat létre saját Time Series Insights környezetet, megtudhatja, hogyan készíthet olyan webalkalmazást, amely egy Time Series Insights-környezetből származó adatokkal rendelkezik:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights egyoldalas webalkalmazás létrehozása](tutorial-create-tsi-sample-spa.md)
+> [Lásd: az üzemeltetett ügyféloldali SDK vizualizációs mintái](https://tsiclientsample.azurewebsites.net/)

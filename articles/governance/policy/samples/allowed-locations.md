@@ -1,22 +1,21 @@
 ---
-title: Minta - engedélyezett helyek
-description: A szabályzatdefiníció-minta megköveteli, hogy az összes erőforrás telepítve vannak-e a jóváhagyott helyekre.
+title: Példaként engedélyezett helyszínek
+description: Ez a minta házirend-definíció megköveteli, hogy minden erőforrást a jóváhagyott helyszínekre telepítsen.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2823cee863941926fffe332295328d6ecfb54001
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c4a23b355a4d7841c42d03042399635a55bac03
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60546369"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980637"
 ---
-# <a name="sample---allowed-region-locations"></a>Minta - engedélyezett helyek régió
+# <a name="sample---allowed-region-locations"></a>Példa – engedélyezett régió helyei
 
-Ez a szabályzat lehetővé teszi, hogy korlátozni azon helyeket, a szervezet megadhat az erőforrások üzembe helyezésekor. Használja a földrajzi megfelelőségi követelmények kényszerítésére. Nem tartalmazza az erőforráscsoportok Microsoft.AzureActiveDirectory/b2cDirectories és erőforrásokat, a "global" régiót használni. Megadhatja az engedélyezett helyek tömbjét.
+Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezet által az erőforrások telepítésekor megadható helyekre vonatkozó korlátozásokat. A Geo-megfelelőségi követelmények betartatására használható. Az erőforráscsoportok, a Microsoft. AzureActiveDirectory/b2cDirectories és a "globális" régiót használó erőforrások kizárása. Az engedélyezett helyszínek tömbjét kell megadnia.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -52,14 +51,14 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 ## <a name="parameters"></a>Paraméterek
 
-|Name (Név) |Típus |Mező |Leírás |
+|Name (Név) |Type |Mező |Leírás |
 |---|---|---|---|
-|listOfAllowedLocations |Tömb |helyek |Engedélyezett helyek listája|
+|listOfAllowedLocations |Array |locations |Az engedélyezett helyszínek listája|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
 
-Az ebben a példában paraméter csak a _eastus2_ vagy _westus_ helyeken engedélyezett lesz.
+Ebben a példában csak a _eastus2_ vagy a _westus_ hely lesz engedélyezve.
 
 ```json
 {
@@ -74,8 +73,8 @@ Az ebben a példában paraméter csak a _eastus2_ vagy _westus_ helyeken engedé
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![A házirend-minta üzembe helyezése Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![a házirend-minta üzembe helyezése az Azure-beli államigazgatás –](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Deploy az Azure gov-hoz](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -218,10 +217,10 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív: [Hozzon létre, amikor a felügyeleti csoport](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív: [A felügyeleti csoport törlése](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>További lépések
 

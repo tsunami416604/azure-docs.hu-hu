@@ -1,20 +1,19 @@
 ---
-title: Példa – egyéni Virtuálisgép-rendszerkép engedélyezése egy erőforráscsoportból
-description: A szabályzatdefiníció-minta megköveteli, hogy egyéni lemezképeket származnak-e egy jóváhagyott erőforráscsoportot.
+title: Minta – egyéni virtuálisgép-rendszerkép engedélyezése erőforráscsoporthoz
+description: Ez a minta házirend-definíció megköveteli, hogy az egyéni lemezképek jóváhagyott erőforráscsoporthoz legyenek.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 29f42a278d9a1d0879d464b6c4e1cfad8f73d518
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c109f870736274f82bf4e165f890d49237c22cbc
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61333522"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977816"
 ---
-# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Példa – egyéni Virtuálisgép-rendszerkép engedélyezése egy erőforráscsoportból
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>Minta – egyéni virtuálisgép-rendszerkép engedélyezése erőforráscsoporthoz
 
 Ez a mintaszabályzat megköveteli, hogy az egyéni lemezképek a jóváhagyott erőforráscsoportból származzanak. Meg kell adnia a jóváhagyott erőforráscsoport nevét.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FCompute%2Fcustom-image-from-rg%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

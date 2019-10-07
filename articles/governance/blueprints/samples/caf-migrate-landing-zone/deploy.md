@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802578"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981683"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
@@ -43,7 +42,7 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
    - **Terv neve** Adjon meg egy nevet a CAF Migration Landing Zone Blueprint minta példányához.
    - **Definíció helye** Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki az _összetevők fület_ a lap tetején, vagy **a következőt:**  Az oldal alján található összetevők.
+1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -69,7 +68,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapvető beállítások
+   - Alapadatok
      - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
      - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
        Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
@@ -108,10 +107,10 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Elemnév|Összetevő típusa|Paraméternév|Leírás|
 |-|-|-|-|
-|VNET-kirakodási zóna üzembe helyezése|Resource Manager-sablon|IPAddress_Space|**Zárolt** – adja meg az első két oktettet, például 10,0|
-|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** csoport vagy felhasználói objektumazonosító, amely engedélyt ad a Key Vault|
-|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
-|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
+|VNET-kirakodási zóna üzembe helyezése|Resource Manager-sablon|IP-cím_tartomány|**Zárolt** – adja meg az első két oktettet, például 10,0|
+|Kulcstartó üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** csoport vagy felhasználói objektumazonosító, amely engedélyt ad a Key Vault|
+|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_AdatMegőrzés|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
+|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_hely|**Zárolt** – a munkaterület létrehozásakor használt régió|
 |Azure Migrate üzembe helyezése|Resource Manager-sablon|Azure_Migrate_Location|**Zárolt** – válassza ki a telepítendő régiót Azure Migrate|
 
 ## <a name="next-steps"></a>További lépések

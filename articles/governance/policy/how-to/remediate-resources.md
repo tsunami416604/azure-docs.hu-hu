@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 219a3c56f9e4e4c9e132fa759b017fac63ade766
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147047"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977991"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -80,7 +79,7 @@ A `$assignment` változó már tartalmazza a felügyelt identitás és a standar
 
 ### <a name="grant-defined-roles-with-powershell"></a>Engedélyezés definiált szerepkörök a PowerShell-lel
 
-Az új felügyelt identitás kell végeznie az Azure Active Directory replikációs, mielőtt azt is biztosítani a szükséges szerepkörök. A replikáció befejeződése után a következő példa megismétli a **roleDefinitionIds** tartozó házirend- `$policyDef` definíciót, és a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával adja meg a szerepkörök új felügyelt identitását.
+Az új felügyelt identitás kell végeznie az Azure Active Directory replikációs, mielőtt azt is biztosítani a szükséges szerepkörök. A replikáció befejezését követően a következő példa megismétli a **roleDefinitionIds** `$policyDef` házirend-definícióját, és a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával adja meg az új felügyelt identitást a szerepköröknek.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -161,7 +160,7 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Szervizelési feladat létrehozása az Azure CLI-n keresztül
 
-Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, `az policy remediation` használja a parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
+Ha az Azure CLI-vel szeretne **szervizelési feladatot** létrehozni, használja az `az policy remediation` parancsokat. Cserélje le a `{subscriptionId}` értéket az előfizetés-azonosítójával, és `{myAssignmentId}` értéket a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +173,7 @@ További szervizelési parancsokért és példákért tekintse meg az az [Policy
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Szervizelési feladat létrehozása Azure PowerShell használatával
 
-Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje `{subscriptionId}` le az előfizetése `{myAssignmentId}` azonosítóját és a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
+Ha Azure PowerShell használatával szeretne **szervizelési feladatot** létrehozni, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje le a `{subscriptionId}` értéket az előfizetés-azonosítójával, és `{myAssignmentId}` értéket a **deployIfNotExists** , vagy **módosítsa** a szabályzat-hozzárendelés azonosítóját.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -190,6 +189,6 @@ Más szervizelési parancsmagok és példák esetében tekintse meg az az [. Pol
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](../concepts/effects.md).
-- Megtudhatja, hogyan [hozhat létre programozott](programmatically-create.md)módon házirendeket.
-- Ismerje meg, hogyan kérheti le a [megfelelőségi információkat](getting-compliance-data.md).
+- Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](programmatically-create.md).
+- Ismerje meg, hogyan [kérheti le a megfelelőségi információkat](getting-compliance-data.md).
 - Tekintse át, hogy a felügyeleti csoport hogyan [rendezi az erőforrásokat az Azure felügyeleti csoportjaival](../../management-groups/overview.md).

@@ -1,20 +1,19 @@
 ---
-title: Minta - használatra jóváhagyott alhálózatot a virtuális gép hálózati adapterek
-description: A szabályzatdefiníció-minta megköveteli, hogy a hálózati adapterek egy jóváhagyott alhálózatot használja.
+title: Minta – a VM hálózati adapterek jóváhagyott alhálózatának használata
+description: Ez a minta házirend-definíció megköveteli, hogy a hálózati adapterek jóváhagyott alhálózatot használjanak.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: b4b6b2293952103bdcaccf11e8f7d528b33cbc46
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3f7b6cf54665157bc13ea7e86b384647da44be4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641304"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981310"
 ---
-# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Minta - használatra jóváhagyott alhálózatot a virtuális gép hálózati adapterek
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Minta – a VM hálózati adapterek jóváhagyott alhálózatának használata
 
 Ez a szabályzat megköveteli egy jóváhagyott alhálózat használatát a hálózati adaptereken. A jóváhagyott alhálózat azonosítóját Ön határozza meg.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fvm-creation-in-approved-subnet%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

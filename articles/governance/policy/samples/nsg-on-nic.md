@@ -1,20 +1,19 @@
 ---
-title: Minta - NSG-szor minden hálózati adapter
-description: A szabályzatdefiníció-minta szükséges szolgál, hogy egy adott hálózati biztonsági csoport minden virtuális hálózati adapterhez.
+title: NSG x minta minden hálózati adapteren
+description: Ez a minta házirend-definíció megköveteli, hogy egy adott hálózati biztonsági csoport legyen használatban minden virtuális hálózati adapterrel.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8880b23933b5a32c4c829d429ddc032c1c2ae057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e529ce3dbb54a7ac7422d9c6dd6b727730d641bb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60536967"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981356"
 ---
-# <a name="sample---network-security-group-x-on-every-nic"></a>Minta – a hálózati biztonsági csoport X minden hálózati adapter
+# <a name="sample---network-security-group-x-on-every-nic"></a>Minta – hálózati biztonsági csoport X minden hálózati adapteren
 
 Ez a szabályzat megköveteli, hogy minden egyes virtuális hálózati adapter egy bizonyos hálózati biztonsági csoportot használjon. A használandó hálózati biztonsági csoport azonosítóját Ön határozza meg.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

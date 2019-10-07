@@ -1,20 +1,19 @@
 ---
-title: Minta - storage-fiókok rétegezést ritkán használt adatok hozzáférés megtagadása
-description: A szabályzatdefiníció-minta megakadályozza, hogy a ritkán használt adatok hozzáférési rétegek blob storage-fiókok használatát.
+title: Minta – lassú hozzáférési szint megtagadása a Storage-fiókok esetében
+description: Ez a minta házirend-definíció tiltja a lassú elérési szint használatát a blob Storage-fiókokhoz.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 90c579871a2cc19d226f56febca17ceb5e7561b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21ee0e62e300b5807e3a38a0834c3365ab123dad
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545290"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977240"
 ---
-# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Minta - storage-fiókok rétegezést ritkán használt adatok hozzáférés megtagadása
+# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Minta – lassú hozzáférési szint megtagadása a Storage-fiókok esetében
 
 Ez a szabályzat megtiltja a ritka elérésű hozzáférési szint használatát a Blob Storage-fiókokban.
 
@@ -28,7 +27,7 @@ A sablon az [Azure Portal](#deploy-with-the-portal), a [PowerShell](#deploy-with
 
 ## <a name="deploy-with-the-portal"></a>Üzembe helyezés a portállal
 
-[![Az Azure-bA a szabályzat minta üzembe helyezése](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
+[@no__t – 1Deploy a szabályzatot az Azure-ba](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 

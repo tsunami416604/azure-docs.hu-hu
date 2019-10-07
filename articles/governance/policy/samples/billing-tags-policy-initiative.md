@@ -1,20 +1,19 @@
 ---
-title: Példa – számlázási címkék szabályzatának kezdeményezése
-description: A minta szabályzatkészlet-definíció költségek és a Terméknév neve címkének a megadott értékekkel kell rendelkeznie.
+title: Minta – számlázási címkék házirend kezdeményezése
+description: A példában szereplő házirend-definícióhoz a Költséghely és a terméknév értékének megadása szükséges.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 5b084bd5a1b34dc2ce8ac8abb2a4af03a22262d2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f2190b5759c53d645c1d0150004271ba04669c94
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65787341"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981398"
 ---
-# <a name="sample---billing-tags-policy-initiative"></a>Példa – számlázási címkék szabályzatának kezdeményezése
+# <a name="sample---billing-tags-policy-initiative"></a>Minta – számlázási címkék házirend kezdeményezése
 
 Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott értékekkel kell rendelkeznie. A példa beépített szabályzatokat használ a szükséges címkék hozzáadásához és előírásához. A címkék szükséges értékeit Ön adja meg.
 
@@ -24,7 +23,7 @@ Ehhez a szabályzathoz a költséghely és a terméknév címkének a megadott �
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/multiple-billing-tags/azurepolicyset.json "Billing Tags Policy Initiative")]
 
-Telepítheti a sablont [PowerShell](#deploy-with-powershell).
+Ezt a sablont a [PowerShell](#deploy-with-powershell)használatával telepítheti.
 
 ## <a name="deploy-with-powershell"></a>Üzembe helyezés a PowerShell-lel
 
