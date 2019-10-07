@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68326058"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178572"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -37,25 +37,27 @@ Ez a példa tároló Csoport:
 * A két Azure-fájlmegosztást tartalmaz kötet-csatlakoztatásként, és mindegyik tároló helyileg csatlakoztatja az egyik megosztást.
 
 > [!NOTE]
-> A több tárolóból álló csoportok jelenleg csak a Linux-tárolókat támogatják. A Windows-tárolók esetében Azure Container Instances csak egyetlen példány üzembe helyezését támogatja. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, megkeresheti a platform aktuális [](container-instances-overview.md#linux-and-windows-containers)eltéréseit a szolgáltatás áttekintésében.
+> A több tárolóból álló csoportok jelenleg csak a Linux-tárolókat támogatják. A Windows-tárolók esetében Azure Container Instances csak egyetlen példány üzembe helyezését támogatja. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, megkeresheti a platform aktuális eltéréseit a szolgáltatás [áttekintésében](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="deployment"></a>Környezet
 
-A többtárolós csoportok üzembe helyezésének két gyakori módja van: egy [Resource Manager-sablon][resource-manager template] vagy egy [YAML-fájl][yaml-file]használata. A Resource Manager-sablonok használata akkor ajánlott, ha további Azure-szolgáltatási erőforrásokat (például [Azure Files megosztást][azure-files]) kell üzembe helyeznie a tároló példányainak telepítésekor. A YAML formátumának tömörebb jellege miatt a YAML-fájlok használata akkor ajánlott, ha a központi telepítés csak tároló példányokat tartalmaz.
+A többtárolós csoportok üzembe helyezésének két gyakori módja van: egy [Resource Manager-sablon][resource-manager template] vagy egy [YAML-fájl][yaml-file]használata. A Resource Manager-sablonok használata akkor ajánlott, ha további Azure-szolgáltatási erőforrásokat (például [Azure Files megosztást][azure-files]) kell üzembe helyeznie a tároló példányainak telepítésekor. A YAML formátumának tömörebb jellege miatt a YAML-fájlok használata akkor ajánlott, ha a központi telepítés csak tároló példányokat tartalmaz. A beállítható tulajdonságokkal kapcsolatos részletekért tekintse meg a [Resource Manager-sablonok referenciáját](/azure/templates/microsoft.containerinstance/containergroups) vagy a [YAML](container-instances-reference-yaml.md) dokumentációját.
 
 A tároló csoport konfigurációjának megőrzése érdekében exportálhatja a konfigurációt egy YAML-fájlba az Azure CLI-parancs az [Container export][az-container-export]paranccsal. Az Exportálás lehetővé teszi, hogy a "konfiguráció as code" verzióban tárolja a tároló csoport konfigurációit. Vagy használja kiindulási pontként az exportált fájlt, amikor új konfigurációt fejleszt a YAML-ben.
+
+
 
 ## <a name="resource-allocation"></a>Erőforrás-kiosztás
 
 A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy tároló-csoportba a csoportban lévő példányok [erőforrás-kérelmeinek][resource-requests] hozzáadásával. Ha például két példánnyal rendelkező tároló csoportot hoz létre a CPU-erőforrások számára, a tároló csoport 2 CPU-t foglal le.
 
-A tárolók csoportjai számára elérhető maximális erőforrások az üzembe helyezéshez használt [Azure][region-availability] -régiótól függenek.
+A tárolók csoportjai számára elérhető maximális erőforrások az üzembe helyezéshez használt [Azure-régiótól][region-availability] függenek.
 
 ### <a name="container-resource-requests-and-limits"></a>Tároló-erőforrásokra vonatkozó kérelmek és korlátozások
 
 * Alapértelmezés szerint a csoport tároló példányai megosztják a csoport kért erőforrásait. Az 1 CPU-t kérő két példánnyal rendelkező csoportban a csoport teljes hozzáféréssel rendelkezik 2 processzorhoz. Az egyes példányok akár a 2 processzort is használhatják, a példányok pedig a CPU-erőforrással versenyeznek.
 
-* Egy csoportban lévő példány erőforrás-felhasználásának korlátozásához opcionálisan beállíthat egy [erőforrás][resource-limits] -korlátot a példányhoz. Az 1 CPU-t kérő két példánnyal rendelkező csoportban az egyik tárolónak több processzort kell futtatnia, mint a másik.
+* Egy csoportban lévő példány erőforrás-felhasználásának korlátozásához opcionálisan beállíthat egy [erőforrás-korlátot][resource-limits] a példányhoz. Az 1 CPU-t kérő két példánnyal rendelkező csoportban az egyik tárolónak több processzort kell futtatnia, mint a másik.
 
   Ebben a forgatókönyvben egy 0,5 CPU-korlátot állíthat be egy példányhoz, és legfeljebb 2 processzort használhat a másodikhoz. Ez a konfiguráció az első tároló erőforrás-felhasználását az 0,5 CPU-ra korlátozza, így a második tároló a teljes 2 CPU-t használhatja, ha van ilyen.
 

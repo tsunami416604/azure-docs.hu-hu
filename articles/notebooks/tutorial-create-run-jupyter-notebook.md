@@ -4,21 +4,20 @@ description: Hogyan lehet egy futtatása Jupyter notebook létrehozása Azure-je
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 09d4038e705fb3bc4ff2c82daf5dc4c07f346f94
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 827338c299b19d04245d7114a99d946d0332c82f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66751758"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973050"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -40,7 +39,7 @@ A befejezett notebook találhatók [GitHub - jegyzetfüzetek minták Azure](http
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-    - **Projektnév**: Lineáris regresszió példa – Cricket utánzó rendszerhangokat
+    - **Projekt neve**: Lineáris regressziós példa – Cricket csiripelő
     - **A projekt Azonosítóját**: lineáris regressziós – példa
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy README.md**: (törölve)
@@ -49,7 +48,7 @@ A befejezett notebook találhatók [GitHub - jegyzetfüzetek minták Azure](http
 
 ## <a name="create-the-data-file"></a>Az adatfájl létrehozása
 
-A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a nevű projekt fájlból *cricket_chirps.csv*. Ez a fájl másolásával, vagy hozhat létre [GitHub - jegyzetfüzetek minták Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps), vagy közvetlenül az adatok megadásával. A következő szakaszok mindkét módszert ismertetik.
+A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a nevű projekt fájlból *cricket_chirps.csv*. Ezt a fájlt a [GitHub-Azure Notebooks mintákból](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)is létrehozhatja, vagy közvetlenül is beírhatja az adatokat. A következő szakaszok mindkét módszert ismertetik.
 
 ### <a name="upload-the-data-file"></a>Az adatfájl feltöltése
 
@@ -128,7 +127,7 @@ Készen áll az adatfájlban és a projekt környezet beállítása hogy mostant
 1. Mert rendelkezik egy *requirements.txt* fájl a környezet beállításaiban látja az üzenetet, "Várakozás a tároló befejezéséhez a előkészítésére." Választhat **OK** zárja be az üzenetet, és folytatni a munkát a notebook; kód cellák, azonban nem tudja futtatni, amíg a környezet teljes van beállítva.
 1. A Notebookban egy üres kódcellába Jupyter kapcsolaton alapértelmezett nyílik meg.
 
-    [![Kezdeti nézete egy új jegyzetfüzetet az Azure-jegyzetfüzetekben](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [@no__t – új jegyzetfüzet 1Initial nézete Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>A notebook felület bemutatása
 
@@ -144,7 +143,7 @@ Az ablak tetején jelenik meg a következő elemek:
 (F) jelzi, hogy a notebook megbízható (alapértelmezett érték a **nem megbízható**).
 (G) a kernel a jegyzetfüzet futtatásához egy tevékenységet jelző együtt használja.
 
-[![A Jupyter felület területeit elsődleges felhasználói felület](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[@no__t – a Jupyter felületének 1Primary felhasználói felületi területei](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter biztosít beépített Ismerkedjen meg az elsődleges felhasználói felületi elemeket. A bemutató első lépésként válassza ki a **súgó** > **felhasználói felületet bemutató** parancs, és kattintson az előugró ablakok keresztül.
 
@@ -411,13 +410,13 @@ Ha elkészült, a jegyzetfüzet, használja a **fájl** > **Bezárás és halt**
 
 ## <a name="debug-notebooks-using-visual-studio-code"></a>Hibakeresés a Visual Studio Code notebookok
 
-A kód cellák a jegyzetfüzet nem a várt módon működni, ha lehet kódhibák vagy más hibák. Azonban más, az `print` utasításokat egy tipikus Jupyter-környezet nem biztosít semmilyen hibakeresési létesítményekben változók, értéket jeleníti meg.
+A kód cellák a jegyzetfüzet nem a várt módon működni, ha lehet kódhibák vagy más hibák. Azonban a változók értékének megjelenítéséhez a `print` utasítás használata helyett a tipikus Jupyter-környezet nem biztosít hibakeresési szolgáltatásokat.
 
-Szerencsére a letöltheti a notebook *.ipynb* fájlt, majd nyissa meg a Visual Studio Code a Python-bővítmény használatával. A bővítmény közvetlenül importálja egy jegyzetfüzetet egyetlen fájlként, megőrizve a Markdown cellák megjegyzéseket. A notebook importálása után a Visual Studio Code hibakereső segítségével végighaladhat a kódot, állítson be töréspontokat, vizsgálja meg az állapot és így tovább. Után korrigálás kell a kódot, majd exportálja a *.ipynb* fájlt a Visual Studio Code-ból, és töltse fel újra az Azure-jegyzetfüzetek üzembe.
+Szerencsére letöltheti a notebook *. ipynb* -fájlját, majd a Python bővítménnyel megnyithatja a Visual Studio Code-ban. A bővítmény közvetlenül importál egy jegyzetfüzetet egyetlen kódlapként, megőrizve a Markdown-cellákat a megjegyzésekben. Miután importálta a jegyzetfüzetet, használhatja a Visual Studio Code debuggert a kód beléptetéséhez, a töréspontok beállításához, az állapot vizsgálatához és így tovább. A kód javítása után exportálja a *. ipynb* fájlt a Visual Studio Code-ból, és töltse fel újra Azure Notebooksba.
 
-További információkért lásd: [Jupyter notebook Debug](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) a Visual Studio Code dokumentáció.
+További információ: Jupyter- [Jegyzetfüzet hibakeresése](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook) a Visual Studio Code dokumentációjában.
 
-Is [Visual Studio Code - Jupyter támogatási](https://code.visualstudio.com/docs/python/jupyter-support) Jupyter notebookokhoz Visual Studio Code, további funkciók.
+Lásd még: a [Visual Studio Code-Jupyter támogatása](https://code.visualstudio.com/docs/python/jupyter-support) a Visual Studio Code további szolgáltatásaihoz a Jupyter notebookokhoz.
 
 ## <a name="next-steps"></a>További lépések
 

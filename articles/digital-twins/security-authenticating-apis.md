@@ -1,19 +1,19 @@
 ---
 title: Az API-hitelesítés ismertetése az Azure Digital Twins használatával | Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat az API-khoz, és hogyan hitelesíthető az Azure Digital Twins szolgáltatással.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719169"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949783"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Kapcsolódás és hitelesítés API-kkal
 
@@ -49,7 +49,7 @@ Amikor a fejlesztők a digitális Twins-megoldásokat használják, általában 
 
 1. A rendszer ezután a beszerzett jogkivonatot használja a hitelesítéshez vagy hívja meg azokat az API-kat, amelyek további alsóbb rétegbeli folyamatokat használnak
 
-A folyamaton belüli folyamat előkészítésével kapcsolatos utasításokért lásd: [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)-alapú folyamat. Az [alárendelt webes API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)-k meghívásakor is megtekintheti a kód mintáit.
+A folyamaton belüli folyamat előkészítésével kapcsolatos utasításokért lásd: [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)-alapú folyamat. Az [alárendelt webes API-k meghívásakor](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/)is megtekintheti a kód mintáit.
 
 ## <a name="next-steps"></a>További lépések
 

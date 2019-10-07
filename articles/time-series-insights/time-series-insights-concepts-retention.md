@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5388b157ebea78a69355eb745492910f260be3ad
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823642"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948205"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
 
@@ -30,9 +30,9 @@ Ez a cikk két olyan beállítást ismertet, amelyek hatással vannak az adatok 
 
 Az Azure idősorozat-környezetek mindegyike egy olyan beállítással rendelkezik, amely az **adatok megőrzési idejét**vezérli. Az érték 1 – 400 nap. Az adatok törlődnek a környezet tárolási kapacitása vagy a megőrzési időtartam alapján, attól függően, hogy melyik következik be először.
 
-Emellett az Azure idősorozat-környezete túllépte a **tárolási korlátot** . A bejövő és a kiürítési viselkedést vezérli, ha elérik a környezetek maximális kapacitását. A konfigurálása során két viselkedés közül választhat:
+Emellett az Azure idősorozat-környezete **túllépte a tárolási korlátot** . A bejövő és a kiürítési viselkedést vezérli, ha elérik a környezetek maximális kapacitását. A konfigurálása során két viselkedés közül választhat:
 
-- **Régi adattörlés** alapértelmezett  
+- **Régi adattörlés** (alapértelmezett)  
 - **Bejövő forgalom szüneteltetése**
 
 > [!NOTE]
@@ -46,7 +46,7 @@ Az adatmegőrzési viselkedés összehasonlítása:
 
 - Ez a viselkedés Time Series Insights környezetek alapértelmezett viselkedése.  
 - Ez a viselkedés akkor javasolt, ha a felhasználók mindig látják a legutóbbi adatTime Series Insights-környezetben lévő összes *információt* .
-- Ez a viselkedés kiüríti az adatmennyiséget, ha a környezet korlátait (a megőrzési időt, a méretet vagy a darabszámot) eléri. Alapértelmezés szerint a megőrzés értéke 30 nap.
+- Ez a viselkedés *kiüríti* az adatmennyiséget, ha a környezet korlátait (a megőrzési időt, a méretet vagy a darabszámot) eléri. Alapértelmezés szerint a megőrzés értéke 30 nap.
 - A legrégebbi betöltött adatot a rendszer először megtisztítja (FIFO-megközelítés).
 
 ### <a name="example-one"></a>Példa egy
@@ -65,8 +65,8 @@ Ha a környezet napi beléptetési aránya meghaladja a napi 0,166 GB-ot, az ada
 
 ## <a name="pause-ingress"></a>Bejövő forgalom szüneteltetése
 
-- A **bejövő** forgalom felfüggesztése beállítás úgy van kialakítva, hogy az adatok ne legyenek kiürítve, ha a méret és a szám a megőrzési időtartam előtt eléri a korlátot.  
-- A felfüggesztések szüneteltetése további időt biztosít a felhasználók számára, hogy a megőrzési idő megszegése miatt megnövelje a környezete kapacitását, mielőtt az adatok törlődnek.
+- A **Bejövő forgalom felfüggesztése** beállítás úgy van kialakítva, hogy az adatok ne legyenek kiürítve, ha a méret és a szám a megőrzési időtartam előtt eléri a korlátot.  
+- A **felfüggesztések szüneteltetése** további időt biztosít a felhasználók számára, hogy a megőrzési idő megszegése miatt megnövelje a környezete kapacitását, mielőtt az adatok törlődnek.
 - Segít az adatvesztés elleni védelemben, de létrehozhat egy lehetőséget a legutóbbi adatok elvesztésére, ha a bejövő forgalom szünetel az eseményforrás megőrzési időtartamán túl.
 - A környezet maximális kapacitásának elérésekor azonban a környezet szünetelteti az adatbevitelt, amíg a következő további műveletek nem történnek:
 
@@ -75,7 +75,7 @@ Ha a környezet napi beléptetési aránya meghaladja a napi 0,166 GB-ot, az ada
 
 ### <a name="example-three"></a>Harmadik példa
 
-Vegye fontolóra egy olyan környezet megőrzési viselkedését, amely a **bejövő**forgalom szüneteltetésére van konfigurálva. Ebben a példában az adatmegőrzési **időszak** 60 napra van konfigurálva. A **kapacitás** értéke az S1 három (3) egysége. Tegyük fel, hogy a környezet minden nap 2 GB-os adatforgalommal rendelkezik. Ebben a környezetben a bejövő forgalom szünetel a maximális kapacitás elérésekor.
+Vegye fontolóra egy olyan környezet megőrzési viselkedését, amely a **Bejövő forgalom szüneteltetésére**van konfigurálva. Ebben a példában az **adatmegőrzési időszak** 60 napra van konfigurálva. A **kapacitás** értéke az S1 három (3) egysége. Tegyük fel, hogy a környezet minden nap 2 GB-os adatforgalommal rendelkezik. Ebben a környezetben a bejövő forgalom szünetel a maximális kapacitás elérésekor.
 
 Ebben az időben a környezet ugyanazt az adatkészletet jeleníti meg, amíg a bejövő állapot folytatódik, vagy amíg be nem fejeződik a **bejövő** forgalom engedélyezése (ami a régebbi adatokat törli, hogy helyet szabadítson fel az új adatokat).
 
@@ -89,9 +89,9 @@ A bejövő forgalom folytatásakor:
 
 Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési** tulajdonságot, hogy az adatvesztés minimálisra csökkenjen, ha az Time Series Insights.
 
-[![Event hub-üzenetek megőrzése.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[@no__t – 1Event hub-üzenetek megőrzése.](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
 
-Ha az eseményforrás (`timeStampPropertyName`) egyik tulajdonság sincs konfigurálva, Time Series Insights alapértelmezett érték az Event hub-ban az X tengelyként való érkezés időbélyege. Ha `timeStampPropertyName` úgy van konfigurálva, hogy valami más legyen, a környezet az események `timeStampPropertyName` elemzésekor az adatcsomagban konfigurált konfigurációt keresi.
+Ha az eseményforrás egyik tulajdonsága sincs konfigurálva (`timeStampPropertyName`), a Time Series Insights az Event hub-ban az X tengelyként való megérkezés időbélyegét állítja be. Ha a `timeStampPropertyName` úgy van beállítva, hogy valami másra legyen konfigurálva, a környezet a beállított `timeStampPropertyName` értéket keresi az adatcsomagban az események elemzésekor.
 
 Ha a környezetet úgy kell méretezni, hogy a további kapacitást is kielégítse, vagy növelje a megőrzési időt, tekintse meg a [Time Series Insights környezet skálázását](time-series-insights-how-to-scale-your-environment.md) ismertető témakört.  
 

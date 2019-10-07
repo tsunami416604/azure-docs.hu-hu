@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 3ddee3dabd51d95f230f0178dfb647f8e297b3d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569390"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162323"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatikus hangolás a Azure SQL Databaseban
 
@@ -68,14 +68,14 @@ A Azure SQL Databaseban elérhető Automatikus hangolási lehetőségek a követ
 | Automatikus hangolási beállítás | Önálló adatbázis és készletezett adatbázis-támogatás | Példány-adatbázis támogatása |
 | :----------------------------- | ----- | ----- |
 | **Index létrehozása** – azonosítja azokat az indexeket, amelyek javíthatják a munkaterhelés teljesítményét, indexeket hoz létre, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult-e. | Igen | Nem | 
-| **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket nem használtak hosszú ideig (> 90 nap). Vegye figyelembe, hogy a lehetőség jelenleg nem kompatibilis a partíciós váltást és az indexeket használó alkalmazásokkal. | Igen | Nem |
-| **utolsó jó csomag kényszerítése** (automatikus terv helyesbítése) – az SQL-lekérdezéseket az előző helyes csomagnál lassabb végrehajtási terv alapján azonosítja, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
+| **Drop index** – naponta azonosítja a redundáns és ismétlődő indexeket, kivéve azokat az egyedi indexeket és indexeket, amelyeket nem használtak hosszú ideig (> 90 nap). Vegye figyelembe, hogy ez a beállítás nem kompatibilis a partíciós váltást és az indexelési tippeket használó alkalmazásokkal. A nem használt indexek nem támogatottak a prémium és üzletileg kritikus szolgáltatási szinteken. | Igen | Nem |
+| **Utolsó jó csomag kényszerítése** (automatikus terv helyesbítése) – az SQL-lekérdezéseket az előző helyes csomagnál lassabb végrehajtási terv alapján azonosítja, és a romlott terv helyett az utolsó ismert helyes terv használatával kérdezi le a lekérdezéseket. | Igen | Igen |
 
 Az automatikus hangolás azonosítja a **create index**, a **drop index**és az **utolsó jó csomagra** vonatkozó ajánlásokat, amelyek optimalizálják az adatbázis teljesítményét, és megjelenítik őket a [Azure PORTALban](sql-database-advisor-portal.md), és a [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) [-en keresztül is elérhetővé válnak. REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). Ha többet szeretne megtudni a KÉNYSZERÍTett utolsó jó CSOMAGról és az Automatikus hangolási lehetőségekről a T-SQL-en keresztül, tekintse meg az automatikus [hangolás](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)bevezetését.
 
 Manuálisan is alkalmazhatja a hangolási javaslatokat a portál használatával, vagy engedélyezheti az automatikus finomhangolást a hangolási javaslatok önálló alkalmazásával. Az előnye, hogy a rendszer önállóan alkalmazza a hangolási javaslatokat, hogy automatikusan ellenőrizze, hogy van-e pozitív nyereség a munkaterhelés teljesítményében, és ha nem észlelhető jelentős teljesítmény-javulás, akkor a hangolási javaslat automatikus visszaállítása. Vegye figyelembe, hogy a gyakran nem végrehajtott hangolási javaslatok által érintett lekérdezések esetében az ellenőrzési fázis akár 72 órával is eltarthat.
 
-Ha manuálisan alkalmazza a hangolási javaslatokat, az automatikus teljesítmény-ellenőrzés és a megfordítási mechanizmusok nem érhetők el. Emellett a manuálisan alkalmazott javaslatok továbbra is aktívak maradnak, és megjelennek a 24-48 óra javaslatok listájában. mielőtt a rendszer automatikusan visszavonja őket. Ha hamarabb el szeretné távolítani a javaslatot, manuálisan elvégezheti azt.
+Ha T-SQL-n keresztül alkalmazza a hangolási javaslatokat, az automatikus teljesítmény-ellenőrzés és a megfordítási mechanizmusok nem érhetők el. Az ilyen módon alkalmazott javaslatok továbbra is aktívak maradnak, és megjelennek a 24-48 óra hangolási javaslatainak listájában. mielőtt a rendszer automatikusan visszavonja őket. Ha előbb el szeretné távolítani a javaslatot, elvetheti Azure Portalból.
 
 Az Automatikus hangolási beállítások egymástól függetlenül engedélyezhetők vagy letilthatók az adatbázison, vagy konfigurálható SQL Database-kiszolgálókon, és minden olyan adatbázison alkalmazható, amely a kiszolgáló beállításait örökli. SQL Database-kiszolgálók öröklik az Azure alapértelmezett beállításait az Automatikus hangolási beállításokhoz. Az Azure alapértelmezett értékei a FORCE_LAST_GOOD_PLAN beállítás engedélyezve van, a CREATE_INDEX engedélyezve van, és a DROP_INDEX le van tiltva.
 

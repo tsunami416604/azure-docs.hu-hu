@@ -15,18 +15,18 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b95b82f996368bca312be1c6ada25a7219b66e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
-ms.translationtype: HT
+ms.openlocfilehash: 529665a03d2203dcb501b59d7647f4390bdaeb78
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562285"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936746"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webes API – kód konfigurálása
 
 Miután regisztrálta a webes API-t, beállíthatja az alkalmazás kódját.
 
-A webes API-t úgy konfiguráló kód, hogy az alárendelt webes API-kat a webes API-k elleni védelemhez használt kód felett hozza létre. További információ: Protected [web API-app Configuration](scenario-protected-web-api-app-configuration.md).
+A webes API-t úgy konfiguráló kód, hogy az alárendelt webes API-kat a webes API-k elleni védelemhez használt kód felett hozza létre. További információ: [Protected web API-app Configuration](scenario-protected-web-api-app-configuration.md).
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>A OnTokenValidated előfizetett kód
 
@@ -70,11 +70,11 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 A AddAccountToCacheFromJwt () metódusnak a következőket kell tennie:
 
 - MSAL-alapú bizalmas ügyfélalkalmazás létrehozása.
-- Az `AcquireTokenOnBehalf` ügyfél által a webes API-hoz beszerzett tulajdonosi jogkivonat cseréjének meghívása az ugyanahhoz a felhasználóhoz tartozó tulajdonosi jogkivonattal, de az API-nak egy alsóbb rétegbeli API meghívásához.
+- Hívja meg a `AcquireTokenOnBehalf` értéket, hogy az ügyfél által a webes API-hoz vásárolt tulajdonosi jogkivonatot az ugyanahhoz a felhasználóhoz tartozó tulajdonosi jogkivonattal, de az API-val hívjon fel egy alsóbb rétegbeli API-t.
 
 ### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazás létrehozása
 
-Ez a folyamat csak a bizalmas ügyfél folyamatában érhető el, így a védett webes API a vagy `WithCertificate` a `WithClientSecret` metódussal biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos kulcsát vagy tanúsítványát) a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) . illetve.
+Ez a folyamat csak a bizalmas ügyfél-adatfolyamban érhető el, így a védett webes API a `WithClientSecret` vagy a `WithCertificate` metódus használatával biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos vagy a tanúsítványát) a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) .
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -95,55 +95,55 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```
 
 Végül, az ügyfél titkos kulcsa vagy a tanúsítvány helyett a bizalmas ügyfélalkalmazások is igazolják identitásukat az ügyfél-kijelentések használatával.
-Ez a speciális forgatókönyv részletesen szerepel az [ügyfél](msal-net-client-assertions.md) -kijelentésekben
+Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md)
 
 ### <a name="how-to-call-on-behalf-of"></a>A-ben történő hívás
 
-A beérkező (OBO) hívás a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódus meghívásával történik az `IConfidentialClientApplication` illesztőfelületen.
+A rendszer a (z) (OBO) hívását a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódus meghívásával végzi a `IConfidentialClientApplication` felületen.
 
-A `UserAssertion` a webes API által a saját ügyfeleitől kapott tulajdonosi jogkivonatból épül fel. [Két konstruktor](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)létezik, amelyek egy JWT tulajdonosi jogkivonatot vesznek igénybe, és a felhasználó bármilyen típusú felhasználói állítást (más típusú biztonsági jogkivonatot) használ, és ezt a típust egy `assertionType`további nevű paraméter határozza meg.
+A `UserAssertion` a webes API által a saját ügyfeleitől kapott tulajdonosi jogkivonatból épül fel. [Két konstruktor](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)létezik, amelyek egy JWT tulajdonosi jogkivonatot vesznek igénybe, és a felhasználó bármilyen típusú felhasználói állítást (más típusú biztonsági jogkivonatot) használ, és ezt a típust egy `assertionType` nevű további paraméter határozza meg.
 
 ![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-A gyakorlatban az OBO-folyamat gyakran használ tokent egy alsóbb rétegbeli API számára, és tárolja azt a MSAL.net felhasználói jogkivonat-gyorsítótárában, hogy a webes API más részei később is meghívhatják [](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` az alsóbb rétegbeli API-k hívását. Ez a hívás hatással van a tokenek frissítésére, ha szükséges.
+A gyakorlatban az OBO-folyamat gyakran használatos jogkivonat beszerzéséhez egy alsóbb rétegbeli API számára, és tárolja azt a MSAL.NET felhasználói jogkivonat-gyorsítótárában, hogy a webes API más részei később is meghívhatják a ``AcquireTokenOnSilent`` [felülbírálásait](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) az alsóbb rétegbeli API-k meghívásához. Ez a hívás hatással van a tokenek frissítésére, ha szükséges.
 
 ```CSharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
- try
- {
-  UserAssertion userAssertion;
-  IEnumerable<string> requestedScopes;
-  if (jwtToken != null)
-  {
-   userAssertion = new UserAssertion(jwtToken.RawData, "urn:ietf:params:oauth:grant-type:jwt-bearer");
-   requestedScopes = scopes ?? jwtToken.Audiences.Select(a => $"{a}/.default");
-  }
-  else
-  {
-   throw new ArgumentOutOfRangeException("tokenValidationContext.SecurityToken should be a JWT Token");
-  }
+    try
+    {
+        UserAssertion userAssertion;
+        IEnumerable<string> requestedScopes;
+        if (jwtToken != null)
+        {
+            userAssertion = new UserAssertion(jwtToken.RawData, "urn:ietf:params:oauth:grant-type:jwt-bearer");
+            requestedScopes = scopes ?? jwtToken.Audiences.Select(a => $"{a}/.default");
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException("tokenValidationContext.SecurityToken should be a JWT Token");
+        }
 
-  // Create the application
-  var application = BuildConfidentialClientApplication(httpContext, principal);
+        // Create the application
+        var application = BuildConfidentialClientApplication(httpContext, principal);
 
-  // .Result to make sure that the cache is filled-in before the controller tries to get access tokens
-  var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
-                                                  userAssertion)
-                                        .ExecuteAsync()
-                                        .GetAwaiter().GetResult();
- }
- catch (MsalException ex)
- {
-  Debug.WriteLine(ex.Message);
-  throw;
- }
+        // .Result to make sure that the cache is filled-in before the controller tries to get access tokens
+        var result = application.AcquireTokenOnBehalfOf(requestedScopes.Except(scopesRequestedByMsalNet),
+                                                        userAssertion)
+                                .ExecuteAsync()
+                                .GetAwaiter().GetResult();
+     }
+     catch (MsalException ex)
+     {
+         Debug.WriteLine(ex.Message);
+         throw;
+     }
 }
 ```
 
 ## <a name="protocol"></a>Protocol
 
-A (z) protokollról további információt a [Microsoft Identity platform és a OAuth 2,0-es](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) kiadási folyamata című témakörben talál.
+A (z) szolgáltatással kapcsolatos további információkért lásd [a Microsoft Identity platform és a OAuth 2,0-alapú folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: fc5a974273cbc0398e9fee7b60b424a46ef5dd30
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266908"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949716"
 ---
 ## <a name="benefits-of-managed-disks"></a>A felügyelt lemezek előnyei
 
@@ -25,7 +25,7 @@ A Managed Disks szolgáltatás a 99,999%-os rendelkezésre álláshoz lett terve
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Egyszerű és méretezhető virtuális gépek üzembe helyezése
 
-A felügyelt lemezek használatával akár 50 000 virtuálisgép- **lemezt** is létrehozhat egy előfizetésben régiónként, így akár több ezer **virtuális** gépet is létrehozhat egyetlen előfizetésben. Ez a funkció tovább növeli a [virtuálisgép](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) -méretezési csoportok méretezhetőségét azáltal, hogy lehetővé teszi, hogy akár 1 000 virtuális gépet hozzon létre egy virtuálisgép-méretezési csoporton Piactéri rendszerkép használatával.
+A felügyelt lemezek használatával akár 50 000 virtuálisgép- **lemezt** is létrehozhat egy előfizetésben régiónként, így akár több ezer **virtuális** gépet is létrehozhat egyetlen előfizetésben. Ez a funkció tovább növeli a [virtuálisgép-méretezési](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) csoportok méretezhetőségét azáltal, hogy lehetővé teszi, hogy akár 1 000 virtuális gépet hozzon létre egy virtuálisgép-méretezési csoporton Piactéri rendszerkép használatával.
 
 ### <a name="integration-with-availability-sets"></a>Integráció a rendelkezésre állási csoportokkal
 
@@ -73,7 +73,7 @@ Az adatlemezek egy felügyelt lemez, amely egy virtuális géphez van csatolva a
 
 ### <a name="os-disk"></a>Operációsrendszer-lemez
 
-Minden virtuális gépnek van egy csatlakoztatott operációsrendszer-lemeze. Az operációsrendszer-lemezen telepítve van egy előre telepített operációs rendszer, amely a virtuális gép létrehozásakor lett kiválasztva.
+Minden virtuális gépnek van egy csatlakoztatott operációsrendszer-lemeze. Az operációsrendszer-lemezen telepítve van egy előre telepített operációs rendszer, amely a virtuális gép létrehozásakor lett kiválasztva. Ez a lemez tartalmazza a rendszerindító kötetet.
 
 A lemez maximális kapacitása 2 048 GiB.
 
@@ -123,7 +123,7 @@ A korlátozások példái közé a Standard_DS1v1 virtuális gép megakadályozz
 
 Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami elsőbbséget élvez a hálózati forgalom más alacsony prioritásával szemben. Ez segít a lemezeknek a várt teljesítményük fenntartásában hálózati tartalom esetén. Hasonlóképpen, az Azure Storage az erőforrás-tartalmakat és a háttérben lévő egyéb problémákat az automatikus terheléselosztással kezeli. Az Azure Storage a szükséges erőforrásokat foglalja le lemez létrehozásakor, és az erőforrások proaktív és reaktív kiegyensúlyozását alkalmazza a forgalmi szint kezeléséhez. Ez biztosítja, hogy a lemezek továbbra is megtartsák a várt IOPS és teljesítménybeli célokat. A virtuális gépek szintjének és a lemez szintű metrikák segítségével nyomon követheti a teljesítményt, és szükség szerint beállíthatja a riasztásokat.
 
-Tekintse meg a [nagy teljesítményű](../articles/virtual-machines/windows/premium-storage-performance.md) cikk kialakítását ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
+Tekintse meg a [nagy teljesítményű cikk kialakítását](../articles/virtual-machines/windows/premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
 ## <a name="next-steps"></a>További lépések
 

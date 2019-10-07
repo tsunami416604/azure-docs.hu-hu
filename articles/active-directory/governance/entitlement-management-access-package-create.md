@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: HT
+ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678199"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326337"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -56,7 +56,7 @@ Az alábbi ábrán egy új hozzáférési csomag létrehozásának magas szintű
 
 1. Kattintson az **új hozzáférési csomag**elemre.
 
-## <a name="basics"></a>Alapvető beállítások
+## <a name="basics"></a>Alapadatok
 
 Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
 
@@ -79,7 +79,7 @@ Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, �
 
 Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat.  A hozzáférési csomagot kérő és fogadó felhasználók megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
 
-1. Kattintson a hozzáadni kívánt erőforrás típusára (**csoportok**, **alkalmazások**vagy SharePoint- **helyek**).
+1. Kattintson a hozzáadni kívánt erőforrástípus (**csoportok**, munkacsoportok, **alkalmazások**vagy SharePoint- **webhelyek**) elemre.
 
 1. A megjelenő Select (kiválasztás) ablaktáblán válasszon ki egy vagy több erőforrást a listából.
 
@@ -111,7 +111,7 @@ A **házirend** lapon létrehozhatja az első szabályzatot annak megadásához,
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="review--create"></a>Áttekintés + létrehozás
+## <a name="review--create"></a>Felülvizsgálat + létrehozás
 
 A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és ellenőrizheti az érvényesítési hibákat.
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 0134d20f4b5d2816fa38bfb7377154463acd4781
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
-ms.translationtype: HT
+ms.openlocfilehash: 87c438403934df34a02678c805d3622956654b4e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669672"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172065"
 ---
 Ez a táblázat a Azure Functions futtatókörnyezet két fő verziójában támogatott kötéseket mutatja be:
 
@@ -20,11 +20,12 @@ Ez a táblázat a Azure Functions futtatókörnyezet két fő verziójában tám
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
 | [HTTP & webhookok](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
-| [Excel<br/>-táblák Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
-| [Microsoft Graph<br/>OneDrive-fájlok](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
-| [Microsoft Graph<br/>Outlook e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [Események<br/>Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
-| [Hitelesítési<br/>tokenek Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
+| [IoT Hub](../articles/azure-functions/functions-bindings-event-iot.md)             |✔|✔|✔| |✔|
+| [Microsoft Graph @ no__t – 1Excel táblák](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
+| [Microsoft Graph @ no__t – 1OneDrive-fájlok](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
+| [Microsoft Graph @ no__t – 1Outlook e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
+| [Microsoft Graph @ no__t – 1events](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
+| [Microsoft Graph @ no__t – 1Auth tokenek](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Értesítési központ](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|

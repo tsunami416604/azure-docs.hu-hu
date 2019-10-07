@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 306382a7dede44a0f1db53373e14e81cb54098ca
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: a5d89c0784c2125f5a7810ff134686645e8314a6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914738"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960208"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory-csatlakozás megvalósításának megtervezése
 
@@ -116,7 +116,7 @@ Ezekhez a forgatókönyvekhez nem szükséges összevonási kiszolgálót konfig
 Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltatóval, amely a következő követelményeket támogatja. Ha Active Directory összevonási szolgáltatások (AD FS) (AD FS) használatával összevont környezettel rendelkezik, az alábbi követelmények már támogatottak.
 
 - **WIAORMULTIAUTHN jogcím:** Ez a jogcím szükséges a hibrid Azure AD-csatlakozáshoz a Windows rendszerű eszközökön.
-- **WS-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez. AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:`/adfs/services/trust/2005/windowstransport`  
+- **WS-Trust protokoll:** Ez a protokoll szükséges a Windows jelenlegi hibrid Azure AD-hez csatlakoztatott eszközök Azure AD-vel való hitelesítéséhez. AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat: `/adfs/services/trust/2005/windowstransport`  
 `/adfs/services/trust/13/windowstransport`  
   `/adfs/services/trust/2005/usernamemixed` 
   `/adfs/services/trust/13/usernamemixed`
@@ -124,7 +124,7 @@ Az összevont környezetnek rendelkeznie kell egy olyan identitás-szolgáltató
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási** > **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** , vagy az **ADFS/Services/Trust/13/windowstransport** beállítást csak intranetes végpontként kell engedélyezni, és a webalkalmazás-proxyn keresztül nem szabad az extranet felé irányuló végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Megtekintheti, hogy mely végpontok engedélyezettek a AD FS felügyeleti konzolon a **Service** > **végpontok**alatt.
 
 > [!NOTE]
 > Az Azure AD nem támogatja a felügyelt tartományokban található intelligens kártyákat vagy tanúsítványokat.
@@ -155,8 +155,8 @@ Az alábbi táblázat részletesen ismerteti ezen helyszíni AD UPN-ket a Window
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hibrid Azure Active Directory illesztés konfigurálása összevont környezetet](hybrid-azuread-join-federated-domains.md)
-> –[hibrid Azure Active Directory csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
+> [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)
+> .[hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt környezethez](hybrid-azuread-join-managed-domains.md)
 
 <!--Image references-->
 [1]: ./media/hybrid-azuread-join-plan/12.png

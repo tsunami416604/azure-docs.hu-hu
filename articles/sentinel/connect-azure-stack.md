@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: caaf708b3efd8ffbe059f8ad249b7945d31fd7cc
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
-ms.translationtype: HT
+ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601163"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240759"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack virtuális gépek összekötése az Azure Sentinel szolgáltatással
 
-> [!IMPORTANT]
-> Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 
 Az Azure Sentinel segítségével figyelheti az Azure-on futó virtuális gépeket, és Azure Stack egy helyen. A Azure Stack gépek Azure Sentinelbe való ellátásához először hozzá kell adnia a virtuálisgép-bővítményt a meglévő Azure Stack virtuális gépekhez. 
@@ -47,11 +45,11 @@ Adja hozzá a **Azure monitor, a frissítés és a konfiguráció kezelése** vi
    >[!NOTE]
    > Ha nem látja a piactéren felsorolt **Azure monitor, frissítés és konfigurálás felügyeleti** bővítményt, forduljon a Azure stack-kezelőhöz, hogy elérhető legyen.
 
-6. Az Azure Sentinel menüben válassza a **munkaterület-beállítások** , majd a **speciális**lehetőséget, és másolja a **munkaterület-azonosítót** és a **munkaterület kulcsát (elsődleges kulcs)** . 
+6. Az Azure Sentinel menüben válassza a **munkaterület-beállítások** , majd a **speciális**lehetőséget, és másolja a munkaterület- **azonosítót** és a **munkaterület kulcsát (elsődleges kulcs)** . 
 1. A Azure Stack **telepítési bővítmény** ablakban illessze be őket a jelzett mezőkbe, majd kattintson **az OK**gombra.
-1. A bővítmény telepítésének befejezése után az állapota a kiépítés **sikerességét**jelzi. Akár egy óráig is eltarthat, amíg a virtuális gép megjelenik az Azure Sentinel portálon.
+1. A bővítmény telepítésének befejezése után az állapota a **kiépítés sikerességét**jelzi. Akár egy óráig is eltarthat, amíg a virtuális gép megjelenik az Azure Sentinel portálon.
 
-A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)összekapcsolása.
+A Windows-ügynök telepítésével és konfigurálásával kapcsolatos további információkért lásd: [Windows rendszerű számítógépek összekapcsolása](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
 Az ügynökkel kapcsolatos problémák Linux rendszeren történő hibaelhárításával kapcsolatban lásd: az [Azure log Analytics Linux-ügynök hibaelhárítása](../azure-monitor/platform/agent-linux-troubleshoot.md).
 
@@ -64,12 +62,12 @@ A bővítmény eltávolítása:
 
 1. Nyissa meg a **Azure stack portált**.
 2. Nyissa meg a **virtuális gépek** lapot, és válassza ki azt a virtuális gépet, amelyről el szeretné távolítani a bővítményt.
-3. Válasszaa bővítmények lehetőséget, majd a **Microsoft. EnterpriseCloud. monitoring**kiterjesztést.
+3. Válassza a **bővítmények**lehetőséget, majd a **Microsoft. EnterpriseCloud. monitoring**kiterjesztést.
 4. Kattintson az **Eltávolítás**gombra, és erősítse meg a kijelölést.
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
 - A [gyakori hibákból](connect-common-event-format.md) származó adatok továbbítása az Azure sentinelbe.
