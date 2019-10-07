@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/4/2019
+ms.date: 10/08/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241180"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001327"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -79,10 +79,6 @@ A tűzfal nyilvános IP-címére érkező bejövő hálózati forgalmat a rendsz
 
 ## <a name="multiple-public-ip-addresses"></a>Több nyilvános IP-cím
 
-> [!IMPORTANT]
-> A több nyilvános IP-címmel rendelkező Azure Firewall a Azure Portal, a Azure PowerShell, az Azure CLI, a REST és a sablonok használatával érhető el.
-
-
 A tűzfallal több nyilvános IP-címet is hozzárendelhet (legfeljebb 100).
 
 Ez a következő forgatókönyveket teszi lehetővé:
@@ -122,6 +118,6 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md)
+- [Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása a Azure Portal @ no__t-0 használatával
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)
 - [Azure Firewall-tesztkörnyezet létrehozása](scripts/sample-create-firewall-test.md)

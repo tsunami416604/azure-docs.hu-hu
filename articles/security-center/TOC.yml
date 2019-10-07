@@ -147,6 +147,8 @@
   items:
     - name: REST API-k
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Kibocsátási megjegyzések
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Funkciók és API kivezetése (2019. július)
       href: security-center-features-retirement-july2019.md
     - name: Végpontvédelmi értékelés és javaslatok
