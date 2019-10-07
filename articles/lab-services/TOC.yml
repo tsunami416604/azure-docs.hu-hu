@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: Tesztelési környezetek konfigurálása beágyazott sablonokkal
               href: deploy-nested-template-environments.md
+            - name: Azure által felügyelt identitások használata környezetek üzembe helyezéséhez
+              href: use-managed-identities-environments.md
         - name: Újrahasznosítható sablonok kezelése
           items:
             - name: Egyéni rendszerképek kontra képletek
