@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: GPU beállítása a Windows Virtual Desktophoz
       href: configure-vm-gpu.md
-    - name: Munkamenetgazdák automatikus méretezése
+    - name: Munkamenet-gazdagépek dinamikus skálázása
       href: set-up-scaling-script.md
     - name: Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: 'Hibaelhárítási áttekintés, visszajelzés és támogatás'
       href: troubleshoot-set-up-overview.md
-    - name: A diagnosztikai funkcióval kapcsolatos problémák azonosítása
+    - name: Problémák azonosítása és diagnosztizálása
       href: diagnostics-role-service.md
     - name: Bérlői és gazdagépcsoport létrehozása
       href: troubleshoot-set-up-issues.md

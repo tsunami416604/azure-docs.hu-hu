@@ -4,27 +4,27 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 957009ec9833df2dd0f89c3745c7f3df5a3705b4
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
-ms.translationtype: MT
+ms.openlocfilehash: 0134d20f4b5d2816fa38bfb7377154463acd4781
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178889"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68669672"
 ---
-Az alábbi táblázat a kötések az Azure Functions runtime két fő verziói által támogatott.
+Ez a táblázat a Azure Functions futtatókörnyezet két fő verziójában támogatott kötéseket mutatja be:
 
-| Típus | 1.x | 2.x<sup>1</sup> | Eseményindító | Input (Bemenet) | Kimenet |
+| Type | 1. x | 2.x<sup>1</sup> | Eseményindító | Input (Bemenet) | Output |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|
-| [A HTTP és Webhookok](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
-| [A Microsoft Graph<br/>Excel-táblák](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
-| [A Microsoft Graph<br/>OneDrive-fájlok](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
-| [A Microsoft Graph<br/>Outlookos e-mail cím](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
-| [A Microsoft Graph<br/>események](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
-| [A Microsoft Graph<br/>hitelesítési jogkivonatok](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
+| [HTTP & webhookok](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔|✔|✔| |✔|
+| [Excel<br/>-táblák Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)   ||✔| |✔|✔|
+| [Microsoft Graph<br/>OneDrive-fájlok](../articles/azure-functions/functions-bindings-microsoft-graph.md) ||✔| |✔|✔|
+| [Microsoft Graph<br/>Outlook e-mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
+| [Események<br/>Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
+| [Hitelesítési<br/>tokenek Microsoft Graph](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
 | [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|
 | [Értesítési központ](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
 | [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|
@@ -35,4 +35,4 @@ Az alábbi táblázat a kötések az Azure Functions runtime két fő verziói �
 | [Időzítő](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> 2.x, HTTP- és időzítő kivételével az összes kötések kell regisztrálni. Lásd: [regisztrálja a kötési bővítményeket](../articles/azure-functions/functions-bindings-register.md).
+<sup>1</sup> a 2. x verzióban a http és az időzítő kivételével az összes kötést regisztrálni kell. Lásd: [kötési bővítmények regisztrálása](../articles/azure-functions/functions-bindings-register.md).

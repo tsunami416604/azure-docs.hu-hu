@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Események és üzenetkezelés
       items:
+        - name: Megbízható eseményfeldolgozás
+          href: functions-reliable-event-processing.md
         - name: Azonos bemenetet szem előtt tartó tervezés
           href: functions-idempotent.md
     - name: Eseményindítók és kötések

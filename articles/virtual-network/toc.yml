@@ -230,6 +230,8 @@
           items:
             - name: Alhálózatok
               href: virtual-network-manage-subnet.md
+            - name: Alhálózat delegálása
+              href: manage-subnet-delegation.md
             - name: Társviszonyok
               href: virtual-network-manage-peering.md
             - name: DDoS Protection

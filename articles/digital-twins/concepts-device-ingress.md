@@ -1,45 +1,45 @@
 ---
-title: Az Azure digitális Twins kapcsolat- és telemetriabevitelt eszköz |} A Microsoft Docs
-description: Ahhoz, hogy egy eszköz előkészítése az Azure digitális Twins áttekintése
+title: Eszközök csatlakoztatása és telemetria az Azure digitális Twins szolgáltatással | Microsoft Docs
+description: Az eszközök Azure digitális Twins-beli üzembe helyezésének áttekintése
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60926078"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638521"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
-Az eszközök és érzékelők által küldött telemetriai adatokat bármely IoT-megoldás gerincét alkotnak. Ezeket a különböző erőforrásokat jelölik, és kezelheti őket egy helyen kontextusában olyan vezető problémáit a IoT-alkalmazások fejlesztéséhez. Az Azure digitális Twins leegyszerűsíti az eszközök és a egy térbeli intelligencia graph érzékelők összesítésével IoT-megoldások fejlesztése.
+Az eszközök és érzékelők által továbbított telemetria-adatmennyiség bármely IoT-megoldás gerincét képezi. Ezeknek a különböző erőforrásoknak a ábrázolása és a hely kontextusában való kezelése a IoT alkalmazás-fejlesztés fő problémái. Az Azure Digital Twins a IoT-megoldások fejlesztésének folyamatát az eszközök és érzékelők egy térbeli intelligencia gráftal való egyesítésével egyszerűsíti.
 
-Első lépésként hozzon létre egy Azure IoT Hub-erőforrást a térbeli graph gyökérmappájában. Az IoT Hub-erőforrás lehetővé teszi, hogy minden eszköz alatt üzenetek küldéséhez a legfelső szintű helyet. Az IoT Hub létrehozása után regisztrálhatják az eszközeiket az érzékelők, a digitális Twins példány belül. Az eszközök révén adatokat küldhet egy digitális Twins szolgáltatásokhoz a [Azure IoT eszközoldali SDK-t](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks).
+Első lépésként hozzon létre egy Azure IoT Hub-erőforrást a térbeli gráf gyökerében. A IoT Hub erőforrás lehetővé teszi az összes eszköz számára a legfelső szintű terület elérését az üzenetek küldéséhez. A IoT Hub létrehozása után regisztrálja az eszközöket a digitális Twins-példányon belüli érzékelőkkel. Az eszközök az [Azure IoT ESZKÖZOLDALI SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)-n keresztül küldhetnek az adatfájlokat egy digitális Twins szolgáltatásba.
 
-Egy lépésenkénti útmutató az ahhoz, hogy az eszközök regisztrálására, tekintse meg a [Oktatóanyaggal, telepítheti és konfigurálhatja a digitális Twins](tutorial-facilities-setup.md). Egy pillanat alatt a lépések a következők:
+Az eszközök előkészítésének lépésenkénti útmutatója a [digitális ikrek üzembe helyezését és konfigurálását](tutorial-facilities-setup.md)ismertető oktatóanyagban található. Egy pillantással a lépések a következők:
 
-- Egy digitális Twins példány üzembe helyezése a [az Azure portal](https://portal.azure.com).
-- Tárolóhelyek létrehozása a graph.
-- Hozzon létre egy IoT Hub-erőforrást, és rendelje hozzá a gráfban található szóközzel.
-- Eszközök és érzékelők létrehozása a graph, és hozzárendelheti azokat a tárolóhelyek az előző lépésekben létrehozott.
-- Hozzon létre egy megfeleltetőben megadott feltételek alapján telemetriai üzeneteket szűréséhez.
-- Hozzon létre egy [felhasználó által definiált függvény](concepts-user-defined-functions.md), és rendelje hozzá a grafikon a telemetriai üzeneteket egyéni feldolgozásához szóközzel.
-- Rendelje hozzá a szerepkört, hogy a felhasználó által definiált függvény a grafikon adatainak eléréséhez.
-- Az IoT Hub eszköz kapcsolati karakterláncának lekérése a digitális Twins felügyeleti API-kon keresztül.
-- Az eszköz kapcsolati karakterláncának konfigurálása az Azure IoT eszközoldali SDK-t az eszközön.
+- Helyezzen üzembe egy digitális Twins-példányt a [Azure Portal](https://portal.azure.com).
+- Hozzon létre szóközt a gráfban.
+- Hozzon létre egy IoT Hub erőforrást, és rendelje hozzá a gráf egyik területéhez.
+- Hozzon létre eszközöket és érzékelőket a gráfban, és rendelje hozzá az előző lépésekben létrehozott szóközökhez.
+- Hozzon létre egy Matcher a telemetria üzenetek szűréséhez feltételek alapján.
+- Hozzon létre egy [felhasználó által definiált függvényt](concepts-user-defined-functions.md), és rendelje hozzá a gráf egy szóközzel a telemetria-üzenetek egyéni feldolgozásához.
+- Rendeljen hozzá egy szerepkört, amely lehetővé teszi a felhasználó által definiált függvény számára a Graph-adat elérését.
+- Szerezze be a IoT Hub eszköz csatlakoztatási karakterláncát a digitális Twins felügyeleti API-kkal.
+- Konfigurálja az eszközön a csatlakoztatási karakterláncot az Azure IoT Device SDK-val.
 
-A következő szakaszokban megismerheti az IoT Hub eszköz kapcsolati karakterláncának beszerzése a digitális Twins felügyeleti API-ból. Azt is megtudhatja, hogyan érzékelő-alapú telemetriát küldjön az IoT Hub telemetriai üzenetformátum használatával. Digitális Twins telemetriát, amely a térbeli diagramon belül érzékelő társítani kell minden egyes adatra van szükség. Ez a követelmény biztosítja, hogy az adatok feldolgozását és irányítja a megfelelő térbeli környezetében.
+A következő részekben megtudhatja, hogyan kérheti le a IoT Hub eszköz kapcsolódási karakterláncát a digitális Twins felügyeleti API-ból. Azt is megtudhatja, hogyan használhatja a IoT Hub telemetria üzenet formátumát érzékelő alapú telemetria küldéséhez. A digitális Twins minden olyan telemetria igényel, amelyet a rendszer a térbeli gráfon belüli érzékelőkhöz társít. Ez a követelmény biztosítja, hogy az adatfeldolgozás és a megfelelő térbeli környezeten belül legyen átirányítva.
 
-## <a name="get-the-iot-hub-device-connection-string-from-the-management-api"></a>Az IoT Hub eszköz kapcsolati karakterláncának lekérése a felügyeleti API-ból
+## <a name="get-the-iot-hub-device-connection-string-from-the-management-api"></a>A IoT Hub-eszköz csatlakoztatási karakterláncának beolvasása a felügyeleti API-ból
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-Tegye meg az eszköz API-t egy GET hívást egy `includes=ConnectionString` paramétert az IoT Hub eszköz kapcsolati karakterláncának beolvasása. Az eszköz szűrheti a GUID Azonosítóját vagy a Hardverazonosító, az adott eszköz.
+A IoT hub eszköz kapcsolódási karakterláncának beszerzéséhez `includes=ConnectionString` egy paraméterrel megadhatja az eszköz API-ját. Az eszköz GUID azonosítóját vagy a hardver AZONOSÍTÓját szűrheti az adott eszköz kereséséhez.
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
@@ -50,34 +50,34 @@ YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 | *YOUR_DEVICE_GUID* | Az eszköz azonosítója |
 
 ```plaintext
-YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?HardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Hodnota parametru | Csere erre |
+| Paraméter értéke | Csere erre |
 | --- | --- |
-| *YOUR_DEVICE_HARDWARE_ID* | Az eszköz hardveres azonosítója |
+| *YOUR_DEVICE_HARDWARE_ID* | Az eszköz hardver-azonosítója |
 
-A válasz hasznos adatban, másolja ki az eszköz **connectionString** tulajdonság. Akkor használja az Azure IoT eszközoldali SDK-val adatokat küldeni a digitális Twins hívásakor.
+A válasz adattartalomban másolja az eszköz **ConnectionString** tulajdonságát. Akkor használja, ha az Azure IoT Device SDK-t hívja meg az adatküldés digitális ikreknek.
 
-## <a name="device-to-cloud-message"></a>Eszköz – felhő üzenetek
+## <a name="device-to-cloud-message"></a>Eszközről a felhőbe irányuló üzenet
 
-Az eszköz üzenet formátuma és a hasznos adat a megoldás igényei szerint személyre is szabhatja. Használja bármely adategyezményben, egy bájttömböt vagy által támogatott stream lehet szerializálni a [Azure IoT Device Client Message osztály, üzenet (byte [] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___). Az üzenet lehet egyéni bináris formátum a választott mindaddig, amíg a megfelelő felhasználó által definiált függvények adategyezményben vissza. Nincs eszköz a felhőbe irányuló üzenetet csak egy követelmény. Annak biztosításához, hogy a rendszer megfelelően irányítja az üzenetet a motor tulajdonságait kell fenntartani.
+Testre szabhatja az eszköz üzenetének formátumát és a hasznos adatokat, hogy illeszkedjen a megoldás igényeihez. Minden olyan adategyezményt használhat, amely az Azure IoT-eszköz ügyféloldali üzenet osztálya által támogatott byte-tömbbe vagy streambe szerializálható [, üzenet (bájt [] byteArray)](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.-ctor?view=azure-dotnet#Microsoft_Azure_Devices_Client_Message__ctor_System_Byte___). Az üzenet tetszőleges egyéni bináris formátum lehet, ha az adategyezményt egy megfelelő, felhasználó által definiált függvényben dekódolja. Egy eszközről a felhőbe irányuló üzenethez csak egy követelmény szükséges. Megtarthatja a tulajdonságok készletét annak biztosításához, hogy az üzenet megfelelően legyen irányítva a feldolgozó motorhoz.
 
-### <a name="telemetry-properties"></a>Telemetriai adatok tulajdonságai
+### <a name="telemetry-properties"></a>Telemetria tulajdonságai
 
- A hasznos adat tartalmát egy **üzenet** tetszőleges adatokat lehet akár 256 KB-nál. Néhány követelmények tulajdonságait a várt a [ `Message.Properties` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típusa. A táblázat tartalmazza a szükséges és választható tulajdonságait a rendszer által támogatott.
+ Az **üzenetek** hasznos adatai akár 256 KB-os méretig is lehetnek tetszőleges adattartalom. A [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) típus tulajdonságainál néhány követelménynek kell szerepelnie. A táblázat a rendszer által támogatott kötelező és választható tulajdonságokat jeleníti meg.
 
 | Tulajdonság neve | Érték | Kötelező | Leírás |
 |---|---|---|---|
-| **DigitalTwins-Telemetry** | 1.0 | Igen | Állandó érték, amely azonosítja a rendszer üzenetet. |
-| **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az érzékelők által küldött egyedi azonosítója a **üzenet**. Ezt az értéket meg kell egyeznie egy objektum **HardwareId** tulajdonság esetében a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Nem | Egy [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formátumú dátum karakterlánc, amely azonosítja a mintavétel ideje a tartalom. Például: `2018-09-20T07:35:00.8587882-07:00`. |
-| **CorrelationId** | `string` | Nem | Nyomkövetési eseményeket a rendszer között használta UUID azonosítója. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **DigitalTwins-Telemetry** | 1.0 | Igen | Egy állandó érték, amely az üzenetet azonosítja a rendszernek. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Igen | Az **üzenetet**küldő érzékelő egyedi azonosítója. Ennek az értéknek meg kell egyeznie egy objektum **HardwareId** tulajdonságával, hogy a rendszer feldolgozza azt. Például: `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Nem | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formázott dátum sztring, amely azonosítja a hasznos adatok mintavételi idejét. Például: `2018-09-20T07:35:00.8587882-07:00`. |
+| **CorrelationId** | `string` | Nem | Egy UUID, amely a rendszer eseményeinek nyomon követésére szolgál. Például: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
-### <a name="send-your-message-to-digital-twins"></a>Az üzenet küldéséhez digitális Twins
+### <a name="send-your-message-to-digital-twins"></a>Üzenet küldése a digitális ikreknek
 
-Használja a DeviceClient [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) vagy [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) hívása digitális Twins elküldeni az üzenetet.
+A DeviceClient [SendEventAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventasync?view=azure-dotnet) vagy a [SendEventBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.sendeventbatchasync?view=azure-dotnet) hívásával küldje el az üzenetet a digitális ikreknek.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure digitális Twins adatfeldolgozás és a felhasználó által definiált függvények képességekkel kapcsolatos további információkért olvassa el a [Azure digitális Twins adatfeldolgozás és a felhasználó által definiált függvények](concepts-user-defined-functions.md).
+- Az Azure Digital Twins adatfeldolgozási és a felhasználó által definiált függvények funkcióinak megismeréséhez olvassa el az [Azure Digital Twins adatfeldolgozási és felhasználó által definiált függvények](concepts-user-defined-functions.md)című témakört.

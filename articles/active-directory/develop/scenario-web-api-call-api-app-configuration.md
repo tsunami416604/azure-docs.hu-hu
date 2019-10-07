@@ -1,6 +1,6 @@
 ---
-title: Webes API-t, hogy hívások alsóbb rétegbeli webes API-k (alkalmazás kód konfiguráció) – a Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy webes API-t, hogy a hívások webes API-k (alkalmazás kód konfigurálása)
+title: Webes API, amely az alárendelt webes API-kat hívja meg (az alkalmazás kódjának konfigurációja) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre webes API-t meghívó webes API-kat (az alkalmazás kódjának konfigurációja)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -11,30 +11,30 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f62cf65e275d8a9b909bf60103ccbd84e91e4574
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 27b95b82f996368bca312be1c6ada25a7219b66e
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65785052"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562285"
 ---
-# <a name="web-api-that-calls-web-apis---code-configuration"></a>Webes API-t, hogy a hívások webes API-k – helykódot
+# <a name="web-api-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó webes API – kód konfigurálása
 
-A webes API regisztrálása után beállíthatja az alkalmazás kódját.
+Miután regisztrálta a webes API-t, beállíthatja az alkalmazás kódját.
 
-A kódot a webes API konfigurálása, hogy az alsóbb rétegbeli webes API-k meghívja a webes API védelmére szolgáló kód épül. További információ: [védett webes API - alkalmazás konfigurációja](scenario-protected-web-api-app-configuration.md).
+A webes API-t úgy konfiguráló kód, hogy az alárendelt webes API-kat a webes API-k elleni védelemhez használt kód felett hozza létre. További információ: Protected [web API-app Configuration](scenario-protected-web-api-app-configuration.md).
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>Az előfizetett OnTokenValidated kód
+## <a name="code-subscribed-to-ontokenvalidated"></a>A OnTokenValidated előfizetett kód
 
-Felül a kód konfiguráció bármely védett webes API-k elő kell fizetnie, az API meghívásakor fogadott tulajdonosi jogkivonat érvényesítése:
+A védett webes API-k kódjának konfigurációjától függően elő kell fizetnünk az API meghívásakor kapott tulajdonosi jogkivonat érvényesítésére:
 
 ```CSharp
 /// <summary>
-/// Protects the web API with Microsoft Identity Platform v2.0 (AAD v2.0)
+/// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
 /// </summary>
 /// <param name="services">Service collection to which to add authentication</param>
@@ -67,14 +67,14 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 
 ## <a name="on-behalf-of-flow"></a>Meghatalmazásos folyamat
 
-A AddAccountToCacheFromJwt() módszert kell:
+A AddAccountToCacheFromJwt () metódusnak a következőket kell tennie:
 
-- Az MSAL bizalmas ügyfélalkalmazást hozható létre.
-- Hívás `AcquireTokenOnBehalf` Exchange a tulajdonosi jogkivonatot, amely által az ügyfél a webes API-t, szemben a tulajdonosi jogkivonat ugyanahhoz a felhasználóhoz, de az API segítségével egy alsóbb rétegbeli API-t.
+- MSAL-alapú bizalmas ügyfélalkalmazás létrehozása.
+- Az `AcquireTokenOnBehalf` ügyfél által a webes API-hoz beszerzett tulajdonosi jogkivonat cseréjének meghívása az ugyanahhoz a felhasználóhoz tartozó tulajdonosi jogkivonattal, de az API-nak egy alsóbb rétegbeli API meghívásához.
 
-### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazást hozható létre
+### <a name="instantiate-a-confidential-client-application"></a>Bizalmas ügyfélalkalmazás létrehozása
 
-Ez a folyamat csak érhető el a bizalmas ügyfél folyamatban a védett webes API ügyfél-hitelesítő adatok (titkos Ügyfélkód vagy tanúsítvány) biztosít így a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) keresztül a `WithClientSecret` vagy `WithCertificate`módszereket, illetve.
+Ez a folyamat csak a bizalmas ügyfél folyamatában érhető el, így a védett webes API a vagy `WithCertificate` a `WithClientSecret` metódussal biztosítja az ügyfél hitelesítő adatait (az ügyfél titkos kulcsát vagy tanúsítványát) a [ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) . illetve.
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -94,15 +94,18 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-### <a name="how-to-call-on-behalf-of"></a>A alapú meghatalmazásos meghívása
+Végül, az ügyfél titkos kulcsa vagy a tanúsítvány helyett a bizalmas ügyfélalkalmazások is igazolják identitásukat az ügyfél-kijelentések használatával.
+Ez a speciális forgatókönyv részletesen szerepel az [ügyfél](msal-net-client-assertions.md) -kijelentésekben
 
-A--meghatalmazásos (OBO) hívás meghívásával történik a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódust a `IConfidentialClientApplication` felületet.
+### <a name="how-to-call-on-behalf-of"></a>A-ben történő hívás
 
-A `ClientAssertion` által a webes API-t a saját ügyfelektől fogadott tulajdonosi jogkivonat alapján készült. Nincsenek [két konstruktorral](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet), amely egy JWT tulajdonosi jogkivonat vesz igénybe, a másikat, amely a felhasználó helyességi feltétel bármilyen típusú (más típusú biztonsági jogkivonat, egy kiegészítő paraméterrel nevű majd megadott típusának `assertionType`).
+A beérkező (OBO) hívás a [AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) metódus meghívásával történik az `IConfidentialClientApplication` illesztőfelületen.
+
+A `UserAssertion` a webes API által a saját ügyfeleitől kapott tulajdonosi jogkivonatból épül fel. [Két konstruktor](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)létezik, amelyek egy JWT tulajdonosi jogkivonatot vesznek igénybe, és a felhasználó bármilyen típusú felhasználói állítást (más típusú biztonsági jogkivonatot) használ, és ezt a típust egy `assertionType`további nevű paraméter határozza meg.
 
 ![image](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-A gyakorlatban egy token beszerzéséhez az alsóbb rétegbeli API-hoz, és tárolja az MSAL.NET felhasználói jogkivonatok gyorsítótárát, hogy a webes API-k más részein később meghívhatja a gyakran használják a OBO folyamatot a [felülbírálások](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) , ``AcquireTokenOnSilent`` az alsóbb rétegbeli API-k meghívására. Ennek hatása a használható a jogkivonatokat, ha szükséges.
+A gyakorlatban az OBO-folyamat gyakran használ tokent egy alsóbb rétegbeli API számára, és tárolja azt a MSAL.net felhasználói jogkivonat-gyorsítótárában, hogy a webes API más részei később is meghívhatják [](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) ``AcquireTokenOnSilent`` az alsóbb rétegbeli API-k hívását. Ez a hívás hatással van a tokenek frissítésére, ha szükséges.
 
 ```CSharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -140,9 +143,9 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 ## <a name="protocol"></a>Protocol
 
-A--meghatalmazásos protokoll kapcsolatos további információkért lásd: [a Microsoft identity platform és az OAuth 2.0-alapú meghatalmazásos folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
+A (z) protokollról további információt a [Microsoft Identity platform és a OAuth 2,0-es](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) kiadási folyamata című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az alkalmazás egy token beszerzése](scenario-web-api-call-api-acquire-token.md)
+> [Token beszerzése az alkalmazáshoz](scenario-web-api-call-api-acquire-token.md)

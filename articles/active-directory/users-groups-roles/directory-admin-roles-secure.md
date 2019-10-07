@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások biztonságos rendszergazdai hozzáférés – Azure Active Directory |} A Microsoft Docs
-description: Győződjön meg arról, hogy a szervezet felügyeleti hozzáférés és a rendszergazdai fiókok legyenek. A rendszer tervezők és informatikusok, akik konfigurálása az Azure AD-ben az Azure és a Microsoft Online Services.
+title: Ajánlott eljárások a biztonságos rendszergazdai hozzáféréshez – Azure Active Directory | Microsoft Docs
+description: Győződjön meg arról, hogy a szervezet rendszergazdai hozzáférési és rendszergazdai fiókjai biztonságosak. Olyan rendszerfejlesztők és informatikai szakemberek számára, akik az Azure AD-t, az Azure-t és a Microsoft Online Servicest konfigurálják.
 services: active-directory
 keywords: ''
 author: curtand
@@ -14,19 +14,19 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e61207ea23b9b9560668b58b33e3f32f5f70ab2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
+ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083939"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68608113"
 ---
-# <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD felhőalapú és hibrid telepítések emelt szintű hozzáférés biztonságossá tétele
+# <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
-A legtöbb vagy az összes üzleti eszköz biztonsága az a modern szervezet kiemelt jogosultságú fiókok felügyelheti és kezelheti az informatikai rendszerek biztonságának függ. Gyakran többek között az internetes támadók rosszindulatú actors célozhat meg rendszergazdai fiókok, és gyorsan hozzáférhessenek a bizalmas adatok és rendszerek a hitelesítő adatok ellopására irányuló támadásokkal próbál emelt szintű hozzáférés más elemeit. Cloud services, a megelőzési és a válaszok a közös felelősséget a felhőbeli szolgáltató és az ügyfél a. A végpontok és a felhő legújabb fenyegetések kapcsolatos további információkért lásd: a [a Microsoft Security Intelligence Report](https://www.microsoft.com/security/operations/security-intelligence-report). Ez a cikk segítséget nyújt a fejlesztés egy ütemtervet felé bezárása között az aktuális csomagok és az itt ismertetett útmutatást a hiányosságok pótlásában.
+A modern szervezetben a legtöbb vagy az összes üzleti eszköz biztonsága az informatikai rendszereket kezelő és kezelő Kiemelt jogosultságú fiókok integritásának függvénye. A rosszindulatú szereplők, például a Cyber-támadók gyakran a rendszergazdai fiókokat és az emelt szintű hozzáférés más elemeit használják, hogy gyorsan hozzáférjenek a bizalmas adatokhoz és rendszerekhez a hitelesítőadat-lopás elleni támadásokkal. A Cloud Services esetében a megelőzés és a reagálás a felhőalapú szolgáltató és az ügyfél együttes feladatai közé tartozik. A végpontokra és a felhőre vonatkozó legújabb fenyegetésekkel kapcsolatos további információkért tekintse meg a [Microsoft biztonsági intelligencia jelentését](https://www.microsoft.com/security/operations/security-intelligence-report). Ez a cikk segítséget nyújt egy olyan ütemterv kidolgozásához, amely a jelenlegi csomagok és az itt ismertetett útmutató közötti hézagok lezárását célozza.
 
 > [!NOTE]
-> A Microsoft elkötelezett a legmagasabb szintű megbízhatóság, átláthatóság, szabványoknak és előírásoknak való megfelelés. További információ hogyan csökkenti az a Microsoft globális incidenskezelő csapata a felhőszolgáltatások elleni támadások hatásainak, és hogyan biztonsági beépített Microsoft üzleti termékeivel, és a cloud services [Microsoft Trust Center – biztonság](https://www.microsoft.com/trustcenter/security)és a Microsoft megfelelőségi célkitűzések [Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/trustcenter/compliance).
+> A Microsoft elkötelezte magát a megbízhatóság, az átláthatóság, a szabványok és a jogszabályi megfelelőség legmagasabb szintjére. Tudjon meg többet arról, hogy a Microsoft globális incidensek csapatának milyen hatása van a Cloud Services elleni támadások következményeire, és hogy a biztonság hogyan épül fel a Microsoft üzleti termékeibe és a Felhőbeli szolgáltatásokra a [Microsoft adatvédelmi központban – biztonság](https://www.microsoft.com/trustcenter/security) és Microsoft megfelelőségi célok a [Microsoft adatvédelmi központban – megfelelőség](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -42,399 +42,399 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 ## Securing privileged access for hybrid and cloud deployments
 
 does the article really start here?-->
-A legtöbb szervezet számára az üzleti eszköz biztonsága az integritását, felügyelheti és kezelheti az informatikai rendszerek kiemelt jogosultságú fiókok függ. Internetes támadók koncentrálhat infrastruktúra rendszereket (ilyen például az Active Directory és az Azure Active Directory) privilegizált hozzáférést a szervezet bizalmas adatokhoz való hozzáférést. 
+A legtöbb szervezet esetében az üzleti eszközök biztonsága az informatikai rendszereket kezelő és kezelő Kiemelt jogosultságú fiókok integritásának függvénye. A Cyber-támadók az infrastruktúra-rendszerek (például Active Directory és Azure Active Directory) privilegizált hozzáférésére összpontosítanak ahhoz, hogy hozzáférjenek a szervezet bizalmas adatokhoz. 
 
-Hagyományos megközelítés, amely a bemeneti és kimeneti pontjait, az elsődleges biztonsági határ egy hálózati biztonságossá tétele a kevésbé hatékonyak miatt a SaaS-alkalmazások és a személyes eszközök használatának megnövekedhet az interneten. Egy komplex, modern vállalaton a hálózati biztonsági határ természetes helyettesítői a szervezet identitáskezelő rétegét a hitelesítési és engedélyezési vezérlők.
+Azok a hagyományos megközelítések, amelyek a hálózat beléptetési és kilépési pontjainak védelmére összpontosítanak, mivel az elsődleges biztonsági peremhálózat kevésbé hatékony, mivel az SaaS-alkalmazások és a személyes eszközök használata az interneten. Egy összetett modern vállalat hálózati biztonsági területének természetes cseréje a szervezet identitási rétegének hitelesítési és engedélyezési vezérlői.
 
-Kiemelt jogosultságú rendszergazdai fiókok irányítják, az új "biztonsági határt." Rendkívül fontos, függetlenül attól, hogy a környezetben a helyszíni, felhőbeli vagy helyszíni hibrid emelt szintű hozzáférés védelme és a felhőbeli üzemeltetett szolgáltatások. Rendszergazdai hozzáférés elszánt támadókkal szembeni védelméhez szükséges kell tennie a teljes és átgondolt megközelítést saját intézménye rendszerei elkülönítése a kockázatokat. 
+A Kiemelt jogosultságú rendszergazdai fiókok hatékonyan felügyelik az új "biztonsági területet". Kritikus fontosságú a Kiemelt hozzáférés biztosítása, függetlenül attól, hogy a környezet helyszíni, Felhőbeli vagy hibrid helyszíni és felhőben üzemeltetett szolgáltatás-e. A rendszergazdai hozzáférés a meghatározott ellenfelekkel szembeni védelme megköveteli, hogy teljes és átgondolt megközelítést nyújtson a szervezet rendszereinek kockázatokból való elkülönítéséhez. 
 
-Módosítását igényli az emelt szintű hozzáférés biztonságossá tétele
+Az emelt szintű hozzáférés biztonságossá tétele a következő módosításokat igényli
 
-* Folyamatok, felügyeleti eljárások és ismeretek felügyeleti
-* Technikai összetevők, például a gazdagép védelem, a fiók védelmet és Identitáskezelés
+* Folyamatok, felügyeleti gyakorlatok és tudásmenedzsment
+* Technikai összetevők, mint például a gazdagépek védelme, a fiókok védelme és az Identitáskezelés
 
-Ez a dokumentum elsősorban felügyelt identitások biztonságát, és eléréséhez, amely egy ütemtervet a létrehozásakor vagy az Azure AD-ben a Microsoft Azure, Office 365 és más cloud services foglalkozik. Olyan szervezeteknek, amelyek rendelkeznek a helyi rendszergazdai fiókok, lásd az útmutató a helyszíni és hibrid, emelt szintű hozzáférés felügyelete az Active Directory Directory [emelt szintű hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
+Ez a dokumentum elsősorban az Azure AD-ben, az Microsoft Azure-ban, az Office 365-ben és más felhőalapú szolgáltatásokban kezelt vagy jelentett identitások és hozzáférések védelmének ütemtervét ismerteti. A helyszíni rendszergazdai fiókokkal rendelkező szervezetek esetében tekintse meg a helyi és a hibrid rendszerjogosultságú hozzáféréshez felügyelt, Active Directory a [privilegizált hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
 
 > [!NOTE] 
-> Ez a cikk az útmutató elsősorban az P1 és P2 szintű Azure Active Directory Premium-csomagokban elérhető szolgáltatások az Azure Active Directory hivatkozik. Az Azure Active Directory Premium P2 az EMS E5 csomag és a Microsoft 365 E5 csomag része. Ez az útmutató feltételezi, hogy a szervezet már rendelkezik Azure AD Premium P2 ügynöklicenceket, a felhasználók számára. Ha nem rendelkezik ezeket a licenceket, útmutatást némelyike nem feltétlenül vonatkozik az a szervezet. Ez a cikk teljes globális rendszergazdai kifejezés (vagy globális rendszergazdaként) is azonos a "Céges" vagy "bérlői rendszergazdája."
+> A jelen cikkben található útmutatás elsősorban a P1 és P2 csomagokban található Azure Active Directory prémium szintű Azure Active Directory-funkciókra vonatkozik. A P2 prémium szintű Azure Active Directory az EMS E5 Suite és a Microsoft 365 E5 csomag része. Ez az útmutató feltételezi, hogy a szervezete már rendelkezik a felhasználók számára megvásárolt prémium szintű Azure AD P2-licencekkel. Ha nem rendelkezik ezekkel a licencekkel, előfordulhat, hogy néhány útmutató nem vonatkozik a szervezetére. Emellett a jelen cikkben a globális rendszergazda kifejezés (vagy globális rendszergazda) szinonimája a "vállalati rendszergazda" vagy a "bérlői rendszergazda".
 
-## <a name="develop-a-roadmap"></a>A terv kidolgozása 
+## <a name="develop-a-roadmap"></a>Ütemterv kidolgozása 
 
-A Microsoft javasolja, hogy fejleszthet, és hajtsa végre az internetes támadók emelt szintű hozzáférés biztonságossá tételéhez egy ütemtervet. Az ütemterv a már meglévő képességek és a szervezeten belül egyedi igényei mindig módosíthatja. Az ütemterv minden egyes fázisa kell támadásának költségét és nehézségét a támadók való emelt szintű hozzáférés a helyszíni, felhőbeli és hibrid eszközök. A Microsoft javasolja a következő négy ütemterv fázisokra: Ez a javasolt ütemterv ütemezések a leghatékonyabb és leggyorsabb először a Microsoft-elemeket a kibertámadás incidensek és a válasz végrehajtására alapján. Ütemterv megvizsgáltuk hozzávetőleges.
+A Microsoft azt javasolja, hogy fejlesszen és kövessen el egy ütemtervet, amely biztonságos hozzáférést biztosít a Cyber-támadók ellen. Az ütemtervet bármikor módosíthatja, hogy megfeleljen a meglévő képességeinek és a szervezeten belül meghatározott követelményeknek. Az ütemterv minden szakaszának meg kell növelnie a költségeket és a nehézségeket, hogy a támadók a helyi, a Felhőbeli és a hibrid eszközökre emelt szintű hozzáférést kapjanak. A Microsoft a következő négy ütemtervi szakaszt javasolja: Ez az ajánlott ütemterv a leghatékonyabb és a leggyorsabb megvalósítást a Microsoft által a Cyber-támadási incidensek és a reagálások megvalósításával kapcsolatos tapasztalatok alapján ütemezheti. Az ütemterv ütemterve hozzávetőleges.
 
-![Az ütemterv részét képezi a határidőinek fázisa](./media/directory-admin-roles-secure/roadmap-timeline.png)
+![Az ütemterv szakaszai a Time Lines szolgáltatással](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* (24-48 óra) 1. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
+* 1\. fázis (24-48 óra): A kritikus fontosságú elemek, amelyekről javasoljuk, hogy azonnal elvégezze
 
-* (2 – 4 hét) 2. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
+* 2\. fázis (2-4 hét): A leggyakrabban használt támadási technikák enyhítése
 
-* (1 – 3 hónapos) 3. fázis: Láthatóság hozhat létre, és állítsa össze a felügyeleti tevékenység teljes hozzáférés
+* 3\. fázis (1-3 hónap): A felügyeleti tevékenységek láthatóságának és teljes körű felügyeletének kialakítása
 
-* 4\. fázis (hat hónapos és azt követően): Proaktívabb tovább erősíti a biztonsági platform
+* 4\. fázis (hat hónap és újabb): A védelmi platform további megerősítő fejlesztése érdekében folytassa a fejlesztést
 
-Az ütemterv keretrendszer célja maximalizálja a már telepített Microsoft-technológiák használatát. Jelenlegi és jövőbeli kulcsfontosságú technológiák előnyeit, és integrálhatja a már üzembe helyezte, vagy a releváns üzembe helyezése más gyártóktól származó biztonsági eszközöket is. 
+Ez az ütemterv-keretrendszer úgy lett kialakítva, hogy maximalizálja a már üzembe helyezett Microsoft-technológiák használatát. Emellett kihasználhatja a jelenlegi és a közelgő biztonsági technológiák előnyeit, és integrálhatja azokat a más gyártóktól származó biztonsági eszközöket, amelyeket már üzembe helyezett vagy üzembe helyez. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1\. fázis: Azt javasoljuk, hogy kritikus elemek nincs azonnal
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1\. fázis: A kritikus fontosságú elemek, amelyekről javasoljuk, hogy azonnal elvégezze
 
-![Ehhez először a 1. fázis kritikus elemek](./media/directory-admin-roles-secure/stage-one.png)
+![1\. lépés a kritikus elemek első lépése](./media/directory-admin-roles-secure/stage-one.png)
 
-1\. fázisa az ütemterv részét képezi, amely gyorsan és könnyen megvalósítható kritikus feladatok összpontosít. Azt javasoljuk, hogy végrehajtja-e ezek néhány elemet azonnal belül a biztonságos emelt szintű hozzáférés alapvető szintjének biztosítása érdekében első 24-48 óra. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza:
+Az ütemterv 1. fázisa a gyors és könnyen megvalósítható kritikus fontosságú feladatokra összpontosít. Azt javasoljuk, hogy ezeket a néhány elemet az első 24-48 órán belül el kell végeznie, hogy biztosítsa az alapszintű biztonságos jogosultságok elérését. A védett privilegizált hozzáférési ütemterv ezen szakasza a következő műveleteket tartalmazza:
 
-### <a name="general-preparation"></a>Általános előkészítése
+### <a name="general-preparation"></a>Általános előkészítés
 
-#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Kapcsolja be az Azure AD Privileged Identity Management
+#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management bekapcsolása
 
-Ha már nincs bekapcsolva az Azure AD Privileged Identity Management (PIM), ehhez az éles környezetbeli bérlőhöz. Privileged Identity Management bekapcsolása után értesítést kap e-mailek a privilegizált hozzáférés érdekében szerepkörök változása. Ezek az értesítések magas jogosultsági szintű szerepkörökhöz a címtárban további felhasználók hozzáadásakor adja meg a korai figyelmeztetéseket.
+Ha még nincs bekapcsolva a Azure AD Privileged Identity Management (PIM), ezt az üzemi bérlőben teheti meg. A Privileged Identity Management bekapcsolását követően értesítési e-mail-üzeneteket fog kapni az emelt szintű hozzáférési szerepkör változásairól. Ezek az értesítések korai figyelmeztetést nyújtanak, ha további felhasználókat adnak hozzá a címtár magas jogosultsági szintű szerepköreihez.
 
-Az Azure AD Privileged Identity Management Azure AD Premium P2 vagy az EMS E5 tartalmazza. Ezek a megoldások segítségével alkalmazásokhoz és erőforrásokhoz való hozzáférés védelme, a helyszíni környezetben és a felhőben. Ha nem már rendelkezik Azure AD Premium P2 vagy az EMS E5, és szeretné kiértékelni az ütemterv hivatkozott szolgáltatásokat több, Regisztráljon a [Enterprise Mobility + Security ingyenes 90 napos próbaidőszak](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). E licenc kísérletek használatával próbálja ki az Azure AD Privileged Identity Management és az Azure AD Identity Protection a következőket figyelése tevékenység speciális biztonsági jelentések, a naplózás és a riasztások az Azure AD-vel.
+Azure AD Privileged Identity Management a P2 vagy az EMS E5 prémium szintű Azure AD része. Ezek a megoldások segítenek a helyszíni környezetben és a felhőben lévő alkalmazásokhoz és erőforrásokhoz való hozzáférés védelmében. Ha még nem rendelkezik prémium szintű Azure AD P2 vagy EMS E5-vel, és szeretné kiértékelni az ebben az ütemtervben hivatkozott funkciókat, regisztráljon a [Enterprise Mobility + Security ingyenes 90 napos próbaverzióra](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Ezekkel a licencelési kísérletekkel kipróbálhatja Azure AD Privileged Identity Management és Azure AD Identity Protection, hogy figyelje a tevékenységeket az Azure AD speciális biztonsági jelentéskészítési, naplózási és riasztási szolgáltatásával.
 
-Miután bekapcsolta az Azure AD Privileged Identity Management:
+A Azure AD Privileged Identity Management bekapcsolása után:
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) egy olyan fiókkal, amely az éles-bérlő globális rendszergazdája.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) egy olyan fiókkal, amely az éles bérlő globális rendszergazdája.
 
-2. Válassza ki a bérlő, ahol a Privileged Identity Management használni kívánt, válassza ki a felhasználónevet a az Azure portal jobb felső sarkában.
+2. A Privileged Identity Management használni kívánt bérlő kiválasztásához válassza ki a felhasználónevet a Azure Portal jobb felső sarkában.
 
-3. Válassza ki **minden szolgáltatás** és szűrje a listát a **Azure AD Privileged Identity Management**.
+3. Válassza a **minden szolgáltatás** lehetőséget, és szűrje a **Azure ad Privileged Identity Management**listáját.
 
-4. A Privileged Identity Management megnyitásához az **minden szolgáltatás** listában, és rögzítheti az irányítópulton.
+4. Nyissa meg Privileged Identity Management a **minden szolgáltatás** listából, és rögzítse az irányítópulton.
 
-Az első, aki a bérlő Azure AD Privileged Identity Management használatához a rendszer automatikusan hozzárendel a **biztonsági rendszergazda** és **kiemelt szerepkörű rendszergazda** szerepkörök a bérlőben. Csak a kiemelt szerepkörű rendszergazdák kezelhetik a az Azure AD directory szerepkör-hozzárendeléseket felhasználók. Emellett az Azure AD Privileged Identity Management felvett jelenik meg a biztonsági varázsló, amely végigvezeti az első felderítési és hozzárendelési élményen. A varázsló most további módosítások nélkül kiléphet. 
+A bérlőben a Azure AD Privileged Identity Management használatának első személye automatikusan hozzá lesz rendelve a **biztonsági rendszergazda** és a **Kiemelt szerepkörű rendszergazda** szerepkörhöz a bérlőben. Csak a Kiemelt szerepkörű rendszergazdák kezelhetik a felhasználók Azure AD-címtárbeli szerepkör-hozzárendeléseit. Emellett Azure AD Privileged Identity Management hozzáadása után megjelenik a biztonsági varázsló, amely végigvezeti Önt a kezdeti felderítési és hozzárendelési élményen. A varázslóból a további módosítások végrehajtása nélkül is kiléphet. 
 
-#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Azonosíthatja és szerepkörök magas jogosultsági szintű fiókok kategorizálása 
+#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Magas jogosultsági szintű szerepkörökben lévő fiókok azonosítása és kategorizálása 
 
-Után az Azure AD Privileged Identity Management bekapcsolását, a felhasználók a címtár szerepkörök globális rendszergazdája, a kiemelt szerepkörű rendszergazda, a Exchange Online rendszergazdai és a SharePoint Online rendszergazdai megtekintése. Ha a bérlő nem rendelkezik Azure AD PIM-ben, akkor használhatja a [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Indítsa el a globális rendszergazdai szerepkörrel rendelkező, mivel ez a szerepkör általános: a rendszergazda szerepkörrel felruházott felhasználó megegyező alkalmazásengedéllyel rendelkezik az összes felhőszolgáltatás, amelynek a szervezet fizetett elő, függetlenül attól, hogy van rendelve ehhez a szerepkörhöz, a Microsoft 365-ben felügyeleti központ, az Azure portal vagy az Azure AD-modul a Microsoft PowerShell használatával. 
+Azure AD Privileged Identity Management bekapcsolását követően tekintse meg a címtárbeli szerepkörök globális rendszergazdája, a Kiemelt szerepkörű rendszergazda, az Exchange Online-rendszergazda és a SharePoint Online-rendszergazda felhasználói számára. Ha nem rendelkezik az Azure AD PIM-vel a bérlőben, használhatja a [POWERSHELL API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)-t. Kezdje a globális rendszergazdai szerepkörrel, mivel ez a szerepkör általános: a rendszergazdai szerepkörhöz rendelt felhasználó ugyanazokkal az engedélyekkel rendelkezik az összes olyan felhőalapú szolgáltatáshoz, amelyhez a szervezet előfizetett, függetlenül attól, hogy a szerepkör hozzá lett-e rendelve a Microsoft 365 felügyeleti központ, a Azure Portal, vagy a Microsoft PowerShellhez készült Azure AD-modul használatával. 
 
-Távolítsa el a fiókokat, amelyek már nincs szükség az ezeket a szerepköröket. Ezt követően kategorizálása a megmaradt fiókokat hozzárendelt rendszergazdai szerepkörök:
+Távolítsa el azokat a fiókokat, amelyekre már nincs szükség ezekben a szerepkörökben. Ezután kategorizálja a rendszergazdai szerepkörökhöz rendelt többi fiókot:
 
-* Felügyeleti felhasználók hozzárendelése különállóan, és nem felügyeleti célú (például személyes e-mail-cím) is használható
-* Külön-külön hozzárendelt rendszergazdai jogosultságokkal rendelkező felhasználókhoz és a kijelölt csak felügyeleti célokra
+* Egyénileg rendelhető hozzá a rendszergazda felhasználókhoz, és nem rendszergazdai célokra is használható (például személyes e-mail-cím)
+* Egyénileg rendelhető hozzá a rendszergazda felhasználókhoz, és csak felügyeleti célokra van kijelölve
 * Több felhasználó között megosztott
-* Szünet üvegből vészelérési forgatókönyvek
-* Automatizált szkriptek esetében
+* Az eseti vészhelyzetek eléréséhez
+* Automatikus parancsfájlok esetén
 * Külső felhasználók számára
 
-#### <a name="define-at-least-two-emergency-access-accounts"></a>Legalább két vészelérési fiókok megadása 
+#### <a name="define-at-least-two-emergency-access-accounts"></a>Adjon meg legalább két vészhelyzeti hozzáférési fiókot 
 
-Győződjön meg arról, hogy nem kap egy olyan helyzetet, ahol azok sikerült kell véletlenül kizárva felügyeletének részeként az Azure AD-bérlő miatt nem tud a bejelentkezéshez, vagy egy meglévő egyedi felhasználói fiók rendszergazdai aktiválása be. Például ha a szervezet egy helyszíni identitásszolgáltatót való összevonást használ, adott identitásszolgáltató nem érhető el, a felhasználók nem jelentkezhetnek be a helyszíni. Két vagy több vészelérési fiókok a bérlőben való tárolásával csökkentheti a rendszergazdai hozzáférés véletlen hiánya hatását.
+Győződjön meg arról, hogy nem kap olyan helyzetet, amelyben véletlenül kizárják az Azure AD-bérlő felügyeletét, mert nem tud bejelentkezni vagy aktiválni egy meglévő egyéni felhasználói fiókot rendszergazdaként. Ha például a szervezetet egy helyszíni identitás-szolgáltatóhoz összevonták, akkor előfordulhat, hogy az identitás szolgáltatója nem érhető el, így a felhasználók nem jelentkezhetnek be a helyszínen. A rendszergazdai hozzáférés véletlen hiányának hatására úgy csökkenthetők, hogy a bérlőn két vagy több vészhelyzeti hozzáférési fiókot is tárol.
 
-A vészelérési fiókok segítségével a szervezetek korlátozni a rendszerjogosultságú hozzáférést egy meglévő Azure Active Directory-környezeten belül. Ezek a fiókok magas szintű jogosultságokkal a rendelkeznek, és nincsenek hozzárendelve a megadott személyeknek. A vészelérési fiókok korlátozva, vészhelyzeti "vészhelyzeti" forgatókönyvekhez, ahol a szokásos rendszergazdai fiókok nem használható. Szervezetek kell, hogy szabályozása, és csak az az időpont, amelyekre szükség a vészelérési fiókhoz használat csökkentése céljából.
+A vészhelyzeti hozzáférési fiókok segítenek a szervezeteknek a meglévő Azure Active Directory-környezetekben korlátozni a rendszerjogosultságú hozzáférést. Ezek a fiókok Kiemelt jogosultságokkal rendelkeznek, és nem adott személyekhez vannak rendelve. A vészhelyzeti hozzáférési fiókok esetében a "break Glass" olyan helyzetekben van korlátozva, ahol a normál rendszergazdai fiókok nem használhatók. A szervezeteknek biztosítaniuk kell a vészhelyzeti fiók használatának szabályozását és csökkentését arra az időre, amelyre szükség van.
 
-Értékelje ki a fiókokat, amelyek hozzárendelt vagy jogosult a globális rendszergazdai szerepkörhöz. Ha itt nem talál bármely csak felhőalapú fiókok a *. onmicrosoft.com tartomány ("vészhelyzeti" vészelérési szánt), hozza létre őket. További információkért lásd: [rendszergazdai fiókok vészhelyzeti hozzáférésének kezelése az Azure ad-ben](directory-emergency-access.md).
+Értékelje ki azokat a fiókokat, amelyek a globális rendszergazdai szerepkörhöz vannak rendelve vagy jogosultak. Ha nem lát kizárólag Felhőbeli fiókokat a *. onmicrosoft.com tartomány használatával (a "break Glass" vészhelyzeti hozzáféréshez készült), hozza létre őket. További információ: [a sürgősségi hozzáférés felügyeleti fiókjainak kezelése az Azure ad-ben](directory-emergency-access.md).
 
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A multi-factor authentication bekapcsolása, és minden egyéb magas jogosultsági szintű egyfelhasználós nem összevont felügyeleti fiókok regisztrálása
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>A többtényezős hitelesítés bekapcsolása és az összes többi magas jogosultságú, egyfelhasználós, nem összevont rendszergazdai fiók regisztrálása
 
-Az Azure multi-factor Authentication (MFA) megkövetelése bejelentkezéskor véglegesen egy vagy több Azure AD felügyeleti szerepkörök rendelt minden egyes felhasználók számára: Globális rendszergazda, kiemelt szerepkörű rendszergazda, az Exchange Online rendszergazdai és a rendszergazda a SharePoint online-hoz. Az útmutató használatával engedélyezhető az [multi-factor Authentication (MFA) a rendszergazdai fiókok](../authentication/howto-mfa-userstates.md) , és győződjön meg arról, hogy az összes számukra regisztrálták-e a [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). További információ található a 2. lépés és az útmutató 3. lépés [adatait és szolgáltatásait az Office 365-ben való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Az Azure multi-Factor Authentication (MFA) megkövetelése a bejelentkezéskor minden olyan felhasználó számára, aki véglegesen hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: Globális rendszergazda, Kiemelt szerepkörű rendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Az útmutató segítségével engedélyezheti a többtényezős [hitelesítés (MFA)](../authentication/howto-mfa-userstates.md) használatát a rendszergazdai fiókokhoz, és gondoskodhat arról, hogy [https://aka.ms/mfasetup](https://aka.ms/mfasetup)minden felhasználó regisztrálva legyen a következő helyen:. További információt a 2. lépés és a útmutató 3. lépése tartalmaz az [Office 365 adatokhoz és szolgáltatásokhoz való hozzáférésének védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)című témakörben. 
 
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2\. fázis: A leggyakrabban alkalmazott támadási taktikák kockázatának csökkentése
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2\. fázis: A leggyakrabban használt támadási technikák enyhítése
 
-![2\. fázis a gyakran használt Mitigate támadások](./media/directory-admin-roles-secure/stage-two.png)
+![2\. fázis – a gyakran használt támadások enyhítése](./media/directory-admin-roles-secure/stage-two.png)
 
-A legtöbb gyakori problémák enyhítését célzó ütemterv összpontosít 2. fázis alkalmazott támadási taktikák kockázatának hitelesítő adatok ellopásának és visszaélések és megközelítőleg 2 – 4 héten belül végrehajtható. Ebben a szakaszban az emelt szintű hozzáférés biztonságossá ütemterv az alábbi műveleteket tartalmazza.
+Az ütemterv 2. szakasza arra összpontosít, hogy enyhítse a hitelesítő adatok ellopásának és visszaélésének leggyakrabban használt támadási módszereit, és körülbelül 2-4 hétig valósítható meg. A védett privilegizált hozzáférési ütemterv ezen szakasza a következő műveleteket tartalmazza.
 
-### <a name="general-preparation"></a>Általános előkészítése
+### <a name="general-preparation"></a>Általános előkészítés
 
-#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Magatartási szolgáltatások tulajdonosai és rendszergazdái leltára
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Szolgáltatások, tulajdonosok és rendszergazdák leltárának elvégzése
 
-– A saját-eszközök használata (BYOD) és otthonról munkahelyi házirendekben, mind a vezeték nélküli kapcsolat cégek növekedésének száma rendkívül fontos, hogy nyomon, hogy ki csatlakozik a hálózathoz. Hatékony biztonsági naplózási gyakran felfedi, eszközök, alkalmazások és a hálózat, amely nem támogatja a futó programok informatikai, ezért potenciálisan nem biztonságos. További információkért lásd: [az Azure security management és a teljesítményfigyelés áttekintése](../../security/security-management-and-monitoring-overview.md). Győződjön meg arról, hogy Ön tartalmazzák az összes alábbi feladatot a leltározási folyamat során. 
+A saját eszközökön (BYOD) és a munkahelyen belüli szabályzatok növekedésével, valamint a vállalatok vezeték nélküli kapcsolatainak növekedésével a hálózattal való kapcsolat figyelése rendkívül fontos. A hatékony biztonsági naplózás gyakran mutatja a hálózaton futó, az általa nem támogatott eszközöket, alkalmazásokat és programokat, így nem biztos, hogy nem biztonságos. További információ: az [Azure biztonsági felügyelete és monitorozása – áttekintés](../../security/fundamentals/management-monitoring-overview.md). Győződjön meg arról, hogy a leltári folyamat az alábbi feladatokat tartalmazza. 
 
-* Rendszergazdai szerepkörök és szolgáltatások rendelkezik, ahol felügyelheti a felhasználók azonosítása.
-* Azure AD PIM segítségével ismerje meg, hogy mely felhasználók a szervezet rendelkezik rendszergazdai hozzáféréssel az Azure AD, beleértve a további szerepkörök meghaladja az 1. fázis.
-* Kívül a szerepköröket, az Azure ad-ben definiált Office 365 tartalmaz egy rendszergazdai szerepköröket, amelyeket hozzárendelhet a szervezetben a felhasználók számára. Minden rendszergazdai szerepkörhöz gyakori üzleti funkciók vannak leképezve, és adja meg a szervezet engedélyeket adott feladatok elvégzéséhez személyek a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com). A Microsoft 365 felügyeleti központ segítségével ismerje meg, hogy mely felhasználók a szervezet rendelkezik rendszergazdai hozzáféréssel az Office 365 szolgáltatásra, beleértve a szerepkörök nem kezeli az Azure AD-n keresztül. További információkért lásd: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) és [ajánlott biztonsági eljárások az Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
-* Hajtsa végre a készlet más szervezet támaszkodik, például Azure, az Intune-ban vagy a Dynamics 365-szolgáltatások.
-* Győződjön meg arról, hogy a rendszergazdai fiókok (felügyeleti célokra, nem csak a felhasználók napi szintű fiókok által használt fiókok) rendelkezik csatlakoztatott adatlemezekkel e-mail-címek használata és Azure MFA-kiszolgáló van regisztrálva, vagy használja a helyszíni MFA.
-* Kérje meg a felhasználók számára az üzleti indoklás rendszergazdai hozzáféréshez.
-* Távolítsa el a rendszergazdai hozzáférés ezen személyek és szolgáltatások, amelyek nem szükséges.
+* Azonosítsa azokat a felhasználókat, akik rendszergazdai szerepkörökkel rendelkeznek, és azokat a szolgáltatásokat, amelyeken kezelhető.
+* Az Azure AD PIM segítségével megtudhatja, hogy a szervezeten belül mely felhasználók rendelkeznek rendszergazdai hozzáféréssel az Azure AD-hez, beleértve az 1. szakaszban felsorolt további szerepköröket is.
+* Az Azure AD-ben definiált szerepkörökön túl az Office 365 olyan rendszergazdai szerepköröket tartalmaz, amelyeket a szervezet felhasználói számára hozzárendelhet. Az egyes rendszergazdai szerepkörök közös üzleti funkciókra mutatnak, és lehetővé teszi, hogy a szervezeten belül a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com)meghatározott feladatokat végezzenek. A Microsoft 365 felügyeleti központ segítségével megtudhatja, hogy a szervezete mely felhasználói rendelkeznek rendszergazdai hozzáféréssel az Office 365-hez, beleértve az Azure AD-ben nem felügyelt szerepkörökön keresztül. További információkért lásd: [az office 365 rendszergazdai szerepkörei](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) és [az Office 365-hez készült ajánlott biztonsági eljárások](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Hajtsa végre a leltárt a szervezet más szolgáltatásaiban, például az Azure-ban, az Intune-ban vagy a Dynamics 365-ben.
+* Győződjön meg arról, hogy a rendszergazdai fiókok (az adminisztrációs célokra használt fiókok, nem csak a felhasználók napi fiókjai) rendelkeznek a hozzájuk társított e-mail-címekkel, és regisztráltak az Azure MFA használatára, vagy használják az MFA-t a helyszínen.
+* Kérje meg a felhasználókat, hogy üzleti szempontból indokolják meg a rendszergazdai hozzáférést.
+* Távolítsa el a rendszergazdai hozzáférést azon személyek és szolgáltatások számára, akiknek nincs rá szükségük.
 
-#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Microsoft-fiókokat kíván állítani a munkahelyi vagy iskolai fiókok rendszergazdai szerepkör azonosítása
+#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Azonosítsa a Microsoft-fiókokat olyan rendszergazdai szerepkörökben, amelyeket munkahelyi vagy iskolai fiókokra kell váltani
 
-Egyes esetekben egy szervezet számára a kezdeti globális rendszergazdák esetén újra felhasználhatja a meglévő Microsoft-fiók hitelesítő azok kezdődött, az Azure AD. Ezeket a Microsoft-fiókkal a felhőalapú és szinkronizált egyénit kell helyettesíteni. 
+Előfordulhat, hogy a szervezet kezdeti globális rendszergazdája újra felhasználja a meglévő Microsoft-fiók hitelesítő adatait, amikor elkezdték használni az Azure AD-t. Ezeket a Microsoft-fiókokat különálló felhőalapú vagy szinkronizált fiókokkal kell helyettesíteni. 
 
-#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Győződjön meg, hogy külön felhasználói fiókokat és a globális rendszergazdai fiókok levéltovábbítási 
+#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Különálló felhasználói fiókok és a levelezés továbbítása globális rendszergazdai fiókokhoz 
 
-Globális rendszergazdai fiókok nem rendelkezhet személyes e-mail-címeket, mivel személyes e-mail-fiókokat rendszeresen phished internetes támadók. Az internetes kockázatok (adathalász támadások, webböngészés véletlen) rendszergazdai jogosultságokkal, hozzon létre dedikált fiókokra, az egyes felhasználók rendszergazdai jogosultságokkal. 
+A globális rendszergazdai fiókok nem rendelkezhetnek személyes e-mail-címekkel, mivel a személyes e-mail-fiókokat rendszeresen a Cyber-támadók végzik. Az internetes kockázatok (adathalászat-támadások, szándékos webes böngészés) rendszergazdai jogosultságokkal való elkülönítésének elősegítése érdekében hozzon létre dedikált fiókokat minden rendszergazdai jogosultságokkal rendelkező felhasználó számára. 
 
-Ha még nem tette meg, hozzon létre külön fiókokat globális rendszergazdai feladatokat, ellenőrizze, hogy véletlenül nem nyissa meg az e-mailek vagy a rendszergazdai fiókokhoz tartozó programok futtatását, hogy a felhasználók számára. Győződjön meg arról, hogy azok a fiókok rendelkezik egy működő postaláda továbbítani az e-mailjeikhez.  
+Ha még nem tette meg, hozzon létre külön fiókokat a felhasználók számára a globális rendszergazdai feladatok végrehajtásához, hogy biztosan ne nyissa meg véletlenül az e-maileket, vagy futtassa a rendszergazdai fiókokhoz társított programokat. Győződjön meg arról, hogy ezek a fiókok rendelkeznek e-mail-címmel egy működő postaládába.  
 
-#### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Győződjön meg arról, rendszergazdai fiókok jelszava nemrég megváltozott.
+#### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Győződjön meg arról, hogy a rendszergazdai fiókok jelszavai nemrég módosultak
 
-Győződjön meg arról, hogy minden felhasználó jelentkezett be a rendszergazdai fiókok és az utolsó 90 napban legalább egyszer módosította a jelszavukat. Arra is ügyeljen, hogy a felhasználók több olyan megosztott fiókok ismernie kell a jelszót nemrég módosította a jelszavukat volt.
+Győződjön meg arról, hogy minden felhasználó bejelentkezett a rendszergazdai fiókjaiba, és legalább egyszer módosította a jelszavukat az elmúlt 90 napban. Győződjön meg arról is, hogy minden olyan megosztott fióknál, amelyben több felhasználó is ismeri a jelszót, nemrég módosították a jelszavukat.
 
-#### <a name="turn-on-password-hash-synchronization"></a>Kapcsolja be a Jelszókivonat-szinkronizálás
+#### <a name="turn-on-password-hash-synchronization"></a>Jelszó-kivonat szinkronizálásának bekapcsolása
 
-A Jelszókivonat-szinkronizálás funkciója felhasználói jelszókivonatok egy helyszíni Active Directory-példányból egy felhőbeli Azure-bA a kivonatok szinkronizálását használt AD-példányt. Még akkor is, ha úgy dönt, hogy összevonási használata az Active Directory összevonási szolgáltatások (AD FS) vagy az egyéb identitás-szolgáltatóktól, akkor igény szerint állítsa be a Jelszókivonat-szinkronizálás biztonsági esetben a helyszíni infrastruktúrát, például az AD, vagy az ADFS-kiszolgálók sikertelen, vagy válik átmenetileg nem érhető el. Ez lehetővé teszi a felhasználók számára, hogy jelentkezzen be a szolgáltatás ugyanazt a jelszót, amely azok használatával jelentkezzen be a helyszíni AD-példányt. Ezenkívül lehetővé teszi Identity Protection hitelesítő adatokkal való visszaélés észlelése ezen jelszókivonatokat összehasonlításával ismert, hogy sérült, ha egy felhasználó múlttal rendelkezik a saját e-mail címet és az egyéb szolgáltatásaira nincs csatlakoztatva az Azure AD-jelszó jelszavakat.  További információkért lásd: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](../hybrid/how-to-connect-password-hash-synchronization.md).
+A jelszó-kivonatolási szinkronizálás egy helyszíni Active Directory-példányról egy felhőalapú Azure AD-példányra történő felhasználói jelszó-kivonatok kivonatának szinkronizálására szolgáló szolgáltatás. Még ha úgy dönt, hogy összevonást használ Active Directory összevonási szolgáltatások (AD FS) (AD FS) vagy más identitás-szolgáltatókkal, beállíthatja a jelszó-kivonat szinkronizálását biztonsági mentésként, ha a helyszíni infrastruktúra, például az AD-vagy ADFS-kiszolgálók meghibásodnak vagy válik átmenetileg nem érhető el. Ez lehetővé teszi a felhasználók számára, hogy ugyanazzal a jelszóval jelentkezzenek be a szolgáltatásba, amelyet a helyszíni AD-példányba való bejelentkezéshez használnak. Emellett lehetővé teszi az Identity Protection számára a feltört hitelesítő adatok észlelését is, ha összehasonlítja ezeket a jelszó-kivonatokat a biztonsági rések számára ismert jelszavakkal, ha a felhasználó ugyanazt az e-mail-címet és jelszót használja az Azure AD-hez nem csatlakozó más szolgáltatásokhoz.  További információ: jelszó- [kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md).
 
-#### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Többtényezős hitelesítés (MFA) szükséges az összes kiemelt szerepkörű felhasználók, valamint a kitett felhasználók
+#### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Többtényezős hitelesítés (MFA) megkövetelése a felhasználók számára az összes Kiemelt szerepkörben és a felhasználók számára
 
-Az Azure AD használatát javasolja, hogy a többtényezős hitelesítés (MFA) minden felhasználó számára, beleértve a rendszergazdák és minden más felhasználók, akik jelentős hatással lenne, ha a fiókját feltörték (például a pénzügyi igazgatók) szükséges. Ez csökkenti a biztonsági kockázatot jelentő jelszó miatt a támadás kockázatát.
+Az Azure AD azt javasolja, hogy a többtényezős hitelesítés (MFA) megkövetelése az összes felhasználó számára, beleértve a rendszergazdákat és az összes többi felhasználót, akik jelentős hatással lennének a fiók biztonságára (például pénzügyi tisztviselők). Ez csökkenti a támadás kockázatát egy sérült jelszó miatt.
 
-Kapcsolja be:
+Bekapcsolás:
 
-* [A feltételes hozzáférési szabályzatokkal MFA](../authentication/howto-mfa-getstarted.md) a szervezet összes felhasználója számára.
+* [MFA feltételes hozzáférési szabályzatok használatával](../authentication/howto-mfa-getstarted.md) a szervezet összes felhasználója számára.
 
-Ha használ Windows Hello for Business, az MFA úgy érheti el használata a Windows Hello bejelentkezési élményt nyújt. További információkért lásd: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
+Ha a vállalati Windows Hello-t használja, akkor az MFA-követelmény a Windows Hello bejelentkezési felületének használatával teljesíthető. További információ: [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Identity Protection konfigurálása 
+#### <a name="configure-identity-protection"></a>Az Identity Protection konfigurálása 
 
-Az Azure AD Identity Protection, az algoritmus-alapú figyelési és jelentéskészítési eszköz, amellyel a szervezet identitásait érintő esetleges biztonsági rések észlelését. Automatikus válaszok e észlelt gyanús tevékenységek konfigurálhatja, és hajtsa végre a problémák megoldásához a megfelelő műveletet. További információkért lásd: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
+A Azure AD Identity Protection egy algoritmus-alapú figyelési és jelentéskészítési eszköz, amellyel a szervezet identitásait érintő lehetséges sebezhetőségeket derítheti fel. A gyanús tevékenységekre vonatkozó automatizált válaszokat is konfigurálhat, és megteheti a szükséges lépéseket a megoldásához. További információ: [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Szerezze be az Office 365-biztonságos pontszám (Ha használja az Office 365)
+#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Az Office 365 biztonságos pontszámának beszerzése (az Office 365 használata esetén)
 
-Biztonságos pontszám kitalálja, hogy mely Office 365-szolgáltatásokhoz (például a onedrive vállalati verzió, SharePoint és Exchange) használ, majd a beállításokat és a tevékenységek és az összehasonlítja azokat a Microsoft által létrehozott alapterv. Hogyan igazított a van ajánlott biztonsági eljárások alapján pontszámot kap. Bárki, aki rendszergazdai engedélyek (globális rendszergazda vagy egy egyéni rendszergazda szerepkör) számára az Office 365 vállalati prémium vagy nagyvállalati előfizetői férhet hozzá, a biztonságos pontszám [ https://securescore.office.com ](https://securescore.office.com/).
+A biztonságos pontszám alapján megtekintheti, hogy milyen Office 365-szolgáltatásokat használ (például OneDrive, SharePoint és Exchange), majd a beállításokat és tevékenységeket a Microsoft által létrehozott alaptervhez hasonlítja. A legjobb biztonsági eljárások alapján kapsz egy pontszámot. Bárki, aki rendszergazdai jogosultságokkal rendelkezik (globális rendszergazda vagy egyéni rendszergazdai szerepkör) az Office 365 üzleti prémium vagy nagyvállalati előfizetéshez, elérheti a biztonságos pontszámot a következő címen: [https://securescore.office.com](https://securescore.office.com/).
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Olvassa el az Office 365 biztonsági és megfelelőségi útmutatást (Ha használja az Office 365)
+#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Tekintse át az Office 365 biztonsági és megfelelőségi útmutatóját (ha az Office 365-at használja)
 
-A [biztonsági és megfelelőségi terv](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) felvázolja a megközelítés arról, hogy a Office 365-felhasználó hogyan kell konfigurálnia az Office 365-höz és más EMS-képességeket használhatja. Ezt követően a felülvizsgálati lépések 3 – 6 bemutatja, hogyan [adatait és szolgáltatásait az Office 365-ben való hozzáférés védelme](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) és útmutató a hogyan [figyelése, biztonsági és megfelelőségi az Office 365-ben](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6).
+A [biztonsági és megfelelőségi terv](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) ismerteti azt a megközelítést, hogy az Office 365-ügyfeleknek hogyan kell konfigurálniuk az Office 365-et, és más EMS-képességeket használni. Ezt követően tekintse át a 3-6-es lépéseket, amelyekkel biztosíthatja az [office 365 adataihoz és szolgáltatásaihoz való hozzáférést](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) , valamint a [Biztonság és megfelelőség figyelését az Office 365-ban](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)című útmutatóban.
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Konfigurálja az Office 365 figyelését (Ha használja az Office 365)
+#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365-tevékenységek figyelése (az Office 365 használata esetén)
 
-Megfigyelheti, hogyan a szervezet felhasználói használják az Office 365-szolgáltatásokhoz, lehetővé téve a felhasználók egy rendszergazdai fiókkal rendelkező, és akik előfordulhat, hogy nem kell az Office 365 hozzáférési miatt nem jelentkezik be azokat a kapukat azonosítása. További információkért lásd: [tevékenységre vonatkozó jelentések a Microsoft 365 felügyeleti központban](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
+Nyomon követheti, hogy a szervezeten belüli felhasználók hogyan használják az Office 365-szolgáltatásokat, így azonosíthatja azokat a felhasználókat, akik rendszergazdai fiókkal rendelkeznek, és akiknek nincs szükségük az Office 365-hozzáférésre, mert nem jelentkezik be a portálra. További információ: tevékenységi [jelentések a Microsoft 365 felügyeleti központban](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263).
 
-#### <a name="establish-incidentemergency-response-plan-owners"></a>Incidens/válságkezelési válasz terv tulajdonosok létrehozása
+#### <a name="establish-incidentemergency-response-plan-owners"></a>Incidens/vészhelyzeti válasz terv tulajdonosainak létrehozása
 
-Az incidensmegoldás hatékonyan végez egy összetett feladat. Ezért egy sikeres incidensmegoldási képesség létrehozó jelentős tervezés és szükséges erőforrásokat. Ez elengedhetetlen, hogy folyamatosan figyelje a kibertámadások ellen, és eljárásokat priorizálása az incidensek kezelését. Hatékony gyűjtése, elemzése és az adatok jelentéskészítés módszereket létfontosságú kapcsolatokat hozhat létre és más belső csoportok kommunikációt, és tervezze meg tulajdonosai. További információkért lásd: [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717). 
+Az incidensek megválaszolásának hatékony végrehajtása egy összetett vállalkozás. Ezért az incidensek sikeres kiépítésének kialakítása jelentős tervezést és erőforrásokat igényel. Elengedhetetlen, hogy folyamatosan figyelje a számítógépes támadásokat, és eljárásokat hozzon létre az incidensek kezelésének rangsorolásához. Az adatok gyűjtésének, elemzésének és jelentéskészítésének hatékony módszerei elengedhetetlenek a kapcsolatok létrehozásához és a más belső csoportokkal való kommunikáció létrehozásához, valamint a tulajdonosok megtervezéséhez. További információ: [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717). 
 
-#### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Biztonságos helyszíni emelt szintű rendszergazdai fiókok, ha még nem
+#### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Biztonságos helyszíni privilegizált rendszergazdai fiókok, ha még nem tette meg
 
-Ha az Azure Active Directory-bérlő a helyszíni Active Directory szinkronizálva van, majd kövesse az útmutató [biztonsági emelt szintű hozzáférés védelmének ütemterve](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): 1. fázis. Ez magában foglalja a felhasználók számára, akiknek szükség van a helyszíni felügyeleti tevékenységek elvégzésére, emelt szintű hozzáféréssel rendelkező munkaállomások telepítése az Active Directory-rendszergazdák számára, majd hozza létre egyedi helyi rendszergazdai jelszavak a munkaállomásokhoz külön rendszergazdai fiókok létrehozása és a kiszolgálók.
+Ha a Azure Active Directory-bérlőt a helyszíni Active Directory szinkronizálja, kövesse a [biztonsági privilegizált hozzáférési ütemterv](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)útmutatását: 1. fázis. Ebbe beletartozik a különálló rendszergazdai fiókok létrehozása azon felhasználók számára, akiknek helyszíni rendszergazdai feladatokat kell elvégezniük, a rendszerjogosultságú hozzáférési munkaállomások üzembe helyezését Active Directory rendszergazdák számára, valamint egyedi helyi rendszergazdai jelszavakat kell létrehozni a munkaállomásokhoz és kiszolgálók.
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépéseket a szervezet számára az Azure-bA a hozzáférés-kezelés
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépések az Azure-hoz való hozzáférést kezelő szervezetek számára
 
-#### <a name="complete-an-inventory-of-subscriptions"></a>Végezze el az előfizetések leltára
+#### <a name="complete-an-inventory-of-subscriptions"></a>Előfizetések leltárának befejezése
 
-A vállalati portál és az Azure portal használatával azonosítsa az előfizetéseket, amelyek éles üzemi alkalmazások pedig a szervezetben.
+Az Enterprise Portal és a Azure Portal segítségével azonosíthatja a szervezetében az üzemi alkalmazásokat futtató előfizetéseket.
 
-#### <a name="remove-microsoft-accounts-from-admin-roles"></a>Távolítsa el a Microsoft-fiókok a rendszergazdai szerepkörök
+#### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft-fiókok eltávolítása rendszergazdai szerepkörökből
 
-Microsoft-fiókjait az egyéb programok, például az Xbox Live és az Outlook nem használandó rendszergazdai fiókok a szervezeti előfizetésekhez. Felügyeleti állapot eltávolítása az összes Microsoft-fiókok, és cserélje le az Azure Active Directoryval (például chris@contoso.com) munkahelyi vagy iskolai fiókokat.
+A más programokból (például Xbox, Live és Outlook) származó Microsoft-fiókok nem használhatók a szervezeti előfizetések rendszergazdai fiókjaiként. Távolítsa el a rendszergazdai állapotot az összes Microsoft-fiókból, és cserélje chris@contoso.comle a Azure Active Directory (például) munkahelyi vagy iskolai fiókokra.
 
-#### <a name="monitor-azure-activity"></a>Az Azure figyelése
+#### <a name="monitor-azure-activity"></a>Azure-tevékenység figyelése
 
-Az Azure-tevékenységnapló az Azure előfizetés-szintű eseményeit tartalmazza. Aki létre, frissíthetők és törölhetők milyen erőforrásokat, és ezek az események előfordulásakor információkat biztosít. További információkért lásd: [naplózási és az Azure-előfizetés fontosabb műveleteivel kapcsolatos értesítések](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
+Az Azure-tevékenység naplója az Azure-beli előfizetési szintű események előzményeit jeleníti meg. Információt nyújt arról, hogy ki hozta létre, frissítette és törölte azokat az erőforrásokat, és hogy mikor történtek ezek az események. További információt az [Azure-előfizetésében található fontos műveletekkel kapcsolatos értesítések naplózása és fogadása](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)című témakörben talál.
 
-### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépéseket a szervezet számára az Azure AD-n keresztül más felhőalapú alkalmazáshoz való hozzáférés kezelése
+### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül
 
 #### <a name="configure-conditional-access-policies"></a>Feltételes hozzáférési szabályzatok konfigurálása
 
-Készítse elő a feltételes hozzáférési szabályzatok a helyszíni és felhőben üzemeltetett alkalmazásokban. Ha a felhasználói munkahelyhez csatlakoztatott eszközök, részletes tájékoztatást a [beállítása a helyszíni feltételes hozzáférés által az Azure Active Directory eszközregisztrációjával](../active-directory-device-registration-on-premises-setup.md).
+Feltételes hozzáférési szabályzatok előkészítése a helyszíni és a felhőben üzemeltetett alkalmazásokhoz. Ha a felhasználók munkahelyhez csatlakoztatott eszközöket használnak, további információkat kaphat a helyszíni [feltételes hozzáférés beállításáról Azure Active Directory eszköz regisztrációjának használatával](../active-directory-device-registration-on-premises-setup.md).
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3\. fázis: Láthatóság hozhat létre, és teljes mértékben vezérelhetik a felügyeleti tevékenység
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3\. fázis: A felügyeleti tevékenységek láthatóságának és teljes körű felügyeletének kialakítása
 
-![3\. fázis irányításuk alá vonják rendszergazdai tevékenység](./media/directory-admin-roles-secure/stage-three.png)
+![3\. fázis – a rendszergazdai tevékenység vezérlése](./media/directory-admin-roles-secure/stage-three.png)
 
-3\. fázis a 2. fázis kockázatcsökkentő épül, és célja, hogy megközelítőleg 1 – 3 hónapon belül kell végrehajtani. A biztonságos emelt szintű hozzáférés védelmének ütemterve ezen szakasza a következő összetevőket tartalmazza.
+A 3. fázis a 2. fázis enyhítésére épül, és körülbelül 1-3 hónapban valósítható meg. A védett privilegizált hozzáférési ütemterv ezen szakasza a következő összetevőket tartalmazza.
 
-### <a name="general-preparation"></a>Általános előkészítése
+### <a name="general-preparation"></a>Általános előkészítés
 
-#### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>A felhasználók rendszergazdai szerepköröket a hozzáférési felülvizsgálat befejezése
+#### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Rendszergazdai szerepkörrel rendelkező felhasználók hozzáférési felülvizsgálatának befejezése
 
-Több vállalati felhasználók emelt szintű hozzáférjenek vannak, felhőszolgáltatások, ami egy növekvő nem felügyelt platform használatával. Ez magában foglalja a felhasználók Office 365, Azure-előfizetések rendszergazdái és virtuális gépekhez vagy SaaS-alkalmazások rendszergazdai hozzáféréssel rendelkező felhasználó számára a globális rendszergazdák váljon. Ehelyett a szervezetek minden alkalmazott, különösen a rendszergazdák kezelni a napi üzleti tranzakciók jogosultságokkal nem rendelkező felhasználóként, és csak végrehajtása a rendszergazdai jogosultságokkal, igény szerint kell rendelkeznie. Mivel a kezdeti bevezetési óta előfordulhat, hogy rendelkezik megnövelte a rendszergazdák számát, teljes hozzáférési felülvizsgálat azonosításához, és erősítse meg a minden felhasználó, aki rendszergazdai jogosultságokkal aktiválására jogosulttá. 
+A vállalati felhasználók egyre magasabb szintű hozzáférést kapnak a Cloud Services szolgáltatáshoz, ami egyre nagyobb, nem felügyelt platformot eredményezhet. Ide tartoznak azok a felhasználók, akik az Office 365, az Azure-előfizetések rendszergazdái és rendszergazdai hozzáférésű virtuális gépekhez vagy SaaS-alkalmazásokon keresztül rendszergazdai hozzáféréssel rendelkező felhasználók. Ehelyett a szervezeteknek minden alkalmazotthoz, különösen rendszergazdákhoz kell tartoznia, a napi üzleti tranzakciókat pedig nem Kiemelt felhasználóként kell kezelniük, és csak a szükséges rendszergazdai jogosultságokat kell igénybe venniük. Mivel a rendszergazdai szerepkörökben lévő felhasználók száma a kezdeti elfogadás óta megnőtt, a hozzáférési felülvizsgálatok végrehajtásával azonosíthatja és megerősítheti a rendszergazdai jogosultságok aktiválásához jogosult összes felhasználót. 
 
 Tegye a következőket:
 
-* Állapítsa meg, hogy mely felhasználók Azure ad-ben rendszergazdák, engedélyezze az igény szerinti, just-in-time rendszergazdai hozzáférés és szerepköralapú biztonsági vezérlők.
-* Átalakítás egyértelmű indok arra, hogy egy másik szerepkör az emelt szintű rendszergazdai hozzáféréssel rendelkező felhasználók számára (Ha nem jogosult szerepkör, távolítsa el őket).
+* Határozza meg, hogy mely felhasználók az Azure AD-rendszergazdák, hogyan engedélyezheti az igény szerinti rendszergazdai hozzáférést, valamint a szerepkör alapú biztonsági vezérlőket.
+* Olyan felhasználók konvertálása, akik nem rendelkeznek egyértelmű indoklással a rendszergazdai jogosultsági szintű hozzáféréshez egy másik szerepkörhöz (ha nincs erre jogosult szerepkör, távolítsa el őket).
 
-#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Bevezetés az erősebb hitelesítést minden felhasználó számára továbbra is 
+#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Az erősebb hitelesítés bevezetésének folytatása minden felhasználó számára 
 
-C-suite vezetők, kritikus fontosságú magas szintű kezelők megkövetelése informatikai és biztonsági csoporthoz, valamint egyéb magas kitett felhasználók a modern, erős hitelesítést, például az Azure MFA vagy a Windows Hello. 
+A C-Suite vezetők, a magas szintű vezetők, a kritikus informatikai és biztonsági személyzet, valamint más, magas rendelkezésre állású felhasználók számára a modern, erős hitelesítés, például az Azure MFA vagy a Windows Hello használata szükséges. 
 
-#### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Dedikált munkaállomásokat használja az Azure ad-felügyelethez
+#### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Dedikált munkaállomások használata az Azure AD felügyeletéhez
 
-Előfordulhat, hogy a támadók próbál cél eléréséhez a szervezet adatokhoz és rendszerekhez, akkor megszakíthatja az integritásra és a kártékony kód, amely megváltoztatja a program logikai vagy a rendszergazdai hitelesítő adatok megadása snoops, az adatok hitelességének kiemelt jogosultságú fiókok. Emelt szintű hozzáféréssel rendelkező munkaállomások (Paw) dedikált operációs rendszert biztosítanak a védett internetes támadások és fenyegetési vektoroknak a bizalmas feladatokhoz. Megadhat, az ezeket a bizalmas feladatoknak és fiókoknak a napi használatú munkaállomások és eszközök igen erős védelmet nyújt az adathalász támadások, az alkalmazás és az operációs rendszer biztonsági réseket, különböző megszemélyesítési támadások és hitelesítő adatok ellopására irányuló támadásokkal, például billentyűleütés naplózás, a Pass-the-Hash és Pass-The-Ticket. Emelt hozzáférési szintű munkaállomások üzembe, csökkentheti a kockázatokat, ha a rendszergazdák rendszergazdai hitelesítő adataival, kivéve, adjon meg egy asztali környezetben, amely rendelkezik megerősített lett. További információkért lásd: [emelt szintű hozzáféréssel rendelkező munkaállomások](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+A támadók megkísérelheti a Kiemelt fiókok megcélzását arra, hogy hozzáférjenek a szervezet adataihoz és rendszereihez, hogy megzavarják az adatok integritását és hitelességét olyan kártékony kód révén, amely megváltoztatja a program logikáját, vagy Snoops a rendszergazdának a hitelesítő adatok megadásával. Az emelt szintű hozzáférésű munkaállomások (mancsok) dedikált operációs rendszert biztosítanak az internetes támadásokkal és a veszélyforrási vektorokkal védett bizalmas feladatokhoz. Az érzékeny feladatok és fiókok a napi használatú munkaállomásokon és eszközökön való elkülönítése rendkívül erős védelmet biztosít az adathalász támadások, az alkalmazások és az operációs rendszer sebezhetőségei, a különböző megszemélyesítési támadások és a hitelesítő adatok ellopása elleni támadások, például a billentyűleütés naplózás, pass-The-hash és Pass-The-Ticket. Az emelt szintű hozzáférésű munkaállomások üzembe helyezésével csökkentheti annak a kockázatát, hogy a rendszergazdák rendszergazdai hitelesítő adatokat adjanak meg, kivéve a megerősített asztali környezetet. További információ: [privilegizált hozzáférésű](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)munkaállomások.
 
-#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Tekintse át a nemzeti szabványügyi és technológiai javaslatok incidenskezelés 
+#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>A National Institute of Standards and Technology ajánlásainak áttekintése az incidensek kezeléséhez 
 
-A nemzeti szabványügyi és technológiai a (NIST) incidensek kezelésére, különösen az incidens kapcsolódó adatok elemzése, és hogy a megfelelő választ az egyes incidensek nyújt útmutatást. További információkért lásd: [(NIST) a számítógép biztonsági incidensek kezelése útmutató (SP 800-61, 2. változat)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
+A National Institute of Standards and Technology (NIST) útmutatást nyújt az incidensek kezeléséhez, különösen az incidensekkel kapcsolatos adatok elemzéséhez és az egyes incidensekre vonatkozó megfelelő válaszok meghatározásához. További információ: [(NIST) számítógép biztonsági incidensek kezelési útmutatója (SP 800-61, 2. változat)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
 
-#### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Privileged Identity Management (PIM) megvalósítása az igény szerinti további rendszergazdai szerepkörökhöz
+#### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Privileged Identity Management (PIM) megvalósítása a JIT számára a további rendszergazdai szerepkörökhöz
 
-Az Azure Active Directory használata [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) képesség. Időkorlátos aktiválását a kiemelt szerepkörökhöz úgy, hogy lehetővé teszi működik:
+Azure Active Directory esetén használja a [Azure ad Privileged Identity Management](../privileged-identity-management/pim-configure.md) képességet. A Kiemelt szerepkörök időkorlátos aktiválása a következőket teszi lehetővé:
 
-* Egy adott feladat végrehajtásához rendszergazdai jogosultságokat aktiválása
-* MFA kényszerítése az aktiválási folyamat során
-* Rendszergazdák tájékoztatja a sávon kívüli változásokkal kapcsolatos riasztások használata
-* Engedélyezése a felhasználók számára egy előre konfigurált időtartamot adjon meg egy bizonyos jogosultságai
-* Fedezze fel az összes emelt jogosultsági szintű identitásait, naplózási jelentések megtekintése és létrehozása a hozzáférési felülvizsgálatok minden felhasználót, aki rendszergazdai jogosultságokkal aktiválására jogosulttá azonosíthatja a biztonsági rendszergazdák engedélyezése
+* Rendszergazdai jogosultságok aktiválása adott feladat végrehajtásához
+* Az MFA betartatása az aktiválási folyamat során
+* Értesítéseket használhat a rendszergazdáknak a sávon kívüli változásokról
+* Annak engedélyezése, hogy a felhasználók bizonyos jogosultságokat őrizzenek meg előre konfigurált időtartamra
+* Engedélyezze a biztonsági rendszergazdáknak az összes privilegizált identitás felderítését, a naplózási jelentések megtekintését és a hozzáférési felülvizsgálatok létrehozását a rendszergazdai jogosultságok aktiválásához jogosult összes felhasználó azonosításához
 
-Ha már használja az Azure AD Privileged Identity Management, módosítsa az időhöz kötött jogosultságok időkeretének meghatározása szükséges (például a karbantartási időszakok).
+Ha már használja a Azure AD Privileged Identity Management-t, módosítsa a szükséges időkereteket (például karbantartási időszakok).
 
-#### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Határozza meg a jelszóalapú bejelentkezés protokollok való kitettség (ha az Exchange Online-nal)
+#### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Jelszó alapú bejelentkezési protokollok (az Exchange Online használata esetén) való kitettség meghatározása
 
-Múltbeli időpont protokollok feltételezi, hogy felhasználónév/jelszó kombináció is ágyazva eszközök, e-mail-fiókokat, -telefonokat és így tovább. Most már a kibertámadások ellen a felhőben kockázatát, javasoljuk, hogy azonosította a minden lehetséges felhasználói ki, ha hitelesítő adataikkal feltörték, sikerült katasztrofális a szervezet számára, és kizárja őket, hogy jelentkezzen be az e-mail-címét a felhasználónév-n keresztül, de / a jelszó erős hitelesítési követelmények és a feltételes hozzáférést megvalósításával. Letilthatja a [feltételes hozzáféréssel az örökölt hitelesítési](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Ellenőrizze a részleteket a [blokkolása az alapszintű hitelesítés](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) Exchnage interneten keresztül. 
+A múltban a protokollok azt feltételezik, hogy a Felhasználónév/jelszó kombinációk be lettek ágyazva az eszközökbe, e-mail-fiókokba, telefonokra stb. A Felhőbeli számítógépes támadások kockázata azonban azt javasoljuk, hogy azonosítsa az összes olyan felhasználót, aki, ha a hitelesítő adatai biztonságban voltak, katasztrofális lehet a szervezet számára, és zárja ki őket, hogy be tudja jelentkezni az e-mail-címre a Felhasználónév/ a jelszó erős hitelesítési követelmények és feltételes hozzáférés megvalósításával. [A feltételes hozzáférés használatával blokkolhatja az örökölt hitelesítést](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication). Tekintse át az alapszintű hitelesítés exchnage online-on keresztül [történő blokkolásának](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) részleteit. 
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Végezze el a szerepkörök felülvizsgálata értékelés Office 365-szerepkörök (Ha használja az Office 365)
+#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Töltse ki az Office 365-szerepkörök felülvizsgálatának értékelését (az Office 365 használata esetén)
 
-Mérje fel, hogy minden rendszergazda felhasználó a megfelelő szerepkörök (törlése és újbóli hozzárendelése az értékelés szerint).
+Értékelje ki, hogy az összes rendszergazda felhasználó a megfelelő szerepkörökben van-e (törölje és rendelje hozzá újra az értékelés alapján).
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Tekintse át az Office 365-ben használt biztonsági incidenskezelés módszert, és a saját szervezeténél összehasonlítani
+#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Tekintse át az Office 365-ben használt biztonsági incidensek kezelési megközelítését, és hasonlítsa össze a saját szervezetével
 
-Ez a jelentés letölthető [biztonsági incidensek kezelése a Microsoft Office 365-ben](https://www.microsoft.com/download/details.aspx?id=54302).
+Ezt a jelentést a biztonsági incidensek felügyeletéről töltheti le [Microsoft Office 365-es](https://www.microsoft.com/download/details.aspx?id=54302)verzióban.
 
-#### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Továbbra is a helyszíni emelt szintű rendszergazdai fiókok védelme
+#### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Folytassa a helyszíni privilegizált rendszergazdai fiókok biztonságossá tételét
 
-Ha az Azure Active Directory a helyszíni Active Directoryhoz van csatlakoztatva, majd kövesse az útmutató a [biztonsági emelt szintű hozzáférés védelmének ütemterve](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): 2. fázis. Ez magában foglalja az emelt szintű hozzáféréssel rendelkező munkaállomások telepítése az összes rendszergazda számára, többtényezős hitelesítés megkövetelése, csak Enough Admin használatával a tartományvezérlő karbantartásához, csökkenteni a támadási felületet a tartományok, támadások észlelésével az ATA üzembe helyezésének.
+Ha a Azure Active Directory a helyszíni Active Directoryhoz csatlakozik, kövesse a [biztonsági privilegizált hozzáférési ütemterv](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)útmutatását: 2. fázis. Ez magában foglalja a rendszerjogosultságú hozzáférési munkaállomások üzembe helyezését minden rendszergazda számára, a többtényezős hitelesítés megkövetelésével, a TARTOMÁNYVEZÉRLŐk támadási felületének csökkentésével, a tartományok támadási felületének csökkentésével, a támadások észlelésére.
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépéseket a szervezet számára az Azure-bA a hozzáférés-kezelés
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépések az Azure-hoz való hozzáférést kezelő szervezetek számára
 
 #### <a name="establish-integrated-monitoring"></a>Integrált figyelés létrehozása
 
-A [az Azure Security Center](../../security-center/security-center-intro.md) integrált biztonsági monitorozást és felügyeletet biztosít az Azure-előfizetésekre, észlelni tudja a fenyegetéseket, előfordulhat, hogy észrevétlenül, és számos biztonsági együttműködik megoldások.
+A [Azure Security Center](../../security-center/security-center-intro.md) az Azure-előfizetések között integrált biztonsági monitorozást és házirend-kezelést biztosít, segít felderíteni a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémáját is felhasználhatják.
 
-#### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Szoftverleltár-lévő üzemeltetett virtuális gépek a kiemelt jogosultságú fiókok
+#### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Kiemelt jogosultságú fiókok leltárba vétele az üzemeltetett Virtual Machines
 
-A legtöbb esetben nem kell megadnia a felhasználók korlátlan engedélyeket az Azure-előfizetések vagy erőforrásokat. Az Azure AD rendszergazdai szerepköreinek segítségével feladatköröket a szervezeten belül, és csak olyan mértékű hozzáférést biztosítson a felhasználók számára az adott feladatok elvégzéséhez szükséges. Például használja az Azure AD-rendszergazdai szerepköröket ahhoz, hogy egy rendszergazda, csak egy előfizetésben található virtuális gépek kezelése, míg egy másik kezelheti az SQL-adatbázisok ugyanazon az előfizetésen belül. További információkért lásd: [szerepköralapú hozzáférés-vezérlés az Azure Portalon – első lépések](../../role-based-access-control/overview.md).
+A legtöbb esetben nem szükséges korlátlan engedélyeket adni a felhasználóknak az Azure-előfizetésekhez vagy-erőforrásokhoz. Az Azure AD-rendszergazdai szerepkörök segítségével elkülönítheti a szervezeten belüli feladatokat, és csak azon felhasználók számára biztosíthatja a hozzáférést, akiknek szükségük van bizonyos feladatok elvégzésére. Például az Azure AD rendszergazdai szerepköreivel engedélyezheti, hogy egy rendszergazda csak az előfizetésben lévő virtuális gépeket kezelhesse, míg egy másik az adott előfizetésben található SQL-adatbázisokat is képes kezelni. További információ: Bevezetés a [szerepköralapú Access Control használatába a Azure Portal](../../role-based-access-control/overview.md).
 
-#### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Az Azure AD-rendszergazdai szerepköröket a PIM megvalósítása
+#### <a name="implement-pim-for-azure-ad-administrator-roles"></a>A PIM megvalósítása az Azure AD rendszergazdai szerepköreihez
 
-Privileged identity Management használata az Azure AD-rendszergazdai szerepkörök kezelése, szabályozása és figyelése az Azure-erőforrásokhoz való hozzáférést. A PIM használatával védi a kiemelt jogosultságú fiókok kibertámadások ellen a jogosultságok elérhetőségi idejének csökkentését, és a jelentéseket és riasztásokat keresztül használatuk átláthatóvá növelésével. További információkért lásd: [Privileged Identity Management Azure erőforrások hozzáférésének kezelése RBAC](../../role-based-access-control/pim-azure-resource.md).
+Az Azure AD rendszergazdai szerepköreivel felügyelheti, felügyelheti és figyelheti az Azure-erőforrásokhoz való hozzáférést. A PIM használata védi a Kiemelt fiókokat a Cyber-támadásoktól a jogosultságok expozíciós idejének csökkentése és a jelentésekkel és riasztásokkal való használatának növelésével. További információ: az [Azure-erőforrásokhoz való RBAC-hozzáférés kezelése Privileged Identity Management használatával](../../role-based-access-control/pim-azure-resource.md).
 
-#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure-naplók integrációja segítségével megfelelő elküldése az Azure naplózza a SIEM rendszerekhez 
+#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Az Azure log-integrációk használata a kapcsolódó Azure-naplók a SIEM-rendszerbe való küldéséhez 
 
-Azure-naplók integrációja lehetővé teszi a szervezet meglévő biztonsági információk és eseménykezelés (SIEM) rendszereket az Azure-erőforrások nyers naplóinak integrálása. [Az Azure log integration](../../security/security-azure-log-integration-overview.md) Windows-eseménynaplók, és az Azure-erőforrások Azure-tevékenységnaplóinak, az Azure Security Center riasztásainak és az Azure diagnosztikai naplók a Windows-eseményeket gyűjti. 
+Az Azure log-integráció lehetővé teszi, hogy az Azure-erőforrásokból származó nyers naplókat integrálja a szervezet meglévő biztonsági információi és eseménykezelő (SIEM) rendszereibe. Az [Azure log Integration](../../security/fundamentals/azure-log-integration-overview.md) Windows-eseményeket gyűjt a Windows Eseménynapló naplóiból, valamint az Azure-beli adatnaplók, Azure Security Center riasztások és az Azure-beli diagnosztikai naplók Azure-erőforrásairól. 
 
 
-### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépéseket a szervezet számára az Azure AD-n keresztül más felhőalapú alkalmazáshoz való hozzáférés kezelése
+### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül
 
-#### <a name="implement-user-provisioning-for-connected-apps"></a>Csatlakoztatott alkalmazások felhasználókiépítése megvalósítása
+#### <a name="implement-user-provisioning-for-connected-apps"></a>Felhasználók üzembe helyezésének megvalósítása a csatlakoztatott alkalmazásokhoz
 
-Az Azure AD lehetővé teszi a létrehozása, a karbantartással és a felhasználói identitásokat felhőalapú (SaaS) alkalmazások, például a Dropbox vagy a Salesforce, ServiceNow eltávolításának automatizálása, és így tovább. További információkért lásd: [automatizálhatja a felhasználókiépítés és -megszüntetés SaaS-alkalmazásokhoz az Azure ad-vel](../manage-apps/user-provisioning.md).
+Az Azure AD segítségével automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a Felhőbeli (SaaS) alkalmazásokban, például a Dropbox, a Salesforce, a ServiceNow és így tovább. További információ: a [felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése az Azure ad-vel](../manage-apps/user-provisioning.md).
 
-#### <a name="integrate-information-protection"></a>Information protection integrálása
+#### <a name="integrate-information-protection"></a>Adatvédelem integrálása
 
-MCAS lehetővé teszi fájlokat vizsgálhat és szabályzatokat állíthat be az Azure Information Protection-besorolási címkék, alapján engedélyezése áttekinthetőbbé és az adatok a felhőben. Vizsgálat és a felhőben lévő fájl besorolása, és a alkalmazni az Azure information protection-címkék. További információkért lásd: [Azure Information Protection-integráció](https://docs.microsoft.com/cloud-app-security/azip-integration).
+A MCAS lehetővé teszi a fájlok vizsgálatát és a szabályzatok Azure Information Protection besorolási címkék alapján történő beállítását, amely lehetővé teszi a felhőben tárolt adatai jobb láthatóságát és felügyeletét. Megvizsgálhatja és osztályozhatja a fájlokat a felhőben, és alkalmazhatja az Azure Information Protection feliratait. További információkért lásd: [Azure Information Protection-integráció](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
 #### <a name="configure-conditional-access"></a>Feltételes hozzáférés konfigurálása
 
-Egy csoport, helyen és az alkalmazás bizalmassági szintje alapján feltételes hozzáférési szabályzatokat [SaaS-alkalmazások](https://azure.microsoft.com/overview/what-is-saas/) és az Azure AD-csatlakoztatott alkalmazások. 
+Konfigurálhatja a feltételes hozzáférést a csoport, a hely és az alkalmazás érzékenysége alapján az [SaaS-alkalmazások](https://azure.microsoft.com/overview/what-is-saas/) és az Azure ad-hez csatlakoztatott alkalmazások számára. 
 
-#### <a name="monitor-activity-in-connected-cloud-apps"></a>Csatlakoztatott felhőalkalmazások tevékenység figyelése
+#### <a name="monitor-activity-in-connected-cloud-apps"></a>Tevékenységek figyelése a csatlakoztatott felhőalapú alkalmazásokban
 
-Győződjön meg arról, egymáshoz kapcsolódó alkalmazások, valamint a védett felhasználók hozzáférését, azt javasoljuk, hogy kihasználhatja [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security). Ez biztosítja a felhőalapú alkalmazásokba engedélyezi, hogy a rendszergazdai fiókok védelme mellett a vállalati hozzáférés:
+Ha biztosítani szeretné, hogy a felhasználók hozzáférése a csatlakoztatott alkalmazásokban is védve legyen, javasoljuk, hogy használja a [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security). Ezzel biztosíthatja a vállalati hozzáférését a felhőalapú alkalmazásokhoz a rendszergazdai fiókok biztonságossá tétele mellett azáltal, hogy lehetővé teszi a következőket:
 
-* Átláthatóságot és irányítást a felhőalapú alkalmazások kiterjesztése
-* A hozzáférés, tevékenységek és az adatok megosztása házirendek létrehozása
-* Automatikus azonosítása a kockázatos tevékenység, rendellenes viselkedések és fenyegetések
-* Adatszivárgás megakadályozása
-* Minimalizálja a kockázatot és automatizált fenyegetések megelőzése és a házirend betartatása
+* A Felhőbeli alkalmazások láthatóságának és vezérlésének kiterjesztése
+* Szabályzatok létrehozása a hozzáféréshez, a tevékenységekhez és az adatmegosztáshoz
+* A kockázatos tevékenységek, a rendellenes viselkedések és a fenyegetések automatikus azonosítása
+* Az adatszivárgás megakadályozása
+* Csökkentse a kockázatkezelést és az automatizált fenyegetések megelőzését és a házirendek betartatását
 
-A Cloud App Security SIEM-ügynök a Cloud App Security integrálható az Office 365-riasztások és tevékenységek centralizált figyelését engedélyezéséhez az SIEM-kiszolgálóra. A kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Security és továbbítja azokat a SIEM-kiszolgálóra. További információkért lásd: [SIEM-integráció](https://docs.microsoft.com/cloud-app-security/siem).
+Az Cloud App Security SIEM-ügynök integrálja a Cloud App Securityt az SIEM-kiszolgálóval, hogy lehetővé tegye az Office 365-riasztások és-tevékenységek központosított figyelését. Ez a kiszolgálón fut, és lekéri a riasztásokat és tevékenységeket a Cloud App Securityről, és továbbítja azokat az SIEM-kiszolgálóra. További információkért lásd: [SIEM-integráció](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: Proaktívabb egy további biztonsági rendszer kialakításához
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4\. fázis: Továbbra is kiépítheti a védelmet a proaktív biztonsági helyzetbe
 
-![4\. fázis elfogadják a proaktív biztonsági rendszer kialakításához](./media/directory-admin-roles-secure/stage-four.png)
+![A 4. fázis egy proaktív biztonsági állapotot fogad el](./media/directory-admin-roles-secure/stage-four.png)
 
-Az ütemterv – 4. fázis a 3. fázis látható-e épül, és célja, hogy hat hónapon belül és kívül kell végrehajtani. Befejezése strong fejleszt terv segít az emelt szintű hozzáférési védelmet jelenleg ismertek és elérhetők még ma a lehetséges támadások ellen. Biztonsági fenyegetések sajnos folyamatosan fejlődnek, és változnak, ezért azt javasoljuk, hogy megtekintheti a biztonsági olyan folyamatként összpontosított költségeinek növelése és csökkentése sikerének célja a környezetet.
+Az ütemterv 4. szakasza a 3. szakasz láthatóságát eredményezi, és úgy van kialakítva, hogy hat hónapon belül és azon kívül is megvalósítható legyen. A menetrendek elvégzése révén erős, emelt szintű hozzáférésű védelmet fejleszthet a jelenleg ismert és elérhető potenciális támadásoktól. Sajnos a biztonsági fenyegetések folyamatosan fejlődnek és váltanak át, ezért javasoljuk, hogy a biztonsági mentést a folyamatban lévő folyamatnak megfelelően tekintse át, és csökkentse a környezetét célzó ellenfelek sikerességi arányát.
 
-Biztonságossá tétele a privileged access egy első kritikus fontosságú lépés egy modern szervezet az üzleti eszközök biztonsági intézkedésekkel létrehozó, de azt nem része a csak a teljes biztonsági programnak, amely tartalmazza a elemeket, például a szabályzat, a üzemeltetési és információk biztonsági, kiszolgálók, alkalmazások, számítógépek, eszközök, felhőháló és más összetevők adja meg a folyamatban lévő biztonsági intézkedésekkel. 
+Az emelt szintű hozzáférés biztonságossá tétele kulcsfontosságú első lépés egy modern szervezet biztonsági garanciáinak létrehozásához, de ez nem az egyetlen olyan teljes biztonsági program része, amely elemeket is tartalmaz, például a szabályzatot, a műveleteket, az információkat a biztonság, a kiszolgálók, az alkalmazások, a számítógépek, az eszközök, a felhőalapú háló és más összetevők biztosítják a folyamatos biztonsági garanciákat. 
 
-A privilegizált hozzáférési fiókok kezelése, mellett azt javasoljuk, tekintse át a következő folyamatosan:
+A Kiemelt jogosultságú hozzáférési fiókok kezelése mellett azt javasoljuk, hogy az alábbiakat folyamatosan tekintse át:
 
-* Győződjön meg arról, hogy a rendszergazdák végeznek a napi üzleti jogosultságokkal nem rendelkező felhasználóként.
-* Csak emelt szintű hozzáférést, amikor szükséges, és távolítsa el ezt követően (just-in-time).
-* Megőrzi, és tekintse át a kiemelt jogosultságú fiókok kapcsolatos naplózási tevékenység.
+* Győződjön meg arról, hogy a rendszergazdák végzik a mindennapi üzleti tevékenységet a nem Kiemelt felhasználók számára.
+* Szükség esetén csak emelt szintű jogosultsággal rendelkező hozzáférést adjon meg, majd távolítsa el később (igény szerint).
+* A Kiemelt fiókokkal kapcsolatos naplózási tevékenység megőrzése és áttekintése.
 
-Az alkalmazásfejlesztés egy teljes körű biztonsági ütemterv további információkért lásd: [a Microsoft felhőalapú informatikai architektúra erőforrásaihoz](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). További információ a Microsoft-szolgáltatások, amelyek segítik a következő témakörökhöz, forduljon a Microsoft helyi képviselőjéhez, vagy tekintse meg [hozhat létre a vállalati védelme érdekében a kritikus fontosságú számítógépes védelem](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+A teljes biztonsági ütemterv létrehozásával kapcsolatos további információkért lásd: [Microsoft Cloud it Architecture](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)Resources. Ha többet szeretne megtudni arról, hogy a Microsoft-szolgáltatások hogyan segítik a témakörök bármelyikét, lépjen kapcsolatba Microsoft-képviselőjével, vagy tekintse meg a [vállalata védelme érdekében a kritikus számítógépes védelem létrehozása](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)című témakört.
 
-Ez a biztonságos emelt szintű hozzáférés védelmének ütemterve folyamatban lévő utolsó szakasza a következő összetevőket tartalmazza.
+A védett privilegizált hozzáférési ütemterv ezen végső szakasza a következő összetevőket tartalmazza.
 
-### <a name="general-preparation"></a>Általános előkészítése
+### <a name="general-preparation"></a>Általános előkészítés
 
-#### <a name="review-admin-roles-in-azure-active-directory"></a>Tekintse át az Azure Active Directory rendszergazdai szerepkörök 
+#### <a name="review-admin-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök áttekintése Azure Active Directory 
 
-Határozza meg, ha a jelenlegi beépített az Azure AD felügyeleti szerepkörök még mindig naprakészek, és győződjön meg, hogy a felhasználók csak a szerepkörök és találhatók, hogy a megfelelő engedélyeket kell delegálásokat. Az Azure AD-kijelölheti az külön rendszergazdák számára, hogy különböző célokat szolgál. További információkért lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](directory-assign-admin-roles.md).
+Annak megállapítása, hogy az aktuális beépített Azure AD-rendszergazdai szerepkörök naprakészek-e, és hogy a felhasználók csak a megfelelő engedélyekhez szükséges szerepkörökben és delegálásokban vannak. Az Azure AD-vel külön rendszergazdákat jelölhet ki a különböző függvények kiszolgálásához. További információ: [rendszergazdai szerepkörök kiosztása a Azure Active Directoryban](directory-assign-admin-roles.md).
 
-#### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Tekintse át a felhasználók, akik rendelkeznek a felügyelet az Azure AD-hez csatlakoztatott eszközök
+#### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Az Azure AD-hez csatlakoztatott eszközök felügyeletével rendelkező felhasználók áttekintése
 
-További információkért lásd: [hogyan hibrid konfigurálása Azure Active Directoryhoz csatlakoztatott eszközök](../device-management-hybrid-azuread-joined-devices-setup.md).
+További információ: [hibrid Azure Active Directory csatlakoztatott eszközök konfigurálása](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>Tekintse át a tagjai [beépített Office 365 rendszergazdai szerepkörei](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
-Ha Office 365-höz használ.
+#### <a name="review-members-of-built-in-office-365-admin-roleshttpssupportofficecomarticleabout-office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d"></a>A [beépített Office 365 rendszergazdai szerepkörök](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) tagjainak áttekintése
+Ha az Office 365-et használja.
 ‎
-#### <a name="validate-incident-response-plan"></a>Incidensmegoldási terv ellenőrzése
+#### <a name="validate-incident-response-plan"></a>Incidens-válasz tervének ellenőrzése
 
-A terv alapján javítása érdekében a Microsoft azt javasolja, rendszeresen ellenőrzi, hogy a csomag a várt módon működik-e:
+A terv tökéletesítése érdekében a Microsoft azt javasolja, hogy rendszeresen ellenőrizze, hogy a csomag a várt módon működik-e:
 
-* Haladjon végig a meglévő, megtekintheti, milyen kimaradt közúti térképes
-* A postmortem elemzés alapján vizsgálja felül a meglévő vagy új ajánlott eljárások definiálása
-* Győződjön meg arról, hogy a frissített incidenskezelési tervet és ajánlott eljárások legyenek elosztva a szervezeten belül
+* A meglévő útiterv segítségével megtekintheti, hogy mi volt a kihagyva
+* A futási elemzéstől függően módosítsa a meglévőket, vagy adjon meg új ajánlott eljárásokat
+* Győződjön meg arról, hogy a frissített incidens-válasz terv és az ajánlott eljárások a szervezeten belül vannak elosztva
 
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépéseket a szervezet számára az Azure-bA a hozzáférés-kezelés 
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>További lépések az Azure-hoz való hozzáférést kezelő szervezetek számára 
 
-Ha szeretné meghatározni [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../../billing/billing-subscription-transfer.md).
+Állapítsa meg, hogy [egy Azure-előfizetés tulajdonjogát át kell-e vinni egy másik fiókba](../../billing/billing-subscription-transfer.md).
 ‎
 
-## <a name="break-glass-what-to-do-in-an-emergency"></a>"Vészhelyzeti": Mi a teendő vészhelyzet esetén
+## <a name="break-glass-what-to-do-in-an-emergency"></a>"Break Glass": mi a teendő vészhelyzet esetén
 
-![Fiókok vészhelyzeti break vészhelyzeti hozzáférés](./media/directory-admin-roles-secure/emergency.jpeg)
+![Fiókok a sürgősségi szüneti üvegek eléréséhez](./media/directory-admin-roles-secure/emergency.jpeg)
 
-1. Kulcs kezelők és a profiljával kapcsolatos információkat az incidens security officer értesíti.
+1. Az incidenssel kapcsolatos releváns információkkal értesíti a legfontosabb vezetők és biztonsági tisztviselők adatait.
 
-2. Tekintse át a támadási forgatókönyvek. 
+2. Tekintse át a támadás forgatókönyvét. 
 
-3. A "vészhelyzeti" fiók felhasználónév/jelszó kombináció, jelentkezzen be Azure ad-ben elérhető. 
+3. Az Azure AD-be való bejelentkezéshez nyissa meg az "break Glass" fiók Felhasználónév/jelszó kombinációját. 
 
-4. Kérjen segítséget a Microsoft által [megnyitása egy Azure-támogatáskérést](../../azure-supportability/how-to-create-azure-support-request.md).
+4. Kérjen segítséget a Microsofttól [egy Azure-támogatási kérelem megnyitásával](../../azure-supportability/how-to-create-azure-support-request.md).
 
-5. Tekintse meg a [Azure AD-be jelentések](../reports-monitoring/overview-reports.md). Előfordulhat, hogy késéssel között egy esemény bekövetkezett, és a jelentésben szerepel.
+5. Tekintse meg az [Azure ad bejelentkezési jelentéseit](../reports-monitoring/overview-reports.md). Előfordulhat, hogy a jelentésben szereplő események között késés történik.
 
-6. A hibrid környezetek, ha összevont és az AD FS-kiszolgáló nem érhető el, előfordulhat, hogy újra kell ideiglenesen állítsa át az összevont hitelesítés használata a Jelszókivonat-szinkronizálás. Ez a rendszer visszaállítja a tartomány összevonási vissza a felügyelt hitelesítésre mindaddig, amíg elérhetővé válik az AD FS-kiszolgálón.
+6. Hibrid környezetek esetén, ha összevont és a AD FS-kiszolgáló nem érhető el, előfordulhat, hogy átmenetileg át kell váltania az összevont hitelesítésből a jelszó-kivonat szinkronizálásának használatára. Ezzel visszaváltja a tartományi Föderációt a felügyelt hitelesítésre, amíg az AD FS-kiszolgáló elérhetővé nem válik.
 
-7. Figyelheti a kiemelt jogosultságú fiókok e-mailben.
+7. A Kiemelt fiókokra vonatkozó e-mailek figyelése.
 
-8. Ellenőrizze, hogy lehetséges jogi és a törvényszéki vizsgálati vonatkozó naplóinak biztonsági mentése.
+8. Győződjön meg arról, hogy biztonsági másolatot készít a kapcsolódó naplókról a lehetséges törvényszéki és jogi vizsgálatokhoz.
 
-Hogyan kezeli a Microsoft Office 365-höz a biztonsági incidensek kapcsolatos további információkért lásd: [biztonsági incidensek kezelése a Microsoft Office 365-ben](https://aka.ms/Office365SIM).
+További információ arról, hogyan kezeli a Microsoft Office 365 a biztonsági incidenseket: [a biztonsági incidensek kezelése Microsoft Office 365](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYIK: Gyakori kérdések léphetünk emelt szintű hozzáférés biztonságossá tétele  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>GYIK: Az emelt szintű hozzáférés biztonságossá tételével kapcsolatban kapott gyakori kérdések  
 
-**K:** Mit tegyek, ha még I még nincs megvalósítva a biztonságos hozzáférést összetevők?
+**K:** Mi a teendő, ha még nem hajtottam végre biztonságos hozzáférési összetevőket?
 
-**Válasz:** Legalább két break-vészhelyzeti fiók megadása, rendelje az MFA a kiemelt jogosultságú rendszergazdai fiókok, és külön felhasználói fiókokat globális rendszergazdai fiókkal.
+**Válasz** Adjon meg legalább két, a fiókhoz tartozó, az MFA-t a Kiemelt rendszergazdai fiókokhoz, és válassza el a felhasználói fiókokat a globális rendszergazdai fiókokból.
 
-**K:** Egy illetéktelen behatolás után mit jelent a leggyakoribb probléma, amelyet elsőként?
+**K:** Mi az a leggyakoribb probléma, amelyet először kell megoldani?
 
-**Válasz:** Győződjön meg arról, hogy Ön még a legerősebb hitelesítést igénylő magas kitett felhasználók számára.
+**Válasz** Győződjön meg arról, hogy a legszigorúbb hitelesítést igényli a magasan elérhető személyek számára.
 
-**K:** Mi történik, ha az emelt szintű rendszergazdák inaktiválták?
+**K:** Mi történik, ha a Kiemelt rendszergazdák inaktiválva vannak?
 
-**Válasz:** Hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész.
+**Válasz** Hozzon létre egy globális rendszergazdai fiókot, amely mindig naprakész állapotban van.
 
-**K:** Mi történik, ha csak egy globális rendszergazdai balra, és nem érhető el? 
+**K:** Mi történik, ha csak egy globális rendszergazda van hátra, és nem érhető el? 
 
-**Válasz:** A szünet üvegből fiókok valamelyikével azonnali emelt szintű hozzáférés.
+**Válasz** Az egyik, az Ön által használt fiókkal azonnali jogosultsági szintű hozzáférést nyerhet.
 
-**K:** Hogyan tudja megvédeni a szervezeten belül rendszergazdák?
+**K:** Hogyan biztosíthatom a rendszergazdákat a szervezeten belül?
 
-**Válasz:** Vannak olyan rendszergazdák mindig tegye a napi üzleti standard "jogosultságokkal nem rendelkező" felhasználóként.
+**Válasz** A rendszergazdáknak mindig a szokásos "nem privilegizált" felhasználóként kell elvégezniük a mindennapi tevékenységet.
 
-**K:** Mik az Azure AD-ben rendszergazdai fiókok létrehozásának ajánlott eljárásai?
+**K:** Mik az ajánlott eljárások az Azure AD-ben rendszergazdai fiókok létrehozásához?
 
-**Válasz:** Tartalék emelt szintű hozzáférés adott felügyeleti feladatokhoz.
+**Válasz** Emelt szintű hozzáférés az adott rendszergazdai feladatokhoz.
 
-**K:** Milyen eszközöket léteznek csökkentése állandó adminisztrátori hozzáférést?
+**K:** Milyen eszközök léteznek az állandó rendszergazdai hozzáférés csökkentése érdekében?
 
-**Válasz:** Privileged Identity Management (PIM) és az Azure AD felügyeleti szerepkörök.
+**Válasz** Privileged Identity Management (PIM) és az Azure AD rendszergazdai szerepkörei.
 
-**K:** Mi a Microsoft álláspontja rendszergazdai fiókok Azure AD szinkronizálása?
+**K:** Mi a Microsoft pozíciója a rendszergazdai fiókok Azure AD-vel való szinkronizálásához?
 
-**Válasz:** 0. rétegbeli rendszergazdai fiókok (beleértve a fiókok, csoportok, és más eszközök, amelyek közvetlen vagy közvetett ellenőrzést az AD-erdőhöz, tartományok és tartományvezérlők és az összes eszköz) felhasználtuk csak a helyszíni AD-fiókok alatt, és általában nem szinkronizálva az Azure ad-ben a felhőhöz.
+**Válasz** A 0. rétegbeli rendszergazdai fiókok (beleértve a fiókokat, a csoportokat és az AD-erdő, a tartományok, a tartományvezérlők és az összes eszköz közvetlen vagy közvetett felügyeleti felügyeletét biztosító más eszközöket) csak a helyszíni AD-fiókok esetében használhatók, és általában nem szinkronizálva az Azure AD-vel a felhőben.
 
-**K:** Hogyan tudjuk megtartja a rendszergazdák a portálon véletlenszerű felügyeleti hozzáférés hozzárendelése a?
+**K:** Hogyan lehet megőrizni a rendszergazdákat, hogy véletlenszerű rendszergazdai hozzáférést rendeljenek a portálon?
 
-**Válasz:** Minden felhasználó és a legtöbb rendszergazdák nem kiemelt jogosultságú fiókokat kell használni. Első lépésként egy erőforrás-igényű, a szervezet, hogy mely néhány rendszergazdai fiókot kell lennie az emelt szintű fejlesztéséhez. És figyelje az újonnan létrehozott rendszergazda felhasználók.
+**Válasz** A nem Kiemelt fiókok használata az összes felhasználó és a legtöbb rendszergazda számára. Kezdje azzal, hogy kifejleszti a szervezeti lábnyomot, és meghatározza, hogy mely néhány rendszergazdai fióknak kell jogosultságot biztosítania. És figyelés az újonnan létrehozott rendszergazda felhasználók számára.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Microsoft Trust Center termék biztonsági](https://www.microsoft.com/trustcenter/security) – biztonsági funkciói a Microsoft felhőalapú termékek és szolgáltatások
+* [Microsoft adatvédelmi központ a termékbiztonság számára](https://www.microsoft.com/trustcenter/security) – a Microsoft Cloud Products és Services biztonsági funkciói
 
-* [A Microsoft Trust Center – megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – a Microsoft átfogó megfelelőségi ajánlattal, a cloud services
+* [Microsoft adatvédelmi központ – megfelelőség](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – a Microsoft átfogó megfelelőségi kínálata a Cloud Serviceshez
 
-* [Hogyan kockázatbecslés](https://www.microsoft.com/trustcenter/guidance/risk-assessment) -biztonsági és megfelelőségi követelmények a Microsoft cloud services kezelése
+* [Útmutató a kockázatértékelés végrehajtásához](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – a Microsoft Cloud Services biztonsági és megfelelőségi követelményeinek kezelése
 
-### <a name="other-microsoft-online-services"></a>Más Online Microsoft-szolgáltatások
+### <a name="other-microsoft-online-services"></a>Egyéb Microsoft Online Services
 
-* [A Microsoft Intune-ban biztonsági](https://www.microsoft.com/trustcenter/security/intune-security) – az Intune mobileszköz-kezelés, mobilalkalmazás-felügyelet és a felhőalapú számítógép-felügyeleti képességek biztosít.
+* [Microsoft Intune biztonság](https://www.microsoft.com/trustcenter/security/intune-security) – az Intune mobileszköz-felügyeletet, mobileszköz-kezelést és számítógép-felügyeleti funkciókat biztosít a felhőből.
 
-* [A Microsoft Dynamics 365 security](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 a Microsoft felhőalapú megoldása, amely egyesíti az Ügyfélkapcsolat-kezelés (CRM) és a vállalatierőforrás-tervezési (ERP) képességeit.
+* [Microsoft dynamics 365 biztonság](https://www.microsoft.com/trustcenter/security/dynamics365-security) – a Dynamics 365 a Microsoft felhőalapú megoldás, amely egységesíti az Ügyfélkapcsolat-kezelési (CRM) és a vállalati erőforrás-tervezési (ERP) képességeket.

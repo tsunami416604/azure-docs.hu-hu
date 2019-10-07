@@ -191,6 +191,8 @@
       items:
         - name: Egyszerű szolgáltatás létrehozása
           href: kubernetes-service-principal.md
+        - name: Felügyelt identitások használata (előzetes verzió)
+          href: use-managed-identity.md
         - name: A fürtkonfigurációs fájl elérésének korlátozása
           href: control-kubeconfig-access.md
         - name: Podforgalom biztonságossá tétele hálózati szabályzatokkal

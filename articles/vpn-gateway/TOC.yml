@@ -140,6 +140,8 @@
               href: vpn-gateway-howto-openvpn-clients.md
         - name: AlwaysOn VPN-eszközalagút konfigurálása
           href: vpn-gateway-howto-always-on-device-tunnel.md
+        - name: AlwaysOn VPN felhasználói alagút konfigurálása
+          href: vpn-gateway-howto-always-on-user-tunnel.md
         - name: Egyéni útvonalak hirdetése P2S-ügyfelek számára
           href: vpn-gateway-p2s-advertise-custom-routes.md
     - name: Zónaredundáns virtuális hálózati átjáró létrehozása az Azure Availability Zones szolgáltatásban

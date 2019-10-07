@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83eee019ee8530297689b85e6f3300fed4392610
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
-ms.translationtype: MT
+ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
+ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489183"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68678199"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -44,7 +44,7 @@ Az alábbi ábrán egy új hozzáférési csomag létrehozásának magas szintű
 
 ## <a name="start-new-access-package"></a>Új hozzáférési csomag elindítása
 
-**Előfeltételként szükséges szerepkör:** Felhasználói rendszergazda vagy katalógus tulajdonosa
+**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -64,21 +64,20 @@ Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, �
 
 1. A **katalógus** legördülő listában válassza ki azt a katalógust, amelyben a hozzáférési csomagot létre szeretné hozni. Előfordulhat például, hogy rendelkezik egy katalógus tulajdonosával, amely az összes igényelhető marketing-erőforrást kezeli. Ebben az esetben kiválaszthatja a marketing katalógust.
 
-    Csak azok a katalógusok jelennek meg, amelyekkel hozzáférési csomagokat hozhat létre a alkalmazásban. Ahhoz, hogy hozzáférési csomagot hozzon létre egy meglévő katalógusban, legalább egy felhasználói rendszergazdának, a katalógus tulajdonosának vagy a hozzáférési csomag kezelőjének kell lennie.
+    Csak azok a katalógusok jelennek meg, amelyekkel hozzáférési csomagokat hozhat létre a alkalmazásban. Egy meglévő katalógusban lévő hozzáférési csomag létrehozásához legalább egy globális rendszergazdának, egy felhasználói rendszergazdának, a katalógus tulajdonosának kell lennie, vagy az adott katalógusban hozzá kell férnie a Package Managerhez.
 
     ![Hozzáférési csomag – alapismeretek](./media/entitlement-management-access-package-create/basics.png)
 
-    Ha a hozzáférési csomagot új katalógusban szeretné létrehozni, kattintson az **új létrehozása**lehetőségre. Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás**gombra.
+    Ha Ön globális rendszergazda vagy felhasználói rendszergazda, és egy új katalógusban szeretné létrehozni a hozzáférési csomagot, kattintson az **új létrehozása**lehetőségre. Adja meg a katalógus nevét és leírását, majd kattintson a **Létrehozás**gombra.
 
-    A létrehozott hozzáférési csomag és a benne található összes erőforrás hozzá lesz adva az új katalógushoz. Emellett automatikusan a katalógus első tulajdonosa lesz. További katalógus-tulajdonosokat is hozzáadhat.
+    A létrehozott hozzáférési csomag és a benne található összes erőforrás hozzá lesz adva az új katalógushoz. Később további katalógus-tulajdonosokat is hozzáadhat.
 
-    Új katalógus létrehozásához legalább egy felhasználói rendszergazdának vagy katalógus létrehozójának kell lennie.
 
 1. Kattintson a **Tovább** gombra.
 
 ## <a name="resource-roles"></a>Erőforrás-szerepkörök
 
-Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat.
+Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban szerepeltetni kívánt erőforrásokat.  A hozzáférési csomagot kérő és fogadó felhasználók megkapják a hozzáférési csomagban található összes erőforrás-szerepkört.
 
 1. Kattintson a hozzáadni kívánt erőforrás típusára (**csoportok**, **alkalmazások**vagy SharePoint- **helyek**).
 
@@ -86,11 +85,11 @@ Az **erőforrás-szerepkörök** lapon válassza ki a hozzáférési csomagban s
 
     ![Hozzáférési csomag – erőforrás-szerepkörök](./media/entitlement-management-access-package-create/resource-roles.png)
 
-    Ha a hozzáférési csomagot az általános katalógusban vagy egy új katalógusban hozza létre, a saját címtárból is kiválaszthatja az összes erőforrást. Legalább egy felhasználói rendszergazdának vagy katalógus létrehozójának kell lennie.
+    Ha a hozzáférési csomagot az általános katalógusban vagy egy új katalógusban hozza létre, a saját címtárból is kiválaszthatja az összes erőforrást. Legalább egy globális rendszergazdának, egy felhasználói rendszergazdának vagy katalógus létrehozójának kell lennie.
 
     Ha egy meglévő katalógusban hozza létre a hozzáférési csomagot, kiválaszthatja, hogy a katalógusban lévő összes erőforrás tulajdonos nélkül legyen.
 
-    Ha Ön a felhasználó rendszergazdája vagy a katalógus tulajdonosa, lehetősége van arra, hogy olyan erőforrásokat válasszon ki, amelyek még nem szerepelnek a katalógusban. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem szerepelnek a kiválasztott katalógusban, akkor ezek az erőforrások is hozzáadódnak a katalógushoz más katalógus-rendszergazdák számára, hogy hozzáférési csomagokat hozzanak létre a használatával. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg a kiválasztott katalógusban vannak, jelölje be a csak a Pan (pásztázás) jelölőnégyzet felső részén található **Megtekintés** jelölőnégyzetet.
+    Ha Ön globális rendszergazda, a felhasználó rendszergazdája vagy a katalógus tulajdonosa, lehetősége van arra, hogy kiválassza a katalógusban még nem használt erőforrásokat. Ha olyan erőforrásokat választ ki, amelyek jelenleg nem szerepelnek a kiválasztott katalógusban, akkor ezek az erőforrások is hozzáadódnak a katalógushoz más katalógus-rendszergazdák számára, hogy hozzáférési csomagokat hozzanak létre a használatával. Ha csak azokat az erőforrásokat szeretné kiválasztani, amelyek jelenleg a kiválasztott katalógusban vannak, jelölje be a csak a Pan (pásztázás) jelölőnégyzet felső részén található **Megtekintés** jelölőnégyzetet.
 
 1. Miután kiválasztotta az erőforrásokat, a **szerepkör** listából válassza ki azt a szerepkört, amelyhez hozzá szeretné rendelni a felhasználókat az erőforráshoz.
 

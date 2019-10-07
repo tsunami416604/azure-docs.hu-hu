@@ -1,57 +1,57 @@
 ---
-title: Útválasztási események és az Azure digitális Twins üzenetek |} A Microsoft Docs
-description: Útválasztási események és üzeneteket az Azure digitális Twins Szolgáltatásvégpontok áttekintése
+title: Események és üzenetek továbbítása az Azure digitális Twins szolgáltatással | Microsoft Docs
+description: Az útválasztási események és üzenetek szolgáltatásbeli végpontok közötti áttekintése az Azure Digital Twins használatával
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 07/29/2019
 ms.author: alinast
-ms.openlocfilehash: 7dfda00aca403f7f95f0c56d1db28c3c609bebd2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
+ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080659"
+ms.lasthandoff: 07/30/2019
+ms.locfileid: "68638533"
 ---
 # <a name="routing-events-and-messages"></a>Események és üzenetek útválasztása
 
-IoT-megoldások gyakran több hatékony szolgáltatás, amely tartalmazza a tárolási, elemzési és egyéb egyesítése. Ez a cikk ismerteti az Azure digitális Twins alkalmazások csatlakoztatása az Azure analytics, a mesterséges Intelligencia és a storage-szolgáltatások tegye lehetővé számukra részletesebb elemzéseket és funkciókat.
+A IoT-megoldások gyakran több olyan hatékony szolgáltatást egyesítenek, amely magában foglalja a tárolást, az elemzést és egyebeket. Ez a cikk azt ismerteti, hogyan csatlakoztathatók az Azure Digital Twins-alkalmazások az Azure Analytics, AI és Storage szolgáltatásokhoz, hogy azok mélyebb elemzéseket és funkciókat biztosítsanak.
 
-## <a name="route-types"></a>Útválasztási típus  
+## <a name="route-types"></a>Útvonalak típusai  
 
-Az Azure digitális Twins csatlakoztatása az IoT-események üzleti alkalmazások és más Azure-szolgáltatások két lehetőséget kínál:
+Az Azure Digital Twins két lehetőséget kínál a IoT-események más Azure-szolgáltatásokkal vagy üzleti alkalmazásokkal való összekapcsolására:
 
-* **Útválasztási Azure digitális Twins események**: A térbeli objektum graph a módosításokat, a telemetriai adatokat fogadott, vagy a felhasználó által definiált függvény, amely létrehoz egy előre meghatározott feltételek alapján értesítést is aktiválhatja az Azure digitális Twins eseményeket. A felhasználók elküldhetik ezeket az eseményeket az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus-üzenettémakörök](https://azure.microsoft.com/services/service-bus/), vagy [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) további feldolgozás céljából.
+* **Azure digitális Twins-események irányítása**: Egy olyan objektum a térbeli gráfban, amely megváltoztatja, telemetria a kapott vagy egy felhasználó által definiált függvényt, amely az előre meghatározott feltételek alapján hoz létre értesítéseket az Azure digitális Twins eseményeinek elindításához. A felhasználók ezeket az eseményeket [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus témakörökbe](https://azure.microsoft.com/services/service-bus/)vagy [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) további feldolgozásra is elküldhetik.
 
-* **Útválasztási eszköztelemetria**: Útválasztási események mellett az Azure digitális Twins is irányíthatja nyers eszköz telemetriai üzeneteket az Event hubs szolgáltatásba a további információkhoz és elemzésekhez juthat. Az ilyen típusú üzenetek nem dolgozza fel az Azure digitális Twins. És csak az event hubs már továbbítva.
+* **Útválasztási eszköz telemetria**: Az útválasztási események mellett az Azure Digital Twins is átirányíthatja a nyers eszköz telemetria-üzeneteit, hogy további információkhoz és elemzésekhez Event Hubs. Az Azure digitális Twins nem dolgozza fel az ilyen típusú üzeneteket. Ezeket csak az Event hub továbbítja.
 
-A felhasználók megadhatják a kimenő forgalom egy vagy több végpontot küldjön ki eseményt vagy üzenetek továbbítására. Események és üzeneteket küld a végpontokhoz ezek előre meghatározott útválasztási beállítások szerint. Más szóval a felhasználók megadhatnak egy bizonyos végpont graph művelet események fogadásához egy másik eszköz telemetriai események fogadásához, és így tovább.
+A felhasználók egy vagy több kimenő végpontot is megadhatnak az események küldéséhez vagy az üzenetek továbbításához. Az eseményeket és üzeneteket a rendszer az előre definiált útválasztási beállításoknak megfelelően elküldi a végpontoknak. Más szóval a felhasználók megadhatnak egy bizonyos végpontot a Graph műveleti események fogadására, egy másikat az eszköz telemetria fogadására, és így tovább.
 
-![Útválasztás az Azure digitális Twins események][1]
+![Azure digitális Twins-események útválasztása][1]
 
-A sorrendet, amelyben telemetriai üzeneteket küld az Event Hubs az Útválasztás tart fenn. Így azok megérkeznek a végpont ugyanabban a sorrendben, ahogy eredetileg megkapta. Event Grid és a Service Bus nem garantálják, hogy végpontok kapja, hogy azok történt ugyanabban a sorrendben. Az esemény-séma azonban használhatók a rendelés azonosítása után az esemény érkezik, a végpont a következő időbélyeget tartalmaz.
+A Event Hubs útválasztása megőrzi a telemetria üzenetek küldésének sorrendjét. Így a végpontnak ugyanabban a sorozatban érkeznek, mint az eredetileg érkezett. Event Grid és Service Bus nem garantálják, hogy a végpontok ugyanabban a sorrendben kapják meg az eseményeket. Az Event séma azonban tartalmaz egy időbélyeget, amely a sorrend azonosítására szolgál a végponton az események megérkezése után.
 
-## <a name="route-implementation"></a>Útvonal-megvalósítás
+## <a name="route-implementation"></a>Útvonal implementációja
 
-Az Azure digitális Twins szolgáltatás jelenleg támogatja a következő **EndpointTypes**:
+Az Azure Digital Twins szolgáltatás jelenleg a következő **EndpointTypes**támogatja:
 
-* **Az EventHub** az Event Hubs kapcsolati karakterlánc végpontja.
-* **A ServiceBus** van a Service Bus kapcsolati karakterlánc végpont.
-* **EventGrid** Event Grid kapcsolati karakterlánc végpontja.
+* A **EventHub** a Event Hubs a kapcsolatok karakterláncának végpontja.
+* A **ServiceBus** a Service Bus a kapcsolatok karakterláncának végpontja.
+* A **EventGrid** a Event Grid a kapcsolatok karakterláncának végpontja.
 
-Az Azure digitális Twins jelenleg támogatja a következő **EventTypes** , amely a kiválasztott végpont küld:
+Az Azure Digital Twins jelenleg a következő **EventTypes** támogatja, amelyeket a rendszer a kiválasztott végpontnak küld:
 
-* **DeviceMessages** telemetriai üzeneteket küld a felhasználók eszközeiről vagy a rendszer továbbítja.
-* **TopologyOperation** , amely módosítja a graph vagy a gráf metaadat-művelet. Példa hozzáadása vagy törlése egy entitás, például egy szóközzel.
-* **SpaceChange** kiszámított érték egy helyet, amely egy eszköz telemetriai üzenetet való változás történik.
-* **SensorChange** kiszámított érték egy érzékelő által eszköz telemetriai üzenetet változás történik.
-* **UdfCustom** egy egyéni értesítési egy felhasználó által definiált függvény.
+* A **DeviceMessages** a felhasználói eszközökről küldött és a rendszer által továbbított telemetria üzenetek.
+* A **TopologyOperation** olyan művelet, amely megváltoztatja a gráf gráfját vagy metaadatait. Ilyen például egy entitás hozzáadása vagy törlése, például egy szóköz.
+* A **SpaceChange** egy hely számított értékének változása, amely az eszköz telemetria üzenetét eredményezi.
+* A **SensorChange** az érzékelő számított értékének egy olyan változása, amely az eszköz telemetria üzenetét eredményezi.
+* A **UdfCustom** egy felhasználó által definiált függvény egyéni értesítése.
 
 > [!IMPORTANT]  
 > Nem minden **EndpointTypes** támogatja az összes **EventTypes**.
-> Tekintse meg a következő táblázat tartalmazza a **EventTypes** , hogy minden engedélyezett **EndpointType**.
+> Az egyes **EndpointType**engedélyezett **EventTypes** a következő táblázat tartalmazza.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -60,13 +60,13 @@ Az Azure digitális Twins jelenleg támogatja a következő **EventTypes** , ame
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Végpontok és a példákat események séma létrehozásához további információkért lásd: [kimenő forgalom és a végpontok](how-to-egress-endpoints.md).
+>A végpontok és az események sémájának létrehozásával kapcsolatos további információkért lásd: [kimenő és végpontok](how-to-egress-endpoints.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az Azure digitális Twins előzetes verzió korlátai,: [nyilvános előzetes verziójú szolgáltatásokra vonatkozó korlátozások](concepts-service-limits.md).
+- Az Azure Digital Twins előzetes verziójának korlátairól további információt a [nyilvános előzetes verzió szolgáltatási korlátai](concepts-service-limits.md)című témakörben talál.
 
-- Próbálja ki az Azure digitális Twins minta, tekintse meg a [rövid útmutatóban elérhető teremkeresés](quickstart-view-occupancy-dotnet.md).
+- Egy Azure-beli digitális Twins-minta kipróbálásához tekintse meg a gyors üzembe helyezési lehetőséget a [rendelkezésre álló szobák megtalálásához](quickstart-view-occupancy-dotnet.md).
 
 <!-- Images -->
 [1]: media/concepts/digital-twins-events-routing.png

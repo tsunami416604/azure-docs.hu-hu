@@ -9,6 +9,8 @@
   items:
     - name: Bevezetés
       href: video-indexer-get-started.md
+    - name: Felhasználók meghívása
+      href: invite-users.md
 - name: Oktatóanyagok
   items:
     - name: A Video Indexer API használata

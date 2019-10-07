@@ -36,22 +36,30 @@
       items:
         - name: Gyakori forgatókönyvek
           href: entitlement-management-scenarios.md
-        - name: Új hozzáférési csomag létrehozása
-          href: entitlement-management-access-package-create.md
-        - name: Hozzáférési csomag szerkesztése
-          href: entitlement-management-access-package-edit.md
-        - name: Katalógus létrehozása
-          href: entitlement-management-catalog-create.md
-        - name: Hozzáférés kérése
-          href: entitlement-management-request-access.md
-        - name: Kérések jóváhagyása
-          href: entitlement-management-request-approve.md
-        - name: Feladatok delegálása
-          href: entitlement-management-delegate.md
-        - name: Jelentések és naplók megtekintése
-          href: entitlement-management-reports.md
-        - name: Hibaelhárítás
-          href: entitlement-management-troubleshoot.md
+        - name: Rendszergazdák és részlegvezetők
+          items:
+            - name: Feladatok delegálása
+              href: entitlement-management-delegate.md
+            - name: Erőforrás-katalógus létrehozása
+              href: entitlement-management-catalog-create.md
+            - name: Jelentések és naplók megtekintése
+              href: entitlement-management-reports.md
+            - name: Hibaelhárítás
+              href: entitlement-management-troubleshoot.md
+        - name: Projektvezetők
+          items:
+            - name: Új hozzáférési csomag létrehozása
+              href: entitlement-management-access-package-create.md
+            - name: Hozzáférési csomag szerkesztése
+              href: entitlement-management-access-package-edit.md
+        - name: Jóváhagyók
+          items:
+            - name: Kérések jóváhagyása
+              href: entitlement-management-request-approve.md
+        - name: Kérelmezők
+          items:
+            - name: Hozzáférés kérése
+              href: entitlement-management-request-access.md
     - name: Hozzáférési felülvizsgálatok
       items:
         - name: Csoportok és alkalmazások

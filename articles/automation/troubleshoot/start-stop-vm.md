@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás indítása és leállítása a virtuális gépek az Azure Automationnel
-description: Ez a cikk nyújt információkat a hibaelhárítás indítása és leállítása virtuális gépek az Azure Automationben
+title: Virtuális gépek indításának és leállításának hibaelhárítása Azure Automation
+description: Ez a cikk a virtuális gépek indításával és leállításával kapcsolatos hibaelhárítást ismerteti Azure Automation
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,20 +9,20 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d24b533d4335e1a6142944ad42484bbe9d2bb96
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
-ms.translationtype: MT
+ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
+ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477439"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "68688052"
 ---
-# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A gépek indítása/leállítása közben ki óra solution hibaelhárítása
+# <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A virtuális gépek indítása és leállítása a munkaidőn kívüli megoldással – problémamegoldás
 
-## <a name="deployment-failure"></a>Forgatókönyv: A VM indítása és leállítása a megoldás megfelelő telepítése nem sikerült
+## <a name="deployment-failure"></a>Forgatókönyv A virtuális gép indítása/leállítása nem sikerül megfelelően telepíteni
 
 ### <a name="issue"></a>Probléma
 
-Üzembe helyezésekor a [indítása és leállítása a virtuális gépek ki óra solution](../automation-solution-vm-management.md), a következő hibák egyike jelentkezik:
+Ha a [virtuális gépek elindítása/leállítása a munkaidőn kívüli megoldás alatt](../automation-solution-vm-management.md)történik, a következő hibák valamelyike jelenik meg:
 
 ```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
@@ -46,49 +46,49 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 ### <a name="cause"></a>Ok
 
-Az alábbi okok egyike miatt sikertelenek lehetnek a központi telepítések:
+A központi telepítések a következő okok egyike miatt sikertelenek lehetnek:
 
-1. Már van egy Automation-fiókot a kiválasztott régióban ugyanazzal a névvel.
-2. A házirend van érvényben, amely tiltja a megoldás üzembe helyezése a virtuális gépek indítása/leállítása.
-3. A `Microsoft.OperationsManagement`, `Microsoft.Insights`, vagy `Microsoft.Automation` erőforrástípus nincs regisztrálva.
-4. A Log Analytics-munkaterület-zárolással rendelkezik rajta.
+1. Már van ilyen nevű Automation-fiók a kiválasztott régióban.
+2. Olyan házirend van érvényben, amely nem teszi lehetővé a virtuális gépek indítási/leállítási megoldásának telepítését.
+3. A `Microsoft.OperationsManagement`, `Microsoft.Insights` vagy`Microsoft.Automation` az erőforrástípusok nincsenek regisztrálva.
+4. A Log Analytics munkaterület zárolva van.
 
 ### <a name="resolution"></a>Megoldás:
 
-Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a következők:
+Tekintse át az alábbi listát a lehetséges megoldásokról a problémára vagy a helyekre:
 
-1. Az Automation-fiókok kell egyedinek lennie az Azure-régióban, még akkor is, ha különböző erőforráscsoportokban vannak. Ellenőrizze a meglévő Automation-fiókok a célrégióban.
-2. Meglévő házirend megakadályozza, hogy egy erőforrás, amely szükséges a indítása és leállítása a Virtuálisgép-megoldás üzembe helyezni. Nyissa meg a szabályzat-hozzárendelések az Azure Portalon, és ellenőrizze, hogy rendelkezik-e a központi telepítés az erőforrás letiltó szabályzat-hozzárendelés. Ezzel kapcsolatos további információkért lásd: [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
-3. A indítása és leállítása a VM-megoldás üzembe helyezéséhez, az előfizetés regisztrálva kell lennie a következő Azure-erőforrás-névterekhez:
+1. Az Automation-fiókoknak egyedinek kell lenniük egy Azure-régión belül, még akkor is, ha azok különböző erőforráscsoportok. Keresse meg a meglévő Automation-fiókokat a célhelyen.
+2. Egy meglévő szabályzat megakadályozza a virtuálisgép-megoldás üzembe helyezésének megkezdéséhez/leállításához szükséges erőforrást. Lépjen a Azure Portal házirend-hozzárendeléseire, és győződjön meg arról, hogy rendelkezik-e olyan házirend-hozzárendeléssel, amely nem engedélyezi az erőforrás központi telepítését. További információ: [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+3. A virtuálisgép-indítási és leállítási megoldás üzembe helyezéséhez regisztrálnia kell az előfizetést a következő Azure-beli erőforrás-névterekben:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Látható, [ki a hibákat az erőforrás-szolgáltatói regisztrációt](../../azure-resource-manager/resource-manager-register-provider-errors.md) kapcsolatos további hibák szolgáltatók regisztrálása során.
-4. Ha a zárolást a Log Analytics-munkaterületen, nyissa meg a munkaterületet az Azure Portalon, és távolítsa el az erőforrás bármilyen zárolása.
+   Az [erőforrás-szolgáltató regisztrálásával kapcsolatos hibák elhárításával](../../azure-resource-manager/resource-manager-register-provider-errors.md) kapcsolatos további információkért tekintse meg a szolgáltatók regisztrálásakor fellépő hibákat.
+4. Ha zárolva van a Log Analytics munkaterületen, lépjen a munkaterületre a Azure Portalban, és távolítsa el az erőforrás összes zárolását.
 
-## <a name="all-vms-fail-to-startstop"></a>Forgatókönyv: Minden virtuális gép indítása és leállítása nem sikerült
+## <a name="all-vms-fail-to-startstop"></a>Forgatókönyv Az összes virtuális gép elindítása/leállítása sikertelen
 
 ### <a name="issue"></a>Probléma
 
-Konfigurálta a indítása és leállítása a VM-megoldás, de nem indítsa el vagy állítsa le a konfigurált virtuális gépeket.
+Konfigurálta a virtuálisgép-indítási és-leállítási megoldást, de az nem indul el vagy nem állítja le az összes konfigurált virtuális GÉPET.
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba a következő okok valamelyike okozhatja:
+Ezt a hibát a következő okok egyike okozhatta:
 
-1. Nincs megfelelően beállítva ütemezés
-2. Előfordulhat, hogy a futtató fiók nincs megfelelően konfigurálva
-3. Egy runbook előfordulhat, hogy rendelkezik hibákba
-4. A virtuális gépek kizárva
+1. Egy ütemterv nincs megfelelően konfigurálva
+2. Lehetséges, hogy a futtató fiók helytelenül van konfigurálva.
+3. Lehetséges, hogy egy runbook hibákba ütközik
+4. Lehetséges, hogy a virtuális gépek ki lettek zárva
 
 ### <a name="resolution"></a>Megoldás:
 
-Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a következők:
+Tekintse át az alábbi listát a lehetséges megoldásokról a problémára vagy a helyekre:
 
-* Ellenőrizze, hogy megfelelően konfigurálta a indítása és leállítása a VM-megoldás ütemezését. Ismerje meg, hogyan állítson be egy ütemezést, tekintse meg a [ütemezések](../automation-schedules.md) cikk.
+* Győződjön meg arról, hogy megfelelően konfigurálta az ütemtervet a virtuálisgép-indítási és-leállítási megoldáshoz. Az ütemtervek konfigurálásának megismeréséhez tekintse meg [](../automation-schedules.md) az ütemterveket ismertető cikket.
 
-* Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**. Az a **feladatok** lapon keresse meg a következő forgatókönyvek közül feladatok:
+* Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) . A portálon nyissa meg az Automation-fiókját, ésválassza a **feladatok** automatizálása lehetőséget. A **feladatok** lapon keresse meg a következő runbookok egyikét:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -100,123 +100,126 @@ Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a
   * ScheduledStartStop_Parent
   * SequencedStartStop_Parent
 
-* Ellenőrizze a [futtató fiók](../manage-runas-account.md) a virtuális gépek indítása vagy leállítása kívánt megfelelő engedélyekkel rendelkezik. Ellenőrizze az engedélyeit erőforrás kezelésével kapcsolatos információkért lásd: [a rövid útmutató: Az Azure portal használatával egy felhasználóhoz hozzárendelt szerepkörök megtekintése](../../role-based-access-control/check-access.md). Adja meg az alkalmazásazonosítót a futtató fiók által használt egyszerű szolgáltatás kell. Ezt az értéket lekérheti az Automation-fiókját az Azure Portalon a kiválasztásával **futtató fiókok** alatt **Fiókbeállítások** , és kattintson a megfelelő futtató fiókot.
+* Győződjön meg arról, hogy a futtató [fiók](../manage-runas-account.md) megfelelő engedélyekkel rendelkezik az elindítani vagy leállítani kívánt virtuális gépekhez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd [: gyors útmutató: Egy felhasználóhoz hozzárendelt szerepkörök megtekintése a Azure Portal](../../role-based-access-control/check-access.md)használatával. Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-azonosítóját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjába, majd a **fiók beállításai** területen a **futtató fiókok** elemre, majd a megfelelő futtató fiókra.
 
-* Virtuális gépek nem lehetséges, hogy elindult vagy leállt, ha azok még folyamatban van kifejezetten kizárva. Beállítva a virtuális gépek kizárt a **External_ExcludeVMNames** változó az Automation-fiókban a megoldás van telepítve. A következő példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
+* Előfordulhat, hogy a virtuális gépeket nem lehet elindítani vagy leállítani, ha explicit módon ki vannak zárva. Kizárt virtuális gépek az Automation-fiók **External_ExcludeVMNames** változójában, a megoldás központi telepítése folyamatban van. Az alábbi példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>Forgatókönyv: Az egyes virtuális gépek indítása vagy leállítása sikertelen
+## <a name="some-vms-fail-to-startstop"></a>Forgatókönyv A virtuális gépek némelyike nem indul el vagy leáll
 
 ### <a name="issue"></a>Probléma
 
-Konfigurálta a indítása és leállítása a VM-megoldás, de nem indítása vagy leállítása konfigurált virtuális gépek némelyike.
+Konfigurálta a virtuálisgép-indítási és-leállítási megoldást, de nem indul el vagy nem állítja le a konfigurált virtuális gépek némelyikét.
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba a következő okok valamelyike okozhatja:
+Ezt a hibát a következő okok egyike okozhatta:
 
-1. Ha a feladatütemezés forgatókönyvet használja, egy címke lehet hiányzik vagy helytelen
-2. A virtuális Gépet ki kell zárni
-3. A futtató fiók nem lehetséges, hogy nincs megfelelő jogosultsága a virtuális gépen
-4. A virtuális gép lehet, hogy leállítása, indítása vagy leállítása
+1. Ha a sorozatot használja, a címke hiányozhat vagy helytelen lehet.
+2. Lehetséges, hogy a virtuális gép ki van zárva
+3. Előfordulhat, hogy a futtató fiók nem rendelkezik elegendő jogosultsággal a virtuális gépen
+4. Előfordulhat, hogy a virtuális gép nem indul el vagy leáll
 
 ### <a name="resolution"></a>Megoldás:
 
-Tekintse át a problémával vagy helyek keresse meg a lehetséges megoldások a következők:
+Tekintse át az alábbi listát a lehetséges megoldásokról a problémára vagy a helyekre:
 
-* Használatakor a [feladatütemezési forgatókönyv](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) indítása és leállítása a virtuális gép során ki óra solution, gondoskodnia kell arról, indítása vagy leállítása kívánt minden egyes virtuális gép rendelkezik a megfelelő címkét. Ellenőrizze, hogy a virtuális gépeket, amely elindítja a rendelkezik a `sequencestart` címke és a virtuális gépek meg szeretné szüntetni a `sequencestop` címke. Mindkét címkék pozitív egész értéket kell megadni. Az alábbi példához hasonló lekérdezés segítségével keresse meg a virtuális gépek a címkéket és azok értékeit.
+* Ha a virtuális [](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) gép elindítása/leállítása a munkaidőn kívüli megoldásban az indítás/leállítás lehetőséget használja, meg kell győződnie arról, hogy az összes elindítani vagy leállítani kívánt virtuális gép megfelelő címkével rendelkezik. Győződjön meg arról, hogy az elindítani kívánt virtuális gépek rendelkeznek `sequencestart` a címkével és a leállítani `sequencestop` kívánt virtuális gépekkel. Mindkét címkéhez pozitív egész értéket kell megadni. Az alábbi példához hasonló lekérdezéssel megkeresheti az összes virtuális gépet a címkékkel és azok értékeivel.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
   ```
 
-* Virtuális gépek nem lehetséges, hogy elindult vagy leállt, ha azok még folyamatban van kifejezetten kizárva. Beállítva a virtuális gépek kizárt a **External_ExcludeVMNames** változó az Automation-fiókban a megoldás van telepítve. A következő példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
+* Előfordulhat, hogy a virtuális gépeket nem lehet elindítani vagy leállítani, ha explicit módon ki vannak zárva. Kizárt virtuális gépek az Automation-fiók **External_ExcludeVMNames** változójában, a megoldás központi telepítése folyamatban van. Az alábbi példa bemutatja, hogyan kérdezheti le ezt az értéket a PowerShell használatával.
 
   ```powershell-interactive
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-* Elindíthatja és leállíthatja a virtuális gépeket, hogy az Automation-fiók futtató fiókjának rendelkeznie kell a virtuális gép megfelelő engedélyekkel. Ellenőrizze az engedélyeit erőforrás kezelésével kapcsolatos információkért lásd: [a rövid útmutató: Az Azure portal használatával egy felhasználóhoz hozzárendelt szerepkörök megtekintése](../../role-based-access-control/check-access.md). Adja meg az alkalmazásazonosítót a futtató fiók által használt egyszerű szolgáltatás kell. Ezt az értéket lekérheti az Automation-fiókját az Azure Portalon a kiválasztásával **futtató fiókok** alatt **Fiókbeállítások** , és kattintson a megfelelő futtató fiókot.
+* A virtuális gépek indításához és leállításához az Automation-fiókhoz tartozó futtató fióknak megfelelő engedélyekkel kell rendelkeznie a virtuális géphez. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd [: gyors útmutató: Egy felhasználóhoz hozzárendelt szerepkörök megtekintése a Azure Portal](../../role-based-access-control/check-access.md)használatával. Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-azonosítóját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjába, majd a **fiók beállításai** területen a **futtató fiókok** elemre, majd a megfelelő futtató fiókra.
 
-* Ha a virtuális gép nem indul vagy felszabadítása hibás, ez a viselkedés a virtuális gépre a problémát okozhatja. Néhány példa vagy potenciális problémák, egy frissítését végzi, Leállítás, a szolgáltatás tett kísérlet során lefagy és egyebek). Keresse meg a virtuális gép erőforrást, és ellenőrizze a **tevékenységeket tartalmazó naplók** van-e hibák a naplók megtekintéséhez. Is megkísérelheti a jelentkezzen be a virtuális gép nem találhatók esetleges hibákat az eseménynaplóban. A virtuális gép hibaelhárítással kapcsolatos további tudnivalókért lásd: [hibaelhárítása Azure virtual machines szolgáltatásban](../../virtual-machines/troubleshooting/index.md)
+* Ha a virtuális gépnek probléma van a megkezdése vagy felszabadítása során, akkor ezt a viselkedést a virtuális gép hibája okozhatja. Néhány példa vagy lehetséges probléma: a leállítási kísérlet, a szolgáltatás leállása és egyebek esetén frissítés kerül alkalmazásra. Navigáljon a virtuálisgép-erőforráshoz, és ellenőrizze a **tevékenységek naplóit** , hogy vannak-e hibák a naplókban. Megpróbálhatja bejelentkezni a virtuális gépre, hogy ellenőrizze, van-e hiba az eseménynaplókban. További információ a virtuális gép hibaelhárításáról: Azure-beli [virtuális gépek hibaelhárítása](../../virtual-machines/troubleshooting/index.md)
 
-* Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
+* Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) . A portálon nyissa meg az Automation-fiókját, ésválassza a **feladatok** automatizálása lehetőséget.
 
-## <a name="custom-runbook"></a>Forgatókönyv: Saját egyéni runbook indítása és leállítása a virtuális gépek nem
-
-### <a name="issue"></a>Probléma
-
-Már létrehozott egy egyéni runbook vagy letöltött egy, a PowerShell-galériából, és nem működik megfelelően.
-
-### <a name="cause"></a>Ok
-
-A hiba okát sok dolog lehet. Lépjen az Automation-fiókját az Azure Portalon, és válassza a **feladatok** alatt **Folyamatautomatizálás**. Az a **feladatok** lapon, keresse meg a feladatok a runbookban esetleges megtekintéséhez.
-
-### <a name="resolution"></a>Megoldás:
-
-Azt javasoljuk, hogy használja a [indítása és leállítása a virtuális gépek ki óra solution](../automation-solution-vm-management.md) elindíthatja és leállíthatja a virtuális gépek az Azure Automationben. Ez a megoldás a Microsoft hozta létre. Egyéni runbookjai nem támogatottak a Microsoft által. Láthatja a megoldás az egyéni runbook meglátogatják a [runbook hibaelhárítási](runbooks.md) cikk. Ez a cikk általános útmutatás és hibaelhárítás a runbookok összes típusú. Ellenőrizze a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
-
-## <a name="dont-start-stop-in-sequence"></a>Forgatókönyv: Virtuális gépek ne indítsa el vagy állítsa le a megfelelő sorrendben
+## <a name="custom-runbook"></a>Forgatókönyv Az egyéni runbook nem sikerül elindítani vagy leállítani a virtuális gépeket
 
 ### <a name="issue"></a>Probléma
 
-A megoldás konfigurált virtuális gépek ne indítsa el vagy állítsa le a megfelelő sorrendben.
+Létrehozott egy egyéni runbook, vagy letöltött egyet a PowerShell-galériaból, és nem működik megfelelően.
 
 ### <a name="cause"></a>Ok
 
-A virtuális gépek megfelelő címkézés okozza.
+A hiba oka lehet a sok dolog egyike. Nyissa meg az Automation-fiókját a Azure Portalon, és válassza a **folyamatok automatizálása**alatt a **feladatok** lehetőséget. A **feladatok** lapon keresse meg a runbook feladatait, és tekintse meg a feladatok hibáit.
 
 ### <a name="resolution"></a>Megoldás:
 
-Az alábbi lépéseket, győződjön meg arról, hogy a megoldás megfelelően van-e konfigurálva.
+Azt javasoljuk, hogy a virtuális gépek [elindítása/leállítása](../automation-solution-vm-management.md) a munkaidőn kívüli megoldásnál a Azure Automationban lévő virtuális gépek elindításához és leállításához. Ezt a megoldást a Microsoft készítette el. A Microsoft nem támogatja az egyéni runbookok használatát. Előfordulhat, hogy az egyéni runbook megoldást talál a [runbook hibaelhárítási](runbooks.md) cikkében. Ez a cikk általános útmutatást és hibaelhárítást biztosít az összes típusú runbookok kapcsolatban. Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) . A portálon nyissa meg az Automation-fiókját, ésválassza a **feladatok** automatizálása lehetőséget.
 
-1. Győződjön meg róla rendelkezik minden virtuális gép elindítani vagy leállítani egy `sequencestart` vagy `sequencestop` címke, a helyzettől függően. Ezekkel a címkékkel pozitív egész értéket kell. Virtuális gépek feldolgozása növekvő sorrendben, ez az érték alapján történik.
-2. Ellenőrizze, hogy az erőforráscsoportok indítható el, hogy a virtuális gépek vagy a rendszer leállította a `External_Start_ResourceGroupNames` vagy `External_Stop_ResourceGroupNames` változók, a helyzettől függően.
-3. Tesztelheti a módosításokat úgy, hogy végrehajtja a `SequencedStartStop_Parent` runbook WHATIF paraméter igaz értékre állítva lehetővé a módosításokat.
-
-Részletes, és további útmutatás a megoldás használatával elindíthatja és leállíthatja a virtuális gépek sorrendben: [indítása és leállítása a virtuális gépek sorrendben](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
-
-## <a name="403"></a>Forgatókönyv: VM indítása és leállítása feladat sikertelen lesz, 403 Tiltott állapot 
+## <a name="dont-start-stop-in-sequence"></a>Forgatókönyv A virtuális gépek nem indulnak el vagy leállnak a megfelelő sorozatban
 
 ### <a name="issue"></a>Probléma
 
-A sikertelen feladatok talál egy `403 forbidden` a gépek indítása/leállítása közben ki óra solution runbookok által jelzett hibát.
+A megoldásban konfigurált virtuális gépek nem indulnak el vagy nem állnak le a megfelelő sorozatban.
 
 ### <a name="cause"></a>Ok
 
-A probléma okozhatja egy helytelenül konfigurált vagy lejárt futtató fiókot. A Virtuálisgép-erőforrások által az automatizálási fiók futtató fiók megfelelő engedélyei a miatt is lehet.
+Ezt a virtuális gépek helytelen címkézése okozta.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy a futtató fiók megfelelően van konfigurálva, nyissa meg az Automation-fiókját az Azure Portalon, és válassza **futtató fiókok** alatt **fiókbeállításokat**. Itt láthatja az állapotát, a futtató fiókok, ha egy futtató fiókot nem megfelelően konfigurálva vagy lejárt állapotát jeleníti meg ezt.
+A következő lépések végrehajtásával győződjön meg arról, hogy a megoldás megfelelően van konfigurálva.
 
-Ha a futtató fiók [helytelenül konfigurált](../manage-runas-account.md#misconfiguration), törölje és hozza létre újra a futtató fiók.
+1. Győződjön meg arról, hogy az összes elindítható `sequencestart` vagy `sequencestop` leállított virtuális gép rendelkezik a helyzettől függően a vagy a címkével. Ezeknek a címkéknek pozitív egész számnak kell lennie az értékként. A virtuális gépek az érték alapján növekvő sorrendben lesznek feldolgozva.
+2. Győződjön meg arról, hogy a virtuális gépek elindításához vagy leállításához szükséges `External_Start_ResourceGroupNames` erőforráscsoportok `External_Stop_ResourceGroupNames` a helyzettől függően a vagy a változóban vannak.
+3. Tesztelje a módosításokat úgy, hogy `SequencedStartStop_Parent` a runbook a WHATIF paraméterrel a True (igaz) értékre állítja, hogy megtekintse a módosításokat.
 
-Ha a Futtatás mint fiók a tanúsítvány lejárt, a következő lépésekkel [önaláírt tanúsítvány megújításához](../manage-runas-account.md#cert-renewal) a tanúsítvány megújításához.
+A virtuális gépek egymás utáni indítására és leállítására szolgáló megoldás használatával kapcsolatos részletes és további útmutatásért lásd: [virtuális gépek indítása/leállítása a sorozatban](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-A probléma okozhatja nem rendelkezik engedéllyel. Ellenőrizze az engedélyeit erőforrás kezelésével kapcsolatos információkért lásd: [a rövid útmutató: Az Azure portal használatával egy felhasználóhoz hozzárendelt szerepkörök megtekintése](../../role-based-access-control/check-access.md). Adja meg az alkalmazásazonosítót a futtató fiók által használt egyszerű szolgáltatás kell. Ezt az értéket lekérheti az Automation-fiókját az Azure Portalon a kiválasztásával **futtató fiókok** alatt **Fiókbeállítások** , és kattintson a megfelelő futtató fiókot.
-
-## <a name="other"></a>Forgatókönyv: A probléma nem szerepel a listán felett
+## <a name="403"></a>Forgatókönyv A virtuális gép indítása/leállítása sikertelen a 403 Tiltott állapottal
 
 ### <a name="issue"></a>Probléma
 
-Virtuális gépek indítása/leállítása munkaidőn kívül megoldás, amely nem szerepel ezen a lapon használatakor egy probléma vagy a nem várt eredményt tapasztal.
+Olyan `403 forbidden` feladatokat talál, amelyek hibába ütköznek a virtuális gépek indítási/leállítási ideje alatt a megoldás runbookok.
 
 ### <a name="cause"></a>Ok
 
-Sokszor hibát okozhatja a megoldás egy régi és az elavult verzióját használja.
+Ezt a problémát egy nem megfelelően konfigurált vagy lejárt futtató fiók okozhatja. Az is előfordulhat, hogy az Automation-fiókok futtató fiókja nem rendelkezik megfelelő engedélyekkel a virtuális gépek erőforrásaihoz.
 
 ### <a name="resolution"></a>Megoldás:
 
-Sok hiba elhárításához, azt javasoljuk, hogy távolítsa el, és a megoldás frissítése. A megoldás frissítésével kapcsolatban lásd: [frissítése a gépek indítása/leállítása közben ki óra solution](../automation-solution-vm-management.md#update-the-solution). Ezenkívül ellenőrizheti a [feladat-Streamek](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) keresse ki a hibákat. A portálon lépjen az Automation-fiókját, és válassza **feladatok** alatt **Folyamatautomatizálás**.
+A futtató fiók megfelelő konfigurálásához lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai**alatt a **futtató fiókok** elemet. Itt láthatja a futtató fiókok állapotát, ha a futtató fiók helytelenül van konfigurálva vagy lejárt, és ez az állapot jelenik meg.
+
+Ha a futtató fiók helytelenül van [konfigurálva](../manage-runas-account.md#misconfiguration), törölje, majd hozza létre újra a futtató fiókot.
+
+Ha a tanúsítvány lejárt a futtató fiókhoz, kövesse az [önaláírt tanúsítvány](../manage-runas-account.md#cert-renewal) megújításakor felsorolt lépéseket a tanúsítvány megújításához.
+
+Lehetséges, hogy a problémát a hiányzó engedélyek okozzák. Az erőforrásokra vonatkozó engedélyek vizsgálatával kapcsolatban lásd [: gyors útmutató: Egy felhasználóhoz hozzárendelt szerepkörök megtekintése a Azure Portal](../../role-based-access-control/check-access.md)használatával. Meg kell adnia a futtató fiók által használt szolgáltatásnév alkalmazás-azonosítóját. Ezt az értéket lekérheti a Azure Portal Automation-fiókjába, majd a **fiók beállításai** területen a **futtató fiókok** elemre, majd a megfelelő futtató fiókra.
+
+## <a name="other"></a>Forgatókönyv A probléma nem szerepel a fenti felsorolásban
+
+### <a name="issue"></a>Probléma
+
+Probléma vagy váratlan eredmény tapasztalható, ha a virtuális gépek elindítása/leállítása az ezen a lapon nem szereplő munkaidőn kívüli megoldás használatával történik.
+
+### <a name="cause"></a>Ok
+
+Sokszor a megoldás régi és elavult változata is okozhatja a hibákat.
+
+> [!NOTE]
+> A virtuális gépek indítása/leállítása a munkaidőn kívüli megoldásban az Automation-fiókba importált Azure-modulokkal lett tesztelve a megoldás telepítésekor. A megoldás jelenleg nem működik az Azure-modul újabb verzióival. Ez csak arra az Automation-fiókra vonatkozik, amelyet a virtuális gépek indítása/leállítása a munkaidőn kívüli megoldás futtatásakor használ. Továbbra is használhatja az Azure-modul újabb verzióit a többi Automation-fiókban a következő témakörben ismertetett módon: [Azure PowerShell modulok frissítése Azure Automation](../automation-update-azure-modules.md)
+
+### <a name="resolution"></a>Megoldás:
+
+Sok hiba elhárításához javasolt a megoldás eltávolítása és frissítése. A megoldás frissítéséről a [virtuális gépek indítása és leállítása a munkaidőn kívüli megoldásban](../automation-solution-vm-management.md#update-the-solution)című témakörben olvashat bővebben. Emellett a [feladatok adatfolyamait](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) is megtekintheti a hibák kereséséhez. A portálon nyissa meg az Automation-fiókját, ésválassza a **feladatok** automatizálása lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem jelenik meg a problémát, vagy nem lehet megoldani a problémát, látogasson el a következő csatornák további támogatás:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Az [Azure fórumain](https://azure.microsoft.com/support/forums/) Azure-szakértőktől kaphat válaszokat.
 * Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-* Ha további segítségre van szüksége, akkor is fájl egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatja az első**.
+* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási](https://azure.microsoft.com/support/options/) webhelyét, és válassza a **támogatás kérése**lehetőséget.

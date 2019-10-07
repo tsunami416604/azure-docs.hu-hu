@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Alkalmazások üzembe helyezése az Azure AD DS-ben
+    - name: Alkalmazások üzembe helyezése
       items:
         - name: Üzembe helyezés az Azure AD-alkalmazásproxyval
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Gyakori hibák
           href: troubleshoot.md
-        - name: Eltérő bérlők hibái
+        - name: Tartománycsatlakoztatási hibák
+          href: troubleshoot-domain-join.md
+        - name: Fiókzárolások
+          href: troubleshoot-account-lockout.md
+        - name: Bejelentkezéssel kapcsolatos problémák
+          href: troubleshoot-sign-in.md
+        - name: Eltérő bérlők hibáinak megoldása
           href: mismatched-tenant-error.md
         - name: Felfüggesztett tartományok
           href: suspension.md
-        - name: Biztonságos LDAP
+        - name: A biztonságos LDAP problémái
           href: tshoot-ldaps.md
         - name: Ismert problémák
           items:

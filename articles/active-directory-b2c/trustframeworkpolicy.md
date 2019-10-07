@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 904893d4881de6be2c9055fefa9a8267cb045afd
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
-ms.translationtype: MT
+ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
+ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849410"
+ms.lasthandoff: 07/29/2019
+ms.locfileid: "68592110"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,7 +38,7 @@ Az egyéni szabályzatok egy vagy több XML-formátumú fájlként jelennek meg,
 
 A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Szükséges | Leírás |
+| Attribútum | Kötelező | Leírás |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek meg kell felelnie`0.3.0.0` |
 | TenantObjectId | Nem | Az Azure Active Directory (Azure AD) B2C-bérlő egyedi objektumazonosító. |
@@ -66,7 +66,7 @@ Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** eleme
 
 Az ilyen típusú házirend-fájlokat általában a felhasználói úton használják:
 
-- A  definíciók többségét tartalmazó alapfájl. Ha segítségre van szüksége a házirendek hibaelhárításához és hosszú távú karbantartásához, akkor azt javasoljuk, hogy módosítsa a fájl minimális számát.
+- A definíciók többségét tartalmazó **alapfájl.** Ha segítségre van szüksége a házirendek hibaelhárításához és hosszú távú karbantartásához, akkor azt javasoljuk, hogy módosítsa a fájl minimális számát.
 - Egy **kiterjesztési** fájl, amely a bérlő egyedi konfigurációs módosításait tárolja. Ez a házirend-fájl az alapfájlból származik. Ezzel a fájllal új funkciókat adhat hozzá, vagy felülbírálhatja a meglévő funkciókat. Használja például ezt a fájlt, hogy összevonása az új identitás-szolgáltatókkal.
 - Egy **függő entitást (RP)** tartalmazó fájl, amely egy, a függő entitás alkalmazás által közvetlenül meghívott, egyetlen feladat által irányított fájl, például a web-, mobil-vagy asztali alkalmazások. Az egyes egyedi feladatok, például a regisztrálás vagy a bejelentkezés, a jelszó-visszaállítás vagy a profil szerkesztése a saját RP-házirend fájlját igénylik. Ez a házirendfájl a kiterjesztések fájljából származik.
 
@@ -88,7 +88,7 @@ Ha egy házirendet egy másik házirendből kíván örökölni, egy **BasePolic
 
 A **BasePolicy** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Leírás |
+| Elem | Ismétlődések | Leírás |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
 | `PolicyId` | 1:1 | A szülő házirend azonosítója. |
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase vagy B2C_1A_TrustFrameworkExtensionPolicy:
 
 A felhasználói út határozza meg, hogy a felhasználó milyen üzleti logikát mutat be. Minden felhasználói út olyan előkészítési lépések összessége, amelyek számos műveletet hajtanak végre a hitelesítés és az adatgyűjtés szempontjából.
 
-Az alapszintű [csomagban](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom#download-starter-pack-and-modify-policies) található **SocialAndLocalAccounts** házirend-fájl tartalmazza a SignUpOrSignIn, a ProfileEdit, a PasswordReset felhasználói útvonalakat. További felhasználói útvonalakat is hozzáadhat más forgatókönyvekhez, például egy e-mail-cím módosításához vagy egy közösségi fiók összekapcsolásához.
+Az alapszintű [csomagban](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) található **SocialAndLocalAccounts** házirend-fájl tartalmazza a SignUpOrSignIn, a ProfileEdit, a PasswordReset felhasználói útvonalakat. További felhasználói útvonalakat is hozzáadhat más forgatókönyvekhez, például egy e-mail-cím módosításához vagy egy közösségi fiók összekapcsolásához.
 
 A előkészítési lépések egy [technikai profilt](technicalprofiles.md)hívhatnak meg. A technikai profil olyan keretrendszert biztosít, amely beépített mechanizmussal rendelkezik a különböző típusú felekkel való kommunikációhoz. A technikai profil például elvégezheti ezeket a műveleteket többek között:
 

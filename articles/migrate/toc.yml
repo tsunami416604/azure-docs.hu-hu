@@ -77,19 +77,21 @@
     - name: Értékelés létrehozása
       href: how-to-create-assessment.md
     - name: SQL Server-adatbázis értékelése
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: Értékelés testreszabása
       href: how-to-modify-assessment.md
     - name: Migrálási eszközök hozzáadása
       href: how-to-migrate.md
-    - name: Felmérés és migrálás skálázása
-      items:
-        - name: Hozzáférés nagy számú VMware virtuális géphez
-          href: scale-vmware-assessment.md
-        - name: Hozzáférés nagy számú Hyper-V virtuális géphez
-          href: scale-hyper-v-assessment.md
-        - name: Nagy számú virtuális gép migrálásának automatizálása
-          href: how-to-migrate-at-scale.md
+    - name: Gépek előkészítése migrálásra
+      href: prepare-for-migration.md
+- name: Felmérés és migrálás skálázása
+  items:
+    - name: Hozzáférés nagy számú VMware virtuális géphez
+      href: scale-vmware-assessment.md
+    - name: Hozzáférés nagy számú Hyper-V virtuális géphez
+      href: scale-hyper-v-assessment.md
+    - name: Nagy számú virtuális gép migrálásának automatizálása
+      href: how-to-migrate-at-scale.md
     - name: Migrálási példák – Contoso-sorozat
       href: contoso-migration-overview.md
 - name: Hibaelhárítás

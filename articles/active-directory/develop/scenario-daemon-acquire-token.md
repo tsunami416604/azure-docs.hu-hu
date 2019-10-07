@@ -1,6 +1,6 @@
 ---
-title: Webes API-k (az alkalmazás-jogkivonatok beszerzésének) – a Microsoft identity platform démon alkalmazás hívása
-description: Ismerje meg, hogyan hozhat létre egy démon alkalmazást, hogy a hívások webes API-k (-jogkivonatok beszerzésének)
+title: Daemon-alkalmazás webes API-k meghívása (tokenek beszerzése az alkalmazáshoz) – Microsoft Identity platform
+description: Megtudhatja, hogyan hozhat létre olyan Daemon-alkalmazást, amely webes API-kat hív meg (tokenek beszerzése)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa4f5dc7a5aceaf81f71eacd36d131471a57e5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65075370"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68562356"
 ---
-# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Démon alkalmazás, amely meghívja a webes API - jogkivonat beszerzése
+# <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
 
-A bizalmas ügyfélalkalmazás jön létre, ha az alkalmazás egy token szerezheti be meghívásával ``AcquireTokenForClient``, a hatókör és kényszerített vagy nem a jogkivonat frissítését.
+A bizalmas ügyfélalkalmazás létrehozása után a jogkivonat meghívásával ``AcquireTokenForClient``, a hatókör átadásával, valamint a jogkivonat frissítésének kényszerítésével vagy nem történő megszerzésével kaphat jogkivonatot az alkalmazáshoz.
 
-## <a name="scopes-to-request"></a>Hatókörök kérni
+## <a name="scopes-to-request"></a>Kérelmekre vonatkozó hatókörök
 
-A hatókör kéréséhez tartozó ügyfél-hitelesítő adat folyamatát az erőforrás neve követ `/.default`. Ezen jelölés arra utasítja az Azure AD-ban a **szintű Alkalmazásengedélyek** statikusan deklarálva az alkalmazás regisztrációja során. Is, mivel korábban már látott ezen API engedélyt kell biztosítani a bérlői rendszergazda
+Az ügyfél-hitelesítő adatokra vonatkozó kérelem hatóköre az erőforrás neve, majd `/.default`a. Ez a jelölés azt jelzi, hogy az Azure AD az alkalmazás regisztrálása során statikusan deklarált **alkalmazási szintű engedélyeket** használ. Emellett, ahogy azt korábban is láttuk, a bérlői rendszergazdának kell megadnia az API-engedélyeket
 
 ### <a name="net"></a>.NET
 
@@ -40,7 +40,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="python"></a>Python
 
-Az MSAL. Python, a következő kódrészletet a konfigurációs fájl jelenne meg:
+A MSAL. Python, a konfigurációs fájl a következő kódrészlethez hasonlóan fog kinézni:
 
 ```Python
 {
@@ -59,13 +59,13 @@ public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.de
 
 ### <a name="all"></a>Összes
 
-A hatókör használt ügyfél-hitelesítő adatok mindig kell resourceId + "/ .default formátummá lesznek feloldva"
+Az ügyfél hitelesítő adataihoz használt hatókörnek mindig resourceId + "/.default" értéknek kell lennie
 
-### <a name="case-of-v10-resources"></a>Az 1.0-s verziójú erőforrások eset
+### <a name="case-of-azure-ad-v10-resources"></a>Azure AD-(v 1.0-) erőforrások esetén
 
 > [!IMPORTANT]
-> Az MSAL (v2.0-végpontra) egy hozzáférési jogkivonatot kér egy erőforrást egy 1.0-s verziójú jogkivonatot elfogadása az Azure AD a kért hatókörhöz a kívánt célközönség elemzi a minden, a legutóbbi / előtti és használhatná az erőforrás-azonosítója alapján.
-> Ezért ha, például az Azure SQL ( **https://database.windows.net** ) az erőforrás vár egy adott célközönségnek, záró perjelek (az Azure SQL: `https://database.windows.net/` ), szüksége lesz egy hatókörének kérése `https://database.windows.net//.default` (vegye figyelembe a dupla perjellel). Lásd még az MSAL.NET probléma [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Záró perjellel erőforrás URL-cím nincs megadva, amely az sql-hitelesítési hiba okozza.
+> A MSAL (Microsoft Identity platform Endpoint) esetében egy v 1.0 hozzáférési jogkivonatot elfogadó erőforrás hozzáférési jogkivonatát kérdezi le az Azure AD, amely az utolsó perjel előtt mindent megtesz, és használja erőforrás-azonosítóként.
+> Ezért ha például az Azure SQL ( **https://database.windows.net** ) az erőforrás egy perjelet (az Azure SQL: `https://database.windows.net/` esetében) végződő célközönséget vár, akkor a hatókört `https://database.windows.net//.default` kell kérnie (jegyezze fel a dupla perjelet). Lásd még MSAL.NET probléma [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Az erőforrás URL-címének záró perjele ki van hagyva, ami az SQL-hitelesítési hibát okozta.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -98,9 +98,9 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 }
 ```
 
-#### <a name="application-token-cache"></a>Alkalmazás-jogkivonatok gyorsítótárát
+#### <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
 
-Az MSAL.NET `AcquireTokenForClient` használja a **alkalmazás tokengyorsítótárral** (a többi AcquireTokenXX módszer használata a felhasználói jogkivonatok gyorsítótárának) ne hívja a `AcquireTokenSilent` hívása előtt `AcquireTokenForClient` , `AcquireTokenSilent` használja a **felhasználói** jogkivonat a gyorsítótárban. `AcquireTokenForClient` ellenőrzi a **alkalmazás** token gyorsítótár magát, és frissíti.
+`AcquireTokenForClient` A MSAL.net-ben az **alkalmazás-jogkivonat gyorsítótára** (az összes többi AcquireTokenXX-módszer a felhasználói jogkivonat-gyorsítótár `AcquireTokenSilent` használata) `AcquireTokenForClient` nem `AcquireTokenSilent` hívja meg a **felhasználói** jogkivonat-gyorsítótárat használó hívás előtt. `AcquireTokenForClient`ellenőrzi az **alkalmazás** -jogkivonat gyorsítótárát, és frissíti azt.
 
 ### <a name="python"></a>Python
 
@@ -130,9 +130,9 @@ AuthenticationResult result = future.get();
 
 ### <a name="protocol"></a>Protocol
 
-Ha nincs még egy kódtár a tetszőleges nyelven, érdemes közvetlenül a protokoll használatát:
+Ha még nem rendelkezik a választott nyelvhez tartozó könyvtárral, érdemes lehet közvetlenül a protokollt használni:
 
-#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: A közös titkos kulcsot a hozzáférési jogkivonat kérése
+#### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: Hozzáférési jogkivonat-kérelem közös titokkal
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
@@ -145,7 +145,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 &grant_type=client_credentials
 ```
 
-#### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat kérése tanúsítvánnyal
+#### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: Hozzáférési jogkivonat-kérelem tanúsítvánnyal
 
 ```Text
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
@@ -159,20 +159,20 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>További információ a protokoll
+### <a name="learn-more-about-the-protocol"></a>További információ a protokollról
 
-További információt a protokoll-dokumentációjában talál: [Az Azure Active Directory v2.0, az OAuth 2.0-ügyfél hitelesítő adatait a flow](v2-oauth2-client-creds-grant-flow.md).
+További információt a protokoll dokumentációjában talál: [A Microsoft Identity platform és a OAuth 2,0 ügyfél-hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="did-you-use-the-resourcedefault-scope"></a>Az erőforrás/.default formátummá lesznek feloldva hatókör használatával?
+### <a name="did-you-use-the-resourcedefault-scope"></a>Használta az erőforrás/. alapértelmezett hatókört?
 
-Ha a hibaüzenet arról tájékoztat, hogy egy érvénytelen hatókör használta, valószínűleg nem használ a `resource/.default` hatókör.
+Ha hibaüzenet jelenik meg arról, hogy érvénytelen hatókört használt, akkor valószínűleg nem használta a `resource/.default` hatókört.
 
-### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Elfelejtett adja meg a rendszergazdai jóváhagyás? Démon alkalmazások rá!
+### <a name="did-you-forget-to-provide-admin-consent-daemon-apps-need-it"></a>Elfelejtette, hogy rendszergazdai engedélyt adjon? Daemon-alkalmazások szükségesek!
 
-Ha hibaüzenetet kap, az API hívásakor **nincs megfelelő jogosultsága a művelet elvégzéséhez**, a bérlői rendszergazdának kell engedélyt az alkalmazásnak. Regisztráljon a fenti ügyfélalkalmazás 6. lépése.
-Általában megjelenik, és a hiba, például a következő hiba leírása:
+Ha hibaüzenet jelenik meg, amikor az API-nak nem megfelelő jogosultsága van a **művelet végrehajtásához**, a bérlő rendszergazdájának engedélyeket kell adnia az alkalmazás számára. Lásd a fenti ügyfélalkalmazás regisztrálásának 6. lépését.
+Általában a következő hibához hasonló hibaüzenet jelenik meg:
 
 ```JSon
 Failed to call the web API: Forbidden
@@ -191,4 +191,4 @@ Content: {
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Démon alkalmazások – egy webes API meghívása](scenario-daemon-call-api.md)
+> [Daemon-alkalmazás – webes API meghívása](scenario-daemon-call-api.md)
