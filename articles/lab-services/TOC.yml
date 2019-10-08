@@ -92,8 +92,6 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
-            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
-              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
           items:
             - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
@@ -112,6 +110,8 @@
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
             - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
               href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
           items:
             - name: Osztályterem-tesztkörnyezetek elérése

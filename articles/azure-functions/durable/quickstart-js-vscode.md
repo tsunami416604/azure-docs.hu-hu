@@ -64,7 +64,7 @@ Először hozzon létre egy HTTP által aktivált függvényt, amely tartós fü
 
     ![A HTTP Starter-sablon kiválasztása](./media/quickstart-js-vscode/create-function-choose-template.png)
 
-3. Hagyja meg az alapértelmezett nevet `DurableFunctionsHttpStart` , és nyomja meg a * * * * ENTER * * gombot, majd válassza a **Névtelen** hitelesítés lehetőséget.
+3. Hagyja meg az alapértelmezett nevet `DurableFunctionsHttpStart` , és nyomja meg a ** **ENTER** gombot, majd válassza a **Névtelen** hitelesítés lehetőséget.
 
     ![A névtelen hitelesítés kiválasztása](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
