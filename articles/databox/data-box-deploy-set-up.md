@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240240"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338483"
 ---
 ::: zone target="docs"
 
@@ -53,7 +53,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
 6. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
 7. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
-    - Egy vagy több 10 GbE SFP+ Twinax rézkábel vagy SFP+ száloptikai kábel (a DATA 1 és DATA 2 hálózati adapterekhez). A Data Box PCI Express 3.0 hálózati adapterrel felszerelt Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterekkel rendelkezik, így az ezzel az adapterrel kompatibilis kábeleknek működniük kell. A belső teszteléshez például egy CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M kábelt használtunk. További információkért tekintse meg a [Mellanox támogatott kábeleinek és kapcsolóinak listáját](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Egy vagy több 10 GbE SFP+ Twinax rézkábel vagy SFP+ száloptikai kábel (a DATA 1 és DATA 2 hálózati adapterekhez). A Data Box PCI Express 3.0 hálózati adapterrel felszerelt Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterekkel rendelkezik, így az ezzel az adapterrel kompatibilis kábeleknek működniük kell. A belső teszteléshez például egy CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M kábelt használtunk. További információkért tekintse meg a [Mellanox támogatott kábeleinek és kapcsolóinak listáját](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 

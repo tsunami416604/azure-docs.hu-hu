@@ -4,16 +4,16 @@ description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105487"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308105"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -31,7 +31,7 @@ Amikor először hozzáadják az új fióktulajdonosokat (AO) egy Azure EA-regis
 
 Ha az egyik Azure EA-rendszergazda létrehozott egy részleget, az Azure vállalati rendszergazda részlegszintű rendszergazdákat adhat hozzá, és hozzárendelheti őket egy-egy részleghez. A részlegszintű rendszergazdák új fiókokat hozhatnak létre. Az Azure EA-előfizetések létrehozásához új fiókokra van szükség.
 
-A részlegek hozzáadásával kapcsolatos további információkért lásd: Azure EA-részleg létrehozása.
+A részlegszintű rendszergazdák hozzáadásával kapcsolatos további információkért tekintse meg az [Azure EA-részlegszintű rendszergazdák létrehozását](billing-ea-portal-get-started.md#add-a-department-admin) ismertető témakört.
 
 ## <a name="enterprise-user-roles"></a>Vállalati felhasználók szerepkörei
 
@@ -124,14 +124,14 @@ A fiók átvitele során nincs állásidő. Ha az összes szükséges informáci
 
 A regisztrációátvitel kérésekor adja meg az alábbi adatokat:
 
-- A forrásregisztrációhoz a regisztrációs számot és az átvinni kívánt fiókot
-- A célregisztrációhoz az átvitel céljának regisztrációs számát
+- A forrásregisztrációhoz a regisztrációs számot és az átvinni kívánt fiókot.
+- A célregisztrációhoz az átvitel céljának regisztrációs számát.
 - A regisztrációátvitel hatálybalépési dátuma lehet a célregisztráció kezdő dátuma vagy egy későbbi időpont. A kiválasztott dátum nem lehet hatással a már kiállított túlhasználati számlákban feltüntetett használatra.
 
 Egyéb szempontok, amelyeket érdemes észben tartani a regisztrációk átvitele előtt:
 
-- A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására
-  - Néhány esetben a Microsoft további jóváhagyást kérhet a forrásregisztráció egyik EA-rendszergazdájától
+- A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására.
+  - Néhány esetben a Microsoft további jóváhagyást kérhet a forrásregisztráció egyik EA-rendszergazdájától.
 - Ha egy regisztrációátvitel nem felel meg az elvárásainak, vegye fontolóra a fiókátvitelt.
 - A rendszer csak a megadott fiókokat viszi át. Az összes fiók átvitelét is kérheti.
 - A forrásregisztráció megőrzi az állapotát (aktív/meghosszabbítva). Tovább folytathatja a használatát, amíg le nem jár.
@@ -208,7 +208,7 @@ Ha a felhasználó nem kap értesítést, a következő lépésekkel ellenőrizz
 6. Szükség esetén adjon hozzá egy kapcsolattartót, és kattintson a **Hozzáadás** gombra.
 7. Kattintson a **Save** (Mentés) gombra.
 
-![A kapcsolattartók hozzáadását bemutató példa ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![A Kapcsolattartó hozzáadása panelt mutató példa ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-ajánlat
 Az Azure Sponsorship-ajánlat korlátozott számú szponzorált Microsoft Azure-fiókot takar. A Microsoft által kiválasztott, korlátozott számú ügyfél az e-mailben kapott meghívóval csatlakozhat hozzá. Ha Ön jogosult a Microsoft Azure Sponsorship-ajánlatára, akkor kapni fog egy e-mailes meghívót a fiókazonosítójára.

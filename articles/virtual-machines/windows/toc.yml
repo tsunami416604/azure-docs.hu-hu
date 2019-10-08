@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU-kvóták
           href: quotas.md
+        - name: Fenntartott példányok
+          items:
+            - name: Előre fizetés virtuális gépekért
+              href: prepay-reserved-vm-instances.md
+            - name: Mi az az Azure Reservations?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Virtuálisgép-példányok méretrugalmassága
+              href: reserved-vm-instance-size-flexibility.md
     - name: Dedikált gazdagépek
       href: dedicated-hosts.md
     - name: Karbantartás és frissítések
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Naplóriasztások létrehozása
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Költségek kezelése
-      items:
-        - name: Előre fizetés virtuális gépekért – Azure Reservations
-          href: prepay-reserved-vm-instances.md
-        - name: Mi az az Azure Reservations?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Virtuálisgép-példányok méretrugalmassága
-          href: reserved-vm-instance-size-flexibility.md
     - name: Rendszerképek használata
       items:
         - name: Megosztott lemezképek
@@ -422,8 +422,6 @@
         - name: Közelségi elhelyezési csoport létrehozása
           href: proximity-placement-groups.md
         - name: Függőleges skálázás
-          href: vertical-scaling-automation.md
-        - name: Virtuális gép létrehozása rendelkezésre állási zónában
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md

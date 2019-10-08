@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490287"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326947"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Az Azure Nagyvállalati Szerződés számlájának ismertetése
 
@@ -28,7 +28,7 @@ A szervezet kreditjébe beleszámít a pénzügyi kötelezettségvállalás is. 
 
 Az alábbi szakasz nem vonatkozik az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő Azure-ügyfelekre. Ha a fenti országok vagy régiók egyikében működik a vállalkozása, tekintse meg a [Számlák egyéb ügyfelek esetén](#invoices-for-other-customers) című szakaszt.
 
-Akkor kap Azure-számlát, ha sor kerül a következők egyikére a számlázási ciklus folyamán:
+Akkor kap Azure-számlát, ha sor kerül a következő események egyikére a számlázási ciklus folyamán:
 
 - **Szolgáltatási keret túllépése**: A szervezet használati díjai meghaladják a kreditegyenlegét.
 - **Külön számlázott tételek**: Olyan szolgáltatások, amelyeket nem fed le a szervezeti kredit. A következő szolgáltatások számlázása mindig külön történik, a szervezet kreditegyenlegétől függetlenül:
@@ -66,10 +66,10 @@ Hasonlítsa össze az Enterprise Portal **Jelentések** > **Használat összefog
 
 Az alábbi szakasz kizárólag az Ausztráliában, Japánban vagy Szingapúrban tevékenykedő Azure-ügyfelekre vonatkozik.
 
-A következő esetekben kaphat egy vagy több Azure-számlát:
+Akkor kap egy vagy több Azure-számlát, ha sor kerül a következő események egyikére:
 
 - **Szolgáltatási keret túllépése**: A szervezet használati díjai meghaladják a kreditegyenlegét.
-- **Külön számlázott tételek**: Olyan szolgáltatások, amelyeket nem fed le a szervezeti kredit. A következő szolgáltatások számlázása mindig külön történik, a szervezet kreditegyenlegétől függetlenül:
+- **Külön számlázott tételek**: Olyan szolgáltatások, amelyeket nem fed le a szervezeti kredit. A következő szolgáltatásokat számlázzuk ki Önnek:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -129,7 +129,7 @@ Hasonlítsa össze az Azure Marketplace-re vonatkozó teljes összeget a piacté
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 - [Az Azure használati adatainak és díjainak megtekintése és letöltése](billing-download-azure-daily-usage.md)

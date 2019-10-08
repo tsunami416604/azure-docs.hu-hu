@@ -241,6 +241,8 @@
           items:
             - name: A felhasználók átadásának hibaelhárítása
               href: application-provisioning-config-problem.md
+            - name: Karantén állapota
+              href: application-provisioning-quarantine-status.md
             - name: Üzembehelyezési naplók
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Attribútum szinkronizálása leképezéshez – katalógusbeli alkalmazás
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
       items:
+        - name: Alkalmazásproxy – GYIK
+          href: application-proxy-faq.md
         - name: Alkalmazásproxy verzióelőzményei
           href: application-proxy-release-version-history.md
 - name: További források

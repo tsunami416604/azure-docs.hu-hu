@@ -9,20 +9,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490986"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709634"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure-előfizetés egy másik ajánlatra történő módosítása
 
 [Használatalapú fizetéses díjakat használó, egyéni előfizetéses](https://azure.microsoft.com/offers/ms-azr-0003p/) ügyfélként a [Fiókközpontban](https://account.windowsazure.com/Subscriptions) másik ajánlatra módosíthatja Azure-előfizetését. Ezzel a funkcióval például kihasználhatja a [Visual Studio-előfizetőknek járó havi jóváírást](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
-**Egyszerűen csak frissíteni szeretne az ingyenes próbaverzióról?** Tekintse meg [az előfizetés frissítését](billing-upgrade-azure-subscription.md) ismertető cikket.
+**Egyszerűen csak frissíteni szeretne az ingyenes próbaverzióról?** Tekintse meg [a magasabb szintű előfizetésre váltást](billing-upgrade-azure-subscription.md) ismertető témakört.
 
 ## <a name="whats-supported"></a>A támogatott lehetőségek:
 
@@ -101,7 +101,7 @@ Ha másik ajánlatra vált, a rendszer alaphelyzetbe állítja [az alapértelmez
 
 A váltás napján létrejön egy számla a fennálló tartozásokról. Ezután az új ajánlat díjszabási feltételei szerint megtörténik az előfizetés számlázása. Az előfizetés számlázási évfordulója az ajánlatváltás dátumára módosul. A rendszer nem őrzi meg az ajánlatváltás előtti használati és számlázási adatokat, ezért javasoljuk, hogy a váltás előtt töltsön le egy másolatot.
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Migrálhatok egy használatalapú fizetéses díjakon alapuló előfizetésből egy [Felhőszolgáltatóra](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) vagy egy [Nagyvállalati Szerződésre](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA)?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Migrálhatok egy használatalapú fizetéses díjakon alapuló előfizetésből egy Felhőszolgáltatóra (CSP) vagy egy Nagyvállalati Szerződésre (EA)?
 
 * A felhőszolgáltatóra történő migrálással kapcsolatban lásd a [használatalapú fizetéses Azure-előfizetés felhőszolgáltatóra történő migrálását](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp) ismertető cikket.
 * A Nagyvállalati Szerződésre történő migráláshoz kérje meg a regisztrációs adminisztrátort, hogy adja hozzá a fiókját a Nagyvállalati Szerződéshez. Az előfizetései nagyvállalati szerződéses regisztrációba történő áthelyezéséhez kövesse a meghívó e-mailjében található utasításokat. További információkért tekintse meg a [meglévő fiókok társítását](https://ea.azure.com/helpdocs/associateExistingAccount) ismertető cikket az EA Portalon.
