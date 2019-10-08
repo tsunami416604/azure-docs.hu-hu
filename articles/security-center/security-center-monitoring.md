@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b7bb67ec052244689b2775c280ff39a2121da3fa
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201696"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996665"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>A biztonsági testhelyzet megerősítése Azure Security Center
 Ez a cikk segít megerősíteni a biztonsági helyzetét. A Azure Security Center Figyelési képességeivel gondoskodhat arról, hogy az erőforrás biztonsága minél szigorúbb legyen, és figyelje a szabályzatoknak való megfelelést.
@@ -34,7 +34,7 @@ Megtekintheti az erőforrások biztonsági állapotát és az erőforrástípus 
 - A hálózati erőforrások, például a virtuális gépek, a hálózati biztonsági csoportok és a végpontok figyelésére, valamint a biztonság javítására vonatkozó javaslatok fogadására vonatkozó további információkért tekintse [meg a hálózat védelme Azure Security Centerban](security-center-network-recommendations.md) című témakört. 
 - Az adatok és a tárolási erőforrások, például az SQL-kiszolgálók és a Storage-fiókok figyeléséhez, valamint a biztonság javítására vonatkozó javaslatok fogadásához tekintse meg az [Azure SQL-szolgáltatás és-adatok védelme Azure Security Center](security-center-sql-service-recommendations.md) további információért. 
 - Az identitás-és hozzáférés-erőforrások, például az MFA-és a fiók engedélyeinek figyeléséhez, valamint a biztonság javítására vonatkozó javaslatok fogadásához tekintse meg az [identitás és hozzáférés figyelése Azure Security Center](security-center-identity-access.md) további információért című témakört. 
-- Az erőforrásokhoz való igény szerinti hozzáférés figyeléséhez tekintse meg a [virtuális gépek hozzáférésének kezelése igény](security-center-just-in-time.md) szerint című részt további információért. 
+- Az erőforrások igény szerinti elérésének figyeléséhez tekintse meg a [virtuális gépek hozzáférésének kezelése](security-center-just-in-time.md) az igény szerinti kezeléssel című részt további információért. 
 
 
 A javaslatok alkalmazásával kapcsolatban további információkat talál a következő cikkben: [A biztonsági javaslatok alkalmazása az Azure Security Centerben](security-center-recommendations.md).

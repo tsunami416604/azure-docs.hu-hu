@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4a3f37c232fcd7a0fcbdac051ed36916ef5c2868
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 35f11ee9bce4dc7c68e12749f69d2f2e4253d4bc
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326668"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996249"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a használatávalC#
 
@@ -38,40 +38,50 @@ Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szol
 
 1. Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory nuget-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
 
+## <a name="authentication"></a>Authentication
+A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Az Azure ad- [alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) létrehozásával hozzon létre egy ingyenes Azure ad-alkalmazást, és adja hozzá a szerepkör-hozzárendelést az előfizetési hatókörhöz. Azt is bemutatja, hogyan kérheti le a `Directory (tenant) ID`, `Application ID` és `Client Secret` értéket.
+
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
 
 1. Hozza létre a fürtöt a következő kód használatával:
 
     ```csharp
-    var resourceGroupName = "testrg";
-    var clusterName = "mykustocluster";
-    var location = "Central US";
-    var sku = new AzureSku("D13_v2", 5);
-    var cluster = new Cluster(location, sku);
-
-    var authenticationContext = new AuthenticationContext("https://login.windows.net/{tenantName}");
-    var credential = new ClientCredential(clientId: "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx", clientSecret: "xxxxxxxxxxxxxx");
+    var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
+    var clientId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Application ID
+    var clientSecret = "xxxxxxxxxxxxxx";//Client Secret
+    var subscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";
+    var authenticationContext = new AuthenticationContext($"https://login.windows.net/{tenantId}");
+    var credential = new ClientCredential(clientId, clientSecret);
     var result = await authenticationContext.AcquireTokenAsync(resource: "https://management.core.windows.net/", clientCredential: credential);
 
     var credentials = new TokenCredentials(result.AccessToken, result.AccessTokenType);
 
     var kustoManagementClient = new KustoManagementClient(credentials)
     {
-        SubscriptionId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+        SubscriptionId = subscriptionId
     };
 
-    kustoManagementClient.Clusters.CreateOrUpdate(resourceGroupName, clusterName, cluster);
+    var resourceGroupName = "testrg";
+    var clusterName = "mykustocluster";
+    var location = "Central US";
+    var skuName = "Standard_D13_v2";
+    var tier = "Standard";
+    var capacity = 5;
+    var sku = new AzureSku(skuName, tier, capacity);
+    var cluster = new Cluster(location, sku);
+    await kustoManagementClient.Clusters.CreateOrUpdateAsync(resourceGroupName, clusterName, cluster);
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | clusterName | *mykustocluster* | A fürt kívánt neve.|
-   | sku | *D13_v2* | A fürthöz használni kívánt SKU. |
+   | skuName | *Standard_D13_v2* | A fürthöz használni kívánt SKU. |
+   | tier | *Standard* | Az SKU-szintet. |
+   | capacity | *száma* | A fürt példányainak száma. |
    | resourceGroupName | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
-    További választható paramétereket is használhat, például a fürt kapacitását.
-
-1. [Hitelesítő adatok](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet) beállítása
+    > [!NOTE]
+    > A **fürt létrehozása** hosszú ideig futó művelet, ezért erősen ajánlott a CreateOrUpdateAsync használata a CreateOrUpdate helyett. 
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a fürt létrehozása sikeres volt-e:
 
@@ -79,7 +89,7 @@ Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szol
     kustoManagementClient.Clusters.Get(resourceGroupName, clusterName);
     ```
 
-Ha az eredmény tartalmazza `ProvisioningState` az `Succeeded` értéket, a fürt létrehozása sikeresen megtörtént.
+Ha az eredmény `ProvisioningState` értéket tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása sikeresen megtörtént.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
@@ -91,7 +101,7 @@ Ha az eredmény tartalmazza `ProvisioningState` az `Succeeded` értéket, a für
     var databaseName = "mykustodatabase";
     var database = new Database(location: location, softDeletePeriod: softDeletePeriod, hotCachePeriod: hotCachePeriod);
 
-    kustoManagementClient.Databases.CreateOrUpdate(resourceGroupName, clusterName, databaseName, database);
+    await kustoManagementClient.Databases.CreateOrUpdateAsync(resourceGroupName, clusterName, databaseName, database);
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|

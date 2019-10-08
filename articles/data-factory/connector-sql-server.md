@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b266a21aabf37765de4f4f94cd3939cec697585
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b87676e773c4b7714a3b5ef21a6be703e0e3761a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058513"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001375"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Adatok másolása SQL Serverba és onnan a Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Azure Data Factory verzióját:"]
@@ -65,15 +65,15 @@ A SQL Server társított szolgáltatás a következő tulajdonságokat támogatj
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot **SQLServer**értékre kell beállítani. | Igen |
-| connectionString |Itt adhatja meg az SQL-hitelesítés vagy a Windows-hitelesítés használatával a SQL Server-adatbázishoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. Tekintse át a következő mintákat.<br/>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. A jelszó Azure Key Vaultban is elhelyezhető. Ha SQL-hitelesítéssel rendelkezik, húzza `password` ki a konfigurációt a kapcsolatok sztringből. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Igen |
+| connectionString |Itt adhatja meg az SQL-hitelesítés vagy a Windows-hitelesítés használatával a SQL Server-adatbázishoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. Tekintse át a következő mintákat.<br/>A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. A jelszó Azure Key Vaultban is elhelyezhető. SQL-hitelesítés esetén a `password` konfigurációt húzza ki a kapcsolatok sztringből. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Igen |
 | userName |Windows-hitelesítés használata esetén adja meg a felhasználónevet. Ilyen például a **domainname\\username**. |Nem |
 | password |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. A mező megjelölése **SecureString** -ként, hogy biztonságosan tárolja Azure Data Factoryban. Vagy [hivatkozhat a Azure Key Vaultban tárolt titkos kulcsra](store-credentials-in-key-vault.md)is. |Nem |
-| connectVia | Ez [](concepts-integration-runtime.md) az integrációs modul az adattárhoz való kapcsolódásra szolgál. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
+| connectVia | Ez az [integrációs](concepts-integration-runtime.md) modul az adattárhoz való kapcsolódásra szolgál. További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Nem |
 
 >[!TIP]
->Ha hibát észlelt a "UserErrorFailedToConnectToSqlServer" hibakódmal, és egy olyan üzenet, mint például "az adatbázis munkamenet-korlátja XXX és elérte," adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.
+>Ha hibát észlelt a "UserErrorFailedToConnectToSqlServer" hibakódmal, és egy olyan üzenet, mint például "az adatbázis munkamenet-korlátja XXX és elérte," adja hozzá a `Pooling=false` értéket a kapcsolati karakterlánchoz, és próbálkozzon újra.
 
-**1. példa: SQL-hitelesítés használata**
+@no__t – 1.0Example: SQL-hitelesítés használata @ no__t-0
 
 ```json
 {
@@ -94,7 +94,7 @@ A SQL Server társított szolgáltatás a következő tulajdonságokat támogatj
 }
 ```
 
-**2. példa: SQL-hitelesítés használata jelszóval Azure Key Vault**
+@no__t – 0Example 2: SQL-hitelesítés használata jelszóval Azure Key Vault @ no__t-0
 
 ```json
 {
@@ -123,7 +123,7 @@ A SQL Server társított szolgáltatás a következő tulajdonságokat támogatj
 }
 ```
 
-**3. példa: Windows-hitelesítés használata**
+@no__t – 0Example 3: Windows-hitelesítés használata @ no__t-0
 
 ```json
 {
@@ -160,7 +160,7 @@ Az adatok SQL Server adatbázisba való másolásához a következő tulajdonsá
 | type | Az adatkészlet Type tulajdonságát **SqlServerTable**értékre kell állítani. | Igen |
 | schema | A séma neve. |Nincs forrás, a fogadó Igen  |
 | table | A tábla vagy nézet neve. |Nincs forrás, a fogadó Igen  |
-| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz `table`használja `schema` a és a elemet. | Nincs forrás, a fogadó Igen |
+| tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a `schema` és a `table` értéket. | Nincs forrás, a fogadó Igen |
 
 **Példa**
 
@@ -201,9 +201,9 @@ Az adatok SQL Serverból való másolásához állítsa a forrás típusát a m�
 **Megjegyzés:**
 
 - Ha a **SqlSource** **sqlReaderQuery** van megadva, a másolási tevékenység lefuttatja ezt a lekérdezést a SQL Server forráson az adatkéréshez. Megadhat egy tárolt eljárást is a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával, ha a tárolt eljárás paraméterekkel rendelkezik.
-- Ha nem ad meg **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**, az adatkészlet JSON-fájljának "struktúra" szakaszában meghatározott oszlopok a lekérdezések létrehozásához használatosak. A lekérdezés `select column1, column2 from mytable` a SQL Serveron fut. Ha az adatkészlet definíciója nem rendelkezik "Structure" értékkel, az összes oszlop ki van választva a táblából.
+- Ha nem ad meg **sqlReaderQuery** vagy **sqlReaderStoredProcedureName**, az adatkészlet JSON-fájljának "struktúra" szakaszában meghatározott oszlopok a lekérdezések létrehozásához használatosak. A `select column1, column2 from mytable` lekérdezés a SQL Serveron fut. Ha az adatkészlet definíciója nem rendelkezik "Structure" értékkel, az összes oszlop ki van választva a táblából.
 
-**Példa: SQL-lekérdezés használata**
+**Példa: SQL-lekérdezés használata @ no__t-0
 
 ```json
 "activities":[
@@ -235,7 +235,7 @@ Az adatok SQL Serverból való másolásához állítsa a forrás típusát a m�
 ]
 ```
 
-**Példa: Tárolt eljárás használata**
+**Példa: Tárolt eljárás használata @ no__t-0
 
 ```json
 "activities":[
@@ -301,15 +301,15 @@ Az adatSQL Serverba való másoláshoz állítsa a fogadó típust a másolási 
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának Type tulajdonságát **SqlSink**értékre kell állítani. | Igen |
 | writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján. |Nem |
-| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Egy példa: "00:30:00" 30 percig. |Nem |
+| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Egy példa: "00:30:00" 30 percig. Ha nincs megadva érték, az időtúllépés alapértelmezett értéke "02:00:00". |Nem |
 | preCopyScript |Ez a tulajdonság határozza meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az adatSQL Serverba írna. A rendszer csak egyszer hívja meg a példányt. Ennek a tulajdonságnak a használatával törölheti az előre feltöltött adatkészleteket. |Nem |
-| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem kell megtenniük a forrásadatokat, például törlés vagy csonkítás, használja `preCopyScript` a tulajdonságot. | Nem |
+| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem szükségesek a forrásadatok, például a törlés vagy a csonkítás, használja a `preCopyScript` tulajdonságot. | Nem |
 | storedProcedureTableTypeParameterName |A tárolt eljárásban megadott tábla típusú paraméter neve.  |Nem |
 | sqlWriterTableType |A tárolt eljárásban használandó táblanév neve. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a folyamatban lévő adattal másolt adatfájlokat. |Nem |
 | storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név és érték párok. Nevek és a kis-és a paraméterek meg kell egyeznie a neveket és a kis-és nagybetűhasználatot, a tárolt eljárás paraméterértékeinek. | Nem |
-| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a `none` következők: (alapértelmezett `autoCreate`),. |Nem |
+| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate`. |Nem |
 
-**1. példa: Adathozzáfűzés**
+@no__t – 1.0Example: Adathalmaz hozzáfűzése @ no__t-0
 
 ```json
 "activities":[
@@ -342,7 +342,7 @@ Az adatSQL Serverba való másoláshoz állítsa a fogadó típust a másolási 
 ]
 ```
 
-**2. példa: Tárolt eljárás meghívása a másolás során**
+@no__t – 0Example 2: Tárolt eljárás meghívása a @ no__t-0 másolás során
 
 További információ az SQL-fogadó [tárolt eljárásának meghívásáról](#invoke-a-stored-procedure-from-a-sql-sink).
 

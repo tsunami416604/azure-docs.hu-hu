@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947851"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996755"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Adatok beolvasása IoT Hubból az Azure Adatkezelőba (előzetes verzió)
 
@@ -80,8 +80,7 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
     | IoT Hub | IoT Hub neve |
     | Megosztott elérési házirend | A megosztott hozzáférési szabályzat neve. Olvasási engedélyekkel kell rendelkeznie |
     | Fogyasztói csoport |  A IoT Hub beépített végpontban definiált fogyasztói csoport |
-    | Esemény rendszertulajdonságai | A [IoT hub eseményrendszer tulajdonságai](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) , ha az eseményeken több rekord van, a rendszer tulajdonságai hozzáadódnak az elsőhöz.|
-    | | 
+    | Eseményvezérelt rendszerek tulajdonságai | A [IoT hub eseményrendszer tulajdonságai](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/tables#create-table) vagy [frissítsen](/azure/kusto/management/tables#alter-table-and-alter-merge-table) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. | | | 
 
     > [!NOTE]
     > [Manuális feladatátvétel](/azure/iot-hub/iot-hub-ha-dr#manual-failover)esetén újra létre kell hoznia az adathálózatot.
@@ -95,7 +94,7 @@ Most csatlakozik az Azure Adatkezelő IoT Hub. Ha ez a csatlakozás befejeződö
     |---|---|---|
     | Tábla | *TestTable* | A **testdb**-ben létrehozott tábla. |
     | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE és TXT. |
-    | Oszlop-hozzárendelés | *TestMapping* | A **testdb**-ben létrehozott leképezés, amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
+    | Oszlopleképezés | *TestMapping* | A **testdb**-ben létrehozott [leképezés](/azure/kusto/management/mappings) , amely leképezi a bejövő JSON-adattípusokat a **testdb**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-és AVRO szükséges, és nem kötelező más formátumokhoz.|
     | | |
 
     > [!NOTE]
@@ -165,7 +164,7 @@ Ha nem tervezi a IoT Hub újbóli használatát, törölje a **test-hub-RG-** t,
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gomb](media/ingest-data-event-hub/expand.png) a kinyitásához.
+    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-hub/expand.png) a kinyitásához.
 
    ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-hub/delete-resources-select.png)
 

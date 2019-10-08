@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 178911390a4cb694171adf6c807369cab0c0499a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202365"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996946"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
 
@@ -55,5 +55,6 @@ A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 ## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatja, hogyan működik a több-bérlős felügyelet a Security Centerban. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
-* [Megerősítheti a biztonsági helyzeteket Azure Security Centerokkal](security-center-monitoring.md)– megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
-* [Azure Security Center: gyakran ismételt kérdések](security-center-faq.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Megerősítheti a biztonsági helyzeteket Azure Security Centerekkel](security-center-monitoring.md) – megismerheti az Azure-erőforrások állapotának monitorozását.
+* [Azure Security Center GYIK](security-center-faq.md) – gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.
+* [Ismerje meg az Azure Lighthouse nagyvállalati forgatókönyveit – megismerheti,](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise) hogy az Azure Lighthouse hogyan egyszerűsítheti le a több-bérlős felügyeletet egy olyan vállalaton belül, amely több Azure ad-bérlőt használ.

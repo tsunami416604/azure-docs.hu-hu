@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959937"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000495"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Felügyelt példányok – T-SQL-különbségek, korlátozások és ismert problémák
 
@@ -110,7 +110,7 @@ A felügyelt példányok nem férnek hozzá a fájlmegosztás és a Windows-mapp
 
 Lásd: tanúsítvány és [biztonsági mentési tanúsítvány](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) [létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) . 
  
-**Áthidaló megoldás**: A tanúsítvány vagy a titkos kulcs parancsfájlja, tárolás. SQL-fájlként, és létrehozás bináris fájlból:
+**Áthidaló megoldás**: A tanúsítvány biztonsági másolatának létrehozása és a biztonsági mentés visszaállítása helyett [szerezze be a tanúsítvány bináris tartalmát és titkos kulcsát, tárolja. SQL-fájlként, és hozzon létre a bináris fájlból](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1ef6dd913958f963cb62b4014c09a47903831aa
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963848"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001479"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: Az Azure Gyorsindítás sablonjainak használata
 

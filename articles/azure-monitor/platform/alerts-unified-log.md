@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677751"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001620"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
@@ -127,16 +127,25 @@ Mivel a riasztás úgy van beállítva, hogy a teljes szabálysértések alapjá
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Napló keresési riasztási szabálya – égetés és állapot
 
-A naplózási keresési riasztási szabály a felhasználó által a konfiguráció és az egyéni analitikai lekérdezés által felismert logikával működik. Mivel a figyelési logika, beleértve a pontos feltételt vagy okot, amiért a riasztási szabálynak aktiválnia kell, egy elemzési lekérdezésbe van ágyazva – ami eltérő lehet az egyes naplók riasztási szabályaiban. Az Azure-riasztások kevés információval rendelkeznek az adott mögöttes kiváltó ok (vagy) forgatókönyvről, amelyet a rendszer akkor értékel ki, ha a naplóbeli keresés riasztási szabályának küszöbértéke teljesül vagy túllépte az időkorlátot. Így a naplózási riasztások állapota kevesebb. És a naplózási riasztási szabályok megőrzik az égetést, feltéve, hogy a riasztási feltételt a megadott egyéni elemzési lekérdezés eredményeként teljesíti. A riasztás nélkül minden egyes megoldás megoldódott, mivel a figyelési hibák pontos okának logikája a felhasználó által megadott elemzési lekérdezésben van elrejtve. Jelenleg nincs olyan mechanizmus, amellyel Azure Monitor riasztások meggyőzően következtetni a kiváltó okok megoldására.
+A naplózási keresési riasztási szabályok csak a lekérdezésben felépített logikán működnek. A riasztási rendszer nem rendelkezik más környezettel a rendszer, a szándék, vagy a lekérdezés által vélelmezett kiváltó ok állapotával. Ilyenkor a naplózási riasztások állapota kevésbé. A feltételek "igaz" vagy "hamis" értékkel vannak kiértékelve minden alkalommal, amikor futtatják őket.  A riasztás minden alkalommal aktiválódik, amikor a riasztási feltétel kiértékelése "igaz", függetlenül attól, hogy a rendszer korábban elindította.    
 
-Lehetővé teszi, hogy ugyanezt lássuk egy gyakorlati példával. Tegyük fel, hogy van egy *contoso-log-riasztás*nevű log riasztási szabály, amely az [eredmények típusának naplójában megadott példa alapján](#example-of-number-of-records-type-log-alert) , az egyéni riasztási lekérdezés úgy lett kialakítva, hogy a naplókban a 500-es eredmény kódját keresi.
+Lássuk ezt a viselkedést működés közben egy gyakorlati példával. Tegyük fel, hogy van egy *contoso-log-riasztás*nevű log riasztási szabály, amely a következő példában látható módon van konfigurálva: a [log-riasztások száma](#example-of-number-of-records-type-log-alert). A feltétel egy egyéni riasztási lekérdezés, amelynek célja, hogy a naplókban megkeresse a 500-es eredmény kódját. Ha a naplókban még egy 500-es eredmény-kód található, a riasztás feltétele igaz. 
 
-- 1:05 ÓRAKOR, amikor a contoso-log-riasztást az Azure-riasztások hajtják végre, a naplóbeli keresés eredménye nulla rekordot eredményezett a 500-es eredménnyel. Mivel a nulla nem éri el a küszöbértéket, és a riasztás nem lett kiégetve.
-- A következő iterációnál, 1:10 ÓRAKOR, amikor a contoso-log-riasztást az Azure-riasztások hajtották végre, a naplóbeli keresés eredménye öt rekordot adott eredményként, amely a 500. Mivel öt meghaladja a küszöbértéket, és a riasztás a kapcsolódó műveletekkel aktiválódik.
-- 1:15 ÓRAKOR, amikor a contoso-log-riasztást az Azure-riasztások hajtották végre, a naplóbeli keresés eredménye két, 500-os rekordot tartalmaz. Mivel a kettő meghaladja a küszöbértéket, és a riasztás a kapcsolódó műveletekkel aktiválódik.
-- Most a következő iterációnál 500, 1:20 ÓRAKOR, amikor a contoso-log-riasztást az Azure-riasztás végrehajtotta Mivel a nulla nem éri el a küszöbértéket, és a riasztás nem lett kiégetve.
+Az Azure riasztási rendszer az alábbi időközönként ellenőrzi a *contoso-log-riasztás*feltételeit.
 
-A fentiekben azonban a 1:15 ÓRAKOR – az Azure-riasztások nem tudják megállapítani, hogy a 1:10-on észlelt mögöttes problémák megmaradnak-e, és hogy van-e nettó új hiba. A felhasználó által megadott lekérdezés a korábbi rekordokat is figyelembe veheti – az Azure-riasztások biztosak lehetnek benne. Mivel a riasztás logikája be van ágyazva a riasztási lekérdezésbe, így a két rekord 500-as eredményű, 1:15 PM-nél látható, de nem látható a 1:10 ÓRAKOR. Ezért a figyelmeztetési oldalon tévesen, ha a contoso-log-riasztás a 1:15 ÓRAKOR fut, a konfigurált művelet újra aktiválódik. Mostantól 1:20 ÓRAKOR, ha nulla rekordot talál a 500-es eredmény-kóddal – az Azure-riasztások nem biztosak abban, hogy a 500-as és a 1:15 PM-ből 1:10 származó hibakódok miatt megoldották a-as hibakódot, és Azure Monitor riasztások biztos lehet abban, hogy az 500 hibája nem fog megtörténni ugyanezen okból s újra. Ezért a contoso-log-Alert nem módosul az Azure-riasztási irányítópulton és/vagy a riasztás feloldását elküldő értesítések esetében. Ehelyett azt a felhasználót, aki megértette az elemzési lekérdezésbe ágyazott logika pontos feltételeit vagy okát, [a riasztást szükség szerint lezártként jelölheti](alerts-managing-alert-states.md) meg.
+
+| Time    | Naplóbeli keresési lekérdezés által visszaadott rekordok száma | Naplózási feltétel evalution | Eredmény 
+| ------- | ----------| ----------| ------- 
+| 1:05 PM | 0 rekord | 0 nem > 0, így hamis |  A riasztás nem tűz. Nincs hívott művelet.
+| 1:10 PM | 2 rekord | 2 > 0 igaz  | Riasztási tüzek és műveleti csoportok hívása. Riasztási állapot aktív.
+| 1:15 PM | 5 rekord | 5 > 0 igaz  | Riasztási tüzek és műveleti csoportok hívása. Riasztási állapot aktív.
+| 1:20 PM | 0 rekord | 0 nem > 0, így hamis |  A riasztás nem tűz. Nincs hívott művelet. A riasztás állapota aktív marad.
+
+Az előző eset használata példaként:
+
+A 1:15 PM Azure-riasztások nem tudják megállapítani, hogy a 1:10-kor észlelt mögöttes problémák fennmaradnak-e, és ha a rekordok nettó új hibák vagy a régebbi hibák megismétlése 1:10 órakor történik. A felhasználó által megadott lekérdezés esetleg nem veszi figyelembe a korábbi rekordokat, és a rendszer nem tudja. Az Azure-riasztások rendszere figyelmezteti az err-re, és a riasztást és a kapcsolódó műveleteket 1:15 ÓRAKOR újra elindítják. 
+
+1:20 ÓRAKOR, ha nulla rekordokat észleltek a 500-es eredmény kódjával, az Azure-riasztások nem biztosak abban, hogy a 500-as verzióban a 1:10-es és a 1:15 PM-ből származó találati kód megoldódott Nem tudja, hogy az 500-es hiba miatti hibák ugyanezen okból történnek-e. Ezért a *contoso-log-Alert* nem módosul az Azure riasztási irányítópulton **megoldottra** , és/vagy az értesítéseket a rendszer nem küldi el a riasztás feloldása érdekében. Csak Ön, aki megérti az elemzési lekérdezésbe ágyazott logika pontos feltételeit vagy okát, [a riasztást szükség szerint lezártként jelölheti](alerts-managing-alert-states.md) meg.
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>A naplózási riasztások díjszabása és számlázása
 

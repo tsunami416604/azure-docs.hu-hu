@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: e55755e3edcc54d0d75c937c4d18b845b0282833
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 4fdd99b3e9efc108960217cddfc8a397eadf99b6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972739"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001589"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure Resource Manager erőforráscsoportok kezelése az Azure CLI használatával
 
@@ -78,7 +78,7 @@ Lásd: [erőforrások központi telepítése meglévő erőforráscsoporthoz](./
 
 ## <a name="deploy-a-resource-group-and-resources"></a>Erőforráscsoport és erőforrások üzembe helyezése
 
-Létrehozhat egy erőforráscsoportot, és erőforrásokat telepíthet a csoportba egy Resource Manager-sablon használatával. További információ: [erőforráscsoport létrehozása és erőforrások telepítése](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Létrehozhat egy erőforráscsoportot, és erőforrásokat telepíthet a csoportba egy Resource Manager-sablon használatával. További információ: [erőforráscsoport létrehozása és erőforrások telepítése](./deploy-to-subscription.md#resource-group-and-resources).
 
 ## <a name="redeploy-when-deployment-fails"></a>Újratelepítése, ha a telepítés sikertelen
 

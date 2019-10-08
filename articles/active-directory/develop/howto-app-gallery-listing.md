@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a97c10303a1ce74e53f46c21176c876faed307e7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958656"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001733"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -36,7 +36,7 @@ Ez a cikk bemutatja, hogyan listázhat alkalmazást az Azure Active Directory (A
 - A gyors keresés megkeresi az alkalmazást a galériában.
 - Az ingyenes, alapszintű és prémium szintű Azure AD-ügyfelek használhatják ezt az integrációt.
 - A kölcsönös ügyfelek részletes konfigurációs oktatóanyagot kapnak.
-- Azok a felhasználók, akik a rendszert használják a tartományok közötti Identitáskezelés (SCIM) számára, használhatják a kiépítés használatát ugyanahhoz az alkalmazáshoz.
+- Azok a felhasználók, akik a rendszert használják a tartományok közötti Identitáskezelés ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) számára, használhatják a kiépítés használatát ugyanahhoz az alkalmazáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

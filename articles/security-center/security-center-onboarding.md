@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: 7448516e464a379e27abd45834b31760fca3fedd
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 01cc625767cbf437031f503cf4b0d4dc59b62e08
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201852"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996302"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>A Azure Security Center Standard bevezetése a fokozott biztonság érdekében
 Frissítsen Security Center szabványra, hogy kihasználhassa a fokozott biztonság kezelése és a fenyegetések elleni védelem előnyeit a hibrid felhőalapú számítási feladatokhoz.  Megpróbálkozhat a standard szintű ingyenes kipróbálással is. További információért tekintse meg a Security Center [díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/) .
@@ -26,7 +26,7 @@ Frissítsen Security Center szabványra, hogy kihasználhassa a fokozott biztons
 Security Center Standard tartalma:
 
 - **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Többféle forrásból, például tűzfalakból és más partneri megoldásból származó biztonsági adatokat gyűjthet, kereshet és elemezhet.
-- Komplex veszélyforrások észlelése – a speciális elemzések és a Microsoft intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit.  A beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a biztonsági rések nulladik napi kihasználását. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon. Interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal egyszerűsítheti a vizsgálatot.
+- Komplex **veszélyforrások észlelése** – a speciális elemzések és a Microsoft intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit.  A beépített viselkedéselemzés és a gépi tanulás használatával azonosíthatja a támadásokat és a biztonsági rések nulladik napi kihasználását. Figyelheti a bejövő támadásokat és az incidens utáni tevékenységeket a hálózatokon, a gépeken és a felhőszolgáltatásokon. Interaktív eszközökkel és fenyegetésekkel kapcsolatos környezetalapú tudásbázissal egyszerűsítheti a vizsgálatot.
 - **Hozzáférés és alkalmazás-vezérlőelemek** – a kártevők és más nemkívánatos alkalmazások letiltása az adott számítási feladatokhoz igazított engedélyezési Javaslatok alkalmazásával és a gépi tanulással. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken futó felügyeleti portok igény szerinti, felügyelt hozzáférésével, drasztikusan csökkentve a találgatásos és más hálózati támadásokkal szembeni kitettséget.
 
 ## <a name="detecting-unprotected-resources"></a>Nem védett erőforrások észlelése     
@@ -48,7 +48,7 @@ Előfizetés vagy munkaterület frissítése a standard szintre:
    -    Frissítheti azokat az előfizetéseket és munkaterületeket, amelyek nem jogosultak a próbaidőszakra.
    -    A próbaidőszak elkezdéséhez válassza ki az erre jogosult munkaterületeket és előfizetéseket.
 3.  A **Próbaverzió indítása** gombbal elindítja a próbaidőszakot a kiválasztott előfizetéseken.
-  ![Előfizetés kiválasztása](./media/security-center-onboarding/select-subscription.png)
+  @no__t 0Select-előfizetés @ no__t-1
 
 
    > [!NOTE]
@@ -89,7 +89,7 @@ Ha már van munkaterülete, akkor az új, **nem Azure-beli számítógépek hozz
 
 **Válasszon ki egy meglévő munkaterületet, és adja hozzá a számítógépet**
 
-A következő ábrán látható módon adhat hozzá számítógépet amunkafolyamatból. Számítógépet a **számítási**munkafolyamat követésével is hozzáadhat. Ebben a példában a számításthasználjuk.
+A következő ábrán látható módon adhat hozzá számítógépet amunkafolyamatból. Számítógépet a **számítási**munkafolyamat követésével is hozzáadhat. Ebben a példában a **számítást**használjuk.
 
 1. Térjen vissza Security Center főmenüjéhez és az **Áttekintés** irányítópulthoz.
 
@@ -111,7 +111,7 @@ Ebből a cikkből megtudhatta, hogyan végezheti el az Azure-beli és nem Azure-
 
 - [Az adatgyűjtés engedélyezése](security-center-enable-data-collection.md)
 - [Fenyegetésfelderítési jelentés](security-center-threat-report.md)
-- [VIRTUÁLIS gépekhez való hozzáférés](security-center-just-in-time.md)
+- [Virtuális gépek igény szerinti elérése](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png

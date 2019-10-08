@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: a20481ea42a0772ab42322e912cfce67877734d6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8c836582798f40cf6e9ffff264c1612cb4037f74
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830100"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996894"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -55,5 +55,5 @@ Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással t
 | Partíciók | 2000/CU |
 | Felhasználói csoportok | Az Event hub-ban nincs korlát/CU, 1000 |
 | Felügyelt kapcsolatok | 100 K csomagban foglalt |
-| Üzenetmegőrzés | Legfeljebb 7 nap, 10 TB a CU-ban |
+| Üzenetmegőrzés | 90 nap, 10 TB tartalmaz/CU |
 | Rögzítés | Tartalmazza |

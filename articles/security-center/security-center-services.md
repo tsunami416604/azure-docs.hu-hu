@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218260"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982837"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -39,20 +39,21 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |----|----|----|----|----|----|----|----|
 |**Környezet**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
 ||**Virtuális gép**|**Virtuálisgép-méretezési csoport**||**Virtuális gép**|**Virtuálisgép-méretezési csoport**|
-|VMBA-fenyegetések észlelésével kapcsolatos riasztások|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
+|A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
 |Hálózati veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|X|✔|✔|X|Standard|
 |Microsoft Defender ATP-integráció|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
 |Hiányzó javítások|✔|✔|✔|✔|✔|✔|Free|
 |Biztonsági konfigurációk|✔|✔|✔|✔|✔|✔|Free|
 |Endpoint Protection-Értékelés|✔|✔|✔|X|X|X|Free|
-|Virtuális gépek igény szerinti elérése|✔|X|X|✔|X|X|Standard|
+|VIRTUÁLIS gépek igény szerinti elérése|✔|X|X|✔|X|X|Standard|
 |Adaptív alkalmazásvezérlés|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
+|Fájlintegritási monitorozás|✔|✔|✔|✔|✔|✔|Standard|
 |Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Free|
 |Külső gyártótól származó telepítés|✔|X|X|✔|X|X|Free|
 |NSG-Értékelés|✔|✔|X|✔|✔|X|Free|
 |Fájlok nem észlelhető veszélyforrások észlelése|✔|✔|✔|X|X|X|Standard|
 |Hálózati térkép|✔|✔|X|✔|✔|X|Standard|
+|Hálózatok adaptív megerősítése|✔|X|X|✔|X|X|Standard|
 |Adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
 |Szabályozási megfelelőségi irányítópult & jelentések|✔|✔|✔|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|X|X|X|✔|✔|✔|Standard|
@@ -73,10 +74,10 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 | Trend Micro – minden verzió * | Windows Server termékcsalád  | Nem | Igen |
 | Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
 | McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
-| McAfee v10+ | Linux Server termékcsalád  | Nem | igen **\*** |
-| Sophos v9 +| Linux Server termékcsalád  | Nem | igen **\***  |
+| McAfee v10+ | Linux Server termékcsalád  | Nem | Igen **@no__t – 1** |
+| Sophos v9 +| Linux Server termékcsalád  | Nem | Igen **@no__t – 1**  |
 
- **\*** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el, és nem jelenik meg Azure Security Center portálon.
+ **@no__t – 1** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el, és nem jelenik meg Azure Security Center portálon.
 
 > [!NOTE]
 >
@@ -99,7 +100,7 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |App Service-ben|✔| ✔|
 |Függvény|✔| X|
 |Felhőszolgáltatás|✔| X|
-|Virtuális hálózat|✔| NA|
+|VNet|✔| NA|
 |Subnet|✔| NA|
 |Hálózati adapter|✔| NA|
 |NSG|✔| NA|
@@ -118,15 +119,15 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |Data Lake Store|✔| X|
 |Kulcstartó|✔| X|
 
-\*Ezek a funkciók jelenleg nyilvános előzetes verzióban támogatottak.
+\* ezek a funkciók jelenleg a nyilvános előzetes verzióban támogatottak.
 
-\*\*Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
+\* @ no__t-1 Azure Active Directory (Azure AD) javaslatok csak standard előfizetések esetén érhetők el.
 
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
-- Megtudhatja, hogyan tervezheti meg [és értelmezheti a Azure Security Center](security-center-planning-and-operations-guide.md)elfogadásához szükséges tervezési szempontokat.
+- Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).
 - Tekintse át a [Security centert támogató platformokat](security-center-os-coverage.md).
 - További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
 - [Gyakori kérdések a Azure Security Center használatáról](security-center-faq.md).

@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949634"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001725"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>SCIM-felhasználó kiépítés Azure Active Directory
 
-A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosított protokoll és séma, amelynek célja, hogy nagyobb konzisztencia legyen a különböző rendszerek felügyelete alatt álló identitások kezelésében. Ha egy alkalmazás támogatja a SCIM-végpontot a felhasználói felügyelethez, az Azure AD-felhasználó kiépítési szolgáltatása kéréseket küldhet a hozzárendelt felhasználók és csoportok létrehozásához, módosításához vagy törléséhez ehhez a végponthoz.
+A rendszer a tartományok közötti Identitáskezelés ([scim](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) esetében szabványosított protokoll és séma, amelynek célja, hogy nagyobb konzisztencia legyen a különböző rendszerek felügyelete alatt álló identitások kezelésében. Ha egy alkalmazás támogatja a SCIM-végpontot a felhasználói felügyelethez, az Azure AD-felhasználó kiépítési szolgáltatása kéréseket küldhet a hozzárendelt felhasználók és csoportok létrehozásához, módosításához vagy törléséhez ehhez a végponthoz.
 
 Számos alkalmazás, amely esetében az Azure AD támogatja az [előzetesen integrált automatikus felhasználó-kiépítés](../saas-apps/tutorial-list.md) megvalósítását, scim, mint a felhasználói módosítási értesítések fogadásának módja.  Ezen kívül az ügyfelek olyan alkalmazásokat is összekapcsolhatnak, amelyek támogatják a [SCIM 2,0 protokoll specifikációjának](https://tools.ietf.org/html/rfc7644) egy adott profilját, az általános "nem katalógus" integrációs lehetőség használatával a Azure Portalban.
 

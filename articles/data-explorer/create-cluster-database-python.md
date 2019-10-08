@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326626"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996230"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a Python használatával
 
@@ -35,54 +35,59 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg egy parancssort, amely a Python elérési útját is tartalmazni fogja. Futtassa ezt a parancsot:
 
 ```
+pip install azure-common
 pip install azure-mgmt-kusto
-pip install adal
-pip install msrestazure
 ```
+## <a name="authentication"></a>Authentication
+A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Az Azure ad- [alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) létrehozásával hozzon létre egy ingyenes Azure ad-alkalmazást, és adja hozzá a szerepkör-hozzárendelést az előfizetési hatókörhöz. Azt is bemutatja, hogyan kérheti le a `Directory (tenant) ID`, `Application ID` és `Client Secret` értéket.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
 
 1. Hozza létre a fürtöt a következő parancs használatával:
 
     ```Python
-    from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
+    from azure.mgmt.kusto import KustoManagementClient
     from azure.mgmt.kusto.models import Cluster, AzureSku
-    from adal import AuthenticationContext
-    from msrestazure.azure_active_directory import AdalAuthentication
+    from azure.common.credentials import ServicePrincipalCredentials
 
+    #Directory (tenant) ID
     tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
     client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
     client_secret = "xxxxxxxxxxxxxx"
     subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-    context = AuthenticationContext('https://login.microsoftonline.com/{}'.format(tenant_id))
-    credentials = AdalAuthentication(context.acquire_token_with_client_credentials,
-                                         resource="https://management.core.windows.net/",
-                                         client_id=client_id,
-                                         client_secret=client_secret)
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
 
     location = 'Central US'
-    sku = 'D13_v2'
+    sku_name = 'Standard_D13_v2'
     capacity = 5
+    tier = "Standard"
     resource_group_name = 'testrg'
     cluster_name = 'mykustocluster'
-    cluster = Cluster(location=location, sku=AzureSku(name=sku, capacity=capacity))
+    cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
     
     kustoManagementClient = KustoManagementClient(credentials, subscription_id)
     
     cluster_operations = kustoManagementClient.clusters
     
-    cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
    |---|---|---|
    | cluster_name | *mykustocluster* | A fürt kívánt neve.|
-   | sku | *D13_v2* | A fürthöz használni kívánt SKU. |
+   | sku_name | *Standard_D13_v2* | A fürthöz használni kívánt SKU. |
+   | tier | *Standard* | Az SKU-szintet. |
+   | capacity | *száma* | A fürt példányainak száma. |
    | resource_group_name | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
-    További választható paramétereket is használhat, például a fürt kapacitását.
-    
-1. [ *Hitelesítő adatok* beállítása](/azure/python/python-sdk-azure-authenticate)
+    > [!NOTE]
+    > **A fürt létrehozása** hosszú ideig futó művelet. A **create_or_update** metódus a LROPoller egy példányát adja vissza. További információ: [LROPoller osztály](/python/api/msrest/msrest.polling.lropoller?view=azure-python) .
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a fürt létrehozása sikeres volt-e:
 
@@ -90,7 +95,7 @@ pip install msrestazure
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Ha az eredmény tartalmazza `provisioningState` az `Succeeded` értéket, a fürt létrehozása sikeresen megtörtént.
+Ha az eredmény `provisioningState` értéket tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása sikeresen megtörtént.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
@@ -109,7 +114,8 @@ Ha az eredmény tartalmazza `provisioningState` az `Succeeded` értéket, a für
                         soft_delete_period=softDeletePeriod,
                         hot_cache_period=hotCachePeriod)
     
-    database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+    poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
    |**Beállítás** | **Ajánlott érték** | **Mező leírása**|

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 8d094113107d8c49e34779cf8be62ecd71cb8cce
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937203"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000402"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -60,7 +60,7 @@ Azure Stream Analytics automatikusan megkeresi a frissített hivatkozási adatbl
 > 
 > Ez alól kivételt képez, ha a feladatsornak időben újra fel kell dolgoznia az adatfeldolgozást, vagy amikor a feladatot először indítja el. A kezdéskor a rendszer a feladatok kezdési időpontja előtt előállított legújabb blobot keresi. Erre azért van szükség, hogy a feladatok elindulásakor ne legyen **üres** a hivatkozás adatkészlete. Ha az egyik nem található, a feladatokban a következő diagnosztika látható: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs).
+A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tippek a blob-referenciák frissítéséhez
 
@@ -97,7 +97,7 @@ A SQL Database hivatkozási adatok konfigurálásához először létre kell hoz
 |Windows 10|A Azure SQL Databasehoz társított jelszó.|
 |Rendszeres frissítés|Ez a beállítás lehetővé teszi a frissítési sebesség kiválasztását. A "bekapcsolva" beállítással megadhatja a frissítési gyakoriságot a DD: óó: PP értékben.|
 |Pillanatkép-lekérdezés|Ez az alapértelmezett lekérdezési beállítás, amely beolvassa a hivatkozási adatait a SQL Databaseból.|
-|Változáslekérdezés|A nagyméretű adatkészletekkel és a rövid frissítési gyakorisággal rendelkező speciális forgatókönyvek esetében válassza a különbözeti lekérdezés hozzáadását.|
+|Különbözeti lekérdezés|A nagyméretű adatkészletekkel és a rövid frissítési gyakorisággal rendelkező speciális forgatókönyvek esetében válassza a különbözeti lekérdezés hozzáadását.|
 
 ## <a name="size-limitation"></a>Méret korlátozása
 
@@ -115,7 +115,7 @@ A tömörítés támogatása nem érhető el a referenciaadatoknál.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
+> [Rövid útmutató: Stream Analytics-feladatok létrehozása a Azure Portal @ no__t-0 használatával
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

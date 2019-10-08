@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 77c90cccbbfa5865878ae4dc47e5009697560ed3
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123257"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001314"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -67,7 +67,7 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>Nyilvános Azure-társviszony-létesítéshez használt IP-címek
 
 > [!NOTE]
-> Az Azure nyilvános társviszony-létesítés nem áll az új kapcsolatcsoportot avialable.
+> Az Azure nyilvános társ-összevonása nem érhető el az új áramkörökhöz.
 > 
 
 A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-címeket kell használnia. A Microsoftnak képesnek kell lennie ellenőrizni az IP-címek tulajdonjogát egy regionális útválasztási internetes jegyzékben vagy egy internetes útválasztási jegyzékben. 
@@ -199,8 +199,8 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | Dél-Afrika északi régiója | 12076:51034 | 12076:52034 | 12076:53034 | 12076:54034 |
 | Dél-Afrika nyugati régiója | 12076:51035 | 12076:52035 | 12076:53035 | 12076:54035 |
 | **EGYESÜLT ARAB EMÍRSÉGEK**| |
-| Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
-| Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
+| Az Egyesült Arab Emírségek északi régiója | 12076:51036 | 12076:52036 | 12076:53036 | 12076:54036 |
+| Az Egyesült Arab Emírségek középső régiója | 12076:51037 | 12076:52037 | 12076:53037 | 12076:54037 |
 
 
 A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket tartalmazó címkével lesz ellátva. 

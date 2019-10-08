@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások kezelése az Azure CLI-vel |} A Microsoft Docs
-description: Azure CLI és az Azure Resource Manager használatával kezelheti az erőforrásokat.
+title: Azure-erőforrások kezelése az Azure CLI használatával | Microsoft Docs
+description: Az Azure CLI és az Azure Erőforrás-kezelés használatával kezelheti az erőforrásokat.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,29 +8,29 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 3293d08f63cf573c7833fae5dd15bfe3119fd6c7
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206511"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001554"
 ---
-# <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-erőforrások kezelése az Azure CLI-vel
+# <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-erőforrások kezelése az Azure CLI használatával
 
-Ismerje meg, hogyan használható az Azure CLI-t [Azure Resource Manager](resource-group-overview.md) az Azure-erőforrások kezeléséhez. Erőforráscsoportok kezeléséhhez lásd: [kezelése Azure-erőforráscsoportok az Azure CLI-vel](./manage-resource-groups-cli.md).
+Ismerje meg, hogyan kezelheti Azure-erőforrásait az Azure CLI és a [Azure Resource Manager](resource-group-overview.md) használatával. Az erőforráscsoportok kezelésével kapcsolatban lásd: [Azure-erőforráscsoportok kezelése az Azure CLI használatával](./manage-resource-groups-cli.md).
 
-Egyéb erőforrások kezelésével kapcsolatos cikkek:
+További cikkek az erőforrások kezelésével kapcsolatban:
 
-- [Azure-erőforrások kezelése az Azure portal használatával](./manage-resources-portal.md)
-- [Azure-erőforrások kezelése az Azure PowerShell használatával](./manage-resources-powershell.md)
+- [Azure-erőforrások kezelése a Azure Portal használatával](./manage-resources-portal.md)
+- [Azure-erőforrások kezelése Azure PowerShell használatával](./manage-resources-powershell.md)
 
-## <a name="deploy-resources-to-an-existing-resource-group"></a>Erőforrások üzembe helyezése egy meglévő erőforráscsoportot
+## <a name="deploy-resources-to-an-existing-resource-group"></a>Erőforrások központi telepítése meglévő erőforráscsoporthoz
 
-Azure-erőforrások üzembe közvetlenül az Azure PowerShell használatával, vagy az Azure-erőforrások létrehozása Resource Manager-sablon üzembe helyezése.
+Az Azure-erőforrásokat közvetlenül a Azure PowerShell használatával telepítheti, vagy üzembe helyezhet egy Resource Manager-sablont az Azure-erőforrások létrehozásához.
 
-### <a name="deploy-a-resource"></a>Erőforrások üzembe helyezése
+### <a name="deploy-a-resource"></a>Erőforrás üzembe helyezése
 
-A következő szkript létrehoz egy tárfiókot.
+A következő szkript létrehoz egy Storage-fiókot.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -45,7 +45,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Sablon üzembe helyezése
 
-A következő szkriptet hoz létre egy storage-fiók létrehozása gyorsindítási sablon üzembe helyezése. További információkért lásd: [a rövid útmutató: Az Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
+A következő szkript létrehoz egy gyors üzembe helyezési sablont egy Storage-fiók létrehozásához. További információt a következő témakörben talál: [Quickstart: Hozzon létre Azure Resource Manager sablonokat a Visual Studio Code @ no__t-0 használatával.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -55,19 +55,19 @@ read location &&
 az group deployment create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-További információkért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](./resource-group-template-deploy-cli.md).
+További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](./resource-group-template-deploy-cli.md).
 
-## <a name="deploy-a-resource-group-and-resources"></a>Egy erőforráscsoport és erőforrások üzembe helyezése
+## <a name="deploy-a-resource-group-and-resources"></a>Erőforráscsoport és erőforrások üzembe helyezése
 
-Hozzon létre egy erőforráscsoportot, és helyezheti üzembe az erőforrásokat a csoporthoz. További információkért lásd: [hozzon létre és helyezhet üzembe erőforrásokat](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
+Létrehozhat egy erőforráscsoportot, és erőforrásokat telepíthet a csoportba. További információ: [erőforráscsoport létrehozása és erőforrások telepítése](./deploy-to-subscription.md#resource-group-and-resources).
 
-## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Több előfizetések vagy erőforráscsoportok erőforrások üzembe helyezése
+## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>Erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
-Általában végzi az üzembe helyezést összes erőforrást a sablonhoz, amelyekkel egyetlen erőforráscsoportra. Vannak azonban forgatókönyvek, ahol szeretné erőforráscsoport telepítsen együtt, de különböző erőforráscsoport vagy előfizetés helyezze el őket. További információkért lásd: [több előfizetések vagy erőforráscsoportok üzembe helyezése az Azure-erőforrások](./resource-manager-cross-resource-group-deployment.md).
+A sablonban lévő összes erőforrást általában egyetlen erőforráscsoporthoz kell telepíteni. Vannak azonban olyan forgatókönyvek, amelyekben különböző erőforrás-készleteket kíván üzembe helyezni, de más erőforráscsoportokbe vagy előfizetésbe helyezi őket. További információ: [Azure-erőforrások üzembe helyezése több előfizetésre vagy erőforráscsoporthoz](./resource-manager-cross-resource-group-deployment.md).
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
-Az alábbi parancsfájl bemutatja, hogyan törölheti a tárfiókokat.
+A következő szkript bemutatja, hogyan törölhet egy Storage-fiókot.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -77,11 +77,11 @@ read storageAccountName &&
 az storage account delete --resource-group $resourceGroupName --name $storageAccountName 
 ```
 
-Milyen az Azure Resource Manager orders erőforrások törlését kapcsolatos további információkért lásd: [törölni az Azure Resource Manager-erőforrást csoport](./resource-group-delete.md).
+További információ arról, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését: [Azure Resource Manager erőforráscsoport törlése](./resource-group-delete.md).
 
 ## <a name="move-resources"></a>Erőforrások áthelyezése
 
-Az alábbi parancsfájl bemutatja, hogyan távolítsa el a storage-fiók egyik erőforráscsoportból egy másik erőforráscsoportba.
+Az alábbi szkript bemutatja, hogyan távolíthat el egy Storage-fiókot egyik erőforráscsoporthoz egy másik erőforráscsoporthoz.
 
 ```azurecli-interactive
 echo "Enter the source Resource Group name:" &&
@@ -98,9 +98,9 @@ További információ: [Erőforrások áthelyezése új erőforráscsoportba vag
 
 ## <a name="lock-resources"></a>Erőforrások zárolása
 
-Zárolás megakadályozza a véletlen törlését vagy módosítását a kritikus fontosságú erőforrások, például az Azure-előfizetésre, erőforráscsoportra vagy erőforrásra a szervezet más felhasználói. 
+A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
 
-A következő parancsfájl egy storage-fiók zárolja, így a fiók nem törölhető.
+A következő parancsfájl zárolja a Storage-fiókot, így a fiók nem törölhető.
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -110,7 +110,7 @@ read storageAccountName &&
 az lock create --name LockSite --lock-type CanNotDelete --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts 
 ```
 
-A következő parancsfájl egy tárfiókhoz tartozó összes zárolásainak beolvasása:
+A következő parancsfájl minden zárolást beolvas egy Storage-fiókhoz:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -120,7 +120,7 @@ read storageAccountName &&
 az lock list --resource-group $resourceGroupName --resource-name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --parent ""
 ```
 
-A következő parancsfájl egy storage-fiók zárolása törli:
+A következő szkript törli a Storage-fiók zárolását:
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -135,15 +135,15 @@ További információ: [Erőforrások zárolása az Azure Resource Manager eszk�
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-Az erőforráscsoport és erőforrások rendszerezéséhez logikailag címkézési segít. További információ: [az Azure-erőforrások rendszerezése címkék használatával](./resource-group-using-tags.md#azure-cli).
+A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot és az erőforrásokat. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](./resource-group-using-tags.md#azure-cli).
 
 ## <a name="manage-access-to-resources"></a>Az erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információkért lásd: [RBAC és az Azure CLI-hozzáférés kezelése](../role-based-access-control/role-assignments-cli.md).
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információ: a [hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- Azure Resource Manager kapcsolatban lásd: [Azure Resource Manager áttekintése](./resource-group-overview.md).
-- A Resource Manager-sablon szintaxisáról kapcsolatban lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](./resource-group-authoring-templates.md).
-- Ismerje meg, hogyan fejleszthet sablonokat, tekintse meg a [lépésről lépésre haladó oktatóanyagok](/azure/azure-resource-manager/).
-- Az Azure Resource Manager-sablon sémák megtekintése: [sablonreferenciája](/azure/templates/).
+- Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
+- A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.
+- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
+- A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

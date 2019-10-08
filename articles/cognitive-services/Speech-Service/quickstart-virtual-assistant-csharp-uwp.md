@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: travisw
 ms.openlocfilehash: c676e98eb812a31d6fb8d7cc0f58929f803c868e
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70382057"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK-val, UWP
@@ -39,7 +39,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="optional-get-started-fast"></a>Nem kötelező: Gyors első lépések
 
-Ez a rövid útmutató leírja, hogyan teheti lehetővé az ügyfélalkalmazás számára a beszédfelismerést támogató robothoz való kapcsolódást. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, a fordításra kész forráskód a `quickstart` mappában található [Speech SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
+Ez a rövid útmutató leírja, hogyan teheti lehetővé az ügyfélalkalmazás számára a beszédfelismerést támogató robothoz való kapcsolódást. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, előkészített forráskód a `quickstart` mappában található [SPEECH SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
@@ -53,7 +53,7 @@ Most adja hozzá az alkalmazás felhasználói felületét meghatározó XAML-k�
 
 Először hozza létre az alkalmazás felhasználói felületét a XAML-kód hozzáadásával:
 
-1. A **megoldáskezelő**megnyitásához `MainPage.xaml`nyissa meg a t.
+1. **Megoldáskezelő**nyissa meg a `MainPage.xaml` csomópontot.
 
 1. A tervező XAML-nézetében cserélje le a teljes tartalmat a következő kódrészletre:
 
@@ -108,7 +108,7 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
 
 Ezután hozzáadja a forráskód mögötti forrást, hogy az alkalmazás a várt módon működjön. A kód mögötti forrás a következőket tartalmazza:
 
-- `using`a és `Speech` `Speech.Dialog` a névterek utasításai
+- `using` utasítások az `Speech` és a `Speech.Dialog` névterekhez
 - Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
 - Alapvető felhasználói felületi segítők az alkalmazásban lévő üzenetek és hibák megjelenítéséhez
 - Az inicializálási kód elérési útjának kiinduló pontja, amelyet később fel kell tölteni
@@ -117,7 +117,7 @@ Ezután hozzáadja a forráskód mögötti forrást, hogy az alkalmazás a várt
 
 A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (Ez a következő alá `MainPage.xaml`van csoportosítva:.)
+1. A **Megoldáskezelőban**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs`. (@No__t-0 alatt van csoportosítva.)
 
 1. Cserélje le a fájl tartalmát a következő kódrészletre:
 
@@ -289,7 +289,7 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
     }
     ```
 
-1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód hozza `DialogServiceConnector` létre az előfizetési adatokat.
+1. Adja hozzá a következő kódrészletet a metódus törzséhez `InitializeDialogServiceConnector`. Ez a kód a `DialogServiceConnector` értéket hozza létre az előfizetési adataival.
 
     ```csharp
     // create a DialogServiceConfig by providing a bot secret key 
@@ -315,9 +315,9 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
    > [!NOTE]
    > A robot konfigurálásával és a csatorna titkos kódjának beolvasásával kapcsolatos információkért tekintse meg a [Direct line Speech Channel](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
-1. Cserélje le a `YourChannelSecret` `YourSpeechSubscriptionKey`sztringeket, `YourServiceRegion` és a saját értékeit a robot, a Speech előfizetés és a [régió](regions.md)számára.
+1. Cserélje le a `YourChannelSecret`, `YourSpeechSubscriptionKey` és `YourServiceRegion` karakterláncokat a robot, a Speech előfizetés és a [régió](regions.md)saját értékeivel.
 
-1. Fűzze hozzá a következő kódrészletet a metódus törzsének `InitializeDialogServiceConnector`végéhez. Ez a kód a által `DialogServiceConnector` hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
+1. Fűzze hozzá a következő kódrészletet az `InitializeDialogServiceConnector` metódus törzsének végéhez. Ez a kód a `DialogServiceConnector` által hivatkozott események kezelőit állítja be a robot tevékenységei, a beszédfelismerés eredményei és egyéb információk közlésére.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -372,7 +372,7 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
     };
     ```
 
-1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus `MainPage` törzséhez a osztályban. Ez a kód a `DialogServiceConnector` figyelést állítja be, mert már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
+1. Adja hozzá a következő kódrészletet a `ListenButton_ButtonClicked` metódus törzséhez a `MainPage` osztályban. Ez a kód `DialogServiceConnector` értéket állít be a figyeléshez, mivel már megalakította a konfigurációt, és regisztrálta az eseménykezelőket.
 
     ```csharp
     if (connector == null)
@@ -407,9 +407,9 @@ A kód mögötti forrás hozzáadásához kövesse az alábbi lépéseket:
 
 Most már készen áll az alkalmazás létrehozására és tesztelésére.
 
-1. Az alkalmazás létrehozásához a menüsávon válassza a **Build** > **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
+1. A menüsávban válassza a **build** > **Build megoldás** elemet az alkalmazás létrehozásához. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. Az alkalmazás **indításához válassza a hibakeresés** **indítása hibakeresést** (vagy nyomja le az F5 billentyűt). >  Megjelenik a **HelloWorld** ablak.
+1. Az alkalmazás indításához válassza a **hibakeresés**@no__t – 1**Indítás hibakeresése** (vagy az **F5**billentyű lenyomása) lehetőséget. Megjelenik a **HelloWorld** ablak.
 
    ![Példa UWP virtuális asszisztensi alkalmazásra C# – gyors üzembe helyezés](media/sdk/qs-virtual-assistant-uwp-helloworld-window.png)
 

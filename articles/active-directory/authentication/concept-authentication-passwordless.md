@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240869"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000329"
 ---
 # <a name="what-is-passwordless"></a>Mi a jelszó nélküli hitelesítés?
 
@@ -62,10 +62,10 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID FÁJLOK | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurity | [https://ensurity.com/contact-us.html](https://ensurity.com/contact-us.html) |
+| Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
-Ha Ön szállító, és szeretné lekérni az eszközt ezen a listán, forduljon [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)a következőhöz:.
+Ha Ön szállító, és szeretné lekérni az eszközt ezen a listán, lépjen kapcsolatba [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
 
 A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: beb2e6a16a303f633b36709fee2a60cca160d1b6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963806"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001539"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Oktatóanyag: Kimenetek hozzáadása a Resource Manager-sablonhoz
 
@@ -49,7 +49,7 @@ A [hivatkozási](resource-group-template-functions-resource.md#reference) függv
 
 Végül visszaadja a **primaryEndpoints** tulajdonságot a Storage-fiókból.
 
-## <a name="deploy-template"></a>Sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Készen áll a sablon üzembe helyezésére, és megtekinteni a visszaadott értéket.
 
@@ -93,7 +93,7 @@ A központi telepítési parancs kimenetében a következőhöz hasonló objektu
 
 ## <a name="review-your-work"></a>A munka áttekintése
 
-Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörténtek áttekintésére. Létrehozott egy könnyen elérhető paramétereket tartalmazó sablont. A sablon többször is felhasználható a különböző környezetekben, mivel lehetővé teszi a testreszabást, és dinamikusan létrehozza a szükséges értékeket. A parancsfájlban használt Storage-fiók adatait adja vissza.
+Sokat tett az elmúlt hat oktatóanyagban. Szánjon egy kis időt a megtörténtek áttekintésére. Létrehozott egy könnyen elérhető paramétereket tartalmazó sablont. A sablon többször is felhasználható a különböző környezetekben, mivel lehetővé teszi a testreszabást, és dinamikusan létrehozza a szükséges értékeket. Emellett a parancsfájlban használható Storage-fiókkal kapcsolatos információkat is adja vissza.
 
 Most nézzük meg az erőforráscsoportot és az üzembe helyezési előzményeket.
 

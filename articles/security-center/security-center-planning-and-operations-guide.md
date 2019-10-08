@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 62387fe7ddbde75e79724c77dd7eeedd5cae64c3
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201869"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996623"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -203,7 +203,7 @@ Emellett rendszeresen figyelnie kell a meglévő erőforrásokat azokra a konfig
 
 ### <a name="hardening-access-and-applications"></a>A hozzáférés megnehezítése és az alkalmazások védelmének megerősítése
 
-A biztonsági folyamatai részeként érdemes bevezetnie megelőző intézkedéseket a virtuális gépek hozzáférésének megakadályozása és a rajtuk futó alkalmazások szabályozása érdekében. Az Azure-beli virtuális gépek bemenő forgalmának zárolásával kevésbé fogják veszélyeztetni a támadások, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez. A [Virtuális gépek igény szerinti elérése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) funkció használatával megnehezítheti a hozzáférést virtuális gépeihez.
+A biztonsági folyamatai részeként érdemes bevezetnie megelőző intézkedéseket a virtuális gépek hozzáférésének megakadályozása és a rajtuk futó alkalmazások szabályozása érdekében. Az Azure-beli virtuális gépek bemenő forgalmának zárolásával kevésbé fogják veszélyeztetni a támadások, ugyanakkor könnyű hozzáférést biztosít arra az esetre, amikor csatlakozni kell a virtuális gépekhez. Az [igény szerinti virtuálisgép-hozzáférési](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) szolgáltatással megerősítheti a virtuális gépekhez való hozzáférést.
 
 Az [adaptív alkalmazások vezérlői](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application) segítségével korlátozhatja, hogy mely alkalmazások futhatnak az Azure-ban található virtuális gépeken. Más előnyök mellett ez segít megerősíteni a virtuális gépeket a kártevők ellen. A gépi tanulás használatával a Security Center elemzi a virtuális gépen futó folyamatokat, hogy segítsen az engedélyezési szabályok létrehozásában.
 

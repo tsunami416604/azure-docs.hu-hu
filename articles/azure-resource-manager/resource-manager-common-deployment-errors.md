@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: ac700592a63e88936593c24f8f7ce06a08e289ce
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972691"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001636"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Resource Manager
 
@@ -44,6 +44,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | InUseSubnetCannotBeDeleted | Ez a hiba akkor fordulhat elő, ha egy erőforrást próbál frissíteni, és az erőforrás törlésével és létrehozásával dolgozza fel a kérést. Győződjön meg arról, hogy az összes változatlan értéket meg kell adni. | [Erőforrás frissítése](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Szerezze be a megfelelő bérlő hozzáférési jogkivonatát. Csak azon bérlőtől kérheti le a jogkivonatot, amelyhez a fiók tartozik. | |
 | InvalidContentLink | Valószínűleg megpróbált olyan beágyazott sablonhoz kapcsolni, amely nem érhető el. Ellenőrizze a beágyazott sablonhoz megadott URI-t. Ha a sablon létezik egy Storage-fiókban, győződjön meg arról, hogy az URI elérhető. Lehetséges, hogy egy SAS-tokent kell átadnia. Jelenleg nem lehet olyan sablonhoz kapcsolódni, amely egy [Azure Storage-tűzfal](../storage/common/storage-network-security.md)mögötti Storage-fiókban található. Vegye fontolóra a sablon áthelyezését egy másik adattárba, például a GitHubra. | [Csatolt sablonok](resource-group-linked-templates.md) |
+| InvalidDeploymentLocation | Az előfizetés szintjén történő üzembe helyezéskor egy másik helyet adott meg a korábban használt központi telepítési névnek. | [Előfizetés szintű központi telepítések](deploy-to-subscription.md) |
 | InvalidParameter | Az adott erőforráshoz megadott értékek egyike nem felel meg a várt értéknek. Ez a hiba számos különböző körülménytől járhat. Előfordulhat például, hogy a jelszó nem elegendő, vagy a blob neve helytelen. A hibaüzenetnek jeleznie kell, hogy melyik értéket kell kijavítani. | |
 | InvalidRequestContent | A központi telepítési értékekben szerepelnek a nem felismerhető értékek, vagy hiányoznak a szükséges értékek. Erősítse meg az erőforrástípus értékeit. | [Sablonreferencia](/azure/templates/) |
 | InvalidRequestFormat | A központi telepítés futtatásakor engedélyezze a hibakeresési naplózást, és ellenőrizze a kérelem tartalmát. | [Hibakeresési naplózás](#enable-debug-logging) |
@@ -92,7 +93,7 @@ Az érvényesítési hibák olyan forgatókönyvekből adódnak, amelyek az üze
 
 Mindkét típusú hiba az üzembe helyezés hibaelhárításához használható hibakódot ad vissza. Mindkét típusú hiba megjelenik a [tevékenységnaplóban](resource-group-audit.md). Az érvényesítési hibák azonban nem jelennek meg az üzembe helyezési előzmények között, mert az üzembe helyezés el sem indult.
 
-### <a name="validation-errors"></a>Érvényesség-ellenőrzési hibák
+### <a name="validation-errors"></a>Érvényesítési hibák
 
 Amikor a portálon keresztül végzi el az üzembe helyezést, az értékek megadása után jelenik meg az érvényesítési hiba.
 

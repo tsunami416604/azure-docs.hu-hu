@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fee8692b2e09f9e4f5580d60d2f7a5a5cea2858
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 27b5a8a7667419e0e3345fb453eefd840368b643
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950348"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001691"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -398,13 +398,13 @@ Az ebben a szerepkörben lévő felhasználók a Microsoft Teams szolgáltatásb
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Felhasználói rendszergazda](#user-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd alább), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is.
+Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd alább), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is. A felhasználói rendszergazdáknak nincs engedélye arra, hogy a legtöbb rendszergazdai szerepkörbe tartozó felhasználókhoz felhasználói tulajdonságokat kezeljenek. A korlátozás alól kivételt képező szerepkörök az alábbi táblázatban láthatók.
 
 | | |
 | --- | --- |
 |Általános engedélyek|<p>Felhasználók és csoportok létrehozása</p><p>Felhasználói nézetek létrehozása és kezelése</p><p>Office-támogatási jegyek kezelése<p>Jelszó-elévülési szabályzatok frissítése|
 |<p>Minden felhasználónál, beleértve az összes rendszergazdát</p>|<p>Licencek kezelése</p><p>Az összes felhasználói tulajdonság kezelése az egyszerű felhasználónév kivételével</p>
-|Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Címtárolvasó<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelentésolvasó<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Másik jelszó kérése</p><p>Eszköz kulcsainak frissítése</p>
+|Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Címtárolvasó<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelentésolvasó<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Másik jelszó kérése</p><p>Eszköz kulcsainak frissítése</p>|
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Példa:

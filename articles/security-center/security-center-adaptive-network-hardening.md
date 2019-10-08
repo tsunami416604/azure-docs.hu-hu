@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202763"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996719"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
 Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
@@ -37,7 +37,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
 
-1. A Security Center területen válassza a **hálózatkezelés** -> **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
+1. Security Center válassza a **hálózatkezelés** -> **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
    * **Sérült erőforrások**: Azok a virtuális gépek, amelyeknek jelenleg vannak olyan javaslatai és riasztásai, amelyeket az adaptív hálózat megerősítő algoritmusának futtatásával váltott ki. 
    * **Kifogástalan erőforrások**: Riasztások és javaslatok nélküli virtuális gépek.
    * Nem **ellenőrzött erőforrások**: Azok a virtuális gépek, amelyekhez az adaptív hálózat megerősítő algoritmusa nem futtatható a következő okok egyike miatt:
@@ -65,7 +65,7 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
    > [!NOTE]
    > [Törölhet](#delete-rule) vagy [hozzáadhat](#add-rule) egy szabályt is.
 
-3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a kikényszerítésgombra.
+3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a **kikényszerítés**gombra.
 
       > [!NOTE]
       > A kényszerített szabályok hozzáadódnak a virtuális gépet védő NSG (ok) hoz. (A virtuális gépet egy hálózati adapterhez társított NSG, vagy a virtuális gépet tartalmazó alhálózattal, vagy mindkettővel védeni lehet.)
@@ -85,9 +85,9 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
   > [!NOTE]
   > A "megtagadás" szabályok létrehozása és módosítása közvetlenül a NSG történik további részletekért lásd: [hálózati biztonsági csoport létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group).
 
-* A **minden forgalmi** szabály megtagadása az egyetlen "megtagadás" szabály, amely itt is szerepel, és nem módosítható. Azonban törölheti is (lásd: [szabály törlése](#delete-rule)).
+* A **minden forgalmi szabály megtagadása** az egyetlen "megtagadás" szabály, amely itt is szerepel, és nem módosítható. Azonban törölheti is (lásd: [szabály törlése](#delete-rule)).
   > [!NOTE]
-  > A **minden forgalmi** szabály megtagadása ajánlott, ha az algoritmus futtatásának eredményeképpen a Security Center nem azonosítja az engedélyezett forgalmat a meglévő NSG-konfiguráció alapján. Ezért az ajánlott szabály az, hogy megtagadja a megadott portra irányuló összes forgalmat. Az ilyen típusú szabály neve "*rendszer által generált*" néven jelenik meg. A szabály érvénybe léptetése után annak tényleges neve a NSG lesz, amely a protokoll, a forgalom iránya, a "MEGTAGADÁS" és a véletlenszerű szám.
+  > A **minden forgalmi szabály megtagadása** ajánlott, ha az algoritmus futtatásának eredményeképpen a Security Center nem azonosítja az engedélyezett forgalmat a meglévő NSG-konfiguráció alapján. Ezért az ajánlott szabály az, hogy megtagadja a megadott portra irányuló összes forgalmat. Az ilyen típusú szabály neve "*rendszer által generált*" néven jelenik meg. A szabály érvénybe léptetése után annak tényleges neve a NSG lesz, amely a protokoll, a forgalom iránya, a "MEGTAGADÁS" és a véletlenszerű szám.
 
 *Adaptív hálózati kötési szabály módosítása:*
 
@@ -98,11 +98,11 @@ Néhány fontos útmutató az adaptív hálózat megerősítési szabályának m
 1. A **szabály szerkesztése** ablakban frissítse a módosítani kívánt adatokat, majd kattintson a **Mentés**gombra.
 
    > [!NOTE]
-   > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a kikényszerítés gombra kell kattintania (a következő lépésben leírtak szerint).
+   > A **Mentés**gombra kattintva sikeresen módosította a szabályt. *Azonban nem alkalmazta azt a NSG.* Az alkalmazásához ki kell választania a szabályt a listában, majd a **kikényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
 
    ![szabály szerkesztése](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
-3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson akikényszerítés gombra.
+3. A frissített szabály alkalmazásához a listából válassza ki a frissített szabályt, majd kattintson a **kikényszerítés**gombra.
 
     ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
@@ -124,16 +124,16 @@ Hozzáadhat egy "Allow" szabályt, amelyet a Security Center nem ajánlott.
    > [!NOTE]
    > A **Hozzáadás**gombra kattintva sikeresen felvette a szabályt, és az szerepel a többi javasolt szabályban. Azonban nem alkalmazta azt a NSG. Az aktiváláshoz ki kell választania a szabályt a listában, majd a **kényszerítés** gombra kell kattintania (a következő lépésben leírtak szerint).
 
-3. Az új szabály alkalmazásához a listából válassza ki az új szabályt, majd kattintson akikényszerítés gombra.
+3. Az új szabály alkalmazásához a listából válassza ki az új szabályt, majd kattintson a **kikényszerítés**gombra.
 
     ![szabály betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
 ### Szabály <a name ="delete-rule"></a> törlése
 
-Ha szükséges, törölheti a javasolt szabályt. Meghatározhatja például, hogy egy javasolt szabály alkalmazása blokkolhatja a legitim forgalmat.
+Ha szükséges, törölheti az aktuális munkamenet javasolt szabályát. Meghatározhatja például, hogy egy javasolt szabály alkalmazása blokkolhatja a legitim forgalmat.
 
-*Adaptív hálózati kötési szabály törlése:*
+*Adaptív hálózati kötési szabály törlése az aktuális munkamenethez:*
 
 1. A **szabályok** lapon kattintson a három pontra (...) a szabály sor végén, majd kattintson a **Törlés**gombra.  
 

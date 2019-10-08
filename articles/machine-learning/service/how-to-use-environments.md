@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 2056970a91a90fc14528b13650472722a235c354
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4d4d83e12d284ce760b8a7e87fd42e6c8ebb4850
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350484"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001211"
 ---
 # <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Újrafelhasználható környezetek létrehozása és kezelése a Azure Machine Learning-vel való betanításhoz és üzembe helyezéshez.
 
@@ -160,7 +160,7 @@ Csomagokat adhat hozzá egy Conda-, Pip-vagy Private Wheel-fájlokat tartalmazó
 
 Ha egy csomag elérhető egy Conda-csomag adattárában, ajánlott a Conda a pip-en keresztül telepíteni. Ennek az az oka, hogy a Conda-csomagok általában előre elkészített bináris fájlokkal rendelkeznek, amelyek megbízhatóbb telepítést tesznek elérhetővé.
 
-Az alábbi példa a `scikit-learn` [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) és `pillow` `myenv` [ametódusokhasználatávaladjahozzáa0.21.3-tésacsomagot`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) a környezethez.
+Az alábbi példa a `scikit-learn`, a speciális verziójú 0.21.3 és a `pillow` csomagot adja hozzá a környezethez, `myenv` a [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-) és [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-) metódusokkal.
 
 ```python
 from azureml.core import Environment
@@ -178,7 +178,7 @@ myenv.python.conda_dependencies=conda_dep
 
 ### <a name="private-wheel-files"></a>Privát Wheel Files
 
-A privát pip-fájlok a saját munkaterület-tárolóba való feltöltésével statikus [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) módszerrel, majd a tárolási URL-cím rögzítésével, valamint az URL-cím a `add_pip_package()` metódusba való továbbításával használhatók.
+A privát pip-fájlok használatával először töltse fel azt a munkaterület-tárolóba statikus [`add_private_pip_wheel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#add-private-pip-wheel-workspace--file-path--exist-ok-false-) metódus használatával, majd rögzítse a tárolási URL-címet, és adja át az URL-címet a `add_pip_package()` metódusnak
 
 ```python
 # During environment creation the service replaces the URL by secure SAS URL, so your wheel file is kept private and secure
@@ -207,7 +207,7 @@ Ha első alkalommal használja a képzést vagy üzembe helyezést, a környezet
 
 ### <a name="get-existing-environments"></a>Meglévő környezetek beolvasása
 
-A környezeti osztály olyan metódusokat kínál, amelyek lehetővé teszik a meglévő környezetek lekérését a munkaterületen név, lista vagy adott tanítási Futtatás alapján. Hibaelhárítási és naplózási célokra, reprodukálhatóság
+A környezeti osztály olyan metódusokat kínál, amelyek lehetővé teszik a meglévő környezetek lekérését a munkaterületen név alapján, listaként vagy a hibaelhárítási vagy naplózási célból, valamint a reprodukálhatóságot.
 
 #### <a name="view-list-of-environments"></a>A környezetek listájának megtekintése
 
@@ -216,7 +216,7 @@ Tekintse meg a munkaterületen található környezeteket [`Environment.list(wor
 #### <a name="get-environment-by-name"></a>Környezet beolvasása név alapján
 
 Egy adott környezetet a név és a verzió alapján is lekérhet.
-A következő kód a [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) metódust használja a környezet `1` `myenv` verziójának lekéréséhez a `ws` munkaterületen.
+A következő kód a [Get ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py#get-workspace--name--version-none-) metódust használja a környezet `1` verziójának lekéréséhez, `myenv` a `ws` munkaterületen.
 
 ```python
 restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
@@ -224,7 +224,7 @@ restored_environment = Environment.get(workspace=ws,name="myenv",version="1")
 
 #### <a name="training-run-specific-environment"></a>Meghatározott környezet betanítása
 
-Ahhoz, hogy a képzés befejeződése után egy adott futtatáshoz használt környezet elérhető legyen, használja a [get_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-environment--)metódust a Run osztályban.
+Ahhoz, hogy a képzés befejeződése után egy adott futtatáshoz használt környezet elérhető legyen, használja a [get_environment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-environment--) metódust a Run osztályban.
 
 ```python
 from azureml.core import Run
@@ -233,7 +233,7 @@ Run.get_environment()
 
 ### <a name="update-an-existing-environment"></a>Meglévő környezet frissítése
 
-Ha olyan meglévő környezetet módosít, mint például a Python-csomag hozzáadása, a rendszer létrehozza a környezet új verzióját, amikor futtatja a futtatást, a modell üzembe helyezését vagy a környezet manuális regisztrálását. A verziószámozás lehetővé teszi a környezet változásainak időbeli megtekintését.
+Ha olyan meglévő környezetet módosít, mint például a Python-csomag hozzáadása, a rendszer a Futtatás, a modell telepítése vagy a környezet manuális regisztrálása során létrehozza a környezet új verzióját. A verziószámozás lehetővé teszi a környezet változásainak időbeli megtekintését.
 
 Meglévő környezet Python-csomag verziójának frissítéséhez határozza meg a csomag pontos verziószámát. Ellenkező esetben a Azure Machine Learning a környezet létrehozásakor újrahasznosítja a meglévő környezetet a csomag verziójával.
 
@@ -243,22 +243,22 @@ Ez a példa a [build ()](https://docs.microsoft.com/python/api/azureml-core/azur
 
 ```python
 from azureml.core import Image
-build = env.build()
+build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
 ## <a name="docker-and-environments"></a>Docker és környezetek
 
- A [](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) Azure Machine learning `Environments` osztály DockerSection lehetővé teszi annak a vendég operációs rendszernek a testreszabását és vezérlését, amelyben a betanítási futtatást végrehajtja.
+ A Azure Machine Learning `Environments` osztály [DockerSection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) lehetővé teszi, hogy részletesen testreszabja és vezérelje azt a vendég operációs rendszert, amelyben a képzés futtatása fut.
 
-`enable` A Docker esetében a szolgáltatás létrehoz egy Docker-rendszerképet, és létrehoz egy Python-környezetet a saját specifikációi között a Docker-tárolóban. Ez további elkülönítést és reprodukálhatóságot biztosít a képzések futtatásához.
+Ha `enable` Docker-t, a szolgáltatás létrehoz egy Docker-rendszerképet, és létrehoz egy Python-környezetet a saját specifikációi között a Docker-tárolóban. Ez további elkülönítést és reprodukálhatóságot biztosít a képzések futtatásához.
 
 ```python
 # Creates the environment inside a Docker container.
 myenv.docker.enabled = True
 ```
 
-A kiépítés után a Docker-rendszerkép alapértelmezés szerint a munkaterülethez társított Azure Container Registry jelenik meg.  Az adattár neve a *azureml/azureml_ @ no__t-1uuid @ no__t-2*formátumú. Az egyedi azonosító (*uuuid*) rész a környezeti konfiguráció alapján számított kivonatnak felel meg. Ez lehetővé teszi a szolgáltatás számára annak meghatározását, hogy az adott környezetnek megfelelő rendszerkép már létezik-e az újrafelhasználáshoz.
+A kiépítés után a Docker-rendszerkép alapértelmezés szerint a munkaterülethez társított Azure Container Registry jelenik meg.  Az adattár neve a *azureml/azureml_ @ no__t-1uuid @ no__t-2*formátumú. Az egyedi azonosító (*UUID*) rész a környezeti konfigurációból kiszámított kivonatnak felel meg. Ez lehetővé teszi a szolgáltatás számára annak meghatározását, hogy az adott környezetnek megfelelő rendszerkép már létezik-e az újrafelhasználáshoz.
 
 Emellett a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)egyikét használja, és telepíti a megadott Python-csomagokat. Az alaprendszerkép rendelkezik CPU-és GPU-verziókkal. Azure Machine Learning szolgáltatás automatikusan észleli, hogy melyik verziót kell használni.
 
@@ -269,7 +269,7 @@ myenv.docker.base_image_registry="your_registry_location"
 ```
 
 > [!NOTE]
-> Ha egyéni Docker-rendszerkép használatakor megadja `environment.python.user_managed_dependencies=False` a szolgáltatást, a szolgáltatás létrehoz egy Conda-környezetet a rendszerképben, és végrehajtja a futtatást az adott környezetben, nem pedig az alaprendszerképre telepített Python-kódtárak használata helyett. A paramétert `True` a saját telepített csomagjainak használatára állíthatja be.
+> Ha a `environment.python.user_managed_dependencies=False` értéket adja meg egy egyéni Docker-rendszerkép használatakor, a szolgáltatás létrehoz egy Conda-környezetet a rendszerképben, és végrehajtja a futtatást az adott környezetben, nem pedig az alaprendszerképre telepített Python-kódtárak használata helyett. A paramétert állítsa `True` értékre a saját telepített csomagjainak használatához.
 
 ## <a name="using-environments-for-training"></a>Környezetek használata képzéshez
 
@@ -300,7 +300,7 @@ run = exp.submit(runconfig)
 ```
 
 > [!NOTE]
-> A futtatási előzmények letiltásához vagy a pillanatképek futtatásához használja a következő beállítást `ScriptRunConfig.run_config.history`:.
+> A futtatási előzmények letiltásához vagy a pillanatképek futtatásához használja a `ScriptRunConfig.run_config.history` alatti beállítást.
 
 Ha nem adja meg a környezetet a futtatási konfigurációban, a szolgáltatás létrehoz egy alapértelmezett környezetet, amely a futtatásának elküldésekor jön létre.
 
@@ -330,11 +330,11 @@ run = experiment.submit(sk_est)
 
 ## <a name="using-environments-for-web-service-deployment"></a>Környezetek használata a webszolgáltatások üzembe helyezéséhez
 
-Használhat környezeteket webszolgáltatásként való üzembe helyezéskor. Ez lehetővé teszi egy reprodukálható, csatlakoztatott munkafolyamatot, ahol a modell betanítását, tesztelését és üzembe helyezését pontosan ugyanazokkal a kódtárakkal végezheti el, mint a képzési és következtetési számításokban.
+Használhat környezeteket webszolgáltatásként való üzembe helyezéskor. Ez lehetővé teszi egy reprodukálható, csatlakoztatott munkafolyamatot, ahol a modell betanítását, tesztelését és üzembe helyezését pontosan ugyanazokkal a könyvtárakkal végezheti el, mint a képzési és következtetési számításokban.
 
 Webszolgáltatások üzembe helyezéséhez egyesítse a környezetet, a következtetéseket, a pontozási parancsfájlokat és a regisztrált modellt a telepítési objektumban [()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). További információ a [webszolgáltatások üzembe helyezéséről](how-to-deploy-and-where.md).
 
-Ebben a példában feltételezzük, hogy elvégezte a betanítási futtatást az Azure Container instance (ACI) szolgáltatásban való üzembe helyezéshez. A webszolgáltatás létrehozásakor a modell-és pontozási fájlok csatlakoztatva vannak a rendszerképhez, és a rendszer hozzáadja a Azure Machine Learning következtetési veremet a rendszerképhez.
+Ebben a példában feltételezzük, hogy elvégezte a betanítási kísérletet, és ezt a modellt egy Azure Container instance (ACI) szolgáltatásban szeretné üzembe helyezni. A webszolgáltatás létrehozásakor a modell-és pontozási fájlok csatlakoztatva vannak a rendszerképhez, és a Azure Machine Learning következtetési verem bekerül a rendszerképbe.
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -364,6 +364,6 @@ Ez a [példa](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-
 
 ## <a name="next-steps"></a>További lépések
 
-* [Oktatóanyag: A modell](tutorial-train-models-with-aml.md) betanítása felügyelt számítási célt használ a modellek betanításához.
+* [Oktatóanyag: A @ no__t-0 modell betanítása felügyelt számítási célt használ a modell betanításához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
 * Tekintse meg a [környezeti osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) SDK-referenciáját.

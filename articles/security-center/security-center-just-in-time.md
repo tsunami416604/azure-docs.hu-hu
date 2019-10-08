@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202020"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996391"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -118,7 +118,7 @@ Az ASC szolgáltatásban beállíthat egy JIT-szabályzatot, és egy JIT-szabál
 
 Hozzáférés kérése egy virtuális géphez az ASC használatával:
 
-1. A **virtuális gépekhez való hozzáférés lehetőségnél**válassza a **konfigurált** fület.
+1. A **virtuális gépek igény szerinti elérése**területen válassza a **konfigurált** lapot.
 
 2. A **virtuális gép**területen kattintson arra a virtuális gépre, amelyhez hozzáférést szeretne kérni. Ekkor megjelenik a virtuális gép melletti pipa.
 
@@ -149,7 +149,7 @@ Egy virtuális gép meglévő, igény szerinti házirendjének szerkesztése:
 
 1. Válassza a **Szerkesztés** elemet.
 1. A **JIT VM-hozzáférés konfigurálása**területen szerkesztheti a már védett portok meglévő beállításait, vagy hozzáadhat egy új egyéni portot is. 
-  ![JIT VM-hozzáférés](./media/security-center-just-in-time/edit-policy.png)
+  @no__t – 0jit virtuális gép hozzáférése @ no__t-1
 
 ## <a name="audit-jit-access-activity-in-asc"></a>A JIT hozzáférési tevékenységének naplózása az ASC-ben
 
@@ -227,7 +227,7 @@ Az igény szerinti virtuálisgép-hozzáférési szolgáltatás a Azure Security
 
 ## <a name="jit-vm-access-via-powershell"></a>JIT VM-hozzáférés a PowerShell használatával
 
-Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és különösen `Set-AzJitNetworkAccessPolicy`a következőt:.
+Az igény szerinti virtuálisgép-hozzáférési megoldás PowerShell használatával történő használatához használja a hivatalos Azure Security Center PowerShell-parancsmagokat, és kifejezetten `Set-AzJitNetworkAccessPolicy`.
 
 Az alábbi példa egy igény szerinti virtuálisgép-hozzáférési szabályzatot állít be egy adott virtuális gépen, és beállítja a következőket:
 

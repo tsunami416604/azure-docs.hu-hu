@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70736011"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-parancsfájlok leírása
@@ -227,7 +227,7 @@ A folyamaton belüli átalakítási tevékenységeket meghatározó JSON-minták
 
 A folyamat létrehozásának teljes áttekintését lásd: [Tutorial: Hozza létre az első folyamatot az adatfeldolgozáshoz a @ no__t-0 Hadoop-fürt használatával.
 
-## <a name="linked-service"></a>Társított szolgáltatás
+## <a name="linked-service"></a>Társított szolgáltatások
 A társított szolgáltatás definíciójának magas szintű szerkezete a következő:
 
 ```json
@@ -405,7 +405,7 @@ Kattintson arra a tárolóra, amelyre kíváncsi, hogy megjelenjenek a társíto
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A társított szolgáltatások két típusa létezik: Az Azure Storage társított szolgáltatás és az Azure Storage SAS társított szolgáltatása.
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -585,7 +585,7 @@ További információt az [Azure Blob-összekötő](data-factory-azure-blob-conn
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Azure Data Lake Store társított szolgáltatás definiálásához állítsa be a társított szolgáltatás típusát a **AzureDataLakeStore**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -781,7 +781,7 @@ További információ: Azure Data Lake Store- [összekötő](data-factory-azure-
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Azure Cosmos DB társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **DocumentDb**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | **Tulajdonság** | **Leírás** | **Kötelező** |
@@ -931,7 +931,7 @@ További információ: Azure Cosmos DB- [összekötő](data-factory-azure-docume
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Azure SQL Database társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **AzureSqlDatabase**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1102,7 +1102,7 @@ További információ: [Azure SQL Connector](data-factory-azure-sql-connector.md
 
 ## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Azure SQL Data Warehouse társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **AzureSqlDW**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1281,7 +1281,7 @@ További információ: Azure SQL Data Warehouse- [összekötő](data-factory-azu
 
 ## <a name="azure-search"></a>Azure Search
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Azure Search társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **AzureSearch**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1390,7 +1390,7 @@ További információ: Azure Search- [összekötő](data-factory-azure-search-co
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A társított szolgáltatások két típusa létezik: Az Azure Storage társított szolgáltatás és az Azure Storage SAS társított szolgáltatása.
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
@@ -1536,7 +1536,7 @@ Ha Adatmásolást végez az Azure Table Storageba, állítsa a másolási tevék
 | azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |Nem |
 | azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |Nem |
 | azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek az oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Egy oszlop neve. |Nem |
-| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |egyesítés (alapértelmezett)<br/>csere |Nem |
+| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |Egyesítés (alapértelmezett)<br/>csere |Nem |
 | writeBatchSize |Beilleszti az adatbevitelt az Azure-táblába, amikor a writeBatchSize vagy a writeBatchTimeout találat. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Beilleszti az adatbevitelt az Azure-táblába a writeBatchSize vagy a writeBatchTimeout találatakor |TimeSpan<br/><br/>Példa: "00:20:00" (20 perc) |Nem (alapértelmezett érték a Storage-ügyfél alapértelmezett időtúllépési értéke 90 mp) |
 
@@ -1587,7 +1587,7 @@ További információ ezekről a társított szolgáltatásokról: [Azure Table 
 
 ## <a name="amazon-redshift"></a>Amazon RedShift
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Az Amazon vöröseltolódás társított szolgáltatásának definiálásához állítsa a társított szolgáltatás **típusát** **AmazonRedshift**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1699,7 +1699,7 @@ További információ: Amazon vöröseltolódás-összekötő.
 
 ## <a name="ibm-db2"></a>IBM DB2
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Az IBM DB2 társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **OnPremisesDB2**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1815,7 +1815,7 @@ További információ: az IBM DB2-összekötő cikke.
 
 ## <a name="mysql"></a>MySQL
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A MySQL-hez társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **OnPremisesMySql**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1937,7 +1937,7 @@ További információ: MySQL- [összekötő](data-factory-onprem-mysql-connector
 
 ## <a name="oracle"></a>Oracle
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Egy Oracle-alapú társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **OnPremisesOracle**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2106,7 +2106,7 @@ További információ: [Oracle Connector](data-factory-onprem-oracle-connector.m
 
 ## <a name="postgresql"></a>PostgreSQL
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A PostgreSQL-hez társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **OnPremisesPostgreSql**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2225,7 +2225,7 @@ További információ: PostgreSQL- [összekötő](data-factory-onprem-postgresql
 ## <a name="sap-business-warehouse"></a>SAP Business Warehouse
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Az SAP Business Warehouse (BW) társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **SapBw**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
@@ -2335,7 +2335,7 @@ További információ: az [SAP Business Warehouse-összekötő](data-factory-sap
 
 ## <a name="sap-hana"></a>SAP HANA
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 SAP HANA társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **SapHana**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
@@ -2445,7 +2445,7 @@ További információ: SAP HANA- [összekötő](data-factory-sap-hana-connector.
 
 ## <a name="sql-server"></a>SQL Server
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Hozzon létre egy **OnPremisesSqlServer** típusú társított szolgáltatást egy helyszíni SQL Server adatbázis egy adatgyárhoz való kapcsolásához. A következő táblázat a helyszíni SQL Server társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 A következő táblázat a SQL Server társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
@@ -2664,7 +2664,7 @@ További információ: SQL Server- [összekötő](data-factory-sqlserver-connect
 
 ## <a name="sybase"></a>Sybase
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Egy Sybase-társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **OnPremisesSybase**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2784,7 +2784,7 @@ További információ: Sybase- [összekötő](data-factory-onprem-sybase-connect
 
 ## <a name="teradata"></a>Teradata
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Teradata társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **OnPremisesTeradata**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2898,7 +2898,7 @@ További információ: Teradata- [összekötő](data-factory-onprem-teradata-con
 ## <a name="cassandra"></a>Cassandra
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A Cassandra társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **OnPremisesCassandra**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3025,7 +3025,7 @@ További információ: Cassandra- [összekötő](data-factory-onprem-cassandra-c
 
 ## <a name="mongodb"></a>MongoDB
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 MongoDB társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **OnPremisesMongoDB**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3146,7 +3146,7 @@ További információ: MongoDB- [összekötői cikk](data-factory-on-premises-mo
 ## <a name="amazon-s3"></a>Amazon S3
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Egy Amazon S3-beli társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **awsaccesskey használnia**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
@@ -3310,7 +3310,7 @@ További információkért lásd az [Amazon S3-összekötőt ismertető cikket](
 ## <a name="file-system"></a>Fájlrendszer
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **fájlkiszolgáló** társított szolgáltatásával. A következő táblázat a helyszíni fájlkiszolgáló társított szolgáltatásához tartozó JSON-elemek leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3545,7 +3545,7 @@ További információ: fájlrendszer- [összekötő cikk](data-factory-onprem-fi
 
 ## <a name="ftp"></a>FTP
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Egy FTP-hez társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **FTP**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges | Alapértelmezett |
@@ -3723,7 +3723,7 @@ További információ: FTP- [összekötő](data-factory-ftp-connector.md#copy-ac
 
 ## <a name="hdfs"></a>HDFS
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 HDFS társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **HDFS**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3859,7 +3859,7 @@ További információ: HDFS-összekötő.
 ## <a name="sftp"></a>SFTP
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Egy SFTP-hez társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **SFTP**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4066,7 +4066,7 @@ További információ: SFTP- [összekötő](data-factory-sftp-connector.md#copy-
 
 ## <a name="http"></a>HTTP
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 HTTP-alapú társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **http**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4264,7 +4264,7 @@ További információt a http- [összekötő](data-factory-http-connector.md#cop
 
 ## <a name="odata"></a>OData
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 OData társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **OData**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4434,7 +4434,7 @@ További információ: OData- [összekötő](data-factory-odata-connector.md#cop
 ## <a name="odbc"></a>ODBC
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 ODBC-hez társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **OnPremisesOdbc**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4588,7 +4588,7 @@ További információ: ODBC- [összekötő](data-factory-odbc-connector.md#copy-
 ## <a name="salesforce"></a>Salesforce
 
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Salesforce társított szolgáltatás definiálásához állítsa a társított szolgáltatás **típusát** **Salesforce**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4711,7 +4711,7 @@ További információ: Salesforce- [összekötő](data-factory-salesforce-connec
 
 ## <a name="web-data"></a>Webes adattartalom
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Webes társított szolgáltatás definiálásához állítsa be a társított szolgáltatás **típusát** a **web**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4743,7 +4743,7 @@ Webes adatkészlet definiálásához állítsa be az adatkészlet **típusát** 
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type |az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
+| type |Az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
 | path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
 | index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: index beolvasása egy HTML-oldalon. |Igen |
 
@@ -4831,7 +4831,7 @@ A következő táblázat felsorolja a Data Factory által támogatott számítá
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Igény szerinti Azure HDInsight-fürt
 A Azure Data Factory szolgáltatás képes automatikusan létrehozni egy Windows/Linux-alapú, igény szerinti HDInsight-fürtöt az adatfeldolgozáshoz. A fürt ugyanabban a régióban jön létre, mint a fürthöz társított Storage-fiók (a JSON linkedServiceName tulajdonsága). A következő átalakítási tevékenységeket futtathatja ezen a társított szolgáltatáson: [.net Custom Activity](#net-custom-activity), [kaptár tevékenység](#hdinsight-hive-activity), [Pig tevékenység](#hdinsight-pig-activity), [MapReduce tevékenység](#hdinsight-mapreduce-activity), Hadoop streaming Activity, [Spark-tevékenység](#hdinsight-spark-activity).
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Az alábbi táblázat az igény szerinti HDInsight társított szolgáltatás Azure JSON-definíciójában használt tulajdonságok leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4869,7 +4869,7 @@ További információ: [számítási társított szolgáltatások](data-factory-
 ## <a name="existing-azure-hdinsight-cluster"></a>Meglévő Azure HDInsight-fürt
 Létrehozhat egy Azure HDInsight társított szolgáltatást, hogy regisztrálja a saját HDInsight-fürtöt Data Factory használatával. A következő Adatátalakítási tevékenységeket futtathatja ezen a társított szolgáltatáson: [.net Custom Activity](#net-custom-activity), [kaptár tevékenység](#hdinsight-hive-activity), [Pig tevékenység](#hdinsight-pig-activity), [MapReduce tevékenység](#hdinsight-mapreduce-activity), Hadoop streaming Activity, [Spark-tevékenység](#hdinsight-spark-activity).
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Az alábbi táblázat az Azure HDInsight társított szolgáltatás Azure JSON-definíciójában használt tulajdonságok leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4902,7 +4902,7 @@ Az HDInsight-fürtök támogatott verzióival kapcsolatban lásd: [támogatott H
 ## <a name="azure-batch"></a>Azure Batch
 Létrehozhat egy Azure Batch társított szolgáltatást, amellyel regisztrálhatja a virtuális gépek (VM-EK) batch-készletét egy adatelőállítóval. A .NET-alapú egyéni tevékenységeket Azure Batch vagy Azure HDInsight is futtathatja. A .NET-alapú [Egyéni tevékenységeket](#net-custom-activity) futtathatja ezen a társított szolgáltatáson.
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A következő táblázat a Azure Batch társított szolgáltatás Azure JSON-definíciójában használt tulajdonságok leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4934,7 +4934,7 @@ A következő táblázat a Azure Batch társított szolgáltatás Azure JSON-def
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 Hozzon létre egy Azure Machine Learning társított szolgáltatást egy Machine Learning batch-pontozási végpont egy adatelőállítóval való regisztrálásához. Két Adatátalakítási tevékenység, amely futhat ezen a társított szolgáltatáson: [Machine learning batch végrehajtási tevékenység](#machine-learning-batch-execution-activity), [Machine learning erőforrás-tevékenység frissítése](#machine-learning-update-resource-activity).
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 A következő táblázat a Azure Machine Learning társított szolgáltatás Azure JSON-definíciójában használt tulajdonságok leírásait tartalmazza.
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4961,7 +4961,7 @@ A következő táblázat a Azure Machine Learning társított szolgáltatás Azu
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy Azure Data Lake Analytics számítási szolgáltatás Azure-beli adatgyárhoz való csatolásához, mielőtt az [Data Lake Analytics U-SQL-tevékenységet](data-factory-usql-activity.md) egy folyamaton belül használja.
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 
 A következő táblázat a Azure Data Lake Analytics társított szolgáltatás JSON-definíciójában használt tulajdonságok leírásait tartalmazza.
 
@@ -4999,7 +4999,7 @@ Az alábbi példa egy Azure Data Lake Analytics társított szolgáltatás JSON-
 ## <a name="sql-server"></a>SQL Server
 Létrehoz egy SQL Server társított szolgáltatást, és a [tárolt eljárási tevékenységgel](data-factory-stored-proc-activity.md) felhasználja a tárolt eljárás meghívását egy Data Factory folyamatból.
 
-### <a name="linked-service"></a>Társított szolgáltatás
+### <a name="linked-service"></a>Társított szolgáltatások
 Hozzon létre egy **OnPremisesSqlServer** típusú társított szolgáltatást egy helyszíni SQL Server adatbázis egy adatgyárhoz való kapcsolásához. A következő táblázat a helyszíni SQL Server társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 A következő táblázat a SQL Server társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
@@ -5234,7 +5234,7 @@ A következő tulajdonságokat adhatja meg egy Hadoop adatfolyam-tevékenység J
 | leképező | A Mapper végrehajtható fájljának neve. A példában a Cat. exe a Mapper végrehajtható fájlja.|
 | szűkítő | A csökkentő végrehajtható fájl neve. A példában a WC. exe a csökkentő végrehajtható fájl. |
 | bemenet | A Mapper bemeneti fájlja (beleértve a helyet). A példában: `"wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt"`: adfsample a blob tároló, például/az adatfájlok és a Gutenberg mappa, a DaVinci. txt pedig a blob. |
-| kimenet | A redukáló kimeneti fájlja (a helyet is beleértve). Az Hadoop streaming-feladatok kimenete a tulajdonsághoz megadott helyre íródik. |
+| output | A redukáló kimeneti fájlja (a helyet is beleértve). Az Hadoop streaming-feladatok kimenete a tulajdonsághoz megadott helyre íródik. |
 | filePaths | A mapper és a csökkentő végrehajtható fájl elérési útjai. A példában: "adfsample/example/apps/WC. exe", a adfsample a blob tároló, például az alkalmazások mappa, a WC. exe pedig a végrehajtható fájl. |
 | fileLinkedService | Az Azure Storage társított szolgáltatása, amely az Azure Storage-t jelöli, amely a filePaths szakaszban megadott fájlokat tartalmazza. |
 | argumentumok | A MapReduce program vesszővel tagolt argumentumait tartalmazó lista. Futásidőben a MapReduce-keretrendszer néhány további argumentuma (például: MapReduce. job. Tags) jelenik meg. Ha meg szeretné különböztetni az argumentumokat a MapReduce argumentumokkal, érdemes lehet mindkét beállítást és értéket argumentumként használni, ahogy az alábbi példában látható (-s,--bemenet,--output stb.). |

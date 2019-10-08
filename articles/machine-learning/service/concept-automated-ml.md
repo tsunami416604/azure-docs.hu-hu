@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e9bc0cf3ab0d168a55ab04913bdc71eed5c5fced
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350631"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001234"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -37,6 +37,14 @@ Az adatszakértők, az elemzők és a fejlesztők az egész iparágban az automa
 + Az adatelemzési ajánlott eljárások kihasználása
 + Gyors problémamegoldás
 
+A gyakori automatikus ML-használati esetek a következők:
++ [Csalások észlelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)
++ [Marketing-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing/auto-ml-classification-bank-marketing.ipynb)
++ [Kereslet-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)
++ [Értékesítések előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)
++ [Teljesítmény-előrejelzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance/auto-ml-regression-hardware-performance.ipynb)
++ [Anyagok tartósságának előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-concrete-strength/auto-ml-regression-concrete-strength.ipynb)
+
 ## <a name="how-automated-ml-works"></a>Az automatizált ML működése
 
 A **Azure Machine learning**használatával a következő lépésekkel megtervezheti és futtathatja az automatizált ml-betanítási kísérleteket:
@@ -55,7 +63,7 @@ A **Azure Machine learning**használatával a következő lépésekkel megtervez
 
 A betanítás során Azure Machine Learning több párhuzamos folyamatot hoz létre, amelyek különböző algoritmusokat és paramétereket próbálnak ki. Ekkor leáll, ha eléri a kísérletben meghatározott kilépési feltételeket.
 
-Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot`.pkl` (fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
+Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot (`.pkl` fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
 
 A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos vagy releváns funkciók vannak](how-to-configure-auto-train.md#explain) a generált modellekhez.
 
@@ -74,7 +82,7 @@ Minden automatizált gépi tanulási kísérlet során az adatai az alapértelme
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre.
 
-|&nbsp;Méretezésnormalizálása&&nbsp;| Leírás |
+|Skálázás @ no__t-0 @ no__t-1 @ no__t-2normalization| Leírás |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -90,7 +98,7 @@ További speciális előfeldolgozási és featurization is elérhetők, példáu
 
 + Azure Portal: A [fenti lépésekkel](how-to-create-portal-experiments.md)válassza az **előfeldolgozás** jelölőnégyzetet a **speciális beállításokban** .
 
-+ Python SDK: `"preprocess": True` [Az osztálymegadása`AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python SDK: @No__t-0 megadása a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
 
 
 ## <a name="time-series-forecasting"></a>Idősoros előrejelzés
@@ -165,7 +173,7 @@ Az automatikus ML más Microsoft-megoldásokban is elérhető, például:
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
 
-+ Kövesse az [oktatóanyagot: Regressziós modell automatikus betanítása az Azure automatizált Machine Learning](tutorial-auto-train-models.md)
++ Kövesse a [Tutorial: Regressziós modell automatikus betanítása az Azure automatizált Machine Learning @ no__t-0
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
   + A Azure Portal felületen vagy a munkaterület kezdőlapján (előzetes verzió) [kövesse az alábbi lépéseket](how-to-create-portal-experiments.md).

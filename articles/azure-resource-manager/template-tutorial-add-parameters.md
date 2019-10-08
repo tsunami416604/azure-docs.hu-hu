@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 407148dadb774c72ef252ba0044655c2e219985f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963750"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001498"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: Paraméterek hozzáadása a Resource Manager-sablonhoz
 
@@ -33,7 +33,7 @@ Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
 Előfordulhat, hogy észrevette, hogy probléma merült fel ezzel a sablonnal. A Storage-fiók neve nem rögzített. Ezt a sablont csak akkor használhatja, ha minden alkalommal ugyanazt a Storage-fiókot telepíti. Egy másik névvel rendelkező Storage-fiók üzembe helyezéséhez létre kell hoznia egy új sablont, ami nyilvánvalóan nem praktikus módszer az üzemelő példányok automatizálására.
 
-## <a name="make-template-reusable"></a>Sablon újrafelhasználhatóvé tétele
+## <a name="make-your-template-reusable"></a>A sablon újrafelhasználhatóvé tétele
 
 A sablon újrafelhasználhatóvé tételéhez vegyünk fel egy paramétert, amely segítségével átadható a Storage-fiók neve. A következő példában szereplő JSON-fájl azt mutatja, hogy mi változott a sablonban. A **storageName** paraméter karakterláncként van azonosítva. A maximális hossz 24 karakter, ami megakadályozza a túl hosszú nevek megadását.
 
@@ -41,7 +41,7 @@ Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-template"></a>Sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Végezzük el a sablon üzembe helyezését. Az alábbi példa telepíti a sablont az Azure CLI vagy a PowerShell használatával. Figyelje meg, hogy a Storage-fiók nevét a telepítési parancs egyik értékeként adja meg. A Storage-fiók neve mezőben adja meg az előző oktatóanyagban használt nevet.
 
@@ -87,7 +87,7 @@ Az előző sablon mindig üzembe helyezett egy Standard_LRS-Storage-fiókot. A k
 
 A **storageSKU** paraméter alapértelmezett értékkel rendelkezik. Ezt az értéket akkor kell használni, ha nincs megadva érték az üzemelő példányban. Emellett az engedélyezett értékek listája is szerepel. Ezek az értékek megegyeznek a Storage-fiók létrehozásához szükséges értékekkel. Nem szeretné, hogy a sablon felhasználói ne adjanak át olyan SKU-ket, amelyek nem működnek.
 
-## <a name="redeploy-template"></a>Sablon ismételt üzembe helyezése
+## <a name="redeploy-the-template"></a>A sablon újbóli üzembe helyezése
 
 Most már készen áll a telepítésre. Mivel az alapértelmezett SKU a **Standard_LRS**értékre van állítva, nem kell megadnia a paraméter értékét.
 
