@@ -6,52 +6,75 @@
       href: resource-group-overview.md
     - name: Sablonok áttekintése
       href: template-deployment-overview.md
-- name: Gyors útmutatók
-  expanded: true
-  items:
-    - name: Sablonok létrehozása – portál
-      href: resource-manager-quickstart-create-templates-use-the-portal.md
-    - name: Sablonok létrehozása – VS Code
-      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - name: Sablonok létrehozása – Visual Studio
-      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
-    - name: Sablonok létrehozása – IntelliJ IDEA
-      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Oktatóanyagok
   items:
-    - name: A sablonreferencia felhasználása
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: Több példány létrehozása
-      displayName: 'iteration,copy'
-      href: resource-manager-tutorial-create-multiple-instances.md
-    - name: Erőforrások üzembehelyezési sorrendjének beállítása
-      displayName: 'dependent resources, dependency'
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - name: Feltételek használata
-      href: resource-manager-tutorial-use-conditions.md
-    - name: A Key Vault integrálása
-      displayName: secrets
-      href: resource-manager-tutorial-use-key-vault.md
-    - name: Hivatkozott sablonok létrehozása
-      href: resource-manager-tutorial-create-linked-templates.md
-    - name: Virtuálisgép-bővítmények üzembe helyezése
-      displayName: virtual machine extensions
-      href: resource-manager-tutorial-deploy-vm-extensions.md
-    - name: SQL-bővítmények üzembe helyezése
-      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-    - name: Biztonságos összetevők
-      href: resource-manager-tutorial-secure-artifacts.md
-    - name: Folyamatos integráció az Azure Pipelinesszal
-      displayName: DevOps
-      href: resource-manager-tutorial-use-azure-pipelines.md
-    - name: Biztonságos üzembehelyezési gyakorlatok
-      displayName: adm
-      href: deployment-manager-tutorial.md
-    - name: Állapot-ellenőrzés használata a Deployment Managerben
-      displayName: adm
-      href: deployment-manager-tutorial-health-check.md
-    - name: Sablonalapú üzembe helyezés hibaelhárítása
-      href: resource-manager-tutorial-troubleshoot.md
+    - name: Kezdő
+      items:
+        - name: 1 – Az első sablon létrehozása
+          href: template-tutorial-create-first-template.md
+        - name: 2 – Erőforrás hozzáadása
+          href: template-tutorial-add-resource.md
+        - name: 3 – Paraméterek hozzáadása
+          href: template-tutorial-add-parameters.md
+        - name: 4 – Sablonfüggvények hozzáadása
+          href: template-tutorial-add-functions.md
+        - name: 5 – Változók hozzáadása
+          href: template-tutorial-add-variables.md
+        - name: 6 – Kimenetek hozzáadása
+          href: template-tutorial-add-outputs.md
+        - name: 7 – Exportált sablon használata
+          href: template-tutorial-export-template.md
+        - name: 8 – Gyorssablon használata
+          href: template-tutorial-quickstart-template.md
+        - name: 9 – Címkék hozzáadása
+          href: template-tutorial-add-tags.md
+        - name: 10 – Paraméterfájl használata
+          href: template-tutorial-use-parameter-file.md
+    - name: Speciális
+      items:
+        - name: Sablonok létrehozása – portál
+          href: resource-manager-quickstart-create-templates-use-the-portal.md
+        - name: Sablonok létrehozása – VS Code
+          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+        - name: Sablonok létrehozása – Visual Studio
+          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+        - name: Sablonok létrehozása – IntelliJ IDEA
+          href: resource-manager-quickstart-create-templates-use-intellij.md
+        - name: A sablonreferencia felhasználása
+          href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+        - name: Több példány létrehozása
+          displayName: 'iteration,copy'
+          href: resource-manager-tutorial-create-multiple-instances.md
+        - name: Erőforrások üzembehelyezési sorrendjének beállítása
+          displayName: 'dependent resources, dependency'
+          href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+        - name: Feltételek használata
+          href: resource-manager-tutorial-use-conditions.md
+        - name: A Key Vault integrálása
+          displayName: secrets
+          href: resource-manager-tutorial-use-key-vault.md
+        - name: Hivatkozott sablonok létrehozása
+          href: resource-manager-tutorial-create-linked-templates.md
+        - name: Virtuálisgép-bővítmények üzembe helyezése
+          displayName: virtual machine extensions
+          href: resource-manager-tutorial-deploy-vm-extensions.md
+        - name: SQL-bővítmények üzembe helyezése
+          href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Biztonságos összetevők
+          href: resource-manager-tutorial-secure-artifacts.md
+        - name: Folyamatos integráció az Azure Pipelinesszal
+          displayName: DevOps
+          href: resource-manager-tutorial-use-azure-pipelines.md
+        - name: Biztonságos üzembehelyezési gyakorlatok
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Állapot-ellenőrzés használata a Deployment Managerben
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: VS üzembehelyezési szkript frissítése az Az Powershellre
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
+        - name: Sablonalapú üzembe helyezés hibaelhárítása
+          href: resource-manager-tutorial-troubleshoot.md
 - name: Példák
   items:
     - name: Resource Manager-sablonok
@@ -76,8 +99,8 @@
           href: deployment-manager-health-check.md
     - name: A Resource Manager-alapú és a klasszikus üzemi modell
       href: resource-manager-deployment-model.md
-    - name: Beépített biztonsági vezérlők
-      href: azure-resource-manager-security-controls.md
+    - name: Gyakori Azure-beli biztonsági attribútumok
+      href: azure-resource-manager-security-attributes.md
 - name: Útmutató
   items:
     - name: Sablonok létrehozása
@@ -120,14 +143,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: Üzembe helyezés – CLI
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: Üzembe helyezés – PowerShell
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: Üzembe helyezés – REST API
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Újratelepítés hiba esetén
+          displayName: rollback
+          href: rollback-on-error.md
         - name: Sablon védelme SAS-jogkivonattal
           href: secure-template-with-sas-token.md
         - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
@@ -221,8 +247,6 @@
           href: resource-manager-common-deployment-errors.md
         - name: AccountNameInvalid
           href: resource-manager-storage-account-name-errors.md
-        - name: DeploymentQuotaExceeded
-          href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: resource-manager-invalid-template-errors.md
         - name: Üzembehelyezési problémák Linux rendszerben

@@ -87,7 +87,8 @@
           href: concepts-connectivity-architecture.md
     - name: Az üzletmenet folytonossága
       items:
-        - name: Áttekintés
+        - name: Az üzletmenet folytonossága – bevezetés
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: Biztonsági mentés és visszaállítás
           href: concepts-backup.md
@@ -231,7 +232,7 @@
       href: /rest/api/mysql
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: Azure-beli tárolt eljárások
+    - name: Felügyelet – Tárolt eljárások
       href: reference-stored-procedures.md
 - name: További források
   items:

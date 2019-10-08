@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Alkalmazások vészhelyreállítása
       items:
-        - name: Helyszíni alkalmazások Azure-ba történő vészhelyreállításának beállítása
+        - name: Információk a helyszíni alkalmazások vészhelyreállításáról
           href: site-recovery-workload.md
         - name: Active Directory és DNS
           href: site-recovery-active-directory.md

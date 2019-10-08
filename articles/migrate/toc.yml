@@ -92,7 +92,7 @@
       href: scale-hyper-v-assessment.md
     - name: Nagy számú virtuális gép migrálásának automatizálása
       href: how-to-migrate-at-scale.md
-    - name: Migrálási példák – Contoso-sorozat
+    - name: Migrálási példák (Contoso-sorozat)
       href: contoso-migration-overview.md
 - name: Hibaelhárítás
   items:

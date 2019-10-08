@@ -778,29 +778,35 @@
   items:
     - name: Kifejezések jegyzéke
       href: sql-database-glossary-terms.md
-    - name: Fejlessze a készségeit a Microsoft Learnnel
-      href: /learn/browse/?products=azure-sql-database
-    - name: SQL Server blog
-      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
-    - name: Microsoft Azure blog
-      href: 'https://azure.microsoft.com/blog/'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Nyilvános adatkészletek
-      href: sql-database-public-data-sets.md
-    - name: Kapcsolatok hibaelhárítása
-      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: Architektúra-központ
       href: /azure/architecture/
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      href: /learn/browse/?products=azure-sql-database
     - name: Ügyfelek történetei
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Microsoft Azure blog
+      href: 'https://azure.microsoft.com/blog/'
+    - name: MSDN-fórum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Nyilvános adatkészletek
+      href: sql-database-public-data-sets.md
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: Szolgáltatási hírek
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: SQL Server blog
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Hibaelhárítás
+      items:
+        - name: Csatlakozási problémák
+          href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md
+        - name: Problémamegoldás
+          items:
+            - name: Az Import/Export szolgáltatás lefagy
+              href: azure-sql-database-hangs-importing-exporting.md
+    - name: Videók
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'

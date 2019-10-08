@@ -111,6 +111,14 @@
           href: acu.md
         - name: vCPU-kvóták
           href: quotas.md
+        - name: Fenntartott példányok
+          items:
+            - name: Előre fizetés virtuális gépekért
+              href: prepay-reserved-vm-instances.md
+            - name: Mi az az Azure Reservations?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Virtuálisgép-példányok méretrugalmassága
+              href: reserved-vm-instance-size-flexibility.md
         - name: Teljesítményteszt pontszámai
           href: compute-benchmark-scores.md
     - name: Támogatott disztribúciók
@@ -302,16 +310,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Naplóriasztások létrehozása
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Költségek kezelése
-      items:
-        - name: Előre fizetés virtuális gépekért – Azure Reservations
-          href: prepay-reserved-vm-instances.md
-        - name: Előre fizetés Azure-szoftvercsomagokért
-          href: prepay-suse-software-charges.md
-        - name: Mi az az Azure Reservations?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Virtuálisgép-példányok méretrugalmassága
-          href: reserved-vm-instance-size-flexibility.md
     - name: Rendszerképek használata
       items:
         - name: Megosztott lemezkép-katalógusok
@@ -378,8 +376,6 @@
           href: manage-availability.md
         - name: Közelségi elhelyezési csoport létrehozása
           href: proximity-placement-groups.md
-        - name: Függőleges skálázás
-          href: vertical-scaling-automation.md
         - name: Virtuális gép létrehozása rendelkezésre állási zónában
           href: create-cli-availability-zone.md
     - name: Automatizálási eszközök használata

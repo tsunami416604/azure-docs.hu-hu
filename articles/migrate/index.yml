@@ -1,43 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Az Azure Migrate dokumentációja
+summary: Az Azure Migrate használatával az Azure-felhőbe migrálhat. Az Azure Migrate-ben egyetlen központi helyen végezhető el a helyszíni számítási feladatok felderítése, felmérése és Azure-ba való migrálása. Ezen a központi helyen elérhetőek Azure Migrate-eszközök, valamint független szoftverszállítók beépített eszközei is.
 metadata:
-  title: Az Azure Migrate dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Megtudhatja, hogyan értékelheti a helyszíni gépeket az Azure-ba történő migrálás szempontjából'
-  services: migration-planner
-  author: rayne-wiselman
-  manager: carmonm
-  ms.service: migration
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Az Azure Migrate dokumentációja
+  description: Az Azure Migrate használatával az Azure-felhőbe migrálhat. Az Azure Migrate-ben egyetlen központi helyen végezhető el a helyszíni számítási feladatok felderítése, felmérése és Azure-ba való migrálása. Ezen a központi helyen elérhetőek Azure Migrate-eszközök, valamint független szoftverszállítók beépített eszközei is.
+  ms.service: azure-migrate
   ms.topic: landing-page
-  ms.date: 11/22/2017
+  ms.collection: collection
+  author: rayne-wiselman
   ms.author: raynew
-abstract:
-  description: 'Az Azure Migrate segít az Azure-felhőre migrálásban. Az Azure Migrate-ben egyetlen központi helyen követhető nyomon a helyszíni számítási feladatok és a felhőbeli virtuális gépek felderítése, felmérése és migrálása. Emellett elérhetőek Azure Migrate-eszközök a felméréshez és a migráláshoz, valamint független szoftverszállítók beépített eszközei is.'
-sections:
-  - title: Részletes útmutatók
-    items:
-      - type: paragraph
-        text: Útmutató a VMware virtuális gépek felméréséhez és Azure-ba migrálásához
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-vmware">A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz</a>
-          - html: <a href="tutorial-assess-vmware">A VMware virtuális gépek felmérése az Azure-ba való migráláshoz</a>
-          - html: <a href="tutorial-migrate-vmware">A VMware virtuális gépek migrálása az Azure-ba ügynök nélküli migrálással</a>
-          - html: <a href="tutorial-migrate-vmware-agent">A VMware virtuális gépek migrálása az Azure-ba ügynökalapú migrálással</a>
-      - type: paragraph
-        text: Útmutató a Hyper-V virtuális gépek felméréséhez és Azure-ba migrálásához
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-hyper-v">A Hyper-V virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz</a>
-          - html: <a href="tutorial-assess-hyper-v">A Hyper-V virtuális gépek felmérése az Azure-ba való migráláshoz</a>
-          - html: <a href="tutorial-migrate-hyper-v">A Hyper-V virtuális gépek migrálása az Azure-ba</a>
-      - type: paragraph
-        text: 'Útmutató fizikai kiszolgálók, virtualizált gépek és felhőbeli virtuális gépek az Azure-ba migrálásához'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-migrate-physical-virtual-machines">Fizikai vagy virtualizált kiszolgálók migrálása az Azure-ba</a>
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001141"
+landingContent:
+- title: Az Azure Migrate bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Migrate?
+      url: ./migrate-services-overview.md
+    - text: Az Azure Migrate újdonságai
+      url: ./whats-new.md
+    - text: Gyakori kérdések
+      url: ./resources-faq.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: VMware virtuális gépek értékelése a Server Assessmenttel
+      url: ./tutorial-prepare-vmware.md
+    - text: Hyper-V virtuális gépek értékelése a Server Assessmenttel
+      url: ./tutorial-prepare-hyper-v.md
+    - text: VMware virtuális gépek migrálása a Server Migrationnel
+      url: ./server-migrate-overview.md
+    - text: Hyper-V virtuális gépek migrálása a Server Migrationnel
+      url: ./tutorial-migrate-hyper-v.md
+    - text: Fizikai kiszolgálók/virtuális gépek migrálása a Server Migrationnel
+      url: ./tutorial-migrate-physical-virtual-machines.md
+- title: Üzembe helyezés indítása
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: A Server Assessment ajánlott eljárásainak áttekintése
+      url: ./best-practices-assessment.md
+    - text: Az Azure Migrate-berendezések üzembe helyezésének ismertetése
+      url: ./migrate-replication-appliance.md
+    - text: Az Azure Migrate támogatási mátrix áttekintése
+      url: migrate-support-matrix.md
+    - text: A VMware támogatási mátrix áttekintése
+      url: migrate-support-matrix-vmware.md
+    - text: A Hyper-V támogatási mátrix áttekintése
+      url: migrate-support-matrix-hyper-v.md
+- title: Kezelés
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Migrálási eszközök hozzáadása
+      url: ./how-to-migrate.md
+    - text: VMware-felmérés skálázása
+      url: ./scale-vmware-assessment.md
+    - text: Migrálás automatizálása és skálázása
+      url: ./how-to-migrate-at-scale.md
+    - text: Felmérés és migrálás hibaelhárítása
+      url: ./troubleshooting-general.md
+- title: Részletek
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: VMware ügynökalapú migrálási architektúra
+      url: ./agent-based-migration-architecture.md
+    - text: A Hyper-V migrálási architektúrája
+      url: ./hyper-v-migration-architecture.md
+    - text: A felmérések ismertetése
+      url: ./concepts-assessment-calculation.md
+    - text: A függőségek vizualizációjának ismertetése
+      url: ./concepts-dependency-visualization.md
+- title: Közösségi részvétel
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Szolgáltatásjellemző kérése
+      url: https://feedback.azure.com/forums/907195-azure-migrate
+    - text: Kérdés feltevése a fórumban
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=AzureMigrate
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

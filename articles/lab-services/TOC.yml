@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Héjszkriptek használata Linuxon
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: Etikus hackertevékenység
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: Osztályterem-tesztkörnyezetek
       items:
         - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Megosztott rendszerkép-katalógus csatolása vagy leválasztása
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
           items:
             - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
