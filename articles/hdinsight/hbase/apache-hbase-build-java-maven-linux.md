@@ -1,6 +1,6 @@
 ---
-title: Az Apache Maven használata Azure HDInsight egy Java HBase-ügyfél
-description: Ismerje meg, az Apache Maven használata Java-alapú Apache HBase-alkalmazás létrehozása, majd telepítse az Azure HDInsight HBase.
+title: Az Apache Maven használata Java HBase-ügyfél létrehozásához az Azure HDInsight
+description: Ismerje meg, hogyan hozhat létre egy Java-alapú Apache HBase-alkalmazást az Apache Maven használatával, majd hogyan helyezheti üzembe az Azure HDInsight-HBase.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,46 +8,46 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: 1ec4e9cbfd1d70c128f530bd996793a49c8a7d00
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: aad601a48b2b420a809a385e336f103612d2e378
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484124"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167092"
 ---
-# <a name="build-java-applications-for-apache-hbase"></a>Az Apache HBase Java-alkalmazások
+# <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
 
-Ismerje meg, hogyan hozhat létre egy [Apache HBase](https://hbase.apache.org/) alkalmazás Java-környezetben. Az Azure HDInsight HBase majd használni az alkalmazást.
+Megtudhatja, hogyan hozhat létre egy [Apache HBase](https://hbase.apache.org/) -alkalmazást Java-ban. Ezután használja az alkalmazást a HBase az Azure HDInsight.
 
-A lépéseket, a jelen dokumentum-használat [Apache Maven](https://maven.apache.org/) hozhat létre, és a projekt buildjének elkészítéséhez. Maven egy szoftverfrissítési projektmenedzsment és a szövegértést eszköz, amely lehetővé teszi, hogy a szoftver, a dokumentáció és a Java-projektek jelentéseket hozhat létre.
+A jelen dokumentumban leírt lépések az [Apache Maven](https://maven.apache.org/) használatával létrehozzák és felépítik a projektet. A Maven egy szoftveres projektmenedzsment és-szövegértési eszköz, amely lehetővé teszi a Java-projektekhez tartozó szoftverek, dokumentációk és jelentések készítését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A HDInsight Apache HBase-fürtöt. Lásd: [Apache HBase használatának első lépései](./apache-hbase-tutorial-get-started-linux.md).
+* Egy Apache HBase-fürt a HDInsight-on. Lásd: [az Apache HBase első lépései](./apache-hbase-tutorial-get-started-linux.md).
 
-* [Java fejlesztői készlet (JDK) 8-as verzió](https://aka.ms/azure-jdks).
+* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks).
 
-* [Az Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepített](https://maven.apache.org/install.html) Apache megfelelően.  Maven egy projektet a Java-projektek rendszert hozhat létre.
+* Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
-* Egy SSH-ügyfél. További információkért lásd: [HDInsight (az Apache Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Ha a PowerShell használatával, akkor a [AZ modul](https://docs.microsoft.com/powershell/azure/overview).
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 
-* Egy szövegszerkesztő. Ez a cikk a Microsoft Notepad használja.
+* Egy szövegszerkesztő. Ez a cikk a Microsoft Jegyzettömb alkalmazást használja.
 
 ## <a name="test-environment"></a>Tesztkörnyezet
-Az ebben a cikkben használt környezet a Windows 10 rendszerű számítógép volt.  A parancsok végrehajtódtak parancsot, és a különböző fájlok is szerkeszthetők a Jegyzettömb alkalmazásban. Ennek megfelelően módosítsa a környezetnek.
+A cikkben használt környezet a Windows 10 rendszert futtató számítógép volt.  A parancsok végrehajtása egy parancssorban történt, a különböző fájlok pedig a Jegyzettömb alkalmazásban lettek szerkesztve. Ennek megfelelően módosítsa a környezetét.
 
-Egy parancssorból adja meg a munkakörnyezet létrehozásához az alábbi parancsokat:
+A parancssorba írja be az alábbi parancsokat egy működő környezet létrehozásához:
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
 cd C:\HDI
 ```
 
-## <a name="create-a-maven-project"></a>Hozzon létre egy Maven-projektet
+## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-1. Adja meg a következő parancsot egy nevű Maven-projekt létrehozása **hbaseapp**:
+1. Adja meg a következő parancsot egy **hbaseapp**nevű Maven-projekt létrehozásához:
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -56,22 +56,22 @@ cd C:\HDI
     mkdir conf
     ```
 
-    Ez a parancs létrehoz egy könyvtárat nevű `hbaseapp` az aktuális helyen, amely tartalmaz egy alapszintű Maven-projektet. A második parancs módosítja a munkakönyvtárból abba `hbaseapp`. A harmadik parancs létrehoz egy új könyvtárat `conf`, amelyek később fogja használni. A `hbaseapp` könyvtár a következő elemeket tartalmazza:
+    Ez a parancs létrehoz egy `hbaseapp` nevű könyvtárat az aktuális helyen, amely egy alapszintű Maven-projektet tartalmaz. A második parancs a munkakönyvtárat `hbaseapp` értékre módosítja. A harmadik parancs létrehoz egy új könyvtárat, `conf`, amelyet később fog használni. A `hbaseapp` könyvtár a következő elemeket tartalmazza:
 
-    * `pom.xml`:  A projekt Object Model ([POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) tartalmazza a projekt felépítéséhez használt információkat és a konfiguráció részleteit.
+    * `pom.xml`:  A Project Object Model ([Pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) a projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazza.
     * `src\main\java\com\microsoft\examples`: Az alkalmazás kódját tartalmazza.
-    * `src\test\java\com\microsoft\examples`: Az alkalmazás tesztek tartalmazza.
+    * `src\test\java\com\microsoft\examples`: Az alkalmazáshoz tartozó teszteket tartalmazza.
 
-2. Távolítsa el a generált példakód. Törölje a létrehozott tesztelési és alkalmazásfájlok `AppTest.java`, és `App.java` írja be az alábbi parancsokat:
+2. Távolítsa el a generált példa kódját. Törölje a generált teszt-és alkalmazásfájlok `AppTest.java` és `App.java` értéket az alábbi parancsok beírásával:
 
     ```cmd
     DEL src\main\java\com\microsoft\examples\App.java
     DEL src\test\java\com\microsoft\examples\AppTest.java
     ```
 
-## <a name="update-the-project-object-model"></a>Frissítse a projekt Hálózatiobjektum-modellje
+## <a name="update-the-project-object-model"></a>A projekt-objektum modell frissítése
 
-A pom.xml fájlt a teljes körű referenciáért lásd: https://maven.apache.org/pom.html.  Nyissa meg `pom.xml` az alábbi parancs beírásával:
+A Pom. xml fájl teljes referenciája: https://maven.apache.org/pom.html.  Nyissa meg a `pom.xml` parancsot az alábbi parancs megadásával:
 
 ```cmd
 notepad pom.xml
@@ -79,7 +79,7 @@ notepad pom.xml
 
 ### <a name="add-dependencies"></a>Függőségek hozzáadása
 
-A `pom.xml`, adja hozzá a következő szöveget a `<dependencies>` szakaszban:
+A `pom.xml` mezőben adja hozzá a következő szöveget a `<dependencies>` szakaszban:
 
 ```xml
 <dependency>
@@ -94,23 +94,23 @@ A `pom.xml`, adja hozzá a következő szöveget a `<dependencies>` szakaszban:
 </dependency>
 ```  
 
-Ez a szakasz azt jelzi, hogy kell-e a projekt **hbase-ügyfél** és **phoenix-core** összetevőket. A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven központi tárházban keresési](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar) további információ a függőség.
+Ez a szakasz azt jelzi, hogy a projektnek szüksége van a **hbase-Client** és a **Phoenix-Core** összetevőkre. A fordítás ideje alatt ezek a függőségek az alapértelmezett Maven-tárházból tölthetők le. A [Maven központi tárházának keresésével](https://search.maven.org/artifact/org.apache.hbase/hbase-client/1.1.2/jar) további információkat tudhat meg a függőségről.
 
 > [!IMPORTANT]  
-> A hbase-ügyfél verziószáma meg kell egyeznie az Apache HBase a HDInsight-fürt a megadott verzióját. A következő táblázat segítségével keresse meg a megfelelő verziószámot.
+> A hbase verziószámának meg kell egyeznie a HDInsight-fürthöz megadott Apache HBase verziójával. A következő táblázat segítségével megkeresheti a megfelelő verziószámot.
 
-| HDInsight-fürt verziója | Az Apache HBase verziója |
+| HDInsight-fürt verziója | Apache HBase-verzió használata |
 | --- | --- |
 | 3.6 | 1.1.2 |
 | 4.0 | 2.0.0 |
 
-A HDInsight-verziók és -összetevők további információkért lásd: [Mik azok a különböző HDInsight elérhető az Apache Hadoop-összetevő](../hdinsight-component-versioning.md).
+A HDInsight-verziókkal és-összetevőkkel kapcsolatos további információkért tekintse meg [a HDInsight-ben elérhető különböző Apache Hadoop összetevőket](../hdinsight-component-versioning.md).
 
-### <a name="build-configuration"></a>Konfigurace buildu
+### <a name="build-configuration"></a>Konfiguráció létrehozása
 
-Maven beépülő modulok lehetővé teszik a project build fázisa testreszabása. Ez a szakasz segítségével adja hozzá a beépülő modulok, erőforrások és más build-konfigurációs beállítások.
+A Maven beépülő moduljai lehetővé teszik a projekt összeállítási szakaszainak testreszabását. Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs beállítások hozzáadására szolgál.
 
-Adja hozzá a következő kódot a `pom.xml` fájlt, majd mentse és zárja be a fájlt. Ez a szöveg belül kell lennie a `<project>...</project>` a fájlt, a címkék között például `</dependencies>` és `</project>`.
+Adja hozzá a következő kódot a `pom.xml` fájlhoz, majd mentse és zárda be a fájlt. A szövegnek a fájlban lévő `<project>...</project>` címkén belül kell lennie, például: `</dependencies>` és `</project>`.
 
 ```xml
 <build>
@@ -157,18 +157,18 @@ Adja hozzá a következő kódot a `pom.xml` fájlt, majd mentse és zárja be a
 </build>
 ```
 
-Ebben a szakaszban konfigurálja egy erőforrást (`conf/hbase-site.xml`), amely tartalmazza a konfigurációs adatait a hbase-hez.
+Ez a szakasz egy olyan erőforrást (`conf/hbase-site.xml`) konfigurál, amely konfigurációs adatokat tartalmaz a HBase.
 
 > [!NOTE]  
-> Beállíthatja a konfigurációs értékek kód segítségével is. A Megjegyzések a `CreateTable` példa.
+> A konfigurációs értékeket kód használatával is megadhatja. Tekintse meg a `CreateTable` példa megjegyzéseit.
 
-Ez a szakasz is konfigurálja a [Apache Maven fordító beépülő modul](https://maven.apache.org/plugins/maven-compiler-plugin/) és [Apache Maven Shade beépülő modul](https://maven.apache.org/plugins/maven-shade-plugin/). A beépülő modul fordító fordítsa le a topológia szolgál. A beépülő modult árnyalatot licenc azonos átvitelszervezőpéldány-azonosítók a JAR-csomag, amely szerint a Maven megelőzése érdekében használatos. Ez a beépülő modul segítségével egy "ismétlődő licencfájlok" hiba megakadályozza a futási időben, a HDInsight-fürtön. Maven-shade-bővítménnyel rendelkező a `ApacheLicenseResourceTransformer` megvalósítási megakadályozza, hogy a hiba.
+Ez a szakasz az [Apache Maven Compiler beépülő](https://maven.apache.org/plugins/maven-compiler-plugin/) modult és az [Apache Maven Shade beépülő modulját](https://maven.apache.org/plugins/maven-shade-plugin/)is konfigurálja. A fordító beépülő modul a topológia fordítására szolgál. Az árnyékolt beépülő modullal megakadályozható a licencek duplikálása a Maven által készített JAR-csomagban. Ez a beépülő modul a HDInsight-fürtön futó "duplikált licencek" hibájának megakadályozására szolgál. A Maven-Shade-plugin és a `ApacheLicenseResourceTransformer` implementáció használata megakadályozza a hibát.
 
-A maven-shade-beépülő modul is az uber jar, amely tartalmazza az alkalmazás számára szükséges összes függőséget hoz létre.
+A Maven-Shade-beépülő modul egy über jar-t is létrehoz, amely az alkalmazás által igényelt összes függőséget tartalmazza.
 
-### <a name="download-the-hbase-sitexml"></a>Töltse le a hbase-site.xml
+### <a name="download-the-hbase-sitexml"></a>Töltse le a hbase-site. xml fájlt.
 
-A következő parancs használatával másolja a HBase-beállításait az a HBase-fürt a `conf` könyvtár. Cserélje le `CLUSTERNAME` a HDInsight-fürt neve, és írja be a parancsot:
+A következő parancs használatával másolja a HBase konfigurációját a HBase-fürtről a `conf` könyvtárba. Cserélje le a `CLUSTERNAME` értéket a HDInsight-fürt nevére, majd írja be a parancsot:
 
 ```cmd
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -176,15 +176,15 @@ scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-### <a name="implement-a-createtable-class"></a>CreateTable osztályok megvalósítása
+### <a name="implement-a-createtable-class"></a>CreateTable osztály implementálása
 
-Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `CreateTable.java`. Válassza ki **Igen** , hozzon létre egy új fájlt a parancssorba.
+Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt, `CreateTable.java`. Új fájl létrehozásához válassza az **Igen** lehetőséget.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\CreateTable.java
 ```
 
-Ezután másolja és illessze be az alábbi java-kódot az új fájlt. Zárja be a fájlt.
+Ezután másolja és illessze be az alábbi Java-kódot az új fájlba. Ezután zárjuk be a fájlt.
 
 ```java
 package com.microsoft.examples;
@@ -256,17 +256,17 @@ public class CreateTable {
 }
 ```
 
-Ez a kód a `CreateTable` osztály, amely létrehoz egy tábla `people` és a egy előre meghatározott felhasználók való feltöltéséhez.
+Ez a kód a `CreateTable` osztály, amely létrehoz egy `people` nevű táblázatot, és feltölti azt néhány előre definiált felhasználóval.
 
-### <a name="implement-a-searchbyemail-class"></a>SearchByEmail osztályok megvalósítása
+### <a name="implement-a-searchbyemail-class"></a>SearchByEmail osztály implementálása
 
-Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `SearchByEmail.java`. Válassza ki **Igen** , hozzon létre egy új fájlt a parancssorba.
+Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt, `SearchByEmail.java`. Új fájl létrehozásához válassza az **Igen** lehetőséget.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\SearchByEmail.java
 ```
 
-Ezután másolja és illessze be az alábbi java-kódot az új fájlt. Zárja be a fájlt.
+Ezután másolja és illessze be az alábbi Java-kódot az új fájlba. Ezután zárjuk be a fájlt.
 
 ```java
 package com.microsoft.examples;
@@ -341,17 +341,17 @@ public class SearchByEmail {
 }
 ```
 
-A `SearchByEmail` osztály használható e-mail-cím alapján sorok lekérdezéséhez. Mert az egy reguláris kifejezés szűrőt használ, megadhat egy karakterlánc vagy egy reguláris kifejezést az osztály használatakor.
+A `SearchByEmail` osztály a sorok e-mail-cím alapján történő lekérdezésére használható. Mivel egy reguláris kifejezést használ, egy karakterláncot vagy egy reguláris kifejezést is megadhat a osztály használatakor.
 
-### <a name="implement-a-deletetable-class"></a>DeleteTable osztályok megvalósítása
+### <a name="implement-a-deletetable-class"></a>DeleteTable osztály implementálása
 
-Adja meg a parancsot hozhat létre, és nyisson meg egy új fájlt az alábbi `DeleteTable.java`. Válassza ki **Igen** , hozzon létre egy új fájlt a parancssorba.
+Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt, `DeleteTable.java`. Új fájl létrehozásához válassza az **Igen** lehetőséget.
 
 ```cmd
 notepad src\main\java\com\microsoft\examples\DeleteTable.java
 ```
 
-Ezután másolja és illessze be az alábbi java-kódot az új fájlt. Zárja be a fájlt.
+Ezután másolja és illessze be az alábbi Java-kódot az új fájlba. Ezután zárjuk be a fájlt.
 
 ```java
 package com.microsoft.examples;
@@ -375,54 +375,54 @@ public class DeleteTable {
 }
 ```
 
-A `DeleteTable` osztály megtisztítja a HBase-táblákat létrehozni ebben a példában letiltásával és eldobása által létrehozott táblát a `CreateTable` osztály.
+A @no__t 0 osztály törli az ebben a példában létrehozott HBase-táblákat a `CreateTable` osztály által létrehozott tábla letiltásával és eldobásával.
 
-## <a name="build-and-package-the-application"></a>Hozhat létre, és az alkalmazás becsomagolása
+## <a name="build-and-package-the-application"></a>Az alkalmazás létrehozása és becsomagolása
 
-1. Az a `hbaseapp` könyvtár, használja az alábbi parancsot egy JAR-fájlt, amely tartalmazza az alkalmazást hozhat létre:
+1. A `hbaseapp` könyvtárból használja az alábbi parancsot az alkalmazást tartalmazó JAR-fájl létrehozásához:
 
     ```cmd
     mvn clean package
     ```
 
-    Ez a parancs létrehozza, és csomagolja be a .jar-fájl az alkalmazás.
+    Ez a parancs egy. jar fájlba hozza létre és csomagolja az alkalmazást.
 
-2. A parancs befejeződésekor a `hbaseapp/target` könyvtár tartalmaz egy fájlt `hbaseapp-1.0-SNAPSHOT.jar`.
+2. A parancs végrehajtása után a `hbaseapp/target` könyvtár egy `hbaseapp-1.0-SNAPSHOT.jar` nevű fájlt tartalmaz.
 
    > [!NOTE]  
-   > A `hbaseapp-1.0-SNAPSHOT.jar` fájl az uber jar. Az alkalmazás futtatásához szükséges összes függőséget tartalmaz.
+   > A `hbaseapp-1.0-SNAPSHOT.jar` fájl egy über jar. Ez tartalmazza az alkalmazás futtatásához szükséges összes függőséget.
 
-## <a name="upload-the-jar-and-run-jobs-ssh"></a>Töltse fel a fájlt, és futtasson feladatokat (SSH)
+## <a name="upload-the-jar-and-run-jobs-ssh"></a>A JAR és a Run feladatok (SSH) feltöltése
 
-Az alábbi lépések az `scp` fájlt másolja az elsődleges átjárócsomóponthoz, az Apache HBase a HDInsight-fürtön. A `ssh` parancs majd segítségével csatlakozhat a fürthöz, és a példa futtatása közvetlenül a központi csomóponton.
+A következő lépések a `scp` paranccsal másolják a JAR-t az Apache HBase elsődleges fő csomópontjára a HDInsight-fürtön. Ezután a `ssh` parancs használatával csatlakozhat a fürthöz, és a példát közvetlenül a fő csomóponton futtathatja.
 
-1. Töltse fel a fájlt a fürthöz. Cserélje le `CLUSTERNAME` a HDInsight-fürt neve, és írja be a következő parancsot:
+1. Töltse fel a jar-t a fürtbe. Cserélje le a `CLUSTERNAME` értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-2. Csatlakozhat a HBase-fürtnek. Cserélje le `CLUSTERNAME` a HDInsight-fürt neve, és írja be a következő parancsot:
+2. Kapcsolódjon a HBase-fürthöz. Cserélje le a `CLUSTERNAME` értéket a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. A Java-alkalmazás használatával egy HBase-tábla létrehozásához használja a következő parancsot az Open ssh kapcsolat:
+ 3. A Java-alkalmazással létrehozott HBase-tábla létrehozásához használja a következő parancsot az Open SSH-kapcsolatban:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    Ez a parancs létrehoz egy HBase tábla **személyek**, és tölti fel az adatokat.
+    Ez a parancs létrehoz egy **emberek**nevű HBase-táblázatot, és feltölti azokat az adatokkal.
 
-4. Keresse meg a táblában tárolt e-mail-címeket, használja a következő parancsot:
+4. A táblázatban tárolt e-mail-címek kereséséhez használja a következő parancsot:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
     ```
 
-    A következő eredményeket jelenhet meg:
+    A következő eredményeket kapja:
 
         Franklin Holtz - ID: 2
         Franklin Holtz - franklin@contoso.com - ID: 2
@@ -437,11 +437,11 @@ Az alábbi lépések az `scp` fájlt másolja az elsődleges átjárócsomópont
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.DeleteTable
     ```
 
-## <a name="upload-the-jar-and-run-jobs-powershell"></a>Töltse fel a fájlt, és futtasson feladatokat (PowerShell)
+## <a name="upload-the-jar-and-run-jobs-powershell"></a>A JAR és a Run feladatok feltöltése (PowerShell)
 
-Az alábbi lépéseket az Azure PowerShell használata [AZ modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) fájlt tölthet fel az alapértelmezett tároló az Apache HBase-fürtnek. HDInsight-parancsmagokat szolgálnak majd a példák távolról futtatni.
+A következő lépések az Azure PowerShell az [modul](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) használatával töltik fel a jar-t az Apache HBase-fürt alapértelmezett tárolójába. A HDInsight-parancsmagok ezután a példák távoli futtatására szolgálnak.
 
-1. Miután telepítése és konfigurálása a AZ modult, hozzon létre egy fájlt `hbase-runner.psm1`. A fájl tartalma legyen a következő szöveg:
+1. Az az modul telepítése és konfigurálása után hozzon létre egy `hbase-runner.psm1` nevű fájlt. A fájl tartalma legyen a következő szöveg:
 
    ```powershell
     <#
@@ -642,12 +642,12 @@ Az alábbi lépéseket az Azure PowerShell használata [AZ modul](https://docs.m
 
     Ez a fájl két modult tartalmaz:
 
-   * **Adjon hozzá HDInsightFile** – fájlok feltöltése a fürt használatos
-   * **Start-HBaseExample** – az a korábban létrehozott osztályok futtatása
+   * **Add-HDInsightFile** – fájlok a fürtbe való feltöltéséhez használható
+   * **Start-HBaseExample** – a korábban létrehozott osztályok futtatásához használatos
 
-2. Mentse a `hbase-runner.psm1` fájlt a `hbaseapp` könyvtár.
+2. Mentse a `hbase-runner.psm1` fájlt a `hbaseapp` könyvtárban.
 
-3. A modulok regisztrálása az Azure PowerShell használatával. Nyisson meg egy új Azure PowerShell-ablakot, és cserélje le az alábbi parancsot szerkesztéséhez `CLUSTERNAME` a fürt nevére. Ezután adja meg a következő parancsokat:
+3. Regisztrálja a modulokat a Azure PowerShell. Nyisson meg egy új Azure PowerShell ablakot, és szerkessze az alábbi parancsot a `CLUSTERNAME` helyére a fürt nevével. Ezután adja meg a következő parancsokat:
 
     ```powershell
     cd C:\HDI\hbaseapp
@@ -655,33 +655,33 @@ Az alábbi lépéseket az Azure PowerShell használata [AZ modul](https://docs.m
     Import-Module .\hbase-runner.psm1
     ```
 
-4. A következő paranccsal töltse fel a `hbaseapp-1.0-SNAPSHOT.jar` a fürtön.
+4. Használja a következő parancsot a `hbaseapp-1.0-SNAPSHOT.jar` a fürtre való feltöltéséhez.
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName $myCluster
     ```
 
-    Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) nevet és jelszót. A parancs feltölti az `hbaseapp-1.0-SNAPSHOT.jar` , a `example/jars` a fürt számára az elsődleges tárolási helyét.
+    Ha a rendszer kéri, adja meg a fürt bejelentkezési (admin) nevét és jelszavát. A parancs feltölti a `hbaseapp-1.0-SNAPSHOT.jar` értéket a fürt elsődleges tárolójának `example/jars` helyére.
 
-5. Hozhat létre egy táblát a a `hbaseapp`, használja a következő parancsot:
+5. Ha a `hbaseapp` használatával szeretne táblázatot létrehozni, használja a következő parancsot:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName $myCluster
     ```
 
-    Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) nevet és jelszót.
+    Ha a rendszer kéri, adja meg a fürt bejelentkezési (admin) nevét és jelszavát.
 
-    Ez a parancs létrehoz egy tábla **személyek** a HBase a HDInsight-fürtön. Ez a parancs nem jelenik meg semmilyen kimenetet a konzolablakban.
+    Ez a parancs létrehoz egy **személyek** nevű táblát a HBase a HDInsight-fürtön. Ez a parancs nem jelenít meg kimenetet a konzol ablakában.
 
-6. Keresse meg a táblázat, használja a következő parancsot:
+6. A táblázat bejegyzéseinek megkereséséhez használja a következő parancsot:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName $myCluster -emailRegex contoso.com
     ```
 
-    Amikor a rendszer kéri, adja meg a fürt bejelentkezési (rendszergazdai) nevet és jelszót.
+    Ha a rendszer kéri, adja meg a fürt bejelentkezési (admin) nevét és jelszavát.
 
-    Ez a parancs a `SearchByEmail` osztály keresse meg azokat a sorokat, ahol a `contactinformation` oszlopcsalád és a `email` oszlop tartalmazza a karakterláncot `contoso.com`. A következő eredményeket kell kapnia:
+    Ez a parancs a `SearchByEmail` osztály használatával keres olyan sorokat, amelyekben a `contactinformation` oszlop családja és a `email` oszlop tartalmazza a következő karakterláncot: `contoso.com`. A következő eredményeknek kell megjelennie:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -690,7 +690,7 @@ Az alábbi lépéseket az Azure PowerShell használata [AZ modul](https://docs.m
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    Használatával **fabrikam.com** számára a `-emailRegex` értéket adja vissza a felhasználóknak, akiknek **fabrikam.com** az e-mailek mezőben. Reguláris kifejezések a keresési kifejezést is használhatja. Ha például **^ r** értéket ad vissza e-mail-címeket, amelyek az "r" betűvel kezdődik.
+    A `-emailRegex` értékhez tartozó **fabrikam.com** használatával visszaadja azokat a felhasználókat, akik rendelkeznek az e-mailek mezőben szereplő **fabrikam.com** . Keresési kifejezésként reguláris kifejezéseket is használhat. A (z) **^ r** például az "r" betűvel kezdődő e-mail-címeket adja vissza.
 
 7. A tábla törléséhez használja a következő parancsot:
 
@@ -698,10 +698,10 @@ Az alábbi lépéseket az Azure PowerShell használata [AZ modul](https://docs.m
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName $myCluster
     ```
 
-### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Nincsenek eredmények vagy a Start-HBaseExample használatakor nem várt eredmények
+### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Nincs eredmény vagy váratlan eredmény a Start-HBaseExample használatakor
 
-Használja a `-showErr` paraméter megtekintéséhez a normál hiba (STDERR), amely a feladat futtatásakor jön létre.
+A `-showErr` paraméterrel megtekintheti a feladatok futtatásakor létrehozott Standard hibát (STDERR).
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Apache HBase SQuirreL SQL használata](apache-hbase-phoenix-squirrel-linux.md)
+[Ismerje meg, hogyan használható az az sqlline használata az Apache HBase](apache-hbase-phoenix-squirrel-linux.md)

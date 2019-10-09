@@ -1,6 +1,6 @@
 ---
-title: Az első Azure Service Fabric-alkalmazás létrehozása Linux rendszeren C# használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre, és a egy C# és a .NET Core 2.0 Service Fabric-alkalmazás üzembe helyezése.
+title: Az első Azure Service Fabric-alkalmazás létrehozása Linuxon C#a használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe C# egy Service Fabric alkalmazást a és a .net Core 2,0 használatával.
 services: service-fabric
 documentationcenter: csharp
 author: mani-ramaswamy
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
-ms.author: subramar
-ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 8c34f50e8eb9d9793c146c38aca47691b04049c0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60394319"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167299"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Ezen parancsok paraméterezése megtalálható az alkalmazáscsomagon belül, a 
 Az alkalmazás telepítése után nyisson meg egy böngészőt, és keresse fel a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)t a [http://localhost:19080/Explorer](http://localhost:19080/Explorer) URL-címen. Bontsa ki az **Alkalmazások** csomópontot, és figyelje meg, hogy most már megjelenik benne egy bejegyzés az alkalmazás típusához, és egy másik a típus első példányához.
 
 > [!IMPORTANT]
-> Biztonságos Linux-fürt az Azure-ban az alkalmazás központi telepítése, konfigurálása a Service Fabric-futtatókörnyezet az alkalmazás érvényesítendő tanúsítvánnyal kell. Ez lehetővé teszi a Reliable Services szolgáltatások kommunikálni az alapul szolgáló Service Fabric-futtatókörnyezet API-k. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Ha az alkalmazást egy biztonságos Linux-fürtön szeretné üzembe helyezni az Azure-ban, konfigurálnia kell egy tanúsítványt, hogy érvényesítse az alkalmazást a Service Fabric futtatókörnyezettel. Ezzel lehetővé teszi, hogy a Reliable Services szolgáltatásai kommunikáljanak a mögöttes Service Fabric Runtime API-kkal. További információ: [Reliable Services alkalmazás konfigurálása Linux-fürtökön való futtatásra](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Tesztügyfél elindítása és feladatátvétel végrehajtása
@@ -108,7 +108,7 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 1. Futtassa a szkriptet a figyelési segédprogram használatával az aktorszolgáltatás kimenetének megtekintéséhez.
 
-   MAC OS X esetén kell ugyanazon a helyen, a tárolóban a myactorsvcTestClient mappába másolja a következő további parancsok futtatásával.
+   MAC OS X esetén a myactorsvcTestClient mappát a tárolón belül ugyanarra a helyre kell másolnia a következő további parancsok futtatásával.
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

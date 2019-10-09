@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212000"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177594"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
 
@@ -32,7 +32,7 @@ A Log Analytics munkaterület A következőket biztosítja:
 
 * Az adattárolás földrajzi helye.
 * Az adatelkülönítés azáltal, hogy az ajánlott tervezési stratégiák alapján különböző felhasználói hozzáférési jogosultságokat biztosít.
-* A beállítások konfigurációjának hatóköre, például az [árképzési szintek](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), a [megőrzés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)és [az adatok maximális](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)száma.
+* A beállítások konfigurációjának hatóköre, például az [árképzési szintek](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), a [megőrzés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)és [az adatok maximális](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)száma.
 
 Ez a cikk részletes áttekintést nyújt a tervezési és áttelepítési megfontolásokról, a hozzáférés-vezérlés áttekintéséről, valamint az informatikai szervezet számára ajánlott tervezési megvalósítások megismeréséről.
 
@@ -115,13 +115,13 @@ A következő táblázat összefoglalja a hozzáférési módokat:
 
 A *hozzáférés-vezérlési mód* az egyes munkaterületeken olyan beállítás, amely meghatározza, hogy a munkaterület hogyan határozza meg az engedélyeket.
 
-* **Munkaterület-engedélyek**megkövetelése: Ez a vezérlési mód nem engedélyezi a szemcsés RBAC. Ahhoz, hogy egy felhasználó hozzáférhessen a munkaterülethez, engedélyeket kell adni a munkaterülethez vagy adott táblákhoz.
+* **Munkaterület-engedélyek megkövetelése**: Ez a vezérlési mód nem engedélyezi a szemcsés RBAC. Ahhoz, hogy egy felhasználó hozzáférhessen a munkaterülethez, engedélyeket kell adni a munkaterülethez vagy adott táblákhoz.
 
     Ha a felhasználó a munkaterület környezetét követően fér hozzá a munkaterülethez, akkor az összes olyan táblában lévő adattal hozzáférhet, amelyhez hozzáférést kapott. Ha a felhasználó az erőforrás-kontextus mód követése után fér hozzá a munkaterülethez, az adott erőforráshoz tartozó összes olyan táblában hozzáfér, amelyhez hozzáférést kapott.
 
     Ez az alapértelmezett beállítás az összes olyan munkaterülethez, amelyet a március 2019. előtt hoztak létre.
 
-* **Erőforrás-vagy munkaterület-engedélyek használata**: Ez a vezérlési mód lehetővé teszi a szemcsés RBAC. A felhasználók csak olyan erőforrásokhoz férhetnek hozzá, amelyekhez az Azure `read` -engedély hozzárendelésével megtekinthetők. 
+* **Erőforrás-vagy munkaterület-engedélyek használata**: Ez a vezérlési mód lehetővé teszi a szemcsés RBAC. A felhasználók csak a megtekinthető erőforrásokhoz tartozó, az Azure `read` engedély hozzárendelésével megtekinthető adatforrásokhoz férhetnek hozzá. 
 
     Ha a felhasználó munkaterület-környezet módban fér hozzá a munkaterülethez, a rendszer a munkaterület engedélyeit alkalmazza. Ha a felhasználó erőforrás-kontextus módban fér hozzá a munkaterülethez, a rendszer csak az erőforrás-engedélyeket ellenőrzi, és a munkaterület-engedélyeket figyelmen kívül hagyja. A RBAC engedélyezése a felhasználók számára a munkaterület engedélyeiből való eltávolításával, valamint az erőforrás-engedélyek felismerésének engedélyezésével.
 

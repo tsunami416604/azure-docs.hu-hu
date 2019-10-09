@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599238"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166555"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -30,7 +30,7 @@ Ha több szolgáltatást futtat ugyanazon a csomóponton vagy fürtön, lehetsé
 
 ## <a name="resource-governance-metrics"></a>Erőforrás-irányítási mérőszámok
 
-Az erőforrás-szabályozás Service Fabric a szervizcsomaggal összhangban támogatott [](service-fabric-application-model.md). A szervizcsomaghoz rendelt erőforrások tovább oszthatók a csomagok között. A megadott erőforrás-korlátok az erőforrások lefoglalását is jelentik. Service Fabric támogatja a CPU és a memória megadását a szervizcsomagok esetében, két [](service-fabric-cluster-resource-manager-metrics.md)beépített metrikával:
+Az erőforrás-szabályozás Service Fabric a [szervizcsomaggal](service-fabric-application-model.md)összhangban támogatott. A szervizcsomaghoz rendelt erőforrások tovább oszthatók a csomagok között. A megadott erőforrás-korlátok az erőforrások lefoglalását is jelentik. Service Fabric támogatja a CPU és a memória megadását a szervizcsomagok esetében, két beépített [metrikával](service-fabric-cluster-resource-manager-metrics.md):
 
 * *CPU* (metrika neve `servicefabric:/_CpuCores`): A gazdagépen elérhető logikai mag. Az összes csomóponton lévő összes mag súlyozása azonos.
 
@@ -39,7 +39,7 @@ Az erőforrás-szabályozás Service Fabric a szervizcsomaggal összhangban tám
 Ezen két metrika esetében a [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-description.md) nyomon követi a fürt teljes kapacitását, a fürt egyes csomópontjainak terhelését, valamint a fürt többi erőforrását. Ez a két metrika egyenértékű a többi felhasználóval vagy egyéni metrikával. Az összes meglévő funkció használható együtt:
 
 * A fürt a két metrika (alapértelmezett viselkedés) alapján [kiegyensúlyozott](service-fabric-cluster-resource-manager-balancing.md) lehet.
-* A fürt a két [](service-fabric-cluster-resource-manager-defragmentation-metrics.md) metrika alapján is feldarabolható.
+* A fürt a két metrika alapján is [feldarabolható](service-fabric-cluster-resource-manager-defragmentation-metrics.md) .
 * [Fürt leírásakor](service-fabric-cluster-resource-manager-cluster-description.md)a rendszer pufferelt kapacitást állíthat be ehhez a két metrikához.
 
 A [dinamikus betöltési jelentéskészítés](service-fabric-cluster-resource-manager-metrics.md) ezen metrikák esetében nem támogatott, és a metrikák terhelése a létrehozáskor van meghatározva.
@@ -133,7 +133,7 @@ Az erőforrás-irányítási korlátok az Application manifest (ServiceManifestI
   </ServiceManifestImport>
 ```
 
-Ebben a példában a **ServicePackageA** nevű szervizcsomag egy mag-t kap a csomópontokon, ahol elhelyezték. Ez a szolgáltatáscsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és `CpuShares` mindkét paramétert megadja. A CpuShares 512:256 aránya a két kód csomagjai között osztja el a magját.
+Ebben a példában a **ServicePackageA** nevű szervizcsomag egy mag-t kap a csomópontokon, ahol elhelyezték. Ez a szolgáltatáscsomag két kódot tartalmaz (**CodeA1** és **CodeA2**), és mindkét esetben megadja a `CpuShares` paramétert. A CpuShares 512:256 aránya a két kód csomagjai között osztja el a magját.
 
 Így ebben a példában a CodeA1 egy mag kétharmadát kapja meg, és a CodeA2 egy-harmada bekerül a mag (és az azonos) Ha a CpuShares nincsenek megadva a kódokhoz, Service Fabric egyenlően osztja el a magokat egymás között.
 

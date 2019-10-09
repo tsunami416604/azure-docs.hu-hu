@@ -110,10 +110,6 @@
           href: ../azure-monitor/insights/solutions-resources-views.md
         - name: Ajánlott eljárások
           href: ../azure-monitor/insights/solutions-best-practices.md
-    - name: Felügyeleti forgatókönyvek
-      items:
-        - name: Elemzési adatok gyűjtése a runbookból
-          href: ../azure-monitor/platform/runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json
 - name: További források
   items:
     - name: Azure-ütemterv

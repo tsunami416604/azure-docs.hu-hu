@@ -8,24 +8,24 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028137"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170326"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
 A Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) megtartja a [zóna-redundáns tárolás (ZRS)](storage-redundancy-zrs.md) magas rendelkezésre állását a regionális kimaradások elleni védelemmel, a [földrajzilag REDUNDÁNS tárolás (GRS)](storage-redundancy-grs.md)által biztosított módon. A GZRS-fiókban lévő adatok az elsődleges régió három Azure-beli [rendelkezésre állási zónájában](../../availability-zones/az-overview.md) replikálódnak, és egy másodlagos földrajzi régióba is replikálódnak a regionális katasztrófák elleni védelem érdekében. Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. További részletekért és kivételekhez tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
+GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben. A GZRS ugyanazokat a [skálázhatósági célokat](storage-scalability-targets.md) kínálja, mint a LRS, a ZRS, a GRS vagy az ra-GRS. Engedélyezheti a másodlagos régióban található, olvasási hozzáférésű geo-Zone-redundáns tárolással (RA-GZRS) rendelkező információk olvasási hozzáférését, ha az elsődleges régióban katasztrófa esetén az alkalmazásoknak képesnek kell lenniük az információk olvasására.
 
 A Microsoft a GZRS használatát javasolja a konzisztencia, a tartósság, a magas rendelkezésre állás, a kiváló teljesítmény és a vész-helyreállítási rugalmasság megköveteléséhez. A regionális katasztrófa esetén a másodlagos régióhoz való olvasási hozzáférés további biztonsága érdekében engedélyezze az RA-GZRS-t a Storage-fiókjához.
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, a nem VHD-lemezeket, a fájlokat, a táblákat és a várólistákat.
+Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, a nem VHD-lemezeket, a fájlokat, a táblákat és a várólistákat.
 
 A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő régiókban:
 
@@ -35,9 +35,9 @@ A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő 
 - USA 2. keleti régiója
 - USA középső régiója
 
-A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért látogasson el rendszeresen az [Azure Service updates](https://azure.microsoft.com/updates/)@no__t – 1page.
+A Microsoft továbbra is engedélyezi a GZRS és az RA-GZRS további Azure-régiókban. A támogatott régiókkal kapcsolatos információkért olvassa el rendszeresen az [Azure szolgáltatás frissítéseinek](https://azure.microsoft.com/updates/) oldalát.
 
-Az előzetes verzió díjszabásával kapcsolatos információkért tekintse meg a [Blobok](https://azure.microsoft.com/pricing/details/storage/blobs), [fájlok](https://azure.microsoft.com/pricing/details/storage/files/), [várólisták](https://azure.microsoft.com/pricing/details/storage/queues/)és [táblák](https://azure.microsoft.com/pricing/details/storage/tables/)GZRS előzetes verziójának díjszabását.
+Az előzetes verzió díjszabásával kapcsolatos információkért tekintse meg a [Blobok](https://azure.microsoft.com/pricing/details/storage/blobs), [fájlok](https://azure.microsoft.com/pricing/details/storage/files/), [várólisták](https://azure.microsoft.com/pricing/details/storage/queues/)és [táblák](https://azure.microsoft.com/pricing/details/storage/tables/)GZRS előzetes verziójának díjszabását.
 
 > [!IMPORTANT]
 > A Microsoft az előzetes verziójú funkciók használatát javasolja az éles számítási feladatokhoz.
@@ -49,13 +49,13 @@ Ha az GZRS vagy RA-GZRS engedélyezett Storage-fiókba írja az adatírást, a r
 > [!IMPORTANT]
 > Az aszinkron replikáció az adatírások és az elsődleges régió közötti késleltetés, valamint a másodlagos régióba való replikálás időpontját jelenti. Regionális katasztrófa esetén előfordulhat, hogy a másodlagos régióba még nem replikált módosítások elvesznek, ha az adatok nem állíthatók helyre az elsődleges régióból.
 
-A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiók naprakész információit lásd: @ no__t-0Business folytonosság és vész-helyreállítás (BCDR): Azure párosított régiók @ no__t-0. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
+A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiókkal kapcsolatos naprakész információk: [Business folytonosság és vész-helyreállítás (BCDR): Azure párosított régiók @ no__t-0. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Az RA-GZRS használata magas rendelkezésre álláshoz
 
-Ha engedélyezi az RA-GZRS-t a Storage-fiókjához, az adatok beolvashatók a másodlagos végpontból, valamint a Storage-fiók elsődleges végpontján. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a Blob service elsődleges végpontja a @ no__t-0, akkor a másodlagos végpont a @ no__t-1. A Storage-fiókhoz tartozó hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
+Ha engedélyezi az RA-GZRS-t a Storage-fiókjához, az adatok beolvashatók a másodlagos végpontból, valamint a Storage-fiók elsődleges végpontján. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a Blob service elsődleges végpontja `myaccount.blob.core.windows.net`, akkor a másodlagos végpont `myaccount-secondary.blob.core.windows.net`. A Storage-fiókhoz tartozó hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
-Ha regionális kimaradás esetén szeretné kihasználni az RA-GZRS-t, előre meg kell terveznie az alkalmazást, hogy kezelni tudja ezt a forgatókönyvet. Az alkalmazásnak az elsődleges végpontra kell olvasnia és írnia, de a másodlagos végpont használatára kell váltania abban az esetben, ha az elsődleges régió elérhetetlenné válik. Az RA-GZRS használatával történő magas rendelkezésre állás kialakításával kapcsolatos útmutatásért lásd: magas rendelkezésre állású [Alkalmazások tervezése ra-GZRS vagy ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Ha regionális kimaradás esetén szeretné kihasználni az RA-GZRS-t, előre meg kell terveznie az alkalmazást, hogy kezelni tudja ezt a forgatókönyvet. Az alkalmazásnak az elsődleges végpontra kell olvasnia és írnia, de a másodlagos végpont használatára kell váltania abban az esetben, ha az elsődleges régió elérhetetlenné válik. Az RA-GZRS használatával történő magas rendelkezésre állás kialakításával kapcsolatos útmutatásért lásd: magas rendelkezésre állású [Alkalmazások tervezése ra-GZRS vagy ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Mivel a rendszer aszinkron módon replikálja az adatfájlokat a másodlagos régióba, a másodlagos régió gyakran az elsődleges régió mögött van. Annak megállapításához, hogy mely írási műveletek lettek replikálva a másodlagos régióba, az alkalmazás ellenőrizze a Storage-fiók utolsó szinkronizálásának idejét. Az elsődleges régióba az utolsó szinkronizálás időpontja előtt írt összes írási műveletet sikeresen replikálták a másodlagos régióba, ami azt jelenti, hogy elérhetők a másodlagos helyről való olvasáshoz. Az elsődleges régióba az utolsó szinkronizálás időpontja után írt írási műveletek nem replikálódtak a másodlagos régióra, ami azt jelenti, hogy nem lesznek elérhetők olvasási műveletekhez.
 
@@ -115,7 +115,7 @@ A manuális áttelepítés az alkalmazás leállását eredményezheti. Ha az al
 
 Az élő áttelepítés során használhatja a Storage-fiókot, miközben az adatait áttelepíti a forrás-és a cél Storage-fiókok között. Az élő áttelepítési folyamat során a fiókja továbbra is teljesíti az SLA-t a tartósság és a rendelkezésre állás érdekében. Az élő áttelepítés nem okoz állásidőt vagy adatvesztést.
 
-Csak az általános célú v2-fiókok támogatják a GZRS/RA-GZRS, ezért az élő áttelepítésre vonatkozó kérelem elküldése előtt a GZRS/RA-GZRS-re kell frissítenie a fiókját az általános célú v2-re. További információ: [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview)@no__t – 1and [frissítése általános célú v2 Storage-fiókra](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+Csak az általános célú v2-fiókok támogatják a GZRS/RA-GZRS, ezért az élő áttelepítésre vonatkozó kérelem elküldése előtt a GZRS/RA-GZRS-re kell frissítenie a fiókját az általános célú v2-re. További információ: [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview) és [frissítés egy általános célú v2 Storage-fiókra](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
 Az áttelepítés befejezése után a rendszer frissíti a Storage-fiók replikálási beállítását a **geo-Zone-redundáns tárolóra (GZRS)** vagy az **olvasási hozzáférésű földrajzi zónára redundáns tárterületre (ra-GZRS)** . A szolgáltatási végpontok, a hozzáférési kulcsok, a közös hozzáférésű aláírások (SAS) és az egyéb fiókok konfigurációs beállításai változatlanok maradnak, és érintetlenek maradnak.
 
@@ -127,11 +127,11 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
 - Csak a standard szintű Storage-fiókok támogatják az élő áttelepítést. A Premium Storage-fiókokat manuálisan kell áttelepíteni.
 - Az élő áttelepítés GZRS vagy RA-GZRS-fiókból LRS, GRS vagy RA-GRS fiókra nem támogatott. Manuálisan kell áthelyeznie az adatokat egy új vagy meglévő tárfiókra.
 - Az RA-GRS élő áttelepítést igényelhet az RA-GZRS. Az RA-GRS-ről a GZRS-re való Migrálás azonban nem támogatott. Ebben az esetben élő áttelepítést kell kérnie RA-GZRS, majd manuálisan át kell alakítania a Storage-fiókot a GZRS használatára.
-- A Managed Disks csak a LRS támogatja, és nem telepíthető át GZRS vagy RA-GZRS-re. A rendelkezésre állási csoportokkal való integrációval kapcsolatban lásd: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)szolgáltatásba.
-- A standard SSD-Managed Disks pillanatképeit és lemezképeit standard HDD tárolóban tárolhatja [, és választhat a LRS, a ZRS, a GZRS és az ra-GZRS lehetőségek közül](https://azure.microsoft.com/pricing/details/managed-disks/).
+- A Managed Disks csak a LRS támogatja, és nem telepíthető át GZRS vagy RA-GZRS-re. A rendelkezésre állási csoportokkal való integrációval kapcsolatban lásd: [Bevezetés az Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)szolgáltatásba.
+- A standard SSD-Managed Disks pillanatképeit és lemezképeit standard HDD tárolóban tárolhatja [, és választhat a LRS, a ZRS, a GZRS és az ra-GZRS lehetőségek közül](https://azure.microsoft.com/pricing/details/managed-disks/).
 - A nagyméretű fájlmegosztást tartalmazó fiókok GZRS nem támogatottak.
 
-Élő áttelepítés igényléséhez használja a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). A portálon válassza ki a GZRS vagy RA-GZRS áttelepíteni kívánt Storage-fiókot, és kövesse az alábbi utasításokat:
+Élő áttelepítés igényléséhez használja a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). A portálon válassza ki a GZRS vagy RA-GZRS áttelepíteni kívánt Storage-fiókot, és kövesse az alábbi utasításokat:
 
 1. Válassza az **új támogatási kérelem**lehetőséget.
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** lehetőséget, és adja meg az áttelepíteni kívánt fiókot.

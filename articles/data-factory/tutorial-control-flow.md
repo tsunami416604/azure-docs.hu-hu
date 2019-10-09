@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 9/27/2019
-ms.openlocfilehash: 5b9be86b0a3d17c9c325b565979fccbec92f5733
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: d8ea5a507cc110c92bb74491c3376f7b671638d9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815881"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176009"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 
@@ -29,7 +29,7 @@ Ez a ábra áttekintést nyújt a forgatókönyvről:
 Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 
 > [!div class="checklist"]
-> * data factory létrehozása
+> * Data factory létrehozása
 > * Azure Storage-beli társított szolgáltatás létrehozása
 > * Azure Blob-adatkészlet létrehozása
 > * Másolási tevékenységet és webes tevékenységet tartalmazó folyamat létrehozása
@@ -38,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el a következő feladatokat:
 > * Folyamat futásának indítása
 > * A folyamat és a tevékenységek futásának monitorozása
 
-Ez az oktatóanyag a .NET SDK-t használja. Más mechanizmusokkal is használhatja a Azure Data Factory. Data Factory rövid útmutatók: [5 perces](https://docs.microsoft.com/azure/data-factory/#5-minute-quickstarts)gyors útmutató.
+Ez az oktatóanyag a .NET SDK-t használja. Más mechanizmusokkal is használhatja a Azure Data Factory. Data Factory rövid útmutatók: [5 perces](/azure/data-factory/quickstart-create-data-factory-portal)gyors útmutató.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -77,7 +77,7 @@ C# .Net-konzol alkalmazás létrehozása:
 
 ### <a name="install-nuget-packages"></a>NuGet-csomagok telepítése
 
-1. Válassza az **eszközök** > **NuGet Package** > Manager**csomagkezelő konzolt**.
+1. Válassza az **eszközök**@no__t – 1**NuGet csomagkezelő**@no__t – 3**csomagkezelő konzolt**.
 1. A **Package Manager konzolon**futtassa a következő parancsokat a csomagok telepítéséhez. A részletekért tekintse meg a [Microsoft. Azure. Management. DataFactory nuget csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -144,7 +144,7 @@ C# .Net-konzol alkalmazás létrehozása:
    var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
    ```
 
-### <a name="create-a-data-factory"></a>data factory létrehozása
+### <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Adjon hozzá egy `CreateOrUpdateDataFactory` metódust a *program.cs* -fájlhoz:
 
@@ -754,7 +754,7 @@ Press any key to exit...
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
 > [!div class="checklist"]
-> * data factory létrehozása
+> * Data factory létrehozása
 > * Azure Storage-beli társított szolgáltatás létrehozása
 > * Azure Blob-adatkészlet létrehozása
 > * Másolási tevékenységet és webes tevékenységet tartalmazó folyamat létrehozása

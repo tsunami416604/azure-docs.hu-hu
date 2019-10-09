@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035278"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177677"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -90,7 +90,7 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
-Az átjárók közötti átvitel egy olyan egyenrangú tulajdonság, amely lehetővé teszi a virtuális hálózat számára a VPN-/ExpressRoute átjárók használatát egy, a létesítmények közötti vagy VNet-VNet kapcsolattal rendelkező virtuális hálózaton. További részletekért tekintse meg a [VPN Gateway díjait](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy a ExpressRoute, valamint a VNet-kitöltési [díjakat.](https://azure.microsoft.com/pricing/details/virtual-network)
+Az átjárók közötti átvitel egy olyan egyenrangú tulajdonság, amely lehetővé teszi a virtuális hálózat számára a VPN-/ExpressRoute átjárók használatát egy, a létesítmények közötti vagy VNet-VNet kapcsolattal rendelkező virtuális hálózaton. A (bejövő vagy kimenő) átjáró felé irányuló forgalom a VNet VNet-kezelési díjat von maga után. További részletekért tekintse meg a [VPN Gateway díjait](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy a ExpressRoute, valamint a VNet-kitöltési [díjakat.](https://azure.microsoft.com/pricing/details/virtual-network)
 
 ## <a name="next-steps"></a>További lépések
 

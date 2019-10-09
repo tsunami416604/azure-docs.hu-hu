@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: Alapelvek
   items:
-    - name: Az Azure Files bemutatása
+    - name: Az Azure Files üzembe helyezésének megtervezése
       href: storage-files-planning.md
-    - name: Az Azure File Sync bemutatása
+    - name: Az Azure File Sync üzembe helyezésének megtervezése
       href: storage-sync-files-planning.md
     - name: A felhőbeli rétegzés ismertetése
       href: storage-sync-cloud-tiering.md

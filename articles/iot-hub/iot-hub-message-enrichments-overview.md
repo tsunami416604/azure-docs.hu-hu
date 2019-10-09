@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873198"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177994"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Az eszközről a felhőbe IoT Hub üzenetek üzenet-gazdagítása (előzetes verzió)
 
-Az *üzenet* -gazdagítás a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen lepecsételni. Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz.
+Az *üzenet-gazdagítás* a IoT hub azon képessége, hogy az üzeneteket a kijelölt végpontnak küldött üzenetek elküldése előtt további információkkal lehessen *lepecsételni* . Az üzenetek dúsításának használatának egyik oka az, hogy olyan adathalmazt tartalmazzon, amely az alsóbb rétegbeli feldolgozás egyszerűsítésére használható. Például az eszközök telemetria-üzeneteinek az eszközökhöz való bővítésével csökkentheti az ügyfelek terhelését, így az eszközökhöz tartozó Twin API-hívásokat is megteheti az adatokhoz.
 
 ![Üzenet-dúsítási folyamat](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,7 +29,7 @@ Az üzenetek dúsításának három fő eleme van:
 
 * Egy vagy több olyan [végpont](iot-hub-devguide-endpoints.md) , amelyhez a dúsítást alkalmazni kell.
 
-A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy a következő speciális karaktereket tartalmazhatják: kötőjel`-`(), aláhúzás`_`() és pont (`.`).
+A **kulcs** egy karakterlánc. A kulcsok csak alfanumerikus karaktereket vagy ezeket a speciális karaktereket tartalmazhatják: kötőjel (`-`), aláhúzás (`_`) és pont (`.`).
 
 Az **érték** az alábbi példák bármelyike lehet:
 
@@ -90,8 +90,8 @@ Ez a funkció előzetes verzióban érhető el, és minden régióban elérhető
 
 Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogyan lehet útválasztási üzeneteket IoT Hub:
 
-* [Üzenet-továbbfejlesztések oktatóanyaga](tutorial-message-enrichments.md)
+* [Az üzenet-gazdagítás oktatóanyaga](tutorial-message-enrichments.md)
 
 * [Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](iot-hub-devguide-messages-d2c.md)
 
-* [Oktatóanyag: IoT Hub Útválasztás](tutorial-routing.md)
+* [Oktatóanyag: IoT Hub útválasztás @ no__t-0

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829111"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177890"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -80,7 +80,7 @@ Az adatáttelepítés privát kapcsolaton keresztül:
 
 ### <a name="authentication-and-credential-management"></a>Hitelesítés és hitelesítőadat-kezelés 
 
-- Ha az Amazon S3-fiókkal szeretne hitelesítést végezni, [hozzáférési kulcsot](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties)kell használnia a iam-fiókhoz. 
+- Ha az Amazon S3-fiókkal szeretne hitelesítést végezni, [hozzáférési kulcsot kell használnia a iam-fiókhoz](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service#linked-service-properties). 
 - Több hitelesítési típus is támogatott az Azure Blob Storagehoz való kapcsolódáshoz.  A [felügyelt identitások Azure-erőforrásokhoz való](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) használata erősen ajánlott: az Azure ad-ben automatikusan felügyelt ADF azonosítására épülő megoldás lehetővé teszi a folyamatok konfigurálását anélkül, hogy hitelesítő adatokat kellene megadnia a társított szolgáltatás definíciójában.  Azt is megteheti, hogy az Azure-Blob Storage az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), a [közös hozzáférési aláírás](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)segítségével hitelesíti. 
 - Több hitelesítési típus is támogatott a Azure Data Lake Storage Gen2hoz való kapcsolódáshoz.  Az [Azure-erőforrásokhoz felügyelt identitások](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) használata kifejezetten ajánlott, bár az [egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) vagy a [Storage-fiók kulcsa](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) is használható. 
 - Ha nem használ felügyelt identitásokat az Azure-erőforrásokhoz, [a hitelesítő adatok tárolása Azure Key Vault](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) erősen ajánlott, hogy könnyebb legyen a kulcsok központi kezelése és elforgatása az ADF-hez társított szolgáltatások módosítása nélkül.  Ez a [CI/CD-vel kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)egyike is. 
@@ -136,7 +136,6 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 ![díjszabás – tábla](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
 ### <a name="additional-references"></a>További referenciák 
 - [Amazon Simple Storage szolgáltatás-összekötő](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Az Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
@@ -149,6 +148,10 @@ A fenti feltételezések alapján a becsült ár a következő:
 - [A fájl növekményes másolása az idő particionált fájljának neve alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [Új és módosított fájlok másolása a LastModifiedDate alapján](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [Az ADF díjszabási lapja](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Sablon
+
+Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
 ## <a name="next-steps"></a>További lépések
 

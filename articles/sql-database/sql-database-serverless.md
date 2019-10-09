@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828231"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173403"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Kiszolgáló nélküli Azure SQL Database (előzetes verzió)
 
@@ -28,12 +28,12 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 
 ![kiszolgáló nélküli számlázás](./media/sql-database-serverless/serverless-billing.png)
 
-### <a name="performance-configuration"></a>Teljesítménykonfiguráció
+### <a name="performance-configuration"></a>Teljesítmény konfigurálása
 
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költség
+### <a name="cost"></a>Költségek
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -155,7 +155,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 1. Adja meg a szolgáltatási cél nevét. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
 
-   |Szolgáltatási cél neve|Szolgáltatási szint|Hardver létrehozása|Virtuális magok max. száma|
+   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
    |---|---|---|---|
    |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
    |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
@@ -171,7 +171,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
    |Paraméter|Értékek megválasztása|Alapértelmezett érték|
    |---|---|---|---|
-   |Virtuális magok min. száma|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 virtuális mag|
+   |Minimális virtuális mag|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 virtuális mag|
    |Automatikus szüneteltetés késleltetése|Minimális 60 perc (1 óra)<br>Maximális 10080 perc (7 nap)<br>Lépésekben 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 > [!NOTE]
@@ -181,7 +181,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 #### <a name="use-azure-portal"></a>Az Azure Portal használata
 
-Lásd [: gyors útmutató: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Portal](sql-database-single-database-get-started.md)használatával.
+Lásd: @no__t – 0Quickstart: Hozzon létre egy önálló adatbázist Azure SQL Database a @ no__t-0 Azure Portal használatával.
 
 #### <a name="use-powershell"></a>A PowerShell használata
 
@@ -235,7 +235,7 @@ A maximális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](htt
 
 #### <a name="use-powershell"></a>A PowerShell használata
 
-A minimális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával végezheti el az `MinVcore` argumentum használatával.
+A minimális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával végezheti el a `MinVcore` argumentum használatával.
 
 ### <a name="autopause-delay"></a>Automatikus szüneteltetés késleltetése
 
@@ -261,7 +261,7 @@ A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Entitás|Metrika|Leírás|Mértékegységek|
+|Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -326,9 +326,9 @@ Tegyük fel, hogy a számítási egység ára $0.000073/virtuális mag/Second.  
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Közép-Ausztrália, Kelet-Kína, Észak-Kína, Dél-Franciaország, Közép-Németország, Kelet-Németország, Nyugat-India, Dél-Korea, Dél-Afrika, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója és az USA nyugati középső régiója.
+A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és az US Gov Central (Iowa).
 
 ## <a name="next-steps"></a>További lépések
 
-- Első lépésként tekintse [meg a gyors útmutató: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Portal](sql-database-single-database-get-started.md)használatával.
+- Első lépésként tekintse meg a [Quickstart: Hozzon létre egy önálló adatbázist Azure SQL Database a @ no__t-0 Azure Portal használatával.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

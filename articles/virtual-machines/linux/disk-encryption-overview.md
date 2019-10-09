@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948192"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174707"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -32,7 +32,7 @@ A Linux-alapú [virtuális gépek létrehozása és](disk-encryption-cli-quickst
 
 ### <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
 
-A Linux rendszerű virtuális gépek [számos méretben](sizes.md)érhetők el. Azure Disk Encryption nem érhető el az [alapszintű, a-sorozatú](/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a minimális memória követelményeinek nem megfelelő virtuális gépeken:
+A Linux rendszerű virtuális gépek [számos méretben](sizes.md)érhetők el. Azure Disk Encryption nem érhető el az [alapszintű, a-sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/)virtuális gépeken, illetve a minimális memória követelményeinek nem megfelelő virtuális gépeken:
 
 | Virtuális gép | Minimális memória követelménye |
 |--|--|

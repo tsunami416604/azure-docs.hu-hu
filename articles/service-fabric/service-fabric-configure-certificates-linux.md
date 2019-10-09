@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
-ms.author: chackdan
-ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.author: pepogors
+ms.openlocfilehash: 8ae25a02e6170972972c5b2b7e159ef39d1a3673
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773257"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167337"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Tanúsítványok és biztonság Linux-fürtökön
 
@@ -42,7 +42,7 @@ Egyes szolgáltatások esetében X. 509 tanúsítványokat állíthat be a [Conf
 
 ### <a name="using-x509-securitycredentialstype"></a>A X509 SecurityCredentialsType használata
 
-A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez `X509Credentials` megfelel[](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)a/[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` [](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/(.net Java) típusának (.net[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez a `SecurityCredentials` ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) típusának felel meg.
 
 A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban. A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be:
 
@@ -52,7 +52,7 @@ A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban.
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-A Linux rendszeren futó szolgáltatások esetében a **LocalMachine**/a tanúsítványok alapértelmezett helyére, a */var/lib/sfcerts* könyvtárra**mutatnak** . Linux esetén a **CertificateStoreLocation** és a **CertificateStoreName** bármely más kombinációja nincs meghatározva. 
+A Linux rendszeren futó szolgáltatások esetében a **LocalMachine**@no__t **-1 a** tanúsítványok alapértelmezett helyét, a */var/lib/sfcerts* könyvtárat mutat. Linux esetén a **CertificateStoreLocation** és a **CertificateStoreName** bármely más kombinációja nincs meghatározva. 
 
 Mindig **LocalMachine** megadása a **CertificateStoreLocation** paraméterhez. Nem kell megadnia a **CertificateStoreName** paramétert, mert az alapértelmezett értéke "My". **X509** -hivatkozás esetén a tanúsítványfájl a fürtcsomópont */var/lib/sfcerts* könyvtárában kell, hogy legyen.  
 
@@ -73,7 +73,7 @@ A következő XML egy **TransportSettings** szakaszt mutat be a stílus alapján
 
 ### <a name="using-x509_2-securitycredentialstype"></a>A X509_2 SecurityCredentialsType használata
 
-A Java SDK segítségével megadhatja a **SecurityCredentialsType** **X509_2** . Ez `X509Credentials2` megfelel a (Java[) (](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` típusának. 
+A Java SDK segítségével megadhatja a **SecurityCredentialsType** **X509_2** . Ez megfelel a @no__t-[2 (Java) @no__t](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)-0 ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) típusának. 
 
 **X509_2** -hivatkozás esetén meg kell adnia egy Path paramétert, így a tanúsítvány a */var/lib/sfcerts*-től eltérő könyvtárban is megkereshető.  A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be: 
 

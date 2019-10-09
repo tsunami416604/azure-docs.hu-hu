@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: 07714575bb4adfccf5d72a093874852c1bfebcc8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843773"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178006"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Oktatóanyag: Végpontok közötti adatfolyamat létrehozása az értékesítési elemzések kinyeréséhez
 
@@ -122,7 +122,7 @@ A fürtök SSH-hozzáférésének alapértelmezett jelszava `Thisisapassword1`. 
 >    --output table
 > ```
 
-### <a name="create-a-data-factory"></a>data factory létrehozása
+### <a name="create-a-data-factory"></a>Data factory létrehozása
 
 A Azure Data Factory egy olyan eszköz, amely segít automatizálni az Azure-folyamatokat. Ezen feladatok elvégzése nem az egyetlen módszer, de ez nagyszerű módszer a folyamatok automatizálására. A Azure Data Factoryről a [Azure Data Factory dokumentációjában](https://azure.microsoft.com/en-us/services/data-factory/)talál további információt. 
 
@@ -175,7 +175,7 @@ A folyamatok futtatásának ellenőrzéséhez hajtsa végre a következő lépé
 - A portálon keresztül nyissa meg a **monitoring** szakaszt az adatgyárban.
 - A Azure Storage Explorerban nyissa meg a Data Lake Storage 2. generációs Storage-fiókot. Lépjen a `files` fájlrendszerre, majd nyissa meg a `transformed` mappát, és ellenőrizze annak tartalmát, hogy látható-e a folyamat sikeres volt-e.
 
-Az HDInsight használatával történő adatátalakítás egyéb módjairól [ebben a cikkben olvashat a Jupyter notebook használatáról](/spark/apache-spark-load-data-run-query.md).
+Az HDInsight használatával történő adatátalakítás egyéb módjairól [ebben a cikkben olvashat a Jupyter notebook használatáról](/azure/hdinsight/spark/apache-spark-load-data-run-query).
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Tábla létrehozása az interaktív lekérdezési fürtön Power BI
 

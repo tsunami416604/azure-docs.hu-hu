@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087093"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168959"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások nem Azure-beli virtuális gépen indul
 
@@ -65,7 +65,7 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
 
 ### <a name="use-serial-console"></a>Soros konzol használata
 
-1. A [soros konzolt](serial-console-windows.md) a **support & hibaelhárítás** > **Serial Console**lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
+1. A [soros konzolt](serial-console-windows.md) a **Support & hibaelhárítás**@no__t – 2**Serial Console**lehetőség kiválasztásával érheti el. Ha a szolgáltatás engedélyezve van a virtuális gépen, akkor a virtuális gép sikeresen csatlakoztatható.
 
 2. Hozzon létre egy új csatornát egy CMD-példányhoz. Írja be a **cmd parancsot** a csatorna elindításához és a csatorna nevének lekéréséhez.
 
@@ -113,7 +113,7 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>A TermService szolgáltatás egy hozzáférés-megtagadási probléma miatt leáll
 
 1. Csatlakozás [soros konzol](serial-console-windows.md) , és nyissa meg egy PowerShell-példány.
-2. Töltse le a folyamat figyelője eszközt a következő szkript futtatásával:
+2. Töltse le a Process monitor eszközt a következő parancsfájl futtatásával:
 
    ```
    remove-module psreadline  
@@ -141,16 +141,16 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
    procmon /Terminate 
    ```
 
-5. Gyűjtse össze a fájl **c:\temp\ProcMonTrace.PML**:
+5. Gyűjtse össze a fájl **c:\temp\ProcMonTrace.PML**:
 
     1. [Adatlemez csatolása a virtuális géphez](../windows/attach-managed-disk-portal.md
 ).
     2. A fájl átmásolása az új meghajtó soros konzol használata. Például: `copy C:\temp\ProcMonTrace.PML F:\`. Ebben a parancsban F a csatlakoztatott lemez meghajtóbetűjelét.
     3. Válassza le az adatmeghajtót, és csatolja egy olyan működő virtuális gépen, amelyen telepítve van a Process monitor ubstakke.
 
-6. Nyissa meg a **ProcMonTrace. PML** a Munkavirtuális gép folyamat-figyelési funkciójával. Majd szűrés **eredménye a hozzáférés MEGTAGADVA**, ahogy az alábbi képernyőfelvételen látható:
+6. Nyissa meg a **ProcMonTrace. PML** a Munkavirtuális gép folyamat-figyelési funkciójával. Ezután a szűrés **eredmény alapján hozzáférés MEGtagadva**, az alábbi képernyőképen látható módon:
 
-    ![Szűrés eredménye a folyamat figyelője](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
+    ![Szűrés eredményként a Process monitorban](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
 6. Javítsa ki a beállításkulcsokat, mappákhoz vagy a kimeneti fájlok. Általában a problémát az okozza, ha a bejelentkezési fiókot, amelynek a szolgáltatás nem rendelkezik ACL ezek az objektumok hozzáférési engedélyt. A bejelentkezési fiók megfelelő ACL-engedélyének megismeréséhez megtekintheti az egészséges virtuális gépet. 

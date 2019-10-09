@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121219"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169682"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákkal kapcsolatos gyakori kérdések az Azure-beli Web Apps
 
@@ -33,13 +33,13 @@ Ez a cikk a [Azure App Service Web Apps funkciójának](https://azure.microsoft.
 A PHP-naplózás bekapcsolása:
 
 1. Jelentkezzen be a [kudu webhelyére](https://*yourwebsitename*.scm.azurewebsites.net).
-2. A felső menüben válassza a **Debug konzol** > **cmd**elemet.
+2. A felső menüben válassza a **Debug Console** > **cmd**elemet.
 3. Válassza ki a **hely** mappáját.
 4. Válassza ki a **wwwroot** mappát.
-5. Válassza ki **+** az ikont, majd válassza az **új fájl**elemet.
+5. Válassza ki a **+** ikont, majd válassza az **új fájl**elemet.
 6. Állítsa a fájlnevet **. user. ini**névre.
 7. Válassza a **. user. ini**melletti ceruza ikont.
-8. A fájlban adja hozzá a következő kódot:`log_errors=on`
+8. A fájlban adja hozzá a következő kódot: `log_errors=on`
 9. Kattintson a **Mentés** gombra.
 10. Válassza a **wp-config. php**melletti ceruza ikont.
 11. Módosítsa a szöveget a következő kódra:
@@ -78,7 +78,7 @@ A Node. js-alkalmazás verziójának módosításához a következő lehetőség
   Az Azure-verziókövetés telepítési folyamata a következő lépésekkel jár:
   1. Tartalmat helyez át az Azure-webalkalmazásba.
   2. Létrehoz egy alapértelmezett telepítési parancsfájlt, ha nincs egyetlen (Deploy. cmd,. Deployment Files) a webalkalmazás gyökérkönyvtárában.
-  3. Futtat egy telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájl > motorjában`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Futtat egy telepítési parancsfájlt, amelyben létrehoz egy iisnode. YML fájlt, ha megemlíti a Node. js-verziót a Package. JSON fájlban > Engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. A iisnode. YML fájl a következő kódrészlettel rendelkezik:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -144,7 +144,7 @@ A hiba elhárítása:
 
 1. Távolítsa el az sqljdbc*. jar fájlt az alkalmazás/lib mappából.
 2. Ha az egyéni tomcat vagy az Azure Marketplace tomcat webkiszolgálót használja, másolja ezt a. jar-fájlt a Tomcat lib mappájába.
-3. Ha engedélyezi a javát a Azure Portalból (válassza a **Java 1,8** > **tomcat-kiszolgálót**), másolja a sqljdbc. * jar fájlt az alkalmazásával párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
+3. Ha engedélyezi a javát a Azure Portalból (válassza a **java 1,8** > **Tomcat-kiszolgáló**lehetőséget), másolja a sqljdbc. * jar fájlt az alkalmazással párhuzamos mappába. Ezután adja hozzá a következő osztályútvonal-beállítást a web. config fájlhoz:
 
     ```xml
     <httpPlatform>
@@ -187,24 +187,24 @@ App Service nem rendelkezik beépített e-mail-funkcióval. Az alkalmazásból �
 
 Ha nemrég áttelepítette az Azure-ba, a WordPress átirányíthatja a régi tartomány URL-címét. Ezt a MySQL-adatbázis egyik beállítása okozza.
 
-A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)segítségével.
+A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)segítségével.
 
-Ha szeretné manuálisan frissíteni az átirányítási URL-címet SQL-lekérdezések vagy phpMyAdmin használatával, tekintse [meg a WordPress: Átirányítása helytelen URL-](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)címre.
+Ha az átirányítási URL-címet manuálisan szeretné SQL-lekérdezések vagy PHPMyAdmin használatával frissíteni, tekintse meg az [WordPress: Átirányítása helytelen URL-címre @ no__t-0.
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan módosítja a WordPress bejelentkezési jelszavát?
 
-Ha elfelejtette a WordPress bejelentkezési jelszavát, akkor a WordPress Buddy + használatával frissítheti azt. A jelszó alaphelyzetbe állításához telepítse a WordPress Buddy + Azure site bővítményt, majd hajtsa végre a [WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)használatával című témakörben ismertetett lépéseket.
+Ha elfelejtette a WordPress bejelentkezési jelszavát, akkor a WordPress Buddy + használatával frissítheti azt. A jelszó alaphelyzetbe állításához telepítse a WordPress Buddy + Azure site bővítményt, majd hajtsa végre a [WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)használatával című témakörben ismertetett lépéseket.
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>Nem tudok bejelentkezni a WordPress webalkalmazásba. Hogyan megoldja ezt?
 
-Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy beépülő modult, lehet, hogy hibás a beépülő modul. A WordPress Buddy + egy Azure-beli bővítmény, amely segítséget nyújt a beépülő modulok letiltásához a WordPress webhelyén. További információ: [WordPress-eszközök és MySQL-áttelepítés a WordPress Buddy +-vel](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy beépülő modult, lehet, hogy hibás a beépülő modul. A WordPress Buddy + egy Azure-beli bővítmény, amely segítséget nyújt a beépülő modulok letiltásához a WordPress webhelyén. További információ: [WordPress-eszközök és MySQL-áttelepítés a WordPress Buddy +-vel](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>Hogyan áttelepíteni a WordPress-adatbázist?
 
 A WordPress-webhelyhez csatlakoztatott MySQL-adatbázis áttelepítésének több lehetősége van:
 
 * Fejlesztők számára: A [parancssor vagy a phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) használata
-* Nem fejlesztőknek: A [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) használata
+* Nem fejlesztőknek: A [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segít a WordPress biztonságosabbá tételében?
 

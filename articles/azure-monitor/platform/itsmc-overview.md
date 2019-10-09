@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051834"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177652"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -32,7 +32,7 @@ A ITSMC a következő ITSM-eszközökkel támogatja a kapcsolatokat:
 
 -   ServiceNow
 -   System Center Service Manager
--   Provance
+-   Megjelenő
 -   Cherwell
 
 A ITSMC a következőket teheti:
@@ -93,8 +93,8 @@ Attól függően, hogy melyik ITSM-termékhez csatlakozik, kövesse az alábbi l
 Miután elő a ITSM-eszközöket, kövesse az alábbi lépéseket a kapcsolatok létrehozásához:
 
 1. Nyissa meg az **összes erőforrást**, keresse meg a **ügyfélszolgálati (YourWorkspaceName)** .
-2. A bal oldali ablaktábla **munkaterület** -adatforrások területén kattintson a **ITSM-kapcsolatok**elemre.
-   ![ITSM-kapcsolatok](media/itsmc-overview/itsm-connections.png)
+2. A bal oldali ablaktábla **munkaterület-ADATforrások** területén kattintson a **ITSM-kapcsolatok**elemre.
+   ![ITSM kapcsolatok @ no__t-1
 
    Ez az oldal a kapcsolatok listáját jeleníti meg.
 3. Kattintson a **kapcsolat hozzáadása**.
@@ -126,16 +126,16 @@ Kövesse az alábbi eljárást:
 
     ![Műveletcsoportok](media/itsmc-overview/action-groups.png)
 
-3. Adja meg a műveleti csoport **nevét** és **gazdagépbejegyzés** . Válassza ki azt az **erőforráscsoportot** és-előfizetést, amelyben létre szeretné hozni a műveleti csoportot.
+3. Adja meg a műveleti csoport **nevét** és **gazdagépbejegyzés** . Válassza ki azt az **erőforráscsoportot** és- **előfizetést** , amelyben létre szeretné hozni a műveleti csoportot.
 
     ![Műveleti csoportok részletei](media/itsmc-overview/action-groups-details.png)
 
 4. A műveletek listában válassza a **ITSM** elemet a **művelet típusa**legördülő menüből. Adja meg a művelet **nevét** , majd kattintson a **részletek szerkesztése**elemre.
-5. Válassza ki azt az előfizetést, ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
+5. Válassza ki azt az **előfizetést** , ahol a log Analytics munkaterület található. Válassza ki a **kapcsolatok** nevét (a ITSM-csatoló nevét), majd a munkaterület nevét. Például: "MyITSMMConnector (Sajátmunkaterület)".
 
     ![ITSM művelet részletei](media/itsmc-overview/itsm-action-details.png)
 
-6. Válassza ki a munkaelem típusát a legördülő menüből.
+6. Válassza ki a **munkaelem** típusát a legördülő menüből.
    Válasszon egy meglévő sablont, vagy töltse ki a ITSM termék által megkövetelt mezőket.
 7. Kattintson az **OK** gombra.
 
@@ -143,7 +143,7 @@ Azure-riasztási szabály létrehozásakor/szerkesztésekor használjon egy ITSM
 
 > [!NOTE]
 >
-> A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg [](https://azure.microsoft.com/pricing/details/monitor/) a műveleti csoportok díjszabási lapját.
+> A ITSM művelet díjszabásával kapcsolatos információkért tekintse meg a műveleti csoportok [díjszabási lapját](https://azure.microsoft.com/pricing/details/monitor/) .
 
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Az incidens megjelenítése és elemzése és a kérelmekre vonatkozó adatváltozás
@@ -184,7 +184,7 @@ ServiceDeskWorkItemType_s="Incident"
 **Mezők**
 
 - ServiceDeskConnectionName
-- Ügyfélszolgálati azonosító
+- Ügyfélszolgálat azonosítója
 - State
 - Sürgősség
 - Hatás
@@ -194,7 +194,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Feloldotta:
 - Lezárta
 - Source
-- Társítás
+- A jog birtokosa
 - Category
 - Beosztás
 - Leírás
@@ -211,11 +211,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 **Mezők**
 - ServiceDeskConnectionName
-- Ügyfélszolgálati azonosító
+- Ügyfélszolgálat azonosítója
 - Létrehozta
 - Lezárta
 - Source
-- Társítás
+- A jog birtokosa
 - Beosztás
 - Type
 - Category
@@ -226,7 +226,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Priority
 - Kockázat
 - Hatás
-- Társítás
+- A jog birtokosa
 - Létrehozás dátuma
 - Lezárás dátuma
 - Utolsó módosítás dátuma
@@ -248,16 +248,16 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Impact_s |Hatás|
 | Priority_s | Priority |
 | CreatedBy_s | Megnyitva |
-| ResolvedBy_s | Feloldotta|
+| ResolvedBy_s | Feloldotta:|
 | ClosedBy_s  | Lezárta |
 | Source_s| Kapcsolattartó típusa |
-| AssignedTo_s | Hozzárendelve a következőhöz:  |
+| AssignedTo_s | Hozzárendelve  |
 | Category_s | Category |
 | Title_s|  Rövid leírás |
 | Description_s|  Megjegyzések |
-| CreatedDate_t|  Megnyitva |
+| CreatedDate_t|  Megnyitott |
 | ClosedDate_t| Lezárt|
-| ResolvedDate_t|Feloldva|
+| ResolvedDate_t|Oldható|
 | Számítógép  | Konfigurációs tétel |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow-módosítási kérelem kimeneti adatkészlete
@@ -267,7 +267,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ServiceDeskId_s| Number |
 | CreatedBy_s | Kérelmező |
 | ClosedBy_s | Lezárta |
-| AssignedTo_s | Hozzárendelve a következőhöz:  |
+| AssignedTo_s | Hozzárendelve  |
 | Title_s|  Rövid leírás |
 | Type_s|  Type |
 | Category_s|  Category |
@@ -287,7 +287,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM-kapcsolatok hibáinak megoldása
-1. Ha a kapcsolat nem sikerül a csatlakoztatott forrás felhasználói felületéről, mert **hiba történt** a kapcsolati üzenet mentésekor, hajtsa végre a következő lépéseket:
+1. Ha a kapcsolat nem sikerül a csatlakoztatott forrás felhasználói felületéről, mert **hiba történt a kapcsolati üzenet mentésekor** , hajtsa végre a következő lépéseket:
    - ServiceNow, Cherwell és elővance kapcsolatok esetén  
    - Győződjön meg arról, hogy minden kapcsolathoz helyesen adta meg a felhasználónevet, a jelszót, az ügyfél-azonosítót és az ügyfél-titkot.  
    - Ellenőrizze, hogy rendelkezik-e megfelelő jogosultságokkal a megfelelő ITSM-termékben a kapcsolódáshoz.  
@@ -297,7 +297,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 2. Ha a ServiceNow származó adatok nem lettek szinkronizálva a Log Analyticsba, győződjön meg arról, hogy a ServiceNow-példány nem alvó állapotú. A ServiceNow dev-példányok időnként hosszabb ideig tétlenek maradnak. Máskülönben jelentse a problémát.
 3. Ha Log Analytics a riasztások tüzet, de a munkaelemek nem jönnek létre a ITSM termékben, vagy a konfigurációs elemek nem jönnek létre/nem kapcsolódnak munkaelemekhez vagy más általános információkhoz, tekintse meg a következő helyeket:
    -  ITSMC: A megoldás a kapcsolatok/munkaelemek/számítógépek összegzését jeleníti meg, stb. Kattintson az **összekötő állapotát**megjelenítő csempére, amely a megfelelő lekérdezéssel végzett **Keresés naplózására** kerül. További információkért tekintse meg a LogType_S a KÖVETKEZŐvel:.
-   - **Naplók keresése** oldalon: közvetlenül a lekérdezési `*`ServiceDeskLog_CL`*`tekintheti meg a hibákat/kapcsolódó információkat.
+   - **Naplók keresése** oldalon: a hibák/kapcsolódó információk közvetlenül a lekérdezéssel `*`ServiceDeskLog_CL @ no__t-2 használatával tekinthetők meg.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager webalkalmazás központi telepítésének hibáinak megoldása
 1.  A webalkalmazások telepítésével kapcsolatos problémák esetén győződjön meg arról, hogy rendelkezik az erőforrások létrehozásához és üzembe helyezéséhez szükséges engedélyekkel az előfizetésben.
@@ -307,7 +307,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="contact-us"></a>Kapcsolat
 
-A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezésért és Visszajelzésért lépjen kapcsolatba velünk [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)a következő címen:.
+A IT-szolgáltatásmenedzsmenti csatoló kapcsolatos bármilyen lekérdezés vagy visszajelzés esetén vegye fel velünk a kapcsolatot a következő címen: [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
 [ITSM-termékek/-szolgáltatások hozzáadása a it-szolgáltatásmenedzsmenti csatolóhoz](../../azure-monitor/platform/itsmc-connections.md).

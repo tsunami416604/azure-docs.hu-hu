@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 44ae433040c2c9cab47567cb663d4e588311a4a1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140754"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177421"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Adatok növekményes betöltése az SQL Server több táblájából egy Azure SQL-adatbázisba
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be egy helyszíni SQL Server több táblájából egy Azure SQL-adatbázisba.    
@@ -227,7 +227,7 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>data factory létrehozása
+## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 1. Kattintson az **Új** elemre, majd az **Adatok + analitika**, végül a **Data Factory** elemre. 
@@ -280,7 +280,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
 
    ![Saját üzemeltetésű integrációs modul neve](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Kattintson ide, ha az 1. **lehetőségnél **szeretné elindítani a számítógép expressz telepítését** : Expressz beállítás** szakasz. 
+1. Kattintson **ide, hogy elindítsa a számítógép expressz telepítését** a **Option 1: Express Setup @ no__t-0 szakasz. 
 
    ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 
@@ -304,7 +304,7 @@ Ebben a lépésben a helyszíni SQL Server-adatbázist társítja az adat-előá
     ![Új társított szolgáltatás gomb](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. A **New Linked Service** (Új társított szolgáltatás) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Continue** (Folytatás) gombra. 
 
-    ![SQL Server-kiszolgáló választása](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+    ![Select SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket:
 
     1. A **Név** mezőben adja meg az **SqlServerLinkedService** értéket. 
@@ -351,7 +351,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
    ![Új adatkészlet menü](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. A **New Dataset** (Új adatkészlet) ablakban válassza az **SQL Server** lehetőséget, majd kattintson a **Finish** (Befejezés) elemre. 
 
-   ![SQL Server-kiszolgáló választása](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+   ![Select SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
 1. A webböngészőben megjelenik egy új lap, amely az adatkészlet konfigurálására szolgál. Az adatkészlet fanézetben is megjelenik. A Properties (Tulajdonságok) ablak **General** (Általános) lapjának alján a **SourceDataset** értéket adja meg a **Name** (Név) mezőben. 
 
    ![Forrásadatkészlet – név](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
@@ -386,7 +386,7 @@ Ebben a lépésben olyan adatkészleteket hoz létre, amelyek az adatforrást, a
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. Miután a **Finish** (Befejezés) gombra kattint, a **@dataset().SinkTableName** táblanévként fog megjelenni.
+ 1. A **Befejezés**gombra kattintva megtekintheti **\@dataset (). A SinkTableName** a tábla neve.
    
    ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -492,9 +492,9 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     ![Másolási tevékenység – fogadóbeállítások](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Hajtsa végre a következő lépéseket:
 
-    1. Az **adatkészlet** tulajdonságában a **SinkTableName** paraméternél adja meg `@{item().TABLE_NAME}`a következőt:.
-    1. A **tárolt eljárás neve** tulajdonságnál adja `@{item().StoredProcedureNameForMergeOperation}`meg a következőt:.
-    1. A **Table Type** tulajdonságnál adja `@{item().TableType}`meg a következőt:.
+    1. A **SinkTableName** paraméter **adatkészlet** tulajdonságában adja meg a következőt: `@{item().TABLE_NAME}`.
+    1. A **tárolt eljárás neve** tulajdonságnál adja meg a következőt: `@{item().StoredProcedureNameForMergeOperation}`.
+    1. A **Table Type** tulajdonsághoz írja be a következőt: `@{item().TableType}`.
 
 
         ![Másolási tevékenység – paraméterek](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)

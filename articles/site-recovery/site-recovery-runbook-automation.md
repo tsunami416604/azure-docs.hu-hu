@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212867"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173481"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation runbookok hozzáadása helyreállítási tervekhez
 
@@ -112,14 +112,14 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 ## <a name="customize-the-recovery-plan"></a>A helyreállítási terv testreszabása
 
 1. A tárolóban válassza a **helyreállítási tervek (site Recovery) lehetőséget.**
-2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információk](/site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
+2. Helyreállítási terv létrehozásához kattintson a **+ helyreállítási terv**elemre. [További információk](site-recovery-create-recovery-plans.md). Ha már rendelkezik helyreállítási tervvel, válassza ki a megnyitásához.
 3. A helyreállítási terv lapon kattintson a **Testreszabás**elemre.
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson az 1. **csoport melletti három pontra (...): Kezdje**el > a**post művelet hozzáadását**.
+2. Kattintson a három pontra (...) a **Group 1 elem mellett: Start @ no__t-0 @ no__t-1**Add post művelet**.
 3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét ( **"Helló világ!" alkalmazás**).
-4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva **az 1. csoporthoz: Utólagos lépések**.
+4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva a **Group 1: Lépések utáni @ no__t-0.
 
 
 ## <a name="reuse-a-runbook-script"></a>Runbook-szkript újrafelhasználása

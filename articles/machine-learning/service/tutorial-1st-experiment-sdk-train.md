@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az első ML-modell betanítása'
+title: 'Oktatóanyag: Az első Azure ML-modell betanítása a Pythonban'
 titleSuffix: Azure Machine Learning
 description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828013"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173304"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 
 Az egyetlen előfeltétel az oktatóanyag, a [telepítési környezet és a munkaterület](tutorial-1st-experiment-sdk-setup.md)első részének futtatása.
 
-Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb` futtatja a kódot. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
+Az oktatóanyag ezen részében a kódot az első rész végén megnyitott Jupyter jegyzetfüzetben `tutorials/tutorial-1st-experiment-sdk-train.ipynb`. Ez a cikk a jegyzetfüzetben található kódot mutatja be.
 
 ## <a name="open-the-notebook"></a>A jegyzetfüzet megnyitása
 
@@ -53,7 +53,7 @@ Az oktatóanyag ezen részében az első rész végén megnyitott minta Jupyter 
 > Váltson a Jupyter jegyzetfüzetre, ha a kód futtatása közben szeretné olvasni. 
 > Ha egyetlen kód cellát szeretne futtatni egy jegyzetfüzetben, kattintson a kód cellára, és nyomja le a **SHIFT + ENTER billentyűkombinációt**. Vagy futtassa a teljes jegyzetfüzetet úgy, hogy az **összes futtatása** lehetőséget választja a felső eszköztáron.
 
-Importálja `Workspace` az osztályt, és töltse be az előfizetési `config.json` adatokat a fájlból az aktuális könyvtárban található JSON-fájlhoz tartozó függvény `from_config().` használatával, de a fájlra mutató elérésiút-paramétert is megadhat. a `from_config(path="your/file/path")`használata. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
+Importálja a `Workspace` osztályt, és töltse be az előfizetési adatokat a (z) `config.json` fájlból a következő függvény használatával: `from_config().`. Ez alapértelmezés szerint az aktuális könyvtárban található JSON-fájlt keresi, de megadhat egy Path paramétert is, hogy a fájlra mutasson a `from_config(path="your/file/path")` használatával. A Felhőbeli jegyzetfüzet-kiszolgálókon a fájl automatikusan megjelenik a gyökérkönyvtárban.
 
 Ha a következő kód további hitelesítést kér, egyszerűen illessze be a hivatkozást egy böngészőben, és adja meg a hitelesítési jogkivonatot.
 
@@ -72,7 +72,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Adatgyűjtés és felkészülés a képzésre
 
-Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a scikit-Learn csomagban található, előre normalizált adathalmaz. Ez az adathalmaz olyan szolgáltatásokat használ, mint az Age, a nemek és a BMI a diabéteszes megbetegedések előrehaladásának előrejelzéséhez. Töltse be az adatait a `load_diabetes()` statikus függvényből, és ossza ki őket képzésbe és tesztelési készletekbe a használatával. `train_test_split()` Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
+Ebben az oktatóanyagban a diabétesz-adatkészletet használja, amely a scikit-Learn csomagban található, előre normalizált adathalmaz. Ez az adathalmaz olyan szolgáltatásokat használ, mint az Age, a nemek és a BMI a diabéteszes megbetegedések előrehaladásának előrejelzéséhez. Töltse be az `load_diabetes()` statikus függvény adatait, és ossza ki a képzési és tesztelési készletekbe `train_test_split()` használatával. Ez a függvény elkülöníti az adattípusokat, így a modell nem tartalmaz olyan, a következő képzések teszteléséhez szükséges adatait.
 
 
 ```python
@@ -118,12 +118,12 @@ for alpha in alphas:
 
 A fenti kód a következőket hajtja végre:
 
-1. A `alphas` tömbben lévő összes alfa-hiperparaméter esetében új Futtatás jön létre a kísérleten belül. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
+1. A `alphas` tömb mindegyik alfa-hiperparaméter értékéhez új Futtatás jön létre a kísérletben. A rendszer naplózza az alfa-értéket az egyes futtatások megkülönböztetése érdekében.
 1. Az egyes futtatások során a Ridge-modell példánya, betanítása és előrejelzések futtatására szolgál. A rendszer kiszámítja a tényleges és az előre jelzett értékeket, majd naplózza a futtatást. Ezen a ponton a futtatáshoz metaadatok vannak csatolva az Alpha értékhez és a gyökátlagos pontosságához.
 1. Ezután az egyes futtatásokhoz tartozó modell szerializálva lesz, és a futtatásra van feltöltve. Ez lehetővé teszi a modell letöltését a portálon futtatott fájlból.
-1. Minden iteráció végén meghívja `run.complete()`a futtatást.
+1. Az egyes iterációk végén a Futtatás a `run.complete()` hívásával fejeződik be.
 
-A képzés befejezését követően hívja meg a `experiment` változót, hogy beolvassa a kísérletre mutató hivatkozást a portálon.
+A képzés befejeződése után hívja meg a `experiment` változót a kísérletre mutató hivatkozás beolvasásához a portálon.
 
 ```python
 experiment
@@ -133,13 +133,13 @@ experiment
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 
-A **Azure Portalre mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (`alpha_value` és `rmse`ebben az esetben) az egyes futtatások mezői lesznek, és elérhetővé válnak a kísérlet oldal tetején található diagramok és csempék számára is. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
+A **Azure Portalre mutató hivatkozást** követve a fő kísérlet oldalára kerül. Itt láthatja a kísérletben szereplő összes egyéni futtatást. Minden egyéni naplózott érték (ebben az esetben a `alpha_value` és a `rmse`) minden futtatásnál mezővé válik, és a kísérlet oldal tetején található diagramok és csempék számára is elérhetővé válik. Egy naplózott metrika diagramhoz vagy csempéhez való hozzáadásához vigye fölé a kurzort, kattintson a Szerkesztés gombra, és keresse meg az egyéni naplózott metrikát.
 
 Ha több száz vagy több ezer különálló futtatást használ, ezen az oldalon könnyedén megtekintheti a betanított modelleket, és hogy miként változnak az egyedi mérőszámok az idő múlásával.
 
 ![A fő kísérlet oldala a portálon](./media/tutorial-quickstart/experiment-main.png)
 
-Az `RUN NUMBER` oszlopban található futtatási szám hivatkozásra kattintva megtekintheti az egyes futtatások lapját. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek** lapra, és láthatja `.pkl` , hogy melyik modellhez lett feltöltve a Futtatás során az egyes képzések ismétlése során. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
+A `RUN NUMBER` oszlopban található futtatási szám hivatkozásra kattintva megtekintheti az egyes futtatások lapját. Az alapértelmezett lapon a **részletek** részletesebb információkat jelenítenek meg az egyes futtatásokról. Navigáljon a **kimenetek** lapra, és megjelenik a modellhez tartozó `.pkl` fájl, amely az egyes képzések ismétlése során a futtatásra lett feltöltve. Itt letöltheti a modell fájlját, nem kell manuálisan áttanítania.
 
 ![A portálon a Részletek lap futtatása](./media/tutorial-quickstart/model-download.png)
 
@@ -173,7 +173,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja `get_file_names()` meg az erről a futtatásról letölthető összes fájl megtekintését. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
+A legjobb futtatási AZONOSÍTÓval lekérheti az egyes futtatásokat a `Run` konstruktorral együtt a kísérlet objektummal. Ezután hívja meg a `get_file_names()` parancsot a futtatásból letölthető összes fájl megtekintéséhez. Ebben az esetben csak egy fájlt töltött fel minden futtatáshoz a betanítás során.
 
 ```python
 from azureml.core import Run
@@ -183,7 +183,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Hívja `download()` meg a Futtatás objektumot, és adja meg a letölteni kívánt modell fájlnevét. Alapértelmezés szerint ez a függvény letölti az aktuális könyvtárat.
+Hívja meg `download()` értéket a Run objektumon, és adja meg a letölteni kívánt modell fájlnevét. Alapértelmezés szerint ez a függvény letölti az aktuális könyvtárat.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")

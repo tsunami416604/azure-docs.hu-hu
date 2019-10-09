@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2019
 ms.author: bwren
-ms.openlocfilehash: 39691c0efbac7b7a48dd844641d63e0ca178e95f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 957df2d03352756c74a5450de240afde2615e50b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327464"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177617"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Egyéni naplók a Azure Monitorban
 
@@ -57,7 +57,7 @@ Egyéni naplófájl definiálásához használja az alábbi eljárást.  Görges
 Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy megadjon egy új egyéni naplót a gyűjtéshez.
 
 1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Kattintson az > **Egyéni adatnaplók**elemre.
+2. Kattintson az **adat@no__t-** 1**egyéni naplók**elemre.
 3. Alapértelmezés szerint az összes konfigurációs módosítást automatikusan leküld az összes ügynököt. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
 4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
 
@@ -74,7 +74,7 @@ Időbélyeg-elválasztó használata esetén a Azure Monitorban tárolt egyes re
 4. Módosítsa az új rekord azonosításához használt elválasztó karaktert, és válassza ki a naplófájlban a rekordokat legjobban azonosító elválasztót.
 5. Kattintson a **Tovább** gombra.
 
-### <a name="step-3-add-log-collection-paths"></a>3\. lépés. Naplógyűjtemények elérési útjának felvétele
+### <a name="step-3-add-log-collection-paths"></a>3\. lépés. Napló-gyűjtemény elérési útjának hozzáadása
 Meg kell adnia egy vagy több elérési utat az ügynökön, ahol megtalálhatja az egyéni naplót.  Megadhat egy adott elérési utat és nevet a naplófájlhoz, vagy megadhat egy elérési utat, amely helyettesítő karaktert tartalmaz a névhez. Ez olyan alkalmazásokat támogat, amelyek naponta új fájlt hoznak létre, vagy amikor egy fájl elér egy adott méretet. Egyetlen naplófájlhoz több elérési utat is megadhat.
 
 Előfordulhat például, hogy egy alkalmazás minden nap létrehoz egy naplófájlt a névben szereplő dátummal a log20100316. txt fájlban. Előfordulhat, hogy az ilyen naplóhoz tartozó minta olyan *log\*.txt* , amely az alkalmazás elnevezési sémáját követő minden naplófájlra vonatkozni fog.
@@ -102,7 +102,7 @@ A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leí
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>5\. lépés. Annak ellenőrzése, hogy az egyéni naplók gyűjtése folyamatban van-e
 Akár egy órát is igénybe vehet, hogy egy új egyéni naplóból származó kezdeti adatok megjelenjenek Azure Monitorban.  Megkezdi a bejegyzések gyűjtését az egyéni naplót definiált pontról megadott elérési úton található naplókból.  A rendszer nem őrzi meg az egyéni napló létrehozásakor feltöltött bejegyzéseket, de a már meglévő bejegyzéseket gyűjti a megtalált naplófájlokban.
 
-Miután Azure Monitor elkezdi a gyűjtést az egyéni naplóból, a rekordjai a napló lekérdezésével lesznek elérhetők.  Használja azt a nevet, amelyet az egyéni naplóhoz adott a lekérdezésben szereplő típusként.
+Miután Azure Monitor elkezdi a gyűjtést az egyéni naplóból, a rekordjai a napló lekérdezésével lesznek elérhetők.  Használja azt a nevet, amelyet az egyéni naplóhoz adott a lekérdezésben szereplő **típusként** .
 
 > [!NOTE]
 > Ha a lekérdezésből hiányzik a RawData tulajdonság, előfordulhat, hogy be kell állítania és újra meg kell nyitnia a böngészőt.
@@ -146,7 +146,7 @@ A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események le
 
 ![Minta napló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
 
-### <a name="add-log-collection-paths"></a>Naplógyűjtemények elérési útjának felvétele
+### <a name="add-log-collection-paths"></a>Napló-gyűjtemény elérési útjának hozzáadása
 A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  A naplóhoz elegendő minta lenne a *C:\MyApp\Logs @ no__t-1\*.log*.
 
 ![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
@@ -172,7 +172,7 @@ Míg az egyéni naplók akkor hasznosak, ha az adatai megfelelnek a felsorolt fe
 A következő alternatív stratégiákat kell figyelembe venni abban az esetben, ha az adatok nem gyűjthetők össze az egyéni naplókkal:
 
 - Egyéni parancsfájl vagy más módszer használatával adatokat írhat a Windows- [eseményekre](data-sources-windows-events.md) vagy a [syslog](data-sources-syslog.md) -re, amelyeket a Azure monitor gyűjt. 
-- Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. A Azure Automationban található runbookok-t használó példa a [napló adatainak összegyűjtése Azure monitor egy Azure Automation runbook](runbook-datacollect.md).
+- Az adatküldés közvetlenül a Azure Monitor a http-adatgyűjtő [API](data-collector-api.md)használatával. 
 
 ## <a name="next-steps"></a>További lépések
 * Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.

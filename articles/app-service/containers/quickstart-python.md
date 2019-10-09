@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: true
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070973"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177029"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -56,15 +58,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
 
-# In PowerShell
-py -3 -m venv env
-env\scripts\activate
-pip install -r requirements.txt
-Set-Item Env:FLASK_APP ".\application.py"
-flask run
 ```
 
-Nyisson meg egy webböngészőt, és nyissa meg a `http://localhost:5000/`minta alkalmazást a következő címen:.
+Nyisson meg egy webböngészőt, és nyissa meg a minta alkalmazást a következő címen: `http://localhost:5000/`.
 
 Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik meg.
 
@@ -104,7 +100,7 @@ Checking connectivity... done.
 
 Lépjen abba a könyvtárba, amelyben a mintakód található, és futtassa az `az webapp up` parancsot.
 
-A következő példában `<app-name>` cserélje le egy globálisan egyedi alkalmazás nevére ( *`a-z`érvényes `0-9`karakterek `-`* :, és).
+Az alábbi példában cserélje le a `<app-name>` értéket egy globálisan egyedi alkalmazás nevével (*érvényes karakterek: `a-z`, `0-9` és `-`* ).
 
 ```bash
 cd python-docs-hello-world
@@ -157,7 +153,7 @@ A Python-mintakód App Service Linux rendszeren fut, beépített képpel.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-A Cloud Shell a Cloud Shell- `code application.py` szerkesztő megnyitásához írja be a következőt:.
+A Cloud Shell írja be a `code application.py` értéket a Cloud Shell-szerkesztő megnyitásához.
 
 ![Application.py kód](media/quickstart-python/code-applicationpy.png)
 
@@ -169,7 +165,7 @@ return "Hello Azure!"
 
 Mentse a módosításokat, és zárja be a szerkesztőt. A mentéshez a `^S`, a kilépéshez a `^Q` parancsot használja.
 
-Telepítse újra az alkalmazást a [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs használatával. Helyettesítse be az alkalmazás `<app-name>`nevét, és adjon meg egy `<location-name>` helyet (a [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancsban látható értékek egyikének használatával).
+Telepítse újra az alkalmazást az [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs használatával. Helyettesítse be az alkalmazás nevét a `<app-name>` értékre, és adjon meg egy helyet a `<location-name>` számára (a [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs által megjelenített értékek egyikének használatával).
 
 ```bash
 az webapp up -n <app-name> -l <location-name>
@@ -198,10 +194,10 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
+> [Oktatóanyag: Python (Django) webalkalmazás a PostgreSQL @ no__t-0 használatával
 
 > [!div class="nextstepaction"]
 > [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python-alkalmazás futtatása egyéni tárolóban](tutorial-custom-docker-image.md)
+> [Oktatóanyag: Python-alkalmazás futtatása az egyéni tárolóban @ no__t-0

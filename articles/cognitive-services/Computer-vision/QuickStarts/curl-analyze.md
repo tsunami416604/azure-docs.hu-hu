@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0c52bf9b62026caec54a09acd10a52f89ca98d52
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 4f03ae62e2a455a5a5101bef45cf2d78100248f4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138027"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177320"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: Távoli rendszerkép elemzése a Computer Vision REST API és a cURL használatával
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Másolja az alábbi parancsot egy szövegszerkesztőbe.
 1. Hajtsa végre a következő módosításokat a parancs megfelelő területein:
     1. Cserélje le a `<subscriptionKey>` értéket az előfizetői azonosítóra.
-    1. Cserélje le a kérelem URL-címének (`westcentralus`) első részét a saját végpont URL-címében található szövegre.
+    1. Cserélje le a kérelem URL-címének első részét (`westcentralus`) a saját végpont URL-címében szereplő szövegre.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Igény szerint változtassa meg a kérés URL-címének (`language=en`) nyelvi paraméterét egy másik támogatott nyelvre.
     1. Igény szerint cserélje a kép URL-címét a kérelem törzsében (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) egy másik elemzendő kép URL-címére.
@@ -44,7 +44,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
 ```bash
-curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Categories,Description&details=Landmarks&language=en" -d "{\"url\":\"http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\"}"
 ```
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
