@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Több példány létrehozása
           href: resource-group-create-multiple.md
-        - name: Erőforráscsoportok és erőforrások létrehozása az előfizetésben
-          displayName: subscription level deployment
+        - name: Előfizetés-szintű erőforrások
           href: deploy-to-subscription.md
     - name: Sablonok üzembe helyezése
       items:

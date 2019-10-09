@@ -34,6 +34,8 @@
           href: sql-database-server-level-firewall-rule.md
         - name: Nyilvános végpont konfigurálása felügyelt példányban
           href: sql-database-managed-instance-public-endpoint-configure.md
+        - name: Kapcsolattípusok konfigurálása felügyelt példányban
+          href: sql-database-managed-instance-connection-type.md
         - name: Ügyfél–virtuálisgép-kapcsolat felügyelt példányhoz
           href: sql-database-managed-instance-configure-vm.md
         - name: Pont–hely-kapcsolat felügyelt példányhoz

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9fc6e57a7e002cd4ffcf62c7779fb2626ce9c839
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963799"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001470"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Oktatóanyag: Változók hozzáadása a Resource Manager-sablonhoz
 
@@ -47,13 +47,13 @@ A [resourceGroup](resource-group-template-functions-resource.md#resourcegroup) f
 
 A [uniqueString](resource-group-template-functions-string.md#uniquestring) függvény egy 13 karakterből álló kivonatoló értéket hoz létre. A visszaadott értéket a megadott paraméterek határozzák meg. Ebben az oktatóanyagban az erőforráscsoport AZONOSÍTÓját használja a kivonat értékének bemenetként. Ez azt jelenti, hogy ezt a sablont különböző erőforráscsoporthoz helyezheti üzembe, és egy másik egyedi karakterláncot is beszerezhet. Ugyanakkor ugyanezt az értéket kell megkapnia, ha ugyanarra az erőforrás-csoportra telepíti.
 
-A [concat](resource-group-template-functions-string.md#concat) függvény értékeket vesz fel, és egyesíti azokat. Ehhez a változóhoz egy karakterláncot vesz fel egy paraméterből és a karakterláncot a uniqueString függvényből, és egyetlen sztringbe egyesíti őket.
+A [concat](resource-group-template-functions-string.md#concat) függvény értékeket vesz fel, és egyesíti azokat. Ehhez a változóhoz a karakterláncot a paraméterből és a karakterláncot a uniqueString függvényből veszi át, és egyetlen karakterlánccá egyesíti őket.
 
-A **storagePrefix** paraméter lehetővé teszi, hogy átadja a Storage-fiókok azonosítását segítő előtagot. Létrehozhat egy saját elnevezési konvenciót, amely megkönnyíti a tárolási fiókok azonosítását az erőforrások hosszú listájáról való üzembe helyezés után.
+A **storagePrefix** paraméter lehetővé teszi, hogy olyan előtagot adjon át, amely segítséget nyújt a Storage-fiókok azonosításában. Létrehozhat egy saját elnevezési konvenciót, amely megkönnyíti a tárolási fiókok azonosítását az erőforrások hosszú listájáról való üzembe helyezés után.
 
 Végezetül figyelje meg, hogy a tároló neve már egy paraméter helyett a változóra van beállítva.
 
-## <a name="deploy-template"></a>Sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Végezzük el a sablon üzembe helyezését. A sablon üzembe helyezése egyszerűbb, mint az előző sablonok, mert csak a tároló nevének előtagját adja meg.
 

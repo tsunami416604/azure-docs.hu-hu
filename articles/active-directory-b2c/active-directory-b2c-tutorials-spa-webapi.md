@@ -70,7 +70,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>A webes API konfigurálása
 
-1. Nyissa meg a *B2C-WebApi/**appSettings. JSON*** fájlt a Visual Studióban vagy a Visual Studio Code-ban.
+1. Nyissa meg a *B2C-WebApi/**appSettings. JSON** fájlt* a Visual Studióban vagy a Visual Studio Code-ban.
 1. Módosítsa a `AzureAdB2C` blokkot úgy, hogy tükrözze a bérlő nevét, a webes API-alkalmazás alkalmazás-azonosítóját, a regisztrációs/bejelentkezési szabályzat nevét és a korábban definiált hatóköröket. A blokknak az alábbi példához hasonlóan kell kinéznie `Tenant` ( `ClientId` megfelelő és értékekkel):
 
     ```json

@@ -9,26 +9,23 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960528"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001351"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat valós eszközt a Microsoft Azure IoT Central-alkalmazásához. 
-@no__t – 0 * nincs szüksége saját külső eszközre az oktatóanyag elvégzéséhez. A "valódi eszköz" a parancssori környezetben futó, kódolt alkalmazásként lesz felépítve. _ 
+Ez az oktatóanyag bemutatja, hogyan adhat hozzá és konfigurálhat egy *valós eszközt* a Microsoft Azure IoT Central alkalmazáshoz. Ebben az oktatóanyagban a Real eszközt a Node. js használatával, a kódot pedig asztali gépen futtathatja. Az oktatóanyag elvégzéséhez nincs szükség külön IoT-eszközre, például málna PI vagy MXChip IoT fejlesztői készlet-eszközre.
 
 Ez az oktatóanyag két részből áll:
 
 * Először operátorként megismeri, hogyan adhat hozzá és konfigurálhat valós eszközt az Azure IoT Central -alkalmazásban. A jelen rész végén lekér egy kapcsolati sztringet, amelyet a második részben fog használni.
 * Ezt követően eszközfejlesztőként megismeri a valós eszközben lévő kódot. Az első részben lévő kapcsolati sztringet hozzáadja a mintakódhoz.
-
-
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -99,7 +96,7 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
-1. Jegyezze fel a **hatókör-azonosítót**, az **eszköz azonosítóját** és az **elsődleges kulcs** értékeit az **eszköz csatlakoztatása** lapon. Ezeket az értékeket az oktatóanyag későbbi részében fogja használni.
+1. Az **eszköz csatlakoztatása** lapon jegyezze fel a **hatókör azonosítóját**, az **eszköz azonosítóját**és az **elsődleges kulcs** értékeit. Ezeket az értékeket az oktatóanyag későbbi részében használhatja.
 
    ![Kapcsolat részletei](media/tutorial-add-device/device-connect.png)
 

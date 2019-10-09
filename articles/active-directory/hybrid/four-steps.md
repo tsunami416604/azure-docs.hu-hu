@@ -83,7 +83,7 @@ A modern vállalatoknál az IT-részlegek gyakran nem ismerik az összes olyan f
 
 [Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) A (MCAS) segítségével azonosíthatók azok a hasznos alkalmazások, amelyek népszerűek a felhasználók számára, és hozzáadhatók a nagyvállalati alkalmazások katalógusához, így a felhasználók olyan képességekkel rendelkeznek, mint az egyszeri bejelentkezés és a feltételes hozzáférés.
 
-A *"**Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelme érdekében szükséges alapvető biztonsági házirendeket."* --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+A *" **Cloud app Security** segít biztosítani, hogy a felhasználók a felhő-és SaaS-alkalmazásaikat megfelelően használják, olyan módon, amely támogatja a Accenture védelme érdekében szükséges alapvető biztonsági házirendeket*." --- [John Blasi, ügyvezető igazgató, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 Az árnyék észlelése mellett a MCAS is meghatározhatja az alkalmazások kockázati szintjét, megakadályozhatja a vállalati adatokhoz való jogosulatlan hozzáférést, az esetleges adatszivárgást és az alkalmazásokban rejlő egyéb biztonsági kockázatokat.
 

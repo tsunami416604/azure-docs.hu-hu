@@ -106,7 +106,7 @@ Az alapértelmezett lap megnyílik, amikor kiválasztja az **áttekintési** > *
 A teljesítmény-diagramok négy teljesítménymutatót jelenítenek meg:
 
 - **Csomópont CPU-kihasználtsága&nbsp;%** : A teljes fürt CPU-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
-- **&nbsp;Csomópont memóriájának%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
+- **Csomópont memóriájának&nbsp;%kihasználtsága**: A teljes fürt memória-kihasználtságának összesített perspektívája. Az időtartomány eredményeinek szűréséhez válassza az **AVG**, a **min**, az **50**, a **kilencven**, a **95.** vagy a **Max** lehetőséget a diagram feletti percentilis-választóban. A szűrők akár egyénileg, akár kombinálva is használhatók. 
 - **Csomópontok száma**: Csomópontok száma és állapota a Kubernetes. A megjelenített fürtcsomópontok állapota összesen, kész és nem üzemkész. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 - **Aktív Pod-szám**: A Kubernetes származó Pod-szám és-állapot. A képviselt hüvelyek állapota összesen, függőben, fut, ismeretlen, sikeres vagy sikertelen. A diagram felett a választóban egyenként vagy kombinálva is szűrhetők. 
 

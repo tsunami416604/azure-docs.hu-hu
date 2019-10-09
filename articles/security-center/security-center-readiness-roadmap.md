@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: a5d11be7d4fbe7f23b5584775c5d9a57c2214155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200982"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996692"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center készültségi ütemterv
 Ez a dokumentum egy készültségi ütemtervet tartalmaz, amely az Azure Security Center használatának első lépéseiben nyújt segítséget.
@@ -89,23 +89,23 @@ Cikkek
 
 ## <a name="advanced-cloud-defense"></a>Speciális felhővédelem
 
-Az Azure-beli virtuális gépek kihasználhatják a Security Center speciális felhővédelmi képességeit. Ezek közé tartozik a virtuális gépek igény szerinti hozzáférése és az adaptív alkalmazásvezérlők.
+Az Azure-beli virtuális gépek kihasználhatják a Security Center speciális felhővédelmi képességeit. Ezen képességek közé tartozik az igény szerinti virtuális gépekhez való hozzáférés, valamint az adaptív alkalmazások vezérlése.
 
 Az alábbi forrásanyagokból megismerheti, hogyan használhatja ezeket a képességeket a Security Centerben.
 
 Videók  
-* [Azure Security Center – Igény szerinti hozzáférés a virtuális gépekhez](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center – igény szerinti virtuális gépekhez való hozzáférés](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center – Adaptív alkalmazásvezérlők](https://youtu.be/wWWekI1Y9ck)
 
 Cikkek    
-* [A virtuális gépekhez való hozzáférés kezelése igény szerinti hozzáféréssel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [A virtuális gépekhez való hozzáférés kezelése igény szerint](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Adaptív alkalmazásvezérlők az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>Gyakorlati tevékenységek
 
 * [Security Center – gyakorlati labor](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Webalkalmazási tűzfal (WAF) javasolt forgatókönyve a Security Centerben](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff)
-* [Azure Security Center-forgatókönyv: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Azure Security Center-forgatókönyv: Biztonsági riasztások @ no__t-0
 
 ## <a name="additional-resources"></a>További források
 * [Security Center – dokumentációs oldal](https://docs.microsoft.com/azure/security-center/)

@@ -122,7 +122,7 @@ Ahogy azt korábban említettük, a többi OWIN-tár általában hasonló lehet�
 
 A webes API mostantól támogatja mindkét URI-t, most frissítenie kell a webalkalmazást, hogy lekérje a jogkivonatokat a b2clogin.com-végpontról.
 
-Beállíthatja például a minta-webalkalmazást úgy, hogy az új végpontot használja a `ida:AadInstance` **TaskWebApp** projekt *TaskWebApp\\**web. config*** fájljának értékének módosításával.
+Beállíthatja például a minta-webalkalmazást úgy, hogy az új végpontot használja a `ida:AadInstance` **TaskWebApp** projekt *TaskWebApp\\**web. config** fájljának* értékének módosításával.
 
 Módosítsa a `ida:AadInstance` TaskWebApp *web. config fájljának* értékét úgy, hogy az a `{your-b2c-tenant-name}.b2clogin.com` helyett `login.microsoftonline.com`a következőre hivatkozik.
 
