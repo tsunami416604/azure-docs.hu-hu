@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174644"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Sonarqube
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -139,7 +139,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Telepítse az SAML beépülő modult a sonarqube Market helyről.
 
-3. A lap bal felső részén kattintson a **rendszergazda** elemre, majd keresse meg az **SAML**-t.
+3. A lap bal felső részén kattintson a **rendszergazda** elemre, majd keresse meg az **SAML**-t.
 
 4. Az **SAML** oldalon hajtsa végre a következő lépéseket:
 
@@ -157,11 +157,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     f. Nyissa meg a Base64 kódolású tanúsítványt a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **szolgáltatói tanúsítvány** szövegmezőbe.
 
-    g. Az **SAML felhasználói bejelentkezési attribútum** szövegmezőben adja meg az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    g. Az **SAML felhasználói bejelentkezési attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` értéket.
 
-    h. Az **SAML-Felhasználónév attribútuma** szövegmezőbe írja be az `http://schemas.microsoft.com/identity/claims/displayname`értéket.
+    h. Az **SAML-Felhasználónév attribútuma** szövegmezőbe írja be a `http://schemas.microsoft.com/identity/claims/displayname` értéket.
 
-    i. Az **SAML-felhasználó e-mail-attribútuma** szövegmezőbe írja be az értéket `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    i. Az **SAML-felhasználó e-mail-attribútuma** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` értéket.
 
     j. Kattintson a **Save** (Mentés) gombra.
 

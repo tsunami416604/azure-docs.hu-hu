@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076314"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035304"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure app Configurationvel
 
@@ -53,13 +53,13 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 2. Az új mappában futtassa az alábbi parancsot egy új ASP.NET Core MVC webalkalmazás-projekt létrehozásához:
 
-        dotnet new mvc
+        dotnet new mvc --no-https
 
 ## <a name="add-secret-manager"></a>Secret Manager hozzáadása
 
 A Secret Manager használatához adjon hozzá egy `UserSecretsId` elemet a *. csproj* fájlhoz.
 
-- Nyissa meg a *. csproj* fájlt. Adjon hozzá `UserSecretsId` egy elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is. Mentse a fájlt.
+- Nyissa meg a *. csproj* fájlt. Vegyen fel egy `UserSecretsId` elemet az itt látható módon. Használhatja ugyanazt a GUID azonosítót, vagy lecserélheti ezt az értéket a saját értékére is. Mentse a fájlt.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -83,7 +83,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
 
 2. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
@@ -98,9 +98,9 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     > [!IMPORTANT]
-    > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes kapcsolatok sztringjét jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
+    > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes hálózati karakterláncot jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
 
-    A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás üzembe helyezése [Azure app Servicere](https://azure.microsoft.com/services/app-service/web)történik, például egy alkalmazás-beállítási karakterláncot használ app Service helyett a Secret Managerrel a kapcsolódási karakterlánc tárolásához.
+    A Secret Manager csak a webalkalmazás helyi tesztelésére szolgál. Ha az alkalmazás üzembe helyezése [Azure app Servicere](https://azure.microsoft.com/services/app-service/web)történik, például egy alkalmazás-beállítási **karakterláncot** használ app Service helyett a Secret Managerrel a kapcsolódási karakterlánc tárolásához.
 
     Ez a titok a konfigurációs API-val érhető el. Egy kettőspont (:) a konfiguráció neve a konfigurációs API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0).
 
@@ -110,7 +110,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a `config.AddAzureAppConfiguration()` metódus meghívásával.
+5. A `config.AddAzureAppConfiguration()` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -179,7 +179,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
         dotnet run
 
-3. Nyisson meg egy böngészőablakot, és `http://localhost:5000`nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000` lapra, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

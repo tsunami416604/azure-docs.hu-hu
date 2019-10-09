@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása Mobile Apps Android-alkalmazáshoz |} A Microsoft Docs
-description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az Android-alkalmazás a Mobile Apps segítségével.
+title: Leküldéses értesítések hozzáadása az Android-alkalmazáshoz Mobile Apps használatával | Microsoft Docs
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az Android-alkalmazásokba a Mobile Apps használatával.
 services: app-service\mobile
 documentationcenter: android
 manager: crdun
@@ -14,37 +14,37 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 529aa8327d31cdda044178b6d03035b602744db2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3185447e4e465fe49849bb4280f2af9bbe852e19
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443659"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027697"
 ---
-# <a name="add-push-notifications-to-your-android-app"></a>Leküldéses értesítések hozzáadása az Android-alkalmazás
+# <a name="add-push-notifications-to-your-android-app"></a>Leküldéses értesítések hozzáadása az Android-alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-push) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [Android – gyorsútmutató] projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
+Ebben az oktatóanyagban leküldéses értesítéseket ad hozzá az [Android – első lépések] projekthez, hogy a rendszer minden egyes rekord behelyezése után leküldéses értesítést küldjön az eszköznek.
 
-Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, a leküldéses értesítési kiterjesztési csomag kell. További információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, szüksége lesz a leküldéses értesítési bővítmény csomagra. További információ: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következők szükségesek:
+A következőkre lesz szüksége:
 
-* Az integrált fejlesztői Környezetig, attól függően, a projekt háttérrendszere:
+* IDE, a projekt hátterétől függően:
 
-  * [Az Android Studio](https://developer.android.com/sdk/index.html) egy Node.js-háttérrendszer az alkalmazás-e.
-  * [A Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) vagy újabb, ha az alkalmazás a Microsoft .NET-háttérrendszer.
-* Android 2.3-as vagy újabb, a Google-tárház változat 27-es vagy újabb verzió és a Google Play-szolgáltatások 9.0.2-es vagy újabb a Firebase Cloud Messaging esetében.
-* Végezze el a [Android – gyorsútmutató].
+  * [Android Studio](https://developer.android.com/sdk/index.html) , ha az alkalmazás Node. js-háttérrel rendelkezik.
+  * [Visual Studio Community 2013](https://go.microsoft.com/fwLink/p/?LinkID=391934) vagy újabb verzió, ha az alkalmazás Microsoft .net háttérrel rendelkezik.
+* Android 2,3 vagy újabb verzió, a Google repository változat 27-ös vagy újabb verziója, valamint a Google Play Services 9.0.2 vagy újabb verziója a Firebase Cloud Messaging szolgáltatáshoz.
+* Fejezze be az [Android – első lépések].
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>A Firebase Cloud Messaginget támogató projekt létrehozása
 
@@ -54,27 +54,27 @@ A következők szükségesek:
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldése az Azure konfigurálása
+## <a name="configure-azure-to-send-push-notifications"></a>Az Azure konfigurálása leküldéses értesítések küldéséhez
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a name="enable-push-notifications-for-the-server-project"></a>Engedélyezze a leküldéses értesítéseket a kiszolgálói projekt
+## <a name="enable-push-notifications-for-the-server-project"></a>Leküldéses értesítések engedélyezése a kiszolgálói projekthez
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-google](../../includes/app-service-mobile-dotnet-backend-configure-push-google.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
 
-Ebben a szakaszban frissítse az ügyfél Android-alkalmazás leküldéses értesítések kezeléséhez.
+Ebben a szakaszban a leküldéses értesítések kezeléséhez frissíti az ügyfél Android-alkalmazását.
 
-### <a name="verify-android-sdk-version"></a>Android SDK-verziójának ellenőrzése
+### <a name="verify-android-sdk-version"></a>Az Android SDK verziójának ellenőrzése
 
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-A következő lépés, hogy telepítse a Google Play-szolgáltatások. Firebase Cloud Messaging rendelkezik néhány minimális API-t követelményeinek fejlesztést és tesztelést, amely a **minSdkVersion** a jegyzékfájlban tulajdonságot meg kell felelnie.
+A következő lépés a Google Play-szolgáltatások telepítése. A Firebase Cloud Messaging szolgáltatáshoz a fejlesztéshez és teszteléshez minimálisan szükséges API-szintű követelmények szükségesek, amelyeknek a jegyzékfájl **minSdkVersion** tulajdonságának meg kell felelnie.
 
-Ha egy régebbi eszközzel rendelkező teszteli, tekintse meg a [Firebase hozzáadása az Android-projekt] meghatározhatja hogyan alacsony ezt az értéket, és állítsa be megfelelően.
+Ha egy régebbi eszközzel végzi a tesztelést, tekintse meg a [Firebase hozzáadása az Android-projekthez] című témakört, és határozza meg, hogyan állíthatja be ezt az értéket, és megfelelően állíthatja be.
 
-### <a name="add-firebase-cloud-messaging-to-the-project"></a>Adja hozzá a Firebase Cloud Messaging a projekthez
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Firebase Cloud Messaging hozzáadása a projekthez
 
 [!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
@@ -82,19 +82,19 @@ Ha egy régebbi eszközzel rendelkező teszteli, tekintse meg a [Firebase hozzá
 
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
 
-## <a name="test-the-app-against-the-published-mobile-service"></a>Az alkalmazás elleni a közzétett mobilszolgáltatás tesztelése
+## <a name="test-the-app-against-the-published-mobile-service"></a>Az alkalmazás tesztelése a közzétett Mobile Service-ben
 
-Az alkalmazás egy Android telefont az USB-kábelen keresztül közvetlenül csatolásával, vagy az emulátorban a virtuális eszköz segítségével tesztelheti.
+Az alkalmazást az Android-telefonok USB-kábellel való közvetlen csatolásával, vagy az emulátorban található virtuális eszköz használatával tesztelheti.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy ebben az oktatóanyagban elvégezte, vegye figyelembe, folytatás be az alábbi oktatóanyagok egyikét:
+Most, hogy elvégezte az oktatóanyagot, tekintse át a következő oktatóanyagok egyikét:
 
-* [Hitelesítés hozzáadása az Android-alkalmazás](app-service-mobile-android-get-started-users.md).
-  Útmutató: hitelesítés hozzáadása a todolist gyorsútmutató-projekt az Android identitásszolgáltatóval támogatott.
-* [Android-alkalmazások az offline szinkronizálás engedélyezése](app-service-mobile-android-get-started-offline-data.md).
-  Megtudhatja, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. Offline szinkronizálás, a felhasználók kezelhessék a mobilalkalmazás&mdash;megtekintését, hozzáadását és módosítását adatok&mdash;akkor is, ha nincs hálózati kapcsolat.
+* [Hitelesítés hozzáadása az Android-alkalmazáshoz](app-service-mobile-android-get-started-users.md).
+  Megtudhatja, hogyan adhat hozzá hitelesítést a ToDoList gyors üzembe helyezési projekthez az Androidon egy támogatott identitás-szolgáltató használatával.
+* [Az Android-alkalmazás offline szinkronizálásának engedélyezése](app-service-mobile-android-get-started-offline-data.md).
+  Megtudhatja, hogyan adhat offline támogatást az alkalmazáshoz egy Mobile Apps háttér használatával. Az offline szinkronizálással a felhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálhatnak, ha nincs hálózati kapcsolat.
 
 <!-- URLs -->
-[Android – gyorsútmutató]: app-service-mobile-android-get-started.md
-[Firebase hozzáadása az Android-projekt]: https://firebase.google.com/docs/android/setup
+[Android – első lépések]: app-service-mobile-android-get-started.md
+[Firebase hozzáadása az Android-projekthez]: https://firebase.google.com/docs/android/setup

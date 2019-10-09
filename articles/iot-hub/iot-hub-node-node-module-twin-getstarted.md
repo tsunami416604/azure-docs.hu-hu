@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e33987d382a2afd93644a413084339fcd330d2e2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802415"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029715"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (node. js)
 
@@ -54,9 +54,9 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre, amely létrehoz egy esz
 
 1. Hozzon létre egy könyvtárat a kód tárolásához.
 
-2. A könyvtár belsejében először futtassa a **NPM init-y** parancsot, és hozzon létre egy üres Package. JSON fájlt az alapértelmezett beállításokkal. Ez a kód projektfájl.
+2. A könyvtár belsejében először futtassa a **NPM init-y** parancsot, és hozzon létre egy üres Package. JSON fájlt az alapértelmezett beállításokkal. Ez a kód projektfájl.
 
-3. A **NPM install-S Azure-iothub\@modulok futtatása – előzetes** verzió a Service SDK telepítéséhez a **node_modules** alkönyvtáron belül.
+3. Futtassa a **NPM install-S Azure-iothub @ no__t-1modules-Preview** verziót, és telepítse a Service SDK-t a **node_modules** alkönyvtáron belül.
 
     > [!NOTE]
     > Az alkönyvtár neve node_modules a Word modult használja a "Node Library" kifejezésre. Az itt található kifejezés IoT Hub modulokkal nem rendelkezik.
@@ -133,7 +133,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
 
    ![Az Azure Portal moduladatai](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-\@amqp modulok – előzetes**verzió).
+2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-amqp @ no__t-1modules-Preview**).
 
    > [!NOTE]
    > Előfordulhat, hogy a NPM telepítési parancs lassú. Legyen türelmes, sok kódot húz le a csomag adattárból.
@@ -192,7 +192,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
     });
     ```
 
-4. Ezután futtassa a következő parancsot a **Twin. js**parancs használatával.
+4. Ezután futtassa a következő parancsot a **Twin. js**parancs használatával.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

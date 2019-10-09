@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827578"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034724"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása Azure-Virtual Network
 Ez a dokumentum ismerteti a Azure App Service Virtual Network Integration funkciót, valamint azt, hogyan állíthatja be az alkalmazásokkal a [Azure app Serviceban](https://go.microsoft.com/fwlink/?LinkId=529714). Az [Azure Virtual Networks][VNETOverview] (virtuális hálózatok) lehetővé teszi, hogy számos Azure-erőforrást egy nem internetes útválasztású hálózaton helyezzen el.  
@@ -64,6 +64,10 @@ Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következők
 
 ## <a name="regional-vnet-integration"></a>Regionális VNet-integráció 
 
+> [!NOTE]
+> A peering még nem érhető el Linux-alapú App Service számára.
+>
+
 Ha a VNet-integráció a virtuális hálózatok-ben van használatban az alkalmazással megegyező régióban, akkor legalább 32-as címmel rendelkező delegált alhálózat használatát igényli. Az alhálózat nem használható semmi máshoz. Az alkalmazásból érkező kimenő hívásokat a rendszer a delegált alhálózat címei alapján hozza létre. Ha a VNet-integráció ezen verzióját használja, a hívások a VNet címeiből jönnek létre. A VNet lévő címek használata lehetővé teszi az alkalmazás számára a következőket:
 
 * A szolgáltatás végpont által védett szolgáltatásainak hívása
@@ -108,7 +112,7 @@ A regionális VNet-integrációhoz az integrációs alhálózat delegálása sz�
 Ha le szeretné bontani az alkalmazást a VNet, válassza a **Leválasztás**lehetőséget. Ezzel újraindítja a webalkalmazást. 
 
 
-#### <a name="web-app-for-containers"></a>Web App for Containers
+#### <a name="web-app-for-containers"></a>Tárolókhoz készült Web App
 
 Ha a beépített rendszerképeket használó Linuxon App Service használ, a regionális VNet-integrációs funkció további változtatások nélkül működik. Ha Web App for Containers használ, módosítania kell a Docker-rendszerképet, hogy használni lehessen a VNet-integrációt. A Docker-rendszerképben használja a PORT környezeti változót a fő webkiszolgáló figyelési portjának hardcoded helyett. A PORT környezeti változót automatikusan App Service platform állítja be a tároló indítási ideje szerint. Ha SSH-t használ, az SSH démont úgy kell konfigurálni, hogy a SSH_PORT környezeti változó által megadott portszámot figyelje a regionális VNet-integráció használatakor.
 
@@ -240,7 +244,7 @@ Ha az átjárót a szükséges VNet-integrációval használja, néhány tovább
 1. Nyissa meg a App Service tervet > hálózatkezelés > VNet integrációs felhasználói felületét a portálon.  Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg a VNet azon VNet, amelyhez az alkalmazás csatlakoztatva van.  
 
 
-## <a name="pricing-details"></a>Díjszabás
+## <a name="pricing-details"></a>Díjszabás részletei
 A regionális VNet-integrációs szolgáltatásnak nem kell további díjat fizetnie az ASP díjszabási szintjein túli használatért.
 
 Az átjáró szükséges VNet-integrációs funkciója három kapcsolódó díjjal jár:

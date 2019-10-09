@@ -1,6 +1,6 @@
 ---
-title: Test Drive üzemeltetett |} Az Azure Marketplace-en
-description: Egy karbantartása a Marketplace-en üzemeltetett Test Drive-telepítés
+title: Üzemeltetett teszt meghajtó | Azure piactér
+description: A piactéren üzemeltetett tesztkörnyezet karbantartásának beállítása
 services: Azure, Marketplace, Cloud Partner Portal,
 author: pbutlerm
 manager: Ricardo.Villalobos
@@ -8,48 +8,48 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64940000"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030048"
 ---
 # <a name="hosted-test-drive"></a>Szolgáltatott tesztverzió
 
-Egy üzemeltetett Test Drive megszűnnek a telepítő által a Microsoft üzemeltetési és karbantartását hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása. Ez a cikk a kiadók, akik az ajánlatot az appsource-on vagy hoz létre egy újat, és kíván kíván felajánlani üzemeltetett próbálja ki, amely csatlakozik egy Dynamics 365 for Customer Engagement, Dynamics 365 for Finance és Operations vagy a Dynamics 365 Business Central a példány.
+Az üzemeltetett tesztvezetés eltávolítja a Microsoft üzemeltetési szolgáltatásának összetettségét, és karbantartja azt a szolgáltatást, amely végrehajtja a tesztelési meghajtó felhasználó általi üzembe helyezését és megszüntetését. Ez a cikk azoknak a kiadóknak szól, akik rendelkeznek a AppSource, vagy újat készítenek, és egy üzemeltetett tesztelési meghajtót szeretnének kínálni, amely a Dynamics 365 for Customer engagement, a Dynamics 365 for Finance and Operations vagy a Dynamics 365 Business Central szolgáltatáshoz kapcsolódik. például.
 
 ## <a name="how-to-publish-a-test-drive"></a>A Test Drive közzététele
 
-Keresse meg az ajánlat meglévő vagy új ajánlat létrehozása.
+Navigáljon a meglévő ajánlathoz, vagy hozzon létre egy új ajánlatot.
 
-Az oldalsó menüben válassza ki a Test Drive lehetőséget.
+Válassza ki a test Drive (tesztelés) lehetőséget az oldalsó menüből.
 
-Válassza ki \'Igen\' a \'engedélyezése egy Test Drive\' lehetőséget.
+Válassza a \'Yes @ no__t-1 lehetőséget a \'Enable egy Test Drive @ no__t-3 kapcsolót.
 
-Adja meg a következő mezőket a \'részletek\' szakaszban.
+Adja meg a következő mezőket a \'Details @ no__t-1 szakaszban.
 
-- **Leírás**: A Test Drive áttekintést nyújtanak. Ez a szöveg a felhasználó nem jelenik meg, amíg a Test Drive kiépítése folyamatban van. Ez a mező támogatja a HTML, ha lehetővé szeretné tenni formátumú tartalmat.
-- **Felhasználó manuális**: Töltse fel a részletes felhasználói manuális (.pdf típusú fájl), amely segít a Test Drive felhasználóknak az alkalmazás használatához.
-- **Tesztelje a meghajtó – bemutató videó**: Szükség esetén töltse fel egy videót, amely bemutatja az alkalmazást.
+- **Leírás**: Adja meg a tesztelési meghajtó áttekintését. Ez a szöveg jelenik meg a felhasználó számára a tesztelési meghajtó üzembe helyezésekor. Ez a mező támogatja a HTML-t, ha formázott tartalmat szeretne megadni.
+- **Felhasználói kézikönyv**: Töltse fel a részletes felhasználói kézikönyvet (. pdf típusú fájl), amely segítséget nyújt a felhasználók számára az alkalmazás használatának megismerésében.
+- A **Test Drive bemutató videója**: Igény szerint feltöltheti az alkalmazást bemutató videót.
 
-Támogatás az AppSource engedély kiépítése és a Test Drive felhasználókat a bérlőben található utasításokat követve megszüntetése [Itt](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md).
+Adja meg a AppSource engedélyt a test Drive-felhasználók kiépítéséhez és megszüntetéséhez a bérlőn az [itt](https://github.com/Microsoft/AppSource/blob/patch-1/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)található utasítások alapján.
 
-Ebben a lépésben fog létrehozni a \'Azure AD App Id\' és \'Azure AD Alkalmazáskulcs\' alább felsorolt értékeket.
+Ebben a lépésben létrehozza a \'Azure AD-alkalmazás azonosítójának @ no__t-1 és \'Azure AD App Key @ no__t-3 értékeket alább.
 
-Adja meg a következő mezőket a \'műszaki konfigurációs\' szakaszban:
+Adja meg a következő mezőket a \'Technical Configuration @ no__t-1 szakaszban:
 
-- **Test Drive típusú**: Válasszon \'Microsoft Hosted (például a Dynamics 365 for Customer Engagement) "lehetőséget. Ez jelzi, hogy a Microsoft üzemeltetése és karbantartása hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása.
-- **Max. egyidejű Tesztverzió**: Adja meg a mezőben, amelyeken egy aktív Test Drive time lekérdezhet az egyidejű felhasználók száma. Minden felhasználó fog felhasználni a Dynamics-licenc, amíg a Test Drive aktív, így biztosíthatja, hogy a felhasználók a Test Drive legalább ennyi Dynamics licenceket kell. Ajánlott érték 3 – 5.
-- **Tesztelje a meghajtó időtartama (óra)** : Adja meg a mezőben órák száma, a Test Drive lesz az aktív felhasználókat. Ennyi óra elteltével a felhasználó fogja vonni az üzemből bérlőjéből. Javasolt érték 2 – 24 óra alkalmazásához összetettségétől függően. A felhasználó mindig kérheti egy másik Test Drive, ha azok ideje elfogyott és a Test Drive újból elérhető.
-- **Példány URL-cím**: Adjon meg egy URL-címet, amely a Test Drive felhasználói kezdetben a felhasználóregisztráció, amikor elindítja a Test Drive. Ez általában a Dynamics 365-példány, amelyen az alkalmazás URL-CÍMÉT és mintaadatok telepítve. Példaérték: https:\//testdrive.crm.dynamics.com
-- **Az Azure AD-bérlő azonosítója**: Adja meg a Dynamics 365-példány az Azure-bérlő azonosítója. Lekérje ezt az értéket, jelentkezzen be az Azure Portalon, és keresse meg a \'Azure Active Directory\'  - \> menü panelről – tulajdonságok kiválasztása\> másolja a címtár-azonosító. Példaérték: 72f988bf-86f1-41af-91ab-2d7cd0111234
-- **Azure AD-alkalmazás azonosítója**: A 7. lépésben létrehozott Azure AD-alkalmazás Csomagazonosítóját. \ Példaérték: 53852862-a2ae-4e43-9461-faa49650a096
-- **Az Azure AD-Alkalmazáskulcs**: A létrehozott Azure AD-alkalmazás titkos a 7. lépés. \ Példaérték: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
-- **Az Azure AD-bérlő neve**: Adja meg az Azure-bérlő nevét, a Dynamics 365-példány. A formátumot használja \<tenantname.\> onmicrosoft.com. Példaérték: testdrive.onmicrosoft.com
-- **Webes API URL-cím példány**: Adja meg a Dynamics 365-példány a webes API URL-címe. Ezt az értéket lekérheti azokat a Microsoft Dynamics 365-példány, és lépjen a beállítások -\> testreszabása –\> fejlesztői erőforrások –\> példány webes API-t (az URL-cím másolása). Példaérték: https:\//testdrive.crm.dynamics.com/api/data/v9.0 
-- **Szerepkör neve**: Adja meg az egyéni Dynamics 365 biztonsági szerepkör Test Drive létrehozott nevét. Ez olyan, amely hozzá lesz rendelve a Test Drive felhasználói szerepkör. Példaérték: testdriverole
+- **A tesztelési meghajtó típusa**: Válassza a @no__t 0Microsoft (például a Dynamics 365 for Customer engagement) lehetőséget. Ez azt jelzi, hogy a Microsoft fogja üzemeltetni és karbantartani a szolgáltatást, amely végrehajtja a tesztelési meghajtó felhasználó általi üzembe helyezését és megszüntetését.
+- **Párhuzamos tesztelési meghajtók maximális**száma: Állítsa be ezt a mezőt azon egyidejű felhasználók számára, akik egy adott időpontban aktív tesztelési meghajtóval rendelkezhetnek. Minden felhasználó felhasznál egy Dynamics-licencet, amíg a tesztvezetés aktív, ezért meg kell győződnie arról, hogy legalább ennyi Dynamics-licenc áll rendelkezésre a tesztelési meghajtó felhasználói számára. A 3-5 javasolt értéke.
+- **Teszt meghajtójának időtartama (óra)** : Állítsa be ezt a mezőt arra az időtartamra, ameddig a felhasználók tesztelési meghajtója aktív lesz. Ennyi óra elteltével a rendszer kiépíti a felhasználót a bérlőtől. Az alkalmazás összetettségétől függően a 2-24 óra ajánlott értéknek kell lennie. A felhasználó mindig kérhet egy másik tesztvezetés, ha elfogynak az idő, és újra el szeretné érni a teszt meghajtót.
+- **Példány URL-címe**: Adja meg azt az URL-címet, amelyet a test Drive-felhasználó kezdetben fog navigálni a tesztelési meghajtó indításakor. Ez általában annak a Dynamics 365-példánynak az URL-címe, amelyen az alkalmazás és a mintaadatok telepítve vannak. Példa értéke: https: \//testdrive. CRM. Dynamics. com
+- **Azure ad-bérlő azonosítója**: Adja meg a Dynamics 365-példányhoz tartozó Azure-bérlő AZONOSÍTÓját. Az érték lekéréséhez jelentkezzen be Azure Portalre, és navigáljon a \'Azure Active Directory @ no__t-1 @ no__t-2 @ no__t-3 elemre, majd válassza a tulajdonságok lehetőséget a menüből a panel-\> másolja a címtár-azonosítót. Példa értéke: 72f988bf-86f1-41af-91ab-2d7cd0111234
+- **Azure ad alkalmazás azonosítója**: A 7. lépésben létrehozott Azure AD alkalmazás azonosítója: 53852862-a2ae-4e43-9461-faa49650a096
+- **Azure ad alkalmazás kulcs**: A 7. lépésben létrehozott Azure AD alkalmazás titkos kulcsa: IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=
+- **Azure ad-bérlő neve**: Adja meg az Azure-bérlő nevét a Dynamics 365-példányhoz. Használja a \<tenantname. \>onmicrosoft.com formátumot. Példa értéke: testdrive.onmicrosoft.com
+- **Példány webes API URL-címe**: Adja meg a Dynamics 365-példány webes API URL-címét. Ezt az értéket lekérheti, ha bejelentkezik a Microsoft Dynamics 365-példányba, és megkeresi a Setting-\> customization-\> fejlesztői erőforrás-\> példány webes API-ját (másolja ezt az URL-t). Példa értéke: https: \//testdrive. CRM. Dynamics. com/API/Value/v 9.0 
+- **Szerepkör neve**: Adja meg a tesztelési meghajtóhoz létrehozott egyéni Dynamics 365 biztonsági szerepkör nevét. Ez a szerepkör lesz hozzárendelve a felhasználókhoz a tesztelési meghajtón. Példa értéke: testdriverole
 
 ## <a name="next-steps"></a>További lépések
 
-Ha készen áll **közzététele** az ajánlatot, az alkalmazás lejárt tanúsítvány, után egy **előzetes** az Ön ajánlatát. Indítsa el a Test Drive a felhasználói felületen, és ellenőrizze, hogy a Tesztverzió e megfelelően. Ha úgy gondolja, hogy tisztában az előzetes verzió ajánlathoz, most már, ideje **élesben!**
+Ha készen áll az ajánlat **közzétételére** , az alkalmazás minősítésének ellenőrzése után **megtekintheti** az ajánlatát. Indítsa el a tesztelési meghajtót a felhasználói felületen, és ellenőrizze, hogy a tesztelési meghajtók megfelelően futnak-e. Ha már elégedett az előzetes verzió ajánlatával, most itt az ideje, hogy **élj!**

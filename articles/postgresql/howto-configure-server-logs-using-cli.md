@@ -1,49 +1,49 @@
 ---
-title: Konfigurálja és PostgreSQL - hez-Azure CLI-vel egyetlen kiszolgáló kiszolgálói naplók elérése
-description: Ez a cikk ismerteti, hogyan konfigurálhat és eléréséhez a kiszolgálónaplók, Azure database for PostgreSQL – egyetlen kiszolgáló az Azure CLI-vel parancssor használatával.
+title: Kiszolgálói naplók konfigurálása és elérése a PostgreSQL-hez – egyetlen kiszolgáló az Azure CLI használatával
+description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni és elérni a kiszolgálói naplókat Azure Database for PostgreSQL – egyetlen kiszolgálón az Azure CLI parancssor használatával.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 4702db31ffeb15481584b9638f5be1aa640ff39e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067210"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023623"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
-A PostgreSQL-kiszolgáló hibanaplói a parancssori felület (Azure CLI) használatával töltheti le. Azonban a tranzakciós naplókhoz való hozzáférés nem támogatott. 
+# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>A kiszolgálói naplók konfigurálása és elérése az Azure CLI használatával
+A PostgreSQL-kiszolgáló naplófájljait a parancssori felület (Azure CLI) használatával töltheti le. A tranzakciós naplókhoz való hozzáférés azonban nem támogatott. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató lépéseinek, az alábbiak szükségesek:
-- [Azure Database for PostgreSQL-kiszolgáló](quickstart-create-server-database-azure-cli.md)
-- A [Azure CLI-vel](/cli/azure/install-azure-cli) parancssori eszközzel vagy az Azure Cloud Shellt a böngészőben
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- [Azure Database for PostgreSQL kiszolgáló](quickstart-create-server-database-azure-cli.md)
+- Az [Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram vagy Azure Cloud Shell a böngészőben
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
-Beállíthatja, hogy a kiszolgáló eléréséhez a lekérdezések naplói és a hibanaplók. Hibanaplók automatikus vákuumszivattyú, kapcsolat és ellenőrzőpont adatait is rendelkezhet.
-1. Kapcsolja be a naplózást.
-2. Lekérdezések naplózásának engedélyezéséhez frissíteni **log\_utasítás** és **log\_min\_időtartama\_utasítás**.
+Beállíthatja, hogy a kiszolgáló hozzáférjen a lekérdezési naplókhoz és a hibák naplóihoz. A naplókhoz automatikus vákuum, kapcsolatok és ellenőrzőpont-információk is tartozhatnak.
+1. A naplózás bekapcsolása.
+2. A lekérdezések naplózásának engedélyezéséhez frissítse a **log @ no__t-1statement** és a **log @ no__t-3perc @ no__t-4duration @ no__t-5statement**.
 3. A megőrzési időtartam frissítése.
 
-További információkért lásd: [kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
+További információ: a [kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
 
-## <a name="list-logs"></a>Lista naplók
-A kiszolgáló elérhető naplófájlok felsorolása, futtassa a [az postgres server-logs list](/cli/azure/postgres/server-logs) parancsot.
+## <a name="list-logs"></a>Naplók listázása
+A kiszolgálóhoz elérhető naplófájlok listázásához futtassa az az [postgres Server-logs List](/cli/azure/postgres/server-logs) parancsot.
 
-A naplófájlokban található kiszolgáló listázhatja **mydemoserver.postgres.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup**. A lista a naplófájlok nevű szövegfájlba majd közvetlen **log\_fájlok\_lista.txt**.
+A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját egy **log @ no__t-1files\_list.txt**nevű szövegfájlba.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-locally-from-the-server"></a>Naplók helyi letöltése a kiszolgálóról
-Az a [az postgres server-naplók letöltése](/cli/azure/postgres/server-logs) parancsot, az egyes naplófájlok töltheti le a kiszolgáló számára. 
+Az az [postgres Server-logs Download](/cli/azure/postgres/server-logs) paranccsal letöltheti a kiszolgáló egyes naplófájljait. 
 
-Az alábbi példát követve töltse le a kiszolgáló a megadott naplófájlt **mydemoserver.postgres.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup** a helyi környezetben.
+A következő példa használatával letöltheti a kiszolgáló **mydemoserver.postgres.database.Azure.com** tartozó naplófájlt a helyi környezet **myresourcegroup** .
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="next-steps"></a>További lépések
-- Webkiszolgáló-naplókkal kapcsolatos további információkért lásd: [kiszolgálói naplók az Azure Database for PostgreSQL](concepts-server-logs.md).
-- A kiszolgálóparaméterekkel kapcsolatos további információkért lásd: [Azure CLI-vel a kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
+- A kiszolgálók naplóival kapcsolatos további tudnivalókért tekintse meg [a Azure Database for PostgreSQL kiszolgáló naplófájljait](concepts-server-logs.md).
+- A kiszolgálói paraméterekkel kapcsolatos további információkért lásd: [kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI használatával](howto-configure-server-parameters-using-cli.md).

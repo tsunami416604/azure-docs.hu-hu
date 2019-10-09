@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845603"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028252"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Új DBA a felhőben – az önálló és a készletezett adatbázisok kezelése Azure SQL Database
 
@@ -64,7 +64,7 @@ Az üzletmenet folytonossága és a vész-helyreállítási képességek lehető
 
 Nem kell biztonsági mentéseket létrehoznia az Azure SQL DB-ben, ezért nem szükséges. SQL Database automatikusan biztonsági mentést készít az adatbázisokról, így többé nem kell aggódnia a biztonsági mentések ütemezésével, bevezetésével és kezelésével kapcsolatban. A platform teljes biztonsági mentést készít minden héten, a különbözeti biztonsági mentést óránként, a napló biztonsági mentését pedig 5 percenként, így biztosítva a vész-helyreállítás hatékonyságát és az adatvesztést. Az első teljes biztonsági mentés az adatbázis létrehozása után azonnal megtörténik. Ezek a biztonsági másolatok a "megőrzési időszak" nevű meghatározott időszakra érhetők el, és a kiválasztott szolgáltatási rétegtől függően változnak. A SQL Database lehetővé teszi a megőrzési időszakon belüli bármely időpontra való visszaállítást az [időponthoz tartozó helyreállítás (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)használatával.
 
-|Szolgáltatási szint|Megőrzési időszak (nap)|
+|Szolgáltatásszint|Megőrzési időszak (nap)|
 |---|:---:|
 |Alapszintű|7|
 |Standard|35|
@@ -282,7 +282,7 @@ Lekérdezheti a [sys. DM _db_resource_stats](/sql/relational-databases/system-dy
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (előzetes verzió) Azure Monitor naplókban
 
-[Azure monitor naplók](../azure-monitor/insights/azure-sql.md) lehetővé teszik a legfontosabb Azure-SQL Azure teljesítmény-metrikák gyűjtését és megjelenítését, a legfeljebb 150 000 SQL-adatbázis és a 5 000-os SQL rugalmas készletek támogatását munkaterületen. Az értesítések figyelésére és fogadására használható. Több Azure-előfizetéshez és rugalmas készlethez is figyelheti SQL Database és rugalmas készlet mérőszámait, és felhasználhatja az egyes alkalmazási veremben előforduló problémák azonosítására.
+[Azure monitor naplók](../azure-monitor/insights/azure-sql.md) lehetővé teszik az Azure SQL Database legfontosabb teljesítmény-metrikáinak gyűjtését és megjelenítését, a legfeljebb 150 000 SQL-adatbázis és a 5 000-os SQL rugalmas készletek támogatását munkaterületen. Az értesítések figyelésére és fogadására használható. Több Azure-előfizetéshez és rugalmas készlethez is figyelheti SQL Database és rugalmas készlet mérőszámait, és felhasználhatja az egyes alkalmazási veremben előforduló problémák azonosítására.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Észrevettem a teljesítménnyel kapcsolatos problémákat: Miben különbözik a SQL Database hibaelhárítási módszerei SQL Server
 

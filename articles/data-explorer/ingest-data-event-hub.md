@@ -7,14 +7,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: a0568d3c3258fe082fe8451820fe7a25390cfe78
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
-ms.translationtype: HT
+ms.openlocfilehash: 102cfa81c6093ff1aeefdd8d1937143a25cf76f5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996769"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028490"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
+
+> [!div class="op_single_selector"]
+> * [Portál](ingest-data-event-hub.md)
+> * [C#](data-connection-event-hub-csharp.md)
+> * [Python](data-connection-event-hub-python.md)
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer adatbetöltési lehetőséget tesz elérhetővé az Event Hubsból, amely egy big data-streamelési platform és eseményfeldolgozó szolgáltatás. A [Event Hubs](/azure/event-hubs/event-hubs-about) másodpercenként több millió eseményt képes feldolgozni a közel valós időben. Ebben a cikkben létrehoz egy Event hubot, csatlakozik hozzá az Azure Adatkezelő, és megtekintheti az adatfolyamot a rendszeren keresztül.
 

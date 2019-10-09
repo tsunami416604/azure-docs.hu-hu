@@ -1,37 +1,22 @@
 ---
-title: Adatok entitások
-description: Entitások adatainak áttekintése.
+title: Adatentitások
+description: A CPP-cikk elavult, és a PC-cikkhez van csatolva; az "az adatentitások áttekintése" volt.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a382f9b3ce08bba266311c2cc1d5f868f1bc3143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 072e06527c7744891db163c637734f4878fe312c
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934926"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034902"
 ---
-# <a name="data-entities"></a>Adatok entitások
+# <a name="data-entities"></a>Adatentitások
 
-Ez a cikk határozza meg, és az adatentitások nyújt áttekintést. Az entitások képességeit, a forgatókönyvek, amelyek támogatják a, a kategóriákat, amelyek használják, és azok létrehozásának módszereivel kapcsolatos információkat tartalmaz.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 pénzügyi és üzemeltetési ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-## <a name="overview"></a>Áttekintés
-
-Egy entitáshoz fizikai adatbázistáblák végrehajtásából absztrakciója. Például normalizált táblákban, előfordulhat, hogy egy vevő tábla tárolja szinte minden egyes ügyfél az adatokat, és ezután a többi egy kis készletét kapcsolódó táblák között lehetnek elosztva. Ebben az esetben egy denormalizált nézet, amelyben mindegyik sor tartalmazza az összes adatot az ügyfél-tábla és a kapcsolódó táblák az entitáshoz tartozó ügyfelek fogalmat jelenik meg. Egy entitáshoz olyan formátumra, amely megkönnyíti a fejlesztési és integrációs magában foglalja egy üzleti fogalom. Egy entitáshoz hálója jellege egyszerűbbé teheti az alkalmazások fejlesztése és testreszabása. Később a absztrakciós insulates származó a verziók közötti fizikai táblák elkerülhetetlen forgalommal is.
-
-Összefoglalásképpen: Entitáshoz fogalmi absztrakciós és a beágyazás (denormalizált nézet) az alapul szolgáló táblasémákat, amelyek kulcsfontosságú fogalmakat és funkciókat biztosít.
-
-## <a name="capabilities"></a>Funkciók
-
-Egy entitáshoz a következő képességekkel rendelkezik:
-
-- Lecseréli az AXD, adatok importálási/exportálási keretrendszer (DIXF) entitásokat, széttartó és töredezett fogalmait, és összesítést egyetlen fogalma a lekérdezi.
-- Biztosít egy egyetlen verem rögzítheti az üzleti logikát, és például importálás/exportálás, integráció és programozhatóság forgatókönyvek megvalósítását teszik lehetővé.
-- Application Lifecycle Management (ALM) és a bemutató forgatókönyvek csomagok adatok importálása és exportálása az elsődleges mechanizmusa válik.
-- Azt is OData-szolgáltatásaival néven jelenik meg, és akkor használja a táblázatos stílusú szinkron integrációs forgatókönyvek és a Microsoft Office integrációja.
-
-Lásd: [Adatentitásai](https://docs.microsoft.com/dynamics365/operations/dev-itpro/data-entities/data-entities) további információ.
+Az új Dynamics 365 for Operations ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című témakör utasításait.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1acef92ed5de86d4526d8b5c4bcf338b341c50f7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 722feb29a08cd5e1113eae197fbcae9769ed5550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241269"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029761"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Incidensek automatikus létrehozása a Microsoft biztonsági értesítéseiből
 
@@ -35,7 +35,7 @@ A biztonsági szolgáltatásokkal kapcsolatos riasztások engedélyezéséhez [k
 
 Az Azure Sentinel beépített szabályainak használatával kiválaszthatja, hogy mely csatlakoztatott Microsoft biztonsági megoldások legyenek automatikusan létrehozva az Azure Sentinel-incidenseket valós időben. A szabályokat szerkesztheti úgy is, hogy a Microsoft biztonsági megoldás által generált riasztások alapján a szűrést lehetővé tegye, hogy az Azure Sentinelben incidenseket hozzon létre. Például úgy is dönthet, hogy az Azure Sentinel-incidenseket automatikusan csak a nagy súlyosságú Azure Security Center riasztásokból hozza létre.
 
-1. Az Azure Sentinel alatti Azure Portal válassza az **elemzés**lehetőséget.
+1. Az Azure Sentinel alatti Azure Portal válassza az **elemzés**lehetőséget.
 
 1. Az összes beépített analitikus szabály megjelenítéséhez kattintson a **szabály sablonok** lapfülre.
 

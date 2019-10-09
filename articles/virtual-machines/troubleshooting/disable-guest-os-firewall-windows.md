@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086536"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030605"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
@@ -90,9 +90,9 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 
 A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)használatához kövesse az alábbi lépéseket.
 
-1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **file** > **Kapcsolódás hálózati beállításjegyzéket**.
+1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **fájl** > **Kapcsolódás hálózati beállításjegyzéket**.
 
-2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, és határozza meg a következő értékeket:
+2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, és határozza meg a következő értékeket:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-t
 
 3.  Indítsa újra a szolgáltatást. Mivel a távoli beállításjegyzék használatával nem tudja végrehajtani a szolgáltatást, a szolgáltatás eltávolítása konzolt kell használnia.
 
-4.  Nyissa meg a **Services. msc**egy példányát.
+4.  Nyissa meg a **Services. msc**egy példányát.
 
 5.  Kattintson a **szolgáltatások (helyi)** elemre.
 
 6.  Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
 
-7.  Adja meg a probléma virtuális gép **magánhálózati IP-címét (dip)**  .
+7.  Adja meg a probléma virtuális gép **magánhálózati IP-címét (dip)** .
 
 8.  Indítsa újra a helyi tűzfal házirendjét.
 

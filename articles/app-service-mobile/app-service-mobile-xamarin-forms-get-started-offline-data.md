@@ -1,6 +1,6 @@
 ---
-title: Offline szinkronizálás engedélyezése az Azure Mobile App (Xamarin.Forms) |} A Microsoft Docs
-description: Ismerje meg az App Service Mobile Apps Xamarin.Forms-alkalmazását a cache és a szinkronizálási offline adatok használata
+title: Offline szinkronizálás engedélyezése az Azure Mobile-alkalmazáshoz (Xamarin. Forms) | Microsoft Docs
+description: Ismerje meg, hogyan használható App Service Mobile App a Xamarin. Forms-alkalmazás offline állapotának gyorsítótárazására és szinkronizálására
 documentationcenter: xamarin
 author: elamalani
 manager: yochayk
@@ -14,49 +14,49 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 53f339d5450965c992f6528ff294e0d37ec2f7f6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 53d65d5577f8905d66da80e99cab6647f0a4dc4c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446281"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025033"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Xamarin.Forms-mobilalkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-offline-data) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja a kapcsolat nélküli szinkronizálás – a szolgáltatás az Azure Mobile Apps a xamarin.Forms-hoz. Kapcsolat nélküli szinkronizálás lehetővé teszi, hogy a végfelhasználók számára, hogy kommunikáljanak egy mobilalkalmazást – megtekintését, hozzáadását és módosítását adatokat –, akkor is, ha nincs hálózati kapcsolat. Változások a helyi adatbázisban vannak tárolva. Miután az eszköz újra online állapotba kerül, ezeket a módosításokat a távoli szolgáltatással vannak szinkronizálva.
+Ez az oktatóanyag a Xamarin. Forms Azure Mobile Apps offline szinkronizálási funkcióját mutatja be. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a mobil alkalmazásokkal is használhassák az adatmegjelenítést, hozzáadást vagy módosítást, még akkor is, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli szolgáltatással.
 
-Ebben az oktatóanyagban a Xamarin.Forms-megoldás a rövid útmutató alapján hoz létre, amikor befejezte az oktatóanyag [Create a Xamarin iOS-alkalmazás] Mobile Apps-alkalmazáshoz. A rövid útmutató megoldást a Xamarin.Forms támogatja az offline szinkronizálás, amely csupán engedélyeznie kell a kódot tartalmaz. Ebben az oktatóanyagban a rövid útmutató megoldást, az Azure Mobile Apps offline funkciók bekapcsolása frissítése. Azt is ki a kapcsolat nélküli tartozó kódot az alkalmazásban. Ha nem használja a letöltött gyorsútmutató-megoldás, hozzá kell adnia az adatok hozzáférési bővítmény csomagokat a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a][1].
+Ez az oktatóanyag a Xamarin. Forms gyors üzembe helyezési megoldásán alapul, amelyet a Mobile Apps következő oktatóanyagban hozhat létre: [Xamarin iOS-alkalmazás létrehozása]. A Xamarin. Forms gyors üzembe helyezési megoldás az offline szinkronizálást támogató kódot tartalmazza, amelyet csak engedélyezni kell. Ebben az oktatóanyagban frissíti a gyors üzembe helyezési megoldást az Azure Mobile Apps offline szolgáltatásainak bekapcsolásához. Kiemeljük az alkalmazás offline-specifikus kódját is. Ha nem a letöltött gyors üzembe helyezési megoldást használja, hozzá kell adnia az adatelérési bővítmények csomagjait a projekthez. További információ a kiszolgálói bővítmények csomagjairól: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps][1].
 
-A kapcsolat nélküli szinkronizálás – szolgáltatással kapcsolatos további tudnivalókért lásd a témakör [Offline adatszinkronizálás az Azure Mobile Apps][2].
+Az offline szinkronizálási szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Offline adatszinkronizálás az Azure Mobile Appsban][2]című témakört.
 
-## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>A rövid útmutató megoldásban offline szinkronizálásának engedélyezése
-A kapcsolat nélküli szinkronizálás – kódot tartalmazza a projekt használatával C# elő-feldolgozói irányelveknek. Ha a **OFFLINE\_SZINKRONIZÁLÁSI\_engedélyezve** szimbólum van definiálva, a kód az elérési utak a build szerepelnek. Windows-alkalmazások esetén is telepítenie kell az SQLite-platform.
+## <a name="enable-offline-sync-functionality-in-the-quickstart-solution"></a>Offline szinkronizálási funkciók engedélyezése a gyors üzembe helyezési megoldásban
+Az offline szinkronizálási kódot a projekt tartalmazza előfeldolgozó irányelvek C# használatával. Ha a **kapcsolat nélküli @ no__t-1SYNC @ no__t-2ENABLED** szimbólum van definiálva, a rendszer ezeket a programkód-útvonalakat tartalmazza a buildben. Windows-alkalmazások esetén az SQLite platformot is telepítenie kell.
 
-1. A Visual Studióban kattintson a jobb gombbal a megoldás > **NuGet-csomagok kezelése megoldáshoz...** , majd keresse meg, és telepítse a **Microsoft.Azure.Mobile.Client.SQLiteStore** a megoldásban az összes projekt NuGet-csomagot.
-2. A Megoldáskezelőben nyissa meg a TodoItemManager.cs fájlt a projektből az **hordozható** a neve, amely hordozható osztálytár projektet, majd állítsa vissza a következő elő-feldolgozói irányelv:
+1. A Visual Studióban kattintson a jobb gombbal a megoldásra > **NuGet-csomagok kezelése**a megoldáshoz..., majd keresse meg és telepítse a **Microsoft. Azure. Mobile. Client. SQLiteStore** NuGet-csomagot a megoldás összes projektje számára.
+2. A Megoldáskezelőban nyissa meg a TodoItemManager.cs fájlt a projektből a **Portable** (név) nevű fájlból, amely a következő előfeldolgozói direktíva:
 
         #define OFFLINE_SYNC_ENABLED
-3. (Nem kötelező) Támogatja a Windows-eszközöket, telepítse az SQLite következő futtatókörnyezetek közül:
+3. Választható A Windows-eszközök támogatásához telepítse a következő SQLite Runtime-csomagok egyikét:
 
-   * **Windows 8.1 Runtime:** Telepítés [for Windows 8.1 SQLite][3].
-   * **Windows Phone 8.1:** Telepítés [a Windows Phone 8.1-es SQLite][4].
-   * **Univerzális Windows Platform** telepítése [az univerzális Windows Universal az SQLite][5].
+   * **Windows 8,1 futtatókörnyezet:** Telepítse [a Windows 8,1 rendszerhez készült SQLite][3]-t.
+   * **Windows Phone-telefon 8,1:** [Az SQLite telepítése Windows Phone-telefon 8,1][4]-re.
+   * **Univerzális Windows-platform** [Az SQLite telepítése univerzális univerzális Windows-rendszerre][5].
 
-     Bár ez a rövid útmutató nem tartalmaz egy univerzális Windows-projektet, a Universal Windows platform Xamarin Forms eszközkészlethez használata támogatott.
-4. (Nem kötelező) Az egyes Windows-projektben kattintson a jobb gombbal **hivatkozások** > **hivatkozás hozzáadása...** , bontsa ki a **Windows** mappa > **bővítmények**.
-    Engedélyezze a megfelelő **SQLite for Windows** az SDK a **Visual C++ 2013 modul a Windows** SDK-t.
-    Az SQLite SDK nevei kissé eltérő lehet az egyes Windows-platform.
+     Bár a gyors útmutató nem tartalmaz univerzális Windows-projektet, az univerzális Windows-platformot a Xamarin-űrlapok támogatják.
+4. Választható Minden Windows-alkalmazás projektben kattintson a jobb gombbal a **hivatkozásokra** > **hivatkozás hozzáadása...** elemre, majd bontsa ki a **Windows** mappa > **bővítmények**csomópontot.
+    Engedélyezze a megfelelő **SQLite** -t a Windows SDK-hoz, valamint a **Visual C++ 2013 Runtime for Windows** SDK-t.
+    Az SQLite SDK-nevek kis mértékben eltérőek az egyes Windows platformokon.
 
-## <a name="review-the-client-sync-code"></a>Tekintse át az Ügyfélkód szinkronizálása
-Íme, mi oktatóanyag kódot már szerepel egy rövid áttekintést a `#if OFFLINE_SYNC_ENABLED` irányelveknek. A kapcsolat nélküli szinkronizálás – funkciója a hordozható osztálytár projektek TodoItemManager.cs projekt fájlban. A szolgáltatás fogalmi áttekintése, lásd: [Offline adatszinkronizálás az Azure Mobile Apps][2].
+## <a name="review-the-client-sync-code"></a>Az ügyfél-szinkronizálási kód áttekintése
+Íme egy rövid áttekintés arról, hogy mi szerepel az oktatóanyag kódjában a `#if OFFLINE_SYNC_ENABLED` direktívában. Az offline szinkronizálási funkció a TodoItemManager.cs Project-fájlban található a hordozható osztály könyvtára projektben. A szolgáltatás fogalmi áttekintését lásd: [Offline adatszinkronizálás az Azure Mobile Appsban][2].
 
-* Bármely table műveletek végrehajtása előtt inicializálni kell a helyi tárolóban. A helyi tároló adatbázis inicializálása a **TodoItemManager** osztálykonstruktor az alábbi kód használatával:
+* A tábla műveleteinek elvégzése előtt inicializálni kell a helyi tárolót. A helyi áruház adatbázisát a **TodoItemManager** osztály konstruktora inicializálja a következő kód használatával:
 
         var store = new MobileServiceSQLiteStore(OfflineDbPath);
         store.DefineTable<TodoItem>();
@@ -66,12 +66,12 @@ A kapcsolat nélküli szinkronizálás – kódot tartalmazza a projekt használ
 
         this.todoTable = client.GetSyncTable<TodoItem>();
 
-    Ez a kód létrehoz egy új helyi SQLite adatbázis használata a **MobileServiceSQLiteStore** osztály.
+    Ez a kód egy új helyi SQLite-adatbázist hoz létre a **MobileServiceSQLiteStore** osztály használatával.
 
-    A **DefineTable** metódus a helyi tároló, amely megfelel a megadott típus mezőinek egy táblát hoz létre.  A típus nem kell megadnia a távoli adatbázisban lévő összes oszlopot. Oszlopok tárolására is lehetőség.
-* A **todoTable** mező **TodoItemManager** van egy **IMobileServiceSyncTable** helyett írja be **IMobileServiceTable**. A osztályt használ az összes helyi adatbázis létrehozása, olvasása, frissítése és törlési (CRUD) tábla műveletek. Ha ezek a módosítások meghívásával kerüljenek a Mobile Apps-háttéralkalmazás mellett dönt **PushAsync** a a **IMobileServiceSyncContext**. A szinkronizálási környezetet segít nyomon követésével és módosítások leküldése minden táblát egy ügyfélalkalmazás mikor módosult a táblák közötti kapcsolatok megőrzése **PushAsync** nevezzük.
+    A **DefineTable** metódus létrehoz egy táblát a helyi tárolóban, amely megfelel a megadott típus mezőinek.  A típusnak nem kell tartalmaznia a távoli adatbázisban lévő összes oszlopot. Az oszlopok egy részhalmaza is tárolható.
+* A **TodoItemManager** **todoTable** mezője a **IMobileServiceTable**helyett egy **IMobileServiceSyncTable** -típus. Ez az osztály a helyi adatbázist használja az összes létrehozási, olvasási, frissítési és törlési (szifilisz-) tábla műveleteihez. A **PushAsync** a **IMobileServiceSyncContext**való meghívásával eldöntheti, hogy mikor küldi el ezeket a módosításokat a Mobile apps-háttérbe. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és kitolásával, amelyet az ügyfélalkalmazás a **PushAsync** hívásakor módosított.
 
-    A következő **SyncAsync** módszert hívja meg a Mobile Apps-háttéralkalmazás szinkronizálni:
+    A következő **SyncAsync** metódust kell meghívni a Mobile apps-háttérrel való szinkronizálásra:
 
         public async Task SyncAsync()
         {
@@ -115,48 +115,48 @@ A kapcsolat nélküli szinkronizálás – kódot tartalmazza a projekt használ
             }
         }
 
-    Ez a minta az alapértelmezett szinkronizálási kezelővel rendelkező egyszerű hibakezelési használja. Egy valódi alkalmazás egyéni használatával szeretné kezelni a különféle hibák, például hálózati feltételek és a kiszolgáló ütközések **IMobileServiceSyncHandler** végrehajtására.
+    Ez a minta az alapértelmezett szinkronizálási kezelővel egyszerű hibakezelés használatával működik. Egy valós alkalmazás kezeli a különböző hibákat, például a hálózati feltételeket és a kiszolgálói ütközéseket egy egyéni **IMobileServiceSyncHandler** implementáció használatával.
 
-## <a name="offline-sync-considerations"></a>Kapcsolat nélküli szinkronizálás – szempontok
-A mintában a **SyncAsync** módszert csak hívja meg az indítási és mikor van szükség a szinkronizálást.  Egy Android vagy iOS alkalmazásban szinkronizálást kezdeményezni, kérje le az elemek listájában; a Windows, használja a **szinkronizálási** gombra. Egy valós alkalmazás esetében meg is elhelyezheti a szinkronizálási eseményindító hálózati állapot.
+## <a name="offline-sync-considerations"></a>Offline szinkronizálási megfontolások
+A mintában a **SyncAsync** metódus csak indításkor, illetve a szinkronizálás kérelmezése esetén hívható meg.  Egy Android vagy iOS rendszerű alkalmazásban való szinkronizálás kezdeményezéséhez le kell húzni az elemek listáját; Windows esetén használja a **Sync (szinkronizálás** ) gombot. A valós alkalmazásokban a szinkronizálási triggert is elvégezheti a hálózati állapot megváltozásakor.
 
-Egy táblázaton, amely rendelkezik a függőben lévő lekérési végrehajtásakor helyi frissítések által nyomon követett kapcsolatban, hogy a pull művelet automatikusan eseményindítók egy előző környezet leküldéses. Frissítésekor, felvétele és az ebben a példában szereplő elemek befejezése, akkor kihagyhatja az explicit **PushAsync** hívja.
+Amikor egy lekéréses műveletet hajt végre egy olyan táblán, amely függőben van a környezet által követett helyi frissítésekkel, a lekéréses művelet automatikusan elindítja az előző környezet leküldését. A mintában lévő elemek frissítésekor, hozzáadásakor és befejezésekor kihagyhatja a explicit **PushAsync** hívást.
 
-A megadott kód, a távoli TodoItem tábla összes rekordot a rendszer megkérdezi, de azt is lehetővé teszi a rekordok szűrése a lekérdezés azonosítóját átadásával és lekérdezése **PushAsync**. További információkért lásd: a szakasz *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Apps][2].
+A megadott kódban a távoli TodoItem tábla összes rekordja le van kérdezve, de a rekordok szűrhetők a lekérdezési azonosító és a lekérdezés **PushAsync**történő átadásával is. További információ: *növekményes szinkronizálás* a [kapcsolat nélküli adatszinkronizálásban az Azure Mobile Appsban][2].
 
 ## <a name="run-the-client-app"></a>Az ügyfélalkalmazás futtatása
-A kapcsolat nélküli szinkronizálás most már engedélyezve van, az ügyfélalkalmazás legalább egyszer futtatott egyes platformokon a helyi tároló adatbázisának feltöltéséhez. Később szimulálása egy offline forgatókönyvet, és módosíthatja az adatokat, a helyi tároló, amikor az alkalmazás offline állapotban van.
+Ha már engedélyezve van az offline szinkronizálás, futtassa az ügyfélalkalmazás legalább egyszer az egyes platformokon a helyi áruház adatbázisának feltöltéséhez. Később szimulálhat egy offline forgatókönyvet, és módosíthatja a helyi tárolóban lévő adatkapcsolatot, miközben az alkalmazás offline állapotban van.
 
-## <a name="update-the-sync-behavior-of-the-client-app"></a>Az ügyfélalkalmazás szinkronizálási viselkedésének módosítása
-Ebben a szakaszban módosítsa az ügyfélprojekt szimulálása egy kapcsolat nélküli forgatókönyv biztosítani a háttérbeli érvénytelen az alkalmazás URL-címének használatával. Másik megoldásként kikapcsolhatja a hálózati kapcsolatok helyezi át az eszköz "Repülőgépes üzemmódból."  Hozzáadásakor, vagy módosítsa az elemeket, ezek a változások a helyi tárolóban tárolt, de nincs szinkronizálva a háttérbeli adattárba, amíg a kapcsolat helyreáll.
+## <a name="update-the-sync-behavior-of-the-client-app"></a>Az ügyfélalkalmazás szinkronizálási viselkedésének frissítése
+Ebben a szakaszban módosítsa az ügyfél-projektet úgy, hogy egy offline forgatókönyvet Szimuláljon, ha érvénytelen alkalmazás-URL-címet használ a háttérrendszer számára. Azt is megteheti, hogy kikapcsolja a hálózati kapcsolatokat úgy, hogy áthelyezi az eszközt a "repülőgép üzemmódba".  Az adatelemek hozzáadásakor vagy módosításakor ezek a módosítások a helyi tárolóban maradnak, de a rendszer nem szinkronizálja őket a háttér-adattárba, amíg újra nem hozza létre a kapcsolódást.
 
-1. A megoldáskezelőben nyissa meg a Constants.cs projektfájlt a a **hordozható** projektre, és módosítsa az értéket a `ApplicationURL` átirányítása egy URL-cím érvénytelen:
+1. A Megoldáskezelő nyissa meg a Constants.cs projektfájlt a **hordozható** projektből, és módosítsa a `ApplicationURL` értékét úgy, hogy az egy érvénytelen URL-címre mutasson:
 
         public static string ApplicationURL = @"https://your-service.azurewebsites.net/";
-2. Nyissa meg a TodoItemManager.cs fájlt a **hordozható** projektre, majd adjon hozzá egy **catch** az alap **kivétel** osztályt az a **próbálja... catch**blokkoló **SyncAsync**. Ez **catch** blokk ír a kivételre vonatkozó üzenet a konzolt, a következő:
+2. Nyissa meg a TodoItemManager.cs fájlt a **hordozható** projektből, majd vegyen fel egy **fogást** az alap **kivétel** osztályhoz a **Try... Catch** blokk a **SyncAsync**. Ez a **Catch** blokk a kivételt jelző üzenetet írja a konzolba, a következőképpen:
 
             catch (Exception ex)
             {
                 Console.Error.WriteLine(@"Exception: {0}", ex.Message);
             }
-3. Hozhat létre, és futtassa az ügyfélalkalmazást.  Adjon hozzá néhány új elemeket. Figyelje meg, hogy a konzol minden kísérlet szinkronizálni a háttér-kivétel kerül. Ezek az új elemek szerepel csak a helyi tároló mindaddig, amíg azokat a mobil háttérrendszer lehet leküldeni. Az ügyfélalkalmazás úgy viselkedik, háttér, támogató, minden létrehozási, olvasási, frissítési, törlési (CRUD) műveleteket van csatlakoztatva.
-4. Zárja be az alkalmazást, és indítsa újra, hogy ellenőrizze, hogy a létrehozott új elemek, a helyi tárolóban tárolja.
-5. (Nem kötelező) A Visual Studio segítségével megtekintheti az Azure SQL Database adatbázistábla megtekintéséhez, hogy a háttér adatbázis adatait nem változott.
+3. Hozza létre és futtassa az ügyfélalkalmazás alkalmazást.  Adjon hozzá néhány új elemet. Figyelje meg, hogy a rendszer minden, a háttérrel való szinkronizálásra irányuló kísérlet során kivételt naplóz a konzolon. Ezek az új elemek csak a helyi tárolóban léteznek, amíg a mobil háttérbe nem lesznek leküldve. Az ügyfélalkalmazás úgy viselkedik, mintha csatlakozik a háttérhez, és támogatja az összes létrehozási, olvasási, frissítési, törlési (szifilisz) műveletet.
+4. Az alkalmazás bezárásával ellenőrizze, hogy a létrehozott új elemek megmaradnak-e a helyi tárolóban.
+5. Választható A Visual Studióval megtekintheti a Azure SQL Database táblázatát, és megtekintheti, hogy a háttér-adatbázis adatai nem módosultak-e.
 
-    A Visual Studióban nyissa meg a **Server Explorer**. Keresse meg az adatbázist a **Azure**->**SQL-adatbázisok**. Kattintson a jobb gombbal az adatbázishoz, és válassza ki **nyissa meg az SQL Server Object Explorer**. Most megnyithatja az SQL database tábla és annak tartalmát.
+    A Visual Studióban nyissa meg a **Server Explorert**. Navigáljon az adatbázishoz az **Azure**->**SQL-adatbázisokban**. Kattintson a jobb gombbal az adatbázisra, és válassza **a Megnyitás a SQL Server Object Explorerban**lehetőséget. Most megkeresheti az SQL Database-táblázatot és annak tartalmát.
 
-## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>A mobil háttérszolgáltatásban újracsatlakoztatása ügyfélalkalmazás frissítése
-Ebben a szakaszban kapcsolódjon újra az alkalmazást, hogy a mobil háttérszolgáltatás használatára, amely szimulálja az alkalmazást, és az online állapot vissza hamarosan. A frissítés kézmozdulat hajt végre, amikor adatok szinkronizálva van a mobil háttérszolgáltatás használatára.
+## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>Az ügyfélalkalmazás frissítése a mobil háttér újrakapcsolódásához
+Ebben a szakaszban újra csatlakozik az alkalmazáshoz a mobil háttérrendszer számára, amely szimulálja az alkalmazást egy online állapotba. A frissítési kézmozdulat végrehajtásakor az adatok szinkronizálva vannak a mobil háttérrel.
 
-1. Nyissa meg újra Constants.cs. Javítsa ki a `applicationURL` , a helyes URL-címre mutasson.
-2. Építse újra, és futtassa az ügyfélalkalmazást. Az alkalmazás próbál szinkronizálni a mobil-háttéralkalmazás elindítása után. Győződjön meg arról, hogy nincs kivétel jelentkezett-e a hibakeresési konzolt.
-3. (Nem kötelező) Az SQL Server Object Explorer vagy egy REST-eszköz, például a Fiddler használatával frissített adatok megtekintéséhez vagy [Postman][6]. Figyelje meg, a háttérbeli adatbázis és a helyi tároló szinkronizálta az adatokat.
+1. Nyissa meg újra a Constants.cs. Javítsa ki a `applicationURL` értéket, hogy a megfelelő URL-címre mutasson.
+2. Hozza létre újra és futtassa az ügyfélalkalmazás alkalmazást. Az alkalmazás az indítás után megpróbál szinkronizálni a Mobile apps-háttérrel. Ellenőrizze, hogy a hibakeresési konzolon nincsenek-e naplózva kivételek.
+3. Választható A frissített adatok megtekintése SQL Server Object Explorer vagy egy REST-eszköz, például a Hegedűs vagy a [Poster][6]használatával. Figyelje meg, hogy az adatokat a háttér-adatbázis és a helyi tároló között szinkronizálták.
 
-    Figyelje meg, hogy az adatbázis és a helyi tároló között szinkronizálta az adatokat, és tartalmazza az alkalmazás leválasztott hozzáadott elemek.
+    Figyelje meg, hogy az adatok szinkronizálva lettek az adatbázis és a helyi tároló között, és tartalmazza azokat az elemeket, amelyeket az alkalmazás leválasztása közben adott meg.
 
 ## <a name="additional-resources"></a>További források
 * [Offline adatszinkronizálás az Azure Mobile Appsban][2]
-* [Az Azure Mobile Apps .NET SDK-útmutató][8]
+* [Azure Mobile Apps .NET SDK HOWTO][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

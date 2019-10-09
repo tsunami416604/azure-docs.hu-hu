@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076327"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029728"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: Szolgáltatás-jelzők hozzáadása egy ASP.NET Core alkalmazáshoz
 
@@ -36,11 +36,11 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Feature Manager** >  **+ Hozzáadás** lehetőséget a következő funkció-jelzők hozzáadásához:
+6. Válassza ki a **Feature Manager** >  **+ Hozzáadás** elemet a következő funkció-jelzők hozzáadásához:
 
     | Kulcs | State |
     |---|---|
-    | Bétaverzió | Ki |
+    | Beta | Ki |
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -51,7 +51,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 1. Az új mappában futtassa az alábbi parancsot egy új ASP.NET Core MVC webalkalmazás-projekt létrehozásához:
 
    ```    
-   dotnet new mvc
+   dotnet new mvc --no-https
    ```
 
 ## <a name="add-secret-manager"></a>Secret Manager hozzáadása
@@ -59,7 +59,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait.
 
 1. Nyissa meg a *. csproj* fájlt.
-1. Adjon hozzá `UserSecretsId` egy elemet az alábbi példában látható módon, és cserélje le az értékét a saját értékére, amely általában egy GUID:
+1. Adjon hozzá egy `UserSecretsId` elemet az alábbi példában látható módon, és cserélje le az értékét a saját értékére, amely általában egy GUID:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. A következő parancsok futtatásával adjon `Microsoft.FeatureManagement.AspNetCore` hozzá hivatkozásokat a `Microsoft.Azure.AppConfiguration.AspNetCore` és a NuGet-csomagokhoz:
+1. A következő parancsok futtatásával adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` és a `Microsoft.FeatureManagement.AspNetCore` NuGet-csomag hivatkozását:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -96,7 +96,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 1. Adjon hozzá egy **ConnectionStrings: AppConfig** nevű titkos kulcsot a Secret Managerhez.
 
-    Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le a következő parancs értékétazalkalmazáskonfigurációstárolójánakakapcsolatokkarakterláncára.`<your_connection_string>`
+    Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le a `<your_connection_string>` értéket a következő parancsban az alkalmazás konfigurációs tárolójának a kapcsolatok karakterláncával.
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
@@ -104,7 +104,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
     ```
 
-    A Secret Manager csak a webalkalmazás helyi tesztelésére használható. Amikor az alkalmazást Azure App Servicera telepíti [](https://azure.microsoft.com/services/app-service), például a kapcsolódási karakterláncok nevű alkalmazás-beállítást használja app Service ahelyett, hogy a Secret Managert használja a kapcsolódási karakterlánc tárolásához.
+    A Secret Manager csak a webalkalmazás helyi tesztelésére használható. Amikor az alkalmazást [Azure app Servicera](https://azure.microsoft.com/services/app-service)telepíti, például a **kapcsolódási** karakterláncok nevű alkalmazás-beállítást használja app Service ahelyett, hogy a Secret Managert használja a kapcsolódási karakterlánc tárolásához.
 
     Ezt a titkot az alkalmazás konfigurációs API-jával érheti el. Egy kettőspont (:) a konfiguráció neve az App Configuration API-val minden támogatott platformon használható. Lásd: [konfiguráció környezet alapján](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
 
@@ -114,7 +114,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatára a `config.AddAzureAppConfiguration()` metódus meghívásával.
+1. A `config.AddAzureAppConfiguration()` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -136,7 +136,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     using Microsoft.FeatureManagement;
     ```
 
-1. Frissítse a `ConfigureServices` metódust a szolgáltatás jelölő támogatásának hozzáadásához `services.AddFeatureManagement()` a metódus meghívásával. Megadhatja, hogy a szolgáltatás jelzőjén használható szűrőket a következő hívásával `services.AddFeatureFilter<FilterType>()`is felhasználhatja:
+1. Frissítse a `ConfigureServices` metódust a szolgáltatás jelölő támogatásának hozzáadásához a `services.AddFeatureManagement()` metódus meghívásával. Megadhatja, hogy az `services.AddFeatureFilter<FilterType>()` meghívásával bármely olyan szűrőt felvehet, amelyet a szolgáltatás jelzői használhatnak:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -145,7 +145,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     }
     ```
 
-1. Frissítse a `Configure` metódust úgy, hogy olyan köztes értéket adjon hozzá, amely lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.net Core webalkalmazás továbbra is fogadja a kéréseket.
+1. Frissítse a `Configure` metódust egy middleware hozzáadásához, amely lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kérelmeket.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -200,7 +200,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. Nyissa meg a *_Layout. cshtml* \\ `<nav>` `<body>` mappátanézetekmegosztottkönyvtárában,éscseréljelea >  vonalkódot a következő kódra: `<header>`
+1. Nyissa meg a *_Layout. cshtml* mappát a *views*\\*megosztott* könyvtárban, és cserélje le a `<nav>` vonalkódot a `<body>` @ no__t-6 @ no__t-7 alatt a következő kóddal:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -255,19 +255,19 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     dotnet run
     ```
 
-1. Nyisson meg egy böngészőablakot, és `https://localhost:5001`nyissa meg a következőt:, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+1. Nyisson meg egy böngészőablakot, és lépjen a `https://localhost:5001` lapra, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
-1. Válassza ki a **Feature Manager**elemet, és módosítsa a **bétaverzió** állapotát a **következőre:**
+1. Válassza ki a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
     | Kulcs | State |
     |---|---|
-    | Bétaverzió | Bekapcsolva |
+    | Beta | Bekapcsolva |
 
-1. Indítsa újra az alkalmazást úgy, hogy visszavált a parancssorba `Ctrl-C` , és lenyomva tartja a futó `dotnet` folyamatot, `dotnet run`majd újból futtatja.
+1. Indítsa újra az alkalmazást úgy, hogy visszavált a parancssorba, és lenyomja a `Ctrl-C` parancsot a futó `dotnet` folyamat megszakításához, majd futtassa újra a `dotnet run` parancsot.
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 

@@ -1,35 +1,35 @@
 ---
-title: Lassú lekérdezések hozzáférési naplók az Azure Database MySQL-hez készült Azure CLI-vel
-description: Ez a cikk ismerteti, hogyan lehet elérni a lassú lekérdezések naplóinak, az Azure Database MySQL-hez az Azure parancssori felület használatával.
+title: Lassú lekérdezési naplók elérése Azure Database for MySQL az Azure CLI használatával
+description: Ez a cikk azt ismerteti, hogyan érheti el a lassú lekérdezési naplókat Azure Database for MySQL az Azure CLI használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612639"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030634"
 ---
-# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurálja és a lassú lekérdezések naplóinak elérése az Azure CLI-vel
-Azure CLI, az Azure parancssori segédprogram használatával az Azure Database for MySQL lassú lekérdezések naplóinak töltheti le.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Lassú lekérdezési naplók konfigurálása és elérése az Azure CLI használatával
+Az Azure CLI-vel, az Azure parancssori segédprogrammal töltheti le az Azure Database for MySQL lassú lekérdezési naplókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató lépéseinek, az alábbiak szükségesek:
-- [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md)
-- A [Azure CLI-vel](/cli/azure/install-azure-cli) vagy az Azure Cloud Shellt a böngészőben
+A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
+- [Azure Database for MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md)
+- Az [Azure CLI](/cli/azure/install-azure-cli) vagy Azure Cloud Shell a böngészőben
 
 ## <a name="configure-logging"></a>Naplózás konfigurálása
-A kiszolgálóhoz a MySQL lassú lekérdezések naplója a következő lépések végrehajtásával konfigurálhatja:
-1. Lassú lekérdezések naplózásának bekapcsolása beállításával a **lassú\_lekérdezés\_log** paraméter ON értékre állítása.
-2. Állítsa be például a többi paraméter **hosszú\_lekérdezés\_idő** és **log\_lassú\_rendszergazdai\_utasítások**.
+A kiszolgálót úgy is beállíthatja, hogy a következő lépések végrehajtásával hozzáférhessen a MySQL lassú lekérdezési naplóhoz:
+1. A lassú lekérdezés-naplózás bekapcsolásához állítsa be a **lassú @ no__t-1query @ no__t-2log** PARAMÉTERt a következőre:.
+2. Módosítsa a többi paramétert, például a **Long @ no__t-1query @ no__t-2time** és a **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
 
-Ezeket a paramétereket, az Azure CLI-n keresztül értékének beállításával kapcsolatban lásd: [kiszolgáló paramétereinek konfigurálása](howto-configure-server-parameters-using-cli.md).
+Ha meg szeretné tudni, hogyan állíthatja be a paraméterek értékét az Azure CLI-n keresztül, tekintse meg a [kiszolgáló paramétereinek konfigurálása](howto-configure-server-parameters-using-cli.md)című témakört.
 
-Például a következő CLI-parancsot a lassú lekérdezések naplója bekapcsolja, állítja be a hosszú lekérdezés idő 10 másodperc és majd kikapcsolja a naplózást, a lassú rendszergazdai utasítás. Végül a tekintse át a konfigurációs beállítások listáját.
+A következő CLI-parancs például bekapcsolja a lassú lekérdezési naplót, beállítja a hosszú lekérdezési időt 10 másodpercre, majd kikapcsolja a lassú rendszergazdai utasítás naplózását. Végül felsorolja az Áttekintés konfigurációs beállításait.
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 az mysql server configuration set --name long_query_time --resource-group myresourcegroup --server mydemoserver --value 10
@@ -37,20 +37,20 @@ az mysql server configuration set --name log_slow_admin_statements --resource-gr
 az mysql server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="list-logs-for-azure-database-for-mysql-server"></a>Lista naplók az Azure Database for MySQL-kiszolgáló
-A kiszolgáló elérhető a lassú lekérdezések naplófájlok felsorolása, futtassa a [az mysql server-logs list](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) parancsot.
+## <a name="list-logs-for-azure-database-for-mysql-server"></a>Azure Database for MySQL-kiszolgáló naplófájljainak listázása
+A kiszolgáló rendelkezésre álló lassú lekérdezési naplófájljainak listázásához futtassa az az [MySQL Server-logs List](/cli/azure/mysql/server-logs#az-mysql-server-logs-list) parancsot.
 
-A naplófájlokban található kiszolgáló listázhatja **mydemoserver.mysql.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup**. A lista a naplófájlok nevű szövegfájlba majd közvetlen **log\_fájlok\_lista.txt**.
+A kiszolgálói **mydemoserver.mysql.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját egy **log @ no__t-1files\_list.txt**nevű szövegfájlba.
 ```azurecli-interactive
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>Naplók letöltése a kiszolgálóról
-Az a [az mysql server-naplók letöltése](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) parancsot, az egyes naplófájlok töltheti le a kiszolgáló számára. 
+Az az [MySQL Server-logs Download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) paranccsal letöltheti a kiszolgáló egyes naplófájljait. 
 
-Az alábbi példát követve töltse le a kiszolgáló a megadott naplófájlt **mydemoserver.mysql.database.azure.com** az erőforráscsoportba tartozó **myresourcegroup** a helyi környezetben.
+A következő példa használatával letöltheti a kiszolgáló **mydemoserver.mysql.database.Azure.com** tartozó naplófájlt a helyi környezet **myresourcegroup** .
 ```azurecli-interactive
 az mysql server-logs download --name 20170414-mydemoserver-mysql.log --resource-group myresourcegroup --server mydemoserver
 ```
 
 ## <a name="next-steps"></a>További lépések
-- Ismerje meg [lassú lekérdezések naplók az Azure Database for MySQL-hez](concepts-server-logs.md).
+- További információ [a Azure Database for MySQL lassú lekérdezési naplóiról](concepts-server-logs.md).

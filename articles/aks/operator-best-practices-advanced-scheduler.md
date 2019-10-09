@@ -1,50 +1,50 @@
 ---
-title: Operátor ajánlott eljárások – speciális scheduler szolgáltatások az Azure Kubernetes-szolgáltatások (AKS)
-description: Ismerje meg, a fürt operátor használatának ajánlott eljárásai elkerülésére és a tolerations, a csomópont választók és a kapcsolat, vagy a pod közötti kapcsolat és a affinitást speciális scheduler funkciókat az Azure Kubernetes Service (AKS)
+title: Kezelői ajánlott eljárások – speciális Scheduler-funkciók az Azure Kubernetes Servicesben (ak)
+description: Ismerje meg a fürt operátorának ajánlott eljárásait a speciális Scheduler-funkciók, például a szennyező elemek és a tolerálás, a csomópont-választók és az affinitás, illetve az Azure Kubernetes szolgáltatásban (ak) közötti affinitás és affinitás
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614876"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026103"
 ---
-# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a speciális scheduler funkciók az Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
 
-Kezelheti a fürtöket az Azure Kubernetes Service (AKS), gyakran kell elkülöníteni a teams és a számítási feladatokhoz. A Kubernetes-ütemező speciális szolgáltatásokat kínál, amelyekkel meghatározhatja, melyik podok ütemezhetők az egyes csomópontok, vagy hogyan az alkalmazások megfelelően is több pod a fürt elosztva. 
+A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során gyakran kell elkülönítenie a csapatokat és a munkaterheléseket. A Kubernetes Scheduler olyan speciális funkciókat biztosít, amelyekkel szabályozhatja, hogy mely hüvelyek ütemezhetők bizonyos csomópontokon, illetve hogy a több-Pod alkalmazások hogyan terjeszthetők ki a fürtön belül. 
 
-Ez – gyakorlati tanácsok cikk ütemezési összetevők adhatnak az operátoroknak fürt speciális Kubernetes összpontosít. Ebben a cikkben az alábbiakkal ismerkedhet meg:
+Ez az ajánlott eljárási cikk a fürtcsomópontok Speciális Kubernetes-ütemezési szolgáltatásaira koncentrál. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Használat elkerülésére, valamint milyen podok korlátozása tolerations ütemezett csomópontokon
-> * Részesítik előnyben podok csomópont választók vagy csomópont-affinitásának futtathat az egyes csomópontok
-> * Vegyes egymástól vagy a csoport együttesen podok közötti pod affinitás vagy affinitást megakadályozó beállítása
+> * A kihelyezés és a tolerancia használata a csomópontokon ütemezhető hüvelyek korlátozására
+> * Előnyt biztosíthat a hüvelyek számára, hogy bizonyos csomópontokon, csomópont-választókkal vagy csomópont-affinitással fussanak
+> * Szétosztva vagy csoportosítsa a hüvelyeket az Inter-Pod affinitással vagy a kapcsolat összekapcsolásával
 
-## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Adja meg a dedikált csomópontok elkerülésére, valamint tolerations használatával
+## <a name="provide-dedicated-nodes-using-taints-and-tolerations"></a>Célzott csomópontok biztosítása a megfertőzés és a tolerálás használatával
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – erőforrás-igényes alkalmazásokhoz, bejövő vezérlők, például adott csomópontjaihoz hozzáférést korlátozza. Tartsa elérhető megkövetelő számítási feladatokhoz csomópont erőforrásokat, és nem engedélyezi, hogy más számítási feladatok a csomóponton.
+**Ajánlott eljárási útmutató** – az erőforrás-igényes alkalmazások, például a bejövő vezérlők hozzáférésének korlátozása adott csomópontokra. Tartsa elérhetővé a csomópont-erőforrásokat a szükséges számítási feladatokhoz, és ne engedélyezze más számítási feladatok ütemezését a csomópontokon.
 
-Az AKS-fürt létrehozásakor telepíthet csomópontok GPU-támogatással vagy egy nagy teljesítményű processzorokkal rendelkeznek. Ezek a csomópontok gyakran használják a nagyméretű adatfeldolgozási számítási feladatokhoz, például a machine learning (gépi tanulás) vagy a mesterséges intelligencia (AI). Mivel az ilyen típusú hardver általában egy költséges csomópont-erőforrást helyezhet üzembe, a számítási feladatok, amelyek ezeken a csomópontokon ütemezett korlátozza. Ehelyett érdemes elkülönítenie az egyes csomópontok bejövő szolgáltatások futtatásához, és más számítási feladatok megakadályozása a fürtben.
+Az AK-fürt létrehozásakor a csomópontokat GPU-támogatással vagy nagy számú nagy teljesítményű processzorral is üzembe helyezheti. Ezeket a csomópontokat gyakran használják a nagyméretű adatfeldolgozási számítási feladatokhoz, például a gépi tanuláshoz (ML) vagy a mesterséges intelligenciához (AI). Mivel az ilyen típusú hardver általában egy költséges csomópont-erőforrás, amely a csomópontokon ütemezhető munkaterheléseket korlátozza. Ehelyett érdemes lehet a fürt egyes csomópontjait a bejövő szolgáltatások futtatására használni, és meg kell akadályozni más munkaterheléseket.
 
-A különböző csomópontokon támogatása több csomópont-készlet alkalmazásával biztosítható. AKS-fürt egy vagy több csomópont-címkészleteket biztosít. Az aks-ben több csomópontkészletek támogatása jelenleg előzetes verzióban érhető el.
+A különböző csomópontok támogatását több csomópontos készlet is használja. Az AK-fürtök egy vagy több csomópontot biztosítanak. Az AK-ban több Node-készlet támogatása jelenleg előzetes verzióban érhető el.
 
-A Kubernetes a scheduler használatával elkerülésére, valamint tolerations milyen számítási feladatokat futtathat a csomópontok korlátozhatják.
+A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási feladatok futhatnak a csomópontokon.
 
-* A **vágófelülettel** alkalmazott egy csomópont, amely jelzi, hogy csak adott podok ütemezett rajtuk.
-* A **toleration** a rendszer ezután alkalmazza, amely lehetővé teszi, hogy podot *lekérés* egy csomópont mellékíz.
+* A rendszer egy olyan csomópontra alkalmazza a **megromlást** , amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
+* A **rendszer egy olyan** Pod-ra alkalmazza a betartást, amely lehetővé *teszi a* csomópontok megromlását.
 
-Amikor telepít egy pod egy AKS-fürtöt, Kubernetes csak ütemezi csomópontokon podok, ahol egy toleration igazítva van-e a mellékíz. Tegyük fel fel, hogy csomópontkészletek a GPU-csomópont esetében az AKS-fürt támogatása. Név, például meghatározhat *gpu*, majd ütemezés értékét. Ha ez az érték *NoSchedule*, a Kubernetes-ütemező nem lehet ütemezni a csomóponton podok, ha a pod nem adja meg a megfelelő toleration.
+Ha a pod-t egy AK-fürtön helyezi üzembe, a Kubernetes csak azokat a csomópontokat ütemezhet, amelyekben a tolerancia megfelel a szennyező elemnek. Tegyük fel például, hogy rendelkezik egy Node-készlettel az AK-fürtben a GPU-támogatással rendelkező csomópontok számára. Megadhatja a nevet, például a *GPU*-t, majd az ütemezés értékét. Ha ez az érték nem *ütemezhető*, a Kubernetes Scheduler nem ütemezhet hüvelyeket a csomóponton, ha a pod nem határozza meg a megfelelő tolerancia értékét.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-A rendszer összes csomópontra alkalmazza a mellékíz majd egy toleration az meghatározott a pod szabvány, amely lehetővé teszi, hogy ütemezése a csomópontokon. Az alábbi példa meghatározza az `sku: gpu` és `effect: NoSchedule` elviselni a alkalmazni a csomópontra az előző lépésben mellékíz:
+A csomópontokra alkalmazott szennyező adatokkal meghatározható a pod-specifikációban a csomópontok ütemezését lehetővé tevő tolerancia. Az alábbi példa a `sku: gpu` és a `effect: NoSchedule` értéket definiálja, hogy az előző lépésben a csomóponton alkalmazott adatszennyezettség tolerálható legyen:
 
 ```yaml
 kind: Pod
@@ -69,44 +69,44 @@ spec:
     effect: "NoSchedule"
 ```
 
-Ha a pod üzembe lett helyezve, például `kubectl apply -f gpu-toleration.yaml`, Kubernetes sikeresen ütemezhet a csomópontokon a pod a alkalmazni mellékíz együtt. A logikai elkülönítés lehetővé teszi egy fürtön belüli erőforrásokhoz való hozzáférés szabályozása.
+A hüvely üzembe helyezésekor, például a `kubectl apply -f gpu-toleration.yaml` használata esetén a Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival. Ez a logikai elkülönítés lehetővé teszi a fürtön belüli erőforrásokhoz való hozzáférés szabályozását.
 
-Amikor alkalmazza elkerülésére, az alkalmazásfejlesztők és tulajdonosok, hogy azok tudjanak határozhat meg a szükséges tolerations telepítések együttműködve.
+Ha a szennyező adatait alkalmazza, együttműködik az alkalmazás-fejlesztővel és a tulajdonosokkal, hogy meghatározza a szükséges megtartásokat az üzemelő példányokban.
 
-Elkerülésére, valamint tolerations kapcsolatos további információkért lásd: [elkerülésére, valamint tolerations alkalmazása][k8s-taints-tolerations].
+További információ a szennyező adatokról és a toleranciaekről: a [romlottságok és a tolerálás alkalmazása][k8s-taints-tolerations].
 
-Az aks-ben több csomópontkészletek használatával kapcsolatos további információkért lásd: [létrehozása és kezelése az aks-ben a fürt több csomópontkészletei][use-multiple-node-pools].
+További információ arról, hogyan használható több Node-készlet az AK-ban: [több csomópontos készlet létrehozása és kezelése a fürthöz az AK-ban][use-multiple-node-pools].
 
-### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Elkerülésére, valamint az aks-ben tolerations viselkedését
+### <a name="behavior-of-taints-and-tolerations-in-aks"></a>A megfertőzés és a tolerancia viselkedése az AK-ban
 
-Amikor az aks-ben csomópontkészletek-elkerülésére, valamint tolerations set mintát követi, új csomópontokat használ alkalmazza őket:
+Ha AK-ban frissít egy csomópont-készletet, a szennyező elem és a tolerálás egy meghatározott mintát követ, amelyet az új csomópontokra alkalmaz:
 
-- **Alapértelmezett fürtök virtuálisgép-méretezési csoport támogatás nélkül**
-  - Tegyük fel, hogy egy két csomópontos fürt - *csomópont1* és *csomópont2*. Amikor frissít, egy további fürtcsomópontra (*csomópont3*) jön létre.
-  - A elkerülésére a *csomópont1* érvényesek *csomópont3*, majd *csomópont1* majd törlődik.
-  - Egy másik új csomópont jön létre (nevű *csomópont1*, mivel az előző *csomópont1* törölve lett), és a *csomópont2* elkerülésére érvényesek az új *csomópont1*. Ezt követően *csomópont2* törlődik.
-  - Lényegében *csomópont1* válik *csomópont3*, és *csomópont2* válik *csomópont1*.
+- **Alapértelmezett fürtök virtuálisgép-méretezési támogatás nélkül**
+  - Tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. A frissítésekor egy további csomópont (*csomópont3*) jön létre.
+  - A rendszer a *csomópont1* -től származó adatszennyező adatokra alkalmazza a *csomópont3*, majd a *csomópont1* törölve lesz.
+  - Létrejön egy másik új csomópont ( *csomópont1*néven, mivel az előző *csomópont1* törölték), és a *Csomópont2* -adatszennyező elemek az új *csomópont1*lesznek alkalmazva. Ezt követően a rendszer törli a *Csomópont2* .
+  - A Essence *csomópont1* *csomópont3*válik, és a Csomópont2 *csomópont1*válik.
 
-- **A méretezési csoportokat virtuális gépet használó fürtök** (jelenleg előzetes verzióban érhető el az aks-ben)
-  - Ismét tegyük fel, hogy egy két csomópontos fürt - *csomópont1* és *csomópont2*. A csomópont készlethez frissít.
-  - Két további csomópontjainak létrehozása, *csomópont3* és *csomópont4*, és a elkerülésére továbbítva lesznek jelölik.
-  - Az eredeti *csomópont1* és *csomópont2* törlődnek.
+- **Virtuálisgép-méretezési csoportokat használó fürtök**
+  - Először is tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. Frissíti a csomópont-készletet.
+  - Két további csomópont jön létre, *csomópont3* és *csomópont4*, és a rendszer átadja a megfertőzt állapotokat.
+  - A rendszer törli az eredeti *csomópont1* és *Csomópont2* .
 
-Amikor az aks-ben csomópontkészletek méretezéséhez, elkerülésére, valamint tolerations nem biztosítunk pénzügyi tervezési irányítást.
+Ha AK-ban méretezi a csomópont-készletet, a rendszer nem hajtja végre a megtervezést.
 
-## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>Vezérlő pod ütemezés csomópont választók-kapcsolat használatával
+## <a name="control-pod-scheduling-using-node-selectors-and-affinity"></a>A hüvely ütemezésének vezérlése csomópont-választókkal és affinitással
 
-**Ajánlott eljárásokkal kapcsolatos útmutatás** – szabályozza a podok csomópont választók, csomópont-affinitásának használatával csomópontokon vezénylését vagy közötti pod affinitás. Ezek a beállítások lehetővé teszik a Kubernetes-ütemező logikailag számítási feladatok elkülönítésére, mint például a csomópont a hardverrel.
+**Ajánlott eljárási útmutató** – a hüvelyek ütemezésének szabályozása csomópont-választókkal, csomópont-affinitással vagy Inter-Pod affinitással. Ezek a beállítások lehetővé teszik a Kubernetes ütemező számára, hogy logikailag elkülönítse a munkaterheléseket, például a csomópontban található hardvereket.
 
-Elkerülésére, valamint tolerations logikailag elkülönítésére szolgálnak a rögzített küszöbérték - erőforrásokat a pod ugyan nem egy csomópont mellékíz, ha nincs-e ütemezve a csomóponton. Egy alternatív módszer, hogy használjon csomópont. A helyileg csatlakoztatott SSD-tárolás vagy jelentős mennyiségű memóriát, és megadhatja, a pod specifikációban egy csomópont-választó például címkét csomópont esetén. Kubernetes majd ezeket a hozzá tartozó csomópont podok ütemezi. Ellentétben tolerations anélkül, hogy a megfelelő csomópont választó podok ütemezhető címkézett csomópontokon. Ez a viselkedés lehetővé teszi, hogy a nem használt erőforrások felhasználását, a csomóponton, de biztosít, amelyek meghatározzák a hozzá tartozó csomópont-választó podok prioritás.
+A szennyező anyagok és a tolerálás a nehezen kivágott erőforrások logikai elkülönítésére szolgál, ha a pod nem tűri a csomópontok megromlását, nem ütemezi a csomópontot. Alternatív módszer a csomópont-választók használata. A csomópontok címkézésével, például a helyileg csatlakoztatott SSD-tárolóval vagy nagy mennyiségű memóriával jelezheti a memóriát, majd definiálhatja a hüvely specifikációjában a csomópont-választót. A Kubernetes ezután a hüvelyeket egy megfelelő csomóponton ütemezheti. A tolerancia használatával ellentétben a hüvelyek megfelelő csomópont-választó nélkül ütemezhetők a címkézett csomópontokon. Ez a viselkedés lehetővé teszi a csomópontok nem használt erőforrásainak felhasználását, de elsőbbséget biztosít a hüvelyeknek, amelyek meghatározzák a megfelelő csomópont-választót.
 
-Nagy mennyiségű memóriával rendelkező vegyünk egy példát a csomópontok. Ezek a csomópontok adhat a rendszer nagy mennyiségű memóriát igénylő podok előnyben részesítése. Győződjön meg arról, hogy az erőforrások nem található tétlen, a is lehetővé teszik más podok futtatásához.
+Tekintsük át a nagy mennyiségű memóriával rendelkező csomópontok példáját. Ezek a csomópontok előnyt biztosíthatnak a nagy mennyiségű memóriát igénylő hüvelyek számára. Győződjön meg arról, hogy az erőforrások nem tétlenek, hanem más hüvelyek futtatását is lehetővé teszik.
 
 ```console
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-A pod megadása majd hozzáadja a `nodeSelector` csomópont nastavit vlastnost meghatározásához egy csomópont-választó, amely megfelel a címkét:
+A pod-specifikáció Ezután hozzáadja a `nodeSelector` tulajdonságot egy csomópont-választó megadásához, amely megfelel a csomóponton beállított címkének:
 
 ```yaml
 kind: Pod
@@ -128,15 +128,15 @@ spec:
       hardware: highmem
 ```
 
-Ezek a scheduler a beállítások használatakor az alkalmazásfejlesztők és tulajdonosok, hogy azok tudjanak a pod-specifikációknak megfelelően meghatározásához együttműködve.
+Ha ezeket a Scheduler-beállításokat használja, az alkalmazás fejlesztőivel és a tulajdonosokkal együttműködve lehetővé teszi számukra, hogy megfelelően meghatározzák a pod-specifikációkat.
 
-Csomópont választók használatával kapcsolatos további információkért lásd: [csomóponthoz való hozzárendelése Podok][k8s-node-selector].
+További információ a csomópont-választók használatáról: [hüvelyek csomópontokhoz rendelése][k8s-node-selector].
 
-### <a name="node-affinity"></a>Csomópont-affinitásának
+### <a name="node-affinity"></a>Csomópont-affinitás
 
-Egy csomópont-választó alapvető módja a podok hozzárendelése egy adott csomópont. Rugalmasabb elérhető használatával *csomópont-affinitásának*. A csomópont-affinitásának meghatározhatja, mi történik, ha a pod nem egyeztethető össze a csomópont. Is *megkövetelése* , hogy a Kubernetes-ütemező podot megegyezik a feliratozott gazdagépre. Is *inkább* egyezés, de a pod ütemezhető, egy másik gazdagép engedélyezése, ha nincs egyezés érhető el.
+A csomópont-választó egy alapszintű módszer a hüvelyek egy adott csomóponthoz való hozzárendelésére. A *csomópont affinitása*nagyobb rugalmasságot biztosít. A csomópont-affinitással meghatározhatja, hogy mi történjen, ha a hüvely nem egyeztethető össze egy csomóponttal. *Megkövetelheti* , hogy a Kubernetes Scheduler megfeleljen egy Pod címkével ellátott gazdagépnek. Másik *lehetőségként választhat,* de lehetővé teszi, hogy a pod más gazdagépre legyen ütemezve, ha az nem egyezik.
 
-Az alábbi példa a csomópont-affinitásának beállítása *requiredDuringSchedulingIgnoredDuringExecution*. Ez a kapcsolat szükséges a Kubernetes ütemezés egy csomópont használata a hozzájuk tartozó címkéket. Ha nem csomópont nem érhető el, a pod azt várja meg, a folytatáshoz ütemezés. Ahhoz, hogy egy másik csomóponton ütemezni a pod, inkább az értéket és megadható *preferredDuringScheduledIgnoreDuringExecution*:
+A következő példa beállítja a csomópont-affinitást a *requiredDuringSchedulingIgnoredDuringExecution*. Ez az affinitás megköveteli, hogy a Kubernetes-ütemterv megfelelő címkével rendelkező csomópontot használjon. Ha nincs elérhető csomópont, a pod-nek várnia kell, amíg az ütemezés folytatódni fog. Annak engedélyezéséhez, hogy a pod egy másik csomóponton legyen ütemezve, ehelyett a következőt állíthatja be a *preferredDuringScheduledIgnoreDuringExecution*értékre:
 
 ```yaml
 kind: Pod
@@ -164,29 +164,29 @@ spec:
             values: highmem
 ```
 
-A *IgnoredDuringExecution* része a beállítás azt jelzi, hogy a csomópont címkék módosítása, ha a pod nem zárható ki a csomópontból. A Kubernetes-ütemező csak új podok lett ütemezve, nem a csomóponton már ütemezve podok a frissített csomópontoknak címkéket használ.
+A beállítás *IgnoredDuringExecution* része azt jelzi, hogy ha a csomópontok felirata megváltozik, a hüvelyt nem szabad kizárni a csomópontból. A Kubernetes Scheduler csak az új hüvelyek frissített csomópontjait használja az ütemezéshez, nem pedig a csomópontokon már ütemezve van a hüvelyek.
 
-További információkért lásd: [affinitás és affinitást][k8s-affinity].
+További információ: [affinitás és affinitás][k8s-affinity].
 
-### <a name="inter-pod-affinity-and-anti-affinity"></a>A pod közötti kapcsolat és affinitást megakadályozó beállítása
+### <a name="inter-pod-affinity-and-anti-affinity"></a>Inter-Pod affinitás és affinitás
 
-A Kubernetes a Scheduler logikailag a számítási feladatok elkülönítésére az egyik utolsó megközelítés közötti pod affinitás vagy affinitást használ. A beállítások határozzák meg, hogy a podok *nem* ütemezhetők, amely rendelkezik egy meglévő megfelelő pod csomópont, vagy adott ezek *kell* ütemezhető. Alapértelmezés szerint a Kubernetes-ütemező próbál egy replikát, állítsa be a csomópontok között több podok ütemezése. E probléma részletesebb szabályozás határozhatja meg.
+Az Kubernetes Scheduler egyik végső megközelítése, hogy logikailag elkülönítse a munkaterheléseket, és az egymástól származó affinitást vagy affinitást használ. A beállítások azt határozzák meg, hogy a hüvelyek *ne* legyenek ütemezve olyan csomóponton, amely rendelkezik egy meglévő megfelelő Pod-vel, vagy *hogy be legyen* ütemezve. Alapértelmezés szerint a Kubernetes Scheduler több hüvely ütemezését kísérli meg a csomópontok közötti replikában. A viselkedés körül részletesebb szabályokat is meghatározhat.
 
-Egy jó példa egy webalkalmazást, amely is használ az Azure Cache Redis. Podok affinitást szabályok segítségével kérés, hogy a Kubernetes-ütemező replikák elosztja a csomópontok között. Affinitás szabályok használatával győződjön meg arról, hogy egyes webes alkalmazás-összetevők ugyanazon a gazdagépen a megfelelő gyorsítótárként van ütemezve, majd. Podok csomópontok közötti elosztása az alábbi példához hasonlóan néz ki:
+A jó példa egy olyan webalkalmazás, amely egy Azure cache-t is használ a Redis. A pod-affinitási szabályok segítségével kérheti, hogy a Kubernetes Scheduler elossza a replikákat a csomópontok között. Ezután az affinitási szabályok segítségével gondoskodhat arról, hogy minden webalkalmazás-összetevő ütemezve legyen ugyanazon a gazdagépen, mint a megfelelő gyorsítótár. A hüvelyek csomópontok közötti eloszlása a következő példához hasonlóan néz ki:
 
 | **1. csomópont** | **2. csomópont** | **3. csomópont** |
 |------------|------------|------------|
-| webapp-1   | webapp-2   | webapp-3   |
-| gyorsítótár-1    | gyorsítótár-2    | gyorsítótár-3    |
+| WebApp-1   | webapp-2   | webapp-3   |
+| gyorsítótár – 1    | gyorsítótár – 2    | gyorsítótár – 3    |
 
-Ebben a példában az összetettebb üzemelő használatát, mint a csomópont választók vagy csomópont-affinitásának. Az üzembe helyezési lehetőséget biztosít, hogyan Kubernetes ütemezi a podok csomópontokon felett ellenőrzést, és logikailag is erőforrások elkülönítése. Ez a webalkalmazás az Azure Cache Redis például egy teljes példa: [ugyanazon a csomóponton podok elhelyezése][k8s-pod-affinity].
+Ez a példa összetettebb üzembe helyezés, mint a csomópont-választó vagy a csomópont-affinitás használata. Az üzembe helyezés lehetővé teszi, hogy a Kubernetes hogyan ütemezze a csomópontokon a hüvelyeket, és képes legyen logikai módon elkülöníteni az erőforrásokat. A webalkalmazásnak az Azure cache-vel való Redis példaként való teljes példáját lásd: [a hüvelyek közös elhelyezése ugyanazon a csomóponton][k8s-pod-affinity].
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk a Kubernetes-ütemező speciális szolgáltatások összpontosít. Az AKS-fürt műveletekkel kapcsolatos további információkért tekintse meg az alábbi gyakorlati tanácsokat:
+Ez a cikk a speciális Kubernetes Scheduler-funkciókra összpontosít. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 
-* [Több-bérlős és a fürt elkülönítés][aks-best-practices-scheduler]
-* [Kubernetes-ütemezési alapszintű funkciók][aks-best-practices-scheduler]
+* [Több-bérlős és fürt-elkülönítés][aks-best-practices-scheduler]
+* [Alapszintű Kubernetes Scheduler-funkciók][aks-best-practices-scheduler]
 * [Hitelesítés és engedélyezés][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

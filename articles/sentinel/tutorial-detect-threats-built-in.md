@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240107"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024458"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: Fenyegetések észlelése
 
@@ -29,7 +29,7 @@ ms.locfileid: "71240107"
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) az Azure Sentinel szolgáltatáshoz, értesítést szeretne kapni, ha valamilyen gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
+Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) To az Azure sentinelhez, értesítést szeretne kapni, ha valami gyanús esemény történik. Ennek lehetővé tételéhez az Azure Sentinel beépített sablonokat is biztosít Önnek a rendelkezésére. Ezeket a sablonokat az ismert fenyegetések, a gyakori támadási vektorok és a gyanús tevékenység-eszkalációs láncok alapján a Microsoft biztonsági szakértői és elemzői alkották. A sablonok engedélyezése után a rendszer automatikusan megkeresi azokat a tevékenységeket, amelyek gyanúsak a környezetében. Számos sablon testreszabható a tevékenységek kereséséhez, illetve kiszűréséhez az igényeinek megfelelően. A sablonok által generált riasztások olyan incidenseket hoznak létre, amelyeket a környezetben rendelhet hozzá és vizsgálhat meg.
 
 Ez az oktatóanyag segítséget nyújt a fenyegetések észleléséhez az Azure Sentinel használatával:
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag segítséget nyújt a fenyegetések észleléséhez az Azure 
 
 ## <a name="about-out-of-the-box-detections"></a>A beépített észlelések ismertetése
 
-Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok**elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
+Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok**elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
 
    ![A fenyegetések felderítése az Azure Sentinel használatával beépített észlelésekkel](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -58,7 +58,7 @@ A következő sablon típusok érhetők el:
  
 1. Ekkor megnyílik a szabály létrehozása varázsló a kiválasztott sablon alapján. Az összes adat kitöltése, valamint az **ütemezett szabályok** vagy a **Microsoft biztonsági szabályok**esetében testreszabhatja a logikát, hogy jobban megfeleljen a szervezetének, vagy további szabályokat hozzon létre a beépített sablon alapján. A szabály létrehozása varázsló lépéseit követve és a sablon alapján létrehozott szabály létrehozása után az új szabály megjelenik az **aktív szabályok** lapon.
 
-A varázsló mezőivel kapcsolatos további információkért lásd [: oktatóanyag: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések](tutorial-detect-threats-custom.md)észleléséhez.
+További információt a varázsló mezőiről a következő témakörben talál: [Tutorial: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez @ no__t-0.
 
 
 

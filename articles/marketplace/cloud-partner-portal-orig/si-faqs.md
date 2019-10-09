@@ -1,101 +1,101 @@
 ---
-title: Értékesítői Insights – gyakori kérdések
-description: Gyakori kérdések a Cloud Partner portálra az értékesítői Insights-funkciót.
+title: Az értékesítői ismeretek – GYIK
+description: Gyakori kérdések a Cloud Partner Portal eladói bepillantást vevő szolgáltatásával kapcsolatban.
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943098"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030451"
 ---
-<a name="seller-insights-faq"></a>Értékesítői Insights – gyakori kérdések
+<a name="seller-insights-faq"></a>Az értékesítői ismeretek – GYIK
 ===================
 
-Ez a cikk útmutatást nyújt általános felhasználói eljárások belül és értékesítői Insights kapcsolatos kérdésekre.
+Ez a cikk útmutatást nyújt a gyakori felhasználói eljárásokról, valamint az eladói információkra vonatkozó kérdésekről.
 
 
-<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>A letöltött tranzakció fájlban keresse meg az értékeket a definíciók
+<a name="find-definitions-for-the-values-in-the-downloaded-transaction-file"></a>A letöltött tranzakciós fájlban lévő értékek definícióinak megkeresése
 ------------------------------------------------------------------
 
-A cikk azon a metrikaértékek a tranzakció fájlban található [értékesítői Insights definíciók](./si-insights-definitions-v4.md).
+A tranzakciós fájlban szereplő metrikai értékek definíciói a cikk [eladói bepillantások definíciójában](./si-insights-definitions-v4.md)találhatók.
 
 
-<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Ügyfél részletek megtekintése, amelyhez I korábban lett fizetett tranzakciók
+<a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>Megtekintheti a megfizetett tranzakciók vásárlói adatait
 -------------------------------------------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési állapot**, és alkalmazza a szűrőt, hogy csak a "Out fizetős." értéket jeleníti meg Az alábbi oszlopok jelennek meg a vásárlói adatokat tartalmazó: **Cég neve**, **ügyfél e-mailek**, **vevői ország**, **ügyfél állapota**, és **ügyfél irányítószám**.
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **kifizetési állapot**feliratú oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "kifizetve" értéket jelenítse meg. Az ügyfél adatait tartalmazó következő oszlopok jelennek meg: A **Vállalat neve**, az **ügyfél e-mail-címe**, az ügyfél **országa**, az **ügyfél**és az **ügyfél postai**irányítószáma.
 
 
-<a name="calculate-my-open-accounts-receivable"></a>Saját nyílt Kinnlevőségek kiszámítása
+<a name="calculate-my-open-accounts-receivable"></a>Saját nyitott fiókok számítása
 -------------------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési állapot**, és a alkalmazni a szűrő csak megjelenítése az érték "Közelgő kifizetés" és "Nem áll készen a küldenie jóváhagyásra cége kifizetési." A címkével ellátott oszlop majd összeg **küldenie jóváhagyásra cége kifizetési összeg (számítógép)** .
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **kifizetési állapot**feliratú oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "közelgő kifizetés" és "nem készen áll a kifizetés" értéket jelenítse meg. Ezután adja meg a **kinyerési összeg (számítógép)** címkével ellátott oszlop összegét.
 
 
-<a name="calculate-revenue-by-customer-usage-period"></a>Ügyfél használati időszak alapján számítja ki az bevétel
+<a name="calculate-revenue-by-customer-usage-period"></a>Bevétel kiszámítása az ügyfél használati időtartama alapján
 ------------------------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **tranzakció állapota**, és az érték "Fizetős" szűréséhez.   Minden tranzakció felsorolt, a címkével ellátott oszlop **küldenie jóváhagyásra cége kifizetési összeg (számítógép)**  is fizetett összeg jelöli.  Becsülje meg a tranzakcióhoz tartozó használati időszak, használja az oszlop **terhelés dátuma**, azaz az időszak, amelyekre vonatkozik a tranzakció használatának utolsó napján egy Bezárás előállításához.
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **tranzakció állapota**feliratú oszlopot, és szűrje a "fizetős" értéket.   Minden felsorolt tranzakció esetében a **kifizetési mennyiség (számítógép)** feliratú oszlop a kifizetett összeget jelöli.  A tranzakcióhoz társított használati időszak kiszámításához használja az oszlop **díjszabási dátumát**, amely a tranzakció érvényességi időszakához közeledik a használat utolsó napjának.
 
 
-<a name="calculate-your-bad-debt"></a>A tapasztalta kiszámítása
+<a name="calculate-your-bad-debt"></a>A helytelen tartozás kiszámítása
 ---------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **utolsó adatgyűjtési állapot**, és alkalmazza a szűrőt a csak a megjelenített értéke "Write ki." A címkével ellátott oszlop majd összeg **küldenie jóváhagyásra cége kifizetési összeg (számítógép)** .
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **végső gyűjtemény állapotát**jelölő oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "Write off" értéket jelenítse meg. Ezután adja meg a **kinyerési összeg (számítógép)** címkével ellátott oszlop összegét.
 
 
-<a name="view-payout-or-customer-contact-information"></a>Küldenie jóváhagyásra cége kifizetési és az elérhetőségi adatok megtekintése
+<a name="view-payout-or-customer-contact-information"></a>Kifizetés vagy ügyfél elérhetőségi adatainak megtekintése
 -------------------------------------------
 
-Jelentkezzen be a "tulajdonos" szerepkör és a "közreműködő" szerepkör nem rendelkező felhasználóként. Csak a tulajdonos szerepkör küldenie jóváhagyásra cége kifizetési és ügyfelek adatai jelennek meg. További információk a felhasználói szerepköröket a cikkben találja [felhasználók kezelése](./cloud-partner-portal-manage-users.md).
+Jelentkezzen be felhasználóként a "tulajdonos" szerepkörrel, és ne a "közreműködő" szerepkört. Csak a tulajdonosi szerepkör fogja látni a kifizetés és az ügyfél adatait. A felhasználói szerepkörökkel kapcsolatos további információkért tekintse meg a [felhasználók kezelése](./cloud-partner-portal-manage-users.md)című cikket.
 
 
-<a name="calculate-my-advance-payouts"></a>Az előzetes kifizetések kiszámítása
+<a name="calculate-my-advance-payouts"></a>Saját előfizetések kiszámítása
 ----------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **tranzakció típusa**, és alkalmazza a szűrőt, hogy csak a "Díj." értéket jeleníti meg Ezután keresse meg a címkével ellátott oszlop **utolsó adatgyűjtési állapot**, és alkalmazza a szűrőt, hogy csak a "Folyamatban" értéket jeleníti meg. Végül összeg a **küldenie jóváhagyásra cége kifizetési összeg (számítógép)** oszlopot, amely kiszámítja az összes tudnak fizetős Önnek előtti gyűjteményben az ügyféltől.
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **Tranzakciótípus**nevű oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "díj" értéket jelenítse meg. Ezután keresse meg a **végső gyűjtemény állapotát**jelölő oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "folyamatban" értéket jelenítse meg. Végül a **kifizetés mennyisége (PC)** oszlopban adja meg az ügyféltől a gyűjtemény előtt fizetett összes előleg kiszámításának összegét.
 
 
-<a name="calculate-customer-refunds"></a>Ügyfél visszatérítések kiszámítása
+<a name="calculate-customer-refunds"></a>Ügyfél-visszatérítések kiszámítása
 --------------------------
 
-A tranzakciók küldenie jóváhagyásra cége kifizetési modulból a letöltés után keresse meg a címkével ellátott oszlop **utolsó adatgyűjtési állapot**, és alkalmazza a szűrőt, hogy csak a "Visszatérítés." értéket jeleníti meg Sum a **díj összege PC-** oszlopot, amely kiszámítja az összes visszatérítések az ügyfelek érdekében dolgoz fel.
+Miután letöltötte a tranzakciókat a kifizetési modulból, keresse meg a **végső gyűjtemény állapotát**jelölő oszlopot, és alkalmazza a szűrőt úgy, hogy csak a "visszatérítés" értéket jelenítse meg. Az ügyfelek számára feldolgozott összes visszatérítés kiszámításához adja meg a **díj összege (PC)** oszlopot.
 
 
-<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>A tranzakciók vesz részt a Microsoft Channel Partner azonosítása
+<a name="identify-which-transactions-involved-a-microsoft-channel-partner"></a>A Microsoft Channel partner által érintett tranzakciók azonosítása
 ----------------------------------------------------------------
 
-Az oszlopban lévő összes tranzakció **Azure licenctípus** , amely szűr a rendszer az "Enterprise keresztül viszonteladó" értékek megjelenítése és a "Cloud Solution Provider" magában foglalja a Microsoft Channel Partner. A partner olvashat, annak a **viszonteladó neve** és **viszonteladó e-mail címét** a küldenie jóváhagyásra cége kifizetési modul letöltése és a vásárlói modul letöltése.
+Az **Azure-licenccel** rendelkező oszlop összes olyan tranzakciója, amely szűrve van a "nagyvállalati szintű viszonteladó" és a "felhőalapú megoldás-szolgáltató" értékének megjelenítésére, egy Microsoft Channel partnert is magában foglal. A partnerrel kapcsolatos további részletekért tekintse meg a **viszonteladói nevét** és a **viszonteladói e-mail-címét** a kifizetési modul letöltése és az ügyfél modul letöltése területen.
 
 
-<a name="identify-trial-usage-and-trial-conversions"></a>Próbaverzió használati és próba átalakítások meghatározása
+<a name="identify-trial-usage-and-trial-conversions"></a>Próbaverziós és próbaverziós konverziók azonosítása
 ------------------------------------------
 
-Mostantól tartalmazza a rendelési, használatának és küldenie jóváhagyásra cége kifizetési modul letöltések **próbaverziós Záródátum** annak megértéséhez, ha a próbaidőszak alatt befejeződik. adott sorrendben, ha vannak ilyenek. Próbaverzió használati és a rendelések megtekintéséhez keresse meg a **Termékváltozat számlázási típus** a letöltések oszlopában, és alkalmazza a szűrőt, hogy csak a "Próbaverzió." értéket jeleníti meg Próbaverziós átalakítások megtekintéséhez keresse meg a **próbaverziós befejezési dátum** a letöltések oszlopában és a alkalmazni a szűrő csak megjeleníthető rendelésekhez a **próbaverziós befejezési dátum** utáni dátumot és **dátummegszakítása** oszlop értéke üres vagy későbbi, mint a **próbaverzió Záródátum**.
+A megrendelés, a használat és a kifizetési modul letöltése mostantól tartalmazza a **próbaidőszakot** , amely segít megérteni, hogy mikor fejeződött be a próbaidőszak a megadott sorrendben, ahol alkalmazható. Ha meg szeretné tekinteni a próbaverzió használatát és a rendeléseket, keresse meg az **SKU számlázási típus** oszlopot a letöltésekben, és alkalmazza a szűrőt úgy, hogy csak a "próbaverzió" értéket jelenítse meg. A próbaverziók konverziójának megtekintéséhez keresse meg a **próbaverzió befejezési dátum** oszlopát a letöltések között, és alkalmazza a szűrőt úgy, hogy csak a megrendeléseket jelenítse meg, ha a **próbaidőszak** korábbi a mai dátum és a **Törlés dátuma** oszlop üres vagy későbbi, mint a **próbaverzió befejezési dátuma**.
 
 
-<a name="when-is-my-monthly-payout-calculated"></a>Mikor történik a havi küldenie jóváhagyásra cége kifizetési kiszámítása
+<a name="when-is-my-monthly-payout-calculated"></a>Mikor számítják ki a havi kifizetés kiszámítását
 ------------------------------------
 
-A kifizetések adják ki, hogy minden hónap 15. minden készen áll a küldenie jóváhagyásra cége kifizetési mennyiségű szerint az előző hónap utolsó napjának naptárban. A hónap harmadik napját, a Microsoft alapján számítja ki az előző hónapra küldenie jóváhagyásra cége kifizetési összeget lesz, és a letöltés "Közelgő kifizetés" az összes megfelelő díj tranzakciók frissítését a a **küldenie jóváhagyásra cége kifizetési állapot** oszlop. Egyes tranzakciók marad az állapotban addig, amíg a fizetési irányuló kérést küld a fiók létrehozása, hogy mely azok **küldenie jóváhagyásra cége kifizetési állapot** frissülni fognak "Fizetős lejárt", és frissülni fog a "küldenie jóváhagyásra cége kifizetési dátum" elküldte azt a dátumot megjelenítéséhez a a bank fizetési kérelmet.
+A kifizetéseket minden hónap 15. napján kell kiadni az előző hónap utolsó naptári napjában a kifizetésre kész összes összegért. A hónap harmadik napján a Microsoft kiszámítja az előző hónap kifizetési összegét, és frissíti a letöltésben szereplő összes díjköteles tranzakciót a "közelgő kifizetés" értékkel a **kifizetés állapota** oszlopban. Ezek a tranzakciók addig maradnak ebben az állapotban, amíg meg nem történik a fizetési kérelem elküldése a bankszámlájára, ekkor a **kifizetési állapotuk** frissülni fog a "kifizetve" értékre, a "kifizetés dátuma" pedig frissül, hogy megjelenjen a fizetési kérelem elküldésének dátuma. Bank.
 
 
-<a name="calculate-customer-acquisition-and-loss"></a>Ügyfelek megnyerésében és veszteség
+<a name="calculate-customer-acquisition-and-loss"></a>Ügyfelek beszerzésének és elvesztésének kiszámítása
 ---------------------------------------
 
-Láthatja, hogy a dátum, amikor az ügyfél először az ajánlatok egyik által vásárolt megkeresése a **dátum megszerzett** az ügyfél letöltési oszlopa. Hasonlóképpen, láthatja a dátum, amely után már nem volt megkeresésével az Ön által közzétett bármely ajánlatot a **dátum elveszett** az ügyfél letöltési oszlopa.
+Megtekintheti azt a dátumot, amikor az ügyfél először vásárolta meg az egyik ajánlatot úgy, hogy megkeresi a **Date beszerzett** oszlopot az ügyfél letöltésében. Hasonlóképpen megtekintheti azt a dátumot, amely után már nem volt olyan ajánlat, amelyet az ügyfél letöltéséhez tartozó **elveszett** oszlop megkeresésével adott meg.
 
 
-<a name="finding-more-help"></a>További segítséget nyújtó
+<a name="finding-more-help"></a>További segítség keresése
 -----------------
 
-- [Értékesítői Insights definíciók](./si-insights-definitions-v4.md) -definíciók keresése mérőszámokat és adatokat
+- Az [értékesítői elemzések definíciói](./si-insights-definitions-v4.md) – a mérőszámok és az adatok definícióinak megkeresése
 
-- [Ismerkedés az értékesítői Insights](./si-getting-started.md) – az értékesítői elemzés szolgáltatás bemutatása.
+- [Ismerkedés az értékesítői betekintéssel](./si-getting-started.md) – bevezetés az eladói betekintési szolgáltatás használatába.
 

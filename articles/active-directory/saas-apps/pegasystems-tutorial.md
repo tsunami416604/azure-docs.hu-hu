@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció Pega rendszerekkel |} A Microsoft Docs'
-description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez az Azure Active Directory és Pega rendszerek között.
+title: 'Oktatóanyag: Azure Active Directory integráció a Pega-rendszerekkel | Microsoft Docs'
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Pega rendszerek között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,120 +15,120 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 013e477b66d2772698ce5c9cc61a59f8a5a04a5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd54466e054055ff84cd5bb2b28c5cc074ac0017
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67094884"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026803"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Az Azure Active Directory-integráció Pega rendszerekkel
+# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Azure Active Directory integráció Pega rendszerekkel
 
-Ebben az oktatóanyagban megismerheti, hogyan Pega rendszerek integrálását az Azure Active Directory (Azure AD) lesz.
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Pega rendszereket Azure Active Directory (Azure AD) használatával.
 
-Ez az integráció ezeket az előnyöket biztosítja:
+Ez az integráció az alábbi előnyöket biztosítja:
 
-* Az Azure AD-szabályozza, ki férhet hozzá Pega rendszerek is használhatja.
-* Engedélyezheti a felhasználóknak kell automatikus bejelentkezésre Pega rendszerekhez (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Pega rendszerekhez.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Pega rendszerekre (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg az [egyszeri bejelentkezést a Azure Active Directory alkalmazásaihoz](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Pega rendszerekkel, szüksége lesz:
+Az Azure AD-integráció Pega-rendszerekkel való konfigurálásához a következők szükségesek:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, akkor regisztráljon egy [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/).
-* Pega rendszerek előfizetés, amely egyszeri bejelentkezés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, regisztrálhat egy [hónapos próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
+* Az egyszeri bejelentkezést engedélyező Pega-rendszerek előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
+Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Pega Systems supports SP-initiated and IdP-initiated SSO.
+* A Pega rendszerek támogatják az SP által kezdeményezett és a identitásszolgáltató által kezdeményezett egyszeri bejelentkezést.
 
-## <a name="add-pega-systems-from-the-gallery"></a>Pega rendszerek hozzáadása a katalógusból
+## <a name="add-pega-systems-from-the-gallery"></a>Pega-rendszerek hozzáadása a gyűjteményből
 
-Pega rendszerek integrálását az Azure AD beállításához, hozzá kell Pega rendszerek a galériából a felügyelt SaaS-alkalmazások listájára.
+A Pega rendszerek Azure AD-be való integrálásának beállításához hozzá kell adnia az Pega-rendszereket a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
+1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**:
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**.
+2. Lépjen a **vállalati alkalmazások** > **minden alkalmazásra**.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
+3. Alkalmazás hozzáadásához válassza az ablak tetején található **új alkalmazás** elemet:
 
-    ![Válassza ki az új alkalmazás](common/add-new-app.png)
+    ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Pega rendszerek**. Válassza ki **Pega rendszerek** a keresési eredmények, és válassza ki a **Hozzáadás**.
+4. A keresőmezőbe írja be a **Pega rendszerek**kifejezést. Válassza ki a **Pega rendszereket** a keresési eredmények között, majd válassza a **Hozzáadás**lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés Pega rendszerekkel Britta Simon nevű tesztfelhasználó használatával.
-Egyszeri bejelentkezés engedélyezéséhez szüksége Pega rendszerekben egy Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Pega-rendszerekkel egy Britta Simon nevű teszt felhasználó használatával.
+Az egyszeri bejelentkezés engedélyezéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a megfelelő felhasználó között a Pega-rendszerekben.
 
-Konfigurálja és az Azure AD egyszeri bejelentkezés Pega rendszerekkel való teszteléséhez szüksége a lépések elvégzéséhez:
+Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához és teszteléséhez a következő lépéseket kell elvégeznie:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
-2. **[Pega rendszerek egyszeri bejelentkezés konfigurálása](#configure-pega-systems-single-sign-on)**  az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
-5. **[Hozzon létre egy Pega rendszerek tesztfelhasználót](#create-a-pega-systems-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. **[Konfigurálja az Azure ad egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** , hogy engedélyezze a szolgáltatást a felhasználók számára.
+2. **[Konfigurálja a Pega rendszerek egyszeri bejelentkezését](#configure-pega-systems-single-sign-on)** az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez.
+4. **[Az Azure ad-teszt felhasználójának hozzárendelésével](#assign-the-azure-ad-test-user)** engedélyezheti az Azure ad egyszeri bejelentkezést a felhasználó számára.
+5. **[Hozzon létre egy Pega-Rendszerteszt felhasználót](#create-a-pega-systems-test-user)** , amely a felhasználó Azure ad-képviseletéhez van társítva.
+6. Az **[egyszeri bejelentkezés tesztelésével](#test-single-sign-on)** ellenőrizheti, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést fogja engedélyezni a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Pega rendszerekkel, hajtsa végre ezeket a lépéseket:
+Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Pega rendszerek** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**:
+1. A [Azure Portal](https://portal.azure.com/)a **Pega Systems** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget:
 
     ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
+2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez:
 
-    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
+3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel, ha azt szeretné, konfigurálja az alkalmazás identitásszolgáltató által kezdeményezett módban, a következő lépéseket.
+4. Ha az **alapszintű SAML-konfiguráció** párbeszédpanelen szeretné konfigurálni az alkalmazást identitásszolgáltató módban, hajtsa végre az alábbi lépéseket.
 
-    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/idp-intiated.png)
+    ![Alapszintű SAML-konfiguráció párbeszédpanel](common/idp-intiated.png)
 
-    1. Az a **azonosító** mezőbe írjon be egy URL-címe ebben a mintában:
+    1. Az **azonosító** mezőbe írjon be egy URL-címet ebben a mintában:
 
        `https://<customername>.pegacloud.io:443/prweb/sp/<instanceID>`
 
-    1. Az a **válasz URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+    1. A **Válasz URL-címe** mezőbe írjon be egy URL-címet ebben a mintában:
 
        `https://<customername>.pegacloud.io:443/prweb/PRRestService/WebSSO/SAML/AssertionConsumerService`
 
-5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani** , és kövesse az alábbi lépéseket.
+5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, és végezze el a következő lépéseket.
 
-    ![Pega rendszerek tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-advanced-urls.png)
+    ![Pega rendszerek tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-advanced-urls.png)
 
-    1. Az a **bejelentkezési URL-cím** mezőbe írja be a bejelentkezési URL-Címének értékét.
+    1. A **bejelentkezési URL-cím** mezőbe írja be a bejelentkezési URL-cím értékét.
 
-    1. Az a **továbbítási állapot** mezőbe írjon be egy URL-címe ebben a mintában: `https://<customername>.pegacloud.io/prweb/sso`
+    1. A **továbbítási állapot** mezőbe írjon be egy URL-címet a következő mintában: `https://<customername>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
-    > Az itt megadott értékek helyőrzőket. Szeretne használni a tényleges azonosítója, válasz URL-címe, jelentkezzen be, és továbbítási állapot URL-címe. Az azonosító lekérése, és a válasz URL-címértékekre Pega-alkalmazásból, az oktatóanyag későbbi részében leírtak. A relay állapotérték lekéréséhez lépjen kapcsolatba a [Pega rendszerek támogatási csoportjának](https://www.pega.com/contact-us). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az itt megadott értékek helyőrzők. A tényleges azonosítót, a válasz URL-címét, a bejelentkezési URL-címet és a továbbítási állapot URL-címét kell használnia. Az Pega alkalmazásban az azonosító és a válasz URL-értékei az oktatóanyag későbbi részében leírtak szerint olvashatók be. A továbbítási állapot értékének lekéréséhez forduljon a [Pega Systems támogatási csapatához](https://www.pega.com/contact-us). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. A Pega rendszerek alkalmazásnak kell lennie egy meghatározott formátumban a SAML helyességi feltételek. A megfelelő formátumban használhassa őket, hozzá kell egyéni attribútum-leképezéshez SAML-jogkivonat attribútumai konfigurációján. Az alábbi képernyőfelvételen az alapértelmezett attribútumok. Válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel:
+6. A Pega rendszerbeli alkalmazásnak az SAML-kijelentéseknek adott formátumban kell lennie. A megfelelő formátumban való lekéréshez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok láthatók. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához:
 
     ![Felhasználói attribútumok](common/edit-attribute.png)
 
-7. Az attribútumok az előző képernyőképen látható, felül Pega rendszerekhez szükséges az alkalmazás számára néhány további attribútumok vissza a SAML-válasz átadni. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanel mezőbe a SAML-jogkivonat attribútumai hozzáadása a következő lépéseket:
+7. Az előző képernyőképen látható attribútumok mellett a Pega Systems alkalmazásnak néhány további attribútumot is meg kell adni az SAML-válaszban. A **felhasználói attribútumok** párbeszédpanel **felhasználói jogcímek** szakaszában adja meg az alábbi lépéseket az SAML-jogkivonat attribútumainak hozzáadásához:
 
     
    - `uid`
@@ -142,139 +142,139 @@ Az Azure AD egyszeri bejelentkezés konfigurálása Pega rendszerekkel, hajtsa v
    - `Phone`
 
     > [!NOTE]
-    > Ezeket az értékeket a szervezet jellemzőek. Adja meg a megfelelő értékekre.
+    > Ezek az értékek a szervezetre jellemzőek. Adja meg a megfelelő értékeket.
 
-    1. Válassza ki **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel:
+    1. Válassza az **új jogcím hozzáadása** elemet a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához:
 
-    ![Válassza ki az új jogcímet hozzáadása](common/new-save-attribute.png)
+    ![Válassza az új jogcím hozzáadása lehetőséget](common/new-save-attribute.png)
 
-    ![Felhasználói jogcímek párbeszédpanel kezelése](common/new-attribute-details.png)
+    ![Felhasználói jogcímek kezelése párbeszédpanel](common/new-attribute-details.png)
 
-    1. Az a **neve** mezőben megadhatja azon attribútum nevét, a sorhoz látható.
+    1. A **név** mezőbe írja be az adott sorhoz megjelenített attribútum nevét.
 
-    1. Hagyja a **Namespace** mező üres.
+    1. Hagyja üresen a **névtér** mezőt.
 
-    1. Az a **forrás**válassza **attribútum**.
+    1. A **forrás**mezőben válassza az **attribútum**lehetőséget.
 
-    1. Az a **forrásattribútum** listájához, válassza ki az adott sorhoz feltüntetett attribútum értéke.
+    1. A **forrás attribútum** listáról válassza ki az adott sorhoz megjelenő attribútum értékét.
 
     1. Kattintson az **OK** gombra.
 
     1. Kattintson a **Mentés** gombra.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **összevonási metaadatainak XML** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
+8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki az **összevonási metaadatok XML-fájlja**melletti **letöltési** hivatkozást, a követelmények szerint, majd mentse a tanúsítványt a számítógépen:
 
-    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/metadataxml.png)
+    ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-9. Az a **Pega rendszerek beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján.
+9. A **Pega rendszerek beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     1. **Bejelentkezési URL-cím**.
 
-    1. **Az Azure AD-azonosító**.
+    1. **Azure ad-azonosító**.
 
-    1. **Kijelentkezési URL-címe**.
+    1. **Kijelentkezési URL-cím**.
 
-### <a name="configure-pega-systems-single-sign-on"></a>Pega rendszerek egyszeri bejelentkezés konfigurálása
+### <a name="configure-pega-systems-single-sign-on"></a>Pega rendszerek egyszeri bejelentkezésének konfigurálása
 
-1. Az egyszeri bejelentkezés konfigurálásához a **Pega rendszerek** oldalán, a rendszergazdai fiók egy másik böngészőablakban jelentkezzen be a Pega portálra.
+1. Ha az egyszeri bejelentkezést a Pega- **rendszerek** oldalon szeretné konfigurálni, jelentkezzen be a Pega-portálra egy másik böngészőablakban található rendszergazdai fiókkal.
 
-2. Válassza ki **létrehozása** > **SysAdmin (rendszergazda)**  > **hitelesítési szolgáltatás**:
+2. Válassza a **létrehozás** > **sysadmin** > **hitelesítési szolgáltatás**:
 
-    ![Válassza ki a hitelesítési szolgáltatás](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
+    ![Hitelesítési szolgáltatás kiválasztása](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-3. A következő lépéseket a **hitelesítési szolgáltatás-létrehozás** képernyő.
+3. Hajtsa végre a következő lépéseket a **hitelesítési szolgáltatás létrehozása** képernyőn.
 
-    ![Hitelesítési szolgáltatás képernyő létrehozása](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
+    ![Hitelesítési szolgáltatás létrehozása képernyő](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
-    1. Az a **típus** listáról válassza ki **SAML 2.0**.
+    1. A **típus** listában válassza az **SAML 2,0**elemet.
 
-    1. Az a **neve** mezőbe írjon be egy tetszőleges nevet (például **Azure AD SSO**).
+    1. A **név** mezőbe írja be a tetszőleges nevet (például: **Azure ad SSO**).
 
-    1. Az a **rövid leírás** mezőbe írja be egy leírást.  
+    1. A **rövid leírás** mezőbe írja be a leírást.  
 
-    1. Válassza ki **létrehozása és a nyílt**.
+    1. Válassza **a létrehozás és Megnyitás**elemet.
     
-4. Az a **identitásszolgáltató (IdP) információt** szakaszban jelölje be **importálás IdP-metaadatok** , és keresse meg az Azure-portálról letöltött metaadatait tartalmazó fájl. Kattintson a **küldés** a metaadatok betöltése:
+4. Az **Identity Provider (identitásszolgáltató) adatai** szakaszban válassza a **identitásszolgáltató-Metaadatok importálása** lehetőséget, és keresse meg a Azure Portal letöltött metaadat-fájlt. A metaadatok betöltéséhez kattintson a **Submit (Küldés** ) gombra:
 
-    ![Identity Provider (IdP) szakasza](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
+    ![Identitáskezelés (identitásszolgáltató) – információ szakasz](./media/pegasystems-tutorial/tutorial_pegasystems_admin2.png)
     
-    Az importálás az IdP-adat fel itt látható módon:
+    Az Importálás az itt látható módon tölti fel a identitásszolgáltató-adatokat:
 
-    ![Imported IdP data](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
+    ![Importált identitásszolgáltató-adatértékek](./media/pegasystems-tutorial/tutorial_pegasystems_admin3.png)
     
-6. Befejeződött a következő lépéseket a **Service Provider (SP) beállítások** szakaszban.
+6. Hajtsa végre a következő lépéseket a **szolgáltatói (SP) beállítások** szakaszban.
 
-    ![Szolgáltatás-szolgáltató beállításai](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
+    ![Szolgáltatói beállítások](./media/pegasystems-tutorial/tutorial_pegasystems_admin4.png)
 
-    1. Másolás a **entitás azonosító** értékét, és illessze be azt a **azonosító** párbeszédpanel a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    1. Másolja az **entitás-azonosító** értéket, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **azonosító** mezőjébe.
 
-    1. Másolás a **helyességi feltétel fogyasztói Service (ACS) helyen** értékét, és illessze be azt a **válasz URL-cím** párbeszédpanel a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    1. Másolja ki az **állítási szolgáltatás (ACS) helyének** értékét, és illessze be a **Válasz URL-cím** mezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    1. Válassza ki **tiltsa le a kérelem-aláírás**.
+    1. Jelölje be a **kérelmek aláírásának letiltása**jelölőnégyzetet.
 
 7. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**lehetőséget, majd válassza a **minden felhasználó**lehetőséget:
 
-    ![Válassza ki az összes felhasználó](common/users.png)
+    ![Minden felhasználó kijelölése](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején:
+2. Válassza ki a képernyő felső részén található **új felhasználó** elemet:
 
-    ![Válassza ki az új felhasználó](common/new-user.png)
+    ![Új felhasználó kiválasztása](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanelen töltse ki az alábbi lépéseket.
+3. A **felhasználó** párbeszédpanelen hajtsa végre az alábbi lépéseket.
 
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
+    ![Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon @ \<yourcompanydomain >. \<extension >** . (Például BrittaSimon@contoso.com.)
 
-    c. Válassza ki **Show jelszó**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
+    c. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben található értéket.
 
     d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon Pega rendszerek számára a hozzáférés biztosításával az Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Pega rendszerekhez.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd válassza ki **Pega rendszerek**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Pega rendszerek**elemet.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Pega rendszerek**.
+2. Az alkalmazások listájában válassza a **Pega rendszerek**elemet.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
+3. A bal oldali ablaktáblán válassza a **felhasználók és csoportok**lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
+    ![Válassza a felhasználó hozzáadása elemet.](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra a képernyő alján.
+5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 
-6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Kattintson a képernyő alján található **kiválasztás** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
-### <a name="create-a-pega-systems-test-user"></a>Pega rendszerek tesztfelhasználó létrehozása
+### <a name="create-a-pega-systems-test-user"></a>Pega-rendszerek tesztelésére szolgáló felhasználó létrehozása
 
-Ezután szüksége Britta Simon Pega rendszerekben nevű felhasználó létrehozásához. Együttműködik a [Pega rendszerek támogatási csoportjának](https://www.pega.com/contact-us) a felhasználók létrehozásához.
+Ezután létre kell hoznia egy Britta Simon nevű felhasználót a Pega Systems-ben. A felhasználók létrehozásához működjön együtt a [Pega Systems támogatási csapatával](https://www.pega.com/contact-us) .
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
+Most az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával kell tesztelni.
 
-A Pega rendszerek csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a Pega rendszerek példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. További információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Pega-rendszerek csempét a hozzáférési panelen, automatikusan be kell jelentkeznie a Pega rendszer-példányba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -282,4 +282,4 @@ A Pega rendszerek csempe kiválasztásakor a hozzáférési panelen azt kell aut
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

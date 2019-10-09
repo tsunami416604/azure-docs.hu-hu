@@ -1,35 +1,33 @@
 ---
-title: Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok |} A Microsoft Docs
-description: Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok.
+title: A memória és a Egyidejűség korlátai a Azure SQL Data Warehouseban | Microsoft Docs
+description: Megtekintheti a Azure SQL Data Warehouse a különböző teljesítményszint és erőforrás-osztályok számára lefoglalt memóriát és egyidejűségi korlátokat.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/15/2019
+ms.date: 10/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a92c032027e772020eda0b626a6dc6db024bf57
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 73bb5b75a440755e088a4d9a294b5b97b0b7199e
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595563"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035131"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok
-Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok. További információt, és a alkalmazni ezeket a képességeket a számítási feladat felügyeleti csomag: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). 
+# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>A Azure SQL Data Warehouse memóriája és egyidejűségi korlátai
+Megtekintheti a Azure SQL Data Warehouse a különböző teljesítményszint és erőforrás-osztályok számára lefoglalt memóriát és egyidejűségi korlátokat. További információért és a képességek a munkaterhelés-kezelési tervre való alkalmazásához tekintse meg [az erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)című témakört. 
 
-Jelenleg nincsenek két generáció esetében érhető el az SQL Data Warehouse – Gen1 és Gen2. Azt javasoljuk, akkor kihasználhatja Gen2 az SQL Data Warehouse a legjobb teljesítmény az adatraktár-számítási feladat számára. Gen2, amelyek tartja a leggyakrabban lehívott adatokat a processzorokhoz közel tárolja egy új NVMe tartós állapotú meghajtókat gyorsítótárat vezet be. Ezzel eltávolítja a távoli i/o a számításigényes és a nagy erőforrás-igényű számítási feladatokhoz. Teljesítmény mellett Gen2 kínálja a legnagyobb szintű vertikális engedélyezésével legfeljebb 30 000 Adattárházegységek méretezését, és korlátlan Oszlopalapú tárolást biztosít. Rendszer továbbra is támogatja az előző generációs (Gen1) az SQL Data Warehouse és ugyanazokat a szolgáltatásokat; megőrzése azonban javasoljuk, hogy [frissítés Gen2-re](upgrade-to-latest-generation.md) az Önnek legkorábbi címen. 
+## <a name="data-warehouse-capacity-settings"></a>Adatraktár kapacitásának beállításai
+Az alábbi táblázatokban az adatraktár maximális kapacitása látható a különböző teljesítményszint esetén. A teljesítmény szintjének módosításához tekintse meg a [számítások – portál méretezése](quickstart-scale-compute-portal.md)című témakört.
 
-## <a name="data-warehouse-capacity-settings"></a>Data warehouse kapacitásbeállítások
-Az alábbi táblázatokban található különböző teljesítményszintek az adatraktár maximális kapacitását. A teljesítmény szint módosításához lásd [méretezheti a számítási - portál](quickstart-scale-compute-portal.md).
+### <a name="service-levels"></a>Szolgáltatási szintek
 
-### <a name="gen2"></a>Gen2
+A szolgáltatási szintek a DW100c és a DW30000c között vannak.
 
-Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memóriát segít a Gen2 a gyors teljesítményt.  A teljesítményszintek DW100c Gen2 esnie DW30000c. 
-
-| Teljesítményszint | Számítási csomópontok | Számítási csomópontok disztribúciók | Adatraktár (GB) memória |
+| Teljesítményszint | Számítási csomópontok | Disztribúciók/számítási csomópontok | Memória/adattárház (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
 | DW100c            | 1             | 60                             |    60                          |
 | DW200c            | 1             | 60                             |   120                          |
@@ -48,37 +46,16 @@ Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memó
 | DW15000c          | 30            | 2                              |  9000                          |
 | DW30000c          | 60            | 1                              | 18000                          |
 
-A maximális Gen2 DWU DW30000c, amely rendelkezik 60 számítási csomópontok és a számítási csomópontok egy terjesztési. Például DW30000c, 600 TB-os adattárház dolgozza fel a számítási csomópontok nagyjából 10 TB.
+A maximális szolgáltatási szint a DW30000c, amelynek 60 számítási csomópontja van, és a számítási csomópontok egy eloszlása. Például egy 600 TB-os adattárház a DW30000c-on a számítási csomópont körülbelül 10 TB-ot dolgoz fel.
 
-### <a name="gen1"></a>Gen1
+## <a name="concurrency-maximums"></a>Egyidejűségek maximális száma
+Annak biztosítása érdekében, hogy az egyes lekérdezések elegendő erőforrással legyenek végrehajtva, SQL Data Warehouse az erőforrás-kihasználtságot az egyes lekérdezésekhez tartozó egyidejűségi tárolóhelyek hozzárendelésével nyomon követheti. A rendszer a lekérdezéseket a fontos és a párhuzamossági tárolóhelyek alapján a várólistára helyezi. A lekérdezések csak akkor várnak a várólistára, ha elegendő egyidejűségi tárolóhely áll rendelkezésre. A [fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és a egyidejűségi tárolóhelyek a CPU rangsorolását határozzák meg. További információ: [a munkaterhelés elemzése](analyze-your-workload.md)
 
-A szolgáltatási szintek a Gen1 és DW6000 DW100 eső. 
+**Statikus erőforrás-osztályok**
 
-| Teljesítményszint | Számítási csomópontok | Számítási csomópontok disztribúciók | Adatraktár (GB) memória |
-|:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
-| DW100             | 1             | 60                             |  24                            |
-| DW200             | 2             | 30                             |  48                            |
-| DW300             | 3             | 20                             |  72                            |
-| DW400             | 4             | 15                             |  96                            |
-| DW500             | 5             | 12                             | 120                            |
-| DW600             | 6             | 10                             | 144                            |
-| DW1000            | 10            | 6                              | 240                            |
-| DW1200            | 12            | 5                              | 288                            |
-| DW1500            | 15            | 4                              | 360                            |
-| DW2000            | 20            | 3                              | 480                            |
-| DW3000            | 30            | 2                              | 720                            |
-| DW6000            | 60            | 1                              | 1440                           |
+A következő táblázat a [statikus erőforrások osztályának](resource-classes-for-workload-management.md)maximális egyidejű lekérdezéseit és egyidejűségi tárolóhelyeit mutatja be.  
 
-## <a name="concurrency-maximums"></a>Párhuzamosság maximális értékei
-Annak érdekében, hogy minden egyes lekérdezés hatékonyan végrehajtásához erőforrásokkal rendelkezik, az SQL Data Warehouse egyidejű helyet foglalnak le rendel az egyes lekérdezések erőforrás-használat nyomon követi. A rendszer lekérdezések alapján, fontosság és egyidejű helyet foglalnak le egy várólistába helyezi. Lekérdezések várakozhasson a várólistán addig, amíg elegendő egyidejű helyet foglalnak le nem érhető el. [Fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és egyidejű helyet foglalnak le a CPU-rangsorolás határozza meg. További információkért lásd: [a számítási feladatok elemzése](analyze-your-workload.md)
-
-### <a name="gen2"></a>Gen2
- 
-**Statikus erőforrásosztályok**
-
-Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [statikus erőforrásosztály](resource-classes-for-workload-management.md).  
-
-| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek staticrc10 által használt | A tárolóhelyek staticrc20 által használt | A tárolóhelyek staticrc30 által használt | A tárolóhelyek staticrc40 által használt | A tárolóhelyek staticrc50 által használt | A tárolóhelyek staticrc60 által használt | A tárolóhelyek staticrc70 által használt | A tárolóhelyek staticrc80 által használt |
+| Szolgáltatásszint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A staticrc10 által használt bővítőhelyek | A staticrc20 erőforrásosztályhoz által használt bővítőhelyek | A staticrc30 által használt bővítőhelyek | A staticrc40 által használt bővítőhelyek | A staticrc50 által használt bővítőhelyek | A staticrc60 által használt bővítőhelyek | A staticrc70 által használt bővítőhelyek | A staticrc80 által használt bővítőhelyek |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -99,14 +76,9 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 
 **Dinamikus erőforrás-osztályok**
 
-> [!NOTE]
-> Gen2 smallrc erőforrásosztály dinamikusan ad hozzá a memória, a szolgáltatási szint nő, és csak a DW1000c és 4 és DW100c maximális 32 egyidejű lekérdezéseket támogatja.  Ha a példány méretezett DW1500c, az egyidejű helyet foglalnak le, és a által használt memória mellett smallrc a a szolgáltatási szint növekedése is nő. 
->
->
+Az alábbi táblázat az egyes [dinamikus erőforrás-osztályok](resource-classes-for-workload-management.md)maximális egyidejű lekérdezéseit és egyidejűségi tárolóhelyeit mutatja be. A dinamikus erőforrás-osztályok a 3-10-22-70-es memória-kiosztást használják a kis-közepes méretű XLarge erőforrás-osztályokhoz az összes szolgáltatási szinten.
 
-Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [dinamikus erőforrásosztályt](resource-classes-for-workload-management.md). Gen1, ellentétben a dinamikus erőforrásosztályok gen2 dinamikusak valóban.  Gen2 egy 3 – 10 – 22 – 70 százalék memóriafoglalás használja a kis-Közepes-nagy-xlarge erőforrásosztályok minden szolgáltatási szintek között.
-
-| Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
+| Szolgáltatásszint | Egyidejű lekérdezések maximális száma | Elérhető egyidejűségi bővítőhelyek | A smallrc által használt bővítőhelyek | A mediumrc által használt bővítőhelyek | A largerc által használt bővítőhelyek | A xlargerc által használt bővítőhelyek |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
 | DW100c        |  4                         |    4                        | 1                     |  1                     |  1                    |   2                    |
 | DW200c        |  8                         |    8                        | 1                     |  1                     |  1                    |   5                    |
@@ -126,57 +98,10 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
 
-
-#### <a name="gen1"></a>Gen1
-
-Statikus erőforrásosztályok
-
-Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [statikus erőforrásosztály](resource-classes-for-workload-management.md) a **Gen1**.
-
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Maximális párhuzamos időszeletek | A tárolóhelyek staticrc10 által használt | A tárolóhelyek staticrc20 által használt | A tárolóhelyek staticrc30 által használt | A tárolóhelyek staticrc40 által használt | A tárolóhelyek staticrc50 által használt | A tárolóhelyek staticrc60 által használt | A tárolóhelyek staticrc70 által használt | A tárolóhelyek staticrc80 által használt |
-|:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
-| DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW300         | 12                         |  12                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
-| DW400         | 16                         |  16                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW500         | 20                         |  20                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW600         | 24                         |  24                       | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
-| DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000        | 48                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-
-Dinamikus erőforrás-osztályok
-> [!NOTE]
-> A Gen1 smallrc erőforrásosztály egy rögzített méretű memória lekérdezéseként, hasonló módon a statikus erőforrás osztály staticrc10 foglal le.  Mivel smallrc statikus, méretezhető, 128 lekérdezést tartalmaz. 
->
->
-
-Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű helyet foglalnak le minden [dinamikus erőforrásosztályt](resource-classes-for-workload-management.md) a **Gen1**.
-
-| Szolgáltatási szint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
-|:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
-| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
-| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
-| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
-| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
-| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
-| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
-| DW2000        | 48                         |  80                         | 1       | 16       | 32      |  64      |
-| DW3000        | 64                         | 120                         | 1       | 16       | 32      |  64      |
-| DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
-
-
-Ha ezeket a küszöbértékeket egyik feltétele teljesül, új lekérdezések várólistára, és egy első-érkezési hajtja végre.  A lekérdezések befejeződik, és lekérdezéseket és tárhelyek száma a korlátok alá esnek, az SQL Data Warehouse felszabadítja a várólistán lévő lekérdezések. 
+Ha nincs elegendő egyidejűségi tárolóhely a lekérdezés végrehajtásának megkezdéséhez, a lekérdezéseket a rendszer a fontosság alapján várólistára helyezi és végrehajtja.  Ha ennek megfelelő jelentősége van, a lekérdezéseket a rendszer az első, első kijelentkezési alapon hajtja végre.  A lekérdezések befejeződése után a lekérdezések és a bővítőhelyek száma a határértékek alá csökken, SQL Data Warehouse kiadások várólistán lévő lekérdezések. 
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan hozhat erőforrásosztályok optimalizálása tájékozódhat a számítási feladatok további tekintse át a következő cikkeket:
-* [Erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)
-* [A számítási feladatok elemzése](analyze-your-workload.md)
-
+Ha többet szeretne megtudni arról, hogyan használhat erőforrás-osztályokat a számítási feladatok további optimalizálása érdekében, tekintse át a következő cikkeket:
+* [Erőforrás-osztályok a számítási feladatok kezeléséhez](resource-classes-for-workload-management.md)
+* [Számítási feladatok elemzése](analyze-your-workload.md)

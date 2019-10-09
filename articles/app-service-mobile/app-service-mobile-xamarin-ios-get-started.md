@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 57867eeca9f29cfc3983cbdca94c830aa7a20500
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 26095757f8079f43e620e5f067f461f67c7042f9
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446250"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024851"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-ios-get-started) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az cikk azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatást a Xamarin.iOS-mobilalkalmazásokhoz egy Azure-alapú mobil-háttéralkalmazás segítségével.  Létre fog hozni egy új mobil-háttéralkalmazást, illetve egy olyan egyszerű *Teendőlista* Xamarin.iOS-alkalmazást, amely az alkalmazásadatokat az Azure-ban tárolja.
@@ -37,23 +37,23 @@ Az oktatóanyag végrehajtása feltétele az Azure App Service Mobile Apps szolg
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio for Mac. Lásd: [telepítő, és telepítse a Visual Studio for Mac](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
-* Egy Mac Xcode 9.0-s vagy újabb.
+* Visual Studio for Mac. Lásd: [telepítés és telepítés a Visual Studio for Machoz](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Mac Xcode 9,0 vagy újabb verzióval.
   
 ## <a name="create-an-azure-mobile-app-backend"></a>Azure Mobile Apps-háttéralkalmazás létrehozása
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Az ügyfél és kiszolgáló projekt egy adatbázis-kapcsolat létrehozása és konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinios-app"></a>A Xamarin.iOS-alkalmazás futtatása
-1. Nyissa meg a Xamarin.iOS-projekt.
+## <a name="run-the-xamarinios-app"></a>A Xamarin. iOS-alkalmazás futtatása
+1. Nyissa meg a Xamarin. iOS projektet.
 
-2. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg a mobilalkalmazás, amelyet Ön hozott létre. Az a `Overview` panelen keresse meg az URL-címet, amely a nyilvános végpont számára. Például: a sitename for my app name "test123" lesz https://test123.azurewebsites.net.
+2. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.net lesz.
 
-3. Nyissa meg a fájlt `QSTodoService.cs` ebben a mappában - xamarin.iOS/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
+3. Nyissa meg a `QSTodoService.cs` fájlt ebben a mappában – xamarin. iOS/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
 
-4. A `QSTodoService` osztály, cserélje le `ZUMOAPPURL` változó fenti nyilvános végponthoz.
+4. @No__t – 0 osztályban cserélje le a fenti nyilvános végponttal rendelkező `ZUMOAPPURL` változót.
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
@@ -61,9 +61,9 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     
-5. Nyomja le az F5 billentyűt, üzembe helyezését, és futtassa az alkalmazást az iPhone-emulátoron.
+5. Nyomja le az F5 billentyűt az alkalmazás üzembe helyezéséhez és futtatásához egy iPhone-emulátorban.
 
-6. Az alkalmazásban írjon be egy értelmes szöveget, például *az oktatóanyag elvégzéséhez* és kattintson a + gombra.
+6. Az alkalmazásban írjon be egy értelmes szöveget, például *fejezze be az oktatóanyagot* , majd kattintson a + gombra.
 
     ![][10]
 

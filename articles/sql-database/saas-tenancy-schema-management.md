@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
-ms.openlocfilehash: 7b238044fd3795ae2f49c2fa21367e6499a65672
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 95d13c997d3871815ebd541e5985eb9fef726a76
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570120"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029745"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A sémák kezelése SaaS-alkalmazásokban az adatbázis-bérlői minta használatával Azure SQL Database
  
@@ -41,7 +41,7 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 * Telepítve van az SQL Server Management Studio (SSMS) legújabb verziója. [Az SSMS letöltése és telepítése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 
 > [!NOTE]
-> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés- SaaSFeedback@microsoft.com azonosítóját a subject = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért SaaSFeedback@microsoft.com vegye fel a kapcsolatot a kapcsolódó kérdésekkel vagy támogatással.
+> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés AZONOSÍTÓját SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért vegye fel a kapcsolatot a következővel: SaaSFeedback@microsoft.com a kapcsolódó kérdésekhez vagy támogatáshoz.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Az SaaS-séma felügyeleti mintáinak bemutatása
 
@@ -55,7 +55,7 @@ Az adatbázis/bérlői minta elkülöníti a bérlői adatmennyiséget, de növe
 A rugalmas feladatok új verziója már a Azure SQL Database integrált szolgáltatása. Ez Elastic Jobs-nak ez az új verziója jelenleg korlátozott előzetes verzió. Ez a korlátozott előzetes verzió jelenleg a PowerShell használatával teszi lehetővé a feladatok ügynökének létrehozását és a T-SQL-T a feladatok létrehozásához és kezeléséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés- SaaSFeedback@microsoft.com azonosítóját a subject = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért SaaSFeedback@microsoft.com vegye fel a kapcsolatot a kapcsolódó kérdésekkel vagy támogatással.
+> Ez az oktatóanyag egy korlátozott előzetes verzióban (rugalmas adatbázis-feladatok) található SQL Database szolgáltatás funkcióit használja. Ha ezt az oktatóanyagot szeretné elvégezni, adja meg az előfizetés AZONOSÍTÓját SaaSFeedback@microsoft.com tulajdonos = rugalmas feladatok előzetes verziójával. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ez az előzetes verzió korlátozott, ezért vegye fel a kapcsolatot a következővel: SaaSFeedback@microsoft.com a kapcsolódó kérdésekhez vagy támogatáshoz.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip tickets SaaS-adatbázis beszerzése bérlői alkalmazás parancsfájljai alapján
 
@@ -65,7 +65,7 @@ Az alkalmazás forráskódja és a felügyeleti szkriptek a [WingtipTicketsSaaS-
 
 Ehhez az oktatóanyaghoz a PowerShell használatával kell létrehoznia a feladatokhoz tartozó ügynököt és a hozzá tartozó feladatkártya-adatbázist. A feladatok ügynökének adatbázisában a feladatütemezés, a feladatok állapota és az előzmények szerepelnek. A feladat-ügynök és az adatbázis létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. **A POWERSHELL ISE-ben**nyissa meg a... Learning-\\modulok séma\\-felügyeleti*demo-SchemaManagement. ps1.* \\
+1. **A POWERSHELL ISE-ben**nyissa meg a... \\Learning modulok @ No__t-2Schema Management @ no__t-3*demo-SchemaManagement. ps1*.
 1. A szkriptek futtatásához nyomja le az **F5** billentyűt.
 
 A *demo-SchemaManagement. ps1* parancsfájl meghívja a *Deploy-SchemaManagement. ps1* parancsfájlt egy *osagent* nevű SQL-adatbázis létrehozásához a Catalog kiszolgálón. Ezután létrehozza a feladatot, amely az adatbázis paraméterként való használatával jön létre.
@@ -76,26 +76,26 @@ A Wingtip tickets alkalmazásban a bérlői adatbázisok a támogatott helyszín
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el. 
 
-1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-&lt;&gt;user. database.Windows.net*
-1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és az *úszás Club* jelenleg **nem** szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1&gt; -DPT-&lt;User* kiszolgálón, és kérdezze le a  *VenueTypes* tábla.
+1. Nyissa meg a SSMS, és kapcsolódjon a bérlői kiszolgálóhoz: *tenants1-DPT-@no__t -1User&gt;.database.windows.net*
+1. Annak megerősítéséhez, hogy a *motorkerékpár-verseny* és **az** *úszás Club* jelenleg nem szerepel, keresse meg a _contosoconcerthall_ -adatbázist a *tenants1-DPT-&lt;user @ No__t-6* kiszolgálón, és kérdezze le a *VenueTypes* tábla.
 
 Most hozzon létre egy feladatot, amely frissíti a *VenueTypes* táblát az összes bérlői adatbázisban az új helyszín típusának hozzáadásához.
 
 Új feladat létrehozásához a feladat ügynökének létrehozásakor a _jobagent_ -adatbázisban létrehozott feladatok rendszertárolt eljárásait kell használnia.
 
-1. A SSMS-ben kapcsolódjon a Catalog kiszolgálóhoz: *Catalog-DPT&lt;-&gt;user. database.Windows.net* Server 
-1. A SSMS-ben nyissa meg a fájlt... Tanulási modulok\\sémájának\\kezelése DeployReferenceData. SQL \\
-1. Módosítsa az utasítást: SET @wtpUser = &lt;User&gt; és a Wingtip tickets SaaS-adatbázis üzembe helyezése során használt felhasználói érték helyettesítése a bérlői alkalmazásokban
-1. Győződjön meg arról, hogy csatlakozik a _jobagent_ -adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához.
+1. A SSMS-ben kapcsolódjon a Catalog kiszolgálóhoz: *Catalog-DPT-@no__t -1User&gt;.database.windows.net* Server 
+1. A SSMS-ben nyissa meg a fájlt... \\Learning modulok @ no__t-1Schema Management\\DeployReferenceData.sql
+1. Módosítsa az utasítást: SET @wtpUser = &lt;User @ no__t-2, és cserélje le a felhasználói értéket, amelyet a Wingtip-jegyek SaaS-adatbázisának telepítésekor használ a bérlői alkalmazás
+1. Győződjön meg arról, hogy csatlakozik a _jobagent_ -adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához.
 
 Figyelje meg a következő elemeket a *DeployReferenceData. SQL* parancsfájlban:
-* **az\_SPAdd\_Target\_Group** létrehozza a célcsoport nevét DemoServerGroup.
-* **az\_SPAdd\_Target\_Grouptag\_** a célként megadott adatbázisok meghatározására szolgál.  Először adja hozzá a _tenants1-&lt;DPT&gt; -User_ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
-* **az\_SPAdd\_Job** létrehoz egy _hivatkozási adatok központi telepítés_nevű feladatot.
-* **az\_SPAdd\_jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti a VenueTypes.
+* **SP @ no__t-1Add @ no__t-2target @ no__t-3group** létrehozza a célcsoport nevét DemoServerGroup.
+* **SP @ no__t-1Add @ no__t-2target @ no__t-3group @ no__t-4member** a megcélzott adatbázisok készletének meghatározására szolgál.  Először adja hozzá a _tenants1-DPT-&lt;User @ no__t-2_ kiszolgálót.  A kiszolgáló célként való hozzáadásával az adott kiszolgálón lévő adatbázisok a feladatok végrehajtásának időpontjában fognak szerepelni a feladatokban. Ezután a _basetenantdb_ -adatbázis és a *adhocreporting* -adatbázis (amelyet egy későbbi oktatóanyagban használ) hozzá lesz adva célként.
+* **SP @ no__t-1Add @ no__t-2job** létrehoz egy _hivatkozási adatok központi telepítés_nevű feladatot.
+* **SP @ no__t-1Add @ no__t-2jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot a hivatkozási tábla (VenueTypes) frissítéséhez.
 * A szkript fennmaradó nézetei megjelenítik, hogy léteznek-e az objektumok, és figyelik a feladat-végrehajtást. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok befejeződtek-e az összes célként megadott adatbázison.
 
-A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT-&lt;User&gt;*  kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
+A parancsfájl befejezését követően ellenőrizheti, hogy frissültek-e a hivatkozási adathalmazok.  A SSMS-ben keresse meg a *contosoconcerthall* adatbázist a *tenants1-DPT-&lt;user @ no__t-3* kiszolgálón, és kérdezze le a *VenueTypes* táblát.  Győződjön meg arról, hogy a *motorkerékpár-verseny* és az *úszó klub* már jelen **van** .
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>Feladat létrehozása a referenciatábla indexének kezeléséhez
@@ -104,14 +104,14 @@ Ez a gyakorlat egy feladatot használ az index újraépítéséhez a hivatkozás
 
 Hozzon létre egy feladatot ugyanannak a feladatnak a „system” által tárolt eljárásait használva.
 
-1. Nyissa meg a SSMS, és kapcsolódjon a _Catalog&gt;-DPT-&lt;user. database.Windows.net_ kiszolgálóhoz
-1. Nyissa meg a fájlt _... Tanulásimodulok\\sémájánakkezelése\\Sémakezelés.SQL \\_
-1. Kattintson a jobb gombbal, válassza a kapcsolat lehetőséget, és kapcsolódjon a _Catalog&gt;-DPT-&lt;user. database.Windows.net_ kiszolgálóhoz, ha még nincs csatlakoztatva
+1. Nyissa meg a SSMS-t, és kapcsolódjon a _Catalog-DPT-@no__t -1User&gt;.database.windows.net_ -kiszolgálóhoz
+1. Nyissa meg a fájlt _... \\Learning modulok @ no__t-2Schema Management\\OnlineReindex.sql_
+1. Kattintson a jobb gombbal, válassza a kapcsolat lehetőséget, és kapcsolódjon a _Catalog-DPT-@no__t -1User&gt;.database.windows.net-_ kiszolgálóhoz, ha még nincs csatlakoztatva
 1. Győződjön meg arról, hogy csatlakozik a _jobagent_ -adatbázishoz, és nyomja le az **F5** billentyűt a szkript futtatásához.
 
 Figyelje meg a következő elemeket a _Sémakezelés. SQL_ parancsfájlban:
-* **az\_SPAdd\_Job** létrehoz egy "online reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885" nevű új feladatot.
-* **az\_SPAdd\_jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti az indexet
+* **SP @ no__t-1Add @ no__t-2job** létrehoz egy új, "online reindex PK @ no__t-3 @ No__t-4VenueTyp @ no__t-5 @ NO__T-6265E44FD7FD4C885" nevű feladatot.
+* **SP @ no__t-1Add @ no__t-2jobstep** létrehozza a t-SQL-parancs szövegét tartalmazó feladatot az index frissítéséhez
 * A parancsfájl-figyelő feladatok végrehajtásának hátralévő nézetei. Ezekkel a lekérdezésekkel áttekintheti az állapot értékét az **életciklus** oszlopban annak megállapításához, hogy a feladatok sikeresen befejeződtek-e az összes célcsoport-tagon.
 
 

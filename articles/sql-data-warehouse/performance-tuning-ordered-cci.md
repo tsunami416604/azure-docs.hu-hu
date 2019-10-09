@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948164"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035100"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok nem rendezhetők automatikusan.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  
+> Egy rendezett CCI-táblázatban a DML-ből vagy az betöltési műveletből eredő új adatok nem rendezhetők automatikusan.  A felhasználók újra felépíthetik a rendezett CCI-t, hogy a táblázatban szereplő összes adattal sorba lehessen rendezni.  Azure SQL Data Warehouse a oszlopcentrikus index újraépítése offline művelet.  Particionált tábla esetén az Újraépítés egyszerre egy partíciót hajt végre.  Az újraépített partícióban lévő adatkapcsolat "offline" állapotú, és nem érhető el, amíg a partíció újraépítése be nem fejeződik. 
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Adattöltési teljesítmény
 
-A rendezett CCI-táblázatba betöltött betöltési teljesítmény hasonló a particionált táblába betöltött adatmennyiséghez.  
-Az adatgyűjtés egy rendezett CCI-táblába több időt vehet igénybe, mint az Adatrendezés miatt nem rendezett CCI-táblázatba való betöltés.  
+A rendezett CCI-táblázatba betöltött adatmennyiség hasonló egy particionált táblához.  A rendezett CCI-táblázatba betöltött adatbetöltések az adatrendezési művelet miatt hosszabb időt vehetnek igénybe, de a lekérdezések gyorsabban futhatnak a rendezett CCI-mel.  
 
 Az alábbi példa egy olyan teljesítménybeli összehasonlítást mutat be, amely a különböző sémákkal rendelkező táblákba való betöltést hasonlítja
-![Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+Íme egy példa a lekérdezés teljesítményének összehasonlítására a KKU és a rendezett CCI között.
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>Szegmens átfedésének csökkentése
 
@@ -116,7 +122,7 @@ A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó
 1.  Hozzon létre partíciókat a cél nagyméretű táblán (az A. táblázat néven).
 2.  Hozzon létre egy üres rendezett CCI-táblázatot (a B táblázatnak nevezett tábla) ugyanazzal a táblával és partíciós sémával, amely az A. táblázat.
 3.  Váltson át egy partíciót az A táblából a B táblázatba.
-4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > Újraépítés a B táblázatban a bekapcsolt partíció újraépítéséhez.  
+4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > Újraépítés PARTITION = < Partition_ID > a B táblán a bekapcsolt partíció újraépítéséhez.  
 5.  Ismételje meg a 3. és a 4. lépést az A tábla minden partíciója esetében.
 6.  Ha az összes partíció át lett állítva az A táblából a B táblába, és újraépítve lett, az A táblázatba vonja át A táblázatot, és nevezze át a B táblát az A táblázatba. 
 

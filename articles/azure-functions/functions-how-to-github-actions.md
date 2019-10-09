@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260044"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028974"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -23,15 +23,15 @@ A [GitHub-műveletek](https://github.com/features/actions) lehetővé teszi, hog
 
 A GitHub-műveletekben a [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg `/.github/workflows/` a tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
+A munkafolyamatot egy YAML-fájl (. YML) határozza meg a tárházban található `/.github/workflows/` elérési úton. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
 
 Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz: 
 
 | `Section` | Feladatok |
 | ------- | ----- |
-| **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|  
+| **Hitelesítés** | <ol><li>Adjon meg egy egyszerű szolgáltatásnevet.</li><li>Közzétételi profil letöltése.</li><li>Hozzon létre egy GitHub-titkot.</li></ol>|
 | **Build** | <ol><li>Állítsa be a környezetet.</li><li>Hozza létre a Function alkalmazást.</li></ol> |
-| **Üzembe helyezés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>| 
+| **Üzembe helyezés** | <ol><li>Telepítse a Function alkalmazást.</li></ol>|
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 Ebben a példában az erőforrásban található helyőrzőket cserélje le az előfizetés-AZONOSÍTÓra, az erőforráscsoport és a Function alkalmazás nevére. A kimenet az a szerepkör-hozzárendelési hitelesítő adatok, amelyek hozzáférést biztosítanak a Function alkalmazáshoz. Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez használhat.
 
+> [!NOTE]
+> Nem kell létrehoznia egy egyszerű szolgáltatásnevet, ha úgy dönt, hogy közzétételi profilt használ a hitelesítéshez.
+
 > [!IMPORTANT]
 > Mindig jó gyakorlat a minimális hozzáférés megadására. Ezért az előző példában szereplő hatókör az adott Function alkalmazásra korlátozódik, nem a teljes erőforráscsoporthoz.
 
+## <a name="download-the-publishing-profile"></a>A közzétételi profil letöltése
+
+A functionapp közzétételi profiljának letöltéséhez nyissa meg az alkalmazás **Áttekintés** lapját, és kattintson a **közzétételi profil beolvasása**lehetőségre.
+
+   ![Közzétételi profil letöltése](media/functions-how-to-github-actions/get-publish-profile.png)
+
+Másolja a fájl tartalmát.
+
 ## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
-1. A [githubon](https://github.com)tallózzon a tárházban, és válassza a **Beállítások** > **titkok** > **új titok hozzáadása**elemet.
+1. A [githubon](https://github.com)tallózzon a tárházban, válassza a **Beállítások** > **titkok** > **új titok hozzáadása**lehetőséget.
 
-    ![Titkos kód hozzáadása](media/functions-how-to-github-actions/add-secret.png)
+   ![Titkos kód hozzáadása](media/functions-how-to-github-actions/add-secret.png)
 
-1. A `AZURE_CREDENTIALS` **nevet** és a másolt parancs kimenetét használja **értékként**, majd válassza a **titkos kód hozzáadása**elemet. 
+1. Ha ezt követően a **titkos kód hozzáadása**lehetőséget választja, használja a `AZURE_CREDENTIALS` **értéket**a **név** és a másolt parancs kimenetéhez. Ha közzétételi profilt használ, a **név** és a fájl tartalmának `SCM_CREDENTIALS` **értékét**kell használnia.
 
 A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 
@@ -195,7 +206,7 @@ A kód a Function alkalmazásban való üzembe helyezéséhez a `Azure/functions
 |_**tárolóhely neve**_ | Választható Annak a [telepítési tárolóhelynek](functions-deployment-slots.md) a neve, amelyre telepíteni kívánja a-t. A tárolóhelynek már definiálva kell lennie a Function alkalmazásban. |
 
 
-Az alábbi példa a `functions-action`következők 1. verzióját használja:
+Az alábbi példa a `functions-action` verzióját használja:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -207,7 +218,7 @@ Az alábbi példa a `functions-action`következők 1. verzióját használja:
 
 ## <a name="next-steps"></a>További lépések
 
-Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-mintákat](https://github.com/Azure/actions-workflow-samples) tartalmazó `functionapp` , a névben található egyik fájlját a YAML. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
+Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://github.com/Azure/actions-workflow-samples) tárházában található egyik fájlt, amely `functionapp` szerepel a névben. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 
 > [!div class="nextstepaction"]
 > [További információ a GitHub-műveletekről](https://help.github.com/en/articles/about-github-actions)

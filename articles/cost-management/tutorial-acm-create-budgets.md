@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 0cae5166fbbba650b270829b9c8e3711b12a574e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073948"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025775"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Azure-költségvetések létrehozása és kezelése
 
 A Cost Management költségvetései segítenek a tervezésben és elősegítik a vállalaton belüli elszámolhatóságot. A költségvetések segítségével elszámolhat az egy adott időszak alatt használt vagy előfizetett Azure-szolgáltatásokkal. Ezek segítenek mások tájékoztatja a költségkeret-beállítási proaktív módon kezelheti a költségeket, és figyelheti a költségkeret-beállítási hogyan halad idővel. Ha a létrehozott költségvetés küszöbérték túllépése esetén csak az értesítések aktiválódnak. Az erőforrások egyike sem érintett, és a használat nem leállt. Költségvetése segítségével nyomon követheti a Költekezési, a költségek elemzése és összehasonlítása.
 
-A költségek és a használati adatok jellemzően 8-12 órán belül elérhetők, és a költségvetések kiértékelése négy óránként történik. Az e-mailes értesítések általában 12-16 órán belül érkeznek.
+A költségek és a használati adatok jellemzően 12-16 órán belül elérhetők, és a költségvetések kiértékelése négy óránként történik. Az e-mailes értesítések általában 12-16 órán belül érkeznek.
 
 A költségvetéshez automatikusan átállítani (havonta, negyedévente vagy évente) időszak végén a költségvetés akkora lejárati dátumot a jövőben kiválasztásakor. A költségvetés akkora alaphelyzetbe állítása, mert kell létrehoznia a különálló költségvetéseket, ha a tervezett pénznem összegek különböznek a későbbi elszámolási időszakokra.
 
@@ -58,7 +58,7 @@ Engedélyek hozzárendelése a Cost Management adataihoz kapcsolatos további in
 
 Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A Azure Portal navigációs tartalma határozza meg, hogy létrehoz-e költségvetést egy előfizetéshez vagy egy felügyeleti csoporthoz.
 
-Ha költségvetést szeretne létrehozni vagy megtekinteni, nyissa meg a kívánt hatókört a Azure Portalban, és válassza a **költségvetés** lehetőséget a menüben. Például navigáljon az előfizetések elemre, válasszon ki egy előfizetést a listából, majd válassza a **költségvetés** lehetőséget a menüben. A **hatókör** pirulát használva váltson át egy másik hatókörre, például egy felügyeleti csoportra a költségvetésekben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+Ha költségvetést szeretne létrehozni vagy megtekinteni, nyissa meg a kívánt hatókört a Azure Portalban, és válassza a **költségvetés** lehetőséget a menüben. Például navigáljon az **előfizetések**elemre, válasszon ki egy előfizetést a listából, majd válassza a **költségvetés** lehetőséget a menüben. A **hatókör** pirulát használva váltson át egy másik hatókörre, például egy felügyeleti csoportra a költségvetésekben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
 Után a költségvetés hoz létre, azok őket az aktuális költségeket az egyszerű nézet jelenik meg.
 
@@ -78,7 +78,7 @@ Az eddigi költségvetésben kiválasztott mezők alapján egy gráf jelenik meg
 
 ![Példa a költségvetés létrehozására havi költségadatok szerint ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-A költségvetés összegének konfigurálása után kattintson a **tovább** gombra a költségvetési riasztások konfigurálásához. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Amikor teljesül a költségvetés küszöbértéket, e-mail-értesítések általában kevesebb mint nyolc óra fogadott. További információ az értesítésekről: a [díjszabási riasztások használata](cost-mgt-alerts-monitor-usage-spending.md). Az alábbi példában egy e-mail-riasztás jön létre, amikor eléri a költségvetés 90%-át.
+A költségvetés összegének konfigurálása után kattintson a **tovább** gombra a költségvetési riasztások konfigurálásához. Költségvetés legalább egy költséget küszöb (% költségvetés) és a egy megfelelő e-mail-címre van szükség. Szükség esetén belefoglalhatja a legfeljebb öt küszöbértékeket és a egy egyetlen költségvetésben öt e-mail címet. Ha egy költségvetési küszöbérték teljesül, az e-mail-értesítések általában kevesebb mint 20 órát kapnak. További információ az értesítésekről: a [díjszabási riasztások használata](cost-mgt-alerts-monitor-usage-spending.md). Az alábbi példában egy e-mail-riasztás jön létre, amikor eléri a költségvetés 90%-át.
 
 ![Riasztási feltételeket mutató példa](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

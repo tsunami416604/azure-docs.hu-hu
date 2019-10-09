@@ -1,6 +1,6 @@
 ---
-title: Hogyan összetett műveletek indítása az Azure Monitor riasztások
-description: Ismerje meg, hogyan hozhat létre egy logikaialkalmazás-művelet feldolgozásához Azure Monitor-riasztásokat.
+title: Összetett műveletek elindítása Azure Monitor riasztásokkal
+description: Megtudhatja, hogyan hozhat létre logikai alkalmazás-műveletet Azure Monitor riasztások feldolgozásához.
 author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0abc7c4ae370a894c46eda38df41d64a6ef2cd91
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66389565"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027702"
 ---
-# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
+# <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
-Ez a cikk bemutatja, hogyan beállítását, és aktiválja a Logic Apps-alkalmazás, a beszélgetés létrehozása a Microsoft Teams, riasztások aktiválódásakor.
+Ebből a cikkből megtudhatja, hogyan állíthat be és indíthat el egy logikai alkalmazást a Microsoft Teams-beszélgetések létrehozásához, amikor riasztást küld.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Monitor riasztás aktiválásakor meghívja egy [műveletcsoport](../../azure-monitor/platform/action-groups.md). Műveletcsoportok lehetővé teszik egy vagy több műveletet is megoldásáról, és értesíteni másokat a riasztásokkal kapcsolatos indít.
+Amikor egy Azure Monitor riasztást indít el, meghívja a [műveleti csoportot](../../azure-monitor/platform/action-groups.md). A műveleti csoportok lehetővé teszik, hogy egy vagy több műveletet indítson el, hogy értesítse másokat a riasztásokról, és azt is javítsa.
 
-Általános folyamata a következő:
+Az általános folyamat:
 
--   Hozzon létre a logikai alkalmazás a megfelelő típusú.
+-   Hozza létre a logikai alkalmazást a megfelelő riasztási típushoz.
 
--   A logikai alkalmazás egy hasznosadat-minta a megfelelő riasztástípus importálja.
+-   Importáljon egy minta adattartalmat a megfelelő riasztási típusba a logikai alkalmazásba.
 
--   Logikai alkalmazás viselkedésének megadása.
+-   Adja meg a logikai alkalmazás viselkedését.
 
--   Másolja a HTTP-végpontot a logikai alkalmazás egy Azure műveletcsoport.
+-   Másolja a logikai alkalmazás HTTP-végpontját egy Azure-műveleti csoportba.
 
-A folyamat hasonlít, ha azt szeretné, hogy a logikai alkalmazás egy másik művelet végrehajtására.
+A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más műveletet hajtson végre.
 
-## <a name="create-an-activity-log-alert-administrative"></a>Tevékenységnapló-riasztás létrehozása: Adminisztratív
+## <a name="create-an-activity-log-alert-administrative"></a>Műveletnapló riasztásának létrehozása: Adminisztratív
 
-1.  Az Azure Portalon válassza ki a **erőforrás létrehozása** a bal felső sarokban.
+1.  A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
-2.  Keresse meg és válassza **logikai alkalmazás**, majd **létrehozás**.
+2.  Keresse meg és válassza ki a **logikai alkalmazást**, majd kattintson a **Létrehozás**gombra.
 
-3.  Adja meg a logikai alkalmazás egy **neve**, válasszon egy **erőforráscsoport**, és így tovább.
+3.  Adjon **nevet**a logikai alkalmazásnak, válasszon ki egy **erőforráscsoportot**, és így tovább.
 
-    ![Hozzon létre egy logikai alkalmazást](media/action-groups-logic-app/create-logic-app-dialog.png "logikai alkalmazás létrehozása")
+    ![Logikai alkalmazás létrehozása](media/action-groups-logic-app/create-logic-app-dialog.png "logikai alkalmazás létrehozása")
 
-4.  Válassza ki **létrehozás** a logikai alkalmazás létrehozásához. Egy előugró üzenet azt jelzi, hogy a logikai alkalmazás létrejött. Válassza ki **indítsa el a erőforrás** megnyitásához a **Logic Apps Designerben**.
+4.  Válassza a **Létrehozás** lehetőséget a logikai alkalmazás létrehozásához. Egy előugró üzenet azt jelzi, hogy a logikai alkalmazás létrejött. Válassza az **erőforrás elindítása** elemet a **Logic apps Designer**megnyitásához.
 
-5.  Az eseményindító kiválasztása: **HTTP-kérés fogadásakor**.
+5.  Válassza ki az triggert: **Http-kérelem fogadásakor**.
 
-    ![A logikai alkalmazások eseményindítói](media/action-groups-logic-app/logic-app-triggers.png "Logikaialkalmazás-triggerek")
+    Logic ![app]-eseményindítók(media/action-groups-logic-app/logic-app-triggers.png "logikai alkalmazás-eseményindítók")
 
-6.  Válassza ki **szerkesztése** módosíthatja a HTTP-kérés eseményindító.
+6.  A HTTP-kérelem triggerének módosításához válassza a **Szerkesztés** lehetőséget.
 
-    ![HTTP-kérelem eseményindítók](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-kérelem eseményindítók")
+    ![Http-kérelem eseményindítói](media/action-groups-logic-app/http-request-trigger-shape.png "http-kérelem") eseményindítói
 
 7.  Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget.
 
-    ![Hasznosadat-minta használata](media/action-groups-logic-app/use-sample-payload-button.png "hasznosadat-minta használata")
+    ![Minta adattartalom]használata(media/action-groups-logic-app/use-sample-payload-button.png "minta hasznos adat használatával")
 
-8.  Másolja és illessze be a párbeszédpanelt a következő hasznosadat-minta:
+8.  Másolja és illessze be az alábbi minta-adattartalmat a párbeszédpanelbe:
 
     ```json
         {
@@ -97,21 +97,21 @@ A folyamat hasonlít, ha azt szeretné, hogy a logikai alkalmazás egy másik m�
         }
     ```
 
-9. A **Logikaialkalmazás-Tervező** egy előugró ablak, amely emlékezteti, hogy be kell-e a logikai alkalmazás küldött kérelem jeleníti meg a **Content-Type** fejlécet **application/json**. Az előugró ablak bezárásához. Az Azure Monitor alert beállítja a fejlécet.
+9. A **Logic app Designer** egy előugró ablakot jelenít meg, amely figyelmezteti, hogy a logikai alkalmazásnak elküldett kérelemnek be kell állítania a **Content-Type** fejlécet az **Application/JSON**értékre. Az előugró ablak bezárásához. A Azure Monitor riasztás beállítja a fejlécet.
 
-    ![A Content-Type fejléc beállítása](media/action-groups-logic-app/content-type-header.png "a Content-Type fejléc beállítása")
+    ![A Content-Type]fejléc beállítása(media/action-groups-logic-app/content-type-header.png "a Content-Type fejlécre")
 
-10. Válassza ki **+** **új lépés** majd **művelet hozzáadása**.
+10. Válassza az **@no__t – 1** **új lépést** , majd válassza **a művelet hozzáadása**lehetőséget.
 
-    ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "művelet hozzáadása")
+    Művelet ![hozzáadása művelet](media/action-groups-logic-app/add-action.png "hozzáadása")
 
-11. Keresse meg és jelölje ki a Microsoft Teams-összekötőt. Válassza ki a **Microsoft Teams-üzenet közzététele** művelet.
+11. Keresse meg és válassza ki a Microsoft Teams-összekötőt. Válassza a **Microsoft Teams – üzenet közzététele** műveletet.
 
-    ![Microsoft Teams-műveletek](media/action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams-műveletek")
+    Microsoft Teams Actions ![– Microsoft](media/action-groups-logic-app/microsoft-teams-actions.png "Teams-műveletek")
 
-12. Konfigurálja a Microsoft Teams-műveletet. A **Logic Apps Designerben** arra kéri, hogy az Office 365-fiókja hitelesítéséhez. Válassza ki a **Csapatazonosító** és **csatorna azonosítója** , az üzenet elküldéséhez.
+12. Konfigurálja a Microsoft Teams műveletet. A **Logic apps Designer** megkéri, hogy hitelesítse az Office 365-fiókját. Válassza ki a **csoport azonosítóját** és a **csatorna azonosítóját** , hogy elküldje az üzenetet.
 
-13. Az üzenet konfigurálása az állandó szövegrészek és mutató hivatkozások együttes használatával a \<mezők\> a dinamikus tartalom. Másolja és illessze be a következő szöveget a **üzenet** mező:
+13. Konfigurálja az üzenetet statikus szöveg kombinációjával és a dinamikus tartalomban található \<fields @ no__t-1-re mutató hivatkozásokkal. Másolja és illessze be a következő szöveget az **üzenet** mezőbe:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -120,27 +120,27 @@ A folyamat hasonlít, ha azt szeretné, hogy a logikai alkalmazás egy másik m�
       resourceId: <resourceId>
     ```
 
-    Keressen rá, és cserélje le a \<mezők\> ugyanazzal a névvel, a dinamikus tartalom címkékkel.
+    Ezután keresse meg és cserélje le az \<fields @ no__t-1 nevet az azonos nevű dinamikus tartalom címkével.
 
     > [!NOTE]
-    > Két dinamikus mező nevű **állapot**. Adja hozzá a következő mezők mind az üzenetet. Használja a mezőt, amely szerepel a **activityLog** tulajdonságcsomagot és a többi mező törlése. Vigye a kurzort a **állapot** mezőt, teljesen minősített mezőhivatkozásnak lásd az alábbi képernyőképen látható módon:
+    > Két, **állapot**nevű dinamikus mező van. Adja hozzá mindkét mezőt az üzenethez. Használja a **activityLog** tulajdonság táskájában található mezőt, és törölje a másik mezőt. Vigye az egérmutatót az **állapot** mező fölé a teljes mező hivatkozás megjelenítéséhez, ahogy az alábbi képernyőképen is látható:
 
-    ![Microsoft Teams-művelet: Üzenet küldése](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams-művelet: Üzenet küldése")
+    @no__t – 0Microsoft Teams művelet: Üzenet küldése @ no__t-0 @ no__t-1Microsoft Teams művelet: Üzenet közzététele @ no__t-0
 
-14. Felső részén a **Logic Apps Designerben**válassza **mentése** a logikai alkalmazás mentéséhez.
+14. A **Logic apps Designer**tetején válassza a **Mentés** lehetőséget a logikai alkalmazás mentéséhez.
 
-15. Nyissa meg a meglévő műveletcsoport, és adja hozzá a logikai alkalmazás hivatkozni egy műveletet. Ha nem rendelkezik meglévő műveletcsoport, [létrehozása és kezelése az Azure Portalon Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) hozhat létre egyet. Ne felejtse el menteni a módosításokat.
+15. Nyissa meg a meglévő műveleti csoportot, és adjon hozzá egy műveletet a logikai alkalmazásra való hivatkozáshoz. Ha nem rendelkezik meglévő műveleti csoporttal, tekintse meg [a műveleti csoportok létrehozása és kezelése a Azure Portalban](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) című témakört. Ne felejtse el menteni a módosításokat.
 
-    ![A műveletcsoport frissítéséhez](media/action-groups-logic-app/update-action-group.png "a műveletcsoport frissítéséhez")
+    ![A]műveleti csoport frissítése(media/action-groups-logic-app/update-action-group.png "a műveleti csoport frissítése")
 
-A következő alkalommal, amikor egy riasztást a műveletcsoport meghívja a logikai alkalmazás neve.
+Amikor legközelebb riasztást hív meg a műveleti csoportnak, a rendszer a logikai alkalmazást hívja meg.
 
-## <a name="create-a-service-health-alert"></a>Hozzon létre egy szolgáltatásállapot-riasztás
+## <a name="create-a-service-health-alert"></a>Szolgáltatás állapotára vonatkozó riasztás létrehozása
 
-Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A riasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
+Azure Service Health bejegyzések a műveletnapló részét képezik. A riasztás létrehozásának folyamata hasonló a műveletnapló- [riasztás létrehozásához](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
-- 1 – 7. lépései megegyeznek.
-- 8\. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
+- Az 1 – 7. lépés megegyeznek.
+- A 8. lépésnél használja a következő minta adattartalmat a HTTP-kérelem triggerhez:
 
     ```json
     {
@@ -184,19 +184,19 @@ Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A 
     }
     ```
 
--  9 és 10 lépései megegyeznek.
--  14 – 11. lépéseket a következő folyamat használja:
+-  A 9. és a 10. lépés azonos.
+-  A 11 – 14. lépésnél használja a következő folyamatot:
 
-   1. Válassza ki **+** **új lépés** majd **feltétel hozzáadása**. Állítsa be a következő feltételek, így a logikai alkalmazás hajt végre, ha a bemeneti adatok megfelel az alábbi értékeket.  Amikor beírja a verzió értéket a szövegmezőbe, helyezze el az idézőjeleket ("0.1.1"), győződjön meg arról, hogy egy karakterláncot és egy numerikus típus nem értékeli, hogy.  A rendszer nem jeleníti meg az idézőjelek között, ha visszatérhet erre az oldalra, de a mögöttes kód továbbra is fenntartja a string típussá.   
+   1. Válassza az **@no__t – 1** **új lépést** , majd válassza **a feltétel hozzáadása**lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek.  Ha a Version (verzió) értéket a szövegmezőbe írja, idézőjelek közé helyezi a kifejezést ("0.1.1"), hogy az kiértékelése karakterláncként történjen, és ne numerikus típusú legyen.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát.   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      !["A Service Health hasznos feltétel"](media/action-groups-logic-app/service-health-payload-condition.png "Service Health hasznos feltétel")
+      !["Service Health a hasznos adatok feltétele"](media/action-groups-logic-app/service-health-payload-condition.png "Service Health hasznos adat feltétele")
 
-   1. Az a **ha igaz** feltételt, kövesse a lépéseket 11 – 13 [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative) a Microsoft Teams-művelet hozzáadása.
+   1. A **Ha igaz** állapotban a Microsoft Teams művelet hozzáadásához kövesse a [tevékenység naplójának létrehozása](#create-an-activity-log-alert-administrative) című cikk 11 – 13. lépésében található utasításokat.
 
-   1. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával. Másolja és illessze be a következő tartalmat a **üzenet** mező. Cserélje le a `[incidentType]`, `[trackingID]`, `[title]`, és `[communication]` ugyanazzal a névvel, a dinamikus tartalom címkékkel rendelkező mezők:
+   1. Az üzenet definiálása HTML-és dinamikus tartalom kombinációjának használatával. Másolja és illessze be az alábbi tartalmat az **üzenet** mezőbe. Cserélje le a `[incidentType]`, `[trackingID]`, `[title]` és `[communication]` mezőket azonos nevű dinamikus tartalmú címkékre:
 
        ```html
        <p>
@@ -209,9 +209,9 @@ Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A 
        <p>[communication]</p>
        ```
 
-       !["A Service Health igaz post művelet"](media/action-groups-logic-app/service-health-true-condition-post-action.png "Service Health igaz post művelet")
+       !["Service Health igaz feltétel utáni művelet"](media/action-groups-logic-app/service-health-true-condition-post-action.png "Service Health igaz feltétel utáni művelet")
 
-   1. Az a **ha hamis** feltételt, adja meg a hasznos üzenetet:
+   1. A **Ha hamis** feltétel esetében hasznos üzenetet adjon meg:
 
        ```html
        <p><strong>Service Health Alert</strong></p>
@@ -219,16 +219,16 @@ Az Azure Service Health-bejegyzések a tevékenységnapló részét képezik. A 
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       !["A Service Health hamis feltétel post művelet"](media/action-groups-logic-app/service-health-false-condition-post-action.png "szolgáltatás állapotát a feltétel hamis post művelet")
+       !["Service Health hamis feltétel utáni művelet"](media/action-groups-logic-app/service-health-false-condition-post-action.png "Service Health hamis feltétel utáni művelet")
 
-- 15\. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
+- A 15. lépés ugyanaz. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveleti csoport frissítéséhez.
 
-## <a name="create-a-metric-alert"></a>Metrikariasztás létrehozása
+## <a name="create-a-metric-alert"></a>Metrikai riasztás létrehozása
 
-A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-riasztás létrehozása](#create-an-activity-log-alert-administrative), de néhány módosítással:
+A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-riasztások létrehozásához](#create-an-activity-log-alert-administrative), de néhány módosítással:
 
-- 1 – 7. lépései megegyeznek.
-- 8\. lépés használja a következő hasznosadat-minta a HTTP-kérés eseményindító:
+- Az 1 – 7. lépés megegyeznek.
+- A 8. lépésnél használja a következő minta adattartalmat a HTTP-kérelem triggerhez:
 
     ```json
     {
@@ -272,30 +272,30 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
     }
     ```
 
-- 9 és 10 lépései megegyeznek.
-- 14 – 11. lépéseket a következő folyamat használja:
+- A 9. és a 10. lépés azonos.
+- A 11 – 14. lépésnél használja a következő folyamatot:
 
-  1. Válassza ki **+** **új lépés** majd **feltétel hozzáadása**. Állítsa be a következő feltételek, így a logikai alkalmazás hajt végre, ha a bemeneti adatok megfelel az alábbi ezeket az értékeket. Írja be a verzió értékét a szövegmezőbe, helyezze idézőjelek ("2.0"), körülötte való gondoskodik róla, hogy ha egy karakterláncot és egy numerikus típus nem értékeli.  A rendszer nem jeleníti meg az idézőjelek között, ha visszatérhet erre az oldalra, de a mögöttes kód továbbra is fenntartja a string típussá. 
+  1. Válassza az **@no__t – 1** **új lépést** , majd válassza **a feltétel hozzáadása**lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek. Ha a Version (verzió) értéket a szövegmezőbe írja, az idézőjelek közé kerül ("2,0"), hogy megbizonyosodjon róla, hogy kiértékelése sztringként, nem numerikus típusúként történik.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát. 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
-       !["A metrikaalapú riasztási hasznos feltétel"](media/action-groups-logic-app/metric-alert-payload-condition.png "Metrikaalapú riasztási hasznos feltétel")
+       !["Metrika-riasztás hasznos feltétele"](media/action-groups-logic-app/metric-alert-payload-condition.png "metrika riasztási hasznos állapot")
 
-  1. Az a **ha igaz** feltételt, adjon hozzá egy **minden** hurok és a Microsoft Teams-művelet. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával.
+  1. A **Ha igaz** állapotban adja hozzá az **egyes** hurkokat és a Microsoft Teams műveletet. Az üzenet definiálása HTML-és dinamikus tartalom kombinációjának használatával.
 
-      !["A metrikaalapú riasztási igaz post művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikaalapú riasztási igaz post művelet")
+      !["Metrikus riasztás igaz feltétel utáni művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "metrika riasztás igaz állapot utáni művelet")
 
-  1. Az a **ha hamis** feltételt, való kommunikációhoz, hogy a metrikaalapú riasztás nem felel meg az elvárásainak, a logikai alkalmazás egy Microsoft Teams műveletet definiálhat. Például a JSON-adattartalmat. Figyelje meg, hogy miként lehet hivatkozni a `triggerBody` a dinamikus tartalom a `json()` kifejezés.
+  1. **Ha hamis** állapotban van, Definiáljon egy Microsoft Teams műveletet, amely közli, hogy a mérőszám riasztása nem felel meg a logikai alkalmazás elvárásainak. A JSON-adattartalom belefoglalása. Figyelje meg, hogyan hivatkozhat a `triggerBody` dinamikus tartalomra az `json()` kifejezésben.
 
-      !["Riasztás false (hamis) metrikai feltétel post művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
+      !["Metrika riasztás hamis feltétel utáni művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "metrika riasztás hamis feltétel utáni művelet")
 
-- 15\. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
+- A 15. lépés ugyanaz. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveleti csoport frissítéséhez.
 
-## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások mellett a Microsoft Teams hívása
-A Logic Apps rendelkezik, amelyekkel az eseményindító műveletek számos az alkalmazások és adatbázisok különböző összekötőket. A Slack, az SQL Server, Oracle, a Salesforce, néhány példa azt szemlélteti. Összekötők kapcsolatos további információkért lásd: [logikai alkalmazás-összekötők](../../connectors/apis-list.md).  
+## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások hívása a Microsoft Teams szolgáltatáson kívül
+Logic Apps számos különböző összekötővel rendelkezik, amelyek lehetővé teszik, hogy számos alkalmazás és adatbázis között aktiválja a műveleteket. A Slack, SQL Server, Oracle, Salesforce, csak néhány példa. További információ az összekötők használatáról: [Logic app-összekötők](../../connectors/apis-list.md).  
 
 ## <a name="next-steps"></a>További lépések
-* Get- [Azure tevékenységnapló-riasztások áttekintése](../../azure-monitor/platform/alerts-overview.md) és riasztások fogadása.  
-* Ismerje meg, hogyan [riasztások konfigurálása az Azure Service Health értesítési közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
-* Tudjon meg többet [Műveletcsoportok](../../azure-monitor/platform/action-groups.md).
+* [Tekintse át az Azure-tevékenységek naplójának riasztásait](../../azure-monitor/platform/alerts-overview.md) , és Ismerje meg, hogyan fogadhat riasztásokat.  
+* Megtudhatja, hogyan [konfigurálhat riasztásokat Azure Service Health értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+* További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
 

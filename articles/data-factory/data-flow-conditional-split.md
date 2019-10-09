@@ -6,28 +6,28 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: dd51cc2d5f95598154b76b5da8e3fc9e4801100d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104954"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026931"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>Az adatforgalom feltételes felosztásának leképezése
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![feltételes felosztási eszközkészlet](media/data-flow/conditionalsplit2.png "feltételes felosztási eszközkészlet")
+
+![feltételes felosztású eszközkészlet](media/data-flow/conditionalsplit2.png "feltételes felosztási eszközkészlete")
 
 A feltételes felosztású átalakítás az adatsorokat különböző adatfolyamokra irányíthatja az adattartalomtól függően. A feltételes felosztású átalakítás implementálása hasonló egy programozási nyelvben lévő eset döntési struktúrához. Az átalakítás kiértékeli a kifejezéseket, és az eredmények alapján a megadott adatfolyamra irányítja az adatsort. Ez a transzformáció egy alapértelmezett kimenetet is biztosít, így ha egy sor nem felel meg a kifejezésnek, az alapértelmezett kimenetre lesz irányítva.
 
-![feltételes felosztás](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
+![feltételes felosztott](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
 
 ## <a name="multiple-paths"></a>Több elérési út
 
 További feltételek hozzáadásához válassza az "adatfolyam hozzáadása" lehetőséget az alsó konfigurációs ablaktáblán, majd a kifejezés létrehozásához kattintson a Kifejezésszerkesztő szövegmezőbe.
 
-![feltételes felosztású többszörös](media/data-flow/conditionalsplit3.png "feltételes felosztású többszörös")
+![feltételes felosztás – többszörös](media/data-flow/conditionalsplit3.png "feltételes felosztású többszörös")
 
 ## <a name="next-steps"></a>További lépések
 

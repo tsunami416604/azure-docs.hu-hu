@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 565330528638bb6c8e0458a9761e2cf9fa4e3d2a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 729371ede8df3dc21f70bc5742de52f2be874507
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001480"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030002"
 ---
 # <a name="get-started-with-device-twins-python"></a>Ismerkedés a Device Twins (Python) eszközzel
 
@@ -70,7 +70,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely hely m
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Adja hozzá a következő kódot. A `[IoTHub Connection String]` helyére írja be az IoT hub-beli, a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncot. Cserélje `[Device Id]` le a helyére az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítóját.
+4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Connection String]` értéket a IoT hub-beli, az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)során másolt karakterláncra. Cserélje le a `[Device Id]` értéket az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban regisztrált eszköz azonosítójával.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +171,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Adja hozzá a következő kódot. Cserélje le `[IoTHub Device Connection String]` a helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban elemre másolt eszköz-összekapcsolási karakterlánccal.
+4. Adja hozzá a következő kódot. Cserélje le a `[IoTHub Device Connection String]` helyőrző értékét az [új eszköz regisztrálása az IoT hub](#register-a-new-device-in-the-iot-hub)-ban elemre másolt eszköz-összekapcsolási karakterlánccal.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -187,7 +187,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a köv
             print(patch)
 
     def iothub_client_init():
-        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
         return client
 
     def iothub_client_sample_run():

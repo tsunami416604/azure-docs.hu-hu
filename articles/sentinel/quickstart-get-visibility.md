@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240089"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023790"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: Az Azure Sentinel használatának első lépései
 
@@ -52,7 +52,7 @@ Az áttekintő lap fő törzse áttekintést nyújt a munkaterület biztonsági 
 
 - **Legutóbbi incidensek**: A legutóbbi incidensek, súlyosságuk és az incidenshez kapcsolódó riasztások számának megtekintéséhez. Ha egy adott típusú riasztás hirtelen csúcsát látja, az azt jelentheti, hogy jelenleg fut aktív támadás. Ha például hirtelen 20 Pass-The-hash típusú eseményt használ az Azure ATP-ből, lehetséges, hogy valaki megpróbálja megtámadni Önt.
 
-- **Adatforrás-rendellenességek**: A Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatvesztési rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A diagramra kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
+- **Adatforrás-rendellenességek**: A Microsoft adatelemzői olyan modelleket hoztak létre, amelyek folyamatosan keresik az adatforrásokból származó adatvesztési rendellenességeket. Ha nincs rendellenesség, semmi sem jelenik meg. Ha rendellenességek észlelhetők, érdemes részletesen bemutatni, hogy mi történt. Kattintson például az Azure-tevékenység csúcsára. A **diagramra** kattintva megtekintheti, hogy mikor történt a nyárs, majd szűrheti az adott időszakban bekövetkezett tevékenységeket, hogy megtudja, mi okozta a nyársat.
 
    ![Azure Sentinel-Térkép](./media/qs-get-visibility/anomolies.png)
 
@@ -72,14 +72,14 @@ A beépített munkafüzetek integrált adatokkal szolgálnak a csatlakoztatott a
       ![Pal Alto-irányítópult](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-A munkafüzeteket testreszabhatja a fő lekérdezési ![gomb](./media/qs-get-visibility/edit-query-button.png)szerkesztésével. ![A gombra](./media/qs-get-visibility/go-to-la-button.png) kattintva megtekintheti a log Analytics a [lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempék testreszabása**lehetőséget, amely lehetővé teszi a Főidő szűrő szerkesztését, vagy a a munkafüzet adott csempéi.
+A munkafüzeteket testreszabhatja úgy, hogy szerkeszti a fő lekérdezést ![button @ no__t-1. A ![button @ no__t-1 gombra kattintva megtekintheti [a log Analytics a lekérdezés szerkesztéséhez](../azure-monitor/log-query/get-started-portal.md), és kiválaszthatja a három pontot (...), és kiválaszthatja a **csempe adatainak testreszabása**lehetőséget, amely lehetővé teszi a Főidő-szűrő szerkesztését, vagy eltávolíthatja az adott csempéket a következőből: a munkafüzet.
 
-További információ a lekérdezések [használatáról: oktatóanyag: Vizualizációs adatLog Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+A lekérdezések használatáról további információt a következő témakörben talál: [Tutorial: Vizualizációs adatgyűjtés Log Analytics @ no__t-0
 
 ### <a name="add-a-new-tile"></a>Új csempe hozzáadása
 
 Ha új csempét szeretne felvenni, hozzáadhatja egy meglévő munkafüzethez, vagy létrehozhatja azt, vagy egy beépített Azure Sentinel-munkafüzetet. 
-1. A log Analytics-ban hozzon létre egy csempét a [következő oktatóanyagban található utasítások használatával: Vizualizációs adatLog Analyticsek](../azure-monitor/learn/tutorial-logs-dashboards.md). 
+1. A Log Analyticsban hozzon létre egy csempét a [Tutorial utasításban található utasítások használatával: Vizualizációs adatLog Analytics @ no__t-0. 
 2. Miután létrehozta a csempét, a **PIN**elemnél válassza ki azt a munkafüzetet, amelyben a csempét meg szeretné jeleníteni.
 
 ## <a name="create-new-workbooks"></a>Új munkafüzetek létrehozása
@@ -122,11 +122,11 @@ Az [Azure sentinelhez csatlakoztatott adatforrások](connect-data-sources.md) é
 
 Új észlelés létrehozásakor kihasználhatja a Microsoft biztonsági kutatói által készített beépített észleléseket, amelyek a csatlakoztatott adatforrásokhoz vannak igazítva.
 
-Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok**elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
+Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , majd a **szabály sablonok**elemre. Ezen a lapon az Azure Sentinel beépített szabályai láthatók.
 
    ![A fenyegetések felderítése az Azure Sentinel használatával beépített észlelésekkel](media/tutorial-detect-built-in/view-oob-detections.png)
 
-A beépített észlelésekkel kapcsolatos további információkért lásd [: oktatóanyag: A beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése.
+A beépített észlelésekkel kapcsolatos további információkért lásd: [Tutorial: A beépített Analytics @ no__t-0 beszerzése.
  
 ## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).

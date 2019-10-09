@@ -1,32 +1,32 @@
 ---
-title: Az Azure Data Factory-térképadatokat új ág átalakítási folyamat
-description: Az Azure Data Factory-térképadatokat új ág átalakítási folyamat
+title: Azure Data Factory leképezési adatfolyam új ág-átalakítás
+description: Azure Data Factory leképezési adatfolyam új ág-átalakítás
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 9fac78f21f2f128ccb040e176891c33d39bf2820
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f443396627a4bbaba2a3eeb0a3ac05cc1597c85
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61349146"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029288"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Az Azure Data Factory-térképadatokat új ág átalakítási folyamat
+# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Azure Data Factory leképezési adatfolyam új ág-átalakítás
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Beállítások ágban](media/data-flow/menu.png "menü")
 
-Elágaztatási igénybe vehet a jelenlegi adatfolyamban az adatok folyamatban, és végezze el a replikációt a másik adatfolyamba. Új ágat használja több végrehajtásához műveletek és elleni ugyanarra az adatstreamre átalakítások állítja be.
+![Ág beállításai](media/data-flow/menu.png "menü")
 
-Példa: Az adatfolyam rendelkezik, egy forrás átalakítása a kijelölt oszlopokat és adatokat típuskonverziók együtt. Ezután elhelyezheti egy származtatott oszlopot következett közvetlenül az adatforráshoz. A származtatott oszlop, már hozzon létre egy új mezőt adott ötvözi a Keresztnév és Vezetéknév, hogy egy új "teljes neve" mezőt.
+Az elágazás a jelenlegi adatfolyamot az adatfolyamba helyezi, és replikálja egy másik streambe. Az új ág használatával több műveletet és átalakítást hajthat végre ugyanahhoz az adatfolyamhoz.
 
-Átalakítások és a egy sort egy fogadó vannak beállítva, hogy új stream kezeli, és új ág egy másolatát, ahol alakíthatja át, hogy ugyanazokat az adatokat más-más átalakítások stream létrehozásához használja. A másolt adatokat egy külön ágban átalakításával keletkező, ezt követően egy külön helyen is fogadó az adatokat.
+Példa: Az adatfolyamnak van egy forrás-átalakítója, amely egy kijelölt oszlop-és adattípus-konverzióval rendelkezik. Ezután egy származtatott oszlopot helyez el közvetlenül a forrás után. A származtatott oszlopban létrehozott egy új mezőt, amely egyesíti az utónév és a vezetéknév értékét, hogy új "teljes név" mezőt hozzon létre.
+
+Az új streamet az átalakítások készletével és egy sorban lévő fogadóval is kezelheti, és az új ág használatával létrehozhatja a stream másolatát, ahol ugyanezeket az adattranszformációkat is átalakíthatja. Ha átalakítja a másolt adatágakat egy különálló ágban, ezt az adathalmazt később különálló helyre is elkülönítheti.
 
 > [!NOTE]
-> "Új ág" csak akkor jelenik meg műveletként a a + átalakítási menü az aktuális helyen, ahol próbált ágban követő későbbi átalakítás esetén. azaz nem jelenik meg itt a végén a "Új ág" lehetőséget egy másik átalakítás után válassza a hozzáadásáig
+> Az "új ág" csak akkor jelenik meg műveletként a + transzformációs menüben, ha az aktuális helyet követő átalakítás következik, ahol a ágat próbálja megkeresni. a végén itt nem jelenik meg az "új ág" lehetőség, amíg hozzá nem ad egy másik átalakítást a Select
 
 ![Ág](media/data-flow/branch2.png "ág 2")

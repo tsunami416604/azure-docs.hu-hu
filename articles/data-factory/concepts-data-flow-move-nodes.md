@@ -1,36 +1,36 @@
 ---
-title: Az Azure Data Factory adatokat folyamat áthelyezési csomópontok
-description: Hogyan kívánja áthelyezni a csomópontok a egy Azure Data Factory leképezési adatok folyamatábrája
+title: Azure Data Factory adatfolyam-áthelyezési csomópontok
+description: Csomópontok áthelyezése egy Azure Data Factory leképezési adatfolyamati diagramon
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519972"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030186"
 ---
-# <a name="mapping-data-flow-move-nodes"></a>Leképezés Adatcsomópontok folyamat áthelyezése
+# <a name="mapping-data-flow-move-nodes"></a>Adatfolyam-áthelyezési csomópontok leképezése
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Átalakítási beállítások összesített](media/data-flow/agghead.png "gyűjtő fejléc")
 
-Az Azure Data Factory adatfolyam tervezőfelületére az a "fejlesztés" felület, ahol hozhat létre az adatok folyamatok fentről lefelé, balról jobbra. Az eszközkészletet, plusz az egyes átalakítási csatlakoztatva van (+) jelet. Csomópontok élek szabad formátumú DAG környezetben keresztül csatlakozó helyett az üzleti logikára összpontosíthat.
+![Összesített transzformációs beállítások](media/data-flow/agghead.png "összesítési fejléce")
 
-Tehát nélkül egy fogd és vidd paradigm, az átalakítási csomópont, "áthelyezése" módja módosítani a beérkező streamben. Ehelyett mozgatnia átalakítások a "bejövő streamet" módosításával.
+A Azure Data Factory adatáramlás tervezési felülete egy "építési" felület, amelyben felülről lefelé, balról jobbra hozhat létre adatfolyamokat. Az egyes átalakításokhoz egy pluszjel (+) szimbólum van csatolva. Koncentráljon az üzleti logikára ahelyett, hogy a csomópontokat a szabad formátumú DAG-környezet szélein keresztül csatlakoztatja.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Adatok folyamaton adatfolyam
+Így a fogd és vidd típusú paradigma nélkül az átalakítási csomópontok áthelyezésének módja a bejövő adatfolyam módosítása. Ehelyett a "bejövő adatfolyam" módosításával áthelyezi az átalakításokat.
 
-Az Azure Data Factory adatfolyam Streamek jelölik az adatok áramlását. Átalakítási beállítások panelen megjelenik egy "Bejövő Steam" mezőt. Ez jelzi, mely beérkező adatfolyam van számból az átalakítás. Az átalakítási csomópont a diagramon használt fizikai helynek bejövő Stream nevére kattint, és a egy másik adatfolyam kiválasztásával módosíthatja. Az aktuális átalakítás együtt az adott adatfolyam minden ezt követő átalakítások majd áthelyezi az új helyen.
+## <a name="streams-of-data-inside-of-data-flow"></a>Adatfolyamban tárolt adatstreamek
 
-Egy vagy több átalakítások átalakításban utána áthelyezéséhez, majd az új hely az adatok az adatfolyam tartományhoz fog csatlakozni egy új ág keresztül.
+Azure Data Factory adatfolyamban a streamek az adatáramlást jelölik. Az átalakítási beállítások panelen megjelenik egy "bejövő gőz" mező. Ez azt mutatja be, hogy mely bejövő adatfolyam táplálja az átalakítást. Az átalakítási csomópont fizikai helyét a diagramon módosíthatja úgy, hogy a bejövő adatfolyam nevére kattint, és kiválasztja egy másik adatfolyamot. A jelenlegi átalakítás az adott adatfolyamon végzett összes további átalakítással együtt az új helyre kerül.
 
-Ha nincsenek további átalakítások után a kiválasztott csomópontot, majd csak az adott átalakítási át az új helyen.
+Ha az átalakítást egy vagy több átalakítással helyezi át, a folyamat során az új hely egy új ág használatával lesz csatlakoztatva.
+
+Ha a kiválasztott csomópont után nem végez további átalakítást, akkor csak az adott átalakítás fog áttérni az új helyre.
 
 ## <a name="next-steps"></a>További lépések
 
-Miután befejezte az adatfolyam-Tervező, kapcsolja be a hibakeresési gombra és a tesztelés közben ki hibakeresési módban vagy közvetlenül a [adatok folyamattervezőben](concepts-data-flow-debug-mode.md) vagy [folyamat hibakeresési](control-flow-execute-data-flow-activity.md).
+Miután befejezte az adatfolyam kialakítását, kapcsolja be a hibakeresés gombot a hibakeresési módban, vagy közvetlenül az adatfolyam- [tervezőben](concepts-data-flow-debug-mode.md) vagy a [folyamat hibakeresésében](control-flow-execute-data-flow-activity.md).

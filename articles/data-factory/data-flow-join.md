@@ -1,77 +1,77 @@
 ---
-title: Az Azure Data Factory folyamat illesztési átalakítását
-description: Az Azure Data Factory folyamat illesztési átalakítását
+title: Azure Data Factory adatfolyam-csatlakozás átalakítása
+description: Azure Data Factory adatfolyam-csatlakozás átalakítása
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348558"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029322"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Adatátalakítás folyamat illesztési leképezése
+# <a name="mapping-data-flow-join-transformation"></a>Az adatfolyam-csatlakozás átalakításának leképezése
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Csatlakozás használatával két tábla az adatfolyam származó adatokat kombinálni. Kattintson a bal oldali kapcsolatban, és adja hozzá az illesztési átalakítás eszközkészletben az átalakítást. Az illesztési átalakítás belül kiválaszthatja a megfelelő kapcsolat a adatok folyamatból egy másik adatfolyam.
 
-![Csatlakozzon az átalakítási](media/data-flow/join.png "csatlakozás")
+A JOIN paranccsal egyesítheti az adatfolyamatban lévő két táblázat adatait. Kattintson az átalakításra, amely a bal oldali kapcsolat lesz, és vegyen fel egy JOIN transzformációt az eszközkészletből. Az illesztési átalakítón belül egy másik adatfolyamot kell kiválasztania az adatfolyamatból, hogy a megfelelő kapcsolat legyen.
 
-## <a name="join-types"></a>Csatlakozás típusa
+![Csatlakozás transzformációs](media/data-flow/join.png "csatlakoztatáshoz")
 
-Válassza a csatlakozás típusa szükség az illesztési átalakítást.
+## <a name="join-types"></a>Illesztési típusok
+
+Az illesztési típushoz az illesztési típus kiválasztása szükséges.
 
 ### <a name="inner-join"></a>Belső illesztés
 
-Belső illesztés csak a mindkét tábla oszlop feltételeknek megfelelő sorokat fog továbbítani.
+A belső illesztés csak olyan sorokon halad át, amelyek megfelelnek mindkét tábla oszlopos feltételeinek.
 
 ### <a name="left-outer"></a>Bal oldali külső
 
-A bal oldali stream nem felel meg az illesztési feltétel az összes sor továbbítja a rendszer, és a kimeneti oszlopokat a táblázatból mellett a belső illesztéssel által visszaadott összes sor NULL értékre vannak beállítva.
+A bal oldali adatfolyamból az illesztési feltételnek nem megfelelő összes sort átadja a rendszer, és a másik tábla kimeneti oszlopai NULL értékre vannak állítva, a belső illesztés által visszaadott sorok mellett.
 
 ### <a name="right-outer"></a>Jobb oldali külső
 
-A megfelelő stream nem felel meg az illesztési feltétel az összes sor továbbítja a rendszer, és a kimeneti oszlopok, amelyek megfelelnek a másik tábla NULL, a belső illesztéssel által visszaadott összes sor mellett.
+A jobb oldali adatfolyamból az illesztési feltételnek nem megfelelő összes sort átadja a rendszer, és a másik táblának megfelelő kimeneti oszlopok értéke NULL, a belső illesztés által visszaadott összes sor mellett.
 
-### <a name="full-outer"></a>A teljes külső
+### <a name="full-outer"></a>Teljes külső
 
-Teljes külső összes oszlopot hoz létre, és mindkét fél oszlopoknál, amelyek NULL értékkel sorait nem jelenik meg a másik táblában.
+A teljes külső előállítja a két oldal összes oszlopát és sorát NULL értékkel a másik táblában nem szereplő oszlopokhoz.
 
-### <a name="cross-join"></a>Keresztillesztés
+### <a name="cross-join"></a>Keresztbe illesztés
 
-Adja meg a két adatfolyam keresztszorzatát kifejezése. Ezzel egyéni illesztési feltételek létrehozása.
+Egy kifejezéssel adja meg a két stream több termékét. Ezt használhatja egyéni csatlakozási feltételek létrehozásához.
 
-## <a name="specify-join-conditions"></a>Adja meg az illesztési feltételek
+## <a name="specify-join-conditions"></a>Csatlakozási feltételek meghatározása
 
-A Left Join feltétel nem kapcsolódik az illesztés bal oldalán streamből. A Right Join feltétel nem csatlakozik a Join alul, amely lehet egy közvetlen összekötőt egy másik adatfolyamba vagy egy másik stream egy hivatkozást a második streamből.
+A bal oldali illesztési feltétel az Illesztéstől balra csatlakoztatott adatfolyamból származik. A jobb oldali illesztési feltétel az a második adatfolyam, amely csatlakozik a csatlakozáshoz az alján, amely közvetlen összekötő egy másik streamnek vagy egy másik streamre mutató hivatkozásnak.
 
-Ön legalább 1 (1..n) illesztési feltételek megadása kötelező. Ezek lehetnek vagy hivatkozott közvetlenül, a legördülő menüből, vagy kifejezések kiválasztott mezők.
+Legalább 1 (1. n) csatlakozási feltételt kell megadnia. Lehetnek közvetlenül hivatkozott mezők, amelyek a legördülő menüben vagy kifejezésekben vannak kiválasztva.
 
-## <a name="join-performance-optimizations"></a>Csatlakozzon a teljesítmény optimalizálása
+## <a name="join-performance-optimizations"></a>Csatlakozás a teljesítmény optimalizálásához
 
-Egyesítési való csatlakozás SSIS hasonló eszközben, ellentétben az ADF adatfolyam Join nem kötelező egyesítési az illesztési művelet. Az illesztési kulcsok, ezért nem kell először lehet rendezni. A csatlakoztatási műveletet a Spark használatával Databricks Spark optimális join művelet alapján történik: Szórási / térkép oldali illesztési:
+Az egyesítési Illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az ADF-adatfolyamban való csatlakozás nem kötelező egyesítő illesztési művelet. Ezért az illesztési kulcsokat nem kell elsőként rendezni. Az illesztési művelet a Spark optimális illesztési művelete alapján fog történni: Szórás/Térkép – csatlakozás:
 
-![Csatlakozzon az átalakítási optimalizálása](media/data-flow/joinoptimize.png "csatlakozzon optimalizálása")
+![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "illesztés optimalizálása")
 
-Ha az adatkészlet illeszkednek a Databricks munkavégző csomópont a memóriába, azt is optimalizálhatja a Join teljesítményt. Azt is megadhatja, hogy a Join művelet jobban illeszkednek a memóriába worker kiszolgálónként adatkészletek létrehozása az adatok particionálása.
+Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja az illesztési teljesítményt. Az illesztési művelet során az adatai particionálását is megadhatja olyan adatkészletek létrehozásához, amelyek jobban illeszkednek a memóriába egy munkavégzőn.
 
-## <a name="self-join"></a>Önillesztés
+## <a name="self-join"></a>Önálló csatlakozás
 
-Az ADF adatfolyam önillesztést feltételek a válassza egy meglévő adatfolyam alias átalakítással használatával érheti el. Először is hozzon létre egy "új ágat" streamből, majd hozzáadásához jelölje ki az alias a teljes eredeti adatfolyam.
+A meglévő streamek aliasának kiválasztása lehetőséggel az átalakítás lehetőséget választva önillesztési feltételeket érhet el az ADF-adatfolyamban. Először hozzon létre egy "új ágat" egy adatfolyamból, majd adjon hozzá egy kijelölést a teljes eredeti adatfolyamhoz.
 
-![Önillesztés](media/data-flow/selfjoin.png "Önillesztés")
+![Önillesztés saját](media/data-flow/selfjoin.png "illesztéssel")
 
-A fenti ábrán a Select transformaci tetején. Az összes műveletet az aliasképző "OrigSourceBatting" az eredeti adatfolyam. A kijelölt illesztési átalakítás alatta látható, hogy vesszük a Select alias stream a jobb oldali illesztési lehetővé teszi számunkra, hogy ugyanazzal a kulccsal az bal és jobb oldalán a belső illesztéssel hivatkozhat.
+A fenti ábrán az átalakító kijelölése felül van. A művelet során a rendszer az eredeti streamet aliasként "OrigSourceBatting". Az alább látható összekapcsolási átalakítóban láthatja, hogy ezt a Select alias streamet használjuk a jobb oldali csatlakozáshoz, ami lehetővé teszi, hogy ugyanarra a kulcsra hivatkozzon a belső illesztés bal & jobb oldalán.
 
 ## <a name="composite-and-custom-keys"></a>Összetett és egyéni kulcsok
 
-Egyéni és összetett kulcsokat hozhat létre menet közben belső illesztés átalakítását. A további illesztési oszlopok az egyes kapcsolati sor melletti a plusz jelre (+) sorokat adhat hozzá. Vagy egy új kulcs értéket a működés közbeni illesztési számnak a Kifejezésszerkesztő számítási.
+Az illesztési transzformáción belül egyéni és összetett kulcsokat is létrehozhat menet közben. Sorok hozzáadása a további illesztési oszlopokhoz az egyes kapcsolati sorok melletti plusz jelre (+). Vagy egy új kulcs értékének kiszámítása a Kifejezésszerkesztő egy on-the-fly JOIN értékhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Csatlakozás adatok, után használhatja majd [hozhat létre új oszlopokat](data-flow-derived-column.md) és [az adatok gyűjtése a célként megadott adattárba](data-flow-sink.md).
+Az adategyesítést követően [új oszlopokat hozhat létre](data-flow-derived-column.md) , és [az adatait a célhely adattárában](data-flow-sink.md)is elvégezheti.

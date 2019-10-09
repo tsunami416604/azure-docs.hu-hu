@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés hozzáadása az Azure Mobile Apps iOS rendszeren
-description: Ismerje meg, hogyan hitelesítheti a felhasználókat az IOS-es alkalmazás identitás-szolgáltatóktól, többek között az aad-ben, Google, Facebook, Twitter és a Microsoft számos az Azure Mobile Apps segítségével.
+title: Hitelesítés hozzáadása az iOS-ben az Azure Mobile Apps
+description: Ismerje meg, hogyan hitelesítheti az iOS-alkalmazások felhasználóit az Azure Mobile Apps használatával különböző identitás-szolgáltatók, például a HRE, a Google, a Facebook, a Twitter és a Microsoft segítségével.
 services: app-service\mobile
 documentationcenter: ios
 author: elamalani
@@ -14,38 +14,38 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 88e278ced5cbddb132cdc2f760864df119762088
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 674d5f783f43011ba154b668cea4ec41f6a945f5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449131"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025283"
 ---
-# <a name="add-authentication-to-your-ios-app"></a>Hitelesítés hozzáadása az iOS-alkalmazás
+# <a name="add-authentication-to-your-ios-app"></a>Hitelesítés hozzáadása iOS-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-users) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
-Ebben az oktatóanyagban a hitelesítés hozzáadása az [iOS – gyorsútmutató] projekt támogatott identitásszolgáltatóval. Ez az oktatóanyag alapján a [iOS – gyorsútmutató] oktatóanyaggal, amely először el kell végeznie.
+Ebben az oktatóanyagban egy támogatott identitás-szolgáltató használatával adja hozzá a hitelesítést az [iOS – első lépések] projekthez. Ez az oktatóanyag az [iOS – első lépések] oktatóanyagán alapul, amelyet először végre kell hajtania.
 
-## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és konfigurálja az App Service-ben
+## <a name="register"></a>Az alkalmazás regisztrálása a hitelesítéshez és a App Service konfigurálása
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címek
+## <a name="redirecturl"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címekhez
 
-Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatározása.  Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejeződése után.  Ebben az oktatóanyagban azt használja az URL-séma _appname_ során.  Bármely URL-séma választja is használhatja.  A mobilalkalmazás egyedinek kell lennie.  Th kiszolgálói oldalon az átirányítás engedélyezése:
+A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazáshoz.  Ez lehetővé teszi, hogy a hitelesítési rendszer visszairányítsa az alkalmazást az alkalmazásba a hitelesítési folyamat befejezése után.  Ebben az oktatóanyagban az URL-séma _AppName_ használjuk az egészben.  Használhat azonban bármely kiválasztott URL-címet.  Egyedinek kell lennie a Mobile-alkalmazás számára.  Az átirányítás engedélyezése a következő kiszolgálóoldali oldalon:
 
-1. Az a [Azure Portal], válassza ki az App Service.
+1. A [Azure Portal]válassza ki a app Service.
 
-2. Kattintson a **hitelesítési / engedélyezési** menüpont.
+2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Kattintson a **Azure Active Directory** alatt a **hitelesítésszolgáltatók** szakaszban.
+3. Kattintson **Azure Active Directory** a **hitelesítési szolgáltatók** szakaszban.
 
-4. Állítsa be a **felügyeleti mód** való **speciális**.
+4. Állítsa a **felügyeleti módot** a **speciális**értékre.
 
-5. Az a **engedélyezett külső átirányítási URL-címeket**, adja meg `appname://easyauth.callback`.  A _appname_ Ez a karakterlánc a következő az URL-séma esetében.  Normál URL-cím-specifikáció (használata betűket és csak számokból állhat, és betűvel kezdődhet) protokoll, érdemes követnie.  Meg kell jegyezze fel a karakterlánc, amely úgy dönt, mert szüksége lesz a mobilalkalmazás-kód az URL-séma több helyen való beállításához.
+5. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `appname://easyauth.callback` értéket.  A karakterláncban szereplő _AppName_ a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 6. Kattintson az **OK** gombra.
 
@@ -54,12 +54,12 @@ Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatároz
 ## <a name="permissions"></a>A hitelesített felhasználók engedélyeinek korlátozása
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához. Kivétel jelenik meg, mert az alkalmazást próbál meg hozzáférni a háttérrendszer nem hitelesített felhasználóként, de a *TodoItem* táblázat most már hitelesítést igényel.
+A Xcode-ben kattintson a **Futtatás** gombra az alkalmazás elindításához. Kivétel keletkezik, mert az alkalmazás nem hitelesített felhasználóként próbál hozzáférni a háttérhez, de a *TodoItem* -táblához már hitelesítés szükséges.
 
-## <a name="add-authentication"></a>Hitelesítés hozzáadása alkalmazáshoz
+## <a name="add-authentication"></a>Hitelesítés hozzáadása az alkalmazáshoz
 **Objective-C**:
 
-1. A Mac számítógépén nyissa meg a *QSTodoListViewController.m* az xcode-ban, és adja hozzá a következő metódust:
+1. A Mac számítógépen nyissa meg a *QSTodoListViewController. m* Xcode, és adja hozzá a következő metódust:
 
     ```Objective-C
     - (void)loginAndGetData
@@ -81,11 +81,11 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok][1] az alkalmazásban.
+    Változtassa meg a *Google* -t *MicrosoftAccount*, *Twitter*-, *Facebook*-vagy *windowsazureactivedirectory* , ha nem a Google-t használja az identitás-szolgáltatóként. Ha a Facebookot használja, az alkalmazásban engedélyeznie kell a [Facebook-tartományokat][1] .
 
-    Cserélje le a **urlScheme** és a egy egyedi nevet az alkalmazásnak.  A urlScheme legyen ugyanaz, mint a megadott URL-séma protokoll a **engedélyezett külső átirányítási URL-címeket** mezőt az Azure Portalon. A urlScheme a hitelesítés-visszahívás használják a hitelesítési kérelem befejeződése után az alkalmazásnak váltani.
+    Cserélje le a **urlScheme** az alkalmazás egyedi nevére.  A urlScheme meg kell egyeznie a Azure Portal **engedélyezett külső átirányítási URL-címek** mezőjében megadott URL-séma protokollal. A hitelesítési visszahívás a urlScheme használja, hogy visszaváltson az alkalmazásra a hitelesítési kérelem befejeződése után.
 
-2. Cserélje le `[self refresh]` a `viewDidLoad` a *QSTodoListViewController.m* a következő kóddal:
+2. Cserélje le a `[self refresh]` értéket a *QSTodoListViewController. m* `viewDidLoad` értékre a következő kóddal:
 
     ```Objective-C
     [self loginAndGetData];
@@ -114,9 +114,9 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-   Adja ezt a kódot közvetlenül a sor olvasása előtt `#pragma mark - Core Data stack`.  Cserélje le a _appname_ a urlScheme értékkel, amely az 1. lépésben használt.
+   Adja hozzá ezt a kódot közvetlenül a `#pragma mark - Core Data stack` olvasását megelőzően.  Cserélje le a _AppName_ az 1. lépésben használt urlScheme értékre.
 
-5. Nyissa meg a `AppName-Info.plist` (az alkalmazás nevével cseréjét AppName) fájlt, és adja hozzá a következő kódot:
+5. Nyissa meg a `AppName-Info.plist` fájlt (cserélje le az AppName az alkalmazás nevére), és adja hozzá a következő kódot:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -132,15 +132,15 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     </array>
     ```
 
-    Ez a kód belül kell helyezni a `<dict>` elemet.  Cserélje le a _appname_ karakterlánc (az a tömbön belüli **CFBundleURLSchemes**) az 1. lépésben kiválasztott névre.  Végezhet is ezeket a módosításokat a plist-fájlt a szerkesztő – a gombra kattintva a `AppName-Info.plist` fájlt az xcode-ban nyissa meg a plist-szerkesztőt.
+    Ezt a kódot a `<dict>` elemen belül kell elhelyezni.  Cserélje le a _AppName_ karakterláncot (az **CFBundleURLSchemes**tömbön belül) az 1. lépésben kiválasztott alkalmazás nevével.  Ezeket a módosításokat a plist-szerkesztőben is elvégezheti – kattintson a XCode található `AppName-Info.plist` fájlra a plist-szerkesztő megnyitásához.
 
-    Cserélje le a `com.microsoft.azure.zumo` karakterlánc- **CFBundleURLName** az Apple-lel csomagazonosítója.
+    Cserélje le a `com.microsoft.azure.zumo` karakterláncot a **CFBundleURLName** az Apple Bundle azonosítójával.
 
-6. Nyomja meg *futtatása* indítsa el az alkalmazást, és ezután jelentkezzen be. Ha bejelentkezett, láthatja a teendőlistában és frissítéseket kell lennie.
+6. Kattintson a *Futtatás* gombra az alkalmazás elindításához, majd jelentkezzen be. Amikor bejelentkezett, meg kell tudnia tekinteni a teendők listáját, és frissítéseket kell készítenie.
 
-**SWIFT**:
+**Swift**:
 
-1. A Mac számítógépén nyissa meg a *ToDoTableViewController.swift* az xcode-ban, és adja hozzá a következő metódust:
+1. A Mac számítógépen nyissa meg a *ToDoTableViewController. Swift* Xcode, és adja hozzá a következő metódust:
 
     ```swift
     func loginAndGetData() {
@@ -167,17 +167,17 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-    Változás *google* való *microsoftaccount*, *twitter*, *facebook*, vagy *windowsazureactivedirectory* használatakor nem Google az identitás-szolgáltatóként. Ha használja a Facebookot, meg kell [engedélyezési lista Facebook tartományok][1] az alkalmazásban.
+    Változtassa meg a *Google* -t *MicrosoftAccount*, *Twitter*-, *Facebook*-vagy *windowsazureactivedirectory* , ha nem a Google-t használja az identitás-szolgáltatóként. Ha a Facebookot használja, az alkalmazásban engedélyeznie kell a [Facebook-tartományokat][1] .
 
-    Cserélje le a **urlScheme** és a egy egyedi nevet az alkalmazásnak.  A urlScheme legyen ugyanaz, mint a megadott URL-séma protokoll a **engedélyezett külső átirányítási URL-címeket** mezőt az Azure Portalon. A urlScheme a hitelesítés-visszahívás használják a hitelesítési kérelem befejeződése után az alkalmazásnak váltani.
+    Cserélje le a **urlScheme** az alkalmazás egyedi nevére.  A urlScheme meg kell egyeznie a Azure Portal **engedélyezett külső átirányítási URL-címek** mezőjében megadott URL-séma protokollal. A hitelesítési visszahívás a urlScheme használja, hogy visszaváltson az alkalmazásra a hitelesítési kérelem befejeződése után.
 
-2. Távolítsa el a sorokat `self.refreshControl?.beginRefreshing()` és `self.onRefresh(self.refreshControl)` végén `viewDidLoad()` a *ToDoTableViewController.swift*. Adja hozzá egy hívást `loginAndGetData()` a helyen:
+2. Távolítsa el a `self.refreshControl?.beginRefreshing()` és a `self.onRefresh(self.refreshControl)` sorokat a *ToDoTableViewController. swift*`viewDidLoad()` végén. Vegyen fel egy hívást a `loginAndGetData()` helyére:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Nyissa meg a `AppDelegate.swift` fájlt, és adja hozzá a következő sort a `AppDelegate` osztály:
+3. Nyissa meg a `AppDelegate.swift` fájlt, és adja hozzá a következő sort a `AppDelegate` osztályhoz:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -192,9 +192,9 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     }
     ```
 
-    Cserélje le a _appname_ a urlScheme értékkel, amely az 1. lépésben használt.
+    Cserélje le a _AppName_ az 1. lépésben használt urlScheme értékre.
 
-4. Nyissa meg a `AppName-Info.plist` (az alkalmazás nevével cseréjét AppName) fájlt, és adja hozzá a következő kódot:
+4. Nyissa meg a `AppName-Info.plist` fájlt (cserélje le az AppName az alkalmazás nevére), és adja hozzá a következő kódot:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -210,18 +210,18 @@ Az xcode-ban, nyomja le az ENTER **futtatása** az alkalmazás elindításához.
     </array>
     ```
 
-    Ez a kód belül kell helyezni a `<dict>` elemet.  Cserélje le a _appname_ karakterlánc (az a tömbön belüli **CFBundleURLSchemes**) az 1. lépésben kiválasztott névre.  Végezhet is ezeket a módosításokat a plist-fájlt a szerkesztő – a gombra kattintva a `AppName-Info.plist` fájlt az xcode-ban nyissa meg a plist-szerkesztőt.
+    Ezt a kódot a `<dict>` elemen belül kell elhelyezni.  Cserélje le a _AppName_ karakterláncot (az **CFBundleURLSchemes**tömbön belül) az 1. lépésben kiválasztott alkalmazás nevével.  Ezeket a módosításokat a plist-szerkesztőben is elvégezheti – kattintson a XCode található `AppName-Info.plist` fájlra a plist-szerkesztő megnyitásához.
 
-    Cserélje le a `com.microsoft.azure.zumo` karakterlánc- **CFBundleURLName** az Apple-lel csomagazonosítója.
+    Cserélje le a `com.microsoft.azure.zumo` karakterláncot a **CFBundleURLName** az Apple Bundle azonosítójával.
 
-5. Nyomja meg *futtatása* indítsa el az alkalmazást, és ezután jelentkezzen be. Ha bejelentkezett, láthatja a teendőlistában és frissítéseket kell lennie.
+5. Kattintson a *Futtatás* gombra az alkalmazás elindításához, majd jelentkezzen be. Amikor bejelentkezett, meg kell tudnia tekinteni a teendők listáját, és frissítéseket kell készítenie.
 
-App Service-hitelesítés alma Inter-alkalmazás kommunikációt használ.  A témáról további részletekért tekintse meg a [Apple dokumentációja][2]
+App Service a hitelesítés az Apple-alkalmazások közötti kommunikációt használ.  A témával kapcsolatos további részletekért tekintse meg az [Apple dokumentációját][2] .
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
 [Azure Portal]: https://portal.azure.com
 
-[iOS – gyorsútmutató]: app-service-mobile-ios-get-started.md
+[iOS – első lépések]: app-service-mobile-ios-get-started.md
 

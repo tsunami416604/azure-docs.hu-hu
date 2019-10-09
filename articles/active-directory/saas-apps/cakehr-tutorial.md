@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acedc081166c84935e3abfde8401b55c64156a7
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174581"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CakeHR
 
@@ -83,13 +83,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<yourcakedomain>.cake.hr/`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourcakedomain>.cake.hr/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<yourcakedomain>.cake.hr/services/saml/consume`
+    b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<yourcakedomain>.cake.hr/services/saml/consume`
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CakeHR ügyfélszolgálati [csapatához](mailto:info@cake.hr) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CakeHR ügyfélszolgálati [csapatához](mailto:info@cake.hr) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -137,15 +137,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a CakeHR vállalati webhelyre rendszergazdaként.
 
-2. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások**pontra.
+2. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások**pontra.
 
     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config01.png)
 
-3. A menüsáv bal oldalán kattintson az **integráció** > **SAML SSO** elemre, és hajtsa végre a következő lépéseket:
+3. A menüsáv bal oldalán kattintson az **integrációk** > **SAML SSO** elemre, és hajtsa végre a következő lépéseket:
 
      ![CakeHR-konfiguráció](./media/cakehr-tutorial/config02.png)
 
-     a. Az **entitás-azonosító** szövegmezőbe írja be `cake.hr`a következőt:.
+     a. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `cake.hr`.
 
      b. A **hitelesítés URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
@@ -163,7 +163,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ca
 
 1. Jelentkezzen be a CakeHR biztonsági rendszergazdaként.
 
-2. A menüsáv bal oldalán kattintson a **vállalati** > **Hozzáadás**elemre.
+2. A menüsáv bal oldalán kattintson a **vállalati**@no__t – 1**Hozzáadás**elemre.
 
     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config03.png)
 
@@ -173,7 +173,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ca
 
     a. A **teljes név** szövegmezőbe írja be a felhasználó nevét, például: B. Simon.
 
-    b. A **munkahelyi e-mailek** szövegmezőbe írja be a felhasználóhoz hasonló `B.Simon@contoso.com`e-mail-címet.
+    b. A **munkahelyi e-mailek** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: `B.Simon@contoso.com`.
 
     c. Kattintson a **fiók létrehozása**lehetőségre.
 

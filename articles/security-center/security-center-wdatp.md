@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 07934e3c7d9f61ecb4153e6a169882509a81dc75
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fb401226e9697afb71dfa7a30f9814e07c3422c2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241040"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028086"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>A Microsoft Defender komplex veszélyforrások elleni védelem Azure Security Center
 
@@ -70,7 +70,7 @@ A kiszolgálók Security Centerbe való bevezetéséhez kattintson az **Azure Se
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>A Microsoft Defender ATP-integráció engedélyezése
 
-Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza a **Security Center** > **díjszabása & beállításokat** > kattintson az előfizetésre.
+Ha meg szeretné tekinteni, hogy engedélyezve van-e a Microsoft Defender ATP-integrációja, válassza a **Security center** > **díjszabási & beállításait** > kattintson az előfizetésre.
 Itt láthatja az aktuálisan engedélyezett integrációkat.
 
   ![Azure Security Center veszélyforrások észlelésére vonatkozó beállítások lap, amelyen engedélyezve van a Microsoft Defender ATP-integráció](media/security-center-wdatp/enable-integrations.png)
@@ -107,7 +107,7 @@ Jóindulatú Microsoft Defender ATP-teszt riasztás létrehozása:
 
 3. Ha a parancs sikeres, egy új riasztás jelenik meg a Azure Security Center-irányítópulton és a Microsoft Defender ATP-portálon. Ez a riasztás néhány percet is igénybe vehet.
 
-4. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások** >  **gyanús PowerShell parancssori**elemre.
+4. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások** >  **gyanús PowerShell parancssori**elemre.
 
 5. A vizsgálat ablakban válassza ki a Microsoft Defender ATP-portálra mutató hivatkozást.
 

@@ -12,12 +12,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 748f49a3f6f36617271a1497ccac6c63821a7693
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945801"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024645"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
@@ -27,7 +27,7 @@ A webjobs olyan [Azure app Service](https://docs.microsoft.com/azure/app-service
 > [!IMPORTANT]
 > A webjobs-feladatok még nem támogatottak a Linux rendszeren való App Service.
 
-Ez a cikk bemutatja, hogyan telepíthet webjobs-feladatokat a [Azure Portal](https://portal.azure.com) használatával egy végrehajtható fájl vagy parancsfájl feltöltéséhez. További információ a webjobs-feladatok a Visual Studióval való fejlesztéséről és üzembe helyezéséről: webjobs- [feladatok üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md).
+Ez a cikk bemutatja, hogyan telepíthet webjobs-feladatokat a [Azure Portal](https://portal.azure.com) használatával egy végrehajtható fájl vagy parancsfájl feltöltéséhez. További információ a webjobs-feladatok a Visual Studióval való fejlesztéséről és üzembe helyezéséről: [Webjobs-feladatok üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md).
 
 A Azure WebJobs SDK a webjobs használatával számos programozási feladatot egyszerűsítheti. További információ: [Mi a Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
@@ -38,7 +38,7 @@ A Azure Functions egy másik módszert biztosít a programok és parancsfájlok 
 Az alábbi táblázat a *folyamatos* és az *aktivált* webjobs közötti különbségeket ismerteti.
 
 
-|Folyamatos  |Triggerrel indított  |
+|Folyamatos  |Kiváltott  |
 |---------|---------|
 | Azonnal elindul a Webjobs létrehozásakor. A feladatok befejezésének megtartásához a program vagy a szkript általában egy végtelen hurokon belül végzi a munkáját. Ha a feladattípus véget ért, újraindíthatja. | Csak akkor indul el, ha manuálisan vagy ütemezetten indítja el. |
 | Minden olyan példányon fut, amelyen a webalkalmazás fut. Lehetősége van arra is, hogy a Webjobs egyetlen példányra korlátozza. |Egyetlen példányban fut, amelyet az Azure kiválaszt a terheléselosztáshoz.|
@@ -67,7 +67,7 @@ when making changes in one don't forget the other two.
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a app Service webalkalmazás, az API-alkalmazás vagy a mobile app **app Service** lapját.
 
-2. Válasszaa webjobs elemet.
+2. Válassza a **Webjobs**elemet.
 
    ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
@@ -75,15 +75,15 @@ when making changes in one don't forget the other two.
 
     ![Webjobs lap](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Használja a táblázatban megadott **webjobs** -beállítások hozzáadása beállítást.
+3. Használja a táblázatban megadott Webjobs-beállítások **hozzáadása** beállítást.
 
    ![Webjobs hozzáadása lap](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Név** | myContinuousWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
-   | **Típusa** | Folyamatos | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
+   | **Name** | myContinuousWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Típus** | Folyamatos | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Méretezés** | Több példány | Csak a folyamatos webjobs-feladatok esetében érhető el. Meghatározza, hogy a program vagy a parancsfájl az összes példányon vagy csak egy példányon fusson-e. A több példányon való futtatás lehetősége nem vonatkozik az ingyenes vagy a közös [díjszabási szintekre](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
 4. Kattintson az **OK** gombra.
@@ -105,7 +105,7 @@ when making changes in one don't forget the other two.
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a app Service webalkalmazás, az API-alkalmazás vagy a mobile app **app Service** lapját.
 
-2. Válasszaa webjobs elemet.
+2. Válassza a **Webjobs**elemet.
 
    ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
@@ -113,16 +113,16 @@ when making changes in one don't forget the other two.
 
     ![Webjobs lap](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Használja a táblázatban megadott **webjobs** -beállítások hozzáadása beállítást.
+3. Használja a táblázatban megadott Webjobs-beállítások **hozzáadása** beállítást.
 
    ![Webjobs hozzáadása lap](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Név** | myTriggeredWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_".|
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
-   | **Típusa** | Triggerrel indított | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
-   | **Eseményindítók** | Manuális | |
+   | **Name** | myTriggeredWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_".|
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
+   | **Eseményindítók** | Kézi | |
 
 4. Kattintson az **OK** gombra.
 
@@ -132,7 +132,7 @@ when making changes in one don't forget the other two.
 
 7. A Webjobs futtatásához kattintson a jobb gombbal a nevére a listában, majd kattintson a **Futtatás**parancsra.
    
-    ![WebJobs-feladat futtatása](./media/web-sites-create-web-jobs/runondemand.png)
+    ![Webjobs futtatása](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateScheduledCRON"></a>Ütemezett Webjobs létrehozása
 
@@ -143,7 +143,7 @@ when making changes in one don't forget the other two.
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a app Service webalkalmazás, az API-alkalmazás vagy a mobile app **app Service** lapját.
 
-2. Válasszaa webjobs elemet.
+2. Válassza a **Webjobs**elemet.
 
    ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
 
@@ -151,17 +151,17 @@ when making changes in one don't forget the other two.
 
    ![Webjobs lap](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Használja a táblázatban megadott **webjobs** -beállítások hozzáadása beállítást.
+3. Használja a táblázatban megadott Webjobs-beállítások **hozzáadása** beállítást.
 
    ![Webjobs hozzáadása lap](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Név** | myScheduledWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
-   | **Típusa** | Triggerrel indított | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
-   | **Eseményindítók** | Ütemezett | Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.|
-   | **CRON kifejezés** | 0 0/20 * * * * | A [cron](#ncrontab-expressions) -kifejezéseket a következő szakasz ismerteti. |
+   | **Name** | myScheduledWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
+   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
+   | **Eseményindítók** | Ütemezett | Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.|
+   | **CRON kifejezés** | 0 0/20 * * * * | A [cron-kifejezéseket](#ncrontab-expressions) a következő szakasz ismerteti. |
 
 4. Kattintson az **OK** gombra.
 
@@ -197,7 +197,7 @@ További információ: [aktivált Webjobs ütemezése](webjobs-dotnet-deploy-vs.
 
    Ha egy különálló böngészőablakban szeretné megtekinteni a kimeneti szöveget, válassza a **Letöltés**lehetőséget. A szöveg letöltéséhez kattintson a jobb gombbal a **Letöltés** elemre, és használja a böngésző beállításait a fájl tartalmának mentéséhez.
    
-5. Válassza ki az oldal tetején található webjobs navigációs hivatkozást, hogy megnyissa a webjobs-feladatok listáját.
+5. Válassza ki az oldal tetején található **webjobs** navigációs hivatkozást, hogy megnyissa a webjobs-feladatok listáját.
 
     ![Webjobs morzsa](./media/web-sites-create-web-jobs/breadcrumb.png)
    

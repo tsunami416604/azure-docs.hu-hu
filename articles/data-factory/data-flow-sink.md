@@ -6,48 +6,48 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515663"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029241"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Az adatfolyamatok átalakítását követően az adatokat egy célként megadott adatkészletbe lehet elosztani. A fogadó átalakításban válassza ki a cél kimeneti adatokat tartalmazó adatkészlet-definíciót. Az adatáramláshoz annyi fogadó átalakításra van szükség.
 
 A sémák eltolódásának és a bejövő adatváltozások változásainak a megadásához a kimeneti adatkészletben definiált séma nélküli mappába kell Elsüllyedni a kimeneti adatokat. A forrásokban lévő oszlopok változásait is figyelembe veheti, ha kiválasztja a **séma-eltolódás engedélyezése** lehetőséget a forrásban. Ezután a fogadó összes mezőjét AutoMapa.
 
-A fogadó ![lapon megjelenő beállítások, beleértve az automatikus leképezés lehetőséget is](media/data-flow/sink1.png "1") . fogadó
+A fogadó ![lapon megjelenő beállítások, beleértve az automatikus Térkép kapcsolót](media/data-flow/sink1.png "1")
 
 Az összes bejövő mező elfogadásához kapcsolja be az **automatikus leképezést**. A célhelyre befogadó mezők kiválasztásához, illetve a célhelyen lévő mezők nevének módosításához kapcsolja ki az **automatikus leképezést**. Ezután nyissa meg a **leképezés** lapot a kimeneti mezők leképezéséhez.
 
-![Beállítások a leképezés lapon](media/data-flow/sink2.png "2") . fogadó
+![A leképezés lap](media/data-flow/sink2.png "2") . fogadójának beállításai
 
 ## <a name="output"></a>Output 
 Az Azure Blob Storage-hoz vagy a Data Lake Storage fogadó típushoz az átalakított adatokat egy mappába írja. A Spark particionált kimeneti adatfájlokat hoz létre a fogadó átalakítás által használt particionálási séma alapján. 
 
 Az **optimalizálás** lapon állíthatja be a particionálási sémát. Ha azt szeretné, Data Factory hogy egyetlen fájlba egyesítse a kimenetet, válassza az **egyetlen partíció**lehetőséget.
 
-![Beállítások az optimalizálás lapon] fogadó (media/data-flow/opt001.png "beállításai")
+![Az optimalizálás lap]fogadó(media/data-flow/opt001.png "lehetőségeinek") beállításai
 
 ## <a name="field-mapping"></a>Mező-hozzárendelés
 A fogadó átalakítás **leképezés** lapján a bal oldali bejövő oszlopok a jobb oldalon lévő célhelyekre képezhetők le. Amikor adatfolyamatokat másol a fájlokhoz, Data Factory mindig új fájlokat fog írni egy mappába. Ha adatbázis-adatkészlethez rendel leképezést, akkor az adatbázis-táblázat műveleti lehetőségei közül választhatja a Beszúrás, a frissítés, a upsert vagy a Törlés lehetőséget.
 
-![A leképezés lap](media/data-flow/sink2.png "Mosogatók")
+![A leképezés lap](media/data-flow/sink2.png "elsüllyed")
 
 A leképezési táblában több oszlop összekapcsolására, több oszlop leválasztására vagy több sor azonos nevű oszlopra való hozzárendelésére van lehetőség.
 
 Ha a mezők bejövő készletét mindig egy célként szeretné leképezni, és a rugalmas sémákat teljes mértékben el szeretné fogadni, válassza a **séma drift engedélyezése**lehetőséget.
 
-![A leképezés lap, amely az adatkészlet oszlopaihoz rendelt mezőket mutatja](media/data-flow/multi1.png "több lehetőség")
+![A leképezés lap, amely az adatkészlet oszlopaihoz rendelt mezőket jeleníti meg](media/data-flow/multi1.png "több lehetőség") között
 
 Az oszlop-hozzárendelések alaphelyzetbe állításához válassza az **újbóli leképezés**lehetőséget.
 
-![A fogadó lap] Fogadó (media/data-flow/sink1.png "egy")
+![A fogadó lap]fogadója(media/data-flow/sink1.png "egy")
 
 Válassza a **séma ellenőrzése** lehetőséget, ha a séma megváltozásakor a fogadó meghibásodik.
 
@@ -56,7 +56,7 @@ Válassza **a mappa törlése** elemet a fogadó mappa tartalmának kivágásáh
 ## <a name="rule-based-mapping"></a>Szabály alapú leképezés
 Az automatikus leképezés kikapcsolásakor lehetősége van az oszlop alapú leképezés (rögzített leképezés) vagy a szabályokon alapuló leképezés hozzáadására is. A szabályon alapuló leképezés lehetővé teszi, hogy a kifejezéseket minta egyeztetéssel írja. 
 
-![Szabály alapú leképezés](media/data-flow/rules4.png "Szabály alapú leképezés")
+![Szabályon alapuló leképezési](media/data-flow/rules4.png "szabály alapú leképezés")
 
 Ha a szabály alapú leképezést választja, akkor a rendszer az ADF-et arra utasítja, hogy értékelje a megfelelő kifejezést a bejövő mintázat szabályainak megfelelően, és adja meg a kimenő mezők nevét. A mezők és a szabályokon alapuló leképezések tetszőleges kombinációját felveheti. A mezőneveket a forrástól érkező bejövő metaadatok alapján, az ADF futásidőben generálja a rendszer. A generált mezők neve a hibakeresés során és az adatelőnézet panelen tekinthető meg.
 
@@ -79,7 +79,7 @@ Fájl elnevezésének beállítása:
 
 Adatbázis-beállítások kiválasztása:
 
-![A beállítások lap, amely az SQL-fogadó beállításait mutatja](media/data-flow/alter-row2.png "SQL-beállítások")
+![A Settings (beállítások) lap, amely az SQL-fogadó lehetőségeinek SQL-](media/data-flow/alter-row2.png "beállításait")
 
 * **Frissítési módszer**: Az alapértelmezett érték a beszúrások engedélyezése. Ha le szeretné állítani a forrásból az új sorok beszúrását, törölje a **Beszúrás engedélyezése** jelölőnégyzet jelölését. A sorok frissítéséhez, upsert vagy törléséhez először adjon hozzá egy Alter-Row transzformációt a műveletekhez tartozó sorok címkézéséhez. 
 * **Tábla újbóli létrehozása**: Dobja el vagy hozza létre a cél táblát az adatfolyam befejeződése előtt.
@@ -88,12 +88,12 @@ Adatbázis-beállítások kiválasztása:
 * **Előkészítés engedélyezése**: Ha az Azure-adattárházat a fogadó adatkészletként tölti be, használja a Base-t.
 * **SQL-szkriptek előtti és utáni parancsfájlok**: Adja meg azokat a többsoros SQL-parancsfájlokat, amelyeket a rendszer a (pre-Processing) és a (post-Processing) adatainak a fogadó adatbázisba való beírása előtt végrehajt.
 
-![SQL-feldolgozási parancsfájlok előzetes és utáni feldolgozása](media/data-flow/prepost1.png "SQL-feldolgozási parancsfájlok")
+![SQL-feldolgozási parancsfájlok előzetes és utáni SQL-](media/data-flow/prepost1.png "feldolgozási parancsfájljai")
 
 > [!NOTE]
 > Az adatforgalomban Data Factory, hogy új tábla-definíciót hozzon létre a céladatbázis használatával. A tábla definíciójának létrehozásához állítson be egy adatkészletet a fogadó átalakításban, amely új táblanév néven szerepel. Az SQL-adatkészletben a tábla neve alatt válassza a **Szerkesztés** lehetőséget, és adjon meg egy új táblanév nevet. Ezután a fogadó átalakításban kapcsolja be a **séma-eltolódás engedélyezése lehetőséget**. Az **importálási séma** beállítása **none**értékre.
 
-![SQL-adatkészlet beállításai, amely a tábla nevének szerkesztésének helyét mutatja](media/data-flow/dataset2.png "SQL-séma")
+![SQL-adatkészlet beállításai, amely a táblanév SQL-séma szerkesztésének helyét mutatja](media/data-flow/dataset2.png "")
 
 > [!NOTE]
 > Az adatbázis-fogadóban lévő sorok frissítésekor vagy törlésekor a kulcs oszlopot kell megadnia. Ez a beállítás lehetővé teszi, hogy az Alter-Row transzformáció meghatározza az adatátviteli függvénytár (DML) egyedi sorát.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d0810c393cf9b6060f456c5ff01d03673b62a9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 6d8fdc8ba2337a3be49a4645e48a45120fb0ccec
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026094"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-watch-by-colors"></a>Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory a Watch by Colors használatával
 
@@ -80,11 +80,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
+1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.colorscorporation.com/login`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://app.colorscorporation.com/login`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -98,7 +98,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -132,7 +132,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani az órát, nyisson meg egy új böngészőablakot, és jelentkezzen be a Watch by Colors vállalati webhely rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A lap jobb felső sarkában kattintson a **profil** > **Fiókbeállítások** > **egyszeri bejelentkezés (egyszeri bejelentkezés)** elemre.
+4. Az oldal jobb felső sarkában kattintson a **profil** > **Fiókbeállítások** > **egyszeri bejelentkezés (egyszeri bejelentkezés)** lehetőségre.
 
     ![Megtekintés színek szerint – konfiguráció](./media/watch-by-colors-tutorial/config01.png)
 
@@ -156,7 +156,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a sz
 
 1. A színek biztonsági rendszergazdaként való megtekintéséhez jelentkezzen be.
 
-1. A lap jobb felső sarkában kattintson a **profil** > **felhasználók** > **felhasználó hozzáadása**elemre.
+1. Az oldal jobb felső sarkában kattintson a **profil** > **felhasználók** > **felhasználó hozzáadása**elemre.
 
     ![Megtekintés színek szerint – konfiguráció](./media/watch-by-colors-tutorial/config03.png)
 
@@ -168,7 +168,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a sz
 
     b. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-    c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló `B.Simon@contoso.com`e-mail címet.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználó e-mail címét, például `B.Simon@contoso.com`.
 
     d. A **jelszó** szövegmezőbe írja be a jelszót.
 

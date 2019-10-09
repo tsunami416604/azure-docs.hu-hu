@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: aaff1d5e657b8acb28293f3450849b1446727680
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130406"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030792"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Frissítse big data Analytics-megoldásait Azure Data Lake Storage Gen1ról Azure Data Lake Storage Gen2
 
@@ -115,12 +115,12 @@ A felügyeleti API-k segítségével kezelheti a fiókokat, míg a fájlrendszer
 
 Data Lake Storage Gen1 használata esetén a végpontok közötti folyamatok számos Microsoft-szolgáltatások és termékek is használhatja. Ezek a szolgáltatások és termékek együttműködve Data Lake Storage Gen1 közvetlenül vagy közvetve. Ez a táblázat a szolgáltatások listáját jeleníti meg, hogy azt dolgozhat a Data Lake Storage Gen1 úgy módosítottuk, és látható, melyeket jelenleg kompatibilis a Data Lake Storage Gen2.
 
-| **Terület**             | **Data Lake Storage Gen1 rendelkezésre állása**                                                                                                                                    | **Megosztott kulcsos hitelesítés a Data Lake Storage Gen2 – rendelkezésre állás**                                                                                                           | **Rendelkezésre állás, a Data Lake Storage Gen2 – OAuth-val**                                                                                        |
+| **Terület**             | **Data Lake Storage Gen1 rendelkezésre állása**                                                                                                                                    | **Megosztott kulcsos hitelesítés a Data Lake Storage Gen2 – rendelkezésre állás**                                                                                                           | **Rendelkezésre állás, a Data Lake Storage Gen2 – OAuth-val**                                                                                        |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | Elemzési keretrendszer  | [Az Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure-datalake/index.html)                                                                                       | *Már elérhető*                                                                                                                                                              | *Már elérhető*                                                                                                                                 |
 |                      | [HDInsight](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)                                                               | [HDInsight](https://docs.microsoft.com/azure/storage/data-lake-storage/quickstart-create-connect-hdi-cluster) 3.6 - *mostantól elérhető* HDInsight 4.0 - *még nem érhető el*      | HDInsight 3,6 ESP – *most elérhető* <br><br>  HDInsight 4,0 ESP – *még nem érhető el*                                                                 |
-|                      | Databricks futtatókörnyezete 3.1-es vagy újabb verzió                                                                                                                                               | [Databricks Runtime 5,1 és újabb](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html#azure-data-lake-storage-gen2) verziók *-Jelenleg elérhető* | [Databricks Runtime 5,1 és újabb](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html#azure-data-lake-storage-gen2) verziók – *mostantól elérhető*                                                                                              |
-|                      | [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)                                            | *Nem támogatott*                                                                                                                                                              | *Most már elérhető* [Hivatkozás](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-2017) |
+|                      | Databricks futtatókörnyezete 3.1-es vagy újabb verzió                                                                                                                                               | [Databricks Runtime 5,1 és újabb](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html#azure-data-lake-storage-gen2) *verzió érhető el* | [Databricks Runtime 5,1 és újabb](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html#azure-data-lake-storage-gen2) verziók – *mostantól elérhető*                                                                                              |
+|                      | [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)                                            | *Nem támogatott*                                                                                                                                                              | *Elérhető most* [hivatkozás](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-2017) |
 | Adatintegráció     | [Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-store)                                                                                | [2. verzió](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) – az 1. verzió *már elérhető* – *nem támogatott*                               | [2. verzió](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage) – *jelenleg elérhető* <br><br> 1\. verzió – *nem támogatott*  |
 |                      | [Az AdlCopy](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)                                                                 | *Nem támogatott*                                                                                                                                                              | *Nem támogatott*                                                                                                                                 |
 |                      | [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017) | *Még nem érhető el*                                                                                                                                                          | *Még nem érhető el*                                                                                                                             |
@@ -245,11 +245,11 @@ Alkalmazásokat hozhat létre a Data Lake Storage Gen1 vagy a Data Lake Storage 
 
 #### <a name="uri-changes"></a>URI-módosítások
 
-A fő feladat az URI-k lefordítása, amelyeknek `adl://` `abfss://` előtaggal kell rendelkezniük az URI azonosítóhoz.
+A fő feladat az URI-k lefordítása, amelyek `adl://` előtaggal rendelkeznek az URI-k `abfss://` előtaggal.
 
 Schéma URI Pro Data Lake Storage Gen1 említett [Itt](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) részletei, de Összefoglalva elmondható, a rendszer *adl://mydatalakestore.azuredatalakestore.net/\<fájl_elérési_útja\>.*
 
-A Data Lake Storage Gen2 fájlok eléréséhez szükséges URI-sémát részletesen ismertetjük, de széles körben szólva. [](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+A Data Lake Storage Gen2 fájlok eléréséhez szükséges URI-sémát részletesen ismertetjük, de [általánosságban a @no__t](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) -1.
 
 Haladjon végig a meglévő alkalmazásokkal, és győződjön meg arról, hogy módosította az URI-k megfelelően, Data Lake Storage Gen2-re mutasson kell megjelennek. Emellett szüksége adja hozzá a megfelelő hitelesítő adatokat. Végül hogyan az eredeti telepítéséhez, és cserélje le az új alkalmazást kell szorosan össze kell hangolni a teljes frissítési stratégia.
 

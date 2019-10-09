@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181147"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028935"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight
 
@@ -27,7 +27,7 @@ A helyszíni Apache Hadoop fájlrendszer (HDFS) címtár-struktúrája újra lé
 
 A HDInsight-fürtök az Azure Storage-ban lévő BLOB-tárolót az alapértelmezett fájlrendszerként vagy egy további fájlrendszerként is használhatják. A standard szintű Storage-fiók támogatott a HDInsight-fürtökkel való használathoz. A Premier szintű csomag nem támogatott. Az alapértelmezett Blob-tároló a fürtre jellemző információkat, például a feladatelőzményeket és a naplókat tárolja. Egy blobtároló alapértelmezett fájlrendszerként való, több fürt közötti megosztása nem támogatott.
 
-A létrehozási folyamatban és a hozzájuk tartozó kulcsokban `%HADOOP_HOME%/conf/core-site.xml` definiált tárolási fiókok a fürtcsomópontokon találhatók. A HDFS konfigurációjában a Ambari felhasználói felületén a "Custom Core site" szakaszban is elérhetők. Alapértelmezés szerint a Storage-fiók kulcsa titkosítva van, és a rendszer egy egyéni visszafejtési parancsfájlt használ a kulcsok visszafejtéséhez, mielőtt a rendszer átadja a Hadoop démonoknak. A feladatok, például a kaptár, a MapReduce, a Hadoop streaming és a Pig, elvégezhetik a Storage-fiókok és-metaadatok leírását.
+A létrehozási folyamatban és a hozzájuk tartozó kulcsokban definiált Storage-fiókok tárolása a fürtcsomópontokon `%HADOOP_HOME%/conf/core-site.xml`. A HDFS konfigurációjában a Ambari felhasználói felületén a "Custom Core site" szakaszban is elérhetők. Alapértelmezés szerint a Storage-fiók kulcsa titkosítva van, és a rendszer egy egyéni visszafejtési parancsfájlt használ a kulcsok visszafejtéséhez, mielőtt a rendszer átadja a Hadoop démonoknak. A feladatok, például a kaptár, a MapReduce, a Hadoop streaming és a Pig, elvégezhetik a Storage-fiókok és-metaadatok leírását.
 
 Az Azure Storage lehet földrajzilag replikálható. Bár a Geo-replikáció földrajzi helyreállítást és adatredundanciát biztosít, a földrajzilag replikált helyre történő feladatátvétel jelentős hatással van a teljesítményre, és további költségekkel járhat. A javaslat célja, hogy a Geo-replikációt okosan válassza, és csak akkor, ha az adatértékek további költségeket érnek el.
 
@@ -42,7 +42,7 @@ Az alábbi formátumok egyike használható az Azure Storage-ban tárolt adatel�
 
 Az [Azure Storage skálázhatósági és teljesítménybeli céljai](../../storage/common/storage-scalability-targets.md) az Azure Storage-fiókok jelenlegi korlátozásait listázza. Ha az alkalmazás igényei meghaladják az egyetlen Storage-fiók skálázhatósági céljait, az alkalmazás több Storage-fiók használatára is felépíthető, majd az adatobjektumok particionálása a Storage-fiókok között.
 
-[Azure Storage Analytics az összes](../../storage/storage-analytics.md)tárolási szolgáltatáshoz biztosít metrikákat, és a Azure Portal konfigurálható a diagramok használatával megjeleníthető mérőszámok gyűjtése.  A riasztások akkor hozhatók létre, ha elérik a tárolási erőforrás metrikáinak küszöbértékeit.
+[Azure Storage Analytics](../../storage/storage-analytics.md) provides metrikák az összes tárolási szolgáltatáshoz és Azure Portal konfigurálható mérőszámok gyűjtése a diagramok megjelenítéséhez. A riasztások akkor hozhatók létre, ha elérik a tárolási erőforrás metrikáinak küszöbértékeit.
 
 Az Azure Storage helyreállítható [törlést biztosít a blob-objektumok](../../storage/blobs/storage-blob-soft-delete.md) számára az adatok helyreállításához, ha az alkalmazás vagy más Storage-fiók felhasználója véletlenül módosítja vagy törölte azokat.
 
@@ -94,11 +94,11 @@ Azure Data Lake Storage Gen2 a legújabb tárolási ajánlat. A Azure Data Lake 
 
 A 2. generációs ADLS az [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) -ra épül, és lehetővé teszi az adatkapcsolatot a fájlrendszer és az objektum tárolási paradigma használatával. A [Azure Data Lake Storage Gen1](../../data-lake-store/index.md)(például a fájlrendszer szemantikaa, a fájl szintű biztonság és a skálázás) funkciói az alacsony költségeket, a többszintű tárolást, a magas rendelkezésre állást és a vész-helyreállítási képességeket, valamint az Azure egy nagy SDK/szerszámozási ökoszisztémáját kombinálják [ BLOB Storage](../../storage/blobs/storage-blobs-introduction.md). Data Lake Storage Gen2 az objektumok tárterületének összes tulajdonsága továbbra is az elemzési számítási feladatokhoz optimalizált fájlrendszer-felület előnyeit egészíti ki.
 
-A Data Lake Storage Gen2 alapvető funkciója a blob Storage szolgáltatás [hierarchikus névtérének](../../storage/data-lake-storage/namespace.md) hozzáadása, amely objektumokat és fájlokat szervez a könyvtárak hierarchiájában az elvégezhető adathozzáféréshez. A hierarchikus struktúra lehetővé teszi olyan műveletek használatát, mint például a címtár átnevezése vagy törlése, hogy az egyetlen atomi metaadat-művelet legyen a címtárban, nem pedig az összes olyan objektum enumerálása és feldolgozása, amelyik a címtár nevének előtagját használja.
+A Data Lake Storage Gen2 alapvető funkciója egy [hierarchikus névtér](../../storage/data-lake-storage/namespace.md)hozzáadása  To a blob Storage szolgáltatáshoz, amely objektumokat és fájlokat szervez a könyvtárak hierarchiájában az elvégezhető adathozzáféréshez. A hierarchikus struktúra lehetővé teszi olyan műveletek használatát, mint például a címtár átnevezése vagy törlése, hogy az egyetlen atomi metaadat-művelet legyen a címtárban, nem pedig az összes olyan objektum enumerálása és feldolgozása, amelyik a címtár nevének előtagját használja.
 
 Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítmény, a felügyelet és biztonság területéhez. A Azure Data Lake Storage-(ADLS-) Gen2 legfontosabb funkciói a következők:
 
-- **Hadoop-kompatibilis hozzáférés**: Azure Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint egy [Hadoop-elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](../../storage/data-lake-storage/abfs-driver.md) az [Azure HDInsight](../index.yml)-ban található összes Apache Hadoop környezetben elérhető. Ez az illesztőprogram lehetővé teszi a Data Lake Storage Gen2ban tárolt adatelérést.
+- **Hadoop-kompatibilis hozzáférés**: Azure Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint egy [Hadoop-elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](../../storage/data-lake-storage/abfs-driver.md) Is az [Azure HDInsight](../index.yml)-ban található összes Apache Hadoop környezeten belül elérhető. Ez az illesztőprogram lehetővé teszi a Data Lake Storage Gen2ban tárolt adatelérést.
 
 - **POSIX-engedélyek felülbírálása**: A Data Lake Gen2 biztonsági modellje teljes mértékben támogatja az ACL-és POSIX-engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. A beállítások rendszergazdai eszközökön vagy a kaptáron vagy a Sparkon keresztül konfigurálhatók.
 
@@ -106,7 +106,7 @@ Múltbeli időpont felhőalapú elemzési kellett veszélyeztetheti a teljesítm
 
 - **A blob Storage-eszközökkel,-keretrendszerekkel és-alkalmazásokkal használható**: A Data Lake Storage Gen2 továbbra is együttműködik az eszközök, keretrendszerek és a blob Storage-hoz jelenleg létező alkalmazások széles skálájával.
 
-- **Optimalizált illesztőprogram**: Az Azure Blob fájlrendszer-illesztőprogram (ABFS) [kifejezetten](../../storage/data-lake-storage/abfs-driver.md) Big Data elemzésekhez van optimalizálva. A megfelelő REST API-k a dfs.core.windows.net elosztott fájlrendszerbeli végponton keresztül vannak felszínen.
+- **Optimalizált illesztőprogram**: Az Azure Blob fájlrendszer-illesztőprogram (ABFS) kifejezetten  for big data-elemzésre van [optimalizálva](../../storage/data-lake-storage/abfs-driver.md). A megfelelő REST API-k a dfs.core.windows.net elosztott fájlrendszerbeli végponton keresztül vannak felszínen.
 
 A következő formátumok egyike használható a ADLS Gen2ban tárolt adateléréshez:
 - `abfs:///`: A fürthöz tartozó alapértelmezett Data Lake Storage elérése.
@@ -163,29 +163,29 @@ A HDInsight alapértelmezés szerint teljes hozzáféréssel rendelkezik a fürt
     |storage_container_name|A Storage-fiók azon tárolója, amelyhez korlátozni kívánja a hozzáférést.|
     |example_file_path|A tárolóba feltöltött fájl elérési útja.|
 
-2. A SASToken.py-fájl tartalmazza az `ContainerPermissions.READ + ContainerPermissions.LIST` engedélyeket, és a használati eset alapján módosítható.
+2. A SASToken.py-fájl a `ContainerPermissions.READ + ContainerPermissions.LIST` engedélyekkel rendelkezik, és a használati eset alapján módosítható.
 
-3. Futtassa a szkriptet a következőképpen:`python SASToken.py`
+3. Futtassa a szkriptet a következőképpen: `python SASToken.py`
 
-4. Az alábbi szöveghez hasonló SAS-tokent jeleníti meg a parancsfájl befejeződése után:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Az alábbi szöveghez hasonló SAS-jogkivonatot jeleníti meg a parancsfájl befejeződése után: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
 5. A megosztott hozzáférési aláírással rendelkező tárolóhoz való hozzáférés korlátozásához vegyen fel egy egyéni bejegyzést a fürt alapszintű konfigurációjában a Ambari HDFS-konfigurációk speciális egyéni mag-hely hozzáadása tulajdonság alatt.
 
 6. Használja a következő értékeket a **kulcs** és **érték** mezőkhöz:
 
-    **Kulcs**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net`**Érték**: A Python-alkalmazás által a fenti 4. lépésben visszaadott SAS-kulcs.
+    **Kulcs**: @no__t – 0 **érték**: A Python-alkalmazás által a fenti 4. lépésben visszaadott SAS-kulcs.
 
 7. Kattintson a **Hozzáadás** gombra a kulcs és az érték mentéséhez, majd kattintson a **Save (Mentés** ) gombra a konfigurációs módosítások mentéséhez. Ha a rendszer kéri, adja meg a módosítás leírását (például "SAS-tároló-hozzáférés hozzáadása"), majd kattintson a **Mentés**gombra.
 
-8. A Ambari webes felületén válassza a bal oldali listából a HDFS elemet, majd kattintson a jobb oldalon található szolgáltatási műveletek legördülő listából az  **összes érintett újraindítása**elemre. Ha a rendszer kéri, válassza **az összes újraindításának megerősítése**lehetőséget.
+8. A Ambari webes FELÜLETén válassza a bal oldali listából a HDFS elemet, majd kattintson a jobb oldalon található szolgáltatási műveletek legördülő listából az **összes érintett újraindítása** elemre. Ha a rendszer kéri, válassza **az összes újraindításának megerősítése**lehetőséget.
 
 9. Ismételje meg ezt a folyamatot a MapReduce2 és a fonal esetében.
 
 A SAS-jogkivonatok Azure-ban való használatával kapcsolatban három fontos dolgot kell figyelembe venni:
 
-1. Ha a SAS-jogkivonatok "READ + LIST" engedélyekkel jönnek létre, a blob-tárolóhoz hozzáféréssel rendelkező felhasználók nem tudják "írni és törölni" az adatbevitelt. Azok a felhasználók, akik az adott SAS-tokenhez hozzáférnek a blob-tárolóhoz, és megpróbálnak írási `"This request is not authorized to perform this operation"`vagy törlési műveletet végrehajtani, például a következő üzenet jelenik meg:
+1. Ha a SAS-jogkivonatok "READ + LIST" engedélyekkel jönnek létre, a blob-tárolóhoz hozzáféréssel rendelkező felhasználók nem tudják "írni és törölni" az adatbevitelt. Azok a felhasználók, akik az adott SAS-tokenhez hozzáférnek a blob-tárolóhoz, és megpróbálnak írási vagy törlési műveletet végrehajtani, a `"This request is not authorized to perform this operation"` üzenetet kapják meg.
 
-2. Ha a `READ + LIST + WRITE` sas-jogkivonatok engedélyekkel jönnek létre (csak korlátozás `DELETE` esetén), `hadoop fs -put` akkor az olyan `\_COPYING\_` parancsokat, mint az első írás fájlba, majd próbálja meg átnevezni a fájlt. Ez a HDFS művelet leképezi a `copy+delete` WASB. Mivel az `DELETE` engedély nem lett megadva, a "put" művelet sikertelen lesz. A `\_COPYING\_` művelet egy Hadoop-szolgáltatás, amely némi Egyidejűség-vezérlést biztosít. Jelenleg nincs lehetőség arra, hogy csak a "Törlés" műveletet kelljen korlátozni anélkül, hogy az "írás" műveletet is befolyásolná.
+2. Ha a SAS-tokenek `READ + LIST + WRITE` engedélyekkel jönnek létre (csak a `DELETE` korlátozásához), akkor a (z) `hadoop fs -put` parancshoz először írjon egy `\_COPYING\_` fájlt, majd próbálja meg átnevezni a fájlt. Ez a HDFS művelet leképezi @no__t a WASB-0 értéket a. Mivel a `DELETE` engedély nem lett megadva, a "put" művelet sikertelen lesz. A `\_COPYING\_` művelet egy Hadoop-szolgáltatás, amely egy Egyidejűség-vezérlés biztosítására szolgál. Jelenleg nincs lehetőség arra, hogy csak a "Törlés" műveletet kelljen korlátozni anélkül, hogy az "írás" műveletet is befolyásolná.
 
 3. Sajnos a Hadoop hitelesítőadat-szolgáltató és a visszafejtési kulcs szolgáltatója (ShellDecryptionKeyProvider) jelenleg nem működik együtt az SAS-jogkivonatokkal, így a láthatósága jelenleg nem védhető.
 

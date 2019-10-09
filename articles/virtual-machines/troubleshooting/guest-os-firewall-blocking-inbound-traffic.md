@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6e90b164fac4ea1123f5f9a43eea1169d93d9a04
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154022"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028793"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure virtuális gép vendég operációs rendszer tűzfal blokkolja a bejövő forgalom
 
@@ -102,7 +102,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 #### <a name="mitigation-2"></a>2\. megoldás
 
-1.  Határozza meg, akár a tűzfaltámogatás bejövő adatforgalmához szabályzat úgy van-e beállítva tűzfalprofilt lekérdezése *BlockInboundAlways*:
+1.  A tűzfal profiljainak lekérdezése annak megállapításához, hogy a bejövő tűzfal házirendje *BlockInboundAlways*van-e beállítva:
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
     >    * *BlockInbound*: Minden bejövő forgalom le lesz tiltva, ha nincs érvényben a forgalom engedélyezésére szolgáló szabály.
     >    * *BlockInboundAlways*: Minden tűzfalszabály figyelmen kívül lesz hagyva, és az összes forgalom le lesz tiltva.
 
-2.  Szerkessze a *DefaultInboundAction* , ha szeretné ezeket a profilokat **engedélyezése** forgalmat. Ehhez futtassa a következő parancsot:
+2.  Szerkessze a *DefaultInboundAction* , és állítsa be ezeket a profilokat a forgalom **engedélyezéséhez** . Ehhez futtassa a következő parancsot:
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ Csatlakozás a [soros konzolon, és nyissa meg egy PowerShell-példány](serial-
 
 2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 
-3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatolt rendszerlemez van rendelve.
+3.  Győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatolt rendszerlemez van rendelve.
 
 #### <a name="mitigation-1"></a>1\. megoldás
 
@@ -150,7 +150,7 @@ Lásd: a [Tűzfalszabály letiltása egy vendég operációs rendszeren](enable
 
 2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
 
-3.  Miután a rendszer lemez csatolva van a helyreállítási virtuális Gépet, győződjön meg arról, hogy a lemez megjelölt **Online** a Lemezkezelés konzol. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
+3.  Miután a rendszerlemez csatlakoztatva lett a helyreállítási virtuális géphez, ellenőrizze, hogy a lemez **online** állapotban van-e megjelölve a Lemezkezelés konzolon. Vegye figyelembe a meghajtóbetűjelet, amely a csatlakoztatott operációsrendszer-lemez van rendelve.
 
 4.  Nyisson meg egy rendszergazda jogú CMD-példányt, és futtassa a következő parancsfájlt:
 

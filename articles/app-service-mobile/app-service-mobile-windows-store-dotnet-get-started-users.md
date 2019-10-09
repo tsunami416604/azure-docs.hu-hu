@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés hozzáadása az univerzális Windows Platform (UWP-) alkalmazáshoz |} A Microsoft Docs
-description: 'Ismerje meg, hogyan hitelesítheti a felhasználókat az identitás-szolgáltatóktól, beleértve a különféle univerzális Windows Platform (UWP) alkalmazás az Azure App Service Mobile Apps segítségével: Aad-ben, a Google, Facebook, Twitter vagy Microsoft.'
+title: Hitelesítés hozzáadása a Univerzális Windows-platform (UWP) alkalmazáshoz | Microsoft Docs
+description: 'Megtudhatja, hogyan használhatja a Azure App Service Mobile Appst a Univerzális Windows-platform (UWP) alkalmazás felhasználói hitelesítéséhez különböző identitás-szolgáltatók használatával, beleértve a következőket: HRE, Google, Facebook, Twitter és Microsoft.'
 services: app-service\mobile
 documentationcenter: windows
 author: elamalani
@@ -14,49 +14,49 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 9a3a6a8d063836094c1285a5ab4c17ee403fc347
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1a4c7570a4430c9961109c425298e356c9fa9a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440230"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027069"
 ---
 # <a name="add-authentication-to-your-windows-app"></a>Hitelesítés hozzáadása a Windows-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-users) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
-Ez a témakör bemutatja, hogyan felhőalapú hitelesítés hozzáadása az alkalmazásához. Ebben az oktatóanyagban, hitelesítés hozzáadása az univerzális Windows Platform (UWP) gyorsútmutató-projekt egy identitásszolgáltatóval, amelyet támogat az Azure App Service Mobile Apps-alkalmazáshoz. Folyamatban sikeresen hitelesíti és a Mobile Apps-háttéralkalmazást, után jelenik meg a felhasználói azonosító értékét.
+Ebből a témakörből megtudhatja, hogyan adhat felhőalapú hitelesítést a Mobile apps szolgáltatáshoz. Ebben az oktatóanyagban a Azure App Service által támogatott identitás-szolgáltató használatával adja hozzá a hitelesítést a Univerzális Windows-platform (UWP) gyors üzembe helyezési projekthez Mobile Apps. Miután a Mobile apps-háttér sikeresen elvégezte a hitelesítést és az engedélyt, megjelenik a felhasználói azonosító értéke.
 
-Ez az oktatóanyag a Mobile Apps – első lépések alapján. Először végezze el az oktatóanyag [Mobile Apps használatának első lépései](app-service-mobile-windows-store-dotnet-get-started.md).
+Ez az oktatóanyag a Mobile Apps rövid útmutatóján alapul. Először el kell végeznie az oktatóanyag első [lépéseinek Mobile apps](app-service-mobile-windows-store-dotnet-get-started.md).
 
-## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és konfigurálja az App Service-ben
+## <a name="register"></a>Az alkalmazás regisztrálása a hitelesítéshez és a App Service konfigurálása
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címek
+## <a name="redirecturl"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címekhez
 
-Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatározása. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejeződése után. Ebben az oktatóanyagban azt használja az URL-séma _appname_ során. Bármely URL-séma választja is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgálói oldalon az átirányítás engedélyezése:
+A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazáshoz. Ez lehetővé teszi, hogy a hitelesítési rendszer visszairányítsa az alkalmazást az alkalmazásba a hitelesítési folyamat befejezése után. Ebben az oktatóanyagban az URL-séma _AppName_ használjuk az egészben. Használhat azonban bármely kiválasztott URL-címet. Egyedinek kell lennie a Mobile-alkalmazás számára. Az átirányítás engedélyezése a kiszolgálóoldali oldalon:
 
-1. Az a [az Azure portal](https://ms.portal.azure.com), válassza ki az App Service.
+1. A [Azure Portal](https://ms.portal.azure.com)válassza ki a app Service.
 
-2. Kattintson a **hitelesítési / engedélyezési** menüpont.
+2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Az a **engedélyezett külső átirányítási URL-címeket**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** Ez a karakterlánc a következő az URL-séma esetében.  Normál URL-cím-specifikáció (használata betűket és csak számokból állhat, és betűvel kezdődhet) protokoll, érdemes követnie.  Meg kell jegyezze fel a karakterlánc, amely úgy dönt, mert szüksége lesz a mobilalkalmazás-kód az URL-séma több helyen való beállításához.
+3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback` értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 4. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="permissions"></a>A hitelesített felhasználók engedélyeinek korlátozása
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Most ellenőrizheti, hogy a háttérrendszerhez való névtelen hozzáférés le van tiltva. Az UWP-alkalmazásprojektet állítsa be az indítási projektként, és üzembe helyezése, és futtassa az alkalmazást; Győződjön meg arról, hogy a 401-es (nem engedélyezett) állapotkódot a nem kezelt kivétel az alkalmazás indítása után jelenik meg. Ez akkor fordul elő, mert az alkalmazást próbál meg hozzáférni a mobilalkalmazás-kód nem hitelesített felhasználóként, de a *TodoItem* táblázat most már hitelesítést igényel.
+Most ellenőrizheti, hogy a háttérbeli névtelen hozzáférés le van-e tiltva. A UWP alkalmazás projekt indítási projektként való beállításakor telepítse és futtassa az alkalmazást; Ellenőrizze, hogy az alkalmazás elindítása után nem kezelt kivétel történt-e az 401 (nem engedélyezett) állapotkóddal. Ennek az az oka, hogy az alkalmazás nem hitelesített felhasználóként próbál hozzáférni a Mobile App Code-hoz, de a *TodoItem* táblához már hitelesítés szükséges.
 
-Ezt követően az alkalmazásnak, hogy a felhasználók hitelesítése előtt erőforrásokat kér az App Service frissíteni.
+Ezután frissítenie kell az alkalmazást a felhasználók hitelesítéséhez, mielőtt erőforrásokat kérne a App Service.
 
 ## <a name="add-authentication"></a>Hitelesítés hozzáadása az alkalmazáshoz
-1. Az UWP az alkalmazás MainPage.xaml.cs fájlban projektre, és adja hozzá a következő kódrészletet:
+1. A UWP alkalmazás projektfájl MainPage.xaml.cs, és adja hozzá a következő kódrészletet:
    
         // Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -89,8 +89,8 @@ Ezt követően az alkalmazásnak, hogy a felhasználók hitelesítése előtt er
             return success;
         }
    
-    Ez a kód hitelesíti a felhasználót egy Facebook-bejelentkezés. Eltérő Facebook identitásszolgáltatót használja, ha értékének módosítása **MobileServiceAuthenticationProvider** fent a szolgáltató értékére.
-2. Cserélje le a **OnNavigatedTo()** metódus a MainPage.xaml.cs. Ezután hozzáadhat egy **jelentkezzen be a** az alkalmazást, amely elindítja a hitelesítés gombot.
+    Ez a kód egy Facebook-bejelentkezéssel hitelesíti a felhasználót. Ha a Facebooktól eltérő identitás-szolgáltatót használ, módosítsa a fenti **MobileServiceAuthenticationProvider** értékét a szolgáltató értékére.
+2. Cserélje le a **OnNavigatedTo ()** metódust a MainPage.XAML.cs-ben. Ezután egy **bejelentkezési** gombot fog hozzáadni az alkalmazáshoz, amely elindítja a hitelesítést.
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -114,7 +114,7 @@ Ezt követően az alkalmazásnak, hogy a felhasználók hitelesítése előtt er
                 await RefreshTodoItems();
             }
         }
-4. Nyissa meg a következő projektfájlban: MainPage.xaml, keresse meg az elem, amely meghatározza a **mentése** gombra, és cserélje le a következő kódot:
+4. Nyissa meg a Főoldal. XAML projektfájlt, keresse meg a Save ( **Mentés** ) gombot meghatározó elemet, és cserélje le a következő kódra:
    
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
                 Click="ButtonSave_Click">
@@ -130,7 +130,7 @@ Ezt követően az alkalmazásnak, hogy a felhasználók hitelesítése előtt er
                 <TextBlock Margin="5">Sign in</TextBlock> 
             </StackPanel>
         </Button>
-5. Az App.XAML.cs fájlban adja hozzá a következő kódrészletet:
+5. Adja hozzá a következő kódrészletet a App.xaml.cs:
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
@@ -146,21 +146,21 @@ Ezt követően az alkalmazásnak, hogy a felhasználók hitelesítése előtt er
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Package.appxmanifest fájl megnyitásához keresse meg **nyilatkozatok**, a **elérhető nyilatkozatok** legördülő listában válassza **protokoll** kattintson **hozzáadása** gombra. Mostantól konfigurálhatja az **tulajdonságok** , a **protokoll** nyilatkozatot. A **megjelenítendő név**, adja hozzá a felhasználók számára az alkalmazás megjelenítendő neve. A **neve**, adja hozzá a {url_scheme_of_your_app}.
-7. Nyomja le az F5 billentyűt az alkalmazás fut, kattintson a **jelentkezzen be a** gombra, és jelentkezzen be az alkalmazás a választott identitásszolgáltatóval. Miután a bejelentkezés sikeres, az alkalmazás hiba nélkül fut, és a háttérkiszolgáló lekérdezéséhez, és adatok frissítéséhez.
+6. Nyissa meg a Package. appxmanifest fájlt, navigáljon az **elérhető deklarációk** legördülő listából, válassza a **protokoll** lehetőséget, majd **kattintson a** **Hozzáadás** gombra. Most konfigurálja a **protokoll** deklarációjának **tulajdonságait** . A **megjelenítendő név mezőben**adja meg az alkalmazás felhasználói számára megjeleníteni kívánt nevet. A **név mezőben**adja hozzá a (z) {Url_scheme_of_your_app} nevet.
+7. Az alkalmazás futtatásához nyomja le az F5 billentyűt, kattintson a **Bejelentkezés** gombra, és jelentkezzen be az alkalmazásba a kiválasztott identitás-szolgáltatóval. A bejelentkezés sikeres végrehajtása után az alkalmazás hibák nélkül fut, és lekérdezheti a háttérrendszer adatait, és frissítheti azokat.
 
-## <a name="tokens"></a>A hitelesítési jogkivonat Store az ügyfélen
-Az előző példa bemutatta, szabványos bejelentkezési, ami megköveteli, hogy az ügyfél kapcsolatba az identitásszolgáltató és az App Service-ben minden egyes elindításakor. Nem csak nem hatékony, futtathatja az ezzel a módszerrel történő-kapcsolatos problémákat kell számos ügyfelünk próbálja meg elindítani, alkalmazás egyszerre. Esetleg jobb megközelítés, hogy az engedélyezési jogkivonatra, az App Service által visszaadott gyorsítótárazza, és próbálja meg használni az első olyan szolgáltató alapú bejelentkezés használata előtt.
+## <a name="tokens"></a>A hitelesítési jogkivonat tárolása az ügyfélen
+Az előző példában egy szabványos bejelentkezés látható, amely megköveteli, hogy az ügyfél felvegye a kapcsolatot az identitás-szolgáltatóval és az App Service minden alkalommal, amikor az alkalmazás elindul. Nem csak ez a módszer nem hatékony, a használattal kapcsolatos problémákba ütközik, ha sok ügyfél megpróbál egyszerre elindítani az alkalmazást. A jobb módszer a App Service által visszaadott engedélyezési jogkivonat gyorsítótárazása, és az első használata a szolgáltató-alapú bejelentkezés használata előtt.
 
 > [!NOTE]
-> Függetlenül attól, hogy a hitelesítési ügyfél által felügyelt vagy a szolgáltatás által kezelt alkalmazás-szolgáltatások által kiállított biztonsági jogkivonat képes gyorsítótárazni. Ebben az oktatóanyagban a szolgáltatás által kezelt hitelesítést használ.
+> A App Services által kiállított tokent gyorsítótárazhatja, függetlenül attól, hogy az ügyfél által felügyelt vagy a szolgáltatás által felügyelt hitelesítést használja-e. Ez az oktatóanyag szolgáltatás által felügyelt hitelesítést használ.
 > 
 > 
 
 [!INCLUDE [mobile-windows-universal-dotnet-authenticate-app-with-token](../../includes/mobile-windows-universal-dotnet-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy elvégezte az oktatóanyag az egyszerű hitelesítés, vegye figyelembe a folyamatos be az alábbi oktatóanyagok egyikét:
+Most, hogy elvégezte ezt az alapszintű hitelesítési oktatóanyagot, tekintse át a következő oktatóanyagok egyikét:
 
 * [Leküldéses értesítések hozzáadása az alkalmazáshoz](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   Ismerje meg, hogyan adhat leküldéses értesítéseket az alkalmazásához, illetve hogyan konfigurálhatja Mobile Apps-háttéralkalmazását az Azure Notification Hubs használatára a leküldéses értesítések küldéséhez.

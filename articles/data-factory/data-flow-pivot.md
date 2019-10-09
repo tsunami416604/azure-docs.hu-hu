@@ -6,35 +6,35 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178664"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029314"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Az Azure-beli adatgyári kimutatás átalakítása
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Az ADF-adatfolyamban az adatforgalom olyan összesítésként használható, amelyben egy vagy több csoportosítási oszlop különálló oszlopokra alakítja át a különböző sorok értékeit. Lényegében a sorok értékeit az új oszlopokra is felhasználhatja (az adatok metaadatokba való bekapcsolásával).
 
-![Kimutatás beállításai](media/data-flow/pivot1.png "1. kimutatás")
+![Kimutatási beállítások]–(media/data-flow/pivot1.png "1. kimutatás")
 
-## <a name="group-by"></a>Csoportosítási szempont
+## <a name="group-by"></a>Csoportosítási alapja
 
-![Kimutatás beállításai](media/data-flow/pivot2.png "2. pivot")
+![Pivot beállítások]–(media/data-flow/pivot2.png "2") .
 
 Először állítsa be azokat az oszlopokat, amelyeket a kimutatás összesítéséhez szeretne csoportosítani. Itt több, mint 1 oszlopot is beállíthat az oszlopok listája melletti + jelre.
 
 ## <a name="pivot-key"></a>Pivot kulcsa
 
-![Kimutatás beállításai](media/data-flow/pivot3.png "3. kimutatás")
+![Kimutatási beállítások]–(media/data-flow/pivot3.png "3. pivot")
 
 A pivot kulcs az az oszlop, amelyet az ADF a sor és az oszlop között fog kimutatni. Alapértelmezés szerint a mezőhöz tartozó adatkészlet minden egyedi értéke egy oszlopra mutat. Azonban megadhatja az adatkészletből azokat az értékeket, amelyeket meg szeretne adni az oszlop értékeinek. Ez az az oszlop, amely a létrehozandó új oszlopokat fogja meghatározni.
 
 ## <a name="pivoted-columns"></a>Elforgatott oszlopok
 
-![Kimutatás beállításai](media/data-flow/pivot4.png "4. kimutatás")
+![Pivot beállítások]–(media/data-flow/pivot4.png "4. pivot")
 
 Végül válassza ki a tagolt értékekhez használni kívánt összesítést, és azt, hogy az oszlopok hogyan jelenjenek meg az átalakítás új kimeneti vetületében.
 
@@ -42,7 +42,7 @@ Választható Megadhat egy elnevezési mintát egy előtaggal, egy középtel é
 
 Ha például a "Sales" kifejezést "régiónként" szeretné kimutatni, az egyes értékesítési értékek új oszlop értékeit eredményezik, azaz "25", "50", "1000" stb. Ha azonban "Sales-" előtagot állít be, akkor minden oszlop értéke "Sales" (értékesítés) értéket ad az érték elejéhez.
 
-![Kimutatás beállításai](media/data-flow/pivot5.png "5. pivot")
+![Pivot beállítások](media/data-flow/pivot5.png "pivot 5")
 
 Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az összes elforgatott oszlopot összesítse. Ha az oszlopok elrendezése az "oldalirányú" értékre van állítva, akkor az oszlop és az érték között váltakozik.
 
@@ -50,7 +50,7 @@ Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az öss
 
 A kimutatás értékeihez használni kívánt összesítés beállításához kattintson a kitűzött oszlopok ablaktábla alján található mezőre. Itt adhatja meg az ADF adatáramlás-kifejezés-szerkesztőt, ahol összeállíthat egy összesítési kifejezést, és adjon meg egy leíró alias nevet az új összesített értékekhez.
 
-Az ADF-adatfolyam kifejezésének nyelve segítségével írja le a kimutatott oszlopok átalakításait a következő https://aka.ms/dataflowexpressions kifejezés-szerkesztőben:.
+Az ADF-adatfolyam kifejezésének nyelvével írja le a tagolt oszlopok átalakításait a Kifejezésszerkesztő: https://aka.ms/dataflowexpressions.
 
 ## <a name="pivot-metadata"></a>Kimutatás metaadatainak
 
@@ -60,7 +60,7 @@ A pivot-átalakítás a bejövő adatain alapuló új oszlopnevek létrehozásá
 
 A pivot a sorok értékei alapján dinamikusan generálja az új oszlopnevek nevét. Ezeket az új oszlopokat olyan metaadatokba állíthatja be, amelyek később is hivatkozhatnak az adatfolyamban. Ehhez kattintson az adatelőnézet fülre. A pivot-átalakítás által létrehozott összes új oszlop "Drift" ikonnal jelenik meg a tábla fejlécében. Kattintson a "Térkép felsodródva" gombra az új oszlopok metaadatokba való bekapcsolásához, így az adatfolyamat modelljének részét képezi.
 
-![Kimutatás oszlopai](media/data-flow/newpivot1.png "Elsodródott pivot oszlopok leképezése")
+![Kimutatás oszlopainak](media/data-flow/newpivot1.png "elsodródott pivot oszlopai")
 
 ### <a name="landing-new-columns-in-sink"></a>Új oszlopok leszállása a fogadóban
 
@@ -75,4 +75,4 @@ A pivot-átalakítás csak az összesítés, csoportosítás és kimutatás műv
 
 ## <a name="next-steps"></a>További lépések
 
-Az oszlopok [](data-flow-unpivot.md) értékeinek sorokba való bekapcsolásához próbálja meg az unpivot transzformációt. 
+Az oszlopok értékeinek sorokba való bekapcsolásához próbálja meg az [unpivot transzformációt](data-flow-unpivot.md) . 

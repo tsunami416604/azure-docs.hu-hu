@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203713"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023641"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Válassza ki a megoldás megfelelő IoT Hubi szintjét
 
@@ -33,18 +33,18 @@ Az egyes IoT Hub szintek három méretben érhetők el, attól függően, hogy m
 
 A IoT Hub standard szintje lehetővé teszi az összes funkció használatát, és minden olyan IoT-megoldáshoz szükséges, amely a kétirányú kommunikációs képességeket kívánja kihasználni. Az alapszintű csomag lehetővé teszi a szolgáltatások egy részhalmazát, és olyan IoT-megoldások számára készült, amelyek csak az eszközökről a felhőbe irányuló, UNI-irányú kommunikációt igényelnek. Mindkét szinten ugyanazokat a biztonsági és hitelesítési funkciókat kínálja.
 
-Egy adott rétegen [](https://azure.microsoft.com/pricing/details/iot-hub/) belül csak egy kiadást lehet kiválasztani IoT hub. Létrehozhat például egy, az S1 több egységgel rendelkező IoT Hub, de különböző kiadásokból (például S1 és S2) álló egységeket is.
+Egy adott rétegen belül csak egy [kiadást](https://azure.microsoft.com/pricing/details/iot-hub/) lehet kiválasztani IoT hub. Létrehozhat például egy, az S1 több egységgel rendelkező IoT Hub, de különböző kiadásokból (például S1 és S2) álló egységeket is.
 
 | Képesség | Alapszintű csomag | Ingyenes/standard szint |
 | ---------- | ---------- | ------------- |
 | [Eszközről a felhőbe irányuló telemetria](iot-hub-devguide-messaging.md) | Igen | Igen |
 | [Eszközönkénti azonosító](iot-hub-devguide-identity-registry.md) | Igen | Igen |
-| [Üzenet-útválasztás](iot-hub-devguide-messages-read-custom.md) és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Igen |
+| [Üzenetek útválasztása](iot-hub-devguide-messages-read-custom.md), [üzenetek gazdagítása](iot-hub-message-enrichments-overview.md)és [Event Grid integráció](iot-hub-event-grid.md) | Igen | Igen |
 | [HTTP-, AMQP-és MQTT-protokollok](iot-hub-devguide-protocols.md) | Igen | Igen |
 | [Eszköz kiépítési szolgáltatása](../iot-dps/about-iot-dps.md) | Igen | Igen |
 | [Figyelés és diagnosztika](iot-hub-monitor-resource-health.md) | Igen | Igen |
 | [A felhőből az eszközre irányuló üzenetküldés](iot-hub-devguide-c2d-guidance.md) |   | Igen |
-| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md)és eszközkezelés [](iot-hub-device-management-overview.md) |   | Igen |
+| [Eszközök](iot-hub-devguide-device-twins.md), ikrek, [modulok](iot-hub-devguide-module-twins.md) [és eszközkezelés](iot-hub-device-management-overview.md) |   | Igen |
 | [Eszköz streamek (előzetes verzió)](iot-hub-device-streams-overview.md) |   | Igen |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Igen |
 | [IoT Plug and Play előzetes verzió](../iot-pnp/overview-iot-plug-and-play.md) |   | Igen |
@@ -53,7 +53,7 @@ A IoT Hub ingyenes szintet is biztosít teszteléshez és értékeléshez. Rende
 
 ## <a name="partitions"></a>Partíciók
 
-Az Azure IoT-hubok az [azure Event Hubs](../event-hubs/event-hubs-features.md)számos alapvető összetevőjét [](../event-hubs/event-hubs-features.md#partitions)tartalmazzák, beleértve a partíciókat is. A IoT hubok esetében általában a különböző IoT-eszközök által jelentett bejövő telemetria adatokkal vannak feltöltve. Az esemény-adatfolyam particionálásával csökkenthető az esemény-adatfolyamok egyidejű olvasásakor és írásakor felmerülő események.
+Az Azure IoT-hubok az [azure Event Hubs](../event-hubs/event-hubs-features.md)számos alapvető összetevőjét tartalmazzák, beleértve a [partíciókat](../event-hubs/event-hubs-features.md#partitions)is. A IoT hubok esetében általában a különböző IoT-eszközök által jelentett bejövő telemetria adatokkal vannak feltöltve. Az esemény-adatfolyam particionálásával csökkenthető az esemény-adatfolyamok egyidejű olvasásakor és írásakor felmerülő események.
 
 A partíciós korlát akkor van kiválasztva, ha IoT Hub jön létre, és nem módosítható. Az alapszintű csomag IoT Hub és a standard szintű IoT Hub maximális partíciós korlátja 32. A legtöbb IoT-hubhoz csak 4 partíció szükséges. A partíciók meghatározásával kapcsolatos további információkért tekintse meg a Event Hubs GYIK, [hogy hány partícióra van szükségem?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 

@@ -10,53 +10,53 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 09/23/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2129405dfdc2585d29c35a0982c9823a4cd57f71
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359997"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033969"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
 A Azure Active Directory (Azure AD) csoport alapú licencelése a licencelési hiba állapotában lévő felhasználók fogalmát mutatja be. Ebből a cikkből megtudhatja, hogy a felhasználók milyen okokból kerülhetnek be ebben az állapotban.
 
-Ha a licenceket közvetlenül az egyes felhasználókhoz rendeli, a csoport alapú licencelés használata nélkül, a hozzárendelési művelet sikertelen lehet. Ha például egy felhasználói rendszeren futtatja a PowerShell `Set-MsolUserLicense` -parancsmagot, a parancsmag számos, az üzleti logikával kapcsolatos okból sikertelen lehet. Előfordulhat például, hogy nem áll rendelkezésre elegendő számú licenc, vagy a két szolgáltatási csomag közötti ütközés, amely nem rendelhető hozzá egyszerre. A probléma azonnal vissza lesz jelentve.
+Ha a licenceket közvetlenül az egyes felhasználókhoz rendeli, a csoport alapú licencelés használata nélkül, a hozzárendelési művelet sikertelen lehet. Ha például a (z) `Set-MsolUserLicense` PowerShell-parancsmagot egy felhasználói rendszeren hajtja végre, a parancsmag számos, az üzleti logikával kapcsolatos okból sikertelen lehet. Előfordulhat például, hogy nem áll rendelkezésre elegendő számú licenc, vagy a két szolgáltatási csomag közötti ütközés, amely nem rendelhető hozzá egyszerre. A probléma azonnal vissza lesz jelentve.
 
 Ha csoportos licencelést használ, ugyanazok a hibák fordulhatnak elő, de a háttérben történnek, miközben az Azure AD szolgáltatás licenceket rendel hozzá. Emiatt a hibákat nem lehet azonnal tájékoztatni. Ehelyett a rendszer rögzíti a felhasználói objektumot, majd a felügyeleti portálon keresztül jelentést készít. A felhasználó számára a licenc eredeti szándéka soha nem vész el, de a jövőbeli vizsgálat és megoldás érdekében hiba állapotban van rögzítve.
 
-## <a name="how-to-find-license-assignment-errors"></a>Licenc-hozzárendelési hibák keresése
-**Licenc-hozzárendelési hibák keresése**
+## <a name="find-license-assignment-errors"></a>Licenc-hozzárendelési hibák keresése
 
-1. Ha egy adott csoportban hibás állapotú felhasználókat szeretne megkeresni, nyissa meg a csoport ablaktábláját. A **licencek**területen egy értesítés jelenik meg, ha a felhasználó hibás állapotban van.
+### <a name="to-find-users-in-an-error-state-in-a-group"></a>Felhasználók megkeresése egy csoportban lévő hibás állapottal
+
+1. Nyissa meg a csoportot az Áttekintés lapra, és válassza a **licencek**lehetőséget. Egy értesítés jelenik meg, ha bármilyen felhasználó hibás állapotban van.
 
    ![Csoport és hiba értesítéseinek üzenete](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-2. Válassza ki az értesítést az összes érintett felhasználó listájának megnyitásához. Az egyes felhasználókat egyenként is kiválaszthatja a további részletek megtekintéséhez.
+1. Válassza ki az értesítést az összes érintett felhasználó listájának megnyitásához. Az egyes felhasználókat egyenként is kiválaszthatja a további részletek megtekintéséhez.
 
    ![a csoport licencelési hibája állapotú felhasználók listája](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-3. Az összes olyan csoport megkereséséhez, amely legalább egy hibát tartalmaz, a **Azure Active Directory** panelen válassza a **licencek**lehetőséget, majd válassza az **Áttekintés**lehetőséget. Ha a csoportok beavatkozást igényelnek, egy információs mező jelenik meg.
+1. Az összes olyan csoport megkereséséhez, amely legalább egy hibát tartalmaz, a **Azure Active Directory** panelen válassza a **licencek**lehetőséget, majd válassza az **Áttekintés**lehetőséget. Ha a csoportok beavatkozást igényelnek, egy információs mező jelenik meg.
 
    ![A hibás állapotú csoportok áttekintése és információi](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-4. Jelölje be a jelölőnégyzetet az összes hibát tartalmazó csoport listájának megtekintéséhez. További részleteket az egyes csoportok közül választhat ki.
+1. Jelölje be a jelölőnégyzetet az összes hibát tartalmazó csoport listájának megtekintéséhez. További részleteket az egyes csoportok közül választhat ki.
 
    ![Hibákkal rendelkező csoportok áttekintése és listája](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
-
 
 A következő részekben ismertetjük az egyes lehetséges problémák leírását és a megoldás módját.
 
 ## <a name="not-enough-licenses"></a>Nincs elég licenc
 
-**Probléma** Nincs elég elérhető licenc a csoportban megadott egyik termékhez sem. További licenceket kell vásárolnia a termékhez, vagy fel kell vennie a nem használt licenceket más felhasználóktól vagy csoportokból.
+**Probléma:** Nincs elég elérhető licenc a csoportban megadott egyik termékhez sem. További licenceket kell vásárolnia a termékhez, vagy fel kell vennie a nem használt licenceket más felhasználóktól vagy csoportokból.
 
-Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, lépjen **Azure Active Directory** > **licencek** > **minden termék**lehetőségre.
+Ha szeretné megtekinteni, hogy hány licenc áll rendelkezésre, látogasson el **Azure Active Directory** > **licencre** > **minden termékhez**.
 
 Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a licenceket, válasszon ki egy terméket. A **licenccel rendelkező felhasználók**területen megtekintheti az összes olyan felhasználó listáját, akik közvetlenül vagy egy vagy több csoporton keresztül rendeltek hozzá licenceket. A **licencelt csoportok**területen láthatja az összes olyan csoportot, amelyhez a termékek hozzá lettek rendelve.
 
@@ -64,12 +64,12 @@ Ha szeretné megtekinteni, hogy mely felhasználók és csoportok használják a
 
 ## <a name="conflicting-service-plans"></a>Ütköző szolgáltatási csomagok
 
-**Probléma** A csoportban megadott termékek egyike olyan szolgáltatási csomagot tartalmaz, amely ütközik egy másik terméken keresztül már hozzárendelt felhasználóval. Egyes szolgáltatási csomagok úgy vannak konfigurálva, hogy nem rendelhetők hozzá ugyanahhoz a felhasználóhoz, mint egy másik, kapcsolódó szolgáltatáscsomag.
+**Probléma:** A csoportban megadott termékek egyike olyan szolgáltatási csomagot tartalmaz, amely ütközik egy másik terméken keresztül már hozzárendelt felhasználóval. Egyes szolgáltatási csomagok úgy vannak konfigurálva, hogy nem rendelhetők hozzá ugyanahhoz a felhasználóhoz, mint egy másik, kapcsolódó szolgáltatáscsomag.
 
 Lásd az alábbi példát. A felhasználó rendelkezik az Office 365 Enterprise *E1* -licenccel közvetlenül hozzárendelt licenctel, és minden csomag engedélyezve van. A felhasználó hozzá lett adva egy olyan csoporthoz, amelyhez az Office 365 Enterprise *E3* termék hozzá van rendelve. Az E3 termék olyan szolgáltatási csomagokat tartalmaz, amelyek nem fedik át az E1-ben foglalt csomagokat, így a csoportos licenc-hozzárendelés meghiúsul az "ütköző szolgáltatási csomagok" hibával. Ebben a példában az ütköző szolgáltatási csomagok a következők:
 
--   A SharePoint Online (2. csomag) ütközik a SharePoint Online-val (1. csomag).
--   Az Exchange Online (2. csomag) ütközik az Exchange Online-val (1. csomag).
+- A SharePoint Online (2. csomag) ütközik a SharePoint Online-val (1. csomag).
+- Az Exchange Online (2. csomag) ütközik az Exchange Online-val (1. csomag).
 
 Az ütközés megoldásához le kell tiltania a csomagok két részét. Letilthatja a felhasználóhoz közvetlenül hozzárendelt E1-licencet. Vagy módosítania kell a teljes csoport licenc-hozzárendelését, és le kell tiltania a terveket az E3-licencben. Azt is megteheti, hogy eltávolítja az E1-licencet a felhasználótól, ha az az E3 licenc kontextusában redundáns.
 
@@ -79,7 +79,7 @@ Az ütköző licencek feloldásával kapcsolatos döntés mindig a rendszergazd�
 
 ## <a name="other-products-depend-on-this-license"></a>Más termékek függenek ettől a licenctől
 
-**Probléma** A csoportban megadott termékek egyike egy olyan szervizcsomagot tartalmaz, amelyet egy másik Service-csomaghoz kell engedélyezni egy másik termékben a működéshez. Ez a hiba akkor fordul elő, amikor az Azure AD megkísérli eltávolítani az alapul szolgáló szolgáltatási csomagot. Ez például akkor fordulhat elő, ha eltávolítja a felhasználót a csoportból.
+**Probléma:** A csoportban megadott termékek egyike egy olyan szervizcsomagot tartalmaz, amelyet egy másik Service-csomaghoz kell engedélyezni egy másik termékben a működéshez. Ez a hiba akkor fordul elő, amikor az Azure AD megkísérli eltávolítani az alapul szolgáló szolgáltatási csomagot. Ez például akkor fordulhat elő, ha eltávolítja a felhasználót a csoportból.
 
 A probléma megoldásához meg kell győződnie arról, hogy a szükséges csomag továbbra is hozzá van rendelve a felhasználókhoz valamilyen más módszerrel, vagy hogy a függő szolgáltatások le vannak tiltva az adott felhasználók számára. Ezt követően megfelelően eltávolíthatja a csoport licencét ezekből a felhasználókból.
 
@@ -87,7 +87,7 @@ A probléma megoldásához meg kell győződnie arról, hogy a szükséges csoma
 
 ## <a name="usage-location-isnt-allowed"></a>A használat helye nem engedélyezett
 
-**Probléma** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. Megadhatja a helyet a Azure Portal **felhasználói** > **profil** > **beállításai** szakaszában.
+**Probléma:** Bizonyos Microsoft-szolgáltatások nem érhetők el minden helyen a helyi törvények és rendeletek miatt. Ahhoz, hogy licencet rendeljen a felhasználóhoz, meg kell adnia a felhasználó **használati helye** tulajdonságát. A Azure Portal a **felhasználó** > **profil** > **Beállítások** szakaszában adhatja meg a helyet.
 
 Ha az Azure AD olyan felhasználóhoz próbál csoport-licencet hozzárendelni, amelynek a használati helye nem támogatott, a művelet sikertelen lesz, és hibát jelez a felhasználónál.
 
@@ -113,11 +113,11 @@ Miután feloldotta az érintett felhasználók proxy-címeivel kapcsolatos probl
 
 ## <a name="azure-ad-mail-and-proxyaddresses-attribute-change"></a>Az Azure AD levelezési és ProxyAddresses attribútumának változása
 
-**Probléma** Egy felhasználó vagy csoport licenc-hozzárendelésének frissítésekor láthatja, hogy egyes felhasználók Azure AD mail-és ProxyAddresses-attribútuma módosult.
+**Probléma:** Egy felhasználó vagy csoport licenc-hozzárendelésének frissítésekor láthatja, hogy egyes felhasználók Azure AD mail-és ProxyAddresses-attribútuma módosult.
 
-A licenc-hozzárendelés felhasználó általi frissítése a proxy-címek kiszámításának aktiválását eredményezi, ami módosíthatja a felhasználói attribútumokat. A változás pontos okának megismeréséhez és a probléma megoldásához tekintse meg ezt a cikket a [proxyAddresses attribútum az Azure ad-ben](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)való feltöltésének módjáról.
+A licenc-hozzárendelés felhasználó általi frissítése a proxy-címek kiszámításának aktiválását eredményezi, ami módosíthatja a felhasználói attribútumokat. A változás pontos okának megismeréséhez és a probléma megoldásához tekintse meg ezt a cikket a [proxyAddresses attribútum az Azure ad-ben való feltöltésének módjáról](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
 
-## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Mi történik, ha egynél több licenccel rendelkezik egy csoporton?
+## <a name="more-than-one-product-license-assigned-to-a-group"></a>Egynél több, csoporthoz rendelt licenc
 
 Egy csoporthoz több licencet is hozzárendelhet. Hozzárendelheti például az Office 365 Enterprise E3-t és Enterprise Mobility + Securityt egy csoporthoz, hogy egyszerűen engedélyezze az összes befoglalt szolgáltatást a felhasználók számára.
 
@@ -125,52 +125,48 @@ Az Azure AD megkísérli a csoportban megadott összes licenc hozzárendelését
 
 Megtekintheti azokat a felhasználókat, akik nem tudtak beolvasni a hozzárendelést, és a probléma által érintett termékeket is megnézheti.
 
-## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>Mi történik, ha a hozzárendelt licencekkel rendelkező csoport törölve lett?
+## <a name="when-a-licensed-group-is-deleted"></a>Licencelt csoport törlésekor
 
 A csoport törlése előtt el kell távolítania a csoporthoz rendelt összes licencet. A licencek eltávolítása azonban a csoport összes felhasználója számára hosszabb időt is igénybe vehet. A licenc-hozzárendelések egy csoportból való eltávolításakor hibák léphetnek fel, ha a felhasználó függő licenccel rendelkezik, vagy ha van proxy-ütközési probléma, amely tiltja a licencek eltávolítását. Ha egy felhasználónak van olyan licence, amely a csoport törlése miatt eltávolított licenccel rendelkezik, a rendszer a felhasználóhoz tartozó licenc-hozzárendelést örökölt, közvetlen értékre konvertálja.
 
 Vegyünk például egy olyan csoportot, amely az Office 365 E3/E5 csomaggal van társítva a Skype vállalati verzióhoz készült Service-csomaghoz. Azt is Képzelje el, hogy a csoport néhány tagja rendelkezik közvetlenül hozzárendelt hangkonferencia-licencekkel. A csoport törlése után a csoportos licencelés megpróbálja eltávolítani az Office 365 E3/E5-et az összes felhasználótól. Mivel a hangkonferencia a Skype vállalati verziótól függ, a hozzárendelt hangkonferencia-szolgáltatást használó felhasználók számára a csoport alapú licencelés az Office 365 E3/E5 licenceket a licenc-hozzárendelésre konvertálja.
 
-## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>Hogyan kezelheti az előfeltételekkel rendelkező termékek licenceit?
+## <a name="manage-licenses-for-products-with-prerequisites"></a>Az előfeltételekkel rendelkező termékek licencének kezelése
 
-Egyes Microsoft Online termékekhez, amelyekhez Ön is tartozik, bővítmények. A bővítmények használatához az előfeltételként szükséges szervizcsomagot engedélyezni kell egy felhasználónak vagy csoportnak ahhoz, hogy licencet lehessen rendelni. A csoport alapú licenceléssel a rendszer megköveteli, hogy az előfeltétel-és a kiegészítő szolgáltatási csomagok is ugyanabban a csoportban legyenek. Ezzel biztosítható, hogy a csoportba felvett felhasználók megkapják a teljesen működőképes terméket. Tekintsük át a következő példát:
+Egyes Microsoft Online termékekhez, amelyekhez Ön is tartozik, *bővítmények*. A bővítmények használatához az előfeltételként szükséges szervizcsomagot engedélyezni kell egy felhasználónak vagy csoportnak ahhoz, hogy licencet lehessen rendelni. A csoport alapú licenceléssel a rendszer megköveteli, hogy az előfeltétel-és a kiegészítő szolgáltatási csomagok is ugyanabban a csoportban legyenek. Ezzel biztosítható, hogy a csoportba felvett felhasználók megkapják a teljesen működőképes terméket. Tekintsük át a következő példát:
 
 A Microsoft munkahelyi elemzési szolgáltatás egy kiegészítő termék. Egyetlen szervizcsomagot tartalmaz ugyanazzal a névvel. Ezt a szolgáltatáscsomag csak akkor rendelheti hozzá egy felhasználóhoz vagy csoporthoz, ha az alábbi előfeltételek egyike is hozzá van rendelve:
-- Exchange Online (1. csomag) 
+
+- Exchange Online (1. csomag)
 - Exchange Online (2. csomag)
 
-Ha ezt a terméket a saját csoportra próbálja hozzárendelni, a portál hibát jelez. A hibajelentési értesítés kiválasztásakor a következő adatok láthatók:
+Ha ezt a terméket a saját csoportra próbálja hozzárendelni, a portál egy értesítési üzenetet küld vissza. Ha kiválasztjuk az elem részleteit, a következő hibaüzenet jelenik meg:
 
-![Csoport, hiányzó előfeltételek](./media/licensing-groups-resolve-problems/group-prerequisite-required.png)
-
-Ha kiválasztjuk a részleteket, a következő hibaüzenet jelenik meg:
-
->A licencelési művelet nem sikerült. A függő szolgáltatások hozzáadása vagy eltávolítása előtt győződjön meg arról, hogy a csoport rendelkezik a szükséges szolgáltatásokkal. **A szolgáltatáshoz a Microsoft munkahelyi elemzéséhez szükség van az Exchange Online (2. csomag) használatára is.**
+  "A licencelési művelet nem sikerült. A függő szolgáltatások hozzáadása vagy eltávolítása előtt győződjön meg arról, hogy a csoport rendelkezik a szükséges szolgáltatásokkal. **A szolgáltatáshoz a Microsoft munkahelyi elemzéséhez szükség van az Exchange Online (2. csomag) használatára is.**
 
 Ahhoz, hogy ezt a kiegészítő licencet egy csoporthoz rendelje, biztosítania kell, hogy a csoport tartalmazza az előfeltételként szükséges szolgáltatási csomagot is. Előfordulhat például, hogy frissítünk egy meglévő csoportot, amely már tartalmazza a teljes Office 365 E3 terméket, majd hozzáadja a kiegészítő terméket.
 
-Létrehozhat egy önálló csoportot is, amely csak azokat a minimálisan szükséges termékeket tartalmazza, amelyekkel a bővítmény működik. Ezzel a beállítással csak a kiválasztott felhasználók számára lehet licencet adni a kiegészítő termékhez. Ebben a példában a következő termékeket rendeltük hozzá ugyanahhoz a csoporthoz:
+Létrehozhat egy önálló csoportot is, amely csak azokat a minimálisan szükséges termékeket tartalmazza, amelyekkel a bővítmény működik. Ez a szolgáltatás csak a kiválasztott felhasználók licencelésére használható a kiegészítő termékhez. Az előző példa alapján a következő termékeket rendeli hozzá ugyanahhoz a csoporthoz:
+
 - Office 365 Enterprise E3 és csak az Exchange Online (2. csomag) szolgáltatási csomag engedélyezve
 - Microsoft munkahelyi Analitika
-
-![Csoport, előfeltételek belefoglalva](./media/licensing-groups-resolve-problems/group-addon-with-prerequisite.png)
 
 Mostantól a csoportba felvett felhasználók az E3 termék egy licencét és a munkahelyi elemzési termék egy licencét használják fel. Ugyanakkor ezek a felhasználók egy másik csoport tagjai lehetnek, amelyek teljes körű E3 terméket biztosítanak, és a termékhez csak egy licencet használnak fel.
 
 > [!TIP]
 > Az előfeltételként szükséges szolgáltatási csomagokhoz több csoportot is létrehozhat. Ha például az Office 365 Enterprise E1-et és az Office 365 Enterprise E3-ot használja a felhasználók számára, két csoportot hozhat létre a Microsoft munkahelyi elemzési licenchez: az egyik az E1 előfeltételként, a másik pedig az E3-ot használja. Ez lehetővé teszi, hogy további licencek használata nélkül terjessze a bővítményt az E1 és az E3 felhasználók számára.
 
-## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Hogyan kényszerítheti a licencek feldolgozását egy csoportban a hibák elhárításához?
+## <a name="force-group-license-processing-to-resolve-errors"></a>Csoportházirend-licenc feldolgozásának kényszerítése a hibák elhárításához
 
 Attól függően, hogy milyen lépéseket hajtott végre a hibák elhárításához, szükség lehet a csoportok feldolgozásának manuális elindítására a felhasználói állapot frissítéséhez.
 
-Ha például egy licencet szabadít fel a felhasználóktól a közvetlen licenc-hozzárendelések eltávolításával, akkor olyan csoportok feldolgozását kell elindítania, amelyek korábban nem tudtak teljes mértékben felvenni az összes felhasználói tagot. Egy csoport újrafeldolgozásához lépjen a csoport ablaktáblára, nyissa meg a licenceket, majd kattintson az eszköztáron az újrafeldolgozás gombra.
+Ha például egy licencet szabadít fel a felhasználóktól a közvetlen licenc-hozzárendelések eltávolításával, akkor olyan csoportok feldolgozását kell elindítania, amelyek korábban nem tudtak teljes mértékben felvenni az összes felhasználói tagot. Egy csoport újrafeldolgozásához lépjen a csoport ablaktáblára, nyissa meg a **licenceket**, majd kattintson az eszköztáron az **újrafeldolgozás** gombra.
 
-## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>Hogyan kényszerítheti a licencek feldolgozását a felhasználóknál a hibák elhárítása érdekében?
+## <a name="force-user-license-processing-to-resolve-errors"></a>A felhasználói licencek feldolgozásának kényszerítése a hibák elhárítása érdekében
 
 Attól függően, hogy milyen lépéseket hajtott végre a hibák elhárításához, szükség lehet a felhasználók állapotának frissítéséhez szükséges manuális aktiválásra.
 
-Ha például egy érintett felhasználó duplikált proxy-problémáját oldja fel, aktiválnia kell a felhasználó feldolgozását. Egy felhasználó újrafeldolgozásához lépjen a felhasználó ablaktáblára, nyissa meg a licenceket, majd kattintson az eszköztáron az újrafeldolgozás gombra.
+Ha például egy érintett felhasználó duplikált proxy-problémáját oldja fel, aktiválnia kell a felhasználó feldolgozását. Egy felhasználó újrafeldolgozásához lépjen a felhasználó ablaktáblára, nyissa meg a **licenceket**, majd kattintson az eszköztáron az **újrafeldolgozás** gombra.
 
 ## <a name="next-steps"></a>További lépések
 

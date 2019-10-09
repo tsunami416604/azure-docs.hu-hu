@@ -5,21 +5,21 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 03/27/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c1f83303c3f186b37c1c5c06e61c2263420c0cfa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179022"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028037"
 ---
-1. Lépjen a virtuális WAN oldalára. Keresse meg a lap egyik módja, nyissa meg a **minden szolgáltatás**, majd keresse meg a virtuális WAN.
-1. A **WAN létrehozása** lap megnyitásához kattintson a **+ Hozzáadás** gombra.
-1. Az a **WAN létrehozása** lap, adja meg a következő mezőket:
+1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
+1. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás**gombra.
+1. A **WAN létrehozása** lapon töltse ki a következő mezőket:
 
-   * **Név** – Válasszon egy tetszés szerinti nevet a WAN számára.
+   * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – Hozzon létre egy új erőforráscsoportot, vagy használjon egy meglévőt.
    * **Erőforrás helye** – Válassza ki az erőforrás helyét a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.

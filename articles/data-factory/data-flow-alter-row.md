@@ -6,38 +6,38 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971258"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027008"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory Alter sor átalakítása
 
 Az Alter sort Transformation paranccsal szúrhatja be a sorokba az INSERT, DELETE, Update és upsert szabályzatokat. Egy-a-többhöz feltételeket adhat hozzá kifejezésként. Ezeket a feltételeket prioritási sorrendben kell megadni, mivel minden egyes sor az első megfeleltetési kifejezésnek megfelelő szabályzattal lesz megjelölve. Ezek a feltételek egy sor (vagy sor) beszúrását, frissítését, törlését vagy upserted eredményezik. Az Alter Row a DDL-& a DML-műveleteket is előkészítheti az adatbázison.
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Módosítási sor beállításai](media/data-flow/alter-row1.png "Módosítási sor beállításai")
+
+A ![sor beállításainak]módosítása a(media/data-flow/alter-row1.png "sor beállításait")
 
 > [!NOTE]
 > Az Alter sorok átalakítása csak az adatfolyamatban található adatbázis-tárolókban fog működni. A sorokhoz rendelt műveletek (INSERT, Update, DELETE, upsert) nem fordulnak elő hibakeresési munkamenetekben. Hozzá kell adnia egy végrehajtási adatfolyam-feladatot egy folyamathoz, és a folyamat hibakeresése vagy eseményindítók használatával kell megadnia az Alter Row Policy-szabályzatokat az adatbázis tábláiban.
 
 ## <a name="indicate-a-default-row-policy"></a>Alapértelmezett sor házirendet jelöl
 
-Hozzon létre egy Alter sort átalakítást, és határozzon meg egy feltételt `true()`tartalmazó sort. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor meg lesz jelölve, amely nem felel meg a `Insert`feltételes kifejezéseknek.
+Hozzon létre egy Alter sort átalakítást, és határozzon meg egy `true()` feltételt tartalmazó sort. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor, amely nem felel meg semmilyen feltételes kifejezésnek, `Insert` lesz megjelölve.
 
-![Sor módosítása egy házirendet](media/data-flow/alter-row4.png "Sor módosítása egy házirendet")
+Az ![egyes sorok módosítása]egy házirend(media/data-flow/alter-row4.png "módosításával")
 
 > [!NOTE]
-> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és a `true()`feltételt is megadhatja.
+> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és megadhatja a feltételt `true()` értékként.
 
 ## <a name="view-policies"></a>Szabályzatok megtekintése
 
 Kapcsolja be az adatfolyam-hibakeresési módot az Alter Row-szabályzatok eredményeinek megtekintéséhez az adatelőnézet ablaktáblán. A módosítási sor adatáramlási hibakeresési módban való végrehajtása nem hoz létre DDL-vagy DML-műveleteket a célhelyen. A műveletek végrehajtásához hajtsa végre az adatfolyamatot egy folyamaton belül egy végrehajtási adatfolyam-tevékenységen belül.
 
-![Módosítási sor házirendjei](media/data-flow/alter-row3.png "Módosítási sor házirendjei")
+![Módosítási sor szabályzatai](media/data-flow/alter-row3.png "Alter Row") Policy
 
 Ez lehetővé teszi az egyes sorok állapotának ellenőrzését és megtekintését a feltételek alapján. Az egyes INSERT, Update, DELETE és upsert műveletekhez ikon jelöli az adatfolyamatban, ami azt jelzi, hogy melyik műveletet kell végrehajtani, amikor egy folyamaton belül hajtja végre az adatfolyamot.
 
@@ -45,7 +45,7 @@ Ez lehetővé teszi az egyes sorok állapotának ellenőrzését és megtekinté
 
 A módosítási sor működéséhez adatbázis-fogadó típusúnak kell lennie. A fogadó beállításainál minden olyan műveletet meg kell adni, amely megfelel az Alter Row feltételeinek.
 
-![Módosítási sor] fogadója (media/data-flow/alter-row2.png "Módosítási sor") fogadója
+![Megváltoztathatja a sorok]fogadójának(media/data-flow/alter-row2.png "módosítási sorát")
 
 Az ADF-adatforgalomban az adatbázis-elsüllyedés alapértelmezett viselkedése Sorok beszúrására szolgál. Ha engedélyezni szeretné a frissítéseket, a upsert és a törlést is, a műveletek engedélyezéséhez a fogadóban is ellenőriznie kell ezeket a mezőket.
 

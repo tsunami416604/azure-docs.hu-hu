@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d4e497c556bde1be4e498cd85a68282a0e3b2666
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162675"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026269"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció Cisco WebEx-értekezletekkel
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 
 * A Cisco WebEx-találkozók támogatják **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-* A Cisco WebEx-értekezletek **a** felhasználó üzembe helyezésének időpontját támogatják
+* A Cisco WebEx-értekezletek a felhasználó üzembe helyezésének **időpontját** támogatják
 
 ## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>Cisco WebEx-értekezletek hozzáadása a katalógusból
 
@@ -56,8 +56,8 @@ A Cisco WebEx-értekezleteknek az Azure AD-be való integrálásának konfigurá
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Cisco WebEx** -értekezletek kifejezést a keresőmezőbe.
-1. Válassza a **Cisco WebEx** -értekezletek lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Cisco WebEx-értekezletek** kifejezést a keresőmezőbe.
+1. Válassza a **Cisco WebEx-értekezletek** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex-meetings"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Cisco WebEx-értekezletekhez
 
@@ -69,35 +69,35 @@ Az Azure AD SSO és a Cisco WebEx-értekezletek konfigurálásához és tesztel�
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 2. **[Cisco WebEx-találkozók egyszeri bejelentkezésének konfigurálása](#configure-cisco-webex-meetings-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Cisco WebEx-értekezletek létrehozása](#create-cisco-webex-meetings-test-user)** – tesztelje a felhasználót –, hogy a B. Simon partnere legyen a Cisco WebEx-találkozókon, amely a felhasználó Azure ad-képviseletéhez van társítva.
+    1. **[Cisco WebEx-értekezletek létrehozása – tesztelje a felhasználót](#create-cisco-webex-meetings-test-user)** –, hogy a B. Simon partnere legyen a Cisco WebEx-találkozókon, amely a felhasználó Azure ad-képviseletéhez van társítva.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Cisco WebEx** -értekezletek alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Cisco WebEx-értekezletek** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon való beállításával az alkalmazást **identitásszolgáltató** kezdeményezett módban állíthatja be a **szolgáltatói metaadatok** fájljának a következőképpen történő feltöltésével:
+1. Az **egyszeri bejelentkezés az SAML-vel lapon való beállításával** az alkalmazást **identitásszolgáltató** kezdeményezett módban állíthatja be a **szolgáltatói metaadatok** fájljának a következőképpen történő feltöltésével:
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
     b. Kattintson a **mappa embléma** válassza ki a metaadat-fájlt, és kattintson a **feltöltése**.
 
-    c. A szolgáltatói metaadatok feltöltésének sikeres befejezése után az **azonosító** és a **Válasz URL-** értékei az alapszintű **SAML-konfiguráció** szakaszban automatikusan feltöltve értékre kerülnek.
+    c. A szolgáltatói metaadatok feltöltésének sikeres befejezése után az **azonosító** és a **Válasz URL-** értékei az **alapszintű SAML-konfiguráció** szakaszban automatikusan feltöltve értékre kerülnek.
 
     >[!Note]
     >A szolgáltatói metaadat-fájlt a **Cisco WebEx-értekezletek SSO konfigurálása** című szakaszban találja, amelyet az oktatóanyag későbbi részében ismertet. 
 
 1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:  
 
-    a. Az alapszintű **SAML-konfiguráció** szakaszban kattintson a Szerkesztés/toll ikonra.
+    a. Az **alapszintű SAML-konfiguráció** szakaszban kattintson a Szerkesztés/toll ikonra.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
     
-    b. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:` https://<customername>.my.webex.com`
+    b. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: ` https://<customername>.my.webex.com`
 
-5. A Cisco WebEx-értekezletek alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+5. A Cisco WebEx-értekezletek alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
@@ -122,7 +122,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML** -fájlját, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
 
@@ -138,7 +138,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-    1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
     1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -147,7 +147,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Cisco WebEx-értekezletekhez.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Cisco WebEx**-értekezletek lehetőséget.
+1. Az alkalmazások listában válassza a **Cisco WebEx-értekezletek**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
     ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
@@ -162,9 +162,9 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-cisco-webex-meetings-sso"></a>Cisco WebEx-értekezletek – SSO konfigurálása
 
-1. Nyissa meg az URL-címet az adminisztrációs hitelesítő adataival. `https://<customername>.webex.com/admin`
+1. Nyissa meg a `https://<customername>.webex.com/admin` URL-címet az adminisztrációs hitelesítő adataival.
 
-2. Nyissa meg a **gyakori hely beállításait** , és navigáljon az **SSO**-konfigurációhoz.
+2. Nyissa meg a **gyakori hely beállításait** , és navigáljon az **SSO-konfigurációhoz**.
  
     ![Egyszeri bejelentkezés konfigurálása](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
@@ -176,14 +176,14 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     b. Kattintson az **SAML-Metaadatok importálása** hivatkozásra a metaadatok fájljának feltöltéséhez, amelyet a Azure Portal letöltött.
 
-    c. Az **Exportálás** gombra kattintva letöltheti a szolgáltatói metaadat-fájlt, és feltöltheti azt az alapszintű **SAML-konfigurációs** szakaszban Azure Portal.
+    c. Az **Exportálás** gombra kattintva letöltheti a szolgáltatói metaadat-fájlt, és feltöltheti azt az **alapszintű SAML-konfigurációs** szakaszban Azure Portal.
 
-    d. A **AuthContextClassRef** szövegmezőbe írja be `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` a (z) értéket, és ha engedélyezni szeretné az MFA használatát az Azure ad-ban, írja be a két értéket, például:`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
+    d. A **AuthContextClassRef** szövegmezőbe írja be a `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` értéket, és ha engedélyezni szeretné az MFA használatát az Azure ad-ban, írja be a két értéket, például `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
 
     e. Válassza az **automatikus fiók létrehozása**lehetőséget.
 
     >[!NOTE]
-    >Az igény szerinti felhasználó üzembe helyezésének engedélyezéséhez ellenőriznie kell az **automatikus fiók létrehozását**. Az SAML-jogkivonat attribútumait is át kell adni az SAML-válaszban.
+    >Az igény **szerinti felhasználó üzembe** helyezésének engedélyezéséhez ellenőriznie kell az **automatikus fiók létrehozását**. Az SAML-jogkivonat attribútumait is át kell adni az SAML-válaszban.
 
     f. Kattintson a **Save** (Mentés) gombra.
 

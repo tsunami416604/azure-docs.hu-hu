@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan normalizált adatok BI és az adatok elemzési 
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616896"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035595"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
 
@@ -61,16 +61,26 @@ Kezdjük az ODBC-illesztőt.
     - **Leírás**: Az adatforrás rövid leírása.
     - **Gazdagép**: A Azure Cosmos DB-fiókhoz tartozó URI. Letöltheti ezt az Azure Portalon az Azure Cosmos DB kulcsok oldalról az alábbi képernyőképen látható módon. 
     - **Hozzáférési kulcs**: A Azure Portal Azure Cosmos DB kulcsok oldalának elsődleges vagy másodlagos, írható-olvasható vagy írásvédett kulcsa, ahogy az alábbi képernyőfelvételen is látható. Azt javasoljuk, hogy az írásvédett kulcsát, használható, ha a DSN csak olvasható adatok feldolgozása és a jelentéskészítés.
-    ![Azure Cosmos DB kulcsok oldalán](./media/odbc-driver/odbc-driver-keys.png)
+    ![Azure Cosmos DB kulcsok oldalán](./media/odbc-driver/odbc-cosmos-account-keys.png)
     - **Hozzáférési kulcs titkosítása a következőhöz**: Válassza ki a legjobb választást a számítógép felhasználói alapján. 
     
 1. Kattintson a **teszt** gombra, hogy az Azure Cosmos DB-fiókhoz kapcsolódhat. 
 
-1. Kattintson a **speciális beállítások** állítsa be a következő értékeket:
+1.  Kattintson a **speciális beállítások** állítsa be a következő értékeket:
+    *  **REST API verziója**: Válassza ki a műveletek [REST API verzióját](https://docs.microsoft.com/rest/api/cosmos-db/) . Az alapértelmezett 2015-12-16. Ha [nagyméretű partíciós kulcsokkal](large-partition-keys.md) rendelkező tárolókkal rendelkezik, és a REST API 2018-12-31-es verziójának megkövetelése:
+        - Írja be a **2018-12-31** -es verzióját REST API verzióra
+        - A **Start** menüben írja be a "regedit" parancsot a rendszerleíróadatbázis- **szerkesztő** alkalmazás megkereséséhez és megnyitásához.
+        - A Rendszerleíróadatbázis-szerkesztőben navigáljon a következő elérési úthoz: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC. INI**
+        - Hozzon létre egy új alkulcsot ugyanazzal a névvel, mint a DSN, például: "Contoso-fiók ODBC DSN".
+        - Navigáljon a "contoso-fiók ODBC DSN" alkulcshoz.
+        - Kattintson a jobb gombbal egy új **karakterláncérték** hozzáadásához:
+            - Érték neve: **IgnoreSessionToken**
+            - Érték: **1**
+             @ No__t-2Registry-szerkesztő beállításai @ no__t-3
     - **Lekérdezés konzisztenciája**: Válassza ki a műveletekhez tartozó [konzisztencia-szintet](consistency-levels.md) . Az alapértelmezett érték a munkamenet.
     - **Újrapróbálkozások száma**: Adja meg, hogy a rendszer hányszor próbálkozzon újra egy művelettel, ha a kezdeti kérelem nem fejeződött be a szolgáltatási ráta korlátozása miatt.
     - **Sémafájl**: Itt számos lehetőség közül választhat.
-        - Elhagyása (üres), mert ez a bejegyzés alapértelmezés szerint az illesztőprogram megvizsgálja az egyes gyűjtemények-séma megállapításához összes gyűjtemény adatainak első oldalán. Ez az úgynevezett leképezési gyűjteményt. Egy sémafájlt definiált nélkül az illesztőprogram a vizsgálat végrehajtania az egyes illesztőprogram-munkamenet, és hatására a DSN használó alkalmazások magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájlt az Adatbázisnevet.
+        - Alapértelmezés szerint, ha a bejegyzést (üres) hagyja, az illesztőprogram megvizsgálja az összes tárolóhoz tartozó adat első oldalát az egyes tárolók sémájának meghatározásához. Ezt nevezzük tároló-hozzárendelésnek. Egy sémafájlt definiált nélkül az illesztőprogram a vizsgálat végrehajtania az egyes illesztőprogram-munkamenet, és hatására a DSN használó alkalmazások magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájlt az Adatbázisnevet.
         - Ha már rendelkezik egy sémafájl (valószínűleg a séma-szerkesztő használatával létrehozott), kattintson a **Tallózás**gombra, keresse meg a fájlt, és kattintson a **Mentés**elemre, majd **az OK**gombra.
         - Ha azt szeretné, hogy hozzon létre egy új sémát, kattintson a **OK**, és kattintson a **Sémaszerkesztőt** a fő ablakban. Ezután folytassa a séma-szerkesztő adataival. Miután létrehozta az új sémafájl, ne felejtse el lépjen vissza a **speciális beállítások** az újonnan létrehozott sémafájl ablak.
 
@@ -78,17 +88,17 @@ Kezdjük az ODBC-illesztőt.
 
     ![Új Azure Cosmos DB ODBC DSN felhasználói DSN lapon](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#collection-mapping"></a>3. lépés: Séma definíciójának létrehozása a gyűjtemény leképezési módszerének használatával
+## <a id="#container-mapping"></a>3. lépés: Séma definíciójának létrehozása a tároló-hozzárendelési módszer használatával
 
-Mintavételi módszerek használható két típusa van: **gyűjtemény leképezés** vagy **tábla-elválasztó**. Egy mintavételi munkamenetet kipróbálhatják az mindkét mintavételi módszer, de az egyes gyűjtemények csak használhat egy adott mintavételezési módszerét. Az alábbi lépéseket a sémát egy vagy több gyűjteményt a gyűjtemény leképezés módszerrel hozzon létre. Ez a mintavételi metódus lekéri az adatokat a lapon, az adatok struktúráját határozza meg a gyűjtemény. Az ODBC-oldali táblához egy gyűjtemény transzponálásával azt. A mintavételezési módszerét hatékony és gyors, amikor az adatok egy gyűjtemény homogén. Ha egy gyűjteményt a különféle típusú adatokat tartalmaz, azt javasoljuk, használja a [tábla-elválasztó metódus leképezési](#table-mapping) lehetővé teszi a gyűjteményben lévő adatstruktúrák meghatározni egy robusztusabb mintavételezési módszerét. 
+Kétféle mintavételi módszer használható: **tároló-hozzárendelés** vagy **tábla-határolójelek**. A mintavételi munkamenetek mindkét mintavételi módszert használhatják, de mindegyik tároló csak egy adott mintavételi módszert használhat. Az alábbi lépések egy sémát hoznak létre egy vagy több tárolóban lévő adataihoz a tároló-hozzárendelési módszer használatával. Ez a mintavételi módszer a tárolók oldalán lévő összes adat lekérésével határozza meg az adat szerkezetét. Egy tárolót helyez át az ODBC-oldalon található táblába. Ez a mintavételi módszer hatékony és gyors, ha a tárolóban lévő adathalmaz homogén. Ha egy tároló különböző-adattípust tartalmaz, javasoljuk, hogy használja a [Table-határolójelek leképezési módszerét](#table-mapping) , mivel ez robusztusabb mintavételi módszert biztosít a tárolóban lévő adatstruktúrák meghatározásához. 
 
-1. Miután befejezte a 1-4-es lépést az [Azure Cosmos](#connect)-adatbázishoz való kapcsolódás során, kattintson a **Azure Cosmos db ODBC-illesztő DSN-telepítő** ablakában található **Schema Editor** elemre.
+1. Miután befejezte a 1-4-es lépést az [Azure Cosmos-adatbázishoz való kapcsolódás](#connect)során, kattintson a **Azure Cosmos db ODBC-illesztő DSN-telepítő** ablakában található **Schema Editor** elemre.
 
     ![Az Azure Cosmos DB ODBC DSN illesztőinek ablakban séma szerkesztő gomb](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. Az a **Sémaszerkesztőt** ablakban kattintson a **hozzon létre új**.
-    A **készítése a séma** ablak az Azure Cosmos DB-fiókban lévő összes gyűjteményt jeleníti meg. 
+    A **séma létrehozása** ablak megjeleníti a Azure Cosmos db fiókban található összes tárolót. 
 
-1. Válassza ki a mintát, és kattintson egy vagy több gyűjteményt **minta**. 
+1. Válasszon ki egy vagy több mintát a mintavételezéshez, majd kattintson a **minta**elemre. 
 
 1. Az a **Tervező nézetben** lapon, az adatbázis, a séma és a tábla szerepelnek. A táblázatban megtekintheti a vizsgálat megjelenítése az oszlopneveket (SQL-neve, adatforrás neve, stb.) társított tulajdonságok.
     Az oszlop SQL nevét, az SQL-típus, SQL hossza (ha van ilyen), módosíthatja az egyes oszlopok méretezés (ha van ilyen), a pontosság (ha alkalmazható) és a üresen hagyható.
@@ -101,16 +111,16 @@ Mintavételi módszerek használható két típusa van: **gyűjtemény leképez�
 
 ## <a id="table-mapping"></a>4. lépés: Séma definíciójának létrehozása a tábla-határolójelek leképezési módszerével
 
-Mintavételi módszerek használható két típusa van: **gyűjtemény leképezés** vagy **tábla-elválasztó**. Egy mintavételi munkamenetet kipróbálhatják az mindkét mintavételi módszer, de az egyes gyűjtemények csak használhat egy adott mintavételezési módszerét. 
+Kétféle mintavételi módszer használható: **tároló-hozzárendelés** vagy **tábla-határolójelek**. A mintavételi munkamenetek mindkét mintavételi módszert használhatják, de mindegyik tároló csak egy adott mintavételi módszert használhat. 
 
-Az alábbi lépések létrehozzák a sémát a segítségével egy vagy több gyűjteményt a **tábla-elválasztó** metódus leképezés. Azt javasoljuk, hogy ezt a mintavételi módszert használja, amikor a gyűjtemények heterogén típusú adatot tartalmaz. Ez a módszer segítségével attribútumokat és a megfelelő értékeket a mintavételt hatókörét. Ha egy dokumentum egy "Type" tulajdonságot tartalmaz, például korlátozhatja, ez a tulajdonság értékét a mintavételezés körét. A végeredmény a mintavételi lenne minden egyes érték megadása esetén a táblák egy készlete. Írja be például = autó egy autó tábla típusú során állítja elő = Adatsík akkor az eredmény egy Adatsík táblát.
+A következő lépések egy sémát hoznak létre egy vagy több tárolóban lévő adatkészletek számára a **Table-határolójelek** leképezési módszerének használatával. Javasoljuk, hogy ezt a mintavételi módszert használja, ha a tárolók heterogén adattípust tartalmaznak. Ez a módszer segítségével attribútumokat és a megfelelő értékeket a mintavételt hatókörét. Ha egy dokumentum egy "Type" tulajdonságot tartalmaz, például korlátozhatja, ez a tulajdonság értékét a mintavételezés körét. A végeredmény a mintavételi lenne minden egyes érték megadása esetén a táblák egy készlete. Írja be például = autó egy autó tábla típusú során állítja elő = Adatsík akkor az eredmény egy Adatsík táblát.
 
-1. Miután befejezte a 1-4-es lépést az [Azure Cosmos](#connect)-adatbázishoz való kapcsolódás során, kattintson a Azure Cosmos db ODBC-illesztő DSN-telepítő ablakában található **Schema Editor** elemre.
+1. Miután befejezte a 1-4-es lépést az [Azure Cosmos-adatbázishoz való kapcsolódás](#connect)során, kattintson a Azure Cosmos db ODBC-illesztő DSN-telepítő ablakában található **Schema Editor** elemre.
 
 1. Az a **Sémaszerkesztőt** ablakban kattintson a **hozzon létre új**.
-    A **készítése a séma** ablak az Azure Cosmos DB-fiókban lévő összes gyűjteményt jeleníti meg. 
+    A **séma létrehozása** ablak megjeleníti a Azure Cosmos db fiókban található összes tárolót. 
 
-1. Válasszon ki egy gyűjteményt a a **minta nézet** lap a **leképezést definiáló** oszlop ahhoz a gyűjteményhez, kattintson a **szerkesztése**. Ezt a a **leképezést definiáló** ablakban válassza **tábla elválasztó** metódust. Ezután tegye a következőket:
+1. Válasszon egy tárolót a **Minta nézet** lapon, a tároló **hozzárendelés definíciója** oszlopban kattintson a **Szerkesztés**elemre. Ezt a a **leképezést definiáló** ablakban válassza **tábla elválasztó** metódust. Ezután tegye a következőket:
 
     a. Az a **attribútumok** mezőbe írja be egy elválasztó tulajdonság nevét. Ez a tulajdonság a dokumentumot, amelyet szeretne a mintavételt, például az városa hatókörét, és nyomja le az enter. 
 
@@ -120,7 +130,7 @@ Az alábbi lépések létrehozzák a sémát a segítségével egy vagy több gy
 
 1. Kattintson az **OK** gombra. 
 
-1. A leképezés definíciókat a gyűjtemények befejezése után a mintát a szeretne a **Sémaszerkesztőt** ablakban kattintson a **minta**.
+1. A mintaként használni kívánt tárolók leképezési definícióinak befejezése után a **sémakezelő** ablakban kattintson a **minta**elemre.
      Az oszlop SQL nevét, az SQL-típus, SQL hossza (ha van ilyen), módosíthatja az egyes oszlopok méretezés (ha van ilyen), a pontosság (ha alkalmazható) és a üresen hagyható.
     - Beállíthat **oszlop elrejtése** való **igaz** Ha azt szeretné, ez az oszlop kizárása a lekérdezés eredményeit. Oszlopok jelölt oszlop elrejtése = true nem lehet megjeleníteni a kijelölés és felhasználását, bár továbbra is a séma részét képezik. Például az összes az Azure Cosmos DB szükséges Rendszertulajdonságok kezdve elrejtheti `_`.
     - A **azonosító** oszlop egyetlen mező nem lehet rejtett, ahogy a normalizált séma az elsődleges kulcs használatban van. 
@@ -156,7 +166,7 @@ Az új csatolt kiszolgáló nevének megtekintéséhez frissítse a csatolt kisz
 
 ### <a name="query-linked-database"></a>Csatolt adatbázis lekérdezése
 
-Csatolt adatbázis lekérdezése, adja meg az SSMS-lekérdezést. Ebben a példában a lekérdezés választja ki a gyűjteményt a tábla `customers`:
+Csatolt adatbázis lekérdezése, adja meg az SSMS-lekérdezést. Ebben a példában a lekérdezés a `customers` nevű tárolóban lévő táblából van kiválasztva:
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
@@ -184,7 +194,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 ## <a name="optional-creating-views"></a>(Nem kötelező) Nézetek létrehozása
 Adja meg, és a mintavételi folyamat részeként nézeteket hozhat létre. Ezek a nézetek az SQL-nézetek egyenértékűek. Ezek csak olvasható és hatókör a beállításokat és az Azure Cosmos DB SQL-lekérdezés definiált leképezések. 
 
-Az adatok nézet létrehozása az a **Sémaszerkesztőt** ablakban, a a **Nézetdefiníciókból** oszlopot, kattintson a **Hozzáadás** mintát a gyűjtemény a sorban. 
+Az adatnézet létrehozásához a **séma szerkesztő** ablakában, a **definíciók megtekintése** oszlopban kattintson a **Hozzáadás** elemre a tárolóhoz a minta sorban. 
     ![Adatok nézet létrehozása](./media/odbc-driver/odbc-driver-create-view.png)
 
 

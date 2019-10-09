@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141104"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029140"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Az Azure-beli adatüzemek vizuális monitorozása
+# <a name="visually-monitor-azure-data-factories"></a>Az Azure Data Factoryk vizuális monitorozása
 Azure Data Factory egy felhőalapú adatintegrációs szolgáltatás. A felhőben adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezés és az adatátalakítások előkészítéséhez és automatizálásához. A Azure Data Factory használatával a következőket teheti:
 
 - Különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatokat hozhat létre és ütemezhet.
@@ -46,7 +46,7 @@ A listanézet megjeleníti a Data Factory folyamatokhoz tartozó egyes folyamato
 | Műveletek | A tevékenységek futtatásához elérhető egyetlen művelet |
 | Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Duration | Futtatás időtartama (óó: PP: SS) |
-| Kiváltó | Manuális trigger vagy ütemezett trigger |
+| Aktiválta: | Manuális trigger vagy ütemezett trigger |
 | State | **Sikertelen**, **sikeres**vagy **folyamatban** |
 | Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Folyamat futási hibája (ha van) |
@@ -59,8 +59,8 @@ A listanézet azokat a tevékenység-futtatásokat jeleníti meg, amelyek megfel
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
-| Műveletnév | A folyamaton belüli tevékenység neve |
-| Tevékenységtípus | A tevékenység típusa, például **Másolás**, **HDInsightSpark**vagy **HDInsightHive** |
+| Tevékenység neve | A folyamaton belüli tevékenység neve |
+| Tevékenység típusa | A tevékenység típusa, például **Másolás**, **HDInsightSpark**vagy **HDInsightHive** |
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Duration | Futtatás időtartama (óó: PP: SS) |
 | State | **Sikertelen**, **sikeres**vagy **folyamatban** |
@@ -161,7 +161,7 @@ Válassza a **visszajelzés** ikont, hogy visszajelzést küldjön a különböz
 
 ## <a name="alerts"></a>Riasztások
 
-Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A > kezdéshez válassza a riasztások figyelése **& mérőszámok** lehetőséget a Data Factory figyelése lapon.
+Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A kezdéshez válassza a **figyelő** > **riasztások & metrikák** lehetőséget a Data Factory figyelése lapon.
 
 ![A adatgyár-figyelő lapja](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ A szolgáltatás hét perces bevezetéséhez és bemutatásához tekintse meg a 
 
 ### <a name="create-alerts"></a>Riasztások létrehozása
 
-1.  Új riasztás létrehozásához válassza az **új riasztási szabály** lehetőséget.
+1.  Új riasztás létrehozásához válassza az **új riasztási szabály** lehetőséget.
 
     ![Új riasztási szabály gomb](media/monitor-visually/alerts02.png)
 

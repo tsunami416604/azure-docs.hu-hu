@@ -1,55 +1,55 @@
 ---
-title: Az Azure Data Factory-folyamatot helyettes kulcs átalakítását leképezése
-description: Hogyan lehet Azure Data Factory-leképezés Flow helyettes kulcs adatátalakítás használatával létrehozhat egy egymást követő értékek
+title: Azure Data Factory leképezési adatforgalom helyettes kulcsának átalakítása
+description: A Azure Data Factory leképezési adatforgalmának helyettes kulcs-átalakításának használata szekvenciális kulcsok értékének létrehozásához
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: eaa1c577f7e208400d3430222b006e0dbbd7956a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45e2d35a3b0a3f3c89913bbe70d7c43c17cbcee0
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61350428"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029192"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>A folyamat helyettes kulcs átalakítását leképezése
+# <a name="mapping-data-flow-surrogate-key-transformation"></a>Adatfolyamatok helyettesítő kulcsának átalakításának leképezése
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-A helyettes kulcs átalakítási használatával adja hozzá az adatokat a folyamat sorkészlet növekvő nem üzleti tetszőleges kulcs értéket. Ez akkor hasznos, dimenziótáblák csillag sémában analitikai adatmodellt ahol a dimenziótáblák minden tagjának rendelkeznie kell egy egyedi kulcsot Kimball DW módszertan nem üzleti kulcs részét képező tervezésekor.
 
-![Kulcs átalakító helyettesítő](media/data-flow/surrogate.png "helyettesítő kulcs átalakítása")
+A helyettesítő kulcs átalakításával bővítheti a nem üzleti tetszőleges kulcs értékét az adatfolyam-sorhalmazban. Ez akkor hasznos, ha dimenziós táblákat tervez egy olyan Star Schema analitikai adatmodellben, amelyben a dimenziós táblák egyes tagjainak egy nem üzleti kulcshoz tartozó egyedi kulccsal kell rendelkezniük, amely a Kimball DW módszertan részét képezi.
 
-"Kulcsoszlop" Ez a név meg kell adnia az új helyettes kulcs oszlopra.
+![Helyettes kulcs átalakítása](media/data-flow/surrogate.png "helyettes kulcs") átalakítása
 
-A növekményes érték kezdőpontját "Kezdeti érték".
+A "kulcs oszlop" az a név, amelyet az új helyettesítő kulcs oszlopához fog adni.
 
-## <a name="increment-keys-from-existing-sources"></a>Növekmény-kulcsok meglévő források
+A "kezdő érték" a növekményes érték kezdőpontja.
 
-Ha szeretné, hogy a feladatütemezés kezdő érték, amely létezik az olyan adatforrások, következett közvetlenül a helyettes kulcs átalakítást származtatott oszlopot átalakítást, és adja hozzá a két érték együtt:
+## <a name="increment-keys-from-existing-sources"></a>Kulcsok növelése meglévő forrásokból
 
-![SK hozzáadása maximális](media/data-flow/sk006.png "helyettes kulcs átalakítás hozzáadása maximális száma")
+Ha a sorozatot egy olyan értékről szeretné elindítani, amely egy forrásban található, akkor a származtatott oszlop-átalakítást közvetlenül a helyettesítő kulcs átalakítását követően, a két érték együttes hozzáadásával is elvégezheti:
 
-A kulcs értékét az előző maximális az, hogy van két módszer használható:
+![SK maximális](media/data-flow/sk006.png "helyettesítő kulcs átalakításának") hozzáadása
 
-### <a name="database-sources"></a>Adatbázis-forrásokhoz
+Ha a kulcs értékét az előző max. módszerrel szeretné kiosztani, két módszert használhat:
 
-A "Query" lehetőség használatával MAX() válassza a forrásból, az adatforrás-átalakítás használatával:
+### <a name="database-sources"></a>Adatbázis-források
 
-![Lekérdezési kulcs helyettesítő](media/data-flow/sk002.png "helyettesítő kulcs transzformációs lekérdezés")
+A "lekérdezés" lehetőséggel válassza ki a MAX () elemet a forrás-átalakítás használatával:
 
-### <a name="file-sources"></a>Fájl-források
+![Helyettes kulcs lekérdezése](media/data-flow/sk002.png "helyettes kulcs átalakítási lekérdezése")
 
-Ha az előző maximális értékét a fájlban, a forrás átalakítást, és a egy összesített átalakítást, és MAX() kifejezés függvény használatával az előző maximális érték:
+### <a name="file-sources"></a>Fájlok forrásai
 
-![Kulcsfájl helyettesítő](media/data-flow/sk008.png "helyettesítő kulcsfájl")
+Ha az előző maximális érték egy fájlban van, használhatja a forrás-átalakítást egy összesített átalakítással együtt, és a MAX () Expression függvény használatával szerezheti be az előző maximális értéket:
 
-Mindkét esetben a bejövő új adatait kell összekapcsolni együtt a forrás, amely tartalmazza az előző maximális érték:
+![Helyettesítő kulcs fájljának](media/data-flow/sk008.png "helyettesítő kulcsa")
 
-![Kulcs illesztési helyettesítő](media/data-flow/sk004.png "helyettesítő kulcs való csatlakozás")
+Mindkét esetben a korábbi maximális értéket tartalmazó forrással együtt kell csatlakoztatnia a bejövő új adatait:
+
+![Helyettes kulcs csatlakoztatása](media/data-flow/sk004.png "helyettes kulcs") csatlakoztatása
 
 ## <a name="next-steps"></a>További lépések
 
-Ezekben a példákban a [csatlakozzon](data-flow-join.md) és [származtatott oszlopot](data-flow-derived-column.md) átalakításokat.
+Ezek a példák a [JOIN](data-flow-join.md) és a [származtatott oszlop](data-flow-derived-column.md) átalakításokat használják.

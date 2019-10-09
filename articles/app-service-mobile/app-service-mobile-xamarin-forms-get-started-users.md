@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 643539fb569cdefba8e04d1ac08e73055624d3ae
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67446301"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025053"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hitelesítés hozzáadása a Xamarin Forms-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> A Visual Studio App Center a Mobile App Development új és integrált szolgáltatásaiba fektet. A fejlesztők aszolgáltatások kiépítését, **tesztelését** és terjesztését használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a leküldéses szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők a hitelesítést a felhasználók és az adatszolgáltatások hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében. Tekintse meg [app Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez a témakör bemutatja, hogyan hitelesítheti App Service Mobile apps felhasználóit az ügyfélalkalmazás használatával. Ebben az oktatóanyagban a App Service által támogatott Identity Provider használatával hitelesítő adatokkal bővítheti a Xamarin Forms-alapú Gyorsindítás projektet. Miután a Mobile App sikeresen hitelesítette és engedélyezte a hitelesítést, a rendszer megjeleníti a felhasználói azonosító értékét, és hozzáférhet a korlátozott táblák adataihoz.
@@ -47,7 +47,7 @@ A biztonságos hitelesítéshez meg kell adnia egy új URL-sémát az alkalmazá
 
 2. Kattintson a **hitelesítés/engedélyezés** menüpontra.
 
-3. Az **engedélyezett külső átirányítási URL**-címek `url_scheme_of_your_app://easyauth.callback`mezőben adja meg a értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
+3. Az **engedélyezett külső átirányítási URL-címek**mezőben adja meg a `url_scheme_of_your_app://easyauth.callback` értéket.  A karakterláncban szereplő **url_scheme_of_your_app** a Mobile-alkalmazás URL-sémája.  A protokollnak normál URL-specifikációt kell követnie (csak betűket és számokat kell használnia, és betűvel kell kezdődnie).  Jegyezze fel a kiválasztott karakterláncot, mivel a mobil alkalmazás kódját több helyen is módosítania kell az URL-sémával.
 
 4. Kattintson az **OK** gombra.
 
@@ -63,10 +63,10 @@ A Xamarin űrlapos projekttel való hitelesítéshez Definiáljon egy **IAuthent
 
 Implementálja az **IAuthenticate** felületet az alkalmazás által támogatott platformokon.
 
-1. A Visual Studióban vagy a Xamarin Studióban nyissa meg a app.cs a projektből a Portable néven, amely a Portable Class Library projekt, majd `using` adja hozzá a következő utasítást:
+1. A Visual Studióban vagy a Xamarin Studióban nyissa meg a App.cs-t a projektből **a Portable néven** , amely a Portable Class Library projekt, majd adja hozzá a következő `using` utasítást:
 
         using System.Threading.Tasks;
-2. A app.cs-ben adja hozzá `IAuthenticate` a következő illesztőfelület-definíciót közvetlenül az `App` osztály definíciója előtt.
+2. A App.cs-ben adja hozzá a következő `IAuthenticate` illesztőfelület-definíciót közvetlenül az `App` osztály definíciója előtt.
 
         public interface IAuthenticate
         {
@@ -86,7 +86,7 @@ Implementálja az **IAuthenticate** felületet az alkalmazás által támogatott
             Clicked="loginButton_Clicked"/>
 
     Ez a gomb elindítja a kiszolgáló által felügyelt hitelesítést a Mobile apps-háttérrel.
-5. Nyissa meg a TodoList.XAML.cs a hordozható osztály könyvtára projektből, majd adja hozzá a `TodoList` következő mezőt a osztályhoz:
+5. Nyissa meg a TodoList.xaml.cs a hordozható osztály könyvtára projektből, majd adja hozzá a következő mezőt a `TodoList` osztályhoz:
 
         // Track whether the user has authenticated.
         bool authenticated = false;
@@ -109,7 +109,7 @@ Implementálja az **IAuthenticate** felületet az alkalmazás által támogatott
         }
 
     Ez a kód gondoskodik arról, hogy az adatok csak a hitelesítés után frissüljenek a szolgáltatásból.
-7. Adja hozzá a következő kezelőt a rákattintott eseményhez a **TodoList** osztályhoz:
+7. Adja hozzá a következő kezelőt a **rákattintott** eseményhez a **TodoList** osztályhoz:
 
         async void loginButton_Clicked(object sender, EventArgs e)
         {
@@ -127,7 +127,7 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
 1. A Visual Studióban vagy a Xamarin Studióban kattintson a jobb gombbal a **droid** projektre, majd **állítsa be indítási projektként**.
 2. Nyomja le az F5 billentyűt a projekt elindításához a hibakeresőben, majd ellenőrizze, hogy az alkalmazás elindítása után nem kezelt kivétel történt-e az 401-as (nem engedélyezett) állapotkód miatt. A rendszer a 401 kódot állítja elő, mert a háttérbeli hozzáférés csak a jogosult felhasználókra korlátozódik.
-3. Nyissa meg a MainActivity.cs az Android-projektben `using` , és adja hozzá a következő utasításokat:
+3. Nyissa meg a MainActivity.cs az Android-projektben, és adja hozzá a következő `using` utasítást:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -171,7 +171,7 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
     Ha a Facebooktól eltérő identitás-szolgáltatót használ, válasszon másik értéket a [MobileServiceAuthenticationProvider][7].
 
-6. Frissítse a **AndroidManifest. XML** fájlt úgy, hogy hozzáadja a következő XML `<application>` -t a elemhez:
+6. Frissítse a **AndroidManifest. XML** fájlt úgy, hogy hozzáadja a következő XML-t a `<application>` elemhez:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -183,8 +183,8 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
       </intent-filter>
     </activity>
     ```
-    Cserélje `{url_scheme_of_your_app}` le az URL-sémát.
-7. Adja hozzá a következő kódot a **MainActivity** osztály `LoadApplication()` **OnCreate** metódusához a hívása előtt:
+    Cserélje le a `{url_scheme_of_your_app}` értéket az URL-sémával.
+7. Adja hozzá a következő kódot a **MainActivity** osztály **OnCreate** metódusához a `LoadApplication()` hívása előtt:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -194,7 +194,7 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-**Az alkalmazás összeomlott`Java.Lang.NoSuchMethodError: No static method startActivity`**
+**Az alkalmazás összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
 Bizonyos esetekben a támogatási csomagok csak figyelmeztetésként jelennek meg a Visual Studióban, de az alkalmazás a futtatáskor összeomlik ezzel a kivétellel. Ebben az esetben meg kell győződnie arról, hogy a projektben hivatkozott összes támogatási csomag ugyanazzal a verzióval rendelkezik. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
@@ -203,7 +203,7 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
 1. A Visual Studióban vagy a Xamarin Studióban kattintson a jobb gombbal az **iOS** -projektre, majd **állítsa be indítási projektként**.
 2. Nyomja le az F5 billentyűt a projekt elindításához a hibakeresőben, majd ellenőrizze, hogy az alkalmazás elindítása után nem kezelt kivétel történt-e az 401-as (nem engedélyezett) állapotkód miatt. Az 401-es válasz azért jön létre, mert a háttérbeli hozzáférés csak a jogosult felhasználókra korlátozódik.
-3. Nyissa meg a AppDelegate.cs az iOS-projektben `using` , és adja hozzá a következő utasításokat:
+3. Nyissa meg a AppDelegate.cs az iOS-projektben, és adja hozzá a következő `using` utasítást:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -256,13 +256,13 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. Adja hozzá a következő sort a **FinishedLaunching** metódushoz a hívása `LoadApplication()`előtt:
+7. Adja hozzá a következő sort a **FinishedLaunching** metódushoz a `LoadApplication()` hívása előtt:
 
         App.Init(this);
 
     Ez a kód biztosítja a hitelesítő inicializálását az alkalmazás betöltése előtt.
 
-8. Nyisson meg egy info. plist fájlt, és adjon hozzá egy **URL-típust**. Állítsa be az **azonosítót** a választott névre, az alkalmazás URL-sémájának **URL-** sémájára, valamint a szerepkört a none értékre.
+8. Nyisson meg egy info. plist fájlt, és adjon hozzá egy **URL-típust**. Állítsa be az **azonosítót** a választott névre, az alkalmazás URL-sémájának **URL-** sémájára, valamint a **szerepkört** a none értékre.
 
 9. Hozza létre újra az alkalmazást, futtassa, majd jelentkezzen be a kiválasztott hitelesítési szolgáltatóval, és ellenőrizze, hogy képes-e hozzáférni az adatbázishoz hitelesített felhasználóként.
 
@@ -271,18 +271,18 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
 1. A Visual Studióban kattintson a jobb gombbal a **UWP** projektre, majd **állítsa be indítási projektként**.
 2. Nyomja le az F5 billentyűt a projekt elindításához a hibakeresőben, majd ellenőrizze, hogy az alkalmazás elindítása után nem kezelt kivétel történt-e az 401-as (nem engedélyezett) állapotkód miatt. Az 401-es válasz azért fordul elő, mert a háttérbeli hozzáférés csak a jogosult felhasználókra korlátozódik.
-3. Nyissa meg a MainPage.XAML.cs a Windows-alkalmazás projekthez `using` , és adja hozzá a következő utasításokat:
+3. Nyissa meg a MainPage.xaml.cs a Windows-alkalmazás projekthez, és adja hozzá a következő `using` utasítást:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
         using Windows.UI.Popups;
         using <your_Portable_Class_Library_namespace>;
 
-    Cserélje `<your_Portable_Class_Library_namespace>` le a helyére a hordozható osztályhoz tartozó könyvtár névterét.
+    Cserélje le a `<your_Portable_Class_Library_namespace>` értéket a hordozható osztályhoz tartozó könyvtár névterével.
 4. Frissítse a **Főoldal** osztályt a **IAuthenticate** felület megvalósításához a következőképpen:
 
         public sealed partial class MainPage : IAuthenticate
-5. Frissítse a főkiszolgálói osztályt egy **MobileServiceUser** -mező és egy **hitelesítő** módszer hozzáadásával, amely az **IAuthenticate** felület számára szükséges, az alábbiak szerint:
+5. Frissítse a főkiszolgálói **osztályt** egy **MobileServiceUser** -mező és egy **hitelesítő** módszer hozzáadásával, amely az **IAuthenticate** felület számára szükséges, az alábbiak szerint:
 
         // Define an authenticated user.
         private MobileServiceUser user;
@@ -320,12 +320,12 @@ Ez a szakasz bemutatja, hogyan valósítható meg a **IAuthenticate** felület a
 
     Ha a Facebooktól eltérő identitás-szolgáltatót használ, válasszon másik értéket a [MobileServiceAuthenticationProvider][7].
 
-1. Adja hozzá a következő sort a (z) " **Főoldal** " osztály konstruktorához a meghívása `LoadApplication()`előtt:
+1. Adja hozzá a következő kódrészletet a főkiszolgálói **osztály konstruktorához a @no__t** -1 hívása előtt:
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
-    Cserélje `<your_Portable_Class_Library_namespace>` le a helyére a hordozható osztályhoz tartozó könyvtár névterét.
+    Cserélje le a `<your_Portable_Class_Library_namespace>` értéket a hordozható osztályhoz tartozó könyvtár névterével.
 
 3. Ha a **UWP**-t használja, adja hozzá a következő **OnActivated** -metódus felülbírálását az **app** osztályhoz:
 

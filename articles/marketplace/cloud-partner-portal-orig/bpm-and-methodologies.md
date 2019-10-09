@@ -1,36 +1,22 @@
 ---
-title: Üzleti folyamat kódtárak |} Az Azure Marketplace-en
-description: Üzleti folyamat kódtárak és módszertanai leírását.
+title: Üzleti folyamatok könyvtárai | Azure piactér
+description: A CPP-cikk elavult, és a PC-cikkhez van csatolva; "Az üzleti folyamatok könyvtárainak és módszereinek magyarázata" volt.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: f29d82a187027c3eee9d89258b6cf6c166089e70
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935624"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034392"
 ---
-# <a name="business-process-libraries"></a>Üzleti folyamat kódtárak
+# <a name="business-process-libraries"></a>Üzleti folyamatok kódtárai
 
-Üzleti folyamat függvénytárak is semmi, de a feladat útmutatók a végpontok közötti forgatókönyvek. A folyamat könyvtárát közvetlenül a marketing tartalommal kell igazítani. Egyes üzleti folyamat az üzleti folyamat erőforrástárban rendelkeznie kell egy [feladat felvétel](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder) társítva. Ha rendelkezik olyan folyamatokat, amelyek a Dynamics 365 for Operations kívüli, csatolja a Visio a BPM könyvtárba.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 pénzügyi és üzemeltetési ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-Lásd: [üzleti folyamat modellező](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions) további információ.
-
-## <a name="methodologies"></a>Módszerek
-
-Lifecycle Services-(LCS-) a Microsoft Dynamics megismételhető, és kiszámítható megvalósítási projektben élményt nyújt, amelyekkel módszereket biztosít. A megadott módszerek valamelyikével, vagy létrehozhatja a saját. Módszert is egyszerűen nyomon követheti és az előrehaladásról.
-
-Módszer fázisok, feladatok és mérföldkövek áll. Az egyes fázisok tetszőleges számú feladatot, amely néhány kötelező lehet. Ha minden olyan feladat hivatkozása egy fázisban végezhető el, a fázis kész jelölhetők. Ha várhatóan fázisban kell kitölteni egy, a mérföldkő is létrehozhat. A következő módszerek az LCS-projekt tartalmazza:
-
-- Megvalósítás
-- E lépés
-- Ismerje meg, fejlesztés
-- Telepítse át, és a megoldások létrehozásához
-- Megoldások használata
-
-Lásd: [LCS módszertanok](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lifecycle-services/create-methodology) további információ.
+Az új Dynamics 365 for Operations ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című témakör utasításait.

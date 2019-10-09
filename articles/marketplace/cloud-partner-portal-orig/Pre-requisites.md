@@ -1,40 +1,22 @@
 ---
-title: Alkalmazás válogatott előfeltételei
-description: Alkalmazás válogatott előfeltételei listája.
+title: Az alkalmazás Kurátorának előfeltételei
+description: 'Elavult CPP-cikk, a PC-cikkhez kapcsolva. a következő volt: "az alkalmazás-kurátor előfeltételeinek listája".'
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a92d32084dd36433fdc872db66f0f375a770bfda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935545"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034430"
 ---
-# <a name="prerequisites-for-application-curation"></a>Alkalmazás válogatott előfeltételei
+# <a name="prerequisites-for-application-curation"></a>Az alkalmazás Kurátorának előfeltételei
 
-A Microsoft annak érdekében, hogy ellenőrizze, hogy az alábbi követelmények teljesülnek-e adott felülvizsgálatok szükséges:
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 pénzügyi és üzemeltetési ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-- A partner\'s egyéni kód megfelel-e a Microsoft irányelveket.
-- A Microsoft Dynamics Lifecycle Services-(LCS-) megoldás csomag sikeresen telepíthető.
-- Tranzakciók elvégezhető.
-
-Jelenleg partnerek bizonyítania kell, hogy ezek a követelmények teljesülnek-e tesztelési célú telepítések állapotát, és majd megosztják az eredményeket a Microsoft által. Kódot nem lesz telepítve a felhasználói környezetet, hogy a Microsoft jogcímfelhasználási\'t érvényesítve. Partnerek a következő válogatott összetevők és a vizsgálatok kell elvégeznie:
-
-- Kód elemzése – jelentés (autó)
-- Üzleti folyamat modellező (BPM) és parancsfájl tesztelési célra
-- Projekt neve és leírása
-- Üzleti az adatbázis biztonsági mentése
-- Adatok csomagok és a folyamat adatokat csomagok (PDPs)
-- Módszer
-- Bináris fájlok (nem kötelező)
-- Központilag telepíthető csomagokat
-- (A kód és a tesztek) modellek
-- Marketing-tartalom
-
-Technikai és eljárásbeli követelményeiről további információkért lásd: [for Finance and Operations alkalmazások ellenőrzése](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions).  Emellett, ha még nem tette meg, tekintse át a [Office 365-höz, a Dynamics 365, a PowerApps és a Power BI ajánlat közzétételi útmutató](../appsource-offer-publishing-guide.md).
-
+Az új Dynamics 365 for Operations ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című témakör utasításait.

@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz |} A Microsoft Docs
-description: Az Azure App Service és az Azure Notification Hubs használata leküldéses értesítések küldésére Xamarin.Android-alkalmazáshoz
+title: Leküldéses értesítések hozzáadása a Xamarin. Android-alkalmazáshoz | Microsoft Docs
+description: Ismerje meg, hogyan küldhet leküldéses értesítéseket a Xamarin. Android-alkalmazásba a Azure App Service és az Azure Notification Hubs használatával
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,71 +14,71 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: cff0845b555f25fce438f3389e1f97cda0450bc3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f71dc2cde2790f60641462a705a1147b4ace3128
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447125"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027160"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-android-get-started-push) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [Xamarin.Android rövid](app-service-mobile-windows-store-dotnet-get-started.md) projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
+Ebben az oktatóanyagban leküldéses értesítéseket adhat hozzá a [Xamarin. Android](app-service-mobile-windows-store-dotnet-get-started.md) gyors üzembe helyezési projekthez, hogy a rendszer minden alkalommal elküldjön egy leküldéses értesítést az eszköznek.
 
-Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüksége lesz a leküldéses értesítési kiterjesztési csomag. További információkért lásd: a [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
+Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, szüksége lesz a leküldéses értesítési bővítmény csomagra. További információ: az Azure-hoz [készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez az oktatóanyaghoz a telepítés:
+Ehhez az oktatóanyaghoz a következő beállítások szükségesek:
 
-* Aktív Google-fiók. A egy Google-fiókot regisztrálhatnak [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
-* [A Google Cloud Messaging Client összetevő](https://components.xamarin.com/view/GCMClient/).
+* Aktív Google-fiók. Regisztrálhat egy Google-fiókot a következő címen: [accounts.Google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
+* [Google Cloud Messaging ügyfél-összetevő](https://components.xamarin.com/view/GCMClient/).
 
-## <a name="configure-hub"></a>Egy értesítési központ konfigurálása
+## <a name="configure-hub"></a>Értesítési központ konfigurálása
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a id="register"></a>Engedélyezze a Firebase Cloud Messaging
+## <a id="register"></a>Firebase Cloud Messaging engedélyezése
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-## <a name="configure-azure-to-send-push-requests"></a>Leküldéses kéréseket küldhet az Azure konfigurálása
+## <a name="configure-azure-to-send-push-requests"></a>Az Azure konfigurálása leküldéses kérelmek küldéséhez
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push-for-firebase.md)]
 
-## <a id="update-server"></a>Leküldéses értesítések küldéséhez a kiszolgálói projekt frissítése
+## <a id="update-server"></a>A kiszolgálói projekt frissítése leküldéses értesítések küldéséhez
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a id="configure-app"></a>Az ügyfélprojekt a leküldéses értesítések konfigurálása
+## <a id="configure-app"></a>Az ügyfél-projekt konfigurálása leküldéses értesítésekhez
 
 [!INCLUDE [mobile-services-xamarin-android-push-configure-project](../../includes/mobile-services-xamarin-android-push-configure-project.md)]
 
-## <a id="add-push"></a>Leküldéses értesítések kód hozzáadása az alkalmazáshoz
+## <a id="add-push"></a>Leküldéses értesítések kódjának hozzáadása az alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-xamarin-android-push-add-to-app](../../includes/app-service-mobile-xamarin-android-push-add-to-app.md)]
 
-## <a name="test"></a>Teszt leküldéses értesítések az alkalmazásban
+## <a name="test"></a>Leküldéses értesítések tesztelése az alkalmazásban
 
-Az alkalmazást az emulátorban a virtuális eszköz segítségével tesztelheti. Nincsenek további konfigurációs lépéseket az emulátor futtatásához szükséges.
+Az alkalmazást az emulátorban található virtuális eszköz segítségével tesztelheti. Az emulátoron való futtatáshoz további konfigurációs lépések szükségesek.
 
-1. A virtuális eszköz rendelkeznie kell a Google API-k, az Android virtuális eszközt (AVD) Manager célként beállítva.
+1. A virtuális eszköznek a Google API-kat kell beállítania célként az Android virtuális eszköz (AVD) kezelőjében.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/google-apis-avd-settings.png)
 
-2. Google-fiók hozzáadása az Android-eszközre kattintva **alkalmazások** > **beállítások** > **fiók hozzáadása**, majd kövesse az utasításokat.
+2. Vegyen fel egy Google-fiókot az Android-eszközre, ehhez kattintson az **alkalmazások** > **Beállítások** > **fiók hozzáadása**lehetőségre, majd kövesse az utasításokat.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/add-google-account.png)
 
-3. A todolist alkalmazást előtt futtassa, és a egy új teendő elem beszúrása. Ennek során egy értesítési ikon jelenik meg az értesítési területen. A teljes szöveg a bejelentés megtekintése az értesítési fiókot is megnyithatja.
+3. Futtassa a ToDoList alkalmazást az előzőekben leírtak szerint, és szúrjon be egy új teendőt. Ekkor az értesítési területen megjelenik egy értesítési ikon. Az értesítés teljes szövegének megtekintéséhez nyissa meg az értesítési fiókot.
 
     ![](./media/app-service-mobile-xamarin-android-get-started-push/android-notifications.png)
 

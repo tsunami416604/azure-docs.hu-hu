@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710035"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024556"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
@@ -37,13 +37,16 @@ Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 ![képernyőfelvétel a Storage-cél hozzáadása oldalról, amely az új Azure Blob Storage-tárolóra vonatkozó információkkal van feltöltve](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Tárolási cél neve** – adjon meg egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC cache-ben.
 * **Cél típusa** – válassza a **blob**lehetőséget.
 * **Storage-fiók** – válassza ki azt a fiókot, amelyhez a tároló hivatkozik.
 
   Engedélyeznie kell a gyorsítótár-példányt a Storage-fiók eléréséhez a [hozzáférési Szerepkörök hozzáadása](#add-the-access-control-roles-to-your-account)című témakörben leírtak szerint.
+
+  A használható Storage-fiókkal kapcsolatos információkért olvassa el a [blob Storage-követelmények](hpc-cache-prereqs.md#blob-storage-requirements)című témakört.
+
 * **Storage-tároló** – válassza ki a cél blob-tárolóját.
 
 * **Virtuális névtér elérési útja** – a tárolási cél ügyféloldali elérési útjának beállítása. A virtuális névtér szolgáltatással kapcsolatos további tudnivalókért olvassa el az [összesített névtér konfigurálása](hpc-cache-namespace.md) című témakört.
@@ -54,7 +57,7 @@ Ha elkészült, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 
 Az Azure HPC cache [szerepköralapú hozzáférés-vezérlést (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) használ a gyorsítótár-alkalmazás engedélyezéséhez az Azure Blob Storage-célokhoz tartozó Storage-fiók eléréséhez.
 
-A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "StorageCache erőforrás-szolgáltató" felhasználóhoz.
+A Storage-fiók tulajdonosának explicit módon hozzá kell adnia a roles [Storage-fiók közreműködőjét](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) és a [Storage blob adatközreműködőit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) a "HPC cache erőforrás-szolgáltató" felhasználóhoz.
 
 Ezt előre elvégezheti, vagy egy hivatkozásra kattintva megadhatja a blob Storage-tárolót tartalmazó oldalon.
 
@@ -62,13 +65,16 @@ A RBAC szerepkörök hozzáadásának lépései:
 
 1. Nyissa meg a Storage-fiókhoz tartozó **hozzáférés-vezérlés (iam)** lapot. (A **tároló hozzáadása** lapon lévő hivatkozás automatikusan megnyitja ezt a lapot a kiválasztott fiókhoz.)
 
-1. Kattintson a lap tetején található elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget. **+**
+1. Kattintson a lap tetején található **+** elemre, majd válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
 1. Válassza ki a "Storage-fiók közreműködője" szerepkört a listából.
 
 1. A **hozzáférés kiosztása** mezőben hagyja meg a kiválasztott alapértelmezett értéket ("Azure ad-felhasználó, csoport vagy szolgáltatásnév").  
 
-1. A **Select (kiválasztás** ) mezőben keressen rá a "storagecache" kifejezésre.  Ennek a karakterláncnak meg kell egyeznie egy rendszerbiztonsági tag, a "HPC cache erőforrás-szolgáltató" névvel. Kattintson erre a résztvevőre a kiválasztásához.
+1. A **Select (kiválasztás** ) mezőben keressen rá a "HPC" kifejezésre.  Ennek a karakterláncnak meg kell egyeznie egy "HPC cache erőforrás-szolgáltató" nevű egyszerű szolgáltatással. Kattintson erre a résztvevőre a kiválasztásához.
+
+   > [!NOTE]
+   > Ha a "HPC" kifejezés nem működik, próbálja meg helyette a "storagecache" karakterláncot használni. Előfordulhat, hogy a korai előzetes verzióhoz csatlakozó felhasználóknak a szolgáltatásnév régebbi nevét kell használniuk.
 
 1. Kattintson a **Save (Mentés** ) gombra a szerepkör-hozzárendelés a Storage-fiókhoz való hozzáadásához.
 

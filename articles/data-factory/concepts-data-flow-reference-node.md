@@ -1,29 +1,29 @@
 ---
-title: Az Azure Data Factory-folyamat referencia Adatcsomóponton leképezése
-description: Data Factory-adatfolyam fog összekapcsolásokat, kereséseket, egyesítések referencia csomópont hozzáadása
+title: Azure Data Factory leképezési adatfolyam-hivatkozás csomópontja
+description: Data Factory adatfolyamhoz hozzá kell adni egy hivatkozási csomópontot az illesztésekhez, a keresésekhez és a szakszervezetekhez.
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 626943143e8fa193f143e66d856d9b00e3589fb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed17114cc0ce586c68c5b3e087acffdb82ea96c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262667"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030497"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Data Flow referencia csomópont leképezése
+# <a name="mapping-data-flow-reference-node"></a>Adatfolyam-hivatkozás leképezése csomópont
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Csomópont hivatkozhat](media/data-flow/referencenode.png "hivatkozási csomópont")
 
-A referencia-csomópont automatikusan hozzáadódik a vászon jelölésére, hogy a csomópont csatlakoztatva van egy másik meglévő csomópont a vásznon hivatkozik-e. Úgy gondolja, hogy a hivatkozás csomópont mutató vagy egy hivatkozást egy másik folyamat átalakítását.
+![Hivatkozási csomópont](media/data-flow/referencenode.png "hivatkozási csomópontja")
 
-Példa: Ha csatlakozik, vagy Union több mint egy streamelési adatokon, az adatfolyam vászonalapú adhat hozzá egy referencia-csomópont, amely tükrözi a nevét és beállításait nem elsődleges bejövő adatfolyam.
+A rendszer automatikusan hozzáadja a vászonhoz egy hivatkozási csomópontot, amely azt jelzi, hogy a csomópont hozzá van csatolva a vászon egy másik létező csomópontjára hivatkozik. Tekintse át a hivatkozási csomópontot mutatóként vagy egy másik adatfolyam-átalakításra mutató hivatkozást.
 
-A referencia-csomópont nem lehet áthelyezték vagy törölték. Azonban, kattintson az eredeti átalakítási beállítások módosításához a csomópontba.
+Példa: Ha egynél több adatfolyamot csatlakoztat vagy egyesít, az adatfolyam-vászon olyan hivatkozási csomópontot adhat hozzá, amely a nem elsődleges bejövő adatfolyam nevét és beállításait tükrözi.
 
-A felhasználói felület szabályokat, amelyek szabályozzák, ha a referencia-csomópont adatfolyam hozzáadja a rendelkezésre álló területet, és velikost svislé mezery mezi sorok alapulnak.
+A hivatkozási csomópont nem helyezhető át és nem törölhető. A csomópontra kattintva azonban módosíthatja a kezdeményező átalakítás beállításait.
+
+Azok a felhasználói felületi szabályok, amelyek meghatározzák, hogy az adatfolyam hozzáadásakor a hivatkozási csomópont a rendelkezésre álló területtől és a sorok közötti függőleges térköztől függ.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 77c90cccbbfa5865878ae4dc47e5009697560ed3
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001314"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029036"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -215,14 +215,16 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 
 | **Szolgáltatás** | **BGP-közösségérték** |
 | --- | --- |
-| Exchange Online | 12076:5010 |
-| SharePoint Online | 12076:5020 |
-| Skype Vállalati online verzió | 12076:5030 |
+| Exchange Online * * | 12076:5010 |
+| SharePoint Online * * | 12076:5020 |
+| Skype vállalati online verzió * * | 12076:5030 |
+| CRM Online |12076:5040 |
 | Az Azure globális szolgáltatások * | 12076:5050 |
-| Egyéb Office 365-szolgáltatások | 12076:5100 |
+| Azure Active Directory |12076:5060 |
+| Egyéb Office 365 online szolgáltatások * * | 12076:5100 |
 
 \* Az Azure globális szolgáltatásai jelenleg csak az Azure-DevOps tartalmazzák.
-
+\* * Engedélyezés szükséges a Microsofttól, lásd [: útválasztási szűrők konfigurálása a Microsoft-partnerek számára](how-to-routefilter-portal.md) 
 
 > [!NOTE]
 > A Microsoft nem fogadja el a Microsoft számára meghirdetett útvonalakon beállított BGP-közösségértékeket.

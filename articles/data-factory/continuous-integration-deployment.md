@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265979"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030619"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és szállítás (CI/CD) Azure Data Factory
 
@@ -102,7 +102,7 @@ Az alábbi útmutató egy Azure-beli folyamatok kiadásának beállítására sz
 
 1.  A **szakasz neve** mezőben adja meg a környezet nevét.
 
-1.  Válassza az **összetevő hozzáadása**lehetőséget, és válassza ki ugyanazt a tárházat, amelyet a Data Factory konfigurál. Válassza `adf_publish` ki az alapértelmezett ágat a legújabb alapértelmezett verzióként.
+1.  Válassza az **összetevő hozzáadása**lehetőséget, és válassza ki ugyanazt a tárházat, amelyet a Data Factory konfigurál. Válassza a `adf_publish` értéket alapértelmezett ágként a legújabb alapértelmezett verzióval.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -118,15 +118,15 @@ Az alábbi útmutató egy Azure-beli folyamatok kiadásának beállítására sz
 
     d.  A művelet legördülő menüben válassza az **erőforráscsoport létrehozása vagy frissítése**lehetőséget.
 
-    e.  Válassza a **... lehetőséget.** a **sablon** mezőben. Az [egyes környezetekhez tartozó Resource Manager-sablon létrehozása](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)lépéssel keresse meg a Azure Resource Manager-sablon létrehozása az **ARM-sablon** használatával című szakaszát. Keresse meg ezt a fájlt a `<FactoryName>` `adf_publish` ág mappájában.
+    e.  Válassza a **... lehetőséget.** a **sablon** mezőben. Az [egyes környezetekhez tartozó Resource Manager-sablon létrehozása](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)lépéssel keresse meg a Azure Resource Manager-sablon létrehozása az **ARM-sablon** használatával című szakaszát. Keresse meg ezt a fájlt a `adf_publish` ág `<FactoryName>` mappájában.
 
     f.  Válassza a **... lehetőséget.** a **sablon paraméterei mezőben.** a parameters (paraméterek) fájl kiválasztásához. Válassza ki a megfelelő fájlt attól függően, hogy létrehozott-e egy másolatot, vagy az alapértelmezett *ARMTemplateParametersForFactory. JSON*fájlt használja.
 
-    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, adja meg `"$(cred1)"`az értékét.
+    g.  Válassza a **... lehetőséget.** a **felülbírálási sablon paraméterei** mező mellett adja meg a cél Data Factory információit. A Key vaultból érkező hitelesítő adatok esetében adja meg a titkos nevet idézőjelek között. Ha például a titok neve `cred1`, akkor adja meg a `"$(cred1)"`for értékét.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-    h. Válassza ki a növekményes központi telepítési módot.
+    h. Válassza ki a **növekményes** központi telepítési módot.
 
     > [!WARNING]
     > Ha a **teljes** telepítési mód lehetőséget választja, előfordulhat, hogy a meglévő erőforrások törölve lesznek, beleértve a Resource Manager-sablonban nem definiált cél erőforráscsoport összes erőforrását.
@@ -176,7 +176,7 @@ A titkokat kétféleképpen kezelheti:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynökének
 
-A Azure Key Vault feladat sikertelen lehet, ha a megfelelő engedélyek nincsenek jelen a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és `.ps1` keresse meg a fájlt a paranccsal, és adja meg az engedélyeket az Azure-folyamatok ügynökének. A parancsot közvetlenül is futtathatja, vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. A **Get** és a **List** a minimálisan szükséges engedélyek.
+A Azure Key Vault feladat sikertelen lehet, ha a megfelelő engedélyek nincsenek jelen a hozzáférés-megtagadási hibával. Töltse le a kiadáshoz tartozó naplókat, és keresse meg a `.ps1` fájlt a paranccsal, és adja meg az engedélyeket az Azure-folyamatok ügynökének. A parancsot közvetlenül is futtathatja, vagy átmásolhatja a résztvevő AZONOSÍTÓját a fájlból, és manuálisan is hozzáadhatja a hozzáférési házirendet a Azure Portal. A **Get** és a **List** a minimálisan szükséges engedélyek.
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 
@@ -196,10 +196,10 @@ A központi telepítés meghiúsulhat, ha megpróbál frissíteni az aktív esem
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-A telepítés után a hasonló lépéseket `Start-AzDataFactoryV2Trigger` követve indíthatja újra az eseményindítókat.
+A hasonló lépések (a `Start-AzDataFactoryV2Trigger` függvénnyel) követheti az eseményindítók újraindítását az üzembe helyezés után.
 
 > [!IMPORTANT]
-> A folyamatos integrációs és üzembe helyezési forgatókönyvekben a Integration Runtime típusnak azonosnak kell lennie a különböző környezetek között. Ha például a fejlesztői környezetben van egy helyi INTEGRATION RUNTIME (IR), akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is *önálló* üzemeltetéssel kell működtetni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben , például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.
+> A folyamatos integrációs és üzembe helyezési forgatókönyvekben a Integration Runtime típusnak azonosnak kell lennie a különböző környezetek között. Ha például a fejlesztői környezetben van egy *helyi Integration Runtime (* IR), akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell *működtetni* . Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek *szerint kell* konfigurálni.
 
 #### <a name="sample-prepostdeployment-script"></a>Minta előtti/postdeployment parancsfájl
 
@@ -328,21 +328,21 @@ Ha GIT módban van, felülbírálhatja a Resource Manager-sablonban található 
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Az alapértelmezett paraméterezés-sablon felülbírálásához a következő feltételek szerint hozzon létre egy *ARM-template-Parameters-definition. JSON* nevű fájlt az adattár gyökérkönyvtárában. A fájl nevének pontosan egyeznie kell. Data Factory megpróbálja beolvasni ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol a felhasználói felületen az **EXPORTÁLÁS ARM sablonnal** is tesztelheti a módosításokat. Ezután egyesítheti a fájlt az együttműködési ág használatával. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
+Az alapértelmezett paraméterezés-sablon felülbírálásához a következő feltételek szerint hozzon létre egy *ARM-template-Parameters-definition. JSON* nevű fájlt az adattár gyökérkönyvtárában. A fájl nevének pontosan egyeznie kell. Data Factory megpróbálja beolvasni ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol a felhasználói felületen az **EXPORTÁLÁS ARM sablonnal** is tesztelheti a módosításokat. Ezután egyesítheti a fájlt az együttműködési ág használatával. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Egyéni paraméterek fájljának szintaxisa
 
 Az egyéni paraméterek fájljának létrehozásakor az alábbi irányelvek használhatók. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs futtatókörnyezet stb.
 * Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
-* Ha a tulajdonság nevét\*"" "értékre állítja, akkor azt jelzi, hogy az összes tulajdonságot le szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Ezen kívül kivételeket is megadhat.
-* Ha egy tulajdonság értékét karakterláncként állítja be, akkor azt jelzi, hogy a tulajdonságot parametrizálja kívánja. Használja a formátumot `<action>:<name>:<stype>`.
-   *  `<action>` a következő karakterek egyike lehet:
-      * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként tárolja.
-      * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
-      * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
-   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti `AzureStorage1_connectionString`a következőt:.
-   * `<stype>` a paraméter típusa. Ha `<stype>` `string`a értéke üres, az alapértelmezett típus:.  Támogatott értékek: `string` `bool` ,`object`,, és`securestring`. `number`
+* Ha a tulajdonság nevét "\*" értékre állítja, akkor azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Ezen kívül kivételeket is megadhat.
+* Ha egy tulajdonság értékét karakterláncként állítja be, akkor azt jelzi, hogy a tulajdonságot parametrizálja kívánja. Használja a @ no__t-0 formátumot.
+   *  `<action>` @ no__t-1can a következő karakterek egyike lehet:
+      * `=` @ no__t – 1means megtartja az aktuális értéket a paraméter alapértelmezett értékeként.
+      * `-` @ no__t-1means nem őrzi meg a paraméter alapértelmezett értékét.
+      * `|` @ no__t-1is különleges esetet biztosít a titkok Azure Key Vault a kapcsolatok karakterláncai vagy kulcsai számára.
+   * `<name>` @ no__t-1is a paraméter nevét. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték `-` karakterrel kezdődik, a rendszer lerövidíti a nevet. Például a `AzureStorage1_properties_typeProperties_connectionString` a `AzureStorage1_connectionString` értékre lesz rövidítve.
+   * `<stype>` @ no__t – 1is a paraméter típusát. Ha a @ no__t-0 @ no__t-1is üres, az alapértelmezett típus: `string`. Támogatott értékek: `string`, `bool`, `number`, `object` és `securestring`.
 * Amikor megad egy tömböt a definíciós fájlban, azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. Data Factory a tömbben lévő összes objektumra vonatkozóan a tömb Integration Runtime objektumában megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
 * Az adott erőforrás-példányra vonatkozó definíció nem lehet. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
 * Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok és a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és jogkivonatok paraméterei.
@@ -412,29 +412,29 @@ Az alábbiakban egy példát láthat arra, hogy a paraméterezés-sablonok hogya
 ```
 Alább látható a fenti sablon kialakításának magyarázata, erőforrás típusa szerint lebontva.
 
-#### <a name="pipelines"></a>Adatcsatornák
+#### <a name="pipelines"></a>Folyamatok
     
-* A Path tevékenységek/typeProperties/waitTimeInSeconds bármely tulajdonsága paraméteres. A folyamatokban lévő minden olyan tevékenység, amelynek a `waitTimeInSeconds` neve (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
-* Hasonlóképpen, egy nevű `headers` tulajdonság (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
+* A Path tevékenységek/typeProperties/waitTimeInSeconds bármely tulajdonsága paraméteres. A folyamat minden olyan tevékenysége, amely egy `waitTimeInSeconds` nevű programkód-szintű tulajdonsággal rendelkezik (például az `Wait` tevékenység), egy számként van paraméterként, alapértelmezett névvel. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
+* Hasonlóképpen, egy `headers` nevű tulajdonság (például egy `Web` tevékenységben) paraméter a következő típussal van: `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Az elérési út `typeProperties` alatti összes tulajdonság a megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a **IntegrationRuntimes** típus tulajdonságainál: `computeProperties` és `ssisProperties`. Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
+* A (z) `typeProperties` elérési úton lévő összes tulajdonság paraméterei a megfelelő alapértelmezett értékekkel rendelkeznek. Például két tulajdonság van a **IntegrationRuntimes** típus tulajdonságainál: `computeProperties` és `ssisProperties`. Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
-#### <a name="triggers"></a>Triggerek
+#### <a name="triggers"></a>Eseményindítók
 
-* A `typeProperties`rendszerben a két tulajdonság paraméteres. Az első `maxConcurrency`a, amely az alapértelmezett értékkel van megadva, és típusa`string`. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`:.
-* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képeznek `interval` a tulajdonság, amely a szám típusaként van paraméterként, a paraméter pedig a (z `<entityName>_properties_typeProperties_recurrence_triggerSuffix`) előtaggal van ellátva. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
+* A `typeProperties` alatt két tulajdonság paraméteres. Az első egy `maxConcurrency`, amely alapértelmezett értékkel rendelkezik, és a következő típusú: @ no__t-1. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`.
+* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képeznek a `interval` tulajdonság, amely a szám típusaként van paraméterként, és az `<entityName>_properties_typeProperties_recurrence_triggerSuffix` utótaggal rendelkező paraméter neve. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, amely karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>linkedServices
+#### <a name="linkedservices"></a>LinkedServices
 
-* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában minden típusú `AzureDataLakeStore`társított szolgáltatás, egy adott sablon lesz alkalmazva, és minden más (a-n keresztül \*) egy másik sablon lesz alkalmazva.
-* A `connectionString` tulajdonság `securestring` értéke paraméterként fog megjelenni, nem lesz alapértelmezett értéke, és egy rövidített paraméter neve lesz, amely az utótaggal van ellátva `connectionString`.
-* A tulajdonság `secretAccessKey` egy `AzureKeyVaultSecret` (például egy `AmazonS3` társított szolgáltatásban). Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
+* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában minden `AzureDataLakeStore` típusú társított szolgáltatás lesz alkalmazva, és minden más (az \* használatával) egy másik sablon lesz alkalmazva.
+* A `connectionString` tulajdonság értéke `securestring` érték lesz, nem lesz alapértelmezett értéke, és egy rövidített paraméter neve lesz, amely a `connectionString` utótaggal van ellátva.
+* A `secretAccessKey` tulajdonság egy `AzureKeyVaultSecret` (például egy `AmazonS3` társított szolgáltatás). Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
 
 #### <a name="datasets"></a>Adathalmazok
 
-* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt nem explicit módon \*lehet megadni A fenti példában az összes adatkészlet-tulajdonság `typeProperties` paraméterrel van elfoglalva.
+* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt külön @no__t -0 konfiguráció nélkül is megadhatja. A fenti példában a `typeProperties` alatti összes adatkészlet-tulajdonság paraméteres.
 
 ### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezés-sablon
 
@@ -545,7 +545,7 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak e
 }
 ```
 
-Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezés-sablonhoz. Csak a Databricks társított szolgáltatáshoz meglévő Databricks interaktív fürt-azonosítót szeretnénk hozzáadni a parameters (paraméterek) fájlhoz. Figyelje meg, hogy az alábbi fájl megegyezik a fenti fájllal, kivéve `existingClusterId` , ha a tulajdonságok `Microsoft.DataFactory/factories/linkedServices`mezőjében szerepel.
+Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezés-sablonhoz. Csak a Databricks társított szolgáltatáshoz meglévő Databricks interaktív fürt-azonosítót szeretnénk hozzáadni a parameters (paraméterek) fájlhoz. Figyelje meg, hogy az alábbi fájl megegyezik a fenti fájllal, kivéve a `existingClusterId` értéket `Microsoft.DataFactory/factories/linkedServices` tulajdonságok mezőjében.
 
 ```json
 {
@@ -657,11 +657,11 @@ Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapérte
 
 Ha már beállította a folyamatos integrációt és üzembe helyezést (CI/CD) az adatelőállítók számára, akkor a Azure Resource Manager-sablonra korlátozhatja, mivel a gyár nagyobb mértékben növekszik. A határértékek például a Resource Manager-sablonokban található erőforrások maximális száma. A nagyméretű gyárak befogadásához, valamint a gyár teljes Resource Manager-sablonjának létrehozásához Data Factory a társított Resource Manager-sablonokat is létrehoz. Ezzel a szolgáltatással a teljes gyári adattartalom több fájlra van bontva, így a határértékek nem futnak.
 
-Ha már konfigurálta a git-t, a rendszer létrehozza és menti a társított sablonokat az `adf_publish` ág teljes Resource Manager-sablonjai mellett egy új mappa néven. `linkedTemplates`
+Ha a git-t konfigurálta, a csatolt sablonok a `adf_publish` ág teljes Resource Manager-sablonjai mellett jönnek létre és menthetők egy új, `linkedTemplates` nevű mappában.
 
 ![Társított Resource Manager-sablonok mappája](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-A társított Resource Manager-sablonok általában fősablonnal és a főkiszolgálóhoz csatolt alárendelt sablonokkal rendelkeznek. A fölérendelt sablon neve `ArmTemplate_master.json`, az alárendelt sablonok pedig a `ArmTemplate_1.json`mintázattal `ArmTemplate_0.json`, stb. Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használni, frissítse a CI/CD-feladatot úgy `ArmTemplate_master.json` , hogy `ArmTemplateForFactory.json` az a teljes Resource Manager-sablon helyett mutasson. A Resource Manager emellett azt is megköveteli, hogy a csatolt sablonokat egy Storage-fiókba töltse fel, hogy az Azure hozzáférhessen az üzembe helyezés során. További információ: [összekapcsolt ARM-sablonok üzembe helyezése a vsts](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+A társított Resource Manager-sablonok általában fősablonnal és a főkiszolgálóhoz csatolt alárendelt sablonokkal rendelkeznek. A fölérendelt sablon neve `ArmTemplate_master.json`, és a rendszer a (z) `ArmTemplate_0.json`, `ArmTemplate_1.json` és hasonló minta alapján nevezi el. Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használni, frissítse a CI/CD-feladatot úgy, hogy az `ArmTemplateForFactory.json` helyett a `ArmTemplate_master.json` értékre mutasson (a teljes Resource Manager-sablon). A Resource Manager emellett azt is megköveteli, hogy a csatolt sablonokat egy Storage-fiókba töltse fel, hogy az Azure hozzáférhessen az üzembe helyezés során. További információ: [összekapcsolt ARM-sablonok üzembe helyezése a vsts](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üzembe helyezési feladat előtt és után.
 
@@ -703,7 +703,7 @@ Ha git-integrációt használ a saját adatgyárával, és rendelkezik egy CI/CD
 
 -   **Key Vault**. Ha Azure Key Vault-alapú társított szolgáltatásokat használ, a különböző környezetekhez külön kulcstartók használatával további előnyöket is igénybe vehet. Mindegyikhez külön jogosultsági szint is konfigurálható. Előfordulhat például, hogy nem szeretné, hogy a csapattagok rendelkezzenek a termelési titkokhoz szükséges engedélyekkel. Ha ezt a módszert választja, akkor azt javasoljuk, hogy az összes fázisban ugyanazokat a titkos neveket tartsa meg. Ha megtartja ugyanazokat a neveket, nem kell módosítania a Resource Manager-sablonokat CI/CD-környezetekben, mivel az egyetlen dolog, ami megváltoztatja a Key Vault nevét, amely a Resource Manager-sablon paramétereinek egyike.
 
-## <a name="unsupported-features"></a>Nem támogatott szolgáltatások
+## <a name="unsupported-features"></a>Nem támogatott funkciók
 
 - A tervezés szerint az ADF _nem_ engedélyezi a Cherry-picking vagy az erőforrások szelektív közzétételét. A közzététel magában foglalja az adatelőállítóban végrehajtott **összes** változást.
 

@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881876"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035244"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
 
-A [Azure Backup szolgáltatással](backup-overview.md) biztonsági másolatot készíthet az Microsoft Azure Cloud platformra. Ez a cikk Azure Backup architektúrát, összetevőket és folyamatokat foglalja össze. 
+A [Azure Backup szolgáltatással](backup-overview.md) biztonsági másolatot készíthet az Microsoft Azure Cloud platformra. Ez a cikk Azure Backup architektúrát, összetevőket és folyamatokat foglalja össze.
 
 ## <a name="what-does-azure-backup-do"></a>Mit tesz Azure Backup?
 
@@ -27,15 +27,15 @@ Azure Backup biztonsági másolatot készít az adatokról, a gépi állapotról
 Több módszer használatával biztonsági mentést készíthet a gépekről és az adatairól:
 
 - Helyszíni **gépek biztonsági mentése**:
-    - A helyszíni Windows-gépek biztonsági mentését közvetlenül az Azure-ba végezheti a Azure Backup Microsoft Azure Recovery Services (MARS) ügynök használatával. A Linux rendszerű gépek nem támogatottak.
-    - Biztonsági mentést készíthet a helyszíni gépekről egy tartalék kiszolgálóra (a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Serverre (MABS)). Ezután biztonsági mentést készíthet a Backup-kiszolgálóról egy Recovery Services-tárolóra az Azure-ban.
+  - A helyszíni Windows-gépek biztonsági mentését közvetlenül az Azure-ba végezheti a Azure Backup Microsoft Azure Recovery Services (MARS) ügynök használatával. A Linux rendszerű gépek nem támogatottak.
+  - A helyszíni gépek biztonsági mentését a System Center Data Protection Manager (DPM) vagy a Microsoft Azure Backup Server (MABS) szolgáltatással végezheti el. Ezután biztonsági mentést készíthet a Backup-kiszolgálóról egy Recovery Services-tárolóra az Azure-ban.
 
 - **Azure-beli virtuális gépek biztonsági mentése**:
-    - Az Azure-beli virtuális gépek biztonsági mentését közvetlenül is elvégezheti. Azure Backup telepít egy biztonsági mentési bővítményt a virtuális gépen futó Azure VM-ügynökre. Ez a bővítmény biztonsági mentést készít a teljes virtuális gépről.
-    - A MARS-ügynök futtatásával biztonsági mentést készíthet az Azure-beli virtuális gépen lévő adott fájlokról és mappákról.
-    - Az Azure-beli virtuális gépekről biztonsági mentést készíthet az Azure-ban futó MABS, és biztonsági mentést készíthet a MABS egy Recovery Services-tárolóra.
+  - Az Azure-beli virtuális gépek biztonsági mentését közvetlenül is elvégezheti. Azure Backup telepít egy biztonsági mentési bővítményt a virtuális gépen futó Azure VM-ügynökre. Ez a bővítmény biztonsági mentést készít a teljes virtuális gépről.
+  - A MARS-ügynök futtatásával biztonsági mentést készíthet az Azure-beli virtuális gépen lévő adott fájlokról és mappákról.
+  - Az Azure-beli virtuális gépekről biztonsági mentést készíthet az Azure-ban futó MABS, és biztonsági mentést készíthet a MABS egy Recovery Services-tárolóra.
 
-További információ a [](backup-overview.md) biztonsági mentésről és a [támogatott biztonsági mentési forgatókönyvekről](backup-support-matrix.md).
+További információ a biztonsági mentésről [és a](backup-overview.md) [támogatott biztonsági mentési forgatókönyvekről](backup-support-matrix.md).
 
 ## <a name="where-is-data-backed-up"></a>Hol történik a biztonsági másolat készítése?
 
@@ -48,17 +48,17 @@ Recovery Services-tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az Azure [szerepköralapú hozzáférés-vezérléssel (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-    - **Helyileg redundáns tárolás (LRS)** : Az adatközpontok meghibásodása elleni védelemhez használhatja a LRS. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Geo-redundáns tárolás (GRS)** : Az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
-    - Recovery Services tárolók alapértelmezés szerint a GRS használják. 
+  - **Helyileg redundáns tárolás (LRS)** : Az adatközpontok meghibásodása elleni védelemhez használhatja a LRS. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geo-redundáns tárolás (GRS)** : Az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
 ## <a name="backup-agents"></a>Biztonsági mentési ügynökök
 
 A Azure Backup különböző biztonsági mentési ügynököket biztosít, attól függően, hogy milyen típusú gépet készít biztonsági mentésre:
 
-**Ügynök** | **Részletek** 
---- | --- 
-**MARS-ügynök** | <ul><li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az egyes helyszíni Windows Server-gépeken fut.</li> <li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az Azure-beli virtuális gépeken fut.</li> <li>A DPM/MABS-kiszolgálókon futtatja a DPM/MABS helyi tároló lemezét az Azure-ba történő biztonsági mentéshez.</li></ul> 
+**Ügynök** | **Részletek**
+--- | ---
+**MARS-ügynök** | <ul><li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az egyes helyszíni Windows Server-gépeken fut.</li> <li>A fájlok, mappák és a rendszerállapot biztonsági mentésére az Azure-beli virtuális gépeken fut.</li> <li>A DPM/MABS-kiszolgálókon futtatja a DPM/MABS helyi tároló lemezét az Azure-ba történő biztonsági mentéshez.</li></ul>
 **Azure VM-bővítmény** | Az Azure-beli virtuális gépeken futtatja őket egy tárolóba.
 
 ## <a name="backup-types"></a>Biztonsági másolatok típusai
@@ -69,7 +69,7 @@ A következő táblázat ismerteti a különböző típusú biztonsági mentése
 --- | --- | ---
 **Teljes** | A teljes biztonsági mentés a teljes adatforrást tartalmazza. Nagyobb hálózati sávszélességet vesz igénybe, mint a különbözeti vagy növekményes biztonsági másolatok. | A kezdeti biztonsági mentéshez használatos.
 **Differenciál** |  A különbözeti biztonsági mentés a kezdeti teljes biztonsági mentés óta módosult blokkokat tárolja. Kisebb hálózati és tárolási kapacitást használ, és nem tartja meg a változatlanul módosított adatmennyiségek redundáns másolatait.<br/><br/> Nem hatékony, mert a későbbi biztonsági másolatok között változatlanul megjelenő adatblokkok átvitele és tárolása történik. | Azure Backup nem használja.
-**Növekményes** | A növekményes biztonsági mentés csak azokat az adatblokkokat tárolja, amelyek az előző biztonsági mentés óta módosultak. Magas szintű tárolási és hálózati hatékonyság. <br/><br/> A növekményes biztonsági mentéssel nem kell kiegészíteni a teljes biztonsági mentést. | A DPM/MABS használja a lemezes biztonsági mentésekhez, és az Azure-ban minden biztonsági másolatban használatos.
+**Növekményes** | A növekményes biztonsági mentés csak azokat az adatblokkokat tárolja, amelyek az előző biztonsági mentés óta módosultak. Magas szintű tárolási és hálózati hatékonyság. <br/><br/> A növekményes biztonsági mentéssel nem kell kiegészíteni a teljes biztonsági mentést. | A DPM/MABS használja a lemezes biztonsági mentésekhez, és az Azure-ban minden biztonsági másolatban használatos. Nem használatos SQL Server biztonsági mentéshez.
 
 ## <a name="sql-server-backup-types"></a>SQL Server biztonsági mentési típusok
 
@@ -88,7 +88,7 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 - Az A adatforrás 10 tárolási blokkból (a1-A10) áll, amelyekről havonta készül biztonsági másolat.
 - Az A2, az A3, az A4 és az A9 módosul az első hónapban, az A5 pedig a következő hónapban.
 - A különbözeti biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat biztonsági másolat készül. A harmadik hónapban a módosított A5 blokkal együtt biztonsági másolat készül ugyanezekről a blokkokról. A következő teljes biztonsági mentésig minden alkalommal készül biztonsági másolat a módosított blokkokról.
-- A növekményes biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat a rendszer módosítottként jelöli meg, és áthelyezi őket. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva. 
+- A növekményes biztonsági mentések esetén a második hónapban az a2, a3, a4 és A9 blokkokat a rendszer módosítottként jelöli meg, és áthelyezi őket. A harmadik hónapban csak az A5 módosított blokk van megjelölve és továbbítva.
 
 ![A biztonsági mentési módszerek összehasonlítását bemutató kép](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,11 +98,11 @@ A következő táblázat összefoglalja a különböző típusú biztonsági má
 
 **Funkció** | **Helyszíni Windows Server-gépek (Direct)** | **Azure-beli virtuális gépek** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
-Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green] 
-Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green] 
-A biztonsági mentéshez továbbított adatok tömörítése | ![Igen][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Igen][green] 
-Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Igen][green] 
-Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében. 
+Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
+Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
+A biztonsági mentéshez továbbított adatok tömörítése | ![Igen][green] | Az adatátvitelkor nem használ tömörítést. A tárterület kis mértékben van kiemelve, de a helyreállítás gyorsabb.  | ![Igen][green]
+Növekményes biztonsági mentés futtatása |![Igen][green] |![Igen][green] |![Igen][green]
+Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/> Csak a helyszínen üzembe helyezett DPM-/MABS-kiszolgálók esetében.
 
 ![Tábla kulcsa](./media/backup-architecture/table-key.png)
 
@@ -112,17 +112,17 @@ Deduplikált lemezek biztonsági mentése | | | ![Részlegesen][yellow]<br/><br/
 1. Az első biztonsági mentés során a rendszer egy biztonsági mentési bővítményt telepít a virtuális gépre, ha a virtuális gép fut.
     - Windows rendszerű virtuális gépek esetén a VMSnapshot bővítmény telepítve van.
     - Linux rendszerű virtuális gépek esetén a VMSnapshot Linux-bővítmény telepítve van.
-1. A bővítmény tárolási szintű pillanatképet használ. 
+1. A bővítmény tárolási szintű pillanatképet használ.
     - A rendszert futtató Windows rendszerű virtuális gépek esetén a biztonsági mentés koordinálja a Windows Kötet árnyékmásolata szolgáltatás (VSS) használatával, hogy egy alkalmazás-konzisztens pillanatképet készítsen a virtuális gépről. Alapértelmezés szerint a Backup teljes VSS biztonsági mentést készít. Ha a biztonsági mentés nem tudja végrehajtani az alkalmazással konzisztens pillanatképet, akkor a fájl konzisztens pillanatképet kap.
     - Linux rendszerű virtuális gépek esetén a Backup fájl-konzisztens pillanatképet készít. Az alkalmazással konzisztens Pillanatképek esetében manuálisan kell testreszabnia a parancsfájlok előtti és utáni parancsfájlokat.
-    - A biztonsági mentést úgy optimalizálták, hogy az egyes virtuálisgép-lemezek párhuzamos biztonsági mentését végzi. Azure Backup beolvassa a lemezen lévő blokkokat, és csak a módosított adatokat tárolja. 
-1. A pillanatkép elkészítése után az adatok átkerülnek a tárolóba. 
+    - A biztonsági mentést úgy optimalizálták, hogy az egyes virtuálisgép-lemezek párhuzamos biztonsági mentését végzi. Azure Backup beolvassa a lemezen lévő blokkokat, és csak a módosított adatokat tárolja.
+1. A pillanatkép elkészítése után az adatok átkerülnek a tárolóba.
     - Csak a legutóbbi biztonsági mentés óta megváltoztatott adatblokkok másolása történik meg.
     - Az adatforgalom nincs titkosítva. Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését végezheti el.
     - Előfordulhat, hogy a pillanatkép-adatok nem másolódnak azonnal a tárba. A biztonsági mentés csúcsidőben több órát is igénybe vehet. A napi biztonsági mentési szabályzatok esetében a virtuális gép teljes biztonsági mentési ideje kevesebb, mint 24 óra lesz.
 1. Az adattárolóba való elküldése után létrejön egy helyreállítási pont. Alapértelmezés szerint a pillanatképek megőrzése két nappal a Törlésük előtt történik. Ez a funkció lehetővé teszi a visszaállítási műveletet ezekből a pillanatképekről, így lecsökkentve a visszaállítási időpontokat. Ez csökkenti az adatoknak a tárból való visszaalakításához és másolásához szükséges időt. Lásd: [Azure Backup azonnali visszaállítási képesség](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
-Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük a vezérlési parancsokhoz Ha biztonsági mentést készít a munkaterhelésekről a virtuális gépen (például SQL Server adatbázis-biztonsági mentések), a háttérbeli adatokhoz internet-hozzáférésre is szükség van. 
+Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük a vezérlési parancsokhoz Ha biztonsági mentést készít a munkaterhelésekről a virtuális gépen (például SQL Server adatbázis-biztonsági mentések), a háttérbeli adatokhoz internet-hozzáférésre is szükség van.
 
 ![Azure-beli virtuális gépek biztonsági mentése](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -157,15 +157,15 @@ Az Azure-beli virtuális gépeknek internet-hozzáféréssel kell rendelkezniük
 Az Azure-beli virtuális gépek lemezek használatával tárolják az operációs rendszert, az alkalmazásokat és az adatlemezeket. Minden egyes Azure-beli virtuális gépnek legalább két lemeze van: az operációs rendszer lemeze és egy ideiglenes lemez. Az Azure-beli virtuális gépek adatlemezeket is tartalmazhatnak az alkalmazásadatok számára. A lemezek VHD-ként vannak tárolva.
 
 - A virtuális merevlemezek az Azure standard vagy Premium Storage-fiókjaiban blobként tárolódnak:
-    - **Standard szintű tárterület:** Megbízható, alacsony díjszabású lemezes támogatás a késésre nem érzékeny munkaterheléseket futtató virtuális gépeken. A standard szintű tárolók standard SSD-lemezeket vagy szabványos merevlemez-meghajtókat (HDD) használhatnak.
-    - **Prémium szintű Storage:** Nagy teljesítményű lemezek támogatása. Prémium szintű SSD-lemezeket használ.
+  - **Standard szintű tárterület:** Megbízható, alacsony díjszabású lemezes támogatás a késésre nem érzékeny munkaterheléseket futtató virtuális gépeken. A standard szintű tárolók standard SSD-lemezeket vagy szabványos merevlemez-meghajtókat (HDD) használhatnak.
+  - **Prémium szintű Storage:** Nagy teljesítményű lemezek támogatása. Prémium szintű SSD-lemezeket használ.
 - A lemezek különböző teljesítményi szintekkel rendelkeznek:
-    - **Standard HDD lemez:** A HDD-k biztonsági mentése és a költséghatékony tároláshoz használatos.
-    - **Standard SSD lemez:** A prémium szintű SSD-lemezek és a standard HDD-lemezek elemeit ötvözi. Konzisztens teljesítményt és megbízhatóságot biztosít, mint a HDD, de költséghatékony.
-    - **Prémium SSD lemez:** Az SSD-k által támogatott, nagy teljesítményt és kis késleltetést biztosít az I/O-igényes számítási feladatokat futtató virtuális gépek számára.
+  - **Standard HDD lemez:** A HDD-k biztonsági mentése és a költséghatékony tároláshoz használatos.
+  - **Standard SSD lemez:** A prémium szintű SSD-lemezek és a standard HDD-lemezek elemeit ötvözi. Konzisztens teljesítményt és megbízhatóságot biztosít, mint a HDD, de költséghatékony.
+  - **Prémium SSD lemez:** Az SSD-k által támogatott, nagy teljesítményt és kis késleltetést biztosít az I/O-igényes számítási feladatokat futtató virtuális gépek számára.
 - A lemezek felügyelhetők vagy nem kezelhetők:
-    - **Nem felügyelt lemezek:** Virtuális gépek által használt hagyományos típusú lemezek. Ezekhez a lemezekhez létre kell hoznia egy saját Storage-fiókot, és meg kell adnia a lemez létrehozásakor. Ezután meg kell állapítania, hogyan maximalizálhatja a virtuális gépek tárolási erőforrásait.
-    - **Felügyelt lemezek:** Az Azure létrehozza és kezeli a Storage-fiókokat. Megadhatja a lemez méretét és a teljesítmény szintjét, és az Azure felügyelt lemezeket hoz létre Önnek. A lemezek hozzáadása és a virtuális gépek méretezése során az Azure kezeli a Storage-fiókokat.
+  - **Nem felügyelt lemezek:** Virtuális gépek által használt hagyományos típusú lemezek. Ezekhez a lemezekhez létre kell hoznia egy saját Storage-fiókot, és meg kell adnia a lemez létrehozásakor. Ezután meg kell állapítania, hogyan maximalizálhatja a virtuális gépek tárolási erőforrásait.
+  - **Felügyelt lemezek:** Az Azure létrehozza és kezeli a Storage-fiókokat. Megadhatja a lemez méretét és a teljesítmény szintjét, és az Azure felügyelt lemezeket hoz létre Önnek. A lemezek hozzáadása és a virtuális gépek méretezése során az Azure kezeli a Storage-fiókokat.
 
 A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -173,7 +173,7 @@ A lemezes tárolással és a virtuális gépek rendelkezésre álló típusaival
 - [Azure Managed Disks Linux rendszerű virtuális gépekhez](../virtual-machines/linux/managed-disks-overview.md)
 - [A virtuális gépek számára elérhető lemezek típusai](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása Premium Storage-val 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása Premium Storage-val
 
 Az Azure-beli virtuális gépek biztonsági mentését a Premium Storage és a Azure Backup használatával végezheti el:
 
@@ -201,13 +201,11 @@ Ha felügyelt lemezekkel állítja vissza a virtuális gépeket, visszaállítha
 
 - Tekintse át a támogatási mátrixot, [ahol megismerheti a biztonsági mentési forgatókönyvek támogatott funkcióit és korlátozásait](backup-support-matrix.md).
 - Állítsa be a biztonsági mentést az alábbi forgatókönyvek egyikére:
-    - [Azure-beli virtuális gépek biztonsági mentése](backup-azure-arm-vms-prepare.md).
-    - [Windows rendszerű gépek biztonsági mentése](tutorial-backup-windows-server-to-azure.md)biztonsági mentési kiszolgáló nélkül.
-    - [Állítsa be a MABS](backup-azure-microsoft-azure-backup.md) az Azure-ba történő biztonsági mentéshez, majd készítsen biztonsági másolatot a munkaterhelésekről a MABS.
-    - [Állítsa be a DPM](backup-azure-dpm-introduction.md) az Azure-ba történő biztonsági mentéshez, majd készítsen biztonsági másolatot a munkaterhelésekről a DPM.
-
+  - [Azure-beli virtuális gépek biztonsági mentése](backup-azure-arm-vms-prepare.md).
+  - [Windows rendszerű gépek biztonsági mentése](tutorial-backup-windows-server-to-azure.md)biztonsági mentési kiszolgáló nélkül.
+  - [Állítsa be a MABS](backup-azure-microsoft-azure-backup.md) az Azure-ba történő biztonsági mentéshez, majd készítsen biztonsági másolatot a munkaterhelésekről a MABS.
+  - [Állítsa be a DPM](backup-azure-dpm-introduction.md) az Azure-ba történő biztonsági mentéshez, majd készítsen biztonsági másolatot a munkaterhelésekről a DPM.
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

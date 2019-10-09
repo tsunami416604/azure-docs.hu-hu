@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b12acf083e83d42ff3e8d6967d747f4bb2d93543
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960201"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025677"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Gyakori kérdések
 
@@ -43,7 +43,7 @@ Nem. A zökkenőmentes egyszeri bejelentkezés csak az Azure AD világméretű p
 
 Az alábbiakban felsoroljuk azokat az alkalmazásokat, amelyek elküldhetik ezeket a paramétereket az Azure AD-be, így a felhasználók csendes bejelentkezési élményt biztosítanak a zökkenőmentes egyszeri bejelentkezés (azaz nem szükséges, hogy a felhasználók be tudják írni a felhasználóneveket vagy a jelszavukat):
 
-| Alkalmazás neve | Használandó alkalmazás-URL-cím |
+| Alkalmazásnév | Használandó alkalmazás-URL-cím |
 | -- | -- |
 | Hozzáférési panel | https: \//MyApps. microsoft. com/contoso. com |
 | Webes Outlook | https:\//outlook.office365.com/contoso.com |
@@ -51,7 +51,7 @@ Az alábbiakban felsoroljuk azokat az alkalmazásokat, amelyek elküldhetik ezek
 
 Emellett a felhasználók akkor is csendes bejelentkezési élményt kapnak, ha egy alkalmazás olyan bejelentkezési kéréseket küld az Azure AD-végpontoknak, amelyek bérlőként vannak beállítva – vagyis https: \//login. microsoftonline. com/contoso. com/<.. > vagy https: \//login. microsoftonline. com/< tenant_ID >/<.. > – Az Azure AD közös végpontja helyett – vagyis https: \//login. microsoftonline. com/common/<... >. Az alábbi lista az ilyen típusú bejelentkezési kérelmeket elvégező alkalmazások nem teljes listáját tartalmazza.
 
-| Alkalmazás neve | Használandó alkalmazás-URL-cím |
+| Alkalmazásnév | Használandó alkalmazás-URL-cím |
 | -- | -- |
 | SharePoint Online | https: \//contoso. SharePoint. com |
 | Azure Portal | https: \//Portal. Azure. com/contoso. com |
@@ -96,7 +96,10 @@ Kövesse az alábbi lépéseket azon a helyszíni kiszolgálón, amelyen a Azure
    1. Hívja meg a `$creds = Get-Credential` értéket. Ha a rendszer kéri, adja meg a kívánt Active Directory-erdő tartományi rendszergazdai hitelesítő adatait.
 
    > [!NOTE]
-   > A rendszer a tartományi rendszergazda felhasználónevét (UPN) (johndoe@contoso.com) vagy a tartományi minősített Sam-fiók nevét (contoso\johndoe vagy contoso. com\johndoe) használja a kívánt AD-erdő megtalálásához. Ha tartományi minősített Sam-fióknevet használ, a Felhasználónév tartomány részével [Keresse meg a tartományi rendszergazda](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)tartományvezérlőjét a DNS használatával. Ha ehelyett az UPN-t használja, a megfelelő tartományvezérlő megkeresése előtt [lefordítjuk egy tartományi minősített Sam-fiók nevére](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
+   >A tartományi rendszergazdai hitelesítő adatok felhasználónevet a SAM-fiók nevének formátumában kell megadni (contoso\johndoe vagy contoso. com\johndoe). A Felhasználónév tartomány részeként a tartományi rendszergazda tartományvezérlőjét kell megkeresni a DNS használatával.
+
+   >[!NOTE]
+   >A használt tartományi rendszergazdai fiók nem lehet a Protected Users csoport tagja. Ha igen, a művelet sikertelen lesz.
 
    2. Hívja meg a `Update-AzureADSSOForest -OnPremCredentials $creds` értéket. Ez a parancs frissíti az adott AD-erdőben található `AZUREADSSOACC` számítógépfiók Kerberos-visszafejtési kulcsát, és frissíti azt az Azure AD-ben.
    3. Ismételje meg a fenti lépéseket minden olyan AD-erdőnél, amelyre beállította a szolgáltatást.

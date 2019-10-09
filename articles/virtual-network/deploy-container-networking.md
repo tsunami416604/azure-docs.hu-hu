@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 657c23ad410d7aade17b3153f02ba0138edf4250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5146675b6eefd11fc1e6875ed9009ece92753ffb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60825081"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028102"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Az Azure Virtual Network tárolóalapú hálózati adaptere beépülő moduljának üzembe helyezése
 
@@ -95,10 +95,10 @@ A beépülő modul egy Kubernetes-fürt összes Azure-beli virtuális gépén va
 1. [A beépülő modul letöltése és telepítése](#download-and-install-the-plug-in).
 2. Előre foglaljon le egy virtuális hálózati IP-címkészletet minden egyes olyan virtuális gépen, amelyről IP-címeket fog a podokhoz rendelni. Minden Azure-beli virtuális gép rendelkezik egy elsődleges virtuális magánhálózati IP-címmel az összes hálózati adapterhez. A podok IP-címkészletében szereplő címek másodlagos címként (*ipconfig*) vannak megadva a virtuális gép hálózati adapterén, a következő lehetőségek egyikének használatával:
 
-   - **Parancssori felület**: [több IP-címek az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [PowerShell használatával több IP-címek kiosztása](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portál**: [több IP-címek az Azure portal használatával](virtual-network-multiple-ip-addresses-portal.md)
-   - **Az Azure Resource Manager-sablon**: [-sablonokkal több IP-címek kiosztása](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [több IP-cím társítása az Azure CLI használatával](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [több IP-cím kiosztása a PowerShell használatával](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portál**: [több IP-cím kiosztása a Azure Portal használatával](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager sablon**: [több IP-cím társítása sablonok használatával](virtual-network-multiple-ip-addresses-template.md)
 
    Győződjön meg arról, hogy megfelelő számú IP-címet ad hozzá azon podok számára, amelyeket el szeretne indítani a virtuális gépen.
 
@@ -157,12 +157,12 @@ A CNI hálózati konfigurációs fájlja JSON formátumban van megadva. Alapért
 
 #### <a name="settings-explanation"></a>Beállítások magyarázata
 
-- **cniVersion**: Azure virtuális hálózat CNI beépülő modulok 0.3.0 és a 0.3.1 verziója támogatja a [CNI specifikációja](https://github.com/containernetworking/cni/blob/master/SPEC.md).
-- **Név**: A hálózat nevét. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
-- **Típus**: A beépülő modul hálózat nevét. Állítsa be *azure virtuális hálózatok közötti*.
-- **Mód**: Működési módja. A mező kitöltése nem kötelező. A „híd” az egyetlen támogatott mód. További információkért lásd: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
-- **bridge**: A híd használandó tárolók kapcsolódni egy virtuális hálózat neve. A mező kitöltése nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
-- **az IPAM-típus**: Az IP-Címkezelő beépülő modul neve. Mindig *azure-vnet-IP-Címkezelő*.
+- **cniVersion**: Az Azure Virtual Network CNI beépülő moduljai támogatják a [CNI specifikációjának](https://github.com/containernetworking/cni/blob/master/SPEC.md)0.3.0 és 0.3.1 verzióját.
+- **név**: A hálózat neve. Ehhez a tulajdonsághoz bármilyen egyedi érték megadható.
+- **írja be a következőt**: A hálózati beépülő modul neve. Állítsa az *azure-vnet* értékre.
+- **mód**: Működési mód. A mező kitöltése nem kötelező. A „híd” az egyetlen támogatott mód. További információ: [működési módok](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
+- **híd**: A tárolók virtuális hálózathoz való kapcsolásához használt híd neve. A mező kitöltése nem kötelező. Ha nincs megadva, a beépülő modul automatikusan választ egy egyedi nevet a fő felületindex alapján.
+- **IPAM típusa**: A IPAM beépülő moduljának neve. Mindig az *azure-vnet-ipam* értékre van állítva.
 
 ## <a name="download-and-install-the-plug-in"></a>A beépülő modul letöltése és telepítése
 

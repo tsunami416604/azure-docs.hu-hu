@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI Példaszkript – hozzon létre egy Azure-alkalmazás konfigurációja Store |} A Microsoft Docs
-description: Azure CLI-Példaszkript – egy Azure App a konfigurációs adattároló létrehozása
+title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának létrehozása | Microsoft Docs
+description: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának létrehozása
 services: azure-app-configuration
 documentationcenter: ''
 author: yegu-ms
@@ -14,16 +14,16 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7833b5d6b9b94ddcd4b94d96201ccc85497f2529
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234194"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029792"
 ---
-# <a name="create-an-azure-app-configuration-store"></a>Hozzon létre egy Azure-alkalmazás konfigurációja Store
+# <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
 
-Ez a példaszkript létrehoz egy új erőforráscsoportot, egy véletlenszerű névvel ellátott Azure-alkalmazások konfigurálása egy új példányát.
+Ez a példa az Azure-alkalmazások konfigurációjának új példányát hozza létre egy új erőforráscsoport véletlenszerű nevével.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -31,7 +31,7 @@ Ez a példaszkript létrehoz egy új erőforráscsoportot, egy véletlenszerű n
 
 Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
-Az Azure App konfigurációs CLI-bővítmény a következő parancs végrehajtásával először telepítenie kell:
+Először telepítenie kell az Azure app Configuration CLI bővítményt a következő parancs végrehajtásával:
 
         az extension add -n appconfig
 
@@ -51,6 +51,7 @@ az group create --name $myResourceGroupName --location eastus
 # Create the Azure AppConfig Service resource and query the hostName
 appConfigHostname=$(az appconfig create \
   --name $myAppConfigStoreName \
+  --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
   -o tsv)
@@ -70,16 +71,16 @@ Jegyezze fel az új erőforráscsoporthoz létrehozott tényleges nevet. Ezt az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy új erőforráscsoportot és a egy alkalmazás a konfigurációs adattároló létrehozása. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy új erőforráscsoport és egy alkalmazás-konfigurációs tároló létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az appconfig létrehozása](/cli/azure/ext/appconfig/appconfig) | Egy alkalmazás konfigurációs tár erőforrást hoz létre. |
-| [az appconfig kulcslistában](/cli/azure/ext/appconfig/appconfig/kv) | Egy alkalmazás a konfigurációs adattároló tárolt kulcsok listázása. |
+| [az appconfig Create](/cli/azure/ext/appconfig/appconfig) | Létrehoz egy alkalmazás-konfigurációs tároló erőforrást. |
+| [az appconfig Key List](/cli/azure/ext/appconfig/appconfig/kv) | Az alkalmazás-konfigurációs tárolóban tárolt kulcsok listázása. |
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
-További App konfigurációs CLI-példaszkripteket megtalálható a [alkalmazások konfigurálása az Azure dokumentációs](../cli-samples.md).
+Az alkalmazások konfigurációjának további parancssori felületi mintái az [Azure-alkalmazás konfigurációs dokumentációjában](../cli-samples.md)találhatók.

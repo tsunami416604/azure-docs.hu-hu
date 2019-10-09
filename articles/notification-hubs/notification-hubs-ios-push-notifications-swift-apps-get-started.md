@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211950"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030657"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Oktatóanyag: Leküldéses értesítések küldése a Notification Hubst használó Swift iOS-alkalmazásoknak REST API
 
@@ -91,16 +91,16 @@ Ebben a szakaszban az értesítési központhoz csatlakozó iOS-alkalmazást fog
 
    | Kulcs                            | Type                     | Value                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Sztring                   | \<hubKey >                  |
+   | notificationHubKey             | Sztring                   | @no__t – 0hubKey >                  |
    | notificationHubKeyName         | Sztring                   | \<hubKeyName>              |
    | notificationHubName            | Sztring                   | \<hubName>                 |
-   | notificationHubNamespace       | Sztring                   | \<hubNamespace >            |
+   | notificationHubNamespace       | Sztring                   | @no__t – 0hubNamespace >            |
 
    A szükséges értékeket megkeresheti az értesítési központ erőforrásának Azure Portalban való navigálásával. Különösen a **notificationHubName** és a **NotificationHubNamespace** értékek az **alapvető** erőforrások összegzésének jobb felső sarkában találhatók az **Áttekintés** oldalon.
 
    ![Notification Hubs Essentials Összefoglaló](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   A **notificationHubKeyName** és a **notificationHubKey** értékeket úgy is megtalálhatja, hogy megkeresi a hozzáférési házirendeket, és kiválasztja a `DefaultFullSharedAccessSignature`megfelelő **hozzáférési** **szabályzatot** , például:. Ezt követően másolja az értéket az **elsődleges** `SharedAccessKeyName=` `notificationHubKeyName` és a értékhez előtaggal, a esetében pedig `notificationHubKey`az előtaggal ellátott `SharedAccessKey=` értéket.
+   A **notificationHubKeyName** és a **notificationHubKey** értékeket úgy is megtalálhatja, hogy megkeresi a hozzáférési házirendeket, és kiválasztja a megfelelő **hozzáférési** **szabályzatot** , például `DefaultFullSharedAccessSignature`. Ezután másolja az **elsődleges összekapcsolási karakterláncból** a `SharedAccessKeyName=` értéket a `notificationHubKeyName` értékre, és a `SharedAccessKey=` értékkel előre rögzített értéket a `notificationHubKey` esetében.
 
    A következő formátumúnak kell lennie a kapcsolatok karakterláncának:
 
@@ -108,15 +108,15 @@ Ebben a szakaszban az értesítési központhoz csatlakozó iOS-alkalmazást fog
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Az egyszerű használat érdekében megadhatja `DefaultFullSharedAccessSignature` , hogy a token használatával küldjön értesítéseket. A gyakorlatban a `DefaultListenSharedAccessSignature` jobb választás olyan helyzetekben, amikor csak az értesítéseket szeretné kapni.
+   Ha szeretné megtartani, `DefaultFullSharedAccessSignature` értéket kell megadnia, hogy a token használatával küldjön értesítéseket. A gyakorlatban a `DefaultListenSharedAccessSignature` jobb választás olyan helyzetekben, amikor csak az értesítéseket szeretné kapni.
 
 1. A **Project Navigator**alatt válassza ki a **projekt nevét** , majd válassza az **általános** lapot.
 
-1. Keresse meg az **identitást** , majd állítsa be a **köteg azonosító** értékét `com.<organization>.PushDemo`úgy, hogy az megfeleljen az előző lépésben az **alkalmazás-azonosítóhoz** használt értéknek.
+1. Keresse meg az **identitást** , majd állítsa be a **köteg azonosító** értékét úgy, hogy az megfeleljen a `com.<organization>.PushDemo` értéknek, amely az előző lépésben az **alkalmazás-azonosítóhoz** használt érték.
 
 1. Keresse meg az **aláírást**, majd válassza ki a megfelelő **csapatot** az **Apple Developer-fiókjához**. A **csapat** értékének meg kell egyeznie azzal, amelynek alapján létrehozta a tanúsítványokat és a profilokat.
 
-1. A Xcode automatikusan le kell húznia a megfelelő **létesítési profil** értékét a **köteg azonosítója**alapján. Ha nem látja az új **létesítési profil** értékét, próbálja meg frissíteni a profilokat az **aláíró identitáshoz** a **Xcode** > **Beállítások** > **fiók** > nézetének kiválasztásával. **Részletek**. Válassza a **személyazonosság aláírása**lehetőséget, majd a profilok letöltéséhez kattintson a jobb alsó sarokban található **frissítés** gombra.
+1. A Xcode automatikusan le kell húznia a megfelelő **létesítési profil** értékét a **köteg azonosítója**alapján. Ha nem látja az új **létesítési profil** értékét, próbálja meg frissíteni az **aláíró identitás** profiljait úgy, hogy kiválasztja a **Xcode** > **Beállítások** > **fiók** > **nézet részleteit**. Válassza a **személyazonosság aláírása**lehetőséget, majd a profilok letöltéséhez kattintson a jobb alsó sarokban található **frissítés** gombra.
 
 1. Válassza a **képességek** fület, és győződjön meg arról, hogy a **leküldéses értesítések** engedélyezve vannak.
 
@@ -285,8 +285,8 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 Maga a folyamat hat kulcsfontosságú lépést is magában foglal:  
 
 1. A lejárati [idő a UNIX-kor](https://en.wikipedia.org/wiki/Unix_time) időformátumában történik, ami azt jelenti, hogy az éjfél óta eltelt másodpercek száma a 1970. január 1-től érvényes.
-1. Formázza azt a **ResourceUrl** , amely az elérni kívánt erőforrást jelképezi, ezért a kódolás és a kisbetűs. A **ResourceUrl** rendelkezik az űrlappal `'https://<namespace>.servicebus.windows.net/<hubName>'`.
-1. A **StringToSign**előkészítése, amely a következőképpen `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`van formázva:.
+1. Formázza azt a **ResourceUrl** , amely az elérni kívánt erőforrást jelképezi, ezért a kódolás és a kisbetűs. A **ResourceUrl** `'https://<namespace>.servicebus.windows.net/<hubName>'` formátumú.
+1. A **StringToSign**előkészítése, amely `'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'` formátumban van formázva.
 1. Számítástechnika és Base64 – a **StringToSign** érték HMAC-sha256 kivonatának használatával kódolja az **aláírást** . A kivonat értékét a rendszer a megfelelő **engedélyezési szabály** **kapcsolati karakterláncának** **kulcs** részeként használja.
 1. A Base64 kódolású **aláírás** formázása úgy, hogy a kódolás százalékosan történjen.
 1. A token létrehozása a várt formátumban a **UrlEncodedSignature**, a **ExpiryEpoch**, a **Kulcsnév**és a **UrlEncodedResourceUrl** értékek használatával.
@@ -297,7 +297,7 @@ Ebben a Swift-példában az Apple nyílt forráskódú **CommonCrypto** könyvt�
 
 Az áthidaló fejléc hozzáadása és konfigurálása:
 
-1. A Xcode területen válassza **a fájl** > **új** >  fájlfejlécfájlelemet.>  Nevezze el a fejlécet a **BridgingHeader. h**fájlban.
+1. A Xcode-ben válassza a **fájl** > **új** > **fájl** > **header fájlt**. Nevezze el a fejlécet a **BridgingHeader. h**fájlban.
 
 1. Szerkessze a fájlt a **CommonHMAC. h**fájl importálásához:
 
@@ -313,11 +313,11 @@ Az áthidaló fejléc hozzáadása és konfigurálása:
 
 1. Frissítse a cél **Build-beállításait** az áthidaló fejlécre való hivatkozáshoz:
 
-   1. Nyissa meg az **építési beállítások** lapot, és görgessen le a **Swift Compiler**szakaszhoz.
+   1. Nyissa meg az **építési beállítások** lapot, és görgessen le a **Swift Compiler** szakaszhoz.
 
-   1. Győződjön meg arról, hogy az **Objective-C kompatibilitási fejléc** telepítése beállítás **Igen**értékre van állítva.
+   1. Győződjön meg arról, hogy az **Objective-C kompatibilitási fejléc telepítése** beállítás **Igen**értékre van állítva.
 
-   1. Adja meg a fájl `'<ProjectName>/BridgingHeader.h'` elérési útját a **Objective-C áthidaló fejléc** beállításban. Ez az áthidaló fejléc fájljának elérési útja.
+   1. Adja meg a fájl elérési útját `'<ProjectName>/BridgingHeader.h'` értéket a **Objective-C áthidaló fejléc** beállításnál. Ez az áthidaló fejléc fájljának elérési útja.
 
    Ha nem találja ezeket a beállításokat, győződjön meg arról, hogy az **összes** nézet ki van választva az **alapszintű** vagy a **testreszabott**beállítás helyett.
 
@@ -413,7 +413,7 @@ A **telepítési** API meghívásához kövesse az alábbi lépéseket:
    | Kulcs           | Value            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
-   | Authorization | \<sasToken >       |
+   | Authorization | @no__t – 0sasToken >       |
    | x-ms-version  | 2015-01          |
 
 1. Kattintson a **Save (Mentés** ) gombra a jobb felső sarokban megjelenő **kód** gombra. A kérelemnek az alábbi példához hasonlóan kell kinéznie:
@@ -661,7 +661,7 @@ A leggyorsabban tesztelhető, hogy most már fogadhat értesítéseket az értes
    | Kulcs                            | Value                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
-   | Authorization                  | \<sasToken >                     |
+   | Authorization                  | @no__t – 0sasToken >                     |
    | ServiceBusNotification-Format  | sablon                       |
    | Tags                           | "12345"                        |
 

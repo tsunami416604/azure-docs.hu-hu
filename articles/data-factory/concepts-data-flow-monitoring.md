@@ -1,57 +1,57 @@
 ---
-title: Az Azure Data Factory-térképadatokat Flow vizuális figyelés
-description: Vizuálisan az Azure Data Factory adatokat folyamatok figyelése
+title: Azure Data Factory leképezési adatfolyam vizuális figyelése
+description: Azure Data Factory adatfolyamatok vizuális monitorozása
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 90aa6261aebb9d1f7da89c101854bad8061dd6ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/07/2019
+ms.openlocfilehash: 41b4b7cd911bad40055fcf527c186f8de9466cdc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61268991"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030243"
 ---
-# <a name="monitor-data-flows"></a>A figyelő-adatfolyamok
+# <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Létrehozása és hibakeresése során az adatokat a folyamat befejezése után célszerű az adatfolyama hajthat végre egy folyamat keretében ütemezés ütemezése. A folyamat az Azure Data Factory eseményindítók használatával is ütemezhető. Vagy a Aktiválás most lehetőséget az Azure Data Factory folyamat Builder segítségével hajtható végre egy egyszeri futtatás végrehajtási folyamat keretein belül az adatok folyamat teszteléséhez.
 
-A folyamat futtatásakor lesz figyelheti a folyamatot, és az összes többek között az adatfolyam tevékenységet a folyamatban foglalt tevékenység. Kattintson a monitor ikonra a bal oldali panelen az Azure Data Factory felhasználói felületén. Az alábbihoz hasonló képernyő jelenik meg. A kiemelt ikonnal lehetővé teszi, hogy a folyamat, beleértve az adatfolyam tevékenységet a tevékenységek részletes.
+Miután befejezte az adatfolyamok kiépítését és hibakeresését, ütemeznie kell, hogy az adatfolyamatot egy folyamat kontextusában hajtsa végre a program. Az eseményindítók használatával ütemezhet Azure Data Factory folyamatot. Vagy használhatja az aktiválás most lehetőséget a Azure Data Factory pipeline Builder-ből úgy, hogy egyetlen futtatású végrehajtást hajtson végre az adatfolyamatok folyamaton belüli teszteléséhez.
 
-<img src="media/data-flow/mon001.png" width="800">
+A folyamat végrehajtásakor nyomon követheti a folyamatot, valamint az adatfolyamatban található összes tevékenységet, beleértve az adatfolyam tevékenységeit is. Kattintson a figyelés ikonra a bal oldali Azure Data Factory felhasználói felület paneljén. Egy, az alábbihoz hasonló képernyő jelenik meg. A Kiemelt ikonok lehetővé teszik a folyamat tevékenységeinek részletezését, beleértve az adatfolyam tevékenységeit is.
 
-Látni fogja, jól inculding. Ezzel stats szintű a futtatási időt és állapotát. A tevékenység szinten futtatás azonosítója eltér, hogy a Futtatás AZONOSÍTÓJÁT a folyamat szintjén. A futtatás azonosítója, az előző szintjén van, a folyamat. Kattintson a szemüveg kap részletes részletei az adatokat a folyamat végrehajtását a.
+Adatfolyam- ![figyelés](media/data-flow/mon001.png "adatforgalmának figyelése")
 
-<img src="media/data-flow/mon002.png" width="800">
+Ezen a szinten láthatja a statisztikát, beleértve a futtatási időpontokat és az állapotot is. A futtatási azonosító a tevékenység szintjén eltér a futtatási AZONOSÍTÓtól a folyamat szintjén. A futtatási azonosító az előző szinten a folyamathoz szükséges. A szemüvegre kattintva részletes információkat talál az adatfolyam végrehajtásáról.
 
-Ha a figyelési nézet grafikus csomópontban, látni fogja az adatokat a folyamat graph egyszerűsített csak megtekintési verziója.
+Adatfolyam- ![figyelés](media/data-flow/mon002.png "adatforgalmának figyelése")
 
-<img src="media/data-flow/mon003.png" width="800">
+Ha a grafikus csomópont figyelése nézetben látható, az Adatfolyam-diagram egyszerűsített, csak megtekintésre szolgáló verziója jelenik meg.
 
-## <a name="view-data-flow-execution-plans"></a>Data Flow végrehajtási tervek megtekintése
+Adatfolyam- ![figyelés](media/data-flow/mon003.png "adatforgalmának figyelése")
 
-Az adatfolyam végrehajtásakor a Databricks Azure Data Factory optimális kódhoz tartozó elérési út a entirity a adatfolyama alapján határozza meg. Ezenkívül a végrehajtási elérési utak a horizontális felskálázás különböző csomópontokon és adatpartíciókra fordulhat elő. Ezért a figyelési graph jelöli a folyamat, figyelembe véve az átalakításokat végrehajtási útvonalát kialakítását. Amikor az egyes csomópontokon kattint, látni fogja a "Csoportosítás", amelyek a kód végrehajtott együtt a fürtön. A időzítés és számát, láthatja, amelyeket jelölik ezeket a csoportokat az egyes lépések a tervezés szemben.
+## <a name="view-data-flow-execution-plans"></a>Adatfolyam-végrehajtási tervek megtekintése
 
-<img src="media/data-flow/mon004.png" width="800"> 
+Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a kódok optimális elérési útját az adatfolyam teljes egészében. Emellett a végrehajtási útvonalak különböző kibővíthető csomópontokon és adatpartíción is előfordulhatnak. Ezért a figyelési gráf a folyamat kialakítását jelképezi, figyelembe véve az átalakítások végrehajtási útvonalát. Ha az egyes csomópontokra kattint, megjelenik a "Csoportosítások" kifejezés, amely a fürtön együtt végrehajtott kódot jelképezi. Az időzítések és a megjelenő számadatok ezeket a csoportokat jelölik, a terv egyes lépéseivel szemben.
 
-* Kattintva nyissa meg a helyet, a megfigyelési ablakban, a statisztikák alsó ablaktábláján megjelenik a időzítési, és minden egyes fogadó- és a fogadó adatait az átalakítási leszármaztatási vezettek átalakítások sor száma.
+Adatfolyam- ![figyelés](media/data-flow/mon004.png "adatforgalmának figyelése")
 
-* Amikor kiválasztja az egyes átalakítások, kapni fog a további visszajelzés a jobb oldali panelen, amely megjeleníti a partíció statisztikái, oszlopok számát, az eltéréseket (hogyan van az adatok egyenletesen partíciók között), és (hogyan spikey van az adatok) értékek.
+* Ha a figyelés ablakában a Megnyitás területre kattint, az alsó ablaktáblában található statisztika megjeleníti az egyes fogadók időzítését és sorainak számát, valamint az átalakítási vonal számára a fogadó adatokhoz vezető átalakításokat.
 
-* A csomópontnézet a fogadó kattint, látni fogja oszlop leszármaztatási. Három különböző módszerrel, hogy oszlopokat az adatfolyam a fogadó partra egész összegzi a rendszer. Ezek a következők:
+* Az egyes átalakítások kiválasztásakor további visszajelzéseket fog kapni a jobb oldali panelen, amely megjeleníti a partíciós statisztikát, az oszlopok számát, a torzítást (azaz a partíciók között elosztott adatok egyenletes eloszlását), valamint a csúcsosságát (a tüskés az adatok).
 
-  * Számított: A feltételes feldolgozást vagy egy kifejezés használata az oszlop az adatfolyamot, de nem kerülnek, a fogadó
-  * Származtatott: Az oszlop egy olyan új oszlop, a flow-ban létrehozott, azaz nem szerepel a forrás
-  * Csatlakoztatott: Az oszlop a forrás- és a rendszer származik, a fogadó mező leképezése
+* Ha a csomópont nézetben a fogadóra kattint, megjelenik az oszlop leszármazása. Három különböző módszer áll rendelkezésre az oszlopok összegyűjtéséhez a fogadóban lévő összes adatfolyamban. Ezek a következők:
+
+  * Számított Az oszlopot felhasználhatja a feltételes feldolgozáshoz, vagy az adatfolyamatban egy kifejezésen belül, a fogadóban azonban nem.
+  * Származtatott Az oszlop egy új oszlop, amelyet a folyamat során generált, azaz nem volt jelen a forrásban.
+  * Leképezve Az oszlop a forrástól származik, és a rendszer egy fogadó mezőhöz rendeli hozzá
   
-## <a name="monitor-icons"></a>A figyelő ikonok
+## <a name="monitor-icons"></a>Ikonok figyelése
 
-Ez az ikon azt jelenti, hogy az átalakítási adatok már gyorsítótárazva lett a fürtön, így az időzítésüket végrehajtási útvonalat kell figyelembe venni és, amely:
+Ez az ikon azt jelenti, hogy az átalakítási adatgyűjtés már gyorsítótárazva van a fürtön, így az időzítések és a végrehajtás elérési útja figyelembe vette a következőt:
 
-<img src="media/data-flow/mon005.png" width="800"> 
+Adatfolyam- ![figyelés](media/data-flow/mon004.png "adatforgalmának figyelése")
 
-Az átalakítást a zöld körön ikonok is megjelenik. Képviselik, amelyek az adatok beérkeznek fogadóként darabszámát.
+Emellett a zöld kör ikonjai is megjelennek az átalakításban. Ezek a mosdók számát jelölik, amelyekben az adatforgalom beáramlik.

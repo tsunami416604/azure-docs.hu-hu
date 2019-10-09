@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 929c923fda8c1c2bddd96d0b4d4e4b6ce6d29de9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845307"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030409"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>DNS konfigurálása névfeloldáshoz a saját Felhőbeli vCenter való hozzáféréshez a helyszíni munkaállomásokról
 
@@ -23,7 +23,7 @@ Ha a vCenter-kiszolgálót a helyszíni munkaállomásokról származó CloudSim
 
 1. Jelentkezzen be a [CloudSimple-portálra](access-cloudsimple-portal.md).
 
-2. Navigáljon az **erőforrások** > **privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
+2. Navigáljon az **erőforrások**@no__t – 1**privát felhők** elemre, és válassza ki azt a privát felhőt, amelyhez csatlakozni szeretne.
 
 3. Az **alapszintű információ**területen található privát felhő **Összegzés** lapján másolja a saját Felhőbeli DNS-kiszolgáló IP-címét.
 
@@ -65,7 +65,7 @@ zone “cloudsimple.io”
 3. A környezettől függően válassza ki a megfelelő beállítást, majd kattintson a **tovább**gombra.
 
     ![Új zóna](media/DNS03.png)
-4. Válassza a **címkeresési zóna** lehetőséget, majd kattintson a **tovább**gombra.
+4. Válassza a **címkeresési zóna** lehetőséget, majd kattintson a **tovább**gombra.
 
     ![Új zóna](media/DNS01.png)
 5. Adja meg a zóna nevét, és kattintson a **tovább**gombra.

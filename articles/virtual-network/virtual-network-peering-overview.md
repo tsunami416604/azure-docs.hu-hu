@@ -1,5 +1,5 @@
 ---
-title: Az Azure virtuális hálózatok közötti társviszony
+title: Azure Virtual Network-társítás
 titlesuffix: Azure Virtual Network
 description: Tudnivalók az Azure-beli virtuális hálózatok közötti társviszony-létesítésről
 services: virtual-network
@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c488b96940cac03b9c392f0ac4bd1d32a15ba111
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077622"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035278"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-Virtuális hálózatok közötti társviszony lehetővé teszi, hogy zökkenőmentesen csatlakoztathatja az Azure [virtuális hálózatok](virtual-networks-overview.md). A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. Az Azure a következőket támogatja:
+A virtuális hálózatok közötti kapcsolat lehetővé teszi az Azure-beli [virtuális hálózatok](virtual-networks-overview.md)zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. Az Azure a következőket támogatja:
 * Virtuális társhálózatok létesítése – virtuális hálózatok csatlakoztatása egyazon Azure-régióban
 * Globális virtuális társhálózatok létesítése – virtuális hálózatok csatlakoztatása Azure-régiók között
 
@@ -63,7 +63,7 @@ Ha két virtuális hálózat között társhálózati viszony van, a virtuális 
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/figure04.png)
 
-Átjárói átvitel virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének is támogatott. Átjárói átvitel (Resource Manager és Klasszikus modell) különböző üzembehelyezési modellel létrehozott virtuális hálózatok között csak akkor, ha az átjáró a virtuális hálózatban (Resource Manager) nem támogatott. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az átjáró-átvitelt a VNet-és a globális VNet-társítás egyaránt támogatja. A különböző üzembe helyezési modelleken (Resource Manager és klasszikus) keresztül létrehozott virtuális hálózatok közötti átjáró-átvitel csak akkor támogatott, ha az átjáró a virtuális hálózaton (Resource Manager) található. További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Ha két, ugyanazon az Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatot állítanak társviszonyba, akkor a társhálózaton (vagyis az Azure gerinchálózatán) keresztül áramlik közöttük a forgalom. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Közös átjárót is használhat, és átvitel konfigurálásával létesíthet kapcsolatot a helyszíni rendszerrel.
 
@@ -73,12 +73,12 @@ A meg kíván győződni a virtuális hálózatok közötti társviszony-létes�
 
 A virtuális társhálózatokban lévő virtuális gépek kapcsolatának hibaelhárításához használhatja a Network Watcher [kapcsolat-ellenőrzési funkcióját](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A kapcsolat ellenőrzése során megtekintheti az adatforgalmat a forrás és a cél virtuális gépek hálózati adapterei között.
 
-Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elhárítója](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues).
+A [virtuális hálózatokkal kapcsolatos problémák elhárításához a hibakeresőt](https://support.microsoft.com/help/4486956/troubleshooter-for-virtual-network-peering-issues)is kipróbálhatja.
 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
-A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
-- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatását is, a virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik. Egy alapszintű load balancer, amely nem fog működni a globális virtuális hálózatok közötti társviszony-Létesítésen keresztül használó szolgáltatások vannak dokumentálva [itt.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
+A következő megkötések csak akkor érvényesek, ha a virtuális hálózatok globálisan vannak kiképezve:
+- Az egyik virtuális hálózat erőforrásai nem kommunikálhatnak az alapszintű belső terheléselosztó előtér-IP-címével egy globálisan összetartozó virtuális hálózaton. Az alapszintű Load Balancer támogatása csak ugyanazon a régión belül létezik. A standard Load Balancer támogatása mind a VNet, mind a globális VNet-társítás esetében létezik. Az alapszintű Load balancert használó olyan szolgáltatások, amelyek nem fognak működni a globális VNet-társítással, itt vannak dokumentálva [.](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 
 
@@ -90,13 +90,13 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
-Átjárói átvitel a társviszony-létesítési tulajdona, amely lehetővé teszi a virtuális hálózat társviszonyban lévő virtuális hálózat közötti helyszíni vagy virtuális hálózatok közötti kapcsolat egy VPN/ExpressRoute-átjáró használatához. Ebben a forgatókönyvben egy távoli átjáró áthaladó forgalom státuszban van [VPN gateway díjak](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy ExpressRoute-átjáró díjat, és nem jár [virtuális hálózatok közötti társviszony-létesítési díjak.](https://azure.microsoft.com/pricing/details/virtual-network) Például ha hálózattal rendelkezik helyszíni kapcsolatok VPN-átjáró és a b társviszonyban van a hálózattal konfigurált megfelelő tulajdonságok b forgalmát a helyszíni, akkor csak mennyiségre kimenő forgalom VPN gateway díjszabás vagy ExpressRoute – díjszabás. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az átjárók közötti átvitel egy olyan egyenrangú tulajdonság, amely lehetővé teszi a virtuális hálózat számára a VPN-/ExpressRoute átjárók használatát egy, a létesítmények közötti vagy VNet-VNet kapcsolattal rendelkező virtuális hálózaton. További részletekért tekintse meg a [VPN Gateway díjait](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy a ExpressRoute, valamint a VNet-kitöltési [díjakat.](https://azure.microsoft.com/pricing/details/virtual-network)
 
 ## <a name="next-steps"></a>További lépések
 
 * A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Előfizetés  |
+    |Azure üzembehelyezési modell             | Subscription  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091119"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029989"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>Kiszolgáló-naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 Az Azure Database for PostgreSQL lekérdezési és hibanaplókat hoz létre. A lekérdezési és a hibanapló segítségével azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. (A tranzakciós naplókhoz való hozzáférés nincs belefoglalva). 
@@ -24,7 +24,7 @@ A naplózást a kiszolgálón a naplózási kiszolgáló paramétereinek haszná
 További információ ezekről a paraméterekről: PostgreSQL [hibajelentési és naplózási](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentációja. A Azure Database for PostgreSQL paraméterek konfigurálásának megismeréséhez tekintse meg a [portál dokumentációját](howto-configure-server-parameters-using-portal.md) vagy a [CLI dokumentációját](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Hozzáférési kiszolgáló naplófájljai a portálon vagy a CLI-n keresztül
-Ha engedélyezte a naplókat, a [Azure Portal](howto-configure-server-logs-in-portal.md), az [Azure CLI](howto-configure-server-logs-using-cli.md)és az Azure REST API-k használatával érheti el azokat a Azure Database for PostgreSQL log Storage-ból. A naplófájlok 1 óránként vagy a 100 MB-os méret elérése után rotálódnak, attól függően, hogy melyik következik be először. A naplófájl megőrzési időtartamát a kiszolgálóhoz társított **napló\_megőrzési\_időtartam** paramétere alapján állíthatja be. Az alapértelmezett érték 3 nap; a maximális érték 7 nap. A kiszolgálónak elegendő lefoglalt tárterülettel kell rendelkeznie a naplófájlok tárolásához. (Ez a megőrzési paraméter nem szabályozza az Azure diagnosztikai naplókat.)
+Ha engedélyezte a naplókat, a [Azure Portal](howto-configure-server-logs-in-portal.md), az [Azure CLI](howto-configure-server-logs-using-cli.md)és az Azure REST API-k használatával érheti el azokat a Azure Database for PostgreSQL log Storage-ból. A naplófájlok 1 óránként vagy a 100 MB-os méret elérése után rotálódnak, attól függően, hogy melyik következik be először. A naplófájl megőrzési időtartamát a kiszolgálóhoz társított **log @ no__t-1retention @ no__t-2period** paraméterrel állíthatja be. Az alapértelmezett érték 3 nap; a maximális érték 7 nap. A kiszolgálónak elegendő lefoglalt tárterülettel kell rendelkeznie a naplófájlok tárolásához. (Ez a megőrzési paraméter nem szabályozza az Azure diagnosztikai naplókat.)
 
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
@@ -67,7 +67,7 @@ Az alábbi táblázat az egyes naplókban található tudnivalókat ismerteti. A
 | DatatypeName | Az adattípus neve (ha van ilyen) |
 | LogicalServerName | A kiszolgáló neve | 
 | _ResourceId | Erőforrás URI-ja |
-| Előtag | A naplózási sor előtagja |
+| Körzetszám | A naplózási sor előtagja |
 
 
 

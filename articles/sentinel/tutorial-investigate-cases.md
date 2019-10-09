@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229405"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024608"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Oktatóanyag: Incidensek vizsgálata az Azure Sentineltel
 
@@ -44,7 +44,7 @@ Az incidens kivizsgálása csak akkor lehetséges, ha az analitikus szabály be�
 
 ## <a name="how-to-investigate-incidents"></a>Incidensek vizsgálata
 
-1. Válassza az **incidensek**lehetőséget. Az **incidensek** oldalon megtudhatja, hogy hány incidens van, hány van nyitva, hányan van **folyamatban**, és hány lezárult. Minden incidensnél láthatja a bekövetkezett időt, valamint az incidens állapotát. Tekintse meg a súlyosságot, hogy eldöntse, melyik incidenst kell először kezelni.
+1. Válassza az **incidensek**lehetőséget. Az **incidensek** oldalon megtudhatja, hogy hány incidens van, hány van nyitva, hányan van **folyamatban**, és hány lezárult. Minden incidensnél láthatja a bekövetkezett időt, valamint az incidens állapotát. Tekintse meg a súlyosságot, hogy eldöntse, melyik incidenst kell először kezelni.
 
     ![Incidens súlyosságának megtekintése](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -78,14 +78,14 @@ A vizsgálati gráf a következőket biztosítja:
 
 A vizsgálati gráf használata:
 
-1. Válasszon ki egy incidenst, majd kattintson a **vizsgálat**elemre. Ezzel elvégzi a vizsgálati gráfot. A gráf szemléltető térképet biztosít a riasztáshoz közvetlenül kapcsolódó entitásokhoz, és minden további kapcsolódó erőforrást.
+1. Válasszon ki egy incidenst, majd kattintson a **vizsgálat**elemre. Ezzel elvégzi a vizsgálati gráfot. A gráf szemléltető térképet biztosít a riasztáshoz közvetlenül kapcsolódó entitásokhoz, és minden további kapcsolódó erőforrást.
 
    > [!IMPORTANT] 
    > Az incidens kivizsgálása csak akkor lehetséges, ha az analitikus szabály beállításakor az entitás-hozzárendelési mezőket használta. A vizsgálati gráf megköveteli, hogy az eredeti incidens entitásokat tartalmazzon.
 
    ![Térkép megtekintése](media/tutorial-investigate-cases/map1.png)
 
-1. Válasszon ki egy entitást az **entitások** panel megnyitásához, hogy áttekintse az adott entitás információit.
+1. Válasszon ki egy entitást az **entitások** panel megnyitásához, hogy áttekintse az adott entitás információit.
 
     ![Térképbeli entitások megtekintése](media/tutorial-investigate-cases/map-entities.png)
   
@@ -95,9 +95,9 @@ A vizsgálati gráf használata:
 
    A számítógépen például a kapcsolódó riasztások is igényelhetők. Ha kijelöl egy feltárási lekérdezést, a rendszer visszaadja az eredményül kapott jogosultságokat a gráfhoz. Ebben a példában a **kapcsolódó riasztások** kiválasztása a következő riasztásokat adta vissza a gráfba:
 
-    ![Kapcsolódó értesítések megtekintése](media/tutorial-investigate-cases/related-alerts.png)
+    ![Kapcsolódó riasztások megtekintése](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek az **események\>** lehetőséget választva történő megnyitásának lehetőségét.
+1. Az egyes felderítési lekérdezések esetében kiválaszthatja a nyers események eredményeinek és a Log Analytics használt lekérdezésnek a következő események kiválasztásával: **@ no__t-1**.
 
 1. Az incidens megismerése érdekében a gráf párhuzamos idővonalat biztosít.
 

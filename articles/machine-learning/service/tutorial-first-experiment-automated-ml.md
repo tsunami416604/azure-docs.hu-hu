@@ -1,5 +1,5 @@
 ---
-title: Az első automatizált gépi tanulási kísérlet létrehozása
+title: Az első automatizált ML besorolási kísérlet létrehozása
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan taníthat és helyezhet üzembe egy besorolási modellt automatikus gépi tanulással Azure Machine Learning munkaterület-kezdőlapján (előzetes verzió).
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350500"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035677"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
 
@@ -66,14 +66,14 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
 
 1. Válassza a **kísérlet létrehozása**lehetőséget. 
 
-1. Adja meg a kísérlet nevét:`my-1st-automl-experiment`
+1. Adja meg a kísérlet nevét: `my-1st-automl-experiment`
 
 1. Válassza az **új számítás létrehozása** és a számítási cél konfigurálása lehetőséget. A számítási cél egy helyi vagy felhőalapú erőforrás-környezet, amely a betanítási parancsfájl futtatására vagy a szolgáltatás központi telepítésének üzemeltetésére szolgál. Ehhez a kísérlethez felhőalapú számítást használunk. 
 
    Mező | Leírás | Az oktatóanyag értéke
    ----|---|---
-   A számítás neve |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
-   Virtuális&nbsp;gép&nbsp;mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
+   Számítási név |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
+   Virtuális @ no__t-0machine @ no__t-1size| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
 
    >[!NOTE]
@@ -101,8 +101,8 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
         
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
-        Fájlformátum|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Elválasztott
-        Elválasztó karakter|Egy vagy több karakter a @ no__t-0 különálló, egyszerű szöveges vagy más adatfolyamok közötti határ megadásához. |Vessző
+        Fájl formátuma|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
+        Elválasztó karakter|Egy vagy több karakter a @ no__t-0 különálló, egyszerű szöveges vagy más adatfolyamok közötti határ megadásához. |Vesszővel
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
         Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájl azonos fejléccel rendelkezik
         Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
@@ -118,10 +118,10 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
    >[!NOTE]
    > Ebben az oktatóanyagban nem fog mérőszám-pontszámot vagy maximális magot megadni iterációs küszöbértékként. És nem fogja letiltani az algoritmusok tesztelését.
    
-   Speciális&nbsp;beállítások|Leírás|&nbsp;Az&nbsp;oktatóanyag értéke
+   Speciális @ no__t – 0settings|Leírás|Érték @ no__t-0for @ no__t-1tutorial
    ------|---------|---
    Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-   Kilépési feltételek| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Képzési&nbsp;feladatok&nbsp;időpontja: 5 <br> <br> Iterációk maximális&nbsp;#száma10&nbsp;&nbsp;&#58;
+   Kilépési feltételek| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Képzés @ no__t-0job @ no__t-1time: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-3iterations&#58;10
    Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
    Érvényesítés típusa | Válasszon egy több ellenőrzési típust.|K-szeres keresztek ellenőrzése
    Érvényességek száma | Tesztek száma. | 2 érvényességi értékek 
@@ -158,7 +158,7 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
 
     Mező| Value
     ----|----
-    Üzemelő példány neve| My-automl – üzembe helyezés
+    Központi telepítés neve| My-automl – üzembe helyezés
     Központi telepítés leírása| Az első automatizált gépi tanulási kísérlet üzembe helyezése
     Pontozási parancsfájl| Autogenerate
     Környezeti parancsfájl| Autogenerate
@@ -200,5 +200,5 @@ Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlap
 + A besorolási mérőszámokkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatikus gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 
 >[!NOTE]
-> Ez a bank marketing-adatkészlet elérhető a [Creative Commons (CCO: Nyilvános tartomány) licenc](https://creativecommons.org/publicdomain/zero/1.0/). Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
+> Ez a bank marketing-adatkészlet elérhetővé válik a [Creative Commonsban (CCO: Nyilvános tartomány) licenc @ no__t-0. Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez. Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.

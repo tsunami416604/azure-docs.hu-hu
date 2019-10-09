@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása a Xamarin.Forms-alkalmazás |} A Microsoft Docs
-description: Ismerje meg, hogyan többplatformos leküldéses értesítések küldése a Xamarin.Forms-alkalmazások Azure-szolgáltatások használatával.
+title: Leküldéses értesítések hozzáadása a Xamarin. Forms alkalmazáshoz | Microsoft Docs
+description: Ismerje meg, hogyan küldhet többplatformos leküldéses értesítéseket az Azure-szolgáltatásokkal a Xamarin. Forms alkalmazásokban.
 services: app-service\mobile
 documentationcenter: xamarin
 author: elamalani
@@ -14,59 +14,59 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b7e2ff63211ec5891a48a585e4f69e18116cdeb3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8ce307df954575b3204f7a4b3f46af1f4a9c3089
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446573"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027458"
 ---
-# <a name="add-push-notifications-to-your-xamarinforms-app"></a>A Xamarin.Forms-alkalmazás leküldéses értesítések hozzáadása
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Leküldéses értesítések hozzáadása a Xamarin. Forms alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-push) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben az oktatóanyagban a leküldéses értesítések hozzáadása a projektek eredményeként a [Xamarin.Forms gyors üzembe helyezési](app-service-mobile-xamarin-forms-get-started.md). Ez azt jelenti, hogy egy leküldéses értesítés küldése platformok közötti összes ügyfélre, minden alkalommal, amikor a rendszer beszúr egy rekordot.
+Ebben az oktatóanyagban leküldéses értesítéseket ad hozzá az összes olyan projekthez, amely a [Xamarin. Forms gyors üzembe helyezését](app-service-mobile-xamarin-forms-get-started.md)eredményezte. Ez azt jelenti, hogy a rendszer minden egyes rekord beszúrásakor leküldéses értesítést küld az összes platformfüggetlen ügyfélnek.
 
-Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüksége lesz a leküldéses értesítési kiterjesztési csomag. További információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, szüksége lesz a leküldéses értesítési bővítmény csomagra. További információ: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-IOS-, szüksége lesz egy [Apple Fejlesztőprogrambeli tagság](https://developer.apple.com/programs/ios/) és a egy fizikai iOS-eszközt. A [az iOS-szimulátor nem támogatja a leküldéses értesítések](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
+IOS esetén szüksége lesz az [Apple Developer program tagságára](https://developer.apple.com/programs/ios/) és egy fizikai iOS-eszközre. Az [iOS-szimulátor nem támogatja a leküldéses értesítéseket](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
 
-## <a name="configure-hub"></a>Egy értesítési központ konfigurálása
+## <a name="configure-hub"></a>Értesítési központ konfigurálása
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Leküldéses értesítések küldéséhez a kiszolgálói projekt frissítése
+## <a name="update-the-server-project-to-send-push-notifications"></a>A kiszolgálói projekt frissítése leküldéses értesítések küldéséhez
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-and-run-the-android-project-optional"></a>Konfigurálja és futtassa az Android-projektre (nem kötelező)
+## <a name="configure-and-run-the-android-project-optional"></a>Az Android-projekt konfigurálása és futtatása (nem kötelező)
 
-Végezze el az ebben a szakaszban engedélyezze a leküldéses értesítések az Android a Xamarin.Forms Droid projektet.
+Ennek a szakasznak a végrehajtásával engedélyezheti a leküldéses értesítéseket a Xamarin. Forms droid Project for Android platformon.
 
-### <a name="enable-firebase-cloud-messaging-fcm"></a>Enable Firebase Cloud Messaging (FCM)
+### <a name="enable-firebase-cloud-messaging-fcm"></a>A Firebase Cloud Messaging (FCM) engedélyezése
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>A Mobile Apps-háttéralkalmazás leküldéses kérelmek küldése a FCM használatával konfigurálja
+### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>A Mobile Apps-háttér konfigurálása a leküldéses kérések az FCM használatával történő küldéséhez
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-### <a name="add-push-notifications-to-the-android-project"></a>Leküldéses értesítések hozzáadása az Android-projekt
+### <a name="add-push-notifications-to-the-android-project"></a>Leküldéses értesítések hozzáadása az Android-projekthez
 
-A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok, az ügyfél az fcm-mel regisztrálni. A Mobile Apps-háttéralkalmazás segítségével az Azure Notification Hubs leküldéses értesítések regisztráljon, és értesítések fogadása is.
+Az FCM-mel konfigurált háttér-beállításokkal összetevőket és kódokat adhat hozzá az ügyfélhez az FCM-sel való regisztrációhoz. A leküldéses értesítések az Azure Notification Hubs segítségével is regisztrálhatók a Mobile Apps háttérrel, és értesítéseket kaphatnak.
 
-1. Az a **Droid** projektre, kattintson a jobb gombbal **hivatkozások > NuGet-csomagok kezelése...** .
-1. A NuGet-Csomagkezelő ablakban keresse meg a **Xamarin.Firebase.Messaging** csomagot, és adja hozzá a projekthez.
-1. A projekt tulajdonságai között a **Droid** projektre, állítsa be az alkalmazás fordítása Android 7.0-s vagy újabb verzió használatával.
-1. Adja hozzá a **google-services.json** gyökere a Firebase konzoljában a letöltött fájl, a **Droid** projektre, és állítsa a létrehozási művelet **GoogleServicesJson**. További információkért lásd: [adja hozzá a Google Services JSON-fájl](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. A **droid** projektben kattintson a jobb gombbal a **referenciák > NuGet-csomagok kezelése..** . elemre.
+1. A NuGet csomagkezelő ablakban keresse meg a **Xamarin. Firebase. Messaging** csomagot, és adja hozzá a projekthez.
+1. A **droid** projekthez tartozó projekt tulajdonságainál állítsa az alkalmazást az Android 7,0-es vagy újabb verziójának fordításához.
+1. Adja hozzá a Firebase-konzolról letöltött **Google-Services. JSON** fájlt a **droid** -projekt gyökeréhez, és állítsa a Build műveletet a **GoogleServicesJson**értékre. További információ: [Add The Google Services JSON-fájl](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Regisztráció a Firebase Cloud Messagingben
 
@@ -83,9 +83,9 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>A Firebase Példányazonosító-szolgáltatás megvalósítása
+#### <a name="implementing-the-firebase-instance-id-service"></a>A Firebase példány-azonosító szolgáltatás implementálása
 
-1. Adjon hozzá egy új osztályt a **Droid** nevű projekt `FirebaseRegistrationService`, és ellenőrizze, hogy a következő `using` utasítások a fájl tetején találhatók:
+1. Adjon hozzá egy új osztályt az `FirebaseRegistrationService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using System.Threading.Tasks;
@@ -95,7 +95,7 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     using Microsoft.WindowsAzure.MobileServices;
     ```
 
-1. Cserélje le az üres `FirebaseRegistrationService` osztályban az alábbi kódra:
+1. Cserélje le az üres `FirebaseRegistrationService` osztályt a következő kódra:
 
     ```csharp
     [Service]
@@ -122,13 +122,13 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     }
     ```
 
-    A `FirebaseRegistrationService` osztály biztonsági jogkivonatokat, engedélyezze az alkalmazás eléréséhez FCM létrehozásáért felelős. A `OnTokenRefresh` metódus meghívásakor kerül, amikor az alkalmazás fogad FCM-regisztrációs jogkivonatot. A metódus lekér a jogkivonatot a `FirebaseInstanceId.Instance.Token` tulajdonság, amely FCM aszinkron módon frissül. A `OnTokenRefresh` metódus ritkán hív, mert a jogkivonat csak akkor frissül, amikor az alkalmazás telepítésének vagy eltávolításának, amikor a felhasználó törli az alkalmazásadatok esetében, amikor az alkalmazás törli a példány Azonosítóját, vagy ha a biztonsági jogkivonat lett sérült a biztonsága. Emellett az FCM Példányazonosító-szolgáltatás kérni fogja, hogy az alkalmazás frissíti a tokent rendszeres időközönként, általában minden hatodik hónapban.
+    A `FirebaseRegistrationService` osztály feladata olyan biztonsági jogkivonatok létrehozása, amelyek engedélyezik az alkalmazás számára az FCM elérését. A `OnTokenRefresh` metódus akkor kerül meghívásra, ha az alkalmazás egy regisztrációs jogkivonatot kap az FCM-ből. A metódus lekérdezi a tokent a `FirebaseInstanceId.Instance.Token` tulajdonságból, amelyet az FCM aszinkron módon frissít. A `OnTokenRefresh` metódus ritkán van meghívva, mert a token csak akkor frissül, amikor az alkalmazás telepítve van vagy el lett távolítva, amikor a felhasználó törli az alkalmazási adatmennyiséget, amikor az alkalmazás törli a példány AZONOSÍTÓját, vagy ha a jogkivonat biztonsága megtörtént veszélybe. Emellett az FCM instance ID szolgáltatás azt is kéri, hogy az alkalmazás rendszeres időközönként frissíti a tokent, általában 6 havonta.
 
-    A `OnTokenRefresh` metódus is meghívja a `SendRegistrationTokenToAzureNotificationHub` metódussal, amely a felhasználói regisztráció token társítása az Azure Notification Hub szolgál.
+    A `OnTokenRefresh` metódus a `SendRegistrationTokenToAzureNotificationHub` metódust is meghívja, amely a felhasználó regisztrációs jogkivonatának az Azure Notification hub szolgáltatással való hozzárendelésére szolgál.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Az Azure értesítési központon történő regisztrációt
+#### <a name="registering-with-the-azure-notification-hub"></a>Regisztrálás az Azure Notification hub-ban
 
-1. Adjon hozzá egy új osztályt a **Droid** nevű projekt `AzureNotificationHubService`, és ellenőrizze, hogy a következő `using` utasítások a fájl tetején találhatók:
+1. Adjon hozzá egy új osztályt az `AzureNotificationHubService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using System;
@@ -138,7 +138,7 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     using Newtonsoft.Json.Linq;
     ```
 
-1. Cserélje le az üres `AzureNotificationHubService` osztályban az alábbi kódra:
+1. Cserélje le az üres `AzureNotificationHubService` osztályt a következő kódra:
 
     ```csharp
     public class AzureNotificationHubService
@@ -167,11 +167,11 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     }
     ```
 
-    A `RegisterAsync` metódus az egyszerű értesítési üzenet sablonjának JSON, és regisztrál a sablon értesítéseket fogadjon az értesítési központ használatával a Firebase-regisztrációs jogkivonatot hoz létre. Ez biztosítja, hogy az Azure Notification Hub által küldött értesítések fogják használni az eszköz a regisztrációs jogkivonat képviseli.
+    A `RegisterAsync` metódus egy egyszerű értesítési üzenetet hoz létre JSON-ként, és regisztrálja az értesítési központból a Firebase regisztrációs jogkivonat használatával kapott sablon-értesítéseket. Ez biztosítja, hogy az Azure Notification hub által küldött értesítések a regisztrációs jogkivonat által jelzett eszközt célozzák meg.
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>Leküldéses értesítés tartalmának megjelenítése
 
-1. Adjon hozzá egy új osztályt a **Droid** nevű projekt `FirebaseNotificationService`, és ellenőrizze, hogy a következő `using` utasítások a fájl tetején találhatók:
+1. Adjon hozzá egy új osztályt az `FirebaseNotificationService` nevű **droid** -projekthez, és győződjön meg arról, hogy az alábbi `using` utasítások szerepelnek a fájl tetején:
 
     ```csharp
     using Android.App;
@@ -182,7 +182,7 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     using Firebase.Messaging;
     ```
 
-1. Cserélje le az üres `FirebaseNotificationService` osztályban az alábbi kódra:
+1. Cserélje le az üres `FirebaseNotificationService` osztályt a következő kódra:
 
     ```csharp
     [Service]
@@ -224,44 +224,44 @@ A háttérrendszer az fcm-mel konfigurált hozzáadhat összetevők és a kódok
     }
     ```
 
-    A `OnMessageReceived` módszer, amelyek akkor aktiválódnak, ha egy alkalmazás értesítést kap az FCM, kinyeri a tartalom az üzenetet, és meghívja az `SendNotification` metódust. Ezzel a módszerrel alakítja indul el, amíg az alkalmazás fut, az értesítést az értesítési területen jelennek meg a helyi értesítést az üzenet tartalma.
+    A `OnMessageReceived` metódus, amely akkor jelenik meg, amikor egy alkalmazás értesítést kap az FCM-ből, kibontja az üzenet tartalmát, és meghívja a `SendNotification` metódust. Ez a módszer az üzenet tartalmát az alkalmazás futása közben indított helyi értesítésre konvertálja, és az értesítési területen megjelenik az értesítés.
 
-Most Ön készen teszt leküldéses értesítések Android-eszközön vagy az emulátor, az alkalmazásban.
+Most már készen áll az Android-eszközön vagy az emulátoron futó alkalmazásban futtatott leküldéses értesítések tesztelésére.
 
-### <a name="test-push-notifications-in-your-android-app"></a>Teszt leküldéses értesítések az Android-alkalmazás található
+### <a name="test-push-notifications-in-your-android-app"></a>Leküldéses értesítések tesztelése Android-alkalmazásokban
 
-Az első két lépés elengedhetetlen, csak akkor, amikor az emulátor tesztelt.
+Az első két lépés csak akkor szükséges, ha egy emulátoron végez tesztelést.
 
-1. Győződjön meg arról, hogy üzembe helyezése vagy egy eszközt vagy emulátort, amely a Google Play-szolgáltatások van beállítva a hibakereséshez. Ez úgy, hogy ellenőrizhető a **lejátszása** alkalmazások a eszközt vagy emulátort telepítve vannak.
-2. Google-fiók hozzáadása az Android-eszközre kattintva **alkalmazások** > **beállítások** > **fiók hozzáadása**. Ezután kövesse az utasításokat, vegyen fel egy meglévő Google-fiókot az eszközön, vagy hozzon létre egy újat.
-3. A Visual Studióban vagy a Xamarin Studióban, kattintson a jobb gombbal a **Droid** projektre, és kattintson a **beállítás kezdőprojektként**.
-4. Kattintson a **futtatása** a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az Android-eszköz vagy az emulátoron.
-5. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
-6. Győződjön meg arról, hogy értesítés érkezik, amikor új elem kerül.
+1. Győződjön meg arról, hogy a Google Play-szolgáltatásokkal konfigurált eszközön vagy emulátoron helyezi üzembe vagy végzi a hibakeresést. Ezt ellenőrizheti, ha ellenőrzi, hogy a **Play** -alkalmazások telepítve vannak-e az eszközön vagy az emulátoron.
+2. Vegyen fel egy Google-fiókot az Android-eszközre, ehhez kattintson az **alkalmazások** > **Beállítások** > **fiók hozzáadása**lehetőségre. Ezután kövesse az utasításokat, és adjon hozzá egy meglévő Google-fiókot az eszközhöz, vagy hozzon létre egy újat.
+3. A Visual Studióban vagy a Xamarin Studióban kattintson a jobb gombbal a **droid** projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
+4. Kattintson a **Futtatás** gombra a projekt felépítéséhez és az alkalmazás elindításához az Android-eszközön vagy az emulátoron.
+5. Az alkalmazásban írjon be egy feladatot, majd kattintson a plusz ( **+** ) ikonra.
+6. Ellenőrizze, hogy a rendszer értesítést kap-e az elemek hozzáadásakor.
 
-## <a name="configure-and-run-the-ios-project-optional"></a>Konfigurálja és futtassa az iOS-projektre (nem kötelező)
+## <a name="configure-and-run-the-ios-project-optional"></a>Az iOS-projekt konfigurálása és futtatása (nem kötelező)
 
 Ez a szakasz az iOS-eszközökhöz készült Xamarin iOS-projektek futtatásával foglalkozik. Kihagyhatja ezt a részt, ha nem dolgozik iOS-eszközökkel.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-#### <a name="configure-the-notification-hub-for-apns"></a>Az értesítési központ konfigurálása az APN Szolgáltatáshoz
+#### <a name="configure-the-notification-hub-for-apns"></a>A APNS tartozó értesítési központ konfigurálása
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-Ezután konfigurálhatja az iOS-projekt beállítása a Xamarin Studio vagy a Visual Studióban.
+Ezután konfigurálja az iOS-projekt beállításait a Xamarin Studióban vagy a Visual Studióban.
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-#### <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása az iOS-alkalmazás
+#### <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása iOS-alkalmazáshoz
 
-1. Az a **iOS** projekt, nyissa meg a AppDelegate.cs, és adja hozzá a következő utasítást a kód fájl elejéhez.
+1. Az **iOS** -projektben nyissa meg a AppDelegate.cs, és adja hozzá a következő utasítást a fájl elejéhez.
 
     ```csharp
     using Newtonsoft.Json.Linq;
     ```
 
-2. Az a **AppDelegate** osztály, vegyen fel egy felülbírálást a **RegisteredForRemoteNotifications** értesítések regisztrálása esemény:
+2. A **AppDelegate** osztályban adjon meg egy felülbírálást a **RegisteredForRemoteNotifications** esemény számára az értesítések regisztrálásához:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application,
@@ -281,7 +281,7 @@ Ezután konfigurálhatja az iOS-projekt beállítása a Xamarin Studio vagy a Vi
     }
     ```
 
-3. A **AppDelegate**, a következő felülbírálást is hozzáadhat a **DidReceiveRemoteNotification** eseménykezelő:
+3. A **AppDelegate**-ben adja hozzá a következő felülbírálást a **DidReceiveRemoteNotification** -eseménykezelőhöz:
 
     ```csharp
     public override void DidReceiveRemoteNotification(UIApplication application,
@@ -302,9 +302,9 @@ Ezután konfigurálhatja az iOS-projekt beállítása a Xamarin Studio vagy a Vi
     }
     ```
 
-    Ez a metódus kezeli a bejövő értesítések az alkalmazás futása közben.
+    Ez a metódus a bejövő értesítéseket kezeli az alkalmazás futása közben.
 
-4. Az a **AppDelegate** osztályhoz, adja hozzá a következő kódot a **FinishedLaunching** módszer:
+4. A **AppDelegate** osztályban adja hozzá a következő kódot a **FinishedLaunching** metódushoz:
 
     ```csharp
     // Register for push notifications.
@@ -318,36 +318,36 @@ Ezután konfigurálhatja az iOS-projekt beállítása a Xamarin Studio vagy a Vi
     UIApplication.SharedApplication.RegisterForRemoteNotifications();
     ```
 
-    Ez lehetővé teszi a távoli értesítések támogatását, és a kérések leküldéses regisztrálása.
+    Ez lehetővé teszi a távoli értesítések támogatását, és leküldéses regisztrációt kér.
 
-Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseket.
+Az alkalmazás most már frissítve van a leküldéses értesítések támogatásához.
 
-#### <a name="test-push-notifications-in-your-ios-app"></a>Teszt leküldéses értesítéseket az iOS-alkalmazás
+#### <a name="test-push-notifications-in-your-ios-app"></a>Leküldéses értesítések tesztelése iOS-alkalmazásokban
 
-1. Kattintson a jobb gombbal az iOS-projektre, és kattintson a **Set as StartUp Project**.
-2. Nyomja le az **futtatása** gomb vagy **F5** a projekt buildjének elkészítéséhez, és indítsa el az alkalmazást az iOS-eszközök a Visual studióban. Kattintson a **OK** leküldéses értesítések fogadásához.
+1. Kattintson a jobb gombbal az iOS-projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
+2. A projekt létrehozásához és az alkalmazás iOS-eszközben való elindításához nyomja le a **Futtatás** gombot vagy az **F5** billentyűt a Visual Studióban. Ezután kattintson **az OK** gombra a leküldéses értesítések fogadásához.
 
    > [!NOTE]
-   > Az alkalmazásból explicit módon el kell fogadnia a leküldéses értesítések. Ezt a kérelmet csak akkor történik meg, amely az alkalmazás első alkalommal.
+   > Explicit módon el kell fogadnia a leküldéses értesítéseket az alkalmazásból. Ez a kérelem csak az alkalmazás futásának első indításakor fordul elő.
 
-3. Az alkalmazásban írjon be egy feladatot, és kattintson a plusz ( **+** ) ikonra.
-4. Győződjön meg arról, hogy értesítést kap, és kattintson **OK** az értesítés elvetéséhez.
+3. Az alkalmazásban írjon be egy feladatot, majd kattintson a plusz ( **+** ) ikonra.
+4. Ellenőrizze, hogy érkezett-e értesítés, majd kattintson az **OK** gombra az értesítés elvetéséhez.
 
-## <a name="configure-and-run-windows-projects-optional"></a>Konfigurálja és futtassa a Windows-projektek (nem kötelező)
+## <a name="configure-and-run-windows-projects-optional"></a>Windows-projektek konfigurálása és futtatása (nem kötelező)
 
-Ez a szakasz olyan fut a Xamarin.Forms WinApp és WinPhone81 projektek Windows-eszközökhöz. Ezeket a lépéseket is támogatja az univerzális Windows Platform (UWP) projekteket. Kihagyhatja ezt a részt, ha nem dolgozik Windows-eszközökkel.
+Ez a szakasz a Xamarin. Forms WinApp és a WinPhone81 projektek Windows-eszközökön való futtatására szolgál. Ezek a lépések a Univerzális Windows-platform-(UWP-) projekteket is támogatják. Kihagyhatja ezt a részt, ha nem dolgozik Windows-eszközökkel.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>A Windows értesítési szolgáltatása (WNS) leküldéses értesítések Windows alkalmazás regisztrálása
+#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Windows-alkalmazás regisztrálása leküldéses értesítésekhez a Windows Notification Service (WNS) szolgáltatással
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>A WNS az értesítési központ konfigurálása
+#### <a name="configure-the-notification-hub-for-wns"></a>A WNS tartozó értesítési központ konfigurálása
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="add-push-notifications-to-your-windows-app"></a>Leküldéses értesítések hozzáadása Windows-alkalmazáshoz
+#### <a name="add-push-notifications-to-your-windows-app"></a>Leküldéses értesítések hozzáadása a Windows-alkalmazáshoz
 
-1. A Visual Studióban nyissa meg a **App.xaml.cs** a Windows a projekthez, és adja hozzá az alábbi utasításokat.
+1. A Visual Studióban nyissa meg a **app.XAML.cs** egy Windows-projektben, és adja hozzá a következő utasításokat.
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -357,9 +357,9 @@ Ez a szakasz olyan fut a Xamarin.Forms WinApp és WinPhone81 projektek Windows-e
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    Cserélje le `<your_TodoItemManager_portable_class_namespace>` a névtérhez a hordozható projekt, amely tartalmazza a `TodoItemManager` osztály.
+    Cserélje le a `<your_TodoItemManager_portable_class_namespace>` értéket az `TodoItemManager` osztályt tartalmazó hordozható projekt névterére.
 
-2. Az App.XAML.cs fájlban adja hozzá a következő **InitNotificationsAsync** módszer:
+2. A App.xaml.cs-ben adja hozzá a következő **initnotificationsasync metódusdefiníciót** metódust:
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -385,42 +385,42 @@ Ez a szakasz olyan fut a Xamarin.Forms WinApp és WinPhone81 projektek Windows-e
     }
     ```
 
-    Ez a módszer a leküldéses értesítési csatorna beolvasása, és regisztrálja a sablon értesítéseket fogadjon az értesítési központ egy olyan sablont. A sablon értesítést, amely támogatja a *messageParam* kézbesíti a rendszer ennek az ügyfélnek.
+    Ez a metódus lekéri a leküldéses értesítési csatornát, és regisztrálja a sablont, hogy fogadja a sablonra vonatkozó értesítéseket az értesítési központban. A rendszer a *messageParam* támogató sablont küldi el az ügyfélnek.
 
-3. Az App.XAML.cs fájlban frissítse a **OnLaunched** esemény kezelő metódusdefiníciót hozzáadásával a `async` módosítót. Ezután adja hozzá a következő kódsort a metódus végén:
+3. A App.xaml.cs-ben frissítse a **OnLaunched** eseménykezelő metódus definícióját az `async` módosító hozzáadásával. Ezután adja hozzá a következő kódrészletet a metódus végén:
 
     ```csharp
     await InitNotificationsAsync();
     ```
 
-    Ez biztosítja, hogy a leküldéses értesítési regisztrációban jön létre vagy frissül minden alkalommal, amikor az alkalmazás elindítása. Fontos ezzel garantálja, hogy a WNS leküldéses csatorna mindig aktív.  
+    Ezzel biztosítható, hogy a leküldéses értesítések regisztrációja az alkalmazás minden indításakor létrejöjjön vagy frissül. Ez azért fontos, mert garantálni kell, hogy a WNS leküldéses csatorna mindig aktív legyen.  
 
-4. A Visual Studio Megoldáskezelőben nyissa meg a **Package.appxmanifest** fájlt, és állítsa be **bejelentési képes** való **Igen** alatt **értesítések**.
-5. Az alkalmazás létrehozása, és győződjön meg arról, hogy nincsenek hibák. Az ügyfélalkalmazás most regisztráljanak a sablon értesítések a Mobile Apps háttéralkalmazásból. Ismételje meg minden Windows-projektet a megoldásban ez a szakasz.
+4. Megoldáskezelő a Visual Studióban nyissa meg a **Package. appxmanifest** fájlt, és **állítsa be** az **Igen** lehetőséget az **értesítések**területen.
+5. Hozza létre az alkalmazást, és ellenőrizze, hogy nincsenek-e hibák. Az ügyfélalkalmazás most regisztrálnia kell a sablon értesítéseire a Mobile Apps háttérből. Ismételje meg ezt a szakaszt minden Windows-projekt esetében a megoldásban.
 
-#### <a name="test-push-notifications-in-your-windows-app"></a>Teszt leküldéses értesítéseket a Windows-alkalmazás
+#### <a name="test-push-notifications-in-your-windows-app"></a>Leküldéses értesítések tesztelése a Windows-alkalmazásban
 
-1. A Visual Studióban kattintson a jobb gombbal egy Windows-projektet, és kattintson a **beállítás kezdőprojektként**.
+1. A Visual Studióban kattintson a jobb gombbal a Windows-projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
 2. Nyomja le a **Run** (Futtatás) gombot a projekt felépítéséhez és az alkalmazás elindításához.
-3. Az alkalmazásban írjon be egy nevet az új beállíthatnánk, és kattintson a plusz ( **+** ) ikonra kattintva adja hozzá.
-4. Győződjön meg arról, hogy értesítés érkezik, az elem hozzáadásakor.
+3. Az alkalmazásban írjon be egy új todoitem nevét, majd kattintson a plusz ( **+** ) ikonra a hozzáadásához.
+4. Ellenőrizze, hogy a rendszer értesítést kap-e az adott elemmel kapcsolatban.
 
 ## <a name="next-steps"></a>További lépések
 
-Leküldéses értesítések többet tudhat meg:
+További információ a leküldéses értesítésekről:
 
-* [Leküldéses értesítések küldése az Azure Mobile Appsban](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Leküldéses értesítések küldése az Azure Mobile Apps](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
 * [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
-* [Távoli értesítések küldése a Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
-* [Leküldéses értesítés problémák diagnosztizálása](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Nincsenek különböző okok miatt, miért kerülhetnek vagy értesítések nem végül az eszközökön. Ez a témakör bemutatja, hogyan elemezheti, és döntse el, a leküldéses értesítési hibák okának.
+* [Távoli értesítések a Firebase Cloud Messaging szolgáltatással](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
+* [Leküldéses értesítésekkel kapcsolatos problémák diagnosztizálása](../notification-hubs/notification-hubs-push-notification-fixer.md)  
+  Számos oka lehet annak, hogy az értesítések miért kerülhetnek el vagy nem állnak le az eszközökön. Ez a témakör bemutatja, hogyan elemezheti és derítheti ki a leküldéses értesítések meghibásodásának okát.
 
-Emellett továbbra is be a következő oktatóanyagok egyikét:
+A következő oktatóanyagok egyikét is folytathatja:
 
 * [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
   Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
 * [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. Offline szinkronizálás, a felhasználók kezelhessék a mobilalkalmazás&mdash;megtekintését, hozzáadását és módosítását adatok&mdash;akkor is, ha nincs hálózati kapcsolat.
+  Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. Az offline szinkronizálással a felhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálhatnak, ha nincs hálózati kapcsolat.
 
 <!-- Images. -->
 

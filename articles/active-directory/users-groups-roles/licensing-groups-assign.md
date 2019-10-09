@@ -1,11 +1,11 @@
 ---
-title: Egy csoport – Azure Active Directory-licencek hozzárendelése |} A Microsoft Docs
-description: Licencek hozzárendelése a felhasználók révén az Azure Active Directory-csoport licencelésének
+title: Licencek kiosztása egy csoportba – Azure Active Directory | Microsoft Docs
+description: Licencek felhasználókhoz rendelése Azure Active Directory csoport licencelése révén
 services: active-directory
 keywords: Az Azure AD licencelése
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
@@ -15,93 +15,91 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a54d1ad3ab809f2a2f8df6ae0e30b1b061c2be1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60471332"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034828"
 ---
-# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
+# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory
 
-Ez a cikk végigvezeti a termék licencek hozzárendelése az Azure Active Directoryban (Azure AD) a felhasználók egy csoportjára, és majd ellenőrzése, hogy azok még licencelt megfelelően.
+Ebből a cikkből megtudhatja, hogyan rendelheti hozzá a licenceket a felhasználók csoportjához, és ellenőrizze, hogy az Azure Active Directory (Azure AD) megfelelő licenccel rendelkezik-e.
 
-Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részleg**. Ez a csoport összes tagja az emberi erőforrások részleg (körülbelül 1000 felhasználó) tartalmazza. Office 365 nagyvállalati E3 csomag licenceket hozzárendelheti az egész részleg szeretné. A vállalati Yammer-szolgáltatás, amely megtalálható a termék kell lehet ideiglenesen le van tiltva addig, amíg a részleg készen áll a használatának megkezdéséhez. Akkor is telepíteni kívánja Enterprise Mobility + Security-licenc, az ugyanazon felhasználói csoporthoz.
+Ebben a példában a bérlő egy **HR részleg**nevű biztonsági csoportot tartalmaz. Ez a csoport tartalmazza az emberi erőforrások részleg összes tagját (1 000-es felhasználók). Office 365 Enterprise E3 licenceket szeretne hozzárendelni a teljes részleghez. A termékben található Yammer Enterprise szolgáltatást átmenetileg le kell tiltani, amíg a részleg készen nem áll az alkalmazás használatára. Enterprise Mobility + Security licenceket is telepítenie kell ugyanahhoz a felhasználói csoportba.
 
 > [!NOTE]
-> Nem minden Microsoft-szolgáltatás érhető el minden területen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazda adja meg a használati helyet jelölő tulajdonsághoz meg a felhasználó rendelkezik.
-> 
-> A licenc-hozzárendelések bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye. Ha több helyen felhasználóval rendelkezik, azt javasoljuk, hogy mindig állítsa a felhasználási hely része a felhasználói létrehozásának folyamatát, amely biztosítja a licenc-hozzárendelés eredménye (pl. keresztül az AAD Connect-konfiguráció) – Azure AD-ben mindig helyes, és a felhasználók nem kapnak szolgáltatások, a helyeken, amelyek nem engedélyezettek.
+> Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a használat helye tulajdonságot a felhasználónál.
+>
+> A csoport licencének hozzárendelésekor a megadott használati hely nélküli felhasználók öröklik a címtár helyét. Ha több helyen is vannak felhasználók, javasoljuk, hogy mindig a felhasználói létrehozási folyamat részeként adja meg a használat helyét az Azure AD-ben (például HRE-kapcsolat konfigurálásakor), amely biztosítja a licenc-hozzárendelés eredményét, és a felhasználók nem kapják meg olyan helyen lévő szolgáltatások, amelyek nem engedélyezettek.
 
-## <a name="step-1-assign-the-required-licenses"></a>1\. lépés: A szükséges licencek hozzárendelése
+## <a name="step-1-assign-the-required-licenses"></a>1\. lépés: A szükséges licencek kiosztása
 
-1. Jelentkezzen be a [ **Azure AD felügyeleti központ** ](https://aad.portal.azure.com) egy licenc rendszergazdai fiókkal. Licencek kezeléséhez, a fiók egy licencek adminisztrátora, a felhasználó rendszergazda vagy a globális rendszergazda kell lennie.
+1. Jelentkezzen be az [**Azure ad felügyeleti központba**](https://aad.portal.azure.com) egy licenc-rendszergazdai fiókkal. A licencek kezeléséhez a fióknak licenc-rendszergazdának, felhasználói rendszergazdának vagy globális rendszergazdának kell lennie.
 
-2. Válassza ki **licencek** megnyílik egy panel, amelyen tekintse meg és kezelheti a bérlő összes licencelhető termék.
+1. Válassza a licencek lehetőséget egy lap megnyitásához, ahol megtekintheti és kezelheti a bérlőben lévő összes **engedélyezhető** terméket.
 
-4. A **minden termék**, válassza ki az Office 365 nagyvállalati E5 csomag és a Enterprise Mobility + Security E3 terméknevek kiválasztásával. A hozzárendelés megkezdéséhez válasszon **hozzárendelése** a panel tetején.
+1. Az **összes termék**területen válassza ki az Office 365 Enterprise E5 és Enterprise Mobility + Security E3 elemet a terméknév kiválasztásával. A hozzárendelés elindításához válassza a **hozzárendelés** lehetőséget az oldal tetején.
 
-   ![Válassza ki a termékeket a licencek hozzárendelése](./media/licensing-groups-assign/all-products-assign.png)
+   ![Válassza ki a termékeket, amelyekhez licenceket szeretne rendelni](./media/licensing-groups-assign/all-products-assign.png)
   
-5. Az a **licenc hozzárendelése** ablaktáblán válassza előbb **felhasználók és csoportok** felhasználók és csoportok listájának megnyitásához.
+1. A **licencek kiosztása** lapon válassza a **felhasználók és csoportok** lehetőséget a felhasználók és csoportok listájának megnyitásához.
 
-6. Válassza ki egy felhasználót vagy csoportot, és használja a **kiválasztása** gombra a kijelölés megerősítéséhez a panel alján.
+1. Válasszon ki egy felhasználót vagy csoportot, majd a lap alján található **kiválasztás** gombbal erősítse meg a kijelölést.
 
-7. Az a **licenc hozzárendelése** ablaktáblán kattintson a **hozzárendelési beállítások**, megjeleníti a két termék, amely a korábban kiválasztott szereplő minden szolgáltatáscsomag. Keresse meg **Yammer vállalati** kapcsolja **ki** , hogy a termék licence a szolgáltatás letiltása. Gombra kattintva erősítse meg **OK** alján **beállítások licenc**.
+1. A **licenc hozzárendelése** lapon kattintson a **hozzárendelési beállítások**elemre, amely megjeleníti a korábban kiválasztott két termékhez tartozó összes szervizcsomagot. Keresse meg a **Yammer Enterprise** elemet, és kapcsolja **ki** , hogy letiltsa a szolgáltatást a termék licencéről. Erősítse meg a **licencelési lehetőségek**alján található **OK gombra** kattintva.
 
-   ![Válassza ki a licencek service-csomagok](./media/licensing-groups-assign/assignment-options.png)
+   ![szolgáltatási csomagok kiválasztása a licencekhez](./media/licensing-groups-assign/assignment-options.png)
   
-8. A hozzárendelés véglegesítéséhez kattintson a **Licenc hozzárendelése** panelen a lap alján található **Hozzárendelés** gombra.
+1. A hozzárendelés befejezéséhez a **licenc kiosztása** lapon kattintson a lap alján található **hozzárendelés** elemre.
 
-9. Megjelenik egy értesítés, amely tartalmazza az állapot és a folyamat eredményéről jobb felső sarokban. Ha az a csoport-hozzárendelés (például a csoport már meglévő licenccel) miatt nem sikerült végrehajtani, kattintson az értesítés a hiba részleteinek megtekintéséhez.
+1. A jobb felső sarokban megjelenik egy értesítés, amely a folyamat állapotát és eredményét jeleníti meg. Ha a csoporthoz való hozzárendelés nem hajtható végre (például a csoport meglévő licencei miatt), kattintson az értesítésre a hiba részleteinek megtekintéséhez.
 
-Ha licenceket hozzárendelni a csoporthoz, az Azure AD dolgozza fel az adott csoport összes meglévő tag. Ez a folyamat eltarthat egy ideig, az a csoport mérete változó. A következő lépés ismerteti győződjön meg arról, hogy a folyamat véget ért, és döntse el, ha további figyelmet a problémák megoldásához szükséges.
+Ha licenceket rendel egy csoporthoz, az Azure AD feldolgozza a csoport összes meglévő tagját. Ez a folyamat hosszabb időt is igénybe vehet, és a csoport méretétől függően változhat. A következő lépés azt ismerteti, hogyan ellenőrizheti, hogy a folyamat befejeződött-e, és hogy van-e szükség további beavatkozásra a problémák megoldásához.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2\. lépés: A hozzárendelés kezdeti befejeződésének ellenőrzése
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2\. lépés: Ellenőrizze, hogy befejeződött-e a kezdeti hozzárendelés
 
-1. Lépjen a **az Azure Active Directory** > **csoportok**. Válassza ki a csoportot, amely a licencek lettek hozzárendelve.
+1. Lépjen **Azure Active Directory** > **csoportra**. Válassza ki azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
 
-2. A csoport panelen válassza ki a **licencek**. Ez lehetővé teszi, hogy gyorsan arról, ha a rendszer teljes mértékben rendelt licenceket a felhasználók számára, és ha vannak olyan hibákat, amelyek meg kell. A következő információ áll rendelkezésre:
+1. A csoport lapon válassza a **licencek**lehetőséget. Ezzel gyorsan megerősítheti, hogy a licencek teljes körűen vannak-e hozzárendelve a felhasználókhoz, és hogy vannak-e hibák, amelyekre szüksége van. A következő információ áll rendelkezésre:
 
-   - A csoport jelenleg hozzárendelt terméklicencek listája. Válassza ki egy bejegyzést, amelyeken engedélyezve van az egyes szolgáltatások megjelenítéséhez és a módosításokat.
+   - A csoporthoz jelenleg hozzárendelt szolgáltatási licencek. Válasszon egy bejegyzést az engedélyezett szolgáltatások megjelenítéséhez, illetve a módosítások elvégzéséhez.
 
-   - A legújabb licenc elvégzett módosítások a csoportjához (Ha a módosítások feldolgozása folyamatban vagy a Ha a feldolgozás befejeződött az összes felhasználó tag) állapotát.
+   - A legújabb licenc-változások állapotának frissítései, amelyek akkor érhetők el, ha a módosítások feldolgozása folyamatban van, vagy ha a feldolgozás befejeződött az összes felhasználói tag esetében.
 
-   - Felhasználók, akik hibás állapotú, mert nem sikerült hozzárendelni a licencet rájuk vonatkozó adatokat.
+   - A hibás állapotú felhasználói licenc-hozzárendelésekkel kapcsolatos információk.
 
-   ![licencelési hibák és licencállapot](./media/licensing-groups-assign/assignment-errors.png)
+   ![licencelési hibák és a licenc állapota](./media/licensing-groups-assign/assignment-errors.png)
 
-3. Részletesebb információ a feldolgozás alatt licenc **Azure Active Directory** > **felhasználók és csoportok** > *csoportnév*  >  **Auditnaplók**. Vegye figyelembe a következő tevékenységeket:
+1. A licencek feldolgozásával kapcsolatos részletesebb információkat a **Azure Active Directory** > **felhasználók és csoportok** > *csoport neve* > **naplóban**talál. Győződjön meg a következő tevékenységekről:
 
-   - Tevékenység: **Csoportalapú licenc felhasználókra érvényes Start**. Ez a rendszer naplózza a rendszer észleli a licenc-hozzárendelés módosítást a csoportban található, és elindítja az összes felhasználói tagok telepítené azt. A változás, amely történt kapcsolatos információkat tartalmaz.
+   - Tevékenység: @no__t – 0. Ez akkor kerül naplózásra, amikor a rendszer felveszi a licenc-hozzárendelés változását a csoportba, és elindítja az összes felhasználói tagra való alkalmazását. Az elvégzett módosítással kapcsolatos információkat tartalmaz.
 
-   - Tevékenység: **A felhasználók csoport alapú licenc alkalmazásának befejezése**. Ez akkor kerül, amikor a rendszer befejezte a feldolgozása a csoportban lévő összes felhasználó számára. Hány felhasználó feldolgozása sikeresen megtörtént, és hány felhasználó nem sikerült hozzárendelni csoportok licenceire összegzését tartalmazza.
+   - Tevékenység: @no__t – 0. Ez akkor kerül naplózásra, amikor a rendszer befejezi a csoport összes felhasználójának feldolgozását. Összefoglalja, hogy hány felhasználót sikerült feldolgozni, és hány felhasználót nem sikerült hozzárendelni a csoportos licencekhez.
 
-   [Ebben a szakaszban olvasható](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) tudhat meg többet hogyan auditnaplók segítségével elemezheti a Csoportalapú licencelés által végrehajtott módosításokat.
+   [Ebből a szakaszból](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) megtudhatja, hogyan használhatók a naplók a csoport alapú licencelés által végzett módosítások elemzéséhez.
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3\. lépés: Kapcsolatos problémák ellenőrzése és a megoldásukkal
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3\. lépés: Licencelési problémák keresése és feloldása
 
-1. Lépjen a **Azure Active Directory** > **csoportok**, és keresse meg a csoportot, amely a licencek lettek hozzárendelve.
-2. A csoport panelen válassza ki a **licencek**. Az értesítés a panel tetején látható, hogy 10 olyan felhasználót, hogy nem sikerült hozzárendelni a licencet. Nyissa meg a csoport licencelési hibás állapotú felhasználók listájának megtekintéséhez.
-3. A **sikertelen hozzárendelések** oszlop tudatja velünk, hogy mindkét termékhez licenccel nem sikerült hozzárendelni a felhasználók számára. A **hiba okát az első** oszlop tartalmazza a hiba okát. Ebben az esetben van **ütköző szolgáltatási csomagok**.
+1. Lépjen **Azure Active Directory** > **csoportok**elemre, és keresse meg azt a csoportot, amelyhez a licencek hozzá lettek rendelve.
+1. A csoport lapon válassza a **licencek**lehetőséget. A lap tetején látható értesítés azt mutatja, hogy a licencek 10 felhasználóhoz nem rendelhetők hozzá. Nyissa meg a csoportot a licencelési hiba állapotában lévő összes felhasználó listájának megtekintéséhez.
+1. A **sikertelen hozzárendelések** oszlop azt jelzi, hogy mindkét licencet nem sikerült hozzárendelni a felhasználókhoz. A **hiba okának fő oka** a hiba okát tartalmazza. Ebben az esetben ez **ütköző szolgáltatási csomagok**.
 
-   ![nem sikerült hozzárendelni licencek](./media/licensing-groups-assign/failed-assignments.png)
+   ![nem hozzárendelt licencek](./media/licensing-groups-assign/failed-assignments.png)
 
-4. Válassza ki a felhasználót, hogy nyissa meg a **licencek** ablaktáblán. Ezen a panelen látható minden olyan licenc, amely már hozzá vannak rendelve a felhasználóhoz. Ebben a példában a felhasználó rendelkezik Office 365 nagyvállalati E1 csomag licenc, amely öröklődött a **teljes képernyős felhasználók** csoport. Ez a E3-licenc, amely a rendszer megpróbálta alkalmazni a ütközik a **HR részleg** csoport. Ennek eredményeképpen a licenceket a csoport egyik sem lett hozzárendelve a felhasználóhoz.
+1. Válasszon ki egy felhasználót a felhasználó **licencek** lapjának megnyitásához. Ezen a lapon látható az összes olyan licenc, amely jelenleg hozzá van rendelve a felhasználóhoz. Ebben a példában a felhasználó rendelkezik az Office 365 Enterprise E1 licenccel, amely a **kioszk felhasználói** csoporttól örökölt. Ez ütközik azzal az E3 licenccel, amelyet a rendszer a **HR részleg** csoportjából próbált alkalmazni. Ennek eredményeképpen az adott csoportból származó licencek egyike sincs hozzárendelve a felhasználóhoz.
 
-   ![Egy felhasználó összes licenc ütközéseket](./media/licensing-groups-assign/user-license-view.png)
+   ![Felhasználóhoz tartozó összes licencelési ütközés megtekintése](./media/licensing-groups-assign/user-license-view.png)
 
-5. Az ütközés elhárításához távolítsa el a felhasználót a **teljes képernyős felhasználók** csoport. Az Azure AD-folyamatok a váltás után a **HR részleg** licencek megfelelően vannak hozzárendelve.
-
-   ![Itt megfelelően hozzárendelt licencek](./media/licensing-groups-assign/license-correctly-assigned.png)
+1. Az ütközés megoldásához távolítsa el a felhasználót a **kioszk felhasználók** csoportjából. Miután az Azure AD feldolgozza a változást, a **HR-részleg** licenceit helyesen rendeli hozzá a rendszer.
 
 ## <a name="next-steps"></a>További lépések
 
-Csoportokon keresztül licenckezelésre funkciókészlethez kapcsolatos további információkért tekintse meg a következő cikkeket:
+Ha többet szeretne megtudni a licenc-hozzárendelés csoportokkal való beállításáról, tekintse meg a következő cikkeket:
 
-* [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
-* [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
-* [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
-* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../active-directory-licensing-group-advanced.md)
-* [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)
+- [Mi a Azure Active Directory csoportos licencelése?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
+- [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+- [Egyéni, licenccel rendelkező felhasználók migrálása csoportalapú licencelésre az Azure Active Directoryban](licensing-groups-migrate-users.md)
+- [Felhasználók az Azure Active Directoryban Csoportalapú licencelést használ terméklicencek közötti migrálása](licensing-groups-change-licenses.md)
+- [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](../active-directory-licensing-group-advanced.md)
+- [PowerShell forgatókönyvek Csoportalapú licenceléshez az Azure Active Directoryban](licensing-ps-examples.md)

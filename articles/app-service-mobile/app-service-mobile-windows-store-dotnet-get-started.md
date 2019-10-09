@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy univerzális Windows Platform (UWP), amely használja az Azure Mobile Apps |} A Microsoft Docs
+title: Azure Mobile Appst használó Univerzális Windows-platform (UWP) létrehozása | Microsoft Docs
 description: Az útmutató bevezeti Önt az Azure-alapú, az Univerzális Windows-platformra (UWP) C#, Visual Basic vagy JavaScript nyelven történő alkalmazásfejlesztésre szolgáló mobil-háttéralkalmazások használatába.
 services: app-service\mobile
 documentationcenter: windows
@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 2b718a000bb5805cc615a59aebb2d5dcca6906a4
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6bb94828344b6f6e846b573a94e3049d03effe89
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440215"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025187"
 ---
-# <a name="create-a-windows-app-with-an-azure-backend"></a>-Windows-alkalmazás létrehozása az Azure-környezetben
+# <a name="create-a-windows-app-with-an-azure-backend"></a>Windows-alkalmazás létrehozása Azure-háttérrel
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -44,7 +44,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Windows 10.
 * Visual Studio Community 2017.
-* UWP-alkalmazások fejlesztéséhez ismeretét. Látogasson el a [UWP dokumentációja](https://docs.microsoft.com/windows/uwp/) megtudhatja, hogyan [beállításához](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) UWP-alkalmazásokat hozhat létre.
+* A UWP-alkalmazások fejlesztésének ismerete. A [UWP dokumentációjában](https://docs.microsoft.com/windows/uwp/) megtudhatja, hogyan [hozhat létre UWP-alkalmazásokat](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
@@ -52,18 +52,18 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Az ügyfél és kiszolgáló projekt egy adatbázis-kapcsolat létrehozása és konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-client-project"></a>Az ügyfél-projekt futtatása
+## <a name="run-the-client-project"></a>Az ügyfél projekt futtatása
 
-1. Nyissa meg a projekt uwp se Nepovedlo.
+1. Nyissa meg a UWP projektet.
 
-2. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg a mobilalkalmazás, amelyet Ön hozott létre. Az a `Overview` panelen keresse meg az URL-címet, amely a nyilvános végpont számára. Például: a sitename for my app name "test123" lesz https://test123.azurewebsites.net.
+2. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.net lesz.
 
-3. Nyissa meg a fájlt `App.xaml.cs` ebben a mappában – windows-uwp-cs/ZUMOAPPNAME /. Az alkalmazás neve `ZUMOAPPNAME`.
+3. Nyissa meg `App.xaml.cs` fájlt ebben a mappában – Windows-uwp-cs/ZUMOAPPNAME/. Az alkalmazás neve `ZUMOAPPNAME`.
 
-4. A `App` osztály, cserélje le `ZUMOAPPURL` nyilvános végpontot a fenti paraméterrel.
+4. @No__t – 0 osztályban cserélje le az `ZUMOAPPURL` paramétert a fenti nyilvános végpontra.
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 
@@ -71,7 +71,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
     
     `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
 
-5. Nyomja le az F5 billentyűt, üzembe helyezését, és futtassa az alkalmazást.
+5. Az alkalmazás üzembe helyezéséhez és futtatásához nyomja le az F5 billentyűt.
 
 6. Az alkalmazásban írjon be egy értelmes, például *Az oktatóanyag befejezése* szöveget az **Insert a TodoItem** (Teendő hozzáadása) szövegmezőbe, majd kattintson a **Save** (Mentés) gombra.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932665"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025479"
 ---
 # <a name="aks-troubleshooting"></a>AK-hibaelhárítás
 
@@ -30,7 +30,7 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
 A hüvelyek maximális száma alapértelmezés szerint 30, ha AK-fürtöt helyez üzembe a Azure Portalban.
-Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `–-max-pods` `az aks create` parancsban megjelenő jelző használatával módosítható.
+Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben helyez üzembe egy AK-fürtöt. (Ügyeljen arra, hogy az Azure CLI legújabb verzióját használja). Ez az alapértelmezett beállítás a `az aks create` parancs `–-max-pods` jelzője segítségével módosítható.
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>InsufficientSubnetSize hibaüzenetet kapok egy AK-fürt speciális hálózatkezeléssel való üzembe helyezése során. Mit tegyek?
 
@@ -44,8 +44,8 @@ További információt [a fürt IP-címzésének megtervezése](configure-azure-
 
 Előfordulhat, hogy a pod nem ragadja meg ezt a módot. A következőket tekintheti meg:
 
-* Maga a pod, a használatával `kubectl describe pod <pod-name>`.
-* A naplók a használatával `kubectl log <pod-name>`.
+* Maga a pod `kubectl describe pod <pod-name>` használatával.
+* A naplók `kubectl log <pod-name>` használatával.
 
 A pod-problémák hibaelhárításával kapcsolatos további információkért lásd: [alkalmazások hibakeresése](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
@@ -59,13 +59,13 @@ A figyelmeztetések az irányítópulton az oka, hogy a fürt most már engedél
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Nem tudok csatlakozni az irányítópulthoz. Mit tegyek?
 
-A szolgáltatásnak a fürtön kívülre való hozzáférésének legegyszerűbb módja `kubectl proxy`a Futtatás, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+A szolgáltatás fürtön kívüli elérésének legegyszerűbb módja a `kubectl proxy` futtatása, amelyet a rendszer a localhost 8001-as portra küldött a Kubernetes API-kiszolgálónak. Innen az API-kiszolgáló proxyt tud a szolgáltatáshoz: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
-Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy `kube-proxy` a pod fut-e `kube-system` a névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
+Ha nem látja a Kubernetes irányítópultot, ellenőrizze, hogy fut-e a `kube-proxy` Pod a `kube-system` névtérben. Ha nem fut állapotban van, törölje a pod-t, majd indítsa újra.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Nem tudok naplókat beolvasni a kubectl-naplók használatával, vagy nem tudok csatlakozni az API-kiszolgálóhoz. "Hiba a kiszolgálóról: hiba a háttérrendszer tárcsázásakor: telefonos TCP...". Mit tegyek?
 
-Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nincs módosítva, és hogy a 22-es és a 9000-as port is nyitva van az API-kiszolgálóhoz való csatlakozáshoz. `tunnelfront` A`kubectl get pods --namespace kube-system` parancs használatával győződjön meg arról, hogy a pod a *Kube-System* névtérben fut-e. Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
+Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nincs módosítva, és hogy a 22-es és a 9000-as port is nyitva van az API-kiszolgálóhoz való csatlakozáshoz. Győződjön meg arról, hogy a `tunnelfront` Pod fut *-e a Kube-System* névtérben a `kubectl get pods --namespace kube-system` parancs használatával. Ha nem, akkor kényszerítse a pod törlését, és a rendszer újraindul.
 
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Megpróbálok frissíteni vagy méretezni, és kapok egy üzenetet: A "imageReference" tulajdonság módosítása nem engedélyezett "hiba". Hogyan kijavítani ezt a problémát?
 
@@ -73,22 +73,22 @@ Előfordulhat, hogy ez a hiba azért fordul elő, mert a címkéket az AK-fürt�
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Hibaüzeneteket kapok, hogy a fürtem hibás állapotban van, és a frissítés vagy a skálázás nem fog működni, amíg meg nem történik a javítás.
 
-*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-cluster-failed*
+*Ez a hibaelhárítási segítségnyújtás https://aka.ms/aks-cluster-failed -ről van átirányítva*
 
 Ez a hiba akkor fordul elő, ha a fürtök több okból is hibás állapotba kerülnek. Kövesse az alábbi lépéseket a fürt sikertelen állapotának feloldásához a korábban sikertelen művelet újbóli megkísérlése előtt:
 
-1. Amíg a fürt `failed` állapota nem áll fenn `scale` , `upgrade` a műveletek sikertelenek lesznek. A leggyakoribb gyökérszintű problémák és megoldások a következők:
+1. Amíg a fürt nem `failed` állapotú, `upgrade` és a `scale` művelet nem fog sikerülni. A leggyakoribb gyökérszintű problémák és megoldások a következők:
     * A nem **megfelelő számítási (CRP-) kvóta**skálázása. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az alábbi [lépéseket a számítási kvóta növelésének](../azure-supportability/resource-manager-core-quotas-request.md) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni.
     * Fürt méretezése speciális hálózatkezeléssel és nem **elegendő alhálózat (Hálózatkezelés) erőforrásokkal**. A megoldáshoz először a kvótán belüli, stabil cél állapotba kell állítani a fürtöt. Ezután kövesse az [alábbi lépéseket az erőforrás-kvóta növelésének](../azure-resource-manager/resource-manager-quota-errors.md#solution) megkezdéséhez, mielőtt a kezdeti kvóta-korlátokon felül ismét fel kellene mérni a skálázást.
 2. Miután megoldotta a frissítési hiba kiváltó okát, a fürtnek sikeres állapotban kell lennie. A sikeres állapot ellenőrzése után próbálja megismételni az eredeti műveletet.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Hibákba ütközik, amikor megpróbálja frissíteni vagy méretezni az adott állapotot, mert jelenleg folyamatban van a fürt frissítése vagy frissítése
 
-*Ez a hibaelhárítási segítség a következő címről származik: https://aka.ms/aks-pending-upgrade*
+*Ez a hibaelhárítási segítségnyújtás https://aka.ms/aks-pending-upgrade -ről van átirányítva*
 
 Egyetlen csomóponttal rendelkező fürtön lévő műveletek frissítése és méretezése, illetve a [több csomóponttal](use-multiple-node-pools.md) rendelkező fürtök kölcsönösen kizárják egymást. Nem lehet egyszerre frissíteni és méretezni a fürt vagy a csomópont készletét. Ehelyett minden Művelettípus a következő, ugyanazon az erőforráson megjelenő kérelem előtt fejeződik be a cél erőforráson. Ennek eredményeképpen a műveletek korlátozottak, ha az aktív verziófrissítési vagy méretezési műveletek történnek, és a későbbiekben sikertelenek voltak. 
 
-A probléma `az aks show -g myResourceGroup -n myAKSCluster -o table` diagnosztizálásához a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
+A probléma diagnosztizálásához futtassa a `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot a fürt részletes állapotának lekéréséhez. Az eredmény alapján:
 
 * Ha a fürt aktívan frissít, várjon, amíg a művelet leáll. Ha sikerült, próbálkozzon újra a korábban sikertelen művelettel.
 * Ha a fürt nem tudta frissíteni a frissítést, kövesse az előző szakaszban ismertetett lépéseket.
@@ -105,9 +105,9 @@ Olyan hibák jelenhetnek meg, amelyek jelzik, hogy az AK-fürt nem egy virtuáli
 
 **A "AgentPool" AgentPool engedélyezte az automatikus skálázást, de nem Virtual Machine Scale Sets**
 
-Ha olyan szolgáltatásokat szeretne használni, mint például a fürt autoskálázása vagy több csomópontos készlet, a virtuálisgép-méretezési csoportokat használó AK-fürtöket kell létrehoznia. A rendszer hibaüzeneteket küld, ha olyan szolgáltatásokat próbál használni, amelyek a virtuálisgép-méretezési csoportokon alapulnak, és egy normál, nem virtuálisgép-méretezési csoportba tartozó AK-fürtöt céloz meg. A virtuálisgép-méretezési csoport támogatása jelenleg előzetes verzióban érhető el az AK-ban.
+Ha olyan szolgáltatásokat szeretne használni, mint például a fürt autoskálázása vagy több csomópontos készlet, a virtuálisgép-méretezési csoportokat használó AK-fürtöket kell létrehoznia. A rendszer hibaüzeneteket küld, ha olyan szolgáltatásokat próbál használni, amelyek a virtuálisgép-méretezési csoportokon alapulnak, és egy normál, nem virtuálisgép-méretezési csoportba tartozó AK-fürtöt céloz meg.
 
-A szükséges dokumentációban szereplő lépések *elkezdése előtt* végezze el a megfelelő regisztrációt a virtuálisgép-méretezési csoport funkciójának előzetes verziójában, és hozzon létre egy AK-fürtöt:
+A megfelelő dokumentum lépéseinek *megkezdése előtt* kövesse az AK-fürt megfelelő létrehozásához szükséges lépéseket:
 
 * [A fürt automéretező használata](cluster-autoscaler.md)
 * [Több Node-készlet létrehozása és használata](use-multiple-node-pools.md)
@@ -118,14 +118,14 @@ A szükséges dokumentációban szereplő lépések *elkezdése előtt* végezze
 
 Az elnevezési korlátozásokat az Azure platform és az AK is implementálja. Ha egy erőforrás neve vagy paramétere megszakítja az egyik ilyen korlátozást, a rendszer hibaüzenetet küld, amely megkéri, hogy adjon meg egy másik bemenetet. A következő közös elnevezési irányelvek érvényesek:
 
-* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. Az automatikusan generált szintaxisának `MC_resourceGroupName_resourceName_AzureRegion` nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
+* Az AK- *MC_* erőforráscsoport neve kombinálja az erőforráscsoport nevét és az erőforrás nevét. @No__t-0 automatikusan generált szintaxisa nem lehet nagyobb, mint 80 karakter. Ha szükséges, csökkentse az erőforráscsoport-név vagy az AK-fürt nevének hosszát.
 * A *dnsPrefix* alfanumerikus értékekkel kell kezdődnie és végződnie. Az érvényes karakterek alfanumerikus értékeket és kötőjeleket (-) tartalmazhatnak. A *dnsPrefix* nem tartalmazhat speciális karaktereket, például pontot (.).
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Hibák léptek fel a fürt létrehozása, frissítése, skálázása, törlése vagy frissítése során, ez a művelet nem engedélyezett, mert folyamatban van egy másik művelet.
 
 *Ez a hibaelhárítási segítség a aka.ms/aks-pending-operation*
 
-A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van. A fürt részletes állapotának lekéréséhez használja az `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot. Igény szerint használja a saját erőforráscsoport és az AK-fürt nevét.
+A fürt műveletei korlátozottak, ha egy korábbi művelet még folyamatban van. A fürt részletes állapotának beolvasásához használja a `az aks show -g myResourceGroup -n myAKSCluster -o table` parancsot. Igény szerint használja a saját erőforráscsoport és az AK-fürt nevét.
 
 A fürt állapotának kimenete alapján:
 

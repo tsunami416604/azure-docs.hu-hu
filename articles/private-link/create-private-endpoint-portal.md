@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: d7c2aee3ad73552a57776af5ce6585b36518d169
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687056"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030306"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Privát végpont létrehozása Azure Portal használatával
 
@@ -36,13 +36,13 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálóza
 
 Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, amely a privát kapcsolati erőforrás eléréséhez használt virtuális gépet üzemelteti.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés**@no__t – 3**virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Name (Név) | Adja meg a *MyVirtualNetwork*. |
-    | Címtartomány | Adja meg a *10.1.0.0/16*értéket. |
+    | Címtér | Adja meg a *10.1.0.0/16*értéket. |
     | Subscription | Válassza ki előfizetését.|
     | Resource group | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
     | Location | Válassza a **WestCentralUS**lehetőséget.|
@@ -54,7 +54,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **számítási** > **virtuális gép**lehetőséget.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -79,16 +79,16 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
     |||
 
-1. Válassza **a Next (tovább) lehetőséget: Lemezek**.
+1. @No__t kiválasztása – 0Next: Lemezek @ no__t-0.
 
-1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és **válassza a Next (tovább) gombot: Hálózatkezelés**.
+1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és válassza a **Next: Hálózatkezelés @ no__t-0.
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
-    | Címtartomány | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
+    | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24**értéket.|
     | Subnet | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
@@ -103,7 +103,7 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 ## <a name="create-a-sql-database-server"></a>SQL Database-kiszolgáló létrehozása
 Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**adatbázisok** > **SQL Database**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **adatbázisok** > **SQL Database**lehetőséget.
 
 1. Az **SQL Database létrehozása – alapok**lapon adja meg vagy válassza ki az alábbi adatokat:
 
@@ -121,12 +121,12 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
     | Beállítás | Value |
     | ------- | ----- |
     |Kiszolgálónév  | Adja meg a *MyServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
-    | Kiszolgáló rendszergazdájának felhasználóneve| Adja meg a választott rendszergazda nevét. |
+    | Kiszolgáló-rendszergazdai bejelentkezés| Adja meg a választott rendszergazda nevét. |
     | Windows 10 | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Location | Válassza ki azt az Azure-régiót, ahol a SQL Server szeretné tárolni. |
     
 7. Kattintson **az OK gombra**. 
-8. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+8. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + create** page, ahol az Azure ellenőrzi a konfigurációt. 
 9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
 10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
 
@@ -134,8 +134,8 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
 
 Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia egy privát végpontot. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** >  > létrehozása magánhálózat**Private link Center (előzetes verzió)** lehetőséget.
-2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés**@no__t – 3**privát kapcsolati központ (előzetes verzió)** lehetőséget.
+2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
 1. A **privát végpont létrehozása (előzetes verzió) – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value |
@@ -144,10 +144,10 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | Subscription | Válassza ki előfizetését. |
     | Resource group | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name (Név) | Adja  * * meg a myPrivateEndpoint. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    | Name (Név) | Adja meg a * myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |Régió|Válassza a **WestCentralUS**lehetőséget.|
     |||
-5. Válassza **a Next (tovább) lehetőséget: Erőforrás**.
+5. Válassza a @ no__t-0Next: Erőforrás @ no__t-0.
 6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value |
@@ -158,7 +158,7 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | Resource |*MyServer* kiválasztása|
     |Cél alerőforrása |*SqlServer* kiválasztása|
     |||
-7. Válassza **a Next (tovább) lehetőséget: Konfiguráció**.
+7. Válassza a @ no__t-0Next: Konfiguráció @ no__t-0.
 8. A **privát végpont létrehozása (előzetes verzió) – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value |
@@ -171,8 +171,8 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     |saját DNS zóna |Válassza az *(új) privatelink. database. Windows. net* elemet |
     |||
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-2. Amikor megjelenik az **átadott** üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
+1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + create** page, ahol az Azure ellenőrzi a konfigurációt. 
+2. Amikor megjelenik a @no__t által **átadott érvényesítési**1message, válassza a **Létrehozás**lehetőséget. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás virtuális géphez Távoli asztal (RDP) használatával
 
@@ -192,7 +192,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget**kell választania @no__t **-1.**
 
 1. Kattintson az **OK** gombra.
 
@@ -204,7 +204,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 
-2. Adja `nslookup myserver.database.windows.net`meg a értéket. 
+2. Adja meg a @ no__t-0 értéket. 
 
     Ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
@@ -221,7 +221,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
 
     | Beállítás | Value |
     | ------- | ----- |
-    | Kiszolgálótípus| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
+    | Kiszolgáló típusa| Válassza a **Database Engine** (Adatbázismotor) lehetőséget.|
     | Kiszolgálónév| *MyServer.database.Windows.net* kiválasztása |
     | Felhasználónév | Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
     |Windows 10 |Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |

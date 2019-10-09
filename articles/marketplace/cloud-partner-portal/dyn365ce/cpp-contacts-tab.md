@@ -1,47 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement kínálnak az ügyfelek lapon |} Az Azure Marketplace-en
-description: Konfigurálja a kapcsolattartási adatait a Dynamics 365 Customer Engagement ajánlat az appsource-ban Marketplace-en.
+title: Dynamics 365 a Customer engagement ajánlat névjegyek lapján | Azure piactér
+description: 'Elavult ez a CPP-cikk, amely a PC cikkhez van csatolva; A AppSource piactéren a következő volt: a Dynamics 365 kapcsolattartási adatainak konfigurálása a Customer engagement ajánlathoz.'
 services: Dynamics 365 for Customer Engagement, Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: cdd3d01c9295ef5ae8e7bc1936b5926fb38cfe77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 8a04d7d6f5913a100ab6c4187a42a4d6c470cbda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942517"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033903"
 ---
-# <a name="azure-application-contacts-tab"></a>Az Azure application névjegyek lapja
+# <a name="azure-application-contacts-tab"></a>Azure Application Contacts lap
 
-Használja a **névjegyek** fülre, és adja meg a termékgondozó csoportja és a vásárlói adatokat támogatása a Dynamics 365 Customer Engagement ajánlat.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 Customer engagement-ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információ: [create a New Dynamics 365 for Customer Engagement & PowerApps ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-![Ügyfelek lap ajánlat](./media/dynce-contacts-tab.png)
-
-
-## <a name="specify-customer-and-engineering-contacts"></a>Adja meg az ügyfél és a mérnöki csapathoz névjegyek
-
-Adja meg a következő értékeket adja meg az elsődleges **Engineering Contact** és az ajánlatban. Kötelező mezőt csillag (*) rendszer feltehetően.
-
-|    Mező        |  Leírás                    |
-|    ---------    |  ---------------                |
-|  **Név\***       |  Az alkalmazás a mérnöki kapcsolattartó nevét. Ez a kapcsolat műszaki kommunikáció fog kapni a Microsoft.   |
-|  **e-mailben\***      |  A mérnöki kapcsolattartási e-mail-címe  |
-|  **Telefonszám\***      |  A mérnöki kapcsolattartó telefonszám  |
-|  |  |
-
-Adja meg a következő értékeket adja meg az elsődleges **támogatási kapcsolattartó** és az ajánlatban.
-
-|    Mező        |   Leírás                   |
-|    ---------    |  ---------------                |
-|  **Név\***       |  Az alkalmazás az ügyfél-támogatási kapcsolattartó neve. Ez a kapcsolat támogatási kapcsolatos üzeneteket fog kapni a Microsoft.   |
-|  **e-mailben\***      |  Az ügyfél-támogatási kapcsolattartó e-mail-címe  |
-|  **Telefonszám\***      |  Az ügyfél-támogatási kapcsolattartó telefonszáma  |
-|  |  |
-
-
-## <a name="next-steps"></a>További lépések
-
-Miután ellenőrizte, hogy Ön rendelkezik szükséges [technikai eszközök](./cpp-create-technical-assets.md) az ajánlatban, készen áll [a Dynamics 365 Customer Engagement-ajánlat közzététele](./cpp-publish-offer.md).
+Mielőtt új Dynamics 365-et hozna létre a Customer engagement ajánlathoz, olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 létrehozása a Customer Engagement & PowerApps-ajánlathoz](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) című témakör utasításait.

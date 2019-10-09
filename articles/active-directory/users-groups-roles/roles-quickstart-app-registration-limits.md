@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f883741577de22f66cd7a9bfaf733aa3c59b879b
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707681"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026284"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: Korlátlan számú alkalmazás regisztrációjának létrehozása engedély megadása
 
@@ -32,8 +32,8 @@ Az Azure AD egyéni szerepköreinek létrehozásához és hozzárendeléséhez s
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Új egyéni szerepkör létrehozása az Azure AD-portál használatával
 
-1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válassza az **új egyéni szerepkör**lehetőséget.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) With Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Válassza a **Azure Active Directory**lehetőséget, válassza a **szerepkörök és rendszergazdák**lehetőséget, majd válassza az **új egyéni szerepkör**lehetőséget.
 
     ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
 
@@ -49,8 +49,8 @@ Az Azure AD egyéni szerepköreinek létrehozásához és hozzárendeléséhez s
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>A szerepkör kiosztása egy felhasználónak az Azure AD-portál használatával
 
-1. Jelentkezzen be az [Azure ad felügyeleti](https://aad.portal.azure.com) központba a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák**lehetőséget.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) with Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Válassza a **Azure Active Directory** , majd a **szerepkörök és rendszergazdák**lehetőséget.
 1. Válassza ki az alkalmazás regisztrációjának létrehozója szerepkört, és válassza a **hozzárendelés hozzáadása**elemet.
 1. Válassza ki a kívánt felhasználót, és kattintson a **kiválasztás** gombra a felhasználó szerepkörhöz való hozzáadásához.
 
@@ -190,6 +190,6 @@ Body
 
 ## <a name="next-steps"></a>További lépések
 
-- Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)foglalkozó fórumát.
+- Nyugodtan ossza meg velünk az [Azure ad rendszergazdai szerepkörökkel foglalkozó fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökkel és a rendszergazdai szerepkör-hozzárendeléssel kapcsolatos további információkért lásd: [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md).
 - Az alapértelmezett felhasználói engedélyek összehasonlítását lásd: a [vendég és a tag alapértelmezett felhasználói engedélyeinek összehasonlítása](../fundamentals/users-default-permissions.md).

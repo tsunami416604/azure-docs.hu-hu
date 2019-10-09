@@ -4,16 +4,16 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 11626dd95064cf972a845e5c37f930b9e49c57e6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5102866cdda51ef545fd95b32946cb17c6e40a3c
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077041"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038162"
 ---
-A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)egy osztályt biztosít a konfigurációs fájlokból származó kapcsolati sztringek elemzéséhez. A [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) osztály konfigurációs beállításokat elemez, függetlenül attól, hogy az ügyfélalkalmazás az asztali számítógépen, egy mobileszközön, egy Azure virtuális gépen vagy egy Azure-felhőszolgáltatásban fut-e.
+A [Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)egy osztályt biztosít a konfigurációs fájlokból származó kapcsolati sztringek elemzéséhez. A [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) osztály elemzi a konfigurációs beállításokat. Az alkalmazás az asztali gépen, egy mobileszközön, egy Azure-beli virtuális gépen vagy egy Azure Cloud Service-ben futó ügyfélalkalmazások beállításait elemzi.
 
-Adja hozzá a következő `using` utasítást, ha a CloudConfigurationManager csomagra kíván hivatkozni:
+A `CloudConfigurationManager` csomagra való hivatkozáshoz adja hozzá a következő `using` irányelveket:
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
@@ -28,4 +28,4 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Az Azure Configuration Manager használata nem kötelező. Használhat egy API-t is, például a .NET-keretrendszer [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) osztályát.
+Az Azure Configuration Manager használata nem kötelező. Használhat olyan API-t is, mint például a .NET-keretrendszer [ConfigurationManager osztálya](/dotnet/api/system.configuration.configurationmanager).

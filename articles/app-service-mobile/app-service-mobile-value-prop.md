@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: a3817b3e9f62a863f3fea9305ef169db2eb84491
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 48f7066f2db96165daa104dcf32fe8e2e2cd55cf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637948"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025226"
 ---
 # <a name="getting-started"></a>A Mobile Apps az Azure App Service-ben
 
 > [!NOTE]
-> A Visual Studio App Center a Mobile App Development új és integrált szolgáltatásaiba fektet. A fejlesztők aszolgáltatások kiépítését, **tesztelését** és terjesztését használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a leküldéses szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők a hitelesítést a felhasználók és az adatszolgáltatások hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében. Tekintse meg [app Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-value-prop) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Az Azure App Service egy teljes körűen felügyelt [platformszolgáltatás](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) professzionális fejlesztők számára. A szolgáltatás számos lehetőséget kínál webes, mobil- és integrációs feladatokhoz. 
 
@@ -38,7 +38,7 @@ A Mobile Apps szolgáltatás a következő feladatok elvégzésére alkalmas:
 
 * **Natív és platformfüggetlen alkalmazások készítése**: Akár natív iOS-, Android-és Windows-alkalmazásokat, akár platformfüggetlen Xamarin-vagy Cordova-(telefon-) alkalmazásokat fejleszt, a natív SDK-k használatával kihasználhatja a App Service előnyeit.
 * **Kapcsolódjon a vállalati rendszerekhez**: A Mobile Apps funkcióval percek alatt hozzáadhat vállalati bejelentkezést, és csatlakozhat a vállalati helyszíni vagy Felhőbeli erőforrásokhoz.
-* **Offline használatra kész alkalmazások készítése az**adatszinkronizálással: A mobil munkafolyamatok hatékonyabbá tétele a kapcsolat nélküli üzemmódban működő alkalmazások létrehozásával, valamint a Mobile Apps segítségével szinkronizálhatja az adatait a háttérben, ha a kapcsolat a vállalati adatforrások vagy a szolgáltatott szoftverek (SaaS) API-k bármelyikével fennáll.
+* **Offline használatra kész alkalmazások készítése az adatszinkronizálással**: A mobil munkafolyamatok hatékonyabbá tétele a kapcsolat nélküli üzemmódban működő alkalmazások létrehozásával, valamint a Mobile Apps segítségével szinkronizálhatja az adatait a háttérben, ha a kapcsolat a vállalati adatforrások vagy a szolgáltatott szoftverek (SaaS) API-k bármelyikével fennáll.
 * **Leküldéses értesítések milliók számára másodpercek alatt**: Azonnali leküldéses értesítéseket küldhet ügyfeleinek bármilyen eszközön, személyre szabottan, és elküldheti őket, ha az idő helyes.
 
 ## <a name="mobile-apps-features"></a>A Mobile Apps funkciói

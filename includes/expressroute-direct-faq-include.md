@@ -5,17 +5,17 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/09/2019
+ms.date: 10/07/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 43d1942b1413569d77c6c17fee9fff14dc83c924
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362533"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72023083"
 ---
-### <a name="what-is-expressroute-direct"></a>Mi a ExpressRoute Direct?
+### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute Direct?
 
 Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. A ExpressRoute Direct kettős 100 vagy 10 GB/s kapcsolatot biztosít, amely támogatja az aktív/aktív kapcsolatot a skálán. 
 
@@ -35,6 +35,7 @@ A rendelkezésre álló portok dinamikusak lesznek, és a PowerShell elérhetőv
 * Dublin
 * Hongkong (KKT)
 * London
+* London2
 * Melbourne
 * New York City
 * Perth
@@ -44,15 +45,15 @@ A rendelkezésre álló portok dinamikusak lesznek, és a PowerShell elérhetőv
 * Szilícium-völgy
 * Szingapúr2 
 * Sydney
-* Taipei
+* Tajpej
 * Tokió
 * Toronto
-* Washington DC
+* Washington, D.C.
 * Washington DC2
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>Mi a ExpressRoute Direct SLA-ja?
 
-A közvetlen ExpressRoute ugyanazt a nagyvállalati [szintű ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)fogja használni. 
+A közvetlen ExpressRoute ugyanazt a [nagyvállalati szintű ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/)fogja használni. 
 
 ### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Milyen forgatókönyveket érdemes figyelembe venni az ügyfelek a ExpressRoute Directtel?  
 

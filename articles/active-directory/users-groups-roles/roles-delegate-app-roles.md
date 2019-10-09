@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382488"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025517"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Alkalmazás-regisztrációs engedélyek delegálása Azure Active Directory
 
@@ -61,10 +61,10 @@ Bizonyos esetekben az alkalmazás-katalógusból létrehozott vállalati alkalma
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Tulajdonos társítása vállalati alkalmazásokhoz
 
-1. Jelentkezzen be az [Azure ad-szervezetbe](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) egy olyan fiókkal, amely jogosult az alkalmazás-rendszergazda vagy a felhőalapú alkalmazás-rendszergazda számára a szervezet számára.
-1. A szervezet [Alkalmazásregisztrációk lapján](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) válasszon ki egy alkalmazást az alkalmazás Áttekintés lapjának megnyitásához.
-1. A **tulajdonosok** lehetőség kiválasztásával megtekintheti az alkalmazás tulajdonosainak listáját.
-1. Válassza a **Hozzáadás** lehetőséget, ha egy vagy több tulajdonost szeretne hozzáadni az alkalmazáshoz.
+1. Jelentkezzen be az [Azure ad-szervezetbe](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)@no__t – 1with egy olyan fiókot, amely jogosult az alkalmazás-rendszergazda vagy a felhőalapú alkalmazás-rendszergazda számára a szervezet számára.
+1. A [Alkalmazásregisztrációk oldalon](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/)@no__t – a szervezet 1for válassza ki az alkalmazást, és nyissa meg az alkalmazás áttekintés lapját.
+1. A **tulajdonosok** lehetőség kiválasztásával megtekintheti az alkalmazás tulajdonosainak listáját.
+1. Válassza a **Hozzáadás** lehetőséget, ha egy vagy több tulajdonost szeretne hozzáadni az alkalmazáshoz.
 
 > [!IMPORTANT]
 > A felhasználók és az egyszerű szolgáltatások lehetnek az alkalmazások tulajdonosainak tulajdonosai. Csak a felhasználók lehetnek vállalati alkalmazások tulajdonosai. Csoport nem rendelhető hozzá tulajdonosként sem.

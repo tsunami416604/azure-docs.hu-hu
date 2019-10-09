@@ -1,49 +1,49 @@
 ---
-title: Az Azure Data Factory-folyamat keresési adatátalakítás leképezése
-description: Az Azure Data Factory-folyamat keresési adatátalakítás leképezése
+title: Azure Data Factory leképezési adatfolyam keresési transzformációja
+description: Azure Data Factory leképezési adatfolyam keresési transzformációja
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 197f5ba9d6921f4a9921b7074b9e05162d3e37b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef72b7aed12afd1cee47b11bc7584d1e53bf2af5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868129"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029339"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Az Azure Data Factory-folyamat keresési adatátalakítás leképezése
+# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Keresés használatával más forrásból származó referenciaadatokkal hozzáadása az adatfolyam. A keresési átalakító egy meghatározott forrásból, amely a referencia-táblára mutat, és megfelel-e a kulcsmezők van szükség.
 
-![Keresés átalakítása](media/data-flow/lookup1.png "keresése")
+A lookup használatával adjon meg egy másik forrásból származó referenciát az adatfolyamathoz. A keresési átalakításhoz olyan definiált forrásra van szükség, amely a hivatkozási táblára mutat, és megfelel a kulcs mezőinek.
 
-Válassza ki a bejövő adatfolyam mezőket és a mezőket a referencia-forrás között egyezés kívánt kulcsmezők. Kell először hozott létre egy új forrás a vásznon adatfolyam tervező használatára, a jobb oldalon a kereséshez.
+![Keresési transzformáció](media/data-flow/lookup1.png "keresése")
 
-Egyezés, ha az eredményül kapott sorokat és oszlopokat a referencia-forrásból hozzáadódik az adatfolyam. Kiválaszthatja, hogy a lényeges, az adatfolyam végén található a fogadó szerepeltetni kívánt mezőket.
+Válassza ki azokat a legfontosabb mezőket, amelyeknek meg kell egyeznie a bejövő adatfolyam mezői és a hivatkozási forrás mezői között. Először létre kell hoznia egy új forrást az adatfolyam-tervezési vászonon, hogy az a keresés jobb oldalán legyen.
 
-## <a name="match--no-match"></a>Megfelelő és nem egyezik meg az
+A egyezések megtalálása esetén a hivatkozási forrásból származó sorok és oszlopok lesznek hozzáadva az adatfolyamhoz. Kiválaszthatja, hogy mely érdekes mezőket kívánja felvenni a fogadóba az adatfolyam végén.
 
-A keresési átalakítás után használhatja ezt követő átalakítások egyezés sorokban eredményeinek vizsgálata a kifejezés függvény használatával `isMatch()` kattintva további lehetőségek a logikai alapul-e a keresési eredményezett sor egyezést vagy sem.
+## <a name="match--no-match"></a>Egyezés/nincs egyezés
 
-## <a name="optimizations"></a>Optimalizálási lehetőségek
+A keresési átalakítás után a következő átalakításokkal vizsgálhatja meg az egyes egyeztetési sorok eredményét a `isMatch()` Expression függvény használatával, hogy további döntéseket lehessen tenni a logikában attól függően, hogy a keresés egy sor egyezését eredményezte-e, vagy sem.
 
-A Data Factory áttekintése adatfolyamok hajtsa végre a kiterjesztett Spark-környezetek. Ha az adatkészletet feldolgozó csomópont memóriaterületet elfér, azt is optimalizálhatja a keresési teljesítményt.
+## <a name="optimizations"></a>Optimalizálás
 
-![Csatlakozás szórási](media/data-flow/broadcast.png "szórási illesztés")
+Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
 
-### <a name="broadcast-join"></a>Szórási illesztés
+![Szórásos csatlakozás](media/data-flow/broadcast.png "szórásos csatlakoztatása")
 
-Válassza ki a bal oldalon, és/vagy a jobb oldalon szórási kéréséhez ADF a teljes adatkészlet leküldése a keresési kapcsolat mindkét oldalán a memóriába való csatlakozás.
+### <a name="broadcast-join"></a>Szórásos csatlakozás
+
+Válassza ki a bal oldali és/vagy jobb oldali szórásos illesztést, hogy az ADF kérése után a teljes adatkészletet a keresési kapcsolat egyik oldaláról a memóriába küldje.
 
 ### <a name="data-partitioning"></a>Adatparticionálás
 
-Megadhatja azt is, válassza a "Beállítása particionálás" Optimalizálás lapján, a Keresés átalakítása jobban illeszkednek a memóriába worker kiszolgálónként adatkészletek létrehozása az adatok particionálása.
+Az adatparticionálást úgy is megadhatja, ha a keresési átalakítás optimalizálása lapján a "particionálás beállítása" lehetőséget választja, és olyan adatkészleteket hoz létre, amelyek jobban illeszkednek a memóriába egy munkavégző számára.
 
 ## <a name="next-steps"></a>További lépések
 
-[Csatlakozás](data-flow-join.md) és [Exists](data-flow-exists.md) átalakítások hasonló feladatokat az ADF-leképezés adatáramlás. Tekintse meg, ezek az átalakítások tovább.
+A [Csatlakozás](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások hasonló feladatokat hajtanak végre az ADF-leképezési adatforgalomban. Tekintse meg a következő átalakításokat.

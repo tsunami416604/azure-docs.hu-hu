@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3696ebc216062a6d52fd187819f07dfb0078057
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: be2e9d7657d621a285f7177dc6cdd3a01b83470d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812573"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024440"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurálható jogkivonat élettartama Azure Active Directory (előzetes verzió)
 
 Megadhatja Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát. A szervezeten belüli összes alkalmazáshoz, több-bérlős (többszervezetes) alkalmazáshoz vagy a szervezet egy adott egyszerű szolgáltatásához is beállíthat jogkivonat-élettartamot.
 
 > [!IMPORTANT]
-> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. November 1-től 2019-én nem használhatja a konfigurálható jogkivonat élettartam-szabályzatát a munkamenet-és frissítési tokenek konfigurálásához. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
+> Az előzetes verzióban az ügyfelek meghallgatása után az Azure AD feltételes hozzáférés szolgáltatásban implementálta a [hitelesítési munkamenet-kezelési képességeket](https://go.microsoft.com/fwlink/?linkid=2083106) . Ezt az új funkciót használhatja a frissítési jogkivonat élettartamának konfigurálásához a bejelentkezési gyakoriság beállításával. 2020. május 1-től nem fogja tudni konfigurálni a konfigurálható jogkivonat-élettartam-szabályzatot a munkamenet-és frissítési tokenek konfigurálásához. A hozzáférési token élettartamát továbbra is beállíthatja az elavulás után.
 
 Az Azure AD-ben a házirend-objektum az egyes alkalmazásokra vagy a szervezet összes alkalmazására kikényszerített szabályok halmazát jelöli. Minden egyes házirend-típushoz egyedi struktúra tartozik, amely a hozzájuk rendelt objektumokra érvényes tulajdonságokkal rendelkezik.
 
@@ -52,12 +52,12 @@ Az ügyfelek hozzáférési jogkivonatokkal férnek hozzá egy védett erőforr�
 
 ### <a name="refresh-tokens"></a>Tokenek frissítése
 
-Amikor egy ügyfél hozzáférési jogkivonatot kap egy védett erőforrás eléréséhez, az ügyfél frissítési jogkivonatot is kap. A frissítési jogkivonat az új hozzáférési/frissítési jogkivonat-párok beszerzésére szolgál, ha az aktuális hozzáférési jogkivonat lejár. A frissítési jogkivonat a felhasználó és az ügyfél kombinációjával van kötve. A frissítési tokenek bármikor [](access-tokens.md#token-revocation)visszavonhatók, és a jogkivonat érvényességét a rendszer minden alkalommal ellenőrzi, amikor a jogkivonat használatban van.  A frissítési tokenek nem vonhatók vissza, amikor új hozzáférési jogkivonatok beolvasására használják – ez a legjobb megoldás, ha azonban a régi jogkivonatot biztonságosan törli, amikor egy újat kap. 
+Amikor egy ügyfél hozzáférési jogkivonatot kap egy védett erőforrás eléréséhez, az ügyfél frissítési jogkivonatot is kap. A frissítési jogkivonat az új hozzáférési/frissítési jogkivonat-párok beszerzésére szolgál, ha az aktuális hozzáférési jogkivonat lejár. A frissítési jogkivonat a felhasználó és az ügyfél kombinációjával van kötve. A frissítési tokenek bármikor [visszavonhatók](access-tokens.md#token-revocation), és a jogkivonat érvényességét a rendszer minden alkalommal ellenőrzi, amikor a jogkivonat használatban van.  A frissítési tokenek nem vonhatók vissza, amikor új hozzáférési jogkivonatok beolvasására használják – ez a legjobb megoldás, ha azonban a régi jogkivonatot biztonságosan törli, amikor egy újat kap. 
 
 Fontos, hogy különbséget tegyen a bizalmas ügyfelek és a nyilvános ügyfelek között, mivel ez azt befolyásolja, hogy mennyi ideig használhatók a frissítési tokenek. További információ a különböző típusú ügyfelekről: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Jogkivonat-élettartamok bizalmas ügyfél-frissítési jogkivonatokkal
-A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra `until-revoked`kiállított frissítési jogkivonatok alapértelmezett élettartama a házirend használatával nem módosítható, és nem vonható vissza az önkéntes jelszó-visszaállítási művelet.
+A bizalmas ügyfelek olyan alkalmazások, amelyek biztonságos módon tárolhatják az ügyfél jelszavát (titkos kulcs). Bizonyítani tudják, hogy a kérések a biztonságos ügyfélalkalmazás felől érkeznek, nem rosszindulatú színésztől. Egy webalkalmazás például egy bizalmas ügyfél, mert a webkiszolgálón tárolhatja az ügyfél titkos kulcsát. Nincs kitéve. Mivel ezek a folyamatok biztonságosabbak, az ezekre a folyamatokra kiállított frissítési jogkivonatok alapértelmezett élettartama `until-revoked`, a szabályzat nem módosítható, és a rendszer nem vonja vissza az önkéntes jelszó-visszaállítást.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Tokenek élettartama nyilvános ügyfél-frissítési jogkivonatokkal
 
@@ -69,7 +69,7 @@ Az azonosító jogkivonatok átadása a webhelyeknek és a natív ügyfeleknek. 
 ### <a name="single-sign-on-session-tokens"></a>Egyszeri bejelentkezés munkamenet-jogkivonatai
 Amikor egy felhasználó az Azure AD-vel végzi a hitelesítést, az egyszeri bejelentkezési munkamenet (SSO) a felhasználó böngészőjével és az Azure AD-vel lesz létrehozva. A cookie-t tartalmazó SSO-jogkivonat ezt a munkamenetet jelöli. Az SSO-munkamenet tokenje nem kötődik egy adott erőforráshoz/ügyfélalkalmazás-alkalmazáshoz. Az egyszeri bejelentkezéses munkamenet-tokenek visszavonhatók, és az érvényességük minden használatkor be van jelölve.
 
-Az Azure AD kétféle egyszeri bejelentkezéses munkamenet-jogkivonatot használ: állandó és nem állandó. Az állandó munkamenet-tokeneket a böngésző állandó cookie-ként tárolja. A nem állandó munkamenet-tokenek munkamenet-cookie-ként vannak tárolva. (A munkamenet-cookie-k megsemmisülnek a böngésző bezárásakor.) Általában nem állandó munkamenet-token van tárolva. Ha azonban a felhasználó a bejelentkezéskor **jelölőnégyzet** bejelölését választja, a rendszer állandó munkamenet-tokent tárol.
+Az Azure AD kétféle egyszeri bejelentkezéses munkamenet-jogkivonatot használ: állandó és nem állandó. Az állandó munkamenet-tokeneket a böngésző állandó cookie-ként tárolja. A nem állandó munkamenet-tokenek munkamenet-cookie-ként vannak tárolva. (A munkamenet-cookie-k megsemmisülnek a böngésző bezárásakor.) Általában nem állandó munkamenet-token van tárolva. Ha azonban a **felhasználó a bejelentkezéskor jelölőnégyzet** bejelölését választja, a rendszer állandó munkamenet-tokent tárol.
 
 A nem állandó munkamenet-tokenek élettartama 24 óra. Az állandó tokenek élettartama 180 nap. Az egyszeri bejelentkezési munkamenet tokenjét az érvényességi időtartamon belül kell használni, az érvényességi időtartam a jogkivonat típusától függően egy másik 24 órán vagy 180 nap múlva meghosszabbodik. Ha a rendszer nem használja az egyszeri bejelentkezési munkamenet tokenjét az érvényességi időtartamon belül, akkor a rendszer lejártnak tekinti, és már nem fogadja el.
 
@@ -112,7 +112,7 @@ További információ az alkalmazásobjektumok és a szolgáltatás-objektumok k
 
 A jogkivonat érvényességét a rendszer a jogkivonat használatának időpontjában értékeli ki. Az elérni kívánt alkalmazás legmagasabb prioritású szabályzata érvénybe lép.
 
-Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc lenne `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc lenne `00:90:00`.  
+Az itt használt összes időtávok a C# [TimeSpan](/dotnet/api/system.timespan) objektum – D. HH: PP: mm.  Tehát 80 nap és 30 perc lenne `80.00:30:00`.  A vezető D-t nullára lehet dobni, így 90 perc @no__t – 0.  
 
 > [!NOTE]
 > Példa erre a forgatókönyvre.
@@ -205,12 +205,12 @@ A példákban megtudhatja, hogyan végezheti el a következőket:
 * Speciális szabályzat kezelése
 
 ### <a name="prerequisites"></a>Előfeltételek
-Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet szabályzatokat az alkalmazásokhoz, az egyszerű szolgáltatásokhoz és a teljes szervezethez. Ha még nem ismeri az Azure AD-t, javasoljuk, hogy Ismerje meg, [hogyan szerezhet be Azure ad](quickstart-create-new-tenant.md) -bérlőt, mielőtt folytatja ezeket a példákat.  
+Az alábbi példákban létrehozhat, frissíthet, csatolhat és törölhet szabályzatokat az alkalmazásokhoz, az egyszerű szolgáltatásokhoz és a teljes szervezethez. Ha még nem ismeri az Azure AD-t, javasoljuk, hogy Ismerje meg, [hogyan szerezhet be Azure ad-bérlőt](quickstart-create-new-tenant.md) , mielőtt folytatja ezeket a példákat.  
 
 A kezdéshez hajtsa végre a következő lépéseket:
 
 1. Töltse le a legújabb [Azure ad PowerShell-modul nyilvános előzetes kiadását](https://www.powershellgallery.com/packages/AzureADPreview).
-2. A `Connect` parancs futtatásával jelentkezzen be az Azure ad-rendszergazdai fiókjába. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
+2. Futtassa az `Connect` parancsot az Azure AD-beli rendszergazdai fiókjába való bejelentkezéshez. Futtassa ezt a parancsot minden alkalommal, amikor új munkamenetet indít el.
 
     ```powershell
     Connect-AzureAD -Confirm
@@ -355,7 +355,7 @@ Ebben a példában néhány szabályzatot hoz létre a prioritási rendszer műk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. A `IsOrganizationDefault` jelző beállítása false (hamis) értékre:
+3. A `IsOrganizationDefault` jelző beállítása false értékre:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false

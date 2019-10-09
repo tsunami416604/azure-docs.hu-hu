@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c6c8bcfec9a8bdf6948190c5f132c2e1763b9973
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308339"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025632"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -32,7 +32,7 @@ A Media Services erőforrások és a Media Services API elérésének engedélye
 * **Egyszerű szolgáltatás hitelesítése** – szolgáltatás hitelesítéséhez (például Web Apps, Function apps, Logic apps, API és a Service). A hitelesítési módszert gyakran használó alkalmazások olyan alkalmazások, amelyek a Daemon Services, a közepes szintű szolgáltatások vagy az ütemezett feladatok futtatására szolgálnak. Webalkalmazások esetén például mindig olyan közepes rétegnek kell lennie, amely egy egyszerű szolgáltatással csatlakozik Media Serviceshoz.
 * **Felhasználói hitelesítés** – az alkalmazást használó személy hitelesítésére használható Media Services erőforrásokkal való kommunikációhoz. Az interaktív alkalmazásnak először meg kell kérnie a felhasználót a felhasználó hitelesítő adatainak megadására. Erre példa egy olyan felügyeleti konzol alkalmazás, amelyet a jogosultsággal rendelkező felhasználók a kódolási feladatok és az élő adatfolyamok figyelésére használnak.
 
-A Media Services API megköveteli, hogy a REST API kérelmeket készítő felhasználó vagy alkalmazás hozzáférhessen a Media Services fiók erőforrásához, és használjon **közreműködői** vagy **tulajdonosi** szerepkört. Az API-t az **olvasó** szerepkörrel lehet elérni, de csak a **Get** vagy a **List**   művelet lesz elérhető. További információ: Media Services- [fiókok szerepköralapú hozzáférés-vezérlése](rbac-overview.md).
+A Media Services API megköveteli, hogy a REST API kérelmeket készítő felhasználó vagy alkalmazás hozzáférhessen a Media Services fiók erőforrásához, és használjon **közreműködői** vagy **tulajdonosi** szerepkört. Az API-t az **olvasó** szerepkörrel lehet elérni, de csak a **Get** vagy a **List** művelet lesz elérhető. További információ: Media Services- [fiókok szerepköralapú hozzáférés-vezérlése](rbac-overview.md).
 
 Egyszerű szolgáltatásnév létrehozása helyett érdemes lehet felügyelt identitásokat használni az Azure-erőforrásokhoz az Media Services API Azure Resource Manager használatával való eléréséhez. Az Azure-erőforrások felügyelt identitásával kapcsolatos további tudnivalókért tekintse meg a [Mi az Azure-erőforrások felügyelt identitása](../../active-directory/managed-identities-azure-resources/overview.md)című témakört.
 
@@ -83,7 +83,7 @@ Az eszközön belüli fájlok/Blobok nevének a [blob neve](https://docs.microso
 
 ## <a name="long-running-operations"></a>Hosszan futó műveletek
 
-A Azure Media Services `x-ms-long-running-operation` [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) megjelölt műveletek hosszú ideig futó műveletek. 
+A Azure Media Services [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) `x-ms-long-running-operation` jelölésű műveletek hosszú ideig futó műveletek. 
 
 Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -95,7 +95,7 @@ Media Services a következő hosszan futó műveletekkel rendelkezik:
 * [Élő esemény indítása](https://docs.microsoft.com/rest/api/media/liveevents/start)
 * [LiveEvent leállítása](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  `removeOutputsOnStop` A paraméter használatával törölje az összes társított élő kimenetet az esemény leállításakor.  
+  Az `removeOutputsOnStop` paraméter használatával törölheti az összes kapcsolódó élő kimenetet az esemény leállításakor.  
 * [LiveEvent alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/media/liveevents/reset)
 * [LiveOutput létrehozása](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput törlése](https://docs.microsoft.com/rest/api/media/liveevents/delete)
@@ -131,9 +131,9 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 ## <a name="azure-media-services-explorer"></a>Azure Media Services Explorer
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) A (AMSE) eszköz olyan Windows-ügyfelek számára érhető el, akik szeretnének többet megtudni a Media Servicesról. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
+A [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) a Windows-ügyfelek számára elérhető eszköz, akik a Media Servicesről szeretnének többet megtudni. A AMSE egy WinForms/C# alkalmazás, amely feltölti, letölti, kódolja, TOVÁBBÍTJA a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , opencode@microsoft.com vagy forduljon a további kérdésekhez vagy megjegyzésekhez.
+A AMSE egy nyílt forráskódú projekt, amelyet a Közösség nyújt (a problémát a https://github.com/Azure/Azure-Media-Services-Explorer/issues) értékkel lehet jelenteni. A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy vegye fel a kapcsolatot az opencode@microsoft.com további kérdésekkel vagy megjegyzésekkel.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 

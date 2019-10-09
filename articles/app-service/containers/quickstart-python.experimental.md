@@ -14,16 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972094"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024944"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Python-alkalmazás létrehozása Azure App Service Linuxon
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Python-alkalmazást a beépített Python-rendszerképeken a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával app Service Linuxon.
+Ebben a rövid útmutatóban egy egyszerű Python-alkalmazást telepít [app Service Linuxon](app-service-linux-intro.md), amely egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az Azure parancssori felületét (az [Azure CLI](/cli/azure/install-azure-cli)-t) az interaktív, böngészőalapú Azure Cloud Shell használatával hajthatja végre, így követheti a Mac, Linux vagy Windows rendszerű számítógépek használatának lépéseit.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
@@ -120,7 +122,7 @@ A Python-mintakód App Service Linux rendszeren fut, beépített képpel.
 
 **Gratulálunk!** Elvégezte az első Python-webapp üzembe helyezését az App Service-ben Linux rendszeren.
 
-## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
+## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
 
 A Cloud Shell írja be a `code application.py` értéket a Cloud Shell-szerkesztő megnyitásához.
 

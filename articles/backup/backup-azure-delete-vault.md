@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162202"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028278"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services-tároló törlése
 
@@ -68,7 +68,7 @@ A védelem leállításához és a biztonsági mentési adatok törléséhez haj
 
          ![A biztonsági mentési adattábla törlése panel.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. Keresse meg az **értesítés** ikonját: ![Az értesítés ikonja.](./media/backup-azure-delete-vault/messages.png) A folyamat befejeződése után a szolgáltatás a következő üzenetet jeleníti meg: *A biztonsági mentés leállítása és a biztonsági másolatok törlése a következőre:* Biztonsági másolati elem: *"* . *A művelet sikeresen befejeződött*.
+5. Keresse meg az **értesítés** ikonját: @no__t – 0The értesítési ikon. ](./media/backup-azure-delete-vault/messages.png) A folyamat befejeződése után a szolgáltatás a következő üzenetet jeleníti meg: *A biztonsági mentés leállítása és a biztonsági másolatok törlése a következőre:* Biztonsági másolati elem: *"* . *A művelet sikeresen befejeződött*.
 6. Válassza a **frissítés** lehetőséget a **biztonsági másolati elemek** menüben, hogy meggyőződjön arról, hogy a biztonsági mentési elem törölve lett.
 
       ![A biztonsági másolati elemek törlése oldal.](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -84,7 +84,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 
         ![A MARS lapon válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - A MABS vagy a DPM lapon válassza a **biztonsági mentési felügyeleti kiszolgálók**lehetőséget. Ezután válassza ki a törölni kívánt kiszolgálót. 
+      - A MABS vagy a DPM lapon válassza a **biztonsági mentési felügyeleti kiszolgálók**lehetőséget. Ezután válassza ki a törölni kívánt kiszolgálót. 
 
 
           ![A MABS válassza ki a tárolót az irányítópult megnyitásához.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
@@ -102,7 +102,7 @@ Először olvassa el az első **[lépések](#before-you-start)** szakaszt a füg
 4. Jelölje be a beleegyezett jelölőnégyzetet, majd válassza a **Törlés**lehetőséget.
 
 
-5. Győződjön meg **arról** , ![hogy az értesítési ikon törli a biztonsági mentési fájlokat.](./media/backup-azure-delete-vault/messages.png) A művelet befejeződése után a szolgáltatás a következő üzenetet jeleníti meg: *A biztonsági mentés leállítása és a biztonsági másolati elemek törlése.* *A művelet sikeresen befejeződött*.
+5. Győződjön meg arról, hogy az **értesítési** ikon ![delete biztonsági mentési adatfájlok @ no__t-2. A művelet befejeződése után a szolgáltatás a következő üzenetet jeleníti meg: *A biztonsági mentés leállítása és a biztonsági másolati elemek törlése.* *A művelet sikeresen befejeződött*.
 6. Válassza a **frissítés** lehetőséget a **biztonsági mentési elemek** menüben, hogy biztosan törölje a biztonsági mentési elemet.
 
 A folyamat befejezése után törölheti a biztonsági mentési elemeket a felügyeleti konzolról:
@@ -122,13 +122,13 @@ A folyamat befejezése után törölheti a biztonsági mentési elemeket a felü
 
     ![Állítsa le az ütemezett biztonsági mentést.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. A rendszer felszólítja, hogy adjon meg egy biztonsági PIN-kódot (személyes azonosító számot), amelyet manuálisan kell előkészítenie. Ehhez először jelentkezzen be a Azure Portalba.
-5. Nyissa meg **Recovery Services** > tároló**beállításai** > **tulajdonságokat**.
+5. Nyissa meg a **Recovery Services**-tároló  >  beállítások  > **Tulajdonságok** **lehetőséget**.
 6. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Másolja ezt a PIN-kódot. A PIN-kód csak öt percig érvényes.
 7. A felügyeleti konzolon illessze be a PIN-kódot, majd kattintson **az OK gombra**.
 
     ![Biztonsági PIN-kód létrehozása.](./media/backup-azure-delete-vault/security-pin.png)
 
-8. A **biztonsági mentési folyamat módosítása** lapon a következő üzenet jelenik meg: *A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés.*  
+8. A **biztonsági mentési folyamat módosítása** lapon a következő üzenet jelenik meg: @no__t – a 0Deleted biztonsági mentési adatait 14 napig őrzi meg a rendszer. Ezt követően a biztonsági mentési idő véglegesen törlődik. *  
 
     ![Törölje a biztonsági mentési infrastruktúrát.](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
@@ -212,7 +212,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
        [-Confirm] 
        [<CommonParameters>] 
     ```
-    [További információ a](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)biztonságimásolattalvédettelemekvédelménekletiltásáról . 
+    [További információ](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)@no__t – a 1about letiltja a biztonsági másolattal védett elemek védelmét. 
 
 - A Azure Backup ügynök (MARS) használatával védett helyszíni fájlok és mappák Azure-ba történő biztonsági mentését a következő PowerShell-paranccsal törölheti az egyes MARS PowerShell-modulokból származó biztonsági másolatok adatainak törléséhez:
 
@@ -222,7 +222,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
 
     A következő üzenet jelenik meg:
      
-    *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
+    @no__t – 0Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"): *
 
 
 - A MABS (Microsoft Azure Backup-kiszolgáló) vagy az Azure-hoz (System Center Data Protection Manager) védett helyszíni gépek esetén a következő paranccsal törölheti az Azure-ban tárolt biztonsági másolati adataikat.
@@ -233,7 +233,7 @@ A védelem leállításához és a biztonsági másolatok törléséhez:
 
     A következő üzenet jelenik meg: 
          
-   *Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"):*
+   @no__t – 0Microsoft Azure Backup biztosan el szeretné távolítani ezt a biztonsági mentési szabályzatot? A törölt biztonsági mentési adat 14 napig őrzi meg a rendszer. Ez idő után véglegesen törlődik a biztonsági mentési adatvesztés. <br/> [Y] igen [A] igen az összes [N] nem [L] nem az összes [S] felfüggesztése [?] Súgó (az alapértelmezett érték az "Y"): *
 
 A biztonsági másolatok törlését követően törölje a helyszíni tárolók és a felügyeleti kiszolgálók regisztrációját. 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240026"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029786"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Adatok összekapcsolása a Microsoft webalkalmazási tűzfallal
 
@@ -38,12 +38,12 @@ Az Azure Application Gateway Microsoft webalkalmazási tűzfala (WAF) segítség
 Ha már rendelkezik Microsoft webalkalmazási tűzfallal, ellenőrizze, hogy rendelkezik-e meglévő átjáró-erőforrással.
 Miután telepítette és beolvasta a Microsoft webalkalmazási tűzfalát, a riasztási adatai könnyen továbbíthatók az Azure Sentinel szolgáltatásba.
     
-1. Az Azure Sentinel portálon válassza azadatösszekötők lehetőséget.
+1. Az Azure Sentinel portálon válassza az **adatösszekötők**lehetőséget.
 1. Az adatösszekötők lapon válassza a **WAF** csempét.
-1. Nyissa meg [Application Gateway erőforrást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) , és válassza ki a WAF.
-    1. Válassza a **diagnosztikai beállítások**lehetőséget.
-    1. Válassza a **+ diagnosztikai beállítások hozzáadása** lehetőséget a tábla alatt.
-    1. A **diagnosztikai beállítások** lapon adja meg a **nevet** , és válassza a **Küldés log Analytics**lehetőséget.
+1. Lépjen [Application Gateway erőforrás](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) and válassza ki a WAF.
+    1. Válassza a **diagnosztikai beállítások**lehetőséget.
+    1. Válassza a **+ diagnosztikai beállítások hozzáadása** lehetőséget a tábla alatt.
+    1. A **diagnosztikai beállítások** lapon adja meg a **nevet** , és válassza a **Küldés log Analytics**lehetőséget.
     1. A **log Analytics munkaterület** területen válassza ki az Azure Sentinel munkaterületet.
     1. Válassza ki az elemezni kívánt naplózási típusokat. Ajánlott: ApplicationGatewayAccessLog és ApplicationGatewayFirewallLog.
 1. Ha a Microsoft webalkalmazási tűzfal riasztásai esetében szeretné használni a Log Analytics vonatkozó sémát, keresse meg a **AzureDiagnostics**.

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801387"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030534"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -153,31 +153,31 @@ A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 
 #### <a name="asset-commands"></a>Eszköz parancsai
 
-- ```--storage-account```és ```--container``` argumentumok hozzáadva.
-- A parancs hozzáadta a lejárati idő (most + 23H) és az ```az ams asset get-sas-url``` engedélyek (olvasás) alapértelmezett értékeit.
+- @no__t – 0 és ```--container``` argumentum lett hozzáadva.
+- A lejárati idő (most + 23H) és az engedélyek (olvasás) alapértelmezett értékei a ```az ams asset get-sas-url``` paranccsal hozzáadva.
 
 #### <a name="job-commands"></a>Feladatok parancsai
 
-- ```--correlation-data```és ```--label``` argumentumok hozzáadva
-- ```--output-asset-names```átnevezve ```--output-assets```:. Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
+- ```--correlation-data``` és ```--label``` argumentum hozzáadva
+- @no__t – 0 ```--output-assets``` névre átnevezve. Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
 
 #### <a name="streaming-locator-commands"></a>Adatfolyam-kereső parancsai
 
-- ```az ams streaming locator```az ```az ams streaming-locator```alapparancs le lett cserélve.
-- ```--streaming-locator-id```és ```--alternative-media-id support``` argumentumok hozzáadva.
-- ```--content-keys argument```az argumentum frissítve.
-- ```--content-policy-name```átnevezve ```--content-key-policy-name```:.
+- ```az ams streaming locator``` alapparancs lecserélve a ```az ams streaming-locator``` értékre.
+- @no__t – 0 és ```--alternative-media-id support``` argumentum lett hozzáadva.
+- ```--content-keys argument``` argumentum frissítve.
+- @no__t – 0 ```--content-key-policy-name``` névre átnevezve.
 
 #### <a name="streaming-policy-commands"></a>Streaming Policy parancsok
 
-- ```az ams streaming policy```az ```az ams streaming-policy```alapparancs le lett cserélve.
-- A titkosítási paraméterek támogatják ```az ams streaming-policy create``` a hozzáadását.
+- ```az ams streaming policy``` alapparancs lecserélve a ```az ams streaming-policy``` értékre.
+- A titkosítási paraméterek a ```az ams streaming-policy create``` hozzáadásával támogatottak.
 
 #### <a name="transform-commands"></a>Átalakítási parancsok
 
-- ```--preset-names```argumentum lecserélve ```--preset```. Mostantól egyszerre csak 1 kimenetet vagy beállításkészletet állíthat be (további futtatáshoz ```az ams transform output add```). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
-- ```az ams transform output remove```a kimeneti index eltávolításának átadásával végezhető el.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumentumok hozzáadva ```az ams transform output add``` a ```az ams transform create``` és parancsokhoz.
+- ```--preset-names``` argumentumot a ```--preset``` értékre cserélte. Most már csak 1 kimenetet/beállításkészletet állíthat be (a ```az ams transform output add``` futtatásához szükséges további beállítások hozzáadásához). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
+- a ```az ams transform output remove``` elvégezhető a kimeneti index eltávolításával.
+- @no__t – 0 argumentum lett hozzáadva a ```az ams transform create``` és a ```az ams transform output add``` parancshoz.
 
 ## <a name="october-2018---ga"></a>Október 2018 – GA
 
@@ -275,4 +275,5 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="next-steps"></a>További lépések
 
-[Áttekintés](media-services-overview.md)
+- [Áttekintés](media-services-overview.md)
+- [A Media Services v2 kibocsátási megjegyzései](../previous/media-services-release-notes.md)

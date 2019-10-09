@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137302"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030561"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Adathalmazok a Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -28,7 +28,7 @@ Ez a cikk ismerteti, hogy mely adatkészletek, hogyan vannak meghatározva JSON 
 Ha Data Factory új, tekintse meg az áttekintést a [Azure Data Factory bemutatása](introduction.md) című témakört.
 
 ## <a name="overview"></a>Áttekintés
-A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Az **adatkészlet** mostantól olyan elnevezett nézet, amely egyszerűen rámutat vagy hivatkozik a tevékenységekben használni kívánt adatokra bemenetként és kimenetként. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt a Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.
+A data factory egy vagy több folyamattal rendelkezhet. A **folyamat** olyan **tevékenységek** logikai csoportosítása, amelyek együttesen végeznek feladatokat. A folyamat tevékenységei meghatározzák az adatokon végrehajtandó műveleteket. Az **adatkészlet** mostantól olyan elnevezett nézet, amely egyszerűen rámutat vagy hivatkozik a **tevékenységekben** használni kívánt adatokra bemenetként és kimenetként. Az adatkészletek adatokat határoznak meg a különböző adattárakban, például táblákban, fájlokban, mappákban és dokumentumokban. Az Azure Blob-adatkészlet például meghatározza a blobtárolót és azt a Blob Storage-mappát, amelyből a tevékenység beolvassa az adatokat.
 
 Adatkészlet létrehozása előtt létre kell hoznia egy [**társított szolgáltatást**](concepts-linked-services.md) , amely összekapcsolja az adattárat az adat-előállítóval. A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Gondoljon erre; az adatkészlet a társított adattárakon belüli adatszerkezetet jelöli, és a társított szolgáltatás határozza meg az adatforráshoz való kapcsolódást. Egy Azure Storage-beli társított szolgáltatás például egy Storage-fiókhoz csatolja az adatelőállítót. Az Azure Blob-adatkészlet az Azure Storage-fiókban található BLOB-tárolót és mappát jelöli, amely a feldolgozandó bemeneti blobokat tartalmazza.
 
@@ -66,7 +66,7 @@ Data Factoryban található adatkészlet a következő JSON-formátumban van def
 ```
 A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
-Tulajdonság | Leírás | Kötelező |
+Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
 name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
 type | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, AzureSqlTable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
@@ -75,13 +75,13 @@ typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (péld
 
 ### <a name="data-flow-compatible-dataset"></a>Adatfolyam-kompatibilis adatkészlet
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az adatáramlással kompatibilis adatkészletek listáját a [támogatott adatkészletek típusainál](#dataset-type) tekintheti meg. [](concepts-data-flow-overview.md) Az adatáramlással kompatibilis adatkészletek esetében részletes adatkészlet-definíció szükséges az átalakításokhoz. Így a JSON-definíció némileg eltér. A _Structure_ tulajdonság helyett az adatáramlással kompatibilis adatkészletek _séma_ tulajdonsággal rendelkeznek.
+
+Az [adatáramlással](concepts-data-flow-overview.md) kompatibilis adatkészletek listáját a [támogatott adatkészletek típusainál](#dataset-type) tekintheti meg. Az adatáramlással kompatibilis adatkészletek esetében részletes adatkészlet-definíció szükséges az átalakításokhoz. Így a JSON-definíció némileg eltér. A _Structure_ tulajdonság helyett az adatáramlással kompatibilis adatkészletek _séma_ tulajdonsággal rendelkeznek.
 
 Az adatforgalomban az adatkészletek a forrás-és fogadó átalakításokban használatosak. Az adatkészletek határozzák meg az alapszintű adatsémákat. Ha az adatai nem rendelkeznek sémával, a forrás és a fogadó esetében használhatja a séma eltolódását. Az adatkészlet sémája a fizikai adattípust és-alakzatot jelöli.
 
-A séma az adatkészletből való definiálásával a kapcsolódó adattípusokat, adatformátumokat, a fájlok helyét és a kapcsolat adatait a társított társított szolgáltatásból kapja meg. Az adatkészletek metaadatai a forrás-átalakulásban jelennekmeg a forrás-kivetítés során. A forrás-átalakításban a kivetítés a definiált nevekkel és típusokkal rendelkező adatfolyam-adatforgalomra vonatkozik.
+A séma az adatkészletből való definiálásával a kapcsolódó adattípusokat, adatformátumokat, a fájlok helyét és a kapcsolat adatait a társított társított szolgáltatásból kapja meg. Az adatkészletek metaadatai a forrás-átalakulásban jelennek meg a forrás- *kivetítés*során. A forrás-átalakításban a kivetítés a definiált nevekkel és típusokkal rendelkező adatfolyam-adatforgalomra vonatkozik.
 
 Egy adatfolyam-adatkészlet sémájának importálásakor válassza a **séma importálása** gombot, és válassza az Importálás a forrásból vagy egy helyi fájlból lehetőséget. A legtöbb esetben közvetlenül a forrásból importálja a sémát. Ha azonban már van helyi sémafájl (egy parketta-fájl vagy egy, a fejlécekkel rendelkező CSV), akkor a Data Factory a fájlra alapozva kiválaszthatja a sémát.
 
@@ -111,11 +111,11 @@ Egy adatfolyam-adatkészlet sémájának importálásakor válassza a **séma im
 
 A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 
-Tulajdonság | Leírás | Kötelező |
+Tulajdonság | Leírás | Szükséges |
 -------- | ----------- | -------- |
 name | Az adatkészlet neve. Lásd: [Azure Data Factory elnevezési szabályok](naming-rules.md). |  Igen |
 type | Az adatkészlet típusa. A Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, AzureSqlTable). <br/><br/>Részletekért lásd: [adatkészletek típusai](#dataset-type). | Igen |
-schema | Az adatkészlet sémája. Részletekért lásd: [az adatfolyam-kompatibilis](#dataset-type)adatkészletek. | Nem |
+schema | Az adatkészlet sémája. Részletekért lásd: [az adatfolyam-kompatibilis adatkészletek](#dataset-type). | Nem |
 typeProperties | A típus tulajdonságai eltérőek az egyes típusoknál (például: Azure-Blob, Azure SQL-tábla). A támogatott típusokkal és azok tulajdonságaival kapcsolatos részletekért lásd: [adatkészlet típusa](#dataset-type). | Igen |
 
 
@@ -177,12 +177,12 @@ A **struktúra** szakasz vagy **séma** (adatfolyam-kompatibilis) szakasz adatk�
 
 A struktúra minden oszlopa a következő tulajdonságokat tartalmazza:
 
-Tulajdonság | Leírás | Kötelező
+Tulajdonság | Leírás | Szükséges
 -------- | ----------- | --------
 name | Az oszlop neve. | Igen
 type | Az oszlop adattípusa. A Data Factory a következő átmeneti adattípusokat támogatja megengedett értékként: **Int16, Int32, Int64, Single, Double, decimális, byte [], Boolean, string, GUID, datetime, DateTimeOffset és TimeSpan** | Nem
-culture | . A .net-típus használata esetén használandó, NET-alapú kulturális környezet: `Datetime` vagy. `Datetimeoffset` A mező alapértelmezett értéke: `en-us`. | Nem
-format | A típus .net-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy. `Datetimeoffset` A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) időformátumot ismertető karakterláncot. | Nem
+culture | . A (z) `Datetime` vagy `Datetimeoffset` típusú .NET-alapú kulturális környezet, amely akkor használható. A mező alapértelmezett értéke: `en-us`. | Nem
+format | A típus .NET-típusú típusaként használandó formázó karakterlánc: `Datetime` vagy `Datetimeoffset`. A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem
 
 ### <a name="example"></a>Példa
 A következő példában tegyük fel, hogy a forrás blob-fájl CSV formátumú, és három oszlopot tartalmaz: felhasználóazonosító, név és lastlogindate. A Int64, string és DateTime típusú egyéni datetime formátummal rendelkeznek, a hét napjainak rövidített francia neveivel.
@@ -202,7 +202,7 @@ Adja meg a blob-adatkészlet struktúráját a következőképpen, valamint az o
 
 A következő irányelvek segítenek megismerni, hogy mikor kell belefoglalni a szerkezet adatait, és mit kell belefoglalni a **struktúra** szakaszba. További információ arról, hogy a adat-előállító hogyan képezi le a forrás adatait, és mikor kell megadnia a szerkezeti adatokat a [séma és típus leképezése](copy-activity-schema-and-type-mapping.md)alapján.
 
-- **Erős séma**-adatforrások esetén csak akkor válassza a struktúra szakaszt, ha a forrás oszlopokat a fogadó oszlopokra szeretné leképezni, és a nevük nem egyeznek. Az ilyen strukturált adatforrás az adatsémát és a beírási adatokat az adatok mellett tárolja. Strukturált adatforrások például a következők: SQL Server, Oracle és Azure SQL Database.<br/><br/>A strukturált adatforrásokhoz már rendelkezésre áll a típus adatai, ezért a szerkezet szakasza nem tartalmazhat beírási adatokat.
+- **Erős séma-adatforrások**esetén csak akkor válassza a struktúra szakaszt, ha a forrás oszlopokat a fogadó oszlopokra szeretné leképezni, és a nevük nem egyeznek. Az ilyen strukturált adatforrás az adatsémát és a beírási adatokat az adatok mellett tárolja. Strukturált adatforrások például a következők: SQL Server, Oracle és Azure SQL Database.<br/><br/>A strukturált adatforrásokhoz már rendelkezésre áll a típus adatai, ezért a szerkezet szakasza nem tartalmazhat beírási adatokat.
 - **A nem/gyenge séma-adatforrások (például a blob Storage-ban lévő szövegfájl) esetében**olyan struktúrát is tartalmaznak, amelyben az adatkészlet egy másolási tevékenység bemenete, és a forrás-adatkészlet adattípusait át kell alakítani a fogadó natív típusaira. És vegyen fel struktúrát, ha a forrás oszlopokat le szeretné képezni a fogadó oszlopokra.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
@@ -213,7 +213,7 @@ Adatkészleteket az alábbi eszközök vagy SDK-k egyikével hozhat létre: [.NE
 Íme néhány különbség a Data Factory és a Data Factory 1. verziójú adatkészletek között:
 
 - A külső tulajdonság nem támogatott a jelenlegi verzióban. Egy [trigger](concepts-pipeline-execution-triggers.md)váltja fel.
-- A házirend és a rendelkezésre állási tulajdonságok nem támogatottak az aktuális verzióban. A folyamat kezdő időpontja az eseményindítótól függ. [](concepts-pipeline-execution-triggers.md)
+- A házirend és a rendelkezésre állási tulajdonságok nem támogatottak az aktuális verzióban. A folyamat kezdő időpontja az [eseményindítótól](concepts-pipeline-execution-triggers.md)függ.
 - A hatókörrel rendelkező adatkészletek (a folyamatokban megadott adatkészletek) nem támogatottak az aktuális verzióban.
 
 ## <a name="next-steps"></a>További lépések

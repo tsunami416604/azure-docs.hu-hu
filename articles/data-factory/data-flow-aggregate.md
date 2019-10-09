@@ -6,23 +6,23 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314230"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026978"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Az összesített átalakítás az, ahol meghatározhatja az adatstreamek oszlopainak összesítéseit. A Kifejezésszerkesztő használatával különböző típusú összesítéseket határozhat meg, például a SUM, a MIN, a MAX és a COUNT értéket, amely a meglévő vagy számított oszlopok szerint csoportosítható.
 
 ## <a name="group-by"></a>Csoportosítási alapja
 Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított oszlopot, amelyet Group By záradékként kíván használni az összesítéshez. Meglévő oszlop használatához válassza ki a kívánt oszlopot a legördülő listából. Új számított oszlop létrehozásához vigye a kurzort a záradék fölé, és kattintson a "számított oszlop" elemre. Ekkor megnyílik az adatfolyam- [kifejezés szerkesztője](concepts-data-flow-expression-builder.md). Miután létrehozta a számított oszlopot, adja meg a kimeneti oszlop nevét a "név" mezőben. Ha további Group By záradékot szeretne hozzáadni, vigye a kurzort egy meglévő záradék fölé, és kattintson a "+" elemre.
 
-![Összesítő transzformációs csoport beállítások szerint](media/data-flow/agg.png "Összesítő transzformációs csoport beállítások szerint")
+![Összesítő transzformációs csoport beállítások alapján](media/data-flow/agg.png "összesített transzformációs csoport szerint")
 
 > [!NOTE]
 > Group By záradék használata nem kötelező egy összesített átalakításban.
@@ -30,7 +30,7 @@ Válasszon ki egy meglévő oszlopot, vagy hozzon létre egy új számított osz
 ## <a name="aggregate-column"></a>Összesítő oszlop 
 Az összesítési kifejezések létrehozásához válassza az "összesítések" fület. Kiválaszthat egy meglévő oszlopot, és felülírhatja az összesítési értéket, vagy létrehozhat egy új mezőt új névvel. Az összesítési kifejezés az oszlopnév-választó melletti jobb oldali mezőben van megadva. A kifejezés szerkesztéséhez kattintson a szövegmezőre, hogy megnyissa a Kifejezésszerkesztő párbeszédpanelt. További összesítés hozzáadásához vigye a kurzort egy meglévő kifejezés fölé, és kattintson a "+" elemre egy új aggregációs oszlop vagy [oszlop minta](concepts-data-flow-column-pattern.md)létrehozásához.
 
-![Összesített átalakítás összesített beállításai](media/data-flow/agg2.png "Összesített átalakítás összesített beállításai")
+![Aggregált átalakítás összesített beállításai](media/data-flow/agg2.png "összesített transzformációs összesítő beállítások")
 
 > [!NOTE]
 > Minden összesítési kifejezésnek legalább egy összesítő függvényt tartalmaznia kell.

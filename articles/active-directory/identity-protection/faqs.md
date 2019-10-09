@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8d36b513b6835088b5120072906667cd30af505d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126529"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025744"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection GYIK
 
@@ -41,6 +41,6 @@ Ez a cikk a Azure Active Directory (Azure AD) Identity Protection szolgáltatás
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>Hogyan rendezhetem a felhasználókat a "kockázatra megjelölt felhasználók" kifejezésre?
 
-**V:** Töltse le a kockázati jelentésre megjelölt felhasználókat a **kockázati lapra megjelölt felhasználók** tetején a **Letöltés** gombra kattintva. Ezután a letöltött adat a rendelkezésre álló mezők alapján rendezhető, beleértve az utolsó frissítés (UTC) értékét is.
+**V:** Töltse le a kockázati jelentésre megjelölt felhasználókat a **kockázati lapra megjelölt felhasználók** tetején a **Letöltés** gombra kattintva. Ezután a letöltött adat a rendelkezésre álló mezők alapján rendezhető, beleértve az utolsó frissítés (UTC) értékét is.
 
 ---

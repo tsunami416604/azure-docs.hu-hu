@@ -1,6 +1,6 @@
 ---
-title: Offline szinkronizálás engedélyezése az Azure Mobile alkalmazás (Android)
-description: Ismerje meg, hogyan cache és a szinkronizálási offline adatok, az Android-alkalmazás az App Service Mobile Apps használatával
+title: Offline szinkronizálás engedélyezése az Azure Mobile alkalmazásban (Android)
+description: Megtudhatja, hogyan használhatja a App Service Mobile Appst az offline adatkapcsolatok gyorsítótárazásához és szinkronizálásához az Android-alkalmazásokban
 documentationcenter: android
 author: elamalani
 manager: crdun
@@ -13,44 +13,44 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 3fe5b176d864fd4cdd1ff49d8c064495663aa3b0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0180e100432ac34b876af04ad99c9a5d189455c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443579"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025461"
 ---
-# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Az Android rendszerhez készült mobilalkalmazás offline szinkronizálásának engedélyezése
+# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Az Android Mobile-alkalmazás offline szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-android-get-started-offline-data) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
-Ez az oktatóanyag bemutatja a kapcsolat nélküli szinkronizálás – a szolgáltatás az Azure Mobile Apps androidhoz. Kapcsolat nélküli szinkronizálás lehetővé teszi, hogy a végfelhasználók számára, hogy kommunikáljanak a mobilalkalmazás&mdash;megtekintését, hozzáadását és módosítását adatok&mdash;akkor is, ha nincs hálózati kapcsolat. Változások a helyi adatbázisban vannak tárolva. Az eszköz újra online állapotba kerül, ha ezeket a módosításokat a távoli háttérrendszerrel vannak szinkronizálva.
+Ez az oktatóanyag az Azure Mobile Apps Android rendszerhez készült offline szinkronizálási funkcióját ismerteti. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálnak, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a változások szinkronizálva lesznek a távoli háttérrel.
 
-Ha ez az első élmény, az Azure Mobile Apps, az oktatóanyag első kell teljes [Android-alkalmazás létrehozása]. Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, hozzá kell adnia a data access bővítmény csomagokat a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Ha első alkalommal használja az Azure Mobile Apps-t, először el kell végeznie az [Android-alkalmazás létrehozása]című oktatóanyagot. Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, hozzá kell adnia az adatelérési bővítmények csomagjait a projekthez. További információ a kiszolgálói bővítmények csomagjairól: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-A kapcsolat nélküli szinkronizálás – szolgáltatással kapcsolatos további tudnivalókért lásd a témakör [Offline adatszinkronizálás az Azure Mobile Appsban].
+Az offline szinkronizálási szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Offline adatszinkronizálás az Azure Mobile Appsban]című témakört.
 
-## <a name="update-the-app-to-support-offline-sync"></a>Offline szinkronizálás támogatásához az alkalmazás frissítése
-A kapcsolat nélküli szinkronizálás olvasási és írási az egy *szinkronizálási tábla* (használatával a *IMobileServiceSyncTable* interface), részét képezi, amely egy **SQLite** adatbázis az eszközön.
+## <a name="update-the-app-to-support-offline-sync"></a>Az alkalmazás frissítése az offline szinkronizálás támogatásához
+Ha offline szinkronizálást használ, a rendszer egy, az eszközön található **SQLite** -adatbázis részét képező *szinkronizálási táblából* olvas és ír egy *IMobileServiceSyncTable* felületet.
 
-Lekéréses és küldéses az eszköz és az Azure Mobile Services között változik, használhat egy *szinkronizálási környezetet* (*MobileServiceClient.SyncContext*), amely a helyi adatbázis, tárolására a táblafiókhoz helyi adatok.
+Az eszköz és az Azure Mobile Services közötti változások leküldéséhez és lekéréséhez *szinkronizálási környezetet* (*MobileServiceClient. SyncContext*) kell használnia, amelyet a helyi adatbázissal kell inicializálni, hogy helyileg tárolja az adattárolást.
 
-1. A `TodoActivity.java`, tegye megjegyzésbe a meglévő definíció a `mToDoTable` és vonja vissza a szinkronizálási tábla verziója:
+1. @No__t – 0 esetében tegye megjegyzésbe a `mToDoTable` meglévő definícióját, és a szinkronizálási táblázat verziójának megjegyzését:
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. Az a `onCreate` metódus, tegye megjegyzésbe a meglévő inicializálása `mToDoTable` és vonja vissza a definíció:
+2. A `onCreate` metódusban tegye megjegyzésbe a `mToDoTable` meglévő inicializálását, és tegye meg a következő definíció megjegyzését:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-3. A `refreshItemsFromTable` definíciója megjegyzésbe `results` és vonja vissza a definíció:
+3. A `refreshItemsFromTable` megjegyzésében írja be `results` definícióját, és írja be a következő definíciót:
    
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-4. Tegye megjegyzésbe definíciója `refreshItemsFromMobileServiceTable`.
-5. Állítsa vissza a definíciója `refreshItemsFromMobileServiceTableSyncTable`:
+4. A `refreshItemsFromMobileServiceTable` definíciójának megjegyzése.
+5. @No__t-0 definíciójának megjegyzése:
    
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -59,7 +59,7 @@ Lekéréses és küldéses az eszköz és az Azure Mobile Services között vál
                     eq(val(false));
             return mToDoTable.read(query).get();
         }
-6. Állítsa vissza a definíciója `sync`:
+6. @No__t-0 definíciójának megjegyzése:
    
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -79,25 +79,25 @@ Lekéréses és küldéses az eszköz és az Azure Mobile Services között vál
         }
 
 ## <a name="test-the-app"></a>Az alkalmazás tesztelése
-Ebben a szakaszban tesztelni az alkalmazáson a Wi-Fi viselkedés, és kapcsolja ki a Wi-Fi-kapcsolat nélküli forgatókönyv létrehozásához.
+Ebben a szakaszban a Wi-Fi-vel tesztelheti a működését, majd kikapcsolhatja a WiFi-t egy offline forgatókönyv létrehozásához.
 
-Adatelemek hozzáadásakor meg azokat a helyi SQLite-tárolóban tárolt, de nincs szinkronizálva a mobilszolgáltatást, amíg lenyomja a **frissítése** gombra. Előfordulhat, hogy más alkalmazások különböző követelmények vonatkoznak, ha az adatok szinkronizálását igények tekintetében, de a bemutatóhoz ebben az oktatóanyagban igényelhetnek, a felhasználó rendelkezik.
+Az adatelemek hozzáadásakor a rendszer a helyi SQLite-tárolóban tárolja őket, de addig nem szinkronizálja a Mobile Service-t, amíg meg nem nyomja a **frissítés** gombot. Más alkalmazások eltérő követelményekkel rendelkezhetnek, ha az adatokat szinkronizálni kell, de a bemutató szempontjából ez az oktatóanyag kifejezetten kéri a felhasználót.
 
-Gomb megnyomásakor egy új háttérben futó feladat elindul. Először leküldi a helyi tároló használata a szinkronizálási környezetet, majd lekéri az összes módosított adatokat az Azure-ból a helyi táblába végzett összes módosítást.
+Ha megnyomja ezt a gombot, elindul egy új háttérbeli feladat. Először a helyi tárolóban végzett összes változást leküldi a szinkronizálási környezettel, majd lekéri az Azure-ból származó összes megváltozott információt a helyi táblára.
 
 ### <a name="offline-testing"></a>Offline tesztelés
-1. Helyezze az eszközt vagy szimulátort az *repülési üzemmód*. Ez létrehoz egy kapcsolat nélküli forgatókönyv.
-2. Adjon hozzá néhány *ToDo* elemek vagy az egyes elemek befejezettként be van jelölve. Lépjen ki az eszközt vagy szimulátort (vagy a kényszerített zárja be az alkalmazást), majd indítsa újra. Győződjön meg arról, hogy a módosítások megőrizte az eszközön tartanak, mert a helyi SQLite-tároló.
-3. Az Azure tartalmának megtekintése *TodoItem* például a tábla egy SQL-eszközt a *SQL Server Management Studio*, vagy a REST-ügyfél, például *Fiddler* vagy  *Postman*. Győződjön meg arról, hogy rendelkezik-e az új elemeket *nem* lett szinkronizálva a kiszolgálóhoz
+1. Helyezze az eszközt vagy a szimulátort a *repülőgép módba*. Ez egy offline forgatókönyvet hoz létre.
+2. Vegyen fel néhány *teendőt* , vagy adjon meg néhány elemet befejezettként. Zárja be az eszközt vagy a szimulátort (vagy kényszerítse az alkalmazás bezárását), majd indítsa újra. Győződjön meg arról, hogy a módosítások megmaradtak az eszközön, mert a helyi SQLite-tárolóban vannak tárolva.
+3. Tekintse meg az Azure *TodoItem* tábla tartalmát egy olyan SQL-eszközzel, mint például a *SQL Server Management Studio*vagy egy Rest-ügyfél, például a *Hegedűs* vagy a *Poster*. Annak ellenőrzése, hogy az új elemek *nem* lettek-e szinkronizálva a kiszolgálóval
    
-       + Node.js-háttéralkalmazáshoz, nyissa meg a [az Azure portal](https://portal.azure.com/), és a háttérrendszer kattintson a Mobile Apps **könnyen kezelhető táblák** > **TodoItem** a tartalmánakmegtekintéséhez`TodoItem`tábla.
-       + .NET-háttérrendszert, tekintse meg a tábla tartalmának, például egy SQL-lel vagy eszköz *SQL Server Management Studio*, vagy a REST-ügyfél, például *Fiddler* vagy *Postman*.
-4. Wi-Fi kapcsolja be az eszközt vagy szimulátort. Nyomja meg a **frissítése** gombra.
-5. Újra a TodoItem adatok megtekintése az Azure Portalon. Az új és módosított TodoItems meg kell jelennie.
+       + A Node. js-háttérrendszer esetében lépjen a [Azure Portalra](https://portal.azure.com/), és a Mobile App backend-ben kattintson az **Easy Tables** > **TodoItem** elemre a `TodoItem` tábla tartalmának megtekintéséhez.
+       + .NET-háttér esetében tekintse meg a táblázat tartalmát egy olyan SQL-eszközzel, mint például a *SQL Server Management Studio*vagy egy Rest-ügyfél, például a *Hegedűs* vagy a *Poster*.
+4. Kapcsolja be a Wi-Fi-t az eszközön vagy a szimulátorban. Ezután kattintson a **frissítés** gombra.
+5. Tekintse meg ismét a TodoItem az Azure Portal. Ekkor meg kell jelennie az új és módosított TodoItems.
 
 ## <a name="additional-resources"></a>További források
 * [Offline adatszinkronizálás az Azure Mobile Appsban]
-* [Cloud Cover: Az Azure mobilszolgáltatások offline szinkronizálás] \(Megjegyzés: a videó megtalálható-e a Mobile Services, de a kapcsolat nélküli szinkronizálás – az Azure Mobile Apps hasonló módon működik\)
+* @no__t – 0Cloud fedél: Offline szinkronizálás az Azure-ban Mobile Services @ no__t-0 \(note: a videó Mobile Services, de az offline szinkronizálás hasonló módon működik az Azure Mobile Apps @ no__t-2
 
 <!-- URLs. -->
 
@@ -105,6 +105,6 @@ Gomb megnyomásakor egy új háttérben futó feladat elindul. Először leküld
 
 [Android-alkalmazás létrehozása]: app-service-mobile-android-get-started.md
 
-[Cloud Cover: Az Azure mobilszolgáltatások offline szinkronizálás]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+@no__t – 0Cloud fedél: Offline szinkronizálás az Azure-ban Mobile Services @ no__t-0
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

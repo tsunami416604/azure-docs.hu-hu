@@ -1,39 +1,21 @@
 ---
-title: Hozzon létre egy Dynamics 365 Customer Engagement-alkalmazás ajánlat |} Az Azure Marketplace-en
-description: Hogyan lehet létrehozni egy új Dynamics 365 Customer Engagement-alkalmazás ajánlat az AppSource piactérről.
+title: Dynamics 365 létrehozása a Customer engagement alkalmazás ajánlatához | Azure piactér
+description: Ez a CPP-cikk elavult, és a PC-cikkre mutat. "hogyan hozható létre új Dynamics 365 for Customer engagement Application-ajánlat a AppSource piactéren."
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/21/2018
-ms.author: pabutler
-ms.openlocfilehash: ebfef673102878e50f744081ec9b46fd4cd1796b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1682abd3983d3e090b59e6452c4761913e29da3d
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942694"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034350"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>A Dynamics 365 Customer Engagement-alkalmazás ajánlat létrehozása
+# <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Dynamics 365 létrehozása a Customer engagement alkalmazás ajánlatához
 
-Ez a szakasz ismerteti, hogyan hozhat létre, és a egy Dynamics 365 for Customer Engagement alkalmazást az AppSource piactérről-ajánlat közzététele. Minden ajánlat jelenik meg a saját entitásként a Marketplace-en, és az eszközök és a kiegészítő szolgáltatások a következő csoportosítás tevődik össze: részletes technikai csomagadatok, marketing-összetevők, támogatja az információkat, és nem kötelező Test Drive ajánlat előírásoknak. 
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 Customer engagement-ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információ: [create a New Dynamics 365 for Customer Engagement & PowerApps ajánlat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer).
 
-
-## <a name="new-offer-form"></a>Új ajánlat űrlap
-
-Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Az új ajánlat menüben válassza ki **Dynamics 365 for Customer Engagement**:
-
-![Új ajánlat menüpont a Dynamics 365 Customer Engagement-alkalmazáshoz](./media/new-dyn365ce-menu-item.png)
-
-A **új ajánlat** képernyő látható, a kezdeti [ **ajánlat beállítások** lapon](./cpp-offer-settings-tab.md).
-
-
-## <a name="next-steps"></a>További lépések
-
-A **új ajánlat** oldal nyújt lapokat és az űrlap mezőit, amelyek segítségével hozzon létre egy új ajánlatot. A következő cikkek bemutatják, hogyan adható meg az eszközintelligencia-csoportok és az új ajánlat kiegészítő információkat.
-
-* [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
-* [Technikai információs lap](./cpp-technical-info-tab.md)
-* [Tesztverzió lap](./cpp-testdrive-tab.md)
-* [Áruház részletei lap](./cpp-storefront-details-tab.md)
-* [Névjegyek lap](./cpp-contacts-tab.md)
+Mielőtt új Dynamics 365-et hozna létre a Customer engagement ajánlathoz, olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 létrehozása a Customer Engagement & PowerApps-ajánlathoz](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer) című témakör utasításait.

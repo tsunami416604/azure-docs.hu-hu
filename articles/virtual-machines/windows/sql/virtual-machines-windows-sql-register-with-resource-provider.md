@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b0a7221107f05ff2239bd77cc18e7ffedc18efc1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262884"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023596"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -42,6 +42,11 @@ Az SQL-alapú virtuális gép erőforrás-szolgáltatójának használatához re
 
   > [!NOTE]
   > Nincsenek további licencelési követelmények társítva az erőforrás-szolgáltatóval való regisztrációhoz. Az SQL VM erőforrás-szolgáltatóval való regisztráció egyszerűsített módszert kínál a Microsoft értesítési követelményeinek teljesítésére, hogy az Azure Hybrid Benefit engedélyezve lett az egyes erőforrások licencelési regisztrációs űrlapjainak kezelése helyett. 
+
+Az SQL VM erőforrás-szolgáltató használatának előnyeiről további információt a következő [channel9](https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure?WT.mc_id=dataexposed-c9-niner) videóban talál: 
+
+<iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Az SQL virtuális gép erőforrás-szolgáltatójának kihasználása az Azure-beli öntelepítési SQL Server esetén – Microsoft Channel 9 videó"></iframe>
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -159,7 +164,7 @@ A Azure Portal, az Azure CLI vagy a PowerShell használatával ellenőrizheti, h
 
 ### <a name="command-line"></a>Parancssor
 
-Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az az CLI vagy a PowerShell használatával. `ProvisioningState`azt mutatja `Succeeded` , hogy a regisztráció sikeres volt-e. 
+Ellenőrizze az aktuális SQL Server VM regisztrációs állapotot az az CLI vagy a PowerShell használatával. Ha a regisztráció sikeres volt, @no__t a 0 érték jelenik meg `Succeeded`. 
 
 # <a name="az-clitabbash"></a>[AZ PARANCSSORI FELÜLET](#tab/bash)
 

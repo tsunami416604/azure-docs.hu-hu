@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 68c48bd4288b80d6cab515aa981d0f72461c0849
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973668"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035265"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Milyen eszközöket tartalmaz az Azure Data Science Virtual Machine?
 
@@ -40,7 +40,7 @@ Alább található a Data Science Virtual Machine található eszközök naprak�
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Csak Ubuntu) | |
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Sparker     |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
 | JupyterHub (többfelhasználós notebook-kiszolgáló)|<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
-| JupyterLab (többfelhasználós notebook-kiszolgáló) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Csak Ubuntu) | |
+| JupyterLab (többfelhasználós notebook-kiszolgáló) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> | |
 | Fejlesztői eszközök, ide-kódok és kód-szerkesztők:| | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) git beépülő modullal, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)és [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [A Visual Studio a DSVM](./dsvm-tools-development.md#visual-studio-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [A Visual Studio Code a DSVM](./dsvm-tools-development.md#visual-studio-code) |

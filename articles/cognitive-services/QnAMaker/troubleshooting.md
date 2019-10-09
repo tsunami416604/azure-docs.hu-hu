@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 00d3d63ff1a5b4d5dab0534e039145b97091af87
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802153"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026028"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -43,7 +43,7 @@ A QnAMaker szolgáltatás végpontja hibakeresési célokra használható, amiko
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>A QnA Maker portál Súgó robotjának használata
 
-A QnA Maker segítséget nyújt a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
+A **QnA Maker segítséget nyújt** a QnA Maker portálon a segítségére. A Súgó robot minden weblapon elérhető. A robot a QnA Maker segítségével ad választ, és biztosítja a [ C# robot-keretrendszer kódjának projektjét](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) a robot számára, így gyorsan megkezdheti a saját válaszának használatát. 
 
 ![! [QnA Maker egy * * Súgó * * robotot biztosít a QnA Maker portálon, hogy segítsen.] (./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
@@ -99,7 +99,7 @@ Lásd: [adatforrás-helyek](./Concepts/data-sources-supported.md#data-source-loc
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban végzett frissítések nem fognak megjelenni közzététele. Mi ennek az oka?
 
-Minden szerkesztési művelet az egy tábla frissítése, tesztelési vagy beállítás kell megnyitása előtt közzé lehet tenni. Kattintson a **mentéséhez és a vonat** gomb minden szerkesztési művelet után.
+Minden szerkesztési művelet az egy tábla frissítése, tesztelési vagy beállítás kell megnyitása előtt közzé lehet tenni. Ügyeljen rá, hogy minden szerkesztési művelet után kattintson a **Mentés és a betanítás** gombra.
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>A Tudásbázis támogatja a részletes adattartalmat vagy multimédiás nem?
 
@@ -123,7 +123,7 @@ Az app service frissítése, ha a figyelmeztetés ikon mellett a Tudásbázis k�
 
 Ha töröl egy Azure Search indexet, a művelet végleges, és az index nem állítható helyre. 
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Töröltem az `testkb` indexet a keresési szolgáltatásban. Hogyan javíthatom ezt? 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Törölte a `testkb` indexet a keresési szolgáltatásban. Hogyan javíthatom ezt? 
 
 A régi adatait nem lehet helyreállítani. Hozzon létre egy új QnA Maker-erőforrást, és hozza létre újra a tudásbázist.
 
@@ -139,7 +139,7 @@ Több nyelv és több tudásbázisok szeretné használni, a felhasználók szá
 
 Az Azure Search-erőforrás neve a QnA Maker erőforrásnév bizonyos betűk hozzáfűzi a végén a rendszer. Így nehéz különbséget tenni a QnA Maker több keresési erőforrások között. Hozzon létre egy külön Azure Search-szolgáltatás (elnevezési azt a kívánt módon), és csatlakoztassa a kérdések és válaszok szolgáltatást. A lépések hasonlóak az [Azure Search verziófrissítéséhez](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)szükséges lépésekhez.
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Ha QnA Maker visszaadja `Runtime core is not initialized,` , Hogyan javíthatom?
+### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Ha a QnA Maker a `Runtime core is not initialized,` értéket adja vissza, Hogyan javíthatom?
 
 Lehet, hogy az App Service lemezterülete megtelt. A lemezterület kijavításának lépései:
 
@@ -147,7 +147,7 @@ Lehet, hogy az App Service lemezterülete megtelt. A lemezterület kijavításá
 1. Noha még mindig az App Service-ben van, válassza a **fejlesztői eszközök**, majd a **speciális eszközök**, majd a **tovább**lehetőséget. Ekkor megnyílik egy új böngészőablak.
 1. Válassza a **hibakeresési konzol**, majd a **cmd** parancsot egy parancssori eszköz megnyitásához. 
 1. Navigáljon a _site/wwwroot/az adat/QnAMaker/_ könyvtárhoz.
-1. Távolítsa el az összes olyan mappát, `rd`amelynek a neve megkezdődik. 
+1. Távolítsa el az összes olyan mappát, amelynek a neve `rd` karakterrel kezdődik. 
 
     Ne **törölje** a következőket:
 
@@ -179,7 +179,7 @@ Az alábbi információkra van szüksége a Tudásbázisról:
 
 Ezekkel az információkkal a Azure Portal a robot app Service-t. A **Beállítások – > konfiguráció – > Alkalmazásbeállítások**területen módosítsa ezeket az értékeket.  
 
-A Tudásbázis Endpoint Key címkéje `QnAAuthkey` az ABS szolgáltatásban található. 
+A Tudásbázis végponti kulcsának `QnAAuthkey` jelölése van az ABS szolgáltatásban. 
 
 ### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Két vagy több ügyfélalkalmazás is megoszthat egy tudásbázist? 
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034299"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028520"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>A Batch-előrejelzések futtatása Azure Machine Learning folyamatokkal rendelkező nagyméretű adatkészleteken
 
@@ -52,7 +52,7 @@ A következő lépésekkel állíthatja be a folyamat futtatásához szükséges
 
 - Elérni az adattárhoz, amely már rendelkezik a modell imagenet, bemeneti címke és képek pontszámot rendelni az (ez már be van állítva az Ön számára).
 - Egy adattár beállítása a kimenetek tárolásához.
--  `DataReference`Konfigurálja úgy az objektumokat, hogy az előző adattárolókban lévő értékekre mutassanak.
+- Konfigurálja a @ no__t-0 @ no__t-1objects, hogy az előző adattárolók adatpontjára mutasson.
 - Állítsa be a számítási gépek vagy fürtök, ahol a folyamat lépései futni fog.
 
 ### <a name="access-the-datastores"></a>Hozzáférés az adattárolók
@@ -77,7 +77,7 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 Ezután állítsa be, hogy az alapértelmezett adattárt használja a kimenetekhez.
 
-A munkaterület létrehozásakor a [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) és a [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alapértelmezés szerint a munkaterülethez van csatolva. Azure Files a munkaterület alapértelmezett adattára, de a blob Storage-t is használhatja adattárként. További információ: [Azure Storage-beállítások](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Amikor létrehoz egy munkaterületet, [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) and [blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) are alapértelmezés szerint csatolva van a munkaterülethez. Azure Files a munkaterület alapértelmezett adattára, de a blob Storage-t is használhatja adattárként. További információ: [Azure Storage-beállítások](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
@@ -87,7 +87,7 @@ def_data_store = ws.get_default_datastore()
 
 Most már hivatkozhat az adatokat a folyamatban, bemeneteként a folyamat lépéseit.
 
-Egy adatforrás egy adott folyamat képviseli egy [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektum.  `DataReference`Az objektum olyan adatokra mutat, amelyek a-ben vagy egy adattárból érhetők el. Szüksége van `DataReference`  a bemeneti lemezképekhez használt könyvtárra, a könyvtárra, amelyben az előkészített modell tárolódik, a címkék és a kimeneti könyvtár könyvtára.
+Egy adatforrás egy adott folyamat képviseli egy [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektum. A @ no__t-0 @ no__t-1object olyan adatokra mutat, amelyek a-ben vagy egy adattárból érhetők el. A bemeneti képekhez használt könyvtárhoz `DataReference` @ no__t-1objects kell lennie, az előre betanított modellt tároló könyvtár, a címkék könyvtára és a kimeneti könyvtár.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -154,7 +154,7 @@ A pretrained modell használata előtt kell a modell letöltése és a munkater�
 
 ### <a name="download-the-pretrained-model"></a>Töltse le a pretrained modell
 
-Töltse le a imagenet számítógépes látástechnológiai modellel (InceptionV3) származó <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Ezután bontsa ki az `models` almappába.
+Töltse le a imagenet számítógépes látástechnológiai modellel (InceptionV3) származó <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Ezután bontsa ki a `models` almappába.
 
 ```python
 import os
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >A következő kód csak egy minta, amely a [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)által használt [batch_score.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) másolási fájlban található. A forgatókönyvhöz létre kell hoznia egy saját pontozási szkriptet.
 
-A `batch_score.py` parancsfájl bemeneti képekhez fogadja *dataset_path*, imagenet modellek *model_dir,* , és arcokhoz *eredmények-label.txt* , *output_dir*.
+A `batch_score.py` parancsfájl bemeneti képeket készít a *dataset_path*, a *model_dir* -ben előre betanított modellekben, és *Results-Label. txt* kimenetet küld a *output_dir*.
 
 ```python
 # Snippets from a sample scoring script
@@ -267,7 +267,7 @@ amlcompute_run_config.environment.spark.precache_packages = False
 
 ### <a name="specify-the-parameter-for-your-pipeline"></a>Adja meg a paramétert a folyamat
 
-Hozzon létre egy folyamat paramétert egy alapértelmezett értékkel rendelkező [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) objektum használatával.
+Hozzon létre egy folyamat paramétert egy alapértelmezett értékkel rendelkező [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) object használatával.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter

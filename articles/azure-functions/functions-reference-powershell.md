@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973370"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029013"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -245,7 +245,7 @@ A PowerShell-függvények naplózása ugyanúgy működik, mint a rendszeres Pow
 | Figyelmeztetés | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | _Az_ adatszint naplózásának megírása. |
 | Hibakeresés | **`Write-Debug`** |
-| Híváslánc | **`Write-Progress`** <br /> **`Write-Verbose`** |
+| Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Ezen parancsmagok mellett a folyamatba írt összes adat át lesz irányítva a `Information` naplózási szintre, és az alapértelmezett PowerShell-formázással jelenik meg.
 
@@ -434,6 +434,9 @@ A következő beállítások állnak rendelkezésre a felügyelt függőségek l
 | MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 nap)     | Minden PS-feldolgozó kezdeményezi a modul frissítésének ellenőrzését a PS-galériában a munkavégző folyamat indításakor és minden MDMaxBackgroundUpgradePeriod után. Ha a PS-katalógusban új modul-verziók érhetők el, akkor a rendszer a PS-feldolgozók számára elérhető fájlrendszerbe telepíti őket. Ennek az értéknek a csökkentése lehetővé teszi, hogy a függvény alkalmazása hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is megnöveli (hálózati I/O-, CPU-és tárolási). Ennek az értéknek a növelésével csökken az alkalmazás erőforrásainak használata, de az új modul-verziók az alkalmazásba való kézbesítése is késleltethető.      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" (1 óra)       | Miután telepítette az új modul verzióit a fájlrendszerre, minden PS-feldolgozót újra kell indítani. A PS-feldolgozók újraindítása hatással lehet az alkalmazás rendelkezésre állására, mert az az aktuális függvény hívásait megszakítja. Amíg az összes PS-feldolgozó újraindul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. Az összes PS-feldolgozó újraindítása a MDNewSnapshotCheckPeriod-en belül fejeződik be. Ennek az értéknek a növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon-verzióit használja. |
 | MDMinBackgroundUpgradePeriod      | "1.00:00:00" (1 nap)     | A gyakori munkavégző újraindítások esetén a modulok frissítésének ellenőrzése nem történik meg, ha bármelyik feldolgozó már kezdeményezte az utolsó MDMinBackgroundUpgradePeriod belül. |
+
+> [!NOTE]
+> A felügyelt függőségek a www.powershellgallery.com elérésére támaszkodnak a modulok letöltéséhez. A szükséges tűzfalszabályok hozzáadásával gondoskodnia kell arról, hogy a Function Runtime hozzáférjen ehhez az URL-címhez.
 
 A saját egyéni moduljainak kihasználása kicsit eltér a megszokott módon.
 

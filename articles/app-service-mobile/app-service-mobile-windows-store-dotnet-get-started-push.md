@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e3e82c971fee7f7dd95e6f9ef72631e8e82ebe7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851125"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025262"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Leküldéses értesítések hozzáadása a Windows-alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> A Visual Studio App Center a Mobile App Development új és integrált szolgáltatásaiba fektet. A fejlesztők aszolgáltatások kiépítését, **tesztelését** és terjesztését használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a leküldéses szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők a hitelesítést a felhasználók és az adatszolgáltatások hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében. Tekintse meg [app Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -43,7 +43,7 @@ Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja,
 
 Be kell küldenie az alkalmazást a Microsoft Storeba, majd konfigurálnia kell a kiszolgálói projektet, hogy integrálható legyen a [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) szolgáltatással a leküldéses küldéshez.
 
-1. A Visual Studio Megoldáskezelőban kattintson a jobb gombbal a UWP alkalmazás projektre > , majd kattintson az áruházbeli**alkalmazás hozzárendelése az áruházhoz**elemre.
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a UWP alkalmazás-projektre, majd kattintson az **áruház** > **alkalmazás hozzárendelése az áruházhoz..** . elemre.
 
     ![Alkalmazás hozzárendelése Microsoft Store](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -65,7 +65,7 @@ Be kell küldenie az alkalmazást a Microsoft Storeba, majd konfigurálnia kell 
 
 ## <a id="update-service"></a>A kiszolgáló frissítése leküldéses értesítések küldéséhez
 
-Használja az alábbi eljárást, amely megfelel a háttérbeli&mdash;projekt típusának: [.net-háttér](#dotnet) vagy [Node. js-háttér](#nodejs).
+Használja az alábbi eljárást, amely megfelel a háttérbeli projekttípus @ no__t-0either [.net backend](#dotnet) vagy [Node. js-háttérnek](#nodejs).
 
 ### <a name="dotnet"></a>.NET-háttérbeli projekt
 
@@ -171,7 +171,7 @@ Használja az alábbi eljárást, amely megfelel a háttérbeli&mdash;projekt t�
 ## <a id="update-app"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
 Ezután az alkalmazásnak regisztrálnia kell a leküldéses értesítésekhez az indításkor. Ha már engedélyezte a hitelesítést, győződjön meg arról, hogy a felhasználó bejelentkezik, mielőtt megpróbál regisztrálni a leküldéses értesítésekre.
 
-1. Nyissa meg a **app.XAML.cs** projektfájlt, és adja `using` hozzá a következő utasításokat:
+1. Nyissa meg a **app.XAML.cs** projektfájlt, és adja hozzá a következő `using` utasítást:
 
     ```csharp
     using System.Threading.Tasks;

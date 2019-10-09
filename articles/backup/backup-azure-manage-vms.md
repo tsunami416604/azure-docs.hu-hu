@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130177"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029256"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
 
@@ -49,7 +49,7 @@ Virtuális gépek megtekintése a tároló irányítópultján:
 
     ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját. Ebben a példában a tároló egy virtuális gépet véd: demobackup.  
+6. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját. Ebben a példában a tároló egy virtuális gépet véd: demobackup.  
 
     ![A biztonsági mentési elemek panel megtekintése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ Biztonsági mentési szabályzat kezelése:
 
     ![A biztonsági mentési elemek csempe megnyitása](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját és a legutóbbi biztonsági mentési állapotot a legutóbbi visszaállítási pontok idejével.
+3. A **biztonsági mentési elemek** panelen megtekintheti a védett virtuális gépek listáját és a legutóbbi biztonsági mentési állapotot a legutóbbi visszaállítási pontok idejével.
 
     ![A biztonsági mentési elemek panel megtekintése](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 

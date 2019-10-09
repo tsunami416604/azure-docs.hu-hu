@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/06/2019
-ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 10/02/2019
+ms.openlocfilehash: 6f2ef181e7f61696245a4413d7a28d84801f2838
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162257"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032882"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású-adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -37,31 +37,31 @@ A nagy kapacitású szolgáltatási réteg csak az önálló adatbázisok eseté
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Miben különbözik a nagy kapacitású szolgáltatási szintjei a általános célú és üzletileg kritikus szolgáltatási szintjeitől
 
-A virtuális mag-alapú szolgáltatási rétegek elsődlegesen a rendelkezésre állás, a tárolási típus és a IOPs alapján különböztethetők meg.
+A virtuális mag-alapú szolgáltatási rétegek elsődlegesen a rendelkezésre állás, a tárolási típus és a IOPS alapján különböztethetők meg.
 
 - A általános célú szolgáltatási szintje a legtöbb üzleti számítási feladathoz megfelelő, és a számítási és tárolási lehetőségek kiegyensúlyozott készletét kínálja, ahol az IO-késés vagy a feladatátvételi idő nem a prioritás.
 - A nagy kapacitású szolgáltatási szintje nagy mennyiségű adatbázis-számítási feladatra van optimalizálva.
 - A üzletileg kritikus szolgáltatási szintje olyan üzleti számítási feladatokhoz megfelelő, ahol az IO-késés prioritás.
 
-| | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzleti szempontból kulcsfontosságú |
+| | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzletileg kritikus |
 |:---:|:---:|:---:|:---:|:---:|
-| **Legjobb a következőhöz:** |Összes|  A legtöbb üzleti számítási feladat. A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál. | Nagy adatkapacitási követelményekkel rendelkező adatalkalmazások, valamint a tárterület automatikus méretezésének és méretezésének képessége. | OLTP alkalmazások nagy tranzakciós sebességgel és a legalacsonyabb késleltetésű IO-val. A maximális rugalmasságot nyújt a hibákhoz több, elkülönített replika használatával.|
+| **Legjobb a következőhöz:** |Összes|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület méretének automatikus skálázása 100 TB-ig, folyékony vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||Önálló adatbázis/rugalmas készlet/felügyelt példány | Önálló adatbázis | Önálló adatbázis/rugalmas készlet/felügyelt példány |
 | **Számítási méret**|Önálló adatbázis/rugalmas készlet * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
 | |Felügyelt példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | – | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Tárolás típusa** | Összes |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | Önálló adatbázis/rugalmas készlet | 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
 | | Felügyelt példány  | 32 GB – 8 TB | – | 32 GB – 4 TB |
-| **IO-átviteli sebesség** | Önálló adatbázis * * | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPs a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
+| **IOPS** | Önálló adatbázis * * | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
 | | Felügyelt példány | A fájl méretétől függ | – | Felügyelt példány: A fájl méretétől függ|
 |**Rendelkezésre állás**|Összes|1 replika, nincs olvasási méretezés, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási méretezés, részleges helyi gyorsítótár | 3 replika, 1 olvasási méretezés, zóna – redundáns HA, teljes helyi gyorsítótár |
 |**Mentések**|Összes|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
 
-\*A nagy kapacitású szolgáltatási szintje nem támogatja a rugalmas készleteket
+@no__t – 0 rugalmas készlet nem támogatott a nagy kapacitású szolgáltatási rétegében
 
 ### <a name="who-should-use-the-hyperscale-service-tier"></a>Kinek érdemes a nagy kapacitású szolgáltatási szintet használnia
 
-Az nagy kapacitású szolgáltatási réteg elsődlegesen olyan ügyfelek számára készült, akik nagy helyszíni SQL Server adatbázisokkal rendelkeznek, és szeretnék modernizálni alkalmazásaikat a felhőre való áttéréssel, illetve a már használatban lévő Azure SQL Database és a jelentős kibővítéshez az adatbázis növekedésének lehetséges lehetőségei. A nagy kapacitású olyan ügyfelek számára is ajánlott, akik nagy teljesítményt és magas skálázhatóságot keresnek. A nagy kapacitású a következőket kapja:
+A nagy kapacitású szolgáltatási réteg olyan ügyfelek számára készült, akik nagyméretű helyszíni SQL Server adatbázisokkal rendelkeznek, és az alkalmazásait a felhőbe vagy a már Azure SQL Database használatban lévő ügyfelek számára kívánják modernizálni az adatbázis növekedésének lehetősége. A nagy kapacitású olyan ügyfelek számára is ajánlott, akik nagy teljesítményt és magas skálázhatóságot keresnek. A nagy kapacitású a következőket kapja:
 
 - Akár 100 TB-os adatbázis-méret támogatása
 - Gyors adatbázisok biztonsági mentése az adatbázis méretétől függetlenül (a biztonsági másolatok fájl-Pillanatképek alapján)
@@ -93,7 +93,7 @@ SQL Database a nagy kapacitású a számítási feladatok igénye alapján gyors
 
   A nagy kapacitású lehetővé teszi egy vagy több további számítási csomópont kiépítését, amelyeket az olvasási kérések kiszolgálására használhat. Ez azt jelenti, hogy ezekkel a további számítási csomópontokkal írásvédett csomópontként használhatja az olvasási munkaterhelés kiszervezését az elsődleges számításból. A csak olvasható adatok mellett ezek a csomópontok az elsődleges feladatátvétel esetén is a gyors készenléti állapotot is szolgálják.
 
-  Ezen további számítási csomópontok kiépítés állandó időben és online művelettel végezhető el. Ehhez a további írásvédett számítási csomópontokhoz is csatlakozhat, ha a `ApplicationIntent` kapcsolati `readonly`karakterlánc argumentumát a értékre állítja. A rendszer automatikusan átirányítja a (val `readonly` ) jelölésű kapcsolatokat a további írásvédett számítási csomópontok egyikére.
+  Ezen további számítási csomópontok kiépítés állandó időben és online művelettel végezhető el. Ehhez a további írásvédett számítási csomópontokhoz is csatlakozhat, ha a kapcsolati karakterláncban a `ApplicationIntent` argumentumot `readonly` értékre állítja. A `readonly` jelölésű kapcsolatokat a rendszer automatikusan átirányítja a további írásvédett számítási csomópontok egyikére.
 
 ## <a name="deep-dive-questions"></a>Részletes kérdések
 
@@ -161,7 +161,7 @@ A nagy kapacitású és a tranzakciós napló gyakorlatilag végtelen. Nem kell 
 
 ### <a name="does-my-temp-db-scale-as-my-database-grows"></a>A saját adatbázis-méretezési szolgáltatásom egyre növekszik
 
-Az `tempdb` adatbázis a helyi SSD-tárolón található, és a kiépített számítási méret alapján van konfigurálva. A `tempdb` szolgáltatás optimalizált és elvégezhető, hogy maximális teljesítménybeli előnyöket biztosítson. A `tempdb` méret nem konfigurálható, és a tároló alrendszere kezeli.
+A `tempdb` adatbázis a helyi SSD-tárolón található, és a kiépített számítási méret alapján van konfigurálva. A `tempdb` optimalizálva van, és a maximális teljesítménybeli előnyök biztosítására szolgál. A `tempdb` méret nem konfigurálható, és a tároló alrendszere kezeli.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-the-data-files"></a>Az adatbázis méretének automatikus növekedése vagy az adatfájlok méretének kezelése
 
@@ -173,7 +173,7 @@ Az adatbázis mérete automatikusan növekszik, amikor több adatot szúr be/tö
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>Milyen növekményekben növekszik az adatbázis mérete
 
-1 GB
+Az egyes adatfájlok mérete 10 GB. Egyszerre több adatfájl is növekedhet.
 
 ### <a name="is-the-storage-in-sql-database-hyperscale-local-or-remote"></a>A tároló SQL Database helyi vagy távoli nagy kapacitású
 
@@ -217,22 +217,23 @@ Nem. Jelenleg nem helyezhető át egy nagy kapacitású-adatbázis egy másik sz
 
 Igen. Néhány Azure SQL Database funkció még nem támogatott a nagy kapacitású-ben, beleértve a hosszú távú adatmegőrzési biztonsági mentést is. Miután áttelepítette az adatbázisokat a nagy kapacitású, ezek a funkciók nem működnek.  Elvárjuk, hogy ezek a korlátozások ideiglenesek legyenek.
 
-### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Áthelyezhetem a helyszíni SQL Server adatbázist vagy a SQL Server virtuálisgép-adatbázist a nagy kapacitású
+### <a name="can-i-move-my-on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Áthelyezhetem a helyszíni SQL Server adatbázist vagy a SQL Server virtuálisgép-adatbázist a nagy kapacitású
 
-Igen. Az összes meglévő áttelepítési technológiát használhatja a nagy kapacitású való áttelepítéshez, beleértve a BACPAC, a tranzakciós replikációt, a logikai betöltést. Lásd még a [Azure Database Migration Service](../dms/dms-overview.md).
+Igen. Az összes meglévő áttelepítési technológia segítségével áttelepítheti a nagy kapacitású, beleértve a tranzakciós replikációt és bármely más adatáthelyezési technológiát (tömeges másolás, Azure Data Factory, Azure Databricks, SSIS). Lásd még a [Azure Database Migration Service](../dms/dms-overview.md).
 
 ### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Milyen állásidő van a helyszíni vagy virtuálisgép-környezetből a nagy kapacitású-re való Migrálás során, és hogyan lehet azt csökkenteni
 
-Az állásidő ugyanaz, mint a leállás, amikor az adatbázisait egyetlen adatbázisba telepíti át Azure SQL Databaseban. A tranzakciós replikálással](replication-to-sql-database.md#data-migration-scenario
-) csökkentheti az adatbázisok leállási áttelepítését akár néhány TB-os méretig. [ A nagy méretű adatbázisok (10 + TB) esetében érdemes lehet az ADF-, Spark-vagy más adatáthelyezési technológiák használatával áttelepíteni az adatátvitelt.
+Az állásidő ugyanaz, mint a leállás, amikor az adatbázisait egyetlen adatbázisba telepíti át Azure SQL Databaseban. A [transactional Replication @ no__t-1 használatával csökkentheti az adatleállások áttelepítését az adatbázisok számára, akár néhány TB-os méretig. A nagy méretű adatbázisok (10 + TB) esetében érdemes lehet az ADF-, Spark-vagy más adatáthelyezési technológiák használatával áttelepíteni az adatátvitelt.
 
 ### <a name="how-much-time-would-it-take-to-bring-in-x-amount-of-data-to-sql-database-hyperscale"></a>Mennyi ideig tart, hogy X mennyiségű adattal SQL Database nagy kapacitású
 
-A nagy kapacitású képes az új/módosított adatmennyiség 100 MB/s sebességű felhasználására.
+A nagy kapacitású képes az új/módosított adatok 100 MB/s sebességű felhasználására, de az adatok Azure SQL-adatbázisba való áthelyezéséhez szükséges idő az elérhető hálózati átviteli sebesség, a forrás olvasási sebessége és a cél nagy kapacitású adatbázis-szolgáltatási szint célkitűzése is hatással van.
 
 ### <a name="can-i-read-data-from-blob-storage-and-do-fast-load-like-polybase-and-sql-data-warehouse"></a>Beolvasható az adatok a blob Storage-ból, és gyors betöltés (például a Base és a SQL Data Warehouse)
 
 Beolvashatja az Azure Storage-ból származó adatait, és betöltheti az adatterhelést egy nagy kapacitású-adatbázisba (ugyanúgy, mint egy normál önálló adatbázis esetében). A (z) Azure SQL Database jelenleg nem támogatja a következőt: Base. Az [SQL-hez készült Spark-összekötővel](sql-database-spark-connector.md) [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) vagy Spark-feladatot futtathat a [Azure Databricksban](https://docs.microsoft.com/azure/azure-databricks/) . A Spark-összekötő az SQL-hez támogatja a tömeges beszúrást.
+
+Az Azure Blob Store-ból származó adatok tömeges beolvasása BULK INSERT vagy OPENROWSET használatával is lehetséges: [Példák az Azure Blob Storageban tárolt adatmennyiségek tömeges elérésére](https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?view=sql-server-2017#accessing-data-in-a-csv-file-referencing-an-azure-blob-storage-location).
 
 Az egyszerű helyreállítás vagy a tömeges naplózási modell nem támogatott a nagy kapacitású. A magas rendelkezésre állás biztosításához teljes helyreállítási modell szükséges. A nagy kapacitású azonban az új naplózási architektúra miatt egy adott Azure SQL Database-adatbázishoz képest jobb adatfeldolgozási sebességet biztosít.
 
@@ -344,7 +345,7 @@ A fel-és leskálázás eredményeként a meglévő kapcsolatok el lettek dobva,
 
 Végfelhasználó. Nem automatikus.  
 
-### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>A számítási felskálázással is növekszik `tempb`
+### <a name="does-my-tempb-also-grow-as-the-compute-is-scaled-up"></a>A `tempb` is növekedni fog, mivel a számítási felskálázás
 
 Igen. A temp db automatikusan vertikális felskálázást végez, ahogy a számítás növekszik.  
 
@@ -360,16 +361,16 @@ Alapértelmezés szerint 2 replikát hozunk létre a nagy kapacitású-adatbázi
 
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Hogyan kapcsolódás ezekhez a másodlagos számítási csomópontokhoz
 
-Ehhez a további írásvédett számítási csomópontokhoz is csatlakozhat, ha a `ApplicationIntent` kapcsolati `readonly`karakterlánc argumentumát a értékre állítja. A rendszer automatikusan átirányítja a (val `readonly` ) jelölésű kapcsolatokat a további írásvédett számítási csomópontok egyikére.  
+Ehhez a további írásvédett számítási csomópontokhoz is csatlakozhat, ha a kapcsolati karakterláncban a `ApplicationIntent` argumentumot `readonly` értékre állítja. A `readonly` jelölésű kapcsolatokat a rendszer automatikusan átirányítja a további írásvédett számítási csomópontok egyikére.  
 
 ### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>Hogyan ellenőrizni, hogy sikerült-e csatlakozni a másodlagos számítási csomóponthoz a SSMS/más ügyféleszközök használatával?
 
-A következő T-SQL-lekérdezést hajthatja végre a SSMS/other Client Tools `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`használatával:.
-Az eredmény az `READ_ONLY` , ha a Kapcsolódás a csak olvasási jogosultsággal rendelkező másodlagos csomópontra mutat `READ_WRITE` , vagy ha a Kapcsolódás az elsődleges csomópontra mutat.
+A következő T-SQL-lekérdezést hajthatja végre a SSMS/other Client Tools használatával: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Az eredmény @no__t – 0, ha a Kapcsolódás a csak olvasási jogosultsággal rendelkező másodlagos csomópontra mutat, vagy `READ_WRITE`, ha a Kapcsolódás az elsődleges csomópontra mutat.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Létrehozhatok egy dedikált végpontot az olvasási léptékű replikához
 
-Nem. Csak olvasási léptékű replikához csatlakozhat `ApplicationIntent=ReadOnly`. ehhez a következőt kell megadnia:.
+Nem. A `ApplicationIntent=ReadOnly` érték megadásával csak olvasási léptékű replikához csatlakozhat.
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Az olvasási feladat intelligens terheléselosztása a rendszeren történik
 
@@ -381,7 +382,7 @@ Nem. A másodlagos számítási csomópontokat is használja a rendszer, így a 
 
 ### <a name="do-i-get-different-temp-db-sizing-for-my-primary-compute-and-my-additional-secondary-compute-nodes"></a>Az elsődleges számítási és a további másodlagos számítási csomópontok esetében eltérő ideiglenes adatbázis-méretezést kapok
 
-Nem. A beállítása a számítási méret kiépítés alapján történik,amásodlagosszámításicsomópontokméretemegegyezikazelsődlegesszámításimérettel.`tempdb`
+Nem. A `tempdb` a számítási méret kiépítés alapján van konfigurálva, a másodlagos számítási csomópontok mérete megegyezik az elsődleges számítási mérettel.
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-nodes"></a>Hozzáadhatok indexeket és nézeteket a másodlagos számítási csomópontokon
 

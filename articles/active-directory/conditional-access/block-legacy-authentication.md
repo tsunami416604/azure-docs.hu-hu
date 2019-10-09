@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931959"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024577"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel   
 
@@ -52,11 +52,11 @@ Ez a szakasz azt ismerteti, hogyan lehet feltételes hozzáférési szabályzato
 
 Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először meg kell értenie, hogy a felhasználók rendelkeznek-e örökölt hitelesítést használó alkalmazásokkal, és hogy ez milyen hatással van a teljes címtárra. Az Azure AD bejelentkezési naplói segítségével megtudhatja, hogy örökölt hitelesítést használ-e.
 
-1. Navigáljon a **Azure Portal** > **Azure Active Directory** > a**bejelentkezések**elemre.
-1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha az **oszlopok** > **ügyfélalkalmazás**elemre kattint.
-1. Szűrők > hozzáadása az**ügyfélalkalmazás** > Válassza ki a **többi ügyfél** összes beállítását, és kattintson az **alkalmaz**gombra.
+1. Navigáljon a **Azure Portal** > **Azure Active Directory** > **bejelentkezéshez**.
+1. Ha nem látható, akkor adja hozzá az ügyfélalkalmazás oszlopot, ha a  > **ügyfélalkalmazás** **oszlopaira**kattint.
+1. **Vegyen fel szűrőket** > **ügyfélalkalmazás** > válassza ki a **többi ügyfél** összes beállítását, és kattintson az **alkalmaz**gombra.
 
-A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az alapinformációk lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
+A szűrés csak az örökölt hitelesítési protokollok által végrehajtott bejelentkezési kísérleteket fogja megjeleníteni. Az egyes bejelentkezési kísérletekre kattintva további részleteket is megtudhat. Az **alapinformációk** lapon található **ügyfélalkalmazás** mező jelzi, hogy melyik örökölt hitelesítési protokollt használta a rendszer.
 
 Ezek a naplók azt jelzik, hogy mely felhasználók maradnak az örökölt hitelesítéstől függően, és mely alkalmazások örökölt protokollokat használnak a hitelesítési kérések elvégzéséhez. Azoknál a felhasználóknál, akik nem jelennek meg a naplókban, és a rendszer megerősíti, hogy nem használ örökölt hitelesítést, csak ezekre a felhasználókra alkalmazza a feltételes hozzáférési szabályzatot.
 
@@ -64,7 +64,7 @@ Ezek a naplók azt jelzik, hogy mely felhasználók maradnak az örökölt hitel
 
 A feltételes hozzáférési szabályzatban beállíthat egy olyan feltételt, amely az erőforrásokhoz való hozzáféréshez használt ügyfélalkalmazások számára van kötve. Az ügyfélalkalmazások feltétele lehetővé teszi, hogy az örökölt hitelesítéssel szűkítse a hatókört az alkalmazásokra, ha a **többi ügyfél** lehetőséget választja a **Mobile apps és az asztali ügyfelek**számára.
 
-![Egyéb ügyfelek](./media/block-legacy-authentication/01.png)
+![Más ügyfelek](./media/block-legacy-authentication/01.png)
 
 Az alkalmazások hozzáférésének letiltásához válassza a **hozzáférés letiltása**lehetőséget.
 
@@ -75,7 +75,7 @@ Az alkalmazások hozzáférésének letiltásához válassza a **hozzáférés l
 Ha le szeretné tiltani a szervezet örökölt hitelesítését, valószínűleg úgy gondolja, hogy ezt a következő parancs kiválasztásával tudja elvégezni:
 
 - Minden felhasználó
-- Minden felhőalkalmazás
+- Minden felhőalapú alkalmazás
 - Hozzáférés letiltása
 
 ![Hozzárendelések](./media/block-legacy-authentication/03.png)
@@ -101,7 +101,7 @@ További információ: [how is hogyan kell telepíteni az új szabályzatot?](be
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-A **más ügyfelekkel** való hozzáférés letiltása szintén blokkolja az Exchange Online PowerShellt az alapszintű hitelesítéssel.
+A **más ügyfelekkel** való hozzáférés letiltása az alapszintű hitelesítéssel blokkolja az Exchange Online PowerShell-t és a Dynamics 365-et is.
 
 A házirend konfigurálása **más ügyfelek** számára a teljes szervezetet blokkolja bizonyos ügyfelektől, például a SPConnect. Ez a blokk azért fordul elő, mert a régebbi ügyfelek nem várt módon végzik a hitelesítést. A probléma nem vonatkozik a nagy Office-alkalmazásokra, például a régebbi Office-ügyfelekre.
 
@@ -119,5 +119,5 @@ Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének ha
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés megkövetelése [adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](app-based-mfa.md) egy példához című témakört.
+- Ha még nem ismeri a feltételes hozzáférési szabályzatok konfigurálását, tekintse meg a többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáférés](app-based-mfa.md) egy példához című témakört.
 - A modern hitelesítés támogatásával kapcsolatos további információkért lásd: [Hogyan működik a modern hitelesítés az office 2013 és az office 2016 ügyfélalkalmazások számára](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016) . 

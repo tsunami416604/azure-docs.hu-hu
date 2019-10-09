@@ -12,19 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299249"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038146"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Ismerkedjen meg a Java-nyomkövetési naplók Application Insights
 Ha a nyomkövetéshez Logback vagy Log4J (v 1.2 vagy v 2.0) használ, a nyomkövetési naplókat automatikusan elküldheti Application Insights ahol megtekintheti és megkeresheti őket.
 
+> [!TIP]
+> Az alkalmazáshoz csak egyszer kell beállítania a Application Insights-kialakítási kulcsot. Ha olyan keretrendszert használ, mint a Java Spring, előfordulhat, hogy az alkalmazás konfigurációjában máshol már regisztrálta a kulcsot.
+
 ## <a name="using-the-application-insights-java-agent"></a>A Application Insights Java-ügynök használata
 
-Az Application Insights Java-ügynököt beállíthatja úgy, hogy automatikusan rögzítse a naplókat, ha `AI-Agent.xml` engedélyezi a funkciót a fájlban:
+A Application Insights Java-ügynököt beállíthatja úgy, hogy automatikusan rögzítse a naplókat, ha engedélyezi a funkciót a `AI-Agent.xml` fájlban:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -92,7 +95,7 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
 ```
 
 #### <a name="if-youre-using-gradle"></a>Ha Gradle-t használ...
-Ha a projekt már be van állítva az Gradle for Build használatára, adja hozzá a következő sorok egyikét a `dependencies` Build. Gradle fájljában található csoporthoz:
+Ha a projekt már be van állítva az Gradle for Build használatára, adja hozzá a következő sorok egyikét a Build. Gradle fájl `dependencies` csoportjához:
 
 Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letöltéséhez.
 
@@ -118,7 +121,7 @@ Ezután frissítse a projekt függőségeit a letöltött bináris fájlok letö
 #### <a name="otherwise-"></a>Egyéb esetben...
 Kövesse az irányelveket a Application Insights Java SDK manuális telepítéséhez, töltse le a jar-t (a Maven Central oldalának megérkezése után kattintson a "jar" hivatkozásra a letöltési szakaszban) a megfelelő hozzáfűzéshez, és adja hozzá a letöltött append jar-t a projekthez.
 
-| Naplózó | Letöltés | Erőforrástár |
+| Tuskózó | Letöltés | Erőforrástár |
 | --- | --- | --- |
 | Logback |[Logback-hozzáfűző jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v2.0 |[Log4J v2 hozzáfűzése jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |

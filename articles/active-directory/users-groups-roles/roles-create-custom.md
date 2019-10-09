@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382819"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026403"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -30,8 +30,8 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Új egyéni szerepkör létrehozása az alkalmazások regisztrálásához való hozzáférés biztosításához
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) a Kiemelt szerepkörű rendszergazda vagy a globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
-1. Válassza ki **Azure Active Directory** > **szerepkörök és rendszergazdák** > **új egyéni szerepkört**.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) with Kiemelt szerepkörű rendszergazda vagy globális rendszergazdai engedélyekkel az Azure ad-szervezetben.
+1. Válassza a **Azure Active Directory** > **szerepkörök és rendszergazdák** > **új egyéni szerepkör**lehetőséget.
 
    ![Szerepkörök létrehozása vagy szerkesztése a szerepkörök és rendszergazdák lapról](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,11 +40,11 @@ Az egyéni szerepkörök az Azure AD Áttekintés lapjának [szerepkörök és r
    ![adja meg az egyéni szerepkör nevét és leírását az alapok lapon](./media/roles-create-custom/basics-tab.png)
 
 1. Az **engedélyek** lapon válassza ki az alkalmazás-regisztrációk alapszintű tulajdonságainak és hitelesítő adatainak kezeléséhez szükséges engedélyeket. Az egyes engedélyek részletes ismertetését lásd: [alkalmazás-regisztrációs altípusok és engedélyek a Azure Active Directory](./roles-custom-available-permissions.md).
-   1. Először írja be a "hitelesítő adatok" kifejezést a keresősáv mezőbe, `microsoft.directory/applications/credentials/update` és válassza ki az engedélyt.
+   1. Először írja be a "hitelesítő adatok" kifejezést a keresőmezőbe, és válassza ki a `microsoft.directory/applications/credentials/update` engedélyt.
 
       ![Egyéni szerepkör engedélyeinek kiválasztása az engedélyek lapon](./media/roles-create-custom/permissions-tab.png)
 
-   1. Ezután írja be az "alapszintű" kifejezést a keresősávba `microsoft.directory/applications/basic/update` , válassza ki az engedélyt, majd kattintson a **tovább**gombra.
+   1. Ezután írja be az "alapszintű" kifejezést a keresősávba, válassza ki a `microsoft.directory/applications/basic/update` engedélyt, majd kattintson a **tovább**gombra.
 1. A **felülvizsgálat + létrehozás** lapon tekintse át az engedélyeket, és válassza a **Létrehozás**lehetőséget.
 
 Az egyéni szerepkör megjelenik a Hozzárendelendő elérhető szerepkörök listájában.

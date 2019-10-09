@@ -13,20 +13,20 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: bca0f0de7de321060635459c4435525f650c7467
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42ec213a191ff460b05f94dff401fbed1a3bd510
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446326"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025064"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag azt ismerteti, hogyan adhat felhőalapú háttérszolgáltatásokat a Xamarin.Forms-mobilalkalmazásokhoz az Azure App Service Mobile Apps szolgáltatását használva háttérrendszerként. Létrehoz egy új Mobile Apps-háttéralkalmazást, illetve egy olyan egyszerű Xamarin.Forms-alapú teendőlista alkalmazást, amely az alkalmazásadatait az Azure-ban tárolja.
@@ -39,27 +39,27 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információk: [Ingyenes Azure-próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
-* A Xamarin, a Visual Studio 2017 vagy újabb, illetve a Visual Studio-eszközök vagy a Visual Studio for Mac. Tekintse meg a [Xamarin telepítési lapja][Install Xamarin] útmutatást.
+* Visual Studio-eszközök a Xamarin, a Visual Studio 2017-es vagy újabb verzióiban, vagy Visual Studio for Mac. Útmutatásért tekintse meg a [Xamarin telepítési lapját][Install Xamarin] .
 
-* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. A Visual Studio for Mac, vagy a Visual Studio 2017 iOS-alkalmazások fejlesztéséhez használható, vagy később is használható (mindaddig, amíg a Mac az a hálózaton elérhető).
+* (választható) iOS-alkalmazás készítéséhez Xcode 9.0 vagy újabb verzióval rendelkező Mac szükséges. Az Visual Studio for Mac az iOS-alkalmazások, illetve a Visual Studio 2017-es vagy újabb verzióinak fejlesztésére is használható (ha a Mac elérhető a hálózaton).
 
 ## <a name="create-a-new-mobile-apps-back-end"></a>Új Mobile Apps-háttéralkalmazás létrehozása
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Az ügyfél és kiszolgáló projekt egy adatbázis-kapcsolat létrehozása és konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinforms-solution"></a>A Xamarin.Forms-megoldás futtatása
+## <a name="run-the-xamarinforms-solution"></a>A Xamarin. Forms megoldás futtatása
 
-A Visual Studio Tools for Xamarin szükségesek, nyissa meg a megoldást, tekintse meg a [Xamarin telepítési utasításokat][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
+A megoldás megnyitásához a Visual Studio Tools for Xamarin szükséges, lásd a [Xamarin telepítési útmutatóját][Install Xamarin]. Ha az eszközök már telepítve vannak, akkor a megoldást a következő lépesekben töltheti le és nyithatja meg:
 
-### <a name="visual-studio-windows-and-mac"></a>A Visual Studio (Windows és Mac)
+### <a name="visual-studio-windows-and-mac"></a>Visual Studio (Windows és Mac)
 
-1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg a mobilalkalmazás, amelyet Ön hozott létre. Az a `Overview` panelen keresse meg az URL-címet, amely a nyilvános végpont számára. Például: a sitename for my app name "test123" lesz https://test123.azurewebsites.net.
+1. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.net lesz.
 
-2. Nyissa meg a fájlt `Constants.cs` ebben a mappában - xamarin.forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
+2. Nyissa meg `Constants.cs` fájlt ebben a mappában – xamarin. Forms/ZUMOAPPNAME. Az alkalmazás neve `ZUMOAPPNAME`.
 
-3. A `Constants.cs` osztály, cserélje le `ZUMOAPPURL` változó fenti nyilvános végponthoz.
+3. @No__t – 0 osztályban cserélje le a fenti nyilvános végponttal rendelkező `ZUMOAPPURL` változót.
 
     `public static string ApplicationURL = @"ZUMOAPPURL";`
 

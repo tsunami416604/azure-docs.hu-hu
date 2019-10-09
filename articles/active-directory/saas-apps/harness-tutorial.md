@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305943"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026957"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integrációja a hevederrel
 
@@ -82,11 +82,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
+    A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://app.harness.io/`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://app.harness.io/`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi. A tényleges válasz URL-címét a következő oktatóanyagban ismertetett, a **hám egyszeri bejelentkezésének konfigurálása** című szakaszban találja. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -141,11 +141,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Ha manuálisan szeretné beállítani a hevedert, nyisson meg egy új böngészőablakot, és jelentkezzen be a vállalati webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. A lap jobb felső részén kattintson a **folyamatos biztonsági** > **hozzáférés-kezelési** > **hitelesítési beállítások**elemre.
+4. Az oldal jobb felső részén kattintson a **folyamatos biztonsági**@no__t – 1**hozzáférés-vezérlés**@no__t – 3**hitelesítési beállítások**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure01.png)
 
-5. Az **SSO-szolgáltatók** szakaszban kattintson az SSO **-szolgáltatók** > **SAML**hozzáadása lehetőségre.
+5. Az **SSO-szolgáltatók** szakaszban kattintson a **+ egyszeri bejelentkezéses szolgáltatók** > **SAML**elemre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ki
 
 1. Jelentkezzen be a kihasználni rendszergazdaként.
 
-1. A lap jobb felső részén kattintson a> **folyamatos biztonsági**  **hozzáférés-kezelő** > **felhasználók**elemre.
+1. Az oldal jobb felső részén kattintson a **folyamatos biztonság**@no__t – 1**hozzáférés-vezérlés**@no__t – 3**felhasználó**lehetőségre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure04.png)
 
-1. A lap jobb oldalán kattintson a **+ felhasználó hozzáadása**lehetőségre.
+1. A lap jobb oldalán kattintson a **+ felhasználó hozzáadása**lehetőségre.
 
     ![A hám konfigurálása](./media/harness-tutorial/configure05.png)
 
@@ -181,7 +181,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ki
 
     ![A hám konfigurálása](./media/harness-tutorial/configure06.png)
 
-    a. Az **e-mail-cím (ek)** szövegmezőbe írja be a felhasználóhoz hasonló `B.simon@contoso.com`e-mail címet.
+    a. Az **e-mail-cím (ek)** szövegmezőbe írja be a felhasználó e-mail címét, például `B.simon@contoso.com`.
 
     b. Válassza ki a **felhasználói csoportokat**.
 

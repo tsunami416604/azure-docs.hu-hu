@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982033"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028670"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Tesztkörnyezet beállítása az etikai hackelési osztály tanításához 
 Ez a cikk bemutatja, hogyan állíthat be egy olyan osztályt, amely az etikai feltörések kriminalisztikai oldalára koncentrál. A behatolási teszt, amelyet az etikai hackelési Közösség használ, akkor következik be, amikor valaki megpróbál hozzáférni a rendszerhez vagy a hálózathoz a rosszindulatú támadó által kihasználható biztonsági rések bemutatására. 
@@ -125,10 +125,14 @@ A Rapid7 Metasploitable-rendszerkép a biztonsági rések mellett konfigurált r
 A sablon frissítve lett, és a rendszerképek szükségesek egy etikai hackelési bevezetési tesztelési osztályhoz, amely egy olyan eszközzel rendelkezik, amely a behatolási teszteket és egy másik, biztonsági réseket felderítő képet tartalmaz. A sablon képe mostantól közzétehető az osztályban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.
   
 
-## <a name="cost"></a>Költség  
+## <a name="cost"></a>Költségek  
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
  
-Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 25 tanuló * (20 + 10) óra * 55 labor egység * 0,01 USD/óra = 412,50. A díjszabással kapcsolatos további információkért tekintse meg a [Azure Lab Services díjszabását](https://azure.microsoft.com/pricing/details/lab-services/).
+Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
+
+25 tanuló * (20 + 10) óra * 55 labor egység * 0,01 USD/óra = 412,50 USD. 
+
+További információ a díjszabásról: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a tesztkörnyezet etikai feltörési osztályhoz való létrehozásának lépésein. Ez magában foglalja a beágyazott virtualizálás beállításának lépéseit két virtuális gép létrehozásához a gazda virtuális gépen az áthatoló tesztelés érdekében.

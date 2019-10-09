@@ -7,12 +7,12 @@ ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/09/2019
-ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036646"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028852"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi Piactérének elemzései
 
@@ -26,6 +26,7 @@ A partner Center Analytics eszközeinek eléréséhez nyissa meg az **[elemzés]
 |[Megrendelések](#orders-dashboard)|A megrendelésekkel kapcsolatos információk grafikus és letölthető formátumban|
 |[Ügyfelek](#customer-dashboard)|Az ügyfelekkel kapcsolatos információk, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg|
 |[Letölti](#downloads-dashboard)|A letöltési kérelmek listája az elmúlt 30 napban|
+|[Értékelések és értékelések](#ratings-and-reviews)| Információk a minősítésekről és az ügyfelek által beszerzett ajánlatokról.
 
 ## <a name="summary-dashboard"></a>Összefoglaló irányítópult
 
@@ -44,7 +45,7 @@ Az egyes lapok jobb felső sarkában megtalálhatja a dátumtartomány kijelöl�
 
 ![A partner Center elemzése irányítópult](./media/analyze-dashboard.png)
 
-### <a name="totals"></a>Összesen
+### <a name="totals"></a>Összegek
 
 Az **összesítések** szakasz a kiválasztott dátumtartományt vagy a beszerzett ügyfelek számát jeleníti meg a kijelölt időtartományban. 
 
@@ -238,17 +239,17 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Azure-licenc típusa: Cloud Solution Provider program | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactért a felhőalapú megoldás szolgáltatóján keresztül szerzik be, aki viszonteladóként működik.|
 | Azure-licenc típusa: Vállalati | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy Nagyvállalati Szerződéson keresztül szerzik be, közvetlenül a Microsofttal.|
 | Azure-licenc típusa: Enterprise a viszonteladón keresztül  | Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat egy viszonteladón keresztül szerzik be, amely megkönnyíti a Nagyvállalati Szerződés a Microsofttal.|  |
-| Azure-licenc típusa: Használatalapú fizetés| Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat a "Pay as go" szerződés keretében szerzik be közvetlenül a Microsofttal.||
+| Azure-licenc típusa: Utólagos fizetés| Ügyfél, megrendelés | A végfelhasználók az Azure-t és a Piactéri ajánlatokat a "Pay as go" szerződés keretében szerzik be közvetlenül a Microsofttal.||
 | Felhőbeli példány neve| Rendelés| Az a Microsoft Cloud, amelyben a virtuális gép üzembe helyezése megtörtént.||
 | Felhőbeli példány neve: Azure globális| Rendelés| A nyilvános globális Microsoft-felhő.|| |
 | Felhőbeli példány neve: Azure Government | Rendelés| Kormányzati specifikus Microsoft-felhők a következő kormányok egyikének esetében: Kína, Németország vagy Egyesült Államok.| |
 | Customer City| Ügyfél| Az ügyfél által megadott város neve. A város eltérő lehet az ügyfél Azure-előfizetésében lévő várostól.||
 | Ügyfél-kommunikációs nyelv  | Ügyfél| Az ügyfél által a kommunikációhoz előnyben részesített nyelv.||
-| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet azonos az ügyfél Azure-előfizetésében szereplő névvel.|  |
+| Ügyfél vállalatának neve | Ügyfél, megrendelés | Az ügyfél által megadott cég neve. A név nem lehet más, mint az ügyfél Azure-előfizetésének városa.|  |
 | Ügyfél országa | Ügyfél, megrendelés | Az ügyfél által megadott ország neve. Az ország eltérő lehet az ügyfél Azure-előfizetésében lévő országtól.|  |
 | Ügyfél e-mail-címe| Ügyfél| A végfelhasználó által megadott e-mail-cím. Az e-mail nem lehet az ügyfél Azure-előfizetésében szereplő e-mail-cím.||
 | Ügyfél utóneve| Ügyfél| Az ügyfél által megadott név. A név nem lehet azonos az ügyfél Azure-előfizetésében megadott névvel.| |
-| Ügyfél azonosítója | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |
+| Ügyfél-azonosító | Ügyfél, megrendelés | Az ügyfélhez rendelt egyedi azonosító. Előfordulhat, hogy egy ügyfél nulla vagy több Azure Marketplace-előfizetéssel rendelkezik.|  |
 | Ügyfél postai irányítószáma  | Ügyfél| Az ügyfél által megadott postai irányítószám. A kód különbözhet az ügyfél Azure-előfizetésében megadott postai kóddal.| |
 | Ügyfél állapota| Ügyfél| Az ügyfél által megadott állapot (címe). Az állapot különbözhet az ügyfél Azure-előfizetésében megadott állapottól.| |
 | Beszerzés dátuma| Ügyfél| Az első dátum, amikor az ügyfél az Ön által közzétett összes ajánlatot megvásárolta.| |
@@ -262,7 +263,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Marketplace-licenc típusa: Free| Rendelés| Az ajánlat úgy van konfigurálva, hogy az összes felhasználó számára szabadon legyen. A Microsoft nem számláz az ügyfeleknek az ajánlat használatáért.||
 | Marketplace-licenc típusa: Microsoft mint viszonteladó  | Rendelés| A Microsoft a piactér-ajánlat viszonteladója.|  |
 | Piactér-előfizetés azonosítója | Ügyfél, megrendelés | Az Azure-előfizetéshez társított egyedi azonosító, amelyet az ügyfél a Piactéri ajánlat megvásárlásához használt. Az azonosító korábban az Azure-előfizetés GUID-azonosítója volt.||
-| Ajánlat neve  | Rendelés| A Piactéri ajánlat neve.|| |
+| Offer Name  | Rendelés| A Piactéri ajánlat neve.|| |
 | Csomag típusa  | Rendelés| Az Microsoft Marketplace ajánlat típusa.|||
 | Ajánlat típusa: Felügyelt alkalmazás  | Sorrendben | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. Ön vagy az ügyfele megköveteli, hogy a megoldást egy partnernek kell kezelnie. |
 | Ajánlat típusa: Azure-alkalmazás| Sorrendben | Használja az Azure-alkalmazás megoldás-sablonjának ajánlat típusát, ha a megoldáshoz egy egyszerű virtuális gépen kívül további üzembe helyezési és konfigurálási automatizálásra van szükség.||
@@ -276,7 +277,7 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Ajánlat típusa: Virtuális gép | Rendelés| Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát.||
 | Ajánlat típusa: Visual Studio Marketplace Extension  | Rendelés| Az ajánlat típusa korábban elérhető az Azure DevOps bővítmény fejlesztői számára. Az Azure DevOps Extension fejlesztőinek továbbítják a bővítményt közvetlenül az ügyfeleknek. A bővítmények a kifizetett vagy próbaverzióval is konfigurálhatók. |
 | Megrendelés megszakításának dátuma| Rendelés| A Piactéri rendelés megszakításának dátuma.||
-| Rendelés azonosítója| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
+| Rendelésazonosító| Rendelés| A Piactéri szolgáltatáshoz tartozó ügyfél-rendelés egyedi azonosítója. A virtuális gépek használaton alapuló ajánlatai nincsenek rendeléshez társítva.| |
 | Megrendelés vásárlásának dátuma| Rendelés| A Piactéri rendelés létrehozásának dátuma.|||
 | Megrendelés állapota| Rendelés| A Piactéri megrendelés állapota az utolsó frissítés alkalmával.|     |
 | Megrendelés állapota: Aktív  | Rendelés| Az ügyfél megvásárolt egy rendelést, és nem szakította meg a rendelését.|         |
@@ -285,3 +286,38 @@ Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letölt
 | Szolgáltató neve| Ügyfél| A Microsoft és a végfelhasználó közötti kapcsolatban részt vevő szolgáltató neve. Ha az ügyfél a viszonteladón keresztüli vállalat, akkor ez lesz a viszonteladó. Ha egy felhőalapú megoldás-szolgáltató (CSP) is részt vesz, ez lesz a CSP.|
 | SKU| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
 | Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||
+
+## <a name="ratings-and-reviews"></a>Értékelések és értékelések
+
+Mivel az ügyfelek tallózással, kereséssel és vásárlási ajánlatokkal is rendelkeznek a piactéren, elhagyhatják a beszerzett ajánlatok minősítéseit és felülvizsgálatait. Új minősítéseket vagy felülvizsgálatokat küldhetnek, és frissíthetik vagy törölhetik a már elküldött minősítéseket vagy felülvizsgálatokat. A felülvizsgálatok az Azure Marketplace-en vagy a AppSource-on jelennek meg az ajánlat termék megjelenítése lapján, a felülvizsgálatok lapon. Az ügyfelek megtekinthetik a minősítési és a felülvizsgálati nevüket, vagy névtelenül tehetik közzé őket.  
+
+> [!NOTE]
+> Az ügyfelek csak a saját értékelésekre és felülvizsgálatokra módosíthatják a módosításokat.
+
+A **minősítések & áttekintése irányítópulton** láthatók az ügyfelekkel kapcsolatos tevékenységek trendjei és elemzése. Grafikus ábrázolást biztosít:
+
+- Értékelések & értékelések  
+- Megjegyzések áttekintése
+
+### <a name="marketplace-storefront-tabs"></a>Piactér kirakat lapja
+
+A kiadók külön megtekinthetik az ajánlati metrikákat a AppSource & az Azure Marketplace lapjain. Az ajánlati mérőszámok megtekintéséhez válassza az **ajánlat** lehetőséget a legördülő listából:
+
+![A partner Center elemzési ajánlatának legördülő listája](./media/analyze-offer-dropdown.png)
+
+### <a name="ratings-and-reviews-summary"></a>Értékelések és értékelések összegzése
+
+A minősítések & értékelések összegzése szakasz az alábbi metrikákat jeleníti meg a kiválasztott dátumtartomány esetében:
+
+- **Átlagos minősítés:** Az ügyfelek által a kiválasztott ajánlathoz benyújtott összes minősítés súlyozott átlagos minősítése.
+- **Minősítési részletezés:** A minősítést Beküldő ügyfelek száma alapján a csillag minősítésének részletezése. A sávdiagram a tényleges és a felülvizsgált minősítések (frissített minősítések száma) alapján van halmozva.
+- **Értékelések összesen:** A beküldött értékelések összesített száma. Ez a szám a minősítéseket és a felülvizsgálatok nélkül is tartalmazza.
+- **Értékelések:** Az elküldött értékelések száma.
+
+![A partner Center elemzése értékelések és értékelések összegzése](./media/analyze-ratings-summary.png)
+
+### <a name="review-comments"></a>Megjegyzések áttekintése
+
+A felülvizsgálatok időrendi sorrendben jelennek meg a közzétételkor. Az alapértelmezett nézet az összes felülvizsgálatot megjeleníti. A legördülő menüben található **szűrő** használatával szűrheti a véleményeket csillag minősítéssel. Kereshet a felülvizsgálatban megjelenő kulcsszavakat is.  
+
+![A partner Center elemzi a felülvizsgálati megjegyzéseket](./media/analyze-reviews.png)

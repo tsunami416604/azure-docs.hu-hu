@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972800"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029861"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
-**A következőkre vonatkozik:**  Azure Database for MySQL 5,7
+**A következőkre vonatkozik:** Azure Database for MySQL 5,7
 
 > [!IMPORTANT]
 > A lekérdezési tároló előzetes verzióban érhető el.
@@ -37,14 +37,14 @@ A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem 
 ### <a name="enable-query-store-using-the-azure-portal"></a>A lekérdezési tároló engedélyezése a Azure Portal használatával
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for MySQL-kiszolgálót.
-1. Válassza ki a **kiszolgáló paramétereit** in a menü **Beállítások** section.
+1. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
 1. Keresse meg a query_store_capture_mode paramétert.
-1. Állítsa az értéket az összes értékre, és **mentse**.
+1. Állítsa az értéket az összes értékre, és **mentse**.
 
 A várakozási statisztika engedélyezése a lekérdezési tárolóban:
 
 1. Keresse meg a query_store_wait_sampling_capture_mode paramétert.
-1. Állítsa az értéket az összes értékre, és **mentse**.
+1. Állítsa az értéket az összes értékre, és **mentse**.
 
 Akár 20 percet is igénybe vehet, amíg a MySQL-adatbázisban megmarad az első köteg.
 
@@ -78,10 +78,10 @@ A várakozási eseménytípus hasonló módon kombinálja a különböző várak
 | **Általi képernyőfigyelés** | **Művelet** |
 |---|---|
 |Magas zárolási várakozások | Jelölje be az érintett lekérdezésekhez tartozó lekérdezési szövegeket, és azonosítsa a célként megadott entitásokat. A lekérdezési tárolóban megtekintheti azokat a lekérdezéseket, amelyek ugyanazt az entitást módosítják, amely gyakran és/vagy magas időtartammal van végrehajtva. A lekérdezések azonosítása után érdemes lehet módosítani az alkalmazás logikáját, hogy javítsa a párhuzamosságot, vagy használjon kevésbé korlátozó elkülönítési szintet. |
-|Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a **teljesítménnyel kapcsolatos ajánlásokat**@no__t – 1for a kiszolgálót a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálni szeretné a lekérdezéseket. |
-|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a **teljesítménnyel kapcsolatos ajánlásokat**@no__t – 1for a kiszolgálót a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
+|Magas puffer IO-várakozások | A lekérdezési tárolóban megkeresheti a nagy számú fizikai olvasással rendelkező lekérdezéseket. Ha egyeznek a nagy i/o-várakozásokkal rendelkező lekérdezésekkel, érdemes lehet egy indexet bevezetni az alapul szolgáló entitáson, hogy a vizsgálat helyett a kereséseket végezze. Ez csökkentheti a lekérdezések i/o-terhelését. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok ehhez a kiszolgálóhoz, amely optimalizálja a lekérdezéseket. |
+|Nagy memória-várakozások | A lekérdezési tárolóban megkeresheti a leggyakoribb memóriát használó lekérdezéseket. Ezek a lekérdezések valószínűleg késleltetik az érintett lekérdezések további előrehaladását. Tekintse át a kiszolgáló **teljesítményére vonatkozó javaslatokat** a portálon, és ellenőrizze, hogy vannak-e olyan indexelési javaslatok, amelyek optimalizálják ezeket a lekérdezéseket.|
 
-## <a name="configuration-options"></a>Konfigurációs lehetőségek
+## <a name="configuration-options"></a>Beállítási lehetőségek
 
 Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesítési ablakokban tárolja az adatvesztést, és ablakban akár 500 különböző lekérdezést is beállíthat.
 
@@ -98,7 +98,7 @@ A következő lehetőségek kifejezetten a várakozási statisztikára vonatkozn
 
 | **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NINCS | NINCS, AZ ÖSSZES |
+| query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NEZ EGY | NINCS, AZ ÖSSZES |
 | query_store_wait_sampling_frequency | Megváltoztatja a várakozási mintavételezés gyakoriságát másodpercben. 5 – 300 másodperc. | 30 | 5-300 |
 
 > [!NOTE]
@@ -108,7 +108,7 @@ Használja a [Azure Portal](howto-server-parameters.md)  V [Azure CLI](howto-
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **mysql** database érhetők el.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
@@ -161,7 +161,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 | `count_star` | bigint (20) | NO| A lekérdezés intervallumában mintavétel alatt álló várakozási események száma |
 | `sum_timer_wait_ms` | double | NO| A lekérdezés teljes várakozási ideje (ezredmásodpercben) az intervallumban |
 
-### <a name="functions"></a>Funkciók
+### <a name="functions"></a>Functions
 
 | **Name**| **Leírás** |
 |---|---|

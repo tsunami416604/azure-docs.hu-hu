@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561800"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034887"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Hozzáadása vagy frissítése egy felhasználói profil adatait az Azure Active Directoryval
 Adja hozzá a felhasználói profil információit, beleértve a profilképét, feladat-specifikus információkat és bizonyos beállítások, az Azure Active Directory (Azure AD) használatával. Új felhasználók hozzáadásáról szóló további információkért lásd: [hozzáadása vagy törlése az Azure Active Directory felhasználók](add-users-azure-active-directory.md).
@@ -46,7 +46,7 @@ Látni fogja, ahogy érhető további információt a felhasználói profil, min
 
     - **Beállítások.** Döntse el, hogy a felhasználó bejelentkezhet az Azure Active Directory-bérlővel. A felhasználó globális helyén is megadhatja.
 
-    - **Kapcsolattartási adatok.** Adja hozzá a felhasználó megfelelő elérhetőségi adatait. Ha például egy utca, házszám vagy Mobiltelefonszám.
+    - **Kapcsolattartási adatok.** Adja meg a felhasználóhoz tartozó kapcsolattartási adatokat, kivéve egyes felhasználók telefon-vagy mobil kapcsolattartási adatait (csak a globális rendszergazda frissítheti a felhasználókat a rendszergazdai szerepkörökben).
 
     - **Hitelesítési kapcsolattartási adatok.** Győződjön meg arról, hogy van egy aktív telefonszámát és az e-mail címét a felhasználó ezt az információt. Ez az információ az Azure Active Directory használják, hogy a felhasználó valójában a felhasználói bejelentkezés során. Hitelesítési kapcsolattartási adatok csak a globális rendszergazda is frissíthető.
 

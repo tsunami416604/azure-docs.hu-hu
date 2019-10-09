@@ -1,34 +1,22 @@
 ---
-title: Kód frissítése a legújabb platformot |} Az Azure Marketplace-en
-description: Ez a témakör ismerteti a Microsoft Dynamics 365 for Operations platformverzió frissítése a legújabb platformot a kiadásra
+title: A kód frissítése a legújabb platformra | Azure piactér
+description: Elavult ez a CPP-cikk, amely a PC cikkhez van csatolva; "Ez a témakör azt ismerteti, hogyan lehet frissíteni a Microsoft Dynamics 365 for Operations platform verzióját a legújabb platform kiadására"
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: aedc2c7474de0fe068a329eb2205e9bb08e62c3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: ea3aff527f6dbd6e6da2010529ad575440504d6a
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935281"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034939"
 ---
-# <a name="upgrading-code-to-the-latest-platform"></a>A legújabb platformot a kód frissítése
+# <a name="upgrading-code-to-the-latest-platform"></a>A kód frissítése a legújabb platformra
 
-Ez a cikk bemutatja, hogyan frissítse a Microsoft Dynamics 365 for Operations platformverzió a legújabb platformot.
+A [Cloud Partner Portal](https://cloudpartner.azure.com/) már nem támogatja a Dynamics 365 pénzügyi és üzemeltetési ajánlatok létrehozását és felügyeletét. Ehelyett ez a funkció át lett helyezve a Microsoft [partner Center portálra](https://partner.microsoft.com/). További információkért lásd: [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-## <a name="overview"></a>Áttekintés
-
-A Microsoft Dynamics 365 for Operations platform az alábbi összetevőkből áll:
-
-Dynamics 365 for Operations platform bináris fájlokat, például az objektum AOS Server (-), az adatok keretrendszert, a jelentéskészítési és üzleti intelligenciára épülő (BI) keretrendszer, fejlesztői eszközöket és elemzési szolgáltatásokat. A következő alkalmazás objektum fa Alkalmazásobjektum csomagok:
-
-1. Alkalmazásplatform
-2. Application Foundation
-3. Alapvető szolgáltatások tesztelése
-
-**Fontos**: Szeretne áthelyezni a legújabb Dynamics 365 for Operations platform, a Dynamics 365-műveletek végrehajtásához minden testre szabott elem (Felülrétegzési) bármely tartoznak a platform az alkalmazásobjektum-fa-csomagokat nem lehet. Ez a korlátozás bevezetett 3, frissítés, hogy a platform zökkenőmentes folyamatos frissítések módosíthatók. Ha futtat egy platform, amely régebbi, mint a platform 3, a frissítés egy korábbi build szakaszban Ez a cikk végén található 3-as frissítés platformra.
-
-További információ a kód frissítése, tekintse meg [Itt](https://docs.microsoft.com/dynamics365/operations/dev-itpro/migration-upgrade/upgrade-latest-platform-update).
+Az új Dynamics 365 for Operations ajánlat létrehozása előtt olvassa el a [partner Center-fiók létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) elemet, majd nyissa meg a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/directory) a kiválasztott **Áttekintés** oldalon. Az ajánlat létrehozásához kövesse az [új Dynamics 365 for Operations ajánlat létrehozása](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) című témakör utasításait.

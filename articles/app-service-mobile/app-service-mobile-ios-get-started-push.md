@@ -1,6 +1,6 @@
 ---
-title: Leküldéses értesítések hozzáadása iOS-alkalmazás az Azure Mobile Apps
-description: Ismerje meg, hogyan küldhet leküldéses értesítéseket az iOS-alkalmazás az Azure Mobile Apps segítségével.
+title: Leküldéses értesítések hozzáadása iOS-alkalmazáshoz az Azure Mobile Apps
+description: Útmutató leküldéses értesítések iOS-alkalmazásba való küldéséhez az Azure Mobile Apps használatával.
 services: app-service\mobile
 documentationcenter: ios
 manager: crdun
@@ -14,28 +14,28 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 5ab968e88331f888dfcecd2cc30a658b0b0f53ec
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7a037cfb411eb3c15f60bb6a8763374d9102bc4e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445363"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027318"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Leküldéses értesítések hozzáadása iOS-alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-ios-get-started-push) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 
-Ebben az oktatóanyagban a leküldéses értesítések hozzáadása az [iOS-es rövid útmutató] projekthez, hogy a leküldéses értesítést küld az eszköz minden alkalommal, amikor a rendszer beszúr egy rekordot.
+Ebben az oktatóanyagban leküldéses értesítéseket ad hozzá az [iOS – gyors útmutató] rövid útmutató projekthez, hogy a rendszer minden egyes rekord behelyezése után leküldéses értesítést küldjön az eszköznek.
 
-Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, szüksége lesz a leküldéses értesítési kiterjesztési csomag. További információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
+Ha nem a letöltött gyors üzembe helyezési kiszolgáló projektet használja, szüksége lesz a leküldéses értesítési bővítmény csomagra. További információ: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) útmutató.
 
-A [az iOS-szimulátor nem támogatja a leküldéses értesítések](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Kell egy fizikai iOS-eszköz és a egy [Apple Fejlesztőprogrambeli tagság](https://developer.apple.com/programs/ios/).
+Az [iOS-szimulátor nem támogatja a leküldéses értesítéseket](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Szüksége lesz egy fizikai iOS-eszközre és egy [Apple Developer program tagságára](https://developer.apple.com/programs/ios/).
 
 ## <a name="configure-hub"></a>Értesítési központ konfigurálása
 
@@ -45,29 +45,29 @@ A [az iOS-szimulátor nem támogatja a leküldéses értesítések](https://deve
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Leküldéses értesítések küldése az Azure konfigurálása
+## <a name="configure-azure-to-send-push-notifications"></a>Az Azure konfigurálása leküldéses értesítések küldéséhez
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a id="update-server"></a>Leküldéses értesítések küldéséhez háttérbeli frissítése
+## <a id="update-server"></a>A háttér frissítése leküldéses értesítések küldéséhez
 
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a id="add-push"></a>Leküldéses értesítések hozzáadása alkalmazáshoz
+## <a id="add-push"></a>Leküldéses értesítések hozzáadása az alkalmazáshoz
 
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a id="test"></a>Teszt leküldéses értesítések
+## <a id="test"></a>Leküldéses értesítések tesztelése
 
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
-## <a id="more"></a>Több
+## <a id="more"></a>További
 
-* Sablonok lehetővé teszik, többplatformos leküldések és honosított leküldéses értesítést küldhet. [Azure Mobile Apps-Klienskódtárának használata iOS hogyan](app-service-mobile-ios-how-to-use-client-library.md#templates) bemutatja, hogyan regisztrálhat a sablonokat.
+* A sablonok rugalmasságot biztosítanak a platformok közötti leküldések és honosított leküldések küldéséhez. Az [iOS-hez készült ügyféloldali kódtár használata az Azure Mobile apps](app-service-mobile-ios-how-to-use-client-library.md#templates) bemutatja a sablonok regisztrálásának módját.
 
 <!-- Anchors.  -->
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[iOS-es rövid útmutató]: app-service-mobile-ios-get-started.md
+[iOS – gyors útmutató]: app-service-mobile-ios-get-started.md

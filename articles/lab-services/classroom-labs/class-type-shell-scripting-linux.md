@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694676"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030672"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Tesztkörnyezet beállítása a rendszerhéj-parancsfájlok Linuxon való tanításához
 Ez a cikk bemutatja, hogyan állíthat be egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához. A parancsfájlok hasznos részét képezik a rendszerfelügyeletnek, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a példában az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat tartalmazza. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek a bash-parancsokat és a Ruby-t ötvözik. Ez a módszer lehetővé teszi a Ruby számára, hogy a Shell használatával kommunikáljon a környékre és bash-parancsokra. 
@@ -30,7 +30,7 @@ A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdés
 
 A labor-fiók létrehozása után engedélyezze a következő beállításokat a labor-fiókban: 
 
-| Tesztkörnyezet-fiók beállítása | Útmutatás |
+| Tesztkörnyezet-fiók beállítása | Utasítások |
 | ----------- | ------------ |  
 | Marketplace-rendszerképek | Engedélyezze az [Ubuntu Server 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer1804LTS) -rendszerkép használatát a labor-fiókjában. További információ: a [piactéren elérhető rendszerképek megadása a labor-készítők](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) számára | 
 
@@ -80,12 +80,14 @@ Ez a szakasz bemutatja, hogyan telepíthet néhány szövegszerkesztőt. A gedit
 
     A sablon frissítve lett, és a tesztkörnyezet végrehajtásához szükséges programozási nyelv és fejlesztői eszközök is elérhetők. A sablon képe mostantól közzétehető a laborban. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 
-## <a name="cost"></a>Költség 
+## <a name="cost"></a>Költségek 
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja:
  
-Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 25 tanuló * (20 + 10) óra * 20 labor egység * 0,01 USD/óra = 150 USD
+Egy 25 tanulós osztály esetében, amely 20 órányi ütemezett időpontot és 10 órányi munkafeladatot vagy hozzárendelést használ, a labor ára a következő lesz: 
 
-A díjszabással kapcsolatos további részletekért tekintse meg a következő dokumentumot: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
+25 tanuló * (20 + 10) óra * 20 labor egység * 0,01 USD/óra = 150 USD
+
+A díjszabással kapcsolatos további információkért tekintse meg a következő dokumentumot: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Összegzés
 Ez a cikk végigvezeti a labornak a parancsfájlkezelési osztályokhoz való létrehozásának lépésein. Ez a cikk a Ruby Scripting Tools Linux rendszerű gépen való beállítására összpontosított. a telepítő más parancsfájl-osztályokhoz is használható, mint például a Python Linux rendszeren.

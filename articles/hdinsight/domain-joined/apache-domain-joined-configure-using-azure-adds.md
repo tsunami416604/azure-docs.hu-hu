@@ -1,19 +1,19 @@
 ---
 title: Enterprise Security Package Azure Active Directory a HDInsight
 description: Ismerje meg, hogyan állíthat be és konfigurálhat egy HDInsight Enterprise Security Package-fürtöt a Azure Active Directory Domain Services használatával.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918305"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030352"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>Konfigurációk Enterprise Security Package Azure Active Directory Domain Services a HDInsight-ben
 
@@ -70,7 +70,7 @@ Miután létrehozta a felügyelt identitást, és a megfelelő szerepkört adta,
 ## <a name="networking-considerations"></a>Hálózati megfontolások
 
 > [!NOTE]  
-> Az Azure AD-DS-t egy Azure Resource Manager-alapú vNET kell telepíteni. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. További részletekért tekintse meg a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) című témakört.
+> Az Azure AD-DS-t egy Azure Resource Manager-alapú vNET kell telepíteni. A klasszikus virtuális hálózatok nem támogatottak az Azure AD-DS-ben. További információ: [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
 
 Az Azure AD-DS engedélyezése után a helyi tartománynév-szolgáltatási (DNS) kiszolgáló fut az AD Virtual Machineson (VM). Konfigurálja az Azure AD-DS Virtual Network (VNET) az egyéni DNS-kiszolgálók használatára. A megfelelő IP-címek megkereséséhez válassza a **kezelés** kategória **Tulajdonságok** elemét, és tekintse meg a **Virtual Network IP-címe**alatt felsorolt IP-címeket.
 
@@ -82,27 +82,27 @@ Módosítsa az Azure AD-DS VNET található DNS-kiszolgálók konfigurációját
 
 Az Azure AD-DS-példány és a HDInsight-fürt is egyszerűbben helyezhető el ugyanabban az Azure-beli virtuális hálózaton. Ha különböző virtuális hálózatok-ket kíván használni, ezeket a virtuális hálózatokat egyenrangúként kell megadnia, hogy a tartományvezérlőt a HDI virtuális gépek láthassák. További információ: [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md). 
 
-A virtuális hálózatok társítása után konfigurálja a HDInsight VNET egyéni DNS-kiszolgáló használatára, és adja meg az Azure AD-DS privát IP-címeket DNS-kiszolgálóként. Ha mindkét virtuális hálózatok ugyanazokat a DNS-kiszolgálókat használja, az egyéni tartománynevet a megfelelő IP-címhez fogja feloldani, és elérhető lesz a HDInsight. Ha például a tartománynév a lépés után `contoso.com` van, `ping contoso.com` akkor a megfelelő Azure AD-DS IP-címen kell feloldania.
+A virtuális hálózatok társítása után konfigurálja a HDInsight VNET egyéni DNS-kiszolgáló használatára, és adja meg az Azure AD-DS privát IP-címeket DNS-kiszolgálóként. Ha mindkét virtuális hálózatok ugyanazokat a DNS-kiszolgálókat használja, az egyéni tartománynevet a megfelelő IP-címhez fogja feloldani, és elérhető lesz a HDInsight. Ha például a tartománynév `contoso.com`, akkor a lépés után a `ping contoso.com` megoldásnak a megfelelő Azure AD-DS IP-címen kell feloldania.
 
 ![Egyéni DNS-kiszolgálók konfigurálása a társ VNET](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-Ha hálózati biztonsági csoportokat (NSG) használ a HDInsight-alhálózatban, engedélyeznie kell a [szükséges IP-címeket](../hdinsight-management-ip-addresses.md) a bejövő és a kimenő forgalom számára is. 
+Ha hálózati biztonsági csoportokat (NSG) használ a HDInsight-alhálózatban, engedélyeznie kell a [szükséges IP-címeket](../hdinsight-management-ip-addresses.md) a bejövő és a kimenő forgalom számára is.
 
 Ha **szeretné ellenőrizni, hogy** a hálózat megfelelően van-e beállítva, csatlakoztasson egy Windows rendszerű virtuális gépet a HDINSIGHT-VNET/alhálózathoz, és Pingelje a tartománynevet (az IP-címen kell megoldania), majd futtassa az **Ldp. exe fájlt** az Azure AD-DS tartomány eléréséhez. **Ezt követően csatlakoztassa a Windows rendszerű virtuális gépet a tartományhoz, és győződjön meg** arról, hogy az összes szükséges RPC-hívás sikeres volt az ügyfél és a kiszolgáló között. Az **nslookup** használatával megerősítheti a hálózati hozzáférést a Storage-fiókhoz vagy az esetlegesen használt külső adatbázisokhoz (például külső Hive-metaadattár vagy a Ranger db).
 Győződjön meg arról, hogy az összes [szükséges port](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) engedélyezett a HRE-DS alhálózati biztonsági csoport szabályaiban, ha az HRE-DS-t egy NSG védi. Ha a Windows rendszerű virtuális gép tartományhoz való csatlakozása sikeres, folytassa a következő lépéssel, és hozzon létre ESP-fürtöket.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP-vel rendelkező HDInsight-fürt létrehozása
 
-Az előző lépések helyes beállítása után a következő lépés a HDInsight-fürt létrehozása az ESP-vel engedélyezve. HDInsight-fürt létrehozásakor engedélyezheti Enterprise Security Package az **Egyéni** lapon. Ha az üzembe helyezéshez inkább Azure Resource Manager sablont szeretne használni, használja a portált egyszer, és töltse le az előre kitöltött sablont az utolsó "összefoglalás" lapon a későbbi újrafelhasználáshoz.
+Az előző lépések helyes beállítása után a következő lépés a HDInsight-fürt létrehozása az ESP-vel engedélyezve. HDInsight-fürt létrehozásakor engedélyezheti a Enterprise Security Package a **Biztonság és hálózat** lapon. Ha az üzembe helyezéshez inkább Azure Resource Manager sablont szeretne használni, használja a portált egyszer, és töltse le az előre kitöltött sablont a **felülvizsgálat + létrehozás** oldalon a későbbi újrafelhasználáshoz.
 
 > [!NOTE]  
 > Az ESP-fürtök nevének első hat karakterének egyedinek kell lennie a környezetben. Ha például több ESP-fürttel rendelkezik különböző virtuális hálózatok, akkor olyan elnevezési convension kell választania, amely biztosítja, hogy a fürt neveinek első hat karaktere egyedi legyen.
 
-![Azure HDInsight Enterprise biztonsági csomag tartományának ellenőrzése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Azure HDInsight Enterprise biztonsági csomag tartományának ellenőrzése](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-Miután engedélyezte az ESP-t, a rendszer automatikusan észleli és ellenőrzi az Azure AD-DS-vel kapcsolatos gyakori konfigurációs beállításokat. A hibák kijavítása után folytassa a következő lépéssel: 
+Miután engedélyezte az ESP-t, a rendszer automatikusan észleli és ellenőrzi az Azure AD-DS-vel kapcsolatos gyakori konfigurációs beállításokat. A hibák kijavítása után folytassa a következő lépéssel:
 
-![Az Azure HDInsight Enterprise biztonsági csomagja nem sikerült a tartomány érvényesítése](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Az Azure HDInsight Enterprise biztonsági csomagja nem sikerült a tartomány érvényesítése](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paramétereket kell megadnia:
 
@@ -112,13 +112,9 @@ Ha ESP-vel rendelkező HDInsight-fürtöt hoz létre, a következő paraméterek
 
 - **LDAPS URL-CÍM**: Például: `ldaps://contoso.com:636`.
 
-A következő képernyőfelvétel a Azure Portal sikeres konfigurációját mutatja be:
-
-![Azure HDInsight ESP Active Directory tartományi szolgáltatások konfiguráció](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
-
 A létrehozott felügyelt identitás az új fürt létrehozásakor a felhasználó által hozzárendelt felügyelt identitás legördülő menüjéből választható ki.
 
-![Azure HDInsight ESP Active Directory tartományi szolgáltatások felügyelt identitás](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Azure HDInsight ESP Active Directory tartományi szolgáltatások felügyelt identitás](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>További lépések
 

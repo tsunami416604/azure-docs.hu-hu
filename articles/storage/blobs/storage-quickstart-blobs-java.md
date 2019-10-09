@@ -7,12 +7,12 @@ ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c88202c41a7ee6b6d215bd185aeca580bcc88eef
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971990"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030465"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár Java SDK V8-hoz
 
@@ -209,5 +209,5 @@ sourceFile.deleteOnExit();
 Ebben a cikkben megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Java használatával. Ha bővebb információra van szüksége a Java használatával kapcsolatban, lépjen tovább a GitHub-forráskódadattárba.
 
 > [!div class="nextstepaction"]
-> [Java API-referenciák](https://docs.microsoft.com/java/azure/)
+> [Java API-referenciák](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
 > [kód minták a Javához](../common/storage-samples-java.md)

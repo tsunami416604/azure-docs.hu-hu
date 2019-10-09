@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 7cd915c47fa0661a9da66d7ca3315480ce7d6b98
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ada573cc919d775af52abc5a75004866aebbeddb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709426"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033933"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
@@ -45,11 +45,11 @@ Az alábbi beállításokkal konfigurálhatja az adatgyűjtés vezérlését.
 |----|----------|------|------------|
 |`schema-version` |Karakterlánc (megkülönbözteti a kis-és nagybetűket) |v1 |Ez az ügynök által a ConfigMap elemzésekor használt séma verziója. A jelenleg támogatott séma verziója v1. Az érték módosítása nem támogatott, és a rendszer elutasítja a ConfigMap kiértékelése után.|
 |`config-version` |Sztring | | A támogatja a konfigurációs fájl verziószámának nyomon követését a verziókövetés rendszerében/adattárában. A megengedett karakterek maximális száma 10, az összes többi karakter pedig csonkolt. |
-|`[log_collection_settings.stdout] enabled =` |Logikai | true vagy false | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (`log_collection_settings.stdout.exclude_namespaces` az alábbi beállításnál), az stdout-naplók az összes tárolóból lesznek összegyűjtve a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:.|
-|`[log_collection_settings.stderr] enabled =` |Logikai | true vagy false |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha a értékre van állítva `true` , és a rendszer nem zárja ki a névtereket az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) számára, a rendszer az összes tárolóból gyűjti össze a stderr-naplókat a fürt összes hüvelye/csomópontjai között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett `enabled = true`érték:. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes `log_collection_settings.stdout.enabled` , ha a `true`be van állítva. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `exclude_namespaces = ["kube-system"]`érték:. |
-| `[log_collection_settings.env_var] enabled =` |Logikai | true vagy false | Ez a beállítás azt szabályozza, hogy engedélyezve van-e a környezeti változók gyűjteménye. Ha a értékre `false`van állítva, a rendszer nem gyűjt környezeti változókat a fürt összes hüvelyén vagy csomópontjain futó tárolóhoz. Ha nincs megadva a ConfigMap-ben, az alapértelmezett `enabled = true`érték:. |
+|`[log_collection_settings.stdout] enabled =` |Logikai | true vagy false | Ez szabályozza, ha az stdout-tároló naplójának gyűjteménye engedélyezve van. Ha `true` értékre van állítva, és a rendszer nem zárja ki a névtereket az stdout log-gyűjteményhez (az alábbi `log_collection_settings.stdout.exclude_namespaces` beállításnál), a rendszer az összes tárolóból gyűjti össze az stdout naplókat a fürt összes hüvelye/csomópontja között. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték `enabled = true`. |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Sztring | Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti az stdout-naplókat. Ez a beállítás csak akkor érvényes, ha a `log_collection_settings.stdout.enabled` értéke `true`. Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték `exclude_namespaces = ["kube-system"]`.|
+|`[log_collection_settings.stderr] enabled =` |Logikai | true vagy false |Ez szabályozza, hogy engedélyezve van-e a stderr-tároló naplójának gyűjtése. Ha `true` értékre van állítva, és a rendszer nem zárja ki az stdout log Collection (`log_collection_settings.stderr.exclude_namespaces` beállítás) névtereit, a rendszer az összes tárolóból gyűjti a stderr-naplókat a fürt összes dobozán/csomópontjain. Ha nincs megadva a ConfigMaps-ben, az alapértelmezett érték `enabled = true`. |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Sztring |Vesszővel tagolt tömb |Azon Kubernetes-névterek tömbje, amelyek esetében a rendszer nem gyűjti össze a stderr-naplókat. Ez a beállítás csak akkor érvényes, ha a `log_collection_settings.stdout.enabled` értéke `true`. Ha nincs megadva a ConfigMap-ben, az alapértelmezett érték `exclude_namespaces = ["kube-system"]`. |
+| `[log_collection_settings.env_var] enabled =` |Logikai | true vagy false | Ezzel a beállítással szabályozható a környezeti változók gyűjteménye a fürt összes hüvelye/csomópontjai között, és az alapértelmezett érték `enabled = true`, ha nincs megadva a ConfigMaps. Ha a környezeti változók gyűjteménye globálisan engedélyezve van, letilthatja egy adott tárolóhoz, ha a környezeti változót `AZMON_COLLECT_ENV` értékkel **hamis** értékre állítja, vagy egy Docker beállítással vagy a [Pod](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) **konfigurációs fájljában a env:** szakasz. Ha a környezeti változók gyűjteménye globálisan le van tiltva, akkor a gyűjtemény nem engedélyezhető egy adott tárolónál (azaz a tároló szintjén alkalmazható egyetlen felülbírálás a gyűjtemény letiltása, ha az már engedélyezve van a globálisan.). |
 
 ### <a name="prometheus-scraping-settings"></a>A Prometheus-karcolás beállításai
 
@@ -65,7 +65,7 @@ A Prometheus-metrikák aktív kaparása a következő két szempont egyikével v
 | Végpont | Scope | Példa |
 |----------|-------|---------|
 | Pod-jegyzet | Fürtre kiterjedő | Széljegyzetek <br>`prometheus.io/scrape: "true"` <br>`prometheus.io/path: "/mymetrics"` <br>`prometheus.io/port: "8000" <br>prometheus.io/scheme: "http"` |
-| Kubernetes Service | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
+| Kubernetes szolgáltatás | Fürtre kiterjedő | `http://my-service-dns.my-namespace:9100/metrics` <br>`https://metrics-server.kube-system.svc.cluster.local/metrics` |
 | URL/végpont | Csomópontok és/vagy fürtök széles skálája | `http://myurl:9101/metrics` |
 
 URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják le. Ha a Kubernetes szolgáltatás meg van adva, a rendszer feloldja a szolgáltatás nevét a fürt DNS-kiszolgálójának használatával az IP-cím lekéréséhez, majd a feloldott szolgáltatás selejtét.
@@ -74,17 +74,17 @@ URL-cím megadása esetén a tárolók Azure Monitor csak a végpontot kaparják
 |------|-----|-----------|-------|-------------|
 | Fürtre kiterjedő | | | | Az alábbi három módszer egyikének megadásával adhatja meg a metrikák végpontjait. |
 | | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
-| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`:.|
-| | `monitor_kubernetes_pods` | Logikai | true vagy false | Ha a a `true` fürtre kiterjedő beállításokban van beállítva, Azure monitor a tárolók ügynöke a Kubernetes-hüvelyt a teljes fürtön megkarcolja a következő Prometheus-megjegyzésekkel:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `kubernetes_services` | Sztring | Vesszővel tagolt tömb | Kubernetes-szolgáltatások tömbje, amely az Kube-State-mérőszámokból származó mérőszámokat lekaparja. Például `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Logikai | true vagy false | Ha a `true` értékre van állítva a teljes fürtre kiterjedő beállításokban, Azure Monitor a containers Agent számára a Kubernetes-hüvelyt a teljes fürtön a következő Prometheus-megjegyzések esetében fogja lekaparni:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Logikai | true vagy false | Engedélyezi a hüvely leselejtezését. a `monitor_kubernetes_pods` értéket `true` értékre kell beállítani. |
 | | `prometheus.io/scheme` | Sztring | http vagy https | Az alapértelmezett érték a HTTP-n keresztüli selejtezés. Ha szükséges, állítsa a következőre: `https`. | 
-| | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja `/metrics`nem, adja meg ezt a jegyzetet. |
+| | `prometheus.io/path` | Sztring | Vesszővel tagolt tömb | A HTTP-erőforrás elérési útja, amelyből a mérőszámokat be kell olvasni. Ha a metrikák elérési útja nem `/metrics`, akkor ezt a jegyzetet adja meg. |
 | | `prometheus.io/port` | Sztring | 9102 | Itt adhatja meg a figyelni kívánt portot. Ha a port nincs beállítva, az alapértelmezett érték 9102 lesz. |
 | Csomópont szintű | `urls` | Sztring | Vesszővel tagolt tömb | HTTP-végpont (a megadott IP-cím vagy érvényes URL-elérési út). Például: `urls=[$NODE_IP/metrics]`. ($NODE a _IP egy adott Azure Monitor a tárolók paraméterhez, és a csomópontok IP-címe helyett lehet használni. Csak nagybetűnek kell lennie.) |
 | Csomópont-vagy fürt szintű | `interval` | Sztring | 60s | A gyűjtési időköz alapértelmezett értéke egy perc (60 másodperc). A (z) *[prometheus_data_collection_settings. node]* és/vagy *[prometheus_data_collection_settings. cluster]* gyűjteményt a következő időegységekhez módosíthatja: NS, US (vagy Âμs), MS, s, m, h. |
-| Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés (`fieldpass`) és a tiltás (`fielddrop`) listaelem beállításával megadhat bizonyos mérőszámokat, amelyeket nem a végpontból lehet gyűjteni. Először be kell állítania az engedélyezési listát. |
+| Csomópont-vagy fürt szintű | `fieldpass`<br> `fielddrop`| Sztring | Vesszővel tagolt tömb | Az engedélyezés (`fieldpass`) és a tiltás (`fielddrop`) listaelem beállításával megadhat bizonyos mérőszámokat, amelyeket össze kell gyűjteni, vagy nem a végpontból. Először be kell állítania az engedélyezési listát. |
 
-A ConfigMap egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMap.
+A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügynökre. A gyűjtemények nem rendelkezhetnek más ConfigMaps.
 
 ## <a name="configure-and-deploy-configmaps"></a>A ConfigMaps konfigurálása és telepítése
 
@@ -93,11 +93,11 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
 1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablon ConfigMap YAML fájlt, és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven.  
 1. Szerkessze a ConfigMap YAML-fájlt a testreszabott beállításokkal.
 
-    - Ha ki szeretné zárni az stdout log Collection adott névtereit, a kulcs/érték konfigurálásához a következő példát `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`kell használni:.
+    - Ha ki szeretné zárni az stdout-naplók megadott névtereit, a kulcs/érték konfigurálásához a következő példa használható: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
-    - A környezeti változók egy adott tárolóhoz való letiltásához állítsa be a kulcs `[log_collection_settings.env_var] enabled = true` /érték beállítást a változó globális begyűjtésének engedélyezéséhez, majd kövesse az [itt](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) leírt lépéseket az adott tároló konfigurációjának befejezéséhez.
+    - A környezeti változók egy adott tárolóhoz való letiltásához állítsa a `[log_collection_settings.env_var] enabled = true` kulcs/érték értékét a változó gyűjtésének globális engedélyezéséhez, majd kövesse az [itt](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) leírt lépéseket az adott tároló konfigurációjának befejezéséhez.
     
-    - A stderr-naplók fürtre kiterjedő letiltásához konfigurálja a kulcsot/értéket a következő példa használatával `[log_collection_settings.stderr] enabled = false`:.
+    - A stderr-naplók fürtre kiterjedő letiltásához konfigurálja a kulcsot/értéket a következő példa használatával: `[log_collection_settings.stderr] enabled = false`.
     
     - Az alábbi példák azt mutatják be, hogyan konfigurálható a ConfigMap-fájl metrikája egy URL-fürtön, az ügynök DameonSet csomópontja és egy Pod-Megjegyzés megadásával.
 
@@ -140,11 +140,11 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
           - prometheus.io/port:"8000" #If port is not 9102 use this annotation
         ```
 
-1. Hozzon létre ConfigMap a következő kubectl-parancs `kubectl apply -f <configmap_yaml_file.yaml>`futtatásával:.
+1. Hozzon létre ConfigMap a következő kubectl-parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
-    A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
+    A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezését követően megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
 
 A konfiguráció sikeres alkalmazásának ellenőrzéséhez használja a következő parancsot a naplók áttekintéséhez egy ügynök pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Ha konfigurációs hibák vannak a omsagent hüvelyből, a kimenet az alábbihoz hasonló hibákat jelenít meg:
 
@@ -153,23 +153,23 @@ A konfiguráció sikeres alkalmazásának ellenőrzéséhez használja a követk
 config::unsupported/missing config schema version - 'v21' , using defaults
 ```
 
-A Prometheus-re vonatkozó konfigurációs változások alkalmazásával kapcsolatos hibák is megtekinthetők.  Vagy az ügynök Pod naplóiból ugyanazzal `kubectl logs` a paranccsal vagy élő naplókból. Az élő naplók az alábbihoz hasonló hibákat mutatnak:
+A Prometheus-re vonatkozó konfigurációs változások alkalmazásával kapcsolatos hibák is megtekinthetők.  Az ügynök Pod-ból származó naplókból ugyanazzal a `kubectl logs` paranccsal vagy élő naplókból lehet használni. Az élő naplók az alábbihoz hasonló hibákat mutatnak:
 
 ```
 2019-07-08T18:55:00Z E! [inputs.prometheus]: Error in plugin: error making HTTP request to http://invalidurl:1010/metrics: Get http://invalidurl:1010/metrics: dial tcp: lookup invalidurl on 10.0.0.10:53: no such host
 ```
 
-Hibák miatt a omsagent nem elemezheti a fájlt, ezért az újraindítást és az alapértelmezett konfigurációt használja. Miután kijavította a hibát (ka) t a ConfigMap-ben, mentse a YAML-fájlt, és alkalmazza a frissített `kubectl apply -f <configmap_yaml_file.yaml`ConfigMaps a következő parancs futtatásával:.
+Hibák miatt a omsagent nem elemezheti a fájlt, ezért az újraindítást és az alapértelmezett konfigurációt használja. Miután kijavította a hibát (ka) t a ConfigMap-ben, mentse a YAML-fájlt, és alkalmazza a frissített ConfigMaps a következő parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml`.
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
 Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`.
 
-A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások végeztével megjelenik egy üzenet, amely az alábbihoz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezését követően megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verifying-schema-version"></a>Séma verziójának ellenőrzése
 
-A konfigurációs sémák támogatott verziói a omsagent Pod-on található Pod megjegyzésként (Schema-Versions) érhetők el. Ezeket a következő kubectl-paranccsal tekintheti meg:`kubectl describe pod omsagent-fdf58 -n=kube-system`
+A konfigurációs sémák támogatott verziói a omsagent Pod-on található Pod megjegyzésként (Schema-Versions) érhetők el. Ezeket a következő kubectl-paranccsal tekintheti meg: `kubectl describe pod omsagent-fdf58 -n=kube-system`
 
 A kimenet az alábbihoz hasonlóan fog megjelenni a Megjegyzés sémája – verziók:
 

@@ -1,6 +1,6 @@
 ---
-title: Offline szinkronizálás engedélyezése az Azure Mobile App (Cordova) |} A Microsoft Docs
-description: Ismerje meg, hogyan App Service Mobile Apps segítségével a Cordova-alkalmazás cache és a szinkronizálási kapcsolat nélküli adatokat
+title: Offline szinkronizálás engedélyezése az Azure Mobile-alkalmazáshoz (Cordova) | Microsoft Docs
+description: Megtudhatja, hogyan használhatja App Service Mobile App-t a Cordova-alkalmazás offline adatainak gyorsítótárazásához és szinkronizálásához
 documentationcenter: cordova
 author: elamalani
 manager: crdun
@@ -14,31 +14,31 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 04c8e7b2b60a60f17c49862d5c17793c16456032
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dc1183e1557d634ab1880376a1347f43f33b329f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443524"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027501"
 ---
-# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>A Cordova-mobilalkalmazás offline szinkronizálásának engedélyezése
+# <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Offline szinkronizálás engedélyezése a Cordova Mobile-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> A Visual Studio App Center fektet a mobilalkalmazás-fejlesztés központi új, integrált szolgáltatások. A fejlesztők a **hozhat létre**, **teszt** és **terjesztése** állíthat be folyamatos integrációt és teljesítést folyamat szolgáltatások. Az alkalmazás telepítve van, a fejlesztők monitorozható az állapot és az alkalmazás használatával használatát a **Analytics** és **diagnosztikai** -szolgáltatásokat, és kapcsolatba léphet a felhasználókat a **leküldéses** a szolgáltatás. A fejlesztők is kihasználhatják a **Auth** azok a felhasználók hitelesítéséhez és **adatok** szolgáltatás és a felhőbeli alkalmazások adatainak szinkronizálása. Tekintse meg [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-cordova-get-started-offline-data) még ma.
->
+> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
-Ebben az oktatóanyagban a kapcsolat nélküli szinkronizálás – a szolgáltatás az Azure Mobile Apps Cordova számára mutatja be. Kapcsolat nélküli szinkronizálás lehetővé teszi, hogy a végfelhasználók számára, hogy kommunikáljanak a mobilalkalmazás&mdash;megtekintését, hozzáadását és módosítását adatok&mdash;akkor is, ha nincs hálózati kapcsolat. Változások a helyi adatbázisban vannak tárolva.  Miután az eszköz újra online állapotba kerül, ezeket a módosításokat a távoli szolgáltatással vannak szinkronizálva.
+Ez az oktatóanyag a Cordova Azure Mobile Apps offline szinkronizálási funkcióját mutatja be. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a @ no__t-0viewing használatával, a @ no__t-1even hozzáadásával vagy módosításával kommunikálnak, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja.  Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli szolgáltatással.
 
-Ebben az oktatóanyagban alapul a Cordova rövid megoldás hoz létre, amikor az oktatóanyag befejezése Mobile Apps-alkalmazáshoz [Az Apache Cordova – gyorsútmutató]. Ebben az oktatóanyagban a rövid útmutató megoldást, az Azure Mobile Apps offline funkciók hozzáadása, frissítése.  Azt is ki a kapcsolat nélküli tartozó kódot az alkalmazásban.
+Ez az oktatóanyag az [Apache Cordova – gyors üzembe helyezés]során létrehozott Mobile apps Cordova rövid útmutató megoldásán alapul. Ebben az oktatóanyagban frissíti a gyors üzembe helyezési megoldást az Azure Mobile Apps offline szolgáltatásainak hozzáadásához.  Kiemeljük az alkalmazás offline-specifikus kódját is.
 
-A kapcsolat nélküli szinkronizálás – szolgáltatással kapcsolatos további tudnivalókért lásd a témakör [Offline adatszinkronizálás az Azure Mobile Appsban]. További információ az API-használat: a [API-dokumentáció](https://azure.github.io/azure-mobile-apps-js-client).
+Az offline szinkronizálási szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Offline adatszinkronizálás az Azure Mobile Appsban]című témakört. Az API-használat részleteiért tekintse meg az [API dokumentációját](https://azure.github.io/azure-mobile-apps-js-client).
 
-## <a name="add-offline-sync-to-the-quickstart-solution"></a>Offline szinkronizálást adhat a gyors megoldás
-A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazáshoz. Offline szinkronizálás szükséges a cordova-sqlite-storage beépülő modul, amely automatikusan bekerül az alkalmazáshoz, ha a projekt tartalmazza az Azure Mobile Apps beépülő modulját. A gyorsindítási projekt mindkét alábbi beépülő modulokat tartalmaz.
+## <a name="add-offline-sync-to-the-quickstart-solution"></a>Offline szinkronizálás hozzáadása a gyors üzembe helyezési megoldáshoz
+Az offline szinkronizálási kódot hozzá kell adni az alkalmazáshoz. Az offline szinkronizáláshoz a Cordova-SQLite-Storage beépülő modul szükséges, amely automatikusan bekerül az alkalmazásba, amikor az Azure Mobile Apps beépülő modult belefoglalja a projektbe. A Gyorsindítás projekt mindkét beépülő modult tartalmazza.
 
-1. A Visual Studio Megoldáskezelőben nyissa meg az index.js, és cserélje le a következő kód
+1. A Visual Studio Megoldáskezelő nyissa meg az index. js fájlt, és cserélje le a következő kódot
 
         var client,            // Connection to the Azure Mobile App backend
            todoItemTable;      // Reference to a table endpoint on backend
@@ -71,13 +71,13 @@ A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazásh
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    Az előző kód hozzáadása a helyi tároló inicializálása, és adjon meg egy helyi táblát, amely megfelel az oszlopértékeket, használja az Azure háttér. (Nincs szükség minden oszlop értékeit tartalmazza az ebben a kódban.)  A `version` mező a mobil háttérszolgáltatásban által karbantartott és ütközésfeloldás szolgál.
+    Az előző kód kiegészítései inicializálják a helyi tárolót, és meghatározhatnak egy helyi táblát, amely megfelel az Azure háttérbeli oszlop értékeinek. (A kódban nem kell szerepelnie az összes oszlop értékének.)  A `version` mezőt a mobil háttér tartja karban, és az ütközés feloldására szolgál.
 
-    A szinkronizálási környezetet egy hivatkozást kap meghívásával **getSyncContext**. A szinkronizálási környezetet segít nyomon követésével és módosítások leküldése minden táblát egy ügyfélalkalmazás mikor módosult a táblák közötti kapcsolatok megőrzése `.push()` nevezzük.
+    A **getSyncContext**meghívásával a szinkronizálási környezetre mutató hivatkozás fog megjelenni. A szinkronizálási környezet segít megőrizni a táblák kapcsolatait az összes olyan tábla változásainak nyomon követésével és a változtatások megadásával, amelyet az ügyfélalkalmazás a `.push()` hívásakor módosított.
 
-3. Frissítse a Mobile Apps-alkalmazás URL-címe az alkalmazás URL-címet.
+3. Frissítse az alkalmazás URL-címét a Mobile App Application URL-címére.
 
-4. Ezután cserélje le ezt a kódot:
+4. Ezután cserélje le a következő kódot:
 
         todoItemTable = client.getTable('todoitem'); // todoitem is the table name
 
@@ -113,13 +113,13 @@ A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazásh
         $('#add-item').submit(addItemHandler);
         $('#refresh').on('click', refreshDisplay);
 
-    A fenti kód inicializálja a szinkronizálási környezetet, és ezután meghív egy hivatkozást a helyi táblát beolvasni getSyncTable (helyett getTable).
+    Az előző kód inicializálja a szinkronizálási környezetet, majd meghívja a getSyncTable (getTable helyett) a helyi táblára mutató hivatkozás beszerzéséhez.
 
-    A kódot használ, az összes helyi adatbázis létrehozása, olvasása, frissítése és törlési (CRUD) tábla műveletek.
+    Ez a kód a helyi adatbázist használja az összes létrehozási, olvasási, frissítési és törlési (szifilisz-) tábla műveleteihez.
 
-    Ez a minta egyszerű hibakezelési szinkronizálási ütközések hajt végre. Egy valódi alkalmazás szeretné kezelni a különféle hibák, például hálózati feltételek, a kiszolgáló ütközéseket és mások. Hitelesítésikód-példák, lásd: a [kapcsolat nélküli szinkronizálás – minta].
+    Ez a minta egyszerű hibakezelés-kezelést végez a szinkronizálási ütközések esetében. Egy valós alkalmazás kezeli a különböző hibákat, például a hálózati körülményeket, a kiszolgálói ütközéseket és egyebeket. A kódokra vonatkozó példákért tekintse meg az [Offline szinkronizálási minta].
 
-5. Ezután adja hozzá a függvény a tényleges szinkronizálás végrehajtásához.
+5. Ezután adja hozzá ezt a függvényt a tényleges szinkronizálás végrehajtásához.
 
         function syncBackend() {
 
@@ -133,19 +133,19 @@ A kapcsolat nélküli szinkronizálás – kód hozzá kell adni az alkalmazásh
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    Úgy dönt, hogy mikor változásainak leküldése a Mobile Apps-háttéralkalmazás meghívásával **syncContext.push()** . Például hívhatja **syncBackend** egy gomb eseménykezelőt a szinkronizálás gomb kötve.
+    A **syncContext. push ()** metódus meghívásával eldöntheti, hogy mikor küldi el a módosításokat a Mobile apps-háttérbe. Például meghívhatja a **syncBackend** egy szinkronizálási gombhoz kötött gombos eseménykezelőben.
 
-## <a name="offline-sync-considerations"></a>Kapcsolat nélküli szinkronizálás – szempontok
+## <a name="offline-sync-considerations"></a>Offline szinkronizálási megfontolások
 
-A mintában a **leküldéses** metódusa **syncContext** csak az alkalmazás indításakor a visszahívási függvény bejelentkezési neve.  Egy valós alkalmazás esetében is teheti a szinkronizálási funkció manuálisan aktivált, vagy ha a hálózat állapota megváltozik.
+A mintában a **syncContext** **leküldéses** metódusát a rendszer csak az alkalmazás indításakor hívja meg a bejelentkezéshez a visszahívási függvényben.  Egy valós alkalmazásban azt is megteheti, hogy ezt a szinkronizálási funkciót manuálisan vagy a hálózati állapot megváltozásakor indítja el.
 
-Egy táblázaton, amely rendelkezik a függőben lévő lekérési végrehajtásakor helyi frissítések által nyomon követett kapcsolatban, hogy a pull művelet automatikusan eseményindítók egy leküldéses. Frissítésekor, felvétele és az ebben a példában szereplő elemek befejezése, akkor kihagyhatja az explicit **leküldéses** hívásokat indítani, mert elképzelhető, hogy a redundáns.
+Amikor egy lekéréses műveletet hajt végre egy olyan táblán, amely függőben van a környezet által követett helyi frissítésekkel, a lekéréses művelet automatikusan elindít egy leküldéses műveletet. A mintában lévő elemek frissítésekor, hozzáadásakor és befejezésekor kihagyhatja a explicit **leküldéses** hívást, mivel az lehet redundáns.
 
-A megadott kód, a távoli todoItem tábla összes rekordot a rendszer megkérdezi, de azt is lehetővé teszi a rekordok szűrése a lekérdezés azonosítóját átadásával és lekérdezése **leküldéses**. További információkért lásd: a szakasz *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Appsban].
+A megadott kódban a távoli todoItem tábla összes rekordja le van kérdezve, de a rekordok szűrhetők a lekérdezési azonosító és a lekérdezés **leküldéséhez**. További információ: *növekményes szinkronizálás* a [Offline adatszinkronizálás az Azure Mobile Appsban].
 
-## <a name="optional-disable-authentication"></a>(Nem kötelező) Hitelesítés letiltása
+## <a name="optional-disable-authentication"></a>Választható Hitelesítés letiltása
 
-Ha nem szeretné, állítsa be a hitelesítést, mielőtt tesztelési offline szinkronizálás, tegye megjegyzésbe a visszahívási függvény a bejelentkezéshez, de hagyja meg a kódot a uncommented a visszahívási függvény.  Megjegyzéseket ki a bejelentkezési sorok, miután a kódot a következőképpen:
+Ha nem szeretné beállítani a hitelesítést az offline szinkronizálás tesztelése előtt, jegyezze fel a visszahívási függvényt a bejelentkezéshez, de hagyja meg a visszahívási függvényben a kód Megjegyzés nélküli beállítását.  A bejelentkezési sorok megjegyzése után a kód a következőt követi:
 
       // Login to the service.
       // client.login('twitter')
@@ -156,56 +156,56 @@ Ha nem szeretné, állítsa be a hitelesítést, mielőtt tesztelési offline sz
         });
       // }, handleError);
 
-Most az alkalmazás szinkronizál az Azure-beli háttéralkalmazásának az alkalmazás futtatásakor.
+Az alkalmazás az alkalmazás futtatásakor szinkronizál az Azure-háttérrel.
 
 ## <a name="run-the-client-app"></a>Az ügyfélalkalmazás futtatása
-Offline szinkronizálás most már engedélyezve van futtathat az ügyfélalkalmazás legalább egyszer egyes platformokon a helyi tároló adatbázisának feltöltéséhez. Később szimulálása egy offline forgatókönyvet, és módosíthatja az adatokat, a helyi tároló, amikor az alkalmazás offline állapotban van.
+Ha már engedélyezve van az offline szinkronizálás, az ügyfélalkalmazás legalább egyszer futtatható az egyes platformokon a helyi áruház adatbázisának feltöltéséhez. Később szimulálhat egy offline forgatókönyvet, és módosíthatja a helyi tárolóban lévő adatkapcsolatot, miközben az alkalmazás offline állapotban van.
 
-## <a name="optional-test-the-sync-behavior"></a>(Nem kötelező) A szinkronizálási viselkedésének tesztelése
-Ebben a szakaszban módosítsa az ügyfélprojekt szimulálása egy kapcsolat nélküli forgatókönyv biztosítani a háttérbeli érvénytelen az alkalmazás URL-címének használatával. Hozzáadásakor, vagy módosítsa az elemeket, ezeket a módosításokat a helyi tároló tartanak, de a rendszer nem szinkronizálja a háttérbeli adattárba mindaddig, amíg a kapcsolat helyreáll.
+## <a name="optional-test-the-sync-behavior"></a>Választható A szinkronizálási viselkedés tesztelése
+Ebben a szakaszban az ügyfél-projektet úgy módosítja, hogy egy offline forgatókönyvet Szimuláljon, ha érvénytelen alkalmazás-URL-címet használ a háttérrendszer számára. Az adatelemek hozzáadásakor vagy módosításakor ezek a módosítások a helyi tárolóban vannak tárolva, de a rendszer nem szinkronizálja őket a háttér-adattárba, amíg újra nem jön létre.
 
-1. A megoldáskezelőben nyissa meg az index.js projektfájlt, és módosítsa az alkalmazás URL-Címének átirányítása egy URL-cím érvénytelen, például a következő kódot:
+1. A Megoldáskezelő nyissa meg az index. js projektfájlt, és módosítsa az alkalmazás URL-címét úgy, hogy az érvénytelen URL-címre mutasson, például a következő kóddal:
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. Index.html, frissítse a CSP `<meta>` elemet az azonos URL-cím érvénytelen.
+2. Az index. html fájlban frissítse a CSP `<meta>` elemet ugyanazzal az érvénytelen URL-címmel.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
-3. Hozhat létre és futtassa az ügyfélalkalmazást, és figyelje meg, hogy kivétel kerül a konzolon, amikor az alkalmazás kísérel meg szinkronizálni a háttér-bejelentkezés után. Hozzáadhat új elemeket szerepel csak a helyi tároló mindaddig, amíg azok kerüljenek a mobil háttérszolgáltatás használatára. Az ügyfélalkalmazás úgy viselkedik, csatlakoztatva van a háttérrendszerhez.
+3. Hozza létre és futtassa az ügyfélalkalmazás alkalmazást, és figyelje meg, hogy a rendszer egy kivételt naplóz a konzolon, amikor az alkalmazás a bejelentkezést követően megpróbál szinkronizálni a háttérrel. A hozzáadott új elemek csak a helyi tárolóban léteznek, amíg el nem küldik őket a mobil háttérbe. Az ügyfélalkalmazás úgy viselkedik, mintha a háttérhöz csatlakozik.
 
-4. Zárja be az alkalmazást, és indítsa újra, hogy ellenőrizze, hogy a létrehozott új elemek, a helyi tárolóban tárolja.
+4. Az alkalmazás bezárásával ellenőrizze, hogy a létrehozott új elemek megmaradnak-e a helyi tárolóban.
 
-5. (Nem kötelező) A Visual Studio segítségével megtekintheti az Azure SQL Database adatbázistábla megtekintéséhez, hogy a háttér adatbázis adatait nem változott.
+5. Választható A Visual Studióval megtekintheti a Azure SQL Database táblázatát, és megtekintheti, hogy a háttér-adatbázis adatai nem módosultak-e.
 
-    A Visual Studióban nyissa meg a **Server Explorer**. Keresse meg az adatbázist a **Azure**->**SQL-adatbázisok**. Kattintson a jobb gombbal az adatbázishoz, és válassza ki **nyissa meg az SQL Server Object Explorer**. Most megnyithatja az SQL database tábla és annak tartalmát.
+    A Visual Studióban nyissa meg a **Server Explorert**. Navigáljon az adatbázishoz az **Azure**->**SQL-adatbázisokban**. Kattintson a jobb gombbal az adatbázisra, és válassza **a Megnyitás a SQL Server Object Explorerban**lehetőséget. Most megkeresheti az SQL Database-táblázatot és annak tartalmát.
 
-## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>(Nem kötelező) A mobil háttérszolgáltatásban való újracsatlakozás tesztelése
+## <a name="optional-test-the-reconnection-to-your-mobile-backend"></a>Választható A mobil háttér-Újrakapcsolódás tesztelése
 
-Ebben a szakaszban kapcsolódjon újra az alkalmazást, hogy a mobil háttérszolgáltatás használatára, amely szimulálja az alkalmazást, és az online állapot vissza hamarosan. Amikor bejelentkezik, adatok szinkronizálva van a mobil háttérszolgáltatás használatára.
+Ebben a szakaszban újra csatlakozik az alkalmazáshoz a mobil háttérrendszer számára, amely szimulálja az alkalmazást egy online állapotba. Amikor bejelentkezik, a rendszer szinkronizálja az adatait a mobil háttérrel.
 
-1. Nyissa meg újra az index.js, és állítsa vissza az alkalmazás URL-címet.
-2. Nyissa meg újra index.html, és javítsa ki az alkalmazás URL-címet a CSP `<meta>` elemet.
-3. Építse újra, és futtassa az ügyfélalkalmazást. Az alkalmazást próbál meg bejelentkezés után a mobil-háttéralkalmazás szinkronizálni. Győződjön meg arról, hogy nincs kivétel jelentkezett-e a hibakeresési konzolt.
-4. (Nem kötelező) Tekintse meg a frissített adatokat az SQL Server Object Explorer vagy egy REST-eszköz, például a Fiddler használatával. Figyelje meg, a háttérbeli adatbázis és a helyi tároló szinkronizálta az adatokat.
+1. Nyissa meg újra az index. js fájlt, és állítsa vissza az alkalmazás URL-címét.
+2. Nyissa meg újra az index. html fájlt, és javítsa ki az alkalmazás URL-címét a CSP `<meta>` elemben.
+3. Hozza létre újra és futtassa az ügyfélalkalmazás alkalmazást. A bejelentkezés után az alkalmazás megpróbál szinkronizálni a Mobile apps-háttérrel. Ellenőrizze, hogy a hibakeresési konzolon nincsenek-e naplózva kivételek.
+4. Választható A frissített adatok megtekintése SQL Server Object Explorer vagy REST-eszköz, például a Hegedűs használatával. Figyelje meg, hogy az adatokat a háttér-adatbázis és a helyi tároló között szinkronizálták.
 
-    Figyelje meg, hogy az adatbázis és a helyi tároló között szinkronizálta az adatokat, és tartalmazza az alkalmazás leválasztott hozzáadott elemek.
+    Figyelje meg, hogy az adatok szinkronizálva lettek az adatbázis és a helyi tároló között, és tartalmazza azokat az elemeket, amelyeket az alkalmazás leválasztása közben adott meg.
 
 ## <a name="additional-resources"></a>További források
 * [Offline adatszinkronizálás az Azure Mobile Appsban]
 * [Visual Studio Tools for Apache Cordova]
 
 ## <a name="next-steps"></a>További lépések
-* Kapcsolat nélküli szinkronizálás – szolgáltatások, például az ütközések feloldásának speciális tekintse át a [kapcsolat nélküli szinkronizálás – minta]
-* A kapcsolat nélküli szinkronizálás – API-referencia a tekintse át a [API-dokumentáció](https://azure.github.io/azure-mobile-apps-js-client).
+* Tekintse át a fejlettebb offline szinkronizálási funkciókat, például az ütközés feloldását az [Offline szinkronizálási minta] .
+* Tekintse át a kapcsolat nélküli szinkronizálás API-referenciáját az [API dokumentációjában](https://azure.github.io/azure-mobile-apps-js-client).
 
 <!-- ##Summary -->
 
 <!-- Images -->
 
 <!-- URLs. -->
-[Az Apache Cordova – gyorsútmutató]: app-service-mobile-cordova-get-started.md
-[kapcsolat nélküli szinkronizálás – minta]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
+[Apache Cordova – gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
+[Offline szinkronizálási minta]: https://github.com/Azure-Samples/app-service-mobile-cordova-client-conflict-handling
 [Offline adatszinkronizálás az Azure Mobile Appsban]: app-service-mobile-offline-data-sync.md
 [Cloud Cover: Offline Sync in Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Adding Authentication]: app-service-mobile-cordova-get-started-users.md

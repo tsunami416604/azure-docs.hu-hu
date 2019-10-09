@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf25ce318415a8aa36bca8d4cd7380e4e8e67ca
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743458"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035704"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetDocuments
 
@@ -82,9 +82,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://vault.netvoyage.com/neWeb2/docCent.aspx?whr=<Repository ID>`
+    
+    c. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `http://netdocuments.com/VAULT`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. A tárház-azonosító egy olyan érték, amely a NetDocuments-tárházhoz tartozó, a **CA-** tól kezdődően 8 karakterből áll. További információért tekintse meg a [NetDocuments összevont identitás támogatási dokumentumát](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) . Ha nehézségekbe ütközik a fenti információk használatával, vegye fel a kapcsolatot a NetDocuments ügyfélszolgálati [csapatával](https://support.netdocuments.com/hc/) is. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -109,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
@@ -139,15 +141,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
    
-    ![Tárház](./media/netdocuments-tutorial/ic795047.png "Tárház")
+    ![Adattár]-(./media/netdocuments-tutorial/ic795047.png "adattár")
 
 4. Kattintson a **speciális hitelesítési beállítások konfigurálása lehetőségre**.
     
-    ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/ic795048.png "Speciális hitelesítési beállítások konfigurálása")
+    ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/ic795048.png "speciális hitelesítési beállítások konfigurálása")
 
 5. Az **Összevont identitás** párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![Összevont identitás](./media/netdocuments-tutorial/ic795049.png "Összevont identitás")
+    Összevont ![identitás](./media/netdocuments-tutorial/ic795049.png "összevont identitása")
    
     a. **Összevont identitás-kiszolgáló típusaként**válassza a **Active Directory összevonási szolgáltatások (AD FS)** lehetőséget.
    
@@ -166,15 +168,15 @@ NetDocuments esetén a kiépítés manuális feladat.
 
 2. A felső menüben kattintson a **rendszergazda**elemre.
    
-    ![Rendszergazda](./media/netdocuments-tutorial/ic795051.png "Rendszergazda")
+    ![Rendszergazdai](./media/netdocuments-tutorial/ic795051.png "rendszergazda")
 
 3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
    
-    ![Tárház](./media/netdocuments-tutorial/ic795047.png "Tárház")
+    ![Adattár]-(./media/netdocuments-tutorial/ic795047.png "adattár")
 
 4. Az **E-mail cím** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail-címét, majd kattintson a **felhasználó hozzáadása**elemre.
    
-    ![E-mail-cím](./media/netdocuments-tutorial/ic795053.png "E-mail-cím")
+    ![E-mail cím](./media/netdocuments-tutorial/ic795053.png "e-mail-címe")
    
     >[!NOTE]
     >A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna. A NetDocuments által biztosított egyéb NetDocuments-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.

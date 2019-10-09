@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801637"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029202"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 A forrás-átalakítás konfigurálja az adatforrást az adatfolyamhoz. Az adatfolyamatok tervezésekor az első lépés mindig a forrás-átalakítás konfigurálását fogja beállítani. Forrás hozzáadásához kattintson a **forrás hozzáadása** mezőre az adatfolyam-vászonban.
 
@@ -39,7 +39,7 @@ Azure Data Factory több mint 80 natív összekötőhöz férhet hozzá. Az adat
 
 Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beállításai** lapon. Itt kiválaszthatja vagy létrehozhatja a forrásként szolgáló adatkészletet. Kiválaszthatja az adataihoz tartozó séma-és mintavételi beállításokat is.
 
-![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
+![Forrás beállításai lap](media/data-flow/source1.png "forrás beállításai lap")
 
 **Séma drift:** A [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.
 
@@ -62,7 +62,7 @@ Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapc
 
 Ha olyan fájl-alapú adatkészletet használ, mint például az Azure Blob Storage vagy Azure Data Lake Storage, a **forrás beállításai** lapon kezelheti, hogy a forrás hogyan olvassa be a fájlokat.
 
-![Forrás beállításai](media/data-flow/sourceOPtions1.png "Forrás beállításai")
+Forrás ![beállításai]–(media/data-flow/sourceOPtions1.png "forrás") beállításai
 
 **Helyettesítő karakter elérési útja:** A helyettesítő karakterek használatakor a rendszer az ADF-et az egyes egyező mappákon és fájlokon keresztül, egyetlen forrás-átalakításon keresztüli hurokra utasítja. Ez egy hatékony módszer több fájl feldolgozására egyetlen folyamaton belül. Több helyettesítő karakterből álló mintázatot is hozzáadhat, ha a meglévő helyettesítő karakter fölé viszi a kurzort.
 
@@ -70,24 +70,24 @@ A forrás tárolóban válasszon egy olyan fájlt, amely megfelel a mintának. A
 
 Helyettesítő karakteres példák:
 
-* ```*```A karakterek tetszőleges halmazát jelöli.
-* ```**```Rekurzív könyvtár beágyazását jelöli
-* ```?```Egy karakter cseréje
-* ```[]```A zárójelben szereplő több karakternek felel meg.
+* a ```*``` a karakterek tetszőleges halmazát jelöli.
+* a ```**``` a rekurzív könyvtár beágyazását jelöli
+* @no__t – 0 egy karaktert cserél
+* ```[]``` a zárójelben szereplő több karakternek felel meg.
 
-* ```/data/sales/**/*.csv```Az összes CSV-fájl beolvasása a/Data/Sales alatt
-* ```/data/sales/20??/**```Minden fájl beolvasása a huszadik században
-* ```/data/sales/2004/*/12/[XY]1?.csv```Minden CSV-fájl beolvasása a 2004-ben decemberben, X vagy Y előtaggal, kétjegyű számmal
+* @no__t – 0 – az összes CSV-fájl beolvasása a/Data/Sales alatt
+* @no__t – 0 a 20. század összes fájljának beolvasása
+* ```/data/sales/2004/*/12/[XY]1?.csv``` lekérdezi az összes CSV-fájlt a 2004-as verzióban, a két számjegyből álló X vagy Y előtaggal kezdődően.
 
-**Partíció gyökerének elérési útja:** Ha a fájlformátumban ```key=value``` particionált mappák vannak (például év = 2019), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatáramlási adatfolyamban található oszlop neveként.
+**Partíció gyökerének elérési útja:** Ha a forrásfájl particionált mappája ```key=value``` formátumú (például év = 2019), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatáramlási adatfolyamban található oszlop neveként.
 
 Először állítson be egy helyettesítő karaktert, amely tartalmazza az összes olyan elérési utat, amely a particionált mappák és az elolvasni kívánt levél fájlok.
 
-![Partíciós forrásfájl beállításai](media/data-flow/partfile2.png "Partíciós fájl beállítása")
+![Partíciós forrásfájl-beállítások](media/data-flow/partfile2.png "partíciós fájljának beállítása")
 
 A partíció gyökerének elérési útja beállítással határozhatja meg, hogy a mappa szerkezete milyen felső szintű legyen. Amikor az adatelőnézet használatával tekinti meg az adatai tartalmát, látni fogja, hogy az ADF hozzáadja az egyes mappák szintjein talált feloldott partíciókat.
 
-![Partíció gyökerének elérési útja](media/data-flow/partfile1.png "Partíciós gyökér elérési útjának előnézete")
+![Partíció gyökér elérési útjának](media/data-flow/partfile1.png "partíciójának gyökér elérési útja előnézet")
 
 **Fájlok listája:** Ez egy beállított fájl. Hozzon létre egy szövegfájlt, amely tartalmazza a feldolgozandó relatív elérési út fájljainak listáját. Mutasson erre a szövegfájlra.
 
@@ -120,13 +120,13 @@ Ebben az esetben a rendszer a/Data/Sales alatt forrásozott összes fájlt áthe
 
 Minden Forrástípus megadható kifejezésként a [leképezési adatfolyam átalakítási kifejezésének nyelve](data-flow-expression-functions.md)alapján. Dinamikus tartalom hozzáadásához kattintson vagy vigye a kurzort a mezők között a beállítások panelen. Kattintson a hivatkozásra a **dinamikus tartalom hozzáadásához**. Ez elindítja a Kifejezésszerkesztő kifejezést, ahol a kifejezéseket, a statikus literál értékeket vagy a paramétereket dinamikusan állíthatja be.
 
-![Paraméterek](media/data-flow/params6.png "Paraméterek")
+![Paraméterek](media/data-flow/params6.png "paraméterei")
 
 ## <a name="sql-source-options"></a>SQL-forrás beállításai
 
 Ha a forrás SQL Database vagy SQL Data Warehouse, a **forrás beállításai** lapon további SQL-specifikus beállítások érhetők el. 
 
-**Bemeneti** Válassza ki, hogy a forrást egy táblán ```Select * from <table-name>```, vagy egy egyéni SQL-lekérdezést adjon meg.
+**Bemeneti** Válassza ki, hogy a forrást egy táblán (```Select * from <table-name>``` egyenértékű), vagy egy egyéni SQL-lekérdezést szeretne megadni.
 
 **Lekérdezés**: Ha a beviteli mezőben a lekérdezés lehetőséget választotta, adjon meg egy SQL-lekérdezést a forráshoz. Ez a beállítás felülbírálja az adatkészletben kiválasztott összes táblát. Az **Order by** záradékok itt nem támogatottak, de a teljes select from utasítással is megadható. A felhasználó által definiált Table functions is használható. a **select * from udfGetData ()** egy olyan UDF az SQL-ben, amely egy táblázatot ad vissza. Ez a lekérdezés létrehoz egy forrástábla, amelyet az adatfolyamatában használhat.
 
@@ -139,13 +139,13 @@ Ha a forrás SQL Database vagy SQL Data Warehouse, a **forrás beállításai** 
 * Szerializálható
 * Nincs (elkülönítési szint figyelmen kívül hagyása)
 
-![Elkülönítési szint](media/data-flow/isolationlevel.png "Elkülönítési szint")
+![Elkülönítési szint](media/data-flow/isolationlevel.png "elkülönítési szintje")
 
 ## <a name="projection"></a>Vetület
 
 Az adatkészletekben lévő sémák esetében a forrás vetülete határozza meg a forrásadatok adatoszlopait, típusait és formátumait. A legtöbb adatkészlet, például az SQL és a parketta esetében a forrás kivetítése úgy van rögzítve, hogy tükrözze az adatkészletben definiált sémát. Ha a forrásfájlok nem megfelelően vannak beírva (például a sima CSV-fájlok a Parquet-fájlok helyett), megadhatja a forrás-átalakítás egyes mezőinek adattípusait.
 
-![Beállítások a kivetítés lapon](media/data-flow/source3.png "Kivetítés")
+A(media/data-flow/source3.png "kivetítés") ![lapon megjelenő beállítások]
 
 Ha a szövegfájl nem rendelkezik meghatározott sémával, válassza az **adattípusok észlelése** lehetőséget, hogy Data Factory az adattípusok mintavételezését és következtetését. Válassza az **alapértelmezett formátum megadása** lehetőséget az alapértelmezett adatformátumok automatikus észleléséhez. 
 
@@ -155,7 +155,7 @@ Módosíthatja az oszlop adattípusait egy lefelé irányuló adatfolyamból sz�
 
 A forrás-átalakítás **optimalizálása** lapján megjelenhet a **forrás** partíció típusa. Ez a beállítás csak akkor érhető el, ha a forrás Azure SQL Database. Ennek az az oka, hogy Data Factory párhuzamosan próbálkozik a csatlakozással, hogy nagy lekérdezéseket futtasson a SQL Database-forráson.
 
-![Forrás partíció beállításai](media/data-flow/sourcepart3.png "particionálás")
+A ![forrás partíció beállításainak](media/data-flow/sourcepart3.png "particionálás")
 
 Nem kell particionálnia az SQL Database-forrás adatait, de a partíciók nagy lekérdezések esetén hasznosak. A partíciót egy oszlopra vagy egy lekérdezésre alapozhatja.
 
@@ -167,7 +167,7 @@ A forrás táblából válassza ki a particionálni kívánt oszlopot. Állítsa
 
 Dönthet úgy is, hogy egy lekérdezés alapján particionálja a kapcsolatokat. Adja meg egy WHERE predikátum tartalmát. Adja meg például a következőt: év > 1980.
 
-További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-optimize-tab.md).
+További információ a leképezési adatfolyamon belüli optimalizálásról: [optimalizálás lap](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>További lépések
 

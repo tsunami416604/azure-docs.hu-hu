@@ -1,34 +1,32 @@
 ---
-title: Származtatott oszlop átalakítása a leképezési adatfolyam - Azure Data Factory |} A Microsoft Docs
-description: Útmutató az Azure Data Factoryban a leképezési Flow származtatott oszlop átalakítása a nagy mennyiségű adat átalakítására.
+title: Származtatott oszlop átalakítása a leképezési adatfolyamban – Azure Data Factory | Microsoft Docs
+description: Megtudhatja, hogyan alakíthatja át az adatmennyiséget a Azure Data Factory a leképezési adatfolyam származtatott oszlopainak átalakításával.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 941c629fd8359edc7fc1cf364a6735314044d95e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: aacd6f1799f1813e168bd04e78f18cf60ad5243f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312207"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026845"
 ---
-# <a name="derived-column-transformation-in-mapping-data-flow"></a>Az adatfolyam-leképezés származtatott oszlop átalakítása
+# <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
-
-A származtatott oszlop átalakítása használja, az adatfolyam létrehozni az új oszlopok vagy a meglévő mezők módosítása.
+A származtatott oszlop átalakításával új oszlopokat hozhatja ki az adatfolyamban, vagy módosíthatja a meglévő mezőket.
 
 ## <a name="derived-column-settings"></a>Származtatott oszlop beállításai
 
-Bírálja felül egy létező oszlop, válassza ki az oszlop legördülő lista használatával. Ellenkező esetben az oszlop kijelölési mezőt használja egy szövegmező, és írja be az új oszlop neve. "Adja meg a kifejezés" párbeszédpanel megnyitásához kattintson a származtatott oszlop kifejezésének összeállítása, a [Data Flow Kifejezésszerkesztő](concepts-data-flow-expression-builder.md).
+Meglévő oszlop felülbírálásához válassza ki azt az oszlop legördülő listából. Ellenkező esetben használja az oszlop kijelölése mezőt a szövegmezőbe, és írja be az új oszlop nevét. A származtatott oszlop kifejezésének létrehozásához kattintson a "kifejezés beírása" mezőre az adatfolyam- [kifejezés-szerkesztő](concepts-data-flow-expression-builder.md)megnyitásához.
 
-![Oszlopbeállítások származtatott](media/data-flow/dc1.png "származtatott oszlop beállításai")
+![Származtatott oszlop beállításai](media/data-flow/dc1.png "származtatott oszlop beállításai")
 
-További származtatott oszlopok hozzáadásához, vigye a kurzort egy meglévő származtatott oszlop, és kattintson a "+". Ezután válassza a "Oszlop hozzáadása" vagy "Hozzáadás oszlop minta". Oszlop mintákat is származhatnak hasznos, ha az oszlopneveket változó a forrásból. További információkért lásd: [oszlop minták](concepts-data-flow-column-pattern.md).
+További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő származtatott oszlop fölé, és kattintson a "+" elemre. Ezután válassza az "oszlop hozzáadása" vagy az "oszlop hozzáadása" mintát. Az oszlop mintái hasznosak lehetnek, ha az oszlopnevek a forrásokból származó változók. További információ: [Column Patterns](concepts-data-flow-column-pattern.md).
 
-![Új származtatott Oszlopválasztás](media/data-flow/columnpattern.png "új származtatott oszlop kiválasztása")
+![Új származtatott oszlop kiválasztása](media/data-flow/columnpattern.png "új származtatott oszlop kiválasztása")
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet a [kifejezésnyelveket adatfolyam leképezési](data-flow-expression-functions.md).
+- További információ a [leképezési adatfolyam kifejezésének nyelvéről](data-flow-expression-functions.md).

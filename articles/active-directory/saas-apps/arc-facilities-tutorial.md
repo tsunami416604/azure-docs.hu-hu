@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cf5a5e2669fcbb5344fc6dd4b5c6de8318c3a5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 43fd1375ac8ffa850ca3f2c4c2b34e63631a9811
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846930"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Oktatóanyag: Egyszeri bejelentkezéses (SSO) integráció Azure Active Directory ARC-létesítményekkel
 
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![image](common/edit-attribute.png)
 
-1. A fentieken kívül az ARC-létesítmények alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. A **csoport jogcímek (előzetes verzió)**  párbeszédpanel **felhasználói attribútumok &**  jogcímek szakaszában hajtsa végre a következő lépéseket:
+1. A fentieken kívül az ARC-létesítmények alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza ki **új felhasználó** a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
