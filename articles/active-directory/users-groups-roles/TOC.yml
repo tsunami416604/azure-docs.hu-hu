@@ -110,7 +110,7 @@
           href: groups-naming-policy.md
         - name: Csoportlejárati referencia
           href: groups-lifecycle.md
-        - name: Lejárt vagy törölt csoportok visszaállítása
+        - name: Törölt csoportok visszaállítása
           href: groups-restore-deleted.md
         - name: Csoportbeállítások kezelése
           href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,7 +134,7 @@
           href: licensing-groups-resolve-problems.md
         - name: Felhasználók átállítása csoportalapú licencelésre
           href: licensing-groups-migrate-users.md
-        - name: Felhasználó licenceinek módosítása
+        - name: Felhasználó vagy csoport licenceinek módosítása
           href: licensing-groups-change-licenses.md
         - name: További helyzetek
           href: licensing-group-advanced.md
@@ -168,7 +168,7 @@
           href: roles-delegate-by-task.md
         - name: Microsoft 365-szerepkörök
           href: roles-m365-workload-docs.md
-        - name: Rendszergazdai szerepkörök biztonsága
+        - name: Szerepkörök biztonsága
           items:
             - name: Szerepkör biztonsági tervezése
               href: directory-admin-roles-secure.md

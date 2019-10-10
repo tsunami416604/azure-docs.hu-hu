@@ -1,7 +1,7 @@
 ---
-title: SQL-hibakódok – adatbázis-kapcsolati hiba |} A Microsoft Docs
-description: 'Ismerje meg az SQL Database-ügyfélalkalmazások, mint az általános adatbázis-kapcsolati hibák, adatbázis-másolási hibákat és általános SQL-hibakódok. '
-keywords: SQL-hibakód, hozzáférés az sql, adatbázis-kapcsolati hiba, sql-hibakódok
+title: SQL-hibakódok – adatbázis-csatlakoztatási hiba | Microsoft Docs
+description: 'Ismerje meg az SQL Database ügyfélalkalmazások SQL-hibakódait, például a gyakori adatbázis-csatlakoztatási hibákat, az adatbázis-másolási problémákat és az általános hibákat. '
+keywords: SQL-hibakód, Access SQL, adatbázis-kapcsolati hiba, SQL-hibakódok
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,218 +11,217 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 24bd2cca2e4ed053d51f618d90274e8988a09c26
+ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723492"
+ms.lasthandoff: 07/26/2019
+ms.locfileid: "68568904"
 ---
-# <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódok: Adatbázis-csatlakozási hibák és egyéb problémák
+# <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database ügyfélalkalmazások SQL-hibakódai: Adatbázis-csatlakoztatási hibák és egyéb problémák
 
-Ez a cikk az SQL Database-ügyfélalkalmazások, többek között az adatbázis-kapcsolati hibák, átmeneti hibák (más néven az átmeneti hibák), erőforrás-szabályozási hibák, adatbázis-másolat problémák, a rugalmas készlet és egyéb hibák SQL-hibakódok sorolja fel. A legtöbb kategóriák adott Azure SQL Database-adatbázishoz, és nem vonatkoznak a Microsoft SQL Server. Lásd még: [rendszer hibaüzenetek](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
+Ez a cikk felsorolja az SQL Database ügyfélalkalmazások SQL-hibakódait, például az adatbázis-kapcsolatok hibáit, az átmeneti hibákat (más néven átmeneti hibák), az erőforrás-irányítási hibákat, az adatbázis-másolási problémákat, a rugalmas készletet és más hibákat. A legtöbb kategória különösen Azure SQL Database, és nem vonatkozik a Microsoft SQL Serverra. Lásd még: rendszerhiba- [üzenetek](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx).
 
-## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Adatbázis-kapcsolati hibák, átmeneti hibák és egyéb átmeneti hibák
+## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>Adatbázis-csatlakoztatási hibák, átmeneti hibák és egyéb ideiglenes hibák
 
-A következő táblázat ismerteti az SQL-hibakódok kapcsolat adatvesztési hibák, és más az alkalmazást próbál meg hozzáférni az SQL Database előforduló átmeneti hibákra. Első lépések – oktatóanyagok való csatlakozás az Azure SQL Database, lásd: [csatlakozik az Azure SQL Database](sql-database-libraries.md).
+Az alábbi táblázat az SQL-hibakódokat tartalmazza a kapcsolat elvesztése miatti hibákra vonatkozóan, és egyéb átmeneti hibákat is tapasztalhat, amikor az alkalmazás megpróbál hozzáférni SQL Databasehoz. A Azure SQL Databasehoz való kapcsolódással kapcsolatos útmutatókért lásd: [csatlakozás Azure SQL Databasehoz](sql-database-libraries.md).
 
-### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Leggyakrabban használt adatbázis-csatlakozási hibák és átmeneti hibák hibák
+### <a name="most-common-database-connection-errors-and-transient-fault-errors"></a>Leggyakoribb adatbázis-csatlakoztatási hibák és átmeneti hibák
 
-Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mértékű terhelés esetén dinamikusan újra tudja konfigurálni a kiszolgálókat.  E dinamikus viselkedés miatt megszakadhat az ügyfélprogram és az SQL Database közötti kapcsolat. Az ilyen típusú hiba történt a feltétel neve egy *átmeneti hibák*.
+Az Azure-infrastruktúra az SQL Database szolgáltatásban fellépő nagy mértékű terhelés esetén dinamikusan újra tudja konfigurálni a kiszolgálókat.  E dinamikus viselkedés miatt megszakadhat az ügyfélprogram és az SQL Database közötti kapcsolat. Az ilyen típusú hiba feltételének neve *átmeneti hiba*.
 
-Erősen ajánlott, hogy az ügyfélprogram rendelkezik-e a újrapróbálkozási logikát, így azt sikerült helyreállítani a egy kapcsolatot az átmeneti hibák legyen idejük javítsa ki a saját maga után.  Azt javasoljuk, hogy elhalasztani, az 5 másodperc az első újrapróbálkozás előtt. Újrapróbálkozás rövidebb, mint a felhőszolgáltatás túlterhel 5 másodperc kockázatok késleltetéssel. A próbálkozások a késleltetés kell tágul legfeljebb 60 másodperc.
+Erősen ajánlott, hogy az ügyfélalkalmazás újra megismételje a logikát, hogy újra létre lehessen hozni a kapcsolatot, miután megadta az átmeneti hibák idejét.  Javasoljuk, hogy az első újrapróbálkozás előtt 5 másodpercig várjon. 5 másodpercnél rövidebb idő elteltével próbálkozzon újra a felhőalapú szolgáltatással. Minden további újrapróbálkozás esetén a késleltetés exponenciálisan növekszik, legfeljebb 60 másodpercig.
 
-Átmeneti hibák hibák általában a következő hibaüzenetek az ügyfél-alkalmazásokból származó egyik manifest:
+Az átmeneti hibák hibái általában a következő hibaüzenetek egyike jelennek meg az ügyfélprogramokban:
 
-* Adatbázis &lt;db_name&gt; kiszolgálón &lt;Azure_instance&gt; jelenleg nem áll rendelkezésre. Próbálkozzon újra később a kapcsolatot. Ha a probléma tartósan fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: &lt;munkamenet-azonosítónak&gt;
-* Adatbázis &lt;db_name&gt; kiszolgálón &lt;Azure_instance&gt; jelenleg nem áll rendelkezésre. Próbálkozzon újra később a kapcsolatot. Ha a probléma tartósan fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: &lt;munkamenet-azonosítónak&gt;. (A Microsoft SQL Server, a hiba: 40613)
-* Egy létező kapcsolatot a távoli állomás kényszerítette volt.
-* System.Data.Entity.Core.EntityCommandExecutionException: Hiba történt a parancsdefiníciót végrehajtása közben. Lásd a belső kivétel üzenetében olvashatók. ---> System.Data.SqlClient.SqlException: Egy átviteli szintű hiba történt a kiszolgáló eredményeinek fogadásakor. (szolgáltató: Munkamenet-szolgáltató, hiba: 19 – fizikai kapcsolat már nem használható)
-* Egy másodlagos adatbázis-kapcsolódási kísérlet sikertelen, mert az adatbázis újrakonfigurálása folyamatban van, és foglalt alkalmazása új lapok közepén aktív tranzakciót az elsődleges adatbázison. 
+* Az &lt;adatbázis&gt; -db_name &lt;jelenleg&gt; nem érhető el a Azure_instance kiszolgálón. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is &lt;fennáll, forduljon az ügyfélszolgálathoz, és adja meg nekik a session_id munkamenet-nyomkövetési azonosítóját.&gt;
+* Az &lt;adatbázis&gt; -db_name &lt;jelenleg&gt; nem érhető el a Azure_instance kiszolgálón. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is &lt;fennáll, forduljon az ügyfélszolgálathoz, és adja meg nekik a session_id&gt;munkamenet-nyomkövetési azonosítóját. (Microsoft SQL Server, Hiba: 40613)
+* A távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat.
+* System.Data.Entity.Core.EntityCommandExecutionException: Hiba történt a parancs definíciójának végrehajtása során. További részletekért tekintse meg a belső kivételt. ---> System.Data.SqlClient.SqlException: Átviteli szintű hiba történt a kiszolgáló eredményeinek fogadása során. Szolgáltató Munkamenet-szolgáltató, hiba: 19 – a fizikai kapcsolatok nem használhatók.)
+* Egy másodlagos adatbázishoz való kapcsolódási kísérlet sikertelen volt, mert az adatbázis újrakonfigurálási folyamatban van, és az új lapokat az elsődleges adatbázis aktív tranzakciójának közepén foglalt. 
 
-Újrapróbálkozási logika kódot példákért lásd:
+Az újrapróbálkozási logikával kapcsolatos Példákért lásd:
 
-* [Adatkapcsolattárak az SQL Database és SQL Server](sql-database-libraries.md) 
-* [Az SQL Database-csatlakozási hibák és átmeneti hibák elhárításához műveletek](sql-database-connectivity-issues.md)
+* [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md) 
+* [A kapcsolódási hibák és az átmeneti hibák kijavítására szolgáló műveletek a SQL Database](sql-database-connectivity-issues.md)
 
-Ismerteti azokat a a *blokkolási időtartam* ADO.NET használó ügyfelek számára érhető el [SQL Server készletezési (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx).
+A ADO.NET-t használó ügyfelek blokkolási időszakának megtárgyalása [SQL Server kapcsolatok készletezésében (ADO.net)](https://msdn.microsoft.com/library/8xx3tyca.aspx)érhető el.
 
-### <a name="transient-fault-error-codes"></a>Átmeneti hibák hibakódok
+### <a name="transient-fault-error-codes"></a>Átmeneti hibák hibakódja
 
-A következő hibák átmenetiek, és az alkalmazáslogikának meg kell ismételni: 
+A következő hibák átmenetiek, és az alkalmazás logikájában újra kell próbálkozni: 
 
-| Hibakód | Severity | Leírás |
+| Hibakód | severity | Leírás |
 | ---:| ---:|:--- |
-| 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. További információkért lásd: [4000-es, 4999 hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
-| 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ezt a hibaüzenetet kapja, amikor a szolgáltatás szoftver vagy hardver verziófrissítések, hardver-meghibásodásokkal vagy bármely más feladatátvételi problémák miatt nem működik. Az üzenet hiba 40197 beágyazva hibakód: (%d) milyen típusú hiba vagy feladatátvétel történt további információkat tartalmaz. Néhány példa a kódok vannak beágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgáló automatikusan újracsatlakozik kapcsolódik, kifogástalan állapotú másolatot készít az adatbázisról. Az alkalmazás kell a tényleges 40197, hibanaplójában található hibaelhárítási beágyazott hibakód (%d), és próbáljon újra csatlakozni az SQL Database mindaddig, amíg az erőforrás áll rendelkezésre, és újra létrejön a kapcsolat. További információkért lásd: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 40501 |20 |A szolgáltatás jelenleg elfoglalt. Ismételje meg a kérelmet 10 másodperc múlva. Incidens azonosítója: %ls. Hibakód: %d. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).|
-| 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Próbálkozzon újra később a kapcsolatot. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'.<br/><br/> Ez a hiba akkor fordulhat elő, ha már van egy meglévő dedikált rendszergazdai kapcsolat (DAC) létrejött az adatbázishoz. További információkért lásd: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
-| 49918 |16 |A kérelem nem dolgozható fel. Nincs elég erőforrás a kérelem feldolgozása.<br/><br/>A szolgáltatás jelenleg elfoglalt. Próbálkozzon újra később a kérelmet. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). |
-| 49919 |16 |Nem lehet folyamatot létrehozni vagy frissíteni a kérés. Túl sok létrehozási vagy frissítési művelet fut. a előfizetés "% ld".<br/><br/>A szolgáltatás nem foglalt feldolgozása több létre, vagy nem frissíthető az előfizetés vagy a kiszolgáló kéréseket. Erőforrás-optimalizálás kérelmek jelenleg le vannak tiltva. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) a függőben lévő műveletek. Várjon, amíg a függőben lévő létrehozási vagy frissítési kérelem befejeződött vagy töröljön egy függőben lévő kérelmet, és ismételje meg később a kérelmet. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). |
-| 49920 |16 |A kérelem nem dolgozható fel. Túl sok művelet fut. a előfizetéshez tartozó "% ld".<br/><br/>A szolgáltatás kérelmeinek feldolgozásával elfoglalva több ehhez az előfizetéshez. Erőforrás-optimalizálás kérelmek jelenleg le vannak tiltva. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) művelet állapotát. Várjon, amíg a függőben lévő kérések befejeződött vagy töröljön egy függőben lévő kérelmet, és ismételje meg később a kérelmet. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). |
-| 4221 |16 |Jelentkezzen be a másodlagos olvasási "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING" hosszú várakozási miatt nem sikerült. A replika nem érhető el bejelentkezés, mert a sor verziók a következők hiányzik a tranzakciók sorverziói, ha a replika újrahasznosításakor. A probléma visszaállítása vagy véglegesítése az elsődleges replika aktív tranzakcióinak megoldhatók. A probléma előfordulását tükrözésével hosszú írási tranzakciókat az elsődleges. |
+| 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen. További információ: [4000 – 4999. hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
+| 40197 |17 |A szolgáltatás hibát észlelt a kérelem feldolgozásakor. Kérjük, próbálkozzon újból. Hibakód:% d.<br/><br/>Ez a hibaüzenet akkor jelenik meg, ha a szolgáltatás szoftver vagy hardveres frissítés, hardverhiba vagy bármilyen más feladatátvételi probléma miatt leáll. A 40197-es hiba üzenetében beágyazott hibakód (% d) további információkat nyújt a hiba vagy a feladatátvételi típusról. Néhány példa a hibakódokra a 40197-es hiba üzenetében található, 40020, 40143, 40166 és 40540.<br/><br/>A SQL Database-kiszolgálóhoz való újracsatlakozás automatikusan csatlakozik az adatbázis egy kifogástalan állapotú példányához. Az alkalmazásnak meg kell fognia a 40197-es hibát, be kell jelentkeznie a (z) "% d" beágyazott hibakódra az üzenetben a hibaelhárításhoz, és újra kell csatlakoznia SQL Database, amíg az erőforrások elérhetővé válnak, és a kapcsolat újból létrejön. További információ: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 40501 |20 |A szolgáltatás jelenleg foglalt. Próbálja megismételni a kérést 10 másodperc múlva. Incidens azonosítója:% ls. Kód:% d. További információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp;|
+| 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Később próbálja megismételni a kapcsolatokat. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'.<br/><br/> Ez a hiba akkor fordulhat elő, ha már létezik egy meglévő dedikált rendszergazdai kapcsolódás (DAC) az adatbázishoz. További információ: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
+| 49918 |16 |A kérelem nem dolgozható fel. Nincs elég erőforrás a kérelem feldolgozásához.<br/><br/>A szolgáltatás jelenleg foglalt. Próbálkozzon újra a kéréssel. További információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp; |
+| 49919 |16 |A létrehozási vagy frissítési kérelem nem dolgozható fel. Túl sok létrehozási vagy frissítési művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt, több létrehozására vagy frissítésre vonatkozó kérelmet dolgoz fel az előfizetéshez vagy a kiszolgálóhoz. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. A függőben lévő műveletekhez tartozó [sys. DM _operation_status](https://msdn.microsoft.com/library/dn270022.aspx) lekérdezése. Várjon, amíg a függőben lévő létrehozási vagy frissítési kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp; |
+| 49920 |16 |A kérelem nem dolgozható fel. Túl sok művelet van folyamatban a (z) "% ld" előfizetéshez.<br/><br/>A szolgáltatás foglalt több kérést dolgoz fel ehhez az előfizetéshez. A kérések jelenleg le vannak tiltva az erőforrás-optimalizáláshoz. A művelet állapotának lekérdezése a [sys. DM _operation_status](https://msdn.microsoft.com/library/dn270022.aspx) . Várjon, amíg a függőben lévő kérelmek befejeződik, vagy törölje a függőben lévő kérelmek valamelyikét, majd ismételje meg a kérést. További információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp; |
+| 4221 |16 |A "HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING" hosszú várakozás miatt nem sikerült bejelentkezni a Read-másodlagosra. A replika nem érhető el a bejelentkezéshez, mert a rendszer a replikák újrahasznosítása során a folyamatban lévő tranzakciók esetében hiányzik a sorok verziószáma. A probléma megoldásához visszaállíthatja vagy véglegesítheti az aktív tranzakciókat az elsődleges replikán. Ennek az állapotnak az előfordulásait a hosszú írási tranzakciók elkerülésével lehet csökkenteni. |
 
-## <a name="database-copy-errors"></a>Adatbázis-másolat hibák
+## <a name="database-copy-errors"></a>Adatbázis-másolási hibák
 
-Hibák a következők is történt a adatbázis másolása az Azure SQL Database-ben. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
+A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
 
-| Hibakód | Severity | Leírás |
+| Hibakód | severity | Leírás |
 | ---:| ---:|:--- |
 | 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
-| 40637 |16 |Hozzon létre adatbázis-másolás jelenleg le van tiltva. |
-| 40561 |16 |Adatbázis másolása sikertelen volt. A forrás vagy a céladatbázis nem létezik. |
-| 40562 |16 |Adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
-| 40563 |16 |Adatbázis másolása sikertelen volt. A céladatbázis el lett dobva. |
-| 40564 |16 |Az adatbázis másolása belső hiba miatt sikertelen volt. Dobja el a céladatbázist, és próbálkozzon újra. |
-| 40565 |16 |Adatbázis másolása sikertelen volt. 1-nél több egyidejű adatbázis-másolat az azonos forrásból érkező engedélyezett. Dobja el a céladatbázist, és próbálkozzon újra később. |
-| 40566 |16 |Az adatbázis másolása belső hiba miatt sikertelen volt. Dobja el a céladatbázist, és próbálkozzon újra. |
-| 40567 |16 |Az adatbázis másolása belső hiba miatt sikertelen volt. Dobja el a céladatbázist, és próbálkozzon újra. |
-| 40568 |16 |Adatbázis másolása sikertelen volt. Forrásadatbázis elérhetetlenné. Dobja el a céladatbázist, és próbálkozzon újra. |
-| 40569 |16 |Adatbázis másolása sikertelen volt. Céladatbázis elérhetetlenné vált. Dobja el a céladatbázist, és próbálkozzon újra. |
-| 40570 |16 |Az adatbázis másolása belső hiba miatt sikertelen volt. Dobja el a céladatbázist, és próbálkozzon újra később. |
-| 40571 |16 |Az adatbázis másolása belső hiba miatt sikertelen volt. Dobja el a céladatbázist, és próbálkozzon újra később. |
+| 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
+| 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás-vagy a céladatbázis nem létezik. |
+| 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |
+| 40563 |16 |Az adatbázis másolása sikertelen volt. A célként megadott adatbázis el lett dobva. |
+| 40564 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40565 |16 |Az adatbázis másolása sikertelen volt. Nem engedélyezett több mint 1 egyidejű adatbázis-másolat ugyanabból a forrásból. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40566 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40567 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40568 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40569 |16 |Az adatbázis másolása sikertelen volt. A céladatbázis elérhetetlenné vált. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra. |
+| 40570 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
+| 40571 |16 |Az adatbázis másolása belső hiba miatt nem sikerült. Dobja el a céladatbázis-adatbázist, és próbálkozzon újra később. |
 
-## <a name="resource-governance-errors"></a>Erőforrás-szabályozási hibák
+## <a name="resource-governance-errors"></a>Erőforrás-irányítási hibák
 
-Az Azure SQL Database használata során az erőforrások túlzott használata által okozott hibák a következők. Példa:
+A következő hibákat okozhatja az erőforrások túlzott használata az Azure SQL Database használata közben. Példa:
 
-* Egy tranzakció van nyitva a túl hosszú.
-* A tranzakció túl sok zárolva van.
-* Egy alkalmazás túl sok memóriát is használja.
-* Egy alkalmazás túl sok fogyassza `TempDb` terület.
+* Egy tranzakció túl hosszú ideig nyitva van.
+* Egy tranzakció túl sok zárolást tart fenn.
+* Egy alkalmazás túl sok memóriát vesz igénybe.
+* Egy alkalmazás túl sok `TempDb` helyet fogyaszt.
 
 Kapcsolódó témakörök:
 
 * További információkért lásd:
-  * [Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)
-  * [Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)
-  * [DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)
-  * [Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)
-  * [Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)
-  * [Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). 
+  * [Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md)
+  * [DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md)
+  * [Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md)
+  * [Virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md)
+  * [rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md)
+  * [Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). 
 
-| Hibakód | Severity | Leírás |
+| Hibakód | severity | Leírás |
 | ---:| ---:|:--- |
-| 10928 |20 |Erőforrás-azonosító: %d. Az adatbázis %s maximális %d, és elérte az. További információkért lásd: [SQL Database erőforrás egyetlen vagy készletezett adatbázisok korlátai](sql-database-resource-limits-database-server.md).<br/><br/>Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2.<br/><br/>Ez a hiba, és a megoldásának módjával kapcsolatos további információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). |
-| 10929 |20 |Erőforrás-azonosító: %d. A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Az erőforrás-azonosító azt jelzi, hogy az erőforrást, amely elérte a határértéket. A munkaszálak, az erőforrás-azonosítója = 1. A munkamenetek, az erőforrás-azonosítója = 2. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md). <br/>Ellenkező esetben próbálkozzon újra később. |
-| 40544 |20 |Az adatbázis elérte a kvótáját méretét. Particionálhat vagy törölhet adatokat, dobjon el indexeket, vagy tekintse át a dokumentációt a lehetséges megoldások megismeréséhez. Az adatbázis méretezése, lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).|
-| 40549 |16 |Munkamenet meg lett szakítva, mert egy hosszú ideig futó tranzakció rendelkezik. Próbálja lerövidíteni a tranzakciót. A kötegelés további információkért lásd: [kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében](sql-database-use-batching-to-improve-performance.md).|
-| 40550 |16 |A munkamenet megszakadt, mert túl sok zárolást szerzett meg. Próbálja meg olvasó vagy egy tranzakción belül kevesebb sort módosítani. A kötegelés további információkért lásd: [kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében](sql-database-use-batching-to-improve-performance.md).|
-| 40551 |16 |A munkamenet lett szakítva, mert túl sok `TEMPDB` használat. Próbálja meg módosítani a lekérdezést az ideiglenes táblák tárterületének felhasználása csökkentése érdekében.<br/><br/>Ha ideiglenes objektumokat használ, a lemezterületet takarítson meg a `TEMPDB` adatbázis ideiglenes objektumok elvetésével után a munkamenet már nincs szükség. További információ az SQL Database-ben a tempdb-használati: [Tempdb-adatbázis az SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
-| 40552 |16 |A munkamenet lett szakítva, mert túlzott mértékben használta a tranzakciós napló lemezterület-használat. Próbáljon egy tranzakción belül kevesebb sort módosítani. A kötegelés további információkért lásd: [kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében](sql-database-use-batching-to-improve-performance.md).<br/><br/>Ha tömeges szúr be használatával a `bcp.exe` segédprogram vagy a `System.Data.SqlClient.SqlBulkCopy` osztály, használja a `-b batchsize` vagy `BatchSize` sorok számának korlátozásához beállítások az egyes tranzakciók a kiszolgálóra másolt. Ha meg vannak az index újraépítése a `ALTER INDEX` utasítással, próbáljon a `REBUILD WITH ONLINE = ON` lehetőséget. A Virtuálismag-beszerzési modell log tranzakcióméretek kapcsolatos tudnivalókat lásd: <br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).|
-| 40553 |16 |A munkamenet meg lett szakítva túlzott mértékű memóriahasználat miatt. Próbálja meg módosítani a lekérdezést, hogy kevesebb sort dolgozzon fel.<br/><br/>Számának csökkentése `ORDER BY` és `GROUP BY` műveletek a Transact-SQL-kódot az csökkenti a lekérdezés memóriára vonatkozó követelményeknek. Az adatbázis méretezése, lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).|
+| 10928 |20 |Erőforrás-azonosító:% d. Az adatbázis% s korlátja% d, és elérte a következőt:. További információ: [az önálló és a készletezett adatbázisok SQL Database erőforrás-korlátai](sql-database-resource-limits-database-server.md).<br/><br/>Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2.<br/><br/>A hibával és megoldásával kapcsolatos további információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp; |
+| 10929 |20 |Erőforrás-azonosító:% d. A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-azonosító azt az erőforrást jelzi, amely elérte a korlátot. Munkaszálak esetében az erőforrás-azonosító = 1. A munkamenetek esetében az erőforrás-azonosító = 2. További információkért lásd: <br/>&bull;[Adatbázis-kiszolgáló erőforrás-korlátai](sql-database-resource-limits-database-server.md) &nbsp;<br/>&bull;[DTU-alapú korlátok önálló adatbázisokhoz](sql-database-service-tiers-dtu.md) &nbsp;<br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp; <br/>Ellenkező esetben próbálkozzon újra később. |
+| 40544 |20 |Az adatbázis elérte a méretre vonatkozó kvótát. Particionálja vagy törölje az adatvesztést, az indexek eldobását, vagy a lehetséges megoldásokról a dokumentációban tájékozódhat. Az adatbázis-méretezéssel kapcsolatban lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).|
+| 40549 |16 |A munkamenet meg lett szakítva, mert hosszú ideig futó tranzakció van. Próbálja meg lerövidíteni a tranzakciót. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](sql-database-use-batching-to-improve-performance.md).|
+| 40550 |16 |A munkamenet meg lett szakítva, mert túl sok zárolást szerzett. Próbáljon meg egy tranzakción belül kevesebb sort olvasni vagy módosítani. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](sql-database-use-batching-to-improve-performance.md).|
+| 40551 |16 |A munkamenet a túlzott `TEMPDB` használat miatt megszakadt. Próbálja meg módosítani a lekérdezést, hogy csökkentse az ideiglenes tábla területének használatát.<br/><br/>Ha ideiglenes objektumokat használ, az ideiglenes objektumok eldobásával lemezterületet takaríthat meg az `TEMPDB` adatbázisban, miután a munkamenet már nem igényel rájuk. További információ a SQL Database tempdb használatáról: tempdb- [adatbázis SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).|
+| 40552 |16 |A munkamenet meg lett szakítva a tranzakciós naplók túlzott kihasználtsága miatt. Próbáljon meg kevesebb sort módosítani egyetlen tranzakcióban. A kötegelt feldolgozással kapcsolatos további információkért lásd: [a Batch használata az SQL Database alkalmazások teljesítményének javításához](sql-database-use-batching-to-improve-performance.md).<br/><br/>Ha a `bcp.exe` segédprogram vagy a `System.Data.SqlClient.SqlBulkCopy` `-b batchsize` osztály használatával hajtja végre a tömeges beszúrást, akkor `BatchSize` a vagy a beállítások használatával korlátozza az egyes tranzakciókban a kiszolgálóra másolt sorok számát. Ha az `ALTER INDEX` utasítással újraépít egy indexet, próbálja meg használni a `REBUILD WITH ONLINE = ON` kapcsolót. A virtuális mag-vásárlási modell tranzakciós naplójának méretével kapcsolatos információkért lásd: <br/>&bull;[virtuális mag-alapú korlátok önálló adatbázisokhoz](sql-database-vcore-resource-limits-single-databases.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[Felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md). &nbsp;|
+| 40553 |16 |A munkamenet túl sok memóriahasználat miatt megszakadt. Próbálja meg módosítani a lekérdezést úgy, hogy kevesebb sort dolgozzon fel.<br/><br/>A Transact-SQL `ORDER BY` - `GROUP BY` kód számának és műveleteinek csökkentése csökkenti a lekérdezés memóriabeli követelményeit. Az adatbázis-méretezéssel kapcsolatban lásd: [önálló adatbázis-erőforrások méretezése](sql-database-single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése](sql-database-elastic-pool-scale.md).|
 
-## <a name="elastic-pool-errors"></a>Rugalmas készlet hibák
+## <a name="elastic-pool-errors"></a>Rugalmas készlettel kapcsolatos hibák
 
-Létrehozásáról és használatáról a rugalmas készletek kapcsolatos hibák a következők:
+A rugalmas készletek létrehozásával és használatával kapcsolatos hibák a következők:
 
-| Hibakód | Severity | Leírás | Javítási műveletek |
+| Hibakód | severity | Leírás | Javító művelet |
 |:--- |:--- |:--- |:--- |
-| 1132 | 17 |A rugalmas készlet elérte a tárolási kapacitását. A rugalmas készlet tárolási felhasználásának nem haladhatja meg a (%d) MB. Próbál adatokat írni egy adatbázist, amikor a rugalmas készlet tárolási korlátot elérte. Erőforráskorlátok kapcsolatos tudnivalókat lásd: <br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[rugalmas készletek korlátai Virtuálismag-alapú](sql-database-vcore-resource-limits-elastic-pools.md). <br/> |Érdemes megfontolni a dtu-k száma és/vagy a rugalmas készletet, ha lehetséges tárolási kapacitását, emeléséhez hozzáadása storage csökkentése a rugalmas készleten belüli egyes adatbázisok által használt tárterület, vagy eltávolíthat adatbázisokat a rugalmas készlet. Rugalmas készlet méretezése, lásd: [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).|
-| 10929 | 16 |A %s minimális biztonsági: %d, maximális érték: %d, és az adatbázishoz a jelenlegi felhasználás: %d. Azonban az a kiszolgáló jelenleg túlzottan elfoglalt, a nagyobb, mint %d kérelmek támogatásához ehhez az adatbázishoz. Erőforráskorlátok kapcsolatos tudnivalókat lásd: <br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[rugalmas készletek korlátai Virtuálismag-alapú](sql-database-vcore-resource-limits-elastic-pools.md). <br/> Ellenkező esetben próbálkozzon újra később. Dtu-k / vcore magok adatbázisonkénti minimális száma; adatbázis Dtu-k / virtuális mag adatbázisonkénti maximális értéke. Egyidejű feldolgozók (kérelmek) között a rugalmas készletben található összes adatbázis teljes száma túllépi a készlet kapacitása történt kísérlet. |Érdemes megfontolni a Dtu- kkal lehetőség a rugalmas készlet virtuális magot annak érdekében, hogy a munkavégző korlátjának növelését, vagy eltávolíthat adatbázisokat a rugalmas készlet. |
-| 40844 | 16 |Adatbázis "%ls" kiszolgáló "%ls" egy "%ls" kiadású adatbázis egy rugalmas készletben, és nem folyamatos másolás kapcsolat áll fenn.  |– |
-| 40857 | 16 |A kiszolgáló nem található rugalmas készlet: "%ls", a rugalmas készlet neve: "%ls". Megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg egy érvényes a rugalmas készlet nevét. |
-| 40858 | 16 |A(z) "%ls" rugalmas készlet már létezik a kiszolgálón: "%ls". A megadott SQL Database-kiszolgálóhoz megadott rugalmas készlet már létezik. | Új rugalmas készlet nevét adja meg. |
-| 40859 | 16 |Rugalmas készlet nem támogatja a szolgáltatási szint "%ls". Adott szolgáltatási szinten a rugalmas készlet kiépítése nem támogatott. |Adja meg a megfelelő kiadása, vagy hagyja üresen, használja az alapértelmezett szolgáltatási szinten a szolgáltatási rétegben. |
-| 40860 | 16 |Rugalmas készlet (%ls) és a szolgáltatás célja "%ls" kombinációja érvénytelen. Rugalmas készlet és a szolgáltatási szinten is adhatók meg együtt csak akkor, ha a megadott erőforrástípus "ElasticPool". |Adja meg a rugalmas készlet és a szolgáltatási rétegben megfelelő kombinációja. |
-| 40861 | 16 |Az adatbázis-kiadás: %. *ls' nem lehet a rugalmas készlet szolgáltatási szintjétől, ami eltér a(z) %.* ls'. Az adatbázis-kiadás nem egyezik a rugalmas készlet szolgáltatási rétegben. |Ne adjon meg egy adatbázis-kiadás, amely eltér attól a rugalmas készlet szolgáltatási szintjétől.  Vegye figyelembe, hogy az adatbázis-kiadás nem kell megadni. |
-| 40862 | 16 |Rugalmas készlet nevének kell lennie. Ha a rugalmas készlet szolgáltatási célja meg van adva. Rugalmas készlet szolgáltatási célja nem azonosítója egyértelműen rugalmas készletben. |Adja meg a rugalmas készlet nevét, a rugalmas készlet szolgáltatási célja használatakor. |
-| 40864 | 16 |A rugalmas készlet dtu-i verziójúnak kell lennie (%d) dtu-k szolgáltatási szinthez a(z) %. * ls'. Állítsa be a minimális korlát alatti a rugalmas készlet dtu-i tett kísérlet. |Ismételje meg a rugalmas készletnek a legalább a minimális korlát beállítása a dtu-k. |
-| 40865 | 16 |A rugalmas készlet dtu-i (%d) dtu-k szolgáltatási szinten nem lehet a(z) % * ls'. Állítsa be a rugalmas készlet meghaladja a maximális dtu-i tett kísérlet. |Ismételje meg a rugalmas készlet dtu-i beállítása nem lehet nagyobb, mint a maximális korlátot. |
-| 40867 | 16 |A dtu-k adatbázisonkénti maximális értéke nem lehet kisebb legalább (%d) a szolgáltatási szint "% * ls'. Kísérlet a dtu-k adatbázisonkénti maximális értékét a támogatott korlátot alatt állítsa be. | Fontolja meg a rugalmas készlet szolgáltatási rétegben, amely támogatja a kívánt beállítást. |
-| 40868 | 16 |A dtu-k adatbázisonkénti maximális értéke nem lehet nagyobb, mint (%d) szolgáltatási szint "% * ls'. Kísérlet a dtu-k adatbázisonkénti maximális értékét a támogatott gyűjthessen be. | Fontolja meg a rugalmas készlet szolgáltatási rétegben, amely támogatja a kívánt beállítást. |
-| 40870 | 16 |A dtu-k adatbázisonkénti minimális értéke nem lehet nagyobb, mint (%d) szolgáltatási szint "% * ls'. Kísérlet a dtu-k adatbázisonkénti minimális értéke a támogatott gyűjthessen be. | Fontolja meg a rugalmas készlet szolgáltatási rétegben, amely támogatja a kívánt beállítást. |
-| 40873 | 16 |Adatbázis (%d) és a dtu-k adatbázisonkénti minimális értéke (%d) száma nem haladhatja meg a dtu-k száma a rugalmas készlet (%d). Adja meg a rugalmas készlet, amely meghaladja a rugalmas készlet dtu-k adatbázisok esetében dtu-k minimális tett kísérlet. | Érdemes megfontolni a rugalmas készlet dtu-k, vagy csökkentse a dtu-k adatbázisonkénti minimális értéke a rugalmas készletben található adatbázisok számának csökkentéséhez. |
-| 40877 | 16 |Rugalmas készlet nem törölhető, kivéve, ha az összes adatbázis nem tartalmaz. A rugalmas készlet egy vagy több adatbázist tartalmaz, és ezért nem törölhető. |Annak érdekében, hogy a törléshez távolítsa el a rugalmas készlet adatbázisok. |
-| 40881 | 16 |A rugalmas készlet a(z) % * ls' elérte az adatbázis maximális száma.  Az adatbázis maximális száma a rugalmas készlet esetében (%d) legfeljebb egy rugalmas készlet (% d) dtu-k esetében. Hozzon létre, vagy adja hozzá adatbázist a rugalmas készlet, ha az adatbázis maximális száma a rugalmas készlet elérte a kísérlet. | Érdemes megfontolni, ha lehetséges a rugalmas készlet dtu-k annak érdekében, hogy az adatbázis korlátjának növelését, vagy eltávolíthat adatbázisokat a rugalmas készlet. |
-| 40889 | 16 |A dtu-k vagy a rugalmas készlet tárolási kapacitása a(z) % * ls' nem csökkenthető, mivel az, hogy nem biztosítja a elegendő mennyiségű tárhely az adatbázisok számára. Kísérlet történt a alább a storage használatát a rugalmas készlet tárolási kapacitása csökkenthető. | Érdemes csökkenteni az egyes adatbázisok a rugalmas készlet tárolási felhasználásának, illetve eltávolíthat adatbázisokat a készletekből a dtu-k vagy tárolási csökkentése érdekében. |
-| 40891 | 16 |A dtu-k adatbázisonkénti minimális értéke (%d) nem haladhatja meg a dtu-k adatbázisonkénti maximális értékét (%d). Kísérlet a dtu-k adatbázisonkénti minimális értéke nagyobb, mint a dtu-k adatbázisonkénti maximális értékét állítsa be. |Győződjön meg arról, a dtu-k adatbázisonkénti minimális értéke adatbázisok nem haladja meg a dtu-k adatbázisonkénti maximális értékét. |
-| TBD | 16 |Az egyes adatbázisok a rugalmas készlet esetében a tároló mérete nem haladhatja meg az által engedélyezett maximális méretét a(z) % * ls' szolgáltatási szinten a rugalmas készlet. Az adatbázis maximális mérete meghaladja az a rugalmas készlet szolgáltatási szintjétől által engedélyezett maximális méretét. |Az a rugalmas készlet szolgáltatási szintjétől által engedélyezett maximális méretét keretein belül az adatbázis maximális méretének beállítása. |
+| 1132 | 17 |A rugalmas készlet elérte a tárolási korlátot. A rugalmas készlet tárolási kihasználtsága nem haladhatja meg a (z) (% d) MB-ot. Egy adatbázisba való adatírásra tett kísérlet, ha elérte a rugalmas készlet tárolási korlátját. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai.](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp; <br/> |Ha lehetséges, növelje a rugalmas készlethez való DTU és/vagy a tárterület hozzáadását, csökkentse a rugalmas készletben lévő egyes adatbázisok által használt tárterületet, vagy távolítsa el az adatbázisokat a rugalmas készletből. A rugalmas készlet skálázásával kapcsolatban lásd: [rugalmas készlet erőforrásainak](sql-database-elastic-pool-scale.md)méretezése.|
+| 10929 | 16 |A (z)% s minimális garancia% d, a maximális korlát% d, az adatbázis jelenlegi használata pedig% d. Azonban a kiszolgáló jelenleg túl elfoglalt ahhoz, hogy támogassa a (z)% d-nál nagyobb kérelmeket ehhez az adatbázishoz. Az erőforrás-korlátokkal kapcsolatos további információkért lásd: <br/>&bull;[Rugalmas készletek DTU-alapú korlátai](sql-database-dtu-resource-limits-elastic-pools.md) &nbsp;<br/>&bull;[rugalmas készletek virtuális mag-alapú korlátai.](sql-database-vcore-resource-limits-elastic-pools.md) &nbsp; <br/> Ellenkező esetben próbálkozzon újra később. DTU/virtuális mag/perc/adatbázis; DTU/virtuális mag-adatbázis maximális száma. Az egyidejű feldolgozók (kérelmek) teljes száma a rugalmas készletben lévő összes adatbázisban, a készlet korlátjának túllépése miatt. |Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU vagy virtuális mag, hogy növelje a munkavégző korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
+| 40844 | 16 |A (z) "% ls" kiszolgáló "% ls" adatbázisa egy rugalmas készletben lévő "% ls" kiadási adatbázis, és nem lehet folytonos másolási kapcsolat.  |– |
+| 40857 | 16 |Nem található rugalmas készlet a következő kiszolgálóhoz: "% ls", rugalmas készlet neve: "% ls". A megadott rugalmas készlet nem létezik a megadott kiszolgálón. | Adja meg a rugalmas készlet érvényes nevét. |
+| 40858 | 16 |A (z) "% ls" rugalmas készlet már létezik a következő kiszolgálón: "% ls". A megadott rugalmas készlet már létezik a megadott SQL Database-kiszolgálón. | Adja meg az új rugalmas készlet nevét. |
+| 40859 | 16 |A rugalmas készlet nem támogatja a (z)% ls szolgáltatási szintet. A megadott szolgáltatási szintet nem támogatja a rugalmas készlet kiépítés. |Adja meg a megfelelő kiadást, vagy hagyja üresen a szolgáltatási szintet, hogy az alapértelmezett szolgáltatási szintet használja. |
+| 40860 | 16 |A (z) "% ls" rugalmas készlet és a (z) "% ls" szolgáltatási cél nem érvényes. A rugalmas készlet és a szolgáltatási szintek csak akkor adhatók meg együtt, ha az erőforrástípus a következőként van megadva: "ElasticPool". |A rugalmas készlet és a szolgáltatási szintek helyes kombinációjának meghatározása. |
+| 40861 | 16 |A (z)% adatbázis-kiadás *az ls nem lehet eltér a rugalmas készlet szolgáltatási szintjétől, amely a következő:%.* ls ". Az adatbázis kiadása eltér a rugalmas készlet szolgáltatási szintjétől. |Ne határozzon meg olyan adatbázis-kiadást, amely eltér a rugalmas készlet szolgáltatási szintjétől.  Vegye figyelembe, hogy az adatbázis-kiadást nem kell megadni. |
+| 40862 | 16 |Ha a rugalmas készlet szolgáltatási célja meg van adva, akkor meg kell adni a rugalmas készlet nevét. A rugalmas készlet szolgáltatási célja nem azonosítja egyedi módon a rugalmas készletet. |Ha a rugalmas készlet szolgáltatási célkitűzését használja, adja meg a rugalmas készlet nevét. |
+| 40864 | 16 |A rugalmas készlet DTU legalább (% d) DTU kell lennie a (z)%. * ls szolgáltatási szinten. Kísérlet a minimális korlát alatti rugalmas készlet DTU beállítására. |Próbálja megismételni a rugalmas készlet DTU beállítását legalább a minimális korlátra. |
+| 40865 | 16 |A rugalmas készlet DTU nem lehet hosszabb (% d) DTU a (z)%. * ls szolgáltatási szinten. Kísérlet a maximális korlátot meghaladó rugalmas készlet DTU beállítására. |Próbálja meg újra beállítani a rugalmas készlet DTU, hogy ne legyen nagyobb a maximális korlátnál. |
+| 40867 | 16 |A (z)%. * ls szolgáltatási szinten a DTU Max/adatbázisnak legalább (% d) kell lennie. A DTU maximális száma a támogatott korlát alatt állítható be. | Érdemes lehet a rugalmas készlet szolgáltatási szintjét használni, amely támogatja a kívánt beállítást. |
+| 40868 | 16 |A DTU maximális száma adatbázison nem lehet nagyobb (% d) a (z)%. * ls szolgáltatási szinten. Kísérlet történt a DTU maximális értékének beállítására az adatbázison a támogatott korláton túl. | Érdemes lehet a rugalmas készlet szolgáltatási szintjét használni, amely támogatja a kívánt beállítást. |
+| 40870 | 16 |A (z)%. * ls szolgáltatási szinten a DTU minimális száma (% d) nem lehet hosszabb. Kísérlet a DTU minimális értékének beállítására a támogatott korláton túl. | Érdemes lehet a rugalmas készlet szolgáltatási szintjét használni, amely támogatja a kívánt beállítást. |
+| 40873 | 16 |Az adatbázisok (% d) és a DTU minimális száma (% d) nem haladhatja meg a rugalmas készlet (% d) DTU. A rugalmas készletben lévő, a rugalmas készlet DTU meghaladó DTU minimális értékének megadására tett kísérlet. | Vegye fontolóra a rugalmas készlet DTU növelését, vagy csökkentse az adatbázis DTU, vagy csökkentse az adatbázisok számát a rugalmas készletben. |
+| 40877 | 16 |A rugalmas készlet nem törölhető, ha nem tartalmaz adatbázisokat. A rugalmas készlet egy vagy több adatbázist tartalmaz, ezért nem törölhető. |A törléshez távolítsa el az adatbázisokat a rugalmas készletből. |
+| 40881 | 16 |A (z) "%. * ls" rugalmas készlet elérte az adatbázisa számának korlátját.  A rugalmas készlet adatbázisának száma nem haladhatja meg a (z)% d DTU rendelkező rugalmas készletet. Kísérlet történt az adatbázis rugalmas készlethez való létrehozására vagy hozzáadására, ha a rugalmas készlet adatbázisának száma elérte a korlátot. | Ha lehetséges, érdemes lehet növelni a rugalmas készlet DTU, hogy növelje az adatbázis-korlátot, vagy távolítsa el az adatbázisokat a rugalmas készletből. |
+| 40889 | 16 |A (z) "%. * ls" rugalmas készlet DTU vagy tárolási korlátja nem csökkenthető, mert nem biztosít elegendő tárterületet az adatbázisai számára. Kísérlet a rugalmas készlet tárolási korlátjának csökkentésére a tárterület-használat alatt. | Vegye figyelembe a rugalmas készletben lévő egyes adatbázisok tárolási használatát, vagy távolítsa el az adatbázisokat a készletből annak érdekében, hogy csökkentse annak DTU vagy tárolási korlátját. |
+| 40891 | 16 |A DTU minimális száma (% d) nem haladhatja meg a DTU-adatbázis maximális számát (% d). Kísérlet a DTU minimális értékének megadására, mint az adatbázis-DTU maximális száma. |Győződjön meg arról, hogy a DTU-adatbázis min. száma nem haladja meg a maximális DTU. |
+| TBD | 16 |A rugalmas készletben lévő önálló adatbázisok tárolási mérete nem haladhatja meg a (z) "%. * ls" szolgáltatási rétegek rugalmas készlete által megengedett maximális méretet. Az adatbázis maximális mérete meghaladja a rugalmas készlet szolgáltatási szintje által megengedett maximális méretet. |Állítsa be az adatbázis maximális méretét a rugalmas készlet szolgáltatási szintje által megengedett maximális méret korlátain belül. |
 
 Kapcsolódó témakörök:
 
-* [Rugalmas készlet (C#) létrehozása](sql-database-elastic-pool-manage-csharp.md)
-* [Rugalmas készletek kezelése (C#)](sql-database-elastic-pool-manage-csharp.md)
-* [Hozzon létre egy rugalmas készlet (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
-* [Figyelése és felügyelete egy rugalmas készlet (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
+* [Rugalmas készlet létrehozása (C#)](sql-database-elastic-pool-manage-csharp.md)
+* [Rugalmas készlet kezelése (C#)](sql-database-elastic-pool-manage-csharp.md)
+* [Rugalmas készlet létrehozása (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
+* [Rugalmas készlet figyelése és kezelése (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
 
-## <a name="general-errors"></a>Általános hiba
+## <a name="general-errors"></a>Általános hibák
 
-A következő hibák minden előző kategóriákba nem tartoznak.
+A következő hibák nem tartoznak az előző kategóriákba.
 
-| Hibakód | Severity | Leírás |
+| Hibakód | severity | Leírás |
 | ---:| ---:|:--- |
-| [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |(AdministratorLogin) azért nem egy érvényes nevet mert érvénytelen karaktereket tartalmaz.|
-| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A bejelentkezés sikertelen volt. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
-| [18456](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |Felhasználó bejelentkezése sikertelen volt a(z) %. &#x2a;ls'.%. &#x2a;ls %. &#x2a;ls (felhasználó a bejelentkezés sikertelen "%.&#x2a; található "is.) |
-| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A felhasználó bejelentkezése sikertelen volt: '%.&#x2a;ls'. OK: A fiók disabled.%. &#x2a;ls |
-| 40014 |16 |Több adatbázis ugyanabban a tranzakcióban nem használható. |
-| 40054 |16 |Egy fürtözött index nélküli táblák nem támogatottak az SQL Server jelen verziójában. Hozzon létre egy fürtözött indexet, és próbálkozzon újra. |
-| 40133 |15 |Ez a művelet nem támogatott az SQL Server jelen verziójában. |
-| 40506 |16 |Az SQL Server jelen verziójában meghatározott biztonsági azonosító érvénytelen. |
+| [15006](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-15000-to-15999) |16 |A (AdministratorLogin) nem érvényes név, mert érvénytelen karaktereket tartalmaz.|
+| [18452](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A bejelentkezés nem sikerült. A bejelentkezés nem megbízható tartományból van, ezért nem használható a Windows authentication.%.&#x2a;ls (a Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában.) |
+| [18456](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A következő felhasználó bejelentkezése sikertelen volt:%. &#x2a;ls '.%. &#x2a;ls%. &#x2a;ls (a (z) "%" felhasználó&#x2a; bejelentkezése sikertelen. ls ".) |
+| [18470](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-18000-to-18999) |14 |A felhasználó bejelentkezése sikertelen volt: '%.&#x2a;ls'. Indoklás: A fiók le van tiltva.%. &#x2a;ls |
+| 40014 |16 |Több adatbázis nem használható ugyanabban a tranzakcióban. |
+| 40054 |16 |A fürtözött index nélküli táblák nem támogatottak a SQL Server jelen verziójában. Hozzon létre egy fürtözött indexet, és próbálkozzon újra. |
+| 40133 |15 |Ez a művelet nem támogatott a SQL Server jelen verziójában. |
+| 40506 |16 |A megadott SID érvénytelen a SQL Server ezen verziójában. |
 | 40507 |16 |a(z) '%.&#x2a;ls' nem hívható meg paraméterekkel az SQL Server jelen verziójában. |
 | 40508 |16 |A USE utasítás nem támogatott az adatbázisok közötti váltáshoz. Egy másik adatbázishoz való kapcsolódáshoz használjon új kapcsolatot. |
 | 40510 |16 |Utasítás ('%.&#x2a;ls') az SQL Server jelen verziójában nem támogatott |
 | 40511 |16 |Beépített függvény '%.&#x2a;ls' az SQL Server jelen verziójában nem támogatott. |
-| 40512 |16 |Elavult funkció, "%ls" az SQL Server jelen verziójában nem támogatott. |
+| 40512 |16 |A (z) "% ls" elavult funkció nem támogatott a SQL Server jelen verziójában. |
 | 40513 |16 |Kiszolgálói változó '%.&#x2a;ls' az SQL Server jelen verziójában nem támogatott. |
-| 40514 |16 |a(z) "%ls" az SQL Server jelen verziójában nem támogatott. |
+| 40514 |16 |a (z) "% ls" nem támogatott a SQL Server jelen verziójában. |
 | 40515 |16 |Hivatkozás adatbázisra és/vagy a kiszolgáló neve a '%.&#x2a;ls' az SQL Server jelen verziójában nem támogatott. |
-| 40516 |16 |A globális ideiglenes objektumok nem támogatottak az SQL Server jelen verziójában. |
+| 40516 |16 |A globális ideiglenes objektumok nem támogatottak a SQL Server jelen verziójában. |
 | 40517 |16 |Kulcsszó vagy utasításkapcsoló ('%.&#x2a;ls') az SQL Server jelen verziójában nem támogatott. |
 | 40518 |16 |DBCC parancs '%.&#x2a;ls' az SQL Server jelen verziójában nem támogatott. |
-| 40520 |16 |Az SQL Server jelen verziójában nem támogatott a következő biztonságos osztály (% S_MSG). |
-| 40521 |16 |A következő biztonságos osztály (% S_MSG) a kiszolgálói hatókörben az SQL Server jelen verziójában nem támogatott. |
+| 40520 |16 |A (z) "% S_MSG" biztonságos osztály nem támogatott a SQL Server jelen verziójában. |
+| 40521 |16 |A következő biztonságos osztály nem támogatott a kiszolgálói hatókörben SQL Server jelen verziójában: "% S_MSG". |
 | 40522 |16 |Adatbázis egyszerű '%.&#x2a;ls' típus nem támogatott az SQL Server jelen verziójában. |
-| 40523 |16 |Az implicit felhasználói '%.&#x2a;ls' létrehozása az SQL Server jelen verziójában nem támogatott. Explicit módon hozza létre a felhasználó használja azt. |
+| 40523 |16 |Az implicit felhasználói '%.&#x2a;ls' létrehozása az SQL Server jelen verziójában nem támogatott. Explicit módon hozza létre a felhasználót a használat előtt. |
 | 40524 |16 |Adattípus '%.&#x2a;ls' az SQL Server jelen verziójában nem támogatott. |
-| 40525 |16 |A "%.ls" nem támogatott az SQL Server jelen verziójában. |
+| 40525 |16 |A (z) "%. ls" nem támogatott a SQL Server jelen verziójában. |
 | 40526 |16 |a(z) '%.&#x2a;ls' sorkészlet-szolgáltató az SQL Server jelen verziójában nem támogatott. |
-| 40527 |16 |Csatolt kiszolgálók nem támogatottak az SQL Server jelen verziójában. |
-| 40528 |16 |Felhasználók nem képezhetők le a tanúsítványokat, aszimmetrikus kulcsokra vagy Windows rendszerbeli bejelentkezési adatokra az SQL Server jelen verziójában. |
+| 40527 |16 |A csatolt kiszolgálók nem támogatottak a SQL Server jelen verziójában. |
+| 40528 |16 |A felhasználók nem képezhetők le tanúsítványokra, aszimmetrikus kulcsokra vagy Windows-bejelentkezésekre a SQL Server jelen verziójában. |
 | 40529 |16 |Beépített függvény '%.&#x2a;ls' megszemélyesítési környezetben nem támogatott az SQL Server jelen verziójában. |
-| 40532 |11 |Nem nyitható meg a kiszolgáló "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
-| 40553 |16 |A munkamenet meg lett szakítva túlzott mértékű memóriahasználat miatt. Próbálja meg módosítani a lekérdezést, hogy kevesebb sort dolgozzon fel.<br/><br/> Számának csökkentése `ORDER BY` és `GROUP BY` a Transact-SQL kód műveletek csökkenthető a lekérdezés memóriára vonatkozó követelményeknek. |
-| 40604 |16 |Nem a CREATE/ALTER DATABASE nem, mert ezzel túllépné a kiszolgáló kvótáját. |
-| 40606 |16 |Adatbázisok csatlakoztatása az SQL Server jelen verziójában nem támogatott. |
-| 40607 |16 |Windows-bejelentkezések nem támogatottak az SQL Server jelen verziójában. |
-| 40611 |16 |Kiszolgálók rendelkezhet egyszerre legfeljebb 128 tűzfalszabály definiálható. |
-| 40614 |16 |Tűzfalszabály kezdő IP-címe nem haladhatja meg a záró IP-cím. |
-| 40615 |16 |Nem nyitható meg a kiszolgáló "{0}" a bejelentkezés által kért. Ügyfél IP-címmel rendelkező{1}"nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Engedélyezi a hozzáférést, az SQL adatbázis a portálon, vagy futtassa sp\_beállítása\_tűzfal\_szabály hozzon létre egy tűzfalszabályt az IP-címet vagy címtartományt a master adatbázison. A módosítás érvénybe lépéséhez akár öt percig is eltarthat. |
-| 40617 |16 |A tűzfalszabály neve, amely elindítja a (szabály neve) neve túl hosszú. Maximális hossza 128. |
+| 40532 |11 |Nem nyitható meg a kiszolgáló "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen. |
+| 40553 |16 |A munkamenet túl sok memóriahasználat miatt megszakadt. Próbálja meg módosítani a lekérdezést úgy, hogy kevesebb sort dolgozzon fel.<br/><br/> A Transact-SQL `ORDER BY` - `GROUP BY` kód számának és műveleteinek csökkentése segít csökkenteni a lekérdezés memóriabeli követelményeit. |
+| 40604 |16 |Az adatbázis nem hozható létre/MÓDOSÍTható, mert túllépi a kiszolgáló kvótáját. |
+| 40606 |16 |Az adatbázisok csatolása nem támogatott a SQL Server jelen verziójában. |
+| 40607 |16 |A Windows-bejelentkezések nem támogatottak a SQL Server jelen verziójában. |
+| 40611 |16 |A kiszolgálókon legfeljebb 128 tűzfalszabály adható meg. |
+| 40614 |16 |A tűzfalszabály kezdő IP-címe nem haladhatja meg a záró IP-címet. |
+| 40615 |16 |Nem nyitható meg a{0}bejelentkezés által kért "" kiszolgáló. A (z) "{1}" IP-címmel rendelkező ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.<br /><br />A hozzáférés engedélyezéséhez használja a SQL Database portált, vagy\_futtassa\_az\_SP set tűzfalszabály parancsot a főadatbázison egy tűzfalszabály létrehozásához ehhez az IP-címhez vagy címtartományból. A módosítás érvénybe léptetése akár öt percet is igénybe vehet. |
+| 40617 |16 |A tűzfalszabály neve (szabály neve) túl hosszú. A maximális hossz 128. |
 | 40618 |16 |A tűzfalszabály neve nem lehet üres. |
-| 40620 |16 |A felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása sikertelen volt. Bejelentkezés során a jelszó módosítása nem támogatott az SQL Server jelen verziójában. |
-| 40627 |20 |A művelet a kiszolgálón "{0}"és az adatbázis"{1}" folyamatban van. Kérjük, várjon néhány percet, majd próbálkozzon újra. |
-| 40630 |16 |Jelszó érvényesítése sikertelen volt. A jelszó nem felel meg házirend követelményeinek, mert túl rövid. |
-| 40631 |16 |A megadott jelszava túl hosszú. A jelszó legfeljebb 128 karakterrel kell rendelkeznie. |
-| 40632 |16 |Jelszó érvényesítése sikertelen volt. A jelszó nem felel meg házirend követelményeinek, mert nem elég bonyolult. |
+| 40620 |16 |A felhasználó bejelentkezése sikertelen volt: "%.&#x2a;ls". A jelszó módosítása nem sikerült. A bejelentkezés során a jelszó módosítása nem támogatott a SQL Server jelen verziójában. |
+| 40627 |20 |Folyamatban van a művelet{0}a (z){1}"" kiszolgálón és a (z) adatbázison. Várjon néhány percet, majd próbálkozzon újra. |
+| 40630 |16 |A jelszó érvényesítése nem sikerült. A jelszó nem felel meg a házirend követelményeinek, mert túl rövid. |
+| 40631 |16 |A megadott jelszó túl hosszú. A jelszónak legfeljebb 128 karakterből kell állnia. |
+| 40632 |16 |A jelszó érvényesítése nem sikerült. A jelszó nem felel meg a házirend követelményeinek, mert nem elég bonyolult. |
 | 40636 |16 |Egy fenntartott adatbázisnév nem használható  '%.&#x2a;ls' Ebben a műveletben. |
-| 40638 |16 |Érvénytelen előfizetés-azonosító (előfizetés-azonosító). Előfizetés nem létezik. |
-| 40639 |16 |Kérelem nem felel meg a sémának: (séma hiba). |
-| 40640 |20 |A kiszolgáló váratlan kivételbe ütközött. |
+| 40638 |16 |Érvénytelen előfizetés-azonosító (előfizetés-azonosító). Az előfizetés nem létezik. |
+| 40639 |16 |A kérelem nem felel meg a sémának: (sémakezelő hiba). |
+| 40640 |20 |A kiszolgáló váratlan kivételt észlelt. |
 | 40641 |16 |A megadott hely érvénytelen. |
-| 40642 |17 |A kiszolgáló jelenleg túlzottan elfoglalt. Később próbálja meg újra. |
-| 40643 |16 |A megadott x-ms-version Fejlécérték érvénytelen. |
+| 40642 |17 |A kiszolgáló jelenleg túl elfoglalt. Próbálja újra később. |
+| 40643 |16 |A megadott x-MS-Version fejléc értéke érvénytelen. |
 | 40644 |14 |Nem sikerült engedélyezni a hozzáférést a megadott előfizetéshez. |
-| 40645 |16 |Kiszolgálónév (kiszolgálónév) nem lehet üres vagy null értékű. Azt is csak feladatátvételicsoport-kisbetűk "a" – "z", a 0 – 9 számokat és kötőjelet. A kötőjel nem vezethet vagy a név végén. |
-| 40646 |16 |Előfizetés-azonosító nem lehet üres. |
-| 40647 |16 |Előfizetés (előfizetés-azonosító) nem rendelkezik a kiszolgáló (kiszolgálónév). |
-| 40648 |17 |Túl sok kérelmet hajtottak végre. Próbálkozzon újra később. |
-| 40649 |16 |Érvénytelen tartalomtípus van megadva. Csak az application/xml támogatott. |
-| 40650 |16 |Előfizetés (előfizetés-azonosító) nem létezik, vagy nem áll készen a műveletet. |
-| 40651 |16 |Nem sikerült létrehozni a kiszolgáló, mert az előfizetés (előfizetés-azonosító) le van tiltva. |
-| 40652 |16 |Nem lehet áthelyezni, vagy hozzon létre kiszolgálót. Előfizetés (előfizetés-azonosító) fog haladni a kiszolgáló kvótáját. |
+| 40645 |16 |Servername (servername) nem lehet üres vagy NULL. Csak kisbetűkből állhat: "név elején-kisbetűket", a számok 0-9 és a kötőjel. A kötőjel nem lehet a névben. |
+| 40646 |16 |Az előfizetés-azonosító nem lehet üres. |
+| 40647 |16 |Az előfizetés (előfizetés-azonosító) nem rendelkezik kiszolgálóval (servername). |
+| 40648 |17 |Túl sok kérelem lett elvégezve. Próbálkozzon újra később. |
+| 40649 |16 |Érvénytelen tartalomtípus van megadva. Csak az Application/XML támogatott. |
+| 40650 |16 |Az előfizetés (előfizetés-azonosító) nem létezik, vagy nem áll készen a műveletre. |
+| 40651 |16 |Nem sikerült létrehozni a kiszolgálót, mert az előfizetés (előfizetés-azonosító) le van tiltva. |
+| 40652 |16 |Nem lehet áthelyezni vagy létrehozni a kiszolgálót. Az előfizetés (előfizetés-azonosító) túllépi a kiszolgálói kvótát. |
 | 40671 |17 |Kommunikációs hiba az átjáró és a felügyeleti szolgáltatás között. Próbálkozzon újra később. |
-| 40852 |16 |Adatbázis nem nyitható meg a(z) %. \*ls' kiszolgálón a(z) %. \*ls' a bejelentkezés által kért. Hozzáférés az adatbázishoz biztonságos kapcsolati karakterlánc használatával csak engedélyezett. Az adatbázis eléréséhez a kapcsolati karakterláncokat tartalmazó módosítása "biztonságos" a kiszolgáló teljes Tartománynevében - (server name).database.windows .net kell módosítani, hogy "kiszolgálónév".database. `secure`. windows.net. |
-| 40914 | 16 | Nem nyitható meg a kiszolgáló " *[kiszolgálónév]* " a bejelentkezés által kért. Ügyfél számára nem engedélyezett a kiszolgálóhoz való hozzáféréshez.<br /><br />Javításához érdemes lehet hozzáadni egy [virtuális hálózati szabályt](sql-database-vnet-service-endpoint-rule-overview.md). |
-| 45168 |16 |Az SQL Azure rendszer terhelés alatt van, és a egy felső korlátot egyidejű DB CRUD-műveletek egy SQL-adatbázis-kiszolgálóra helyezi (például adatbázis létrehozása). A kiszolgáló a hibaüzenetben megadott túllépte az egyidejű kapcsolatok maximális számát. Próbálkozzon újra később. |
-| 45169 |16 |Az SQL azure-rendszer terhelés alatt van, és felső korlát helyezi a szolgáltatást egy előfizetéshez egyidejű kiszolgáló CRUD-műveletek száma (például a kiszolgáló létrehozása). A hibaüzenetben megadott előfizetés túllépte az egyidejű kapcsolatok maximális számát, és a kérelem visszautasítva. Próbálkozzon újra később. |
+| 40852 |16 |A (z)% adatbázis nem nyitható meg. \*ls a (z)% kiszolgálón. \*a bejelentkezés által kért ls. Az adatbázishoz való hozzáférés csak a biztonságos kapcsolati karakterlánc használatával engedélyezett. Az adatbázis eléréséhez módosítsa a kapcsolati karakterláncokat úgy, hogy a "Secure" értéket tartalmazza a kiszolgáló teljes tartományneve – "kiszolgálónév". az adatbázis. Windows. net nevet a "kiszolgálónév". Database értékre kell módosítani. `secure`. Windows.net. |
+| 40914 | 16 | Nem nyitható meg a bejelentkezés által kért " *[Server-Name]* " kiszolgáló. Az ügyfél nem jogosult a kiszolgálóhoz való hozzáférésre.<br /><br />A javításhoz vegye fontolóra egy [virtuális hálózati szabály](sql-database-vnet-service-endpoint-rule-overview.md)hozzáadását. |
+| 45168 |16 |A SQL Azure rendszer terhelés alatt van, és egy SQL Database-kiszolgáló esetében felső korlátot helyez el egyidejű DB szifilisz-műveletekhez (például adatbázis létrehozása). A hibaüzenetben megadott kiszolgáló túllépte az egyidejű kapcsolatok maximális számát. Próbálkozzon újra később. |
+| 45169 |16 |Az SQL Azure-rendszer terhelés alatt van, és felső korlátot helyez az egyazon előfizetések egyidejű kiszolgálói szifilisz-műveleteinek számára (például kiszolgáló létrehozása). A hibaüzenetben megadott előfizetés túllépte az egyidejű kapcsolatok maximális számát, és a rendszer megtagadta a kérést. Próbálkozzon újra később. |
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ [Azure SQL Database szolgáltatások](sql-database-features.md).
-* További információ [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md).
-* További információ [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+* További információ a [Azure SQL Database szolgáltatásairól](sql-database-features.md).
+* További információ a [DTU-alapú vásárlási modellről](sql-database-service-tiers-dtu.md).
+* További információ a [virtuális mag-alapú vásárlási modellről](sql-database-service-tiers-vcore.md).
 

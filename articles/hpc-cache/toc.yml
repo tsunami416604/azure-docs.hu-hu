@@ -36,3 +36,5 @@
   items:
     - name: Támogatási jegy megnyitása
       href: hpc-cache-support-ticket.md
+    - name: Helyreállítás regionális kimaradás után
+      href: hpc-region-recovery.md

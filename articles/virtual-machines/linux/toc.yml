@@ -196,6 +196,8 @@
               href: disk-encryption-cli-quickstart.md
             - name: Virtuális gép titkosítása az Azure PowerShell-lel
               href: disk-encryption-powershell-quickstart.md
+            - name: Virtuális gép titkosítása az Azure Portalon
+              href: disk-encryption-portal-quickstart.md
             - name: Key Vault az Azure Disk Encryptionhöz
               href: disk-encryption-key-vault.md
             - name: Lemeztitkosítási mintaszkriptek

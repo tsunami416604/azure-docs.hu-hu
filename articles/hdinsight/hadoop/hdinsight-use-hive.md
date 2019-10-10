@@ -1,58 +1,57 @@
 ---
 title: Mi az Apache Hive és a HiveQL – Azure HDInsight
-description: Az Apache Hive-egy rendszer data warehouse az Apache Hadoop. A Hive használata a HiveQL, tárolt adatok lekérdezheti, amely hasonló Transact-SQL. Ebből a dokumentumból megtudhatja, hogyan használata Azure HDInsight Hive és a HiveQL.
-keywords: hiveql, mi az a hive, a hadoop hiveql, hogyan használható a hive, ismerje meg a hive, mi az a hive
+description: A Apache Hive egy adattárház-rendszer Apache Hadoop számára. A kaptárban tárolt adatlekérdezéseket a Transact-SQL-hez hasonló HiveQL használatával kérdezheti le. Ebből a dokumentumból megtudhatja, hogyan használható a kaptár és a HiveQL az Azure HDInsight.
+keywords: hiveql, mi az a kaptár, a Hadoop hiveql, a kaptár használata, a struktúra megismerése, mi az a kaptár
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: ea8f14a7013a937ddd77baf0f50b8dca09cabad6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/04/2019
+ms.openlocfilehash: aa3e3b63bdfda7aa6d875055dee4c69b9840db25
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076314"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167356"
 ---
-# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi az Apache Hive és az Azure HDInsight HiveQL?
+# <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Mi a Apache Hive és a HiveQL az Azure HDInsight?
 
-[Az Apache Hive](https://hive.apache.org/) egy rendszer data warehouse az Apache Hadoop. Hive adatösszegzéseket, lekérdezéséhez és az adatok elemzése lehetővé teszi. Hive-lekérdezések HiveQL, amely egy hasonló, az SQL-lekérdezési nyelv nyelven íródtak.
+A [Apache Hive](https://hive.apache.org/) egy adattárház-rendszer Apache Hadoop számára. A struktúra lehetővé teszi az adatösszesítést, az adatlekérdezést és az adatelemzést. A kaptár-lekérdezések a HiveQL-ben íródnak, amely az SQL-hez hasonló lekérdezési nyelv.
 
-Hive teszi projektstruktúra nagymértékben strukturálatlan adatokon. Struktúráját határozza meg, miután a HiveQL használatával lekérdezheti az adatokat, a Java vagy a MapReduce ismerete nélkül.
+A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúrájának kivetítését. A struktúra meghatározása után a HiveQL segítségével lekérdezheti az adatait Java vagy MapReduce ismerete nélkül.
 
-HDInsight fürt számos különböző, amelyek ideálisak az adott munkaterhelés konkrét biztosít. A következő típusú fürtöket leggyakrabban a Hive-lekérdezések használják:
+A HDInsight többféle típusú fürtöt biztosít, amelyek meghatározott számítási feladatokhoz vannak hangolva. A következő típusú fürtök leggyakrabban a kaptár-lekérdezésekhez használatosak:
 
-* __Interaktív lekérdezés__: Egy Hadoop-fürt által biztosított [alacsony késés analitikus feldolgozás (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) interaktív lekérdezések válaszidők javításának funkciót. További információkért lásd: a [a HDInsight interaktív lekérdezések használatának első lépései](../interactive-query/apache-interactive-query-get-started.md) dokumentumot.
+* __Interaktív lekérdezés__: olyan Hadoop-fürt, amely [kis késleltetésű analitikai feldolgozási (LLAP)](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkciókat biztosít az interaktív lekérdezések válaszideje érdekében. További információ: az [interaktív lekérdezés elindítása a HDInsight](../interactive-query/apache-interactive-query-get-started.md) dokumentumban.
 
-* __Hadoop__: Egy Hadoop-fürtöt, amely kötegelt számítási feladatok feldolgozásához van beállítva. További információkért lásd: a [indítsa el a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/apache-hadoop-linux-tutorial-get-started.md) dokumentumot.
+* __Hadoop__: Hadoop-fürt, amely a kötegelt feldolgozási feladatokhoz van beállítva. További információ: [Start with apache Hadoop in HDInsight](../hadoop/apache-hadoop-linux-tutorial-get-started.md) Document.
 
-* __A Spark__: Az Apache Spark rendelkezik beépített funkcióval használata a Hive segítségével. További információkért lásd: a [indítsa el az Apache Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentumot.
+* __Spark__: a Apache Spark beépített funkcionalitással rendelkezik a struktúra használatáról. További információ: [Start with apache Spark on HDInsight](../spark/apache-spark-jupyter-spark-sql.md) Document.
 
-* __A HBase__: HiveQL használható az Apache HBase tárolt adatokat lekérdezni. További információkért lásd: a [indítsa el az Apache HBase a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentumot.
+* __HBase__: a HiveQL használható az Apache HBase tárolt adatlekérdezéshez. További információ: az [Apache HBase használata a HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) -dokumentumban.
 
-## <a name="how-to-use-hive"></a>Hive használata
+## <a name="how-to-use-hive"></a>A kaptár használata
 
-Használja az alábbi táblázat a Hive használata a HDInsight különböző módjainak felderítéséhez:
+A következő táblázat segítségével megismerheti a Kaptárnak a HDInsight való használatának különböző módszereit:
 
-| **Ezzel a módszerrel** Ha azt szeretné... | ... **interaktív** lekérdezések | ...**kötegelt** feldolgozása | ...from ez **ügyfél operációs rendszer** |
+| **Használja ezt a módszert** , ha szeretné... | ... **interaktív** lekérdezések | ... **kötegelt** feldolgozás | ... Ebből az **ügyféloldali operációs rendszerből** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X vagy Windows |
-| [HDInsight tools for Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
-| [Hive-nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Bármely (böngésző alapú) |
-| [A beeline-ügyfél](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X vagy Windows |
-| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X vagy Windows |
+| [A Visual Studio Code-hoz készült HDInsight Tools](../hdinsight-for-vscode.md) |✔ |✔ | Linux, UNIX, Mac OS X vagy Windows |
+| [A Visual studióhoz készült HDInsight-eszközök](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Struktúra nézet](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Bármely (böngésző alapú) |
+| [Ügyfél Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, UNIX, Mac OS X vagy Windows |
+| [REST API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, UNIX, Mac OS X vagy Windows |
 | [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
+## <a name="hiveql-language-reference"></a>HiveQL nyelvi referenciája
 
-## <a name="hiveql-language-reference"></a>HiveQL nyelvi referencia
+A HiveQL nyelvi referenciája a [nyelvi kézikönyvben](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)érhető el.
 
-HiveQL nyelvi dokumentáció áll rendelkezésre a [nyelv manuális](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
+## <a name="hive-and-data-structure"></a>Struktúra és adatstruktúra
 
-## <a name="hive-and-data-structure"></a>Hive-val és az adatok struktúrája
-
-Hive tisztában van azzal, hogyan használható a strukturált és részben strukturált adatok. Például szöveges fájlok, a mezők különleges karakterek vannak elválasztva. A következő HiveQL-utasítás szóközzel elválasztott adatok egy táblát hoz létre:
+A struktúra tisztában van a strukturált és részben strukturált adatmennyiséggel. Például olyan szövegfájlok, amelyekben a mezők meghatározott karakterek szerint vannak tagolva. A következő HiveQL-utasítás egy táblát hoz létre szóközzel tagolt adatokkal:
 
 ```hiveql
 CREATE EXTERNAL TABLE log4jLogs (
@@ -67,53 +66,53 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
 ```
 
-Hive is támogatja az egyéni **szerializáló/deserializers (SerDe)** túl összetett vagy szabálytalan strukturált adatok számára. További információkért lásd: a [egy egyéni JSON-SerDe használata a HDInsight](https://web.archive.org/web/20190217104719/ https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) dokumentumot.
+A kaptár az egyéni **szerializáló/deszerializáló (SerDe)** használatát is támogatja összetett vagy szabálytalanul strukturált adatként. További információ: [Egyéni JSON-SerDe használata HDInsight](https://web.archive.org/web/20190217104719/https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/) -dokumentummal.
 
-A Hive által támogatott fájlformátumok további információkért lásd: a [nyelv manuális ()https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+A kaptár által támogatott fájlformátumokkal kapcsolatos további információkért tekintse meg a [nyelvi kézikönyvet (https://cwiki.apache.org/confluence/display/Hive/LanguageManual)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
 
-### <a name="hive-internal-tables-vs-external-tables"></a>Hive-táblák belső és külső táblák
+### <a name="hive-internal-tables-vs-external-tables"></a>Belső táblák és külső táblák struktúrája
 
-Olyan táblázatot, amely a Hive használatával is létrehozhat két típusa van:
+A struktúra két típusú táblát hozhat létre:
 
-* __Belső__: A Hive-adatraktárban tárolt adatok. Az adattárház a következő helyen található `/hive/warehouse/` a fürt alapértelmezett tárolására.
+* __Belső__: a rendszer a struktúra adattárházában tárolja az adattárolási adatraktárat. Az adatraktár a fürt alapértelmezett tárolóján `/hive/warehouse/` helyen található.
 
-    Belső táblák használata esetén a következő feltételek valamelyike a alkalmazni:
+    Belső táblák használata, ha a következő feltételek valamelyike teljesül:
 
-    * Adatok csak átmenetileg létezik.
-    * Azt szeretné, hogy a Hive a táblát és az adatok életciklusának kezelésére.
+    * Az adatmennyiség ideiglenes.
+    * Azt szeretné, hogy a struktúra kezelje a tábla és az adatmennyiség életciklusát.
 
-* __Külső__: Az adatraktár kívüli adatokat tárolja. Az adatok a fürt által elérhető minden tárterület is tárolhatja.
+* __Külső__: a rendszer az adatraktáron kívül tárolja az adattárolást. Az adattárolás a fürt által elérhető bármely tárolóban lehetséges.
 
-    Külső táblák használata esetén a következő feltételek valamelyike a alkalmazni:
+    Külső táblák használata, ha a következő feltételek valamelyike teljesül:
 
-    * Az adatok Hive-en kívül is használható. Például frissítése az adatfájlok egy másik folyamat (azaz nem zárolja a fájlokat.)
-    * Adatok kell a mögöttes helyre, a tábla eldobása után is megmaradnak.
-    * Szüksége lesz egy egyéni helyen, például egy nem alapértelmezett tárfiók.
-    * Nem a hive kezeli a adatformátum, tartózkodási hely, stb.
+    * Az adatszerkezet a kaptáron kívül is használatos. Az adatfájlokat például egy másik folyamat frissíti (amely nem zárolja a fájlokat)
+    * Az adatokat a mögöttes helyen kell tartani, még a tábla eldobása után is.
+    * Egyéni helyre van szüksége, például egy nem alapértelmezett Storage-fiókra.
+    * A kaptártól eltérő program nem kezeli az adatformátumot, a helyet stb.
 
-További információkért lásd: a [Hive belső és külső táblák bevezető](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) blogbejegyzést.
+További információért lásd a [belső és külső táblák](https://blogs.msdn.microsoft.com/cindygross/2013/02/05/hdinsight-hive-internal-and-external-tables-intro/) összeadását ismertető blogbejegyzést.
 
 ## <a name="user-defined-functions-udf"></a>Felhasználó által definiált függvények (UDF)
 
-Hive is kiterjeszthető keresztül **felhasználó által definiált függvények (UDF)** . Egy UDF funkciók vagy logika, amely nem könnyen modellezett bevezetése a HiveQL teszi lehetővé. Például egy UDF-EK használata a Hive az alábbi dokumentumokban talál:
+A struktúra a **felhasználó által definiált függvények (UDF)** használatával is bővíthető. Az UDF lehetővé teszi olyan funkciók vagy logika megvalósítását, amelyek nem könnyen modellezhető a HiveQL-ben. A UDF és a kaptár használatával kapcsolatos példát a következő dokumentumokban talál:
 
-* [Az Apache Hive egy Java-felhasználó által definiált függvény használata](../hadoop/apache-hadoop-hive-java-udf.md)
+* [Java-felhasználó által definiált függvény használata Apache Hive](../hadoop/apache-hadoop-hive-java-udf.md)
 
-* [Az Apache Hive egy Python-felhasználó által definiált függvény használata](../hadoop/python-udf-hdinsight.md)
+* [Python felhasználó által definiált függvény használata Apache Hive](../hadoop/python-udf-hdinsight.md)
 
-* [Használja a C# az Apache Hive-, felhasználó által definiált függvény](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [C# Felhasználó által definiált függvény használata Apache Hive](../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md)
 
-* [HDInsight egyéni Apache Hive-felhasználó által definiált függvény hozzáadása](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Egyéni Apache Hive felhasználó által definiált függvény hozzáadása a HDInsight-hez](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
 
-* [Például az Apache Hive felhasználói függvény dátum/idő formátumot átalakítása a Hive-időbélyeg](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
+* [Példa Apache Hive felhasználó által definiált függvényt a dátum-és időformátumok átalakításához a kaptár időbélyegére](https://github.com/Azure-Samples/hdinsight-java-hive-udf)
 
-## <a id="data"></a>Példa adatok
+## <a id="data"></a>Példa az adatértékekre
 
-A HDInsight Hive előre betöltött tartalmaz egy belső tábla nevű `hivesampletable`. HDInsight Hive-val használható példa adatkészleteket is biztosít. Ezek az adatkészletek vannak tárolva a `/example/data` és `/HdiSamples` könyvtárak. Ezek a könyvtárak a a fürt alapértelmezett tárolója szerepel.
+A kaptár on HDInsight előre be van töltve egy `hivesampletable` nevű belső táblával. A HDInsight olyan adatkészleteket is biztosít, amelyek a kaptár használatával használhatók. Ezeket az adatkészleteket a `/example/data` és a `/HdiSamples` könyvtár tárolja. Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók.
 
-## <a id="job"></a>Példa Hive-lekérdezés
+## <a id="job"></a>Példa a kaptár lekérdezésére
 
-A következő hiveql-projekt oszlopok az alakzatot a `/example/data/sample.log` fájlt:
+A következő HiveQL utasítások a `/example/data/sample.log` fájlba kerülnek:
 
 ```hiveql
 DROP TABLE log4jLogs;
@@ -127,32 +126,31 @@ CREATE EXTERNAL TABLE log4jLogs (
     t7 string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
 STORED AS TEXTFILE LOCATION '/example/data/';
-SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+    WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
     GROUP BY t4;
 ```
 
-Az előző példában a hiveql hajtsa végre a következő műveleteket:
+Az előző példában a HiveQL utasítások a következő műveleteket hajtják végre:
 
+* `DROP TABLE`: Ha a tábla már létezik, törölje.
 
-* `DROP TABLE`: Ha a tábla már létezik, törölje azt.
+* `CREATE EXTERNAL TABLE`: új **külső** táblát hoz létre a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen és az eredeti formátumban marad.
 
-* `CREATE EXTERNAL TABLE`: Létrehoz egy új **külső** Hive táblát. Külső táblák csak tárolja a tábla definíciójának Hive. Az adatok az eredeti helyre, és az eredeti formátumban marad.
+* `ROW FORMAT`: az adat formázásának elolvasása. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.
 
-* `ROW FORMAT`: Arra utasítja a Hive, az adatok formázását. Ebben az esetben minden napló mezőinek vesszővel elválasztva.
+* `STORED AS TEXTFILE LOCATION`: Megadja, hogy a rendszer hol tárolja az adattárolási struktúrát (a `example/data` könyvtárat), és hogy a szövegként van tárolva. Az adatfájlok egy fájlban lehetnek, vagy a címtárban található több fájl között is elterjedhetnek.
 
-* `STORED AS TEXTFILE LOCATION`: Arra utasítja a Hive, az adatok tárolására (a `example/data` directory), és hogy szövegként lesz tárolva. Az adatok egyetlen fájlban vagy több fájl a könyvtárban lévő elosztva.
+* `SELECT`: kiválasztja az összes olyan sor számát, amelyben a **T4** oszlop tartalmazza a **[Error]** értéket. Ez az utasítás **3** értéket ad vissza, mert három sor tartalmazza ezt az értéket.
 
-* `SELECT`: Kiválasztja az összes sor számát, az oszlop **t4** értéket tartalmazza **[hiba]** . A jelen nyilatkozat egy értékét adja vissza **3** mert három sort, amely tartalmazza ezt az értéket.
-
-* `INPUT__FILE__NAME LIKE '%.log'` -Hive megkísérli a alkalmazni a sémát a címtárban található összes fájl. Ebben az esetben a könyvtárban található fájlok, amelyek nem egyeznek a sémát. Szemétgyűjtési adatokat a eredmények elkerülése érdekében a jelen nyilatkozat arra utasítja a Hive, hogy azt kell csak adatokat adja vissza a végződésű fájlokból. napló.
+* @no__t – 0 – a struktúra megpróbálja alkalmazni a sémát a címtárban található összes fájlra. Ebben az esetben a könyvtár olyan fájlokat tartalmaz, amelyek nem egyeznek a sémával. Ha meg szeretné akadályozni, hogy az eredmények ne kerüljenek az adatokba, ez az utasítás azt ismerteti, hogy a kaptár csak a. log fájlban végződő fájlokból tér vissza.
 
 > [!NOTE]  
-> Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat, vagy a MapReduce művelet.
+> Külső táblákat kell használni, ha várható, hogy a mögöttes adatokat külső forrás frissíti. Például egy automatizált adatfeltöltési folyamat vagy MapReduce művelet.
 >
-> A külső tábla elvetését does **nem** törölheti az adatokat, csak törli a tábla definícióját.
+> Egy külső tábla eldobása **nem** törli az adatforrást, csak a tábla definícióját törli.
 
-Hozhat létre egy **belső** helyett külső táblát, a következő hiveql-lel:
+**Belső** tábla külső helyett történő létrehozásához használja a következő HiveQL:
 
 ```hiveql
 CREATE TABLE IF NOT EXISTS errorLogs (
@@ -169,55 +167,55 @@ SELECT t1, t2, t3, t4, t5, t6, t7
     FROM log4jLogs WHERE t4 = '[ERROR]';
 ```
 
-Ezek az utasítások hajtsa végre a következő műveleteket:
+Ezek az utasítások a következő műveleteket hajtják végre:
 
-* `CREATE TABLE IF NOT EXISTS`: Ha a tábla nem létezik, hozza létre. Mivel a **külső** kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. A tábla a Hive-adatraktárban tárolja, és Hive teljes egészében kezeli.
+* `CREATE TABLE IF NOT EXISTS`: Ha a tábla nem létezik, hozza létre. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A rendszer a struktúra adattárházában tárolja a táblázatot, és a struktúra teljes mértékben kezeli.
 
-* `STORED AS ORC`: Optimalizált sor Oszlopalapú (ORC) formátumban tárolja az adatokat. ORC Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+* `STORED AS ORC`: az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork kiválóan optimalizált és hatékony formátum a kaptárak adatok tárolására.
 
-* `INSERT OVERWRITE ... SELECT`: A sorok kiválasztása a **log4jLogs** tartalmazó tábla **[hiba]** , majd beszúrja az adatokat, és a **hibanaplókat** tábla.
+* `INSERT OVERWRITE ... SELECT`: kijelöli a **log4jLogs** tábla azon sorait, amelyek **[Error]** elemet tartalmaznak, majd beszúrja az adatait a **alkalmazásnaplókat** táblába.
 
 > [!NOTE]  
-> Ellentétben a külső táblák elvetését egy belső táblát is törli az alapul szolgáló adatokat.
+> A külső tábláktól eltérően a belső táblák eldobása is törli az alapul szolgáló adatokat.
 
-## <a name="improve-hive-query-performance"></a>Hive-lekérdezések teljesítményének növelése
+## <a name="improve-hive-query-performance"></a>A kaptár-lekérdezés teljesítményének javítása
 
-### <a id="usetez"></a>Apache Tez
+### <a id="usetez"></a>Apache TEZ
 
-[Az Apache Tez](https://tez.apache.org) egy keretrendszer, amely lehetővé teszi, hogy az adatok nagy számításigényű alkalmazásokat, például a Hive, sokkal hatékonyabban futtatásához ipari méretekben. Alapértelmezés szerint engedélyezve van a tezben futtatja.  A [Apache Hive Tez tervezési dokumentumok](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) megvalósítási és hangolási konfiguráció részleteit tartalmazza.
+Az [Apache TEZ](https://tez.apache.org) egy olyan keretrendszer, amely lehetővé teszi az adatigényes alkalmazások, például a kaptárok számára, hogy sokkal hatékonyabban futtassák a méretezést. A TEZ alapértelmezés szerint engedélyezve van.  A [TEZ-tervezési dokumentumok Apache Hive](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) a megvalósítási döntések részleteit és hangolási konfigurációkat tartalmaz.
 
-### <a name="low-latency-analytical-processing-llap"></a>Közel valós idejű analitikus feldolgozás (LLAP)
+### <a name="low-latency-analytical-processing-llap"></a>Kis késleltetésű analitikus feldolgozás (LLAP)
 
-[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (más néven hosszú és eredményes), amely lehetővé teszi, hogy a memóriában történő gyorsítótárazás lekérdezések Hive 2.0 új szolgáltatása. LLAP teszi akár sokkal gyorsabb Hive-lekérdezések [26 x gyorsabb, mint a Hive-1.x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+A [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (más néven élő hosszú és folyamat) a kaptár 2,0 új funkciója, amely lehetővé teszi a lekérdezések memórián belüli gyorsítótárazását. A LLAP sokkal gyorsabban teszi a kaptár-lekérdezéseket, és akár [26x gyorsabban, mint a kaptár 1. x bizonyos esetekben](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 
-HDInsight interaktív lekérdezési fürt típusban LLAP biztosít. További információkért lásd: a [interaktív lekérdezések használatának első lépései](../interactive-query/apache-interactive-query-get-started.md) dokumentumot.
+A HDInsight az interaktív lekérdezési fürt típusa LLAP biztosít. További információ: az [interaktív lekérdezési dokumentum elindítása](../interactive-query/apache-interactive-query-get-started.md) .
 
-## <a name="scheduling-hive-queries"></a>Hive-lekérdezések ütemezése
+## <a name="scheduling-hive-queries"></a>Struktúra-lekérdezések ütemezése
 
-Nincsenek számos szolgáltatás használható a Hive-lekérdezések futtatásához egy ütemezett vagy igény szerinti munkafolyamat részeként.
+Több szolgáltatás is használható a kaptár-lekérdezések ütemezett vagy igény szerinti munkafolyamatok részeként történő futtatására.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Az Azure Data Factory lehetővé teszi, hogy HDInsight a Data Factory-folyamatok részeként. További információ a Hive használatával egy folyamatból, tekintse meg a [adatok átalakítása a Hive-tevékenység használatával az Azure Data Factoryban](../../data-factory/transform-data-using-hadoop-hive.md) dokumentumot.
+A Azure Data Factory lehetővé teszi a HDInsight használatát egy Data Factory folyamat részeként. A struktúra folyamatból való használatával kapcsolatos további információkért lásd az [adatok átalakítása struktúra használatával Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) dokumentumban.
 
-### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive-feladatok és az SQL Server Integration Services
+### <a name="hive-jobs-and-sql-server-integration-services"></a>Struktúra-feladatok és SQL Server Integration Services
 
-Az SQL Server Integration Services (SSIS) használatával egy Hive-feladat futtatása. Az Azure Feature Pack for SSIS biztosít a következő összetevőket, amely a HDInsight Hive-feladatok dolgozhat.
+A kaptár-feladatok futtatásához SQL Server Integration Services (SSIS) használható. A SSIS készült Azure Feature Pack a következő összetevőket nyújtja, amelyek a HDInsight-on található kaptár-feladatokkal működnek.
 
-* [Az Azure HDInsight Hive-tevékenység](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
+* [Azure HDInsight-struktúra feladat](https://docs.microsoft.com/sql/integration-services/control-flow/azure-hdinsight-hive-task)
 
-* [Azure Subscription Connection Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
+* [Azure-előfizetési kapcsolatkezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-subscription-connection-manager)
 
-További információkért lásd: a [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentációját.
+További információt az [Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis) dokumentációjában talál.
 
-### <a name="apache-oozie"></a>Az Apache Oozie
+### <a name="apache-oozie"></a>Apache Oozie
 
-Az Apache Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-feladatokat kezeli. Az Oozie használata a Hive használatával további információkért lásd: a [használata Apache Oozie megadásához és a munkafolyamat futtatása](../hdinsight-use-oozie-linux-mac.md) dokumentumot.
+Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli. A Oozie és a kaptár használatával kapcsolatos további információkért tekintse meg az [Apache Oozie használata munkafolyamat-dokumentum definiálásához és futtatásához](../hdinsight-use-oozie-linux-mac.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy már Hive van, és hogyan használható a HDInsight a Hadoop-keretrendszerrel, egyéb módon az Azure HDInsight használata az alábbi hivatkozások segítségével.
+Most, hogy megismerte, hogy mi a kaptár, és hogyan használható a Hadoop-ben a HDInsight-ben, az alábbi hivatkozásokat követve megismerheti az Azure HDInsight szolgáltatással való munkavégzés más módszereit.
 
 * [Adatok feltöltése a HDInsight](../hdinsight-upload-data.md)
-* [Használható Python felhasználói függvények (UDF) az Apache Hive és a HDInsight Apache Pig](./python-udf-hdinsight.md)
+* [Python-felhasználó által definiált függvények (UDF) használata Apache Hive és Apache Pig használatával a HDInsight-ben](./python-udf-hdinsight.md)
 * [MapReduce-feladatok használata a HDInsightban](hdinsight-use-mapreduce.md)

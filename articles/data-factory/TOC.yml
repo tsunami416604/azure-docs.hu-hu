@@ -80,6 +80,8 @@
           items:
             - name: Adatok másolása eszköz
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+    - name: Adatok átalakítása adatfolyam leképezésével
+      href: tutorial-data-flow.md
     - name: Adatok átalakítása a felhőben
       items:
         - name: HDInsight Spark
@@ -143,7 +145,7 @@
       href: concepts-integration-runtime.md
     - name: Adatfolyamok leképezése
       items:
-        - name: Adatfolyam-fogalmak leképezése
+        - name: Adatfolyam-leképezés áttekintése
           href: concepts-data-flow-overview.md
         - name: Hibakeresési mód
           href: concepts-data-flow-debug-mode.md
@@ -151,8 +153,6 @@
           href: concepts-data-flow-json.md
         - name: Sémaeltérés
           href: concepts-data-flow-schema-drift.md
-        - name: Vizsgálat panel
-          href: concepts-data-flow-inspect-pane.md
         - name: Oszlopminták
           href: concepts-data-flow-column-pattern.md
         - name: Adatfolyam-figyelés
@@ -161,12 +161,8 @@
           href: concepts-data-flow-performance.md
         - name: Csomópontok áthelyezése
           href: concepts-data-flow-move-nodes.md
-        - name: Optimalizálás lap
-          href: concepts-data-flow-optimize-tab.md
         - name: Kifejezésszerkesztő
           href: concepts-data-flow-expression-builder.md
-        - name: Referencia-csomópontok
-          href: concepts-data-flow-reference-node.md
         - name: Kifejezés nyelve
           href: data-flow-expression-functions.md
     - name: Szerepkörök és engedélyek
@@ -390,6 +386,8 @@
     - name: Adatok átalakítása
       href: transform-data.md
       items:
+        - name: Data Flow-tevékenység végrehajtása
+          href: control-flow-execute-data-flow-activity.md
         - name: Azure-függvények tevékenységei
           href: control-flow-azure-function-activity.md
         - name: Egyéni tevékenység
@@ -424,8 +422,6 @@
       items:
         - name: Változó tevékenység hozzáfűzése
           href: control-flow-append-variable-activity.md
-        - name: Data Flow-tevékenység végrehajtása
-          href: control-flow-execute-data-flow-activity.md
         - name: Folyamat végrehajtása tevékenység
           href: control-flow-execute-pipeline-activity.md
         - name: Tevékenységszűrés
