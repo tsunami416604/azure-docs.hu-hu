@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Végpontok közötti ETL-folyamat létrehozása az értékesítési eredmények származtatása érdekében'
+title: 'Oktatóanyag: teljes körű ETL-folyamat létrehozása értékesítési ismeretek kinyeréséhez'
 description: Ismerje meg, hogyan hozhat létre ETL-folyamatokat az Azure HDInsight, és hogyan származtathatja az értékesítési adatokból származó információkat a Spark igény szerinti fürtök és a Power BI használatával.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -15,7 +15,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72178006"
 ---
-# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Oktatóanyag: Végpontok közötti adatfolyamat létrehozása az értékesítési elemzések kinyeréséhez
+# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Oktatóanyag: végpontok közötti adatfolyamat létrehozása értékesítési elemzések készítéséhez
 
 Ebben az oktatóanyagban egy végpontok közötti adatfolyamatot fog kiépíteni, amely kinyerési, átalakítási és betöltési (ETL) műveleteket hajt végre. A folyamat az Azure HDInsight-on futó Apache Spark és Apache Hive fürtöket fogja használni az adatlekérdezéshez és-kezeléshez. Emellett olyan technológiákat is használhat, mint a Azure Data Lake Storage Gen2 az adattároláshoz, és Power BI a vizualizációhoz.
 
@@ -33,7 +33,7 @@ A [Power bi Desktop](https://www.microsoft.com/download/details.aspx?id=45331) l
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>A tárház klónozása parancsfájlokkal és adatkezeléssel
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Nyissa meg Azure Cloud Shell a felső menüsorban. Válassza ki az előfizetését fájlmegosztás létrehozásához, ha Cloud Shell kéri.
 
    ![Az Azure Cloud Shell megnyitása](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
@@ -201,7 +201,7 @@ Ez a szkript egy felügyelt táblát hoz létre az interaktív lekérdezési fü
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Power BI irányítópult létrehozása értékesítési adatokból
 
-1. Nyissa meg a Power BI Desktop alkalmazást.
+1. Nyissa meg a Power BI Desktopot.
 1. Válassza az **Adatok lekérése** lehetőséget.
 1. Keresse meg a **HDInsight interaktív lekérdezési fürtöt**.
 1. Illessze be a fürthöz tartozó URI-t. A következő formátumban kell lennie: `https://<LLAP CLUSTER NAME>.azurehdinsight.net`.
@@ -212,7 +212,7 @@ Ez a szkript egy felügyelt táblát hoz létre az interaktív lekérdezési fü
 Az adatgyűjtés után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI-irányítópultok megismeréséhez tekintse meg az alábbi hivatkozásokat:
 
 * [Power BI designerek irányítópultjának bemutatása](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Oktatóanyag: Ismerkedés a Power BI szolgáltatás @ no__t-0
+* [Oktatóanyag: a Power BI szolgáltatás első lépései](https://docs.microsoft.com/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -222,7 +222,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi parancs használatáva
 az group delete -n $resourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kinyerés, átalakítás és betöltés (ETL) skálán](./hadoop/apache-hadoop-etl-at-scale.md)

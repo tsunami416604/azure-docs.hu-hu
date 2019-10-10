@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Telemetria küldése az Azure IoT (node. js)'
+title: 'Gyors útmutató: telemetria küldése az Azure IoT (node. js)'
 description: Ebben a rövid útmutatóban két Node.js-alkalmazást fog futtatni szimulált telemetria egy IoT Hubra való küldéséhez és telemetria olvasásához az IoT Hubról a felhőben történő feldolgozás érdekében.
 author: wesmc7777
 manager: philmea
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72167034"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (node. js)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (node. js)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -59,9 +59,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyNodeDevice**: A regisztrálni kívánt eszköz neve. Javasoljuk, hogy a **MyNodeDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **MyNodeDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyNodeDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyNodeDevice
@@ -69,7 +69,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa a következő parancsot a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyNodeDevice --output table
@@ -83,7 +83,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub show-connection-string --name {YourIoTHubName} --policy-name service --output table
@@ -141,11 +141,11 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldve a hubhoz egy Node. js-alkalmazás használatával, valamint egy egyszerű háttérbeli alkalmazás használatával olvassa be a telemetria.
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése @ no__t-0
+> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-node.md)

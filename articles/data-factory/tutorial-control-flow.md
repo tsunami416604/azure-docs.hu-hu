@@ -133,7 +133,7 @@ C# .Net-konzol alkalmazás létrehozása:
    static string sendSuccessEmailActivity = "SendSuccessEmailActivity";
    ```
 
-1. Adja hozzá a következő kódot a `Main` metódushoz: Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
+1. Adja hozzá a következő kódot a(z) `Main` metódushoz. Ez a kód `DataFactoryManagementClient` osztály egy példányát hozza létre. Ezt az objektumot használhatja az adat-előállító, a társított szolgáltatás, az adatkészletek és a folyamat létrehozásához. Ezzel az objektummal is figyelheti a folyamat futtatásának részleteit.
 
    ```csharp
    // Authenticate and create a data factory management client
@@ -232,7 +232,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a blob-adatkészlet az előző lépésben támogatott Azure Storage társított szolgáltatásra hivatkozik. A blob-adatkészlet leírja a másolandó blob helyét: *FolderPath* és *fájlnév*.
+Meghatároz egy adatkészletet, amely a forrásadatokat jelöli az Azure Blobban. Ez a blob-adatkészlet az előző lépésben támogatott Azure Storage társított szolgáltatásra hivatkozik. A blob-adatkészlet leírja a másolandó blob helyét a következő helyről: *FolderPath* és *fájlnév*.
 
 Figyelje meg a *FolderPath*paramétereinek használatát. a `sourceBlobContainer` a paraméter neve, a kifejezés helyére pedig a folyamat futása során átadott értékek szerepelnek. A paraméterek meghatározására szolgáló szintaxis: `@pipeline().parameters.<parameterName>`
 
@@ -266,11 +266,11 @@ Figyelje meg a *FolderPath*paramétereinek használatát. a `sourceBlobContainer
    client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSinkDatasetName, SinkBlobDatasetDefinition(client));
    ```
 
-## <a name="create-a-c-class-emailrequest"></a>Hozzon C# létre egy osztályt: EmailRequest
+## <a name="create-a-c-class-emailrequest"></a>C# osztály létrehozása: EmailRequest
 
 A C# projektben hozzon létre egy `EmailRequest` nevű osztályt. Ez az osztály határozza meg, hogy a folyamat milyen tulajdonságokat küldjön a törzs kérelmében e-mailben. Ebben az oktatóanyagban a folyamat négy tulajdonságot küld a folyamatból az e-mailbe:
 
-* az üzenet. Az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a megírt adatmennyiséget. Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
+* Üzenetet. Az e-mail törzse. Sikeres másolás esetén ez a tulajdonság tartalmazza a megírt adatmennyiséget. Sikertelen másolás esetén ez a tulajdonság tartalmazza a hiba részleteit.
 * Az adatelőállító neve. Az adatelőállító neve.
 * A folyamat neve. A folyamat neve.
 * Fogadó. A paraméter, amely áthalad. Ez a tulajdonság adja meg az e-mail fogadóját.
@@ -453,9 +453,9 @@ Ebben a folyamatban a következő funkciókat használja:
 
 A folyamat kódjának első szakasza határozza meg a paramétereket.
 
-* `sourceBlobContainer`. A forrás blob-adatkészlet ezt a paramétert használja a folyamatban.
-* `sinkBlobContainer`. A fogadó blob-adatkészlet ezt a paramétert használja a folyamatban.
-* `receiver`. A folyamat két webes tevékenysége, amelyek sikeres vagy sikertelen e-maileket küldenek a fogadónak, ezt a paramétert használják.
+* `sourceBlobContainer` kérdésre adott válaszban foglalt lépéseket. A forrás blob-adatkészlet ezt a paramétert használja a folyamatban.
+* `sinkBlobContainer` kérdésre adott válaszban foglalt lépéseket. A fogadó blob-adatkészlet ezt a paramétert használja a folyamatban.
+* `receiver` kérdésre adott válaszban foglalt lépéseket. A folyamat két webes tevékenysége, amelyek sikeres vagy sikertelen e-maileket küldenek a fogadónak, ezt a paramétert használják.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -490,7 +490,7 @@ A webes tevékenység lehetővé teszi a REST-végpontok hívását. További in
 
 A `Url` tulajdonságban illessze be a **http post URL-** végpontokat a Logic apps munkafolyamatokból. A `Body` tulajdonságban adja át a `EmailRequest` osztály egy példányát. Az e-mail-kérelem a következő tulajdonságokat tartalmazza:
 
-* az üzenet. A `@{activity('CopyBlobtoBlob').output.dataWritten` értéket adja át. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a `dataWritten` értékét. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
+* Üzenetet. A `@{activity('CopyBlobtoBlob').output.dataWritten` értéket adja át. Hozzáfér az előző másolási tevékenység tulajdonságához, és átadja a `dataWritten` értékét. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
 * Data Factory neve. @No__t-0 értékének átadása ez a rendszerváltozó lehetővé teszi a megfelelő adatelőállító-név elérését. A rendszerváltozók listáját a [rendszerváltozók](control-flow-system-variables.md)részben tekintheti meg.
 * A folyamat neve. A `@{pipeline().Pipeline}` értéket adja át. Ez a rendszerváltozó lehetővé teszi a megfelelő folyamat nevének elérését.
 * Fogadó. A `"@pipeline().parameters.receiver"` értéket adja át. A folyamat paramétereinek elérése.
@@ -551,7 +551,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>Folyamat futásának monitorozása
 
-1. Adja hozzá a következő kódot a `Main` metódushoz:
+1. Adja hozzá a következő kódot az `Main` metódushoz:
 
     ```csharp
     // Monitor the pipeline run
@@ -749,7 +749,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 

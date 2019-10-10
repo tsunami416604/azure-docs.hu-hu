@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72166342"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -59,9 +59,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyDotnetDevice**: A regisztrálni kívánt eszköz neve. Javasoljuk, hogy a **MyDotnetDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **MyDotnetDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyDotnetDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
@@ -69,7 +69,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa a következő parancsot a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -83,7 +83,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 3. A IoT hub _Event Hubs-kompatibilis végpontja_, _Event Hubs-kompatibilis útvonala_és a _szolgáltatás elsődleges kulcsa_ is szükséges ahhoz, hogy a háttér-alkalmazás csatlakozhasson az IoT hubhoz, és lekérje az üzeneteket. Ezeket az értékeket a következő parancsok kérdezik le az IoT Hubhoz:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -129,7 +129,7 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 2. Nyissa meg a **ReadDeviceToCloudMessages.cs** fájlt egy Ön által választott szövegszerkesztőben. Frissítse a következő változókat, és mentse a fájlon végrehajtott módosításait.
 
-    | Változó | Value |
+    | Változó | Value (Díj) |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Cserélje le a változó értékét a Event Hubs-kompatibilis végpontra, amelyet korábban jegyzett készített. |
     | `s_eventHubsCompatiblePath`     | Cserélje le a változó értékét arra a Event Hubs-kompatibilis elérési útra, amelyet korábban jegyzett készített. |
@@ -155,11 +155,11 @@ A háttéralkalmazás a szolgáltatásoldali **Események** végponthoz csatlako
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hubot állít be, regisztrált egy eszközt, szimulált telemetria küldtünk a hubhoz egy C# alkalmazás használatával, és egy egyszerű háttérbeli alkalmazás használatával beolvasta a telemetria a középpontból.
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése @ no__t-0
+> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-dotnet.md)

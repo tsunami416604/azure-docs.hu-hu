@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Azure Backup figyelése Azure Monitor'
+title: 'Azure Backup: a Azure Backup figyelése Azure Monitor'
 description: Figyelje Azure Backup munkaterheléseket, és hozzon létre egyéni riasztásokat Azure Monitor használatával.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954625"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177712"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -59,8 +59,8 @@ Miután az adatLog Analytics munkaterületen belül található, [helyezzen üze
 
 A sablon üzembe helyezése után a Azure Backup figyelésére és jelentéskészítésére szolgáló megoldás a munkaterület összefoglaló régiójában jelenik meg. Az összegzéshez kövesse az alábbi elérési utak egyikét:
 
-- **Azure monitor**: Az **áttekintések** szakaszban válassza a **továbbiak** lehetőséget, majd válassza ki a megfelelő munkaterületet.
-- **Log Analytics munkaterületek**: Válassza ki a megfelelő munkaterületet, majd az **általános**területen válassza a **munkaterület összegzése**elemet.
+- **Azure monitor**: a **bepillantások** szakaszban válassza a **továbbiak** lehetőséget, majd válassza ki a megfelelő munkaterületet.
+- **Log Analytics munkaterületek**: válassza ki a megfelelő munkaterületet, majd az **általános**területen válassza a **munkaterület összegzése**elemet.
 
 ![A Log Analytics monitorozási és jelentéskészítési csempéi](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
 
@@ -246,12 +246,12 @@ Megtekintheti a tevékenységek naplóiból létrehozott összes riasztást és 
 
 Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ezért:
 
-- **Korlátozott helyzetek**: A tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
-- **Definíciók igazítása**: Az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett összehangolja a [diagnosztikai naplókat](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs). Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
-- **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban a Azure Backup által bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), akkor ezek a naplók nem jelennek meg.
+- **Korlátozott forgatókönyvek**: a tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
+- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett összehangolja a [diagnosztikai naplókat](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
+- **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban, a Azure Backup bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), akkor ezek a naplók nem jelennek meg.
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéni lekérdezések létrehozásához tekintse meg az [log Analytics adatmodellt](backup-azure-log-analytics-data-model.md).

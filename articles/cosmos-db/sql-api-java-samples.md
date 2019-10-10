@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: Java-alapú példa az SQL API-hoz'
+title: 'Azure Cosmos DB: Java-példák az SQL API-hoz'
 description: A GitHub tartalmaz az Azure Cosmos DB általános feladataihoz, többek között a CRUD-műveletekhez kötődő Java-példákat.
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,17 +8,18 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 02/08/2019
 ms.author: sngun
-ms.openlocfilehash: 1b60df197e83fa480a3fdaed60552a6c977845b1
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 8b133f0044bdf8f99fdee657177d561ef5bb406b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250043"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170161"
 ---
-# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Az Azure Cosmos DB: Java-alapú példa az SQL API-hoz
+# <a name="azure-cosmos-db-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Java-példák az SQL API-hoz
 
 > [!div class="op_single_selector"]
-> * [.NET-példák](sql-api-dotnet-samples.md)
+> * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
+> * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
 > * [Java-példák](sql-api-java-samples.md)
 > * [Aszinkron Java-példák](sql-api-async-java-samples.md)
 > * [Node.js-példák](sql-api-nodejs-samples.md)
@@ -30,13 +31,13 @@ ms.locfileid: "68250043"
 Az [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java) GitHub-adattárban megtalálhatók a legújabb mintaalkalmazások, amelyek CRUD műveleteket és más általános műveleteket végeznek az Azure Cosmos DB erőforrásokon. Ez a cikk a következő információkat tartalmazza:
 
 * Az egyes Java-projektfájlokban lévő feladatok hivatkozásai. 
-* A kapcsolódó API-referenciatartalmak hivatkozásai.
+* Az ezekhez tartozó API-referencia tartalomra mutató hivatkozások.
 
 **Előfeltételek**
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- Is [aktiválhatja a Visual Studio előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetésében kreditek minden hónapban biztosít Önnek, hogy a fizetős Azure-szolgáltatásokat is használhat.
+- [Aktiválhatja Visual Studio-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio): A Visual Studio-előfizetés minden hónapban biztosít Önnek krediteket, amelyekkel fizetős Azure-szolgáltatásokat használhat.
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -88,73 +89,73 @@ Futtatás a parancssorból:
    > 
 
 ## <a name="database-examples"></a>Adatbázispéldák
-A [DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. További információ az Azure Cosmos-adatbázisok a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
+A [DatabaseCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Adatbázis létrehozása és olvasása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L64-L79) | [DocumentClient.createDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createdatabase)<br>[DocumentClient.readDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdatabase)<br>[Resource.setId](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resource.setid) |
 | [Adatbázis létrehozása és törlése](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L82-L93) | [DocumentClient.deleteDatabase](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletedatabase) |
 | [Adatbázis létrehozása és lekérdezése](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DatabaseCrudSamples.java#L96-L111) | [DocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Gyűjteménypéldák
-A [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. További információ az Azure Cosmos-gyűjtemények a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk.
+A [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Egypartíciós gyűjtemény létrehozása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L74-L84) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) |
 | [Egyéni többpartíciós gyűjtemény létrehozása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L103-L155) | [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentcollection)<br>[PartitionKeyDefinition](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.partitionkeydefinition)<br>[RequestOptions](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions) |
 | [Gyűjtemény törlése](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L97-L99) | [DocumentClient.deleteCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletecollection) |
 
 ## <a name="document-examples"></a>Dokumentumpéldák
-A [DocumentCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. További információ az Azure Cosmos-dokumentumok, a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk.
+A [DocumentCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata.
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Dokumentum létrehozása, olvasása és törlése](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java#L84-L122) | [DocumentClient.createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createdocument)<br>[DocumentClient.readDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readdocument)<br>[DocumentClient.deleteDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.deletedocument) |
 | [Dokumentum létrehozása programozható dokumentumdefinícióval](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentCrudSamples.java#L126-L147) | [Dokumentum](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.document)<br>[Resource.setId](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resource.setid) |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-A [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. A következő minták futtatása előtt az Azure Cosmos DB indexelése kapcsolatos további információkért lásd: [indexelési szabályzataihoz](index-policy.md), [adattípusok indexelése](index-types.md), és [elérési utak indexelő](index-paths.md) elméleti cikkeket. 
+A [CollectionCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java) -fájl a következő feladatok elvégzését mutatja be. A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei. 
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Index létrehozása és indexelési szabályzat beállítása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/CollectionCrudSamples.java#L125-L141) | [Index](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.index)<br>[IndexingPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy) |
 
 További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
-A [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. További információ az SQL-lekérdezés referencia az Azure Cosmos DB a következő minták futtatása előtt,: [SQL-lekérdezés példák](how-to-sql-query.md) fogalmi cikk. 
+A [DocumentQuerySamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java) -fájl a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretne többet megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról, tekintse meg az [SQL-lekérdezési példák](how-to-sql-query.md) fogalmi cikkét. 
 
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Partíciók közötti egyszerű dokumentumlekérdezés végrehajtása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L108-L129) | [DocumentClient.queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.querydocuments)<br>[FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setenablecrosspartitionquery) |
-| [Lekérdezés szerinti rendezés](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse\<T > .getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
+| [Lekérdezés szerinti rendezés](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/DocumentQuerySamples.java#L132-L154) | [FeedResponse @ no__t-1T >. getQueryIterator](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse.getqueryiterator) |
 
 További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](how-to-sql-query.md).
 
 ## <a name="offer-examples"></a>Ajánlatpéldák
 Az [OfferCrudSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java) fájl bemutatja, hogyan végezheti el a következő feladatokat:
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Gyűjtemény létrehozása és a teljesítmény beállítása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L76-L102) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.requestoptions.setofferthroughput) |
 | [Gyűjtemény olvasása a társított ajánlat megkereséséhez](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java#L108-L132) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.offer.getcontent)<br>[DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer)<br>[DocumentClient.readCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.readcollection)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.queryoffers) |
 
 ## <a name="partition-key-examples"></a>Partíciókulcs-példák
-A [SinglePartitionCollectionDocumentCrudSample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. További információ a particionálási és az Azure Cosmos DB partíciókulcsok a következő minták futtatása előtt,: [particionálás](partitioning-overview.md) fogalmi cikk. 
+A [SinglePartitionCollectionDocumentCrudSample](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java) -fájl a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretné megismerni a particionálási és partíciós kulcsok Azure Cosmos DBét, tekintse meg a [particionálás](partitioning-overview.md) fogalmi cikkét. 
 
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Egypartíciós gyűjtemény létrehozása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java#L164-L207) | [DocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createcollection) |
 | [Egypartíciós gyűjtemény teljesítményajánlatának módosítása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/SinglePartitionCollectionDocumentCrudSample.java#L209-L223) | [DocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Tárolt eljárások példái
-A [StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) fájl bemutatja, hogyan hajthat végre a következő feladatokat. A következő minták futtatása előtt az Azure Cosmos DB kiszolgálóoldali programozása kapcsolatos további információkért lásd: [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikk. 
+A [StoredProcedureSamples](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java) -fájl a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretné megtudni Azure Cosmos DB kiszolgálóoldali programozását, tekintse meg a [tárolt eljárások, eseményindítók és a felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikkét. 
 
 
-| Tevékenység | API-referencia |
+| Tevékenység | API-leírások |
 | --- | --- |
 | [Tárolt eljárás létrehozása](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java#L85-L118) | [StoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.storedprocedure)<br>[DocumentClient.createStoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.createstoredprocedure) |
 | [Tárolt eljárás futtatása argumentumokkal](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/StoredProcedureSamples.java#L121-L144) | [DocumentClient.executeStoredProcedure](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclient.executestoredprocedure) |

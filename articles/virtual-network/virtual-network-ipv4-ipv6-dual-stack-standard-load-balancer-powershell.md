@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 05794cfaf6a550d32acdfb731a5f477111e65606
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c924e59a50994827eb2e9be40caa7021c7e4ac3c
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011419"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174465"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>IPv6 Dual stack-alkalmazás üzembe helyezése az Azure-ban – PowerShell (előzetes verzió)
 
@@ -39,7 +39,7 @@ Regisztráljon a következőképpen:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztrációs állapotát a következő Azure PowerShell parancs futtatásával tekintheti meg: A regisztrációt a következőképpen tekintheti meg:
+A szolgáltatás regisztrációjának befejezéséhez akár 30 percet is igénybe vehet. A regisztráció állapotát a következő Azure PowerShell parancs futtatásával tekintheti meg: a regisztrációt a következőképpen tekintheti meg:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace 
@@ -50,7 +50,7 @@ A regisztráció befejeződése után futtassa a következő parancsot:
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myRGDualStack* nevű erőforráscsoportot az *USA keleti* régiójában:
 
@@ -239,7 +239,7 @@ $nsg = New-AzNetworkSecurityGroup `
 ```
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa létrehoz egy *mySubnet* hálózattal rendelkező *myVNet* nevű virtuális hálózatot:
+Hozzon létre egy új virtuális hálózatot a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Az alábbi példa egy *dsVnet* nevű virtuális hálózatot hoz létre a *mySubnet*:
 
 ```azurepowershell-interactive
 # Create dual stack subnet
@@ -323,7 +323,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>Az IPv4-és IPv6-végpontok IP-címeinek meghatározása
-Az erőforráscsoport összes hálózati adapter-objektumának lekérésével összesítheti az üzemelő példányban `get-AzNetworkInterface`használt IP-címet. Emellett szerezze be a Load Balancer az IPv4-és IPv6-végpontok a-vel `get-AzpublicIpAddress`való használatát.
+Az erőforráscsoport összes hálózati adapter-objektumának beolvasása a központi telepítésben használt IP-cím `get-AzNetworkInterface` értékkel való összefoglalásához. Emellett szerezze be az IPv4-és IPv6-végpontok Load Balancer az `get-AzpublicIpAddress` értékkel.
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -364,7 +364,7 @@ Az alábbi ábrán egy minta kimenet látható, amely felsorolja a két virtuál
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>IPv6-alapú kettős verem virtuális hálózatának megtekintése Azure Portal
 Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti meg Azure Portalban:
 1. A portál keresési sávján adja meg a *dsVnet*.
-2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **Áttekintés** lapját. A kettős verem virtuális hálózata két hálózati adaptert jelenít meg, amelyek IPv4-és IPv6-konfigurációval rendelkeznek, amelyek a *dsSubnet*nevű kettős verem alhálózatában találhatók.
+2. Ha a **dsVnet** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **Áttekintés** lapját. A kettős verem virtuális hálózata két hálózati adaptert jelenít meg, amelyek IPv4-és IPv6-konfigurációval rendelkeznek, amelyek a *dsSubnet*nevű kettős verem alhálózatában találhatók.
 
   ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
@@ -379,6 +379,6 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 Remove-AzResourceGroup -Name dsRG1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozta a standard Load Balancer egy kettős előtér-IP-konfigurációval (IPv4 és IPv6). Létrehozott két virtuális gépet is, amelyek a terheléselosztó háttér-készletéhez hozzáadott kettős IP-konfigurációval (IPV4 + IPv6) rendelkező hálózati adaptereket tartalmaznak. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

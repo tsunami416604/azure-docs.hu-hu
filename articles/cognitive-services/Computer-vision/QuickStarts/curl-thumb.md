@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Miniatűr létrehozása – REST, cURL'
+title: 'yRövid útmutató: Miniatűr létrehozása – REST, cURL'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és cURL használatával.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0d430f7c9a6e9d59b20cd1420b65f70d9c6994d5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 350bc95e08aa994e4cb70db6bf1f08d53bbec5a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141438"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177290"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: Miniatűr létrehozása a Computer Vision REST API és a cURL használatával
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a cURL használatával
 
 Ebben a rövid útmutatóban létrehoz egy miniatűrt a rendszerképből Computer Vision REST API használatával. Megadhatja a kívánt magasságot és szélességet, ami eltérő lehet a bemeneti kép oldalarányának arányában. A Computer Vision az intelligens levágás használatával intelligens módon azonosítja az érdeklődési területet, és az adott régió körüli koordinátákat állít elő.
 
@@ -38,7 +38,7 @@ A minta futtatásához az alábbi lépéseket kell végrehajtania:
 1. Másolja az alábbi kódot egy szerkesztőbe.
 1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
 1. A `<File>` helyére írja be a miniatűr mentési útvonalát és fájlnevét.
-1. Ha szükséges, változtassa meg a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) arra a címre, ahonnan beszerezte az előfizetési kulcsot.
+1. Ha szükséges, változtassa meg a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) arra a címre, ahonnan beszerezte az előfizetési kulcsot.
 1. Az elemezni kívánt képet (`{\"url\":\"...`) is módosíthatja.
 1. Nyisson meg egy parancssorablakot egy számítógépen, amelyen a cURL telepítve van.
 1. Másolja be a kódot, és futtassa a parancsot.
@@ -54,21 +54,21 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Hajtsa végre a következő módosításokat a parancs megfelelő területein:
     1. Cserélje le a `<subscriptionKey>` értéket az előfizetői azonosítóra.
     1. Cserélj le az `<thumbnailFile>` értékét azon fájl útvonalára és nevére, amelyben menteni szeretné a miniatűrt.
-    1. Cserélje le a kérelem URL-címének (`westcentralus`) első részét a saját végpont URL-címében található szövegre.
+    1. Cserélje le a kérelem URL-címének első részét (`westcentralus`) a saját végpont URL-címében szereplő szövegre.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Igény szerint cserélje a kép URL-címét a kérelem törzsében (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) egy másik olyan kép URL-címére, amelyből miniatűrt szeretne létrehozni.
 1. Nyisson meg egy parancssort.
 1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
     ```bash
-    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
+    curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
     ```
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
 A sikeres válasz a(z) `<thumbnailFile>` helyen megszabott fájlba írja a miniatűrt. Ha a kérés meghiúsul, a válasz tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát. Ha a kérelem sikeresnek tűnik, de a létrehozott miniatűr nem érvényes képfájl, előfordulhat, hogy az előfizetési kulcs érvénytelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedjen meg a Computer Vision APIával, hogyan elemezheti a rendszerképeket, azonosíthatja a hírességeket és tereptárgyait, miniatűrt hozhat létre, és kinyerheti a nyomtatott és a kézzel írott A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

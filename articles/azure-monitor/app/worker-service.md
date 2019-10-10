@@ -3,7 +3,7 @@ title: A Worker Service-alkalmazások Application Insights (nem HTTP-alkalmazás
 description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Application Insights használatával.
 services: application-insights
 documentationcenter: .net
-author: cithomas
+author: cijothomas
 manager: carmonm
 ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: cithomas
-ms.openlocfilehash: 2b92b58b75389f84f1ea18c6d48538c343a13212
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 2185f5b0c4148e643e90741235054fd06fdbb151
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337963"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174615"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
-A Application Insights egy új SDK `Microsoft.ApplicationInsights.WorkerService`-t szabadít fel, amely a legalkalmasabb a nem HTTP-alapú számítási feladatokhoz, például az üzenetküldéshez, a háttérbeli feladatokhoz, a konzol alkalmazásaihoz stb. Az ilyen típusú alkalmazások nem rendelkeznek olyan bejövő HTTP-kérések fogalmával, mint a hagyományos ASP.NET/ASP.NET Core-webalkalmazások, és így Application Insights csomagok használata [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) alkalmazásokhoz nem támogatott.
+Application Insights egy `Microsoft.ApplicationInsights.WorkerService` nevű új SDK kiadása, amely a legmegfelelőbb a nem HTTP-alapú számítási feladatokhoz, például az üzenetküldéshez, a háttérbeli feladatokhoz, a konzol alkalmazásaihoz stb. Az ilyen típusú alkalmazások nem rendelkeznek olyan bejövő HTTP-kérések fogalmával, mint a hagyományos ASP.NET/ASP.NET Core-webalkalmazások, és így Application Insights csomagok használata [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) alkalmazásokhoz nem támogatott.
 
-Az új SDK önmagában nem végez telemetria-gyűjteményt. Ehelyett más jól ismert Application Insights automatikus gyűjtők, például a [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), a [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), a [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) stb. Ez az SDK a telemetria-gyűjtés `IServiceCollection` engedélyezéséhez és konfigurálásához a bővítmények metódusait teszi elérhetővé.
+Az új SDK önmagában nem végez telemetria-gyűjteményt. Ehelyett más jól ismert Application Insights automatikus gyűjtők, például a [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), a [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), a [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) stb. Ez az SDK az telemetria-gyűjtemény engedélyezéséhez és konfigurálásához `IServiceCollection` bővítményi metódusokat tesz elérhetővé.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -44,9 +44,9 @@ Az [Application INSIGHTS SDK for Worker szolgáltatás](https://www.nuget.org/pa
     </ItemGroup>
 ```
 
-1. A `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` bővítmény metódusának `IServiceCollection`meghívása a alkalmazásban, amely a kialakítási kulcsot adja meg. Ezt a metódust az alkalmazás elején kell meghívni. A pontos hely az alkalmazás típusától függ.
+1. Hívja meg `AddApplicationInsightsTelemetryWorkerService(string instrumentationKey)` kiterjesztési módszert `IServiceCollection`-re, amely megadja a kialakítási kulcsot. Ezt a metódust az alkalmazás elején kell meghívni. A pontos hely az alkalmazás típusától függ.
 
-1. Egy példány `ILogger` vagy `TelemetryClient` egy példány beolvasása a függőségi injektálási (di) `serviceProvider.GetRequiredService<TelemetryClient>();` tárolóból a konstruktor befecskendezésének meghívásával vagy használatával. Ez a lépés elindítja a és az `TelemetryConfiguration` automatikus gyűjtési modulok beállítását.
+1. @No__t-0 példány vagy `TelemetryClient` példány beolvasása a függőségi injektálási (DI) tárolóból a `serviceProvider.GetRequiredService<TelemetryClient>();` hívásával vagy a konstruktor injekciójának használatával. Ez a lépés a `TelemetryConfiguration` és az automatikus gyűjtési modulok beállítását indítja el.
 
 Az egyes alkalmazási típusok részletes ismertetését a következő szakaszokban találja.
 
@@ -55,10 +55,10 @@ Az egyes alkalmazási típusok részletes ismertetését a következő szakaszok
 A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) van megosztva
 
 1. A [.net Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0) letöltése és telepítése
-2. Új feldolgozói szolgáltatási projekt létrehozása a Visual Studio új projekt sablonjának vagy parancssorának használatával`dotnet new worker`
+2. Hozzon létre egy új feldolgozói szolgáltatást a Visual Studio új projekt sablonjának használatával vagy a parancssorból `dotnet new worker`
 3. Telepítse a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
 
-4. Adja `services.AddApplicationInsightsTelemetryWorkerService();` hozzá a `CreateHostBuilder()` metódust `Program.cs` az osztályban, ahogy az alábbi példában is látható:
+4. Adja hozzá a `services.AddApplicationInsightsTelemetryWorkerService();` értéket a `CreateHostBuilder()` metódushoz a `Program.cs` osztályban, ahogy az alábbi példában látható:
 
 ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -70,7 +70,7 @@ A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree
             });
 ```
 
-5. Módosítsa az `Worker.cs` alább látható példaként.
+5. Módosítsa a `Worker.cs` értéket az alábbi példa szerint.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -98,9 +98,9 @@ A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree
                 {
                     _logger.LogWarning("A sample warning message. By default, logs with severity Warning or higher is captured by Application Insights");
                     _logger.LogInformation("Calling bing.com");
-                    var res = await httpClient.GetAsync("https://bing.com");
+                    var res = await _httpClient.GetAsync("https://bing.com");
                     _logger.LogInformation("Calling bing completed with status:" + res.StatusCode);
-                    telemetryClient.TrackEvent("Bing call event completed");
+                    _telemetryClient.TrackEvent("Bing call event completed");
                 }
 
                 await Task.Delay(1000, stoppingToken);
@@ -111,7 +111,7 @@ A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree
 
 6. Állítsa be a kialakítási kulcsot.
 
-    Bár a kialakítási kulcsot argumentumként `AddApplicationInsightsTelemetryWorkerService`is megadhatja, javasoljuk, hogy adja meg a kialakítási kulcsot a konfigurációban. Az alábbi mintakód bemutatja, hogyan adható meg a kialakítási kulcs a `appsettings.json`alkalmazásban. Győződjön meg `appsettings.json` arról, hogy a közzététel során a rendszer átmásolja az alkalmazás gyökerének mappájába.
+    Bár a kialakítási kulcsot `AddApplicationInsightsTelemetryWorkerService` argumentumként is megadhatja, javasoljuk, hogy adja meg a kialakítási kulcsot a konfigurációban. A következő mintakód bemutatja, hogyan adható meg a kialakítási kulcs a `appsettings.json` értékben. Győződjön meg arról, hogy a közzététel során a rendszer átmásolja a `appsettings.json` értéket az alkalmazás gyökérkönyvtár mappájába.
 
 ```json
     {
@@ -133,12 +133,12 @@ Azt is megteheti, hogy a kialakítási kulcsot a következő környezeti változ
 `APPINSIGHTS_INSTRUMENTATIONKEY` vagy `ApplicationInsights:InstrumentationKey`
 
 Például:`SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
-VAGY`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
+VAGY @no__t – 0
 
-`APPINSIGHTS_INSTRUMENTATIONKEY` Általában meghatározza a rendszerállapot-kulcsot a webes feladatokhoz Web Apps központilag telepített alkalmazásokhoz.
+A `APPINSIGHTS_INSTRUMENTATIONKEY` érték általában meghatározza a rendszerállapot-kulcsot, amelyet a rendszer a webes feladatokhoz Web Apps üzembe helyezett alkalmazások számára biztosít.
 
 > [!NOTE]
-> A kód WINS-ben megadott rendszerállapot-kulcs a környezeti `APPINSIGHTS_INSTRUMENTATIONKEY`változón keresztül, amely más beállításokon keresztül nyerhető.
+> A kód WINS-ben megadott rendszerállapot-kulcs a `APPINSIGHTS_INSTRUMENTATIONKEY` környezeti változón keresztül, amely más beállításokon keresztül nyerhető.
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>Az üzemeltetett szolgáltatásokkal ASP.NET Core háttérbeli feladatok
 [Ez a](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&tabs=visual-studio) dokumentum ismerteti, hogyan hozhat létre háttérbeli feladatokat ASP.net Core 2.1/2.2 alkalmazásban.
@@ -146,7 +146,7 @@ VAGY`SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) van megosztva
 
 1. Telepítse a Microsoft. ApplicationInsights. WorkerService (https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
-2. Adja `services.AddApplicationInsightsTelemetryWorkerService();` hozzá a `ConfigureServices()` metódushoz az alábbi példában látható módon:
+2. Adja hozzá a `services.AddApplicationInsightsTelemetryWorkerService();` értéket a `ConfigureServices()` metódushoz, az alábbi példában látható módon:
 
 ```csharp
     public static async Task Main(string[] args)
@@ -178,7 +178,7 @@ A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree
     }
 ```
 
-A következő kód `TimedHostedService` a háttérben futó feladat logikájának helye.
+Az alábbi kód `TimedHostedService`, ahol a háttérben futó feladat logikája található.
 
 ```csharp
     using Microsoft.ApplicationInsights;
@@ -224,11 +224,11 @@ A következő kód `TimedHostedService` a háttérben futó feladat logikájána
 ```
 
 3. Állítsa be a kialakítási kulcsot.
-   A fenti példában `appsettings.json` szereplő .net Core 3,0 Worker Service-példa használatával.
+   Ugyanazt a `appsettings.json` értéket használja a .NET Core 3,0 Worker szolgáltatás fenti példája alapján.
 
 ## <a name="net-corenet-framework-console-application"></a>.NET Core/. NET Framework Console-alkalmazás
 
-A cikk elején említettek szerint az új csomag lehetővé teszi, hogy a Application Insights Telemetria akár egy normál konzolos alkalmazásból is engedélyezzék. Ez a csomag [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)célja, és így a .net Core 2,0-as vagy újabb verziójú konzolos alkalmazásokhoz, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziójához is használható.
+A cikk elején említettek szerint az új csomag lehetővé teszi, hogy a Application Insights Telemetria akár egy normál konzolos alkalmazásból is engedélyezzék. Ez a csomag a [`NetStandard2.0`-](https://docs.microsoft.com/dotnet/standard/net-standard)et célozza meg, így a .net Core 2,0-as vagy újabb verziójában, illetve a .NET-keretrendszer 4.7.2 vagy újabb verziójához is használható.
 
 A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) van megosztva
 
@@ -295,13 +295,13 @@ A teljes példa [itt](https://github.com/microsoft/ApplicationInsights-Home/tree
     }
 ```
 
-Ez a konzolszoftver ugyanazokat az alapértelmezett beállításokat `TelemetryConfiguration`használja, és a korábbi szakaszban található példákkal megegyező módon is testreszabható.
+Ez a konzolos alkalmazás ugyanazt az alapértelmezett `TelemetryConfiguration` értéket használja, és a korábbi szakaszban található példákkal megegyező módon testreszabható.
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást. A fentiekben ismertetett feldolgozók a http-hívást másodpercenként bing.com, és néhány naplót is kibocsátanak a ILogger használatával. Ezek a sorok a `StartOperation` `TelemetryClient`hívásával vannak becsomagolva, amely egy művelet létrehozására szolgál (ebben a példában `RequestTelemetry` a "művelet"). A Application Insights összegyűjti ezeket a ILogger-naplókat (alapértelmezés szerint a figyelmeztetést) és a függőségeket, és `RequestTelemetry` a szülő-gyermek kapcsolattal együtt lesznek összekapcsolva. A korreláció a folyamat/hálózat határán is működik. Ha például a hívás egy másik figyelt összetevőre történt, akkor a rendszer ezt a szülővel is összefügg.
+Futtassa az alkalmazást. A fentiekben ismertetett feldolgozók a http-hívást másodpercenként bing.com, és néhány naplót is kibocsátanak a ILogger használatával. Ezek a sorok a `TelemetryClient` `StartOperation` hívására vannak becsomagolva, amely egy művelet létrehozására szolgál (ebben a példában a "művelet" nevű @no__t 2.). Application Insights gyűjti ezeket a ILogger-naplókat (alapértelmezés szerint a figyelmeztetést) és a függőségeket, és a `RequestTelemetry` szülő-gyermek kapcsolattal lesznek összekapcsolva. A korreláció a folyamat/hálózat határán is működik. Ha például a hívás egy másik figyelt összetevőre történt, akkor a rendszer ezt a szülővel is összefügg.
 
-Ez az egyéni művelet `RequestTelemetry` azt is megteheti, hogy egy tipikus webalkalmazásban egy bejövő webes kérelem megfelelője. Habár nem szükséges egy művelet használata, a legjobban megfelel a [Application Insights korrelációs adatmodellnek](https://docs.microsoft.com/azure/azure-monitor/app/correlation) – a szülő műveletként való `RequestTelemetry` működéssel, és minden, a munkavégző iteráción belül létrehozott telemetria logikai módon kezelik. ugyanahhoz a művelethez tartozó. Ez a megközelítés azt is biztosítja, hogy az összes generált telemetria (automatikus és manuális) `operation_id`ugyanaz legyen. A mintavételezés alapján a `operation_id`mintavételezési algoritmus vagy az összes telemetria egyetlen iterációból tartja vagy eldobja.
+A `RequestTelemetry` egyéni művelete a beérkező webes kérelmek megfelelőnek tekinthető egy tipikus webalkalmazásban. Habár nem szükséges egy művelet használata, az [Application Insights korrelációs adatmodellhez](https://docs.microsoft.com/azure/azure-monitor/app/correlation) legjobban illeszkedik, és a `RequestTelemetry` a szülő műveletként működik, és minden telemetria, amely a feldolgozói iteráción belül jön létre logikailag ugyanarra a műveletre. Ez a megközelítés azt is biztosítja, hogy az összes generált telemetria (automatikus és manuális) ugyanaz lesz `operation_id`. Mivel a mintavételezés @no__t – 0, a mintavételezési algoritmus vagy az összes telemetria egyetlen iterációból tartja vagy eldobja.
 
 Az alábbi listában a Application Insights által automatikusan összegyűjtött teljes telemetria szerepelnek.
 
@@ -311,7 +311,7 @@ Az [élő metrikák](https://docs.microsoft.com/azure/application-insights/app-i
 
 ### <a name="ilogger-logs"></a>ILogger-naplók
 
-A súlyosság `ILogger` `Warning` vagy a nagyobb arány használatával kibocsátott naplók automatikusan rögzítésre kerülnek. A [ILogger-dokumentumok](ilogger.md#control-logging-level) követésével testreszabhatja, hogy a Application Insights mely naplózási szinteket rögzíti.
+A `ILogger` súlyosságú, `Warning` vagy nagyobb súlyosságú naplók automatikusan rögzítésre kerülnek. A [ILogger-dokumentumok](ilogger.md#control-logging-level) követésével testreszabhatja, hogy a Application Insights mely naplózási szinteket rögzíti.
 
 ### <a name="dependencies"></a>Függőségek
 
@@ -319,24 +319,24 @@ A függőségi gyűjtemény alapértelmezés szerint engedélyezve van. [Ez](asp
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule`Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3,0-alkalmazásokból gyűjti össze a számlálók alapértelmezett készletét. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
+a `EventCounterCollectionModule` alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3,0-alkalmazásokból gyűjti össze a számlálók alapértelmezett készletét. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
 
 ### <a name="manually-tracking-additional-telemetry"></a>További telemetria manuális követése
 
-Habár az SDK automatikusan gyűjti a telemetria a fentiekben leírtak szerint, a legtöbb esetben a felhasználónak további telemetria kell küldenie Application Insights szolgáltatásnak. A további telemetria követésének ajánlott módja a függőségi befecskendezésből `TelemetryClient` származó példány beszerzése, majd az egyik támogatott [](api-custom-events-metrics.md) `TrackXXX()` API-módszer meghívása. Egy másik tipikus használati eset a [műveletek egyéni nyomon követése](custom-operations-tracking.md). Ezt a megközelítést a fenti feldolgozói példákban mutatjuk be.
+Habár az SDK automatikusan gyűjti a telemetria a fentiekben leírtak szerint, a legtöbb esetben a felhasználónak további telemetria kell küldenie Application Insights szolgáltatásnak. Az ajánlott módszer a további telemetria nyomon követésére: `TelemetryClient` példányának beszerzése a függőségi Injektálásból, majd az egyik támogatott `TrackXXX()` [API](api-custom-events-metrics.md) -módszer meghívása. Egy másik tipikus használati eset a [műveletek egyéni nyomon követése](custom-operations-tracking.md). Ezt a megközelítést a fenti feldolgozói példákban mutatjuk be.
 
 ## <a name="configure-the-application-insights-sdk"></a>A Application Insights SDK konfigurálása
 
-A Worker Service SDK alapértelmezés `TelemetryConfiguration` szerint a ASP.net-ben vagy ASP.net Core alkalmazásban használt automatikus konfigurációhoz hasonlít, mínusz a telemetria a-ból `HttpContext`való dúsításához használt TelemetryInitializers.
+A Worker Service SDK által használt alapértelmezett @no__t – 0 a ASP.NET vagy a ASP.NET Core alkalmazásban használt automatikus konfigurációhoz hasonlít, mínusz a telemetria a `HttpContext`-ből való dúsításához használt TelemetryInitializers.
 
-Testreszabhatja a Application Insights SDK for Worker szolgáltatást az alapértelmezett konfiguráció módosításához. Előfordulhat, hogy a Application Insights ASP.NET Core SDK felhasználói megismerik a konfiguráció módosítását ASP.NET Core beépített [függőségi befecskendezés](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)használatával. A WorkerService SDK is hasonló alapelveken alapul. A szakaszban ismertetett megfelelő `ConfigureServices()` `IServiceCollection`módszerek meghívásával szinte minden konfigurációs változást megtehet a szakaszon.
+Testreszabhatja a Application Insights SDK for Worker szolgáltatást az alapértelmezett konfiguráció módosításához. Előfordulhat, hogy a Application Insights ASP.NET Core SDK felhasználói megismerik a konfiguráció módosítását ASP.NET Core beépített [függőségi befecskendezés](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)használatával. A WorkerService SDK is hasonló alapelveken alapul. A `ConfigureServices()` szakaszban szinte minden konfigurációs módosítást megtehet úgy, hogy a megfelelő metódusokat hívja meg `IServiceCollection`-re az alább részletezett módon.
 
 > [!NOTE]
-> Az SDK használatakor a konfiguráció `TelemetryConfiguration.Active` módosításának módosítása nem támogatott, és a módosítások nem fognak megjelenni.
+> Az SDK használatakor a konfiguráció módosítása a `TelemetryConfiguration.Active` módosításával nem támogatott, és a módosítások nem fognak megjelenni.
 
 ### <a name="using-applicationinsightsserviceoptions"></a>A ApplicationInsightsServiceOptions használata
 
-A következő példához hasonlóan módosíthat néhány gyakori beállítást `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService`, ahogy az alábbi példában is látható:
+A `ApplicationInsightsServiceOptions` `AddApplicationInsightsTelemetryWorkerService` értékre való átadásával módosítható néhány gyakori beállítás, ahogy az alábbi példában látható:
 
 ```csharp
     using Microsoft.ApplicationInsights.WorkerService;
@@ -354,20 +354,20 @@ A következő példához hasonlóan módosíthat néhány gyakori beállítást 
     }
 ```
 
-Vegye figyelembe `ApplicationInsightsServiceOptions` , hogy ebben az SDK-ban `Microsoft.ApplicationInsights.WorkerService` a ASP.net Core SDK- `Microsoft.ApplicationInsights.AspNetCore.Extensions` ban lévő névtérben található.
+Vegye figyelembe, hogy a `ApplicationInsightsServiceOptions` ebben az SDK-ban a `Microsoft.ApplicationInsights.WorkerService` névtérben található, az ASP.NET Core SDK-ban `Microsoft.ApplicationInsights.AspNetCore.Extensions` helyett.
 
-Leggyakrabban használt beállítások a`ApplicationInsightsServiceOptions`
+Gyakran használt beállítások a @no__tban – 0
 
 |Beállítás | Leírás | Alapértelmezett
 |---------------|-------|-------
-|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | true
-|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | true
-|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | true
-|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | true
+|EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
+|EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz
+|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
+|AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | igaz
 
-A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a konfigurálható beállításokat](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
+A legnaprakészebb listához tekintse [meg a `ApplicationInsightsServiceOptions` konfigurálható beállításait](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
-### <a name="sampling"></a>Mintavételezés
+### <a name="sampling"></a>Mintavétel
 
 Az Application Insights SDK for Worker szolgáltatás a rögzített sebességű és az adaptív mintavételezést is támogatja. Az adaptív mintavételezés alapértelmezés szerint engedélyezve van. A munkavégző szolgáltatás mintavételezésének konfigurálása ugyanúgy történik, mint [ASP.net Core alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/sampling#configuring-adaptive-sampling-for-aspnet-core-applications).
 
@@ -375,7 +375,7 @@ Az Application Insights SDK for Worker szolgáltatás a rögzített sebességű 
 
 Használjon [telemetria-inicializálást](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer) , ha az összes telemetria ellátott tulajdonságokat szeretné megadni.
 
-Vegyen fel `TelemetryInitializer` minden újat `DependencyInjection` a tárolóba, és az SDK automatikusan hozzáadja `TelemetryConfiguration`őket a-hoz.
+Vegyen fel minden új `TelemetryInitializer` értéket a `DependencyInjection` tárolóba, és az SDK automatikusan hozzáadja őket a `TelemetryConfiguration`-hez.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
@@ -389,7 +389,7 @@ Vegyen fel `TelemetryInitializer` minden újat `DependencyInjection` a tárolób
 
 ### <a name="removing-telemetryinitializers"></a>TelemetryInitializers eltávolítása
 
-A telemetria inicializálók alapértelmezés szerint jelennek meg. Az összes vagy adott telemetria-inicializáló eltávolításához használja a következő mintát a hívása `AddApplicationInsightsTelemetryWorkerService()`után.
+A telemetria inicializálók alapértelmezés szerint jelennek meg. Az összes vagy adott telemetria-inicializáló eltávolításához használja az alábbi mintát a `AddApplicationInsightsTelemetryWorkerService()` hívása *után* .
 
 ```csharp
    public void ConfigureServices(IServiceCollection services)
@@ -411,7 +411,7 @@ A telemetria inicializálók alapértelmezés szerint jelennek meg. Az összes v
 
 ### <a name="adding-telemetry-processors"></a>Telemetria-processzorok hozzáadása
 
-Egyéni telemetria- `TelemetryConfiguration` processzorokat a bővítmény `IServiceCollection`metódusának `AddApplicationInsightsTelemetryProcessor` használatával adhat hozzá. A telemetria processzorok [speciális szűrési forgatókönyvekben](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) való használata lehetővé teszi, hogy a Application Insights a szolgáltatásnak küldött, a telemetria által befoglalt vagy kizárni kívánt funkciók jobban átirányíthatók legyenek. Használja az alábbi példát.
+Az `TelemetryConfiguration` kiterjesztési metódussal adhat hozzá egyéni telemetria-processzorokat a `IServiceCollection` `AddApplicationInsightsTelemetryProcessor` kiterjesztési módszer használatával. A telemetria processzorok [speciális szűrési forgatókönyvekben](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#filtering-itelemetryprocessor) való használata lehetővé teszi, hogy a Application Insights a szolgáltatásnak küldött, a telemetria által befoglalt vagy kizárni kívánt funkciók jobban átirányíthatók legyenek. Használja az alábbi példát.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -435,7 +435,7 @@ A következő automatikus gyűjtési modulok alapértelmezés szerint engedélye
 * `AppServicesHeartbeatTelemetryModule`
 * `AzureInstanceMetadataTelemetryModule`
 
-Az alapértelmezett beállítások `TelemetryModule`konfigurálásához használja a bővítmény `IServiceCollection`metódusát `ConfigureTelemetryModule<T>` a következő példában látható módon:.
+Az alapértelmezett `TelemetryModule` beállításához használja a `IServiceCollection` kiterjesztési metódusát `ConfigureTelemetryModule<T>` értékkel, az alábbi példában látható módon.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
@@ -465,7 +465,7 @@ Az alapértelmezett beállítások `TelemetryModule`konfigurálásához használ
 
 ### <a name="configuring-telemetry-channel"></a>Telemetria-csatorna konfigurálása
 
-Az alapértelmezett csatorna `ServerTelemetryChannel`:. A következő példában látható módon felülbírálhatja azt.
+Az alapértelmezett csatorna `ServerTelemetryChannel`. A következő példában látható módon felülbírálhatja azt.
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -482,7 +482,7 @@ using Microsoft.ApplicationInsights.Channel;
 
 ### <a name="disable-telemetry-dynamically"></a>Telemetria dinamikus letiltása
 
-Ha a telemetria feltételesen és dinamikusan szeretné letiltani, akkor `TelemetryConfiguration` előfordulhat, hogy a kódban bárhol feloldja a példányt ASP.net Core függőségi `DisableTelemetry` injektálási tárolóval, és beállítja a jelölőt.
+Ha a telemetria feltételesen és dinamikusan szeretné letiltani, akkor feloldható `TelemetryConfiguration` példány ASP.NET Core függőségi injektálási tárolóval bárhol a kódban, és az `DisableTelemetry` jelzőt is beállíthatja.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -501,7 +501,7 @@ Ha a telemetria feltételesen és dinamikusan szeretné letiltani, akkor `Teleme
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hogyan követhetem nyomon az automatikusan összegyűjtött telemetria?
 
-Szerezzen be egy `TelemetryClient` példányt a konstruktor injekció használatával, és hívja meg a `TrackXXX()` szükséges metódust. Nem ajánlott új `TelemetryClient` példányokat létrehozni. Az egy példánya `TelemetryClient` már regisztrálva van a `DependencyInjection` tárolóban, amely `TelemetryConfiguration` a többi telemetria együtt osztozik. Az új `TelemetryClient` példányok létrehozása csak akkor javasolt, ha olyan konfigurációra van szükség, amely eltér a többi telemetria.
+Szerezze be a `TelemetryClient` egy példányát a konstruktor injekciójának használatával, és hívja meg a szükséges `TrackXXX()` metódust. Nem javasoljuk, hogy hozzon létre új `TelemetryClient` példányt. A `TelemetryClient` egyedi példánya már regisztrálva van a `DependencyInjection` tárolóban, amely a `TelemetryConfiguration` megosztást a telemetria többi részével osztja meg. Egy új `TelemetryClient` példány létrehozása csak akkor ajánlott, ha a többi telemetria eltérő konfigurációra van szükség.
 
 ### <a name="can-i-use-visual-studio-ide-to-onboard-application-insights-to-a-worker-service-project"></a>Használhatom a Visual Studio IDE-t a Application Insights bevezetésére a Worker Service-projektbe?
 
@@ -516,7 +516,7 @@ Nem. A [Állapotmonitor](https://docs.microsoft.com/azure/azure-monitor/app/moni
 Igen. Az SDK funkcióinak támogatása minden platformon azonos, a következő kivételekkel:
 
 * A teljesítményszámlálók csak a Windows rendszerben támogatottak, az élő metrikák által megjelenített processzor/memória kivételével.
-* Annak ellenére `ServerTelemetryChannel` , hogy alapértelmezés szerint engedélyezve van, ha az alkalmazás Linux vagy MacOS rendszeren fut, a csatorna nem hoz létre automatikusan helyi tárolási mappát, hogy a telemetria átmenetileg megmaradjanak, ha hálózati problémák vannak. Ennek a korlátozásnak a miatt a telemetria elvész, ha ideiglenes hálózati vagy kiszolgálói problémák merülnek fel. A probléma megkerüléséhez konfigurálja a csatorna helyi mappáját:
+* Bár a `ServerTelemetryChannel` beállítás alapértelmezés szerint engedélyezve van, ha az alkalmazás Linux vagy MacOS rendszeren fut, a csatorna nem hoz létre automatikusan helyi tárolási mappát, hogy a telemetria átmenetileg megmaradjanak, ha hálózati problémák vannak. Ennek a korlátozásnak a miatt a telemetria elvész, ha ideiglenes hálózati vagy kiszolgálói problémák merülnek fel. A probléma megkerüléséhez konfigurálja a csatorna helyi mappáját:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -542,11 +542,11 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.Net Core 3,0 Worker szolgáltatás](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Akkor használja ezt a mintát, ha a .NET Core 3,0 Worker szolgáltatásalkalmazás az [alábbi](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-3.0&tabs=visual-studio#worker-service-template) hivatalos útmutatás szerint van
 
-## <a name="open-source-sdk"></a>Open-source SDK
+## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 
 [Olvassa el és járuljon hozzá a kódhoz](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az API használatával](../../azure-monitor/app/api-custom-events-metrics.md) saját eseményeket és mérőszámokat küldhet az alkalmazás teljesítményének és használatának részletes áttekintéséhez.
 * A [további függőségek nyomon követése nem történik meg automatikusan](../../azure-monitor/app/auto-collect-dependencies.md).

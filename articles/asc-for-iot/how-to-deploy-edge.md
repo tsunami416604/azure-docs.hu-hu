@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299705"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176660"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -48,7 +48,7 @@ A következő lépésekkel telepítheti a IoT Edge IoT biztonsági moduljának A
     - A naplózott ellenőrzés aktív a következő parancs futtatásával: 
    
     `sudo systemctl status auditd`<br>
-    - A várt válasz:`active (running)` 
+    - Várt válasz: `active (running)` 
         
 
 ### <a name="deployment-using-azure-portal"></a>Üzembe helyezés Azure Portal használatával
@@ -66,11 +66,11 @@ A következő lépésekkel telepítheti a IoT Edge IoT biztonsági moduljának A
     >[!Note] 
     >Ha a **központi telepítés méretezése**lehetőséget választotta, adja hozzá az eszköz nevét és részleteit, mielőtt továbblép a **modulok hozzáadása** lapra az alábbi utasításokban.     
 
-A IoT számára három lépésben hozhat létre IoT Edge központi Azure Security Center telepítést. A következő szakaszok egyenként végig. 
+A IoT számára három lépésben hozhat létre IoT Edge központi Azure Security Center telepítést. A következő szakasz végigvezeti a műveletet. 
 
-#### <a name="step-1-add-modules"></a>1\. lépés: Modulok hozzáadása
+#### <a name="step-1-add-modules"></a>1\. lépés: modulok hozzáadása
 
-1. A **modulok hozzáadása** lap **üzembe helyezési modulok** területén kattintson a **AzureSecurityCenterforIoT**elemre. 
+1. A **modulok hozzáadása** lap **üzembe helyezési modulok** területén kattintson a AzureSecurityCenterforIoT **beállítására** . 
    
 1. Módosítsa a **nevet** a **azureiotsecurity**értékre.
 1. Módosítsa a **rendszerkép URI-ját** a **MCR.microsoft.com/ascforiot/azureiotsecurity:1.0.0**értékre.
@@ -95,10 +95,13 @@ A IoT számára három lépésben hozhat létre IoT Edge központi Azure Securit
 1. Ellenőrizze, hogy be van-e jelölve a **Module Twin kívánt tulajdonságainak beállítása** elem, majd módosítsa a konfigurációs objektumot a következőre:
       
     ``` json
-    "desired": {
-        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-          } 
-        }
+    { 
+       "properties.desired":{ 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
+
+          }
+       }
+    }
     ```
 
 1. Kattintson a **Save** (Mentés) gombra.
@@ -110,33 +113,44 @@ A IoT számára három lépésben hozhat létre IoT Edge központi Azure Securit
          
     ``` json
     { 
-    "HostConfig":{
-                    "PortBindings":{
-                    "8883/tcp": [{"HostPort": "8883"}],
-                    "443/tcp": [{"HostPort": "443"}],
-                    "5671/tcp": [{"HostPort": "5671"}]
-                    }
-        }
+       "HostConfig":{ 
+          "PortBindings":{ 
+             "8883/tcp":[ 
+                { 
+                   "HostPort":"8883"
+                }
+             ],
+             "443/tcp":[ 
+                { 
+                   "HostPort":"443"
+                }
+             ],
+             "5671/tcp":[ 
+                { 
+                   "HostPort":"5671"
+                }
+             ]
+          }
+       }
     }
     ```
 1. Kattintson a **Save** (Mentés) gombra.
    
 1. Kattintson a **Tovább** gombra.
 
-#### <a name="step-2-specify-routes"></a>2\. lépés: Útvonalak megadása 
+#### <a name="step-2-specify-routes"></a>2\. lépés: útvonalak meghatározása 
 
-1. Az **útvonalak meghatározása** lapon győződjön meg arról, hogy van olyan útvonala (explicit vagy implicit), amely továbbítja az üzeneteket a **azureiotsecurity** modulból a **$upstreamra**. 
-1. Kattintson a **Tovább** gombra.
+1. Az **útvonalak meghatározása** lapon győződjön meg arról, hogy rendelkezik olyan útvonallal (explicit vagy implicit), amely az alábbi példáknak megfelelően továbbítja a **azureiotsecurity** modul üzeneteinek **$upstreamét** , csak ezután kattintson a **tovább**gombra. 
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+~~~Default implicit route
+"route": "FROM /messages/* INTO $upstream" 
+~~~
 
-    ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+~~~Explicit route
+"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+~~~
 
-#### <a name="step-3-review-deployment"></a>3\. lépés: Tekintse át a központi telepítés
+#### <a name="step-3-review-deployment"></a>3\. lépés: az üzembe helyezés áttekintése
 
 - A központi telepítés **áttekintése** lapon tekintse át a központi telepítési adatokat, majd a telepítés befejezéséhez válassza a **Submit (Küldés** ) lehetőséget.
 
@@ -152,7 +166,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
    
-   | Name (Név) | LEMEZKÉP |
+   | Név | LEMEZKÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
@@ -168,7 +182,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációs beállításokkal kapcsolatos további információkért folytassa a modul konfigurálásának útmutatójában. 
 > [!div class="nextstepaction"]

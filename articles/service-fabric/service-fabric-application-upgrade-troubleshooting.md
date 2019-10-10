@@ -1,6 +1,6 @@
 ---
-title: Alkalmazásfrissítések hibaelhárítása |} A Microsoft Docs
-description: Ez a cikk néhány olyan gyakori problémát körül frissítése a Service Fabric-alkalmazások és azok megoldását ismerteti.
+title: Alkalmazások frissítéseinek hibaelhárítása | Microsoft Docs
+description: Ez a cikk a Service Fabric-alkalmazások frissítésével és megoldásával kapcsolatos gyakori problémákat ismerteti.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e393eb92e11dc8dc296f1dc5f1c0036566c285c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: f5df528c7e46a5cb2a5df98f0088a451eb08cd6a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60616020"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167538"
 ---
-# <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
+# <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítési hibák elhárítása
 
-Ez a cikk ismerteti a gyakori problémák körül frissítése az Azure Service Fabric-alkalmazás és azok megoldását.
+Ez a cikk az Azure Service Fabric-alkalmazások frissítésével és megoldásával kapcsolatos gyakori problémákat ismerteti.
 
-## <a name="troubleshoot-a-failed-application-upgrade"></a>Egy sikertelen alkalmazásfrissítés hibaelhárítása
+## <a name="troubleshoot-a-failed-application-upgrade"></a>Sikertelen alkalmazások frissítésének hibáinak megoldása
 
-Ha egy frissítés sikertelen, a kimenetét a **Get-ServiceFabricApplicationUpgrade** parancsot a hibakereséshez a hiba további információkat tartalmaz.  Az alábbi listában határozza meg, hogyan használható a további információk:
+Ha egy frissítés meghiúsul, a **Get-ServiceFabricApplicationUpgrade** parancs kimenete további információkat tartalmaz a hiba hibakereséséhez.  A következő lista meghatározza a további információk használatát:
 
 1. Azonosítsa a hiba típusát.
-2. A hiba okának azonosításához.
-3. Különítse el a további vizsgálat egy vagy több hibás összetevőt.
+2. Azonosítsa a hiba okát.
+3. Egy vagy több hibás összetevő elkülönítése a további vizsgálathoz.
 
-Ez az információ érhető el, amikor a Service Fabric észleli a hibát, függetlenül attól, hogy a **FailureAction** állítja vissza, vagy a frissítés felfüggesztése.
+Ezek az információk akkor érhetők el, ha a Service Fabric észleli a hibát, függetlenül attól, hogy a **FailureAction** visszaállíthatja vagy felfüggesztheti a frissítést.
 
-### <a name="identify-the-failure-type"></a>Azonosítsa a hiba típusa
+### <a name="identify-the-failure-type"></a>A hiba típusának azonosítása
 
-A kimenetben az **Get-ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** időbélyegzőjének (UTC), amelyen egy frissítési hiba a Service Fabric észlelt azonosítja és  **FailureAction** lett elindítva. **FailureReason** azonosítja a hiba három lehetséges magas szintű okok egyike:
+A **Get-ServiceFabricApplicationUpgrade**kimenetében a **FailureTimestampUtc** azonosítja azt az időbélyeget (UTC), amelyen a Service Fabric és a **FailureAction** a frissítési hibát észlelte. A **FailureReason** a hiba három lehetséges magas szintű okának egyikét azonosítja:
 
-1. UpgradeDomainTimeout - azt jelzi, hogy az adott frissítési tartományban túl sokáig tartott, és **UpgradeDomainTimeout** lejárt.
-2. OverallUpgradeTimeout - azt jelzi, hogy a teljes frissítés túl sokáig tartott, és **UpgradeTimeout** lejárt.
-3. HealthCheck - azt jelzi, hogy egy frissítési tartományt a frissítés után az alkalmazás maradt a meghatározott házirendek szerint megfelelő és **HealthCheckRetryTimeout** lejárt.
+1. UpgradeDomainTimeout – azt jelzi, hogy egy adott frissítési tartomány túl sokáig tartott a befejezéshez és a **UpgradeDomainTimeout** lejárt.
+2. OverallUpgradeTimeout – azt jelzi, hogy a teljes frissítés túl sokáig tartott, és a **UpgradeTimeout** lejárt.
+3. HealthCheck – azt jelzi, hogy a frissítési tartomány frissítése után az alkalmazás nem megfelelő állapotú marad a megadott állapotházirendek és **HealthCheckRetryTimeout** szerint.
 
-Ezek a bejegyzések csak jelenik meg a kimenetet a frissítés sikertelen lesz, és elindítja a visszaállítása. További információk jelennek meg a hiba típusától függően.
+Ezek a bejegyzések csak akkor jelennek meg a kimenetben, ha a frissítés meghiúsul, és a rendszer elindítja a visszaállítást. A hiba típusától függően további információk jelennek meg.
 
-### <a name="investigate-upgrade-timeouts"></a>Vizsgálja meg a frissítés időtúllépése
+### <a name="investigate-upgrade-timeouts"></a>Frissítési időtúllépések vizsgálata
 
-Frissítse az időtúllépési hibákat leggyakrabban szolgáltatás rendelkezésre állási problémák okozzák. A bekezdés kimenete a frissítési tipikus ahol szolgáltatás replikák és példányok nem indulnak el az új verzióban kódot. A **UpgradeDomainProgressAtFailure** mező rögzíti a hiba idején függőben lévő frissítési munka pillanatképét.
+A frissítési időtúllépési hibák leggyakrabban a szolgáltatás rendelkezésre állásával kapcsolatos problémák okozzák. A bekezdést követő kimenet jellemző azokra a frissítésekre, amelyekben a szolgáltatás replikái vagy példányai nem indulnak el az új kód verziójában. A **UpgradeDomainProgressAtFailure** mező a hiba időpontjában rögzíti a függőben lévő frissítésre vonatkozó összes művelet pillanatképét.
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -85,19 +85,19 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-Ebben a példában a frissítés nem sikerült a frissítési tartomány *MYUD1* és a két partíció (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* és *4b43f4d8-b26b-424e-9307-7a7a62e79750*) is elakadt. A partíciók is elakadt, mert a modul nem tudott helyezze el az elsődleges replika (*WaitForPrimaryPlacement*) a célcsomópontokat *csomópont1* és *csomópont4*.
+Ebben a példában a frissítés nem sikerült a frissítési tartomány *MYUD1* , és a két partíció (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* és *4b43f4d8-b26b-424e-9307-7a7a62e79750*) beragadt. A partíciók elakadtak, mert a futtatókörnyezet nem tudta elsődleges replikákat (*WaitForPrimaryPlacement*) elhelyezni a *Csomópont1* és a *csomópont4*.
 
-A **Get-ServiceFabricNode** parancs is használható, és ellenőrizze, hogy a két csomópont a frissítési tartomány *MYUD1*. A *UpgradePhase* szerint *PostUpgradeSafetyCheck*, ami azt jelenti, hogy a biztonsági ellenőrzés után a frissítési tartomány összes csomópontjának frissítése is megjelenhetnek. Ez az információ az új verzióval, az alkalmazás kódja egy lehetséges hibát mutat. A leggyakoribb problémák a nyílt vagy promóciós kód elsődleges elérési utakhoz hibákat.
+A **Get-ServiceFabricNode** parancs használatával ellenőrizheti, hogy ez a két csomópont a frissítési tartomány *MYUD1*van-e. A *UpgradePhase* mondja a *PostUpgradeSafetyCheck*, ami azt jelenti, hogy ezek a biztonsági ellenőrzések a frissítési tartomány összes csomópontjának verziófrissítése után történnek. Az összes információ az alkalmazás kódjának új verziójával kapcsolatos lehetséges problémára mutat. A leggyakoribb problémák a megnyitási vagy előléptetési szolgáltatás hibái az elsődleges kód elérési útjain.
 
-Egy *UpgradePhase* , *PreUpgradeSafetyCheck* azt jelenti, hogy a problémák fel a frissítési tartomány előkészítése, mielőtt hajtotta végre. A leggyakoribb problémák ebben az esetben a zárja be vagy a lefokozási elsődleges kódhoz tartozó elérési út a hibákat.
+A *PreUpgradeSafetyCheck* *UpgradePhase* azt jelenti, hogy problémák léptek fel a frissítési tartomány előkészítése előtt. Ebben az esetben a leggyakoribb probléma az elsődleges kód elérési útjaiból való Bezárás vagy lefokozás során felmerülő szolgáltatási hibák.
 
-Az aktuális **UpgradeState** van *RollingBackCompleted*, ezért az eredeti frissítés kell hajtottak végre a visszaállítás **FailureAction**, amely automatikusan összesített biztonsági hiba esetén a frissítés. Ha az eredeti frissítés hajtottak végre a kézi **FailureAction**, majd a frissítés szeretné inkább kell felfüggesztett állapotban, hogy az élő Hibakeresés az alkalmazás.
+Az aktuális **UpgradeState** *RollingBackCompleted*, ezért az eredeti frissítést egy visszaállítási **FailureAction**kell végrehajtani, amely a hiba miatt automatikusan visszaállítja a frissítést. Ha az eredeti frissítést manuális **FailureAction**hajtották végre, a frissítés Ehelyett felfüggesztett állapotba kerül, hogy lehetővé tegye az alkalmazás élő hibakeresését.
 
-Ritka esetekben a **UpgradeDomainProgressAtFailure** mező üres, ha a teljes frissítés időkorlátja lejár, ugyanúgy, mint a rendszer kitölti a jelenlegi frissítési tartománya az összes munkahelyi is lehet. Ha ez történik, próbálja meg növelni a **UpgradeTimeout** és **UpgradeDomainTimeout** frissítse a paraméter értékét, és próbálkozzon újra a frissítést.
+Ritka esetekben előfordulhat, hogy a **UpgradeDomainProgressAtFailure** mező üres, ha a teljes frissítés időtúllépést okoz, ha a rendszer az aktuális frissítési tartomány összes munkafolyamatát befejezi. Ha ez történik, próbálja meg növelni a **UpgradeTimeout** és a **UpgradeDomainTimeout** frissítési paramétereinek értékét, majd próbálja megismételni a frissítést.
 
-### <a name="investigate-health-check-failures"></a>Állapot-ellenőrzés hibák vizsgálata
+### <a name="investigate-health-check-failures"></a>Állapot-ellenőrzési hibák vizsgálata
 
-Állapot ellenőrzése hibákat is elindítható a különböző problémákat, a frissítési tartomány összes csomópontjának frissítése és sikeres összes biztonsági ellenőrzés befejezése után folytatható. A bekezdés kimenete egy frissítési hiba miatt sikertelen állapot-ellenőrzések jellemző. A **UnhealthyEvaluations** mező rögzíti, amelyek nem sikerült a frissítés szerint a megadott időpontban állapot-ellenőrzések pillanatképét [állapotházirend](service-fabric-health-introduction.md).
+Az állapot-ellenőrzési hibák a frissítési tartomány összes csomópontjának frissítését és az összes biztonsági ellenőrzés átadását követően különböző problémák léphetnek fel. A bekezdést követő kimenet egy sikertelen állapot-ellenőrzés miatti frissítési hibára jellemző. A **nemmegfelelőállapotúértékelések** mező a frissítés időpontjában sikertelen állapot-ellenőrzéseket tartalmazó pillanatképet rögzít a megadott [állapotházirend](service-fabric-health-introduction.md)alapján.
 
 ```powershell
 Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -153,23 +153,23 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-Először állapotának ellenőrzése hibák kivizsgálása a Service Fabric állapotmodell ismeretét igényli. Azonban az ilyen közelebbről is megismerheti, nélkül is láthatjuk, hogy sérült állapotban-e két szolgáltatás: *fabric: / DemoApp/Svc3* és *fabric: / DemoApp/Svc2*, a hiba rendszerállapot-jelentések ("InjectedFault" együtt Ebben az esetben). Ebben a példában két kívüli négy szolgáltatások sérült állapotban, amely az alapértelmezett nem megfelelő állapotú 0 %-os célérték alatt van (*MaxPercentUnhealthyServices*).
+Az állapot-ellenőrzési hibák kivizsgálása először a Service Fabric Health Model ismeretét igényli. De még a részletes megértés nélkül is láthatjuk, hogy a következő két szolgáltatás állapota nem kifogástalan: *Fabric:/DemoApp/Svc3* és *Fabric:/DemoApp/Svc2*, valamint a hiba állapotáról szóló jelentések ("InjectedFault" ebben az esetben). Ebben a példában a négy szolgáltatás közül kettő nem kifogástalan állapotú, ami nem éri el az alapértelmezett 0%-os sérült (*MaxPercentUnhealthyServices*).
 
-A frissítés fel lett függesztve meghibásodása esetén adjon meg egy **FailureAction** manuális a frissítés indításakor. Ez az üzemmód lehetővé teszi az élő rendszer, a sikertelen állapotú további műveletek végrehajtása előtti.
+A frissítés a frissítés megkezdése után a **FailureAction** manuális megadásával lett felfüggesztve. Ez a mód lehetővé teszi, hogy a hibás állapotú élő rendszerek vizsgálatát még a művelet megkezdése előtt megvizsgáljuk.
 
-### <a name="recover-from-a-suspended-upgrade"></a>A felfüggesztett frissítés helyreállítása
+### <a name="recover-from-a-suspended-upgrade"></a>Helyreállítás felfüggesztett frissítésből
 
-A visszaállítás **FailureAction**, nem szükséges, mivel a frissítés automatikusan visszaállítja után sikertelen helyreállítási van. A kézi **FailureAction**, több helyreállítási lehetőség:
+Visszaállítási **FailureAction**esetén nincs szükség helyreállításra, mert a frissítés automatikusan Visszagörgeti a hibát. A manuális **FailureAction**számos helyreállítási lehetőség közül választhat:
 
-1.  visszaállítás az eseményindító
-2. Folytassa a fennmaradó részében a frissítés manuálisan
+1.  visszaállítás indítása
+2. A frissítés hátralévő részének áthaladása manuálisan
 3. A figyelt frissítés folytatása
 
-A **Start-ServiceFabricApplicationRollback** parancs használható bármikor visszaállítása az alkalmazás elindításához. A parancs sikeresen adja vissza, miután a visszaállítási kérés regisztrálva van a rendszerben, és ezt követően kevéssel elindul.
+A **Start-ServiceFabricApplicationRollback** parancs bármikor használható az alkalmazás visszagörgetésének megkezdéséhez. A parancs sikeres visszaküldése után a visszaállítási kérelem regisztrálva van a rendszeren, és hamarosan elindul.
 
-A **Resume-ServiceFabricApplicationUpgrade** parancs segítségével végezze el a frissítés hátralévő manuálisan, egyszerre több frissítési tartományt. Ebben a módban a rendszer egyetlen biztonsági ellenőrzéseket hajtja végre. Nincs több állapotellenőrzést végez. Ez a parancs csak lehet használni a *UpgradeState* látható *RollingForwardPending*, ami azt jelenti, hogy az aktuális frissítési tartomány frissítése befejeződött, de a következő nem indult el (folyamatban).
+A **resume-ServiceFabricApplicationUpgrade** parancs használatával folytathatja a frissítés fennmaradó részét manuálisan, egyszerre egy frissítési tartományt. Ebben a módban csak a biztonsági ellenőrzéseket hajtja végre a rendszer. Nem végeznek további állapot-ellenőrzést. Ez a parancs csak akkor használható, ha a *UpgradeState* a *RollingForwardPending*mutatja, ami azt jelenti, hogy az aktuális frissítési tartomány befejezte a frissítést, de a következő egy nem indult el (függőben).
 
-A **Update-ServiceFabricApplicationUpgrade** parancs használható mindkét biztonsági a figyelt frissítés folytatásához és állapot-ellenőrzések folyamatban van.
+Az **Update-ServiceFabricApplicationUpgrade** parancs használatával folytathatja a figyelt frissítést a biztonsági és állapot-ellenőrzésekkel.
 
 ```powershell
 Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
@@ -193,50 +193,50 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ```
 
-A frissítés továbbra is fennáll, a frissítési tartomány, ahol utolsó felfüggesztés és azonos frissítési paraméterek és az állapotházirendeket, mielőtt használja. Szükség esetén a frissítési paraméterek és a fenti kimenetben állapotházirendeket módosíthatja ugyanazt a parancsot a Ha folytatja a frissítést. Ebben a példában a frissítés folytatódik figyelt módban, a paraméterek és az állapotházirendeket változatlan marad.
+A frissítés az utolsó felfüggesztést követően a frissítési tartományból folytatódik, és ugyanazokat a frissítési paramétereket és állapotházirend-szabályzatokat használja, mint korábban. Ha szükséges, az előző kimenetben látható frissítési paraméterek és állapot-házirendek bármelyike módosítható ugyanabban a parancsban, amikor a frissítés folytatódik. Ebben a példában a frissítés figyelt módban folytatódik, és a paraméterek és az állapotfigyelő házirendek változatlanok maradtak.
 
 ## <a name="further-troubleshooting"></a>További hibaelhárítás
 
-### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>A Service Fabric nem követik a megadott állapotházirendeket
+### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>A Service Fabric nem követi a megadott állapotházirend-szabályzatot
 
-Lehetséges okok: 1:
+1\. lehetséges ok:
 
-A Service Fabric összes százalékos fordítja le a tényleges szám az entitások (például a replikákat, partíciók és szolgáltatások) állapotának kiértékelését, és mindig felfelé kerekít egész entitásokat. Például ha a maximális *MaxPercentUnhealthyReplicasPerPartition* 21 %, és öt replikákat, akkor a Service Fabric lehetővé teszi, hogy a két sérült replikák (azaz`Math.Ceiling (5*0.21)`). Állapotházirendeket, ennek megfelelően kell állítani.
+Service Fabric lefordítja az összes százalékos arányt a tényleges számú entitásra (például replikák, partíciók és szolgáltatások) az állapot kiértékeléséhez, és mindig teljes entitásokra kerekít. Ha például a maximális *MaxPercentUnhealthyReplicasPerPartition* 21%, és öt replika van, akkor Service Fabric legfeljebb két sérült replikát engedélyez (azaz `Math.Ceiling (5*0.21)`). Ezért az állapotfigyelő házirendeket ennek megfelelően kell beállítani.
 
-Lehetséges ok: 2:
+2\. lehetséges ok:
 
-Teljes szolgáltatások és a nem meghatározott szolgáltatáspéldányok százalékos állapotházirendeket vannak megadva. Például, ha egy alkalmazásnak négy frissítés előtt szolgáltatás példányai A, B, C és D, ahol D szolgáltatás állapota nem megfelelő, de csekély hatással van az alkalmazáshoz. Szeretnénk figyelmen kívül hagyja az ismert nem megfelelő állapotú szolgáltatás D, a frissítés során, és állítsa be a paraméter *MaxPercentUnhealthyServices* 25 %-kal, feltéve, hogy csak A, B és C kell állapota megfelelő lesz.
+Az állapotfigyelő házirendek a teljes szolgáltatások és nem meghatározott szolgáltatási példányok százalékos arányában vannak meghatározva. Például a frissítés előtt, ha egy alkalmazásnak négy szolgáltatási példánya van, B, C és D, ahol a D szolgáltatás nem kifogástalan állapotú, de kevés hatással van az alkalmazásra. Szeretnénk figyelmen kívül hagyni az ismert, nem kifogástalan állapotú szolgáltatást a frissítés során, és a *MaxPercentUnhealthyServices* paramétert 25%-ra kell beállítani, feltéve, hogy csak az a, B és C értéknek kell kifogástalannak lennie.
 
-Azonban a frissítés során D előfordulhat, hogy állapotúak lesznek, amíg C akkor kerül sérült. A frissítés továbbra is járnak, mivel csak 25 %-a szolgáltatások nem megfelelő állapotú. Azonban ez azt eredményezheti, hogy a nem várt hibák miatt folyamatban váratlanul nem megfelelő állapotú D. helyett C Ebben a helyzetben D kell modellezni egy másik szolgáltatás típusaként a, B és c jelöli. Mivel állapotházirendeket szolgáltatás típus szerint meg van adva, különböző nem megfelelő állapotú százalékos küszöbérték különböző szolgáltatások alkalmazhatók. 
+A frissítés során azonban a D állapota Kifogástalan lehet, amíg a C nem megfelelő állapotú lesz. A frissítés még sikeres lenne, mert a szolgáltatások csak 25%-a nem kifogástalan állapotú. Előfordulhat azonban, hogy váratlan hibákat okoz, mert a C nem várt állapotú a D helyett. Ebben az esetben a D-t az A, B és C típustól eltérő szolgáltatástípusként kell modellezni. Mivel az állapot-szabályzatok szolgáltatási típus szerint vannak megadva, a különböző nem kifogástalan állapotú százalékos küszöbértékek eltérő szolgáltatásokra alkalmazhatók. 
 
-### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>E nem adta meg az alkalmazás frissítését állapotházirend, de bizonyos időtúllépési soha nem megadott továbbra is sikertelen, a frissítés
+### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nem határoztam meg az alkalmazás frissítésére vonatkozó állapotfigyelő szabályzatot, de a frissítés továbbra is meghiúsul egy olyan időtúllépés miatt, amely soha nem volt megadva
 
-Amikor állapotházirendeket nem biztosított a frissítési kérést, akkor megnyílik a a *ApplicationManifest.xml* , a jelenlegi verziója. Például ha az 1.0-s verzió alkalmazás állapotházirendeket, 2.0-s verziójában az 1.0-s verziója a megadott X alkalmazás frissít szolgálnak. Ha a frissítés egy másik állapotházirend kell használni, majd a házirendet kell adni az alkalmazás frissítési API-hívás részeként. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. Ha a frissítés befejeződött, a házirendek megadott a *ApplicationManifest.xml* szolgálnak.
+Ha a frissítési kérelem nem ad meg állapotházirend-szabályzatot, a rendszer az aktuális alkalmazás verziójának *ApplicationManifest. XML fájlját* veszi át. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest. xml fájlban* megadott szabályzatokat használja.
 
-### <a name="incorrect-time-outs-are-specified"></a>Helytelen gondok vannak megadva.
+### <a name="incorrect-time-outs-are-specified"></a>Helytelen időtúllépés van megadva
 
-Akkor lehet, hogy rendelkezik testreszabásakor nem tudta arról, hogy mi történik, ha gondok vannak beállítva működése. Például előfordulhat, hogy rendelkezik egy *UpgradeTimeout* hogy kisebb, mint a *UpgradeDomainTimeout*. A válasz az, hogy hibát ad vissza. Ha a hibát a *UpgradeDomainTimeout* kisebb, mint az összegét *HealthCheckWaitDuration* és *HealthCheckRetryTimeout*, vagy ha  *UpgradeDomainTimeout* kisebb, mint az összegét *HealthCheckWaitDuration* és *HealthCheckStableDuration*.
+Lehet, hogy már megértette, mi történik, ha az időtúllépés beállítása inkonzisztens. Előfordulhat például, hogy egy *UpgradeTimeout* kisebb, mint a *UpgradeDomainTimeout*. A válasz az, hogy a rendszer hibaüzenetet ad vissza. A rendszer hibákat ad vissza, ha a *UpgradeDomainTimeout* kisebb, mint a *HealthCheckWaitDuration* és a *HealthCheckRetryTimeout*összege, vagy ha a *UpgradeDomainTimeout* értéke kisebb, mint a *HealthCheckWaitDuration* összege, és *HealthCheckStableDuration*.
 
-### <a name="my-upgrades-are-taking-too-long"></a>A verziófrissítések túl sokáig tart
+### <a name="my-upgrades-are-taking-too-long"></a>A frissítések túl sokáig tartanak
 
-Való frissítés befejezéséhez szükséges idő attól függ, az állapot-ellenőrzések és a megadott időtúllépést. Mennyi ideig tart másolja, üzembe helyezését és az alkalmazás stabilizálódhatnak mobilhálózat állapot-ellenőrzések és időtúllépéseket. Túl agresszív a várakozási idő alatt előfordulhat, hogy jelenti azt, hogy több sikertelen frissítését, ezért javasoljuk, hogy hosszabb gondok konzervatív módon vegyen figyelembe kezdve.
+A frissítés befejezésének ideje a megadott állapot-ellenőrzéstől és időtúllépéstől függ. Az állapot-ellenőrzés és az időtúllépés attól függ, hogy mennyi ideig tart az alkalmazás másolása, üzembe helyezése és stabilizálása. Ha túl agresszív az időtúllépés, akkor a frissítés nem jelent nagyobb hibát, ezért javasoljuk, hogy a konzervatív és a hosszabb időkorláttal kezdjen el.
 
-Íme egy gyors frissítő hogyan kommunikáljanak az a várakozási idő a frissítési idő a:
+Íme egy gyors frissítő, hogy az időtúllépés hogyan működjön együtt a frissítési időpontokkal:
 
-Frissíti egy frissítési tartományt nem tudja végrehajtani a gyorsabb, mint a *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+A frissítési tartomány frissítései nem hajthatók végre gyorsabban, mint a *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
 
-Frissítési hiba esetén nem hajtható végre gyorsabban *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+A frissítési hiba nem fordulhat elő gyorsabban, mint *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
 
-A frissítési idő a frissítési tartomány korlátozza *UpgradeDomainTimeout*.  Ha *HealthCheckRetryTimeout* és *HealthCheckStableDuration* is nullától eltérő, és az alkalmazás állapotának tartja oda-vissza vált, majd a frissítés végül túllépi az időkorlátot a *UpgradeDomainTimeout*. *UpgradeDomainTimeout* elindítja a számlálási leskálázás egyszer a frissítés számára az aktuális frissítési tartomány kezdete.
+A frissítési tartomány frissítési idejét a *UpgradeDomainTimeout*korlátozza.  Ha a *HealthCheckRetryTimeout* és a *HealthCheckStableDuration* értéke nem nulla, és az alkalmazás állapota továbbra is folyamatosra vált, a frissítés végül a *UpgradeDomainTimeout*-on történik. A *UpgradeDomainTimeout* megkezdi az aktuális frissítési tartomány verziófrissítésének megkezdését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az alkalmazás használatával a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.
+[Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
-[Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti egy alkalmazás frissítése a PowerShell használatával.
+[Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
-Vezérelheti, hogyan az alkalmazásfrissítések használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
+Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.
 
-Hogyan használja az alkalmazásfrissítések kompatibilissé [adatok szerializálása](service-fabric-application-upgrade-data-serialization.md).
+Az alkalmazások frissítését az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának megismerésével teheti meg.
 
-Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [haladó témakörök](service-fabric-application-upgrade-advanced.md).
+Ismerje meg, hogyan használhatja a speciális funkciókat az alkalmazás frissítéséhez a [speciális témakörökre](service-fabric-application-upgrade-advanced.md)való hivatkozással.

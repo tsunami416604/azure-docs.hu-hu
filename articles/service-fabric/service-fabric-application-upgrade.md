@@ -1,6 +1,6 @@
 ---
-title: Service Fabric-alkalmazás frissítése |} A Microsoft Docs
-description: Ez a cikk mutatja be a Service Fabric-alkalmazások, beleértve a lehetőséget választva frissítési módok és teljesítményű állapot-ellenőrzések frissítése.
+title: Service Fabric alkalmazás frissítése | Microsoft Docs
+description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissítéséhez, többek között a frissítési módok kiválasztásához és az állapot-ellenőrzések végrehajtásához.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,75 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: e2b407733bcab7bc854e8e3703e53eb474f3425b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615071"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167282"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-alkalmazás frissítése
-Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során a Service Fabric hasonlítja össze az új [alkalmazásjegyzék](service-fabric-application-and-service-manifests.md) korábbi verziójával, és meghatározza a szolgáltatások az alkalmazás igényelnek frissítést. A Service Fabric a számokat a szolgáltatásban a verziószámokat a korábbi verzióban az alkalmazásjegyzékeket verzióját hasonlítja össze. Ha a szolgáltatás nem változott, a szolgáltatás nincs frissítve.
+Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során Service Fabric összehasonlítja az új [alkalmazás-jegyzékfájlt](service-fabric-application-and-service-manifests.md) az előző verzióval, és meghatározza, hogy az alkalmazás mely szolgáltatásai igényelnek frissítéseket. Service Fabric összehasonlítja a szolgáltatási jegyzékfájlok verziószámait az előző verzió verziószámával. Ha egy szolgáltatás nem módosult, akkor a szolgáltatás nem frissül.
 
 ## <a name="rolling-upgrades-overview"></a>A működés közbeni frissítés áttekintése
-Egy alkalmazás frissítése működés közben, az a frissítés végrehajtása szakaszban. Minden egyes fázisában a frissítés alkalmazza a rendszer a fürt frissítési tartomány nevű csomópontok egy része. Ennek eredményeképpen az alkalmazás továbbra is elérhető a frissítés során. A frissítés során a fürt a régi és új verzióit vegyesen is tartalmazhat.
+A működés közbeni alkalmazások verziófrissítése során a rendszer a frissítést fázisokban hajtja végre. A frissítés minden fázisban a fürt csomópontjainak egy részhalmazára lesz alkalmazva, amelyet frissítési tartománynak nevezünk. Ennek eredményeképpen az alkalmazás a frissítés során továbbra is elérhető marad. A frissítés során a fürt a régi és az új verziók kombinációját is tartalmazhatja.
 
-Éppen ezért a két verzió kell lennie, előre és visszafelé kompatibilis. Ha nem kompatibilis, az alkalmazás-rendszergazda feladata átmeneti a több fázisú frissítése rendelkezésre állását. A több fázisú frissítés az első lépés egy köztes verziójára az alkalmazás, amely kompatibilis a korábbi verzióra frissíti. A második lépéseként frissítése a végleges verzió működésképtelenné válik a frissítés előtti verziót való kompatibilitás, de a köztes verziójával kompatibilis.
+Ezért a két verziónak előre és visszafelé kompatibilisnek kell lennie. Ha nem kompatibilisek, az alkalmazás rendszergazdája a rendelkezésre állás fenntartása érdekében egy többfázisú frissítés előkészítésére szolgál. A többfázisú frissítés során az első lépés az alkalmazás egy közbenső verziójára frissül, amely kompatibilis az előző verzióval. A második lépés a végleges verzió frissítése, amely megszakítja a kompatibilitást a frissítés előtti verzióval, de kompatibilis a köztes verzióval.
 
-Frissítési tartományok a fürtjegyzékben vannak megadva, a fürt konfigurálásakor. Frissítési tartományok nem kaphat frissítéseket egy adott sorrendben. Frissítési tartomány egy alkalmazás központi telepítésének egy logikai egységet. Frissítési tartományok a frissítés során továbbra is magas rendelkezésre állású szolgáltatások engedélyezése.
+Ha konfigurálja a fürtöt, a frissítési tartományok a fürt jegyzékfájljában vannak megadva. A frissítési tartományok megadott sorrendben nem kapják meg a frissítéseket. A frissítési tartomány az alkalmazások központi telepítésének logikai egysége. A frissítési tartományok lehetővé teszik, hogy a szolgáltatások magas rendelkezésre állásban maradjanak a frissítés során.
 
-Nem – működés közbeni frissítés is előfordulhatnak, ha a frissítés van érvényben, azonban ez megváltozott, ha az alkalmazás csak egyetlen frissítési tartományt a fürt összes csomópontja számára. Ez a módszer nem ajánlott, mivel a szolgáltatás leáll, és nem érhető el a frissítés idején. Emellett az Azure nem biztosít semmilyen garanciát a fürt úgy van beállítva, az csak egyetlen frissítési tartományt.
+A nem működés közbeni verziófrissítések akkor lehetségesek, ha a frissítés a fürt összes csomópontjára vonatkozik, ami akkor fordul elő, ha az alkalmazásnak csak egy frissítési tartománya van. Ez a megközelítés nem ajánlott, mivel a szolgáltatás leáll, és a frissítéskor nem érhető el. Emellett az Azure nem biztosít garanciát, ha egy fürt csak egy frissítési tartománnyal van beállítva.
 
-A frissítés befejezése után a szolgáltatások és replicas(instances) szeretne maradni ugyanazon verzió – azaz a Ha a frissítés sikeres volt, az összes rendszer frissíti majd őket az új verzióra; Ha a frissítés sikertelen lesz, és van vonva, azok lenne állítható vissza a régi verzióját.
+A frissítés befejeződése után az összes szolgáltatás és replika (példány) ugyanabban a verzióban marad – i. e., ha a frissítés sikeres, a rendszer frissíti az új verzióra; Ha a frissítés meghiúsul, és vissza lett állítva, a rendszer visszaállítja a régi verzióra.
 
-## <a name="health-checks-during-upgrades"></a>Állapot-ellenőrzések frissítések során
-A frissítés állapotházirendeket kell állítani (vagy az alapértelmezett értékeket is használni). Frissítés az összes frissítési tartományok megadott időtúllépésre belül frissítésekor, és ha az összes frissítési tartományok kifogástalan beállításkulcsoknak nevezik sikeres.  A megfelelő frissítési tartomány azt jelenti, hogy a frissítési tartomány átadott állapotházirend megadott összes állapot-ellenőrzések. Ha például egy olyan házirendet előfordulhat, hogy megszabják, hogy minden szolgáltatás alkalmazáspéldány belül kell lennie *kifogástalan*, health Service Fabric által meghatározott.
+## <a name="health-checks-during-upgrades"></a>Állapot-ellenőrzések a frissítések során
+A frissítéshez meg kell adni az állapot-házirendeket (vagy az alapértelmezett értékeket lehet használni). A frissítés sikeresnek minősül, ha az összes frissítési tartomány frissül a megadott időkorláton belül, és ha az összes frissítési tartomány kifogástalannak minősül.  A kifogástalan állapotú frissítési tartomány azt jelenti, hogy a frissítési tartomány az állapotfigyelő házirendben megadott összes állapot-ellenőrzést átadta. Egy állapotházirend például megadhatja, hogy az alkalmazás példányain belüli összes szolgáltatásnak *kifogástalan*állapotú kell lennie, mivel az Service Fabric által meghatározott állapotot határozza meg.
 
-Házirendek és a Service Fabric által a frissítés során ellenőrzi olyan szolgáltatások és alkalmazások független. Ez azt jelenti, hogy nincsenek szolgáltatásspecifikus tesztek kell elvégezni.  Például előfordulhat, hogy a szolgáltatás átviteli követelmény, de a Service Fabric nem rendelkezik az átviteli sebesség ellenőrzéséhez információkat. Tekintse meg a [egészségügyi cikkek](service-fabric-health-introduction.md) számára a ellenőrzi, hogy el kell végezni. A ellenőrzi, hogy számára, hogy az alkalmazáscsomag volt megfelelően másolja ki, egy frissítési Belefoglalás tesztek során fordulhat elő, hogy a példány lett elindítva, és így tovább.
+Az állapot-szabályzatok és az ellenőrzések a Service Fabric általi frissítés során a szolgáltatás és az alkalmazás agnosztikus. Azaz nem végeznek szolgáltatás-specifikus teszteket.  Előfordulhat például, hogy a szolgáltatás átviteli követelményekkel rendelkezik, de Service Fabric nem rendelkezik az átviteli sebesség ellenőrzéséhez szükséges információkkal. A végrehajtott ellenőrzésekhez tekintse meg a [Health cikkeket](service-fabric-health-introduction.md) . A frissítés során végrehajtott ellenőrzések közé tartoznak a tesztek, hogy az alkalmazáscsomag megfelelően lett-e másolva, hogy a példány elindult-e, és így tovább.
 
-Az alkalmazás üzemállapota az alkalmazás a gyermekentitások összesítését. Röviden a Service Fabric kiértékeli a health, legyen az alkalmazás a jelentés segítségével az alkalmazás állapotát. Azt is kiértékeli az alkalmazás a szolgáltatások állapotát ezzel a módszerrel. További Service Fabric kiértékeli az alkalmazás szolgáltatások állapotának összesítésével ellenőrizhessék a gyermekek, például a szolgáltatás replika állapotát. Után az alkalmazás állapotszabályzata teljesül, folytassa a frissítést. Állapotházirend sérül, ha az alkalmazás frissítése sikertelen.
+Az alkalmazás állapota az alkalmazás alárendelt entitásának összesítése. Röviden, Service Fabric kiértékeli az alkalmazás állapotát az alkalmazáson jelentett állapottal. Ez a módszer az alkalmazás összes szolgáltatásának állapotát is kiértékeli. Service Fabric a gyermekek állapotának, például a szolgáltatás replikájának összesítésével tovább értékeli az alkalmazás-szolgáltatások állapotát. Ha az alkalmazás állapotára vonatkozó házirend teljesül, a frissítés folytatódhat. Ha az Állapotházirendek megsértették, az alkalmazás frissítése sikertelen lesz.
 
-## <a name="upgrade-modes"></a>Frissítési mód
-Az alkalmazásfrissítés általunk javasolt módja a figyelt módban, amely a gyakran használt mód. Felügyelt mód a frissítést hajt végre egy frissítési tartományt, és ha az összes állapot-ellenőrzések (a házirend szerint megadva), pass áthelyezi a következő frissítési tartomány automatikusan.  Ha az állapot-ellenőrzések sikertelenek, és/vagy gondok elérésekor, a frissítés vagy vissza lesz állítva a frissítési tartomány, vagy a üzemmód nem figyelt manuálisra változik. Beállíthatja, hogy a frissítés sikertelen frissítéseket ezen két mód közül választhat. 
+## <a name="upgrade-modes"></a>Frissítési módok
+Az alkalmazások frissítéséhez javasolt mód a figyelt mód, amely a leggyakrabban használt mód. A figyelt mód egy frissítési tartományon hajtja végre a frissítést, és ha az összes állapot-ellenőrzés (a megadott házirend alapján), a rendszer automatikusan áthelyezi a következő frissítési tartományba.  Ha az állapot-ellenőrzés sikertelen és/vagy időtúllépést ér el, a rendszer visszaállítja a frissítést a frissítési tartományra, vagy a mód nem figyelt manuálisra változik. A frissítés konfigurálásával kiválaszthatja a következő két mód egyikét a sikertelen frissítésekhez. 
 
-Nem figyelt manuális mód a frissítési tartomány, a frissítést a következő frissítési tartomány a elindítson minden frissítés után manuális beavatkozásra kell. Nem Service Fabric állapotellenőrzést végez. A rendszergazda a következő frissítési tartomány a frissítés megkezdése előtt ellenőrzi egészségügyi és állapotát.
+A nem figyelt manuális üzemmódnak manuális beavatkozásra van szüksége egy frissítési tartomány minden verziófrissítése után, hogy kirúgja a frissítést a következő frissítési tartományon. Nem történik Service Fabric állapot-ellenőrzés. A rendszergazda a következő frissítési tartomány frissítésének megkezdése előtt elvégzi az állapot-vagy az állapot-ellenőrzéseket.
 
 ## <a name="upgrade-default-services"></a>Alapértelmezett szolgáltatások frissítése
-Egyes alapértelmezett szolgáltatás definiált paramétereket a [alkalmazásjegyzék](service-fabric-application-and-service-manifests.md) alkalmazásfrissítést részeként is frissíthetők. Csak a támogatási keresztül módosításának szolgáltatás paraméterei [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) frissítés részeként módosíthatók. Az alapértelmezett szolgáltatások módosítása az alkalmazásfrissítés során viselkedését a következőképpen történik:
+Az [alkalmazás jegyzékfájljában](service-fabric-application-and-service-manifests.md) meghatározott alapértelmezett szolgáltatási paraméterek az alkalmazások frissítésének részeként is frissíthetők. A frissítés részeként csak azok a szolgáltatási paraméterek módosíthatók, amelyek támogatják az [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) használatával történő módosítást. Az alapértelmezett szolgáltatások az alkalmazás frissítése során történő megváltoztatásának viselkedése a következő:
 
-1. Alapértelmezett szolgáltatásokat az új alkalmazásjegyzékben, amely még nem léteznek a fürt jön létre.
-2. Alapértelmezett szolgáltatások, amelyek szerepelnek a is a korábbi és új alkalmazásjegyzéket frissülnek. A paraméterek alapértelmezett szolgáltatás az új alkalmazásjegyzékben írja felül a meglévő szolgáltatás a paraméterek. Az alkalmazás frissítése automatikusan fog visszaállítása, ha egy alapértelmezett szolgáltatás frissítése sikertelen.
-3. Alapértelmezett szolgáltatások, amelyek nem szerepelnek az új alkalmazás jegyzékfájlja törlődnek, ha azok léteznek, a fürtben. **Vegye figyelembe, hogy egy alapértelmezett szolgáltatás törlése eredményezi, hogy a szolgáltatás törlése állapot és nem vonható vissza.**
+1. A fürtben még nem létező új alkalmazás-jegyzékfájlban található alapértelmezett szolgáltatások jönnek létre.
+2. Az előző és az új alkalmazás-jegyzékben található alapértelmezett szolgáltatások frissülnek. Az új alkalmazás jegyzékfájljában lévő alapértelmezett szolgáltatás paramétereinek felülírják a meglévő szolgáltatás paramétereit. Az alkalmazás frissítése automatikusan megtörténik, ha az alapértelmezett szolgáltatás frissítése sikertelen.
+3. Az új alkalmazás jegyzékfájljában nem szereplő alapértelmezett szolgáltatások törlődnek, ha léteznek a fürtben. **Vegye figyelembe, hogy az alapértelmezett szolgáltatás törlésekor az összes szolgáltatás állapotát törölni fogja, és nem vonható vissza.**
 
-Ha egy alkalmazás frissítése vissza lesz állítva, alapértelmezett szolgáltatás paraméterek vissza a régi értékük visszavonásra kerül, mielőtt a frissítés elindítva, de a törölt szolgáltatások nem hozható létre ismét a régi állapotuk.
+Az alkalmazások frissítésének visszavonása után a rendszer az alapértelmezett szolgáltatási paramétereket visszaállítja a régi értékekre a frissítés megkezdése előtt, de a törölt szolgáltatások nem hozhatók létre újra régi állapotukkal.
 
 > [!TIP]
-> A [enabledefaultservicesupgrade beállítást](service-fabric-cluster-fabric-settings.md) kell lennie a fürt konfigurációs beállítás *igaz* szabályok 2 engedélyezése) és 3) (alapértelmezett szolgáltatás frissítése és törlése) felett. Ez a szolgáltatás indítása a Service Fabric 5.5-ös verzió támogatott.
+> A [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) -fürt konfigurációs beállításának *igaznak* kell lennie a 2. és a 3. szabály engedélyezéséhez (az alapértelmezett szolgáltatás frissítése és törlése). Ez a funkció Service Fabric 5,5-es verziótól kezdődően támogatott.
 
-## <a name="upgrading-multiple-applications-with-https-endpoints"></a>A HTTPS-végpontok több alkalmazás frissítése
-Ügyeljen arra, hogy használni szeretné a **ugyanazt a portot** a HTTP használata esetén egyazon alkalmazás különböző példányaiban**S**. A hiba oka, hogy a Service Fabric nem tudja frissíteni a tanúsítvány egy, az alkalmazás példányai. Ha például 1 vagy alkalmazás 2 mindkét alkalmazás kívánt 1. a tanúsítvány frissítése a 2. tanúsítvány. Ha a frissítés történik, a Service Fabric előfordulhat, hogy rendelkezik törölni az 1. tanúsítvány regisztrációját, a http.sys annak ellenére, hogy a többi alkalmazás továbbra is használja. Ennek megelőzése érdekében a Service Fabric észleli, hogy már regisztrálva a porton (a http.sys) miatt a tanúsítvánnyal más alkalmazáspéldány, és a művelet sikertelen lesz.
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Több alkalmazás frissítése HTTPS-végpontokkal
+Ügyeljen arra, hogy ne **ugyanazt a portot** használja ugyanazon alkalmazás különböző példányaihoz, ha http-**t**használ. Ennek az az oka, hogy Service Fabric nem fogja tudni frissíteni az egyik alkalmazás példányának tanúsítványát. Ha például az 1. vagy a 2. alkalmazás egyaránt szeretné frissíteni az 1. tanúsítványát a 2. tanúsítványra. Ha a frissítés történik, előfordulhat, hogy Service Fabric a http. sys használatával megtisztította a tanúsítvány 1 regisztrációját, annak ellenére, hogy a másik alkalmazás továbbra is használja. Ennek megelőzése érdekében Service Fabric észleli, hogy már van egy másik alkalmazás-példány regisztrálva a porton a tanúsítvánnyal (a http. sys miatt), és a művelet sikertelen lesz.
 
-Ezért a Service Fabric nem támogatja a frissítést két különböző szolgáltatások használatával **ugyanazt a portot** a különböző alkalmazáspéldányok. Más szóval ugyanaz a tanúsítvány nem használható a különböző szolgáltatások ugyanazt a portot. Szüksége lesz egy megosztott tanúsítványfájlokat ugyanazt a portot, ha szüksége győződjön meg arról, hogy a szolgáltatások az elhelyezési korlátozások különböző gépeken vannak elhelyezve. Vagy fontolja meg a Service Fabric dinamikus portok lehetőség szerint az egyes szolgáltatások az egyes alkalmazáspéldányokról. 
+Ezért Service Fabric nem támogatja két különböző szolgáltatás frissítését **ugyanazon a porton** keresztül különböző alkalmazás-példányokban. Más szóval nem használhatja ugyanazt a tanúsítványt ugyanazon a porton lévő különböző szolgáltatásokhoz. Ha megosztott tanúsítvánnyal kell rendelkeznie ugyanazon a porton, gondoskodnia kell arról, hogy a szolgáltatások elhelyezése a különböző gépeken történjen, elhelyezési korlátozásokkal. Ha lehetséges, érdemes Service Fabric dinamikus portokat használni, ha az egyes szolgáltatásokhoz az egyes alkalmazás-példányokban. 
 
-Ha egy frissítés sikertelen, a https, figyelmeztetés, amely arról tájékoztat, "A Windows API HTTP-kiszolgáló nem támogatja több tanúsítvány egy portot használó alkalmazások számára." hiba jelenik meg
+Ha úgy látja, hogy a frissítés nem sikerül HTTPS-vel, a "Windows HTTP Server API nem támogatja több tanúsítvány használatát a portot használó alkalmazások számára."
 
-## <a name="application-upgrade-flowchart"></a>Alkalmazás frissítési folyamatábra
-Az alábbi folyamatábra segítségével megismerheti a Service Fabric-alkalmazás a frissítési folyamat. Különösen a folyamatot ismerteti, hogyan az időtúllépések, beleértve a *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, és *UpgradeHealthCheckInterval*, Súgó Szabályozza, amikor a frissítés egyetlen frissítési tartomány számít sikeres vagy sikertelen.
+## <a name="application-upgrade-flowchart"></a>Alkalmazás frissítési folyamatábrája
+A bekezdést követő folyamatábra segít megérteni egy Service Fabric alkalmazás frissítési folyamatát. A folyamat konkrétan leírja, hogy az időtúllépések, beleértve a *HealthCheckStableDuration*, a *HealthCheckRetryTimeout*és a *UpgradeHealthCheckInterval*, Hogyan szabályozható, hogy az egyik frissítési tartományban való frissítés sikeresnek minősül-e, vagy hiba.
 
-![A frissítési folyamat a Service Fabric-alkalmazás][image]
+![Service Fabric alkalmazás frissítési folyamata][image]
 
-## <a name="next-steps"></a>További lépések
-[Az alkalmazás használatával a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.
+## <a name="next-steps"></a>Következő lépések
+[Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
-[Az alkalmazás használatával PowerShell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti egy alkalmazás frissítése a PowerShell használatával.
+[Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
-Vezérelheti, hogyan az alkalmazásfrissítések használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
+Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.
 
-Hogyan használja az alkalmazásfrissítések kompatibilissé [adatok szerializálása](service-fabric-application-upgrade-data-serialization.md).
+Az alkalmazások frissítését az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának megismerésével teheti meg.
 
-Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [haladó témakörök](service-fabric-application-upgrade-advanced.md).
+Ismerje meg, hogyan használhatja a speciális funkciókat az alkalmazás frissítéséhez a [speciális témakörökre](service-fabric-application-upgrade-advanced.md)való hivatkozással.
 
-Az alkalmazásfrissítések gyakori problémák megoldása szerint hajtsa végre a hivatkozó [Alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md).
+Az alkalmazások frissítéseinek [hibaelhárításával](service-fabric-application-upgrade-troubleshooting.md)kapcsolatos gyakori problémák elhárítása.
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png

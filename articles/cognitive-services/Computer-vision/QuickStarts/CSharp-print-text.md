@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Nyomtatott szöveg (OCR) kinyerése – REST,C#'
+title: 'Gyors útmutató: nyomtatott szöveg (OCR) kinyerése – REST,C#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API és a C# használatával.
 services: cognitive-services
@@ -18,7 +18,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177325"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: Kinyeri a nyomtatott szöveget (OCR) a Computer Vision REST API használatával ésC#
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: kinyomtatott szöveg (OCR) kinyerése a Computer Vision REST API használatával ésC#
 
 Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) szolgáltatással felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
 
@@ -239,7 +239,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le.
 

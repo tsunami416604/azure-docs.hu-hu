@@ -32,12 +32,12 @@ A következő táblázat összehasonlítja a splunk és az Azure Monitor-naplók
  | --- | --- | --- | ---
  | Üzembe helyezési egység  | fürt |  fürt |  A Azure Monitor lehetővé teszi a fürtök tetszőleges típusú lekérdezését. A splunk nem. |
  | Adatgyorsítótárak |  vödör  |  Gyorsítótárazási és adatmegőrzési szabályzatok |  Az adatpontok és a gyorsítótárazási szint szabályozása. Ez a beállítás közvetlenül befolyásolja a lekérdezések teljesítményét és a telepítés költségeit. |
- | Az adatlogikai partíció  |  index  |  database  |  Lehetővé teszi az adatmennyiségek logikai elkülönítését. Mindkét implementáció lehetővé teszi a szakszervezetek és az ezekhez való csatlakozást a partíciók között. |
- | Strukturált esemény metaadatainak | – | table |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
+ | Az adatlogikai partíció  |  index  |  adatbázis  |  Lehetővé teszi az adatmennyiségek logikai elkülönítését. Mindkét implementáció lehetővé teszi a szakszervezetek és az ezekhez való csatlakozást a partíciók között. |
+ | Strukturált esemény metaadatainak | – | Tábla |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
  | Adatrekord | esemény | sor |  Csak a terminológia módosul. |
  | Adatrekord-attribútum | Mező |  Oszlop |  A Azure Monitorban ez a tábla struktúrájának részeként van definiálva. A splunk minden esemény saját mezőket tartalmaz. |
  | Típusú | adattípus |  adattípus |  Azure Monitor adattípusok világosabbak, mert az oszlopokra vannak beállítva. Mindkettő képes dinamikusan dolgozni az adattípusokkal és nagyjából egyenértékű adattípusokkal, beleértve a JSON-támogatást is. |
- | Lekérdezés és keresés  | Keresés | query |  A fogalmak lényegében azonosak a Azure Monitor és a splunk között. |
+ | Lekérdezés és keresés  | Keresés | lekérdezés |  A fogalmak lényegében azonosak a Azure Monitor és a splunk között. |
  | Esemény betöltésének ideje | Rendszeridő | ingestion_time() |  A splunk-ben minden esemény az esemény indexelésének időpontjának időbélyegét kapja meg. Azure Monitorban megadhat egy ingestion_time nevű szabályzatot, amely egy olyan rendszeroszlopt tesz elérhetővé, amely a ingestion_time () függvényen keresztül hivatkozhat. |
 
 ## <a name="functions"></a>Functions
@@ -46,21 +46,21 @@ A következő táblázat a splunk függvényekkel egyenértékű Azure Monitor f
 
 |Splunk | Azure Monitor |Megjegyzés
 |---|---|---
-|strcat | strcat()| (1) |
-|split  | split() | (1) |
-|Ha     | IFF ()   | (1) |
-|tonumber | todouble()<br>tolong ()<br>toint() | (1) |
-|felső<br>alacsonyabb |toupper()<br>tolower()|(1) |
-| csere | replace() | (1)<br> Azt is vegye figyelembe, hogy míg a `replace()` három paramétert vesz igénybe mindkét termékben, a paraméterek eltérőek. |
-| substr | alkarakterlánc () | (1)<br>Azt is vegye figyelembe, hogy a splunk egy-alapú indexeket használ. Azure Monitor Megjegyzés nulla alapú indexek. |
-| ToLower |  tolower() | (1) |
-| toupper | toupper() | (1) |
-| mérkőzés | megfelel a regexnek |  (2)  |
+|strcat | strcat()| 1 |
+|felosztás  | Split () | 1 |
+|Ha     | IFF ()   | 1 |
+|tonumber | todouble()<br>tolong ()<br>toint() | 1 |
+|felső<br>alacsonyabb |toupper()<br>ToLower ()|1 |
+| csere | replace () | 1<br> Azt is vegye figyelembe, hogy míg a `replace()` három paramétert vesz igénybe mindkét termékben, a paraméterek eltérőek. |
+| substr | alkarakterlánc () | 1<br>Azt is vegye figyelembe, hogy a splunk egy-alapú indexeket használ. Azure Monitor Megjegyzés nulla alapú indexek. |
+| ToLower |  ToLower () | 1 |
+| toupper | toupper() | 1 |
+| mérkőzés | megfelel a regexnek |  2  |
 | regex | megfelel a regexnek | A splunk-ben a `regex` operátor. A Azure Monitorban ez egy összehasonlító operátor. |
 | searchmatch | == | A splunk `searchmatch` lehetővé teszi a pontos karakterlánc keresését.
-| véletlenszerű | rand()<br>rand (n) | A splunk függvény nulla és 2<sup>31</sup>– 1 közötti számot ad vissza. A Azure Monitor "egy 0,0 és 1,0 közötti számot ad vissza, vagy ha a megadott paraméter 0 és n – 1 között van.
-| most | now() | (1)
-| relative_time | totimespan() | (1)<br>Azure Monitor a splunk egyenértékű a relative_time (datetimeVal, offsetVal) a datetimeVal + ToTimeSpan (offsetVal).<br>A <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> például <code>...  &#124; extend myTime = now() - totimespan("1d")</code> lesz.
+| véletlenszerű | rand ()<br>rand (n) | A splunk függvény nulla és 2<sup>31</sup>– 1 közötti számot ad vissza. A Azure Monitor "egy 0,0 és 1,0 közötti számot ad vissza, vagy ha a megadott paraméter 0 és n – 1 között van.
+| most | now() | 1
+| relative_time | totimespan() | 1<br>Azure Monitor a splunk egyenértékű a relative_time (datetimeVal, offsetVal) a datetimeVal + ToTimeSpan (offsetVal).<br>A <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> például <code>...  &#124; extend myTime = now() - totimespan("1d")</code> lesz.
 
 (1) a splunk a függvényt a `eval` operátor hívja meg. A Azure Monitor `extend` vagy `project` részeként használatos.<br>(2) a splunk a függvényt a `eval` operátor hívja meg. A Azure Monitor a `where` operátorral használható.
 
@@ -72,7 +72,7 @@ A következő részekben példákat talál a splunk és a Azure Monitor között
 > [!NOTE]
 > Az alábbi példában az splunk-mező _szabálya_ egy Azure monitor táblára mutat, és a splunk alapértelmezett időbélyeg-leképezése a logs Analytics _ingestion_time ()_ oszlopra mutat.
 
-### <a name="search"></a>Keresés
+### <a name="search"></a>Search
 A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem tartalmazó karakterláncot. Azure Monitor el kell indítania az egyes lekérdezéseket a `find` értékkel, a nem idézőjeles sztringek oszlop neve, a keresési értéknek pedig egy idézőjeles karakterláncnak kell lennie. 
 
 | |  | |
@@ -81,7 +81,7 @@ A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem ta
 | Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
-### <a name="filter"></a>Szűrés
+### <a name="filter"></a>Szűrő
 Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. @No__t-0 operátort is használhat a splunk-ben, de nem ajánlott.
 
 | |  | |
@@ -97,7 +97,7 @@ Azure Monitor a naplózási lekérdezések a `take` aliast is támogatják `limi
 | |  | |
 |:---|:---|:---|
 | Splunk | **fej** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure Monitor | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
+| Azure Monitor | **korlátot** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 | | |
 
 
@@ -142,7 +142,7 @@ A Azure Monitor a `project-rename` operátor használatával nevezi át a mezőt
 | |  | |
 |:---|:---|:---|
 | Splunk | **tábla** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
+| Azure Monitor | **projekt**<br>**projekt – vendég** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
 
@@ -163,8 +163,8 @@ A splunk való csatlakozás jelentős korlátozásokkal rendelkezik. A segédlek
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| Splunk | **csatlakozás** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| Azure Monitor | **csatlakozás** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 | | |
 
 
@@ -204,7 +204,7 @@ A Azure Portal Log Analyticsban csak az első oszlop van kitéve. Az összes osz
 
 
 
-### <a name="de-duplicate"></a>De-duplicate
+### <a name="de-duplicate"></a>De-Duplicate
 A `summarize arg_min()` helyett használhatja a kiválasztott rekord sorrendjének megfordítását.
 
 | |  | |
@@ -216,6 +216,6 @@ A `summarize arg_min()` helyett használhatja a kiválasztott rekord sorrendjén
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ugorjon végig egy leckét a [Azure monitor írási napló lekérdezéséhez](get-started-queries.md).

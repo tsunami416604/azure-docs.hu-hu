@@ -53,7 +53,7 @@ Parancsfájl futtatásakor a helyreállítási terv környezetét befecskendezi 
 | VMMap kulcs |Egyedi kulcs (GUID) az egyes virtuális gépekhez. |
 | SubscriptionId |Az Azure-előfizetés azonosítója, amelyben a virtuális gép létrejött. |
 | ResourceGroupName | Azon erőforráscsoport neve, amelyben a virtuális gép található.
-| CloudServiceName |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
+| Felhőszolgáltatásneve |Az Azure Cloud Service neve, amely alatt a virtuális gép létrejött. |
 | RoleName |Az Azure-beli virtuális gép neve. |
 | RecoveryPointId|A virtuális gép helyreállításának időbélyege. |
 
@@ -99,7 +99,7 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 
 - Ha még nem ismeri a Azure Automation, [regisztrálhat és](https://azure.microsoft.com/services/automation/) [letöltheti a minta parancsfájlokat](https://azure.microsoft.com/documentation/scripts/).
 - Győződjön meg arról, hogy az Automation-fiók a következő modulokkal rendelkezik:
-    - AzureRM.profile
+    - AzureRM. profil
     - AzureRM.Resources
     - AzureRM.Automation
     - AzureRM.Network
@@ -117,9 +117,9 @@ Aman Sharma blogja a [betakarítási felhőben](http://harvestingclouds.com) a [
 
     ![Kattintson a Testreszabás gombra](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Kattintson a három pontra (...) a **Group 1 elem mellett: Start @ no__t-0 @ no__t-1**Add post művelet**.
+2. Kattintson az 1. csoport melletti három pontra (...) **: Start** > **Add post művelet**.
 3. A **beszúrási művelet**területen ellenőrizze, hogy a **parancsfájl** ki van-e választva, majd adja meg a parancsfájl nevét ( **"Helló világ!" alkalmazás**).
-4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva a **Group 1: Lépések utáni @ no__t-0.
+4. Adjon meg egy Automation-fiókot, és válasszon ki egy runbook. A parancsfájl mentéséhez kattintson **az OK**gombra. A szkript hozzá lett adva az **1. csoporthoz: utólagos lépések**.
 
 
 ## <a name="reuse-a-runbook-script"></a>Runbook-szkript újrafelhasználása
@@ -259,7 +259,7 @@ Ez a videó egy másik példát is tartalmaz. Bemutatja, hogyan lehet helyreáll
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Automation futtató fiók](../automation/automation-create-runas-account.md) megismerése
 - Tekintse át [Azure Automation minta parancsfájlokat](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).

@@ -1,20 +1,19 @@
 ---
-title: Azure PowerShell minták az Azure-adatmegosztáshoz | Microsoft Docs
-description: Azure PowerShell minták – az adatmegosztások létrehozásához és kezeléséhez szükséges parancsfájlok.
-services: data-share
+title: Azure PowerShell minták az Azure-adatmegosztáshoz
+description: Az Azure-beli adatmegosztások előzetes verziójában megtudhatja, hogyan hozhat létre és kezelhet adatmegosztásokat Azure PowerShell minta-parancsfájlok segítségével.
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243099"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166329"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure PowerShell minták az Azure-adatmegosztáshoz
 
@@ -33,9 +32,3 @@ A következő táblázat hivatkozásokat tartalmaz az Azure-beli adatmegosztáso
 |[Az adatmegosztások részleteinek megtekintése](scripts/powershell/view-share-details-powershell.md)| Ez a minta PowerShell-parancsfájl felsorolja és beolvassa az adatmegosztások részleteit. |
 |[Megosztott adatok használatának figyelése](scripts/powershell/monitor-usage-powershell.md)| Ez a minta PowerShell-parancsfájl figyeli az elküldett megosztott adatok használatát. |
 |[Pillanatkép-eseményindítók létrehozása és megtekintése](scripts/powershell/create-view-trigger-powershell.md)| Ez a minta PowerShell-parancsfájl egy megosztás pillanatkép-eseményindítóit hozza létre.
-
-
-
-
-
-

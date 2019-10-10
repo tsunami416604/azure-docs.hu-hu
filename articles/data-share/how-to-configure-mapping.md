@@ -1,41 +1,41 @@
 ---
-title: Adathalmaz-leképezés konfigurálása
-description: Adathalmaz-leképezés konfigurálása
+title: Adatkészlet-hozzárendelés konfigurálása az Azure-beli adatmegosztás előzetes verziójában
+description: Megtudhatja, hogyan konfigurálhatja az adatkészlet-hozzárendelést egy fogadott megosztáshoz az Azure-adatmegosztás előzetes verziójának használatával.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789240"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169131"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Egy adatkészlet leképezés kapott megosztás konfigurálása az Azure-adatok megosztása Előzetesében
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Adatkészlet-hozzárendelés konfigurálása egy fogadott megosztáshoz az Azure-beli adatmegosztás előzetes verziójában
 
-Ez a cikk azt ismerteti, hogy egy adatkészlet-leképezés konfigurálása Azure Adatelőnézet megosztás használatával fogadott megosztás. Ehhez, ha egy adatok megosztási Meghívás elfogadva, de rögzítette szeretné "Accept és a beállítás később". Ellenkező esetben előfordulhat, hogy egyszerűen módosítani szeretné a cél tárfiók a fogadott adatokhoz. 
+Ez a cikk azt ismerteti, hogyan lehet konfigurálni az adatkészlet-hozzárendelést egy fogadott megosztáshoz az Azure-beli adatmegosztás előzetes verziójának használatával. Ezt akkor érdemes megtenni, ha elfogadta az adatmegosztási meghívást, de az "elfogadás és konfigurálás később" lehetőséget választotta. Ellenkező esetben előfordulhat, hogy egyszerűen módosítani szeretné a célhely Storage-fiókját a kapott adataihoz. 
 
-## <a name="navigate-to-a-received-data-share"></a>Keresse meg a kapott adatok megosztása
+## <a name="navigate-to-a-received-data-share"></a>Nyisson meg egy fogadott adatmegosztást
 
-A szolgáltatásban az Azure adatokat oszt meg, keresse meg a kapott megosztást, és válassza ki a **részletek** fülre. 
+Az Azure-beli adatmegosztási szolgáltatásban navigáljon a kapott megosztáshoz, és válassza a **részletek** lapot. 
 
-![Adatkészlet leképezés](./media/dataset-mapping.png "adatkészlet leképezés") 
+![Adatkészlet-hozzárendelési](./media/dataset-mapping.png "adatkészlet megfeleltetése") 
 
-Jelölje be a jelölőnégyzetet, hova szeretné hozzárendelni, és kattintson a kívánt adatkészlet mellett **+ térkép cél**. Szükség lehet első leképezésének megszüntetése, ha már konfigurálta az a cél tárfiók, és meg szeretné változtatni a leképezés egy másik tárfiókba. 
+Jelölje be azon adatkészlet melletti jelölőnégyzetet, amelyhez hozzá szeretné rendelni a célhelyet, majd kattintson a **+ Térkép**gombra a cél elemre. Előfordulhat, hogy először leképezésének megszüntetése kell, ha már konfigurált egy célként megadott Storage-fiókot, és módosítani szeretné a leképezést egy másik Storage-fiókra. 
 
-![Térkép cél](./media/dataset-map-target.png "cél-térkép") 
+![Leképezés célként]megadott(./media/dataset-map-target.png "leképezésre") 
 
-## <a name="select-a-new-storage-account"></a>Új tárfiók kiválasztása 
+## <a name="select-a-new-storage-account"></a>Új Storage-fiók kiválasztása 
 
-Válassza ki, hogy szeretné-e az adatok kerülnek a storage-fiók. Vegye figyelembe, hogy bármely már meglévő minden adatot korábban hozzárendelt tárfiókok nem automatikusan átkerül az új tárfiókot.
+Válassza ki azt a Storage-fiókot, amelybe az adatterületet szeretné kijelölni. Vegye figyelembe, hogy a korábban leképezett Storage-fiókokban már létező összes adattal a rendszer nem helyezi át automatikusan az új Storage-fiókba.
 
-![Cél tárfiók](./media/map-target.png "adatméretét") 
+![Cél Storage-fiók](./media/map-target.png "célhelyének tárolója") 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan indítsa el az adatok megosztása, folytassa a [az adatok megosztása](share-your-data.md) oktatóanyag.
+Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 
 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2019
 ms.author: kumud
-ms.openlocfilehash: 9bf44aa5ab18f94ec91650548dc13360ce1b1f3d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5fa340fc3c839d74f292f551b73184ea4df1c0f1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938498"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175952"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alhálózati delegálás hozzáadása vagy eltávolítása
 
@@ -31,20 +31,26 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és az alhálózatot, amelyet később egy Azure-szolgáltatáshoz delegál.
 
-1. A képernyő bal felső részén válassza az **erőforrás** > létrehozása**hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés**@no__t – 3**virtuális hálózat**lehetőséget.
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
-    | Beállítás | Érték |
+    | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *MyVirtualNetwork*. |
-    | Címtartomány | Adja meg a *10.0.0.0/16*értéket. |
-    | Subscription | Válassza ki előfizetését.|
-    | Resource group | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Location | Válassza a **EastUS**lehetőséget.|
+    | Név | Adja meg a *MyVirtualNetwork*. |
+    | Címtér | Adja meg a *10.0.0.0/16*értéket. |
+    | Előfizetés | Válassza ki előfizetését.|
+    | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
+    | Földrajzi egység | Válassza a **EastUS**lehetőséget.|
     | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.0.0.0/24*értéket. |
     |||
 1. Hagyja a többi értéket alapértelmezettként, majd válassza a **Létrehozás**lehetőséget.
+
+## <a name="permissons"></a>Permissons
+
+Ha nem hozta létre azt az alhálózatot, amelyet delegálni szeretne egy Azure-szolgáltatáshoz, a következő engedélyre van szüksége: `Microsoft.Network/virtualNetworks/subnets/write`.
+
+A beépített [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör a szükséges engedélyeket is tartalmazza.
 
 ## <a name="delegate-a-subnet-to-an-azure-service"></a>Alhálózat delegálása Azure-szolgáltatásba
 
@@ -62,5 +68,5 @@ Ebben a szakaszban az előző szakaszban létrehozott alhálózatot delegálja e
 3. Válassza az **alhálózatok**lehetőséget, a **Beállítások**területen, majd válassza a **mySubnet**lehetőséget.
 4. A *mySubnet* lapon az **alhálózati delegálás** listához válassza a **nincs** lehetőséget az **alhálózat delegálása szolgáltatásban**listában felsorolt szolgáltatások közül. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ismerje meg, hogyan [kezelheti az alhálózatokat az Azure-ban](virtual-network-manage-subnet.md).

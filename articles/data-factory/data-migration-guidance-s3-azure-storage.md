@@ -56,7 +56,7 @@ Alapértelmezés szerint az ADF az Amazon S3-ből az Azure-ba Blob Storage vagy 
 
 Ha nem szeretné, hogy az adatátvitel nyilvános interneten keresztül történjen, magasabb szintű biztonságot érhet el, ha az AWS Direct-kapcsolat és az Azure Express Route közötti privát kapcsolaton keresztül továbbítja az adatátvitelt.  Tekintse át az alábbi megoldás-architektúrát, hogy ez hogyan érhető el. 
 
-## <a name="solution-architecture"></a>Megoldás architektúrája
+## <a name="solution-architecture"></a>Megoldásarchitektúra
 
 Az adatáttelepítés nyilvános interneten keresztül:
 
@@ -138,7 +138,7 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 ### <a name="additional-references"></a>További referenciák 
 - [Amazon Simple Storage szolgáltatás-összekötő](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Az Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob Storage-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage Gen2-összekötő](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Másolási tevékenység teljesítményének hangolási útmutatója](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Saját üzemeltetésű Integration Runtime létrehozása és konfigurálása](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
@@ -153,6 +153,6 @@ A fenti feltételezések alapján a becsült ár a következő:
 
 Itt látható az a [sablon](solution-template-migration-s3-azure.md) , amellyel az Amazon S3-ból Azure Data Lake Storage Gen2 több száz millió fájlból álló petabájt migrálhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)

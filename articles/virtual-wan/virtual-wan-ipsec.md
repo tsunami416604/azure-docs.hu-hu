@@ -1,27 +1,31 @@
 ---
-title: Az Azure virtuális WAN alapértelmezett IPSec-házirendek |} A Microsoft Docs
-description: Ez a cikk ismerteti az IPSec-házirendek a virtuális WAN.
+title: Azure virtuális WAN alapértelmezett IPsec-házirendjei | Microsoft Docs
+description: Ez a cikk a virtuális WAN-hoz tartozó IPsec-házirendekkel kapcsolatos információkat tartalmaz.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: fcc9979b9f6d2efcdcbb575f3fd149d8df9c20b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5533e35a632f2d58bd8af8f52aafa11d1b677cb9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66307212"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168401"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtuális WAN alapértelmezett szabályzatok az IPsec-kapcsolat
+# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>Virtuális WAN alapértelmezett házirendjei az IPsec-kapcsolathoz
 
-Ez a cikk bemutatja a támogatott IPsec-házirend kombinációk.
+Ez a cikk az IPsec-házirendek támogatott kombinációit mutatja be.
 
-## <a name="default-ipsec-policies"></a>Alapértelmezett IPSec-házirendek
+## <a name="default-ipsec-policies"></a>Alapértelmezett IPsec-házirendek
 
 [!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="custom-ipsec-policies"></a>Egyéni IPsec-házirendek
 
-Virtuális WAN kapcsolatos további információkért lásd: [kapcsolatos Azure virtuális WAN](virtual-wan-about.md) és a [Azure virtuális WAN GYIK](virtual-wan-faq.md).
+[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-custom-include.md)]
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).

@@ -1,6 +1,6 @@
 ---
 title: Ismerkedés az Azure IoT Hub modul identitásával és modullal (node. js) | Microsoft Docs
-description: Learn how to create module identity and update module twin using IoT SDKs for Node.js.
+description: Ismerje meg, hogyan hozhatja létre a modul identitását és a modulokat a Node. js-hez készült IoT SDK-k használatával.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: e33987d382a2afd93644a413084339fcd330d2e2
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029715"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165910"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (node. js)
 
@@ -118,7 +118,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre, amely létrehoz egy esz
 
     ```
 
-Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha ez a modulazonosító már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő modulinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
 Futtassa ezt a következő csomópont használatával: Add. js. Megadja az eszköz identitásához tartozó kapcsolatok karakterláncát, és egy másikat a modul identitásához.
 
@@ -210,7 +210,7 @@ Ebben a szakaszban egy Node. js-alkalmazást hoz létre a szimulált eszközön,
    twin state reported
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

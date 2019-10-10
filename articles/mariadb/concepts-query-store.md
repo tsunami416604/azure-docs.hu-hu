@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 69e001530de238f5d38c46b0a238a087f4487d9c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023679"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166230"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
@@ -87,24 +87,24 @@ Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesíté
 
 A lekérdezési tároló paramétereinek konfigurálásához a következő beállítások érhetők el.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma-eszközök egy részét. | ÖSSZES | NINCS, AZ ÖSSZES |
+| query_store_capture_mode | A lekérdezési tároló funkció be-és kikapcsolása az érték alapján. Megjegyzés: Ha a performance_schema ki van kapcsolva, a query_store_capture_mode bekapcsolása bekapcsolja a performance_schema-t és a szolgáltatáshoz szükséges teljesítmény-séma eszközök egy részhalmazát. | ÖSSZES | NINCS, AZ ÖSSZES |
 | query_store_capture_interval | A lekérdezési tár rögzítési időköze percben kifejezve. Lehetővé teszi a lekérdezési metrikák összesítésének intervallumának megadását | 15 | 5 - 60 |
 | query_store_capture_utility_queries | Be-és kikapcsolás a rendszeren futtatott összes segédprogram-lekérdezés rögzítéséhez. | NO | IGEN, NEM |
 | query_store_retention_period_in_days | A lekérdezési tárolóban tárolt adatmegőrzési idő (nap). | 7 | 1 - 30 |
 
 A következő lehetőségek kifejezetten a várakozási statisztikára vonatkoznak.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NEZ EGY | NINCS, AZ ÖSSZES |
+| query_store_wait_sampling_capture_mode | Engedélyezi a várakozási statisztika bekapcsolását vagy kikapcsolását. | NEZ egy | NINCS, AZ ÖSSZES |
 | query_store_wait_sampling_frequency | Megváltoztatja a várakozási mintavételezés gyakoriságát másodpercben. 5 – 300 másodperc. | 30 | 5-300 |
 
 > [!NOTE]
 > Jelenleg a **query_store_capture_mode** felülírja ezt a konfigurációt, ami azt jelenti, hogy a **query_store_capture_mode** és a **query_store_wait_sampling_capture_mode** egyaránt engedélyezve kell lennie mind a várakozási statisztikák működéséhez. Ha a **query_store_capture_mode** ki van kapcsolva, a várakozási statisztikák ki vannak kapcsolva, a várakozási statisztikák pedig a performance_schema által engedélyezett és a lekérdezési tároló által rögzített query_text is használják.
 
-A [Azure Portal](howto-server-parameters.md) használatával beolvashatja vagy beállíthatja a paraméterhez tartozó eltérő értéket.
+A [Azure Portal](howto-server-parameters.md) használatával beolvashatja vagy beállíthatja a paraméterhez tartozó eltérő értéket.
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
@@ -116,21 +116,21 @@ A lekérdezések normalizálása úgy történik, hogy a konstansok és konstans
 
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van.
 
-| **Name** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name (Név)** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | A séma neve |
 | `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
-| `timestamp_id` | timestamp| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval-konfiguráción alapul.|
+| `timestamp_id` | időbélyeg| NO| A lekérdezés végrehajtásának időbélyegzője. Ez a query_store_interval-konfiguráción alapul.|
 | `query_digest_text`| LONGTEXT| NO| A normalizált lekérdezés szövege az összes literál eltávolítása után|
 | `query_sample_text` | LONGTEXT| NO| A tényleges lekérdezés első megjelenése literálokkal|
-| `query_digest_truncated` | bit| IGEN| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
+| `query_digest_truncated` | bites| igen| Azt jelzi, hogy a lekérdezés szövege csonkítva lett-e. Az érték igen, ha a lekérdezés hosszabb 1 KB-nál|
 | `execution_count` | bigint (20)| NO| A lekérdezésnek az időbélyeg-AZONOSÍTÓhoz/a beállított intervallum időszakában végrehajtott végrehajtásainak száma|
 | `warning_count` | bigint (20)| NO| A belső művelet során a lekérdezés által generált figyelmeztetések száma|
 | `error_count` | bigint (20)| NO| A lekérdezés által az intervallum során generált hibák száma|
-| `sum_timer_wait` | double| IGEN| A lekérdezés teljes végrehajtási ideje az intervallumban|
-| `avg_timer_wait` | double| IGEN| A lekérdezés átlagos végrehajtási ideje az intervallumban|
-| `min_timer_wait` | double| IGEN| A lekérdezés minimális végrehajtási ideje|
-| `max_timer_wait` | double| IGEN| Maximális végrehajtási idő|
+| `sum_timer_wait` | double| igen| A lekérdezés teljes végrehajtási ideje az intervallumban|
+| `avg_timer_wait` | double| igen| A lekérdezés átlagos végrehajtási ideje az intervallumban|
+| `min_timer_wait` | double| igen| A lekérdezés minimális végrehajtási ideje|
+| `max_timer_wait` | double| igen| Maximális végrehajtási idő|
 | `sum_lock_time` | bigint (20)| NO| A lekérdezés végrehajtásához tartozó összes zárolásra fordított teljes idő az adott időszak alatt|
 | `sum_rows_affected` | bigint (20)| NO| Érintett sorok száma|
 | `sum_rows_sent` | bigint (20)| NO| Az ügyfélnek eljuttatott sorok száma|
@@ -142,17 +142,17 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 | `sum_no_good_index_used` | bigint (20)| NO| Ennyi alkalommal, amikor a lekérdezés-végrehajtó motor nem használ jó indexeket|
 | `sum_created_tmp_tables` | bigint (20)| NO| A létrehozott ideiglenes táblák száma összesen|
 | `sum_created_tmp_disk_tables` | bigint (20)| NO| A lemezen létrehozott ideiglenes táblák teljes száma (I/O)|
-| `first_seen` | timestamp| NO| A lekérdezés első előfordulása (UTC) az összesítési ablakban|
-| `last_seen` | timestamp| NO| A lekérdezés utolsó előfordulása (UTC) ebben az összesítési ablakban|
+| `first_seen` | időbélyeg| NO| A lekérdezés első előfordulása (UTC) az összesítési ablakban|
+| `last_seen` | időbélyeg| NO| A lekérdezés utolsó előfordulása (UTC) ebben az összesítési ablakban|
 
 ### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
 
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-| **Name**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Name (Név)**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Az időköz kezdete (15 perces növekmény)|
-| `interval_end` | timestamp | NO| Az intervallum vége (15 perces növekmény)|
+| `interval_start` | időbélyeg | NO| Az időköz kezdete (15 perces növekmény)|
+| `interval_end` | időbélyeg | NO| Az intervallum vége (15 perces növekmény)|
 | `query_id` | bigint (20) | NO| Generált egyedi azonosító a normalizált lekérdezésen (a lekérdezési tárolóból)|
 | `query_digest_id` | varchar (32) | NO| A normalizált lekérdezés szövege az összes literál eltávolítása után (a lekérdezési tárolóból) |
 | `query_digest_text` | LONGTEXT | NO| A tényleges lekérdezés első megjelenése literálokkal (a lekérdezési tárolóból) |
@@ -163,7 +163,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 ### <a name="functions"></a>Functions
 
-| **Name**| **Leírás** |
+| **Name (Név)**| **Leírás** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | A lekérdezési tár összes adatának kiürítése a megadott időbélyegző előtt |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | A várakozási esemény összes adatának törlése a megadott időbélyegző előtt |
@@ -176,6 +176,6 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

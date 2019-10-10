@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Helyi rendszerkép elemzése – REST,C#'
+title: 'Rövid útmutató: helyi rendszerkép elemzése – REST,C#'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy helyi képet fog elemezni a Computer Vision API és a C# használatával.
 services: cognitive-services
@@ -18,7 +18,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177352"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: Helyi rendszerkép elemzése a Computer Vision REST API használatávalC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Gyors útmutató: helyi rendszerkép elemzése a Computer Vision REST API használatával ésC#
 
 Ebben a rövid útmutatóban egy helyileg tárolt rendszerképet elemez a vizualizációs funkciók kinyeréséhez Computer Vision REST API használatával. A [képelemzési](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) módszer használatával kinyerheti a vizuális funkciók adatait a képtartalom alapján.
 
@@ -238,7 +238,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy alapszintű Windows-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le.
 

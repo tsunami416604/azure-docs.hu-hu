@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72166943"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: Telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (C)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (C)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -49,11 +49,11 @@ A következő környezetekben az SDK-t használhatja a csomagok és könyvtárak
 
 * **Linux**: az apt-get csomagok Ubuntu 16,04-es és 18,04-as csomaggal érhetők el az alábbi CPU-architektúrák használatával: amd64, arm64, armhf és i386. További információkért lásd: [Az apt-get használata C eszköz ügyfél-projekt létrehozására az Ubuntu rendszeren](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md).
 
-* **mbed**: Ahhoz, hogy a fejlesztők alkalmazásokat hozzanak létre a mbed platformon, közzétettünk egy könyvtárat és mintákat, amelyekkel percek alatt elsajátíthatja az Azure IoT Hub. További információk: [Az mbed könyvtár használata](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
+* **mbed**: ahhoz, hogy a fejlesztők mbed platformon alkalmazásokat hozzanak létre, közzétettünk egy könyvtárat és mintákat, amelyekkel percek alatt elsajátíthatja az Azure IoT hub. További információk: [Az mbed könyvtár használata](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#mbed).
 
-* **Arduino**: Ha Arduino-t fejleszt, használhatja az Arduino IDE Library Managerben elérhető Azure IoT könyvtárat. Bővebb információk: [Az Azure IoT Hub könyvtár – Arduino](https://github.com/azure/azure-iot-arduino).
+* **Arduino**: Ha Arduino-fejlesztést végez, kihasználhatja az Arduino IDE Library Managerben elérhető Azure IoT könyvtárat. Bővebb információk: [Az Azure IoT Hub könyvtár – Arduino](https://github.com/azure/azure-iot-arduino).
 
-* **iOS**: A IoT Hub eszköz SDK a Mac és az iOS-eszközök fejlesztéséhez CocoaPods érhető el. További információ: [iOS példák Microsoft Azure IoT számára](https://cocoapods.org/pods/AzureIoTHubClient).
+* **iOS**: Mac és iOS rendszerű eszközfejlesztéshez az IoT Hub eszközoldali SDK mint CocoaPods érhető el. További információ: [iOS példák Microsoft Azure IoT számára](https://cocoapods.org/pods/AzureIoTHubClient).
 
 Ebben a rövid útmutatóban azonban elő fog készíteni egy fejlesztési környezetet, amellyel klónozott és felépíthető az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) a githubról. A rövid útmutató mintakódokat az SDK tartalmazza a GitHubon.
 
@@ -111,9 +111,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyCDevice**: A regisztrálni kívánt eszköz neve. Javasoljuk, hogy a **MyCDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **MyCDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyCDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
@@ -121,7 +121,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa a következő parancsot a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
@@ -180,7 +180,7 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name {YourIoTHubName} --output table
@@ -192,7 +192,7 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése a hubhoz C alkalmazás használatával, valamint a telemetria olvasása a központban a Azure Cloud Shell használatával.
 

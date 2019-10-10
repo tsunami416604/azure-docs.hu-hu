@@ -16,12 +16,12 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326374"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170029"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Meglévő hozzáférési csomag szerkesztése és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -34,7 +34,7 @@ Egy hozzáférési csomag lehetővé teszi az erőforrások és házirendek egys
 
 Ez a cikk a meglévő hozzáférési csomagok szerkesztését és kezelését ismerteti.
 
-## <a name="add-resource-roles"></a>Erőforrás-szerepkörök hozzáadása
+## <a name="add-resource-roles"></a>Erőforrás-Szerepkörök hozzáadása
 
 Az erőforrás-szerepkörök az erőforrásokhoz társított engedélyek gyűjteményei. Ahhoz, hogy a felhasználók számára elérhetővé tegye az erőforrásokat, erőforrás-szerepköröket adhat hozzá a hozzáférési csomaghoz. Hozzáadhat erőforrás-szerepköröket a csoportokhoz, a csoportokhoz, az alkalmazásokhoz és a SharePoint-webhelyekhez.
 
@@ -80,9 +80,9 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
     |  |  |
     | --- | --- |
     | Biztonság | Erőforrásokhoz való hozzáférés biztosítására szolgál. |
-    | Disztribúció | Az értesítések egy csoportba való küldésére szolgál. |
+    | Terjesztés | Az értesítések egy csoportba való küldésére szolgál. |
     | O365 | Az Office 365-csoport, amely nem engedélyezett csapatok. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
-    | Csapat | Az Office 365-csoport, amelyeken engedélyezve van a csapatok. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
+    | Team | Az Office 365-csoport, amelyeken engedélyezve van a csapatok. A felhasználók közötti, a vállalaton belüli és kívüli együttműködéshez használatos. |
 
 1. A **szerepkör** listából válassza a **tulajdonos** vagy a **tag**elemet.
 
@@ -90,7 +90,7 @@ További információt a csoportok és az [Office 365-csoportok és a Microsoft 
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása csoporthoz vagy csapathoz](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. Kattintson a **Hozzáadás**lehetőségre.
+1. Kattintson a **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan ennek a csoportnak vagy csapatnak a tagjai lesznek, amikor hozzáadják őket.
 
@@ -121,7 +121,7 @@ Az alkalmazások kiválasztásakor a következő szempontokat érdemes figyelemb
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy alkalmazáshoz](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. Kattintson a **Hozzáadás**lehetőségre.
+1. Kattintson a **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez az alkalmazáshoz, amikor az hozzá van adva.
 
@@ -141,7 +141,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
     ![Hozzáférési csomag – erőforrás-szerepkör hozzáadása egy SharePoint Online-webhelyhez](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. Kattintson a **Hozzáadás**lehetőségre.
+1. Kattintson a **Hozzáadás** parancsra.
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók automatikusan hozzáférhetnek ehhez a SharePoint Online-webhelyhez, amikor az hozzá van adva.
 
@@ -161,7 +161,7 @@ Az Azure AD automatikusan hozzá tud rendelni felhasználókat a SharePoint Onli
 
     A hozzáférési csomaghoz meglévő hozzárendelésekkel rendelkező felhasználók számára a rendszer automatikusan visszavonja a hozzáférését erre az erőforrás-szerepkörre, ha az eltávolításra kerül.
 
-## <a name="add-a-new-policy"></a>Új szabályzat felvétele
+## <a name="add-a-new-policy"></a>Új szabályzat hozzáadása
 
 A hozzáférési csomag igénylésének megadásának módja egy szabályzat létrehozása. Egyetlen hozzáférési csomaghoz több szabályzat is létrehozható, ha engedélyezni szeretné, hogy a különböző felhasználók a különböző jóváhagyási és lejárati beállításokkal rendelkező hozzárendeléseket kapjanak. Egyetlen házirend nem használható belső és külső felhasználók ugyanahhoz a hozzáférési csomaghoz való hozzárendeléséhez. Ugyanakkor két házirendet is létrehozhat ugyanabban a hozzáférési csomagban – egyet a belső felhasználókhoz, egyet pedig a külső felhasználókhoz. Ha több házirend is érvényes a felhasználóra, a rendszer a kérésük időpontjában kérni fogja, hogy válassza ki azt a szabályzatot, amelyet hozzá szeretne rendelni.
 
@@ -309,7 +309,7 @@ A címtár legtöbb felhasználója bejelentkezhet a saját hozzáférési port�
 
 Fontos, hogy átmásolja a teljes saját hozzáférési portál hivatkozást, amikor egy belső üzleti partnernek küldi el. Ezzel biztosíthatja, hogy a partner hozzáférjen a címtár portálához a kérelem elvégzéséhez. 
 
-A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtári hivatkozást, és befejezi a hozzáférési csomag azonosítóját. Győződjön meg arról, hogy a hivatkozás a következők mindegyikét tartalmazza:
+A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtári hivatkozást, és befejezi a hozzáférési csomag AZONOSÍTÓját. Győződjön meg arról, hogy a hivatkozás a következők mindegyikét tartalmazza:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -365,7 +365,6 @@ Hozzáférési csomag csak akkor törölhető, ha nem rendelkezik aktív felhasz
 
 A jogosultságok kezelése során az Azure AD naponta többször dolgozza fel a hozzáférési csomagok hozzárendeléseinek és erőforrásainak tömeges módosításait. Így ha hozzárendelést végez, vagy megváltoztatja a hozzáférési csomag erőforrás-szerepköreit, akár 24 órát is igénybe vehet az Azure AD-ben, valamint azt, hogy mennyi időt vesz igénybe a módosítások más Microsoft Online szolgáltatásokba vagy csatlakoztatott SaaS-alkalmazásba való propagálása. s. Ha a változás csupán néhány objektumot érint, a változás valószínűleg csak néhány percet vesz igénybe az Azure AD-ben, amely után a többi Azure AD-összetevő ezt követően észleli az SaaS-alkalmazások módosítását és frissítését. Ha a változás több ezer objektumot érint, akkor a módosítás hosszabb ideig tart. Ha például egy 2 alkalmazásból és egy 100 felhasználói hozzárendelésből álló hozzáférési csomaggal rendelkezik, és úgy dönt, hogy egy SharePoint-webhely szerepkört ad hozzá a hozzáférési csomaghoz, akkor előfordulhat, hogy az összes felhasználó a SharePoint-webhely szerepkörbe való belefoglalása után késésben van. Nyomon követheti az előrehaladást az Azure AD-naplóban, az Azure AD-kiépítési naplóban és a SharePoint-webhely naplófájljaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Katalógus tulajdonosának vagy egy Access Package Managernek a hozzáadása](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

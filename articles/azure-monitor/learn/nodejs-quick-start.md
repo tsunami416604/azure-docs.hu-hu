@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Figyelés az Azure Application Insights szolgáltatással'
+title: 'Gyors útmutató: monitorozás az Azure Application Insights'
 description: A Node.js-webalkalmazások gyors üzembe helyezésével kapcsolatos utasítások az Application Insights-monitorozáshoz
 services: application-insights
 keywords: ''
@@ -7,21 +7,21 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.service: application-insights
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 1db26002167f4b7c5b4fc19699ddb021de8ac23d
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703014"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177682"
 ---
-# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Gyors útmutató: A Node. js-alapú webalkalmazás figyelésének megkezdése az Azure Application Insights
-
-Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az SDK 0.20-as verziós kiadásától kezdve a gyakori külsős csomagok, például a MongoDB, a MySQL és a Redis monitorozása is lehetségessé vált.
+# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rövid útmutató: a Node. js-webalkalmazás figyelésének megkezdése az Azure Application Insights
 
 Ez a rövid útmutató végigvezeti a Node.js-hez készült Application Insights SDK 0.22-es verziója egy meglévő Node.js-webalkalmazáshoz történő hozzáadásának folyamatán.
+
+Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az SDK 0.20-as verziós kiadásától kezdve a gyakori külsős csomagok, például a MongoDB, a MySQL és a Redis monitorozása is lehetségessé vált.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -50,11 +50,11 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    Megjelenik egy konfigurációs oldal; a beviteli mezők kitöltéséhez használja az alábbi táblázatot. 
 
-    | Beállítások        | Value           | Leírás  |
+    | Beállítások        | Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
+   | **Name (Név)**      | Globálisan egyedi érték | A figyelt alkalmazást azonosító név |
    | **Alkalmazás típusa** | Node.js-alkalmazás | A figyelt alkalmazás típusa |
-   | **Location** | East US | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
 2. Kattintson a **Létrehozás** gombra.
 
@@ -92,7 +92,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Alkalmazástérkép](./media/nodejs-quick-start/5appmap.png)
 
-3. Válassza az **app Analytics** ikon ![alkalmazás-hozzárendelés](./media/nodejs-quick-start/006.png) ikon **nézetét az elemzés elemnél**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Válassza ki az **alkalmazás-elemzési** ikont ![Application Térkép ikon @ no__t-2 **nézetet az Analyticsben**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/nodejs-quick-start/6analytics.png)
 
@@ -135,7 +135,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
 2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Teljesítményproblémák észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

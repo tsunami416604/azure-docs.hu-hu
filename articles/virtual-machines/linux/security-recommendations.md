@@ -1,6 +1,6 @@
 ---
 title: Biztonsági javaslatok az Azure-beli Linux rendszerű virtuális gépekhez
-description: Biztonsági javaslatok az Azure-beli virtuális gépekhez. A javaslatok megvalósítása a közös felelősségi modellben leírtak szerint biztosítja a biztonsági kötelezettségek teljesítését, és javítja az üzemelő példányok általános biztonságát
+description: Alkalmazza ezeket az ajánlásokat a megosztott felelősségi modellben ismertetett biztonsági kötelezettségek teljesítéséhez, valamint az üzemelő példányok általános biztonságának javításához.
 services: virtual-machines
 author: barclayn
 manager: RKarlin
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 39d83907256596e2d6904422f9bf71e435614f03
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: c7a313a73af7969fc203ee00644901539890f7a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71163981"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174156"
 ---
 # <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Biztonsági javaslatok az Azure-beli Linux rendszerű virtuális gépekhez
 

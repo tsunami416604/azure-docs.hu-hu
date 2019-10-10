@@ -58,9 +58,9 @@ cd C:\HDI
 
     Ez a parancs létrehoz egy `hbaseapp` nevű könyvtárat az aktuális helyen, amely egy alapszintű Maven-projektet tartalmaz. A második parancs a munkakönyvtárat `hbaseapp` értékre módosítja. A harmadik parancs létrehoz egy új könyvtárat, `conf`, amelyet később fog használni. A `hbaseapp` könyvtár a következő elemeket tartalmazza:
 
-    * `pom.xml`:  A Project Object Model ([Pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) a projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazza.
-    * `src\main\java\com\microsoft\examples`: Az alkalmazás kódját tartalmazza.
-    * `src\test\java\com\microsoft\examples`: Az alkalmazáshoz tartozó teszteket tartalmazza.
+    * `pom.xml`: a Project Object Model ([Pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) a projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazza.
+    * `src\main\java\com\microsoft\examples`: az alkalmazás kódját tartalmazza.
+    * `src\test\java\com\microsoft\examples`: az alkalmazásra vonatkozó teszteket tartalmaz.
 
 2. Távolítsa el a generált példa kódját. Törölje a generált teszt-és alkalmazásfájlok `AppTest.java` és `App.java` értéket az alábbi parancsok beírásával:
 
@@ -101,8 +101,8 @@ Ez a szakasz azt jelzi, hogy a projektnek szüksége van a **hbase-Client** és 
 
 | HDInsight-fürt verziója | Apache HBase-verzió használata |
 | --- | --- |
-| 3.6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 3,6 | 1.1.2 |
+| 4,0 | 2.0.0 |
 
 A HDInsight-verziókkal és-összetevőkkel kapcsolatos további információkért tekintse meg [a HDInsight-ben elérhető különböző Apache Hadoop összetevőket](../hdinsight-component-versioning.md).
 
@@ -702,6 +702,6 @@ A következő lépések az Azure PowerShell az [modul](https://docs.microsoft.co
 
 A `-showErr` paraméterrel megtekintheti a feladatok futtatásakor létrehozott Standard hibát (STDERR).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan használható az az sqlline használata az Apache HBase](apache-hbase-phoenix-squirrel-linux.md)

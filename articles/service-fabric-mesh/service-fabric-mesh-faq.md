@@ -36,9 +36,9 @@ Igen. Az egyes előfizetések kvótái a következők:
 
 - Alkalmazások száma: 5
 - Magok száma alkalmazásban: 12
-- RAM teljes száma: 48 GB
-- Hálózati és beléptetési végpontok: 5
-- A csatolni kívánt Azure-kötetek: 10
+- RAM-memória teljes száma: 48 GB
+- A hálózat és a bejövő forgalom végpontja: 5
+- Az Azure által csatolható kötetek: 10
 - A szolgáltatás replikáinak száma: 3
 - Az üzembe helyezhető legnagyobb tároló a 4 maggal és a 16GB RAM-mal van korlátozva.
 - A tárolók számára kioszthat részleges magokat 0,5 mag-onként, legfeljebb 6 magot vehet fel.
@@ -89,7 +89,7 @@ A következő Container operációsrendszer-lemezképeket használhatja a szolg�
 
 - Windows – windowsservercore és nanoserver
     - Windows Server 1709
-    - A Windows Server 1803-as verzióban
+    - Windows Server 1803
     - Windows Server 1809
     - Windows Server 2019 LTSC
 - Linux
@@ -109,7 +109,7 @@ Minden olyan tárolón futtatható, amely az alkalmazás-erőforrásra vonatkoz�
 A tárolóból a Service Fabric DNS szolgáltatásba küldött kimenő DNS-lekérdezések bizonyos körülmények között sikertelenek lehetnek. A vizsgálat folyamatban van. Az alábbiak enyhítése:
 
 - Használja a Windows Fall Creators Update (1709-es verzió) vagy újabb verzióját az alaptároló rendszerképének használatával.
-- Ha a szolgáltatás neve önmagában nem működik, próbálja meg a teljes nevet: ServiceName.ApplicationName.
+- Ha a szolgáltatás neve nem működik, próbálja meg a teljes nevet: szolgáltatásnév. ApplicationName.
 - A szolgáltatás Docker-fájljában adja hozzá a `EXPOSE <port>` értéket, ahol a port az a port, amelyen a szolgáltatást kiteszi. Példa:
 
 ```Dockerfile
@@ -124,9 +124,9 @@ A helyi fejlesztési fürtben használja a `{serviceName}.{applicationName}` ér
 
 Az Azure Mesh jelenleg nem támogatja a DNS-feloldást az alkalmazások között.
 
-A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-hibákért tekintse meg a következőt: [Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)hibakeresése.
+A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-problémákkal kapcsolatban lásd: [Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)hibakeresése.
 
-### <a name="networking"></a>Hálózat
+### <a name="networking"></a>Hálózatkezelés
 
 Előfordulhat, hogy a ServiceFabric hálózati NAT eltűnnek az alkalmazás helyi gépen való futtatásakor. Annak diagnosztizálásához, hogy ez történt-e, futtassa a következő parancsot egy parancssorból:
 
@@ -170,6 +170,6 @@ Az alkalmazás modelljében használja a hálózatok és kötetek teljes erőfor
 
 Ez egy hiba, és a javítás megvalósítása folyamatban van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az [áttekintést](service-fabric-mesh-overview.md).

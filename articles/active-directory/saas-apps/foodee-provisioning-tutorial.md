@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Foodee konfigurálása az automatikus felhasználó-kiépítés Azure Active Directory használatával | Microsoft Docs'
+title: 'Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása Azure Active Directory használatával | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a Foodee felhasználói fiókjait.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812721"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170071"
 ---
-# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: Foodee konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
 
 Ez a cikk bemutatja, hogyan konfigurálhatja a Azure Active Directory (Azure AD) a Foodee és az Azure AD-ben, hogy automatikusan kiépítse vagy felépítse a felhasználókat vagy csoportokat a Foodee.
 
@@ -108,7 +108,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
     ![Az Foodee hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza ki a kiépítés lapot.
+1. Válassza ki a **kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
@@ -118,7 +118,7 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
 1. A **rendszergazdai hitelesítő adatok**területen tegye a következőket:
 
-   a. A **bérlői URL-cím** mezőbe írja be a korábban lekért **https://concierge.food.ee/scim/v2** értéket.
+   a. A **bérlői URL-cím** mezőben adja meg a korábban lekért **https: \//concierge. Food. ee/scim/v2** értéket.
 
    b. A **titkos jogkivonat** mezőben adja meg a korábban lekért **API-jogkivonat** értékét.
    
@@ -173,6 +173,6 @@ A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehal
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

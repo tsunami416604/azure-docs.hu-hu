@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048960"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174831"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Gyors útmutató: Eszköz-képesség modell használata IoT Plug and Play eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Gyors útmutató: eszköz-képesség modell használata IoT-Plug and Play eszköz létrehozásához és a IoT Central-alkalmazáshoz való csatlakoztatásához
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
@@ -31,9 +31,9 @@ Fejezze be az [Azure IoT Central-alkalmazás létrehozása (előzetes verziójú
 
 A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket a helyi gépre:
 
-* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az **asztali C++ fejlesztést** a Visual Studio telepítésekor számítási feladatokkal végezze el.
+* [Visual Studio (közösségi, szakmai vagy vállalati)](https://visualstudio.microsoft.com/downloads/) – ügyeljen arra, hogy a **NuGet csomagkezelő** összetevőjét és az asztali fejlesztést a Visual Studio telepítésekor számítási **feladatokkal C++**  végezze el.
 * [Git](https://git-scm.com/download/).
-* [CMAK](https://cmake.org/download/) – a **CMAK**telepítésekor válassza a **CMAK hozzáadása**a rendszerútvonalhoz lehetőséget.
+* [CMAK](https://cmake.org/download/) – a **CMAK**telepítésekor válassza a **CMAK hozzáadása a rendszerútvonalhoz**lehetőséget.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Node.js](https://nodejs.org/)
 * A `dps-keygen` segédprogram:
@@ -42,12 +42,12 @@ A rövid útmutató elvégzéséhez telepítenie kell a következő szoftvereket
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>Az Azure IoT Device Workbench telepítése
+### <a name="install-azure-iot-tools"></a>Az Azure IoT-eszközök telepítése
 
-Az alábbi lépésekkel telepítheti az Azure IoT Device Workbench bővítményt a VS Code-ban:
+Az alábbi lépésekkel telepítheti az Azure IoT Tools Extension Pack csomagot a VS Code-ban:
 
-1. A VS Code-ban válassza a kiterjesztések lapot.
-1. Keressen rá az **Azure IoT Device Workbench**kifejezésre.
+1. A VS Code-ban válassza a **kiterjesztések** lapot.
+1. Keresse meg az **Azure IoT-eszközöket**.
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
@@ -64,7 +64,7 @@ Hozzon létre egy fejlesztési környezetet, amellyel létrehozhatja az Azure Io
 
     Ez a művelet várhatóan több percig is eltarthat.
 
-1. Hozzon `central_app` létre egy mappát a tárház helyi klónjának gyökerében. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
+1. Hozzon létre egy `central_app` mappát a tárház helyi klónjának gyökerében. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -95,11 +95,11 @@ Egy eszköz IoT Central alkalmazáshoz való csatlakoztatásához szükség van 
 
 Ebben a rövid útmutatóban egy MxChip IoT fejlesztői készlet-eszköz nyilvános DCM-et használ. A kód futtatásához nincs szükség tényleges fejlesztői készlet-eszközre, ebben a rövid útmutatóban lefordítja a kódot Windows rendszeren való futtatásra.
 
-1. Mappa `azure-iot-sdk-c\central_app` megnyitása a vs Code-ban.
+1. Nyissa meg `azure-iot-sdk-c\central_app` mappát a VS Code-ban.
 
 1. A **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza a **modell-adattár megnyitása**lehetőséget. Válassza a **nyilvános tárház**lehetőséget. A VS Code a nyilvános modell tárházában lévő DCMs listáját jeleníti meg.
 
-1. Válassza ki a **MXChip IoT fejlesztői készlet** DCM azonosítót `urn:mxchip:mxchip_iot_devkit:1`. Ezután válassza a **Letöltés**lehetőséget. Most már rendelkezik a DCM- `central_app` példánnyal a mappában.
+1. Válassza ki a **MXChip IoT fejlesztői készlet** DCM azonosítót `urn:mxchip:mxchip_iot_devkit:1` azonosítóval. Ezután válassza a **Letöltés**lehetőséget. Most már rendelkezik egy másolattal a DCM-ről a `central_app` mappában.
 
 ![A Model adattár és a DCM](./media/quick-create-pnp-device-pnp/public-repository.png)
 
@@ -110,7 +110,7 @@ Ebben a rövid útmutatóban egy MxChip IoT fejlesztői készlet-eszköz nyilvá
 
 Most már rendelkezik a **MXChip IoT fejlesztői készlet** DCM-vel és a hozzá tartozó felületekkel, létrehozhatja a modellt megvalósító eszköz kódját. A C-kód a (z) VS Code-ban való létrehozásához:
 
-1. Ha a DCM-fájlok mappája meg van nyitva, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának**előállítása lehetőséget.
+1. Ha a DCM-fájlok mappája meg van nyitva, a **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza az **eszköz kódjának előállítása**lehetőséget.
 
     > [!NOTE]
     > Amikor első alkalommal használja a IoT Plug and Play Code Generator segédprogramot, a letöltés eltarthat néhány másodpercig.
@@ -125,7 +125,7 @@ Most már rendelkezik a **MXChip IoT fejlesztői készlet** DCM-vel és a hozzá
 
 1. Válassza a **DPS (eszköz kiépítési szolgáltatás) szimmetrikus kulcsát** a csatlakoztatási módszerként.
 
-1. A vs Code egy új ablakot nyit meg, amely létrehozta a létrehozott `devkit_device` kódlap-fájlokat a mappában.
+1. A VS Code egy új ablakot nyit meg az `devkit_device` mappában létrehozott kódlap-fájlokkal.
 
 ![Generált eszköz kódja](./media/quick-create-pnp-device-pnp/generated-code.png)
 
@@ -133,9 +133,9 @@ A kapcsolódási adatok hozzáadása a generált eszköz kódjához:
 
 1. A generált C kódot tartalmazó VS Code ablakban. Nyissa meg az `main.c` fájlt.
 
-1. Cserélje `[DPS Id Scope]` le a t a **hatókör** -azonosítóra, amelyet korábban jegyzett készített.
+1. Cserélje le a `[DPS Id Scope]` értéket a korábban jegyzett **hatókör-azonosítóra** .
 
-1. Cserélje `[DPS symmetric key]` le az eszközt az előző lépésben létrehozott eszköz kulcsára.
+1. Cserélje le a `[DPS symmetric key]` értéket az előző lépésben létrehozott eszköz kulcsára.
 
 1. Cserélje le a `[device registration Id]` elemet a `mxchip-01` kérdésre.
 
@@ -145,7 +145,7 @@ A kapcsolódási adatok hozzáadása a generált eszköz kódjához:
 
 Az eszköz SDK használatával hozza létre a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy **MXChip IoT fejlesztői készlet** eszközt, és csatlakozik a IoT Central alkalmazáshoz. Az alkalmazás elküldi a telemetria és a tulajdonságokat, és fogadja a parancsokat.
 
-1. A vs Code-ban nyissa meg `CMakeLists.txt` a `azure-iot-sdk-c` fájlt a mappában. Győződjön meg arról, hogy `CMakeLists.txt` a mappában `devkit_device` nem `azure-iot-sdk-c` a mappában található fájlt nyitja meg.
+1. A VS Code-ban nyissa meg a `CMakeLists.txt` fájlt a `azure-iot-sdk-c` mappában. Győződjön meg arról, hogy a `CMakeLists.txt` fájlt a `azure-iot-sdk-c` mappában nyitja meg, nem pedig a `devkit_device` mappában.
 
 1. Adja hozzá az alábbi sort a `CMakeLists.txt` fájl alján, hogy tartalmazza az eszköz kód-helyettes mappáját a fordításakor:
 
@@ -153,7 +153,7 @@ Az eszköz SDK használatával hozza létre a generált eszköz kódját. Az Ön
     add_subdirectory(central_app/devkit_device)
     ```
 
-1. Hozzon `cmake` létre egy mappát `azure-iot-sdk-c` a mappában, és a parancssorban navigáljon a mappához:
+1. Hozzon létre egy `cmake` mappát a `azure-iot-sdk-c` mappában, majd a parancssorban navigáljon a mappához:
 
     ```cmd\sh
     mkdir cmake
@@ -193,7 +193,7 @@ Miután az eszköz kódja csatlakozik a IoT Centralhoz, megtekintheti az általa
 
     ![Eszközök sablonjai lap](./media/quick-create-pnp-device-pnp/device-template.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz, amely egy DCM-ből jött létre a nyilvános modell adattárában.
 

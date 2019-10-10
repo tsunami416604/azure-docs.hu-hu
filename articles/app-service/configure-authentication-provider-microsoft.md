@@ -43,7 +43,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja a Azure App Servicet
 
 ## <a name="secrets"> </a>Microsoft-fiókadatok hozzáadása a app Service-alkalmazáshoz
 
-1. Nyissa meg az alkalmazást a [Azure Portal].
+1. Nyissa meg az alkalmazást a [Azure Portalra].
 1. Válassza a **beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Microsoft-fiók**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. Engedélyezze az alkalmazás által igényelt hatóköröket.
 1. Kattintson az **OK** gombra.
@@ -66,4 +66,4 @@ Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az al
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/

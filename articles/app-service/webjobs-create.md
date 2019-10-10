@@ -69,7 +69,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -81,8 +81,8 @@ when making changes in one don't forget the other two.
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myContinuousWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Name (Név)** | myContinuousWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
+   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Folyamatos | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Méretezés** | Több példány | Csak a folyamatos webjobs-feladatok esetében érhető el. Meghatározza, hogy a program vagy a parancsfájl az összes példányon vagy csak egy példányon fusson-e. A több példányon való futtatás lehetősége nem vonatkozik az ingyenes vagy a közös [díjszabási szintekre](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
@@ -107,7 +107,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -119,8 +119,8 @@ when making changes in one don't forget the other two.
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myTriggeredWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_".|
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Name (Név)** | myTriggeredWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_".|
+   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Eseményindítók** | Kézi | |
 
@@ -145,7 +145,7 @@ when making changes in one don't forget the other two.
 
 2. Válassza a **Webjobs**elemet.
 
-   ![Select WebJobs](./media/web-sites-create-web-jobs/select-webjobs.png)
+   ![Webjobs-feladatok kiválasztása](./media/web-sites-create-web-jobs/select-webjobs.png)
 
 2. A **webjobs** lapon válassza a **Hozzáadás**lehetőséget.
 
@@ -157,8 +157,8 @@ when making changes in one don't forget the other two.
 
    | Beállítás      | Mintaérték   | Leírás  |
    | ------------ | ----------------- | ------------ |
-   | **Name** | myScheduledWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
-   | **Fájlfeltöltés** | ConsoleApp.zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
+   | **Name (Név)** | myScheduledWebJob | Egy App Service alkalmazáson belül egyedi név. Betűvel vagy számmal kell kezdődnie, és nem tartalmazhat olyan speciális karaktereket, mint a "-" és a "_". |
+   | **Fájlfeltöltés** | ConsoleApp. zip | A végrehajtható fájlt vagy parancsfájlt tartalmazó *. zip* fájl, valamint a program vagy a parancsfájl futtatásához szükséges összes támogató fájl. A támogatott végrehajtható fájlok vagy parancsfájl-típusok a [támogatott fájltípusok](#acceptablefiles) szakaszban vannak felsorolva. |
    | **Típus** | Kiváltott | A [webjobs-típusok](#webjob-types) leírását a cikk korábbi részében találja. |
    | **Eseményindítók** | Ütemezett | Ahhoz, hogy az ütemezés megbízhatóan működjön, engedélyezze az Always On funkciót. Az Always on csak az alapszintű, a standard és a prémium szintű díjszabásban érhető el.|
    | **CRON kifejezés** | 0 0/20 * * * * | A [cron-kifejezéseket](#ncrontab-expressions) a következő szakasz ismerteti. |

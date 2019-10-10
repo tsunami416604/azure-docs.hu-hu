@@ -19,7 +19,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177677"
 ---
-# <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
+# <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
 
 A virtuális hálózatok közötti kapcsolat lehetővé teszi az Azure-beli [virtuális hálózatok](virtual-networks-overview.md)zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. Az Azure a következőket támogatja:
 * Virtuális társhálózatok létesítése – virtuális hálózatok csatlakoztatása egyazon Azure-régióban
@@ -34,7 +34,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 * Létrehozható társviszony az Azure Resource Managerrel létrehozott virtuális hálózatok között, vagy egy, a Resource Managerrel létrehozott virtuális hálózat és egy, a klasszikus üzemi modellel létrehozott virtuális hálózat között. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolódás
 
 Ha társviszony jött létre a virtuális hálózatok között, akkor a virtuális hálózatokba tartozó erőforrások közvetlenül tudnak kommunikálni a virtuális társhálózat erőforrásaival.
 
@@ -92,11 +92,11 @@ Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és
 
 Az átjárók közötti átvitel egy olyan egyenrangú tulajdonság, amely lehetővé teszi a virtuális hálózat számára a VPN-/ExpressRoute átjárók használatát egy, a létesítmények közötti vagy VNet-VNet kapcsolattal rendelkező virtuális hálózaton. A (bejövő vagy kimenő) átjáró felé irányuló forgalom a VNet VNet-kezelési díjat von maga után. További részletekért tekintse meg a [VPN Gateway díjait](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy a ExpressRoute, valamint a VNet-kitöltési [díjakat.](https://azure.microsoft.com/pricing/details/virtual-network)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális hálózatok közötti társviszony az azonos vagy eltérő előfizetésekben lévő, azonos vagy eltérő üzembehelyezési modelleken keresztül létrehozott virtuális hálózatok között jön létre. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 
-    |Azure üzembehelyezési modell             | Subscription  |
+    |Azure üzembehelyezési modell             | Előfizetés  |
     |---------                          |---------|
     |Mindkét Resource Manager              |[Ugyanaz](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[Különböző](create-peering-different-subscriptions.md)|

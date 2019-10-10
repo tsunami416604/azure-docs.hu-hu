@@ -1,18 +1,18 @@
 ---
 title: Az Azure-beli adatmegosztás előzetes verziójának hibáinak megoldása
-description: Útmutató az Azure-beli adatmegosztás előzetes verziójával kapcsolatos hibák elhárításához
+description: Megtudhatja, hogyan lehet elhárítani a meghívásokkal és hibákkal kapcsolatos problémákat, amikor adatmegosztásokat hoz létre vagy fogad az Azure-beli adatmegosztás előzetes
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320299"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169225"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Az Azure-beli adatmegosztás előzetes verziójának gyakori problémáinak elhárítása
 
@@ -41,9 +41,9 @@ Ha továbbra sem látja az adatmegosztási meghívót, forduljon az adatszolgál
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Hiba történt az új adatmegosztás létrehozásakor vagy fogadásakor
 
-Hiba A művelet érvénytelen állapotkódot adott vissza: "BadRequest".
+"Hiba: a művelet érvénytelen állapotkódot adott vissza" BadRequest "
 
-Hiba AuthorizationFailed"
+"Hiba: AuthorizationFailed"
 
 "Hiba: szerepkör-hozzárendelés a Storage-fiókhoz"
 
@@ -56,7 +56,7 @@ Ha egy új adatmegosztás létrehozása vagy fogadása során a fenti hibák val
 1. Kattintson a **Hozzáadás** gombra
 1. Önmaga hozzáadása tulajdonosként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

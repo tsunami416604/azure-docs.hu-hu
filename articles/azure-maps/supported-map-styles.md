@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839447"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174771"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
 A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
@@ -34,7 +34,7 @@ A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes 
 Az **üres** és a **blank_accessible** Térkép stílusa üres vásznon jeleníti meg az adatmegjelenítést. A **blank_accessible** stílusa továbbra is biztosítja a képernyőolvasó frissítéseinek helyét, ahol a Térkép helye található, annak ellenére, hogy az alap térkép nem jelenik meg.
 
 > [!Note]
-> A web SDK-ban módosíthatja a Térkép háttérszínét úgy, hogy beállítja a Térkép div `background-color` elemének CSS-stílusát.
+> A web SDK-ban megváltoztathatja a Térkép háttérszínét úgy, hogy beállítja a Térkép DIV-elemének CSS `background-color` stílusát.
 
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
@@ -96,3 +96,11 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 * [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+
+
+## <a name="next-steps"></a>Következő lépések
+
+Ismerje meg, hogyan állíthat be leképezési stílust a Azure Mapsban:
+
+> [!div class="nextstepaction"]
+> [Válasszon egy leképezési stílust](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

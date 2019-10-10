@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Távoli rendszerkép elemzése – REST, JavaScript'
+title: 'Rövid útmutató: távoli rendszerkép elemzése – REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a JavaScript segítségével.
 services: cognitive-services
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 446558c88ee99cf61bd3591b687ebbd7e9710b76
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6a52ff2ff5d5a2c44df3bc6572efd61d120d8f6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376227"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176510"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Gyors útmutató: Távoli rendszerkép elemzése a REST API és a JavaScript használatával Computer Vision
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a JavaScript használatával a Computer Visionben
 
-Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban egy távol tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -34,7 +34,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
 1. Igény szerint cserélje le az `inputImage` vezérlő `value` attribútumának értékét egy másik elemzendő kép URL-címére.
-1. Mentse a kódot egy `.html` kiterjesztésű fájlként. Például: `analyze-image.html`.
+1. Mentse a kódot fájlként `.html` kiterjesztéssel. Például: `analyze-image.html`.
 1. Nyisson meg egy böngészőablakot.
 1. A böngészőben húzza a fájlt a böngészőablakba.
 1. Amikor megjelenik a weblap, kattintson a **Kép elemzése** gombra.
@@ -58,7 +58,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
         let endpoint = process.env['COMPUTER_VISION_ENDPOINT']
         if (!subscriptionKey) { throw new Error('Set your environment variables for your subscription key and endpoint.'); }
         
-        var uriBase = endpoint + "vision/v2.0/analyze";
+        var uriBase = endpoint + "vision/v2.1/analyze";
 
         // Request parameters.
         var params = {
@@ -199,7 +199,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

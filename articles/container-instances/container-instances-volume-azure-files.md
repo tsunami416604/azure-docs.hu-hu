@@ -9,19 +9,22 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 686c20aeb22c16298967aa6f73ee829472f4ea0c
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68325490"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175939"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-fájlmegosztás csatlakoztatása Azure Container Instances
 
-Alapértelmezés szerint a Azure Container Instances állapot nélküliek. Ha a tároló összeomlik vagy leáll, az összes állapota elvész. Ha a tároló élettartama után is meg szeretné őrizni az állapotot, a kötetet külső tárolóból kell csatlakoztatnia. Ez a cikk bemutatja, hogyan csatlakoztathat [Azure Files](../storage/files/storage-files-introduction.md) használatával létrehozott Azure-fájlmegosztást a Azure Container Instanceshoz való használatra. Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványként használt Server Message Block (SMB) protokollon keresztül érhető el. Az Azure-fájlmegosztás Azure Container Instances használatával olyan fájlmegosztási funkciókat biztosít, mint az Azure-fájlmegosztás Azure-beli virtuális gépekkel való használata.
+Alapértelmezés szerint a Azure Container Instances állapot nélküliek. Ha a tároló összeomlik vagy leáll, az összes állapota elvész. Ha a tároló élettartama után is meg szeretné őrizni az állapotot, a kötetet külső tárolóból kell csatlakoztatnia. Ahogy az ebben a cikkben is látható, Azure Container Instances csatlakoztathat [Azure Files](../storage/files/storage-files-introduction.md)használatával létrehozott Azure-fájlmegosztást. Az Azure Files teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amely az iparági szabványként használt Server Message Block (SMB) protokollon keresztül érhető el. Az Azure-fájlmegosztás Azure Container Instances használatával olyan fájlmegosztási funkciókat biztosít, mint az Azure-fájlmegosztás Azure-beli virtuális gépekkel való használata.
 
 > [!NOTE]
-> Egy Azure Files-megosztás csatlakoztatása jelenleg csak Linux-tárolók számára engedélyezett. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, az [áttekintésben](container-instances-overview.md#linux-and-windows-containers)megtalálhatja az aktuális platformmal kapcsolatos különbségeket.
+> Egy Azure Files-megosztás csatlakoztatása jelenleg csak Linux-tárolók számára engedélyezett. A platform aktuális eltéréseit az [áttekintésben](container-instances-overview.md#linux-and-windows-containers)találja.
+>
+> A Azure Files-megosztások tároló-példányhoz való csatlakoztatása hasonló a Docker- [kötés csatlakoztatásához](https://docs.docker.com/storage/bind-mounts/). Ügyeljen arra, hogy ha egy megosztást egy olyan tároló-könyvtárba csatlakoztat, amelyben a fájlok vagy a címtárak találhatók, akkor ezeket a fájlokat vagy címtárakat a csatlakoztatás elrejti, és a tároló futtatásakor nem érhetők el.
+>
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
@@ -79,7 +82,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-Az `--dns-name-label` értéknek egyedinek kell lennie azon az Azure-régión belül, ahol létrehozza a Container-példányt. Frissítse az előző parancs értékét, ha a parancs végrehajtásakor a **DNS-név címkéje** hibaüzenetet kap.
+A `--dns-name-label` értéknek egyedinek kell lennie azon az Azure-régión belül, ahol létrehozza a Container-példányt. Frissítse az előző parancs értékét, ha a parancs végrehajtásakor a **DNS-név címkéje** hibaüzenetet kap.
 
 ## <a name="manage-files-in-mounted-volume"></a>Fájlok kezelése a csatlakoztatott köteten
 
@@ -89,15 +92,15 @@ A tároló elindítása után a Microsoft [ACI-hellofiles][aci-hellofiles] rends
 az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles --query ipAddress.fqdn --output tsv
 ```
 
-Miután az alkalmazással mentette a szöveget, használhatja a [Azure Portal][portal] vagy egy eszközt, például [][storage-explorer] a Microsoft Azure Storage Explorert a fájlmegosztás számára írt fájl beolvasásához és vizsgálatához.
+Miután az alkalmazással mentette a szöveget, használhatja a [Azure Portal][portal] vagy egy eszközt, például a [Microsoft Azure Storage Explorert][storage-explorer] a fájlmegosztás számára írt fájl beolvasásához és vizsgálatához.
 
 ## <a name="deploy-container-and-mount-volume---yaml"></a>Tároló üzembe helyezése és kötet csatlakoztatása – YAML
 
 Emellett üzembe helyezhet egy tároló csoportot is, és csatlakoztathat egy kötetet egy tárolóban az Azure CLI-vel és egy [YAML-sablonnal](container-instances-multi-container-yaml.md). A YAML sablon általi üzembe helyezés az előnyben részesített módszer, ha több tárolóból álló tároló-csoportokat helyez üzembe.
 
-A következő YAML-sablon definiál egy tároló csoportot, amely egy, a `aci-hellofiles` képpel létrehozott tárolóval rendelkezik. A tároló csatlakoztatja a korábban kötetként létrehozott Azure-fájlmegosztás *acishare* . Ha meg van jelölve, adja meg a fájlmegosztást tároló Storage-fiók nevét és tárolási kulcsát. 
+A következő YAML-sablon definiál egy tároló csoportot egy `aci-hellofiles` képpel létrehozott tárolóval. A tároló csatlakoztatja a korábban kötetként létrehozott Azure-fájlmegosztás *acishare* . Ha meg van jelölve, adja meg a fájlmegosztást tároló Storage-fiók nevét és tárolási kulcsát. 
 
-Ahogy a CLI-példában is, `dnsNameLabel` az értéknek egyedinek kell lennie abban az Azure-régióban, ahol létrehozza a Container-példányt. Ha szükséges, frissítse a YAML fájlban található értéket.
+A CLI-példában a `dnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol létrehozza a Container-példányt. Ha szükséges, frissítse a YAML fájlban található értéket.
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -135,7 +138,7 @@ tags: {}
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-A YAML sablonnal való üzembe helyezéshez mentse az előző YAML egy nevű `deploy-aci.yaml`fájlba, majd hajtsa végre az az [Container Create][az-container-create] parancsot `--file` a következő paraméterrel:
+A YAML-sablonnal való üzembe helyezéshez mentse az előző YAML egy `deploy-aci.yaml` nevű fájlba, majd hajtsa végre az az [Container Create][az-container-create] parancsot a `--file` paraméterrel:
 
 ```azurecli
 # Deploy with YAML template
@@ -145,13 +148,13 @@ az container create --resource-group myResourceGroup --file deploy-aci.yaml
 
 A CLI és a YAML üzembe helyezése mellett üzembe helyezhet egy tároló csoportot, és egy Azure [Resource Manager-sablonnal](/azure/templates/microsoft.containerinstance/containergroups)csatlakoztathat egy kötetet egy tárolóhoz.
 
-Először töltse `volumes` fel a tömböt a sablon tároló csoport `properties` szakaszában. 
+Először töltse ki a `volumes` tömböt a sablon `properties` szakaszának tároló csoportjában. 
 
-Ezután minden olyan tárolóhoz, amelyhez csatlakoztatni szeretné a kötetet, töltse `volumeMounts` fel a tömböt `properties` a tároló definíciójának szakaszában.
+Ezután minden olyan tárolóhoz, amelyhez csatlakoztatni szeretné a kötetet, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában.
 
-A következő Resource Manager-sablon definiál egy tároló csoportot, amely egy, a `aci-hellofiles` képpel létrehozott tárolóval rendelkezik. A tároló csatlakoztatja a korábban kötetként létrehozott Azure-fájlmegosztás *acishare* . Ha meg van jelölve, adja meg a fájlmegosztást tároló Storage-fiók nevét és tárolási kulcsát. 
+A következő Resource Manager-sablon definiál egy tároló csoportot egy `aci-hellofiles` képpel létrehozott tárolóval. A tároló csatlakoztatja a korábban kötetként létrehozott Azure-fájlmegosztás *acishare* . Ha meg van jelölve, adja meg a fájlmegosztást tároló Storage-fiók nevét és tárolási kulcsát. 
 
-Ahogy az előző példákban is látható `dnsNameLabel` , az értéknek egyedinek kell lennie abban az Azure-régióban, ahol létrehozza a Container-példányt. Ha szükséges, frissítse a sablon értékét.
+Az előző példákhoz hasonlóan a `dnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol létrehozza a Container-példányt. Ha szükséges, frissítse a sablon értékét.
 
 ```JSON
 {
@@ -220,7 +223,7 @@ Ahogy az előző példákban is látható `dnsNameLabel` , az értéknek egyedin
 }
 ```
 
-A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy `deploy-aci.json`nevű fájlba, majd hajtsa végre az az [Group Deployment Create][az-group-deployment-create] parancsot `--template-file` a következő paraméterrel:
+A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-t egy `deploy-aci.json` nevű fájlba, majd hajtsa végre az az [Group Deployment Create][az-group-deployment-create] parancsot a `--template-file` paraméterrel:
 
 ```azurecli
 # Deploy with Resource Manager template
@@ -230,9 +233,9 @@ az group deployment create --resource-group myResourceGroup --template-file depl
 
 ## <a name="mount-multiple-volumes"></a>Több kötet csatlakoztatása
 
-Ha több kötetet szeretne csatlakoztatni egy tároló-példányban, [Azure Resource Manager-sablonnal](/azure/templates/microsoft.containerinstance/containergroups) vagy YAML-fájllal kell telepítenie. Ha sablont vagy YAML-fájlt szeretne használni, adja meg a megosztás részleteit, és adja meg a `volumes` köteteket a `properties` sablon szakaszában található tömb kitöltésével. 
+Ha több kötetet szeretne csatlakoztatni egy tároló-példányban, [Azure Resource Manager-sablonnal](/azure/templates/microsoft.containerinstance/containergroups) vagy YAML-fájllal kell telepítenie. Sablon vagy YAML fájl használatához adja meg a megosztás részleteit, és adja meg a köteteket a sablon `properties` szakaszában lévő `volumes` tömb kitöltésével. 
 
-Ha például két Azure Files *share1* és *share2* nevű megosztást hozott létre a Storage-fiók *myStorageAccount*, akkor `volumes` egy Resource Manager-sablonban lévő tömb a következőhöz hasonlóan fog megjelenni:
+Ha például két Azure Files *share1* és *share2* nevű megosztást hozott létre a Storage-fiók *MyStorageAccount*, akkor a Resource Manager-sablon `volumes` tömbje a következőhöz hasonlóan fog megjelenni:
 
 ```JSON
 "volumes": [{
@@ -253,7 +256,7 @@ Ha például két Azure Files *share1* és *share2* nevű megosztást hozott lé
 }]
 ```
 
-Ezután a tároló csoport minden olyan tárolójában, amelyben a köteteket csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt `properties` a tároló definíciójának szakaszában. Így például a két kötetet csatlakoztatja, a *myvolume1* és a *myvolume2*, korábban definiálva:
+Ezután a tároló csoport minden olyan tárolója esetében, amelyben a köteteket csatlakoztatni szeretné, töltse ki a `volumeMounts` tömböt a tároló definíciójának `properties` szakaszában. Így például a két kötetet csatlakoztatja, a *myvolume1* és a *myvolume2*, korábban definiálva:
 
 ```JSON
 "volumeMounts": [{
@@ -266,12 +269,12 @@ Ezután a tároló csoport minden olyan tárolójában, amelyben a köteteket cs
 }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 
-* [Az Azure-tároló példányát emptyDir kötet csatlakoztatása](container-instances-volume-emptydir.md)
-* [Azure-tároló példányát gitRepo kötet csatlakoztatása](container-instances-volume-gitrepo.md)
+* [EmptyDir-kötet csatlakoztatása Azure Container Instances](container-instances-volume-emptydir.md)
+* [Gitrepo típusú-kötet csatlakoztatása Azure Container Instances](container-instances-volume-gitrepo.md)
 * [Titkos kötet csatlakoztatása Azure Container Instances](container-instances-volume-secret.md)
 
 <!-- LINKS - External -->

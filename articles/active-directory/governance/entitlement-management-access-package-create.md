@@ -16,12 +16,12 @@ ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326337"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170011"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Új hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -46,7 +46,7 @@ Az alábbi ábrán egy új hozzáférési csomag létrehozásának magas szintű
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Kattintson a **Azure Active Directory** , majd az **identitás-szabályozás**elemre.
 
@@ -56,7 +56,7 @@ Az alábbi ábrán egy új hozzáférési csomag létrehozásának magas szintű
 
 1. Kattintson az **új hozzáférési csomag**elemre.
 
-## <a name="basics"></a>Alapadatok
+## <a name="basics"></a>Alapvető beállítások
 
 Az **alapvető beállítások** lapon adja meg a hozzáférési csomag nevét, és adja meg, hogy melyik katalógusban hozza létre a hozzáférési csomagot a alkalmazásban.
 
@@ -123,8 +123,6 @@ A **felülvizsgálat + létrehozás** lapon áttekintheti a beállításait, és
 
     Az új hozzáférési csomag megjelenik a hozzáférési csomagok listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő hozzáférési csomag szerkesztése és kezelése](entitlement-management-access-package-edit.md)
-- [Katalógus tulajdonosának vagy egy Access Package Managernek a hozzáadása](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [Katalógus létrehozása és kezelése](entitlement-management-catalog-create.md)

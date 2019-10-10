@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Node. js használata a Azure SQL Database lekérdezéséhez'
+title: 'Gyors útmutató: Azure SQL Database lekérdezése a Node. js használatával'
 description: A Node. js használata olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és T-SQL-utasítások használatával kérdezi le.
 services: sql-database
 ms.service: sql-database
@@ -18,7 +18,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72178045"
 ---
-# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Gyors útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
+# <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rövid útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
 Ez a rövid útmutató bemutatja, hogyan használható a [Node. js](https://nodejs.org) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz. Ezután a T-SQL-utasítások segítségével adatokat lehet lekérdezni.
 
@@ -30,7 +30,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
   || Önálló adatbázis | Felügyelt példány |
   |:--- |:--- |:---|
-  | Hozzon létre| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
+  | Létrehozás| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
@@ -55,7 +55,7 @@ A minta elvégzéséhez győződjön meg arról, hogy rendelkezik a következő 
 
 Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok beolvasása. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 2. Nyissa meg az **SQL-adatbázisok** vagy az SQL- **felügyelt példányok** lapot.
 
@@ -151,7 +151,7 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
 
 1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Microsoft Node.js illesztőprogram az SQL Serverhez](/sql/connect/node-js/node-js-driver-for-sql-server)
 

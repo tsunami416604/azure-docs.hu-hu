@@ -1,29 +1,27 @@
 ---
-title: 'Gyors útmutató: Keresési index létrehozása javában REST API-k használatával – Azure Search'
+title: 'Gyors útmutató: keresési index létrehozása Java-ban REST API-k használatával – Azure Search'
 description: Ismerteti, hogyan lehet indexet létrehozni, adatok betöltésére és lekérdezéseket futtatni a Java és a Azure Search REST API-k használatával.
-author: lisaleib
 manager: nitinme
-ms.author: jjed
-tags: azure-portal
-services: search
+author: lisaleib
+ms.author: v-lilei
 ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881573"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166244"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Gyors útmutató: Azure Search index létrehozása javában a REST API-k használatával
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Rövid útmutató: Azure Search index létrehozása javában a REST API-k használatával
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
-> * [Portál](search-get-started-portal.md)
+> * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
@@ -50,7 +48,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com/), és a keresési szolgáltatás **Áttekintés** lapján töltse le az URL-címet. A végpontok például a következőképpen nézhetnek ki: `https://mydemo.search.windows.net`.
 
-2. A **Beállítások** > **kulcsaiban**kérjen meg egy rendszergazdai kulcsot a szolgáltatásra vonatkozó összes jogosultsághoz. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
+2. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
    Hozzon létre egy lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
@@ -58,7 +56,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 A szolgáltatásnak eljuttatott minden kérelemhez API-kulcs szükséges. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>A környezet beállítása
 
 Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új projektet.
 
@@ -70,13 +68,13 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
     ![Maven-projekt létrehozása](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
 
-1. A **GroupID** és a **ArtifactId**mezőbe `AzureSearchQuickstart`írja be a következőt:.
+1. A **GroupID** és a **ArtifactId**mezőbe írja be a következőt: `AzureSearchQuickstart`.
 1. Fogadja el a fennmaradó alapértékeket a projekt megnyitásához.
 
 ### <a name="specify-maven-dependencies"></a>Maven-függőségek meghatározása
 
-1. Válassza a **fájl** > **beállításai**lehetőséget.
-1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés** > **eszközök** > **Maven** > -**Importálás**lehetőséget.
+1. Válassza a **fájl** > **Beállítások**lehetőséget.
+1. A **Beállítások** ablakban válassza a **Létrehozás, végrehajtás, üzembe helyezés** > **build-eszközök** > **Maven** > **Importálás**lehetőséget.
 1. Jelölje be a **Maven-projektek automatikus importálása** jelölőnégyzetet, majd kattintson az **OK** gombra az ablak bezárásához. A Maven beépülő modulok és egyéb függőségek mostantól automatikusan szinkronizálhatók, amikor a következő lépésben frissíti a Pom. xml fájlt.
 
     ![A Maven importálási lehetőségei a IntelliJ-beállításokban](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
@@ -134,10 +132,10 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="set-up-the-project-structure"></a>A projekt szerkezetének beállítása
 
-1. Válassza a **fájl** > **projekt szerkezete**lehetőséget.
-1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` `main` mappa tartalmának  >   eléréséhez.
-1. A mappában `src` adja hozzá  >   `main`  >  aés`java` a mappákat. `service` `app` Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
-1. A mappában `src` adja hozzá  >   `main`  > aés`resources` a mappákat. `service` `app`
+1. Válassza a **fájl** > **projekt szerkezete**elemet.
+1. Válassza ki a **modulokat**, és bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 mappa tartalmának eléréséhez.
+1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 mappában adja hozzá a `app` és a `service` mappát. Ehhez válassza ki a `java` mappát, nyomja le az ALT + INSERT billentyűkombinációt, majd adja meg a mappa nevét.
+1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 mappában adja hozzá a `app` és a `service` mappát.
 
     Ha elkészült, a projekt fájának az alábbi képhez hasonlóan kell kinéznie.
 
@@ -147,9 +145,9 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-azure-search-service-information"></a>Azure Search szolgáltatás adatainak hozzáadása
 
-1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`app` eléréséhez, és adjon hozzá `config.properties` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `config.properties` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 
-1. Másolja a következő beállításokat az új fájlba, `<YOUR-SEARCH-SERVICE-NAME>` `<YOUR-ADMIN-KEY>`és cserélje le a, `<YOUR-QUERY-KEY>` a és a nevet a szolgáltatás nevére és kulcsaira. Ha a szolgáltatás végpontja `https://mydemo.search.windows.net`, a szolgáltatás neve "mydemo" lesz.
+1. Másolja a következő beállításokat az új fájlba, és cserélje le a `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` és `<YOUR-QUERY-KEY>` értéket a szolgáltatás nevére és kulcsaira. Ha a szolgáltatási végpont `https://mydemo.search.windows.net`, a szolgáltatás neve "mydemo" lesz.
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -161,8 +159,8 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-main-method"></a>A Main metódus hozzáadása
 
-1. `src` A mappábanadjon >  hozzá egy`App` osztályt.  >   `main`  >  `java` `app` Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
-1. Nyissa `App` meg az osztályt, és cserélje le a tartalmat a következő kódra. Ez a kód tartalmazza `main` a metódust. 
+1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 mappában adjon hozzá egy `App` osztályt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
+1. Nyissa meg a `App` osztályt, és cserélje le a tartalmat a következő kódra. Ez a kód a `main` metódust tartalmazza. 
 
     A nem kommentált kód beolvassa a keresési szolgáltatás paramétereit, és a segítségével létrehozza a keresési szolgáltatás ügyfelének egy példányát. A Search szolgáltatás ügyfelének kódját a következő szakaszban adja hozzá a rendszer.
 
@@ -260,8 +258,8 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
 ### <a name="add-the-http-operations"></a>HTTP-műveletek hozzáadása
 
-1. `src` A mappábanadjon >  hozzáegy`SearchServiceClient` osztályt.  >   `main`  >  `java` `service` Ehhez válassza ki a mappát, `service` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java-osztály**lehetőséget, majd adja meg az osztály nevét.
-1. Nyissa `SearchServiceClient` meg az osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja a Azure Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
+1. A `src` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 mappában adja hozzá a @ no__t-7 osztályt. Ehhez válassza ki a `service` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **Java osztály**lehetőséget, majd adja meg az osztály nevét.
+1. Nyissa meg a `SearchServiceClient` osztályt, és cserélje le a tartalmát a következő kódra. Ez a kód biztosítja a Azure Search REST API használatához szükséges HTTP-műveleteket. Az index létrehozásának, a dokumentumok feltöltésének és az index lekérdezésének további módszerei egy későbbi szakaszban lesznek hozzáadva.
 
     ```java
     package main.java.service;
@@ -376,8 +374,7 @@ Első lépésként nyissa meg a IntelliJ IDEA-t, és állítson be egy új proje
 
     ![Projekt könyvtárának szerkezete](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
-![Maven végrehajtása cél: az exec ellenőrzése: Java](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java` @ no__t-2 @ No__t-3Execute Maven Goal: exec ellenőrzése: Java @ no__t-4
 
 A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy nulla (0) kilépési kód követ.
 
@@ -385,9 +382,9 @@ A feldolgozás befejezésekor keressen egy sikeres BUILD-üzenetet, amelyet egy 
 
 A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartalmaz. Egyszerű mező például a "pezsgő" vagy a "Description". A "címe" mező egy összetett mező, mert almezővel rendelkezik, például "utca címe" és "város". Ebben a rövid útmutatóban az index definíciója a JSON használatával van megadva.
 
-1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`service` eléréséhez, és adjon hozzá `index.json` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `index.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 
-1. Nyissa `index.json` meg a fájlt, és szúrja be a következő index-definíciót.
+1. Nyissa meg a `index.json` fájlt, és szúrja be a következő index-definíciót.
 
     ```json
     {
@@ -512,9 +509,9 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     }
     ```
 
-    Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. Az `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg a [mezők gyűjteménye és a mező attribútumai](search-what-is-an-index.md#fields-collection)című témakört.
+    Az index neve "Hotels-Gyorsindítás" lesz. Az index mezők attribútumai határozzák meg, hogy az indexelt adat hogyan kereshető meg egy alkalmazásban. A `IsSearchable` attribútumot például minden olyan mezőhöz hozzá kell rendelni, amelynek szerepelnie kell egy teljes szöveges keresésben. Az attribútumokkal kapcsolatos további tudnivalókért tekintse meg a [mezők gyűjteménye és a mező attribútumai](search-what-is-an-index.md#fields-collection)című témakört.
     
-    Az `Description` indexben lévő mező a választható `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzert `fr.lucene` használja, mert francia nyelvű szöveget tárol. A `Description` a választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: a [Azure Searchban lévő szöveg-feldolgozásra szolgáló elemzők](search-analyzers.md).
+    Az index `Description` mezője az opcionális `analyzer` tulajdonságot használja az alapértelmezett Lucene nyelvi elemző felülbírálásához. A `Description_fr` mező a francia Lucene Analyzer `fr.lucene` értéket használja, mert francia nyelvű szöveget tárol. A `Description` a választható Microsoft Language Analyzer en. Lucene használja. További információ az elemzők használatáról: a [Azure Searchban lévő szöveg-feldolgozásra szolgáló elemzők](search-analyzers.md).
 
 1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ezek a módszerek olyan Azure Search REST-szolgáltatás URL-címeinek kiépítése, amelyek indexet hoznak létre és törölnek, és amelyek meghatározzák, hogy létezik-e index A metódusok a HTTP-kérést is elvégzik.
 
@@ -556,7 +553,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     }
     ```
 
-1. A következő kód `App` megjegyzésének visszaírása a osztályban. Ez a kód törli a "Hotels-Gyorsindítás" indexet, ha létezik, és létrehoz egy új indexet az "index. JSON" fájl index definíciója alapján. 
+1. A következő kód megjegyzésének visszaírása a `App` osztályban. Ez a kód törli a "Hotels-Gyorsindítás" indexet, ha létezik, és létrehoz egy új indexet az "index. JSON" fájl index definíciója alapján. 
 
     Az index-létrehozási kérelem után egy másodperces szünet van beszúrva. Ez a Szüneteltetés biztosítja, hogy az index a dokumentumok feltöltése előtt legyen létrehozva.
 
@@ -566,13 +563,13 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     A kód futtatásakor keresse meg az "index létrehozása" üzenetet, majd egy 201-es hibakódot. Ez a válasz kód megerősíti, hogy az index létrejött. A futtatásnak egy BUILD SIKERESSÉGi üzenettel és egy nulla (0) kilépési kóddal kell végződnie.
     
 ## <a name="2---load-documents"></a>2 – dokumentumok betöltése
 
-1. A **projekt** ablakban `src` bontsa ki a forrás fát a `resources` `main`  >  >   >   mappa`service` eléréséhez, és adjon hozzá `hotels.json` egy fájlt. Ehhez válassza ki a mappát, `app` nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
+1. A **Project (projekt** ) ablakban bontsa ki a forrás fát a `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 mappa eléréséhez, és adjon hozzá egy `hotels.json` fájlt. Ehhez válassza ki a `app` mappát, nyomja le az ALT + INSERT billentyűkombinációt, válassza a **fájl**lehetőséget, majd adja meg a fájl nevét.
 1. Szúrja be a következő szállodai dokumentumokat a fájlba.
 
     ```json
@@ -658,7 +655,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     }
     ```
 
-1. Szúrja be a következő kódot `SearchServiceClient` a osztályba. Ez a kód létrehozza a REST-szolgáltatás URL-címét, hogy feltöltse a szállodai dokumentumokat az indexbe, majd végrehajtja a HTTP POST kérelmet.
+1. Szúrja be a következő kódot a `SearchServiceClient` osztályba. Ez a kód létrehozza a REST-szolgáltatás URL-címét, hogy feltöltse a szállodai dokumentumokat az indexbe, majd végrehajtja a HTTP POST kérelmet.
 
     ```java
     public boolean uploadDocuments(String documentsFile) throws IOException, InterruptedException {
@@ -677,7 +674,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
     }
     ```
 
-1. A következő kód `App` megjegyzésének visszaírása a osztályban. Ez a kód a "Hotels. JSON" fájlban lévő dokumentumokat tölti fel az indexbe.
+1. A következő kód megjegyzésének visszaírása a `App` osztályban. Ez a kód a "Hotels. JSON" fájlban lévő dokumentumokat tölti fel az indexbe.
 
     ```java
     client.uploadDocuments("/service/hotels.json");
@@ -686,7 +683,7 @@ A Hotels index definíciója egyszerű mezőket és egy összetett mezőt tartal
 
     A feltöltési kérelem után a rendszer két másodperces szünetet szúr be, amely biztosítja, hogy a dokumentum betöltési folyamata befejeződjön, mielőtt lekérdezi az indexet.
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     Mivel az előző lépésben létrehozta a "Hotels-Gyorsindítás" indexet, a kód törli, majd újra létrehozza újból a szállodai dokumentumok betöltése előtt.
 
@@ -698,7 +695,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
 1. Adja hozzá a következő kódot a `SearchServiceClient` osztályhoz. Ez a kód Azure Search REST-szolgáltatás URL-címeit hozza létre az indexelt adatokban való kereséshez és a keresési eredmények kinyomtatásához.
 
-    Az `SearchOptions` osztály és `createSearchOptions` a metódus lehetővé teszi az elérhető Azure Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Search Service REST API)](/rest/api/searchservice/search-documents).
+    A `SearchOptions` osztály és a `createSearchOptions` metódus lehetővé teszi az elérhető Azure Search REST API lekérdezési beállítások részhalmazának megadását. További információ a REST API lekérdezési lehetőségekről: [dokumentumok keresése (Azure Search Service REST API)](/rest/api/searchservice/search-documents).
 
     A `SearchPlus` metódus létrehozza a keresési lekérdezés URL-címét, végrehajtja a keresési kérelmet, majd kinyomtatja az eredményeket a-konzolra. 
 
@@ -763,7 +760,7 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
     }
     ```
 
-1. `App` A osztályban írja be a következő kódot a megjegyzésbe: Ez a kód öt különböző lekérdezést állít be, beleértve a keresendő szöveget, a lekérdezési paramétereket és az adatmezőket. 
+1. A `App` osztályban írja be a következő kód megjegyzését. Ez a kód öt különböző lekérdezést állít be, beleértve a keresendő szöveget, a lekérdezési paramétereket és az adatmezőket. 
 
     ```java
     // Query 1
@@ -813,9 +810,9 @@ Most, hogy betöltötte a szállodák dokumentumait, létrehozhat keresési lek�
 
 
 
-    A kifejezéseket [](search-query-overview.md#types-of-queries)kétféleképpen lehet egyeztetni a lekérdezésekben: teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést `IsSearchable` keres az index mezőiben. A szűrő egy logikai kifejezés, amely egy index `IsFilterable` mezőin van kiértékelve. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
+    A [kifejezéseket kétféleképpen lehet egyeztetni a lekérdezésekben](search-query-overview.md#types-of-queries): teljes szöveges keresés és szűrők. A teljes szöveges keresési lekérdezés egy vagy több kifejezést keres az index `IsSearchable` mezőiben. A szűrő egy logikai kifejezés, amelyet egy index `IsFilterable` mezőin értékel ki. A teljes szöveges keresést és a szűrőket együtt vagy külön is használhatja.
 
-1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt:`verify exec:java`
+1. Nyissa meg a **Maven** eszköz ablakát, és hajtsa végre a következő Maven-célt: `verify exec:java`
 
     Keresse meg az egyes lekérdezések összegzését és eredményeit. A futtatásnak SIKERESnek kell lennie a BUILD SIKERe üzenettel és egy nulla (0) kilépési kóddal.
 
@@ -827,7 +824,7 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a Java-rövid útmutatóban egy sor feladatot dolgozott ki egy index létrehozásához, a dokumentumok betöltéséhez és a lekérdezések futtatásához. Ha a legfontosabb fogalmakkal rendelkezik, javasoljuk, hogy a mélyebb tanuláshoz a következő cikkeket ajánljuk.
 

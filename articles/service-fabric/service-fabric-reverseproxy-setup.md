@@ -29,10 +29,10 @@ A Azure Portal lehetőséget biztosít a fordított proxy engedélyezésére új
 
 Ha [Azure Portal használatával hoz létre fürtöt](./service-fabric-cluster-creation-via-portal.md), a fordított proxy konfigurálásához tegye a következőket:
 
-1. @No__t – 0Step 2: Fürtkonfiguráció @ no__t-0, a **csomópont típusa konfiguráció**területen válassza a **fordított proxy engedélyezése**lehetőséget.
+1. A **2. lépés: fürtkonfiguráció** **csomópont típusa konfiguráció**területén válassza a **fordított proxy engedélyezése**lehetőséget.
 
    ![Fordított proxy engedélyezése a portálon](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. Választható A biztonságos fordított proxy konfigurálásához konfigurálnia kell egy SSL-tanúsítványt. @No__t-0Step 3: Biztonság @ no__t – 0, a **fürt biztonsági beállításainak konfigurálása** **területen válassza az** **Egyéni**lehetőséget. Ezután a **fordított proxy SSL-tanúsítványa**alatt válassza az **SSL-tanúsítvány belefoglalása fordított proxyhoz** lehetőséget, és adja meg a tanúsítvány adatait.
+2. Választható A biztonságos fordított proxy konfigurálásához konfigurálnia kell egy SSL-tanúsítványt. A **3. lépés: biztonság**, a **fürt biztonsági beállításainak konfigurálása**elemnél, a **konfiguráció típusa**területen válassza az **Egyéni**lehetőséget. Ezután a **fordított proxy SSL-tanúsítványa**alatt válassza az **SSL-tanúsítvány belefoglalása fordított proxyhoz** lehetőséget, és adja meg a tanúsítvány adatait.
 
    ![Biztonságos fordított proxy konfigurálása a portálon](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -335,6 +335,6 @@ További információ az Azure-fürtökhöz tartozó Fabric-beállítások friss
 
 A rendszer több háló-beállítást használ a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció kialakításához. Ezen beállítások részletes ismertetését lásd: [Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * A fordított proxy konfigurációs beállításaival kapcsolatban lásd: [ApplicationGateway/http szakasz, Service Fabric a fürt beállításainak testreszabása](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

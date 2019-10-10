@@ -111,26 +111,26 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Milyen címtárakat és folyamatokat kell kizárni a fürtön futó víruskereső program futtatásakor?
 
-| **A víruskereső kizárt könyvtárak** |
+| **Víruskereső által kizárt könyvtárak** |
 | --- |
-| Program Files\Microsoft a Service Fabric |
-| FabricDataRoot (a fürt konfiguráció) |
-| FabricLogRoot (a fürt konfiguráció) |
+| Program Files\Microsoft Service Fabric |
+| FabricDataRoot (a fürt konfigurációjától) |
+| FabricLogRoot (a fürt konfigurációjától) |
 
-| **A víruskereső kizárt folyamatok** |
+| **Víruskereső által kizárt folyamatok** |
 | --- |
-| Fabric.exe |
-| FabricHost.exe |
-| FabricInstallerService.exe |
-| FabricSetup.exe |
-| FabricDeployer.exe |
-| ImageBuilder.exe |
-| FabricGateway.exe |
-| FabricDCA.exe |
-| FabricFAS.exe |
-| FabricUOS.exe |
-| FabricRM.exe |
-| FileStoreService.exe |
+| Fabric. exe |
+| Hálóbeli. exe |
+| FabricInstallerService. exe |
+| FabricSetup. exe |
+| FabricDeployer. exe |
+| ImageBuilder. exe |
+| FabricGateway. exe |
+| FabricDCA. exe |
+| FabricFAS. exe |
+| FabricUOS. exe |
+| FabricRM. exe |
+| FileStoreService. exe |
  
 ### <a name="how-can-my-application-authenticate-to-keyvault-to-get-secrets"></a>Hogyan hitelesíthető az alkalmazás a kulcstartóban a titkok beszerzéséhez?
 Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:
@@ -190,6 +190,6 @@ Nyílt forráskódú Service Fabric ([megbízható szolgáltatások keretrendsze
 
 További részletekért tekintse meg a [Service Fabric blogot](https://blogs.msdn.microsoft.com/azureservicefabric/) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md) Ice Fabric-fogalmakat] (Service-fabric-Technical-Overview.MD) és [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

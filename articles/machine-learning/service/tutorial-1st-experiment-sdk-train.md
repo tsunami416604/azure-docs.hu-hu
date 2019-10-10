@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Az első Azure ML-modell betanítása a Pythonban'
+title: 'Oktatóanyag: az első Azure ML-modell betanítása a Pythonban'
 titleSuffix: Azure Machine Learning
 description: Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján.
 services: machine-learning
@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72173304"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
+# <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: az első ML-modell betanítása
 
 Ez az oktatóanyag **egy kétrészes oktatóanyag-sorozat második része**. Az előző oktatóanyagban [létrehozott egy munkaterületet, és kiválasztott egy fejlesztési környezetet](tutorial-1st-experiment-sdk-setup.md). Ebben az oktatóanyagban megismerheti a Azure Machine Learning alapvető tervezési mintáit, és betanít egy egyszerű scikit-modellt a diabétesz adatkészlete alapján. Az oktatóanyag elvégzése után gyakorlati ismeretekkel fog rendelkezni az SDK-ról, hogy az összetettebb kísérleteket és munkafolyamatokat fejlesszen.
 
@@ -27,7 +27,7 @@ Ez az oktatóanyag a következő feladatokat ismerteti:
 > * A munkaterület összekötése és kísérlet létrehozása
 > * Az adatterhelés és a scikit betanítása – modellek
 > * Betanítási eredmények megtekintése a portálon
-> * A legjobb modellt beolvasása
+> * A legjobb modell beolvasása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -129,7 +129,7 @@ A képzés befejeződése után hívja meg a `experiment` változót a kísérle
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Név)</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
+<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lapja</th><th>Docs oldal</th></tr><tr><td>cukorbetegség – kísérlet</td><td>saját-munkaterület neve</td><td>Hivatkozás Azure Portal</td><td>Hivatkozás a dokumentációra</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Képzés eredményeinek megtekintése a portálon
 
@@ -213,7 +213,7 @@ Ha Felhőbeli jegyzetfüzet-kiszolgálót használt, állítsa le a virtuális g
 
 Megtarthatja az erőforráscsoportot is, de törölhet egyetlen munkaterületet is. Jelenítse meg a munkaterület tulajdonságait, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következő feladatokat végezte el:
 
@@ -222,5 +222,5 @@ Ebben az oktatóanyagban a következő feladatokat végezte el:
 > * Betöltött adatfeldolgozási és betanított scikit-modellek
 > * Megtekintett képzések eredményei a Portálon és a beolvasott modellek
 
-[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) az Azure Machine Learning.
+[A modell üzembe helyezése](tutorial-deploy-models-with-aml.md) Azure Machine Learningsal.
 Ismerje meg, hogyan fejleszthet [automatizált gépi tanulási](tutorial-auto-train-models.md) kísérleteket.

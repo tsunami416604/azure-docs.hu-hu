@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570bf7968b3d6fac44dc770a7fda1e0784dbdcf9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886573"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176775"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Az Azure Virtual Machine Scale Sets biztonsági vezérlői
 
@@ -39,18 +39,18 @@ Ez a cikk az Azure Virtual Machine Scale Sets beépített biztonsági vezérlők
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen |  |
 | Adatsíkok naplózása és naplózása | Nem |  |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen |  |
-| Authorization| Igen |  |
+| Hitelesítés| Igen |  |
+| Engedélyezés| Igen |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: Linux rendszerű [virtuális gép titkosítása az Azure-ban](/azure/virtual-machines/linux/encrypt-disks) és a [virtuális lemezek titkosítása egy Windowsos](/azure/virtual-machines/windows/encrypt-disks)virtuális gépen. |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | Lásd: Linux rendszerű [virtuális gép titkosítása az Azure-ban](/azure/virtual-machines/linux/disk-encryption-linux) és a [virtuális lemezek titkosítása egy Windowsos](/azure/virtual-machines/windows/encrypt-disks)virtuális gépen. |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az Azure Virtual Machines támogatja a [ExpressRoute](/azure/expressroute) és a VNet titkosítást. Lásd: [tranzitraktár titkosítás a virtuális gépeken](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfél által felügyelt kulcsok egy támogatott Azure-titkosítási forgatókönyv; Lásd: az [Azure-titkosítás áttekintése](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Oszlop szintű titkosítás (Azure Data Services)| – | |
@@ -62,6 +62,6 @@ Ez a cikk az Azure Virtual Machine Scale Sets beépített biztonsági vezérlők
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959005"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168490"
 ---
 # <a name="virtual-wan-partners"></a>Virtuális WAN-partnerek
 
@@ -27,7 +27,7 @@ Az ág-eszköz (a helyszíni VPN-eszköz vagy a SDWAN CPE) általában egy vezé
 * Próbálja ki az Azure Virtual WAN portáljának tapasztalatait.
 * Ezután döntse el, hogy a kapcsolódási lépések melyik részét szeretné automatizálni. Legalább az automatizálást javasoljuk:
 
-  * Hozzáférés-vezérlés
+  * Access Control
   * Ág-eszköz adatainak feltöltése az Azure Virtual WAN-ba
   * Az Azure-konfiguráció letöltése és az ág-eszköz kapcsolatának beállítása az Azure Virtual WAN-ba
 
@@ -97,7 +97,7 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * A **VPN-átjáró kapcsolati konfigurációjának részletei**, például BGP, előre megosztott kulcs stb. A rendszer által automatikusan létrehozott előre megosztott kulcs a PSK. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
+    * **Átjáróban-kapcsolat konfigurációs részletei** , például BGP, előmegosztott kulcs stb. A PSK a automatikusan létrehozott előmegosztott kulcs. A kapcsolatot az egyéni PSK Áttekintés lapján bármikor szerkesztheti.
   
 **Példa az eszköz konfigurációs fájljára**
 
@@ -215,13 +215,15 @@ A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egye
 * IPsec integritási algoritmus
 * PFS-csoport
 
-### <a name="default"></a>IPsec-kapcsolat alapértelmezett házirendjei 
+### <a name="default"></a>IPsec-kapcsolat alapértelmezett házirendjei
 
-Az alapértelmezett házirendek használatakor az Azure a kezdeményezőként és a válaszadóként is működhet az IPsec-alagút beállítása során. Az Azure-t csak válaszadóként lehet támogatni.
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
+### <a name="custom"></a>Egyéni szabályzatok az IPsec-kapcsolathoz
 
-## <a name="next-steps"></a>További lépések
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
 

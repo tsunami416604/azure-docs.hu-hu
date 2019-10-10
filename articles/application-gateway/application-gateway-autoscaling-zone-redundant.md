@@ -1,41 +1,41 @@
 ---
-title: Automatikus skálázás és zóna – redundáns Application Gateway v2
+title: Automatikusan skálázó és zónaredundáns Application Gateway v2
 description: Ez a cikk bemutatja az Azure Application Standard_v2 és a WAF_v2 SKU-t, amely magában foglalja az automatikus skálázást és a zóna-redundáns funkciókat.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104890"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177452"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikus skálázás és zóna – redundáns Application Gateway v2 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
 A Application Gateway és a webalkalmazási tűzfal (WAF) a Standard_v2 és a WAF_v2 SKU alatt is elérhető. A v2 SKU teljesítmény-fejlesztéseket biztosít, és támogatja a kritikus fontosságú új funkciókat, például az automatikus skálázást, a zónák redundanciát és a statikus VIP-címek támogatását. A standard és a WAF SKU meglévő szolgáltatásai továbbra is támogatottak lesznek az új v2 SKU-ban, és néhány kivétel szerepel az [összehasonlítás](#differences-with-v1-sku) szakaszban.
 
 Az új v2 SKU a következő fejlesztéseket tartalmazza:
 
-- Automatikus **skálázás**: Az automatikus skálázási SKU-ban lévő Application Gateway-vagy WAF-telepítések a forgalmi terhelési minták módosítása alapján méretezhetők vagy leállíthatók. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez az SKU valódi rugalmasságot biztosít. A Standard_v2 és a WAF_v2 SKU-ban a Application Gateway a rögzített kapacitásban (automatikus skálázás letiltva) és az automatikus skálázást engedélyező módban is működhet. A rögzített kapacitás mód olyan helyzetekben hasznos, amelyek konzisztens és kiszámítható számítási feladatokkal rendelkeznek. Az automatikus skálázási mód hasznos olyan alkalmazásokban, amelyek az alkalmazás forgalmában tapasztalnak eltérést.
-- **Zóna redundancia**: Egy Application Gateway vagy WAF üzemelő példány több Availability Zonesra is terjedhet, így nem kell külön Application Gateway példányt kiépíteni az egyes zónákban Traffic Manager. Kiválaszthat egyetlen zónát vagy több olyan zónát, ahol Application Gateway példányok vannak telepítve, ami rugalmasabb lehet a zóna meghibásodása miatt. Az alkalmazások háttér-készlete hasonló módon terjeszthető a rendelkezésre állási zónák között.
+- Automatikus **skálázás**: az automatikus skálázási SKU-ban lévő Application Gateway-vagy WAF-telepítések a forgalmi terhelési minták módosítása alapján vertikális fel-vagy leskálázást is igénybe vehetnek. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. Ez az SKU valódi rugalmasságot biztosít. A Standard_v2 és a WAF_v2 SKU-ban a Application Gateway a rögzített kapacitásban (automatikus skálázás letiltva) és az automatikus skálázást engedélyező módban is működhet. A rögzített kapacitás mód olyan helyzetekben hasznos, amelyek konzisztens és kiszámítható számítási feladatokkal rendelkeznek. Az automatikus skálázási mód hasznos olyan alkalmazásokban, amelyek az alkalmazás forgalmában tapasztalnak eltérést.
+- **Zóna redundancia**: egy Application Gateway vagy WAF üzemelő példány több Availability Zonesra is terjedhet, így nem kell külön Application Gateway példányt kiépíteni az egyes zónákban Traffic Manager. Kiválaszthat egyetlen zónát vagy több olyan zónát, ahol Application Gateway példányok vannak telepítve, ami rugalmasabb lehet a zóna meghibásodása miatt. Az alkalmazások háttér-készlete hasonló módon terjeszthető a rendelkezésre állási zónák között.
 
   A zóna redundancia csak akkor érhető el, ha az Azure-zónák elérhetők. Más régiókban a többi funkció is támogatott. További információ: [Mi a Availability Zones az Azure-ban?](../availability-zones/az-overview.md#services-support-by-region)
-- **Statikus VIP**: A Application Gateway v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím ne változzon az üzemelő példány életciklusa alatt, még újraindítás után is.  Nem létezik statikus virtuális IP-cím a v1-ben, ezért az Application Gateway URL-címe helyett a tartománynév-útválasztáshoz használt IP-címet kell használnia az Application Gateway használatával App Services.
-- **Fejléc újraírása**: A Application Gateway lehetővé teszi a HTTP-kérések és a válasz-fejlécek hozzáadását, eltávolítását vagy frissítését v2 SKU-val. További információt a HTTP- [fejlécek újraírása a Application Gatewaysal](rewrite-http-headers.md) című témakörben talál.
-- **Key Vault integráció (előzetes verzió)** : A Application Gateway v2 támogatja a HTTPS-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault (nyilvános előzetes verzióban) való integrálását. További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
-- **Azure Kubernetes Service-beli bejövő adatkezelő (előzetes verzió)** : A Application Gateway v2 beáramló vezérlő lehetővé teszi, hogy az Azure-Application Gateway bemenőként legyen használatban egy olyan Azure Kubernetes-szolgáltatás (ak) néven, amelyet AK-fürtnek nevezünk. További információkért tekintse meg a [dokumentációs oldalt](https://azure.github.io/application-gateway-kubernetes-ingress/).
-- **Teljesítménnyel kapcsolatos fejlesztések**: A v2 SKU a standard/WAF SKU-hoz képest akár 5X-ös nagyobb SSL-kiszervezési teljesítményt nyújt.
+- **Statikus VIP**: a Application Gateway v2 SKU kizárólag a statikus VIP-típust támogatja. Ez biztosítja, hogy az Application gatewayhez társított virtuális IP-cím ne változzon az üzemelő példány életciklusa alatt, még újraindítás után is.  Nem létezik statikus virtuális IP-cím a v1-ben, ezért az Application Gateway URL-címe helyett a tartománynév-útválasztáshoz használt IP-címet kell használnia az Application Gateway használatával App Services.
+- **Fejléc újraírása**: a Application Gateway lehetővé teszi a HTTP-kérések és a válasz-fejlécek hozzáadását, eltávolítását vagy frissítését v2 SKU-val. További információt a HTTP- [fejlécek újraírása a Application Gatewaysal](rewrite-http-headers.md) című témakörben talál.
+- **Key Vault Integration (előzetes verzió)** : a Application Gateway v2 támogatja a https-kompatibilis figyelőkhöz csatolt kiszolgálói tanúsítványok Key Vault (nyilvános előzetes verzió) integrációját. További információ: SSL- [lezárás Key Vault tanúsítványokkal](key-vault-certs.md).
+- **Azure Kubernetes Service beáramlási vezérlő (előzetes verzió)** : a Application Gateway v2 beáramló vezérlő lehetővé teszi, hogy az Azure Application Gateway használható legyen a bemenő forgalomként egy Azure Kubernetes szolgáltatás (ak) néven, az AK-fürt. További információkért tekintse meg a [dokumentációs oldalt](https://azure.github.io/application-gateway-kubernetes-ingress/).
+- **Teljesítménybeli fejlesztések**: a v2 SKU a standard/WAF SKU-hoz képest akár 5x-ös nagyobb SSL-kiszervezési teljesítményt nyújt.
 - **Gyorsabb üzembe helyezés és frissítés ideje** A v2 SKU gyorsabb üzembe helyezést és frissítési időt biztosít a standard/WAF SKU-hoz képest. Ez magában foglalja a WAF konfigurációs változásait is.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Standard_v2 és a WAF_v2 SKU a következő régiókban érhető el: USA északi középső régiója, az USA déli középső régiója, USA nyugati régiója, USA 2. keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Egyesült Királyság nyugati régiója, Kelet-Japán, Nyugat-Japán, Kelet-Ausztrália, Délkelet-Kanada, Közép-Kanada, Kelet-Ázsia Közép-Korea, Dél-India, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
+A Standard_v2 és a WAF_v2 SKU a következő régiókban érhető el: az USA északi középső régiója, az USA déli középső régiója, az USA nyugati régiója, az USA nyugati régiója, az USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Észak-Európa, Nyugat-Európa, Délkelet-Ázsia, Közép-Németország, Kelet-Ausztrália Egyesült Királyság nyugati régiója , Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Kelet-Ázsia, Korea középső régiója, Dél-Korea, Dél-India, Egyesült Királyság déli régiója, Közép-India, Nyugat-India, Dél-India.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -44,7 +44,7 @@ A v2 SKU-val a díjszabási modellt a használat vezérli, és a rendszer már n
 - **Rögzített ár** – ez egy Standard_v2-vagy WAF_v2-átjáró kiépítésének óránkénti (vagy részleges órás) díja.
 - **Kapacitási egység díja** – ez a fogyasztáson alapuló költség, amelyet a rögzített költség mellett számítunk fel. A kapacitásegység díjait is óránkénti vagy részben óránkénti egységekben mérjük. A kapacitásegységek három összetevőből állnak: a számítási egység, az állandó kapcsolatok és az átviteli sebesség. A számítási egység a felhasznált processzorkapacitás mértékegysége. A számítási egységet befolyásoló tényezők a TLS-kapcsolatok/mp, az URL-Újraírási számítások és a WAF-szabályok feldolgozása. Az állandó kapcsolat az Application Gateway számára a megadott számlázási időszakban létesített TCP-kapcsolatok mértéke. Az átviteli sebesség egy adott számlázási időszakban a rendszer által feldolgozott átlagos megabit/mp.
 
-Minden kapacitásegység legfeljebb az alábbiakból áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
+Minden kapacitási egység legfeljebb a következőkből áll: 1 számítási egység, vagy 2500 állandó kapcsolat vagy 2,22 – Mbps átviteli sebesség.
 
 Számítási egységre vonatkozó útmutató:
 
@@ -112,7 +112,7 @@ A Application Gateway és a WAF két módban is konfigurálható:
 
 A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgáltatásokat.
 
-|                                                   | V1 SKU   | V2 SKU   |
+|                                                   | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatikus skálázás                                       |          | &#x2713; |
 | Zóna redundancia                                   |          | &#x2713; |
@@ -130,7 +130,7 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 | Egyéni hibalapok                                | &#x2713; | &#x2713; |
 | WebSocket támogatás                                 | &#x2713; | &#x2713; |
 | HTTP/2-támogatás                                    | &#x2713; | &#x2713; |
-| Kapcsolatok kiürítése                               | &#x2713; | &#x2713; |
+| Kapcsolatkiürítés                               | &#x2713; | &#x2713; |
 
 > [!NOTE]
 > Az automatikus skálázási v2 SKU mostantól támogatja az [alapértelmezett állapot](application-gateway-probe-overview.md#default-health-probe) -ellenőrzéseket, hogy automatikusan figyelje a háttér-készlet összes erőforrásának állapotát, és kiemelje azokat a háttérbeli tagokat, amelyek nem megfelelőnek minősülnek. Az alapértelmezett állapot-mintavétel automatikusan konfigurálva van olyan backendekhez, amelyek nem rendelkeznek egyéni mintavételi konfigurációval. További információért lásd: [az Application Gateway Health-szondái](application-gateway-probe-overview.md).
@@ -154,9 +154,9 @@ A következő táblázat összehasonlítja az egyes SKU-kal elérhető szolgált
 
 Azure PowerShell parancsfájl a PowerShell-galériában érhető el, hogy segítséget nyújtson a v1 Application Gateway/WAF a v2 automatikus skálázási SKU-ba való átálláshoz. Ez a szkript segítséget nyújt a konfigurációnak a v1-átjáróról történő másolásához. A forgalom áttelepítése továbbra is az Ön felelőssége. További információ: [Azure Application Gateway migrálása v1-ről v2-re](migrate-v1-v2.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Rövid útmutató: Webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
+- [Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-Azure Portal](quick-create-portal.md)
 - [Hozzon létre egy automatikus skálázást, a Zone redundáns Application Gateway-t egy fenntartott virtuális IP-címmel a Azure PowerShell használatával](tutorial-autoscale-ps.md)
 - További információ a [Application Gatewayról](overview.md).
 - További információ a [Azure Firewallról](../firewall/overview.md).

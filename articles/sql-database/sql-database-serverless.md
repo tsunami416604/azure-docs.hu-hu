@@ -33,7 +33,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 - A **minimális virtuális mag** és a **maximális virtuális mag** olyan konfigurálható paraméterek, amelyek meghatározzák az adatbázis számára elérhető számítási kapacitás tartományát. A memória és az i/o-korlátok arányosak a megadott virtuális mag-tartománnyal.  
 - Az automatikus **szüneteltetési késleltetés** egy konfigurálható paraméter, amely meghatározza azt az időtartamot, ameddig az adatbázisnak inaktívnak kell lennie, mielőtt a rendszer automatikusan szünetelteti az időt. A rendszer automatikusan folytatja az adatbázist, ha a következő bejelentkezés vagy más tevékenység történik.  Másik lehetőségként az autoszüneteltetés is letiltható.
 
-### <a name="cost"></a>Költségek
+### <a name="cost"></a>Költség
 
 - A kiszolgáló nélküli adatbázisok díja a számítási és a tárolási díjak összegzése.
 - Ha a számítási használat a minimális és a maximális korlát között van, a számítási díj a felhasznált virtuális mag és memória alapján történik.
@@ -43,7 +43,7 @@ Az önálló adatbázisok kiszolgáló nélküli számítási rétegét egy szá
 
 További részletekért tekintse meg a [számlázást](sql-database-serverless.md#billing)ismertető témakört.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 A kiszolgáló nélküli, időszakos, kiszámíthatatlan használati mintákkal rendelkező önálló adatbázisokhoz optimalizált ár-teljesítmény, amely némi késést biztosít a számítási felmelegszik a tétlen használati időszakok után. Ezzel szemben a kiépített számítási szint az önálló adatbázisokra vagy a rugalmas készletekben található több adatbázisra optimalizált, magasabb átlagos használattal, amely nem biztosít semmilyen késleltetést a számítási felmelegítőben.
 
@@ -66,7 +66,7 @@ A következő táblázat összefoglalja a kiszolgáló nélküli számítási r�
 | | **Kiszolgáló nélküli számítás** | **Kiépített számítás** |
 |:---|:---|:---|
 |**Adatbázis-használati minta**| Időszakos, előre jelezhető használat kisebb átlagos számítási használattal az idő múlásával. |  A rendszeres használati minták nagyobb átlagos számítási kihasználtságot és rugalmas készleteket használó több adatbázist használnak.|
-| **Teljesítmény-felügyeleti tevékenység** |Alacsonyabb|Magasabb|
+| **Teljesítmény-felügyeleti tevékenység** |alacsonyabb|Magasabb|
 |**Számítási skálázás**|Automatikus|Kézi|
 |**Számítási rugalmasság**|Alacsonyabb az inaktív időszakok után|Azonnali|
 |**Számlázási részletesség**|Másodpercenként|/ óra|
@@ -124,10 +124,10 @@ Az autoszüneteltetés átmenetileg megakadályozható néhány olyan szolgálta
 
 Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltételek bármelyike teljesül:
 
-|Funkció|Trigger újraindítása|
+|Szolgáltatás|Trigger újraindítása|
 |---|---|
 |Hitelesítés és engedélyezés|Bejelentkezés|
-|Fenyegetések észlelése|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
+|Fenyegetésészlelés|A veszélyforrások észlelési beállításainak engedélyezése/letiltása az adatbázis vagy a kiszolgáló szintjén.<br>A veszélyforrások észlelési beállításainak módosítása az adatbázis vagy a kiszolgáló szintjén.|
 |Adatfelderítés és besorolás|Érzékenységi Címkék hozzáadása, módosítása, törlése vagy megtekintése|
 |Naplózás|Naplózási rekordok megtekintése.<br>Naplózási házirend frissítése vagy megtekintése.|
 |Adatmaszkolás|Az adatmaszkolási szabályok hozzáadása, módosítása, törlése vagy megtekintése|
@@ -141,7 +141,7 @@ Az autofolytatás a következő esetekben aktiválódik, ha az alábbi feltétel
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolódás
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 
@@ -155,7 +155,7 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
 
 1. Adja meg a szolgáltatási cél nevét. A szolgáltatási cél a szolgáltatási szintet, a hardverek létrehozását és a maximális virtuális mag írja elő. A következő táblázat a szolgáltatási cél beállításait mutatja be:
 
-   |Szolgáltatási cél neve|Szolgáltatásszint|Hardver létrehozása|Maximális virtuális mag|
+   |Szolgáltatási cél neve|Szolgáltatáscsomag|Hardver létrehozása|Maximális virtuális mag|
    |---|---|---|---|
    |GP_S_Gen5_1|Általános rendeltetés|Gen5|1|
    |GP_S_Gen5_2|Általános rendeltetés|Gen5|2|
@@ -172,16 +172,16 @@ Ha egy új adatbázist hoz létre, vagy egy meglévő adatbázist kiszolgáló n
    |Paraméter|Értékek megválasztása|Alapértelmezett érték|
    |---|---|---|---|
    |Minimális virtuális mag|A maximális virtuális mag függ – lásd az [erőforrás-korlátokat](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).|0,5 virtuális mag|
-   |Automatikus szüneteltetés késleltetése|Minimális 60 perc (1 óra)<br>Maximális 10080 perc (7 nap)<br>Lépésekben 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
+   |Automatikus szüneteltetés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Növekmények: 60 perc<br>Automatikus szüneteltetés letiltása:-1|60 perc|
 
 > [!NOTE]
 > A T-SQL használatával egy meglévő adatbázist kiszolgáló nélkülire helyezhet át, vagy megváltoztathatja a számítási méretet, de a Azure Portal vagy a PowerShell segítségével végezhető el.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Új adatbázis létrehozása kiszolgáló nélküli számítási szinten 
 
-#### <a name="use-azure-portal"></a>Az Azure Portal használata
+#### <a name="use-azure-portal"></a>Az Azure-portál használata
 
-Lásd: @no__t – 0Quickstart: Hozzon létre egy önálló adatbázist Azure SQL Database a @ no__t-0 Azure Portal használatával.
+Lásd [: gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](sql-database-single-database-get-started.md).
 
 #### <a name="use-powershell"></a>A PowerShell használata
 
@@ -243,7 +243,7 @@ A minimális virtuális mag módosítását a PowerShell [set-AzSqlDatabase](htt
 
 Az automatikus szüneteltetés késleltetésének módosítása a PowerShell [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) parancsával történik a `AutoPauseDelayInMinutes` argumentum használatával.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitoring
 
 ### <a name="resources-used-and-billed"></a>Felhasznált erőforrások és számlázás
 
@@ -257,11 +257,11 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Entitás|Metrika|Leírás|Egység|
+|Jogi személy|Metrika|Leírás|egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -294,9 +294,9 @@ Az erőforrás-korlátokat lásd: [kiszolgáló nélküli számítási szintek](
 
 A számlázott számítások mennyisége a felhasznált CPU és a másodpercenként felhasznált memória maximális mennyisége. Ha a felhasznált CPU mennyisége és a felhasznált memória kevesebb, mint az egyesek számára kiépített minimális mennyiség, akkor a kiosztott mennyiség számlázásra kerül. Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.
 
-- **Számlázott erőforrás**: PROCESSZOR és memória
+- **Számlázott erőforrás**: CPU és memória
 - **Számlázott összeg**: virtuális mag egység ára * Max (min virtuális mag, virtuális mag felhasznált, minimális memória gb * 1/3, memória GB használatban * 1/3) 
-- **Számlázási gyakoriság**: Másodpercenként
+- **Számlázási gyakoriság**: másodpercenként
 
 A virtuális mag egység díja virtuális mag/másodperc. Egy adott régióban az adott egység áraira vonatkozó [Azure SQL Database díjszabási oldalán](https://azure.microsoft.com/pricing/details/sql-database/single/) talál további információt.
 
@@ -304,7 +304,7 @@ A számlázott számítások mennyiségét a következő metrika teszi elérhet�
 
 - **Metrika**: App_cpu_billed (virtuális mag másodperc)
 - **Definíció**: Max (min. virtuális mag, felhasznált virtuális mag, minimális memória gb * 1/3, memória GB használatban * 1/3)
-- **Jelentéskészítés gyakorisága**: Percenként
+- **Jelentéskészítés gyakorisága**: percenként
 
 Ezt a mennyiséget másodpercenként számítjuk ki, és 1 percenként összesítjük.
 
@@ -316,9 +316,9 @@ Pontosabban, a példában szereplő számítási számla kiszámítása a követ
 
 |Időtartam|másodpercenként használt virtuális mag|GB használt másodpercenként|Számítási dimenzió számlázása|Virtuális mag másodpercben elszámolt időtartam|
 |---|---|---|---|---|
-|0:00-1:00|4|9|használt virtuális mag|4 vCores * 3600 seconds = 14400 vCore seconds|
-|1:00-2:00|1|12|Felhasznált memória|12 GB * 1/3 * 3600 seconds = 14400 vCore seconds|
-|2:00-8:00|0|0|Minimális memória kiépítve|3 GB * 1/3 * 21600 seconds = 21600 vCore seconds|
+|0:00-1:00|4|9|használt virtuális mag|4 virtuális mag * 3600 másodperc = 14400 virtuális mag másodperc|
+|1:00-2:00|1|12|Felhasznált memória|12 GB * 1/3 * 3600 másodperc = 14400 virtuális mag másodperc|
+|2:00-8:00|0|0|Minimális memória kiépítve|3 GB * 1/3 * 21600 másodperc = 21600 virtuális mag másodperc|
 |8:00-24:00|0|0|A felfüggesztett számítási díj nem számítható fel|0 virtuális mag másodperc|
 |24 órán át számlázott virtuális mag-másodpercek összesen||||50400 virtuális mag másodperc|
 
@@ -326,9 +326,9 @@ Tegyük fel, hogy a számítási egység ára $0.000073/virtuális mag/Second.  
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és az US Gov Central (Iowa).
+A kiszolgáló nélküli számítási csomag világszerte elérhető, kivéve a következő régiókat: Kelet-Kína, Észak-Kína, Közép-Németország, Németország, Északkelet, Egyesült Királyság északi régiója, Egyesült Királyság 2., az USA nyugati középső régiója és a US Gov Central (Iowa).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Első lépésként tekintse meg a [Quickstart: Hozzon létre egy önálló adatbázist Azure SQL Database a @ no__t-0 Azure Portal használatával.
+- Első lépésként tekintse meg a rövid útmutató [: önálló adatbázis létrehozása Azure SQL Database a Azure Portal használatával](sql-database-single-database-get-started.md)című témakört.
 - Az erőforrások korlátaival kapcsolatban lásd: [kiszolgáló nélküli számítási keret erőforrás-korlátai](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

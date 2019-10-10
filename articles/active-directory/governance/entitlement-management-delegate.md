@@ -1,6 +1,6 @@
 ---
-title: Feladatok delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
-description: Ismerje meg azokat a szerepköröket, amelyeket hozzárendelhet a feladatok delegálásához Azure Active Directory jogosultságok kezelésében.
+title: Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében (előzetes verzió) – Azure Active Directory
+description: Megtudhatja, hogyan delegálhatja a rendszergazdák és a projektmenedzserek hozzáférési irányítását, hogy azok képesek legyenek a hozzáférés kezelésére.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,92 +12,110 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 89cdab09e3ae03ddea6259eda657908f900f982e
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057781"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169842"
 ---
-# <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Feladatok delegálása az Azure AD-jogosultságok kezelésében (előzetes verzió)
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Delegálás és szerepkörök az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
 > [!IMPORTANT]
 > A Azure Active Directory (Azure AD) jogosultság-kezelési szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Alapértelmezés szerint a globális rendszergazdák és a felhasználói rendszergazdák az Azure AD-jogosultságok felügyeletének minden aspektusát létrehozzák és kezelhetik. Előfordulhat azonban, hogy az ezekben a szerepkörökben lévő felhasználók nem ismerik az összes olyan forgatókönyvet, amelyben hozzáférési csomagok szükségesek. Jellemzően olyan részlegek felhasználói, akik tudják, hogy kivel kell együttműködni. 
+Alapértelmezés szerint a globális rendszergazdák és a felhasználói rendszergazdák az Azure AD-jogosultságok felügyeletének minden aspektusát létrehozzák és kezelhetik. Előfordulhat azonban, hogy a szerepkörök felhasználói nem ismerik az összes olyan helyzetet, ahol hozzáférési csomagok szükségesek. Általában a megfelelő részlegeken, csapatokon vagy projekteken belüli felhasználók, akik tudják, hogy kik is együttműködnek a használatával, milyen erőforrásokkal és mennyi ideig. A nem rendszergazdák számára nem korlátozott engedélyek megadása helyett a lehető legkevesebb engedélyt adhat a felhasználóknak a feladatok elvégzéséhez, és el kell kerülniük az ütköző vagy nem megfelelő hozzáférési jogosultságok létrehozását.
 
-A nem rendszergazdák számára nem korlátozott engedélyek megadása helyett a lehető legkevesebb engedélyt adhat a felhasználóknak a feladatok elvégzéséhez, és el kell kerülniük az ütköző vagy nem megfelelő hozzáférési jogosultságok létrehozását. Ez a cikk azokat a szerepköröket ismerteti, amelyeket hozzárendelhet a jogosultság-kezelés különböző feladatai delegálásához. 
+Ez a videó áttekintést nyújt arról, hogyan delegálhatja a hozzáférés-szabályozást a rendszergazdától olyan felhasználók számára, akik nem rendszergazdák.
 
-## <a name="delegate-example-for-departmental-adoption"></a>Példa delegálásra a tanszékek bevezetéséhez
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq00]
 
-Ha meg szeretné tudni, hogyan delegálhatja a feladatokat a jogosultságok kezelésében, ez segít megfontolni egy példát. 
+## <a name="delegate-example"></a>Példa delegálásra
 
-Tegyük fel, hogy a szervezete a következő öt felhasználóval rendelkezik:
+Ha meg szeretné tudni, hogyan delegálhatja a hozzáférési szabályozást a jogosultságok kezelésében, ez segít egy példa kialakításában. Tegyük fel, hogy a szervezete a következő rendszergazdai és felettesekkel rendelkezik.
 
-| Felhasználó | Részleg | Megjegyzések |
-| --- | --- | --- |
-| Alice | IT | Globális rendszergazda |
-| Bob | Kutatás | Bob egy kutatási csoport tulajdonosa is |
-| Carole | Kutatás |  |
-| Dave | Marketing |  |
-| ELISA | Marketing | Az ELISA egy marketing-alkalmazás tulajdonosa is |
+![Delegálás a rendszergazdától a feletteseknek](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-Mind a kutatási, mind a marketing részleg a jogosultságok felügyeletét szeretné használni a felhasználók számára. Alice még nem áll készen a jogosultsági felügyelet használatára más részlegek számára. Itt az egyik módszer, hogy Alice delegálhatja a feladatokat a kutatási és marketing részlegeknek.
+Az informatikai rendszergazdaként a Hana a marketingben, a pénzügyben és az üzleti szempontból kritikus fontosságú tartalomban lévő, a vállalat tulajdonában lévő, illetve a vállalati erőforrásokért felelős személyeknek szól.
 
-1. Alice létrehoz egy új Azure AD biztonsági csoportot a katalógus-létrehozók számára, és hozzáadja a Bob, Carol, Dave és ELISA címkét a csoport tagjaihoz.
+A jogosultságok kezelésével delegálhatja a hozzáférés-vezérlést ezen nem rendszergazdák számára, mivel azok, akik tudják, hogy mely felhasználóknak van szükségük a hozzáférésre, mennyi ideig és milyen erőforrásokhoz. Így biztosíthatja a megfelelő személyek számára, hogy a részlegük hozzáférését kezelik.
 
-1. Alice a jogosultság-kezelési beállítások használatával hozzáadja ezt a csoportot a katalógus-létrehozói szerepkörhöz.
+Itt az egyik módszer, hogy a Hana átruházhatja a hozzáférés-szabályozást a marketing, a Pénzügy és a jogi részleg számára.
 
-1. Carol létrehoz egy **kutatási** katalógust, és felveszi a Bob-t a katalógus társtulajdonosa. Bob hozzáadja azt a kutatási csoportot, amelyet a katalógus erőforrásként birtokol, így a kutatási együttműködéshez használható egy hozzáférési csomagban.
+1. A Hana létrehoz egy új Azure AD-beli biztonsági csoportot, és a csoport tagjaiként adja ki a fanézetet, a jelölést és a Joe-t.
 
-1. Dave létrehoz egy **marketing** -katalógust, és hozzáadja az ELISA-t a katalógus társtulajdonosa. Az ELISA hozzáadja azt a marketing-alkalmazást, amelynek tulajdonosa a katalógus erőforrásként, így használható egy hozzáférési csomagban a marketing-együttműködéshez.
+1. A Hana hozzáadja ezt a csoportot a katalógus-létrehozói szerepkörhöz.
 
-Most a kutatási és marketing részlegek is használhatják a jogosultságok kezelését. Bob, Carol, Dave és ELISA a megfelelő katalógusokban hozhat létre és kezelhet hozzáférési csomagokat.
+    A famodul, a Mark és a Joe mostantól katalógusokat hozhat létre a részlegek számára, erőforrásokat adhat hozzá a részlegekhez, és további delegálást végezhet a katalógusban.
+
+    Vegye figyelembe, hogy a Fatime, a Mark és a Joe nem látja egymás katalógusait.
+
+1. A fanézet létrehoz egy **marketing** -katalógust, amely egy erőforrás-tároló.
+
+1. Az adatforráshoz a marketing részleg tulajdonában lévő erőforrásokat adja hozzá a katalógushoz.
+
+1. A famodul a katalógus tulajdonosai számára további személyeket is hozzáadhat az osztályhoz. Ez segít megosztani a katalógus-felügyeleti feladatokat.
+
+1. A falemez tovább delegálhatja a marketing-katalógusban található hozzáférési csomagok létrehozását és kezelését a marketing részleg projektmenedzserei számára. Ezt úgy teheti meg, hogy hozzárendeli azokat a hozzáférési csomag kezelőjének szerepkörhöz. A hozzáférési csomag kezelője létrehozhat és kezelhet hozzáférési csomagokat. 
+
+Az alábbi ábrán a marketing, a Pénzügy és a jogi részleg erőforrásaival kapcsolatos katalógusok láthatók. Ezen katalógusok használatával a projektmenedzserek hozzáférési csomagokat hozhatnak létre a csapatokhoz vagy projektekhez.
 
 ![Jogosultsági felügyeleti delegált példa](./media/entitlement-management-delegate/elm-delegate.png)
 
+A delegálás után a marketing részleg a következő táblázathoz hasonló szerepkörökkel rendelkezhet.
+
+| Felhasználó | Munkakör | Azure AD-szerepkör | Jogosultsági felügyeleti szerepkör |
+| --- | --- | --- | --- |
+| Hana | Rendszergazda | Globális rendszergazda vagy felhasználói rendszergazda |  |
+| Elemér | Marketing Manager | Felhasználó | Katalógus létrehozója és katalógusának tulajdonosa |
+| Bob | Marketing-érdeklődő | Felhasználó | Katalógus tulajdonosa |
+| Jessica | Marketing projektmenedzser | Felhasználó | A Package Manager elérése |
 
 ## <a name="entitlement-management-roles"></a>Jogosultsági felügyeleti szerepkörök
 
 A jogosultságok kezeléséhez a következő szerepkörök tartoznak, amelyek a jogosultságok felügyeletére vonatkoznak.
 
-| Role | Leírás |
+| Jogosultsági felügyeleti szerepkör | Leírás |
 | --- | --- |
 | Katalógus létrehozója | Katalógusok létrehozása és kezelése. Általában az a rendszergazda, aki nem globális rendszergazda, vagy erőforrás-tulajdonos az erőforrások gyűjteménye számára. A katalógust létrehozó személy automatikusan a katalógus első katalógusának tulajdonosa lesz, és további katalógus-tulajdonosokat is hozzáadhat. A katalógus-létrehozó nem tudja kezelni vagy megtekinteni azokat a katalógusokat, amelyeket nem a saját, és nem adhatnak hozzá olyan erőforrásokat, amelyek nem a katalógusba tartoznak. Ha a katalógus létrehozójának egy másik katalógust kell kezelnie, vagy nem a saját erőforrásokat kell hozzáadnia, kérheti, hogy a katalógus vagy az erőforrás közös tulajdonosa legyen. |
 | Katalógus tulajdonosa | Meglévő katalógusok szerkesztése és kezelése. Általában rendszergazda vagy erőforrás-tulajdonos, vagy a katalógus tulajdonosának kijelölt felhasználója. |
 | A Package Manager elérése | A katalógusban lévő összes meglévő hozzáférési csomag szerkesztése és kezelése. |
 
 Emellett a kijelölt jóváhagyó és egy hozzáférési csomag kérelmezője is rendelkezik jogosultságokkal, bár ezek nem szerepkörök.
- 
-* Jóváhagyó A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók.
-* Kérelmező Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére.
 
-A következő táblázat felsorolja a szerepkörök által végrehajtható feladatokat.
+| Jobb gombbal | Leírás |
+| --- | --- |
+| Jóváhagyó | A szabályzat engedélyezi a csomagok elérésére irányuló kérések jóváhagyását vagy elutasítását, bár a hozzáférési csomag definíciói nem módosíthatók. |
+| Kérelmező | Egy hozzáférési csomag szabályzata által jogosult a hozzáférési csomag igénylésére. |
 
-| Tevékenység | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése | Jóváhagyó |
+A következő táblázat felsorolja azokat a feladatokat, amelyeket a jogosultsági felügyeleti szerepkörök elvégezhetnek.
+
+| Tevékenység | Felügyeleti | Katalógus létrehozója | Katalógus tulajdonosa | A Package Manager elérése |
 | --- | :---: | :---: | :---: | :---: |
-| [Új katalógus létrehozása](entitlement-management-catalog-create.md) | :heavy_check_mark: |  |  |  |
-| [Erőforrás hozzáadása katalógushoz](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | | :heavy_check_mark: | | |
-| [Katalógus szerkesztése](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
-| [Katalógus törlése](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
-| [Katalógushoz tartozó tulajdonos vagy Access Package Manager hozzáadása](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [Új hozzáférési csomag létrehozása katalógusban](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
-| [Erőforrás-szerepkörök kezelése egy hozzáférési csomagban](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Szabályzatok létrehozása és szerkesztése](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Felhasználó közvetlen kiosztása egy hozzáférési csomaghoz](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési csomaghoz hozzárendelt hozzárendelés megtekintése](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési csomag kéréseinek megtekintése](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Kérelem kézbesítési hibáinak megtekintése](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Függőben lévő kérelem megszakítása](entitlement-management-access-package-edit.md#cancel-a-pending-request) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési csomag elrejtése](entitlement-management-access-package-edit.md#change-the-hidden-setting) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési csomag törlése](entitlement-management-access-package-edit.md#delete) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Hozzáférési kérelem jóváhagyása](entitlement-management-request-approve.md) |  |  |  | :heavy_check_mark: |
+| [Delegálás katalógus-létrehozóra](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [Új katalógus létrehozása](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [Erőforrás hozzáadása katalógushoz](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Katalógus tulajdonosának hozzáadása](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Katalógus szerkesztése](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Katalógus törlése](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Delegálás egy Access Package Managerbe](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Hozzáférési csomag kezelőjének eltávolítása](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [Új hozzáférési csomag létrehozása katalógusban](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [Erőforrás-szerepkörök kezelése egy hozzáférési csomagban](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Szabályzatok létrehozása és szerkesztése](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználó közvetlen kiosztása egy hozzáférési csomaghoz](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Hozzáférési csomaghoz hozzárendelt hozzárendelés megtekintése](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Hozzáférési csomag kéréseinek megtekintése](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Kérelem kézbesítési hibáinak megtekintése](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Függőben lévő kérelem megszakítása](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Hozzáférési csomag elrejtése](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [Hozzáférési csomag törlése](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>Erőforrások katalógusba való felvételéhez szükséges szerepkörök
 
@@ -107,8 +125,8 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 | Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot | Office 365-csoportot adhat hozzá | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet |
 | --- | :---: | :---: | :---: | :---: | :---: |
-| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Globális rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [Felhasználói rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | – |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange-rendszergazda](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
 | [Teams szolgáltatás rendszergazdája](../users-groups-roles/directory-assign-admin-roles.md) | Katalógus tulajdonosa |  | :heavy_check_mark: |  |  |
@@ -119,49 +137,7 @@ Olyan felhasználók esetében, akik nem globális rendszergazda vagy felhaszná
 
 Egy feladat legkevésbé Kiemelt szerepkörének meghatározásához [a rendszergazdai szerepkörök a Azure Active Directoryban](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)is hivatkozhatnak a rendszergazda szerepkörre.
 
-## <a name="add-a-catalog-creator"></a>Katalógus létrehozójának hozzáadása
+## <a name="next-steps"></a>Következő lépések
 
-Ha a katalógus létrehozását szeretné delegálni, vegye fel a felhasználókat a katalógus létrehozói szerepkörbe.  Hozzáadhat egyéni felhasználókat, vagy megadhat egy csoportot, amelynek tagjai létrehozhatnak katalógusokat. Kövesse az alábbi lépéseket egy felhasználó hozzárendeléséhez a katalógus-létrehozó szerepkörhöz.
-
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda vagy felhasználói rendszergazda
-
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
-
-1. A bal oldali menüben, a **jogosultságok kezelése** szakaszban kattintson a **Beállítások**elemre.
-
-1. Kattintson a **Szerkesztés** gombra.
-
-1. A **jogosultság-kezelés delegálása** szakaszban kattintson a **katalógus-létrehozók hozzáadása** elemre azon felhasználók vagy csoportok kiválasztásához, akik a jogosultsági felügyeleti szerepkör tagjai lesznek.
-
-1. Kattintson a **Kiválasztás** gombra.
-
-1. Kattintson a **Save** (Mentés) gombra.
-
-## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Katalógus tulajdonosának vagy egy Access Package Managernek a hozzáadása
-
-Katalógus vagy hozzáférési csomagok felügyeletének delegálásához a katalógusban felhasználókat kell hozzáadnia a katalógus tulajdonosához vagy a hozzáférés csomagkezelő szerepköreihez. Aki létrehoz egy katalógust, az első katalógus tulajdonosa lesz. 
-
-A hozzárendelt katalógus tulajdonosának vagy a hozzáférési csomag kezelőjének ismerősnek kell lennie a projektben. A katalógus létrehozójának létre kell hoznia a hozzáférési csomagot, ha az a projekt napi műveleteiben részt vesz, és a következő információkat ismeri:
-- milyen erőforrásokra van szükség
-- Kinek lesz hozzáférése
-- Kinek kell jóváhagynia a hozzáférést
-- mennyi ideig tart a projekt?
-
-A katalógus létrehozójának delegálnia kell a feladatot a projekt érdeklődőnek, aki létrehozza és kezeli a hozzáférési csomagot, ha nem vesz részt a projekt napi műveleteiben. Az alábbi lépéseket követve rendelhet hozzá felhasználókat a katalógus tulajdonosához vagy az Access Package Manager szerepkörhöz:
-
-**Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda vagy katalógus tulajdonosa
-
-1. A Azure Portal kattintson a **Azure Active Directory** , majd az **identitás-irányítás**elemre.
-
-1. A bal oldali menüben kattintson a **katalógusok** lehetőségre, majd nyissa meg azt a katalógust, amelyhez hozzá szeretné adni a rendszergazdákat.
-
-1. A bal oldali menüben kattintson a **szerepkörök és rendszergazdák**elemre.
-
-1. Kattintson a **tulajdonosok hozzáadása** vagy a **hozzáférési csomag** kezelőjének hozzáadása elemre a szerepkörök tagjainak kiválasztásához.
-
-1. A tagok hozzáadásához kattintson a **kiválasztás** gombra.
-
-## <a name="next-steps"></a>További lépések
-
-- [Jóváhagyók hozzáadása](entitlement-management-access-package-edit.md#policy-request)
-- [Erőforrások hozzáadása egy katalógushoz](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
+- [Hozzáférési szabályozás delegálása a katalógus-létrehozók számára](entitlement-management-delegate-catalog.md)
+- [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)

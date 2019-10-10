@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2019
 ms.locfileid: "70933160"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions típusok és szolgáltatások (Azure Functions)
@@ -40,7 +40,7 @@ A Orchestrator függvényektől eltérően a tevékenységi funkciók nem korlá
 > [!NOTE]
 > Mivel a tevékenységi funkciók csak *legalább egyszer* garantálják a végrehajtást, javasoljuk, hogy ha lehetséges, végezze el a tevékenység függvényének logikai *idempotens* .
 
-Aktivitási [trigger](durable-functions-bindings.md#activity-trigger) használata tevékenységi függvény definiálásához. A .NET függvények paraméterként kapnak egy [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) . Azt is megteheti, hogy a triggert bármely más JSON-serializeable objektumhoz köti, hogy beadja a függvény bemeneteit. A JavaScriptben az `<activity trigger binding name>` [ `context.bindings` objektum](../functions-reference-node.md#bindings)tulajdonságán keresztül férhet hozzá egy bemenethez. A tevékenység-függvények csak egyetlen értéket adhatnak át nekik. Több érték továbbításához rekordok, tömböket vagy összetett típusokat kell használnia.
+Aktivitási [trigger](durable-functions-bindings.md#activity-trigger) használata tevékenységi függvény definiálásához. A .NET függvények paraméterként kapnak egy [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) . Azt is megteheti, hogy a triggert bármely más JSON-serializeable objektumhoz köti, hogy beadja a függvény bemeneteit. A JavaScriptben a [`context.bindings` objektum](../functions-reference-node.md#bindings)`<activity trigger binding name>` tulajdonságán keresztül férhet hozzá az adatokhoz. A tevékenység-függvények csak egyetlen értéket adhatnak át nekik. Több érték továbbításához rekordok, tömböket vagy összetett típusokat kell használnia.
 
 > [!NOTE]
 > A tevékenység függvény csak Orchestrator függvényből aktiválható.
@@ -63,7 +63,7 @@ A Orchestrator függvényeket egy előkészítési [trigger kötése](durable-fu
 
 A Orchestrator vagy az Entity functions kiváltásán túl a *tartós ügyfél* -kötés használható a futtatási feladatokkal és az entitásokkal való interakcióra is. Például lekérdezheti, leállíthatja és megszakíthatja az eseményeket. További információ a munkafolyamatok és az entitások kezeléséről: [példányok kezelése](durable-functions-instance-management.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként hozza létre első tartós funkcióját a [C#](durable-functions-create-first-csharp.md) vagy a [JavaScript](quickstart-js-vscode.md)használatával.
 

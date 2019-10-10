@@ -7,16 +7,16 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f98f55dca8b3dbbfbe03cb8c79691cedb63335a0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937420"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168980"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Biztonsági környezeti korlátozások kezelése az Azure Red Hat OpenShift 
 
-A biztonsági környezeti megkötések (SCCs) lehetővé teszik a fürt rendszergazdái számára a hüvely engedélyeinek vezérlését. Ha többet szeretne megtudni erről az API-típusról, tekintse meg a [SCCs architektúrájának dokumentációját](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). A SCCs a példányban a CLI használatával a szokásos API-objektumokként kezelheti.
+A biztonsági környezeti megkötések (SCCs) lehetővé teszik a fürt rendszergazdái számára a hüvely engedélyeinek vezérlését. Ha többet szeretne megtudni erről az API-típusról, tekintse meg a [SCCs architektúrájának dokumentációját](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). A SCCs a példányban a CLI használatával a szokásos API-objektumokként kezelheti.
 
 ## <a name="list-security-context-constraints"></a>Biztonsági környezeti megkötések listázása
 
@@ -71,6 +71,6 @@ Settings:
   Supplemental Groups Strategy: RunAsAny
     Ranges:             <none>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) 

@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -38,16 +38,16 @@ Ez a cikk mindkét forgatókönyvről tartalmaz információkat: a DSC-bővítm�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- **Helyi gép**: Az Azure-beli virtuálisgép-bővítményekkel való kommunikációhoz a Azure Portal vagy a Azure PowerShell SDK-t kell használnia.
-- **Vendég ügynök**: A DSC-konfiguráció által konfigurált Azure virtuális gépnek olyan operációs rendszernek kell lennie, amely támogatja a Windows Management Framework (WMF) 4,0-es vagy újabb verzióját. A támogatott operációsrendszer-verziók teljes listájáért tekintse meg a [DSC-bővítmény verziójának előzményeit](/powershell/scripting/dsc/getting-started/azuredscexthistory).
+- **Helyi gép**: az Azure virtuálisgép-bővítmény használatához a Azure Portal vagy a Azure PowerShell SDK-t kell használnia.
+- **Vendég ügynök**: a DSC-konfiguráció által KONFIGURÁLT Azure virtuális gépnek olyan operációs rendszernek kell lennie, amely támogatja a Windows Management FRAMEWORK (WMF) 4,0-es vagy újabb verzióját. A támogatott operációsrendszer-verziók teljes listájáért tekintse meg a [DSC-bővítmény verziójának előzményeit](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
 ## <a name="terms-and-concepts"></a>Feltételek és fogalmak
 
 Ez az útmutató a következő fogalmak ismeretét feltételezi:
 
-- **Konfigurálás**: DSC-konfigurációs dokumentum.
-- **Csomópont**: A DSC-konfiguráció célját. Ebben a dokumentumban a *csomópont* mindig egy Azure-beli virtuális gépre hivatkozik.
-- **Konfigurációs adatértékek**: Olyan. psd1-fájl, amely egy konfiguráció környezeti adattal rendelkezik.
+- **Configuration**: egy DSC-konfigurációs dokumentum.
+- **Csomópont**: a DSC-konfiguráció célja. Ebben a dokumentumban a *csomópont* mindig egy Azure-beli virtuális gépre hivatkozik.
+- **Konfigurációs**adatfájl: olyan. psd1-fájl, amely egy konfiguráció környezeti adattal rendelkezik.
 
 ## <a name="architecture"></a>Architektúra
 
@@ -143,7 +143,7 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 Az Azure CLI használatával telepítheti a DSC-bővítményt egy meglévő virtuális gépre.
 
@@ -184,25 +184,25 @@ A portál a következő adatokat gyűjti össze:
 
 - **Konfigurációs modulok vagy szkriptek**: Ez a mező kötelező (az űrlap nem frissült az [alapértelmezett konfigurációs parancsfájl](#default-configuration-script)esetében). A konfigurációs moduloknak és parancsfájloknak olyan. ps1 fájlra van szükségük, amely tartalmaz egy. ps1 konfigurációs parancsfájllal rendelkező. ps1 parancsfájlt vagy. zip fájlt. Ha. zip fájlt használ, az összes függő erőforrást szerepelnie kell a. zip modul mappáiban. A. zip-fájlt a Azure PowerShell SDK-ban található **publish-AzureVMDscConfiguration-OutputArchivePath** parancsmag használatával hozhatja létre. A rendszer feltölti a. zip-fájlt a felhasználói blob Storage-ba, és egy SAS-token védi.
 
-- **Modul – a konfiguráció minősített neve**: Egy. ps1 fájlban több konfigurációs függvény is felvehető. Adja meg a Configuration. ps1 parancsfájl nevét, majd a \\ és a konfigurációs függvény nevét. Ha például a. ps1 parancsfájl neve Configuration. ps1, és a konfiguráció **IisInstall**, a **Configuration. ps1\IisInstall**nevet adja meg.
+- **Modul – a konfiguráció minősített neve**: több konfigurációs függvényt is hozzáadhat egy. ps1 fájlban. Adja meg a Configuration. ps1 parancsfájl nevét, majd a \\ és a konfigurációs függvény nevét. Ha például a. ps1 parancsfájl neve Configuration. ps1, és a konfiguráció **IisInstall**, a **Configuration. ps1\IisInstall**nevet adja meg.
 
 - **Konfigurációs argumentumok**: Ha a konfigurációs függvény argumentumokat fogad, adja meg őket a következő formátumban: **argumentName1 = érték1, argumentName2 = érték2**. Ez a formátum a PowerShell-parancsmagok vagy a Resource Manager-sablonok által elfogadott konfigurációs argumentumok eltérő formátuma.
 
-- **Konfigurációs ADATPSD1-fájl**: A mező kitöltése nem kötelező. Ha a konfigurációban konfigurációs adatfájlra van szükség a. psd1 fájlban, használja ezt a mezőt az adatmező kiválasztásához és a felhasználói blob Storage-tárolóba való feltöltéséhez. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
+- **Konfigurációs adatfájl PSD1**: Ez a mező nem kötelező. Ha a konfigurációban konfigurációs adatfájlra van szükség a. psd1 fájlban, használja ezt a mezőt az adatmező kiválasztásához és a felhasználói blob Storage-tárolóba való feltöltéséhez. A konfigurációs adatfájlt egy SAS-jogkivonat védi a blob Storage-ban.
 
-- **WMF-verzió**: A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a legújabbra állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke 4,0, 5,0, 5,1 és Latest. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**.
+- **WMF-verzió**: a Windows Management FRAMEWORK (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a legújabbra állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke 4,0, 5,0, 5,1 és Latest. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**.
 
-- **Adatgyűjtés**: Meghatározza, hogy a bővítmény gyűjti-e a telemetria. További információ: az [Azure DSC bővítmény adatgyűjtése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Adatgyűjtés**: meghatározza, hogy a bővítmény gyűjti-e a telemetria. További információ: az [Azure DSC bővítmény adatgyűjtése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
 
-- **Verzió**: A telepítendő DSC-bővítmény verzióját adja meg. További információ a verziókról: a [DSC bővítmény korábbi verziói](/powershell/scripting/dsc/getting-started/azuredscexthistory).
+- **Verzió**: a telepítendő DSC-bővítmény verzióját adja meg. További információ a verziókról: a [DSC bővítmény korábbi verziói](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-- **Másodlagos verzió automatikus frissítése**: Ez a mező a parancsmagok automatikus **frissítési** kapcsolóját képezi le, és lehetővé teszi a bővítmény számára, hogy a telepítés során automatikusan frissítsen a legújabb verzióra. Az **Igen** utasítás utasítja a bővítmény kezelőjét a legújabb elérhető verzió használatára, és a **nem** kényszeríti a telepítésre megadott **verziót** . Ha a nem lehetőséget **választja, a nem érték nem** ugyanaz, mint a **nem** **gombra** .
+- **Alverzió automatikus frissítése**: Ez a mező a parancsmagok **AutoUpdate** kapcsolóját képezi le, és lehetővé teszi, hogy a bővítmény automatikusan frissítsen a legújabb verzióra a telepítés során. Az **Igen** utasítás utasítja a bővítmény kezelőjét a legújabb elérhető verzió használatára, és a **nem** kényszeríti a telepítésre megadott **verziót** . Ha a nem lehetőséget **választja, a nem érték nem** ugyanaz, mint a **nem** **gombra** .
 
-## <a name="logs"></a>Logs
+## <a name="logs"></a>Naplók
 
 A bővítmény naplófájljai a következő helyen tárolódnak: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A PowerShell DSC-vel kapcsolatos további információkért nyissa meg a [PowerShell Dokumentációs központját](/powershell/scripting/dsc/overview/overview).
 - Vizsgálja [meg a DSC-bővítmény Resource Manager-sablonját](dsc-template.md).

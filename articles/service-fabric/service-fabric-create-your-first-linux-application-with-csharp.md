@@ -131,7 +131,7 @@ Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már l�
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
 2. Futtassa a `yo azuresfcsharp:AddService` parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Service Fabric-fürtök használata a Service Fabric parancssori felületén](service-fabric-cli.md)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése

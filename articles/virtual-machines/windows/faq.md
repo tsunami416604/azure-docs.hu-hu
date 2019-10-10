@@ -32,7 +32,7 @@ A Windows 7, a Windows 8,1 és a Windows 10 bizonyos verziói elérhetők az MSD
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Mennyi tárhelyet használhatok egy virtuális gép esetén?
 Az egyes adatlemezek akár 32 767 GiB-t is használhatnak. A használható adatlemezek száma a virtuális gép méretétől függ. Részletek: [Virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Egy-egy virtuális géppel több felügyelt lemez is használható. Managed Disks kétféle tartós tárolási lehetőséget kínál: Prémium és standard Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
+Az Azure-Managed Disks az Azure Virtual Machines által az adattároláshoz használt ajánlott lemezes tárolási ajánlatok. Egy-egy virtuális géppel több felügyelt lemez is használható. A Managed Disks kétféle tartós tárolási lehetőséget kínál: Premium és Standard szintű Managed Disks. A díjszabással kapcsolatos információkért tekintse meg a [Managed Disks díjszabását](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket is megadhatják. Minden lemez egy lapblobként tárolt .vhd-fájl. A díjszabás részleteiért lásd [a Storage szolgáltatás díjszabását](https://azure.microsoft.com/pricing/details/storage/).
 

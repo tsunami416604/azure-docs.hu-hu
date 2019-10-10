@@ -23,12 +23,12 @@ Ez a cikk az adatok feldolgozásához és átalakításához használható kül�
 
 A következő táblázat felsorolja a Data Factory által támogatott számítási környezeteket és a rajtuk futó tevékenységeket. 
 
-| Számítási környezet                                          | activities                                                   |
+| Számítási környezet                                          | tevékenységek                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Igény szerinti HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](#azure-hdinsight-linked-service) | [Kaptár](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Egyéni](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | @no__t – 0Machine tanulási tevékenységek: Kötegelt végrehajtás és erőforrás frissítése @ no__t-0 |
-| [Az Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) |
+| [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Tárolt eljárás](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Jegyzetfüzet](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 
@@ -89,13 +89,13 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 ```
 
 > [!IMPORTANT]
-> A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt. 
+> A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a program tervezett működésének része. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt. 
 >
 > Ahogy egyre több tevékenység fut, számos tároló jelenik meg az Azure Blob Storage-ban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 >
 > 
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 | Tulajdonság                     | Leírás                              | Szükséges |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | A Type tulajdonságot **HDInsightOnDemand**értékre kell beállítani. | Igen      |
@@ -109,9 +109,9 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 | clusterNamePrefix           | A HDI-fürt nevének előtagját a rendszer automatikusan hozzáfűzi a fürt nevének végéhez.| Nem       |
 | sparkVersion                 | A Spark verziója, ha a fürt típusa "Spark" | Nem       |
 | additionalLinkedServiceNames | További Storage-fiókokat ad meg a HDInsight társított szolgáltatáshoz, hogy a Data Factory szolgáltatás regisztrálja őket az Ön nevében. Ezeknek a tárolási fiókoknak ugyanabban a régióban kell lenniük, mint a HDInsight-fürtnek, amely ugyanabban a régióban jön létre, mint a linkedServiceName által megadott Storage-fiók. | Nem       |
-| osType                       | Az operációs rendszer típusa. Engedélyezett értékek a következők: Linux és Windows (csak HDInsight 3,3 esetén). Az alapértelmezett érték a Linux. | Nem       |
+| osType                       | Az operációs rendszer típusa. Az engedélyezett értékek a következők: Linux és Windows (csak HDInsight 3,3 esetén). Az alapértelmezett érték a Linux. | Nem       |
 | hcatalogLinkedServiceName    | Az HCatalog-adatbázisra mutató Azure SQL társított szolgáltatás neve. Az igény szerinti HDInsight-fürtöt az Azure SQL Database metaadattár használatával hozza létre. | Nem       |
-| connectVia                   | A tevékenységeknek a HDInsight társított szolgáltatásba való küldéséhez használandó Integration Runtime. Az igény szerinti HDInsight társított szolgáltatás esetében csak a Azure Integration Runtime támogatja. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem       |
+| Connectvia tulajdonsággal                   | A tevékenységeknek a HDInsight társított szolgáltatásba való küldéséhez használandó Integration Runtime. Az igény szerinti HDInsight társított szolgáltatás esetében csak a Azure Integration Runtime támogatja. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem       |
 | clusterUserName                   | A fürt eléréséhez használt Felhasználónév. | Nem       |
 | clusterPassword                   | A fürt eléréséhez szükséges biztonságos karakterlánc típusú jelszó. | Nem       |
 | clusterSshUserName         | Az SSH-Felhasználónév távolról csatlakozik a fürt csomópontjához (Linux rendszeren). | Nem       |
@@ -127,7 +127,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 >
 > 
 
-#### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON example
+#### <a name="additionallinkedservicenames-json-example"></a>additionalLinkedServiceNames JSON-példa
 
 ```json
 "additionalLinkedServiceNames": [{
@@ -138,19 +138,19 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 
 ### <a name="service-principal-authentication"></a>Egyszerű szolgáltatásnév hitelesítése
 
-Az igény szerinti HDInsight társított szolgáltatáshoz a HDInsight-fürtök létrehozásához az Ön nevében szükség van egy egyszerű szolgáltatás hitelesítésére. Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás entitást Azure Active Directory (Azure AD), és adja meg az előfizetés **közreműködői** szerepkörét, vagy azt az erőforráscsoportot, amelyben a HDInsight-fürt létrejött. A részletes lépéseket lásd: a [portál használata olyan Azure Active Directory alkalmazás és szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+Az igény szerinti HDInsight társított szolgáltatáshoz a HDInsight-fürtök létrehozásához az Ön nevében szükség van egy egyszerű szolgáltatás hitelesítésére. Az egyszerű szolgáltatás hitelesítésének használatához regisztráljon egy alkalmazás entitást Azure Active Directory (Azure AD), és adja meg az előfizetés **közreműködői** szerepkörét, vagy azt az erőforráscsoportot, amelyben a HDInsight-fürt létrejött. A részletes lépéseket lásd: a [portál használata olyan Azure Active Directory alkalmazás és szolgáltatásnév létrehozásához, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Jegyezze fel a következő értékeket, amelyeket a társított szolgáltatás definiálásához használ:
 
 - Alkalmazásazonosító
-- Alkalmazáskulcs 
+- Alkalmazás kulcsa 
 - Bérlőazonosító
 
 Az egyszerű szolgáltatás hitelesítését a következő tulajdonságok megadásával használhatja:
 
 | Tulajdonság                | Leírás                              | Szükséges |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Adja meg az alkalmazás ügyfél-azonosítót.     | Igen      |
-| **servicePrincipalKey** | Adja meg az alkalmazáskulcsot.           | Igen      |
-| **Bérlő**              | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen      |
+| **servicePrincipalId**  | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Igen      |
+| **servicePrincipalKey** | Az alkalmazás kulcsának meghatározása.           | Igen      |
+| **Bérlő**              | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen      |
 
 ### <a name="advanced-properties"></a>Speciális tulajdonságok
 
@@ -231,7 +231,7 @@ A következő tulajdonságokkal adhatja meg a fej, az adatmennyiség és a Zooke
 | zookeeperNodeSize | Megadja az állatkert-megtartó csomópont méretét. Az alapértelmezett érték: Standard_D3. | Nem       |
 
 #### <a name="specifying-node-sizes"></a>Csomópontok méretének meghatározása
-Az előző szakaszban említett tulajdonságok megadásához meg kell adnia [Virtual Machines cikk méretét](../virtual-machines/linux/sizes.md) . Az értékeknek meg kell felelniük a cikkben említett **parancsmagoknak &AMP; API** -kkal. Ahogy a cikkben látható, a nagyméretű (alapértelmezett) méret adatcsomópontja 7 GB memóriával rendelkezik, ami esetleg nem elég jó a forgatókönyvhöz. 
+Az előző szakaszban említett tulajdonságok megadásához meg kell adnia [Virtual Machines cikk méretét](../virtual-machines/linux/sizes.md) . Az értékeknek meg kell felelniük a cikkben említett **parancsmagoknak & API** -kkal. Ahogy a cikkben látható, a nagyméretű (alapértelmezett) méret adatcsomópontja 7 GB memóriával rendelkezik, ami esetleg nem elég jó a forgatókönyvhöz. 
 
 Ha a D4 méretű fő csomópontokat és munkavégző csomópontokat kívánja létrehozni, a **Standard_D4** értéket a headNodeSize és a dataNodeSize tulajdonságainak értékeként kell megadni. 
 
@@ -240,7 +240,7 @@ Ha a D4 méretű fő csomópontokat és munkavégző csomópontokat kívánja l�
 "dataNodeSize": "Standard_D4",
 ```
 
-Ha nem megfelelő értéket ad meg ezekhez a tulajdonságokhoz, a következő **hibaüzenetet** kaphatja: Nem sikerült létrehozni a fürtöt. Kivétel Nem sikerült befejezni a fürt létrehozásának műveletét. A művelet 400-as kóddal meghiúsult. A fürt állapota mögött maradt: "Hiba". Üzenet: 'PreClusterCreationValidationFailure'. Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a **parancsmag &AMP; API** -k nevét használja a táblázatból [Virtual Machines cikk mérete alapján](../virtual-machines/linux/sizes.md) .        
+Ha nem megfelelő értéket ad meg ezekhez a tulajdonságokhoz, a következő hibaüzenet jelenhet meg **:** nem sikerült létrehozni a fürtöt. Kivétel: Nem sikerült befejezni a fürt létrehozásának műveletét. A művelet 400-as kóddal meghiúsult. A fürt állapota: „hiba”. Üzenet: "PreClusterCreationValidationFailure". Ha ezt a hibaüzenetet kapja, győződjön meg arról, hogy a **parancsmag & API** -k nevét használja a táblázatból [Virtual Machines cikk mérete alapján](../virtual-machines/linux/sizes.md) .        
 
 ## <a name="bring-your-own-compute-environment"></a>Saját számítási környezet használata
 Ebben a konfigurációban a felhasználók egy már meglévő számítástechnikai környezetet regisztrálhatnak Data Factory társított szolgáltatásként. A számítástechnikai környezetet a felhasználó felügyeli, és a Data Factory szolgáltatás ezt használja a tevékenységek végrehajtásához.
@@ -251,7 +251,7 @@ Az ilyen típusú konfiguráció a következő számítási környezetekben tám
 * Azure Batch
 * Azure Machine Learning
 * Azure Data Lake Analytics
-* Azure SQL DB, Azure SQL DW, SQL Server
+* Azure SQL-adatbázis, Azure SQL DW, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight társított szolgáltatás
 Létrehozhat egy Azure HDInsight társított szolgáltatást, hogy regisztrálja a saját HDInsight-fürtöt Data Factory használatával.
@@ -283,16 +283,16 @@ Létrehozhat egy Azure HDInsight társított szolgáltatást, hogy regisztrálja
   }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                                                  | Szükséges |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | A Type tulajdonságot **HDInsight**értékre kell beállítani.            | Igen      |
 | clusterUri        | A HDInsight-fürt URI-ja.                            | Igen      |
-| username          | Adja meg a meglévő HDInsight-fürthöz való kapcsolódáshoz használni kívánt felhasználó nevét. | Igen      |
-| password          | A felhasználói fiók jelszavának megadása.                       | Igen      |
+| felhasználónév          | Adja meg a meglévő HDInsight-fürthöz való kapcsolódáshoz használni kívánt felhasználó nevét. | Igen      |
+| jelszó          | A felhasználói fiók jelszavának megadása.                       | Igen      |
 | linkedServiceName | Az Azure Storage társított szolgáltatás neve, amely a HDInsight-fürt által használt Azure Blob Storage-tárolóra hivatkozik. <p>Jelenleg nem adhat meg Azure Data Lake Store társított szolgáltatást ehhez a tulajdonsághoz. Ha a HDInsight-fürt hozzáfér a Data Lake Storehoz, akkor a kaptár/Pig parancsfájlokból is hozzáférhet a Azure Data Lake Storeban lévő adatokhoz. </p> | Igen      |
 | isEspEnabled      | Ha a HDInsight-fürt [Enterprise Security Package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-architecture) engedélyezve van, az "*igaz*" értéket kell megadni. Az alapértelmezett érték a "*false*". | Nem       |
-| connectVia        | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. <br />Enterprise Security Package (ESP) engedélyezése esetén a HDInsight-fürt egy saját üzemeltetésű integrációs modult használ, amely a fürtre mutat, vagy az ESP HDInsight-fürtöt tartalmazó Virtual Network belül kell telepíteni. | Nem       |
+| Connectvia tulajdonsággal        | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. <br />Enterprise Security Package (ESP) engedélyezése esetén a HDInsight-fürt egy saját üzemeltetésű integrációs modult használ, amely a fürtre mutat, vagy az ESP HDInsight-fürtöt tartalmazó Virtual Network belül kell telepíteni. | Nem       |
 
 > [!IMPORTANT]
 > A HDInsight több, üzembe helyezhető Hadoop-fürt verzióját is támogatja. Mindegyik verzió a Hortonworks adatplatform (HDP) terjesztésének egy adott verzióját hozza létre, amely az adott disztribúcióban található összetevőkből áll. A támogatott HDInsight-verziók listája továbbra is frissül, így biztosítva a legújabb Hadoop-ökoszisztéma-összetevőket és-javításokat. Győződjön meg arról, hogy mindig a [támogatott HDInsight-verzió és operációs rendszer típusa](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) legfrissebb információit használja a HDInsight támogatott verziójának a biztosításához. 
@@ -343,7 +343,7 @@ A következő témakörökben talál új Azure Batch szolgáltatást:
 ```
 
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 | Tulajdonság          | Leírás                              | Szükséges |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | A Type tulajdonságot **AzureBatch**értékre kell beállítani. | Igen      |
@@ -352,7 +352,7 @@ A következő témakörökben talál új Azure Batch szolgáltatást:
 | batchUri          | Az Azure Batch-fiók URL-címe https://*batchaccountname. region*. Batch.Azure.com formátumban. | Igen      |
 | poolName          | A virtuális gépek készletének neve.    | Igen      |
 | linkedServiceName | Az ehhez a Azure Batch társított szolgáltatáshoz társított Azure Storage társított szolgáltatás neve. Ez a társított szolgáltatás a tevékenység futtatásához szükséges átmeneti fájlokhoz használatos. | Igen      |
-| connectVia        | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem       |
+| Connectvia tulajdonsággal        | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem       |
 
 ## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
 Hozzon létre egy Azure Machine Learning társított szolgáltatást egy Machine Learning batch pontozási végpont egy adatgyárba való regisztrálásához.
@@ -379,17 +379,17 @@ Hozzon létre egy Azure Machine Learning társított szolgáltatást egy Machine
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 | Tulajdonság               | Leírás                              | Szükséges                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type                   | A Type tulajdonságot a következőre kell beállítani: **AzureML**. | Igen                                      |
+| Type (Típus)                   | A Type tulajdonságot a következőre kell beállítani: **AzureML**. | Igen                                      |
 | mlEndpoint             | A Batch-pontozási URL-cím.                   | Igen                                      |
 | apiKey                 | A közzétett munkaterület-modell API-ját.     | Igen                                      |
 | updateResourceEndpoint | A prediktív webszolgáltatás betanított fájllal való frissítéséhez használt Azure ML webszolgáltatás-végpont frissítési erőforrásának URL-címe | Nem                                       |
-| servicePrincipalId     | Adja meg az alkalmazás ügyfél-azonosítót.     | Kötelező, ha a updateResourceEndpoint meg van adva |
-| servicePrincipalKey    | Adja meg az alkalmazáskulcsot.           | Kötelező, ha a updateResourceEndpoint meg van adva |
-| tenant                 | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Kötelező, ha a updateResourceEndpoint meg van adva |
-| connectVia             | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem                                       |
+| servicePrincipalId     | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Kötelező, ha a updateResourceEndpoint meg van adva |
+| servicePrincipalKey    | Az alkalmazás kulcsának meghatározása.           | Kötelező, ha a updateResourceEndpoint meg van adva |
+| Bérlő                 | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Kötelező, ha a updateResourceEndpoint meg van adva |
+| Connectvia tulajdonsággal             | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                       |
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Társított szolgáltatás Azure Data Lake Analytics
 Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy Azure Data Lake Analytics számítási szolgáltatás Azure-beli adatgyárhoz való összekapcsolásához. A folyamat Data Lake Analytics U-SQL tevékenysége erre a társított szolgáltatásra hivatkozik. 
@@ -421,7 +421,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 | Tulajdonság             | Leírás                              | Szükséges                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -430,10 +430,10 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 | dataLakeAnalyticsUri | Azure Data Lake Analytics URI.           | Nem                                       |
 | subscriptionId       | Azure-előfizetés azonosítója                    | Nem                                       |
 | resourceGroupName    | Azure-erőforráscsoport neve                | Nem                                       |
-| servicePrincipalId   | Adja meg az alkalmazás ügyfél-azonosítót.     | Igen                                      |
-| servicePrincipalKey  | Adja meg az alkalmazáskulcsot.           | Igen                                      |
-| tenant               | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Kérheti a viszi az egérmutatót az Azure portal jobb felső sarkában. | Igen                                      |
-| connectVia           | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. | Nem                                       |
+| servicePrincipalId   | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Igen                                      |
+| servicePrincipalKey  | Az alkalmazás kulcsának meghatározása.           | Igen                                      |
+| Bérlő               | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Igen                                      |
+| Connectvia tulajdonsággal           | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                       |
 
 
 
@@ -483,11 +483,11 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
 
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Tulajdonságok
 
 | Tulajdonság             | Leírás                              | Szükséges                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
-| name                 | A társított szolgáltatás neve               | Igen   |
+| név                 | A társított szolgáltatás neve               | Igen   |
 | type                 | A Type tulajdonságot a következőre kell beállítani: **AzureDatabricks**. | Igen                                      |
 | Tartományi               | Az Azure-régiót ennek megfelelően határozza meg a Databricks munkaterület régiója alapján. Például: https://eastus.azuredatabricks.net | Igen                                 |
 | accessToken          | A hozzáférési token szükséges ahhoz, hogy a Data Factory hitelesíthető legyen a Azure Databricks. A hozzáférési tokent a databricks munkaterületen kell létrehozni. A hozzáférési token megkeresésének részletes lépései [itt](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) találhatók  | Igen                                       |
@@ -509,5 +509,5 @@ Létrehoz egy Azure SQL Data Warehouse társított szolgáltatást, és a [táro
 ## <a name="sql-server-linked-service"></a>Társított szolgáltatás SQL Server
 Létrehoz egy SQL Server társított szolgáltatást, és a [tárolt eljárási tevékenységgel](transform-data-using-stored-procedure.md) felhasználja a tárolt eljárás meghívását egy Data Factory folyamatból. A társított szolgáltatással kapcsolatos részletekért tekintse meg [SQL Server összekötőt](connector-sql-server.md#linked-service-properties) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure Data Factory által támogatott átalakítási tevékenységek listáját lásd: az [adatátalakítás](transform-data.md).

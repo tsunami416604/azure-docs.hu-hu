@@ -49,10 +49,10 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | A App Service tanúsítvány rövid neve. |
+| Név | A App Service tanúsítvány rövid neve. |
 | Naked domain Host neve | Itt adhatja meg a legfelső szintű tartományt. A kiállított tanúsítvány a legfelső szintű tartományt és a `www` altartományt *is* védi. A kiállított tanúsítványban a köznapi név mező tartalmazza a gyökértartomány tartományát, a tulajdonos alternatív neve mező pedig a `www` tartományt tartalmazza. Csak az altartományok biztonságossá tételéhez adja meg az altartomány teljes tartománynevét (például `mysubdomain.contoso.com`).|
-| Subscription | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
-| Resource group | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
+| Előfizetés | Az adatközpont, ahol a webalkalmazást üzemeltetik. |
+| Erőforráscsoport | A tanúsítványt tartalmazó erőforráscsoport. Használhat új erőforráscsoportot, vagy kiválaszthatja ugyanazt az erőforráscsoportot, mint a App Service alkalmazás, például:. |
 | Tanúsítvány SKU | Meghatározza a létrehozandó tanúsítvány típusát, legyen az egy standard tanúsítvány vagy egy [helyettesítő tanúsítvány](https://wikipedia.org/wiki/Wildcard_certificate). |
 | Jogi feltételek | Ide kattintva erősítse meg, hogy elfogadja a jogi feltételeket. A tanúsítványok a GoDaddyből szerezhetők be. |
 
@@ -60,7 +60,7 @@ A következő táblázat segítséget nyújt a tanúsítvány konfigurálásába
 
 A tanúsítvány megvásárlásának befejeződése után még néhány lépést el kell végeznie a tanúsítvány használatának megkezdése előtt. 
 
-Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **tanúsítvány konfigurációja**elemre  >  @ no__t-3Step 1: Tárolja a @ no__t-0 értéket.
+Válassza ki a tanúsítványt a [app Service tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **tanúsítvány konfigurációja**@no__t – 2**1. lépés: áruház**elemre.
 
 ![az áruházba való használatra kész kép beszúrása KV-ban](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
@@ -70,10 +70,10 @@ A **Key Vault állapota** lapon kattintson a Key Vault adattár elemre egy új t
 
 | Beállítás | Leírás |
 |-|-|
-| Name (Név) | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
-| Resource group | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
-| Location | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
-| Tarifacsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
+| Név | Egy egyedi név, amely alfanumerikus karaktereket és kötőjeleket tartalmaz. |
+| Erőforráscsoport | Javaslatként válassza ki ugyanazt az erőforráscsoportot, mint a App Service-tanúsítványt. |
+| Földrajzi egység | Válassza ki ugyanazt a helyet, mint a App Service alkalmazás. |
+| Díjcsomag | További információ: [Azure Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Hozzáférési szabályzatok| Meghatározza az alkalmazásokat és az engedélyezett hozzáférést a tároló erőforrásaihoz. Később is konfigurálhatja, ha a lépéseket követve [számos alkalmazás hozzáférést biztosít a kulcstartóhoz](../key-vault/key-vault-group-permissions-for-apps.md). |
 | Virtual Network hozzáférés | A tár bizonyos Azure-beli virtuális hálózatokhoz való hozzáférésének korlátozása. Később is konfigurálhatja, a [Azure Key Vault tűzfalak és virtuális hálózatok konfigurálása](../key-vault/key-vault-network-security.md) című témakör lépéseit követve. |
 
@@ -81,7 +81,7 @@ Miután kiválasztotta a tárolót, zárjuk be a **Key Vault adattár** lapot. A
 
 ## <a name="verify-domain-ownership"></a>Tartomány tulajdonjogának ellenőrzése
 
-Az utolsó lépésben használt **tanúsítvány-konfiguráció** lapon kattintson a **Step 2 elemre: Ellenőrizze a @ no__t-0 értéket.
+Az utolsó lépésben használt **tanúsítvány-konfiguráció** lapon kattintson a **2. lépés: ellenőrzés**elemre.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -153,7 +153,7 @@ Miután befejeződött a megújítási művelet, kattintson a **szinkronizálás
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
@@ -166,4 +166,4 @@ Miután befejeződött a megújítási művelet, kattintson a **szinkronizálás
 * [HTTPS kényszerítése](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [A TLS 1.1/1.2 betartatása](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Használjon SSL-tanúsítványt az alkalmazás kódjában Azure App Service](app-service-web-ssl-cert-load.md)
-* @NO__T – 0FAQ: App Service tanúsítványok @ no__t-0
+* [Gyakori kérdések: App Service tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

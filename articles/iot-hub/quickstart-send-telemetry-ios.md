@@ -16,7 +16,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72166986"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Gyors útmutató: Telemetria elküldése egy eszközről egy IoT hubhoz (iOS)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra (iOS)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -49,9 +49,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **myiOSdevice**: A regisztrálni kívánt eszköz neve. Javasoljuk, hogy a **myiOSdevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **myiOSdevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **myiOSdevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
    ```azurecli-interactive
    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
@@ -59,7 +59,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa a következő parancsot a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
    ```azurecli-interactive
    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
@@ -135,11 +135,11 @@ Az alábbi képernyőképen a helyi terminálablakban megjelenő telemetria-típ
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése egy iOS-eszközről, és a telemetria olvasása a központból. 
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése @ no__t-0
+> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-node.md)

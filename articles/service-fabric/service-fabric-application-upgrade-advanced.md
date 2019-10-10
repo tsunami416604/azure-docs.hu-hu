@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: atsenthi
+ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963820"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167586"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Szolgáltatások típusának hozzáadása vagy eltávolítása az alkalmazás frissítése során
@@ -128,17 +128,17 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 A frissítések a három mód (*figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a folytatást a következővel: visszaállítási.
 
-A visszaállítások automatikusan indíthatók, ha a figyelt módban lévő, a *FailureAction* visszaállítással rendelkező frissítés állapot- házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják [a következőt: Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, a *FailureAction* *visszaállítással* rendelkező frissítés állapot-házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják [a következőt: Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
 A visszaállítás során a *UpgradeReplicaSetCheckTimeout* és a mód értéke bármikor módosítható a [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
 Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissítési paraméterek](service-fabric-application-upgrade-parameters.md)használatával.
 
-Az alkalmazások frissítését az adatszerializálás használatának megismerésével [](service-fabric-application-upgrade-data-serialization.md)teheti meg.
+Az alkalmazások frissítését az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának megismerésével teheti meg.
 
 Az alkalmazások frissítéseinek [hibaelhárításával](service-fabric-application-upgrade-troubleshooting.md)kapcsolatos gyakori problémák elhárítása.

@@ -52,9 +52,9 @@ A rendszergazdai hozzáférés-vezérlési típus teljes hozzáféréssel rendel
 * **Recoversystempartitions művelet**: rendszerszolgáltatási partíciók helyreállítása                             
 
 ### <a name="cluster-operations"></a>Fürtműveletek
-* **ProvisionFabric**: MSI és/vagy a fürt jegyzékfájljának kiépítés                             
+* **ProvisionFabric**: msi és/vagy a fürt jegyzékfájljának kiépítés                             
 * **UpgradeFabric**: a fürt frissítéseinek indítása                             
-* **UnprovisionFabric**: MSI-és/vagy-fürt jegyzékfájljának kiépítése                         
+* **UnprovisionFabric**: az MSI és/vagy a fürt jegyzékfájljának kiépítése                         
 * **MoveNextFabricUpgradeDomain**: a fürt frissítéseinek folytatása explicit frissítési tartománnyal                             
 * **ReportFabricUpgradeHealth**: a fürt frissítésének folytatása a jelenlegi frissítési folyamattal                             
 * **StartInfrastructureTask**: infrastruktúra-feladatok indítása                             
@@ -102,7 +102,7 @@ A rendszergazdai hozzáférés-vezérlés szintén hozzáfér az előző művele
 ## <a name="changing-default-settings-for-client-roles"></a>Az ügyfél szerepköreinek alapértelmezett beállításainak módosítása
 A fürt jegyzékfájljának fájljában szükség esetén rendszergazdai képességeket biztosíthat az ügyfélnek. A [fürt létrehozásakor](service-fabric-cluster-creation-via-portal.md)a **háló beállításai** lehetőségre kattintva módosíthatja az alapértelmezett értékeket, és megadhatja az előző beállításokat a **név**, a **rendszergazda**, a **felhasználó**és az **érték** mezőkben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric-fürt biztonsága](service-fabric-cluster-security.md)
 
 [Service Fabric fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

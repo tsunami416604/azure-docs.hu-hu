@@ -1,17 +1,17 @@
 ---
 title: Az Azure-beli adatmegosztás előzetes verziójának szerepkörei és követelményei
-description: Az Azure-beli adatmegosztás előzetes verziójának szerepkörei és követelményei
+description: Ismerje meg az adatszolgáltatók és az adatfogyasztók hozzáférés-vezérlési szerepköreinek és követelményeinek megadását az Azure-beli adatmegosztás előzetes verziójában.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307354"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166377"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Az Azure-beli adatmegosztás előzetes verziójának szerepkörei és követelményei
 
@@ -30,9 +30,9 @@ Alább látható az adatmegosztási erőforrás által felügyelt identitáshoz 
 | |  |  |
 |---|---|---|
 |**Tárolási típus**|**Adatszolgáltató forrás Storage-fiókja**|**Adatfogyasztói célként szolgáló Storage-fiók**|
-|Azure Blob Storage| Storage-blobadatok olvasója | Storage-blobadatok közreműködője
+|Azure Blob Storage| Storage blob-Adatolvasó | Storage blob adatközreműködői
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
-|Azure Data Lake Gen2 | Storage-blobadatok olvasója | Storage-blobadatok közreműködője
+|Azure Data Lake Gen2 | Storage blob-Adatolvasó | Storage blob adatközreműködői
 |
 ### <a name="data-providers"></a>Adatszolgáltatók 
 Az adatkészletek Azure-adatmegosztáshoz való hozzáadásához az adatszolgáltatók adatmegosztási erőforrás-felügyelt identitását hozzá kell adni a Storage blob Adatolvasó szerepkörhöz. Ezt az Azure-adatmegosztási szolgáltatás automatikusan elvégzi, ha a felhasználó az Azure-on keresztül ad hozzá adatkészleteket, és a Storage-fiók tulajdonosa, vagy egy olyan egyéni szerepkör tagja, amely rendelkezik a Microsoft. Authorization/szerepkör-hozzárendelés/írási engedély hozzárendelésével. 
@@ -44,7 +44,7 @@ Azure Data Lake Gen1 származó adatok megosztásakor a szerepkör-hozzárendel�
 Az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelés létrehozásához kövesse az alábbi lépéseket:
 
 1. Navigáljon a Storage-fiókhoz.
-1. Válassza ki **hozzáférés-vezérlés (IAM)** .
+1. Válassza a **Access Control (iam)** lehetőséget.
 1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 1. A *szerepkör*területen válassza a *Storage blob-Adatolvasó*lehetőséget.
 1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási fiók nevét.
@@ -58,7 +58,7 @@ Azt is megteheti, hogy a felhasználó egy Azure-rendszergazda hozzáadhatja az 
 Ha manuálisan szeretné létrehozni az adatmegosztási erőforrás felügyelt identitásához tartozó szerepkör-hozzárendelést, kövesse az alábbi lépéseket:
 
 1. Navigáljon a Storage-fiókhoz.
-1. Válassza ki **hozzáférés-vezérlés (IAM)** .
+1. Válassza a **Access Control (iam)** lehetőséget.
 1. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
 1. A *szerepkör*területen válassza a *Storage blob-adatközreműködő*elemet. 
 1. A *kiválasztás*mezőben adja meg az Azure-beli adatmegosztási fiók nevét.
@@ -78,7 +78,7 @@ Az Azure-beli adatmegosztási meghívások elfogadásakor manuálisan kell regis
 1. Keressen rá a Microsoft. DataShare kifejezésre.
 1. Kattintson a **regisztrálás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

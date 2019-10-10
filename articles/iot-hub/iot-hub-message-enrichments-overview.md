@@ -82,11 +82,11 @@ Az üzenet-gazdagítás kipróbálásával kapcsolatos információkért lásd: 
 
 Az üzenetek dúsítása díjmentesen elérhető. Jelenleg akkor számítunk fel díjat, amikor üzenetet küld egy IoT Hubnak. Erre az üzenetre csak egyszer kell fizetnie, még akkor is, ha az üzenet több végpontra is érvényes.
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 Ez a funkció előzetes verzióban érhető el, és minden régióban elérhető az USA keleti régiója, az USA nyugati régiója, Nyugat-Európa, [Azure Government](/azure/azure-government/documentation-government-welcome), [Azure China 21Vianet](/azure/china)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogyan lehet útválasztási üzeneteket IoT Hub:
 
@@ -94,4 +94,4 @@ Tekintse meg ezeket a cikkeket, ha további információt szeretne arról, hogya
 
 * [Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával](iot-hub-devguide-messages-d2c.md)
 
-* [Oktatóanyag: IoT Hub útválasztás @ no__t-0
+* [Oktatóanyag: IoT Hub Útválasztás](tutorial-routing.md)

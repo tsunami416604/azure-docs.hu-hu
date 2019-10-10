@@ -105,7 +105,7 @@ Az alábbi lépésekkel konfigurálhatja a Dynamics 365-hez készült Azure Acti
 
     ![Új felhasználó létrehozása](./media/commercial-marketplace-lead-management-instructions-dynamics/application-users.png)
 
-19. Az **új felhasználó**területen győződjön meg arról, hogy a felhasználó: Az alkalmazás FELHASZNÁLÓja van kiválasztva. Adja meg annak a felhasználónak a felhasználónevét, teljes nevét és e-mail-címét, amelyet ezzel a kapcsolatban szeretne használni. Illessze be az **alkalmazás azonosítóját** is a 8. lépésben a Azure Portalban létrehozott alkalmazáshoz. A felhasználó hozzáadásának befejezéséhez válassza a **Mentés és bezárás** lehetőséget.
+19. Az **új felhasználó**területen győződjön meg arról, hogy a felhasználó: Application User (felhasználó) van kiválasztva. Adja meg annak a felhasználónak a felhasználónevét, teljes nevét és e-mail-címét, amelyet ezzel a kapcsolatban szeretne használni. Illessze be az **alkalmazás azonosítóját** is a 8. lépésben a Azure Portalban létrehozott alkalmazáshoz. A felhasználó hozzáadásának befejezéséhez válassza a **Mentés és bezárás** lehetőséget.
 
     ![Új felhasználó](./media/commercial-marketplace-lead-management-instructions-dynamics/new-user-info.png)
 
@@ -156,11 +156,11 @@ Az utolsó lépés az, hogy lehetővé teszi a létrehozott felhasználó szám�
 
     ![Biztonsági szerepkörök](./media/commercial-marketplace-lead-management-instructions-dynamics/security-roles.png)
 
-7. A biztonsági szerepkörben kattintson a **Core Records (alaprekordok** ) fülre. Keresse meg a "felhasználói entitás felhasználói felületének beállításai" entitást, és engedélyezze a létrehozási, olvasási és írási engedélyeket a felhasználó számára (1/4 sárga kör) az adott entitáshoz, ehhez kattintson egyszer a megfelelő körökre.
+7. A biztonsági szerepkörben válassza az **alaprekordok** fület. Keresse meg a "felhasználói entitás felhasználói felületének beállításai" entitást, és engedélyezze a létrehozási, olvasási és írási engedélyeket a felhasználóhoz (1/4 sárga kör) az adott entitáshoz, ehhez kattintson egyszer a megfelelő körökre.
 
     ![Microsoft Marketplace vezető író – Core rekordok](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer.png)
 
-8. Most lépjen a **Testreszabás** lapra. Keressen rá a "rendszerfeladat" entitásra, és engedélyezheti az olvasási, írási és AppendTo engedélyeket az entitás szervezetének (Solid Green) a megfelelő körökre kattintva.
+8. Most lépjen a **Testreszabás** lapra. keressen rá a "rendszerfeladat" entitásra, és engedélyezheti az olvasási, írási és AppendTo engedélyeket az entitás szervezetének (tömör zöld) a megfelelő körökre kattintva.
 
     ![Microsoft Marketplace vezető írója – Testreszabás](./media/commercial-marketplace-lead-management-instructions-dynamics/marketplace-lead-writer-customization.png)
 

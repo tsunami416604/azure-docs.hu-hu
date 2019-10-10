@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/08/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667206"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169807"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Az alkalmazásproxy-összekötők és-alkalmazások magas rendelkezésre állása és terheléselosztása
 
@@ -81,24 +81,25 @@ Bizonyos helyzetekben (például a naplózás, a terheléselosztás stb.) a kül
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Ajánlott eljárások több App-kiszolgáló közötti terheléselosztáshoz
 Ha az alkalmazásproxy-alkalmazáshoz hozzárendelt összekötő csoport két vagy több összekötővel rendelkezik, és a háttér-webalkalmazást több kiszolgálón (kiszolgálófarm) futtatja, a megfelelő terheléselosztási stratégia szükséges. Egy jó stratégia biztosítja, hogy a kiszolgálók egyenletesen felveszik az ügyfeleket, és meggátolják a kiszolgálók feletti vagy alatti kihasználtságot a kiszolgálófarm számára.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>forgatókönyv 1: A háttérbeli alkalmazás nem igényli a munkamenetek megőrzését
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>1\. forgatókönyv: a háttérbeli alkalmazás nem igényli a munkamenetek megőrzését
 A legegyszerűbb eset az, amikor a háttér-webalkalmazás nem igényel munkamenet-kitartást (munkamenet-megőrzés). A felhasználótól érkező kéréseket a kiszolgálófarm bármely háttérbeli alkalmazás-példánya kezelheti. A 4. rétegbeli terheléselosztó használható, és nem lehet affinitást beállítani. Bizonyos lehetőségek közé tartozik a Microsoft hálózati terheléselosztás és a Azure Load Balancer vagy egy másik gyártótól származó terheléselosztó. Azt is megteheti, hogy a ciklikus multiplexelés DNS-t konfigurálhatja.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>2\. forgatókönyv: A háttérbeli alkalmazáshoz munkamenet-megőrzés szükséges
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>2\. forgatókönyv: a háttérbeli alkalmazáshoz munkamenet-megőrzés szükséges
 Ebben az esetben a háttér-webalkalmazásnak a hitelesített munkamenet során a munkamenetek állandósága (munkamenet-megőrzés) szükséges. A felhasználótól érkező kérelmeket a kiszolgálófarm ugyanazon kiszolgálóján futó háttérbeli alkalmazás-példánynak kell kezelnie.
 Ez a forgatókönyv bonyolultabb lehet, mivel az ügyfél általában több kapcsolatot létesít az alkalmazásproxy szolgáltatással. A különböző kapcsolatokon keresztüli kérelmek különböző összekötőket és kiszolgálókat is megérkeznek a farmon. Mivel az egyes összekötők a saját IP-címét használják ehhez a kommunikációhoz, a terheléselosztó nem tudja biztosítani a munkamenet-kikötést az összekötők IP-címe alapján. A forrás IP-affinitása nem használható.
 Íme néhány lehetőség a 2. forgatókönyvhöz:
 
-- 1\. lehetőség: A munkamenet megőrzésének alapja a terheléselosztó által beállított munkamenet-cookie-ban. Ez a beállítás azért ajánlott, mert lehetővé teszi, hogy a terhelés egyenletesen legyen elosztva a háttér-kiszolgálók között. Ehhez a képességhez 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítja az SSL-kapcsolatokat. Az Azure Application Gateway (munkamenet-affinitás) vagy egy másik gyártótól származó terheléselosztó is használható.
+- 1\. lehetőség: a munkamenet megőrzésének alapja a terheléselosztó által beállított munkamenet-cookie-ban. Ez a beállítás azért ajánlott, mert lehetővé teszi, hogy a terhelés egyenletesen legyen elosztva a háttér-kiszolgálók között. Ehhez a képességhez 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítja az SSL-kapcsolatokat. Az Azure Application Gateway (munkamenet-affinitás) vagy egy másik gyártótól származó terheléselosztó is használható.
 
-- 2\. lehetőség: A munkamenet állandóságának kimutatása az X-továbbítva – fejléc mezőnél. Ehhez a lehetőséghez egy 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítani az SSL-kapcsolatokat.  
+- 2\. lehetőség: a munkamenet megőrzésének alapja az X által továbbított fejlécnél. Ehhez a lehetőséghez egy 7. rétegbeli terheléselosztó szükséges, amely képes kezelni a HTTP-forgalmat, és megszakítani az SSL-kapcsolatokat.  
 
-- 3\. lehetőség: Konfigurálja a háttérbeli alkalmazást, hogy ne kelljen a munkamenetek megőrzésére.
+- 3\. lehetőség: a háttérbeli alkalmazás konfigurálása, hogy ne kelljen a munkamenetek megőrzésére.
 
 A szoftver gyártójának dokumentációjában tájékozódhat a háttérrendszer terheléselosztási követelményeiről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Alkalmazásproxy engedélyezése](application-proxy-add-on-premises-application.md)
 - [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Feltételes hozzáférés engedélyezése](application-proxy-integrate-with-sharepoint-server.md)
-- [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)
+- [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
+- [Ismerje meg, hogyan támogatja az Azure AD architektúra a magas rendelkezésre állást](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

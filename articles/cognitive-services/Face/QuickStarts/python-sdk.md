@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Pythonhoz készült Face ügyféloldali kódtár | Microsoft Docs'
+title: 'Gyors útmutató: Face ügyféloldali kódtár a Pythonhoz | Microsoft Docs'
 description: Ismerkedés a Pythonhoz készült Face ügyféloldali kódtáraval...
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 617e9a40c253d98c32ae8b4c9426f3148c23d125
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966912"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176133"
 ---
-# <a name="quickstart-face-client-library-for-python"></a>Gyors útmutató: A Pythonhoz készült Face ügyféloldali kódtár
+# <a name="quickstart-face-client-library-for-python"></a>Rövid útmutató: Face ügyféloldali kódtár a Pythonhoz
 
 Ismerkedés a Pythonhoz készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face API szolgáltatás lehetővé teszi a speciális algoritmusok elérését a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -29,12 +29,12 @@ A Pythonhoz készült Face ügyféloldali kódtár a következőre használható
 * Arcok ellenőrzése
 * Pillanatkép készítése az adatok áttelepítéséhez
 
-[A dokumentációs](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [-csomagjához (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | tartozó[minták](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
+[Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)@no__t – 1[könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [minta](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -45,15 +45,15 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Az erőforrás megtekintése a [Azure Portal](https://portal.azure.com/)
 
-Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű `FACE_SUBSCRIPTION_KEY`kulcshoz.
+Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) `FACE_SUBSCRIPTION_KEY` nevű kulcshoz.
  
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új&mdash;Python-parancsfájl*Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
+Hozzon létre egy új Python-szkriptet @ no__t-0*Quickstart-file.py*, például:. Ezután nyissa meg a kívánt szerkesztőben vagy IDE, és importálja a következő könyvtárakat.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
-Ezután hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Előfordulhat, hogy módosítania kell a végpont (`westus`) első részét, hogy az megfeleljen az előfizetésnek.
+Ezután hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának létrehozásához. Előfordulhat, hogy módosítania kell a végpont első részét (`westus`), hogy az megfeleljen az előfizetésnek.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_subvars)]
 
@@ -65,14 +65,14 @@ Ezután hozzon létre változókat az erőforrás Azure-végpontjának és-kulcs
 Az ügyféloldali kódtár a használatával telepíthető:
 
 ```console
-pip install --upgrade azure-cognitiveservices-Face
+pip install --upgrade azure-cognitiveservices-vision-face
 ```
 
 ## <a name="object-model"></a>Objektummodell
 
 A következő osztályok és felületek a Face Python SDK főbb funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
@@ -97,7 +97,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a ( `FACE_SUBSCRIPTION_KEY`z) nevű Face kulcshoz.
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a (z) `FACE_SUBSCRIPTION_KEY` nevű arc kulcshoz.
 
 Ügyfelet hoz létre a végponttal és a kulccsal. Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) objektumot a kulccsal, és használja a végpontján egy [FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) objektum létrehozásához.
 
@@ -117,7 +117,7 @@ A következő kód kiírja a megadott képet a kijelzőre, és téglalapokat raj
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
 
-![A piros téglalap körül a face fiatal nő](../images/face-rectangle-result.png)
+![Egy fiatal nő, amely az arc körül rajzolt piros téglalapot alkot](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>Hasonló arcok keresése
 
@@ -147,7 +147,7 @@ A következő kód egy **PersonGroup** hoz létre három különböző **személ
 
 Ennek a forgatókönyvnek a végrehajtásához a következő képeket kell mentenie a projekt gyökérkönyvtárában: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-A képek ezen csoportja három különböző személynek megfelelő arc-rendszerképeket tartalmaz. A kód három **személy** objektumot határoz meg, és társítja azokat a `woman`, `man`, és `child`rendszerű képfájlokkal.
+A képek ezen csoportja három különböző személynek megfelelő arc-rendszerképeket tartalmaz. A kód három **személy** objektumot határoz meg, és társítja azokat az `woman`, `man` és `child` értékkel kezdődő képfájlokkal.
 
 Miután beállította a lemezképeket, Definiáljon egy címkét a szkript tetején a létrehozandó **PersonGroup** objektumhoz.
 
@@ -178,7 +178,7 @@ A következő kód több képpel rendelkező képet helyez el, és megkeresi az 
 
 ### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
 
-A következő kód a projekt gyökerében található, amely egy _test-Image-person-Group. jpg_ képet keres, és észleli a képen látható arcokat. Ezt a képet a **PersonGroup** -felügyelethez használt rendszerképekkel találja https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images:.
+A következő kód a projekt gyökerében található, amely egy _test-Image-person-Group. jpg_ képet keres, és észleli a képen látható arcokat. Ezt a rendszerképet a **PersonGroup** -felügyelethez használt rendszerképekkel tekintheti meg: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -246,7 +246,7 @@ A pillanatképek többi művelete egy aszinkron függvényen belül történik.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
 
-    Ez a kód a `wait_for_operation` függvény használatát végzi el, amelyet külön kell meghatároznia:
+    Ez a kód a `wait_for_operation` függvény használatát teszi lehetővé, amelyet külön kell meghatároznia:
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
 
@@ -262,7 +262,7 @@ Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást `python` a gyors üzembe helyezési fájlban található paranccsal.
+Futtassa az alkalmazást a `python` paranccsal a gyors üzembe helyezési fájlban.
 
 ```console
 python quickstart-file.py
@@ -272,7 +272,7 @@ python quickstart-file.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
+* [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, futtassa a következő kódot a parancsfájlban:
@@ -283,7 +283,7 @@ Ha ebben a rövid útmutatóban az adatok áttelepítve lettek a pillanatkép-sz
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz készült Face Library-t a feladatok elvégzésére. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

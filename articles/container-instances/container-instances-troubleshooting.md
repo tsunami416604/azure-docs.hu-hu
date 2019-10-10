@@ -9,35 +9,35 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300461"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166466"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances gyakori problémáinak elhárítása
 
-Ez a cikk bemutatja, hogyan lehet a tárolók Azure Container Instances való felügyeletére vagy üzembe helyezésére vonatkozó gyakori hibákat elhárítani. Lásd még: [Gyakori kérdések](container-instances-faq.md). 
+Ez a cikk bemutatja, hogyan lehet a tárolók Azure Container Instances való felügyeletére vagy üzembe helyezésére vonatkozó gyakori hibákat elhárítani. Lásd még: [Gyakori kérdések](container-instances-faq.md).
 
 Ha további támogatásra van szüksége, tekintse meg a [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)elérhető **Súgó + támogatási** lehetőségeket.
 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
-A tároló specifikációjának meghatározásakor bizonyos paramétereknek meg kell követelniük az elnevezési korlátozásokat. Alább látható egy táblázat a Container Group tulajdonságaira vonatkozó konkrét követelményekkel. Az Azure elnevezési konvenciókkal kapcsolatos további információkért [][azure-name-restrictions] lásd: elnevezési konvenciók a Azure Architecture Center.
+A tároló specifikációjának meghatározásakor bizonyos paramétereknek meg kell követelniük az elnevezési korlátozásokat. Alább látható egy táblázat a Container Group tulajdonságaira vonatkozó konkrét követelményekkel. Az Azure elnevezési konvenciókkal kapcsolatos további információkért lásd: [elnevezési konvenciók][azure-name-restrictions] a Azure Architecture Center.
 
-| Scope | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
+| Hatókör | Hossz | Kis- és nagybetűk | Érvényes karakterek | Javasolt minta | Példa |
 | --- | --- | --- | --- | --- | --- |
 | Tároló csoportjának neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tároló neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Tároló portjai | 1 és 65535 között |Integer |1 és 65535 közötti egész szám |`<port-number>` |`443` |
-| DNS name label | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>` |`frontend-site1` |
-| Környezeti változó | 1-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és aláhúzás (_) bárhol az első vagy az utolsó karakter kivételével |`<name>` |`MY_VARIABLE` |
+| Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Tároló portjai | 1 és 65535 között |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
+| DNS-név címkéje | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és kötőjel bárhol, az első vagy az utolsó karakter kivételével |`<name>` |`frontend-site1` |
+| Környezeti változó | 1–63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus és aláhúzás (_) bárhol az első vagy az utolsó karakter kivételével |`<name>` |`MY_VARIABLE` |
 | Kötet neve | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűk, számok és kötőjelek bárhol, az első vagy az utolsó karakter kivételével. Két egymást követő kötőjel nem szerepelhet. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>A rendszerkép operációs rendszerének verziója nem támogatott
 
-Ha olyan rendszerképet ad meg, amely Azure Container instances nem támogatja `OsVersionNotSupported` , hibaüzenetet ad vissza. A hiba az alábbihoz hasonló, ahol `{0}` a a telepíteni próbált rendszerkép neve:
+Ha olyan rendszerképet ad meg, amelyet a Azure Container Instances nem támogat, a rendszer @no__t 0 hibát ad vissza. A hiba a következőhöz hasonló, ahol a `{0}` a telepíteni próbált lemezkép neve:
 
 ```json
 {
@@ -52,7 +52,7 @@ Ez a hiba leggyakrabban a 1709-es vagy a 1803-es féléves csatornán alapuló W
 
 ## <a name="unable-to-pull-image"></a>Nem sikerült lekérni a rendszerképet
 
-Ha a Azure Container Instances kezdetben nem tudja lekérni a rendszerképet, a rendszer egy ideig újrapróbálkozik. Ha a lekéréses művelet továbbra is sikertelen, az ACI végül nem fogja tudni végrehajtani az üzemelő `Failed to pull image` példányt, és hibaüzenet jelenhet meg.
+Ha a Azure Container Instances kezdetben nem tudja lekérni a rendszerképet, a rendszer egy ideig újrapróbálkozik. Ha a lekéréses művelet továbbra is sikertelen, az ACI végül nem fogja tudni végrehajtani az üzemelő példányt, és `Failed to pull image` hibát tapasztalhat.
 
 A probléma megoldásához törölje a tároló példányát, majd próbálja megismételni a telepítést. Győződjön meg arról, hogy a rendszerkép létezik a beállításjegyzékben, és hogy helyesen írta be a rendszerkép nevét.
 
@@ -89,7 +89,7 @@ Ha a képet nem lehet lehúzni, a következőhöz hasonló események jelennek m
 
 ## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>A tároló folyamatosan kilép és újraindul (nem hosszan futó folyamat)
 
-A Container groups alapértelmezett értéke **mindig**az újraindítási [szabályzat](container-instances-restart-policy.md) , így a tároló csoportba tartozó tárolók mindig újraindulnak, miután befejeződött a futtatásuk. Előfordulhat, hogy ezt a **OnFailure** vagy **soha nem** értékre kell módosítania, ha feladat-alapú tárolókat szeretne futtatni. Ha **OnFailure** ad meg, és továbbra is folyamatosan látja a folyamatos újraindításokat, a tárolóban végrehajtott alkalmazással vagy parancsfájllal kapcsolatos probléma merülhet fel.
+A Container groups alapértelmezett értéke **mindig**az [Újraindítási szabályzat](container-instances-restart-policy.md) , így a tároló csoportba tartozó tárolók mindig újraindulnak, miután befejeződött a futtatásuk. Előfordulhat, hogy ezt a **OnFailure** vagy **soha nem** értékre kell módosítania, ha feladat-alapú tárolókat szeretne futtatni. Ha **OnFailure** ad meg, és továbbra is folyamatosan látja a folyamatos újraindításokat, a tárolóban végrehajtott alkalmazással vagy parancsfájllal kapcsolatos probléma merülhet fel.
 
 Ha olyan tárolási csoportokat futtat, amelyek hosszú ideig futó folyamatok nélkül futnak, akkor előfordulhat, hogy a rendszer ismételten kilép, és újraindul az olyan képekkel, mint például az Ubuntu vagy az Alpine. Az [exec](container-instances-exec.md) -on keresztüli csatlakozás nem működik, mert a tároló nem tartja életben a folyamatot. A probléma megoldásához vegyen fel egy, a következőhöz hasonló indítási parancsot a tároló csoportjának üzembe helyezésével, hogy a tárolón fusson.
 
@@ -104,7 +104,7 @@ az container create -g myResourceGroup --name mywindowsapp --os-type Windows --i
  --command-line "ping -t localhost"
 ```
 
-A Container instances API és Azure Portal tartalmaz egy `restartCount` tulajdonságot. A tárolók újraindításának számának vizsgálatához az az [Container show][az-container-show] parancsot használhatja az Azure CLI-ben. A következő példában szereplő kimenetben (amely a rövid időpontra van rövidítve), a `restartCount` kimenet végén látható tulajdonság jelenik meg.
+A Container Instances API és a Azure Portal `restartCount` tulajdonságot tartalmaz. A tárolók újraindításának számának vizsgálatához az az [Container show][az-container-show] parancsot használhatja az Azure CLI-ben. A következő példában szereplő kimenetben (amelyet a rendszer rövidítve csonkított) a kimenet végén látható `restartCount` tulajdonság jelenik meg.
 
 ```json
 ...
@@ -160,7 +160,7 @@ A Windows-lemezképek [további szempontokat is figyelembe](#cached-images)kell 
 
 Ha a tároló hosszú időt vesz igénybe, de végül sikeres, először tekintse meg a tároló rendszerképének méretét. Mivel Azure Container Instances igény szerint lekéri a tároló képét, a megjelenő indítási idő közvetlenül kapcsolódik a méretéhez.
 
-A tároló rendszerképének `docker images` méretét a Docker CLI parancsával tekintheti meg:
+A tároló rendszerképének méretét a Docker CLI `docker images` parancsával tekintheti meg:
 
 ```console
 $ docker images
@@ -168,15 +168,15 @@ REPOSITORY                                    TAG       IMAGE ID        CREATED 
 mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 months ago    67.6MB
 ```
 
-A képméret kis méretűre állításának kulcsa annak biztosítása, hogy a végső rendszerkép ne tartalmazzon olyan semmit, ami nem szükséges futásidőben. Ennek egyik módja a többfázisú [buildek][docker-multi-stage-builds]használata. A többfázisú buildek megkönnyítik annak biztosítását, hogy a végső rendszerkép csak az alkalmazáshoz szükséges összetevőket tartalmazza, és nem a felépítési időpontban szükséges további tartalmakat.
+A képméret kis méretűre állításának kulcsa annak biztosítása, hogy a végső rendszerkép ne tartalmazzon olyan semmit, ami nem szükséges futásidőben. Ennek egyik módja a [többfázisú buildek][docker-multi-stage-builds]használata. A többfázisú buildek megkönnyítik annak biztosítását, hogy a végső rendszerkép csak az alkalmazáshoz szükséges összetevőket tartalmazza, és nem a felépítési időpontban szükséges további tartalmakat.
 
 ### <a name="image-location"></a>Rendszerkép helye
 
-Egy másik lehetőség, hogy csökkentse a rendszerkép hatását a tároló indítási idejére, hogy a tároló lemezképét ugyanabban a régióban [](/azure/container-registry/) tárolja Azure Container Registryban, ahol tároló-példányokat kíván üzembe helyezni. Ez lerövidíti azt a hálózati elérési utat, amelyre a tároló rendszerképének utaznia kell, ami jelentősen lerövidíti a letöltési időt.
+Egy másik lehetőség, hogy csökkentse a rendszerkép hatását a tároló indítási idejére, hogy a tároló lemezképét ugyanabban a régióban tárolja [Azure Container Registryban](/azure/container-registry/) , ahol tároló-példányokat kíván üzembe helyezni. Ez lerövidíti azt a hálózati elérési utat, amelyre a tároló rendszerképének utaznia kell, ami jelentősen lerövidíti a letöltési időt.
 
 ### <a name="cached-images"></a>Gyorsítótárazott lemezképek
 
-A Azure Container instances egy gyorsítótárazási mechanizmust használ a [Windows](container-instances-faq.md#what-windows-base-os-images-are-supported)alaplemezképekre épülő rendszerképekhez, például `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` Gyakran használt Linux `ubuntu:1604` -rendszerképek, `alpine:3.6` például a és a gyorsítótárazva is. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
+A Azure Container Instances egy gyorsítótárazási mechanizmust használ a közös [Windows alapképekre](container-instances-faq.md#what-windows-base-os-images-are-supported)épülő rendszerképekhez, beleértve a `nanoserver:1809`, a `servercore:ltsc2019` és a `servercore:1809` beállítást. A gyakran használt Linux-rendszerképek, például a `ubuntu:1604` és a `alpine:3.6` is gyorsítótárazva vannak. A gyorsítótárazott képek és címkék naprakész listája a [gyorsítótárazott lemezképek listája][list-cached-images] API-t használja.
 
 > [!NOTE]
 > A Windows Server 2019-alapú rendszerképek használata a Azure Container Instances előzetes verzióban érhető el.
@@ -200,13 +200,13 @@ Ez a hiba azt jelzi, hogy nagy terhelés miatt abban a régióban, amelyben a k�
 
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nem lehet csatlakozni a mögöttes Docker API-hoz vagy a privilegizált tárolók futtatásához.
 
-A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a tároló-csoportokat működtető mögöttes infrastruktúrához. Ez magában foglalja a tároló gazdagépén futó Docker API hozzáférését és a Kiemelt tárolók futtatását. Ha a Docker-interakcióra van szüksége, tekintse meg a [Rest](https://aka.ms/aci/rest) -dokumentációt, ahol megtekintheti az ACI API által támogatott műveleteket. Ha hiányzik valami, küldjön egy kérelmet az [ACI visszajelzési fórumokra](https://aka.ms/aci/feedback).
+A Azure Container Instances nem tesz elérhetővé közvetlen hozzáférést a tároló-csoportokat működtető mögöttes infrastruktúrához. Ez magában foglalja a tároló gazdagépén futó Docker API hozzáférését és a Kiemelt tárolók futtatását. Ha a Docker-interakcióra van szüksége, tekintse meg a [Rest-dokumentációt](https://aka.ms/aci/rest) , ahol megtekintheti az ACI API által támogatott műveleteket. Ha hiányzik valami, küldjön egy kérelmet az [ACI visszajelzési fórumokra](https://aka.ms/aci/feedback).
 
 ## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Előfordulhat, hogy a tároló csoport IP-címe nem érhető el, mert nem egyeznek a portok
 
-A Azure Container Instances még nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt. Ha úgy találja, hogy a tároló csoport IP-címe nem érhető el, akkor győződjön meg róla, hogy úgy konfigurálta a tároló-rendszerképet, hogy a tároló csoportjában `ports` a tulajdonsággal elérhető portokat figyelje.
+A Azure Container Instances még nem támogatja a port-hozzárendelést, például a normál Docker-konfigurációt. Ha úgy találja, hogy a tároló csoport IP-címe nem érhető el, akkor győződjön meg arról, hogy a tároló-rendszerkép úgy lett konfigurálva, hogy a `ports` tulajdonsággal megegyező portokra figyeljen.
 
-Ha szeretné ellenőrizni, hogy Azure Container instances tud-e figyelni a tároló rendszerképében konfigurált porton, tesztelje a portot közzétevő `aci-helloworld` rendszerkép központi telepítését. Futtassa az `aci-helloworld` alkalmazást is, hogy az figyelje a portot. `aci-helloworld`egy opcionális környezeti változót `PORT` fogad, amely felülbírálja az alapértelmezett 80-es portot, amely figyeli a szolgáltatást. Például a 9000-es port teszteléséhez:
+Ha szeretné ellenőrizni, hogy Azure Container Instances tud-e figyelni a tároló rendszerképében konfigurált porton, ellenőrizze a `aci-helloworld` rendszerkép központi telepítését, amely elérhetővé teszi a portot. Futtassa a `aci-helloworld` alkalmazást is, hogy az figyelje a portot. a `aci-helloworld` opcionális környezeti változót fogad el `PORT` értékkel az alapértelmezett 80-es port felülbírálásához. Például a 9000-es port teszteléséhez:
 
 1. Állítsa be a tároló csoportot a 9000-es port megjelenítéséhez, és adja át a portszámot a környezeti változó értékeként:
     ```azurecli
@@ -215,22 +215,22 @@ Ha szeretné ellenőrizni, hogy Azure Container instances tud-e figyelni a táro
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Keresse meg a tároló csoport IP-címét a parancs kimenetében `az container create`. Keresse meg az **IP**értékét. 
-1. A tároló sikeres kiépítés után keresse meg a böngészőben a tároló alkalmazás IP-címét és portját, például: `192.0.2.0:9000`. 
+1. Keresse meg a tároló csoport IP-címét a `az container create` parancs kimenetében. Keresse meg az **IP**értékét. 
+1. A tároló sikeres kiépítés után tallózással keresse meg a tároló alkalmazás IP-címét és portját a böngészőben, például: `192.0.2.0:9000`. 
 
     Megjelenik az "Üdvözöljük Azure Container Instances!" a webalkalmazás által megjelenített üzenet.
-1. Ha elkészült a tárolóval, távolítsa el a parancsot a `az container delete` parancs használatával:
+1. Ha elkészült a tárolóval, távolítsa el a `az container delete` paranccsal:
 
     ```azurecli
     az container delete --resource-group myResourceGroup --name mycontainer
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [kérhet le tároló naplókat és eseményeket](container-instances-get-logs.md) a tárolók hibakereséséhez.
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

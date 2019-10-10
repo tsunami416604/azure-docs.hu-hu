@@ -59,7 +59,7 @@ Most, hogy mindezen információk alapján a táblázat azt mutatja, hogy fizika
 
 ![A Cost számításához használt táblázat][Image1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A szolgáltatás particionálásával kapcsolatos további tudnivalókért tekintse meg a [Service Fabric-szolgáltatások particionálását][10] ismertető témakört.
 
 <!--Image references-->

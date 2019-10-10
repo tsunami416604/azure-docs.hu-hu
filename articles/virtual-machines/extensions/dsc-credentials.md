@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -85,7 +85,7 @@ A kód futtatása hitelesítő adatokat kér. A hitelesítő adatok megadása ut
 
 Ez a folyamat eltér [a bővítmény-kezelő nélküli biztonságos konfigurációk használatával](/powershell/scripting/dsc/pull-server/securemof). Az Azure-környezet lehetővé teszi, hogy biztonságos módon továbbítsa a konfigurációs adatokat a tanúsítványokon keresztül. A DSC-bővítmény kezelőjének használatakor nem kell megadnia **$CertificatePath** vagy **$CertificateID**/  **$thumbprint** bejegyzést a **ConfigurationData**-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Bevezetés az [Azure DSC bővítmény kezelőjébe](dsc-overview.md).
 - Vizsgálja [meg a DSC-bővítmény Azure Resource Manager sablonját](dsc-template.md).

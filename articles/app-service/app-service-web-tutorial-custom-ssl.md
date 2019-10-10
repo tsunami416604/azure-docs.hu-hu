@@ -214,7 +214,7 @@ A művelet befejezése után az alkalmazás elutasítja a korábbi TLS-verziój�
 
 Parancsfájlokkal automatizálhatja az alkalmazás SSL-kötéseit az [Azure CLI](/cli/azure/install-azure-cli) vagy a [Azure PowerShell](/powershell/azure/overview)használatával.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az alábbi parancs feltölt egy exportált PFX-fájlt, és lekéri az ujjlenyomatot.
 
@@ -276,7 +276,7 @@ New-AzWebAppSSLBinding `
 
 Ha az alkalmazásnak távoli erőforrásokhoz kell csatlakoznia, és a távoli erőforrásnak tanúsítványalapú hitelesítést kell használnia, nyilvános vagy privát tanúsítványokat tölthet fel az alkalmazásba. Ezeket a tanúsítványokat nem kell minden egyéni tartományhoz kötnie az alkalmazásban. További információ: [Use an SSL certificate in your application code in Azure App Service](app-service-web-ssl-cert-load.md) (SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

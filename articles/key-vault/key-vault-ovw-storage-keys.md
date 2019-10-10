@@ -41,11 +41,11 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| Bérlők | Felhő | Alkalmazásazonosító |
+| Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Egyéb  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,9 +69,9 @@ az login
 
 A Storage-fiók eléréséhez használja az Azure CLI az [role hozzárendelés Create](/cli/azure/role/assignment?view=azure-cli-latest) paranccsal Key Vault. Adja meg a parancsot a következő paraméter-értékekkel:
 
-- `--role`: Adja át a "Storage-fiók kulcsát kezelő szolgáltatás szerepkör" RBAC szerepkört. Ez a szerepkör korlátozza a hozzáférési hatókört a Storage-fiókra. Klasszikus Storage-fiók esetén a "klasszikus Storage-fiók kulcs-kezelője" szerepkört adja át helyette.
-- `--assignee-object-id`: Adja át a "93c27d83-f79b-4cb2-8dd4-4aa716542e74" értéket, amely az Azure-beli nyilvános felhőben Key Vault objektum azonosítója. (A Azure Government-felhőben Key Vaulthoz tartozó objektumazonosító beszerzéséhez tekintse meg a [szolgáltatásnév alkalmazás-azonosítóját](#service-principal-application-id).)
-- `--scope`: Adja át a Storage-fiók erőforrás-AZONOSÍTÓját, amely `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` formátumú. Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
+- `--role`: adja át a "Storage-fiók kulcsát kezelő szolgáltatás szerepkör" RBAC szerepkört. Ez a szerepkör korlátozza a hozzáférési hatókört a Storage-fiókra. Klasszikus Storage-fiók esetén a "klasszikus Storage-fiók kulcs-kezelője" szerepkört adja át helyette.
+- `--assignee-object-id`: adja át a "93c27d83-f79b-4cb2-8dd4-4aa716542e74" értéket, amely az Azure-beli nyilvános felhőben Key Vaulthoz tartozó objektumazonosító. (A Azure Government-felhőben Key Vaulthoz tartozó objektumazonosító beszerzéséhez tekintse meg a [szolgáltatásnév alkalmazás-azonosítóját](#service-principal-application-id).)
+- `--scope`: adja át a Storage-fiók erőforrás-AZONOSÍTÓját, amely `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` formátumú. Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -81,9 +81,9 @@ az role assignment create --role "Storage Account Key Operator Service Role" --a
 
  Hozzon létre egy Key Vault felügyelt Storage-fiókot az Azure CLI az kulcstartó [Storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) paranccsal. Állítsa be a 90 napos újragenerálási időszakot. 90 nap után Key Vault újragenerálta a `key1` értéket, és a `key2` értékről `key1` értékre cseréli az aktív kulcsot. a `key1` ekkor aktív kulcsként van megjelölve. Adja meg a parancsot a következő paraméter-értékekkel:
 
-- `--vault-name`: Adja át a kulcstartó nevét. A Key Vault nevének megkereséséhez használja az Azure CLI az kulcstartó [List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) parancsot.
-- `-n`: Adja meg a Storage-fiók nevét. A Storage-fiók nevének megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
-- `--resource-id`: Adja át a Storage-fiók erőforrás-AZONOSÍTÓját, amely `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` formátumú. Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
+- `--vault-name`: adja át a kulcstartó nevét. A Key Vault nevének megkereséséhez használja az Azure CLI az kulcstartó [List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) parancsot.
+- `-n`: adja meg a Storage-fiók nevét. A Storage-fiók nevének megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
+- `--resource-id`: adja át a Storage-fiók erőforrás-AZONOSÍTÓját, amely `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` formátumú. Az előfizetés AZONOSÍTÓjának megkereséséhez használja az Azure CLI az [Account List](/cli/azure/account?view=azure-cli-latest#az-account-list) parancsot; a Storage-fiók neve és a Storage-fiók erőforráscsoport megkereséséhez használja az Azure CLI az [Storage Account List](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) parancsot.
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -91,7 +91,7 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű aláírási jogkivonatok
 
-Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
+Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
 
 Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják végre:
 
@@ -150,7 +150,7 @@ az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 A parancs kimenete az SAS-definíciós karakterláncot a @ no__t-0 értékre fogja mutatni.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](https://docs.microsoft.com/rest/api/keyvault/).
 - Tekintse át a [Azure Key Vault csapat blogján](https://blogs.technet.microsoft.com/kv/)található cikkeket.

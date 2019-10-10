@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 63678ad7260210d86daf035bfec9bb467a526042
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6c7cf82381dfb895fdaa0f130e33b2dc9a6e7403
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950312"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169754"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a hüvelyek között hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)
 
@@ -20,7 +20,7 @@ Ha modern, Kubernetes-alapú alkalmazásokat futtat a-ben, gyakran szeretné sza
 
 Ez a cikk bemutatja, hogyan telepítheti a hálózati házirend-motort, és hogyan hozhat létre Kubernetes hálózati házirendeket a hüvelyek közötti adatforgalom vezérléséhez az AK-ban. A hálózati házirendet csak a Linux-alapú csomópontok és a hüvelyek esetében kell használni az AK-ban.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
@@ -52,12 +52,12 @@ Mindkét implementáció Linux *iptables* -t használ a megadott házirendek bet
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Az Azure-és a tarka-szabályzatok és azok képességei közötti különbségek
 
-| Képesség                               | Azure                      | Calico                      |
+| Szolgáltatás                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Támogatott platformok                      | Linux                      | Linux                       |
-| Támogatott hálózati beállítások             | Azure CNI                  | Azure CNI és kubenet       |
+| Támogatott hálózati beállítások             | Azure-CNI                  | Azure CNI és kubenet       |
 | Megfelelőség a Kubernetes-specifikációval | Minden támogatott házirend-típus |  Minden támogatott házirend-típus |
-| További funkciók                      | Nincsenek                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. A kibővített funkciók kezeléséhez a `calicoctl` CLI használatával kapcsolatos további információkért lásd: [calicoctl felhasználói referenciája][calicoctl]. |
+| További funkciók                      | None                       | Kiterjesztett házirend-modell, amely a globális hálózati házirendből, a globális hálózati készletből és a gazdagép végpontból áll. A kibővített funkciók kezeléséhez a `calicoctl` CLI használatával kapcsolatos további információkért lásd: [calicoctl felhasználói referenciája][calicoctl]. |
 | Támogatás                                  | Az Azure-támogatás és a mérnöki csapat támogatja | A tarka közösségi támogatás. A további fizetős támogatással kapcsolatos további információkért lásd a [Project tarka támogatási lehetőségeit][calico-support]. |
 | Naplózás                                  | Az iptables-ben hozzáadott vagy törölt szabályok minden gazdagépen bejelentkezve vannak a */var/log/Azure-NPM.log* alá | További információ: a [tarka összetevő naplói][calico-logs] |
 
@@ -79,7 +79,7 @@ A következő példa szkriptet:
 * Létrehoz egy Azure Active Directory (Azure AD) szolgáltatásnevet az AK-fürthöz való használatra.
 * *Közreműködői* engedélyeket rendel a virtuális hálózaton található AK-fürtszolgáltatási egyszerű szolgáltatáshoz.
 * Létrehoz egy AK-fürtöt a megadott virtuális hálózatban, és engedélyezi a hálózati házirendet.
-    * Az *Azure* hálózati házirend-beállítás használatos. Ha ehelyett hálózati házirendként szeretné használni a Tarkat, használja a `--network-policy calico` paramétert. Megjegyzés: A tarkat `--network-plugin azure` vagy `--network-plugin kubenet` értékkel lehet használni.
+    * Az *Azure* hálózati házirend-beállítás használatos. Ha ehelyett hálózati házirendként szeretné használni a Tarkat, használja a `--network-policy calico` paramétert. Megjegyzés: a Tarkat `--network-plugin azure` vagy `--network-plugin kubenet` értékkel lehet használni.
 
 Adja meg saját biztonságos *SP_PASSWORD*. Lecserélheti a *RESOURCE_GROUP_NAME* és a *CLUSTER_NAME* változót:
 
@@ -449,7 +449,7 @@ kubectl delete namespace production
 kubectl delete namespace development
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a hálózati erőforrásokról: az [Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai][concepts-network].
 
@@ -464,7 +464,7 @@ A szabályzatokkal kapcsolatos további információkért lásd: [Kubernetes há
 [aks-github]: https://github.com/azure/aks/issues
 [tigera]: https://www.tigera.io/
 [calicoctl]: https://docs.projectcalico.org/v3.9/reference/calicoctl/
-[calico-support]: https://www.projectcalico.org/support
+[calico-support]: https://www.tigera.io/tigera-products/calico/
 [calico-logs]: https://docs.projectcalico.org/v3.9/maintenance/component-logs
 [calico-aks-cleanup]: https://github.com/Azure/aks-engine/blob/master/docs/topics/calico-3.3.1-cleanup-after-upgrade.yaml
 

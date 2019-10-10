@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 1f996f18a41a4c09b35097252ec51701cbe23d41
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 2203f4ba5708728ea8300093bb980a2226e2ffa8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038964"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170397"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -34,7 +34,8 @@ Ez a rövid útmutató a következőket ismerteti:
 ## <a name="prerequisites"></a>Előfeltételek
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, lépjen kapcsolatba velünk e-mailben: azure-spring-cloud@service.microsoft.com.
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
@@ -62,10 +63,10 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 1. Keresse meg az **Azure Spring cloudt** , és válassza ki az Áttekintés oldalt. A kezdéshez kattintson a **Létrehozás** gombra.
 
 1. Töltse ki az űrlapot, figyelembe véve a következő irányelveket:
-    - Szolgáltatás neve: Adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - Előfizetés: Válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
-    - Erőforráscsoport: Az új erőforrásokhoz új erőforráscsoportok létrehozása ajánlott eljárás.
-    - Helyen Válassza ki a szolgáltatási példány helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
+    - Szolgáltatás neve: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - Előfizetés: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
+    - Erőforráscsoport: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás.
+    - Hely: válassza ki a szolgáltatás példányának helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
     
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A telepítés után megjelenik a szolgáltatási példány **Áttekintés** lapja.
 
@@ -136,7 +137,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

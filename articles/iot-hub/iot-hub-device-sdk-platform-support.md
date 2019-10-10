@@ -5,98 +5,139 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161864"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169018"
 ---
-# <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK-platform támogatása
+# <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
-Az [Azure IoT SDK](iot-hub-devguide-sdks.md) -k olyan kódtárak, amelyekkel a IoT hub és az eszközök kiépítési szolgáltatása széles körű nyelvi és platform-támogatást használhat. Az SDK-k a leggyakoribb platformokon futnak, és a fejlesztők a [Porting útmutatót](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)követve a C SDK-t egy adott platformra is elérhetik. 
+A Microsoft igyekszik folyamatosan bővíteni az Azure IoT Hub-kompatibilis eszközök univerzumát. A Microsoft a GitHubon teszi közzé a nyílt forráskódú eszközök SDK-kat, hogy segítsen az eszközök csatlakoztatásában az Azure IoT Hub és a Device kiépítési szolgáltatáshoz. Az eszköz SDK-k a következőkhöz érhetők elC#: C, .net (), Java, Node. js és Python. A Microsoft teszteli az egyes SDK-kat, hogy azok a támogatott konfigurációkon futnak a [Microsoft SDK-k és az eszközök platformjának támogatása](#microsoft-sdks-and-device-platform-support) szakaszban.
 
-A Microsoft számos operációs rendszert/platformot/keretrendszert támogat, és az Azure IoT C SDK-val bővíthető. Néhányat a csapat hivatalosan támogat, és olyan rétegekbe vannak csoportosítva, amelyek a támogatási felhasználók által elvárt szintet jelölik. A *teljes mértékben támogatott platformok* azt jelentik, hogy a Microsoft:
+Az eszköz SDK-k mellett a Microsoft számos más utat is biztosít az ügyfelek és a fejlesztők számára az eszközök Azure IoT való csatlakoztatásához:
 
-- Folyamatosan épít és futtat teljes körű vizsgálatokat a Master és az LTS által támogatott verzió (k) alapján.  A tesztelési lefedettség különböző verziókban való biztosításához általában a legújabb LTS-verziót és a legnépszerűbb verziót teszteljük.  Az azonos platform más verziói a platform verziójának kompatibilitása révén is támogatottak.
-- Telepítési útmutatót vagy csomagokat biztosít, ha vannak ilyenek.
-- Teljes mértékben támogatja a-platformokat a GitHubon.
+* A Microsoft számos partneri vállalattal együttműködve segíti a fejlesztési készletek közzétételét az Azure IoT C SDK alapján a hardveres platformokon.
 
-Emellett a partnerek listája a C SDK-t több platformra is elkészítette, és megtartja a platform absztrakciós rétegét (PAL). Az [IoT-eszközök katalógusának Azure Certified minősítése](https://catalog.azureiotsolutions.com/) a különböző SDK-k által tesztelt operációsrendszer-platformok listáját is tartalmazza. Az SDK-k emellett rendszeresen építik ezeket a platformokat korlátozott teszteléssel és támogatással:
+* A Microsoft a Microsoft megbízható partnereivel együttműködve folyamatosan bővülő eszközöket biztosít az Azure-IoT tesztelt és tanúsított eszközökhöz. Az eszközök aktuális listájának megtekintéséhez tekintse meg az [Azure Certified for IoT-eszközök katalógusát](https://catalog.azureiotsolutions.com/).
 
-* MBED2
-* Arduino
-* Windows CE 2013 (a 2018. októberi elavult)
-* .NET Standard 1,3 .net Core 2,1 és .NET Framework 4,7 használatával
-* Xamarin iOS, Android, UWP
+* A Microsoft egy platform absztrakciós réteget (PAL) biztosít az Azure IoT Hub Device C SDK-ban, amely segítséget nyújt a fejlesztőknek az SDK-nak a platformhoz való egyszerű hordozhatóságában. További információ: [C SDK-Porting útmutató](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
-## <a name="supported-platforms"></a>Támogatott platformok
+Ez a témakör a Microsoft SDK-k és az általuk támogatott platform-konfigurációkról, valamint a fent felsorolt egyéb beállításokról nyújt információkat.
 
-Több platform is támogatott.
+## <a name="microsoft-sdks-and-device-platform-support"></a>A Microsoft SDK-k és az eszközök platformjának támogatása
+
+A Microsoft nyílt forráskódú SDK-kat tesz közzé a GitHubon a következő nyelveken: CC#, .net (), Node. js, Java és Python. Ebben a szakaszban az SDK-k és azok függőségei szerepelnek. Az SDK-k bármely, a függőségeket kielégítő eszköz platformon támogatottak.
+
+Az egyes felsorolt SDK-k esetében a Microsoft:
+
+* Folyamatosan épít és futtat teljes körű teszteket a GitHubban található releváns SDK fő ágának számos népszerű platformon.  A különböző fordítóprogram-verziókon keresztüli tesztelés biztosításához általában a legújabb LTS-verziót és a legnépszerűbb verziót teszteljük.
+
+* Telepítési útmutatót vagy telepítési csomagokat biztosít, ha vannak ilyenek.
+
+* Teljes mértékben támogatja az SDK-kat a GitHubon, nyílt forráskódot, az ügyfelek hozzájárulásainak elérési útját és a termékek csapatának a GitHubtal kapcsolatos problémáit.
 
 ### <a name="c-sdk"></a>C SDK
 
-| OS                  | Arch | Fordítóprogram             | TLS-könyvtár       |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | OpenSSL – 1.0.2 g |
-| Ubuntu 18,04 LTS    | X64  | GCC – 7,3              | WolfSSL – 1,13    |
-| Ubuntu 18,04 LTS    | X64  | Csenget 6.0. X          | OpenSSL – 1.1.0 g  |
-| OSX-10.13.4         | x64  | XCode 9.4.1          | Natív OSX        |
-| Windows Server 2016 | x64  | Visual Studio 14.0. X | SChannel          |
-| Windows Server 2016 | x86  | Visual Studio 14.0. X | SChannel          |
-| Debian 9 stretch    | x64  | GCC – 7,3              | OpenSSL – 1.1.0 f  |
+Az [Azure IoT hub C ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-c) -t teszteli, és a következő konfigurációkat támogatja.
+
+| Operációs rendszer                  | TLS-könyvtár                  | További követelmények                                                                     |
+|---------------------|------------------------------|---------------------------------------------------------------------------------------------|
+| Linux               | OpenSSL, WolfSSL vagy BearSSL | Berkeley-szoftvercsatornák</br></br>Hordozható operációs rendszer felülete (POSIX)                       |
+| iOS 12,2            | OpenSSL vagy natív OSX        | Az OSX-10.13.4 emulált XCode                                                               |
+| Windows 10 termékcsalád   | SChannel                     |                                                                                             |
+| Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT fejlesztői csomag](https://microsoft.github.io/azure-iot-developer-kit/)                  |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Python SDK
 
-| OS                  | Arch | Fordítóprogram   | TLS-könyvtár |
-|---------------------|------|------------|-------------|
-| Windows Server 2016 | x86  | Python 2.7 | OpenSSL     |
-| Windows Server 2016 | x64  | Python 2.7 | OpenSSL     |
-| Windows Server 2016 | x86  | Python 3,5 | OpenSSL     |
-| Windows Server 2016 | x64  | Python 3,5 | OpenSSL     |
-| Ubuntu 18,04 LTS    | x86  | Python 2.7 | OpenSSL     |
-| Ubuntu 18,04 LTS    | x86  | Python 3,4 | OpenSSL     |
-| MacOS magas Sierra   | x64  | Python 2.7 | OpenSSL     |
+Az [Azure IoT hub Python-eszköz SDK](https://github.com/Azure/azure-iot-sdk-python) -val tesztelve van, és a következő konfigurációkat támogatja.
+
+| Operációs rendszer                  | Fordítóprogram                       |
+|---------------------|--------------------------------|
+| Linux               | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| MacOS magas Sierra   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| Windows 10 termékcsalád   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| OS                  | Arch | Keretében            | Standard          |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET-keretrendszer 4,7   | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET-keretrendszer 4.5.1 | –               |
+Az [Azure IoT hub .net (C#) eszközoldali SDK](https://github.com/Azure/azure-iot-sdk-csharp) tesztelve van, és a következő konfigurációkat támogatja.
+
+| Operációs rendszer                                   | Standard                                                   |
+|--------------------------------------|------------------------------------------------------------|
+| Linux                                | .NET Core 2.1                                              |
+| Windows 10 asztali és kiszolgálói SKU   | .NET Core 2,1, .NET-keretrendszer 4.5.1 vagy .NET-keretrendszer 4,7 |
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| OS                                           | Arch | Csomópont verziója    |
-|----------------------------------------------|------|-----------------|
-| Ubuntu 16,04 LTS (a 6-os csomóponttal rendelkező Docker-rendszerkép használatával) | X64  | LTS és jelenlegi |
-| Windows Server 2016                          | X64  | LTS és jelenlegi |
+Az [Azure IoT hub Node. js ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-node) -t teszteli, és a következő konfigurációkat támogatja.
+
+| Operációs rendszer                  | Csomópont verziója    |
+|---------------------|-----------------|
+| Linux               | LTS és jelenlegi |
+| Windows 10 termékcsalád   | LTS és jelenlegi |
 
 ### <a name="java-sdk"></a>Java SDK
 
-| OS                  | Arch | Java-verzió |
-|---------------------|------|--------------|
-| Ubuntu 16.04 LTS    | X64  | Java 8       |
-| Windows Server 2016 | X64  | Java 8       |
-| Android API 28 | X64  | Java 8       |
-| Android-dolgok | X64  | Java 8      |
+Az [Azure IoT hub Java-eszköz SDK](https://github.com/Azure/azure-iot-sdk-java) -val tesztelve van, és a következő konfigurációkat támogatja.
 
-## <a name="partner-supported-platforms"></a>Partner által támogatott platformok
+| Operációs rendszer                     | Java-verzió |
+|------------------------|--------------|
+| Android API 28         | Java 8       |
+| Linux x64             | Java 8       |
+| Windows 10 család x64  | Java 8       |
 
-Az ügyfelek kiterjeszthetik a platform támogatását az Azure IoT C SDK-val, pontosabban létrehozva az SDK platform absztrakciós rétegét (PAL). A Microsoft együttműködik a partnerekkel a kiterjesztett támogatás biztosításához. A partnerek listája több platformra portolta a C SDK-t, és megtartja a PAL-t.
+## <a name="partner-supported-development-kits"></a>Partner által támogatott fejlesztői készletek
 
-| Partner             | Eszközök                            | Összekapcsolás                     | Támogatás |
+A Microsoft számos különböző partnerrel dolgozik, hogy több mikroprocesszoros architektúrához biztosítson fejlesztői készleteket. Ezek a partnerek az Azure IoT C SDK-t a platformra portolták. A partnerek létrehozzák és karbantartják az SDK platform absztrakciós rétegét (PAL). A Microsoft együttműködik ezekkel a partnerekkel a kiterjesztett támogatás biztosításához.
+
+| Partnerek             | Eszközök                            | Hivatkozás                     | Támogatás |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  
+| Espressif           | ESP32 <br/> ESP8266                              | [ESP – Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [Qualcomm LTE a IoT SDK-hoz](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| ST MICROELECTRONICS | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  A IoT-csomópont STM32L4-felderítési készlete    | [X-CUBE-CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-CUBE-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO – AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
+| ST MICROELECTRONICS | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  A IoT-csomópont STM32L4-felderítési készlete    | [X-CUBE-AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO – AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
 | Texas Instruments   | CC3220SF Kezdőpanel </br> CC3220S Kezdőpanel </br> CC3235SF Kezdőpanel </br> CC3235S Kezdőpanel </br> MSP432E4 Kezdőpanel | [A SimpleLink készült Azure IoT beépülő modul](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E fórum](https://e2e.ti.com) <br/> [TI E2E fórum CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E fórum MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="porting-the-microsoft-azure-iot-c-sdk"></a>A Microsoft Azure IoT C SDK portolása
+
+Ha az eszköz platformját az előző részek egyike sem fedi le, érdemes lehet az Azure IoT C SDK-t is átvenni. A C SDK portolása elsősorban az SDK platform absztrakciós rétegének (PAL) megvalósítását foglalja magában. A PAL olyan primitíveket határoz meg, amelyek az eszköz és a magasabb szintű függvények közötti ragasztót biztosítják az SDK-ban. További információ: [Porting útmutató](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
+
+## <a name="microsoft-partners-and-certified-azure-iot-devices"></a>Microsoft-partnerek és Certified Azure IoT-eszközök
+
+A Microsoft számos partnerrel működik együtt az Azure IoT-univerzum folyamatos kibővítéséhez az Azure IoT tesztelt és minősített eszközökkel.
+
+* Az Azure IoT Certified eszközök böngészéséhez tekintse meg a [Microsoft Azure Certified for IoT-eszköz katalógusát](https://catalog.azureiotsolutions.com/).
+
+* Ha többet szeretne megtudni a Microsoft megbízható partnereiről, illetve arról, hogyan válhat a Microsoft megbízható partnere, tekintse meg a [Microsoft Azure Certified eszközök internetes hálózata megbízható partnerek](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/)című témakört.
+
+## <a name="connecting-to-iot-hub-without-an-sdk"></a>Csatlakozás a IoT Hub SDK nélkül
+
+Ha nem tudja használni az IoT Hub eszköz SDK-kat, közvetlenül is csatlakozhat a IoT Hubhoz a [IOT hub REST API](https://docs.microsoft.com/en-us/rest/api/iothub/) -k használatával a HTTPS-kérések és válaszok küldésére és fogadására képes bármely alkalmazásból.
+
+## <a name="support-and-other-resources"></a>Támogatás és egyéb erőforrások
+
+Ha problémák merülnek fel az Azure IoT-eszközök SDK-k használata során, többféleképpen is kérhet támogatást. Kipróbálhatja a következő csatornák egyikét:
+
+**Hibajelentések** – az eszköz SDK-k hibáit a megfelelő GitHub-projekt problémák lapján lehet jelenteni. Gyorsan megtörténik a javítások a projektből a termékek frissítéseibe való beüzemelése.
+
+* [Azure IoT Hub C SDK-problémák](https://github.com/Azure/azure-iot-sdk-c/issues)
+
+* [Azure IoT Hub .NET (C#) SDK-problémák](https://github.com/Azure/azure-iot-sdk-csharp/issues)
+
+* [Azure IoT Hub Java SDK-problémák](https://github.com/Azure/azure-iot-sdk-java/issues)
+
+* [Azure IoT Hub Node. js SDK-problémák](https://github.com/Azure/azure-iot-sdk-node/issues)
+
+* [Azure IoT Hub Python SDK-problémák](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https://azure.microsoft.com/support/plans/) rendelkező felhasználók a Microsoft ügyfélszolgálati csapatával új támogatási kérést hozhatnak létre közvetlenül a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+
+**Szolgáltatásra vonatkozó kérelmek** – az Azure IoT szolgáltatásra vonatkozó kérelmeket a termék [felhasználói hangja oldalon](https://feedback.azure.com/forums/321918-azure-iot)követheti nyomon.
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
 * [A Porting útmutatója](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

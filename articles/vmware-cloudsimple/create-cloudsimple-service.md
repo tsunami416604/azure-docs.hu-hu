@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035719"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173507"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Az Azure VMware-megoldás létrehozása a CloudSimple szolgáltatással
 
@@ -24,16 +24,16 @@ Az Azure VMware-megoldás CloudSimple való megkezdéséhez hozza létre az Azur
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-the-service"></a>A szolgáltatás létrehozása
 
 1. Válassza az **Összes szolgáltatás** elemet.
 2. Keressen rá a **CloudSimple Services**kifejezésre.
-    ![CloudSimple szolgáltatás keresése](media/create-cloudsimple-service-search.png)
+    ![Search CloudSimple szolgáltatás @ no__t-1
 3. Válassza a **CloudSimple Services**elemet.
 4. Új szolgáltatás létrehozásához kattintson a **Hozzáadás** gombra.
-    ![CloudSimple szolgáltatás hozzáadása](media/create-cloudsimple-service-add.png)
+    ![Add CloudSimple szolgáltatás @ no__t-1
 5. Válassza ki azt az előfizetést, amelyben létre szeretné hozni a CloudSimple szolgáltatást.
 6. Válassza ki a szolgáltatáshoz tartozó erőforráscsoportot. Új erőforráscsoport hozzáadásához kattintson az **új létrehozása**lehetőségre.
 7. A szolgáltatás azonosításához adja meg a nevet.
@@ -44,7 +44,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 Létrejön a szolgáltatás, és hozzá lesz adva a szolgáltatások listájához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
+* További információ a [csomópontok](create-nodes.md) kiépítéséről
 * Megtudhatja, hogyan [hozhat létre saját felhőt](create-private-cloud.md)
 * Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

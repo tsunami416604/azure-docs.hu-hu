@@ -13,14 +13,14 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: cbeaccf4cdea87d6f34d5ee77e6a08b32abd76b5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708346"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169449"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Gyors útmutató: Azure Resource Manager-sablonok létrehozása és telepítése a IntelliJ IDEA használatával
+# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása és telepítése a IntelliJ IDEA használatával
 
 Ismerje meg, hogyan helyezhet üzembe egy Resource Manager-sablont az Azure-ban a IntelliJ IDEA használatával, valamint a sablon szerkesztésének és frissítésének folyamatát közvetlenül az IDE-ből. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmak megismeréséhez lásd: [Az Azure Resource Manager áttekintése](resource-group-overview.md).
 
@@ -36,19 +36,19 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Az [INTELLIJ Idea](https://www.jetbrains.com/idea/download/) Ultimate Edition vagy a Community Edition telepítve van
 * A [Azure Toolkit for IntelliJ](https://plugins.jetbrains.com/plugin/8053) telepítve van, tekintse [meg a IntelliJ beépülő modul kezelési útmutatóját](https://www.jetbrains.com/help/idea/managing-plugins.html) . További információ
-* Jelentkezzen be az Azure [-](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) fiókjába a Azure Toolkit for IntelliJ
+* [Jelentkezzen](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-sign-in-instructions) be az Azure-fiókjába a Azure Toolkit for IntelliJ
 
 ## <a name="deploy-a-quickstart-template"></a>Gyorsindítás sablon üzembe helyezése
 
-Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) közül. Az Azure gyorsindítási sablonok a Resource Manager-sablonok tárházaként szolgálnak. Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) néven található meg. Egy Azure Storage-fiók erőforrását határozza meg. 
+Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) közül. Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Az ebben a rövid útmutatóban használt sablon [standard szintű tárfiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) néven található meg. Egy Azure Storage-fiók erőforrását határozza meg.
 
-1. Kattintson a jobb gombbal, és [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) mentse [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) a és a helyi számítógépre.
+1. Kattintson a jobb gombbal, és mentse a [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) és [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) beállítást a helyi számítógépre.
 
 1. Ha az Azure-eszközkészlet megfelelően van telepítve és bejelentkezve, az Azure Explorer az IntelliJ IDEA oldalsávjában jelenik meg. Kattintson a jobb gombbal az **Erőforrás-kezelés** elemre, és válassza a **központi telepítés létrehozása**elemet.
 
     ![Resource Manager-sablon – kattintson a jobb gombbal az üzembe helyezés létrehozásához](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Adja meg a **központi telepítési nevet**, az előfizetést, az **erőforráscsoportot**és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoporthoz `testRG`. Ezután válassza ki a letöltött **erőforrás** `azuredeploy.json` `azuredeploy.parameters.json` -sablon elérési útját és az **erőforrás-paramétereket** .
+1. Adja meg a **központi telepítési nevet**, az **előfizetést**, az **erőforráscsoportot**és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoporthoz @no__t – 0. Ezután válassza ki az **erőforrás-sablon** elérési útját `azuredeploy.json` és **erőforrás-paraméterekként** , ahogy `azuredeploy.parameters.json` letöltötte.
 
     ![Resource Manager-sablon a központi telepítés létrehozására szolgáló fájlok kiválasztása](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -58,7 +58,7 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
 ## <a name="browse-an-existing-deployment"></a>Meglévő üzemelő példány tallózása
 
-1. Az üzembe helyezés után megtekintheti az új erőforráscsoportot `testRG` , és létrehozhatja az új központi telepítést. Kattintson a jobb gombbal a központi telepítésre, és megtekintheti a lehetséges műveletek listáját. Most válassza a **Tulajdonságok megjelenítése**lehetőséget.
+1. Az üzembe helyezés után megtekintheti az új erőforráscsoportot `testRG` és egy új üzemelő példányt. Kattintson a jobb gombbal a központi telepítésre, és megtekintheti a lehetséges műveletek listáját. Most válassza a **Tulajdonságok megjelenítése**lehetőséget.
 
     ![Resource Manager-sablon – Tallózás központi telepítés](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-deployment-browse.png)
 
@@ -72,11 +72,11 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
     ![Resource Manager-sablon – telepítés szerkesztése](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Ezen a lapon szerkesztheti a két fájlt, és üzembe helyezheti az Azure-ban történt módosításokat. Itt módosítjuk a **tárfióktípus** értékét a rendszerből a-ból `Standard_LRS` `Standard_GRS`. Ezután kattintson az alul lévő **központi telepítés frissítése** elemre, és erősítse meg a frissítést.
+1. Ezen a lapon szerkesztheti a két fájlt, és üzembe helyezheti az Azure-ban történt módosításokat. Itt módosítjuk a **tárfióktípus** értékét a `Standard_LRS` értékről a `Standard_GRS` értékre. Ezután kattintson az alul lévő **központi telepítés frissítése** elemre, és erősítse meg a frissítést.
 
     ![Resource Manager-sablon – telepítés szerkesztése](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. A frissítés telepítésének befejezése után ellenőrizheti a portálon, hogy a létrehozott Storage-fiók módosult `Standard_GRS`-e.
+1. A frissítés telepítésének befejezése után ellenőrizheti a portálon, hogy a létrehozott Storage-fiók `Standard_GRS` értékre változott-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -87,12 +87,12 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 > [!NOTE]
 > Figyelje meg, hogy a központi telepítés törlése nem törli az üzemelő példány által létrehozott erőforrásokat. Ha már nincs szüksége rájuk, törölje a megfelelő erőforráscsoportot vagy adott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ennek a rövid útmutatónak a fő témája a IntelliJ IDEA használata egy meglévő sablon üzembe helyezéséhez az Azure Gyorsindítás sablonjaiból. Azt is megtanulta, hogyan tekintheti meg és frissítheti a meglévő üzembe helyezést az Azure-ban. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A következő oktatóanyag azt mutatja be, hogyan keresheti meg a megfelelő információkat a sablonreferenciában titkosított Azure Storage-fiók létrehozásához.
+Ennek a rövid útmutatónak a fő témája a IntelliJ IDEA használata egy meglévő sablon üzembe helyezéséhez az Azure Gyorsindítás sablonjaiból. Azt is megtanulta, hogyan tekintheti meg és frissítheti a meglévő üzembe helyezést az Azure-ban. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 
 > [!div class="nextstepaction"]
-> [Titkosított tárfiók létrehozása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [Kezdő oktatóanyagok](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
 > [A Java megnyitása az Azure fejlesztői központban](https://docs.microsoft.com/azure/java)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8ed3b8e507a93f75b036b3a97eb34395ce525314
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202939"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169159"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával
 Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Azure-ban Azure PowerShell használatával.
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy privát link szolgáltatást az Az
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ez a cikk a legújabb Azure PowerShell modul verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A privát hivatkozás létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestCentralUS* helyen:
 
@@ -76,7 +76,7 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $lbFrontName -PrivateIpAd
 $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $lbBackendName 
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
-$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 $NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard 
 ```
 ## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
@@ -115,7 +115,7 @@ A következő lépésben bemutatjuk, hogyan képezhető le a szolgáltatás a k�
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 ### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *vnetPE* nevű virtuális hálózatot az erőforráscsoport nevű *myResourceGroup*:
+Hozzon létre egy virtuális hálózatot a privát végponthoz a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Ez a példa létrehoz egy *vnetPE* In nevű *myResourceGroup*nevű virtuális hálózatot:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Privát végpont beszerzése
-Szerezze be a privát végpont `Get-AzPrivateEndpoint` IP-címét a következő módon:
+Szerezze be a privát végpont IP-címét `Get-AzPrivateEndpoint` értékkel a következőképpen:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 
@@ -173,6 +173,6 @@ Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[
 
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private linkről](private-link-overview.md)
  

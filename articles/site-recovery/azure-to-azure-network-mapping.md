@@ -68,7 +68,7 @@ A célként megadott virtuális gép alhálózata a forrás virtuális gép alh�
 A célként megadott virtuális gépen található egyes hálózati adapterek IP-címe a következőképpen van konfigurálva:
 
 - **DHCP**: Ha a forrás virtuális gép hálózati adaptere DHCP-t használ, a célként megadott virtuális gép hálózati adaptere is DHCP használatára van beállítva.
-- **Statikus IP-cím**: Ha a forrás virtuális gép hálózati adaptere statikus IP-címzést használ, a cél VM hálózati adapter statikus IP-címet is használ.
+- **Statikus IP-cím**: Ha a forrás virtuális gép hálózati adaptere statikus IP-címzést használ, a cél virtuális gép hálózati adaptere statikus IP-címet is használ.
 
 
 ## <a name="ip-address-assignment-during-failover"></a>IP-címkiosztás feladatátvétel közben
@@ -85,15 +85,15 @@ Eltérő címterület<br/><br/> A célként megadott alhálózat következő el�
 
 **Célként megadott hálózat** | **Részletek**
 --- | ---
-A célként megadott hálózat a feladatátvételi VNet | – A célként megadott IP-cím statikus, de nem ugyanaz az IP-cím, mint a feladatátvétel számára fenntartva.<br/><br/>  – A hozzárendelt címek az alhálózat tartományának végéről következő elérhető címek.<br/><br/> Példa: Ha a forrás IP-címe 10.0.0.19, és a feladatátvételi hálózat a 10.0.0.0/24 tartományt használja, akkor a célként megadott virtuális géphez hozzárendelt következő IP-cím 10.0.0.254.
-A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz a feladatátvételhez fenntartott IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Példa: Ha a forrásként szolgáló statikus IP-cím 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
+A célként megadott hálózat a feladatátvételi VNet | – A célként megadott IP-cím statikus, de nem ugyanaz az IP-cím, mint a feladatátvétel számára fenntartva.<br/><br/>  – A hozzárendelt címek az alhálózat tartományának végéről következő elérhető címek.<br/><br/> Például: Ha a forrás IP-címe 10.0.0.19, és a feladatátvételi hálózat a 10.0.0.0/24 tartományt használja, akkor a célként megadott virtuális géphez hozzárendelt következő IP-cím 10.0.0.254.
+A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz a feladatátvételhez fenntartott IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Például: Ha a forrás statikus IP-címe 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
 
 - A feladatátvételi VNet a katasztrófa-helyreállítás beállításakor kiválasztott célként megadott hálózat.
 - Javasoljuk, hogy mindig használjon nem éles hálózatot a feladatátvételi teszthez.
 - A cél IP-címet a virtuális gép **számítási és hálózati** beállításaiban módosíthatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az Azure virtuális gép vész-helyreállítási [hálózati útmutatóját](site-recovery-azure-to-azure-networking-guidance.md) .
 - [További](site-recovery-retain-ip-azure-vm-failover.md) információ az IP-címek megtartásáról a feladatátvétel után.

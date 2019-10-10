@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 36514c342f8ed8d988f26fcb69daf30c42ee5cf3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326728"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176636"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Az Azure Security Center for IoT bemutatása
 
@@ -48,13 +48,13 @@ A IoT Azure Security Center használatával folyamatosan figyelheti a gépek, h�
 
 A speciális elemzések és a Microsoft Intelligens biztonsági gráf segítségével megkezdheti a fejlődő cyber-támadások előnyeit. A beépített viselkedési elemzések és gépi tanulás azonosítja a támadásokat és a nulla napi kihasználat. Figyelheti az IoT-megoldásait érintő bejövő támadásokat és a behatolást követő tevékenységeket. Egyszerűsítse az eszközök vizsgálatát és szervizelését az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az áttekintésben megismerheti a IoT Azure Security Center funkcióit és szolgáltatásait. Ha többet szeretne megtudni a IoT architektúrájának Azure Security Centeréről, az előfeltételekről és az első lépésekről, tekintse meg a következő cikkeket:
 
 - [Architektúra](architecture.md)
 - [A szolgáltatás előfeltételei](service-prerequisites.md)
-- [Bevezetés](getting-started.md)
+- [Első lépések](getting-started.md)
 - [A megoldás meghatározása](quickstart-configure-your-solution.md)
 - [Azure Security Center IoT – gyakori kérdések](resources-frequently-asked-questions.md)
 - [IoT-riasztások Azure Security Center](concept-security-alerts.md)

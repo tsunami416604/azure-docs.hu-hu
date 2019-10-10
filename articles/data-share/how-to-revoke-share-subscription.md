@@ -1,17 +1,17 @@
 ---
 title: Megosztási előfizetés visszavonása az Azure-beli adatmegosztás előzetes verziójában
-description: Megosztási előfizetés visszavonása
+description: Megtudhatja, hogyan vonhatja vissza a megosztási előfizetést egy címzetttől az Azure-beli adatmegosztás előzetes verziójával.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 08a48202c26df1c24216572b1a52ac45506c6229
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: bd8ef23ead500acb9e403b38fd52a2d980d12bf4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326538"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169051"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Fogyasztó megosztás-előfizetésének visszavonása az Azure-beli adatmegosztás előzetes verziójában
 
@@ -25,5 +25,5 @@ Az Azure-beli adatmegosztás előzetes verziójában navigáljon az elküldett m
 
 Jelölje be azon címzettek jelölőnégyzetét, akiknek a megosztási előfizetéseit törölni szeretné, majd kattintson a **Visszavonás**gombra. A fogyasztó már nem kap frissítéseket az adatkezeléshez.
 
-## <a name="next-steps"></a>További lépések
-További információ az adatmegosztások [figyeléséről](how-to-monitor.md).
+## <a name="next-steps"></a>Következő lépések
+További információ az [adatmegosztások figyeléséről](how-to-monitor.md).

@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937143"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176615"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>A IoT alapkonfigurációjának és egyéni ellenőrzésének Azure Security Center
 
 Ez a cikk a IoT alapkonfigurációjának Azure Security Center ismerteti, és összefoglalja az alapkonfiguráció egyéni ellenőrzésének összes társított tulajdonságát.
 
-## <a name="baseline"></a>Alapkonfiguráció
+## <a name="baseline"></a>Alapterv
 
 Az alapkonfiguráció minden eszköz esetében szabványos viselkedést hoz létre, és megkönnyíti a szokatlan viselkedést vagy a várt normáktól való eltérést.  
 
@@ -55,7 +55,7 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }
@@ -64,15 +64,15 @@ Az alapkonfiguráció egyéni ellenőrzésének konfigurálása:
 
 ## <a name="baseline-custom-check-properties"></a>Alapterv egyéni ellenőrzési tulajdonságai
 
-| Name (Név)| State | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Név| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Logikai érték** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
-|baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|
-|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **Karakterlánc**, **Null** |Alapértelmezett érték: **Null** |@no__t – 0 az XML-konfigurációs fájlból. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
+|baselineCustomChecksEnabled|Kötelező: igaz |Érvényes értékek: **Boolean** |Alapértelmezett érték: **false** |A magas prioritású üzenetek küldése előtti maximális időtartam.|
+|baselineCustomChecksFilePath |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |Az eredeti XML-konfiguráció teljes elérési útja|
+|baselineCustomChecksFileHash |Kötelező: igaz|Érvényes értékek: **karakterlánc**, **Null** |Alapértelmezett érték: **Null** |@no__t – 0 az XML-konfigurációs fájlból. További információkért használja az [sha256sum-referenciát](https://linux.die.net/man/1/sha256sum) . |
 
 További alapkonfigurációk áttekintéséhez tekintse meg az [Egyéni Alapterv – 1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) . és az [Egyéni alapterv – 2. példát](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A [nyers biztonsági adataihoz](how-to-security-data-access.md) való hozzáférés
 - [Eszköz vizsgálata](how-to-investigate-device.md)

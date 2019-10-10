@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f53ade09c5e2e7db0499122526a1de482af9378f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901619"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174241"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Törölt felhasználók tömeges visszaállítása (előzetes verzió) Azure Active Directory
 
@@ -26,18 +26,22 @@ Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehoz
 
 ## <a name="to-bulk-restore-users"></a>Felhasználók tömeges visszaállítása
 
-1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure ad-ben válassza a **felhasználók** > **törölve**lehetőséget.
+1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely felhasználói rendszergazda az Azure ad-szervezetben.
+1. Az Azure AD-ben válassza a **felhasználók** > **törölve**lehetőséget.
 1. A **törölt felhasználók** lapon a **tömeges visszaállítás** elemre kattintva töltse fel a visszaállítani kívánt felhasználók tulajdonságaihoz tartozó érvényes CSV-fájlt.
 
    ![A törölt felhasználók lapon válassza a tömeges visszaállítás parancsot.](./media/users-bulk-restore/bulk-restore.png)
 
-1. Amikor befejezte a CSV-fájl szerkesztését, vagy ha valamelyik saját feltöltésre kész, válassza ki a fájlt a **CSV-fájl feltöltéséhez** .
+1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden visszaállítani kívánt felhasználóhoz. Az egyetlen szükséges érték a **ObjectId**. Ezután mentse a fájlt.
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-restore/upload-button.png)
 
-1. A fájl tartalmának ellenőrzésekor javítsa ki a fájlt, és küldje el újra a fájlt, ha vannak hibák. Egy érvényes fájl elküldése automatikusan elindítja az adatfeltöltési feladatot.
-1. A CSV-fájl érvényesítése után a **Submit (Küldés** ) gombra kattintva indítsa el az Azure batch-feladatot, amely visszaállítja a felhasználókat. Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a tömeges művelet eredményei lapon. A fájl az egyes hibák okát tartalmazza.
+1. A **tömeges visszaállítás (előzetes verzió)** lapon, a **CSV-fájl feltöltése**területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés**gombra kattint, a CSV-fájl érvényesítése elindul.
+1. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+1. Ha a fájl érvényesíti az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget az Azure tömeges művelet elindításához, amely visszaállítja a felhasználókat.
+1. Ha a visszaállítási művelet befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeresen befejeződött.
+
+Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a **tömeges művelet eredményei** lapon. A fájl az egyes hibák okát tartalmazza.
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
@@ -56,7 +60,7 @@ Ezután ellenőrizze, hogy a visszaállított felhasználók szerepelnek-e az Az
 
 ### <a name="view-users-with-powershell"></a>Felhasználók megtekintése a PowerShell-lel
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"
@@ -64,7 +68,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Ekkor megjelenik a visszaállított felhasználók listája.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges importálása](users-bulk-add.md)
 - [Felhasználók tömeges törlése](users-bulk-delete.md)

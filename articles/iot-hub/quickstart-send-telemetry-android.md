@@ -17,7 +17,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72166354"
 ---
-# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT-telemetria küldése Android-eszközről
+# <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT telemetria küldése Android-eszközről
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
@@ -53,9 +53,9 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyAndroidDevice**: A regisztrálni kívánt eszköz neve. Javasoljuk, hogy a **MyAndroidDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
+   **MyAndroidDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyAndroidDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyAndroidDevice
@@ -63,7 +63,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa a következő parancsot a Azure Cloud Shellban az imént regisztrált eszközhöz tartozó _eszköz-kapcsolódási karakterlánc_ beszerzéséhez:
 
-    **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyAndroidDevice --output table
@@ -99,7 +99,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 5. Az alkalmazás betöltése után kattintson a **Start** gombra, hogy elindítsa a telemetria küldését a IoT hubba:
 
-    ![Alkalmazás](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![Jelentkezés](media/quickstart-send-telemetry-android/sample-screenshot.png)
 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
@@ -108,7 +108,7 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub monitor-events --hub-name {YourIoTHubName} --output table
@@ -121,11 +121,11 @@ Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.mic
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, szimulált telemetria elküldése az hubhoz egy Android-alkalmazás használatával, valamint a telemetria beolvasása a központban a Azure Cloud Shell használatával.
 
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése @ no__t-0
+> [Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése](quickstart-control-device-android.md)

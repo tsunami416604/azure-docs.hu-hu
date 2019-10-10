@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Távoli rendszerkép elemzése – REST, Python'
+title: 'Rövid útmutató: Távoli kép elemzése – REST, Python'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy távoli képet fog elemezni a Computer Vision API és a Python használatával.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8a44853fe6e013350cc542daf423e68a378c0a2d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 065fdd2e95e4ae90a7da7798dd38fdc06b1b32f5
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137668"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177139"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>Gyors útmutató: Távoli rendszerkép elemzése a Computer Vision REST API és a Python használatával
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>Gyors útmutató: távoli rendszerkép elemzése a Computer Vision REST API és a Python használatával
 
-Ebben a rövid útmutatóban egy távolban tárolt képet fog elemezni vizuális jellemzők kinyerése érdekében a Computer Vision REST API-jával. Az [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódussal vizuális jellemzőket nyerhet ki a képek tartalma alapján.
+Ebben a rövid útmutatóban egy távol tárolt képet fog elemezni vizuális jellemzők kinyeréséhez a Computer Vision REST API-jával. Az [Analyze Image metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) vizuális jellemzőket nyerhet ki a képek tartalma alapján.
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
@@ -30,10 +30,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A [Pythonnak](https://www.python.org/downloads/) telepítve kell lennie, ha a mintát helyben szeretné futtatni.
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
+- A minta helyi futtatásához rendelkeznie kell a [Pythonnal](https://www.python.org/downloads/).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
 - A következő Python-csomagokat kell telepíteni. A [pip](https://packaging.python.org/tutorials/installing-packages/) használatával a Python-csomagokat is telepítheti.
-    - kérelmek
+    - Kérelmek
     - [matplotlib](https://matplotlib.org/)
     - [párna](https://python-pillow.org/)
 
@@ -42,10 +42,10 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Ha szeretné, cserélje le az `image_url` értéket egy olyan kép URL-címére, amelyet elemezni szeretne.
-1. Mentse a kódot egy `.py` kiterjesztésű fájlként. Például: `analyze-image.py`.
-1. Nyisson meg egy parancsablakot.
-1. A parancssoron használja a `python` parancsot a minta futtatására. Például: `python analyze-image.py`.
+1. Ha szeretné, cserélje le az `image_url` értéket egy másik elemzendő kép URL-címére.
+1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `analyze-image.py`.
+1. Nyisson meg egy parancssort.
+1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python analyze-image.py`.
 
 ```python
 import requests
@@ -66,7 +66,7 @@ else:
 if 'COMPUTER_VISION_ENDPOINT' in os.environ:
     endpoint = os.environ['COMPUTER_VISION_ENDPOINT']
 
-analyze_url = endpoint + "vision/v2.0/analyze"
+analyze_url = endpoint + "vision/v2.1/analyze"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/" + \
@@ -95,7 +95,7 @@ plt.show()
 
 ## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kielemez és megjelenít egy sikeres, az alábbihoz hasonló választ a parancsablakban:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
 
 ```json
 {
@@ -169,7 +169,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely kiel
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

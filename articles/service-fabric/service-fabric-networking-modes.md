@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599389"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168801"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tároló hálózatkezelési módjai
 
@@ -30,7 +30,7 @@ Ha egy tároló szolgáltatás statikus végponttal rendelkezik a szolgáltatás
 Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy másik csomópontjára, az IP-cím megváltozik. Ezért nem ajánlott a dinamikusan hozzárendelt IP-cím használatával felderíteni a Container Services szolgáltatást. A szolgáltatás felderítéséhez csak a Service Fabric elnevezési szolgáltatás vagy a DNS-szolgáltatást kell használnia. 
 
 >[!WARNING]
->Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más korlátozásokat is figyelembe [](https://docs.microsoft.com/azure/azure-subscription-service-limits) vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
+>Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más [korlátozásokat](https://docs.microsoft.com/azure/azure-subscription-service-limits) is figyelembe vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyitott hálózati mód beállítása
@@ -200,17 +200,17 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
  
 3. Csak Windows-fürtök esetén állítson be egy olyan Azure hálózati biztonsági csoport (NSG) szabályt, amely az UDP/53 portot nyitja meg a virtuális hálózat számára a következő értékekkel:
 
-   |Beállítás |Value | |
+   |Beállítás |Value (Díj) | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Name (Név) |Custom_Dns  | |
-   |Source |VirtualNetwork | |
+   |Prioritás |2000 | |
+   |Név |Custom_Dns  | |
+   |Forrás |VirtualNetwork | |
    |Cél | VirtualNetwork | |
    |Szolgáltatás | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |Műveletek | Engedélyezés  | |
    | | |
 
-4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz `<NetworkConfig NetworkType="Open">`:. A hálózati mód megnyitásakor a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a és `NodeContainerServicePackage1` `NodeContainerServicePackage2` a szolgáltatások mindegyike ugyanazon a porton figyel ( `Endpoint1`mindkét szolgáltatás figyeli a szolgáltatást). Ha meg van adva a hálózati mód `PortBinding` , a konfigurációk nem adhatók meg.
+4. A hálózati mód megadása az alkalmazás jegyzékfájljában az egyes szolgáltatásokhoz: `<NetworkConfig NetworkType="Open">`. A hálózati mód **megnyitásakor** a szolgáltatás dedikált IP-címet kap. Ha nincs megadva mód, a szolgáltatás alapértelmezett értéke **NAT** mód. A következő manifest-példában a `NodeContainerServicePackage1` és a `NodeContainerServicePackage2` szolgáltatások mindegyike ugyanazon a porton figyelhető (mindkét szolgáltatás a `Endpoint1`) figyelésére szolgál. Ha meg van adva a hálózati mód, `PortBinding` konfigurációk nem adhatók meg.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
@@ -271,7 +271,7 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
             ],          
  ``` 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
 * [További információ a Service Fabric Service manifest-erőforrásokról](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
 * [Windows-tároló üzembe helyezése Service Fabric Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)

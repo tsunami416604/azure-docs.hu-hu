@@ -1,6 +1,6 @@
 ---
-title: Frissítési útmutató a Service Fabric-alkalmazások |} A Microsoft Docs
-description: Ez a cikk végigvezeti a élmény a Service Fabric-alkalmazás üzembe helyezése, a kódmódosítás és működés közbeni frissítés ki a Visual Studio használatával.
+title: Service Fabric alkalmazás verziófrissítésének oktatóanyaga | Microsoft Docs
+description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helyezésének, a kód módosításának és a Visual Studio használatával történő frissítésének folyamatán.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 8fe0bf9c8827b7248195f89377176fd834845e32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 5e693a219c4a430f742ebd27878518ebb99ce5da
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615185"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167372"
 ---
-# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>A Service Fabric application frissítési oktatóanyag a Visual Studio használatával
+# <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric alkalmazás-frissítési oktatóanyag a Visual Studióval
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
@@ -30,59 +30,59 @@ ms.locfileid: "60615185"
 
 <br/>
 
-Az Azure Service Fabric megkönnyíti a biztosítva, hogy csak a módosult szolgáltatások frissül, és, hogy az alkalmazás állapotának figyel-e a frissítési folyamat során a felhőalapú alkalmazások frissítésének folyamata. Azt is automatikusan visszaállítja a korábbi verzióra problémák észlelése esetén az alkalmazás. A Service Fabric alkalmazásfrissítések vannak *üzemszünet*, mivel az alkalmazás leállása nélkül is frissíthető. Ez az oktatóanyag bemutatja, hogyan végezheti el a működés közbeni frissítés a Visual Studióból.
+Az Azure Service Fabric leegyszerűsíti a felhőalapú alkalmazások verziófrissítésének folyamatát azáltal, hogy csak a megváltozott szolgáltatásokat frissíti, és az alkalmazás állapotát a frissítési folyamat során figyeli. Emellett automatikusan Visszagörgeti az alkalmazást az előző verzióra, amikor problémákba ütközik. Service Fabric az alkalmazások frissítése *nulla állásidő*, mivel az alkalmazás leállás nélkül frissíthető. Ez az oktatóanyag bemutatja, hogyan végezheti el a működés közbeni frissítését a Visual studióból.
 
-## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>1\. lépés: Hozhat létre, és tegye közzé a Visual objektumok minta
-Először töltse le a [Visual objektumok](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) alkalmazást a Githubról. Ezután hozhat létre, és kattintson a jobb gombbal az alkalmazásprojektre, az alkalmazás közzététele **VisualObjects**, és kiválasztja a **közzététel** parancsot a Service Fabric menüpont.
+## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>1\. lépés: a vizuális objektumok mintájának összeállítása és közzététele
+Először töltse le a [Visual Objects](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) alkalmazást a githubról. Ezután hozza létre és tegye közzé az alkalmazást úgy, hogy a jobb gombbal az alkalmazás projektre, a **VisualObjects**, majd a **publish (közzététel** ) parancsra kattint a Service Fabric menüpontban.
 
-![A Service Fabric-alkalmazás a helyi menü][image1]
+![Service Fabric alkalmazás helyi menüje][image1]
 
-Kiválasztásával **közzététel** megjelenik egy előugró ablak, és beállíthatja a **célprofilt** való **PublishProfiles\Local.xml**. Az ablak a következőhöz hasonlóan kell kinéznie, gombra való kattintás előtt **közzététel**.
+A **publish (közzététel** ) elem kiválasztásával felugró ablak jelenik meg, és beállíthatja a **PublishProfiles\Local.XML**. Az ablaknak a következőhöz hasonlóan kell kinéznie, mielőtt rákattint a **publish (közzététel**) gombra.
 
-![Service Fabric-alkalmazás közzététele][image2]
+![Service Fabric alkalmazás közzététele][image2]
 
-Most is kattinthat **közzététel** a párbeszédpanelen. Használhat [a fürt és az alkalmazás megtekintése a Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). A vizuális objektumok alkalmazás rendelkezik egy webszolgáltatás, amelyet beírásával léphet [ http://localhost:8081/visualobjects/ ](http://localhost:8081/visualobjects/) az a böngésző címsorába.  A képernyőn a mozgó 10 lebegőpontos visual objektumokat kell megjelennie.
+Most kattintson a **Közzététel** lehetőségre a párbeszédpanelen. [A Service Fabric Explorer használatával megtekintheti a fürtöt és az alkalmazást](service-fabric-visualizing-your-cluster.md). A vizualizáció objektumok alkalmazáshoz egy webszolgáltatást kell beírnia, ha beírja a [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) kifejezést a böngésző címsorába.  A képernyőn körülbelül 10 lebegő vizualizációs objektumot kell látni.
 
-**MEGJEGYZÉS:** Ha telepíti, `Cloud.xml` profilt (az Azure Service Fabric), az alkalmazás elérhető kell **http://{ServiceFabricName}. { Region}.cloudapp.Azure.com:8081/visualobjects/** . Ellenőrizze, hogy `8081/TCP` konfigurálva az a Load Balancer (Keresés a terheléselosztó ugyanazt az erőforráscsoportot, a Service Fabric-példány).
+**Megjegyzés:** Ha `Cloud.xml` profilt (Azure Service Fabric) helyez üzembe, az alkalmazásnak ekkor elérhetőnek kell lennie a **http://{ServiceFabricName} címen. { Régió}. cloudapp. Azure. com: 8081/visualobjects/** . Győződjön meg arról, hogy `8081/TCP` konfigurálva van a Load Balancerban (keresse meg a Load Balancer ugyanabban az erőforráscsoporthoz, mint a Service Fabric-példányt).
 
-## <a name="step-2-update-the-visual-objects-sample"></a>2\. lépés: Frissítés a Visual objektumok minta
-Észreveheti, hogy az 1. lépésben telepített verziójával, a vizuális objektumok nem elforgatása. Most frissítse az alkalmazás egy, a vizuális objektumokat is elforgatása.
+## <a name="step-2-update-the-visual-objects-sample"></a>2\. lépés: a vizuális objektumok mintájának frissítése
+Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects megoldáson belül a VisualObjects.ActorService projektet, és nyissa meg a **VisualObjectActor.cs** fájlt. Belül a fájlt, nyissa meg a metódus `MoveObject`, tegye megjegyzésbe `visualObject.Move(false)`, és vonja vissza `visualObject.Move(true)`. A kód módosítása elforgatása az objektumok, a szolgáltatás frissítése után.  **Most hozhat létre (nem újraépítése) a megoldás**, amely összeállítja a módosított projektek. Ha *újraépíti az összes*, az összes projekt-verziók frissítenie kell.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül keresse meg a következő metódust: `MoveObject`, Megjegyzés: `visualObject.Move(false)`, és Megjegyzés: `visualObject.Move(true)`. A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés*lehetőséget választja, frissítenie kell az összes projekt verzióját.
 
-Azt is kell verzió az alkalmazást. Után a jobb gombbal a módosításokat a verzió a **VisualObjects** projekt, használhatja a Visual Studio **Manifest verziók szerkesztése** lehetőséget. Ezzel a beállítással kimenetei edition verziók párbeszédpaneljén a következőképpen:
+Az alkalmazás verziószámát is meg kell adni. Ha módosítani szeretné a verziót, miután a jobb gombbal a **VisualObjects** projektre kattint, használhatja a Visual Studio **jegyzékfájl-verziójának szerkesztése** lehetőséget. A beállítás kiválasztásával megjelenik a kiadási verziók párbeszédpanelje a következő módon:
 
-![Verziókezelés párbeszédpanel][image3]
+![Verziószámozás párbeszédpanel][image3]
 
-Frissítse a verziók a módosított projektek vagy kód csomagjaikat, az alkalmazás 2.0.0-s verziójával együtt. Után a módosításokat, a jegyzékfájlt a következőhöz hasonlóan kell kinéznie (a félkövérrel szedett részét a változások megjelenítéséhez):
+Frissítse a módosított projektek és a hozzájuk tartozó csomagok verzióját, valamint az alkalmazást a 2.0.0 verzióra. A módosítások elvégzése után a jegyzékfájlnak a következőhöz hasonlóan kell kinéznie (a félkövér részek a változásokat mutatják):
 
-![Verzió frissítése][image4]
+![Verziók frissítése][image4]
 
-A Visual Studio-eszközök automatikus kumulatív kiválasztásakor verzióját teheti **alkalmazás- és szolgáltatásverziók automatikus frissítése**. Ha [SemVer](http://www.semver.org), akkor frissítenie kell a kód és/vagy konfigurációs csomag verziója önálló, ha a beállítás van kiválasztva.
+A Visual Studio-eszközök az **alkalmazások és szolgáltatások verzióinak automatikus frissítését követően automatikusan**kumulatív verziókat is elvégezhetnek. Ha a [SemVer](http://www.semver.org)-t használja, akkor a kódot és/vagy a konfigurációs csomag verzióját csak akkor kell frissíteni, ha ez a beállítás be van jelölve.
 
-Mentse a módosításokat, és most ellenőrizze a **Upgradovat Aplikaci** mezőbe.
+Mentse a módosításokat, és most jelölje be az **alkalmazás frissítése** jelölőnégyzetet.
 
-## <a name="step-3--upgrade-your-application"></a>3\. lépés:  Az alkalmazás frissítése
-Ismerje meg az a [alkalmazásfrissítési paraméterek](service-fabric-application-upgrade-parameters.md) és a [frissítési folyamat](service-fabric-application-upgrade.md) jól ismerik a különböző frissítési paraméterek, időtúllépéseket és egészségügyi feltételt, amely a lekérni a alkalmazni. Ebben a bemutatóban a service health értékelési feltétel értéke az alapértelmezett (a nem monitorozott módban). Ezeket a beállításokat konfigurálhat kiválasztásával **beállítások konfigurálása** annak módosításával igény szerint a paraméterek.
+## <a name="step-3--upgrade-your-application"></a>3\. lépés: az alkalmazás frissítése
+Ismerkedjen meg az [alkalmazás frissítési paramétereivel](service-fabric-application-upgrade-parameters.md) és a [frissítési folyamattal](service-fabric-application-upgrade.md) , és Ismerje meg a különböző frissítési paramétereket, időtúllépéseket és az alkalmazandó állapotra vonatkozó feltételeket. Ebben az útmutatóban a szolgáltatás állapotának kiértékelése feltétel az alapértelmezett (nem figyelt üzemmód) értékre van állítva. Ezeket a beállításokat úgy is megadhatja, ha kiválasztja a **frissítési beállítások konfigurálása** lehetőséget, majd igény szerint módosítja a paramétereket.
 
-Most már készen állunk az alkalmazásfrissítés első lépésként válassza ki a **közzététel**. Ez a beállítás az alkalmazást, amelyben az objektumok elforgatása, 2.0.0-s verziójával frissíti. A Service Fabric egy frissítési tartományt frissít (néhány objektum frissíti először, mások által követett) egyszerre, és a frissítés során a szolgáltatás elérhető marad. A szolgáltatáshoz való hozzáférést az ügyfél (böngésző) keresztül ellenőrizhetők.  
+Most már készen áll az alkalmazás frissítésének elindítására a **publish (közzététel**) lehetőség kiválasztásával. Ez a beállítás frissíti az alkalmazást a verzió 2.0.0, amelyben az objektumok elforgatva vannak. Service Fabric egyszerre csak egy frissítési tartományt frissít (egyes objektumokat először frissítik, majd mások követik), és a szolgáltatás a frissítés során továbbra is elérhető marad. A szolgáltatáshoz való hozzáférést az ügyfélen (böngészőn) keresztül lehet ellenőrizni.  
 
-Most, mint az alkalmazás frissítési telepítése folytatódik, nyomon követheti a Service Fabric Explorerrel használatával a **folyamatban lévő frissítések** az alkalmazások lapján.
+Most, ahogy az alkalmazás frissítése bekövetkezik, nyomon követheti Service Fabric Explorer használatával, az alkalmazások alatt lévő **frissítések folyamatban** lapon.
 
-Néhány perc múlva (befejeződött) összes frissítési tartományt kell frissíteni, és a Visual Studio kimeneti ablakában is tartalmaznia kell, hogy a frissítés befejeződött. És keresse meg, amely *összes* a böngészőablakban a vizuális objektumok mostantól Elforgatás vannak!
+Néhány percen belül minden frissítési tartományt frissíteni kell (befejezett), és a Visual Studio kimeneti ablakának azt is tartalmaznia kell, hogy a frissítés befejeződött. Ekkor a böngészőablakban található *összes* vizualizációs objektum már forog!
 
-Próbálja meg módosítani a verziók, érdemes és 2.0.0-s verzió gyakorlatként 3.0.0-s verzióra, vagy akár vissza a 1.0.0-s verziójának 2.0.0-s verziójával. Időtúllépések és, hogy saját maga őket ismeri házirendek kísérletezhet. A helyi fürt helyett egy Azure-fürtön való telepítésekor használt paraméterek eltérő lehet. Azt javasoljuk, hogy állítsa a gondok konzervatív módon vegyen figyelembe.
+Érdemes lehet megváltoztatnia a verziókat, és az 2.0.0 verzióról a 3.0.0 verzióra, vagy akár a 2.0.0 verzióról a 1.0.0 verzióra vált. Az időkorláttal és az állapottal foglalkozó szabályzatokkal megismerheti őket. Ha egy Azure-fürtre helyez üzembe egy helyi fürt helyett, a használt paraméterek eltérőek lehetnek. Javasoljuk, hogy a konzervatív időkorlátot állítsa be.
 
-## <a name="next-steps"></a>További lépések
-[PowerShell-lel az alkalmazás frissítéséhez](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti egy alkalmazás frissítése a PowerShell használatával.
+## <a name="next-steps"></a>Következő lépések
+[Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
 
-Szabályozhatja az alkalmazás a frissítés hogyan [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
+A frissítési paraméterek használatával szabályozhatja az alkalmazás [frissítésének](service-fabric-application-upgrade-parameters.md)módját.
 
-Hogyan használja az alkalmazásfrissítések kompatibilissé [adatok szerializálása](service-fabric-application-upgrade-data-serialization.md).
+Az alkalmazások frissítését az [adatszerializálás](service-fabric-application-upgrade-data-serialization.md)használatának megismerésével teheti meg.
 
-Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [Speciális témakörök](service-fabric-application-upgrade-advanced.md).
+Ismerje meg, hogyan használhatja a speciális funkciókat az alkalmazás frissítéséhez a [speciális témakörökre](service-fabric-application-upgrade-advanced.md)való hivatkozással.
 
-Az alkalmazásfrissítések gyakori problémák megoldása szerint hajtsa végre a hivatkozó [alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md).
+Az alkalmazások frissítéseinek [hibaelhárításával](service-fabric-application-upgrade-troubleshooting.md)kapcsolatos gyakori problémák elhárítása.
 
 [image1]: media/service-fabric-application-upgrade-tutorial/upgrade7.png
 [image2]: media/service-fabric-application-upgrade-tutorial/upgrade1.png

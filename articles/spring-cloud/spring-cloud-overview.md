@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0f54f218c630129049182e00ad3c53624172a5f0
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039076"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166534"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az Azure Spring Cloud?
 
@@ -19,7 +19,8 @@ Az Azure Spring Cloud segítségével egyszerűen üzembe helyezhetők a Spring 
 
 Az Azure-ökoszisztéma részeként az Azure Spring Cloud egyszerű kötést tesz lehetővé más Azure-szolgáltatásokhoz, többek között a tároláshoz, az adatbázisokhoz, a figyeléshez és egyebekhez.
 
-Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  Ha a szolgáltatás előzetes verzióban érhető el, kérjük, lépjen kapcsolatba velünk e-mailben: azure-spring-cloud@service.microsoft.com.
+Az Azure Spring Cloud jelenleg előzetes verzióban érhető el.  A szolgáltatás előzetes verzióban való eléréséhez töltse ki ezt az [űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Első lépésként fejezze be a Spring Cloud rövid útmutatót az [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), a [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)vagy a [Maven](spring-cloud-quickstart-launch-app-maven.md)használatával.
 
@@ -47,6 +48,6 @@ Az Azure Spring Cloud segítségével könnyedén méretezheti az Azure Spring C
 
 A Spring Cloud elosztott nyomkövetési eszközei lehetővé teszik a fejlesztők számára, hogy hibakeresést végezzenek, és figyelemmel kísérik az alkalmazásban található szolgáltatások közötti összetett kapcsolatokat.  A [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) és az Azure [Application Insights](../azure-monitor/insights/insights-overview.md)integrálásával az Azure hatékony elosztott nyomkövetési képességet biztosít közvetlenül a Azure Portal.  További információért olvassa el ezt az [oktatóanyagot](spring-cloud-tutorial-distributed-tracing.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Spring Cloud-alkalmazás elindítása a parancssori felületről](spring-cloud-quickstart-launch-app-cli.md)

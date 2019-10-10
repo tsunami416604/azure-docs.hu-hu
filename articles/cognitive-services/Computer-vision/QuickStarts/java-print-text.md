@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Nyomtatott szöveg kinyerése – REST, Java'
+title: 'Gyors útmutató: nyomtatott szöveg kinyerése – REST, Java'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API Javával való használatával.
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 73d5effa3341337f3238c49c17a2227942af4958
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: cf7924c3201a362403b59ec1ad883cefe6a3cf9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141346"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176540"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: Nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Java használatával
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Java használatával
 
-Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A gépén telepítve kell lennie a [Java&trade;-platformhoz készült Standard Edition Development Kit 7-es vagy 8-as verziójának](https://aka.ms/azure-jdks) (JDK 7 vagy 8).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -53,7 +53,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
    import org.json.JSONObject;
    ```
 
-1. Cserélje le `Main` a nyilvános osztályt a következő kódra.
+1. Cserélje le a `Main` nyilvános osztályt a következő kódra.
 1. Ha szeretné, cserélje le az `imageToAnalyze` értéket egy másik olyan kép URL-címére, amelyből nyomtatott szöveget szeretne kinyerni.
 1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
 1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
@@ -70,7 +70,7 @@ public class Main {
     String endpoint = ("COMPUTER_VISION_ENDPOINT");
 
     private static final String uriBase = endpoint + 
-            "vision/v2.0/ocr";
+            "vision/v2.1/ocr";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
@@ -210,7 +210,7 @@ REST Response:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

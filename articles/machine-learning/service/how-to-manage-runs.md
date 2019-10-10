@@ -331,7 +331,7 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 
 Az Azure CLI eredményeinek lekérdezésével kapcsolatos további információkért lásd: az [Azure CLI-parancs kimenetének lekérdezése](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
 
-## <a name="example-notebooks"></a>Példa notebookok
+## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
 
 A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
@@ -339,6 +339,6 @@ A következő jegyzetfüzetek a cikkben ismertetett fogalmakat mutatják be:
 
 * A Azure Machine Learning SDK-val való futtatásával kapcsolatos további információkért tekintse meg a [futtatási jegyzetfüzet kezelése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan naplózhatja a kísérletek mérőszámait, tekintse meg a következő témakört: a [betanítási mérőszámok](how-to-track-experiments.md).

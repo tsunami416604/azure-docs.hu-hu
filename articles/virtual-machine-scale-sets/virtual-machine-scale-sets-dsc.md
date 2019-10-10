@@ -1,6 +1,6 @@
 ---
-title: A Virtual Machine Scale Sets használatával Desired State Configuration |} A Microsoft Docs
-description: Virtuális gép méretezési csoportokat használ az Azure DSC-bővítmény
+title: A kívánt állapot konfigurációjának használata a Virtual Machine Scale Sets használatával | Microsoft Docs
+description: Virtual Machine Scale Sets használata az Azure DSC bővítménnyel
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: 24a37d352413ff9ac55ce8e189691988383950f3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728454"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166161"
 ---
-# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtuális gép méretezési csoportokat használ az Azure DSC-bővítmény
-[Virtual Machine Scale Sets](virtual-machine-scale-sets-overview.md) együtt a [Azure Desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Bővítménykezelő. A Virtual machine scale sets kényelmesen üzembe helyezése és kezelése nagy számú virtuális gépet, és rugalmasan méretezheti és betölteni a válaszban. DSC konfigurálása a virtuális gépek online állapotba kerül, amikor futnak az üzemi célú szoftverek váló szolgál.
+# <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtual Machine Scale Sets használata az Azure DSC bővítménnyel
+[Virtual Machine Scale sets](virtual-machine-scale-sets-overview.md) használható az [Azure desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bővítmény kezelőjével. A virtuálisgép-méretezési csoportok nagy számú virtuális gép üzembe helyezését és felügyeletét teszik lehetővé, és rugalmasan méretezhetik be és ki a terhelésre válaszul. A DSC használatával a virtuális gépek úgy konfigurálhatók, ahogy online állapotba kerülnek, így az éles szoftvert futtatják.
 
-## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>Virtuális gépek és a Virtual Machine Scale Sets telepítése közti különbséget
-Egy virtuálisgép-méretezési csoportot az alapul szolgáló sablon struktúráját némileg eltér a egyetlen virtuális Gépet. Pontosabban egyetlen virtuális Gépet helyez üzembe bővítmények a "virtuális gép" csomópont alatt. Nincs "bővítmények" típusú bejegyzés ahol DSC bekerül a sablon
+## <a name="differences-between-deploying-to-virtual-machines-and-virtual-machine-scale-sets"></a>A Virtual Machines és Virtual Machine Scale Sets üzembe helyezése közötti különbségek
+A virtuálisgép-méretezési csoport mögöttes sablon szerkezete némileg eltér egyetlen virtuális gépről. Pontosabban, egyetlen virtuális gép telepíti a bővítményeket a "virtualMachines" csomópont alatt. Létezik egy "Extensions" típusú bejegyzés, amelyben a DSC hozzá van adva a sablonhoz
 
 ```
 "resources": [
@@ -66,7 +66,7 @@ Egy virtuálisgép-méretezési csoportot az alapul szolgáló sablon struktúr�
       ]
 ```
 
-Egy virtuális gép méretezési készlet csomópont tartalmaz egy "Tulajdonságok" szakaszt a "VirtualMachineProfile", "extensionProfile" attribútum. DSC "bővítmények" területen hozzá lesz adva.
+A virtuálisgép-méretezési csoport csomópontjának "Properties" szakasza "VirtualMachineProfile", "extensionProfile" attribútummal rendelkezik. A DSC a "Extensions" alatt lett hozzáadva
 
 ```
 "extensionProfile": {
@@ -97,15 +97,15 @@ Egy virtuális gép méretezési készlet csomópont tartalmaz egy "Tulajdonság
             ]
 ```
 
-## <a name="behavior-for-a-virtual-machine-scale-set"></a>Egy virtuálisgép-méretezési csoportot viselkedése
-Egy virtuálisgép-méretezési csoportot a viselkedés megegyezik az egyetlen virtuális gép működése. Új virtuális gép létrehozásakor automatikusan kiépítve a DSC bővítménnyel. A bővítmény által a WMF egy újabb verziója szükséges, ha a virtuális gép újraindul, mielőtt online állapotba kerüljön. Online módban, ha letölti a DSC-konfiguráció .zip, és építse ki azt a virtuális gépen. További részletek találhatók [az Azure-DSC-bővítmény áttekintése](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="behavior-for-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport viselkedése
+A virtuálisgép-méretezési csoport viselkedése azonos egyetlen virtuális gép viselkedésével. Új virtuális gép létrehozásakor a rendszer automatikusan kiépíti a DSC-bővítményt. Ha a bővítmény a WMF újabb verzióját igényli, a virtuális gép újraindul, mielőtt online állapotba kerül. Ha online állapotban van, letölti a DSC Configuration. zip fájlt, és kiépíti a virtuális gépre. További részleteket [Az Azure DSC bővítmény áttekintésében](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)találhat.
 
-## <a name="next-steps"></a>További lépések
-Vizsgálja meg a [Azure Resource Manager-sablon a DSC-bővítmény](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Következő lépések
+Vizsgálja [meg a DSC-bővítmény Azure Resource Manager sablonját](../virtual-machines/windows/extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Ismerje meg, hogy a [DSC bővítmény biztonságosan kezeli a hitelesítő adatok](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Ismerje meg, hogyan [kezeli a DSC-bővítmény a hitelesítő adatok biztonságos kezelését](../virtual-machines/windows/extensions-dsc-credentials.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Az Azure DSC bővítmény kezelő további információkért lásd: [bemutatása az Azure Desired State Configuration bővítmény kezelő](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Az Azure DSC bővítmény kezelőjével kapcsolatos további információkért lásd: [Bevezetés az Azure kívánt állapotának konfigurációs bővítmény-kezelőjébe](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-További információ a PowerShell DSC [a PowerShell dokumentációs központ felkeresése](https://msdn.microsoft.com/powershell/dsc/overview). 
+A PowerShell DSC-vel kapcsolatos további információkért [látogasson el a PowerShell dokumentációs központba](/powershell/scripting/dsc/overview/overview). 
 

@@ -1,6 +1,6 @@
 ---
-title: Hibakeresés az Azure Service Fabric-alkalmazások linuxon |} A Microsoft Docs
-description: Ismerje meg, hogyan figyelheti és diagnosztizálhatja a Service Fabric-szolgáltatások egy helyi Linux fejlesztői gépen.
+title: Azure Service Fabric-alkalmazások hibakeresése Linux rendszeren | Microsoft Docs
+description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-szolgáltatásokat egy helyi linuxos fejlesztői gépen.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 017b359f4c6da438f5179813fa3ed1ad2c536834
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60392857"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168864"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>A helyi gép fejlesztési telepítőjének szolgáltatások monitorozása és diagnosztizálása
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi számítógép-fejlesztési beállításokban
 
 
 > [!div class="op_single_selector"]
@@ -30,16 +30,16 @@ ms.locfileid: "60392857"
 >
 >
 
-Figyelés, észlelni, diagnosztizálása és hibaelhárítása lehetővé teszi a felhasználói élmény minimális megszakadását folytatásához szolgáltatások. A monitoring and diagnostics kritikusak tényleges üzembe helyezett éles környezetben. Szolgáltatások fejlesztése során egy hasonló modell bevezetése biztosítja, hogy a diagnosztikai folyamat működik-e éles környezetben való áthelyezésekor. A Service Fabric megkönnyíti a szolgáltatás-fejlesztők számára a diagnosztikai is zökkenőmentesen együttműködő egygépes helyi fejlesztési beállításokat és a való életből vett éles fürt feladatainak megvalósítása.
+A szolgáltatások figyelése, észlelése, diagnosztizálása és hibaelhárítása lehetővé teszi, hogy a szolgáltatások továbbra is minimálisan megzavarják a felhasználói élményt. A monitorozás és a diagnosztika kritikus fontosságú a tényleges üzembe helyezett éles környezetben. A szolgáltatások fejlesztése során hasonló modell bevezetése biztosítja, hogy a diagnosztikai folyamat az éles környezetbe való áttéréskor is működik. A Service Fabric megkönnyíti a szolgáltatás-fejlesztők számára a diagnosztika megvalósítását, amely zökkenőmentesen képes együttműködni mind az egyszámítógépes helyi fejlesztési környezetekben, mind a valós üzemi fürtökön.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Service Fabric Java-alkalmazások hibakeresése
+## <a name="debugging-service-fabric-java-applications"></a>Java-alkalmazások hibakeresése Service Fabric
 
-Java-alkalmazások [több naplózási keretrendszerekből](https://en.wikipedia.org/wiki/Java_logging_framework) érhetők el. Mivel `java.util.logging` az alapértelmezett beállítás a JRE együtt is használható a [a GitHub-kódpéldák](https://github.com/Azure-Samples/service-fabric-java-getting-started). A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszer.
+Java-alkalmazások esetében [több naplózási keretrendszer](https://en.wikipedia.org/wiki/Java_logging_framework) érhető el. Mivel a `java.util.logging` az alapértelmezett beállítás a JRE-vel, a [kód példákat](https://github.com/Azure-Samples/service-fabric-java-getting-started)is használ a githubban. A következő vitafórum azt ismerteti, hogyan konfigurálhatja a `java.util.logging` keretrendszert.
 
-Java.util.logging használatával irányíthatja át az alkalmazásnaplókat a memória, a kimeneti Stream, a konzol fájlok vagy a sockets. Ezek a beállítások mindegyike esetében nincsenek alapértelmezett kivételkezelők keretében nyújtott. Létrehozhat egy `app.properties` fájlt, hogy az alkalmazás összes naplók átirányítása egy helyi fájlba a fájl-kezelő konfigurálása.
+A Java. util. Logging használatával átirányíthatja az alkalmazás naplóit a memóriára, a kimeneti adatfolyamokra, a konzol fájljaira vagy a szoftvercsatornára. Ezen beállítások esetében a keretrendszerben már vannak alapértelmezett kezelők. @No__t-0 fájl létrehozásával konfigurálhatja az alkalmazás fájlkezelőjét az összes napló helyi fájlba való átirányításához.
 
-Az alábbi kódrészlet egy példa konfiguráció tartalmazza:
+A következő kódrészlet egy példa konfigurációt tartalmaz:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -51,34 +51,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Által mutatott a mappát a `app.properties` fájlnak léteznie kell. Után az `app.properties` jön létre, a belépési pont szkriptje is módosítani kell `entrypoint.sh` a a `<applicationfolder>/<servicePkg>/Code/` mappát a tulajdonság beállítása `java.util.logging.config.file` való `app.properties` fájlt. A bejegyzés a következő kódrészlethez hasonlóan kell kinéznie:
+A `app.properties` fájl által rámutatott mappának léteznie kell. A `app.properties` fájl létrehozása után módosítania kell a belépési pont parancsfájlját, `entrypoint.sh` értéket a `<applicationfolder>/<servicePkg>/Code/` mappában, hogy a tulajdonságot `java.util.logging.config.file` értékre állítsa `app.properties` fájlra. A bejegyzésnek a következő kódrészlethez hasonlóan kell kinéznie:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Ezt a konfigurációt eredményez, egy rotált módon összegyűjtött naplók `/tmp/servicefabric/logs/`. A naplófájl ebben az esetben nevű mysfapp%u.%g.log ahol:
-* **%u** egyedi szám, a Java egyidejű folyamatok közötti ütközések feloldása.
-* **%g** naplók Elforgatás megkülönböztetésére generáció száma.
+Ez a konfiguráció a naplókat a következő rotációs módon gyűjti: `/tmp/servicefabric/logs/`. Ebben az esetben a naplófájl neve mysfapp% u.% g. log, ahol:
+* a **(z)% u** egy egyedi szám az egyidejű Java-folyamatok közötti ütközések feloldásához.
+* a **(z)% g** a létrehozási szám, amely megkülönbözteti a forgó naplók közötti különbséget.
 
-Alapértelmezés szerint ha obsluha explicit módon van konfigurálva, a konzol kezelő regisztrálva van. A naplók alapján /var/log/syslog syslog egy tekinthető meg.
+Alapértelmezés szerint, ha nincs beállítva kezelő, a konzol kezelője regisztrálva van. Az egyik a syslog-naplókat a/var/log/syslog. alatt tekintheti meg
 
-További információkért lásd: a [a GitHub-kódpéldák](https://github.com/Azure-Samples/service-fabric-java-getting-started).
-
-
-## <a name="debugging-service-fabric-c-applications"></a>Service Fabric C#-alkalmazások hibakeresése
+További információ: [példák a githubon](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
-A Linux-alapú alkalmazásokat coreclr-nek nyomkövetés több keretrendszerek érhetők el. További információkért lásd: [GitHub: naplózás](http:/github.com/aspnet/logging).  EventSource tisztában van-e a C# fejlesztők számára, mivel a(z) ebben a cikkben EventSource nyomkövetés coreclr-nek minták Linux rendszeren.
+## <a name="debugging-service-fabric-c-applications"></a>Service Fabric C# alkalmazások hibakeresése
 
-Az első lépés az, hogy a naplók írni memória, a kimeneti Stream vagy konzol fájlok közé tartozik a System.Diagnostics.Tracing.  A naplózás használatával EventSource, adja hozzá a következő projektet a project.json:
+
+A Linuxon futó CoreCLR-alkalmazások nyomkövetéséhez több keretrendszer is rendelkezésre áll. További információt a [GitHub: naplózás](http:/github.com/aspnet/logging)című témakörben talál.  Mivel a EventSource ismerős a C# fejlesztők számára, "Ez a cikk a CoreCLR-minták EventSource használja a Linuxon.
+
+Az első lépés a System. Diagnostics. tracing belefoglalása, hogy a naplókat a memóriába, a kimeneti adatfolyamba vagy a konzol fájljaiba lehessen írni.  A EventSource használatával történő naplózáshoz adja hozzá a következő projektet a Project. JSON fájlhoz:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Egy egyéni EventListener használatával figyeli a szolgáltatás esemény, és majd ennek megfelelően átirányítja őket a nyomkövetési fájlok. A következő kódrészlet azt mutatja be, egy minta megvalósítását EventSource, és a egy egyéni EventListener naplózás:
+Egyéni EventListener is megfigyelheti a szolgáltatási eseményt, majd megfelelően átirányíthatja őket a nyomkövetési fájlokhoz. A következő kódrészlet a EventSource és az egyéni EventListener használatával történő naplózási minta megvalósítását mutatja be:
 
 
 ```csharp
@@ -131,16 +131,16 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Az előző kódrészletben exportálja fájlba a naplók `/tmp/MyServiceLog.txt`. Ez a fájlnév megfelelően frissíteni kell. Abban az esetben, ha meg szeretné átirányítani a naplókat, a konzolon, a következő kódrészletet használja a testre szabott EventListener osztályban:
+Az előző kódrészlet a naplófájlokat `/tmp/MyServiceLog.txt` fájlba írja. A fájl nevét megfelelően frissíteni kell. Ha át szeretné irányítani a naplókat a konzolra, használja a következő kódrészletet a testreszabott EventListener osztályban:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-A minták [C# minták](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) EventSource, és a egy egyéni EventListener használatával naplózza az eseményeket egy fájlt.
+A [ C# minták](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) a EventSource és az egyéni EventListener használatával naplózzák az eseményeket egy fájlba.
 
 
 
-## <a name="next-steps"></a>További lépések
-A diagnosztika az Azure-fürtön az alkalmazás ugyanazt a nyomkövetés kódot az alkalmazáshoz hozzáadott is működik. Tekintse meg ezeket a cikkeket, amelyek tárgyalják az eszközök különböző beállításait, és bemutatják, hogyan állítsa be őket.
-* [Azure Diagnostics-naplók összegyűjtése](service-fabric-diagnostics-how-to-setup-lad.md)
+## <a name="next-steps"></a>Következő lépések
+Az alkalmazáshoz hozzáadott nyomkövetési kód az alkalmazás diagnosztikaával is együttműködik az Azure-fürtön. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan kell beállítani őket.
+* [Naplók összegyűjtése a Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

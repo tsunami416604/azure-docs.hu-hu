@@ -49,7 +49,7 @@ Ha az GZRS vagy RA-GZRS engedélyezett Storage-fiókba írja az adatírást, a r
 > [!IMPORTANT]
 > Az aszinkron replikáció az adatírások és az elsődleges régió közötti késleltetés, valamint a másodlagos régióba való replikálás időpontját jelenti. Regionális katasztrófa esetén előfordulhat, hogy a másodlagos régióba még nem replikált módosítások elvesznek, ha az adatok nem állíthatók helyre az elsődleges régióból.
 
-A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiókkal kapcsolatos naprakész információk: [Business folytonosság és vész-helyreállítás (BCDR): Azure párosított régiók @ no__t-0. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
+A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiók naprakész információit az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)című témakörben tekintheti meg. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Az RA-GZRS használata magas rendelkezésre álláshoz
 
@@ -137,19 +137,19 @@ Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcso
 2. A fiókadatok alapján végezze el az **alapvető** tudnivalókat. A **szolgáltatás** szakaszban válassza a **Storage-fiókok kezelése** lehetőséget, és adja meg az áttelepíteni kívánt fiókot.
 3. Kattintson a **Tovább** gombra.
 4. A **probléma** szakasz a következő értékeket határozza meg:
-    - **Súlyosság**: Hagyja meg az alapértelmezett értéket.
-    - **Probléma típusa**: Válassza **Az adatáttelepítés**lehetőséget.
-    - **Kategória**: Válassza az **áttelepítés (ra-) GZRS egy régión belül**lehetőséget.
-    - **Cím**: Írjon be egy leíró címet, például: **(ra-) GZRS fiók áttelepítése**.
-    - **Részletek**: Írjon be további részleteket a **részletek** mezőbe, például: "szeretnék áttérni a GZRS-re a (z) [LRS, GRS] webhelyről a \_ @ no__t-2 régióban." vagy "szeretnék áttérni az RA-GZRS-re a (z) [LRS, RA-GRS] webhelyről a \_ @ no__t-1 régióban."
+    - **Súlyosság**: hagyja meg az alapértelmezett értéket.
+    - **Probléma típusa**: válassza **Az adatáttelepítés**lehetőséget.
+    - **Kategória**: válassza az **áttelepítés a régión belül (ra-) GZRS**lehetőséget.
+    - **Title**: adjon meg egy leíró címet, például **(ra-) GZRS fiók áttelepítése**.
+    - **Részletek**: írja be a **részletek mezőbe a** további részleteket, például "szeretnék áttérni a GZRS-re a (z) [LRS, GRS] webhelyről a \_ @ no__t-3 régióban." vagy "szeretnék áttérni az RA-GZRS-re a (z) [LRS, RA-GRS] webhelyről a \_ @ no__t-1 régióban."
 5. Kattintson a **Tovább** gombra.
 6. A kapcsolattartási **adatok** panelen ellenőrizze, hogy helyesek-e a kapcsolattartási adatok.
 7. Kattintson a **Létrehozás** gombra.
 
 A támogatási képviselő felveszi Önnel a kapcsolatot a segítség biztosításához.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Azure Storage replication (Azure Storage replikáció)](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Locally redundáns tárolás (LRS): Alacsony költséghatékonyságú adatredundancia az Azure Storage-hoz @ no__t-0
-- [Zone-redundáns tárolás (ZRS): Magasan elérhető Azure Storage-alkalmazások @ no__t-0 
+- [Helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage szolgáltatáshoz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
+- [Zone-redundáns tárolás (ZRS): magasan elérhető Azure Storage-alkalmazások](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

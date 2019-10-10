@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: b2973a8e826ab8cc8da29f1ec9678d6a6e4fa975
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9d7a404b767d3975cefd55e1db8487fbb45042e2
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971848"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174189"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előzetes verzió – a fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes Service-ben (ak)
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt automéretező
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -90,7 +90,7 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  ---enable-vmss \
+  --enable-vmss \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
@@ -169,7 +169,7 @@ az aks nodepool update \
   --disable-cluster-autoscaler
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan méretezni az AK-csomópontok számát. A vízszintes Pod automatikus méretezés használatával automatikusan módosíthatja az alkalmazást futtató hüvelyek számát. A horizontális Pod automéretező használatának lépéseiért lásd: [alkalmazások méretezése az AK-ban][aks-scale-apps].
 

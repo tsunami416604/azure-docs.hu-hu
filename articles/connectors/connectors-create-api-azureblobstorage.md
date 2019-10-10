@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703258"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176071"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Blobok létrehozása és kezelése az Azure Blob Storage-ban Azure Logic Apps
 
@@ -24,17 +24,18 @@ Ez a cikk bemutatja, hogyan érheti el és kezelheti a blobként tárolt fájlok
 
 Tegyük fel, hogy rendelkezik egy olyan eszközzel, amely frissítve lesz egy Azure-webhelyen. Ez a logikai alkalmazás triggerként működik. Ha ez az esemény történik, a logikai alkalmazás a blob Storage-tárolóban is frissítheti a fájlt, amely egy művelet a logikai alkalmazásban.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> A Logic apps nem tud közvetlenül hozzáférni olyan Azure Storage-fiókokhoz, amelyek [Tűzfalszabályok](../storage/common/storage-network-security.md) és ugyanabban a régióban vannak. A Logic apps azonban olyan Azure Storage-fiókokhoz is hozzáférhet, amelyek egy másik régióban találhatók, mert egy nyilvános IP-cím van használatban a régiók közötti kommunikációhoz. Csak győződjön meg arról, hogy engedélyezi a [kimenő IP-címeket a felügyelt összekötők számára a régióban](../logic-apps/logic-apps-limits-and-config.md#outbound). Vagy további speciális beállításokat is használhat:
->
+> A Logic apps nem tud közvetlenül hozzáférni olyan Azure Storage-fiókokhoz, amelyek [Tűzfalszabályok](../storage/common/storage-network-security.md) és ugyanabban a régióban vannak. Ha azonban engedélyezi a [kimenő IP-címeket a felügyelt összekötők számára a régióban](../logic-apps/logic-apps-limits-and-config.md#outbound), a Logic apps egy másik régióban fér hozzá a Storage-fiókokhoz, kivéve, ha az Azure Table Storage-összekötőt vagy az Azure Queue Storage-összekötőt használja. A Table Storage vagy Queue Storage eléréséhez továbbra is használhatja a HTTP-triggert és a műveleteket. 
+> Ellenkező esetben használhatja a további speciális beállításokat is:
+> 
 > * Hozzon létre egy [integrációs szolgáltatási környezetet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy Azure-beli virtuális hálózat erőforrásaihoz tud csatlakozni.
 >
 > * Ha API Management dedikált szintet használ, a tárolási API-t a API Management használatával is elvégezheti, és engedélyezheti az utóbbi IP-címeit a tűzfalon keresztül. Alapvetően adja hozzá a API Management által használt Azure-beli virtuális hálózatot a Storage-fiók tűzfal-beállításához. Ezután használhatja a API Management műveletet vagy a HTTP-műveletet az Azure Storage API-k meghívásához. Ha azonban ezt a lehetőséget választja, a hitelesítési folyamatot saját kezűleg kell kezelnie. További információ: [Simple Enterprise Integration Architecture](https://aka.ms/aisarch).
 
-Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és [a gyors útmutató: Hozza létre az első logikai](../logic-apps/quickstart-create-first-logic-app-workflow.md)alkalmazását. Az összekötő-specifikus technikai információk az [Azure Blob Storage-összekötő dokumentációjában](/connectors/azureblobconnector/)olvashatók.
+Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget. Az összekötő-specifikus technikai információk az [Azure Blob Storage-összekötő dokumentációjában](/connectors/azureblobconnector/)olvashatók.
 
-## <a name="limits"></a>Korlátok
+## <a name="limits"></a>Korlátozások
 
 * Alapértelmezés szerint az Azure Blob Storage-műveletek a *50 MB vagy annál kisebb*fájlokat képesek olvasni vagy írni. Ha 50 MB-nál nagyobb fájlokat szeretne kezelni, de legfeljebb 1024 MB-ra, az Azure Blob Storage-műveletek támogatják az [üzenetek darabolását](../logic-apps/logic-apps-handle-large-messages.md). A **blob-tartalom beolvasása** művelet implicit módon adatdarabolást használ.
 
@@ -56,7 +57,7 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure L
 
 ## <a name="add-blob-storage-trigger"></a>BLOB Storage-trigger hozzáadása
 
-Azure Logic Apps minden logikai alkalmazásnak egy eseményindítóval kell kezdődnie [](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
+Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
 
 Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-munkafolyamatot a **Blobok hozzáadásakor vagy módosításakor (csak tulajdonságok)** , ha a blob tulajdonságai hozzáadódnak vagy frissülnek a tárolóban.
 
@@ -64,7 +65,7 @@ Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-mu
 
 2. A keresőmezőbe írja be szűrőként az "Azure Blob" kifejezést. Az eseményindítók listából válassza ki a kívánt eseményindítót.
 
-   Ez a példa a következő triggert használja: **BLOB hozzáadásakor vagy módosításakor (csak tulajdonságok)**
+   Ez a példa a következő triggert használja: **blob hozzáadásakor vagy módosításakor (csak tulajdonságok)**
 
    ![Trigger kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -100,7 +101,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
 3. A keresőmezőbe írja be szűrőként az "Azure Blob" kifejezést. A műveletek listából válassza ki a kívánt műveletet.
 
-   Ez a példa a következő műveletet használja: **BLOB tartalmának beolvasása**
+   Ez a példa a következő műveletet használja: **blob tartalmának beolvasása**
 
    ![Művelet kiválasztása](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 
@@ -132,6 +133,6 @@ Ez a példa csak egy blob tartalmát kéri le. A tartalom megtekintéséhez adjo
 
 A technikai részleteket, például az eseményindítókat, a műveleteket és a korlátozásokat az összekötő Open API (korábban hencegő) fájlja ismerteti, lásd az [összekötő hivatkozási oldalát](/connectors/azureblobconnector/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

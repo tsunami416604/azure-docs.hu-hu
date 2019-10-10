@@ -17,7 +17,7 @@ experimental: true
 experiment_id: 1e304dc9-5add-4b
 ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
 ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72177029"
@@ -191,13 +191,13 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python (Django) webalkalmazás a PostgreSQL @ no__t-0 használatával
+> [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
 > [Python-alkalmazás konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Python-alkalmazás futtatása az egyéni tárolóban @ no__t-0
+> [Oktatóanyag: Python-alkalmazás futtatása egyéni tárolóban](tutorial-custom-docker-image.md)

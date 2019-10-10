@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Alkalmazás elindítása a Maven használatával – Azure Spring Cloud'
+title: 'Gyors útmutató: alkalmazás elindítása a Maven használatával – Azure Spring Cloud'
 description: Minta alkalmazás elindítása a Maven használatával
 services: spring-cloud
 author: v-vasuke
@@ -9,19 +9,20 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/05/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d2b9592656d00b38c18b8c9e07540ccb5913766c
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 01140e94e8d0cc47570824970801bdd0043324d7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039055"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166517"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
 Az Azure Spring Cloud Maven beépülő modulja lehetővé teszi az Azure Spring Cloud Service-alkalmazások egyszerű létrehozását és frissítését. A konfiguráció előzetes definiálásával alkalmazásokat telepíthet a meglévő Azure Spring Cloud Service-be. Ebben a cikkben egy PiggyMetrics nevű minta alkalmazást használunk a funkció bemutatásához.
 
 >[!Note]
-> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, lépjen kapcsolatba velünk e-mailben: azure-spring-cloud@service.microsoft.com.
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként arra kérünk ügyfeleinket, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 >[!TIP]
 > Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat.  A közös Azure-eszközök előre telepítve vannak, beleértve a git, a JDK, a Maven és az Azure CLI legújabb verzióit. Ha bejelentkezett az Azure-előfizetésbe, indítsa el a [Azure Cloud shellt](https://shell.azure.com) a shell.Azure.com webhelyről.  A Azure Cloud Shellről a [dokumentáció beolvasásával](../cloud-shell/overview.md) tájékozódhat bővebben
@@ -49,10 +50,10 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 1. Keresse meg az **Azure Spring cloudt** , és válassza ki az Áttekintés oldalt. A kezdéshez kattintson a **Létrehozás** gombra.
 
 1. Töltse ki az űrlapot, figyelembe véve a következő irányelveket:
-    - Szolgáltatás neve: Adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
-    - Előfizetés: Válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
-    - Erőforráscsoport: Az új erőforrásokhoz új erőforráscsoportok létrehozása ajánlott eljárás.
-    - Helyen Válassza ki a szolgáltatási példány helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
+    - Szolgáltatás neve: adja meg a szolgáltatás példányának nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat.  A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.
+    - Előfizetés: válassza ki azt az előfizetést, amelyet számlázni szeretne az erőforráshoz.  Győződjön meg arról, hogy ez az előfizetés hozzá lett adva az Azure Spring Cloud engedélyezési listájához.
+    - Erőforráscsoport: új erőforráscsoportok létrehozása új erőforrásokhoz az ajánlott eljárás.
+    - Hely: válassza ki a szolgáltatás példányának helyét. A jelenleg támogatott helyszínek közé tartozik az USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Ázsia.
     
 A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A telepítés után megjelenik a szolgáltatási példány **Áttekintés** lapja.
 
@@ -118,7 +119,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. A PiggyMetrics az előző parancs kimenetében megadott URL-címen keresztül érheti el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást telepített egy Maven-tárházból.  Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás üzembe helyezésének előkészítésével foglalkozó oktatóanyaggal.
 

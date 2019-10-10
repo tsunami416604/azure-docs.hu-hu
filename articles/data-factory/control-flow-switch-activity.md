@@ -67,9 +67,9 @@ A kapcsoló tevékenység ugyanazokat a funkciókat biztosítja, mint a Switch u
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-name | A kapcsoló tevékenység neve. | Sztring | Igen
+név | A kapcsoló tevékenység neve. | Sztring | Igen
 type | @No__t-1 *kapcsolóra*kell beállítani | Sztring | Igen
-expression | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
+kifejezés | Az a kifejezés, amelynek ki kell értékelnie a karakterlánc értékét | Kifejezés eredmény típusú karakterláncmal | Igen
 esetekben | Olyan esetek összessége, amelyek értékkel és tevékenységekből álló készletet tartalmaznak, ha az érték megegyezik a kifejezés kiértékelésével. Legalább egy esetet meg kell adni. A maximális korlát 25 eset. | Case Objects tömb | Igen
 defaultActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége. | Tevékenységek tömbje | Igen
 
@@ -289,7 +289,7 @@ A folyamat beállítja a **folderPath** a folyamat **outputPath1** vagy **output
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a mappába: C:\ADF. 
+Ezek a parancsok feltételezik, hogy mentette a JSON-fájlokat a következő mappába: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -330,7 +330,7 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a Data Factory által támogatott egyéb vezérlési folyamatokat: 
 

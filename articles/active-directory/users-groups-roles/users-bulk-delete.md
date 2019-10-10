@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146433"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174382"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Felhasználók tömeges törlése (előzetes verzió) Azure Active Directory
 
@@ -26,18 +26,22 @@ A Azure Active Directory (Azure AD) portál használatával számos tagot eltáv
 
 ## <a name="to-bulk-delete-users"></a>Felhasználók tömeges törlése
 
-1. Jelentkezzen be az Azure AD-szervezetbe egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure ad-ben válassza a **felhasználók** > **tömeges törlés**lehetőséget.
-1. A **felhasználó tömeges törlése** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes CSV-fájljának fogadásához, majd adja hozzá a törölni kívánt felhasználókat.
-
-   ![A CSV-fájl a törölni kívánt felhasználók nevét és azonosítóit tartalmazza](./media/users-bulk-delete/delete-csv-file.png)
-
-1. Amikor befejezte a CSV-fájl szerkesztését, válassza ki a fájlt az érvényesíteni kívánt **CSV-fájl feltöltéséhez** .
+1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
+1. Az Azure AD-ben válassza a **felhasználók** > **tömeges törlés**lehetőséget.
+1. A **felhasználó tömeges törlése** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes CSV-fájljának fogadásához.
 
    ![Válassza ki azt a helyi CSV-fájlt, amelyben meg szeretné jeleníteni a törölni kívánt felhasználókat](./media/users-bulk-delete/bulk-delete.png)
 
-1. A fájl tartalmának ellenőrzésekor a feladatok elküldése előtt meg kell oldania a hibákat.
-1. Amikor a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget a felhasználókat törlő Azure batch-feladatok elindításához. Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a tömeges művelet eredményei lapon. A fájl az egyes hibák okát tartalmazza.
+1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden törölni kívánt felhasználóhoz. Az egyetlen szükséges érték a **felhasználó egyszerű neve**. Ezután mentse a fájlt.
+
+   ![A CSV-fájl a törölni kívánt felhasználók nevét és azonosítóit tartalmazza](./media/users-bulk-delete/delete-csv-file.png)
+
+1. A **felhasználó tömeges törlése (előzetes verzió)** lapon, a **CSV-fájl feltöltése**területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a Küldés gombra kattint, a CSV-fájl érvényesítése elindul.
+1. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+1. Amikor a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget az Azure tömeges művelet elindításához, amely törli a felhasználókat.
+1. Ha a törlési művelet befejeződik, megjelenik egy értesítés arról, hogy a tömeges művelet sikeresen befejeződött.
+
+Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a **tömeges művelet eredményei** lapon. A fájl az egyes hibák okát tartalmazza.
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
@@ -56,7 +60,7 @@ Ezután ellenőrizze, hogy a törölt felhasználók szerepelnek-e az Azure AD-s
 
 ### <a name="verify-deleted-users-with-powershell"></a>Törölt felhasználók ellenőrzése a PowerShell-lel
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 
 ``` PowerShell
 Get-AzureADUser -Filter "UserType eq 'Member'"
@@ -64,7 +68,7 @@ Get-AzureADUser -Filter "UserType eq 'Member'"
 
 Győződjön meg arról, hogy a törölt felhasználók már nem szerepelnek a felsorolásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felhasználók tömeges hozzáadása](users-bulk-add.md)
 - [Felhasználók listájának letöltése](users-bulk-download.md)

@@ -6,24 +6,24 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5bbb686597850aaceff3d3b5c142b0cb1fb0eefd
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: cb8a8238c4daac6370d47bb9e99b3503ebb68783
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959638"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176569"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Hiba elhárítása, ha a központi telepítés száma meghaladja a 800
 
 Az egyes erőforráscsoportok az üzembe helyezési előzményekben legfeljebb 800 üzemelő példányra korlátozódnak. Ez a cikk azt a hibát ismerteti, amikor egy központi telepítés meghiúsul, mert túllépi az engedélyezett 800 üzemelő példányokat. A hiba megoldásához törölje az üzemelő példányokat az erőforráscsoport előzményeiből. Egy központi telepítés az előzményekből való törlése nem befolyásolja az üzembe helyezett erőforrásokat.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
 Az üzembe helyezés során hibaüzenetet kap arról, hogy a jelenlegi központi telepítés túllépi a 800-es üzemelő példányok kvótáját.
 
 ## <a name="solution"></a>Megoldás
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az előzményekből az az [Group Deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) paranccsal törölheti a központi telepítéseket.
 
@@ -60,7 +60,7 @@ Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name deploymen
 Az öt napnál régebbi központi telepítések törléséhez használja a következőt:
 
 ```azurepowershell-interactive
-$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -gt ((Get-Date).AddDays(-5))
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName exampleGroup | Where-Object Timestamp -lt ((Get-Date).AddDays(-5))
 
 foreach ($deployment in $deployments) {
   Remove-AzResourceGroupDeployment -ResourceGroupName exampleGroup -Name $deployment.DeploymentName

@@ -75,7 +75,7 @@ Hitelesítés a Visual Studio használatával:
 
 Ha problémákba ütközik a Visual Studióval, például a jogkivonat-szolgáltatói fájlt érintő hibákkal, gondosan tekintse át az előző lépéseket.
 
-Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp;>&nbsp;**beállításailehetőség** et, majd válassza az **Azure&nbsp;szolgáltatás&nbsp;hitelesítés lehetőséget**. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
+Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök**&nbsp; @ no__t-2 @ no__t-3**Beállítások**elemet, majd válassza az **Azure @ no__t-6Service @ no__t-7Authentication**lehetőséget. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
 
 #### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 
@@ -156,7 +156,7 @@ Az alkalmazás futtatásához három elsődleges módszer használható egyszer�
     Ez a parancs létrehoz egy. PEM-fájlt (titkos kulcsot), amely a saját könyvtárában van tárolva. Telepítse a tanúsítványt a *LocalMachine* vagy a *CurrentUser* tárolóba.
 
     > [!Important]
-    > A CLI-parancs létrehoz egy. PEM-fájlt, de a Windows csak natív támogatást biztosít a PFX-tanúsítványokhoz. PFX-tanúsítvány létrehozásához használja az itt látható PowerShell-parancsokat: [Egyszerű szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Ezek a parancsok automatikusan telepítik a tanúsítványt is.
+    > A CLI-parancs létrehoz egy. PEM-fájlt, de a Windows csak natív támogatást biztosít a PFX-tanúsítványokhoz. PFX-tanúsítvány létrehozásához használja az itt látható PowerShell-parancsokat: [egyszerű szolgáltatásnév létrehozása önaláírt tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Ezek a parancsok automatikusan telepítik a tanúsítványt is.
 
 1. Állítson be egy **AzureServicesAuthConnectionString** nevű környezeti változót a következő értékre:
 
@@ -229,7 +229,7 @@ A folyamat szabályozásához használjon a `AzureServiceTokenProvider` konstruk
 
 A következő lehetőségek támogatottak:
 
-| A kapcsolatok karakterláncának beállítása | Forgatókönyv | Megjegyzések|
+| A kapcsolatok karakterláncának beállítása | Alkalmazási helyzet | Megjegyzések|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | a `AzureServiceTokenProvider` AzureCli használ a jogkivonat lekéréséhez. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | a `AzureServiceTokenProvider` a Visual studiót használja a jogkivonat lekéréséhez. |
@@ -241,7 +241,7 @@ A következő lehetőségek támogatottak:
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Egyszerű szolgáltatásnév | `AzureServiceTokenProvider` tanúsítvány használatával szerez tokent az Azure AD-ből|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Egyszerű szolgáltatásnév |a `AzureServiceTokenProvider` a titkos kulcsot használja az Azure AD-ből származó token beszerzéséhez. |
 
-## <a name="samples"></a>Példák
+## <a name="samples"></a>Minták
 
 A `Microsoft.Azure.Services.AppAuthentication` függvénytár működés közbeni megtekintéséhez tekintse meg a következő mintakód-mintákat.
 

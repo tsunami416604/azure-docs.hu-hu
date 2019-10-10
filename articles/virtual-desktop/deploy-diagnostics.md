@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947604"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177771"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -109,7 +109,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 4. Ezt követően navigáljon az adat  > **Windows** -teljesítményszámlálók **elemre**, és adja hozzá a következő számlálókat:
 
     -   LogicalDisk (\*) \|% szabad terület
-    -   LogicalDisk (C:) \\Avg. Lemezvárólista hossza
+    -   LogicalDisk (C:) \\Avg. Disk várólista hossza
     -   Memória (\*) \\Available MB-ban
     -   Processzor adatai (\*) @no__t – 1Processor idő
     -   Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
@@ -142,9 +142,9 @@ Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált 
 3. Ezután lépjen az adat  >  Windows-**teljesítményszámlálók** **elemre**.
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
-   - LogicalDisk (\*) \|% szabad terület: A lemezen lévő teljes felhasználható terület szabad területének százalékos értékét jeleníti meg.
-   - LogicalDisk (C:) \\Avg. Lemezvezérlő-várólista hossza: A C meghajtóhoz tartozó lemezes átviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
-   - Memória (\*) @no__t 1Available MB-ban: A rendszer számára rendelkezésre álló memória megabájtban.
+   - LogicalDisk (\*) \|% szabad terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
+   - LogicalDisk (C:) \\Avg. Disk várólista hossza: a C meghajtóhoz tartozó fájlátviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
+   - Memória (\*) \\Available MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
    - Processzor adatai (\*) @no__t – 1Processor idő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.
    - Felhasználói bemeneti késleltetés/munkamenet (\*) @no__t – 1Max bemeneti késleltetése
 
@@ -197,7 +197,7 @@ Az átirányítási URI beállítása:
 
 Mielőtt a diagnosztikai eszközt elérhetővé tenné a felhasználók számára, győződjön meg arról, hogy a következő engedélyek vannak:
 
-- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: [delegált hozzáférés a Windows rendszerű virtuális asztalon](delegated-access-virtual-desktop.md).
 
 A következő információkat is meg kell adnia a felhasználóknak:
@@ -237,22 +237,22 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 - LogicalDisk (\*) \|% szabad terület:
 
     - A logikai lemez szabad területének teljes felhasználható területének százalékos arányát jeleníti meg.
-    - Küszöb Kevesebb mint 20% van megjelölve sérültként.
+    - Küszöbérték: a 20%-nál kevesebb érték van megjelölve sérültként.
 
-- LogicalDisk (C:) \\Avg. Lemezvezérlő-várólista hossza:
+- LogicalDisk (C:) \\Avg. Disk várólista hossza:
 
     - A tárolási rendszerfeltételeket jelöli.
-    - Küszöb Az 5-nél nagyobb jelölés nem kifogástalan állapotú.
+    - Küszöbérték: az 5-nél nagyobb érték van megjelölve sérültként.
 
 - Memória (\*) @no__t 1Available MB-ban:
 
     - A rendszer számára rendelkezésre álló memória.
-    - Küszöb Kevesebb mint 500 megabájt van megjelölve sérültként.
+    - Küszöbérték: nem kifogástalanként megjelölt 500 megabájtnál kisebb.
 
 - Processzor adatai (\*) @no__t 1Processor idő:
 
-    - Küszöb A 80%-nál nagyobb érték van megjelölve sérültként.
+    - Küszöbérték: a 80%-nál nagyobb érték van megjelölve sérültként.
 
 - [Felhasználói bemeneti késleltetés/munkamenet (\*) \\Max bemeneti késleltetése](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Küszöb Az 2000 MS-nál nagyobb érték nem megfelelőként van megjelölve.
+    - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.

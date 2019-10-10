@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás üzembe helyezése egy Azure-beli virtuálisgép-méretezési csoportban |} A Microsoft Docs
-description: Ismerje meg, hogyan telepíthet alkalmazásokat a Linux és Windows méretezési csoportban lévő virtuálisgép-példányok
+title: Alkalmazás üzembe helyezése Azure-beli virtuálisgép-méretezési csoporton | Microsoft Docs
+description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat Linux és Windows rendszerű virtuálisgép-példányokon a méretezési csoportokban
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,46 +15,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 996006c60e754437f8f863c7e7a72c929ed77f2c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618625"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166208"
 ---
-# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>A virtual machine scale sets az alkalmazás üzembe helyezése
+# <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Alkalmazás üzembe helyezése virtuálisgép-méretezési csoportokon
 
-Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja a módon hozhat létre egyéni Virtuálisgép-rendszerképet a méretezési csoportban lévő példányok állítsa be, vagy már meglévő Virtuálisgép-példányok automatikus futtatásra telepítési szkriptek. Azt is megtudhatja, hogyan kezelhetők alkalmazás vagy az operációs rendszer frissítése egy méretezési csoportot.
+Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-példányán, először telepítenie kell az alkalmazás összetevőit és szükséges fájljait. Ez a cikk bemutatja, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket egy méretezési csoport példányaihoz, vagy automatikusan futtathat telepítési parancsfájlokat a meglévő virtuálisgép-példányokon. Azt is megtudhatja, hogyan kezelheti az alkalmazás-vagy operációsrendszer-frissítéseket egy méretezési csoporton belül.
 
 
-## <a name="build-a-custom-vm-image"></a>Egyéni Virtuálisgép-rendszerkép létrehozása
-Használatakor az Azure-platform-rendszerképeket a példányok létrehozásához a méretezési csoportban lévő, a további szoftver van telepítve vagy konfigurálva. Automatizálhatja az összetevők telepítésének azonban, amely hozzáadja a méretezési csoportok Virtuálisgép-példányok létrehozásához szükséges időt. Számos konfigurációs módosítások alkalmaz a Virtuálisgép-példányok, van-e felügyeleti többletterhelést az ezekkel a konfigurációs szkripteket és feladatokat.
+## <a name="build-a-custom-vm-image"></a>Egyéni virtuálisgép-rendszerkép létrehozása
+Ha az egyik Azure platform-rendszerképet használja a méretezési csoport példányainak létrehozásához, nincs szükség további szoftver telepítésére vagy konfigurálására. Automatizálhatja ezeknek az összetevőknek a telepítését, azonban a hozzáadja a virtuálisgép-példányoknak a méretezési csoportokhoz való kiépítéséhez szükséges időt. Ha a virtuálisgép-példányok számos konfigurációs módosítását alkalmazza, akkor ezek a konfigurációs parancsfájlok és feladatok esetében is felügyeleti terheléssel rendelkeznek.
 
-A konfigurációkezelés és egy virtuális gép idő csökkentése érdekében létrehozhat egy egyéni Virtuálisgép-rendszerképet, amely készen áll az alkalmazás futtatásához, amint egy példány üzembe van helyezve a méretezési csoportban. További információ a létrehozása és a egy egyéni Virtuálisgép-rendszerkép használata egy méretezési csoportban, olvassa el a következő oktatóanyagokat:
+A virtuális gép üzembe helyezéséhez és az idő csökkentéséhez létrehozhat egy egyéni virtuálisgép-rendszerképet, amely készen áll az alkalmazás futtatására, amint egy példány üzembe lett állítva a méretezési csoportba. A méretezési csoportokkal rendelkező egyéni virtuálisgép-rendszerképek létrehozásáról és használatáról további információt a következő oktatóanyagokban talál:
 
 - [Azure CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
-## <a name="already-provisioned"></a>Az egyéni Szkriptbővítménnyel és alkalmazások telepítése
-Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. További információ a létrehozása és a egy egyéni Virtuálisgép-rendszerkép használata egy méretezési csoportban, olvassa el a következő oktatóanyagokat:
+## <a name="already-provisioned"></a>Alkalmazás telepítése az egyéni szkriptek bővítményével
+Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. A méretezési csoportokkal rendelkező egyéni virtuálisgép-rendszerképek létrehozásáról és használatáról további információt a következő oktatóanyagokban talál:
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager-sablon](tutorial-install-apps-template.md)
 
 
-## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Az egy virtuális Gépet a PowerShell DSC Windows telepíthet egy alkalmazást
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) egy felügyeleti platform cél gépek konfigurációjának meghatározása. DSC-konfigurációk határozza meg, mi a telepíti egy számítógépre, és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) Konfigurálása motor dolgozza fel a kért műveletek leküldött beállításai minden célként megadott csomóponton fut.
+## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Alkalmazások telepítése Windows rendszerű virtuális gépre PowerShell DSC-vel
+A [PowerShell desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform, amely meghatározza a célszámítógépek konfigurációját. A DSC-konfigurációk határozzák meg, hogy mit kell telepíteni a gépre, és hogyan kell konfigurálni a gazdagépet. A helyi Configuration Manager (LCD) motor minden olyan cél csomóponton fut, amely leküldéses konfigurációk alapján dolgozza fel a kért műveleteket.
 
-A PowerShell DSC bővítmény lehetővé teszi, hogy a PowerShell-lel méretezési csoportban lévő Virtuálisgép-példányok testreszabását. Az alábbi példában:
+A PowerShell DSC bővítmény lehetővé teszi a virtuálisgép-példányok testreszabását a méretezési csoportokban a PowerShell használatával. A következő példa:
 
-- Arra utasítja a DSC-csomag letöltése a Githubról – a Virtuálisgép-példányok *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
-- Beállítja a futtatásához egy telepítési parancsfájl - bővítmény `configure-http.ps1`
-- Egy méretezési csoportot az információ lekérése [Get-AzVmss](/powershell/module/az.compute/get-azvmss)
-- Vonatkozik a bővítményt a Virtuálisgép-példányok [Update-AzVmss](/powershell/module/az.compute/update-azvmss)
+- Arra utasítja a virtuálisgép-példányokat, hogy töltsön le egy DSC-csomagot a GitHubról – *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- Beállítja a bővítményt a telepítési parancsfájl futtatásához – `configure-http.ps1`
+- Lekéri a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) rendelkező méretezési csoport adatait
+- Az [Update-AzVmss](/powershell/module/az.compute/update-azvmss) használatával alkalmazza a bővítményt a virtuálisgép-példányokra.
 
-A DSC-bővítmény alkalmazott a *myScaleSet* nevű erőforráscsoportot a Virtuálisgép-példányok *myResourceGroup*. Adja meg a saját nevek a következők szerint:
+A DSC-bővítmény a *myResourceGroup*nevű erőforráscsoport *myScaleSet* virtuálisgép-példányaira lesz alkalmazva. Adja meg a saját nevét a következőképpen:
 
 ```powershell
 # Define the script for your Desired Configuration to download and run
@@ -88,17 +88,17 @@ Update-AzVmss `
     -VirtualMachineScaleSet $vmss
 ```
 
-Ha a házirend a méretezési *manuális*, a Virtuálisgép-példányok a frissítés [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Ez a parancsmag a Virtuálisgép-példányok a frissített méretezésicsoport-konfigurációt vonatkozik, és telepíti az alkalmazást.
+Ha a méretezési csoport frissítési szabályzata *kézi*, frissítse a virtuálisgép-példányokat az [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance). Ez a parancsmag a frissített méretezési csoport konfigurációját alkalmazza a virtuálisgép-példányokra, és telepíti az alkalmazást.
 
 
-## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Alkalmazások telepítése egy Linux rendszerű virtuális gépre, a cloud-Init használatával
+## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Alkalmazás telepítése Linux rendszerű virtuális gépre a Cloud-init használatával
 A [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a cloud-init a kezdeti rendszerindítás során fut, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-További információkat, többek között például *cloud-init.txt* fájlt [cloud-init használata Azure virtuális gépek testreszabása](../virtual-machines/linux/using-cloud-init.md).
+További információt, például a *Cloud-init. txt* fájlt, a [Cloud-init használata az Azure-beli virtuális gépek testreszabásához](../virtual-machines/linux/using-cloud-init.md)című témakörben talál.
 
-Hozzon létre egy méretezési csoportot, és a egy cloud-init-fájlt használ, adja hozzá a `--custom-data` paramétert a [az vmss létrehozásához](/cli/azure/vmss) parancsot, majd adja meg a cloud-init fájl nevét. A következő példában létrehozunk egy méretezési csoportot elnevezett *myScaleSet* a *myResourceGroup* konfigurálja a Virtuálisgép-példányok nevű fájlt, és *cloud-init.txt*. Adja meg a saját nevek a következők szerint:
+Méretezési csoport létrehozásához és egy Cloud-init fájl használatához adja hozzá a `--custom-data` paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a Cloud-init fájl nevét. Az alábbi példa egy *myScaleSet* nevű méretezési készletet hoz létre a *myResourceGroup* -ben, és egy *Cloud-init. txt*nevű fájllal konfigurálja a virtuálisgép-példányokat. Adja meg a saját nevét a következőképpen:
 
 ```azurecli
 az vmss create \
@@ -112,11 +112,11 @@ az vmss create \
 ```
 
 
-### <a name="install-applications-with-os-updates"></a>Alkalmazások telepítése az operációs rendszer frissítése
-Új operációsrendszer-verziók érhetők el, amikor használja, vagy egy új egyéni rendszerkép összeállítása és [üzembe helyezése operációs rendszer verziófrissítései](virtual-machine-scale-sets-upgrade-scale-set.md) beállítani egy méretezési csoport. Minden egyes Virtuálisgép-példány frissítése a legújabb lemezképet történik. Az alkalmazással előre telepítve van, az egyéni szkriptek futtatására szolgáló bővítmény, vagy a PowerShell DSC egyéni rendszerkép használatával rendelkezik az alkalmazás automatikusan elérhető, a frissítés végrehajtása közben. Szükség lehet tervezése alkalmazás karbantartás végrehajtása közben, győződjön meg arról, hogy nincs kompatibilitási problémák a folyamat.
+### <a name="install-applications-with-os-updates"></a>Alkalmazások telepítése operációs rendszer frissítéseivel
+Ha új operációsrendszer-kiadás érhető el, használhatja vagy felépítheti az új egyéni rendszerképeket, és [telepítheti az operációs rendszer frissítéseit](virtual-machine-scale-sets-upgrade-scale-set.md) egy méretezési csoportba. Minden virtuálisgép-példány a megadott legújabb képre frissül. Használhatja az alkalmazást előre telepített alkalmazással, az egyéni szkriptek bővítményével vagy a PowerShell DSC-vel, hogy az alkalmazás automatikusan elérhető legyen a frissítés végrehajtása során. Előfordulhat, hogy a folyamat végrehajtása során meg kell terveznie az alkalmazások karbantartását, hogy ne legyenek kompatibilitási problémák.
 
-Az előre telepített alkalmazás egy egyéni Virtuálisgép-rendszerképet használja, ha meg az alkalmazás-frissítések egy központi telepítési folyamat az új rendszerképek létrehozása és üzembe helyezése operációs rendszer verziófrissítései a teljes méretezési és integrálhatja. Ez a megközelítés lehetővé teszi, hogy a folyamat folytattuk a munkát a legfrissebb alkalmazás-buildekről, hozzon létre, ellenőrizze a Virtuálisgép-rendszerkép, majd frissítse a méretezési csoportban lévő Virtuálisgép-példányok. Egy központi telepítési folyamatot, amely felépítése és üzembe helyezése az alkalmazás frissítései között egyéni Virtuálisgép-rendszerképek futtatásához sikerült [Packer lemezkép létrehozása és üzembe helyezése az Azure DevOps-szolgáltatásokkal](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), vagy használjon egy másik platformot például [Spinnaker](https://www.spinnaker.io/) vagy [Jenkins](https://jenkins.io/).
+Ha egy egyéni virtuálisgép-rendszerképet használ előre telepített alkalmazással, az alkalmazás frissítéseit egy központi telepítési folyamattal integrálhatja az új lemezképek létrehozásához és az operációs rendszer frissítéseinek üzembe helyezéséhez a méretezési csoporton belül. Ez a megközelítés lehetővé teszi, hogy a folyamat felvegye a legújabb alkalmazás-buildeket, hozzon létre és érvényesítse a virtuálisgép-lemezképeket, majd frissítse a méretezési csoport virtuálisgép-példányait. Ha olyan központi telepítési folyamatot szeretne futtatni, amely az alkalmazások egyéni virtuálisgép-rendszerképeken való üzembe helyezését és központi telepítését végzi, [létrehozhat egy csomagoló rendszerképet, és üzembe helyezheti az Azure DevOps Services szolgáltatást](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), vagy használhat más platformot, például a [Spinnaker](https://www.spinnaker.io/) vagy a [Jenkinst](https://jenkins.io/).
 
 
-## <a name="next-steps"></a>További lépések
-Hozhat létre és telepíthet központilag alkalmazásokat a méretezési csoportok, áttekintheti a [méretezési beállítása tervezési áttekintése](virtual-machine-scale-sets-design-overview.md). A méretezési kezeléséről további információkért lásd: [PowerShell-lel történő kezelése a méretezési](virtual-machine-scale-sets-windows-manage.md).
+## <a name="next-steps"></a>Következő lépések
+Amikor alkalmazásokat hoz létre és telepít a méretezési csoportokban, tekintse át a [méretezési csoport kialakításának áttekintését](virtual-machine-scale-sets-design-overview.md). A méretezési csoport kezelésével kapcsolatos további információkért lásd: [a méretezési csoport kezelése a PowerShell használatával](virtual-machine-scale-sets-windows-manage.md).

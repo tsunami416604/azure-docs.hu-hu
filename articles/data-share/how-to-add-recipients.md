@@ -1,17 +1,17 @@
 ---
 title: Címzettek hozzáadása az Azure-beli adatmegosztás előzetes verziójában
-description: Címzettek hozzáadása egy meglévő adatmegosztáshoz
+description: Megtudhatja, hogyan adhat hozzá címzetteket egy meglévő adatmegosztáshoz az Azure-beli adatmegosztás előzetes verziójában.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e496f67616f7ebcf4c086c8d01680b95f9cafcf8
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 1deda63f7f440116eaf47c41fa00c8b5f7566dcf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320306"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169173"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share-preview"></a>Címzett hozzáadása meglévő adatmegosztáshoz az Azure-beli adatmegosztás előzetes verziójában
 
@@ -21,7 +21,7 @@ A címzettek megosztás létrehozásakor történő hozzáadásával kapcsolatos
 
 ## <a name="navigate-to-a-sent-data-share"></a>Navigáljon az elküldett adatmegosztáshoz
 
-Az Azure-beli adatmegosztás előzetes verziójában navigáljon az elküldött megosztáshoz, és válassza a meghívások fület. Itt látható az adatmegosztásra vonatkozó meghívók összes címzettje. Új hozzáadásához kattintson a **Címzett hozzáadása**lehetőségre.
+Az Azure-beli adatmegosztás előzetes verziójában navigáljon az elküldött megosztáshoz, és válassza a **meghívások** fület. itt látható az adatmegosztásra vonatkozó meghívó összes címzettje. Új hozzáadásához kattintson a **Címzett hozzáadása**lehetőségre.
 
 ![Címzett hozzáadása](./media/how-to/how-to-add-recipients/add-recipient.png)
 
@@ -29,7 +29,7 @@ A panel a lap jobb oldalán jelenik meg. Kattintson a **Címzett hozzáadása** 
 
 ![Címzett hozzáadása](./media/how-to/how-to-add-recipients/add-recipient-side.png)
 
-Kattintson **a Hozzáadás gombra, és küldje el a**meghívót. Az új címzett (ek) meghívói e-maileket küld erre az adatmegosztásra.
+Kattintson **a Hozzáadás gombra, és küldje el a meghívót**. Az új címzett (ek) meghívói e-maileket küld erre az adatmegosztásra.
 
-## <a name="next-steps"></a>További lépések
-További információ a meghívások [megosztásra való törléséről](how-to-delete-invitation.md).
+## <a name="next-steps"></a>Következő lépések
+További információ a [meghívások megosztásra való törléséről](how-to-delete-invitation.md).

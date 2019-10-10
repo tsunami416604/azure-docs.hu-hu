@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Miniatűr létrehozása – REST, go'
+title: 'Rövid útmutató: Miniatűr létrehozása – REST, Go'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és Go használatával.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 89c01fc4a48d9264b12e22c593cd9d68d0fd4ab4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ed79686a8c2c649852c4652a3e334b1731491de9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137943"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177247"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>Gyors útmutató: Miniatűr létrehozása a Computer Vision REST API a go használatával
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API a go használatával
 
 Ebben a rövid útmutatóban létrehoz egy miniatűrt a rendszerképből Computer Vision REST API használatával. Megadhatja a magasságot és a szélességet, ami eltérő lehet a bemeneti kép oldalaránya alapján. A Computer Vision az intelligens vágás használatával intelligens módon azonosítja a fontos területet, és az adott régió alapján készíti el a levágási koordinátákat.
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Rendelkeznie kell a [Góval](https://golang.org/dl/).
-- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs-és szolgáltatás végponti `COMPUTER_VISION_SUBSCRIPTION_KEY` karakterláncához, a nevet és `COMPUTER_VISION_ENDPOINT`a-t.
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. A [kipróbálási Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ingyenes próbaverziós kulcsot is beszerezhet. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Computer Visionra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, amelynek neve `COMPUTER_VISION_SUBSCRIPTION_KEY` és `COMPUTER_VISION_ENDPOINT`.
 
 ## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
@@ -36,7 +36,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
 1. Ha szeretné, cserélje le az `imageUrl` értéket annak a képnek az URL-címére, amelyhez miniatűrt szeretne létrehozni.
 1. Mentse a kódot fájlként `.go` kiterjesztéssel. Például: `get-thumbnail.go`.
-1. Nyisson meg egy parancsablakot.
+1. Nyisson meg egy parancssort.
 1. A parancssorban futtassa a `go build` parancsot a fájl csomagjának lefordításához. Például: `go build get-thumbnail.go`.
 1. Amikor a rendszer erre kéri, futtassa a fordított csomagot. Például: `get-thumbnail`.
 
@@ -64,7 +64,7 @@ func main() {
         log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
             "**Restart your shell or IDE for changes to take effect.**")
     }
-    const uriBase = endpoint + "vision/v2.0/generateThumbnail"
+    const uriBase = endpoint + "vision/v2.1/generateThumbnail"
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/9/94/Bloodhound_Puppy.jpg"
 
@@ -118,7 +118,7 @@ func main() {
 
 A sikeres válasz tartalmazza a miniatűrkép bináris adatait. Ha a kérés meghiúsul, a válasz tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Computer Vision API a képek elemzéséhez, a hírességek és tereptárgyak észleléséhez, a miniatűr létrehozásához, valamint a nyomtatott és a kézírásos szöveg kinyeréséhez. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 

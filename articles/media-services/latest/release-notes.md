@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030534"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168635"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
-Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
+A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
-* A legújabb kiadásaihoz.
+* A legújabb kiadások
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
@@ -36,16 +36,38 @@ További információ: [áttelepítési útmutató Media Services v2-ről v3-re 
 
 ## <a name="september-2019"></a>Szeptember 2019
 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>Élő események élő lineáris kódolása
+
 Media Services v3 bejelenti az élő események élő lineáris kódolásának 24 órás x 365 napos előzetes verzióját.
- 
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
+
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A [Azure Media Indexer](../previous/media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 előnézeti](../previous/media-services-process-content-with-indexer2.md) adathordozó processzora 2020 január 1-től megszűnik. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+
+További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
+
 ## <a name="august-2019"></a>Augusztus 2019
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>A Dél-afrikai regionális pár nyitva van a Media Services 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>A Dél-afrikai regionális pár nyitva van a Media Services 
 
 A Media Services mostantól elérhető Dél-Afrikában Észak-és Dél-Afrika nyugati régiójában.
 
 További információkért tekintse [meg a felhőket és a régiókat, amelyekben Media Services v3 létezik](azure-clouds-regions.md).
 
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
+
+Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavult változatát, amelyek 2019 november 30-án megszűnnek.
+
+Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101334) és az [ame áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
+ 
 ## <a name="july-2019"></a>Július 2019
 
 ### <a name="content-protection"></a>Tartalomvédelem
@@ -236,11 +258,11 @@ A következő Event Grid-támogatással kapcsolatos fejlesztési funkciók láth
 
 A CMAF és a "CBCS" titkosítási támogatása az Apple HLS (iOS 11 +) és az MPEG-DASH-lejátszók számára, amelyek támogatják a CMAF.
 
-### <a name="video-indexer"></a>Video Indexer
+### <a name="video-indexer"></a>Videóindexelő
 
 A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Módosítások tervek
+### <a name="plans-for-changes"></a>A változtatások tervei
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
@@ -273,7 +295,7 @@ A .NET SDK-ban a következő funkciók találhatók:
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v2 kibocsátási megjegyzései](../previous/media-services-release-notes.md)

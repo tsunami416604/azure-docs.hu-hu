@@ -250,8 +250,8 @@ END
 1. Válassza a **V2 (előzetes verzió)** értéket a **verzió** esetén.
 1. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 1. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
-1. Kattintson a **Create** (Létrehozás) gombra.      
-1. Az irányítópulton a következő csempe jelenik meg az állapottal: **Az adatelőállító üzembe helyezése**. 
+1. Kattintson a  **Create** (Létrehozás) gombra.      
+1. Az irányítópulton megjelenő csempén a következő állapotleírás látható: **Adat-előállító üzembe helyezése**. 
 
     ![adat-előállító üzembe helyezése csempe](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
@@ -280,7 +280,7 @@ Mialatt adatokat helyez át egy magánhálózaton (helyszínen) lévő adattárb
 1. Írja be a **MySelfHostedIR** nevet a **név** mezőjébe, és kattintson a **Next** (Tovább) gombra. 
 
    ![Saját üzemeltetésű integrációs modul neve](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
-1. Kattintson **ide, hogy elindítsa a számítógép expressz telepítését** a **Option 1: Express Setup @ no__t-0 szakasz. 
+1. Kattintson a **Kattintson ide a számítógépen történő expressz telepítés indításához** elemre az **1. lehetőség: Expressz telepítés** szakaszban. 
 
    ![Kattintás az Expressz telepítés hivatkozásra](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. Az **Integrációs modul (Saját üzemeltetésű) – Expressz telepítés** ablakban kattintson a **Bezárás** elemre. 
@@ -513,9 +513,9 @@ A folyamat táblanevek listáját használja paraméterként. A ForEach tevéken
     1. Válassza az **Importálási paraméter** lehetőséget. 
     1. Adja meg a következő értékeket a paraméterekhez: 
 
-        | Name (Név) | Típus | Value | 
+        | Név | Type (Típus) | Value (Díj) | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | Dátum és idő | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Sztring | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Tárolt eljárási tevékenység – tárolt eljárás beállításai](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
@@ -724,7 +724,7 @@ project_table   2017-10-01 00:00:00.000
 
 Megfigyelhető, hogy mindkét tábla küszöbértékei frissültek.
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre: 
 
 > [!div class="checklist"]

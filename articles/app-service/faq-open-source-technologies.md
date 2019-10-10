@@ -116,10 +116,10 @@ Az Azure Marketplace és az egyéni telepítések esetén:
 * Mappa helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * Fontos fájlok:
     * Catalina. *éééé-hh-nn*. log
-    * host-manager.*yyyy-mm-dd*.log
+    * gazdagép-kezelő. *éééé-hh-nn*. log
     * localhost. *éééé-hh-nn*. log
     * Manager. *éééé-hh-nn*. log
-    * site_access_log.*yyyy-mm-dd*.log
+    * site_access_log. *éééé-hh-nn*. log
 
 
 Portál **alkalmazás beállításai** :
@@ -127,10 +127,10 @@ Portál **alkalmazás beállításai** :
 * Mappa helye: D:\home\LogFiles
 * Fontos fájlok:
     * Catalina. *éééé-hh-nn*. log
-    * host-manager.*yyyy-mm-dd*.log
+    * gazdagép-kezelő. *éééé-hh-nn*. log
     * localhost. *éééé-hh-nn*. log
     * Manager. *éééé-hh-nn*. log
-    * site_access_log.*yyyy-mm-dd*.log
+    * site_access_log. *éééé-hh-nn*. log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hogyan a JDBC illesztőprogram-kapcsolatok hibáinak elhárítása?
 
@@ -189,7 +189,7 @@ Ha nemrég áttelepítette az Azure-ba, a WordPress átirányíthatja a régi ta
 
 A WordPress Buddy + egy Azure-beli hely bővítmény, amellyel az átirányítási URL-cím közvetlenül az adatbázisban frissíthető. A WordPress Buddy + használatával kapcsolatos további információkért lásd: [a WordPress-eszközök és a MySQL-áttelepítés a WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)segítségével.
 
-Ha az átirányítási URL-címet manuálisan szeretné SQL-lekérdezések vagy PHPMyAdmin használatával frissíteni, tekintse meg az [WordPress: Átirányítása helytelen URL-címre @ no__t-0.
+Ha az átirányítási URL-címet az SQL-lekérdezések vagy a PHPMyAdmin használatával szeretné manuálisan frissíteni, tekintse meg a [WordPress: átirányítást a helytelen URL-címre](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>Hogyan módosítja a WordPress bejelentkezési jelszavát?
 
@@ -203,8 +203,8 @@ Ha úgy találja, hogy kizárta a WordPresst, miután nemrég telepített egy be
 
 A WordPress-webhelyhez csatlakoztatott MySQL-adatbázis áttelepítésének több lehetősége van:
 
-* Fejlesztők számára: A [parancssor vagy a phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) használata
-* Nem fejlesztőknek: A [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
+* Fejlesztők: a [parancssor vagy a phpMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) használata
+* Nem fejlesztőknek: a [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) használata
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Hogyan segít a WordPress biztonságosabbá tételében?
 

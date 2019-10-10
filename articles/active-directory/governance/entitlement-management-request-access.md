@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290889"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169818"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -40,7 +40,7 @@ Első lépésként jelentkezzen be a saját hozzáférési portálra, ahol hozz�
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtárat, és a következőhöz hasonló hozzáférési csomag-azonosítóval végződik:
+1. Keressen egy e-mailt vagy egy üzenetet a projektből vagy a Business managerből, amelyen dolgozik. Az e-mailnek tartalmaznia kell a hozzáférési csomagra mutató hivatkozást, amelyre szüksége lesz. A hivatkozás a "myaccess" kifejezéssel kezdődik, tartalmaz egy könyvtárat, és a következőhöz hasonló hozzáférési csomag-AZONOSÍTÓval végződik:
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -101,7 +101,7 @@ Ha olyan hozzáférési csomaghoz kér hozzáférést, amelyhez több szabályza
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

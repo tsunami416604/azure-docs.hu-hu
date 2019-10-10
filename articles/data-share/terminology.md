@@ -1,17 +1,17 @@
 ---
 title: Az Azure-beli adatmegosztás előzetes verziójának terminológiája
-description: Az Azure-beli adatmegosztás előzetes verziójának terminológiája
+description: Ismerje meg az Azure-beli adatmegosztások előzetes verziójában használt erőforrások (adatszolgáltató, adatfogyasztó, adatmegosztás, megosztási előfizetés, pillanatkép, meghívó, címzett) leírására használt általános kifejezéseket.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844705"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166279"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Az Azure-beli adatmegosztás előzetes verziójának alapfogalmai 
 
@@ -47,7 +47,7 @@ Egy adatszolgáltató engedélyezheti az adatmegosztás pillanatkép-beállítá
 
 Ha egy adatszolgáltató engedélyezi ezt a beállítást, egy ismétlődési időköz is kiválasztható. Az ismétlődési időköz lehet óránként vagy naponta. 
 
-Egy adatfogyasztónak lehetősége van arra, hogy a pillanatkép-ütemterven belül fogadja a növekményes frissítéseket, beleértve azokat az adattípusokat is, amelyek megváltoztak, mert először létrehoztak egy új pillanatképet. 
+Egy adatfogyasztó lehetősége van arra, hogy ezt a pillanatkép-ütemtervet olyan növekményes frissítések fogadására használja, amelyek az új pillanatkép létrehozása óta megváltoztatott adatokkal rendelkeznek. 
 
 ## <a name="invitation"></a>Meghívás
 
@@ -55,13 +55,13 @@ Egy adatszolgáltató több címzettet is meghívhat az adatmegosztásra. Ezt ú
 
 Egy adatszolgáltató törölhet egy meghívót, miután elküldték, ha még nem fogadták el. Ha az adatszolgáltató töröl egy meghívót, és még nem fogadta el, az adatfogyasztó nem fogja tudni elfogadni. 
 
-A meghívókat naponta legfeljebb 5 alkalommal lehet elküldeni. 
+A meghívások naponta akár ötször is elküldhetők. 
 
 ## <a name="recipient"></a>Címzett
 
 A címzett olyan személy, aki meghívót kap egy adatmegosztásra. Egy adatszolgáltató jellemzően a létrehozott adatmegosztáshoz adja hozzá a címzetteket. Ha egy meghívás címzettjei elfogadják a meghívót, az adatfogyasztónak lesznek.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.
 

@@ -1,8 +1,8 @@
 ---
-title: Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan védi az Azure Active Directory (Azure AD) átmenő hitelesítése a a helyszíni fiókok
+title: Azure Active Directory átmenő hitelesítés biztonságának részletes bemutatása | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan védi a helyszíni fiókokat a Azure Active Directory (Azure AD) átmenő hitelesítéssel
 services: active-directory
-keywords: Az Azure AD Connect az átmenő hitelesítés, Active Directory telepítése szükséges összetevők SSO, Azure AD egyszeri bejelentkezés
+keywords: Azure AD Connect átmenő hitelesítés, telepítési Active Directory, szükséges összetevők az Azure AD-hez, egyszeri bejelentkezéshez, egyszeri bejelentkezéshez
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -15,207 +15,208 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348063"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174437"
 ---
-# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Az Azure Active Directory átmenő hitelesítés a biztonság részletes bemutatása
+# <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory átmenő hitelesítés biztonsági mélye
 
-Ez a cikk az Azure Active Directory (Azure AD) átmenő hitelesítés működéséről további részletes leírását. A szolgáltatás biztonsági vonatkozásai összpontosít. Ez a cikk a biztonsági és informatikai rendszergazdák, vezető megfelelőségi és biztonsági tisztviselők, és más informatikai szakemberek számára felelős informatikai biztonsági és megfelelőségi, kis és közepes méretű szervezetek számára, vagy a nagyobb cégeknek is.
+Ez a cikk részletesebb leírást nyújt a Azure Active Directory (Azure AD) átmenő hitelesítés működéséről. A szolgáltatás biztonsági szempontjaira koncentrál. Ez a cikk a biztonsági és informatikai rendszergazdák, a megfelelőségi és biztonsági tisztviselők, valamint más informatikai szakemberek számára készült, akik felelősek az informatikai biztonságért és a megfelelőségért a kis-és közepes méretű szervezeteknél vagy nagyvállalatokban.
 
-A tárgyalt témakörök a következők:
-- Hogyan kell telepíteni és regisztrálása a hitelesítési ügynökök részletes technikai információkat.
-- Felhasználói bejelentkezés során a titkosítási jelszavak újbóli használatának részletes technikai információkat.
-- A csatornák között biztonságát a helyszíni hitelesítési ügynökök és az Azure ad-ben.
-- Részletes technikai információ a hitelesítési ügynökök az illesztő biztonságának megőrzéséhez.
-- Biztonsággal kapcsolatos témaköröket.
+A megoldandó témakörök a következők:
+- Részletes technikai információk a hitelesítési ügynökök telepítéséhez és regisztrálásához.
+- Részletes technikai információk a jelszavak titkosításáról a felhasználói bejelentkezés során.
+- A helyszíni hitelesítési ügynökök és az Azure AD közötti csatornák biztonsága.
+- Részletes technikai információk a hitelesítési ügynökök működésének megőrzéséről.
+- Egyéb biztonsággal kapcsolatos témakörök.
 
-## <a name="key-security-capabilities"></a>Fontos biztonsági képességgel
+## <a name="key-security-capabilities"></a>Kulcsfontosságú biztonsági képességek
 
-Ez a funkció a kulcs biztonsági beállításait az alábbiak:
-- El vannak különítve a bejelentkezési kérelmek, a bérlők között biztonságos, a több-bérlős architektúra alapján készült.
-- A helyszíni jelszavak soha nem a felhőben, bármilyen formában vannak tárolva.
-- A helyszíni hitelesítési ügynökök, amelyek figyelik, és reagálni, a jelszó érvényesítése kérelmek tétele csak a kimenő kapcsolatokat a hálózaton belül. Esetében nem követelmény a szegélyhálózaton (DMZ) hitelesítési ügynökök telepítéséhez. Ajánlott eljárásként kezeljük az összes olyan kiszolgálóalkalmazást futtató hitelesítési ügynökök, a Tier 0 rendszerek (lásd: [referencia](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
-- Csak szabványos portot (80-as és 443-as) az Azure AD a hitelesítési ügynököktől származó kimenő kommunikációra szolgálnak. Nem kell megnyitni a bejövő portra a tűzfalon. 
-  - 443-as port az összes hitelesített kimenő kommunikációra szolgál.
-  - 80-as port szolgál csak a visszavont tanúsítványok listájának (CRL) letöltése esetén győződjön meg arról, hogy ez a szolgáltatás által használt tanúsítványok egyike visszavonták.
-  - A hálózati követelmények teljes listáját lásd: [Azure Active Directory átmenő hitelesítés: Gyors üzembe helyezési](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
-- Hogy a felhasználók a bejelentkezés során adja meg a felhőben vannak titkosítva, előtt a helyszíni hitelesítési ügynökök fogadja el az Active Directory érvényesítésre.
-- Az Azure AD között a HTTPS-csatorna és a helyszíni hitelesítési ügynök a kölcsönös hitelesítés védi.
-- A felhasználói fiókokhoz védi zökkenőmentesen dolgozik [Azure AD feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), többek között a multi-factor Authentication (MFA), [örökölt hitelesítés](../conditional-access/conditions.md) , illetve [ kiszűri a találgatásos jelszó támadások](../authentication/howto-password-smart-lockout.md).
+Ezek a funkció legfontosabb biztonsági szempontjai:
+- A szolgáltatás olyan biztonságos, több-bérlős architektúrára épül, amely a bérlők közötti bejelentkezési kérelmek elkülönítését biztosítja.
+- A helyszíni jelszavakat a rendszer soha nem tárolja semmilyen formában a felhőben.
+- Azok a helyszíni hitelesítési ügynökök, amelyek figyelik a-t, és válaszolnak arra, hogy a jelszó-ellenőrzési kérelmek csak kimenő kapcsolatokat hajtanak végre a hálózaton belül. Ezeket a hitelesítési ügynököket nem szükséges a peremhálózaton (DMZ) telepíteni. Ajánlott eljárásként a hitelesítési ügynököket futtató összes kiszolgálót a 0. rétegű rendszerként kell kezelni (lásd: [hivatkozás](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+- Csak a standard portokat (80 és 443) használja a rendszer a hitelesítési ügynököktől az Azure AD felé irányuló kimenő kommunikációhoz. Nem kell megnyitnia a bejövő portokat a tűzfalon. 
+  - Az 443-es port minden hitelesített kimenő kommunikációhoz használatos.
+  - Az 80-es portot csak a visszavont tanúsítványok listáinak (CRL-ek) letöltésére használja a rendszer, hogy a szolgáltatás által használt egyik tanúsítványt sem vonták vissza.
+  - A hálózati követelmények teljes listájáért lásd [: Azure Active Directory átmenő hitelesítés: gyors üzembe helyezés](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+- A felhasználók által a bejelentkezés során megadott jelszavak titkosítva vannak a felhőben, mielőtt a helyszíni hitelesítési ügynökök elfogadják őket a Active Directory való érvényesítéshez.
+- Az Azure AD és a helyszíni hitelesítési ügynök közötti HTTPS-csatornát kölcsönös hitelesítéssel védi a szolgáltatás.
+- Az [Azure ad feltételes hozzáférési szabályzatok](../active-directory-conditional-access-azure-portal.md), például a multi-Factor Authentication (MFA) és az [örökölt hitelesítés blokkolásával](../conditional-access/conditions.md) , valamint a [találgatásos jelszó elleni támadások kiszűrésével](../authentication/howto-password-smart-lockout.md)védi a felhasználói fiókokat.
 
-## <a name="components-involved"></a>Részt vevő összetevők
+## <a name="components-involved"></a>Érintett összetevők
 
-További működési, Azure AD szolgáltatás és adat biztonsági kapcsolatos általános információkért lásd: a [biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/). A következő összetevőket is igényel, a felhasználói bejelentkezés az átmenő hitelesítés használatakor:
-- **Az Azure AD STS**: Állapot nélküli biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS), amely feldolgozza a bejelentkezési kérelmek és a biztonsági jogkivonatokat bocsát felhasználói böngészők, ügyfelek vagy szolgáltatásokhoz szükség szerint.
-- **Az Azure Service Bus**: Biztosítja a felhőalapú vállalati üzenetkezeléssel és továbbítók kommunikációt, amely segítséget nyújt a helyszíni megoldások csatlakoztatása a felhő segítségével.
-- **Az Azure AD Connect hitelesítési ügynökének**: Egy helyszíni összetevő, amely figyeli és a jelszó érvényesítése kérésekre válaszol.
-- **Azure SQL Database**: A bérlő hitelesítési ügynökök, ideértve a metaadatok és a titkosítási kulcsok kapcsolatos információkat tartalmazza.
-- **Az Active Directory**: A helyszíni Active Directory, a felhasználói fiókokhoz és a jelszavukat tárolására.
+Az Azure AD működésével, szolgáltatásával és adatbiztonságával kapcsolatos általános információkért tekintse meg az [adatvédelmi központot](https://azure.microsoft.com/support/trust-center/). A felhasználói bejelentkezéshez az átmenő hitelesítés használata esetén a következő összetevőket kell használni:
+- **Azure ad STS**: egy állapot nélküli biztonsági jogkivonat-szolgáltatás (STS), amely a bejelentkezési kérések feldolgozását és a biztonsági jogkivonatok kiírását kéri a felhasználók böngészői, ügyfelei vagy szolgáltatásai számára.
+- **Azure Service Bus**: felhőalapú kommunikációt tesz lehetővé vállalati üzenetkezeléssel és közvetíti a kommunikációt, amely segítséget nyújt a helyszíni megoldások felhővel való összekapcsolásához.
+- **Azure ad Connect hitelesítési ügynök**: egy helyszíni összetevő, amely figyeli és válaszol a jelszó-ellenőrzési kérelmekre.
+- **Azure SQL Database**: a bérlő hitelesítési ügynökével kapcsolatos információkat tartalmaz, beleértve a metaadatokat és a titkosítási kulcsokat.
+- **Active Directory**: helyszíni Active Directory, ahol a felhasználói fiókjai és a jelszavuk tárolása történik.
 
-## <a name="installation-and-registration-of-the-authentication-agents"></a>Telepítési és regisztrációs a hitelesítési ügynökök
+## <a name="installation-and-registration-of-the-authentication-agents"></a>A hitelesítési ügynökök telepítése és regisztrálása
 
-Hitelesítési ügynökök telepítése és az Azure ad-vel regisztrált során, vagy:
-   - [Az Azure AD átmenő hitelesítés engedélyezése csatlakoztatása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [A bejelentkezési kérelmek magas rendelkezésre állásának biztosításához a további hitelesítési ügynökök hozzáadása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+A hitelesítési ügynökök telepítése és regisztrálása az Azure AD-ben a következők valamelyike esetén:
+   - [Átmenő hitelesítés engedélyezése Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
+   - [További hitelesítési ügynökök hozzáadása a bejelentkezési kérések magas rendelkezésre állásának biztosítása érdekében](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
    
-A hitelesítési ügynök működő első három fő fázisból foglalja magában:
+A hitelesítési ügynök működésének beszerzése három fő fázisból áll:
 
 1. Hitelesítési ügynök telepítése
 2. Hitelesítési ügynök regisztrációja
 3. Hitelesítési ügynök inicializálása
 
-A következő szakaszok ezeket a fázisokat részletesen tárgyalja.
+A következő szakaszok részletesen tárgyalják ezeket a szakaszokat.
 
 ### <a name="authentication-agent-installation"></a>Hitelesítési ügynök telepítése
 
-Csak a globális rendszergazdák hitelesítési ügynök (használatával telepítheti az Azure AD Connect vagy önálló) egy helyszíni kiszolgálón. Telepítés két új bejegyzést, hogy hozzáadja a **Vezérlőpult** > **programok** > **programok és szolgáltatások** lista:
-- A hitelesítési ügynök alkalmazás saját maga. Az alkalmazás fut a [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) jogosultságokkal.
-- A frissítési alkalmazás, amelynek a hitelesítési ügynök automatikus frissítéséhez. Az alkalmazás fut a [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) jogosultságokkal.
+Egy helyszíni kiszolgálón csak a globális rendszergazdák telepíthetnek hitelesítési ügynököt (Azure AD Connect vagy önálló használatával). A telepítő két új bejegyzést hoz létre a **vezérlőpulton** > **programok** > **programok és szolgáltatások** listájában:
+- Maga a hitelesítési ügynök alkalmazása. Ez az alkalmazás [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) jogosultságokkal fut.
+- A hitelesítési ügynök automatikus frissítéséhez használt Updater alkalmazás. Ez az alkalmazás [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) jogosultságokkal fut.
 
 ### <a name="authentication-agent-registration"></a>Hitelesítési ügynök regisztrációja
 
-A hitelesítési ügynök telepítése után kell az Azure ad-ben regisztrálja magát. Az Azure AD minden hitelesítési ügynök a biztonságos kommunikáció érdekében az Azure ad-vel használhat egyedi, a digitális-identity tanúsítványt rendeli hozzá.
+A hitelesítési ügynök telepítése után regisztrálnia kell magát az Azure AD-ben. Az Azure AD minden hitelesítési ügynököt egyedi, digitális identitású tanúsítvánnyal rendel, amelyet az Azure AD-vel való biztonságos kommunikációhoz használhat.
 
-A regisztrációs eljárást is összeköti a hitelesítési ügynök a bérlővel. Ez biztosítja, hogy Azure ad-ben tudja, hogy az adott hitelesítési ügynök-e az egyetlen, a bérlőhöz tartozó jelszó ellenőrzési kérések kezelésére jogosult. Ez az eljárás megismétlődik minden egyes új hitelesítési ügynök regisztrálását.
+A regisztrációs eljárás a Bérlővel is köti a hitelesítési ügynököt. Ez biztosítja, hogy az Azure AD tudja, hogy ez az adott hitelesítési ügynök az egyetlen jogosultsága a jelszó-ellenőrzési kérések kezelésére a bérlő számára. Ezt az eljárást minden egyes regisztrált új hitelesítési ügynök esetében meg kell ismételni.
 
-A hitelesítési ügynökök a következő lépések segítségével regisztrálhatják magukat az Azure ad-vel:
+A hitelesítési ügynökök a következő lépésekkel regisztrálhatják magukat az Azure AD-ben:
 
-![Az ügynök regisztrálása](./media/how-to-connect-pta-security-deep-dive/pta1.png)
+![Ügynök regisztrációja](./media/how-to-connect-pta-security-deep-dive/pta1.png)
 
-1. Azure ad-ben először kérelmez, hogy egy globális rendszergazda jelentkezzen be az Azure AD hitelesítő adataikkal. Bejelentkezés, során a hitelesítési ügynök szerez be egy hozzáférési jogkivonatot, amely képes használni a globális rendszergazda nevében.
-2. A hitelesítési ügynök ezután létrehoz egy kulcspárt: egy nyilvános kulcs és titkos kulcsot.
-    - A kulcspárt szokásos RSA 2048-bites titkosítás révén jön létre.
-    - A titkos kulcs a helyszíni kiszolgálón marad, ahol a hitelesítési ügynök található.
-3. A hitelesítési ügynök "regisztráció" kérelmet küld az Azure AD-HTTPS,-kapcsolaton keresztül a kérelem tartalmazza a következő összetevőkkel:
-    - A hozzáférési jogkivonat beszerzése az 1. lépésben.
-    - A 2. lépésben létrehozott nyilvános kulcsot.
-    - Tanúsítvány-aláírási kérelem (CSR-fájl vagy tanúsítványkérelem). Ehhez a kérelemhez érvényes digitális azonosító tanúsítvány, az Azure AD-t a hitelesítésszolgáltató (CA).
-4. Az Azure AD ellenőrzi a hozzáférési jogkivonatot a regisztrációs kérelem, és ellenőrzi, hogy a kérés érkezett egy globális rendszergazdától.
-5. Ezután az Azure AD jelentkezik, és a egy digitális identitásokat tanúsítványt küld vissza a hitelesítési ügynök.
-    - Az Azure ad-ben a legfelső szintű hitelesítésszolgáltató a tanúsítvány aláírására használatos. 
+1. Az Azure AD először kéri, hogy globális rendszergazda jelentkezzen be az Azure AD-be a hitelesítő adataival. A bejelentkezés során a hitelesítési ügynök olyan hozzáférési jogkivonatot vásárol, amelyet a globális rendszergazda nevében használhat fel.
+2. A hitelesítési ügynök Ezután létrehoz egy kulcspárt: egy nyilvános kulcsot és egy titkos kulcsot.
+    - A kulcspár a standard RSA 2048 bites titkosítással jön létre.
+    - A titkos kulcs abban a helyszíni kiszolgálón marad, ahol a hitelesítési ügynök található.
+3. A hitelesítési ügynök "regisztrációs" kérést küld az Azure AD-nak HTTPS-kapcsolaton keresztül, a kérelemben szereplő alábbi összetevőkkel:
+    - Az 1. lépésben megszerzett hozzáférési jogkivonat.
+    - A 2. lépésben létrehozott nyilvános kulcs.
+    - Tanúsítvány-aláírási kérelem (CSR vagy tanúsítványkérelem). Ez a kérelem egy digitális identitás tanúsítványára vonatkozik, az Azure AD-t pedig hitelesítésszolgáltatóként (CA).
+4. Az Azure AD érvényesíti a hozzáférési jogkivonatot a regisztrációs kérelemben, és ellenőrzi, hogy a kérés egy globális rendszergazdától származik-e.
+5. Az Azure AD ezután aláírja és elküldi a digitális identitás-tanúsítványt a hitelesítési ügynöknek.
+    - Az Azure AD legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja a tanúsítvány aláírására szolgál. 
 
       > [!NOTE]
-      > A hitelesítésszolgáltató _nem_ Windows megbízható legfelső szintű tanúsítványok tárolójában tárolja.
-    - A hitelesítésszolgáltató csak az átmenő hitelesítés szolgáltatást használják. A hitelesítésszolgáltató van csak aláírásához használt tanúsítvány-aláírási kérelmeinek a hitelesítési ügynök regisztrációja során.
-    -  A CA használja a további Azure AD-szolgáltatások egyike.
-    - A tanúsítvány tulajdonosának (megkülönböztető nevét vagy megkülönböztető) értéke a bérlő azonosítója. A DN-t egy GUID Azonosítót, amely egyedileg azonosítja a bérlő. A DN-t a tanúsítványt a bérlő csak a hatóköröket.
-6. Az Azure AD a hitelesítési ügynök nyilvános kulcsát egy Azure SQL database, amely hozzáféréssel rendelkezik az Azure AD csak tárolja.
-7. A Windows-tárolóban található a helyi kiszolgálón tárolja a tanúsítványát (5. lépésében) (a kifejezetten a [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) helye). A hitelesítési ügynök és a frissítési alkalmazások egyaránt szolgál.
+      > Ez a HITELESÍTÉSSZOLGÁLTATÓ _nem_ a Windows megbízható legfelső szintű hitelesítésszolgáltatók tárolójában található.
+    - A HITELESÍTÉSSZOLGÁLTATÓT csak a továbbított hitelesítés funkció használja. A HITELESÍTÉSSZOLGÁLTATÓ csak az ügyfélszolgálati munkatársak aláírására szolgál a hitelesítési ügynök regisztrációja során.
+    -  A többi Azure AD-szolgáltatás egyike sem használja ezt a HITELESÍTÉSSZOLGÁLTATÓT.
+    - A tanúsítvány tárgya (megkülönböztető név vagy DN) a bérlői AZONOSÍTÓra van beállítva. Ez a DN egy olyan GUID, amely egyedileg azonosítja a bérlőt. Ez a megkülönböztető név csak a bérlőhöz használható.
+6. Az Azure AD a hitelesítési ügynök nyilvános kulcsát egy Azure SQL Database-adatbázisban tárolja, amely csak az Azure AD számára érhető el.
+7. Az 5. lépésben kiadott tanúsítványt a Windows tanúsítványtárolóban (különösen a [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) helyen) tárolja a helyszíni kiszolgálón. Ezt a hitelesítési ügynök és a frissítési alkalmazások is használják.
 
 ### <a name="authentication-agent-initialization"></a>Hitelesítési ügynök inicializálása
 
-A hitelesítési ügynök indulásakor az első alkalommal egy kiszolgáló vagy regisztráció után indítsa újra, biztonságosan kommunikál az Azure AD szolgáltatással, és fogadja a kéréseket a jelszó érvényesítése elindításához szükséges.
+Ha a hitelesítési ügynök elindul, vagy a regisztráció után első alkalommal, vagy a kiszolgáló újraindítása után, az informatikai részlegnek képesnek kell lennie biztonságos kommunikációra az Azure AD szolgáltatással, és el kell fogadnia a jelszó-ellenőrzési kérelmeket.
 
-![Az ügynök inicializálása](./media/how-to-connect-pta-security-deep-dive/pta2.png)
+![Ügynök inicializálása](./media/how-to-connect-pta-security-deep-dive/pta2.png)
 
-Itt látható, milyen hitelesítési ügynökök inicializálva van:
+A hitelesítési ügynökök inicializálásának módja:
 
-1. A hitelesítési ügynök egy kimenő rendszerindítási kérelmet küld az Azure ad-hez. 
-    - A kérelem 443-as porton keresztül történik, és a egy kölcsönösen hitelesített csatornán keresztül. A kérelem a hitelesítési ügynök regisztrációja során korábban kiadott tanúsítványt használja.
-2. Az Azure AD válaszol a kérésre azáltal, hogy egy hozzáférési kulcsot az Azure Service Bus-üzenetsor, amely egyedinek és, amely azonosítja a bérlő azonosítója.
-3. A hitelesítési ügynök lehetővé teszi, hogy egy állandó kimenő HTTPS-kapcsolat (a 443-as porton) keresztül az üzenetsorba. 
-    - A hitelesítési ügynök jelszó-ellenőrzési kérések kezelésére és beolvashatók készen áll.
+1. A hitelesítési ügynök kimenő rendszerindítási kérelmet készít az Azure AD-nek. 
+    - Ez a kérelem az 443-as porton keresztül történik, és egy kölcsönösen hitelesített HTTPS-csatornán keresztül történik. A kérelem ugyanazt a tanúsítványt használja, amelyet a hitelesítési ügynök regisztrációja során adott ki.
+2. Az Azure AD válaszol a kérésre egy hozzáférési kulcs megadásával egy olyan Azure Service Bus üzenetsor számára, amely egyedi a bérlő számára, és amelyet a bérlő azonosítója azonosít.
+3. A hitelesítési ügynök állandó kimenő HTTPS-kapcsolaton (az 443-as porton keresztül) a várólistára helyezi. 
+    - A hitelesítési ügynök most már készen áll a jelszó-ellenőrzési kérések lekérésére és kezelésére.
 
-Ha több hitelesítési ügynök regisztrálva van a bérlőn, majd az inicializálási folyamatot biztosítja, hogy egyenként csatlakozik-e az azonos Service Bus-üzenetsorba. 
+Ha a bérlőn több hitelesítő ügynök van regisztrálva, akkor az inicializálási eljárás biztosítja, hogy mindegyik ugyanahhoz a Service Bus-várólistához kapcsolódjon. 
 
-## <a name="process-sign-in-requests"></a>Folyamat bejelentkezési kérelmek 
+## <a name="process-sign-in-requests"></a>Bejelentkezési kérelmek feldolgozása 
 
-Az alábbi ábrán látható, hogy az átmenő hitelesítés hogyan dolgozza fel a felhasználói bejelentkezési kérelmek.
+Az alábbi ábra bemutatja, hogyan dolgozza fel a felhasználói bejelentkezési kéréseket a továbbított hitelesítéssel.
 
 ![Bejelentkezési folyamat](./media/how-to-connect-pta-security-deep-dive/pta3.png)
 
-Az átmenő hitelesítés módon kezeli a felhasználói bejelentkezési kérelem: 
+Az átmenő hitelesítés a következő módon kezeli a felhasználó bejelentkezési kérelmét: 
 
-1. Egy felhasználó megpróbál hozzáférni egy alkalmazáshoz, például [Outlook Web App](https://outlook.office365.com/owa).
-2. Ha a felhasználó még nem jelentkezett be, az alkalmazás a böngésző átirányítja az Azure AD bejelentkezési oldal.
-3. Az Azure AD-STS szolgáltatás reagál a biztonsági másolatot a **felhasználói bejelentkezés** lapot.
-4. A felhasználó nem ír be a felhasználónevet a **felhasználói bejelentkezés** lapot, majd kiválasztja a **tovább** gombra.
-5. A felhasználó beírja a jelszavát, a **felhasználói bejelentkezés** lapot, majd kiválasztja a **bejelentkezési** gombra.
-6. A felhasználónév és jelszó egy HTTPS-POST-kérelmet az Azure AD STS elküldi.
-7. Azure AD STS kérdezi le a nyilvános kulcsok az Azure SQL database-ből a bérlő regisztrált hitelesítési ügynökök, és a jelszó titkosítja őket használatával.
-    - A bérlő regisztrált "N" hitelesítési ügynökök titkosított "N" jelszó értékeinek küld.
-8. Az Azure AD STS helyezi el a jelszó-érvényesítési kérése, amely a felhasználónév és a titkosított jelszót értékek, a Service Bus-üzenetsorba a bérlőjéhez tartozik az alakzatot áll.
-9. Az inicializált hitelesítési ügynökök tartósan csatlakozott a Service Bus-üzenetsorba, mert a rendelkezésre álló hitelesítési ügynökök egyike a jelszó-érvényesítési kérése kérdezi le.
-10. A hitelesítési ügynök megkeresi a titkosított jelszót érték, amely csak a saját nyilvános kulcsát egy azonosító használatával, és visszafejti őket a hozzá tartozó titkos kulcs használatával.
-11. A hitelesítési ügynök próbál ellenőrizze a felhasználónevet és jelszót a helyi Active Directorybeli. Ehhez használja a [Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) együtt a **dwLogonType** paraméterkészlet a**LOGON32_LOGON_NETWORK**. 
-    - Az API-t az azonos API-t, amelyet az Active Directory összevonási szolgáltatások (AD FS) a felhasználók az összevont bejelentkezési forgatókönyvek esetében.
-    - Az API-t a keresse meg a tartományvezérlő Windows Server standard névfeloldási folyamat támaszkodik.
-12. A hitelesítési ügynök az eredményt kap az Active Directory, például a sikeres, a felhasználónév vagy jelszó helytelen, vagy a jelszó lejárt.
+1. Egy felhasználó megpróbál elérni egy alkalmazást, például az [Outlook Web App](https://outlook.office365.com/owa)alkalmazást.
+2. Ha a felhasználó még nem jelentkezett be, az alkalmazás átirányítja a böngészőt az Azure AD bejelentkezési oldalára.
+3. Az Azure AD STS szolgáltatás visszaválaszol a **felhasználó bejelentkezési** oldalára.
+4. A felhasználó beírja a felhasználónevét a **felhasználói bejelentkezési** oldalra, majd kiválasztja a **tovább** gombot.
+5. A felhasználó beírja a jelszavát a **felhasználói bejelentkezési** oldalra, majd kiválasztja a **Bejelentkezés** gombot.
+6. A felhasználónevet és a jelszót egy HTTPS POST-kérelemben küldi el a rendszer az Azure AD STS-nek.
+7. Az Azure AD STS lekéri a nyilvános kulcsokat a bérlőn regisztrált összes hitelesítési ügynök számára az Azure SQL Database-ből, és titkosítja a jelszót a használatával.
+    - "N" titkosított jelszavas értékeket hoz létre a bérlőn regisztrált "N" hitelesítési ügynökök számára.
+8. Az Azure AD STS elhelyezi a jelszó-ellenőrzési kérelmet, amely a felhasználónevet és a titkosított jelszó értékét tartalmazza a bérlőre jellemző Service Bus várólistára.
+9. Mivel a inicializált hitelesítési ügynökök tartósan csatlakoztatva vannak a Service Bus-várólistához, az egyik rendelkezésre álló hitelesítési ügynök lekéri a jelszó-ellenőrzési kérelmet.
+10. A hitelesítési ügynök megkeresi a titkosított jelszó értékét, amely a nyilvános kulcsra vonatkozik, azonosító használatával, majd visszafejti azt a titkos kulcs használatával.
+11. A hitelesítési ügynök megkísérli érvényesíteni a felhasználónevet és a jelszót a helyszíni Active Directory a [Win32 LOGONUSER API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) és a **dwLogonType** paraméter **LOGON32_LOGON_NETWORK**értékre állításával. 
+    - Ez az API ugyanaz az API, amelyet a Active Directory összevonási szolgáltatások (AD FS) (AD FS) használ a felhasználók bejelentkezésére egy összevont bejelentkezési forgatókönyvben.
+    - Ez az API a Windows Server standard megoldási folyamatán alapul a tartományvezérlő megkereséséhez.
+12. A hitelesítési ügynök megkapja a Active Directory eredményét, például a sikeres, a Felhasználónév vagy a jelszó helytelen, vagy a jelszó lejárt.
 
    > [!NOTE]
-   > Ha a hitelesítési ügynök nem sikerül, a bejelentkezési folyamat során, a bejelentkezési teljes kérelem eseményértesítése eldobva. Nincs az aktuális ki a bejelentkezési kérelmek egy hitelesítési ügynök egy másik hitelesítési ügynök a helyi van. Ezeket az ügynököket csak kommunikálhat a felhőben, és nem állnak egymással.
-13. A hitelesítési ügynök továbbítja az eredmény vissza az Azure ad-ben STS egy kölcsönösen hitelesített kimenő HTTPS-csatornán keresztül 443-as porton keresztül. Kölcsönös hitelesítést a regisztráció során a hitelesítési ügynök korábban kiadott tanúsítványt használ.
-14. Az Azure AD STS ellenőrzi, hogy ez az eredmény az adott bejelentkezési kérés a bérlő utal.
-15. Az Azure AD STS továbbra is a bejelentkezési művelet konfigurálva. Például, ha a jelszó érvényesítése sikeres volt, a felhasználó előfordulhat, hogy lehet merül fel a multi-factor Authentication vagy átirányítódik az alkalmazásba.
+   > Ha a hitelesítési ügynök meghibásodik a bejelentkezési folyamat során, a rendszer elveti a teljes bejelentkezési kérést. Az egyik hitelesítési ügynöktől érkező bejelentkezési kérelmeket nem lehet letiltani a helyszínen egy másik hitelesítési ügynöknek. Ezek az ügynökök csak a felhővel kommunikálnak, és nem egymással.
+   
+13. A hitelesítési ügynök a 443-as porton keresztül továbbítja az eredményt az Azure AD STS-nek egy kimenő, kölcsönösen hitelesített HTTPS-csatornán keresztül. A kölcsönös hitelesítés a korábban a hitelesítési ügynök számára kiállított tanúsítványt használja a regisztráció során.
+14. Az Azure AD STS ellenőrzi, hogy ez az eredmény összefügg-e a bérlőn megadott bejelentkezési kéréssel.
+15. Az Azure AD STS a bejelentkezési eljárással folytatja a konfigurálást. Ha például a jelszó ellenőrzése sikeres volt, előfordulhat, hogy a felhasználót Multi-Factor Authentication vagy átirányítják az alkalmazáshoz.
 
-## <a name="operational-security-of-the-authentication-agents"></a>A hitelesítési ügynökök működési biztonság
+## <a name="operational-security-of-the-authentication-agents"></a>A hitelesítési ügynökök működési biztonsága
 
-Annak érdekében, hogy az átmenő hitelesítés működés közben biztonságban maradjon, rendszeres időközönként az Azure AD hitelesítési ügynökök tanúsítványok megújítása. Azure ad-ben a megújításhoz aktivál. A megújítás nem vonatkoznak rájuk a hitelesítési ügynökök magukat.
+Annak biztosítása érdekében, hogy az átmenő hitelesítés működése zavartalan maradjon, az Azure AD rendszeresen megújítja a hitelesítési ügynökök tanúsítványait. Az Azure AD elindítja a megújításokat. A megújítás nem vonatkozik magukra a hitelesítési ügynökökre.
 
 ![Működési biztonság](./media/how-to-connect-pta-security-deep-dive/pta4.png)
 
-Az Azure AD-hitelesítési ügynök megbízhatósági megújítása:
+A hitelesítési ügynök megbízhatóságának megújítása az Azure AD-vel:
 
-1. A hitelesítési ügynök pingeli rendszeres időközönként az Azure AD-e a tanúsítvány megújításához idő néhány óránként. A tanúsítvány van újítani a lejárata előtt 30 nappal.
-    - Ez az ellenőrzés kölcsönösen hitelesített HTTPS-csatornán keresztül történik, és a regisztráció során korábban kiadott tanúsítványt használja.
-2. Ha a szolgáltatás jelzi, hogy újítsa meg időt, a hitelesítési ügynök új kulcspárt generál: egy nyilvános kulcs és titkos kulcsot.
-    - Ezek a kulcsok akkor jönnek létre standard RSA 2048-bites titkosítás révén.
-    - A titkos kulcs sosem hagyja el a helyileg működtetett kiszolgálón.
-3. A hitelesítési ügynök majd "Tanúsítványmegújítás" kérelmet küld az Azure AD HTTPS,-kapcsolaton keresztül a kérelem tartalmazza a következő összetevőkkel:
-    - A meglévő tanúsítvány CERT_SYSTEM_STORE_LOCAL_MACHINE helye az a Windows-tanúsítványtároló lekért. Nincs nem globális rendszergazda részt vesz ebben az eljárásban így nincs szükség a globális rendszergazda nevében hozzáférési jogkivonatot.
-    - A 2. lépésben létrehozott nyilvános kulcsot.
-    - Tanúsítvány-aláírási kérelem (CSR-fájl vagy tanúsítványkérelem). A kérelem egy új digitális identitásokat tanúsítványt, az Azure ad-vel, a hitelesítésszolgáltató vonatkozik.
-4. Az Azure AD ellenőrzi a meglévő tanúsítványt a tanúsítványmegújítási kérelem végrehajtását. Majd ellenőrzi, hogy a kérés érkezett egy hitelesítési ügynök regisztrálva van a bérlőn.
-5. Ha a meglévő tanúsítvány még érvényes, az Azure AD új digitális identitásokat tanúsítvány aláírja, majd az új tanúsítványt állít vissza a hitelesítési ügynök. 
-6. Ha a meglévő tanúsítvány lejárt, Azure ad-ben regisztrált hitelesítési ügynökök listája a bérlő a hitelesítési ügynök törli. Majd egy globális rendszergazdának kell manuálisan telepíteni és regisztrálni egy új hitelesítési ügynök.
-    - Az Azure ad-ben legfelső szintű hitelesítésszolgáltató segítségével aláírja a tanúsítványt.
-    - A tanúsítvány tulajdonosának (megkülönböztető nevét vagy megkülönböztető) beállítása a bérlő azonosítója, egy GUID Azonosítót, amely egyedileg azonosítja a bérlőn. A DN hatóköröket a tanúsítványt csak az bérlőhöz.
-6. Az Azure AD az új nyilvános kulcsot a hitelesítési ügynök, amely hozzáféréssel rendelkezik, csak az Azure SQL-adatbázisban tárolja. Azt is a régi nyilvános kulcsot, a hitelesítési ügynök társított érvényteleníti.
-7. Az új tanúsítvány (tulajdonos 5. lépésében) majd tárolja a Windows-tárolóban található a kiszolgálón (a kifejezetten a [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) helye).
-    - A bizalmi kapcsolat megújítási eljárás nem interaktív (a globális rendszergazda jelenléte) nélkül történik, mert a hitelesítési ügynök már nincs hozzáférés CERT_SYSTEM_STORE_LOCAL_MACHINE a helyen a meglévő tanúsítvány frissítéséhez. 
+1. A hitelesítési ügynök időnként Pingeli az Azure AD-t néhány óránként, hogy ellenőrizze, van-e ideje a tanúsítvány megújítására. A tanúsítvány megújítása a lejárat előtt 30 nappal történik.
+    - Ez az ellenőrzés kölcsönösen hitelesített HTTPS-csatornán keresztül történik, és ugyanazt a tanúsítványt használja, amelyet a regisztráció során adott ki.
+2. Ha a szolgáltatás azt jelzi, hogy ideje megújítani a szolgáltatást, a hitelesítési ügynök létrehoz egy új kulcspárt: egy nyilvános kulcsot és egy titkos kulcsot.
+    - Ezek a kulcsok a standard RSA 2048 bites titkosítással jönnek létre.
+    - A titkos kulcs soha nem hagyja el a helyszíni kiszolgálót.
+3. A hitelesítési ügynök ezután a "tanúsítvány megújítása" kérést küld az Azure AD-nak HTTPS-kapcsolaton keresztül, a kérelemben szereplő következő összetevőkkel:
+    - A meglévő, a Windows tanúsítványtárolóban található CERT_SYSTEM_STORE_LOCAL_MACHINE helyről beolvasott tanúsítvány. Ebben az eljárásban nincs olyan globális rendszergazda, amely a globális rendszergazda nevében nem igényel hozzáférési jogkivonatot.
+    - A 2. lépésben létrehozott nyilvános kulcs.
+    - Tanúsítvány-aláírási kérelem (CSR vagy tanúsítványkérelem). Ez a kérelem egy új digitális azonosító tanúsítványra vonatkozik, az Azure AD-t pedig hitelesítésszolgáltatóként.
+4. Az Azure AD a tanúsítvány megújítására vonatkozó kérelemben ellenőrzi a meglévő tanúsítványt. Ezután ellenőrzi, hogy a kérelem érkezett-e a bérlőn regisztrált hitelesítési ügynöktől.
+5. Ha a meglévő tanúsítvány még érvényes, az Azure AD aláír egy új digitális identitás-tanúsítványt, és visszaállítja az új tanúsítványt a hitelesítési ügynöknek. 
+6. Ha a meglévő tanúsítvány lejárt, az Azure AD törli a hitelesítési ügynököt a bérlő regisztrált hitelesítési ügynökök listájáról. Ezután a globális rendszergazdának manuálisan kell telepítenie és regisztrálnia egy új hitelesítési ügynököt.
+    - A tanúsítvány aláírásához használja az Azure AD legfelső szintű HITELESÍTÉSSZOLGÁLTATÓját.
+    - Állítsa be a tanúsítvány tulajdonosát (megkülönböztető név vagy DN) a bérlői AZONOSÍTÓra, amely egyedi módon azonosítja a bérlőt. A DN a tanúsítványt csak a bérlőre vonatkozik.
+6. Az Azure AD a hitelesítési ügynök új nyilvános kulcsát egy olyan Azure SQL Database-adatbázisban tárolja, amelyhez csak hozzáfér. A hitelesítési ügynökhöz társított régi nyilvános kulcsot is érvényteleníti.
+7. A rendszer ezután az új, az 5. lépésben kiadott tanúsítványt tárolja a kiszolgálón a Windows tanúsítványtárolóban (kifejezetten a [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) helyen).
+    - Mivel a megbízhatóság megújítási eljárása nem interaktív módon történik (a globális rendszergazda jelenléte nélkül), a hitelesítési ügynök már nem fér hozzá a meglévő tanúsítvány frissítéséhez a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen. 
     
    > [!NOTE]
-   > Ez az eljárás nem távolítja el maga a tanúsítvány a CERT_SYSTEM_STORE_LOCAL_MACHINE helyről.
-8. Az új tanúsítványt a ezen a ponton történő hitelesítéshez használatos. Minden ezt követő a tanúsítvány megújítása a tanúsítvány CERT_SYSTEM_STORE_LOCAL_MACHINE helyen váltja fel.
+   > Ez az eljárás nem távolítja el magát a tanúsítványt a CERT_SYSTEM_STORE_LOCAL_MACHINE helyről.
+8. Az új tanúsítvány erre a pontra történő hitelesítésre szolgál. A tanúsítvány minden későbbi megújítása lecseréli a tanúsítványt a CERT_SYSTEM_STORE_LOCAL_MACHINE helyen.
 
 ## <a name="auto-update-of-the-authentication-agents"></a>A hitelesítési ügynökök automatikus frissítése
 
-A frissítési kérelem automatikusan frissíti a hitelesítési ügynök, amikor egy új (a hibajavításokat és teljesítményt érintő továbbfejlesztés) verziója. A frissítési kérelem nem kezeli a jelszó érvényesítése kérések a bérlő számára.
+A Updater alkalmazás automatikusan frissíti a hitelesítési ügynököt, ha a rendszer új verziót (hibajavításokat vagy teljesítménynövelő javításokat) szabadít fel. A Updater alkalmazás nem kezeli a bérlőhöz tartozó jelszó-ellenőrzési kérelmeket.
 
-Azure ad-ben üzemelteti az új verziót, a szoftver egy aláírt **Windows Installer-csomagot (MSI)** . Az MSI használatával legyen aláírva [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) az SHA256 titkosítást, kivonatoló algoritmus. 
+Az Azure AD a szoftver új verzióját aláírt **Windows Installer csomagként (MSI)** üzemelteti. Az MSI a [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) és a sha256 használatával van aláírva kivonatoló algoritmusként. 
 
-![Az automatikus frissítés](./media/how-to-connect-pta-security-deep-dive/pta5.png)
+![Automatikus frissítés](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
-Az automatikus frissítés hitelesítési ügynök:
+Hitelesítési ügynök automatikus frissítése:
 
-1. A frissítési kérelem pingelésre. az Azure AD minden órában, ellenőrizze, hogy van-e a hitelesítési ügynök új verziója érhető el. 
-    - Ezt az ellenőrzést a regisztráció során korábban kiadott ugyanazt a tanúsítványt egy kölcsönösen hitelesített HTTPS-csatornán keresztül történik. A hitelesítési ügynök és a frissítési ossza meg a kiszolgálón tárolt tanúsítvány.
-2. Ha új verzió érhető el, az Azure AD az aláírt MSI térjen vissza a frissítési adja vissza.
-3. A frissítési ellenőrzi, hogy az MSI azt a Microsoft aláírta.
-4. A frissítési az MSI futtatja. Ez a művelet a következő lépésekből áll:
+1. A frissítési alkalmazás minden órában Pingeli az Azure AD-t, hogy ellenőrizze, elérhető-e a hitelesítési ügynök új verziója. 
+    - Ez az ellenőrzés kölcsönösen hitelesített HTTPS-csatornán végezhető el ugyanazzal a tanúsítvánnyal, amelyet a regisztráció során bocsátottak ki. A hitelesítési ügynök és a Updater megosztja a kiszolgálón tárolt tanúsítványt.
+2. Ha új verzió érhető el, az Azure AD visszaküldi az aláírt MSI-t a frissítéshez.
+3. A Updater ellenőrzi, hogy a Microsoft aláírta-e az MSI-t.
+4. A Updater futtatja az MSI-t. Ez a művelet a következő lépéseket foglalja magában:
 
    > [!NOTE]
-   > Futtatja a frissítési [helyi rendszer](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) jogosultságokkal.
+   > A Updater [helyi](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) rendszerjogosultságokkal fut.
 
     - A hitelesítési ügynök szolgáltatás leállítása
-    - A hitelesítési ügynök új verzióját telepíti a kiszolgálóra
-    - A hitelesítési ügynök szolgáltatás újraindítása
+    - Telepíti a hitelesítési ügynök új verzióját a kiszolgálón
+    - Újraindítja a hitelesítési ügynök szolgáltatását
 
 >[!NOTE]
->Ha a bérlő regisztrált több hitelesítési ügynök, az Azure AD nem megújítani tanúsítványaikat, és egyszerre frissíteni őket. Ehelyett az Azure AD végzi, egyenként a bejelentkezési kérelmek magas rendelkezésre állásának biztosításához.
+>Ha több hitelesítő ügynök van regisztrálva a bérlőn, az Azure AD nem újítja meg a tanúsítványait, vagy nem frissíti őket egyszerre. Ehelyett az Azure AD a bejelentkezési kérések magas rendelkezésre állásának biztosítása érdekében egyszerre tesz elérhetővé.
 >
 
 
-## <a name="next-steps"></a>További lépések
-- [Aktuális korlátozások](how-to-connect-pta-current-limitations.md): Ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
-- [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md): Első lépésekhez az Azure AD átmenő hitelesítés.
-- [Az AD FS át az átmenő hitelesítés](https://aka.ms/adfstoptadpdownload) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
-- [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md): Az intelligens zárolás funkciót konfigurálhatja a bérlő felhasználói fiókok védelmét.
-- [Hogyan működik](how-to-connect-pta-how-it-works.md): Alapismeretek a Mobilfunkciók Azure AD átmenő hitelesítés működéséről.
-- [Gyakori kérdések](how-to-connect-pta-faq.md): Válaszok a gyakori kérdésekre.
-- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): Ismerje meg az átmenő hitelesítés szolgáltatás szolgáltatással kapcsolatos gyakori problémák megoldásához.
-- [Az Azure AD közvetlen egyszeri bejelentkezés](how-to-connect-sso.md): További információ a kiegészítő funkció.
+## <a name="next-steps"></a>Következő lépések
+- [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
+- [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
+- [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoptadpdownload) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
+- [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): konfigurálja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
+- [Hogyan működik](how-to-connect-pta-how-it-works.md): megismerheti az Azure ad átmenő hitelesítés működésének alapjait.
+- [Gyakori](how-to-connect-pta-faq.md)kérdések: válaszok keresése a gyakori kérdésekre.
+- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): megtudhatja, Hogyan oldhatók fel az áteresztő hitelesítési szolgáltatással kapcsolatos gyakori problémák.
+- [Azure ad – zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso.md): További információ erről a kiegészítő funkcióról.
