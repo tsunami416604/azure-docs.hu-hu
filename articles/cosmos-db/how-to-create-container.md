@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9805ff9aa4932c262db13c47fd2e442b3d3d676f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 911f56cef58e5d9c161a3ba947850bcfff073200
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811729"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242405"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos-tároló létrehozása
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 ### <a id="portal-sql"></a>SQL API
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-sql-api-dotnet.md#create-account), vagy válasszon ki egy meglévő fiókot.
 
@@ -37,7 +37,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 ### <a id="portal-mongodb"></a>MongoDB Azure Cosmos DB API
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-mongodb-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
@@ -53,7 +53,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 ### <a id="portal-cassandra"></a>Cassandra API
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-cassandra-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
@@ -72,7 +72,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 ### <a id="portal-gremlin"></a>Gremlin API
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-graph-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
@@ -89,7 +89,7 @@ Ez a cikk az Azure Cosmos-tárolók (gyűjtemény, tábla vagy gráf) létrehoz�
 
 ### <a id="portal-table"></a>Table API
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. [Hozzon létre egy új Azure Cosmos-fiókot](create-table-dotnet.md#create-a-database-account), vagy válasszon ki egy meglévő fiókot.
 
@@ -111,10 +111,10 @@ Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB táro
 Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](cli-samples.md), [CASSANDRA API](cli-samples-cassandra.md), [MongoDB api](cli-samples-mongodb.md), [Gremlin API](cli-samples-gremlin.md)és [Table API](cli-samples-table.md)
 
 * [Tároló létrehozása az Azure CLI-vel](manage-with-cli.md#create-a-container)
-* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz az Azure CLI-vel](/scripts/cli/mongodb/create.md)
-* [Cassandra-tábla létrehozása az Azure CLI-vel](/scripts/cli/cassandra/create.md)
-* [Gremlin gráf létrehozása az Azure CLI-vel](/scripts/cli/gremlin/create.md)
-* [Table API tábla létrehozása az Azure CLI-vel](/scripts/cli/table/create.md)
+* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz az Azure CLI-vel](./scripts/cli/mongodb/create.md)
+* [Cassandra-tábla létrehozása az Azure CLI-vel](./scripts/cli/cassandra/create.md)
+* [Gremlin gráf létrehozása az Azure CLI-vel](./scripts/cli/gremlin/create.md)
+* [Table API tábla létrehozása az Azure CLI-vel](./scripts/cli/table/create.md)
 
 ## Tároló létrehozása a PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"> használatával<a id="ps-table"></a>
 
@@ -123,10 +123,10 @@ Az alábbi hivatkozások bemutatják, hogyan hozhat létre Azure Cosmos DB táro
 Az összes Azure Cosmos DB API-val kapcsolatos összes Azure CLI-minta listáját lásd: [SQL API](powershell-samples-sql.md), [CASSANDRA API](powershell-samples-cassandra.md), [MongoDB api](powershell-samples-mongodb.md), [Gremlin API](powershell-samples-gremlin.md)és [Table API](powershell-samples-table.md)
 
 * [Tároló létrehozása a PowerShell-lel](manage-with-powershell.md#create-container)
-* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](/scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Cassandra-tábla létrehozása a PowerShell-lel](/scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Gremlin gráf létrehozása a PowerShell-lel](/scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Table API tábla létrehozása a PowerShell-lel](/scripts/powershell/table/ps-table-create.md)
+* [Azure Cosmos DB gyűjtemény létrehozása a MongoDB API-hoz a PowerShell-lel](./scripts/powershell/mongodb/ps-mongodb-create.md)
+* [Cassandra-tábla létrehozása a PowerShell-lel](./scripts/powershell/cassandra/ps-cassandra-create.md)
+* [Gremlin gráf létrehozása a PowerShell-lel](./scripts/powershell/gremlin/ps-gremlin-create.md)
+* [Table API tábla létrehozása a PowerShell-lel](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Tároló létrehozása .NET SDK használatával
 
@@ -164,7 +164,7 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

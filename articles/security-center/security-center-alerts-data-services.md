@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202584"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244565"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Veszélyforrások észlelése a Azure Security Center adatszolgáltatásaiban
 
@@ -27,7 +27,7 @@ ms.locfileid: "71202584"
 
 ## SQL Database és SQL Data Warehouse<a name="data-sql"></a>
 
-Az SQL-veszélyforrások észlelése olyan rendellenes tevékenységeket azonosít, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához Security Center elemzi az SQL-naplókat, és natív módon futtatja az SQL-motorban.
+Az SQL-veszélyforrások észlelése olyan rendellenes tevékenységeket azonosít, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához 
 
 |Riasztás|Leírás|
 |---|---|

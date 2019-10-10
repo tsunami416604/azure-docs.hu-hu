@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 40b3e0260e08ab5a8870c726042d06d80393fb15
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2c198ce8af17912d3174269b6cced96b5c1ac8bd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849082"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243235"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>A mobilalkalmazás elemzésének első lépései az App Center és az Application Insights használatával
 
@@ -30,6 +30,9 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 - iOS-, Android-, Xamarin-, Univerzális Windows- vagy React Native-alkalmazás.
  
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+
+## <a name="sign-up-with-app-center"></a>Regisztráció App Center
+A kezdéshez hozzon létre egy fiókot, és [regisztráljon a app Center](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
 
 ## <a name="onboard-to-app-center"></a>Az App Center előkészítése
 
@@ -67,7 +70,7 @@ Ha meg szeretne győződni arról, hogy az App Center fogadja az egyéni esemén
 
 Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket az eseményeket, létre kell hoznia egy App Center-típusú Application Insights-erőforrást az Azure Portalon:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
     > [!NOTE]
@@ -75,13 +78,13 @@ Ha az alkalmazás egyéni eseményeket küld, és az App Center fogadja ezeket a
 
     Megjelenik egy konfigurációs képernyő. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblázatot.
 
-    | Beállítások        |  Value           | Leírás  |
+    | Beállítások        |  Value (Díj)           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name**      | Néhány globálisan egyedi érték, például „myApp-iOS” | A figyelt alkalmazást azonosító név |
+   | **Name (Név)**      | Néhány globálisan egyedi érték, például „myApp-iOS” | A figyelt alkalmazást azonosító név |
      | **Erőforráscsoport**     | Egy új erőforráscsoport, vagy egy meglévő a menüből | Az erőforráscsoport, amelyben létrehozza az új Application Insights-erőforrást |
-   | **Location** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
+   | **Hely** | Egy hely a menüből | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-3. Kattintson a **Create** (Létrehozás) gombra.
+3. Kattintson a  **Create** (Létrehozás) gombra.
 
 Ha az alkalmazás több platformot (iOS, Android stb.) támogat, érdemes minden platform számára külön Application Insights-erőforrást létrehozni.
 
@@ -164,7 +167,7 @@ Az Application Insights-erőforrás törlése:
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd válassza ki az erőforráscsoportot, amelyben az Application Insights-erőforrás létrejött.
 2. Nyissa meg a törölni kívánt Application Insights-erőforrást. Kattintson a **Törlés** gombra az erőforrás felső menüjében, és hagyja jóvá. Ez véglegesen törölni fogja az adatok Application Insightsba exportált másolatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan használják az ügyfelek az alkalmazást](../../azure-monitor/app/usage-overview.md)

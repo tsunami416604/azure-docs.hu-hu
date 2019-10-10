@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: 78702b52b1a5c490bfd6273c3f4e575c6e3c20fb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 78a73e687d653998cf4e641c216f383474dcc8bd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969615"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244456"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -31,9 +31,9 @@ Válassza az **+ új ajánlat** gombot, majd válassza a **Dynamics 365 Business
 
 ### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
 
-- **Ajánlat azonosítója**: A fiókban lévő egyes ajánlatok egyedi azonosítója. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nem tartalmazhat szóközt), legfeljebb 50 karakter hosszúságú lehet, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe a következő lesz: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében, és Azure Resource Manager sablonokat (ha vannak ilyenek). Az ajánlat AZONOSÍTÓjának kisbetűs alfanumerikus karakternek kell lennie (beleértve a kötőjeleket és az aláhúzásokat, de nem tartalmazhat szóközt), legfeljebb 50 karakter hosszúságú lehet, és a **Létrehozás**gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe a következő lesz: `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
-- **Ajánlat aliasa**: A partner centeren belüli ajánlatra való hivatkozáshoz használt név. Ez a név nem lesz használatban a piactéren, és nem egyezik meg az ajánlat nevével és más értékekkel, amelyek megjelennek az ügyfeleknek. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
+- **Ajánlat aliasa**: az ajánlatnak a partner Centerben való hivatkozásához használt név. Ez a név nem lesz használatban a piactéren, és nem egyezik meg az ajánlat nevével és más értékekkel, amelyek megjelennek az ügyfeleknek. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
 
 Miután megtörtént az **ajánlat-azonosító** és az **ajánlati alias**megadása, válassza a **Létrehozás**lehetőséget. Ezt követően az ajánlat különböző részein dolgozhat.
 
@@ -56,7 +56,7 @@ Az ajánlat az ingyenes próbaverzióra mutató hivatkozással listázhatja az �
 > [!NOTE]
 > Az alkalmazás által a próbaverziós hivatkozáson keresztül fogadott jogkivonatok csak Azure Active Directory (Azure AD) használatával szerezhetik be a felhasználói adatokat, hogy automatizálják a fiókok létrehozását az alkalmazásban. A Microsoft-fiókok nem támogatottak a jogkivonat használatával történő hitelesítéshez.
 
-#### <a name="contact-me"></a>Kapcsolatfelvétel
+#### <a name="contact-me"></a>Megkeresést kérek
 
 Az Ügyfélkapcsolat-kezelési (CRM) rendszer csatlakoztatásával Gyűjtse össze az ügyfelek kapcsolattartási adatait. A rendszer engedélyt kér az ügyféltől az információk megosztására. Az ügyfél adatait, valamint az ajánlat nevét, AZONOSÍTÓját és Piactéri forrását, ahol az ajánlat megtalálható, a rendszer elküldi a konfigurált CRM-rendszernek. A CRM konfigurálásával kapcsolatos további információkért lásd: az [érdeklődők felügyeletének összekötése](#connect-lead-management). 
 
@@ -70,12 +70,12 @@ A tesztelési meghajtó engedélyezéséhez jelölje be a **tesztvezetés enged�
 
 Válasszon a következő lehetőségek közül:
 
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Egy központi telepítési sablon, amely tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : A Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve a kiépítést és az üzembe helyezést is) egy üzleti központi vállalati erőforrás-tervezési rendszerhez (pénzügy, műveletek, ellátási lánc, CRM stb.).  
-- **[Dynamics 365 a Customer engagement szolgáltatáshoz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : A Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve a kiépítést és az üzembe helyezést is) az ügyfél-engagement rendszer számára (értékesítés, szolgáltatás, projekt szolgáltatás, mező szolgáltatás stb.).  
-- **[A Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : A Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve a kiépítést és az üzembe helyezést is) pénzügyi és üzemeltetési vállalati erőforrás-tervezési rendszerekhez (pénzügy, műveletek, gyártás, ellátási lánc stb.). 
-- **[Logikai alkalmazás](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Egy központi telepítési sablon, amely magában foglalja az összes összetett megoldás architektúráját. Minden egyéni terméknek ilyen típusú tesztelési meghajtót kell használnia.
-- **[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : Egy egyéni beépített irányítópultra mutató beágyazott hivatkozás. Azok a termékek, amelyek interaktív Power BI vizualizációt kívánnak bizonyítani, ezt a típusú tesztelési meghajtót kell használniuk. Itt a beágyazott Power BI URL-címére kell feltöltenie.
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : egy központi telepítési sablon, amely tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják.
+- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve az üzembe helyezést és a telepítést is) egy üzleti központi vállalati erőforrás-tervezési rendszerhez (pénzügy, műveletek, ellátási lánc, CRM stb.).  
+- **[Dynamics 365 az ügyfelek](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** bevonásához: a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve az üzembe helyezést és a telepítést is) az ügyfél-engagement rendszer (értékesítés, szolgáltatás, projekt szolgáltatás, mező szolgáltatás stb.) számára.  
+- **[Dynamics 365 for Operations](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : a Microsoft üzemelteti és karbantartja a test Drive szolgáltatást (beleértve a kiépítést és az üzembe helyezést) pénzügyi és üzemeltetési vállalati erőforrás-tervezési rendszerekhez (pénzügy, műveletek, gyártás, ellátási lánc stb.). 
+- **[Logikai alkalmazás](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : egy központi telepítési sablon, amely az összes összetett megoldás-architektúrát magában foglalja. Minden egyéni terméknek ilyen típusú tesztelési meghajtót kell használnia.
+- **[Power bi](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : beágyazott hivatkozás egy egyéni kialakítású irányítópultra. Azok a termékek, amelyek interaktív Power BI vizualizációt kívánnak bizonyítani, ezt a típusú tesztelési meghajtót kell használniuk. Itt a beágyazott Power BI URL-címére kell feltöltenie.
 
 #### <a name="additional-test-drive-resources"></a>További tesztelési meghajtó erőforrásai
 
@@ -85,17 +85,17 @@ Válasszon a következő lehetőségek közül:
 
 ## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 További információ: az [ólom kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md).
 
 Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Tulajdonságok
 
 A **Tulajdonságok** lapon megadhatja az ajánlatnak a piactéren, az alkalmazás verzióját és az ajánlatát támogató jogi szerződések alapján csoportosítani kívánt kategóriákat és iparágakat. A lap befejezése után válassza a **Mentés** lehetőséget.
 
-### <a name="category"></a>Category
+### <a name="category"></a>Kategória
 
 Válasszon ki legalább egyet, és legfeljebb három kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területeire való elhelyezésére szolgálnak. Ügyeljen arra, hogy az ajánlat leírásában ne adja meg, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. 
 
@@ -130,7 +130,7 @@ Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, k�
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -173,7 +173,7 @@ Adja meg azt az URL-címet, ahol az ügyfelek többet tudnak nyújtani az ajánl
 
 Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
 
-### <a name="contacts"></a>Névjegyek
+### <a name="contacts"></a>Kapcsolatok
 
 Ebben a szakaszban meg kell adnia egy **támogatási kapcsolattartó** nevét, e-mail-címét és telefonszámát, valamint egy **mérnöki kapcsolattartót**. Ez az információ nem jelenik meg az ügyfelek számára, de a Microsoft számára elérhetővé válik, és a CSP-partnerek számára is biztosítható.
 
@@ -189,9 +189,9 @@ Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az 
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
-Adja meg az ajánlat emblémáját két méretben: **Kicsi (48 x 48)** és **nagyméretű (216 x 216)** .
+Adja meg az ajánlat emblémáját két méretben: **kis (48 x 48)** és **nagyméretű (216 x 216)** .
 
-#### <a name="hero"></a>Fő kép
+#### <a name="hero"></a>Hero
 
 A hős képe nem kötelező. Ha megadja az egyiket, a 815 x 290 képpont értéket kell mérnie.
 
@@ -207,7 +207,7 @@ Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezek
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 A **rendelkezésre állás** lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
@@ -238,10 +238,10 @@ A **technikai konfiguráció** lap az ajánlathoz való kapcsolódáshoz haszná
 
 Válassza ki az ajánlathoz tartozó beállítást:
 
-- **Hozzáadás a**következőn: A kiegészítő alkalmazások kibővítik a Dynamics 365 Business Central funkcióit és a meglévő funkciókat. További információ: [kiegészítő alkalmazások](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
-- **Kapcsolat**: A kapcsolódási alkalmazás abban az esetben használható, ha a Dynamics 365 Business Central és egy harmadik féltől származó megoldás vagy szolgáltatás között pont-pont típusú kapcsolatot kell létrehozni. További információ: [kapcsolat](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps).
+- **Hozzáadás a**következőhöz: egy kiegészítő alkalmazás bővíti a fejlesztést és a Dynamics 365 Business Central meglévő funkcióit. További információ: [kiegészítő alkalmazások](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-add-on-apps).
+- **Kapcsolódás**: összekapcsolási alkalmazás használható abban a forgatókönyvben, ahol a Dynamics 365 Business Central és egy harmadik féltől származó megoldás vagy szolgáltatás között pont-pont típusú kapcsolatot kell létrehozni. További információ: [kapcsolat](https://docs.microsoft.com/dynamics365/business-central/dev-itpro/developer/readiness/readiness-connect-apps).
 
-### <a name="file-upload"></a>Fájl feltöltése
+### <a name="file-upload"></a>Fájlfeltöltés
 
 Ha a fenti **Hozzáadás** lehetőséget választotta, itt töltheti fel az ajánlat csomagfájl, valamint a csomagok fájljait minden olyan bővítményhez, amelyen függőségek vannak.
 
@@ -278,47 +278,47 @@ A következő típusú tesztelési meghajtók érhetők el, amelyek mindegyike s
 
 Egy központi telepítési sablon, amely tartalmazza a megoldását alkotó összes Azure-erőforrást. Az ehhez a forgatókönyvhöz illeszkedő termékek csak az Azure-erőforrásokat használják. További információ [Azure Resource Manager tesztelési meghajtó](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)beállításáról.
 
-- **Régiók** (kötelező): Jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. Általában elérhetővé szeretné tenni a tesztelési meghajtót azokon a régiókban, ahol a legnagyobb számú ügyfelet tervezi, hogy a lehető legközelebb eső régiót tudják kiválasztani a legjobb teljesítmény érdekében. Győződjön meg arról, hogy az előfizetése jogosult a kiválasztott régiókban minden szükséges erőforrás üzembe helyezésére.
+- **Régiók** (kötelező): jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. Általában elérhetővé szeretné tenni a tesztelési meghajtót azokon a régiókban, ahol a legnagyobb számú ügyfelet tervezi, hogy a lehető legközelebb eső régiót tudják kiválasztani a legjobb teljesítmény érdekében. Győződjön meg arról, hogy az előfizetése jogosult a kiválasztott régiókban minden szükséges erőforrás üzembe helyezésére.
 
-- **Példányok**: Válassza ki a típust (gyors vagy hideg) és a rendelkezésre álló példányok számát, amelyet az ajánlat által elérhető régiók számának szorzatával kell megszorozni.
+- **Példányok**: válassza ki a típust (gyors vagy hideg) és a rendelkezésre álló példányok számát, amelyet az ajánlat által elérhető régiók számának szorzatával kell megszorozni.
 
-**Gyors**: Ez a típusú példány üzembe van helyezve, és a kiválasztott régióhoz való hozzáférésre vár. Az ügyfelek azonnal hozzáférhetnek a tesztvezetés *gyors* példányaihoz, és nem kell megvárniuk az üzembe helyezést. A hosszabb, hogy ezek a példányok mindig futtat az Azure-előfizetést, akkor számítunk fel a költségek nagyobb rendelkezésre állását. Erősen ajánlott, hogy legalább egy *gyors* példányt lehessen használni, mivel a legtöbb ügyfél nem szeretné megvárni a teljes üzembe helyezést, ami a felhasználói használatból való kiesést eredményezi, ha nem érhető el a *forró* példány.
+**Gyors**: Ez a típusú példány üzembe van helyezve, és a kiválasztott régióhoz való hozzáférésre vár. Az ügyfelek azonnal hozzáférhetnek a tesztvezetés *gyors* példányaihoz, és nem kell megvárniuk az üzembe helyezést. A kompromisszum azt eredményezi, hogy ezek a példányok mindig az Azure-előfizetésen futnak, így a költségek nagyobb üzemidőt jelentenek. Erősen ajánlott, hogy legalább egy *gyors* példányt lehessen használni, mivel a legtöbb ügyfél nem szeretné megvárni a teljes üzembe helyezést, ami a felhasználói használatból való kiesést eredményezi, ha nem érhető el a *forró* példány.
 
-**Hideg**: Az ilyen típusú példányok az egyes régiókban esetlegesen üzembe helyezhető példányok teljes számát jelölik. A hideg példányok esetében a teljes tesztvezetés Resource Manager-sablon szükséges ahhoz, hogy egy ügyfél a tesztelési meghajtót használja, így a *hideg* példányok sokkal lassabban töltődnek be, mint a *forró* példányok. A kompromisszum az, hogy csak a tesztvezetés időtartamára kell fizetnie, *nem* mindig fut az Azure-előfizetésében, mint a *forró* példányok esetében.
+**Hideg**: az ilyen típusú példányok az egyes régiókban esetlegesen üzembe helyezhető példányok teljes számát jelölik. A hideg példányok esetében a teljes tesztvezetés Resource Manager-sablon szükséges ahhoz, hogy egy ügyfél a tesztelési meghajtót használja, így a *hideg* példányok sokkal lassabban töltődnek be, mint a *forró* példányok. A kompromisszum az, hogy csak a tesztvezetés időtartamára kell fizetnie, *nem* mindig fut az Azure-előfizetésében, mint a *forró* példányok esetében.
 
-- **Tesztvezetés Azure Resource Manager sablon**: Töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt.  További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című cikkben található.
+- **Tesztvezetés Azure Resource Manager sablon**: töltse fel a Azure Resource Manager sablont tartalmazó. zip fájlt.  További információ a Azure Resource Manager sablon létrehozásáról a rövid útmutató a [Azure Resource Manager-sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című cikkben található.
 
-- **Teszt meghajtójának időtartama** (kötelező): Adja meg azt az időtartamot, ameddig a test meghajtója aktív marad, az órák száma szerint. A Test Drive Ez az időtartam lejárta után automatikusan leáll. Ez az időtartam csak egész számú órával állítható be (például "2" óra, a "1,5" nem érvényes).
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után. Ez az időtartam csak egész számú órával állítható be (például "2" óra, a "1,5" nem érvényes).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technikai konfiguráció a Dynamics 365 Test Drive-hoz
 
 A Microsoft el tudja távolítani a tesztelési meghajtó beállításának összetettségét azáltal, hogy a szolgáltatás üzembe helyezését és üzembe helyezését az ilyen típusú tesztelési meghajtó használatával végzi el és tartja karban. Az ilyen típusú üzemeltetett tesztvezetés konfigurációja ugyanaz, függetlenül attól, hogy a tesztvezetés üzleti központi, vevői szerepvállalási vagy műveleti célközönségre irányul.
 
-- **Párhuzamos tesztelési meghajtók maximális** száma (kötelező): Állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Az egyidejű felhasználók egy Dynamics 365-licencet használnak, amíg a tesztvezetés aktív, ezért biztosítania kell, hogy elegendő licenc álljon rendelkezésre a maximálisan engedélyezett készlet támogatásához. A 3-5 javasolt értéke.
+- Egyidejű **tesztelési meghajtók maximális** száma (kötelező): adja meg, hogy legfeljebb hány ügyfél használhatja egyszerre a tesztelési meghajtót. Az egyidejű felhasználók egy Dynamics 365-licencet használnak, amíg a tesztvezetés aktív, ezért biztosítania kell, hogy elegendő licenc álljon rendelkezésre a maximálisan engedélyezett készlet támogatásához. A 3-5 javasolt értéke.
 
-- **Teszt meghajtójának időtartama** (kötelező): Adja meg azt az időtartamot, ameddig a tesztelési meghajtó aktív marad az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész számú órával állítható be (például "2" óra, a "1,5" nem érvényes).  Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy mennyi ideig maradjon aktív a tesztvezetés az órák számának meghatározásával. Ennyi óra elteltével a munkamenet véget ért, és már nem fogja használni az egyik licencét. Az ajánlat bonyolultsága alapján 2-24 óra értékű értéket ajánlunk. Ez az időtartam csak egész számú órával állítható be (például "2" óra, a "1,5" nem érvényes).  Ha elfogynak az idő, a felhasználó új munkamenetet igényelhet, és újra el szeretné érni a teszt meghajtót.
 
-- **Példány URL-címe** (kötelező): Az URL-cím, amelyen az ügyfél elkezdi a tesztelési meghajtót. A Dynamics 365-példány URL-címe, amely az alkalmazást futtatja a mintaadatok telepítésével (például https://testdrive.crm.dynamics.com).
+- **Példány URL-címe** (kötelező): az az URL-cím, amelyben az ügyfél el fogja kezdeni a tesztelési meghajtót. A Dynamics 365-példány URL-címe, amely az alkalmazást futtatja a mintaadatok telepítésével (például https://testdrive.crm.dynamics.com).
 
-- **Példány webes API URL-címe** (kötelező): A Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **beállítások** \&gt; **Testreszabási** @no__t – 3gt; **Fejlesztői erőforrások** @no__t – 5gT; A **példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például https://testdrive.crm.dynamics.com/api/data/v9.0) ).
+- **Példány webes API URL-címe** (kötelező): a Dynamics 365-példány webes API URL-címének lekéréséhez jelentkezzen be a Microsoft 365-fiókjába, és navigáljon a **Beállítások** \&gt; **Testreszabási** @no__t – 4GT; **Fejlesztői erőforrások** @no__t – 6gt; A **példány webes API-ját (szolgáltatás gyökerének URL-címe)** másolja az itt található URL-címet (például https://testdrive.crm.dynamics.com/api/data/v9.0) ).
 
-- **Szerepkör neve** (kötelező): Adja meg az egyéni Dynamics 365 Test Drive-ban definiált biztonsági szerepkör nevét, amely a felhasználóhoz lesz hozzárendelve a tesztelési meghajtón (például Test-Drive-role).
+- **Szerepkör neve** (kötelező): adja meg az egyéni Dynamics 365-tesztelési meghajtóban definiált biztonsági szerepkör nevét, amely a felhasználóhoz lesz hozzárendelve a tesztelési meghajtón (például Test-Drive-role).
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>Technikai konfiguráció a Logic app Test Drive-hoz
 
 Minden egyéni terméknek ezt a típusú tesztelési meghajtó-telepítési sablont kell használnia, amely számos összetett megoldási architektúrát magában foglal. A Logic app test Drives beállításával kapcsolatos további információkért látogasson el a [műveletekre](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) és az [ügyfelek részvételére](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) a githubon.
 
-- **Régió** (kötelező, egyetlen kijelölésű legördülő lista): Jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. A logikai alkalmazás erőforrásai a kiválasztott régióba lesznek telepítve. Ha a logikai alkalmazás egy adott régióban tárolt egyéni erőforrásokkal rendelkezik, győződjön meg arról, hogy a régió itt van kiválasztva. A legjobb módszer a logikai alkalmazás helyi üzembe helyezése az Azure-előfizetésben a portálon, és annak ellenőrzése, hogy megfelelően működik-e a kijelölés előtt.
+- **Régió** (kötelező, egyszer használatos legördülő lista): jelenleg 26 Azure által támogatott régió érhető el, ahol a tesztelési meghajtót elérhetővé teheti. A logikai alkalmazás erőforrásai a kiválasztott régióba lesznek telepítve. Ha a logikai alkalmazás egy adott régióban tárolt egyéni erőforrásokkal rendelkezik, győződjön meg arról, hogy a régió itt van kiválasztva. A legjobb módszer a logikai alkalmazás helyi üzembe helyezése az Azure-előfizetésben a portálon, és annak ellenőrzése, hogy megfelelően működik-e a kijelölés előtt.
 
-- **Párhuzamos tesztelési meghajtók maximális** száma (kötelező): Állítsa be a tesztelési meghajtót egyszerre használó ügyfelek maximális számát. Ezek a tesztelési meghajtók már telepítve vannak, és lehetővé teszik, hogy az ügyfelek azonnal hozzáférjenek az üzembe helyezésre való várakozás nélkül.
+- Egyidejű **tesztelési meghajtók maximális** száma (kötelező): adja meg, hogy legfeljebb hány ügyfél használhatja egyszerre a tesztelési meghajtót. Ezek a tesztelési meghajtók már telepítve vannak, és lehetővé teszik, hogy az ügyfelek azonnal hozzáférjenek az üzembe helyezésre való várakozás nélkül.
 
-- **Teszt meghajtójának időtartama** (kötelező): Adja meg azt az időtartamot, ameddig a test meghajtója aktív marad, az órák száma szerint. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
+- **Tesztelési meghajtó időtartama** (kötelező): adja meg, hogy a tesztvezetés hány óra alatt maradjon aktív állapotban. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
-- **Azure-erőforráscsoport neve** (kötelező): Adja meg az [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) nevét, ahol a logikai alkalmazás tesztelési meghajtóját menti.
+- **Azure-erőforráscsoport neve** (kötelező): adja meg az [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) nevét, amelybe a rendszer menti a logikai alkalmazás tesztelési meghajtóját.
 
-- **Azure Logic App-alkalmazás neve** (kötelező): Adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót rendeli a felhasználóhoz. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
+- **Azure Logic App-alkalmazás neve** (kötelező): adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót hozzárendeli a felhasználóhoz. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
 
-- **Logikai alkalmazás nevének kiépítése** (kötelező): Adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót felépíti az ügyfél befejeződése után. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
+- **Logikai alkalmazás nevének** megszüntetése (kötelező): adja meg annak a logikai alkalmazásnak a nevét, amely a tesztelési meghajtót felépíti az ügyfél befejezése után. Ezt a logikai alkalmazást a fenti Azure-erőforrások csoportba kell menteni.
 
 ### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI tesztelési meghajtókhoz nem szükséges technikai konfiguráció
 
@@ -328,15 +328,15 @@ Azok a termékek, amelyek interaktív Power BI vizualizációt szeretnének bemu
 
 Ha a tesztelési meghajtót az Ön nevében szeretné üzembe helyezni, hozzon létre és adjon meg egy különálló és egyedi Azure-előfizetést. (Power BI tesztelési meghajtók esetében nem szükséges).
 
-- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): Adja meg az előfizetés AZONOSÍTÓját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használati jelentéskészítéshez és a számlázáshoz. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztásával megjelenítheti az előfizetés-AZONOSÍTÓját (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
+- **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges): adja meg az előfizetés azonosítóját, amely hozzáférést biztosít az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztásával megjelenítheti az előfizetés-AZONOSÍTÓját (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure ad-bérlő azonosítója** (kötelező): Adja meg a Azure Active Directory (AD) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a * * tulajdonságok elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Azure ad-bérlő azonosítója** (kötelező): adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a * * tulajdonságok elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
-- **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges): Adja meg a Azure Active Directory (AD) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
+- **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges): adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 
-- **Azure ad-alkalmazás azonosítója** (kötelező): Adja meg a Azure Active Directory-(AD-) [alkalmazás azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure ad** -alkalmazás azonosítója (kötelező): adja meg a Azure Active Directory (ad) [alkalmazás-azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure ad-alkalmazás ügyfél-titka** (kötelező): Adja meg az Azure AD-alkalmazás [ügyfelének titkos kulcsát](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. (Ne navigáljon el az oldalról, mielőtt ezt megtenné, különben nem lesz hozzáférése az értékhez.)
+- **Azure ad-alkalmazás ügyfél-titka** (kötelező): adja meg az Azure ad-alkalmazás [ügyfél-titkos kulcsát](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. Ügyeljen rá, hogy az értéket másolja le. (Ne navigáljon el az oldalról, mielőtt ezt megtenné, különben nem lesz hozzáférése az értékhez.)
 
 Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
@@ -344,16 +344,16 @@ Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni** .
 
 A piactér **lapon található** **Marketplace listázási** lehetőség megjeleníti azokat a nyelveket, amelyeken a tesztelési meghajtó elérhető. Jelenleg az egyetlen elérhető hely az **angol (Egyesült Államok)** . Válassza ki a nyelv nevét a test Drive-élményt leíró információk megadásához.
 
-- **Leírás** (kötelező): Írja le a tesztelési meghajtót, a bemutatott funkciókat, a felhasználó által a kísérletezéshez szükséges célokat, a felderített szolgáltatásokat és a megfelelő információkat, amelyekkel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
+- **Leírás** (kötelező): írja le a tesztelési meghajtót, hogy mit kell bemutatni, a felhasználó által a kísérlethez szükséges célokat, a felderített funkciókat, valamint minden olyan releváns információt, amellyel a felhasználó eldöntheti, hogy szeretné-e beszerezni az ajánlatot. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. 
 
-- **Hozzáférési információk** (Azure Resource Manager és logikai tesztelési meghajtókhoz szükséges): Magyarázza el, hogy mit kell tudnia az ügyfélnek a tesztelési meghajtó eléréséhez és használatához. Tekintse át az ajánlat használatát, és pontosan azt, amit az ügyfélnek tudnia kell a szolgáltatások eléréséhez a tesztelési meghajtón. Ebben a mezőben legfeljebb 10 000 karaktert lehet megadni.
+- **Hozzáférési információk** (Azure Resource Manager és logikai tesztelési meghajtókhoz szükséges): ismertesse, hogy az ügyfélnek milyen információra van szüksége ahhoz, hogy hozzáférhessen és használhassa ezt a teszt meghajtót. Tekintse át az ajánlat használatát, és pontosan azt, amit az ügyfélnek tudnia kell a szolgáltatások eléréséhez a tesztelési meghajtón. Ebben a mezőben legfeljebb 10 000 karaktert lehet megadni.
 
-- **Felhasználói kézikönyv** (kötelező): Részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
+- **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- @no__t – 0Videos: Videók hozzáadása @ no__t-0 (nem kötelező): A videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfelek megtekinthetik az információk áttekintését, így könnyebben megismerhetik a tesztelési meghajtót, beleértve a funkcióinak sikeres használatát az ajánlata és az előnyeit kiemelő forgatókönyvek ismertetése.
+- **Videók: videók hozzáadása** (nem kötelező): a videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfelek megtekinthetik az információk áttekintését, így könnyebben megismerhetik a tesztelési meghajtót, beleértve a az ajánlat funkcióinak sikeres használata és az előnyeiket kiemelő forgatókönyvek megismerése.
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
-  - **Miniatűr (533 x 324 px)** : A képfájlnak PNG formátumúnak kell lennie.
+  - **Miniatűr (533 x 324 px)** : a képfájlnak png formátumúnak kell lennie.
 
 ## <a name="supplemental-content"></a>Kiegészítő tartalom
 
@@ -361,7 +361,7 @@ Ezen az oldalon további információkat adhat meg az ajánlatáról, hogy segí
 
 ### <a name="target-release"></a>Cél kiadása
 
-Adja meg a Microsoft Dynamics Business Central a megoldás célkitűzéseinek a kiadását: **Aktuális**, **következő nagyobb**, vagy a **következő alverzió**. Ez az információ lehetővé teszi a megoldás megfelelő tesztelését.
+Jelezze, hogy a Microsoft Dynamics üzleti központjának melyik kiadását célozza meg a megoldás céljai: **current**, **Next Major**vagy **Next Minor**. Ez az információ lehetővé teszi a megoldás megfelelő tesztelését.
 
 ### <a name="supported-editions"></a>Támogatott kiadások
 
@@ -394,6 +394,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

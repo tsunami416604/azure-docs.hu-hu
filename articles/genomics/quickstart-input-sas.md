@@ -1,7 +1,7 @@
 ---
-title: Közös hozzáférésű jogosultságkódok – a Microsoft Genomics munkafolyamat elküldése
-titleSuffix: Azure
-description: A cikk feltételezi, hogy az msgen kliens telepítve van és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
+title: Megosztott hozzáférési aláírásokat használó munkafolyamat
+titleSuffix: Microsoft Genomics
+description: Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak megosztott hozzáférési aláírások (SAS) használatával a Storage-fiókok kulcsai helyett.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
-ms.openlocfilehash: 833067f53f53f347ce091a64702d44a78cde836f
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657096"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248587"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Munkafolyamat elküldése Microsoft Genomics számára tárfiókkulcs helyett SAS használatával 
 
-Ez a cikk bemutatja, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásnak egy config.txt fájllal, amely tartalmazza a [közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tárfiókkulcs helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
+Ez a cikk bemutatja, hogyan küldhet munkafolyamatot a Microsoft Genomics szolgáltatásnak egy olyan config. txt fájllal, amely [megosztott hozzáférési aláírásokat (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) tartalmaz a Storage-fiók kulcsainak használata helyett. Ez a funkció hasznos lehet, ha biztonsági aggályokat vet fel, ha a tárfiókkulcs látható a config.txt fájlban. 
 
-Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Sikeresen elküldte a munkafolyamatot, a megadott mintaadatokat használja, ha készen áll, folytassa az ebben a cikkben. 
+Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldött egy munkafolyamatot a megadott mintaadatok használatával, készen áll a cikk folytatására. 
 
 ## <a name="what-is-a-sas"></a>Mi az SAS?
 A [közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS használatával a fiókkulcsok megosztása nélkül lehet hozzáférést biztosítani a tárfiókban található erőforrásokhoz. Ez a lényege a közös hozzáférésű jogosultságkód alkalmazásokban való használatának – az SAS a fiókkulcsok veszélyeztetése nélkül teszi lehetővé a tárolási erőforrások megosztását.
@@ -33,21 +33,21 @@ A szolgáltatási szintű közös hozzáférésű jogosultságkód (SAS) URI-je 
 A Microsoft Genomics szolgáltatásnak elküldött minden egyes munkafolyamathoz legalább két SAS-token szükséges, az egyik a bemeneti fájlhoz, a másik pedig a kimeneti tárolóhoz.
 
 A bemeneti fájlhoz tartozó SAS-nek a következő tulajdonságokkal kell rendelkeznie:
-1.  Hatókör (fiók, tároló, blob): blob
-2.  Lejárat: 48 óra múlva
-3.  Engedélyek: olvasás
+ - Hatókör (fiók, tároló, blob): blob
+ - Lejárat: 48 óra múlva
+ - Engedélyek: olvasás
 
 A kimeneti tárolóhoz tartozó SAS-kódnak a következő tulajdonságokkal kell rendelkeznie:
-1.  Hatókör (fiók, tároló, blob): tároló
-2.  Lejárat: 48 óra múlva
-3.  Engedélyek: olvasás, írás, törlés
+ - Hatókör (fiók, tároló, blob): tároló
+ - Lejárat: 48 óra múlva
+ - Engedélyek: olvasás, írás, törlés
 
 
 ## <a name="create-a-sas-for-the-input-files-and-the-output-container"></a>SAS létrehozása a bemeneti fájlokhoz és a kimeneti tárolóhoz
 SAS-tokent kétféleképpen lehet létrehozni: az Azure Storage Explorer használatával vagy programozással.  Kódírással saját maga is összeállíthatja az SAS-t, de használhatja az Azure Storage SDK-t is a választott nyelven.
 
 
-### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Állítsa be: SAS létrehozása az Azure Storage Explorerrel
+### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Beállítás: SAS létrehozása az Azure Storage Explorerrel
 
 Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) az Azure Storage-ban tárolt erőforrások kezelésére szolgáló eszköz.  Az Azure Storage Explorer használatáról [itt](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) talál további információt.
 
@@ -56,7 +56,7 @@ A bemeneti fájlokhoz tartozó SAS-kód hatókörének az adott bemeneti fájlra
  ![Genomics SAS Storage Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS Storage Explorer")
 
 
-### <a name="set-up-create-a-sas-programmatically"></a>Állítsa be: SAS létrehozása programozással
+### <a name="set-up-create-a-sas-programmatically"></a>Beállítás: az SAS programozott módon történő létrehozása
 
 A SAS Azure Storage SDK használatával történő létrehozásáról számos nyelven elérhető dokumentáció, így a [.NET](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1), a [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) és a [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage) nyelveken is. 
 
@@ -85,5 +85,5 @@ Ebben az esetben a Microsoft Genomics Python-ügyféllel küldje el a munkafolya
 msgen submit -f [full path to your config file] 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben fiókkulcsok helyett SAS-tokenekkel küldött el egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-ügyfélen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információért tekintse meg a [Gyakori kérdések](frequently-asked-questions-genomics.md) szakaszt. 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673422"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241173"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -43,7 +43,7 @@ Az Azure AD egy olyan szabályt biztosít, amellyel gyorsabban hozhat létre és
 - Szabály ötnél több kifejezéssel
 - A közvetlen jelentések szabálya
 - [Operátor prioritásának](groups-dynamic-membership.md#operator-precedence) beállítása
-- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például:`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Összetett kifejezésekkel rendelkező szabályok](groups-dynamic-membership.md#rules-with-complex-expressions); például `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Előfordulhat, hogy a szabály-szerkesztő nem tudja megjeleníteni a szövegmezőben létrehozott egyes szabályokat. Előfordulhat, hogy egy üzenet jelenik meg, ha a szabály-szerkesztő nem tudja megjeleníteni a szabályt. A szabály-szerkesztő semmilyen módon nem módosítja a dinamikus csoport szabályainak támogatott szintaxisát, érvényesítését vagy feldolgozását.
@@ -54,7 +54,7 @@ További részletes útmutatásért lásd: [dinamikus csoport frissítése](grou
 
 ### <a name="rule-syntax-for-a-single-expression"></a>Egyetlen kifejezés szabályának szintaxisa
 
-Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Az egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz `Property Operator Value`ki:, ahol a tulajdonság szintaxisa a Object. Property neve.
+Egyetlen kifejezés a tagsági szabály legegyszerűbb formája, és csak a fent említett három részből áll. Egyetlen kifejezéssel rendelkező szabály a következőhöz hasonlóan néz ki: `Property Operator Value`, ahol a tulajdonság szintaxisa a Object. Property neve.
 
 A következő példa egy megfelelően felépített tagsági szabályt mutat be egyetlen kifejezéssel:
 
@@ -69,8 +69,8 @@ A zárójelek egyetlen kifejezés esetében nem kötelezőek. A tagsági szabál
 Olyan tagsági szabály, amely automatikusan feltölt egy csoportot a felhasználók vagy az eszközök számára egy bináris kifejezés, amely igaz vagy hamis eredményt eredményez. Egy egyszerű szabály három része:
 
 - Tulajdonság
-- Operator
-- Value
+- Művelet
+- Value (Díj)
 
 Egy kifejezésen belüli részek sorrendje fontos a szintaktikai hibák elkerülése érdekében.
 
@@ -86,48 +86,48 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 
 ### <a name="properties-of-type-boolean"></a>Logikai típusú tulajdonságok
 
-| properties | Megengedett értékek | Használat |
+| Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| accountEnabled |Igaz hamis |User. accountEnabled – EQ True |
-| dirSyncEnabled |Igaz hamis |user.dirSyncEnabled -eq true |
+| AccountEnabled |Igaz hamis |User. accountEnabled – EQ True |
+| dirSyncEnabled |Igaz hamis |User. dirSyncEnabled – EQ True |
 
 ### <a name="properties-of-type-string"></a>Karakterlánc típusú tulajdonságok
 
-| properties | Megengedett értékek | Használat |
+| Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
-| ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
-| companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
-| Szervezeti egység |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
-| displayName |bármely karakterlánc-érték |(User. displayName-EQ "value") |
-| employeeId |bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
-| facsimileTelephoneNumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
-| givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
+| Ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
+| CompanyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
+| Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
+| DisplayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
+| Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
+| Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
+| GivenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
-| levelezés |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
+| Levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
-| mobil |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
+| mobileszköz |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
 | objectId |A felhasználói objektum GUID azonosítója |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
-| onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
-| passwordPolicies |None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
+| onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
+| passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Bármilyen sztring vagy *Null* érték |(User. physicalDeliveryOfficeName-EQ "value") |
 | Irányítószám |Bármilyen sztring vagy *Null* érték |(User. irányítószám – EQ "érték") |
-| preferredLanguage |ISO 639-1 kód |(user.preferredLanguage -eq "en-US") |
+| preferredLanguage |ISO 639-1 kód |(User. preferredLanguage – EQ "en-US") |
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
 | Vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
-| telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
+| TelephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
-| userPrincipalName |bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
+| userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
 | userType |tag vendég *Null* |(User. userType-EQ "tag") |
 
 ### <a name="properties-of-type-string-collection"></a>String típusú gyűjtemény tulajdonságai
 
-| properties | Megengedett értékek | Használat |
+| Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |bármely karakterlánc-érték |(User. otherMails – a következőtalias@domaintartalmazza: "") |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
+| otherMails |Bármely karakterlánc-érték |(User. otherMails – a "alias@domain" értéket tartalmazza) |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" értéket tartalmazza) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
 
@@ -135,16 +135,16 @@ Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabál
 
 A következő táblázat felsorolja az összes támogatott operátort és azok szintaxisát egyetlen kifejezéshez. A operátorok kötőjel (-) előtaggal vagy anélkül is használhatók.
 
-| Operator | Szintaxis |
+| Művelet | Szintaxis |
 | --- | --- |
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
 | Nem kezdődik |-notStartsWith |
-| Ezzel kezdődik |– startsWith |
+| Kezdete |– startsWith |
 | Nem tartalmazza |-notContains |
-| tartalmaz |– tartalmazza |
+| Contains |– tartalmazza |
 | Nem egyezik |-notMatch |
-| Egyezés |– egyezés |
+| mérkőzés |– egyezés |
 | A | – a |
 | Nem a | -notIn |
 
@@ -185,8 +185,8 @@ Ha egy kifejezésen belül értéket ad meg, fontos, hogy a hibák elkerülése 
 
 * Idézőjelek megadása nem kötelező, kivéve, ha az érték karakterlánc.
 * A karakterlánc és a regex művelet nem megkülönbözteti a kis-és nagybetűket.
-* Ha egy sztring dupla idézőjelet tartalmaz, mindkét idézőjelet el kell kerülni a \` karakterrel, például a felhasználóval. részleg-EQ \`"Sales\`" a megfelelő szintaxis, ha az "értékesítés" az érték.
-* NULL értékű ellenőrzéseket is végrehajthat, ha például `user.department -eq null`null értéket használ.
+* Ha egy karakterlánc-érték dupla idézőjelet tartalmaz, mindkét idézőjelet a \` karakterrel kell megszökni, például: user. Department-EQ \` "Sales @ no__t-2" a megfelelő szintaxis, ha az "értékesítés" az érték.
+* NULL értékű ellenőrzéseket is végrehajthat, ha a null értéket használja, például `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Null értékek használata
 
@@ -249,10 +249,10 @@ A tagsági szabályok olyan összetett kifejezésekből állhatnak, amelyekben a
 
 A többértékű tulajdonságok azonos típusú objektumok gyűjteményei. Felhasználhatók tagsági szabályok létrehozására a-any és az-All logikai operátorok használatával.
 
-| properties | Értékek | Használat |
+| Tulajdonságok | Értékek | Használat |
 | --- | --- | --- |
-| assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. ProxyAddresses-any (\_ -tartalmazza a "contoso")) |
+| assignedPlans | A gyűjtemény minden objektuma a következő karakterlánc-tulajdonságokat teszi elérhetővé: capabilityStatus, Service, servicePlanId |User. assignedPlans – any (assignedPlan. servicePlanId-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-és assignedPlan. capabilityStatus-EQ "engedélyezve") |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-tartalmazza a "contoso")) |
 
 ### <a name="using-the--any-and--all-operators"></a>A-any és az-All operátorok használata
 
@@ -279,11 +279,11 @@ A következő kifejezés kiválasztja azokat a felhasználókat, akik az Intune 
 user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-### <a name="using-the-underscore-_-syntax"></a>Az aláhúzásjel (\_) szintaxis használata
+### <a name="using-the-underscore-_-syntax"></a>Az aláhúzás (\_) szintaxis használata
 
-Az aláhúzás (\_) szintaxis a többértékű karakterláncok gyűjteményének egyik tulajdonságában lévő adott érték előfordulásait hasonlítja a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
+Az aláhúzásjel (\_) szintaxisa egy adott értéknek a Többértékű karakterlánc-gyűjtemény tulajdonságai egyikének egy adott értékét adja meg a felhasználók vagy eszközök dinamikus csoportba való felvételéhez. Ez a-any vagy az-All operátorral együtt használatos.
 
-Íme egy példa arra, hogy az aláhúzásjel (\_) egy szabály használatával adja hozzá a tagokat a User. proxyAddress alapján (ez a felhasználó. otherMails esetében is működik). Ez a szabály bármely olyan felhasználót felvenni a csoportba, amely a "contoso" kifejezést tartalmazó proxy-címekkel rendelkezik.
+Íme egy példa arra, hogy egy szabály aláhúzás (\_) használatával adja hozzá a tagokat a User. proxyAddress alapján (ez a felhasználó. otherMails esetében is működik). Ez a szabály bármely olyan felhasználót felvenni a csoportba, amely a "contoso" kifejezést tartalmazó proxy-címekkel rendelkezik.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ A bővítmény attribútumai és az egyéni bővítmény tulajdonságai a dinami
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Az egyéni bővítmények tulajdonságai szinkronizálva vannak a helyszíni Windows Server ad-ből vagy egy csatlakoztatott SaaS-alkalmazásból `user.extension_[GUID]__[Attribute]`, és a következő formátumban vannak:
+Az egyéni bővítmények tulajdonságai a helyszíni Windows Server AD-ből vagy egy csatlakoztatott SaaS-alkalmazásból vannak szinkronizálva, és `user.extension_[GUID]_[Attribute]` formátumúak, ahol:
 
 * A [GUID] az Azure AD-ben egyedi azonosító azon alkalmazás számára, amely létrehozta a tulajdonságot az Azure AD-ben
 * A (z) [Attribute] a létrehozott tulajdonság neve.
@@ -350,10 +350,10 @@ Az egyéni bővítmények tulajdonságai szinkronizálva vannak a helyszíni Win
 Egy egyéni kiterjesztési tulajdonságot használó szabály például a következőket használja:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista is frissíthetők úgy, hogy minden olyan új egyéni bővítmény tulajdonságainak lekérése az adott alkalmazáshoz.
+Az egyéni tulajdonságnév megtalálhatók a címtárban úgy, hogy a Graph Explorerben lekérdezi a felhasználó tulajdonságát, és megkeresi a tulajdonság nevét. Mostantól az **Egyéni bővítmény tulajdonságainak beolvasása** hivatkozásra kattintva is megadhat egy egyedi alkalmazás-azonosítót, és megkaphatja a dinamikus tagsági szabályok létrehozásakor használni kívánt egyéni bővítmény-tulajdonságok teljes listáját. Ez a lista az alkalmazás új egyéni bővítmény-tulajdonságainak beolvasására is frissíthető.
 
 ## <a name="rules-for-devices"></a>Eszközök szabályai
 
@@ -368,25 +368,25 @@ A következő eszköz-attribútumok használhatók.
 
  Eszköz attribútuma  | Értékek | Példa
  ----- | ----- | ----------------
- accountEnabled | Igaz hamis | (Device. accountEnabled-EQ true)
- displayName | bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
- deviceOSType | bármely karakterlánc-érték | (Device. deviceOSType-EQ "iPad") – vagy (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType – a "AndroidEnterprise" kifejezést tartalmazza)<br>(Device. deviceOSType-EQ "AndroidForWork")
- deviceOSVersion | bármely karakterlánc-érték | (Device. deviceOSVersion-EQ "9,1")
+ AccountEnabled | Igaz hamis | (Device. accountEnabled-EQ true)
+ DisplayName | Bármely karakterlánc-érték |(Device. displayName-EQ "Rob iPhone")
+ deviceOSType | Bármely karakterlánc-érték | (Device. deviceOSType-EQ "iPad") – vagy (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType – a "AndroidEnterprise" kifejezést tartalmazza)<br>(Device. deviceOSType-EQ "AndroidForWork")
+ deviceOSVersion | Bármely karakterlánc-érték | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | egy érvényes eszköznév neve | (Device. deviceCategory-EQ "BYOD")
- deviceManufacturer | bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
- deviceModel | bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
+ deviceManufacturer | Bármely karakterlánc-érték | (Device. deviceManufacturer-EQ "Samsung")
+ deviceModel | Bármely karakterlánc-érték | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Személyes, vállalati, ismeretlen | (Device. deviceOwnership-EQ "vállalat")
  enrollmentProfileName | Apple Device beléptetési profil, eszközök beléptetése – vállalati eszközök azonosítói (Android – kioszk) vagy Windows Autopilot-profil neve | (Device. enrollmentProfileName-EQ "DEP iPhones")
  isRooted | Igaz hamis | (Device. isRooted-EQ true)
  managementType | MDM (mobileszközök esetében)<br>SZÁMÍTÓGÉP (az Intune PC Agent által felügyelt számítógépek esetén) | (Device. managementType-EQ "MDM")
- deviceId | érvényes Azure AD-eszköz azonosítója | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | érvényes Azure AD-objektumazonosító |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ deviceId | érvényes Azure AD-eszköz azonosítója | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ objectId | érvényes Azure AD-objektumazonosító |  (Device. objectId-EQ 76ad43c9-32c5-45E8-A272-7b58b58f596d ")
  systemLabels | minden olyan karakterlánc, amely megfelel az Intune Device tulajdonságának a modern munkahelyi eszközök címkézéséhez | (Device. systemLabels – a "M365Managed" kifejezést tartalmazza)
 
 > [!Note]  
 > Ahhoz, hogy a deviceOwnership dinamikus csoportokat hozzon létre az eszközökhöz, a "vállalat" értékkel egyenlő értéket kell megadnia. Az Intune-ban az eszköz tulajdonjoga a céges helyet képviseli. További részletekért tekintse meg a [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezek a cikkek további információkat nyújtanak Azure Active Directory csoportjairól.
 

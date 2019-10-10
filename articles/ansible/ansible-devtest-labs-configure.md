@@ -1,41 +1,41 @@
 ---
-title: Oktatóanyag – labs konfigurálása az Azure DevTest Labs szolgáltatásban, az Ansible-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan tesztkörnyezet konfigurálása az Azure DevTest Labs szolgáltatásban, az Ansible-lel
+title: Oktatóanyag – Labs konfigurálása Azure DevTest Labs Ansible használatával
+description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs Ansible használatával
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbook, devtest labs
+keywords: Ansible, Azure, devops, bash, ötletekbõl, devtest Labs
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: c6bc4d50e4db52f772a137495658492018ee5360
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230976"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241657"
 ---
-# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Oktatóanyag: Laborok konfigurálása az Azure DevTest Labs szolgáltatásban, az Ansible-lel
+# <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Oktatóanyag: a laborok konfigurálása Azure DevTest Labs Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Az Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) lehetővé teszi a fejlesztők számára, hogy automatizálható a virtuális környezet az alkalmazások létrehozása. Ezekben a környezetekben alkalmazás fejlesztése, tesztelése és képzési konfigurálható. 
+[Azure DevTest Labs](/azure/lab-services/devtest-lab-overview) lehetővé teszi a fejlesztők számára, hogy automatizálják a virtuálisgép-környezetek létrehozását az alkalmazásaikban. Ezeket a környezeteket az alkalmazások fejlesztéséhez, teszteléséhez és betanításához lehet konfigurálni. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Labor létrehozása
-> * A laborszabályzatok beállításával
-> * A Labs-környezeti ütemezések beállítása
-> * A labor virtuális hálózat létrehozása
-> * Definiáljon egy összetevő a tesztkörnyezethez
-> * A labor belüli virtuális gép létrehozása
-> * A labor összetevő forrásai és összetevők
-> * Az összetevő forrásai Azure Resource Manager adatainak beolvasása
+> * Tesztkörnyezet-házirendek beállítása
+> * A labor-ütemtervek beállítása
+> * A tesztkörnyezet virtuális hálózatának létrehozása
+> * Összetevő-forrás definiálása a laborhoz
+> * Virtuális gép létrehozása a laboron belül
+> * A tesztkörnyezet összetevő-forrásainak és összetevőinek listázása
+> * Az összetevő-források Azure Resource Manager adatainak beolvasása
 > * A tesztkörnyezet létrehozása
-> * A lab-lemezkép létrehozása
-> * A tesztkörnyezet törlése
+> * A tesztkörnyezet rendszerképének létrehozása
+> * A labor törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ ms.locfileid: "65230976"
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-A minta forgatókönyv kódrészlet létrehoz egy Azure-erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+A minta forgatókönyv-kódrészlet létrehoz egy Azure-erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```yml
   - name: Create a resource group
@@ -56,7 +56,7 @@ A minta forgatókönyv kódrészlet létrehoz egy Azure-erőforráscsoportot. Az
 
 ## <a name="create-the-lab"></a>A tesztkörnyezet létrehozása
 
-A következő feladat a minta labor hoz létre.
+A következő feladat létrehozza a minta labort.
 
 ```yml
 - name: Create the lab
@@ -69,18 +69,18 @@ A következő feladat a minta labor hoz létre.
   register: output_lab
 ```
 
-## <a name="set-the-lab-policies"></a>A laborszabályzatok beállításával
+## <a name="set-the-lab-policies"></a>Tesztkörnyezet-házirendek beállítása
 
-Beállíthatja a labor házirend-beállításokat. A következő beállítások adhatók meg:
+Beállíthatja a tesztkörnyezet házirend-beállításait. A következő értékek állíthatók be:
 
-- `user_owned_lab_vm_count` a felhasználó is saját virtuális gépek száma
-- `user_owned_lab_premium_vm_count` a felhasználó saját is prémium szintű virtuális gépek száma
-- `lab_vm_count` a tesztlabor virtuális gépek maximális száma
-- `lab_premium_vm_count` a lab maximális száma prémium szintű virtuális gépek
-- `lab_vm_size` az engedélyezett tesztlabor virtuális gépek size(s) van
-- `gallery_image` az engedélyezett katalógus-lemezkép van
-- `user_owned_lab_vm_count_in_subnet` a felhasználó virtuális gépeket az alhálózatok maximális száma
-- `lab_target_cost` a cél költség a labor létrehozása
+- @no__t – 0 – a felhasználó által birtokolható virtuális gépek száma
+- a `user_owned_lab_premium_vm_count` a felhasználó által birtokolható prémium szintű virtuális gépek száma
+- a `lab_vm_count` a labor virtuális gépek maximális száma
+- a `lab_premium_vm_count` a labor Premium virtuális gépek maximális száma
+- a `lab_vm_size` a laboratóriumi virtuális gépek megengedett mérete (i)
+- a `gallery_image` az engedélyezett katalógus-rendszerkép (ek)
+- a `user_owned_lab_vm_count_in_subnet` a felhasználó virtuális gépei maximális száma egy alhálózaton belül
+- a `lab_target_cost` a tesztkörnyezet célja
 
 ```yml
 - name: Set the lab policies
@@ -93,11 +93,11 @@ Beállíthatja a labor házirend-beállításokat. A következő beállítások 
     threshold: 5
 ```
 
-## <a name="set-the-lab-schedules"></a>A Labs-környezeti ütemezések beállítása
+## <a name="set-the-lab-schedules"></a>A labor-ütemtervek beállítása
 
-A feladat ebben a szakaszban a Labs-környezeti ütemezés konfigurálása. 
+Az ebben a szakaszban szereplő minta feladat konfigurálja a labor-ütemtervet. 
 
-Az alábbi kódrészlet a `lab_vms_startup` érték szolgál a virtuális gép indítási idejének megadása. Hasonlóképpen, a beállítás a `lab_vms_shutdown` értéket hoz létre a labor virtuális gép leállítási ideje.
+A következő kódrészletben a virtuális gép indítási idejének megadásához a `lab_vms_startup` értéket használja a rendszer. Hasonlóképpen, a `lab_vms_shutdown` érték beállítása határozza meg a labor virtuális gép leállítási idejét.
 
 ```yml
 - name: Set the lab schedule
@@ -110,9 +110,9 @@ Az alábbi kódrészlet a `lab_vms_startup` érték szolgál a virtuális gép i
   register: output
 ```
 
-## <a name="create-the-lab-virtual-network"></a>A labor virtuális hálózat létrehozása
+## <a name="create-the-lab-virtual-network"></a>A tesztkörnyezet virtuális hálózatának létrehozása
 
-Ez a következő feladat az alapértelmezett tesztlabor virtuális hálózatot hoz létre.
+A következő feladat létrehozza az alapértelmezett Tesztkörnyezet virtuális hálózatát.
 
 ```yml
 - name: Create the lab virtual network
@@ -125,9 +125,9 @@ Ez a következő feladat az alapértelmezett tesztlabor virtuális hálózatot h
   register: output
 ```
 
-## <a name="define-an-artifact-source-for-the-lab"></a>Definiáljon egy összetevő a tesztkörnyezethez
+## <a name="define-an-artifact-source-for-the-lab"></a>Összetevő-forrás definiálása a laborhoz
 
-Az összetevők forrása a megfelelően felépített GitHub-adattár, amely tartalmazza az összetevő-definíció- és Azure Resource Manager-sablonok. Minden labor előre meghatározott nyilvános összetevőket tartalmaz. A következő feladatokat bemutatja, hogyan hozhat létre egy tesztkörnyezet összetevő forrását.
+Az összetevők forrása egy megfelelően strukturált GitHub-tárház, amely tartalmazza az összetevő-definíciót és a Azure Resource Manager sablonokat. Minden tesztkörnyezet előre definiált nyilvános összetevőket tartalmaz. A következő feladatok bemutatják, hogyan hozhat létre egy összetevő-forrást a laborhoz.
 
 ```yml
 - name: Define the lab artifacts source
@@ -141,9 +141,9 @@ Az összetevők forrása a megfelelően felépített GitHub-adattár, amely tart
     security_token: "{{ github_token }}"
 ```
 
-## <a name="create-a-vm-within-the-lab"></a>A labor belüli virtuális gép létrehozása
+## <a name="create-a-vm-within-the-lab"></a>Virtuális gép létrehozása a laboron belül
 
-Hozzon létre egy virtuális Gépet a labor belül.
+Hozzon létre egy virtuális gépet a laboron belül.
 
 ```yml
 - name: Create a VM within the lab
@@ -173,9 +173,9 @@ Hozzon létre egy virtuális Gépet a labor belül.
     expiration_date: "2029-02-22T01:49:12.117974Z"
 ```
 
-## <a name="list-the-labs-artifact-sources-and-artifacts"></a>A labor összetevő forrásai és összetevők
+## <a name="list-the-labs-artifact-sources-and-artifacts"></a>A tesztkörnyezet összetevő-forrásainak és összetevőinek listázása
 
-Listát az összes alapértelmezett és egyéni összetevők források a tesztkörnyezetben, használja a következő feladatot:
+A laborban található összes alapértelmezett és egyéni összetevő-forrás listázásához használja a következő feladatot:
 
 ```yml
 - name: List the artifact sources
@@ -187,7 +187,7 @@ Listát az összes alapértelmezett és egyéni összetevők források a tesztk�
     var: output
 ```
 
-A következő feladatot összetevők sorolja fel:
+A következő feladat felsorolja az összes összetevőt:
 
 ```yml
 - name: List the artifact facts
@@ -200,9 +200,9 @@ A következő feladatot összetevők sorolja fel:
     var: output
 ```
 
-## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Az összetevő forrásai Azure Resource Manager adatainak beolvasása
+## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Az összetevő-források Azure Resource Manager adatainak beolvasása
 
-Az Azure Resource Manager-sablonok listáját `public environment repository`, az előre meghatározott-tárunkat, ahol sablonokat:
+Az `public environment repository` összes Azure Resource Manager-sablonjának listázásához az előre definiált adattár sablonokkal:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -214,7 +214,7 @@ Az Azure Resource Manager-sablonok listáját `public environment repository`, a
     var: output
 ```
 
-És a következő feladat a tárházból egy adott Azure Resource Manager-sablon adatait kérdezi le:
+A következő feladat egy adott Azure Resource Manager sablon részleteit kérdezi le az adattárból:
 
 ```yml
 - name: Get Azure Resource Manager template facts
@@ -230,7 +230,7 @@ Az Azure Resource Manager-sablonok listáját `public environment repository`, a
 
 ## <a name="create-the-lab-environment"></a>A tesztkörnyezet létrehozása
 
-A következő feladatot hoz létre a laborkörnyezetben a nyilvános környezetben adattárból sablonok alapján.
+A következő feladat létrehozza a tesztkörnyezet környezetét a nyilvános környezet tárházának egyik sablonja alapján.
 
 ```yml
 - name: Create the lab environment
@@ -244,9 +244,9 @@ A következő feladatot hoz létre a laborkörnyezetben a nyilvános környezetb
       register: output
 ```
 
-## <a name="create-the-lab-image"></a>A lab-lemezkép létrehozása
+## <a name="create-the-lab-image"></a>A tesztkörnyezet rendszerképének létrehozása
 
-A következő feladatot kép egy virtuális Gépet hoz létre. A kép azonos virtuális gépek létrehozását teszi lehetővé.
+A következő feladat létrehoz egy rendszerképet egy virtuális gépről. A rendszerkép lehetővé teszi, hogy azonos virtuális gépeket hozzon létre.
 
 ```yml
 - name: Create the lab image
@@ -258,7 +258,7 @@ A következő feladatot kép egy virtuális Gépet hoz létre. A kép azonos vir
     linux_os_state: non_deprovisioned
 ```
 
-## <a name="delete-the-lab"></a>A tesztkörnyezet törlése
+## <a name="delete-the-lab"></a>A labor törlése
 
 A labor törléséhez használja a következő feladatot:
 
@@ -275,11 +275,11 @@ A labor törléséhez használja a következő feladatot:
       - output.changed
 ```
 
-## <a name="get-the-sample-playbook"></a>A mintául szolgáló forgatókönyvek beolvasása
+## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
-A teljes minta forgatókönyv beolvasásához két módja van:
-- [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) , és mentse a `devtestlab-create.yml`.
-- Hozzon létre egy új fájlt `devtestlab-create.yml` és másolja bele a következő tartalommal:
+A teljes példa a következő két módon szerezhető be:
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/devtestlab-create.yml) forgatókönyvet, és mentse a `devtestlab-create.yml` értékre.
+- Hozzon létre egy `devtestlab-create.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 ---
@@ -446,13 +446,13 @@ A teljes minta forgatókönyv beolvasásához két módja van:
 
 ## <a name="run-the-playbook"></a>A forgatókönyv futtatása
 
-Ebben a szakaszban a forgatókönyv teszteléséhez a jelen cikkben ismertetett különféle szolgáltatások futtatása.
+Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
-A forgatókönyv futtatása előtt végezze el az alábbi módosításokat:
-- Az a `vars` szakaszban, cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevét.
-- A GitHub-jogkivonat Store nevű környezeti változóban `GITHUB_ACCESS_TOKEN`.
+A forgatókönyv futtatása előtt végezze el a következő módosításokat:
+- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- Tárolja a GitHub-tokent `GITHUB_ACCESS_TOKEN` nevű környezeti változóként.
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -460,9 +460,9 @@ ansible-playbook devtestlab-create.yml
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az ebben a cikkben létrehozott erőforrásokat. 
+Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-A következő kód, Mentés `cleanup.yml`:
+Mentse a következő kódot `cleanup.yml`-ként:
 
 ```yml
 - hosts: localhost
@@ -476,13 +476,13 @@ A következő kód, Mentés `cleanup.yml`:
         state: absent
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

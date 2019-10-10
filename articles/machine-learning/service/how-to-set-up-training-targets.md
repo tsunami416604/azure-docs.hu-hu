@@ -1,5 +1,5 @@
 ---
-title: Létrehozhat és használhat a számítási célokhoz modell betanítása
+title: Számítási célok létrehozása és használata a modell betanításához
 titleSuffix: Azure Machine Learning
 description: Konfigurálja a betanítási környezeteket (számítási célok) a Machine learning-modellek betanításához. Könnyedén válthat a képzési környezetek között. A képzés helyi elindítása. Ha vertikális felskálázásra van szüksége, váltson át egy felhőalapú számítási célra.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bce04a14a13d5b3615963f298f35af0d2fc480bb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034419"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244436"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 
@@ -35,7 +35,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a különböző számítási
 
 ## <a name="compute-targets-for-training"></a>Számítási célok képzéshez
 
-A Azure Machine Learning különböző számítási célok esetében eltérő támogatással rendelkezik. Egy tipikus modell fejlesztési életciklus kisebb mennyiségű adatot a dev/Kísérletezési kezdődik. Ezen a ponton használatát javasoljuk a helyi környezetben. Például a helyi számítógépen vagy egy felhőalapú virtuális Gépen. Vertikális felskálázás a tanítási a nagyobb adatkészletek, vagy hajtsa végre az elosztott betanítás, egy vagy több node fürtöt létrehozni, hogy az automatikus skálázást alkalmat futtató minden elküldésekor a az Azure Machine Learning Compute használatát javasoljuk. Bár a különböző forgatókönyvekben eltérőek lehetnek az alábbiakban ismertetett támogatási is hozzáadhat a saját számítási erőforrás:
+A Azure Machine Learning különböző számítási célok esetében eltérő támogatással rendelkezik. Egy tipikus modell fejlesztési életciklusa kis mennyiségű adaton kezdi meg a fejlesztést és kísérletezést. Ebben a szakaszban a helyi környezet használatát javasoljuk. Például a helyi számítógép vagy egy felhőalapú virtuális gép. A nagyobb adatkészletek betanításának felskálázása vagy az elosztott képzések használatakor javasoljuk, hogy Azure Machine Learning számítás használatával hozzon létre egy önálló vagy több csomópontos fürtöt, amely minden egyes futtatásakor elküldi az egyes műveleteket. Saját számítási erőforrást is csatolhat, bár a különböző forgatókönyvek támogatása az alábbiakban részletezett módon változhat:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -68,50 +68,50 @@ A ML-folyamatok több **lépésből**állnak, amelyek a folyamat különböző s
 > [!TIP]
 > A ML-folyamatok a modellek betanításakor használhatnak futtatási konfigurációt vagy becslések.
 
-Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is előkészítheti a modelleket, és üzembe helyezheti a modelleket. A folyamatok egyik elsődleges használati esete a Batch pontozása. További információkért lásd [: folyamatok: Optimalizálja a gépi tanulási munkafolyamatokat](concept-ml-pipelines.md).
+Míg a ML-folyamatok képesek betanítani a modelleket, a betanítás előtt is előkészítheti a modelleket, és üzembe helyezheti a modelleket. A folyamatok egyik elsődleges használati esete a Batch pontozása. További információt a [folyamatok: a gépi tanulási munkafolyamatok optimalizálása](concept-ml-pipelines.md)című témakörben talál.
 
 ## <a name="set-up-in-python"></a>Beállítás a Pythonban
 
 Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 
 * [Helyi számítógép](#local)
-* [Az Azure Machine Learning Compute](#amlcompute)
+* [Azure Machine Learning számítás](#amlcompute)
 * [Távoli virtuális gépek](#vm)
-* [Az Azure HDInsight](#hdinsight)
+* [Azure-HDInsight](#hdinsight)
 
 
 ### <a id="local"></a>Helyi számítógép
 
-1. **Létrehozás és csatolás**: Nem szükséges számítási célt létrehozni vagy csatolni a helyi számítógép betanítási környezetként való használatához.  
+1. **Létrehozás és csatolás**: nem szükséges számítási célt létrehozni vagy csatolni ahhoz, hogy a helyi számítógépet a képzési környezetként használhassa.  
 
-1. **Konfigurálás**:  Ha a helyi számítógépet számítási célként használja, a képzési kód a [fejlesztési környezetben](how-to-configure-environment.md)fut.  Ha a környezet már rendelkezik a szükséges Python-csomagokkal, használja a felhasználó által felügyelt környezetet.
+1. **Konfigurálás**: Ha a helyi számítógépet számítási célként használja, a képzési kód a [fejlesztési környezetben](how-to-configure-environment.md)fut.  Ha a környezet már rendelkezik a szükséges Python-csomagokkal, használja a felhasználó által felügyelt környezetet.
 
  [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/local.py?name=run_local)]
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a id="amlcompute"></a>Az Azure Machine Learning Compute
+### <a id="amlcompute"></a>Azure Machine Learning számítás
 
 Azure Machine Learning a számítás egy felügyelt számítási infrastruktúra, amely lehetővé teszi, hogy a felhasználó egyszerűen hozzon létre egy vagy több csomópontos számítási módszert. A számítás a munkaterület-régión belül jön létre olyan erőforrásként, amely a munkaterület más felhasználóival is megoszthatók. A számítási feladatok automatikusan méretezhetők, ha egy feladatot elküldenek, és egy Azure-Virtual Network helyezhetők el. A számítás egy tároló környezetbe kerül, és a modell függőségeit egy [Docker-tárolóban](https://www.docker.com/why-docker)csomagolja.
 
-Használhatja az Azure Machine Learning Compute a betanítási folyamat szét a felhőben Processzor és GPU számítási csomópontból álló fürtben. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
+A betanítási folyamat a felhőben lévő CPU-vagy GPU-alapú számítási csomópontok fürtön keresztüli elosztásához Azure Machine Learning számítást is használhat. A GPU-ket tartalmazó virtuálisgép-méretekkel kapcsolatos további információkért lásd: [GPU-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu).
 
 Azure Machine Learning a számítások alapértelmezett korlátai, például a lefoglalt magok száma. További információ: [Az Azure-erőforrások kezelése és kvóták igénylése](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 
 Igény szerint létrehozhat egy Azure Machine Learning számítási környezetet, amikor futtat egy futtatást vagy állandó erőforrásként.
 
-#### <a name="run-based-creation"></a>Futtatás-alapú létrehozása
+#### <a name="run-based-creation"></a>Futtatás alapú létrehozás
 
 Futtatáskor számítási célként Azure Machine Learning számítási célt is létrehozhat. A rendszer automatikusan létrehozza a számítást a futtatásához. A rendszer automatikusan törli a számítást a Futtatás befejeződése után. 
 
 > [!NOTE]
-> A használni kívánt csomópontok maximális számának megadásához általában a csomópontok számát kell beállítani `node_count` . Jelenleg (04/04/2019) egy olyan hiba, amely megakadályozza ennek működését. Áthidaló megoldásként használja `amlcompute._cluster_max_node_count` a futtatási konfiguráció tulajdonságát. Például: `run_config.amlcompute._cluster_max_node_count = 5`.
+> A használni kívánt csomópontok maximális számának megadásához általában @no__t – 0 értéket kell beállítania a csomópontok számához. Jelenleg (04/04/2019) egy olyan hiba, amely megakadályozza ennek működését. Áthidaló megoldásként használja a futtatási konfiguráció `amlcompute._cluster_max_node_count` tulajdonságát. Például: `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > A Azure Machine Learning számítás futtatásán alapuló létrehozása jelenleg előzetes verzióban érhető el. Ne használjon futtatáson alapuló létrehozást, ha automatikus hiperparaméter-hangolást vagy gépi tanulást használ. A hiperparaméter hangolás vagy az automatizált gépi tanulás használatához hozzon létre egy [állandó számítási](#persistent) célt.
 
-1.  **Létrehozás, csatolás és konfigurálás**: A Futtatás-alapú létrehozás végrehajtja a számítási cél létrehozásához, csatolásához és konfigurálásához szükséges lépéseket a futtatási konfigurációval.  
+1.  **Létrehozás, csatolás és konfigurálás**: a futtatáson alapuló létrehozás végrehajtja az összes szükséges lépést a számítási cél létrehozásához, csatolásához és konfigurálásához a futtatási konfigurációval.  
 
   [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute.py?name=run_temp_compute)]
 
@@ -122,19 +122,19 @@ Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a köve
 
 Az állandó Azure Machine Learning számítások újra felhasználhatók a feladatok között. A számítás a munkaterület más felhasználóival is megosztható, és a feladatok között megmarad.
 
-1. **Létrehozás és csatolás**: Állandó Azure Machine Learning számítási erőforrás Pythonban való létrehozásához a **vm_size** és a **max_nodes** tulajdonságokat kell megadnia. A Azure Machine Learning ezután az intelligens alapértelmezett értékeket használja a többi tulajdonsághoz. A számítási műveletek nem a használat során nulla csomópontra vannak lebontva.   A dedikált virtuális gépek a feladatok igény szerinti futtatásához jönnek létre.
+1. **Létrehozás és csatolás**: állandó Azure Machine learning számítási erőforrás létrehozása Pythonban, a **vm_size** és a **max_nodes** tulajdonságainak megadása. A Azure Machine Learning ezután az intelligens alapértelmezett értékeket használja a többi tulajdonsághoz. A számítási műveletek nem a használat során nulla csomópontra vannak lebontva.   A dedikált virtuális gépek a feladatok igény szerinti futtatásához jönnek létre.
     
-    * **vm_size**: Azure Machine Learning számítás által létrehozott csomópontok virtuálisgép-családja.
-    * **max_nodes**: Azon csomópontok maximális száma, amelyeknek az autoskálázása Azure Machine Learning számítási feladatok futtatásakor.
+    * **vm_size**: Azure Machine learning számítás által létrehozott csomópontok virtuálisgép-családja.
+    * **max_nodes**: azoknak a csomópontoknak a maximális száma, amelyeknek az autoskálázása Azure Machine learning számítási feladatok futtatásakor.
     
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]
 
-   Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
-    )
+   Azure Machine Learning számítás létrehozásakor több speciális tulajdonság is konfigurálható. A tulajdonságok lehetővé teszik a rögzített méretű állandó fürt vagy az előfizetéshez tartozó meglévő Azure-Virtual Network létrehozását.  A részletekért tekintse meg a [AmlCompute osztályt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py
+    ) .
     
    Emellett állandó Azure Machine Learning számítási erőforrást is létrehozhat és csatolhat [a Azure Portalban](#portal-create).
 
-1. **Konfigurálás**: Hozzon létre egy futtatási konfigurációt az állandó számítási célhoz.
+1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt az állandó számítási célhoz.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=run_amlcompute)]
 
@@ -143,18 +143,18 @@ Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a köve
 
 ### <a id="vm"></a>Távoli virtuális gépek
 
-Az Azure Machine Learning a történő visszaállítását a saját számítási erőforrásokat, és a munkaterülethez csatolja azt is támogatja. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
+A Azure Machine Learning a saját számítási erőforrásait is támogatja, és csatolja azt a munkaterülethez. Az egyik ilyen erőforrástípus egy tetszőleges távoli virtuális gép, feltéve, hogy az Azure Machine Learningről érhető el. Az erőforrás lehet egy Azure-beli virtuális gép, egy távoli kiszolgáló a szervezetben vagy a helyszínen. Pontosabban, mivel az IP-cím és a hitelesítő adatok (Felhasználónév és jelszó, vagy SSH-kulcs) esetében bármilyen elérhető virtuális gép használható távoli futtatáshoz.
 
-Egy rendszer által fejlesztett conda-környezetben, egy már meglévő Python-környezetet, vagy egy Docker-tárolót is használhatja. A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció akkor különösen hasznos, ha egy olyan rugalmasabb, felhőalapú fejlesztési/kísérleti környezetben, mint a helyi gépen.
+Használhat egy rendszer által készített Conda-környezetet, egy már meglévő Python-környezetet vagy egy Docker-tárolót. A Docker-tárolón való végrehajtáshoz a virtuális gépen futó Docker-motorral kell rendelkeznie. Ez a funkció különösen akkor hasznos, ha rugalmasabb, felhőalapú fejlesztési/kísérletezési környezetet szeretne használni, mint a helyi gépen.
 
 Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használata választható Azure-beli virtuális gép. Ez a virtuális gép egy előre konfigurált adatelemzési és AI-fejlesztési környezet az Azure-ban. A virtuális gép számos eszközt és keretrendszert kínál a teljes életciklusú gépi tanulás fejlesztéséhez. A DSVM és a Azure Machine Learning használatával kapcsolatos további információkért lásd: [fejlesztési környezet konfigurálása](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm).
 
-1. **Létrehozás**: Hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakört.
+1. **Létrehozás**: hozzon létre egy DSVM, mielőtt a modellt betanítani. Az erőforrás létrehozásával kapcsolatban tekintse meg [a Linux (Ubuntu) Data Science Virtual Machine kiépítése](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)című témakört.
 
     > [!WARNING]
     > Azure Machine Learning csak az Ubuntut futtató virtuális gépeket támogatja. Amikor létrehoz egy virtuális gépet, vagy egy meglévő virtuális gépet választ, ki kell választania egy Ubuntut használó virtuális gépet.
 
-1. **Csatolás**: Meglévő virtuális gép számítási célként való csatolásához meg kell adnia a virtuális gép teljes tartománynevét (FQDN), felhasználónevét és jelszavát. A példában cserélje le \<a teljes tartománynevet > a virtuális gép nyilvános teljes tartománynevére vagy a nyilvános IP-címére. Cserélje \<le a Felhasználónév \<> és a jelszó >t a virtuális gép SSH-felhasználónevével és jelszavával.
+1. **Csatolás**: Ha egy meglévő virtuális gépet számítási célként szeretne csatolni, meg kell adnia a virtuális gép teljes tartománynevét (FQDN), felhasználónevét és jelszavát. A példában cserélje le a \<fqdn > a virtuális gép nyilvános teljes tartománynevére vagy a nyilvános IP-címére. Cserélje le a \<username > és a \<Password > a virtuális gép SSH-felhasználónevére és jelszavára.
 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
@@ -181,24 +181,24 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
    Vagy a [Azure Portal használatával](#portal-reuse)is csatlakoztathatja a DSVM a munkaterülethez.
 
-1. **Konfigurálás**: Hozzon létre egy futtatási konfigurációt a DSVM számítási céljához. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
+1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a DSVM számítási célhoz. A Docker és a Conda a DSVM lévő képzési környezet létrehozásához és konfigurálásához használható.
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/dsvm.py?name=run_dsvm)]
 
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a id="hdinsight"></a>Az Azure HDInsight 
+### <a id="hdinsight"></a>Azure-HDInsight 
 
 Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apache Spark biztosít, amely a modell betanítására használható.
 
-1. **Létrehozás**:  Hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
+1. **Létrehozás**: hozza létre a HDInsight-fürtöt, mielőtt felhasználja a modell betanításához. A Spark on HDInsight-fürt létrehozásával kapcsolatban lásd: [Spark-fürt létrehozása a HDInsight-ben](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql). 
 
     A fürt létrehozásakor meg kell adnia egy SSH-felhasználónevet és-jelszót. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk a HDInsight számítási célként való használatához.
     
-    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername >-SSH.azurehdinsight.net, ahol \<a clustername > a fürthöz megadott név. 
+    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername >-ssh.azurehdinsight.net, ahol a \<clustername > a fürthöz megadott név. 
 
-1. **Csatolás**: Ahhoz, hogy egy HDInsight-fürtöt számítási célként lehessen csatolni, meg kell adnia a HDInsight-fürt nevét, felhasználónevét és jelszavát. Az alábbi példa egy fürt csatlakoztatása a munkaterület az SDK-t használja. A példában cserélje le \<a clustername > a fürt nevére. Cserélje \<le a username \<> és a Password > nevet a fürthöz tartozó SSH-felhasználónévvel és jelszóval.
+1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt nevét, felhasználónevét és jelszavát. A következő példa az SDK használatával csatlakoztat egy fürtöt a munkaterülethez. A példában cserélje le a \<clustername > a fürt nevére. Cserélje le a \<username > és a \<Password > a fürthöz tartozó SSH-felhasználónévre és jelszóra.
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -206,7 +206,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azureinsight.net', 
+    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
@@ -222,7 +222,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
 
    A HDInsight-fürtöt a munkaterülethez is csatlakoztathatja [a Azure Portal használatával](#portal-reuse).
 
-1. **Konfigurálás**: Hozzon létre egy futtatási konfigurációt a HDI számítási célhoz. 
+1. **Konfigurálás**: hozzon létre egy futtatási konfigurációt a HDI számítási célhoz. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -236,9 +236,9 @@ Azure Batch a nagy léptékű párhuzamos és nagy teljesítményű számítást
 
 Azure Batch számítási célként való csatolásához a Azure Machine Learning SDK-t kell használnia, és meg kell adnia a következő információkat:
 
--   **Azure batch számítási név**: A munkaterületen belüli számításhoz használandó felhasználóbarát név
--   **Azure batch fiók neve**: Az Azure Batch fiók neve
--   **Erőforráscsoport**: Az Azure Batch fiókot tartalmazó erőforráscsoport.
+-   **Azure batch számítási név**: a munkaterületen belüli számításhoz használandó felhasználóbarát név
+-   **Azure batch fiók neve**: a Azure batch fiók neve
+-   **Erőforráscsoport**: az Azure batch fiókot tartalmazó erőforráscsoport.
 
 A következő kód bemutatja, hogyan csatolhatja Azure Batch számítási célként:
 
@@ -279,7 +279,7 @@ A munkaterülethez társított számítási célokat a Azure Portal érheti el. 
 * A munkaterületen kívül létrehozott [számítási cél csatolása](#portal-reuse)
 
 
-Miután létrejött a cél, és csatolva van a munkaterülethez, a futtatási konfigurációban egy `ComputeTarget` objektummal fogja használni: 
+A cél létrehozása és a munkaterülethez való csatolása után a futtatási konfigurációban `ComputeTarget` objektummal fogja használni: 
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -295,7 +295,7 @@ A munkaterülethez tartozó számítási célok megtekintéséhez kövesse az al
  
 1. Az __alkalmazások__területen válassza a __számítás__lehetőséget.
 
-    [![Számítás lap megtekintése](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
+    [@no__t – 1View számítási lap](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
 ### <a id="portal-create"></a>Számítási cél létrehozása
 
@@ -348,8 +348,8 @@ A számítási célok listájának megtekintéséhez kövesse a fentebb ismertet
     > [!NOTE]
     > A Microsoft azt javasolja, hogy SSH-kulcsokat használjon, amelyek biztonságosabbak a jelszavaknál. A jelszavak ki vannak téve a találgatásos támadásoknak. Az SSH-kulcsok titkosítási aláírásokra támaszkodnak. Az Azure Virtual Machines használható SSH-kulcsok létrehozásával kapcsolatos információkért tekintse meg a következő dokumentumokat:
     >
-    > * [Hozzon létre és használhat SSH-kulcsokat a Linux vagy macOS rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [Hozzon létre és SSH-kulcsok használata a Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [SSH-kulcsok létrehozása és használata Linux vagy macOS rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [SSH-kulcsok létrehozása és használata Windows rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. Válassza a __csatolás__lehetőséget. 
 1. Tekintse meg a csatolási művelet állapotát a listából válassza ki a számítási célt.
@@ -379,9 +379,9 @@ Miután létrehozta a futtatási konfigurációt, a használatával futtathatja 
 > [!IMPORTANT]
 > A betanítási Futtatás elküldésekor létrejön a betanítási parancsfájlokat tartalmazó könyvtár pillanatképe, amelyet a rendszer elküld a számítási célra. A munkaterületen található kísérlet részeként is tárolja. Ha módosítja a fájlokat, és újra elküldi a futtatást, csak a módosított fájlok lesznek feltöltve.
 >
-> Ha meg szeretné akadályozni, hogy a fájlok szerepeljenek a pillanatképben, `.amlignore` hozzon létre egy [. gitignore](https://git-scm.com/docs/gitignore) vagy fájlt a címtárban, és adja hozzá a fájlokat. A `.amlignore` fájl ugyanazt a szintaxist és mintázatot használja, mint a [. gitignore](https://git-scm.com/docs/gitignore) fájl. Ha mindkét fájl létezik, a `.amlignore` fájl elsőbbséget élvez.
+> Ha meg szeretné akadályozni, hogy a fájlok szerepeljenek a pillanatképben, hozzon létre egy [. gitignore](https://git-scm.com/docs/gitignore) vagy `.amlignore` fájlt a könyvtárban, és adja hozzá a fájlokat. A `.amlignore` fájl ugyanazt a szintaxist és mintázatot használja, mint a [. gitignore](https://git-scm.com/docs/gitignore) fájl. Ha mindkét fájl létezik, a `.amlignore` fájl elsőbbséget élvez.
 > 
-> További információ: Pillanatképek [](concept-azure-machine-learning-architecture.md#snapshots).
+> További információ: [Pillanatképek](concept-azure-machine-learning-architecture.md#snapshots).
 
 ### <a name="create-an-experiment"></a>Kísérlet létrehozása
 
@@ -391,11 +391,11 @@ Először hozzon létre egy kísérletet a munkaterületen.
 
 ### <a name="submit-the-experiment"></a>A kísérlet elküldése
 
-A kísérletet egy `ScriptRunConfig` objektummal küldje el.  Ez az objektum az alábbiakat tartalmazza:
+A kísérletet `ScriptRunConfig` objektummal küldje el.  Ez az objektum az alábbiakat tartalmazza:
 
-* **forráskönyvtár**: A betanítási parancsfájlt tartalmazó forrás könyvtára
-* **parancsfájl**: A betanítási parancsfájl azonosítása
-* **run_config**: A futtatási konfiguráció, amely viszont meghatározza, hogy hol történjen a képzés.
+* **forráskönyvtár**: a betanítási parancsfájlt tartalmazó forrás könyvtára
+* **parancsfájl**: a betanítási parancsfájl azonosítása
+* **run_config**: a futtatási konfiguráció, amely azt határozza meg, hogy hol történjen a képzés.
 
 A [helyi cél](#local) konfigurációjának használatához például:
 
@@ -406,7 +406,7 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa `node_count` a futtatási konfigurációt a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
+> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa a futtatási konfiguráció `node_count` értéket a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -414,7 +414,7 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 
 Vagy a következőket teheti:
 
-* A kísérletet egy `Estimator` olyan objektummal küldje el, amely az [ml modellek becslések-vel való betanítását](how-to-train-ml-models.md)mutatja.
+* Küldje el a kísérletet egy `Estimator` objektummal, ahogy az [ml-modellek becslések-vel való betanítása](how-to-train-ml-models.md)is látható.
 * HyperDrive-Futtatás küldése a [hiperparaméter finomhangolásához](how-to-tune-hyperparameters.md).
 * Kísérlet küldése a [vs Code bővítmény](how-to-vscode-tools.md#train-and-tune-models)használatával.
 
@@ -422,7 +422,7 @@ További információkért tekintse meg a [ScriptRunConfig](https://docs.microso
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Futtatási konfiguráció létrehozása és futtatásának elküldése Azure Machine Learning CLI használatával
 
-Használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t és a [Machine learning CLI-bővítményt](reference-azure-machine-learning-cli.md) a futtatási konfigurációk létrehozásához és a különböző számítási célokból való beküldéséhez. Az alábbi példák azt feltételezik, hogy van egy meglévő Azure Machine learning-munkaterület, és bejelentkezett az Azure `az login` -ba a CLI paranccsal. 
+Használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t és a [Machine learning CLI-bővítményt](reference-azure-machine-learning-cli.md) a futtatási konfigurációk létrehozásához és a különböző számítási célokból való beküldéséhez. Az alábbi példák azt feltételezik, hogy van egy meglévő Azure Machine Learning-munkaterület, és `az login` CLI-paranccsal jelentkezett be az Azure-ba. 
 
 ### <a name="create-run-configuration"></a>Futtatási konfiguráció létrehozása
 
@@ -432,7 +432,7 @@ A futtatási konfiguráció létrehozásának legegyszerűbb módja a Machine le
 az ml folder attach
 ```
 
-Ez a parancs létrehoz egy `.azureml` almappát, amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
+Ez a parancs egy `.azureml` almappát hoz létre, amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
 
 ### <a name="structure-of-run-configuration-file"></a>A futtatási konfigurációs fájl szerkezete
 
@@ -493,7 +493,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Jegyezze fel az *argumentumok* szakaszt a runconfig és a *paraméter* területen a HyperDrive konfigurációban. Ezek tartalmazzák a betanítási parancsfájlnak átadandó parancssori argumentumokat. A runconfig értéke minden iteráció esetében azonos marad, míg a HyperDrive config tartománya megismétli a tartományt. Ne ugyanazt az argumentumot válassza mindkét fájlban.
 
-A ```az ml``` CLI-parancsokkal és az argumentumok teljes készletével kapcsolatos további részletekért tekintse meg [a dokumentációt](reference-azure-machine-learning-cli.md).
+Ezekről a ```az ml``` CLI-parancsokról és az argumentumok teljes készletéről a [dokumentációban](reference-azure-machine-learning-cli.md)talál további információt.
 
 <a id="gitintegration"></a>
 
@@ -504,14 +504,14 @@ Ha olyan képzést indít el, ahol a forrás könyvtára helyi git-tárház, a r
 ## <a name="notebook-examples"></a>Jegyzetfüzet-példák
 
 Tekintse meg ezeket a jegyzetfüzeteket a különböző számítási célokból származó képzésekre:
-* [útmutatóval-to-használat – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
-* [oktatóanyagok és img-besorolás-1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+* [használati útmutató – azureml/képzés](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
+* [oktatóanyagok/IMG-Classification-part1-Training. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Oktatóanyag: A modell](tutorial-train-models-with-aml.md) betanítása felügyelt számítási célt használ a modellek betanításához.
+* [Oktatóanyag: a betanítási modell](tutorial-train-models-with-aml.md) felügyelt számítási célt használ a modellek betanításához.
 * Ismerje meg, hogy miként lehet [hatékonyan hangolni a hiperparaméterek beállítása](how-to-tune-hyperparameters.md) a jobb modellek létrehozásához.
 * A betanított modellel megtudhatja, [Hogyan és hol helyezheti üzembe a modelleket](how-to-deploy-and-where.md).
 * Tekintse meg a [RunConfiguration Class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK-referenciát.

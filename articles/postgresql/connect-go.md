@@ -1,6 +1,6 @@
 ---
-title: Csatlakozás az Azure Database for PostgreSQL - kiszolgáló egyetlen a Go nyelv használatával
-description: Ez a rövid útmutató egy Go programozási nyelven írt mintát csatlakozás és adatlekérdezés, Azure Database for PostgreSQL - kiszolgáló egyetlen segítségével biztosít.
+title: A go Language használata Azure Database for PostgreSQL – egyetlen kiszolgálóhoz való kapcsolódáshoz
+description: Ez a rövid útmutató egy go programozási nyelvi mintát tartalmaz, amellyel összekapcsolhatók és lekérhető Azure Database for PostgreSQL – egyetlen kiszolgálóról származó adatok lekérdezése.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,15 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 9356379262cc078cd6a62f3280bcb8cc3d315844
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 645d34961fb735542729091719dd55c42436db95
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067358"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244479"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL - kiszolgáló egyetlen: Csatlakozás és adatok lekérdezése a Go nyelv használatával
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Azt is bemutatja, hogyan lehet SQL-utasítások használatával adatokat lekérdezni, beszúrni, frissíteni és törölni az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
+# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló: kapcsolódás és adatlekérdezés a go nyelv használatával
+Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni a PostgreSQL-hez készült Azure-adatbázishoz [Go](https://golang.org/) nyelven írt kóddal (golang). Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A cikk feltételezi, hogy Ön ismeri a Go-t használó fejlesztéseket, de még járatlan a PostgreSQL-hez készült Azure-adatbázis használatában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
@@ -31,7 +31,7 @@ Telepítse a [Go](https://golang.org/doc/install)-t és a [Pure Go Postgres ille
 2. Nyissa meg a parancssort a Start menüből.
 3. Hozzon létre egy mappát a projekt számára (például `mkdir  %USERPROFILE%\go\src\postgresqlgo`).
 4. Nyissa meg a projektmappát (például `cd %USERPROFILE%\go\src\postgresqlgo`).
-5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go`.
+5. Úgy állítsa be a GOPATH környezeti változóját, hogy a forráskód könyvtárára mutasson. `set GOPATH=%USERPROFILE%\go` kérdésre adott válaszban foglalt lépéseket.
 6. Telepítse a [Pure Go Postgres illesztőt (pq)](https://github.com/lib/pq) a `go get github.com/lib/pq` parancs futtatásával.
 
    Összefoglalva, telepítse a Go-t, majd futtassa ezeket a parancsokat a parancssorban:
@@ -85,15 +85,15 @@ Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz s
  ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>Go kód felépítése és futtatása 
-1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha a funkciógazdagabb interaktív fejlesztési környezeteket (IDE-ket) részesít előnyben, próbálja ki a Jetbrains [Gogland](https://www.jetbrains.com/go/) a Microsoft [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/) eszközt.
+1. Golang-kód írásához használhat egy egyszerű szövegszerkesztőt, ilyen például Microsoft Windows rendszeren a Jegyzettömb, Ubuntu rendszeren a [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) vagy a [Nano](https://www.nano-editor.org/), macOS rendszeren pedig a TextEdit. Ha inkább egy gazdagabb interaktív fejlesztési környezetet (IDE) szeretne [kipróbálni](https://www.jetbrains.com/go/) a JetBrains, a [Visual Studio Code](https://code.visualstudio.com/) by Microsoft vagy az [Atom](https://atom.io/)használatával.
 2. Az alábbi szakaszokban található Golang-kódokat illessze be szövegfájlokba, és mentse a fájlokat a projektmappába \*.go kiterjesztéssel, például `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows) vagy `~/go/src/postgresqlgo/createtable.go` (Linux) elérési úton.
 3. Keresse meg a `HOST`, a `DATABASE`, a `USER` és a `PASSWORD` állandót a kódban, és a példaértékeket cserélje le a saját értékeire.  
 4. Nyissa meg a parancssort vagy a bash rendszerhéjat. Lépjen a projektmappára. Windows rendszer például a következővel: `cd %USERPROFILE%\go\src\postgresqlgo\`. Linuxon: `cd ~/go/src/postgresqlgo/`. A fentiekben említettek közül egyes IDE-környezetek hibakeresési és futásidejű képességeket biztosítanak anélkül, hogy rendszerhéjparancsokra lenne szükség.
-5. A kód futtatásához írja be a `go run createtable.go` parancsot az alkalmazás lefordításához és futtatásához. 
+5. Futtassa a kódot a `go run createtable.go` parancs beírásával az alkalmazás fordításához és futtatásához. 
 6. Vagy a kód natív alkalmazásba való beépítéséhez írja be a `go build createtable.go` parancsot, majd indítsa el a `createtable.exe` fájlt az alkalmazás futtatásához.
 
 ## <a name="connect-and-create-a-table"></a>Csatlakozás és tábla létrehozása
-A következő kód használatával csatlakozhat, és létrehozhat egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasításokkal sorokat adhat hozzá a táblához.
+A következő kód segítségével csatlakozzon, és hozzon létre egy táblát a **CREATE TABLE** SQL-utasítással, majd az **INSERT INTO** SQL-utasítással adjon hozzá sorokat a táblához.
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](https://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a PostgreSQL-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
 
@@ -163,7 +163,7 @@ Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasá
 
 A kód három csomagot importál, az [sql package](https://golang.org/pkg/database/sql/) és a [pq package](https://godoc.org/github.com/lib/pq) csomagot illesztőprogramként a PostgreSQL-kiszolgálóval való kommunikációhoz, illetve az [fmt package](https://golang.org/pkg/fmt/) csomagot a nyomtatott bemenetekhez és kimenetekhez a parancssoron.
 
-A kód meghívja az [sql.Open()](https://godoc.org/github.com/lib/pq#Open) metódust az Azure Database for PostgreSQL szolgáltatáshoz való csatlakozáshoz, majd a [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) metódussal ellenőrzi a kapcsolatot. A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A select lekérdezést a [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) metódus meghívásával lehet futtatni, és az így kapott sorokat a rendszer egy [rows](https://golang.org/pkg/database/sql/#Rows) (sorok) típusú változóban tárolja. A kód beolvassa az aktuális sorban található oszlopok adatértékeit a [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) metódussal, majd a [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) iterátor használatával ismétlődően fut a sorokon, amíg azok el nem fogynak. Az egyes sorok oszlopértékei megjelennek a konzolon. A rendszer minden alkalommal egyéni checkError() metódussal ellenőrzi a hibákat, és hiba esetén kilép.
+A kód meghívja az [sql.Open()](https://godoc.org/github.com/lib/pq#Open) metódust az Azure Database for PostgreSQL szolgáltatáshoz való csatlakozáshoz, majd a [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) metódussal ellenőrzi a kapcsolatot. A rendszer a folyamat során [adatbázis-leírót](https://golang.org/pkg/database/sql/#DB) használ, amely az adatbázis-kiszolgáló kapcsolatkészletét tárolja. A select lekérdezést a [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) metódus meghívásával lehet futtatni, és az így kapott sorokat a rendszer egy [rows](https://golang.org/pkg/database/sql/#Rows) (sorok) típusú változóban tárolja. A kód beolvassa az aktuális sorban található oszlopok adatértékeit a [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) metódussal, majd a [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) iterátor használatával ismétlődően fut a sorokon, amíg azok el nem fogynak. Az egyes sorok oszlopainak értékeit a rendszer kinyomtatja a konzolon. Minden alkalommal, amikor egy egyéni checkError () metódust használ a hiba előfordulásának vizsgálatára és a kilépésre, ha hiba történik.
 
 Cserélje le a `HOST`, `DATABASE`, `USER` és `PASSWORD` paramétereket a saját értékeire. 
 
@@ -332,6 +332,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

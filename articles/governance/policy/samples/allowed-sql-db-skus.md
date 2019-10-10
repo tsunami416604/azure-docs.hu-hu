@@ -1,17 +1,17 @@
 ---
 title: Minta – engedélyezett SQL DB SKU-ket
-description: A példában szereplő házirend-definícióban az SQL-adatbázisok jóváhagyott SKU használatát igénylik.
+description: A példában szereplő házirend-definícióban az SQL-adatbázisok jóváhagyott SKU használatát igénylik. A követelménynek meg nem felelő új erőforrások megtagadva.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4d20986e6bb3f9dc8e1d19a141716bdc66abd13e
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 812ba137bad052e9ee784504151d2a52f99fb9a8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977716"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244195"
 ---
 # <a name="sample---allowed-sql-database-skus"></a>Minta – engedélyezett SQL Database-SKU-ket
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'sql-db-skus' --display-name 'Allowed SQL DB 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "sql-db-skus"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

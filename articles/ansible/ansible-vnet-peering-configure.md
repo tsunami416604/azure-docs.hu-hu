@@ -1,35 +1,35 @@
 ---
-title: Oktatóanyag – konfigurálja az Azure virtuális hálózati társviszony-létesítést az Ansible-lel |} A Microsoft Docs
-description: 'Útmutató: virtuális hálózatok összekapcsolása virtuális hálózatok közötti társviszony az Ansible használatával.'
-keywords: ansible, azure, devops, bash, playbook, networking, peering
+title: Oktatóanyag – Azure-beli virtuális hálózatok társításának konfigurálása a Ansible használatával
+description: Ismerje meg, hogyan csatlakoztathatók a virtuális hálózatok a virtuális hálózatokkal a Ansible használatával.
+keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, peering
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f51e7c857a22a362a3d295fbe087c54b25f85780
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230755"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241238"
 ---
-# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Oktatóanyag: Konfigurálja az Azure virtuális hálózati társviszony-létesítést az Ansible-lel
+# <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>Oktatóanyag: Azure-beli virtuális hálózati társítás konfigurálása a Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Virtuális hálózatok (VNet) közötti társviszony](/azure/virtual-network/virtual-network-peering-overview) lehetővé teszi, hogy zökkenőmentesen csatlakoztathatja az Azure két virtuális hálózat. A társviszonyba, a két virtuális hálózat a csatlakozás szempontjából egyetlen jelennek meg. 
+A [Virtual Network (VNet)](/azure/virtual-network/virtual-network-peering-overview) -társítás lehetővé teszi két Azure-beli virtuális hálózat zökkenőmentes összekapcsolását. A társítást követően a két virtuális hálózat a kapcsolati céloknak megfelelően jelenik meg. 
 
-Az adatforgalmat ugyanazon a virtuális hálózaton keresztül a magánhálózati IP-címek a virtuális gépek között. Hasonlóképpen virtuális hálózat társviszonyban lévő virtuális gépek közötti adatforgalmat a Microsoft gerincinfrastruktúráján halad át. Ennek eredményeképpen különböző virtuális hálózatokban lévő virtuális gépek kommunikálhatnak egymással.
+A forgalom a magánhálózati IP-címeken keresztül azonos virtuális hálózatban lévő virtuális gépek között lesz átirányítva. Hasonlóképpen, a virtuális gépek közötti adatforgalom a Microsoft gerinc-infrastruktúrán keresztül irányítható. Ennek eredményeképpen a különböző virtuális hálózatokban lévő virtuális gépek kommunikálhatnak egymással.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Két virtuális gép létrehozása
-> * A két virtuális hálózat társviszonyba állítása
-> * A két hálózat közötti társviszony törlése
+> * Egyenrangú a két virtuális hálózat
+> * A két hálózat közötti társítás törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Az adatforgalmat ugyanazon a virtuális hálózaton keresztül a magánhálózat
 
 Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
 - Két erőforráscsoport létrehozása 
 
@@ -57,10 +57,10 @@ A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
 
 ## <a name="create-the-first-virtual-network"></a>Az első virtuális hálózat létrehozása
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
 - Virtuális hálózat létrehozása
-- Hozzon létre egy alhálózatot a virtuális hálózaton belül
+- Alhálózat létrehozása a virtuális hálózaton belül
 
 ```yml
   - name: Create first virtual network
@@ -78,10 +78,10 @@ A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
 
 ## <a name="create-the-second-virtual-network"></a>A második virtuális hálózat létrehozása
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
 - Virtuális hálózat létrehozása
-- Hozzon létre egy alhálózatot a virtuális hálózaton belül
+- Alhálózat létrehozása a virtuális hálózaton belül
 
 ```yml
   - name: Ceate second virtual network
@@ -97,12 +97,12 @@ A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
       virtual_network: "{{ vnet_name2 }}"
 ```
 
-## <a name="peer-the-two-virtual-networks"></a>A két virtuális hálózat társviszonyba állítása
+## <a name="peer-the-two-virtual-networks"></a>Egyenrangú a két virtuális hálózat
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
-- Virtuális hálózatok közötti társviszony inicializálása
-- Két korábban létrehozott virtuális hálózatok társviszonyba állítása
+- Virtuális hálózati társak inicializálása
+- Társ két korábban létrehozott virtuális hálózat
 
 ```yml
   - name: Initial vnet peering
@@ -128,11 +128,11 @@ A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
       allow_forwarded_traffic: true
 ```
 
-## <a name="delete-the-virtual-network-peering"></a>A virtuális hálózati társviszony törlése
+## <a name="delete-the-virtual-network-peering"></a>A virtuális hálózati társak törlése
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
-- A két korábban létrehozott virtuális hálózatok közötti társviszony törlése
+- A két korábban létrehozott virtuális hálózat közötti társítás törlése
 
 ```yml
   - name: Delete vnet peering
@@ -143,12 +143,12 @@ A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>A mintául szolgáló forgatókönyvek beolvasása
+## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
-A teljes minta forgatókönyv beolvasásához két módja van:
+A teljes példa a következő két módon szerezhető be:
 
-- [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) , és mentse a `vnet_peering.yml`.
-- Hozzon létre egy új fájlt `vnet_peering.yml` és másolja bele a következő tartalommal:
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vnet_peering.yml) forgatókönyvet, és mentse a `vnet_peering.yml` értékre.
+- Hozzon létre egy `vnet_peering.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - hosts: localhost
@@ -231,19 +231,19 @@ A teljes minta forgatókönyv beolvasásához két módja van:
 
 ## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
 
-Ebben a szakaszban szereplő mintakódban forgatókönyv teszteléséhez látható az oktatóanyag során különböző funkcióihoz használatos.
+Az ebben a szakaszban ismertetett példa az oktatóanyagban bemutatott különböző szolgáltatások tesztelésére szolgál.
 
-Az alábbiakban néhány kulcsfontosságú Megjegyzés figyelembe kell venni a minta forgatókönyv használata:
+Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- Az a `vars` szakaszban, cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevét.
+- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
-Futtassa a forgatókönyvet, az ansible-forgatókönyvek paranccsal:
+Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:
 
 ```bash
 ansible-playbook vnet_peering.yml
 ```
 
-A forgatókönyv futtatása után a következő eredményeket hasonló kimenet jelenik meg:
+A forgatókönyv futtatása után a következő eredményekhez hasonló kimenet jelenik meg:
 
 ```Output
 PLAY [localhost] 
@@ -292,11 +292,11 @@ localhost                  : ok=12   changed=9    unreachable=0    failed=0    s
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az ebben a cikkben létrehozott erőforrásokat. 
+Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-A mintakód forgatókönyv ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-forgatókönyv a következőhöz használható:
 
-- A két erőforrás-csoportok korábban létrehozott DELETE
+- Törölje a korábban létrehozott két erőforrás-csoportot.
 
 Mentse a következő forgatókönyvet `cleanup.yml` néven:
 
@@ -319,19 +319,19 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
         state: absent
 ```
 
-Az alábbiakban néhány kulcsfontosságú Megjegyzés figyelembe kell venni a minta forgatókönyv használata:
+Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- Cserélje le a `{{ resource_group_name-1 }}` létrehozott helyőrzőt az első erőforráscsoport nevét.
-- Cserélje le a `{{ resource_group_name-2 }}` létrehozott helyőrzőt a második erőforráscsoport nevét.
-- A két megadott erőforráscsoport belül minden erőforrás törlődni fog.
+- Cserélje le a `{{ resource_group_name-1 }}` helyőrzőt az elsőként létrehozott erőforráscsoport nevére.
+- Cserélje le a `{{ resource_group_name-2 }}` helyőrzőt a létrehozott második erőforráscsoport nevére.
+- A két megadott erőforráscsoport összes erőforrása törölve lesz.
 
-Futtassa a forgatókönyvet, az ansible-forgatókönyvek paranccsal:
+Futtassa a forgatókönyvt a Ansible-ötletekbõl paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

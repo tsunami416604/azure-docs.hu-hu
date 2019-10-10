@@ -1,31 +1,31 @@
 ---
-title: Az Ansible modul és verzió mátrix az Azure-hoz |} A Microsoft Docs
-description: Az Ansible modul és verzió mátrix az Azure-hoz
-keywords: az ansible, szerepkörök, mátrix, verzió, azure, fejlesztés és üzemeltetés
+title: Az Azure-hoz készült Ansible modul és Version Matrix
+description: Az Azure-hoz készült Ansible modul és Version Matrix
+keywords: Ansible, szerepkörök, mátrix, verzió, Azure, devops
 ms.topic: reference
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: b3396b2f4639cc7298b77810dbaafadd308d6b24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18654500a78178c46e72f9f6cd01e8507fa179f0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230981"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241541"
 ---
-# <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és verzió mátrix
+# <a name="ansible-module-and-version-matrix"></a>Az Ansible modul és a verziómátrix
 
-Az Ansible modulok használatát számos kiépítési és konfigurálása az Azure-erőforrások tartalmazza. Ezek az erőforrások közé tartozik a virtuális gépek, a méretezési csoportokat, hálózati szolgáltatások és tárolószolgáltatások. Ez a cikk felsorolja a különböző Ansible-modulok Azure és az Ansible-verziók, amelyben szállításra.
+A Ansible tartalmazza az Azure-erőforrások üzembe helyezéséhez és konfigurálásához használható modulok csomagját. Ezen erőforrások közé tartoznak a virtuális gépek, a méretezési csoportok, a hálózati szolgáltatások és a tároló szolgáltatások. Ez a cikk az Azure különböző Ansible-moduljait és a Ansible-verzióit sorolja fel.
 
-## <a name="ansible-modules-for-azure"></a>Az Ansible-modulok az Azure-hoz
+## <a name="ansible-modules-for-azure"></a>Ansible-modulok az Azure-hoz
 
-A következő modulok hajtható végre közvetlenül távoli gazdagépek, illetve forgatókönyvek segítségével.
+A következő modulok közvetlenül a távoli gazdagépeken vagy a forgatókönyvek használatával hajthatók végre.
 
-Ezeket a modulokat az Ansible hivatalos kiadás pedig a következő Microsoft forgatókönyv-szerepkörök érhetők el.
+Ezek a modulok a Ansible hivatalos kiadásában és a következő Microsoft forgatókönyv-szerepkörökben érhetők el.
 
-| Az Ansible-modul az Azure-hoz                   |  Az Ansible 2.4 |  Az Ansible 2,5 |  Az Ansible 2.6 | Az Ansible 2.7 | Az Ansible 2.8 | Az Ansible-szerepkör | 
+| Ansible modul az Azure-hoz                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible szerepkör | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------| 
 | **Számítás**                    |           |                          |                          |                            |           |           |
 | azure_rm_availabilityset                    | Igen          | Igen                         | Igen          | Igen          | Igen          | Igen          |
@@ -151,7 +151,7 @@ Ezeket a modulokat az Ansible hivatalos kiadás pedig a következő Microsoft fo
 | azure_rm_sqlserver_facts                    | -            | Igen                         | Igen          | Igen          | Igen          | Igen          |
 | **Elemzés**                    |           |                          |                          |                             |           |           |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Igen          | Igen          |
-| **Integráció**                    |           |                          |                          |                             |           |           |
+| **Integrációs**                    |           |                          |                          |                             |           |           |
 | azure_rm_servicebus                         | -            | -                           | -            | -            | Igen          | Igen          |
 | azure_rm_servicebus_facts                   | -            | -                           | -            | -            | Igen          | Igen          |
 | azure_rm_servicebusqueue                    | -            | -                           | -            | -            | Igen          | Igen          |
@@ -188,12 +188,12 @@ Ezeket a modulokat az Ansible hivatalos kiadás pedig a következő Microsoft fo
 | azure_rm_loganalyticsworkspace              | -            | -                           | -            | -            | Igen          | Igen          |
 | azure_rm_loganalyticsworkspace_facts        | -            | -                           | -            | -            | Igen          | Igen          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Forgatókönyv szerepkör bemutatása az Azure-hoz
+## <a name="introduction-to-playbook-role-for-azure"></a>Bevezetés az Azure-hoz készült ötletekbõl-szerepkörbe
 
-A [azure_preview_module forgatókönyv szerepkör](https://galaxy.ansible.com/Azure/azure_preview_modules/) minden a legújabb Azure-modulokat tartalmaz. A frissítések és hibajavításokat tartalmaz, mint a hivatalos Ansible-kiadás további időben kell elvégezni. Ansible az Azure erőforrás-kiépítés célra használja, hogy telepítse a `azure_preview_module` forgatókönyv szerepkör.
+A [azure_preview_module](https://galaxy.ansible.com/Azure/azure_preview_modules/) forgatókönyv-szerepkör tartalmazza az összes legújabb Azure-modult. A frissítések és a hibajavítások a hivatalos Ansible-kiadásnál jobban megvalósíthatók. Ha Ansible-t használ az Azure Resource kiépítési célokra, javasoljuk, hogy telepítse a `azure_preview_module` forgatókönyv-szerepkört.
 
-A `azure_preview_module` forgatókönyv szerepkör három hetente jelent meg.
+A `azure_preview_module` forgatókönyv-szerepkör három hetente jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Forgatókönyv-szerepkörök kapcsolatos további információkért lásd: [létrehozása újrahasznosítható forgatókönyvek](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+További információ a forgatókönyv-szerepkörökről: [újrafelhasználható](https://docs.ansible.com/ansible/latest/playbooks_reuse.html)forgatókönyvek létrehozása. 

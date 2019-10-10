@@ -10,14 +10,14 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 967a4542b3910b563dc30bde674e12fffdd12f48
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 685b6bda09026e64154590afd66bdfbec43b8b1e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559437"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243523"
 ---
-# <a name="configuration-based-on-stig"></a>Konfiguráció a STIG alapján
+# <a name="configuration-based-on-stig"></a>STIG-alapú konfiguráció
 
 > A következőkre vonatkozik: Windows PowerShell 5,1
 
@@ -33,15 +33,15 @@ Sok esetben a cél az, hogy automatizálja a kiszolgálók konfigurációját az
 A [PowerSTIG](https://github.com/microsoft/powerstig) nevű közösségi projekt célja, hogy a probléma megoldásához a Stig (biztonsági technikai megvalósítási útmutató) által biztosított [nyilvános információk](https://public.cyber.mil/stigs/) alapján DSC-tartalmat generáljon.
 
 Az alapkonfigurációk kezelése bonyolultabb, mint amilyennek hangzik.
-Számos szervezetnek dokumentálnia kell a [kivételeket](https://github.com/microsoft/powerstig#powerstigdata) a szabályokhoz, és az adatmennyiséget nagy mértékben kell kezelnie.
+Számos szervezetnek [dokumentálnia kell a kivételeket](https://github.com/microsoft/powerstig#powerstigdata) a szabályokhoz, és az adatmennyiséget nagy mértékben kell kezelnie.
 A PowerSTIG úgy kezeli a problémát, hogy [összetett erőforrásokat](https://github.com/microsoft/powerstig#powerstigdsc) biztosít a konfiguráció egyes területeinek kezeléséhez ahelyett, hogy egyetlen nagyméretű fájl összes beállítását próbálja meg kezelni.
 
-A konfigurációk létrehozása után a [DSC-konfigurációs parancsfájlok](/powershell/dsc/configurations) segítségével létrehozhat MOF-fájlokat, és [feltöltheti a MOF-fájlokat](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)a Azure Automationba.
+A konfigurációk létrehozása után a [DSC-konfigurációs parancsfájlok](/powershell/scripting/dsc/configurations/configurations) segítségével létrehozhat MOF-fájlokat, és [feltöltheti a MOF-fájlokat a Azure Automationba](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
 Ezután regisztrálja a kiszolgálókat akár [a helyszínen](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) , akár [Az Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekéréséhez.
 
-A PowerSTIG kipróbálásához látogasson el [](http://www.powershellgallery.com) a PowerShell-galériara, és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
+A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériara](http://www.powershellgallery.com) , és töltse le a megoldást, vagy kattintson a "Project site" (projekt helye) elemre a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/dsc/overview/overview)
 - [DSC-erőforrások](/powershell/dsc/resources/resources)

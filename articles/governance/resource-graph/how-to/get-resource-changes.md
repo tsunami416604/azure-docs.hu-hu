@@ -4,23 +4,24 @@ description: Megtudhatja, hogyan keresheti meg az erőforrást, és hogyan kérh
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/10/2019
+ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 2027f56d44be14895a40550d78a79d9e9dda9d97
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980282"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244113"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
 Az erőforrások a napi használat, az újrakonfigurálás és még az újratelepítés során változnak.
 A módosítás egy egyedi vagy egy automatizált folyamat alapján is elvégezhető. A legtöbb változás a tervezés szerint történik, de néha nem. Az elmúlt 14 napban az Azure Resource Graph a következőket teszi lehetővé:
 
-- Megtudhatja, mikor történtek módosítások az Azure Resource Manager-tulajdonságokban.
-- Megnézheti, mely tulajdonságok változtak meg a módosítási esemény részeként.
+- A Azure Resource Manager tulajdonság változásainak észlelése
+- Az egyes erőforrások változásairól lásd: tulajdonság változásának részletei
+- Tekintse meg az erőforrás teljes összehasonlítását az észlelt módosítás előtt és után.
 
 Az észlelés és a részletek változása az alábbi példák esetében hasznos:
 
@@ -36,24 +37,26 @@ Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-
 > [!IMPORTANT]
 > Az Azure Resource Graph változási előzményei nyilvános előzetes verzióban érhetők el.
 
-## <a name="find-when-changes-were-detected"></a>A változások észlelésének megkeresése
+## <a name="find-detected-change-events-and-view-change-details"></a>Észlelt változási események keresése és a változás részleteinek megtekintése
 
-Az erőforrás változásának első lépése, hogy megkeresse az adott erőforráshoz kapcsolódó módosítási eseményeket az adott időintervallumon belül. Ez a lépés a **resourceChanges** Rest-végponton keresztül történik.
+Az erőforrás változásának első lépése, hogy megkeresse az adott erőforráshoz kapcsolódó módosítási eseményeket az adott időintervallumon belül. Az egyes változási események az erőforrás változásának részleteit is tartalmazzák. Ez a lépés a **resourceChanges** Rest-végponton keresztül történik.
 
-A **resourceChanges** végpontjának két paramétert kell megadnia a kérelem törzsében:
+A **resourceChanges** végpont a következő paramétereket fogadja el a kérelem törzsében:
 
-- **resourceId**: Az Azure-erőforrás, melyen változásokat keres.
-- **időköz**: Egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
+- **resourceId** \[required @ no__t-2: az Azure-erőforrás, melyen módosításokat kell keresni.
+- **intervallum** \[required @ no__t-2: egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
+- **fetchPropertyChanges** (nem kötelező): logikai tulajdonság, amely meghatározza, hogy a válasz objektum tartalmazza-e a tulajdonságok változásait.
 
-A példában a kérés törzse:
+Példa a kérelem törzsére:
 
 ```json
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "interval": {
-        "start": "2019-03-28T00:00:00.000Z",
-        "end": "2019-03-31T00:00:00.000Z"
-    }
+        "start": "2019-09-28T00:00:00.000Z",
+        "end": "2019-09-29T00:00:00.000Z"
+    },
+    "fetchPropertyChanges": true
 }
 ```
 
@@ -67,41 +70,103 @@ A válasz a következőhöz hasonlóan néz ki:
 
 ```json
 {
-    "changes": [{
-            "changeId": "{\"beforeId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-09T00:00:00.000Z\",\"afterId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"beforeTime\":'2019-05-10T00:00:00.000Z\"}",
+    "changes": [
+        {
+            "changeId": "{\"beforeId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"beforeTime\":\"2019-09-28T00:45:35.012Z\",\"afterId\":\"6178968e-981e-4dac-ac37-340ee73eb577\",\"afterTime\":\"2019-09-28T00:52:53.371Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-29T01:32:05.993Z"
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-29T01:54:24.42Z"
-            }
+                "snapshotId": "6178968e-981e-4dac-ac37-340ee73eb577",
+                "timestamp": "2019-09-28T00:52:53.371Z"
+            },
+            "changeType": "Create"
         },
         {
-            "changeId": "9dc352cb-b7c1-4198-9eda-e5e3ed66aec8",
+            "changeId": "{\"beforeId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"beforeTime\":\"2019-09-28T00:43:38.366Z\",\"afterId\":\"3262e382-9f73-4866-a2e9-9d9dbee6a796\",\"afterTime\":\"2019-09-28T00:45:35.012Z\"}",
             "beforeSnapshot": {
-                "timestamp": "2019-03-28T10:30:19.68Z"
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
             },
             "afterSnapshot": {
-                "timestamp": "2019-03-28T21:12:31.337Z"
-            }
+                "snapshotId": "3262e382-9f73-4866-a2e9-9d9dbee6a796",
+                "timestamp": "2019-09-28T00:45:35.012Z"
+            },
+            "changeType": "Delete"
+        },
+        {
+            "changeId": "{\"beforeId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"beforeTime\":\"2019-09-28T00:43:15.518Z\",\"afterId\":\"a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c\",\"afterTime\":\"2019-09-28T00:43:38.366Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "a00f5dac-86a1-4d86-a1c5-a9f7c8147b7c",
+                "timestamp": "2019-09-28T00:43:38.366Z"
+            },
+            "propertyChanges": [
+                {
+                    "propertyName": "tags.org",
+                    "afterValue": "compute",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                },
+                {
+                    "propertyName": "tags.team",
+                    "afterValue": "ARG",
+                    "changeCategory": "User",
+                    "changeType": "Insert"
+                }
+            ],
+            "changeType": "Update"
+        },
+        {
+            "changeId": "{\"beforeId\":\"19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268\",\"beforeTime\":\"2019-09-28T00:42:46.839Z\",\"afterId\":\"b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c\",\"afterTime\":\"2019-09-28T00:43:15.518Z\"}",
+            "beforeSnapshot": {
+                "snapshotId": "19d12ab1-6ac6-4cd7-a2fe-d453a8e5b268",
+                "timestamp": "2019-09-28T00:42:46.839Z"
+            },
+            "afterSnapshot": {
+                "snapshotId": "b37a90d1-7ebf-41cd-8766-eb95e7ee4f1c",
+                "timestamp": "2019-09-28T00:43:15.518Z"
+            },
+            "propertyChanges": [{
+                "propertyName": "tags.cgtest",
+                "afterValue": "hello",
+                "changeCategory": "User",
+                "changeType": "Insert"
+            }],
+            "changeType": "Update"
         }
     ]
 }
 ```
 
-A **resourceId** minden észlelt változási eseményéhez tartozik egy **changeId** , amely egyedi az adott erőforráshoz. Habár a **changeId** karakterlánc esetenként más tulajdonságokat is tartalmazhat, csak egyedinek kell lennie. A módosítási rekord tartalmazza azokat az időpontokat, amikor az előtte és utána Pillanatképek készültek.
-A változási esemény ezen az időablakon belül egy adott időpontban fordult elő.
+A **resourceId** minden észlelt változási eseménye a következő tulajdonságokkal rendelkezik:
 
-## <a name="see-what-properties-changed"></a>A tulajdonságok változásának megtalálása
+- **changeId** – ez az érték egyedi az adott erőforráshoz. Habár a **changeId** karakterlánc esetenként más tulajdonságokat is tartalmazhat, csak egyedinek kell lennie.
+- **beforeSnapshot** – annak az erőforrás-pillanatképnek a **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése előtt hozott.
+- **afterSnapshot** – az erőforrás-pillanatkép **snapshotId** és **időbélyegét** tartalmazza, amelyet a rendszer a változás észlelése után hozott.
+- **changeType** – a **BeforeSnapshot** és a **afterSnapshot**közötti teljes módosítási rekordra vonatkozóan észlelt változás típusát írja le. Az értékek a következők: _Létrehozás_, _frissítés_és _Törlés_. A **propertyChanges** tulajdonság tömbje csak akkor szerepel, ha a **changeType** _frissítése_történik.
+- **propertyChanges** – a tulajdonságok ezen tömbje részletezi az összes olyan erőforrás-tulajdonságot, amely a **BeforeSnapshot** és a **afterSnapshot**között frissült:
+  - **propertyName** – a megváltoztatott erőforrás-tulajdonság neve.
+  - **changeCategory** – ismerteti, hogy mi történt a módosítással. Az értékek a következők: _rendszer_ és _felhasználó_.
+  - **changeType** – az egyes erőforrás-tulajdonságokra vonatkozóan észlelt változás típusát írja le.
+    Értékek: _Insert_, _Update_, _Remove_.
+  - **beforeValue** – az erőforrás tulajdonság értéke a **beforeSnapshot**. A **ChangeType** _beszúrásakor_nem jelenik meg.
+  - **afterValue** – az erőforrás tulajdonság értéke a **afterSnapshot**. A **ChangeType** _eltávolításakor_nem jelenik meg.
 
-A **resourceChanges** végpont **changeId** a **resourceChangeDetails** Rest-végpontot használja a változási esemény részletes adatainak beolvasásához.
+## <a name="compare-resource-changes"></a>Erőforrás-módosítások összehasonlítása
+
+A **resourceChanges** végpont **changeId** a **resourceChangeDetails** Rest-végpontot használja a rendszer a módosított erőforrás előtti és utáni Pillanatképek lekéréséhez.
 
 A **resourceChangeDetails** végpontjának két paramétert kell megadnia a kérelem törzsében:
 
-- **resourceId**: Az Azure-erőforrás, melyen változásokat keres.
-- **changeId**: A **resourceChanges**-ből összegyűjtött **resourceId** egyedi változási eseménye.
+- **resourceId**: az Azure-erőforrás, amellyel összehasonlíthatja a módosításokat.
+- **changeId**: a **resourceChanges**-ből összegyűjtött **resourceId** egyedi változási eseménye.
 
-A példában a kérés törzse:
+Példa a kérelem törzsére:
 
 ```json
 {
@@ -220,9 +285,9 @@ A válasz a következőhöz hasonlóan néz ki:
 
 a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép készítésének időpontját és a tulajdonságokat. A módosítás néhány ponton történt a pillanatképek között. A fenti példában látható, hogy a módosított tulajdonság **supportsHttpsTrafficOnly**volt.
 
-Ha programozott módon szeretné összehasonlítani az eredményeket, hasonlítsa össze az egyes Pillanatképek **tartalmi** részét a különbség megállapításához. Ha összehasonlítja a teljes pillanatképet, az **időbélyeg** mindig különbséget mutat a vártnál.
+Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

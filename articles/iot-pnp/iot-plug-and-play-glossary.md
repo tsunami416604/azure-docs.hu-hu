@@ -3,18 +3,18 @@ title: Szószedet – IoT Plug and Play előzetes verzió | Microsoft Docs
 description: Fogalmak – a IoT Plug and Play előzetes verziójának általános feltételeinek glosszáriuma.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 08/29/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 7b37912c58312644059f3990b4776514e081a4bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a5c9d2d54fcce1179e43c38027db23c3d7e557e8
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858847"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249306"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>A IoT használati feltételeinek szószedete Plug and Play előzetes verzió
 
@@ -28,7 +28,7 @@ Az [Azure Certified for IoT portál](https://aka.ms/ACFI) webhelyét a következ
 - [Eszköz-képesség modellek](#device-capability-model)keresése.
 - Tegye közzé az eszköz képességeinek modelljét a [nyilvános modell adattárában](#public-model-repository).
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az Azure CLI egy platformfüggetlen, parancssori eszköz az Azure-erőforrások kezeléséhez. Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a [IoT Plug and Play-eszközökhöz](#iot-plug-and-play-device)való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
 
@@ -97,6 +97,7 @@ A kapcsolati karakterláncok a végponthoz való kapcsolódáshoz szükséges ad
 
 - Az eszköz kapcsolati karakterláncai lehetővé teszik, hogy a [IoT Plug and Play eszközök](#iot-plug-and-play-device) csatlakozzanak az IoT hub eszközre irányuló végpontokhoz. Az eszközön a kapcsolati sztring használatával biztonságos kapcsolat hozható létre egy IoT hubhoz.
 - IoT Hub kapcsolati karakterláncok lehetővé teszik a háttér-megoldások és-eszközök számára, hogy biztonságosan kapcsolódjanak a IoT hub szolgáltatáshoz csatlakozó végpontokhoz. Ezek a megoldások és eszközök kezelik az IoT hubot és az ahhoz csatlakoztatott eszközöket.
+- A vállalati modell tárházának kapcsolati karakterláncai lehetővé teszik a háttérbeli megoldások és eszközök biztonságos csatlakoztatását a [vállalati modell tárházához](#company-model-repository). Ezek a megoldások és eszközök használják fel vagy kezelhetik az [eszköz képességeinek modelljeit](#device-capability-model) és [felületeit](#interface) az adattárban.
 
 ## <a name="device-capability-model"></a>Eszköz képességeinek modellje
 
@@ -114,7 +115,7 @@ Az eszközök fejlesztői egy [eszköz-képességi modellt](#device-capability-m
 
 Az [eszközök fejlesztői](#device-developer) a [digitális kettős definíciós nyelvet](#digital-twin-definition-language) használják a [IoT Plug and Play eszköz](#iot-plug-and-play-device)képességeinek modellezéséhez. A modell a modell adattárával osztható meg. Az eszközök fejlesztői a modellből létrehozhatnak csontváz-kódot. A [megoldás fejlesztője](#solution-developer) IoT-megoldást konfigurálhat a modellből.
 
-## <a name="device-provisioning-service"></a>Device Provisioning Service
+## <a name="device-provisioning-service"></a>Eszköz kiépítési szolgáltatása
 
 Az [Azure IoT Central](#azure-iot-central) az eszköz kiépítési szolgáltatásával kezeli az összes eszköz regisztrációját és kapcsolódását. További információ: [Device connectivity in Azure IoT Central](../iot-central/concepts-connectivity-pnp.md). A Device kiépítési szolgáltatással felügyelheti az eszközök regisztrációját és a IoT Hub-alapú IoT-megoldáshoz való kapcsolódást is. További információ: [eszközök kiépítés az Azure IoT hub Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
@@ -154,7 +155,7 @@ A IoT Hub lekérdezési nyelv több célra szolgál. Használhatja például a n
 
 A IoT Plug and Play-eszközök általában egy kis méretű, önálló számítástechnikai eszköz, amely adatokat gyűjt, vagy más eszközöket irányít, valamint olyan szoftvert vagy belső vezérlőprogramot futtat, amely [eszköz-képességi modellt](#device-capability-model)valósít meg.  Például egy IoT Plug and Play eszköz lehet környezeti figyelő eszköz vagy egy intelligens mezőgazdasági öntözési rendszer vezérlője. Felhőalapú IoT-megoldást is írhat a IoT Plug and Play eszközökről származó adatok parancsára, vezérlésére és fogadására. Az [Azure Certified for IoT-eszközök katalógusa](#certified-for-iot-device-catalog) felsorolja az elérhető IoT Plug and Play eszközöket. A rendszer ellenőrizte az összes IoT Plug and Play eszközt a katalógusban, és rendelkezik egy [eszköz képesség modellel](#device-capability-model).
 
-## <a name="microsoft-partner-center"></a>Microsoft Partner Center
+## <a name="microsoft-partner-center"></a>Microsoft partner Center
 
 A [Microsoft partner Center](https://docs.microsoft.com/partner-center/) a szervezet teljes körű kapcsolatát a Microsofttal kezeli. Ahhoz, hogy hitelesíteni tudja a [IoT Plug and Play eszközét](#iot-plug-and-play-device) az [Azure Certified for IoT portálon](#azure-certified-for-iot-portal), szüksége van egy Microsoft partner Center-fiókra.
 
@@ -170,7 +171,7 @@ A modell tárháza az [eszköz képességeinek modelljeit](#device-capability-mo
 
 API a modell-Tárházak kezeléséhez és interakcióhoz. Használhatja például az API-t az [eszköz képességi modelljeinek](#device-capability-model) hozzáadásához és a képességi modellek kereséséhez.
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Tulajdonságok
 
 A tulajdonságok olyan adatmezők, amelyek egy olyan [felületen](#interface) vannak meghatározva, amely egy digitális iker bizonyos állapotát jelöli. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja. A csak olvasható tulajdonságokat, például a sorozatszámot a [IoT Plug and Play eszközön](#iot-plug-and-play-device) futó kód állítja be.  Az írható tulajdonságok, például a riasztási küszöbértékek általában a felhőalapú IoT-megoldás alapján vannak beállítva.
 
@@ -186,7 +187,7 @@ A regisztrációs azonosító egyedileg azonosít egy eszközt az [eszköz kiép
 
 A hatókör-azonosító hatóköre egyedileg azonosítja az [eszköz kiépítési szolgáltatásának](#device-provisioning-service) példányát.
 
-## <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
+## <a name="shared-access-signature"></a>Közös hozzáférési aláírás
 
 A közös hozzáférésű aláírások az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmusok. A közös hozzáférésű aláírás hitelesítésének két összetevője van: egy közös hozzáférési házirend és egy közös hozzáférési aláírás (más néven token). A [IoT Plug and Play-eszközök](#iot-plug-and-play-device) közös hozzáférési aláírással hitelesítik magukat az [IoT hub](#azure-iot-hub)használatával.
 

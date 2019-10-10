@@ -16,16 +16,18 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c6359cf2401ff198b0242243dbf6dfdf2e35ce47
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123047"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244026"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 – áttekintés
 
 Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások hozhatók létre, amelyek lehetővé teszik többek között a médiaszínvonalú videostreamelést, a hozzáférhetőség és terjesztés javítását vagy tartalmak elemzését. Függetlenül attól, hogy Ön alkalmazásfejlesztő, vagy egy ügyfélszolgálat, kormányzati intézmény vagy szórakoztató vállalat munkatársa, a Media Services olyan alkalmazások létrehozásához nyújt segítséget, amelyek kiváló minőségű multimédiás élményt nyújtanak nagy célközönség számára napjaink legnépszerűbb mobileszközein és böngészőiben. 
+
+A Media Services v3 SDK [-k Media Services v3 OpenAPI-specifikáción (henceg)](https://aka.ms/ams-v3-rest-sdk)alapulnak.
 
 > [!NOTE]
 > Jelenleg az Azure Portal használatával nem felügyelheti a v3 verziójú erőforrásokat. Használja a [REST API-t](https://aka.ms/ams-v3-rest-ref), a [parancssori felületet](https://aka.ms/ams-v3-cli-ref) vagy valamelyik támogatott [SDK-t](media-services-apis-overview.md#sdks).
@@ -34,7 +36,7 @@ Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások ho
 
 A Media Services lehetővé teszi különböző média-munkafolyamatok létrehozását a felhőben. Az alábbiakban néhány példa látható arra, hogy mit tehet a Media Services használatával.  
 
-* Különböző formátumú videók biztosítása, hogy számos különféle böngészőben és eszközön le lehessen játszani azokat. A különböző ügyfeleknek (mobileszközökre, tévékészülékekre, számítógépekre stb.) biztosított igény szerinti és élő streamek esetén megfelelően kell kódolni és csomagolni a video- és hangtartalmakat. Az ilyen tartalmak továbbításával és továbbításával kapcsolatos információkért lásd [: gyors útmutató: Fájlok](stream-files-dotnet-quickstart.md)kódolása és továbbítása.
+* Különböző formátumú videók biztosítása, hogy számos különféle böngészőben és eszközön le lehessen játszani azokat. A különböző ügyfeleknek (mobileszközökre, tévékészülékekre, számítógépekre stb.) biztosított igény szerinti és élő streamek esetén megfelelően kell kódolni és csomagolni a video- és hangtartalmakat. Az ilyen tartalmak továbbításával és streamelésével kapcsolatban tekintse meg a [fájlok kódolásával és streamelésével foglalkozó rövid útmutatót](stream-files-dotnet-quickstart.md).
 * Élő sportesemények, például focimeccsek, baseballmeccsek, felsőoktatási és középiskolai sportesemények és egyebek streamelése nagy online közönség számára. 
 * Nyilvános értekezletek és események, például polgármesteri, képviselőtestületi és törvényhozói testületi ülések közvetítése.
 * Rögzített video- vagy hangtartalmak elemzése. A vásárlói elégedettség növelése érdekében például a vállalatok szöveggé alakíthatják a beszédet, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik a gyakori panaszokkal kapcsolatos adatokat, a panaszok forrását és más kapcsolódó adatokat.
@@ -49,7 +51,7 @@ A Media Services lehetővé teszi különböző média-munkafolyamatok létrehoz
 Ismerje meg, hogyan kódolhat és csomagolhat be tartalmakat, streamelhet videókat igény szerint, közvetíthet élőben, illetve hogyan elemezheti videóit a Media Services 3-as verziójával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.
 
 > [!TIP]
-> A fejlesztés megkezdése előtt tekintse át a következőt:<br/>* [Alapvető fogalmak](concepts-overview.md) (incudes fontos fogalmak: csomagolás, kódolás, védelem stb.)<br/>* [Fejlesztés Media Services V3 API](media-services-apis-overview.md) -kkal (az API-k, elnevezési konvenciók stb.) elérésére vonatkozó információkat tartalmaz.
+> A fejlesztés megkezdése előtt tekintse át a következőt:<br/>@no__t – 0[alapfogalmak](concepts-overview.md) (incudes fontos fogalmak: csomagolás, kódolás, védelem stb.)<br/>@no__t – 0[Media Services V3 API](media-services-apis-overview.md) -kkal (az API-k elérésére, elnevezési konvenciók stb.) vonatkozó információkat tartalmaz.
 
 ### <a name="quickstarts"></a>Gyorsútmutatók  
 
@@ -69,7 +71,7 @@ Az oktatóanyagok a leggyakoribb Media Services feladatokhoz tartozó forgatók�
 * [A videó elemzése – .NET](analyze-videos-tutorial-with-api.md)
 * [AES-128 dinamikus titkosítás – .NET](protect-with-aes128.md)
     
-### <a name="samples"></a>Példák
+### <a name="samples"></a>Minták
 
 Használja [ezt a minta böngészőt](https://docs.microsoft.com/samples/browse/?products=azure-media-services) Azure Media Services kódok tallózásához.
 
@@ -88,7 +90,7 @@ A cikkek olyan kódrészleteket tartalmaznak, amelyek bemutatják a feladatok v�
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók az alapvető fogalmakról](concepts-overview.md)
 

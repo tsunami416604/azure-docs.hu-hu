@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173438"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244548"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>A Azure Stream Analytics kimenetének megismerése
 
@@ -104,7 +104,7 @@ Ha a blob Storage-ot kimenetként használja, a következő esetekben létrejön
 
 ## <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
 
-Az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatás egy nagymértékben méretezhető közzétételi és előfizetési esemény betöltése. Másodpercenként akár több millió eseményt is gyűjthet. Az Event hub egyik használata kimenetként, amikor egy Stream Analytics-feladatok kimenete lesz egy másik folyamatos átviteli feladathoz tartozó bemenet.
+Az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgáltatás egy nagymértékben méretezhető közzétételi és előfizetési esemény betöltése. Másodpercenként akár több millió eseményt is gyűjthet. Az Event hub egyik használata kimenetként, amikor egy Stream Analytics-feladatok kimenete lesz egy másik folyamatos átviteli feladathoz tartozó bemenet. További információ az üzenetek maximális méretéről és a Batch méretének optimalizálásáról: [kimeneti köteg mérete](#output-batch-size) szakasz.
 
 Az Event hubokból kimenetként kell konfigurálnia az adatfolyamokat.
 
@@ -119,7 +119,7 @@ Az Event hubokból kimenetként kell konfigurálnia az adatfolyamokat.
 | Esemény szerializálási formátuma | A kimeneti adatmennyiség szerializálási formátuma. A JSON, a CSV és a Avro támogatottak. |
 | Encoding | A CSV és a JSON esetében jelenleg az UTF-8 az egyetlen támogatott kódolási formátum. |
 | Elválasztó | Csak a CSV-szerializáláshoz alkalmazható. Stream Analytics számos gyakori elhatárolót támogat a CSV-formátumú adatszerializáláshoz. A támogatott értékek a következők: vessző, pontosvessző, szóköz, TAB és függőleges sáv. |
-| Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva. Ezt a tömböt csak akkor zárja be a rendszer, ha a feladatot leállítja vagy Stream Analytics áthelyezte a következő időszakra. Általánosságban elmondható, hogy a rendszer inkább a sortöréses JSON-t használja, mert nem igényel semmilyen speciális kezelést, amíg a kimeneti fájl továbbra is írásra kerül. További információ: [kimeneti köteg mérete](#output-batch-size) szakasz. |
+| Formátum | Csak a JSON-szerializáláshoz alkalmazható. A **sor elválasztva** érték azt jelenti, hogy a kimenet formázása úgy történik, hogy minden JSON-objektum új sorral van elválasztva. A **Array** beállítás azt adja meg, hogy a kimenet a JSON-objektumok tömbje legyen formázva.  |
 | Tulajdonságok oszlopai | Választható. Vesszővel tagolt oszlopokat kell csatolni a kimenő üzenet felhasználói tulajdonságaihoz a hasznos adatok helyett. A szolgáltatással kapcsolatos további információkért lásd: [Egyéni metaadatok tulajdonságai a kimenethez](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI

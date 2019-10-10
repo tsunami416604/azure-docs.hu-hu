@@ -1,38 +1,38 @@
 ---
-title: Csatlakoztassa a Avere vFXT – Azure
-description: Az Azure-ügyfelek Avere vFXT csatlakoztatásáról
+title: A avere-vFXT csatlakoztatása – Azure
+description: Ügyfelek csatlakoztatása az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: c461b379629927e8f367fad9bfc70b87413f47b7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409363"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255384"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása  
 
-Kövesse az alábbi lépéseket az ügyfélgépek a vFXT fürthöz való kapcsolódáshoz.
+Kövesse az alábbi lépéseket az ügyfélszámítógépek vFXT-fürthöz való összekapcsolásához.
 
-1. Annak eldöntése, hogyan kell a fürt csomópontok közötti terheléselosztás ügyfél forgalmát. Olvasási [egyenleg ügyfélterhelés](#balance-client-load), az alábbi részleteket. 
-1. Azonosítsa az IP-cím és a szinkronizációs pont csatlakoztatásához elérési.
-1. A probléma a [mount parancs](#mount-command-arguments), megfelelő argumentumokkal.
+1. Döntse el, hogyan egyenlítheti ki az ügyfelek forgalmát a fürtcsomópontok között. A részletekért olvassa el az [Egyenleg-ügyfél terhelését](#balance-client-load)alább. 
+1. Azonosítsa a csatlakoztatni kívánt IP-címet és elágazási útvonalat.
+1. Adja ki a [csatlakoztatási parancsot](#mount-command-arguments)a megfelelő argumentumokkal.
 
-## <a name="balance-client-load"></a>Egyenleg ügyfél betöltése
+## <a name="balance-client-load"></a>Ügyfél terhelésének elosztása
 
-Annak érdekében, eloszthatja a kérelmeket ügyfél a fürt összes csomópontja között, az ügyfelek az ügyfél által használt IP-címek teljes tartományához kell csatlakoztatja. Többféleképpen is egyszerű feladat automatizálását.
+Az ügyfelek kéréseinek a fürt összes csomópontja közötti egyensúlyának biztosításához az ügyfeleket az ügyfél által elérhető IP-címek teljes tartományához kell csatlakoztatnia. A feladat automatizálásának számos egyszerű módja van.
 
 > [!TIP] 
-> Más terhelés terheléselosztási módszert érdemes lehet nagy vagy összetett rendszer; [hozzon létre egy támogatási jegyet](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) segítségét.)
+> A többi terheléselosztási módszer a nagy vagy bonyolult rendszerek esetében is megfelelő lehet. [Nyisson meg egy támogatási jegyet](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) segítségért.)
 > 
-> Ha inkább a DNS-kiszolgáló használata kiszolgálóoldali automatikus terheléselosztást, állítsa be, majd a saját DNS-kiszolgáló Azure-ban kezelheti. Ebben az esetben a vFXT fürt szerint ez a dokumentum ciklikus időszeletelési DNS konfigurálhatja: [Fürt DNS-konfiguráció Avere](avere-vfxt-configure-dns.md).
+> Ha inkább DNS-kiszolgálót szeretne használni az automatikus kiszolgálóoldali terheléselosztáshoz, be kell állítania és kezelnie kell a saját DNS-kiszolgálóját az Azure-on belül. Ebben az esetben a vFXT-fürt ciklikus multiplexelés DNS-t konfigurálhatja a következő dokumentum szerint: [avere-fürt DNS-konfigurációja](avere-vfxt-configure-dns.md).
 
-### <a name="sample-balanced-client-mounting-script"></a>Példa elosztott terhelésű ügyfél parancsfájl csatlakoztatása
+### <a name="sample-balanced-client-mounting-script"></a>Kiegyensúlyozott ügyfél-csatlakoztatási parancsfájl
 
-Ez a Kódpélda randomizing elemként ügyfél IP-címek használatával terjeszteni az összes elérhető IP-címek a vFXT fürt ügyfelek.
+Ez a példa az ügyfél IP-címeit használja véletlenszerű elemként, amellyel az ügyfeleket az összes vFXT-fürt elérhető IP-címeire terjesztheti.
 
 ```bash
 function mount_round_robin() {
@@ -57,69 +57,69 @@ function mount_round_robin() {
 } 
 ```
 
-A fenti funkció érhető el a Batch példa része a [Avere vFXT példák](https://github.com/Azure/Avere#tutorials) hely.
+A fenti függvény a [avere vFXT-példák](https://github.com/Azure/Avere#tutorials) helyén elérhető batch-példa részét képezi.
 
-## <a name="create-the-mount-command"></a>A mount parancs létrehozása 
+## <a name="create-the-mount-command"></a>A csatlakoztatási parancs létrehozása 
 
 > [!NOTE]
-> Ha nem hozott létre egy új Blob-tárolóba, a Avere vFXT fürt létrehozásakor, kövesse a [konfigurálta a tárterületet](avere-vfxt-add-storage.md) előtti ügyfelek csatlakoztatása során.
+> Ha nem hozott létre új BLOB-tárolót a avere vFXT-fürt létrehozásakor, kövesse a [tároló konfigurálása](avere-vfxt-add-storage.md) az ügyfelek csatlakoztatása előtt című szakasz lépéseit.
 
-Az ügyfélről a ``mount`` parancsot a virtuális kiszolgáló (vserver) leképezi a helyi fájlrendszer a vFXT fürtön elérési útra. A formátum ``mount <vFXT path> <local path> {options}``
+Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) a vFXT-fürtön a helyi fájlrendszer egyik elérési útjára. A formátum ``mount <vFXT path> <local path> {options}``
 
-Nincsenek a mount parancs három elemek: 
+A csatlakoztatási parancsnak három eleme van: 
 
-* vFXT elérési út – (IP-címére és névtér szinkronizációs pont elérési alább leírt kombinációjával)
-* helyi elérési út – a elérési utat az ügyfélen 
-* csatlakoztatási beállítások parancs - (felsorolt [csatlakoztassa a parancs argumentumainak](#mount-command-arguments))
+* vFXT elérési út – (az alábbi, az IP-cím és a névtér csatlakozási útvonalának kombinációja)
+* helyi elérési út – az ügyfél elérési útja 
+* csatlakoztatási parancs beállításai – (a [csatlakoztatási parancs argumentumai](#mount-command-arguments)között szerepel)
 
-### <a name="junction-and-ip"></a>Szinkronizációs pont és az IP-cím
+### <a name="junction-and-ip"></a>Elágazás és IP
 
-A vserver elérési út kombinációja a *IP-cím* plusz elérési útját egy *névtér szinkronizációs pont*. A névtér csatlakozási a virtuális elérési utat a tárolórendszer hozzáadásakor megadott.
+A VServer elérési útja az *IP-címe* és a *névtér-elágazás*elérési útja kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amely a tárolási rendszer hozzáadásakor lett meghatározva.
 
-Ha a fürt a Blob storage használatával lett létrehozva, a névtér elérési út `/msazure`
+Ha a fürt blob Storage-sel lett létrehozva, a névtér elérési útja `/msazure`
 
 Például: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-A fürt létrehozását követően hozzáadta a tárolót, ha a névtér-szinkronizációs pont elérési útja felel meg a beállított érték **Namespace elérési út** a szinkronizációs pont létrehozásakor. Például, ha a használt ``/avere/files`` a névtér elérési útjaként az ügyfelek csatlakoztatni szeretné *IP_cím*: / avere vagy fájlokat a helyi csatlakoztatási ponton.
+Ha a fürt létrehozása után hozzáadta a tárolót, a névtér-elágazás elérési útja megfelel a csomópont létrehozásakor a **névtér elérési** útján megadott értéknek. Ha például a ``/avere/files`` értéket használta a névtér elérési útjaként, az ügyfelek csatlakoztatni fogják a *IP_address*:/avere/Files a helyi csatlakoztatási pontra.
 
-![A névtér elérési út mezőbe fájlokkal/avere / "Új szinkronizációs pont hozzáadása" párbeszédpanelen](media/avere-vfxt-create-junction-example.png)
+!["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/avere-vfxt-create-junction-example.png)
 
 
-Az IP-cím a megadott a vserver az ügyfél által használt IP-címek egyike. A számos ügyfél által használt IP-címek a Avere Vezérlőpult két helyen található:
+Az IP-cím a VServer definiált ügyféloldali IP-címek egyike. Az ügyféloldali IP-címek tartományát két helyen találja a avere Vezérlőpultján:
 
-* **VServers** táblára (fülre irányítópult) – 
+* **VServers** -tábla (irányítópult lap) – 
 
-  ![Irányítópult lap Avere Vezérlőpult a kiválasztott a graph és az IP-cím szakasz alatti adatok táblázatban VServer lap bekarikázott](media/avere-vfxt-ip-addresses-dashboard.png)
+  ![A avere Vezérlőpultjának irányítópult lapján a diagram alatti adattáblában kiválasztott VServer lapon, az IP-cím szakaszban pedig a kör alakú](media/avere-vfxt-ip-addresses-dashboard.png)
 
-* **Ügyfél felől elérhető hálózati** beállítások lap – 
+* **Ügyféloldali hálózati** beállítások lap – 
 
-  ![Beállítások > VServer > a táblázat egy adott vserver címtartomány szakaszában körüli kör az ügyfél felől elérhető hálózati konfigurációs lapja](media/avere-vfxt-ip-addresses-settings.png)
+  ![Beállítások > VServer > ügyfél hálózati konfigurációjának lapja, amely egy adott VServer tartozó táblázat címtartomány szakaszának körét tartalmazza](media/avere-vfxt-ip-addresses-settings.png)
 
-Mellett az elérési utak közé tartozik a [csatlakoztassa a parancs argumentumainak](#mount-command-arguments) alább leírt, amikor az egyes ügyfelek.
+Az elérési utakon kívül az egyes ügyfelek csatlakoztatásakor az alább ismertetett [csatlakoztatási parancs argumentumait](#mount-command-arguments) is meg kell adni.
 
-### <a name="mount-command-arguments"></a>Mount parancs argumentumai
+### <a name="mount-command-arguments"></a>Csatlakoztatási parancs argumentumai
 
-Ahhoz, hogy egy zökkenőmentes ügyfél csatlakoztatási, adja át ezeket a beállításokat és argumentumok a mount parancs: 
+A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a beállításokat és argumentumokat a csatlakoztatási parancsban: 
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 
-| Kötelező beállítások | |
+| Szükséges beállítások | |
 --- | --- 
-``hard`` | Helyreállítható csatlakoztatása a vFXT fürthöz társítva alkalmazáshibák és adatvesztés lehetséges. 
-``proto=netid`` | Ez a lehetőség támogatja a megfelelő NFS hálózati hibák kezelésére.
-``mountproto=netid`` | Ezt a beállítást támogatja a csatlakoztatási műveletek megfelelő hálózati hibák kezelésére.
-``retry=n`` | Állítsa be ``retry=30`` átmeneti csatlakoztatási hibák elkerülése érdekében. (Az előtérben történő csatlakoztatása egy másik értéket javasolt.)
+``hard`` | A vFXT-fürthöz való Soft-csatlakoztatások az alkalmazás hibáival és az esetleges adatvesztéssel vannak társítva. 
+``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
+``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
+``retry=n`` | Az átmeneti csatlakoztatási hibák elkerülése érdekében állítsa be a ``retry=30`` értéket. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-| Előnyben részesített beállításai  | |
+| Előnyben részesített beállítások  | |
 --- | --- 
-``nointr``            | A "nointr" beállítás részesíti előnyben az ügyfelek az örökölt kernelekkel (előtt április 2008), amely támogatja ezt a beállítást. Vegye figyelembe, hogy a "megszakítás" beállítást az alapértelmezett.
+``nointr``            | A "nem intr" kapcsoló előnyben részesített olyan ügyfelek számára, akik örökölt kernelekkel rendelkeznek (a 2008. előtt), amelyek támogatják ezt a beállítást. Vegye figyelembe, hogy a "intr" beállítás az alapértelmezett.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután csatlakoztatta a ügyfelek számára, feltölti a háttérrendszer adattárolás (core filer) használhatja őket. Tekintse meg ezeket a dokumentumokat, további információt a további telepítési feladatok:
+Miután csatlakoztatta az ügyfeleket, felhasználhatja őket a háttérbeli adattárolás (Core Filer) feltöltéséhez. A további telepítési feladatokkal kapcsolatos további információkért tekintse meg ezeket a dokumentumokat:
 
-* [Adatok áthelyezése a fürt alapvető filer](avere-vfxt-data-ingest.md) -ügyfelek és a szálak használatával hatékonyan töltse fel az adatokat
-* [Testre szabhatja a fürt hangolása](avere-vfxt-tuning.md) -testre szabni a számítási feladat igényeinek megfelelően a fürtbeállítások
-* [A fürt kezeléséhez](avere-vfxt-manage-cluster.md) -elindítása vagy leállítása a fürt és csomópontok kezelése
+* [Adatok áthelyezése a cluster Core filerbe](avere-vfxt-data-ingest.md) – hogyan lehet több ügyfelet és szálat használni az adatok hatékony feltöltéséhez
+* [Fürt testreszabása](avere-vfxt-tuning.md) – a fürt beállításainak személyre szabása a munkaterhelésnek megfelelően
+* [A fürt kezelése](avere-vfxt-manage-cluster.md) – a fürt elindítása és leállítása, valamint a csomópontok kezelése

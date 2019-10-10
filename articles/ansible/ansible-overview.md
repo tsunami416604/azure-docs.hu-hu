@@ -1,64 +1,64 @@
 ---
-title: Az Ansible-lel az Azure-ral |} A Microsoft Docs
-description: Az Ansible segítségével automatizálja a felhőbeli üzembe helyezést, a konfigurációkezelést és az alkalmazások központi telepítésének bemutatása.
-keywords: ansible, azure, devops, overview, cloud provision, configuration management, application deployment, ansible modules, ansible playbooks
+title: A Ansible használata az Azure-ban
+description: Bevezetés a Ansible használatára a felhőalapú üzembe helyezés, a konfiguráció-felügyelet és az alkalmazások központi telepítésének automatizálásához.
+keywords: Ansible, Azure, devops, áttekintés, felhőalapú üzembe helyezés, konfigurálási felügyelet, alkalmazás-telepítés, Ansible modulok, Ansible forgatókönyvek
 ms.topic: overview
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 4d7e9f8a0527587106985d8a6f0a95e19e640245
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: b6b9656edc43f38a4cb005be53c33bb98781679c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230137"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241512"
 ---
-# <a name="using-ansible-with-azure"></a>Az Ansible-lel az Azure-ral
+# <a name="using-ansible-with-azure"></a>A Ansible használata az Azure-ban
 
-[Az Ansible](https://www.ansible.com) egy nyílt forráskódú megoldás, amely automatizálja a felhőbeli üzembe helyezést, a konfigurációkezelést és az alkalmazások központi telepítéseit. Az Ansible-lel üzembe virtuális gépeket, tárolókat és hálózati, és végezze el a felhőalapú infrastruktúrák. Is az Ansible lehetővé teszi, hogy automatizálja a központi telepítési és konfigurációs az erőforrásoknak a környezetben.
+A [Ansible](https://www.ansible.com) egy nyílt forráskódú termék, amely automatizálja a Felhőbeli üzembe helyezést, a konfiguráció felügyeletét és az alkalmazások központi telepítését. A Ansible használatával virtuális gépeket, tárolókat és hálózatokat építhet ki, és teljes körű felhőalapú infrastruktúrát is kiépítheti. Emellett a Ansible lehetővé teszi, hogy automatizálja a környezet erőforrásainak üzembe helyezését és konfigurálását.
 
-Ez a cikk néhány előnyeit, az Ansible-lel az Azure-ral alapvető áttekintést nyújt.
+Ez a cikk alapvető áttekintést nyújt a Ansible és az Azure használatának előnyeiről.
 
-## <a name="ansible-playbooks"></a>Ansible-forgatókönyvek
+## <a name="ansible-playbooks"></a>Ansible forgatókönyvek
 
-[Ansible-forgatókönyvek](https://docs.ansible.com/ansible/latest/playbooks.html) teszi lehetővé a környezet konfigurálásához az Ansible közvetlen. Forgatókönyvek vannak kódolva úgy, hogy a természetes nyelven olvasható YAML. Az oktatóanyagok szakaszban számos példákat forgatókönyvek segítségével telepítheti és konfigurálhatja az Azure-erőforrások. 
+A [Ansible](https://docs.ansible.com/ansible/latest/playbooks.html) -forgatókönyvek lehetővé teszik a környezet konfigurálását a Ansible. A forgatókönyvek kódolása a YAML használatával történik, hogy az ember számára olvasható legyen. Az oktatóanyagok szakasz számos példát kínál az Azure-erőforrások telepítésére és konfigurálására szolgáló forgatókönyvek használatára. 
 
-## <a name="ansible-modules"></a>Az Ansible-modulok
+## <a name="ansible-modules"></a>Ansible modulok
 
-Az Ansible tartalmaz egy [Ansible modulok](https://docs.ansible.com/ansible/latest/modules_by_category.html) közvetlenül távoli állomások vagy annak segítségével futtatott [forgatókönyvek](https://docs.ansible.com/ansible/latest/playbooks.html). Felhasználók a saját modulokat hozhatnak létre. Modulok segítségével szabályozhatja a rendszererőforrások – például a szolgáltatások, csomagok vagy - fájlokat, vagy hajtsa végre a rendszer parancsokat.
+A Ansible olyan Ansible- [modulokat](https://docs.ansible.com/ansible/latest/modules_by_category.html) tartalmaz, amelyek közvetlenül távoli gazdagépeken vagy forgatókönyveken [keresztül futnak](https://docs.ansible.com/ansible/latest/playbooks.html). A felhasználók létrehozhatják saját moduljaikat. A modulok olyan rendszererőforrások szabályozására szolgálnak, mint például a szolgáltatások, a csomagok vagy a fájlok, illetve a rendszerparancsok végrehajtása.
 
-Az Azure szolgáltatással való interakcióhoz, az Ansible tartalmaz egy [Ansible felhőalapú modulok](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure). Ezek a modulok lehetővé teszik hozhat létre és koordinálhatja az Azure-beli infrastruktúra. 
+Az Azure-szolgáltatásokkal való interakcióhoz a Ansible tartalmaz egy [Ansible felhőalapú modulokat](https://docs.ansible.com/ansible/list_of_cloud_modules.html#azure). Ezek a modulok lehetővé teszik az infrastruktúra létrehozását és koordinálását az Azure-ban. 
 
-## <a name="migrate-existing-workload-to-azure"></a>Meglévő számítási feladatok migrálása az Azure-bA
+## <a name="migrate-existing-workload-to-azure"></a>Meglévő számítási feladatok migrálása az Azure-ba
 
-Az Ansible segítségével határozza meg az infrastruktúra, miután az alkalmazás forgatókönyv, így szükség szerint automatikusan skálázhatja a környezetét az Azure is alkalmazhat. 
+Ha az Ansible-t használja az infrastruktúra definiálásához, akkor az alkalmazás forgatókönyvét az Azure automatikus skálázási környezetének igény szerint automatikusan méretezheti. 
 
-## <a name="automate-cloud-native-application-in-azure"></a>Automatizálhatja az Azure-beli natív alkalmazás
+## <a name="automate-cloud-native-application-in-azure"></a>Felhőalapú natív alkalmazás automatizálása az Azure-ban
 
-Az Ansible lehetővé teszi az Azure-ban például az Azure mikroszolgáltatás-alapú natív felhőalkalmazásokat automatizálását [Azure Functions](https://azure.microsoft.com//services/functions/) és [Kubernetes az Azure-ban](https://azure.microsoft.com/services/container-service/kubernetes/).  
+A Ansible lehetővé teszi az Azure-beli felhőalapú alkalmazások automatizálását az Azure-szolgáltatások, például a [Azure functions](https://azure.microsoft.com//services/functions/) és az Azure-beli [Kubernetes](https://azure.microsoft.com/services/container-service/kubernetes/)használatával.  
 
-## <a name="manage-deployments-with-dynamic-inventory"></a>A dinamikus központi telepítések felügyeletéhez szükséges
+## <a name="manage-deployments-with-dynamic-inventory"></a>Központi telepítések kezelése dinamikus leltárral
 
--N keresztül annak [dinamikus készlet](https://docs.ansible.com/ansible/intro_dynamic_inventory.html) szolgáltatás, az Ansible lehetővé teszi a pull-készlet az Azure-erőforrások. Ezután a meglévő Azure-környezetek címke és az Ansible segítségével ezeket a címkézett központi telepítések felügyeletéhez szükséges.
+A Ansible [dinamikus leltározási](https://docs.ansible.com/ansible/intro_dynamic_inventory.html) funkciójával lehetővé teszi a leltár lekérését az Azure-erőforrásokból. Ezután megcímkézheti a meglévő Azure-környezeteket, és kezelheti a címkézett központi telepítéseket a Ansible-on keresztül.
 
-## <a name="additional-azure-marketplace-options"></a>Azure Marketplace-en további beállítások
+## <a name="additional-azure-marketplace-options"></a>További Azure Marketplace-lehetőségek
 
-A [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) van az Azure Marketplace-rendszerképpel, by Red Hat. 
+A [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) egy Red Hat által elérhető Azure Marketplace-rendszerkép. 
 
-Az Ansible Tower egy webalapú felhasználói felület és egy irányítópultot az Ansible, amely a következő funkciókkal rendelkezik:
+A Ansible Tower egy webalapú felhasználói felület és irányítópult a Ansible, amely a következő funkciókat tartalmazza:
 
-* Lehetővé teszi a szerepköralapú hozzáférés-vezérlés, a feladatütemezés és a grafikus leltárkezelés meghatározása érdekében. 
-* Tartalmaz egy REST API-t és a parancssori felület, így Tower beilleszthet meglévő eszközökkel és folyamatokkal. 
-* Támogatja a forgatókönyv-futtatások valós idejű kimenetét. 
-* Hitelesítő adatai – Azure és az SSH-kulcsok – például titkosítja, így anélkül, hogy a hitelesítő adatok feladatokat delegálhat.
+* Lehetővé teszi a szerepköralapú hozzáférés-vezérlés, a feladatütemezés és a grafikus leltár kezelésének megadását. 
+* A REST API és parancssori felülettel is rendelkezik, így a tornyot beillesztheti a meglévő eszközökbe és folyamatba. 
+* Támogatja a forgatókönyvek futtatásának valós idejű kimenetét. 
+* Titkosítja a hitelesítő adatokat – például az Azure-t és az SSH-kulcsokat –, így a hitelesítő adatok kihagyása nélkül delegálhatja a feladatokat.
 
-## <a name="ansible-module-and-version-matrix-for-azure"></a>Az Ansible modul és verzió mátrix az Azure-hoz
+## <a name="ansible-module-and-version-matrix-for-azure"></a>Az Azure-hoz készült Ansible modul és Version Matrix
 
-Az Ansible modulok használatát számos kiépítési és konfigurálása az Azure-erőforrások tartalmazza. Ezek az erőforrások közé tartozik a virtuális gépek, a méretezési csoportokat, hálózati szolgáltatások és tárolószolgáltatások. A [Ansible mátrix](./ansible-matrix.md) az Ansible-modulok felsorolja az Azure és az Ansible-verziók, amelyben szállításra.
+A Ansible tartalmazza az Azure-erőforrások üzembe helyezéséhez és konfigurálásához használható modulok csomagját. Ezen erőforrások közé tartoznak a virtuális gépek, a méretezési csoportok, a hálózati szolgáltatások és a tároló szolgáltatások. A [Ansible mátrix](./ansible-matrix.md) felsorolja az Azure-hoz készült Ansible-modulokat és a Ansible-verziókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Rövid útmutató: Az Azure-ban, CentOS, az Ansible megoldássablon telepítése](./ansible-deploy-solution-template.md)
-- [Rövid útmutató: Az Azure-ban az Ansible konfigurálása a Linux rendszerű virtuális gépek](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [Gyors útmutató: az Azure Ansible-megoldási sablonjának üzembe helyezése a CentOS-ben](./ansible-deploy-solution-template.md)
+- [Gyors útmutató: Linux rendszerű virtuális gépek konfigurálása az Azure-ban a Ansible használatával](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)

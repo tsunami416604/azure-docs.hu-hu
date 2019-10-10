@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 55950892bec71fdff50cdd0e0b1aae107d845739
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
-ms.translationtype: HT
+ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169733"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243612"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának első lépései
 
-Ez a cikk bemutatja, hogyan végezheti el a leggyakoribb feladatokat Azure Automation állapot-konfigurációval, például a konfigurációk létrehozását, importálását és fordítását, a számítógépek felügyeletét és a jelentések megtekintését. Az Azure Automation állapot konfigurációjának áttekintését lásd: [Azure Automation állapot-konfiguráció áttekintése](automation-dsc-overview.md). A DSC-hez készült dokumentációhoz lásd: a [Windows PowerShell kívánt állapot-konfigurációjának áttekintése](/powershell/dsc/overview).
+Ez a cikk bemutatja, hogyan végezheti el a leggyakoribb feladatokat Azure Automation állapot-konfigurációval, például a konfigurációk létrehozását, importálását és fordítását, a számítógépek felügyeletét és a jelentések megtekintését. Az Azure Automation állapot konfigurációjának áttekintését lásd: [Azure Automation állapot-konfiguráció áttekintése](automation-dsc-overview.md). A DSC-hez készült dokumentációhoz lásd: a [Windows PowerShell kívánt állapot-konfigurációjának áttekintése](/powershell/scripting/dsc/overview/overview).
 
 Ez a cikk részletes útmutatót tartalmaz Azure Automation állapot konfigurációjának használatához. Ha azt szeretné, hogy a jelen cikkben ismertetett lépések végrehajtása nélkül egy már beállított környezeti környezettel rendelkezik, használhatja a következő Resource Manager-sablont: [Azure Automation felügyelt csomópont sablonja](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Ez a sablon egy befejezett Azure Automation állapot-konfigurációs környezetet állít be, beleértve egy Azure Automation állapot-konfiguráció által felügyelt Azure-beli virtuális gépet is.
 
@@ -31,7 +31,7 @@ A cikkben szereplő példák végrehajtásához a következők szükségesek:
 
 ## <a name="creating-a-dsc-configuration"></a>DSC-konfiguráció létrehozása
 
-Létre kell hoznia egy egyszerű [DSC-konfigurációt](/powershell/dsc/configurations) , amely a csomópontok hozzárendelésének módjától függően biztosítja a **webkiszolgáló Windows-** szolgáltatás (IIS) jelenlétét vagy hiányát.
+Létre kell hoznia egy egyszerű [DSC-konfigurációt](/powershell/scripting/dsc/configurations/configurations) , amely a csomópontok hozzárendelésének módjától függően biztosítja a **webkiszolgáló Windows-** szolgáltatás (IIS) jelenlétét vagy hiányát.
 
 1. Indítsa el a [VSCode](https://code.visualstudio.com/docs) (vagy bármely szövegszerkesztőt).
 1. Írja be a következő szöveget:
@@ -61,7 +61,7 @@ Létre kell hoznia egy egyszerű [DSC-konfigurációt](/powershell/dsc/configura
     ```
 1. Mentse a fájlt `TestConfig.ps1` néven.
 
-Ez a konfiguráció egy erőforrást hív meg minden egyes csomópont-blokkban, a [WindowsFeature-erőforrásban](/powershell/dsc/windowsfeatureresource), amely biztosítja a **webkiszolgáló** szolgáltatás jelenlétét vagy hiányát.
+Ez a konfiguráció egy erőforrást hív meg minden egyes csomópont-blokkban, a [WindowsFeature-erőforrásban](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource), amely biztosítja a **webkiszolgáló** szolgáltatás jelenlétét vagy hiányát.
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Konfiguráció importálása Azure Automationba
 
@@ -94,7 +94,7 @@ A konfiguráció importálása után megtekintheti azt a Azure Portalban.
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Konfiguráció fordítása Azure Automation
 
 Ahhoz, hogy a kívánt állapotot egy csomópontra alkalmazza, meg kell adnia egy DSC-konfigurációt, amely meghatározza, hogy az állapotot egy vagy több csomópont-konfigurációban (MOF-dokumentum) kell lefordítani, és a Automation DSC lekérési kiszolgálóra helyezzük. A konfigurációk Azure Automation állapot-konfigurációban való fordításának részletes ismertetését lásd: [konfigurációk fordítása Azure Automation állapot-konfigurációban](automation-dsc-compile.md).
-A konfigurációk fordításával kapcsolatos további információkért lásd: [DSC-konfigurációk](/powershell/dsc/configurations).
+A konfigurációk fordításával kapcsolatos további információkért lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations).
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
@@ -195,7 +195,7 @@ Az egyes jelentésekhez tartozó panelen a következő állapotinformációkat t
 - A csomópont neve, IP-címe és konfigurációs módja.
 
 A **nyers jelentés megtekintése** lehetőségre kattintva megtekintheti azokat a tényleges adatokat, amelyeket a csomópont küld a kiszolgálónak.
-További információ az adatok használatáról: [DSC jelentéskészítő kiszolgáló használata](/powershell/dsc/reportserver).
+További információ az adatok használatáról: [DSC jelentéskészítő kiszolgáló használata](/powershell/scripting/dsc/pull-server/reportserver).
 
 Egy csomópont bevezetését követően is eltarthat egy ideig, mielőtt az első jelentés elérhetővé válik. Előfordulhat, hogy a csomópont bevezetését követően akár 30 percet is várnia kell az első jelentéshez.
 
@@ -233,6 +233,6 @@ Ha már nem szeretné, hogy Azure Automation DSC felügyelje a csomópontot, tö
 
 - [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md)
 - [Bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](automation-dsc-onboarding.md)
-- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/dsc/overview)
+- [A Windows PowerShell kívánt állapotának konfigurálása – áttekintés](/powershell/scripting/dsc/overview/overview)
 - [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
 - [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)

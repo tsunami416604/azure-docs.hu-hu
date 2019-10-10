@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178591"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244129"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec konfigurálása a ExpressRoute Direct portokon
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 Ezen a ponton a MACsec le van tiltva a ExpressRoute Direct-portok között a Microsoft oldalon.
+
+### <a name="test-connectivity"></a>Kapcsolat tesztelése
+Miután konfigurálta a MACsec (beleértve a MACsec kulcs frissítését) a ExpressRoute Direct-portok esetében, [ellenőrizze](expressroute-troubleshooting-expressroute-overview.md) , hogy az áramkör BGP-munkamenetei futnak-e. Ha még nem rendelkezik a portok egyetlen áramkörével sem, hozzon létre egyet először, és állítsa be az Azure-beli privát társat vagy a Microsoft-partnert. Ha a MACsec helytelenül van konfigurálva, beleértve a MACsec, a hálózati eszközök és a Microsoft hálózati eszközei között, a 3. rétegben nem jelenik meg az ARP-feloldás a 2. rétegben és a BGP-ben. Ha minden megfelelően van konfigurálva, akkor a BGP-útvonalakat a megfelelő módon kell meghirdetni mindkét irányban és az alkalmazás adatfolyamatában, ennek megfelelően a ExpressRoute.
 
 ## <a name="next-steps"></a>Következő lépések
 1. [ExpressRoute-kör létrehozása a ExpressRoute Direct-on](expressroute-howto-erdirect.md)

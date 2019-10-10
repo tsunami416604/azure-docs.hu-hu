@@ -1,5 +1,5 @@
 ---
-title: Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
+title: Üzembe helyezés az Azure Kubernetes Service-ben a Jenkins és a kék/zöld üzembe helyezési minta használatával
 description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helyezéshez a Jenkins és a kék/zöld üzembehelyezési minta használatával.
 ms.service: jenkins
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
@@ -7,13 +7,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/11/2018
-ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/09/2019
+ms.openlocfilehash: de9088333f69a22246fe5873d6e09ddb7ba3044a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60642055"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249409"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -31,11 +31,11 @@ Ebben az oktatóanyagban a következőket sajátíthatja el:
 > * Jenkins-feladat létrehozása és futtatása
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [GitHub-fiók](https://github.com) : A minta tárház klónozásához egy GitHub-fiók szükséges.
-- [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) : Az Azure CLI 2.0 használatával a Kubernetes-fürt létrehozása.
-- [Chocolatey](https://chocolatey.org): Egy Csomagkezelő, használja a kubectl telepítéséhez.
-- [a kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Olyan parancssori felületet használhat parancsok futtatása a Kubernetes-fürtök ellen.
-- [jq](https://stedolan.github.io/jq/download/): Egy egyszerűsített, parancssori JSON feldolgozó.
+- [GitHub-fiók](https://github.com): A mintaadattár klónozásához szüksége lesz egy GitHub-fiókra.
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): A Kubernetes-fürt létrehozásához az Azure CLI 2.0-t használja.
+- [Chocolatey](https://chocolatey.org): A kubectl telepítéséhez használt csomagkezelő.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Egy parancssori felület, amelyen a Kubernetes-fürtök parancsait futtatja.
+- [jq](https://stedolan.github.io/jq/download/): Egy egyszerű, parancssori JSON-feldolgozó.
 
 ## <a name="clone-the-sample-app-from-github"></a>Klónozza a mintaalkalmazást a GitHubról.
 
@@ -147,7 +147,7 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Frissítse a DNS-nevet a nyilvános és a teszt végpontoknál. Egy Kubernetes-fürt létrehozásakor egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3) is létrehoz, amelynek elnevezési mintája **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** (MC_<erőforráscsoport-neve><kubernetes-fürt-neve><hely>).
+1. Frissítse a DNS-nevet a nyilvános és a teszt végpontoknál. Egy Kubernetes-fürt létrehozásakor egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3) is létrehoz, amelynek elnevezési mintája **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** (MC_<erőforráscsoport-neve><kubernetes-fürt-neve><hely>).
 
     Keresse meg a nyilvános IP-címeket az erőforráscsoportban.
 
@@ -251,7 +251,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
 ## <a name="create-the-job"></a>A feladat létrehozása
 1. Adjon hozzá egy új, **Pipeline** (Folyamat) típusú feladatot.
 
-1. Válassza a **Pipeline (Folyamat)** > **Definition (Definíció)** > **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
+1. Válassza a **Pipeline (Folyamat)**  > **Definition (Definíció)**  > **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
 
 1. Adja meg az SCM-adattár URL-címét a saját &lt;your-forked-repo> értékével.
 
@@ -259,7 +259,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
 
 ## <a name="run-the-job"></a>A feladat futtatása
 
-1. Ellenőrizze, hogy a projekt sikeresen fut-e a helyi környezetben. Ezt a következőképpen teheti meg: [Projekt futtatása helyi gépen](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Ellenőrizze, hogy a projekt sikeresen fut-e a helyi környezetben. Ezzel kapcsolatos tudnivalókat [a projekt helyi gépen való futtatását](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it) ismertető cikkben olvashat.
 
 1. Futtassa a Jenkins-feladatot. Amikor első alkalommal futtatja a feladatot, a Jenkins üzembe helyezi a todo alkalmazást a kék környezetben, amely alapértelmezés szerint az inaktív környezet. 
 
@@ -272,7 +272,7 @@ A nyilvános és a kék teszt végpontok ugyanazzal a frissítéssel rendelkezne
 
 Ha többször futtatja le a buildet, váltakozva használja a kék és zöld üzemelő példányt. Vagyis ha az aktuális környezet a kék, a feladat a zöld környezetben lesz üzembe helyezve és tesztelve. Ezután ha a tesztek jól sikerültek, a feladat frissíti az alkalmazás nyilvános végpontját, hogy a forgalmat a zöld környezetbe irányítsa.
 
-## <a name="additional-information"></a>További információ
+## <a name="additional-information"></a>További információk
 
 Az állásidő nélküli üzembe helyezésről további információkat ebben a [rövid útmutató sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment) találhat. 
 
@@ -284,11 +284,11 @@ Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforrásokra, t
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezhet üzembe helyezést az AKS-re a Jenkins és a kék/zöld üzembehelyezési minta használatával. További információt az Azure Jenkins szolgáltatóról a Jenkins az Azure-on című cikkben talál.
 

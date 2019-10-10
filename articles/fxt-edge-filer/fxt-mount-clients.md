@@ -1,113 +1,113 @@
 ---
-title: Az ügyfelek a Microsoft Azure FXT Edge Filer fürthöz csatlakoztatni
-description: NFS-ügyfélgépek hogyan csatlakoztathatja az Azure FXT Edge Filer hibrid tárolási gyorsítótár
+title: Ügyfelek csatlakoztatása a Microsoft Azure FXT Edge Filer-fürtön
+description: Az Azure FXT Edge Filer Hybrid Storage cache csatlakoztatása az NFS-ügyfélszámítógépek számára
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: ac1263b352e7fdde57dfee6515a8b22400f22b06
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828036"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256040"
 ---
-# <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: A fürt csatlakoztatása
+# <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
 
-Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az NFS-ügyfelek az Azure FXT Edge Filer fürthöz. Az ügyfelek csatlakoztassa a háttér-tárolási hozzáadásakor hozzárendelt virtuális névtér elérési utakat. 
+Ez az oktatóanyag bemutatja, hogyan csatlakoztathat NFS-ügyfeleket az Azure FXT Edge Filer-fürthöz. Az ügyfelek csatlakoztatják a virtuális névtér elérési útját, amelyet a háttérbeli tároló hozzáadásakor rendelt hozzá. 
 
-Az oktatóanyagban azzal foglalkozunk: 
+Ez az oktatóanyag a következőket tanítja: 
 
 > [!div class="checklist"]
-> * Stratégiák terheléselosztási ügyfelek elosztását a ügyfél felé néző IP-címek tartománya
-> * Hogyan hozható létre egy csatlakoztatási elérési útját a ügyfél felé néző IP cím és a névtér elágazás
-> * Melyik argumentumok a mount parancs használata
+> * Stratégiák a terheléselosztási ügyfelek számára az ügyfél felé irányuló IP-címek tartománya között
+> * Csatlakozási útvonal létrehozása az ügyfélhez kapcsolódó IP-címről és névtér-csomópontból
+> * A csatlakoztatási parancsban használandó argumentumok
 
-Ez az oktatóanyag befejezéséhez körülbelül 45 percet vesz igénybe.
+Ez az oktatóanyag körülbelül 45 percet vesz igénybe.
 
-## <a name="steps-to-mount-the-cluster"></a>A fürt csatlakoztatására lépések
+## <a name="steps-to-mount-the-cluster"></a>A fürt csatlakoztatásának lépései
 
-Kövesse az alábbi lépéseket az ügyfélgépek a Azure FXT Edge Filer fürthöz való kapcsolódáshoz.
+Kövesse az alábbi lépéseket az ügyfélszámítógépek Azure FXT Edge Filer-fürthöz való összekapcsolásához.
 
-1. Annak eldöntése, hogyan kell a fürt csomópontok közötti terheléselosztás ügyfél forgalmát. Olvasási [egyenleg ügyfélterhelés](#balance-client-load), az alábbi részleteket. 
-1. Azonosítsa a fürt IP-cím és a szinkronizációs pont elérési csatlakoztatásához.
-1. Határozza meg, hogy az ügyfél irányultságú a csatlakoztatási elérési útját.
-1. A probléma a [mount parancs](#use-recommended-mount-command-options), megfelelő argumentumokkal.
+1. Döntse el, hogyan egyenlítheti ki az ügyfelek forgalmát a fürtcsomópontok között. A részletekért olvassa el az [Egyenleg-ügyfél terhelését](#balance-client-load)alább. 
+1. A fürt IP-címének és csatlakozási útvonalának azonosítása a csatlakoztatáshoz.
+1. Határozza meg a csatlakoztatáshoz tartozó ügyféloldali elérési utat.
+1. Adja ki a [csatlakoztatási parancsot](#use-recommended-mount-command-options)a megfelelő argumentumokkal.
 
-## <a name="balance-client-load"></a>Egyenleg ügyfél betöltése
+## <a name="balance-client-load"></a>Ügyfél terhelésének elosztása
 
-Annak érdekében, eloszthatja a kérelmeket ügyfél a fürt összes csomópontja között, az ügyfelek az ügyfél által használt IP-címek teljes tartományához kell csatlakoztatja. Többféleképpen is ez a feladat automatizálását.
+Az ügyfelek kéréseinek a fürt összes csomópontja közötti egyensúlyának biztosításához az ügyfeleket az ügyfél által elérhető IP-címek teljes tartományához kell csatlakoztatnia. A feladat automatizálása többféleképpen is elvégezhető.
 
-Ciklikus időszeletelési DNS terheléselosztási a fürt kapcsolatos további információkért olvassa el a [DNS konfigurálása az Azure FXT Edge Filer fürt](fxt-configure-network.md#configure-dns-for-load-balancing). Ez a módszer megmaradjanak kell egy DNS-kiszolgáló, amelynek az alábbi cikkek nem ismertetése.
+A fürt ciklikus DNS-terheléselosztásának megismeréséhez olvassa el [a DNS konfigurálása az Azure FXT Edge FILER-fürthöz](fxt-configure-network.md#configure-dns-for-load-balancing)című témakört. Ennek a módszernek a használatához olyan DNS-kiszolgálót kell fenntartania, amely nem szerepel ezekben a cikkekben.
 
-Egy egyszerűbb módszert a kis méretű telepítések, hogy a parancsfájl a tartomány teljes IP-címek hozzárendelése ügyfél csatlakoztatási időpontban. 
+A kis telepítések egyszerűbb módszere, ha egy parancsfájl használatával rendeli hozzá az IP-címeket az egész tartományhoz az ügyfél csatlakoztatási ideje alatt. 
 
-Más terheléselosztási módszerek nagy vagy összetett rendszereket megfelelő lehet. Tekintse meg a Microsoft-képviselőjével, vagy nyissa meg a [támogatási kérelem](fxt-support-ticket.md) segítséget. (Az azure Load Balancer jelenleg *nem támogatott* az Azure FXT Edge Filer.)
+A nagyméretű vagy bonyolult rendszerek esetében más terheléselosztási módszerek is alkalmazhatók. Forduljon a Microsoft képviselőjéhez, vagy nyisson meg egy [támogatási kérést](fxt-support-ticket.md) segítségért. (Azure Load Balancer jelenleg *nem támogatott* az Azure FXT Edge Filer-vel.)
 
-## <a name="create-the-mount-command"></a>A mount parancs létrehozása 
+## <a name="create-the-mount-command"></a>A csatlakoztatási parancs létrehozása 
 
-Az ügyfélről a ``mount`` parancsot a virtuális kiszolgáló (vserver) leképezi a helyi fájlrendszer a Azure FXT Edge Filer fürtön elérési útra. 
+Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) az Azure FXT Edge Filer-fürtön a helyi fájlrendszer egyik elérési útjára. 
 
 A formátum ``mount <FXT cluster path> <local path> {options}``
 
-Nincsenek a mount parancs három elemek: 
+A csatlakoztatási parancsnak három eleme van: 
 
-* fürt elérési út – IP-címére és névtér szinkronizációs pont elérési alább ismertetett kombinációja
-* helyi elérési út – a elérési utat az ügyfélen 
-* csatlakoztatási beállítások parancs - (felsorolt [mount parancs beállításai ajánlott](#use-recommended-mount-command-options))
+* fürt elérési útja – az alábbiakban ismertetett IP-cím és névtér-csatlakozási útvonal kombinációja
+* helyi elérési út – az ügyfél elérési útja 
+* csatlakoztatási parancs beállításai – (az [ajánlott csatlakoztatási parancs használata lehetőséggel](#use-recommended-mount-command-options)szerepel)
 
-### <a name="create-the-cluster-path"></a>A fürt elérési utat hoz létre
+### <a name="create-the-cluster-path"></a>A fürt elérési útjának létrehozása
 
-A fürt elérési út a vserver kombinációját *IP-cím* plusz elérési útját egy *névtér csatlakozási*. A névtér szinkronizációs pont a virtuális elérési utat, ha definiálva, [hozzáadva a tárolórendszer](fxt-add-storage.md#create-a-junction).
+A fürt elérési útja a VServer *IP-cím* és a *névtér-elágazás*elérési útjának kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amelyet [a tárolási rendszer hozzáadásakor](fxt-add-storage.md#create-a-junction)adott meg.
 
-Például, ha a használt ``/fxt/files`` a névtér elérési útjaként az ügyfelek csatlakoztatni szeretné *IP_cím*: / fxt vagy fájlokat a helyi csatlakoztatási ponton. 
+Ha például a ``/fxt/files`` értéket használta a névtér elérési útjaként, az ügyfelek csatlakoztatni fogják a *IP_address*:/FXT/Files a helyi csatlakoztatási pontra. 
 
-![A névtér elérési út mezőbe fájlokkal/avere / "Új szinkronizációs pont hozzáadása" párbeszédpanelen](media/fxt-mount/fxt-junction-example.png)
+!["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/fxt-mount/fxt-junction-example.png)
 
-Az IP-cím a megadott a vserver az ügyfél által használt IP-címek egyike. A számos ügyfél által használt IP-címek a Vezérlőpult fürt két helyen található:
+Az IP-cím a VServer definiált ügyféloldali IP-címek egyike. Az ügyféloldali IP-címek tartományát két helyen találja a fürt Vezérlőpultján:
 
-* **VServers** táblára (fülre irányítópult) – 
+* **VServers** -tábla (irányítópult lap) – 
 
-  ![Irányítópult lap a Vezérlőpult a kiválasztott a graph és az IP-cím szakasz alatti adatok táblázatban VServer lap bekarikázott](media/fxt-mount/fxt-ip-addresses-dashboard.png)
+  ![A Vezérlőpult irányítópult lapja, amely a gráf alatti adattábla VServer lapját jelöli, és az IP-cím szakasz a kör alakú](media/fxt-mount/fxt-ip-addresses-dashboard.png)
 
-* **Ügyfél felől elérhető hálózati** beállítások lap – 
+* **Ügyféloldali hálózati** beállítások lap – 
 
-  ![Beállítások > VServer > a táblázat egy adott vserver címtartomány szakaszában körüli kör az ügyfél felől elérhető hálózati konfigurációs lapja](media/fxt-mount/fxt-ip-addresses-settings.png)
+  ![Beállítások > VServer > ügyfél hálózati konfigurációjának lapja, amely egy adott VServer tartozó táblázat címtartomány szakaszának körét tartalmazza](media/fxt-mount/fxt-ip-addresses-settings.png)
 
-Kombinálja az IP-cím és a névterek elérési kialakításához a csatlakoztatási parancsot a fürt elérési útját. 
+Egyesítse az IP-címet és a névtér elérési útját, hogy a fürt elérési útja a csatlakoztatási parancshoz legyen létrehozva. 
 
-Példa ügyfél mount parancs: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Példa az ügyfél csatlakoztatására szolgáló parancsra: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
-### <a name="create-the-local-path"></a>A helyi elérési utat hoz létre
+### <a name="create-the-local-path"></a>A helyi elérési út létrehozása
 
-A mount parancs a helyi elérési útja szerint strukturálhatja. Beállíthat bármilyen elérési út struktúrát választhat a virtuális névtér részeként. A névtér és a helyi elérési útja, amely egy kényelmes megoldás az ügyfél munkafolyamatát tervezése. 
+A csatlakoztatási parancs helyi elérési útja. Megadhatja a virtuális névtér részeként használni kívánt elérésiút-struktúrát. Tervezze meg az ügyfél-munkafolyamathoz megfelelő névteret és helyi elérési utat. 
 
-Az ügyfél által használt névtér kapcsolatos további információkért olvassa el a fürt beállítási útmutató [névtér áttekintés](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html).
+További információ az ügyfél felé irányuló névtérről: a fürtkonfiguráció [áttekintése](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gns_overview.html).
 
-Mellett az elérési utak közé tartozik a [csatlakoztatási parancs beállítások](#use-recommended-mount-command-options) alább leírt, amikor az egyes ügyfelek.
+Az elérési utakon kívül az egyes ügyfelek csatlakoztatásakor az alább ismertetett [csatlakoztatási parancsot](#use-recommended-mount-command-options) is adja meg.
 
-### <a name="use-recommended-mount-command-options"></a>Az ajánlott mount parancs beállítások használata
+### <a name="use-recommended-mount-command-options"></a>Ajánlott csatlakoztatási parancsok használata
 
-Ahhoz, hogy egy zökkenőmentes ügyfél csatlakoztatási, adja át ezeket a beállításokat és argumentumok a mount parancs: 
+A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a beállításokat és argumentumokat a csatlakoztatási parancsban: 
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Kötelező beállítások | |
+| Szükséges beállítások | |
 --- | --- 
-``hard`` | Helyreállítható csatlakoztatása az Azure FXT Edge Filer fürthöz társítva alkalmazáshibák és adatvesztés lehetséges. 
-``proto=netid`` | Ez a lehetőség támogatja a megfelelő NFS hálózati hibák kezelésére.
-``mountproto=netid`` | Ezt a beállítást támogatja a csatlakoztatási műveletek megfelelő hálózati hibák kezelésére.
-``retry=n`` | Állítsa be ``retry=30`` átmeneti csatlakoztatási hibák elkerülése érdekében. (Az előtérben történő csatlakoztatása egy másik értéket javasolt.)
+``hard`` | Az Azure FXT Edge Filer-fürthöz való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel van társítva. 
+``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
+``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
+``retry=n`` | Az átmeneti csatlakoztatási hibák elkerülése érdekében állítsa be a ``retry=30`` értéket. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-| Előnyben részesített beállításai  | |
+| Előnyben részesített beállítások  | |
 --- | --- 
-``nointr``            | Ha az ügyfelek a régebbi operációs rendszer kernelt (előtt április 2008) támogatja ezt a beállítást használja, használja azt. A "megszakítás" beállítást az alapértelmezett érték.
+``nointr``            | Ha az ügyfelek az ezt a lehetőséget támogató régebbi operációsrendszer-kerneleket (mielőtt április 2008) használják, használja azt. A "intr" beállítás az alapértelmezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután csatlakoztatta az ügyfelek, tesztelheti a munkafolyamatot, és a fürt használatának első lépései.
+Az ügyfelek csatlakoztatása után tesztelheti a munkafolyamatot, és megkezdheti a fürt megkezdését.
 
-Ha az adatok áthelyezése egy új felhőalapú core filer, figyelembe kell betöltési előnyeit, a gyorsítótár struktúra párhuzamos adatok használatával. Néhány stratégiát ismertetett [adatok áthelyezése a fürt vFXT](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest). (Avere vFXT az Azure-hoz az egy felhőalapú megoldás, amely nagyon hasonlít a Azure FXT Edge Filer gyorsítótárazási technológiát használ.)
+Ha át kell helyeznie az adatot egy új Cloud Core Filer-ba, használja ki a gyorsítótárazási struktúrát a párhuzamos adatfeldolgozás használatával. Egyes stratégiákat a [vFXT-fürtbe való áthelyezéssel kapcsolatos](https://docs.microsoft.com/azure/avere-vfxt/avere-vfxt-data-ingest)témakörben talál. (A avere vFXT for Azure egy felhőalapú termék, amely az Azure FXT Edge Filer-hez hasonló gyorsítótárazási technológiát használ.)
 
-Olvasási [figyelő Azure FXT Edge Filer hardverállapot](fxt-monitor.md) Ha bármilyen hardveres hibaelhárításra van szüksége. 
+Ha hardveres problémát kell elhárítani, olvassa el az [Azure FXT Edge-beli hardveres állapotának figyelése](fxt-monitor.md) című cikkét. 

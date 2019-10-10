@@ -1,5 +1,5 @@
 - name: SQL Data Warehouse-dokumentáció
-  href: index.md
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az az SQL Data Warehouse?

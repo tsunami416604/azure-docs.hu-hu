@@ -1,18 +1,18 @@
 ---
 title: Minta – a CAF áttelepítése a bevezetési zóna terve – üzembe helyezési lépések
-description: Üzembe helyezheti a CAF bevezetési zóna tervének áttelepítési minta lépéseit.
+description: Üzembe helyezési lépések a CAF-beli bevezetési zónák áttelepítéséhez – példa a tervrajz-összetevő paraméterének részleteire.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981683"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248499"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
@@ -42,7 +42,7 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
    - **Terv neve** Adjon meg egy nevet a CAF Migration Landing Zone Blueprint minta példányához.
    - **Definíció helye** Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
 
-1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -68,14 +68,14 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapadatok
-     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
-     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+   - Alapvető beállítások
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
        Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást.
      - Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja.
        További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
     
    - Hozzárendelés zárolása
 
@@ -85,14 +85,14 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Válassza ki az alapértelmezett _rendszerhez rendelt_ felügyelt identitás vagy a _felhasználó által hozzárendelt_ identitás lehetőséget.
 
-   - Terv paraméterei
+   - Tervparaméterek
 
      Az ebben a szakaszban meghatározott paramétereket a terv definíciójában található számos összetevő használja a konzisztencia biztosításához.
 
-       - **Szervezet**: Adja meg a szervezet nevét (például contoso vagy Fabrikam) egyedinek kell lennie.
-       - **AzureRegion**: Válasszon ki egy Azure-régiót az üzembe helyezéshez.
+       - **Szervezet**: adja meg a szervezet nevét (például contoso vagy Fabrikam) egyedinek kell lennie.
+       - **AzureRegion**: válasszon ki egy Azure-régiót az üzembe helyezéshez.
        
-   - Összetevő paraméterei
+   - Összetevő paramétereinek
 
      Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
@@ -105,15 +105,15 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Elemnév|Összetevő típusa|Paraméternév|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|VNET-kirakodási zóna üzembe helyezése|Resource Manager-sablon|IP-cím_tartomány|**Zárolt** – adja meg az első két oktettet, például 10,0|
-|Kulcstartó üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** csoport vagy felhasználói objektumazonosító, amely engedélyt ad a Key Vault|
-|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_AdatMegőrzés|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
-|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_hely|**Zárolt** – a munkaterület létrehozásakor használt régió|
+|VNET-kirakodási zóna üzembe helyezése|Resource Manager-sablon|IPAddress_Space|**Zárolt** – adja meg az első két oktettet, például 10,0|
+|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** csoport vagy felhasználói objektumazonosító, amely engedélyt ad a Key Vault|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 |Azure Migrate üzembe helyezése|Resource Manager-sablon|Azure_Migrate_Location|**Zárolt** – válassza ki a telepítendő régiót Azure Migrate|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CAF Migrálás bevezetési zóna üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az architektúra megismeréséhez:
 

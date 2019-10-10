@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – alkalmazások telepítése a virtuális gép méretezési csoportok az Azure-ban az Ansible-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az Azure-beli virtuálisgép-méretezési csoportok és üzembe helyezése a méretezési csoportban az Ansible használatával
+title: Oktatóanyag – alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban a Ansible használatával
+description: Ismerje meg, hogyan konfigurálhatja az Azure virtuálisgép-méretezési csoportokat az Ansible használatával, és hogyan helyezhet üzembe alkalmazást a méretezési csoporton
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 ms.topic: tutorial
 ms.service: ansible
@@ -8,14 +8,14 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231055"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241753"
 ---
-# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: Alkalmazások telepítése a virtuális gép méretezési csoportok az Azure-ban az Ansible-lel
+# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Oktatóanyag: alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban a Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -25,10 +25,10 @@ ms.locfileid: "65231055"
 
 > [!div class="checklist"]
 >
-> * Azure virtuális gépek gazdagép adatainak beolvasása
-> * Klónozza, és állítsa össze a mintaalkalmazás
-> * Telepítse a JRE (Java-futtatókörnyezet) egy méretezési csoportot
-> * Egy méretezési csoportot a Java-alkalmazás üzembe helyezése
+> * Gazdagép információinak lekérése Azure-beli virtuális gépek egy csoportjára
+> * A minta alkalmazás klónozása és összeállítása
+> * A JRE (Java Runtime Environment) telepítése egy méretezési csoporton
+> * A Java-alkalmazás üzembe helyezése egy méretezési csoporton
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,11 +37,11 @@ ms.locfileid: "65231055"
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
 - **git** - A [git](https://git-scm.com) segítségével letölthető az ebben az oktatóanyagban használt Java-minta.
 - **Java SE Development Kit (JDK)** – A [JDK](https://aka.ms/azure-jdks) a Java-mintaprojekt létrehozásához szükséges.
-- **Az Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) Java a mintaprojekt összeállításához.
+- Az **Apache maven** - [Apache Maven](https://maven.apache.org/download.cgi) használatával felépíthető a minta Java-projekt.
 
 ## <a name="get-host-information"></a>Gazdagép információinak lekérése
 
-A forgatókönyv kód ebben a szakaszban egy csoportot a virtuális gépek gazdagép adatait kérdezi le. A kód lekérdezi a nyilvános IP-címek, és terheléselosztó egy adott erőforráscsoporton belül, és létrehoz egy nevű gazdagépcsoport `scalesethosts` a készletben.
+Az ebben a szakaszban található forgatókönyv-kód lekéri a gazdagép adatait a virtuális gépek egy csoportjára. A kód beolvassa a nyilvános IP-címeket és a Load balancert egy adott erőforráscsoport belül, és létrehoz egy `scalesethosts` nevű gazdagép-csoportot a leltárban.
 
 Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven:
 
@@ -71,7 +71,7 @@ Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven:
 
 ## <a name="prepare-an-application-for-deployment"></a>Alkalmazás előkészítése üzembe helyezéshez
 
-Ebben a szakaszban a forgatókönyv kód `git` klónozása a Githubról minta Java-projektek és létrehozza a projektet. 
+Az ebben a szakaszban szereplő forgatókönyv-kód `git` használatával klónozott Java-minta projektet a GitHubról, és létrehozza a projektet. 
 
 Mentse a következő forgatókönyvet `app.yml` néven:
 
@@ -97,7 +97,7 @@ Futtassa az Ansible-mintaforgatókönyvet az alábbi paranccsal:
   ansible-playbook app.yml
   ```
 
-A forgatókönyv futtatása után a következő eredményeket hasonló kimenet jelenik meg:
+A forgatókönyv futtatása után a következő eredményekhez hasonló kimenet jelenik meg:
 
   ```Output
   PLAY [localhost] 
@@ -116,17 +116,17 @@ A forgatókönyv futtatása után a következő eredményeket hasonló kimenet j
 
   ```
 
-## <a name="deploy-the-application-to-a-scale-set"></a>Egy méretezési csoportot az alkalmazás üzembe helyezése
+## <a name="deploy-the-application-to-a-scale-set"></a>Az alkalmazás üzembe helyezése egy méretezési csoporton
 
-A forgatókönyv kód ebben a szakaszban a következőkre használható:
+Az ebben a szakaszban szereplő forgatókönyv-kód a következőhöz használható:
 
-* Telepítse a JRE nevű gazdagépcsoport `saclesethosts`
-* Nevű gazdagépcsoport számára a Java-alkalmazás üzembe helyezése `saclesethosts`
+* Telepítse a JRE-t egy `saclesethosts` nevű gazdagép-csoportba
+* A Java-alkalmazás üzembe helyezése `saclesethosts` nevű gazdagép-csoportba
 
-A minta forgatókönyv beolvasásához két módja van:
+A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) , és mentse a `vmss-setup-deploy.yml`.
-* Hozzon létre egy új fájlt `vmss-setup-deploy.yml` és másolja bele a következő tartalommal:
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) forgatókönyvet, és mentse a `vmss-setup-deploy.yml` értékre.
+* Hozzon létre egy `vmss-setup-deploy.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - hosts: localhost
@@ -165,24 +165,24 @@ A minta forgatókönyv beolvasásához két módja van:
     poll: 0
 ```
 
-A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzések:
+A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-* Az a `vars` szakaszban, cserélje le a `{{ admin_password }}` helyőrzőt a saját jelszavát.
-* Használatához az ssh-jelszavakat, a kapcsolat típusa a sshpass program telepítéséhez:
+* A `vars` szakaszban cserélje le a `{{ admin_password }}` helyőrzőt a saját jelszavára.
+* Az SSH-kapcsolattípus jelszavakkal való használatához telepítse a sshpass programot:
 
-    Ubuntu rendszeren:
+    Ubuntu
 
     ```bash
     apt-get install sshpass
     ```
 
-    CentOS:
+    CentOS
 
     ```bash
     yum install sshpass
     ```
 
-* Bizonyos környezetekben látni egy SSH-jelszó használatával egy kulcs helyett kapcsolatos hiba. Ha a hibaüzenetet kapja, letilthatja a állomás kulcsát adja hozzá a következő sort ellenőrzése `/etc/ansible/ansible.cfg` vagy `~/.ansible.cfg`:
+* Bizonyos környezetekben előfordulhat, hogy a kulcs helyett egy SSH-jelszó használatával kapcsolatos hibaüzenet jelenik meg. Ha ezt a hibaüzenetet kapja, letilthatja a gazdagép kulcsának ellenőrzését úgy, hogy hozzáadja a következő sort `/etc/ansible/ansible.cfg` vagy `~/.ansible.cfg` értékhez:
 
     ```bash
     [defaults]
@@ -195,7 +195,7 @@ Futtassa a forgatókönyvet az alábbi paranccsal:
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-Az ansible-forgatókönyvek parancs kimenete azt jelzi, hogy a minta Java-alkalmazás telepítve van, a méretezési csoport:
+A Ansible-ötletekbõl parancs futtatásának kimenete azt jelzi, hogy a minta Java-alkalmazás telepítve lett a méretezési csoport állomásneve:
 
   ```Output
   PLAY [localhost]
@@ -234,11 +234,11 @@ Az ansible-forgatókönyvek parancs kimenete azt jelzi, hogy a minta Java-alkalm
 
 ## <a name="verify-the-results"></a>Az eredmények ellenőrzése
 
-A munkahelyi eredményeinek ellenőrzése az URL-címét a terheléselosztó a méretezési csoporthoz:
+Ellenőrizze a munka eredményeit a méretezési csoport terheléselosztó URL-címére való navigálással:
 
-![Egy méretezési csoportban futó Java-alkalmazás beállítása az Azure-ban.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
+![A Java-alkalmazás egy méretezési csoporton fut az Azure-ban.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Automatikus skálázási virtuálisgép-méretezési csoportok az Azure-ban az Ansible használatával](./ansible-auto-scale-vmss.md)
+> [Oktatóanyag: virtuálisgép-méretezési csoportok autoskálázása az Azure-ban a Ansible használatával](./ansible-auto-scale-vmss.md)

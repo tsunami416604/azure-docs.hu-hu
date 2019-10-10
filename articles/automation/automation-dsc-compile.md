@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3d9c6c9b73f8887d4fdb85da277b2e27d8f5221c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959987"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243569"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>A DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
 
@@ -124,7 +124,7 @@ További információ a PSCredentials paraméterként való átadásáról: az a
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Összetett erőforrásokat tartalmazó Azure Automation konfigurációk fordítása
 
-Az **összetett erőforrások** lehetővé teszik a DSC-konfigurációk használatát beágyazott erőforrásként egy konfiguráción belül. Ez lehetővé teszi, hogy több konfigurációt alkalmazzon egyetlen erőforrásra. Lásd: [Composite-erőforrások: A DSC-konfiguráció használata a @ no__t-0 erőforráshoz az **összetett erőforrások**megismeréséhez.
+Az **összetett erőforrások** lehetővé teszik a DSC-konfigurációk használatát beágyazott erőforrásként egy konfiguráción belül. Ez lehetővé teszi, hogy több konfigurációt alkalmazzon egyetlen erőforrásra. Az **összetett erőforrásokkal**kapcsolatos további információkért tekintse meg az [összetett erőforrások: DSC-konfiguráció használata erőforrásként](/powershell/scripting/dsc/resources/authoringresourcecomposite) című témakört.
 
 > [!NOTE]
 > Ahhoz, hogy az **összetett erőforrásokat** tartalmazó konfigurációk helyesen legyenek lefordítva, először be kell állítani a Azure Automationba, hogy a rendszer először importálja azokat a DSC-erőforrásokat, amelyekre az összetett támaszkodik.
@@ -160,7 +160,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-A korábbi DSC-konfiguráció a Windows PowerShell használatával fordítható le. A következő parancsfájl két csomópont-konfigurációt vesz fel a Azure Automation állapot-konfiguráció lekérési szolgáltatásba: **ConfigurationDataSample. MyVM1** és **ConfigurationDataSample. MyVM3**:
+A korábbi DSC-konfiguráció a Windows PowerShell használatával fordítható le. A következő parancsfájl két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési szolgáltatáshoz: **ConfigurationDataSample. MyVM1** és **ConfigurationDataSample. MyVM3**:
 
 ```powershell
 $ConfigData = @{
@@ -224,7 +224,7 @@ Configuration CredentialSample
 }
 ```
 
-Az előző DSC-konfigurációt a PowerShell használatával fordíthatja le. A következő PowerShell két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfigurációs lekérési kiszolgálóhoz: **CredentialSample. MyVM1** és **CredentialSample. MyVM2**.
+Az előző DSC-konfigurációt a PowerShell használatával fordíthatja le. A következő PowerShell két csomópont-konfigurációt hoz létre a Azure Automation állapot-konfiguráció lekérési kiszolgálóhoz: **CredentialSample. MyVM1** és **CredentialSample. MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -246,7 +246,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> A fordítás befejezésekor a következő hibaüzenet jelenhet meg: **A Microsoft. PowerShell. Management modul nem lett importálva, mert a (z) "Microsoft. PowerShell. Management" beépülő modul már importálva lett.** Ez a figyelmeztetés nyugodtan figyelmen kívül hagyható.
+> A fordítás befejezésekor a következő hibaüzenet jelenhet meg: **a "Microsoft. PowerShell. Management" modul nem lett importálva, mert a "Microsoft. PowerShell. Management" beépülő modul már be lett importálva.** Ez a figyelmeztetés nyugodtan figyelmen kívül hagyható.
 
 ## <a name="compiling-configurations-in-windows-powershell-and-publishing-to-azure-automation"></a>Konfigurációk fordítása a Windows PowerShellben és közzététel a Azure Automation
 
@@ -287,7 +287,7 @@ Az [import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.aut
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAccount' -ResourceGroupName 'MyResourceGroup' -ConfigurationName 'MyNodeConfiguration' -Path 'C:\MyConfigurations\TestVM1.mof'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md) című témakört.
 - A DSC-konfigurációk fordításának megismeréséhez, hogy hozzá lehessen rendelni azokat a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md) című témakört.
