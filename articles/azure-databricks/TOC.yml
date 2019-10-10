@@ -1342,8 +1342,8 @@
             - name: Az Apache Spark-metrikák használata
               href: /azure/databricks/kb/metrics/spark-metrics
               maintainContext: true
-            - name: Notebooks
-              items: null
+        - name: Notebooks
+          items:
             - name: 'Annak ellenőrzése, hogy egy Spark-tulajdonság módosítható-e'
               href: /azure/databricks/kb/notebooks/check-spark-property-modifiable
               maintainContext: true
