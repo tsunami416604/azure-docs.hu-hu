@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876263"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170480"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
 A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
@@ -28,7 +28,7 @@ A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat]
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámláló-kategóriákat határozza meg:
 
-| Category | Leírás |
+| Kategória | Leírás |
 | --- | --- |
 | Service Fabric szolgáltatás |Az Azure Service Fabric szolgáltatás táveléréséhez kapcsolódó számlálók, például a kérelem feldolgozásához átlagosan szükséges idő |
 | Service Fabric szolgáltatási módszer |Service Fabric távelérési szolgáltatás által megvalósított módszerekre jellemző számlálók, például a szolgáltatási módszer meghívásának gyakorisága |
@@ -41,11 +41,11 @@ A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc74924
 A nagy mennyiségű ServiceRemoting-szolgáltatással vagy partícióval rendelkező fürtök nagy számú teljesítményszámláló-példánnyal rendelkeznek. A teljesítményszámláló-példányok nevei segíthetnek azonosítani a teljesítményszámláló-példányhoz társított adott partíciót és szolgáltatási módszert (ha van ilyen).
 
 #### <a name="service-fabric-service-category"></a>Service Fabric szolgáltatáskategória
-A kategória `Service Fabric Service`esetében a számláló példányainak neve a következő formátumú:
+A (z) @no__t – 0 kategória esetében a számláló példányainak nevei a következők:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója GUID, a karakterlánc-ábrázolás pedig az [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal jön létre a "D" formátum megadásával.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -55,10 +55,10 @@ A következőkben egy példa látható egy számláló példányának nevére a 
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-Az előző példában `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterlánc-ábrázolása a replika/ `635650083799324046` InstanceId `5008379932` karakterlánc-ábrázolása, amely a futásidejű belső használatra generált 64 bites azonosító.
+Az előző példában a `2740af29-78aa-44bc-a20b-7e60fb783264` a Service Fabric partíció-azonosító karakterláncos ábrázolása, `635650083799324046` a replika/InstanceId karakterlánc-ábrázolása, a `5008379932` pedig a futásidejű belső használatra létrehozott 64 bites azonosító.
 
 #### <a name="service-fabric-service-method-category"></a>Service Fabric szolgáltatási módszer kategóriája
-A kategória `Service Fabric Service Method`esetében a számláló példányainak neve a következő formátumú:
+A (z) @no__t – 0 kategória esetében a számláló példányainak nevei a következők:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -66,7 +66,7 @@ A *MethodName* annak a szolgáltatási módszernek a neve, amelyhez a teljesítm
 
 A *ServiceRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója GUID, a karakterlánc-ábrázolás pedig az [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) metódussal jön létre a "D" formátum megadásával.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -76,7 +76,7 @@ A következőkben egy példa látható egy számláló példányának nevére a 
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-Az előző példában `ivoicemailboxservice.leavemessageasync` a metódus `2` neve a `89383d32-e57e-4a9b-a6ad-57c6792aa521` futtatókörnyezet belső használatára generált 32 bites azonosító, a Service Fabric partíció-azonosító`635650083804480486` karakterlánc-ábrázolása, a a Service Fabric-replika/-példány `5008380` azonosítója, valamint a futásidejű belső használatra generált 64 bites azonosító.
+Az előző példában `ivoicemailboxservice.leavemessageasync` a metódus neve, `2` a futtatókörnyezet belső használatára generált 32 bites azonosító, `89383d32-e57e-4a9b-a6ad-57c6792aa521` a Service Fabric partíció-azonosító karakterlánc-ábrázolása, `635650083804480486` az Service Fabric replika karakterlánc-ábrázolása/ A példány azonosítója és a `5008380` a futtatókörnyezet belső használatára generált 64 bites azonosító.
 
 ## <a name="list-of-performance-counters"></a>Teljesítményszámlálók listája
 ### <a name="service-method-performance-counters"></a>Szolgáltatási módszer teljesítményszámlálói
@@ -99,6 +99,6 @@ Ha egy ügyfél Service proxy-objektumon keresztül hív meg egy metódust, akko
 | Service Fabric szolgáltatás |Kérelem deszerializálásának átlagos ezredmásodperce |A szolgáltatási kérelem üzenetének deszerializálásához szükséges idő (ezredmásodpercben), amikor a szolgáltatás megkapja a szolgáltatást |
 | Service Fabric szolgáltatás |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a szolgáltatás válaszüzenetének szerializálásához, mielőtt a rendszer elküldi a választ az ügyfélnek |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Mintakód](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

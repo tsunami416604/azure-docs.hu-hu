@@ -1,7 +1,7 @@
 ---
-title: 'Oktatóanyag: Az Azure-szolgáltatások felismerése egyéni embléma-Kiderítő használatával – Custom Vision'
+title: 'Oktatóanyag: egyéni emblémás detektor használata az Azure-szolgáltatások felismeréséhez – Custom Vision'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy, az Azure Custom Visiont használó minta alkalmazást fog áttekinteni egy embléma-észlelési forgatókönyv részeként. Megtudhatja, hogyan használhatók a Custom Vision a többi összetevővel egy végpontok közötti alkalmazás továbbításához.
+description: Ebben az oktatóanyagban egy, a Custom Visiont használó minta alkalmazást használ a logo észlelési forgatókönyv részeként. Megtudhatja, hogyan használhatók a Custom Vision a többi összetevővel egy végpontok közötti alkalmazás továbbításához.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261973"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177794"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: Azure-szolgáltatás emblémáinak felismerése kamera-képekben
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
-Ebben az oktatóanyagban egy olyan minta alkalmazást fog vizsgálni, amely egy Azure Custom Visiont használ egy nagyobb forgatókönyv részeként. A Xamarin. Forms alkalmazás mobil platformokhoz készült AI Visual kiépítő alkalmazás, amely az Azure-szolgáltatások emblémáit elemzi, majd üzembe helyezi a tényleges szolgáltatásokat a felhasználó Azure-fiókjával. Itt megtudhatja, hogyan használja a Custom Vision a más összetevőkkel együttműködve, hogy egy hasznos, végpontok közötti alkalmazást nyújtson. Saját maga is futtathatja a teljes alkalmazási forgatókönyvet, vagy elvégezheti a telepítés Custom Visionét, és megvizsgálhatja, hogy az alkalmazás hogyan használja azt.
+Ebben az oktatóanyagban egy olyan minta alkalmazást fog vizsgálni, amely Custom Visiont használ egy nagyobb forgatókönyv részeként. A Xamarin. Forms alkalmazás mobil platformokhoz készült AI Visual kiépítő alkalmazás, amely az Azure-szolgáltatások emblémáit elemzi, majd üzembe helyezi a tényleges szolgáltatásokat a felhasználó Azure-fiókjával. Itt megtudhatja, hogyan használja a Custom Vision a más összetevőkkel együttműködve, hogy egy hasznos, végpontok közötti alkalmazást nyújtson. Saját maga is futtathatja a teljes alkalmazási forgatókönyvet, vagy elvégezheti a telepítés Custom Visionét, és megvizsgálhatja, hogy az alkalmazás hogyan használja azt.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -97,7 +97,7 @@ Fizessen elő a Computer Vision szolgáltatásra a kulcs és végpont URL-címé
 
 ![A Azure Portal Computer Vision szolgáltatása a kiválasztott rövid útmutató menüjével. A kulcsok hivatkozását a rendszer az API-végpont URL-címének megfelelően ismerteti](media/azure-logo-tutorial/comvis-keys.png)
 
-Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse `ComputerVisionEndpoint` ki `ComputerVisionKey` a és a változókat a megfelelő értékekkel.
+Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse ki a `ComputerVisionEndpoint` és `ComputerVisionKey` változót a megfelelő értékekkel.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -131,7 +131,7 @@ A sikeres befejezést követően a következő JSON-kimenetnek kell megjelennie,
 }
 ```
 
-Jegyezze fel a és `clientId` `tenantId` az értékeket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
+Jegyezze fel a `clientId` és a `tenantId` értéket. Adja hozzá őket a megfelelő mezőkhöz a *Source\VisualProvision\AppSettings.cs* fájlban.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -153,7 +153,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 1. Az első képernyőn adja meg az egyszerű szolgáltatás ügyfél-AZONOSÍTÓját, a bérlő AZONOSÍTÓját és a jelszót. Válassza a **Bejelentkezés** gombot.
 
     > [!NOTE]
-    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a `Button` **login (bejelentkezés) gombot**, majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
+    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg az `Button` elem címkével ellátott **bejelentkezési gombját**, távolítsa el a következő sort, majd futtassa újra az alkalmazást.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -177,7 +177,7 @@ Ha követte a forgatókönyv összes lépését, és az alkalmazást használta 
 
 Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes próbaverziója csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt**területen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy teljes funkcionalitású Xamarin. Forms-alkalmazást állít be és vizsgál meg, amely a Custom Vision szolgáltatást használja a mobil kamera-lemezképekben található emblémák észlelésére. Következő lépésként Ismerkedjen meg a Custom Vision-modell létrehozásával kapcsolatos ajánlott eljárásokkal, hogy a saját alkalmazásaihoz hozzon létre egyet, így hatékony és pontos lehet.
 

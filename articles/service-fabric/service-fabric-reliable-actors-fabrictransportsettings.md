@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 4170f79e8eaca44260e81c85c1a3a7571720ec7f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: c840280e0a9662cd0175feed04f37119443efc3c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876129"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170570"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors FabricTransport beállításainak konfigurálása
 
@@ -60,7 +60,7 @@ Az alapértelmezett konfiguráció módosításához használhat egy [konfigurá
 
 Adjon hozzá egy TransportSettings szakaszt a Settings. xml fájlban.
 
-Alapértelmezés szerint a színész kódja a "&lt;ActorName&gt;TransportSettings" SectionName keresi. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
+Alapértelmezés szerint a színész kódja a "&lt;ActorName @ no__t-1TransportSettings" SectionName keresi a következőt:. Ha ez nem található, akkor a SectionName "TransportSettings"-ként ellenőrzi.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Alapértelmezés szerint a színész kódja a "&lt;ActorName&gt;TransportSetting
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>FabricTransport-beállítások konfigurálása a színészi ügyfél szerelvényéhez
 
-Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy "&lt;Client exe name&gt;. Settings. xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
+Ha az ügyfél nem a szolgáltatás részeként fut, létrehozhat egy "&lt;Client exe Name&gt;.settings.xml" fájlt a Client. exe fájllal megegyező helyen. Ezután adjon hozzá egy TransportSettings szakaszt a fájlban. A SectionName "TransportSettings" értéknek kell lennie.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

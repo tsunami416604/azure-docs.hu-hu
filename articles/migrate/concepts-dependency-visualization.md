@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202914"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178121"
 ---
-# <a name="dependency-visualization"></a>Függőségek képi megjelenítése
+# <a name="dependency-visualization"></a>Függőségek vizualizációja
 
-Azure Migrate: A kiszolgáló értékelése kiértékeli a helyszíni gépek csoportjait az Azure-ba való áttelepítéshez. Csoportok létrehozásához használhatja a kiszolgáló értékelése függőségi vizualizáció funkcióját. Ez a cikk a szolgáltatással kapcsolatos információkat tartalmaz.
+Azure Migrate: a kiszolgáló értékelése kiértékeli a helyszíni gépek csoportjait az Azure-ba való áttelepítéshez. Csoportok létrehozásához használhatja a kiszolgáló értékelése függőségi vizualizáció funkcióját. Ez a cikk a szolgáltatással kapcsolatos információkat tartalmaz.
 
 > [!NOTE]
 > A függőségi vizualizáció funkció Azure Governmentban nem érhető el.
@@ -27,8 +27,8 @@ A kiszolgáló értékelése során a függőségi vizualizáció lehetővé tes
 ## <a name="before-you-start"></a>Előkészületek
 
 - Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Kiszolgáló-értékelési eszköz.
-- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld a Azure Migratenak: Server Assessment. [További információk](migrate-appliance.md).
+- Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
+- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
@@ -36,9 +36,9 @@ A Azure Migrate a [Service Map](../operations-management-suite/operations-manage
 - A függőségi vizualizáció kihasználása érdekében hozzá kell rendelnie egy Log Analytics munkaterületet, amely új vagy meglévő, egy Azure Migrate projekttel.
 - Csak abban az előfizetésben hozhat létre vagy csatolhat munkaterületet, ahol a Azure Migrate projektet létrehozták.
 - Log Analytics munkaterület csatolása egy projekthez:
-    1. A **kiszolgálók** lap **Azure Migratejában: Kiszolgáló-** értékelési csempe, kattintson az **Áttekintés**elemre.
+    1. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **Áttekintés**elemre.
     2. Az **Áttekintés**területen kattintson a lefelé mutató nyílra az **alapvető**erőforrások kibontásához.
-    3. A **OMS**munkaterületen kattintson a **Konfigurálás szükséges**elemre.
+    3. A **OMS munkaterületen**kattintson a **Konfigurálás szükséges**elemre.
     4. A **munkaterület konfigurálása**lapon adja meg, hogy új munkaterületet kíván-e létrehozni, vagy egy meglévőt szeretne használni:
     
     ![Munkaterület hozzáadása](./media/how-to-create-group-machine-dependencies/workspace.png)
@@ -51,10 +51,10 @@ A Azure Migrate a [Service Map](../operations-management-suite/operations-manage
   > Miután csatolt egy munkaterületet egy projekthez, később nem módosítható.
 
   > [!NOTE]
-  > Azure Migrate jelenleg támogatja a OMS-munkaterület létrehozását az USA keleti régiójában, Délkelet-Ázsiában és Nyugat-Európában. Ha a munkaterületet a Azure Migrateon kívül más régióban hozza létre, akkor jelenleg nem rendelhető hozzá Azure Migrate projekthez. 
+  > Azure Migrate jelenleg az USA keleti, Délkelet-ázsiai és Nyugat-európai régióiban található Log Analytics-munkaterületek létrehozását vagy társítását támogatja. Ha a munkaterületet nem támogatott régió Azure Migrateján kívül hozza létre, a rendszer jelenleg nem társítható Azure Migrate projekthez. 
 
-- A társított munkaterület a kulcs áttelepítési **projektje**és az érték **projekt neve**alapján van címkézve, amely a Azure Portal való kereséshez használható.
-- A projekthez társított munkaterületre való belépéshez nyissa meg a projekt áttekintő oldalának **Essentials (alapvető** ) szakaszát, és nyissa meg a munkaterületet
+- A társított munkaterület a kulcs **áttelepítési projektje**és az érték **projekt neve**alapján van címkézve, amely a Azure Portal való kereséshez használható.
+- A projekthez társított munkaterületre való belépéshez nyissa meg a projekt **áttekintő** oldalának **Essentials (alapvető** ) szakaszát, és nyissa meg a munkaterületet
 
     ![Log Analytics munkaterület navigálása](./media/concepts-dependency-visualization/oms-workspace.png)
 
@@ -88,6 +88,6 @@ A Log Analytics munkaterületet Azure Migraten kívül is használhatja. Ha tör
 
 Ne törölje a Azure Migrate által létrehozott munkaterületet, hacsak nem törli a Azure Migrate projektet. Ha így tesz, a függőségi vizualizáció funkció nem a várt módon fog működni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Gépek csoportosítása számítógép-függőségek használatával](how-to-create-group-machine-dependencies.md)
 - [További](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) információ a függőségi vizualizációval kapcsolatos gyakori kérdésekért.

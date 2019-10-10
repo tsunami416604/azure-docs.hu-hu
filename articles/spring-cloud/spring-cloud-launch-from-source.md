@@ -1,23 +1,27 @@
 ---
-title: A Spring Cloud-alkalmazás elindítása forráskódból
+title: 'Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból'
 description: Ismerje meg, hogyan indíthat Azure Spring Cloud-alkalmazást közvetlenül a forráskódból
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038807"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170534"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>A Spring Cloud-alkalmazás elindítása forráskódból
 
 Az Azure Spring Cloud lehetővé teszi, hogy az alkalmazást közvetlenül a Java-forráskódból vagy egy előre elkészített JAR-ból indítsa el. Ez a cikk végigvezeti a szükséges lépéseken.
 
-## <a name="initial-requirements"></a>Kezdeti követelmények
+## <a name="prerequisites"></a>Előfeltételek
+
+>[!Note]
+> A rövid útmutató megkezdése előtt győződjön meg arról, hogy az Azure-előfizetése hozzáfér az Azure Spring Cloud-hoz.  Előzetes verziójú szolgáltatásként azt javasoljuk, hogy forduljon hozzánk, hogy fel tudja venni az előfizetését az engedélyezési listára.  Ha szeretné felfedezni az Azure Spring Cloud képességeit, kérjük, [töltse ki ezt az űrlapot](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Mielőtt elkezdené, győződjön meg arról, hogy az Azure-előfizetése rendelkezik a szükséges függőségekkel:
 
@@ -130,7 +134,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet. 
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: Példák
   items:
-    - name: .NET-minták
+    - name: .NET V2 SDK-minták
       href: sql-api-dotnet-samples.md
+    - name: .NET V3 SDK-minták
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Java-példák
       href: sql-api-java-samples.md
     - name: Aszinkron Java-példák
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: Adatok migrálása a Cosmos DB-re
       items:
+        - name: Adatmigrálási lehetőségek a Cosmos DB-re
+          href: cosmosdb-migrationchoices.md
         - name: Migrálás az SQL API-ba a Striim használatával
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Adatok migrálása a Cassandra API-ba a Striim használatával

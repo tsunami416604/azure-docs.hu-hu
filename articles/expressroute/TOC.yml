@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: Az ExpressRoute Global Reach ismertetése
       href: expressroute-global-reach.md
+    - name: Az ExpressRoute-titkosítás ismertetése
+      href: expressroute-about-encryption.md
     - name: Kapcsolódás nyilvános felhőkhöz az Azure-ból
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Háttérkapcsolat együttműködési lehetőségei
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: A MACsec konfigurálása ExpressRoute Direct-portokhoz
+      href: expressroute-howto-macsec.md
     - name: Microsoft társviszony-létesítés útvonalszűrőinek konfigurálása
       items:
         - name: Azure Portal

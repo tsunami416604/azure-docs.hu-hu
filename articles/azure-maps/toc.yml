@@ -105,6 +105,8 @@
               href: map-add-line-layer.md
             - name: Sokszögréteg hozzáadása
               href: map-add-shape.md
+            - name: Kiterjesztési sokszögréteg hozzáadása
+              href: map-extruded-polygon.md
             - name: Hőtérképréteg hozzáadása
               href: map-add-heat-map-layer.md
             - name: Előugró ablak hozzáadása

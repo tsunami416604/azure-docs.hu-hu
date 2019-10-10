@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: A Custom Vision dokumentációja
-summary: Az Azure Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
+summary: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
 metadata:
   title: A Custom Vision dokumentációja
-  description: Az Azure Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
+  description: A Custom Vision egy Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre, helyezhet üzembe és fejleszthet tovább. A képosztályozó olyan AI-szolgáltatás, amely a képeket vizuális tulajdonságaiknak megfelelő címkékkel látja el (amelyek osztályokat képviselnek).
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: custom-vision
@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 931f67bd0f5c73426781da39ded3bcfff0a8dea3
-  ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+  ms.openlocfilehash: 5be5dcd64345de32e37413932869574391573c60
+  ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 09/24/2019
-  ms.locfileid: "71211971"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72176167"
 landingContent:
 - title: Tudnivalók a Custom Visionről
   linkLists:

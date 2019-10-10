@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4e4a2b1df178d884e02ab5029f2e76a0376a7653
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846562"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170295"
 ---
 # <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Általános, teljesítménnyel kapcsolatos hibaelhárítás Linux vagy Windows rendszeren futó Azure virtuális gépekhez
 
@@ -28,7 +28,7 @@ Ez a cikk a virtuális gép (VM) általános teljesítményének hibaelhárítá
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-beli virtuális gépek figyelése
 
-A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#change-settings-for-an-existing-resource). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
+A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
 
 ![A figyelés nincs engedélyezve](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -71,7 +71,7 @@ Annak megállapításához, hogy van-e erőforrás-szűk keresztmetszete, tekint
 
 1. Szerkessze a diagramot.
 2. Állítsa be az időtartományt.
-3. Ezután a számlálóban fel kell vennie a következőt: CPU-százalékos vendég operációs rendszer
+3. Ezután fel kell vennie a következőt: CPU százalék vendég operációs rendszer
 4. Mentse el.
 
 ### <a name="cpu-observe-trends"></a>A CPU megfigyelésének trendjei
@@ -156,7 +156,7 @@ Ha a rendelkezésre állás csökkenését tapasztalja, akkor a platformmal kapc
 * ClientTimeOutError
 * ServerTimeOutError
 * AverageE2ELatency
-* AverageServerLatency
+* Averageserverlatency értéket mutatnak
 * TotalRequests
 
 A * TimeOutError mérőszámokban szereplő értékek azt jelzik, hogy egy IO-művelet túl sokáig tartott, és időtúllépés történt. A következő lépések elvégzése segít azonosítani a lehetséges okokat.
@@ -175,11 +175,11 @@ Ezzel a metrikával nem állapítható meg, hogy melyik blob okozza a szabályoz
 
 Ha meg szeretné állapítani, hogy az IOPS-korlátot használja-e, lépjen be a Storage-fiók diagnosztikát, és ellenőrizze a TotalRequests, és nézze meg, hogy közeledik-e a 20000 TotalRequests. Azonosíthatja a minta változását, függetlenül attól, hogy a korlátot az első alkalommal látja-e, vagy hogy a korlát egy adott időpontban történik.
 
-#### <a name="references"></a>Referencia
+#### <a name="references"></a>Tudástár
 
 * [A virtuálisgép-lemezek skálázhatósági céljai](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 
-A Storage-fiók sávszélességét a Storage-fiók Metrikái mérik: TotalIngress és TotalEgress. A sávszélesség a redundancia és a régiók típusától függően eltérő küszöbértékekkel rendelkezik.
+A Storage-fiók sávszélességét a Storage-fiók Metrikái határozzák meg: TotalIngress és TotalEgress. A sávszélesség a redundancia és a régiók típusától függően eltérő küszöbértékekkel rendelkezik.
 
 * [A Blobok, várólisták, táblák és fájlok skálázhatósági céljai](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
 
@@ -211,7 +211,7 @@ Ezek a cikkek a konkrét forgatókönyveket tárgyalják:
 
 * [Az Azure Premium Storage használata a SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/).
 

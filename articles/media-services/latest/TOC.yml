@@ -4,6 +4,8 @@
   items:
     - name: A Media Services ismertetése
       href: media-services-overview.md
+    - name: Újdonságok a Media Servicesben
+      href: release-notes.md
 - name: Oktatóanyagok
   expanded: true
   items:
@@ -343,8 +345,6 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Kibocsátási megjegyzések
-      href: release-notes.md
     - name: Kvóták és korlátozások
       href: limits-quotas-constraints.md
     - name: GYIK

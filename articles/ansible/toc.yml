@@ -1,89 +1,111 @@
-items:
 - name: Ansible az Azure-ban – dokumentáció
   href: ./index.yml
 - name: Áttekintés
   items:
-  - name: Ansible az Azure-ban – ismertetés
-    href: ./ansible-overview.md
+    - name: Ansible az Azure-ban – ismertetés
+      href: ./ansible-overview.md
 - name: Gyors útmutatók
-  items:
-  - name: Ansible-megoldássablon üzembe helyezése
-    href: ./ansible-deploy-solution-template.md
-  - name: Az Ansible telepítése Linux rendszerű virtuális gépen
-    href: /azure/virtual-machines/linux/ansible-install-configure
-    maintainContext: true
-  - name: Linux rendszerű virtuális gép létrehozása
-    href: /azure/virtual-machines/linux/ansible-create-vm
-    maintainContext: true
-  - name: Linux rendszerű virtuális gép kezelése
-    href: /azure/virtual-machines/linux/ansible-manage-linux-vm
-    maintainContext: true
-  - name: Forgatókönyv futtatása a Cloud Shellben
-    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
+  items:
+    - name: Ansible-megoldássablon üzembe helyezése CentOS rendszeren
+      href: ./ansible-deploy-solution-template.md
+    - name: Az Ansible telepítése Linux rendszerű virtuális gépeken
+      href: /azure/virtual-machines/linux/ansible-install-configure
+      maintainContext: true
+    - name: Forgatókönyvek futtatása a Cloud Shellben
+      href: ./ansible-run-playbook-in-cloudshell.md
+    - name: Linuxos virtuális gépek használata
+      expanded: true
+      items:
+        - name: Linux rendszerű virtuális gépek konfigurálása
+          href: /azure/virtual-machines/linux/ansible-create-vm
+          maintainContext: true
+        - name: Linux rendszerű virtuális gépek kezelése
+          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          maintainContext: true
 - name: Oktatóanyagok
   items:
-  - name: AKS
-    items:
-    - name: AKS-fürtök létrehozása és konfigurálása
-      href: ./ansible-create-configure-aks.md
-  - name: App Service
-    items:
-    - name: Azure Web Apps-alkalmazások létrehozása és konfigurálása
-      href: ./ansible-create-configure-azure-web-apps.md
-    - name: Az Azure Web Apps skálázása
-      href: ./ansible-scale-azure-web-apps.md
-  - name: Application Gateway
-    items:
-    - name: Azure Application Gateway létrehozása és konfigurálása
-      href: ./ansible-create-configure-application-gateway.md
-  - name: Adatbázisok
-    items:
-    - name: MySQL-hez készült Azure DB létrehozása és konfigurálása
-      href: ./ansible-create-configure-mysql.md
-  - name: Dinamikus leltár
-    items:
-    - name: Dinamikus leltárak kezelése
-      href: ./ansible-manage-azure-dynamic-inventories.md
-  - name: Virtuális hálózat
-    items:
-    - name: Útválasztási táblázatok létrehozása és konfigurálása
-      href: ./ansible-create-configure-route-table.md
-  - name: VMSS
-    items:
-    - name: VMSS létrehozása és konfigurálása
-      href: ./ansible-create-configure-vmss.md
-    - name: Alkalmazás üzembe helyezése a VMSS-en
-      href: ./ansible-deploy-app-vmss.md
-    - name: VMSS automatikus skálázása
-      href: ./ansible-auto-scale-vmss.md
+    - name: Azure Application Gateway
+      items:
+        - name: Webes forgalom kezelése
+          href: ./ansible-create-configure-application-gateway.md
+    - name: Azure App Service
+      items:
+        - name: Alkalmazások konfigurálása
+          href: ./ansible-create-configure-azure-web-apps.md
+        - name: Alkalmazások méretezése
+          href: ./ansible-scale-azure-web-apps.md
+    - name: Azure DevTest Labs
+      items:
+        - name: Tesztkörnyezetek konfigurálása
+          href: ./ansible-devtest-labs-configure.md
+    - name: Azure Kubernetes Service (AKS)
+      items:
+        - name: AKS-fürtök konfigurálása
+          href: ./ansible-create-configure-aks.md
+        - name: Az Azure CNI hálózatkezelésének konfigurálása
+          href: ./ansible-aks-configure-cni-networking.md
+        - name: A Kubenet hálózatkezelésének konfigurálása
+          href: ./ansible-aks-configure-kubenet-networking.md
+        - name: RBAC-szerepkörök konfigurálása AKS-fürtön
+          href: ./ansible-aks-configure-rbac.md
+    - name: Azure HDInsight
+      items:
+        - name: Fürtök konfigurálása
+          href: ./ansible-azure-hdinsight-configure.md
+    - name: Azure Service Bus
+      items:
+        - name: Üzenetsorok konfigurálása
+          href: ./ansible-service-bus-queue-configure.md
+        - name: Témák konfigurálása
+          href: ./ansible-service-bus-topic-configure.md
+    - name: Adatbázis
+      items:
+        - name: Az Azure Database for MySQL konfigurálása
+          href: ./ansible-create-configure-mysql.md
+        - name: Azure Cosmos DB-fiókok konfigurálása
+          href: ./ansible-data-cosmos-configure.md
+        - name: Az Azure Cache for Redis konfigurálása
+          href: ./ansible-data-cache-for-redis-configure.md
+    - name: Dinamikus leltár
+      items:
+        - name: Azure-erőforrások kezelése
+          href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: Virtuálisgép-méretezési csoportok
+      items:
+        - name: Konfigurálás
+          href: ./ansible-create-configure-vmss.md
+        - name: Üzembe helyezés
+          href: ./ansible-deploy-app-vmss.md
+        - name: Automatikus méretezés
+          href: ./ansible-auto-scale-vmss.md
+        - name: Egyéni rendszerkép létrehozása
+          href: ./ansible-vmss-update-image.md
+    - name: Virtuális hálózat
+      items:
+        - name: Társviszony-létesítés konfigurálása
+          href: ./ansible-vnet-peering-configure.md
+        - name: Útválasztási táblázatok konfigurálása
+          href: ./ansible-create-configure-route-table.md
+- name: Példák
+  items:
+    - name: Ansible-tesztkörnyezetek az Azure-ban
+      href: 'https://github.com/microsoft/ansiblelabs'
+    - name: Azure-forgatókönyvminták az Azure-ban
+      href: 'https://github.com/Azure-Samples/ansible-playbooks'
 - name: Referencia
   items:
-  - name: Forgatókönyv-szerepkörök
-    items:
-    - name: azure_module
-      href: https://galaxy.ansible.com/Azure/azure_modules/
-    - name: azure_preview_module
-      href: https://galaxy.ansible.com/Azure/azure_preview_modules
-  - name: Kiadások és szolgáltatások
-    href: ./ansible-matrix.md
-  - name: Azure Container Instances
-    href: https://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html
-  - name: Azure Functions
-    href: https://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html
-  - name: Terheléselosztók
-    href: https://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html
-  - name: Virtual machines (Virtuális gépek)
-    href: https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
-  - name: Minden modul az Azure-ban
-    href: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
+    - name: Forgatókönyv-szerepkörök
+      items:
+        - name: azure_module
+          href: 'https://galaxy.ansible.com/Azure/azure_modules/'
+        - name: azure_preview_module
+          href: 'https://galaxy.ansible.com/Azure/azure_preview_modules'
+    - name: Kiadások és szolgáltatások
+      href: ./ansible-matrix.md
+    - name: Minden modul az Azure-ban
+      href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
 - name: Eszközök
   items:
-  - name: Visual Studio Code-bővítmény az Ansible-höz
-    href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226638"
+    - name: Visual Studio Code-bővítmény az Ansible-höz
+      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'
