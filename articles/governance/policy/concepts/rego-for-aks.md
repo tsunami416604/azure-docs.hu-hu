@@ -1,17 +1,17 @@
 ---
-title: A virtuális gép tartalmának naplózása
+title: Az Azure Kubernetes Service Azure Policy megismerése
 description: Megtudhatja, hogyan kezeli a Azure Policy a Rego és a nyílt házirend-ügynököt a fürtök Azure Kubernetes szolgáltatásban való kezeléséhez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981443"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254738"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Az Azure Kubernetes Service Azure Policy megismerése
 
@@ -38,7 +38,7 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
   1. Regisztrálja a **Microsoft. tárolószolgáltatás** és a **Microsoft. PolicyInsights** erőforrás-szolgáltatókat. A lépéseket lásd: [erőforrás-szolgáltatók és típusok](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
+  1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
 
      ![Szabályzat keresése az összes szolgáltatásban](../media/rego-for-aks/search-policy.png)
 
@@ -63,9 +63,22 @@ A Azure Policy bővítmény telepítése vagy a szolgáltatás bármely funkció
 
   # Feature register: enables installing the add-on
   az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.ContainerService
+  
   # Feature register: enables the add-on to call the Azure Policy resource provider
   az feature register --namespace Microsoft.PolicyInsights --name AKS-DataplaneAutoApprove
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.PolicyInsights/AKS-DataPlaneAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.PolicyInsights
+  
   ```
 
 ## <a name="azure-policy-add-on"></a>Azure Policy bővítmény
@@ -130,7 +143,7 @@ Az előfeltételek elvégzése után telepítse a Azure Policy-bővítményt a f
      > [!NOTE]
      > Ha a **bővítmény engedélyezése** gomb szürkén jelenik meg, az előfizetés még nem lett hozzáadva az előzetes verzióhoz. A szükséges lépések megtekintéséhez tekintse meg a következőt: [opt-in (előzetes](#opt-in-for-preview) verzió).
 
-- Azure CLI
+- Azure parancssori felület (CLI)
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -207,7 +220,7 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
 
      ![Az AK-bővítmény Azure Policyának letiltása](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure CLI
+- Azure parancssori felület (CLI)
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -215,7 +228,7 @@ Ha el szeretné távolítani a Azure Policy-bővítményt az AK-fürtből, haszn
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

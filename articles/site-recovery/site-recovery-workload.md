@@ -1,22 +1,22 @@
 ---
-title: Milyen számítási feladatokat tud védeni az Azure Site Recovery? | Microsoft Docs
+title: Tudnivalók a helyi alkalmazások vész-helyreállításáról Azure Site Recovery
 description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232184"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255557"
 ---
-# <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Milyen számítási feladatokat tud védeni az Azure Site Recovery?
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>Tudnivalók a helyszíni alkalmazások vész-helyreállításáról
 
-Ez a cikk azokat a munkaterheléseket és alkalmazásokat ismerteti, amelyeket a [Azure site Recovery](site-recovery-overview.md) szolgáltatással szembeni vész-helyreállításhoz használhat.
+Ez a cikk azokat a helyszíni munkaterheléseket és alkalmazásokat ismerteti, amelyeket a [Azure site Recovery](site-recovery-overview.md) szolgáltatással szembeni vész-helyreállítási védelemmel lehet ellátni.
 
 
 
@@ -154,6 +154,6 @@ A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemel�
 
 [Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Első lépések:](azure-to-azure-quickstart.md) Azure-beli virtuális gép replikálása.

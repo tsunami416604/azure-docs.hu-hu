@@ -1,17 +1,17 @@
 ---
-title: Minta – naplózási kiszolgáló szintű veszélyforrások észlelési beállítása
+title: Minta – naplózási kiszolgáló szintű fenyegetések észlelése
 description: Ez a példa a házirend-definícióban naplózza az SQL Server biztonsági riasztási házirendjeit, ha ezek a házirendek nem a megadott állapotra vannak beállítva.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 25504b558a930ae6dcea710ee850ae296c63c4ae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977264"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254763"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>Minta – naplózási kiszolgáló szintű veszélyforrások észlelési beállítása
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'audit-sql-server-threat-detection' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-sql-server-threat-detection"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 90be253a4763aebd31b663aa0e765c187c8bff92
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: f1450399dc027a6977f4c99507e2e15b301272c4
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266421"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249388"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kibocsátási megjegyzések
 
@@ -24,7 +24,7 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 
 ### <a name="single-databasetabsingle-database"></a>[Önálló adatbázis](#tab/single-database)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
 | [Azure Private-hivatkozás](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Azáltal, hogy az adatokat az Azure-hálózaton belül tartja, és nem teszi elérhetővé az internet felé, a privát kapcsolat egyszerűbbé teszi a hálózati architektúrát és biztonságossá teszi a kapcsolatot az Azure-beli végpontok között. Privát kapcsolat segítségével saját szolgáltatást is létrehozhat és nyújthat az Azure-ban. |
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md).|
@@ -38,25 +38,26 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 | A Azure Portal lekérdezés-szerkesztője |További információ: [a Azure Portal SQL Query Editor használata az adatok összekapcsolásához és lekérdezéséhez](sql-database-connect-query-portal.md).|
 | R-szolgáltatások/gépi tanulás önálló adatbázisokkal és rugalmas készletekkel |További információ: [Machine Learning Services Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 | Kiszolgáló nélküli számítási szint | További információ: [SQL Database kiszolgáló nélküli (előzetes verzió)](sql-database-serverless.md).|
-|SQL Analytics|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
+|SQL-elemzés|További információ: [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md).|
 |Táblázat változó késleltetett fordítása (a 150-es kompatibilitási szint alatt)|További információ: [Table változó késleltetett fordítása](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 
 ### <a name="managed-instancetabmanaged-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
-| Funkció | Részletek |
+| Szolgáltatás | Részletek |
 | ---| --- |
+| <a href="/azure/sql-database/sql-database-managed-instance-connectivity-architecture#service-aided-subnet-configuration-public-preview-in-east-us-and-west-us">Szolgáltatással segített alhálózat konfigurációja</a> | Biztonságos és kényelmes mód az alhálózati konfiguráció kezelésére. |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példányok készletei</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
-| <a href="https://aka.ms/managed-instance-tde-byok">Transzparens adattitkosítás (TDE) Bring Your Own Key (BYOK)</a> |További információ [: Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsokkal a Azure Key Vaultban: Bring Your Own Key támogatás](transparent-data-encryption-byok-azure-sql.md).|
+| <a href="https://aka.ms/managed-instance-tde-byok">Transzparens adattitkosítás (TDE) Bring Your Own Key (BYOK)</a> |További információ [: bring your own key támogatás az Azure SQL transzparens adattitkosítás ügyfél által felügyelt Azure Key Vault kulcsokkal](transparent-data-encryption-byok-azure-sql.md).|
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre kiszolgálói szintű bejelentkezéseket <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">a külső szolgáltatói utasítás Create login</a> parancsával. |
 | [Tranzakciós replikáció](sql-database-managed-instance-transactional-replication.md) | A táblák változásainak replikálása más, felügyelt példányokra, különálló adatbázisokra vagy SQL Server példányokra helyezett adatbázisokra, illetve a táblák frissítése, ha egyes sorok módosulnak más felügyelt példányokban vagy SQL Server példányokban. További információ: [replikáció konfigurálása Azure SQL Database felügyelt példány-adatbázisban](replication-with-sql-database-managed-instance.md). |
-| Fenyegetések észlelése |További információ: [a veszélyforrások észlelésének konfigurálása Azure SQL Database felügyelt példányban](sql-database-managed-instance-threat-detection.md).|
+| Fenyegetésészlelés |További információ: [a veszélyforrások észlelésének konfigurálása Azure SQL Database felügyelt példányban](sql-database-managed-instance-threat-detection.md).|
 | Eldobott adatbázisok újbóli létrehozása felügyelt példányokkal |További információ: [eldobott adatbázisok ismételt létrehozása az Azure SQL felügyelt példányában](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266).|
 | &nbsp; |
 
 ---
 
-## <a name="new-features"></a>Új funkciók
+## <a name="new-features"></a>ÚJ funkciók
 
 ### <a name="managed-instance-h2-2019-updates"></a>Felügyelt példány H2 2019-frissítések
 
@@ -73,7 +74,7 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
   - Konfigurálja a példányokat [nyilvános végpontok](sql-database-managed-instance-public-endpoint-configure.md)használatára, a [proxy felülbírálási](sql-database-connectivity-architecture.md#connection-policy) kapcsolatainak jobb hálózati teljesítmény eléréséhez, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuális mag a Gen5</a> , illetve a <a href="https://aka.ms/managed-instance-configurable-backup-retention">biztonsági másolatok megőrzésének beállítása akár 35 napra</a> az időponthoz való visszaállításhoz. A biztonsági másolatok hosszú távú megőrzése (akár 10 évig) továbbra sem engedélyezett, így a <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">csak a másolásra alkalmas biztonsági mentések</a> is használhatók Alternatív megoldásként.
   - Az új funkciók lehetővé teszik, hogy az <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">adatbázist egy másik adatközpontba állítsa be a PowerShell használatával</a>, az [adatbázis átnevezésével](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), a [virtuális fürt törlésével](sql-database-managed-instance-delete-virtual-cluster.md).
   - Az új beépített [példány-közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) lehetővé teszi a vám (SOD) megfelelőségének a biztonsági elvekkel való elválasztását, valamint a vállalati szabványoknak való megfelelést.
-  - A felügyelt példány a következő Azure Government-régiókban érhető el: GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2. A következő nyilvános régiókban is elérhető: Ausztrália középső régiója, Ausztrália középső régiója, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek középső régiója, Észak-Európa, Dél-Afrika, Nyugat-Afrika.
+  - A felügyelt példány a következő Azure Government-régiókban érhető el: GA (US Gov Texas, US Gov Arizona), valamint a Észak-Kína 2 és Kelet-Kína 2. A következő nyilvános régiókban érhető el: Közép-Ausztrália, Közép-Ausztrália, Dél-Brazília, Dél-Franciaország, Egyesült Arab Emírségek, Észak-Európa, Dél-Afrika, Dél-Afrika, Nyugat-Európa.
 
 ## <a name="fixed-known-issues"></a>Rögzített ismert problémák
 

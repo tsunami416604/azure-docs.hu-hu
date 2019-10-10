@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: ed7bfca6095dbb03042efd14456f34556f74a843
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 6ad5bafe66e6e39503d3987aa6ddd9159c532fa0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179341"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237371"
 ---
-Azure Storage, a storage-fiók használat alapján számlázzuk ki. A tárfiókban lévő összes objektum számlázása együtt, csoportosan történik. 
+Az Azure Storage szolgáltatás díját a Storage-fiók használata alapján számítjuk fel. A tárfiókban lévő összes objektum számlázása együtt, csoportosan történik. 
 
-Tárolási költségek kiszámítása a következő tényezőktől: régió/hely, fióktípust, hozzáférési szint, tárolókapacitás, replikálási séma, tárolási tranzakciók és kimenő adatforgalom.
+A tárolási költségek kiszámítása a következő tényezők szerint történik: régió/hely, fióktípus, hozzáférési csomag, tárolási kapacitás, replikációs séma, tárolási tranzakciók és adatforgalom.
 
-* **Régió** a földrajzi régióban, amelyben a fiók alapján hivatkozik.
-* **Fiók típusa** használja a tárfiók típusára utal. 
-* **Hozzáférési szint** hivatkozik az általános célú v2 és Blob storage-fiók a megadott adatok használati módja.
-* Tárolási **kapacitás** vonatkozik, hogy tárfiókja mekkora mennyi áll használata az adatok tárolására.
-* **Replikációs** határozza meg, hány példányban az adatok egy időben, és hol tárolja.
-* **Tranzakciók** tekintse meg az összes olvasási és írási műveletek az Azure Storage.
-* **Kimenő adatforgalom** bármilyen egy Azure-régión kívül átvitt adatok értendők. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. További információ az erőforráscsoportok segítségével adatait és szolgáltatások korlátozhatja a kimenő forgalom költségeit ugyanabban a régióban: [Mi az Azure-erőforráscsoport?](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group). 
+* A **régió** a fiók alapjául szolgáló földrajzi régióra utal.
+* A **fióktípus** a használt Storage-fiók típusára utal. 
+* A **hozzáférési réteg** az általános célú v2-vagy blob Storage-fiókhoz megadott adathasználati mintára vonatkozik.
+* A tárolókapacitás arra utal, hogy mekkora **a Storage-** fiók lekötése, amelyet az adattároláshoz használ.
+* A **replikáció** meghatározza, hogy a rendszer egyszerre hány példányt tart fenn az adataiban, és milyen helyeken.
+* A **tranzakciók** az Azure Storage-ba irányuló összes olvasási és írási műveletre vonatkoznak.
+* A **kimenő adatforgalom** az Azure-régióból kivitt összes adatforgalomra vonatkozik. Amikor a tárfiókban lévő adatokat egy olyan alkalmazás használja, amely nem ugyanabban a régióban fut, a kimenő adatforgalom díjköteles. További információ arról, hogyan lehet erőforráscsoportok használatával csoportosítani az adatokat és szolgáltatásokat ugyanabban a régióban a kimenő forgalomra vonatkozó díjak csökkentése érdekében: [Mi az az Azure-erőforráscsoport?](https://docs.microsoft.com/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group). 
 
 Az [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) lap részletes információkat biztosít a fióktípussal, a tárolási kapacitással, a replikálással és a tranzakciókkal kapcsolatban. Az [Adatforgalmi díjszabás](https://azure.microsoft.com/pricing/details/data-transfers/) tartalmazza a kimenő adatforgalommal kapcsolatos részletes díjszabási információkat. Az [Azure Storage-díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) használatával megbecsülheti költségeit.
 

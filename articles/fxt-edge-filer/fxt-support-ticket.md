@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: v-erkell
-ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.author: rohogue
+ms.openlocfilehash: 292844f611008b6dafbed4e46cad07c45dbecc54
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624113"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255986"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Támogatási jegy megnyitása az Azure FXT Edge Filer-hoz
 
@@ -26,11 +26,11 @@ A Azure Portal segítségével nyisson meg egy támogatási jegyet a Microsoft �
    ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-blank.png)
 
 1. Töltse ki a kérelem űrlapját.  
-    1. Az **alapvető beállítások** lapon válassza ki a **probléma típusát** ``Technical``. 
+    1. Az **alapvető beállítások** lapon válassza ki a ``Technical`` **típusú problémát** . 
     1. Válassza ki előfizetését. 
     1. A **szolgáltatás**alatt válassza az **Azure FXT Edge Filer**elemet. Előfordulhat, hogy a **minden szolgáltatás** szűrő vezérlőelemre kell kattintania a kereséshez. 
-    1. Adjon meg egy összegzést, és válassza ki a **probléma típusát**. 
-    ![Képernyőfelvétel az üres támogatási kérelem űrlapról](media/fxt-support-populated.png) 
+    1. Adjon meg egy **összegzést** , és válassza ki a **probléma típusát**. 
+    @no__t – üres támogatási kérelem 0Screenshot: @ no__t-1 
     1. A folytatáshoz kattintson a **tovább** gombra. 
 1. A **részletek** lapon adja meg a problémával kapcsolatos további információkat és az Önnel való kapcsolatfelvétel módját. Feltölthet egy, a problémához kapcsolódó fájlt is. 
 1. A **felülvizsgálat és létrehozás**lapon ellenőrizze az információkat, majd kattintson a **Létrehozás** gombra a kérelem elküldéséhez.

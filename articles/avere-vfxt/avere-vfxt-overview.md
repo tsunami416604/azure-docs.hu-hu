@@ -1,17 +1,17 @@
 ---
-title: Azure-hoz készült Avere vFXT
+title: Avere vFXT for Azure
 description: Bevezetés az Azure-hoz készült Avere vFXT, a HPC felhőalapú gyorsítótárazási rétegének használatába
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: rohogue
+ms.openlocfilehash: 70ae20daa81ab52d4054dcd4bea3c9432a5ceaeb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60409432"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256173"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT? 
 
@@ -19,8 +19,8 @@ Az Azure-hoz készült Avere vFXT egy adatigényes, nagy teljesítményű feldol
 
 Az Avere vFXT a következő gyakori számítási megoldásokat támogatja: 
 
-* Hibrid felhő architektúra: Az Azure-ban Avere vFXT egy hardver tárolórendszer, amellyel az az előnye, hogy a felhő-számítástechnika fájlok áthelyezése nélkül is dolgozhat. 
-* A felhőbeli tartalékkapacitás: Az Azure-ban Avere vFXT segíthet az adatok áthelyezése a felhőbe egy projekthez, vagy a "átemelhetők" az egész munkafolyamat véglegesen. 
+* Hibrid felhőarchitektúra: az Azure-hoz készült Avere vFXT kompatibilis a hardveralapú tárolórendszerekkel. Ennek révén anélkül használhatja ki a felhőalapú számítástechnika előnyeit, hogy fájlokat kellene hozzá áthelyeznie. 
+* Felhőalapú teljesítménynövelés: az Azure-hoz készült Avere vFXT segítségével adatokat helyezhet át a felhőbe egy adott projekt esetében, vagy véglegesen „átemelhet” teljes munkafolyamatokat is. 
 
 ![Blob Storage-hez és helyszíni adatközponthoz csatlakoztatott, Azure-előfizetésbeli Avere vFXT rendszer részleteit bemutató ábra](media/avere-vfxt-hybrid.png)
 
@@ -72,7 +72,7 @@ Az Avere vFXT az alábbi Azure-erőforrásokat használja:
 |Tárfiók (nem kötelező) |v2|
 |Háttérbeli adattárolás (nem kötelező) | Egy üres LRS-blobtároló |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi hivatkozásokkal elérhető információkkal hozzákezdhet saját üzemelő Avere vFXT-példányának létrehozásához. 
 

@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931252"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255662"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Monitor munkafüzetek használata Azure Active Directory jelentésekhez
 
@@ -49,6 +49,13 @@ A figyelő munkafüzetek használatához a következőkre lesz szüksége:
 
 - [Log Analytics munkaterület](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
+- [Hozzáférés](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions) a log Analytics-munkaterülethez
+- A következő szerepkörök a Azure Active Directoryban (ha a Log Analytics a Azure Active Directory portálon keresztül éri el)
+    - Biztonsági rendszergazda
+    - Biztonsági olvasó
+    - Jelentés olvasója
+    - Globális rendszergazda
+
 ## <a name="roles"></a>Szerepkörök
 A következő szerepkörök egyikének kell lennie, valamint hozzáféréssel kell rendelkeznie az [alapul szolgáló log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) munkaterülethez a munkafüzetek kezeléséhez:
 -   Globális rendszergazda
@@ -62,7 +69,7 @@ A következő szerepkörök egyikének kell lennie, valamint hozzáféréssel ke
 
 A munkafüzetek eléréséhez:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 2. A bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
@@ -83,9 +90,9 @@ Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
 - Minden bejelentkezés
 
-- Siker
+- Sikeres
 
-- Folyamatban lévő felhasználói művelet
+- Függőben lévő felhasználói művelet
 
 - Hiba
 
@@ -102,7 +109,7 @@ Az egyes trendeket a következő kategóriák szerint szűrheti:
 
 Minden egyes trend esetében a következő kategóriák szerinti részletezést kapja:
 
-- Location
+- Földrajzi egység
 
     ![Bejelentkezések hely szerint](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -120,7 +127,7 @@ Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
 - Minden bejelentkezés
 
-- Siker
+- Sikeres
 
 
 Az egyes trendeket a következő kategóriák szerint szűrheti:
@@ -217,9 +224,9 @@ Ez a munkafüzet a következő bejelentkezési trendeket mutatja:
 
 - Minden bejelentkezés
 
-- Siker
+- Sikeres
 
-- Folyamatban lévő művelet
+- Függőben lévő művelet
 
 - Hiba
 
@@ -250,6 +257,6 @@ Ha segítségre van szüksége a bejelentkezések hibakereséséhez, Azure Monit
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Interaktív jelentéseket hozhat létre a munkafüzetek figyelése használatával](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks).

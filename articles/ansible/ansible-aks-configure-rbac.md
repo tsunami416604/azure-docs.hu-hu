@@ -1,63 +1,63 @@
 ---
-title: Oktatóanyag – szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök konfigurálása az Azure Kubernetes Service (AKS) az Ansible-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan RBAC konfigurálása az Azure Kubernetes Service(AKS) fürtben az Ansible segítségével
-keywords: az ansible, azure, devops, bash, cloud Shell, forgatókönyv, aks, tároló, az aks, kubernetes, az azure active directory, az rbac
+title: Oktatóanyag – szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
+description: Ismerje meg, hogyan konfigurálhatja a RBAC az Azure Kubernetes Service (ak) fürtön a Ansible használatával
+keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: eae23806ee1b4e2dac1d3410e32c3242e89d4be8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719819"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242335"
 ---
-# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: Szerepköralapú hozzáférés-vezérlés (RBAC) szerepkörök konfigurálása az Azure Kubernetes Service (AKS) az Ansible-lel
+# <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Az AKS használatához konfigurálhatók [Azure Active Directory (AD)](/azure/active-directory/) a felhasználók hitelesítéséhez. Miután konfigurálta az Azure AD hitelesítési jogkivonat használatával jelentkezzen be az AKS-fürtöt. Az RBAC a felhasználó identitását, vagy a directory-csoporttagság alapulhat.
+Az AK konfigurálható úgy, hogy [Azure Active Directory (ad)](/azure/active-directory/) használatát használja a felhasználói hitelesítéshez. A konfigurálást követően az Azure AD-hitelesítési token használatával jelentkezhet be az AK-fürtbe. A RBAC a felhasználó identitás-vagy címtár-csoporttagság alapján lehet.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Az Azure AD-kompatibilis AKS-fürt létrehozása
-> * A fürt egy RBAC szerepkör konfigurálása
+> * Azure AD-kompatibilis AK-fürt létrehozása
+> * RBAC-szerepkör konfigurálása a fürtben
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Telepítse az RedHat OpenShift könyvtár** - `pip install openshift`
+- **A RedHat OpenShift-könyvtár telepítése** -  @ no__t-2
 
-## <a name="configure-azure-ad-for-aks-authentication"></a>AKS-hitelesítéshez az Azure AD konfigurálása
+## <a name="configure-azure-ad-for-aks-authentication"></a>Az Azure AD konfigurálása az AK-hitelesítéshez
 
-AKS-hitelesítéshez az Azure AD konfigurálása, ha a két Azure AD-alkalmazások úgy vannak konfigurálva. Ez a művelet egy Azure-bérlő rendszergazdája kell elvégezni. További információkért lásd: [integrálása az Azure Active Directory az aks-sel](/azure/aks/aad-integration#create-the-server-application). 
+Ha az Azure AD-t AK-hitelesítésre konfigurálja, két Azure AD-alkalmazás van konfigurálva. Ezt a műveletet egy Azure bérlői rendszergazdának kell elvégeznie. További információ: [Azure Active Directory integrálása az AK](/azure/aks/aad-integration#create-the-server-application)-nal. 
 
-Az Azure-bérlő rendszergazdája kérje le a következő értékeket:
+Az Azure-bérlői rendszergazdától szerezze be a következő értékeket:
 
-- Kiszolgáló titkos Alkalmazáskulcs
-- Server app-azonosítója
-- Ügyfélalkalmazás-azonosító 
+- Kiszolgálói alkalmazás titka
+- Kiszolgálói alkalmazás azonosítója
+- Ügyfélalkalmazás azonosítója 
 - Bérlőazonosító
 
-Ezeket az értékeket a minta forgatókönyv futtatása szükséges.  
+Ezek az értékek szükségesek a minta forgatókönyv futtatásához.  
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Ebben a szakaszban egy aks-ben létrehozhat a [Azure AD-alkalmazás](#configure-azure-ad-for-aks-authentication).
+Ebben a szakaszban létrehoz egy AK-t az [Azure ad-alkalmazással](#configure-azure-ad-for-aks-authentication).
 
-Az alábbiakban néhány kulcsfontosságú Megjegyzés figyelembe kell venni a minta forgatókönyv használata:
+Íme néhány fontos megjegyzés, amelyet érdemes figyelembe venni a példa forgatókönyvének használatakor:
 
-- A forgatókönyv betölti `ssh_key` a `~/.ssh/id_rsa.pub`. Ha módosít, a "ssh-rsa" kezdetű (idézőjelek nélkül) - egysoros formátumot használja.
-- A `client_id` és `client_secret` értékek töltődnek be a `~/.azure/credentials`, azaz az alapértelmezett hitelesítő adatait tartalmazó fájlt. Ezeket az értékeket beállítani, ha a szolgáltatás egyszerű, vagy betölteni ezeket az értékeket a környezeti változókat:
+- A forgatókönyv betölti a `ssh_key` `~/.ssh/id_rsa.pub` értéket. Ha módosítja, használja az egysoros formátumot – az "SSH-RSA" kezdetű értékkel (idézőjelek nélkül).
+- A `client_id` és a `client_secret` érték betöltődik a `~/.azure/credentials` típusból, amely az alapértelmezett hitelesítőadat-fájl. Ezeket az értékeket beállíthatja az egyszerű szolgáltatásnév számára, vagy betöltheti ezeket az értékeket a környezeti változókból:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -119,29 +119,29 @@ Mentse a következő forgatókönyvet `aks-create.yml` néven:
       dest: "aks-{{ name }}-kubeconfig"
 ```
 
-## <a name="get-the-azure-ad-object-id"></a>Az Azure AD-objektum Azonosítójának lekéréséhez
+## <a name="get-the-azure-ad-object-id"></a>Az Azure AD-objektum AZONOSÍTÓjának beolvasása
 
-Az RBAC-kötést létrehozni, szüksége lesz a lekérése az Azure AD-objektum azonosítója. 
+RBAC-kötés létrehozásához először le kell kérnie az Azure AD-objektum AZONOSÍTÓját. 
 
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Írja be a keresőmezőbe, a lap tetején, `Azure Active Directory`. 
+1. A lap tetején található Keresés mezőben adja meg a következőt: `Azure Active Directory`. 
 
 1. Kattintson a `Enter` gombra.
 
-1. Az a **kezelés** menüjében válassza **felhasználók**.
+1. A **kezelés** menüben válassza a **felhasználók**lehetőséget.
 
-1. A név mezőben keresse meg a fiók.
+1. A név mezőben keresse meg a fiókját.
 
-1. Az a **neve** oszlopban jelölje ki a hivatkozást a fiókra.
+1. A **név** oszlopban válassza ki a fiókra mutató hivatkozást.
 
-1. Az a **identitás** területén másolja a **Objektumazonosító**.
+1. Az **identitás** szakaszban másolja ki az **objektumazonosítót**.
 
-    ![Másolja ki az Azure AD-objektum azonosítója.](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
+    ![Másolja az Azure AD-objektum AZONOSÍTÓját.](./media/ansible-aks-configure-rbac/ansible-aad-object-id.png)
 
-## <a name="create-rbac-binding"></a>Az RBAC-kötés létrehozása
+## <a name="create-rbac-binding"></a>RBAC kötés létrehozása
 
-Ebben a szakaszban egy kötés szerepkör vagy a fürt szerepkör-kötést az aks-ben hoz létre. 
+Ebben a szakaszban létrehoz egy szerepkör-kötést vagy egy, a fürthöz tartozó szerepkör-kötést az AK-ban. 
 
 Mentse a következő forgatókönyvet `kube-role.yml` néven:
 
@@ -160,9 +160,9 @@ subjects:
   name: <your-aad-account>
 ```
 
-Cserélje le a `&lt;your-aad-account>` helyőrzőt az Azure AD-bérlő [Objektumazonosító](#get-the-azure-ad-object-id).
+Cserélje le a `&lt;your-aad-account>` helyőrzőt az Azure AD-bérlői [objektum azonosítójával](#get-the-azure-ad-object-id).
 
-A következő forgatókönyv - AKS üzembe helyezi az új szerepkör - Mentés másként `aks-kube-deploy.yml`:
+Mentse a következő ötletekbõl-t, amely üzembe helyezi az új szerepkört az AK-ban – `aks-kube-deploy.yml`:
 
 ```yml
 - name: Apply role to AKS
@@ -173,7 +173,7 @@ A következő forgatókönyv - AKS üzembe helyezi az új szerepkör - Mentés m
 
 ## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
 
-Ez a szakasz felsorolja a teljes minta a forgatókönyvet, amely meghívja a feladatok létrehozása ebben a cikkben. 
+Ez a szakasz felsorolja az ebben a cikkben létrehozott feladatokat meghívó teljes minta-forgatókönyveket. 
 
 Mentse a következő forgatókönyvet `aks-rbac.yml` néven:
 
@@ -202,14 +202,14 @@ Mentse a következő forgatókönyvet `aks-rbac.yml` néven:
        include_tasks: aks-kube-deploy.yml
 ```
 
-Az a `vars` szakaszban, a helyőrzőket cserélje le az Azure AD-adatok:
+A `vars` szakaszban cserélje le az alábbi helyőrzőket az Azure AD-adataira:
 
 - `<client id>`
 - `<server id>`
 - `<server secret>`
 - `<tenant id>`
 
-A teljes forgatókönyv használatával futtassa a `ansible-playbook` parancsot:
+Futtassa a teljes forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook aks-rbac.yml
@@ -217,17 +217,17 @@ ansible-playbook aks-rbac.yml
 
 ## <a name="verify-the-results"></a>Az eredmények ellenőrzése
 
-Ebben a szakaszban használhatja a kubectl listán a csomópontok létrehozásához a cikkben.
+Ebben a szakaszban a kubectl-t használja a cikkben létrehozott csomópontok listázásához.
 
-Adja meg a következő parancsot a terminálon a parancssorba:
+Adja meg a következő parancsot egy terminál parancssorába:
 
 ```bash
 kubectl --kubeconfig aks-aksansibletest-kubeconfig-user get nodes
 ```
 
-A parancs átirányítja egy hitelesítési oldalra. Jelentkezzen be az Azure-fiókjával.
+A parancs egy hitelesítési lapra irányítja. Jelentkezzen be az Azure-fiókjával.
 
-A hitelesítést követően a kubectl a csomópontok hasonlóan zajlik, a következő eredményeket sorolja fel:
+A hitelesítés után a kubectl a következő eredményekhez hasonló módon listázza a csomópontokat:
 
 ```txt
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXX to authenticate.
@@ -239,9 +239,9 @@ aks-nodepool1-33413200-2   Ready    agent   49m   v1.12.6
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az ebben a cikkben létrehozott erőforrásokat. 
+Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-A következő kód, Mentés `cleanup.yml`:
+Mentse a következő kódot `cleanup.yml`-ként:
 
 ```yml
 ---
@@ -261,13 +261,13 @@ A következő kód, Mentés `cleanup.yml`:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ansible az Azure-on](/azure/ansible/)

@@ -1,31 +1,31 @@
 ---
-title: Oktatóanyag – konfigurálása az Azure útválasztási táblázatban az Ansible-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan létrehozása, módosítása és törlése az Azure útválasztási táblázatban az Ansible-lel
-keywords: az ansible, azure, devops, bash, forgatókönyv, hálózatkezelés, útvonal, útválasztási táblázat
+title: Oktatóanyag – Azure Route-táblák konfigurálása a Ansible használatával
+description: Ismerje meg, hogyan hozhat létre, módosíthat és törölhet Azure Route-táblákat a Ansible használatával
+keywords: Ansible, Azure, devops, bash, ötletekbõl, hálózatkezelés, útvonal, útválasztási táblázat
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 846ff510603c0ed0888ec92ece8b86fad0354c19
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 14753af58a179ddf4011cb29c7ed08faab62875c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230883"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241785"
 ---
-# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: Konfigurálja az Azure útválasztási táblázatban az Ansible-lel
+# <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Oktatóanyag: az Azure Route-táblázatok konfigurálása a Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
-Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Ha a környezet útválasztás feletti ellenőrzés van szüksége, létrehozhat egy [útvonaltábla](/azure/virtual-network/virtual-networks-udr-overview). 
+Az Azure automatikusan irányítja a forgalmat az Azure-alhálózatok, a virtuális hálózatok és a helyszíni hálózatok között. Ha nagyobb mértékű vezérlésre van szüksége a környezete útválasztásához, létrehozhat egy [útválasztási táblázatot](/azure/virtual-network/virtual-networks-udr-overview). 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> Hozzon létre egy útválasztási táblázatot egy virtuális hálózat és alhálózat útválasztási táblázat társítása alhálózattal Disassociate egy alhálózatról hozzon létre egy útválasztási táblázatot, és törölje a létrehozás átirányítja a lekérdezést egy útválasztási táblázatot egy útvonaltábla törlése
+> Útválasztási táblázat létrehozása virtuális hálózat és alhálózat létrehozása útválasztási táblázat alhálózattal való hozzárendelésével az útválasztási táblázatot egy alhálózatból hozzon létre, és törölje az útvonalakat az útválasztási táblázat törléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálóz
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-A forgatókönyv kód ebben a szakaszban létrehoz egy útvonaltáblát. Útvonaltábla korlátok kapcsolatos tudnivalókat lásd: [Azure korlátai](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Az ebben a szakaszban található forgatókönyv-kód egy útválasztási táblázatot hoz létre. Az útvonal-táblázat korlátaival kapcsolatos információkért lásd: [Azure-korlátok](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Mentse a következő forgatókönyvet `route_table_create.yml` néven:
 
@@ -50,7 +50,7 @@ Mentse a következő forgatókönyvet `route_table_create.yml` néven:
         resource_group: "{{ resource_group }}"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -58,25 +58,25 @@ ansible-playbook route_table_create.yml
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
-Ebben a szakaszban a forgatókönyv kódot:
+Az ebben a szakaszban található forgatókönyv-kód:
 
 * Létrehoz egy virtuális hálózatot
-* Létrehoz egy alhálózatot a virtuális hálózaton belül
-* Hozzárendeli egy útválasztási táblázatot az alhálózathoz
+* Létrehoz egy alhálózatot a virtuális hálózaton belül.
+* Útválasztási táblázat társítása az alhálózathoz
 
-Az útvonaltáblák nem társított virtuális hálózatokhoz. Inkább útvonaltáblák társítva, egy virtuális hálózat alhálózatához.
+Az útválasztási táblák nincsenek virtuális hálózatokhoz társítva. Ehelyett az útválasztási táblák egy virtuális hálózat alhálózatához vannak társítva.
 
-A virtuális hálózat és az útválasztási táblázat kell törölnie a megegyező Azure-helyen és az előfizetés.
+A virtuális hálózat és az útválasztási tábla ugyanazon az Azure-helyen és-előfizetésen belül kell, hogy legyen.
 
-Alhálózatok és az útválasztási táblázatokat egy-a-többhöz kapcsolattal rendelkeznek. Egy alhálózaton nincs társítva útvonaltábla vagy egy útválasztási táblázatot lehet definiálni. Útvonaltáblák társítható nincs, egy vagy több alhálózatot. 
+Az alhálózatok és az útválasztási táblák egy-a-többhöz kapcsolattal rendelkeznek. Az alhálózatok társított útválasztási táblázat vagy egy útválasztási tábla nélkül is meghatározhatók. Az útválasztási táblák a none, egy vagy több alhálózathoz is társíthatók. 
 
-Az alhálózatról adatforgalmat alapján:
+Az alhálózatról érkező forgalom irányítása a következő alapján történik:
 
-- útvonaltáblák belül-útvonalak
-- [Az alapértelmezett útvonalak](/azure/virtual-network/virtual-networks-udr-overview#default)
-- útvonalak propagálni egy helyszíni hálózat
+- útválasztási táblákban definiált útvonalak
+- [alapértelmezett útvonalak](/azure/virtual-network/virtual-networks-udr-overview#default)
+- helyszíni hálózatról propagált útvonalak
 
-A virtuális hálózat kapcsolódnia kell egy Azure virtuális hálózati átjárót. Az átjáró lehet az ExpressRoute vagy VPN VPN gateway a BGP használatakor.
+A virtuális hálózatnak csatlakoztatva kell lennie egy Azure-beli virtuális hálózati átjáróhoz. Az átjáró lehet ExpressRoute vagy VPN, ha a BGP-t VPN-átjáróval használja.
 
 Mentse a következő forgatókönyvet `route_table_associate.yml` néven:
 
@@ -107,17 +107,17 @@ Mentse a következő forgatókönyvet `route_table_associate.yml` néven:
         route_table: "{ route_table_name }"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_table_associate.yml
 ```
 
-## <a name="dissociate-a-route-table-from-a-subnet"></a>Egy alhálózatról egy útválasztási táblázatot társításának megszüntetése
+## <a name="dissociate-a-route-table-from-a-subnet"></a>Útválasztási táblázat leválasztása egy alhálózatból
 
-A forgatókönyv kód ebben a szakaszban egy útválasztási táblázatot egy alhálózatról dissociates.
+Az ebben a szakaszban található forgatókönyv-kód leválasztja az alhálózatból származó útválasztási táblázatot.
 
-Amikor leválasztása folyamatban van egy alhálózatról egy útválasztási táblázatot, állítsa be a `route_table` , az alhálózat `None`. 
+Amikor alhálózatból választ egy útválasztási táblázatot, állítsa az alhálózat `route_table` értéket `None` értékre. 
 
 Mentse a következő forgatókönyvet `route_table_dissociate.yml` néven:
 
@@ -136,7 +136,7 @@ Mentse a következő forgatókönyvet `route_table_dissociate.yml` néven:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -144,7 +144,7 @@ ansible-playbook route_table_dissociate.yml
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
-A forgatókönyv kód ebben a szakaszban egy útvonalat egy útválasztási táblázatot belül. 
+Az ebben a szakaszban szereplő forgatókönyv-kód az útválasztási táblázaton belüli útvonal. 
 
 Mentse a következő forgatókönyvet `route_create.yml` néven:
 
@@ -164,12 +164,12 @@ Mentse a következő forgatókönyvet `route_create.yml` néven:
         route_table_name: "{{ route_table_name }}"
 ```
 
-A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzések:
+A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-* `virtual_network_gateway` típusúként van definiálva `next_hop_type`. Hogyan választja ki a Azure útvonalakkal kapcsolatos további információkért lásd: [Útválasztás áttekintése](/azure/virtual-network/virtual-networks-udr-overview).
-* `address_prefix` típusúként van definiálva `10.1.0.0/16`. Az előtag nem duplikálható az útvonal a táblán belül.
+* a `virtual_network_gateway` `next_hop_type` értékkel van definiálva. További információ arról, hogy az Azure hogyan választja ki az útvonalakat: az [Útválasztás áttekintése](/azure/virtual-network/virtual-networks-udr-overview).
+* a `address_prefix` `10.1.0.0/16` értékkel van definiálva. Az előtag nem duplikálható az útválasztási táblán belül.
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_create.yml
@@ -177,7 +177,7 @@ ansible-playbook route_create.yml
 
 ## <a name="delete-a-route"></a>Útvonal törlése
 
-Ebben a szakaszban a forgatókönyv kód töröl egy útválasztási táblázatot egy útvonalat.
+Az ebben a szakaszban szereplő forgatókönyv-kód törli az útvonalat egy útválasztási táblából.
 
 Mentse a következő forgatókönyvet `route_delete.yml` néven:
 
@@ -196,15 +196,15 @@ Mentse a következő forgatókönyvet `route_delete.yml` néven:
         state: absent
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_delete.yml
 ```
 
-## <a name="get-route-table-information"></a>Útválasztási tábla adatainak beolvasása
+## <a name="get-route-table-information"></a>Útválasztási táblázat adatainak beolvasása
 
-A forgatókönyv kód ebben a szakaszban az Ansible-modult használja `azure_rm_routetable_facts` útválasztási táblázat információk lekéréséhez.
+Az ebben a szakaszban szereplő forgatókönyv-kód a `azure_rm_routetable_facts` Ansible-modult használja az útválasztási táblázat adatainak lekéréséhez.
 
 Mentse a következő forgatókönyvet `route_table_facts.yml` néven:
 
@@ -224,7 +224,7 @@ Mentse a következő forgatókönyvet `route_table_facts.yml` néven:
          var: query.route_tables[0]
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_table_facts.yml
@@ -232,11 +232,11 @@ ansible-playbook route_table_facts.yml
 
 ## <a name="delete-a-route-table"></a>Útválasztási táblázat törlése
 
-A forgatókönyv kód ebben a szakaszban egy útválasztási táblázatot.
+Az ebben a szakaszban egy útválasztási táblázatban szereplő forgatókönyv-kód.
 
-A törölt egy útválasztási táblázatot az összes saját útvonalakat is törlődik.
+Egy útválasztási tábla törlésekor az összes útvonala is törlődik.
 
-Útválasztási táblázat nem törölhető, ha egy alhálózathoz kapcsolódik. [Leválasztja az útvonaltáblát az alhálózatok](#dissociate-a-route-table-from-a-subnet) az útvonaltábla törlése megkísérlése előtt. 
+Egy útválasztási tábla nem törölhető, ha egy alhálózathoz van társítva. Az útválasztási táblázat törlésének megkísérlése előtt [minden alhálózatból el kell választani az útválasztási táblázatot](#dissociate-a-route-table-from-a-subnet) . 
 
 Mentse a következő forgatókönyvet `route_table_delete.yml` néven:
 
@@ -253,12 +253,12 @@ Mentse a következő forgatókönyvet `route_table_delete.yml` néven:
         state: absent
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook route_table_delete.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

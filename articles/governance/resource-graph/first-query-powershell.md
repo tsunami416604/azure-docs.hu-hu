@@ -1,19 +1,19 @@
 ---
-title: Az első lekérdezés futtatása a Azure PowerShell használatával
+title: Az első lekérdezés futtatása a PowerShell használatával
 description: Ez a cikk végigvezeti az Azure PowerShellhez szükséges Resource Graph modul aktiválásának lépésein és az első lekérdezése futtatásán.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9193b2e6cc00ef4c46afc72b041c12234af19299
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976776"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254545"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure PowerShell használatával
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
 
 Az Azure Resource Graph használatához először meg kell győződnie arról, hogy az Azure PowerShellhez szükséges modul telepítve van. E rövid útmutató segítségével hozzáadhatja a modult a telepített Azure PowerShellhez.
 
@@ -104,11 +104,11 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 > [!NOTE]
 > Ezzel nem törli a korábban letöltött modulfájlt. Csak eltávolítja azt a futó PowerShell-munkamenetből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
 - Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
 - Az első lekérdezés futtatása az [Azure CLI-vel](first-query-azurecli.md)
 - Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- A [Speciális lekérdezések](./samples/advanced.md) példáinak megtekintése
+- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
 - Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)

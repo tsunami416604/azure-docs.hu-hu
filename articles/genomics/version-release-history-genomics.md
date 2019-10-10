@@ -1,42 +1,42 @@
 ---
-title: Verziókiadások – a Microsoft Genomics
-titleSuffix: Azure
-description: A Microsoft Genomics a Microsoft Genomics Python-kliens javítások és új funkciók bevezetéséhez rendszeresen frissíti.
+title: Verziókiadások előzményei
+titleSuffix: Microsoft Genomics
+description: A frissítések megjelenési előzményei a Microsoft Genomics Python-ügyfél számára javítások és új funkciók.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 2037bcf173951769f1627f809352ef60afce2d50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780950"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249142"
 ---
 # <a name="version-release-history"></a>Verziókiadások előzményei
-A Microsoft Genomics-csapat a Microsoft Genomics Python-kliens javítások és új funkciók bevezetéséhez rendszeresen frissíti. 
+A Microsoft Genomics csapat rendszeresen frissíti a Microsoft Genomics Python-ügyfelet javítások és új funkciók számára. 
 
-## <a name="latest-release"></a>Legújabb kiadását
-A jelenlegi Python-kliens verziója 0.8.1. 2018\. December 3-as és támogatja a futó munkafolyamatok GATK 3.5 és GATK4 kiadása. Támogatja a gVCF kimeneti is.
+## <a name="latest-release"></a>Legújabb kiadás
+Az aktuális Python-ügyfél a 0.8.1 verziója. Ez a 3 2018 decemberében jelent meg, és a GATK 3,5 és a GATK4 futtatásával támogatja a futó munkafolyamatokat. Emellett támogatja az gVCF-kimenetet is.
 
 
-## <a name="release-history"></a>Verziókiadások előzményei 
-A Microsoft Genomics Python-ügyfél új verzióinak kétszer évenként információk jelennek meg. A Microsoft Genomics Python-ügyfél új verzióinak kiadásakor, javításokat és szolgáltatásokat listáját itt frissül. Új verzió megjelenésekor a korábbi verziók továbbra is legalább 90 napig támogatott. Ha a korábbi verziók nem támogatottak, azt is tartalmazni fogja ezen az oldalon. 
+## <a name="release-history"></a>Kiadási előzmények 
+A Microsoft Genomics Python-ügyfél új verziói évente kétszer jelennek meg. Ahogy megjelent a Microsoft Genomics Python-ügyfél új verziói, a javítások és szolgáltatások listája itt frissül. Új verziók felszabadításakor a korábbi verziókat továbbra is legalább 90 napig támogatni kell. Ha a korábbi verziók már nem támogatottak, a rendszer ezen az oldalon fogja jelezni. 
 
-### <a name="version-081"></a>Verzió 0.8.1
-Verzió 0.8.1 kisebb hibajavításokat tartalmaz.  
+### <a name="version-081"></a>0\.8.1 verziója
+A 0.8.1 verziója másodlagos hibajavításokat tartalmaz.  
 
-### <a name="version-080"></a>Verzió 0.8.0
-Verzió 0.8.0 GATK4 és szerint kiírta volna gVCFs támogatását tartalmazza.  
+### <a name="version-080"></a>0\.8.0 verziója
+A 0.8.0 verziója támogatja a GATK4 és a gVCFs üzembe helyezését.  
 
-### <a name="version-074"></a>Verzió 0.7.4
-0\.7.4 verziója tartalmazza a fiókkulcsok helyett SAS-jogkivonatok elfogadása támogatása a `config.txt` bemeneti. További információkért lásd: [bemeneti SAS-tokeneket a rövid útmutató](quickstart-input-sas.md). 
+### <a name="version-074"></a>0\.7.4 verziója
+A 0.7.4 verziója támogatja az SAS-tokenek elfogadását a `config.txt` bemenetben lévő fiókok kulcsa helyett. További információ: [input sas-tokenek](quickstart-input-sas.md)gyors üzembe helyezése. 
 
-### <a name="version-073"></a>Verzió 0.7.3
-Verzió 0.7.3 kisebb hibajavításokat tartalmaz.
+### <a name="version-073"></a>0\.7.3 verziója
+A 0.7.3 verziója másodlagos hibajavításokat tartalmaz.
 
-### <a name="version-072"></a>Verzió 0.7.2
-0\.7.2 verziószáma a kezdeti verzióhoz. 2017 November 1 fel lett oldva.
+### <a name="version-072"></a>0\.7.2 verziója
+A 0.7.2 verziója a kezdeti verzió. A kiadást 1 2017 novemberében adták ki.

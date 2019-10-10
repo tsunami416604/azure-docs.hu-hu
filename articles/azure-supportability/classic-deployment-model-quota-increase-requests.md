@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/20/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d803cc0dfa4a266f79b522207a8cf0f70e06cf3d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802661"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248722"
 ---
 # <a name="classic-deployment-model"></a>Klasszikus üzemi modell
 
@@ -30,7 +30,7 @@ A klasszikus üzemi modellhez tartozó vCPU-kvóta növelését a "Súgó + tám
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
 
-1. Válassza https://portal.azure.com a **Súgó + támogatás**lehetőséget.
+1. @No__t – 0 értéknél válassza a **Súgó + támogatás**lehetőséget.
 
    ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -52,13 +52,13 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
 
-   ![Adatok megadása](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
 
 7. A **kvóta részletei** panelen válassza a klasszikus lehetőséget, és válasszon egy helyet.
 
    ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Válassza ki a növekményt igénylő **SKU** -családokat. 
+8. Válassza ki a növekményt igénylő **SKU-családokat** . 
 
    ![Termékváltozat-család](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
@@ -70,7 +70,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
 
-1. Válassza https://portal.azure.com ki azelőfizetések elemet.
+1. @No__t – 0 közül válassza az **előfizetések**lehetőséget.
 
    ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -84,7 +84,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
 
-   ![Növelés kérése](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Kérések növekedése](./media/resource-manager-core-quotas-request/request-increase.png)
 
 5. Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** az árajánlat típusaként. 
 
@@ -92,13 +92,13 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
    
 6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
 
-   ![Adatok megadása](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
 
 7. A **kvóta részletei** panelen válassza a klasszikus lehetőséget, és válasszon egy helyet.
 
    ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Válassza ki a növekményt igénylő **SKU** -családokat. 
+8. Válassza ki a növekményt igénylő **SKU-családokat** . 
 
    ![Termékváltozat-család](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 

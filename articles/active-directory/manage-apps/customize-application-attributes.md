@@ -1,6 +1,6 @@
 ---
-title: Azure AD-attribútum-leképezések testreszabása |} A Microsoft Docs
-description: Ismerje meg, milyen attribútumleképezések SaaS-alkalmazásokhoz az Azure Active Directoryban, hogyan módosíthatja azokat az üzleti igények kielégítésében.
+title: Az Azure AD-attribútumok megfeleltetésének testreszabása | Microsoft Docs
+description: Ismerje meg, hogy az SaaS-alkalmazásokhoz milyen attribútum-hozzárendelések Azure Active Directory az üzleti igények kielégítése érdekében.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -14,139 +14,140 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e535d8cce4e2aa56305283651b9cc21dfc301a4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807609"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240992"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Az SaaS-alkalmazásokhoz az Azure Active Directory-attribútumleképezések testreszabása Felhasználókiépítés
+# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
-A Microsoft Azure AD külső SaaS-alkalmazások például a Salesforce, a G Suite és a másokkal való támogatást nyújt. Ha engedélyezi a felhasználók átadásának egy külső SaaS-alkalmazáshoz, az Azure Portalon szabályozza az attribútumértékek attribútum-leképezések használatával.
+A Microsoft Azure AD támogatja a külső SaaS-alkalmazások, például a Salesforce, a G Suite és más felhasználók számára történő üzembe helyezést. Ha engedélyezi a felhasználók kiosztását egy külső SaaS-alkalmazás számára, a Azure Portal attribútum-hozzárendelések segítségével vezérli az attribútum értékeit.
 
-Nincs attribútumokat és az Azure AD felhasználói és minden egyes SaaS-alkalmazás felhasználói objektumok között attribútumleképezések előre konfigurált készletével. Néhány alkalmazás más típusú objektumok és a felhasználók, például a csoportok kezelése.
+Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között van egy előre konfigurált attribútum és attribútum-hozzárendelés. Egyes alkalmazások más típusú objektumokat is kezelhetnek a felhasználók, például a csoportok mellett.
 
-Az alapértelmezett attribútumleképezések igényeinek megfelelően testre szabhatja. Tehát módosítsa vagy törölje a meglévő attribútumleképezések, vagy hozzon létre új attribútum-leképezések.
+Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is.
 
-## <a name="editing-user-attribute-mappings"></a>Felhasználói attribútum-leképezések szerkesztése
+## <a name="editing-user-attribute-mappings"></a>Felhasználói attribútum szerkesztése – leképezések
 
-Kövesse az alábbi lépéseket eléréséhez a **leképezések** felhasználókiépítés funkcióját:
+Kövesse az alábbi lépéseket a felhasználók kiosztásának **leképezési** funkciójának eléréséhez:
 
-1. Jelentkezzen be a [Azure Active Directory portálon](https://aad.portal.azure.com).
-1. Válassza ki **vállalati alkalmazások** a bal oldali ablaktáblán. Az összes konfigurált alkalmazások listája látható, beleértve az alkalmazásokat, amelyek a katalógusból lettek hozzáadva.
-1. Válassza ki az alkalmazás felügyeleti ablaktábla, ahol jelentések megtekintése és kezelése az alkalmazásbeállítások betölteni bármely alkalmazást.
-1. Válassza ki **kiépítési** kezelheti a felhasználói fiók kiépítése a kiválasztott alkalmazás beállításait.
-1. Bontsa ki a **leképezések** megtekintéséhez és szerkesztéséhez a felhasználói attribútumok, amelyek az Azure AD között és a cél alkalmazás. Ha a cél alkalmazás ezt támogatja, ez a szakasz igény szerint a csoportok és felhasználói fiókok kiépítése konfigurálását teszi lehetővé.
+1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com).
+1. Válassza a **vállalati alkalmazások** lehetőséget a bal oldali ablaktáblán. Megjelenik az összes konfigurált alkalmazás listája, beleértve a gyűjteményből hozzáadott alkalmazásokat is.
+1. Válassza ki bármelyik alkalmazást az alkalmazás-felügyeleti panel betöltéséhez, ahol megtekintheti a jelentéseket, és kezelheti az alkalmazás beállításait.
+1. A **kiépítés** lehetőség kiválasztásával kezelheti a kiválasztott alkalmazás felhasználói fiókjának kiépítési beállításait.
+1. A **leképezések** kibontásával megtekintheti és szerkesztheti a felhasználói attribútumokat, amelyek az Azure ad és a célalkalmazás között áramlanak. Ha a célalkalmazás támogatja azt, ez a szakasz lehetővé teszi a csoportok és felhasználói fiókok üzembe helyezésének igény szerinti konfigurálását.
 
-   ![Leképezések használata megtekintéséhez és szerkesztéséhez a felhasználói attribútumok](./media/customize-application-attributes/21.png)
+   ![Leképezések használata felhasználói attribútumok megtekintéséhez és szerkesztéséhez](./media/customize-application-attributes/21.png)
 
-1. Válassza ki a **leképezések** konfigurációját, és nyissa meg a kapcsolódó **attribútumleképzés** képernyő. Néhány attribútumleképezések egy SaaS-alkalmazáshoz megfelelő működéséhez szükségesek. A szükséges attribútumok a **törlése** funkció nem érhető el.
+1. Válassza ki a **leképezések** konfigurációját a kapcsolódó **attribútum-leképezési** képernyő megnyitásához. Az SaaS-alkalmazások megfelelő működéséhez bizonyos attribútum-hozzárendelések szükségesek. A kötelező attribútumok esetében a **törlési** funkció nem érhető el.
 
-   ![Attribútumleképzés segítségével konfigurálhatja a attribútumleképezések alkalmazásokhoz](./media/customize-application-attributes/22.png)
+   ![Attribútum-hozzárendelés használata az alkalmazások attribútumainak konfigurálásához](./media/customize-application-attributes/22.png)
 
-   Ezen a képernyőfelvételen láthatja, hogy a **felhasználónév** attribútum a Salesforce-ban felügyelt objektum megjelenik a **userPrincipalName** a társított Azure Active Directory objektum értékét.
+   Ebben a képernyőfelvételben láthatja, hogy a Salesforce található felügyelt objektum **username** attribútuma a csatolt Azure Active Directory objektum **userPrincipalName** értékével van feltöltve.
 
-1. Válasszon egy meglévő **attribútumleképzés** megnyitásához a **attribútum szerkesztése** képernyő. Itt szerkesztheti a felhasználói attribútumok, amelyek az Azure AD között és a cél alkalmazás.
+1. Válasszon ki egy meglévő **attribútum-hozzárendelést** az **attribútum szerkesztése** képernyő megnyitásához. Itt szerkesztheti az Azure AD és a célalkalmazás közötti adatforgalom felhasználói attribútumait.
 
-   ![Attribútum szerkesztése használata a felhasználói attribútumok szerkesztése](./media/customize-application-attributes/23.png)
+   ![Felhasználói attribútumok szerkesztése a szerkesztési attribútum használatával](./media/customize-application-attributes/23.png)
 
-### <a name="understanding-attribute-mapping-types"></a>Attribútum-hozzárendelési típusainak ismertetése
+### <a name="understanding-attribute-mapping-types"></a>Az attribútum-leképezési típusok ismertetése
 
-Az attribútum-leképezések meghatározhatja, hogyan fel van töltve attribútumai külső SaaS-alkalmazásban.
-Támogatott négy különböző leképezés típusa van:
+Az attribútum-hozzárendelésekkel szabályozhatja, hogy az attribútumok hogyan legyenek feltöltve egy külső gyártótól származó SaaS-alkalmazásban.
+Négy különböző leképezési típus támogatott:
 
-- **Közvetlen** – a target attribútum a csatolt objektum egy attribútum értéke megjelenik az Azure ad-ben.
-- **Állandó** – a target attribútum feltöltése egy meghatározott karakterlánccal megadott.
-- **Kifejezés** -target attribútum egy parancsfájl-szerű kifejezés eredménye alapján van feltöltve.
-  További információkért lásd: [írása a kifejezéseket az Azure Active Directoryban attribútumleképezések](functions-for-customizing-application-data.md).
-- **Nincs** -marad a célattribútum változatlan. Azonban ha target attribútum minden eddiginél üres, akkor megjelenik az Ön által megadott alapértelmezett értéket.
+- **Direct (közvetlen** ) – a TARGET attribútum az Azure ad-ben csatolt objektum attribútumának értékével van feltöltve.
+- **Konstans** – a TARGET attribútum egy megadott karakterlánccal van feltöltve.
+- **Kifejezés** – a cél attribútum a parancsfájl-szerű kifejezés eredménye alapján van feltöltve.
+  További információ: [kifejezések írása az attribútumhoz – leképezések Azure Active Directory](functions-for-customizing-application-data.md).
+- **Nincs** – a cél attribútum változatlan marad. Ha azonban a cél attribútum még mindig üres, akkor a rendszer a megadott alapértelmezett értékkel tölti fel.
 
-Egyéni attribútum-leképezések ezek négy alapvető típusok, valamint támogatja a fogalmat egy nem kötelező **alapértelmezett** érték-hozzárendelés. Az alapértelmezett érték-hozzárendelés biztosítja, hogy target attribútuma megadni az értéket, ha nem áll egy értéket az Azure ad-ben vagy a célobjektum. A leggyakrabban használt beállítások mellett akkor hagyja üresen a mezőt.
+A négy alaptípussal együtt az egyéni attribútum-hozzárendelések az opcionális **alapértelmezett** érték-hozzárendelés fogalmát támogatják. Az alapértelmezett érték-hozzárendelés biztosítja, hogy a TARGET attribútum értéke akkor legyen feltöltve, ha nincs érték az Azure AD-ben vagy a TARGET objektumon. A leggyakoribb beállítás az, ha üresen hagyja ezt a beállítást.
 
-### <a name="understanding-attribute-mapping-properties"></a>Attribútumleképzés tulajdonságok ismertetése
+### <a name="understanding-attribute-mapping-properties"></a>Attribútumok – megfeleltetési tulajdonságok ismertetése
 
-Az előző szakaszban már mutatta be attribútumleképezés tulajdonság.
-Ezt a tulajdonságot, valamint attribútum-leképezések is támogatja a következő attribútumokat:
+Az előző szakaszban már be lett vezetve az attribútum-leképezési típus tulajdonságra.
+A tulajdonsággal együtt az attribútum-hozzárendelések a következő attribútumokat is támogatják:
 
-- **Adatforrás-attribútum** – a felhasználói attribútum a forrásrendszerből (Példa: Azure Active Directory).
-- **Célattribútum** – a felhasználói attribútum a célrendszeren (Példa: A ServiceNow).
-- **Ezzel az attribútummal objektumok** – Ez a leképezés használandó egyedileg azonosíthatja azokat a felhasználókat, a forrás és cél közötti-e. Ez általában be van állítva a userPrincipalName vagy mail attribútum az Azure ad-ben, amely általában egy felhasználónév mezője célalkalmazás van hozzárendelve.
-- **Megfeleltetési prioritás** – több egyező attribútumok beállítása. Ha több, hogy értékeli ki őket ez a mező által meghatározott sorrendben. Amint egyezést talál, további megfelelő attribútumok értékeli ki.
-- **Leképezés alkalmazása**
-  - **Mindig** – ezt a hozzárendelést alkalmazni, mind a felhasználó létrehozása és a frissítési műveletek.
-  - **Csak a létrehozásakor** -leképezés alkalmazása csak a felhasználó-létrehozási műveletek.
+- **Forrásoldali attribútum** – a felhasználói attribútum a forrásoldali rendszerből (példa: Azure Active Directory).
+- **Target attribútum** – a felhasználói attribútum a célként megadott rendszeren (például: ServiceNow).
+- **Objektumok egyeztetése ezzel az attribútummal** – azt határozza meg, hogy ez a leképezés használható-e a felhasználók egyedi azonosítására a forrás-és a célként megadott rendszerek között. Általában az Azure AD userPrincipalName vagy mail attribútumára van beállítva, amely általában egy célalkalmazás username mezőjére van leképezve.
+- **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, azok kiértékelése a mező által meghatározott sorrendben történik. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
+- **A leképezés alkalmazása**
+  - **Mindig** – alkalmazza ezt a leképezést a felhasználói létrehozási és frissítési műveletekre is.
+  - **Csak a létrehozás során** – alkalmazza ezt a leképezést csak a felhasználói létrehozási műveletekre.
 
-## <a name="editing-group-attribute-mappings"></a>Csoport attribútum-leképezések szerkesztése
+## <a name="editing-group-attribute-mappings"></a>Csoport attribútumának szerkesztése – leképezések
 
-Alkalmazások, például a ServiceNow, a Box és a G Suite, a kiválasztott számú támogatja az objektumok és a felhasználói objektumok létrehozására. Objektumok is tartalmaz a csoport tulajdonságai, például a megjelenített nevek és e-mail-aliasokat, és a csoport tagjai.
+A kiválasztott számú alkalmazás, például a ServiceNow, a Box és a G Suite lehetővé teszi a csoport objektumainak és felhasználói objektumainak kiépítését. A csoport objektumai tartalmazhatnak olyan csoport-tulajdonságokat, mint a megjelenítendő nevek és az e-mail-aliasok, a csoporttagokkal együtt.
 
-![Példa bemutatja a ServiceNow kiépített csoport és a felhasználói objektumok](./media/customize-application-attributes/24.png)
+![Példa a kiépített csoporttal és felhasználói objektumokkal rendelkező ServiceNow](./media/customize-application-attributes/24.png)
 
-Csoportos kiépítését lehet szükség esetén engedélyezhető vagy letiltható az eszközcsoport-leképezés szerinti kiválasztásával **leképezések**, és a beállítás **engedélyezve** a kívánt beállítást, a **attribútumleképezés** képernyő.
+A csoportok kiosztása opcionálisan engedélyezhető vagy letiltható úgy, hogy kijelöli a **hozzárendelések**csoport leképezése elemét, és **engedélyezi** az **attribútum-leképezési** képernyőn a kívánt beállítást.
 
-Az attribútumok csoportobjektumokhoz részeként üzembe helyezett testre szabható az azonos felhasználói objektumok, korábban leírt módon. 
+A csoport objektumainak részeként kiépített attribútumok ugyanúgy testreszabhatók, mint a korábban leírt felhasználói objektumok. 
 
 > [!TIP]
-> Egy különálló fogalom a csoportobjektumokhoz (a tulajdonságok és a tagok) üzembe helyezése [csoportok hozzárendelése](assign-user-or-group-access-portal.md) alkalmazáshoz. Egy csoport hozzárendelése egy alkalmazáshoz, de csak kiépítése a felhasználói objektumok, a csoportban lévő lehetőség. Csoportok használata a hozzárendelések nem szükséges a teljes csoportobjektumokhoz kiépítését.
+> A csoport objektumainak (tulajdonságai és tagjai) [kiosztása a csoportok](assign-user-or-group-access-portal.md) alkalmazáshoz való hozzárendelésének különböző fogalma. Egy csoportot hozzárendelhet egy alkalmazáshoz, de csak a csoportban lévő felhasználói objektumokat kell kiépíteni. A teljes csoport objektumainak kiosztása nem szükséges a hozzárendelésekhez tartozó csoportok használatához.
 
-## <a name="editing-the-list-of-supported-attributes"></a>Támogatott attribútumok listáját szerkesztése
+## <a name="editing-the-list-of-supported-attributes"></a>A támogatott attribútumok listájának szerkesztése
 
-A támogatott az adott alkalmazásra vonatkozó felhasználói attribútumokat előre konfigurálva. A legtöbb alkalmazás felhasználói felügyeleti API-k nem támogatják a séma felderítés. Tehát az Azure AD létesítési szolgáltatás nem tud, amellyel dinamikusan generálható meghívni az alkalmazás által támogatott attribútumok listáját.
+Az adott alkalmazás által támogatott felhasználói attribútumok előre konfigurálva vannak. A legtöbb alkalmazás felhasználói felügyeleti API-jai nem támogatják a séma-felderítést. Így az Azure AD-kiépítési szolgáltatás nem képes dinamikusan létrehozni a támogatott attribútumok listáját az alkalmazás hívásával.
 
-Azonban egyes alkalmazások támogatják az egyéni attribútumokat, és az Azure AD létesítési szolgáltatás olvashat és írhat az egyéni attribútumokat. Meg kell adnia a definíciójukat az Azure Portalon, válassza ki a **speciális beállítások megjelenítése** alján, a jelölőnégyzet jelölését a **attribútumleképzés** képernyőn, és válassza ki **attribútumlistájánakszerkesztése** alkalmazását.
+Egyes alkalmazások azonban támogatják az egyéni attribútumokat, az Azure AD-kiépítési szolgáltatás pedig képes az egyéni attribútumok olvasására és írására. Ha meg szeretné adni a definíciókat a Azure Portalban, jelölje be a **Speciális beállítások megjelenítése** jelölőnégyzetet az **attribútum-leképezési** képernyő alján, majd válassza az **attribútumok szerkesztése** elemet az alkalmazáshoz.
 
-Alkalmazások és rendszerek, amelyek támogatják az attribútumlista testre szabhatja a következők:
+Az attribútumok listájának testreszabását támogató alkalmazások és rendszerek a következők:
 
 - Salesforce
 - ServiceNow
-- Munkanap
-- Az Azure Active Directory ([Azure AD Graph API alapértelmezett attribútumok](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és egyéni címtárbővítmények támogatottak)
-- Támogató alkalmazások [SCIM 2.0](https://tools.ietf.org/html/rfc7643), ahol az attribútumok meghatározott a [core séma](https://tools.ietf.org/html/rfc7643) hozzá kell adni
+- Workday
+- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
+- Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
 
 > [!NOTE]
-> Támogatott attribútumok listáját szerkesztési csak rendszergazdák számára, akik testreszabták a saját alkalmazások és rendszerek sémája és első kézből tudomásuk egyéni attribútumaik definiálva hogyan ajánlott. Ez néha az egy alkalmazás vagy rendszer által biztosított API-k és a fejlesztői eszközök ismeretét igényli.
+> A támogatott attribútumok listájának szerkesztése csak olyan rendszergazdák számára ajánlott, akik testre szabták az alkalmazásaikat és rendszereit, és az egyéni attribútumok definiálásának első kézből való ismerete. Ez esetenként az alkalmazás vagy a rendszer által biztosított API-k és fejlesztői eszközök ismeretét igényli.
 
-Támogatott attribútumok listáját szerkesztésekor a következő tulajdonságok áll rendelkezésre:
+A támogatott attribútumok listájának szerkesztésekor a következő tulajdonságokat kell megadnia:
 
-- **Név** – az attribútum a célobjektum sémában meghatározott rendszer nevét.
-- **Típus** -adatok az attribútum tárolja, ahogyan az a célobjektum séma, amely a következők egyike lehet:
-  - *Bináris* -attribútum bináris adatokat tartalmaz.
-  - *Logikai* -attribútum igaz vagy hamis értéket tartalmaz.
-  - *Dátum és idő* -attribútum tartalmazza a dátum karakterláncot.
-  - *Egész szám* -attribútumot tartalmaz egy egész számot.
-  - *Hivatkozás* -attribútum által hivatkozott egy értéket egy másik táblájában a célalkalmazás Azonosítót tartalmaz.
-  - *Karakterlánc* -szöveges karakterláncot attribútumot tartalmaz.
-- **Elsődleges kulcs?** -Az attribútum e a célobjektum sémában található elsődleges kulcs mezőként van definiálva.
-- **Kötelező?** -Az attribútum e a cél alkalmazás- vagy kitöltve szükség.
-- **Többértékű?** -Az attribútum e több értékeket támogatja.
-- **Megkülönböztetése?** -Az attribútumok értékek e a kis-és nagybetűket módon értékeli ki.
-- **API-kifejezés** – ne használja, kivéve, ha kifejezetten a dokumentáció (például a Workday) egy adott kiépítési összekötőre kéri.
-- **Hivatkozott objektumattribútum** – Ha a hivatkozási attribútum, amelyek ezután ebből a menüből válassza ki a táblát és az attribútum a célalkalmazásban, amely tartalmazza az attribútum társított értéket. Például ha egy attribútumot, amelynek tárolt érték egy külön táblázatban "Részleg" objektumra hivatkozik, az "részleg" nevű, kiválasztott "Departments.Name". A referencia-táblák és a egy adott alkalmazás támogatott elsődleges azonosító mezők előre konfigurált, és jelenleg nem szerkeszthető, az Azure portal használatával, de használatával szerkesztheti a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+- **Név** – a cél objektum sémájában definiált attribútum rendszerneve.
+- **Type (típus** ) – az attribútum által a célobjektum sémájában definiált adattípus, amely a következő típusok egyike lehet:
+  - *Bináris* – az attribútum bináris adatértékeket tartalmaz.
+  - *Logikai* – az attribútum igaz vagy hamis értéket tartalmaz.
+  - *Dátum és idő* – az attribútum egy Date karakterláncot tartalmaz.
+  - Az *Integer* -attribútum egész számot tartalmaz.
+  - A *Reference* -ATTRIBÚTUM olyan azonosítót tartalmaz, amely a célalkalmazás egy másik táblájában tárolt értékre hivatkozik.
+  - *Karakterlánc* – az attribútum szöveges karakterláncot tartalmaz.
+- **Elsődleges kulcs?** – Azt határozza meg, hogy az attribútum a célobjektum sémájában elsődleges kulcs mezőként van-e definiálva.
+- **Szükséges?** – Azt határozza meg, hogy az attribútumot kötelező-e kitölteni a célalkalmazás vagy a rendszer számára.
+- **Több érték?** – Azt határozza meg, hogy az attribútum több értéket is támogat-e.
+- **Pontos eset?** – Azt határozza meg, hogy az attribútumok értékei kis-és nagybetűk megkülönböztetésével legyenek kiértékelve.
+- **API-kifejezés** – ne használja, kivéve, ha erre a célra egy adott kiépítési összekötő (például a munkanap) dokumentációja kéri.
+- **Hivatkozott Object attribútum** – ha ez egy hivatkozástípus attribútum, akkor ezzel a menüvel kiválaszthatja a célalkalmazás azon tábláját és attribútumát, amely az attribútumhoz társított értéket tartalmazza. Ha például egy "részleg" nevű attribútummal rendelkezik, amelynek tárolt értéke egy különálló "részleg" táblában található objektumra hivatkozik, akkor válassza a "Departments.Name" elemet. Az adott alkalmazáshoz támogatott hivatkozási táblák és elsődleges azonosító mezők előre vannak konfigurálva, és jelenleg nem szerkeszthetők a Azure Portal használatával, de a [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)használatával szerkeszthetők.
 
-Egy új attribútum hozzáadásához, görgessen a támogatott attribútumok listáját a végén, adja meg a mezőkben a megadott bemeneti felett, és válassza **attribútum hozzáadása**. Válassza ki **mentése** Ha hozzáadta az attribútumokat. Szeretne töltse be újra a **kiépítési** válnak elérhetővé az attribútum-hozzárendelési szerkesztőt, az új attribútumok fülre.
+Új attribútum hozzáadásához görgessen a támogatott attribútumok listájának végére, és töltse ki a fenti mezőket a megadott bemenetek használatával, majd válassza az **attribútum hozzáadása**lehetőséget. Attribútumok hozzáadásának befejeződése után válassza a **Mentés** lehetőséget. Ezután újra kell töltenie a **kiépítés** lapot, hogy az új attribútumok elérhetővé váljanak az attribútum-leképezési szerkesztőben.
 
-## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Visszaállítás az alapértelmezett attribútumok és attribútum-leképezések
+## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Az alapértelmezett attribútumok és attribútumok leképezésének visszaállítása
 
-Meg kell újrakezdés és a meglévő hozzárendelések biztonsági másolatot az alapértelmezett állapotba alaphelyzetbe állítása, kiválaszthatja a **visszaállítja az alapértelmezett hozzárendeléseket** jelölje be a jelölőnégyzetet, és a konfiguráció mentéséhez. Minden leképezések így állítja be, mint ha az alkalmazás előbbiekben felvett, az Azure AD-bérlő az alkalmazáskatalógusból.
+Ha újra kell indítania a meglévő leképezéseket, és vissza kell állítania az alapértelmezett állapotukat, akkor jelölje be az **alapértelmezett leképezések visszaállítása** jelölőnégyzetet, és mentse a konfigurációt. Ez úgy állítja be az összes leképezést, mintha az alkalmazás már hozzá lett adva az Azure AD-bérlőhöz az alkalmazás-katalógusból.
 
-Ez a beállítás hatékonyan kényszeríti az összes olyan felhasználó újraszinkronizálását a kiépítési szolgáltatás futása közben.
+Ha ezt a beállítást választja, a kiépítési szolgáltatás futása közben minden felhasználó újraszinkronizálását fogja kényszeríteni.
 
 > [!IMPORTANT]
-> Erősen ajánlott, amelyek **előkészítési állapotát** állítható **ki** Ez a beállítás meghívása előtt.
+> Javasoljuk, hogy a beállítás meghívása előtt állítsa **ki** a **kiépítési állapotot** .
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-- A Microsoft Azure AD hatékony megvalósítását a szinkronizálási folyamat nyújt. Inicializált környezetben csak a frissítést igénylő objektumok feldolgozása során egy szinkronizálási ciklust.
-- Attribútum-leképezések frissítése egy szinkronizálási ciklust teljesítményére hatással van. Az attribútum-hozzárendelési konfigurációra egy frissítéshez kell újraértékeli az összes felügyelt objektumok.
-- Ajánlott ahhoz, hogy az attribútum-leképezések legalább egymást követő módosítások számát.
-- Egy fénykép attribútumot kell létrehozni, hogy egy alkalmazás hozzáadása nem támogatott még ma, nem adhat meg a formátum a fénykép szinkronizálni. A szolgáltatás kérheti a [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)
-- Az attribútum IsSoftDeleted gyakran egy alkalmazás az alapértelmezett hozzárendeléseket részét képezi. IsSoftdeleted legyen igaz egy négy forgatókönyv (miatt folyamatban van a az alkalmazás onnan megszüntetett hozzárendelésű hatókörén kívül esik a felhasználó, a felhasználó miatt nem felel meg egy hatókörszűrőt hatókörén kívül esik, a felhasználó lett az helyreállíthatóan törölt Azure AD-ben vagy AccountEnabled tulajdonság hamis értékre van állítva.  a felhasználó). 
+- Microsoft Azure AD a szinkronizálási folyamat hatékony megvalósítását teszi lehetővé. Egy inicializált környezetben csak a frissítéseket igénylő objektumok lesznek feldolgozva szinkronizálási ciklusban.
+- Az attribútumok frissítése-a leképezések hatással vannak a szinkronizálási ciklus teljesítményére. Az attribútum-hozzárendelési konfiguráció frissítéséhez az összes felügyelt objektum újraértékelése szükséges.
+- Az ajánlott eljárás az, ha a minimálisan megőrzi az attribútum-hozzárendelések egymást követő módosításait.
+- Ha olyan fénykép-attribútumot ad hozzá, amelyet egy alkalmazáshoz szeretne kiépíteni, ma nem lehet megadnia a fénykép szinkronizálásának formátumát. A funkciót [felhasználói hangon](https://feedback.azure.com/forums/169401-azure-active-directory) kérheti le
+- A IsSoftDeleted attribútum gyakran része az alkalmazás alapértelmezett leképezésének. A IsSoftdeleted a négy forgatókönyv egyikében igaz lehet (a felhasználó hatókörén kívül esik az alkalmazásból való kivonás miatt, a felhasználó hatókörén kívül esik, mert nem felel meg egy hatóköri szűrőnek, a felhasználót nem sikerült törölni az Azure AD-ben, vagy a AccountEnabled tulajdonság hamis értékre van állítva.  a felhasználón). 
+- Az Azure ad-kiépítési szolgáltatás nem támogatja a null értékek kiépítés
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Felhasználói kiépítés és megszüntetés SaaS-alkalmazások automatizálása](user-provisioning.md)
-- [Kifejezések írása attribútum-leképezések](functions-for-customizing-application-data.md)
-- [A felhasználók átadásának Hatókörszűrő](define-conditional-rules-for-provisioning-user-accounts.md)
+- [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](user-provisioning.md)
+- [Kifejezések írása attribútum-leképezésekhez](functions-for-customizing-application-data.md)
+- [Felhasználói kiépítési szűrők hatóköre](define-conditional-rules-for-provisioning-user-accounts.md)
 - [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](use-scim-to-provision-users-and-groups.md)
-- [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)
+- [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)

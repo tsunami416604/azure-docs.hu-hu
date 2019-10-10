@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – méretezési alkalmazások az Azure App Service az Ansible-lel |} A Microsoft Docs
-description: 'Útmutató: az Azure App Service alkalmazás vertikális felskálázása'
-keywords: az ansible, azure, a devops, a bash, a forgatókönyv, az Azure App Service, webalkalmazás, méretezhető, a Java
+title: Oktatóanyag – alkalmazások méretezése Azure App Service a Ansible használatával
+description: Ismerje meg, hogyan méretezhető egy alkalmazás a Azure App Service
+keywords: Ansible, Azure, devops, bash, ötletekbõl, Azure App Service, webalkalmazás, skála, Java
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230945"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241488"
 ---
-# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Oktatóanyag: Méretezhető alkalmazások az Azure App Service az Ansible-lel
+# <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Oktatóanyag: alkalmazások méretezése Azure App Service Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -25,26 +25,26 @@ ms.locfileid: "65230945"
 
 > [!div class="checklist"]
 >
-> * Egy meglévő App Service-csomagot a tények beolvasása
-> * Az App Service-csomag vertikális s2 három feldolgozók használata
+> * Meglévő App Service csomaggal kapcsolatos tények beolvasása
+> * A App Service-terv vertikális felskálázása S2-re három feldolgozóval
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Az Azure App Service-alkalmazás** – Ha nem rendelkezik az Azure App Service-alkalmazások, [konfigurálhat egy alkalmazást az Azure App Service az Ansible-lel](ansible-create-configure-azure-web-apps.md).
+- **Azure app Service alkalmazás** – ha nem rendelkezik Azure app Service alkalmazással, [a Ansible használatával konfiguráljon egy alkalmazást a Azure app Serviceban](ansible-create-configure-azure-web-apps.md).
 
 ## <a name="scale-up-an-app"></a>Alkalmazás vertikális felskálázása
 
-Két munkafolyamatok skálázásához: *vertikális felskálázás* és *horizontális felskálázása*.
+Két munkafolyamat áll rendelkezésre a skálázáshoz *: vertikális felskálázás és* horizontális felskálázás *.*
 
-**Vertikális felskálázás:** Vertikális felskálázás azt jelenti, hogy további erőforrást szerez. Ilyen erőforrások többek között a CPU, memória, lemezterület, virtuális gépek és egyéb. Alkalmazás vertikális felskálázáshoz módosítsa az alkalmazást, amelyhez tartozik az App Service-csomag tarifacsomagját. 
-**Horizontális felskálázás:** Horizontális felskálázás azt jelenti, hogy az alkalmazást futtató Virtuálisgép-példányok számának növelése. Az App Service-csomag tarifacsomagját, attól függően, horizontálisan akár 20-példányokhoz. [Az automatikus skálázás](/azure/azure-monitor/platform/autoscale-get-started) példányok száma automatikusan alapján előre meghatározott szabályok és az ütemezések segítségével.
+Vertikális **felskálázás:** A vertikális felskálázáshoz több erőforrást kell beszerezni. Ilyen erőforrások például a processzor, a memória, a lemezterület, a virtuális gépek és egyebek. Az alkalmazás vertikális felskálázása az App Service terv díjszabási szintjének módosításával, amelyhez az alkalmazás tartozik. 
+Vertikális **felskálázás:** A kiskálázáshoz az alkalmazást futtató virtuálisgép-példányok számának növelését jelenti. A App Service csomag díjszabási szintjétől függően akár 20 példányra is kibővíthető. Az automatikus [skálázás](/azure/azure-monitor/platform/autoscale-get-started) lehetővé teszi, hogy az előre meghatározott szabályok és ütemtervek alapján automatikusan méretezheti a példányszámot.
 
-A forgatókönyv ebben a szakaszban határozza meg azt a következő műveletet:
+Az ebben a szakaszban szereplő forgatókönyv-kód a következő műveletet határozza meg:
 
-* Egy meglévő App Service-csomagot a tények beolvasása
-* Az App service-csomag frissítése s2 három feldolgozók használata
+* Meglévő App Service csomaggal kapcsolatos tények beolvasása
+* Az App Service-csomag frissítése S2-re három feldolgozóval
 
 Mentse a következő forgatókönyvet `webapp_scaleup.yml` néven:
 
@@ -84,13 +84,13 @@ Mentse a következő forgatókönyvet `webapp_scaleup.yml` néven:
       var: facts.appserviceplans[0].sku
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook webapp_scaleup.yml
 ```
 
-A forgatókönyv futtatása után a következő eredményeket hasonló kimenet jelenik meg:
+A forgatókönyv futtatása után a következő eredményekhez hasonló kimenet jelenik meg:
 
 ```Output
 PLAY [localhost] 
@@ -135,7 +135,7 @@ PLAY RECAP
 localhost                  : ok=6    changed=1    unreachable=0    failed=0 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

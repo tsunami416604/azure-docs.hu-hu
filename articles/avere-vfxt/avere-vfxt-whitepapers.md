@@ -1,47 +1,47 @@
 ---
-title: Tanulmányok és vizsgálatok - Avere vFTX az Azure-hoz
-description: Letölthető tanulmányok, esettanulmányok, és más tartalmakon, amelyeket Avere vFXT bemutatják az Azure-ban, és hogy miként használható mutató hivatkozásokat tartalmaz.
+title: Tanulmányok és esettanulmányok – avere vFTX for Azure
+description: A letölthető tanulmányokra, esettanulmányokra és egyéb cikkekre mutató hivatkozások, amelyek bemutatják az Azure-hoz készült avere-vFXT és azok használatának módját.
 ms.service: avere-vfxt
 author: ekpgh
-ms.author: v-erkell
+ms.author: rohogue
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 257164a7417d4356c83cd1804939973b7029a4f1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409192"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255343"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Az Azure-tanulmányok és más erőforrások Azure vFTX 
+# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX az Azure-tanulmányokhoz és egyéb erőforrásokhoz 
 
-A jelen táblázatban lévő erőforrások közé tartoznak, esettanulmányok, a technológia tanulmányok, a infografikák, és más cikkeket, amelyek segítségével megismerheti, hogyan illeszkedik a Avere vFXT az Azure-hoz a munkafolyamatot. 
+A táblázatban szereplő erőforrások közé tartoznak az esettanulmányok, a technológiai tanulmányok, a infographics és más cikkek, amelyek segítségével megismerheti, hogy az Azure-hoz készült avere-vFXT hogyan illeszkedik a munkafolyamathoz. 
 
-## <a name="deploy-agisoft-photoscan-on-azure"></a>Az Azure-ban Agisoft PhotoScan üzembe helyezése
+## <a name="deploy-agisoft-photoscan-on-azure"></a>Agisoft-PhotoScan üzembe helyezése az Azure-ban
 
-**Hivatkozás:** [Az Azure-ban vagy BeeGFS Avere vFXT Agisoft PhotoScan az Azure-ban üzembe helyezés](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf) 
+**Hivatkozás:** [Agisoft PhotoScan üzembe helyezése az Azure-ban az Azure-hoz vagy a BeeGFS-hoz készült avere-vFXT](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf) 
 
-Ez az útmutató Avere vFXT tárolási vagy BeeGFS párhuzamos fájlrendszer biztonsági photogrammetry szoftver Agisoft PhotoScan telepítése részletes útmutatást nyújt. A szerző, Paulo Marques da Costa az AzureCAT, bemutatja, hogyan állíthat be Azure-beli virtuális gépeken (VM) PhotoScan. Nagy teljesítményű tárolási gyorsítja feldolgozási időt, és ő teljesítménytesztekben eredményeit tartalmazza. Ebben a környezetben felfelé és lefelé igény szerint skálázhatók, és támogatja a terabájt tárhely teljesítményét feláldozása nélkül.
+Ez az útmutató részletes útmutatást nyújt a Agisoft PhotoScan photogrammetry szoftver telepítéséhez, amely a avere vFXT Storage vagy a BeeGFS Parallel fájlrendszer használatával támogatott. A szerző, Paulo Marques da Costa of AzureCAT bemutatja, hogyan állíthatja be a PhotoScan-t az Azure Virtual Machineson (VM). A nagy teljesítményű tárterület felgyorsítja a feldolgozási időt, és a teljesítményteszt-tesztek eredményeit is tartalmazza. A környezet igény szerint méretezhető, és a teljesítmény feláldozása nélkül támogatja a terabájtos tárterületet.
 
-## <a name="datasheet-avere-vfxt-for-azure"></a>Adatlap: Azure-hoz készült Avere vFXT
+## <a name="datasheet-avere-vfxt-for-azure"></a>Adatlap: avere vFXT for Azure
 
-**Hivatkozás:** [Az Azure-Adatlap Avere vFXT](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
+**Hivatkozás:** [avere vFXT for Azure adatlap](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
 
-A kétoldalas rövid alapszintű információkat tartalmaz, és diagramok, amelyek bemutatják, hogyan Avere vFXT használata az Azure-ban több használati esetek.
+Ez a kétoldalas rövid útmutató alapvető információkat és diagramokat tartalmaz, amelyekből megtudhatja, hogyan használhatja az Azure-hoz készült avere-vFXT számos használati esetre.
 
 ## <a name="hybrid-cloud-for-file-based-workloads"></a>Hibrid felhő fájlalapú számítási feladatokhoz
 
-**Hivatkozás:** [Szemléltető ábra: A fájl-alapú számítási feladatokhoz a hibrid felhő készítése](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
+**Hivatkozás:** [Infographic: hibrid felhő létrehozása fájl alapú munkaterhelésekhez](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
 
-Az ábrán látható, összetevők és elrendezések Avere vFXT az Azure-ban a felhő-infrastruktúra hozzáadása a meglévő rendszert. Avere vFXT használata az Azure-hoz, mivel megvédi a számítási kapacitás és a meglévő helyszíni infrastruktúrát, vagy helyezze át az adatokat és a egy ideiglenes vagy állandó alapon a felhőalapú számítástechnika.  
+Ez a ábrán az Azure-hoz készült avere-vFXT használható összetevők és elrendezések láthatók a felhőalapú infrastruktúra meglévő rendszerhez való hozzáadásához. A avere vFXT for Azure használatával kibővítheti a számítási kapacitást a meglévő helyszíni infrastruktúrával, vagy ideiglenes vagy állandó módon helyezheti át az adatait és a számítási feladatokat a felhőbe.  
 
-## <a name="cloud-bursting"></a>A felhőbeli tartalékkapacitás 
+## <a name="cloud-bursting"></a>Felhő-kitörés 
 
-**Hivatkozás:** [A felhőbeli tartalékkapacitás a nagy teljesítményű, skálázható NAS](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf) 
+**Hivatkozás:** [nagy teljesítményű, méretezhető NAS-alapú felhő-kitörés](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf) 
 
- A felhőbeli tartalékkapacitás a megoldás ismertetése bemutatja, hogyan gyorsan elvégezheti a számítási erőforrások nondisruptively felhőalapú Avere vFXT az Azure használatával elérhető adatok.
+ Ez a felhőalapú felszakítási megoldás rövid áttekintést nyújt arról, hogyan teheti elérhetővé gyorsan az adatok a felhőalapú számítási erőforrások számára az Azure avere-vFXT használatával történő nondisruptively.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Továbbra is egy Avere vFXT az Azure-telepítés megtervezése, olvassa el [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md).
-* A kérdésekre adott válaszokért tekintse meg a [Avere vFXT Azure – gyakori kérdések a](avere-vfxt-faq.md).
+* Ha továbbra is szeretné megtervezni az Azure üzembe helyezéséhez szükséges avere-vFXT, olvassa el [a avere vFXT-rendszer](avere-vfxt-deploy-plan.md)tervezése című cikk
+* Az adott kérdésekre adott válaszokért lásd az [Azure-avere vFXT kapcsolatos gyakori](avere-vfxt-faq.md)kérdéseket.

@@ -1,17 +1,17 @@
 ---
-title: Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
+title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megtudhatja, hogyan hozhat létre tömb-paramétereket, szabályokat hozhat létre a tömb nyelvi kifejezései számára, kiértékelheti a [*] aliast, valamint elemeket fűzhet egy meglévő tömbhöz Azure Policy definíciós szabályokkal.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978044"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255808"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -96,9 +96,9 @@ A paraméter értékének formátuma eltérő az Azure CLI, Azure PowerShell vag
 
 Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következő parancsokat:
 
-- Azure CLI: Parancs [az Policy-hozzárendelés létrehozása](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **paraméterekkel**
-- Azure PowerShell: Parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
-- REST API: A _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
+- Azure CLI: parancs [az Policy hozzárendelés-létrehozás](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) paraméter **-paraméterekkel**
+- Azure PowerShell: parancsmag [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) paraméterrel **PolicyParameter**
+- REST API: a _put_ [create](/rest/api/resources/policyassignments/create) művelet a kérelem törzsének részeként a **Tulajdonságok. Parameters** tulajdonság értékeként
 
 ## <a name="policy-rules-and-arrays"></a>Házirend-szabályok és tömbök
 
@@ -141,7 +141,7 @@ A várt **típusú** feltétel `equals` _karakterlánc_. Mivel a **allowedLocati
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-A nevükhez csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az elemek kiértékelésének három forgatókönyve hasznos a következő esetekben: Nincs, a és az összes.
+A nevükhez csatolt **[\*]** aliasok azt jelzik, hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett a **[\*]** lehetővé teszi a tömb egyes elemeinek kiértékelését. Az egyes elemek kiértékelésének három forgatókönyve hasznos a következőkben: none, any és ALL.
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
 Ez a tény fontos, hogy tisztában legyen azzal, hogy **[\*]** hogyan értékeli ki a tömb egyes elemeit.
@@ -204,7 +204,7 @@ A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

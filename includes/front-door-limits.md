@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333378"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237369"
 ---
-| Resource | Alapértelmezett/maximális korlát |
+| Erőforrás | Alapértelmezett/maximális korlát |
 | --- | --- |
 | Azure bejárati ajtó szolgáltatás-erőforrások/előfizetés | 100 |
 | Előtér-gazdagépek, amelyeken erőforrásként egyéni tartományok szerepelnek | 100 |
@@ -24,7 +24,7 @@ ms.locfileid: "67333378"
 | Háttérbeli végpontok | 100 |
 | Útválasztási szabálynak megfelelő elérésiút-minták | 25 |
 | Egyéni webalkalmazási tűzfalszabályok szabályai házirend szerint | 10 |
-| Webalkalmazási tűzfal házirendje erőforrás alapján | 100 |
+| Webalkalmazási tűzfal házirendje előfizetés alapján | 100 |
 | Webalkalmazási tűzfal egyéni szabályoknak megfelelően | 10 |
 | Webalkalmazási tűzfal IP-címeinek egyeztetési feltétele | 600 |
 | Webalkalmazási tűzfal karakterláncának egyeztetési feltétel értéke | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333378"
 | **Feltöltése** |  Nincs korlát, amíg az egyes TÁBLAKIFEJEZÉSEK-feltöltések száma kevesebb, mint 2 GB. | A méret nem lehet nagyobb 2 GB-nál. |
 
 ### <a name="other-limits"></a>Egyéb korlátok
-- URL-cím maximális mérete – 8 192 bájt – megadja a nyers URL-cím maximális hosszát (séma + állomásnév + port + elérési út + az URL-cím lekérdezési karakterlánca) – a lekérdezési karakterlánc maximális mérete – 4 096 bájt – megadja a lekérdezési karakterlánc maximális hosszát bájtban kifejezve.
+- URL-cím maximális mérete – 8 192 bájt – a nyers URL-cím maximális hosszát határozza meg (séma + állomásnév + port + Path + lekérdezési karakterlánc az URL-cím)
+- Lekérdezési karakterlánc maximális mérete – 4 096 bájt – a lekérdezési karakterlánc maximális hosszát adja meg bájtban kifejezve.

@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: rohogue
+ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257016"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254488"
 ---
 # <a name="what-is-azure-hpc-cache-preview"></a>Mi az az Azure HPC Cache? (Előzetes verzió)
 
@@ -19,7 +19,7 @@ Az Azure HPC cache nagy teljesítményű számítástechnikai (HPC) feladatokhoz
 
 Az Azure HPC cache könnyen indítható és figyelhető a Azure Portal. A meglévő NFS-tárolók vagy új blob-tárolók az összesített névtér részévé válhatnak, ami egyszerűvé teszi az ügyfelek hozzáférését, még akkor is, ha megváltoztatja a háttérbeli tároló célját.
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 Az Azure HPC cache a következőhöz hasonló munkafolyamatok esetében növeli a termelékenységet:
 
@@ -49,12 +49,12 @@ Az Azure HPC cache üzembe helyezésével felgyorsíthatja a mennyiségi elemzé
 
 Az Azure HPC cache a következő Azure-régiókban érhető el:
 
-* East US
+* USA keleti régiója
 * USA 2. keleti régiója
 * Észak-Európa
 * Nyugat-Európa
 * Délkelet-Ázsia
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 
 A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache) .
 
@@ -62,7 +62,7 @@ A legfrissebb rendelkezésre állási információkért tekintse meg az [Azure H
 
 Az Azure HPC cache nyilvános előzetes verziója korlátozott a szolgáltatás minőségének biztosítása érdekében. Hozzáférés kérése az [űrlap](https://aka.ms/onboard-hpc-cache)kitöltésével. Miután hozzáadta az előfizetést a hozzáférési listához, létrehozhat tesztelési gyorsítótárat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
 * További tudnivalók a termékek [előfeltételeiről](hpc-cache-prereqs.md)

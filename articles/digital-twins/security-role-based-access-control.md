@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949015"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249200"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Szerepköralapú hozzáférés-vezérlés az Azure-beli digitális Ikrekben
 
-Az Azure Digital Twins pontos hozzáférés-vezérlést tesz lehetővé a térbeli gráf bizonyos adataihoz, erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a szerepköralapú hozzáférés-vezérlés (RBAC) nevű engedélyek kezelése teszi lehetővé. A RBAC _szerepkörökből_ és _szerepkör-hozzárendelésből_áll. A szerepkörök határozzák meg az engedélyek szintjét. A szerepkör-hozzárendelések egy szerepkört társítanak egy felhasználóhoz vagy eszközhöz.
+Az Azure digitális Twins szolgáltatással pontos hozzáférés-vezérlést végezhet a térbeli gráf bizonyos adataihoz, erőforrásaihoz és műveleteihez. Ezt a részletes szerepkör és a [szerepköralapú hozzáférés-vezérlés](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) nevű engedélyek kezelése teszi lehetővé. A RBAC _szerepkörökből_ és _szerepkör-hozzárendelésből_áll. A szerepkörök határozzák meg az engedélyek szintjét. A szerepkör-hozzárendelések egy szerepkört társítanak egy felhasználóhoz vagy eszközhöz.
 
 A RBAC használatával a következő engedélyek adhatók meg:
 
@@ -81,6 +81,8 @@ Ha engedélyeket szeretne adni egy címzettnek, hozzon létre egy szerepkör-hoz
 >[!IMPORTANT]
 > További információ a szerepkör-hozzárendelésekről a [szerepkör-hozzárendelések létrehozásával és kezelésével](./security-create-manage-role-assignments.md)kapcsolatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az Azure digitális Twins szerepkör-hozzárendelések létrehozásáról és kezeléséről, olvassa el a [szerepkör-hozzárendelések létrehozása és kezelése](./security-create-manage-role-assignments.md)című témakört
+
+- További információ [Az Azure](https://docs.microsoft.com/azure/role-based-access-control/)-beli RBAC.

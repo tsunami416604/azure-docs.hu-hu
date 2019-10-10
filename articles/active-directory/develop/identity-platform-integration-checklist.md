@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f7e9b738a55248678a207f0b298ef65e6c2761a4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145660"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240155"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -31,7 +31,7 @@ Ha most ismerkedik az első lépésekkel, tekintse meg a [Microsoft Identity pla
 
 Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/).
 
-## <a name="basics"></a>Alapadatok
+## <a name="basics"></a>Alapvető beállítások
 
 |   |   |
 |---|---|
@@ -43,14 +43,14 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 |---|---|
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Győződjön meg arról, hogy az alkalmazások regisztrálásához és kezeléséhez használt fiókhoz tartozó információk naprakészek. |
 
-## <a name="branding"></a>Védjegyezés
+## <a name="branding"></a>Branding
 
 |   |   |
 |---|---|
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Tartsa be az [alkalmazások védjegyezési irányelveit](howto-add-branding-in-azure-ad-apps.md). |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Adjon meg egy értelmes nevet és emblémát az alkalmazáshoz. Ezek az információk az [alkalmazás jóváhagyására vonatkozó kérdésben](application-consent-experience.md)jelennek meg. Győződjön meg arról, hogy a név és az embléma megfelel a vállalatának vagy termékének, hogy a felhasználók tájékozott döntéseket hozhassanak. Győződjön meg arról, hogy nem sérti a védjegyeket. |
 
-## <a name="privacy"></a>Személyes adatok védelme
+## <a name="privacy"></a>Adatvédelem
 
 |   |   |
 |---|---|
@@ -60,7 +60,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 |   |   |
 |---|---|
-| ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az átirányítási URI-k kezelése: <ul><li>Őrizze meg az összes átirányítási URI tulajdonosát, és tartsa naprakészen a DNS-rekordokat.</li><li>Ne használjon helyettesítő karaktereket (*) az URI-k között.</li><li>Webalkalmazások esetén győződjön meg arról, hogy az összes URI biztonságos és titkosított (például https-sémák használatával).</li><li>Nyilvános ügyfelek esetén használjon platform-specifikus átirányítási URI-ket, ha vannak ilyenek (főleg az iOS és az Android esetében). Ellenkező esetben használja a nagy mennyiségű véletlenszerű átirányítási URI-t, hogy elkerülje az ütközéseket, amikor visszahívja az alkalmazást.</li><li>Ha az alkalmazást egy elkülönített webügynök használja, akkor használhatja https://login.microsoftonline.com/common/oauth2/nativeclient a következőt:.</li><li>Tekintse át és vágja fel az összes fel nem használt vagy szükségtelen átirányítási URI-t a szokásos módon.</li></ul> |
+| ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az átirányítási URI-k kezelése: <ul><li>Őrizze meg az összes átirányítási URI tulajdonosát, és tartsa naprakészen a DNS-rekordokat.</li><li>Ne használjon helyettesítő karaktereket (*) az URI-k között.</li><li>Webalkalmazások esetén győződjön meg arról, hogy az összes URI biztonságos és titkosított (például https-sémák használatával).</li><li>Nyilvános ügyfelek esetén használjon platform-specifikus átirányítási URI-ket, ha vannak ilyenek (főleg az iOS és az Android esetében). Ellenkező esetben használja a nagy mennyiségű véletlenszerű átirányítási URI-t, hogy elkerülje az ütközéseket, amikor visszahívja az alkalmazást.</li><li>Ha az alkalmazást egy elkülönített webügynök használja, akkor a https://login.microsoftonline.com/common/oauth2/nativeclient használatát is használhatja.</li><li>Tekintse át és vágja fel az összes fel nem használt vagy szükségtelen átirányítási URI-t a szokásos módon.</li></ul> |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha az alkalmazás regisztrálva van egy címtárban, csökkentse és manuálisan figyelje az alkalmazás-regisztrációs tulajdonosok listáját. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha explicit módon nem szükséges, ne engedélyezze a [OAuth2 implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) támogatását. [Itt](v1-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)tájékozódhat az érvényes forgatókönyvről. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | A Felhasználónév/jelszó túllépése. Ne használja az [erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](v2-oauth-ropc.md), amely közvetlenül kezeli a felhasználók jelszavát. Ennek a folyamatnak magas fokú megbízhatóságra és felhasználói expozícióra van szüksége, és csak akkor használható, ha más, biztonságosabb, a folyamatok nem használhatók. Erre a folyamatra továbbra is szükség van bizonyos helyzetekben (például DevOps), de ügyeljen arra, hogy a használatával korlátozásokat fog alkalmazni az alkalmazására.  A modernebb megközelítésekhez olvassa el a [hitelesítési folyamatokat és az alkalmazás forgatókönyveit](authentication-flows-app-scenarios.md).|
@@ -87,7 +87,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ismerje meg [a hozzájárulási élményt](application-consent-experience.md) , és konfigurálja az alkalmazás beleegyezési kérésének részleteit, hogy a végfelhasználók és a rendszergazdák elegendő információval rendelkezzenek az alkalmazás megbízhatóságának megállapításához. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Csökkentse azt az időtartamot, ameddig a felhasználónak be kell írnia a bejelentkezési hitelesítő adatokat, miközben az alkalmazás használata közben csendes hitelesítést (csendes jogkivonat-beszerzést) kell megadnia az interaktív folyamatok előtt. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Minden bejelentkezéshez ne használja a "prompt = beleegyezés" kifejezést. Csak a prompt = beleegyezés használata, ha úgy döntött, hogy további engedélyek megadását kell kérnie (például ha módosította az alkalmazás szükséges engedélyeit). |
-| ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha szükséges, bővítse alkalmazását felhasználói adataival. Ezt egyszerűen elvégezheti a [Microsoft Graph API](https://developer.microsoft.com/graph) használatával. A [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) eszköz, amely segítséget nyújt az első lépésekhez. |
+| ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha szükséges, bővítse alkalmazását felhasználói adataival. A [Microsoft Graph API](https://developer.microsoft.com/graph) használatával egyszerűen elvégezhető a megoldás. A [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) eszköz, amely segítséget nyújt az első lépésekhez. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Regisztrálja az alkalmazás által igényelt engedélyek teljes készletét, hogy a rendszergazdák könnyen megadhatják a hozzájárulásukat a Bérlőnek. Futtassa a [növekményes beleegyezést](azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent) a futtatáskor, hogy a felhasználók tisztában legyenek azzal, hogy az alkalmazás Miért kér olyan engedélyeket, amelyek az első indításkor érinthetik vagy megzavarják a felhasználókat. |
 | ![jelölőnégyzetet](./media/active-directory-integration-checklist/checkbox-two.svg) | Hozzon létre [tiszta egyszeri kijelentkezési élményt](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut). Ez egy adatvédelmi és biztonsági követelmény, és jó felhasználói élményt tesz lehetővé. |
 

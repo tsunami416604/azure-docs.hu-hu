@@ -1,17 +1,17 @@
 ---
-title: Minta – nincs hálózati társítás az expressz útvonal hálózatához
+title: Minta – nincs hálózati társítás az expressz útvonalhoz
 description: Ez a minta házirend-definíció tiltja, hogy a hálózati társak egy adott erőforráscsoport hálózatához legyenek társítva.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21149cb1dce03b358d4fc36e0038ea8c5267b3d1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7cd3dde826e79bc38f257d0c8b58e4faf0bef3d4
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980448"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255708"
 ---
 # <a name="sample---no-network-peering-to-express-route-network"></a>Minta – nincs hálózati társítás az expressz útvonal hálózatához
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'no-network-peerings-to-er-network' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "no-network-peerings-to-er-network"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

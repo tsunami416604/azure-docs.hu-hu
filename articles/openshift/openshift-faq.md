@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203543"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249218"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
 Ez a cikk a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdéseket (GYIK) tárgyalja.
 
-## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
+## <a name="how-do-i-get-started"></a>Hogyan kezdhetem el használni?
 
 Az Azure Red Hat OpenShift használatához legalább 4 Azure Red Hat OpenShift fenntartott alkalmazás-csomópontot kell vásárolnia.
 
@@ -39,7 +39,7 @@ Nem. Azonban egy Azure Red Hat OpenShift-fürtöt összekapcsolhatók egy meglé
 
 ## <a name="what-cluster-operations-are-available"></a>Milyen fürtözött műveletek érhetők el?
 
-Csak a számítási csomópontok számának vertikális fel-és leskálázására van lehetőség. A létrehozás után más módosítások nem engedélyezettek `Microsoft.ContainerService/openShiftManagedClusters` az erőforrásban. A számítási csomópontok maximális száma 20-ra van korlátozva.
+Csak a számítási csomópontok számának vertikális fel-és leskálázására van lehetőség. A létrehozás után nem engedélyezett a `Microsoft.ContainerService/openShiftManagedClusters` erőforrás használata. A számítási csomópontok maximális száma 20-ra van korlátozva.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Milyen virtuálisgép-méreteket használhatok?
 
@@ -59,11 +59,11 @@ Nem, aktuális időpontban nem.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>A Docker-beállításjegyzék külsőleg is elérhető, így olyan eszközöket is használhatok, mint például a Jenkins?
 
-A Docker- `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` beállításjegyzék elérhető, de nincs megadva erős tárolási tartóssági garancia. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)is használhatja.
+A Docker-beállításjegyzék `https://docker-registry.apps.<clustername>.<region>.azmosa.io/`-tól érhető el, azonban nincs megadva erős tárolási tartóssági garancia. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)is használhatja.
 
 ## <a name="is-cross-namespace-networking-supported"></a>Támogatott-e a névterek közötti hálózatkezelés?
 
-Az ügyfél és az egyéni projekt-rendszergazdák a különböző névtérbeli hálózatkezelést (beleértve a megtagadást is) az `NetworkPolicy` objektumok használatával, projektenként is testre szabhatják.
+Az ügyfél és az egyéni Project-rendszergazdák a `NetworkPolicy` objektumok használatával testre szabhatják a névterek közötti hálózatkezelést (beleértve a Megtagadás megtagadását is).
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>A rendszergazdák kezelhetik a felhasználókat és a kvótákat?
 
@@ -71,7 +71,7 @@ Igen. Az Azure Red Hat OpenShift rendszergazdája a felhasználók és a kvótá
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Korlátozható a fürt csak bizonyos Azure AD-felhasználókra?
 
-Igen. Az Azure ad-alkalmazás konfigurálásával korlátozhatja, hogy mely Azure AD-felhasználók tudnak bejelentkezni a fürtbe. Részletekért lásd [: How to: Alkalmazás korlátozása felhasználói csoportra](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Igen. Az Azure ad-alkalmazás konfigurálásával korlátozhatja, hogy mely Azure AD-felhasználók tudnak bejelentkezni a fürtbe. További információ [: How to: az alkalmazás korlátozása felhasználói csoportra](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Lehet egy fürt több Azure-régióban is számítási csomópontokkal rendelkezik?
 
@@ -85,15 +85,15 @@ Nem. Az összes erőforrás, beleértve a fürt főkiszolgálóját is, az ügyf
 
 Igen. A OSBA az Azure Red Hat OpenShift használatával is használhatja. További információért lásd a [Service Broker megnyitása az Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) -ban című témakört.
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben lévő virtuális hálózatba próbálok csatlakozni, de hibaüzenetet kapok `Failed to get vnet CIDR` .
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Egy másik előfizetésben lévő virtuális hálózatba próbálok csatlakozni, de `Failed to get vnet CIDR` hibát kapok.
 
-Ügyeljen arra, hogy a virtuális hálózattal rendelkező előfizetésben regisztrálja `Microsoft.ContainerService` a szolgáltatót a következővel:`az provider register -n Microsoft.ContainerService --wait` 
+Győződjön meg arról, hogy a virtuális hálózatot tartalmazó előfizetésben regisztrálja `Microsoft.ContainerService` szolgáltatót `az provider register -n Microsoft.ContainerService --wait` használatával 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Mi az Azure Red Hat OpenShift (ARO) karbantartási folyamata?
 
 Az ARO-ban háromféle karbantartási lehetőség létezik: a etcd-és a felhő-szolgáltató által kezdeményezett karbantartás, valamint a biztonsági mentés és helyreállítás.
 
-+ A frissítések közé tartoznak a szoftverfrissítések és a CVEs. A CVE szervizelése indításkor a futtatásával `yum update` történik, és azonnali mérséklést tesz lehetővé.  Párhuzamosan új rendszerkép-Build jön létre a jövőbeli fürt létrehozásához.
++ A frissítések közé tartoznak a szoftverfrissítések és a CVEs. A CVE szervizelése indításkor `yum update` futtatásával történik, és azonnali mérséklést tesz lehetővé.  Párhuzamosan új rendszerkép-Build jön létre a jövőbeli fürt létrehozásához.
 
 + A etcd-adatbázis biztonsági mentése és kezelése egy automatizált folyamat, amely a művelettől függően a fürt leállását igényli. Ha a etcd-adatbázis visszaállítása biztonsági másolatból történik, a rendszer leállást eredményez. Óránként biztonsági mentést készítünk a etcd, és megtartjuk az elmúlt 6 órányi biztonsági mentést.
 
@@ -129,9 +129,9 @@ A etcd szintjén nincs titkosítva. A bekapcsolásának lehetősége jelenleg ne
 
 A syslog, a Docker-naplók, a Journal és a dmesg kezelése a felügyelt szolgáltatással történik, és az ügyfelek számára nem érhető el.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Nem úgy tűnik, hogy `kubectl top` egy ARO-fürtön fusson.
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Hogyan érhetik el az ügyfél az olyan mérőszámokat, mint a CPU/memória a csomópont szintjén, hogy a méretezési, hibakeresési és egyéb műveleteket is végrehajtsa. Nem úgy tűnik, hogy egy ARO-fürtön `kubectl top` fut.
 
-`kubectl top`a Red Hat OpenShift nem érhető el. Ehhez a OpenShift-figyelési veremben a Heapster (elavult) vagy metrika-Server (inkubálás vagy alfa) típusú háttérrendszer-forrás szükséges.
+a `kubectl top` nem érhető el a Red Hat OpenShift. Ehhez a OpenShift-figyelési veremben a Heapster (elavult) vagy metrika-Server (inkubálás vagy alfa) típusú háttérrendszer-forrás szükséges.
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Mi az az alapértelmezett Pod Scheduler-konfiguráció az ARO-hoz?
 
@@ -189,9 +189,9 @@ Ez az Azure AD-integráción keresztül érhető el. 
 
 Minden egyes Azure Red Hat OpenShift-fürt egy adott ügyfélhez van hozzárendelve, és az ügyfél előfizetésén belül él. 
 
-## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Kiválasztható bármilyen állandó tárolási megoldás is. OCS? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Választhatunk bármilyen állandó tárolási megoldást, például a OCS-t? 
 
-Két tárolási osztály közül választhat: Azure-lemez és Azure-fájl.
+A következő két tárolási osztály közül választhat: Azure Disk és Azure-fájl.
 
 ## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Hogyan frissül a fürt (beleértve a főbb és a kiskorúakat a sebezhetőségek miatt)?
 

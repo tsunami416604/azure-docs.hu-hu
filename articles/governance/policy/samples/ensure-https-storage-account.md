@@ -1,17 +1,17 @@
 ---
-title: Minta – csak HTTPS-forgalmat biztosít a Storage-fiókhoz
+title: Minta – HTTPS-forgalom biztosítása a Storage-fiókok esetében
 description: Ez a minta házirend-definíció megköveteli a Storage-fiókok számára a HTTPS-forgalom használatát.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 07694c7f6ca4590615c1f5530c19a530025c6add
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 41e752d3b88a7b36dbe7d9200ad6de42ab9d563f
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977079"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255767"
 ---
 # <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Minta – csak HTTPS-forgalmat biztosít a Storage-fiókhoz
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'https-traffic-only' --display-name 'Ensure h
 az policy assignment create --name <assignmentname> --scope <scope> --policy "https-traffic-only"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

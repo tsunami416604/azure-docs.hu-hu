@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: Alapelvek
   items:
+    - name: Az adminisztráció alapjai
+      href: administration-concepts.md
     - name: Gyakori üzembehelyezési forgatókönyvek
       href: scenarios.md
     - name: Az Azure AD DS szinkronizálásának működése

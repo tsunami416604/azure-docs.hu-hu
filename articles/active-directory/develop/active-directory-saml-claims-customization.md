@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949361"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240231"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: Az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
 Napjainkban a Azure Active Directory (Azure AD) támogatja az egyszeri bejelentkezést (SSO) a legtöbb nagyvállalati alkalmazással, beleértve az Azure AD-katalógusban és az egyéni alkalmazásokban előre integrált alkalmazásokat is. Amikor egy felhasználó az SAML 2,0 protokollal hitelesíti az alkalmazást az Azure AD-n keresztül, az Azure AD tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Ezután az alkalmazás érvényesíti és használja a jogkivonatot a felhasználó bejelentkezésére a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek a *jogcímek*által ismert felhasználóra vonatkozó adatokat tartalmaznak.
 
@@ -63,26 +63,26 @@ A **név-azonosító formátum** legördülő listából választhatja ki az al�
 |---------------|-------------|
 | **Alapértelmezett** | Az Azure AD az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | Az Azure AD a NameID formátumot használja állandóként. |
-| **E-mail cím** | Az Azure AD az EmailAddress formátumot fogja használni NameID formátumban. |
+| **EmailAddress** | Az Azure AD az EmailAddress formátumot fogja használni NameID formátumban. |
 | **Meghatározatlan** | Az Azure AD nem megadott NameID formátumot használ. |
 
-További információ a NameIDPolicy attribútumról: [egyszeri bejelentkezéses SAML protokoll](single-sign-on-saml-protocol.md).
+Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, és nem konfigurálható az Azure oldalán. További információ a NameIDPolicy attribútumról: [egyszeri bejelentkezéses SAML protokoll](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Attribútumok
 
 Válassza ki a `NameIdentifier` (vagy NameID) jogcím kívánt forrását. A következő lehetőségek közül választhat.
 
-| Name (Név) | Leírás |
+| Név | Leírás |
 |------|-------------|
-| Email | A felhasználó e-mail-címe |
+| E-mail cím | A felhasználó e-mail-címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
 | onpremisessamaccount | A helyszíni Azure AD-ből szinkronizált SAM-fiók neve |
-| oid | a felhasználó ObjectId az Azure AD-ben |
-| EmployeeID | a felhasználó Alkalmazottkód |
-| Címtárkiterjesztések | A helyszíni [Active Directory szinkronizált címtárszolgáltatás-bővítmények Azure ad Connect Sync használatával](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
+| ObjectId | a felhasználó ObjectId az Azure AD-ben |
+| Alkalmazottkód | a felhasználó Alkalmazottkód |
+| Címtárbővítmények | A helyszíni [Active Directory szinkronizált címtárszolgáltatás-bővítmények Azure ad Connect Sync használatával](../hybrid/how-to-connect-sync-feature-directory-extensions.md) |
 | Bővítmény attribútumai 1-15 | Az Azure AD-séma kibővítéséhez használt helyszíni bővítmény attribútumai |
 
-További információ: [Table 3: Érvényes azonosító értékek: Source @ no__t-0.
+További információ [: 3. táblázat: érvényes azonosító értékek forrásként](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
 
 Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben definiált jogcímekhez. Állandó érték hozzárendeléséhez kövesse az alábbi lépéseket:
 
@@ -106,7 +106,7 @@ Használhatja a jogcím-átalakítási funkciókat is.
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja át a joe_smith@contoso.com helyett. |
 | **Csatlakozás ()** | Egy attribútumot ellenőrzött tartománnyal társít. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mailt (joe_smith@contoso.com) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez joe_smith@contoso.onmicrosoft.com értéket eredményez. |
-| **ToLower()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
+| **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
 
 ## <a name="adding-application-specific-claims"></a>Alkalmazás-specifikus jogcímek hozzáadása
@@ -125,16 +125,16 @@ Használhatja a jogcím-átalakítási funkciókat is.
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja át a joe_smith@contoso.com helyett. |
 | **Csatlakozás ()** | Létrehoz egy új értéket két attribútum összekapcsolásával. Igény szerint elválasztót is használhat a két attribútum között. |
-| **ToLower()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
+| **ToLower ()** | A kijelölt attribútum karaktereit kisbetűs karakterekké alakítja. |
 | **ToUpper()** | A kijelölt attribútum karaktereit nagybetűvé alakítja. |
 | **Tartalmazza ()** | Attribútumot vagy állandót ad eredményül, ha a bemenet megfelel a megadott értéknek. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó e-mail-címe, ha a "@contoso.com" tartományt tartalmazza, ellenkező esetben az egyszerű felhasználónevet is ki szeretné állítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. e-mail<br/>*Érték*: "@contoso.com"<br/>2\. paraméter (kimenet): user. e-mail<br/>3\. paraméter (kimenet, ha nincs egyezés): user. userPrincipalName |
-| **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az Alkalmazottkód "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. Alkalmazottkód<br/>*Érték*: 000<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
-| **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például egy olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben kimeneti attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : felhasználó. ország<br/>*Érték*: USA<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
+| **EndWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel végződik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az Alkalmazottkód "000" végződéssel végződik, ellenkező esetben egy Extension attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : user. Alkalmazottkód<br/>*Érték*: "000"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
+| **StartWith()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet a megadott értékkel kezdődik. Ellenkező esetben további kimenetet is megadhat, ha nincs egyezés.<br/>Ha például egy olyan jogcímet szeretne kibocsátani, amelyben az érték a felhasználó Alkalmazottkód értéke, ha az ország/régió az "USA"-val kezdődik, ellenkező esetben kimeneti attribútumot szeretne kiállítani. Ehhez a következő értékeket kell konfigurálnia:<br/>*1. paraméter (bemenet)* : felhasználó. ország<br/>*Érték*: "US"<br/>2\. paraméter (kimenet): user. Alkalmazottkód<br/>3\. paraméter (kimenet, ha nincs egyezés): user. extensionAttribute1 |
 | **Kinyerés () – a megfeleltetés után** | Azt az alsztringet adja vissza, amely a megadott értéknek felel meg.<br/>Ha például a bemeneti érték "Finance_BSimon", a megfelelő érték "Finance_", akkor a jogcím kimenete "BSimon". |
 | **Kinyerés () – a megfeleltetés előtt** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "BSimon_US", a megfelelő érték "_US", akkor a jogcím kimenete "BSimon". |
 | **Kinyerés () – megfeleltetések között** | Az alsztringet adja vissza, amíg meg nem felel a megadott értéknek.<br/>Ha például a bemeneti érték "Finance_BSimon_US", az első egyező érték "Finance_", a második egyező érték "_US", akkor a jogcím kimenete "BSimon". |
-| **ExtractAlpha() - Prefix** | A karakterlánc ábécé részét adja vissza.<br/>Ha például a bemeneti érték "BSimon_123", akkor a "BSimon" értéket adja vissza. |
-| **ExtractAlpha() - Suffix** | A karakterlánc ábécé részét képező utótagot adja vissza.<br/>Ha például a bemeneti érték "123_Simon", akkor a "Simon" értéket adja vissza. |
+| **ExtractAlpha () – előtag** | A karakterlánc ábécé részét adja vissza.<br/>Ha például a bemeneti érték "BSimon_123", akkor a "BSimon" értéket adja vissza. |
+| **ExtractAlpha () – utótag** | A karakterlánc ábécé részét képező utótagot adja vissza.<br/>Ha például a bemeneti érték "123_Simon", akkor a "Simon" értéket adja vissza. |
 | **ExtractNumeric () – előtag** | A sztring numerikus részét adja vissza.<br/>Ha például a bemeneti érték "123_BSimon", a "123" értéket adja vissza. |
 | **ExtractNumeric () – utótag** | A karakterlánc numerikus részét adja vissza.<br/>Ha például a bemeneti érték "BSimon_123", a "123" értéket adja vissza. |
 | **IfEmpty()** | Attribútumot vagy állandó értéket ad eredményül, ha a bemenet null értékű vagy üres.<br/>Ha például egy extensionattribute tárolt attribútumot szeretne kiállítani, ha egy adott felhasználó Alkalmazottkód értéke üres. Ehhez a következő értékeket kell konfigurálnia:<br/>1\. paraméter (bemenet): user. Alkalmazottkód<br/>2\. paraméter (kimenet): user. extensionAttribute1<br/>3\. paraméter (kimenet, ha nincs egyezés): user. Alkalmazottkód |
@@ -142,7 +142,7 @@ Használhatja a jogcím-átalakítási funkciókat is.
 
 Ha további átalakításokra van szüksége, küldje el ötletét az [Azure ad visszajelzési fórumában](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599) az *SaaS-alkalmazás* kategóriában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
 * [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)

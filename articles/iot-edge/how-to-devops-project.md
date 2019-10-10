@@ -1,144 +1,139 @@
 ---
-title: CI/CD-folyamat az Azure DevOps Projects - az Azure IoT Edge segítségével |} A Microsoft Docs
-description: Az Azure DevOps Projects megkönnyíti az Azure használatának első lépéseit. Ez segít az Azure IoT Edge néhány gyors lépéssel tetszőleges alkalmazást elindíthat.
+title: CI/CD-folyamat Azure DevOps Projects-Azure IoT Edgetal | Microsoft Docs
+description: Azure DevOps Projects megkönnyíti az Azure megkezdését. Segítségével néhány gyors lépésben elindíthat egy Azure IoT Edge alkalmazást.
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 07/09/2019
+ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 109a7e327217a342f485dd61b53115569f2346cd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: daa4bc7b1584dc2159d4128fa4b44056df347ecb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722984"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72253098"
 ---
-# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>A CI/CD-folyamat létrehozása az IoT Edge-hez az Azure DevOps Projects segítségével
+# <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>CI/CD-folyamat létrehozása a IoT Edgehoz Azure DevOps Projects
 
-Folyamatos integrációs (CI) és az IoT Edge-alkalmazás folyamatos továbbítás (CD) beállítása az DevOps Projects segítségével. DevOps-projektek egyszerűbbé teszi a kezdeti konfigurálása az Azure-folyamatok készítése és kiadása folyamat.
+A folyamatos integráció (CI) és a folyamatos kézbesítés (CD) konfigurálása a IoT Edge alkalmazáshoz DevOps Projects. DevOps Projects leegyszerűsíti az Azure-folyamatok Build és kiadási folyamatának kezdeti konfigurációját.
 
 Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-DevOps-projektek az Azure DevOps hoz létre a CI/CD-folyamat. Hozzon létre egy új Azure DevOps szervezetet, vagy használjon egy már meglévő szervezet. A DevOps Projects is létrehoz az Azure-erőforrások tetszőleges Azure-előfizetésben.
+A DevOps Projects egy CI/CD-folyamatot hoz létre az Azure DevOps-ben. Létrehozhat egy új Azure DevOps-szervezetet, vagy használhat egy meglévő céget is. A DevOps Projects Azure-erőforrásokat is létrehoz az Ön által választott Azure-előfizetésben.
 
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali panelen válassza ki a **erőforrás létrehozása**, és keressen **DevOps Projects**.  
+1. A bal oldali panelen válassza az **erőforrás létrehozása**lehetőséget, majd keressen rá **DevOps projects**.  
 
 1.  Kattintson a **Létrehozás** gombra.
 
-## <a name="create-a-new-application-pipeline"></a>Hozzon létre egy új alkalmazás folyamatot 
+## <a name="create-a-new-application-pipeline"></a>Új alkalmazás-folyamat létrehozása 
 
-1. Az Azure IoT Edge modul(ok) megírható [ C# ](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) és [Java](tutorial-java-module.md). Válassza ki a választott nyelven egy új alkalmazás elindításához: **.NET**, **Node.js**, **Python**, **C**, vagy **Java**. A folytatáshoz kattintson a **Tovább** gombra.
+1. A Azure IoT Edge modul (ok) [C#](tutorial-csharp-module.md)írható, [Node. js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) és [Java](tutorial-java-module.md)nyelven. Válassza ki a kívánt nyelvet egy új alkalmazás indításához: **.net**, **Node. js**, **Python**, **C**vagy **Java**. A folytatáshoz kattintson a **Tovább** gombra.
 
-   ![Válassza ki a nyelvet és a egy új alkalmazás létrehozása](./media/how-to-devops-project/select-language.png)
+   ![Új alkalmazás létrehozásához válassza a Language (nyelv) lehetőséget.](./media/how-to-devops-project/select-language.png)
 
-2. Válassza ki **egyszerű IoT** az alkalmazási keretrendszer, és válassza ki, **tovább**.
+2. Válassza az **egyszerű IoT** lehetőséget az alkalmazás-keretrendszerként, majd kattintson a **tovább**gombra.
 
-   ![Egyszerű IoT keretrendszer kiválasztása](media/how-to-devops-project/select-iot.png)
+   ![Egyszerű IoT-keretrendszer kiválasztása](media/how-to-devops-project/select-iot.png)
 
-3. Válassza ki **IoT Edge** az Azure-szolgáltatás, amely telepíti az alkalmazást, és válassza ki, **tovább**.
+3. Válassza a **IoT Edge** lehetőséget az alkalmazást üzembe helyező Azure-szolgáltatásként, majd kattintson a **tovább**gombra.
 
-   ![Válassza ki az IoT Edge szolgáltatás](media/how-to-devops-project/select-iot-edge.png)
+   ![IoT Edge szolgáltatás kiválasztása](media/how-to-devops-project/select-iot-edge.png)
 
-4. Hozzon létre egy új ingyenes Azure DevOps szervezetet, vagy válasszon egy már meglévő szervezet.
+4. Hozzon létre egy új ingyenes Azure DevOps-szervezetet, vagy válasszon egy meglévő szervezetet.
 
    1. Adja meg a projekt nevét. 
 
-   2. Válassza ki az Azure DevOps-szervezetben. Ha egy már meglévő szervezet nem rendelkezik, válassza ki a **további beállítás** hozzon létre egy újat. 
+   2. Válassza ki az Azure DevOps-szervezetét. Ha nem rendelkezik meglévő szervezettel, válassza a **További beállítások** lehetőséget, hogy újat hozzon létre. 
 
    3. Válassza ki az Azure-előfizetését.
 
-   4. A projekt neve által létrehozott IoT Hub nevét használja, vagy adja meg a saját.
+   4. Használja a projekt neve alapján létrehozott IoT Hub nevet, vagy adja meg a sajátját.
 
-   5. Válassza ki **további beállítás** konfigurálása az Azure-erőforrások, amelyek a DevOps Projects hoz létre az Ön nevében.
+   5. Fogadja el az alapértelmezett helyet, vagy válasszon egyet a bezáráshoz. 
 
-   6. Válassza ki **kész** a projekt létrehozásának befejezéséhez. 
+   5. Válassza a **További beállítások** lehetőséget a DevOps projects által az Ön nevében létrehozott Azure-erőforrások konfigurálásához.
 
-   ![Nevezze el, és az alkalmazás létrehozása](media/how-to-devops-project/select-devops.png)
+   6. A projekt létrehozásának befejezéséhez kattintson a **kész** gombra. 
 
-Néhány perc múlva a DevOps Projects irányítópult jelenik meg az Azure Portalon. Válassza ki a projekt nevére, a folyamat előrehaladását. Szüksége lehet, hogy frissítse az oldalt. Egy mintául szolgáló IoT Edge-alkalmazás be van állítva, a szervezet Azure DevOps-tárházban, build hajtja végre, és az alkalmazás központi telepítése az IoT Edge-eszközön. Ezt az irányítópultot a kódtárat a CI/CD-folyamat és az Azure-ban az alkalmazás rálátást biztosít.
+   ![Alkalmazás neve és létrehozása](media/how-to-devops-project/select-devops.png)
 
-   ![A DevOps-portál alkalmazás megtekintése](./media/how-to-devops-project/devops-portal.png)
+Néhány perc elteltével megjelenik a DevOps Projects irányítópult a Azure Portal. Válassza ki a projekt nevét a folyamat előrehaladásának megtekintéséhez. Előfordulhat, hogy frissítenie kell a lapot. Egy minta IoT Edge alkalmazás van beállítva az Azure DevOps-szervezetben lévő adattárban, a rendszer létrehoz egy buildet, és az alkalmazást üzembe helyezi a IoT Edge eszközön. Ez az irányítópult a Code adattárba, a CI/CD-folyamatba és az Azure-beli alkalmazásba is betekintést nyújt.
+
+   ![Alkalmazás megtekintése Azure Portal](./media/how-to-devops-project/devops-portal.png)
 
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Kódmódosítások véglegesítése és a CI/CD végrehajtása
 
-DevOps-projektek a projekt Git-tárházat az Azure-Adattárakkal hoz létre. Ebben a szakaszban megtekintheti a tárházban, és módosítsa a kódokat az alkalmazáshoz.
+DevOps Projects létrehozott egy git-tárházat a projekthez az Azure Reposban. Ebben a szakaszban megtekintheti az adattárat, és programkód-módosításokat hajthat végre az alkalmazásban.
 
-1. Nyissa meg a projekt létrehozása az adattárhoz, válassza ki a **Tárházak** a projekt-irányítópult menüjében.  
+1. Ha a projekthez létrehozott tárházra szeretne navigálni, válassza a **tárolók** lehetőséget a projekt irányítópultjának menüjében.  
 
-   ![Nézet tárház jön létre az Azure-Adattárakkal](./media/how-to-devops-project/view-repositories.png)
+   ![Az Azure Reposben létrehozott adattár megtekintése](./media/how-to-devops-project/view-repositories.png)
 
-2. Az alábbi lépések bemutatják, hogy a kódon módosítani kellene a webböngésző használatával. Ha a tárház helyi inkább klónozásához, jelölje be **Klónozás** a felső, az ablak jobb. A megadott URL-cím használata a Visual Studio Code vagy az előnyben részesített fejlesztési eszköz a Git-tárház klónozásához. 
+2. A következő lépések végigvezetik a böngészőben a kód módosításának lépésein. Ha a tárházat helyileg szeretné klónozottként használni, válassza a **klónozás** lehetőséget az ablak jobb felső sarkában. Használja a megadott URL-címet a git-tárház klónozásához a Visual Studio Code-ban vagy az előnyben részesített fejlesztői eszközben. 
 
-3. Az adattár már tartalmazza a kódot egy nevű modul **SampleModule** a létrehozási folyamat során választott alkalmazás nyelv alapján. Nyissa meg a **modules/SampleModule/module.json** fájlt.
+3. A tárház már tartalmaz egy **FilterModule** nevű modul kódját a létrehozási folyamat során kiválasztott nyelv alapján. Nyissa meg a **modules/FilterModule/Module. JSON** fájlt.
 
-   ![Az Azure-Adattárakkal nyílt module.json fájl](./media/how-to-devops-project/open-module-json.png)
+   ![Module. JSON fájl megnyitása az Azure Reposban](./media/how-to-devops-project/open-module-json.png)
 
-4. Válassza ki **szerkesztése**, majd hajtsa végre a módosítás `"version"` alatt a `"tag"`. Például módosíthatja, hogy `"version": "${BUILD_BUILDID}"` használandó [Azure DevOps hozhat létre változókat](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) az Azure IoT Edge-modul képcímke részeként.
+4. Figyelje meg, hogy ez a fájl az [Azure DevOps Build változókat](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) használja a **Version** paraméterben. Ez a konfiguráció biztosítja, hogy a rendszer minden új Build futtatásakor létrehozza a modul új verzióját. 
 
-   ![Verzió, fogadja el a build változók szerkesztése](media/how-to-devops-project/update-module-json.png)
 
-5. Válassza ki **véglegesítése**, majd mentse a módosításokat.
+## <a name="examine-the-cicd-pipeline"></a>A CI/CD-folyamat vizsgálata
 
-6. A böngészőben lépjen vissza a DevOps Projects-irányítópultot az Azure Portalon. Látni fogja, hogy folyamatban van egy build. A módosítások automatikusan gyártja és a CI/CD-folyamat segítségével telepítve.
+Az előző szakaszban Azure DevOps Projects automatikusan konfigurálta a IoT Edge alkalmazás teljes CI/CD-folyamatát. Most a folyamat igény szerinti megismeréséhez és testreszabásához. Az alábbi lépésekkel megismerheti az Azure DevOps Build és Release folyamatait.
 
-    ![A folyamatban lévő állapot megtekintése](media/how-to-devops-project/ci-cd-in-progress.png)
+1. Ha meg szeretné tekinteni a DevOps projekt összeállítási folyamatait, válassza a **folyamat létrehozása** lehetőséget a projekt irányítópultjának menüjében. Ez a hivatkozás egy böngésző fület és az Azure DevOps Build folyamatát nyitja meg az új projekthez.
 
-## <a name="examine-the-cicd-pipeline"></a>Vizsgálja meg a CI/CD-folyamat
-
-Az előző szakaszokban Azure DevOps Projects egy teljes CI/CD-folyamat az IoT Edge-alkalmazás automatikusan konfigurálva. Majd, hogy a buildelési folyamat tesztelte véglegesíti a módosításokat, egy fájlt. Most ismerje meg, és testre szabhatja a folyamat igény szerint. A következő lépésekkel Ismerkedjen meg az Azure DevOps-buildelési és kiadási folyamatok.
-
-1. A DevOps-projekt a build folyamatok megtekintéséhez jelölje ki **hozhat létre folyamatokat** a projekt-irányítópult menüjében. Ez a hivatkozás megnyílik egy böngészőlap, és az Azure DevOps folyamat az új projekt létrehozása.
-
-   ![Nézet Azure folyamatokban folyamatok létrehozása](./media/how-to-devops-project/view-build-pipelines.png)
+   ![Build-folyamatok megtekintése az Azure-folyamatokban](./media/how-to-devops-project/view-build-pipelines.png)
 
 2. Válassza a **Szerkesztés** elemet.
 
-    ![Felépítési folyamat szerkesztése](media/how-to-devops-project/click-edit-button.png)
+    ![Build folyamat szerkesztése](media/how-to-devops-project/click-edit-button.png)
 
-3. A megnyíló panelen ellenőrizheti a feladatokat, amelyek akkor jelentkeznek, amikor a buildelési folyamat fut. A létrehozási folyamat hajtja végre különböző feladatokat, például az adatforrások beolvasása a Git-adattárból, IoT Edge modul rendszerképek létrehozását, IoT Edge-modulok leküldése egy tároló-beállításjegyzéket, és a közzététel kiírja a telepítéshez használt. Az Azure IoT Edge-feladatok az Azure DevOps kapcsolatos további információkért lásd: [folyamatos integráció konfigurálása Azure folyamatok](how-to-ci-cd.md#configure-continuous-integration).
+3. A megnyíló panelen megtekintheti a létrehozási folyamat futtatásakor felmerülő feladatokat. A létrehozási folyamat különféle feladatokat hajt végre, például a git-tárházból beolvassa a forrásokat, IoT Edge modul lemezképeit fejleszti, leküldi IoT Edge modulokat egy tároló-beállításjegyzékbe, és közzéteszi az üzembe helyezéshez használt kimeneteket. Ha többet szeretne megtudni az Azure DevOps Azure IoT Edge feladatairól, tekintse meg [Az Azure-folyamatok folyamatos integrációhoz való konfigurálásával foglalkozó](how-to-ci-cd.md#configure-continuous-integration)témakört.
 
-4. Válassza ki a **folyamat** fejléc nyissa meg a folyamat részletei a buildelési folyamat elején. Módosítsa a buildelési folyamat nevét a tulajdonságánál.
+4. A folyamat részleteinek megnyitásához válassza a **folyamat fejlécét** a build folyamat tetején. Módosítsa a felépítési folyamat nevét egy ennél részletesebb leírásra.
 
    ![A folyamat részleteinek szerkesztése](./media/how-to-devops-project/edit-build-pipeline.png)
 
-5. Válassza ki **várólistára & mentése**, majd válassza ki **mentése**.
+5. Válassza a **mentés & üzenetsor**lehetőséget, majd kattintson a **Mentés**gombra.
 
-6. Válassza a buildelési folyamat menüben **eseményindítók** menüjében. A DevOps Projects automatikusan létrejön egy CI eseményindító, és a tárházban minden véglegesítéshez elindul egy új létrehozást.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
+6. Válassza az **Eseményindítók** lehetőséget a folyamat összeállítása menüből. DevOps Projects automatikusan létrehozott egy CI-triggert, és a tárházba való minden egyes véglegesít egy új buildet indít el.  Lehetősége van belefoglalni az ágakat, vagy kizárni őket a CI-folyamatból.
 
-7. Válassza a **Megtartást**. A forgatókönyvtől függően a szabályzatokat, hogy megtartja vagy eltávolítja a buildek bizonyos számú is megadhat.
+7. Válassza a **Megtartást**. A forgatókönyvtől függően megadhat olyan házirendeket, amelyek bizonyos számú buildet megtartanak vagy eltávolítanak.
 
-8. Válassza ki **előzmények**. Az Előzmények panelen auditnaplót, a build útmutató legutóbbi módosításait tartalmazza. Azure folyamatok nyomon követi, hogy az összeállítási folyamat végzett módosításokat, és lehetővé teszi, hogy verziójának összehasonlítása.
+8. Válassza a **History (előzmények**) lehetőséget. Az előzmények panel a Build legutóbbi változásainak naplózási nyomvonalát tartalmazza. Az Azure-folyamatok nyomon követik a felépítési folyamaton végrehajtott módosításokat, és lehetővé teszik a verziók összehasonlítását.
 
-9. Ha befejezte a buildelési folyamat felfedezése keresse meg a megfelelő kiadási folyamathoz. Válassza ki **kiadásokban** alatt **folyamatok**, majd **szerkesztése** folyamat részleteinek megtekintéséhez.
+9. Amikor elkészült a Build folyamattal, navigáljon a megfelelő kiadási folyamathoz. Válassza a **kiadások** a **folyamatok**alatt lehetőséget, majd kattintson a **Szerkesztés** elemre a folyamat részleteinek megtekintéséhez.
 
-    ![Nézet kibocsátási folyamatok](media/how-to-devops-project/release-pipeline.png)
+    ![Kiadási folyamat megtekintése](media/how-to-devops-project/release-pipeline.png)
 
-10. Az **Összetevők** alatt válassza az **Elvetést**. A forrás, az összetevő figyeli, a kimenet a buildelési folyamat, az előző lépésekben vizsgálni. 
+10. Az **Összetevők** alatt válassza az **Elvetést**. Az összetevő által figyelt forrás az előző lépésekben megvizsgált összeállítási folyamat kimenete. 
 
-11. Mellett a **Drop** ikonra, válassza ki a **a folyamatos készregyártás eseményindítója** néz ki egy Villám. A kibocsátási folyamat engedélyezte az eseményindító, amely futtatja a központi telepítés minden alkalommal, amikor egy új buildösszetevő áll rendelkezésre. Szükség esetén letilthatja az eseményindítót, hogy a központi telepítések igénylik manuális végrehajtását.  
+11. A **drop** ikon mellett válassza ki a **folyamatos üzembe helyezési triggert** , amely a villámcsapáshoz hasonlít. Ez a kiadási folyamat engedélyezte az aktiválást, amely minden alkalommal futtat egy központi telepítést, amikor új Build-összetevő érhető el. Igény szerint letilthatja az indítást, hogy a központi telepítések manuális végrehajtást igényeljenek.  
 
-12. A kibocsátási folyamat menüben válassza **feladatok** majd válassza ki a **fejlesztési** fázis a legördülő listából. A DevOps Projects létrehoz egy kiadási fázisában, amely létrehoz egy IoT hubot, hoz létre az IoT Edge-eszköz az adott hub, üzembe helyezi a mintamodul az összeállítási folyamatból, és kiosztja a virtuális gép futtatása az IoT Edge-eszköz. További információ az Azure IoT Edge-feladatok a CD-re, lásd: [Azure folyamatok konfigurálása a folyamatos üzembe helyezéshez](how-to-ci-cd.md#configure-continuous-deployment).
+12. A kiadási folyamat menüjében válassza a **feladatok** lehetőséget, majd válassza ki a **fejlesztői** szakaszt a legördülő listából. DevOps Projects létrehozott egy kiadási szakaszt, amely létrehoz egy IoT hubot, létrehoz egy IoT Edge eszközt az adott központban, üzembe helyezi a minta modult a Build folyamatból, és kiépíti a virtuális gépet, hogy IoT Edge eszközként fusson. Ha többet szeretne megtudni a CD Azure IoT Edge feladatairól, tekintse meg [Az Azure-folyamatok folyamatos üzembe helyezéshez való konfigurálását](how-to-ci-cd.md#configure-continuous-deployment)ismertető témakört.
 
-    ![Folyamatos üzembe helyezés feladatok megtekintése](media/how-to-devops-project/dev-release.png)
+    ![Folyamatos üzembe helyezési feladatok megtekintése](media/how-to-devops-project/dev-release.png)
 
-13. A jobb oldalon válassza ki a **verziók megtekintéséhez**. Ebben a nézetben a kiadások előzményei jelennek meg.
+13. A jobb oldalon válassza a **kiadások megtekintése**lehetőséget. Ebben a nézetben a kiadások előzményei jelennek meg.
 
-14. Válassza ki a nevét, a kiadás további információinak megtekintéséhez.
+14. Válassza ki a kiadás nevét a további információk megtekintéséhez.
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure App Service és a többi kapcsolódó erőforrást, ha többé már nincs szükség rájuk létrehozott törölheti. Használja a **törlése** funkciókat a DevOps Projects-irányítópulton.
+Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelyeket akkor hozott létre, ha már nincs rá szükség. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
-## <a name="next-steps"></a>További lépések
-* További információk a feladatokat az Azure IoT Edge a az Azure DevOps [folyamatos integrációt és folyamatos üzembe helyezés az Azure IoT Edge-ben](how-to-ci-cd.md)
-* Megismerheti az IoT Edge üzemelő példány [ismertetése IoT Edge-telepítések egyetlen eszközök vagy ipari méretekben](module-deployment-monitoring.md)
-* Lépésről lépésre bemutatjuk létrehozása, frissítése vagy törlése a központi telepítés [üzembe helyezése és figyelése a nagy mennyiségű IoT Edge-modulok](how-to-deploy-monitor.md).
+## <a name="next-steps"></a>Következő lépések
+* Ismerkedjen meg az Azure DevOps Azure IoT Edgeával kapcsolatos feladatokkal a [folyamatos integráció és a folyamatos üzembe helyezés Azure IoT Edge](how-to-ci-cd.md)
+* A IoT Edge központi telepítésének megismerése az [egyes eszközök IoT Edge központi telepítések megismeréséhez](module-deployment-monitoring.md)
+* Végigvezeti a központi telepítések létrehozásához, frissítéséhez vagy törléséhez szükséges lépéseket a [IoT Edge modulok nagy léptékű üzembe helyezéséhez és figyeléséhez](how-to-deploy-monitor.md).

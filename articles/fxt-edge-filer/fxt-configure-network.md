@@ -1,118 +1,117 @@
 ---
-title: A Microsoft Azure FXT Edge Filer fürt hálózati beállításainak módosítása
-description: Hálózati beállítások testreszabása az Azure FXT Edge Filer fürt létrehozását követően
+title: A Microsoft Azure FXT Edge Filer-fürt hálózati beállításainak módosítása
+description: Hálózati beállítások testreszabása az Azure FXT Edge Filer-fürt létrehozása után
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 36ed354304cb1c88e48088f4b36c1ad0350af0dc
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543028"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254892"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: A fürt hálózati beállítások konfigurálása 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: a fürt hálózati beállításainak konfigurálása 
 
-Mielőtt az újonnan létrehozott Azure FXT Edge Filer fürtöt használ, ellenőrizze, és testre szabhatja a több hálózati beállításokat a munkafolyamathoz. 
+Az újonnan létrehozott Azure FXT Edge Filer-fürt használata előtt tekintse át és szabja testre a munkafolyamat több hálózati beállítását. 
 
-Ez az oktatóanyag azt ismerteti, hogy a hálózati beállításokat, előfordulhat, hogy módosítania kell egy új fürtöt. 
+Ez az oktatóanyag ismerteti azokat a hálózati beállításokat, amelyekre szükség lehet az új fürthöz való alkalmazkodáshoz. 
 
-Az oktatóanyagban érintett témák köre: 
+Megtanulhatja a következőket: 
 
 > [!div class="checklist"]
-> * Hálózati beállítások körét előfordulhat, hogy a fürt létrehozása után frissíteni kell
-> * Melyik Azure FXT Edge Filer használati esetek szükséges egy AD-kiszolgáló vagy a DNS-kiszolgáló 
-> * Ciklikus időszeletelési DNS (RRDNS) automatikusan betölteni az ügyfél érkező kérések elosztása a FXT fürt konfigurálása
+> * Lehet, hogy mely hálózati beállításokat kell frissíteni a fürt létrehozása után
+> * Az Azure FXT Edge Filer használati eseteinek AD-kiszolgálót vagy DNS-kiszolgálót kell használniuk 
+> * Ciklikus multiplexelés DNS-(RRDNS-) konfigurálása a FXT-fürtre irányuló ügyfelek kérelmeinek automatikus elosztásához
 
-A lépések elvégzéséhez szükséges idő attól függ, a rendszer hány konfigurációs módosítások szükségesek:
+A lépések elvégzéséhez szükséges idő attól függ, hogy hány konfigurációs módosításra van szükség a rendszeren:
 
-* Csak szüksége, olvassa el az oktatóanyagot, és ellenőrizze a néhány beállítást, ha 10 – 15 percet kell vennie. 
-* Ciklikus időszeletelési DNS konfigurálása van szüksége, ha a feladat egy vagy több óráig is igénybe vehet.
+* Ha csak az oktatóanyagot kell elolvasnia, és néhány beállítást ellenőriznie kell, a 10 – 15 percet is igénybe vehet. 
+* Ha ciklikusan megjelenő DNS-t kell konfigurálnia, a feladat akár egy órát is igénybe vehet.
 
 ## <a name="adjust-network-settings"></a>Hálózati beállítások módosítása
 
-Több hálózatokhoz kapcsolódó feladatokat beállítása egy új Azure FXT Edge Filer fürt részét képezik. Ellenőrizze a listában, és döntse el, melyeket a rendszer alkalmazni.
+Számos hálózattal kapcsolatos feladat része egy új Azure FXT Edge Filer-fürt beállításának. Válassza ki ezt a listát, és döntse el, hogy mely eszközök vonatkoznak a rendszeren.
 
-A fürt hálózati beállításaival kapcsolatos további tudnivalókért olvassa el a [hálózati szolgáltatások konfigurálása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html) az útmutató a fürt konfiguráció.
+Ha többet szeretne megtudni a fürt hálózati beállításairól, olvassa el a [hálózati szolgáltatások konfigurálása](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html) a fürt konfigurációs útmutatójában című témakört.
 
-* (Nem kötelező) az ügyfél által használt hálózat ciklikus időszeletelési DNS konfigurálása
+* Ciklikus multiplexelés beállítása a DNS-hez az ügyfél felé irányuló hálózat számára (nem kötelező)
 
-  Fürt forgalom terheléselosztása betöltheti leírtak szerint állítja be a DNS rendszer [DNS konfigurálása a FXT Edge Filer fürt](#configure-dns-for-load-balancing).
+  A fürt forgalmának terheléselosztásához konfigurálja a DNS-t a [FXT Edge Filer-fürt DNS konfigurálása](#configure-dns-for-load-balancing)című részében leírtak szerint.
 
 * NTP-beállítások ellenőrzése
 
-* Az Active Directory és a felhasználónevet vagy csoportnevet letöltések konfigurálása (ha szükséges)
+* Active Directory és Felhasználónév/csoport nevének letöltésének konfigurálása (ha szükséges)
 
-  Ha a hálózati állomások használja az Active Directory vagy más típusú külső címtárszolgáltatás, módosítania kell a fürt directory services-konfiguráció hogyan letölti a fürt a felhasználónév-és beállításához. Olvasási **fürt** > **címtárszolgáltatások** az útmutató a fürt konfiguráció részleteiről.
+  Ha a hálózati gazdagépek Active Directory vagy más típusú külső címtárszolgáltatás használatát használják, akkor módosítania kell a fürt címtárszolgáltatások konfigurációját, hogy beállítsa, hogyan töltse le a fürt a felhasználónevet és a csoport adatait. A részletekért **olvassa el a fürt @no__t**– 1**Directory-szolgáltatások** című témakört a fürt konfigurációs útmutatójában.
 
-  Egy AD-kiszolgálóra szükség, ha azt szeretné, SMB támogatása. Konfigurálja az AD SMB beállításához megkezdése előtt.
+  Ha az SMB-támogatást szeretné használni, szükség van egy AD-kiszolgálóra. Konfigurálja az AD-t az SMB beállításának megkezdése előtt.
 
-* Adja meg a VLAN-ok (nem kötelező)
+* VLAN-ok definiálása (nem kötelező)
   
-  Minden további VLAN-ok szükséges a fürt vservers és globális névtér definiálása előtt konfigurálja. Olvasási [VLAN-OK használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) az útmutató a fürt konfiguráció további.
+  Konfigurálja a fürt vservers és globális névterének meghatározása előtt szükséges további VLAN-okat. További információért olvassa el a VLAN-ok [használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/network_overview.html#vlan-overview) a fürt konfigurációs útmutatójában című témakört.
 
-* Proxy-kiszolgálók konfigurálása (ha szükséges)
+* Proxykiszolgálók konfigurálása (ha szükséges)
 
-  Ha a fürt külső címek eléréséhez proxykiszolgálót használ, állítsa be az alábbi lépésekkel:
+  Ha a fürt proxykiszolgálón keresztül éri el a külső címeket, a következő lépésekkel állíthatja be:
 
-  1. Adja meg a proxykiszolgáló a a **proxykonfiguráció** beállítások lap
-  1. A proxykiszolgáló beállításait a alkalmazni a **fürt** > **általános beállítások** lap vagy az **Core Filer részletei** lapot.
+  1. A proxykiszolgáló megadása a **proxy konfigurációs** beállításai lapon
+  1. Alkalmazza a proxykiszolgáló-konfigurációt a **fürt**@no__t – 1**általános telepítési** oldal vagy a **Core Filer részletek** lapon.
   
-  További információkért olvassa el [használatával a webes proxykat](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) az útmutató a fürt konfiguráció.
+  További információért olvassa el a következő témakört: [webproxyk használata](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/proxy_overview.html) a fürt konfigurációs útmutatójában.
 
-* Töltse fel [titkosítási tanúsítványok](#encryption-certificates) a fürt használata (nem kötelező)
+* A fürt által használandó [titkosítási tanúsítványok](#encryption-certificates) feltöltése (nem kötelező)
 
 ### <a name="encryption-certificates"></a>Titkosítási tanúsítványok
 
-A FXT Edge Filer fürt X.509-tanúsítványokat használ a ezek a függvények:
+Az FXT Edge Filer-fürt X. 509 tanúsítványokat használ ehhez a függvényekhez:
 
-* A fürt felügyeleti forgalom titkosításához
+* A fürt felügyeleti forgalmának titkosítása
 
-* Külső KMIP kiszolgálók az ügyfél nevében hitelesítéséhez
+* Az ügyfél nevében történő hitelesítés harmadik féltől származó KMIP-kiszolgálókra
 
-* A felhőbeli szolgáltatók kiszolgálói tanúsítványok ellenőrzése
+* A felhőalapú szolgáltatók kiszolgálói tanúsítványainak ellenőrzéséhez
 
-Ha a tanúsítványok feltöltése a fürtre van szüksége, használja a **fürt** > **tanúsítványok** beállítások lapon. Részleteket a [fürt > Tanúsítványok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) útmutató a fürt konfiguráció lapján.
+Ha tanúsítványokat kell feltöltenie a fürtre, használja a **fürt** > **tanúsítványok** Beállítások lapját. A részletek a fürt konfigurációs útmutatójának [fürt > tanúsítványok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) lapján találhatók.
 
-Fürt felügyeleti kommunikáció titkosításához, használja a **fürt** > **általános beállítások** beállítások oldalon válassza ki, melyik felügyeleti SSL-hez használandó tanúsítványt.
+A fürt felügyeleti kommunikációjának titkosításához használja a **fürt** > **általános telepítési** Beállítások lapját, amellyel kiválaszthatja, hogy melyik tanúsítványt kell használni a felügyeleti SSL-hez.
 
 > [!Note] 
-> Felhőalapú szolgáltatás hozzáférési kulcsok segítségével tárolják a **Felhőhöz tartozó hitelesítő adatok** konfigurációs lapon. A [adjon hozzá egy alapvető filer](fxt-add-storage.md#add-a-core-filer) szakasz fölött látható egy példa; a fürt konfiguráció útmutatójának elolvasásához [Felhőhöz tartozó hitelesítő adatok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) című szakasz részletezi. 
+> A Cloud Service-hozzáférési kulcsok tárolása a **Felhőbeli hitelesítő adatok** konfigurálása lapon történik. A fenti [Core Filer hozzáadása](fxt-add-storage.md#add-a-core-filer) szakasz egy példát mutat be. a részletekért olvassa el a fürt konfigurációs útmutatójának [Felhőbeli hitelesítő adatai](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) című szakaszt. 
 
-## <a name="configure-dns-for-load-balancing"></a>DNS konfigurálása terheléselosztásra
+## <a name="configure-dns-for-load-balancing"></a>A DNS konfigurálása terheléselosztáshoz
 
-Ez a szakasz egy ciklikus időszeletelési DNS (RRDNS) rendszer a ügyfél terheléselosztásban, többek között a FXT Edge Filer fürtben az összes ügyfél által használt IP-cím konfigurálása alapjait ismerteti. 
+Ez a szakasz a ciklikus multiplexelés DNS-(RRDNS-) rendszer konfigurálásának alapjait ismerteti az ügyfelek terhelésének a FXT Edge Filer-fürtön lévő összes ügyfél felé irányuló IP-cím közötti elosztásához. 
 
-### <a name="decide-whether-or-not-to-use-dns"></a>Döntse el, hogy e DNS-ÉT használhatja
+### <a name="decide-whether-or-not-to-use-dns"></a>Döntse el, hogy a DNS-t használja-e
 
-Terheléselosztás mindig ajánlott, de nem kell mindig használja a DNS. Például az ügyfél a munkafolyamatok bizonyos típusú, előfordulhat, hogy több értelme egy parancsfájl segítségével hozzárendelni a fürt IP-címeket az ügyfelek közötti egyenletes, ha azok csatlakoztatni a fürthöz. Egyes metódusok ismertetett [a fürt csatlakoztatási](fxt-mount-clients.md). 
+A terheléselosztás mindig ajánlott, de nem kell mindig a DNS-t használnia. Bizonyos típusú ügyfél-munkafolyamatok esetében például érdemes lehet egy parancsfájl használatával egyenletesen hozzárendelni a fürt IP-címeit az ügyfelek között a fürt csatlakoztatásakor. Néhány módszert a [fürt csatlakoztatása](fxt-mount-clients.md)című témakörben talál. 
 
-Vegye figyelembe ezeket a módosításokat, amikor a annak eldöntése, hogy a DNS-kiszolgáló használata: 
+Tartsa szem előtt ezeket a dolgokat, amikor eldönti, hogy használ-e DNS-kiszolgálót: 
 
-* A rendszer csak az NFS-ügyfelek érhető el, ha a DNS, nem szükséges. Az összes hálózati címek megadása numerikus IP-címek használatával lehetőség. 
+* Ha a rendszer csak az NFS-ügyfelek számára érhető el, a DNS nem szükséges. Az összes hálózati címet numerikus IP-címek használatával lehet megadni. 
 
-* Ha a rendszer támogatja az SMB (CIFS) hozzáférés, DNS megadása kötelező, mivel az Active Directory-kiszolgáló DNS-tartományt adjon meg.
+* Ha a rendszer támogatja az SMB (CIFS) elérését, a DNS-t kötelező megadni, mert meg kell adnia egy DNS-tartományt a Active Directory-kiszolgálóhoz.
 
-* DNS használata szükséges, ha azt szeretné, a Kerberos-hitelesítés használatára.
+* A DNS használata kötelező, ha Kerberos-hitelesítést kíván használni.
 
-### <a name="round-robin-dns-configuration-details"></a>Ciklikus időszeletelési DNS-konfiguráció részletei
+### <a name="round-robin-dns-configuration-details"></a>Ciklikus multiplexelés – DNS-konfiguráció részletei
 
-Amikor az ügyfelek hozzáférnek a fürt, RRDNS automatikusan elosztja a kérelmeket az összes rendelkezésre álló kapcsolatok között.
+Amikor az ügyfelek hozzáférnek a fürthöz, a RRDNS automatikusan kiegyenlíti a kéréseket az összes elérhető felület között.
 
-Az optimális teljesítmény érdekében konfigurálja a DNS-kiszolgáló, ügyfél által használt fürt címek kezelésére, az alábbi ábrán látható módon.
+Az optimális teljesítmény érdekében konfigurálja úgy a DNS-kiszolgálót, hogy az alábbi ábrán látható módon kezelje az ügyfélre irányuló fürt címeit.
 
-Egy fürt vserver a bal oldalon látható, és IP-címek a center és a jobb oldalon jelennek meg. Minden egyes ügyfél-hozzáférési pont konfigurálása a rekordok és -mutatók szemléltetett módon.
+A bal oldalon megjelenik egy fürt VServer, és az IP-címek a központban és a jobb oldalon jelennek meg. Konfigurálja az egyes ügyfél-hozzáférési pontokat egy rekordokkal és mutatókkal az ábrán látható módon.
 
-![Fürt ciklikus időszeletelési DNS diagram – részletes helyettesítő szöveg hivatkozás a következő kép](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
-[részletes leírása](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+![Cluster ciklikus DNS-diagram – részletes szöveges hivatkozás a kép @ no__t-1[részletes szöveg leírását](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html) követi
 
-Minden ügyfél által használt IP-cím a fürt rendelkeznie kell egy egyedi nevet a belső használatra. (Az alábbi ábrán az ügyfél IP-címek vs1 nevesített – ügyfél - IP-* ajánlattartalomnak, de éles környezetben valószínűleg használjon valami hasonló ügyfél * tömörebb.)
+Minden ügyfél felé irányuló IP-címnek egyedi névvel kell rendelkeznie a fürt belső használatára. (Ebben a diagramban az ügyfél IP-címeinek neve vs1-Client-IP-*, az éles környezetben azonban érdemes lehet valami tömörebb, például az ügyfél * esetében használni.)
 
-Az ügyfelek a fürt kiszolgálói argumentumként a vserver név használatával csatlakoztassa. 
+Az ügyfelek a VServer nevével csatlakoztatják a fürtöt a kiszolgálói argumentumként. 
 
-Módosítsa a DNS-kiszolgáló ``named.conf`` fájlt, ha szeretné a vserver ciklikus ahhoz, hogy a lekérdezések. Ez a beállítás biztosítja, hogy az összes rendelkezésre álló értékek keresztül szakad. Adjon hozzá egy utasítást a következőhöz hasonló:
+A DNS-kiszolgáló ``named.conf`` fájljának módosításával ciklikus sorrendet állíthat be a VServer való lekérdezésekhez. Ezzel a beállítással biztosíthatja, hogy az összes elérhető érték a következőn keresztül történjen:. Adjon hozzá egy, a következőhöz hasonló utasítást:
 
 ```
 options {
@@ -122,7 +121,7 @@ options {
 };
 ```
 
-A következő ``nsupdate`` parancsok DNS konfigurálása megfelelően példát kell megadni:
+A következő @no__t – 0 parancs a DNS helyes konfigurálására mutat példát:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -136,20 +135,20 @@ update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
 update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 ```
 
-### <a name="enable-dns-in-the-cluster"></a>A fürt DNS engedélyezése 
+### <a name="enable-dns-in-the-cluster"></a>DNS engedélyezése a fürtben 
 
-Adja meg a fürt által használt a DNS-kiszolgáló a **fürt** > **felügyeleti hálózati** beállítások lapon. A lapon megjelenő beállítások a következők:
+Válassza ki a fürt által használt DNS-kiszolgálót a **@no__t-** 1**felügyeleti hálózati** beállítások lapon. Az oldalon található beállítások a következők:
 
 * DNS-kiszolgáló címe
-* DNS domain name
-* DNS search domains
+* DNS-tartománynév
+* DNS-keresési tartományok
 
-További tudnivalókért olvassa el [DNS-beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) az útmutató a fürt konfiguráció.
+További részletekért olvassa el a [DNS-beállítások](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) című témakört a fürt konfigurációs útmutatójában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a alapvető konfigurációs utolsó lépése a Azure FXT Edge Filer fürt. 
+Ez az Azure FXT Edge Filer-fürt utolsó alapszintű konfigurációs lépése. 
 
-* Ismerje meg a rendszer LED-EK és az egyéb jeleket [hardver állapotának figyelése](fxt-monitor.md).
-* Ismerje meg, hogyan ügyfelek kell csatlakoztatni, a FXT Edge Filer bővebben a fürt [a fürt csatlakoztatási](fxt-mount-clients.md). 
-* Működő, és a egy FXT Edge Filer fürt kezelésével kapcsolatos további információkért lásd: a [fürt beállítási útmutató](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html). 
+* Ismerkedjen meg a rendszerled-ekkel és a [hardver állapotának figyelésével](fxt-monitor.md)kapcsolatos egyéb indikátorokkal.
+* További információ arról, hogy az ügyfelek hogyan csatlakoztatják a FXT Edge Filer-fürtöt a [fürt csatlakoztatásakor](fxt-mount-clients.md). 
+* Az FXT Edge Filer-fürtök működtetésével és kezelésével kapcsolatos további információkért tekintse meg a [fürt konfigurációs útmutatóját](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html). 

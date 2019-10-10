@@ -1,17 +1,17 @@
 ---
-title: Példa – a SQL Database transzparens adattitkosításának naplózása
+title: Minta – transzparens adattitkosítás naplózása SQL-kiszolgálón
 description: Ez a példa a házirend-definíció naplózására vonatkozik, ha az SQL Database-ben nincs engedélyezve a transzparens adattitkosítás.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: de7819f43b2d0ce4d6d047b324db94d3e5f85eec
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4027ad28b6589872dd2f52961710c4db95a257e7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981322"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254793"
 ---
 # <a name="sample---audit-sql-database-encryption"></a>Példa – az SQL Database titkosításának naplózása
 
@@ -47,7 +47,7 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL TDE Audit" --policy 17k78e20-9358-41c9-923c-fb736d382a12
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 
@@ -63,6 +63,6 @@ A szabályzat-hozzárendelés törléséhez futtassa a következő parancsot.
 az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

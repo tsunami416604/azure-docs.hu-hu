@@ -1,47 +1,47 @@
 ---
-title: Avere vFXT – Azure-támogatás engedélyezése
-description: Az Azure-ban Avere vFXT származó feltöltések támogatás engedélyezése
+title: Avere-vFXT támogatásának engedélyezése – Azure
+description: Támogatási feltöltések engedélyezése az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: fe096b2e2a75cc89e3ce5ef905d8e4c347cc153a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: ac7db46a681fcde6bfcbb7695e2d66724f738918
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409838"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256216"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
 
-Az Azure-hoz a Avere vFXT automatikusan feltöltheti a fürttel kapcsolatos támogatási adatok. Ezek lehetővé teszik a támogatási személyzet feltöltések adja meg az ajánlott ügyfélszolgálat.
+Az Azure-hoz készült avere-vFXT automatikusan feltölthetik a fürtre vonatkozó támogatási információkat. Ezek a feltöltések lehetővé teszik a támogatási személyzet számára a lehető legjobb ügyfélszolgálatot.
 
-## <a name="steps-to-enable-uploads"></a>További lépések elvégzésével feltöltések
+## <a name="steps-to-enable-uploads"></a>A feltöltések engedélyezésének lépései
 
-Kövesse az alábbi lépéseket a Avere Vezérlőpult támogatás aktiválásához. (Olvasás [a vFXT fürt eléréséhez](avere-vfxt-cluster-gui.md) megismeréséhez nyissa meg a Vezérlőpultot Avere.)
+A támogatás aktiválásához kövesse az alábbi lépéseket a avere Vezérlőpultján. (Olvasási [hozzáférés a vFXT-fürthöz](avere-vfxt-cluster-gui.md) , hogy megtudja, hogyan nyithatja meg a avere vezérlőpultot.)
 
-1. Keresse meg a **beállítások** a felső fülön.
-1. Kattintson a **támogatási** a bal oldali hivatkozásra, és fogadja el az adatvédelmi nyilatkozatát.
+1. Navigáljon a **Beállítások** lapfülre felül.
+1. Kattintson a bal oldalon található **támogatás** hivatkozásra, és fogadja el az adatvédelmi szabályzatot.
 
-   ![Képernyőfelvétel: a Avere Vezérlőpulton, és a megerősítés gombra az előugró ablakban fogadja el az adatvédelmi szabályzatot](media/avere-vfxt-privacy-policy.png)
+   ![Képernyőfelvétel: a avere vezérlőpultja és az előugró ablak megerősítése gomb az adatvédelmi szabályzat elfogadásához](media/avere-vfxt-privacy-policy.png)
 
-1. Kattintson a háromszögre balra **Customer Info** a szakasz kibontásához.
-1. Kattintson a **Revalidate feltöltési információk** gombra.
-1. Állítsa be a fürt támogatási nevét **egyedi fürtnév** – ellenőrizze, hogy a fürt a támogató személyzet egyedileg azonosítja.
-1. Jelölje be a **statisztikák figyelése**, **általános információkat feltöltése**, és **összeomlási adatokat feltölteni**.
-1. Kattintson a **Submit** (Küldés) gombra.
+1. Kattintson az **ügyféladatok** bal oldalán található háromszögre a szakasz kibontásához.
+1. Kattintson a **feltöltési adatok újraérvényesítése** gombra.
+1. Adja meg a fürt támogatási nevét az **egyedi fürt neve** alatt – ügyeljen arra, hogy a fürt egyedi módon azonosítható legyen a munkatársak támogatásához.
+1. A **statisztikák figyelésére**, az **általános adatok feltöltésére**és az **Összeomlási adatok feltöltésére**vonatkozó jelölőnégyzeteket itt találja.
+1. Kattintson a **Submit (Küldés**) gombra.
 
-   ![Képernyőkép, amely tartalmazza a customer info szakaszban támogatási beállítások oldal befejeződött](media/avere-vfxt-support-info.png)
+   ![A támogatási beállítások oldalának Completed Customer info szakaszt tartalmazó képernyőképe](media/avere-vfxt-support-info.png)
 
-1. Kattintson a háromszögre balra **biztonságos proaktív támogatási (Szervizcsomagok)** a szakasz kibontásához.
-1. Jelölje be a **Szervizcsomagok hivatkozás engedélyezése**.
-1. Kattintson a **Submit** (Küldés) gombra.
+1. Kattintson a **biztonságos proaktív támogatás (SPS)** bal oldalán található háromszögre a szakasz kibontásához.
+1. Jelölje be az **SPS-hivatkozás engedélyezése**jelölőnégyzetet.
+1. Kattintson a **Submit (Küldés**) gombra.
 
-   ![Befejezett proaktív támogatja biztonságos szakaszban támogatási beállítások oldalon tartalmazó képernyőképe](media/avere-vfxt-support-sps.png)
+   ![A támogatási beállítások lapon található, biztonságos proaktív támogatásról szóló szakaszt tartalmazó képernyőkép](media/avere-vfxt-support-sps.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha kell hozzáadnia a helyszíni vagy felhőalapú adattároló rendszer a fürthöz, kövesse a meglévő [konfigurálta a tárterületet](avere-vfxt-add-storage.md). 
+Ha helyszíni vagy meglévő felhőalapú tárolási rendszerre van szüksége a fürthöz, kövesse a [tárterület konfigurálása](avere-vfxt-add-storage.md)című témakör útmutatását. 
 
-Ha készen áll a fürt, olvassa el az ügyfelek csatolása [a Avere vFXT fürt csatlakoztatási](avere-vfxt-mount-clients.md).
+Ha készen áll az ügyfelek csatlakoztatására a fürthöz, olvassa el [a avere vFXT-fürt csatlakoztatása](avere-vfxt-mount-clients.md)című lapot.

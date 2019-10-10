@@ -1,36 +1,36 @@
 ---
-title: 'A Microsoft Genomics: hibaelhárítási útmutató |} A Microsoft Docs'
-titleSuffix: Azure
-description: További tudnivalók a hibaelhárítási stratégiák
-keywords: hiba elhárítása, hibakeresés
-services: microsoft-genomics
+title: Hibaelhárítási útmutató
+titleSuffix: Microsoft Genomics
+description: További tudnivalók a Microsoft Genomics használatának hibaelhárítási módszereiről.
+keywords: hibaelhárítás, hiba, hibakeresés
+services: genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
 ms.service: genomics
 ms.workload: genomics
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/29/2018
-ms.openlocfilehash: 78084e6beac7b390b1ea1afe888030c5224856b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce8af4d444e642a8f67f43f8cf403ce9b2cb08ab
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790504"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248515"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
-Íme néhány hibaelhárítási tippek a gyakori problémák, amelyek a Microsoft Genomics MSGEN szolgáltatás használata esetén előfordulhat, hogy között.
+Íme néhány hibaelhárítási tipp a Microsoft Genomics szolgáltatás használatakor esetlegesen előforduló gyakori problémák némelyikének MSGEN.
 
- A GYIK, hibaelhárítás, nem kapcsolódó témakör [gyakori kérdésekre](frequently-asked-questions-genomics.md).
-## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>1\. lépés: Keresse meg a munkafolyamathoz társított hibakódok
+ A [Gyakori kérdések](frequently-asked-questions-genomics.md)a hibaelhárításhoz nem kapcsolódó gyakori kérdések című témakörben találhatók.
+## <a name="step-1-locate-error-codes-associated-with-the-workflow"></a>1\. lépés: a munkafolyamathoz társított hibakódok megkeresése
 
-A munkafolyamat által társított hibaüzenetek keresheti meg:
+A munkafolyamathoz társított hibaüzeneteket a következő módszerekkel érheti el:
 
-1. A parancssor használatával, majd írja be a  `msgen status`
-2. Standardoutput.txt tartalmának vizsgálata.
+1. A parancssor használata és beírása `msgen status`
+2. A StandardOutput. txt fájl tartalmának vizsgálata.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. A parancssor használatával `msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssor használata @no__t – 0
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -39,20 +39,20 @@ msgen status -u URL -k KEY -w ID
 
 
 
-Nincsenek három szükséges argumentumok:
+Három kötelező argumentum:
 
-* Adresa URL – az alap URI az API-hoz
-* KULCS – a Genomics-fiók elérési kulcsának
-    * Keresse meg az URL-CÍMÉT és KULCSÁT, nyissa meg az Azure Portalra, és nyissa meg a Microsoft Genomics-fiók oldalon. Alatt a **felügyeleti** fejléc kiválasztása **hozzáférési kulcsok**. Itt keresse meg az API URL-cím és a hozzáférési kulcsokat is.
+* URL – az API alap URI-ja
+* KULCS – a genomikai fiók elérési kulcsa
+    * Az URL-cím és a kulcs megkereséséhez nyissa meg a Azure Portal és nyissa meg a Microsoft Genomics-fiók lapot. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok**elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
 
   
-* Azonosító – a munkafolyamat-Azonosítót
-    * A munkafolyamat azonosító típusa a található `msgen list` parancsot. Feltéve, hogy a konfigurációs fájl tartalmazza az URL-cím és a hozzáférési kulcsokat, és ugyanazon a helyen az msgen exe szerepel a parancs a következőképpen jelenik meg: 
+* AZONOSÍTÓ – a munkafolyamat azonosítója
+    * A munkafolyamat-azonosító típusának megkereséséhez `msgen list` parancsban. Feltételezve, hogy a konfigurációs fájl tartalmazza az URL-címet és a hozzáférési kulcsokat, és az a msgen-exe-fájllal azonos helyen található, a parancs a következőképpen fog kinézni: 
         
         ```bash
         msgen list -f "config.txt"
         ```
-        Ez a parancs kimenete a következőképpen jelenik meg:
+        A parancs kimenete a következőképpen fog kinézni:
         
         ```bash
             Microsoft Genomics command-line client v0.7.4
@@ -74,73 +74,73 @@ Nincsenek három szükséges argumentumok:
         ```
 
   > [!NOTE]
-  >  Másik megoldásként közvetlenül az az URL-cím és a kulcs megadása helyett a konfigurációs fájl elérési útját is megadhat. Ha ezek az argumentumok adja meg a parancssort, valamint a konfigurációs fájlban, a parancssori argumentumok elsőbbséget élvez.  
+  >  Azt is megteheti, hogy a konfigurációs fájl elérési útját nem közvetlenül az URL-cím és a kulcs megadása helyett adja meg. Ha ezeket az argumentumokat a parancssorban és a konfigurációs fájlban is tartalmazza, akkor a parancssori argumentumok elsőbbséget élveznek.  
 
-A munkafolyamat azonosítója 1001, és a végrehajtható fájl elérési útja megegyezik a msgen kerülnek, a config.txt fájlhoz a parancs a következőképpen jelenik meg:
+A 1001-es és a config. txt fájlnak a msgen végrehajtható fájllal megegyező elérési útra helyezett konfigurációjában a parancs a következőhöz hasonlóan fog kinézni:
 
 ```bash
 msgen status -w 1001 -f "config.txt"
 ```
 
-### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2.  Standardoutput.txt tartalmának vizsgálata 
-Keresse meg a szóban forgó munkafolyamat a kimeneti tárolóhoz. MSGEN létrehoz egy, `[workflowfilename].logs.zip` mappa minden munkafolyamat végrehajtása után. Csomagolja ki a mappa tartalmának megtekintéséhez:
+### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. a StandardOutput. txt fájl tartalmának vizsgálata 
+Keresse meg a kérdéses munkafolyamat kimeneti tárolóját. A MSGEN minden munkafolyamat-végrehajtás után létrehoz egy, `[workflowfilename].logs.zip` mappát. Bontsa ki a mappát a tartalmának megtekintéséhez:
 
-* a munkafolyamat során előállított outputFileList.txt – a kimeneti fájlok listája
-* StandardError.txt – Ez a fájl, akkor üres.
-* StandardOutput.txt – beleértve a munkafolyamat futtatása közben fellépő hibák minden felső szintű állapotüzenetek naplózza.
-* GATK naplófájlok – az összes többi fájl a `logs` mappa
+* outputFileList. txt – a munkafolyamat során létrehozott kimeneti fájlok listája
+* StandardError. txt – ez a fájl üres.
+* StandardOutput. txt – naplózza az összes legfelső szintű állapotüzenetek, beleértve a hibákat, amelyek a munkafolyamat futtatásakor történtek.
+* GATK naplófájlok – a `logs` mappában található összes többi fájl
 
-Hibaelhárítási, vizsgálja meg a standardoutput.txt tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
+Hibaelhárításhoz vizsgálja meg a StandardOutput. txt fájl tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>2\. lépés: Próbálja ki a gyakori hibák elhárításához ajánlott lépéseket
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>2\. lépés: a gyakori hibákra vonatkozó ajánlott lépések kipróbálása
 
-Ez a szakasz röviden kiemeli a gyakori hibák kimeneti (msgen) a Microsoft Genomics szolgáltatásba, és a problémák megoldásához használható stratégiákról. 
+Ez a szakasz röviden kiemeli Microsoft Genomics szolgáltatás (msgen) és a megoldásához használható stratégiák általános hibáit. 
 
-A Microsoft Genomics szolgáltatással (msgen) a következő két típusú hibákat nagyvállalat:
+A Microsoft Genomics szolgáltatás (msgen) a következő két típusú hibát képes eldobni:
 
-1. Belső hiba: Előfordulhat, hogy nem oldható fel paraméterek vagy a bemeneti fájlok kijavítását, a szolgáltatás belső hibákat. A munkafolyamat néha újraküldése előfordulhat, hogy javítsa ki a hibákat.
-2. Beviteli hibák: A hibákat, javítása vagy megfelelő argumentumokkal megoldhatók a fájlformátumokat.
+1. Belső szolgáltatási hibák: a szolgáltatáson belül belső hibák, amelyek nem oldhatók meg a paraméterek vagy a bemeneti fájlok kijavításával. Előfordulhat, hogy a munkafolyamat ismételt elküldése megoldhatja ezeket a hibákat.
+2. Bemeneti hibák: a megfelelő argumentumokkal vagy a fájlformátumok kijavításával feloldható hibák.
 
-### <a name="1-internal-service-errors"></a>1. Belső hiba
+### <a name="1-internal-service-errors"></a>1. belső szolgáltatási hibák
 
-Egy belső szolgáltatáshiba nem felhasználó gyakorlatban is használható. Előfordulhat, hogy küldje el újra a munkafolyamatot, de nem működik, ha forduljon a Microsoft Genomics-támogatás
+A belső szolgáltatási hiba nem a felhasználó számára hajtható végre. Előfordulhat, hogy a munkafolyamatot újra elküldheti, de ha ez nem működik, forduljon Microsoft Genomics támogatási szolgálathoz
 
 | Hibaüzenet                                                                                                                            | Javasolt hibaelhárítási lépések                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Belső hiba történt. Próbálja meg ismét a munkafolyamatot. Ha újra megjelenik ez a hiba, forduljon segítségért a Microsoft Genomics-támogatási szolgálatához | Küldje el újra a munkafolyamatot. Forduljon a Microsoft Genomics segítségért támogatja, ha a probléma továbbra is fennáll, hozzon létre egy támogatási [jegy](file-support-ticket-genomics.md ). |
+| Belső hiba történt. Próbálja meg újra elküldeni a munkafolyamatot. Ha ismét ezt a hibát látja, forduljon a Microsoft Genomics támogatási szolgálatához segítségért | Küldje el újra a munkafolyamatot. Ha a probléma továbbra is fennáll, vegye fel a kapcsolatot a támogatási [szolgálattal](file-support-ticket-genomics.md )Microsoft Genomics támogatással. |
 
-### <a name="2-input-errors"></a>2. Beviteli hibák
+### <a name="2-input-errors"></a>2. bemeneti hibák
 
-Ezek a hibák a gyakorlatban hasznosítható felhasználói. Fájl és hibakód alapján, a Microsoft Genomics szolgáltatás különböző hibakódok jelenít meg. Kövesse az alábbi javasolt hibaelhárítási lépéseket.
+Ezek a hibák a felhasználók számára hajthatók végre. A fájl típusa és a hibakód alapján Microsoft Genomics szolgáltatás kimenete különböző hibakódokat eredményez. Kövesse az alább felsorolt hibaelhárítási lépéseket.
 
-| Fájltípus | Hibakód | Hibaüzenet                                                                           | Javasolt hibaelhárítási lépések                                                                                         |
+| A fájl típusa | Hibakód | Hibaüzenet                                                                           | Javasolt hibaelhárítási lépések                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Bármely          | 701        | Olvassa el [readId] [numberOfBases] bázisok rendelkezik, de a korlát [maxReadLength]           | Ez a hiba leggyakoribb oka két olvasási összefűzésén vezető fájl sérülése. Ellenőrizze a bemeneti fájlokat. |
-| BAM          | 200        |   Nem sikerült beolvasni a fájlt a(z) "[yourFileName]".                                                                                       | Ellenőrizze a BAM-fájl formátumát. Küldje el a munkafolyamat újra egy megfelelően formázott fájllal.                                                                           |
-| BAM          | 201        |  Nem sikerült beolvasni a BAM-fájlból [fájlnév].                                                                                      |Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
-| BAM          | 202        | Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Túl kicsi és a hiányzó fejléc.                                                                                        | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
-| BAM          | 203        |   Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Fájl fejléce sérült volt.                                                                                      |Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                           |
-| BAM          | 204        |    Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Fájl fejléce sérült volt.                                                                                     | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                           |
-| BAM          | 205        |    Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Fájl fejléce sérült volt.                                                                                     | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
-| BAM          | 206        |   Nem sikerült beolvasni a BAM-fájlból [fájlnév]. Fájl fejléce sérült volt.                                                                                      | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
-| BAM          | 207        |  Nem sikerült beolvasni a BAM-fájlból [fájlnév]. A fájl csonkolva [offset] eltolás közelében.                                                                                       | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                            |
-| BAM          | 208        |   Érvénytelen BAM-fájl. A ReadID [Read_Id] [fájlnév]-fájlban nem feladatütemezési rendelkezik.                                                                                      | Ellenőrizze a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelő formátumú fájlt.                                                                             |
-| FASTQ        | 300        |  Nem sikerült beolvasni a FASTQ-fájlt. [Fájlnév] nem végződhet egy új sor.                                                                                     | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                           |
-| FASTQ        | 301        |   Nem sikerült beolvasni a [fájlnév] FASTQ-fájlt. FASTQ-rekord mérete nagyobb, mint a puffer mérete eltolásnál: [_offset]                                                                                      | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
-| FASTQ        | 302        |     FASTQ szintaktikai hiba. Fájl [fájlnév] egy üres sort tartalmaz.                                                                                    | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
-| FASTQ        | 303        |       FASTQ szintaktikai hiba. Fájl [fájlnév] kiindulási érvénytelen karaktert tartalmaz eltolásnál: [_offset], sor írja be: [line_type], karakter: [_char]                                                                                  | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
-| FASTQ        | 304      |  [_ReadID] readID FASTQ szintaktikai hiba.  Először olvassa el a Batch nem rendelkezik a [fájlnév]-fájlban /1 végződésű readID                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
-| FASTQ        | 305        |  [_ReadID] readID FASTQ szintaktikai hiba. Második olvassa el a Batch nem rendelkezik a [fájlnév]-fájlban /2 végződésű readID                                                                                      | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
-| FASTQ        | 306        |  [_ReadID] readID FASTQ szintaktikai hiba. Első olvasási pár nem rendelkezik, amely /1 fájlban [fájlnév]-azonosítója                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
-| FASTQ        | 307        |   [_ReadID] readID FASTQ szintaktikai hiba. ReadID nem végződhet /1 vagy / 2. [Fájlnév] fájl nem használható a párosított FASTQ-fájlként.                                                                                      |Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
-| FASTQ        | 308        |  FASTQ olvasási hiba. Mindkét olvasási eltérően válaszolt. Döntött a megfelelő FASTQ-fájlokat?                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
+| Bármelyik          | 701        | A [readId] Read [numberOfBases] bases, de a korlát [maxReadLength].           | Ennek a hibának a leggyakoribb oka a fájl sérülése, amely két olvasás összefűzését eredményezi. Győződjön meg róla, hogy a bemeneti fájlok vannak. |
+| BAM          | 200        |   A következő fájl nem olvasható: "[yourFileName]".                                                                                       | Vizsgálja meg a BAM-fájl formátumát. Küldje el újra a munkafolyamatot egy megfelelően formázott fájllal.                                                                           |
+| BAM          | 201        |  A BAM-fájl ([fájlnév]) nem olvasható.                                                                                      |Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
+| BAM          | 202        | A BAM-fájl ([fájlnév]) nem olvasható. A fájl túl kicsi és hiányzó fejléc.                                                                                        | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
+| BAM          | 203        |   A BAM-fájl ([fájlnév]) nem olvasható. A fájl fejléce sérült volt.                                                                                      |Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                           |
+| BAM          | 204        |    A BAM-fájl ([fájlnév]) nem olvasható. A fájl fejléce sérült volt.                                                                                     | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                           |
+| BAM          | 205        |    A BAM-fájl ([fájlnév]) nem olvasható. A fájl fejléce sérült volt.                                                                                     | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
+| BAM          | 206        |   A BAM-fájl ([fájlnév]) nem olvasható. A fájl fejléce sérült volt.                                                                                      | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
+| BAM          | 207        |  A BAM-fájl ([fájlnév]) nem olvasható. A fájl csonkolt eltolása [eltolás] közelében van.                                                                                       | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
+| BAM          | 208        |   Érvénytelen BAM-fájl. A (ReadID) [Read_Id] nem tartalmaz sorozatot a ([fájlnév] fájlban).                                                                                      | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                             |
+| FASTQ        | 300        |  Nem lehet olvasni a FASTQ fájlt. A [fájlnév] nem végződhet sortöréssel.                                                                                     | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                           |
+| FASTQ        | 301        |   A (FASTQ) [fájlnév] fájl nem olvasható. A FASTQ-rekord nagyobb, mint a puffer mérete az eltolásnál: [_offset]                                                                                      | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
+| FASTQ        | 302        |     FASTQ szintaktikai hiba. A ([fájlnév] fájl üres sorral rendelkezik.                                                                                    | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
+| FASTQ        | 303        |       FASTQ szintaktikai hiba. A (z) [fájlnév] fájl érvénytelen kezdő karaktert tartalmaz a következő eltolásnál: [_offset], sor típusa: [line_type], karakter: [_char]                                                                                  | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
+| FASTQ        | 304      |  FASTQ szintaktikai hiba a következő helyen: readID [_ReadID].  A Batch első beolvasása nem rendelkezik a (readID) [fájlnév] fájlban lévő/1 végződéssel.                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
+| FASTQ        | 305        |  FASTQ szintaktikai hiba a következő helyen: readID [_readID]. A Batch második olvasata nem rendelkezik a (readID) [fájlnév] fájlban található/2 végződéssel.                                                                                      | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
+| FASTQ        | 306        |  FASTQ szintaktikai hiba a következő helyen: readID [_ReadID]. A pair első olvasása nem rendelkezik olyan AZONOSÍTÓval, amely/1 a következő fájlban: [fájlnév].                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
+| FASTQ        | 307        |   FASTQ szintaktikai hiba a következő helyen: readID [_ReadID]. A ReadID nem végződik/1 vagy/2. A ([fájlnév] fájl nem használható párosított FASTQ-fájlként.                                                                                      |Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                          |
+| FASTQ        | 308        |  FASTQ olvasási hiba. Mindkét végpont olvasása másképp reagált. Kiválasztotta a megfelelő FASTQ-fájlokat?                                                                                       | Javítsa ki a FASTQ-fájl formátumát, és küldje el újra a munkafolyamatot.                                                                         |
 |        |       |                                                                                        |                                                                           |
 
-## <a name="step-3-contact-microsoft-genomics-support"></a>3\. lépés: Forduljon a Microsoft Genomics-támogatás
+## <a name="step-3-contact-microsoft-genomics-support"></a>3\. lépés: Kapcsolatfelvétel a Microsoft Genomics támogatással
 
-Ha továbbra is a sikertelen feladatok rendelkezik, vagy ha más kérdése van, forduljon a Microsoft Genomics-támogatás az Azure Portalról. Egy támogatási kérést szeretne beküldeni kapcsolatos további információ található [Itt](file-support-ticket-genomics.md).
+Ha továbbra is felmerülnek a feladatok, vagy ha további kérdései vannak, forduljon Microsoft Genomics támogatási szolgálathoz a Azure Portal. A támogatási kérések beküldéséről [itt](file-support-ticket-genomics.md)találhat további információt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megismerkedett a Microsoft Genomics szolgáltatással kapcsolatos leggyakoribb problémák elhárítására. További információ és további általános – gyakori kérdések: [gyakori kérdésekre](frequently-asked-questions-genomics.md). 
+Ebben a cikkben megtanulta, hogyan lehet elhárítani a Microsoft Genomics szolgáltatással kapcsolatos gyakori problémákat. További információt és általánosabb gyakori [kérdéseket a gyakori kérdések](frequently-asked-questions-genomics.md)című témakörben talál. 

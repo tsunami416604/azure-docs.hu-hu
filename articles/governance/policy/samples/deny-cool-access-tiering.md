@@ -1,17 +1,17 @@
 ---
-title: Minta – lassú hozzáférési szint megtagadása a Storage-fiókok esetében
+title: Minta – nem ritka hozzáférési szint a Storage-fiókhoz
 description: Ez a minta házirend-definíció tiltja a lassú elérési szint használatát a blob Storage-fiókokhoz.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21ee0e62e300b5807e3a38a0834c3365ab123dad
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a686126d0f164df2df224ced2e16f03a0a9bb283
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977240"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255794"
 ---
 # <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Minta – lassú hozzáférési szint megtagadása a Storage-fiókok esetében
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'storage-account-access-tier' --display-name 
 az policy assignment create --name <assignmentname> --scope <scope> --policy "storage-account-access-tier"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

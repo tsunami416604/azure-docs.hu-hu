@@ -1,21 +1,21 @@
 ---
-title: Minta – kikényszerítés címkéje és értéke az erőforráscsoportok esetében
+title: Minta – a címke és az érték alkalmazása az erőforráscsoportok esetében
 description: A példában szereplő házirend-definícióhoz címkét és értéket kell megadni egy erőforráscsoporthoz.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4af5ee88ad491e7864e82afc337801e47f2204
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977176"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255776"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Minta – kikényszerítés címkéje és értéke az erőforráscsoportok esetében
 
-Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Ön adja meg a kötelező címkenevet és -értéket.
+Ez a szabályzat előírja egy címke és egy érték használatát egy erőforráscsoporthoz. Meg kell adnia a kényszerítendő címkenevet és -értéket.
 
 Ennek a minta szabályzatnak az üzembe helyezéséhez a következőre lesz szükség:
 
@@ -49,10 +49,10 @@ A szabályzat paramétereit Azure CLI és Azure PowerShell segítségével megha
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name (Név) |Type |Mező |Leírás |
+|Név |Type (Típus) |Mező |Leírás |
 |---|---|---|---|
-|tagName |Sztring |címkék |A címke neve, például costCenter|
-|tagValue |Sztring |címkék |A címke értéke, például headquarter|
+|tagName |Sztring |tags |A címke neve, például costCenter|
+|tagValue |Sztring |tags |A címke értéke, például headquarter|
 
 Ha PowerShell vagy Azure CLI segítségével hoz létre egy hozzárendelést, a paraméterértékek átadhatók JSON-ként akár sztring formában, akár egy `-PolicyParameter` (PowerShell) vagy `--params` (Azure CLI) elemet használó fájlban.
 A PowerShell a `-PolicyParameterObject` elemet is támogatja, ehhez a parancsmagnak át kell adni egy Name/Value kivonattáblát, ahol **Name** a paraméter neve, **Value** pedig a hozzárendelés során átadott érték vagy értéktömb.
@@ -113,17 +113,17 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
+| [Új – AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Egyetlen erőforráscsoportot kér le. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
+| [Új – AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Eltávolít egy létező Azure Policy-definíciót. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -217,12 +217,12 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatíva: [Létrehozás felügyeleti csoportnál](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatíva: [Eltávolítás felügyeleti csoportnál](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További [Azure Policy-minták](index.md) áttekintése
 - Az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakasz áttekintése

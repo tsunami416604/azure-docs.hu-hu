@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: d9d432c073872e7bb7f3562979e78989faea65eb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097801"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241091"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Hitelesítés Azure Container Registry az Azure Kubernetes szolgáltatással
 
@@ -21,7 +21,7 @@ Ha Azure Container Registryt (ACR) használ az Azure Kubernetes szolgáltatássa
 
 Beállíthatja az AK-t az ACR-integrációra néhány egyszerű parancsban az Azure CLI-vel.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A következőkkel kell rendelkeznie:
 
@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **Az ACR erőforrás-azonosító formátuma a következő:** 
 
-/Subscriptions/<előfizetés-d>/resourceGroups/<Resource-Group-Name>/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/\<subscription-ID @ no__t-1/resourceGroups/\<resource-Group-Name @ no__t-3/Providers/Microsoft. ContainerRegistry/nyilvántartós/\<name @ no__t-5 
   
 Ez a lépés több percet is igénybe vehet.
 
@@ -61,7 +61,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 ## <a name="log-in-to-your-acr"></a>Jelentkezzen be az ACR-be
 
-A következő parancs használatával jelentkezzen be az ACR-be.  Cserélje le <acrname> a paramétert az ACR-névre.  Az alapértelmezett érték például az **ak < a-Resource-group > ACR**.
+A következő parancs használatával jelentkezzen be az ACR-be.  Cserélje le a <acrname> paramétert az ACR-névre.  Az alapértelmezett érték például az **ak < a-Resource-group > ACR**.
 
 ```azurecli
 az acr login -n <acrName>

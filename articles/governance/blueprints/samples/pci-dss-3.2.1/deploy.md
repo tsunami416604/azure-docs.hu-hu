@@ -1,18 +1,18 @@
 ---
 title: Minta-PCI-DSS v 3.2.1 terv – lépések üzembe helyezése
-description: Üzembe helyezheti a Payment Card Industry adatbiztonsági standard v 3.2.1 terv mintájának lépéseit.
+description: Üzembe helyezheti a Payment Card Industry adatbiztonsági szabvány v 3.2.1 tervének lépéseit, beleértve a terv-összetevő paraméterének részleteit.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980926"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248860"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
@@ -37,10 +37,10 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Terv neve**: Adja meg a PCI-DSS v 3.2.1 Blueprint minta példányának nevét.
-   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
+   - **Terv neve**: adjon meg egy nevet a PCI-DSS v 3.2.1 terv mintájának másolatához.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -66,13 +66,13 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapadatok
+   - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
-     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
        Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
@@ -82,7 +82,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő paraméterei
+   - Összetevő paramétereinek
 
      Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
@@ -95,15 +95,15 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Elemnév|Összetevő típusa|Paraméternév|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |\[Preview @ no__t-1 naplózási PCI v 3.2.1:2018 a naplózási követelmények támogatására szolgáló virtuálisgép-bővítmények szabályozása és üzembe helyezése|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
 |Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
 |Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A Geo-megfelelőségi követelmények betartatására használható.| 
-|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzés időtartama (nap)|Az adatmennyiség napok száma megőrzése. Az alapértelmezett érték 180, de a PCI esetében 365.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Az adatmennyiség napok száma megőrzése. Az alapértelmezett érték 180, de a PCI esetében 365.| 
 |Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd).| 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a PCI-DSS v 3.2.1 Blueprint minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 

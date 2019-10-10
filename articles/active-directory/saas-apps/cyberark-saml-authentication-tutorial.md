@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: CyberArk SAML-hitelesítés az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés CyberArk SAML-hitelesítés és Azure Active Directory között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az CyberArk SAML-hitelesítéssel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és CyberArk SAML-hitelesítés között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 58d8a0be-5f1b-4680-bbcb-2975e5c57014
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,136 +13,142 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/10/2019
+ms.date: 10/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 612de66bfdc2778a87685e0157ba8ef013ac51b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 206ab8931e80628c2d92404198240b074fa4c849
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108342"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240847"
 ---
-# <a name="tutorial-integrate-cyberark-saml-authentication-with-azure-active-directory"></a>Oktatóanyag: CyberArk SAML-hitelesítés integrálása az Azure Active Directoryval
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cyberark-saml-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az CyberArk SAML-hitelesítéssel
 
-Ebben az oktatóanyagban elsajátíthatja a CyberArk SAML-hitelesítés integrálása az Azure Active Directory (Azure AD) lesz. CyberArk SAML-hitelesítés integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a CyberArk SAML-hitelesítést Azure Active Directory (Azure AD) használatával. Az CyberArk SAML-hitelesítés Azure AD-vel való integrálásával a következőket teheti:
 
-* Szabályozza, ki férhet hozzá CyberArk SAML-hitelesítés az Azure AD-ben.
-* Engedélyezze a felhasználókat, hogy a rendszer automatikusan bejelentkezve CyberArk SAML-hitelesítés az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A CyberArk SAML-hitelesítéshez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAML-hitelesítésre az Azure AD-fiókokkal való CyberArk.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* CyberArk SAML-hitelesítés egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* CyberArk SAML-hitelesítés egyszeri bejelentkezéses (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja az SAML-hitelesítés CyberArk **SP és IDP** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-## <a name="adding-cyberark-saml-authentication-from-the-gallery"></a>CyberArk SAML-hitelesítés hozzáadása a katalógusból
+* A CyberArk SAML-hitelesítés támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
 
-CyberArk SAML-hitelesítés integrálása az Azure AD beállításához szüksége CyberArk SAML-hitelesítés hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
+## <a name="adding-cyberark-saml-authentication-from-the-gallery"></a>CyberArk SAML-hitelesítés hozzáadása a gyűjteményből
+
+A CyberArk SAML-hitelesítés Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy CyberArk SAML-hitelesítést a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **CyberArk SAML-hitelesítés** kifejezést a keresőmezőbe.
-1. Válassza ki **CyberArk SAML-hitelesítés** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **CyberArk SAML-hitelesítés** kifejezést a keresőmezőbe.
+1. Válassza a **CYBERARK SAML-hitelesítés** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-cyberark-saml-authentication"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAML-hitelesítés CyberArk
 
-Konfigurálás és tesztelés az Azure AD SSO CyberArk SAML-hitelesítés használatával nevű tesztfelhasználó **b Simon**. Az SSO működjön kell CyberArk SAML-hitelesítés az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a CyberArk SAML-hitelesítéssel egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAML-hitelesítés CyberArk.
 
-Az Azure AD SSO CyberArk SAML-hitelesítés tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO CyberArk SAML-hitelesítéssel történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[CyberArk SAML-hitelesítés konfigurálása](#configure-cyberark-saml-authentication)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre CyberArk SAML-hitelesítés tesztfelhasználót](#create-cyberark-saml-authentication-test-user)**  van egy megfelelője a b Simon CyberArk SAML-hitelesítés, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. Az **[SAML-hitelesítés CyberArk konfigurálása](#configure-cyberark-saml-authentication-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre egy CYBERARK SAML-hitelesítési teszt felhasználót](#create-cyberark-saml-authentication-test-user)** – ha a CyberArk SAML-hitelesítéssel rendelkezik, amely a felhasználó Azure ad-képviseletéhez van társítva.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **CyberArk SAML-hitelesítés** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezés** .
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/)a **CyberArk SAML hitelesítési** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<PVWA DNS or IP>/passwordvault/api/auth/saml/logon`
+    A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<PVWA DNS or IP>/passwordvault/api/auth/saml/logon`
 
-1. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<PVWA DNS or IP>/PasswordVault/v10/logon/saml`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<PVWA DNS or IP>/PasswordVault/v10/logon/saml`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [CyberArk SAML hitelesítési ügyfél-támogatási csapatának](mailto:bizdevtech@cyberark.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [CYBERARK SAML-hitelesítési ügyfélszolgálatával](mailto:bizdevtech@cyberark.com) az értékek lekéréséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Raw)** válassza **letöltése**töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. Az a **CyberArk SAML-hitelesítés beállítása** területén másolja a megfelelő URL-címe szerint.
+1. A **CYBERARK SAML-hitelesítés beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmény alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-cyberark-saml-authentication"></a>CyberArk SAML-hitelesítés konfigurálása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Az egyszeri bejelentkezés konfigurálása **CyberArk SAML-hitelesítés** oldalon kell küldenie a letöltött **tanúsítvány (Raw)** és az Azure Portalról másolt URL-címek megfelelő [CyberArk SAML Hitelesítés támogatási csapatának](mailto:bizdevtech@cyberark.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-Ebben a szakaszban az Azure Portalon b Simon nevű tesztfelhasználó fog létrehozni.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B. Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B. Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a CyberArk SAML-hitelesítéshez.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **CYBERARK SAML-hitelesítés**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-Ebben a szakaszban b Simon Azure egyszeri bejelentkezést a hozzáférés biztosításával CyberArk SAML-hitelesítés használatához engedélyeznie kell.
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **CyberArk SAML-hitelesítés**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
-
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **b Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-cyberark-saml-authentication-test-user"></a>SAML-hitelesítés CyberArk tesztfelhasználó létrehozása
+## <a name="configure-cyberark-saml-authentication-sso"></a>Az SAML-hitelesítés CyberArk konfigurálása
 
-Ebben a szakaszban egy Britta Simon nevű CyberArk SAML-hitelesítés a felhasználó hoz létre. Együttműködve [CyberArk SAML-hitelesítés támogatási csapatának](mailto:bizdevtech@cyberark.com) a felhasználók hozzáadása az SAML-hitelesítés CyberArk platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Az **SAML-hitelesítés CyberArk** való egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-CÍMEKET a Azure Portal [CyberArk SAML-hitelesítési támogatási csapatának](mailto:bizdevtech@cyberark.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+### <a name="create-cyberark-saml-authentication-test-user"></a>CyberArk SAML-hitelesítési teszt felhasználó létrehozása
 
-A SAML-hitelesítés CyberArk csempe kiválasztásakor a hozzáférési panelen, érdemes lehet automatikusan bejelentkezett a CyberArk, amelynek beállítása egyszeri bejelentkezési SAML-hitelesítés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a CyberArk SAML-hitelesítésben. A [CYBERARK SAML hitelesítési támogatási csapatával](mailto:bizdevtech@cyberark.com) a felhasználókat a CyberArk SAML hitelesítési platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+
+Ha a hozzáférési panelen a CyberArk SAML-hitelesítés csempére kattint, automatikusan be kell jelentkeznie a CyberArk SAML-Hitelesítésbe, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [CyberArk SAML-hitelesítés kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

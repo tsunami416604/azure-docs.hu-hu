@@ -1,21 +1,21 @@
 ---
-title: Minta – a VM hálózati adapterek jóváhagyott vNet használata
+title: Minta – a virtuálisgép-hálózati adapterek felsorolt vNet használata
 description: Ez a minta házirend-definíció megköveteli, hogy a hálózati adapterek jóváhagyott virtuális hálózatot használjanak.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c1f12d40ea0e5dbf0c9f56e856e5e4fa8831970b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8ab21677c99150770339a5d34e00b692ca3cfc48
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980385"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255692"
 ---
 # <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Minta – a VM hálózati adapterek jóváhagyott vNet használata
 
-Ez a szabályzat megköveteli egy jóváhagyott virtuális hálózat használatát a hálózati adaptereken. A jóváhagyott virtuális hálózat azonosítóját Ön határozza meg.
+Ez a szabályzat megköveteli egy jóváhagyott virtuális hálózat használatát a hálózati adaptereken. Meg kell adnia a jóváhagyott virtuális hálózat azonosítóját.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,7 +48,7 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+## <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,7 +58,7 @@ az policy definition create --name 'vm-creation-in-approved-vnet' --display-name
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-vnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI üzemelő példányának eltávolítása
+### <a name="clean-up-azure-cli-deployment"></a>Az Azure CLI-n keresztüli üzembe helyezés eltávolítása
 
 Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás.
 
@@ -66,6 +66,6 @@ Az alábbi paranccsal eltávolítható az erőforráscsoport, a virtuális gép 
 az group delete --name myResourceGroup --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További példákat [Az Azure Policy-minták](index.md) oldalon talál.

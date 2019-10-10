@@ -1,17 +1,17 @@
 ---
-title: Minta – naplózás, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépeken
+title: Minta – hiányzó alkalmazások naplózása Linux rendszerű virtuális gépeken
 description: Ez a példa a házirend vendég konfigurációs kezdeményezésére és a definíciók naplózására, ha a megadott alkalmazások nem települnek a linuxos virtuális gépeken belül.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 5f4d4f4c1102c4409d891bb20b54788dc8ed40ee
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977033"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255744"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Minta – naplózás, ha a megadott alkalmazások nincsenek telepítve a Linux rendszerű virtuális gépeken
 
@@ -32,9 +32,9 @@ Ezt a mintát a következő használatával rendelheti hozzá:
 A [vendég konfigurációs](../concepts/guest-configuration.md) kezdeményezés a következő szabályzatokból áll:
 
 - [naplózás](#audit-definition) – naplózás, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépekre
-  - AZONOSÍTÓ: @NO__T – 0
+  - AZONOSÍTÓ: @no__t – 0
 - [deployIfNotExists](#deployIfNotExists-definition) – virtuálisgép-bővítmény üzembe helyezése naplózásra, ha az alkalmazások nem települnek a Linux rendszerű virtuális gépeken
-  - AZONOSÍTÓ: @NO__T – 0
+  - AZONOSÍTÓ: @no__t – 0
 
 ### <a name="initiative-definition"></a>Kezdeményezési definíció
 
@@ -44,7 +44,7 @@ A kezdeményezést úgy hozza létre, hogy összekapcsolja a **naplózási** és
 
 ### <a name="initiative-parameters"></a>Kezdeményezési paraméterek
 
-|Name (Név) |Típus |Leírás |
+|Név |Type (Típus) |Leírás |
 |---|---|---|
 |applicationName |Sztring |Az alkalmazások nevei. Például: "Python", "PowerShell" vagy vesszővel tagolt lista, például "Python, PowerShell". Használjon \* karaktert a helyettesítő karakterekkel való egyezéshez, például: "Power @ no__t-1". |
 
@@ -77,27 +77,27 @@ A JSON a **deployIfNotExists** szabályzat definíciójának szabályait határo
 
 A **deployIfNotExists** szabályzat definíciója meghatározza azokat az Azure-lemezképeket, amelyeken a házirend ellenőrzése megtörtént:
 
-|Kiadó |Ajánlat |SKU |
+|Gyártó/kiadó |Ajánlat |SKU (Cikkszám) |
 |-|-|-|
 |OpenLogic |CentOS @ no__t – 0 |Mind a 6 @ no__t-0 kivételével |
 |RedHat |RHEL |Mind a 6 @ no__t-0 kivételével |
-|RedHat |OSA | Összes |
+|RedHat |OSA | Mind |
 |credativ |Debian | Mind a 7 @ no__t-0 kivételével |
-|SUSE |SLES @ NO__T – 0 |Mind a 11 @ no__t-0 kivételével |
+|SUSE |SLES @ no__t – 0 |Mind a 11 @ no__t-0 kivételével |
 |Canonical| UbuntuServer |Mind a 12 @ no__t-0 kivételével |
-|Microsoft – dsvm |linux-data-science-vm-ubuntu |Összes |
-|Microsoft – dsvm |azureml |Összes |
-|cloudera |cloudera-centos-os |Mind a 6 @ no__t-0 kivételével |
-|cloudera |cloudera-altus-centos-os |Összes |
-|microsoft-ads |linux\* |Összes |
-|microsoft-aks |Összes |Összes |
-|AzureDatabricks |Összes |Összes |
-|qubole-Inc |Összes |Összes |
-|datastax |Összes |Összes |
-|couchbase |Összes |Összes |
-|scalegrid |Összes |Összes |
-|Checkpoint |Összes |Összes |
-|paloaltonetworks |Összes |Összes |
+|Microsoft – dsvm |Linux – adattudomány – virtuális gép – Ubuntu |Mind |
+|Microsoft – dsvm |azureml |Mind |
+|Cloudera |cloudera – CentOS-os |Mind a 6 @ no__t-0 kivételével |
+|Cloudera |cloudera-altus-CentOS-os |Mind |
+|Microsoft – ADS |Linux @ no__t – 0 |Mind |
+|Microsoft-AK |Mind |Mind |
+|AzureDatabricks |Mind |Mind |
+|qubole-Inc |Mind |Mind |
+|datastax |Mind |Mind |
+|couchbase |Mind |Mind |
+|scalegrid |Mind |Mind |
+|Checkpoint |Mind |Mind |
+|paloaltonetworks |Mind |Mind |
 
 A szabály **központi telepítési** része a _installedApplication_ paramétert átadja a virtuális gép vendég konfigurációs ügynökének. Ez a konfiguráció lehetővé teszi az ügynök számára, hogy a **naplózási** házirend definícióján keresztül visszaállítsa a megfelelőségi és jelentési megfelelőségi műveleteket.
 
@@ -232,16 +232,16 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Létrehoz egy Azure Policy kezdeményezést. |
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Létrehoz egy Azure Policy definíciót. |
+| [Új – AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Létrehoz egy Azure Policy kezdeményezést. |
+| [Új – AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Létrehoz egy Azure Policy definíciót. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Egyetlen erőforráscsoportot kér le. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Új Azure Policy-hozzárendelést hoz létre egy kezdeményezéshez vagy definícióhoz. |
+| [Új – AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Új Azure Policy-hozzárendelést hoz létre egy kezdeményezéshez vagy definícióhoz. |
 | [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Egy meglévő szerepkör-hozzárendelést ad az adott rendszerbiztonsági tag számára. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Egy kezdeményezés eltávolítása. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Eltávolít egy definíciót. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a további [Azure Policy mintákat](index.md).
 - További információ a [Azure Policy vendég konfigurációról](../concepts/guest-configuration.md).

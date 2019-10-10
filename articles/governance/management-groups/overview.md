@@ -1,5 +1,5 @@
 ---
-title: Erőforrások rendszerezése az Azure Management Groups segítségével – Azure Governance
+title: Erőforrások rendszerezése felügyeleti csoportokkal – Azure-irányítás
 description: Megismerheti a felügyeleti csoportokat és azok használatának módját, valamint a hozzájuk tartozó engedélyek működését.
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
@@ -7,12 +7,12 @@ ms.service: governance
 ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: dba6334815f0c86a800b38ad09487f719857f993
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: aa4c5a7bfe7333c02fe79612b828df5680b83b26
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71341108"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254731"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -90,18 +90,18 @@ A virtuálisgép-közreműködői RBAC-szerepkör például hozzárendelhető a 
 
 Az alábbi ábrán a felügyeleti csoportokkal kapcsolatos szerepkörök és támogatott műveletek listája látható.
 
-| RBAC-szerepkör neve             | Hozzon létre | Átnevezés | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
+| RBAC-szerepkör neve             | Létrehozás | Átnevezés | Áthelyezés** | Törlés | Hozzáférés hozzárendelése | Szabályzat hozzárendelése | Olvasás  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Tulajdonos                       | X      | X      | X      | X      | X             | X             | X     |
 |Közreműködő                 | X      | X      | X      | X      |               |               | X     |
 |Felügyeleti csoport közreműködője*             | X      | X      | X      | X      |               |               | X     |
 |Olvasó                      |        |        |        |        |               |               | X     |
 |Felügyeleti csoport olvasója*                  |        |        |        |        |               |               | X     |
-|Erőforrás-szabályzati közreműködő |        |        |        |        |               | X             |       |
-|Felhasználói hozzáférés adminisztrátora   |        |        |        |        | X             | X             |       |
+|Erőforrás-szabályzat közreműködője |        |        |        |        |               | X             |       |
+|Felhasználói hozzáférés rendszergazdája   |        |        |        |        | X             | X             |       |
 
 *: a Felügyeleti csoport közreműködője és a Felügyeleti csoport olvasója szerepkör kizárólag a felügyeleti csoport hatókörén belül engedélyezi az adott művelet végrehajtását a felhasználók számára.  
-**: Előfizetések vagy felügyeleti csoportok a gyökérszintű felügyeleti csoportba vagy onnan máshova való áthelyezéséhez nem szükséges, hogy a gyökérszintű felügyeleti csoporthoz tartozzanak szerepkör-hozzárendelések.  A hierarchián belüli elemek áthelyezésének részleteiért tekintse meg az [Erőforrások kezelése felügyeleti csoportokkal](manage.md) című szakaszt.
+\* *: A gyökérszintű felügyeleti csoportban lévő szerepkör-hozzárendelések nem szükségesek ahhoz, hogy egy előfizetést vagy felügyeleti csoportot át lehessen helyezni onnan.  A hierarchián belüli elemek áthelyezésének részleteiért tekintse meg az [Erőforrások kezelése felügyeleti csoportokkal](manage.md) című szakaszt.
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Egyéni RBAC-szerepkördefiníció és -hozzárendelés
 
@@ -115,7 +115,7 @@ A felügyeleti csoportok támogatottak az [Azure-tevékenységnaplóban](../../a
 
 Az Azure Portalon kívüli felügyeleti csoportok lekérdezésekor a felügyeleti csoportok célhatóköre a következőhöz hasonlóan néz ki: **"/ providers/Microsoft.Management/managementGroups/{yourMgID}"** .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 

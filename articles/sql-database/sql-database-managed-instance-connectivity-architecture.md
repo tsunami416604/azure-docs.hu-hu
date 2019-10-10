@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: d539bd569eee613eb43947e5fd0e3b0614ca5d79
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7e32cb302322f7a80154a3f2a246d7d4f1743c09
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858624"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249365"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány kapcsolati architektúrája Azure SQL Database
 
@@ -66,7 +66,7 @@ Ismerkedjen meg a felügyelt példányok kapcsolati architektúrájának mélyeb
 
 ![A virtuális fürt kapcsolati architektúrája](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Az ügyfelek az űrlapot `<mi_name>.<dns_zone>.database.windows.net`tartalmazó állomásnév használatával csatlakoznak egy felügyelt példányhoz. Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Az ügyfelek a `<mi_name>.<dns_zone>.database.windows.net` formátumú állomásnév használatával csatlakoznak egy felügyelt példányhoz. Ez az állomásnév a magánhálózati IP-címekre lesz feloldva, bár egy nyilvános tartománynévrendszer-(DNS-) zónában van regisztrálva, és nyilvánosan feloldható. A `zone-id` automatikusan létrejön a fürt létrehozásakor. Ha egy újonnan létrehozott fürt egy másodlagos felügyelt példányt futtat, akkor a zóna AZONOSÍTÓját megosztja az elsődleges fürttel. További információ: [automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Ez a magánhálózati IP-cím a felügyelt példány belső terheléselosztó része. A terheléselosztó átirányítja a forgalmat a felügyelt példány átjárójának. Mivel több felügyelt példány futhat ugyanazon a fürtön belül, az átjáró a felügyelt példány állomásneve használatával irányítja át a forgalmat a megfelelő SQL Engine szolgáltatásba.
 
@@ -89,30 +89,30 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 - **Hálózati biztonsági csoport (NSG):** A virtuális hálózathoz társított NSG minden más szabály előtt meg kell határoznia a [bejövő biztonsági szabályokat](#mandatory-inbound-security-rules) és a [kimenő biztonsági szabályokat](#mandatory-outbound-security-rules) . Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz.
 - **Felhasználó által megadott útvonal (UDR) tábla:** A virtuális hálózathoz társított UDR-táblának konkrét [bejegyzéseket](#user-defined-routes)kell tartalmaznia.
 - **Nincsenek szolgáltatási végpontok:** Nincs hozzárendelve szolgáltatási végpont a felügyelt példány alhálózatához. Győződjön meg arról, hogy a szolgáltatás-végpontok beállítás le van tiltva a virtuális hálózat létrehozásakor.
-- **Elegendő IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. Az ajánlott minimális érték 32 IP-cím. További információ: a [felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat [a meglévő hálózatban](sql-database-managed-instance-configure-vnet-subnet.md) is telepítheti, miután konfigurálta a [felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítéséhez. Ellenkező esetben hozzon létre egy [új hálózatot és](sql-database-managed-instance-create-vnet-subnet.md)alhálózatot.
+- **Elegendő IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. Az ajánlott minimális érték 32 IP-cím. További információ: a [felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat [a meglévő hálózatban](sql-database-managed-instance-configure-vnet-subnet.md) is telepítheti, miután konfigurálta a [felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítéséhez. Ellenkező esetben hozzon létre egy [új hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
 > Nem telepíthet új felügyelt példányt, ha a célként megadott alhálózat nem rendelkezik ezekkel a jellemzőkkel. Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
 
 ### <a name="mandatory-inbound-security-rules"></a>Kötelező bejövő biztonsági szabályok
 
-| Name (Név)       |Port                        |Protocol|Forrás           |Cél|Action|
+| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Any              |MI ALHÁLÓZAT  |Allow |
-|mi_subnet   |Any                         |Any     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Allow |
-|health_probe|Any                         |Any     |AzureLoadBalancer|MI ALHÁLÓZAT  |Allow |
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |Bármelyik              |MI ALHÁLÓZAT  |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
 
 ### <a name="mandatory-outbound-security-rules"></a>Kötelező kimenő biztonsági szabályok
 
-| Name (Név)       |Port          |Protocol|Forrás           |Cél|Action|
+| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
 |------------|--------------|--------|-----------------|-----------|------|
-|felügyelet  |80, 443, 12000|TCP     |MI ALHÁLÓZAT        |AzureCloud |Allow |
-|mi_subnet   |Any           |Any     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Allow |
+|felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
 
 > [!IMPORTANT]
-> Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440, 1452 és egy kimenő szabály számára a következő portokhoz: 80, 443, 12000. A felügyelt példányok üzembe helyezése Azure Resource Manager központi telepítések esetén sikertelen lesz, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz, hibakód:`VnetSubnetConflictWithIntendedPolicy`
+> Győződjön meg arról, hogy csak egy bejövő szabály van a 9000, 9003, 1438, 1440, 1452 és egy kimenő szabály számára a következő portokhoz: 80, 443, 12000. A felügyelt példányok üzembe helyezése Azure Resource Manager központi telepítések esetén sikertelen lesz, ha a bejövő és a kimenő szabályok külön vannak konfigurálva az egyes portokhoz. Ha ezek a portok külön szabályokban vannak, a telepítés sikertelen lesz, hibakód: `VnetSubnetConflictWithIntendedPolicy`
 
-\*A MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
 
 > [!IMPORTANT]
 > Habár a kötelező bejövő biztonsági szabályok engedélyezik a forgalmat a 9000, 9003, 1438, 1440 és 1452 portok _bármely_ forrásáról, ezeket a portokat egy beépített tűzfal védi. További információ: [a felügyeleti végponti címek meghatározása](sql-database-managed-instance-find-management-endpoint-ip-address.md).
@@ -121,115 +121,313 @@ Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális
 
 ### <a name="user-defined-routes"></a>Felhasználó által megadott útvonalak
 
-|Name (Név)|Címelőtag|Következő ugrás|
+|Név|Címelőtag|Következő ugrás|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
-|mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
-|mi-13-96-13-nexthop-internet|13.96.0.0/13|Internet|
-|mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
-|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
-|mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-8-nexthop-internet|51.0.0.0/8|Internet|
-|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
-|mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
-|mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
-|mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
-|mi-70-37-17-nexthop-internet|70.37.0.0/17|Internet|
-|mi-70-37-128-18-nexthop-internet|70.37.128.0/18|Internet|
-|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
-|mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
-|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|Internet|
-|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
-|mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
-|mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
-|mi-104-146-15-nexthop-internet|104.146.0.0/15|Internet|
-|mi-104-208-13-nexthop-internet|104.208.0.0/13|Internet|
-|mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
-|mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
-|mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-253-16-nexthop-internet|131.253.0.0/16|Internet|
-|mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
-|mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
-|mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
-|mi-137-116-15-nexthop-internet|137.116.0.0/15|Internet|
-|mi-137-135-16-nexthop-internet|137.135.0.0/16|Internet|
-|mi-138-91-16-nexthop-internet|138.91.0.0/16|Internet|
-|mi-138-196-16-nexthop-internet|138.196.0.0/16|Internet|
-|mi-139-217-16-nexthop-internet|139.217.0.0/16|Internet|
-|mi-139-219-16-nexthop-internet|139.219.0.0/16|Internet|
-|mi-141-251-16-nexthop-internet|141.251.0.0/16|Internet|
-|mi-146-147-16-nexthop-internet|146.147.0.0/16|Internet|
-|mi-147-243-16-nexthop-internet|147.243.0.0/16|Internet|
-|mi-150-171-16-nexthop-internet|150.171.0.0/16|Internet|
-|mi-150-242-48-22-nexthop-internet|150.242.48.0/22|Internet|
-|mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
-|mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
-|mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
-|mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
-|mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
-|mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
-|mi-191-232-13-nexthop-internet|191.232.0.0/13|Internet|
-|mi-192-32-16-nexthop-internet|192.32.0.0/16|Internet|
-|mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
-|mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
-|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
-|mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
-|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
-|mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
-|mi-194-69-96-19-nexthop-internet|194.69.96.0/19|Internet|
-|mi-194-110-197-24-nexthop-internet|194.110.197.0/24|Internet|
-|mi-198-105-232-22-nexthop-internet|198.105.232.0/22|Internet|
-|mi-198-200-130-24-nexthop-internet|198.200.130.0/24|Internet|
-|mi-198-206-164-24-nexthop-internet|198.206.164.0/24|Internet|
-|mi-199-60-28-24-nexthop-internet|199.60.28.0/24|Internet|
-|mi-199-74-210-24-nexthop-internet|199.74.210.0/24|Internet|
-|mi-199-103-90-23-nexthop-internet|199.103.90.0/23|Internet|
-|mi-199-103-122-24-nexthop-internet|199.103.122.0/24|Internet|
-|mi-199-242-32-20-nexthop-internet|199.242.32.0/20|Internet|
-|mi-199-242-48-21-nexthop-internet|199.242.48.0/21|Internet|
-|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
-|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
-|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
-|mi-204-79-135-24-nexthop-internet|204.79.135.0/24|Internet|
-|mi-204-79-179-24-nexthop-internet|204.79.179.0/24|Internet|
-|mi-204-79-181-24-nexthop-internet|204.79.181.0/24|Internet|
-|mi-204-79-188-24-nexthop-internet|204.79.188.0/24|Internet|
-|mi-204-79-195-24-nexthop-internet|204.79.195.0/24|Internet|
-|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
-|mi-204-79-252-24-nexthop-internet|204.79.252.0/24|Internet|
-|mi-204-152-18-23-nexthop-internet|204.152.18.0/23|Internet|
-|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
-|mi-204-231-192-24-nexthop-internet|204.231.192.0/24|Internet|
-|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
-|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
-|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
-|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
-|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
-|mi-204-231-236-24-nexthop-internet|204.231.236.0/24|Internet|
-|mi-205-174-224-20-nexthop-internet|205.174.224.0/20|Internet|
-|mi-206-138-168-21-nexthop-internet|206.138.168.0/21|Internet|
-|mi-206-191-224-19-nexthop-internet|206.191.224.0/19|Internet|
-|mi-207-46-16-nexthop-internet|207.46.0.0/16|Internet|
-|mi-207-68-128-18-nexthop-internet|207.68.128.0/18|Internet|
-|mi-208-68-136-21-nexthop-internet|208.68.136.0/21|Internet|
-|mi-208-76-44-22-nexthop-internet|208.76.44.0/22|Internet|
-|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
-|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
-|mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
-|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
-|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
+|Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
+|Mi-13-96-13-nexthop-Internet|13.96.0.0/13|Internet|
+|Mi-13-104-14-nexthop-Internet|13.104.0.0/14|Internet|
+|Mi-20-8-nexthop-Internet|20.0.0.0/8|Internet|
+|mi-23-96-13-nexthop-Internet|23.96.0.0/13|Internet|
+|Mi-40-64-10-nexthop-Internet|40.64.0.0/10|Internet|
+|Mi-42-159-16-nexthop-Internet|42.159.0.0/16|Internet|
+|Mi-51-8-nexthop-Internet|51.0.0.0/8|Internet|
+|Mi-52-8-nexthop-Internet|52.0.0.0/8|Internet|
+|Mi-64-4-18-nexthop-Internet|64.4.0.0/18|Internet|
+|Mi-65-52-14-nexthop-Internet|65.52.0.0/14|Internet|
+|Mi-66-119-144-20-nexthop-Internet|66.119.144.0/20|Internet|
+|Mi-70-37-17-nexthop-Internet|70.37.0.0/17|Internet|
+|Mi-70-37-128-18-nexthop-Internet|70.37.128.0/18|Internet|
+|Mi-91-190-216-21-nexthop-Internet|91.190.216.0/21|Internet|
+|Mi-94-245-64-18-nexthop-Internet|94.245.64.0/18|Internet|
+|Mi-103-9-8-22-nexthop-Internet|103.9.8.0/22|Internet|
+|Mi-103-25-156-22-nexthop-Internet|103.25.156.0/22|Internet|
+|Mi-103-36-96-22-nexthop-Internet|103.36.96.0/22|Internet|
+|Mi-103-255-140-22-nexthop-Internet|103.255.140.0/22|Internet|
+|Mi-104-40-13-nexthop-Internet|104.40.0.0/13|Internet|
+|Mi-104-146-15-nexthop-Internet|104.146.0.0/15|Internet|
+|Mi-104-208-13-nexthop-Internet|104.208.0.0/13|Internet|
+|Mi-111-221-16-20-nexthop-Internet|111.221.16.0/20|Internet|
+|Mi-111-221-64-18-nexthop-Internet|111.221.64.0/18|Internet|
+|Mi-129-75-16-nexthop-Internet|129.75.0.0/16|Internet|
+|Mi-131-253-16-nexthop-Internet|131.253.0.0/16|Internet|
+|Mi-132-245-16-nexthop-Internet|132.245.0.0/16|Internet|
+|Mi-134-170-16-nexthop-Internet|134.170.0.0/16|Internet|
+|Mi-134-177-16-nexthop-Internet|134.177.0.0/16|Internet|
+|Mi-137-116-15-nexthop-Internet|137.116.0.0/15|Internet|
+|Mi-137-135-16-nexthop-Internet|137.135.0.0/16|Internet|
+|Mi-138-91-16-nexthop-Internet|138.91.0.0/16|Internet|
+|Mi-138-196-16-nexthop-Internet|138.196.0.0/16|Internet|
+|Mi-139-217-16-nexthop-Internet|139.217.0.0/16|Internet|
+|Mi-139-219-16-nexthop-Internet|139.219.0.0/16|Internet|
+|Mi-141-251-16-nexthop-Internet|141.251.0.0/16|Internet|
+|Mi-146-147-16-nexthop-Internet|146.147.0.0/16|Internet|
+|Mi-147-243-16-nexthop-Internet|147.243.0.0/16|Internet|
+|Mi-150-171-16-nexthop-Internet|150.171.0.0/16|Internet|
+|Mi-150-242-48-22-nexthop-Internet|150.242.48.0/22|Internet|
+|Mi-157-54-15-nexthop-Internet|157.54.0.0/15|Internet|
+|Mi-157-56-14-nexthop-Internet|157.56.0.0/14|Internet|
+|Mi-157-60-16-nexthop-Internet|157.60.0.0/16|Internet|
+|Mi-167-220-16-nexthop-Internet|167.220.0.0/16|Internet|
+|Mi-168-61-16-nexthop-Internet|168.61.0.0/16|Internet|
+|Mi-168-62-15-nexthop-Internet|168.62.0.0/15|Internet|
+|Mi-191-232-13-nexthop-Internet|191.232.0.0/13|Internet|
+|Mi-192-32-16-nexthop-Internet|192.32.0.0/16|Internet|
+|Mi-192-48-225-24-nexthop-Internet|192.48.225.0/24|Internet|
+|Mi-192-84-159-24-nexthop-Internet|192.84.159.0/24|Internet|
+|Mi-192-84-160-23-nexthop-Internet|192.84.160.0/23|Internet|
+|Mi-192-100-102-24-nexthop-Internet|192.100.102.0/24|Internet|
+|Mi-192-100-103-24-nexthop-Internet|192.100.103.0/24|Internet|
+|Mi-192-197-157-24-nexthop-Internet|192.197.157.0/24|Internet|
+|Mi-193-149-64-19-nexthop-Internet|193.149.64.0/19|Internet|
+|Mi-193-221-113-24-nexthop-Internet|193.221.113.0/24|Internet|
+|Mi-194-69-96-19-nexthop-Internet|194.69.96.0/19|Internet|
+|Mi-194-110-197-24-nexthop-Internet|194.110.197.0/24|Internet|
+|Mi-198-105-232-22-nexthop-Internet|198.105.232.0/22|Internet|
+|Mi-198-200-130-24-nexthop-Internet|198.200.130.0/24|Internet|
+|Mi-198-206-164-24-nexthop-Internet|198.206.164.0/24|Internet|
+|Mi-199-60-28-24-nexthop-Internet|199.60.28.0/24|Internet|
+|Mi-199-74-210-24-nexthop-Internet|199.74.210.0/24|Internet|
+|Mi-199-103-90-23-nexthop-Internet|199.103.90.0/23|Internet|
+|Mi-199-103-122-24-nexthop-Internet|199.103.122.0/24|Internet|
+|Mi-199-242-32-20-nexthop-Internet|199.242.32.0/20|Internet|
+|Mi-199-242-48-21-nexthop-Internet|199.242.48.0/21|Internet|
+|Mi-202-89-224-20-nexthop-Internet|202.89.224.0/20|Internet|
+|Mi-204-13-120-21-nexthop-Internet|204.13.120.0/21|Internet|
+|Mi-204-14-180-22-nexthop-Internet|204.14.180.0/22|Internet|
+|Mi-204-79-135-24-nexthop-Internet|204.79.135.0/24|Internet|
+|Mi-204-79-179-24-nexthop-Internet|204.79.179.0/24|Internet|
+|Mi-204-79-181-24-nexthop-Internet|204.79.181.0/24|Internet|
+|Mi-204-79-188-24-nexthop-Internet|204.79.188.0/24|Internet|
+|Mi-204-79-195-24-nexthop-Internet|204.79.195.0/24|Internet|
+|Mi-204-79-196-23-nexthop-Internet|204.79.196.0/23|Internet|
+|Mi-204-79-252-24-nexthop-Internet|204.79.252.0/24|Internet|
+|Mi-204-152-18-23-nexthop-Internet|204.152.18.0/23|Internet|
+|Mi-204-152-140-23-nexthop-Internet|204.152.140.0/23|Internet|
+|Mi-204-231-192-24-nexthop-Internet|204.231.192.0/24|Internet|
+|Mi-204-231-194-23-nexthop-Internet|204.231.194.0/23|Internet|
+|Mi-204-231-197-24-nexthop-Internet|204.231.197.0/24|Internet|
+|Mi-204-231-198-23-nexthop-Internet|204.231.198.0/23|Internet|
+|Mi-204-231-200-21-nexthop-Internet|204.231.200.0/21|Internet|
+|Mi-204-231-208-20-nexthop-Internet|204.231.208.0/20|Internet|
+|Mi-204-231-236-24-nexthop-Internet|204.231.236.0/24|Internet|
+|Mi-205-174-224-20-nexthop-Internet|205.174.224.0/20|Internet|
+|Mi-206-138-168-21-nexthop-Internet|206.138.168.0/21|Internet|
+|Mi-206-191-224-19-nexthop-Internet|206.191.224.0/19|Internet|
+|Mi-207-46-16-nexthop-Internet|207.46.0.0/16|Internet|
+|Mi-207-68-128-18-nexthop-Internet|207.68.128.0/18|Internet|
+|Mi-208-68-136-21-nexthop-Internet|208.68.136.0/21|Internet|
+|Mi-208-76-44-22-nexthop-Internet|208.76.44.0/22|Internet|
+|Mi-208-84-21-nexthop-Internet|208.84.0.0/21|Internet|
+|Mi-209-240-192-19-nexthop-Internet|209.240.192.0/19|Internet|
+|Mi-213-199-128-18-nexthop-Internet|213.199.128.0/18|Internet|
+|Mi-216-32-180-22-nexthop-Internet|216.32.180.0/22|Internet|
+|Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
 ||||
 
 Emellett hozzáadhat bejegyzéseket az útválasztási táblázathoz, hogy átirányítsa a helyszíni magánhálózati IP-tartományokat a virtuális hálózati átjáró vagy a virtuális hálózati berendezés (NVA) használatával.
 
 Ha a virtuális hálózat egyéni DNS-t tartalmaz, az egyéni DNS-kiszolgálónak képesnek kell lennie a nyilvános DNS-rekordok feloldására. Az Azure AD-hitelesítéshez hasonló további funkciókkal további teljes tartománynevek feloldására lehet szükség. További információt az [Egyéni DNS beállítása](sql-database-managed-instance-custom-dns.md)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="service-aided-subnet-configuration-public-preview-in-east-us-and-west-us"></a>Szolgáltatással segített alhálózat konfigurációja (nyilvános előzetes verzió az USA keleti régiójában és az USA nyugati régiója)
+
+Az ügyfél biztonsági és kezelhetőségi követelményeinek kezelése érdekében a felügyelt példányok a manuálisról a szolgáltatással támogatott alhálózat-konfigurációra váltanak.
+
+A szolgáltatással segített alhálózat-konfigurációs felhasználó teljes körű hozzáférés-vezérlési (TDS) forgalomban van, míg a felügyelt példányok feladata a felügyeleti forgalom zavartalan áramlásának biztosítása az SLA teljesítése érdekében.
+
+### <a name="network-requirements-with-service-aided-subnet-configuration"></a>Hálózati követelmények a szolgáltatással segített alhálózat konfigurációjával 
+
+Felügyelt példány üzembe helyezése egy dedikált alhálózaton a virtuális hálózaton belül. Az alhálózatnak a következő jellemzőkkel kell rendelkeznie:
+
+- **Dedikált alhálózat:** A felügyelt példány alhálózata nem tartalmazhat olyan más felhőalapú szolgáltatást, amely hozzá van rendelve, és nem lehet átjáró-alhálózat. Az alhálózat nem tartalmazhat erőforrást, hanem a felügyelt példányt, és később nem adhat hozzá más típusú erőforrásokat az alhálózatban.
+- **Alhálózat delegálása:** A felügyelt példány alhálózatát delegálni kell `Microsoft.Sql/managedInstances` erőforrás-szolgáltatóhoz.
+- **Hálózati biztonsági csoport (NSG):** Egy NSG kell társítani a felügyelt példány alhálózatához. Az NSG segítségével szabályozhatja a felügyelt példány adatvégpontjának hozzáférését úgy, hogy az 1433-es és a 11000-11999-es porton lévő forgalmat szűri, ha felügyelt példány van konfigurálva az átirányítási kapcsolatokhoz. A szolgáltatás automatikusan hozzáadja a felügyeleti forgalom megszakítás nélküli áramlását engedélyező [szabályokat](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) .
+- **Felhasználó által megadott útvonal (UDR) tábla:** UDR táblát kell társítani a felügyelt példány alhálózatához. Hozzáadhat bejegyzéseket az útválasztási táblázathoz, hogy a virtuális hálózati átjáró vagy a virtuális hálózati berendezés (NVA) használatával átirányítsa a helyszíni magánhálózati IP-tartományokkal rendelkező forgalmat. A szolgáltatás automatikusan hozzáadja a felügyeleti forgalom zavartalan áramlását lehetővé tevő [bejegyzéseket](#user-defined-routes-with-service-aided-subnet-configuration) .
+- **Szolgáltatási végpontok:** A szolgáltatás-végpontok virtuális hálózati szabályok konfigurálására használhatók a biztonsági mentéseket és naplókat megőrző Storage-fiókok esetében.
+- **Elegendő IP-cím:** A felügyelt példány alhálózatának legalább 16 IP-címmel kell rendelkeznie. Az ajánlott minimális érték 32 IP-cím. További információ: a [felügyelt példányok alhálózat méretének meghatározása](sql-database-managed-instance-determine-size-vnet-subnet.md). A felügyelt példányokat [a meglévő hálózatban](sql-database-managed-instance-configure-vnet-subnet.md) is telepítheti, miután konfigurálta a [felügyelt példányok hálózati követelményeinek](#network-requirements)kielégítéséhez. Ellenkező esetben hozzon létre egy [új hálózatot és alhálózatot](sql-database-managed-instance-create-vnet-subnet.md).
+
+> [!IMPORTANT]
+> Felügyelt példány létrehozásakor a rendszer egy hálózati leképezési házirendet alkalmaz az alhálózaton, hogy megakadályozza a nem megfelelő módosításokat a hálózatkezelés beállításában. Miután az utolsó példányt eltávolította az alhálózatból, a rendszer eltávolítja a hálózati leképezési házirendet is.
+
+### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező bejövő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
+
+| Név       |Port                        |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+|------------|----------------------------|--------|-----------------|-----------|------|
+|felügyelet  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI ALHÁLÓZAT  |Engedélyezés |
+|            |9000, 9003                  |TCP     |CorpnetSaw       |MI ALHÁLÓZAT  |Engedélyezés |
+|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16|MI ALHÁLÓZAT  |Engedélyezés |
+|mi_subnet   |Bármelyik                         |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+|health_probe|Bármelyik                         |Bármelyik     |AzureLoadBalancer|MI ALHÁLÓZAT  |Engedélyezés |
+
+### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Kötelező kimenő biztonsági szabályok a szolgáltatással segített alhálózat konfigurációjával 
+
+| Név       |Port          |Protocol (Protokoll)|Forrás           |Cél|Műveletek|
+|------------|--------------|--------|-----------------|-----------|------|
+|felügyelet  |443, 12000    |TCP     |MI ALHÁLÓZAT        |AzureCloud |Engedélyezés |
+|mi_subnet   |Bármelyik           |Bármelyik     |MI ALHÁLÓZAT        |MI ALHÁLÓZAT  |Engedélyezés |
+
+### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>A felhasználó által megadott útvonalak a szolgáltatással segített alhálózat konfigurációjával 
+
+|Név|Címelőtag|Következő ugrás|
+|----|--------------|-------|
+|alhálózat – vnetlocal|MI ALHÁLÓZAT|Virtuális hálózat|
+|Mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
+|Mi-13-104-14-nexthop-Internet|13.104.0.0/14|Internet|
+|Mi-20-34-15-nexthop-Internet|20.34.0.0/15|Internet|
+|Mi-20-36-14-nexthop-Internet|20.36.0.0/14|Internet|
+|Mi-20-40-13-nexthop-Internet|20.40.0.0/13|Internet|
+|Mi-20-128-16-nexthop-Internet|20.128.0.0/16|Internet|
+|Mi-20-140-15-nexthop-Internet|20.140.0.0/15|Internet|
+|Mi-20-144-14-nexthop-Internet|20.144.0.0/14|Internet|
+|Mi-20-150-15-nexthop-Internet|20.150.0.0/15|Internet|
+|Mi-20-160-12-nexthop-Internet|20.160.0.0/12|Internet|
+|Mi-20-176-14-nexthop-Internet|20.176.0.0/14|Internet|
+|Mi-20-180-14-nexthop-Internet|20.180.0.0/14|Internet|
+|Mi-20-184-13-nexthop-Internet|20.184.0.0/13|Internet|
+|Mi-40-64-10-nexthop-Internet|40.64.0.0/10|Internet|
+|Mi-51-4-15-nexthop-Internet|51.4.0.0/15|Internet|
+|Mi-51-8-16-nexthop-Internet|51.8.0.0/16|Internet|
+|Mi-51-10-15-nexthop-Internet|51.10.0.0/15|Internet|
+|Mi-51-12-15-nexthop-Internet|51.12.0.0/15|Internet|
+|Mi-51-18-16-nexthop-Internet|51.18.0.0/16|Internet|
+|Mi-51-51-16-nexthop-Internet|51.51.0.0/16|Internet|
+|Mi-51-53-16-nexthop-Internet|51.53.0.0/16|Internet|
+|Mi-51-103-16-nexthop-Internet|51.103.0.0/16|Internet|
+|Mi-51-104-15-nexthop-Internet|51.104.0.0/15|Internet|
+|Mi-51-107-16-nexthop-Internet|51.107.0.0/16|Internet|
+|Mi-51-116-16-nexthop-Internet|51.116.0.0/16|Internet|
+|Mi-51-120-16-nexthop-Internet|51.120.0.0/16|Internet|
+|Mi-51-124-16-nexthop-Internet|51.124.0.0/16|Internet|
+|Mi-51-132-16-nexthop-Internet|51.132.0.0/16|Internet|
+|Mi-51-136-15-nexthop-Internet|51.136.0.0/15|Internet|
+|Mi-51-138-16-nexthop-Internet|51.138.0.0/16|Internet|
+|Mi-51-140-14-nexthop-Internet|51.140.0.0/14|Internet|
+|Mi-51-144-15-nexthop-Internet|51.144.0.0/15|Internet|
+|Mi-52-96-12-nexthop-Internet|52.96.0.0/12|Internet|
+|Mi-52-112-14-nexthop-Internet|52.112.0.0/14|Internet|
+|Mi-52-125-16-nexthop-Internet|52.125.0.0/16|Internet|
+|Mi-52-126-15-nexthop-Internet|52.126.0.0/15|Internet|
+|Mi-52-130-15-nexthop-Internet|52.130.0.0/15|Internet|
+|Mi-52-132-14-nexthop-Internet|52.132.0.0/14|Internet|
+|Mi-52-136-13-nexthop-Internet|52.136.0.0/13|Internet|
+|Mi-52-145-16-nexthop-Internet|52.145.0.0/16|Internet|
+|Mi-52-146-15-nexthop-Internet|52.146.0.0/15|Internet|
+|Mi-52-148-14-nexthop-Internet|52.148.0.0/14|Internet|
+|Mi-52-152-13-nexthop-Internet|52.152.0.0/13|Internet|
+|Mi-52-160-11-nexthop-Internet|52.160.0.0/11|Internet|
+|Mi-52-224-11-nexthop-Internet|52.224.0.0/11|Internet|
+|Mi-64-4-18-nexthop-Internet|64.4.0.0/18|Internet|
+|Mi-65-52-14-nexthop-Internet|65.52.0.0/14|Internet|
+|Mi-66-119-144-20-nexthop-Internet|66.119.144.0/20|Internet|
+|Mi-70-37-17-nexthop-Internet|70.37.0.0/17|Internet|
+|Mi-70-37-128-18-nexthop-Internet|70.37.128.0/18|Internet|
+|Mi-91-190-216-21-nexthop-Internet|91.190.216.0/21|Internet|
+|Mi-94-245-64-18-nexthop-Internet|94.245.64.0/18|Internet|
+|Mi-103-9-8-22-nexthop-Internet|103.9.8.0/22|Internet|
+|Mi-103-25-156-24-nexthop-Internet|103.25.156.0/24|Internet|
+|Mi-103-25-157-24-nexthop-Internet|103.25.157.0/24|Internet|
+|Mi-103-25-158-23-nexthop-Internet|103.25.158.0/23|Internet|
+|Mi-103-36-96-22-nexthop-Internet|103.36.96.0/22|Internet|
+|Mi-103-255-140-22-nexthop-Internet|103.255.140.0/22|Internet|
+|Mi-104-40-13-nexthop-Internet|104.40.0.0/13|Internet|
+|Mi-104-146-15-nexthop-Internet|104.146.0.0/15|Internet|
+|Mi-104-208-13-nexthop-Internet|104.208.0.0/13|Internet|
+|Mi-111-221-16-20-nexthop-Internet|111.221.16.0/20|Internet|
+|Mi-111-221-64-18-nexthop-Internet|111.221.64.0/18|Internet|
+|Mi-129-75-16-nexthop-Internet|129.75.0.0/16|Internet|
+|Mi-131-253-1-24-nexthop-Internet|131.253.1.0/24|Internet|
+|Mi-131-253-3-24-nexthop-Internet|131.253.3.0/24|Internet|
+|Mi-131-253-5-24-nexthop-Internet|131.253.5.0/24|Internet|
+|Mi-131-253-6-24-nexthop-Internet|131.253.6.0/24|Internet|
+|Mi-131-253-8-24-nexthop-Internet|131.253.8.0/24|Internet|
+|Mi-131-253-12-22-nexthop-Internet|131.253.12.0/22|Internet|
+|Mi-131-253-16-23-nexthop-Internet|131.253.16.0/23|Internet|
+|Mi-131-253-18-24-nexthop-Internet|131.253.18.0/24|Internet|
+|Mi-131-253-21-24-nexthop-Internet|131.253.21.0/24|Internet|
+|Mi-131-253-22-23-nexthop-Internet|131.253.22.0/23|Internet|
+|Mi-131-253-24-21-nexthop-Internet|131.253.24.0/21|Internet|
+|Mi-131-253-32-20-nexthop-Internet|131.253.32.0/20|Internet|
+|Mi-131-253-61-24-nexthop-Internet|131.253.61.0/24|Internet|
+|Mi-131-253-62-23-nexthop-Internet|131.253.62.0/23|Internet|
+|Mi-131-253-64-18-nexthop-Internet|131.253.64.0/18|Internet|
+|Mi-131-253-128-17-nexthop-Internet|131.253.128.0/17|Internet|
+|Mi-132-245-16-nexthop-Internet|132.245.0.0/16|Internet|
+|Mi-134-170-16-nexthop-Internet|134.170.0.0/16|Internet|
+|Mi-134-177-16-nexthop-Internet|134.177.0.0/16|Internet|
+|Mi-137-116-15-nexthop-Internet|137.116.0.0/15|Internet|
+|Mi-137-135-16-nexthop-Internet|137.135.0.0/16|Internet|
+|Mi-138-91-16-nexthop-Internet|138.91.0.0/16|Internet|
+|Mi-138-196-16-nexthop-Internet|138.196.0.0/16|Internet|
+|Mi-139-217-16-nexthop-Internet|139.217.0.0/16|Internet|
+|Mi-139-219-16-nexthop-Internet|139.219.0.0/16|Internet|
+|Mi-141-251-16-nexthop-Internet|141.251.0.0/16|Internet|
+|Mi-146-147-16-nexthop-Internet|146.147.0.0/16|Internet|
+|Mi-147-243-16-nexthop-Internet|147.243.0.0/16|Internet|
+|Mi-150-171-16-nexthop-Internet|150.171.0.0/16|Internet|
+|Mi-150-242-48-22-nexthop-Internet|150.242.48.0/22|Internet|
+|Mi-157-54-15-nexthop-Internet|157.54.0.0/15|Internet|
+|Mi-157-56-14-nexthop-Internet|157.56.0.0/14|Internet|
+|Mi-157-60-16-nexthop-Internet|157.60.0.0/16|Internet|
+|Mi-167-220-16-nexthop-Internet|167.220.0.0/16|Internet|
+|Mi-168-61-16-nexthop-Internet|168.61.0.0/16|Internet|
+|Mi-168-62-15-nexthop-Internet|168.62.0.0/15|Internet|
+|Mi-191-232-13-nexthop-Internet|191.232.0.0/13|Internet|
+|Mi-192-32-16-nexthop-Internet|192.32.0.0/16|Internet|
+|Mi-192-48-225-24-nexthop-Internet|192.48.225.0/24|Internet|
+|Mi-192-84-159-24-nexthop-Internet|192.84.159.0/24|Internet|
+|Mi-192-84-160-23-nexthop-Internet|192.84.160.0/23|Internet|
+|Mi-192-100-102-24-nexthop-Internet|192.100.102.0/24|Internet|
+|Mi-192-100-103-24-nexthop-Internet|192.100.103.0/24|Internet|
+|Mi-192-197-157-24-nexthop-Internet|192.197.157.0/24|Internet|
+|Mi-193-149-64-19-nexthop-Internet|193.149.64.0/19|Internet|
+|Mi-193-221-113-24-nexthop-Internet|193.221.113.0/24|Internet|
+|Mi-194-69-96-19-nexthop-Internet|194.69.96.0/19|Internet|
+|Mi-194-110-197-24-nexthop-Internet|194.110.197.0/24|Internet|
+|Mi-198-105-232-22-nexthop-Internet|198.105.232.0/22|Internet|
+|Mi-198-200-130-24-nexthop-Internet|198.200.130.0/24|Internet|
+|Mi-198-206-164-24-nexthop-Internet|198.206.164.0/24|Internet|
+|Mi-199-60-28-24-nexthop-Internet|199.60.28.0/24|Internet|
+|Mi-199-74-210-24-nexthop-Internet|199.74.210.0/24|Internet|
+|Mi-199-103-90-23-nexthop-Internet|199.103.90.0/23|Internet|
+|Mi-199-103-122-24-nexthop-Internet|199.103.122.0/24|Internet|
+|Mi-199-242-32-20-nexthop-Internet|199.242.32.0/20|Internet|
+|Mi-199-242-48-21-nexthop-Internet|199.242.48.0/21|Internet|
+|Mi-202-89-224-20-nexthop-Internet|202.89.224.0/20|Internet|
+|Mi-204-13-120-21-nexthop-Internet|204.13.120.0/21|Internet|
+|Mi-204-14-180-22-nexthop-Internet|204.14.180.0/22|Internet|
+|Mi-204-79-135-24-nexthop-Internet|204.79.135.0/24|Internet|
+|Mi-204-79-179-24-nexthop-Internet|204.79.179.0/24|Internet|
+|Mi-204-79-181-24-nexthop-Internet|204.79.181.0/24|Internet|
+|Mi-204-79-188-24-nexthop-Internet|204.79.188.0/24|Internet|
+|Mi-204-79-195-24-nexthop-Internet|204.79.195.0/24|Internet|
+|Mi-204-79-196-23-nexthop-Internet|204.79.196.0/23|Internet|
+|Mi-204-79-252-24-nexthop-Internet|204.79.252.0/24|Internet|
+|Mi-204-152-18-23-nexthop-Internet|204.152.18.0/23|Internet|
+|Mi-204-152-140-23-nexthop-Internet|204.152.140.0/23|Internet|
+|Mi-204-231-192-24-nexthop-Internet|204.231.192.0/24|Internet|
+|Mi-204-231-194-23-nexthop-Internet|204.231.194.0/23|Internet|
+|Mi-204-231-197-24-nexthop-Internet|204.231.197.0/24|Internet|
+|Mi-204-231-198-23-nexthop-Internet|204.231.198.0/23|Internet|
+|Mi-204-231-200-21-nexthop-Internet|204.231.200.0/21|Internet|
+|Mi-204-231-208-20-nexthop-Internet|204.231.208.0/20|Internet|
+|Mi-204-231-236-24-nexthop-Internet|204.231.236.0/24|Internet|
+|Mi-205-174-224-20-nexthop-Internet|205.174.224.0/20|Internet|
+|Mi-206-138-168-21-nexthop-Internet|206.138.168.0/21|Internet|
+|Mi-206-191-224-19-nexthop-Internet|206.191.224.0/19|Internet|
+|Mi-207-46-16-nexthop-Internet|207.46.0.0/16|Internet|
+|Mi-207-68-128-18-nexthop-Internet|207.68.128.0/18|Internet|
+|Mi-208-68-136-21-nexthop-Internet|208.68.136.0/21|Internet|
+|Mi-208-76-44-22-nexthop-Internet|208.76.44.0/22|Internet|
+|Mi-208-84-21-nexthop-Internet|208.84.0.0/21|Internet|
+|Mi-209-240-192-19-nexthop-Internet|209.240.192.0/19|Internet|
+|Mi-213-199-128-18-nexthop-Internet|213.199.128.0/18|Internet|
+|Mi-216-32-180-22-nexthop-Internet|216.32.180.0/22|Internet|
+|Mi-216-220-208-20-nexthop-Internet|216.220.208.0/20|Internet|
+||||
+
+a \* MI ALHÁLÓZAT a 10. x. x. x/y formátumú alhálózat IP-címtartományt jelenti. Ezeket az információkat az alhálózati tulajdonságok Azure Portaljában találja.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [SQL Database speciális adatbiztonság](sql-database-managed-instance.md).
 - Ismerje meg, hogyan [állíthat be egy új Azure-beli virtuális hálózatot](sql-database-managed-instance-create-vnet-subnet.md) vagy egy [meglévő Azure-beli virtuális hálózatot](sql-database-managed-instance-configure-vnet-subnet.md) , ahol felügyelt példányokat helyezhet üzembe.

@@ -1,17 +1,17 @@
 ---
-title: Minta – naplózási kulcstartók virtuális hálózati végpontok nélkül
+title: Minta-kulcstartók vNet-végpontok nélkül
 description: Ez a példa a házirend-definícióban naplózza Key Vault tárolókat a virtuális hálózati szolgáltatási végpontokat nem tartalmazó példányok észleléséhez.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976965"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255724"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Minta – Key Vault tárolók virtuális hálózati végpontok nélkül
 
@@ -87,17 +87,17 @@ Az üzembe helyezési és eltávolítási szkriptek a következő parancsokat ha
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
+| [Új – AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Létrehoz egy új Azure Policy-definíciót. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Egyetlen erőforráscsoportot kér le. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
+| [Új – AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Eltávolít egy létező Azure Policy-hozzárendelést. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Eltávolít egy létező Azure Policy-definíciót. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
+### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -179,12 +179,12 @@ Számos eszköz alkalmas a Resource Manager REST API-val való kommunikációra,
 
 | Szolgáltatás | Csoport | Művelet | Megjegyzések |
 |---|---|---|---|
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatív [Létrehozás a felügyeleti csoportban](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Létrehozás](/rest/api/resources/policydefinitions/createorupdate) | Létrehoz egy új Azure Policy definíciót egy előfizetésnél. Alternatíva: [Létrehozás felügyeleti csoportnál](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Létrehozás](/rest/api/resources/policyassignments/create) | Létrehoz egy új Azure Policy-hozzárendelést. Ebben a példában adunk hozzá egy definíciót, de használhat egy kezdeményezést is. |
 | Erőforrás-kezelés | Szabályzat-hozzárendelések | [Törlés](/rest/api/resources/policyassignments/delete) | Eltávolít egy létező Azure Policy-hozzárendelést. |
-| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatív [Törlés a felügyeleti csoportban](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Erőforrás-kezelés | Szabályzatdefiníciók | [Törlés](/rest/api/resources/policydefinitions/delete) | Eltávolít egy létező Azure Policy-definíciót. Alternatíva: [Eltávolítás felügyeleti csoportnál](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További [Azure Policy-minták](index.md) áttekintése
 - Az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakasz áttekintése

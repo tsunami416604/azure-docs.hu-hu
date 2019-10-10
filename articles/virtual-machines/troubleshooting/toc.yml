@@ -56,11 +56,11 @@
     - name: SSH hibaelhárítása
       href: troubleshoot-ssh-connection.md
     - name: Fájlrendszer hibáinak elhárítása
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: A kernellel kapcsolatos rendszerindítási problémák elhárítása
       href: 'https://support.microsoft.com/help/4091524'
     - name: Fstab-hibák elhárítása
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH részletes hibaelhárítása
       href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek

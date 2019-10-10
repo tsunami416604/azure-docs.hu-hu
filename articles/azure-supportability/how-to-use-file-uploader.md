@@ -1,26 +1,19 @@
 ---
 title: Microsoft Azure új támogatási kérelem fájlfeltöltés-használati útmutatója | Microsoft Docs
 description: Útmutatás a Microsoft Azure új támogatási kérelem fájlfeltöltés-segédprogramjának használatakor
-services: ''
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 088835f6983814bbe47afeeec210ac41964e7863
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121161"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248689"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure új támogatási kérelem fájl feltöltése segédprogramra vonatkozó irányelvek
 Ha [támogatási kérést hoz létre](https://portal.azure.com/#create/Microsoft.Support), a fájlfeltöltés segédprogrammal könnyedén fel lehet tölteni a diagnosztikai fájlokat vagy az incidenshez kapcsolódó más fájlokat.  
@@ -38,33 +31,33 @@ A fájlfeltöltés segédprogram használatakor kövesse az alábbi irányelveke
 * A fájlok nem lehetnek nagyobbak 4 MB-nál.
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblázata
-| 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9, A – C    | D-G   | H-M         | N – P   | R-T      | U-W        | X – Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | .hwl        | .odx  | . rar     | .tdb       | . xlam   |
-| . a          | .db   | . ics        | . gyakran  | . rdl     | .tdf       | . XLR    |
-| .abc        | .DMP  | . ini        | . régi  | . RDLC    | . Text      | . xls    |
-| .adm        | .do_  | .java       | . egy  | .re_     | .thmx      | .xlsb   |
-| .aspx       | . doc  | . jpg        | .osd  | . reg     | .tif       | . xlsm   |
-| . ATF        | . docm | .LDF        | . KI  | .remove  | . TRC       | .xlsx   |
-| .b          | .docx | . levélpapírfejléc | . P1   | .ren     | . TTD       | . xlt    |
-| .ba_        | . dotm | . lnk        | . Pcap | .rename  | .tx_       | .xltx   |
-| . bak        | .dotx | .lo_        | .pdb  | . RFT     | .txt       | .xml    |
-| .bat        | .dtsx | .log        | .pdf  | . RPT     | .uccapilog | .xmla   |
+| .7z         | . dat  | .hwl        | . ODX  | . rar     | . TDB       | . xlam   |
+| . a          | . db   | . ics        | . gyakran  | . rdl     | . TDF       | . XLR    |
+| . ABC        | . Eszközkezelő pont –  | . ini        | . régi  | . RDLC    | . Text      | . xls    |
+| . adm        | nem  | . Java       | . egy  | újra     | . thmx      | . xlsb   |
+| . aspx       | . doc  | . jpg        | . OSD  | . reg     | . tif       | . xlsm   |
+| . ATF        | . docm | . LDF        | . KI  | . Eltávolítás  | . TRC       | . xlsx   |
+| . b          | . docx | . levélpapírfejléc | . P1   | . ren     | . TTD       | . xlt    |
+| ba        | . dotm | . lnk        | . Pcap | . Átnevezés  | TX       | . xltx   |
+| . bak        | . dotx | Lo        | . pdb  | . RFT     | . txt       | . XML    |
+| . bat        | .dtsx | . log        | . pdf  | . RPT     | .uccapilog | . XMLA   |
 | . blg        | . EDS  | . LPK        | . Piz  | . RTE     | .uccplog   | . XPS    |
-| .CA_        | . EMF  | . manifest   | .pmls | .rtf     | .udcx      | .xsd    |
-| .CAB        | . EML  | . Master     | .png  | .run     | .vb_       | . xsn    |
-| . Cap        | . a. a  | .mdmp       | .potx | .saz     | .vbs_      | .xxx    |
-| .catx       | . err  | .mof        | .ppt  | .sql     | .vcf       | .z_     |
-| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | .vsd       | .z01    |
-| . tömörített | .evt  | .mpg        | .pptx | .stp     | . wdb       | .z02    |
-| .Config     | .evtx | .ms_        | . prn  | .svclog  | . WKS       | .zi     |
-| . CPK        | . PÉLDÁUL   | .msg        | .psf  |   -       | . WMA       | .zi_    |
-| .cpp        | .ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
-| . cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
-| .CSV        | .FRD  | .msu        | -      |-          | . wps       | .zipp   |
-| . CVR        | .gif  | .nfo        | -      |-          | .wpt       | .zipped |
-| -            | . GUID | -            | -      | -         | .wsdl      | .zippy  |
-| -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
+| CA        | . EMF  | . manifest   | .pmls | . rtf     | . udcx      | . xsd    |
+| . CAB        | . EML  | . Master     | . png  | . Run     | VB       | . xsn    |
+| . Cap        | . a. a  | . mdmp       | . potx | . saz     | vbs      | . xxx    |
+| .catx       | . err  | . MOF        | . ppt  | . SQL     | . vcf       | z     |
+| . CFG        | . etl  | . mp3        | . pptm | .sqlplan | . vsd       | . Z01    |
+| . tömörített | . evt  | . mpg        | . pptx | . stp     | . wdb       | .z02    |
+| . Config     | . evtx | MS        | . prn  | .svclog  | . WKS       | . zi     |
+| . CPK        | . PÉLDÁUL   | . msg        | . PSF  |   -       | . WMA       | zi    |
+| . cpp        | például  | . msi        | . pst  |  -        | . wmv       | .zip    |
+| . cs         | .ex0  | . MSO        | . pub  | -         | . WMZ       | zip   |
+| . CSV        | . FRD  | . msu        | -      |-          | . wps       | .zipp   |
+| . CVR        | . gif  | . nfo        | -      |-          | . WPT       | . zip |
+| -            | . GUID | -            | -      | -         | . WSDL      | . villámgyors  |
+| -            | . gz   | -            | -      | -         | . wsp       | . ZIPX   |
 | -            | -      | -            | -      | -         | .wtl       | . zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |
-| -            | -      | -            | -      | -         |  -          | .zzz    |
+| -            | -      | -            | -      | -         |  -          | . ZZZ    |

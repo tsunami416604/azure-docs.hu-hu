@@ -1,85 +1,85 @@
 ---
 title: Az Azure FXT Edge Filer figyelése
-description: Az Azure FXT Edge Filer hibrid tárolási gyorsítótár hardver állapotának figyelése
+description: Az Azure FXT Edge Filer Hybrid Storage cache hardveres állapotának figyelése
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: e6afd90c4e5a1b0759b3de7789ec37db4c04f2c7
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: 3f422339af2040ad81c585c0e193e6cb3667b135
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827447"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254870"
 ---
-# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Azure FXT Edge Filer hardver állapotának figyelése
+# <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Az Azure FXT Edge Filer-hardver állapotának figyelése
 
-Az Azure FXT Edge Filer hibrid gyorsítótár tárolórendszer beépített a váz, hogy a rendszergazdák megismerheti, hogyan működik-e a hardver több Állapotjelzők rendelkezik.
+Az Azure FXT Edge Filer Hybrid Storage cache rendszer több állapotjelző lámpával rendelkezik, amelyek segítségével a rendszergazdák megismerhetik a hardver működésének módját.
 
-## <a name="system-health-status"></a>Rendszer-állapot
+## <a name="system-health-status"></a>Rendszerállapot állapota
 
-A magasabb szintű gyorsítótár-műveleteiről monitorozásához használja a szoftvert Vezérlőpult **irányítópult** lapon ismertetett módon a [Control Panel irányítópult útmutató](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)
+A gyorsítótárazási műveletek magasabb szinten történő figyeléséhez használja a Vezérlőpult **irányítópult** lapján a [Vezérlőpult irányítópultjának útmutatójában](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) ismertetett lépéseket.
 
-## <a name="hardware-status-leds"></a>Hardverállapot LED-EK
+## <a name="hardware-status-leds"></a>Hardver állapotának LED-EK
 
-Ez a szakasz ismerteti a különböző Állapotjelzők Azure FXT Edge Filer hardverre beépített.
+Ez a szakasz az Azure FXT Edge Filer-hardverbe épített különböző állapotjelző lámpákat ismerteti.
 
-### <a name="hard-drive-status-leds"></a>Merevlemez-meghajtó állapotát LED-EK
+### <a name="hard-drive-status-leds"></a>Merevlemez állapotának LED-EK
 
-![merevlemez illeti, vízszintes, képfelirat címkékkel 2 képe (bal felső sarokban), 1 (bal alsó sarokban) és 3 (a jobb oldalon)](media/fxt-monitor/fxt-drive-callouts.png)
+![kép a merevlemez-meghajtóról, vízszintes, ábrafelirat-címkék 2 (bal felső sarokban), 1 (bal alsó sarok) és 3 (jobb oldalon)](media/fxt-monitor/fxt-drive-callouts.png)
 
-Minden meghajtó szolgáltatója LED-eken keresztüli két állapota van: egy tevékenységet jelző (1) és a egy állapotjelzője (2). 
+Mindegyik meghajtón két állapotú LED látható: egy tevékenység-jelző (1) és egy állapotjelző (2). 
 
-* A tevékenység (1) lámpa vezetett, ha a meghajtó használatban van.  
-* Az állapot LED (2) az alábbi táblázat a kódok használatával a meghajtó állapotát jelzi.
+* A tevékenység LED (1) fények, ha a meghajtó használatban van.  
+* A LED állapota (2) az alábbi táblázatban szereplő kódok használatával jelzi a meghajtó feltételét.
 
-| Meghajtó állapota LED állapota              | Jelentés  |
+| Meghajtó állapotának LED-állapota              | Jelentés  |
 |-------------------------------------|----------------------------------------------------------|
-| Zöld másodpercenként kétszer villanás      | Meghajtó azonosítása *vagy* <br> Az Eltávolítás meghajtó előkészítése  |
-| Ki (a meg nem világított)                         | Rendszer még nem fejeződött be a rendszerindítási *vagy* <br>Meghajtó eltávolítandó készen áll |
-| Villanás zöld, sárga, és ki       | Meghajtó hiba összegyűjtése várható   |
-| Villanás sárga négyszer / másodperc | Nem sikerült   |
-| Szilárd zöld                         | Meghajtó online állapotban. |
+| Másodpercenként kétszer villan fel a zöld      | Meghajtó *vagy* <br> Meghajtó előkészítése az eltávolításhoz  |
+| Kikapcsolva (nem világít)                         | A rendszer nem fejezte be az indítást *, vagy* <br>A meghajtó készen áll az eltávolításra |
+| Zöld, borostyán és kikapcsolt villogás       | A meghajtó meghibásodása előre jelzett   |
+| Másodpercenként négy alkalommal villan fel | A meghajtó nem sikerült   |
+| Tömör zöld                         | A meghajtó online állapotban van |
 
-A jobb oldalon, a meghajtó (3) feliratú a a meghajtót és az egyéb információkat.
+A meghajtó jobb oldalán (3) a meghajtó kapacitása és egyéb információi vannak címkézve.
 
-Meghajtó számok nyomtatott meghajtók közötti távolság. Az Azure FXT Edge szűrőlista 0 meghajtó meghajtó bal felső, és közvetlenül alatta a meghajtó 1 az. A minta számozása folytatódik. 
+A meghajtón lévő számok a meghajtók közötti területre vannak kinyomtatva. Az Azure FXT Edge Filer-ben a 0. meghajtó a bal felső meghajtó, az 1. meghajtó pedig közvetlenül alatta van. A számozás folytatódik ebben a mintában. 
 
-![fénykép rekeszes a FXT váz, számokat és a kapacitás felirat megjelenítése a meghajtó a egy merevlemez](media/fxt-drives-photo.png)
+![a FXT váz egyik merevlemez-öblében található, a meghajtók számát és a kapacitás feliratait ábrázoló fénykép](media/fxt-drives-photo.png)
 
-## <a name="left-control-panel"></a>A vezérlőelem bal oldali panel
+## <a name="left-control-panel"></a>Bal oldali Vezérlőpult
 
-A bal oldali első Vezérlőpult különböző LED Állapotjelzők (1) és nagy megvilágított rendszer állapotjelző (2) rendelkezik. 
+A bal oldali Vezérlőpulton különböző állapotjelző LED-mutatók (1) és egy nagy, megvilágított rendszerállapot-jelző (2) láthatók. 
 
-![bal oldali állapot panel, a címkézés, a bal oldalon, a jobb oldali világos nagy méretű rendszer állapotjelző címkézés 2 Állapotjelzők 1](media/fxt-monitor/fxt-control-panel-left.jpg)
+![bal oldali állapot panel, 1 címkéző állapotjelzővel a bal oldalon, a jobb oldalon pedig a nagy rendszerállapot-jelző jelzőfény](media/fxt-monitor/fxt-control-panel-left.jpg)
 
-### <a name="control-panel-status-indicators"></a>Vezérlő panel Állapotjelzők 
+### <a name="control-panel-status-indicators"></a>Vezérlőpult állapotjelzői 
 
-A bal oldalon az Állapotjelzők megjelenítése egy szilárd sárga világos van-e hiba a rendszerben. Az alábbi táblázat ismerteti a lehetséges okait és megoldásait a hibákat. 
+A bal oldali állapotjelzők folytonos sárga fényt mutatnak, ha hiba van a rendszeren. Az alábbi táblázat a hibák lehetséges okait és megoldásait ismerteti. 
 
-Ha ezek a megoldások próbálkozás után továbbra is fennáll a hiba [forduljon az ügyfélszolgálathoz](fxt-support-ticket.md) segítséget. 
+Ha a megoldások kipróbálása után is megjelenik a hibaüzenet, [forduljon az ügyfélszolgálathoz](fxt-support-ticket.md) segítségért. 
 
-| Ikon | Leírás | Hibafeltétel | A lehetséges megoldásokról |
+| Ikon | Leírás | Hibafeltétel | Lehetséges megoldások |
 |----------------|---------------|--------------------|----------------------|
-| ![meghajtó ikon](media/fxt-monitor/fxt-hd-icon.jpg) | Meghajtó állapota | Meghajtó-hiba | A rendszer eseménynaplójában található meghatározni, hogy rendelkezik-e a meghajtó hiba, vagy <br>Futtassa a megfelelő online diagnosztikai teszt; Indítsa újra a rendszert, és futtassa a beágyazott diagnosztikai (ePSA), vagy <br>Ha a meghajtókat egy RAID tömbben vannak konfigurálva, indítsa újra a rendszert, és adja meg a gazdagép adapter konfigurációs segédprogram program |
-|![hőmérséklet-ikon](media/fxt-monitor/fxt-temp-icon.jpg) | Hőmérséklet-állapot | Hőmérsékleti hiba – például egy ventilátor sikertelen volt, vagy környezeti hőmérséklet je mimo rozsah | Ellenőrizze, hogy a következő címezhető feltételek: <br>Egy hűtési ventilátor hiányzik, vagy nem sikerült <br>A rendszer cover, légi burkolatból, memória modul üres, vagy vissza kitöltő szögletes zárójelet eltávolítása <br>A környezeti hőmérséklet értéke túl magas <br>A probléma külső légmozgás egyik oka |
-|![az elektromos áram ikon](media/fxt-monitor/fxt-electric-icon.jpg) | Elektromos állapota | Elektromos hiba – például az engedélyezett tartományon kívül esik, feszültség PSU, vagy egy meghibásodott feszültség szabályozó sikertelen |  Ellenőrizze a rendszer eseménynaplójába vagy a rendszer üzeneteket az adott probléma megoldásához. PSU probléma merül fel, ha a PSU állapotának LED, és távolítsa a PSU, ha szükséges. | 
-|![memória ikon](media/fxt-monitor/fxt-memory-icon.jpg) | Memória állapota | Elég memória hiba | Ellenőrizze a rendszer eseménynaplójában vagy a hely meghiúsult memóriamennyiséget; üzenetek Távolítsa a memória modul. |
-|![PCIe ikon](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe állapota | PCIe kártya hiba | Indítsa újra a rendszert; PCIe-illesztőprogramok; frissítése Telepítse újra a kártya |
+| ![meghajtó ikonja](media/fxt-monitor/fxt-hd-icon.jpg) | Meghajtó állapota | Meghajtó-hiba | Ellenőrizze a rendszer eseménynaplóját, és állapítsa meg, hogy a meghajtó hibával rendelkezik-e, vagy <br>Futtassa a megfelelő online diagnosztikai tesztet; Indítsa újra a rendszert, és futtassa a beágyazott diagnosztikát (ePSA), vagy <br>Ha a meghajtók RAID-tömbben vannak konfigurálva, indítsa újra a rendszert, és adja meg a gazdagép-adapter konfigurációs segédprogramjának programját |
+|![hőmérséklet ikon](media/fxt-monitor/fxt-temp-icon.jpg) | Hőmérséklet állapota | Termikus hiba – például egy ventilátor meghiúsult, vagy a környezeti hőmérséklet a megengedett tartományon kívül esik. | A következő címezhető feltételek keresése: <br>Egy hűtési ventilátor hiányzik vagy nem sikerült <br>A rendszer fedelét, az Air lepel, a memóriamodul üres vagy a hátsó kitöltő zárójelet eltávolítja <br>A környezeti hőmérséklet túl magas <br>A külső légáram akadályozva van |
+|![villamos energia ikon](media/fxt-monitor/fxt-electric-icon.jpg) | Elektromos állapot | Elektromos hiba – például a tartományon kívüli feszültség, a sikertelen PSU vagy egy meghibásodott feszültség szabályzó |  Keresse meg a rendszer eseménynaplóját vagy a rendszerüzeneteket az adott probléma esetén. Ha van PSU-probléma, ellenőrizze a PSU állapotát, és ha szükséges, helyezze át a PSU-t. | 
+|![memória ikon](media/fxt-monitor/fxt-memory-icon.jpg) | Memória állapota | Memóriahiba | Keresse meg a hibás memória helyét a rendszer eseménynaplójában vagy a rendszerüzenetekben; Helyezze át a memóriamodult. |
+|![PCIe ikon](media/fxt-monitor/fxt-pcie-icon.jpg) | PCIe-állapot | PCIe kártya hibája | Indítsa újra a rendszert; a PCIe kártya illesztőprogramjainak frissítése; a kártya újratelepítése |
 
 
-### <a name="system-health-status-indicator"></a>Rendszer állapotjelző állapota
+### <a name="system-health-status-indicator"></a>Rendszerállapot-állapotjelző
 
-A nagy megvilágítottnak gombra a jobb oldalán a bal oldali Vezérlőpult azt jelzi, hogy a rendszer általános állapota, és a egy lokátor je rendszer azonosító módban is szolgál.
+A bal oldali Vezérlőpult jobb oldalán található nagy megvilágított gomb a rendszer általános állapotát jelzi, és a rendszer-azonosító módban is használja.
 
-Nyomja le a rendszerállapot és a rendszer azonosítója és a rendszer állapotának üzemmód közötti váltáshoz azonosító gombra.
+A rendszerállapot és az azonosító gomb megnyomásával válthat a rendszerazonosító mód és a rendszerállapot mód között.
 
-|Rendszer állapota állapota | Állapot |
+|Rendszerállapot állapota | Állapot |
 |-------------------------------------------|-----------------------------------------------|
-| Szilárd kék | Normál működés: a rendszer be van kapcsolva, normál, működő, és a rendszer azonosító mód nem aktív. <br/>Nyomja le a rendszer állapotának és azonosító gombra, ha azt szeretné, rendszer-azonosító módra való váltáshoz. |
-| Villogó kék | Rendszer-azonosító mód nem aktív. Nyomja le a rendszerállapot és a rendszer azonosító gombra, ha azt szeretné, a system health módra való váltáshoz. |
-| Szilárd sárga | A rendszer a hibamentes módban van. Ha a probléma tartósan fennáll, [forduljon a Microsoft ügyfélszolgálata és](fxt-support-ticket.md). |
-| Sárga villogó | Rendszer hibája. Ellenőrizze a rendszer eseménynaplójába hibaüzeneteket. Az események és hibaüzenetek, a rendszer belső vezérlőprogram és az ügynökök, amelyek a rendszer-összetevők által létrehozott kapcsolatos információkért lásd a hiba kikereshető kód qrl.dell.com címen. |
+| Tömör kék | Normál művelet: a rendszer be van kapcsolva, a normál működés, és a rendszer-azonosító mód nem aktív. <br/>Ha rendszerazonosító módra szeretne váltani, nyomja meg a rendszerállapot és az azonosító gombot. |
+| Villogó kék | A rendszer-azonosító üzemmód aktív. Ha rendszerállapot-módba szeretne váltani, nyomja meg a rendszerállapot és a rendszerazonosító gombot. |
+| Folytonos sárga | A rendszer nem biztonságos módban van. Ha a probléma továbbra is fennáll, [forduljon a Microsoft ügyfél-és támogatási szolgálatához](fxt-support-ticket.md). |
+| Villogó sárga | Rendszerhiba. Adott hibaüzenetek esetén keresse meg a rendszer eseménynaplóját. További információ a rendszerszintű belső vezérlőprogram és a rendszerösszetevőket figyelő ügynökök által generált eseményekről és hibákról: a hibakód keresése lap a következő címen: qrl.dell.com. |
 
 

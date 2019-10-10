@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – fürt konfigurálása az Azure HDInsight-ben a Ansible használatával | Microsoft Docs
+title: Oktatóanyag – fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
 description: Útmutató az Azure-HDInsight létrehozásához és átméretezéséhez a Ansible használatával
-keywords: ansible, azure, devops, bash, playbook, apache hadoop, hdinsight
+keywords: Ansible, Azure, devops, bash, ötletekbõl, Apache Hadoop, hdinsight
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861272"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241953"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Oktatóanyag: Fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Oktatóanyag: fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -144,7 +144,7 @@ A példány létrehozása több percet is igénybe vehet.
 
 A fürt létrehozása után az egyetlen módosítható beállítás a munkavégző csomópontok száma. 
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a alkalmazásban történő frissítéssel `target_instance_count` `workernode`növeli a munkavégző csomópontok számát.
+Az ebben a szakaszban szereplő forgatókönyv-kód a `workernode` `target_instance_count` frissítésével növeli a munkavégző csomópontok számát.
 
 ```yml
 - name: Resize cluster
@@ -205,8 +205,8 @@ Az ebben a szakaszban szereplő forgatókönyv-kód törli a fürtöt.
 ## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
 A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) forgatókönyvet, és mentse `hdinsight_create.yml`a következőre:.
-- Hozzon létre egy nevű `hdinsight_create.yml` új fájlt, és másolja bele a következő tartalomba:
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) forgatókönyvet, és mentse a `hdinsight_create.yml` értékre.
+- Hozzon létre egy `hdinsight_create.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 ---
@@ -353,9 +353,9 @@ A teljes példa a következő két módon szerezhető be:
 Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
 A forgatókönyv futtatása előtt végezze el a következő módosításokat:
-- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+- A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
-Futtassa a forgatókönyvt a `ansible-playbook` parancs használatával:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -365,7 +365,7 @@ ansible-playbook hdinsight.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`:
+Mentse a következő kódot `cleanup.yml`-ként:
 
 ```yml
 - hosts: localhost
@@ -379,13 +379,13 @@ Mentse a következő kódot `cleanup.yml`:
         state: absent
 ```
 
-Futtassa a forgatókönyvt a `ansible-playbook` parancs használatával:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

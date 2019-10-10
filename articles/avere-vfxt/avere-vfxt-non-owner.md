@@ -1,32 +1,32 @@
 ---
-title: Avere vFXT nem tulajdonosi megoldás – Azure
-description: Megkerülő megoldás, hogy a felhasználók Avere vFXT telepítése az Azure előfizetés tulajdonosának engedélye nélkül
+title: Avere vFXT nem tulajdonosi megkerülő megoldás – Azure
+description: Megkerülő megoldás, amely lehetővé teszi, hogy a felhasználók előfizetés-tulajdonos engedélye nélkül avere vFXT az Azure-hoz
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: e72e6d969649de09389ee38b94e874fad98ee08f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409209"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256183"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Az Avere vFXT nem tulajdonosi üzembe helyezésének engedélyezése
 
-Ezek az utasítások olyan megoldás, amely lehetővé teszi a felhasználói előfizetés nélkül hozhat létre egy Azure rendszer Avere vFXT tulajdonosi jogosultságokkal.
+Ezek az utasítások egy megkerülő megoldás, amely lehetővé teszi, hogy a felhasználó előfizetés-tulajdonosi jogosultság nélkül hozzon létre egy avere-vFXT az Azure System számára
 
-(A rendszer vFXT hajtsa végre a létrehozás tulajdonosi jogosultságokkal rendelkező felhasználói Avere telepítése az ajánlott módszer a lépéseket, a [a Avere vFXT létrehozásának előkészítéséhez](avere-vfxt-prereqs.md).)  
+(A avere vFXT rendszer központi telepítésének ajánlott módja, ha egy tulajdonosi jogosultsággal rendelkező felhasználó rendelkezik a létrehozás lépéseivel, ahogy azt a [felkészülés a avere vFXT létrehozására](avere-vfxt-prereqs.md)című cikk ismerteti.)  
 
-A megoldáshoz szükséges létrehozása egy további hozzáférési szerepkör, amely lehetővé teszi a felhasználóknak, a fürt telepítéséhez szükséges engedélyekkel. A szerepkör-előfizetés tulajdonosa hozza létre, és egy olyan tulajdonost kell rendelni, megfelelő felhasználók. 
+A megkerülő megoldás olyan további hozzáférési szerepkör létrehozásával jár, amely megfelelő jogosultságot biztosít a felhasználóknak a fürt telepítéséhez. A szerepkört egy előfizetés tulajdonosának kell létrehoznia, és a tulajdonosnak hozzá kell rendelnie a megfelelő felhasználókhoz. 
 
-Előfizetés tulajdonosa is kell [fogadja el a használati feltételeket](avere-vfxt-prereqs.md) a Avere vFXT Piactéri lemezképhez. 
+Az előfizetéshez tartozó tulajdonosnak el kell fogadnia a avere vFXT Marketplace-rendszerkép [használati feltételeit](avere-vfxt-prereqs.md) is. 
 
 > [!IMPORTANT] 
-> Ezen lépések mindegyike a a fürthöz használt előfizetés tulajdonosa jogosultsággal rendelkező felhasználó által kell tenni.
+> Ezeket a lépéseket a fürthöz használni kívánt előfizetéshez tartozó tulajdonosi jogosultságokkal rendelkező felhasználónak kell elvégeznie.
 
-1. Ezek a sorok másolja és mentse őket egy fájlban (például `averecreatecluster.json`). A szereplő előfizetés-azonosító használata a `AssignableScopes` utasítást.
+1. Másolja ezeket a sorokat, és mentse őket fájlba (például `averecreatecluster.json`). Használja az előfizetés-AZONOSÍTÓját a `AssignableScopes` utasításban.
 
    ```json
    {
@@ -58,7 +58,7 @@ Előfizetés tulajdonosa is kell [fogadja el a használati feltételeket](avere-
    }
    ```
 
-1. A szerepkör létrehozása a következő parancs futtatásával:
+1. Futtassa ezt a parancsot a szerepkör létrehozásához:
 
    `az role definition create --role-definition <PATH_TO_FILE>`
 
@@ -67,12 +67,12 @@ Előfizetés tulajdonosa is kell [fogadja el a használati feltételeket](avere-
     az role definition create --role-definition ./averecreatecluster.json
     ```
 
-1. Ez a szerepkör hozzárendelése a felhasználót, hogy létrehozza a fürtöt:
+1. Rendelje hozzá ezt a szerepkört a fürtöt létrehozó felhasználóhoz:
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Ez az eljárás után minden ehhez a szerepkörhöz hozzárendelt felhasználó rendelkezik az előfizetés a következő engedélyekkel: 
+Az eljárás után az ehhez a szerepkörhöz rendelt összes felhasználó a következő engedélyekkel rendelkezik az előfizetéshez: 
 
-* Hozzon létre, és a hálózati infrastruktúra konfigurálása
-* A fürt vezérlő létrehozása
-* A fürt létrehozása a fürt vezérlőről fürt létrehozási parancsfájlok futtatása
+* A hálózati infrastruktúra létrehozása és konfigurálása
+* A fürt létrehozása
+* Fürt létrehozási parancsfájljainak futtatása a fürtből a fürt létrehozásához

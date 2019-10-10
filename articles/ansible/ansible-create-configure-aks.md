@@ -1,34 +1,34 @@
 ---
-title: Oktatóanyag – Azure Kubernetes Service (AKS)-fürtök konfigurálása az Azure-ban az Ansible-lel |} A Microsoft Docs
+title: Oktatóanyag – Azure Kubernetes Service (ak) fürtök konfigurálása az Azure-ban a Ansible használatával
 description: Megtudhatja, hogyan hozhat létre és felügyelhet Azure Kubernetes Service-fürtöket az Azure-ban az Ansible segítségével.
-keywords: az ansible, azure, devops, bash, cloud Shell, forgatókönyv, az aks, tároló, az aks, kubernetes
+keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1467afce60038e086daace72947c1ab21569865a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231324"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242089"
 ---
-# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Oktatóanyag: Az Azure Kubernetes Service (AKS)-fürtök konfigurálása az Azure-ban az Ansible-lel
+# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Oktatóanyag: Azure Kubernetes Service (ak) fürtök konfigurálása az Azure-ban a Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-Az AKS használatához konfigurálhatók [Azure Active Directory (AD)](/azure/active-directory/) a felhasználók hitelesítéséhez. Miután konfigurálta az Azure AD hitelesítési jogkivonat használatával jelentkezzen be az AKS-fürtöt. Az RBAC a felhasználó identitását, vagy a directory-csoporttagság alapulhat.
+Az AK konfigurálható úgy, hogy [Azure Active Directory (ad)](/azure/active-directory/) használatát használja a felhasználói hitelesítéshez. A konfigurálást követően az Azure AD-hitelesítési token használatával jelentkezhet be az AK-fürtbe. A RBAC a felhasználó identitás-vagy címtár-csoporttagság alapján lehet.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * AKS-fürt létrehozása
-> * AKS-fürt konfigurálása
+> * AK-fürt konfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ Az AKS használatához konfigurálhatók [Azure Active Directory (AD)](/azure/ac
 
 ## <a name="create-a-managed-aks-cluster"></a>Felügyelt AKS-fürt létrehozása
 
-A minta forgatókönyv létrehoz egy erőforráscsoportot és a egy AKS-fürtöt az erőforráscsoporton belül.
+A minta forgatókönyv létrehoz egy erőforráscsoportot és egy AK-fürtöt az erőforráscsoporthoz.
 
 Mentse a következő forgatókönyvet `azure_create_aks.yml` néven:
 
@@ -79,19 +79,19 @@ Mentse a következő forgatókönyvet `azure_create_aks.yml` néven:
         Environment: Production
 ```
 
-A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzések:
+A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-- Az első szakaszban belül `tasks` nevű erőforráscsoport meghatározása `myResourceGroup` belül a `eastus` helyét.
-- A második szakasz belül `tasks` határozza meg az AKS-fürt nevű `myAKSCluster` belül a `myResourceGroup` erőforráscsoportot.
-- Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül).
+- @No__t-0 első szakasza egy `myResourceGroup` nevű erőforráscsoportot határoz meg a `eastus` helyen belül.
+- A `tasks` keret második szakasza egy `myAKSCluster` AK-fürtöt határoz meg a `myResourceGroup` erőforráscsoporthoz.
+- A `your_ssh_key` helyőrző esetében adja meg az RSA nyilvános kulcsát egy egysoros formátumban – az "SSH-RSA" kezdetű (idézőjelek nélkül).
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook azure_create_aks.yml
 ```
 
-A forgatókönyv futtatása eredmények jelennek meg a következő kimenet hasonlít:
+A forgatókönyv futtatása a következő kimenethez hasonló eredményeket mutat:
 
 ```Output
 PLAY [Create AKS] 
@@ -111,7 +111,7 @@ localhost                  : ok=3    changed=2    unreachable=0    failed=0
 
 ## <a name="scale-aks-nodes"></a>AKS-csomópontok skálázása
 
-Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. Állítsa be a csomópontok számát a módosításával a `count` értékét a `agent_pool_profiles` letiltása.
+Az előző szakaszban lévő mintaforgatókönyv két csomópontot definiál. A csomópontok számát a `agent_pool_profiles` blokk `count` értékének módosításával állíthatja be.
 
 Mentse a következő forgatókönyvet `azure_configure_aks.yml` néven:
 
@@ -146,17 +146,17 @@ Mentse a következő forgatókönyvet `azure_configure_aks.yml` néven:
             vm_size: Standard_D2_v2
 ```
 
-A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzések:
+A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
 
-- Az a `your_ssh_key` helyőrző, adja meg a nyilvános RSA-kulcsot az egysoros formátumban – "ssh-rsa" kezdetű (idézőjelek nélkül).
+- A `your_ssh_key` helyőrző esetében adja meg az RSA nyilvános kulcsát egy egysoros formátumban – az "SSH-RSA" kezdetű (idézőjelek nélkül).
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
 ```
 
-A forgatókönyv futtatása eredmények jelennek meg a következő kimenet hasonlít:
+A forgatókönyv futtatása a következő kimenethez hasonló eredményeket mutat:
 
 ```Output
 PLAY [Scale AKS cluster] 
@@ -173,7 +173,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 
 ## <a name="delete-a-managed-aks-cluster"></a>Felügyelt AKS-fürt törlése
 
-A minta forgatókönyv törlése egy AKS-fürtöt.
+A minta-forgatókönyv egy AK-fürtöt töröl.
 
 Mentse a következő forgatókönyvet `azure_delete_aks.yml` néven:
 
@@ -193,13 +193,13 @@ Mentse a következő forgatókönyvet `azure_delete_aks.yml` néven:
       state: absent
   ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
 ```
 
-A forgatókönyv futtatása eredmények jelennek meg a következő kimenet hasonlít:
+A forgatókönyv futtatása a következő kimenethez hasonló eredményeket mutat:
 
 ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] 
@@ -213,7 +213,7 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)](/azure/aks/tutorial-kubernetes-scale)
+> [Oktatóanyag: Alkalmazások méretezése az Azure Kubernetes Service-ben (AKS)](/azure/aks/tutorial-kubernetes-scale)

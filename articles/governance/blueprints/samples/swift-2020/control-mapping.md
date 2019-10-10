@@ -1,23 +1,23 @@
 ---
 title: Sample-SWIFT CSP-CSCF v2020 Blueprint-vezérlés leképezése
-description: A SWIFT CSP-CSCF v2020 terv leképezésének vezérlése Azure Policyra.
+description: A SWIFT CSP-CSCF v2020 tervezetének vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/24/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 50c278cd22d8901560a83561f38084622bc86865
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a326a5b323999e97b4d015403e36eb97dfc8483f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980914"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248829"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>A SWIFT CSP-CSCF v2020 Blueprint-minta leképezésének vezérlése
 
 A következő cikk azt ismerteti, hogyan történik az Azure-tervezetek SWIFT CSP-CSCF v2020 tervrajza a SWIFT CSP-CSCF v2020 vezérlőkhöz. További információ a vezérlőkről: [Swift CSP-CSCF v2020](https://www.swift.com/myswift/customer-security-programme-csp).
 
-A következő leképezések a **Swift CSP-CSCF v2020** vezérlőkhöz tartoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a ** @ no__t-1Preview @ no__t-2: SWIFT CSP naplózása – a CSCF v2020 vezérli és telepíti az adott virtuálisgép-bővítményeket, amelyek támogatják a @ no__t-0 beépített házirend-kezdeményezés naplózási követelményeit.
+A következő leképezések a **Swift CSP-CSCF v2020** vezérlőkhöz tartoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők számos [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki a **\[Preview @ no__t-2: audit Swift CSP-CSCF v2020 vezérlőket, és telepítsen konkrét virtuálisgép-bővítményeket a naplózási követelmények** beépített házirend-kezdeményezésének támogatásához.
 
 > [!IMPORTANT]
 > Az alábbi vezérlők egy vagy több [Azure Policy](../../../policy/overview.md) -definícióhoz vannak társítva. Ezek a szabályzatok segítséget nyújthatnak a vezérlő [megfelelőségének értékelésében](../../../policy/how-to/get-compliance-data.md) ; azonban gyakran nem 1:1 vagy teljes egyezés van egy vezérlő és egy vagy több szabályzat között. Ennek megfelelően a Azure Policy **megfelel** a saját szabályzatoknak; Ez nem teszi lehetővé, hogy teljes mértékben megfeleljen a vezérlők összes követelményének. Emellett a megfelelőségi szabvány olyan vezérlőket is tartalmaz, amelyek jelenleg nincsenek Azure Policy definíciók által tárgyalva. Ezért a Azure Policy megfelelősége csak a teljes megfelelőségi állapotának részleges áttekintése. A megfelelőségi tervhez tartozó vezérlők és Azure Policy definíciói közötti társítások idővel változhatnak. A módosítási előzmények megtekintéséhez tekintse meg a [GitHub-követési előzményeket](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/swift-2020/control-mapping.md).
@@ -75,22 +75,22 @@ A Azure SQL Database speciális adatbiztonságának adatfelderítési és besoro
 
 Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hogy [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével figyeli, hogy a Azure app Service alkalmazás távoli hibakeresése ki van-e kapcsolva, valamint olyan házirend-definíciókat, amelyek a távoli hozzáférést lehetővé tevő linuxos virtuális gépek jelszavak nélküli fiókok kapcsolatai. Ez a terv egy Azure Policy-definíciót is hozzárendel, amely segít megfigyelni a nem korlátozott hozzáférést a Storage-fiókokhoz. Ezen mutatók monitorozásával biztosítható, hogy a távelérési módszerek megfeleljenek a biztonsági szabályzatnak.
 
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat jelszavak nélküli fiókokból
-- \[Preview @ no__t-1: A jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásának előfeltételei üzembe helyezése
+- \[Preview @ no__t-1: a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
+- \[Preview @ no__t-1: központi telepítés előfeltételei a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
-- Távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
+- A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 
 ## <a name="13-and-64-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>1,3 és 6,4 a naplózási rekordok tartalma | Tervezett auditálási rekordok központosított kezelése
 
 A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi konfigurációt és a felügyeletet. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
-- \[Preview @ no__t-1: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
-- \[Preview @ no__t-1: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
+- \[Preview @ no__t-1: naplózás Log Analytics ügynök üzembe helyezése – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux-VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Preview @ no__t-1: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2,2, 2,7 és 6,4 Válasz a naplózási feldolgozási hibákra
 
@@ -104,21 +104,21 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hoz
 
 A Azure Monitor által összegyűjtött adatok naplózása egy Log Analytics munkaterületen történik, amely lehetővé teszi a központi jelentéskészítést és elemzést. Ez a terv segít biztosítani az események naplózását olyan [Azure Policy](../../../policy/overview.md) -definíciók kiosztásával, amelyek az log Analytics Agent Azure-beli virtuális gépeken való üzembe helyezését naplózzák és érvényesítik.
 
-- \[Preview @ no__t-1: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
-- \[Preview @ no__t-1: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
+- \[Preview @ no__t-1: naplózás Log Analytics ügynök üzembe helyezése – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux-VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Preview @ no__t-1: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1,3, 2,2, 2,7, 6,4 és 6.5 A naplózási generáció
 
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével. Ezek a szabályzat-definíciók a Log Analytics ügynök Azure-beli virtuális gépeken való üzembe helyezését és az egyéb Azure-erőforrástípusok naplózási beállításainak konfigurálását is kikényszerítik. Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is naplózzák, hogy betekintést nyújtsanak az Azure-erőforrásokon belül végrehajtott műveletekre. Emellett a naplózás és a speciális adatbiztonság is konfigurálva van az SQL-kiszolgálókon.
 
-- \[Preview @ no__t-1: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
-- \[Preview @ no__t-1: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
+- \[Preview @ no__t-1: naplózás Log Analytics ügynök üzembe helyezése – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux-VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Preview @ no__t-1: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
@@ -161,29 +161,29 @@ Ez a terv segítséget nyújt a hozzáférés korlátozásához és vezérlésé
 
 Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat rendeli hozzá, amelyek a Linux rendszerű virtuális gépeket a jelszavak nélküli fiókok távoli kapcsolatainak engedélyezésére és/vagy helytelen engedélyekkel rendelkeznek a passwd fájlban. Ez a terv a Windows rendszerű virtuális gépekhez tartozó jelszó-titkosítási típus konfigurációját naplózó szabályzat-definíciókat is hozzárendeli. Ezen mutatók monitorozásával biztosíthatja, hogy a rendszerhitelesítő megfeleljenek a szervezete azonosítási és hitelesítési házirendjének.
 
-- \[Preview @ no__t-1: Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- \[Preview @ no__t-1: Követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- \[Preview @ no__t-1: Olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
-- \[Preview @ no__t-1: Követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
-- \[Preview @ no__t-1: A jelszavakat visszafejthető titkosítással nem tároló Windows rendszerű virtuális gépekről származó naplózási eredmények megjelenítése
-- \[Preview @ no__t-1: Követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
+- \[Preview @ no__t-1: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
+- \[Preview @ no__t-1: követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
+- \[Preview @ no__t-1: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
+- \[Preview @ no__t-1: követelmények telepítése a jelszavak nélküli fiókokkal rendelkező linuxos virtuális gépek naplózására
+- \[Preview @ no__t-1: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem tárolják a jelszavakat visszafejthető titkosítással
+- \[Preview @ no__t-1: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózására a visszafejthető titkosítás használatával
 
 ## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2,3 és 4,1 hitelesítő kezelése | Jelszó-alapú hitelesítés
 
 Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem igénylő Windows rendszerű virtuális gépeket naplózzák. A virtuális gépeknek a jelszó erőssége megsértésével kapcsolatos ismerete segít megtenni a szükséges javítási műveleteket, hogy az összes virtuálisgép-felhasználói fiók jelszava megfeleljen a szervezete jelszavas házirendjének.
 
-- \[Preview @ no__t-1: A korábbi 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése
-- \[Preview @ no__t-1: Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek maximális jelszóval (70 nap)
-- \[Preview @ no__t-1: Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek legalább 1 napos jelszóval
-- \[Preview @ no__t-1: Olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
-- \[Preview @ no__t-1: A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
-- \[Preview @ no__t-1: A jelszavakat visszafejthető titkosítással nem tároló Windows rendszerű virtuális gépekről származó naplózási eredmények megjelenítése
-- \[Preview @ no__t-1: Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
-- \[Preview @ no__t-1: A maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózási előfeltételeinek központi telepítése 70 nap
-- \[Preview @ no__t-1: A minimális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
-- \[Preview @ no__t-1: A jelszó bonyolultsága beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
-- \[Preview @ no__t-1: Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
-- \[Preview @ no__t-1: A jelszavakat nem tároló Windows rendszerű virtuális gépek naplózásának előfeltételei a visszafejthető titkosítás használatával
+- \[Preview @ no__t-1: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
+- \[Preview @ no__t-1: olyan Windowsos virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
+- \[Preview @ no__t-1: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[Preview @ no__t-1: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem tárolják a jelszavakat visszafejthető titkosítással
+- \[Preview @ no__t-1: Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
+- \[Preview @ no__t-1: központi telepítés előfeltételei olyan Windows rendszerű virtuális gépek naplózására, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[Preview @ no__t-1: Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[Preview @ no__t-1: a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához szükséges előfeltételek központi telepítése
+- \[Preview @ no__t-1: Előfeltételek telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[Preview @ no__t-1: a jelszavakat nem tároló Windows rendszerű virtuális gépek naplózásának előfeltételei a visszafejthető titkosítás használatával
 
 ## <a name="22-and-27-vulnerability-scanning"></a>2,2 és 2,7 sebezhetőségi vizsgálat
 
@@ -229,10 +229,10 @@ Ez a terv segít a továbbított adatok bizalmas és integritásának védelméb
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - A nem biztonságos kommunikációs protokollokat használó Windows-webkiszolgálók naplózási eredményeinek megjelenítése
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához szükséges előfeltételek központi telepítése
-- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve
 - A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell
-- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- A webalkalmazás csak HTTPS protokollon keresztül érhető el
 
 ## <a name="22-23-25-41-and-27-protection-of-information-at-rest--cryptographic-protection"></a>2,2, 2,3, 2,5, 4,1 és 2,7 a REST-adatok védelme | Titkosítási védelem
 
@@ -273,11 +273,11 @@ Ez a terv segít az Endpoint Protection kezelésében, beleértve a kártékony 
 
 Ez a terv a naplózás és az adatbiztonság Azure-erőforrásokon keresztüli naplózásával és érvényesítésével segíti a rendszerek figyelését. A szabályzatok a Log Analytics ügynök üzembe helyezését, valamint az SQL-adatbázisok, a Storage-fiókok és a hálózati erőforrások fokozott biztonsági beállításait naplózzák és érvényesítik. Ezek a képességek segítenek a rendellenes viselkedés és a támadási mutatók észlelésében, így elvégezheti a megfelelő lépéseket.
 
-- \[Preview @ no__t-1: Log Analytics ügynök üzembe helyezésének naplózása – a virtuálisgép-rendszerkép (operációs rendszer) fel van listázva
-- \[Preview @ no__t-1: A Linux VM Scale Sets (VMSS) Log Analytics-ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: A Windows VM Scale Sets (VMSS) Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
+- \[Preview @ no__t-1: naplózás Log Analytics ügynök üzembe helyezése – nincs listázva a VM-rendszerkép (operációs rendszer)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux-VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Preview @ no__t-1: Log Analytics Agent telepítése Windows VM Scale Sets (VMSS)
+- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
 - A speciális adatbiztonságot alkalmazni ajánlott az SQL-kiszolgálókon
 - Az SQL Server speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
 - A Azure Stream Analytics lévő diagnosztikai naplókat engedélyezni kell
@@ -295,7 +295,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a SWIFT CSP-CSCF v2020 tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti a tervet, és bemutatja, hogyan helyezheti üzembe a mintát:
 

@@ -1,18 +1,18 @@
 ---
 title: Minta – Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – vezérlési leképezés
-description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása.
+description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9001e752c9b0f79d7c688e0b13fd7133004ff4ad
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980880"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248790"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
@@ -90,27 +90,27 @@ Ez a terv Azure Policy definíciókat is hozzárendeli a naplózási fiókokhoz,
 
 Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
 
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gép/etc/passwd engedélyeinek naplózása 0644
+- \[Preview @ no__t-1: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása 0644 értékre van állítva
 
 Ez a terv segít az erős jelszavak betartatásában olyan Azure Policy-definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: A jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózási követelményeinek központi telepítése
-- \[Preview @ no__t-1: Követelmények telepítése a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához 70 nap
-- \[Preview @ no__t-1: Követelmények telepítése olyan Windows rendszerű virtuális gépek naplózására, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- \[Preview @ no__t-1: Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
-- \[Preview @ no__t-1: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózására vonatkozó követelmények telepítése
-- \[Preview @ no__t-1: A jelszó-bonyolultsági beállítással nem rendelkező Windows-alapú virtuális gépek naplózása
-- \[Preview @ no__t-1: A maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
-- \[Preview @ no__t-1: Olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- \[Preview @ no__t-1: A jelszó minimális hosszát 14 karakterre nem korlátozó Windows-alapú virtuális gépek naplózása
-- \[Preview @ no__t-1: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[Preview @ no__t-1: követelmények központi telepítése a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózásához
+- \[Preview @ no__t-1: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyeknek nincs maximális jelszava (70 nap)
+- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs maximális jelszava (70 nap)
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs legalább 1 napos jelszava
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[Preview @ no__t-1: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
 
 A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehetővé teszi Azure Policy definíciók hozzárendelésével. Ezek a házirendek olyan erőforrástípusok és konfigurációk használatát naplózzák, amelyek lehetővé tehetik az erőforrásokhoz való hozzáférést. A szabályzatok megsértése miatti erőforrások megismerése segíthet az Azure-erőforrások elérését engedélyező, a jogosult felhasználókra korlátozódó kijavítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: Követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
-- \[Preview @ no__t-1: Követelmények telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
-- \[Preview @ no__t-1: Linux rendszerű virtuális gépek naplózása jelszó nélküli fiókkal
-- \[Preview @ no__t-1: A jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
+- \[Preview @ no__t-1: követelmények telepítése a jelszavak nélküli fiókokkal rendelkező linuxos virtuális gépek naplózására
+- \[Preview @ no__t-1: követelmények telepítése a Linux rendszerű virtuális gépek naplózására, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
+- \[Preview @ no__t-1: jelszó nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
+- \[Preview @ no__t-1: olyan Linux rendszerű virtuális gépek naplózása, amelyek engedélyezik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
 - A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
 - A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
 - Felügyelt lemezeket nem használó virtuális gépek naplózása
@@ -147,7 +147,7 @@ Ez a terv Azure Policy-definíciókat is hozzárendeli a naplózási fiókokhoz,
 
 Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
 
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gép/etc/passwd engedélyeinek naplózása 0644
+- \[Preview @ no__t-1: a Linux rendszerű virtuális gép/etc/passwd-engedélyeinek naplózása 0644 értékre van állítva
 
 ## <a name="13-audit-information-for-users"></a>13 naplózási információ a felhasználók számára
 
@@ -156,11 +156,11 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 - A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
 - Diagnosztikai beállítás naplózása
 - Az SQL Server szintű naplózási beállítások naplózása
-- \[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
-- \[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése
+- \[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
+- \[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken
 - A Network Watcher üzembe helyezése virtuális hálózatok létrehozásakor
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetének vezérlési leképezését, az alábbi cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Űrlap-felismerő ügyféloldali kódtára a .NET-hez | Microsoft Docs'
+title: 'Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez | Microsoft Docs'
 description: Ismerkedés a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval.
 services: cognitive-services
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057666"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242519"
 ---
-# <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: Űrlap-felismerő ügyféloldali kódtára a .NET-hez
+# <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
 Ismerkedés a .NET-hez készült űrlap-felismerő ügyféloldali kódtáraval. Az űrlap-felismerő egy olyan kognitív szolgáltatás, amely gépi tanulási technológiával azonosítja és Kinyeri a kulcs/érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután strukturált adatokat ad vissza, amelyek tartalmazzák az eredeti fájlban lévő kapcsolatokat. Az alábbi lépéseket követve telepítheti az SDK-csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
@@ -28,13 +28,14 @@ Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a k�
 * [Egyéni modellek listájának beolvasása](#get-a-list-of-custom-models)
 * [Egyéni modell törlése](#delete-a-custom-model)
 
-[Dokumentációs](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [-csomagja (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview)@no__t – 1[könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
+* Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
+* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat.
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
-* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. 
 
 ## <a name="setting-up"></a>Beállítás
 
@@ -42,11 +43,11 @@ Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a k�
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű `FORM_RECOGNIZER_KEY`kulcshoz.
+Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) `FORM_RECOGNIZER_KEY` nevű kulcshoz.
 
 ### <a name="create-a-new-c-application"></a>Új C# alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) `dotnet new` az paranccsal hozzon létre egy új, a nevű `formrecognizer-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: _Program.cs_. 
+A konzol ablakban (például cmd, PowerShell vagy bash) a `dotnet new` paranccsal hozzon létre egy új, `formrecognizer-quickstart` nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -90,7 +91,7 @@ Ha a Visual Studio IDE-t használja, az ügyféloldali kódtár letölthető NuG
 
 A következő osztályok az űrlap-felismerő SDK fő funkcióit kezelik.
 
-|Name (Név)|Leírás|
+|Név|Leírás|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Ez az osztály minden űrlap-felismerő funkció esetében szükséges. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja.|
 |[TrainRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Ezt az osztályt használja az egyéni űrlap-felismerő modell betanítására saját betanítási adatok használatával. |
@@ -120,13 +121,13 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 A módszerek meghatározása előtt adja hozzá a következő változó definíciókat a **program** osztályának elejéhez. A változók némelyikét saját kezűleg kell kitöltenie. 
 
 * A szolgáltatás végpontjának értékét a Azure Portal **Áttekintés** szakaszában találja. 
-* A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+* A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-A metódus alatt adja meg a `Main`hivatkozott feladatot. `Main` Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
+A `Main` metódus alatt adja meg a `Main`-ben hivatkozott feladatot. Itt a fentiekben megadott előfizetési változók használatával hitelesítheti az ügyféloldali objektumot. A többi módszert később is megadhatja.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
@@ -173,7 +174,7 @@ Ha törölni szeretné az egyéni modellt a fiókjából, használja a következ
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást úgy, hogy `dotnet run` meghívja a parancsot az alkalmazás könyvtárából.
+Futtassa az alkalmazást az `dotnet run` parancs meghívásával az alkalmazás könyvtárából.
 
 ```console
 dotnet run
@@ -183,12 +184,12 @@ dotnet run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ha a fiókból törölni kívánt egyéni modellt is betanított, futtassa a metódust az [Egyéni modell törlése](#delete-a-custom-model)lehetőséggel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő .NET ügyféloldali függvénytárát használta az egyéni modell és az elemzési űrlapok betanításához. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

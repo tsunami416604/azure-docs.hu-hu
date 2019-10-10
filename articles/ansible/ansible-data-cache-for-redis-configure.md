@@ -1,35 +1,35 @@
 ---
-title: Oktatóanyag – gyorsítótárak konfigurálása az Azure Cache redis Ansible-lel |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre méretezhető, és indítsa újra az Azure Cache redis Ansible használatával
-keywords: az ansible, azure, devops, bash, forgatókönyv, gyorsítótár, a redis
+title: Oktatóanyag – gyorsítótárak konfigurálása az Azure cache-ben a Redis-hez a Ansible használatával
+description: Ismerje meg, hogyan használhatja a Ansible a Redis Azure cache létrehozására, méretezésére és újraindítására
+keywords: Ansible, Azure, devops, bash, ötletekbõl, cache, Redis
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 693b042f631044352eaae708905fefca02f38415
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 92592dffb3a9094ae74328e8819cafc9469c2ac7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231023"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241789"
 ---
-# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Oktatóanyag: Gyorsítótárak Azure Cache-ben a Redis használata az Ansible konfigurálása
+# <a name="tutorial-configure-caches-in-azure-cache-for-redis-using-ansible"></a>Oktatóanyag: gyorsítótárak konfigurálása az Azure cache-ben a Redis-hez a Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Az Azure Cache redis](/azure/azure-cache-for-redis/) egy nyílt forráskódú kompatibilis szolgáltatás, amely lehetővé teszi, hogy az adatok gyors hozzáférés biztosítása révén adatszinkronizálást biztosító alkalmazások készítése. 
+Az [Azure cache for Redis](/azure/azure-cache-for-redis/) egy nyílt forráskódú kompatibilis szolgáltatás, amely lehetővé teszi a gyors adatelérést biztosító, rugalmas alkalmazások készítését. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * Gyorsítótár létrehozása
-> * Gyorsítótár méretezése
+> * Gyorsítótár skálázása
 > * Gyorsítótár újraindítása
-> * Vegyen fel egy tűzfalszabályt a Cache-gyorsítótárhoz
-> * A gyorsítótár törlése
+> * Tűzfalszabály hozzáadása a gyorsítótárhoz
+> * Gyorsítótár törlése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ ms.locfileid: "65231023"
 
 ## <a name="create-a-cache"></a>Gyorsítótár létrehozása
 
-Hozzon létre egy Azure Cache Redis belül egy új erőforráscsoportot.
+Hozzon létre egy Azure-gyorsítótárat a Redis egy új erőforráscsoport keretein belül.
 
 ```yml
   - name: Create resource group
@@ -55,7 +55,7 @@ Hozzon létre egy Azure Cache Redis belül egy új erőforráscsoportot.
         size: C1 
 ```
 
-Cache gyorsítótár üzembe helyezése több percet is igénybe vehet. Az alábbi kód közli az Ansible várjon a művelet elvégzéséhez:
+A gyorsítótár kiépítése több percet is igénybe vehet. A következő kód azt jelzi, hogy a művelet befejezéséhez Ansible vár:
 
 ```yml
   - name: Wait for Redis provisioning to complete
@@ -68,7 +68,7 @@ Cache gyorsítótár üzembe helyezése több percet is igénybe vehet. Az aláb
     delay: 60
 ```
 
-A hosszú üzembe helyezési folyamat során több "error" üzenet jelenik meg. Ezek az üzenetek biztonságosan figyelmen kívül hagyhatja. A fontos üzenet az utolsó üzenet. Az alábbi példában nincsenek számos hibaüzenetek csak az utolsó ("ok") üzenet.
+A hosszadalmas kiépítési folyamat során több "hiba" üzenet jelenik meg. Ezek az üzenetek nyugodtan figyelmen kívül hagyhatók. A fontos üzenet az utolsó üzenet. A következő példában sok hibaüzenet jelenik meg, amíg az utolsó ("OK") üzenet be nem fejeződik.
 
 ```Output
 FAILED - RETRYING: Get facts (100 retries left).
@@ -84,11 +84,11 @@ FAILED - RETRYING: Get facts (91 retries left).
 ok: [localhost]
 ```
 
-## <a name="scale-the-cache"></a>A gyorsítótár méretezése
+## <a name="scale-the-cache"></a>A gyorsítótár skálázása
 
-Az Azure Cache redis különböző ajánlott az alkalmazás szükségleteinek rendelkezik. Ezek a gyorsítótár-beállítások a gyorsítótár méretét és a szolgáltatások választható rugalmasságot biztosítanak. Ha az alkalmazás követelményei a gyorsítótár létrehozása után módosíthatja, igény szerint méretezhető a gyorsítótárban. Méretezésével kapcsolatos további információkért lásd: [How to Scale Azure Cache redis](/azure/azure-cache-for-redis/cache-how-to-scale).
+Az Azure cache for Redis eltérő gyorsítótár-ajánlatokat tartalmaz az alkalmazás igényeitől függően. Ezek a gyorsítótár-beállítások rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak megválasztásával. Ha az alkalmazásra vonatkozó követelmények a gyorsítótár létrehozása után változnak, igény szerint méretezheti a gyorsítótárat. További információ a skálázásról: az [Azure cache skálázása a Redis](/azure/azure-cache-for-redis/cache-how-to-scale).
 
-Az alábbi mintakód méretezi a gyorsítótár **Standard**:
+A következő mintakód a **standard**méretre méretezi a gyorsítótárat:
 
 ```yml
 - name: Scale up Azure Cache for Redis
@@ -100,7 +100,7 @@ Az alábbi mintakód méretezi a gyorsítótár **Standard**:
         size: C1
 ```
 
-Gyorsítótár méretezése több percet is igénybe vehet. Az alábbi kód közli az Ansible várjon a művelet elvégzéséhez:
+A gyorsítótár skálázása több percet is igénybe vehet. A következő kód azt jelzi, hogy a művelet befejezéséhez Ansible vár:
 
 ```yml
   - name: Wait for Redis scaling up to complete
@@ -113,15 +113,15 @@ Gyorsítótár méretezése több percet is igénybe vehet. Az alábbi kód köz
     delay: 60
 ```
 
-A feladat üzembe helyezni Azure Cache redis hasonlóan kimenet a következő üzenet például a normál:
+A Redis-hez készült Azure cache kiépítéséhez hasonlóan a következő üzenethez hasonló kimenet jelenik meg:
 
 ```Ouput
 **FAILED - RETRYING: Get facts (100 retries left)** is normal.
 ```
 
-## <a name="reboot-the-cache"></a>Indítsa újra a gyorsítótárhoz
+## <a name="reboot-the-cache"></a>A gyorsítótár újraindítása
 
-A következő kódot a korábbi szakaszokban létrehozott gyorsítótárak újraindul.
+A következő kód újraindítja az előző szakaszban létrehozott gyorsítótárat.
 
 ```yml
   - name: Reboot Azure Cache for Redis
@@ -134,7 +134,7 @@ A következő kódot a korábbi szakaszokban létrehozott gyorsítótárak újra
 
 ### <a name="add-firewall-rule"></a>Tűzfalszabály hozzáadása
 
-A következő kódot egy tűzfalszabályt a gyorsítótár ad hozzá:
+A következő kód egy tűzfalszabály hozzáadását adja hozzá a gyorsítótárhoz:
 
 ```yml
   - name: Add Firewall rule
@@ -148,7 +148,7 @@ A következő kódot egy tűzfalszabályt a gyorsítótár ad hozzá:
 
 ## <a name="delete-the-cache"></a>A gyorsítótár törlése
 
-A következő kódot a gyorsítótár törlése:
+A következő kód törli a gyorsítótárat:
 
 ```yml
   - name: Delete Azure Cache for Redis
@@ -158,11 +158,11 @@ A következő kódot a gyorsítótár törlése:
       state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>A mintául szolgáló forgatókönyvek beolvasása
+## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
 
-A teljes minta forgatókönyv beolvasásához két módja van:
-- [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) , és mentse a `rediscache.yml`.
-- Hozzon létre egy új fájlt `rediscache.yml` és másolja bele a következő tartalommal:
+A teljes példa a következő két módon szerezhető be:
+- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/rediscache.yml) forgatókönyvet, és mentse a `rediscache.yml` értékre.
+- Hozzon létre egy `rediscache.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - name: Manage Azure Cache for Redis
@@ -240,17 +240,17 @@ A teljes minta forgatókönyv beolvasásához két módja van:
 
 ## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
 
-Ebben a szakaszban a forgatókönyv teszteléséhez a jelen cikkben ismertetett különféle szolgáltatások futtatása.
+Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
 
-Az a `vars` szakaszban, cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevét.
+A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook rediscache.yml
 ```
 
-A kimenet a következő eredményeket hasonlóan néz ki:
+A kimenet a következő eredményekhez hasonlóan néz ki:
 
 ```Output
 TASK [create resource group] 
@@ -326,9 +326,9 @@ Tuesday 12 March 2019  16:44:14 +0800 (0:00:06.217)       0:23:08.626
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az ebben a cikkben létrehozott erőforrásokat. 
+Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-A következő kód, Mentés `cleanup.yml`:
+Mentse a következő kódot `cleanup.yml`-ként:
 
 ```yml
 - hosts: localhost
@@ -341,15 +341,15 @@ A következő kód, Mentés `cleanup.yml`:
         state: absent
 ```
 
-Az a `vars` szakaszban, cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevét.
+A `vars` szakaszban cserélje le az `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](https://docs.microsoft.com/azure/ansible/)

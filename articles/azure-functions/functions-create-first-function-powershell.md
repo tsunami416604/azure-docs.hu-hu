@@ -1,6 +1,6 @@
 ---
-title: Az első PowerShell-függvény létrehozása az Azure Functions használatával
-description: Útmutató az első PowerShell-függvény létrehozása az Azure-ban a Visual Studio Code-ot.
+title: Az első PowerShell-függvény létrehozása a Azure Functions
+description: Ismerje meg, hogyan hozhatja létre az első PowerShell-függvényt az Azure-ban a Visual Studio Code használatával.
 services: functions
 keywords: ''
 author: joeyaiello
@@ -11,43 +11,43 @@ ms.date: 04/25/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.devlang: powershell
-ms.openlocfilehash: cb175191cb080cffb6feb52b724c29568fd549a5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c9de4cec417625bb8451457652dacb61550c31b0
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706513"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248333"
 ---
 # <a name="create-your-first-powershell-function-in-azure-preview"></a>Az első PowerShell-függvény létrehozása az Azure-ban (előzetes verzió)
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-Ez a rövid útmutató a cikk bemutatja, hogyan hozhat létre az első [kiszolgáló nélküli](https://azure.com/serverless) PowerShell függvény használatával a Visual Studio Code-ot.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első [kiszolgáló](https://azure.com/serverless) nélküli PowerShell-függvényt a Visual Studio Code használatával.
 
-![Az Azure Functions-kódhoz a Visual Studio Code-projektben](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
+![Kód Azure Functions egy Visual Studio Code-projektben](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
-Használja a [Azure Functions-bővítmény a Visual Studio Code-hoz] helyileg egy PowerShell-függvény létrehozása és majd üzembe helyezte azt egy új függvényalkalmazáshoz az Azure-ban. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
+A [Azure Functions-bővítmény a Visual Studio Code-hoz] -hoz készült Azure functions-bővítmény használatával helyileg hozhat létre egy PowerShell-függvényt, majd üzembe helyezheti azt egy új Azure-beli Function alkalmazásban. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
 
 > [!NOTE]  
-> PowerShell-támogatás a [Azure Functions bővítmény][azure functions-bővítmény a visual studio code-hoz] jelenleg le van tiltva alapértelmezés szerint. PowerShell-támogatás engedélyezésével egyike, ez a cikk lépéseit.
+> Alapértelmezés szerint a PowerShell-támogatás a Visual Studio Code [Azure functions-bővítményhez][azure functions-bővítmény a visual studio code-hoz] jelenleg le van tiltva. A PowerShell-támogatás engedélyezése a cikkben ismertetett lépések egyike.
 
-Az alábbi lépéseket a macOS, Windows és Linux-alapú operációs rendszerek támogatottak.
+A következő lépések támogatottak a macOS, a Windows és a Linux rendszerű operációs rendszereken.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A gyorsútmutató elvégzéséhez:
 
-* Telepítés [a PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
+* A [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows) telepítése
 
 * Telepítse a [Visual Studio Code-ot](https://code.visualstudio.com/) a [támogatott platformok](https://code.visualstudio.com/docs/supporting/requirements#_platforms) egyikén. 
 
-* Telepítés [PowerShell-bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
+* Telepítse [a PowerShell-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)-hoz.
 
-* Telepítés [.NET Core SDK 2.2 +](https://www.microsoft.com/net/download) (Azure Functions Core Tools szükséges és elérhető az összes támogatott platformon).
+* Telepítse a [.net Core SDK 2.2 +](https://www.microsoft.com/net/download) (a Azure functions Core Tools által megkövetelt és az összes támogatott platformon elérhető).
 
-* Verzió telepítése 2.x verzióját a [Azure Functions Core Tools](functions-run-local.md#v2).
+* Telepítse a [Azure functions Core Tools](functions-run-local.md#v2)2. x verzióját.
 
-* Emellett egy aktív Azure-előfizetéssel.
+* Aktív Azure-előfizetésre is szüksége van.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -57,62 +57,62 @@ A gyorsútmutató elvégzéséhez:
 
 A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz létre, amely közzétehető egy Azure-függvényalkalmazásban. A függvényalkalmazás lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások felügyelete, üzembe helyezése és megosztása érdekében. 
 
-1. A Visual Studio Code, válassza ki az Azure embléma megjelenítése a **Azure: Függvények** területre, és válassza az új projekt létrehozása ikonra.
+1. A Visual Studio Code-ban, válassza az Azure logót az **Azure: Functions** terület megjelenítéséhez, majd válassza a Create New Project (Új projekt létrehozása) ikont.
 
     ![Függvényalkalmazás-projekt létrehozása](./media/functions-create-first-function-powershell/create-function-app-project.png)
 
-1. Válasszon egy helyet, a Functions-projekt munkaterület, és válassza a **kiválasztása**.
+1. Válasszon egy helyet a functions projekt munkaterülethez, és válassza a **kiválasztás**lehetőséget.
 
     > [!NOTE]
     > Ez a cikk munkaterületen kívüli teljesítésre lett tervezve. Ebben az esetben ne válasszon olyan projektmappát, amely valamely munkaterület része.
 
-1. Válassza ki a **Powershell (előzetes verzió)** , a függvényalkalmazás projektjét a nyelvet, majd **Azure Functions v2**.
+1. Válassza ki a **PowerShellt (előzetes verzió)** a Function app-projekt nyelvének, majd **Azure functions v2**-nek.
 
-1. Válassza a **HTTP-eseményindító** az első függvény sablonként használni `HTTPTrigger` , a függvény neve, és válassza ki egy engedélyezési szintet **függvény**.
+1. Válassza ki a **http-triggert** az első függvény sablonja, használja a `HTTPTrigger` nevet a függvény neveként, és válassza ki a **függvény**engedélyezési szintjét.
 
     > [!NOTE]
-    > A **függvény** jogosultsági szint szükséges egy [függvénykulcs](functions-bindings-http-webhook.md#authorization-keys) értéke, ha a függvény-végpontot hív-e az Azure-ban. Ez megnehezíti az a függvény hívása csak mindenki számára.
+    > A **függvény engedélyezési szintjének** függvény [kulcsának](functions-bindings-http-webhook.md#authorization-keys) értékét kell megadnia a függvény végpontjának az Azure-ban való meghívásakor. Ez megnehezíti a függvény meghívását.
 
 1. Amikor a program kéri, válassza az **Add to workspace** (Hozzáadás munkaterülethez) lehetőséget.
 
-A Visual Studio Code egy új munkaterületet hoz létre a PowerShell függvényalkalmazás projektjét. Ez a projekt tartalmazza a [host.json](functions-host-json.md) és [local.settings.json](functions-run-local.md#local-settings-file) konfigurációs fájlokat, amelyek minden függvény a projekt a alkalmazni. Ez [PowerShell projekt](functions-reference-powershell.md#folder-structure) ugyanaz, mint egy Azure-ban futó függvényalkalmazást.
+A Visual Studio Code létrehozza a PowerShell-függvény alkalmazás projektjét egy új munkaterületen. Ez a projekt tartalmazza a [Host. JSON](functions-host-json.md) és a [Local. Settings. JSON](functions-run-local.md#local-settings-file) konfigurációs fájlokat, amelyek a projekt összes függvényére érvényesek. Ez a [PowerShell-projekt](functions-reference-powershell.md#folder-structure) ugyanaz, mint az Azure-ban futó Function alkalmazás.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-Az Azure Functions Core Tools lehetővé teszi, hogy futtatását és az Azure Functions-projekt helyi hibakeresését a Visual Studio Code integrálható.  
+A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé teszi egy Azure Functions-projekt helyi futtatását és hibakeresését.  
 
-1. Hibakeresése a függvényt, helyezze be a hívást a [ `Wait-Debugger` ] előtt csatolja a hibakeresőt a függvénykódot a parancsmag nyomja le az F5 indítsa el a függvényalkalmazás projektjét, és társítsa a hibakeresőt. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg.
+1. A függvény hibakereséséhez helyezzen be egy hívást az [`Wait-Debugger`] parancsmaghoz a függvény kódjában, mielőtt csatolni szeretné a hibakeresőt, majd nyomja le az F5 billentyűt a Function app projekt elindításához és a hibakereső csatolásához. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg.
 
 1. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
 
     ![Az Azure helyi kimenete](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
 
-1. A lekérdezési karakterlánc hozzáfűzése `?name=<yourname>` URL-címet, és a majd `Invoke-RestMethod` a kérelem végrehajtása a következő:
+1. Fűzze hozzá a `?name=<yourname>` lekérdezési karakterláncot ehhez az URL-címhez, majd használja a `Invoke-RestMethod` értéket a kérelem végrehajtásához a következőképpen:
 
     ```powershell
     PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
     Hello PowerShell
     ```
 
-    Egy böngészőből is a GET-kérés hajthat végre.
+    A GET kérést egy böngészőből is végrehajthatja.
 
-    A HttpTrigger végpont nélkül megadásának hívható egy `name` lekérdezési paramétert, vagy a törzsben paraméter, a függvény visszaadja az 500-as hiba. Amikor a kód run.ps1, láthatja, hogy ez a hiba a kialakítás miatt jelentkezik.
+    Ha a HttpTrigger végpontot úgy hívja meg, hogy egy `name` paramétert sem lekérdezési paraméterként, sem pedig a törzsben, a függvény egy [HttpStatusCode]:: BadRequest hibát ad vissza. Amikor a Run. ps1 kódban áttekinti a kódot, láthatja, hogy ez a hiba a tervezés szerint történik.
 
 1. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
 
 Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
 
 > [!NOTE]
-> Ne felejtse el eltávolítani a beléptetés-visszavonásokat `Wait-Debugger` mielőtt közzéteszi a függvények az Azure-bA. 
+> A függvények Azure-ba való közzététele előtt ne felejtse el, hogy eltávolítsa a `Wait-Debugger` hívásait. 
 
 > [!NOTE]
-> Függvényalkalmazás létrehozása az Azure-ban csak akkor kéri a Függvényalkalmazás neve. AzureFunctions.advancedCreation kérni az összes többi értéket Igaz értékre van állítva.
+> Függvényalkalmazás létrehozása az Azure-ban csak a függvényalkalmazás nevét fogja kérni. A azureFunctions. advancedCreation tulajdonságot állítsa True értékre, hogy a rendszer minden más értéket kérjen.
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
 ## <a name="test"></a>A függvény futtatása az Azure-ban
 
-Győződjön meg arról, hogy fut-e a közzétett függvényhez az Azure-ban, hajtsa végre a következő PowerShell-parancsot, és cserélje le a `Uri` az előző lépésben a HTTPTrigger függvény URL-paraméter. Mint korábban, fűzze hozzá a lekérdezési karakterlánc `&name=<yourname>` az URL-címhez, akkor az alábbi példában látható módon:
+Annak ellenőrzéséhez, hogy a közzétett függvény fut-e az Azure-ban, hajtsa végre a következő PowerShell-parancsot, és cserélje le a `Uri` paramétert az előző lépésben a HTTPTrigger függvény URL-címére. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez, ahogy az alábbi példában is látható:
 
 ```powershell
 PS > Invoke-WebRequest -Method Get -Uri "https://glengatest-vscode-powershell.azurewebsites.net/api/HttpTrigger?code=nrY05eZutfPqLo0som...&name=PowerShell"
@@ -135,14 +135,14 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 16
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Visual Studio Code segítségével hozzon létre egy PowerShell-függvényalkalmazást egy egyszerű HTTP-eseményindítóval aktivált függvényt. További információk is érdemes [egy PowerShell-függvény helyi hibakeresése](functions-debug-powershell-local.md) az Azure Functions Core Tools használatával. Tekintse meg a [fejlesztői útmutató az Azure Functions PowerShell](functions-reference-powershell.md).
+A Visual Studio Code használatával egy egyszerű HTTP-triggerrel aktivált függvény használatával hozhat létre egy PowerShell-függvény alkalmazást. Érdemes lehet többet megtudni a [PowerShell-függvények helyi hibakereséséről](functions-debug-powershell-local.md) a Azure functions Core Tools használatával. Tekintse meg a [Azure functions PowerShell fejlesztői útmutatóját](functions-reference-powershell.md).
 
 > [!div class="nextstepaction"]
-> [Az Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions-bővítmény a Visual Studio Code-hoz]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+["WAIT-Debugger"]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

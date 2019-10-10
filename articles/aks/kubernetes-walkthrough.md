@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 3a07186856fd05c65f583a94f324df05e348d24f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 1d700afe36d51f0b939629f86d770e54072f47a9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960018"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255530"
 ---
-# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes szolgáltatásbeli (ak-) fürt üzembe helyezése az Azure CLI használatával
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Azure Kubernetes-szolgáltatás (ak) fürt üzembe helyezése az Azure CLI használatával
 
 Ebben a rövid útmutatóban egy Azure Kubernetes-szolgáltatási (ak-) fürtöt helyez üzembe az Azure CLI használatával. Az AK egy felügyelt Kubernetes szolgáltatás, amely lehetővé teszi fürtök gyors üzembe helyezését és kezelését. A fürtben fut egy többtárolós alkalmazás, amely tartalmazza a webes kezelőfelületet és a Redis-példányt. Ezután megtudhatja, hogyan figyelheti a fürt állapotát és az alkalmazást futtató hüvelyeket.
 
 Ha Windows Server-tárolókat szeretne használni (jelenleg előzetes verzióban az AK-ban), tekintse meg [a Windows Server-tárolókat támogató AK-fürt létrehozása][windows-container-cli]című témakört.
 
-![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure szavazó alkalmazás működés közben](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
@@ -34,7 +34,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 > [!Note]
 > Ha a rövid útmutatóban helyileg futtatja a parancsokat (Azure Cloud Shell helyett), győződjön meg arról, hogy rendszergazdaként futtatja a parancsokat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal.
 
@@ -230,7 +230,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngészőt a szolgáltatás külső IP-címére.
 
-![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure szavazó alkalmazás működés közben](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 Az AK-fürt létrehozásakor a [tárolók Azure monitor](../azure-monitor/insights/container-insights-overview.md) a fürt csomópontjai és a hüvelyek állapotára vonatkozó mérőszámok rögzítésére lettek beállítva. Ezek az állapotmetrikák elérhetők az Azure Portalon.
 
@@ -245,13 +245,13 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. Az egyszerű szolgáltatás eltávolításának lépéseiért lásd: az [AK szolgáltatással kapcsolatos főbb megfontolások és törlés][sp-delete].
 
-## <a name="get-the-code"></a>A kód letöltése
+## <a name="get-the-code"></a>Kód letöltése
 
 Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használtak a Kubernetes központi telepítésének létrehozásához. A kapcsolódó alkalmazáskód, Docker-fájl és Kubernetes-jegyzékfájl a GitHubon érhetőek el.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját is elérheti][kubernetes-dashboard] az AK-fürthöz.
 

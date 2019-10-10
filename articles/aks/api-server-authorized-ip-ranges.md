@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058348"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241136"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Előzetes verzió – biztonságos hozzáférés az API-kiszolgálóhoz az Azure Kubernetes szolgáltatásban (ak) lévő, jogosult IP-címtartományok használatával
 
@@ -26,13 +26,13 @@ Ez a cikk bemutatja, hogyan használható az API-kiszolgáló által engedélyez
 > * [AK-támogatási szabályzatok][aks-support-policies]
 > * [Azure-támogatás – gyakori kérdések][aks-faq]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy a [kubenet][kubenet]-t használó fürtökkel dolgozik.  Az [Azure Container Network Interface (CNI)][cni-networking] alapú fürtök esetében nem lesz szükség a hozzáférés biztosításához szükséges útválasztási táblázatra.  Az útválasztási táblázatot manuálisan kell létrehoznia.  További információért lásd: [útválasztási táblázatok kezelése](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 Az API-kiszolgáló által jóváhagyott IP-címtartományok csak a létrehozott új AK-fürtök esetében működnek. Ez a cikk bemutatja, hogyan hozhat létre egy AK-fürtöt az Azure CLI használatával.
 
-Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.61 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
 
@@ -77,7 +77,7 @@ Az API-kiszolgáló által jóváhagyott IP-címtartományok konfigurálásakor 
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok áttekintése
 
-A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például `kubectl` a vagy a Kubernetes irányítópultjának interakcióját biztosítja. Az AK egybérlős fürtös főkiszolgálót biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-címet kap, és a hozzáférés vezérlése szerepköralapú hozzáférés-vezérléssel (RBAC) történik.
+A Kubernetes API-kiszolgáló az alapul szolgáló Kubernetes API-k számára elérhető. Ez az összetevő a felügyeleti eszközök, például a `kubectl` vagy a Kubernetes irányítópult interakcióját biztosítja. Az AK egybérlős fürtös főkiszolgálót biztosít dedikált API-kiszolgálóval. Alapértelmezés szerint az API-kiszolgáló nyilvános IP-címet kap, és a hozzáférés vezérlése szerepköralapú hozzáférés-vezérléssel (RBAC) történik.
 
 Az egyébként nyilvánosan elérhető AK-vezérlési sík/API-kiszolgáló hozzáférésének biztonságossá tételéhez engedélyezheti és használhatja az engedélyezett IP-tartományokat. Ezek a megengedett IP-címtartományok csak a meghatározott IP-címtartományok használatát teszik lehetővé az API-kiszolgálóval való kommunikációhoz. Az API-kiszolgálónak egy olyan IP-címről érkező kérés le van tiltva, amely nem része ezeknek az engedélyezett IP-tartományoknak. Továbbra is a RBAC használatával engedélyezze a felhasználókat és az általuk kért műveleteket.
 
@@ -228,7 +228,7 @@ Az API-kiszolgáló által engedélyezett IP-címtartományok engedélyezéséhe
 
 Használja az [az AK Update][az-aks-update] parancsot, és határozza meg a *--API-Server-engedélyezett-IP-tartományokat* az engedélyezéshez. Ezek az IP-címtartományok általában a helyszíni hálózatok által használt címtartományok. Adja hozzá az előző lépésben beszerzett saját Azure-tűzfal nyilvános IP-címét, például *20.42.25.196/32*.
 
-Az alábbi példa lehetővé teszi az API-kiszolgáló által a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtön lévő, IP-címének engedélyezését. Az engedélyezett IP-címtartományok az *20.42.25.196/32* (az Azure tűzfal nyilvános IP-címe), majd a *172.0.0.0/16* és a *168.10.0.0/18*:
+Az alábbi példa lehetővé teszi az API-kiszolgáló által a *myResourceGroup*nevű erőforráscsoport *myAKSCluster* nevű fürtön lévő, IP-címének engedélyezését. Az engedélyezett IP-címtartományok az *20.42.25.196/32* (az Azure tűzfal nyilvános IP-címe), majd a *172.0.0.0/16* (Pod/Nodes címtartomány) és a *168.10.0.0/18* (ServiceCidr):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Adja hozzá ezeket a tartományokat egy engedélyezési listához:
+> - A tűzfal nyilvános IP-címe
+> - A szolgáltatás CIDR
+> - Az alhálózatok címtartománya, a csomópontok és a hüvelyek között
+> - Bármely tartomány, amely azokat a hálózatokat képviseli, amelyekről a fürtöt felügyelni szeretné
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>A hitelesítő IP-címtartományok frissítése vagy letiltása
 
@@ -248,7 +255,7 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben engedélyezte az API-kiszolgáló engedélyezett IP-tartományait. Ez a megközelítés a biztonságos AK-fürtök futtatásának egyik része.
 

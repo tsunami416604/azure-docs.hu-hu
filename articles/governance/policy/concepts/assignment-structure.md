@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 5326e765701a42323ea62df8d35128c4117b2ed9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: a75c64ebb6ba3eeffeccd98cf41365fe96218573
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981419"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255892"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-hozzárendelés struktúrája
 
@@ -19,12 +19,12 @@ A Azure Policy a szabályzat-hozzárendelések segítségével határozzák meg,
 
 A JSON használatával szabályzat-hozzárendelést hozhat létre. A szabályzat-hozzárendelés a következő elemeket tartalmazza:
 
-- Megjelenített név
-- description
+- megjelenítendő név
+- leírás
 - metaadatok
 - kényszerítési mód
 - házirend-definíció
-- parameters
+- paraméterek
 
 Például a következő JSON egy szabályzat-hozzárendelést mutat be _DoNotEnforce_ módban dinamikus paraméterekkel:
 
@@ -58,15 +58,14 @@ A **DisplayName** és a **Leírás** használatával azonosíthatja a szabályza
 
 ## <a name="enforcement-mode"></a>Kényszerítési mód
 
-A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, hogy a házirend érvénybe léptetése vagy az [Azure-műveletnapló](../../../azure-monitor/platform/activity-logs-overview.md)bejegyzéseinek elindítása nélkül teszteljék a meglévő erőforrásokra vonatkozó szabályzatok eredményét.
-Ezt a forgatókönyvet általában "What If"-ként emlegetik, és a biztonságos üzembe helyezési gyakorlatokhoz igazodik.
+A **enforcementMode** tulajdonság lehetővé teszi a felhasználók számára, hogy a házirend érvénybe léptetése vagy az [Azure-műveletnapló](../../../azure-monitor/platform/activity-logs-overview.md)bejegyzéseinek elindítása nélkül teszteljék a meglévő erőforrásokra vonatkozó szabályzatok eredményét. Ezt a forgatókönyvet általában "What If"-ként emlegetik, és a biztonságos üzembe helyezési gyakorlatokhoz igazodik. a **enforcementMode** eltér a [letiltott](./effects.md#disabled) effektustól, mivel ennek hatására az erőforrás-kiértékelés egyáltalán nem történik meg.
 
 Ennek a tulajdonságnak a következő értékei vannak:
 
-|Mód |JSON-érték |Type |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
+|Mód |JSON-érték |Type (Típus) |Szervizelés manuálisan |Tevékenység naplójának bejegyzése |Leírás |
 |-|-|-|-|-|-|
-|Enabled |Alapértelmezett |Karakterlánc |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
-|Letiltva |DoNotEnforce |Karakterlánc |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
+|Engedélyezve |Alapértelmezett |sztring |Igen |Igen |A házirend hatása az erőforrás létrehozásakor vagy frissítésekor lép érvénybe. |
+|Letiltva |DoNotEnforce |sztring |Igen |Nem | A házirend-effektus nem kényszerített az erőforrás létrehozásakor vagy frissítésekor. |
 
 Ha a **enforcementMode** nincs megadva házirend-vagy kezdeményezési definícióban, a rendszer az _alapértelmezett_ értéket használja. A [szervizelési feladatok](../how-to/remediate-resources.md) a [deployIfNotExists](./effects.md#deployifnotexists) házirendek esetében is elindíthatók, még akkor is, ha a **enforcementMode** beállítása _DoNotEnforce_.
 
@@ -93,7 +92,7 @@ Ez a kialakítás lehetővé teszi egy házirend vagy kezdeményezési definíci
 
 Ebben a példában a házirend-definícióban korábban definiált paraméterek a következők: `prefix` és `suffix`. Ez az adott szabályzat-hozzárendelés @no__t – 0 – **depta** és `suffix` – **LC**. Ugyanez a házirend-definíció a különböző részlegekhez tartozó paraméterek eltérő készletével használható, így csökkentve a házirend-definíciók ismétlődését és összetettségét, miközben rugalmasságot biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](../how-to/programmatically-create.md).

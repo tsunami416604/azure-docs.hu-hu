@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/07/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9caf82d2fa4683e845d23b5496f9e7b8f9682ec7
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: e99bdd92d4a1aab833a95943b22aaabe7f0daa1d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234828"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248665"
 ---
 # <a name="vm-series-vcpu-limit-increase"></a>Virtuálisgép-sorozatok vCPU-korlátjának növelése
 
@@ -29,7 +29,7 @@ Mostantól a **Súgó + támogatás** panelen vagy a portálon a **használat + 
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
 
-1. Válassza https://portal.azure.com a **Súgó + támogatás**lehetőséget.
+1. @No__t – 0 értéknél válassza a **Súgó + támogatás**lehetőséget.
 
    ![Súgó és támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -57,7 +57,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
    ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/quota-details.png)
 
-8. Válassza ki a növekményt igénylő **SKU** -családokat. 
+8. Válassza ki a növekményt igénylő **SKU-családokat** . 
 
    ![Termékváltozat-család](./media/resource-manager-core-quotas-request/sku-family.png)
 
@@ -70,7 +70,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
 Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
 
-1. Válassza https://portal.azure.com ki az előfizetések elemet.
+1. @No__t – 0 közül válassza az **előfizetések**lehetőséget.
 
    ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
 
@@ -94,7 +94,7 @@ Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azur
 
    ![Kvóta problémájának panelje](./media/resource-manager-core-quotas-request/quota-details.png)
 
-7. Válassza ki a növekményt igénylő **SKU** -családokat.
+7. Válassza ki a növekményt igénylő **SKU-családokat** .
 
    ![SKU-sorozat kiválasztva](./media/resource-manager-core-quotas-request/sku-family.png)
 

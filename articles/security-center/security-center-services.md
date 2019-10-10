@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982837"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254505"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
 > [!NOTE]
->Néhány funkció csak a standard szinttel érhető el. Ha még nem regisztrált a Security Center Standard csomagra, ingyenes próbaidőszak érhető el. További információkért tekintse meg a [Security Center díjszabási lapját](https://azure.microsoft.com/pricing/details/security-center/).
+>Néhány funkció csak a standard szinttel érhető el. Ha még nem regisztrált a Security Center Standard csomagra, ingyenes próbaidőszak érhető el. További információkért tekintse meg a [Security Center díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 A következő szakaszban Security Center a [támogatott platformokhoz](security-center-os-coverage.md)elérhető funkciók láthatók.
 
@@ -37,33 +37,33 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 
 |Kiszolgáló|Windows|||Linux|||Díjszabás|
 |----|----|----|----|----|----|----|----|
-|**Környezet**|**Azure**||**Non-Azure**|**Azure**||**Non-Azure**||
+|**Környezet**|**Azure**||**Nem Azure**|**Azure**||**Nem Azure**||
 ||**Virtuális gép**|**Virtuálisgép-méretezési csoport**||**Virtuális gép**|**Virtuálisgép-méretezési csoport**|
-|A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
-|Hálózati veszélyforrások észlelésével kapcsolatos riasztások|✔|✔|X|✔|✔|X|Standard|
-|Microsoft Defender ATP-integráció|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
-|Hiányzó javítások|✔|✔|✔|✔|✔|✔|Free|
-|Biztonsági konfigurációk|✔|✔|✔|✔|✔|✔|Free|
-|Endpoint Protection-Értékelés|✔|✔|✔|X|X|X|Free|
-|VIRTUÁLIS gépek igény szerinti elérése|✔|X|X|✔|X|X|Standard|
-|Adaptív alkalmazásvezérlés|✔|X|✔|✔|X|✔|Standard|
-|Fájlintegritási monitorozás|✔|✔|✔|✔|✔|✔|Standard|
-|Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Free|
-|Külső gyártótól származó telepítés|✔|X|X|✔|X|X|Free|
-|NSG-Értékelés|✔|✔|X|✔|✔|X|Free|
-|Fájlok nem észlelhető veszélyforrások észlelése|✔|✔|✔|X|X|X|Standard|
-|Hálózati térkép|✔|✔|X|✔|✔|X|Standard|
-|Hálózatok adaptív megerősítése|✔|X|X|✔|X|X|Standard|
+|[Microsoft Defender ATP-integráció](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|X|X|X|Standard|
+|[A virtuális gép viselkedési elemzési veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (támogatott verziókon)|✔ (támogatott verziókon)|✔|Javaslatok (ingyenes) veszélyforrások észlelése (standard)|
+|[A fájlok nem észlelhető veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standard|
+|[Hálózati veszélyforrások észlelésével kapcsolatos riasztások](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standard|
+|[VIRTUÁLIS gépek igény szerinti elérése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standard|
+|[Fájl integritásának figyelése](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standard|
+|[Adaptív alkalmazásvezérlők](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standard|
+|[Hálózati Térkép](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standard|
+|[Adaptív hálózat megerősítése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standard|
 |Adaptív hálózati vezérlők|✔|✔|X|✔|✔|X|Standard|
-|Szabályozási megfelelőségi irányítópult & jelentések|✔|✔|✔|✔|✔|✔|Standard|
+|[Szabályozási megfelelőségi irányítópult & jelentések](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standard|
 |Javaslatok és veszélyforrások észlelése a Docker által üzemeltetett IaaS-tárolókban|X|X|X|✔|✔|✔|Standard|
+|Hiányzó operációsrendszer-javítások értékelése|✔|✔|✔|✔|✔|✔|Ingyenes|
+|Biztonsági konfigurációs beállítások értékelése|✔|✔|✔|✔|✔|✔|Ingyenes|
+|[Endpoint Protection-Értékelés](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Ingyenes|
+|Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Ingyenes|
+|Harmadik féltől származó sebezhetőségi felmérés|✔|X|X|✔|X|X|Ingyenes|
+|[Hálózati biztonsági értékelés]()|✔|✔|X|✔|✔|X|Ingyenes|
 
 ### Támogatott Endpoint Protection-megoldások<a name="endpoint-supported"></a>
 
 A következő táblázat a következőkhöz nyújt mátrixot:
 
  - Azt határozza meg, hogy használható-e a Azure Security Center az egyes megoldások telepítéséhez.
- - Melyik Endpoint Protection-megoldás Security Center képes felderíteni. Ha a rendszer felderíti az egyik Endpoint Protection-megoldást, Security Center nem javasolja, hogy telepítsen egyet.
+ - Melyik Endpoint Protection-megoldás Security Center képes felderíteni. Ha a listán szereplő Endpoint Protection-megoldás észlelhető, Security Center nem javasolja, hogy telepítsen egyet.
 
 További információ az egyes védelemekhez kapcsolódó javaslatok létrehozásáról: [Endpoint Protection Értékelés és javaslatok](security-center-endpoint-protection.md).
 
@@ -77,7 +77,7 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 | McAfee v10+ | Linux Server termékcsalád  | Nem | Igen **@no__t – 1** |
 | Sophos v9 +| Linux Server termékcsalád  | Nem | Igen **@no__t – 1**  |
 
- **@no__t – 1** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el, és nem jelenik meg Azure Security Center portálon.
+ **@no__t – 1** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
 
 > [!NOTE]
 >
@@ -92,38 +92,38 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |Szolgáltatás|Javaslatok (ingyenes)|Fenyegetések észlelése (standard)|
 |----|----|----|
 |SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
+|PostGreSQL|✔| ✔|
+|MySQL|✔| ✔|
 |CosmosDB|X| ✔|
-|Blob Storage|✔| ✔|
-|Tárfiók|✔| NA|
-|App Service-ben|✔| ✔|
+|Blobtároló|✔| ✔|
+|Tárfiók|✔| n/a|
+|App Service|✔| ✔|
 |Függvény|✔| X|
 |Felhőszolgáltatás|✔| X|
-|VNet|✔| NA|
-|Subnet|✔| NA|
-|Hálózati adapter|✔| NA|
-|NSG|✔| NA|
-|Subscription|✔ **| ✔|
+|VNet|✔| n/a|
+|Alhálózat|✔| n/a|
+|Hálózati adapter|✔| n/a|
+|NSG|✔| n/a|
+|Előfizetés|✔ * *| ✔|
 |Batch-fiók|✔| X|
 |Service Fabric-fiók|✔| X|
 |Automation-fiók|✔| X|
-|Terheléselosztó|✔| X|
-|Keresés|✔| X|
+|Load Balancer|✔| X|
+|Search|✔| X|
 |Service Bus-névtér|✔| X|
-|Streamelemzés|✔| X|
+|Stream Analytics|✔| X|
 |Eseményközpont-névtér|✔| X|
 |Logikai alkalmazások|✔| X|
-|Redis|✔| NA|
+|Redis|✔| n/a|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
-|Kulcstartó|✔| X|
+|Key Vault|✔| X|
 
 \* ezek a funkciók jelenleg a nyilvános előzetes verzióban támogatottak.
 
 \* @ no__t-1 Azure Active Directory (Azure AD) javaslatok csak standard előfizetések esetén érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a frissítés az egyéni rendszerképet az Azure virtuálisgép-méretezési csoport állítja be az Ansible-lel |} A Microsoft Docs
-description: 'Útmutató: egyéni rendszerképpel rendelkező virtuálisgép-méretezési csoportok az Azure-ban frissíteni az Ansible használatával'
+title: Oktatóanyag – Azure-beli virtuálisgép-méretezési csoportok egyéni rendszerképének frissítése a Ansible használatával
+description: Megtudhatja, hogyan frissítheti a virtuálisgép-méretezési csoportokat az Azure-ban egyéni rendszerképpel a Ansible használatával
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 ms.topic: tutorial
 ms.service: ansible
@@ -8,29 +8,29 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d3eedc5b83190af46669b9b5df8643f3c80e9bb1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230846"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241334"
 ---
-# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Oktatóanyag: Frissítés az egyéni rendszerképet az Azure virtuálisgép-méretezési csoport állítja be, az Ansible-lel
+# <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>Oktatóanyag: az Azure virtuálisgép-méretezési csoportok egyéni rendszerképének frissítése a Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-vmss.md](../../includes/open-source-devops-intro-vmss.md)]
 
-Virtuális gép üzembe helyezését követően a szoftver a virtuális gép konfigurálása az alkalmazás igényeinek megfelelően. Ahelyett, hogy a konfigurációs feladat elvégzése az egyes virtuális Gépekhez, létrehozhat egy egyéni rendszerképet. Egyéni rendszerkép egy meglévő virtuális Gépet, amely tartalmazza az összes telepített szoftvert egy pillanatképet. Amikor Ön [konfigurálása egy méretezési csoportot](./ansible-create-configure-vmss.md), akkor adja meg a méretezési csoport virtuális gépeinek esetében használni kívánt lemezkép. Egyéni rendszerkép használatával minden egyes Virtuálisgép-példány azonos módon konfigurálva van az alkalmazás. Egyes esetekben szükség lehet a méretezési egyéni lemezkép frissítése. Ezt a feladatot a lépéseknek az ismertetése, ebben az oktatóanyagban.
+A virtuális gép üzembe helyezése után konfigurálja a virtuális gépet az alkalmazás által igényelt szoftverrel. Ennek a konfigurációs feladatnak az egyes virtuális gépeken való használata helyett egyéni rendszerképet hozhat létre. Az egyéni rendszerkép egy meglévő virtuális gép pillanatképe, amely tartalmazza a telepített szoftvereket. [Méretezési csoport konfigurálásakor](./ansible-create-configure-vmss.md)meg kell adnia a méretezési csoport virtuális gépei számára használni kívánt rendszerképet. Egyéni rendszerkép használatával minden virtuálisgép-példány azonos módon van konfigurálva az alkalmazáshoz. Időnként előfordulhat, hogy frissítenie kell a méretezési csoport egyéni rendszerképét. Ez a feladat az oktatóanyag középpontjában áll.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Két virtuális gépet HTTPD konfigurálása
-> * Egyéni rendszerkép létrehozása meglévő virtuális gépből
-> * Hozzon létre egy méretezési csoportot egy rendszerképből
-> * Az egyéni lemezkép frissítése
+> * Két virtuális gép konfigurálása a HTTPD segítségével
+> * Egyéni rendszerkép létrehozása meglévő virtuális gépről
+> * Méretezési csoport létrehozása rendszerképből
+> * Az egyéni rendszerkép frissítése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,19 +39,19 @@ Virtuális gép üzembe helyezését követően a szoftver a virtuális gép kon
 
 ## <a name="configure-two-vms"></a>Két virtuális gép konfigurálása
 
-A forgatókönyv kód ebben a szakaszban két virtuális gépet hoz létre HTTPD is telepíthető. 
+Az ebben a szakaszban található forgatókönyv-kód két olyan virtuális gépet hoz létre, amelyeken a HTTPD is telepítve van. 
 
-A `index.html` oldala minden virtuális gép tesztelési karakterláncként jeleníti meg:
+Az egyes virtuális gépekhez tartozó `index.html` oldalon egy teszt sztring jelenik meg:
 
-* Első virtuális gép értéket jeleníti meg. `Image A`
-* Második virtuális gép értéket jeleníti meg. `Image B`
+* Az első virtuális gép a `Image A` értéket jeleníti meg
+* A második virtuális gép a `Image B` értéket jeleníti meg
 
-Ez a karakterlánc minden virtuális gép konfigurálása másik szoftverfrissítési utánoznia hivatott.
+Ez a karakterlánc az egyes virtuális gépek különböző szoftverekkel való konfigurálását jelenti.
 
-A minta forgatókönyv beolvasásához két módja van:
+A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) , és mentse a `create_vms.yml`.
-* Hozzon létre egy új fájlt `create_vms.yml` és másolja bele a következő tartalommal:
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml) forgatókönyvet, és mentse a `create_vms.yml` értékre.
+* Hozzon létre egy `create_vms.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - name: Create two VMs (A and B) with HTTPS
@@ -167,39 +167,39 @@ A minta forgatókönyv beolvasásához két módja van:
       msg: "Public IP Address B: {{ pip_output.results[1].state.ip_address }}"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot, és cserélje le `myrg` az az erőforráscsoport neve:
+Futtassa a forgatókönyvet a `ansible-playbook` paranccsal, és cserélje le az `myrg` értéket az erőforráscsoport nevére:
 
 ```bash
 ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 ```
 
-Mert a `debug` a forgatókönyv szakaszait a `ansible-playbook` parancs nyomtatja ki minden virtuális gép IP-címét. Ezen IP-címek későbbi használat érdekében másolja.
+A forgatókönyv @no__t – 0 szakaszában az `ansible-playbook` parancs az egyes virtuális gépek IP-címét fogja kinyomtatni. Másolja ezeket az IP-címeket későbbi használatra.
 
-![Virtuális gép IP-címek](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
+![Virtuális gépek IP-címei](media/ansible-vmss-update-image/vmss-update-vms-ip-addresses.png)
 
-## <a name="connect-to-the-two-vms"></a>A két virtuális gépekhez
+## <a name="connect-to-the-two-vms"></a>Kapcsolódás a két virtuális géphez
 
-Ebben a szakaszban csatlakozik minden virtuális Géphez. Ahogy korábban már említettük, az előző szakaszban, a karakterláncok `Image A` és `Image B` utánoznia, két különálló virtuális gépek különböző konfigurációival.
+Ebben a szakaszban minden virtuális géphez csatlakozik. Ahogy az előző szakaszban is említettük, a `Image A` és a `Image B` karakterláncok két különböző konfigurációval rendelkező virtuális gépet utánoznak.
 
-Az IP-címeket használja az előző szakaszban, mindkét virtuális gép csatlakozzon:
+Az előző szakasz IP-címeinek használatával csatlakozhat mindkét virtuális géphez:
 
-![Képernyőkép A virtuális gépről](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
+![Képernyőkép az A virtuális gépről](media/ansible-vmss-update-image/vmss-update-browser-vma.png)
 
-![Képernyőfelvétel: a B virtuális gépről](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
+![Képernyőkép a B virtuális gépről](media/ansible-vmss-update-image/vmss-update-browser-vmb.png)
 
-## <a name="create-images-from-each-vm"></a>Az egyes Virtuálisgép-rendszerképek létrehozása
+## <a name="create-images-from-each-vm"></a>Lemezképek létrehozása az egyes virtuális gépekről
 
-Ezen a ponton rendelkezik két virtuális gépet a némileg eltérő konfigurációk (azok `index.html` fájlok).
+Ekkor két, némileg eltérő konfigurációval rendelkező virtuális gép van (a `index.html` fájl).
 
-Ebben a szakaszban a forgatókönyv kód minden virtuális géphez hoz létre egy egyéni rendszerképet:
+Az ebben a szakaszban található forgatókönyv-kód minden virtuális géphez létrehoz egy egyéni rendszerképet:
 
-* `image_vmforimageA` – A virtuális gép, amely megjeleníti a létrehozott egyéni rendszerkép `Image A` a kezdőlapon.
-* `image_vmforimageB` – A virtuális gép, amely megjeleníti a létrehozott egyéni rendszerkép `Image B` a kezdőlapon.
+* @no__t – 0 – a virtuális géphez létrehozott egyéni rendszerkép, amely a kezdőlapján a `Image A` értéket jeleníti meg.
+* @no__t – 0 – a virtuális géphez létrehozott egyéni rendszerkép, amely a kezdőlapján a `Image B` értéket jeleníti meg.
 
-A minta forgatókönyv beolvasásához két módja van:
+A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) , és mentse a `capture-images.yml`.
-* Hozzon létre egy új fájlt `capture-images.yml` és másolja bele a következő tartalommal:
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml) forgatókönyvet, és mentse a `capture-images.yml` értékre.
+* Hozzon létre egy `capture-images.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - name: Capture VM Images
@@ -228,24 +228,24 @@ A minta forgatókönyv beolvasásához két módja van:
       - B
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot, és cserélje le `myrg` az az erőforráscsoport neve:
+Futtassa a forgatókönyvet a `ansible-playbook` paranccsal, és cserélje le az `myrg` értéket az erőforráscsoport nevére:
 
 ```bash
 ansible-playbook capture-images.yml --extra-vars "resource_group=myrg"
 ```
 
-## <a name="create-scale-set-using-image-a"></a>A rendszerkép használata a méretezési csoport létrehozása
+## <a name="create-scale-set-using-image-a"></a>Méretezési csoport létrehozása az A rendszerkép használatával
 
-Ebben a szakaszban egy forgatókönyv használható a következő Azure-erőforrások konfigurálása:
+Ebben a szakaszban egy, a következő Azure-erőforrások konfigurálására szolgáló forgatókönyvt használunk:
 
 * Nyilvános IP-cím
-* Terheléselosztó
-* Méretezési csoport a hivatkozások `image_vmforimageA`
+* Load Balancer
+* Méretezési csoport, amely a `image_vmforimageA` értékre hivatkozik
 
-A minta forgatókönyv beolvasásához két módja van:
+A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) , és mentse a `create-vmss.yml`.
-* Hozzon létre egy új fájlt `create-vmss.yml` és másolja bele a következő tartalommal: "
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/03-create-vmss.yml) forgatókönyvet, és mentse a `create-vmss.yml` értékre.
+* Hozzon létre egy `create-vmss.yml` nevű új fájlt, és másolja bele a következő tartalomba: "
 
 ```yml
 ---
@@ -311,40 +311,40 @@ A minta forgatókönyv beolvasásához két módja van:
         msg: "Scale set public IP address: {{ pip_output.state.ip_address }}"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot, és cserélje le `myrg` az az erőforráscsoport neve:
+Futtassa a forgatókönyvet a `ansible-playbook` paranccsal, és cserélje le az `myrg` értéket az erőforráscsoport nevére:
 
 ```bash
 ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 ```
 
-Mert a `debug` szakasz a forgatókönyvet, a `ansible-playbook` parancs kiírja a méretezési IP-címét. A későbbi használat céljából IP-cím másolásához.
+A forgatókönyv @no__t – 0 szakasza miatt a `ansible-playbook` parancs a méretezési csoport IP-címét fogja kinyomtatni. Másolja ezt az IP-címet későbbi használatra.
 
 ![Nyilvános IP-cím](media/ansible-vmss-update-image/vmss-update-vmss-public-ip.png)
 
-## <a name="connect-to-the-scale-set"></a>A méretezési csoporthoz kapcsolódni
+## <a name="connect-to-the-scale-set"></a>Kapcsolódás a méretezési csoporthoz
 
-Ebben a szakaszban csatlakoztatja a méretezési csoporthoz. 
+Ebben a szakaszban a méretezési csoporthoz csatlakozik. 
 
-IP-címet használja az előző szakaszban, csatlakozzon a méretezési csoporthoz.
+Az előző szakasz IP-címének használatával kapcsolódjon a méretezési csoporthoz.
 
-Ahogy korábban már említettük, az előző szakaszban, a karakterláncok `Image A` és `Image B` utánoznia, két különálló virtuális gépek különböző konfigurációival.
+Ahogy az előző szakaszban is említettük, a `Image A` és a `Image B` karakterláncok két különböző konfigurációval rendelkező virtuális gépet utánoznak.
 
-A méretezési csoport hivatkozások nevű egyéni rendszerképet `image_vmforimageA`. Egyéni rendszerkép `image_vmforimageA` hozta létre a virtuális gép, amelynek kezdőlapján `Image A`.
+A méretezési csoport a `image_vmforimageA` nevű egyéni rendszerképre hivatkozik. A `image_vmforimageA` egyéni rendszerkép olyan virtuális gépről lett létrehozva, amelynek a kezdőlapján a `Image A` látható.
 
-Ennek eredményeképpen látja, a kezdőlap megjelenítése `Image A`:
+Ennek eredményeképpen megjelenik egy `Image A` oldalt megjelenítő Kezdőlap:
 
-![A méretezési csoporthoz társítva az első virtuális gép.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
+![A méretezési csoport az első virtuális géphez van társítva.](media/ansible-vmss-update-image/vmss-update-browser-initial-vmss.png)
 
-Hagyja nyitva a böngészőablakot, miközben a következő szakaszban.
+Hagyja nyitva a böngészőablakot, és folytassa a következő szakasszal.
 
-## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Méretezési csoportban lévő egyéni módosítása – kép beállítása és példányok frissítése
+## <a name="change-custom-image-in-scale-set-and-upgrade-instances"></a>Egyéni rendszerkép módosítása a méretezési csoport és a frissítési példányok között
 
-Ebben a szakaszban a forgatókönyv kód módosítja a méretezési lemezkép - `image_vmforimageA` való `image_vmforimageB`. Emellett a méretezési készlet által telepített összes aktuális virtuális gép frissülnek.
+Az ebben a szakaszban szereplő forgatókönyv-kód a méretezési csoport rendszerképét (@no__t – 0 – `image_vmforimageB` értékre módosítja. A méretezési csoport által telepített összes aktuális virtuális gép is frissül.
 
-A minta forgatókönyv beolvasásához két módja van:
+A minta forgatókönyv két módon szerezhető be:
 
-* [Töltse le a forgatókönyv](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) , és mentse a `update-vmss-image.yml`.
-* Hozzon létre egy új fájlt `update-vmss-image.yml` és másolja bele a következő tartalommal:
+* [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml) forgatókönyvet, és mentse a `update-vmss-image.yml` értékre.
+* Hozzon létre egy `update-vmss-image.yml` nevű új fájlt, és másolja bele a következő tartalomba:
 
 ```yml
 - name: Update scale set image reference
@@ -395,23 +395,23 @@ A minta forgatókönyv beolvasásához két módja van:
     with_items: "{{ instances.instances }}"
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot, és cserélje le `myrg` az az erőforráscsoport neve:
+Futtassa a forgatókönyvet a `ansible-playbook` paranccsal, és cserélje le az `myrg` értéket az erőforráscsoport nevére:
 
 ```bash
 ansible-playbook update-vmss-image.yml --extra-vars "resource_group=myrg"
 ```
 
-Térjen vissza a böngészőben, és frissítse az oldalt. 
+Térjen vissza a böngészőhöz, és frissítse az oldalt. 
 
-Láthatja, hogy az alapul szolgáló virtuális gép egyéni rendszerkép frissül.
+Láthatja, hogy a virtuális gép alapjául szolgáló egyéni rendszerkép frissült.
 
-![A méretezési csoporthoz társítva a második virtuális gép](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
+![A méretezési csoport a második virtuális géphez van társítva](media/ansible-vmss-update-image/vmss-update-browser-updated-vmss.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az ebben a cikkben létrehozott erőforrásokat. 
+Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-A következő kód, Mentés `cleanup.yml`:
+Mentse a következő kódot `cleanup.yml`-ként:
 
 ```yml
 - hosts: localhost
@@ -425,13 +425,13 @@ A következő kód, Mentés `cleanup.yml`:
         state: absent
 ```
 
-A forgatókönyv segítségével futtassa a `ansible-playbook` parancsot:
+Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible)
