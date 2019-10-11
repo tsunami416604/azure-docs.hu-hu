@@ -1,6 +1,6 @@
 ---
-title: Hitelesítési módszerek használati & insights reporting (előzetes verzió) – az Azure Active Directory
-description: Jelentéskészítés az Azure AD önkiszolgáló jelszó-visszaállítás és a multi-factor Authentication hitelesítési módszer használata
+title: Hitelesítési módszerek használata & Betekintő jelentésekben (előzetes verzió) – Azure Active Directory
+description: Jelentéskészítés az Azure AD önkiszolgáló jelszó-visszaállítási és Multi-Factor Authentication hitelesítési módszer használata esetén
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,93 +11,91 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f6a74308f1bc4a7b77576fb9f39f965de0a4f8
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561028"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255068"
 ---
-# <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati & insights (előzetes verzió)
+# <a name="authentication-methods-usage--insights-preview"></a>Hitelesítési módszerek használati &i adatok (előzetes verzió)
 
-Használat & insights lehetővé teszi, hogy jobban megismerhesse, szolgáltatások, mint az Azure multi-factor Authentication és az új jelszó önkiszolgáló kérésének hitelesítési módszerek működését a szervezetben. Ez a jelentéskészítő funkció megtudhatja, hogy milyen módszerekkel regisztrált, és hogyan van használva, hogy a szervezet biztosítja.
+A használat & az adatok segítségével megismerheti, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás hogyan működik a szervezetében. Ez a jelentéskészítési funkció lehetővé teszi a szervezet számára, hogy megértse, milyen módszereket regisztrálnak, és hogyan használják őket.
 
 ## <a name="permissions-and-licenses"></a>Engedélyek és licencek
 
-A következő szerepkörök érhető el a használati és insights:
+A következő szerepkörök használhatják a használatot és az információkat:
 
 - Globális rendszergazda
 - Biztonsági olvasó
 - Biztonsági rendszergazda
-- Jelentésolvasó
+- Jelentések olvasója
 
-Nincs további licencelési nem szükséges hozzáférési használati és elemzéseket. Az Azure multi-factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk találhatók a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
+A használat és az információk eléréséhez nincs szükség további licencelésre. Az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási (SSPR) licencelési információk a [Azure Active Directory díjszabási webhelyen](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>Működési elv
 
-Hitelesítési módszer használatát és insights elérése:
+A hitelesítési módszer használatának és az információknak a elérése:
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
-1. Keresse meg a **Azure Active Directory** > **új jelszó kérésére vonatkozó** > **használat & insights**.
-1. Az a **regisztrációs** vagy **használati** áttekintéséhez lehet váltani, nyissa meg az előre szűrt jelentések szűrése igényei alapján.
+1. Tallózással keresse meg a **Azure Active Directory** > **jelszó-visszaállítás** > **használati &-információkat**.
+1. A **regisztrációs** vagy **használati** áttekintésekben dönthet úgy, hogy az előre szűrt jelentéseket az igényeinek megfelelően szűri.
 
-![Használat & insights áttekintése](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
+![Használat & információk áttekintése](./media/howto-authentication-methods-usage-insights/usage-insights-overview.png)
 
-Használat & insights közvetlenül eléréséhez [ https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Ez a hivatkozás irányítja a regisztráció áttekintése.
+A használat & az adatok közvetlen eléréséhez nyissa meg a [https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade](https://portal.azure.com/#blade/Microsoft_AAD_IAM/AuthMethodsOverviewBlade). Ez a hivatkozás a regisztráció áttekintését fogja elérni.
 
-A felhasználók regisztrált, a felhasználók engedélyezett és a felhasználók a képes csempék megjelenítése a következő regisztrációs adatokat a felhasználók számára:
+A regisztrált felhasználók, a felhasználók és a felhasználók számára kompatibilis csempék a következő regisztrációs adatait jelenítik meg a felhasználók számára:
 
-- Regisztrálva: A felhasználó akkor minősül, ha azok (vagy egy rendszergazda) elegendő hitelesítési módszereket, és megfelelnek a szervezet SSPR vagy többtényezős hitelesítési házirend van regisztrálva.
-- Engedélyezve: A felhasználó akkor minősül, ha az SSPR-házirend a hatókörben vannak engedélyezve. Ha az SSPR engedélyezve van egy csoporthoz, akkor a felhasználó akkor minősül, ha benne vannak engedélyezve. Ha az SSPR minden felhasználó számára engedélyezve van, majd (a vendégeket kivéve) a bérlő összes felhasználója számítanak engedélyezve van.
-- Képes: A felhasználó akkor minősül képes, ha van is regisztrálva és engedélyezve van. Ez az állapot azt jelenti, hogy végezhetnek az SSPR bármikor szükség esetén.
+- Regisztrálva: A felhasználó regisztrálva van, ha (vagy egy rendszergazda) elég hitelesítési módszert regisztrált a szervezete SSPR vagy Multi-Factor Authentication házirendjének teljesítéséhez.
+- Engedélyezve: a rendszer engedélyezi A felhasználó számára, hogy a SSPR szabályzat hatókörében van-e. Ha a SSPR engedélyezve van egy csoport számára, akkor a rendszer engedélyezi a felhasználót, ha az adott csoportban vannak. Ha a SSPR engedélyezve van az összes felhasználó számára, akkor a bérlő összes felhasználója (kivéve a vendégeket) engedélyezettnek tekintendő.
+- Képes: A felhasználó akkor tekinthető megfelelőnek, ha regisztrálva van és engedélyezve van. Ez az állapot azt jelenti, hogy szükség esetén bármikor elvégezhetik a SSPR.
 
-Ezek a csempék és a bennük a megjelenített elemzések kattintva irányítja a regisztrációs adatokat előre szűrt listája.
+Ha bármelyik csempére kattint, vagy a bennük megjelenő információk megtalálhatók, a rendszer a regisztrációs adatok előre szűrt listáját jeleníti meg.
 
-A **regisztrációk** a diagram a **regisztrációs** lapon számát jeleníti meg a sikeres és sikertelen hitelesítési módszer regisztrációk hitelesítési módszerrel. A **visszaállítja** a diagram a **használati** lapon tekintheti meg a sikeres és sikertelen hitelesítések során a jelszó alaphelyzetbe állításához folyamat hitelesítési módszert.
+**A regisztráció lapon található** **regisztrációk** diagram a sikeres és sikertelen hitelesítési módszereknek a hitelesítési módszer alapján történő regisztrációjának számát jeleníti meg. A **használat** lapon **a diagram alaphelyzetbe állítása** a sikeres és sikertelen hitelesítések számát jeleníti meg a jelszó-visszaállítási folyamat során a hitelesítési módszer használatával.
 
-Valamelyik diagramra kattintva kell haladnia a regisztrációs előre szűrt listája, vagy alaphelyzetbe állítása az eseményeket.
+A diagramok bármelyikére kattintva megtekintheti a regisztrációs vagy alaphelyzetbe állítási események előre szűrt listáját.
 
-Használja a vezérlőelem felső, jobb oldali sarokban, módosíthatja a dátumtartományt, a naplózási adatok 24 óra, 7 nap vagy 30 napig a regisztrációk és alaphelyzetbe diagramokon látható.
-
-A regisztrációs adatokat a 
+A felső, jobb oldali sarokban lévő vezérlőelem használatával módosíthatja a regisztrációban megjelenített naplózási adatok dátumtartományt, és visszaállíthatja a diagramokat 24 órára, 7 napra vagy 30 napra.
 
 ### <a name="registration-details"></a>Regisztráció részletei
 
-Kattintson a a **regisztrált felhasználók**, **engedélyezett felhasználók**, vagy **képes a felhasználók** csempéket vagy elemzési eredményeket irányítja a regisztrációs adatokat.
+Ha a **regisztrált felhasználók**, a **felhasználók**vagy a **felhasználók számára** megfelelő csempék vagy információk lehetőségre kattint, a rendszer a regisztrációs adatokat fogja használni.
 
-A regisztráció részletei jelentés bemutatja az egyes felhasználók a következő információkat:
+A regisztráció részletei jelentés az alábbi információkat jeleníti meg az egyes felhasználókra vonatkozóan:
 
-- Name (Név)
+- Név
 - Felhasználónév
-- Regisztrációs állapot (az összes, a regisztrált, nincs regisztrálva)
-- Állapot engedélyezve (az összes, engedélyezve, nincs engedélyezve)
-- Képes a állapota (az összes alkalmas, nem kompatibilis)
-- Metódusok (alkalmazásban megjelenő értesítésre, kódját, telefonhívás, SMS, e-mailben, a biztonsági kérdések)
+- Regisztrációs állapot (összes, regisztrált, nincs regisztrálva)
+- Engedélyezett állapot (mind, engedélyezve, nincs engedélyezve)
+- Képes állapot (az összes, nem alkalmas, nem használható)
+- Metódusok (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, SMS, E-mail, biztonsági kérdések)
 
-A vezérlőket használja, a lista tetején, keresse meg a felhasználót, és szűrje a listát a felhasználók látható oszlopok alapján.
+A lista tetején található vezérlők használatával megkeresheti a felhasználókat, és szűrheti a felhasználók listáját a megjelenített oszlopok alapján.
 
-### <a name="reset-details"></a>Részletek alaphelyzetbe állítása
+### <a name="reset-details"></a>Alaphelyzetbe állítás részletei
 
-A regisztráció vagy alaphelyzetbe diagramok kattintva irányítja a visszaállítás részleteit.
+Ha a regisztrációra kattint, vagy alaphelyzetbe állítja a diagramokat, a rendszer visszaállítja a részleteket.
 
-A visszaállítási részletei jelentés megjeleníti az elmúlt 30 napban, beleértve a regisztrálása és visszaállítása eseményeket:
+A részletek visszaállítása jelentés az elmúlt 30 nap regisztrációs és alaphelyzetbe állítási eseményeit jeleníti meg, beleértve a következőket:
 
-- Name (Név)
+- Név
 - Felhasználónév
-- A szolgáltatás (az összes, a regisztrációt alaphelyzetbe)
-- Hitelesítési módszer (alkalmazásban megjelenő értesítésre, kódját, telefonhívás, az Office-hívás, SMS, e-mailben, a biztonsági kérdések)
-- Állapot (All, sikeres, sikertelen)
+- Szolgáltatás (összes, regisztráció, alaphelyzetbe állítás)
+- Hitelesítési módszer (alkalmazás-értesítés, alkalmazás kódja, telefonhívás, Office-hívás, SMS, E-mail, biztonsági kérdések)
+- Állapot (összes, sikeres, sikertelen)
 
-A vezérlőket használja, a lista tetején, keresse meg a felhasználót, és szűrje a listát a felhasználók látható oszlopok alapján.
+A lista tetején található vezérlők használatával megkeresheti a felhasználókat, és szűrheti a felhasználók listáját a megjelenített oszlopok alapján.
 
 ## <a name="limitations"></a>Korlátozások
 
-Ezekben a jelentésekben megjelenített adatok alapján akár 60 perc késni fog. Hogyan legutóbbi van az adatok az Azure Portalon létezik "Utolsó frissítés" mező.
+Az ezekben a jelentésekben megjelenő adatszolgáltatások 60 percen belül késleltetve lesznek. Az "utolsó frissítés" mező létezik a Azure Portalban annak azonosításához, hogy milyen közelmúltbeli az adatai.
 
-Nem helyettesíti a tevékenységre vonatkozó jelentések az Azure multi-factor Authentication vagy az Azure AD bejelentkezési jelentések foglalt információk a használati és elemzéseket.
+A használati és adatelemzési adatok nem helyettesítik az Azure-Multi-Factor Authentication tevékenységgel kapcsolatos jelentéseket, illetve az Azure AD bejelentkezési jelentésben szereplő információkat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A hitelesítési módszerek használati jelentés API használata](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
-- [A szervezet hitelesítési módszerek kiválasztása](concept-authentication-methods.md)
+- [A hitelesítési módszerek használati jelentésének API használata](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [A szervezet hitelesítési módszereinek kiválasztása](concept-authentication-methods.md)
 - [Kombinált regisztrációs élmény](concept-registration-mfa-sspr-combined.md)

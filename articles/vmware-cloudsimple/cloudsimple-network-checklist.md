@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a83112c1555d50976e5a20106b877f5c0099a5f3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178137"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244825"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Az Azure VMware-megoldás hálózatkezelési előfeltételei a CloudSimple
 
@@ -58,6 +58,7 @@ A pont – hely típusú VPN-kapcsolat lehetővé teszi a CloudSimple-hálózat 
 
 ## <a name="next-steps"></a>Következő lépések
 
+* [Helyszíni tűzfal beállítása a saját felhőhöz való hozzáféréshez](on-premises-firewall-configuration.md)
 * [Rövid útmutató – CloudSimple-szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
 * [Rövid útmutató – privát felhő konfigurálása](quickstart-create-private-cloud.md)
 * További információ az [Azure hálózati kapcsolatairól](cloudsimple-azure-network-connection.md)

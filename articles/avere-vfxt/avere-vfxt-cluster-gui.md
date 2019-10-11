@@ -1,41 +1,41 @@
 ---
-title: Hozzáférés a Vezérlőpult Avere vFXT – Azure
-description: Hogyan lehet csatlakozni a vFXT fürt és a böngésző alapú Avere Vezérlőpult a Avere vFXT konfigurálása
+title: A avere vFXT-Vezérlőpult elérése – Azure
+description: A vFXT-fürthöz és a böngészőalapú avere-vezérlőpulthoz való kapcsolódás a avere-vFXT konfigurálásához
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 830be92d37f304598cca05c3ac80973158c38a59
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 098ed98c1680fa2ea38c377e9e34719ba778b175
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439974"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255035"
 ---
-# <a name="access-the-vfxt-cluster"></a>Hozzáférés a vFXT fürt
+# <a name="access-the-vfxt-cluster"></a>A vFXT-fürt elérése
 
-Módosítsa a beállításokat, és a Avere vFXT fürt monitorozására, használja a Avere Vezérlőpult. Avere Vezérlőpult nem böngészőalapú grafikus felület a fürthöz.
+A beállítások módosításához és a avere vFXT-fürt figyeléséhez használja a avere vezérlőpultot. A avere Vezérlőpult egy böngészőalapú grafikus felület a fürthöz.
 
-A vFXT fürt egy privát virtuális hálózaton belül helyezkedik el, mert az SSH-alagút létrehozása, vagy másik módszerrel kívánja érni a fürt felügyeleti IP-címet. Alapszintű két lépésből áll: 
+Mivel a vFXT-fürt egy privát virtuális hálózaton belül helyezkedik el, létre kell hoznia egy SSH-alagutat, vagy másik módszerrel kell elérnie a fürt felügyeleti IP-címét. Két alapvető lépés: 
 
-1. A munkaállomáson és a privát virtuális hálózat közötti kapcsolat létrehozása 
-1. Egy webböngészőben a fürt Vezérlőpult betöltése 
+1. Kapcsolat létrehozása a munkaállomás és a privát vnet között 
+1. A fürt Vezérlőpultjának betöltése böngészőben 
 
 > [!NOTE] 
-> Ez a cikk feltételezi, hogy meg van egy nyilvános IP-címet a fürt vezérlő vagy a fürt virtuális hálózaton belül egy másik virtuális Géphez. Ez a cikk ismerteti, hogyan használható a virtuális gép gazdagépként, aki a fürtöt. Ha a VPN-t vagy az ExpressRoute virtuális hálózati hozzáféréshez használ, akkor ugorjon a [Connect Avere Vezérlőpult](#connect-to-the-avere-control-panel-in-a-browser).
+> Ez a cikk azt feltételezi, hogy nyilvános IP-címet állított be a fürt vezérlőjén vagy egy másik virtuális GÉPEN a fürt virtuális hálózatán belül. Ez a cikk azt ismerteti, hogyan használható a virtuális gép gazdagépként a fürt eléréséhez. Ha VPN-vagy ExpressRoute használ a vnet eléréséhez, ugorjon a [Csatlakozás a avere vezérlőpulthoz](#connect-to-the-avere-control-panel-in-a-browser)lehetőségre.
 
-Mielőtt csatlakozna, győződjön meg arról, hogy az SSH nyilvános/titkos kulcspár, amelyet a fürt vezérlő létrehozásakor használt telepítve van-e a helyi gépen. Olvassa el az SSH kulcsok dokumentációját [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Ha segítségre van szüksége. (A jelszó helyett a nyilvános kulcs használatakor kéri, adja meg, ha csatlakozik.) 
+A csatlakozás előtt győződjön meg arról, hogy a fürt létrehozásakor használt nyilvános vagy titkos SSH-kulcspár telepítve van a helyi gépen. Ha segítségre van szüksége, olvassa el az SSH-kulcsok [Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) rendszerhez készült dokumentációját. (Ha nyilvános kulcs helyett jelszót használt, a rendszer kérni fogja, hogy a csatlakozáskor megírja a következőt:.) 
 
 ## <a name="create-an-ssh-tunnel"></a>SSH-alagút létrehozása 
 
-Létrehozhat egy SSH-alagutat a parancssorból, a Linux-alapú vagy a Windows 10-es ügyfél rendszer. 
+Létrehozhat egy SSH-alagutat egy Linux-alapú vagy Windows 10 rendszerű ügyféloldali parancssorból. 
 
-Használja az SSH-alagútkezelési az űrlap-parancsot: 
+SSH-bújtatási parancs használata az alábbi űrlappal: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
+SSH-L *local_port*:*cluster_mgmt_ip*: 443 *controller_username*\@*controller_public_IP*
 
-Ezzel a paranccsal összekapcsolja a fürt felügyeleti IP-címre a fürt vezérlő IP-címen keresztül.
+Ez a parancs a fürt felügyeleti IP-címéhez csatlakozik a tartományvezérlő IP-címén keresztül.
 
 Példa:
 
@@ -43,26 +43,26 @@ Példa:
 ssh -L 8443:10.0.0.5:443 azureuser@203.0.113.51
 ```
 
-Hitelesítés automatikusan végbemegy, ha a fürt létrehozásához használt nyilvános SSH-kulcsot, és a megfelelő kulcs telepítve van az ügyfélrendszeren. Ha jelszót használt, a rendszer kérni fogja annak megadására.
+A hitelesítés automatikusan történik, ha az SSH nyilvános kulcsával létrehozta a fürtöt, és a megfelelő kulcs telepítve van az ügyfél rendszerére. Ha jelszót használt, a rendszer kérni fogja, hogy adja meg.
 
-## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Csatlakozás a Avere Vezérlőpult böngészőben
+## <a name="connect-to-the-avere-control-panel-in-a-browser"></a>Kapcsolódás a avere vezérlőpulthoz egy böngészőben
 
-Ebben a lépésben egy webböngészőben a konfigurációs eszközt, a vFXT fürtön futó való kapcsolódáshoz használ.
+Ez a lépés egy webböngészőt használ a vFXT-fürtön futó konfigurációs segédprogramhoz való kapcsolódáshoz.
 
-* Az SSH-alagút kapcsolatot, nyissa meg a webböngészőjét, és navigáljon a `https://127.0.0.1:8443`. 
+* SSH-bújtatási kapcsolat esetén nyissa meg a webböngészőt, és navigáljon `https://127.0.0.1:8443` értékre. 
 
-  Akkor csatlakozik a fürt IP-cím létrehozásakor az alagút, így ugyanúgy kell használnia a localhost IP-címet a böngészőben. Ha nem 8443 helyi portot használta, a portszámot használja.
+  Az alagút létrehozásakor kapcsolódott a fürt IP-címéhez, így csak a localhost IP-címet kell használnia a böngészőben. Ha a 8443-től eltérő helyi portot használt, használja helyette a portszámot.
 
-* Ha a fürt eléréséhez a VPN-t vagy ExpressRoute használ, lépjen a fürt felügyeleti IP-címét a böngészőben. Például: ``https://203.0.113.51``
+* Ha VPN-vagy ExpressRoute-t használ a fürt eléréséhez, navigáljon a fürt felügyeleti IP-címéhez a böngészőben. Például: ``https://203.0.113.51``
 
-A böngésző típusától függően előfordulhat, hogy kell kattintson **speciális** , és ellenőrizze, hogy biztonságosan oldalára.
+A böngészőtől függően előfordulhat, hogy a **speciális** elemre kell kattintania, és meg kell győződnie arról, hogy a lap továbbra is biztonságos.
 
-Adja meg a felhasználónevét `admin` és a fürt létrehozásakor megadott rendszergazdai jelszót.
+Adja meg `admin` felhasználónevet és a fürt létrehozásakor megadott rendszergazdai jelszót.
 
-![Képernyőkép a Avere jelentkezzen be a lapon a rendszergazda felhasználónév és jelszó használatával](media/avere-vfxt-gui-login.png)
+![Képernyőkép a avere bejelentkezési oldaláról, amely a Felhasználónév "admin'" és a "password" névvel van feltöltve.](media/avere-vfxt-gui-login.png)
 
-Kattintson a **bejelentkezési** vagy nyomja le az enter billentyűt.
+Kattintson a **Bejelentkezés** gombra, vagy nyomja le az ENTER billentyűt a billentyűzeten.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy Ön hozzáfér a fürthöz, [támogatja](avere-vfxt-enable-support.md).
+Most, hogy el tudja érni a fürtöt, engedélyezze a [támogatást](avere-vfxt-enable-support.md).

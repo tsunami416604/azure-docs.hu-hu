@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996719"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255245"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
 Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
@@ -38,18 +38,18 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
 
 1. Security Center válassza a **hálózatkezelés** -> **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
-   * **Sérült erőforrások**: Azok a virtuális gépek, amelyeknek jelenleg vannak olyan javaslatai és riasztásai, amelyeket az adaptív hálózat megerősítő algoritmusának futtatásával váltott ki. 
-   * **Kifogástalan erőforrások**: Riasztások és javaslatok nélküli virtuális gépek.
-   * Nem **ellenőrzött erőforrások**: Azok a virtuális gépek, amelyekhez az adaptív hálózat megerősítő algoritmusa nem futtatható a következő okok egyike miatt:
-      * **A virtuális gépek a klasszikus virtuális gépek**: Csak Azure Resource Manager virtuális gépek támogatottak.
-      * **Nem áll rendelkezésre elegendő mennyiségű érték**: Ahhoz, hogy pontos forgalmat megerősítő javaslatokat lehessen előállítani, Security Center legalább 30 napos forgalmi adatokat igényel.
-      * **A virtuális gépet az ASC standard nem védi**: Ehhez a szolgáltatáshoz csak a Security Center szabványos díjszabási szintjére beállított virtuális gépek jogosultak.
+   * Nem megfelelő **erőforrások**: azok a virtuális gépek, amelyeken jelenleg az adaptív hálózat megerősítő algoritmusának futtatásával aktiválva vannak javaslatok és riasztások. 
+   * **Kifogástalan erőforrások**: riasztások nélküli virtuális gépek és javaslatok.
+   * Nem **vizsgált erőforrások**: a következő okok egyike miatt nem futtathatók az adaptív hálózati kötési algoritmust használó virtuális gépek:
+      * **A virtuális gépek klasszikus virtuális gépek**: csak Azure Resource Manager virtuális gépek támogatottak.
+      * **Nem áll rendelkezésre elegendő mennyiségű adatok**: a pontos forgalom-megerősítési javaslatok létrehozásához Security Center legalább 30 napos forgalmi adatokat igényel.
+      * A **virtuális gépet az ASC standard nem védi**: csak az Security Center Standard díjszabási szintjére beállított virtuális gépek jogosultak erre a szolgáltatásra.
 
      ![sérült erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
 2. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és alkalmazza a javasolt korlátozási szabályokat.
 
-    ![riasztások megerősítése](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+    ![riasztások megerősítése](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Adaptív hálózatra vonatkozó, javasolt szabályok áttekintése és alkalmazása

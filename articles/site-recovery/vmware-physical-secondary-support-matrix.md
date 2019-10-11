@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 10/10/2019
 ms.author: raynew
-ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972081"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255201"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
 
@@ -25,12 +25,23 @@ Ez a cikk azt összegzi, hogy mi támogatott, ha a [Azure site Recovery](site-re
 > [!NOTE]
 > A helyszíni VMware virtuális gépek és fizikai kiszolgálók replikálását az inmage Scout végzi. Az inmage Scout a Azure Site Recovery szolgáltatás előfizetésében szerepel.
 
+## <a name="end-of-support-announcement"></a>Támogatási közlemény
+A helyszíni VMware-vagy fizikai adatközpontok közötti replikálás Site Recoveryi forgatókönyve támogatja a támogatás végét.
+
+- A forgatókönyv nem konfigurálható a Recovery Services-tárolóban, és az inmage Scout szoftver nem tölthető le a tárból. 2018 A meglévő telepítések támogatottak lesznek.
+- - December 31 2020-én a forgatókönyv nem támogatott.
+A támogatás befejezéséig a meglévő partnerek új ügyfeleket hozhatnak be a forgatókönyvbe.
+- A 2018-es és a 2019-es verzióban két frissítés jelenik meg:
+
+    - 7\. frissítés: megjavítja a hálózati konfigurációt és a megfelelőségi problémákat, és biztosítja a TLS 1,2-támogatást.
+    - 8\. frissítés: támogatást nyújt a Linux operációs rendszerek RHEL/CentOS 7.3/7.4/7.5 és SUSE 12 rendszerhez
+    - A 8. frissítés után a rendszer nem szabadít fel további frissítéseket. A 8. frissítésben hozzáadott operációs rendszerek esetében korlátozott a gyorsjavítások támogatása, a hibajavítások pedig a legjobb erőfeszítés alapján.
 
 ## <a name="host-servers"></a>Gazdagép-kiszolgálók
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-vCenter Server | vCenter 5,5, 6,0 és 6,5<br/><br/> Ha a 6,0-es vagy a 6,5-es rendszerű, akkor csak a 5,5-funkciók támogatottak.
+vCenter-kiszolgáló | vCenter 5,5, 6,0 és 6,5<br/><br/> Ha a 6,0-es vagy a 6,5-es rendszerű, akkor csak a 5,5-funkciók támogatottak.
 
 
 ## <a name="replicated-vm-support"></a>Replikált virtuális gépek támogatása
@@ -68,7 +79,7 @@ Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Adattárolás
 
 ### <a name="host-storage"></a>Gazdagép tárterülete
 
@@ -116,7 +127,7 @@ A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a f
 |Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Inmage Scout felhasználói útmutatójának](https://aka.ms/asr-scout-user-guide) letöltése
 

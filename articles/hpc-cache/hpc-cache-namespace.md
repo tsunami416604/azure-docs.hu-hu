@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299937"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255264"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Az aggregált névtér tervezése
 
@@ -52,13 +52,13 @@ Egy NFS-tárolási cél több virtuális névtér elérési úttal is rendelkezh
 
 Mivel az NFS-forrás elérési útjai azonos exportálási alkönyvtárak, meg kell határoznia több névtér elérési útját is ugyanabból a tárolási céltól.
 
-| Tárolási cél állomásneve  | NFS-exportálási elérési út      | Alkönyvtár elérési útja | Névtér elérési útja    |
+| Tárolási cél állomásneve  | NFS-exportálási útvonal      | Alkönyvtár elérési útja | Névtér elérési útja    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési ``/templates/sku798``útját ``/templates/sku980`` ``/source``, és.
+Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési útját ``/source``, ``/templates/sku798`` és ``/templates/sku980``.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután eldöntötte, hogyan állíthatja be a virtuális fájlrendszert, [hozzon létre tárolási célokat](hpc-cache-add-storage.md) a háttérbeli tároló leképezéséhez az ügyfélre irányuló virtuális fájlok elérési útjaihoz.

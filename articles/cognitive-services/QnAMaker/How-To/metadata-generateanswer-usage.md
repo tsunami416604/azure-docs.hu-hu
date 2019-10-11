@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/09/2019
 ms.author: diberry
-ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a63b6773a7546f8add0b2f2ab6280801e90bccca
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971809"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248641"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -82,7 +82,7 @@ A JSON-törzs például a következőképpen néz ki:
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
-    "scoreThreshold": 20,
+    "scoreThreshold": 30,
     "strictFilters": [
     {
         "name": "category",
@@ -91,6 +91,8 @@ A JSON-törzs például a következőképpen néz ki:
     "userId": "sd53lsY="
 }
 ```
+
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
 
 <a name="generateanswer-response"></a>
 
@@ -102,7 +104,7 @@ A [Válasz](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntim
 {
     "answers": [
         {
-            "score": 28.54820341616869,
+            "score": 38.54820341616869,
             "Id": 20,
             "answer": "There is no direct integration of LUIS with QnA Maker. But, in your bot code, you can use LUIS and QnA Maker together. [View a sample bot](https://github.com/Microsoft/BotBuilder-CognitiveServices/tree/master/Node/samples/QnAMaker/QnAWithLUIS)",
             "source": "Custom Editorial",
@@ -120,9 +122,11 @@ A [Válasz](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntim
 }
 ```
 
+Az előző JSON egy, a 38,5%-os pontszámmal válaszol. 
+
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>QnA Maker használata a robottalC#
 
-A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz:
+A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.ai.qna.qnamaker.getanswersasync?view=botbuilder-dotnet-stable#Microsoft_Bot_Builder_AI_QnA_QnAMaker_GetAnswersAsync_Microsoft_Bot_Builder_ITurnContext_Microsoft_Bot_Builder_AI_QnA_QnAMakerOptions_System_Collections_Generic_Dictionary_System_String_System_String__System_Collections_Generic_Dictionary_System_String_System_Double__)-val:
 
 ```csharp
 using Microsoft.Bot.Builder.AI.QnA;
@@ -137,11 +141,13 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
+
 A támogatási robotnak van [egy példája](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) ezzel a kóddal.
 
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>QnA Maker használata robottal a Node. js-ben
 
-A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz:
+A bot Framework hozzáférést biztosít a QnA Maker tulajdonságaihoz a [GETANSWER API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)-val:
 
 ```javascript
 const { QnAMaker } = require('botbuilder-ai');
@@ -149,11 +155,13 @@ this.qnaMaker = new QnAMaker(endpoint);
 
 // Default QnAMakerOptions
 var qnaMakerOptions = {
-    ScoreThreshold: 0.03,
+    ScoreThreshold: 0.30,
     Top: 3
 };
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
+
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
 
 A támogatási robotnak van [egy példája](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) ezzel a kóddal.
 
@@ -237,14 +245,14 @@ A közzétett Tudásbázisban `isTest=false` vagy az `isTest=true` használatáv
 |Kód|Magyarázat|
 |:--|--|
 |2xx|Sikeres|
-|400|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
-|400|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
+|400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
+|400|A kérelem törzse helytelen, mert a JSON hiányzik, helytelenül formázott vagy túl nagy.|
 |401|Érvénytelen kulcs|
-|403|-Tiltott nem rendelkezik megfelelő engedélyekkel|
-|404|KB nem létezik.|
+|403|Tiltott – nem rendelkezik megfelelő engedélyekkel|
+|404|A KB nem létezik|
 |410|Ez az API elavult, és már nem érhető el|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel választ kaphat a [Poster](../Quickstarts/get-answer-from-kb-using-postman.md) és a [curl](../Quickstarts/get-answer-from-kb-using-curl.md)használatával. 
 

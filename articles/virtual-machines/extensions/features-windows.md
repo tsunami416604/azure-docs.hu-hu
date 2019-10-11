@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a19b6bd8da82498aae45657d30883db14efd9343
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: a8027a1290b4b771c17a1e748c06f3b86fa0bf95
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174075"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244606"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -35,7 +35,7 @@ Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure vir
 Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
 - PowerShell kívánt állapot-konfiguráció alkalmazása egy virtuális gépre a Windows DSC bővítménnyel. További információ: az [Azure desired State Configuration bővítménye](dsc-overview.md).
-- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../log-analytics/log-analytics-azure-vm-extension.md).
+- Egy virtuális gép figyelésének konfigurálása a Log Analytics ügynök virtuálisgép-bővítményével. További információ: [Azure-beli virtuális gépek Összekapcsolásának Azure monitor naplók](../../log-analytics/log-analytics-azure-vm-extension.md).
 - Azure-beli virtuális gép konfigurálása a Chef használatával. További információ: az Azure-beli [virtuális gépek üzembe helyezésének automatizálása a Chef segítségével](../windows/chef-automation.md).
 - Konfigurálja az Azure-infrastruktúra figyelését az Datadoggal bővítménnyel. További információ: [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
@@ -65,14 +65,14 @@ Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a 
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
-A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, mert az ügynök használatával átirányíthatja a kommunikációt az Azure Fabric-vezérlővel az ügynök kommunikációja érdekében. Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
+A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, ahogy az ügynök használatával átirányíthatja a kommunikációt az Azure Fabric Controller for Agent Communications (HostGAPlugin szolgáltatás emelt szintű csatorna magánhálózati IP-168.63.129.16). Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
 
 > [!IMPORTANT]
-> Ha letiltotta a *168.63.129.16* való hozzáférést a vendég tűzfal használatával, akkor a bővítmények a fentiektől függetlenül meghiúsulnak.
+> Ha letiltotta a hozzáférést a *168.63.129.16* a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül meghiúsulnak. A 80, 443 és 32526 portok megadása kötelező.
 
-Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service-címkék használatával a [tároláshoz](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz vagy Azure Active Directoryhoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az [Azure NSG Service-címkék](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) használatával a tárolóhoz vagy a AzureActiveDirectory.
 
-A Windows Guest Agent ügynök nem rendelkezik a proxykiszolgáló támogatásával az ügynök forgalmi kéréseinek átirányításához.
+A Windows Guest Agent ügynök nem rendelkezik a proxykiszolgáló támogatásával az ügynök forgalmi kéréseinek átirányításához, ami azt jelenti, hogy a Windows vendég ügynöke az egyéni proxyra fog támaszkodni (ha rendelkezik ilyennel) az interneten vagy a gazdagépen lévő erőforrások eléréséhez az IP-címen keresztül 168.63.129.16.
 
 ## <a name="discover-vm-extensions"></a>Virtuálisgép-bővítmények felderítése
 
@@ -351,7 +351,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Windows vendég ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a *C:\WindowsAzure\Logs\WaAppAgent.txt* -ben
 
-2. További részletek a *\<C:\WindowsAzure\Logs\Plugins extensionName >*
+2. A *C:\WindowsAzure\Logs\Plugins @ no__t-1extensionName >ban* található további részletekért olvassa el a tényleges kiterjesztési naplókat.
 
 3. Tekintse meg a bővítmények specifikus dokumentációjának hibaelhárítási szakaszt a hibakódok, ismert problémák stb. esetében.
 
@@ -417,13 +417,13 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás**lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Bővítmény neve | Leírás | További információ |
+| Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-bővítmény a Windowshoz](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

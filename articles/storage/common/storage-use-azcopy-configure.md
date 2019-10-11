@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844811"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244698"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -32,7 +32,7 @@ A AzCopy proxybeállítások konfigurálásához állítsa be a `https_proxy` k�
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
-| **Windows** | A parancssorban használja a következőket:`set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShellben használja a következőket:`$env:https_proxy="<proxy IP>:<proxy port>"`|
+| **Windows** | A parancssorban használja a következőket: `set https_proxy=<proxy IP>:<proxy port>`<br> A PowerShell használata: `$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
@@ -40,13 +40,13 @@ A AzCopy jelenleg nem támogatja az NTLM-vagy Kerberos-hitelesítést igénylő 
 
 ## <a name="optimize-throughput"></a>Teljesítmény optimalizálása
 
-A `cap-mbps` jelzővel egy felső korlátot helyezhet el az adatátviteli sebességen. Például a következő parancs Caps- `10` átviteli sebessége másodpercenként megabitre (MB).
+A `cap-mbps` jelzővel egy felső korlátot helyezhet el az adatátviteli sebességen. Például a következő parancs Caps átviteli sebessége `10` megabit (MB)/másodperc.
 
 ```azcopy
 azcopy cap-mbps 10
 ```
 
-Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A környezeti változó beállításával növelheti az `AZCOPY_CONCURRENCY_VALUE` átviteli sebességet is. Ez a változó határozza meg az egyidejű kérések számát.  Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke a következő lesz `32`:. Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. Ennek a változónak `300`a maximális alapértelmezett értéke a, de ezt az értéket manuálisan vagy lejjebb is állíthatja.
+Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. Az átviteli sebességet a `AZCOPY_CONCURRENCY_VALUE` környezeti változó beállításával növelheti. Ez a változó határozza meg az egyidejű kérések számát.  Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke `32`. Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. A változó alapértelmezett értéke @no__t – 0, de ezt az értéket manuálisan vagy lejjebb is állíthatja.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -54,11 +54,11 @@ Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A körny
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-A változó `azcopy env` aktuális értékének megadásához használja a következőt:.  Ha az érték üres, akkor a `AZCOPY_CONCURRENCY_VALUE` változó az alapértelmezett `300`értékre van állítva.
+A változó aktuális értékének vizsgálatához használja a `azcopy env` értéket.  Ha az érték üres, akkor a `AZCOPY_CONCURRENCY_VALUE` változó a `300` alapértelmezett értékre van állítva.
 
 ## <a name="change-the-location-of-the-log-files"></a>A naplófájlok helyének módosítása
 
-Alapértelmezés szerint a naplófájlok a `%USERPROFILE\\.azcopy` Windows könyvtárban vagy `$HOME\\.azcopy` a Mac és Linux rendszerű könyvtárban találhatók. Ezt a helyet akkor módosíthatja, ha ezeket a parancsokat kell használnia.
+Alapértelmezés szerint a naplófájlok a Windows `%USERPROFILE%\.azcopy` könyvtárában, illetve a Mac és Linux rendszeren futó `$HOME\\.azcopy` könyvtárban találhatók. Ezt a helyet akkor módosíthatja, ha ezeket a parancsokat kell használnia.
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -66,28 +66,28 @@ Alapértelmezés szerint a naplófájlok a `%USERPROFILE\\.azcopy` Windows köny
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-A változó `azcopy env` aktuális értékének megadásához használja a következőt:. Ha az érték üres, akkor a naplók az alapértelmezett helyre íródnak.
+A változó aktuális értékének vizsgálatához használja a `azcopy env` értéket. Ha az érték üres, akkor a naplók az alapértelmezett helyre íródnak.
 
 ## <a name="change-the-default-log-level"></a>Az alapértelmezett naplózási szint módosítása
 
-Alapértelmezés szerint a AzCopy naplózási szintje a `INFO`következőre van beállítva:. Ha csökkenteni szeretné a napló részletességét, hogy lemezterületet szabadítson fel, írja felül ezt a beállítást a ``--log-level`` kapcsoló használatával. 
+Alapértelmezés szerint a AzCopy naplózási szintje a következőre van beállítva: `INFO`. Ha csökkenteni szeretné a napló részletességét, hogy lemezterületet szabadítson fel, írja felül ezt a beállítást a ``--log-level`` kapcsoló használatával. 
 
-A rendelkezésre álló naplózási `DEBUG`szintek `INFO`a `WARNING`következők `ERROR`: `PANIC`,, `FATAL`,, és.
+A rendelkezésre álló naplózási szintek a következők: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` és `FATAL`.
 
 ## <a name="troubleshoot-issues"></a>Problémák elhárítása
 
 A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megtervezi a fájlokat. A naplók segítségével megvizsgálhatja és elháríthatja a lehetséges problémákat. 
 
-A naplók a hiba (`UPLOADFAILED`, `COPYFAILED`, és `DOWNLOADFAILED`) állapotát, a teljes elérési utat és a hiba okát fogják tartalmazni.
+A naplók a hiba állapotát (`UPLOADFAILED`, `COPYFAILED` és `DOWNLOADFAILED`) tartalmazzák, a teljes elérési utat és a hiba okát.
 
-Alapértelmezés szerint a napló-és a megtervezési fájlok a `%USERPROFILE\\.azcopy` Windows vagy `$HOME\\.azcopy` a címtár Mac és Linux rendszerű könyvtárában találhatók.
+Alapértelmezés szerint a napló és a terv fájlok a `%USERPROFILE\\.azcopy` könyvtárban találhatók a Windowsban, vagy `$HOME\\.azcopy` könyvtárban Mac és Linux rendszeren.
 
 > [!IMPORTANT]
 > Amikor kérelmet küld a Microsoft ügyfélszolgálata (vagy bármely harmadik féltől származó probléma elhárítása), ossza meg a futtatni kívánt parancs kivont verzióját. Ez biztosítja, hogy az SAS véletlenül senkivel se legyen megosztva. A leválasztott verziót a naplófájl elején találja.
 
 ### <a name="review-the-logs-for-errors"></a>A hibákkal kapcsolatos naplók áttekintése
 
-A következő parancs az állapottal kapcsolatos `UPLOADFAILED` összes hibát a `04dc9ca9-158f-7945-5933-564021086c79` naplóból fogja kapni:
+A következő parancs az `UPLOADFAILED` állapotú összes hibát lekérdezi a `04dc9ca9-158f-7945-5933-564021086c79` naplóból:
 
 **Windows (PowerShell)**
 

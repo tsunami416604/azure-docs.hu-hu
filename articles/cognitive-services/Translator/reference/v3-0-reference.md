@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772786"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72252970"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -26,16 +26,16 @@ A Translator Text API 3. verziója modern JSON-alapú webes API-t biztosít. Jav
  * A nyelv átalakítása egy parancsfájlból egy másik parancsfájlba.
  * Fordítás több nyelvre egy kérelemben.
  * Nyelvfelismerés, fordítás és írás egyetlen kérelemben.
- * Szótár a kifejezés alternatív fordításának kereséséhez, hogy megkeresse a háttér-fordításokat és példákat a kontextusban használt kifejezések megjelenítéséhez.
+ * Szótár egy kifejezés alternatív fordításának kereséséhez, hogy megkeresse a háttér-fordításokat és példákat a kontextusban használt kifejezések megjelenítéséhez.
  * További informatív nyelvfelismerés eredményei.
 
 ## <a name="base-urls"></a>Alap URL-címek
 
 A Microsoft Translator több adatközpont-helyből is kiszolgálható. Jelenleg 10 [Azure](https://azure.microsoft.com/global-infrastructure/regions)-régióban találhatók:
 
-* **Amerika** USA keleti régiója, USA déli középső régiója, az USA nyugati középső régiója és az USA 2. nyugati régiója 
-* **Ázsia és a Csendes-óceáni térség:** Dél-Korea, Kelet-Japán, Délkelet-Ázsia és Kelet-Ausztrália
-* **Európa** Észak-Európa és Nyugat-Európa
+* **Amerika:** USA keleti régiója, USA déli középső régiója, az USA nyugati középső régiója és az USA 2. nyugati régiója 
+* **Ázsia és a csendes-óceáni térség:** Dél-Korea, Kelet-Japán, Délkelet-Ázsia és Kelet-Ausztrália
+* **Európa:** Észak-Európa és Nyugat-Európa
 
 A Microsoft Translator Text APIra irányuló kérelmeket a legtöbb esetben az adatközpont kezeli, amely a kérelem helyétől legközelebb található. Adatközpont meghibásodása esetén a kérést az Azure földrajzán kívül is át lehet irányítani.
 
@@ -44,28 +44,27 @@ Ha szeretné kényszeríteni a kérést, hogy az adott Azure földrajza kezelhet
 |Leírás|Az Azure földrajza|Alap URL-cím|
 |:--|:--|:--|
 |Azure|Globális (nem regionális)|   api.cognitive.microsofttranslator.com|
-|Azure|Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
+|Azure|Amerikai Egyesült Államok|   api-nam.cognitive.microsofttranslator.com|
 |Azure|Európa|  api-eur.cognitive.microsofttranslator.com|
-|Azure|Ázsia és a Csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
+|Azure|Ázsia és a csendes-óceáni térség|    api-apc.cognitive.microsofttranslator.com|
 
+## <a name="authentication"></a>Hitelesítés
 
-## <a name="authentication"></a>Authentication
+Fizessen elő Translator Text API vagy [Cognitive Services több szolgáltatásra](https://azure.microsoft.com/pricing/details/cognitive-services/) az Azure-ban Cognitive Services, és használja az előfizetési kulcsot (amely a Azure Portalban érhető el) a hitelesítéshez. 
 
-Fizessen elő Translator Text API vagy [Cognitive Services több szolgáltatásra](https://azure.microsoft.com/pricing/details/cognitive-services/) a Microsoft Cognitive Services-ben, és használja az előfizetési kulcsot (amely a Azure Portalban érhető el) a hitelesítéshez. 
-
-Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat leírja, hogyan használják a rendszer a következőket:
+Az előfizetés hitelesítéséhez három fejléc használható. Ez a táblázat a használatuk módját ismerteti:
 
 |Fejlécek|Leírás|
 |:----|:----|
-|OCP-Apim-Subscription-Key|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
-|Authorization|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
-|Ocp-Apim-Subscription-Region|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
+|OCP-APIM-előfizetés-kulcs|*Ha a titkos kulcsot átadja, használja Cognitive Services-előfizetéssel*.<br/>Az érték a Translator Text API előfizetéséhez tartozó Azure titkos kulcs.|
+|Engedélyezés|*Ha hitelesítési tokent továbbít, használja Cognitive Services-előfizetést.*<br/>Az érték a tulajdonosi jogkivonat: `Bearer <token>`.|
+|OCP-APIM-előfizetés-régió|*Ha több szolgáltatásból álló titkos kulcsot továbbít, használja a Cognitive Services Multi-Service előfizetést.*<br/>Az érték a Multi-Service előfizetés régiója. Ez az érték nem kötelező, ha nem használ több szolgáltatást használó előfizetést.|
 
 ###  <a name="secret-key"></a>Titkos kulcs
-Az első lehetőség a `Ocp-Apim-Subscription-Key` fejléc használatával történő hitelesítés. Egyszerűen adja hozzá `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` a fejlécet a kérelemhez.
+Az első lehetőség a hitelesítés a `Ocp-Apim-Subscription-Key` fejléc használatával. Adja hozzá a `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` fejlécet a kérelemhez.
 
 ### <a name="authorization-token"></a>Engedélyezési jogkivonat
-Azt is megteheti, hogy kicseréli a titkos kulcsot egy hozzáférési jogkivonatra. Ezt a `Authorization` tokent az egyes kérések fejlécként tartalmazzák. Az engedélyezési jogkivonat beszerzéséhez tegyen fel `POST` egy kérelmet a következő URL-címre:
+Azt is megteheti, hogy kicseréli a titkos kulcsot egy hozzáférési jogkivonatra. Ezt a tokent minden kérelem tartalmazza `Authorization` fejlécként. Az engedélyezési jogkivonat beszerzéséhez hozzon `POST` kérelmet a következő URL-címre:
 
 | Környezet     | Hitelesítési szolgáltatás URL-címe                                |
 |-----------------|-----------------------------------------------------------|
@@ -73,7 +72,7 @@ Azt is megteheti, hogy kicseréli a titkos kulcsot egy hozzáférési jogkivonat
 
 Az alábbi példa egy titkos kulcsot tartalmazó jogkivonat beszerzésére vonatkozó kérelmeket mutat be:
 
-```
+```curl
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
 
@@ -83,11 +82,11 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 
 Egy sikeres kérelem visszaadja a kódolt hozzáférési tokent egyszerű szövegként a válasz törzsében. Az érvényes jogkivonatot tulajdonosi jogkivonatként adja át a fordító szolgáltatásnak az engedélyezésben.
 
-```
+```http
 Authorization: Bearer <Base64-access_token>
 ```
 
-A hitelesítési jogkivonat 10 percig érvényes. A tokent újra fel kell használni, amikor több hívást végez a fordítói API-kon. Ha azonban a program hosszabb időn keresztül kezdeményezi a kérelmeket a Translator API-nak, akkor a programnak rendszeres időközönként új hozzáférési jogkivonatot kell igényelnie (például 8 percenként).
+A hitelesítési jogkivonat 10 percig érvényes. A tokent újra fel kell használni, ha több hívást végez a Translator API-khoz. Ha azonban a program hosszabb időn keresztül kéri a Translator API-nak küldött kéréseket, akkor a programnak rendszeres időközönként új hozzáférési jogkivonatot kell igényelnie (például 8 percenként).
 
 ### <a name="multi-service-subscription"></a>Több szolgáltatásra kiterjedő előfizetés
 
@@ -99,24 +98,23 @@ Több szolgáltatásból álló titkos kulcs használata esetén két hitelesít
 
 A Multi-Service Text API-előfizetéshez régió szükséges. A kiválasztott régió az egyetlen olyan régió, amelyet a többszolgáltatásos előfizetési kulcs használatakor használhat a szöveges fordításhoz, és a Azure Portalon keresztül a többszolgáltatásos előfizetésre való feliratkozáskor választott régiónak kell lennie.
 
-Az elérhető régiók `australiaeast`a `brazilsouth`következők `canadacentral`, `centralindia` `centralus` `centraluseuap` ,,`eastus`,,,,,,,,, `eastasia` `eastus2` `francecentral` `japaneast` `japanwest` `koreacentral` ,,,`westus2`, ,`westcentralus`,, ,,és`southafricanorth`. `uksouth` `westeurope` `southeastasia` `northcentralus` `northeurope` `southcentralus` `westus`
+Az elérhető régiók a következők: `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centralus`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `francecentral`, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, @no__ t-21 és 2.
 
-Ha a lekérdezési sztringben megadja a titkos kulcsot a paraméterrel `Subscription-Key`, akkor a régiót a lekérdezési paraméterrel `Subscription-Region`kell megadnia.
+Ha a lekérdezési karakterláncban a `Subscription-Key` paraméterrel adja meg a titkos kulcsot, akkor a (z) `Subscription-Region` lekérdezési paraméterrel rendelkező régiót kell megadnia.
 
 Ha tulajdonosi jogkivonatot használ, be kell szereznie a tokent a régió végpontján: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 
 ## <a name="errors"></a>Hibák
 
-A standard hibaérték a name/Value pár nevű `error`JSON-objektum. Az érték egy JSON-objektum is, amely tulajdonságokkal rendelkezik:
+A standard hibaérték egy `error` nevű JSON-objektum. Az érték egy JSON-objektum is, amely tulajdonságokkal rendelkezik:
 
-  * `code`: Kiszolgáló által definiált hibakód.
-
-  * `message`: Egy karakterlánc, amely a hiba ember által olvasható ábrázolását adja meg.
+  * `code`: kiszolgáló által definiált hibakód.
+  * `message`: egy karakterlánc, amely a hiba ember által olvasható ábrázolását adja meg.
 
 Az ingyenes próbaverziós előfizetéssel rendelkező ügyfelek például a következő hibaüzenetet kapják meg az ingyenes kvóta kimerülése után:
 
-```
+```json
 {
   "error": {
     "code":403001,
@@ -136,7 +134,7 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 400005| Egy bemeneti szöveg hiányzik vagy érvénytelen.|
 | 400006| A nyelv és a szkript kombinációja érvénytelen.|
 | 400018| A forrás parancsfájl-megadása ("from script") hiányzik vagy érvénytelen.|
-| 400019| A megadott nyelv egyike nem támogatott.|
+| 400019| A megadott nyelvek egyike nem támogatott.|
 | 400020| A bemeneti szöveg tömb egyik eleme nem érvényes.|
 | 400021| Az API-verzió paramétere hiányzik vagy érvénytelen.|
 | 400023| A megadott nyelvi párok egyike érvénytelen.|
@@ -156,7 +154,7 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 400079| A és a nyelv közötti fordításra kért egyéni rendszer nem létezik.|
 | 400080| A nyelv vagy a parancsfájl nem támogatja az írást.|
 | 401000| A kérés nincs engedélyezve, mert a hitelesítő adatok hiányoznak vagy érvénytelenek.|
-| 401015| "A megadott hitelesítő adatok a Speech API-hoz tartoznak. Ehhez a kérelemhez a Text API hitelesítő adatai szükségesek. Használja az előfizetést Translator Text API. "|
+| 401015| "A megadott hitelesítő adatok a Speech API-hoz tartoznak. Ehhez a kérelemhez a Text API hitelesítő adatai szükségesek. Translator Text API-előfizetés használata. "|
 | 403000| A művelet nem engedélyezett.|
 | 403001| A művelet nem engedélyezett, mert az előfizetés túllépte az ingyenes kvótát.|
 | 405000| A kért erőforrás nem támogatja a kérelem metódusát.|
@@ -165,5 +163,5 @@ A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP
 | 415000| A Content-Type fejléc hiányzik vagy érvénytelen.|
 | 429000, 429001, 429002| A kiszolgáló elutasította a kérelmet, mert az ügyfél túllépte a kérelmek korlátait.|
 | 500000| Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
-| 503000| Szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
+| 503000| A szolgáltatás átmenetileg nem érhető el. Próbálja újból. Ha a hiba továbbra is fennáll, jelentse a hibát dátum/idő szerint, a válasz fejléce X-kérelemazonosító, valamint az ügyfél-azonosítót az X-ClientTraceId kérelem fejlécében.|
 

@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727651"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244670"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory naplóinak integrálása
 
@@ -71,10 +71,10 @@ A közösségi segítségnyújtás a [Azure log INTEGRATION MSDN fórumán](http
 
 Létrehozhat egy [támogatási kérést](../../azure-supportability/how-to-create-azure-support-request.md)is. Válassza ki a **naplózási integráció** lehetőséget arra a szolgáltatásra, amelyhez támogatást kér.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Log Integrationról további információt a következő témakörben talál:
 
-* [Azure-naplók Microsoft Azure log Integration](https://www.microsoft.com/download/details.aspx?id=53324): Ez a letöltőközpontban található oldal részletes adatokat, rendszerkövetelményeket és telepítési utasításokat tartalmaz a Azure Log Integration.
-* [A Azure log Integration bemutatása](azure-log-integration-overview.md): Ez a cikk bemutatja, hogy Azure Log Integration, annak főbb képességei, és hogyan működik.
-* [Azure log Integration gyakori kérdések](azure-log-integration-faq.md): Ez a cikk a Azure Log Integrationával kapcsolatos kérdésekre ad választ.
-* [Új szolgáltatások a Azure Diagnostics és az Azure-naplókhoz](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Ebben a blogbejegyzésben bemutatjuk az Azure-naplók és más funkciók betekintését az Azure-erőforrások műveleteibe.
+* [Microsoft Azure log Integration az Azure-naplókhoz](https://azure.microsoft.com/services/monitor/): Ez a letöltőközpont oldal részleteket, rendszerkövetelményeket és telepítési utasításokat tartalmaz a Azure log Integrationhoz.
+* [Bevezetés a Azure log Integrationba](azure-log-integration-overview.md): ebben a cikkben bemutatjuk a Azure log Integration, a főbb képességeiket és azok működését.
+* [Azure log INTEGRATION GYIK](azure-log-integration-faq.md): Ez a cikk a Azure log Integration kapcsolatos kérdésekre ad választ.
+* [Új funkciók a Azure Diagnostics és az Azure-naplókhoz](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): ebben a blogbejegyzésben bemutatjuk az Azure-naplókba és más funkciókba, amelyek segítségével betekintést nyerhet az Azure-erőforrások műveleteibe.

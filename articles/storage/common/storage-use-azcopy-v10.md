@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 980156284b27478163760b1f833a91ba7cddec21
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694760"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244787"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -67,13 +67,13 @@ Az engedélyezési hitelesítő adatokat Azure Active Directory (AD) vagy közö
 
 A táblázat használata útmutatóként:
 
-| Tárolótípus | Jelenleg támogatott hitelesítési módszer |
+| Tárhely típusa | Jelenleg támogatott hitelesítési módszer |
 |--|--|
 |**Blob Storage** | Azure AD & SAS |
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>1\. módszer: Az Azure Active Directory használata
+### <a name="option-1-use-azure-active-directory"></a>1\. lehetőség: a Azure Active Directory használata
 
 Azure Active Directory használatával hitelesítő adatokat adhat meg, ahelyett, hogy SAS-tokent kellene hozzáfűzni az egyes parancsokhoz.  
 
@@ -95,8 +95,8 @@ Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzá
 
 - Tároló (fájlrendszer)
 - Tárfiók
-- Resource group
-- Subscription
+- Erőforráscsoport
+- Előfizetés
 
 A szerepkörök ellenőrzésével és hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés biztosítása az Azure blobhoz és a várólista adataihoz a Azure Portal RBAC](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
@@ -139,7 +139,7 @@ A szkript futtatása előtt interaktívan kell bejelentkeznie legalább egyszer,
 
 Bejelentkezhet a fiókjába egy ügyfél titkos kódjával vagy egy olyan tanúsítvány jelszavával, amely társítva van a szolgáltatásnév alkalmazásának regisztrálásához.
 
-Ha többet szeretne megtudni az egyszerű szolgáltatásnév létrehozásáról, tekintse meg a [How: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
+Ha többet szeretne megtudni az egyszerű szolgáltatásnév létrehozásáról, tekintse meg a [How to: use The Portal for Azure ad-alkalmazás és egyszerű szolgáltatásnév, amely hozzáfér az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Az egyszerű szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 
@@ -287,7 +287,7 @@ Az URL-cím megjelenik a parancs kimenetében. A szkript ezután letöltheti a A
 
 | Operációs rendszer  | Parancs |
 |--------|-----------|
-| **Linux** | `wget -O azcopyv10.tar https://azcopyvnext.azureedge.net/release20190301/azcopy_linux_amd64_10.0.8.tar.gz tar -xf azcopyv10.tar --strip-components=1 ./azcopy` |
+| **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciális karakterek elmenekülése SAS-jogkivonatokban
@@ -321,6 +321,6 @@ Ha a AzCopy (AzCopy v 8.1) előző verzióját kell használnia, tekintse meg az
 
 Lásd: [AzCopy konfigurálása, optimalizálása és hibáinak megoldása](storage-use-azcopy-configure.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése van, problémája vagy általános visszajelzése van, küldje el őket [a GitHub](https://github.com/Azure/azure-storage-azcopy) oldalon.

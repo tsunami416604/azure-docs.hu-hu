@@ -1,7 +1,7 @@
 ---
 title: Projekt akusztikai egységének integrációja és üzembe helyezése
 titlesuffix: Azure Cognitive Services
-description: Ez az útmutató bemutatja, hogyan integrálhatja a Project akusztikai egység beépülő modulját az Unity-projektbe.
+description: Ez a cikk bemutatja, hogyan integrálhatja a projekt akusztikai egységének beépülő modulját az Unity-projektbe.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -11,64 +11,63 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 54bc98e0ddba0292c6a5dbb07f2bbdfce6a1cb45
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a8ddb0e4ca2ee4396a25a70c8b60b653aebb72d8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933145"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243001"
 ---
 # <a name="project-acoustics-unity-integration"></a>Projekt akusztikai egységének integrációja
-Ez az útmutató bemutatja, hogyan integrálhatja a Project akusztikai egység beépülő modulját az Unity-projektbe.
+Ez a cikk bemutatja, hogyan integrálhatja a projekt akusztikai egységének beépülő modulját az Unity-projektbe.
 
 A szoftverre vonatkozó követelmények:
 * [Unity 2018.2 +](https://unity3d.com) Windowshoz
 * [Projekt akusztikai egység csomag](https://www.microsoft.com/download/details.aspx?id=57346)
 
-## <a name="import-the-plugin"></a>A beépülő modul importálása
-Importálja az akusztikai UnityPackage a projektbe. 
-* Az egység területen lépjen az **eszközök > importálás csomag > egyéni csomag...**
+## <a name="import-the-plug-in"></a>A beépülő modul importálása
+1. Importálja az akusztikai UnityPackage a projektbe. 
+ Az egység területen lépjen az **eszközök** > **Importálás csomag** > **Egyéni csomag**elemre.
 
-    ![Képernyőfelvétel az egység importálási csomag menüjéről](media/import-package.png)  
+    ![Az egység importálása csomag menü](media/import-package.png)  
 
-* Válassza a **ProjectAcoustics. unitypackage elemet.**
+1. Válassza a **ProjectAcoustics. unitypackage**elemet.
 
-* Kattintson az **Importálás** gombra az egység csomag projektbe való integrálásához  
+1. Válassza az **Importálás** gombot az egység csomag projektbe való integrálásához.
 
-    ![Képernyőfelvétel az egység importálási csomag párbeszédpanelről](media/import-dialog.png)  
+    ![Az egység importálása csomag párbeszédpanel](media/import-dialog.png)  
 
-Ha a beépülő modult egy meglévő projektbe importálja, előfordulhat, hogy a projektben már van egy **MCS. RSP** fájl a projekt gyökerében, amely C# a fordító beállításait adja meg. Egyesíteni kell a fájl tartalmát a Project Acoustics beépülő modulhoz tartozó MCS. RSP fájllal.
+Ha a beépülő modult egy meglévő projektbe importálja, előfordulhat, hogy a projektben már van egy *MCS. RSP* fájl a projekt gyökerében. Ez a fájl a C# fordító beállításait adja meg. Egyesítse a fájl tartalmát a projekt akusztikai beépülő moduljában található MCS. RSP fájllal.
 
-## <a name="enable-the-plugin"></a>Beépülő modul engedélyezése
-A akusztikai eszközkészlet sütni részének a .NET 4. x parancsfájl-futtatási verziójának kell lennie. A csomag importálásakor a rendszer frissíti az Unity Player beállításait. A beállítás érvénybe léptetéséhez indítsa újra az egységet.
+## <a name="enable-the-plug-in"></a>Beépülő modul engedélyezése
+A akusztikai eszközkészlet sütni részében a .NET 4 szükséges. *x* parancsfájl-futtatókörnyezet verziója. A csomag importálása frissíti az egység lejátszójának beállításait. A beállítás érvénybe léptetéséhez indítsa újra az egységet.
 
-![Képernyőfelvétel az Unity Player beállítások panelről](media/player-settings.png)
+![A Unity Player beállítások panel](media/player-settings.png)
 
-![Képernyőfelvétel az Unity Player Settings panelről a .NET 4,5 kiválasztva](media/net45.png)
+![A Unity Player Settings panel a .NET 4,5 kiválasztott](media/net45.png)
 
 ## <a name="set-up-audio-dsp"></a>Audio DSP beállítása
-A Project Acoustics olyan audio Runtime DSP-t tartalmaz, amely integrálható az Unity audio Engine spatializer-keretrendszerbe. Magában foglalja a HRTF-alapú és a pásztázási spatialization is. Engedélyezze a Project akusztikai DSP-t, ehhez nyissa meg az Unity hangbeállításokat az **Edit > Project settings > audio**paranccsal, majd válassza a **Project Acoustics** elemet a projekthez tartozó **Spatializer beépülő modulként** . Győződjön meg arról, hogy a **DSP-puffer mérete** a legjobb teljesítmény értékre van állítva.
+A Project Acoustics olyan audio Runtime DSP-t tartalmaz, amely integrálható az Unity audio Engine spatializer-keretrendszerbe. Magában foglalja a HRTF-alapú és a pásztázási spatialization is. Ha engedélyezni szeretné a Project akusztikai DSP **-t, lépjen az @no__t-** 1**projekt beállításai** > **hangra** , és nyissa meg az Unity hangbeállításokat. Válassza a **Project akusztika** lehetőséget a projekthez tartozó **Spatializer beépülő modulként** . Győződjön meg arról, hogy a **DSP-puffer mérete** a *legjobb teljesítmény*értékre van beállítva.
 
-![Képernyőfelvétel az Unity Project Settings panelről](media/project-settings.png)  
+![Az Unity Project Settings menü](media/project-settings.png)  
 
-![Képernyőfelvétel az Unity Spatializer Settings panelről a Project Acoustics Spatializer kiválasztott](media/choose-spatializer.png)
+![A Unity Spatializer beállítások panel a Project Acoustics Spatializer kijelölve](media/choose-spatializer.png)
 
-Ezután nyissa meg az hangkeverőt (**ablak >** keverője). Győződjön meg arról, hogy van legalább egy keverője egy csoporttal. Ha nem, kattintson a "+" gombra a keverők jobb oldalán. Kattintson a jobb gombbal a csatorna szalag aljára a hatások szakaszban, és adja hozzá a **Project akusztikai keverő** hatását. Vegye figyelembe, hogy egyszerre csak egy Project akusztikai keverő támogatott.
+Ezután nyissa meg az hangkeverőt (**ablak** > **keverő**). Győződjön meg arról, hogy van legalább egy keverője egy csoporttal. Ha még nem rendelkezik ilyennel, válassza a **+** gombot a **keverők**jobb oldalán. Kattintson a jobb gombbal a csatorna szalag aljára a hatások szakaszban, és adja hozzá a **Microsoft akusztikai keverő** effektust. Egyszerre csak egy Project akusztikai keverő támogatott.
 
-![Képernyőfelvétel az Unity hangkeverőről, amely a Project Acoustics keverőjét üzemelteti](media/audio-mixer.png)
+![A Project akusztikai keverőjét tároló Unity audio mixer](media/audio-mixer.png)
 
 ## <a name="enable-acoustics-on-sound-sources"></a>Akusztikai hangforrások engedélyezése
-Hozzon létre egy hangforrást. Kattintson a AudioSource felügyelő paneljének alján található jelölőnégyzetre, amely a következőt mondja: **Spatialize**. Győződjön meg arról, hogy a **térbeli Blend** a teljes 3D értékre van beállítva.  
+Hangforrás létrehozása: jelölje be a **Spatialize** jelölőnégyzetet a AudioSource-felügyelő paneljének alján. Győződjön meg arról, hogy a **térbeli elegy** a teljes *3D*értékre van beállítva.  
 
-![Képernyőfelvétel az Unity audio forrás paneljéről](media/audio-source.png)
+![Az Unity audio forrás panel](media/audio-source.png)
 
 ## <a name="enable-acoustic-design"></a>Akusztikus kialakítás engedélyezése
-Csatolja a szkript **AcousticsAdjust** egy hangforráshoz a jelenetben, hogy engedélyezze a további forrás-tervezési paramétereket, ehhez kattintson az **összetevő hozzáadása** elemre, és válassza a **Parancsfájlok > akusztika beállítása**:
+Csatolja a *AcousticsAdjust* szkriptet a jelenetben lévő hangforráshoz, hogy engedélyezze a további forrás-tervezési paramétereket: válassza az **összetevő hozzáadása** elemet, és válassza a **parancsfájlok** > **akusztikai beállítások**lehetőséget.
 
-![Képernyőfelvétel az Unity AcousticsAdjust parancsfájlról](media/acoustics-adjust.png)
+![Az Unity AcousticsAdjust-szkript](media/acoustics-adjust.png)
 
-## <a name="next-steps"></a>További lépések
-* [A saját jeleneteit az Unity projekt akusztikai adataival sütni](unity-baking.md)
-* [Azure batch-fiók létrehozása](create-azure-account.md) a jelenet felhőbe való sütni
+## <a name="next-steps"></a>Következő lépések
+* [A saját jeleneteit az Unity projekt akusztikai adataival sütni](unity-baking.md).
+* [Hozzon létre egy Azure batch fiókot](create-azure-account.md) a jelenet felhőben való sütni.
 * Ismerje meg a [projekt akusztikai egységének tervezési folyamatát](unity-workflow.md).
-

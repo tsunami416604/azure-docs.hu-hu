@@ -1,35 +1,35 @@
 ---
-title: A Microsoft Azure FXT Edge Filer – további dokumentáció
-description: További segédanyagok Azure FXT Edge Filer telepítéshez
+title: Microsoft Azure FXT Edge Filer – további dokumentáció
+description: További dokumentáció az Azure FXT Edge Filer telepítéséhez
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6b04537da7c26cdeff6cac9f262e138c29bee37a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67453865"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254917"
 ---
 # <a name="additional-documentation"></a>További dokumentáció 
 
-Bizonyos erőforrások kívül a docs.microsoft.com webhely segíthetnek a megismerésében, és a Microsoft Azure FXT Edge Filer hibrid gyorsítótárat.
+Előfordulhat, hogy az ezen a docs.microsoft.com webhelyen kívüli erőforrások segítenek megérteni és dolgozni a Microsoft Azure FXT Edge Filer Hybrid cache-sel.
 
-## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT for Azure cache – dokumentáció
+## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT az Azure cache dokumentációjában
 
-[Az Azure-ban Avere vFXT](https://docs.microsoft.com/azure/avere-vfxt/) egy hasonló fürt gyorsítótár-termék, amely a virtuális csomópontok használja a Microsoft Azure-ban. Jön létre az Azure portal használatával, de az azonos panel konfigurációs szoftver használja, mint az Azure FXT Edge Filer hardveres gyorsítótár. 
+Az Azure-hoz készült [avere-vFXT](https://docs.microsoft.com/azure/avere-vfxt/) egy hasonló, a fürthöz tartozó gyorsítótár-termék, amely a Microsoft Azure virtuális csomópontjait használja. A rendszer a Azure Portal használatával jön létre, de ugyanazt a Vezérlőpult-konfigurációs szoftvert használja, mint az Azure FXT Edge Filer Hardware cache. 
 
 ## <a name="legacy-hardware-documentation"></a>Régi hardver dokumentációja 
 
-Ez a technológia korábban használt termékek Avere rendszerekből. Felhasználói dokumentáció az azokat a régebbi termékeket érhető el a [Avere örökölt dokumentációs webhely](https://azure.github.io/Avere/). 
+Ezt a technológiát korábban használták a avere rendszerek termékeiben. A régebbi termékek felhasználói dokumentációja a [avere Legacy dokumentációs webhelyén](https://azure.github.io/Avere/)érhető el. 
 
-Pontosabban ezeket a dokumentumokat lehet hasznos részletei:
+Pontosabban ezek a dokumentumok hasznos részletekkel rendelkezhetnek:
 
-* [Beállítási útmutató a fürt](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) – közös fürt beállítása és felügyeleti feladatokkal kapcsolatos információk áttekintését tartalmazza, és részletes magyarázatokat a fürt beállítási lapjain van 
+* A [fürt konfigurációs útmutatója](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html) – áttekintő információkat tartalmaz a fürt általános telepítési és felügyeleti feladatairól, és részletesen ismerteti a fürtkonfiguráció oldalait. 
 
-* [Irányítópult útmutató](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) – ismerteti a Vezérlőpult funkcióit **irányítópult** lap
+* [Irányítópult-útmutató](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html) – a Vezérlőpult **irányítópultjának** funkcióit ismerteti
 
-* [FXT fürt létrehozási útmutató](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) -fürt létrehozása az útmutató korábbi termékekből
+* [FXT-fürt létrehozási útmutatója](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html) – fürt létrehozási útmutatója korábbi termékekből
 

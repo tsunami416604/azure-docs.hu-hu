@@ -7,13 +7,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.date: 10/8/2019
+ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000402"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244858"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
@@ -33,10 +33,10 @@ A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan
 |---------|---------|
 |Input Alias (Bemeneti alias)   | Egy rövid név, amelyet a rendszer a lekérdezésben a bemenetre való hivatkozáshoz fog használni.   |
 |Tárfiók   | Annak a Storage-fióknak a neve, ahol a Blobok találhatók. Ha a Stream Analytics-feladatokkal megegyező előfizetésben szerepel, kiválaszthatja a legördülő menüből.   |
-|Tárfiók kulcsa   | A storage-fiókhoz társított titkos kulcs. Ezt automatikusan kitölti a rendszer, ha a Storage-fiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladatokhoz.   |
-|Storage-tároló   | Tárolók biztosítják a Microsoft Azure Blob service-ben tárolt blobok logikai jellegű csoportosítását. A Blob szolgáltatáshoz feltölt egy blobot, ha meg kell adnia egy adott blob-tárolót.   |
-|Path Pattern (Elérésiút-minta)   | A Blobok megadott tárolón belüli megkereséséhez használt elérési út. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{date}, {time}<BR>1\. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2\. példa: termékek/{Date}/Product-list. csv<BR>3\. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
-|Dátumformátum [nem kötelező]   | Ha a megadott elérésiút-mintában a {Date} értéket használta, akkor kiválaszthatja azt a dátumformátum-formátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: ÉÉÉÉ/hh/nn, hh/nn/éééé stb.   |
+|Storage-fiók kulcsa   | A Storage-fiókhoz társított titkos kulcs. Ezt automatikusan kitölti a rendszer, ha a Storage-fiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladatokhoz.   |
+|Storage-tároló   | A tárolók logikai csoportosítást biztosítanak a Microsoft Azure Blob service tárolt blobokhoz. Amikor feltölt egy blobot a Blob serviceba, meg kell adnia egy tárolót a blobhoz.   |
+|Path Pattern (Elérésiút-minta)   | A Blobok megadott tárolón belüli megkereséséhez használt elérési út. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{Date}, {Time}<BR>1\. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2\. példa: termékek/{Date}/Product-list. csv<BR>3\. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
+|Dátumformátum [nem kötelező]   | Ha a megadott elérésiút-mintában a {Date} értéket használta, akkor kiválaszthatja azt a dátumformátum-formátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: éééé/hh/nn, hh/nn/éééé stb.   |
 |Időformátum [nem kötelező]   | Ha a megadott elérési úton a {Time} értéket használta, akkor kiválaszthatja azt az időformátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: HH, HH/hh vagy HH-mm.  |
 |Esemény szerializálási formátuma   | Annak biztosítása érdekében, hogy a lekérdezések a várt módon működjenek, Stream Analytics tudnia kell, hogy melyik szerializálási formátumot használja a bejövő adatfolyamok számára. A hivatkozási adatformátumok esetében a támogatott formátumok a CSV és a JSON.  |
 |Encoding   | Jelenleg az UTF-8 az egyetlen támogatott kódolási formátum.  |
@@ -60,7 +60,7 @@ Azure Stream Analytics automatikusan megkeresi a frissített hivatkozási adatbl
 > 
 > Ez alól kivételt képez, ha a feladatsornak időben újra fel kell dolgoznia az adatfeldolgozást, vagy amikor a feladatot először indítja el. A kezdéskor a rendszer a feladatok kezdési időpontja előtt előállított legújabb blobot keresi. Erre azért van szükség, hogy a feladatok elindulásakor ne legyen **üres** a hivatkozás adatkészlete. Ha az egyik nem található, a feladatokban a következő diagnosztika látható: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
+A [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) a stream Analytics által a hivatkozási adatok definícióinak frissítéséhez szükséges frissített Blobok létrehozásának feladatát is felhasználhatja. A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amely az adatok áthelyezésének és átalakításának összehangolására és átalakítására szolgál. Data Factory támogatja a [nagy számú felhőalapú és helyszíni adattárakhoz való csatlakozást](../data-factory/copy-activity-overview.md) , valamint az adatáthelyezést a megadott menetrend szerint. További információ és lépésenkénti útmutató arról, hogyan állíthat be egy Data Factory folyamatot, hogy olyan Stream Analyticsre hivatkozzon, amely előre meghatározott ütemterv alapján frissül, és tekintse meg ezt a [GitHub-mintát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs).
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Tippek a blob-referenciák frissítéséhez
 
@@ -91,10 +91,10 @@ A SQL Database hivatkozási adatok konfigurálásához először létre kell hoz
 |**Tulajdonság neve**|**Leírás**  |
 |---------|---------|
 |Bemeneti alias|Egy rövid név, amelyet a rendszer a lekérdezésben a bemenetre való hivatkozáshoz fog használni.|
-|Subscription|Válassza ki az előfizetését|
+|Előfizetés|Válassza ki az előfizetését|
 |Adatbázis|A hivatkozási adatait tartalmazó Azure SQL Database. Azure SQL Database felügyelt példány esetében az 3342-es portot kell megadni. Például: *sampleserver. public. database. Windows. net, 3342*|
 |Felhasználónév|A Azure SQL Databasehoz társított Felhasználónév.|
-|Windows 10|A Azure SQL Databasehoz társított jelszó.|
+|Jelszó|A Azure SQL Databasehoz társított jelszó.|
 |Rendszeres frissítés|Ez a beállítás lehetővé teszi a frissítési sebesség kiválasztását. A "bekapcsolva" beállítással megadhatja a frissítési gyakoriságot a DD: óó: PP értékben.|
 |Pillanatkép-lekérdezés|Ez az alapértelmezett lekérdezési beállítás, amely beolvassa a hivatkozási adatait a SQL Databaseból.|
 |Különbözeti lekérdezés|A nagyméretű adatkészletekkel és a rövid frissítési gyakorisággal rendelkező speciális forgatókönyvek esetében válassza a különbözeti lekérdezés hozzáadását.|
@@ -111,11 +111,11 @@ A Stream Analytics **legfeljebb 300 MB méretű**hivatkozási adatmennyiséget t
 
 Ha a feladatokhoz tartozó folyamatos átviteli egységek száma nem haladja meg a 6-at, a rendszer nem növeli a támogatott maximális mennyiségű hivatkozási értéket.
 
-A tömörítés támogatása nem érhető el a referenciaadatoknál. 
+A tömörítés támogatása nem érhető el a hivatkozási értékekhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Stream Analytics-feladatok létrehozása a Azure Portal @ no__t-0 használatával
+> [Gyors útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

@@ -1,6 +1,6 @@
 ---
-title: Symantec AWS-beli adatkapcsolatok összekötése az Azure Sentinel szolgáltatással Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztatható a Symantec AWS-beli adatszolgáltatások az Azure Sentinelhez.
+title: AWS-CloudTrail összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható az AWS CloudTrail-adatszolgáltatások az Azure Sentinelhez.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 61bee1618092788da33549ec322dc4ab7130de16
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240868"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244679"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Az Azure Sentinel összekötése AWS-CloudTrail
 
@@ -35,7 +35,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 ## <a name="connect-aws"></a>Az AWS csatlakoztatása 
 
 
-1. Az Azure Sentinelben válassza az adatösszekötők lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
+1. Az Azure Sentinelben válassza az **adatösszekötők** lehetőséget, majd válassza ki az **Amazon Web Services** sort a táblázatban, majd az AWS ablaktáblán a jobb oldalon kattintson az **összekötő lap megnyitása**lehetőségre.
 
 1. A következő lépések végrehajtásával kövesse a **konfiguráció** szakasz utasításait.
  
@@ -51,7 +51,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-1.  Győződjön meg arról, hogy a **külső azonosító** megkövetelése van kiválasztva, majd adja meg a külső azonosítót (munkaterület-azonosítót), amely az Azure Sentinel portál AWS-összekötő lapján található.
+1.  Győződjön meg arról, hogy a **külső azonosító megkövetelése** van kiválasztva, majd adja meg a külső azonosítót (munkaterület-azonosítót), amely az Azure Sentinel portál AWS-összekötő lapján található.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
@@ -71,7 +71,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-1.  Másolja az **ARN szerepkört**. Az Azure Sentinel portálon, a Amazon Web Services összekötő képernyőjén illessze be azt a szerepkörbe a mező **hozzáadásához** , majd kattintson a **Hozzáadás**gombra.
+1.  Másolja az **ARN szerepkört**. Az Azure Sentinel portálon, a Amazon Web Services összekötő képernyőjén illessze be azt a **szerepkörbe a mező hozzáadásához** , majd kattintson a **Hozzáadás**gombra.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
@@ -79,7 +79,7 @@ Az AWS-összekötő használatával továbbíthatja az AWS-CloudTrail összes es
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az AWS CloudTrail az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
