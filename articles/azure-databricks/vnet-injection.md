@@ -1,202 +1,202 @@
 ---
-title: A virtuális hálózaton (előzetes verzió) üzembe helyezése az Azure Databricks
-description: Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Databricks a virtuális hálózathoz, más néven a virtuális hálózatok közötti injektálási.
+title: Az Azure Databricks üzembe helyezése virtuális hálózaton
+description: Ez a cikk azt ismerteti, hogyan helyezhetők üzembe Azure Databricks a virtuális hálózatban (más néven VNet Injection).
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/10/2019
+ms.openlocfilehash: 07591517211d5334b9bf055d778f00b171e7056f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126681"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263448"
 ---
-# <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>A virtuális hálózaton (előzetes verzió) üzembe helyezése az Azure Databricks
+# <a name="deploy-azure-databricks-in-your-virtual-network"></a>Az Azure Databricks üzembe helyezése virtuális hálózaton
 
-Az alapértelmezett üzembe helyezés az Azure Databricks egy olyan teljes körűen felügyelt szolgáltatás az Azure-ban: zárolt erőforráscsoportban üzembe helyezett összes adatsík erőforrások egy virtuális hálózatot (VNet), beleértve. Ha hálózati testreszabási van szükség, azonban is telepítheti az Azure Databricks-erőforrások a saját virtuális hálózaton (is nevű VNet injektálás), amikor teszi lehetővé:
+Az Azure Databricks alapértelmezett központi telepítése egy teljes körűen felügyelt Azure-beli szolgáltatás: az összes adatsík-erőforrás, beleértve a virtuális hálózatot (VNet) egy zárolt erőforráscsoporthoz van telepítve. Ha azonban hálózati testreszabásra van szüksége, Azure Databricks erőforrásokat telepíthet a saját virtuális hálózatában (más néven VNet Injection), amikor a következőket teszi lehetővé:
 
-* Az Azure Databricks csatlakozhat más Azure-szolgáltatások (például az Azure Storage) Szolgáltatásvégpontok használata biztonságosabb módon.
-* Csatlakozhat a helyszíni adatok források használható az Azure Databricks, kihasználhatja a felhasználó által megadott útvonalakat.
-* Csatlakozás az Azure Databricks műveletek a következők szerint minden kimenő forgalom vizsgálata és a egy hálózati virtuális berendezésre engedélyezési és megtagadási szabályoknak.
-* Az Azure Databricks használata az egyéni DNS konfigurálása.
-* Konfigurálja a hálózati biztonsági csoport (NSG) szabályai kimenő forgalom korlátozások megadásához.
-* A meglévő virtuális hálózatot az Azure Databricks-fürtök üzembe helyezése.
+* Más Azure-szolgáltatásokhoz (például az Azure Storage-hoz) való Azure Databricks kapcsolódás biztonságosabb módon, a szolgáltatási végpontok használatával.
+* A helyszíni adatforrásokhoz való kapcsolódáshoz a Azure Databricks használható, a felhasználó által megadott útvonalak kihasználása mellett.
+* Csatlakoztasson Azure Databrickst egy hálózati virtuális berendezéshez az összes kimenő forgalom vizsgálatához, és tegyen lépéseket az engedélyezési és megtagadási szabályoknak megfelelően.
+* Azure Databricks konfigurálása egyéni DNS használatára.
+* Konfigurálja a hálózati biztonsági csoport (NSG) szabályait a kimenő forgalomra vonatkozó korlátozások megadásához.
+* Azure Databricks fürtök üzembe helyezése a meglévő virtuális hálózaton.
 
-Üzembe helyezni az Azure Databricks-erőforrásokat a saját virtuális hálózatához is lehetővé teszi, hogy kihasználhatja a rugalmas CIDR-tartományt (bárhol közötti /16-/ 24 a virtuális hálózat és közötti /18-/ 26 alhálózatokra vonatkozó).
+Azure Databricks erőforrások saját virtuális hálózatra való üzembe helyezése lehetővé teszi a rugalmas CIDR-tartományok (16-/24 bárhol a virtuális hálózat és az alhálózatok közötti, illetve 18-/26 közötti) kihasználását is.
 
   > [!NOTE]
-  > A virtuális hálózatot egy meglévő munkaterületet nem cserélhető le. Ha az aktuális munkaterületen nem tud biztosítja a szükséges számú aktív fürtcsomópont, hozzon létre egy másik munkaterületet egy nagyobb méretű virtuális hálózatban. Hajtsa végre a [a részletes áttelepítési lépéseit](howto-regional-disaster-recovery.md#detailed-migration-steps) átmásolása a régi (notebookok, fürtkonfigurációkat, feladatok) erőforrások új munkaterületet.
+  > Meglévő munkaterület virtuális hálózatát nem lehet lecserélni. Ha az aktuális munkaterület nem tudja kielégíteni a szükséges számú aktív fürtöt, hozzon létre egy másik munkaterületet egy nagyobb virtuális hálózatban. Kövesse az [alábbi részletes áttelepítési lépéseket](howto-regional-disaster-recovery.md#detailed-migration-steps) az erőforrások (jegyzetfüzetek, fürtkonfiguráció, feladatok) a régiről az új munkaterületre való másolásához.
 
-## <a name="virtual-network-requirements"></a>Virtuális hálózat követelményei
+## <a name="virtual-network-requirements"></a>Virtuális hálózati követelmények
 
-Az Azure Portalon az Azure Databricks munkaterületen üzembe helyezési felület segítségével automatikusan konfigurálja a szükséges alhálózatok, hálózati biztonsági csoport és engedélyezési beállítások meglévő virtuális hálózattal, vagy használhatja az Azure Resource Manager a sablonok a virtuális hálózat konfigurálása és üzembe helyezése a munkaterületen.
+A Azure Portal Azure Databricks munkaterület telepítési felületének használatával automatikusan konfigurálhat egy meglévő virtuális hálózatot a szükséges alhálózatokkal, a hálózati biztonsági csoporttal és a engedélyezési beállításokkal, vagy használhatja a Azure Resource Manager sablonok a virtuális hálózat konfigurálásához és a munkaterület üzembe helyezéséhez.
 
-A virtuális hálózat úgy, hogy az Azure Databricks-munkaterületen az alábbi követelményeknek kell megfelelnie:
+A Azure Databricks munkaterületet üzembe helyező virtuális hálózatnak meg kell felelnie a következő követelményeknek:
 
-### <a name="location"></a>Location egység
+### <a name="location"></a>Földrajzi egység
 
-A virtuális hálózat az Azure Databricks-munkaterület megegyező helyen kell lennie.
+A virtuális hálózatnak a Azure Databricks munkaterülettel azonos helyen kell lennie.
 
 ### <a name="subnets"></a>Alhálózatok
 
-A virtuális hálózat két alhálózattal, az Azure databricks dedikált kell tartalmaznia:
+A virtuális hálózatnak két, Azure Databricks számára dedikált alhálózatot kell tartalmaznia:
 
-   1. Egy privát alhálózatra, amely lehetővé teszi, hogy a fürt belső kommunikációs konfigurált hálózati biztonsági csoporttal
+   1. Olyan konfigurált hálózati biztonsági csoporttal rendelkező magánhálózati alhálózat, amely lehetővé teszi a fürt belső kommunikációját
 
-   2. Egy nyilvános alhálózatot, amely lehetővé teszi a kommunikációt az Azure Databricks vezérlősík konfigurált hálózati biztonsági csoporttal.
+   2. Olyan konfigurált hálózati biztonsági csoporttal rendelkező nyilvános alhálózat, amely lehetővé teszi a kommunikációt a Azure Databricks vezérlő síkjával.
 
 ### <a name="address-space"></a>Címtér
 
-A virtuális hálózat /16 – / 24 és a CIDR-blokk közötti /18-/ 26-os a privát és nyilvános alhálózatok közötti CIDR-blokk.
+A virtuális hálózat/16-/24 közötti CIDR-blokk, valamint a magán-és nyilvános alhálózatok között a/18-/26 közötti CIDR-blokk.
 
 ### <a name="whitelisting"></a>Engedélyezés
 
-Minden kimenő és bejövő forgalmat az alhálózatok és az Azure Databricks vezérlősík között kell lennie az engedélyezési listán.
+Az alhálózatok és a Azure Databricks-vezérlési sík közötti összes kimenő és bejövő forgalomnak engedélyezési listának kell lennie.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
-Ez a szakasz ismerteti az Azure Portalon az Azure Databricks-munkaterület létrehozása és üzembe helyezni a saját meglévő virtuális hálózattal. Az Azure Databricks frissíti a virtuális hálózat két új alhálózatokra és hálózati biztonsági csoportok segítségével az Ön által megadott CIDR-tartományt, listáinak bejövő és kimenő alhálózata forgalmat, és a munkaterület üzembe helyezi a frissített virtuális hálózaton.
+Ez a szakasz azt ismerteti, hogyan hozható létre Azure Databricks munkaterület a Azure Portalban, és hogyan telepíthető a saját meglévő virtuális hálózatában. Azure Databricks frissíti a virtuális hálózatot két új alhálózattal és hálózati biztonsági csoporttal, az Ön által biztosított CIDR-tartományokat használva, engedélyezheti a bejövő és kimenő alhálózati forgalmat, és üzembe helyezi a munkaterületet a frissített virtuális hálózaton.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy virtuális hálózatot, amelyre központilag telepíti az Azure Databricks-munkaterület. Használjon egy meglévő virtuális hálózatot, vagy hozzon létre egy új, de a virtuális hálózat és az Azure Databricks-munkaterületet, amelyet szeretne létrehozni ugyanabban a régióban kell lennie. A CIDR-tartományt /16-/24 között szükség a virtuális hálózat.
+Rendelkeznie kell egy virtuális hálózattal, amelyre telepíteni fogja a Azure Databricks munkaterületet. Használhat meglévő virtuális hálózatot, vagy létrehozhat egy újat, de a virtuális hálózatnak ugyanabban a régióban kell lennie, mint a létrehozni kívánt Azure Databricks munkaterületnek. A virtuális hálózathoz a/16-/24 közötti CIDR-tartomány szükséges.
 
   > [!Warning]
-  > Egy munkaterületet, és a kisebb virtuális hálózat –, alacsonyabb CIDR-tartományt – is elfogy a (hálózati hely) IP-címek gyorsabban egy munkaterületet, és a nagyobb virtuális hálózat. Például egy munkaterületet, és a egy/24 virtuális hálózatot és/26-os alhálózatok rendelkezhet egy legfeljebb 64 csomópontot aktív egyszerre, míg a munkaterület egy /20 virtuális hálózat és /22 alhálózatok legfeljebb 1024 csomópontok is tartalmazhat.
+  > Egy kisebb virtuális hálózattal rendelkező munkaterület – azaz alacsonyabb CIDR-tartomány – az IP-címek (hálózati terület) gyorsabban futhatnak, mint egy nagyobb virtuális hálózattal rendelkező munkaterület. Egy/24 virtuális hálózattal és/26 alhálózattal rendelkező munkaterületen például legfeljebb 64 csomópont lehet aktív egyszerre, míg egy/20 virtuális hálózattal és/22 alhálózattal rendelkező munkaterület legfeljebb 1024 csomópontot tud elhelyezni.
 
-  Az alhálózatok automatikusan létrejön, amikor konfigurálja a munkaterülethez, és konfigurálása során az alhálózatokat a CIDR-tartományt adja meg az állomástelepítéshez.
+  Az alhálózatok automatikusan létrejönnek a munkaterület konfigurálásakor, és lehetősége lesz az alhálózatok CIDR-tartományának megadására a konfiguráció során.
 
 ## <a name="configure-the-virtual-network"></a>A virtuális hálózat konfigurálása
 
-1. Az Azure Portalon válassza ki a **+ erőforrás létrehozása > Analytics > az Azure Databricks** az Azure Databricks szolgáltatás párbeszédpanel megnyitásához.
+1. A Azure Portal válassza az **+ erőforrás létrehozása > Analytics > Azure Databricks** lehetőséget a Azure Databricks szolgáltatás párbeszédpanel megnyitásához.
 
-2. 2\. lépésben ismertetett konfigurációs lépéseket követve: Az első lépések útmutató az Azure Databricks-munkaterület létrehozása és üzembe helyezése az Azure Databricks-munkaterületen válassza ki a virtuális hálózati beállítást.
+2. Kövesse a 2. lépés: Azure Databricks munkaterület létrehozása című témakörben leírt konfigurációs lépéseket a Első lépések útmutatóban, majd válassza az üzembe helyezés Azure Databricks munkaterületet az Virtual Network lehetőségnél.
 
-   ![Az Azure Databricks szolgáltatás létrehozása](./media/vnet-injection/create-databricks-service.png)
+   ![Azure Databricks szolgáltatás létrehozása](./media/vnet-injection/create-databricks-service.png)
 
-3. Válassza ki a virtuális hálózat létrehozásához használni szeretne.
+3. Válassza ki a használni kívánt virtuális hálózatot.
 
    ![Virtuális hálózati beállítások](./media/vnet-injection/select-vnet.png)
 
-4. Adjon meg egy blokk közötti /18-/ 26-os két alhálózattal, dedikált Azure databricks a CIDR-tartományt:
+4. CIDR-tartományokat adjon meg a/18-/26 két alhálózat közötti blokkban, Azure Databricks:
 
-   * Egy nyilvános alhálózatot egy társított hálózati biztonsági csoportot, amely lehetővé teszi a kommunikációt az Azure Databricks vezérlősík lesz létrehozva.
-   * Egy társított hálózati biztonsági csoportot, amely lehetővé teszi, hogy a fürt belső kommunikációs egy privát alhálózatra lesz létrehozva.
+   * A rendszer egy nyilvános alhálózatot hoz létre egy társított hálózati biztonsági csoporttal, amely lehetővé teszi a kommunikációt a Azure Databricks vezérlő síkjával.
+   * A privát alhálózat egy társított hálózati biztonsági csoporttal jön létre, amely lehetővé teszi a fürt belső kommunikációját.
 
-5. Kattintson a **létrehozás** , a virtuális hálózaton üzembe helyezni az Azure Databricks-munkaterület.
+5. A **Létrehozás** gombra kattintva telepítheti az Azure Databricks munkaterületet a virtuális hálózatra.
 
-## <a name="advanced-resource-manager-configurations"></a>Speciális resource manager-konfigurációk
+## <a name="advanced-resource-manager-configurations"></a>Speciális Resource Manager-konfigurációk
 
-Ha azt szeretné, hogy jobban szabályozhatja a virtuális hálózat beállításait – például azt szeretné, a meglévő alhálózatot használja, használja a meglévő hálózati biztonsági csoportok vagy hozzon létre egy saját biztonsági szabályok – a következő Azure Resource Manager-sablonok helyett használhatja a Portál virtuális hálózati konfiguráció és a munkaterület üzembe helyezése.
+Ha nagyobb mértékben szeretné szabályozni a virtuális hálózat konfigurációját – például meglévő alhálózatokat szeretne használni, használja a meglévő hálózati biztonsági csoportokat, vagy hozza létre saját biztonsági szabályait – a következő Azure Resource Manager sablonokat használhatja a a portál virtuális hálózatának konfigurációja és a munkaterület üzembe helyezése.
 
-### <a name="all-in-one"></a>Minden együtt
+### <a name="all-in-one"></a>Mindez egy
 
-Minden együtt egy virtuális hálózatot a hálózati biztonsági csoportok és az Azure Databricks-munkaterület létrehozásához használja a [teljes körű sablon Databricks VNet beszúrta munkaterületek](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
+Ha egy virtuális hálózatot, hálózati biztonsági csoportokat és Azure Databricks munkaterületet szeretne létrehozni, használja az [all-in-One sablont a Databricks VNet befecskendezett munkaterületek számára](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
-Ez a sablon használatakor nem kell tennie minden olyan alhálózat forgalmának manuális alkalmazásátjáróra.
+A sablon használatakor nincs szükség az alhálózati forgalom manuális engedélyezési listájának megadására.
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
-Hálózati biztonsági csoportokat hoz létre a meglévő virtuális hálózat szükséges szabályokat, használja a [hálózati biztonsági csoport sablon Databricks VNet injektálási](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
+Ha hálózati biztonsági csoportokat szeretne létrehozni egy meglévő virtuális hálózathoz szükséges szabályokkal, használja a [hálózati biztonsági csoport sablonját a Databricks VNet injekcióhoz](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
 
-Ez a sablon használatakor nem kell tennie minden olyan alhálózat forgalmának manuális alkalmazásátjáróra.
+A sablon használatakor nincs szükség az alhálózati forgalom manuális engedélyezési listájának megadására.
 
 ### <a name="virtual-network"></a>Virtuális hálózat
 
-A megfelelő nyilvános és privát alhálózattal rendelkező virtuális hálózat létrehozásához használja a [virtuális hálózati sablont a Databricks VNet injektálási](https://azure.microsoft.com/resources/templates/101-databricks-vnet-for-vnet-injection).
+A megfelelő nyilvános és magánhálózati alhálózatokkal rendelkező virtuális hálózatok létrehozásához használja a [Virtual Network sablont a Databricks VNet injekcióhoz](https://azure.microsoft.com/resources/templates/101-databricks-vnet-for-vnet-injection).
 
-Ha ez a sablon a hálózati biztonsági csoportok sablon nélkül is használ, manuálisan kell hozzáadnia engedélyezési szabályok a hálózati biztonsági csoportok használata a virtuális hálózat.
+Ha ezt a sablont a hálózati biztonsági csoportok sablonjának használata nélkül használja, manuálisan kell hozzáadnia a engedélyezési szabályokat a virtuális hálózattal használt hálózati biztonsági csoportokhoz.
 
-### <a name="azure-databricks-workspace"></a>Az Azure Databricks-munkaterület
+### <a name="azure-databricks-workspace"></a>Azure Databricks munkaterület
 
-Egy meglévő virtuális hálózatot, amelynek a nyilvános és privát-alhálózatok és a megfelelően konfigurált hálózati biztonsági csoportok már beállított egy Azure Databricks-munkaterület központi telepítéséhez használja a [munkaterület sablon Databricks VNet injektálási](https://azure.microsoft.com/resources/templates/101-databricks-workspace-with-vnet-injection).
+Ha Azure Databricks-munkaterületet szeretne üzembe helyezni egy olyan meglévő virtuális hálózaton, amely nyilvános és magánhálózati alhálózatokkal rendelkezik, és a megfelelően konfigurált hálózati biztonsági csoportokat már beállította, használja a [Databricks VNet-befecskendezés munkaterület-sablonját](https://azure.microsoft.com/resources/templates/101-databricks-workspace-with-vnet-injection).
 
-Ha ez a sablon a hálózati biztonsági csoportok sablon nélkül is használ, manuálisan kell hozzáadnia engedélyezési szabályok a hálózati biztonsági csoportok használata a virtuális hálózat.
+Ha ezt a sablont a hálózati biztonsági csoportok sablonjának használata nélkül használja, manuálisan kell hozzáadnia a engedélyezési szabályokat a virtuális hálózattal használt hálózati biztonsági csoportokhoz.
 
-## <a name="whitelisting-subnet-traffic"></a>Engedélyezési alhálózat forgalmának
+## <a name="whitelisting-subnet-traffic"></a>Alhálózati forgalom engedélyezési listája
 
-Ha nem használja a [az Azure portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) vagy [Azure Resource Manager-sablonok](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) szeretne létrehozni a hálózati biztonsági csoportok, manuálisan kell engedélyezett a következő forgalmat az alhálózatok.
+Ha nem használja a hálózati biztonsági csoportok létrehozásához [Azure Portal](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal) vagy [Azure Resource Manager sablonokat](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced) , manuálisan kell megadnia a következő forgalmat az alhálózatokon.
 
-|Direction|Protocol|source|Forrásport|Cél|Célport|
+|Irány|Protocol (Protokoll)|Forrás|Forrásport|Cél|Célport|
 |---------|--------|------|-----------|-----------|----------------|
 |Bejövő|\*|VirtualNetwork|\*|\*|\*|
-|Bejövő|\*|Vezérlési sík NAT IP|\*|\*|22|
-|Bejövő|\*|Vezérlési sík NAT IP|\*|\*|5557|
-|Kimenő|\*|\*|\*|WebApp IP|\*|
-|Kimenő|\*|\*|\*|SQL (szolgáltatáscímke)|\*|
-|Kimenő|\*|\*|\*|Storage (szolgáltatáscímke)|\*|
+|Bejövő|\*|Vezérlési sík NAT IP-címe|\*|\*|22|
+|Bejövő|\*|Vezérlési sík NAT IP-címe|\*|\*|5557|
+|Kimenő|\*|\*|\*|WebApp IP-címe|\*|
+|Kimenő|\*|\*|\*|SQL (szolgáltatás címkéje)|\*|
+|Kimenő|\*|\*|\*|Storage (szolgáltatás címkéje)|\*|
 |Kimenő|\*|\*|\*|VirtualNetwork|\*|
 
-Engedélyezési lista alhálózat forgalmának használatával a következő IP-címek. SQL (metaadattár) és a Storage (összetevő és a naplók tárolásához) kell használnia az Sql és a Storage [szolgáltatáscímkéket](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Az alhálózati forgalom engedélyezési listája a következő IP-címek használatával. Az SQL (metaadattár) és a Storage (összetevő-és naplózási tároló) esetében az SQL és a Storage [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)kell használnia.
 
-|Az Azure Databricks-régió|Szolgáltatás|Nyilvános IP-cím|
+|Azure Databricks régió|Szolgáltatás|Nyilvános IP-cím|
 |-----------------------|-------|---------|
-|USA keleti régiója|Vezérlősík NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|USA 2. keleti régiója|Vezérlősík NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|USA északi középső régiója|Vezérlősík NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|USA középső régiója|Vezérlősík NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
-|USA déli középső régiója|Vezérlősík NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|USA nyugati régiója|Vezérlősík NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|USA nyugati régiója, 2.|Vezérlősík NAT </br></br>Webapp|40.83.178.242/32 </br></br>40.118.174.12/32|
-|Közép-Kanada|Vezérlősík NAT </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Kelet-Kanada|Vezérlősík NAT </br></br>Webapp|40.85.223.25/32 </br></br>13.71.184.74/32|
-|Az Egyesült Királyság nyugati régiója|Vezérlősík NAT </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Az Egyesült Királyság déli régiója|Vezérlősík NAT </br></br>Webapp|51.140.203.27/32 </br></br>51.140.204.4/32|
-|Nyugat-Európa|Vezérlősík NAT </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Észak-Európa|Vezérlősík NAT </br></br>Webapp|23.100.0.135/32 </br></br>52.232.19.246/32|
-|Közép-India|Vezérlősík NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Dél-India|Vezérlősík NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Nyugat-India|Vezérlősík NAT </br></br>Webapp|104.211.89.81/32 </br></br>104.211.101.14/32|
-|Délkelet-Ázsia|Vezérlősík NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Kelet-Ázsia|Vezérlősík NAT </br></br>Webapp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Kelet-Ausztrália|Vezérlősík NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Délkelet-Ausztrália|Vezérlősík NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Ausztrália középső régiója|Vezérlősík NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Ausztrália 2. középső régiója|Vezérlősík NAT </br></br>Webapp|13.70.105.50/32 </br></br>13.75.218.172/32|
-|Kelet-Japán|Vezérlősík NAT </br></br>Webapp|13.78.19.235/32 </br></br>52.246.160.72/32|
-|Nyugat-Japán|Vezérlősík NAT </br></br>Webapp|13.78.19.235/32 </br></br>52.246.160.72/32|
+|USA keleti régiója|Vezérlési sík NAT </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|USA 2. keleti régiója|Vezérlési sík NAT </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|USA északi középső régiója|Vezérlési sík NAT </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|USA középső régiója|Vezérlési sík NAT </br></br>WebApp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|USA déli középső régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|USA nyugati régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|USA 2. nyugati régiója|Vezérlési sík NAT </br></br>WebApp|40.83.178.242/32 </br></br>40.118.174.12/32|
+|Közép-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Kelet-Kanada|Vezérlési sík NAT </br></br>WebApp|40.85.223.25/32 </br></br>13.71.184.74/32|
+|Egyesült Királyság nyugati régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Egyesült Királyság déli régiója|Vezérlési sík NAT </br></br>WebApp|51.140.203.27/32 </br></br>51.140.204.4/32|
+|Nyugat-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
+|Észak-Európa|Vezérlési sík NAT </br></br>WebApp|23.100.0.135/32 </br></br>52.232.19.246/32|
+|Közép-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Dél-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Nyugat-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
+|Délkelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Kelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
+|Kelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Délkelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Ausztrália középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Ausztrália 2. középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Kelet-Japán|Vezérlési sík NAT </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
+|Nyugat-Japán|Vezérlési sík NAT </br></br>WebApp|13.78.19.235/32 </br></br>52.246.160.72/32|
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-### <a name="workspace-launch-errors"></a>Munkaterület indítási hibák
+### <a name="workspace-launch-errors"></a>Munkaterület indítási hibái
 
-Egy egyéni virtuális hálózatban munkaterület indítása meghiúsul, az Azure Databricks a bejelentkezési képernyőn a következő hiba miatt: **"Korábban hibát észleltünk a munkaterület létrehozását. Ellenőrizze, hogy az egyéni hálózati beállítások helyességét, és próbálkozzon újra."**
+Ha a munkaterületet egy egyéni virtuális hálózatban indítja el, a Azure Databricks bejelentkezési képernyőjén a következő hibaüzenet jelenik meg: **"hiba történt a munkaterület létrehozásakor. Győződjön meg arról, hogy az egyéni hálózati konfiguráció helyes, és próbálkozzon újra. "**
 
-Ez a hiba oka a hálózati konfiguráció nem felel meg a követelményeknek. Győződjön meg arról, hogy elvégezte a jelen témakörben található utasításokat a munkaterület létrehozása során.
+Ezt a hibát egy olyan hálózati konfiguráció okozta, amely nem felel meg a követelményeknek. A munkaterület létrehozásakor ellenőrizze, hogy követte-e a témakör utasításait.
 
-### <a name="cluster-creation-errors"></a>Fürt létrehozási hibák
+### <a name="cluster-creation-errors"></a>Fürtök létrehozásával kapcsolatos hibák
 
-**A példány nem érhető el: A rendszer nem SSH-n keresztül elérhető erőforrásokat.**
+**A példányok nem érhetők el: az erőforrások nem érhetők el SSH-n keresztül.**
 
-Lehetséges ok: feldolgozók vezérlősík forgalmát le van tiltva. Javítsa ki úgy, hogy a bejövő biztonsági szabályok követelményeinek. Ha telepíti, akkor a helyszíni hálózatához csatlakoztatott meglévő virtuális hálózattal, tekintse át a telepítés, a helyszíni hálózathoz való csatlakozás az Azure Databricks-munkaterület megadott információk segítségével.
+Lehetséges ok: a vezérlési síkon a dolgozók felé irányuló forgalom blokkolva van. Javítsa ki, hogy a bejövő biztonsági szabályok megfelelnek-e a követelményeknek. Ha a helyszíni hálózathoz csatlakoztatott meglévő virtuális hálózatra telepíti a szolgáltatást, tekintse át a telepítőt a Azure Databricks munkaterület csatlakoztatása a helyszíni hálózathoz című témakörben leírtak szerint.
 
-**Váratlan indítása sikertelen: Váratlan hiba történt a fürt beállítása. Próbálkozzon újra, és ha a probléma tartósan fennáll, lépjen kapcsolatba az Azure Databricks. Belső hiba jelenik meg: Időtúllépés a csomópont elhelyezhet.**
+**Váratlan indítási hiba: váratlan hiba történt a fürt beállítása közben. Ha a probléma továbbra is fennáll, próbálkozzon újra és lépjen kapcsolatba Azure Databricks. Belső hibaüzenet: időtúllépés a csomópont elhelyezése közben.**
 
-Lehetséges ok: a feldolgozó Azure Storage végpontokra érkező forgalom le van tiltva. Javítsa ki úgy, hogy a kimenő biztonsági szabályok követelményeinek. Ha egyéni DNS-kiszolgálókat használ, emellett a virtuális hálózat DNS-kiszolgálók állapotának ellenőrzéséhez.
+Lehetséges ok: a feldolgozók és az Azure Storage-végpontok felé irányuló forgalom blokkolva van. Javítsa ki, hogy a kimenő biztonsági szabályok megfelelnek-e a követelményeknek. Ha egyéni DNS-kiszolgálókat használ, ellenőrizze a virtuális hálózat DNS-kiszolgálóinak állapotát is.
 
-**Felhőbeli szolgáltató indítása sikertelen: A felhőbeli szolgáltató hiba történt a fürt beállítása. További információ az Azure Databricks útmutatójában talál. Az Azure hibakód: AuthorizationFailed/InvalidResourceReference.**
+**A felhőalapú szolgáltató indítási hibája: a fürt beállítása során hiba történt A felhőalapú szolgáltatónál. További információért tekintse meg a Azure Databricks útmutatót. Azure-hibakód: AuthorizationFailed/InvalidResourceReference.**
 
-Lehetséges ok: a virtuális hálózat vagy alhálózatok már nem létezik. Győződjön meg arról, hogy a virtuális hálózat és alhálózat létezik.
+Lehetséges ok: a virtuális hálózat vagy az alhálózatok már nem léteznek. Győződjön meg arról, hogy a virtuális hálózat és az alhálózatok léteznek.
 
-**Fürt leállítása. OK: A Spark a sikertelen indítás: A Spark nem tudta időben elindítani. A probléma okozhatja egy hibás Hive-metaadattár, érvénytelen Spark-konfigurációk vagy nem megfelelően működő init parancsfájlok. A Spark-illesztőprogram naplókat a probléma elhárításához tekintse meg, és ha a probléma tartósan fennáll, forduljon a Databricks. Belső hiba jelenik meg: A Spark nem tudott elindulni: Illesztőprogram-kezelő nem tudta időben elindítani.**
+**A fürt leállt. Ok: Spark indítási hiba: a Spark nem tudott elindulni az időben. Ezt a problémát az okozhatja, hogy hibás Hive-metaadattár, érvénytelen Spark-konfigurációk vagy hibás inicializálási parancsfájlok találhatók. A probléma elhárításához tekintse meg a Spark-illesztőprogram naplófájljait, és lépjen kapcsolatba a Databricks, ha a probléma továbbra is fennáll. Belső hibaüzenet: a Spark nem indult el: az illesztőprogram nem indult el időben.**
 
-Lehetséges ok: Tároló nem tud kommunikálni az üzemeltető példány vagy DBFS-tárfiókot. Javítsa ki az alhálózatok a DBFS tárfiók Internet folyamatban a következő ugrás egy egyéni útvonalon hozzá.
+Lehetséges ok: a tároló nem tud kommunikálni az üzemeltetési példánnyal vagy a DBFS-fiókkal. Javítsa ki az egyéni útvonalat az alhálózatokhoz a DBFS Storage-fiókhoz a következő ugrás az internetre való hozzáadásával.
 
-### <a name="notebook-command-errors"></a>Notebook parancs hibák
+### <a name="notebook-command-errors"></a>A notebook parancs hibái
 
 **A parancs nem válaszol**
 
-Lehetséges ok: worker-feldolgozó kommunikációja blokkolva van. Javítsa ki a azáltal, hogy a bejövő biztonsági szabályok az igényeknek.
+Lehetséges ok: a feldolgozók közötti kommunikáció le van tiltva. Javítsa ki, hogy a bejövő biztonsági szabályok megfelelnek-e a követelményeknek.
 
-**Notebook munkafolyamat azért sikertelen, a kivétel miatt: com.databricks.WorkflowException: org.apache.http.conn.ConnectTimeoutException**
+**A jegyzetfüzet-munkafolyamat sikertelen, a kivétel: com. databricks. WorkflowException: org. Apache. http. Conn. ConnectTimeoutException**
 
-Lehetséges ok: az Azure Databricks-Webapp feldolgozók érkező forgalom le van tiltva. Javítsa ki a azáltal, hogy a kimenő biztonsági szabályok az igényeknek.
+Lehetséges ok: a dolgozóktól a Azure Databricks WebApp felé irányuló forgalom blokkolva van. Javítsa ki, hogy a kimenő biztonsági szabályok megfelelnek-e a követelményeknek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával](databricks-extract-load-sql-data-warehouse.md)

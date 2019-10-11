@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001636"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263035"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Resource Manager
 
@@ -35,6 +35,7 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | BadRequest | Olyan központi telepítési értékeket küldtünk, amelyek nem egyeznek a Resource Manager által várttal. A hibaelhárítással kapcsolatos segítségért olvassa el a belső állapotjelző üzenetet. | A [sablon referenciája](/azure/templates/) és a [támogatott helyszínek](resource-location.md) |
 | Ütközés | Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. Például a lemezek átméretezése csak a virtuális gép létrehozásakor vagy a virtuális gép kiosztása esetén engedélyezett. | |
 | DeploymentActiveAndUneditable | Várjon, amíg a rendszer végrehajtja az adott erőforráscsoport egyidejű üzembe helyezését. | |
+| DeploymentFailedCleanUp | Ha a üzembe helyezése teljes módban történik, a sablonban nem szereplő erőforrások törlődnek. Ez a hibaüzenet akkor jelenik meg, ha nem rendelkezik megfelelő engedélyekkel a sablonban nem szereplő összes erőforrás törléséhez. A hiba elkerüléséhez módosítsa a központi telepítési módot növekményes értékre. | [Azure Resource Manager üzembe helyezési módok](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | A központi telepítés neve csak betűt, számot, "-", "." vagy "_" karaktert tartalmazhat. | |
 | DeploymentNameLengthLimitExceeded | A központi telepítési nevek legfeljebb 64 karakterből állhatnak.  | |
 | DeploymentFailed | A DeploymentFailed hiba általános hiba, amely nem adja meg a hiba megoldásához szükséges adatokat. Tekintse meg a hiba részletes adatait, amely további információkat tartalmaz. | [Hibakód keresése](#find-error-code) |
@@ -131,7 +132,7 @@ Megjelenik a hibaüzenet és a hibakódok. Figyelje meg, hogy két hibakód lát
 
 ![hiba részletei](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>A hibakeresési naplózást engedélyező
+## <a name="enable-debug-logging"></a>Hibakeresési naplózás engedélyezése
 
 Időnként további információra van szüksége a kérésről és a válaszról, hogy megtudja, mi volt a baj. Az üzembe helyezés során kérheti, hogy a rendszer az üzembe helyezés során további információkat naplózza.
 
@@ -167,7 +168,7 @@ Vagy a válasz tartalma:
 
 Ez az információ segít megállapítani, hogy a sablon egyik értéke helytelenül van-e beállítva.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 Az Azure CLI jelenleg nem támogatja a hibakeresési naplózás bekapcsolását, de a hibakeresési naplózást is beolvashatja.
 
@@ -197,7 +198,7 @@ az group deployment operation list \
   --query [].properties.response
 ```
 
-### <a name="nested-template"></a>Beágyazott sablont
+### <a name="nested-template"></a>Beágyazott sablon
 
 Beágyazott sablon hibakeresési információinak naplózásához használja a **debugSetting** elemet.
 
@@ -249,8 +250,8 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Hibaelhárítási oktatóanyag: [Tutorial: Resource Manager-sablonok központi telepítésének hibáinak megoldása @ no__t-0
+* A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](./resource-manager-tutorial-troubleshoot.md)
 * További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](resource-group-audit.md).
 * Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](resource-manager-deployment-operations.md).

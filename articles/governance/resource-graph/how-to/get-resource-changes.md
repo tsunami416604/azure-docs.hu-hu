@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 10/09/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 13e2a848f9d178fc6554062c324c951102e1343b
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4858d803b4fccdc6ae4d5a790721bad60d218313
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244113"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274200"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -30,6 +30,7 @@ Az észlelés és a részletek változása az alábbi példák esetében hasznos
 - Annak megértése, hogy milyen egyéb tulajdonságok változtak, amikor egy erőforrás megváltoztatta a megfelelőségi állapotot. Ezeknek a további tulajdonságoknak a kiértékelése további, Azure Policy-definíción keresztül felügyelhető tulajdonságokkal is rendelkezhet.
 
 Ez a cikk bemutatja, hogyan gyűjtheti ezeket az információkat az erőforrás-gráf SDK-n keresztül. Ha szeretné megtekinteni ezeket az információkat a Azure Portalban, tekintse meg a Azure Policy [változási előzményeit](../../policy/how-to/determine-non-compliance.md#change-history-preview) vagy az Azure-tevékenység naplójának [módosításait](../../../azure-monitor/platform/activity-log-view.md#azure-portal).
+Az alkalmazásoknak az infrastruktúra rétegből való változásairól az alkalmazások telepítésének módjáról az alkalmazás- [módosítási elemzés használata (előzetes verzió)](../../../azure-monitor/app/change-analysis.md) című témakörben olvashat bővebben Azure monitor.
 
 > [!NOTE]
 > Az erőforrás-diagram adatainak módosítása a Resource Manager-tulajdonságok. A virtuális gépek változásainak nyomon követéséhez tekintse meg a Azure Automation [változások követése](../../../automation/automation-change-tracking.md) vagy a Azure Policy a virtuális gépekhez [tartozó vendég konfigurációját](../../policy/concepts/guest-configuration.md).

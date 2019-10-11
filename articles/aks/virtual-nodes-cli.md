@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613785"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263869"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -20,9 +20,9 @@ Az alkalmazások számítási feladatainak gyors méretezéséhez egy Azure Kube
 
 Ez a cikk bemutatja, hogyan hozhatja létre és konfigurálhatja a virtuális hálózati erőforrásokat és az AK-fürtöt, majd engedélyezheti a virtuális csomópontokat.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-A virtuális csomópontok lehetővé teszik a hálózati kommunikációt az ACI-ban és az AK-fürtben futó hüvelyek között. A kommunikáció biztosításához létre kell hozni egy virtuális hálózati alhálózatot, és hozzá kell rendelni a delegált engedélyeket. A virtuális csomópontok csak a *speciális* hálózatkezelés használatával létrehozott AK-fürtökkel működnek. Alapértelmezés szerint az AK-fürtök alapszintű hálózatkezeléssel jönnek létre. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd helyezzen üzembe egy speciális hálózatkezelést használó AK-fürtöt.
+A virtuális csomópontok lehetővé teszik a hálózati kommunikációt az ACI-ban és az AK-fürtben futó hüvelyek között. A kommunikáció biztosításához létre kell hozni egy virtuális hálózati alhálózatot, és hozzá kell rendelni a delegált engedélyeket. A virtuális csomópontok csak a *speciális* hálózatkezelés használatával létrehozott AK-fürtökkel működnek. Alapértelmezés szerint az AK-fürtök *alapszintű* hálózatkezeléssel jönnek létre. Ebből a cikkből megtudhatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd helyezzen üzembe egy speciális hálózatkezelést használó AK-fürtöt.
 
 Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az előfizetésében. Az ACI-szolgáltató regisztrációjának állapotát az az [Provider List][az-provider-list] parancs használatával tekintheti meg, ahogy az az alábbi példában is látható:
 
@@ -30,7 +30,7 @@ Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az el�
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-A *Microsoft. ContainerInstance* szolgáltatónak regisztráltkéntkell jelentenie, ahogy az alábbi példában is látható:
+A *Microsoft. ContainerInstance* szolgáltatónak *regisztráltként*kell jelentenie, ahogy az alábbi példában is látható:
 
 ```
 Namespace                    RegistrationState
@@ -44,7 +44,7 @@ Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgálta
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A virtuális csomópontok központi telepítése a következő régiókat támogatja:
 
@@ -67,19 +67,19 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 * [Virtual Network korlátozásokat](../container-instances/container-instances-vnet.md) , beleértve a VNet-társítást, a Kubernetes hálózati házirendeket és az internetre irányuló kimenő adatforgalmat hálózati biztonsági csoportokkal.
 * Init-tárolók
 * [Gazdagép-aliasok](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* [](../container-instances/container-instances-exec.md#restrictions) A exec argumentumai az ACI-ban
-* A [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomóponton.
+* A exec [argumentumai](../container-instances/container-instances-exec.md#restrictions) az ACI-ban
+* A [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomóponton.
 * A virtuális csomópontok mellett a [Windows Server-csomópontok (jelenleg előzetes](windows-container-cli.md) verzióban) nem támogatottak. A virtuális csomópontok segítségével ütemezhet Windows Server-tárolókat anélkül, hogy szükség lenne a Windows Server-csomópontokra egy AK-fürtben.
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
-A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **kipróbálás** elemet a kód jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/bash](https://shell.azure.com/bash) cím megnyitásával. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.49 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westus* helyen.
 
@@ -158,7 +158,7 @@ Egy AK-fürtöt az előző lépésben létrehozott AK alhálózatba helyez üzem
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje `<subnetId>` le az azonosítót az előző lépésben beszerzett azonosítóra, `<appId>` `<password>` majd a 
+Az az [AK Create][az-aks-create] paranccsal hozzon létre egy AK-fürtöt. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje le a `<subnetId>` értéket az előző lépésben beszerzett AZONOSÍTÓra, majd `<appId>` és `<password>` a 
 
 ```azurecli-interactive
 az aks create \
@@ -190,7 +190,7 @@ az aks enable-addons \
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
-A Kubernetes `kubectl` -fürthöz való kapcsolódás konfigurálásához használja az az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
+A `kubectl` konfigurálásához a Kubernetes-fürthöz való kapcsolódáshoz használja az az [AK Get-hitelesítőadats][az-aks-get-credentials] parancsot. Ebben a lépésben a rendszer hitelesítő adatokat tölt le, és konfigurálja a Kubernetes parancssori felületét azok használatára.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -253,7 +253,7 @@ Futtassa az alkalmazást az [kubectl Apply][kubectl-apply] paranccsal.
 kubectl apply -f virtual-node.yaml
 ```
 
-A [kubectl Get hüvely][kubectl-get] parancs használatával adja meg `-o wide` az argumentumot a hüvelyek és az ütemezett csomópontok listájának kimenetéhez. `aci-helloworld` Figyelje`virtual-node-aci-linux` meg, hogy a pod ütemezve van a csomóponton.
+A hüvelyek és az ütemezett csomópontok listájának kimenetéhez használja a `-o wide` argumentummal rendelkező [kubectl Get hüvely][kubectl-get] parancsot. Figyelje meg, hogy a `aci-helloworld` Pod a `virtual-node-aci-linux` csomópontra van ütemezve.
 
 ```
 $ kubectl get pods -o wide
@@ -265,7 +265,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 A pod a virtuális csomópontokkal való használatra delegált Azure virtuális hálózati alhálózatból származó belső IP-címet kap.
 
 > [!NOTE]
-> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és `HTTP response status code 400 error code "InaccessibleImage"`nem jelentik a hibát.
+> Ha Azure Container Registryban tárolt rendszerképeket használ, [konfigurálja és használja a Kubernetes titkos kulcsát][acr-aks-secrets]. A virtuális csomópontok jelenlegi korlátozása az, hogy nem használhatja az integrált Azure AD szolgáltatás egyszerű hitelesítését. Ha nem használ titkos kódot, a virtuális csomópontokon ütemezett hüvelyek nem indulnak el, és a következő hibaüzenetet jelentik: `HTTP response status code 400 error code "InaccessibleImage"`.
 
 ## <a name="test-the-virtual-node-pod"></a>A virtuális csomópont-Pod tesztelése
 
@@ -275,13 +275,13 @@ A virtuális csomóponton futó Pod teszteléséhez keresse meg a bemutató alka
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Telepítés `curl` a pod használatával `apt-get`:
+Telepítse a `curl` értéket a pod `apt-get` használatával:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Most nyissa meg a pod-t `curl` *http://10.241.0.4* a használatával, például:. Az előző `kubectl get pods` parancsban megjelenő saját belső IP-cím megadása:
+Most nyissa meg a pod-címe `curl`, például *http://10.241.0.4* használatával. Adja meg saját belső IP-címét az előző `kubectl get pods` paranccsal:
 
 ```console
 curl -L http://10.241.0.4
@@ -299,7 +299,7 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-Zárjuk be a terminál-munkamenetet a test `exit`Pod-be a használatával. Ha a munkamenet véget ér, a rendszer törli a pod-t.
+A `exit` értékkel zárjuk be a terminál-munkamenetet a test Pod-ba. Ha a munkamenet véget ér, a rendszer törli a pod-t.
 
 ## <a name="remove-virtual-nodes"></a>Virtuális csomópontok eltávolítása
 
@@ -345,9 +345,9 @@ az resource delete --ids $SAL_ID --api-version 2018-07-01
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben egy Pod-t ütemeztek a virtuális csomóponton, és egy privát, belső IP-címet rendeltek hozzá. Ehelyett hozzon létre egy szolgáltatás központi telepítését, és irányítsa a forgalmat a pod-ra egy terheléselosztó vagy egy bejövő vezérlő használatával. További információkért lásd: alapszintű [bejövő vezérlő létrehozása az AK-ban][aks-basic-ingress].
+Ebben a cikkben egy Pod-t ütemeztek a virtuális csomóponton, és egy privát, belső IP-címet rendeltek hozzá. Ehelyett hozzon létre egy szolgáltatás központi telepítését, és irányítsa a forgalmat a pod-ra egy terheléselosztó vagy egy bejövő vezérlő használatával. További információkért lásd: [alapszintű bejövő vezérlő létrehozása az AK-ban][aks-basic-ingress].
 
 A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik összetevője. A megoldások méretezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
@@ -364,6 +364,7 @@ A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik 
 [aks-github]: https://github.com/azure/aks/issues
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -384,4 +385,3 @@ A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik 
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret

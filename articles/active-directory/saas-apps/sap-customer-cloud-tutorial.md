@@ -1,264 +1,210 @@
 ---
-title: 'Oktatóanyag: Az ügyfél az Azure Active Directory-integráció az SAP-felhővel |} A Microsoft Docs'
-description: Ismerje meg az egyszeri bejelentkezés az Azure Active Directory és az SAP-felhő között az ügyfél konfigurálása.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Cloud for Customer szolgáltatással | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az SAP-felhő között az ügyfelek számára.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 90154dab-eba2-4563-bcf0-f2acc797ea97
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 09/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 669dfaa40cfe1bc65618d8706910e19d72c233ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092054"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264061"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sap-cloud-for-customer"></a>Oktatóanyag: Az ügyfél az Azure Active Directory-integráció az SAP-felhővel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Cloud-nal az ügyfelek számára
 
-Ebben az oktatóanyagban megismerheti, hogyan integrálható az SAP Cloud az Azure Active Directoryval (Azure AD-) ügyfél.
-SAP-felhő integrálása az Azure AD-ügyfél nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP Cloud ügyfelet Azure Active Directory (Azure AD) használatával. Az SAP Cloud Azure AD-vel való integrálásakor a következőket teheti:
 
-* Szabályozhatja, aki hozzáféréssel rendelkezik az SAP-felhő ügyfél Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezett a SAP Cloud ügyfél (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az SAP Cloud for Customer szolgáltatáshoz hozzáféréssel rendelkező Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy az Azure AD-fiókjával rendelkező ügyfelek számára automatikusan bejelentkezzenek az SAP-felhőbe.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az SAP-felhővel ügyfél, a következő elemek van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* Az ügyfél egyszeri bejelentkezést az SAP Cloud előfizetés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* SAP-felhő az ügyfél egyszeri bejelentkezési (SSO) engedélyezett előfizetéséhez.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Az ügyfél támogatja az SAP Cloud **SP** által kezdeményezett egyszeri bejelentkezés
+* Az SAP Cloud for Customer támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>Vegye fel az SAP-felhő-ügyfél a katalógusból
+## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>SAP-felhő hozzáadása az ügyfélhez a katalógusból
 
-Ügyfél az Azure AD-be a SAP felhőalapú integráció konfigurálásához, hozzá kell az SAP Cloud ügyfél a galériából a felügyelt SaaS-alkalmazások listájára.
+Az SAP Cloud az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP Cloud for Customer szolgáltatást a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Adja hozzá az SAP Cloud ügyfél számára a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be az **SAP Cloud for Customer** kifejezést a keresőmezőbe.
+1. Válassza az **SAP Cloud az ügyfelek számára** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-for-customer"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAP Cloud ügyfél számára
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t az SAP Cloud for Customer használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az SAP Cloud for Customer szolgáltatásban.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és az SAP Cloud az ügyfél számára történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. Az **[SAP Cloud beállítása az ügyfél egyszeri](#configure-sap-cloud-for-customer-sso)** bejelentkezéséhez – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+    1. **[SAP-felhő létrehozása az ügyfél-tesztelési felhasználó](#create-sap-cloud-for-customer-test-user)** számára – ha az SAP-felhőben található, a felhasználó Azure ad-képviseletéhez kapcsolódó ügyfélhez tartozó B. Simon partnere.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A Keresés mezőbe írja be a **ügyfél SAP Cloud**, jelölje be **ügyfél SAP-felhő** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/)az **SAP Cloud for Customer** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Az eredmények listájában ügyfél SAP-felhő](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az SAP-felhővel ügyfél nevű tesztfelhasználó alapján **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó a SAP felhőben ügyfél közötti kapcsolat kapcsolatot kell hozható létre.
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server name>.crm.ondemand.com`
 
-Az Azure AD egyszeri bejelentkezés az SAP-felhővel ügyfél tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
-
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az ügyfél egyszeri bejelentkezést az SAP Cloud konfigurálása](#configure-sap-cloud-for-customer-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[SAP-felhő létrehozása az ügyfél tesztfelhasználó](#create-sap-cloud-for-customer-test-user)**  – egy megfelelője a Britta Simon rendelkeznie a SAP felhőben ügyfél, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Konfigurálja az Azure AD egyszeri bejelentkezés az SAP-felhővel ügyfél, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), a a **ügyfél SAP-felhő** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
-
-    ![SAP-felhő a felhasználói tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
-
-    a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server name>.crm.ondemand.com`
-
-    b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server name>.crm.ondemand.com`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<server name>.crm.ondemand.com`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [ügyfél ügyfél-támogatási csapatával a SAP Cloud](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Vegye fel a kapcsolatot [az SAP Cloud ügyfélszolgálatával az ügyfelek ügyfélszolgálati csapatával](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. SAP-felhő a felhasználói alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. Az ügyfél-alkalmazáshoz készült SAP-felhő adott formátumban elvárja az SAML-állításokat, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói attribútumok** szakaszában a **felhasználói attribútumok & jogcímek** párbeszédpanelen hajtsa végre az alábbi lépéseket:
+1. A felhasználói **attribútumok** **& a jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **Szerkesztés ikon** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
-    b. Válassza ki **átalakítási** , **forrás**.
+    b. Válassza a transzformáció **forrásként**lehetőséget.
 
-    c. Az a **átalakítási** listáról válassza ki **ExtractMailPrefix()** .
+    c. Az **átalakítás** listából válassza a **ExtractMailPrefix ()** elemet.
 
-    d. Az a **paraméter 1** listájához, válassza ki a példányhoz használni kívánt felhasználói attribútum.
-    Például ha az attribútum értékét a ExtensionAttribute2 tárolt az EmployeeID használandó egyedi felhasználói azonosítóként, majd válassza ki user.extensionattribute2.
+    d. Az **1. paraméter** listából válassza ki azt a felhasználói attribútumot, amelyet a megvalósításához használni kíván.
+    Ha például az Alkalmazottkód-et egyedi felhasználói azonosítóként szeretné használni, és az attribútum értékét a ExtensionAttribute2 tárolja, válassza a User. ExtensionAttribute2 elemet.
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-7. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-8. Az a **SAP-felhő beállítása az ügyfél** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Az **SAP-felhő beállítása ügyfél számára** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    b. Azure Ad Identifier
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="configure-sap-cloud-for-customer-single-sign-on"></a>Az SAP Cloud ügyfél egyszeri bejelentkezés konfigurálása
-   
-1. Jelentkezzen be SAP-felhő a felhasználói portál rendszergazda jogosultsággal rendelkező.
-   
-2. Keresse meg a **alkalmazás- és felhasználókezelési gyakori feladatot** , és kattintson a **identitásszolgáltató** fülre.
-   
-3. Kattintson a **új identitásszolgáltató** , és válassza ki az Azure Portalról letöltött metaadatainak XML-fájl. Importálja a metaadatokat, a rendszer automatikusan feltölti a szükséges aláírási tanúsítvány és a titkosítási tanúsítványt.
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
-   
-4. Az Azure Active Directory gyermekelemet a helyességi feltétel fogyasztói URL-címe az az SAML-kérelmet, ezért válassza a **helyességi feltétel fogyasztói szolgáltatás URL-címek** jelölőnégyzetet.
-   
-5. Kattintson a **egyszeri bejelentkezés aktiválása**.
-   
-6. Mentse a módosításokat.
-   
-7. Kattintson a **saját rendszer** fülre.
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
-   
-8. A **Azure AD bejelentkezési URL-cím** szövegmezőjébe illessze be **bejelentkezési URL-cím** Azure Portalról másolt.
-   
-    ![Egyszeri bejelentkezés konfigurálása](./media/sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
-   
-9. Adja meg, hogy az alkalmazott manuálisan választhatnak, hogy naplózás a felhasználói azonosító és jelszó vagy az SSO kiválasztásával a **manuális Identity Provider kijelölés**.
-   
-10. Az a **egyszeri bejelentkezési URL-cím** szakaszban adja meg, jelentkezzen be a rendszer az alkalmazottak által használandó URL-CÍMÉT. 
-    Az a **alkalmazott küldött URL-cím** listájában, a következő lehetőségek közül választhat:
-   
-    **Nem egyszeri bejelentkezési URL-címe**
-   
-    A rendszer csak a normál rendszer URL-CÍMÉT az alkalmazott küld. Az alkalmazott nem jelentkezik be egyszeri Bejelentkezést, és kell jelszó használata vagy a tanúsítvány helyett.
-   
-    **EGYSZERI BEJELENTKEZÉSI URL-CÍME** 
-   
-    A rendszer elküldi az alkalmazott csak az egyszeri bejelentkezési URL-címet. Az alkalmazott bejelentkezhet az egyszeri bejelentkezés használatával. Hitelesítési kérelem az identitásszolgáltató keresztül lesz átirányítva.
-   
-    **Automatikus kiválasztása**
-   
-    Ha egyszeri bejelentkezés nem aktív, a rendszer az alkalmazott küld a rendszer normál URL-CÍMÉT. Ha egyszeri bejelentkezés aktív, a rendszer ellenőrzi, hogy az alkalmazott rendelkezik-e a jelszó. A jelszó nem érhető el, ha egyszeri bejelentkezési URL-cím és a nem-egyszeri bejelentkezési URL-címet kapnak az alkalmazott. Azonban ha az alkalmazott nem tartozik jelszó, csak az egyszeri bejelentkezési URL-cím küld az alkalmazottnak.
-   
-11. Mentse a módosításokat.
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezést az SAP Cloud for Customer elérésének biztosításával.
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza az **SAP Cloud az ügyfél számára**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    ![Új felhasználó gomb](common/new-user.png)
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+## <a name="configure-sap-cloud-for-customer-sso"></a>SAP-felhő konfigurálása az ügyfél egyszeri bejelentkezéséhez
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az SAP-felhőbe az ügyfél vállalati webhelyén rendszergazdaként.
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
-    Például: BrittaSimon@contoso.com
+2. A menü bal oldalán kattintson az **identitás-szolgáltatók**  @ no__t-2**vállalati azonosítók** > **Hozzáadás** elemre, majd az előugró ablakban adja hozzá az azonosító szolgáltató nevét, például az **Azure ad**-t, kattintson a **Mentés** , majd az SAML elemre.  **2,0 konfiguráció**.
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure01.png)
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+3. A **SAML 2,0 konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure02.png)
 
-Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejelentkezést az SAP Cloud való hozzáférés biztosítása az ügyfél által.
+    a. Kattintson a **Tallózás** gombra az összevonási metaadatok XML-fájljának feltöltéséhez, amelyet a Azure Portal letöltött.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ügyfél SAP Cloud**.
+    b. Az XML-fájl feltöltése után az alábbi értékek automatikusan feltöltve lesznek automatikusan, majd a **Mentés**gombra kattintanak.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+### <a name="create-sap-cloud-for-customer-test-user"></a>SAP-felhő létrehozása az ügyfél-tesztelési felhasználó számára
 
-2. Az alkalmazások listáját, írja be, és válassza ki **SAP-felhő ügyfél**.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek az SAP-felhőbe az ügyfelek számára, az SAP-felhőben kell kiépíteni az ügyfelet. Az SAP Cloud for Customer esetében a kiépítés manuális feladat.
 
-    ![Az SAP-felhő, az alkalmazások listáját az ügyfél-hivatkozás](common/all-applications.png)
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+1. Jelentkezzen be az SAP-felhőbe az ügyfél biztonsági rendszergazdájaként.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+2. A menü bal oldalán kattintson a **felhasználók & engedélyek**  @ no__t-2 **felhasználói kezelés**@no__t – 4**felhasználó hozzáadása**elemre.
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure03.png)
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+3. Az **új felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+    ![SAP-konfiguráció](./media/sap-customer-cloud-tutorial/configure04.png)
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+    a. Az **Utónév** szövegmezőbe írja be a felhasználó nevét (például **B**).
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+    b. A **vezetéknév** szövegmezőbe írja be a felhasználó nevét, például **Simon**.
 
-### <a name="create-sap-cloud-for-customer-test-user"></a>SAP-felhő létrehozása ügyfél tesztfelhasználó számára
+    c. Az **e-mail** szövege szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: `B.Simon@contoso.com`.
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű SAP felhőben ügyfél hoz létre. Együttműködve [ügyfélszolgálati csoport az SAP-felhő](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) a felhasználók hozzáadása a SAP felhőben ügyfél platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+    d. A **bejelentkezési név** szövegmezőbe írja be a (z **) B. Simon**nevű felhasználó nevét.
 
-> [!NOTE]
-> Győződjön meg arról, hogy NameID értékének egyeznie kell a felhasználónév mező, a SAP felhőben ügyfél platform.
+    e. Adja meg a **felhasználó típusát** a követelménynek megfelelően.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+    f. Igény szerint válassza a **fiók aktiválása** lehetőséget.
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ha rákattint az SAP-felhő a felhasználói csempe a hozzáférési panelen, meg kell automatikusan megtörténik a a SAP felhőben ügyfél, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+
+Ha a hozzáférési panel SAP-felhő ügyfél csempére kattint, automatikusan be kell jelentkeznie az SAP-felhőbe az ügyfél számára, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Az SAP Cloud kipróbálása az Azure AD-vel rendelkező ügyfelek számára](https://aad.portal.azure.com/)
 

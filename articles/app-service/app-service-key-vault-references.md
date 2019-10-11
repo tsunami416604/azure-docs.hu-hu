@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240122"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274426"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Key Vault referenciák használata App Service és Azure Functionshoz (előzetes verzió)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Key Vault referenciák használata App Service és Azure Functions
 
 > [!NOTE] 
-> Key Vault referenciák jelenleg előzetes verzióban érhetők el, és a Linux-fogyasztási csomagok jelenleg nem támogatják őket.
+> Key Vault hivatkozások jelenleg nem érhetők el a Linux-használati tervekben.
 
 Ebből a témakörből megtudhatja, hogyan dolgozhat fel a titkokat a App Service vagy Azure Functions alkalmazásban Azure Key Vault a kód módosítása nélkül. A [Azure Key Vault](../key-vault/key-vault-overview.md) egy olyan szolgáltatás, amely központosított titkok felügyeletét teszi lehetővé a hozzáférési házirendek és a naplózási előzmények teljes körű szabályozásával.
 
@@ -52,7 +52,7 @@ A Key Vault hivatkozás `@Microsoft.KeyVault({referenceString})` formátumú, ah
 > | VaultName =_VaultName_; SecretName =_SecretName_; Titkoskulcsverziója =_titkoskulcsverziója_ | A **VaultName** meg kell egyeznie a Key Vault erőforrás nevével. A **SecretName** a célként megadott titkos kód nevének kell lennie. A **titkoskulcsverziója** a használni kívánt titkos kulcs verziószámának kell lennie. |
 
 > [!NOTE] 
-> Az aktuális előzetes verzióban a verziók megadása kötelező. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
+> A verziókra jelenleg szükség van. A titkok elforgatásakor frissítenie kell a verziót az alkalmazás konfigurációjában.
 
 A teljes hivatkozás például a következőhöz hasonló lesz:
 
@@ -192,7 +192,9 @@ Ha egy hivatkozás nem oldható fel megfelelően, a rendszer a hivatkozási ért
 
 Ez általában a [Key Vault hozzáférési házirend](#granting-your-app-access-to-key-vault)helytelen konfigurációja miatt fordul elő. Az is előfordulhat azonban, hogy egy titkos kulcs már nem létezik, vagy szintaktikai hiba történt a hivatkozásban.
 
-Ha a szintaxis helyes, a hiba egyéb okait úgy tekintheti meg, ha ellenőrzi a jelenlegi feloldási állapotot egy beépített detektor használatával.
+Ha a szintaxis helyes, a hiba egyéb okait a portál aktuális feloldási állapotának ellenőrzésével tekintheti meg. Navigáljon az Alkalmazásbeállítások elemre, és válassza a szerkesztés lehetőséget a szóban forgó hivatkozáshoz. A beállítás beállítása alatt meg kell jelennie az állapotadatok között, beleértve az esetleges hibákat is. Ezek hiánya azt jelenti, hogy a hivatkozás szintaxisa érvénytelen.
+
+A beépített érzékelők egyikét is használhatja további információk megszerzéséhez.
 
 ### <a name="using-the-detector-for-app-service"></a>A App Service detektorának használata
 

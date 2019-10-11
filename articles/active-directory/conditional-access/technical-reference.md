@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162419"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274181"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory feltételes hozzáférési beállítások ismertetése
 
@@ -55,8 +55,8 @@ Feltételes hozzáférési szabályzatot rendelhet a Microsoft következő felh�
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- A Microsoft Intune-regisztráció
-- A Microsoft Planner
+- Microsoft Intune regisztráció
+- Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Search a Bingben
 - Microsoft StaffHub
@@ -65,14 +65,13 @@ Feltételes hozzáférési szabályzatot rendelhet a Microsoft következő felh�
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
-- Office Delve
-- Office Sway
+- Office-ás
+- Office-Sway
 - Outlook-csoportok
 - Power BI szolgáltatás
 - Project Online
 - Skype Vállalati online verzió
 - Virtuális magánhálózat (VPN)
-- Visual Studio App Center
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>Egyéb alkalmazások
@@ -82,7 +81,7 @@ A Microsoft Cloud Apps mellett feltételes hozzáférési szabályzatot is hozz�
 - Azure AD-hez csatlakoztatott alkalmazások
 - Előre integrált összevont szolgáltatott szoftver (SaaS) alkalmazás
 - Jelszó egyszeri bejelentkezést (SSO) használó alkalmazások
-- Az üzletági alkalmazások
+- Üzletági alkalmazások
 - Az Azure AD Application Proxyt használó alkalmazások
 
 ## <a name="device-platform-condition"></a>Eszköz platformjának feltétele
@@ -91,7 +90,7 @@ A feltételes hozzáférési szabályzatban konfigurálhatja az eszköz platform
 
 - Android
 - iOS
-- Windows Phone-telefon
+- Windows Phone
 - Windows
 - macOS
 
@@ -103,7 +102,7 @@ Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének ha
 
 A feltételes hozzáférési szabályzatban beállíthatja az [ügyfélalkalmazások](conditions.md#client-apps) feltételét, hogy a szabályzatot a hozzáférési kísérletet kezdeményező ügyfélalkalmazás számára kösse. Állítsa be a Client apps-feltételt, hogy engedélyezze vagy tiltsa le a hozzáférést, amikor a következő típusú ügyfélalkalmazások hozzáférési kísérletet végeznek:
 
-- Browser
+- Böngésző
 - Mobile apps és asztali alkalmazások
 
 ![Az ügyfélalkalmazások hozzáférésének szabályozása](./media/technical-reference/03.png)
@@ -116,15 +115,15 @@ A feltételes hozzáférési szabályzatban megadhatja a **böngészők** ügyf�
 
 Ez a beállítás minden böngészővel működik. Ahhoz azonban, hogy kielégítse az eszköz házirendjét, például a megfelelő eszköz követelményeit, a következő operációs rendszerek és böngészők támogatottak:
 
-| OS                     | Böngészők                                        |
+| Operációs rendszer                     | Böngészők                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
-| Windows 7              | Internet Explorer, Chrome                       |
+| Windows 7 rendszeren              | Internet Explorer, Chrome                       |
 | iOS                    | Microsoft Edge, Intune Managed Browser, Safari  |
 | Android                | Microsoft Edge, Intune Managed Browser, Chrome  |
-| Windows Phone-telefon          | Microsoft Edge, Internet Explorer               |
-| A Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
+| Windows Phone          | Microsoft Edge, Internet Explorer               |
+| Windows Server 2019    | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
@@ -143,19 +142,19 @@ A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza l�
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1 |
-| Type | REG_SZ (String) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS\://clients2.Google.com/Service/Update2/CRX |
+| Útvonal | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Név | 1 |
+| Type (Típus) | REG_SZ (karakterlánc) |
+| Adatok | ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS @ no__t-0//clients2. Google. com/Service/Update2/CRX |
 
 A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
 
 |    |    |
 | --- | --- |
-| Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1 |
-| Type | REG_SZ (String) |
-| Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
+| Útvonal | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Név | 1 |
+| Type (Típus) | REG_SZ (karakterlánc) |
+| Adatok | {"minta": "https://device.login.microsoftonline.com", "filter": {"kiállító": {"CN": "MS-Organization-Access"}}} |
 
 Ezek a böngészők támogatják az eszköz hitelesítését, amely lehetővé teszi az eszköz azonosítását és érvényesítését egy szabályzattal szemben. Az eszköz-ellenőrzés sikertelen, ha a böngésző privát módban fut.
 
@@ -191,7 +190,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 
 **Más ügyfelek**kiválasztásával megadhat egy olyan feltételt, amely az alapszintű hitelesítést használó alkalmazásokat, például az IMAP, a MAPI, a pop, az SMTP és a régebbi Office-alkalmazásokat használja, amelyek nem használnak modern hitelesítést.  
 
-![Egyéb ügyfelek](./media/technical-reference/11.png)
+![Más ügyfelek](./media/technical-reference/11.png)
 
 További információ: [ügyfélalkalmazások](conditions.md#client-apps).
 
@@ -211,13 +210,13 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- A Microsoft számlázás
+- Microsoft-számlázás
 - Microsoft Kaizala
-- A Microsoft indítója
-- Microsoft OneDrive
+- Microsoft Launcher
+- Microsoft-OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- A Microsoft Planner
+- Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
 - Microsoft PowerPoint
@@ -246,9 +245,9 @@ A feltételes hozzáférési házirendben megkövetelheti, hogy az alkalmazás v
 Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 
 - Microsoft-Cortana
-- Microsoft OneDrive
+- Microsoft-OneDrive
 - Microsoft Outlook
-- A Microsoft Planner
+- Microsoft Planner
 
 **Megjegyzések**
 
@@ -256,7 +255,7 @@ Ez a beállítás a következő ügyfélalkalmazások esetében érvényes:
 - Az **alkalmazás-védelmi házirend követelményeinek megkövetelése** :
     - A csak az iOS és az Android for [Device platform feltételeit](#device-platform-condition)támogatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A feltételes hozzáférés áttekintése: [Mi a feltételes hozzáférés a Azure Active Directoryban?](../active-directory-conditional-access-azure-portal.md)
 - Ha készen áll a feltételes hozzáférési szabályzatok konfigurálására a környezetben, tekintse meg az [ajánlott eljárásokat a feltételes hozzáféréshez Azure Active Directory](best-practices.md).

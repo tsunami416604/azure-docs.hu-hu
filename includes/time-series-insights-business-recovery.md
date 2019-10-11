@@ -3,71 +3,72 @@ ms.topic: include
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 04/29/2019
-ms.openlocfilehash: 8a3c630b54ff95a9b1200e2421c787a514a0aa52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/09/2019
+ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66431045"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72259098"
 ---
-## <a name="business-disaster-recovery"></a>Üzleti katasztrófa utáni helyreállítás
+## <a name="business-disaster-recovery"></a>Üzleti katasztrófák helyreállítása
 
-Ez a szakasz ismerteti az Azure Time Series Insights, hogy az alkalmazások és szolgáltatások futnak, még akkor is, ha katasztrófa történik funkcióját (más néven *üzleti vész-helyreállítási*).
+Ez a szakasz a Azure Time Series Insights azon funkcióit ismerteti, amelyek az alkalmazások és szolgáltatások futását biztosítják, még akkor is, ha vészhelyzet történik (más néven az *üzleti katasztrófák helyreállítása*).
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
 
-Azure-szolgáltatások, mint a Time Series Insights biztosít bizonyos *magas rendelkezésre állású* funkciók az Azure-régió szintjén redundanciát használatával. Ha például az Azure támogatja a vész-helyreállítási lehetőségei az Azure *régiók rendelkezésre állása* funkció.
+Azure-szolgáltatásként a Time Series Insights bizonyos *magas rendelkezésre állású* funkciókat biztosít az Azure-régió szintjén elérhető redundanciák használatával. Az Azure például támogatja a vész-helyreállítási lehetőségeket az Azure *régiók közötti rendelkezésre állási* funkciójával.
 
-Az Azure (és bármely Time Series Insights-példány számára is elérhető) keresztül elérhető további magas rendelkezésre állású szolgáltatások a következők:
+Az Azure-on keresztül elérhető további magas rendelkezésre állási funkciók (és bármely Time Series Insights-példány számára elérhetők) a következők:
 
-- **Feladatátvétel**: Az Azure biztosít [georeplikációja és a terheléselosztás](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region).
-- **Adatok helyreállítása** és **tárolási helyreállítási**: Az Azure biztosít [adatokat helyreállítani, valamint számos](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
-- **Site recovery**: Az Azure site recovery szolgáltatásainak biztosít [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+- **Feladatátvétel**: az Azure [geo-replikációt és terheléselosztást](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)biztosít.
+- **Adatok helyreállítása** és **tárolása – helyreállítás**: [Az Azure számos lehetőséget kínál az adatok megőrzésére és helyreállítására](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption).
+- **Site Recovery**: az Azure a site Recovery szolgáltatásait [Azure site Recoveryon](https://docs.microsoft.com/azure/site-recovery/)keresztül biztosítja.
+- **Azure Backup**: a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) az Azure-beli virtuális gépek helyszíni és felhőalapú biztonsági mentését is támogatja.
 
-Ellenőrizze, hogy a megfelelő Azure-szolgáltatások globális, a régiók közötti magas rendelkezésre állást biztosít az eszközök és felhasználók számára engedélyezi.
+Győződjön meg arról, hogy a megfelelő Azure-funkciók lehetővé teszik, hogy globális, régiók közötti magas rendelkezésre állást biztosítson az eszközök és a felhasználók számára.
 
 > [!NOTE]
-> Ha az Azure-régiók rendelkezésre állás engedélyezéséhez van konfigurálva, nincs további régiók rendelkezésre állási konfiguráció szükséges az Azure Time Series Insightsban.
+> Ha az Azure úgy van beállítva, hogy engedélyezze a régiók közötti rendelkezésre állást, a Azure Time Series Insights nem szükséges további régiók közötti rendelkezésre állási konfiguráció.
 
-### <a name="iot-and-event-hubs"></a>IoT- és event hubs
+### <a name="iot-and-event-hubs"></a>IoT és Event hubok
 
-Egyes Azure-IoT-szolgáltatások beépített üzleti vész helyreállítási funkciókat is tartalmazzák:
+Néhány Azure IoT-szolgáltatás beépített üzleti katasztrófa-helyreállítási funkciókat is tartalmaz:
 
-- [Az IoT Hub magas rendelkezésre állású vész-helyreállítási](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), beleértve a redundancia intra-régió
-- [Eseményközpont-szabályzat](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Az Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Magas rendelkezésre állású vész-helyreállítás IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), beleértve a régión belüli redundanciát is
+- [Event Hubs házirendek](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
-A más szolgáltatások integrálása a Time Series Insights további vész helyreállítási lehetőségeket biztosít. Például az eseményközpontnak küldött telemetriát előfordulhat, hogy az Azure Blob storage-adatbázis biztonsági megőrzésére.
+A Time Series Insights más szolgáltatásokkal való integrálása további vész-helyreállítási lehetőségeket biztosít. Előfordulhat például, hogy az telemetria eljuttatott értesítéseket a Backup Azure Blob Storage-adatbázisa őrzi meg.
 
 ### <a name="time-series-insights"></a>Time Series Insights
 
-Többféleképpen is, hogy a Time Series Insights-adatok, alkalmazások és szolgáltatások futnak, még akkor is, ha azok még szakadhat meg. 
+Több módon is megtarthatja a Time Series Insights-adatait,-alkalmazásait és-szolgáltatásait, még akkor is, ha azok megszakadnak. 
 
-Azonban előfordulhat, hogy meghatározni, hogy az Azure Time Series-környezet teljes biztonsági másolatot is szükséges, az alábbi célokra:
+Azonban előfordulhat, hogy az Azure Time Series-környezet teljes biztonsági másolatát is meg kell határoznia az alábbi célokból:
 
-- Mint egy *Feladatátvevőfürt-példány* kifejezetten a Time Series Insights átirányíthatja az adatokat, és a forgalmat
-- Adatok és a naplózási adatok megőrzése
+- Az adatok és a forgalom átirányításához a Time Series Insights kifejezetten *feladatátvételi példányként*
+- Az adatok és a naplózási információk megőrzése
 
-Ismétlődő egy Time Series Insights-környezet a legjobb módszer általában egy második Time Series Insights-környezet létrehozása a biztonsági másolat az Azure-régióban. Események az elsődleges esemény forrásból is küldése a másodlagos ebben a környezetben. Győződjön meg arról, hogy egy második, dedikált fogyasztói csoportot használja. A forrást üzleti katasztrófa utáni helyreállítás irányelvek, hajtsa végre a korábban leírtaknak megfelelően.
+Általánosságban elmondható, hogy a Time Series Insights-környezet duplikálása a legjobb módszer, ha egy második Time Series Insights-környezetet hoz létre egy biztonsági mentési Azure-régióban. Az eseményeket az elsődleges esemény forrásaként is elküldi erre a másodlagos környezetre. Győződjön meg arról, hogy egy második, dedikált fogyasztói csoportot használ. Kövesse a forrás üzleti katasztrófák helyreállítási irányelveit a korábban leírtak szerint.
 
-Egy duplikált környezet létrehozásához:
+Ismétlődő környezet létrehozásához:
 
-1. Hozzon létre egy környezetet egy második régióba. További információkért lásd: [egy új Time Series Insights-környezet létrehozása az Azure Portalon](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
-1. Hozzon létre az eseményforrás második dedikált fogyasztói csoportot.
-1. Az esemény-adatforráshoz csatlakozhat az új környezet. Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot jelöljön ki.
-1. Tekintse át a Time Series Insights [az IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) és [az Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) dokumentációját.
+1. Hozzon létre egy környezetet egy második régióban. További információ: [új Time Series Insights-környezet létrehozása a Azure Portalban](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+1. Hozzon létre egy második dedikált fogyasztói csoportot az eseményforrás számára.
+1. Az eseményforrás összekötése az új környezettel. Győződjön meg arról, hogy a második, dedikált fogyasztói csoportot jelölte ki.
+1. Tekintse át a Time Series Insights [IoT hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) és [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) dokumentációját.
 
-Ha egy esemény történik:
+Ha egy esemény következik be:
 
-1. Ha az elsődleges régióban egy vészhelyreállítási incidens van hatással, irányítsa át a műveletek a biztonsági mentési Time Series Insights-környezetbe.
-1. A második régiót segítségével biztonsági mentése és helyreállítása minden Time Series Insights telemetriai és a lekérdezés adatait.
+1. Ha az elsődleges régiót a vész-incidensek befolyásolják, átirányítja a műveleteket a biztonsági mentési Time Series Insights környezetbe.
+1. A második régió használatával biztonsági mentést készíthet, és helyreállíthatja az összes Time Series Insights telemetria és a lekérdezési adatokat.
 
 > [!IMPORTANT]
-> Ha a feladatátvételt hajt végre:
+> Feladatátvétel esetén:
 > 
-> * Emellett előfordulhat némi késleltetés.
-> * Üzenetfeldolgozás pillanatnyi ugrásszerű fordulhatnak elő, módon vannak átirányítva a műveleteket.
+> * Késés is előfordulhat.
+> * Előfordulhat, hogy a rendszer a műveletek átirányítása közben az üzenet feldolgozásának pillanatnyi csúcsát is felhasználja.
 > 
-> További információkért lásd: [a Time Series Insightsban késés csökkentése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
+> További információ: [a késés csökkentése Time Series Insightsban](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
 

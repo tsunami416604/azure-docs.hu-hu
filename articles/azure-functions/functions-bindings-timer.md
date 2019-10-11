@@ -5,19 +5,19 @@ services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
+keywords: Azure functions, functions, Event Processing, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937113"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263436"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -25,13 +25,13 @@ Ez a cikk azt ismerteti, hogyan használhatók időzítő eseményindítók a Az
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
 
 Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet csomagban, 2. x verzióban kell megadnia. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) tárházban található.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x"></a>Csomagok – 2. x függvények
 
 Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet csomagban, 3. x verzióban kell megadnia. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) tárházban található.
 
@@ -39,10 +39,10 @@ Az időzítő triggert a [Microsoft. Azure. webjobs. Extensions](https://www.nug
 
 ## <a name="example"></a>Példa
 
-Tekintse meg az adott nyelvű példa:
+Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#c-example)
-* [C# script (.csx)](#c-script-example)
+* [C#parancsfájl (. CSX)](#c-script-example)
 * [F#](#f-example)
 * [Java](#java-example)
 * [JavaScript](#javascript-example)
@@ -68,7 +68,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 A következő példa egy időzítő trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy naplót ír, amely azt jelzi, hogy a függvény meghívása egy kihagyott ütemterv miatt következik-e be. A függvény a [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) objektumot adja át.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -79,7 +79,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-Íme a C#-szkriptkódot:
+A C# szkript kódja:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -96,7 +96,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 A következő példa egy időzítő trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# parancsfájl-függvényt](functions-reference-fsharp.md) , amely a kötést használja. A függvény egy naplót ír, amely azt jelzi, hogy a függvény meghívása egy kihagyott ütemterv miatt következik-e be. A függvény a [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) objektumot adja át.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -107,7 +107,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-Íme a F# parancsfájl-kódot:
+A F# szkript kódja:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger ) =
@@ -136,7 +136,7 @@ public void keepAlive(
 
 A következő példa egy időzítő trigger kötését mutatja be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy naplót ír, amely azt jelzi, hogy a függvény meghívása egy kihagyott ütemterv miatt következik-e be. A függvény egy [időzítő objektumot](#usage) ad át.
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -147,7 +147,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 }
 ```
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```JavaScript
 module.exports = function (context, myTimer) {
@@ -167,7 +167,7 @@ module.exports = function (context, myTimer) {
 
 Az alábbi példa egy időzítő trigger kötést használ, amelynek konfigurációját a *function. JSON* fájl írja le. A kötést használó tényleges [Python-függvényt](functions-reference-python.md) az  *__init__.* rajzfájl fájl írja le. A függvénynek átadott objektum [Azure. functions. TimerRequest objektum](/python/api/azure-functions/azure.functions.timerrequest)típusú. A függvény logikája azt jelzi, hogy az aktuális hívás egy kimaradt ütemterv miatt következik-e be. 
 
-Itt van a kötési adatait a *function.json* fájlt:
+Itt található a *function. JSON* fájlban található kötési adat:
 
 ```json
 {
@@ -213,17 +213,17 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>Konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `TimerTrigger` attribútum.
+A következő táblázat a *function. JSON* fájlban és a `TimerTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | "TimerTrigger" értékre kell állítani. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction** | n/a | Meg kell "a". Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
+|**type** | – | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | – | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | – | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
 |**schedule**|**ScheduleExpression**|Egy [cron kifejezés](#ncrontab-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak olyan Function alkalmazás esetében használható, amely egy App Service-csomagon fut. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot a **%** jelekbe becsomagolt Alkalmazásbeállítások neveként állíthatja be, az alábbi példában látható módon: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Ha @no__t – 0, a rendszer meghívja a függvényt a futtatókörnyezet indításakor. Például a futtatókörnyezet akkor indul el, amikor a Function alkalmazás felébred, miután inaktivitás miatt tétlen marad. Ha a Function alkalmazás újraindul a függvény változásai miatt, és a függvény alkalmazás skálázása. Így a **runOnStartup** ritkán kell lennie, ha minden eddiginél `true` értékre van állítva, különösen éles környezetben. |
 |**useMonitor**|**UseMonitor**|Állítsa `true` vagy `false` értékre, hogy jelezze, az ütemtervet figyelni kell-e. Az ütemterv figyelése továbbra is fenntartja az ütemezett előfordulásokat, hogy a támogatás az ütemterv megfelelő karbantartása legyen, még akkor is, ha a Function app instances újraindul Ha nincs megadva explicit módon, az alapértelmezett érték `true` olyan ütemezések esetében, amelyeknél az ismétlődési időköz nagyobb vagy egyenlő, mint 1 perc. Az olyan ütemtervek esetében, amelyek percenként többször aktiválódnak, az alapértelmezett érték `false`.
@@ -260,13 +260,13 @@ Azure Functions a [NCronTab](https://github.com/atifaziz/NCrontab) -függvényt�
 
 Minden mezőhöz a következő típusú értékek tartozhatnak:
 
-|Type  |Példa  |Aktiváláskor  |
+|Type (Típus)  |Példa  |Aktiváláskor  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>"0 5 * * * *"</nobr>|óó: 05:00, ahol hh óránként (óránként)|
 |Minden érték (`*`)|<nobr>"0 * 5 * * *"</nobr>|minden nap 5: PP: 00, ahol a mm az óra minden percében (naponta 60 alkalommal)|
-|Tartomány (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|óó: PP: 05, óó: PP: 06 és óó: PP: 07, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|  
-|Értékek halmaza (`,` operátor)|<nobr>"5, 8, 10 * * * * *"</nobr>|óó: PP: 05, óó: PP: 08 és óó: PP: 10, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
-|Intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh: 05:00, óó: 10:00, óó: 15:00, és így tovább hh: 55:00, ahol hh óránként (12 alkalommal óránként)|
+|Tartomány (`-` operátor)|<nobr>"5-7 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 06 és óó: PP: 07, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
+|Értékek halmaza (`,` operátor)|<nobr>"5, 8, 10 * * * * * *"</nobr>|óó: PP: 05, óó: PP: 08 és óó: PP: 10, ahol óó: PP percenként minden percben (percenként 3 alkalommal)|
+|Intervallum érték (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh: 05:00, óó: 10:00, óó: 15:00, és így tovább hh: 55:00, ahol hh óránként (12 alkalommal óránként)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -318,7 +318,7 @@ Karakterláncként kifejezve a `TimeSpan` formátum `hh:mm:ss`, ha a `hh` érté
 |"01:00:00" | óránként        |
 |"00:01:00"|percenként         |
 |"24:00:00" | minden 24 nap        |
-|"1.00:00:00" | naponta        |
+|"1.00:00:00" | minden nap        |
 
 ## <a name="scale-out"></a>Kiterjesztés
 
@@ -326,20 +326,29 @@ Ha egy függvény alkalmazás több példányra is kiterjed, csak egy időzítő
 
 ## <a name="function-apps-sharing-storage"></a>Function apps megosztása Storage
 
-Ha több Function-alkalmazás között oszt meg egy Storage-fiókot, győződjön meg arról, hogy az egyes functions-alkalmazások eltérő `id` értékűek a *Host. JSON*fájlban. Kihagyhatja a `id` tulajdonságot, vagy manuálisan is beállíthatja `id` az egyes függvények alkalmazásait egy másik értékre. Az időzítő-trigger egy tárolási zárolást használ annak biztosítására, hogy csak egy időzítő példány legyen, ha egy függvény alkalmazás több példányra is méretezhető. Ha két Function-alkalmazás azonos `id` , és mindegyik időzítő-triggert használ, csak egy időzítő fog futni.
+Ha a Storage-fiókokat az App Service-be nem telepített functions-alkalmazások között osztja meg, előfordulhat, hogy explicit módon kell kiosztania a gazdagép AZONOSÍTÓját az egyes alkalmazásokhoz.
+
+| Függvények verziója | Beállítás                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2. x               | `AzureFunctionsWebHost__hostid` környezeti változó |
+| 1. x               | @no__t – 0 a *Host. JSON* fájlban                                  |
+
+Kihagyhatja az azonosító értéket, vagy manuálisan állíthatja be az egyes functions-alkalmazások azonosítási konfigurációját egy másik értékre.
+
+Az időzítő-trigger tároló-zárolással biztosítja, hogy csak egy időzítő példány legyen, ha egy függvény alkalmazás több példányra is méretezhető. Ha két Function-alkalmazás ugyanazt az azonosítási konfigurációt használja, és mindegyik időzítő-triggert használ, csak egy időzítő fut.
 
 ## <a name="retry-behavior"></a>Újrapróbálkozási viselkedés
 
 A várólista-triggertől eltérően az időzítő trigger nem próbálkozik újra a függvény meghibásodása után. Ha egy függvény meghibásodik, azt a rendszer nem hívja újra az ütemezés következő időpontjáig.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 További információ arról, hogy mi a teendő, ha az időzítő trigger nem a várt módon működik, lásd: [kivizsgálás és jelentéskészítési hibák az időzítő által aktivált függvények nem égetéssel](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ugrás olyan rövid útmutatóra, amely időzítő-triggert használ](functions-create-scheduled-function.md)
 
 > [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

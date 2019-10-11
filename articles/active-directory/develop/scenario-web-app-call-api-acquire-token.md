@@ -15,23 +15,23 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd66dcd6e3845aad79ebffb3cad656d0a14c1a6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: f30194592989b74aca96a5a483e9128cd3a86eb5
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720224"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274466"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás – jogkivonat beszerzése az alkalmazáshoz
 
 Most, hogy létrehozta az ügyfélalkalmazás-objektumot, felhasználhatja egy, a webes API-t meghívó token beszerzéséhez. A ASP.NET vagy ASP.NET Coreban a webes API-k meghívása a vezérlőn történik. Az alábbiakról szól:
 
-- Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja `AcquireTokenSilent`a következőt:.
+- Jogkivonat-gyorsítótár beszerzése a webes API-hoz. A jogkivonat beszerzéséhez hívja meg a `AcquireTokenSilent` értéket.
 - A védett API meghívása a hozzáférési jogkivonattal.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A vezérlő módszereit olyan `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. Itt látható a Microsoft Graph meghívására szolgáló kód.
+A vezérlő módszereit egy `[Authorize]` attribútum védi, amely arra kényszeríti a felhasználókat, hogy a webalkalmazás használatára legyenek hitelesítve. Itt látható a Microsoft Graph meghívására szolgáló kód.
 
 ```CSharp
 [Authorize]
@@ -61,10 +61,10 @@ public async Task<IActionResult> Profile()
  string[] scopes = new string[]{"user.read"};
  string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
 
-// use the access token to call a protected web API
-HttpClient client = new HttpClient();
-client.DefaultRequestHeaders.Add("Authorization", result.CreateAuthorizationHeader());
-string json = await client.GetStringAsync(url);
+ // use the access token to call a protected web API
+ HttpClient client = new HttpClient();
+ client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+ string json = await client.GetStringAsync(url);
 }
 ```
 
@@ -81,9 +81,9 @@ Ezeket a speciális lépéseket az oktatóanyag [3 – WebApp-multi-API](https:/
 
 A ASP.NET hasonló dolgok:
 
-- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját. (A ASP.NET `HttpContext.User`használja.)
-- Ettől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
-- Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
+- Az [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő `ClaimsPrincipal` tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját. (A ASP.NET `HttpContext.User` értéket használ.)
+- Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication`.
+- Végezetül meghívja a bizalmas ügyfélalkalmazás `AcquireTokenSilent` metódusát.
 
 A kód hasonló a ASP.NET Corehoz megjelenített kódhoz.
 
@@ -149,7 +149,7 @@ def graphcall():
     return render_template('display.html', result=graph_data)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-hívás](scenario-web-app-call-api-call-api.md)

@@ -3,15 +3,15 @@ title: Nagy méretű adathalmazok kezelése
 description: A nagyméretű adathalmazok beszerzésének és vezérlésének megismerése az Azure Resource Graph használata közben.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980322"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274235"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -68,7 +68,7 @@ a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, h
 
 Ha a **resultTruncated** értéke **igaz**, a válaszban a **$skipToken** tulajdonság van beállítva. Ez az érték ugyanazokkal a lekérdezési és előfizetési értékekkel együtt használható a lekérdezésnek megfelelő rekordok következő készletének beolvasásához.
 
-Az alábbi példák bemutatják, hogyan **hagyhatja** ki az első 3000 rekordot, és az **első** 1000 rekordot visszaküldheti az Azure CLI-vel kihagyott és a Azure PowerShell:
+Az alábbi példák bemutatják, hogyan **hagyhatja** ki az első 3000 rekordot, és visszaküldheti az **első** 1000-rekordokat, miután az Azure CLI-vel és Azure PowerShelltel kihagyta a bejegyzéseket
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -83,7 +83,91 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 
 Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azureresourcegraph/resources/resources#next-page-query) a REST API docs webhelyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="formatting-results"></a>Formázás eredményei
+
+A Resource Graph-lekérdezések eredményei két formátumban, _tábla_ -és _ObjectArray_érhetők el. A formátum a **resultFormat** paraméterrel van konfigurálva a kérési beállítások részeként. A **resultFormat**alapértelmezett értéke a _táblázat_ formátuma.
+
+Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a `ConvertTo-Json` parancsmag használatával gyorsan átalakíthatók JSON-ra. Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
+
+### <a name="format---table"></a>Táblázat formázása
+
+Az alapértelmezett formátum, _tábla_, az eredményeket egy JSON-formátumban adja vissza, amely a lekérdezés által visszaadott tulajdonságok kiemelésére szolgál. Ez a formátum szorosan hasonlít egy strukturált táblázatban vagy táblázatban definiált oszlopokra az elsőként azonosított oszlopokkal, majd minden olyan sorral, amely az adott oszlopokhoz igazított adathalmazokat jelképezi.
+
+Íme egy példa egy lekérdezési eredményre a _táblázat_ formázásával:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Formátum – ObjectArray
+
+A _ObjectArray_ formátuma is JSON-formátumban adja vissza az eredményeket. Ez a kialakítás azonban a JSON-ban közös kulcs/érték párok kapcsolatához igazodik, ahol az oszlop és a sor adatsorai egyeznek a tömb csoportjaival.
+
+Íme egy példa egy lekérdezési eredményre a _ObjectArray_ formázásával:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+Íme néhány példa a **resultFormat** beállítására a _ObjectArray_ formátum használatára:
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

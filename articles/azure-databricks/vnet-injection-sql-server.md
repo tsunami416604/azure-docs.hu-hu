@@ -1,6 +1,6 @@
 ---
-title: A lekérdezés egy SQL Server Linux Docker-tárolót egy virtuális hálózaton lévő az Azure Databricks-jegyzetfüzet
-description: Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Databricks a virtuális hálózathoz, más néven a virtuális hálózatok közötti injektálási.
+title: SQL Server Linux Docker-tároló lekérdezése Azure Databricks
+description: Ez a cikk azt ismerteti, hogyan helyezhetők üzembe Azure Databricks a virtuális hálózatban (más néven VNet Injection).
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -8,130 +8,130 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: 345e07fac30f4ad0c8e9918cb8a1ff0fb8aeb811
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 773ffe264446e6a4d9ef2e88634e4f2c9b8aeb45
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60770789"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273982"
 ---
-# <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Oktatóanyag: A lekérdezés egy SQL Server Linux Docker-tárolót egy virtuális hálózaton lévő az Azure Databricks-jegyzetfüzet
+# <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Oktatóanyag: SQL Server Linux Docker-tároló lekérdezése egy virtuális hálózaton egy Azure Databricks jegyzetfüzetből
 
-Ez az oktatóanyag bemutatja, hogyan integrálható az Azure Databricks és a egy SQL Server Linux Docker-tárolót egy virtuális hálózaton. 
+Ez az oktatóanyag bemutatja, hogyan integrálhatja a Azure Databrickst egy SQL Server Linux Docker-tárolóval egy virtuális hálózaton. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Azure Databricks-munkaterület üzembe helyezése virtuális hálózaton
-> * Linux rendszerű virtuális gép telepítése egy nyilvános hálózaton
+> * Azure Databricks munkaterület üzembe helyezése virtuális hálózaton
+> * Linux rendszerű virtuális gép telepítése nyilvános hálózaton
 > * A Docker telepítése
-> * Telepítse a Microsoft SQL Server Linux docker-tároló
-> * Az SQL Server JDBC segítségével a Databricks-jegyzetfüzet lekérdezése
+> * A Microsoft SQL Server telepítése Linux Docker-tárolón
+> * SQL Server lekérdezése a Databricks-jegyzetfüzetből a JDBC használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy [egy virtuális hálózatot a Databricks-munkaterület](quickstart-create-databricks-workspace-vnet-injection.md).
+* Hozzon létre egy [Databricks-munkaterületet egy virtuális hálózaton](quickstart-create-databricks-workspace-vnet-injection.md).
 
-* Telepítés [Ubuntu, a Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
+* Telepítse [az Ubuntu for Windowst](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).
 
 * Töltse le az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) alkalmazást.
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
 
-1. Az Azure Portalon válassza ki a ikonjára **virtuális gépek**. Ezután válassza ki **+ Hozzáadás**.
+1. A Azure Portal válassza ki a **Virtual Machines**ikonját. Ezután válassza a **+ Hozzáadás**lehetőséget.
 
-    ![Új Azure virtuális gép hozzáadása](./media/vnet-injection-sql-server/add-virtual-machine.png)
+    ![Új Azure-beli virtuális gép hozzáadása](./media/vnet-injection-sql-server/add-virtual-machine.png)
 
-2. Az a **alapjai** lapra, válassza a Ubuntu Server 16.04 LTS. Módosítsa a Virtuálisgép-méretet B1ms, amely rendelkezik egy vcpu-k és a 2 GB RAM. A minimális rendszerkövetelményt a Linux rendszerű SQL Server Docker-tárolóban 2 GB. Válassza ki a rendszergazda felhasználónevét és jelszavát.
+2. Az **alapvető beállítások** lapon válassza az Ubuntu Server 16,04 LTS lehetőséget. Módosítsa a virtuális gép méretét B1ms értékre, amely egy VCPU és 2 GB RAM-mal rendelkezik. A Linux SQL Server Docker-tároló minimális követelménye 2 GB. Válasszon ki egy rendszergazdai felhasználónevet és jelszót.
 
-    ![Új virtuális gép konfigurációs lapján alapjai](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
+    ![Az új virtuális gép konfigurációjának alapjai lap](./media/vnet-injection-sql-server/create-virtual-machine-basics.png)
 
-3. Keresse meg a **hálózatkezelés** fülre. Válassza ki a virtuális hálózat és a nyilvános alhálózatot, amely tartalmazza az Azure Databricks-fürt. Válassza ki **felülvizsgálat + létrehozása**, majd **létrehozás** a virtuális gép üzembe helyezése.
+3. Navigáljon a **hálózatkezelés** lapra. Válassza ki a virtuális hálózatot és a Azure Databricks fürtöt tartalmazó nyilvános alhálózatot. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a virtuális gép telepítéséhez.
 
-    ![Hálózat lap az új virtuálisgép-konfiguráció](./media/vnet-injection-sql-server/create-virtual-machine-networking.png)
+    ![A virtuális gép új konfigurációjának hálózatkezelés lapja](./media/vnet-injection-sql-server/create-virtual-machine-networking.png)
 
-4. Ha a telepítés befejeződött, lépjen a virtuális gép. Figyelje meg, hogy a nyilvános IP-cím és a virtuális hálózat/alhálózat a **áttekintése**. Válassza ki a **nyilvános IP-cím**
+4. A telepítés befejezésekor navigáljon a virtuális géphez. Figyelje meg a nyilvános IP-címet és a virtuális hálózatot/alhálózatot az **áttekintésben**. Válassza ki a **nyilvános IP-címet**
 
     ![Virtuális gépek – áttekintés](./media/vnet-injection-sql-server/virtual-machine-overview.png)
 
-5. Módosítsa a **hozzárendelés** való **statikus** , és adja meg egy **DNS-névcímke**. Válassza ki **mentése**, és indítsa újra a virtuális gépet.
+5. Módosítsa a **hozzárendelést** **statikusra** , és adja meg a **DNS-név címkéjét**. Válassza a **Mentés**lehetőséget, majd indítsa újra a virtuális gépet.
 
     ![Nyilvános IP-cím konfigurálása](./media/vnet-injection-sql-server/virtual-machine-staticip.png)
 
-6. Válassza ki a **hálózatkezelés** lapjára **beállítások**. Figyelje meg, hogy a virtuális gép társítva-e a hálózati biztonsági csoportot, amely az Azure Databricks üzembe helyezés során jött létre. Válassza ki **bejövőport-szabály hozzáadása**.
+6. Válassza a **hálózatkezelés** fület a **Beállítások**területen. Figyelje meg, hogy a Azure Databricks központi telepítés során létrehozott hálózati biztonsági csoport a virtuális géphez van társítva. Válassza a **bejövő Port hozzáadása szabály**lehetőséget.
 
-7. Adjon hozzá egy szabályt a 22-es port megnyitásához az SSH-hoz. Használja a következő beállításokat:
+7. Adjon hozzá egy szabályt a 22-es port megnyitásához az SSH-hoz. Használja az alábbi beállításokat:
     
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
-    |source|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
-    |Forrás IP-címek|< a nyilvános IP-cím\>|Adja meg a a nyilvános IP-címet. Látogasson el a nyilvános IP-cím megkereséséhez [bing.com](https://www.bing.com/) kifejezésre való kereséssel **"saját IP-cím"** .|
-    |Forrásporttartományok|*|Bármely porton érkező adatforgalom engedélyezéséhez.|
-    |Cél|IP-címek|IP-címek megadja a kimenő forgalmat egy adott forrás IP-cím lesz engedélyezett vagy letiltott a szabály által.|
-    |Destination IP addresses|< a virtuális gép nyilvános IP-cím\>|Adja meg a virtuális gép nyilvános IP-címet. A megtalálhatja a **áttekintése** a virtuális gép oldalán.|
-    |Célporttartományok|22|Nyissa meg a 22-es port az SSH-hoz.|
-    |Prioritás|290|Adjon a szabálynak prioritást.|
-    |Name (Név)|ssh-databricks-tutorial-vm|Adjon nevet a szabálynak.|
+    |Forrás|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy letiltja a bejövő forgalmat egy adott forrás IP-címről.|
+    |Forrás IP-címek|< a nyilvános IP-cím @ no__t-0|Adja meg a nyilvános IP-címét. A nyilvános IP-cím megkereséséhez keresse fel a [Bing.com](https://www.bing.com/) , és keressen rá a **"saját IP"** kifejezésre.|
+    |Forrásporttartományok|*|Bármilyen portról érkező forgalom engedélyezése.|
+    |Cél|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy megtagadja a kimenő forgalmat egy adott forrás IP-címhez.|
+    |Cél IP-címei|< a virtuális gép nyilvános IP-címe @ no__t-0|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
+    |Célporttartományok|22|Nyissa meg a 22-es portot az SSH-hoz.|
+    |Prioritás|290|Adja meg a szabályt prioritásként.|
+    |Név|SSH-databricks-oktatóanyag – virtuális gép|Adjon nevet a szabálynak.|
 
 
-    ![A 22-es porton bejövő biztonsági szabály felvétele](./media/vnet-injection-sql-server/open-port.png)
+    ![Bejövő biztonsági szabály hozzáadása a 22-es porthoz](./media/vnet-injection-sql-server/open-port.png)
 
-8. Adjon hozzá egy szabályt, amely az 1433-as port megnyitása az SQL a következő beállításokkal:
+8. Adjon hozzá egy szabályt az SQL 1433-es portjának megnyitásához a következő beállításokkal:
 
     |Beállítás|Ajánlott érték|Leírás|
     |-------|---------------|-----------|
-    |source|IP-címek|IP-címek Megadja, hogy egy adott forrás IP-cím lesz engedélyezett vagy letiltott Ez a szabály érkező bejövő forgalmat.|
-    |Forrás IP-címek|10.179.0.0/16|Adja meg a címtartományt a virtuális hálózat.|
-    |Forrásporttartományok|*|Bármely porton érkező adatforgalom engedélyezéséhez.|
-    |Cél|IP-címek|IP-címek megadja a kimenő forgalmat egy adott forrás IP-cím lesz engedélyezett vagy letiltott a szabály által.|
-    |Destination IP addresses|< a virtuális gép nyilvános IP-cím\>|Adja meg a virtuális gép nyilvános IP-címet. A megtalálhatja a **áttekintése** a virtuális gép oldalán.|
-    |Célporttartományok|1433|Nyissa meg a 22-es portot az SQL Serverhez.|
-    |Prioritás|300|Adjon a szabálynak prioritást.|
-    |Name (Név)|sql-databricks-tutorial-vm|Adjon nevet a szabálynak.|
+    |Forrás|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy letiltja a bejövő forgalmat egy adott forrás IP-címről.|
+    |Forrás IP-címek|10.179.0.0/16|Adja meg a virtuális hálózat címtartomány-tartományát.|
+    |Forrásporttartományok|*|Bármilyen portról érkező forgalom engedélyezése.|
+    |Cél|IP-címek|Az IP-címek azt határozzák meg, hogy a szabály engedélyezi vagy megtagadja a kimenő forgalmat egy adott forrás IP-címhez.|
+    |Cél IP-címei|< a virtuális gép nyilvános IP-címe @ no__t-0|Adja meg a virtuális gép nyilvános IP-címét. Ezt a virtuális gép **Áttekintés** lapján találja.|
+    |Célporttartományok|1433|Nyissa meg SQL Server a 22-es portot.|
+    |Prioritás|300|Adja meg a szabályt prioritásként.|
+    |Név|SQL-databricks-oktatóanyag – virtuális gép|Adjon nevet a szabálynak.|
 
-    ![Az 1433-as porton bejövő biztonsági szabály felvétele](./media/vnet-injection-sql-server/open-port2.png)
+    ![Bejövő biztonsági szabály hozzáadása a 1433-as porthoz](./media/vnet-injection-sql-server/open-port2.png)
 
-## <a name="run-sql-server-in-a-docker-container"></a>Az SQL Server futtatása Docker-tárolóban
+## <a name="run-sql-server-in-a-docker-container"></a>SQL Server futtatása Docker-tárolóban
 
-1. Nyissa meg [Ubuntu for Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab), vagy más eszköz, amely lehetővé teszi az SSH a virtuális géppel. Keresse meg az Azure Portalon, és válassza a virtuális gép **Connect** , csatlakoznia kell az SSH parancsot.
+1. Nyissa meg az [Ubuntu for Windows](https://www.microsoft.com/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab)alkalmazást, vagy bármilyen más eszközt, amely lehetővé teszi az SSH-t a virtuális géphez. A Azure Portalban navigáljon a virtuális géphez, és válassza a **Kapcsolódás** lehetőséget a kapcsolódáshoz szükséges SSH-parancs beszerzéséhez.
 
     ![Csatlakozás virtuális géphez](./media/vnet-injection-sql-server/vm-ssh-connect.png)
 
-2. Írja be a parancsot az Ubuntu terminált, és adja meg a rendszergazdai jelszót hozott létre a virtuális gép konfigurálásakor.
+2. Adja meg a parancsot az Ubuntu-terminálban, és adja meg a virtuális gép konfigurálásakor létrehozott rendszergazdai jelszót.
 
-    ![Ubuntu terminál SSH bejelentkezés](./media/vnet-injection-sql-server/vm-login-terminal.png)
+    ![Ubuntu Terminal SSH-bejelentkezés](./media/vnet-injection-sql-server/vm-login-terminal.png)
 
-3. A következő paranccsal telepítheti a Dockert a virtuális gépen.
+3. A következő parancs használatával telepítse a Docker-t a virtuális gépre.
 
     ```bash
     sudo apt-get install docker.io
     ```
 
-    Ellenőrizze a telepítés a Docker a következő paranccsal:
+    Ellenőrizze a Docker telepítését a következő paranccsal:
 
     ```bash
     sudo docker --version
     ```
 
-4. A lemezkép telepítéséhez.
+4. Telepítse a rendszerképet.
 
     ```bash
     sudo docker pull mcr.microsoft.com/mssql/server:2017-latest
     ```
 
-    Ellenőrizze a lemezképeket.
+    Keresse meg a lemezképeket.
 
     ```bash
     sudo docker images
     ```
 
-5. Futtassa a tároló a lemezképet.
+5. Futtassa a tárolót a rendszerképből.
 
     ```bash
     sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Password1234' -p 1433:1433 --name sql1  -d mcr.microsoft.com/mssql/server:2017-latest
     ```
 
-    Győződjön meg arról, hogy a tároló fut-e.
+    Ellenőrizze, hogy a tároló fut-e.
 
     ```bash
     sudo docker ps -a
@@ -139,11 +139,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
-1. SQL Server Management Studio megnyitása és csatlakozás a kiszolgálóhoz, a kiszolgáló nevét és az SQL-hitelesítés használatával. A bejelentkezési felhasználónevet, a rendszer **SA** és a jelszót pedig a jelszót, állítsa be a Docker-parancsban. A jelszó az a példában a parancs `Password1234`.
+1. Nyissa meg SQL Server Management Studio, és kapcsolódjon a kiszolgálóhoz a kiszolgáló neve és az SQL-hitelesítés használatával. A bejelentkezési Felhasználónév **sa** , és a jelszó a Docker-parancsban beállított jelszó. A példában szereplő parancsban található jelszó `Password1234`.
 
-    ![Csatlakozás az SQL Serverhez az SQL Server Management Studio használatával](./media/vnet-injection-sql-server/ssms-login.png)
+    ![Kapcsolódás SQL Server a SQL Server Management Studio használatával](./media/vnet-injection-sql-server/ssms-login.png)
 
-2. Miután sikeresen csatlakozott, válassza ki a **új lekérdezés** és adja meg az alábbi kódrészlet egy adatbázis, egy tábla létrehozásához és néhány rekord beillesztése a táblázatban.
+2. A sikeres csatlakozás után válassza az **Új lekérdezés** lehetőséget, és írja be a következő kódrészletet egy adatbázis, egy tábla létrehozásához, és szúrjon be néhány rekordot a táblába.
 
     ```SQL
     CREATE DATABASE MYDB;
@@ -157,29 +157,29 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     GO
     ```
 
-    ![Hozzon létre egy SQL Server-adatbázis lekérdezése](./media/vnet-injection-sql-server/create-database.png)
+    ![SQL Server adatbázis létrehozásához szükséges lekérdezés](./media/vnet-injection-sql-server/create-database.png)
 
-## <a name="query-sql-server-from-azure-databricks"></a>Lekérdezés SQL-kiszolgálóhoz az Azure Databricks
+## <a name="query-sql-server-from-azure-databricks"></a>SQL Server lekérdezése Azure Databricks
 
-1. Keresse meg az Azure Databricks-munkaterület, és győződjön meg arról, hogy az Előfeltételek részeként létrehozott egy fürtöt. Ezután válassza ki **hozzon létre egy jegyzetfüzetet**. Adja meg a jegyzetfüzet nevét, válassza ki *Python* nyelvet, és válassza ki a létrehozott fürtöt.
+1. Navigáljon a Azure Databricks munkaterületre, és ellenőrizze, hogy az előfeltételek részeként létrehozott-e fürtöt. Ezután válassza **a jegyzetfüzet létrehozása**lehetőséget. Adjon nevet a jegyzetfüzetnek, válassza ki a *Python* nyelvet, majd válassza ki a létrehozott fürtöt.
 
-    ![Databricks-jegyzetfüzet új beállításai](./media/vnet-injection-sql-server/create-notebook.png)
+    ![Új Databricks notebook-beállítások](./media/vnet-injection-sql-server/create-notebook.png)
 
-2. A következő parancs használatával az SQL Server virtuális gép belső IP-cím. A ping sikeres legyen. Ha nem, ellenőrizze, hogy a tároló fut-e, tekintse át a hálózati biztonsági csoport (NSG) konfigurációját.
+2. A következő parancs használatával pingelheti a SQL Server virtuális gép belső IP-címét. A pingelésnek sikeresnek kell lennie. Ha nem, ellenőrizze, hogy fut-e a tároló, és tekintse át a hálózati biztonsági csoport (NSG) konfigurációját.
 
     ```python
     %sh
     ping 10.179.64.4
     ```
 
-    Az nslookup parancs segítségével is áttekintheti.
+    Az nslookup parancs használatával is áttekintheti a következőt:.
 
     ```python
     %sh
     nslookup databricks-tutorial-vm.westus2.cloudapp.azure.com
     ```
 
-3. Ha Ön már ping paranccsal sikerül elérni az SQL Server, lekérdezheti, ha az adatbázis és a táblák. Futtassa a következő python kódot:
+3. Miután sikeresen elvégezte a SQL Server pingelését, lekérdezheti az adatbázist és a táblákat. Futtassa a következő Python-kódot:
 
     ```python
     jdbcHostname = "10.179.64.4"
@@ -195,14 +195,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, az Azure Databricks-munkaterület és minden kapcsolódó erőforrás. A feladat törlése elkerülhető a felesleges számlázás. Ha a jövőben használni az Azure Databricks-munkaterület, állítsa le a fürtöt, és indítsa újra később. Ha nem kívánja tovább használhatja az Azure Databricks-munkaterület, törölje az ebben az oktatóanyagban az alábbi lépésekkel létrehozott összes erőforrást:
+Ha már nincs rá szükség, törölje az erőforráscsoportot, a Azure Databricks munkaterületet és az összes kapcsolódó erőforrást. A feladatok törlése elkerüli a szükségtelen számlázást. Ha a jövőben a Azure Databricks munkaterület használatát tervezi, akkor leállíthatja a fürtöt, és később újraindíthatja. Ha nem kívánja tovább használni ezt a Azure Databricks munkaterületet, az oktatóanyagban létrehozott összes erőforrást az alábbi lépések segítségével törölheti:
 
-1. Az Azure Portal baloldali menüjében kattintson **erőforráscsoportok** és kattintson a létrehozott erőforráscsoport nevét.
+1. A Azure Portal bal oldali menüjében kattintson az **erőforráscsoportok** elemre, majd kattintson a létrehozott erőforráscsoport nevére.
 
-2. Az erőforráscsoport lapján, válassza ki a **törlése**, adja meg az erőforrás törlése a szövegmezőbe, és válassza ki a **törlése** újra.
+2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Folytassa a következő cikk megtudhatja, hogyan kinyerése, átalakítása és betöltése az Azure Databricks segítségével adatokat.
+A következő cikkből megtudhatja, hogyan kinyerheti, átalakíthatja és betöltheti az adatgyűjtést Azure Databricks használatával.
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A kinyerési, átalakítási és az adatok betöltése az Azure Databricks használatával](databricks-extract-load-sql-data-warehouse.md)
+> [Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](databricks-extract-load-sql-data-warehouse.md)

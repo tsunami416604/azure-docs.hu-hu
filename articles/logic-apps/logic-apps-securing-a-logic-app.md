@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: be10d144fadb21a695c5573c82681a26136e71d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004094"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264663"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -30,7 +30,7 @@ A Azure Logic Appsban lévő adathozzáférés szabályozásához és védelméh
 
 ## <a name="access-to-http-request-triggers"></a>Hozzáférés a HTTP-kérelmek eseményindítóhoz
 
-Ha a logikai alkalmazás HTTP-kérelem alapú triggert használ, például a [kérést](../connectors/connectors-native-reqres.md) vagy a webhookot, korlátozhatja a hozzáférést, hogy csak a jogosult ügyfelek tudják elindítani a logikai alkalmazást. [](../connectors/connectors-native-webhook.md) A logikai alkalmazások által fogadott összes kérelem titkosítva van, és a SSL (SSL) protokollon keresztül biztosítva van. 
+Ha a logikai alkalmazás HTTP-kérelem alapú triggert használ, például a [kérést](../connectors/connectors-native-reqres.md) vagy a [webhookot](../connectors/connectors-native-webhook.md) , korlátozhatja a hozzáférést, hogy csak a jogosult ügyfelek tudják elindítani a logikai alkalmazást. A logikai alkalmazások által fogadott összes kérelem titkosítva van, és a SSL (SSL) protokollon keresztül biztosítva van. 
 
 Az alábbi módokon biztosíthatja az ilyen típusú triggerekhez való hozzáférést:
 
@@ -46,7 +46,7 @@ A logikai alkalmazás minden kérelem végpontja [közös hozzáférési aláír
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
-Minden URL-cím `sp`tartalmaz `sv`egy, `sig` és egy lekérdezési paramétert a következő táblázatban leírtak szerint:
+Minden URL-cím tartalmaz egy `sp`, `sv` és `sig` lekérdezési paramétert a következő táblázatban leírtak szerint:
 
 | Lekérdezési paraméter | Leírás |
 |-----------------|-------------|
@@ -83,7 +83,7 @@ Ha egy HTTP-kérelem alapú trigger végpontjának URL-címét más felekkel egy
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben adja meg a `NotAfter`tulajdonságot egy JSON-dátum karakterlánc használatával. Ez a tulajdonság egy visszahívási URL-címet ad vissza `NotAfter` , amely csak a dátumig és időpontig érvényes.
+A törzsben adja meg a @no__t 0property egy JSON-dátum karakterlánc használatával. Ez a tulajdonság egy visszahívási URL-címet ad vissza, amely csak a `NotAfter` dátumig és időpontig érvényes.
 
 <a name="primary-secondary-key"></a>
 
@@ -95,7 +95,7 @@ A HTTP-kérelem alapú eseményindítók visszahívási URL-címeinek létrehoz�
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben adja meg a `KeyType` tulajdonságot a `Primary` következők `Secondary`egyikével: vagy. Ez a tulajdonság a megadott biztonságos kulcs által aláírt URL-címet adja vissza.
+A törzsben adja meg a `KeyType` tulajdonságot `Primary` vagy `Secondary` értékkel. Ez a tulajdonság a megadott biztonságos kulcs által aláírt URL-címet adja vissza.
 
 <a name="restrict-incoming-ip"></a>
 
@@ -109,7 +109,7 @@ A közös hozzáférésű aláírással együtt érdemes korlátozni a logikai a
 
 1. A logikai alkalmazás menüjében, a **Beállítások**területen válassza a **munkafolyamat-beállítások**elemet.
 
-1. A **hozzáférés-vezérlési konfiguráció** > **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
+1. A **hozzáférés-vezérlési konfiguráció**@no__t – 1**engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
 
 1. Az **Eseményindítók IP-címtartományok**területén válassza ki az eseményindító által elfogadott IP-címtartományt.
 
@@ -118,11 +118,11 @@ A közös hozzáférésű aláírással együtt érdemes korlátozni a logikai a
 Ha azt szeretné, hogy a logikai alkalmazás csak beágyazott logikai alkalmazásként induljon el, az **engedélyezett bejövő IP-címek** listából válassza a **csak más Logic apps**lehetőséget. Ez a lehetőség üres tömböt ír a logikai alkalmazás erőforrásaiba. Így csak a Logic Apps szolgáltatástól érkező hívások (a szülő logikai alkalmazások) indíthatják el a beágyazott logikai alkalmazást.
 
 > [!NOTE]
-> Az IP-címektől függetlenül továbbra is futtathat egy olyan logikai alkalmazást, amely egy HTTP-kérelem alapú triggerrel `/triggers/<trigger-name>/run` rendelkezik az Azure REST API vagy a API Management használatával. Ebben a forgatókönyvben azonban továbbra is hitelesítésre van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
+> Az IP-címektől függetlenül továbbra is futtathat egy olyan logikai alkalmazást, amely egy HTTP-kérésen alapuló triggerrel rendelkezik `/triggers/<trigger-name>/run` használatával az Azure REST API vagy a API Managementon keresztül. Ebben a forgatókönyvben azonban továbbra is hitelesítésre van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
 
 #### <a name="restrict-incoming-ip-ranges-in-azure-resource-manager-template"></a>A bejövő IP-tartományok korlátozása Azure Resource Manager sablonban
 
-Ha [Azure Resource Manager sablonnal](../logic-apps/logic-apps-create-deploy-template.md)automatizálja a logikai alkalmazások központi telepítését, megadhatja az IP-tartományokat `accessControl` `triggers` a logikai alkalmazás erőforrás-definíciójának szakasza alapján, például:
+Ha [Azure Resource Manager sablonnal](../logic-apps/logic-apps-create-deploy-template.md)automatizálja a logikai alkalmazások központi telepítését, az IP-címtartományok megadásához @no__t használja a logikai alkalmazás erőforrás-definíciójának `triggers` szakaszát (például:).
 
 ``` json
 {
@@ -173,17 +173,17 @@ Ha további hitelesítési protokollokat szeretne hozzáadni a logikai alkalmaz�
 
 Engedélyezheti, hogy csak bizonyos felhasználók vagy csoportok futtassanak meghatározott műveleteket, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozása érdekében az [Azure szerepköralapú Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) használatával rendeljen hozzá testreszabott vagy beépített szerepköröket az Azure-előfizetésében található tagokhoz:
 
-* [Logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor): Lehetővé teszi a logikai alkalmazások kezelését, de a hozzáférését nem módosíthatja.
+* [Logic app közreműködő](../role-based-access-control/built-in-roles.md#logic-app-contributor): lehetővé teszi a logikai alkalmazások kezelését, de nem tudja módosítani őket.
 
-* [Logic app-operátor](../role-based-access-control/built-in-roles.md#logic-app-operator): Lehetővé teszi a Logic apps olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissítheti őket.
+* [Logikai alkalmazás kezelője](../role-based-access-control/built-in-roles.md#logic-app-operator): lehetővé teszi a Logic apps olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissítheti őket.
 
-Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az [Azure erőforrás](../azure-resource-manager/resource-group-lock-resources.md)-zárolást, amely megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
+Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az [Azure erőforrás-zárolást](../azure-resource-manager/resource-group-lock-resources.md), amely megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
 
 <a name="secure-run-history"></a>
 
 ## <a name="access-to-run-history-data"></a>Hozzáférés a futtatási előzményekhez
 
-A logikai alkalmazások futtatása során a rendszer az átvitel során titkosítja az összes adatforgalmat a [tranzit Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) és a [nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Ha a logikai alkalmazás futása befejeződött, megtekintheti a Futtatás előzményeit, beleértve az egyes műveletek állapotával, időtartamával, bemenetével és kimenetével együtt futtatott lépéseket is. Ez a részletes információk betekintést biztosítanak a logikai alkalmazás futtatásának módjára, valamint az esetlegesen felmerülő problémák elhárítására.
+A logikai alkalmazások futtatása során az összes adatok titkosítva vannak az átvitel során [Transport Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) és a [nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Ha a logikai alkalmazás futása befejeződött, megtekintheti a Futtatás előzményeit, beleértve az egyes műveletek állapotával, időtartamával, bemenetével és kimenetével együtt futtatott lépéseket is. Ez a részletes információk betekintést biztosítanak a logikai alkalmazás futtatásának módjára, valamint az esetlegesen felmerülő problémák elhárítására.
 
 Amikor hozzáfér a logikai alkalmazás futtatási előzményeihez, Logic Apps hitelesíti a hozzáférést, és hivatkozásokat biztosít a logikai alkalmazás futtatásához tartozó kérések és válaszok bemeneteit és kimeneteit illetően. A jelszavakat, titkos kulcsokat vagy más bizalmas adatokat kezelő műveletek esetében azonban meg kell akadályozni, hogy mások megtekintsék és hozzáférjenek az adatokhoz. Ha például a logikai alkalmazás a HTTP-műveletek hitelesítéséhez [Azure Key Vault](../key-vault/key-vault-overview.md) titkos kulcsot kap, akkor a titkos kulcsot el szeretné rejteni a nézetből.
 
@@ -201,7 +201,7 @@ A logikai alkalmazás futtatási előzményeiben található bemenetekhez és ki
 
 ### <a name="restrict-access-by-ip-address-range"></a>IP-címtartomány általi hozzáférés korlátozása
 
-Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit úgy, hogy csak adott IP-címtartományok kérései megtekinthessék ezeket az adatokat. Ha például meg szeretné tiltani a bemenetek és kimenetek elérését, adja meg az IP-címtartományt `0.0.0.0-0.0.0.0`, például:. Csak egy rendszergazdai engedélyekkel rendelkező személy távolíthatja el ezt a korlátozást, amely lehetővé teszi, hogy "igény szerinti" hozzáférést biztosítson a logikai alkalmazás adataihoz. Megadhatja azokat az IP-tartományokat, amelyek a logikai alkalmazások telepítéséhez használt Azure Portal vagy egy Azure Resource Manager sablon alapján korlátozzák.
+Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit úgy, hogy csak adott IP-címtartományok kérései megtekinthessék ezeket az adatokat. Ha például meg szeretné tiltani a bemenetek és kimenetek elérését, adja meg az IP-címtartományt, például `0.0.0.0-0.0.0.0` értéket. Csak egy rendszergazdai engedélyekkel rendelkező személy távolíthatja el ezt a korlátozást, amely lehetővé teszi, hogy "igény szerinti" hozzáférést biztosítson a logikai alkalmazás adataihoz. Megadhatja azokat az IP-tartományokat, amelyek a logikai alkalmazások telepítéséhez használt Azure Portal vagy egy Azure Resource Manager sablon alapján korlátozzák.
 
 #### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure Portal IP-tartományának korlátozása
 
@@ -209,7 +209,7 @@ Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és k
 
 1. A logikai alkalmazás menüjében, a **Beállítások**területen válassza a **munkafolyamat-beállítások**elemet.
 
-1. A **hozzáférés-vezérlési konfiguráció** > **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
+1. A **hozzáférés-vezérlési konfiguráció**@no__t – 1**engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
 
 1. A **tartalom IP-címtartományok**területén adja meg azokat az IP-címtartományt, amelyek hozzáférhetnek a tartalomhoz a bemenetek és a kimenetek között. 
 
@@ -217,7 +217,7 @@ Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és k
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager sablonban lévő IP-tartományok korlátozása
 
-Ha [Azure Resource Manager sablonnal](../logic-apps/logic-apps-create-deploy-template.md)automatizálja a logikai alkalmazások központi telepítését, megadhatja az IP-tartományokat `accessControl` `contents` a logikai alkalmazás erőforrás-definíciójának szakasza alapján, például:
+Ha [Azure Resource Manager sablonnal](../logic-apps/logic-apps-create-deploy-template.md)automatizálja a logikai alkalmazások központi telepítését, az IP-címtartományok megadásához @no__t használja a logikai alkalmazás erőforrás-definíciójának `contents` szakaszát (például:).
 
 ``` json
 {
@@ -264,7 +264,7 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
 #### <a name="secure-inputs-and-outputs-in-the-designer"></a>Biztonságos bemenetek és kimenetek a tervezőben
 
-1. Ha a logikai alkalmazás még nincs megnyitva [](https://portal.azure.com)a Azure Portalban, nyissa meg a logikai alkalmazást a Logic app Designerben.
+1. Ha a logikai alkalmazás még nincs megnyitva a [Azure Portalban](https://portal.azure.com), nyissa meg a logikai alkalmazást a Logic app Designerben.
 
    ![Minta logikai alkalmazás megnyitása](media/logic-apps-securing-a-logic-app/sample-logic-app.png)
 
@@ -298,10 +298,10 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Biztonságos bemenetek és kimenetek kód nézetben
 
-Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy frissítse `runtimeConfiguration.secureData.properties` a tömböt a következő értékek egyikével vagy mindkettővel:
+Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy frissítse a `runtimeConfiguration.secureData.properties` tömböt a következő értékek egyikével vagy mindkettővel:
 
-* `"inputs"`: A bemenetek védelme a futtatási előzményekben.
-* `"outputs"`: A kimenetek védelme a futtatási előzményekben.
+* `"inputs"`: a bemenetek védelme a futtatási előzményekben.
+* @no__t – 0: a kimenetek védelme a futtatási előzményekben.
 
 Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha ezeket a beállításokat használja az adatvédelmek biztosításához.
 
@@ -361,25 +361,25 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így [Azure Resource Manager sablonnal](../azure-resource-manager/resource-group-authoring-templates.md#parameters) üzembe helyezheti a logikai alkalmazást, védetté teheti a bizalmas adatokat, és biztonságos paramétereket határozhat meg, és ezeket a paramétereket külön-külön adhatja meg a sablon paramétereinek használatával. [ fájl](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
-Ha például [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)használatával hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. A logikai alkalmazáshoz tartozó paraméterek megadásához használja a `parameters` logikai alkalmazás munkafolyamat-definícióján belüli szakaszt. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek értékének megadásához adja meg a paramétereket a vagy `securestring` `secureobject` a típus használatával, és használja a kódolást szükség szerint. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. A paraméter értékének futtatókörnyezetben való eléréséhez használja `@parameters('<parameter-name>')` a kifejezést a munkafolyamat-definícióban. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
+Ha például [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)használatával hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. A logikai alkalmazáshoz tartozó paraméterek megadásához használja a logikai alkalmazás munkafolyamatának definíciójában található `parameters` szakaszt. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek értékének megadásához adja meg a paramétereket a `securestring` vagy a `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. A paraméter értékének futásidőben való eléréséhez használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definícióban. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
 
 > [!NOTE]
 > Ha egy HTTP-kérelem fejlécében vagy törzsében egy paramétert használ, akkor ez a paraméter látható lesz, ha megtekinti a logikai alkalmazás futtatási előzményeit és a kimenő HTTP-kérést. Győződjön meg arról, hogy a tartalom-hozzáférési házirendeket is megfelelően állította be. Az engedélyezési fejlécek soha nem láthatók bemeneteken vagy kimeneteken keresztül. Tehát ha van titok, a titkos kód nem kérhető le.
 
 További információ: [biztonságos paraméterek a munkafolyamat-definíciókban](#secure-parameters-workflow) a témakör későbbi részében.
 
-Ha [Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters)-sablonokkal automatizálja az üzembe helyezést, megadhatja a biztonságos sablon paramétereit, amelyek kiértékelése a `securestring` telepítéskor történik a és `secureobject` a típus használatával. A sablon paramétereinek megadásához használja a sablon legfelső `parameters` szintű szakaszát, amely külön és eltér a munkafolyamat- `parameters` definíció szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
+Ha [Azure Resource Manager-sablonokkal](../azure-resource-manager/resource-group-authoring-templates.md#parameters)automatizálja az üzemelő példányokat, megadhatja a biztonságos sablon paramétereit, amelyeket a rendszer a telepítéskor értékel ki az `securestring` és a `secureobject` típus használatával. A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíció `parameters` szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values).
 
 Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információkért tekintse meg a következő témaköröket:
 
 * [A Azure Key Vault használata a biztonságos paraméterek értékének átadására az üzembe helyezéskor](../azure-resource-manager/resource-manager-keyvault-parameter.md)
-* [Biztonságos paraméterek Azure Resource Manager](#secure-parameters-deployment-template) -sablonokban a témakör későbbi részében
+* [Biztonságos paraméterek Azure Resource Manager-sablonokban](#secure-parameters-deployment-template) a témakör későbbi részében
 
 <a name="secure-parameters-workflow"></a>
 
 ### <a name="secure-parameters-in-workflow-definitions"></a>Biztonságos paraméterek a munkafolyamat-definíciókban
 
-A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok védelméhez használjon biztonságos paramétereket, hogy a logikai alkalmazás mentése után ne legyen látható az információ. Tegyük fel például, hogy egy HTTP-művelethez egyszerű hitelesítés szükséges, amely felhasználónevet és jelszót használ. A munkafolyamat-definícióban `parameters` a szakasz a `basicAuthPasswordParam` `securestring` és `basicAuthUsernameParam` a paramétereket a típus használatával határozza meg. A művelet definíciója ezeket a `authentication` paramétereket a szakaszon hivatkozik.
+A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok védelméhez használjon biztonságos paramétereket, hogy a logikai alkalmazás mentése után ne legyen látható az információ. Tegyük fel például, hogy egy HTTP-művelethez egyszerű hitelesítés szükséges, amely felhasználónevet és jelszót használ. A munkafolyamat-definícióban a `parameters` szakasz a `basicAuthPasswordParam` és a `basicAuthUsernameParam` paramétert a `securestring` típus használatával határozza meg. A művelet definíciója ezeket a paramétereket a `authentication` szakaszban hivatkozik.
 
 ```json
 "definition": {
@@ -425,22 +425,22 @@ A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok vé
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Biztonságos paraméterek Azure Resource Manager-sablonokban
 
-A logikai alkalmazások Resource Manager-sablonjai több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós `securestring` szinten `secureobject` a vagy a típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-overview.md) , és a [paraméter fájllal](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/resource-manager-keyvault-parameter.md)átadására a telepítéskor.
+A logikai alkalmazások Resource Manager-sablonjai több @no__t – 0 szakaszt tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós szinten a `securestring` vagy a `secureobject` típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-overview.md) , és a [paraméter fájllal](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: a [Azure Key Vault használata a biztonságos paraméterek értékének átadására a telepítéskor](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
-További információ az alábbi `parameters` fejezetekről:
+További információ ezekről a `parameters` szakasszal kapcsolatban:
 
-* A sablon legfelső szintjén egy `parameters` szakasz határozza meg azokat az értékeket, amelyeket a sablon a *telepítéskor*használ. Ezek az értékek például tartalmazhatnak egy adott központi telepítési környezethez tartozó kapcsolódási karakterláncokat is. Ezeket az értékeket külön [paraméteres fájlban](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)tárolhatja, így az értékek könnyebben módosíthatók.
+* A sablon legfelső szintjén a `parameters` szakasz határozza meg a sablon által a *telepítéskor*használt értékek paramétereit. Ezek az értékek például tartalmazhatnak egy adott központi telepítési környezethez tartozó kapcsolódási karakterláncokat is. Ezeket az értékeket külön [paraméteres fájlban](../azure-resource-manager/resource-group-template-deploy.md#pass-parameter-values)tárolhatja, így az értékek könnyebben módosíthatók.
 
-* A logikai alkalmazás erőforrás-definícióján belül, de a munkafolyamat-definíción `parameters` kívül egy szakasz a munkafolyamat-definíció paramétereinek értékeit határozza meg. Ebben a szakaszban ezeket az értékeket a sablon paramétereit hivatkozó sablon-kifejezések használatával rendelheti hozzá. Ezeket a kifejezéseket a rendszer kiértékeli a telepítéskor.
+* A logikai alkalmazás erőforrás-definícióján belül, de a munkafolyamat-definíción kívül egy `parameters` szakasz határozza meg a munkafolyamat-definíció paramétereinek értékeit. Ebben a szakaszban ezeket az értékeket a sablon paramétereit hivatkozó sablon-kifejezések használatával rendelheti hozzá. Ezeket a kifejezéseket a rendszer kiértékeli a telepítéskor.
 
-* A munkafolyamat-definícióban egy `parameters` szakasz határozza meg, hogy a logikai alkalmazás milyen paramétereket használ futásidőben. Ezeket a paramétereket a logikai alkalmazás munkafolyamatán belül hivatkozhat a munkafolyamat-definíciós kifejezések használatával, amelyek kiértékelése futásidőben történik.
+* A munkafolyamat-definícióban a `parameters` szakasz határozza meg, hogy a logikai alkalmazás milyen paramétereket használ futásidőben. Ezeket a paramétereket a logikai alkalmazás munkafolyamatán belül hivatkozhat a munkafolyamat-definíciós kifejezések használatával, amelyek kiértékelése futásidőben történik.
 
-Ez a példa több, a `securestring` típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz:
+Ez a példa több olyan biztonságos paraméter-definíciót tartalmaz, amelyek a `securestring` típust használják:
 
-| Paraméternév | Leírás |
+| Paraméter neve | Leírás |
 |----------------|-------------|
-| `TemplatePasswordParam` | A munkafolyamat-definíció `basicAuthPasswordParam` paraméterének átadott jelszót fogadó sablon-paraméter |
-| `TemplateUsernameParam` | A munkafolyamat-definíció `basicAuthUserNameParam` paraméterének átadandó felhasználónevet megadó sablon-paraméter |
+| `TemplatePasswordParam` | A munkafolyamat-definíció `basicAuthPasswordParam` paramétere számára átadott jelszót megadó sablon-paraméter |
+| `TemplateUsernameParam` | A sablon paramétere, amely elfogadja a felhasználónevet, amelyet a rendszer a munkafolyamat-definíció `basicAuthUserNameParam` paraméterének továbbít. |
 | `basicAuthPasswordParam` | Egy munkafolyamat-definíciós paraméter, amely egy HTTP-műveletben fogadja el az alapszintű hitelesítéshez szükséges jelszót |
 | `basicAuthUserNameParam` | Munkafolyamat-definíciós paraméter, amely elfogadja a felhasználónevet az egyszerű hitelesítéshez egy HTTP-műveletben |
 |||
@@ -570,7 +570,7 @@ Ez a példa több, a `securestring` típust használó biztonságos paraméter-d
 
 * Hitelesítés hozzáadása a kimenő kérésekhez.
 
-  Ha HTTP-, HTTP + hencegő (nyílt API) vagy webhook művelettel dolgozik, akkor a logikai alkalmazás által elküldett kérelemhez is hozzáadhat hitelesítést. Használhat például egyszerű hitelesítést, tanúsítványalapú hitelesítést vagy Azure Active Directory hitelesítést. További információ: triggerek [vagy műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
+  Ha HTTP-, HTTP + hencegő (nyílt API) vagy webhook művelettel dolgozik, akkor a logikai alkalmazás által elküldett kérelemhez is hozzáadhat hitelesítést. Használhat például egyszerű hitelesítést, tanúsítványalapú hitelesítést vagy Azure Active Directory hitelesítést. További információ: [triggerek vagy műveletek hitelesítése](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
 * A logikai alkalmazás IP-címeitől való hozzáférés korlátozása.
 
@@ -578,7 +578,7 @@ Ez a példa több, a `securestring` típust használó biztonságos paraméter-d
 
 * Felügyelt identitásként hitelesítheti és érheti el az erőforrásokat.
 
-  Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz fér hozzá, a logikai alkalmazás a hitelesítő adatok és a titkos azonosítók helyett a felügyelt identitás (korábbi nevén Managed Service Identity vagy MSI) használatával is hitelesítheti identitását. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. A rendszerhez rendelt felügyelt identitás beállításával és használatával kapcsolatos további információkért lásd: Azure Logic Appsban található [felügyelt identitásokkal rendelkező erőforrások hitelesítése és elérése](../logic-apps/create-managed-service-identity.md).
+  Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz fér hozzá, a logikai alkalmazás a hitelesítő adatok és a titkos azonosítók helyett a felügyelt identitás (korábbi nevén Managed Service Identity vagy MSI) használatával is hitelesítheti identitását. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. A rendszerhez rendelt felügyelt identitás beállításával és használatával kapcsolatos további információkért lásd: [Azure Logic Appsban található felügyelt identitásokkal rendelkező erőforrások hitelesítése és elérése](../logic-apps/create-managed-service-identity.md).
 
 * Biztonságos kapcsolatok a helyszíni rendszerekkel.
 
@@ -586,13 +586,13 @@ Ez a példa több, a `securestring` típust használó biztonságos paraméter-d
 
   * Helyi adatátjáró
 
-    Azure Logic Apps számos felügyelt összekötő biztosít biztonságos kapcsolatot a helyszíni rendszerekkel, például a fájlrendszerrel, az SQL-, a SharePoint-és a DB2-szolgáltatással. Az átjáró a helyszíni forrásokból érkező adatokat a Azure Service Bus keresztül küldi el titkosított csatornákon. Minden forgalom biztonságos kimenő adatforgalomból származik az átjáró ügynökének. Ismerje meg, [Hogyan működik a](logic-apps-gateway-install.md#gateway-cloud-service)helyszíni adatátjáró.
+    Azure Logic Apps számos felügyelt összekötő biztosít biztonságos kapcsolatot a helyszíni rendszerekkel, például a fájlrendszerrel, az SQL-, a SharePoint-és a DB2-szolgáltatással. Az átjáró a helyszíni forrásokból érkező adatokat a Azure Service Bus keresztül küldi el titkosított csatornákon. Minden forgalom biztonságos kimenő adatforgalomból származik az átjáró ügynökének. Ismerje meg, [Hogyan működik a helyszíni adatátjáró](logic-apps-gateway-install.md#gateway-cloud-service).
 
   * Kapcsolódjon az Azure API Management
 
     Az [Azure API Management](../api-management/api-management-key-concepts.md) helyszíni kapcsolódási lehetőségeket, például helyek közötti virtuális magánhálózat és ExpressRoute-integrációt biztosít a biztonságos proxyhoz és a helyszíni rendszerekkel való kommunikációhoz. A Logic app Designerben a logikai alkalmazás munkafolyamatában kiválaszthat egy API Management által elérhetővé tett API-t, amely gyors hozzáférést biztosít a helyszíni rendszerekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Központi telepítési sablonok létrehozása](logic-apps-create-deploy-template.md)  
 * [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)  

@@ -215,8 +215,6 @@
               href: azure-ad-integration.md
         - name: Kubernetes RBAC használata Azure AD-integrációval
           href: azure-ad-rbac.md
-        - name: Hitelesítés az ACR segítségével
-          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
     - name: Monitorozás és naplózás
       items:

@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269037"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264176"
 ---
-# <a name="configure-keychain"></a>Kulcstartó konfigurálása
+# <a name="configure-keychain"></a>Kulcskarika konfigurálása
 
-Ha az [iOS-és MacOS](msal-overview.md) -(MSAL-) Microsoft-hitelesítési kódtár egy felhasználónál jelentkezik be, vagy egy tokent frissít, megkísérli a kulcstartóban lévő tokenek gyorsítótárazását. A kulcstartóban lévő gyorsítótárazási tokenek révén a MSAL csendes egyszeri bejelentkezést (SSO-t) biztosít az azonos Apple Developer által terjesztett több alkalmazás között. Az egyszeri bejelentkezés a kulcstartó-hozzáférési csoportok funkción keresztül érhető el (lásd az [Apple dokumentációját](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)).
+Ha az [iOS-és MacOS](msal-overview.md) -(MSAL-) Microsoft-hitelesítési kódtár egy felhasználónál jelentkezik be, vagy egy tokent frissít, megkísérli a kulcstartóban lévő tokenek gyorsítótárazását. A kulcstartóban lévő gyorsítótárazási tokenek lehetővé teszik a MSAL számára a csendes egyszeri bejelentkezést (SSO) több, azonos Apple Developer által terjesztett alkalmazás között. Az egyszeri bejelentkezés a kulcstartó-hozzáférési csoportok funkcióján keresztül érhető el. További információt az Apple [kulcstartó-elemek dokumentációjában](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)talál.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az alkalmazás jogosultságait úgy, hogy a MSAL képes legyen gyorsítótárazott tokeneket írni az iOS-és macOS-kulcstartóba.
 
@@ -34,21 +34,21 @@ Ez a cikk bemutatja, hogyan konfigurálhatja az alkalmazás jogosultságait úgy
 
 ### <a name="ios"></a>iOS
 
-Az iOS-MSAL alapértelmezés `com.microsoft.adalcache` szerint a hozzáférési csoportot használja. Ez a MSAL és az Azure AD Authentication Library (ADAL) SDK-k által használt közös hozzáférésű csoport, amely biztosítja a legjobb egyszeri bejelentkezést (SSO) az ugyanazon közzétevőtől származó több alkalmazás között.
+Az iOS-MSAL alapértelmezés szerint a `com.microsoft.adalcache` hozzáférési csoportot használja. Ez a MSAL és az Azure AD Authentication Library (ADAL) SDK-k által használt közös hozzáférésű csoport, amely biztosítja a legjobb egyszeri bejelentkezést (SSO) az ugyanazon közzétevőtől származó több alkalmazás között.
 
-Az iOS-ben adja `com.microsoft.adalcache` hozzá a kulcstartó csoportot az alkalmazás jogosultságához a Xcode**funkciók** > **kulcstartó megosztása** **területén.**  > 
+IOS rendszeren adja hozzá a `com.microsoft.adalcache` kulcstartó csoportot az alkalmazás jogosultságához a XCode területen a **Project settings** > **képességek** > **kulcstartó megosztás**
 
 ### <a name="macos"></a>macOS
 
-A MacOS-MSAL `com.microsoft.identity.universalstorage` alapértelmezés szerint a hozzáférési csoportot használja.
+A macOS-MSAL alapértelmezés szerint `com.microsoft.identity.universalstorage` hozzáférési csoportot használ.
 
-A MacOS-es `access group` kulcstartó korlátozásai miatt a MSAL nem fordítja le közvetlenül a kulcstartó-hozzáférési csoport attribútumára (lásd: [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) a MacOS 10,14-es és korábbi verzióiban. Ugyanakkor az egyszeri bejelentkezéshez hasonlóan viselkedik, mert így biztosítható, hogy az azonos Apple Developer által terjesztett több alkalmazás is csendes SSO-val rendelkezzen.
+A macOS-es kulcstartó korlátozásai miatt a MSAL `access group` nem fordítja le közvetlenül a kulcstartó-hozzáférési csoport attribútumára (lásd: [kSecAttrAccessGroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) a MacOS 10,14-es és korábbi verzióiban. Ugyanakkor az egyszeri bejelentkezéshez hasonlóan viselkedik, mert így biztosítható, hogy az azonos Apple Developer által terjesztett több alkalmazás is csendes SSO-val rendelkezzen.
 
 MacOS 10,15-től (macOS Catalina) a MSAL a kulcstartó-hozzáférési csoport attribútumot használja a csendes SSO eléréséhez, hasonlóan az iOS-hez.
 
 ## <a name="custom-keychain-access-group"></a>Egyéni kulcstartó-hozzáférési csoport
 
-Ha más kulcstartó-hozzáférési csoportot szeretne használni, akkor a létrehozás `MSALPublicClientApplicationConfig` `MSALPublicClientApplication`előtt átadhatja az egyéni csoportot, a következőhöz hasonlóan:
+Ha más kulcstartó-hozzáférési csoportot szeretne használni, akkor a `MSALPublicClientApplicationConfig` létrehozása előtt átadhatja az egyéni csoportot `MSALPublicClientApplication` létrehozása előtt, például:
 
 Objective-C:
 
@@ -112,6 +112,6 @@ Hiba – a 34018 általában azt jelenti, hogy a kulcstartó nincs megfelelően 
 
 MacOS rendszeren az alkalmazások fejlesztői regisztráció nélkül is futtathatók. Habár a legtöbb MSAL funkciója továbbra is működni fog, az SSO-t a kulcstartó-hozzáférésen keresztül kell aláírni. Ha több kulcstartó-kérést tapasztal, győződjön meg arról, hogy az alkalmazás aláírása érvényes.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a kulcstartó-hozzáférési csoportokról az Apple [megosztási hozzáférésének megadásához az alkalmazások gyűjteménye között](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc) cikk.

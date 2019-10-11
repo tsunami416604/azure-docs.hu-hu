@@ -4,15 +4,15 @@ description: Azure File Syncával kapcsolatos gyakori problémák elhárítása.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/10/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 6771164c26c51e40d80d0c82b42f04c4f95c4c37
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255106"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274879"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -797,6 +797,17 @@ A probléma megoldásához törölje és hozza létre újra a szinkronizálási 
 4. Ha a felhő-rétegek engedélyezve lettek egy kiszolgálói végponton, törölje az árva rétegű fájlokat a kiszolgálón úgy, hogy a többszakaszos fájlokban ismertetett lépések végrehajtásával a kiszolgálói [végpont törlése után nem érhető](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) el a kiszolgálón.
 5. Hozza létre újra a szinkronizálási csoportot.
 
+<a id="-2145844941"></a>**A szinkronizálás nem sikerült, mert a HTTP-kérelem át lett irányítva**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80190133 |
+| **HRESULT (decimális)** | – 2145844941 |
+| **Hiba karakterlánca** | HTTP_E_STATUS_REDIRECT_KEEP_VERB |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba azért fordul elő, mert Azure File Sync nem támogatja a HTTP-átirányítás (3xx-állapotkód) használatát. A probléma megoldásához tiltsa le a HTTP-átirányítás szolgáltatást a proxykiszolgálón vagy a hálózati eszközön.
+
 ### <a name="common-troubleshooting-steps"></a>Gyakori hibaelhárítási lépések
 <a id="troubleshoot-storage-account"></a>**Ellenőrizze, hogy létezik-e a Storage-fiók.**  
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
@@ -1008,7 +1019,7 @@ Ha a fájlokat nem lehet visszahívni:
         - Futtassa a következő parancsot egy rendszergazda jogú parancssorban: `fltmc`. Győződjön meg arról, hogy a StorageSync. sys és a StorageSyncGuard. sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
 
 > [!NOTE]
-> A rendszer óránként egyszer naplózza az 9006-es AZONOSÍTÓJÚ eseményt a telemetria-eseménynaplóban, ha egy fájl nem hívható vissza (a rendszer hibakódként egy eseményt naplóz). Az operatív és a diagnosztikai eseménynaplókat akkor kell használni, ha további információkra van szükség a probléma diagnosztizálásához.
+> A rendszer óránként egyszer naplózza az 9006-es AZONOSÍTÓJÚ eseményt a telemetria-eseménynaplóban, ha egy fájl nem hívható vissza (a rendszer hibakódként egy eseményt naplóz). Tekintse át a [visszahívási hibákat és a Szervizelési](#recall-errors-and-remediation) szakaszt, és ellenőrizze, hogy szerepelnek-e a hibakódhoz tartozó szervizelési lépések.
 
 ### <a name="recall-errors-and-remediation"></a>Felidézési hibák és szervizelés
 
@@ -1018,8 +1029,12 @@ Ha a fájlokat nem lehet visszahívni:
 | 0x80070036 | – 2147024842 | ERROR_NETWORK_BUSY | A fájlt hálózati hiba miatt nem sikerült felidézni.  | Ha a hiba továbbra is fennáll, ellenőrizze az Azure-fájlmegosztás hálózati kapcsolatát. |
 | 0x80c80037 | – 2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | A fájlt nem sikerült felidézni, mert a kiszolgálói végpont törölve lett. | A probléma megoldásához tekintse [meg a kiszolgálói végpont törlése után a kiszolgálón nem érhető el a lépcsőzetes fájlok](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
 | 0x80070005 | – 2147024891 | ERROR_ACCESS_DENIED | A fájl nem hívható meg egy hozzáférés-megtagadási hiba miatt. Ez a probléma akkor fordulhat elő, ha a Storage-fiók tűzfal-és virtuális hálózati beállításai engedélyezve vannak, és a kiszolgáló nem fér hozzá a Storage-fiókhoz. | A probléma megoldásához adja hozzá a kiszolgáló IP-címét vagy virtuális hálózatát a telepítési útmutató [tűzfal-és virtuális hálózati beállításainak konfigurálása](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings) című szakaszában ismertetett lépéseket követve. |
-| 0x80c86002 | – 2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | A fájlt nem sikerült felidézni, mert az nem érhető el az Azure-fájlmegosztás részeként. | A probléma megoldásához ellenőrizze, hogy a fájl létezik-e az Azure-fájlmegosztás részeként. Ha a fájl létezik az Azure-fájlmegosztás részeként, frissítsen a legújabb Azure File Sync Agent verzióra. |
-| 0x80c8305f | – 2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | A fájl nem hívható meg a Storage-fiók engedélyezési hibája miatt. | A probléma megoldásához ellenőrizze, [Azure file Sync hozzáfér-e a Storage-fiókhoz](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86002 | – 2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | A fájlt nem sikerült felidézni, mert az nem érhető el az Azure-fájlmegosztás részeként. | A probléma megoldásához ellenőrizze, hogy a fájl létezik-e az Azure-fájlmegosztás részeként. Ha a fájl létezik az Azure-fájlmegosztás részeként, frissítsen a legújabb Azure File Sync [Agent verzióra](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions). |
+| 0x80c8305f | – 2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | A fájl nem hívható meg a Storage-fiók engedélyezési hibája miatt. | A probléma megoldásához ellenőrizze, [Azure file Sync hozzáfér-e a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#troubleshoot-rbac). |
+| 0x80c86030 | – 2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | A fájl nem hívható meg, mert az Azure-fájlmegosztás nem érhető el. | Győződjön meg arról, hogy a fájlmegosztás létezik, és elérhető. Ha a fájlmegosztás törölve lett, és újra lett létrehozva, hajtsa végre a szinkronizálás során dokumentált lépéseket, [mert az Azure-fájlmegosztás törölve lett, és újból létre lett hozni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134375810) a szinkronizálási csoport törléséhez és újbóli létrehozásához. |
+| 0x800705aa | – 2147023446 | ERROR_NO_SYSTEM_RESOURCES | A fájl insuffcient rendszererőforrások miatt nem sikerült felidézni. | Ha a hiba továbbra is fennáll, vizsgálja meg, hogy melyik alkalmazás-vagy kernel módú illesztőprogram a rendszererőforrások kimerítése. |
+| 0x8007000e | – 2147024882 | ERROR_OUTOFMEMORY | A fájlt insuffcient memória miatt nem sikerült felidézni. | Ha a hiba továbbra is fennáll, vizsgálja meg, hogy melyik alkalmazás-vagy kernel-módú illesztőprogram okozza az alacsony memória feltételeit. |
+| 0x80070070 | – 2147024784 | ERROR_DISK_FULL | A fájlt nem sikerült felidézni, mert nincs elég szabad lemezterület. | A probléma megoldásához szabadítson fel lemezterületet a köteten a fájlok másik kötetre való áthelyezésével, növelje a kötet méretét, vagy kényszerítse a fájlokat a rétegre a meghívó-StorageSyncCloudTiering parancsmag használatával. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>A többplatformos fájlok nem érhetők el a kiszolgálón a kiszolgálói végpont törlése után
 A kiszolgálón található többkötetes fájlok elérhetetlenné válnak, ha a fájlok nem lettek meghívva a kiszolgálói végpont törlése előtt.

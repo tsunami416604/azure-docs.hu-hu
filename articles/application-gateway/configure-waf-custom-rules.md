@@ -1,45 +1,44 @@
 ---
-title: Webalkalmazási tűzfal v2 egyéni szabályok Azure PowerShell-lel konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja a WAF v2 egyéni szabályok Azure PowerShell-lel
+title: A webalkalmazási tűzfal v2 egyéni szabályainak konfigurálása Azure PowerShell használatával
+description: Ismerje meg, hogyan konfigurálhatja a webalkalmazási tűzfal v2 egyéni szabályait a Azure PowerShell használatával
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: f4d2fd7342e0efe95a1bc69e0dba77692053cf14
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9e50b47e22f5760c213cd0cafad82ecca592dec8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164752"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263745"
 ---
-# <a name="configure-web-application-firewall-v2--with-a-custom-rule-using-azure-powershell"></a>Webalkalmazási tűzfal v2 konfigurálása az Azure PowerShell-lel egy egyéni szabály
+# <a name="configure-web-application-firewall-v2-custom-rules-by-using-azure-powershell"></a>A webalkalmazási tűzfal v2 egyéni szabályainak konfigurálása Azure PowerShell használatával
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Egyéni szabályok lehetővé teszik az egyes kérések, amely áthalad a webalkalmazási tűzfal (WAF) v2 értékeli ki a saját szabályokat hozhat létre. Ezek a szabályok egy magasabb prioritású, mint a szabályokat a többi felügyelt szabálykészletek tart. Az egyéni szabályokat kell vonatkozó műveletet (engedélyezés vagy letiltás), egyeztetési feltételt, és lehetővé teszi a teljes testreszabását az operátor.
+Egyéni szabályokkal létrehozhatja saját szabályait, amelyeket a rendszer a webalkalmazási tűzfalon (WAF) áthaladó összes kérelem esetében kiértékel. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. A teljes Testreszabás lehetővé tételéhez az egyéni szabályoknak van egy művelete (Engedélyezés vagy Letiltás), egy egyeztetési feltétel és egy operátor.
 
-Ebben a cikkben létrehoz egy Application Gateway WAF v2-környezetet, amely egy egyéni szabályt használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce tartalmazza a felhasználói ügynök *evilbot*.
+Ez a cikk egy egyéni szabályt használó Azure Application Gateway WAF v2-t hoz létre. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce felhasználói ügynök *evilbot*tartalmaz.
 
-Egyéni szabály további példákért lásd: [létrehozása és használata egyéni webalkalmazási tűzfalszabályok](create-custom-waf-rules.md)
+További példákért tekintse meg az [Egyéni webalkalmazási tűzfalszabályok létrehozását és használatát](create-custom-waf-rules.md)ismertető témakört.
 
-Futtatási ebben a cikkben az Azure PowerShell egy folyamatos parancsfájl, amely másolása, beillesztése és futtatása, telepítéséről [Azure Application Gateway PowerShell-minták](powershell-samples.md).
+Ha az ebben a cikkben szereplő Azure PowerShell kódot egy olyan folytonos parancsfájlban szeretné futtatni, amelyet másolhat, beilleszthet és futtathat, tekintse meg az [Azure Application Gateway PowerShell-minták](powershell-samples.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
+* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-### <a name="azure-powershell-module"></a>Azure PowerShell-modul
+* Szüksége van egy Azure PowerShell modulra. Ha a Azure PowerShell helyi telepítését és használatát választja, akkor ehhez a parancsfájlhoz Azure PowerShell modul 2.1.0 vagy újabb verziójára van szükség. Tegye a következőket:
 
-Ha a helyi telepítése és használata az Azure PowerShell választja, a szkriptnek szüksége van az Azure PowerShell modul 2.1.0-ás vagy újabb.
-
-1. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
-2. Kapcsolat létrehozása az Azure-ral, futtassa `Connect-AzAccount`.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+  1. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
+  2. Az Azure-beli kapcsolatok létrehozásához futtassa a `Connect-AzAccount` parancsot.
 
 ## <a name="example-script"></a>Példaszkript
 
 ### <a name="set-up-variables"></a>Változók beállítása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $rgname = "CustomRulesTest"
@@ -49,13 +48,17 @@ $location = "East US"
 $appgwName = "WAFCustomRules"
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 ```
 
-### <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
+### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -66,14 +69,18 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-vip"></a>Hozzon létre egy statikus nyilvános virtuális IP-cím
+### <a name="create-a-static-public-vip"></a>Statikus nyilvános VIP létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Hozzon létre a készletet és az előtérbeli port
+### <a name="create-a-pool-and-front-end-port"></a>Készlet és előtér-port létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -88,7 +95,9 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Hozzon létre egy figyelőt, http-beállítás, a szabály és az automatikus méretezés
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Figyelő, HTTP-beállítás, szabály és az autoskálázás létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -105,7 +114,9 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Az egyéni szabály létrehozásának és a alkalmazni a WAF-házirend
+### <a name="create-the-custom-rule-and-apply-it-to-waf-policy"></a>Az egyéni szabály létrehozása és alkalmazása a WAF szabályzatra
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
@@ -119,7 +130,9 @@ $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafPolicy -ResourceGro
 $wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-### <a name="create-the-application-gateway"></a>Az Application Gateway létrehozása
+### <a name="create-an-application-gateway"></a>Alkalmazásátjáró létrehozása
+
+Futtassa a következő kódot:
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -132,6 +145,6 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
    -FirewallPolicy $wafPolicy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[További tudnivalók a webalkalmazási tűzfal](waf-overview.md)
+[További információ a webalkalmazási tűzfalról](waf-overview.md)

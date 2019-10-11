@@ -4,16 +4,16 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f0de7aedc3883978582da1950e95aaabac9a1695
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148427"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72272982"
 ---
 A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgáltatási szintjeihez társított korlátokat. További információ az egyes *egységek* költségéről: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Resource | S1 – Standard | S2 – Standard | S3 – Standard | F1 – Ingyenes |
+| Erőforrás | S1 – Standard | S2 – Standard | S3 – Standard | F1 – Ingyenes |
 | --- | --- | --- | --- | --- |
 | Üzenet/nap |400,000 |6,000,000 |300,000,000 |8,000 |
 | Egységek maximális száma |200 |200 |10 |1 |
@@ -25,7 +25,7 @@ A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgált
 
 A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlátozásokat.
 
-| Resource | Korlát |
+| Erőforrás | Korlát |
 | --- | --- |
 | Azure-előfizetésenkénti fizetős IoT Hubok maximális száma |50 |
 | Azure-előfizetésenkénti ingyenes IoT Hubok maximális száma |1 |
@@ -33,7 +33,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 | Eszközidentitások egyetlen hívásban visszaadott<br/> maximális száma |1,000 |
 | Egy eszközről a felhőbe irányuló IoT Hub-üzenetek maximális megőrzési ideje |7 nap |
 | Egy eszközről a felhőbe irányuló üzenet maximális mérete |256 KB |
-| Egy eszközről a felhőbe irányuló köteg maximális mérete |AMQP és HTTP: 256 KB a teljes köteghez <br/>MQTT 256 KB minden üzenethez |
+| Egy eszközről a felhőbe irányuló köteg maximális mérete |AMQP és HTTP: 256 KB a teljes köteghez <br/>MQTT: 256 KB minden üzenethez |
 | Egy eszközről a felhőbe irányuló kötegben található üzenetek maximális száma |500 |
 | A felhőből egy eszközre irányuló üzenet maximális mérete |64 KB |
 | A felhőből egy eszközre irányuló üzenetek maximális élettartama |2 nap |
@@ -56,7 +56,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 > Ha egy Azure-előfizetésben több mint 50 fizetős IoT-hubhoz van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 
 > [!NOTE]
-> Jelenleg az egyetlen IoT hubhoz csatlakoztatható eszközök maximális száma 1 000 000. Ha szeretné megnövelni ezt a korlátot [](https://azure.microsoft.com/support/options/), forduljon a Microsoft ügyfélszolgálatahoz.
+> Jelenleg az egyetlen IoT hubhoz csatlakoztatható eszközök maximális száma 1 000 000. Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 A IoT Hub szabályozza a kérelmeket, ha túllépi a következő kvótákat.
 
@@ -67,7 +67,7 @@ A IoT Hub szabályozza a kérelmeket, ha túllépi a következő kvótákat.
 | Az eszközről a felhőbe irányuló küldések |6000/mp/egység (S3 esetén), 120/mp/egység (S2 esetén), 12/MP/egység (S1 esetén). <br/>Legalább 100/mp. |
 | Küldések a felhőből az eszközökre | 83.33/mp/egység (5000/perc/egység) (S3 esetén), 1.67/mp/egység (100/perc/egység) (S1 és S2 esetén). |
 | Fogadások a felhőből az eszközökön |833.33/mp/egység (50000/perc/egység) (S3 esetén), 16.67/s/egység (1000/perc/egység) (S1 és S2 esetén). |
-| Fájlfeltöltési műveletek |83,33 fájlfeltöltés-értesítések/mp/egység (5000/perc/egység) (S3 esetén), 1,67 fájlfeltöltés-értesítések/mp/egység (100/perc/egység) (S1 és S2 esetén). <br/> 10 000 SAS URI-k egyszerre egy Azure Storage-fiókhoz is kiállíthatók.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
+| Fájlfeltöltési műveletek |83,33 fájlfeltöltés-kezdeményezés/mp/egység (5000/perc/egység) (S3 esetén), 1,67 fájlfeltöltés-kezdeményezés/mp/egység (100/perc/egység) (S1 és S2 esetén). <br/> 10 000 SAS URI-k egyszerre egy Azure Storage-fiókhoz is kiállíthatók.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
 | Közvetlen metódusok | 24 MB/s/egység (S3 esetén), 480 KB/s/egység (S2 esetén), 160 KB/s/egység (S1 esetén).<br/> 8 KB-os szabályozási mérési méret alapján. |
 | Ikereszköz-olvasások | 500/mp/egység (S3 esetén), legfeljebb 100/mp vagy 10/mp/egység (S2 esetén), 100/mp (S1 esetén) |
 | Ikereszköz-frissítések | 250/mp/egység (S3 esetén), legfeljebb 50/mp vagy 5/MP/egység (S2 esetén), 50/mp (S1 esetén) |

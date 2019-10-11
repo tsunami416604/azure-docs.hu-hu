@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: bb7b9a41523ab1b1addbf37cb7b463f12a72a814
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827590"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263652"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -48,17 +48,11 @@ Az ügyfélalkalmazások hatása attól függően változik, hogy melyik csomóp
 * **Mind a Master** , mind a Slave – ha a gyorsítótár-csomópontok is újraindulnak, az összes adat elvész a gyorsítótárban, és a gyorsítótárhoz való csatlakozás meghiúsul, amíg az elsődleges csomópont ismét online állapotba nem kerül. Ha beállította az [adatmegőrzést](cache-how-to-premium-persistence.md), a legutóbbi biztonsági mentés visszakerül, ha a gyorsítótár online állapotba kerül, de a legutóbbi biztonsági mentést követően történt gyorsítótár-írások elvesznek.
 * **Prémium szintű gyorsítótár csomópontja** , amelyen engedélyezve van a fürtözés. Ha egy prémium szintű gyorsítótár egy vagy több csomópontját a fürtözés engedélyezése után újraindítja, a kiválasztott csomópontok viselkedése megegyezik a nem fürtözött gyorsítótár megfelelő csomópontjának vagy csomópontjainak újraindításával.
 
-> [!IMPORTANT]
-> Az újraindítás mostantól minden díjszabási szinten elérhető.
-> 
-> 
-
 ## <a name="reboot-faq"></a>Újraindítással kapcsolatos gyakori kérdések
 * [Melyik csomópontot kell újraindítani az alkalmazás teszteléséhez?](#which-node-should-i-reboot-to-test-my-application)
 * [Újra lehet indítani a gyorsítótárat az ügyfélkapcsolatok törléséhez?](#can-i-reboot-the-cache-to-clear-client-connections)
 * [Elveszítem az adatok a gyorsítótárból, ha újraindítást végezek?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
 * [Újraindíthatom a gyorsítótárat a PowerShell, a CLI vagy más felügyeleti eszközök használatával?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
-* [Milyen díjszabási szintek használhatják az újraindítási funkciót?](#what-pricing-tiers-can-use-the-reboot-functionality)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Melyik csomópontot kell újraindítani az alkalmazás teszteléséhez?
 Az alkalmazás rugalmasságának teszteléséhez a gyorsítótár elsődleges csomópontjának meghibásodása esetén indítsa újra a **fő** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a másodlagos csomópont meghibásodása miatt, indítsa újra a **Slave** csomópontot. Ha tesztelni szeretné az alkalmazás rugalmasságát a gyorsítótár teljes meghibásodása ellen, indítsa újra **mindkét** csomópontot.
@@ -79,23 +73,18 @@ Ha csak az egyik csomópontot újraindítja, a rendszer általában nem veszíti
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Újraindíthatom a gyorsítótárat a PowerShell, a CLI vagy más felügyeleti eszközök használatával?
 Igen, a PowerShell-utasításokért lásd: az [Azure cache újraindítása a Redis](cache-howto-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
-### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Milyen díjszabási szintek használhatják az újraindítási funkciót?
-Az újraindítás minden díjszabási szinten elérhető.
-
 ## <a name="schedule-updates"></a>Frissítések ütemezése
 A **frissítések ütemezett frissítése** panelen megadhatja a gyorsítótár-példány karbantartási időszakát. Ha a karbantartási időszak meg van adva, a rendszer minden Redis-kiszolgáló frissítést végez ebben az ablakban. 
 
 > [!NOTE] 
 > A karbantartási időszak csak a Redis-kiszolgáló frissítéseire vonatkozik, és nem a gyorsítótárat üzemeltető virtuális gépek operációs rendszerének összes Azure-frissítésére vagy frissítésére.
-> 
-> 
+>
 
 ![Frissítések ütemezése](./media/cache-administration/redis-schedule-updates.png)
 
 A karbantartási időszak megadásához tekintse meg a kívánt napokat, és minden nap esetében határozza meg a karbantartási időszak kezdő óráját, majd kattintson **az OK**gombra. Vegye figyelembe, hogy a karbantartási időszak időpontja UTC. 
 
 A frissítések alapértelmezett és minimális karbantartási időszaka öt óra. Ez az érték nem konfigurálható a Azure Portalból, de a PowerShellben a [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) parancsmag `MaintenanceWindow` paramétere használatával konfigurálhatja azt. További információ: kezelhetem az ütemezett frissítéseket a PowerShell, a CLI vagy más felügyeleti eszközök használatával?
-
 
 ## <a name="schedule-updates-faq"></a>Frissítések ütemezett frissítései – gyakori kérdések
 * [Mikor történik a frissítések használata, ha nem használom a frissítések ütemezett szolgáltatását?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
@@ -112,10 +101,10 @@ Az ütemezett karbantartási időszakban csak a Redis-kiszolgáló frissítései
 Igen, a következő PowerShell-parancsmagokkal kezelheti az ütemezett frissítéseket:
 
 * [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
-* [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
-* [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
+* [Új – AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
+* [Új – AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje [meg az Azure cache-t a prémium szintű Redis](cache-premium-tier-intro.md) -funkciókhoz.
 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001554"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274255"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-erőforrások kezelése az Azure CLI használatával
 
@@ -26,7 +26,7 @@ További cikkek az erőforrások kezelésével kapcsolatban:
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Erőforrások központi telepítése meglévő erőforráscsoporthoz
 
-Az Azure-erőforrásokat közvetlenül a Azure PowerShell használatával telepítheti, vagy üzembe helyezhet egy Resource Manager-sablont az Azure-erőforrások létrehozásához.
+Az Azure-erőforrásokat közvetlenül az Azure CLI használatával helyezheti üzembe, vagy üzembe helyezhet egy Resource Manager-sablont Azure-erőforrások létrehozásához.
 
 ### <a name="deploy-a-resource"></a>Erőforrás üzembe helyezése
 
@@ -45,7 +45,7 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>Sablon üzembe helyezése
 
-A következő szkript létrehoz egy gyors üzembe helyezési sablont egy Storage-fiók létrehozásához. További információt a következő témakörben talál: [Quickstart: Hozzon létre Azure Resource Manager sablonokat a Visual Studio Code @ no__t-0 használatával.
+A következő szkript létrehoz egy gyors üzembe helyezési sablont egy Storage-fiók létrehozásához. További információ: gyors útmutató [: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával](./resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell).
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -141,7 +141,7 @@ A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot 
 
 A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információ: a [hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

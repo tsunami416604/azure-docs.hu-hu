@@ -4,27 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 35b087d13099b975a1c9c6d2dbd449935f5f0d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec825bb59840784ca45e8a38caa664c19883fb32
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248987"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263326"
 ---
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 200,
-        "maxConcurrentRequests": 100,
-        "dynamicThrottlesEnabled": true
-    }
-}
-```
-
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|routePrefix|api|Az útválasztási előtagot, amely az összes útvonal vonatkozik. Üres karakterlánc segítségével távolítsa el az alapértelmezett előtag. |
-|maxOutstandingRequests|200<sup>*</sup>|Egy adott időpontban tartott szálankénti függőben lévő kérelmek maximális száma. Ez a korlátozás kérelmek várólistára kerülnek, de nem kezdték végrehajtása, valamint bármely, a folyamat-végrehajtást tartalmaz. Minden olyan bejövő kérések át a korlátot 429 "Túlságosan elfoglalt" választ a rendszer elutasítja. Amely lehetővé teszi, hogy a hívók időalapú újrapróbálkozási stratégiák használatát tervezni, és vezérelheti a kérések maximális késéseket is segít. Ez csak vezérli, üzenetsor-kezelési, amely a gazdagép szkript végrehajtási útvonalát belül történik. Más várólisták, például az ASP.NET-kérelmek várólistája továbbra is lesz érvényben, és ez a beállítás nem befolyásolja. <sup>*</sup>Az alapértelmezett verzió 1.x korlátlan streameken működő (`-1`). Az alapértelmezett verzió használatalapú 2.x 200. Az alapértelmezett verzió 2.x egy dedikált csomagban korlátlan streameken működő (`-1`).|
-|maxConcurrentRequests|100<sup>*</sup>|Http-függvények, amelyek végrehajtható párhuzamosan maximális számát. Ez lehetővé teszi a vezérlő egyidejűséget, amelyek segíthetnek az erőforrás-felhasználás kezelése. Előfordulhat például, hogy egy http-függvény, amely sok rendszererőforrást (memória / / processzorfoglalatok) használja úgy, hogy ha egyidejűség túl magas problémákat okoz. Vagy előfordulhat, hogy egy függvényt, amely lehetővé teszi a kimenő kérelmeket egy külső szolgáltatás, és ezeket a hívások sebessége korlátozott kell. Ezekben az esetekben alkalmazása egy késleltetési ide segítségével. <sup>*</sup>Az alapértelmezett verzió 1.x korlátlan streameken működő (`-1`). Az alapértelmezett használatalapú 2.x verzió pedig a 100. Az alapértelmezett verzió 2.x egy dedikált csomagban korlátlan streameken működő (`-1`).|
-|dynamicThrottlesEnabled|Igaz<sup>*</sup>|Ha engedélyezve van, ez a beállítás megadja a kérelemfeldolgozási folyamatba, rendszeres időközönként ellenőrizze a rendszerteljesítményt számlálók, például a kapcsolatokat/szálak/folyamatok/memória/cpu/stb., és ha ezek a számlálók bármelyike egy beépített magas meghaladja a küszöbértéket (80 %), a kérelmek lesz-e. elutasított 429 "Túlságosan elfoglalt" választ, mindaddig, amíg a számláló térjen vissza a normális üzemi szint. <sup>*</sup>Az alapértelmezett verzió 1.x értéke hamis. Az alapértelmezett verzió használatalapú 2.x értéke igaz. Az alapértelmezett verzió egy dedikált csomagban 2.x értéke hamis.|
+|routePrefix|api-t|Az útvonal előtagja, amely az összes útvonalra vonatkozik. Az alapértelmezett előtag eltávolításához használjon üres karakterláncot. |
+|maxOutstandingRequests|200<sup>@no__t – 1</sup>|A függőben lévő kérések maximális száma, amelyek egy adott időpontban vannak tárolva. Ez a korlát olyan kérelmeket tartalmaz, amelyek várólistára kerülnek, de nem indult el, valamint folyamatban van a végrehajtás. Az ezen a korláton túli bejövő kérelmek elutasítása egy 429 "túl elfoglalt" választ tartalmaz. Ez lehetővé teszi, hogy a hívók időalapú újrapróbálkozási stratégiákat alkalmazzanak, és segítséget nyújt a kérelmek maximális késésének szabályozásához is. Ez csak a parancsfájl-gazdagép végrehajtási útvonalán belüli üzenetsor-kezelőt vezérli. Más várólisták, például a ASP.NET kérelmek várólistája továbbra is érvényben marad, és ezt a beállítást nem érinti. <sup>@no__t – 1</sup> Az 1. x verzió alapértelmezett értéke nem kötött (`-1`). A 2. x verzió alapértelmezett értéke egy felhasználási csomagban 200. Egy dedikált csomagban a 2. x verzió alapértelmezett értéke nem kötött (`-1`).|
+|maxConcurrentRequests|100<sup>@no__t – 1</sup>|A párhuzamosan végrehajtandó http-függvények maximális száma. Ez lehetővé teszi a párhuzamosság szabályozását, ami segíthet az erőforrások kihasználtságának kezelésében. Előfordulhat például, hogy olyan http-függvénnyel rendelkezik, amely sok rendszererőforrást (memóriát/processzort/szoftvercsatornát) használ, így problémát okoz, ha a párhuzamosság túl magas. Vagy lehet, hogy olyan függvényt használ, amely a kimenő kéréseket egy harmadik féltől származó szolgáltatásnak teszi elérhetővé, és a hívásoknak korlátozott arányban kell lenniük. Ezekben az esetekben a szabályozás alkalmazása segíthet. <sup>@no__t – 1</sup> Az 1. x verzió alapértelmezett értéke nem kötött (`-1`). A 2. x verzió alapértelmezett értéke egy felhasználási csomagban 100. Egy dedikált csomagban a 2. x verzió alapértelmezett értéke nem kötött (`-1`).|
+|dynamicThrottlesEnabled|igaz<sup>@no__t – 1</sup>|Ha engedélyezve van, ez a beállítás hatására a kérelmek feldolgozási folyamata rendszeres időközönként ellenőrzi a rendszerteljesítmény-számlálókat, például a kapcsolatok/szálak/folyamatok/memória/CPU/etc értéket. ha ezek a számlálók a beépített magas küszöbértéken (80%) vannak, a rendszer a kérelmeket a rendszer visszautasított egy 429 "túl elfoglalt" választ, amíg a számláló (k) nem térnek vissza a normál szintre. <sup>@no__t – 1</sup> Az 1. x verzió alapértelmezett értéke hamis. A 2. x verzió alapértelmezett értéke a használati tervben igaz. A 2. x verzió alapértelmezett értéke egy dedikált csomagban hamis.|

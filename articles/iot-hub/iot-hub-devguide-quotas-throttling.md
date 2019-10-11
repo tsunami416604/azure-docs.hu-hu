@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 0e60607d50722a4496dc8f4ad7d609cdf9fd5792
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877166"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264638"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
 
@@ -38,13 +38,13 @@ A következő táblázat a kényszerített szabályozásokat mutatja be. Az ért
 
 | Szabályozás | Ingyenes, B1 és S1 | B2 és S2 | B3 és S3 | 
 | -------- | ------- | ------- | ------- |
-| [Identity registry-műveletek](#identity-registry-operations-throttle) (létrehozás, lekérés, Listázás, frissítés, törlés) | 1.67/mp/egység (100/perc/egység) | 1.67/mp/egység (100/perc/egység) | 83.33/mp/egység (5000/perc/egység) |
-| [Új eszközök kapcsolatai](#device-connections-throttle) (ez a korlát az _új kapcsolatok_arányára vonatkozik, nem a kapcsolatok teljes száma) | Nagyobb, mint 100/mp vagy 12/MP/egység <br/> A két S1 egység például 2\*12 = 24 új kapcsolat/mp, de legalább 100 új kapcsolat/MP van az egységen belül. Kilenc S1 egység esetén a teljes egységen 108 új kapcsolat/mp (\*9 12). | 120 új kapcsolat/mp/egység | 6 000 új kapcsolat/mp/egység |
-| Az eszközről a felhőbe irányuló küldések | Magasabb 100 küldési művelet/mp vagy 12 küldési művelet/mp/egység <br/> A két S1 egység például 2\*12 = 24/MP, de legalább 100-as küldési művelet/mp egységben. Kilenc S1 egység esetén 108 küldési művelet/mp (9\*12) van az egységeken belül. | 120 küldési művelet/mp/egység | 6 000 küldési művelet/mp/egység |
+| [Identitás-beállításjegyzék műveletei](#identity-registry-operations-throttle) (létrehozás, lekérés, Listázás, frissítés, törlés) | 1.67/mp/egység (100/perc/egység) | 1.67/mp/egység (100/perc/egység) | 83.33/mp/egység (5000/perc/egység) |
+| [Új eszközök kapcsolatai](#device-connections-throttle) (ez a korlát az _új kapcsolatok_arányára vonatkozik, nem a kapcsolatok teljes száma) | Nagyobb, mint 100/mp vagy 12/MP/egység <br/> A két S1 egység például 2 @ no__t-012 = 24 új kapcsolat/mp, de legalább 100 új kapcsolat/MP van az egységekben. Kilenc S1 egység esetén 108 új kapcsolat/mp (9 @ no__t-012) áll rendelkezésre az egységek között. | 120 új kapcsolat/mp/egység | 6 000 új kapcsolat/mp/egység |
+| Az eszközről a felhőbe irányuló küldések | Magasabb 100 küldési művelet/mp vagy 12 küldési művelet/mp/egység <br/> A két S1 egység például 2 @ no__t-012 = 24/MP, de legalább 100 művelet/mp van az egységen belül. Kilenc S1 egység esetén 108 küldési művelet/mp (9 @ no__t-012) van az egységen belül. | 120 küldési művelet/mp/egység | 6 000 küldési művelet/mp/egység |
 | A felhőből az eszközre küldött<sup>1</sup> | 1,67 küldési művelet/mp/egység (100 üzenet/perc/egység) | 1,67 küldési művelet/mp/egység (100 küldési művelet/perc/egység) | 83,33 küldési művelet/mp/egység (5 000 küldési művelet/perc/egység) |
 | A felhőből az eszközre kapott<sup>1</sup> <br/> (csak akkor, ha az eszköz HTTPS protokollt használ)| 16,67 fogadási művelet/mp/egység (1 000 fogadási művelet/perc/egység) | 16,67 fogadási művelet/mp/egység (1 000 fogadási művelet/perc/egység) | 833,33 fogadási művelet/mp/egység (50 000 fogadási művelet/perc/egység) |
-| Fájl feltöltése | 1,67 fájlfeltöltés-értesítések/mp/egység (100/perc/egység) | 1,67 fájlfeltöltés-értesítések/mp/egység (100/perc/egység) | 83,33 fájlfeltöltés-értesítések/mp/egység (5000/perc/egység) |
-| Közvetlen metódusok<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/mp/<sup>2</sup> . egység | 
+| Fájlfeltöltés | 1,67 fájlfeltöltés-kezdeményezés/mp/egység (100/perc/egység) | 1,67 fájlfeltöltés-kezdeményezés/mp/egység (100/perc/egység) | 83,33 fájlfeltöltés-kezdeményezés/mp/egység (5000/perc/egység) |
+| Közvetlen metódusok<sup>1</sup> | 160KB/mp/<sup>2</sup> . egység | 480KB/mp/<sup>2</sup> . egység | 24MB/mp/<sup>2</sup> . egység | 
 | Lekérdezések | 20/perc/egység | 20/perc/egység | 1000/perc/egység |
 | Twin (eszköz és modul) –<sup>1</sup> | 100 másodpercenként | Nagyobb, mint 100/mp vagy 10/mp/egység | 500/mp/egység |
 | Twin Updates (eszköz és modul)<sup>1</sup> | 50 másodpercenként | Nagyobb, mint 50/mp vagy 5/MP/egység | 250/mp/egység |
@@ -67,17 +67,17 @@ A következő táblázat a kényszerített szabályozásokat mutatja be. Az ért
 
 *  A *feladatok eszköz műveleteihez (a Twin, a Direct metódus meghívása)* az S2-es szinten 50/mp/egység csak akkor érvényes, ha a metódusokat feladatok használatával indítja el. Ha közvetlenül hívja meg a közvetlen metódusokat, a rendszer az eredeti sávszélesség-szabályozási korlátot (az S2 esetében) alkalmazza.
 
-*  A **kvóta** a központba naponta küldendő üzenetek összesített száma. A hub kvótájának korlátját a [IoT hub díjszabási oldalán](https://azure.microsoft.com/pricing/details/iot-hub/)található **üzenetek teljes száma** oszlopban tekintheti meg.
+*  A **kvóta** a központba naponta küldendő üzenetek összesített *száma.* A hub kvótájának korlátját a [IoT hub díjszabási oldalán](https://azure.microsoft.com/pricing/details/iot-hub/)található **üzenetek teljes száma** oszlopban tekintheti meg.
 
-*  A felhőből az eszközre és az eszközről a felhőbe irányuló szabályozások határozzák meg az üzenetek küldésének maximális sebességét – a 4 KB-os adattömböktől függetlenül. Az üzenetek [maximális mérete](iot-hub-devguide-quotas-throttling.md#other-limits)legfeljebb 256 kb lehet.
+*  A felhőből az eszközre és az eszközről a felhőbe irányuló szabályozások határozzák meg az üzenetek küldésének maximális *sebességét* – a 4 KB-os adattömböktől függetlenül. Az üzenetek [maximális mérete](iot-hub-devguide-quotas-throttling.md#other-limits)legfeljebb 256 kb lehet.
 
 *  A hívások szabályozása jó megoldás, így nem kell meghaladnia a sávszélesség-szabályozási korlátokat. Ha elérte a korlátot, IoT Hub válaszol a 429 hibakódra, és az ügyfélnek vissza kell térnie, és újra kell próbálkoznia. Ezek a korlátok a következők: hub (vagy bizonyos esetekben egy hubhoz/egységenként). További információt a [kapcsolat kezelése és a megbízható üzenetkezelési/újrapróbálkozási minták](iot-hub-reliability-features-in-sdks.md#retry-patterns)című témakörben talál.
 
 ### <a name="traffic-shaping"></a>Traffic Shaping
 
-A burst adatforgalom befogadásához IoT Hub a szabályozáson felüli kérelmeket korlátozott időre fogadja el. A kérések első néhány feldolgozása azonnal megtörténik. Ha azonban a kérelmek száma továbbra is sérti a szabályozást, IoT Hub elindítja a kérelmek várólistára helyezését, és feldolgozza a határértéket. Ezt a hatást nevezzük *Traffic Shaping*-nek. Emellett a várólista mérete korlátozott. Ha a szabályozás megsértése folytatódik, végül a várólista betöltődik, és IoT Hub elindítja a kérelmek `429 ThrottlingException`elutasítását.
+A burst adatforgalom befogadásához IoT Hub a szabályozáson felüli kérelmeket korlátozott időre fogadja el. A kérések első néhány feldolgozása azonnal megtörténik. Ha azonban a kérelmek száma továbbra is sérti a szabályozást, IoT Hub elindítja a kérelmek várólistára helyezését, és feldolgozza a határértéket. Ezt a hatást nevezzük *Traffic Shaping*-nek. Emellett a várólista mérete korlátozott. Ha a szabályozás megsértése folytatódik, végül a várólista megtelik, és a IoT Hub elindítja a kérelmek elutasítását `429 ThrottlingException` értékkel.
 
-Például egy szimulált eszköz használatával 200 eszközről a felhőbe irányuló üzeneteket küldhet másodpercenként az S1 IoT Hub (amely legfeljebb 100 másodpercenkénti D2C küld). Az első vagy két percnél az üzenetek feldolgozása azonnal megtörténik. Mivel azonban az eszköz továbbra is több üzenetet küld a szabályozási korlátnál, IoT Hub megkezdi a másodpercenkénti 100-üzenetek feldolgozását, és a REST-t egy várólistán helyezi el. A megnövelt késés megkezdése. Végül megkezdi az üzenetsor betöltését, és a IoT hub metrikájában a "szabályozási hibák száma" érték növekszik. [](iot-hub-metrics.md) `429 ThrottlingException`
+Például egy szimulált eszköz használatával 200 eszközről a felhőbe irányuló üzeneteket küldhet másodpercenként az S1 IoT Hub (amely legfeljebb 100 másodpercenkénti D2C küld). Az első vagy két percnél az üzenetek feldolgozása azonnal megtörténik. Mivel azonban az eszköz továbbra is több üzenetet küld a szabályozási korlátnál, IoT Hub megkezdi a másodpercenkénti 100-üzenetek feldolgozását, és a REST-t egy várólistán helyezi el. A megnövelt késés megkezdése. Végül megkezdi a `429 ThrottlingException` beolvasását, mivel a várólista megtelik, és a [IoT hub metrikájában](iot-hub-metrics.md) a "szabályozási hibák száma" érték növekszik.
 
 ### <a name="identity-registry-operations-throttle"></a>Identitás-beállításjegyzék működési szabályozása
 
@@ -95,8 +95,8 @@ IoT Hub érvényesíti a többi működési korlátot:
 
 | Művelet | Korlát |
 | --------- | ----- |
-| Eszközök | Az egyetlen IoT hubhoz csatlakoztatható eszközök maximális száma 1 000 000. A korlát növelésének egyetlen módja a Microsoft ügyfélszolgálatahoz való [](https://azure.microsoft.com/support/options/)kapcsolódás.|
-| Fájlfeltöltések | 10 egyidejű fájl feltöltése eszközönként. |
+| Eszközök | Az egyetlen IoT hubhoz csatlakoztatható eszközök maximális száma 1 000 000. A korlát növelésének egyetlen módja a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/)való kapcsolódás.|
+| Fájlfeltöltés | 10 egyidejű fájl feltöltése eszközönként. |
 | <sup>1</sup> . feladatok | Az egyidejű feladatok maximális száma 1 (ingyenes és S1), 5 (S2 esetén) és 10 (S3 esetén). Az egyidejű [eszköz-importálási/exportálási feladatok](iot-hub-bulk-identity-mgmt.md) maximális száma azonban az összes szinten 1. <br/>A feladatok előzményeit 30 napig őrzi meg a rendszer. |
 | További végpontok | A fizetős SKU-hubok 10 további végponttal rendelkezhetnek. Az ingyenes SKU-hubok egy további végponttal rendelkezhetnek. |
 | Üzenet-útválasztási lekérdezések | A fizetős SKU-hubok 100-es útválasztási lekérdezéssel rendelkezhetnek. Előfordulhat, hogy az ingyenes SKU-hubok öt útválasztási lekérdezéssel rendelkeznek. |
@@ -124,9 +124,9 @@ IoT Hub arra törekszik, hogy alacsony késést biztosítson az összes művelet
 
 Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak szerint, de nem biztosít további késési előnyöket vagy garanciákat.
 
-Ha a művelet késése váratlan növekedést lát, forduljon [](https://azure.microsoft.com/support/options/)a Microsoft ügyfélszolgálatahoz.
+Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

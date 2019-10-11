@@ -1,34 +1,34 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az ADP Globalview | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ADP Globalview között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Learnster | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Learnster között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: ffb6464f-714d-41a9-869a-2b7e5ae9f125
+ms.assetid: 08b5117f-061a-4a9e-b8f5-5f3927fcd928
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 10/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1184129783b448cb2d6dc22e488ffe38401a1218
+ms.openlocfilehash: 467dc656a19552586c5c386f0437c4544671dccc
 ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264112"
+ms.locfileid: "72266072"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp-globalview"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az ADP Globalview
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-learnster"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Learnster
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az ADP Globalview Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja az ADP Globalview, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Learnster a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Learnster-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben az ADP-Globalview hozzáférő vezérlő.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az ADP Globalview az Azure AD-fiókjával.
+* A Learnster-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Learnster az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -38,67 +38,61 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* ADP Globalview egyszeri bejelentkezéses (SSO) engedélyezett előfizetés.
+* Learnster egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* ADP Globalview támogatja a **identitásszolgáltató** által KEZDEMÉNYEZett SSO-t
+* A Learnster támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-adp-globalview-from-the-gallery"></a>ADP-Globalview hozzáadása a gyűjteményből
+## <a name="adding-learnster-from-the-gallery"></a>Learnster hozzáadása a gyűjteményből
 
-Az ADP-Globalview az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy ADP-Globalview a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Learnster Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Learnster a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be az **ADP Globalview** kifejezést a keresőmezőbe.
-1. Válassza az **ADP Globalview** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Learnster** kifejezést a keresőmezőbe.
+1. Válassza ki a **Learnster** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adp-globalview"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az ADP Globalview
+## <a name="configure-and-test-azure-ad-single-sign-on-for-learnster"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Learnster
 
-Konfigurálja és tesztelje az Azure AD SSO-t ADP-Globalview egy **B. Simon**nevű tesztelési felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az ADP Globalview.
+Konfigurálja és tesztelje az Azure AD SSO-t a Learnster a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Learnster-ben.
 
-Az Azure AD SSO és az ADP Globalview konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a Learnster konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az **[ADP GLOBALVIEW SSO konfigurálása](#configure-adp-globalview-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre ADP Globalview-teszt felhasználót](#create-adp-globalview-test-user)** – ha a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli (ADP) Globalview van.
+1. **[LEARNSTER SSO konfigurálása](#configure-learnster-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[Hozzon létre Learnster-teszt felhasználót](#create-learnster-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Learnster rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)az **ADP Globalview** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **Learnster** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+   1. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.learnster.com/auth/login/force`
 
-    
-    Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    | |
-    |--|
-    | `https://<subdomain>.globalview.adp.com/federate`|
-    | `https://<subdomain>.globalview.adp.com/federate2`|
-    | |
+   1. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.learnster.com/`
 
     > [!NOTE]
-    > Ez az érték nem valós. Frissítse az értéket a tényleges azonosítóval. Az érték beszerzéséhez lépjen kapcsolatba az [ADP Globalview ügyfél-támogatási csapatával](https://www.adp.com/contact-us/overview.aspx) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Learnster ügyfélszolgálati [csapatához](mailto:support@learnster.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **ADP Globalview beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. A **Learnster beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
@@ -116,10 +110,10 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát az ADP Globalview való hozzáférés biztosításával.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Learnster.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **ADP Globalview**elemet.
+1. Az alkalmazások listában válassza a **Learnster**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
@@ -132,19 +126,19 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-adp-globalview-sso"></a>Az ADP Globalview SSO konfigurálása
+## <a name="configure-learnster-sso"></a>Learnster SSO konfigurálása
 
-Az egyszeri bejelentkezés **ADP-Globalview** való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket Azure Portalról [ADP-Globalview támogató csapatnak](https://www.adp.com/contact-us/overview.aspx). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Learnster** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Learnster támogatási csapatának](mailto:support@learnster.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-adp-globalview-test-user"></a>ADP Globalview-tesztelési felhasználó létrehozása
+### <a name="create-learnster-test-user"></a>Learnster-tesztelési felhasználó létrehozása
 
-Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót az ADP Globalview. Az ADP [Globalview támogatási csapatával](https://www.adp.com/contact-us/overview.aspx) a felhasználókat az ADP Globalview platformon veheti fel. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Learnster-ben. Együttműködik a [Learnster támogatási csapatával](mailto:support@learnster.com) , hogy hozzáadja a felhasználókat a Learnster platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a ADP Globalview csempére kattint, automatikusan be kell jelentkeznie arra az ADP-Globalview, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Learnster csempére kattint, automatikusan be kell jelentkeznie arra a Learnster, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
@@ -154,5 +148,5 @@ Ha a hozzáférési panelen a ADP Globalview csempére kattint, automatikusan be
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Az ADP Globalview kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [A Learnster kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

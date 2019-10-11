@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276832"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263201"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -36,11 +36,11 @@ A példákat lásd:
 
 Az Azure Functions üzemelő példányok általában az alábbi erőforrásokból állnak:
 
-| Resource                                                                           | Követelmény | Szintaxis és tulajdonságok – hivatkozás                                                         |   |
+| Erőforrás                                                                           | Követelmény | Szintaxis és tulajdonságok – hivatkozás                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Function-alkalmazás                                                                     | Kötelező    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) -fiók                                   | Kötelező    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Választható    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
+| Function-alkalmazás                                                                     | Szükséges    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |   |
+| [Azure Storage](../storage/index.yml) -fiók                                   | Szükséges    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Választható    | [Microsoft. bepillantások/összetevők](/azure/templates/microsoft.insights/components)         |   |
 | [Üzemeltetési csomag](./functions-scale.md)                                             | Opcionális<sup>1</sup>    | [Microsoft. Web/kiszolgálófarmok](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> A szolgáltatási csomagra csak akkor van szükség, ha úgy dönt, hogy a Function alkalmazást egy [prémium szintű csomagra](./functions-premium-plan.md) (előzetes verzióban) vagy egy [app Service csomagra](../app-service/overview-hosting-plans.md)szeretné futtatni.
@@ -57,20 +57,20 @@ Egy Function alkalmazáshoz Azure Storage-fiók szükséges. Olyan általános c
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-04-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
 
-Emellett a tulajdonságot `AzureWebJobsStorage` meg kell adni a hely konfigurációja beállításban. Ha a Function alkalmazás nem használja Application Insights a figyeléshez, azt is meg `AzureWebJobsDashboard` kell adnia az alkalmazás beállításaként.
+Emellett az `AzureWebJobsStorage` tulajdonságot is meg kell adni alkalmazás-beállításként a hely konfigurációjában. Ha a Function alkalmazás nem használja Application Insights a figyeléshez, akkor azt is meg kell adnia, hogy az `AzureWebJobsDashboard` legyen az alkalmazás-beállítás.
 
-A Azure functions futtatókörnyezet a `AzureWebJobsStorage` kapcsolódási karakterlánc használatával hozza létre a belső várólistákat.  Ha a Application Insights nincs engedélyezve, a futtatókörnyezet a `AzureWebJobsDashboard` kapcsolódási karakterláncot használja az Azure Table Storage-ba való bejelentkezéshez és a portál **figyelés** lapjának bekapcsolásához.
+A Azure Functions Runtime a `AzureWebJobsStorage` kapcsolódási karakterláncot használja belső várólisták létrehozásához.  Ha Application Insights nincs engedélyezve, a futtatókörnyezet a `AzureWebJobsDashboard` kapcsolódási karakterláncot használja az Azure Table Storage-ba való bejelentkezéshez és a portál **figyelés** lapjának bekapcsolásához.
 
-Ezek a tulajdonságok az `appSettings` `siteConfig` objektum gyűjteményében vannak megadva:
+Ezek a tulajdonságok a `appSettings` gyűjteményben vannak megadva a `siteConfig` objektumban:
 
 ```json
 "appSettings": [
@@ -106,7 +106,7 @@ A Application Insights a Function apps figyeléséhez ajánlott. A Application I
         },
 ```
 
-Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `APPINSIGHTS_INSTRUMENTATIONKEY` Alkalmazásbeállítások használatával. Ez a tulajdonság az `appSettings` `siteConfig` objektum gyűjteményében van megadva:
+Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak a `APPINSIGHTS_INSTRUMENTATIONKEY` Alkalmazásbeállítások használatával. Ez a tulajdonság a (z) `siteConfig` objektum `appSettings` gyűjteményében van megadva:
 
 ```json
 "appSettings": [
@@ -120,7 +120,7 @@ Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `
 ### <a name="hosting-plan"></a>Üzemeltetési csomag
 
 A üzemeltetési csomag definíciója változó, és a következők egyike lehet:
-* [Felhasználási terv](#consumption) alapértelmezett
+* [Felhasználási terv](#consumption) (alapértelmezett)
 * [Prémium csomag](#premium) (előzetes verzió)
 * [App Service-csomag](#app-service-plan)
 
@@ -142,7 +142,7 @@ A Function app erőforrás a **Microsoft. Web/Sites** és Kind **functionapp**t�
 ```
 
 > [!IMPORTANT]
-> Ha explicit módon definiál egy üzemeltetési csomagot, a dependsOn tömbben további elemre lenne szükség:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Ha explicit módon definiál egy üzemeltetési csomagot, egy további elemre lesz szükség a dependsOn tömbben: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 
@@ -150,10 +150,10 @@ A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a belső üzenetsor-kezelési funkciók futtatókörnyezete biztosít | Lásd: [Storage-fiók](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Az Azure Functions futtatókörnyezet verziója                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`,,vagy `java``python` |
-| WEBSITE_NODE_DEFAULT_VERSION | Csak a `node` nyelvi verem használata esetén szükséges, adja meg a használni kívánt verziót              | `10.14.1`                             |
+| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java` vagy `python` |
+| WEBSITE_NODE_DEFAULT_VERSION | Csak akkor szükséges, ha a `node` nyelvi verem használatával adja meg a használni kívánt verziót              | `10.14.1`                             |
 
-Ezek a tulajdonságok a (z `appSettings` ) `siteConfig` tulajdonság gyűjteményében vannak megadva:
+Ezek a tulajdonságok a `appSettings` gyűjteményben vannak megadva a `siteConfig` tulajdonságban:
 
 ```json
 "properties": {
@@ -192,7 +192,7 @@ Minta Azure Resource Manager sablon esetében lásd: [Function alkalmazás a has
 
 Nem szükséges a használati terv meghatározása. A Function app-erőforrás létrehozásakor a rendszer automatikusan létrehozza vagy kiválasztja az egyiket a régió alapján.
 
-A felhasználási terv egy speciális "kiszolgálófarm" típusú erőforrás. A Windows esetében a `Dynamic` `computeMode` és `sku` a tulajdonságok értékének megadásával adhatja meg a következőt:
+A felhasználási terv egy speciális "kiszolgálófarm" típusú erőforrás. A Windows esetében megadhatja azt a `computeMode` és a `sku` tulajdonságok `Dynamic` értékének használatával:
 
 ```json
 {  
@@ -217,13 +217,13 @@ A felhasználási terv egy speciális "kiszolgálófarm" típusú erőforrás. A
 > [!NOTE]
 > A használati tervet nem lehet explicit módon definiálni a Linux rendszerhez. A rendszer automatikusan létrehozza.
 
-Ha explicit módon határozza meg a használati tervet, be kell állítania az `serverFarmId` alkalmazás tulajdonságát, hogy az a csomag erőforrás-azonosítójára mutasson. Győződjön meg arról, hogy a Function alkalmazás rendelkezik `dependsOn` a terv beállításával is.
+Ha kifejezetten meghatározza a használati tervet, be kell állítania a `serverFarmId` tulajdonságot az alkalmazáson, hogy az a csomag erőforrás-AZONOSÍTÓJÁRA mutasson. Győződjön meg arról, hogy a Function alkalmazásnak van egy `dependsOn` beállítása is a tervhez.
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
 #### <a name="windows"></a>Windows
 
-Windowson a használati terv két további beállítást igényel a hely konfigurációjában: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` és. `WEBSITE_CONTENTSHARE` Ezek a tulajdonságok konfigurálhatják a Storage-fiókot és a fájl elérési útját, ahol a Function app-kód és a konfiguráció tárolva van.
+A Windowsban a használati terv két további beállítást igényel a hely konfigurációjában: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` és `WEBSITE_CONTENTSHARE`. Ezek a tulajdonságok konfigurálhatják a Storage-fiókot és a fájl elérési útját, ahol a Function app-kód és a konfiguráció tárolva van.
 
 ```json
 {
@@ -270,7 +270,7 @@ Windowson a használati terv két további beállítást igényel a hely konfigu
 
 #### <a name="linux"></a>Linux
 
-Linux rendszeren a Function alkalmazásnak `kind` `functionapp,linux`rendelkeznie kell a (z) értékkel, és a `reserved` következő tulajdonságot `true`kell beállítania:
+Linux rendszeren a Function alkalmazásnak rendelkeznie kell a `kind` beállítással `functionapp,linux` értékre, és a `reserved` tulajdonságot `true` értékre kell állítani:
 
 ```json
 {
@@ -318,7 +318,7 @@ A Prémium csomag ugyanazt a skálázást kínálja, mint a használati terv, de
 
 ### <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
-A Prémium csomag egy speciális "kiszolgálófarm" típusú erőforrás. Megadhatja a `EP1` `EP3` `EP2` tulajdonság`sku` értékének vagy a, vagy értéke alapján is.
+A Prémium csomag egy speciális "kiszolgálófarm" típusú erőforrás. A `sku` tulajdonság értékének megadásához `EP1`, `EP2` vagy `EP3` értéket kell használnia.
 
 ```json
 {
@@ -335,7 +335,7 @@ A Prémium csomag egy speciális "kiszolgálófarm" típusú erőforrás. Megadh
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-A prémium szintű csomaghoz tartozó Function alkalmazásnak a `serverFarmId` korábban létrehozott csomag erőforrás-azonosítójára kell rendelkeznie. Emellett a prémium csomaghoz két további beállítás szükséges a hely konfigurációjában: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` és. `WEBSITE_CONTENTSHARE` Ezek a tulajdonságok konfigurálhatják a Storage-fiókot és a fájl elérési útját, ahol a Function app-kód és a konfiguráció tárolva van.
+A prémium szintű csomagban lévő Function alkalmazásnak a korábban létrehozott csomag erőforrás-AZONOSÍTÓJÁRA kell beállítania a `serverFarmId` tulajdonságot. Emellett a prémium csomaghoz két további beállítás szükséges a hely konfigurációjában: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` és `WEBSITE_CONTENTSHARE`. Ezek a tulajdonságok konfigurálhatják a Storage-fiókot és a fájl elérési útját, ahol a Function app-kód és a konfiguráció tárolva van.
 
 ```json
 {
@@ -398,41 +398,41 @@ Az App Service-csomagot egy "kiszolgálófarm" erőforrás határozza meg.
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-Az alkalmazás Linux rendszeren való futtatásához a `kind` `Linux`következőt is be kell állítania:
+Az alkalmazás Linux rendszeren való futtatásához a `kind` értéket is be kell állítania a következőre: `Linux`:
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása 
 
-Egy app Service tervben szereplő Function alkalmazásnak a korábban `serverFarmId` létrehozott csomag erőforrás-azonosítójára kell beállítania a tulajdonságot.
+Egy App Service tervben szereplő Function alkalmazásnak a korábban létrehozott csomag erőforrás-AZONOSÍTÓJÁRA kell beállítania a `serverFarmId` tulajdonságot.
 
 ```json
 {
@@ -471,9 +471,9 @@ Egy app Service tervben szereplő Function alkalmazásnak a korábban `serverFar
 }
 ```
 
-A Linux-alkalmazásoknak tartalmaznia `linuxFxVersion` kell egy `siteConfig`tulajdonságot is. Ha csak a kód üzembe helyezését végzi, az értéket a kívánt futtatókörnyezeti verem határozza meg:
+A Linux-alkalmazásoknak tartalmaznia kell egy `linuxFxVersion` tulajdonságot is `siteConfig` alatt. Ha csak a kód üzembe helyezését végzi, az értéket a kívánt futtatókörnyezeti verem határozza meg:
 
-| Verem            | Példaérték                                         |
+| Stack            | Példaérték                                         |
 |------------------|-------------------------------------------------------|
 | Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
 | JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
@@ -517,7 +517,7 @@ A Linux-alkalmazásoknak tartalmaznia `linuxFxVersion` kell egy `siteConfig`tula
 }
 ```
 
-Ha [Egyéni tároló lemezképet helyez üzembe](./functions-create-function-linux-custom-image.md), meg kell adnia azt a-val `linuxFxVersion` , és tartalmaznia kell egy olyan konfigurációt, amely lehetővé teszi a lemezkép leválasztását a [Web App for containers](/azure/app-service/containers). Emellett állítsa `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false`a (z) értékre, mert az alkalmazás tartalma a tárolóban van megadva:
+Ha [Egyéni tároló lemezképet helyez üzembe](./functions-create-function-linux-custom-image.md), meg kell adnia azt a `linuxFxVersion` értékkel, és olyan konfigurációval kell rendelkeznie, amely lehetővé teszi a lemezkép leválasztását, ahogy az [Web App for containers](/azure/app-service/containers). Emellett állítsa be a `WEBSITES_ENABLE_APP_SERVICE_STORAGE` értéket `false` értékre, mivel az alkalmazás tartalma a tárolóban van megadva:
 
 ```json
 {
@@ -642,7 +642,7 @@ A Function app számos alárendelt erőforrással rendelkezik, amelyek használh
 }
 ```
 > [!TIP]
-> Ez a sablon a [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) app Settings (projekt alkalmazás beállításai) értéket használja, amely azt az alapkönyvtárat állítja be, amelyben a functions Deployment Engine (kudu) megkeresi a telepíthető kódot. A tárházban a függvények a **src** mappa almappájában találhatók. Tehát az előző példában az Alkalmazásbeállítások értékét `src`a következőre állítja be:. Ha a függvények a tárház gyökerében találhatók, vagy ha nem a verziókövetés alapján végzik el a telepítést, akkor eltávolíthatja ezt az Alkalmazásbeállítások értékét.
+> Ez a sablon a [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) app Settings (projekt alkalmazás beállításai) értéket használja, amely azt az alapkönyvtárat állítja be, amelyben a functions Deployment Engine (kudu) megkeresi a telepíthető kódot. A tárházban a függvények a **src** mappa almappájában találhatók. Így az előző példában az Alkalmazásbeállítások értékét `src` értékre állítjuk. Ha a függvények a tárház gyökerében találhatók, vagy ha nem a verziókövetés alapján végzik el a telepítést, akkor eltávolíthatja ezt az Alkalmazásbeállítások értékét.
 
 ## <a name="deploy-your-template"></a>A sablon telepítése
 
@@ -650,12 +650,12 @@ A következő módokon végezheti el a sablon üzembe helyezését:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure Portalra](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Üzembe helyezés az Azure-ban gomb
 
-Cserélje ```<url-encoded-path-to-azuredeploy-json>``` le a `azuredeploy.json` fájlt a githubban található fájl nyers elérési útjának [URL-kódolású](https://www.bing.com/search?q=url+encode) verziójára.
+Cserélje le a ```<url-encoded-path-to-azuredeploy-json>``` értéket a GitHubban található `azuredeploy.json` fájl nyers elérési útjának [URL-kódolású](https://www.bing.com/search?q=url+encode) verziójára.
 
 Íme egy példa, amely az Markdown-t használja:
 
@@ -671,7 +671,7 @@ Az alábbi példa HTML-t használ:
 
 ### <a name="deploy-using-powershell"></a>Üzembe helyezés a PowerShell használatával
 
-A következő PowerShell-parancsok létrehoznak egy erőforráscsoportot, és telepítenek egy olyan sablont, amely létrehozza a szükséges erőforrásokkal rendelkező Function alkalmazást. A helyi futtatáshoz [Azure PowerShell](/powershell/azure/install-az-ps) telepítve kell lennie. A [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) bejelentkezéshez futtassa a parancsot.
+A következő PowerShell-parancsok létrehoznak egy erőforráscsoportot, és telepítenek egy olyan sablont, amely létrehozza a szükséges erőforrásokkal rendelkező Function alkalmazást. A helyi futtatáshoz [Azure PowerShell](/powershell/azure/install-az-ps) telepítve kell lennie. Az [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) futtatásával jelentkezzen be.
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -688,9 +688,9 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje `<function-app-name>` le a függvényt egy egyedi névre a Function alkalmazáshoz.
+A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje le a `<function-app-name>` értéket a Function alkalmazás egyedi nevére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions fejlesztéséről és konfigurálásáról.
 

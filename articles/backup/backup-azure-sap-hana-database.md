@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067104"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273948"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA-adatbázis biztonsági mentése az Azure-ba
 
@@ -27,7 +27,7 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 --- | ---
 **Támogatott térségek** | Kelet-Ausztrália, Délkelet-Ausztrália <br> Dél-Brazília <br> Közép-Kanada, Kelet-Kanada <br> Dél-Kelet-Ázsia, Kelet-Ázsia <br> USA keleti régiója, USA 2. keleti régiója, USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója, USA északi középső régiója, USA középső régiója<br> Közép-India, Dél-India <br> Kelet-Japán, Nyugat-Japán<br> Korea középső régiója, Korea déli régiója <br> Észak-Európa, Nyugat-Európa <br> Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója
 **Támogatott VM-operációs rendszerek** | SLES 12 SP2, SP3 vagy SP4 szervizcsomaggal.
-**Támogatott HANA-verziók** | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 42
+**Támogatott HANA-verziók** | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 43
 
 ### <a name="current-limitations"></a>Aktuális korlátozások
 
@@ -40,7 +40,7 @@ A [Azure Backup](backup-overview.md) támogatja SAP HANA adatbázisok biztonság
 - Az adatbázis-naplók biztonsági mentését 15 percenként végezheti el. A naplók biztonsági mentései csak az adatbázis sikeres teljes biztonsági mentésének befejeződése után kezdődnek.
 - Teljes és különbözeti biztonsági másolatokat készíthet. A növekményes biztonsági mentés jelenleg nem támogatott.
 - A biztonsági mentési szabályzatot a SAP HANA biztonsági mentések alkalmazása után nem módosíthatja. Ha más beállításokkal szeretne biztonsági mentést készíteni, hozzon létre egy új szabályzatot, vagy rendeljen hozzá egy másik szabályzatot.
-  - Új szabályzat létrehozásához a tárolóban kattintson a **házirendek** > **biztonsági mentési házirendek** >  **+ SAP HANA hozzáadása** > **Az Azure-beli virtuális gépen**lehetőségre, és adja meg a házirend-beállításokat.
+  - Új szabályzat létrehozásához a tárolóban kattintson a **házirendek** > **biztonsági mentési házirendek** >  **+**  > **SAP HANA hozzáadása az Azure virtuális gépen**lehetőségre, és adja meg a házirend-beállításokat.
   - Egy másik szabályzat hozzárendeléséhez az adatbázist futtató virtuális gép tulajdonságainál kattintson a jelenlegi házirend nevére. Ezután a **biztonsági mentési szabályzat** lapon kiválaszthat egy másik, a biztonsági mentéshez használni kívánt szabályzatot.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -101,7 +101,7 @@ Most engedélyezze a biztonsági mentést.
 
 1. A 2. lépésben kattintson a **biztonsági mentés konfigurálása**elemre.
 2. Az **elemek kijelölése biztonsági mentéshez**területen jelölje ki az összes védelemmel ellátni kívánt adatbázist > **az OK gombra**.
-3. A **biztonsági mentési házirendben** > **válassza a biztonsági**mentési házirend elemet, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
+3. A **biztonsági mentési házirendben**@no__t – 1**válassza a biztonsági mentési szabályzat lehetőséget**, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
 4. A szabályzat létrehozása után a **biztonsági mentés** menüben kattintson a **biztonsági mentés engedélyezése**elemre.
 5. A biztonsági mentési konfiguráció előrehaladásának nyomon követése a portál **értesítések** területén.
 
@@ -116,13 +116,13 @@ A házirend-beállításokat a következőképpen adhatja meg:
 
 1. A **Házirend neve**mezőben adja meg az új szabályzat nevét.
 2. A **teljes biztonsági mentési szabályzatban**válassza ki a **biztonsági mentés gyakoriságát**, és válassza a **naponta** vagy **hetente**lehetőséget.
-   - **Napi**: Válassza ki azt az órát és időzónát, amelyben a biztonsági mentési feladatok elindulnak.
+   - **Napi**: válassza ki azt az órát és időzónát, amelyben a biztonsági mentési feladatok megkezdődnek.
    
        - Teljes biztonsági mentést kell futtatnia. Ezt a beállítást nem lehet kikapcsolni.
        - A szabályzat megtekintéséhez kattintson a **teljes biztonsági mentés** elemre.
        - A napi teljes biztonsági mentésekhez nem hozhat létre különbözeti biztonsági másolatokat.
        
-   - **Heti**: Válassza ki a hét azon napját, órát és időzónát, amelyben a biztonsági mentési feladatot futtatja.
+   - **Hetente**: válassza ki a hét azon napját, óráját és időzónáját, amelyben a biztonsági mentési feladatot futtatja.
 3. A **megőrzési tartomány**területen konfigurálja a teljes biztonsági mentés megőrzési beállításait.
     - Alapértelmezés szerint minden beállítás ki van választva. Törölje az összes olyan megőrzési időtartamra vonatkozó korlátozást, amelyet nem kíván használni, és állítsa be azokat.
     - A minimális megőrzési idő bármilyen típusú biztonsági mentés esetén (teljes/különbözeti/napló) hét nap.
@@ -167,7 +167,7 @@ Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amel
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Győződjön meg arról, hogy az állapota SAP HANA Studióban.
 2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-3. Ehhez kattintson duplán a **systemdb** > -**konfiguráció** > elemre, majd**válassza az adatbázis** >  **-szűrő (napló)** lehetőséget.
+3. Ehhez kattintson duplán a **systemdb** > **konfiguráció** >  Válassza az**adatbázis** > **Filter (napló)** elemet.
 4. A **enable_auto_log_backup** beállítása **nem**értékre.
 5. Állítsa a log_backup_using_backint **hamis**értékre.
 6. Készítsen ad hoc teljes biztonsági mentést az adatbázisról.
@@ -187,7 +187,7 @@ Ha SAP HANA 1,0-es adatbázisok védelmét kívánja biztosítani, és a 2,0-re 
 - Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ennek megfelelően a 2. lépésben szereplő új adatbázisok helyes részletekkel (SYSTEMDB és bérlői ADATBÁZISsal, nem SDC) jelennek meg. 
 - Az új adatbázisok védelméhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SAP HANA biztonsági mentés Azure-beli virtuális gépeken való használata során [megtudhatja](backup-azure-sap-hana-database-troubleshoot.md) , hogyan lehet gyakori hibákat elhárítani.
 [Ismerje meg az](backup-azure-arm-vms-prepare.md) Azure-beli virtuális gépek biztonsági mentését.

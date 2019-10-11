@@ -3,7 +3,7 @@ title: Azure-beli virtuálisgép-méretezési csoport példányaira vonatkozó �
 description: Megtudhatja, hogyan engedélyezheti az Azure-beli virtuálisgép-méretezési csoport példányainak megszüntetési értesítését
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: mayanknayar
+author: shandilvarun
 manager: drewm
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
-ms.author: manayar
-ms.openlocfilehash: de303032fcbbde30534c802e3d5185aedf05cb98
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.author: vashan
+ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076237"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264680"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Értesítés megszakítása az Azure virtuálisgép-méretezési csoport példányaihoz (előzetes verzió)
 A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. Az előzetes verziójú megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által megadott késleltetési korláttól függ.
@@ -132,7 +132,7 @@ Abban az esetben, ha ütemezett események vannak, a válasz események tömbjé
 ```
 A DocumentIncarnation egy ETag, és egyszerűen megvizsgálhatja, hogy az események tartalma módosult-e az utolsó lekérdezés óta.
 
-A fenti mezőkkel kapcsolatos további információkért tekintse meg a [Windows](../virtual-machines/windows/scheduled-events.md#event-properties) és [Linux](../virtual-machines/linux/scheduled-events.md#event-properties)rendszerhez készült Scheduled Events dokumentációját.
+A fenti mezőkkel kapcsolatos további információkért tekintse meg a Windows és [Linux](../virtual-machines/linux/scheduled-events.md#event-properties) [rendszerhez](../virtual-machines/windows/scheduled-events.md#event-properties) készült Scheduled Events dokumentációját.
 
 ### <a name="respond-to-events"></a>Válaszadás az eseményekre
 Miután megismerte a közelgő eseményt, és elvégezte a logika kikapcsolását, jóváhagyhatja a függőben lévő eseményt úgy, hogy a metaadatokat a Napszállta. A POST hívás azt jelzi az Azure-nak, hogy folytathatja a virtuális gép törlését.
@@ -165,11 +165,11 @@ A [PowerShell](../virtual-machines/windows/scheduled-events.md#powershell-sample
 Ha "BadRequest" hibaüzenet jelenik meg, amely azt jelzi, hogy a "VirtualMachineProfile" típusú objektumon nem található "scheduledEventsProfile" tag, ellenőrizze a méretezési csoport műveleteihez használt API-verziót. Ehhez az előzetes verzióhoz a számítási API **2019-03-01** -es vagy újabb verziója szükséges.
 
 ### <a name="failure-to-get-terminate-events"></a>Nem sikerült beolvasni az eseményeket
-Ha nem kap megszakítási eseményt a Scheduled Eventson keresztül, akkor ellenőrizze az események beolvasásához használt API-verziót. Az események megszakításához Metadata Service API **2019-01-01** -es vagy újabb verziójára van szükség.
+Ha nem kap **megszakítási** eseményt a Scheduled Eventson keresztül, akkor ellenőrizze az események beolvasásához használt API-verziót. Az események megszakításához Metadata Service API **2019-01-01** -es vagy újabb verziójára van szükség.
 >'http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01 '
 
 ### <a name="getting-terminate-event-with-incorrect-notbefore-time"></a>Az esemény megszakítása helytelen NotBefore idővel  
 Miután engedélyezte a *scheduledEventsProfile* a méretezési csoport modelljén, és beállítja a *notBeforeTimeout*, frissítse az egyes példányokat a [legújabb modellre](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , hogy tükrözze a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

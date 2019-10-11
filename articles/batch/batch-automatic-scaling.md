@@ -13,13 +13,13 @@ ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdea67d682bab335de02e55f5864460e3daefb95
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254948"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274825"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -107,6 +107,11 @@ A szolgáltatás által definiált változók értékeit lekérheti és beállí
 | $TargetDedicatedNodes |A készlet dedikált számítási csomópontjainak megcélzott száma. A dedikált csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például a dedikált csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. <br /><br /> Előfordulhat, hogy a Batch szolgáltatás konfigurációjával létrehozott fiók nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. Előfordulhat, hogy a felhasználói előfizetés-konfigurációval létrehozott fiókban lévő készlet nem éri el a célját, ha a cél meghaladja az előfizetés megosztott alapszintű kvótáját.|
 | $TargetLowPriorityNodes |A készlet alacsony prioritású számítási csomópontjainak megcélzott száma. Az alacsony prioritású csomópontok száma célként van megadva, mert előfordulhat, hogy a készlet nem mindig éri el a kívánt számú csomópontot. Ha például az alacsony prioritású csomópontok megcélzott száma módosítva van egy autoskálázási kiértékeléssel, mielőtt a készlet elérte a kezdeti célt, akkor előfordulhat, hogy a készlet nem éri el a célt. Előfordulhat, hogy a készlet nem éri el a célját, ha a cél meghaladja a Batch-fiók csomópontját vagy a fő kvótát. <br /><br /> Az alacsony prioritású számítási csomópontokkal kapcsolatos további információkért lásd: [alacsony prioritású virtuális gépek használata batch használatával (előzetes verzió)](batch-low-pri-vms.md). |
 | $NodeDeallocationOption |Az a művelet, amely akkor fordul elő, amikor a számítási csomópontok el lesznek távolítva a készletből. Lehetséges értékek:<ul><li>**újravárólista**– az alapértelmezett érték. Azonnal leállítja a feladatokat, és visszahelyezi őket a feladat-várólistába, hogy azok újra legyenek ütemezve. Ez a művelet biztosítja, hogy a csomópontok megcélzott száma a lehető leggyorsabban elérhető legyen, de kevésbé hatékony, mivel a futó feladatok megszakadnak, és újra kell indítani a már elvégzett munkát. <li>**megszakítás**– leállítja a feladatokat azonnal, és eltávolítja azokat a feladat-várólistából.<li>**taskcompletion**– megvárja, amíg a jelenleg futó feladatok befejeződik, majd eltávolítja a csomópontot a készletből. Ezzel a beállítással elkerülhető a feladatok megszakítása és újravárólistába helyezése, ami a feladat elvégzése után felhasználható. <li>**retaineddata**– megvárja a csomóponton a helyi feladat által megőrzött összes adat törlését, mielőtt eltávolítja a csomópontot a készletből.</ul> |
+
+> [!NOTE]
+> A `$TargetDedicatedNodes` változó a (`$TargetDedicated`) alias használatával is megadható. Hasonlóképpen, a `$TargetLowPriorityNodes` változó megadható a `$TargetLowPriority` alias használatával. Ha a képlet a teljes névvel ellátott változót és annak aliasát is beállítja, akkor a teljes névvel ellátott változóhoz rendelt érték elsőbbséget élvez.
+>
+>
 
 A szolgáltatás által definiált változók értékének beszerzésével a Batch szolgáltatás mérőszámai alapján végezheti el a módosításokat:
 

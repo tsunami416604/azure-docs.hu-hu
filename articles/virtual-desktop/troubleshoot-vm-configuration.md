@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841298"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274493"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -30,35 +30,35 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 - Próbálja pingelni a tartománynevet a parancssorból a virtuális gépen.
 - Tekintse át a tartományhoz való [Csatlakozás hibaüzeneteit a következő témakörben](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx): tartományi csatlakozási hibaüzenetek.
 
-### <a name="error-incorrect-credentials"></a>Hiba: Helytelen hitelesítő adatok
+### <a name="error-incorrect-credentials"></a>Hiba: helytelen hitelesítő adatok
 
-**Okozhat** A hitelesítő adatoknak a Azure Resource Manager sablon felületén megjelenő javításokban való megadásának elírása történt.
+**OK:** A hitelesítő adatoknak a Azure Resource Manager sablon felületén megjelenő javításokban való megadásának elírása történt.
 
-**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
+**Javítás:** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
 - Manuálisan adja hozzá a virtuális gépeket egy tartományhoz.
 - A sablon újbóli üzembe helyezése a hitelesítő adatok megerősítése után. Lásd: [állomáslista létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)-lel.
 - Csatlakoztassa a virtuális gépeket egy tartományhoz egy olyan sablonnal, amely egy [meglévő Windows-alapú virtuális GÉPET ad tartományhoz csatlakozik](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
-### <a name="error-timeout-waiting-for-user-input"></a>Hiba: Felhasználói bevitelre való várakozás időtúllépése
+### <a name="error-timeout-waiting-for-user-input"></a>Hiba: a felhasználói bevitelre való várakozás időtúllépése
 
-**Okozhat** A tartományhoz való csatlakozás végrehajtásához használt fiók többtényezős hitelesítéssel (MFA) rendelkezhet.
+**OK:** A tartományhoz való csatlakozás végrehajtásához használt fiók többtényezős hitelesítéssel (MFA) rendelkezhet.
 
-**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
+**Javítás:** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
 - Ideiglenesen távolítsa el az MFA-t a fiókhoz.
 - Használjon egy szolgáltatásfiókot.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hiba: A kiépítés során használt fiók nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hiba: a kiépítés során használt fiók nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel
 
-**Okozhat** A használt fióknak nincs engedélye a virtuális gépek tartományhoz való csatlakoztatására a megfelelőség és a szabályozások miatt.
+**OK:** A használt fióknak nincs engedélye a virtuális gépek tartományhoz való csatlakoztatására a megfelelőség és a szabályozások miatt.
 
-**Javítsa ki** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
+**Javítás:** A megoldáshoz hajtsa végre az alábbi műveletek egyikét.
 
 - Olyan fiókot használjon, amely a rendszergazda csoport tagja.
 - Adja meg a szükséges engedélyeket a használt fiókhoz.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Hiba: A tartománynév nem oldható fel
+### <a name="error-domain-name-doesnt-resolve"></a>Hiba: a tartománynév nem oldható fel
 
 **1. ok:** A virtuális gépek olyan virtuális hálózaton vannak, amely nincs társítva a virtuális hálózathoz (VNET), ahol a tartomány található.
 
@@ -80,11 +80,11 @@ A virtuális gépek üzembe helyezésének ajánlott módja a **Windows rendszer
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
-1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult** > **programok** > **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
+1. Ellenőrizze, hogy a két összetevő telepítve van-e a **vezérlőpulton** > **programok** > **programok és szolgáltatások elemre**való ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
 2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\scriptlogs.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
 3. Ha a fájl **C:\Windows\Temp\scriptlogs.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Hiba: A Windows rendszerű virtuális asztali ügynök és a Windows rendszerű virtuális asztali ügynök rendszerindítási betöltője hiányzik. A C:\Windows\Temp\scriptlogs.log is hiányzik
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Hiba: hiányzik a Windows virtuális asztali ügynök és a Windows rendszerű virtuális asztali ügynök rendszerindítási betöltője. A C:\Windows\Temp\scriptlogs.log is hiányzik
 
 **1. ok:** A Azure Resource Manager sablon bemenete során megadott hitelesítő adatok helytelenek voltak, vagy az engedélyek elégtelenek voltak.
 
@@ -98,11 +98,11 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 - Győződjön meg arról, hogy a bérlő neve pontos, és a bérlő létezik a Windows rendszerű virtuális asztalon.
 - Győződjön meg arról, hogy a fiók legalább RDS közreműködői engedéllyel rendelkezik.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Hiba: A hitelesítés nem sikerült, hiba a C:\Windows\Temp\scriptlogs.log
+### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Hiba: a hitelesítés nem sikerült, hiba a C:\Windows\Temp\scriptlogs.log
 
-**Okozhat** A PowerShell DSC végrehajtása sikerült, de nem tudott csatlakozni a Windows rendszerű virtuális asztalhoz.
+**OK:** A PowerShell DSC végrehajtása sikerült, de nem tudott csatlakozni a Windows rendszerű virtuális asztalhoz.
 
-**Javítsa ki** Erősítse meg az alábbi listán szereplő elemeket.
+**Javítás:** Erősítse meg az alábbi listán szereplő elemeket.
 
 - Manuálisan regisztrálja a virtuális gépeket a Windows Virtual Desktop szolgáltatással.
 - Ellenőrizze, hogy a Windows rendszerű virtuális asztalhoz való csatlakozáshoz használt fiók rendelkezik-e engedéllyel a bérlőn a gazdagépek létrehozásához.
@@ -112,13 +112,13 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 
 Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a munkamenet-gazdagép virtuális gépei számára (manuálisan vagy a Azure Resource Manager sablonon és a PowerShell DSC-n keresztül), akkor egy regisztrációs jogkivonatot biztosít. A következő szakasz a Windows rendszerű virtuális asztali ügynökre és a jogkivonatra vonatkozó hibaelhárítási problémákat ismerteti.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: A Get-RdsSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: a Get-RdsSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
 
 ![A Get-RdsSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Okozhat** Az ügynök nem tudja frissíteni magát egy új verzióra.
+**OK:** Az ügynök nem tudja frissíteni magát egy új verzióra.
 
-**Javítsa ki** Az ügynök manuális frissítéséhez kövesse az alábbi utasításokat.
+**Javítás:** Az ügynök manuális frissítéséhez kövesse az alábbi utasításokat.
 
 1. Töltse le az ügynök új verzióját a munkamenet-gazda virtuális gépre.
 2. Indítsa el a Feladatkezelő eszközt, és a szolgáltatás lapon állítsa le a RDAgentBootLoader szolgáltatást.
@@ -127,17 +127,17 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 5. Fejezze be a telepítővarázsló lépéseit.
 6. Nyissa meg a Feladatkezelő eszközt, és indítsa el a RDAgentBootLoader szolgáltatást.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hiba:  A Windows rendszerű virtuális asztali ügynök beállításjegyzékbeli bejegyzésének IsRegistered a 0 értéket jeleníti meg
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hiba: a Windows rendszerű virtuális asztali ügynök beállításjegyzékbeli bejegyzése IsRegistered 0 értéket jelenít meg
 
-**Okozhat** A regisztrációs jogkivonat lejárt, vagy a (999999) lejárati értékkel lett létrehozva.
+**OK:** A regisztrációs jogkivonat lejárt, vagy a (999999) lejárati értékkel lett létrehozva.
 
-**Javítsa ki** Az ügynök beállításjegyzékbeli hibájának kijavításához kövesse az alábbi utasításokat.
+**Javítás:** Az ügynök beállításjegyzékbeli hibájának kijavításához kövesse az alábbi utasításokat.
 
 1. Ha már van regisztrációs jogkivonat, távolítsa el a Remove-RDSRegistrationInfo.
 2. Új jogkivonat előállítása az RDS-NewRegistrationInfo.
 3. Győződjön meg arról, hogy a-ExpriationHours paraméter értéke 72 (a maximális érték a 99999).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Hiba: A Windows rendszerű virtuális asztali ügynök nem jelent szívverést a Get-RdsSessionHost futtatásakor
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést a Get-RdsSessionHost futtatásakor
 
 **1. ok:** A RDAgentBootLoader szolgáltatás le lett állítva.
 
@@ -203,9 +203,9 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 
 ![O_REVERSE_CONNECT_STACK_FAILURE-hibakód.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Okozhat** A párhuzamos verem nincs telepítve a munkamenet-gazdagép virtuális gépén.
+**OK:** A párhuzamos verem nincs telepítve a munkamenet-gazdagép virtuális gépén.
 
-**Javítsa ki** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
+**Javítás:** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
 2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
@@ -233,7 +233,7 @@ A szervizelés futtatásához használt virtuális gépnek ugyanazon az alháló
 Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhálózatról és tartományról:
 
 1. Kapcsolódjon a standard RDP protokoll (RDP) szolgáltatáshoz a virtuális géphez, ahonnan a javítást alkalmazni fogja.
-2. Töltse le a https://docs.microsoft.com/sysinternals/downloads/psexec PsExec a alkalmazásból.
+2. Töltse le a PsExec https://docs.microsoft.com/sysinternals/downloads/psexec címről.
 3. Bontsa ki a letöltött fájlt.
 4. Indítsa el a parancssort helyi rendszergazdaként.
 5. Navigáljon a mappához, ahol a PsExec ki lett csomagolva.
@@ -296,13 +296,13 @@ Ha az operációs rendszer Microsoft Windows 10, folytassa az alábbi utasítás
 
 16. Ha a parancsmagok futása befejeződött, indítsa újra a virtuális gépet a meghibásodott párhuzamos verem használatával.
 
-## <a name="remote-licensing-model-isnt-configured"></a>A távoli licencelési modell nincs konfigurálva
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Távoli asztal licencelési mód nincs konfigurálva
 
 Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkamenetbe, előfordulhat, hogy a "Távoli asztal licencelési mód nincs konfigurálva, Távoli asztali szolgáltatások X nap múlva nem fog működni. A Csatlakozáskezelő kiszolgálón a Kiszolgálókezelő használatával adhatja meg a Távoli asztal licencelési módot. "
 
 Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal ügyfél-hozzáférési licenc ehhez a számítógéphez."
 
-Ha ezek közül bármelyik üzenet látható, akkor meg kell nyitnia a Csoportházirend-szerkesztőt, és manuálisan kell konfigurálnia a licencelési módot **felhasználónként**. A manuális konfigurációs folyamat eltér attól függően, hogy a Windows 10 Enterprise több munkamenetének melyik verzióját használja. A következő szakaszokban megtudhatja, hogyan ellenőrizhető a verziószám, és mi a teendő.
+Ha ezeket az üzeneteket látja, ez azt jelenti **, hogy a**rendszerkép nem rendelkezik a legújabb Windows-frissítések telepítésével, vagy a távoli asztal licencelési mód beállítása felhasználónként. Távolítson el minden olyan konfigurációt, amely ezt a házirendet beállítja, majd kövesse a lépéseket a Windows 10 Enterprise-munkamenet verziójának azonosításához, és telepítse a megfelelő frissítést.  
 
 >[!NOTE]
 >A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)című témakört.
@@ -322,52 +322,13 @@ Most, hogy már ismeri a verziószámát, ugorjon a megfelelő szakaszra.
 
 ### <a name="version-1809"></a>1809-es verzió
 
-Ha a verziószáma a "1809" értéket adja meg, frissítsen a Windows 10 Enterprise multi-session, a 1903 verzióra, vagy telepítse újra a gazdagépet a legújabb képpel.
-
-A Windows 10 1903-es verzióra való frissítéshez:
-
-1. Ha még nem tette meg, töltse le és telepítse a [Windows 10 május 2019 frissítését](https://support.microsoft.com/help/4028685/windows-10-get-the-update).
-2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
-3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
-5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
-6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
-    
-    ![A "Távoli asztal licencelési mód beállítása" ablak képernyőképe a 6. lépésben megadott utasítások szerint.](media/group-policy-editor-per-user.png)
-
-7. Kattintson az **Alkalmaz** gombra.
-8. Kattintson az **OK** gombra.
-9.  Indítsa újra a gépet.
-
-A gazdagép-készlet újbóli üzembe helyezése a legújabb képpel:
-
-1. Kövesse a [gazdagép létrehozása az Azure Marketplace](create-host-pools-azure-marketplace.md) -en című témakör utasításait, amíg meg nem kérdezi, hogy kiválassza-e a rendszerkép operációs rendszerének verzióját. Az Office 365 ProPlus vagy anélkül is választhat Windows 10 Enterprise-alapú több munkamenetet.
-2. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
-3. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-4. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
-5. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
-6. A megnyíló ablakban először válassza az **engedélyezve**lehetőséget, majd a beállítások alatt adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**.
-7. Kattintson az **Alkalmaz** gombra.
-8. Kattintson az **OK** gombra.
-9.  Indítsa újra a gépet.
+Ha a verziószáma a "1809" értéket adja meg, telepítse [a KB4516077 frissítését](https://support.microsoft.com/help/4516077).
 
 ### <a name="version-1903"></a>1903-es verzió
 
-Ha a verziószáma "1903" értéket ad meg, kövesse az alábbi utasításokat:
+Ha a verziószáma a "1903" értéket adja meg, telepítse [a KB4517211 frissítését](https://support.microsoft.com/help/4517211).
 
-1. Jelentkezzen be a számítógépre a rendszergazdai fiókjával.
-2. Futtassa a **gpedit. msc fájlt** a csoportházirend-szerkesztő megnyitásához.
-3. A számítógép konfigurációja területen lépjen a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép** > licencelése elemre..
-4. Válassza **a távoli asztal licencelési mód beállítása**lehetőséget.
-6. A megnyíló ablakban válassza az **engedélyezve**lehetőséget, majd a beállítások szakaszban adja meg a távoli asztali munkamenetgazda-kiszolgáló licencelési módját **felhasználónként**, az alábbi ábrán látható módon.
-    
-    ![A "Távoli asztal licencelési mód beállítása" ablak képernyőképe a 6. lépésben megadott utasítások szerint.](media/group-policy-editor-per-user.png)
-
-7. Kattintson az **Alkalmaz** gombra.
-8. Kattintson az **OK** gombra.
-9.  Indítsa újra a gépet.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
@@ -375,6 +336,6 @@ Ha a verziószáma "1903" értéket ad meg, kövesse az alábbi utasításokat:
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához lásd: [Távoli asztal ügyfélkapcsolatok](troubleshoot-client-connection.md).
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
 - A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali környezet](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)című témakört.
-- A következő témakörben talál útmutatást [a hibakereséshez: oktatóanyag: Resource Manager-sablonok központi telepítésének](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)hibája.
+- A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
 - További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 - Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).

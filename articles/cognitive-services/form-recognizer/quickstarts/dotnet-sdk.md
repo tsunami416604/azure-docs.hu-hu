@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242519"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264436"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Gyors útmutató: űrlap-felismerő ügyféloldali kódtára a .NET-hez
 
@@ -34,7 +34,7 @@ Használja a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a k�
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/).
 * Hozzáférés az űrlap-felismerő korlátozott hozzáférésének előzetes verziójához. Az előzetes verzió eléréséhez töltse ki és küldje el az [űrlap-felismerő hozzáférési kérelmének](https://aka.ms/FormRecognizerRequestAccess) űrlapját.
-* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat.
+* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adataival kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **vonattal** mappában található fájlokat.
 * A [.net Core](https://dotnet.microsoft.com/download/dotnet-core)jelenlegi verziója.
 
 ## <a name="setting-up"></a>Beállítás
@@ -122,6 +122,7 @@ A módszerek meghatározása előtt adja hozzá a következő változó definíc
 
 * A szolgáltatás végpontjának értékét a Azure Portal **Áttekintés** szakaszában találja. 
 * A betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, és válassza a **közös hozzáférési aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Ha az elemzéshez minta űrlapra van szüksége, használhatja a [minta adatkészletének](https://go.microsoft.com/fwlink/?linkid=2090451) **tesztelési** mappájában található egyik fájlt. Ez az útmutató csak PDF-űrlapokat használ.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 

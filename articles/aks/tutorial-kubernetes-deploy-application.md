@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018924"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263872"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service-ben (AKS)
 
 A Kubernetes tárolóalapú alkalmazásokhoz kínál elosztott platformot. Ön hozz létre és helyezi üzembe saját alkalmazásait és szolgáltatásait a Kubernetes-fürtön, a rendelkezésre állást és a kapcsolatokat pedig a fürt kezeli. Ebben az oktatóanyagban, amely egy hétrészes sorozat negyedik része, egy alkalmazást helyezünk üzembe egy Kubernetes-fürtön. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -28,7 +28,7 @@ A további oktatóanyagokban az alkalmazás méretezése és frissítése megtö
 
 A rövid útmutató feltételezi, hogy rendelkezik a Kubernetes használatára vonatkozó alapvető ismeretekkel. További információ: [Az Azure Kubernetes Service (ak) Kubernetes alapfogalmai][kubernetes-concepts].
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az előző oktatóanyagokban egy alkalmazást csomagoltunk egy tárolórendszerképbe, a rendszerképet feltöltöttük az Azure Container Registrybe, és létrehoztunk egy Kubernetes-fürtöt.
 
@@ -68,7 +68,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Mentse és zárja be a fájlt. A `vi`alkalmazásban `:wq`használja a t.
+Mentse és zárja be a fájlt. @No__t – 0 esetében használja a `:wq` értéket.
 
 ## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
 
@@ -99,13 +99,13 @@ A folyamat állapotának monitorozásához használja [kubectl get service][kube
 kubectl get service azure-vote-front --watch
 ```
 
-Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az alábbi módon jelenikmeg:
+Kezdetben az *Azure-vote-elülső* szolgáltatás *külső IP-címe* az *alábbi módon jelenik*meg:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-Ha a *külső IP-* cím függőben állapotról tényleges nyilvános IP-címről változik, `CTRL-C` akkor a `kubectl` figyelési folyamat leállításához használja a következőt:. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
+Ha a *külső IP* -cím *függőben* ÁLLAPOTRÓL tényleges nyilvános IP-címről változik, a `kubectl` figyelési folyamat leállításához használja a `CTRL-C` elemet. A következő példa kimenete a szolgáltatáshoz hozzárendelt érvényes nyilvános IP-címet jeleníti meg:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -115,9 +115,9 @@ Az alkalmazás működés közbeni megtekintéséhez nyisson meg egy webböngés
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet lehúzni, tekintse [meg a hozzáférés engedélyezése Container Registry Kubernetes titkos kulccsal](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret)című témakört.
+Ha az alkalmazás nem töltődött be, lehetséges, hogy az a rendszerkép-beállításjegyzékkel kapcsolatos hitelesítési probléma oka. A tárolók állapotának megtekintéséhez használja a `kubectl get pods` parancsot. Ha a tároló lemezképeit nem lehet kihúzni, tekintse meg a [hitelesítés a Azure Container Registry az Azure Kubernetes szolgáltatással](cluster-container-registry-integration.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure vote-alkalmazást telepítettünk egy AK-beli Kubernetes-fürtre. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

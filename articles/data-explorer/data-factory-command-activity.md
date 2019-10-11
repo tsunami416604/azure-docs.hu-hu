@@ -8,16 +8,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131440"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264486"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Data Factory Command tevékenység használata az Azure Adatkezelő Control parancsok futtatásához
 
-[Azure Data Factory](/azure/data-factory/) Az (ADF) egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi tevékenységek kombinációjának végrehajtását az adatokon. Az ADF használatával adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezés és az adatátalakítás előkészítéséhez és automatizálásához. A Azure Data Factory **azure adatkezelő parancsának** tevékenysége lehetővé teszi az [Azure adatkezelő-vezérlési parancsok](/azure/kusto/concepts/#control-commands) futtatását egy ADF-munkafolyamaton belül. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan folyamatot, amely egy Azure Adatkezelő Command tevékenységet tartalmazó keresési tevékenységgel és ForEach tevékenységgel rendelkezik.
+A [Azure Data Factory](/azure/data-factory/) (ADF) egy felhőalapú adatintegrációs szolgáltatás, amely lehetővé teszi tevékenységek kombinációjának végrehajtását az adatokon. Az ADF használatával adatvezérelt munkafolyamatokat hozhat létre az adatáthelyezés és az adatátalakítás előkészítéséhez és automatizálásához. A Azure Data Factory **azure adatkezelő parancsának** tevékenysége lehetővé teszi az [Azure adatkezelő-vezérlési parancsok](/azure/kusto/concepts/#control-commands) futtatását egy ADF-munkafolyamaton belül. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan folyamatot, amely egy Azure Adatkezelő Command tevékenységet tartalmazó keresési tevékenységgel és ForEach tevékenységgel rendelkezik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,11 +29,13 @@ ms.locfileid: "71131440"
 ## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
 
 1. Válassza ki a **szerzői** ceruza eszközt. 
-1. Hozzon létre egy új **+** folyamatot a legördülő menüből kiválasztva, majd válassza a **folyamat** lehetőséget.
+1. Hozzon létre egy új folyamatot **+** kiválasztásával, majd válassza a **folyamat** lehetőséget a legördülő menüből.
 
    ![új folyamat létrehozása](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Keresési tevékenység létrehozása
+
+A [keresési tevékenység](/azure/data-factory/control-flow-lookup-activity) bármilyen Azure Data Factory által támogatott adatforrásból lekérhet egy adatkészletet. A keresési tevékenység kimenete ForEach vagy más tevékenységben is használható.
 
 1. A **tevékenységek** ablaktábla **általános**területén válassza ki a **keresési** tevékenységet. Húzza át a fő vászonra a jobb oldalon.
  
@@ -83,13 +85,13 @@ ms.locfileid: "71131440"
     * Válassza a **kapcsolat tesztelése** lehetőséget a létrehozott társított szolgáltatás kapcsolatának teszteléséhez. Ha csatlakozni tud a telepítőhöz, akkor a zöld pipa- **kapcsolat sikeresen** megjelenik.
     * Válassza a **Befejezés** lehetőséget a társított szolgáltatás létrehozásának befejezéséhez.
 
-1. Miután beállította a társított szolgáltatást, a **AzureDataExplorerTable** > -**kapcsolat**területen adja hozzá a **Táblanév** nevet. Válassza az **előnézeti**adatforrások lehetőséget, hogy meggyőződjön arról, hogy az adott adatmegjelenítés megfelelően jelenik meg.
+1. Miután beállított egy társított szolgáltatást, a **AzureDataExplorerTable** > **kapcsolatban**adja hozzá a **Táblanév** nevet. Válassza az **előnézeti**adatforrások lehetőséget, hogy meggyőződjön arról, hogy az adott adatmegjelenítés megfelelően jelenik meg.
 
    Az adatkészlet most már készen áll, és továbbra is szerkesztheti a folyamatát.
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Lekérdezés hozzáadása a keresési tevékenységhez
 
-1. A **folyamat-4 – docs** > **Beállítások** hozzáadása **lekérdezés szövegmezőben** , például:
+1. A **folyamat-4-docs** > **beállításban** adjon hozzá egy lekérdezést a **lekérdezés** szövegmezőben, például:
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131440"
 
 ## <a name="create-a-for-each-activity"></a>Minden tevékenység létrehozása 
 
-1. Ezután adjon hozzá egy for-each tevékenységet a folyamathoz. Ez a tevékenység a keresési tevékenység által visszaadott adatok feldolgozását fogja feldolgozni. 
+A [for-each](/azure/data-factory/control-flow-for-each-activity) tevékenység használatával megismételhető egy gyűjtemény, és a megadott tevékenységek egy hurokban hajthatók végre. 
+
+1. Most adjon hozzá egy for-each tevékenységet a folyamathoz. Ez a tevékenység a keresési tevékenység által visszaadott adatok feldolgozását fogja feldolgozni. 
     * A **tevékenységek** ablaktáblán az **iteráció & a feltételesség**területen válassza ki a **foreach** tevékenységet, és húzza a vászonra.
     * Rajzoljon egy vonalat a keresési tevékenység kimenete és a ForEach tevékenység bemenete között a vásznon a kapcsolódáshoz.
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131440"
 1.  Válassza ki a ForEach tevékenységet a vásznon. Az alábbi **Beállítások** lapon:
     * A keresési eredmények szekvenciális feldolgozásához jelölje be a **szekvenciális** jelölőnégyzetet, vagy hagyja, hogy a rendszer törölje a jelet a párhuzamos feldolgozás létrehozásához.
     * Adja meg a **kötegek darabszámát**.
-    * Az **elemek**területen adja meg az alábbi értékeket a kimeneti értékre:  *@activity("Lookup1"). output. Value*
+    * Az **elemek**területen adja meg a következő kimeneti értékre mutató hivatkozást: *@activity ("Lookup1"). output. Value*
 
        ![ForEach tevékenység beállításai](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -166,7 +170,7 @@ A parancs tevékenység kimenetének szerkezete alább látható. Ezt a kimenete
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Nem aszinkron vezérlési parancs visszaadott értéke
 
-A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonló a keresési tevékenység eredményének struktúrájához. A `count` mezőben a visszaadott rekordok száma látható. A rögzített tömb mező `value` a rekordok listáját tartalmazza. 
+A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonló a keresési tevékenység eredményének struktúrájához. A `count` mező a visszaadott rekordok számát jelzi. A rögzített tömb mező @no__t – 0 a rekordok listáját tartalmazza. 
 
 ```json
 { 
@@ -188,7 +192,7 @@ A nem aszinkron vezérlési parancsokban a visszaadott érték szerkezete hasonl
  
 ### <a name="returned-value-of-an-async-control-command"></a>Aszinkron vezérlő parancs visszaadott értéke
 
-Egy aszinkron vezérlési parancsban a tevékenység lekérdezi az operatív táblázatot a jelenetek mögött, amíg az aszinkron művelet be nem fejeződik, vagy időtúllépés történik. Ezért a visszaadott érték az adott `.show operations OperationId` **OperationId** tulajdonság eredményét fogja tartalmazni. Ellenőrizze az **állapot** és **állapot** tulajdonságok értékeit a művelet sikeres befejezésének ellenőrzéséhez.
+Egy aszinkron vezérlési parancsban a tevékenység lekérdezi az operatív táblázatot a jelenetek mögött, amíg az aszinkron művelet be nem fejeződik, vagy időtúllépés történik. Ezért a visszaadott érték az adott **OperationId** tulajdonsághoz `.show operations OperationId` eredményét fogja tartalmazni. Ellenőrizze az **állapot** és **állapot** tulajdonságok értékeit a művelet sikeres befejezésének ellenőrzéséhez.
 
 ```json
 { 
@@ -213,7 +217,7 @@ Egy aszinkron vezérlési parancsban a tevékenység lekérdezi az operatív tá
 }
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [másolhat adatait az Azure Adatkezelő Azure Data Factory használatával](data-factory-load-data.md).
 * További információ az [adatbázisból az adatkezelő Azure-ba való tömeges másoláshoz Azure Data Factory sablon](data-factory-template.md)használatával.

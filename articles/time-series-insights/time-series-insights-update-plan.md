@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6141f898a33b4b37c2a1f16e115b184e21163a5a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 780e639ad6e1ee721820749da2df9ea6efa07bd6
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300694"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273722"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>A Azure Time Series Insights előzetes verzió környezetének megtervezése
 
@@ -54,7 +54,7 @@ A kezdéshez három további elemre van szükség:
 Új Time Series Insights-környezet létrehozásához válasszon egy idősorozat-azonosítót. Ez logikai partícióként működik az adatai számára. Ahogy azt említettük, győződjön meg arról, hogy az idősorozat-azonosítók készen állnak.
 
 > [!IMPORTANT]
-> Az idősorozat- azonosítók nem változtathatók meg, és *később nem módosíthatók*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
+> Az idősorozat-azonosítók nem *változtathatók* meg, és *később nem módosíthatók*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
 
 Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító](./time-series-insights-update-how-to-id.md) és a [tárolás és a bejövő](./time-series-insights-update-storage-ingress.md)adatok kiválasztásához.
 
@@ -82,11 +82,11 @@ Egy jó ökölszabály:
 * Az idősorozat-modellben tárolja a metaadatokat.
 * Az idősorozat mód, a példány mezői és az események csak a szükséges információkat tartalmazzák, például egy idősorozat-azonosítót vagy egy időbélyeg-t.
 
-További információ: [Shape Events](./time-series-insights-send-events.md#json).
+További információ: [Shape Events](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át [Azure Advisor](../advisor/advisor-overview.md) az üzleti helyreállítás konfigurációs beállításainak megtervezéséhez.
 

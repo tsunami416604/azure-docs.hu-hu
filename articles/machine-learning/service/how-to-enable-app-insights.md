@@ -1,5 +1,5 @@
 ---
-title: Az Azure Application Insights beállítása a ML-modellek figyelésére
+title: Machine Learning webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning üzembe helyezett webszolgáltatások figyelése az Azure Application Insights
 services: machine-learning
@@ -7,135 +7,149 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: marthalc
-author: marthalc
-ms.date: 07/12/2019
+ms.author: copeters
+author: lostmygithubaccount
+ms.date: 09/25/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 08c891ce2702455cac9618152061e992fc81420b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002868"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274007"
 ---
-# <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Az Application insights szolgáltatással az Azure Machine Learning-modellek figyelése
+# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Azure Machine Learning Azure-Application Insights. Az Application Insights lehetővé teszi, hogy figyelése:
-* Kérelem értékek, válaszidők és hibaarányok.
-* Függőségi értékek, válaszidők és hibaarányok.
+Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási végpontokon üzembe helyezett modellekről az Azure Kubernetes szolgáltatásban (ak) vagy Azure Container Instances (ACI) az Azure Application Insights engedélyezésével. A végpont bemeneti adatának és válaszának begyűjtése mellett a következőket is figyelheti:
+* A kérelmek díja, a válaszidő és a sikertelenség aránya.
+* Függőségi arányok, válaszidő és sikertelenség aránya.
 * Kivételek.
 
-[További információ az Application Insights](../../azure-monitor/app/app-insights-overview.md). 
+[További információ az Azure Application Insightsról](../../azure-monitor/app/app-insights-overview.md). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
-* Egy helyi könyvtárba, amely tartalmazza a parancsfájlokat, és az Azure Machine Learning SDK telepítve van a Pythonhoz készült Azure Machine Learning munkaterület. Ismerje meg, hogyan tehet szert az Előfeltételek, lásd: [a fejlesztési környezet konfigurálása](how-to-configure-environment.md).
-* Egy betanított gépi tanulási modellt az Azure Kubernetes Service (AKS) vagy az Azure Container Instance (aci) Szolgáltatásban üzembe helyezhető. Ha még nincs fiókja, tekintse meg a [Train kép osztályozási modell](tutorial-train-models-with-aml.md) oktatóanyag.
+* Egy Azure Machine Learning munkaterület, egy helyi könyvtár, amely tartalmazza a parancsfájlokat, és a Azure Machine Learning SDK for Python telepítve van. Az előfeltételek beszerzéséről a [fejlesztési környezet konfigurálása](how-to-configure-environment.md)című cikkben olvashat bővebben.
+* Az Azure Kubernetes Service (ak) vagy az Azure Container instance (ACI) számára üzembe helyezett, betanított gépi tanulási modell. Ha még nem rendelkezik ilyennel, tekintse meg a [betanítási modell besorolása](tutorial-train-models-with-aml.md) című oktatóanyagot.
 
+## <a name="web-service-input-and-response-data"></a>Webszolgáltatás bemeneti és reagálási adatok
 
-## <a name="use-sdk-to-configure"></a>Az SDK használata a konfiguráláshoz 
+A szolgáltatás bemenete és válasza – az ML-modellbe és annak előrejelzéséhez tartozó bemenetekkel összhangban – a `"model_data_collection"` üzenet alatt naplózza az Azure Application Insights nyomkövetéseit. Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután az Azure ML szolgáltatásban is használhatók a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
 
-### <a name="update-a-deployed-service"></a>Telepített szolgáltatások frissítésével
-1. A munkaterület a szolgáltatás azonosítására. Az érték `ws` a munkaterület neve.
+## <a name="use-the-azure-portal-to-configure"></a>A konfiguráláshoz használja a Azure Portal
+
+Az Azure-Application Insights engedélyezheti és letilthatja a Azure Portal. 
+
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a munkaterületet.
+
+1. A **központi telepítések** lapon válassza ki azt a szolgáltatást, amelyen engedélyezni szeretné az Azure Application Insights.
+
+   [@no__t – szolgáltatások 1List a központi telepítések lapon](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+
+3. Válassza a **Szerkesztés** elemet.
+
+   [@no__t – 1Edit gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+4. A **Speciális beállítások**területen jelölje be a **AppInsights-diagnosztika engedélyezése** jelölőnégyzetet.
+
+   [@no__t – 1Selected jelölőnégyzet a diagnosztika engedélyezéséhez](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+
+1. Kattintson a **frissítés** gombra a képernyő alján a módosítások alkalmazásához. 
+
+### <a name="disable"></a>Letiltás
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a munkaterületet.
+1. Jelölje ki a **központi telepítések**elemet, válassza ki a szolgáltatást, majd válassza a **Szerkesztés**lehetőséget.
+
+   [@no__t – a Szerkesztés gomb 1Use](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+
+1. A **Speciális beállítások**területen törölje a jelet a **AppInsights-diagnosztika engedélyezése** jelölőnégyzetből. 
+
+   [@no__t – 1Cleared jelölőnégyzet a diagnosztika engedélyezéséhez](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+
+1. Kattintson a **frissítés** gombra a képernyő alján a módosítások alkalmazásához. 
+ 
+## <a name="use-python-sdk-to-configure"></a>A Python SDK használata a konfiguráláshoz 
+
+### <a name="update-a-deployed-service"></a>Központilag telepített szolgáltatás frissítése
+1. Azonosítsa a szolgáltatást a munkaterületen. A `ws` érték a munkaterület neve.
 
     ```python
     from azureml.core.webservice import Webservice
     aks_service= Webservice(ws, "my-service-name")
     ```
-2. Frissítse a szolgáltatást, és engedélyezze az Application Insights. 
+2. Frissítse a szolgáltatást, és engedélyezze az Azure Application Insights-t. 
 
     ```python
     aks_service.update(enable_app_insights=True)
     ```
 
-### <a name="log-custom-traces-in-your-service"></a>A szolgáltatási egyéni nyomkövetési naplók
-Ha azt szeretné, hogy egyéni nyomkövetési naplók, hajtsa végre a szokásos központi telepítési folyamat az AKS vagy az aci Szolgáltatásban a [üzembe helyezése és hol](how-to-deploy-and-where.md) dokumentumot. Ezután kövesse az alábbi lépéseket:
+### <a name="log-custom-traces-in-your-service"></a>Egyéni Nyomkövetések naplózása a szolgáltatásban
+Ha egyéni nyomkövetést szeretne naplózni, kövesse a normál üzembe helyezési folyamatot az AK vagy ACI esetében a dokumentum [üzembe helyezése és helye témakörben](how-to-deploy-and-where.md) . Ezután kövesse az alábbi lépéseket:
 
-1. Frissítse a pontozófájl nyomtatási utasítások hozzáadásával.
+1. A pontozási fájl frissítése nyomtatási utasítások hozzáadásával.
     
     ```python
     print ("model initialized" + time.strftime("%H:%M:%S"))
     ```
 
-2. A szolgáltatás konfigurációjának frissítése.
+2. Frissítse a szolgáltatás konfigurációját.
     
     ```python
     config = Webservice.deploy_configuration(enable_app_insights=True)
     ```
 
-3. Állítson össze egy rendszerképet, és telepítenie a [AKS](how-to-deploy-to-aks.md) vagy [ACI](how-to-deploy-to-aci.md).  
+3. Hozzon létre egy rendszerképet, és telepítse azt [AK](how-to-deploy-to-aks.md) -ra vagy [ACI](how-to-deploy-to-aci.md)-ra.  
 
-### <a name="disable-tracking-in-python"></a>Tiltsa le a Pythonban nyomon követése
+### <a name="disable-tracking-in-python"></a>A nyomkövetés letiltása a Pythonban
 
-Az Application Insights letiltásához használja a következő kódot:
+Az Azure Application Insights letiltásához használja a következő kódot:
 
 ```python 
 ## replace <service_name> with the name of the web service
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="use-portal-to-configure"></a>A portál használata a konfiguráláshoz
+## <a name="evaluate-data"></a>Az adatértékelés
+A szolgáltatás adatait a rendszer az Azure Application Insights-fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.
+A megtekintéshez:
+1. Lépjen a [Azure Portal](https://portal.azure.com)Machine learning szolgáltatás munkaterületére. Kattintson az Azure Application Insights hivatkozásra.
 
-Engedélyezheti és letilthatja az Application Insights az Azure Portalon.
+    [@no__t – 1AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a munkaterületet.
+1. A szolgáltatáshoz tartozó mérőszámok alapszintű készletének megjelenítéséhez válassza az **Áttekintés** lapot.
 
-1. Az a **központi telepítések** lapra, válassza ki a szolgáltatást, ha szeretné engedélyezni, az Application Insights.
+   [@no__t – 1Overview](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-   [![A központi telepítések lapon szolgáltatások listája](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+1. Ha szeretné megtekinteni a webszolgáltatás bemeneti és válaszi hasznos adatait, válassza az **elemzés** lehetőséget.
+1. A séma szakaszban válassza a **Nyomkövetések** lehetőséget, majd a `"model_data_collection"` üzenettel szűrje a nyomkövetéseket. Az egyéni dimenziókban megtekintheti a bemeneteket, az előrejelzéseket és az egyéb releváns adatokat.
 
-3. Válassza a **Szerkesztés** elemet.
-
-   [![Szerkesztés gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-4. A **speciális beállítások**, jelölje be a **engedélyezni az AppInsights-diagnosztika** jelölőnégyzetet.
-
-   [![Diagnosztika engedélyezése a bejelölt jelölőnégyzet](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
-
-1. Válassza ki **frissítés** alkalmazza a módosításokat a képernyő alján. 
-
-### <a name="disable"></a>Letiltás
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a munkaterületet.
-1. Válassza ki **központi telepítések**, válassza ki a szolgáltatást, és válassza ki **szerkesztése**.
-
-   [![Szerkesztés gomb](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
-
-1. A **speciális beállítások**, törölje a **engedélyezni az AppInsights-diagnosztika** jelölőnégyzetet. 
-
-   [![Diagnosztika engedélyezése az üres jelölőnégyzet](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
-
-1. Válassza ki **frissítés** alkalmazza a módosításokat a képernyő alján. 
- 
-
-## <a name="evaluate-data"></a>Adatok kiértékelése
-A szolgáltatás adatait a rendszer a Application Insights fiókjában tárolja, amely ugyanabban az erőforráscsoporthoz van, mint Azure Machine Learning.
-A megtekintéséhez:
-1. Nyissa meg a Machine Learning szolgáltatás munkaterületén a [az Azure portal](https://portal.azure.com) és Application Insights hivatkozásra kattintva.
-
-    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
-
-1. Válassza ki a **áttekintése** lapján megtekintheti a metrikákat a szolgáltatás egy alapvető házirendcsoport.
-
-   [![– Áttekintés](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
-
-3. Az egyéni nyomkövetési megvizsgáljuk, jelölje be **Analytics**.
-4. A séma területen válassza ki a **nyomkövetések**. Válassza ki **futtatása** futtatni a lekérdezést. Adatok táblázatos formában kell megjelennie, és hozzá kell rendelnie a egyéni hívás a pontozás fájlban. 
-
-   [![Egyéni nyomkövetési](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
-
-Az Application Insights használatával kapcsolatos további tudnivalókért lásd: [Mi az Application Insights?](../../azure-monitor/app/app-insights-overview.md).
+   [@no__t 1Model-adathalmazok](media/how-to-enable-app-insights/model-data-trace.png)](./media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 
-## <a name="example-notebook"></a>Példa notebook
+3. Az egyéni nyomkövetési kereséshez válassza az **elemzés**lehetőséget.
+4. A séma szakaszban válassza a **Nyomkövetések**lehetőséget. Ezután válassza a **Futtatás** lehetőséget a lekérdezés futtatásához. Az adattartalomnak táblázatos formátumban kell szerepelnie, és a pontozási fájlban lévő egyéni hívásokra kell leképeznie. 
+
+   [@no__t – 1Custom-nyomkövetés](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+
+Ha többet szeretne megtudni az Azure Application Insights használatáról, tekintse meg a [Mi az a Application Insights?](../../azure-monitor/app/app-insights-overview.md)című témakört.
+
+## <a name="export-data-for-further-processing-and-longer-retention"></a>Adatok exportálása a további feldolgozáshoz és a hosszú megőrzéshez
+
+Az Azure Application Insights [folyamatos exportálásával](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) üzeneteket küldhet egy támogatott Storage-fiókba, ahol megtarthat egy nagyobb adatmegőrzést. A `"model_data_collection"` üzenetek JSON formátumban vannak tárolva, és könnyen elemezhetők a modell-adatok kinyeréséhez. A Azure Data Factory, az Azure ML-feldolgozási folyamatai vagy más adatfeldolgozási eszközök is használhatók az adatátalakításhoz igény szerint. Ha átalakította az adatokat, akkor a Azure Machine Learning szolgáltatás munkaterületen adatkészletként regisztrálhat.
+
+   [@no__t – 1Continuous-exportálás](media/how-to-enable-app-insights/continuous-export-setup.png)](./media/how-to-enable-app-insights/continuous-export-setup.png)
+
+
+## <a name="example-notebook"></a>Példa jegyzetfüzetre
 
 Az [enable-app-Insight-in-producting-Service. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) notebook bemutatja a cikkben szereplő fogalmakat. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
-## <a name="next-steps"></a>További lépések
-A modellek éles a is gyűjthet adatokat. A cikk a [modellek éles adatokat gyűjthessen](how-to-enable-data-collection.md). 
+## <a name="next-steps"></a>Következő lépések
 
-[A tárolók Azure monitor](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)is olvashatja.
+* Lásd: [modell üzembe helyezése Azure Kubernetes Service-fürtön](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-kubernetes-service) vagy [modell üzembe](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-azure-container-instance) helyezése Azure Container instances a modellek webszolgáltatás-végpontokra való üzembe helyezéséhez, valamint az Azure-Application Insights engedélyezése az adatgyűjtés és a végpont kihasználása érdekében figyelés.
+* Tekintse meg a [MLOps: modellek kezelése, üzembe helyezése és monitorozása a Azure Machine learning](https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment) segítségével további információ az éles modellekben gyűjtött adatok kihasználásáról. Ezek az adatai segíthetnek a gépi tanulási folyamat folyamatos fejlesztésében. 

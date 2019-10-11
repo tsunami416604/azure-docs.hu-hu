@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 728d32ddb63658d24e932e8eeef4a3f50371ccc3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177677"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72265048"
 ---
 # <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
 
@@ -91,6 +91,9 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
 Az átjárók közötti átvitel egy olyan egyenrangú tulajdonság, amely lehetővé teszi a virtuális hálózat számára a VPN-/ExpressRoute átjárók használatát egy, a létesítmények közötti vagy VNet-VNet kapcsolattal rendelkező virtuális hálózaton. A (bejövő vagy kimenő) átjáró felé irányuló forgalom a VNet VNet-kezelési díjat von maga után. További részletekért tekintse meg a [VPN Gateway díjait](https://azure.microsoft.com/pricing/details/vpn-gateway/) vagy a ExpressRoute, valamint a VNet-kitöltési [díjakat.](https://azure.microsoft.com/pricing/details/virtual-network)
+
+>[!NOTE]
+> A dokumentum egy korábbi verziója azt jelezte, hogy a VNet-társítási díjak nem vonatkoznak az átjárók átvitelére. Ez frissítve lett a díjszabási oldalon a pontos díjszabásnak megfelelően.
 
 ## <a name="next-steps"></a>Következő lépések
 

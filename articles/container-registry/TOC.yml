@@ -98,7 +98,7 @@
             - name: Hitelesítés az Azure Container Instancesből
               href: container-registry-auth-aci.md
             - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: Szerepkörök és engedélyek
           href: container-registry-roles.md
         - name: Tartalommegbízhatóság

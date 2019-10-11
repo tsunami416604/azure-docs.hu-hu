@@ -1,5 +1,5 @@
 ---
-title: A Azure Databricks Azure Blob Storage elérése Azure Key Vault oktatóanyag használatával
+title: BLOB Storage elérése a Key Vault használatával – Azure Databricks
 description: Ez az oktatóanyag leírja, hogyan érheti el az Azure Blob Storaget a Azure Databricks a Key vaultban tárolt titkok használatával.
 author: mamccrea
 ms.author: mamccrea
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976516"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274089"
 ---
-# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Oktatóanyag: Azure-Blob Storage elérése Azure Databricks használatával Azure Key Vault
+# <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Oktatóanyag: az Azure Blob Storage elérése Azure Databricks használatával Azure Key Vault
 
 Ez az oktatóanyag leírja, hogyan érheti el az Azure Blob Storaget a Azure Databricks a Key vaultban tárolt titkok használatával.
 
@@ -32,15 +32,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 > [!Note]
-> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós**előfizetésével.
-> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg azelőfizetését az utólagos elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
+> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
+> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Storage-fiók és blob-tároló létrehozása
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**tároló**elemet. Ezután válassza a **Storage-fiók**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** > **tároló**elemet. Ezután válassza a **Storage-fiók**lehetőséget.
 
    ![Azure Storage-fiók erőforrásának keresése](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -50,7 +50,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 3. Ha az ellenőrzés sikertelen, oldja meg a problémákat, és próbálkozzon újra. Ha az ellenőrzés sikeres, válassza a **Létrehozás** lehetőséget, és várja meg a Storage-fiók létrehozását.
 
-4. Navigáljon az újonnan létrehozott Storage-fiókhoz , és kattintson a **szolgáltatások** elemre az **Áttekintés** oldalon. Ezután válassza a **+ tároló** lehetőséget, és adja meg a tároló nevét. Kattintson az **OK** gombra.
+4. Navigáljon az újonnan létrehozott Storage-fiókhoz, **és kattintson a** **szolgáltatások** elemre az **Áttekintés** oldalon. Ezután válassza a **+ tároló** lehetőséget, és adja meg a tároló nevét. Kattintson az **OK** gombra.
 
    ![Új tároló létrehozása](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
@@ -74,12 +74,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 3. A **Key Vault létrehozása** lapon adja meg a következő információkat, és tartsa meg a fennmaradó mezők alapértelmezett értékeit:
 
-   |Tulajdonság|Description|
+   |Tulajdonság|Leírás|
    |--------|-----------|
-   |Name (Név)|A Key Vault egyedi neve.|
-   |Subscription|Válasszon előfizetést.|
-   |Resource group|Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.|
-   |Location|Válassza ki a helyet.|
+   |Név|A Key Vault egyedi neve.|
+   |Előfizetés|Válasszon egy előfizetést.|
+   |Erőforráscsoport|Válasszon egy erőforráscsoportot, vagy hozzon létre egy újat.|
+   |Földrajzi egység|Válassza ki a helyet.|
 
    ![Az Azure Key Vault tulajdonságai](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 5. A **titkos kulcs létrehozása** lapon adja meg a következő információkat, és tartsa meg a fennmaradó mezők alapértelmezett értékeit:
 
-   |Tulajdonság|Value|
+   |Tulajdonság|Value (Díj)|
    |--------|-----------|
    |Feltöltési beállítások|Kézi|
-   |Name (Név)|A Storage-fiók kulcsa rövid neve.|
-   |Value|key1.|
+   |Név|A Storage-fiók kulcsa rövid neve.|
+   |Value (Díj)|key1.|
 
    ![Új Key Vault-titok tulajdonságai](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -114,10 +114,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    |Tulajdonság  |Leírás  |
    |---------|---------|
    |Munkaterület neve     | Adja meg a Databricks-munkaterület nevét.        |
-   |Subscription     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
-   |Resource group     | Válassza ki ugyanazt az erőforráscsoportot, amely tartalmazza a kulcstartót. |
-   |Location     | Válassza ki ugyanazt a helyet, mint a Azure Key Vault. Az összes elérhető régióval kapcsolatban tekintse meg a [régiók által elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/)című témakört.        |
-   |Tarifacsomag     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+   |Előfizetés     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
+   |Erőforráscsoport     | Válassza ki ugyanazt az erőforráscsoportot, amely tartalmazza a kulcstartót. |
+   |Földrajzi egység     | Válassza ki ugyanazt a helyet, mint a Azure Key Vault. Az összes elérhető régióval kapcsolatban tekintse meg a [régiók által elérhető Azure-szolgáltatások](https://azure.microsoft.com/regions/services/)című témakört.        |
+   |Díjcsomag     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Databricks-munkaterület tulajdonságai](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
@@ -166,7 +166,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    ```
 
    * a **Mount-Name** egy DBFS elérési út, amely azt jelöli, hogy a blob Storage tároló vagy a tárolóban lévő mappa (a forrásban megadott) hol lesz csatlakoztatva.
-   * a **conf-Key** a következők `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` egyike lehet: vagy`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * a **conf-Key** lehet `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` vagy `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
    * **hatókör – a név** az előző szakaszban létrehozott titkos hatókör neve. 
    * a **kulcs neve** annak a titkos kulcsnak a neve, amelyet a Key vaultban a Storage-fiók kulcsa hozott létre.
 
@@ -207,7 +207,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a teljes erőforráscso
 
 2. Válassza az **erőforráscsoport törlése** elemet, és írja be az erőforráscsoport nevét. Ezután válassza a **Törlés** elemet. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkből megtudhatja, hogyan implementálhat egy VNet befecskendezett Databricks-környezetet egy Cosmos DB számára engedélyezett szolgáltatási végponttal.
 > [!div class="nextstepaction"]
