@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709601"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177535"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
 A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegét az Azure Portalon ellenőrizheti. A krediteket az általuk fedezett díjak kifizetésére használhatja.
 
-Díjat számítunk fel, ha olyan terméket használ, amelyet nem fedeznek a kreditek, vagy ha a használata meghaladja a kreditegyenlegét. További információért lásd [az Azure-kreditek által nem fedezett termékek körét.(#products-that-arent-covered-by-azure-credits).
+Díjat számítunk fel, ha olyan terméket használ, amelyet nem fedeznek a kreditek, vagy ha a használata meghaladja a kreditegyenlegét. További információért lásd [az Azure-kreditek által nem fedezett termékeket](#products-that-arent-covered-by-azure-credits).
 
 Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719914"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958363"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
@@ -272,7 +272,7 @@ A műveletcsoportok az egyetlen végpont, amelyet integrálni fogja a költségv
 Amikor létrehozza a műveletcsoportot, arra a logikai alkalmazásra fog mutatni, amelyet az oktatóanyag korábbi szakaszában létrehozott.
 
 1.  Ha még nem tette meg, jelentkezzen be az [Azure Portalon](https://portal.azure.com/), és válassza a **Minden szolgáltatás** > **Monitor** elemet.
-2.  A **Beállítások** szakaszban válassza a **Műveletcsoportok** lehetőséget.
+2.  Válassza a **Riasztások**, majd a **Műveletek kezelése** lehetőséget.
 3.  A **Műveletcsoportok** panelen válassza a **Műveletcsoport hozzáadása** pontot.
 4.  Adja hozzá és ellenőrizze a következő elemeket:
     - Műveletcsoport neve
