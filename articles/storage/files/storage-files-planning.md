@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327666"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249351"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
-[Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabvány SMB protokollon keresztül érhető el a felhőben. Mivel a Azure Files teljes körűen felügyelt, az éles környezetekben való üzembe helyezése sokkal egyszerűbb, mint a fájlkiszolgáló vagy a NAS-eszköz telepítése és kezelése. Ez a cikk azokat a témaköröket ismerteti, amelyeket figyelembe kell venni egy Azure-fájlmegosztás üzembe helyezése során a szervezeten belüli éles használatra.
+A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő SMB protokollon keresztül érhető el. Mivel a Azure Files teljes körűen felügyelt, az éles környezetekben való üzembe helyezése sokkal egyszerűbb, mint a fájlkiszolgáló vagy a NAS-eszköz telepítése és kezelése. Ez a cikk azokat a témaköröket ismerteti, amelyeket figyelembe kell venni egy Azure-fájlmegosztás üzembe helyezése során a szervezeten belüli éles használatra.
 
 ## <a name="management-concepts"></a>Felügyeleti fogalmak
 
@@ -24,15 +24,15 @@ ms.locfileid: "71327666"
 
 ![Fájlstruktúra](./media/storage-files-introduction/files-concepts.png)
 
-* **Storage-fiók**: Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Méretezhetőségi és teljesítménycélok).
+* **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Méretezhetőségi és teljesítménycélok).
 
 * **Megosztás**: A File Storage-megosztás egy SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak egy szülőmegosztásban kell létrejönnie. Egy fiók korlátlan számú megosztást tartalmazhat, és egy megosztás korlátlan számú fájlt tárolhat, akár a fájlmegosztás teljes kapacitásával. A standard fájlmegosztás esetében az összesített kapacitás legfeljebb 5 TiB (GA) vagy 100 TiB (előzetes verzió), prémium szintű fájlmegosztás esetén a teljes kapacitás akár 100 TiB.
 
-* **Könyvtár**: A címtárak választható hierarchiája.
+* **Könyvtár**: Egy választható könyvtár-hierarchia.
 
-* **Fájl**: Egy fájl a megosztásban. Egy fájl legfeljebb 1 TiB méretű lehet.
+* **Fájl**: A megosztásban található fájl. Egy fájl legfeljebb 1 TiB méretű lehet.
 
-* **URL-formátum**: A fájl REST protokollal végzett Azure-fájlmegosztás iránti kérelmek esetén a fájlok a következő URL-formátummal érhetők el:
+* **URL-formátum**: a fájl Rest protokollal végzett Azure-fájlmegosztás iránti kérelmek esetén a fájlok a következő URL-formátummal érhetők el:
 
     ```
     https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
@@ -42,26 +42,26 @@ ms.locfileid: "71327666"
 
 A Azure Files két, beépített, kényelmes adatelérési módszert kínál, amelyeket külön vagy egymással kombinálva használhat az adatai eléréséhez:
 
-1. **Közvetlen Felhőbeli hozzáférés**: Az Azure-fájlmegosztás [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)és/vagy [Linux](storage-how-to-use-files-linux.md) rendszereken is csatlakoztatható az iparági szabványnak megfelelő SMB protokollal vagy a REST API fájlon keresztül. Az SMB-vel a megosztásban található fájlok olvasása és írása közvetlenül az Azure-beli fájlmegosztás esetében történik. Az Azure-beli virtuális gépek csatlakoztatásához az operációs rendszer SMB-ügyfelének legalább SMB 2,1-et kell támogatnia. A helyszíni csatlakoztatáshoz (például egy felhasználó munkaállomásán) a munkaállomás által támogatott SMB-ügyfélnek támogatnia kell legalább az SMB 3,0-et (titkosítással). Az SMB-n kívül az új alkalmazások és szolgáltatások közvetlenül is hozzáférhetnek a fájlmegosztáshoz a file REST használatával, amely egyszerű és méretezhető alkalmazásprogramozási felületet biztosít a szoftverfejlesztés számára.
-2. **Azure file Sync**: A Azure File Sync használatával a megosztások a helyi vagy az Azure-beli Windows-kiszolgálókra replikálhatók. A felhasználók a Windows Serveren keresztül érhetik el a fájlmegosztást, például egy SMB-vagy NFS-megosztáson keresztül. Ez olyan esetekben hasznos, amikor az adatok az Azure-adatközponttól távol lesznek elérhetők és módosítva lesznek, például egy fiókirodai forgatókönyvben. Előfordulhat, hogy az adatreplikáció több Windows Server-végpont között történik, például több fiókirodában. Végezetül az adat a Azure Filesba is helyezhető, így az összes adat továbbra is elérhető a kiszolgálón keresztül, de a kiszolgáló nem rendelkezik teljes másolattal az adatról. Ehelyett a felhasználó általi megnyitáskor a rendszer zökkenőmentesen visszahívja az adatait.
+1. **Közvetlen Felhőbeli hozzáférés**: bármely Azure-fájlmegosztás csatlakoztatható [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)és/vagy [Linux](storage-how-to-use-files-linux.md) rendszeren az iparági szabványnak megfelelő SMB protokollal vagy a REST API fájlon keresztül. Az SMB-vel a megosztásban található fájlok olvasása és írása közvetlenül az Azure-beli fájlmegosztás esetében történik. Az Azure-beli virtuális gépek csatlakoztatásához az operációs rendszer SMB-ügyfelének legalább SMB 2,1-et kell támogatnia. A helyszíni csatlakoztatáshoz (például egy felhasználó munkaállomásán) a munkaállomás által támogatott SMB-ügyfélnek támogatnia kell legalább az SMB 3,0-et (titkosítással). Az SMB-n kívül az új alkalmazások és szolgáltatások közvetlenül is hozzáférhetnek a fájlmegosztáshoz a file REST használatával, amely egyszerű és méretezhető alkalmazásprogramozási felületet biztosít a szoftverfejlesztés számára.
+2. **Azure file Sync**: a Azure file Sync a megosztások replikálása a helyszíni vagy az Azure-beli Windows-kiszolgálókra is lehetséges. A felhasználók a Windows Serveren keresztül érhetik el a fájlmegosztást, például egy SMB-vagy NFS-megosztáson keresztül. Ez olyan esetekben hasznos, amikor az adatok az Azure-adatközponttól távol lesznek elérhetők és módosítva lesznek, például egy fiókirodai forgatókönyvben. Előfordulhat, hogy az adatreplikáció több Windows Server-végpont között történik, például több fiókirodában. Végezetül az adat a Azure Filesba is helyezhető, így az összes adat továbbra is elérhető a kiszolgálón keresztül, de a kiszolgáló nem rendelkezik teljes másolattal az adatról. Ehelyett a felhasználó általi megnyitáskor a rendszer zökkenőmentesen visszahívja az adatait.
 
 Az alábbi táblázat bemutatja, hogyan érhetik el a felhasználók és az alkalmazások az Azure-fájlmegosztást:
 
 | | Közvetlen Felhőbeli hozzáférés | Azure File Sync |
 |------------------------|------------|-----------------|
 | Milyen protokollokat kell használnia? | A Azure Files az SMB 2,1, az SMB 3,0 és a file REST APIt támogatja. | Az Azure-fájlmegosztás bármely támogatott protokollon keresztül elérhető a Windows Serveren (SMB, NFS, FTPS stb.) |  
-| Hol fut a munkaterhelés? | **Az Azure-ban**: Azure Files közvetlen hozzáférést biztosít az adataihoz. | **A helyszínen lassú hálózattal**: A Windows, a Linux és a macOS rendszerű ügyfelek egy helyi Windows-fájlmegosztást csatlakoztatnak az Azure-fájlmegosztás gyors gyorsítótárához. |
+| Hol fut a munkaterhelés? | **Az Azure-ban**: Azure Files közvetlen hozzáférést biztosít az adataihoz. | **Lassú hálózattal rendelkező helyszíni**környezetek: a Windows, a Linux és a MacOS rendszerű ügyfelek az Azure-fájlmegosztás gyors gyorsítótárában csatlakoztatni tudják a helyi Windows-fájlmegosztást. |
 | Milyen szintű ACL-eket igényel? | Megosztás és a fájl szintje. | Megosztás, fájl és felhasználói szint. |
 
 ## <a name="data-security"></a>Adatbiztonság
 
 Azure Files több beépített lehetőség áll rendelkezésre az adatbiztonság biztosításához:
 
-* Titkosítás támogatása mindkét over-the-wire protokollban: Az SMB 3,0 titkosítás és a fájl HTTPS-kapcsolaton keresztül történik. Alapértelmezés szerint: 
+* Titkosítás támogatása mindkét over-the-wire protokollban: SMB 3,0 encryption és file REST HTTPS-kapcsolaton keresztül. Alapértelmezés szerint: 
     * Az SMB 3,0 titkosítást támogató ügyfelek titkosított csatornán keresztül küldik és fogadják az adatfogadást.
     * Azok az ügyfelek, amelyek nem támogatják az SMB 3,0 titkosítást, titkosítás nélkül kommunikálhatnak az SMB 2,1 vagy az SMB 3,0 használatával. Az SMB-ügyfelek nem jogosultak az adatközpontok közötti kommunikációra SMB 2,1 vagy SMB 3,0 titkosítás nélkül.
     * Az ügyfelek HTTP-vagy HTTPS-kapcsolaton keresztül is kommunikálhatnak a fájlokon keresztül.
-* REST-alapú titkosítás ([Azure Storage Service encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): A Storage Service Encryption (SSE) engedélyezve van az összes Storage-fiókhoz. A REST-adatok titkosítása teljes mértékben felügyelt kulccsal történik. A REST-alapú titkosítás nem növelheti a tárolási költségeket, vagy csökkentheti a teljesítményt. 
+* A REST-titkosítás ([Azure Storage Service encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service encryption (SSE) engedélyezve van az összes Storage-fiókhoz. A REST-adatok titkosítása teljes mértékben felügyelt kulccsal történik. A REST-alapú titkosítás nem növelheti a tárolási költségeket, vagy csökkentheti a teljesítményt. 
 * A titkosított adatforgalom opcionális követelménye: Ha be van jelölve, Azure Files elutasítja az adathoz való hozzáférést titkosítatlan csatornákon keresztül. Pontosabban csak HTTPS és SMB 3,0 engedélyezett a titkosítási kapcsolatokkal.
 
     > [!Important]  
@@ -126,15 +126,15 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 |---------|---------|---------|---------|---------|
 |100         | 100     | Akár 300     | 66   | 44   |
 |500         | 500     | Akár 1 500   | 90   | 60   |
-|1,024       | 1,024   | Akár 3 072   | 122   | 81   |
+|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
 |5 120       | 5 120   | Akár 15 360  | 368   | 245   |
 |10 240      | 10 240  | Akár 30 720  | 675 | 450   |
 |33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
-|102 400     | 100,000 | Akár 100 000 | 6 204 | 4 136   |
+|102 400     | 100 000 | Akár 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
-> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori [](storage-troubleshooting-files-performance.md) teljesítménnyel kapcsolatos problémák és a megkerülő megoldások hibaelhárítási útmutatójában olvashat.
+> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
 
 #### <a name="bursting"></a>Tele
 
@@ -184,7 +184,7 @@ A GRS replikálja az adatait egy másik adatközpontba egy másodlagos régióba
 
 Az GRS-t engedélyező Storage-fiókok esetében a rendszer először a helyileg redundáns tárolással (LRS) replikálja az összes adattal. A rendszer először egy frissítést véglegesít az elsődleges helyen, és replikálja a LRS használatával. Ezt követően a rendszer aszinkron módon replikálja a frissítést a másodlagos régióba a GRS használatával. Ha az adatírás a másodlagos helyre történik, a rendszer a LRS használatával is replikálja az adott helyen belül.
 
-Az elsődleges és a másodlagos régió is kezeli a replikákat a különböző tartalék tartományok között, és a tárolási méretezési egységen belül frissíti a tartományokat. A tárolási méretezési egység az adatközpontban található alapszintű replikációs egység. A replikáció ezen a szinten a LRS által biztosított. További információt a helyileg redundáns [tárolás (LRS) című témakörben talál: Alacsony költséghatékonyságú adatredundancia az Azure Storage](../common/storage-redundancy-lrs.md)szolgáltatáshoz.
+Az elsődleges és a másodlagos régió is kezeli a replikákat a különböző tartalék tartományok között, és a tárolási méretezési egységen belül frissíti a tartományokat. A tárolási méretezési egység az adatközpontban található alapszintű replikációs egység. A replikáció ezen a szinten a LRS által biztosított. További információt a [helyileg redundáns tárolás (LRS): alacsony költséghatékonyságú adatredundancia az Azure Storage](../common/storage-redundancy-lrs.md)szolgáltatásban című témakörben talál.
 
 Tartsa szem előtt ezeket a szempontokat, amikor dönti el, hogy melyik replikációs beállítást szeretné használni:
 
@@ -204,26 +204,26 @@ Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szi
 - A LRS/ZRS a GRS/GZRS fiók átalakítására nem lesz lehetséges az előfizetés elfogadása után létrehozott új Storage-fiókoknál a nagyobb fájlmegosztás előzetes verziójára.
 
 
-### <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+### <a name="regional-availability"></a>Regionális elérhetőség
 
 A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhető el, ezek a régiók az alábbi táblázatban láthatók:
 
-|Régió |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása * |
+|Region (Régió) |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása * |
 |-------|---------|---------|---------|
 |Kelet-Ausztrália |LRS     |Nem    |Igen|
-|Délkelet-Ausztrália|LRS     |Nem    |még nem|
-|Közép-India  |LRS     |Nem    |még nem|
-|Kelet-Ázsia      |LRS     |Nem    |még nem|
-|East US        |LRS     |Nem    |még nem|
-|Közép-Franciaország |LRS, ZRS|Nem    |LRS-Yes, ZRS-még nem|
+|Délkelet-Ausztrália|LRS |Nem    |Igen|
+|Közép-India  |LRS     |Nem    |Igen|
+|Kelet-Ázsia      |LRS     |Nem    |Igen|
+|USA keleti régiója        |LRS     |Nem    |Igen|
+|Közép-Franciaország |LRS, ZRS|Nem    |Igen|
 |Dél-Franciaország   |LRS     |Nem    |Igen|
 |Észak-Európa   |LRS     |Nem    |még nem|
-|Dél-India    |LRS     |Nem    |még nem|
+|Dél-India    |LRS     |Nem    |Igen|
 |Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
-|USA nyugati középső régiója|LRS     |Nem    |még nem|
+|USA nyugati középső régiója|LRS     |Nem    |Igen|
 |Nyugat-Európa    |LRS, ZRS|Nem    |Igen|
-|USA nyugati régiója        |LRS     |Nem    |még nem|
-|USA nyugati régiója, 2.      |LRS, ZRS|Nem    |Igen|
+|USA nyugati régiója        |LRS     |Nem    |Igen|
+|USA 2. nyugati régiója      |LRS, ZRS|Nem    |Igen|
 
 
 \* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. Másik lehetőségként létrehozhat egy új megosztást a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
@@ -255,7 +255,7 @@ A regisztráció állapotának ellenőrzéséhez futtassa a következő parancso
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután regisztrálta azállapotát, használhatja a funkciót.
+Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután **regisztrálta**az állapotát, használhatja a funkciót.
 
 ### <a name="use-larger-file-shares"></a>Nagyobb fájlmegosztás használata
 
@@ -271,12 +271,12 @@ Több Azure-fájlmegosztás egyetlen Windows-fájlkiszolgálón is szinkronizál
 
 Számos egyszerű lehetőség van a meglévő fájlmegosztás, például egy helyszíni fájlmegosztás adatainak tömeges átvitelére Azure Filesba. Néhány népszerű is (nem teljes lista):
 
-* **Azure file Sync**: Az Azure-fájlmegosztás (a "Felhőbeli végpont") és a Windows-címtárbeli névtér ("kiszolgálói végpont") közötti első szinkronizálás részeként Azure File Sync a meglévő fájlmegosztás összes adatait replikálja a Azure Files.
-* **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Az Azure import/export szolgáltatás lehetővé teszi nagy mennyiségű adatok biztonságos átvitelét egy Azure-fájlmegosztásba egy Azure-adatközpontba a merevlemez-meghajtók használatával. 
-* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : A Robocopy egy jól ismert másolási eszköz, amely a Windows és a Windows Server rendszert is tartalmazza. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : A AzCopy egy parancssori segédprogram, amely az adatok Azure Filesba, valamint az Azure Blob Storage-ba történő másolására szolgál, és az optimális teljesítményű egyszerű parancsokat használja.
+* **Azure file Sync**: egy Azure-fájlmegosztás (a "Felhőbeli végpont") és a Windows Directory-névtér ("kiszolgálói végpont") közötti első szinkronizálás részeként Azure file Sync a meglévő fájlmegosztás összes adatait replikálja a Azure Filesre.
+* **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : az Azure import/export szolgáltatás lehetővé teszi, hogy a merevlemez-meghajtók Azure-adatközpontba való szállításával biztonságosan továbbítson nagy mennyiségű adatmennyiséget egy Azure-fájlmegosztás számára. 
+* **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : a Robocopy egy jól ismert másolási eszköz, amely a Windows-és Windows Server-kiszolgálóval is rendelkezik. A Robocopy felhasználható az adatok Azure Filesba történő átvitelére a fájlmegosztás helyi csatlakoztatásával, majd a csatlakoztatott hely célként való használatával a Robocopy parancsban.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : a AzCopy egy parancssori segédprogram, amely az adatok átmásolását Azure Files, valamint az Azure Blob Storage-t használja az optimális teljesítményű egyszerű parancsok használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure File Sync központi telepítésének tervezése](storage-sync-files-planning.md)
 * [Azure Files üzembe helyezése](storage-files-deployment-guide.md)
 * [Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)

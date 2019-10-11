@@ -46,6 +46,8 @@
               href: connect-azure-ad-identity-protection.md
             - name: Az Azure Information Protection csatlakoztatása
               href: connect-azure-information-protection.md
+            - name: A Microsoft Defender ATP csatlakoztatása
+              href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Az Azure ATP csatlakoztatása
               href: connect-azure-atp.md
             - name: Az Azure Security Center csatlakoztatása

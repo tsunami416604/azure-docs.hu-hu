@@ -1,31 +1,25 @@
 ---
-title: Termékváltozat-sorozatok nem érhető el |} A Microsoft Docs
-description: Egyes Termékváltozat-sorozatok nem érhetők el a megadott előfizetés esetében ebben a régióban.
+title: Az SKU-sorozat nem érhető el | Microsoft Docs
+description: Egyes SKU-sorozatok nem érhetők el a kiválasztott előfizetéshez ehhez a régióhoz.
 services: Azure Supportability
-documentationcenter: ''
 author: stevendotwang
-manager: rajatk
-editor: ''
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: xingwan
-ms.openlocfilehash: a57899e36a6716a6fd59cb018119c225b7396c0d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60649109"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249046"
 ---
-# <a name="region-or-sku-unavailable"></a>Régió vagy Termékváltozat nem érhető el
-Ez a cikk ismerteti, hogyan lehet megoldani a problémát egy régió vagy Virtuálisgép-Termékváltozat nem férhető Azure-előfizetés.
+# <a name="region-or-sku-unavailable"></a>Nem elérhető régió vagy termékváltozat
+Ez a cikk azt ismerteti, hogyan oldható fel egy olyan Azure-előfizetés problémája, amely nem fér hozzá egy adott régióhoz vagy virtuális géphez tartozó SKU-hoz.
 
 ## <a name="symptoms"></a>Probléma
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Virtuális gépek telepítésekor a következő hibaüzeneteket egyikét kapja:
+### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Virtuális gép telepítésekor a következő hibaüzenetek egyike jelenik meg:
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -43,7 +37,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Ha a Reserved Virtual Machine Instances szolgáltatást, a következő hibaüzeneteket egyikét kapja:
+### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Fenntartott virtuálisgép-példányok vásárlása esetén a következő hibaüzenetek egyike jelenik meg:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -54,32 +48,32 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Amikor hoz létre egy támogatási kérést a számítási magkvóta növeléséhez, régió vagy Termékváltozat-család nem érhető lehet kiválasztani.
+### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Ha támogatási kérést hoz létre a számítási alapkvóta növeléséhez, akkor a régió vagy SKU-család nem érhető el a kiválasztáshoz.
 
 ## <a name="solution"></a>Megoldás
-Először javasoljuk, hogy érdemes-e egy másik régióba vagy az üzleti igényeinek megfelelő Termékváltozatot. Ha nem találja a megfelelő régióban vagy Termékváltozat, hozzon létre egy "előfizetés-kezelési" [támogatási kérelem](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) a következő lépésekkel:
+Először azt javasoljuk, hogy vegye fontolóra egy olyan alternatív régiót vagy SKU-t, amely megfelel az Ön üzleti igényeinek. Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy "előfizetés-kezelési" [támogatási kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az alábbi lépésekkel:
 
 
-- Az alapismeretek lapon jelölje be "Előfizetés-kezelés" Issue type, válassza ki az előfizetést, és kattintson a "Tovább gombra".
+- Az alapok lapon válassza a probléma típusa "előfizetés-kezelés" lehetőséget, válassza ki az előfizetést, és kattintson a "tovább" gombra.
 
 ![Alapvető beállítások panel](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
 
--   A probléma az oldalon a probléma típusaként válassza "Egyéb általános kérdések".
-- A Részletek területen:
-  - Jelezze, ha a virtuális gépek üzembe helyezése vagy vásárlása a Reserved Virtual Machine Instances találatokat
-  - Adja meg a régiót, Termékváltozat és szeretné telepíteni, vagy vásároljon virtuálisgép-példányok száma
+-   A probléma lapon válassza a probléma típusát "egyéb általános kérdések" elemre.
+- A Részletek szakaszban:
+  - Kérjük, jelezze, ha virtuális gépeket szeretne telepíteni vagy fenntartott virtuálisgép-példányokat kíván vásárolni
+  - Adja meg a telepítendő vagy megvásárolni kívánt virtuálisgép-példányok régióját, SKU-jának számát.
 
 
 ![Probléma](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
--   Adja meg a kapcsolattartási adatait, és kattintson a "Létrehozás" gombra.
+-   Adja meg a kapcsolattartási adatait, és kattintson a "létrehozás" gombra.
 
 ![Kapcsolattartási adatok](./media/SKU-series-unavailable/ContactInformation.png)
 
 ## <a name="feedback"></a>Visszajelzés
-Mindig tudjuk nyissa meg a vélemények és tanácsok! Küldjön nekünk a [javaslatok](https://feedback.azure.com/forums/266794-support-feedback). Emellett akkor is kapcsolatba léphet a velünk [Twitter](https://twitter.com/azuresupport) vagy a [MSDN-fórumok](https://social.msdn.microsoft.com/Forums/azure).
+Mindig nyitottak vagyunk visszajelzésre és javaslatokra! Küldje el nekünk [javaslatait](https://feedback.azure.com/forums/266794-support-feedback). Emellett a [Twitteren](https://twitter.com/azuresupport) vagy az [MSDN-fórumokon](https://social.msdn.microsoft.com/Forums/azure)is elvégezheti a kapcsolatfelvételt.
 
-## <a name="learn-more"></a>Részletek
-[Az Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq)
+## <a name="learn-more"></a>További információ
+[Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq)
 

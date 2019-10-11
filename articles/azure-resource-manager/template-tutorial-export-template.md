@@ -8,16 +8,16 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
-ms.translationtype: HT
+ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177580"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243205"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
-Ebben az oktatóanyag-sorozatban létrehozott egy sablont egy Azure Storage-fiók üzembe helyezéséhez. A következő két oktatóanyagban hozzá kell adnia egy *app Service csomagot* és egy *webhelyet*. A sablonok a semmiből való létrehozása helyett megtudhatja, hogyan exportálhat sablonokat a Azure Portalból, és hogyan használhatók a sablonok az Azure-beli [Gyorsindítás sablonokból](/resources/templates/). Ezeket a sablonokat saját használatra testreszabhatja. Ez az oktatóanyag a sablonok exportálására, valamint a sablon eredményének testreszabására koncentrál. A művelet elvégzése körülbelül **14 percet** vesz igénybe.
+Ebben az oktatóanyag-sorozatban létrehozott egy sablont egy Azure Storage-fiók üzembe helyezéséhez. A következő két oktatóanyagban hozzá kell adnia egy *app Service csomagot* és egy *webhelyet*. A sablonok a semmiből való létrehozása helyett megtudhatja, hogyan exportálhat sablonokat a Azure Portalból, és hogyan használhatók a sablonok az Azure-beli [Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/). Ezeket a sablonokat saját használatra testreszabhatja. Ez az oktatóanyag a sablonok exportálására, valamint a sablon eredményének testreszabására koncentrál. A művelet elvégzése körülbelül **14 percet** vesz igénybe.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -1,18 +1,18 @@
 ---
 title: Minta – Kanada szövetségi PBMM tervrajz – a lépések üzembe helyezése
-description: A theCanada Federal PBMM Blueprint-minták lépéseinek üzembe helyezése.
+description: Telepítse a Kanada szövetségi PBMM tervének lépéseit, beleértve a tervrajz-összetevő paraméterének részleteit.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 2e810c810fd2c143f3d3e43a6ff1df87a150fa3b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0e799de92f25c688b41d3ac5718fe3a2b7a8aba0
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981647"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249011"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>A kanadai szövetségi PBMM terv mintáinak üzembe helyezése
 
@@ -37,10 +37,10 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Terv neve**: Adjon meg egy nevet a terv mintájának másolatához.
-   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
+   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -66,13 +66,13 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapadatok
+   - Alapvető beállítások
 
-     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
-     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
        Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
@@ -82,7 +82,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő paraméterei
+   - Összetevő paramétereinek
 
      Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
@@ -95,23 +95,23 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-Elemnév|Összetevő típusa|Paraméternév|Leírás|
+Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Szabályzat-hozzárendelés |A Linux rendszerű virtuális gépek Log Analytics munkaterülete |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview @ no__t-1: A Linux rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Szabályzat-hozzárendelés |Nem kötelező: A hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája |Üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
-|\[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Szabályzat-hozzárendelés |Nem kötelező: A hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája |Üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
-|\[Preview @ no__t-1: Windows rendszerű virtuális gépek Log Analytics ügynökének üzembe helyezése |Szabályzat-hozzárendelés |Log Analytics munkaterület a Windows rendszerű virtuális gépekhez |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
-|\[Preview @ no__t-1: A naplózási követelmények támogatásához a kanadai szövetségi PBMM szabályozza és telepíti az adott virtuálisgép-bővítményeket |Szabályzat-hozzárendelés |Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell |Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell. |
-|\[Preview @ no__t-1: A naplózási követelmények támogatásához a kanadai szövetségi PBMM szabályozza és telepíti az adott virtuálisgép-bővítményeket |Szabályzat-hozzárendelés |Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között. |
-|\[Preview @ no__t-1: A naplózási követelmények támogatásához a kanadai szövetségi PBMM szabályozza és telepíti az adott virtuálisgép-bővítményeket |Szabályzat-hozzárendelés |Rendszergazdák csoport |Csoport. Például: `Administrator; myUser1; myUser2` |
-|\[Preview @ no__t-1: A naplózási követelmények támogatásához a kanadai szövetségi PBMM szabályozza és telepíti az adott virtuálisgép-bővítményeket |Szabályzat-hozzárendelés |A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája |A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Például: `Administrator; myUser1; myUser2` |
+|\[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |A Linux rendszerű virtuális gépek Log Analytics munkaterülete |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview @ no__t-1: Log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája |Üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
+|\[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: a hatókörbe felvenni kívánt Windows operációs rendszert futtató virtuálisgép-rendszerképek listája |Üres tömb is felhasználható a nem kötelező paraméterek jelölésére: `[]` |
+|\[Preview @ no__t-1: Log Analytics Agent üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Log Analytics munkaterület a Windows rendszerű virtuális gépekhez |További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
+|\[Preview @ no__t-1: audit Kanada szövetségi PBMM vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Log Analytics munkaterület-azonosító, amelyhez a virtuális gépeket konfigurálni kell |Ez a Log Analytics munkaterület azonosítója (GUID), amelyhez a virtuális gépeket konfigurálni kell. |
+|\[Preview @ no__t-1: audit Kanada szövetségi PBMM vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Azon erőforrástípusok listája, amelyeknek engedélyezve kell lennie a diagnosztikai naplóknak |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)között. |
+|\[Preview @ no__t-1: audit Kanada szövetségi PBMM vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |Rendszergazdák csoport |Csoport. Például: `Administrator; myUser1; myUser2` |
+|\[Preview @ no__t-1: audit Kanada szövetségi PBMM vezérlők és adott virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához |Szabályzat-hozzárendelés |A Windows rendszerű virtuális gépek rendszergazdái csoportjának részét képező felhasználók listája |A rendszergazdák helyi csoportba foglalandó tagok pontosvesszővel tagolt listája. Például: `Administrator; myUser1; myUser2` |
 |Komplex veszélyforrások elleni védelem üzembe helyezése a Storage-fiókokon |Szabályzat-hozzárendelés |Következmény |A házirend hatásával kapcsolatos információk a [Azure Policy effektusok megismerése](../../../policy/concepts/effects.md)című témakörben találhatók. |
 |Naplózás üzembe helyezése SQL-kiszolgálókon |Szabályzat-hozzárendelés |A megőrzési időtartam napokban megadott értéke (a 0 korlátlan megőrzést jelez) |Megőrzési napok (nem kötelező, _180_ nap, ha nincs megadva) |
 |Naplózás üzembe helyezése SQL-kiszolgálókon |Szabályzat-hozzárendelés |Az SQL Server naplózásához használt Storage-fiók erőforráscsoport-neve |A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló közösen használ). Fontos – a naplózás megfelelő működéséhez ne törölje vagy nevezze át az erőforráscsoportot vagy a Storage-fiókokat. |
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése |Szabályzat-hozzárendelés |A hálózati biztonsági csoport diagnosztika Storage-fiókjának előtagja |Ez az előtag a hálózati biztonsági csoport helyével együtt alkotja a létrehozott Storage-fiók nevét. |
 |Hálózati biztonsági csoportok diagnosztikai beállításainak telepítése |Szabályzat-hozzárendelés |A hálózati biztonsági csoport diagnosztikát szolgáló Storage-fiók erőforráscsoport-neve (léteznie kell) |Az az erőforráscsoport, amelyben a Storage-fiók létrejön. Ez az erőforráscsoport már léteznie kell. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a kanadai szövetségi PBMM-minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 

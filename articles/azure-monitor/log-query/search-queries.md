@@ -1,6 +1,6 @@
 ---
-title: Keresési lekérdezéseket az Azure Monitor naplóira |} A Microsoft Docs
-description: Ez a cikk egy oktatóanyag, az első lépések a search használatával az Azure Monitor log-lekérdezések.
+title: Keresési lekérdezések Azure Monitor naplókban | Microsoft Docs
+description: Ez a cikk útmutatást nyújt az első lépések végrehajtásához a Azure Monitor log lekérdezésekben.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,44 +13,44 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: b118740f3a57e168c5dfb071c199bcf424bd5113
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: a0ceb5aa82b0d38ab5d2567689e3e131ba781ce9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295561"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254999"
 ---
-# <a name="search-queries-in-azure-monitor-logs"></a>Keresési lekérdezések az Azure Monitor naplóira
-Az Azure Monitor log-lekérdezések megkezdheti a táblanév vagy a keresési parancsot. Ez az oktatóanyag bemutatja a search-alapú lekérdezések. Nincsenek előnye az, hogy az egyes módszerek.
+# <a name="search-queries-in-azure-monitor-logs"></a>Keresési lekérdezések Azure Monitor naplókban
+Azure Monitor a naplózási lekérdezések táblázatos névvel vagy keresési paranccsal kezdődhetnek. Ez az oktatóanyag a keresési alapú lekérdezéseket ismerteti. Az egyes módszerek előnyei vannak.
 
-Tábla-alapú lekérdezések első lépésként hatókörének beállítása a lekérdezést, és ezért általában a hatékonyabb, mint a keresési lekérdezések. Keresési lekérdezések olyan kisebb strukturált, ami lehetővé teszi őket a jobb választás egy adott érték keresése oszlopok vagy táblázatok között. **Keresés** beolvashatja az összes oszlop az adott táblában, vagy az összes tábla megadott értéket. Feldolgozott adatok mennyisége lehet hatalmas, ezért ezeket a lekérdezéseket sikerült hosszabb időt vesz igénybe, ezért előfordulhat, hogy a nagyon nagy eredményhalmazt visszaadása.
+A tábla alapú lekérdezések a lekérdezés hatókörével kezdődnek, ezért a keresési lekérdezéseknél hatékonyabbak lesznek. A keresési lekérdezések kevésbé strukturáltak, így jobb választást tesznek lehetővé az oszlopok vagy táblák adott értékének keresésekor. a **Keresés** megkeresheti az adott tábla összes oszlopát, illetve az összes táblában a megadott értéket. A feldolgozott adatmennyiség óriási lehet, ezért előfordulhat, hogy ezek a lekérdezések hosszabb időt vehetnek igénybe, és nagy mennyiségű eredményhalmazt adnak vissza.
 
 ## <a name="search-a-term"></a>Kifejezés keresése
-A **keresési** parancs általában szolgál adott kifejezés keresése. A következő példában az összes tábla összes oszlopa tartalomvizsgálatnak kifejezés "error":
+A **Search** parancs általában egy adott kifejezés keresésére szolgál. A következő példában az összes tábla összes oszlopát a rendszer a "hiba" kifejezésre vizsgálja:
 
 ```Kusto
 search "error"
 | take 100
 ```
 
-Míg az egyszerűen használható, szerint a fent egy hasonló szűkített lekérdezések nem hatékony és várhatóan sok jelentősége eredményeket adja vissza. Jobb lenne, a kapcsolódó tábla, vagy akár egy adott oszlopban lévő keresése.
+Habár egyszerűen használhatók, a nem hatókörű lekérdezések, mint például a fentiekben láthatók, nem hatékonyak, és sok lényegtelen eredményt adnak vissza. A jobb gyakorlat a megfelelő táblában, vagy akár egy adott oszlopban is megkereshető.
 
-### <a name="table-scoping"></a>Tábla hatókörének beállítása
-A megadott tábla kifejezés keresése, adjon hozzá `in (table-name)` után csak a **keresési** operátor:
+### <a name="table-scoping"></a>Táblázat hatóköre
+Egy adott tábla kifejezésének kereséséhez adja hozzá a `in (table-name)` értéket közvetlenül a **keresési** operátor után:
 
 ```Kusto
 search in (Event) "error"
 | take 100
 ```
 
-vagy több tábla:
+vagy több táblában:
 ```Kusto
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
 
-### <a name="table-and-column-scoping"></a>Tábla és oszlop hatókörének beállítása
-Alapértelmezés szerint **keresési** kiértékelik az adatkészlet összes oszlopa. Keresés csak egy adott oszlop, használja ezt a szintaxist:
+### <a name="table-and-column-scoping"></a>Táblázat és oszlop hatóköre
+Alapértelmezés szerint a **Keresés** az adathalmaz összes oszlopát kiértékeli. Ha csak egy adott oszlopot szeretne keresni ( *forrás* neve az alábbi példában), használja a következő szintaxist:
 
 ```Kusto
 search in (Event) Source:"error"
@@ -58,10 +58,10 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Ha `==` helyett `:`, az eredmények rekordok tartalmazhat, amelyben a *forrás* oszlopnak a pontos érték "hiba", és pontos ebben az esetben. Használatával ':' rekordokat tartalmazza, *forrás* értékeket tartalmaznak, például a "404-es hibakód:" vagy "Error".
+> Ha a `==` értéket használja `:` helyett, akkor az eredmények olyan rekordokat tartalmaznak, amelyekben a *forrás* oszlop pontos értéke "Error", és ebben a pontos esetben. A ":" használatával olyan rekordokat fog tartalmazni, amelyekben a *forrás* olyan értékekkel rendelkezik, mint például a "hibakód 404" vagy a "hiba".
 
-## <a name="case-sensitivity"></a>Kisbetű/nagybetű megkülönböztetése
-Alapértelmezés szerint kifejezés keresése a kis-és nagybetűket, így a "dns" keresése például a "DNS", "dns" vagy "Dns" eredményeket sikerült adnak. Ahhoz, hogy a keresés kis-és nagybetűket, használja a `kind` lehetőséget:
+## <a name="case-sensitivity"></a>Kis-és nagybetűk megkülönböztetése
+Alapértelmezés szerint a kifejezéses keresés a kis-és nagybetűk megkülönböztetése, ezért a "DNS" keresése olyan eredményeket eredményezhet, mint például a "DNS", a "DNS" vagy a "DNS". A keresési kis-és nagybetűk megkülönböztetéséhez használja a `kind` kapcsolót:
 
 ```Kusto
 search kind=case_sensitive in (Event) "DNS"
@@ -69,64 +69,64 @@ search kind=case_sensitive in (Event) "DNS"
 ```
 
 ## <a name="use-wild-cards"></a>Helyettesítő karakterek használata
-A **keresési** parancs támogatja a helyettesítő karakterek használata az elején, teljes vagy közel egy kifejezés.
+A **Search** parancs a Wild kártyákat a kifejezés elején, végén vagy közepén támogatja.
 
-A keresési feltételek "win" kezdetű:
+A "win" kezdetű kifejezések keresése:
 ```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
-A keresési feltételek, amelyek a ".com" végződik:
+A ". com" végződésű kifejezések keresése:
 ```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
-Keresés a feltételeket, amelyek tartalmazzák a "www":
+A "www" kifejezést tartalmazó kifejezések keresése:
 ```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
-A keresési kifejezéseket, amely "corp" karakterlánccal kezdődik és ér véget, a ".com", például a "corp.mydomain.com" "
+A "Corp" kezdetű kifejezésekre és a ". com" végződésre, például "corp.mydomain.com"
 
 ```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
 
-Is kaphat minden egy tábla csak egy helyettesítő karakter használatával: `search in (Event) *`, de ez lehet ugyanaz, mint csak írás `Event`.
+Egy táblában is mindent megtudhat, ha csak egy Wild kártyát használ: `search in (Event) *`, de az csak `Event`.
 
 > [!TIP]
-> Bár használhatja `search *` minden tábla összes oszlopát lekéréséhez ajánlott mindig az adott táblák lekérdezéseket hatókörét. Szűkített lekérdezéseket is igénybe vehet igénybe, és előfordulhat, hogy túl sok eredményeket adja vissza.
+> Habár a `search *` használatával minden oszlopból lekérheti az összes oszlopot, azt javasoljuk, hogy a lekérdezéseket mindig az adott táblákra szűkítse. A nem hatókörű lekérdezések végrehajtása hosszabb időt is igénybe vehet, és előfordulhat, hogy túl sok eredményt ad vissza.
 
-## <a name="add-and--or-to-search-queries"></a>Adjon hozzá *és* / *vagy* keresés lekérdezése
-Használat **és** rekord, amely több használati kereséséhez:
+## <a name="add-and--or-to-search-queries"></a>Hozzáadás *és* / *vagy* lekérdezések keresése
+A **és** a használatával több kifejezést tartalmazó rekordokat kereshet:
 
 ```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
-Használat **vagy** beolvasni a rekordokat, amelyek tartalmazzák a feltételek legalább egyikének:
+A **vagy** a használatával lekérheti a feltételek legalább egyikét tartalmazó rekordokat:
 
 ```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
-Ha több keresési feltétel, hogy kombinálhatja azokat zárójelek használatával ugyanabból a lekérdezés:
+Ha több keresési feltételt is tartalmaz, a zárójelek használatával kombinálhatja őket a lekérdezéssel:
 
 ```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
 
-Az ebben a példában az eredmények lenne, amely tartalmazza a kisbetűs "error" és "regisztrálása" vagy "átadásra" kezdetű valami is tartalmaz rekordokat.
+A példa eredményei olyan rekordokat tartalmaznak, amelyek tartalmazzák a "hiba" kifejezést, és a "regisztráció" vagy a "Marshal" kezdetű bejegyzést is tartalmazzák.
 
-## <a name="pipe-search-queries"></a>Függőleges vonal keresési lekérdezések
-Hasonlóan a többi parancs **keresési** átadható olyan parancsoknak, a keresési eredmények is szűrhetők, rendezve, és összesítve. Például számú *esemény* "win" tartalmazó rekordok:
+## <a name="pipe-search-queries"></a>Pipe-keresési lekérdezések
+Ugyanúgy, mint bármely más parancs, a **Keresés** megadható, így a keresési eredmények szűrhetők, rendezhetők és összevonhatók. Például a "win" kifejezést tartalmazó *Event* Records-rekordok számának lekéréséhez:
 
 ```Kusto
 search in (Event) "win"
@@ -136,6 +136,6 @@ search in (Event) "win"
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További oktatóanyagok tekintse meg a [Kusto-lekérdezés nyelvi hely](/azure/kusto/query/).
+- A [Kusto lekérdezési nyelvi webhelyén](/azure/kusto/query/)további oktatóanyagokat talál.

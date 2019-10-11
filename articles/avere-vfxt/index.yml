@@ -8,10 +8,10 @@ metadata:
   author: ekpgh
   ms.service: avere-vfxt
   ms.topic: landing-page
-  ms.date: 10/31/2018
-  ms.author: v-erkell
+  ms.date: 10/09/2019
+  ms.author: rohogue
 abstract:
-  description: 'Az Azure-hoz készült Avere vFXT felhőalapú gyorsítótárazási réteget biztosít az adatigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz. Az Avere vFXT a számítási csomópontokhoz közel gyorsítótárazza a fájlokat, ezáltal felgyorsítja az olvasási időt, és még csúcsterhelés alatt zavartalan munkavégzést biztosít. Az Avere vFXT az 1000 és 40 000 ügyfélmaggal rendelkező rendszerekkel működik a legjobban. <p>Az Avere vFXT működik a meglévő helyszíni adattárolókkal, és helyi hozzáférést biztosít az Azure-alapú számítási erőforrásoknak az adatközpontban hosszú távon tárolt aktív fájlokhoz.'
+  description: 'Az Azure-hoz készült Avere vFXT felhőalapú gyorsítótárazási réteget biztosít az adatigényes, nagy teljesítményű feldolgozási (HPC-) feladatokhoz. Az Avere vFXT a számítási csomópontokhoz közel gyorsítótárazza a fájlokat, ezáltal felgyorsítja az olvasási időt, és még csúcsterhelés alatt zavartalan munkavégzést biztosít. Az Avere vFXT az 1000 és 40 000 ügyfélmaggal rendelkező rendszerekkel működik a legjobban. <p>Az Avere vFXT a meglévő adattárolókkal együttműködve közelebb hozza a fájlokat az Azure-alapú számítási erőforrásokhoz. Az aktív fájlok hosszú távú tárolását továbbra is az adatközpont biztosítja.'
 sections:
   - title: Az Azure-hoz készült Avere vFXT megismerése
     items:

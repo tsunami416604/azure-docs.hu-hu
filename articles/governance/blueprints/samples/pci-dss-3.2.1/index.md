@@ -1,18 +1,18 @@
 ---
-title: Minták – A PCI-DSS v3.2.1 terve – Áttekintés
-description: A Payment Card Industry Data Security Standard v3.2.1-tervminta áttekintése.
+title: Minta – PCI-DSS v3.2.1 terv – Áttekintés
+description: A Payment Card Industry Data Security Standard v3.2.1-tervminta áttekintése. Ennek a tervmintának a segítségével az ügyfelek felmérhetnek adott vezérlőket.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: bd89ee1f449f4598eaf2fcea567709162644a512
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: c05f3457b4195c9054a1ce99f2567097a034ebd3
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981473"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248251"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v3.2.1-tervminta áttekintése
 

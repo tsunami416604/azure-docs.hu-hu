@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: d74d1c33816b3c028a26335af4c6d5b23b7a2046
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958486"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243275"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -282,7 +282,7 @@ Ebben a függvényben a `name` lekérdezési paraméter értéke a [HttpRequest]
 
 Hasonlóképpen a visszaadott [HttpResponse] objektumban beállíthatja a `status_code` és a `headers` értéket is.
 
-## <a name="concurrency"></a>Egyidejűség
+## <a name="concurrency"></a>Párhuzamosság
 
 Alapértelmezés szerint a Python Runtime függvény egyszerre csak egy függvény hívását képes feldolgozni. Előfordulhat, hogy ez a párhuzamossági szint nem elegendő a következő feltételek közül egy vagy több esetében:
 
@@ -331,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő módszerekkel rendelkezik:
+A [**környezeti**](/python/api/azure-functions/azure.functions.context?view=azure-python) osztály a következő karakterlánc-attribútumokkal rendelkezik:
 
 `function_directory`  
 Az a címtár, amelyben a függvény fut.
@@ -578,7 +578,7 @@ Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítá
 
 Ezt a módszert a Chrome böngésző használja az engedélyezett Origins lista egyeztetéséhez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 

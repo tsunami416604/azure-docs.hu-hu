@@ -25,7 +25,7 @@
       items:
         - name: Kubernetes-fürt létrehozása az AKS használatával
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: 'Kubernetes-fürt létrehozása az Application Gateway használatával, amely bejövőforgalom-vezérlőként használható az AKS-sel'
+        - name: Bejövő forgalmat vezérlő alkalmazásátjáró létrehozása az AKS-ben
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktúra
       items:

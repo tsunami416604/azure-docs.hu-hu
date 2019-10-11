@@ -234,6 +234,10 @@
       items:
         - name: Biztonság és szabályzatok
           href: security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Beépített biztonsági vezérlők
+          href: virtual-machines-windows-security-controls.md
     - name: Állapotok és életciklus
       href: states-lifecycle.md
     - name: Figyelés
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: Példa infrastruktúrára
       href: infrastructure-example.md
-    - name: Beépített biztonsági vezérlők
-      href: virtual-machines-windows-security-controls.md
 - name: Útmutatók
   items:
     - name: Virtuális gépek létrehozása
@@ -286,8 +288,31 @@
         - name: Igény szerinti hozzáférés
           href: ../../security-center/security-center-just-in-time.md
         - name: Titkosítás
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Lemeztitkosítási forgatókönyvek Windowson
+              href: disk-encryption-windows.md
+            - name: Virtuális gép titkosítása az Azure CLI-vel
+              href: disk-encryption-cli-quickstart.md
+            - name: Virtuális gép titkosítása az Azure PowerShell-lel
+              href: disk-encryption-powershell-quickstart.md
+            - name: Virtuális gép titkosítása az Azure Portalon
+              href: disk-encryption-portal-quickstart.md
+            - name: Key Vault az Azure Disk Encryptionhöz
+              href: disk-encryption-key-vault.md
+            - name: Lemeztitkosítási mintaszkriptek
+              href: disk-encryption-sample-scripts.md
+            - name: Lemeztitkosítási hibaelhárítás
+              href: disk-encryption-troubleshooting.md
+            - name: Lemeztitkosítás – gyakori kérdések
+              href: disk-encryption-faq.md
+            - name: Lemeztitkosítás – Előző verzió (AAD)
+              items:
+                - name: Áttekintés
+                  href: disk-encryption-overview-aad.md
+                - name: Key Vault az Azure Disk Encryptionhöz
+                  href: disk-encryption-key-vault-aad.md
+                - name: Lemeztitkosítási forgatókönyvek Windowson
+                  href: disk-encryption-windows-aad.md
         - name: A WinRM használata
           href: winrm.md
         - name: Hozzáférés-vezérlők használata

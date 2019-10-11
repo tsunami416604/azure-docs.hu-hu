@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás az Azure Monitor mérőszám-diagramok
-description: A létrehozását, testreszabása és értelmezése mérőszám-diagramok hibáinak elhárítása
+title: Azure Monitor metrikai diagramok hibaelhárítása
+description: A metrikai diagramok létrehozásával, testreszabásával vagy értelmezésével kapcsolatos hibák elhárítása
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,112 +8,114 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341980"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243223"
 ---
-# <a name="troubleshooting-metrics-charts"></a>Mérőszámdiagramok hibaelhárítása
+# <a name="troubleshooting-metrics-charts"></a>Metrikai diagramok hibaelhárítása
 
-Ez a cikk akkor használja, ha közben felmerülő hibák létrehozásával, testreszabása vagy-diagramok a Azure metrikaböngésző értelmezése. Ha most ismerkedik a metrikákhoz, ismerje [Ismerkedés a metrikaböngésző](metrics-getting-started.md) és [funkcióira metrikaböngészőt speciális](metrics-charts.md). Emellett megtekintheti [példák](metric-chart-samples.md) a konfigurált metrikus diagramok.
+Ez a cikk akkor használható, ha a diagramok létrehozásával, testreszabásával vagy értelmezésével kapcsolatos problémákba ütközik az Azure mérőszámok Explorerben. Ha még nem ismeri a metrikákat, ismerkedjen meg a mérőszámok [Explorerrel](metrics-getting-started.md) és [a metrikák Explorer speciális funkcióival](metrics-charts.md). Megtekintheti a konfigurált metrikai diagramokra vonatkozó [példákat](metric-chart-samples.md) is.
 
-## <a name="cant-find-your-resource-to-select-it"></a>Jelölje ki az erőforrás nem található
+## <a name="cant-find-your-resource-to-select-it"></a>Nem található az erőforrás a kiválasztáshoz
 
-Amire kattintott a **válasszon ki egy erőforrást** gombra, de az erőforrás az erőforrás-választó párbeszédpanelen nem jelenik meg.
+Az **Erőforrás kiválasztása** elemre kattintott, de nem látja az erőforrását az erőforrás-választó párbeszédpanelen.
 
-**Megoldás:** Metrikaböngésző megköveteli, hogy az előfizetések és -erőforráscsoportok megadása előtt válasszon ki rendelkezésre álló erőforrások listázása. Ha nem látja az erőforrás:
+**Megoldás:** A metrikák Explorer használatához az elérhető erőforrások listázása előtt ki kell választania az előfizetéseket és az erőforráscsoportokat. Ha nem látja az erőforrását:
 
-1. Győződjön meg arról, hogy kiválasztotta a megfelelő előfizetés a **előfizetés** legördülő listából. Ha az előfizetés nincs felsorolva, kattintson a a **címtár és előfizetés beállításainak** és az erőforrás-előfizetés hozzáadása.
+1. Győződjön meg arról, hogy a megfelelő előfizetést választotta ki az **Előfizetés** legördülő menüben. Ha az előfizetés nincs a listában, kattintson a **Címtár + Előfizetés beállításai** elemre és adja hozzá az erőforrását tartalmazó előfizetést.
 
-1. Győződjön meg arról, hogy kiválasztotta a megfelelő erőforráscsoportot.
+1. Győződjön meg arról, hogy a megfelelő erőforráscsoport van kiválasztva.
     > [!WARNING]
-    > A legjobb teljesítmény érdekében a metrikaböngészőben első megnyitásakor a **erőforráscsoport** legördülő nincs előre kijelölt erőforrás csoporttal rendelkezik. Ahhoz, hogy olyan erőforrások válasszon ki legalább egy csoporthoz.
+    > A legjobb teljesítmény érdekében a metrikák Explorer első megnyitásakor az **erőforráscsoport** legördülő menüjében nincsenek előre kiválasztott erőforráscsoportok. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
 
-## <a name="chart-shows-no-data"></a>Diagram mutatja nincsenek adatok
+## <a name="chart-shows-no-data"></a>A diagram nem jelenít meg adattípust
 
-Néha az a diagramok előfordulhat, hogy megjelenítése az adatok nem megfelelő erőforrások és a metrikák kiválasztása után. Ez a viselkedés a következő okok miatt számos oka lehet:
+Időnként előfordulhat, hogy a diagramok nem jelenítenek meg adatokat a megfelelő erőforrások és mérőszámok kiválasztása után. Ezt a viselkedést az alábbi okok közül több is okozhatja:
 
-### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Microsoft.Insights erőforrás-szolgáltató az előfizetés nincs regisztrálva.
+### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Az előfizetéshez nincs regisztrálva a Microsoft. inbetekintés erőforrás-szolgáltatója
 
-A metrikák felfedezése igényel *Microsoft.Insights* erőforrás-szolgáltató regisztrálva az előfizetésében. Sok esetben regisztrálódik automatikusan (azaz riasztási szabály konfigurálása, bármely erőforrás diagnosztikai beállításainak testreszabása, vagy után automatikus skálázási szabály konfigurálása). Ha nincs regisztrálva a Microsoft.Insights erőforrás-szolgáltató, manuálisan kell regisztrálni, a következő lépésekben ismertetett [Azure-erőforrás-szolgáltatókat és típusaikat](../../azure-resource-manager/resource-manager-supported-services.md).
+A metrikák megtekintéséhez a *Microsoft.Insights* erőforrás-szolgáltatónak regisztrálva kell lennie az előfizetésében. Sok esetben a regisztrálás automatikus (azaz egy riasztási szabály konfigurálása után bármely erőforráshoz testreszabhatja a diagnosztikai beállításokat, vagy automatikus skálázási szabályt konfigurálhat). Ha a Microsoft. inbetekintés erőforrás-szolgáltató nincs regisztrálva, akkor manuálisan kell regisztrálnia az [Azure erőforrás-szolgáltatók és típusok](../../azure-resource-manager/resource-manager-supported-services.md)című témakörben ismertetett lépések szerint.
 
-**Megoldás:** Nyissa meg **előfizetések**, **erőforrás-szolgáltatók** lapra, és ellenőrizze, hogy *Microsoft.Insights* az előfizetés regisztrálva van.
+**Megoldás:** Nyissa meg az **előfizetések**, az **erőforrás-szolgáltatók** fület, és ellenőrizze, hogy regisztrálva van-e a *Microsoft. ininsight* az előfizetéséhez
 
-### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nincs elegendő hozzáférési jogosultsága ahhoz az erőforrás
+### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Nem rendelkezik elegendő hozzáférési jogosultsággal az erőforráshoz
 
-Az Azure-ban mérőszámok való hozzáférést vezérlik [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md). Tagjának kell lennie [olvasó figyelése](../../role-based-access-control/built-in-roles.md#monitoring-reader), [közreműködő figyelése](../../role-based-access-control/built-in-roles.md#monitoring-contributor), vagy [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) fedezheti fel az összes erőforrás metrikáit.
+Az Azure-ban a metrikák hozzáférését [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md) vezérli. Az erőforrások metrikáinak megtekintéséhez a [figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader), a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz kell tartoznia.
 
-**Megoldás:** Győződjön meg arról, hogy megfelelő engedélyekkel rendelkezik, amelyről a metrikákat vizsgál meg az erőforrás.
+**Megoldás:** Győződjön meg arról, hogy rendelkezik megfelelő engedélyekkel ahhoz az erőforráshoz, amelynek a mérőszámait vizsgálja.
 
-### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Az erőforrás a kiválasztott időtartományban nem küldik metrikák
+### <a name="your-resource-didnt-emit-metrics-during-the-selected-time-range"></a>Az erőforrás nem bocsát ki mérőszámokat a kijelölt időtartományban
 
-Néhány erőforrás folyamatosan nem szolgáltat a metrikákat. Például Azure nem gyűjt metrikákat a leállított virtuális gépek. Egyéb erőforrások előfordulhat, hogy a metrikák kibocsátható, csak akkor, amikor bizonyos állapot akkor fordul elő. Például a tranzakciók feldolgozása tekintetében metrika legalább egy tranzakció szükséges. Ha a kijelölt időtartományban található tranzakciók, akkor a diagram természetes módon lehet üres. Emellett Bár a metrikák az Azure-ban a legtöbb percenként gyűjtött, van azonban néhány ritkábban gyűjtött. Ismerkedés a kívánt metrika kapcsolatos további információért a metrika dokumentációjában talál.
+Néhány erőforrás nem ad ki folyamatosan metrikákat. Az Azure például nem gyűjt metrikákat a leállított virtuális gépekről. Más erőforrások csak olyan esetben adnak ki metrikákat, amikor valamilyen feltétel teljesül. Az egy tranzakció feldolgozási idejét megjelenítő metrikához például legalább egy tranzakció szükséges. Ha nincsenek tranzakciók a kiválasztott időtartományban, akkor a diagram üres lesz. És bár az Azure-ban a legtöbb metrika gyűjtése percenként történik, egyes metrikáké ritkábban. Az adott metrika dokumentációjában talál további részleteket a megtekinteni kívánt metrikáról.
 
-**Megoldás:** A diagram idejének módosításához szélesebb köre. Előfordulhat, hogy indítsa el az "Elmúlt 30 nap" használatával egy nagyobb idő részletessége (vagy az "automatikus idő részletessége" lehetőséget a függő entitások).
+**Megoldás:** A diagram időpontjának módosítása szélesebb tartományra Az "elmúlt 30 nap" kezdettől kezdve nagyobb részletességgel (vagy az "automatikus időrészletesség" lehetőséggel) lehet kezdeni.
 
-### <a name="you-picked-a-time-range-greater-than-30-days"></a>30 napnál több időtartomány kiválasztott
+### <a name="you-picked-a-time-range-greater-than-30-days"></a>30 napnál hosszabb időintervallumot választott ki
 
-[A legtöbb mérőszámok az Azure-ban tárolt 93 napig](data-platform-metrics.md#retention-of-metrics). Azonban lekérdezheti, ha csak az adatok bármilyen egyetlen diagram érdemes legfeljebb 30 napig. Ez a korlátozás nem vonatkozik a [log mérőszámok](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
+[Az Azure-ban a legtöbb metrika 93 napig érhető el](data-platform-metrics.md#retention-of-metrics). Nem kérdezheti le azonban 30 napnál nagyobb időszak adatait egyetlen diagramban. Ez a korlátozás a [naplóalapú metrikákra](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) nem vonatkozik.
 
-**Megoldás:** Ha megjelenik egy üres diagram, vagy a diagram csak jeleníti meg a metrikaadatok része, ellenőrizze, hogy a különbség a között kezdő - és a záró-dátumok a időválasztó nem haladja meg a 30 napos intervallumon.
+**Megoldás:** Ha üres diagramot lát, vagy a diagram csak a metrikai adatok egy részét jeleníti meg, ellenőrizze, hogy az időválasztóban a kezdő és a záró dátumok közötti különbség nem haladja-e meg a 30 napos időközt.
 
-### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>A zárolt y tengely tartományon kívül volt az összes metrikaértékek
+### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Az összes metrikai érték a zárolt y tengely tartományán kívül esik
 
-Által [diagram y tengely határain zárolás](metrics-charts.md#lock-boundaries-of-chart-y-axis), akaratlanul győződjön meg a megjelenített diagramterület nem jelenik meg a diagram sor. Például ha y zárolva van, ezért egy 0 és 50 % közötti tartományba esik, és a mérőszám konstans értéke 100 %-os, a sor mindig jelenik meg a látható terület, a diagram üresen jelenik meg, ami kívül esik.
+A [diagram y tengelye határainak zárolásával](metrics-charts.md#lock-boundaries-of-chart-y-axis) akaratlanul is azt állíthatja be, hogy a diagram megjelenítési területe ne jelenítse meg a diagramvonalat. Ha az y tengely például a 0% és az 50% közötti tartományban van zárolva, és a metrika állandóan 100% értékű, akkor a vonal mindig a látható területen kívülre esik, így a diagram üresnek látszik.
 
-**Megoldás:** Győződjön meg arról, hogy a diagram y tengely határain kívül a metrikaértékek számos nincs zárolva. Ha az y tengely határok zárolva vannak, érdemes ideiglenesen alaphelyzetbe állítsa őket annak érdekében, hogy az értékek nem tartoznak a diagram tartományon kívül metrikát. Az y tengely tartománya zárolása nem ajánlott, hogy a diagramok az automatikus granularitással **sum**, **min**, és **maximális** összesítés, mert az értékeik változik a granularitási böngészőablak átméretezése, vagy egy másikra egy képernyőfelbontás lehetőséget. Váltása granularitási hagyhatja el a diagram üres területét.
+**Megoldás:** Ellenőrizze, hogy a diagram y tengelyének határai nem zárolva vannak-e a metrikai értékek tartományán kívül. Ha az y tengely határai zárolva vannak, érdemes lehet ideiglenesen alaphelyzetbe állítani őket annak érdekében, hogy a metrikaértékek ne essenek a diagramtartományon kívül. Az y tengely tartományának zárolása nem ajánlott az **összeg**, **min** és **max** összesítésű diagramok automatikus részletessége esetén, mert az értékeik a böngészőablak átméretezésekor vagy az egyik képernyőfelbontásról egy másikra lépéskor a részletességgel együtt változnak. A részletesség módosításakor a diagram megjelenítési területe üres maradhat.
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>A vendég operációs rendszer metrikát egyszerre, de nem engedélyezte az Azure diagnosztikai bővítmény
+### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>Egy vendég operációs rendszer metrikáját keresi, de nem engedélyezte az Azure diagnosztikai bővítményt
 
-Gyűjteménye **vendég operációs rendszer** metrikák az Azure Diagnostics bővítmény konfigurálása, és ne engedélyezze a szükséges a **diagnosztikai beállítások** az erőforrás panel.
+A **vendég operációs rendszer** metrikák gyűjteményéhez konfigurálni kell az Azure diagnosztikai bővítményt, vagy az erőforrás **Diagnosztikai beállítások** panelén kell azt engedélyezni.
 
-**Megoldás:** Ha az Azure Diagnostics bővítmény engedélyezve van, de továbbra sem sikerül a metrikákat, kövesse az ismertetett lépéseket [– hibaelhárítási útmutató Azure Diagnostics bővítmény](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal). Lásd még a hibaelhárítási lépések [nem választhat a vendég operációs rendszer névtér és metrikák](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)
+**Megoldás:** Ha a Azure Diagnostics bővítmény engedélyezve van, de továbbra sem tudja megtekinteni a metrikákat, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatójában](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)ismertetett lépéseket. Lásd még: a [vendég operációs rendszer névterének és metrikáinak nem](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics) kiválasztására vonatkozó hibaelhárítási lépések
 
-## <a name="error-retrieving-data-message-on-dashboard"></a>"Adatok lekérése" hibaüzenet az irányítópulton
+## <a name="error-retrieving-data-message-on-dashboard"></a>"Hiba történt az adatok beolvasása közben" üzenet az irányítópulton
 
-Ez a probléma akkor fordulhat elő, az irányítópulton, amely később elavult, és az Azure-ból eltávolított metrikával létrehozásakor. Ellenőrizze, hogy az eset, nyissa meg a **metrikák** az erőforrást, és ellenőrizze a rendelkezésre álló metrikák, a metrika hatókörbe lapján. Ha a mérték nem látható, a metrika az Azure-ból el lett távolítva. Általában a metrika elavult, amikor nincs jobban új metrikát, amely a resource Health egy hasonló perspektíva biztosít.
+Ez a probléma akkor fordulhat elő, amikor az irányítópult olyan metrikával jött létre, amely később elavult, és el lett távolítva az Azure-ból. Ennek ellenőrzéséhez nyissa meg az erőforrás **Metrikák** lapját, és ellenőrizze az elérhető metrikákat a metrikaválasztóban. Ha nem jelenik meg metrika, akkor a metrika el lett távolítva az Azure-ból. Egy metrika elavulása rendszerint azt jelenti, hogy rendelkezésre áll egy új, jobb metrika, amely hasonlóan mutatja be az erőforrás állapotát.
 
-**Megoldás:** Frissítse a hibás csempe kiválasztásával a egy másik metrikát a diagram irányítópultra. Is [tekintse át a listában az elérhető mérőszámok az Azure-szolgáltatásokhoz](metrics-supported.md).
+**Megoldás:** Módosítsa a hibás csempét úgy, hogy kiválaszt egy alternatív metrikát a diagramhoz az irányítópulton. [Megtekintheti az Azure-szolgáltatásokhoz elérhető metrikák listáját](metrics-supported.md).
 
-## <a name="chart-shows-dashed-line"></a>Diagram mutatja szaggatott vonal
+## <a name="chart-shows-dashed-line"></a>A diagram szaggatott vonalat mutat
 
-Az Azure mérőszámdiagramok szaggatott vonal stílusa használatával jelzi, hogy a hiányzó értékeket (más néven "null érték") között két ismert időfelbontási adatpont. Például, ha a időválasztó a kiválasztott "1 perces" idő részletesség, de a metrika: 07:26, 07:27., jelentett 07:29 és 07:30 (Megjegyzés: a második és harmadik adatpontok közötti percenkénti kimaradást), majd 07:27 és 07:29 kapcsolódik egy szaggatott vonallá változik, és csatlakozzon folytonos vonal minden egyéb adatpont. A szaggatott vonal csepp nullára, amikor a metrika használ **száma** és **sum** összesítést. Az a **átlagos**, **min** vagy **maximális** összesítések, a szaggatott vonal a két a legközelebbi ismert adatpontok kapcsolódik. Is ha az adatok nem található a diagram jobb vagy bal szélső részén, a szaggatott vonal bontja ki a irányát az a hiányzó adatpontok.
-  ![metrika kép](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+Az Azure-metrikák diagramjai szaggatott vonal stílusát használják annak jelzésére, hogy a hiányzó érték (más néven "Null érték") két ismert időszelet adatpontja között van. Ha például az időválasztóban az "1 perc" idő részletességét adta meg, de a mérőszámot 07:26, 07:27, 07:29 vagy 07:30 értéken jelentették (jegyezze fel a második és harmadik adatpontok közötti percenkénti eltérést), akkor egy szaggatott vonal kapcsolódik az 07:27-hoz és az 07:29-hoz, és egy folytonos vonal kapcsolódik az összes többi adatpont. A szaggatott vonal nullára csökken, ha a metrika a **darabszámot** és a **Sum** összesítést használja. Az **AVG**, **min** vagy **Max** összesítések esetében a szaggatott vonal két legközelebbi ismert adatpontot kapcsol össze. Ha pedig az adatok a diagram jobb vagy bal szélén hiányoznak, akkor rendszer meghosszabbítja a szaggatott vonalat a hiányzó adatpont irányába.
+  @no__t 0metric-rendszerkép @ no__t-1
 
-**Megoldás:** Ez a működésmód szándékos. Hasznos lehet a hiányzó adatpontokat azonosításához. A vonaldiagram kiváló választás az olyan nagy kapacitású mérőszámok trendek megjelenítése, de lehet, hogy nehéz értelmezni a metrikákhoz ritka értékekkel, különösen akkor, ha az értékek az aggregációs időköz corelating fontos. A szaggatott vonal megkönnyíti az ezekbe a diagramokba olvasása, de ha a diagram még mindig nem egyértelmű, fontolja meg a metrikák megtekintését is a különböző diagram típusát. Például az azonos metrika szórt diagram diagramot is egyértelműen mutatja egyes időfelbontási szint szerint csak egy pont jelenítenek meg, ha egy értéket tartalmaz, és a rendszer kihagyja az adatok pont érvényesítette mikor értéke hiányzik: ![metrika kép](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Megoldás:** Ez a viselkedés a tervezés szerint történik. Ez a hiányzó adatpontok azonosításához hasznos. A vonalas diagram kiváló választás a nagy sűrűségű mérőszámok trendjeinek megjelenítéséhez, de nehéz lehet értelmezni a ritka értékekkel rendelkező metrikákat, különösen akkor, ha fontosak az időgabona-vel kapcsolatos kapcsolódó értékek. A szaggatott vonal megkönnyíti az ilyen diagramok leolvasását, ha azonban a diagram még mindig nem egyértelmű, érdemes lehet más diagramtípussal megtekinteni a metrikákat. Például az azonos metrikához tartozó elszórt diagram világosan mutatja, hogy az egyes időkeretek csak akkor jelennek meg, ha van érték, és az adatpontot teljesen kihagyja, ha az érték hiányzik: ![metric rendszerkép @ no__t-1
 
    > [!NOTE]
-   > Ha továbbra is sávdiagram lesz látható a metrika, egér mozgatása a diagram segíthet az idő részletessége felmérheti a helyen, az egérmutató az adatpont kiemelésével.
+   > Ha továbbra is vonaldiagramot szeretne használni a metrikához, akkor mozgassa az egérmutatót a diagram fölé, így az egérmutató helyén lévő adatpont kiemelése révén könnyebben felmérheti az időrészletességet.
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>Diagram váratlan eldobási értékeket jeleníti meg.
+## <a name="chart-shows-unexpected-drop-in-values"></a>A diagram az értékek váratlan csökkenését mutatja.
 
-Sok esetben a mintavételezéskor a metrikaértékek csökkenését az adatok a diagramon látható egy félreértés. Összegek csökkenését tévessze vagy számolja, amikor a diagram mutatja-e a legújabb perc, mert az utolsó metrika adatpontok még nem fogadott és a feldolgozása még az Azure-ban. A szolgáltatástól függően a késés, a metrikák feldolgozási lehet, néhány perc alatt tartományon belül. Egy 1 és 5 perces granularitással legutóbbi időtartomány ábrázoló diagramokat, az érték az elmúlt pár percben legördülő válik több észrevehető: ![metrika kép](./media/metrics-troubleshoot/drop-in-values.png)
+Sok esetben a metrikaértékek észlelt csökkenése a diagramon látható adatokkal kapcsolatos félreértésből ered. Az összegek vagy a számok csökkenése félrevezető lehet, ha a diagramon a legfrissebb percek láthatók, mert az Azure még nem kapta meg vagy nem dolgozta fel a legutóbbi metrikaadatpontokat. A szolgáltatástól függően a metrikák feldolgozásának késése néhány perces lehet. Az 1 vagy 5 perces részletességgel rendelkező legutóbbi időtartományt bemutató diagramok esetében az elmúlt néhány percben az érték egy cseppe lesz észrevehető: ![metric kép @ no__t-1
 
-**Megoldás:** Ez a működésmód szándékos. Vagyunk győződve arról, hogy adatainak megjelenítése, amint az általunk kapott, akkor előnyös, akkor is, ha az adatok *részleges* vagy *hiányos*. Ha így tesz, hamarabb fontos részletes ismertetők és azonnal megkezdhető a vizsgálat indítása. Például egy metrika, amely a hibák számát jeleníti meg, egy részleges X érték jelenik meg arra kéri, hogy fordult elő legalább egy adott perc a hibák X. Akkor a probléma kivizsgálása azonnal elindítani, ahelyett várja meg, hogy hiba történt az ebben a percben, amely nem lehet fontosként pontos száma. A diagram érkező adatok teljes készlete, de ekkor is megjelenhetnek, új hiányos adatpontok újabb perc után frissül.
+**Megoldás:** Ez a viselkedés a tervezés szerint történik. Úgy gondoljuk, hogy az adatok lehető legkorábban történő megjelenítése akkor is előnyös, ha az adatok *részlegesek* vagy *nem teljesek*. Ennek köszönhetően hamarabb juthat fontos következtetésekre, és azonnal megkezdheti a vizsgálatot. Egy, a hibák számát megjelenítő metrika esetén például az X részleges érték elárulja, hogy egy adott percben legalább X hiba fordult elő. Azonnal megkezdheti a probléma vizsgálatát, és nem kell megvárnia, hogy pontosan hány hiba történt ebben a percben, ami talán nem is olyan fontos. A diagram a teljes adatkészlet fogadásakor frissül, de ekkor új nem teljes adatpontokat is jeleníthet meg a még frissebb percekből.
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>Nem választhat a vendég operációs rendszer névtér és metrikák
+## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>A vendég operációs rendszer névtere és mérőszámai nem választhatók ki
 
-Virtuális gépek és a virtual machine scale sets van két kategóriába mérőszámokat: **Virtuálisgép-gazda** az Azure üzemeltetési környezet által gyűjtött metrikák és **vendég operációs rendszer** által gyűjtött metrikák a [figyelőügynök](agents-overview.md) a virtuális gépeken futó. A figyelőügynök telepítését engedélyezésével [Azure diagnosztikai bővítmény](diagnostics-extension-overview.md).
+A virtuális gépek és a virtuálisgép-méretezési csoportok két kategóriába sorolhatók: az Azure üzemeltetési környezete által összegyűjtött **virtuálisgép-gazdagép** -metrikák, valamint a figyelési ügynök által gyűjtött **vendég operációs rendszer (klasszikus)** mérőszámok. [ ](agents-overview.md)fut a virtuális gépeken. A figyelőügynök az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) engedélyezésével telepíthető.
 
-Alapértelmezés szerint az Azure Storage-fiók, amelyre a válasszon a vendég operációs rendszer metrikák tárolódnak a **diagnosztikai beállítások** az erőforráscsoport lapján. A vendég operációs rendszer metrikák nem gyűjt, vagy metrikaböngésző nem tudja elérni őket, ha csak akkor jelenik meg a **virtuálisgép-gazda** metrika névtér:
+Alapértelmezés szerint a Vendég operációs rendszer típusú metrikákat az Azure-tárfiók tartalmazza, amelyet az erőforrás **Diagnosztikai beállítások** lapján választhat ki. Ha a vendég operációs rendszer metrikáit nem gyűjti a rendszer, vagy a metrikaböngésző nem tudja elérni őket, akkor csak a **Virtuálisgép-gazda** metrika névterét látja:
 
-![metrika kép](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
+![metrika képe](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**Megoldás:** Ha nem lát **vendég operációs rendszer** névteret és a mérőszámok a metrikaböngészőben:
+**Megoldás:** Ha nem látja a **vendég operációs rendszer (klasszikus)** névterét és mérőszámait a metrikák Explorerben:
 
-1. Ellenőrizze, hogy [Azure diagnosztikai bővítmény](diagnostics-extension-overview.md) engedélyezve van, és metrikák gyűjthetők konfigurálva.
+1. Győződjön meg róla, hogy az [Azure Diagnostics bővítmény](diagnostics-extension-overview.md) engedélyezve van és be van állítva a metrikák gyűjtésére.
     > [!WARNING]
-    > Nem használhat [Log Analytics-ügynököket](agents-overview.md#log-analytics-agent) (más néven a Microsoft Monitoring Agent, vagy a "MMA") küldése **vendég operációs rendszer** storage-fiókra.
+    > A [Log Analytics ügynök](agents-overview.md#log-analytics-agent) (más néven Microsoft Monitoring Agent, vagy MMA) használatával a **Vendég operációs rendszer** nem küldhető tárfiókba.
 
-1. Győződjön meg arról, hogy a tárfiók a tűzfal által nem védett.
+1. Győződjön meg arról, hogy a **Microsoft. inbetekintés** erőforrás-szolgáltató [regisztrálva van az előfizetéséhez](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
-1. Használja a [az Azure storage explorer](https://azure.microsoft.com/features/storage-explorer/) ellenőrzése, hogy a metrikák átvitele a storage-fiókra. Ha a metrikák nem gyűjt, kövesse a [– hibaelhárítási útmutató Azure Diagnostics bővítmény](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
+1. Győződjön meg arról, hogy a Storage-fiók nem védi a tűzfalat. A Azure Portalnak hozzá kell férnie a Storage-fiókhoz a metrikák adatok lekéréséhez és a diagramok ábrázolásához.
 
-## <a name="next-steps"></a>További lépések
+1. Az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával ellenőrizze, hogy a metrikák a tárfiókba kerülnek-e. Ha a metrikák gyűjtése nem történik meg, kövesse az [Azure Diagnostics bővítmény hibaelhárítási útmutatóját](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal).
 
-* [Ismerkedés a Metrikaböngésző ismertetése](metrics-getting-started.md)
-* [További információ a speciális funkcióit Metrikaböngésző](metrics-charts.md)
-* [Rendelkezésre álló metrikák az Azure-szolgáltatások listáját lásd:](metrics-supported.md)
-* [Példák: konfigurált diagramok](metric-chart-samples.md)
+## <a name="next-steps"></a>Következő lépések
+
+* [Ismerkedés a metrikus Explorer használatába](metrics-getting-started.md)
+* [A metrika Explorer speciális funkcióinak megismerése](metrics-charts.md)
+* [Az Azure-szolgáltatásokhoz elérhető metrikák listájának megtekintése](metrics-supported.md)
+* [A konfigurált diagramok példáinak megtekintése](metric-chart-samples.md)

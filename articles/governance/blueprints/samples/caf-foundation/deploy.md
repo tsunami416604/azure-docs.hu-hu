@@ -1,5 +1,5 @@
 ---
-title: Minták – a CAF Foundation Blueprint – lépések üzembe helyezése
+title: Minta – CAF Foundation Blueprint – a lépések üzembe helyezése
 description: A CAF Foundation Blueprint minta lépéseinek üzembe helyezése.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8dab466c9d45f1c06ddce955c097af40fbba44d8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981694"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243953"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure Foundation Blueprint minta Microsoft Cloud bevezetési keretrendszerének üzembe helyezése
 
@@ -37,10 +37,10 @@ Először is implementálja a terv mintáját úgy, hogy létrehoz egy új terve
 
 1. Adja meg a tervezet mintájának _alapjait_ :
 
-   - **Terv neve**: Adjon meg egy nevet a CAF Foundation tervezet mintájának másolatához.
-   - **Definíció helye**: Használja a három pontot, és válassza ki a felügyeleti csoportot, és mentse a minta másolatát a következőre:.
+   - **Terv neve**: adjon meg egy nevet a CAF Foundation tervezet mintájának másolatához.
+   - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza ki az oldal tetején található _összetevők lapot vagy a @no__t_ -1Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
 
 1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
 
@@ -66,14 +66,14 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapadatok
-       - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, a terv mintájának másolatát a következőre mentette:. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
-     - **Hozzárendelés neve**: A név előre ki van töltve a terv neve alapján.
+   - Alapvető beállítások
+       - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
        Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást.
      - Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja.
        További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Terv definíciójának verziója**: Válasszon egy **közzétett** verziót a tervezet mintájának másolatáról.
+     - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
@@ -83,15 +83,15 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
      Válassza ki az alapértelmezett _rendszerhez rendelt_ felügyelt identitás vagy a _felhasználó által hozzárendelt_ identitás lehetőséget.
 
-   - Terv paraméterei
+   - Tervparaméterek
 
      Az ebben a szakaszban meghatározott paramétereket a terv definíciójában található számos összetevő használja a konzisztencia biztosításához.
 
-     - **Szervezet**: Adja meg a szervezet nevét (például contoso) egyedinek kell lennie.
-     - **Azure-régió**: Válassza ki az Azure-régiót a központi telepítéshez.
-     - **Engedélyezett helyszínek**: Mely Azure-régiók engedélyezik az erőforrások beépítését?
+     - **Szervezet**: adja meg a szervezet nevét (például contoso) egyedinek kell lennie.
+     - **Azure-régió**: válassza ki az Azure-régiót a központi telepítéshez.
+     - **Engedélyezett helyszínek**: mely Azure-régiók engedélyezik az erőforrások beépítését?
      
-   - Összetevő paraméterei
+   - Összetevő paramétereinek
 
      Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
@@ -104,17 +104,17 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Elemnév|Összetevő típusa|Paraméternév|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |Engedélyezett tárfiók-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed-StorageAccount-SKU|A diagnosztikai napló tárolási fiókjaiban használt SKU|
-|Engedélyezett VM-termékváltozatok|Szabályzat-hozzárendelés|Policy_Allowed – VM-SKU|Engedélyezett VM-termékváltozatok|
+|Engedélyezett virtuális gépek SKU-i|Szabályzat-hozzárendelés|Policy_Allowed – VM-SKU|Engedélyezett virtuális gépek SKU-i|
 |CostCenter-címke hozzáfűzése erőforráscsoporthoz|Szabályzat-hozzárendelés|Policy_CostCenter_Tag|CostCenter címke és a hozzá tartozó érték hozzáfűzése az erőforráscsoporthoz|
 |A környezetében engedélyezni nem kívánt erőforrástípusok|Szabályzat-hozzárendelés|Szabályzat _Allowed – erőforrás-típusok|Mely Azure-erőforrásokat szeretné engedélyezni a környezetben|
-|Kulcstartó üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** – Azure ad-csoport vagy felhasználói <Object ID> – engedélyeket adhat meg Key Vault|
-|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_AdatMegőrzés|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
-|Naplóelemzés üzembe helyezése|Resource Manager-sablon|LogAnalytics_hely|**Zárolt** – a munkaterület létrehozásakor használt régió|
+|Key Vault üzembe helyezése|Resource Manager-sablon|KV – AccessPolicy|**Zárolt** – Azure ad-csoport vagy felhasználói <Object ID> – engedélyeket adhat meg Key Vault|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_DataRetention|**Zárolt** – a napok számát a rendszer megőrzi log Analytics|
+|Log Analytics üzembe helyezése|Resource Manager-sablon|LogAnalytics_Location|**Zárolt** – a munkaterület létrehozásakor használt régió|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a CAF Foundation Blueprint-minta üzembe helyezésének lépéseit, tekintse meg a következő cikket az architektúra megismeréséhez:
 
