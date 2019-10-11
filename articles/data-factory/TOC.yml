@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition tevékenység
           href: control-flow-if-condition-activity.md
+        - name: Tevékenységváltás
+          href: control-flow-switch-activity.md
         - name: Keresési tevékenység
           href: control-flow-lookup-activity.md
         - name: Változó tevékenység beállítása
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Csomagvégrehajtás hibaelhárítása az Azure-SSIS integrációs modulban
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Adatfolyamok hibaelhárítása
+          href: data-flow-troubleshoot-guide.md
 - name: Forgatókönyvek
   items:
     - name: Data Lake- és EDW-adatmigrálás

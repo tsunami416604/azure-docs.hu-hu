@@ -2,7 +2,9 @@
   href: index.yml
   displayName: Azure Spring Cloud
 - name: Áttekintés
-  href: spring-cloud-overview.md
+  items:
+    - name: Mi az az Azure Spring Cloud?
+      href: spring-cloud-overview.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -12,7 +14,7 @@
       href: spring-cloud-quickstart-launch-app-cli.md
     - name: Spring Cloud-alkalmazás indítása a forrásból
       href: spring-cloud-launch-from-source.md
-    - name: Java Spring-alkalmazás indítása a Maven használatával
+    - name: Spring Cloud-alkalmazás indítása Maven használatával
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Oktatóanyagok
   items:
