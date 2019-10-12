@@ -47,7 +47,7 @@ A következő országok/régiók adatai találhatók a **Egyesült Államokban**
 
 **Európában** az alábbi országok és régiók adatai találhatók:
 
-> Algéria, Ausztria, Azerbajdzsán, Bahrein, Fehéroroszország, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írország, Egyesült Királyság, Izrael, Olaszország, Jordánia, Kazahsztán, Kenya, Kuvait, Lettország, Libanon, Liechtenstein, Litvánia, Luxemburg, Észak-Macedónia, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Lengyelország, Portugália, Katar, Románia, Oroszország, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország Svájc, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek és Egyesült Királyság.
+> Algéria, Ausztria, Azerbajdzsán, Bahrein, Belarusz, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írország, Egyesült Királyság, Izrael, Olaszország, Jordánia, Kazahsztán, Kenya, Kuvait, Lettország, Libanon, Liechtenstein, Litvánia, Luxemburg, Észak-Macedónia, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Lengyelország, Portugália, Katar, Románia, Oroszország, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország Svájc, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek és Egyesült Királyság.
 
 A következő országok/régiók esetében **Ázsia és a csendes-óceáni térség** az adat:
 

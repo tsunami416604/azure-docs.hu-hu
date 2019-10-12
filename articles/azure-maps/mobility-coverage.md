@@ -56,7 +56,7 @@ Az alábbi táblázatban lefedettség adatait az Azure Maps a mobilitási szolg�
 |--------|---------|
 | Ausztrália      | <p>Adelaide, Alice rugó, Judit, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, mágneses sziget, Maryborough-Hervey Bay, Melbourne, új-Dél-Wales, Perth, RockHampton, dél-keleti Queensland legnagyobb része Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Kína | <p> Changchun, Changsha, Chengdu, Csungking, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Sanghaj, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hongkong (KKT) | Hong Kong*|
+| Hongkong (KKT) | Hong Kong|
 | Macau | Macau*|
 | India | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
 | Indonézia | Batam, Bandung, Denpasar, Jakarta, Malang, Banyuwangi, Kediri, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
