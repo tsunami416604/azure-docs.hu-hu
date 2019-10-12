@@ -1,7 +1,7 @@
 ---
 title: Előre elkészített modellek – LUIS
 titleSuffix: Azure Cognitive Services
-description: Előre összeállított modellek adja meg a tartományok, szándék fog vonatkozni, utterances és entitásokat. Indítsa el az alkalmazást egy előre elkészített tartomány vagy a megfelelő tartomány hozzáadása az alkalmazáshoz később.
+description: Az előre elkészített modellek tartományok, leképezések, hosszúságú kimondott szöveg és entitások biztosítására szolgálnak. Elindíthatja az alkalmazást egy előre elkészített tartománnyal, vagy hozzáadhat egy kapcsolódó tartományt az alkalmazáshoz később.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,58 +11,58 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: b072e265204bba3caa1388576008d5e41adcc33d
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: b88801ded3dea7c7514ff117361feba3e95444ed
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619718"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264386"
 ---
-# <a name="prebuilt-domain-intent-and-entity-models"></a>Előre összeállított tartomány, szándék és entitás modellek
+# <a name="prebuilt-domain-intent-and-entity-models"></a>Előre elkészített tartomány, cél és entitás modellek
 
-Előre összeállított modellek adja meg a tartományok, szándék fog vonatkozni, utterances és entitásokat. Indítsa el az alkalmazást egy előre elkészített tartomány vagy a megfelelő tartomány hozzáadása az alkalmazáshoz később. 
+Az előre elkészített modellek tartományok, leképezések, hosszúságú kimondott szöveg és entitások biztosítására szolgálnak. Elindíthatja az alkalmazást egy előre elkészített tartománnyal, vagy hozzáadhat egy kapcsolódó tartományt az alkalmazáshoz később. 
 
-## <a name="types-of-prebuilt-models"></a>Előre összeállított modellek típusa
+## <a name="types-of-prebuilt-models"></a>Az előre elkészített modellek típusai
 
-Nincsenek 3 típusú előre összeállított modellek LUIS biztosít. Minden modell az alkalmazás bármikor lehet hozzáadni. 
+A LUIS által készített előre összeépített modellek 3 típussal rendelkeznek. Minden modell bármikor hozzáadható az alkalmazáshoz. 
 
 |Modell típusa|Tartalmazza|
 |--|--|
-|Domain|Leképezések, utterances, entitások|
-|Leképezések|Leképezések, kimondott szöveg|
-|Entitások|Entitások csak| 
+|Domain|Szándékok, hosszúságú kimondott szöveg, entitások|
+|Leképezések|Szándékok, hosszúságú kimondott szöveg|
+|Entitások|Csak entitások| 
 
 ## <a name="prebuilt-domains"></a>Előre összeállított tartományok
 
-Language Understanding (LUIS) biztosít *előre összeállított tartományok*, olyan előre összeállított készletei, amelyek [leképezések](luis-how-to-add-intents.md) és [entitások](luis-concept-entity-types.md) , hogy működnek együtt, a tartományok vagy közös kategóriái ügyfélalkalmazások számára. 
+A Language Understanding (LUIS) előre *elkészített tartományokat*biztosít, amelyek előre összeállított készletekből és [entitásokból](luis-concept-entity-types.md) állnak, amelyek együtt működnek a tartományok vagy az ügyfélalkalmazások általános kategóriái [között.](luis-how-to-add-intents.md) 
 
-Az előre összeállított tartományok a következők: betanított és készen áll a LUIS-alkalmazás hozzáadása. A leképezések és a egy előre elkészített tartományban entitások olyan teljes mértékben testre szabható, miután hozzáadta azokat az alkalmazásba. 
+Az előre elkészített tartományokat betanítják, és készen állnak a LUIS-alkalmazásba való felvételre. Az előre elkészített tartományokban található szándékok és entitások teljes mértékben testreszabhatók az alkalmazáshoz való hozzáadásuk után. 
 
-Ha a testreszabás, előre összeállított teljes tartományban indul el, törölje a szándékok és entitások, amelyhez az alkalmazás használatához nincs szükség. A készlethez, amely az előre összeállított tartomány már biztosít néhány leképezések vagy entitások is hozzáadhat. Például, ha használja a **események** sport esemény alkalmazások előre összeállított tartományban is sport csapatok entitások hozzáadása. Amikor elkezd [beszédmódok nyújtó](luis-how-to-add-example-utterances.md) , LUIS, olyan feltételek, amelyek az alkalmazás adott. A LUIS megtanulja felismerni őket, és az előre összeállított tartományban szándékok és entitások az alkalmazás igényeinek megfelelően szokásait. 
+Ha egy teljes előre elkészített tartomány testreszabását indítja el, törölje azokat a leképezéseket és entitásokat, amelyeket az alkalmazásnak nem kell használnia. Hozzáadhat olyan leképezéseket vagy entitásokat is a készlethez, amelyeket az előre elkészített tartomány már biztosít. Ha **például a sportesemények** előre elkészített tartományát használja egy sportesemény-alkalmazáshoz, entitásokat adhat hozzá a sport csapatokhoz. Amikor elindítja a [hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) -t a Luis számára, belefoglalja az alkalmazásra vonatkozó feltételeket is. LUIS megtanulja, hogy felismerje őket, és kihasználja az előkészített tartomány szándékait és entitásait az alkalmazás igényeinek megfelelően. 
 
 > [!TIP]
-> A leképezések és a egy előre elkészített tartományban entitások működnek együtt a leghatékonyabban. Érdemes úgy, hogy szándékokat és entitásokat, amikor csak lehetséges ugyanahhoz a tartományhoz.
-> A segédprogramok előre összeállított tartományban van, amely testre szabható használható minden olyan tartományban szándékok. Például hozzáadhat `Utilities.Repeat` az alkalmazás és a vonat, felismerni bármilyen műveletek felhasználó szeretné ismételje meg az alkalmazásban. 
+> Az előre elkészített tartományban található szándékok és entitások együtt működnek a legjobban. Jobb megoldás, ha lehetséges, az azonos tartományhoz tartozó leképezéseket és entitásokat érdemes kombinálni.
+> A segédprogramok előre elkészített tartománya olyan leképezéseket tartalmaz, amelyek bármely tartományban testreszabhatók. Például hozzáadhat `Utilities.Repeat` értéket az alkalmazáshoz, és betaníthatja, hogy a felhasználók milyen műveleteket végezhetnek el az alkalmazásban. 
 
-### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Egy előre elkészített tartomány szándékot viselkedésének módosítása
+### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Előre elkészített tartomány leképezése viselkedésének módosítása
 
-Előfordulhat, hogy egy előre elkészített tartományt tartalmaz megjelölésű megjelölésű szeretné engedélyezni a LUIS-alkalmazás a hasonló, de azt szeretné, hogy eltérően viselkednek. Például a **helyek** előre összeállított tartományt biztosít egy `MakeReservation` célja, hogy egy étterem foglalást, de szeretné az alkalmazást, hogy a szállodai foglalások adott szándékot használatához. Ebben az esetben módosíthatja, hogy a leképezés viselkedését utterances azáltal, hogy a LUIS szállodai foglalások tétele és a címkézés őket használatával a `MakeReservation` szándék, így a LUIS újrataníthatók felismerni a `MakeReservation` küldött kérelemben egy szállodai Vendég repülőjáratra szándék .
+Előfordulhat, hogy egy előre elkészített tartomány olyan szándékot tartalmaz, amely hasonló a LUIS-alkalmazásban használni kívánt szándékhoz, de azt szeretné, hogy másképp viselkedjen. A **helyek** előre összeépített tartománya például egy `MakeReservation` szándékot biztosít éttermi foglalás készítéséhez, de azt szeretné, hogy az alkalmazás ezt a szándékot használja a szállodai foglalások elvégzésére. Ebben az esetben módosíthatja a szándék viselkedését azáltal, hogy hosszúságú kimondott szöveg biztosít a LUIS számára a szállodai foglalások létrehozásához és a `MakeReservation` szándék használatával történő címkézéséhez, így a LUIS újra betanítható úgy, hogy felismerje a (z) `MakeReservation` szándékot a Hotel lefoglalására irányuló kérelemben.
 
-Az előre összeállított tartományok teljes listáját megtalálhatja az [előre összeállított tartományok referencia](./luis-reference-prebuilt-domains.md).
+Az előre elkészített tartományokról az [előre elkészített tartományok című témakörben](./luis-reference-prebuilt-domains.md)talál teljes listát.
 
-## <a name="prebuilt-intents"></a>Előre összeállított leképezések
+## <a name="prebuilt-intents"></a>Előre elkészített leképezések
 
-A LUIS biztosít az előre összeállított leképezések és a kimondott szöveg. A teljes tartomány hozzáadása nélkül leképezéseket adhat hozzá. Megjelölésű hozzáadása nem ad megjelölésű és a kimondott szöveg. A leképezés neve és az utterance (kifejezés) listát is módosíthatók.  
+A LUIS előre elkészített leképezéseket és azok hosszúságú kimondott szöveg biztosítja. A leképezések a teljes tartomány hozzáadása nélkül is felvehetők. A szándék hozzáadásával a szándék és a hosszúságú kimondott szöveg hozzáadásának folyamata. A leképezés neve és a teljes lista is módosítható.  
 
 ## <a name="prebuilt-entities"></a>Előre összeállított entitások
 
-LUIS az általános típusú adatok, például a dátumok, időpontok, számok, mértékek és pénznem FELISMERVE előre összeállított entitások egy készletét tartalmazza. Előre összeállított entitások támogatása a LUIS-alkalmazás kulturális környezete eltérő. A LUIS támogatja, beleértve támogatási kulturális környezet, előre összeállított entitások teljes listáját lásd: a [előre összeállított entitások bemutatása](./luis-reference-prebuilt-entities.md).
+A LUIS előre összeállított entitásokat tartalmaz az általános típusú információk, például a dátumok, az időpontok, a számok, a mérések és a pénznemek felismeréséhez. Az előre elkészített entitások támogatása a LUIS-alkalmazás kulturális környezetében változik. A LUIS által támogatott előre elkészített entitások teljes listáját, beleértve a kulturális környezet támogatását, az [előre elkészített entitások referenciája](./luis-reference-prebuilt-entities.md)című témakörben talál.
 
-Ha az alkalmazás tartalmaz egy előre összeállított entitások, az előrejelzéseket a közzétett alkalmazás szerepelnek. Előre összeállított entitások viselkedését előre betanított és **nem** módosítható. Kövesse az alábbi lépéseket, hogy egy előre összeállított entitások működését:
+Ha egy előre összeépített entitás szerepel az alkalmazásban, az előrejelzések a közzétett alkalmazásban is szerepelnek. Az előre elkészített entitások viselkedése előre betanítva, és **nem** módosítható. 
 
 > [!NOTE]
-> **Builtin.DateTime** elavult. A rendszer felülírja [ **builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md), dátum és idő címtartományok recognition, valamint továbbfejlesztett elismerését nem egyértelmű dátumok és időpontok biztosítja.
+> a **beépített. datetime** elavult. A rendszer helyébe a [**beépített. datetimeV2**](luis-reference-prebuilt-datetimev2.md), amely a dátum-és időtartományok felismerését, valamint a kétértelmű dátumok és időpontok jobb felismerését is lehetővé teszi.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [előre összeállított entitások hozzáadása](luis-prebuilt-entities.md) az alkalmazáshoz.
+Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](luis-prebuilt-entities.md) az alkalmazáshoz.
