@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 966386bfed5f94556f145afab1c665eb3c90546a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 36a95b502c13ccf360ba4ac56b4837d41ee487c8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065553"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296409"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Az egyszeri bejelentkezés és a jogkivonatok testreszabásának kezelése egyéni házirendek használatával Azure Active Directory B2C
 
@@ -54,9 +54,9 @@ Az előző példában az alábbi értékek vannak megadva:
 - **Hozzáférési jogkivonat élettartamai** – a hozzáférési jogkivonat élettartamának értéke **token_lifetime_secs** metaadat-elemmel van beállítva. Az alapértelmezett érték 3600 másodperc (60 perc).
 - **Azonosító jogkivonat élettartama** – az azonosító jogkivonat élettartamának értéke a **id_token_lifetime_secs** metaadat-elemmel van beállítva. Az alapértelmezett érték 3600 másodperc (60 perc).
 - **Frissítési jogkivonat élettartama** – a frissítési jogkivonat élettartamának értéke a **refresh_token_lifetime_secs** metaadat-elemmel van beállítva. Az alapértelmezett érték 1209600 másodperc (14 nap).
-- **Frissítési jogkivonat ablakának élettartama** – ha egy csúszó ablak élettartamát szeretné beállítani a frissítési jogkivonat számára, állítsa be a **rolling_refresh_token_lifetime_secs** metaadat-elem értékét. Az alapértelmezett érték 7776000 (90 nap). Ha nem szeretné kikényszeríteni a csúszó ablak élettartamát, cserélje le az `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`elemeket a következőre:.
-- **Kiállítói (ISS) jogcím** – a kibocsátó (ISS) jogcím a **IssuanceClaimPattern** metaadat-elemmel van beállítva. A megfelelő értékek `AuthorityAndTenantGuid` : és `AuthorityWithTfp`.
-- **Házirend-azonosítót jelölő jogcím beállítása** – az érték `TFP` beállításának beállításai (megbízhatósági keretrendszer-házirend) `ACR` és (hitelesítési környezetre vonatkozó hivatkozás). `TFP`az ajánlott érték. Állítsa be a **AuthenticationContextReferenceClaimPattern** értéket a `None`értékkel.
+- **Frissítési jogkivonat ablakának élettartama** – ha egy csúszó ablak élettartamát szeretné beállítani a frissítési jogkivonat számára, állítsa be a **rolling_refresh_token_lifetime_secs** metaadat-elem értékét. Az alapértelmezett érték 7776000 (90 nap). Ha nem szeretné kényszeríteni a csúszó ablak élettartamát, cserélje le az `<Item Key="allow_infinite_rolling_refresh_token">True</Item>` értékre.
+- **Kiállítói (ISS) jogcím** – a kibocsátó (ISS) jogcím a **IssuanceClaimPattern** metaadat-elemmel van beállítva. A megfelelő értékek: `AuthorityAndTenantGuid` és `AuthorityWithTfp`.
+- **Házirend-azonosítót jelölő jogcím beállítása** – az érték beállításának beállításai a következők: `TFP` (megbízhatósági keretrendszer-házirend) és `ACR` (hitelesítési környezet hivatkozása). a `TFP` a javasolt érték. Állítsa be a **AuthenticationContextReferenceClaimPattern** értéket a `None` értékkel.
 
     A **ClaimsSchema** elemben adja hozzá a következő elemet:
 
@@ -75,7 +75,7 @@ Az előző példában az alábbi értékek vannak megadva:
 
     Az ACR esetében távolítsa el a **AuthenticationContextReferenceClaimPattern** -tételt.
 
-- **Tulajdonos (Sub) jogcím** – ez a beállítás alapértelmezés szerint a ObjectId, ha ezt a `Not Supported`beállítást szeretné váltani, cserélje le a következő sort:
+- **Tulajdonos (Sub) jogcím** – ez a beállítás alapértelmezés szerint ObjectId, ha ezt a beállítást `Not Supported` értékre szeretné váltani, cserélje le ezt a sort:
 
     ```XML
     <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
@@ -101,6 +101,6 @@ A munkamenet-viselkedés és az SSO-konfigurációk módosításához adjon hozz
 
 Az előző példában az alábbi értékek vannak konfigurálva:
 
-- **Egyszeri bejelentkezés (SSO)** – az egyszeri bejelentkezés a **SingleSignon**van konfigurálva. A `Tenant`megfelelő értékek `Application` `Suppressed`:,, és. `Policy`
-- **Webalkalmazás-munkamenet élettartama (perc)** – a webalkalmazás-munkamenet élettartama a **SessionExpiryInSeconds** elemmel van beállítva. Az alapértelmezett érték 86400 másodperc (1440 perc).
-- **Webalkalmazás-munkamenet** időkorlátja – a webalkalmazás-munkamenet időtúllépése a **SessionExpiryType** elemmel van beállítva. A megfelelő értékek `Absolute` : és `Rolling`.
+- **Egyszeri bejelentkezés (SSO)** – az egyszeri bejelentkezés a **SingleSignon**van konfigurálva. A megfelelő értékek: `Tenant`, `Application`, `Policy` és `Suppressed`.
+- **Webalkalmazás-munkamenet** időkorlátja – a webalkalmazás-munkamenet időtúllépése a **SessionExpiryType** elemmel van beállítva. A megfelelő értékek: `Absolute` és `Rolling`.
+- **Webalkalmazás-munkamenet élettartama** – a webalkalmazás-munkamenet élettartama a **SessionExpiryInSeconds** elemmel van beállítva. Az alapértelmezett érték 86400 másodperc (1440 perc).

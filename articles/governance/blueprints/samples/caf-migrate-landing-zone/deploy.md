@@ -1,22 +1,22 @@
 ---
-title: Minta – a CAF áttelepítése a bevezetési zóna terve – üzembe helyezési lépések
-description: Üzembe helyezési lépések a CAF-beli bevezetési zónák áttelepítéséhez – példa a tervrajz-összetevő paraméterének részleteire.
+title: A CAF migrációs leszállási zóna tervezetének mintája – üzembe helyezési lépések
+description: Üzembe helyezési lépések a CAF Migration Landing Zone tervhez – példa a Blueprint-összetevők paraméterének részleteire.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 0a635c9c3b864e4ce74dbbe8b9c95df38489176f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: cb41d363b208400598c8afb06dfdb4acaeb02d2b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248499"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298025"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>A Microsoft Cloud bevezetési keretrendszer üzembe helyezése az Azure áttelepítési zóna terve minta
 
-Az Azure-tervezetek a CAF-ban való üzembe helyezéséhez a következő lépéseket kell elvégeznie:
+Az Azure-tervezetek a CAF migrációs bevezetési zóna tervezetének üzembe helyezéséhez a következő lépéseket kell elvégeznie:
 
 > [!div class="checklist1"]
 > - Javasolt a [CAF Foundation](../caf-foundation/index.md) Blueprint minta üzembe helyezése
@@ -118,7 +118,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 Most, hogy áttekintette a CAF Migrálás bevezetési zóna üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az architektúra megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [A CAF áttelepíti a behajózási zóna tervezetét – áttekintés](./index.md)
+> [A CAF migrációs leszállási zóna tervezete – áttekintés](./index.md)
 
 További cikkek a tervekről és azok használatáról:
 

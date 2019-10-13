@@ -1,19 +1,19 @@
 ---
-title: Oktatóanyag – új erőforrások megvédése a terv erőforrás-zárolásával
+title: Új erőforrások megvédése tervrajzok zárolásával
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure-tervrajzok erőforrás-zárolási beállításait csak olvasható módon, és ne törölje az újonnan telepített erőforrások elleni védelemhez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2f66677df7cd1c6fbde9c0467b4d7f2094509ee8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978144"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297012"
 ---
-# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: Új erőforrások elleni védelem az Azure-tervekkel – erőforrás-zárolások
+# <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Oktatóanyag: új erőforrások biztosítása az Azure BluePrints erőforrás-zárolásokkal
 
 Az Azure-tervrajzok [erőforrás-zárolásai](../concepts/resource-locking.md)révén az újonnan telepített erőforrásokat védetté teheti, akár a _tulajdonos_ szerepkörrel rendelkező fiókkal. Ezt a védelmet a Resource Manager-sablon által létrehozott erőforrások tervrajz-definíciójában adhatja hozzá.
 
@@ -42,11 +42,11 @@ Először hozza létre a terv definícióját.
 
 1. Adja meg ezt az információt az **alapok** lapon:
 
-   - **Terv neve**: Adjon meg egy nevet a terv mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount**nevet fogjuk használni.
-   - A **terv leírása**: Adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére**használható.
-   - **Definíció helye**: Kattintson a három pont gombra (...), majd válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a terv definícióját.
+   - **Terv neve**: adjon meg egy nevet a tervezet mintájának másolatához. Ebben az oktatóanyagban a **zárolt storageaccount**nevet fogjuk használni.
+   - **Terv leírása**: adja meg a terv definíciójának leírását. **Az üzembe helyezett erőforrásokra vonatkozó terv-erőforrás-zárolás tesztelésére**használható.
+   - **Definíció helye**: kattintson a három pontot ábrázoló gombra (...), majd válassza ki azt a felügyeleti csoportot vagy előfizetést, amelybe menteni szeretné a terv definícióját.
 
-1. Válassza ki az oldal **tetején található összetevők fület** , vagy válassza a **Next: A lap alján lévő @ no__t-0 összetevők.
+1. Válassza ki az oldal tetején található **összetevők fület** , vagy válassza a Next (tovább) gombot **:** az oldal alján található összetevők.
 
 1. Erőforráscsoport hozzáadása az előfizetési szinten:
    1. Válassza ki az összetevő **hozzáadása** sort az **előfizetés**alatt.
@@ -136,11 +136,11 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
    - **Alapvető beállítások**
 
-     - **Előfizetések**: Válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a terv definícióját mentette. Ha egynél több előfizetést választ ki, az egyes előfizetésekhez hozzárendelés jön létre a beírt paraméterek használatával.
-     - **Hozzárendelés neve**: A név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks**értékre.
-     - **Hely**: Válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely abban a felügyeleti csoportban található, ahol a terv definícióját mentette. Ha egynél több előfizetést választ ki, az egyes előfizetésekhez hozzárendelés jön létre a beírt paraméterek használatával.
+     - **Hozzárendelés neve**: a név előre fel van töltve a terv definíciójának neve alapján. Azt szeretnénk, hogy ez a hozzárendelés az új erőforráscsoport zárolását képviseljék, ezért módosítsa a hozzárendelés nevét a **hozzárendelés-zárolt-storageaccount-TestingBPLocks**értékre.
+     - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../../active-directory/managed-identities-azure-resources/overview.md).
        Ebben az oktatóanyagban válassza az **USA 2. keleti**régióját.
-     - **Terv definíciójának verziója**: Válassza ki a tervezet definíciójának **1,0** -es verzióját.
+     - **Terv definíciójának verziója**: válassza ki a közzétett **1,0** -es verziót a terv definíciójában.
 
    - **Hozzárendelés zárolása**
 
@@ -148,17 +148,17 @@ A terv definíciójának közzététele után hozzárendelheti azt egy előfizet
 
    - **Felügyelt identitás**
 
-     Használja az alapértelmezett beállítást: A **rendszer hozzárendelve**. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
+     Használja az alapértelmezett beállítást: **rendszer rendelve**. További információ: [felügyelt identitások](../../../active-directory/managed-identities-azure-resources/overview.md).
 
    - **Összetevő paramétereinek**
 
      Az ebben a szakaszban meghatározott paraméterek arra a tárgyra vonatkoznak, amelyben definiálva vannak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. Az egyes összetevőknél állítsa be a paraméter értékét az **érték** oszlopban látható értékre.
 
-     |Elemnév|Összetevő típusa|Paraméternév|Value|Leírás|
+     |Összetevő neve|Összetevő típusa|Paraméter neve|Value (Díj)|Leírás|
      |-|-|-|-|-|
-     |RGtoLock erőforráscsoport|Resource group|Name (Név)|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
-     |RGtoLock erőforráscsoport|Resource group|Location|USA nyugati régiója, 2.|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
-     |StorageAccount|Resource Manager-sablon|storageAccountType (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték a _Standard_LRS_.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Név|TestingBPLocks|Meghatározza az új erőforráscsoport nevét, amelyre a terv zárolásait alkalmazni kell.|
+     |RGtoLock erőforráscsoport|Erőforráscsoport|Földrajzi egység|USA 2. nyugati régiója|Meghatározza az új erőforráscsoport helyét, amelyre a terv zárolásait alkalmazni kívánja.|
+     |StorageAccount|Resource Manager-sablon|Tárfióktípus (StorageAccount)|Standard_GRS|A Storage SKU. Az alapértelmezett érték a _Standard_LRS_.|
 
 1. Miután megadta az összes paramétert, válassza az oldal alján található **hozzárendelés** elemet.
 
@@ -225,7 +225,7 @@ Ha elkészült ezzel az Oktatóanyaggal, törölje ezeket az erőforrásokat:
 - Erőforráscsoport _TestingBPLocks_
 - Terv definíciója _zárolva – storageaccount_
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

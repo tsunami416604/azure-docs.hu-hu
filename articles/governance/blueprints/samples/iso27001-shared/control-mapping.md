@@ -1,17 +1,17 @@
 ---
-title: Minta-ISO 27001 megosztott szolgáltatások tervrajza – vezérlés leképezése
+title: ISO 27001 megosztott szolgáltatások tervezetének mintája – vezérlési leképezés
 description: Az ISO 27001 megosztott szolgáltatások tervrajzi mintájának vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 0a09de82375546f8d320686d9291466ae12d78c2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 39dc91fc521698edc725c43818ac361b969aee9a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248926"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297598"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 megosztott szolgáltatások tervrajzi mintájának vezérlése
 

@@ -1,17 +1,17 @@
 ---
-title: Minta-ISO 27001-es bevezetési/SQL munkaterhelés-terv – lépések üzembe helyezése
+title: ISO 27001-es bevezetési/SQL munkaterhelés-tervezet minta – üzembe helyezési lépések
 description: Az ISO 27001 App Service Environment/SQL Database munkaterhelés-tervezet lépéseinek üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 48c4aa703739d76aa565f3692706f87d2a1c705a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: bd85a65d3e4d8aa1a16bb57dc5981d661a83d412
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248938"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297630"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervrajzi minta üzembe helyezése
 
