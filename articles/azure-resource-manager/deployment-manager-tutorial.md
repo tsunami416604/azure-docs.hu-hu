@@ -5,15 +5,15 @@ services: azure-resource-manager
 documentationcenter: ''
 author: mumian
 ms.service: azure-resource-manager
-ms.date: 05/23/2019
+ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170362"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285876"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Oktatóanyag: Az Azure Deployment Manager Resource Manager-sablonokkal való használata (nyilvános előzetes verzió)
 
@@ -61,8 +61,6 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```powershell
     Install-Module -Name Az.DeploymentManager
     ```
-
-* [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
 
 ## <a name="understand-the-scenario"></a>A forgatókönyv megismerése
 
@@ -135,16 +133,55 @@ A két verzió (1.0.0.0 és 1.0.0.1) a [változatok üzembe helyezését](#deplo
 
 A sablonösszetevőket a szolgáltatástopológia-sablon, a bináris összetevőket a bevezetési sablon használja. A topológiasablon és a bevezetési sablon is meghatároz egy összetevőforrásként szolgáló Azure-erőforrást, amely az üzemelő példányban használt sablon- és bináris összetevőkre irányítja a Resource Managert. Az oktatóanyag egyszerűsége érdekében ugyanaz a tárfiók tárolja a sablonösszetevőket és a bináris összetevőket. Mindkét összetevőforrás ugyanarra a tárfiókra mutat.
 
-1. Hozzon létre egy Azure-tárfiókot. Útmutatásért tekintse meg a [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../storage/blobs/storage-quickstart-blobs-portal.md) című dokumentumot.
-2. Hozzon létre egy blobtárolót a tárfiókban.
-3. Másolja a blobtárolóba a két mappát (a binaries és a templates mappát) és a tartalmukat. A [Microsoft Azure Storage Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) támogatja a fájlok húzását.
-4. A tároló SAS-helyét az alábbi utasításokat követve tudhatja meg:
+Futtassa a következő PowerShell-parancsfájlt egy erőforráscsoport létrehozásához, egy tároló létrehozásához, egy blob-tároló létrehozásához, a letöltött fájlok feltöltéséhez, majd hozzon létre egy SAS-tokent.
 
-    1. Az Azure Storage Explorerben lépjen a blobtárolóra.
-    2. Kattintson a jobb gombbal a bal oldali panelen a blobtárolóra, és válassza a **Közös hozzáférésű jogosultságkód igénylése** lehetőséget.
-    3. Adja meg a **Kezdés időpontja** és a **Lejárat időpontja** beállításokat.
-    4. Kattintson a **Létrehozás** gombra.
-    5. Másolja az URL-címet. Az URL-címet a két paraméterfájlban, a [topológiaparaméterek](#topology-parameters-file) és a [bevezetési paraméterek fájljában](#rollout-parameters-file) kell bemásolni egy mezőbe.
+> [!IMPORTANT]
+> a PowerShell-parancsfájlban található **projektnév** az ebben az oktatóanyagban üzembe helyezett Azure-szolgáltatások nevének előállítására szolgálnak. A különböző Azure-szolgáltatások eltérő követelményekkel rendelkeznek a neveknél. Az üzembe helyezés sikerességének biztosításához válasszon egy 12 karakternél rövidebb nevet, amely csak kisbetűket és számokat tartalmazhat.
+> Mentse a projekt neve másolatát. Ugyanazt a projektnév használja az oktatóanyagon keresztül.
+
+```azurepowershell
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$filePath = Read-Host -Prompt "Enter the folder that contains the downloaded files"
+
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
+$containerName = "admfiles"
+$filePathArtifacts = "${filePath}\ArtifactStore"
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+$storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+  -Name $storageAccountName `
+  -Location $location `
+  -SkuName Standard_RAGRS `
+  -Kind StorageV2
+
+$storageContext = $storageAccount.Context
+
+$storageContainer = New-AzStorageContainer -Name $containerName -Context $storageContext -Permission Off
+
+
+$filesToUpload = Get-ChildItem $filePathArtifacts -Recurse -File
+
+foreach ($x in $filesToUpload) {
+    $targetPath = ($x.fullname.Substring($filePathArtifacts.Length + 1)).Replace("\", "/")
+
+    Write-Verbose "Uploading $("\" + $x.fullname.Substring($filePathArtifacts.Length + 1)) to $($storageContainer.CloudBlobContainer.Uri.AbsoluteUri + "/" + $targetPath)"
+    Set-AzStorageBlobContent -File $x.fullname -Container $storageContainer.Name -Blob $targetPath -Context $storageContext | Out-Null
+}
+
+$token = New-AzStorageContainerSASToken -name $containerName -Context $storageContext -Permission rl -ExpiryTime (Get-date).AddMonths(1)  -Protocol HttpsOrHttp
+
+$url = $storageAccount.PrimaryEndpoints.Blob + $containerName + $token
+
+Write-Host $url
+```
+
+Készítsen másolatot az URL-címről az SAS-jogkivonattal. Ez az URL-cím szükséges ahhoz, hogy feltöltse a mezőket a két paraméter fájljában, a topológia paramétereinek fájlját és a bevezetési paramétereket tartalmazó fájlt.
+
+Nyissa meg a tárolót a Azure Portalból, és ellenőrizze, hogy a **bináris** fájlok és a **sablonok** mappái és a fájlok feltöltése is megtörténik-e.
 
 ## <a name="create-the-user-assigned-managed-identity"></a>A felhasználó által hozzárendelt felügyelt identitás létrehozása
 
@@ -176,9 +213,7 @@ Nyissa meg a következő fájlt: **\ADMTemplates\CreateADMServiceTopology.json**
 
 A sablon a következő paramétereket tartalmazza:
 
-![Azure Deployment Manager oktatóanyag – topológiasablon paraméterei](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
-
-* **namePrefix**: Ez az előtag hozza létre a Deployment Manager-erőforrások nevét. Például a jdoe előtaggal a szolgáltatástopológia neve **jdoe**ServiceTopology lesz.  Az erőforrásnevek ennek a sablonnak a változókat tartalmazó szakaszában definiálhatók.
+* **projektnév**: ezzel a névvel lehet létrehozni a telepítéskezelő erőforrások nevét. Például a "jdoe" használatával a szolgáltatás topológiájának neve **jdoe**ServiceTopology.  Az erőforrásnevek ennek a sablonnak a változókat tartalmazó szakaszában definiálhatók.
 * **azureResourcelocation**: Az oktatóanyag egyszerűsítése érdekében mindegyik erőforrás ezen a helyen található, hacsak másként nem jelezzük. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
 * **artifactSourceSASLocation**: Annak a blobtárolónak a SAS URI-ja, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
 * **templateArtifactRoot**: A relatív elérési út a sablonokat és paramétereket tároló blobtárolótól. Az alapértelmezett érték **templates/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **templateArtifactRoot** és **templateArtifactSourceRelativePath** (vagy **parametersArtifactSourceRelativePath**).
@@ -215,14 +250,13 @@ Hozzon létre egy paraméterfájlt, amely a topológiasablonnal használható.
 1. Nyissa meg a következő fájlt a Visual Studio Code-ban vagy valamilyen szövegszerkesztőben: **\ADMTemplates\CreateADMServiceTopology.Parameters**.
 2. Töltse ki a paraméterek értékeit:
 
-    * **namePrefix**: Adjon meg egy 4–5 karakterből álló sztringet. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
+    * **projektnév**: adjon meg egy 4-5 karakterből álló karakterláncot. Ez a név egyedi Azure-erőforrásnevek létrehozására szolgál.
     * **azureResourceLocation**: Ha nem ismerné az Azure-helyeket, ebben az oktatóanyagban használja a **centralus** helyet.
     * **artifactSourceSASLocation**: Adja meg annak a gyökérkönyvtárnak (a blobtárolónak) az SAS URI-ját, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
     * **templateArtifactRoot**: Hacsak nem módosítja az összetevők mappastruktúráját, használja a **templates/1.0.0.0** értéket az oktatóanyagban.
-    * **targetScriptionID**: adja meg az Azure-előfizetés azonosítóját.
 
 > [!IMPORTANT]
-> A topológiasablon és a bevezetési sablon egyes paraméterei közösek. Ezeknek a paramétereknek egyező értékekkel kell rendelkezniük. Ezek a paraméterek a következők: **namePrefix**, **azureResourceLocation** és **artifactSourceSASLocation** (ebben az oktatóanyagban mindkét összetevőforrás ugyanazt a tárfiókot használja).
+> A topológiasablon és a bevezetési sablon egyes paraméterei közösek. Ezeknek a paramétereknek egyező értékekkel kell rendelkezniük. Ezek a paraméterek a következők: **projektnév**, **azureResourceLocation**és **artifactSourceSASLocation** (a jelen oktatóanyagban ugyanazt a Storage-fiókot használják).
 
 ## <a name="create-the-rollout-template"></a>A bevezetési sablon létrehozása
 
@@ -234,7 +268,7 @@ A sablon a következő paramétereket tartalmazza:
 
 ![Azure Deployment Manager-oktatóanyag – bevezetési sablon paraméterei](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-* **namePrefix**: Ez az előtag hozza létre a Deployment Manager-erőforrások nevét. Például a jdoe előtaggal a bevezetés neve **jdoe**Rollout lesz.  A nevek ennek a sablon a változókat tartalmazó szakaszában vannak definiálva.
+* **projektnév**: ezzel a névvel lehet létrehozni a telepítéskezelő erőforrások nevét. Például a "jdoe" használatával a bevezetési név **jdoe**bevezetést.  A nevek ennek a sablon a változókat tartalmazó szakaszában vannak definiálva.
 * **azureResourcelocation**: Az oktatóanyag egyszerűsítése érdekében mindegyik Deployment Manager-erőforrás ezen a helyen található, hacsak másként nem jelezzük. Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
 * **artifactSourceSASLocation**: Annak a gyökérkönyvtárnak (a blobtárolónak) a SAS URI-ja, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
 * **binaryArtifactRoot**: Az alapértelmezett érték **binaries/1.0.0.0**. Ne módosítsa ezt az értéket, hacsak nem szeretné módosítani a mappastruktúrát [az összetevők előkészítését](#prepare-the-artifacts) ismertető szakaszban foglaltak szerint. Ebben az oktatóanyagban relatív elérési utakat használunk.  A teljes elérési út a következők összefűzésével áll elő: **artifactSourceSASLocation**, **binaryArtifactRoot** és a **deployPackageUri**, amely a CreateWebApplicationParameters.json fájlban van megadva.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
@@ -276,7 +310,7 @@ Hozzon létre egy paraméterfájlt, amely a bevezetési sablonnal használható.
 1. Nyissa meg a következő fájlt a Visual Studio Code-ban vagy valamilyen szövegszerkesztőben: **\ADMTemplates\CreateADMRollout.Parameters**.
 2. Töltse ki a paraméterek értékeit:
 
-    * **namePrefix**: Adjon meg egy 4–5 karakterből álló sztringet. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
+    * **projektnév**: adjon meg egy 4-5 karakterből álló karakterláncot. Ez a név egyedi Azure-erőforrásnevek létrehozására szolgál.
     * **azureResourceLocation**: Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
     * **artifactSourceSASLocation**: Adja meg annak a gyökérkönyvtárnak (a blobtárolónak) az SAS URI-ját, amely a szolgáltatási egység sablonját és paramétereit tárolja az üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
     * **binaryArtifactRoot**: Hacsak nem módosítja az összetevők mappastruktúráját, használja a **binaries/1.0.0.0** értéket az oktatóanyagban.
@@ -287,7 +321,7 @@ Hozzon létre egy paraméterfájlt, amely a bevezetési sablonnal használható.
         ```
 
 > [!IMPORTANT]
-> A topológiasablon és a bevezetési sablon egyes paraméterei közösek. Ezeknek a paramétereknek egyező értékekkel kell rendelkezniük. Ezek a paraméterek a következők: **namePrefix**, **azureResourceLocation** és **artifactSourceSASLocation** (ebben az oktatóanyagban mindkét összetevőforrás ugyanazt a tárfiókot használja).
+> A topológiasablon és a bevezetési sablon egyes paraméterei közösek. Ezeknek a paramétereknek egyező értékekkel kell rendelkezniük. Ezek a paraméterek a következők: **projektnév**, **azureResourceLocation**és **artifactSourceSASLocation** (a jelen oktatóanyagban ugyanazt a Storage-fiókot használják).
 
 ## <a name="deploy-the-templates"></a>A sablonok üzembe helyezése
 
@@ -296,19 +330,14 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 1. Futtassa a szkriptet a szolgáltatástopológia üzembe helyezéséhez.
 
     ```azurepowershell
-    $resourceGroupName = "<Enter a Resource Group Name>"
-    $location = "Central US"
-    $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
-
-    # Create a resource group
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-
     # Create the service topology
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateFile "$filePath\ADMTemplates\CreateADMServiceTopology.json" `
         -TemplateParameterFile "$filePath\ADMTemplates\CreateADMServiceTopology.Parameters.json"
     ```
+
+    Ha ezt a parancsfájlt egy másik PowerShell-munkamenetből futtatja, amelyből az összetevők [előkészítése](#prepare-the-artifacts) parancsfájlt futtatta, először újra fel kell töltenie a változókat, köztük a **$resourceGroupName** és a **$filepath**.
 
     > [!NOTE]
     > a `New-AzResourceGroupDeployment` aszinkron hívás. A sikeres üzenet csak azt jelenti, hogy a központi telepítés sikeresen elindult. Az üzembe helyezés ellenőrzéséhez tekintse meg az eljárás 2. és 4. lépését.
@@ -333,7 +362,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
     ```azurepowershell
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
+    $rolloutname = "${projectName}Rollout" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName `
@@ -424,9 +453,9 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezővel szűkítse a keresést az oktatóanyagban létrehozott erőforráscsoportokra. 3–4 erőforrásnak kell lennie:
 
-    * **&lt;namePrefix>rg**: A Deployment Manager-erőforrásokat tartalmazza.
-    * **&lt;namePrefix>ServiceWUSrg**: A ServiceWUS által definiált erőforrásokat tartalmazza.
-    * **&lt;namePrefix>ServiceEUSrg**: A ServiceEUS által definiált erőforrásokat tartalmazza.
+    * **&lt;projectName > RG**: a telepítéskezelő erőforrásait tartalmazza.
+    * **&lt;projectName > ServiceWUSrg**: a ServiceWUS által definiált erőforrásokat tartalmazza.
+    * **&lt;projectName > ServiceEUSrg**: a ServiceEUS által definiált erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: b834f14450196e8d377177bf10c80fbb05a10a57
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030017"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285713"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltésre
 
@@ -91,7 +91,8 @@ Az Azure-ba feltölteni kívánt virtuális gépen futtassa a következő paranc
     netsh winhttp reset proxy
     ```
 
-    Ha a virtuális gépnek egy adott proxyval kell dolgoznia, vegyen fel egy proxy-kivételt az Azure IP-címére ([168.63.129.16 @ no__t-1), hogy a virtuális gép csatlakozni tud az Azure-hoz:
+    Ha a virtuális gépnek egy adott proxyval kell dolgoznia, vegyen fel egy proxy-kivételt az Azure IP-címére ([168.63.129.16](https://blogs.msdn.microsoft.com/mast/2015/05/18/what-is-the-ip-address-168-63-129-16/
+)), hogy a virtuális gép csatlakozni tud az Azure-hoz:
     ```
     $proxyAddress="<your proxy server>"
     $proxyBypassList="<your list of bypasses>;168.63.129.16"
@@ -135,17 +136,17 @@ Az Azure-ba feltölteni kívánt virtuális gépen futtassa a következő paranc
 Győződjön meg arról, hogy a következő Windows-szolgáltatások mindegyike a Windows alapértelmezett értékeire van beállítva. Ezek a szolgáltatások minimálisan szükségesek a virtuális gépekhez való kapcsolódás biztosításához. Az indítási beállítások alaphelyzetbe állításához futtassa a következő parancsokat:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Automatic
-Set-Service -Name dhcp -StartupType Automatic
-Set-Service -Name dnscache -StartupType Automatic
-Set-Service -Name IKEEXT -StartupType Automatic
-Set-Service -Name iphlpsvc -StartupType Automatic
-Set-Service -Name netlogon -StartupType Manual
-Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Automatic
-Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Automatic
-Set-Service -Name RemoteRegistry -StartupType Automatic
+Get-Service -Name bfe | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name dhcp | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name dnscache | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name IKEEXT | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name iphlpsvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name netlogon | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name netman | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name nsi | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name TermService | Where-Object { $_.StartType -ne 'Manual' } | Set-Service -StartupType 'Manual'
+Get-Service -Name MpsSvc | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
+Get-Service -Name RemoteRegistry | Where-Object { $_.StartType -ne 'Automatic' } | Set-Service -StartupType 'Automatic'
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Távoli asztal beállításjegyzék-beállításainak frissítése
@@ -215,13 +216,13 @@ Győződjön meg arról, hogy a következő beállítások megfelelően vannak k
 
 9. Ha a virtuális gép egy tartomány részévé válik, ellenőrizze a következő házirendeket, és győződjön meg arról, hogy a korábbi beállítások nem állnak-e újra. 
     
-    | Cél                                     | Szabályzat                                                                                                                                                       | Value                                                                                    |
+    | Cél                                     | Szabályzat                                                                                                                                                       | Value (Díj)                                                                                    |
     |------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-    | Az RDP engedélyezve van                           | Computer Configuration\Policies\Windows Settings\Administrative Templates\Components\Remote Desktop Services\Remote Desktop Session Host\Connections         | Távolról való kapcsolódás engedélyezése a felhasználók számára a Távoli asztal használatával                                  |
+    | Az RDP engedélyezve van                           | Számítógép konfigurációja \ Settings\Administrative Templates\Components\Remote Desktop Windows-összetevők asztali munkamenet Host\Connections         | Távolról való kapcsolódás engedélyezése a felhasználók számára a Távoli asztal használatával                                  |
     | NLA csoportházirend                         | Settings\Administrative Templates\Components\Remote asztali Windows-összetevők asztali munkamenet biztonság csomópontban található                                                    | A távelérés felhasználói hitelesítésének megkövetelése a NLA használatával |
-    | Életben tartási beállítások                      | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Életben tartási kapcsolatok intervallumának konfigurálása                                                 |
-    | Beállítások újracsatolása                       | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Automatikus újrakapcsolás                                                                   |
-    | Korlátozott számú kapcsolattípus | Computer Configuration\Policies\Windows Settings\Administrative Templates\Windows Components\Remote Desktop Services\Remote Desktop Session Host\Connections | Kapcsolatok számának korlátozása                                                              |
+    | Életben tartási beállítások                      | Számítógép konfigurációja \ Settings\Administrative \ Windows-összetevők \ Windows-összetevők Desktop Windows-összetevők asztali munkamenet Host\Connections | Életben tartási kapcsolatok intervallumának konfigurálása                                                 |
+    | Beállítások újracsatolása                       | Számítógép konfigurációja \ Settings\Administrative \ Windows-összetevők \ Windows-összetevők Desktop Windows-összetevők asztali munkamenet Host\Connections | Automatikus újrakapcsolás                                                                   |
+    | Korlátozott számú kapcsolattípus | Számítógép konfigurációja \ Settings\Administrative \ Windows-összetevők \ Windows-összetevők Desktop Windows-összetevők asztali munkamenet Host\Connections | Kapcsolatok számának korlátozása                                                              |
 
 ## <a name="configure-windows-firewall-rules"></a>A Windows tűzfal szabályainak konfigurálása
 1. A Windows tűzfal bekapcsolása a három profilra (tartomány, standard és nyilvános):
@@ -249,7 +250,7 @@ Győződjön meg arról, hogy a következő beállítások megfelelően vannak k
    ``` 
 5. Ha a virtuális gép egy tartomány részévé válik, ellenőrizze az alábbi Azure AD-házirendeket, és győződjön meg arról, hogy a korábbi beállítások nem lettek visszaállítva. 
 
-    | Cél                                 | Szabályzat                                                                                                                                                  | Value                                   |
+    | Cél                                 | Szabályzat                                                                                                                                                  | Value (Díj)                                   |
     |--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
     | A Windows tűzfal profiljainak engedélyezése | Számítógép konfigurációja \ Settings\Administrative hálózat Connection\Windows Firewall\Domain Profile\Windows tűzfal   | Az összes hálózati kapcsolat biztosítása         |
     | RDP engedélyezése                           | Számítógép konfigurációja \ Settings\Administrative hálózat Connection\Windows Firewall\Domain Profile\Windows tűzfal   | Bejövő Távoli asztal kivételek engedélyezése |
@@ -309,7 +310,7 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    Ha a tárház sérült, tekintse meg a következőt: [WMI: Adattár sérülése vagy nem @ no__t-0.
+    Ha a tárház sérült, tekintse meg a [WMI: adattárház sérülését](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)ismertető témakört.
 
 5. Győződjön meg arról, hogy egyetlen másik alkalmazás sem használja az 3389-es portot. Ez a port az Azure-beli RDP szolgáltatáshoz használatos. A virtuális gépen használt portok megtekintéséhez futtassa a `netstat -anob` parancsot:
 
@@ -340,7 +341,7 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 
    A szabályzatnak a következő csoportokat kell kilistáznia:
 
-   - A rendszergazdák
+   - Rendszergazdák
 
    - Biztonságimásolat-felelősök
 
@@ -357,38 +358,38 @@ Győződjön meg arról, hogy a virtuális gép kifogástalan, biztonságos, és
 ### <a name="install-windows-updates"></a>Windows-frissítések telepítése
 Ideális esetben a gépet a *javítási szinten*kell frissíteni. Ha ez nem lehetséges, ellenőrizze, hogy telepítve vannak-e a következő frissítések:
 
-| Összetevő               | Binary         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Component (Összetevő)               | Bináris         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8,1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
-| Storage                 | Disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
+| Adattárolás                 | Disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
 |                         | NTFS. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17623 / 6.2.9200.21743 - KB3121255 | 6.3.9600.18654 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Iologmsg.dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
+|                         | Iologmsg. dll   | 6.1.7601.23403 - KB3125574                | 6.2.9200.16384 - KB2995387                  | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | CLASSPNP. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17061 / 6.2.9200.21180 - KB2995387 | 6.3.9600.18334 - KB3172614         | 10.0.14393.953 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | VolSnap. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17047 / 6.2.9200.21165 - KB2975331 | 6.3.9600.18265 - KB3145384         | -                                                       | 10.0.15063.0               | -                                               | -                                               |
-|                         | partmgr.sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 - KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
-|                         | volmgr.sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
-|                         | Volmgrx.sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
+|                         | PartMgr. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.16681 - KB2877114                  | 6.3.9600.17401 – KB3000850         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
+|                         | volmgr. sys     |                                           |                                             |                                    |                                                         | 10.0.15063.0               | -                                               | -                                               |
+|                         | Volmgrx. sys    | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | 10.0.15063.0               | -                                               | -                                               |
 |                         | Msiscsi. sys    | 6.1.7601.23403 - KB3125574                | 6.2.9200.21006 - KB2955163                  | 6.3.9600.18624 - KB4022726         | 10.0.14393.1066 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | Msdsm.sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
+|                         | Msdsm. sys      | 6.1.7601.23403 - KB3125574                | 6.2.9200.21474 - KB3046101                  | 6.3.9600.18592 - KB4022726         | -                                                       | -                          | -                                               | -                                               |
 |                         | MPIO. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.21190 - KB3046101                  | 6.3.9600.18616 - KB4022726         | 10.0.14393.1198 - KB4022715                             | -                          | -                                               | -                                               |
 |                         | vmstorfl. sys   | 6.3.9600.18907 - KB4072650                | 6.3.9600.18080 - KB3063109                  | 6.3.9600.18907 - KB4072650         | 10.0.14393.2007 - KB4345418                             | 10.0.15063.850 - KB4345419 | 10.0.16299.371 - KB4345420                      | -                                               |
-|                         | Fveapi.dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
-|                         | Fveapibase.dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
-| Network (Hálózat)                 | netvsc.sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
+|                         | Fveapi. dll     | 6.1.7601.23311 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.18294 - KB3172614         | 10.0.14393.576 - KB4022715                              | -                          | -                                               | -                                               |
+|                         | Fveapibase. dll | 6.1.7601.23403 - KB3125574                | 6.2.9200.20930 - KB2930244                  | 6.3.9600.17415 - KB3172614         | 10.0.14393.206 - KB4022715                              | -                          | -                                               | -                                               |
+| Network (Hálózat)                 | netvsc. sys     | -                                         | -                                           | -                                  | 10.0.14393.1198 - KB4022715                             | 10.0.15063.250 - KB4020001 | -                                               | -                                               |
 |                         | mrxsmb10. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.22108 - KB4022724                  | 6.3.9600.18603 - KB4022726         | 10.0.14393.479 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | MRxSmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
 |                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
-|                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
-| Core                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
+|                         | vmswitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
+| Mag                    | ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Távoli asztali szolgáltatások | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
-|                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
+|                         | termsrv. dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 – KB3000850         | 10.0.14393.0 - KB4022715                                | 10.0.15063.0               | -                                               | -                                               |
 |                         | TermDD. sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Win32k. sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726         | 10.0.14393.594 - KB4022715                              | -                          | -                                               | -                                               |
 |                         | rdpdd. dll      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
 |                         | Rdpwd. sys      | 6.1.7601.23403 - KB3125574                | -                                           | -                                  | -                                                       | -                          | -                                               | -                                               |
-| Biztonság                | MS17-010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
+| Biztonság                | MS17 – 010       | KB4012212                                 | KB4012213                                   | KB4012213                          | KB4012606                                               | KB4012606                  | -                                               | -                                               |
 |                         |                |                                           | KB4012216                                   |                                    | KB4013198                                               | KB4013198                  | -                                               | -                                               |
 |                         |                | KB4012215                                 | KB4012214                                   | KB4012216                          | KB4013429                                               | KB4013429                  | -                                               | -                                               |
 |                         |                |                                           | KB4012217                                   |                                    | KB4013429                                               | KB4013429                  | -                                               | -                                               |
@@ -409,7 +410,7 @@ Ha csak egy virtuális gépet szeretne létrehozni egy lemezről, nem kell a Sys
 - [Virtuális gép létrehozása speciális lemezről](create-vm-specialized.md)
 - [Virtuális gép létrehozása speciális VHD-lemezről](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-Ha általánosított rendszerképet szeretne létrehozni, futtatnia kell a Sysprep programot. További információkért lásd: [How a Sysprep használatához: Bevezetés @ no__t-0. 
+Ha általánosított rendszerképet szeretne létrehozni, futtatnia kell a Sysprep programot. További információ [: a Sysprep használata: Bevezetés](https://technet.microsoft.com/library/bb457073.aspx). 
 
 Nem minden Windows-alapú számítógépre telepített szerepkör vagy alkalmazás támogatja az általánosított rendszerképeket. Ezért az eljárás futtatása előtt győződjön meg arról, hogy a Sysprep támogatja a számítógép szerepkörét. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
@@ -447,7 +448,7 @@ A következő beállítások nem érintik a VHD feltöltését. Javasoljuk azonb
   Ha egy adatlemez csatlakozik a virtuális géphez, az ideiglenes meghajtó kötetének betűjele általában *D*. Ez a megjelölés eltérő lehet a beállításaitól és a rendelkezésre álló meghajtók számától függően.
   * Javasoljuk, hogy tiltsa le a víruskereső szoftverek által biztosított parancsfájl-blokkolók letiltását. Előfordulhat, hogy az új virtuális gép lemezképből való üzembe helyezése során a Windows kiépítési ügynök parancsfájljait nem lehet megakadályozni és letiltani.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Windowsos virtuálisgép-rendszerkép feltöltése az Azure-ba Resource Manager-alapú üzembe helyezésekhez](upload-generalized-managed.md)
 * [Az Azure Windows VM aktiválási problémáinak elhárítása](troubleshoot-activation-problems.md)
 

@@ -7,32 +7,32 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240651"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285913"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure Adatkezelő adatfeldolgozás
 
 Az adatgyűjtési folyamat az adatrekordok egy vagy több forrásból való betöltésére szolgál az Azure Adatkezelő-beli tábla létrehozásához vagy frissítéséhez. A betöltést követően az adatmennyiség elérhetővé válik a lekérdezéshez. Az alábbi ábra az Azure-Adatkezelő működésének teljes folyamatát mutatja be, beleértve az adatfeldolgozást is.
 
-![Az adatfolyam](media/ingest-data-overview/data-flow.png)
+![Adatfolyam](media/ingest-data-overview/data-flow.png)
 
 Az adatfeldolgozásért felelős Azure Adatkezelő adatkezelési szolgáltatás a következő funkciókat biztosítja:
 
-1. **Lekérés**: Adatok lekérése külső forrásokból (Event Hubs) vagy betöltési kérések beolvasása egy Azure-üzenetsor alapján.
+1. **Adatok lekérése**: adatok lekérése külső forrásokból (Event Hubs) vagy az Azure-üzenetsor betöltési kéréseinek olvasása.
 
-1. **Kötegelt feldolgozás**: A kötegelt adatok ugyanabba az adatbázisba és táblázatba áramlanak a betöltési teljesítmény optimalizálása érdekében.
+1. **Kötegelt feldolgozás**: a kötegelt adatok ugyanabba az adatbázisba és táblázatba áramlanak a betöltési teljesítmény optimalizálása érdekében.
 
-1. **Ellenőrzés**: Az előzetes érvényesítés és a formátum átalakítása, ha szükséges.
+1. **Ellenőrzés**: az előzetes ellenőrzés és a formátum átalakítása, ha szükséges.
 
-1. **Adatkezelés**: A séma egyeztetése, az adatok rendszerezése, indexelése, kódolása és tömörítése.
+1. **Adatkezelés**: a séma egyeztetése, az adatok rendszerezése, indexelése, kódolása és tömörítése.
 
-1. A betöltési **folyamat adatmegőrzési pontja**: Kezelheti a betöltési terhelést a motoron, és az átmeneti hibák miatt újra próbálkozik.
+1. Adatfeldolgozási **folyamat adatmegőrzési pontja**: a betöltési terhelés kezelése a motoron, és az átmeneti hibák miatti újrapróbálkozások kezelésére.
 
-1. **Az adatfeldolgozás véglegesítve**: A lekérdezéshez elérhetővé teszi az adatfeldolgozást.
+1. **Az adatbevitel véglegesítve**: a lekérdezéshez elérhetővé teszi az adatmennyiséget.
 
 ## <a name="ingestion-methods"></a>Betöltési módszerek
 
@@ -76,7 +76,7 @@ A Kusto olyan ügyféloldali SDK-t kínál, amely az alábbiakkal végezheti el 
 
 * Adatok betöltése az Azure Adatkezelő adatkezelési szolgáltatással (nagy átviteli sebesség és megbízható betöltés):
 
-    [**Köteg**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) betöltése (SDK által biztosított): az ügyfél feltölti az Azure Blob Storage-ba (amelyet az Azure Adatkezelő adatkezelési szolgáltatása jelöl), és értesítéseket küld egy Azure-várólistára. A kötegelt betöltés a nagy mennyiségű, megbízható és olcsó adatfeldolgozáshoz ajánlott módszer.
+    [**Batch**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) -betöltés (az SDK által biztosított): az ügyfél feltölti az Azure Blob Storage-ba (az Azure adatkezelő adatkezelési szolgáltatás által kijelölt), és értesítést küld egy Azure-üzenetsor számára. A kötegelt betöltés a nagy mennyiségű, megbízható és olcsó adatfeldolgozáshoz ajánlott módszer.
 
 * Az adatfeldolgozás közvetlenül az Azure Adatkezelő Engine-be (a feltáráshoz és a prototípusokhoz legmegfelelőbb):
 
@@ -119,7 +119,7 @@ Az olyan meglévő infrastruktúrával rendelkező szervezetek esetében, amelye
 
 A lekérdezésből bekövetkező összes betöltési módszernél formázza az adatot úgy, hogy az Azure Adatkezelő képes legyen elemezni. A támogatott adatformátumok a következők:
 
-* CSV, TSV, TSVE, PSV, SCSV, RENDSZERÁLLAPOT-KIMUTATÁS
+* TXT, CSV, TSV, TSVE, PSV, SCSV, RENDSZERÁLLAPOT-KIMUTATÁS
 * JSON (sor-külön, többsoros), Avro
 * ZIP és GZIP 
 
@@ -135,10 +135,10 @@ A lekérdezésből bekövetkező összes betöltési módszernél formázza az a
 
 A séma-hozzárendelés segíti a forrásadatok mezőinek kötését a céltábla oszlopaihoz.
 
-* [CSV-megfeleltetés](/azure/kusto/management/mappings?branch=master#csv-mapping) (nem kötelező) az összes sorszám-alapú formátummal működik. A Betöltés parancs paraméterrel vagy [előre létrehozott](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) paranccsal végezhető el a betöltési parancs paraméterének használatával.
-* [JSON-megfeleltetés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és [Avro-leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltési parancs paraméterrel végezhető el. Emellett előre létrehozhatók a [táblában](/azure/kusto/management/tables#create-ingestion-mapping) , és a betöltési parancs paraméterében is szerepelhetnek.
+* A [CSV-megfeleltetés](/azure/kusto/management/mappings?branch=master#csv-mapping) (nem kötelező) az összes sorszám-alapú formátummal működik. A Betöltés parancs paraméterrel vagy [előre létrehozott](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) paranccsal végezhető el a betöltési parancs paraméterének használatával.
+* A [JSON-megfeleltetés](/azure/kusto/management/mappings?branch=master#json-mapping) (kötelező) és az Avro- [leképezés](/azure/kusto/management/mappings?branch=master#avro-mapping) (kötelező) a betöltési parancs paraméterrel hajtható végre. Emellett előre létrehozhatók a [táblában](/azure/kusto/management/tables#create-ingestion-mapping) , és a betöltési parancs paraméterében is szerepelhetnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő](ingest-data-event-hub.md)

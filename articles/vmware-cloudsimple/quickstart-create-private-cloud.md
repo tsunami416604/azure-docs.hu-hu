@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828944"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285787"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre CloudSimple saját felhővel, és hogyan állíthatja be a saját felhőalapú környezetét.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Tekintse át a [hálózati előfeltételeket](cloudsimple-network-checklist.md).
 
@@ -47,7 +47,7 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
     ![Privát felhő létrehozása – alapszintű információ](media/create-private-cloud-basic-info.png)
 
-9. Kattintson a **Tovább: Speciális beállítások**.
+9. Kattintson a **Tovább: speciális beállítások**elemre.
 10. Adja meg a vSphere/vSAN alhálózatok CIDR tartományát. Győződjön meg arról, hogy a CIDR-tartomány nem fedi átfedésben a helyszíni vagy más Azure-alhálózatokkal (virtuális hálózatokkal) vagy az átjáró-alhálózattal.
 
     **CIDR-tartomány beállításai:** /24,/23,/22, vagy/21. A/24 CIDR-tartomány legfeljebb 26 csomópontot támogat, a/23 CIDR-tartomány akár 58 csomópontot is támogat, a/22 és/21 CIDR tartomány pedig 64-csomópontokat (a privát felhőben található csomópontok maximális számát) támogatja.  További információ és VLAN-ok és alhálózatok: a [VLAN-ok és az alhálózatok áttekintése](cloudsimple-vlans-subnets.md).
@@ -55,9 +55,9 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
       > [!IMPORTANT]
       > A vSphere/vSAN CIDR-tartomány IP-címei a saját felhőalapú infrastruktúra számára vannak fenntartva.  Ne használja az IP-címet ebben a tartományban bármely virtuális gépen.
 
-11. Kattintson a **Tovább: Tekintse át**és hozza létre.
+11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a **Create** (Létrehozás) gombra.
+13. Kattintson a  **Create** (Létrehozás) gombra.
 
 Elindul a felhőalapú kiépítési folyamat.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
@@ -139,7 +139,7 @@ A privát felhő létrehozása után hozzon létre egy VLAN-t, amelyen üzembe h
 5. Válasszon ki egy VLAN-azonosítót a listából.  
 6. Adja meg az alhálózat nevét az alhálózat azonosításához.
 7. Határozza meg az alhálózat CIDR tartományát és maszkját.  Ez a tartomány nem lehet átfedésben a meglévő alhálózatokkal.
-8. Kattintson a **Submit** (Küldés) gombra.
+8. Kattintson a **Submit (Küldés**) gombra.
 
     ![VLAN/alhálózat létrehozása – részletek](media/create-new-vlan-subnet-details.png)
 
@@ -155,11 +155,11 @@ Most már bejelentkezhet a vCenter-be a virtuális gépek és házirendek beáll
 
 1. A vCenter eléréséhez Kezdje a CloudSimple portálról. A Kezdőlap **Általános feladatok**területén kattintson az **vSphere-ügyfél indítása**lehetőségre.  Válassza ki a privát felhőt, majd kattintson a **vSphere-ügyfél indítása** lehetőségre a privát felhőben.
 
-    ![vSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
+    ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Válassza ki a kívánt vSphere-ügyfelet a vCenter eléréséhez, és jelentkezzen be a felhasználónevével és jelszavával.  Az alapértelmezett értékek a következők:
     * Felhasználónév: **CloudOwner@cloudsimple.local**
-    * Jelszó **CloudSimple123!**  
+    * Jelszó: **CloudSimple123!**  
 
 A következő eljárások vCenter képernyői a vSphere (HTML5) ügyfélből származnak.
 
@@ -168,27 +168,27 @@ A következő eljárások vCenter képernyői a vSphere (HTML5) ügyfélből sz�
 A CloudSimple azt javasolja, hogy a vCenter való első bejelentkezéskor változtassa meg a jelszavát.  
 A beállított jelszónak meg kell felelnie a következő követelményeknek:
 
-* Maximális élettartam: A jelszót 365 naponta módosítani kell
-* Ismételt használat korlátozása: A felhasználók nem tudják újra felhasználni az előző öt jelszót
-* Hossza: 8-20 karakter
-* Speciális karakter: Legalább egy speciális karakter
-* Alfabetikus karakterek: Legalább egy nagybetűt, A-Z és legalább egy kisbetűs karaktert, a-z
-* Számok Legalább egy numerikus karakter, 0-9
-* Azonos szomszédos karakterek maximális száma: Három
+* Maximális élettartam: a jelszót 365 naponta módosítani kell
+* Újbóli használat korlátozása: a felhasználók nem tudják újra felhasználni az előző öt jelszót
+* Hossz: 8-20 karakter
+* Speciális karakter: legalább egy speciális karakter
+* Alfabetikus karakterek: legalább egy nagybetűt, egy-Z és legalább egy kisbetűs karaktert, a-z karaktert
+* Számok: legalább egy numerikus karakter, 0-9
+* Azonos szomszédos karakterek maximális száma: három
 
-    Példa: A CC vagy a CCC elfogadható a jelszó részeként, de a CCCC nem.
+    Példa: a CC vagy a CCC elfogadható a jelszó részeként, de a CCCC nem.
 
 Ha olyan jelszót állít be, amely nem felel meg a követelményeknek:
 
 * Ha a vSphere Flash-ügyfelet használja, hibát jelez
 * Ha a HTML5-ügyfelet használja, nem jelent hibát. Az ügyfél nem fogadja el a változást, és a régi jelszó továbbra is működni fog.
 
-## <a name="change-nsx-administrator-password"></a>NSX rendszergazdai jelszavának módosítása
+## <a name="access-nsx-manager"></a>Hozzáférés a NSX-kezelőhöz
 
-A NSX Manager alapértelmezett jelszóval van telepítve.  Azt javasoljuk, hogy a privát felhő létrehozása után módosítsa a jelszót.
+A NSX Manager alapértelmezett jelszóval van telepítve. 
 
 * Felhasználónév: **rendszergazda**
-* Jelszó **CloudSimple123!**
+* Jelszó: **CloudSimple123!**
 
 A NSX Manager teljes tartományneve (FQDN) és IP-címe a CloudSimple portálon található.
 
@@ -199,8 +199,6 @@ A NSX Manager teljes tartományneve (FQDN) és IP-címe a CloudSimple portálon 
 
     ![NSX-kezelő teljes tartományneve megkeresése](media/private-cloud-nsx-manager-fqdn.png)
 
-A jelszó módosításához kövesse a [NSX Manager telepítésének](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)utasításait.
-
 ## <a name="create-a-port-group"></a>Port csoport létrehozása
 
 Elosztott porttartomány létrehozása a vSphere-ben:
@@ -208,7 +206,7 @@ Elosztott porttartomány létrehozása a vSphere-ben:
 1. Kövesse a [vSphere hálózati útmutató](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf)"elosztott Port hozzáadása" című szakaszának utasításait.
 2. Az elosztott port csoport beállításakor adja meg a virtuális [helyi hálózat létrehozása a számítási feladatok virtuális gépei számára](#create-a-vlan-for-your-workload-vms)című részében létrehozott VLAN-azonosítót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](on-premises-connection.md)

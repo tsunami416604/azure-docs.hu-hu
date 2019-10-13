@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254972"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285682"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Oktatóanyag: állapot-ellenőrzési funkció használata az Azure telepítéskezelő (nyilvános előzetes verzió)
 
@@ -38,8 +38,8 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 További források:
 
-- Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
+* Az [Azure telepítéskezelő REST API referenciája](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Egy Azure Telepítéskezelő minta](https://github.com/Azure-Samples/adm-quickstart).
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
@@ -48,7 +48,16 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 * Fejezze be [Az Azure Telepítéskezelő használatát Resource Manager-sablonokkal](./deployment-manager-tutorial.md).
-* Töltse le az oktatóanyag által használt [sablonokat és](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) összetevőket.
+
+## <a name="install-the-artifacts"></a>Az összetevők telepítése
+
+Töltse le [a sablonokat és az](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) összetevőket, és bontsa ki helyileg, ha még nem tette meg. Ezután futtassa az összetevők [előkészítése](./deployment-manager-tutorial.md#prepare-the-artifacts)című részen található PowerShell-szkriptet. A parancsfájl létrehoz egy erőforráscsoportot, létrehoz egy tárolót, létrehoz egy BLOB-tárolót, feltölti a letöltött fájlokat, majd létrehoz egy SAS-jogkivonatot.
+
+Készítsen másolatot az URL-címről SAS-jogkivonattal. Ez az URL-cím szükséges ahhoz, hogy feltöltse a mezőket a két paraméter fájljában, a topológia paramétereinek fájlját és a bevezetési paramétereket tartalmazó fájlt.
+
+Nyissa meg a CreateADMServiceTopology. Parameters. JSON fájlt, és frissítse a **projektnév** és a **artifactSourceSASLocation**értékeit.
+
+Nyissa meg a CreateADMRollout. Parameters. JSON fájlt, és frissítse a **projektnév** és a **artifactSourceSASLocation**értékeit.
 
 ## <a name="create-a-health-check-service-simulator"></a>Állapot-ellenőrzési szolgáltatás-szimulátor létrehozása
 
@@ -56,21 +65,12 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 Az Azure-függvény telepítéséhez a következő két fájl használható. Ezeket a fájlokat nem kell letöltenie, hogy átugorjon az oktatóanyagon.
 
-* Egy Resource Manager-sablon, amely a következő helyen található: [https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json). Ezt a sablont üzembe helyezheti egy Azure-függvény létrehozásához.
-* Az Azure Function forráskódjának zip-fájlja, [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Ezt a zip nevű fájlt a Resource Manager-sablon hívja meg.
+* Egy Resource Manager-sablon, amely a következő helyen található: [https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json). Ezt a sablont üzembe helyezheti egy Azure-függvény létrehozásához.
+* Az Azure Function forráskódjának zip-fájlja, [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Ezt a zip nevű fájlt a Resource Manager-sablon hívja meg.
 
 Az Azure-függvény üzembe helyezéséhez válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához, majd illessze be a következő szkriptet a rendszerhéj ablakába.  A kód beillesztéséhez kattintson a jobb gombbal a rendszerhéj-ablakra, majd válassza a **Beillesztés**lehetőséget.
 
-> [!IMPORTANT]
-> a PowerShell-parancsfájlban található **projektnév** az ebben az oktatóanyagban üzembe helyezett Azure-szolgáltatások nevének előállítására szolgálnak. Használja ugyanazt a **namePrefix** -értéket, amelyet az [Azure Telepítéskezelő és Resource Manager-sablonok használatával](./deployment-manager-tutorial.md) használ a projektnév.  A különböző Azure-szolgáltatások eltérő követelményekkel rendelkeznek a neveknél. Az üzembe helyezés sikerességének biztosításához válasszon egy 12 karakternél rövidebb nevet, amely csak kisbetűket és számokat tartalmazhat.
-> Mentse a projekt neve másolatát. Ugyanazt a projektnév használja az oktatóanyagon keresztül.
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
@@ -236,13 +236,6 @@ Ennek a szakasznak a célja, hogy bemutassa a bevezetési sablon állapot-ellen�
 Futtassa a következő PowerShell-szkriptet a topológia telepítéséhez. Ugyanaz a **CreateADMServiceTopology. JSON** és **CreateADMServiceTopology. Parameters. JSON** fájlra van szüksége, amelyet az [Azure Telepítéskezelő Resource Manager-sablonokkal való használata](./deployment-manager-tutorial.md)során használt.
 
 ```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
-
-$resourceGroupName = "${projectName}rg"
-
-
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
@@ -369,9 +362,9 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Az Azure Portalon válassza az **Erőforráscsoport** lehetőséget a bal oldali menüben.
 2. A **Szűrés név alapján** mezővel szűkítse a keresést az oktatóanyagban létrehozott erőforráscsoportokra. 3–4 erőforrásnak kell lennie:
 
-    * **&lt;namePrefix>rg**: A Deployment Manager-erőforrásokat tartalmazza.
-    * **&lt;namePrefix>ServiceWUSrg**: A ServiceWUS által definiált erőforrásokat tartalmazza.
-    * **&lt;namePrefix>ServiceEUSrg**: A ServiceEUS által definiált erőforrásokat tartalmazza.
+    * **&lt;projectName > RG**: a telepítéskezelő erőforrásait tartalmazza.
+    * **&lt;projectName > ServiceWUSrg**: a ServiceWUS által definiált erőforrásokat tartalmazza.
+    * **&lt;projectName > ServiceEUSrg**: a ServiceEUS által definiált erőforrásokat tartalmazza.
     * A felhasználó által meghatározott felügyelt identitás erőforráscsoportja.
 3. Válassza ki az erőforráscsoport nevét.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.

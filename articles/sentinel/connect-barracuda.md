@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240205"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72284661"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda-berendezés összekötése 
 
@@ -32,15 +32,12 @@ A Barracuda webalkalmazási tűzfal (WAF) összekötő segítségével könnyed�
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
 
-## <a name="configure-and-connect-barracuda-waf"></a>A Barracuda WAF konfigurálása és csatlakoztatása
+## <a name="configure-and-connect-barracuda-waf"></a>A Barracuda WAF konfigurálása és összekapcsolása
 A Barracuda webalkalmazási tűzfal a naplókat közvetlenül az Azure Sentinelbe integrálhatja és exportálhatja Log Analytics ügynök használatával.
 1. Lépjen a [BARRACUDA WAF konfigurációs folyamathoz](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/), és kövesse az utasításokat a kapcsolódás beállításához a következő paraméterek használatával:
     - **Munkaterület azonosítója**: másolja a munkaterület-azonosító értékét az Azure Sentinel Barracuda-összekötő oldaláról.
     - **Elsődleges kulcs**: másolja az elsődleges kulcs értékét az Azure Sentinel Barracuda-összekötő oldaláról.
-2. Az Azure Sentinel portálon nyissa meg a munkaterületet, amelyen üzembe helyezte az Azure Sentinelt, és válassza a sor végén található három pontot (...), majd válassza a **Speciális beállítások**lehetőséget. 
-1. Válassza **az adatelem** , majd a **syslog**lehetőséget.
-1. Győződjön meg arról, hogy a Barracuda-ban beállított létesítmény létezik, és állítsa be a súlyosságot, és kattintson a **Mentés**gombra.
-6. A Barracuda-események Log Analytics vonatkozó sémájának használatához keresse meg a **CommonSecurityLog** és a **barracuda_CL**.
+1. A Barracuda-események Log Analytics vonatkozó sémájának használatához keresse meg a **CommonSecurityLog** és a **barracuda_CL**.
 
 
 ## <a name="validate-connectivity"></a>Kapcsolat ellenőrzése
@@ -49,7 +46,7 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a dokumentumban megtanulta, hogyan csatlakoztathatók a Barracuda-készülékek az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).
