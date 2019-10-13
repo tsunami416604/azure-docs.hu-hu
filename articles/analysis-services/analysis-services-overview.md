@@ -2,20 +2,19 @@
 title: Mi az az Azure Analysis Services | Microsoft Docs?
 description: Az Azure Analysis Services átfogó áttekintése.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259540"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294772"
 ---
-# <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
+# <a name="what-is-azure-analysis-services"></a>Az Azure Analysis Services ismertetése
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
@@ -23,13 +22,13 @@ Az Azure Analysis Services egy teljes körűen felügyelt platformszolgáltatás
 
 ![Adatforrások](./media/analysis-services-overview/aas-overview-overall.png)
 
-**Videóinak** Tekintse át [Azure Analysis Services áttekintését](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) , hogy megtudja, hogyan illeszkedik a Azure Analysis Services a Microsoft általános bi-képességeihez.
+**Videó:** Tekintse meg az [Azure Analysis Services – áttekintés](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) videót arról, hogyan illik az Azure Analysis Services a Microsoft általános BI-képességei közé.
 
-## <a name="get-up-and-running-quickly"></a>Gyors beállítás és használat
+## <a name="get-up-and-running-quickly"></a>Gyorsan üzembe helyezhető
 
 Percek alatt [létrehozhat egy kiszolgálót](analysis-services-create-server.md) az Azure Portalon. Az Azure Resource Manager-[sablonok](../azure-resource-manager/resource-manager-create-first-template.md) és a PowerShell használatával pedig deklaratív sablonokkal hozhat létre kiszolgálókat. Egyetlen sablonnal kiszolgálói erőforrásokat is üzembe helyezhet, egyéb Azure-összetevőkkel (például tárfiókokkal és az Azure Functions szolgáltatással) együtt. 
 
-**Videóinak** A [központi telepítés automatizálásával](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) többet tudhat meg arról, hogyan használhatja a Azure Automationt a kiszolgálók sebességének a létrehozásához.
+**Videó:** Tekintse meg [az üzembe helyezés automatizálásával](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) foglalkozó videót arról, hogyan használhatja az Azure Automationt a kiszolgálók létrehozásának felgyorsítására.
 
 Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így kifinomult elemzési megoldásokat hozhat létre. Az [Azure Active Directoryval](../active-directory/fundamentals/active-directory-whatis.md) való integráció biztonságos, szerepköralapú hozzáférést biztosít a kritikus fontosságú adatokhoz. [Azure Data Factory-folyamatokba](../data-factory/introduction.md) integrálható egy olyan tevékenység bevonásával, amely adatokat tölt be a modellbe. Az [Azure Automation](../automation/automation-intro.md) és az [Azure Functions](../azure-functions/functions-overview.md) egyéni kódot használó modellek egyszerűbb vezénylésére használható. 
 
@@ -37,11 +36,11 @@ Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így 
 
 Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten is elérhető. Az egyes szinteken belül a csomagköltségek a feldolgozási teljesítmény, a QPU-k és a memória mérete alapján változnak. Amikor létrehoz egy kiszolgálót, egy adott szinten belül választ ki egy csomagot. A csomagokat a szinten belül magasabb vagy alacsonyabb szintre módosíthatja, vagy frissíthet magasabb szintre, de magasabb szintről nem léphet vissza egy alacsonyabbra.
 
-### <a name="developer-tier"></a>Fejlesztői szint
+### <a name="developer-tier"></a>Fejlesztői csomag
 
 Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. Ehhez a szinthez nem tartozik SLA.
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,7 +49,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
@@ -59,7 +58,7 @@ Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben k
 
 Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
 
-|Csomag  |QPU-k  |Memória (GB)  |
+|Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -76,13 +75,13 @@ Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokho
 
 Az Azure Analysis Services a világ összes régiójában támogatott. A támogatott csomagok és lekérdezésreplikák a választott régiótól függően változnak. A csomagok és lekérdezésreplikák elérhetősége az egyes régiókban jellemző igények és az elérhető erőforrások függvényében változhat. 
 
-### <a name="americas"></a>Amerika
+### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region (Régió)  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|USA keleti régiója     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA 2. keleti régiója     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |USA 2. keleti régiója     |     S8, S9, S8v2, S9v2   |    1    |
 |USA északi középső régiója     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -96,17 +95,17 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="europe"></a>Európa
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region (Régió)  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Észak-Európa     |    S8v2, S9v2      |    3     |
-|Az Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Egyesült Királyság déli régiója     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Nyugat-Európa    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
+### <a name="asia-pacific"></a>Ázsia és a csendes-óceáni térség 
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region (Régió)  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Kelet-Ausztrália     |    S8, S9, S8v2, S9v2    |    1     |
@@ -115,7 +114,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Nyugat-India     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
-## <a name="scale-to-your-needs"></a>Igényei szerint méretezhető
+## <a name="scale-to-your-needs"></a>Igényei szerinti méretezhetőség
 
 ### <a name="scale-updown-pause-and-resume"></a>Vertikális fel- vagy leskálázás, felfüggesztés és folytatás
 
@@ -135,7 +134,7 @@ A teljes költség számos tényezőtől (például a választott régiótól, s
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
 
-Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A partíciók, a perspektívák, a sor szintű biztonság, a kétirányú kapcsolatok és a fordítások mind\*támogatottak. A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
+Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A Partitions, a perspektíva, a soros szintű biztonság, a kétirányú kapcsolatok és a fordítások mind a @ no__t-0 támogatottak. A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
 
 A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
 
@@ -149,7 +148,7 @@ Az Azure Analysis Services táblázatos modelljei számos különféle adatforr�
 
 ## <a name="compatibility-level"></a>Kompatibilitási szint
 
-A kompatibilitási szint a Analysis Services motor kiadás-specifikus viselkedésére utal. Azure Analysis Services támogatja a táblázatos modelleket az 1200-es és magasabb kompatibilitási szinteken. További információért lásd: [Analysis Services táblázatos modellek kompatibilitási szintje](analysis-services-compat-level.md).
+A kompatibilitási szint a Analysis Services motor kiadás-specifikus viselkedésére utal. Azure Analysis Services támogatja a táblázatos modelleket az 1200-es és magasabb kompatibilitási szinteken. További információért lásd: [a táblázatos modellek kompatibilitási szintje](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services).
 
 
 ## <a name="your-data-is-secure"></a>Az adatok biztonságban vannak
@@ -162,7 +161,7 @@ A kiszolgáló szintjén a Analysis Services tűzfalat, Azure-hitelesítést, ki
 
 Az Azure Analysis Services tűzfala minden olyan ügyfélkapcsolatot blokkol, amelyek IP-címe nincs megadva a szabályokban. Alapértelmezés szerint a tűzfalbeállítások nincs engedélyezve az új kiszolgálókon. Az ajánlott tűzfalbeállítások engedélyezve van, és a szabályok konfigurálása a kiszolgáló létesítési parancsfájljának részeként vagy a portálon közvetlenül a kiszolgáló létrehozása után történik. Az engedélyezett IP-címeket meghatározó szabályok egyesével, ügyfél IP-címenként vagy tartományonként is konfigurálhatók. A Power BI- (szolgáltatási) kapcsolatok szintén engedélyezhetők vagy blokkolhatók. A tűzfalat és a szabályokat a portálon vagy a PowerShell használatával konfigurálhatja. További információ: [Kiszolgálószintű tűzfal konfigurálása](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A felhasználóhitelesítést az [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) kezeli. A bejelentkezéshez a felhasználók céges fiókidentitást használnak, amely szerepköralapú hozzáféréssel rendelkezik az adatbázishoz. A felhasználói identitásoknak a kiszolgálót tartalmazó előfizetés alapértelmezett Azure Active Directoryja tagjainak kell lenniük. További információ: [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md).
 
@@ -190,7 +189,7 @@ A táblázatos modellek az 1400-as kompatibilitási szinten támogatják az obje
 
 A szolgáltatásnevek olyan Azure Active Directory-alkalmazáserőforrások, amelyeket felügyelet nélküli erőforrás- vagy szolgáltatásszintű műveletek végrehajtásához hozhat létre a bérlőn belül. A szolgáltatásnevek az Azure Automationben, a PowerShell felügyelet nélküli módjában, egyéni ügyfélalkalmazásokban és webalkalmazásokban használhatók gyakori feladatok (például adatfrissítés, vertikális fel- vagy leskálázás, szüneteltetés/folytatás) automatizálására. Az engedélyek szerepkörtagságon keresztül rendelhetők hozzá a szolgáltatásnevekhez További információ: [Automatizálás szolgáltatásnevekkel](analysis-services-service-principal.md).
 
-### <a name="azure-governance"></a>Azure Governance
+### <a name="azure-governance"></a>Azure-szabályozás
 
 Az Azure Analysis Servicesre a [Microsoft Online Services feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) és a [Microsoft adatvédelmi nyilatkozata](https://privacy.microsoft.com/privacystatement) vonatkozik.
 További információk az Azure Securityről: [Microsoft biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter).
@@ -223,7 +222,7 @@ A táblázatos modellek gyors fejlesztést biztosítanak, és nagymértékben te
 
 Az olyan modern adatáttekintési és vizualizációs eszközök, mint például a Power BI, az Excel, a Reporting Services, illetve a harmadik felektől származó eszközök egyaránt támogatottak, így interaktív és vizuálisan gazdag modelladat-elemzéseket biztosítanak a felhasználóknak. 
 
-## <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
+## <a name="monitoring-and-diagnostics"></a>Figyelés és diagnosztika
 
 Az Azure Analysis Services integrálva van az Azure-metrikákkal, így számos erőforrás-specifikus metrikát biztosít a kiszolgálók teljesítményének és állapotának monitorozásához. További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](analysis-services-monitor.md). Végezze el a metrikák rögzítését az [Azure erőforrás-diagnosztikai naplóinak](../azure-monitor/platform/resource-logs-overview.md) használatával. Naplózhatja és elküldheti a naplókat az [Azure Storage](https://azure.microsoft.com/services/storage/)-ba, továbbíthatja őket az [Azure Event Hubsba](https://azure.microsoft.com/services/event-hubs/), és exportálhatja őket az [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite)-szolgáltatásba [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/). További információ: [Diagnosztikai naplózás beállítása](analysis-services-logging.md).
 
@@ -255,13 +254,13 @@ A dolgok gyorsan változnak. Szerezze be a legfrissebb információkat a [Power 
 
 Az Analysis Services felhasználói pezsgő közösséget alkotnak. Csatlakozzon a párbeszédhez az [Azure Analysis Services fórumon](https://aka.ms/azureanalysisservicesforum).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure ingyenes próbaverziójának kipróbálása](https://azure.microsoft.com/offers/ms-azr-0044p/)   
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Kiszolgáló létrehozása – portál](analysis-services-create-server.md)   
+> [Gyors útmutató: Kiszolgáló létrehozása – Portal](analysis-services-create-server.md)   
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)  
+> [Gyors útmutató: Kiszolgáló létrehozása – PowerShell](analysis-services-create-powershell.md)  

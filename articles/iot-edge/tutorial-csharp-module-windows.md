@@ -9,14 +9,14 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 32bd0438afa63212222acb84c0194bbc1f4816ce
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122910"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286680"
 ---
-# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
+# <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge-modul fejlesztése Windows-eszközökhöz
 
 A Visual Studióval programkódot fejleszthet C# , és üzembe helyezheti Azure IoT Edge-t futtató Windows-eszközön. 
 
@@ -36,9 +36,9 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 Ez az oktatóanyag bemutatja, hogyan fejleszthet modult a **C#** **Visual Studio 2019**használatával, és hogyan telepítheti azt egy **Windows-eszközre**. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon a [ C# IoT Edge modul fejlesztése linuxos eszközökhöz](tutorial-csharp-module.md) című lépésre. 
 
-A következő táblázat segítségével megismerheti a C modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeit: 
+A következő táblázat segítségével megismerheti a C# modulok Windows-eszközökre való fejlesztésének és üzembe helyezésének lehetőségeit: 
 
-| C# | Visual Studio Code | Visual Studio 2017/2019 | 
+| C# | Visual Studio-kód | Visual Studio 2017/2019 | 
 | -- | ------------------ | ------------------ |
 | **Windows AMD64 fejlesztés** | ![WinAMD64 C# -modulok fejlesztése a vs Code-ban](./media/tutorial-c-module/green-check.png) | ![WinAMD64 C# -modulok fejlesztése a Visual Studióban](./media/tutorial-c-module/green-check.png) |
 | **Windows AMD64 hibakeresés** |   | ![Hibakeresési C# modulok a WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
@@ -76,11 +76,11 @@ A Azure IoT Edge Tools a Visual Studióban támogatott IoT Edge modul összes ny
 
 4. A IoT Edge alkalmazás és modul ablakban konfigurálja a projektet a következő értékekkel: 
 
-   | Mező | Value |
+   | Mező | Value (Díj) |
    | ----- | ----- |
-   | Sablonválasztás | Válassza ki  **C# a modult**. | 
+   | Sablon kiválasztása | Válassza ki  **C# a modult**. | 
    | Modul projekt neve | A modulnak adja a **CSharpModule** nevet. | 
-   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/csharpmodule. |
+   | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br> A rendszerkép utolsó tárháza úgy néz ki, mint \<registry name\>.azurecr.io/csharpmodule. |
 
    ![A projekt konfigurálása a céleszköz, a modul típusa és a tároló-beállításjegyzék számára](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -282,7 +282,7 @@ Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, �
        }
     ```
 
-    ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-csharp-module-windows/module-twin.png)
+    ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-csharp-module-windows/module-twin.png)
 
 11. Mentse a Deployment. template. JSON fájlt.
 
@@ -297,13 +297,13 @@ Az előző szakaszban létrehozott egy IoT Edge-megoldást, és hozzáadott egy 
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a Docker [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
+   A `--password-stdin` használatát ajánló biztonsági figyelmeztetés jelenhet meg. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 2. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1** , és a Windows-modul létrehozása óta a bővítménynek **Windows. Amd64**-nek kell lennie. 
 
 3. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget. 
 
-   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a konfigurációban, amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, `docker build` futtatásával hozza létre a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután a `docker push` futtatásával leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe. 
 
 ## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
@@ -331,7 +331,7 @@ A IoT Edge Tools bővítmény használatával megtekintheti az üzeneteket, ahog
 
 2. A **műveletek** listában válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. 
 
-3. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mert a CSharpModule-kód módosításai megvárná, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú riasztást is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
+3. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mert a CSharpModule-kód módosításai megvárná, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú **riasztást** is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez. 
 
    ![IoT Hubra érkező üzenetek megtekintése](./media/tutorial-csharp-module-windows/view-d2c-message.png)
 
@@ -357,12 +357,12 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
+> [stream Analytics](tutorial-deploy-stream-analytics.md)
+> [Machine learning](tutorial-deploy-machine-learning.md)
 > [Custom Vision Service](tutorial-deploy-custom-vision.md)

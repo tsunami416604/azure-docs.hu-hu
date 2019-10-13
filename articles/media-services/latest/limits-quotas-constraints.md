@@ -1,6 +1,6 @@
 ---
-title: Kvóták és korlátozások az Azure Media Services v3 |} A Microsoft Docs
-description: Ez a témakör ismerteti a kvóták és korlátozások az Azure Media Services v3
+title: Kvóták és korlátozások a Azure Media Services v3-ban | Microsoft Docs
+description: Ez a témakör a Azure Media Services v3 kvótáit és korlátozásait ismerteti
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,69 +9,67 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 819548d784e5cba9fcec6b2110137d91bf28e03d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293445"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296905"
 ---
-# <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3
+# <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások a Azure Media Services v3-ban
 
-Ez a cikk azt ismerteti, kvóták és korlátozások az Azure Media Services v3.
+Ez a cikk a Azure Media Services v3 kvótáit és korlátozásait ismerteti.
 
-| Resource | Alapértelmezett korlát | 
+| Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
 | Egy Azure Media Services-fiókra jutó adategység | 1,000,000|
 | Dinamikusjegyzék-szűrők|100|
-| JobInputs feladatonként | 50 (fix)|
-| JobOutputs feladatonként | 20 (fixed) |
-| Az átalakító TransformOutputs | 20 (fixed) |
-| Fájlok JobInput száma|10 (fix)|
-| Fájlméret| Bizonyos esetekben nincs korlátozva a Media Services támogatja a maximális fájlméretet. <sup>(1)</sup> |
-| Feladatok száma a Media Services-fiók | 500 000 <sup>(2)</sup> (fix)|
-| Átalakítások listázása|A válasz oldalakra bontása oldalanként 1000 átalakítással|
-| Feladatok listázása|A válasz oldalakra bontása oldalanként 500 feladattal|
+| JobInputs | 50 (rögzített)|
+| JobOutputs | 20 (rögzített) |
+| TransformOutputs egy átalakításban | 20 (rögzített) |
+| Fájlok száma JobInput|10 (rögzített)|
+| Fájlméret| Bizonyos esetekben a Media Services feldolgozásakor támogatott maximális fájlméret megengedett. <sup>1</sup> |
+| Feladatok/Media Services fiók | 500 000 <sup>(2)</sup> (rögzített)|
 | Élő események Media Services-fiókonként |5|
-| Egyetlen előfizetéshez Media Services-fiókok | 25 (rögzített) |
-| Élő esemény élő kimenetek |3 <sup>(3)</sup> |
-| Élő kimeneti maximális időtartama | 25 óra |
-| Tárfiókok | 100<sup>(4)</sup> (fix) |
-| Streamvégpontok (Leállítva vagy fut) a Media Services-fiókonként|2 (fix)|
+| Egyetlen előfizetésben lévő fiókok Media Services | 25 (rögzített) |
+| Élő kimenet/élő esemény |3 <sup>(3)</sup> |
+| Élő kimenet maximális időtartama | 25 óra |
+| Tárfiókok | 100<sup>(4)</sup> (rögzített) |
+| Adatfolyam-végpontok (leállított vagy futó) Media Services fiókkal|2 (rögzített)|
 | Streamelési szabályok | 100 <sup>(5)</sup> |
-| A Media Services-fiókonként átalakítások | 100 (fix)|
-| Egy eszköz egyszerre társított egyedi Streamelési Lokátorok | 100<sup>(6)</sup> (fix) |
-| Tartalmi kulcs szabályzatonként beállításai |30 | 
-| A Media Services DRM típusuk havi licencek kulcs kézbesítési szolgáltatás fiókonként|1,000,000|
+| Átalakítások száma Media Services fiókkal | 100 (rögzített)|
+| Egy adott eszközhöz társított egyedi streaming-lokátorok | 100<sup>(6)</sup> (rögzített) |
+| A tartalmi kulcsokra vonatkozó házirend beállításai |30 | 
+| Licencek havonta az egyes DRM-típusok esetében Media Services Key Delivery Service-fiókban|1,000,000|
 
-<sup>1</sup> egy blob jelenleg legfeljebb 5 TB-os Azure Blob Storage-ban támogatott maximális méretét. További korlátozások érvényesek a Media Services a szolgáltatás által használt Virtuálisgép-méretek alapján. A méretkorlát a feltöltött fájlokat, és a fájlokat, a Media Services – feldolgozás (kódolás és elemzése) eredményeként létrehozott első vonatkozik. Ha a forrásfájl 260-GB nál nagyobb, a feladat valószínűleg sikertelen lesz. 
+<sup>1</sup> az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
 
-Az alábbi táblázatban látható a korlátok a media szolgáltatás számára fenntartott egységek S1, S2 és S3. Ha a forrásfájl mérete nagyobb, mint a tábla meghatározott keretek, a kódolási feladat sikertelen lesz. Ha hosszú időtartam 4K felbontása forrásai kódol, meg kell S3 szintű media szolgáltatás számára fenntartott egységek használata szükséges a teljesítmény elérése érdekében. Ha 4K tartalom, amely nagyobb, mint az S3 szintű media szolgáltatás számára fenntartott egységek 260 GB-os korlátot, írjon nekünk az amshelp@microsoft.com a támogatásához a lehetséges kezelésükre.
+Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4K-tartalommal rendelkezik, amely nagyobb, mint az S3 Media szolgáltatás számára fenntartott egységek 260 GB-os korlátja, lépjen kapcsolatba velünk amshelp@microsoft.com címen a forgatókönyv támogatásának lehetséges enyhítéséhez.
 
-|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti mérete (GB)|
+|Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti méret (GB)|
 |---|---|
 |S1 |   26|
 |S2 | 60|
 |S3 |260|
 
-<sup>2</sup> ezt az értéket tartalmazza a sorba állított, befejezett, aktív és a visszavont feladatokat. Törölt feladatokat nem tartalmazza. 
+<sup>2</sup> ez a szám üzenetsor-, befejezett, aktív és megszakított feladatokat tartalmaz. Nem tartalmazza a törölt feladatokat. 
 
-A fiókjában 90 napnál régebbi feladat rekordot automatikusan törölve lesznek, akkor is, ha a rekordok száma nem éri a maximális kvótát. 
+A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akkor is, ha a rekordok teljes száma nem éri el a maximális kvótát. 
 
-<sup>3</sup> élő kimenetek létrehozás indítása és leállítása, ha törli.
+<sup>3</sup> az élő kimenetek a létrehozás után kezdődnek, és a törlés után leállnak.
 
-<sup>4</sup> a tárfiókok az Azure-előfizetéshez kell lennie.
+<sup>4</sup> a Storage-fiókoknak ugyanahhoz az Azure-előfizetéshez kell tartoznia.
 
-<sup>5</sup> egyéni használatakor [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies), korlátozott számú házirendeket tervezzen a Media Services-fiók, és újra alkalmazza őket a StreamingLocators, amikor ugyanazt a titkosítási beállítások és protokollok van szükség. Meg kell nem lehet új szabályzatot hoz létre Streamelési az egyes Streamelési lokátor.
+<sup>5</sup> egyéni [adatfolyam-házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies)használata esetén a szabályzatok korlátozott készletét kell megterveznie a Media Service-fiókjához, és újra fel kell használni azokat a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.
 
-<sup>6</sup> streamelési Lokátorok nem felhasználónkénti hozzáférés-vezérlés kezelésére tervezték. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
+<sup>6</sup> a streaming-lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére szolgálnak. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
 
 ## <a name="support-ticket"></a>Támogatási jegy
 
-Nem rögzített erőforrások, kérheti a kvóták megnyitásával generál egy [támogatási jegyet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Részletes információkat tartalmazza a kérés a kívánt kvótát változik, a használatieset-forgatókönyvek, és a szükséges régiókról. <br/>**Ne** hozzon létre további Azure Media Services-fiókokat csak azért, hogy megpróbálja tágítani a korlátokat.
+A nem rögzített erőforrások esetében a [támogatási jegy](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kérheti a kvóták kiemelését. A kérelemben szereplő részletes információkat a kívánt kvóta változásaira, a használati esetekre és a szükséges régiókra vonatkozóan adja meg. <br/>**Ne** hozzon létre további Azure Media Services-fiókokat csak azért, hogy megpróbálja tágítani a korlátokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Áttekintés](media-services-overview.md)

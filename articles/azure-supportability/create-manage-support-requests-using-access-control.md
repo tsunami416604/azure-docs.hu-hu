@@ -1,5 +1,5 @@
 ---
-title: Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához | Microsoft Docs
+title: Hozzáférés-vezérlés a támogatási kérések létrehozásához az Azure-ban
 description: Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához
 author: ganganarayanan
 ms.author: gangan
@@ -7,14 +7,18 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248836"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299256"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure szerepköralapú Access Control (RBAC) a támogatási kérések létrehozásához és kezeléséhez szükséges hozzáférési jogosultságok szabályozásához
+
+> [!IMPORTANT]
+> Ezt a manuális megközelítést, amely az Azure-beli támogatási kérelem hozzáférési jogosultságait szabályozza, egy beépített szerepkör váltotta fel. További információ: [support Request közreműködő](../role-based-access-control/built-in-roles.md#support-request-contributor). 
 
 A [szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz.
 Support request létrehozása a [Portal.Azure.com](https://portal.azure.com)-ben, Azure Portal az Azure RBAC-modelljét használja annak meghatározására, hogy kik hozhatnak létre és kezelhetnek támogatási kérelmeket.

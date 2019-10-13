@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: d7b909bf88fde2277aa2a285bbf36916191db1f3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67973393"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286467"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Végpontok közötti SSL konfigurálása az Application Gateway és a PowerShell használatával
 
@@ -27,7 +27,7 @@ Application Gateway támogatja az egyéni SSL-beállítások definiálását. Em
 
 ![forgatókönyv képe][scenario]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 Ebből a forgatókönyvből megtudhatja, hogyan hozhat létre egy Application Gateway-t a végpontok közötti SSL és a PowerShell használatával.
 
@@ -38,7 +38,7 @@ Ez a forgatókönyv a következőket teszi:
 * Hozzon létre két alhálózatot, amelyek neve **appgwsubnet** és **appsubnet**.
 * Hozzon létre egy kisméretű Application Gateway-t, amely támogatja az SSL protokoll verzióit és a titkosítási csomagokat korlátozó, végpontok közötti SSL-titkosítást.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -167,7 +167,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    > [!NOTE]
    > Az alapértelmezett mintavétel lekéri a nyilvános kulcsot az *alapértelmezett* SSL-kötésből a háttér IP-címére, és összehasonlítja az itt megadott nyilvános kulcs értékével kapott nyilvános kulcs értékét. 
    > 
-   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson https://127.0.0.1/ el a háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja az *alapértelmezett* SSL-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a háttér-kiszolgálókon futó kézi https://127.0.0.1/ böngészőtől, akkor a rájuk vonatkozó alapértelmezett SSL-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
+   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson el https://127.0.0.1/ -ra a háttér-kiszolgálókon annak megerősítéséhez, hogy az *alapértelmezett* SSL-kötés melyik tanúsítványt használja. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a https://127.0.0.1/ értékre a háttér-kiszolgálókon, be kell állítania egy alapértelmezett SSL-kötést. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +200,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard\_** **\_** kisméretű, standard szintű közepes és **standard\_méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
+10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek a következők: **standard @ no__t-1Small**, **standard @ no__t-3Medium**és **standard @ no__t-5Large**.  A kapacitáshoz az elérhető értékek **1** – **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +217,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
     - **TLSV1_1**
     - **TLSV1_2**
     
-    Az alábbi példa a protokoll minimális verzióját állítja be a **TLSv1_2** , és engedélyezi a **TLS\_ECDHE\_\_ECDSA\_\_\_AES\_128 GCM sha256**, **TLS\_ECDHE\_ECDSAAES256\_GCM SHA384ésTLS\_RSA és\_\_\_** **\_\_\_ Az\_AES128\_GCM\_csak sha256** .
+    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2** , és engedélyezi a **TLS @ no__t-2ECDHE @ no__t-3ECDSA @ no__t-4WITH @ no__t-5AES @ no__t-6128 @ no__t-7GCM @ no__t-8SHA256**, **TLS @ no__t-10ECDHE @ no__t-11ECDSA @ no__t-12WITH @ No __t-13AES @ no__t-14256 @ no__t-15GCM @ no__t-16SHA384**és **TLS @ NO__T-18RSA @ NO__T-19WITH @ NO__T-20AES @ no__t-21128 @ NO__T-22GCM @ NO__T-23SHA256** only.
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -229,7 +229,7 @@ Az összes fenti lépés használatával hozza létre az Application Gatewayt. A
 
 V1 SKU esetén használja az alábbi parancsot.
 ```powershell
-$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
+$appgw = New-AzApplicationGateway -Name appgateway -SSLCertificates $cert -ResourceGroupName "appgw-rg" -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku -SSLPolicy $SSLPolicy -AuthenticationCertificates $authcert -Verbose
 ```
 
 A v2 SKU esetében használja az alábbi parancsot.
@@ -253,7 +253,7 @@ Ezzel az eljárással új tanúsítványt alkalmazhat, ha a háttérbeli tanús�
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
    ```
     
-3. Az új hitelesítési tanúsítvány objektumának beolvasása egy változóba (TypeName: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayAuthenticationCertificate).
+3. Szerezze be az új hitelesítési tanúsítvány objektumot egy változóba (TypeName: Microsoft. Azure. commands. Network. models. PSApplicationGatewayAuthenticationCertificate).
 
    ```powershell
    $AuthCert = Get-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name NewCert
@@ -310,7 +310,7 @@ Az előző lépések során elvégezte a teljes körű SSL-alapú alkalmazások 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Adjon meg egy SSL-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **\_\_TLS ECDHE\_\_ECDSA\_\_AES\_ 128 GCM Sha256**, **TLS\_ECDHE\_ECDSAAES256\_GCM SHA384 és TLS\_RSA-vel\_\_\_** **\_\_ Az AES128\_GCMsha256\_csak az engedélyezett.\_\_**
+2. Adjon meg egy SSL-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS @ no__t-3ECDHE @ no__t-4ECDSA @ no__t-5WITH @ no__t-6AES @ no__t-7128 @ no__t-8GCM @ no__t-9SHA256**, **TLS @ no__t-11ECDHE @ no__t-12ECDSA @ no__ t-13WITH @ no__t-14AES @ no__t-15256 @ no__t-16GCM @ no__t-17SHA384**és **TLS @ NO__T-19RSA @ NO__T-20WITH @ NO__T-21AES @ no__t-22128 @ NO__T-23GCM @ no__t-** 24SHA256 az egyetlen lehetőség.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
@@ -355,7 +355,7 @@ DnsSettings              : {
                             }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a webalkalmazások biztonságának a webalkalmazási tűzfallal való megkeményedéséről Application Gatewayon keresztül: [webalkalmazási tűzfal – áttekintés](application-gateway-webapplicationfirewall-overview.md).
 

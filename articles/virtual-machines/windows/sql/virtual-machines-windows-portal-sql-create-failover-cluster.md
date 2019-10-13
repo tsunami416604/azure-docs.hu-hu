@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170253"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300582"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása az Azure-ban Virtual Machines
 
@@ -375,14 +375,15 @@ A terheléselosztó létrehozása:
 
 1. A terheléselosztó konfigurálása a alábbiakkal:
 
-   - **Name (név**): a terheléselosztó azonosítására szolgáló név.
-   - **Típus**: a terheléselosztó lehet nyilvános vagy privát. A privát terheléselosztó a VNET belülről is elérhető. A legtöbb Azure-alkalmazás saját Load balancert használhat. Ha az alkalmazásnak közvetlenül az interneten keresztül kell SQL Servera, használjon nyilvános Load balancert.
-   - **Virtual Network**: ugyanaz a hálózat, mint a virtuális gépek.
-   - **Alhálózat**: a virtuális gépekkel megegyező alhálózat.
-   - **Magánhálózati IP-cím**: ugyanazt az IP-címet rendelte hozzá, amelyet az SQL Server-es fürt hálózati erőforrásához rendelt.
-   - **előfizetés**: az Azure-előfizetése.
+   - **Előfizetés**: az Azure-előfizetése.
    - **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot, mint a virtuális gépeket.
-   - **Hely**: használja ugyanazt az Azure-helyet, mint a virtuális gépeket.
+   - **Name (név**): a terheléselosztó azonosítására szolgáló név.
+   - **Régió**: használja ugyanazt az Azure-helyet, mint a virtuális gépeket.
+   - **Típus**: a terheléselosztó lehet nyilvános vagy privát. A privát terheléselosztó a VNET belülről is elérhető. A legtöbb Azure-alkalmazás saját Load balancert használhat. Ha az alkalmazásnak közvetlenül az interneten keresztül kell SQL Servera, használjon nyilvános Load balancert.
+   - **SKU**: a terheléselosztó SKU-jának standard szintűnek kell lennie. 
+   - **Virtual Network**: ugyanaz a hálózat, mint a virtuális gépek.
+   - **IP-cím hozzárendelése**: az IP-cím hozzárendelésének statikusnak kell lennie. 
+   - **Magánhálózati IP-cím**: ugyanazt az IP-címet rendelte hozzá, amelyet az SQL Server-es fürt hálózati erőforrásához rendelt.
    Tekintse meg a következő képet:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

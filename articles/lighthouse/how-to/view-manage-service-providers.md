@@ -1,63 +1,63 @@
 ---
-title: Megtekintheti és kezelheti a szolgáltatók az Azure Portalon
-description: Ügyfelek használhatják a szolgáltatás szolgáltatók oldal az Azure Portalon kapcsolatos információ szolgáltatók, a service provider ajánlatok és a delegált erőforrások megtekintéséhez.
+title: Szolgáltatók megtekintése és kezelése
+description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a45458e7417bba058522fdc0dbc34fee04ad9af8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a7d39d95e35e30a16ce11db5b942024b6890438
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809840"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286598"
 ---
-# <a name="view-and-manage-service-providers"></a>Megtekintheti és kezelheti a szolgáltatók
+# <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
-Az ügyfelek használhatják a **szolgáltatók** lapját a [az Azure portal](https://portal.azure.com) szolgáltatók és a service provider ajánlatok információ megtekintéséhez delegálása erőforrásoknál keresztül [Azure az erőforrás-kezelés delegált](../concepts/azure-delegated-resource-management.md), és a kiegészítő service provider, amelyek üzemi. Azt a szolgáltatók és az ügyfelek itt fog hivatkozni, miközben kezelése több bérlőnél vállalatok is ugyanazzal az eljárással egyesíthetők a saját felügyeleti kezelőfelület.
+Az ügyfelek a Azure Portal **szolgáltatók** lapján tekinthetik meg [](https://portal.azure.com) a szolgáltatók és a szolgáltatók adatait, valamint az Azure-beli [delegált erőforrás-kezelés](../concepts/azure-delegated-resource-management.md)és a további szolgáltatói ajánlatok. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
-Hozzáférés a **szolgáltatók** oldal az Azure Portalon, az ügyfél kiválaszthatja **minden szolgáltatás**, majd keresse meg az **szolgáltatók** , és jelölje ki. Akkor is megkeresheti azt írja be a "Szolgáltatók" kifejezést a keresőmezőbe, az Azure portal tetején.
+A Azure Portal **szolgáltatók** lapjának eléréséhez az ügyfél kiválaszthatja az **összes szolgáltatást**, majd kereshet **a szolgáltatók között, és kiválaszthatja** azt. Azt is megtalálják, hogy beírja a "szolgáltatók" kifejezést a Azure Portal tetején található keresőmezőbe.
 
-Vegye figyelembe, hogy a **szolgáltatók** oldal csak a szolgáltató, amely rendelkezik hozzáféréssel az ügyfél előfizetések vagy erőforráscsoportok Azure-erőforrás delegált felügyelettel kapcsolatos jeleníti meg. Ha egy ügyfél meghatalmazott Azure erőforrás-kezelés nem használják az ügyfél erőforrások eléréséhez további szolgáltatók együttműködik, kapcsolatos információ szolgáltatók itt nem látható.
+Ne feledje, hogy a **szolgáltatók lapon csak** azok az adatok jelennek meg, amelyekkel az ügyfél előfizetéseit vagy erőforráscsoportait az Azure-beli delegált erőforrás-kezelés segítségével érheti el. Ha az ügyfél olyan további szolgáltatókkal működik együtt, akik nem használják az Azure-beli delegált erőforrás-kezelést az ügyfél erőforrásainak eléréséhez, itt nem jelenik meg a szolgáltatók információi.
 
 > [!NOTE]
-> Szolgáltatók kapcsolatos információ az ügyfelek tekintheti meg az **ügyfeleim** az Azure Portalon. További információ: [megtekintése és kezelése az ügyfelek és a delegált erőforrások](view-manage-customers.md).
+> A szolgáltatók megtekinthetik ügyfeleik adatait úgy, hogy a Azure Portalban navigálnak az **ügyfelekhez** . További információ: [ügyfelek és delegált erőforrások megtekintése és kezelése](view-manage-customers.md).
 
-## <a name="view-service-provider-details"></a>Szolgáltatás-szolgáltató részleteinek megtekintése
+## <a name="view-service-provider-details"></a>Szolgáltató adatainak megtekintése
 
-Az ügyfél működő szolgáltató(k) információ megtekintéséhez, és kiválaszthatja **szolgáltatótól** bal oldalán a **szolgáltatók** lapot.
+Ha az ügyfél által használt szolgáltató (k) adatait szeretné megtekinteni **, a szolgáltatók oldal bal** oldalán választhat **szolgáltatói ajánlatokat** .
 
-Az egyes service provider-ajánlat az ügyfél jelenik meg a szolgáltató nevét és az ajánlat nevét, az ügyfél a bevezetési folyamat során megadott rendelhető hozzá.
+Az ügyfél minden szolgáltatói ajánlatnál látni fogja a szolgáltató nevét és a hozzá társított ajánlatot, valamint azt a nevet, amelyet az ügyfél a bevezetési folyamat során megadott.
 
-Az a **delegálásokat** oszlopban, az ügyfél látja, hogy az ajánlat szolgáltatója átadott hány előfizetések és/vagy erőforráscsoportok. A szolgáltató elérheti és kezelheti ezeket az előfizetések és/vagy a hozzáférési szintek az ajánlatban meghatározott erőforráscsoportokra lesz.
+A **delegálások** oszlopban az ügyfél azt látja, hogy hány előfizetés és/vagy erőforráscsoport van delegálva az ajánlat szolgáltatójának. A szolgáltató elérheti és kezelheti ezeket az előfizetéseket és/vagy erőforráscsoportokat az ajánlatban megadott hozzáférési szintnek megfelelően.
 
 ## <a name="delegate-resources"></a>Erőforrások delegálása
 
-A szolgáltató eléréséhez és a egy ügyfél-erőforrások kezelése, mielőtt azok kell delegálható. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált olyan erőforrások, egy megjegyzés, amely tetején megjelenik a **szolgáltatótól** szakaszban. Ez lehetővé teszi, hogy intézkedjen a szolgáltató férjenek hozzá az ügyfél-erőforrásokat kell ismernie az ügyfél.
+Ahhoz, hogy a szolgáltató hozzáférhessen egy ügyfél erőforrásaihoz és felügyelje azt, delegálásra van szükség. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a **szolgáltatói ajánlatok** szakaszának tetején egy megjegyzés jelenik meg. Ez lehetővé teszi, hogy az ügyfél tudja, hogy el kell végeznie a beavatkozást, mielőtt a szolgáltató hozzáférhet az ügyfél erőforrásaihoz.
 
-Delegált előfizetések vagy erőforráscsoportok:
+Előfizetések vagy erőforráscsoportok delegálása:
 
-1. Jelölje be a nevét, az ajánlat és a szolgáltató tartalmazó sor. Válassza ki **erőforrások delegálása** a képernyő tetején.
-1. Az a **ajánlat részletei** szakaszában a **erőforrások delegálása** lapon ellenőrizze a szolgáltató adatait, és kínálnak. Az ajánlat szerepkör-hozzárendelések felülvizsgálatához válassza **Ide kattintva megtekintheti a kiválasztott ajánlat adatait**.
-1. Az a **delegált** szakaszban jelölje be **előfizetések delegálása** vagy **erőforráscsoportok delegálása**.
-1. Válassza ki, majd válassza az előfizetések és/vagy szeretne delegálni, az ajánlathoz tartozó erőforráscsoportok **Hozzáadás**.
-1. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy szeretné-e a service provider hozzáférést választotta ki, majd válassza ki az erőforrásokat az oldal alján **delegált**.
+1. Jelölje be a szolgáltatót, az ajánlatot és a nevet tartalmazó sor jelölőnégyzetét. Ezután válassza az **erőforrások delegálása** lehetőséget a képernyő tetején.
+1. Tekintse át a szolgáltató és az ajánlat részleteit az **erőforrások delegálása** lap **ajánlat részletei** szakaszában. Az ajánlathoz tartozó szerepkör-hozzárendelések áttekintéséhez válassza a **kattintson ide a kiválasztott ajánlat részleteinek megtekintéséhez**.
+1. A **delegált** szakaszban válassza az **előfizetések delegálása** vagy az **erőforráscsoportok delegálása**lehetőséget.
+1. Válassza ki az ajánlathoz delegálni kívánt előfizetéseket és/vagy erőforráscsoportokat, majd válassza a **Hozzáadás**lehetőséget.
+1. Jelölje be a lap alján található jelölőnégyzetet annak megerősítéséhez, hogy a szolgáltató hozzáférést kíván adni a kiválasztott erőforrásokhoz, majd válassza a **delegálás**lehetőséget.
 
-## <a name="add-or-remove-service-provider-offers"></a>Adja hozzá, vagy távolítsa el a service provider-ajánlatok
+## <a name="add-or-remove-service-provider-offers"></a>Szolgáltatói ajánlatok hozzáadása vagy eltávolítása
 
-Egy ügyfél adhat hozzá egy új service provider-ajánlat, a **szolgáltatótól** lap választásával **Hozzáadás ajánlat**. A szolgáltató közzé kell tennie egy ajánlatot az ügyfélhez. Az ügyfél kiválaszthatja, hogy ajánlata a **szóló ajánlatok** képernyőn, majd válassza ki **létrehozás**.
+Egy ügyfél hozzáadhat egy új szolgáltatói ajánlatot a **szolgáltatói ajánlatok** oldaláról az **ajánlat hozzáadása**lehetőség kiválasztásával. A szolgáltatónak közzé kell tennie egy ajánlatot ehhez az ügyfélhez. Az ügyfél ezt követően kiválaszthatja az ajánlatot a **privát ajánlatok** képernyőjén, majd a **Létrehozás**lehetőséget is választhatja.
 
-Ha az ügyfél szeretné eltávolítani a service provider-ajánlat, és kiválaszthatja a Kuka ikonra a ajánlatra sorában. Miután ellenőrizte a törlés, a szolgáltató többé nem lesz az adott ajánlat, amely korábban meghatalmazott is ügyfél-erőforrásokhoz való hozzáférés.
+Ha az ügyfél el szeretné távolítani a szolgáltatói ajánlatot, kiválaszthatja az ajánlat sorában látható Kuka ikont. A Törlés megerősítése után a szolgáltató már nem fog tudni hozzáférni az adott ajánlathoz korábban delegált ügyfél-erőforrásokhoz.
 
-## <a name="view-delegations"></a>Nézet delegálásokat
+## <a name="view-delegations"></a>Delegálások megtekintése
 
-Delegálásokat képviseli, amely a hozzáférési jogot a szolgáltató egy ügyfél meghatalmazott rendelkezik az erőforrások a szerepkör-hozzárendeléseket. Ezek az adatok megtekintéséhez jelölje ki **delegálásokat** bal oldalán a **szolgáltatók** lapot.
+A delegálások azokat a szerepkör-hozzárendeléseket jelölik, amelyek engedélyeket biztosítanak a szolgáltatónak az ügyfelek által delegált erőforrások számára. Az információ megtekintéséhez válassza a **szolgáltatók** lap bal oldalán található **delegálások** lehetőséget.
 
-Szűrők az oldal tetején lévő lehetővé teszik a rendezés és csoportosítás a delegálás info vagy szűrő az adott ügyfélnek, ajánlatok vagy kulcsszavak alapján.
+Az oldal tetején lévő szűrők segítségével rendezheti és csoportosíthatja a delegálási adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tudjon meg többet [Azure világítótoronyig](../overview.md).
-- Ismerje meg, hogyan lehet a szolgáltatók [megtekintése és kezelése az ügyfelek](view-manage-customers.md) a **ügyfeleim** az Azure Portalon.
+- További információ az [Azure Lighthouse](../overview.md)-ról.
+- Ismerje meg, hogy a szolgáltatók hogyan [tekinthetik meg és kezelhetik az ügyfeleket](view-manage-customers.md) , ha a Azure Portal **ügyfeleit** szeretnék megtekinteni.

@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: a6fc9f1a5c32fc9ffa1e1e6ebe525b72030fe803
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 0dcca2175d6ccc35a51bccb1e47f75d25cb8b11f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67155650"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299185"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -74,8 +74,8 @@ Az Azure Cosmos DB Cassandra API a következő CQL-adattípusokat támogatja:
 Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 
 * Jogkivonat  
-* Aggregátumfüggvények
-  * Min, max, avg, száma
+* Összesítő függvények
+  * min., max., átlag, darabszám
 * Blob-konverziós függvények 
   * typeAsBlob(value)  
   * blobAsType(value)
@@ -130,17 +130,17 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra API-fiókok esetében.
 
-* CREATE KEYSPACE 
+* LEMEZTERÜLET létrehozása (a parancs replikációs beállításai figyelmen kívül lesznek hagyva, a rendszer a mögöttes [Azure Cosmos db replikációs modelljét](global-dist-under-the-hood.md)használja. Ha több régióra kiterjedő adatmennyiségre van szüksége, a PowerShell, a CLI vagy a portál használatával is engedélyezheti a fiók szintjén, ha további információt szeretne megtudni, [hogyan adhat hozzá vagy távolíthat el régiókat a fiókhoz](how-to-manage-database-account.md#addremove-regions-from-your-database-account) .
 * CREATE TABLE 
 * ALTER TABLE 
 * USE 
 * INSERT 
 * SELECT 
-* UPDATE 
+* HÍR 
 * BATCH – csak nem naplózott parancsok használata támogatott 
 * DELETE
 
-A CQLV4-kompatibilis SDK használatával végrehajtott összes crud művelet további információval szolgál a hibáról, a felhasznált kérelemegységekről és tevékenységazonosítóról. A kiépített erőforrások túlhasználatának elkerüléséhez a törlési és frissítési parancsokat az erőforrások irányítását figyelembe véve kell kezelni. 
+Az CQLV4-kompatibilis SDK-n keresztül végrehajtott összes szifiliszi művelet további információkat ad vissza a hibáról, a kért egységeket. A törlési és frissítési parancsokat az erőforrás-szabályozással kell kezelni, figyelembe véve a kiépített átviteli sebesség megfelelő használatát. 
 * Ügyeljen arra, hogy a gc_grace_seconds értékének nullának kell lennie, ha meg van adva.
 
 ```csharp
@@ -157,20 +157,23 @@ foreach (string key in insertResult.Info.IncomingPayload)
 
 ## <a name="consistency-mapping"></a>Konzisztencialeképezés 
 
-Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  A konzisztencia-hozzárendelés részletes [Ide [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
+Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál az olvasási műveletekhez.  A konzisztencia-megfeleltetés részletes [itt [(https://docs.microsoft.com/azure/cosmos-db/consistency-levels-across-apis#cassandra-mapping).
 
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
-Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlés (RBAC) kiépítése, a kulcsok, a mérőszámok megtekintésével és az olvasási és írási és olvasási jelszavakkal/kulcsokkal keresztül elérhető a [az Azure portal](https://portal.azure.com). Az Azure Cosmos DB még nem támogatja felhasználók és szerepkörök CRUD-tevékenységekhez. 
+A Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC) a kiépítés, a kulcsok elforgatása, a metrikák, valamint az írási és olvasási és a csak olvasható jelszavak/kulcsok megtekintésére, amelyek a [Azure Portal](https://portal.azure.com)keresztül szerezhetők be. A Azure Cosmos DB nem támogatja a szifilisz-tevékenységek szerepkörét. 
 
-## <a name="planned-support"></a>Tervezett támogatás 
-* A régió nevét a create keyspace parancsban a rendszer figyelmen kívül hagyja – Az adatok elosztása az alapul szolgáló Cosmos DB platformon valósul meg, és a portálon vagy a fiókhoz tartozó PowerShellen keresztül történik a közzététel. 
+## <a name="keyspace-and-table-options"></a>A térköz és a tábla beállításai
 
+A rendszer figyelmen kívül hagyja a terület neve, az osztály, a replication_factor, az adatközpont a Create Space parancsban lehetőséget. A rendszer az alapul szolgáló Azure Cosmos DB [globális eloszlását](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) használja, ha szükséges régiókat ad hozzá. Ha több régióra kiterjedő adatmennyiségre van szüksége, a PowerShell-lel, a CLI-vel vagy a portálon engedélyezheti, ha többet szeretne megtudni, tekintse meg a következő doc: https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-database-account#addremove-regions-from-your-database-account. A Durable_writes nem lehet letiltani – Cosmos DB biztosítja, hogy minden írás tartós legyen. Minden régióban Cosmos DB replikálja a 4 replikából álló REPLICASET, és ez a REPLICASET- [konfiguráció](https://docs.microsoft.com/en-us/azure/cosmos-db/global-dist-under-the-hood) nem módosítható. Az összes tábla-létrehozási beállítást figyelmen kívül hagyja a rendszer, kivéve a gc_grace_seconds, amelynek nullának kell lennie.
+A térköz és a tábla extra Option-cosmosdb_provisioned_throughput rendelkezik, amelynek minimális értéke 400. A lemezterület-átviteli sebesség lehetővé teszi a több táblázat közötti adatátvitelt, és olyan forgatókönyvek esetén hasznos, amikor az összes tábla nem használja az átviteli sebességet. Az ALTER TABLE lehetővé teszi a kiépített átviteli sebesség módosítását a régiók között. HOZZon létre egy sampleks a következővel: REPLICATION = {"class": "SimpleStrategy"} és cosmosdb_provisioned_throughput = 2000;  
+CREATE TABLE sampleks. T1 (user_id int elsődleges kulcs, LastName Text) és cosmosdb_provisioned_throughput = 2000; ALTER TABLE gks1. T1, cosmosdb_provisioned_throughput = 10000;
 
+## <a name="usage-of-cassandra-retry-connection-policy"></a>Cassandra újrapróbálkozás kapcsolatok házirendjének használata
 
+Azure Cosmos DB az erőforrás-szabályozású rendszer. Ez azt jelenti, hogy bizonyos számú műveletet végrehajthat egy adott másodpercben, amelyet a kiosztott átviteli sebesség a műveletek által felhasznált kérelmek egységei alapján korlátoz. Ha az alkalmazás túllépi ezt a korlátot, a rendszer eldönti a kivételek korlátozását. A Cosmos db Cassandra API lefordítja ezeket a kivételeket a Cassandra Native protokollon túlterhelt hibák esetén. Annak biztosítása érdekében, hogy az alkalmazás képes legyen feltartóztatni, és az újrapróbálkozási sebesség korlátozása a [Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) és a [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) Helper megadásával. Ha más SDK-kat használ a Cosmos DB Cassandra API eléréséhez, hozzon létre kapcsolati házirendet a kivételek lekéréséhez. 
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedés a [Cassandra API-fiókok, -adatbázisok és -táblák létrehozásával](create-cassandra-api-account-java.md) Java-alkalmazás használatával
 

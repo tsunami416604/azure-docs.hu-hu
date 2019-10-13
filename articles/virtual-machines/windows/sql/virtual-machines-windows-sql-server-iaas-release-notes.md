@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: f680eae7f8c4cc2b57e3238a14b793f9b4298a79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f5f8985a0b9a97c559016add2567a936220aa910
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828590"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300099"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Az Azure-beli SQL Server dokumentációjának változásai Virtual Machines
 
@@ -26,14 +26,15 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="october-2019"></a>Október 2019
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Teljesítményre optimalizált tárolási konfiguráció** | Most már [teljes mértékben testreszabhatja a tárolási konfigurációt](virtual-machines-windows-sql-server-storage-configuration.md#new-vms) új SQL Server VM létrehozásakor. |
+| **Prémium fájlmegosztás a következőhöz:.** | Most létrehozhat egy feladatátvevő fürtöt a [prémium fájlmegosztás](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md) használatával a [közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)eredeti metódusa helyett. 
 | &nbsp; | &nbsp; |
 
 ## <a name="august-2019"></a>Augusztus 2019
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Dedikált Azure-gazdagép** | A SQL Server VM a [dedikált Azure-gazdagépen](virtual-machines-windows-sql-dedicated-host.md)is futtathatja. |
 | &nbsp; | &nbsp; |
@@ -42,7 +43,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 ## <a name="july-2019"></a>Július 2019
 
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **SQL virtuális gép áthelyezése másik régióba** | A Azure Site Recovery használatával [áttelepítheti a SQL Server VM az egyik régióból a másikba](virtual-machines-windows-sql-move-different-region.md). |
 | &nbsp; | &nbsp; |
@@ -50,7 +51,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 ## <a name="june-2019"></a>Június 2019
 
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Új SQL-IaaS telepítési módjai** | A SQL Server szolgáltatás újraindításának elkerülése érdekében mostantól a SQL Server IaaS-bővítményt [egyszerűsített módban](virtual-machines-windows-sql-server-agent-extension.md) is telepítheti.  |
 | **SQL Server kiadás módosítása** | Most már módosíthatja a SQL Server VM [kiadás tulajdonságát](virtual-machines-windows-sql-change-edition.md) . |
@@ -61,7 +62,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="may-2019"></a>2019. május
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Új SQL Server VM-kezelés a Azure Portal** | Most már lehetőség van a SQL Server VM kezelésére a Azure Portal. További információ: [SQL Server virtuális gépek kezelése a Azure Portalban](virtual-machines-windows-sql-manage-portal.md).  | 
 | &nbsp; | &nbsp; |
@@ -70,7 +71,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="april-2019"></a>Április 2019
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Kiterjesztett támogatás a SQL Server 2008/2008 R2 rendszerhez** | *Az Azure* -beli virtuális gépekre való áttelepítéssel bővítheti SQL Server 2008 és SQL Server 2008 R2 [támogatását](virtual-machines-windows-sql-server-2008-eos-extend-support.md) . | 
 | &nbsp; | &nbsp; |
@@ -78,7 +79,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="march-2019"></a>Március 2019
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Egyéni rendszerkép-támogatás** | Most már telepítheti a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) az egyéni operációs rendszerre és az SQL-lemezképekre, amely a [rugalmas licencelés](virtual-machines-windows-sql-ahb.md)korlátozott funkcionalitását kínálja. Ha az egyéni rendszerképét az SQL-erőforrás-szolgáltatóval regisztrálja, adja meg a licenc típusát "AHUB" néven. Ellenkező esetben a regisztráció sikertelen lesz. | 
 | **Megnevezett példányok támogatása** | Mostantól a [SQL Server IaaS bővítményt](virtual-machines-windows-sql-server-agent-extension.md#installation) megnevezett példánnyal is használhatja, ha az alapértelmezett példány eltávolítása megfelelő volt. | 
@@ -88,18 +89,18 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ## <a name="february-2019"></a>Február 2019
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Portál fejlesztése** | Mostantól lehetőség van egy SQL Server VM licencelési modelljének módosítására, ha a saját licencét a [Azure Portal](virtual-machines-windows-sql-ahb.md#change-the-license-for-vms-already-registered-with-the-resource-provider)használatával szeretné felvenni.|
 |**A rendelkezésre állási csoport központi telepítésének egyszerűsítése az Azure SQL Server VM parancssori felülettel** | Mostantól minden eddiginél könnyebben üzembe helyezhet egy rendelkezésre állási csoportot az Azure-SQL Server VM. Az [Azure CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) használatával létrehozhatja a Windows feladatátvevő fürtöt, a belső terheléselosztó és a rendelkezésre állási csoport figyelőit a parancssorból. További információ: [az azure SQL Server VM CLI használata az Always On rendelkezésre állási csoport konfigurálásához az Azure-beli virtuális](virtual-machines-windows-sql-availability-group-cli.md)gépeken való SQL Serverhoz. | 
 | &nbsp; | &nbsp; |
 
-## <a name="2018"></a>2018.
+## <a name="2018"></a>2018
 
 
 ### <a name="december-2018"></a>2018. december
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Új erőforrás-szolgáltató SQL Server-fürthöz** | Az új erőforrás-szolgáltató (Microsoft. SqlVirtualMachine/SqlVirtualMachineGroups) a Windows feladatátvevő fürt metaadatait határozza meg. SQL Server VM csatlakoztatása a *SqlVirtualMachineGroups* a Windows Server feladatátvételi fürt (WSFC) szolgáltatáshoz csatlakozik, és csatlakoztatja a virtuális gépet a fürthöz.  |
 |**Rendelkezésre állási csoport üzembe helyezésének automatikus beállítása az Azure Gyorsindítás sablonjaival** |Most már lehetséges a Windows feladatátvevő fürt létrehozása, csatlakoztatás SQL Server virtuális gépekhez, a figyelő létrehozása és a belső terheléselosztó konfigurálása két Azure-beli gyors üzembe helyezési sablonnal. További információt az Azure-beli virtuális gépeken [elérhető SQL Server Azure-beli Gyorsindítás sablonokkal való konfigurálását](virtual-machines-windows-sql-availability-group-quickstart-template.md)ismertető témakörben talál. | 
@@ -109,7 +110,7 @@ Az Azure-ban a virtuális gépek (VM-EK) üzembe helyezését SQL Server beépí
 
 ### <a name="november-2018"></a>November 2018
 
-| Módosítások | Részletek |
+| Változások | Részletek |
 | --- | --- |
 | **Új SQL virtuális gép erőforrás-szolgáltatója** |  Az új erőforrás-szolgáltató (Microsoft. SqlVirtualMachine) jobb felügyeletet biztosít a SQL Server virtuális gépeken. A virtuális gépek regisztrálásával kapcsolatos további információkért lásd: [SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md). |
 |**Licencelési modell váltása** | Az Azure CLI vagy a PowerShell használatával mostantól válthat a díjköteles használat és a saját licencek között a SQL Server VMhoz. További információkért lásd: [SQL Server virtuális gép licencelési modelljének módosítása az Azure-ban](virtual-machines-windows-sql-ahb.md). | 

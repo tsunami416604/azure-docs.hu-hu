@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a várólista-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET Core) | Microsoft Docs
+title: Ismerkedés a várólista-tárolással a Visual Studióval (ASP.NET Core)
 description: Az Azure üzenetsor-tárolás használatának első lépései egy ASP.NET Core-projektben a Visual Studióban
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: d8e370c6f7c59da8522bb4fb1403b6107a9c9c41
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510980"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300026"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés a várólista-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET Core)
 
@@ -35,7 +36,7 @@ Egyes Azure Storage API-k aszinkron módon működnek, és a cikkben szereplő k
 
 Ha ASP.NET Core-projektekben szeretné elérni a várólistákat, a következő C# elemeket minden olyan forrásfájlban adja meg, amely hozzáfér az Azure Queue Storage szolgáltatáshoz. A következő szakaszokban a kód előtt használja ezt a kódot.
 
-1. Adja hozzá a `using` szükséges utasításokat:
+1. Adja hozzá a szükséges `using` utasítást:
     ```cs
     using Microsoft.Framework.Configuration;
     using Microsoft.WindowsAzure.Storage;
@@ -44,20 +45,20 @@ Ha ASP.NET Core-projektekben szeretné elérni a várólistákat, a következő 
     using LogLevel = Microsoft.Framework.Logging.LogLevel;
     ```
 
-1. Szerezzen `CloudStorageAccount` be egy objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában:
+1. Szerezzen be egy `CloudStorageAccount` objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában:
 
     ```cs
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
     ```
 
-1. A Storage-fiókban található üzenetsor-objektumokra hivatkozó objektumlekérése:`CloudQueueClient`
+1. A Storage-fiókban található üzenetsor-objektumokra hivatkozó `CloudQueueClient` objektum beszerzése:
 
     ```cs
     // Create the CloudQueueClient object for the storage account.
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
     ```
-1. `CloudQueue` Objektum lekérése egy adott várólistára való hivatkozáshoz:
+1. @No__t-0 objektum beszerzése egy adott várólistára való hivatkozáshoz:
 
     ```cs
     // Get a reference to the CloudQueue named "messagequeue"
@@ -66,7 +67,7 @@ Ha ASP.NET Core-projektekben szeretné elérni a várólistákat, a következő 
 
 ### <a name="create-a-queue-in-code"></a>Várólista létrehozása a kódban
 
-Az Azure-várólista kódban való létrehozásához hívja `CreateIfNotExistsAsync`a következőt:
+Az Azure-várólista kódban való létrehozásához hívja meg a `CreateIfNotExistsAsync`:
 
 ```cs
 // Create the CloudQueue if it does not exist.
@@ -85,7 +86,7 @@ await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Üzenet elolvasása egy várólistában
 
-A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistába `PeekMessageAsync` :
+A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a `PeekMessageAsync` metódus meghívásával:
 
 ```cs
 // Peek the next message in the queue.
@@ -96,10 +97,10 @@ CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 A kód két lépésben képes eltávolítani (elválasztani) egy üzenetsor üzenetét.
 
-1. Hívja `GetMessageAsync` meg a következő üzenet beszerzését egy várólistában. A visszaadott `GetMessageAsync` üzenet a várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan.
-1. Az üzenet várólistából való eltávolításának befejezéséhez hívja `DeleteMessageAsync`meg a következőt:.
+1. Hívja meg a `GetMessageAsync` elemet a következő üzenet egy várólistán való beolvasásához. A `GetMessageAsync` értékből visszaadott üzenet láthatatlanná válik a várólistában lévő más kódok üzeneteiben. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan.
+1. Az üzenet várólistából való eltávolításának befejezéséhez hívja meg a `DeleteMessageAsync` értéket.
 
-Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. Az alábbi kód az `DeleteMessageAsync` üzenet feldolgozását követően azonnal meghívja a következő kódot:
+Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A következő kód a `DeleteMessageAsync` értéket hívja meg az üzenet feldolgozását követően:
 
 ```cs
 // Get the next message in the queue.
@@ -113,7 +114,7 @@ await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="additional-options-for-dequeuing-messages"></a>További beállítások a dequeuing üzenetek számára
 
-Az üzenetek várólistából való lekérését kétféleképpen lehet testre szabni. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. A következő példában a `GetMessages` metódus használatával 20 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza `foreach` egy hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az öt perces időzítő egyszerre indul el az összes üzenethez, így öt perc elteltével az összes nem törölt üzenet ismét láthatóvá válik.
+Az üzenetek várólistából való lekérését kétféleképpen lehet testre szabni. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket. A következő mintakód a `GetMessages` metódus használatával 20 üzenetet kap egy hívásban. Ezután az összes üzenetet feldolgozza `foreach` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az öt perces időzítő egyszerre indul el az összes üzenethez, így öt perc elteltével az összes nem törölt üzenet ismét láthatóvá válik.
 
 ```cs
 // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
@@ -143,7 +144,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Az aszinkron várakozási minta használata közös üzenetsor-API-kkal
 
-Ez a példa azt mutatja be, hogyan használható az aszinkron várakozási minta a közös üzenetsor `Async`-API-kkal. Aszinkron módszer használata esetén az aszinkron várakozási minta a hívás befejezéséig felfüggeszti a helyi végrehajtást. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más olyan munkát végezzen, amely segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását.
+Ez a példa azt mutatja be, hogyan használható az aszinkron várakozási minta a közös üzenetsor-API-kkal `Async` végződéssel. Aszinkron módszer használata esetén az aszinkron várakozási minta a hívás befejezéséig felfüggeszti a helyi végrehajtást. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más olyan munkát végezzen, amely segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását.
 
 ```cs
 // Create a message to add to the queue.
@@ -164,13 +165,13 @@ Console.WriteLine("Deleted message");
 
 ## <a name="delete-a-queue"></a>Üzenetsor törlése
 
-Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja `Delete` meg a metódust a várólista-objektumon:
+Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a `Delete` metódust a várólista-objektumon:
 
 ```cs
 // Delete the queue.
 messageQueue.Delete();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]

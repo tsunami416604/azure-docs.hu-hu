@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679487"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300913"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: Felügyeleti eszköz üzembe helyezése
+# <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: felügyeleti eszköz üzembe helyezése
 
 A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virtuális asztali erőforrásainak kezeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz.
 
@@ -26,6 +26,12 @@ A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virt
 Mivel az alkalmazásnak hozzá kell járulnia a Windows virtuális asztal használatához, az eszköz nem támogatja a vállalatközi (B2B) forgatókönyveket. Minden Azure Active Directory (HRE) bérlő előfizetéséhez a felügyeleti eszköz saját külön üzembe helyezésére lesz szükség.
 
 Ez a felügyeleti eszköz egy minta. A Microsoft fontos biztonsági és minőségi frissítéseket biztosít. A [forráskód a githubon érhető el](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Az ügyfelek és a partnerek számára ajánlott az eszköz testreszabása az üzleti igényeknek megfelelően.
+
+A következő böngészők kompatibilisek a felügyeleti eszközzel:
+- Google Chrome 68 vagy újabb verzió
+- Microsoft Edge 40,15063 vagy újabb verzió
+- Mozilla Firefox 52,0 vagy újabb verzió
+- Safari 10 vagy újabb (csak macOS)
 
 ## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Mire van szükség a Azure Resource Manager sablon futtatásához
 
@@ -101,7 +107,7 @@ Az eszköz elindításához kövesse az alábbi utasításokat:
 > [!NOTE]
 > Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja a Azure Service Healtht a szolgáltatási problémák és az állapot-útmutatók figyelésére.
 

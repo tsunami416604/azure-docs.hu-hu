@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1df278c67c8f84648d2fc7ab3818656cfb9de74a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 11c12058229a2eadfdc3834d311c085c2365b17d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100702"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300791"
 ---
-# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
 Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és rugalmas számítási környezetet nyújtanak. Az oktatóanyag az Azure-beli virtuális gépek üzembe helyezésének alapvető elemeit ismerteti, például a virtuális gépek méretének és rendszerképeinek kiválasztását és a virtuális gépek telepítését. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -33,7 +33,7 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 > * Virtuális gép átméretezése
 > * Virtuális gép állapotának áttekintése és értelmezése
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -154,7 +154,7 @@ A virtuális gép mérete a virtuális gép által elérhető számítási erőf
 
 Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.  
 
-| Type                     | Gyakori méretek           |    Leírás       |
+| Type (Típus)                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -253,7 +253,7 @@ Számos energiaállapot van, amelyek közül az Azure-beli virtuális gépek fel
 
 | Energiaállapot | Leírás
 |----|----|
-| Indítás | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
+| Indulás alatt | Azt jelzi, hogy a virtuális gép indítása folyamatban van. |
 | Fut | Azt jelzi, hogy a virtuális gép fut. |
 | Leállítás | Azt jelzi, hogy a virtuális gép leáll. | 
 | Leállítva | Azt jelzi, hogy a virtuális gép leállt. A leállított virtuális gépekért továbbra is díjat kell fizetni.  |
@@ -280,7 +280,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-## <a name="management-tasks"></a>Kezelési feladatok
+## <a name="management-tasks"></a>Felügyeleti feladatok
 
 A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett előfordulhat, hogy szkripteket is szeretne létrehozni az ismétlődő vagy összetett feladatok automatizálására. Az Azure CLI használatával számos gyakori felügyeleti feladat futtatható a parancssorból vagy szkriptek segítségével. 
 
@@ -312,7 +312,7 @@ Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás is 
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 

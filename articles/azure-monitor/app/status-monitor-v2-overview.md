@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057830"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286441"
 ---
 # <a name="status-monitor-v2"></a>Állapotmonitor v2
 
@@ -33,40 +33,36 @@ A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.m
 ![PowerShell-galéria](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
-## <a name="instructions"></a>Útmutatás
+## <a name="instructions"></a>Utasítások
 - Tekintse meg az [első lépéseket ismertető útmutatót](status-monitor-v2-get-started.md) , amelyből megtudhatja, hogyan kezdheti el a rövid kód mintáit.
 - Tekintse meg az első lépések [részletes leírását](status-monitor-v2-detailed-instructions.md) .
 
 ## <a name="powershell-api-reference"></a>PowerShell API-referenciák
-- [Disable-ApplicationInsightsMonitoring](status-monitor-v2-api-disable-monitoring.md)
+- [ApplicationInsightsMonitoring letiltása](status-monitor-v2-api-disable-monitoring.md)
 - [InstrumentationEngine letiltása](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
+- [ApplicationInsightsMonitoring engedélyezése](status-monitor-v2-api-enable-monitoring.md)
 - [InstrumentationEngine engedélyezése](status-monitor-v2-api-enable-instrumentation-engine.md)
 - [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
 - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md)
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
 - [Start – ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
-- [Hibaelhárítás](status-monitor-v2-troubleshoot.md)
+## <a name="troubleshooting"></a>Hibakeresés
+- [hibaelhárítással](status-monitor-v2-troubleshoot.md)
 - [Ismert problémák](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 - Támogatja a Állapotmonitor v2 a proxy telepítéseit?
 
-  *Igen*. A Állapotmonitor v2 letöltése több módon is lehetséges. Ha a számítógépnek van internet-hozzáférése, akkor paraméterek használatával `-Proxy` bejelentkezhet a PowerShell-galériaba.
+  *Igen*. A Állapotmonitor v2 letöltése több módon is lehetséges. Ha a számítógép rendelkezik internet-hozzáféréssel, `-Proxy` paraméterek használatával bejelentkezhet a PowerShell-galériaba.
 Manuálisan is letöltheti a modult, és telepítheti a számítógépre, vagy közvetlenül is használhatja azt.
 Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed-instructions.md)ismertetik.
 
 - Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat?
 
   *Nem*. ASP.NET Core alkalmazások figyelésének engedélyezéséhez lásd: [Application Insights ASP.net Core alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Nincs szükség a StatusMonitor telepítésére egy ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
-  
-Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat? 
-
-  *Nem*. A ASP.NET Core alkalmazások figyelésének engedélyezéséhez kövesse [az alábbi](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) utasításokat. Nem szükséges StatusMonitor telepíteni ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
 
 - Hogyan ellenőrizze, hogy az engedélyezés sikeres volt-e?
 
@@ -78,13 +74,13 @@ Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat?
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A telemetriai adatok megtekintése:
 
-* [Ismerje](../../azure-monitor/app/metrics-explorer.md) meg a mérőszámokat a teljesítmény és a használat figyeléséhez.
+* [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
 * [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-* További speciális lekérdezésekhez [használja](../../azure-monitor/app/analytics.md) az elemzést.
+* További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
 * [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
 
 További telemetriai funkciók hozzáadása:

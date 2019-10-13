@@ -1,40 +1,43 @@
 ---
-title: Eltérő eredetű erőforrások megosztása (CORS) az Azure Cosmos DB
-description: Ez a cikk bemutatja, hogyan konfigurálhatja az eltérő eredetű erőforrások megosztása (CORS) az Azure Cosmos DB az Azure portal és az Azure Resource Manager-sablonok használatával.
+title: Több eredetű erőforrás-megosztás (CORS) Azure Cosmos DB
+description: Ez a cikk azt ismerteti, hogyan konfigurálható az CORS-alapú erőforrás-megosztás (Azure Cosmos DB) Azure Portal és Azure Resource Manager sablonok használatával.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/11/2019
 ms.author: dech
-ms.openlocfilehash: 1269c4c2405e9b906b63c8a29c0de1ac217da1d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82c49854611e6c425b75f0830a1402c8f5a4694e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241889"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299173"
 ---
-# <a name="configure-cross-origin-resource-sharing-cors"></a>Eltérő eredetű erőforrások megosztása (CORS) konfigurálása 
+# <a name="configure-cross-origin-resource-sharing-cors"></a>Az idegen eredetű erőforrások megosztásának konfigurálása (CORS) 
 
-Eltérő eredetű erőforrások megosztása (CORS) egy HTTP-funkció, amely lehetővé teszi egy adott tartományban futó webes alkalmazás egy másik tartományban lévő erőforrások eléréséhez. Webböngészők azonoseredet-, amely megakadályozza az API-k egy másik tartományban származó weblap néven ismert biztonsági korlátozással akadályozzák meg. Azonban a CORS biztonságos megoldást nyújt, hogy a forrástartomány API-k hívásához egy másik tartományban található. Fő SQL API-t az Azure Cosmos DB mostantól támogatja az eltérő eredetű erőforrások megosztása (CORS) a "allowedOrigins" fejléc használatával. Miután engedélyezte a CORS-támogatás az Azure Cosmos-fiókja, csak a hitelesített kérelmeket meghatározni, hogy azok a megadott szabályok szerint engedélyezettek értékeli ki.
+Az eltérő eredetű erőforrás-megosztás (CORS) egy olyan HTTP-szolgáltatás, amely lehetővé teszi, hogy az egyik tartományon futó webalkalmazások hozzáférjenek egy másik tartomány erőforrásaihoz. A böngészők olyan biztonsági korlátozást valósítanak meg, amelyik azonos eredetű házirend, amely megakadályozza, hogy egy weblap egy másik tartományban lévő API-kat hívjon fel. A CORS azonban biztonságos módot biztosít ahhoz, hogy a forrás tartomány egy másik tartományban lévő API-kat hívjon fel. A Azure Cosmos DB a Core (SQL) API mostantól támogatja az CORS-alapú erőforrás-megosztást a "allowedOrigins" fejléc használatával. Miután engedélyezte az Azure Cosmos-fiók CORS-támogatását, a rendszer csak a hitelesített kérelmeket értékeli ki, hogy azok a megadott szabályoknak megfelelően engedélyezettek-e.
 
-Konfigurálhatja az eltérő eredetű erőforrások megosztásának (CORS) beállítása az Azure Portalon vagy Azure Resource Manager-sablon. Fő SQL API-t az Azure Cosmos DB támogatja a egy JavaScript-függvénytárat, amely egyaránt használható a Node.js és a böngésző alapú környezetekben. Ebben a könyvtárban most CORS-támogatás előnyeinek életbe átjáró mód használatakor. Nem tartozik a funkció használatához szükséges: ügyféloldali konfiguráció. CORS-támogatás, az erőforrások közvetlenül a böngészőből közvetlenül férhet hozzá az Azure Cosmos DB segítségével a [JavaScript-kódtár](https://www.npmjs.com/package/@azure/cosmos) vagy közvetlenül a [REST API-val](https://docs.microsoft.com/rest/api/cosmos-db/) egyszerű műveletekhez. 
+Az CORS-beállítást a Azure Portal vagy egy Azure Resource Manager sablonból is konfigurálhatja. A Core (SQL) API-t használó Cosmos-fiókok esetében a Azure Cosmos DB támogatja a Node. js és a böngészőalapú környezetekben használható JavaScript-függvénytárat. Ez a tár most kihasználhatja a CORS-támogatás előnyeit az átjáró mód használata esetén. A funkció használatához nincs szükség ügyféloldali konfigurációra. A CORS-támogatással a böngészőből származó erőforrások közvetlenül hozzáférhetnek Azure Cosmos DB a [JavaScript-könyvtárból](https://www.npmjs.com/package/@azure/cosmos) , vagy közvetlenül a [REST API](https://docs.microsoft.com/rest/api/cosmos-db/) az egyszerű műveletekhez. 
 
-## <a name="enable-cors-support-from-azure-portal"></a>Az Azure Portalról CORS-támogatásának engedélyezése
+> [!NOTE]
+> A CORS-támogatás csak az Azure Cosmos DB Core (SQL) API esetében alkalmazható és támogatott. Nem alkalmazható a Cassandra, a Gremlin vagy a MongoDB Azure Cosmos DB API-kra, mivel ezek a protokollok nem használják a HTTP protokollt az ügyfél-kiszolgáló kommunikációhoz. 
 
-A következő lépések használatával engedélyezze az eltérő eredetű erőforrások megosztása az Azure portal használatával:
+## <a name="enable-cors-support-from-azure-portal"></a>CORS-támogatás engedélyezése Azure Portal
 
-1. Keresse meg az Azure cosmos DB-fiók. Nyissa meg a **CORS** panelen.
+A következő lépések végrehajtásával engedélyezheti a több eredetű erőforrás-megosztást a Azure Portal használatával:
 
-2. Adja meg, hogy az Azure Cosmos DB-fiók eltérő eredetű hívásokat indíthatna vesszővel elválasztott listáját. Ha például `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. Helyettesítő karakter is használható "\*" összes forrás engedélyezéséhez, és válassza ki **küldés**. 
+1. Navigáljon az Azure Cosmos DB-fiókhoz. Nyissa meg a **CORS** panelt.
+
+2. Adja meg az eredetek vesszővel tagolt listáját, amelyek az eltérő eredetű hívásokat végezhetnek a Azure Cosmos DB-fiókban. Például: `https://www.mydomain.com`, `https://mydomain.com`, `https://api.mydomain.com`. A "\*" helyettesítő karaktert is használhatja az összes eredet engedélyezéséhez, és válassza a **Küldés**lehetőséget. 
 
    > [!NOTE]
-   > Jelenleg a helyettesítő karakterek nem használható a tartománynév részeként. Például `https://*.mydomain.net` formátum jelenleg nem támogatott. 
+   > Jelenleg nem használhat helyettesítő karaktereket a tartománynév részeként. Például a `https://*.mydomain.net` formátum még nem támogatott. 
    
-   ![Engedélyezze a eredetű erőforrások megosztása az Azure portal használatával](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
+   ![Több eredetű erőforrás-megosztás engedélyezése Azure Portal használatával](./media/how-to-configure-cross-origin-resource-sharing/enable-cross-origin-resource-sharing-using-azure-portal.png)
  
-## <a name="enable-cors-support-from-resource-manager-template"></a>A Resource Manager-sablon a CORS-támogatásának engedélyezése
+## <a name="enable-cors-support-from-resource-manager-template"></a>A CORS támogatásának engedélyezése Resource Manager-sablonból
 
-CORS engedélyezése Resource Manager-sablon használatával, bármely létező sablonhoz adja hozzá a "cors" szakasz "allowedOrigins" tulajdonság. A következő JSON-ra, amelyek egy sablon, amely létrehoz egy új Azure Cosmos-fiókot a CORS engedélyezése mellett.
+A CORS Resource Manager-sablonnal történő engedélyezéséhez adja hozzá a "CORS" szakaszt a "allowedOrigins" tulajdonsággal bármely meglévő sablonhoz. A következő JSON egy példa egy olyan sablonra, amely létrehoz egy új Azure Cosmos-fiókot, amelyen engedélyezve van a CORS.
 
 ```json
 {
@@ -75,9 +78,9 @@ CORS engedélyezése Resource Manager-sablon használatával, bármely létező 
 }
 ```
 
-## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>Egy böngészőből az Azure Cosmos DB a JavaScript-kódtár használatával
+## <a name="using-the-azure-cosmos-db-javascript-library-from-a-browser"></a>A Azure Cosmos DB JavaScript-kódtár használata böngészőből
 
-Az Azure Cosmos DB a JavaScript-kódtár még ma, csak a tár a csomag rendszerrel szállított CommonJS verziója van. Használja az ebben a könyvtárban, a böngészőből, egy eszközt, például a Rollup vagy webpack használatával készült használatával hozzon létre egy böngésző kompatibilis kódtár rendelkezik. Egyes Node.js-kódtárak böngésző mocks őket van. Az alábbiakban látható egy példa, amely rendelkezik a szükséges utánzatként funkcionáló beállításokat webpack használatával készült konfigurációs fájlt.
+Napjainkban a Azure Cosmos DB JavaScript-függvénytár csak a csomaggal szállított könyvtár CommonJS verzióját tartalmazza. Ha ezt a kódtárat szeretné használni a böngészőből, egy böngészőkompatibilis függvénytár létrehozásához olyan eszközt kell használnia, mint a kumulatív vagy a webpack. Bizonyos Node. js-kódtárak esetében böngésző-modellnek kell tartoznia. A következő példa egy olyan webpack-konfigurációs fájlt mutat be, amely a szükséges modell-beállításokkal rendelkezik.
 
 ```javascript
 const path = require("path");
@@ -96,15 +99,15 @@ module.exports = {
 };
 ```
  
-Íme egy [kódminta](https://github.com/christopheranderson/cosmos-browser-sample) használó TypeScript és a webpack használatával készült és az Azure Cosmos DB a JavaScript SDK-t hozhat létre egy Teendőkezelő alkalmazást, amely valós idejű frissítéseket küld, amikor új elem jön létre.
-Ajánlott eljárásként ne használja a az elsődleges kulcsot az Azure Cosmos DB böngészőből való kommunikációhoz. Ehelyett használja az erőforrás-jogkivonatokat való kommunikációhoz. Erőforrás-jogkivonatokat kapcsolatos további információkért lásd: [Azure Cosmos DB-hez való hozzáférés biztosítása](secure-access-to-data.md#resource-tokens) cikk.
+Az alábbiakban egy olyan [mintakód-minta](https://github.com/christopheranderson/cosmos-browser-sample) látható, amely a Azure Cosmos db JavaScript SDK-könyvtárral rendelkező írógéppel és webpack-t használja egy olyan Todo-alkalmazás létrehozásához, amely valós idejű frissítéseket küld, amikor új elemek jönnek létre.
+Ajánlott eljárásként ne használja az elsődleges kulcsot a Azure Cosmos DB a böngészőből való kommunikációhoz. Ehelyett használjon erőforrás-jogkivonatokat a kommunikációhoz. Az erőforrás-jogkivonatokkal kapcsolatos további információkért lásd: [hozzáférés biztonságossá tétele Azure Cosmos db](secure-access-to-data.md#resource-tokens) cikkhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure Cosmos-fiókhoz egyéb módjaival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Az Azure Cosmos-fiók biztonságossá tételének egyéb módjaival kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Windows tűzfal konfigurálása az Azure Cosmos DB](how-to-configure-firewall.md) cikk.
+* [Tűzfal konfigurálása Azure Cosmos db](how-to-configure-firewall.md) cikkhez.
 
-* [Virtuális hálózat és alhálózat-alapú hozzáférés az Azure Cosmos DB-fiók konfigurálása](how-to-configure-vnet-service-endpoint.md)
+* [A virtuális hálózat és az alhálózat-alapú hozzáférés konfigurálása a Azure Cosmos DB-fiókhoz](how-to-configure-vnet-service-endpoint.md)
     
 

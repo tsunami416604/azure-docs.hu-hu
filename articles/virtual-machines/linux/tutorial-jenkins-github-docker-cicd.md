@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100768"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299405"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása Linux rendszerű virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 
 Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automatizálásához használhat egy folyamatos integrációs és fejlesztési (CI/CD) folyamatot. Ebben az oktatóanyagban létrehozhat egy CI/CD folyamatot egy Azure-beli virtuális gépen, továbbá megismerkedhet a következőkkel is:
 
@@ -34,7 +34,7 @@ Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automa
 > * Docker-rendszerkép létrehozása az alkalmazáshoz
 > * Annak ellenőrzése, hogy a GitHub-véglegesítések új Docker-rendszerképet hoznak létre és frissítik a futó alkalmazást
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -108,7 +108,7 @@ Biztonsági okokból a Jenkins telepítésének megkezdéséhez meg kell adnia a
 ssh azureuser@<publicIps>
 ```
 
-Ellenőrizze, hogy a Jenkins fut `service` -e a parancs használatával:
+Ellenőrizze, hogy fut-e a Jenkins a `service` paranccsal:
 
 ```bash
 $ service jenkins status
@@ -147,11 +147,11 @@ A GitHubbal való integráció konfigurálásához nyissa meg a [Node.js „Hell
 
 Hozzon létre egy webhookot a létrehozott elágazásban:
 
-- Válassza a **Beállítások**, majd a bal oldali webhookok lehetőséget.
+- Válassza a **Beállítások**, majd a bal oldali **webhookok** lehetőséget.
 - Válassza a **webhook hozzáadása**lehetőséget, majd írja be a *Jenkins* kifejezést a szűrő mezőbe.
-- A **hasznos adatok URL-címéhez**írja be `http://<publicIps>:8080/github-webhook/`a következőt: Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
+- A **hasznos adatok URL-címéhez**írja be a következőt: `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
 - A **tartalom típusa**beállításnál válassza az *Application/x-www-Form-urlencoded*lehetőséget.
-- **Mely eseményekhez szeretné elindítani ezt**a webhookot? jelölje ki *a csak a leküldéses eseményt.*
+- **Mely eseményekhez szeretné elindítani ezt a webhookot?** jelölje ki *a csak a leküldéses eseményt.*
 - Az **aktív** érték bejelölve.
 - Kattintson a **webhook hozzáadása**lehetőségre.
 
@@ -246,7 +246,7 @@ Most szerkessze újra az *index.js* fájlt a GitHubban, majd véglegesítse a m�
 ![Node.js-alkalmazás futtatása egy újabb GitHub-véglegesítés után](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban úgy konfiguráltuk a GitHubot, hogy minden egyes kódvéglegesítéskor futtasson egy Jenkins létrehozási feladatot, majd helyezzen üzembe egy Docker-tárolót az alkalmazás teszteléséhez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

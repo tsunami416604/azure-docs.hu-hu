@@ -1,21 +1,20 @@
 ---
-title: Oktatóanyag – mintamodell hozzáadása az Azure Analysis Services-kiszolgáló |} A Microsoft Docs
+title: Oktatóanyag – modell hozzáadása Azure Analysis Services-kiszolgálóhoz | Microsoft Docs
 description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ismerteti az Azure Analysis Servicesben.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9a9721b05fbd478d108f06c36017ee444f721d28
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61026281"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298676"
 ---
-# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag: Mintamodell hozzáadása a portálról
+# <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 
 Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modelladatbázist adhat hozzá kiszolgálójához. A mintamodell az Adventure Works Internet Sales (1200) minta-adatmodell kiegészített változata. A mintamodellek a modellkezelés, az eszközökhöz és ügyfélalkalmazásokhoz való kapcsolódás és a modelladatok lekérdezése tesztelésekor hasznosak. Ez az oktatóanyag az [Azure Portalt](https://portal.azure.com) és az [SQL Server Management Studiót](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) használja a következőkhöz: 
 
@@ -25,7 +24,7 @@ Az oktatóanyag elvégzése során egyszerű táblázatos Adventure Works-modell
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
@@ -69,11 +68,11 @@ Egy modell a következő lépések alapján törölhető egy kiszolgálóról az
 
     ![Mintaadatbázis törlése](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Ebben az oktatóanyagban azt tanulhatta meg, hogyan adhat hozzá egyszerű mintamodellt kiszolgálójához. Most, hogy már rendelkezik modelladatbázissal, csatlakozhat hozzá az SQL Server Management Studióból, és hozzáadhat felhasználói szerepköröket. További tudnivalókat talál a következő oktatóanyagban.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása](analysis-services-database-users.md)
+> [Oktatóanyag: A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása](analysis-services-database-users.md)
 
 

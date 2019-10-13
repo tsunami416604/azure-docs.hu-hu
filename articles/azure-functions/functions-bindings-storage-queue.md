@@ -5,18 +5,18 @@ services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
-keywords: az Azure functions, függvények, eseményfeldolgozás, dinamikus számítás, kiszolgáló nélküli architektúra
+keywords: Azure functions, functions, Event Processing, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ff0490a7854d0398df925fc56f766470ca9d1618
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c7f143f5d026b2fa6fa34c75d3616b05c3e97092
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973455"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294292"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure üzenetsor-tárolási kötések Azure Functionshoz
 
@@ -24,17 +24,17 @@ Ez a cikk azt ismerteti, hogyan használható az Azure üzenetsor-tárolási kö
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Csomagok – 1.x függvények
+## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
 
-A várólista-tárolási kötések a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-adattárban.
+A várólista-tárolási kötések a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>Csomagok – 2.x függvények
+## <a name="packages---functions-2x"></a>Csomagok – 2. x függvények
 
-A várólista-tárolási kötések a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag 3. x verziójában érhetők el. A csomag forráskódja a [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-adattárban.
+A várólista-tárolási kötések a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag 3. x verziójában érhetők el. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -45,17 +45,17 @@ A függvények *Base64* kódolású karakterláncot várnak. A kódolási típus
 
 A várólista-trigger használatával elindíthat egy függvényt, ha új elem érkezik egy várólistán. A várólista-üzenet bemenetként van megadva a függvénynek.
 
-## <a name="trigger---example"></a>Az eseményindító – példa
+## <a name="trigger---example"></a>Trigger – példa
 
-Tekintse meg az adott nyelvű példa:
+Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#trigger---c-example)
-* [C# script (.csx)](#trigger---c-script-example)
+* [C#parancsfájl (. CSX)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 * [Python](#trigger---python-example)
 
-### <a name="trigger---c-example"></a>Eseményindító - C#-példa
+### <a name="trigger---c-example"></a>Trigger – C# példa
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely lekérdezi a `myqueue-items` várólistát, és minden alkalommal beírja a naplót, amikor a várólista-elemek feldolgozása történik.
 
@@ -72,11 +72,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Eseményindító - C#-szkript példa
+### <a name="trigger---c-script-example"></a>Trigger – C# parancsfájl-példa
 
 Az alábbi példa egy üzenetsor-trigger kötést mutat be egy *function. JSON* fájlban és [ C# a kötést használó script (. CSX)](functions-reference-csharp.md) kódban. A függvény lekérdezi a `myqueue-items` várólistát, és minden alkalommal beírja a naplót, amikor a várólista-elemek feldolgozása történik.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -93,9 +93,9 @@ Az alábbi példa egy üzenetsor-trigger kötést mutat be egy *function. JSON* 
 }
 ```
 
-A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-Íme a C#-szkriptkódot:
+A C# szkript kódja:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -127,11 +127,11 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 A [használat](#trigger---usage) szakasz a `myQueueItem` nevet ismerteti, amelyet a function. json fájl `name` tulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#trigger---message-metadata) a többi megjelenített változót ismerteti.
 
-### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
+### <a name="trigger---javascript-example"></a>Trigger – JavaScript-példa
 
 Az alábbi példa egy várólista-trigger kötését mutatja be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény lekérdezi a `myqueue-items` várólistát, és minden alkalommal beírja a naplót, amikor a várólista-elemek feldolgozása történik.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -148,12 +148,12 @@ Az alábbi példa egy várólista-trigger kötését mutatja be egy *function. J
 }
 ```
 
-A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#trigger---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 > [!NOTE]
 > A name paraméter a (z) `context.bindings.<name>` értéket tükrözi a JavaScript-kódban, amely tartalmazza a várólista-elemek hasznos adatait. Ezt a hasznos adatot a függvény második paramétereként is átadja.
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -172,7 +172,7 @@ module.exports = async function (context, message) {
 
 A [használat](#trigger---usage) szakasz a `myQueueItem` nevet ismerteti, amelyet a function. json fájl `name` tulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#trigger---message-metadata) a többi megjelenített változót ismerteti.
 
-### <a name="trigger---java-example"></a>Eseményindító - Java-példában
+### <a name="trigger---java-example"></a>Trigger – Java-példa
 
 A következő Java-példa egy Storage üzenetsor-kiváltó függvényt mutat be, amely naplózza a `myqueuename` várólistára helyezett aktivált üzenetet.
 
@@ -236,11 +236,11 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Eseményindító - attribútumok
+## <a name="trigger---attributes"></a>Trigger – attribútumok
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat az üzenetsor-trigger konfigurálásához:
 
-* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
+* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
   Az attribútum konstruktora a figyelni kívánt várólista nevét adja meg, ahogy az az alábbi példában is látható:
 
@@ -266,11 +266,11 @@ Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja
   }
   ```
 
-  Egy teljes példa: [eseményindító – C#-példa](#trigger---c-example).
+  A teljes példa: [trigger- C# example](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Egy másik módszert biztosít a használni kívánt Storage-fiók megadására. A konstruktor egy olyan Alkalmazásbeállítás nevét veszi fel, amely egy tárolási kapcsolatot tartalmazó karakterláncot tartalmaz. Az attribútum a paramétert, a metódus vagy az osztály szintjén alkalmazhatók. Az alábbi példa bemutatja az osztály és metódust:
+  Egy másik módszert biztosít a használni kívánt Storage-fiók megadására. A konstruktor egy olyan Alkalmazásbeállítás nevét veszi fel, amely egy tárolási kapcsolatot tartalmazó karakterláncot tartalmaz. Az attribútumot a paraméter, a metódus vagy az osztály szintjén lehet alkalmazni. Az alábbi példa az osztály szintjét és a metódus szintjét mutatja be:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -286,27 +286,27 @@ Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja
 
 A használandó Storage-fiók a következő sorrendben van meghatározva:
 
-* A `QueueTrigger` attribútum `Connection` tulajdonság.
-* A `StorageAccount` a paramétert, amelyek azonos, alkalmazott attribútum a `QueueTrigger` attribútum.
-* A `StorageAccount` attribútum a függvény a alkalmazni.
-* A `StorageAccount` attribútum az osztály a alkalmazni.
+* A `QueueTrigger` attribútum `Connection` tulajdonsága.
+* A `QueueTrigger` attribútummal megegyező paraméterre alkalmazott `StorageAccount` attribútum.
+* A függvényre alkalmazott `StorageAccount` attribútum.
+* Az osztályra alkalmazott `StorageAccount` attribútum.
 * A "AzureWebJobsStorage" alkalmazás beállításai.
 
-## <a name="trigger---configuration"></a>Eseményindító - konfiguráció
+## <a name="trigger---configuration"></a>Trigger – konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `QueueTrigger` attribútum.
+A következő táblázat a *function. JSON* fájlban és a `QueueTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a| Meg kell `queueTrigger`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction**| n/a | Csak a *function. JSON* fájlban. Meg kell `in`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
-|**queueName** | **queueName**| A lekérdezni kívánt várólista neve. |
-|**kapcsolat** | **kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a `connection` értéket adja meg a "MyStorage" értékre, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection` értéket, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja az `AzureWebJobsStorage` nevű alkalmazás-beállításban.|
+|**type** | –| @No__t-0 értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction**| – | Csak a *function. JSON* fájlban. @No__t-0 értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | – |Annak a változónak a neve, amely a függvény kódjában található üzenetsor-elemek tartalmát tartalmazza.  |
+|**queueName** | **QueueName**| A lekérdezni kívánt várólista neve. |
+|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a `connection` értéket adja meg a "MyStorage" értékre, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection` értéket, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja az `AzureWebJobsStorage` nevű alkalmazás-beállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="trigger---usage"></a>Eseményindító - használat
+## <a name="trigger---usage"></a>Trigger – használat
 
 A C# ( C# z) és a (z) parancsfájlban a (z) `string paramName` metódussal férhet hozzá az üzenet adataihoz. A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. A következő típusokhoz köthető:
 
@@ -319,11 +319,11 @@ Ha `CloudQueueMessage` értékre próbál kötni, és hibaüzenetet kap, ellenő
 
 A JavaScriptben használja a `context.bindings.<name>` lehetőséget a várólista-elem hasznos adatainak eléréséhez. Ha a hasznos adat JSON, deszerializálja egy objektumba.
 
-## <a name="trigger---message-metadata"></a>Eseményindító - üzenet metaadatok
+## <a name="trigger---message-metadata"></a>Trigger – üzenet metaadatainak
 
-A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a kötési kifejezésekben való használata más kötések részeként vagy a kód paramétereiben használható. Ezek a [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tulajdonságai.
+A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tulajdonságai.
 
-|Tulajdonság|Típus|Leírás|
+|Tulajdonság|Type (Típus)|Leírás|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor üzenete sztringként van feldolgozva, `QueueTrigger` értéke megegyezik a *function. JSON*fájlban található `name` tulajdonság által megnevezett változóval.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|
@@ -333,7 +333,7 @@ A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-exp
 |`NextVisibleTime`|`DateTimeOffset`|Az az időpont, amikor a következő üzenet látható lesz.|
 |`PopReceipt`|`string`|Az üzenet pop-nyugtája.|
 
-## <a name="trigger---poison-messages"></a>Eseményindító - ártalmas üzenetek
+## <a name="trigger---poison-messages"></a>Trigger – Megmérgező üzenetek
 
 Ha a várólista-aktiválási függvény meghiúsul, Azure Functions újrapróbálkozik a függvényt egy adott üzenetsor-üzenetnél akár ötször is, az első próbálkozást is beleértve. Ha mind az öt kísérlet meghiúsul, a functions Runtime egy *&lt;originalqueuename >-Poison*nevű várólistába helyez egy üzenetet. Írhat egy függvényt, amely az üzenetek törlését végzi a méreg-várólistából úgy, hogy naplózza azokat, vagy értesítést küld, amely manuális beavatkozást igényel.
 
@@ -351,25 +351,25 @@ A köteg mérete és az új köteg beolvasásának küszöbértéke a [Host. JSO
 
 A várólista-trigger automatikusan megakadályozza, hogy a függvény többször dolgozza fel a várólista-üzeneteket; a függvények nem írhatók idempotens.
 
-## <a name="trigger---hostjson-properties"></a>Eseményindító - host.json tulajdonságai
+## <a name="trigger---hostjson-properties"></a>Trigger-Host. JSON tulajdonságok
 
 A [Host. JSON](functions-host-json.md#queues) fájl olyan beállításokat tartalmaz, amelyek vezérlik a várólista-trigger működését. A rendelkezésre álló beállításokkal kapcsolatos részletekért tekintse meg a [Host. JSON-beállítások](#hostjson-settings) szakaszt.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Kimenet
 
 Az Azure üzenetsor-tároló kimeneti kötésével üzeneteket írhat a várólistákba.
 
-## <a name="output---example"></a>Kimenete – példa
+## <a name="output---example"></a>Kimenet – példa
 
-Tekintse meg az adott nyelvű példa:
+Tekintse meg a nyelvspecifikus példát:
 
 * [C#](#output---c-example)
-* [C# script (.csx)](#output---c-script-example)
+* [C#parancsfájl (. CSX)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 * [Python](#output---python-example)
 
-### <a name="output---c-example"></a>Kimenet – C#-példa
+### <a name="output---c-example"></a>Kimenet – C# példa
 
 Az alábbi példa egy [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely létrehoz egy üzenetsor-üzenetet minden fogadott http-kérelemhez.
 
@@ -387,11 +387,11 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Kimenet – C#-szkript példa
+### <a name="output---c-script-example"></a>Kimenet – C# parancsfájl – példa
 
 Az alábbi példa egy http-trigger kötést mutat be egy *function. JSON* fájlban és [ C# parancsfájlban (. CSX)](functions-reference-csharp.md) , amely a kötést használja. A függvény egy **CustomQueueMessage** objektum-adattartalommal rendelkező üzenetsor-objektumot hoz létre minden fogadott http-kérelemhez.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -418,7 +418,7 @@ Az alábbi példa egy http-trigger kötést mutat be egy *function. JSON* fájlb
 }
 ```
 
-A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
 Az alábbi C# parancsfájl-kód létrehoz egy üzenetsor-üzenetet:
 
@@ -452,7 +452,7 @@ public static void Run(
 
 Az alábbi példa egy HTTP-trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény minden fogadott HTTP-kérelemhez létrehoz egy üzenetsor-tételt.
 
-Íme a *function.json* fájlt:
+Itt látható a *function. JSON* fájl:
 
 ```json
 {
@@ -479,9 +479,9 @@ Az alábbi példa egy HTTP-trigger kötést mutat be egy *function. JSON* fájlb
 }
 ```
 
-A [konfigurációs](#output---configuration) szakasz mutatja be ezeket a tulajdonságokat.
+A [konfigurációs](#output---configuration) szakasz ezeket a tulajdonságokat ismerteti.
 
-A következő JavaScript-kódot:
+Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, input) {
@@ -498,7 +498,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Kimenet – Java-példában
+### <a name="output---java-example"></a>Kimenet – Java-példa
 
  Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre a HTTP-kérések indításakor.
 
@@ -514,7 +514,7 @@ module.exports = function(context) {
  }
 ```
 
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzéseket azon paramétereknél, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzéseket azon paramétereknél, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméter típusának `OutputBinding<T>` értékűnek kell lennie, ahol a T egy POJO natív Java-típusa.
 
 ### <a name="output---python-example"></a>Kimenet – Python-példa
 
@@ -605,21 +605,21 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Egy teljes példa: [kimenet – C#-példa](#output---c-example).
+Teljes példa: [kimenet – C# példa](#output---c-example).
 
 Az `StorageAccount` attribútummal megadhatja a Storage-fiókot osztály, metódus vagy paraméter szintjén. További információ: trigger-attributes.
 
-## <a name="output---configuration"></a>Kimenete – konfiguráció
+## <a name="output---configuration"></a>Kimenet – konfiguráció
 
-A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt, és a `Queue` attribútum.
+A következő táblázat a *function. JSON* fájlban és a `Queue` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|Function.JSON tulajdonság | Attribútum tulajdonsága |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** | n/a | Meg kell `queue`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon.|
-|**direction** | n/a | Meg kell `out`. Ez a tulajdonság beállítása automatikusan történik, ha az eseményindítót fog létrehozni az Azure Portalon. |
-|**name** | n/a | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. A függvény visszaadott értékére való hivatkozáshoz állítsa a `$return` értéket.|
-|**queueName** |**queueName** | A várólista neve. |
-|**kapcsolat** | **kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a `connection` értéket adja meg a "MyStorage" értékre, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection` értéket, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja az `AzureWebJobsStorage` nevű alkalmazás-beállításban.|
+|**type** | – | @No__t-0 értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**direction** | – | @No__t-0 értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | – | Annak a változónak a neve, amely a függvény kódjában a várólistát jelképezi. A függvény visszaadott értékére való hivatkozáshoz állítsa a `$return` értéket.|
+|**queueName** |**QueueName** | A várólista neve. |
+|**kapcsolat** | **Kapcsolat** |Egy olyan Alkalmazásbeállítás neve, amely a kötéshez használandó tárolási kapcsolati karakterláncot tartalmazza. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor itt csak a nevet adja meg. Ha például a `connection` értéket adja meg a "MyStorage" értékre, a functions futtatókörnyezet egy "AzureWebJobsMyStorage" nevű alkalmazás-beállítást keres. Ha üresen hagyja a `connection` értéket, a functions futtatókörnyezet az alapértelmezett tárolási kapcsolatok karakterláncát használja az `AzureWebJobsStorage` nevű alkalmazás-beállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -642,22 +642,22 @@ A C# és C# a parancsfájlban több üzenetsor-üzenetet is írhat a következő
 A JavaScript-függvények területen a kimeneti üzenetsor üzenetének eléréséhez használja a `context.bindings.<name>` értéket. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
 
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és a visszatérési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés |  Hivatkozás |
+| Kötés |  Leírások |
 |---|---|
-| Várólista | [Üzenetsor-hibakódok](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
-| Blob, Table, Queue | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Table, Queue |  [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Queue | [Üzenetsor-hibakódok](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
+| BLOB, tábla, üzenetsor | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB, tábla, üzenetsor |  [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>Host.JSON-beállítások
+## <a name="hostjson-settings"></a>gazdagép. JSON-beállítások
 
-Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshez verziójában elérhető 2.x. Az alábbi példa host.json-fájl csak a verzió 2.x beállításait tartalmazza ezt a kötést. További információ a globális konfigurációs beállításoknak verzióban 2.x verzióját, lásd: [verzióját az Azure Functions – host.json referencia 2.x](functions-host-json.md).
+Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat ismerteti a 2. x verzióban. Az alábbi Host. JSON fájl csak a kötés 2. x verziójának beállításait tartalmazza. A 2. x verziójú globális konfigurációs beállításokkal kapcsolatos további információkért lásd: [Host. JSON-dokumentáció Azure functions 2. x verzióhoz](functions-host-json.md).
 
 > [!NOTE]
-> Az a funkciók host.json odkaz 1.x, lásd: [Azure Functions – host.json referencia 1.x](functions-host-json-v1.md).
+> Az 1. x függvények Host. JSON fájljának hivatkozását lásd: [Host. JSON-dokumentáció Azure functions 1. x-hez](functions-host-json-v1.md).
 
 ```json
 {
@@ -683,9 +683,9 @@ Ez a szakasz ismerteti a globális konfigurációs beállításoknak a kötéshe
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.|
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+* [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)
 
 <!--
 > [!div class="nextstepaction"]

@@ -1,5 +1,5 @@
 ---
-title: Minta – Egyesült Királyság hivatalos és egyesült királysági NHS-tervezetei – vezérlési leképezés
+title: Egyesült Királyság hivatalos & Egyesült Királysági NHS Blueprint Samples – vezérlés leképezése
 description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 9001e752c9b0f79d7c688e0b13fd7133004ff4ad
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 72b7b370158f228d725e9c6970dfcffb09e7986b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248790"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297115"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 

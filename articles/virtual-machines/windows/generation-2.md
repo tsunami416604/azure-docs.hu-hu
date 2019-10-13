@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: e4572ac6041caffc6c77d74dcbb2cf52f9f0aed0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 314056b6e55838d32c70d81570cdeaf7a84b6671
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173782"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300634"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>2\. generációs virtuális gépek (előzetes verzió) támogatása az Azure-ban
 
@@ -42,7 +42,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [Dsv2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) és [Dsv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
-* [GS-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [HB sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
 * [HC sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
@@ -78,22 +78,22 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1\. generációs, 2. generációs funkciók
 
-| Funkció | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |---------|--------------|--------------|
 | Rendszerindítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
-| A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
+| Virtuálisgép-méretek         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>1\. generációs, 2. generációs képességek
 
-| Képesség | 1\. generáció | 2\. generáció |
+| Szolgáltatás | 1\. generáció | 2\. generáció |
 |------------|--------------|--------------|
 | OPERÁCIÓSRENDSZER-lemez > 2 TB                    | x                | :heavy_check_mark: |
 | Egyéni lemez/lemezkép/swap operációs rendszer         | :heavy_check_mark: | :heavy_check_mark: |
 | Virtuálisgép-méretezési csoport támogatása | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | x                |
 | Biztonsági mentés/visszaállítás                    | :heavy_check_mark: | :heavy_check_mark: |
-| Megosztott lemezkép-katalógus              | :heavy_check_mark: | x                |
+| Közös Képtár              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | x                |
 
 ## <a name="creating-a-generation-2-vm"></a>2\. generációs virtuális gép létrehozása
@@ -111,7 +111,7 @@ Jelenleg a következő SKU-támogatás az 1. és a 2. generációs rendszerképe
 * Windows Server 2012
 * Windows Server 2012 R2
 * Windows Server 2016
-* A Windows Server 2019
+* Windows Server 2019
 
 Ha a Windows Server SKU-t ajánlatként választja, a **speciális** lapon lehetőség van egy **Gen 1** (BIOS) vagy **Gen 2** (UEFI) virtuális gép létrehozására. Ha a **2**. generációs lehetőséget választja, győződjön meg arról, hogy a 2. [generációs virtuális gépeknél](#generation-2-vm-sizes)az **alapok** lapon kiválasztott virtuálisgép-méret támogatott.
 
@@ -121,7 +121,7 @@ Ha a Windows Server SKU-t ajánlatként választja, a **speciális** lapon lehet
 
 A PowerShell használatával is létrehozhatja a virtuális gépet úgy, hogy közvetlenül az 1. generációs vagy 2. generációs SKU-ra hivatkozik.
 
-Például a következő PowerShell-parancsmaggal kérheti le az `WindowsServer` ajánlatban szereplő SKU-ket.
+Például a következő PowerShell-parancsmaggal kérheti le a `WindowsServer` ajánlatban található SKU-ket.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
@@ -140,7 +140,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 A 2. generációs virtuális gépeket ugyanúgy hozhatja létre felügyelt lemezképből vagy felügyelt lemezről, mint az 1. generációs virtuális gépeket.
 
-### <a name="virtual-machine-scale-sets"></a>virtuálisgép-méretezési csoportok
+### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok használatával is létrehozhatja. Az Azure CLI-ben a 2. generációs virtuális gépek létrehozásához használja az Azure-méretezési csoportokat.
 
@@ -192,7 +192,7 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **Áttelepíthetek egy virtuális gépet az 1. generációról a 2. generációra?**  
     Nem, a létrehozás után nem módosítható a virtuális gép generációja. Ha váltania kell a virtuálisgép-generációk között, hozzon létre egy másik generációs új virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 

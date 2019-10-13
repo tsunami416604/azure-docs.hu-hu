@@ -2,18 +2,17 @@
 title: Azure Analysis Services kezelése a PowerShell használatával | Microsoft Docs
 description: Azure Analysis Services kezelése a PowerShell-lel.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: reference
 ms.date: 07/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 38ce44f486616e4ab94e8332884005a187e31008
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bfe1bfc2828347e34fa92564c26d005998e14ece
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932417"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294736"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Azure Analysis Services kezelése a PowerShell-lel
 
@@ -40,22 +39,22 @@ Azure Analysis Services adatbázis-műveletek ugyanazt a SqlServer modult haszn�
 
 A SqlServer modul a feladat-specifikus adatbázis-kezelési parancsmagokat, valamint az általános célú meghívó-ASCmd parancsmagot is tartalmazza, amely a táblázatos modell parancsnyelv (TMSL) lekérdezését vagy parancsfájlját fogadja el. Azure Analysis Services a következő parancsmagok támogatottak a SqlServer modulban.
 
-Modul telepítése – [SQLServer](https://www.powershellgallery.com/packages/SqlServer)   
+Modul telepítése- [SqlServer](https://www.powershellgallery.com/packages/SqlServer)   
 Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Támogatott parancsmagok
 
-|A parancsmag|Leírás|
+|Parancsmag|Leírás|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
-|[Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  
+|[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
-|[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása|  
-|[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
-|[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Tábla feldolgozása|  
-|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
-|[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Analysis Services adatbázis visszaállítása.| 
+|[Meghívás – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
+|[Meghívás – ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|Adatbázis feldolgozása|  
+|[Meghívás – ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|Partíció feldolgozása.| 
+|[Meghívás – ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|Tábla feldolgozása|  
+|[Egyesítés – partíció](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|Partíció egyesítése.|  
+|[Visszaállítás – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|Analysis Services adatbázis visszaállítása.| 
   
 
 ## <a name="related-information"></a>Kapcsolódó információk

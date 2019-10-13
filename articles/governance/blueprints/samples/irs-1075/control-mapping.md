@@ -1,17 +1,17 @@
 ---
-title: Minta – IRS 1075 terv – vezérlés leképezése
+title: IRS 1075 terv minta – vezérlés leképezése
 description: Az IRS 1075 Blueprint minta leképezésének vezérlése. Mindegyik vezérlő egy vagy több Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 627e4e596bea650424eee510e9554f49eeb72a30
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f204cf86b0415520160b11e97c0994a2f7891964
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248430"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297734"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075 tervrajzi minta leképezésének vezérlése
 

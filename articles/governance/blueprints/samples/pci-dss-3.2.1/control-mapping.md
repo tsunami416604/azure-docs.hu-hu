@@ -1,5 +1,5 @@
 ---
-title: Minta-PCI-DSS v 3.2.1 terv – vezérlés leképezése
+title: PCI-DSS v 3.2.1 terv minta – vezérlés leképezése
 description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8c8dbc8534720189c40624cfda97ce09a612e453
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981489"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297198"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 
@@ -34,8 +34,8 @@ Ez a terv segítséget nyújt a hálózatok kezelésében és szabályozásában
 
 Ez a terv segít kikényszeríteni a szabályzatot a titkosítási vezérlők használatával [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek bizonyos titkosítási vezérlőket kényszerítenek, és a gyenge titkosítási beállítások naplózási funkcióit használják. Annak megismerése, hogy az Azure-erőforrások nem optimális titkosítási konfigurációval rendelkezzenek-e, segítheti a javítási műveleteket, hogy az erőforrások konfigurálása az adatvédelmi szabályzatnak megfelelően történjen. Pontosabban, az ehhez a tervhez hozzárendelt szabályzatok transzparens adattitkosítást igényelnek az SQL-adatbázisokban; a Storage-fiókok és az Automation-fiókok változóinak naplózása. Léteznek olyan szabályzatok is, amelyek a Storage-fiókok, a Function apps, a WebApp, a API Apps és a Redis Cache nem biztonságos kapcsolatait naplózzák, és naplózzák a titkosítatlan Service Fabric kommunikációt.
 
-- Alkalmazás függvény csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
-- Webes alkalmazás csak elérhetőnek kell lennie HTTPS-kapcsolaton keresztül
+- függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
+- A webalkalmazás csak HTTPS protokollon keresztül érhető el
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
 - Az SQL-adatbázisokon engedélyezni kell transzparens adattitkosítás
 - A lemezes titkosítást a virtuális gépeken kell alkalmazni
@@ -100,12 +100,12 @@ Az Azure szerepköralapú hozzáférés-vezérlést (RBAC) valósít meg, amelly
 
 Ez a terv segít az erős jelszavak betartatásában olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem érvényesítő Windows-virtuális gépeket naplózzák. A jelszó erősségét sértő virtuális gépek ismerete segít az összes virtuálisgép-felhasználói fiók jelszavának megfelelő javítási műveletek elvégzésében.
 
-- \[Preview @ no__t-1: A maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
-- \[Preview @ no__t-1: Követelmények telepítése a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózásához 70 nap
-- \[Preview @ no__t-1: A jelszó minimális hosszát 14 karakterre nem korlátozó Windows-alapú virtuális gépek naplózása
-- \[Preview @ no__t-1: Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
-- \[Preview @ no__t-1: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-- \[Preview @ no__t-1: Az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózására vonatkozó követelmények telepítése
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyeknek nincs maximális jelszava (70 nap)
+- \[Preview @ no__t-1: követelmények központi telepítése a Windows rendszerű virtuális gépek naplózására, amelyeknek nincs maximális jelszava (70 nap)
+- \[Preview @ no__t-1: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre
+- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakterre.
+- \[Preview @ no__t-1: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
+- \[Preview @ no__t-1: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát.
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 és 10.5.4 naplózási generáció
 
@@ -124,9 +124,9 @@ A diagnosztikai naplók betekintést nyújtanak az Azure-erőforrásokon belül 
 Ez a terv segít a hálózat kezelésében és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek naplózzák az elfogadható hálózati telephelyeket és a környezet számára engedélyezett jóváhagyott vállalati termékeket. Ezek az egyes vállalatok által testreszabhatók az egyes szabályzatok házirend-paraméterei között.
 
 - Engedélyezett helyek
-- Erőforráscsoportok számára engedélyezett helyek
+- Erőforráscsoportok engedélyezett helyei
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a PCI-DSS v 3.2.1 terv vezérlési leképezését, a következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 

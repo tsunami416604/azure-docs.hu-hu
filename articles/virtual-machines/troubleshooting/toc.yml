@@ -65,8 +65,6 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Gyakori hibaüzenetek
   href: error-messages.md
-- name: Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
-  href: collect-data-microsoft-azure-automation-case.md
 - name: Virtuális gépek teljesítményproblémái
   href: performance-diagnostics.md
 - name: 'Általános, teljesítménnyel kapcsolatos hibaelhárítás Linux vagy Windows rendszeren futó Azure virtuális gépekhez'

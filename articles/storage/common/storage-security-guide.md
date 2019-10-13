@@ -9,18 +9,18 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986554"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299618"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatója
 
 Az Azure Storage egy átfogó biztonsági képességeket kínál, amelyek lehetővé teszik a fejlesztők számára, hogy biztonságos alkalmazásokat hozzanak létre:
 
-- Az Azure Storage-ba írt összes adat (beleértve a metaadatokat is) [Storage Service encryption (SSE)](storage-service-encryption.md)használatával automatikusan titkosítva lesz. További információ: az [Azure Blobok, fájlok, táblák és Queue Storage alapértelmezett titkosításának](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)bejelentése.
+- Az Azure Storage-ba írt összes adat (beleértve a metaadatokat is) [Storage Service encryption (SSE)](storage-service-encryption.md)használatával automatikusan titkosítva lesz. További információ: az [Azure Blobok, fájlok, táblák és Queue Storage alapértelmezett titkosításának bejelentése](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Az Azure Storage-ban a Azure Active Directory (Azure AD) és a szerepköralapú Access Control (RBAC) is támogatott az erőforrás-kezelési műveletek és az adatműveletek esetében, az alábbiak szerint:   
     - A RBAC szerepköröket hozzárendelheti a rendszerbiztonsági tagekhez, és az Azure AD használatával engedélyezheti az erőforrás-kezelési műveleteket, például a kulcskezelő műveleteket.
     - Az Azure AD-integráció a blob-és üzenetsor-adatműveletek esetében támogatott. RBAC-szerepköröket rendelhet hozzá egy előfizetéshez, egy erőforráscsoporthoz, egy Storage-fiókhoz vagy egy adott tárolóhoz vagy várólistához egy rendszerbiztonsági tag vagy egy felügyelt identitás számára az Azure-erőforrások számára. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).   
@@ -35,7 +35,7 @@ A cikk a jelen cikkben tárgyalt témaköröket tartalmazza:
 * [Felügyeleti sík biztonsága](#management-plane-security) – a Storage-fiók biztonságossá tétele
 
   A felügyeleti sík a Storage-fiók kezeléséhez használt erőforrásokból áll. Ez a szakasz ismerteti a Azure Resource Manager üzembe helyezési modellt, valamint a szerepköralapú Access Control (RBAC) használatát a Storage-fiókokhoz való hozzáférés szabályozásához. Emellett a Storage-fiók kulcsainak kezelésével és azok újralétrehozásával foglalkozik.
-* [](#data-plane-security) Adatközpontok biztonsága – az adataihoz való hozzáférés biztosítása
+* [Adatközpontok biztonsága](#data-plane-security) – az adataihoz való hozzáférés biztosítása
 
   Ebben a szakaszban bemutatjuk, hogyan lehet hozzáférést engedélyezni a Storage-fiókban lévő tényleges adatobjektumokhoz, például blobokhoz, fájlokhoz, várólistákhoz és táblákhoz, közös hozzáférési aláírások és tárolt hozzáférési szabályzatok használatával. A szolgáltatási szintű SAS és a fiók szintű SAS is kiterjed. Azt is megtudhatja, hogyan korlátozhatja a hozzáférést egy adott IP-címhez (vagy IP-tartományhoz), hogyan korlátozhatja a HTTPS-hez használt protokollt, és hogyan vonhatja vissza a közös hozzáférésű aláírásokat anélkül, hogy a lejárat előtt kellene várnia.
 * [Titkosítás az átvitel során](#encryption-in-transit)
@@ -43,7 +43,7 @@ A cikk a jelen cikkben tárgyalt témaköröket tartalmazza:
   Ebből a szakaszból megtudhatja, hogyan védheti meg az adatok védelmét, ha az Azure Storage-ba vagy onnan helyezi át. A HTTPS javasolt használatát és az SMB 3,0 Azure-fájlmegosztás által használt titkosítását is tárgyaljuk. Emellett megtekintheti az ügyféloldali titkosítást is, amely lehetővé teszi az adattitkosítást, mielőtt a rendszer átmásolja az ügyfél-alkalmazásba a tárolóba, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 * [Titkosítás inaktív állapotban](#encryption-at-rest)
 
-  Az új és a meglévő Storage-fiókok számára automatikusan elérhetővé vált Storage Service Encryption (SSE). Azt is megvizsgáljuk, hogyan használhatók a Azure Disk Encryption és megismerhetik a lemez titkosításának alapvető különbségeit és eseteit, valamint az SSE-t és az ügyféloldali titkosítást. Röviden megvizsgáljuk az USA-beli FIPS-megfelelőséget Kormányzati számítógépek.
+  Az új és a meglévő Storage-fiókok számára automatikusan elérhetővé vált Storage Service Encryption (SSE). Azt is megvizsgáljuk, hogyan használhatók a Azure Disk Encryption és megismerhetik a lemez titkosításának alapvető különbségeit és eseteit, valamint az SSE-t és az ügyféloldali titkosítást. Röviden megvizsgáljuk az Egyesült államokbeli kormányzati számítógépek FIPS-megfelelőségét.
 * Az Azure Storage hozzáférésének naplózása [Storage Analytics](#storage-analytics) használatával
 
   Ez a szakasz azt ismerteti, hogyan lehet információt megkeresni a Storage Analytics naplóiban egy kérelemhez. Tekintse meg a valódi Storage Analytics-naplófájlok részletes ismertetését, és Ismerje meg, hogyan állapítható meg, hogy a rendszer a Storage-fiók kulcsával, közös hozzáférésű aláírással vagy névtelenül, illetve sikeres vagy sikertelen kéréssel kezdeményezett-e kérelmet.
@@ -86,7 +86,7 @@ Az alábbi fő pontok szükségesek az Azure Storage-fiók felügyeleti művelet
 * Ahhoz, hogy szerepkört rendeljen hozzá, a felhasználónak be kell állítania a Azure Active Directory.
 * Létrehozhat egy jelentést, amely a PowerShell vagy az Azure CLI használatával/kitől és milyen hatókörön keresztül engedélyezte vagy visszavonta a hozzáférést.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 * [Azure Active Directory szerepköralapú hozzáférés-vezérlése](../../role-based-access-control/role-assignments-portal.md)
 
   Ez a cikk az Azure Active Directory szerepkörön alapuló hozzáférés-vezérlését és annak működési módját ismerteti.
@@ -102,9 +102,7 @@ Az alábbi fő pontok szükségesek az Azure Storage-fiók felügyeleti művelet
 * [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Ez az API-hivatkozás azokat a API-kat ismerteti, amelyek segítségével a Storage-fiók programozott módon kezelhető.
-* [A Resource Manager hitelesítési API használata az előfizetések eléréséhez](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  Ez a cikk bemutatja, hogyan végezhet hitelesítést a Resource Manager API-k használatával.
 * [Szerepköralapú hozzáférés-vezérlés az Ignite-tól a Microsoft Azure számára](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Ez a hivatkozás a Channel 9 2015-ös MS Ignite-konferencia videójára mutat. Ebben a részben arról beszélnek, milyen hozzáférés-kezelési és jelentési képességeket nyújt az Azure, és bemutatják az Azure-előfizetés hozzáférés-biztosításának legjobb gyakorlatait az Azure Active Directory használatával.
@@ -146,7 +144,7 @@ A Azure Key Vault használatának egy másik előnye, hogy a kulcsok elérését
 > [!NOTE]
 > A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken és a 2. kulcsban az 1. kulcsot használja másokban, nem fogja tudni elforgatni a kulcsokat anélkül, hogy egy alkalmazás elveszíti a hozzáférést.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 
 * [Tárfiók beállításainak kezelése az Azure Portalon](storage-account-manage.md)
 * [Az Azure Storage erőforrás-szolgáltató REST API-ja – referencia](https://msdn.microsoft.com/library/mt163683.aspx)
@@ -188,7 +186,7 @@ Azt is megadhatja, hogy a SAS használatával létrehozott kérések egy adott I
 #### <a name="definition-of-a-shared-access-signature"></a>Közös hozzáférésű aláírás definíciója
 A közös hozzáférésű aláírás a lekérdezési paraméterek egy halmaza, amely az erőforrásra mutató URL-címhez van hozzáfűzve
 
-amely információt nyújt a hozzáférés engedélyezett állapotáról, valamint azt az időtartamot, ameddig a hozzáférés engedélyezett. Példa: Ez az URI öt percig olvasási hozzáférést biztosít egy blobhoz. Vegye figyelembe, hogy SAS-lekérdezési paramétereknek URL-kódolással kell rendelkezniük, például:% 3A a kettősponthoz (:) vagy a (z)% 20 egy szóközzel.
+amely információt nyújt a hozzáférés engedélyezett állapotáról, valamint azt az időtartamot, ameddig a hozzáférés engedélyezett. Példa: Ez az URI öt percig olvasási hozzáférést biztosít egy blobhoz. Vegye figyelembe, hogy SAS-lekérdezési paramétereknek URL-kódolással kell rendelkezniük, például:% 3A a kettősponthoz (:) vagy a (z) %20 egy szóközzel.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -228,18 +226,18 @@ Ha egy tárolt hozzáférési szabályzatból származtatott SAS-t használ, akk
 
 Mivel a tárolt hozzáférési házirendből származtatott SAS-t használva azonnal visszavonhatja az SAS-t, az ajánlott eljárás, hogy mindig a tárolt hozzáférési szabályzatokat használja, ha lehetséges.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 A megosztott hozzáférési aláírások és a tárolt hozzáférési szabályzatok használatával kapcsolatos részletesebb információkért tekintse meg a következő cikkeket:
 
 * Ezek a hivatkozási cikkek.
 
-  * [Service SAS](https://msdn.microsoft.com/library/dn140256.aspx)
+  * [Szolgáltatás SAS](https://msdn.microsoft.com/library/dn140256.aspx)
 
     Ez a cikk példákat mutat be a Blobokkal, üzenetsor-üzenetekkel, táblázat-tartományokkal és fájlokkal rendelkező szolgáltatási szintű SAS használatára.
   * [Szolgáltatás SAS-építése](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Fiók SAS létrehozása](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Authentication
+* Hitelesítés
 
   * [Hitelesítés az Azure Storage-szolgáltatásokhoz](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Közös hozzáférési aláírások Első lépések oktatóanyag
@@ -255,14 +253,14 @@ Biztonságos kommunikációs csatorna esetén mindig HTTPS protokollt kell haszn
 A HTTPS használatát akkor kényszerítheti, ha a REST API-k meghívásával fér hozzá a Storage-fiókokban lévő objektumokhoz a Storage-fiókhoz [szükséges biztonságos átvitel](../storage-require-secure-transfer.md) engedélyezésével. Ha ez a beállítás engedélyezve van, a rendszer elutasítja a HTTP protokollal létesített kapcsolatokat.
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Titkosítás használata az Azure file shares szolgáltatással történő átvitel során
-[Azure Files](../files/storage-files-introduction.md) támogatja a titkosítást az SMB 3,0 és a HTTPS protokollon keresztül, ha a fájl REST API. Ha az Azure-régión kívül helyezi üzembe az Azure-fájlmegosztást, például a helyszínen vagy egy másik Azure-régióban, az SMB 3,0 titkosítással mindig szükséges. Az SMB 2,1 nem támogatja a titkosítást, ezért az alapértelmezett kapcsolatok csak az Azure ugyanazon régiójában engedélyezettek, de a titkosítással rendelkező SMB 3,0 kényszeríthető a Storage-fiók [biztonságos átvitelének](../storage-require-secure-transfer.md) megkövetelésével.
+[Azure Files](../files/storage-files-introduction.md) támogatja a titkosítást az SMB 3,0 és a HTTPS protokollon keresztül, ha a fájl REST API. Ha az Azure-régión kívül helyezi üzembe az Azure-fájlmegosztást, például a helyszínen vagy egy másik Azure-régióban, az SMB 3,0 titkosítással mindig szükséges. Az SMB 2,1 nem támogatja a titkosítást, ezért az alapértelmezett kapcsolatok csak az Azure ugyanazon régiójában engedélyezettek, de a titkosítással rendelkező SMB 3,0 kényszeríthető a Storage-fiók [biztonságos átvitelének megkövetelésével](../storage-require-secure-transfer.md) .
 
 A titkosítással rendelkező SMB 3,0 az [összes támogatott Windows és Windows Server operációs rendszeren](../files/storage-how-to-use-files-windows.md) elérhető, kivéve a Windows 7 és a windows Server 2008 R2 rendszert, amely csak az SMB 2,1-ot támogatja. A [MacOS](../files/storage-how-to-use-files-mac.md) és a [Linux](../files/storage-how-to-use-files-linux.md) rendszerű Linux kernel 4,11-es vagy újabb verziójának használatával az SMB 3,0 is támogatott. Az SMB 3,0 titkosítási támogatása a Linux-kernel régebbi verzióira is backported számos Linux-disztribúcióval, az SMB- [ügyfél követelményeinek megismerése](../files/storage-how-to-use-files-linux.md#smb-client-reqs)című részből tájékozódhat.
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>Ügyféloldali titkosítás használata a tárolóba küldött adatvédelmek biztonságossá tételéhez
 Egy másik lehetőség, amely segít gondoskodni arról, hogy az ügyfél-alkalmazás és a tárterület közötti adatátvitel biztonságos legyen az ügyféloldali titkosítás. Az adattitkosítás az Azure Storage-ba való átvitel előtt történik. Az Azure Storage-ból származó adatok beolvasása során a rendszer visszafejti az adatok visszafejtését, miután az megérkezett az ügyfél oldalán. Annak ellenére, hogy az adatok titkosítva lesznek a huzalon, javasoljuk, hogy használja a HTTPS protokollt is, mivel a beépített adatintegritás-ellenőrzésekkel az adatok integritását befolyásoló hálózati hibák enyhítését segíti.
 
-Az ügyféloldali titkosítás az adatok inaktív állapotban történő titkosítására is használható, mivel az adatok titkosított formában vannak tárolva. Erről részletesebben a inaktív titkosításról szóló szakaszban fogunk beszélni [](#encryption-at-rest).
+Az ügyféloldali titkosítás az adatok inaktív állapotban történő titkosítására is használható, mivel az adatok titkosított formában vannak tárolva. Erről részletesebben a inaktív [titkosításról](#encryption-at-rest)szóló szakaszban fogunk beszélni.
 
 ## <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
 Három Azure-szolgáltatás áll rendelkezésre, amelyek titkosítást biztosítanak a nyugalmi állapotban. A Azure Disk Encryption az operációs rendszer és az adatlemezek titkosítására szolgál a IaaS-Virtual Machinesokban. Az ügyféloldali titkosítás és az SSE egyaránt az Azure Storage-ban tárolt adat titkosítására szolgál. 
@@ -277,7 +275,7 @@ Használhatja a Microsoft által felügyelt kulcsokat vagy a saját egyéni kulc
 
 Az SSE automatikusan titkosítja minden teljesítményszint (Standard és Prémium), minden üzembehelyezési modell (Azure Resource Manager és klasszikus) és minden Azure Storage-szolgáltatás (Blob, Queue, Table és File) adatait. 
 
-### <a name="client-side-encryption"></a>Client-side Encryption
+### <a name="client-side-encryption"></a>Ügyféloldali titkosítás
 A továbbítás során megemlítjük az ügyféloldali titkosítást, amikor megbeszéljük az adatátvitel titkosítását. Ez a funkció lehetővé teszi, hogy programozott módon titkosítsa az adatokat egy ügyfélalkalmazás számára, mielőtt elküldené azt az Azure Storage-ba, és programozott módon visszafejtse az adatokat az Azure Storage-ból történő beolvasása után.
 
 Ez biztosítja a titkosítást az átvitel során, de a titkosítást is biztosítja a nyugalmi állapotban. Noha az adatok átvitel közben titkosítva vannak, továbbra is javasoljuk a HTTPS használatát, hogy kihasználhassa a beépített adatintegritási ellenőrzéseket, amelyek segítenek az adatok integritását befolyásoló hálózati hibák enyhítésében.
@@ -288,7 +286,7 @@ Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtár
 
 A titkosításhoz saját titkosítási kulcsokat is létrehozhat és kezelhet. Az Azure Storage ügyféloldali kódtár által generált kulcsokat is használhat, de a Azure Key Vault is létrehozhatja a kulcsokat. A titkosítási kulcsokat a helyszíni kulcstárolóban tárolhatja, vagy tárolhatja egy Azure Key Vaultban is. A Azure Key Vault lehetővé teszi, hogy a Azure Active Directory használatával hozzáférést biztosítson a titkos kulcsokhoz Azure Key Vault adott felhasználók számára. Ez azt jelenti, hogy nem csak bárki olvashatja a Azure Key Vault, és lekérheti az ügyféloldali titkosításhoz használt kulcsokat.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 * [Blobok titkosítása és visszafejtése Microsoft Azure Storage használatával Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Ez a cikk bemutatja, hogyan használhatja az ügyféloldali titkosítást Azure Key Vaultokkal, beleértve a KEK létrehozását és tárolását a tárolóban a PowerShell használatával.
@@ -329,7 +327,7 @@ A megoldás nem támogatja az alábbi forgatókönyveket, szolgáltatásokat és
 
 Ez a funkció biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az Azure Storage-ban.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 * [Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure Disk Encryption, SSE és ügyféloldali titkosítás összehasonlítása
@@ -391,7 +389,7 @@ Az alábbi forrásokban szerepel egy cikk, amely a naplók számos mezőjének l
 
 ![Naplófájl mezőinek pillanatképe](./media/storage-security-guide/image3.png)
 
-Érdeklik a GetBlob vonatkozó bejegyzések és azok engedélyezése, ezért meg kell keresni a "Get-blob" típusú bejegyzéseket, és ellenőriznie kell a kérelem állapotát (negyedik</sup> oszlop) és az engedélyezési típust (nyolcadik</sup> oszlop).
+Érdeklik a GetBlob vonatkozó bejegyzések és azok engedélyezése, ezért meg kell keresni a "Get-blob" típusú bejegyzéseket, és ellenőriznie kell a kérelem állapotát (negyedik @ no__t-0 oszlop) és az engedélyezési típust (nyolcadik @ no__t-1 oszlop).
 
 Például a fenti lista első néhány sorában a kérelem állapota "sikeres", az engedélyezési típus pedig "hitelesített". Ez azt jelenti, hogy a kérés a Storage-fiók kulcsa alapján lett engedélyezve.
 
@@ -400,17 +398,17 @@ Három esetben érdekli a szolgáltatás.
 
 1. A blob nyilvános, és megosztott hozzáférési aláírás nélküli URL-cím használatával érhető el. Ebben az esetben a kérelem állapota "AnonymousSuccess", az engedélyezési típus pedig "Anonymous".
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **AnonymousSuccess**; 200; 124; 37; **Névtelen**;; mystorage...
 2. A blob privát, és közös hozzáférési aláírással lett használva. Ebben az esetben a kérelem állapota "SASSuccess", az engedélyezési típus pedig "sas".
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **SASSuccess**; 200; 416; 64; **sas**;; mystorage...
 3. A blob magán, és a rendszer a tárolási kulcsot használta a hozzáféréshez. Ebben az esetben a kérelem állapota "**sikeres**", az engedélyezési típus pedig "**hitelesített**".
 
    1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Sikeres**; 206; 59; 22; **hitelesített**; mystorage...
 
 A Microsoft Message Analyzer segítségével megtekintheti és elemezheti ezeket a naplókat. Keresési és szűrési képességeket is tartalmaz. Előfordulhat például, hogy meg kívánja keresni a GetBlob példányait, hogy megtudja, a használat mire vár, vagyis hogy valaki nem fér hozzá megfelelően a Storage-fiókhoz.
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 * [Storage Analytics](../storage-analytics.md)
 
   Ez a cikk áttekintést nyújt a Storage Analytics szolgáltatásról és azok engedélyezéséről.
@@ -434,7 +432,7 @@ Ha az egyik tartományban futó webböngésző HTTP-kérést végez egy másik t
 Mit kell tennie az Azure Storage-ban? Ha olyan statikus eszközöket tárol, mint például a JSON-vagy XML-adatfájlok Blob Storage egy Fabrikam nevű Storage-fiók használatával, az eszközök tartománya fabrikam.blob.core.windows.net lesz, és a contoso.com webalkalmazás nem fog tudni hozzáférni a következő használatával: JavaScript, mert a tartományok eltérőek. Ez akkor is igaz, ha az egyik Azure Storage-szolgáltatást (például Table Storage) próbálja meg hívni, amely a JavaScript-ügyfél által feldolgozandó JSON-adatmennyiséget küld vissza.
 
 #### <a name="possible-solutions"></a>Lehetséges megoldások
-One way to resolve this is to assign a custom domain like "storage.contoso.com" to fabrikam.blob.core.windows.net. A probléma az, hogy ezt az egyéni tartományt csak egy Storage-fiókhoz rendelheti hozzá. Mi a teendő, ha a rendszer több Storage-fiókban tárolja az eszközöket?
+Ennek egyik módja, ha egy egyéni tartományt (például "storage.contoso.com") rendel a fabrikam.blob.core.windows.net. A probléma az, hogy ezt az egyéni tartományt csak egy Storage-fiókhoz rendelheti hozzá. Mi a teendő, ha a rendszer több Storage-fiókban tárolja az eszközöket?
 
 A megoldás egy másik módja, hogy a webalkalmazás proxyként működjön a tárolási hívásokhoz. Ez azt jelenti, hogy ha egy fájlt tölt fel Blob Storageba, a webalkalmazás helyileg írni fogja, majd átmásolja Blob Storagere, vagy beolvassa az összes memóriát a memóriába, majd a Blob Storagebe írja azt. Másik lehetőségként írhat egy dedikált webalkalmazást (például webes API-t), amely helyileg feltölti a fájlokat, és beírja őket a Blob Storageba. Mindkét esetben a méretezhetőségi igények meghatározásakor ezt a funkciót kell figyelembe vennie.
 
@@ -460,12 +458,12 @@ Alapértelmezés szerint a CORS le van tiltva az összes szolgáltatáson. A COR
 Az egyes sorok a következők:
 
 * **AllowedOrigins** Ez azt jelzi, hogy mely nem egyező tartományokat igényelhet és fogadhat adatok a Storage szolgáltatástól. Ez azt mondja, hogy a contoso.com és a fabrikam.com is kérheti a Blob Storage adatait egy adott Storage-fiókhoz. Ezt a helyettesítő karaktert (\*) is beállíthatja úgy, hogy az összes tartomány hozzáférjen a kérelmekhez.
-* **AllowedMethods** Azon metódusok (HTTP-kérési műveletek) listája, amelyeket a rendszer a kérelem végrehajtásakor használhat. Ebben a példában csak a PUT és a GET engedélyezett. Ezt beállíthatja egy helyettesítő karakter (\*) értékre a minden módszer használatának engedélyezéséhez.
+* **AllowedMethods** Azon metódusok (HTTP-kérési műveletek) listája, amelyeket a rendszer a kérelem végrehajtásakor használhat. Ebben a példában csak a PUT és a GET engedélyezett. Ezt beállíthatja helyettesítő karakter (\*) értékre, hogy az összes módszert használni lehessen.
 * **AllowedHeaders** Ez az a kérelem fejléce, amelyet a forrás tartomány meghatároz a kérelem végrehajtásakor. Ebben a példában az x-MS-Meta-adat, x-MS-meta-Target és x-MS-meta-ABC kezdetű metaadat-fejlécek engedélyezettek. A helyettesítő karakter (\*) azt jelzi, hogy a megadott előtaggal kezdődő fejlécek engedélyezettek.
 * **ExposedHeaders** Ez azt jelzi, hogy a böngészőnek mely válasz-fejléceket kell megtennie a kérés kiállítójának. Ebben a példában az "x-MS-meta-" kezdetű fejlécek lesznek kitéve.
 * **MaxAgeInSeconds** Ez az a maximális időtartam, ameddig egy böngésző gyorsítótárazza az elővizsgálati beállítások kérését. (Az elővizsgálati kérelemmel kapcsolatos további információkért olvassa el az alábbi első cikket.)
 
-#### <a name="resources"></a>További források
+#### <a name="resources"></a>Segédanyagok és eszközök
 A CORS és annak engedélyezésével kapcsolatos további információkért tekintse meg ezeket az erőforrásokat.
 
 * [A Azure.com-alapú Azure Storage-szolgáltatások CORS-támogatásának több eredetű erőforrás-megosztási támogatása](../storage-cors-support.md)
@@ -474,7 +472,7 @@ A CORS és annak engedélyezésével kapcsolatos további információkért teki
 * [Az Azure Storage szolgáltatásainak több eredetű erőforrás-megosztási (CORS) támogatása az MSDN-ben](https://msdn.microsoft.com/library/azure/dn535601.aspx)
 
   Ez az Azure Storage-szolgáltatások CORS támogatását ismertető dokumentáció. Ez az egyes tárolási szolgáltatásokra vonatkozó cikkekre mutató hivatkozásokat tartalmaz, és egy példát mutat be, és megmagyarázza a CORS fájl egyes elemeit.
-* [Microsoft Azure Storage: A CORS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
+* [Microsoft Azure Storage: a CORS bemutatása](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/02/03/windows-azure-storage-introducing-cors.aspx)
 
   Ez egy hivatkozás a kezdeti blogra, amely bejelenti a CORS, és bemutatja, hogyan használhatja azt.
 
@@ -486,19 +484,19 @@ A CORS és annak engedélyezésével kapcsolatos további információkért teki
    Ha a HTTPS protokollt használja, amely átviteli szintű biztonságot biztosít, akkor az MD5-ellenőrzés redundáns és szükségtelen.
 
    További információkért tekintse meg az [Azure Blob MD5 áttekintését](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx).
-2. **Mi a helyzet a FIPS-megfelelőséggel az Egyesült Államokban Kormány?**
+2. **Mi a helyzet a FIPS-megfelelőséggel az Egyesült Államok kormányának?**
 
-   A Egyesült Államok Federal Information Processing standard (FIPS) meghatározza az Egyesült Államok általi használatra jóváhagyott titkosítási algoritmusokat A bizalmas adatok védelmére szolgáló szövetségi kormányzati számítógépes rendszerek. A FIPS mód Windows Server vagy Desktop rendszeren való engedélyezése azt jelzi, hogy az operációs rendszer csak a FIPS-érvényesített titkosítási algoritmusokat használja. Ha egy alkalmazás nem megfelelő algoritmusokat használ, a rendszer megtöri az alkalmazásokat. A With.NET-keretrendszer 4.5.2-es vagy újabb verzióiban az alkalmazás automatikusan átváltja a titkosítási algoritmusokat az FIPS-kompatibilis algoritmusok használatára, ha a számítógép FIPS módban van.
+   A Egyesült Államok Federal Information Processing standard (FIPS) olyan titkosítási algoritmusokat határoz meg, amelyeket a rendszer a bizalmas adatok védelme érdekében az Egyesült Államok szövetségi kormányzati számítógépei számára engedélyezett. A FIPS mód Windows Server vagy Desktop rendszeren való engedélyezése azt jelzi, hogy az operációs rendszer csak a FIPS-érvényesített titkosítási algoritmusokat használja. Ha egy alkalmazás nem megfelelő algoritmusokat használ, a rendszer megtöri az alkalmazásokat. A With.NET-keretrendszer 4.5.2-es vagy újabb verzióiban az alkalmazás automatikusan átváltja a titkosítási algoritmusokat az FIPS-kompatibilis algoritmusok használatára, ha a számítógép FIPS módban van.
 
    A Microsoft minden ügyfélnek elhagyja az FIPS-mód engedélyezését. Hiszünk abban, hogy a nem kormányzati szabályozás hatálya alá tartozó ügyfelek számára nincs olyan kényszerítő ok, amely alapértelmezés szerint engedélyezi az FIPS üzemmódot.
 
-### <a name="resources"></a>További források
+### <a name="resources"></a>Segédanyagok és eszközök
 * [Miért nem ajánljuk többé a "FIPS mód" használatát](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Ez a blogbejegyzés áttekintést nyújt a FIPS-ről, és ismerteti, hogy alapértelmezés szerint miért nem engedélyezik az FIPS üzemmódot.
 * [FIPS 140 érvényesítése](https://technet.microsoft.com/library/cc750357.aspx)
 
-  Ez a cikk tájékoztatást nyújt arról, hogy a Microsoft-termékek és-titkosítási modulok hogyan felelnek meg az Egyesült Államokban található FIPS szabványnak Szövetségi kormány.
-* ["Rendszerkriptográfia: FIPS szabványnak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz a "biztonsági beállítások hatása a Windows XP rendszerben és a Windows újabb verzióiban](https://support.microsoft.com/kb/811833)
+  Ez a cikk tájékoztatást nyújt arról, hogy a Microsoft-termékek és-titkosítási modulok hogyan felelnek meg az Egyesült Államok szövetségi kormányának FIPS szabványának.
+* ["Rendszerkriptográfia: FIPS szabványnak megfelelő algoritmusok használata titkosításhoz, kivonatoláshoz és aláíráshoz" biztonsági beállítások hatása a Windows XP és a Windows újabb verzióiban](https://support.microsoft.com/kb/811833)
 
   Ez a cikk a FIPS üzemmód használatát ismerteti a régebbi Windows-számítógépeken.

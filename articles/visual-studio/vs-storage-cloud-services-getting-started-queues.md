@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a üzenetsor-tárolással és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services) | Microsoft Docs
+title: Ismerkedés a üzenetsor-tárolással a Visual Studio használatával (Cloud Services)
 description: Az Azure üzenetsor-tárolás használatának első lépései a Visual Studióban lévő Cloud Service-projektekben a Visual Studio csatlakoztatott szolgáltatásainak használatával való csatlakozást követően
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510690"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298781"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -57,7 +58,7 @@ Ha a várólistákat a Visual Studióban Cloud Services projektekben szeretné e
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**MEGJEGYZÉS:** Használja a fenti kódot a kód elé a következő mintákban.
+**Megjegyzés:** Használja a fenti kódot a kód elé a következő mintákban.
 
 ## <a name="create-a-queue-in-code"></a>Várólista létrehozása a kódban
 Ha a várólistát a kódban szeretné létrehozni, csak vegyen fel egy hívást a **createifnotexists metódust**.
@@ -152,6 +153,6 @@ Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a *
     // Delete the queue.
     messageQueue.Delete();
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
 

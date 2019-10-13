@@ -2,18 +2,17 @@
 title: Azure Analysis Serviceshoz való csatlakozáshoz szükséges ügyféloldali kódtárak | Microsoft Docs
 description: Az ügyfélalkalmazások és eszközök kapcsolódásához szükséges ügyféloldali kódtárakat ismerteti Azure Analysis Services
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9e597b03abfdeda01d74986b7b30c14de46fd3f1
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861139"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298659"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Az Azure Analysis Serviceshoz való csatlakozáshoz használható ügyféloldali kódtárak
 
@@ -21,23 +20,23 @@ Az ügyfélalkalmazások és eszközök Analysis Services kiszolgálókhoz való
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>A legújabb ügyféloldali kódtárak letöltése (Windows Installer)  
 
-|Letöltés  |Termék verziószáma  | 
+|Letöltés  |Termék verziója  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.1.25    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.1.25       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.5.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.5.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.5.15    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.5.15       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.9.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.9.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO és ADOMD (NuGet-csomagok)
 
 A Analysis Services Management Objects (AMO) és a ADOMD ügyféloldali kódtárak telepíthető csomagokként érhetők el a [NuGet.org](https://www.nuget.org/). Javasoljuk, hogy a Windows Installer használata helyett NuGet referenciákat telepítsen. 
 
-|Csomag  | Termék verziószáma  | 
+|Csomag  | Termék verziója  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.5     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.5      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.9     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.9      |
 
-NuGet-csomag szerelvények AssemblyVersion a szemantikai verziószámozás követése: FŐ. KISEBB. JAVÍTÁS. A NuGet-hivatkozások akkor is betöltik a várt verziót, ha a GAC-ban (az MSI telepítése miatt) egy másik verziója van. A javítás minden kiadásnál növekszik. Az AMO-és ADOMD-verziók szinkronban vannak tárolva.
+NuGet-csomagok szerelvényei AssemblyVersion a szemantikai verziószámozás követése: MAJOR. Kisebb. Javítás. A NuGet-hivatkozások akkor is betöltik a várt verziót, ha a GAC-ban (az MSI telepítése miatt) egy másik verziója van. A javítás minden kiadásnál növekszik. Az AMO-és ADOMD-verziók szinkronban vannak tárolva.
 
 ## <a name="understanding-client-libraries"></a>Az ügyféloldali kódtárak ismertetése
 
@@ -55,11 +54,11 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
   
  A Analysis Services OLE DB-szolgáltató a legtöbb eszköz és a Analysis Services adatbázisok eléréséhez használt ügyfélalkalmazások által automatikusan települ. A Analysis Services-adateléréshez használt számítógépeken telepítve kell lennie.  
   
- A OLE DB szolgáltatók gyakran vannak megadva a kapcsolatok karakterláncokban. Egy Analysis Services kapcsolódási karakterlánc egy másik nómenklatúrát használ, amely a OLE DB szolgáltatóra hivatkozik: MSOLAP. \<a >. dll verziója.
+ A OLE DB szolgáltatók gyakran vannak megadva a kapcsolatok karakterláncokban. Egy Analysis Services kapcsolódási karakterlánc egy másik nómenklatúrát használ, amely a OLE DB szolgáltatóra hivatkozik: MSOLAP. \<version >. dll.
 
 ### <a name="amo"></a>AMO  
 
- Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok jellemzően minimálisak, `"data source=\<servername>"`amely a-ból áll. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A SSDT és a SSMS egyaránt az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
+ Az AMO a kiszolgálók felügyeletéhez és az adatdefinícióhoz használt felügyelt ügyféloldali kódtár. Az eszközök és ügyfélalkalmazások telepítik és használják. Például SQL Server Management Studio (SSMS) az AMO-t használja a Analysis Serviceshoz való kapcsolódáshoz. Az AMO-t használó kapcsolatok általában minimálisak, `"data source=\<servername>"`-ból állnak. A kapcsolatok létrehozása után az API-val dolgozhat az adatbázis-gyűjtemények és a főbb objektumok használatával. A SSDT és a SSMS egyaránt az AMO használatával csatlakozhat egy Analysis Services-példányhoz.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -75,7 +74,7 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
   
 1.  Nyissa meg a következőt: `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
   
-2.  Kattintson a jobb gombbal a **MSOLAP. dll** > **Tulajdonságok** > **részletei**elemre. Ha a fájlnév a msolap140. dll, a legújabb verziónál régebbi, és frissíteni kell.
+2.  Kattintson a jobb gombbal a **MSOLAP. dll** > **Tulajdonságok** > **részletek**elemre. Ha a fájlnév a msolap140. dll, a legújabb verziónál régebbi, és frissíteni kell.
     
     ![Ügyféloldali kódtár részletei](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -83,14 +82,14 @@ Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Serv
 ### <a name="amo"></a>AMO
 
 1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
-2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices** > **Tulajdonságok** > **részletei**elemre.  
+2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices** > **Tulajdonságok** > **részletek**elemre.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. Nyissa meg a következőt: `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Ha egynél több mappával rendelkezik, válassza a nagyobb számot.
-2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices. AdomdClient** > **Tulajdonságok** > **részletei**elemre.  
+2. Kattintson a jobb gombbal a **Microsoft. AnalysisServices. AdomdClient** > **Tulajdonságok** > **részletek**elemre.  
 
 
-## <a name="next-steps"></a>További lépések
-[Az Excelben való kapcsolat](analysis-services-connect-excel.md)    
+## <a name="next-steps"></a>Következő lépések
+[Kapcsolódjon az Excel](analysis-services-connect-excel.md)    
 [Kapcsolódás PowerBI-jal](analysis-services-connect-pbi.md)

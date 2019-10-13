@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146890"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299246"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>A Azure CDN aktuális POP IP-listájának beolvasása
 
@@ -37,16 +37,15 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a Microsofttól származó
 Konfigurálja az IP-hozzáférés a háttérrendszer számára, hogy fogadja a forgalmat a Microsoft háttérbeli IP-címtartomány és az Azure infrastruktúra-szolgáltatásai Azure CDNból. 
 
 * Azure CDN a Microsoft IPv4-háttér IP-területéről: 147.243.0.0/16
-* Azure CDN a Microsoft IPv6-háttér IP-területéről: 2a01:111:2050::/44
+* A Microsoft IPv6-háttér IP-címének Azure CDNe: 2a01:111:2050::/44
 
 Az IP-címtartományok és a Microsoft-szolgáltatásokhoz tartozó szolgáltatási címkék [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók
 
-A Microsoft által Azure CDN által küldött "X-Forwarded-host" bejövő fejléc értékeinek szűrése. A fejléc csak a CDN-konfigurációban definiált összes végpont-gazdagépre engedélyezett. Valójában még pontosabban csak azok az állomásnevek szerepelnek, amelyekről el szeretné fogadni a forgalmat.
 
 ## <a name="typical-use-case"></a>Tipikus használati eset
 
 Biztonsági okokból ezt az IP-listát használhatja arra, hogy kikényszerítse, hogy a forráskiszolgáló iránti kérések csak egy érvényes Verizon-POP-ból legyenek elvégezve. Ha például valaki felderíti a CDN-végpont forrás-kiszolgálójának állomásnevét vagy IP-címét, akkor a kérést közvetlenül a forráskiszolgáló számára teheti meg, így megkerüli a Azure CDN által biztosított méretezési és biztonsági képességeket. Ha úgy állítja be az IP-címeket a visszaadott listában, hogy az csak az engedélyezett IP-címek legyenek a forráskiszolgálón, akkor ez a forgatókönyv megelőzhető. Győződjön meg arról, hogy rendelkezik a legújabb POP-listával, és legalább egyszer lekéri azt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST APIről: [Azure CDN REST API](https://docs.microsoft.com/rest/api/cdn/).

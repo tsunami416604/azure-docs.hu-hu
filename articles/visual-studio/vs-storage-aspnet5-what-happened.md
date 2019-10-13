@@ -1,5 +1,5 @@
 ---
-title: Mi történt a ASP.NET 5 projekttel (Visual Studio csatlakoztatott szolgáltatások) | Microsoft Docs
+title: Mi történt a ASP.NET 5 projekttel (Visual Studio csatlakoztatott szolgáltatások)
 description: Leírja, hogy mi történik az Azure Storage-fiókhoz való csatlakozás után a Visual Studio ASP.NET 5 projektben a Visual Studio csatlakoztatott szolgáltatásainak használatával
 services: storage
 author: ghogen
@@ -12,26 +12,27 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e29c0302ecd703cb02199df95892e24917baf8e8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510760"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300012"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Mi történt a ASP.NET 5 projekttel (Visual Studio Azure Storage Connected Services)?
 ## <a name="references-added"></a>Hivatkozások hozzáadva
 Az Azure Storage NuGet csomagja hozzá lett adva a Visual Studio-projekthez.  
 Ez a csomag a következő .NET-referenciákat veszi fel:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
-* **Microsoft.WindowsAzure.Storage**
-* **Newtonsoft.Json**
-* **System.Data**
-* **System.Spatial**
+* **Microsoft. EDM**
+* **Microsoft. OData**
+* **Microsoft. Services. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
+* **Microsoft. WindowsAzure. Storage**
+* **Newtonsoft. JSON**
+* **System. reaz**
+* **System. térbeli**
 
 Emellett felvette a **Microsoft. Framework. Configuration. JSON** NuGet-csomagot.
 

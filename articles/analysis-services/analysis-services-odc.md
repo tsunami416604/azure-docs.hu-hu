@@ -1,42 +1,41 @@
 ---
-title: Egy Azure Analysis Services-kiszolgálóhoz való csatlakozáshoz .odc fájl létrehozása |} A Microsoft Docs
-description: Ismerje meg, hogyan csatlakozhat, és le az adatokat az Azure Analysis Services-kiszolgáló Office Data Connection fájl létrehozása.
+title: Hozzon létre egy. odc-fájlt Azure Analysis Services kiszolgálóhoz való kapcsolódáshoz | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre egy Office-adatkapcsolati fájlt egy Azure-beli Analysis Services-kiszolgálóról való kapcsolódáshoz és az adatok lekéréséhez.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37f068be544f964f3aec63d85702098c8f382ab8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e12717b37171df55c7559bb1b05c467f332236bc
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60785710"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294836"
 ---
-# <a name="create-an-office-data-connection-file"></a>-Office Data Connection fájl létrehozása
+# <a name="create-an-office-data-connection-file"></a>Office-adatkapcsolatok fájljának létrehozása
 
-Ebben a cikkben található információk azt ismerteti, hogyan hozhat létre egy Office Data Connection fájl verziószámának 16.0.7369.2117 Excel 2016-ból kapcsolódni az Azure Analysis Services-kiszolgáló és a korábbi verziók, vagy az Excel 2013-at. Frissített [MSOLAP.7 szolgáltató](analysis-services-data-providers.md) is szükség.
-
-
-1. Az alábbi minta kapcsolatfájl másolhatja és beillesztheti egy szövegszerkesztőbe. 
-
-2. A `odc:ConnectionString`, módosítsa a következő tulajdonságokkal:
-
-    *   A `Data Source=asazure://<region>.asazure.windows.net/<servername>;` módosítása `<region>` az Analysis Services-kiszolgáló-régió és `<servername>` a kiszolgáló nevére.
-
-    *   A `Initial Catalog=<database>;` módosítása `<database>` az adatbázis nevére.
-
-3. A `<odc:CommandText>Model</odc:CommandText>` módosítása `Model` a modell vagy perspektíva nevét. 
-
-4. Mentse a fájlt egy `.odc` a C:\Users bővítmény\\*felhasználónév*\Documents\My adatforrások mappát.
-
-5. Kattintson jobb gombbal a fájlra, és kattintson **Megnyitás Excelben**. Vagy az Excel a a **adatok** menüszalagra, majd **meglévő kapcsolatok**, válassza ki a fájlt, és kattintson **nyílt**.
+A cikkben található információk azt ismertetik, hogyan hozhat létre Office-adatkapcsolati fájlt egy Azure Analysis Services-kiszolgálóhoz való kapcsolódáshoz az Excel 2016-es verziójának 16.0.7369.2117 vagy korábbi verziójából, vagy az Excel 2013-ből. A frissített [MSOLAP. 7 szolgáltató](analysis-services-data-providers.md) is szükséges.
 
 
+1. Másolja be az alábbi minta-kapcsolatfájl, és illessze be egy szövegszerkesztőbe. 
 
-**Mintafájl-kapcsolat**
+2. A `odc:ConnectionString` értéknél módosítsa a következő tulajdonságokat:
+
+    *   @No__t – 0 értéknél módosítsa a `<region>` értéket a Analysis Services-kiszolgáló régiójába, és `<servername>` értéket a kiszolgálójának nevére.
+
+    *   @No__t – 0 értéknél módosítsa a `<database>` értéket az adatbázis nevére.
+
+3. @No__t-0 értéknél módosítsa a `Model` értéket a modell vagy perspektíva nevére. 
+
+4. Mentse a fájlt egy `.odc` kiterjesztéssel a C:\Users @ no__t-1*Felhasználónév*\Documents\My adatforrások mappájába.
+
+5. Kattintson a jobb gombbal a fájlra, majd kattintson a **Megnyitás az Excelben**elemre. Vagy **az Excelben az adatszalagon** kattintson a **létező kapcsolatok**elemre, jelölje ki a fájlt, majd kattintson a **Megnyitás**gombra.
+
+
+
+**Minta kapcsolatfájl**
 ```
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns="https://www.w3.org/TR/REC-html40">

@@ -1,5 +1,5 @@
 ---
-title: Minta-PCI-DSS v 3.2.1 terv – lépések üzembe helyezése
+title: PCI-DSS v 3.2.1 terv minta – üzembe helyezési lépések
 description: Üzembe helyezheti a Payment Card Industry adatbiztonsági szabvány v 3.2.1 tervének lépéseit, beleértve a terv-összetevő paraméterének részleteit.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 85f9eab29411ac896f73eed7aba607c733e4b95e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248860"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299043"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 terv üzembe helyezése minta
 
@@ -100,7 +100,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |\[Preview @ no__t-1 naplózási PCI v 3.2.1:2018 a naplózási követelmények támogatására szolgáló virtuálisgép-bővítmények szabályozása és üzembe helyezése|Szabályzat-hozzárendelés|Erőforrástípusok listája | A kiválasztott erőforrástípusok diagnosztikai beállításainak naplózása. Az alapértelmezett érték minden erőforrás van kiválasztva| 
 |Engedélyezett helyek|Szabályzat-hozzárendelés|Engedélyezett helyszínek listája|A alkalmazásba telepítendő összes erőforráshoz engedélyezett adatközpont-helyszínek listája. Ez a lista globálisan testreszabható a kívánt Azure-helyen. Válassza ki az engedélyezni kívánt helyet.| 
 |Erőforráscsoportok engedélyezett helyei|Szabályzat-hozzárendelés |Engedélyezett hely |Ez a szabályzat lehetővé teszi, hogy korlátozza a szervezete által az erőforráscsoportok létrehozásához szükséges helyet. A Geo-megfelelőségi követelmények betartatására használható.| 
-|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Az adatmennyiség napok száma megőrzése. Az alapértelmezett érték 180, de a PCI esetében 365.| 
+|Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|Megőrzési napok|Adatmegőrzés a napok száma szerint. Az alapértelmezett érték 180, de a PCI esetében 365.| 
 |Naplózás üzembe helyezése SQL-kiszolgálókon|Szabályzat-hozzárendelés|A Storage-fiók erőforráscsoport-neve|A naplózás az adatbázis-eseményeket egy naplóba írja az Azure Storage-fiókban (a Storage-fiók minden régióban létrejön, ahol létrejön egy SQL Server, amelyet az adott régióban lévő összes kiszolgáló megoszt majd).| 
 
 ## <a name="next-steps"></a>Következő lépések

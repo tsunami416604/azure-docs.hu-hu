@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0bf52b45bc315874c58be50bccbffa49090d554d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074962"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294337"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -33,12 +33,13 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 ### <a name="open-api-general"> </a>Általános
 
 -   Az elérési út és a lekérdezés kötelező paramétereinek egyedi névvel kell rendelkezniük. (A OpenAPI csak egyedinek kell lennie egy helyen belül, például elérési út, lekérdezés, fejléc. API Management azonban lehetővé tesszük, hogy a műveletek a két útvonal és a lekérdezési paraméterek (amelyek nem támogatják a OpenAPI) megkülönböztetését. Ezért a paraméterek neveinek egyedinek kell lenniük a teljes URL-sablonon belül.)
--   a ref-mutatók nem hivatkozhatnak külső fájlokra.  **\$**
+-   **@no__t – a 1ref-** mutatók nem hivatkozhatnak külső fájlokra.
 -   az **x-MS-paths** és az **x-Server** az egyetlen támogatott bővítmény.
 -   Az egyéni bővítményeket a rendszer figyelmen kívül hagyja az importálás során, és nem menti vagy nem őrzi meg az exportálást.
 -   **Rekurzív** – API Management nem támogatja a rekurzív módon definiált definíciókat (például a magukra hivatkozó sémák).
 -   A forrásfájl URL-címe (ha elérhető) a relatív kiszolgálói URL-címekre lesz alkalmazva.
 -   A biztonsági definíciók figyelmen kívül lesznek hagyva.
+-   Az API-műveletekhez tartozó beágyazott séma-definíciók nem támogatottak. A séma-definíciók az API-hatókörben vannak meghatározva, és az API-műveleti kérelemben vagy a válasz hatókörében is szerepelhetnek.
 
 ### <a name="open-api-v2"> </a>OpenAPI 2. verzió
 
@@ -58,7 +59,7 @@ A WSDL-fájlok SOAP-alapú áteresztő és SOAP-REST API-k létrehozásához has
 -   **Wsdl: import** – ez az attribútum nem támogatott. Az ügyfeleknek egyetlen dokumentumba kell egyesíteni az importálást.
 -   **Több részből álló üzenetek** – az ilyen típusú üzenetek nem támogatottak.
 -   **WCF wsHttpBinding** – a Windows Communication Foundation által létrehozott SOAP-szolgáltatásoknak az BasicHttpBinding-wsHttpBinding használata nem támogatott.
--   **MTOM** – a MTOM- t használó szolgáltatások működhetnek. A hivatalos támogatás jelenleg nem érhető el.
+-   **MTOM** – a MTOM-t használó <em>szolgáltatások működhetnek</em> . A hivatalos támogatás jelenleg nem érhető el.
 -   **Rekurzív** – a APIM nem támogatja a rekurzív módon definiált (például a saját tömbre hivatkozó) típusokat.
 -   **Több névtér** – több névtér is használható egy sémában, de csak a cél névtér használható az üzenetek részeinek definiálásához. A más bemeneti vagy kimeneti elemek definiálásához használt célhelyen kívüli névterek nem őrződnek meg. Habár egy ilyen WSDL-dokumentum importálható, az összes üzenet részeinek exportálásakor a WSDL cél névterét fogja használni.
 -   **Tömbök** – a SOAP – Rest átalakítás csak az alábbi példában látható burkolt tömböket támogatja:

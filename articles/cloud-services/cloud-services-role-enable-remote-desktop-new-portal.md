@@ -1,5 +1,5 @@
 ---
-title: Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services | Microsoft Docs
+title: A portál használata Távoli asztal engedélyezése szerepkörhöz (Azure Cloud Services)
 description: Azure Cloud Service-alkalmazás konfigurálása távoli asztali kapcsolatok engedélyezéséhez
 services: cloud-services
 documentationcenter: ''
@@ -8,17 +8,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: bea4e0c43d6ae6e0ea05c43343535195a25cf3e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359517"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298442"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -51,7 +51,7 @@ A Azure Portal a Távoli asztal bővítmény megközelítését használja, így
 
 Ha Távoli asztal engedélyezve van a szerepkörökön, közvetlenül a Azure Portal kezdeményezheti a kapcsolatokat:
 
-1. A példányok **beállításainak** megnyitásához kattintson a **példányok** elemre.
+1. A **példányok beállításainak** megnyitásához kattintson a **példányok** elemre.
 2. Válasszon Távoli asztal konfigurált szerepkör-példányt.
 3. Kattintson a **Kapcsolódás** gombra a szerepkör-példányhoz tartozó RDP-fájl letöltéséhez.
 

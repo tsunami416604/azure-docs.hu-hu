@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58d751628bf667949487832c9352aeb6a972faf8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ee88eee7c4618306f86b4338a94f81c1403e3120
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348814"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299356"
 ---
-# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI-vel
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI használatával
 
 Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni rendszerképek segítségével indíthatók olyan konfigurálások, mint az alkalmazások betöltése, alkalmazások konfigurálása és más operációsrendszer-konfigurálások. Ebben az oktatóanyagban létrehoz egy egyéni rendszerképet egy Azure-beli virtuális gépről. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -33,11 +33,11 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 > * Az előfizetésben lévő összes rendszerkép listázása
 > * Rendszerkép törlése
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gépet újrahasznosítható egyéni rendszerképpé, amellyel új virtuálisgép-példányokat hozhat létre.
 
@@ -132,7 +132,7 @@ az image delete \
     --resource-group myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

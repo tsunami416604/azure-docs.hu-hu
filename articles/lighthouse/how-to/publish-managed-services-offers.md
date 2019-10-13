@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155153"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300301"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -34,7 +34,7 @@ Ha egy ügyfél felveszi az ajánlatot, egy vagy több konkrét előfizetést va
 
 1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
 2. A bal oldali navigációs menüben válassza az **új ajánlat**lehetőséget, majd válassza a **felügyelt szolgáltatások**elemet.
-3. Az ajánlathoz tartozó **szerkesztői** szakaszt a következő négy részből töltheti le: **Ajánlati beállítások**, **csomagok**, **piactér**és **támogatás**. A fejezetek végrehajtásával kapcsolatos útmutatásért olvassa el a következőt:.
+3. Az ajánlathoz négy részből megtekinthető egy **szerkesztő** szakasz, amely a következőt adja meg: **Beállítások**, **csomagok**, **piactér**és **támogatás**. A fejezetek végrehajtásával kapcsolatos útmutatásért olvassa el a következőt:.
 
 ## <a name="enter-offer-settings"></a>Adja meg az ajánlat beállításait
 
@@ -44,7 +44,7 @@ Az **ajánlat beállításai** szakaszban adja meg a következőket:
 |---------|---------|
 |**Ajánlat azonosítója**     | Az ajánlat egyedi azonosítója (a közzétevői profilján belül). Ez az azonosító csak kisbetűs alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhat, legfeljebb 50 karakter hosszú lehet. Ne feledje, hogy az ajánlat azonosítója látható az ügyfelek számára olyan helyeken, mint például a termék URL-címei és a számlázási jelentések. Az ajánlat közzététele után nem módosíthatja ezt az értéket.        |
 |**Közzétevő azonosítója**     | Az ajánlattal társított közzétevő azonosítója. Ha egynél több közzétevő-AZONOSÍTÓval rendelkezik, kiválaszthatja az ajánlathoz használni kívánt elemet.       |
-|**Name**     | Az ügyfelek számára az Azure Marketplace-en és a Azure Portalban megjelenő név (legfeljebb 50 karakter). Olyan felismerhető márkanév használata, amelyet az ügyfelek megértettek – ha Ön a saját webhelyén keresztül népszerűsíti ezt az ajánlatot, ügyeljen arra, hogy itt pontosan ugyanazt a nevet használja.        |
+|**Name (Név)**     | Az ügyfelek számára az Azure Marketplace-en és a Azure Portalban megjelenő név (legfeljebb 50 karakter). Olyan felismerhető márkanév használata, amelyet az ügyfelek megértettek – ha Ön a saját webhelyén keresztül népszerűsíti ezt az ajánlatot, ügyeljen arra, hogy itt pontosan ugyanazt a nevet használja.        |
 
 Ha elkészült, válassza a **Mentés**lehetőséget. Most már készen áll a **csomagok** szakaszra való áttérésre.
 
@@ -59,7 +59,7 @@ Ezután hajtsa végre a következő szakaszokat a **terv részletei** szakaszban
 |Mező  |Leírás  |
 |---------|---------|
 |**Cím**     | A megjelenő terv felhasználóbarát neve. Legfeljebb 50 karakter hosszú lehet.        |
-|**összegzés**     | A cím alatt megjelenítendő terv tömör leírása. Legfeljebb 100 karakter hosszú lehet.        |
+|**Összefoglalás**     | A cím alatt megjelenítendő terv tömör leírása. Legfeljebb 100 karakter hosszú lehet.        |
 |**Leírás**     | Leírás szövege, amely részletesebb magyarázatot nyújt a tervről.         |
 |**Számlázási modell**     | Itt 2 számlázási modell látható, de **a saját licencét** kell választania a felügyelt szolgáltatások ajánlatait illetően. Ez azt jelenti, hogy az ügyfeleket közvetlenül az ajánlattal kapcsolatos költségekkel számoljuk fel, és a Microsoft semmilyen díjat nem számít fel Önnek.   |
 |**Ez egy privát csomag?**     | Azt jelzi, hogy az SKU magán-vagy nyilvános. Az alapértelmezett érték **nem** (nyilvános). Ha ezt a beállítást választja, a csomag nem korlátozódik meghatározott ügyfelekre (vagy bizonyos számú ügyfélre); Miután közzétett egy nyilvános csomagot, később nem módosíthatja magánjellegűre. Ha ezt a csomagot csak bizonyos ügyfelek számára szeretné elérhetővé tenni, válassza az **Igen**lehetőséget. Ha így tesz, azonosítania kell az ügyfeleket az előfizetési azonosítók megadásával. Ezek megadhatók egyenként (legfeljebb 10 előfizetés esetén) vagy egy. csv-fájl feltöltésével (legfeljebb 20 000 előfizetés esetén). Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, hogy tesztelje és érvényesítse az ajánlatot. További információ: [Private SKU-i és csomagok](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
@@ -70,10 +70,10 @@ Végül fejezze be a **manifest details** szakaszt. Ezzel létrehoz egy jegyzék
 - Ezután adja meg a **bérlői azonosítóját**. Ez a szervezet Azure Active Directory bérlői azonosítójával társított GUID (azaz a bérlő, amely az ügyfelek erőforrásainak kezeléséhez fog dolgozni). Ha nem rendelkezik ezzel a hasznos megoldással, a fiók neve fölé helyezve a Azure Portal jobb felső sarkában vagy a **címtár váltása**lehetőségre kattintva. 
 - Végül adjon hozzá egy vagy több **engedélyezési** bejegyzést a csomaghoz. Az engedélyek határozzák meg azokat az entitásokat, akik hozzáférhetnek a csomagot megvásárló ügyfelek erőforrásaihoz és előfizetésekhez. Meg kell adnia ezt az információt ahhoz, hogy az ügyfél nevében hozzáférhessen az erőforrásokhoz az Azure-beli delegált erőforrás-kezelés használatával.
   Minden egyes engedélyezéshez adja meg a következőket. Ezután több felhasználó/szerepkör-definíció hozzáadásához szükség szerint többször is kiválaszthatja az **új engedélyt** .
-  - **Azure ad-objektum azonosítója**: Egy felhasználó, felhasználói csoport vagy alkalmazás Azure AD-azonosítója, amely bizonyos engedélyeket kap (a szerepkör-definíció szerint) az ügyfelek erőforrásai számára.
-  - **Azure ad-objektum megjelenített neve**: Egy rövid név, amely segít az ügyfélnek megérteni az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
-  - **Szerepkör-definíció**: Válassza ki az elérhető Azure AD-beli szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. További információ ezekről a szerepkörökről: [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Hozzárendelhető szerepkörök**: Erre csak akkor van szükség, ha az engedélyezéshez a szerepkör- **definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
+  - **Azure ad-objektum azonosítója**: egy felhasználó, felhasználói csoport vagy alkalmazás Azure ad-azonosítója, amely bizonyos engedélyeket kap (a szerepkör-definíció szerint) az ügyfelek erőforrásai számára.
+  - Az **Azure ad-objektum megjelenített neve**: egy rövid név, amely segítségével az ügyfél megismerheti az engedélyezés célját. Az ügyfél ezt a nevet fogja látni az erőforrások delegálásakor.
+  - **Szerepkör-definíció**: válassza ki az elérhető Azure ad beépített szerepkörök egyikét a listából. Ez a szerepkör határozza meg, hogy az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó milyen engedélyekkel fog rendelkezni az ügyfelek erőforrásaiban. További információ ezekről a szerepkörökről: [beépített szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  - **Hozzárendelhető szerepkörök**: erre csak akkor van szükség, ha a **szerepkör-definícióban** a felhasználói hozzáférés rendszergazdája lehetőséget választotta az engedélyezéshez. Ha igen, hozzá kell adnia egy vagy több hozzárendelhető szerepkört. Az **Azure ad-objektum azonosító** mezőjében szereplő felhasználó hozzá tudja rendelni ezeket a **hozzárendelhető szerepköröket** a [felügyelt identitásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Vegye figyelembe, hogy a felhasználói hozzáférés-rendszergazdai szerepkörhöz tartozó egyéb engedélyek nem lesznek érvényesek erre a felhasználóra. Ha itt nem választ ki egy vagy több szerepkört, a beküldés nem ad át minősítést. (Ha nem választott felhasználói hozzáférési rendszergazdát a felhasználó szerepkör-definíciójában, ennek a mezőnek nincs hatása.)
 
 > [!TIP]
 > A legtöbb esetben egy Azure AD-felhasználói csoporthoz vagy egyszerű szolgáltatáshoz kell engedélyeket rendelni, nem pedig egyéni felhasználói fiókokhoz. Ez lehetővé teszi az egyes felhasználók hozzáférésének hozzáadását vagy eltávolítását anélkül, hogy a hozzáférési követelmények változásakor frissítenie és újból közzé kellene tennie a tervet.
@@ -89,17 +89,17 @@ Adja meg a következő mezők adatait az **Áttekintés** szakaszban:
 |Mező  |Leírás  |
 |---------|---------|
 |**Cím**     |  Az ajánlat címe, gyakran a hosszú, formális név. Ez a cím kiemelten jelenik meg a piactéren. Legfeljebb 50 karakter hosszú lehet. A legtöbb esetben ez megegyezik az **ajánlat beállításai** szakaszban megadott **névvel** .       |
-|**összegzés**     | Az ajánlat rövid célja vagy funkciója. Ez általában a cím alatt jelenik meg. Legfeljebb 100 karakter hosszú lehet.        |
+|**Összefoglalás**     | Az ajánlat rövid célja vagy funkciója. Ez általában a cím alatt jelenik meg. Legfeljebb 100 karakter hosszú lehet.        |
 |**Hosszú összefoglalás**     | Az ajánlat céljának vagy funkciójának összefoglalása. Legfeljebb 256 karakter hosszú lehet.        |
 |**Leírás**     | További információ az ajánlatról. A mező maximális hossza 3000 karakter, és támogatja az egyszerű HTML-formázást. A leírásban szerepelnie kell a "felügyelt szolgáltatás" vagy a "felügyelt szolgáltatások" kifejezésnek.       |
-|**Marketing azonosítója**     | Egy egyedi URL-cím-barát azonosító. ezt az ajánlatot a piactér URL-címeiben fogjuk használni. Ha például a közzétevő azonosítója *contoso* , a marketing azonosítója pedig *PéldaAlkalmazás*, akkor az Azure Marketplace-en elérhető *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* ajánlatának URL-címe a következő lesz:.        |
+|**Marketing azonosítója**     | Egy egyedi URL-cím-barát azonosító. ezt az ajánlatot a piactér URL-címeiben fogjuk használni. Ha például a közzétevő azonosítója *contoso* , a marketing azonosítója pedig *PéldaAlkalmazás*, akkor az Azure Marketplace-en elérhető ajánlatának URL *-címe https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* lesz.        |
 |**Előfizetési azonosítók előnézete**     | Adjon hozzá egyet a 100-es előfizetés-azonosítóhoz. Az ehhez az előfizetéshez társított ügyfelek az Azure Marketplace-en tekinthetik meg az ajánlatot, mielőtt a szolgáltatás megkezdi a működést. Javasoljuk, hogy a saját előfizetéseit is itt tekintheti meg, így megtekintheti, hogy az ajánlat hogyan jelenik meg az Azure piactéren, mielőtt elérhetővé tenné az ügyfelek számára.  (A Microsoft támogatási és mérnöki csapatai az előzetes verzió ideje alatt is megtekinthetik az ajánlatot.)   |
 |**Hasznos hivatkozások**     | Az ajánlathoz kapcsolódó URL-címek, például dokumentáció, kibocsátási megjegyzések, GYIK stb.        |
 |**Javasolt kategóriák (max. 5)**     | Egy vagy több (legfeljebb öt) kategória, amely az ajánlatára vonatkozik. Ezek a kategóriák segítik az ügyfeleket az Azure Marketplace piactéren és a Azure Portalban.        |
 
 A **marketing** -összetevők szakaszban feltölthet fel emblémákat és más eszközöket az ajánlatával megjelenítve. Lehetősége van a képernyőképek feltöltésére vagy olyan videókra mutató hivatkozásokra, amelyek segítségével az ügyfelek megismerhetik az ajánlatot.
 
-Négy embléma mérete szükséges: **Kicsi (40x40cm)** , **közepes (90x90)** , **nagy (115x115)** és **széles (255x155)** . Kövesse az alábbi irányelveket a logókhoz:
+Négy embléma mérete szükséges: **kis (40x40cm)** , **közepes (90x90)** , **nagy (115x115)** és **széles (255x155)** . Kövesse az alábbi irányelveket a logókhoz:
 
 - Az Azure arculata egyszerű színpalettát használ. Törekedjen minél kevesebb alap- és másodlagos szín használatára az emblémában.
 - A portál témaszínei a fehér és a fekete. Ne használja ezeket a színeket az embléma háttérszíneként. Olyan színt használjon, amelynek hatására az embléma felkelti a figyelmet. Javasoljuk az egyszerű alapszínek használatát.
@@ -172,7 +172,7 @@ ResourceTypes     : {operations}
 Locations         : {}
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -189,7 +189,7 @@ Namespace                  RegistrationState
 Microsoft.ManagedServices  Registered
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - [Megtekintheti és kezelheti az ügyfeleket](view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

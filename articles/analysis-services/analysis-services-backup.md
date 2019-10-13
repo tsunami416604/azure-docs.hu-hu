@@ -2,22 +2,21 @@
 title: Adatbázis biztonsági mentése és visszaállítása Azure Analysis Services | Microsoft Docs
 description: Útmutató Azure Analysis Services adatbázis biztonsági mentéséhez és visszaállításához.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932464"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295416"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
-A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servicesban ugyanúgy történik, mint a helyszíni Analysis Services. Az elsődleges különbség az, hogy hol tárolja a biztonságimásolat-fájlokat. A biztonsági mentési fájlokat egy [Azure Storage](../storage/common/storage-create-storage-account.md)-fiókban lévő tárolóba kell menteni. Használhat egy már meglévő Storage-fiókot és-tárolót, vagy létrehozhatók a kiszolgáló tárolási beállításainak konfigurálásakor.
+A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servicesban ugyanúgy történik, mint a helyszíni Analysis Services. Az elsődleges különbség az, hogy hol tárolja a biztonságimásolat-fájlokat. A biztonsági mentési fájlokat egy [Azure Storage-fiókban](../storage/common/storage-create-storage-account.md)lévő tárolóba kell menteni. Használhat egy már meglévő Storage-fiókot és-tárolót, vagy létrehozhatók a kiszolgáló tárolási beállításainak konfigurálásakor.
 
 > [!NOTE]
 > A Storage-fiók létrehozása egy új számlázható szolgáltatáshoz vezethet. További információt az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/blobs/)ismertető témakörben talál.
@@ -50,13 +49,13 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
     ![Biztonsági mentési beállítások mentése](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Tartalék
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Biztonsági mentés a SSMS használatával
 
 1. A SSMS kattintson a jobb gombbal egy adatbázisra, > **biztonsági mentést**.
 
-2. A **biztonsági mentési adatbázis** > **biztonságimásolat**-fájljában kattintson a **Tallózás**gombra.
+2. A **biztonsági mentési adatbázis** > **biztonságimásolat-fájljában**kattintson a **Tallózás**gombra.
 
 3. A **fájl mentése másként** párbeszédpanelen ellenőrizze a mappa elérési útját, majd írja be a biztonságimásolat-fájl nevét. 
 
@@ -90,7 +89,7 @@ Visszaállításkor a biztonságimásolat-fájlnak a kiszolgálóhoz konfigurál
 
 2. A **biztonsági mentési adatbázis** párbeszédpanel biztonságimásolat- **fájl**területén kattintson a **Tallózás**gombra.
 
-3. Az **adatbázisfájlok** megkeresése párbeszédpanelen válassza ki a visszaállítani kívánt fájlt.
+3. Az **adatbázisfájlok megkeresése** párbeszédpanelen válassza ki a visszaállítani kívánt fájlt.
 
 4. A **Restore Database (adatbázis visszaállítása**) területen válassza ki az adatbázist.
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350026"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300332"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -27,17 +27,19 @@ A big data feldolgozásának négy fő szakasza van:
 
 Először hozzon létre egy Storage-fiókot és egy tárolót. Ezután adjon hozzáférést az adathoz. Ennek a cikknek az első néhány része segít ezeknek a feladatoknak a megvalósításában. A többi szakaszban kiemeljük az egyes feldolgozási fázisok beállításait és eszközeit.
 
+Az Azure Data Lake Storage Gen2rel használható Azure-szolgáltatások teljes listájáért lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-store-integrate-with-azure-services.md)
+
 ## <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 fiók létrehozása
 
 A Data Lake Storage Gen2 fiók olyan Storage-fiók, amely hierarchikus névtérrel rendelkezik. 
 
-A létrehozáshoz tekintse meg a következőt: [Quickstart: Hozzon létre egy Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)Storage-fiókot.
+A létrehozáshoz tekintse meg a rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)című témakört.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
 Itt találja azokat az eszközöket, amelyek segítségével tárolót hozhat létre a fájlokhoz.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure Storage Explorer | [Tároló létrehozása Storage Explorer használatával](data-lake-storage-explorer.md#create-a-container) |
 |AzCopy | [BLOB-tároló vagy fájlmegosztás létrehozása a AzCopyV10 használatával](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
@@ -66,14 +68,14 @@ A hozzáférés három módon biztosítható:
 
 Ez a táblázat bemutatja, hogyan biztosíthat hozzáférést az egyes Azure-szolgáltatásokhoz vagy eszközökhöz.
 
-|Eszköz | Hozzáférés biztosítása | Útmutatás |
+|Eszköz | Hozzáférés biztosítása | Segédletek |
 |---|--|---|
 |Storage Explorer| Szerepkör társítása felhasználókhoz és csoportokhoz | [Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
-|AzCopy| Szerepkör társítása felhasználókhoz és csoportokhoz <br>**or**<br> SAS-token használata| [Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Egyszerű SAS létrehozása az Azure Storage-ból származó fájlok letöltéséhez Azure Storage Explorer használatával](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
+|AzCopy| Szerepkör társítása felhasználókhoz és csoportokhoz <br>**vagy**<br> SAS-token használata| [Rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználóknak a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Egyszerű SAS létrehozása az Azure Storage-ból származó fájlok letöltéséhez Azure Storage Explorer használatával](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
 |Apache DistCp | Szerepkör hozzárendelése felhasználóhoz rendelt felügyelt identitáshoz | [HDInsight-fürt létrehozása Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Data Factory| Szerepkör hozzárendelése felhasználó által hozzárendelt felügyelt identitáshoz<br>**or**<br> Szerepkör hozzárendelése való kihelyezése<br>**or**<br> A Storage-fiók kulcsainak használata | [Társított szolgáltatás tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
+|Azure Data Factory| Szerepkör hozzárendelése felhasználó által hozzárendelt felügyelt identitáshoz<br>**vagy**<br> Szerepkör kiosztása egy egyszerű szolgáltatáshoz<br>**vagy**<br> A Storage-fiók kulcsainak használata | [Társított szolgáltatás tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Szerepkör hozzárendelése felhasználóhoz rendelt felügyelt identitáshoz | [HDInsight-fürt létrehozása Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Szerepkör kiosztása egy egyszerű szolgáltatáshoz | [Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
+|Azure Databricks| Szerepkör kiosztása egy egyszerű szolgáltatáshoz | [Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Az adott fájlokhoz és mappákhoz való hozzáférés biztosításához tekintse meg ezeket a cikkeket.
 
@@ -83,7 +85,7 @@ Az adott fájlokhoz és mappákhoz való hozzáférés biztosításához tekints
 
 A biztonság egyéb szempontjainak beállításával kapcsolatos további tudnivalókért tekintse meg a [Azure Data Lake Storage Gen2 biztonsági útmutatót](https://docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="ingest-the-data"></a>Az adatok betöltése
+## <a name="ingest-the-data"></a>Az adatfeldolgozás
 
 Ez a szakasz kiemeli a különböző adatforrásokat, valamint azokat a különböző módokat, amelyekben az adott adatot betöltheti egy Data Lake Storage Gen2-fiókba.
 
@@ -102,11 +104,11 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyeket az ad hoc adatbev
 
 ### <a name="streamed-data"></a>Továbbított adattartalom
 
-Ez olyan adatforrásokat jelent, amelyeket különböző források, például alkalmazások, eszközök, érzékelők stb. hozhatnak létre. Ezeket az adatmennyiségeket különböző eszközök segítségével Data Lake Sorage Gen2. Ezek az eszközök általában valós időben rögzítik és feldolgozzák az adott eseményt, majd a kötegekben lévő eseményeket a Data Lake Storage Gen2ba írják, hogy tovább lehessen feldolgozni őket.
+Ez olyan adatforrásokat jelent, amelyeket különböző források, például alkalmazások, eszközök, érzékelők stb. hozhatnak létre. Ezeket az adatmennyiségeket számos eszköz Data Lake Storage Gen2 is betöltheti. Ezek az eszközök általában valós időben rögzítik és feldolgozzák az adott eseményt, majd a kötegekben lévő eseményeket a Data Lake Storage Gen2ba írják, hogy tovább lehessen feldolgozni őket.
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével betöltheti a továbbított adatmennyiséget.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure HDInsight Storm | [Írás a HDInsight Apache Storm HDFS Apache Hadoop](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
@@ -116,7 +118,7 @@ A kapcsolódó adatbázisok adatait is megtekintheti. Egy adott időszakban a ka
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a rendszer a kapcsolatok adatfeldolgozását is felhasználhatja.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 
@@ -126,7 +128,7 @@ Az ilyen típusú adathalmazokat a rendszer kifejezetten felhívta, mert a webki
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével betöltheti a webkiszolgáló naplófájljait.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
 
@@ -138,7 +140,7 @@ A legtöbb HDInsight-fürt (Hadoop, HBase, Storm) támogatja az adattároló ada
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a HDInsight-fürtökhöz kapcsolódó adatbevitelt végezheti el.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
 |AzCopy eszköz | [Adatok átvitele a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
@@ -148,7 +150,7 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a HDInsight-für
 
 Nagy mennyiségű adattal rendelkezhetnek a meglévő Hadoop-fürtökben, helyileg a HDFS-t használó gépeken. Előfordulhat, hogy a Hadoop-fürtök helyszíni környezetben találhatók, vagy egy Azure-beli IaaS-fürtön belül vannak. Előfordulhat, hogy az ilyen jellegű adatmásolásra vonatkozó követelmények egy egyszeri vagy ismétlődő módon Azure Data Lake Storage Gen2. Ennek eléréséhez számos lehetőség közül választhat. Az alábbiakban felsoroljuk az alternatívák listáját, valamint a hozzájuk kapcsolódó kompromisszumokat.
 
-| A módszer | Részletek | Előnyök | Megfontolandó szempontok |
+| Megközelítés | Részletek | Előnyei | Megfontolandó szempontok |
 | --- | --- | --- | --- |
 | Azure Data Factory (ADF) használatával közvetlenül a Hadoop-fürtökről másolhatja az adatok Azure Data Lake Storage Gen2 |[Az ADF támogatja a HDFS adatforrásként](../../data-factory/connector-hdfs.md) |Az ADF beépített támogatást nyújt a HDFS és az első osztályú végpontok közötti felügyelethez és figyeléshez |A adatkezelés átjárót a helyszíni vagy a IaaS-fürtön kell telepíteni |
 | Adatok másolása a Hadoop-ből az Azure Storage-ba a Distcp használatával. Ezután másolja az Azure Storage-ból származó adatok Data Lake Storage Gen2 a megfelelő mechanizmus használatával. |Az adatok az Azure Storage-ból Data Lake Storage Gen2 a következő használatával másolhatók: <ul><li>[Azure Data Factory](../../data-factory/copy-activity-overview.md)</li><li>[AzCopy eszköz](../common/storage-use-azcopy-v10.md)</li><li>[HDInsight-fürtökön futó Apache DistCp](data-lake-storage-use-distcp.md)</li></ul> |Használhatja a nyílt forráskódú eszközöket. |Többlépéses folyamat, amely több technológiát is magában foglal |
@@ -167,10 +169,10 @@ Az adatelemzés ![Data Lake Storage Gen2 a](./media/data-lake-storage-data-scena
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével adatelemzési feladatokat futtathat az Data Lake Storage Gen2 tárolt adatokon.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Rövid útmutató: Azure Data Lake Storage Gen2 adatai elemzése a Azure Databricks @ no__t-0 használatával<br><br>[Oktatóanyag: Adatok kinyerése, átalakítása és betöltése a Azure Databricks @ no__t-0 használatával|
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Az adatok vizualizációja
 
@@ -193,7 +195,7 @@ Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letöl
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel adatok tölthetők le a Data Lake Storage Gen2ról.
 
-|Eszköz | Útmutatás |
+|Eszköz | Segédletek |
 |---|--|
 |Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |

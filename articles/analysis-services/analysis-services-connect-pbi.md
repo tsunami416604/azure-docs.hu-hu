@@ -2,18 +2,17 @@
 title: Kapcsolódás a Azure Analysis Serviceshoz Power BI használatával | Microsoft Docs
 description: Megtudhatja, hogyan csatlakozhat egy Azure Analysis Services-kiszolgálóhoz Power BI használatával.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eadba5397655809dc4f3e6d5f9d6c79addde68a6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 181a63fda1feddfb654eb32f46632f0656febb82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619298"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295294"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
@@ -30,7 +29,7 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 
 2. A **kiszolgáló**mezőben adja meg a kiszolgáló nevét. Ügyeljen arra, hogy a teljes URL-címet tartalmazza; például: asazure://westcentralus.asazure.windows.net/advworks.
 
-3. Haismeri annak a táblázatos modellnek az adatbázisának vagy perspektívájának a nevét, amelyhez csatlakozni szeretne, illessze be ide. Ellenkező esetben hagyja üresen ezt a mezőt, és válasszon ki egy adatbázist vagy perspektívát később.
+3. Ha ismeri annak a táblázatos modellnek az adatbázisának vagy perspektívájának a **nevét, amelyhez**csatlakozni szeretne, illessze be ide. Ellenkező esetben hagyja üresen ezt a mezőt, és válasszon ki egy adatbázist vagy perspektívát később.
 
 4. Válassza ki a kapcsolat lehetőséget, majd kattintson a **Csatlakoztatás**gombra. 
 
@@ -45,9 +44,9 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
 ## <a name="connect-in-power-bi-service"></a>Kapcsolódjon Power BI (szolgáltatás)
 
 1. Hozzon létre egy Power BI Desktop fájlt, amely élő kapcsolatban áll a modellel a-kiszolgálón.
-2. [Power bi](https://powerbi.microsoft.com)kattintson az > adatfájlok lekérése elemre, majd keresse meg és válassza ki a. pbix fájlt.
+2. [Power bi](https://powerbi.microsoft.com)kattintson az **adatlekérdezés** > **fájlok**elemre, majd keresse meg és válassza ki a. pbix fájlt.
 
-## <a name="see-also"></a>Lásd még
-[Kapcsolódás Azure Analysis Serviceshoz](analysis-services-connect.md)   
+## <a name="see-also"></a>Lásd még:
+[Kapcsolódás Azure Analysis Services](analysis-services-connect.md)   
 [Ügyfélkódtárak](analysis-services-data-providers.md)
 

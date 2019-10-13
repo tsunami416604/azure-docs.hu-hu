@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d69cb80b105c85640420575f709d8a47629eea0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 88d028f48b75238e2123d939a832e3fa70fc0056
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082293"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300882"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Gyors útmutató: Linux rendszerű virtuális gép létrehozása az Azure-ban a PowerShell használatával
+# <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Rövid útmutató: Linux virtuális gép létrehozása az Azure-ban PowerShell-lel
 
 Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe az Azure PowerShell modullal Linux rendszerű virtuális gépeket (VM-eket) az Azure-ban. Ez a rövid útmutató a Canonical által közzétett Ubuntu 16.04 LTS Marketplace-beli rendszerképet használja. A virtuális gép működésének megtekintéséhez létrehoz majd egy SSH-kapcsolatot a virtuális géppel, és telepíti az NGINX-webkiszolgálót.
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A **Másolás** kiválasztásával másolja és illessze be a kódrészleteket a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-ssh-key-pair"></a>SSH-kulcspár létrehozása
 
@@ -48,7 +48,7 @@ Az SSH-kulcspárok létrehozásáról, többek között a PuTTy használatáról
 
 Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, az [a Cloud Shell által automatikusan létrehozott tárfiókban](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) lévő tárolórendszerképben lesz tárolva. Ne törölje a tárfiókot vagy a benne lévő a fájlmegosztást, amíg le nem kérte a kulcsokat, ellenkező esetben elveszíti a hozzáférést a virtuális géphez. 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoportok olyan logikai tárolók, amelyekbe a rendszer üzembe helyezi az Azure-erőforrásokat és kezeli azokat:
 
@@ -206,11 +206,11 @@ sudo apt-get -y install nginx
 Ha elkészült, az SSH-munkamenetből való kilépéshez írja be a következőt: `exit`.
 
 
-## <a name="view-the-web-server-in-action"></a>A webkiszolgáló működésének ellenőrzése
+## <a name="view-the-web-server-in-action"></a>A webkiszolgáló megtekintése működés közben
 
 Egy tetszőleges böngésző használatával megtekintheti az alapértelmezett NGINX-kezdőlapot. Webcímként adja meg a virtuális gép nyilvános IP-címét. A nyilvános IP-cím a virtuális gép áttekintő oldalán található, vagy a korábban használt SSH-kapcsolati sztring részeként.
 
-![Alapértelmezett NGINX-webhely](./media/quick-create-cli/nginx.png)
+![NGINX alapértelmezett kezdőlapja](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -220,7 +220,7 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://do
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy egyszerű virtuális gépet, létrehozott egy hálózati biztonsági csoportot és szabályt, valamint telepített egy alapszintű webkiszolgálót. Ha bővebb információra van szüksége az Azure-beli virtuális gépekkel kapcsolatban, lépjen tovább a Linux rendszerű virtuális gépekről szóló oktatóanyagra.
 

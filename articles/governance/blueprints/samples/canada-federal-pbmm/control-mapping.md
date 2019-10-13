@@ -1,17 +1,17 @@
 ---
-title: Minta – Kanada szövetségi PBMM terve – vezérlés leképezése
+title: Kanadai szövetségi PBMM terv minta – vezérlés leképezése
 description: A kanadai szövetségi PBMM tervrajzi mintáinak leképezése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 7630db80c81f1e717b84c6be0c4fcf9526ed06c9
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: b16ad4fd08776312d318067b4bc84f79b9797e70
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248620"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299158"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>A Kanada szövetségi PBMM tervezetének vezérlési mintája
 

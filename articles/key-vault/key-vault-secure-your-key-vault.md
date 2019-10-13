@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 4857cda7c3387e72be8837422469888adc5504d1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883105"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301064"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Biztonságos hozzáférés a kulcstartóhoz
 
@@ -24,7 +24,7 @@ A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a t
 
 ## <a name="access-model-overview"></a>Hozzáférési modell áttekintése
 
-A kulcstartóhoz való hozzáférést két interfész szabályozza: a **felügyeleti síkon** és az adatsíkon. A felügyeleti síkon a Key Vault saját maga felügyeli. Az ebben a síkban található műveletek közé tartozik a kulcstartók létrehozása és törlése, Key Vault tulajdonságok beolvasása és a hozzáférési házirendek frissítése. Az adatsíkon a Key vaultban tárolt adatmennyiséggel dolgozik. Kulcsok, titkos kódok és tanúsítványok hozzáadására, törlésére és módosítására is lehetőség van.
+A kulcstartóhoz való hozzáférést két interfész szabályozza: a **felügyeleti síkon** és az **adatsíkon**. A felügyeleti síkon a Key Vault saját maga felügyeli. Az ebben a síkban található műveletek közé tartozik a kulcstartók létrehozása és törlése, Key Vault tulajdonságok beolvasása és a hozzáférési házirendek frissítése. Az adatsíkon a Key vaultban tárolt adatmennyiséggel dolgozik. Kulcsok, titkos kódok és tanúsítványok hozzáadására, törlésére és módosítására is lehetőség van.
 
 A kulcstartók bármelyik síkon való eléréséhez minden hívónak (felhasználónak vagy alkalmazásnak) megfelelő hitelesítéssel és engedélyezéssel kell rendelkeznie. A hitelesítés létrehozza a hívó identitását. Az engedélyezés meghatározza, hogy a hívó milyen műveleteket hajthat végre. 
 
@@ -34,10 +34,10 @@ Mindkét síkon Azure Active Directoryt (Azure AD) használ a hitelesítéshez. 
 
 Amikor kulcstartót hoz létre egy Azure-előfizetésben, az automatikusan társítva lesz az előfizetés Azure AD-bérlője számára. Mindkét síkon lévő hívónak regisztrálnia kell ebben a bérlőben, és hitelesítenie kell magát a kulcstartó eléréséhez. Mindkét esetben az alkalmazások kétféleképpen férhetnek hozzá Key Vaulthoz:
 
-- **Felhasználói és alkalmazás-hozzáférés**: Az alkalmazás a bejelentkezett felhasználó nevében fér hozzá Key Vaulthoz. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. A felhasználói hozzáférés két módon adható meg. A felhasználók bármely alkalmazásból hozzáférhetnek Key Vaulthoz, vagy egy adott alkalmazást (más néven _összetett identitást_) kell használniuk.
-- **Csak alkalmazáshoz való hozzáférés**: Az alkalmazás démon-szolgáltatásként vagy háttérbeli feladatokként fut. Az alkalmazás identitása hozzáférést kap a kulcstartóhoz.
+- **Felhasználói Plus alkalmazás-hozzáférés**: az alkalmazás a bejelentkezett felhasználó nevében fér hozzá Key Vaulthoz. Ilyen típusú hozzáférés például a Azure PowerShell és a Azure Portal. A felhasználói hozzáférés két módon adható meg. A felhasználók bármely alkalmazásból hozzáférhetnek Key Vaulthoz, vagy egy adott alkalmazást (más néven _összetett identitást_) kell használniuk.
+- **Csak alkalmazáshoz való hozzáférés**: az alkalmazás démoni szolgáltatásként vagy háttérbeli feladatokként fut. Az alkalmazás identitása hozzáférést kap a kulcstartóhoz.
 
-Mindkét típusú hozzáférés esetén az alkalmazás az Azure AD-vel is hitelesít. Az alkalmazás a [támogatott hitelesítési módszereket](../active-directory/develop/authentication-scenarios.md) használja az alkalmazás típusától függően. Az alkalmazás jogkivonatot ad a síkon lévő erőforráshoz a hozzáférés biztosításához. Az erőforrás az Azure-környezet alapján a felügyelet vagy az adatsík végpontja. Az alkalmazás a jogkivonatot használja, és egy REST API kérelmet küld Key Vaultnak. További információért tekintse át a [teljes hitelesítési folyamatot](../active-directory/develop/v1-protocols-oauth-code.md).
+Mindkét típusú hozzáférés esetén az alkalmazás az Azure AD-vel is hitelesít. Az alkalmazás a [támogatott hitelesítési módszereket](../active-directory/develop/authentication-scenarios.md) használja az alkalmazás típusától függően. Az alkalmazás jogkivonatot ad a síkon lévő erőforráshoz a hozzáférés biztosításához. Az erőforrás az Azure-környezet alapján a felügyelet vagy az adatsík végpontja. Az alkalmazás a jogkivonatot használja, és egy REST API kérelmet küld Key Vaultnak. További információért tekintse át a [teljes hitelesítési folyamatot](../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
 A mindkét síkon történő hitelesítéshez használt egyetlen mechanizmus modellje számos előnnyel jár:
 
@@ -51,7 +51,7 @@ Az alkalmazások végpontokon keresztül férnek hozzá a síkokhoz. A két sík
 
 A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
-| Access&nbsp;plane | Hozzáférés végpontjai | Műveletek | Hozzáférés&nbsp;-vezérlési mechanizmus |
+| Hozzáférés @ no__t – 0plane | Hozzáférés végpontjai | Műveletek | Hozzáférés a @ no__t-0control mechanizmushoz |
 | --- | --- | --- | --- |
 | Felügyeleti sík | **Globálisan:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> management.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> management.microsoftazure.de:443 | Kulcstartók létrehozása, olvasása, frissítése és törlése<br><br>Key Vault hozzáférési szabályzatok beállítása<br><br>Key Vault címkék beállítása | Azure Resource Manager RBAC |
 | Adatsík | **Globálisan:**<br> &lt;tároló-neve&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;tároló-neve&gt;.vault.azure.cn:443<br><br> **Amerikai Egyesült Államok kormánya által használt Azure:**<br> &lt;tároló-neve&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Germany:**<br> &lt;tároló-neve&gt;.vault.microsoftazure.de:443 | Kulcsok: visszafejtés, titkosítás,<br> kicsomagolás, becsomagolás, ellenőrzés, aláírás,<br> beolvasás, Listázás, frissítés, létrehozás,<br> importálás, törlés, biztonsági mentés, visszaállítás<br><br> Titkok: beolvasás, Listázás, beállítás, törlés | Hozzáférési szabályzat Key Vault |
@@ -60,22 +60,22 @@ A következő táblázat a felügyeleti és adatsíkok végpontját mutatja be.
 
 A felügyeleti síkon a RBAC (szerepköralapú Access Control) segítségével engedélyezheti a hívó által végrehajtható műveleteket. A RBAC-modellben minden Azure-előfizetés egy Azure AD-példánnyal rendelkezik. Hozzáférést biztosít a felhasználóknak, csoportoknak és alkalmazásoknak ebben a címtárban. A hozzáférés a Azure Resource Manager üzemi modellt használó Azure-előfizetés erőforrásainak kezeléséhez van megadva. A hozzáférés megadásához használja a [Azure Portal](https://portal.azure.com/), az [Azure CLI](../cli-install-nodejs.md), a [Azure PowerShell](/powershell/azureps-cmdlets-docs)vagy a [Azure Resource Manager REST API-kat](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
-Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést az Azure AD használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő RBAC-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre `key vault Contributor` meghatározott szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
+Hozzon létre egy kulcstartót egy erőforráscsoporthoz, és kezelje a hozzáférést az Azure AD használatával. A felhasználók vagy csoportok számára engedélyezheti az erőforráscsoport kulcstárolóinak kezelését. A hozzáférést adott hatóköri szinten kell megadni a megfelelő RBAC-szerepkörök hozzárendelésével. Ahhoz, hogy hozzáférést biztosítson egy felhasználónak a kulcstartók kezeléséhez, egy előre meghatározott `key vault Contributor` szerepkört kell hozzárendelni a felhasználóhoz egy adott hatókörben. A következő hatókörökhöz rendelhet hozzá RBAC-szerepköröket:
 
-- **Előfizetés**: Az előfizetés szintjén hozzárendelt RBAC-szerepkörök az adott előfizetésen belüli összes erőforráscsoport és erőforrás esetében érvényesek.
-- **Erőforráscsoport**: Az erőforráscsoport szintjén hozzárendelt RBAC-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
-- **Adott erőforrás**: Egy adott erőforráshoz hozzárendelt RBAC-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
+- **Előfizetés**: az előfizetés szintjén hozzárendelt RBAC-szerepkör az adott előfizetésen belüli összes erőforráscsoport és erőforrás esetében érvényes.
+- **Erőforráscsoport**: az erőforráscsoport szintjén HOZZÁRENDELt RBAC-szerepkör az adott erőforráscsoport összes erőforrására vonatkozik.
+- **Adott**erőforrás: egy adott erőforráshoz hozzárendelt RBAC-szerepkör az adott erőforrásra vonatkozik. Ebben az esetben az erőforrás egy adott kulcstartó.
 
-Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információkért lásd [: RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md).
+Számos előre definiált szerepkör létezik. Ha egy előre meghatározott szerepkör nem felel meg az igényeinek, megadhatja saját szerepkörét. További információt a [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md)című témakörben talál.
 
 > [!IMPORTANT]
-> Ha a felhasználó rendelkezik `Contributor` engedéllyel egy kulcstartó felügyeleti síkon, a felhasználó hozzáférést biztosíthat az adatsíkon az Key Vault hozzáférési szabályzat beállításával. Szigorúan szabályozhatja, hogy kik `Contributor` rendelkeznek szerepkör-hozzáféréssel a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
+> Ha a felhasználó `Contributor` engedélyekkel rendelkezik a kulcstartó felügyeleti síkja számára, akkor a felhasználó egy Key Vault hozzáférési szabályzat beállításával saját maga is megadhatja az adatsíkon való hozzáférést. Szigorúan szabályozhatja, hogy ki `Contributor` szerepkör-hozzáférést biztosít a kulcstartóhoz. Győződjön meg arról, hogy csak a jogosult személyek férhetnek hozzá és kezelhetik a kulcstartókat, kulcsokat, titkos kulcsokat és tanúsítványokat.
 >
 
 <a id="data-plane-access-control"></a> 
 ## <a name="data-plane-and-access-policies"></a>Adatsík és hozzáférési szabályzatok
 
-A Key vaulthoz Key Vault hozzáférési szabályzatok beállításával biztosíthatja az adatsíkok elérését. A hozzáférési szabályzatok beállításához a felhasználónak, csoportnak vagy alkalmazásnak engedélyekkel kell rendelkeznie `Contributor` az adott kulcstartó felügyeleti síkja számára.
+A Key vaulthoz Key Vault hozzáférési szabályzatok beállításával biztosíthatja az adatsíkok elérését. A hozzáférési szabályzatok beállításához a felhasználónak, csoportnak vagy alkalmazásnak `Contributor` engedéllyel kell rendelkeznie az adott kulcstartó felügyeleti síkja számára.
 
 Egy kulcstartóban felhasználói, csoport-vagy alkalmazás-hozzáférési jogosultságot adhat adott műveletek végrehajtásához a kulcsok és titkok számára. A Key Vault a Key vaulthoz legfeljebb 1 024 hozzáférési szabályzatot támogat. Ha több felhasználó számára kíván hozzáférést biztosítani az adatsíkon, hozzon létre egy Azure AD biztonsági csoportot, és vegyen fel felhasználókat a csoportba.
 
@@ -92,15 +92,15 @@ Az adatsíkok hozzáférését a [Azure Key Vault virtuális hálózati szolgál
 Ebben a példában egy olyan alkalmazást fejlesztünk, amely egy tanúsítványt használ az SSL-hez, az Azure Storage-hoz az adatok tárolására, valamint egy RSA 2 048 bites kulcsot az aláírási műveletekhez. Az alkalmazás egy Azure-beli virtuális gépen (VM) (vagy egy virtuálisgép-méretezési csoporton) fut. Az alkalmazás titkos kulcsainak tárolására kulcstartót használhatunk. Az alkalmazás által az Azure AD-vel való hitelesítéshez használt rendszerindító tanúsítványt tároljuk.
 
 Hozzáférésre van szükségünk a következő tárolt kulcsokhoz és titkos kulcsokhoz:
-- **SSL-tanúsítvány**: SSL-hez használatos.
-- **Tárolási kulcs**: A Storage-fiók eléréséhez használatos.
-- **RSA 2 048 bites kulcs**: Aláírási műveletekhez használatos.
-- **Rendszertöltő tanúsítvány**: Az Azure AD-vel való hitelesítéshez használatos. A hozzáférés megadása után beolvashatja a Storage-kulcsot, és használhatja az RSA-kulcsot az aláíráshoz.
+- **SSL-tanúsítvány**: az SSL-hez használatos.
+- **Tárolási kulcs**: a Storage-fiók eléréséhez használatos.
+- **RSA 2 048 bites kulcs**: aláírási műveletekhez használatos.
+- Rendszerindítási **tanúsítvány**: az Azure ad-vel való hitelesítéshez használatos. A hozzáférés megadása után beolvashatja a Storage-kulcsot, és használhatja az RSA-kulcsot az aláíráshoz.
 
 Meg kell határoznia a következő szerepköröket annak meghatározásához, hogy ki kezelheti, telepítheti és naplózhatja az alkalmazást:
-- **Biztonsági csapat**: A KSH (biztonsági igazgató) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a titkok megfelelő védelme. A titkok tartalmazhatnak SSL-tanúsítványokat, RSA-kulcsokat az aláíráshoz, a kapcsolati karakterláncokhoz és a Storage-fiók kulcsaihoz.
-- **Fejlesztők és operátorok**: Az alkalmazást fejlesztő munkatárs és üzembe helyezése az Azure-ban. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az SSL-tanúsítványokhoz és az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá a bizalmas adatokhoz.
-- **Auditorok**: Ez a szerepkör olyan közreműködők számára készült, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását. 
+- **Biztonsági csapat**: a KSH (a biztonsági tisztviselő) vagy hasonló közreműködők irodájában dolgozó személyzet. A biztonsági csapat feladata a titkok megfelelő védelme. A titkok tartalmazhatnak SSL-tanúsítványokat, RSA-kulcsokat az aláíráshoz, a kapcsolati karakterláncokhoz és a Storage-fiók kulcsaihoz.
+- **Fejlesztők és operátorok**: az alkalmazást fejlesztő és az Azure-ban üzembe helyezett munkatársak. A csapat tagjai nem tartoznak a biztonsági személyzetbe. Nem férhetnek hozzá a bizalmas adatokhoz, például az SSL-tanúsítványokhoz és az RSA-kulcsokhoz. Csak az általuk telepített alkalmazások férhetnek hozzá a bizalmas adatokhoz.
+- **Könyvvizsgálók**: Ez a szerepkör olyan közreműködők számára szól, akik nem tagjai a fejlesztési vagy általános informatikai munkatársainak. A biztonsági szabványoknak való megfelelés biztosítása érdekében áttekintik a tanúsítványok, kulcsok és titkok használatát és karbantartását. 
 
 Van egy másik szerepkör, amely az alkalmazás hatókörén kívül esik: az előfizetés (vagy erőforráscsoport) rendszergazdája. Az előfizetés-rendszergazda beállítja a kezdeti hozzáférési engedélyeket a biztonsági csapat számára. Hozzáférést biztosítanak a biztonsági csapathoz egy olyan erőforráscsoport használatával, amely az alkalmazás által igényelt erőforrásokkal rendelkezik.
 
@@ -123,14 +123,14 @@ A következő műveleteket kell engedélyeznie a szerepkörökhöz:
 
 A következő táblázat összefoglalja a szerepkörök és alkalmazások hozzáférési engedélyeit. 
 
-| Role | Felügyeleti sík engedélyei | Adatsík engedélyei |
+| Szerepkör | Felügyeleti sík engedélyei | Adatsík engedélyei |
 | --- | --- | --- |
-| Biztonsági csapat | Key Vault-közreműködő | Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása<br>Titkok: minden művelet |
-| Fejlesztők és&nbsp;operátorok | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: Ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | Nincsenek |
-| Ellenőrök | Nincsenek | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: Ez az engedély lehetővé teszi a könyvvizsgálók számára, hogy megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
-| Alkalmazás | Nincsenek | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
+| Biztonsági csapat | Key Vault közreműködő | Kulcsok: biztonsági mentése, létrehozása, törlése, beolvasása, importálása, listázása, visszaállítása<br>Titkok: minden művelet |
+| Fejlesztők és @ no__t – 0operators | Key Vault üzembe helyezési engedély<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a telepített virtuális gépek a kulcstartóból beolvassák a titkos kulcsokat. | None |
+| Ellenőrök | None | Kulcsok: listája<br>Titkos kulcsok: listája<br><br> **Megjegyzés**: ez az engedély lehetővé teszi, hogy a könyvvizsgálók megvizsgálják a naplókban nem kibocsátott kulcsok és titkos kódok attribútumait (címkéket, aktiválási dátumokat, lejárati dátumokat). |
+| Jelentkezés | None | Kulcsok: aláírása<br>Titkos kulcsok: beolvasása |
 
-A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure app Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek hozzá kell `Contributor` férniük az ilyen típusú erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
+A három csoport szerepköreinek más erőforrásokhoz való hozzáférésre van szükségük Key Vault engedélyekkel együtt. A virtuális gépek (vagy a Azure App Service Web Apps funkciójának üzembe helyezéséhez) a fejlesztőknek és a kezelőknek `Contributor` hozzáféréssel kell rendelkezniük ezekhez az erőforrásokhoz. A könyvvizsgálóknak olvasási hozzáféréssel kell rendelkezniük ahhoz a Storage-fiókhoz, ahol a Key Vault-naplókat tárolják.
 
 A tanúsítványok, a hozzáférési kulcsok és a titkos kódok programozott módon történő üzembe helyezésével kapcsolatos további információkért tekintse meg a következő forrásokat:
 - Megtudhatja, hogyan [helyezhet üzembe tanúsítványokat a virtuális gépeken egy ügyfél által felügyelt kulcstartóból](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (blogbejegyzés).
@@ -139,12 +139,12 @@ A tanúsítványok, a hozzáférési kulcsok és a titkos kódok programozott m�
 A hozzáférési engedélyek többségét a Azure Portal használatával adhatja meg. A részletes engedélyek megadásához Azure PowerShell vagy az Azure CLI-t használhatja.
 
 Az ebben a szakaszban található PowerShell-kódrészletek a következő feltételezésekkel vannak összeépítve:
-- Az Azure AD rendszergazdája olyan biztonsági csoportokat hozott létre, amelyek a három szerepkört jelölik: A contoso biztonsági csapata, a contoso app DevOps és a contoso app Auditors. A rendszergazda hozzáadta a felhasználókat a saját csoportjaihoz.
+- Az Azure AD-rendszergazda biztonsági csoportokat hozott létre a következő három szerepkör képviseletére: contoso Security Team, contoso app DevOps és contoso app Auditors. A rendszergazda hozzáadta a felhasználókat a saját csoportjaihoz.
 - Az összes erőforrás a **ContosoAppRG** erőforráscsoport területén található.
 - A Key Vault naplók a **contosologstorage** Storage-fiókban tárolódnak. 
 - A **ContosoKeyVault** Key Vault és a **contosologstorage** Storage-fiók ugyanazon az Azure-helyen található.
 
-Az előfizetés-rendszergazda hozzárendeli `key vault Contributor` a `User Access Administrator` és a szerepköröket a biztonsági csapathoz. Ezek a szerepkörök lehetővé teszik a biztonsági csapatnak, hogy kezelje a más erőforrásokhoz és kulcstartóhoz való hozzáférést, mindkettőt a **ContosoAppRG** erőforráscsoporthoz.
+Az előfizetés rendszergazdája a `key vault Contributor` és a `User Access Administrator` szerepkört a biztonsági csapathoz rendeli. Ezek a szerepkörök lehetővé teszik a biztonsági csapatnak, hogy kezelje a más erőforrásokhoz és kulcstartóhoz való hozzáférést, mindkettőt a **ContosoAppRG** erőforráscsoporthoz.
 
 ```powershell
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
@@ -183,7 +183,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 A definiált egyéni szerepkörök csak ahhoz az előfizetéshez rendelhetők hozzá, amelyben a **ContosoAppRG** -erőforráscsoport létrejött. Ha egyéni szerepkört szeretne használni más előfizetésekben lévő más projektekhez, vegyen fel más előfizetéseket a szerepkör hatóköréhez.
 
-A DevOps-munkatársak esetében a Key Vault `deploy/action` engedélyhez tartozó egyéni szerepkör-hozzárendelés az erőforráscsoport hatóköre. Csak a **ContosoAppRG** -erőforráscsoport számára létrehozott virtuális gépek férhetnek hozzá a titkokhoz (SSL és rendszerindítási tanúsítványok). A DevOps-tag által más erőforráscsoportok által létrehozott virtuális gépek nem férhetnek hozzá ezekhez a titkokhoz, még akkor is, ha a virtuális gép rendelkezik a titkos URI-k használatával.
+A DevOps-munkatársak esetében a Key vaulthoz tartozó egyéni szerepkör-hozzárendelés @no__t – 0 jogosultság az erőforráscsoport hatóköre. Csak a **ContosoAppRG** -erőforráscsoport számára létrehozott virtuális gépek férhetnek hozzá a titkokhoz (SSL és rendszerindítási tanúsítványok). A DevOps-tag által más erőforráscsoportok által létrehozott virtuális gépek nem férhetnek hozzá ezekhez a titkokhoz, még akkor is, ha a virtuális gép rendelkezik a titkos URI-k használatával.
 
 Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli forgatókönyvek összetettebbek lehetnek. Az engedélyeket a Key Vault igényei szerint módosíthatja. Feltételezzük, hogy a biztonsági csapat biztosítja a kulcs-és titkos referenciákat (URI-k és ujjlenyomatai megfelelnek), amelyeket az DevOps munkatársai használnak az alkalmazásaikban. A fejlesztőknek és az operátoroknak nincs szükségük adatsíkon való hozzáférésre. A Key Vault biztonságossá tételére koncentrálunk. [A virtuális gépek, a](https://azure.microsoft.com/services/virtual-machines/security/) [Storage-fiókok](../storage/common/storage-security-guide.md)és az egyéb Azure-erőforrások biztonságossá tételéhez hasonló szempontokat kell figyelembe venni.
 
@@ -192,11 +192,11 @@ Példánkban egy egyszerű forgatókönyvet ismertetünk. A valós életbeli for
 
 Javasoljuk, hogy [Key Vault tűzfalak és virtuális hálózatok konfigurálásával](key-vault-network-security.md)további biztonságos hozzáférést állítson be a kulcstartóhoz.
 
-## <a name="resources"></a>További források
+## <a name="resources"></a>Segédanyagok és eszközök
 
-* [Azure AD RBAC](../role-based-access-control/role-assignments-portal.md)
+* [Azure AD-RBAC](../role-based-access-control/role-assignments-portal.md)
 
-* [RBAC: Beépített szerepkörök](../role-based-access-control/built-in-roles.md)
+* [RBAC: beépített szerepkörök](../role-based-access-control/built-in-roles.md)
 
 * [A Resource Manager és a klasszikus üzembe helyezés ismertetése](../azure-resource-manager/resource-manager-deployment-model.md) 
 
@@ -208,7 +208,7 @@ Javasoljuk, hogy [Key Vault tűzfalak és virtuális hálózatok konfigurálás�
 
     Ez a 2015-es Microsoft Ignite konferencia videó az Azure-ban elérhető hozzáférés-kezelési és jelentéskészítési képességeket ismerteti. Emellett az Azure-előfizetések Azure AD-vel való hozzáférésének biztosítására vonatkozó ajánlott eljárásokat is vizsgálja.
 
-* [Hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és az Azure AD használatával](../active-directory/develop/v1-protocols-oauth-code.md)
+* [Hozzáférés engedélyezése webalkalmazásokhoz a OAuth 2,0 és az Azure AD használatával](../active-directory/develop/v2-oauth2-auth-code-flow.md)
 
 * [Key Vault felügyeleti REST API-k](https://msdn.microsoft.com/library/azure/mt620024.aspx)
 
@@ -222,7 +222,7 @@ Javasoljuk, hogy [Key Vault tűzfalak és virtuális hálózatok konfigurálás�
   
 * Key Vault hozzáférési szabályzat [beállítása](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) és [eltávolítása](/powershell/module/az.keyvault/Remove-azKeyVaultAccessPolicy) a PowerShell használatával.
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Key Vault tűzfalak és virtuális hálózatok](key-vault-network-security.md)konfigurálása.
 

@@ -12,36 +12,38 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: cea0d63c20af781fcfc6ba5d7c06061b12992702
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 10/02/2019
+ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212025"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293431"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Platformfüggetlen értesítések küldése a felhasználóknak a Notification Hubs
 
-Egy korábbi oktatóanyagban [Felhasználók értesítése Notification Hubs], megtudta, hogyan küldhet le értesítéseket minden olyan eszközre, amely regisztrálva van egy adott hitelesített felhasználó számára. Ebben az oktatóanyagban több kérelemre volt szükség ahhoz, hogy értesítést küldjön az egyes támogatott ügyféloldali platformokhoz. Az Azure Notification Hubs támogatja a sablonokat, amellyel meghatározhatja, hogy egy adott eszköz hogyan kapjon értesítéseket. Ez a módszer leegyszerűsíti a platformok közötti értesítések küldését.
+Ez az oktatóanyag az előző oktatóanyagra épül, az [Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával]. Ez az oktatóanyag azt ismerteti, hogyan lehet leküldéses értesítéseket küldeni minden olyan eszközre, amely regisztrálva van egy adott hitelesített felhasználó számára. Ennek a megközelítésnek több kérelemre van szüksége ahhoz, hogy értesítést küldjön az egyes támogatott ügyféloldali platformokra. Az Azure Notification Hubs támogatja a sablonokat, amellyel meghatározhatja, hogy egy adott eszköz hogyan kapjon értesítéseket. Ez a módszer leegyszerűsíti a platformok közötti értesítések küldését.
 
-Ez a cikk bemutatja, hogyan veheti igénybe a sablonok előnyeit egyetlen kérelemben, amely az összes platformra kiterjedő, a platformtól független értesítés. A sablonokkal kapcsolatos részletesebb információkért lásd: az [Azure Notification Hubs áttekintése][Templates].
+Ez a cikk bemutatja, hogyan használhatja ki a sablonok előnyeit, hogy az összes platformot tároló értesítést küldjön. Ez a cikk egyetlen kérelmet használ a platform semleges értesítéseinek küldéséhez. További információ a sablonokról: [Notification Hubs Overview (áttekintés][Templates]).
 
 > [!IMPORTANT]
-> Windows Phone-telefon a 8,1-es és korábbi projektek nem támogatottak a Visual Studio 2017-ben. További információ: [A Visual Studio 2017 platform célcsoportkezelése és kompatibilitása](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
+> Windows Phone-telefon a 8,1-es és korábbi projektek nem támogatottak a Visual Studio 2019-ben. További információ: [Visual Studio 2019 platform Targeting and Compatibility](/visualstudio/releases/2019/compatibility).
 
 > [!NOTE]
-> A Notification Hubs segítségével egy eszköz több sablont is regisztrálhat ugyanazzal a címkével. Ebben az esetben egy olyan bejövő üzenet, amely a címkét célozza, több értesítés érkezik az eszközre, egyet pedig az egyes sablonokhoz. Ez a folyamat lehetővé teszi, hogy ugyanazt az üzenetet több vizualizációs értesítésben jelenítse meg, például jelvényként, valamint egy Windows áruházbeli alkalmazásban bejelentési értesítésként.
+> A Notification Hubs segítségével egy eszköz több sablont is regisztrálhat ugyanazzal a címkével. Ebben az esetben a címkére irányuló bejövő üzenet több értesítést küld az eszköznek, egy pedig minden sablonhoz. Ez a folyamat lehetővé teszi, hogy ugyanazt az üzenetet több vizualizációs értesítésben jelenítse meg, például jelvényként, valamint egy Windows áruházbeli alkalmazásban bejelentési értesítésként.
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>Platformfüggetlen értesítések küldése sablonok használatával
 
-Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatával, tegye a következőket:
+Ez a szakasz a [Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával] létrehozott mintakód használatával készült. A mintaalkalmazást a [GitHubról](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) töltheti le.
 
-1. A Visual Studióban Megoldáskezelő bontsa ki a **vezérlők** mappát, majd nyissa meg a RegisterController.cs fájlt.
+Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatával, hajtsa végre a következő lépéseket:
 
-2. Keresse meg a kód blokkját a `Put` metódusban, amely új regisztrációt hoz létre, majd `switch` cserélje le a tartalmat a következő kódra:
+1. A Visual Studióban **megoldáskezelő**bontsa ki a **vezérlők** mappát, majd nyissa meg a *RegisterController.cs* fájlt.
+
+1. Keresse meg a kód blokkját a `Put` metódusban, amely új regisztrációt hoz létre, majd cserélje le a `switch` tartalmat a következő kódra:
 
     ```csharp
     switch (deviceUpdate.Platform)
@@ -74,7 +76,7 @@ Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatá
 
     Ez a kód meghívja a platform-specifikus metódust, hogy natív regisztráció helyett sablon-regisztrációt hozzon létre. Mivel a sablon regisztrációja natív regisztrációból származik, nem kell módosítania a meglévő regisztrációkat.
 
-3. A vezérlőben cserélje le a `sendNotification` metódust a következő kódra: `Notifications`
+1. A **megoldáskezelő**a **vezérlők** mappában nyissa meg a *NotificationsController.cs* fájlt. Cserélje le az `Post` metódust az alábbi kódra:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -89,21 +91,20 @@ Ha platformfüggetlen értesítéseket szeretne küldeni a sablonok használatá
     }
     ```
 
-    Ez a kód egyszerre küld értesítést az összes platformra, anélkül, hogy natív adattartalmat kellene megadnia. A Notification Hubs a megadott *címke* értékkel rendelkező összes eszközre kiépíti és biztosítja a megfelelő adattartalmat a regisztrált sablonokban meghatározottak szerint.
+    Ez a kód egyszerre küld értesítést az összes platformra. Nem ad meg natív adattartalmat. A Notification Hubs a megadott címke értékkel rendelkező összes eszközre kiépíti és biztosítja a megfelelő adattartalmat a regisztrált sablonokban meghatározottak szerint.
 
-4. Tegye közzé újra a WebApi projektjét.
+1. Tegye közzé újra a webes API-projektet.
 
-5. Futtassa ismét az ügyfélalkalmazás alkalmazást, és ellenőrizze, hogy a regisztráció sikeres volt-e.
+1. Futtassa újra az ügyfélalkalmazás alkalmazást annak ellenőrzéséhez, hogy a regisztráció sikeres volt-e.
 
-6. Választható Telepítse az ügyfélalkalmazás egy második eszközre, majd futtassa az alkalmazást.
-    Egy értesítés jelenik meg minden eszközön.
+1. Szükség esetén telepítse az ügyfélalkalmazás egy második eszközre, majd futtassa az alkalmazást. Egy értesítés jelenik meg minden eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy elvégezte az oktatóanyagot, a következő témakörökben talál további információt a Notification Hubs és a sablonokról:
+Most, hogy elvégezte az oktatóanyagot, ismerkedjen meg a következő cikkekben található Notification Hubs és sablonokkal:
 
-* [Use Notification Hubs to send breaking news]: Demonstrates another scenario for using templates.
-* Az [Azure Notification Hubs áttekintése][Templates]: Részletesebb információkat tartalmaz a sablonokról.
+* A sablonok használatára vonatkozó más forgatókönyv esetén tekintse [meg a leküldéses értesítések adott Windows-eszközökön univerzális Windows-platform alkalmazások][Use Notification Hubs to send breaking news] oktatóanyagát.
+* További információ a sablonokról: [Notification Hubs Overview (áttekintés][Templates]).
 
 <!-- Anchors. -->
 
@@ -112,10 +113,10 @@ Most, hogy elvégezte az oktatóanyagot, a következő témakörökben talál to
 <!-- URLs. -->
 [Push to users ASP.NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Push to users Mobile Services]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Visual Studio 2012 Express for Windows 8]: https://go.microsoft.com/fwlink/?LinkId=257546
+[Visual Studio 2012 Express for Windows 8]: https://visualstudio.microsoft.com/downloads/
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
-[Felhasználók értesítése Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx

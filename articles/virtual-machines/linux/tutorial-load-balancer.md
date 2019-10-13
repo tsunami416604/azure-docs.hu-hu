@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b813a197266db37bde961e079f5d5d5e92353db1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708515"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300818"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Terheléselosztó Linux rendszerű virtuális gépek az Azure-ban magas rendelkezésre állású alkalmazás létrehozása az Azure CLI-vel
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
 
 A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ebben az oktatóanyagban megismerkedhet az Azure Load Balancer különböző összetevőivel, amelyek elosztják a forgalmat, és gondoskodnak a magas rendelkezésre állásról. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -36,7 +36,7 @@ A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a
 > * Terheléselosztó megtekintése működés közben
 > * Virtuális gépek hozzáadása a terheléselosztóhoz és eltávolításuk a terheléselosztóból
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -314,7 +314,7 @@ az network nic ip-config address-pool add \
 Az előző lépésben szereplő [az network lb address-pool show](/cli/azure/network/lb/address-pool) paranccsal ellenőrizheti, hogy a virtuális NIC csatlakozik-e a háttércímkészlethez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban létrehozott egy terheléselosztót, majd virtuális gépeket csatolt hozzá. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

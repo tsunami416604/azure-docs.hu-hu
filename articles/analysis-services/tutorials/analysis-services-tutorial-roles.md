@@ -2,20 +2,19 @@
 title: Oktatóanyag – Azure Analysis Services rendszergazdai és felhasználói szerepkörök konfigurálása | Microsoft Docs
 description: Megtudhatja, hogyan konfigurálhatja Azure Analysis Services-szerepköröket.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932214"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294436"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: A kiszolgáló rendszergazdájának és felhasználói szerepköreinek konfigurálása
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Oktatóanyag: Kiszolgáló-rendszergazdai és felhasználói szerepkörök konfigurálása
 
  Ebben az oktatóanyagban az SQL Server Management Studio (SSMS) használatával fog csatlakozni Azure-beli kiszolgálójához, hogy konfigurálja a kiszolgáló rendszergazdája és a modelladatbázis szerepköreit. Megismerheti a [Táblázatos modell parancsnyelvét (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) is. A TMSL egy JSON-alapú parancsnyelv az 1200-as és magasabb kompatibilitási szintű táblázatos modellekhez. Számos táblázatos modellbeli feladat automatizálására használható. A TMSL-t gyakran a PowerShellel együtt használják, ebben az oktatóanyagban azonban az XMLA lekérdezésszerkesztőt fogja használni az SSMS-ben. Az oktatóanyag során a következő feladatokat fogja elvégezni: 
   
@@ -140,9 +139,9 @@ Ebben a feladatban a [Create](https://docs.microsoft.com/bi-reference/tmsl/creat
 Ha többé nincs rájuk szüksége, törölje a felhasználói és csoportfiókokat és szerepköröket. A felhasználói fiókok eltávolításához használja a **Szerepkör tulajdonságai** > **Tagság** lehetőséget. Kattintson a jobb gombbal egy szerepkörre, majd kattintson a **Törlés** lehetőségre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanult csatlakozni Azure AS-kiszolgálójához, megismerkedett az adventureworks minta-modelladatbázissal és annak tulajdonságaival az SSMS-ben. Elsajátította az SSMS és a TMSL-szkriptek használatát felhasználók vagy csoportok meglévő vagy új szerepkörökhöz adására. Most, hogy konfigurálta a kiszolgáló és a minta-modelladatbázis felhasználói engedélyeit, Önnel együtt mások is csatlakozhatnak ahhoz olyan ügyfélalkalmazások használatával, mint a Power BI. További tudnivalók a következő oktatóanyagban. 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Kapcsolat Power BI Desktop](analysis-services-tutorial-pbid.md)
+> [Oktatóanyag: Csatlakozás a Power BI Desktoppal](analysis-services-tutorial-pbid.md)
 

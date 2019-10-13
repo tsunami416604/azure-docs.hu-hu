@@ -123,6 +123,8 @@
               href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Hibaelhárítás
       items:
+        - name: Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
+          href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: A hibrid runbook-feldolgozó hibaelhárítása
           href: troubleshoot/hybrid-runbook-worker.md
           displayName: 'troubleshoot, HRW, hybrid worker'

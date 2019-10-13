@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 1c1fe208c77142351a786fa636896e64a8a467d7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f48fe94504d8012affb77c4fd5d39df2537d72b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129652"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300124"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Az Azure soros konzol engedélyezése és letiltása
 
@@ -27,35 +27,35 @@ A többi erőforráshoz hasonlóan az Azure soros konzol is engedélyezhető és
 
 A rendszerindítási diagnosztika letiltásával letilthatja a soros konzolt egy adott virtuális gép vagy virtuálisgép-méretezési csoport példányai esetében is. A virtuális gép/virtuálisgép-méretezési csoport és a rendszerindítási diagnosztika Storage-fiókja esetében a közreműködői szintű hozzáférés vagy annál újabb rendszer szükséges.
 
-## <a name="vm-level-disable"></a>Virtuálisgép-szintű letiltása
-A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-méretezési csoport számára a rendszerindítási diagnosztika beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát a Azure Portal a virtuális gép vagy a virtuálisgép-méretezési csoport soros konzoljának letiltásához. Ha a soros konzolt egy virtuálisgép-méretezési csoporton használja, a virtuálisgép-méretezési csoport példányait a legújabb modellre kell frissítenie.
+## <a name="vm-level-disable"></a>VM-szintű letiltás
+A soros konzol le lehet tiltani egy adott virtuális gép vagy virtuálisgép-méretezési csoport számára a rendszerindítási diagnosztika beállítás letiltásával. Kapcsolja ki a rendszerindítási diagnosztikát az Azure Portalról a virtuális gép vagy a virtuálisgép-méretezési csoport soros konzoljának letiltásához. Ha a soros konzolt egy virtuálisgép-méretezési csoporton használja, a virtuálisgép-méretezési csoport példányait a legújabb modellre kell frissítenie.
 
 
-## <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása
+## <a name="subscription-level-disable"></a>Előfizetés szintű letiltás
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 A Serial console letiltható és újra engedélyezhető a teljes előfizetéshez az Azure CLI következő parancsaival:
 
 Az előfizetéshez tartozó soros konzol letiltásához használja a következő parancsokat:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Az előfizetéshez tartozó soros konzol engedélyezéséhez használja a következő parancsokat:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 A soros konzol aktuálisan engedélyezett/letiltott állapotának lekéréséhez használja az alábbi parancsokat:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" -o=json | jq .properties
+az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
 ### <a name="powershell"></a>PowerShell
@@ -76,7 +76,7 @@ $subscription=(Get-AzContext).Subscription.Id
 Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
 * További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)
 * [Az energiagazdálkodási lehetőségek megismerése az Azure soros konzolján](./serial-console-power-options.md)

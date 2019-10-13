@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/04/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 11e9fadc240b90ceb7e4a0e6690978dac9bae859
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 59770bccec57220560eeb5a5204e574ce172fc80
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255076"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296476"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -59,6 +59,8 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 
 1. A böngészőben nyissa meg az [Azure Spring Cloud-ra mutató hivatkozást a Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=AppPlatformExtension#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home/searchQuery/Azure%20Spring%20Cloud).
 
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/goto-portal.png)
+
 1. Válassza az **Azure Spring Cloud** lehetőséget az Áttekintés oldalra való ugráshoz. Ezután kattintson a **Létrehozás** gombra a kezdéshez.
 
 1. Töltse ki az űrlapot, figyelembe véve a következő irányelveket:
@@ -74,6 +76,8 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
 
 1. Az **alapértelmezett adattár** szakaszban állítsa az **URI** -t "https://github.com/Azure-Samples/piggymetrics" értékre, állítsa a **feliratot** a "config" értékre, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Service-alkalmazások készítése és üzembe helyezése
 
@@ -130,10 +134,15 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Nyilvános végpont társítása az átjáróhoz
 
-1. Nyissa meg az **alkalmazás-irányítópult** lapot.
-2. Válassza ki a `gateway` alkalmazást az **alkalmazás részletei** lap megjelenítéséhez.
-3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet. 
-4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
+1. Nyissa meg a bal oldali menü **alkalmazások** lapját.
+2. Válassza ki a `gateway` alkalmazást az **Áttekintés** lap megjelenítéséhez.
+3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet.
+
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
+
+1. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános végpontot (címkével ellátott **URL-címet**) a böngészőben.
+
+    ![Képernyőfelvétel az ASC-portálról](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 
 ## <a name="next-steps"></a>Következő lépések

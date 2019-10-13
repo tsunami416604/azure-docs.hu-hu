@@ -5,18 +5,18 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.author: danlep
-ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839910"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293899"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Rendszerkép létrehozása és elküldése egy Felhőbeli natív Buildpack használatával
 
-Az Azure CLI- `az acr pack build` parancs a [`pack`](https://github.com/buildpack/pack) CLI eszközt használja a [Buildpacks](https://buildpacks.io/)-ből, egy alkalmazás létrehozásához és a rendszerkép Azure Container registrybe való leküldéséhez. Ez a funkció lehetővé teszi, hogy gyorsan hozzon létre egy tároló-rendszerképet a Node. js-, Java-és más nyelveken anélkül, hogy meg kellene adni egy Docker.
+Az Azure CLI-parancs `az acr pack build` a [`pack`](https://github.com/buildpack/pack) CLI eszközt használja a [Buildpacks](https://buildpacks.io/)-ből, hogy létrehoz egy alkalmazást, és leküldi a rendszerképet egy Azure Container registrybe. Ez a funkció lehetővé teszi, hogy gyorsan hozzon létre egy tároló-rendszerképet a Node. js-, Java-és más nyelveken anélkül, hogy meg kellene adni egy Docker.
 
 Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben szereplő példák futtatásához. Ha helyileg szeretné használni, a 2.0.70 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -25,30 +25,30 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítését használhatja a cikkben
 
 ## <a name="use-the-build-command"></a>A Build parancs használata
 
-Ha Felhőbeli natív Buildpacks szeretné felépíteni és leküldeni egy tároló-rendszerképet, futtassa az az [ACR Pack Build][az-acr-pack-build] parancsot. Míg az az [ACR Build][az-acr-build] parancs egy Docker forrásból és kapcsolódó kódból származó képet hoz létre és küld le, `az acr pack build` és közvetlenül az alkalmazás forrásának fáját is megadja.
+Ha Felhőbeli natív Buildpacks szeretné felépíteni és leküldeni egy tároló-rendszerképet, futtassa az az [ACR Pack Build][az-acr-pack-build] parancsot. Míg az az [ACR Build][az-acr-build] parancs létrehoz egy képet egy Docker forrásról és egy kapcsolódó kódból, `az acr pack build` értékkel pedig közvetlenül az alkalmazás forrásának fáját kell megadnia.
 
-Legalább a következő futtatásakor `az acr pack build`adja meg a következőket:
+A `az acr pack build` futtatásakor legalább a következőket kell megadnia:
 
 * Egy Azure Container Registry, amelyen futtatja a parancsot
 * Az eredményül kapott képhez tartozó rendszerkép neve és címkéje
-* Az ACR-feladatok egyik [támogatott környezeti helye](container-registry-tasks-overview.md#quick-task) , például egy helyi könyvtár, egy GitHub-tárház vagy egy távoli Fez
-* Egy Buildpack-készítő rendszerkép neve, például `cloudfoundry/cnb:bionic`:.  
+* Az ACR-feladatok egyik [támogatott környezeti helye](container-registry-tasks-overview.md#context-locations) , például egy helyi könyvtár, egy GitHub-tárház vagy egy távoli Fez
+* Egy Buildpack-készítő rendszerkép neve, például `cloudfoundry/cnb:0.0.12-bionic`.  
 
-`az acr pack build`az ACR-feladatok egyéb funkcióit támogatja [](container-registry-tasks-reference-yaml.md#run-variables) , beleértve a futtatási változókat és a [tevékenységek futtatására](container-registry-tasks-overview.md#view-task-logs) szolgáló naplókat, amelyeket a rendszer a későbbi lekéréshez is ment.
+a `az acr pack build` az ACR-feladatok egyéb funkcióit is támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatásához továbbított naplókat](container-registry-tasks-overview.md#view-task-logs) , amelyeket később is elmenthet.
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>Példa: Node. js-rendszerkép összeállítása Cloud Foundry Builder-sel
 
-Az alábbi példa egy tároló rendszerképet hoz létre a Node. js-alkalmazásból az [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) tárházban a `cloudfoundry/cnb:bionic` Builder használatával:
+Az alábbi példa egy tároló rendszerképet hoz létre a Node. js-alkalmazásból az [Azure-Samples/NodeJS-docs-Hello-World](https://github.com/Azure-Samples/nodejs-docs-hello-world) tárházban az `cloudfoundry/cnb:0.0.12-bionic` Builder használatával:
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 
-Ez a példa létrehozza `node-app` a képet a `1.0` címkével, és leküldi a *myregistry* tároló beállításjegyzékbe. Itt a célként megadott beállításjegyzék neve explicit módon előtagértéke a rendszerkép nevéhez. Ha nincs megadva, a rendszer automatikusan előtagértéke a beállításjegyzék URL-címét.
+Ez a példa a `node-app` képet hozza létre a `1.0` címkével, és leküldi azt a *myregistry* tároló-beállításjegyzékbe. Itt a célként megadott beállításjegyzék neve explicit módon előtagértéke a rendszerkép nevéhez. Ha nincs megadva, a rendszer automatikusan előtagértéke a beállításjegyzék URL-címét.
 
 A `--pull` paraméter azt adja meg, hogy a parancs lekéri a legújabb Builder-lemezképet.
 
@@ -66,11 +66,11 @@ A rendszerkép futtatása:
 docker run --rm -p 1337:1337 myregistry.azurecr.io/node-app:1.0
 ```
 
-`localhost:1337` Tallózással keresse meg kedvenc böngészőjét, és tekintse meg a minta webalkalmazást. Nyomja `[Ctrl]+[C]` le a gombot a tároló leállításához.
+A mintául szolgáló webalkalmazás megtekintéséhez keresse meg `localhost:1337` értéket a kedvenc böngészőjében. Nyomja le a `[Ctrl]+[C]` billentyűkombinációt a tároló leállításához.
 
 ## <a name="example-build-java-image-with-heroku-builder"></a>Példa: Java-rendszerkép létrehozása a Heroku Builder-vel
 
-Az alábbi példa létrehoz egy tároló rendszerképet a Java-alkalmazásból a [buildpack/Sample-Java-app](https://github.com/buildpack/sample-java-app) tárházban a `heroku/buildpacks:18` Builder használatával:
+A következő példa létrehoz egy tárolót a Java-alkalmazásból a [buildpack/Sample-Java-app](https://github.com/buildpack/sample-java-app) tárházban a `heroku/buildpacks:18` Builder használatával:
 
 ```azurecli
 az acr pack build \
@@ -80,7 +80,7 @@ az acr pack build \
     https://github.com/buildpack/sample-java-app.git
 ```
 
-Ez a példa létrehoz `java-app` egy címkét a parancs futtatási azonosítójával, és leküldi azt a *myregistry* tároló-beállításjegyzékbe.
+Ebben a példában a parancs futtatási azonosítójával létrehozta a `java-app` rendszerképet, és leküldi azt a *myregistry* tároló-beállításjegyzékbe.
 
 A `--pull` paraméter azt adja meg, hogy a parancs lekéri a legújabb Builder-lemezképet.
 
@@ -98,14 +98,14 @@ Futtassa a rendszerképet, és cserélje le a képcímkét a *runid*:
 docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 ```
 
-`localhost:8080` Tallózással keresse meg kedvenc böngészőjét, és tekintse meg a minta webalkalmazást. Nyomja `[Ctrl]+[C]` le a gombot a tároló leállításához.
+A mintául szolgáló webalkalmazás megtekintéséhez keresse meg `localhost:8080` értéket a kedvenc böngészőjében. Nyomja le a `[Ctrl]+[C]` billentyűkombinációt a tároló leállításához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután létrehozta és leküldte a tároló `az acr pack build`lemezképét a használatával, bármilyen képhez telepítheti azt egy tetszőleges célra. Az Azure-beli üzembe helyezési lehetőségek közé tartozik a [app Service](../app-service/containers/tutorial-custom-docker-image.md) vagy az [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md)-ben való futtatás, egyebek között.
+Miután felépíti és leküldte a tároló lemezképét `az acr pack build` használatával, bármely rendszerképhez hasonlóan telepítheti a kívánt célra. Az Azure-beli üzembe helyezési lehetőségek közé tartozik a [app Service](../app-service/containers/tutorial-custom-docker-image.md) vagy az [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md)-ben való futtatás, egyebek között.
 
-Az ACR-feladatok funkcióival kapcsolatos további információkért lásd: [a tárolók rendszerképének automatizálása és karbantartása ACR-](container-registry-tasks-overview.md)feladatokkal.
+Az ACR-feladatok funkcióival kapcsolatos további információkért lásd: [a tárolók rendszerképének automatizálása és karbantartása ACR-feladatokkal](container-registry-tasks-overview.md).
 
 
 <!-- LINKS - External -->

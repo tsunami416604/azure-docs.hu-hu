@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937502"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300158"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -62,6 +62,16 @@ Windows rendszerű virtuális asztallal való használat esetén a ControlUp tov
 - [Tekintse meg a JOIN megoldás rövid leírását](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Lépjen a partner webhelyére](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST embléma](./media/partners/devicetrust.png)
+
+a deviceTRUST egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója, amely contextualizes a vállalati vállalatot, lehetővé téve a felhasználók számára, hogy bárhonnan, bármilyen eszközön, bármely hálózaton hozzáférjenek a Windowsos virtuális asztalhoz, miközben a részlegek az irányítási követelmények teljesítéséhez szükséges információkat és szabályozást. 
+
+a deviceTRUST kiterjeszti a Windows rendszerű virtuális asztal értékét a környezetfüggő biztonsági technológiával. a deviceTRUST lehetővé teszi a feltételes hozzáférést a biztonságos Windows virtuális asztali hozzáféréshez, a Windows rendszerű virtuális asztal feltételes alkalmazásokhoz való hozzáféréséhez, valamint a feltételes Windowsos virtuális asztali házirendek további infrastruktúra nélküli alkalmazásához. A deviceTRUST használata lehetővé teszi a mobil, rugalmas munkaterület használatát, amely megfelel az összes biztonsági, megfelelőségi és szabályozási követelménynek. 
+
+- [Lépjen a partner webhelyére](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Tóparti szoftverek
 
 ![Tóparti szoftver emblémája](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ A Liquidware Essentials a felhasználói profilok hatékony betakarításával �
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Lépjen a partner webhelyére](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>Bejelentkezési VSI
+
+![Bejelentkezési VSI emblémája](./media/partners/loginvsi.png)
+
+A login VSI egy Windows rendszerű virtuális asztali értéknövelt szolgáltatások szolgáltatója és a Microsoft partner szoftvereket biztosít az alkalmazások teljesítményének teszteléséhez a Windows rendszerű virtuális asztali környezetekben. A helyszíni üzleti szolgáltatásaikat a Windows virtuális asztalra helyező ügyfelek a login VSI Enterprise Edition használatával értékelik és kezelhetik az optimális teljesítményt, méretezhetőséget és rendelkezésre állást a Windows 10 Enterprise multi-session, Windows 10 Enterprise és A Windows 7 az üzleti szempontból kritikus alkalmazásaival van engedélyezve.
+
+- [Lépjen a partner webhelyére](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio embléma](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ A Nerdio kiterjeszti a Windows virtuális asztal értékét azáltal, hogy megk�
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [Lépjen a partner webhelyére](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak embléma](./media/partners/policypak.png)
+
+A PolicyPak szoftver egy Windows rendszerű virtuális asztali partner, amely az alkalmazások, az asztal, a böngészők, a Java és a biztonsági beállítások teljes körű felügyeletét végzi. A PolicyPak biztosítja az asztali, a rendszerszintű és a biztonsági beállítások megfelelőségét. A PolicyPak a Windows rendszerű virtuális asztalok értékét a Windows beépített felügyeletét javító összetevők hozzáadásával fokozza. A meglévő Active Directory Csoportházirend és/vagy a Windows Intune használatával biztosíthatja a PolicyPak beállításait, és növelheti a rendszergazdák számára a Windows 10-es gépek felügyeletének képességét. 
+
+A PolicyPak leggyakoribb felhasználási esetei a helyi rendszergazdai jogosultságok eltávolítása és az UAC-kérések legyőzése, a ransomware letiltása, a több böngésző kezelése, az Internet Explorer vállalati és kompatibilitási módjai, a csoportházirend-objektumok számának csökkentése, a Windows 10-es fájltársítások kezelése, a Windows 10 Start menüjének és tálcájának kezelése, valamint a Windows 10 szolgáltatásainak és választható funkcióinak kezelése.  
+
+- [Lépjen a partner webhelyére](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic embléma](./media/partners/printerlogic.png)
+
+A PrinterLogic egy Windows rendszerű virtuális asztali értéknövelt szolgáltatás szolgáltatói platformja, amely lehetővé teszi az informatikai szakemberek számára az összes nyomtatókiszolgáló kiiktatását, és a rendelkezésre álló, kiszolgáló nélküli nyomtatási infrastruktúra kézbesítését. A PrinterLogic kiterjeszti a Windows rendszerű virtuális asztal és az Azure értékét, így egyszerűen központilag felügyelheti és telepítheti a nyomtató-objektumokat bármely nyomtatóra vagy végpontra.   
+
+SaaS-ként vagy webes veremként érhető el a saját privát felhőben, a PrinterLogic platform biztosítja, hogy a felhasználók mindig rendelkezzenek a megfelelő nyomtatókhoz, amelyekre szükségük van a virtuális munkamenetekben a felhasználói azonosító, az eszköz neve vagy a hely alapján. Ezt a funkciót a nagyvállalati Nyomtatáskezelő funkciók teljes csomagja egészíti ki, például a nyomtatási nyomon követést és jelentéskészítést, a mobil nyomtatást és a biztonságos jelvény kiadásának nyomtatását. 
+
+- [Lépjen a partner webhelyére](https://www.printerlogic.com).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -117,7 +155,7 @@ A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-in
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
 - [Lépjen a partner webhelyére](https://www.workspot.com/wvd).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
 - [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).

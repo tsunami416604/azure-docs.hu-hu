@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a üzenetsor-tárolással és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek) | Microsoft Docs
+title: A üzenetsor-tárolás használatának első lépései a Visual Studióval (Webjobs-projektek)
 description: Az Azure üzenetsor-tárolás használatának első lépései egy Webjobs-projektben a Visual Studio csatlakoztatott szolgáltatásainak használatával a Storage-fiókhoz való csatlakozás után.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510792"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298752"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Ismerkedés az Azure üzenetsor Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -72,7 +73,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Az aszinkron függvények lemondási [tokent](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)is igénybe vehetnek, ahogy azt az alábbi példában is látható, amely egy blobot másol. (A **queueTrigger** helyőrző magyarázatát lásd a Blobok szakaszban [](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) .)
+Az aszinkron függvények [lemondási tokent](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)is igénybe vehetnek, ahogy azt az alábbi példában is látható, amely egy blobot másol. (A **queueTrigger** helyőrző magyarázatát lásd a [Blobok](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) szakaszban.)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -88,9 +89,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>A QueueTrigger attribútum típusa
 A **QueueTrigger** a következő típusokkal végezhető el:
 
-* **string**
+* **karakterlánc**
 * Egy olyan POCO típus, amely JSON-ként van szerializálva
-* **byte[]**
+* **bájt []**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Lekérdezési algoritmus
@@ -184,13 +185,13 @@ public static void GracefulShutdownDemo(
 
 **Megjegyzés:** Előfordulhat, hogy az irányítópulton nem jelenik meg megfelelően a leállított függvények állapota és kimenete.
 
-További információkért lásd: [webjobs](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)-leállítási funkció.   
+További információkért lásd: [webjobs-leállítási](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR)funkció.   
 
 ## <a name="how-to-create-a-queue-message-while-processing-a-queue-message"></a>Üzenetsor-üzenet létrehozása üzenetsor-üzenet feldolgozásakor
 Új üzenetsor-üzenetet létrehozó függvény írásához használja az **üzenetsor** attribútumot. A **QueueTrigger**hasonlóan karakterláncként adja át a várólista nevét, vagy beállíthatja [a várólista nevét dinamikusan](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Karakterlánc-Várólista üzenetei
-A következő nem aszinkron kód minta egy új üzenetsor-üzenetet hoz létre a "outputqueue" nevű várólistában ugyanazzal a tartalommal, mint a "inputqueue" nevű várólistában kapott üzenetsor-üzenet. (Az aszinkron függvények a szakasz későbbi részében látható **\<IAsyncCollector T >** használják.)
+A következő nem aszinkron kód minta egy új üzenetsor-üzenetet hoz létre a "outputqueue" nevű várólistában ugyanazzal a tartalommal, mint a "inputqueue" nevű várólistában kapott üzenetsor-üzenet. (Aszinkron függvények esetén használja a **IAsyncCollector @ no__t-1T >** a jelen szakasz későbbi részében látható módon.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +217,7 @@ public static void CreateQueueMessage(
 Az SDK automatikusan a JSON-ra szerializálja az objektumot. A várólista-üzenet mindig létrejön, még akkor is, ha az objektum null értékű.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Több üzenet vagy aszinkron függvények létrehozása
-Több üzenet létrehozásához adja meg a **\<ICollector t >** vagy **\<IAsyncCollector t >** kimeneti várólistához a következő példában látható módon.
+Több üzenet létrehozásához írja be a következő példában látható módon a kimeneti várólista **ICollector: @ no__t-1T >** vagy **IAsyncCollector @ no__t-3T >** .
 
 ```csharp
 public static void CreateQueueMessages(
@@ -235,10 +236,10 @@ Minden üzenetsor-üzenet azonnal létrejön az **Add** metódus hívásakor.
 ### <a name="types-that-the-queue-attribute-works-with"></a>A várólista-attribútum által használható típusok
 A **várólista** attribútum a következő paraméterek típusainál használható:
 
-* **kimenő sztring** (Üzenetsor létrehozása, ha a paraméter értéke nem null, ha a függvény véget ér)
-* **kimenő bájt []** (működik, mint a **String**)
+* **kimenő sztring** (várólista-üzenetet hoz létre, ha a függvény végén nem null értékű a paraméter értéke)
+* **kimenő bájt []** (a **karakterláncot**hasonlóan működik)
 * **kimenő CloudQueueMessage** (működik, mint a **String**)
-* a **poco** (szerializálható típus esetén a null objektummal rendelkező üzenetet hoz létre, ha a paraméter értéke null, ha a függvény véget ér)
+* a **poco** (szerializálható típusú, null értékű üzenetet hoz létre, ha a paraméter értéke null, ha a függvény véget ér)
 * **ICollector**
 * **IAsyncCollector**
 * **CloudQueue** (üzenetek manuális létrehozása az Azure Storage API közvetlen használatával)
@@ -297,9 +298,9 @@ public static void DeleteBlob(
 ```
 
 ### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplain_old_clr_object-queue-messages"></a>POCO [(régi CLR-objektum](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) üzenetsor-üzenetei
-A várólista-üzenetben JSON-ként tárolt POCO esetében használhatja a **várólista** -attribútum **blobPath** paraméterében található objektum nevét tartalmazó helyőrzőket. A várólista metaadatainak tulajdonságainak neve helyőrzőként is használható. Lásd: üzenetsor [vagy üzenetsor-üzenetek metaadatainak](#get-queue-or-queue-message-metadata)beolvasása.
+A várólista-üzenetben JSON-ként tárolt POCO esetében használhatja a **várólista** -attribútum **blobPath** paraméterében található objektum nevét tartalmazó helyőrzőket. A várólista metaadatainak tulajdonságainak neve helyőrzőként is használható. Lásd: üzenetsor [vagy üzenetsor-üzenetek metaadatainak beolvasása](#get-queue-or-queue-message-metadata).
 
-A következő példa egy blobot másol egy másik kiterjesztésű új blobra. Az üzenetsor-üzenet egy **BlobInformation** objektum, amely **BlobName** -és **BlobNameWithoutExtension** -tulajdonságokat is tartalmaz. A tulajdonságok nevei helyőrzőként használatosak a blob-attribútumok blob-elérési útjában.
+A következő példa egy blobot másol egy másik kiterjesztésű új blobra. Az üzenetsor-üzenet egy **BlobInformation** objektum, amely **BlobName** -és **BlobNameWithoutExtension** -tulajdonságokat is tartalmaz. A tulajdonságok nevei helyőrzőként használatosak **a blob-attribútumok blob** -elérési útjában.
 
 ```csharp
 public static void CopyBlobPOCO(
@@ -324,23 +325,23 @@ Ha a függvényben némi munkát kell végrehajtania, mielőtt a blobot egy obje
 ### <a name="types-you-can-use-the-blob-attribute-with"></a>A blob attribútumot használhatja a
 A **blob** attribútum a következő típusokkal használható:
 
-* **Stream** (olvasás vagy írás, a FileAccess konstruktor paraméter használatával megadva)
+* **Stream** (olvasás vagy írás, a fileaccess konstruktor paraméter használatával megadva)
 * **TextReader**
 * **TextWriter**
-* **karakterlánc** olvasni
-* **kimenő sztring** (írás; csak akkor hoz létre blobot, ha a függvény visszatérése esetén a karakterlánc paraméter értéke nem null.)
+* **karakterlánc** (olvasás)
+* **kimenő sztring** (írás; csak akkor hoz létre blobot, ha a függvény visszatérési értéke nem null.
 * POCO (olvasás)
 * a POCO (írás; mindig létrehoz egy blobot, és null objektumként jön létre, ha a POCO paraméter értéke null, ha a függvény visszatér)
-* **CloudBlobStream** írni
+* **CloudBlobStream** (írás)
 * **ICloudBlob** (olvasás vagy írás)
 * **CloudBlockBlob** (olvasás vagy írás)
 * **CloudPageBlob** (olvasás vagy írás)
 
 ## <a name="how-to-handle-poison-messages"></a>A mérgezett üzenetek kezelése
-Azok az üzenetek, amelyeknek a tartalma a függvénymeghibásodását okozza, megmérgezi üzenetnek nevezzük. Ha a függvény meghibásodik, a várólista-üzenet nem törlődik, és végül újra bekerül, így a ciklus megismétlődik. Az SDK csak korlátozott számú iteráció után képes automatikusan megszakítani a ciklust, vagy manuálisan is elvégezheti.
+Azok az üzenetek, amelyeknek a tartalma a függvény meghibásodását okozza, *megmérgezi üzenetnek*nevezzük. Ha a függvény meghibásodik, a várólista-üzenet nem törlődik, és végül újra bekerül, így a ciklus megismétlődik. Az SDK csak korlátozott számú iteráció után képes automatikusan megszakítani a ciklust, vagy manuálisan is elvégezheti.
 
 ### <a name="automatic-poison-message-handling"></a>Üzenetek automatikus megmérgezés általi kezelésére
-Az SDK a várólista-üzenetek feldolgozásához legfeljebb 5 alkalommal hívja meg a függvényt. Ha az ötödik próbálkozás sikertelen, az üzenet átkerül egy mérgezett várólistára. Megtudhatja, hogyan állíthatja be az újrapróbálkozások maximális számát a [konfigurációs beállítások](#how-to-set-configuration-options)megadásával.
+Az SDK a várólista-üzenetek feldolgozásához legfeljebb 5 alkalommal hívja meg a függvényt. Ha az ötödik próbálkozás sikertelen, az üzenet átkerül egy mérgezett várólistára. Megtudhatja, hogyan állíthatja be az újrapróbálkozások maximális számát a [konfigurációs beállítások megadásával](#how-to-set-configuration-options).
 
 A méreg üzenetsor neve *{originalqueuename}* -Poison. Írhat egy függvényt, amely az üzenetek törlését végzi a méreg-várólistából úgy, hogy naplózza azokat, vagy értesítést küld, amely manuális beavatkozást igényel.
 
@@ -550,7 +551,7 @@ Folyamatos Webjobs az alkalmazások naplói a/Data/Jobs/Continuous/ *{webjobname
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-Egy Azure-blobban az alkalmazás naplói így néznek ki: 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, konzol. Write-Helló világ!, 2014-09-26T21:01:13, hiba, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, konzol. Error-Helló World!, 2014-09-26T21 : 01:13, információ, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, konzol. out-Helló világ!,
+Egy Azure-blobban az alkalmazás naplói a következőképpen néznek ki: 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, konzol. Write-Helló World!, 2014-09-26T21:01:13, hiba, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, Console. Error-Helló World!, 2014-09-26T21:01:13, információ, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, konzol. out-Helló világ!,
 
 És egy Azure-táblázatban a **Console. out** és a **Console. Error** naplók a következőképpen néznek ki:
 
@@ -558,6 +559,6 @@ Egy Azure-blobban az alkalmazás naplói így néznek ki: 2014-09-26T21:01:13, I
 
 ![Hibanapló a táblában](./media/vs-storage-webjobs-getting-started-queues/tableerror.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk az Azure Queues használatának gyakori forgatókönyveit bemutató kódrészleteket tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

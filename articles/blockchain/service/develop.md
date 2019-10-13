@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241008"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298428"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain Service Development áttekintése
 
@@ -39,7 +39,7 @@ A kifinomult vállalati blockchain megoldások fejlesztése érdekében fejleszt
 
 A szarvasgomba népszerű blockchain-fejlesztési keretrendszer a decentralizált alkalmazások Ethereum blokkláncok történő írásához, fordításához, üzembe helyezéséhez és teszteléséhez. Azt is meggondolhatja, hogy a szarvasgomba olyan keretrendszer, amellyel zökkenőmentesen integrálható az intelligens szerződések fejlesztése és a hagyományos webes fejlesztés.
 
-Még a legkisebb projekt is kommunikál legalább két blockchain-csomóponttal: Az egyik a fejlesztői gépen, a másik pedig azt a hálózatot jelképezi, ahol a fejlesztő üzembe helyezi az alkalmazást. Például a fő nyilvános Ethereum hálózat vagy az Azure Blockchain szolgáltatás. A szarvasgomba egy rendszert biztosít az egyes hálózatok fordítási és üzembe helyezési összetevőinek kezeléséhez, és így egyszerűsíti a végső alkalmazás üzembe helyezését. További információ: gyors útmutató [: A szarvasgomba használatával csatlakozhat egy Azure Blockchain Service networkhez](connect-truffle.md).
+Még a legkisebb projekt is kommunikál legalább két blockchain-csomóponttal: egyet a fejlesztői gépén, a másik pedig azt a hálózatot jelképezi, ahol a fejlesztő üzembe helyezi az alkalmazást. Például a fő nyilvános Ethereum hálózat vagy az Azure Blockchain szolgáltatás. A szarvasgomba egy rendszert biztosít az egyes hálózatok fordítási és üzembe helyezési összetevőinek kezeléséhez, és így egyszerűsíti a végső alkalmazás üzembe helyezését. További információ: gyors útmutató [: a szarvasgomba használata egy Azure Blockchain Service networkhez való kapcsolódáshoz](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transaction"></a>Ethereum kvórum privát tranzakciója
 
@@ -51,19 +51,19 @@ A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz s
 * Társ-jogosultság – a csomópont-és társ-jogosultságok intelligens szerződések használatával, csak az ismert felek csatlakozhatnak a hálózathoz
 * Nagyobb teljesítmény – a kvórum nagyobb teljesítményt nyújt, mint a nyilvános geth
 
-Lásd [az oktatóanyagot: Tranzakció küldése az Azure Blockchain szolgáltatással](send-transaction.md) a privát tranzakciók példájának kihasználása céljából.
+Tekintse meg a következő [oktatóanyagot: tranzakció küldése az Azure Blockchain Service](send-transaction.md) -be a privát tranzakciók példája alapján.
 
 ## <a name="block-explorers"></a>Felfedezők letiltása
 
 A blokkoló felfedezők olyan online blockchain böngészők, amelyek egyedi blokk tartalmakat, tranzakciós címeket és előzményeket jelenítenek meg. Az alapszintű blokkolási információk az Azure Blockchain szolgáltatásban Azure Monitor keresztül érhetők el, ha azonban részletesebb információra van szüksége a fejlesztés során, a blokkoló felfedezők hasznosak lehetnek.  Népszerű, nyílt forráskódú blokk-kezelők is használhatók. Az alábbi lista az Azure Blockchain szolgáltatással használható blokk-tallózókat tartalmazza:
 
-* Az [Azure Blockchain Service Explorer](https://web3labs.com/azure-offer) a Web3 Labs-ből
+* [Empirusz Azure Blockchain Service Explorer](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview) a Web3 Labs-ből
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS mérése
 
 Mivel a blockchain több vállalati forgatókönyvben is használatos, a másodpercenkénti tranzakciók (TPS) sebessége fontos a szűk keresztmetszetek és a rendszer elégtelenségének elkerülése érdekében. A magas tranzakciós sebességet nehéz fenntartani egy decentralizált blockchain belül. A pontos TPS-mérést befolyásolhatja különböző tényezők, például a kiszolgálói szál, a tranzakciós várólista mérete, a hálózati késés és a biztonság. Ha a fejlesztés során mérni kell a TPS sebességet, egy népszerű, nyílt forráskódú eszköz is [ChainHammer](https://github.com/drandreaskrueger/chainhammer).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Rövid útmutató: A szarvasgomba használata az Azure Blockchain Service networkhez való kapcsolódáshoz](connect-truffle.md)
+[Rövid útmutató: a szarvasgomba használata az Azure Blockchain Service networkhez való kapcsolódáshoz](connect-truffle.md)

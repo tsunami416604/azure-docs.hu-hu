@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerési beszéd, Java (Windows, Linux, macOS) – beszédfelismerési szolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési beszéd, Java (Windows, Linux, macOS) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű Java-alkalmazást, amely rögzíti és szintetizálja a szöveget, és játssza le az alapértelmezett hangszóróval.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 832525ae1441fca85f8df661b4a187c0be8d91dc
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c66e321618b46d52f791f95dab570e3721e806a9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803984"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299227"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: Beszédfelismerés a Javához készült Speech SDK-val
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-java"></a>Gyors útmutató: beszédfelismerés a Javához készült Speech SDK-val
 
 A gyors üzembe helyezést a [beszédfelismerés](quickstart-java-jre.md), [a](quickstart-translate-speech-java-jre.md)beszédfelismerés és a beszéd – fordítás, valamint a [hangvezérelt virtuális asszisztens](quickstart-virtual-assistant-java-jre.md)is elérhetővé teszi.
 
@@ -37,7 +37,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 Ha Linux rendszert futtat, győződjön meg arról, hogy ezek a függőségek telepítve vannak az Eclipse elindítása előtt.
 
-* On Ubuntu:
+* Ubuntu rendszeren:
 
   ```sh
   sudo apt-get update
@@ -79,18 +79,18 @@ Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítet
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
 Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
-Adjon meg egy szöveget az előléptetéskor, és itt lesz az alapértelmezett beszélőtől kapott szintetizált hang.
+Ha a rendszer kéri, írja be a szöveget, és hallja az alapértelmezett hangsugárzó által játszott szintetizált hangot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
 > [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-- [Rövid útmutató: Beszédfelismerés felismerése, Java (Windows, Linux, macOS) ](quickstart-java-jre.md)
-- [Rövid útmutató: Beszéd fordítása, Java (Windows, Linux, macOS) ](quickstart-translate-speech-java-jre.md)
+- [Gyors útmutató: beszédfelismerés felismerése, Java (Windows, Linux, macOS)](quickstart-java-jre.md)
+- [Gyors útmutató: beszéd fordítása, Java (Windows, Linux, macOS)](quickstart-translate-speech-java-jre.md)
 - [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
 - [Hangminták rögzítése](record-custom-voice-samples.md)

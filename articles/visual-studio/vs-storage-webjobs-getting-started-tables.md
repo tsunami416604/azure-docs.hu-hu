@@ -1,5 +1,5 @@
 ---
-title: Első lépések az Azure Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Webjobs-projektek)
+title: Első lépések az Azure Storage-ban a Visual Studióval (Webjobs-projektek)
 description: Az Azure Table Storage használatának első lépései egy Azure WebJobs-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510663"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299950"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Első lépések Azure Storage-ban (Azure Webjobs-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -30,7 +31,7 @@ Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű struktu
 A kódrészletek némelyike a manuálisan létrehozott függvények **táblázatban** szereplő attribútumot jeleníti meg, azaz nem az egyik trigger attribútum használatával.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entitások hozzáadása táblához
-Ha entitásokat szeretne felvenni egy táblába, használja a **Table** attribútumot egy **ICollector\<t >** vagy **IAsyncCollector\<t >** paraméterrel, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
+Ha entitásokat szeretne felvenni egy táblába, használja a **Table** attribútumot egy **ICollector @ no__t-2t >** vagy **IAsyncCollector @ no__t-4T >** paraméterrel, ahol a **t** meghatározza a felvenni kívánt entitások sémáját. Az attribútum konstruktora egy olyan karakterlánc-paramétert hoz létre, amely megadja a tábla nevét.
 
 A következő mintakód hozzáadja a **személy** entitásokat egy *bejövő*elemek nevű táblához.
 
@@ -49,7 +50,7 @@ A következő mintakód hozzáadja a **személy** entitásokat egy *bejövő*ele
             }
         }
 
-A **ICollector** -ben használt típus általában **TableEntity** -ből származik, vagy a **ITableEntity**implementálja, de nem szükséges. A következő osztályok egyike az előző bemenő eljárásban látható kóddal működik együtt.
+A **ICollector** -ben használt típus általában **TableEntity** -ből származik, vagy a **ITableEntity**implementálja, de nem szükséges. A **következő osztályok** egyike **az előző** bemenő eljárásban látható kóddal működik együtt.
 
         public class Person : TableEntity
         {
@@ -74,12 +75,12 @@ A **Meghívási részletek** lap jelentést készít a függvény előrehaladás
 
 ![A bejövő forgalom funkció fut](./media/vs-storage-webjobs-getting-started-tables/ingressprogress.png)
 
-A függvény befejeződése után a Meghívási **részletek** lap az írt sorok számát jelenti.
+A függvény befejeződése után a **Meghívási részletek** lap az írt sorok számát jelenti.
 
 ![A bejövő forgalom funkció befejeződött](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Több entitás beolvasása egy táblából
-Egy tábla olvasásához használja a **Table** attribútumot egy **IQueryable\<T >** paraméterrel, ahol a **t** típus a **TableEntity** -ből származik, vagy **ITableEntity**valósít meg.
+Egy tábla olvasásához használja a **Table** attribútumot egy **IQueryable @ no__t-2t >** paraméterrel, ahol a **t** típus a **TableEntity** -ből származik, vagy **ITableEntity**valósít meg.
 
 A következő mintakód beolvassa és naplózza az összes sort a **bejövő** forgalom táblából:
 
@@ -144,6 +145,6 @@ További információ a **CloudTable** objektum használatáról: az [Azure Tabl
 ## <a name="related-topics-covered-by-the-queues-how-to-article"></a>A várólisták útmutató cikke által tárgyalt kapcsolódó témakörök
 További információ a várólista-üzenet által aktivált táblázatos feldolgozás kezeléséről, illetve a táblázatos feldolgozásra nem jellemző webjobs SDK-forgatókönyvekről: [Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (webjobs-projektek)](../storage/vs-storage-webjobs-getting-started-queues.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk az Azure Tables használatának gyakori forgatókönyveit bemutató példákat tartalmaz. További információ a Azure WebJobs és a webjobs SDK használatáról: [Azure WebJobs dokumentációs erőforrások](https://go.microsoft.com/fwlink/?linkid=390226).
 

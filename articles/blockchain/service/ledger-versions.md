@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562786"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286524"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Támogatott Azure Blockchain Service Ledger-verziók
 
-Az Azure Blockchain szolgáltatás az Azure Blockchain Service [](https://www.goquorum.com/developers) -ben konzorciumként azonosított Ethereum-alapú kvórumot használ, amely az ismert résztvevők egy csoportján belüli privát tranzakciók feldolgozására lett tervezve.
+Az Azure Blockchain szolgáltatás az Azure Blockchain Service-ben konzorciumként azonosított Ethereum-alapú [kvórumot](https://www.goquorum.com/developers) használ, amely az ismert résztvevők egy csoportján belüli privát tranzakciók feldolgozására lett tervezve.
 
 Az Azure Blockchain szolgáltatás jelenleg támogatja a [kvórum Version 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) és [Tessera Transaction Manager](https://github.com/jpmorganchase/tessera)verzióját.
 
@@ -27,7 +27,7 @@ Az Azure Blockchain szolgáltatás jelenleg támogatja a [kvórum Version 2.2.3]
 
 A kvórumon belüli verziószámozás a fő, a másodlagos és a javítási kiadásokon keresztül történik. Ha például a kvórum verziója 2.0.1, a kiadás típusa a következőképpen lesz kategorizálva:
 
-|Fő | Alverzió  | Javítás  |
+|Fő | Kisebb  | Javítás  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 
@@ -35,8 +35,8 @@ Az Azure Blockchain szolgáltatás a kvórumról elérhetővé tett 30 napon bel
 
 ## <a name="availability-of-new-ledger-versions"></a>Új Főkönyv-verziók rendelkezésre állása
 
-Az Azure Blockchain szolgáltatás a kvórum főkönyvének legújabb fő és alverzióit a kvórum gyártójától 60 napon belül elérhetővé teszi. Egy új tag és konzorcium kiépítés esetén legfeljebb négy kisebb kiadást biztosítunk a konzorciumok számára. A verzióról a verzióra való verziófrissítés jelenleg nem támogatott.
+Az Azure Blockchain szolgáltatás a kvórum főkönyvének legújabb fő és alverzióit a kvórum gyártójától 60 napon belül elérhetővé teszi. Egy új tag és konzorcium kiépítés esetén legfeljebb négy kisebb kiadást biztosítunk a konzorciumok számára. A verzióról a verzióra való verziófrissítés jelenleg nem támogatott. Ha például a 2. x verziót futtatja, a 3. x verzióra való frissítés jelenleg nem támogatott. Hasonlóképpen, ha az 2,2-es verziót futtatja, a 2,3-es verzióra való frissítés jelenleg nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Korlátok az Azure Blockchain szolgáltatásban](limits.md)

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b31470b329c0f63d186e5babfac3c0d8e6767538
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066357"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286228"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Az IoT Central kezelése az Azure PowerShellből
 
@@ -66,9 +66,9 @@ A szkript először egy erőforráscsoportot hoz létre az USA keleti régiójá
 |Paraméter         |Leírás |
 |------------------|------------|
 |ResourceGroupName |Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-|Location |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak**-és **Nyugat-Európában** , illetve az **ausztráliai** földrajzban. |
-|Name (Név)              |Az alkalmazás neve a Azure Portalban. |
-|Subdomain         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com:. |
+|Földrajzi egység |Alapértelmezés szerint ez a parancsmag az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak-Európában**vagy Nyugat- **Európai** régióban, illetve **Ausztráliában** vagy **Ázsia és a csendes-óceáni térség** földrajzi régióban.  |
+|Név              |Az alkalmazás neve a Azure Portalban. |
+|Altartomány         |Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
 |Termékváltozat               |Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
 |DisplayName       |Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
@@ -107,7 +107,7 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
  -Name "myiotcentralapp"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti az Azure IoT Central-alkalmazásokat a Azure PowerShellból, a következő lépés a javasolt lépés:
 

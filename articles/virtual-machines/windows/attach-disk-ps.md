@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 81d0469645281f63527db5cf600f157d8d6b29d7
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: ebdaa9aafa884a266ef8cf8d75d1d5fb326c690e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968359"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300657"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Adatlemez csatolása Windows rendszerű virtuális géphez a PowerShell-lel
 
@@ -20,12 +20,10 @@ Ez a cikk bemutatja, hogyan csatlakoztathatja az új és a meglévő lemezeket e
 
 Először tekintse át a következő tippeket:
 
-* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információkért lásd: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* A virtuális gép mérete határozza meg, hogy hány adatlemezt tud csatlakoztatni. További információ: [virtuális gépek méretei](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * A prémium SSD-k használatához [prémium szintű Storage-kompatibilis virtuálisgép-típusra](sizes-memory.md)van szükség, például a DS-sorozat vagy a GS sorozatú virtuális gép számára.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez a cikk a PowerShellt használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Üres adatlemez hozzáadása egy virtuális géphez
 
@@ -51,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Felügyelt lemezek használata rendelkezésre állási zónában
 
-Ha lemezt szeretne létrehozni egy rendelkezésre állási zónában, használja a `-Zone` [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) paramétert. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
+Egy rendelkezésre állási zónában lévő lemez létrehozásához használja a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) az `-Zone` paraméterrel. Az alábbi példa egy lemezt hoz létre az *1*. zónában.
 
 ```powershell
 $rgName = 'myResourceGroup'
@@ -117,6 +115,6 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt lemezeket sablonok használatával is üzembe helyezheti. További információ: [Managed Disks használata Azure Resource Manager sablonokban](using-managed-disks-template-deployments.md) vagy a gyors üzembe helyezési [sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-data-disk) több adatlemez telepítéséhez.

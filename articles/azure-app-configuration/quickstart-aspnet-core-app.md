@@ -12,16 +12,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035304"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299937"
 ---
-# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure app Configurationvel
+# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
 Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját egy ASP.NET Core alkalmazásba, hogy központilag kezelje az alkalmazás-beállítások tárolását és kezelését a kódból elválasztva. A ASP.NET Core egy kulcs-érték alapú konfigurációs objektumot hoz létre egy alkalmazás által megadott adatforrások beállításainak használatával. Ezeket az adatforrásokat *konfigurációs szolgáltatóknak*nevezzük. Mivel az alkalmazás konfigurációjának .NET Core-ügyfele a szolgáltatóként van megvalósítva, a szolgáltatás egy másik adatforráshoz hasonlóan jelenik meg.
 
@@ -36,12 +36,12 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Jelmagyarázat | Value (Díj) |
     |---|---|
-    | TestApp:Settings:BackgroundColor | Fehér |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | Fekete |
-    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp: beállítások: BackgroundColor | Fehér |
+    | TestApp: beállítások: FontSize | 24 |
+    | TestApp: beállítások: FontColor | Fekete |
+    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
@@ -53,7 +53,9 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 2. Az új mappában futtassa az alábbi parancsot egy új ASP.NET Core MVC webalkalmazás-projekt létrehozásához:
 
+    ```CLI
         dotnet new mvc --no-https
+    ```
 
 ## <a name="add-secret-manager"></a>Secret Manager hozzáadása
 
@@ -83,19 +85,23 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
+    ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
-
+    ```
 2. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
+    ```CLI
         dotnet restore
-
+    ```
 3. Adjon hozzá egy *ConnectionStrings: AppConfig* nevű titkos kulcsot a Secret Managerhez.
 
     Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le a következő parancs értékét az alkalmazás konfigurációs tárolójának a kapcsolatok karakterláncára.
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
+    ```CLI
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
 
     > [!IMPORTANT]
     > Egyes rendszerhéjak megcsonkítják a kapcsolatok karakterláncát, kivéve, ha idézőjelek közé vannak zárva. Győződjön meg arról, hogy a `dotnet user-secrets` parancs kimenete a teljes hálózati karakterláncot jeleníti meg. Ha nem, futtassa újra a parancsot, és foglalja bele a kapcsolatok karakterláncát idézőjelek közé.
@@ -111,6 +117,11 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     ```
 
 5. A `config.AddAzureAppConfiguration()` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához.
+    
+    > [!IMPORTANT]
+    > a `CreateHostBuilder` a `CreateWebHostBuilder` értéket helyettesíti a .NET Core 3,0-ben.  Válassza ki a megfelelő szintaxist a környezet alapján.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>@No__t-0 frissítése a .NET Core 2. x verzióhoz
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -123,9 +134,23 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
             .UseStartup<Startup>();
     ```
 
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>A .NET Core 3. x verziójának `CreateHostBuilder` frissítése
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 6. Nyissa meg az *index. cshtml* a views > Home könyvtárban, és cserélje le a tartalmát a következő kódra:
 
-    ```html
+    ```HTML
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
@@ -144,7 +169,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 7. Nyissa meg a *_Layout. cshtml* mappát a megosztott könyvtár > nézeteiben, és cserélje le a tartalmát a következő kódra:
 
-    ```html
+    ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -173,11 +198,15 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 1. Ha az alkalmazást a a .NET Core parancssori felülete használatával szeretné felépíteni, futtassa a következő parancsot a parancs-rendszerhéjban:
 
-        dotnet build
+    ```CLI
+       dotnet build
+    ```
 
 2. A létrehozás sikeres befejezése után futtassa a következő parancsot a webalkalmazás helyi futtatásához:
 
+    ```CLI
         dotnet run
+    ```
 
 3. Nyisson meg egy böngészőablakot, és lépjen a `http://localhost:5000` lapra, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
 
@@ -185,7 +214,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy ASP.NET Core webalkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja, hogyan konfigurálhatja a webalkalmazást a konfigurációs beállítások dinamikus frissítéséhez.
 

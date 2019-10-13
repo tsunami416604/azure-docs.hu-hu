@@ -13,20 +13,20 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d4376632b8f912cd76f3af5e9a8819b75f8144b6
-ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
+ms.openlocfilehash: 06171dbedb55b4a80e2b27b9314247331d65ed97
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209480"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286477"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adat-előállító létrehozása a PowerShell használatával
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adatelőállító létrehozása a PowerShell használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](quickstart-create-data-factory-powershell.md)
 
-Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatAzure Data Factory használatával történő **átalakításával** kapcsolatos oktatóanyagért lásd [: oktatóanyag: Az adatátalakítás a](transform-data-using-spark.md)Spark használatával.
+Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-beli adat-előállító létrehozásához. Az adat-előállítóban létrehozott folyamat adatokat **másol** egy Azure-blobtároló egyik mappájából egy másikba. Az adatok Azure Data Factoryval történő **átalakításának** útmutatásáért olvassa el az [az adatok Spark segítségével történő átalakítását ismertető oktatóanyagot](transform-data-using-spark.md).
 
 > [!NOTE]
 > Ez a cikk nem mutatja be részletesen a Data Factory szolgáltatást. Ha szeretné megismerni az Azure Data Factoryt, tekintse meg [Az Azure Data Factory bemutatását](introduction.md).
@@ -105,14 +105,14 @@ Vegye figyelembe a következő szempontokat:
 
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
 
-* Azon Azure-régiók listájáért, amelyekben Data Factory jelenleg elérhető, válassza ki a következő oldalon megtekinteni kívánt régiókat, majd bontsa ki az **elemzés** elemet a **Data Factory**megkereséséhez: [Régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 
 Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóhoz történő társításához. Ebben a rövid útmutatóban létrehoz egy Azure Storage-beli társított szolgáltatást, amely forrás- és fogadóadattárként is használható. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
 
-1. Hozzon létre egy **AzureStorageLinkedService. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal: (Ha még nem létezik, hozza létre a ADFv2QuickStartPSH mappát.)
+1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADFv2QuickStartPSH nevű mappát).
 
     > [!IMPORTANT]
     > A fájl mentése előtt az &lt;accountName&gt; és az &lt;accountKey&gt; kifejezést cserélje le az Azure Storage-fiók nevére és kulcsára.
@@ -157,7 +157,7 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 
-Ebben az eljárásban két adatkészletet hoz létre: **InputDataset** és **OutputDataset**. Ezek az adatkészletek **bináris**típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak.
+A feladat részeként két adatkészletet hoz létre, az **InputDataset** és az **OutputDataset** adatkészletet. Ezek az adatkészletek **bináris**típusúak. Az előző szakaszban létrehozott Azure Storage-beli társított szolgáltatásra hivatkoznak.
 A bemeneti adatkészlet a bemeneti mappában lévő forrásadatokat jelenti. A bemeneti adatkészlet definíciójában adhatja meg a forrásadatokat tartalmazó blobtároló (**adftutorial**), mappa (**input**) és fájl (**emp.txt**) nevét.
 A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatkészlet definíciójában adhatja meg annak a blobtárolónak (**adftutorial**), mappának (**output**) és fájlnak a nevét, amelybe az adatok át lesznek másolva. 
 1. Hozzon létre egy **InputDataset. JSON** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában a következő tartalommal:
@@ -184,7 +184,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-2. Az adatkészlet létrehozása: **InputDataset**futtassa a **set-AzDataFactoryV2Dataset** parancsmagot.
+2. A következő adatkészlet létrehozásához futtassa a **set-AzDataFactoryV2Dataset** parancsmagot: **InputDataset**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -225,7 +225,7 @@ A kimeneti adatkészlet a célhelyre másolt adatokat jelenti. A kimeneti adatk�
     }
     ```
 
-4. A **set-AzDataFactoryV2Dataset** parancsmag futtatásával hozza létreaz adatkészletet.
+4. A **set-AzDataFactoryV2Dataset** parancsmag futtatásával hozza létre az **adatkészletet**.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -300,7 +300,7 @@ Ebben az eljárásban egy másolási tevékenységgel rendelkező folyamatot hoz
     }
     ```
 
-2. A folyamat létrehozása: **Adfv2QuickStartPipeline**futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozása: **Adfv2QuickStartPipeline**, futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `
@@ -316,12 +316,12 @@ Ebben a lépésben létrehoz egy folyamat-futtatást.
 
 Futtassa a **rehív-AzDataFactoryV2Pipeline** parancsmagot egy folyamat futtatásának létrehozásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
-    ```powershell
-    $RunId = Invoke-AzDataFactoryV2Pipeline `
-        -DataFactoryName $DataFactory.DataFactoryName `
-        -ResourceGroupName $ResGrp.ResourceGroupName `
-        -PipelineName $DFPipeLine.Name 
-    ```
+  ```powershell
+$RunId = Invoke-AzDataFactoryV2Pipeline `
+    -DataFactoryName $DataFactory.DataFactoryName `
+    -ResourceGroupName $ResGrp.ResourceGroupName `
+    -PipelineName $DFPipeLine.Name 
+```
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
@@ -438,6 +438,6 @@ Futtassa a **rehív-AzDataFactoryV2Pipeline** parancsmagot egy folyamat futtatá
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. A Data Factory más forgatókönyvekben való használatát ismertető további információkért tekintse meg az [oktatóanyagokat](tutorial-copy-data-dot-net.md).

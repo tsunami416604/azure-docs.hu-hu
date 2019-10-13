@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: 03163d75681bee7434e2b7576a678b1094d47b94
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: cda3b0db1a4f1b098d8ea57887a047fcdef04243
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973710"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286487"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -25,6 +25,10 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 |**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="270"></a>2.7.0
+
+- Ez a kiadás javít egy olyan regressziót, amely megakadályozta, hogy a felhasználók a .NET Core vagy x86 .NET-alapú ügyfelek használatakor lekérdezéseket futtassanak az emulátorból az SQL API-fiókból.
 
 ### <a name="246"></a>2.4.6
 

@@ -101,6 +101,8 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: További források
   items:
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/en-us/pricing/details/app-configuration/'
     - name: Videók
       items:
         - name: Első lépések

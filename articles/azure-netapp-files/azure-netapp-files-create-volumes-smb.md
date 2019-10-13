@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827511"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300531"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
 Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
 
-## <a name="before-you-begin"></a>Előkészületek 
+## <a name="before-you-begin"></a>Előzetes teendők 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
-[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
+[Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)@no__t – 1  
 Az alhálózatot delegálni kell Azure NetApp Files.  
 [Alhálózat delegálása Azure NetApp Filesre](azure-netapp-files-delegate-subnet.md)
 
@@ -40,7 +40,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 * A megfelelő portokat meg kell nyitni a megfelelő Windows Active Directory (AD) kiszolgálón.  
     A szükséges portok a következők: 
 
-    |     Szolgáltatás           |     Port     |     Protocol     |
+    |     Szolgáltatás           |     Port     |     Protocol (Protokoll)     |
     |-----------------------|--------------|------------------|
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
@@ -56,8 +56,8 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    NetBIOS-név       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    Secure LDAP        |    636       |    TCP           |
-    |    Secure LDAP        |    3269      |    TCP           |
+    |    Biztonságos LDAP        |    636       |    TCP           |
+    |    Biztonságos LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
 
 * A célként megadott Active Directory tartományi szolgáltatások helyének topológiájának meg kell felelnie az ajánlott eljárásoknak, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  
@@ -86,9 +86,9 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
     * **Elsődleges DNS**  
         Ez az a DNS, amely szükséges a Active Directory tartományhoz való csatlakozáshoz és az SMB-hitelesítési műveletekhez. 
-    * **Másodlagos DNS**   
+    * **Másodlagos DNS**-@no__t – 1  
         Ez a másodlagos DNS-kiszolgáló a redundáns Name Services biztosításához. 
-    * **Tartomány**  
+    * **Tartományi**  
         Ez annak a Active Directory tartományi szolgáltatások a tartományneve, amelyhez csatlakozni szeretne.
     * **SMB-kiszolgáló (számítógépfiók) előtagja**  
         Ez az Active Directory lévő számítógépfiók elnevezési előtagja, amelyet a Azure NetApp Files új fiókok létrehozásához fog használni.
@@ -100,17 +100,20 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     * **Szervezeti egység elérési útja**  
         Ez a szervezeti egység (OU) LDAP-elérési útja, ahol a rendszer az SMB-kiszolgáló számítógép-fiókjait hozza létre. Ez a szervezeti egység = második szint, OU = első szint. 
 
-        Ha a Azure NetApp filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési `OU=AADDC Computers` útja az Active Directory beállítása a NetApp-fiókhoz.
+        Ha a Azure NetApp Filest használja Azure Active Directory Domain Services, akkor a szervezeti egység elérési útja `OU=AADDC Computers`, ha a NetApp-fiókhoz Active Directory konfigurál.
         
-    * Hitelesítő adatok, beleértve a felhasználónevet és a **jelszót** is
+    * Hitelesítő adatok, beleértve a **felhasználónevet** és a **jelszót** is
 
-    ![Csatlakozás Active Directory-címtárhoz](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Csatlakozás Active Directory](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
 3. Kattintson a **Csatlakozás** parancsra.  
 
     Megjelenik a létrehozott Active Directory-kapcsolatok.
 
     ![Active Directory kapcsolatok](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
+
+> [!NOTE] 
+> A Felhasználónév és a jelszó mezőket a Active Directory-kapcsolatok mentése után szerkesztheti. A kapcsolatok mentése után a többi érték nem szerkeszthető. Ha bármilyen más értéket módosítania kell, először törölnie kell minden telepített SMB-kötetet, majd törölnie és újra létre kell hoznia a Active Directory-kapcsolatokat.
 
 ## <a name="add-an-smb-volume"></a>SMB-kötet hozzáadása
 
@@ -127,7 +130,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
         A kötet nevének egyedinek kell lennie az egyes kapacitási készleteken belül. Legalább három karakter hosszúnak kell lennie. Bármely alfanumerikus karaktert használhat.   
 
-        A kötet neve `default` nem használható.
+        A kötet neveként nem használható `default`.
 
     * **Kapacitási készlet**  
         Határozza meg azt a kapacitási készletet, amelyben létre szeretné hozni a kötetet.
@@ -165,7 +168,7 @@ Az alhálózatot delegálni kell Azure NetApp Files.
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Kötetek csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)

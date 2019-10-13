@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: bf1fdca5476f66249eb5b73bbcbf5913142eb0d3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: f78ddd5fa314d588f5d667c181528c38df3f1cef
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978481"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299204"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Meglévő terv-hozzárendelés frissítése
 
@@ -64,7 +64,7 @@ Korlátlan számú hozzárendelés frissíthető. Ha hiba történik, állapíts
 - Már létező objektum
 - Azure Resource Manager által nem támogatott módosítás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

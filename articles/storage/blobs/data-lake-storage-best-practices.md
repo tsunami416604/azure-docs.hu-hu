@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991873"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299673"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
-Ebben a cikkben megismerheti a Azure Data Lake Storage Gen2 használatának ajánlott eljárásait és szempontjait. Ez a cikk a Data Lake Storage Gen2 biztonságával, teljesítményével, rugalmasságával és figyelésével kapcsolatos információkat tartalmaz. Data Lake Storage Gen2 előtt a valóban big data olyan szolgáltatásokkal, mint az Azure HDInsight, összetett volt. Több blob Storage-fiókba kellett átméreteznie az adatmennyiséget, hogy a petabyte tárolás és az optimális teljesítmény legyen elérhető. A Data Lake Storage Gen2 a méret és a teljesítmény nagy részét eltávolítja a rendszer. Azonban továbbra is vannak olyan megfontolások, amelyeket ez a cikk ismertet, hogy a lehető legjobb teljesítményt kapja Data Lake Storage Gen2.
+Ebben a cikkben megismerheti a Azure Data Lake Storage Gen2 használatának ajánlott eljárásait és szempontjait. Ez a cikk a Data Lake Storage Gen2 biztonságával, teljesítményével, rugalmasságával és figyelésével kapcsolatos információkat tartalmaz. Data Lake Storage Gen2 előtt a valóban big data olyan szolgáltatásokkal, mint az Azure HDInsight, összetett volt. Több blob Storage-fiókba kellett átméreteznie az adatmennyiséget, hogy a petabyte tárolás és az optimális teljesítmény legyen elérhető. Data Lake Storage Gen2 támogatja az egyéni fájlméretet olyan magas szintű 5TB, amely a teljesítményre vonatkozó nagy mennyiségű korlátozást eltávolította. Azonban továbbra is vannak olyan megfontolások, amelyeket ez a cikk ismertet, hogy a lehető legjobb teljesítményt kapja Data Lake Storage Gen2.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
@@ -39,7 +39,7 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>A Data Lake Storage Gen2 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A > tűzfal engedélyezhető a Azure Portal lévő Storage-fiókon a tűzfal**engedélyezése (bekapcsolva)**  > beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal Storage-fiókjában a **tűzfalon**keresztül  > **engedélyezze a tűzfal (on)**  > **lehetővé teszi az Azure-szolgáltatások elérését** .
 
 Ha Azure Databricks szeretné elérni a Storage-fiókját, telepítse Azure Databricks a virtuális hálózatra, majd adja hozzá a virtuális hálózatot a tűzfalhoz. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -63,9 +63,9 @@ A másolási feladatok az Apache Oozie-munkafolyamatok által indíthatók el, g
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>A másolási feladatok ütemezett Azure Data Factory használata
 
-A Azure Data Factory is használható a másolási feladatok másolási tevékenységgel való megadására, és a másolás varázsló segítségével is beállítható a gyakoriság. Ne feledje, hogy Azure Data Factory a Felhőbeli adatáthelyezési egységek (DMUs-EK) korlátja, és végül a nagyméretű adatszámítási feladatokhoz tartozó átviteli sebesség/számítás. Emellett Azure Data Factory jelenleg nem biztosít különbözeti frissítéseket Data Lake Storage Gen2 fiókok között, ezért a kaptár-táblákhoz a replikáláshoz teljes másolat szükséges. A Data Factory használatával történő másolással kapcsolatos további információkért tekintse meg a adat-előállítót ismertető [cikket](../../data-factory/load-azure-data-lake-storage-gen2.md) .
+A Azure Data Factory is használható a másolási feladatok másolási tevékenységgel való megadására, és a másolás varázsló segítségével is beállítható a gyakoriság. Ne feledje, hogy Azure Data Factory a Felhőbeli adatáthelyezési egységek (DMUs-EK) korlátja, és végül a nagyméretű adatszámítási feladatokhoz tartozó átviteli sebesség/számítás. Emellett Azure Data Factory jelenleg nem biztosít különbözeti frissítéseket Data Lake Storage Gen2 fiókok között, ezért a kaptár-táblákhoz a replikáláshoz teljes másolat szükséges. A Data Factory használatával történő másolással kapcsolatos további információkért tekintse meg a [adat-előállítót ismertető cikket](../../data-factory/load-azure-data-lake-storage-gen2.md) .
 
-## <a name="monitoring-considerations"></a>Felügyeleti szempontok
+## <a name="monitoring-considerations"></a>Figyelési szempontok
 
 A Data Lake Storage Gen2 metrikákat biztosít a Data Lake Storage Gen2 fiók és a Azure Monitor Azure Portal alatt. A Data Lake Storage Gen2 rendelkezésre állása megjelenik a Azure Portal. Egy Data Lake Storage Gen2 fiók legfrissebb elérhetőségének lekéréséhez saját szintetikus teszteket kell futtatnia a rendelkezésre állás ellenőrzéséhez. Más mérőszámok, mint például a teljes tárterület-kihasználtság, az olvasási/írási kérelmek és a bejövő/kimenő forgalom kihasználható a figyelési alkalmazások számára, és riasztásokat is indíthatnak, ha a küszöbértékek (például átlagos késés vagy a percenkénti hibák száma) túllépve.
 

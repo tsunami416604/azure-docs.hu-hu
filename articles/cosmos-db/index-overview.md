@@ -4,14 +4,14 @@ description: Ismerje meg, hogy az indexelés hogyan működik Azure Cosmos DBban
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914199"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299779"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés Azure Cosmos DBban – áttekintés
 
@@ -64,9 +64,11 @@ Egy elem írásakor Azure Cosmos DB hatékonyan indexeli az egyes tulajdonságok
 
 ## <a name="index-kinds"></a>Index típusa
 
-Azure Cosmos DB jelenleg három típusú indexet támogat:
+Azure Cosmos DB jelenleg három típusú indexet támogat.
 
-A **tartomány** indexének típusa a következő:
+### <a name="range-index"></a>Tartomány indexe
+
+A **Range** index egy megrendelt fastruktúrán alapul. A tartomány indexének típusa a következő:
 
 - Esélyegyenlőségi lekérdezések:
 
@@ -74,20 +76,41 @@ A **tartomány** indexének típusa a következő:
    SELECT * FROM container c WHERE c.property = 'value'
    ```
 
+   ```sql
+   SELECT * FROM c WHERE c.property IN ("value1", "value2", "value3")
+   ```
+
+   Egyenlőségi egyezés egy tömb elemnél
+   ```sql
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    ```
+
 - Tartomány lekérdezései:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
    ```
-  `>`(a `<` ,`<=`,,, )`!=` `>=`
+  (működik `>`, `<`, `>=`, `<=`, `!=`)
 
-- `ORDER BY`lekérdezések
+- Tulajdonság meglétének ellenőrzése:
 
-   ```sql 
+   ```sql
+   SELECT * FROM c WHERE IS_DEFINED(c.property)
+   ```
+
+- A karakterlánc-előtag egyezései (a kulcsszó nem fogja kihasználni a tartomány indexét):
+
+   ```sql
+   SELECT * FROM c WHERE STARTSWITH(c.property, "value")
+   ```
+
+- @no__t – 0 lekérdezés:
+
+   ```sql
    SELECT * FROM container c ORDER BY c.property
    ```
 
-- `JOIN`lekérdezések
+- @no__t – 0 lekérdezés:
 
    ```sql
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
@@ -95,31 +118,41 @@ A **tartomány** indexének típusa a következő:
 
 A tartomány-indexek a skaláris értékeken (String vagy Number) is használhatók.
 
-A **térbeli** index típusát a következőhöz használhatja:
+### <a name="spatial-index"></a>Térbeli index
 
-- Földrajzi távolsági lekérdezések: 
+A **térbeli** indexek hatékony lekérdezéseket tesznek lehetővé térinformatikai objektumokon, például pontokon, vonalakon, sokszögeken és több sokszögen. Ezek a lekérdezések a ST_DISTANCE, a ST_WITHIN, a ST_INTERSECTS kulcsszavakat használják. A következő példák a térbeli index típusát használják:
+
+- Földrajzi távolsági lekérdezések:
 
    ```sql
    SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40
    ```
 
-- Térinformatika a lekérdezéseken belül: 
+- Térinformatika a lekérdezéseken belül:
 
    ```sql
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
+- Térinformatikai metsző lekérdezések:
+
+   ```sql
+   SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
+   ```
+
 A térbeli indexek megfelelően formázott [GeoJSON](geospatial.md) -objektumokon is használhatók. A pontok, Linestring, sokszögek és többsokszögek jelenleg támogatottak.
 
-Az **összetett** index típusa a következő:
+### <a name="composite-indexes"></a>Összetett indexek
 
-- `ORDER BY`több tulajdonság lekérdezései:
+Az **összetett** indexek nagyobb hatékonyságot biztosítanak, ha több mezőn végez műveleteket. Az összetett index típusa a következő:
+
+- @no__t – 0 lekérdezés több tulajdonságról:
 
 ```sql
  SELECT * FROM container c ORDER BY c.property1, c.property2
 ```
 
-- Lekérdezések szűrővel és `ORDER BY`. Ezek a lekérdezések összetett indexet használhatnak, ha a Filter tulajdonságot hozzáadja `ORDER BY` a záradékhoz.
+- Lekérdezések szűrővel és `ORDER BY`. Ezek a lekérdezések összetett indexet használhatnak, ha a Filter tulajdonságot hozzáadja a `ORDER BY` záradékhoz.
 
 ```sql
  SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
@@ -131,18 +164,25 @@ Az **összetett** index típusa a következő:
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
+Mindaddig, amíg az egyik szűrő predikátuma az index típusa alapján használ, a lekérdezési motor kiértékeli, hogy először a REST ellenőrzése előtt. Ha például rendelkezik egy SQL-lekérdezéssel, például `SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+
+* A fenti lekérdezés először szűrni fogja azokat a bejegyzéseket, ahol a firstName = "Andrew" kifejezést használja az index használatával. Ezután továbbítja az összes firstName = "Andrew" bejegyzést egy későbbi folyamaton keresztül, hogy kiértékelje a tartalmazza a szűrő predikátumát.
+
+* Felgyorsíthatja a lekérdezéseket, és elkerülheti a tárolók teljes vizsgálatát, ha olyan függvényeket használ, amelyek nem használják az indexet (például tartalmazza) az indexet használó további szűrési predikátumok hozzáadásával. A Filter záradékok sorrendje nem fontos. A lekérdezési motor kideríti, hogy mely predikátumok szelektívek, és ennek megfelelően futtatják a lekérdezést.
+
+
 ## <a name="querying-with-indexes"></a>Lekérdezés indexekkel
 
-Az adatindexelés során kinyert elérési utak megkönnyítik az index keresését egy lekérdezés feldolgozásakor. Az indexelt `WHERE` elérési utak listáját tartalmazó lekérdezés záradékának egyeztetésével nagyon gyorsan azonosíthatja a lekérdezési predikátumnak megfelelő elemeket.
+Az adatindexelés során kinyert elérési utak megkönnyítik az index keresését egy lekérdezés feldolgozásakor. A lekérdezés `WHERE` záradékának az indexelt elérési utak listájával való megfeleltetésével gyorsan azonosíthatja a lekérdezési predikátumnak megfelelő elemeket.
 
 Vegyük például a következő lekérdezést: `SELECT location FROM location IN company.locations WHERE location.country = 'France'`. A lekérdezési predikátum (elemek szűrése, ahol bármely hely "Franciaország", mint országa) az alábbi piros színnel jelölt elérési útra hasonlít:
 
 ![Megadott elérési út megfeleltetése egy fában belül](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> Egy olyan záradék, amelyet egy adott tulajdonság megrendelése mindig egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. `ORDER BY` Hasonlóképpen, `ORDER BY` a több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.
+> Egy `ORDER BY` záradék, amelyet egy adott tulajdonság megrendelése *mindig* a tartomány indexére van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, egy `ORDER BY` lekérdezés, amelynek több tulajdonsága is megrendeli, *mindig* összetett indexre van szüksége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatos további információkért olvassa el a következő cikkeket:
 

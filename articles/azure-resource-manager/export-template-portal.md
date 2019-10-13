@@ -4,14 +4,14 @@ description: A Azure Portal használatával exportálhat egy Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959705"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300367"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -48,39 +48,36 @@ A sablon exportálása az üzembe helyezés előtt vagy az előzményekből a k�
 * Egy könnyen felhasználható sablont szeretne használni.
 * Nem kell belefoglalnia az eredeti telepítés után elvégzett módosításokat.
 
-## <a name="export-template-from-resource-group"></a>Sablon exportálása az erőforráscsoportből
+## <a name="export-template-from-a-resource-group"></a>Sablon exportálása erőforráscsoporthoz
 
 Egy vagy több erőforrás exportálása egy erőforráscsoporthoz:
 
 1. Válassza ki az exportálni kívánt erőforrásokat tartalmazó erőforráscsoportot.
 
-1. Az erőforráscsoport összes erőforrásának exportálásához válassza az összes, majd a **sablon exportálása**lehetőséget. A **sablon exportálása** beállítás csak akkor válik elérhetővé, ha legalább egy erőforrást kiválasztott.
+1. Válasszon ki egy vagy több erőforrást a jelölőnégyzetek bejelölésével.  Az összes kijelöléséhez jelölje be a **név**bal oldalán található jelölőnégyzetet. A **sablon exportálása** menüpont csak akkor válik elérhetővé, ha legalább egy erőforrást kiválasztott.
 
    ![Az összes erőforrás exportálása](./media/export-template-portal/select-all-resources.png)
 
-1. Ha ki szeretne választani egy adott erőforrást az exportáláshoz, jelölje be az erőforrások melletti jelölőnégyzeteket. Ezután válassza a **sablon exportálása**lehetőséget.
+    A képernyőképen csak a Storage-fiók van kiválasztva.
+1. Válassza a **sablon exportálása**lehetőséget.
 
-   ![Exportálandó erőforrások kiválasztása](./media/export-template-portal/select-resources.png)
-
-1. Megjelenik az exportált sablon, amely letölthető.
+1. Megjelenik az exportált sablon, amely letölthető és telepíthető.
 
    ![Sablon megjelenítése](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Sablon exportálása az erőforrásból
+## <a name="export-template-from-a-resource"></a>Sablon exportálása erőforrásból
 
 Egy erőforrás exportálása:
 
 1. Válassza ki az exportálni kívánt erőforrást tartalmazó erőforráscsoportot.
 
-1. Válassza ki az exportálni kívánt erőforrást.
-
-   ![Erőforrás kiválasztása](./media/export-template-portal/select-link-resource.png)
+1. Válassza ki az exportálni kívánt erőforrást az erőforrás megnyitásához.
 
 1. Ehhez az erőforráshoz válassza a **sablon exportálása** lehetőséget a bal oldali ablaktáblán.
 
    ![Erőforrás exportálása](./media/export-template-portal/export-single-resource.png)
 
-1. Megjelenik az exportált sablon, amely letölthető. A sablon csak egyetlen erőforrást tartalmaz.
+1. Megjelenik az exportált sablon, amely letölthető és telepíthető. A sablon csak egyetlen erőforrást tartalmaz.
 
 ## <a name="export-template-before-deployment"></a>Sablon exportálása üzembe helyezés előtt
 
@@ -92,9 +89,8 @@ Egy erőforrás exportálása:
 
    ![Sablon letöltése](./media/export-template-portal/download-before-deployment.png)
 
-1. Megjelenik a sablon, és letölthető.
+1. Megjelenik a sablon, amely letölthető és telepíthető.
 
-   ![Sablon megjelenítése](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Sablon exportálása telepítés után
 
@@ -114,7 +110,7 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
    ![Sablon kiválasztása](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan exportálhat sablonokat az [Azure CLI](manage-resource-groups-cli.md#export-resource-groups-to-templates), a [Azure PowerShell](manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy a [REST API](/rest/api/resources/resourcegroups/exporttemplate)használatával.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.

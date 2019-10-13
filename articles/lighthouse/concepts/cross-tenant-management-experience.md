@@ -1,18 +1,18 @@
 ---
-title: Több-bérlős felügyeleti élmény az Azure Lighthouse-vel
+title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309651"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301002"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -57,7 +57,8 @@ A több-bérlős felügyeleti felület jelenleg a következő forgatókönyveket
 
 - Megtekintheti a Azure Portal delegált előfizetésekre vonatkozó riasztásokat, vagy programozott módon REST API-hívásokon keresztül, amelyekkel megtekintheti a riasztásokat az összes előfizetésben
 - A delegált előfizetések tevékenységi naplójának részleteinek megtekintése
-- Log Analytics: Adatok lekérdezése távoli ügyfelek munkaterületeiről több bérlőn
+- Log Analytics: adatok lekérdezése távoli ügyfelek munkaterületeiről több bérlőn
+- Hozzon létre riasztásokat az olyan ügyfelek bérlői számára, amelyek automatizálást indítanak, például Azure Automation runbookok vagy Azure Functionst a szolgáltató bérlője webhookok használatával
 
 [Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ A több-bérlős felügyeleti felület jelenleg a következő forgatókönyveket
 - Szabályzat-definíciók létrehozása és szerkesztése delegált előfizetésen belül
 - Ügyfél által definiált szabályzat-definíciók kiosztása a delegált előfizetésen belül
 - Az ügyfelek a szolgáltató által készített szabályzatokat a saját maguk által létrehozott szabályzatok mellett látják
-- Javíthatja a deployIfNotExists-hozzárendeléseket az ügyfél-bérlőn belül, ha az ügyfél beállította a felügyelt identitást és a *roleDefinitionIds* a szabályzat-hozzárendeléshez
+- Javíthatja [a deployIfNotExists, vagy módosíthatja a hozzárendeléseket az ügyfél bérlőn belül](../how-to/deploy-policy-remediation.md)
 
 [Azure-erőforrás gráf](https://docs.microsoft.com/azure/governance/resource-graph/):
 
@@ -119,7 +120,7 @@ Támogatási kérelmek:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásokat:
 
-- Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérelmekhez tartozó műveleti URI-k `https://management.azure.com`a következővel kezdődnek:. Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például `https://myaccount.blob.core.windows.net` : vagy. `https://mykeyvault.vault.azure.net/` Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
+- Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérések műveleti URI-je `https://management.azure.com` értékkel kezdődik. Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/`. Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
 - A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg az összes beépített szerepkört támogatja, kivéve a tulajdonosi, a felhasználói hozzáférési rendszergazdai vagy a [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) engedéllyel rendelkező beépített szerepköröket. Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) szintén nem támogatottak.
 - Az Azure-beli delegált erőforrás-kezeléshez jelenleg nem lehet előfizetést (vagy erőforráscsoportot) előkészíteni, ha az előfizetés Azure Databricks használ. Hasonlóképpen, ha regisztrálva van egy előfizetés a **Microsoft. ManagedServices** erőforrás-szolgáltatóval való bevezetéshez, jelenleg nem fog tudni Databricks-munkaterületet létrehozni az adott előfizetéshez.
 
@@ -130,7 +131,7 @@ A fent felsorolt támogatott szolgáltatások és forgatókönyvek esetében kö
 Vannak olyan API-k is, amelyek az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához szükségesek. További információért lásd a **hivatkozási** szakaszt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az ügyfeleket az Azure-beli delegált erőforrás-kezeléshez [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.
 - [Megtekintheti és kezelheti az ügyfeleket](../how-to/view-manage-customers.md) a Azure Portalban lévő **ügyfelekkel** .

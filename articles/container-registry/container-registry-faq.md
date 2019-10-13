@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264314"
+ms.locfileid: "72286515"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -420,7 +420,7 @@ Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék
 * Ad-blokkolók
 * DNS-hibák
 
-Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigurációt és a kapcsolatot. Emellett a böngészőben egy inkognitóban-vagy privát munkamenetet is kipróbálhat, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
+Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigurációt és a kapcsolatot. Próbálja meg `az acr check-health -n yourRegistry` futtatását az Azure CLI-vel, és ellenőrizze, hogy a környezet képes-e kapcsolódni a Container Registryhoz. Emellett a böngészőben egy inkognitóban-vagy privát munkamenetet is kipróbálhat, hogy elkerülje az elavult böngésző gyorsítótárának vagy cookie-jait.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>A Hogyan http-nyomkövetéseket gyűjt a Windows rendszeren?
 

@@ -14,19 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091876"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300857"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>A MySQL telepítése Azure-ban működő, OpenSUSE Linux rendszerű virtuális gépen
 
 A [MySQL](https://www.mysql.com) egy népszerű, nyílt forráskódú SQL-adatbázis. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy OpenSUSE Linux rendszerű virtuális gépet, majd telepítse a MySQL-t.
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -104,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL-jelszó
 
-A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL\_biztonságos\_telepítési** szkriptjét a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
+A telepítés után a MySQL-gyökér jelszava alapértelmezés szerint üres. Futtassa a **MySQL @ no__t-1secure @ no__t-2installation** szkriptet a MySQL védelméhez. A parancsfájl felszólítja a MySQL-gyökér jelszavának módosítására, a névtelen felhasználói fiókok eltávolítására, a távoli rendszergazdai bejelentkezés letiltására, a tesztelési adatbázisok eltávolítására és a jogosultságok tábla újratöltésére. 
 
 A kiszolgáló újraindítása után ismét SSH-t a virtuális gépre.
 
@@ -139,7 +137,7 @@ A Semi-Colon (;) a sor végén elengedhetetlen a parancs befejezése.
 ## <a name="create-a-database"></a>Adatbázis létrehozása
 
 
-Hozzon létre egy adatbázist, `mysqluser` és adja meg a felhasználói engedélyeket.
+Hozzon létre egy adatbázist, és adja meg a `mysqluser` felhasználói engedélyeket.
 
 ```sql
 CREATE DATABASE testdatabase;
@@ -161,7 +159,7 @@ quit
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A MySQL-vel kapcsolatos részletekért tekintse meg a [MySQL dokumentációját](https://dev.mysql.com/doc).
 
 

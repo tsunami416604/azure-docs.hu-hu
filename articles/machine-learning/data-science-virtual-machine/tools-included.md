@@ -9,20 +9,20 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
-ms.date: 09/27/2019
-ms.openlocfilehash: 68c48bd4288b80d6cab515aa981d0f72461c0849
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/10/2019
+ms.openlocfilehash: 70fa1bd2f33d3a6e58b12b9d2da617e8129c8da9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035265"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299722"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Milyen eszközöket tartalmaz az Azure Data Science Virtual Machine?
 
 Alább található a Data Science Virtual Machine található eszközök naprakész listája, valamint a hivatkozásokat, amelyekkel megismerheti az egyes eszközök konfigurálásának módját.
 
 
-| **Eszköz**                                                           | **A DSVM Windows** | **Linuxos DSVM** | **Használati megjegyzések** |
+| **Eszköz**                                                           | **Windowsos DSVM** | **Linuxos DSVM** | **Használati megjegyzések** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|:------:|
 | [Microsoft R Open](https://mran.microsoft.com/open/) előre telepített népszerű csomagokkal   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [R a DSVM](./dsvm-languages.md#r)           |
 | [Microsoft Machine learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) A fejlesztői kiadás tartalma: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RevoScaleR/revoscalepy csomagjai](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) párhuzamos és elosztott nagy teljesítményű keretrendszer (R és Python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [MicrosoftML](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), új legkorszerűbb gépi tanulási algoritmusok a Microsofttól <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R és Python operacionalizálási](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |<span class='green-check'>&#9989;</span>  </br> 9\.3.0                 |<span class='green-check'>&#9989;</span> | |
@@ -33,8 +33,8 @@ Alább található a Data Science Virtual Machine található eszközök naprak�
 | Adatbáziseszközök                                                       |  SQL Server Management Studio <br/> SQL Server integrációs szolgáltatás<br/> [BCP, Sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  ODBC/JDBC-illesztőprogramok|  [Mókus SQL](http://squirrel-sql.sourceforge.net/) (lekérdezési eszköz), <br />  BCP, Sqlcmd <br />  ODBC/JDBC-illesztőprogramok| |
 | Méretezhető adatbázis-elemzés SQL Server Machine learning-szolgáltatásokkal (R, Python) |<span class='green-check'>&#9989;</span>    | <span class='red-x'>&#10060;</span>                | |
 | [Jupyter notebook-kiszolgáló](https://jupyter.org/) a következő kernelekkel:                                  |<span class='green-check'>&#9989;</span></br> 5\.5.0   |<span class='green-check'>&#9989;</span> | [Jupyter Notebook minták](./dsvm-samples-and-walkthroughs.md) | 
-|     &nbsp; @ NO__T-1 @ NO__T-2 @ NO__T-3 R |<span class='green-check'>&#9989;</span></br> 3\.4.3 |<span class='green-check'>&#9989;</span></br> 3\.4.3 | [R Jupyter minták](./dsvm-samples-and-walkthroughs.md#r-language) |
-|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Python |<span class='green-check'>&#9989;</span></br> (3) |<span class='green-check'>&#9989;</span> | [Python Jupyter-minták](./dsvm-samples-and-walkthroughs.md#python-language) |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 R |<span class='green-check'>&#9989;</span></br> 3\.4.3 |<span class='green-check'>&#9989;</span></br> 3\.4.3 | [R Jupyter minták](./dsvm-samples-and-walkthroughs.md#r-language) |
+|     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Python |<span class='green-check'>&#9989;</span></br> 3 |<span class='green-check'>&#9989;</span> | [Python Jupyter-minták](./dsvm-samples-and-walkthroughs.md#python-language) |
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 Julia |<span class='green-check'>&#9989;</span></br> 0\.6.4 |<span class='green-check'>&#9989;</span></br> 0\.6.2 | [Julia Jupyter-minták](./dsvm-samples-and-walkthroughs.md#julia-language) |
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 PySpark |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [pySpark Jupyter-minták](./dsvm-samples-and-walkthroughs.md#sparkml)
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Csak Ubuntu) | |
@@ -44,9 +44,9 @@ Alább található a Data Science Virtual Machine található eszközök naprak�
 | Fejlesztői eszközök, ide-kódok és kód-szerkesztők:| | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) git beépülő modullal, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server Data Tools, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)és [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [A Visual Studio a DSVM](./dsvm-tools-development.md#visual-studio-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [A Visual Studio Code a DSVM](./dsvm-tools-development.md#visual-studio-code) |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.1.463) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [RStudio Desktop a DSVM](./dsvm-tools-development.md#rstudio--desktop) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.2.50 XX) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [RStudio Desktop a DSVM](./dsvm-tools-development.md#rstudio--desktop) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [RStudio-kiszolgáló](https://www.rstudio.com/products/rstudio/#Server) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | [RStudio-kiszolgáló a DSVM](./dsvm-tools-development.md#rstudio--server)
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Notebookshoz Community Edition](https://www.jetbrains.com/pycharm/) |<span class='green-check'>&#9989;</span></br> (2018.1.4)  |<span class='green-check'>&#9989;</span></br> (2018.2.3) | [Notebookshoz a DSVM](./dsvm-tools-development.md#pycharm)
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Notebookshoz Community Edition](https://www.jetbrains.com/pycharm/) |<span class='green-check'>&#9989;</span></br> (19.2.3)  |<span class='green-check'>&#9989;</span></br> (2018.2.3) | [Notebookshoz a DSVM](./dsvm-tools-development.md#pycharm)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Atom](https://atom.io/) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (1.26.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Juno (Julia ide)](https://junolab.org/)|<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span> | [Juno a DSVM](./dsvm-tools-development.md#juno)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Vim](https://www.vim.org) |<span class='green-check'>&#9989;</span></br> 8\.1.5 |<span class='green-check'>&#9989;</span></br> (7.4.1689) | |
@@ -54,10 +54,10 @@ Alább található a Data Science Virtual Machine található eszközök naprak�
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [git](https://git-scm.com/) és git bash |<span class='green-check'>&#9989;</span></br> (2.20.1) |<span class='green-check'>&#9989;</span></br> 0\.6.2 | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [OpenJDK](https://openjdk.java.net) |<span class='green-check'>&#9989;</span></br> (1.8.0 _201) |<span class='green-check'>&#9989;</span></br> (1.8.0 _222) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET-keretrendszer |<span class='green-check'>&#9989;</span></br> 4\.7.2 |<span class='red-x'>&#10060;</span>   | |
-| [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
+| [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.73.55 XX) |<span class='red-x'>&#10060;</span>   |
 | SDK-k az Azure és a Cortana Intelligence szolgáltatáscsomag eléréséhez |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [Asztali Power BI a DSVM](./dsvm-tools-development.md#power-bi-desktop) |
 | Adatáthelyezési és-felügyeleti eszközök: | | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.6.2 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.10.1 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure CLI](https://docs.microsoft.com/cli/azure) |<span class='green-check'>&#9989;</span></br> (2.0.56) |<span class='green-check'>&#9989;</span></br> (2.0.58) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azcopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) |<span class='green-check'>&#9989;</span></br> 8\.1.0 |<span class='red-x'>&#10060;</span>   | [Azcopy a DSVM](./dsvm-tools-ingestion.md#azcopy)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [blob Fuse illesztőprogram](https://github.com/Azure/azure-storage-fuse) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.0.2 | [blobfuse a DSVM](./dsvm-tools-ingestion.md#blobfuse)

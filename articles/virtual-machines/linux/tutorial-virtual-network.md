@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5355144720eef886dbf6da9c3c00eca05ccf03b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2255e75843f4ddadd44e7780054de4fc45e6449
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103580"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300729"
 ---
-# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális hálózatok létrehozása és kezelése az Azure CLI használatával Linux rendszerű virtuális gépekhez
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
 
 Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső és külső hálózati kommunikációhoz. Ez az oktatóanyag végigvezeti két virtuális gép telepítésén és az Azure hálózatkezelés konfigurálásán ezen virtuális gépekhez. Az oktatóanyagban szereplő példák feltételezik, hogy a virtuális gépek üzemeltetnek egy webalkalmazást egy adatbázis-alapú háttérrendszerrel, de az oktatóanyag során nem telepítünk ilyen alkalmazást. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,7 +33,7 @@ Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső é
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -150,7 +150,7 @@ az vm create \
 
 A hálózati biztonsági csoport (NSG) egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure-alapú virtuális hálózatokhoz (VNet-ekhez) csatlakozó erőforrásoknak. Az NSG-k társíthatók alhálózatokhoz vagy egyedi hálózati adapterekhez. Amikor egy NSG-t egy hálózati adapterhez társít, az csak a társított virtuális gépre vonatkozik. Ha az NSG-t hozzárendelik egy alhálózathoz, a szabályok érvényesek lesznek az alhálózathoz csatlakozó összes erőforrásra. 
 
-### <a name="network-security-group-rules"></a>Hálózatbiztonságicsoport-szabályok
+### <a name="network-security-group-rules"></a>Hálózat biztonsági csoportok szabályai
 
 Az NSG-szabályok határozzák meg azokat a hálózatkezelési portokat, amelyeken engedélyezett vagy tiltott a forgalom. A szabályok között szerepelhetnek forrás és cél IP-címtartományok, így szabályozható az adatforgalom adott rendszerek vagy alhálózatok között. Az NSG-szabályok között megadható a prioritás is (1–4096). A szabályokat a rendszer prioritás szerinti sorrendben értékeli. A 100-as prioritású szabályt a rendszer a 200-as prioritású szabály előtt ellenőrzi.
 
@@ -290,7 +290,7 @@ A háttérbeli virtuális gép csak a *22*-es és a *3306*-os porton keresztül 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

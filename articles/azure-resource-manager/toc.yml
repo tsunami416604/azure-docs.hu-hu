@@ -228,8 +228,6 @@
           href: resource-group-delete.md
         - name: Erőforrások zárolása
           href: resource-group-lock-resources.md
-        - name: Hitelesítési API az előfizetések hozzáféréséhez
-          href: resource-manager-api-authentication.md
         - name: EA-előfizetések létrehozása
           href: programmatically-create-subscription.md
         - name: Hozzáférés biztosítása EA-előfizetések létrehozásához

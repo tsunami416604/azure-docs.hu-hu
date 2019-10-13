@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299620"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298474"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -50,7 +50,7 @@ Igen, ha létrehozza a szükséges DNS-bejegyzéseket. Azure NetApp Files megadj
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Titkosítható az Azure-beli virtuális gép és a tároló közötti hálózati forgalom?
 
-Az adatforgalom (a NFSv3 vagy a SMBv3-ügyfélről Azure NetApp Files kötetre irányuló forgalom) nincs titkosítva. Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
+Az adatforgalom (a NFSv3, a NFSv 4.1 vagy a SMBv3-Azure NetApp Files ügyfél közötti forgalom nincs titkosítva). Az Azure-beli virtuális gépekről (NFS-vagy SMB-ügyfelet futtató) érkező forgalom azonban Azure NetApp Files biztonságos, mint bármely más Azure-beli virtuális gép – virtuális gép közötti forgalom. Ez a forgalom helyi az Azure-beli adatközpont-hálózat számára. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Titkosítható a tároló a nyugalmi állapotban?
 
@@ -103,7 +103,7 @@ A Azure NetApp Files a kötetek teljesítményének mérőszámait biztosítja. 
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Az Azure-beli virtuális gépek indításakor vagy újraindításakor egy kötetet szeretnék automatikusan csatlakoztatni.  Hogyan konfigurálja a gazdagépet az állandó NFS-kötetek számára?
 
-Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor `/etc/fstab` , adjon hozzá egy bejegyzést a gazdagépen lévő fájlhoz. 
+Ahhoz, hogy egy NFS-kötet automatikusan csatlakoztatható legyen a virtuális gép indításakor vagy újraindításakor, adjon hozzá egy bejegyzést a gazdagépen lévő `/etc/fstab` fájlhoz. 
 
 Például:`$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -120,7 +120,11 @@ A DF által jelentett kötet mérete a maximális méret, amelyet a Azure NetApp
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Milyen NFS-verziót támogat Azure NetApp Files?
 
-A Azure NetApp Files jelenleg a NFSv3 támogatja.
+Azure NetApp Files támogatja a NFSv3 és a NFSv 4.1-es verziója. A köteteket az NFS-verzióval is létrehozhatja. 
+
+> [!IMPORTANT] 
+> A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a kérelmet <anffeedback@microsoft.com> értékre. 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hogyan engedélyezi a gyökér leverését?
 
@@ -140,7 +144,7 @@ A Azure NetApp Files jelenleg egy Active Directory-kapcsolatban támogatja az el
 
 A [Azure Active Directory (ad) tartományi szolgáltatások](https://docs.microsoft.com/azure/active-directory-domain-services/overview) és a [Active Directory tartományi szolgáltatások (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) egyaránt támogatottak. A meglévő Active Directory tartományvezérlőket Azure NetApp Files használatával használhatja. A tartományvezérlők az Azure-ban virtuális gépekként, illetve ExpressRoute vagy S2S VPN-en keresztül is megtalálhatók a helyszínen. A Azure NetApp Files jelenleg nem támogatja az AD Joint [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Ha a Azure NetApp filest használja a Azure Active Directory Domain Services, a szervezeti egység elérési `OU=AADDC Computers` útja az Active Directory beállítása a NetApp-fiókhoz.
+Ha a Azure NetApp Filest használja Azure Active Directory Domain Services, akkor a szervezeti egység elérési útja `OU=AADDC Computers`, ha a NetApp-fiókhoz Active Directory konfigurál.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>A Windows Server Active Directory mely verziói támogatottak?
 
@@ -194,7 +198,7 @@ Nem. A Azure Data Box jelenleg nem támogatja a Azure NetApp Files.
 
 Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetApp Files.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 - [Microsoft Azure ExpressRoute GYIK](https://docs.microsoft.com/azure/expressroute/expressroute-faqs)
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)

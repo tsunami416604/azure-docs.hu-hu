@@ -2,18 +2,17 @@
 title: A Azure Analysis Services által támogatott adatforrások | Microsoft Docs
 description: A Azure Analysis Services adatmodelljei által támogatott adatforrásokat ismerteti.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993386"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298638"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>A Azure Analysis Services által támogatott adatforrások
 
@@ -39,7 +38,7 @@ A Visual Studióban az adatgyűjtés vagy importálás varázslóban látható a
 <a name="gen2">4</a> – ADLS Gen2 jelenleg nem támogatott.
 
 
-**Szolgáltató**   
+**Szolgáltató**@no__t – 1  
 Az Azure-adatforrásokhoz csatlakozó memóriában tárolt és DirectQuery modellek a .NET-keretrendszer adatszolgáltatóját használják SQL Serverhoz.
 
 ## <a name="other-data-sources"></a>Egyéb adatforrások
@@ -51,7 +50,7 @@ A helyszíni adatforrásokhoz és az Azure AS-kiszolgálóhoz való csatlakozás
 |Adatforrás | Memóriában lévő szolgáltató | DirectQuery-szolgáltató |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB szolgáltató a SQL Serverhoz, .NET-keretrendszer adatszolgáltatója SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
-| Az SQL Server Data Warehouse |SQL Server Native Client 11,0, Microsoft OLE DB szolgáltató a SQL Serverhoz, .NET-keretrendszer adatszolgáltatója SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
+| Adattárház SQL Server |SQL Server Native Client 11,0, Microsoft OLE DB szolgáltató a SQL Serverhoz, .NET-keretrendszer adatszolgáltatója SQL Server | .NET-keretrendszer adatszolgáltatója SQL Server |
 | Oracle | OLE DB-szolgáltató Oracle-hez, Oracle-adatszolgáltató a .NET-hez |Oracle-adatszolgáltató a .NET-hez |
 | Teradata |OLE DB szolgáltató a Teradata-hez, Teradata-adatszolgáltató a .NET-hez |Teradata-adatszolgáltató a .NET-hez |
 | | | |
@@ -92,15 +91,15 @@ A helyszíni adatforrásokhoz és az Azure AS-kiszolgálóhoz való csatlakozás
 
 ## <a name="specifying-a-different-provider"></a>Másik szolgáltató meghatározása
 
-Egyes adatforrásokhoz való kapcsolódáskor a Azure Analysis Services adatmodelljei eltérő adatszolgáltatót igényelhetnek. Bizonyos esetekben a natív szolgáltatók, például a SQL Server Native Client (SQLNCLI11) használatával az adatforrásokhoz csatlakozó táblázatos modellek hibát adhatnak vissza. Ha a SQLOLEDB-től eltérő natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **A (z) "sqlncli 11.1" szolgáltató nincs regisztrálva**. Ha a helyszíni adatforrásokhoz kapcsolódó DirectQuery-modellel rendelkezik, és natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **Hiba történt OLE DB sor létrehozásakor. Helytelen szintaxis a "LIMIT"** közelében.
+Egyes adatforrásokhoz való kapcsolódáskor a Azure Analysis Services adatmodelljei eltérő adatszolgáltatót igényelhetnek. Bizonyos esetekben a natív szolgáltatók, például a SQL Server Native Client (SQLNCLI11) használatával az adatforrásokhoz csatlakozó táblázatos modellek hibát adhatnak vissza. Ha a SQLOLEDB-től eltérő natív szolgáltatókat használ, hibaüzenet jelenik meg: **a (z) "sqlncli 11.1" szolgáltató nincs regisztrálva**. Ha a helyszíni adatforrásokhoz kapcsolódó DirectQuery-modellel rendelkezik, és natív szolgáltatókat használ, a következő hibaüzenet jelenhet meg: **hiba OLE DB sor létrehozásakor. Helytelen szintaxis a "LIMIT" közelében**.
 
 Ha helyszíni SQL Server Analysis Services táblázatos modellt telepít át Azure Analysis Servicesre, akkor szükség lehet a szolgáltató módosítására.
 
 **Szolgáltató megadásához**
 
-1. A SSDT > **táblázatos Model Explorer** > -**adatforrások**területen kattintson a jobb gombbal egy adatforrás-hálózatra, majd kattintson az **Adatforrás szerkesztése**elemre.
+1. A SSDT > **táblázatos modell Explorer** > **adatforrások**elemnél kattintson a jobb gombbal az adatforrás-kapcsolatok elemre, majd kattintson **az Adatforrás szerkesztése**elemre.
 2. A **Kapcsolódás szerkesztése**ablakban kattintson a **speciális** elemre az előzetes Tulajdonságok ablak megnyitásához.
-3. A **Speciális tulajdonságok** > **szolgáltatók**beállítása területen válassza ki a megfelelő szolgáltatót.
+3. A **Speciális tulajdonságok beállítása**@no__t – 1**szolgáltatók**területen válassza ki a megfelelő szolgáltatót.
 
 ## <a name="impersonation"></a>Megszemélyesítési
 Bizonyos esetekben szükség lehet egy másik megszemélyesítési fiók megadására. A megszemélyesítési fiók megadható a Visual Studióban (SSDT) vagy a SSMS.
@@ -118,7 +117,7 @@ Felhőbeli adatforrások esetén:
 
 A 1400-es és újabb kompatibilitási szinten található táblázatos modellek esetében a Azure SQL Database, a Azure SQL Data Warehouse, a Dynamics 365 és a SharePoint-lista támogatja a OAuth hitelesítő adatait. Azure Analysis Services kezeli a OAuth-adatforrások jogkivonat-frissítését, hogy elkerülje a hosszan futó frissítési műveletek időtúllépését. Érvényes tokenek létrehozásához állítsa be a hitelesítő adatokat a SSMS használatával.
 
-## <a name="next-steps"></a>További lépések
-[Helyszíni átjáró](analysis-services-gateway.md)   
+## <a name="next-steps"></a>Következő lépések
+Helyszíni [átjáró](analysis-services-gateway.md)@no__t – 1  
 [A kiszolgáló kezelése](analysis-services-manage.md)   
 

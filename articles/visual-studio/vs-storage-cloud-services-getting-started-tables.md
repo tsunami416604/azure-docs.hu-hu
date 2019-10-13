@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a Table Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services) | Microsoft Docs
+title: A Table Storage használatának első lépései a Visual Studióval (Cloud Services)
 description: Az Azure Table Storage használatának első lépései a Cloud Service-projektekben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510718"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299989"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Bevezetés az Azure Table Storage és a Visual Studio csatlakoztatott szolgáltatásainak használatába (Cloud Services-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -27,9 +28,9 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Table Storage használatát
 
 Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
 
-A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C\# kódban vannak megírva, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták a C @ no__t-0 kódban íródnak, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
-**MEGJEGYZÉS:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
+**Megjegyzés:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
 
 * További információ a táblázatok programozással történő kezeléséről: az [Azure Table Storage használatának első lépései a .NET használatával](../storage/storage-dotnet-how-to-use-tables.md) .
 * Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd a [Storage dokumentációját](https://azure.microsoft.com/documentation/services/storage/) .
@@ -190,6 +191,6 @@ A keresés után törölheti az entitásokat. A következő kód egy "ben Smith"
     else
        Console.WriteLine("Couldn't delete the entity.");
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
 

@@ -2,17 +2,16 @@
 title: Frissítés a Logic Apps for Azure Analysis Services models szolgáltatással | Microsoft Docs
 description: Megtudhatja, hogyan lehet az aszinkron frissítést a Azure Logic Apps használatával dekódolni.
 author: chrislound
-manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311741"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294613"
 ---
 # <a name="refresh-with-logic-apps"></a>Frissítés a Logic Apps használatával
 
@@ -20,7 +19,7 @@ Logic Apps és REST-hívások használatával automatizált adatfrissítési mű
 
 Ha többet szeretne megtudni a REST API-k Azure Analysis Services használatával történő használatáról, tekintse meg [az aszinkron frissítés a REST APIával](analysis-services-async-refresh.md)című témakört.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Az összes hívást érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni.  A cikkben szereplő példák egy egyszerű szolgáltatásnév (SPN) használatával végzik el a hitelesítést Azure Analysis Services. További információ: [egyszerű szolgáltatásnév létrehozása Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -63,17 +62,17 @@ Ez a lépés a logikai alkalmazás mentése után a HTTP POST URL-címével lesz
 
 Konfigurálja a HTTP-tevékenységet a következőképpen:
 
-|Tulajdonság  |Érték  |
+|Tulajdonság  |Value (Díj)  |
 |---------|---------|
-|**Metódus**     |POST         |
-|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https:\//westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/refreshes|
-|**Fejlécek**     |   Content-Type, application/json <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
+|**Metódus**     |UTÁNI         |
+|**URI**     | https://*a*/Servers/AAS-*kiszolgáló neve*/models/*az adatbázis neve*/refreshes <br /> <br /> Például: https: \//westus. asazure. Windows. net/Servers/MyServer/models/AdventureWorks/refreshs|
+|**Fejlécek**     |   Content-Type, Application/JSON <br /> <br />  ![Fejlécek](./media/analysis-services-async-refresh-logic-app/6.png)    |
 |**Törzs**     |   A kérés törzsének kialakításával kapcsolatos további tudnivalókért tekintse meg [az aszinkron frissítés a REST API utáni/refreshes](analysis-services-async-refresh.md#post-refreshes)című témakört. |
 |**Hitelesítés**     |Active Directory OAuth         |
 |**Bérlő**     |Töltse ki a Azure Active Directory TenantId         |
-|**Célközönség**     |https://*.asazure.windows.net         |
+|**Célközönség**     |https://*. asazure. Windows. net         |
 |**Ügyfél-azonosító**     |Adja meg az egyszerű szolgáltatásnév nevét ClientID         |
-|**Hitelesítő adat típusa**     |Secret         |
+|**Hitelesítő adat típusa**     |Titkos         |
 |**Titkos kód**     |Adja meg az egyszerű szolgáltatásnév nevét         |
 
 Példa:
@@ -104,7 +103,7 @@ A fenti példa használatával törölje az első tevékenységet, és cserélje
 
 Ez a példa az **ismétlődést**fogja használni.
 
-Miután hozzáadta a tevékenységet, konfigurálja az intervallumot és a gyakoriságot, majd adjon hozzá egy új paramétert, és válassza ki **ezeket**az órákat.
+Miután hozzáadta a tevékenységet, konfigurálja az intervallumot és a gyakoriságot, majd adjon hozzá egy új paramétert, és válassza ki **ezeket az órákat**.
 
 ![Ütemezett tevékenység](./media/analysis-services-async-refresh-logic-app/16.png)
 
@@ -114,7 +113,7 @@ Válassza ki a kívánt órát.
 
 Mentse a logikai alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Példák](analysis-services-samples.md)  
+[Minták](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

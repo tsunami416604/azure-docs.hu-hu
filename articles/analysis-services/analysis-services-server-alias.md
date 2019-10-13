@@ -1,50 +1,49 @@
 ---
-title: Az Azure Analysis Services kiszolgálói aliasnevek |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre és használhat a kiszolgáló neve az alias.
+title: Alias-kiszolgálók Azure Analysis Services neve | Microsoft Docs
+description: A kiszolgálónév-aliasok létrehozását és használatát ismerteti.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 66e6b4713591f099769543a75dcddec34f3d2e2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 161df354bae350df533f3991e551401fd56a4a65
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60534317"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301076"
 ---
-# <a name="alias-server-names"></a>Alias server names
+# <a name="alias-server-names"></a>Alias-kiszolgálók nevei
 
-Kiszolgálónév aliasának használatával a felhasználók kapcsolódhatnak az Azure Analysis Services-kiszolgáló és a egy rövidebb *alias* a kiszolgáló neve helyett. Amikor egy ügyfélalkalmazás csatlakoztat, az alias-végpont használatával van megadva a **hivatkozás: / /** protokoll formátumban. A végpont ahhoz, hogy csatlakozhasson majd a kiszolgáló valódi nevét adja vissza.
+Kiszolgálónév-alias használatával a felhasználók a kiszolgáló neve helyett rövidebb *aliassal* csatlakozhatnak a Azure Analysis Services-kiszolgálóhoz. Ügyfélalkalmazás esetén az alias a **link://** protokoll formátumát használó végpontként van megadva. A végpont ezután a valódi kiszolgálónevet adja vissza a kapcsolódáshoz.
 
-Alias kiszolgálók nevei a következők számára hasznos:
+Az alias-kiszolgálók nevei a következőkre jók:
 
-- Érintse a felhasználókat a kiszolgálók közötti áttelepítése modellek. 
-- Kiszolgáló felhasználóbarát nevek olyan könnyíteni a felhasználóknak ne felejtse el. 
-- A nap különböző időpontokban különböző kiszolgálók helyével. 
-- Közvetlen felhasználó földrajzilag közelebb, például ha az Azure Traffic Managerrel példányok különböző régiókban. 
+- Modellek migrálása a kiszolgálók között anélkül, hogy ez hatással lenne a felhasználókra. 
+- A felhasználók könnyen megjegyezhető névvel láthatják el a kiszolgálókat. 
+- A felhasználókat a nap különböző pontjain lévő különböző kiszolgálókra irányíthatja. 
+- A különböző régiókban lévő felhasználókat a földrajzilag közelebbi példányokra irányíthatja, például az Azure Traffic Manager használatakor. 
 
-Alias alapul szolgálhat bármely HTTPS-végpontot, amely egy érvényes Azure Analysis Services-kiszolgáló nevét adja vissza. A végpont támogatnia kell HTTPS a 443-as porton keresztül, és a port nem adható meg az URI-ban.
+Minden olyan HTTPS-végpont, amely érvényes Azure Analysis Services kiszolgáló nevét adja vissza, aliasként szolgálhat. A végpontnak támogatnia kell a HTTPS protokollt a 443-as porton keresztül, és a port nem adható meg az URI-ban.
 
-![A hivatkozási formátumot használó alias](media/analysis-services-alias/aas-alias-browser.png)
+![Alias hivatkozási formátum használatával](media/analysis-services-alias/aas-alias-browser.png)
 
-Amikor egy ügyfél, a másodlagos kiszolgáló nevét is meg kell adni használatával **hivatkozás: / /** protokoll formátumban. Ha például a Power BI Desktopban:
+Az ügyfélről való csatlakozáskor az alias-kiszolgáló nevét **link://** protokoll formátumban kell megadni. Power BI Desktop például:
 
-![A Power BI Desktop kapcsolat](media/analysis-services-alias/aas-alias-connect-pbid.png)
+![Power BI Desktop-kapcsolatok](media/analysis-services-alias/aas-alias-connect-pbid.png)
 
 ## <a name="create-an-alias"></a>Alias létrehozása
 
-Alias végpont létrehozására használhatja bármelyik módszert, amely egy érvényes Azure Analysis Services-kiszolgáló nevét adja vissza. Például egy valós kiszolgálót tartalmazó Azure Blob Storage-fájlra mutató hivatkozást nevével, és a egy ASP.NET Web Forms-alkalmazás közzététele és létrehozása.
+Alias-végpont létrehozásához bármely olyan metódust használhat, amely érvényes Azure Analysis Services-kiszolgálónevet ad vissza. Például egy Azure Blob Storage fájlra mutató hivatkozás, amely a valódi kiszolgálónevet tartalmazza, vagy ASP.NET Web Forms alkalmazást hoz létre és tesz közzé.
 
-Ebben a példában egy ASP.NET Web Forms-alkalmazást a Visual Studióban jön létre. Az fő referencia- és felhasználói vezérlő a Default.aspx oldal törlődnek. Egyszerűen csak a következő lap irányelv Default.aspx tartalma:
+Ebben a példában egy ASP.NET Web Forms alkalmazást hoz létre a Visual Studióban. A mesterlap-hivatkozás és a felhasználói vezérlő el lesz távolítva az alapértelmezett. aspx lapról. Az alapértelmezett. aspx fájl tartalma egyszerűen a következő oldal direktíva:
 
 ```
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-A default.aspx eseményhez Default.aspx.cs az Response.Write() metódust használja az Azure Analysis Services-kiszolgáló nevét adja vissza.
+A Default.aspx.cs Page_Load eseménye a Response. write () metódust használja a Azure Analysis Services-kiszolgáló nevének visszaadásához.
 
 ```
 protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +52,7 @@ protected void Page_Load(object sender, EventArgs e)
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
-[Ügyfélkódtárak](analysis-services-data-providers.md)   
-[Csatlakozás a Power BI Desktopban](analysis-services-connect-pbi.md)
+[Ügyféloldali kódtárak](analysis-services-data-providers.md)@no__t – 1  
+[Csatlakozási Power BI Desktop](analysis-services-connect-pbi.md)

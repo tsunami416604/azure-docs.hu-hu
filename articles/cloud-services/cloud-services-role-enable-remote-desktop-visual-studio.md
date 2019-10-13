@@ -1,5 +1,5 @@
 ---
-title: Távoli asztali kapcsolat engedélyezése az Azure-beli szerepkörökhöz Cloud Services
+title: A Visual Studio használata, Távoli asztal engedélyezése szerepkörhöz (Azure Cloud Services)
 description: Azure Cloud Service-alkalmazás konfigurálása távoli asztali kapcsolatok engedélyezéséhez
 services: cloud-services
 author: ghogen
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 6a6d045513e3e91c5a8b2004e47378a097be8963
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 96f71306c060a6a533a3ab1c0c54b49d74e5cd82
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515917"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298386"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a Visual Studio használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -47,13 +47,13 @@ A Visual Studio 2017 15,4-es vagy korábbi verziójának használatakor a Közz�
    > [!Note]
    > A távoli asztali kapcsolathoz szükséges tanúsítványok eltérnek a többi Azure-művelethez használt tanúsítványtól. A távelérési tanúsítványnak rendelkeznie kell titkos kulccsal.
 
-5. Válasszon ki egy tanúsítványt a listából, vagy válassza a  **&lt;létrehozás... lehetőséget. &gt;** . Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK**gombot. Az új tanúsítvány megjelenik a legördülő listában.
+5. Válasszon ki egy tanúsítványt a listából, vagy válassza a **&lt;Create... &gt;** lehetőséget. Ha új tanúsítványt hoz létre, adjon meg egy rövid nevet az új tanúsítványnak, amikor a rendszer kéri, és válassza **az OK**gombot. Az új tanúsítvány megjelenik a legördülő listában.
 
 6. Adja meg a felhasználónevet és a jelszót. Meglévő fiókot nem használhat. Ne használja a "rendszergazda" nevet az új fiókhoz tartozó felhasználónévként.
 
 7. Válassza ki azt a dátumot, amikor a fiók lejár, és azt követően, hogy mely Távoli asztal kapcsolatok lesznek blokkolva.
 
-8. Miután megadta az összes szükséges információt, kattintson **az OK gombra**. A Visual Studio hozzáadja a távoli asztal beállításait a projekthez `.cscfg` és `.csdef` a fájlokhoz, beleértve a kiválasztott tanúsítvánnyal titkosított jelszót is.
+8. Miután megadta az összes szükséges információt, kattintson **az OK gombra**. A Visual Studio hozzáadja a Távoli asztal beállításokat a projekt `.cscfg` és `.csdef` fájljaihoz, beleértve a kiválasztott tanúsítvánnyal titkosított jelszót is.
 
 9. A **következő** gomb használatával hajtsa végre a fennmaradó lépéseket, majd válassza a **Közzététel** lehetőséget, amikor készen áll a felhőalapú szolgáltatás közzétételére. Ha nem áll készen a közzétételre, kattintson a **Mégse gombra** , és válassza az **Igen** lehetőséget, amikor a rendszer kéri a módosítások mentésére. A Cloud Service-t később is közzéteheti ezekkel a beállításokkal.
 
@@ -86,7 +86,7 @@ Ha a projektet egy csapattal osztja meg, akkor érdemes törölni a beállítás
 
 Az Azure DevOps Services-ből származó RDP-bővítmény használatához adja meg a következő adatokat a Build folyamatában:
 
-1. Adja `/p:ForceRDPExtensionOverPlugin=true` meg az MSBuild argumentumait, hogy a központi telepítés az RDP beépülő modul helyett az RDP-bővítménnyel működjön. Példa:
+1. Adja meg a `/p:ForceRDPExtensionOverPlugin=true` értéket az MSBuild-argumentumokban, hogy a központi telepítés az RDP beépülő modul helyett az RDP-bővítménnyel működjön. Példa:
 
     ```
     msbuild AzureCloudService5.ccproj /t:Publish /p:TargetProfile=Cloud /p:DebugType=None
@@ -95,9 +95,9 @@ Az Azure DevOps Services-ből származó RDP-bővítmény használatához adja m
 
 1. A Build lépései után adja hozzá az **Azure Cloud Service üzembe helyezési** lépését, és állítsa be a tulajdonságait.
 
-1. Az üzembe helyezés lépését követően adjon hozzá egy **Azure PowerShell** -lépést, és állítsa be a **megjelenítendő név** tulajdonságot az "Azure Deployment: Engedélyezze az RDP-bővítményt (vagy egy másik megfelelő nevet), és válassza ki a megfelelő Azure-előfizetését.
+1. Az üzembe helyezési lépés után adjon hozzá egy **Azure PowerShell** -lépést, állítsa a **megjelenítendő név** tulajdonságot "Azure-telepítés: RDP-bővítmény engedélyezése" (vagy egy másik megfelelő név) értékre, és válassza ki a megfelelő Azure-előfizetést.
 
-1. Állítsa a **parancsfájl típusát** "inline" értékre, és illessze be az alábbi kódot a **beágyazott parancsfájl** mezőbe. (Létrehozhat egy `.ps1` fájlt a projektben ezzel a parancsfájllal, beállíthatja a parancsfájl **típusát** "parancsfájl elérési útja" értékre, és beállíthatja a **parancsfájl elérési útját** úgy, hogy a fájlra mutasson.)
+1. Állítsa a **parancsfájl típusát** "inline" értékre, és illessze be az alábbi kódot a **beágyazott parancsfájl** mezőbe. (@No__t-0 fájlt is létrehozhat a projektben ezzel a parancsfájllal, a parancsfájl **típusát** állítsa "parancsfájl elérési útja" értékre, és állítsa a **parancsfájl elérési útját** úgy, hogy a fájlra mutasson.)
 
     ```ps
     Param(

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638626"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295442"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: Tanúsítvánnyal rendelkező szolgáltatásnév létrehozása az Azure PowerShell használatával
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Útmutató: egyszerű szolgáltatásnév létrehozása a Azure PowerShell használatával
 
 Ha olyan alkalmazása van, amelynek erőforrásokhoz kell hozzáférnie, létrehozhat egy identitást az alkalmazásnak, és hitelesítheti az alkalmazást annak saját hitelesítő adataival. Ezt az identitást szolgáltatásnévnek nevezzük. Ez a megközelítés lehetővé teszi az alábbiakat:
 
@@ -46,9 +46,14 @@ A cikk elvégzéséhez megfelelő engedélyekkel kell rendelkeznie az Azure AD-b
 
 A legegyszerűbben a portálon ellenőrizheti, hogy rendelkezik-e megfelelő jogosultságokkal. Lásd: [Szükséges engedélyek ellenőrzése](howto-create-service-principal-portal.md#required-permissions).
 
+## <a name="assign-the-application-to-a-role"></a>Az alkalmazás társítása szerepkörhöz
+Az előfizetés erőforrásainak eléréséhez hozzá kell rendelnie az alkalmazást egy szerepkörhöz. Döntse el, melyik szerepkör kínálja a megfelelő engedélyeket az alkalmazáshoz. Az elérhető szerepkörökről a [RBAC: beépített szerepkörök](/azure/role-based-access-control/built-in-roles)című témakörben olvashat bővebben.
+
+Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforrás szintjén. Az engedélyek a hatókör alacsonyabb szintjein vannak örökölve. Ha például hozzáad egy alkalmazást az erőforráscsoport *olvasó* szerepköréhez, az azt jelenti, hogy elolvashatja az erőforráscsoportot és a benne található összes erőforrást. Ha engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az újraindítás, a példányok elindítása és leállítása, válassza ki a *közreműködő* szerepkört.
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Szolgáltatásnév létrehozása önaláírt tanúsítvánnyal
 
-Az alábbi példa egy egyszerű forgatókönyvet követ. A [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) használatával létrehoz egy önaláírt tanúsítvánnyal rendelkező szolgáltatásnevet, és a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával rendeli hozzá a [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkört az egyszerű szolgáltatáshoz. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Másik előfizetés kiválasztásához használja a [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
+Az alábbi példa egy egyszerű forgatókönyvet követ. A [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) használatával létrehoz egy önaláírt tanúsítvánnyal rendelkező szolgáltatásnevet, és a [New-AzureRmRoleAssignment](/powershell/module/az.resources/new-azroleassignment) használatával rendeli hozzá az [olvasó](/azure/role-based-access-control/built-in-roles#reader) szerepkört az egyszerű szolgáltatáshoz. A szerepkör-hozzárendelés hatóköre az aktuális Azure-előfizetés. Másik előfizetés kiválasztásához használja a [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext).
 
 > [!NOTE]
 > A New-SelfSignedCertificate parancsmag és a PKI modul jelenleg nem támogatott a PowerShell Core-ban. 
@@ -64,10 +69,10 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-A példa 20 másodpercig alvó állapotba lép, hogy az új szolgáltatásnév az Azure AD-ben való propagálása némi időt hagyjon. Ha a parancsfájl nem vár elég sokáig, a következő hibaüzenet jelenik meg: "A (z) {ID} résztvevő nem létezik a (z) {DIR-ID} címtárban." A hiba megoldásához várjon egy percet, majd futtassa újra a **New-AzRoleAssignment** parancsot.
+A példa 20 másodpercig alvó állapotba lép, hogy az új szolgáltatásnév az Azure AD-ben való propagálása némi időt hagyjon. Ha a szkriptje nem vár eleget, akkor a következő hibát fogja látni: „A(z) {ID} résztvevő nem létezik a(z) {DIR-ID} címtárban”. A hiba megoldásához várjon egy percet, majd futtassa újra a **New-AzRoleAssignment** parancsot.
 
 A szerepkör-hozzárendelés hatókörét beállíthatja egy adott erőforráscsoportra a **ResourceGroupName** paraméter használatával. Egy adott erőforrásra is beállíthatja a hatókört a **ResourceType** és a **ResourceName** paraméter együttes használatával. 
 
@@ -105,7 +110,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Szolgáltatásnév létrehozása hitelesítésszolgáltatótól származó tanúsítvánnyal
 
-Az alábbi példa egy hitelesítésszolgáltatótól származó tanúsítvánnyal hoz létre egy szolgáltatásnevet. A hozzárendelés hatóköre a megadott Azure-előfizetés. A szolgáltatásnevet a [Közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkörhöz társítja. Ha hiba történik a szerepkör-hozzárendelés során, a szkript megismétli a hozzárendelést.
+Az alábbi példa egy hitelesítésszolgáltatótól származó tanúsítvánnyal hoz létre egy szolgáltatásnevet. A hozzárendelés hatóköre a megadott Azure-előfizetés. Hozzáadja az egyszerű szolgáltatást az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkörhöz. Ha hiba történik a szerepkör-hozzárendelés során, a szkript megismétli a hozzárendelést.
 
 ```powershell
 Param (
@@ -141,7 +146,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -215,13 +220,12 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 A szolgáltatásnév létrehozásakor az alábbi hibákba ütközhet:
 
-* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik a [szükséges engedélyekkel](#required-permissions) az Azure ad-ben az alkalmazás regisztrálásához. Ez a hiba általában akkor jelenik meg, ha csak a Azure Active Directory rendszergazdai felhasználói regisztrálhatnak alkalmazásokat, és a fiókja nem rendszergazda. Kérje meg a rendszergazdáját, hogy rendeljen rendszergazdai szerepkört Önhöz, vagy hogy engedélyezze az alkalmazások regisztrálását a felhasználóknak.
+* **„Authentication_Unauthorized”** vagy **„No subscription found in the context.”** (Nem található előfizetés a környezetben.) – Ez a hiba akkor jelenik meg, ha a fiókja nem rendelkezik a [szükséges engedélyekkel](#required-permissions) az Azure ad-ben az alkalmazás regisztrálásához. Ez a hiba általában akkor jelenik meg, ha csak a Azure Active Directory rendszergazdai felhasználói regisztrálhatnak alkalmazásokat, és a fiókja nem rendszergazda. Kérje meg a rendszergazdát, hogy rendeljen hozzá egy rendszergazdai szerepkört, vagy engedélyezze a felhasználóknak az alkalmazások regisztrálását.
 
 * A (z) "nincs engedélye a (z **)" Microsoft. Authorization/roleAssignments/Write "művelet végrehajtására a (z)"/Subscriptions/{GUID} "hatókörben."** – ezt a hibát akkor látja, ha a fiók nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen hozzá identitás. Kérje meg az előfizetés-rendszergazdáját, hogy adja hozzá Önt a Felhasználói hozzáférés rendszergazdája szerepkörhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A jelszót használó szolgáltatásnevek beállításáról a következő témakörben tájékozódhat: [Azure-beli szolgáltatásnév létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps).
-* Az erőforrásokat kezelő alkalmazások Azure-ba való integrálásáról részletes útmutatást az [Azure Resource Manager API-val végzett engedélyezés fejlesztői útmutatójában](../../azure-resource-manager/resource-manager-api-authentication.md) találhat.
 * Az alkalmazásokról és a szolgáltatásnevekről bővebben az [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok](app-objects-and-service-principals.md) című cikkben olvashat.
 * Az Azure AD-hitelesítéssel kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](authentication-scenarios.md).

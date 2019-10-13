@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: ae3350b14ca1073a5fbb1a353b9301c57e7f1ea4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176855"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298321"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory által támogatott számítási környezetek
 Ez a cikk az adatok feldolgozásához és átalakításához használható különböző számítási környezeteket ismerteti. Emellett a Data Factory által támogatott különböző konfigurációkról (igény szerinti és saját) is gondoskodik, ha a társított szolgáltatások konfigurálásával a számítási környezeteket egy Azure-beli adat-előállítóhoz kapcsolja.
@@ -27,7 +27,8 @@ A következő táblázat felsorolja a Data Factory által támogatott számítá
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Igény szerinti HDInsight-fürt](#azure-hdinsight-on-demand-linked-service) vagy [a saját HDInsight-fürt](#azure-hdinsight-linked-service) | [Kaptár](transform-data-using-hadoop-hive.md), [Pig](transform-data-using-hadoop-pig.md), [Spark](transform-data-using-spark.md), [MapReduce](transform-data-using-hadoop-map-reduce.md), [Hadoop streaming](transform-data-using-hadoop-streaming.md) |
 | [Azure Batch](#azure-batch-linked-service)                   | [Egyéni](transform-data-using-dotnet-custom-activity.md)     |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio-linked-service) | [Machine Learning-tevékenységek: kötegelt végrehajtás és erőforrás frissítése](transform-data-using-machine-learning.md) |
+| [Azure Machine Learning szolgáltatás](#azure-machine-learning-service-linked-service) | [Azure Machine Learning folyamat végrehajtása](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
 | [Azure SQL](#azure-sql-database-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Tárolt eljárás](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Jegyzetfüzet](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
@@ -354,8 +355,8 @@ A következő témakörökben talál új Azure Batch szolgáltatást:
 | linkedServiceName | Az ehhez a Azure Batch társított szolgáltatáshoz társított Azure Storage társított szolgáltatás neve. Ez a társított szolgáltatás a tevékenység futtatásához szükséges átmeneti fájlokhoz használatos. | Igen      |
 | Connectvia tulajdonsággal        | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem       |
 
-## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
-Hozzon létre egy Azure Machine Learning társított szolgáltatást egy Machine Learning batch pontozási végpont egy adatgyárba való regisztrálásához.
+## <a name="azure-machine-learning-studio-linked-service"></a>Társított szolgáltatás Azure Machine Learning Studio
+Hozzon létre egy Azure Machine Learning Studio társított szolgáltatást egy Machine Learning batch pontozási végpont egy adatgyárba való regisztrálásához.
 
 ### <a name="example"></a>Példa
 
@@ -385,11 +386,55 @@ Hozzon létre egy Azure Machine Learning társított szolgáltatást egy Machine
 | Type (Típus)                   | A Type tulajdonságot a következőre kell beállítani: **AzureML**. | Igen                                      |
 | mlEndpoint             | A Batch-pontozási URL-cím.                   | Igen                                      |
 | apiKey                 | A közzétett munkaterület-modell API-ját.     | Igen                                      |
-| updateResourceEndpoint | A prediktív webszolgáltatás betanított fájllal való frissítéséhez használt Azure ML webszolgáltatás-végpont frissítési erőforrásának URL-címe | Nem                                       |
+| updateResourceEndpoint | A prediktív webszolgáltatás a betanított modellel való frissítéséhez használt Azure Machine Learning webszolgáltatás-végpont frissítési erőforrásának URL-címe | Nem                                       |
 | servicePrincipalId     | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Kötelező, ha a updateResourceEndpoint meg van adva |
 | servicePrincipalKey    | Az alkalmazás kulcsának meghatározása.           | Kötelező, ha a updateResourceEndpoint meg van adva |
 | Bérlő                 | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Kötelező, ha a updateResourceEndpoint meg van adva |
 | Connectvia tulajdonsággal             | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem                                       |
+
+## <a name="azure-machine-learning-service-linked-service"></a>Azure Machine Learning szolgáltatáshoz társított szolgáltatás
+Hozzon létre egy Azure Machine Learning szolgáltatáshoz társított szolgáltatást egy Azure Machine Learning szolgáltatás munkaterületének egy adatgyárhoz való összekapcsolásához.
+
+> [!NOTE]
+> A Azure Machine Learning szolgáltatáshoz társított szolgáltatás jelenleg csak az egyszerű szolgáltatásnév hitelesítését támogatja.
+
+### <a name="example"></a>Példa
+
+```json
+{
+    "name": "AzureMLServiceLinkedService",
+    "properties": {
+        "type": "AzureMLService",
+        "typeProperties": {
+            "subscriptionId": "subscriptionId",
+            "resourceGroupName": "resourceGroupName",
+            "mlWorkspaceName": "mlWorkspaceName",
+            "servicePrincipalId": "service principal id",
+            "servicePrincipalKey": {
+                "value": "service principal key",
+                "type": "SecureString"
+            },
+            "tenant": "tenant ID"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime?",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="properties"></a>Tulajdonságok
+| Tulajdonság               | Leírás                              | Szükséges                                 |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| Type (Típus)                   | A Type tulajdonságot a következőre kell beállítani: **AzureMLService**. | Igen                                      |
+| subscriptionId         | Azure-előfizetés azonosítója              | Igen                                      |
+| resourceGroupName      | név | Igen                                      |
+| mlWorkspaceName        | Azure Machine Learning szolgáltatás munkaterületének neve | Igen  |
+| servicePrincipalId     | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját.     | Nem |
+| servicePrincipalKey    | Az alkalmazás kulcsának meghatározása.           | Nem |
+| Bérlő                 | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. | Kötelező, ha a updateResourceEndpoint meg van adva | Nem |
+| Connectvia tulajdonsággal             | A tevékenységeknek a társított szolgáltatásba való küldéséhez használandó Integration Runtime. Azure Integration Runtime vagy saját üzemeltetésű Integration Runtime is használható. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem |    
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Társított szolgáltatás Azure Data Lake Analytics
 Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy Azure Data Lake Analytics számítási szolgáltatás Azure-beli adatgyárhoz való összekapcsolásához. A folyamat Data Lake Analytics U-SQL tevékenysége erre a társított szolgáltatásra hivatkozik. 
@@ -410,7 +455,7 @@ Hozzon létre egy **Azure Data Lake Analytics** társított szolgáltatást egy 
                 "type": "SecureString"
             },
             "tenant": "tenant ID",
-            "subscriptionId": "<optional, subscription id of ADLA>",
+            "subscriptionId": "<optional, subscription ID of ADLA>",
             "resourceGroupName": "<optional, resource group name of ADLA>"
         },
         "connectVia": {

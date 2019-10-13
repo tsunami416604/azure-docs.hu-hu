@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Leállások és katasztrófák kezelése
       href: service-bus-outages-disasters.md
+    - name: Throttling
+      href: service-bus-throttling.md
     - name: Biztonság
       items:
         - name: Hitelesítés és engedélyezés

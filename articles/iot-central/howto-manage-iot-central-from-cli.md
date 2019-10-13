@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1ec83541c62d93eee91348531797ecdeb8c9fc6e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 42a2b2d7962f3efd71639f65e9e6f6f5d6783afb
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873474"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286423"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central kezelése az Azure CLI-vel
 
@@ -53,10 +53,10 @@ Ezek a parancsok először létrehoznak egy erőforráscsoportot az alkalmazásh
 | Paraméter         | Leírás |
 | ----------------- | ----------- |
 | resource-group    | Az alkalmazást tartalmazó erőforráscsoport. Ez az erőforráscsoport már léteznie kell az előfizetésben. |
-| location          | Alapértelmezés szerint ez a parancs az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak**-és **Nyugat-Európában** , illetve az **ausztráliai** földrajzban. |
-| name              | Az alkalmazás neve a Azure Portalban. |
-| subdomain         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com:. |
-| sku               | Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
+| location          | Alapértelmezés szerint ez a parancs az erőforráscsoport helyét használja. Jelenleg létrehozhat egy IoT Central alkalmazást az **USA keleti**régiójában, az **USA nyugati**régiójában **, Észak-Európában**vagy Nyugat- **Európai** régióban, illetve **Ausztráliában** vagy **Ázsia és a csendes-óceáni térség** földrajzi régióban. |
+| név              | Az alkalmazás neve a Azure Portalban. |
+| Altartomány         | Az alkalmazás URL-címében szereplő altartomány. A példában az alkalmazás URL-címe https://mysubdomain.azureiotcentral.com. |
+| SKU               | Jelenleg az egyetlen érték az **S1** (standard szint). Lásd: az [Azure IoT Central díjszabása](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sablon          | A használni kívánt alkalmazás sablonja. További információkért tekintse meg a következő táblázatot: |
 | megjelenítendő név      | Az alkalmazás neve, ahogy az a felhasználói felületen látható. |
 
@@ -94,7 +94,7 @@ az iotcentral app delete --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan kezelheti az Azure IoT Central-alkalmazásait az Azure CLI-vel, itt látható a következő lépés:
 

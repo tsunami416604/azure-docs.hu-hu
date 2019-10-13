@@ -1,47 +1,50 @@
 ---
-title: Always On VPN-alagút konfigurálása VPN Gateway
-description: Az Always On felhasználói VPN-alagút konfigurálásának lépései VPN Gateway
+title: Always On VPN-felhasználói alagút konfigurálása a VPN-átjáróhoz
+description: Ez a cikk bemutatja, hogyan konfigurálhat egy always on VPN-felhasználói alagutat a VPN-átjáróhoz
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: dc0abf12c60f845fde0d16bd874a1436aef3b7ab
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9aa1f951add5b79eab12f4957be05a42bbdd4434
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846471"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299922"
 ---
-# <a name="configure-an-always-on-vpn-user-tunnel"></a>Always On VPN felhasználói alagút konfigurálása
+# <a name="configure-an-always-on-vpn-user-tunnel"></a>AlwaysOn VPN felhasználói alagút konfigurálása
 
-A Windows 10 virtuális magánhálózati (VPN) ügyfél egyik új funkciója a VPN-kapcsolat fenntartásának lehetősége. Az Always on egy Windows 10 funkció, amely lehetővé teszi, hogy az aktív VPN-profil automatikusan kapcsolódjon, és az eseményindítók (azaz a felhasználói bejelentkezés, a hálózati állapot változása vagy az eszköz aktív állapota) alapján is csatlakoztatva maradjon.
+A Windows 10 VPN-ügyfél új funkciója, a always on, a VPN-kapcsolat fenntartásának lehetősége. A always on használatával az aktív VPN-profil automatikusan csatlakozhat, és az eseményindítók alapján csatlakoztatva maradhat, például a felhasználói bejelentkezés, a hálózati állapot módosítása vagy az eszközbeállítások aktív állapota.
 
-Az Azure-beli virtuális hálózati átjárók a Windows 10 always on szolgáltatással használhatók állandó felhasználói alagutak, valamint az Azure-beli eszköz-alagutak létrehozására. Ez a cikk segítséget nyújt az Always On VPN felhasználói alagút konfigurálásához.
+Az Azure-beli virtuális hálózati átjárók és a Windows 10 always on használatával állandó felhasználói alagutak és eszköz-alagutak hozhatók létre az Azure-ba. Ez a cikk segítséget nyújt az Always On VPN felhasználói alagút konfigurálásához.
 
-Az Always On VPN-kapcsolatok két típusú alagutat tartalmaznak:
+Az Always On VPN-kapcsolatok a következő két típusú alagutat tartalmazzák:
 
-* Az **eszköz-alagút** a megadott VPN-kiszolgálókhoz csatlakozik, mielőtt a felhasználók bejelentkeznek az eszközre. A Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszközkezelés célja az eszköz-alagút használata.
+* **Eszköz-alagút**: csatlakozás a megadott VPN-kiszolgálókhoz, mielőtt a felhasználók bejelentkeznek az eszközre. A Bejelentkezés előtti kapcsolódási forgatókönyvek és az eszközkezelés egy eszköz-alagutat használnak.
 
-* A **felhasználói alagút** csak az eszköz felhasználói bejelentkezését követően csatlakozik. A felhasználói alagút lehetővé teszi a felhasználók számára a vállalati erőforrások elérését a VPN-kiszolgálókon keresztül.
+* **Felhasználói alagút**: csak azt követően csatlakozik, hogy a felhasználók bejelentkeznek az eszközre. A felhasználói alagutak használatával VPN-kiszolgálókon keresztül érheti el a szervezeti erőforrásokat.
 
-Az eszköz-alagút és a felhasználói alagút egymástól függetlenül működik a VPN-profiljaival. Egyszerre csatlakozhatnak, és szükség szerint különböző hitelesítési módszereket és egyéb VPN-konfigurációs beállításokat használhatnak.
+Az eszköz-alagutak és a felhasználói alagutak a VPN-profiljaik függetlenül működnek. Egyszerre csatlakozhatnak egymáshoz, és szükség szerint különböző hitelesítési módszereket és egyéb VPN-konfigurációs beállításokat használhatnak.
 
-## <a name="1-configure-the-gateway"></a>1. Az átjáró konfigurálása
+A következő fejezetekben egy VPN-átjárót és egy felhasználói alagutat konfigurál.
 
-Konfigurálja úgy a VPN-átjárót, hogy a IKEv2 és a tanúsítványalapú hitelesítést használja ezen [pont – hely cikk](vpn-gateway-howto-point-to-site-resource-manager-portal.md)alapján.
+## <a name="step-1-configure-a-vpn-gateway"></a>1\. lépés: a VPN-átjáró konfigurálása
 
-## <a name="2-configure-the-user-tunnel"></a>2. A felhasználói alagút konfigurálása
+A VPN-átjárót úgy konfigurálja, hogy a IKEv2 és tanúsítványalapú hitelesítést használja az ebben a [pont – hely](vpn-gateway-howto-point-to-site-resource-manager-portal.md) cikkben található utasításokat követve.
 
-1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélen a [pont – hely VPN-ügyfél című cikkben](point-to-site-how-to-vpn-client-install-azure-cert.md)látható módon. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie
-2. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a SCCM vagy az Intune használatával az [alábbi utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)segítségével.
+## <a name="step-2-configure-a-user-tunnel"></a>2\. lépés: felhasználói alagút konfigurálása
 
-### <a name="configuration-example-for-user-tunnel"></a>Felhasználói alagút konfigurációs példája
+1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélre, ahogyan az ebben a [pont – hely VPN-ügyfél](point-to-site-how-to-vpn-client-install-azure-cert.md) című cikkben látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
 
-Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a helyi számítógép tárolójába a Windows 10-ügyfélen, az alábbi példák segítségével konfigurálja az ügyfél-eszköz alagutat.
+1. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a System Center Configuration Manager vagy az Intune használatával a [Windows 10-ügyfél konfigurálása mindig a VPN-kapcsolatokon](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)című témakör útmutatását követve.
 
-1. Másolja a következő szöveget, és mentse a ***usercert. ps1***néven.
+### <a name="example-configuration-for-the-user-tunnel"></a>Példa a felhasználói alagút konfigurációjának használatára
+
+Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-es ügyfél helyi számítógép tárolójába, konfigurálja az ügyfél-eszköz alagutat az alábbi példák használatával:
+
+1. Másolja a következő szöveget, és mentse a *usercert. ps1*néven:
 
    ```
    Param(
@@ -93,7 +96,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse ***VPNProfile. XML*** néven a **usercert. ps1**fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően.
+1. Másolja az alábbi szöveget, és mentse *VPNProfile. XML* néven a *usercert. ps1*fájl mappájába. Szerkessze a következő szöveget a környezetének megfelelően:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>`
    * `<Address>192.168.3.5</Address>`
@@ -138,31 +141,31 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    ```
 1. Futtassa a PowerShellt rendszergazdaként.
 
-1. A PowerShellben váltson arra a mappára, ahol a **usercert. ps1** és az **VPNProfile. xml fájl** található, és futtassa a következő parancsot:
+1. A PowerShellben váltson arra a mappára, ahol a *usercert. ps1* és az *VPNProfile. xml fájl* található, és futtassa a következő parancsot:
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
    ![MachineCertTest](./media/vpn-gateway-howto-always-on-user-tunnel/p2s2.jpg)
-1. Keresse meg a VPN-beállítások menüpontot.
+1. A **VPN-beállítások**területen keresse meg a **UserTest** bejegyzést, majd válassza a **Csatlakozás**lehetőséget.
 
-1. Keresse meg a **UserTest** bejegyzést, és kattintson a **kapcsolat**elemre.
+1. Ha a kapcsolatok sikeresek, sikeresen konfigurált egy mindig felhasználói alagutat.
 
-1. Ha a kapcsolatok sikeresek, akkor sikeresen konfigurált egy mindig felhasználói alagutat.
+## <a name="clean-up-your-resources"></a>Az erőforrások törlése
 
-## <a name="cleanup"></a>Felesleges tartalmak törlése
+A profil eltávolításához tegye a következőket:
 
-A profil eltávolításához futtassa a következő parancsot:
-
-1. Válassza le a kapcsolatot, és törölje a jelet a "csatlakozás automatikusan"
+1. Futtassa az alábbi parancsot:
 
    ```powershell
    C:\> Remove-VpnConnection UserTest  
    ```
 
+1. Válassza le a kapcsolatot, és törölje az **Automatikus csatlakozás** jelölőnégyzet jelölését.
+
 ![Felesleges tartalmak törlése](./media/vpn-gateway-howto-always-on-user-tunnel/p2s4..jpg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Hibaelhárítási információkért lásd: [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Az esetlegesen előforduló kapcsolódási problémák elhárításához tekintse meg az [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)című témakört.

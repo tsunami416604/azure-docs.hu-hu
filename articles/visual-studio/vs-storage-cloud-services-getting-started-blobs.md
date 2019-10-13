@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés a blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services) | Microsoft Docs
+title: A blob Storage használatának első lépései a Visual Studióval (Cloud Services)
 description: Az Azure Blob Storage használatának első lépései a Cloud Service-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
@@ -12,18 +12,19 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 56aceb4c782c15f69c7994df787b4b950523e8b5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d151e55f627166d8ad7d8affa53740e86cd1e501
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510711"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298807"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (Cloud Services-projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez a cikk azt ismerteti, hogyan kezdheti meg az Azure Blob Storaget az Azure Storage-fiók létrehozása után, ha a Visual Studio Cloud Services-projekthez **csatlakoztatott szolgáltatások hozzáadása** párbeszédablakot használja. Bemutatjuk, hogyan férhet hozzá és hozhat létre blob-tárolókat, és hogyan végezhet el olyan gyakori feladatokat, mint például a Blobok feltöltése, listázása és letöltése. A mintákat C\# nyelven írták, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+Ez a cikk azt ismerteti, hogyan kezdheti meg az Azure Blob Storaget az Azure Storage-fiók létrehozása után, ha a Visual Studio Cloud Services-projekthez **csatlakoztatott szolgáltatások hozzáadása** párbeszédablakot használja. Bemutatjuk, hogyan férhet hozzá és hozhat létre blob-tárolókat, és hogyan végezhet el olyan gyakori feladatokat, mint például a Blobok feltöltése, listázása és letöltése. A minták a C @ no__t-0 nyelven íródtak, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
 
 Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására szolgál, amelyek HTTP-vagy HTTPS-kapcsolaton keresztül bárhonnan elérhetők a világon. Egyetlen blob lehet bármilyen méretű. A Blobok olyan dolgok, mint például a képek, a hang-és videofájlok, a nyers adatok és a dokumentumok fájljai.
 
@@ -235,6 +236,6 @@ Mivel a mintametódus aszinkrón metódust használ, előtagként az **async** k
         while (continuationToken != null);
     }
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
 

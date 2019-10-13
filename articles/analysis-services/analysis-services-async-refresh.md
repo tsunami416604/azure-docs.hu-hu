@@ -2,18 +2,17 @@
 title: Azure Analysis Services modellek aszinkron frissítése | Microsoft Docs
 description: Megtudhatja, hogyan lehet az aszinkron frissítést a REST API használatával dekódolni.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932296"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301156"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
@@ -57,12 +56,12 @@ Használhatja például a frissítések gyűjtemény utáni műveletét a friss�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Minden hívást az engedélyezési fejlécben érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni, és meg kell felelnie az alábbi követelményeknek:
 
 - A tokennek felhasználói jogkivonatnak vagy egyszerű alkalmazási szolgáltatásnak kell lennie.
-- A tokennek a megfelelő célközönséget kell beállítania `https://*.asazure.windows.net`.
+- A tokennek a megfelelő célközönséget kell beállítania `https://*.asazure.windows.net` értékre.
 - A kért hívás elvégzéséhez a felhasználónak vagy az alkalmazásnak megfelelő engedélyekkel kell rendelkeznie a kiszolgálón vagy a modellben. Az engedélyezési szintet a modellben vagy a kiszolgálón lévő felügyeleti csoportban lévő szerepkörök határozzák meg.
 
     > [!IMPORTANT]
@@ -98,22 +97,22 @@ A törzs a következőhöz hasonló lehet:
 
 Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket alkalmazza.
 
-| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
+| Név             | Type (Típus)  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
-| `CommitMode`     | Enum  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
-| `MaxParallelism` | Int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
-| `RetryCount`     | Int   | Azt jelzi, hogy a művelet hány alkalommal próbálkozzon újra a hiba után.      |     0    |
-| `Objects`        | Array | A feldolgozandó objektumok tömbje. Minden objektum tartalmazza a "Table" kifejezést a teljes tábla vagy a "tábla" és a "partíció" feldolgozásakor a partíció feldolgozása során. Ha nincs megadva objektum, a teljes modell frissül. |   A teljes modell feldolgozása      |
+| `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   Automatikus      |
+| `CommitMode`     | Felsorolás  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
+| `MaxParallelism` | int   | Ez az érték határozza meg, hogy legfeljebb hány szálon futtathatók a feldolgozási parancsok párhuzamosan. Ez az érték a MaxParallelism tulajdonsággal van összhangban, amely a TMSL [Sequence parancsban](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) vagy más módszerek használatával állítható be.       | 10        |
+| `RetryCount`     | int   | Azt jelzi, hogy a művelet hány alkalommal próbálkozzon újra a hiba után.      |     0    |
+| `Objects`        | Tömb | A feldolgozandó objektumok tömbje. Minden objektum tartalmazza a "Table" kifejezést a teljes tábla vagy a "tábla" és a "partíció" feldolgozásakor a partíció feldolgozása során. Ha nincs megadva objektum, a teljes modell frissül. |   A teljes modell feldolgozása      |
 
 A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméretű adatkészletek kezdeti terhelését hajtja végre, amelyek órákat is igénybe vehetnek. Ha a frissítési művelet sikertelen volt egy vagy több köteg sikeres véglegesítése után, a sikeresen véglegesített kötegek véglegesítése továbbra is megmarad (a kötegek sikeres véglegesítése nem történik meg).
 
 > [!NOTE]
 > Az írás időpontjában a köteg mérete a MaxParallelism érték, de ez az érték változhat.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+## <a name="get-refreshesrefreshid"></a>/Refreshes/beolvasása @no__t – 0refreshId >
 
-A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban van, a rendszer az állapotot adja vissza.
+A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban **van, a rendszer az** állapotot adja vissza.
 
 ```
 {
@@ -137,7 +136,7 @@ A frissítési művelet állapotának megtekintéséhez használja a GET művele
 }
 ```
 
-## <a name="get-refreshes"></a>GET /refreshes
+## <a name="get-refreshes"></a>/Refreshes beolvasása
 
 A modell korábbi frissítési műveleteinek listájának lekéréséhez használja a GET műveletet a/refreshes gyűjteményben. Íme egy példa a válasz törzsére. 
 
@@ -161,11 +160,11 @@ A modell korábbi frissítési műveleteinek listájának lekéréséhez haszná
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<-refreshId törlése >
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/törlése @no__t – 0refreshId >
 
 A folyamatban lévő frissítési művelet megszakításához használja a frissítési AZONOSÍTÓban a DELETE műveletet.
 
-## <a name="post-sync"></a>POST /sync
+## <a name="post-sync"></a>/Sync közzététele
 
 A frissítési műveletek végrehajtásakor szükség lehet az új adatok szinkronizálására a lekérdezési felskálázáshoz szükséges replikákkal. Egy modell szinkronizálási műveletének végrehajtásához használja a POST műveletet a/Sync függvényben. A válaszban található Location fejléc tartalmazza a szinkronizálási művelet AZONOSÍTÓját.
 
@@ -184,13 +183,13 @@ Egy szinkronizálási művelet állapotának megtekintéséhez használja a GET 
 }
 ```
 
-Értékek a `syncstate`következőhöz:
+@No__t-0 értékek:
 
-- 0: Replikáló. Az adatbázisfájlok replikálódnak a célmappába.
-- 1: Rehidratálása. Az adatbázis a csak olvasható kiszolgálói példány (ok) ra lesz kiszáradva.
-- 2: Elkészült. A szinkronizálási művelet sikeresen befejeződött.
-- 3: Sikertelen. A szinkronizálási művelet nem sikerült.
-- 4: Véglegesítése. A szinkronizálási művelet befejeződött, de karbantartási lépéseket hajt végre.
+- 0: replikálás. Az adatbázisfájlok replikálódnak a célmappába.
+- 1: rehidratálás. Az adatbázis a csak olvasható kiszolgálói példány (ok) ra lesz kiszáradva.
+- 2: befejezve. A szinkronizálási művelet sikeresen befejeződött.
+- 3: nem sikerült. A szinkronizálási művelet nem sikerült.
+- 4: véglegesítés. A szinkronizálási művelet befejeződött, de karbantartási lépéseket hajt végre.
 
 ## <a name="code-sample"></a>Kódminta
 
@@ -203,16 +202,16 @@ Itt talál egy C# kódot a kezdéshez, [RestApiSample a githubon](https://github
 
 A mintakód a [szolgáltatás egyszerű](#service-principal) hitelesítését használja.
 
-### <a name="service-principal"></a>Szolgáltatásnév
+### <a name="service-principal"></a>Egyszerű szolgáltatásnév
 
 Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek az Azure-ban való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) és [egy egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) . A lépések elvégzése után végezze el a következő további lépéseket:
 
 1.  A kód mintában keresse meg a **String Authority =... karakterláncot**, cserélje le a **commit** a szervezet bérlői azonosítójával.
-2.  Megjegyzés/Megjegyzés: a ClientCredential osztály a cred objektum létrehozásához használatos. Győződjön meg \<arról, hogy az \<alkalmazás-azonosító > és az App Key > értékek biztonságos módon érhetők el, vagy használjon tanúsítványalapú hitelesítést az egyszerű szolgáltatásokhoz.
+2.  Megjegyzés/Megjegyzés: a ClientCredential osztály a cred objektum létrehozásához használatos. Győződjön meg arról, hogy a \<App azonosító > és \<App kulcs > értékek biztonságos módon érhetők el, vagy használjon tanúsítványalapú hitelesítést az egyszerű szolgáltatásokhoz.
 3.  Futtassa a mintát.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [Minták](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

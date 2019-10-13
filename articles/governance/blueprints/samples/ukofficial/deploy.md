@@ -1,5 +1,5 @@
 ---
-title: Minta – Egyesült Királyság hivatalos és egyesült királysági NHS-terve – lépések üzembe helyezése
+title: Egyesült Királyság hivatalos & Egyesült Királysági NHS Blueprint Samples – üzembe helyezési lépések
 description: Üzembe helyezheti az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetének lépéseit, beleértve a tervrajz-összetevők paramétereit.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: c2c6089d9c600626a93906e460ef1c662c32cb59
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ea58ef49aa4d901339bf87343f0eea8eb517011d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248273"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299018"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és egyesült királysági NHS-mintáinak üzembe helyezése
 

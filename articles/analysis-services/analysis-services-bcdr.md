@@ -2,18 +2,17 @@
 title: Azure Analysis Services magas rendelkezésre állás | Microsoft Docs
 description: Azure Analysis Services magas rendelkezésre állás biztosítása.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9947ab24262c6b92457bcd858bbf03d21eb317a2
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 151739c77939ab98b0cdca6d75692267ef0d4385
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619309"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295314"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services magas rendelkezésre állás
 
@@ -33,7 +32,7 @@ Ha nem szeretné, hogy a jelentéskészítő ügyfeleken ne kelljen módosítani
 
 ## <a name="related-information"></a>Kapcsolódó információk
 
-[Biztonsági mentés és visszaállítás](analysis-services-backup.md)   
-[Azure Analysis Services kezelése](analysis-services-manage.md)   
+[Biztonsági mentés és visszaállítás](analysis-services-backup.md)@no__t – 1  
+[Azure Analysis Services @no__t kezelése](analysis-services-manage.md)– 1  
 [Alias-kiszolgálók nevei](analysis-services-server-alias.md) 
 

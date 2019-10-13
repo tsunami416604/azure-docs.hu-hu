@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 15d88e082f9ab0838f4a560d89801edd9d46d682
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 06a009978d85f2ba0f10030aeb1344a1b84bf3c3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703544"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299385"
 ---
-# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LEMP-webkiszolgáló telepítése Azure-beli Linux rendszerű virtuális gépen
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: LEMP-webkiszolgáló telepítése Linux rendszerű virtuális gépre az Azure-ban
 
 Ez a cikk ismerteti, hogyan helyezhet üzembe NGINX-webkiszolgálót, MySQL-t és PHP-t (a LEMP-vermet) Ubuntu rendszerű virtuális gépen az Azure-ban. A LEMP-verem a népszerű [LAMP-verem](tutorial-lamp-stack.md) alternatívája, amelyet az Azure-ban is telepíthet. Ha szeretné működés közben megtekinteni a LEMP-kiszolgálót, telepíthet és konfigurálhat egy WordPress-webhelyet. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -35,7 +35,7 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe NGINX-webkiszolgálót, MySQL-t é
 
 Ez a telepítés gyors teszteléshez és megvalósíthatósági vizsgálatokhoz használható.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -54,7 +54,7 @@ A rendszer felszólítja a csomagok és más függőségek telepítésére. Ezze
 ## <a name="verify-installation-and-configuration"></a>A telepítés és a konfigurálás ellenőrzése
 
 
-### <a name="verify-nginx"></a>Ellenőrizze az nginx-et
+### <a name="verify-nginx"></a>NGINX ellenőrzése
 
 Ellenőrizze az NGINX verzióját a következő paranccsal:
 ```bash
@@ -66,7 +66,7 @@ Most, hogy az NGINX telepítve van, és a 80-as port meg van nyitva a virtuális
 ![Az NGINX alapértelmezett oldala][3]
 
 
-### <a name="verify-and-secure-mysql"></a>Győződjön meg arról, és biztonságos MySQL
+### <a name="verify-and-secure-mysql"></a>A MySQL ellenőrzése és védelme
 
 Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetűs `V` paraméterre):
 
@@ -74,13 +74,13 @@ Ellenőrizze a MySQL verzióját a következő paranccsal (ügyeljen a nagybetű
 mysql -V
 ```
 
-A gyökér szintű jelszó beállításával együtt, MySQL telepítésének biztosításához futtassa a `mysql_secure_installation` parancsfájlt. 
+A MySQL telepítésének biztonságossá tételéhez, beleértve a gyökér jelszavának beállítását is, futtassa a `mysql_secure_installation` parancsfájlt. 
 
 ```bash
 sudo mysql_secure_installation
 ```
 
-Igény szerint beállíthatja a érvényesítése jelszó beépülő modult (ajánlott). Ezután állítson be jelszót a MySQL-gyökér szintű felhasználó számára, és konfigurálja a környezet többi biztonsági beállításait. Azt javasoljuk, hogy "Y" (Igen) válaszoljon minden kérdésre.
+Igény szerint beállíthatja a jelszó ellenőrzése beépülő modult (ajánlott). Ezután állítson be egy jelszót a MySQL root felhasználóhoz, és konfigurálja a környezete fennmaradó biztonsági beállításait. Javasoljuk, hogy az "Y" (igen) kérdésre válaszoljon az összes kérdésre.
 
 Ha ki szeretné próbálni a MySQL funkcióit (MySQL-adatbázis létrehozása, felhasználók hozzáadása vagy a konfigurációs beállítások módosítása), jelentkezzen be a MySQL-be. Ez a lépés nem kötelező az oktatóanyag elvégzéséhez. 
 
@@ -91,7 +91,7 @@ sudo mysql -u root -p
 
 Amikor végzett, a `\q` parancs beírásával lépjen ki a mysql parancssorból.
 
-### <a name="verify-php"></a>Ellenőrizze a PHP
+### <a name="verify-php"></a>A PHP ellenőrzése
 
 Ellenőrizze a PHP verzióját a következő paranccsal:
 
@@ -107,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-cím *yourPublicIPAddress*, erősítse meg a PHP verzióját `fastcgi_pass`, és a többi beállításnál hagyja meg. Ezután mentse a fájlt.
+A szerkesztőben cserélje le az `/etc/nginx/sites-available/default` tartalmát az alábbira. A megjegyzésekben találja a beállítások magyarázatát. Helyettesítse be a virtuális gép nyilvános IP-címét a *yourPublicIPAddress*, erősítse meg a PHP-verziót `fastcgi_pass`-ben, és hagyja meg a többi beállítást. Ezután mentse a fájlt.
 
 ```
 server {
@@ -159,7 +159,7 @@ Most ellenőrizheti a létrehozott PHP-információs oldalt. Nyissa meg a böng�
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy LEMP-kiszolgálót helyezett üzembe az Azure-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

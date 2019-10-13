@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 06/10/2019
-ms.openlocfilehash: 54994dd626df23694ea372d4a662d2b4fb051fc8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.date: 10/11/2019
+ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285758"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299709"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
@@ -39,7 +39,7 @@ Ezek a szolgáltatási szintek a standard rendelkezésre állási architektúrá
 
 A standard rendelkezésre állási modell két réteget tartalmaz:
 
-- Az `sqlserver.exe` folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokkal rendelkezik a csatlakoztatott SSD-lemezen, például a TempDB, a modell adatbázisa, a terv gyorsítótára, a puffer készlet és az oszlopdiagram készlete. Ezt az állapot nélküli csomópontot az Azure Service Fabric üzemelteti, amely a `sqlserver.exe` inicializálását, a csomópont állapotát vezérli, és szükség esetén feladatátvételt hajt végre egy másik csomóponton.
+- Az `sqlservr.exe` folyamatot futtató állapot nélküli számítási réteg, amely csak átmeneti és gyorsítótárazott adatokból áll, például a TempDB, a csatolt SSD modell-adatbázisainak, valamint a gyorsítótár, a pufferméret és a oszlopcentrikus-készletnek a memóriában történő megtervezésével. Ezt az állapot nélküli csomópontot az Azure Service Fabric üzemelteti, amely a `sqlservr.exe` inicializálását, a csomópont állapotát vezérli, és szükség esetén feladatátvételt hajt végre egy másik csomóponton.
 - Az Azure Blob Storage-ban tárolt adatbázis-fájlokkal (. MDF/. ldf) rendelkező állapot-nyilvántartó adatréteg. Az Azure Blob Storage beépített adatelérhetőségi és redundancia-funkcióval rendelkezik. Ez garantálja, hogy az adatfájlban lévő naplófájl vagy oldal minden rekordja megmarad, még akkor is, ha SQL Server folyamat összeomlik.
 
 Ha az adatbázismotor vagy az operációs rendszer frissítése megtörtént, vagy hiba észlelhető, az Azure Service Fabric az állapot nélküli SQL Server folyamatot egy másik, elegendő szabad kapacitással rendelkező állapot nélküli számítási csomópontra helyezi át. Az áthelyezés nem érinti az Azure Blob Storage-ban tárolt adatátvitelt, és az adatfájlok és naplófájlok az újonnan inicializált SQL Server folyamathoz vannak csatolva. Ez a folyamat garantálja az 99,99%-os rendelkezésre állást, de a nagy számítási feladatok némi teljesítménybeli romlást tapasztalhatnak az átállás során, mivel az új SQL Server példány a hideg gyorsítótárral kezdődik.
@@ -54,7 +54,24 @@ Az alapul szolgáló adatbázisfájlok (. MDF/. ldf) a csatlakoztatott SSD-táro
 
 További előnyként a prémium rendelkezésre állási modell lehetővé teszi a csak olvasási SQL-kapcsolatok átirányítását az egyik másodlagos replikára. Ezt a funkciót az [olvasási Felskálázásnak](sql-database-read-scale-out.md)nevezzük. A szolgáltatás 100%-os további számítási kapacitást biztosít külön díj nélkül a kikapcsolt írásvédett műveletekhez, például az analitikai számítási feladatokhoz az elsődleges replikából.
 
-### <a name="zone-redundant-configuration"></a>Zóna redundáns konfigurációja
+## <a name="hyperscale-service-tier-availability"></a>Nagy kapacitású szolgáltatási rétegek rendelkezésre állása
+
+Az nagy kapacitású szolgáltatási rétegek architektúrája az [elosztott függvények architektúrája](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)című témakörben található. 
+
+![Nagy kapacitású funkcionális architektúra](./media/sql-database-hyperscale/hyperscale-architecture.png)
+
+A nagy kapacitású rendelkezésre állási modellje négy réteget tartalmaz:
+
+- Egy állapot nélküli számítási réteg, amely a `sqlservr.exe` folyamatot futtatja, és csak átmeneti és gyorsítótárazott adatokból áll, mint például a nem a RBPEX cache, a TempDB, a Model Database stb. a csatlakoztatott SSD esetében, valamint a gyorsítótár, a puffer készlet és a oszlopcentrikus-készlet a memóriában történő megtervezése. Ez az állapot nélküli réteg tartalmazza az elsődleges számítási replikát és opcionálisan számos másodlagos számítási replikát, amelyek feladatátvételi célként szolgálhatnak.
+- A Page Servers által létrehozott állapot nélküli tárolási réteg. Ez a réteg a számítási replikán futó `sqlservr.exe` folyamatok elosztott tárolási motorja. Minden oldal-kiszolgáló csak átmeneti és gyorsítótárazott adatmennyiséget tartalmaz, például a csatlakoztatott SSD-RBPEX gyorsítótárát, valamint a memóriában gyorsítótárazott adatlapokat. Az egyes lapozófájlok egy aktív-aktív konfigurációban található párosított kiszolgálóoldali kiszolgálóval biztosítják a terheléselosztást, a redundanciát és a magas rendelkezésre állást.
+- Egy állapot-nyilvántartó tranzakciós napló tárolási rétege, amely a naplózási szolgáltatás folyamatát, a tranzakciós napló lejárati zónáját és a tranzakciónapló hosszú távú tárolását futtató számítási csomópont által lett létrehozva. A kirakodási zóna és a hosszú távú tárolás az Azure Storage-t használja, amely rendelkezésre állást és [redundanciát](https://docs.microsoft.com/azure/storage/common/storage-redundancy) biztosít a tranzakciónapló számára, és biztosítja az adattartósságot a Véglegesített tranzakciók esetében
+- Állapot-nyilvántartó adattárolási réteg, amely az Azure Storage-ban tárolt adatbázisfájlok (. MDF/. ndf) használatával frissül. Ez a réteg az Azure Storage adatelérhetőségi és [redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy) -funkcióit használja. Ez garantálja, hogy az adatfájlok minden lapja megmaradjon, még akkor is, ha a nagy kapacitású-architektúra összeomlik, vagy ha a számítási csomópontok sikertelenek lesznek.
+
+Az összes nagy kapacitású-rétegben futtatott számítási csomópontok az Azure Service Fabric futnak, amely az egyes csomópontok állapotát vezérli, és szükség szerint végrehajtja a feladatátvételt az elérhető kifogástalan állapotú csomópontokon.
+
+További információ a nagy kapacitású magas rendelkezésre állásáról: [adatbázis magas rendelkezésre állása a nagy kapacitású-ben](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale).
+
+## <a name="zone-redundant-configuration"></a>Zóna redundáns konfigurációja
 
 Alapértelmezés szerint a prémium rendelkezésre állási modell csomópontjainak fürtje ugyanabban az adatközpontban jön létre. A [Azure Availability Zones](../availability-zones/az-overview.md)bevezetésével a SQL Database a üzletileg kritikus adatbázis különböző replikáit különböző rendelkezésre állási zónákba helyezheti ugyanabban a régióban. Egyetlen meghibásodási pont kizárása érdekében a vezérlő gyűrűt több zónában is duplikálja három átjárós gyűrűként (GW). Egy adott átjáró-gyűrű útválasztását az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM) vezérli. Mivel a zóna redundáns konfigurációja a prémium vagy üzletileg kritikus szolgáltatási szinten nem hoz létre további adatbázis-redundanciát, külön díj nélkül is engedélyezheti. A zóna redundáns konfigurációjának kiválasztásával a prémium vagy üzletileg kritikus-adatbázisok rugalmasan állíthatók be a hibák sokkal nagyobb részére, beleértve a katasztrofális adatközpont leállását, az alkalmazás logikájának módosítása nélkül. A meglévő prémium vagy üzletileg kritikus adatbázisok vagy készletek a zóna redundáns konfigurációjához is átalakíthatók.
 

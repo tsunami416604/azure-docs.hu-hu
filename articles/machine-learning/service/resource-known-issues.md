@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338759"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286547"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -37,13 +37,13 @@ Előfordulhat, hogy egy kísérletet csak olyan adatkészletet szeretne futtatni
  
 A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakítási modulhoz (oszlop kijelölése az adatkészletben, a metaadatok szerkesztése, adatok felosztása stb.), és futtathatja a kísérletet. Ezután megjelenítheti az adatkészletet. 
 
-Az alábbi képen látható, ![hogyan: visulize-adatok](./media/resource-known-issues/aml-visualize-data.png)
+Az alábbi képen látható, hogyan: ![visulize-adatok @ no__t-1
 
-## <a name="sdk-installation-issues"></a>SDK telepítésével kapcsolatos problémák
+## <a name="sdk-installation-issues"></a>SDK-telepítési problémák
 
-**Hibaüzenet: A "PyYAML" nem távolítható el.**
+**Hibaüzenet: nem távolítható el a (z) PyYAML**
 
-A Pythonhoz készült Azure Machine Learning SDK: A PyYAML egy distutils telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Az SDK telepítése során a rendszer figyelmen kívül hagyja ezt a hibát a folytatáshoz használja:
+Pythonhoz készült Azure Machine Learning SDK: a PyYAML egy distutils telepített projekt. Ezért nem tudjuk pontosan meghatározni, hogy mely fájlok tartoznak hozzá, ha részleges eltávolítás van. Ha továbbra is szeretné telepíteni az SDK-t a hiba figyelmen kívül hagyásával, használja a következőt:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -57,21 +57,21 @@ conda create -n <env-name> python=3.7.3
 ```
 Amely a Python 3.7.3 használatával hoz létre egy Conda-környezetet, amely nem rendelkezik a 3.7.4-ben lévő telepítési hibával.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt az Azure Machine Learning Compute létrehozása
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Hiba történt Azure Machine Learning számítás létrehozásakor
 
-Nincs ritka előfordulhat, hogy néhány az általánosan elérhető kiadás előtt az Azure Portalról az Azure Machine Learning-munkaterületet létrehozó felhasználó nem feltétlenül tudja hozni az Azure Machine Learning Compute munkaterület. Emelje egy támogatási kérést a megfelelő szolgáltatás, vagy hozzon létre egy új munkaterületet a Portalon vagy az SDK azonnal feloldásának saját magának.
+Ritkán fordul elő, hogy egyes felhasználók, akik a Azure Machine Learning munkaterületet hoztak létre a Azure Portal a GA kiadása előtt, előfordulhat, hogy az adott munkaterületen nem tud létrehozni Azure Machine Learning számítást. Felvehet egy támogatási kérést a szolgáltatásra, vagy létrehozhat egy új munkaterületet a portálon vagy az SDK-ban, hogy azonnal feloldja a zárolást.
 
-## <a name="image-building-failure"></a>Lemezkép létrehozása sikertelen
+## <a name="image-building-failure"></a>Rendszerkép-létrehozási hiba
 
-Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő megoldás az, hogy hozzáadása "pynacl 1.2.1-es ==" Conda-fájlba a rendszerkép-konfiguráció pip függőségként.
+Rendszerkép-létrehozási hiba a webszolgáltatás telepítésekor. Áthidaló megoldás: "pynacl = = 1.2.1" hozzáadása pip-függőségként a Conda-fájlhoz a rendszerkép-konfigurációhoz.
 
 ## <a name="deployment-failure"></a>Üzembe helyezési hiba
 
 Ha betartja `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, módosítsa az üzemelő példányban használt virtuális gépek SKU-jának méretét, amely több memóriával rendelkezik.
 
-## <a name="fpgas"></a>FPGA-kban
+## <a name="fpgas"></a>FPGA-k
 
-Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
+A modelleket nem fogja tudni telepíteni a FPGA, amíg nem kérelmezi és nem hagyta jóvá a FPGA-kvótát. A hozzáférés kéréséhez töltse ki a kvóta kérése űrlapot: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Automatizált gépi tanulás
 
@@ -83,11 +83,11 @@ A bináris besorolási diagramok (a pontosság-visszahívás, a ROC, a nyereség
 
 ## <a name="databricks"></a>Databricks
 
-Databricks és az Azure Machine Learning problémákat.
+Databricks és Azure Machine Learning problémák.
 
 ### <a name="failure-when-installing-packages"></a>Hiba a csomagok telepítésekor
 
-Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
+Azure Machine Learning SDK telepítése sikertelen Azure Databricks Ha további csomagok vannak telepítve. Bizonyos csomagok, például a `psutil`, ütközéseket okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziószámának lefagyasztásával. Ez a probléma a Databricks és nem a Azure Machine Learning SDK-val kapcsolatos. Előfordulhat, hogy ezt a problémát más kódtárak is megtapasztalják. Példa:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -101,7 +101,7 @@ Ha Azure Databrickson automatikus gépi tanulási képességeket használ a Futt
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteráció az automatizált gépi tanuláshoz
 
-Ha több mint 10 iterációja van, akkor az automatizált gépi tanulás beállításainál állítsa `show_output` `False` be a parancsot a futtatáskor.
+Ha több mint 10 iterációja van, akkor az automatikus gépi tanulás beállításainál állítsa a `show_output` értéket `False` értékre a Futtatás elküldésekor.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget a Azure Machine Learning SDK/automatikus gépi tanuláshoz
 
@@ -111,7 +111,7 @@ A Azure Machine Learning SDK widget nem támogatott Databricks-jegyzetfüzetekbe
 displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
 ```
 
-### <a name="import-error-no-module-named-pandascoreindexes"></a>Importálási hiba: Nincs "pandák. Core. indexek" nevű modul
+### <a name="import-error-no-module-named-pandascoreindexes"></a>Importálási hiba: nincs "pandák. Core. indexek" nevű modul.
 
 Ha ezt a hibaüzenetet látja, amikor automatikus gépi tanulást használ:
 
@@ -128,19 +128,19 @@ Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-Ha Azure Databricks-fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse át a következő megoldásokat:
+Ha Azure Databricks-fürtön lévő adatolvasáskor @no__t – 0 hiba jelenik meg, tekintse meg a következő megoldásokat:
 
-* A `azureml-sdk[automl_databricks]` csomag frissítése a legújabb verzióra.
-* Adja `azure-dataprep` hozzá a 1.1.8 vagy újabb verziót.
-* Adja `pyarrow` hozzá a 0,11-es vagy újabb verziót.
+* Frissítse `azureml-sdk[automl_databricks]` csomagot a legújabb verzióra.
+* Adja hozzá a `azure-dataprep` 1.1.8 vagy újabb verziót.
+* Adja hozzá `pyarrow` 0,11-es vagy újabb verziót.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Portal](https://portal.azure.com) léphet, és megkeresheti a munkaterület nevét.
+Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál áttekintő oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, a megkerülő megoldással közvetlenül a [Azure Portal](https://portal.azure.com) léphet, és megkeresheti a munkaterület nevét.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Portal](https://portal.azure.com) és lépjen a munkaterületre, és válassza ki a munkaterületet **> a kísérlet > > naplók futtatása**  Ezeket az információkat a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)megjelenő **kísérletek** szakaszban tekintheti meg.
+Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatokat is megadhat. Ha meg szeretne tekinteni néhány naplót, látogasson el [Azure Portal](https://portal.azure.com) és lépjen a munkaterületre, és válassza ki a munkaterületet **> a kísérlet > > naplók futtatása**  Ezeket az információkat a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)megjelenő **kísérletek** szakaszban tekintheti meg.
 
 > [!NOTE]
 > Azure Machine Learning a különböző forrásokból származó információkat naplózza a betanítás során, például a AutoML vagy a betanítási feladatot futtató Docker-tárolóban. A naplók közül sok nincs dokumentálva. Ha problémákat tapasztal, és felveszi a kapcsolatot a Microsoft ügyfélszolgálatával, előfordulhat, hogy a hibaelhárítás során ezeket a naplókat is használni tudja.
@@ -153,7 +153,7 @@ A műveletek némelyike a munkaterület __tevékenységek__ területén jelenik 
 
 ## <a name="resource-quotas"></a>Erőforráskvóták
 
-További információ a [erőforráskvóták](how-to-manage-quotas.md) az Azure Machine Learning használata során találkozhat.
+Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülhetnek fel a Azure Machine learning használatakor.
 
 ## <a name="authentication-errors"></a>Hitelesítési hibák
 
@@ -171,13 +171,13 @@ Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy ol
 
 ## <a name="overloaded-azurefile-storage"></a>Túlterhelt AzureFile-tároló
 
-Ha hibaüzenetet `Unable to upload project files to working directory in AzureFile because the storage is overloaded`kap, alkalmazza a következő megkerülő megoldásokat.
+Ha `Unable to upload project files to working directory in AzureFile because the storage is overloaded` hibaüzenetet kap, alkalmazza a következő megkerülő megoldásokat.
 
 Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmegosztást, a javasolt a Blobok használata, hogy a fájlmegosztás díjmentesen használható legyen a futtatások elküldéséhez. A számítási feladatok felosztása két különböző munkaterület között is lehetséges.
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Webszolgáltatások az Azure Kubernetes szolgáltatásban – hibák 
 
-Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba oldható fel a fürthöz való csatlakozással a `kubectl`használatával. Az `kubeconfig.json` Azure Kubernetes Service-fürtöket a következő futtatásával kérheti le:
+Az Azure Kubernetes szolgáltatásban számos webszolgáltatási hiba feloldható a fürthöz való csatlakozással `kubectl` használatával. Az Azure Kubernetes Service-fürthöz tartozó `kubeconfig.json` a következő futtatásával kérhető le:
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -185,7 +185,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>Azure Machine Learning összetevők frissítése az AK-fürtben
 
-Az Azure Kubernetes Service-fürtben telepített Azure Machine Learning-összetevők frissítéseit manuálisan kell alkalmazni. Ezeket a frissítéseket úgy alkalmazhatja, hogy leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra csatolja a fürtöt a munkaterülethez. Ha az SSL engedélyezve van a fürtben, meg kell adnia az SSL-tanúsítványt és a titkos kulcsot, amikor újra csatlakoztatja a fürtöt. 
+Az Azure Kubernetes Service-fürtben telepített Azure Machine Learning-összetevők frissítéseit manuálisan kell alkalmazni. 
+
+> [!WARNING]
+> Az alábbi műveletek elvégzése előtt keresse meg az Azure Kubernetes Service-fürt verzióját. Ha a fürt verziója a 1,14-as vagy annál nagyobb, akkor nem fogja tudni újra csatlakoztatni a fürtöt a Azure Machine Learning munkaterülethez.
+
+Ezeket a frissítéseket úgy alkalmazhatja, hogy leválasztja a fürtöt a Azure Machine Learning munkaterületről, majd újra csatolja a fürtöt a munkaterülethez. Ha az SSL engedélyezve van a fürtben, meg kell adnia az SSL-tanúsítványt és a titkos kulcsot, amikor újra csatlakoztatja a fürtöt. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -206,14 +211,14 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Ha már nem rendelkezik SSL-tanúsítvánnyal és titkos kulccsal, vagy ha a Azure Machine learning által létrehozott tanúsítványt használ, lekérheti a fájlokat a fürt leválasztása előtt a fürthöz `kubectl` való csatlakozással a titkos kódbeolvasásával `azuremlfessl`.
+Ha már nem rendelkezik SSL-tanúsítvánnyal és titkos kulccsal, vagy ha Azure Machine Learning által létrehozott tanúsítványt használ, lekérheti a fájlokat a fürt leválasztása előtt, ha a `kubectl` értékkel csatlakozik a fürthöz, és beolvassa a titkos `azuremlfessl`.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. Ahhoz, hogy a titkokat el tudja végezni, `cert.pem` a `key.pem` 64-es alapszintű dekódolást `attach_config.enable_ssl`és a titkok összetevőit kell megadnia. 
+>A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` összetevőinek a `attach_config.enable_ssl` értékhez való megadása előtt a következőt kell elvégeznie: Base-64. 
 
 ## <a name="recommendations-for-error-fix"></a>Hibajavítási javaslatok
 Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori hibáinak kijavítására szolgálnak.

@@ -1,5 +1,5 @@
 ---
-title: Ismerkedés az Azure Table Storage és a Visual Studio Connected Services (ASP.NET) szolgáltatással | Microsoft Docs
+title: Az Azure Table Storage használatának első lépései a Visual Studióval (ASP.NET)
 description: Az Azure Table Storage használatának első lépései egy ASP.NET-projektben a Visual Studióban, miután kapcsolódott egy Storage-fiókhoz a Visual Studio Connected Services használatával
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 6f0858d3c2e3f79dda58710031c105e83418058e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511168"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298879"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure Table Storage és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -53,7 +54,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat ASP.NET-kódokat néhány gyakori fo
 
     ![Az MVC-vezérlő neve](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. Adja hozzá a következő *alkalmazás* -irányelveket a `TablesController.cs` fájlhoz:
+1. Adja hozzá a *következő utasításokat* a `TablesController.cs` fájlhoz:
 
     ```csharp
     using Microsoft.Azure;
@@ -70,7 +71,7 @@ A cikk számos példája egy **CustomerEntity**nevű **TableEntity**-származtat
 
 1. Az **új elem hozzáadása** párbeszédpanelen nevezze el a **CustomerEntity**osztályt.
 
-1. Nyissa `CustomerEntity.cs` meg a fájlt, és adja hozzá a következő **using** direktívát:
+1. Nyissa meg a `CustomerEntity.cs` fájlt, és adja hozzá a következő **using** direktívát:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
@@ -114,7 +115,7 @@ A következő lépések bemutatják, hogyan hozhat létre táblát:
     }
     ```
 
-1. A **CreateTable** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **CreateTable** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -149,7 +150,7 @@ A következő lépések bemutatják, hogyan hozhat létre táblát:
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **CreateTable** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `CreateTable.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `CreateTable.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -161,7 +162,7 @@ A következő lépések bemutatják, hogyan hozhat létre táblát:
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -177,7 +178,7 @@ A következő lépések bemutatják, hogyan hozhat létre táblát:
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
 
-Az entitások a\# **TableEntity**származtatott egyéni osztály használatával képezhetők le C-objektumokra. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Ebből a szakaszból megtudhatja, hogyan határozhat meg egy entitás osztályt, amely az ügyfél utónevét és vezetéknevét használja a partíciós kulcsként. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb fokú méretezhetőségét teszi lehetővé. A Table szolgáltatásban tárolni kívánt tulajdonságoknak a tulajdonságnak egy támogatott típusú nyilvános tulajdonságnak kell lennie, amely az értékek beállítását és beolvasását is lehetővé teszi.
+Az *entitások* a C @ no__t-1 objektumokhoz a **TableEntity**származtatott egyéni osztály használatával képezhetők le. Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait. Ebből a szakaszból megtudhatja, hogyan határozhat meg egy entitás osztályt, amely az ügyfél utónevét és vezetéknevét használja a partíciós kulcsként. Egy entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblán belül. Az azonos partíciókulcsú entitások gyorsabban lekérdezhetők, mint a különböző partíciókulcsúak, de az eltérő partíciókulcsok használata a párhuzamos műveletek nagyobb fokú méretezhetőségét teszi lehetővé. A Table szolgáltatásban tárolni kívánt tulajdonságoknak a tulajdonságnak egy támogatott típusú nyilvános tulajdonságnak kell lennie, amely az értékek beállítását és beolvasását is lehetővé teszi.
 Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli konstruktort.
 
 > [!NOTE]
@@ -186,7 +187,7 @@ Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli k
 
 1. Nyissa meg az `TablesController.cs` fájlt.
 
-1. Adja hozzá a következő irányelvet, hogy a `TablesController.cs` fájlban lévő kód hozzáférhessen a **CustomerEntity** osztályhoz:
+1. Adja hozzá a következő irányelvet, hogy a `TablesController.cs` fájlban található kód hozzáférhessen a **CustomerEntity** osztályhoz:
 
     ```csharp
     using StorageAspnet.Models;
@@ -203,7 +204,7 @@ Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli k
     }
     ```
 
-1. A **AddEntity** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **AddEntity** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -252,7 +253,7 @@ Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli k
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **AddEntity** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `AddEntity.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `AddEntity.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -263,7 +264,7 @@ Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli k
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -275,7 +276,7 @@ Az Entity osztálynak deklarálnia *kell* egy nyilvános, paraméter nélküli k
   
     ![Entitás hozzáadása](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
-    Ellenőrizze, hogy az entitás hozzá lett-e adva a szakasz lépéseit követve, [egyetlen entitás](#get-a-single-entity)beolvasása. A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is használhatja a táblák összes entitásának megtekintéséhez.
+    Ellenőrizze, hogy az entitás hozzá lett-e adva a szakasz lépéseit követve, [egyetlen entitás beolvasása](#get-a-single-entity). A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is használhatja a táblák összes entitásának megtekintéséhez.
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>Entitások kötegének hozzáadása egy táblához
 
@@ -298,7 +299,7 @@ Azon kívül, hogy [egyszerre hozzá tud adni egy entitást egy táblához](#add
     }
     ```
 
-1. A **AddEntities** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **AddEntities** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -356,7 +357,7 @@ Azon kívül, hogy [egyszerre hozzá tud adni egy entitást egy táblához](#add
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **AddEntities** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `AddEntities.cshtml`, és módosítsa úgy, hogy az a következőképpen néz ki.
+1. Nyissa meg `AddEntities.cshtml` értéket, és módosítsa úgy, hogy az a következőhöz hasonlóan néz ki.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -383,7 +384,7 @@ Azon kívül, hogy [egyszerre hozzá tud adni egy entitást egy táblához](#add
     </table>
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -395,7 +396,7 @@ Azon kívül, hogy [egyszerre hozzá tud adni egy entitást egy táblához](#add
   
     ![Entitások hozzáadása](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
-    Ellenőrizze, hogy az entitás hozzá lett-e adva a szakasz lépéseit követve, [egyetlen entitás](#get-a-single-entity)beolvasása. A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is használhatja a táblák összes entitásának megtekintéséhez.
+    Ellenőrizze, hogy az entitás hozzá lett-e adva a szakasz lépéseit követve, [egyetlen entitás beolvasása](#get-a-single-entity). A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is használhatja a táblák összes entitásának megtekintéséhez.
 
 ## <a name="get-a-single-entity"></a>Egyetlen entitás beolvasása
 
@@ -418,7 +419,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet egyetlen entitást beolvasni egy tá
     }
     ```
 
-1. A **GetSingle** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **GetSingle** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -437,7 +438,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet egyetlen entitást beolvasni egy tá
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Hozzon létre egy lekérési művelet objektumot, amely a **TableEntity**származtatott entitás objektumot veszi fel. Az első paraméter a *partitionKey*, a második paraméter pedig a *rowKey*. A **CustomerEntity** osztály és az [entitások hozzáadása](#add-a-batch-of-entities-to-a-table)a táblához című szakaszban bemutatottak alapján a következő kódrészlet lekérdezi a **CustomerEntity** entitás tábláját a "Smith" *partitionKey* értékkel és egya "ben" rowKey értéke:
+1. Hozzon létre egy lekérési művelet objektumot, amely a **TableEntity**származtatott entitás objektumot veszi fel. Az első paraméter a *partitionKey*, a második paraméter pedig a *rowKey*. A **CustomerEntity** osztály és az [entitások hozzáadása a táblához](#add-a-batch-of-entities-to-a-table)című szakaszban bemutatottak alapján a következő kódrészlet lekérdezi a **CustomerEntity** entitás tábláját a "Smith" *partitionKey* értékkel és egya "ben" rowKey értéke:
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
@@ -459,7 +460,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet egyetlen entitást beolvasni egy tá
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **GetSingle** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `GetSingle.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `GetSingle.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -485,7 +486,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet egyetlen entitást beolvasni egy tá
     </table>
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -493,7 +494,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet egyetlen entitást beolvasni egy tá
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza az **egyszeri** beolvasás lehetőséget az alábbi képernyőképhez hasonló eredmények megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza az **egyszeri beolvasás** lehetőséget az alábbi képernyőképhez hasonló eredmények megtekintéséhez:
   
     ![Egyszeri lekérdezés](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -518,7 +519,7 @@ Ahogy azt a szakaszban is említettük, [vegyen fel egy entitást egy táblázat
     }
     ```
 
-1. A **GetPartition** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **GetPartition** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -537,7 +538,7 @@ Ahogy azt a szakaszban is említettük, [vegyen fel egy entitást egy táblázat
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. **TableQuery** -objektum példányának létrehozása a **Where** záradékban megadott lekérdezéssel. A **CustomerEntity** osztály és az [entitások hozzáadása](#add-a-batch-of-entities-to-a-table)a táblához című szakaszban bemutatottak alapján a következő kódrészlet lekérdezi az összes olyan entitás tábláját, ahol a **PartitionKey** (az ügyfél vezetékneve) a "Kovács" értékkel rendelkezik:
+1. **TableQuery** -objektum példányának létrehozása a **Where** záradékban megadott lekérdezéssel. A **CustomerEntity** osztály és az [entitások hozzáadása a táblához](#add-a-batch-of-entities-to-a-table)című szakaszban bemutatottak alapján a következő kódrészlet lekérdezi az összes olyan entitás tábláját, ahol a **PartitionKey** (az ügyfél vezetékneve) a "Kovács" értékkel rendelkezik:
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -568,7 +569,7 @@ Ahogy azt a szakaszban is említettük, [vegyen fel egy entitást egy táblázat
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **GetPartition** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `GetPartition.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `GetPartition.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -595,7 +596,7 @@ Ahogy azt a szakaszban is említettük, [vegyen fel egy entitást egy táblázat
     </table>
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -603,7 +604,7 @@ Ahogy azt a szakaszban is említettük, [vegyen fel egy entitást egy táblázat
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza a **partíció** beolvasása lehetőséget az alábbi képernyőképhez hasonló eredmények megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza a **partíció beolvasása** lehetőséget az alábbi képernyőképhez hasonló eredmények megtekintéséhez:
   
     ![Partíció beolvasása](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -628,7 +629,7 @@ Ez a szakasz azt szemlélteti, hogyan törölhet entitásokat egy táblából.
     }
     ```
 
-1. A **DeleteEntity** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Módosítsa  *&lt;a Storage-Account-Name >t* az elérni kívánt Azure Storage-fiók nevére.)
+1. A **DeleteEntity** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -670,7 +671,7 @@ Ez a szakasz azt szemlélteti, hogyan törölhet entitásokat egy táblából.
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **DeleteEntity** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `DeleteEntity.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `DeleteEntity.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -695,7 +696,7 @@ Ez a szakasz azt szemlélteti, hogyan törölhet entitásokat egy táblából.
 
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg a parancsot `_Layout.cshtml`.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -707,7 +708,7 @@ Ez a szakasz azt szemlélteti, hogyan törölhet entitásokat egy táblából.
   
     ![Egyszeri lekérdezés](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
 
   * [Ismerkedés az Azure Blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

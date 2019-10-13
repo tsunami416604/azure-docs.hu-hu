@@ -1,5 +1,5 @@
 ---
-title: Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
+title: A PowerShell használata, Távoli asztal engedélyezése szerepkörhöz (Azure Cloud Services)
 description: Azure Cloud Service-alkalmazás konfigurálása a PowerShell használatával a távoli asztali kapcsolatok engedélyezéséhez
 services: cloud-services
 documentationcenter: ''
@@ -8,17 +8,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: gwallace
-ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358992"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298407"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>Távoli asztali kapcsolat engedélyezése az Azure Cloud Services szerepkörhöz a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portalra](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -50,7 +50,7 @@ ConvertTo-SecureString -String "Password123" -AsPlainText -Force | ConvertFrom-S
 
 Ahhoz, hogy a hitelesítő adatokat a biztonságos jelszó fájlból hozza létre, el kell olvasnia a fájl tartalmát, és vissza kell alakítania azokat egy biztonságos karakterláncra az [ConvertTo-SecureString](https://technet.microsoft.com/library/hh849818.aspx)használatával.
 
-A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag egy lejárati paramétert is elfogad, amely meghatározza azt a **dátumot** és időpontot, amikor a felhasználói fiók lejár. Például beállíthatja, hogy a fiók az aktuális dátumtól és időponttól néhány napig lejárjon.
+A [set-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/set-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmag egy *lejárati* paramétert is elfogad, amely meghatározza azt a **dátumot** és időpontot, amikor a felhasználói fiók lejár. Például beállíthatja, hogy a fiók az aktuális dátumtól és időponttól néhány napig lejárjon.
 
 Ez a PowerShell-példa bemutatja, hogyan állíthatja be a Távoli asztal-bővítményt egy felhőalapú szolgáltatásban:
 
@@ -86,7 +86,7 @@ Get-AzureServiceRemoteDesktopExtension -ServiceName $servicename
 
 Ha már engedélyezte a távoli asztal bővítményt egy központi telepítésben, és frissítenie kell a távoli asztal beállításait, először távolítsa el a bővítményt. És engedélyezze újra az új beállításokkal. Ha például új jelszót szeretne beállítani a távoli felhasználói fiókhoz, vagy lejárt a fiók. Ehhez szükség van a távoli asztal bővítményt használó meglévő központi telepítések esetén. Új központi telepítések esetén egyszerűen közvetlenül is alkalmazhatja a bővítményt.
 
-A távoli asztali bővítmény a telepítésből való eltávolításához használhatja a Remove [-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmagot. Igény szerint megadhatja azt a telepítési tárolóhelyet és szerepkört is, amelyből el szeretné távolítani a távoli asztali bővítményt.
+A távoli asztali bővítmény a telepítésből való eltávolításához használhatja a [Remove-AzureServiceRemoteDesktopExtension](/powershell/module/servicemanagement/azure/remove-azureserviceremotedesktopextension?view=azuresmps-3.7.0) parancsmagot. Igény szerint megadhatja azt a telepítési tárolóhelyet és szerepkört is, amelyből el szeretné távolítani a távoli asztali bővítményt.
 
 ```powershell
 Remove-AzureServiceRemoteDesktopExtension -ServiceName $servicename -UninstallConfiguration

@@ -1,23 +1,20 @@
 ---
 title: Ajánlott eljárások a Azure Functionshoz | Microsoft Docs
 description: A Azure Functions ajánlott eljárásainak és mintáinak megismerése.
-services: functions
-documentationcenter: na
-author: wesmc7777
-manager: jeconnoc
-keywords: Azure functions, Patterns, ajánlott eljárások, függvények, események feldolgozása, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
+author: ggailey777
+manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933055"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294365"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
@@ -29,7 +26,9 @@ Az alábbiakban az ajánlott eljárások azt ismertetik, hogyan hozhat létre é
 
 ### <a name="avoid-long-running-functions"></a>A hosszan futó függvények elkerülése
 
-A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. A függvények sok Node. js-függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti.  
+A nagyméretű, hosszan futó függvények váratlan időtúllépési problémákhoz vezethetnek. Ha többet szeretne megtudni egy adott üzemeltetési csomag időtúllépéséről, tekintse meg a [Function app timeout időtartamát](functions-scale.md#timeout). 
+
+A függvények sok Node. js-függőség miatt nagy méretűek lehetnek. A függőségek importálása nagyobb betöltési időt is okozhat, ami váratlan időtúllépéseket eredményezhet. A függőségeket explicit módon és implicit módon kell betölteni. A kód által betöltött egyetlen modul a saját további moduljait is betöltheti. 
 
 Amikor csak lehetséges, a nagyméretű függvények újrabontása kisebb functions-készletekbe, amelyek együtt működnek, és a válaszokat gyorsan adják vissza. Előfordulhat például, hogy egy webhook vagy egy HTTP trigger függvény egy bizonyos időkorláton belül visszaigazolási választ kér. gyakori, hogy a webhookok azonnali választ igényelnek. A HTTP-trigger hasznos adatait átadhatja egy, a várólista-trigger függvény által feldolgozandó várólistába. Ezzel a megközelítéssel késleltetheti a tényleges munkát, és azonnali választ adhat vissza.
 
@@ -49,7 +48,7 @@ Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 ### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított `state` taggal fog rendelkezni. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozás alatt álló megrendelés valószínűleg társítva van egy `state` taggal. Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
 A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
 
@@ -93,19 +92,19 @@ Ne használja a részletes naplózást az éles kódban. Negatív hatással van 
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Aszinkron kód használata, de ne blokkolja a hívásokat
 
-Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra vagy a hívási `Wait` metódusra egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
+Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `Result` tulajdonságra, vagy hívja meg a `Wait` metódust egy `Task` példányon. Ez a módszer a szál kimerülését eredményezheti.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Üzenetek fogadása kötegben, amikor csak lehetséges
 
-Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A maximális batch- `host.json` méret a fájlban a [Host. JSON dokumentációjában](functions-host-json.md) részletesen is konfigurálható.
+Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A `host.json` fájlban a maximális batch-méretet a [Host. JSON dokumentációjában](functions-host-json.md) részletesen konfigurálhatja.
 
-A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például `EventData sensorEvent` a metódus aláírása helyett lehet `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a kardinális tulajdonságot `function.json` `many` a-ben, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például @no__t – 0 helyett a metódus aláírása `EventData[] sensorEvent` lehet.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságot a `many` értékre, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 
-A `host.json` Function alkalmazásban található fájl lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot.  Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
+A Function app `host.json` fájlja lehetővé teszi a gazdagép-futtatókörnyezet és az aktiválási viselkedés konfigurációját.  A Batch-viselkedésen kívül számos eseményindító esetében is kezelheti a párhuzamosságot.  Az ilyen beállításokban szereplő értékek gyakran módosítják az egyes példányok megfelelő méretezését a meghívott függvények igényei szerint.
 
 A Hosts fájlban lévő beállítások a függvény *egyetlen példányán* belül az alkalmazáson belüli összes függvényre érvényesek. Ha például 2 HTTP-függvénnyel rendelkező Function-alkalmazással és egyidejű kéréssel 25-re van beállítva, akkor a HTTP-triggerre irányuló kérelem a közös 25 egyidejű kérelemre is beleszámít.  Ha a Function alkalmazás 10 példányra van méretezve, a 2 függvény gyakorlatilag lehetővé teszi a 250 egyidejű kérések használatát (10 példány * 25 egyidejű kérelem/példány).
 
@@ -115,7 +114,7 @@ A Hosts fájlban lévő beállítások a függvény *egyetlen példányán* bel�
 
 [A gazdagép konfigurációs dokumentumában](functions-host-json.md)más gazdagép-konfigurációs beállítások is megtalálhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 

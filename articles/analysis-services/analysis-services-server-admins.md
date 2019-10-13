@@ -2,29 +2,28 @@
 title: Kiszolgáló-rendszergazdák kezelése a Azure Analysis Servicesban | Microsoft Docs
 description: Ismerje meg, hogyan kezelheti az Azure-beli Analysis Services kiszolgáló rendszergazdáit.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696312"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301093"
 ---
 # <a name="manage-server-administrators"></a>A kiszolgálók rendszergazdáinak kezelése
 
 A kiszolgálói rendszergazdáknak érvényes felhasználói vagy biztonsági csoportnak kell lenniük a Azure Active Directoryban (Azure AD) ahhoz a bérlőhöz, amelyben a kiszolgáló található. A kiszolgálói rendszergazdák kezeléséhez **Analysis Services rendszergazdákat** használhat a Azure Portal, a SSMS, a PowerShellben vagy a REST API kiszolgálói tulajdonságaiban. 
 
-A **biztonsági csoportoknak** e- `True` [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsághoz beállított tulajdonsággal. A csoportok e-mail-cím `obj:groupid@tenantid`szerinti megadásakor.
+A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) kell lenniük a `MailEnabled` tulajdonsággal, amely a `True` értékre van beállítva. Ha e-mail-cím alapján ad meg egy csoportot, `obj:groupid@tenantid` értéket kell használnia.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Kiszolgáló-rendszergazdák hozzáadása a Azure Portal használatával
 
 1. A portálon, a-kiszolgálónál kattintson a **Analysis Services rendszergazdák**elemre.
-2. A  **\<servername > – Analysis Services rendszergazdák**területen kattintson a **Hozzáadás**gombra.
+2. A **\<servername > – Analysis Services rendszergazdák**területen kattintson a **Hozzáadás**gombra.
 3. A **kiszolgáló-rendszergazdák hozzáadása**lapon válassza ki az Azure ad-beli felhasználói fiókokat, vagy hívja meg a külső felhasználókat e-mail-cím alapján.
 
     ![Kiszolgálói rendszergazdák a Azure Portal](./media/analysis-services-server-admins/aas-manage-users-admins.png)
@@ -51,7 +50,7 @@ Egy meglévő kiszolgáló módosításakor a [frissítés](https://docs.microso
 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 [Hitelesítés és felhasználói engedélyek](analysis-services-manage-users.md)  
 [Adatbázis-szerepkörök és-felhasználók kezelése](analysis-services-database-users.md)  

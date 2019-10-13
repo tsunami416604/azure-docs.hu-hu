@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8857e93aec883dc4b7fe0b71093184c3b604b24a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103595"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299454"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Magasan elérhető virtuális gépek létrehozása és üzembe helyezése az Azure CLI-vel
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure CLI-vel
 
 Ebben az oktatóanyagban megtanulhatja, hogyan növelheti Azure-beli virtuálisgép-megoldásai rendelkezésre állását és megbízhatóságát a rendelkezésre állási csoportok elnevezésű képesség használatával. A rendelkezésre állási csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek több elkülönített hardverfürt között legyenek elosztva. Ezáltal biztosítható, hogy ha hardveres vagy Azure-beli szoftveres hiba fordul elő, az a virtuális gépeknek csak egy részhalmazát érintse, és a teljes megoldás továbbra is elérhető és működőképes maradjon.
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Virtuális gép létrehozása rendelkezésre állási csoportban
 > * Elérhető virtuálisgép-méretek ellenőrzése
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -50,7 +50,7 @@ Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbe
 
 ### <a name="availability-zone-overview"></a>A rendelkezésre állási zónák áttekintése
 
-A Availability Zones egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egyedi fizikai helyszínek az Azure-régióban. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. A rugalmasság biztosításához az összes engedélyezett régióban legalább három különálló zóna szükséges. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében. A Availability Zones az Azure-ban az iparág legjobb 99,99%-os rendelkezésre állása garantált a virtuális gép számára.
+A Availability Zones egy magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésreállási zónák fizikailag elkülönített helyek egy Azure-régión belül. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. A rugalmasság biztosításához az összes engedélyezett régióban legalább három különálló zóna szükséges. Egy régión belüli Availability Zones fizikai elkülönítése megvédi az alkalmazásokat és az adatközpontok meghibásodását. Zóna – a redundáns szolgáltatások az alkalmazások és az adatok replikálását Availability Zones az egypontos meghibásodások elleni védelem érdekében. A Availability Zones az Azure-ban az iparág legjobb 99,99%-os rendelkezésre állása garantált a virtuális gép számára.
 
 A rendelkezésre állási csoportokhoz hasonlóan Vegyünk egy tipikus virtuálisgép-alapú megoldást, amelyben négy előtér-webkiszolgálóval rendelkezhet, és két háttérbeli virtuális GÉPET használhatnak, amelyek egy adatbázist futtatnak. A rendelkezésre állási csoportokhoz hasonlóan a virtuális gépeket két külön rendelkezésre állási zónában kell telepítenie: egy rendelkezésre állási zónát a "web" réteghez és egy rendelkezésre állási zónához az "adatbázis" szintjéhez. Amikor új virtuális gépet hoz létre, és a rendelkezésre állási zónát paraméterként megadja az az VM Create parancsnak, az Azure automatikusan biztosítja, hogy a létrehozott virtuális gépek el legyenek különítve a teljesen különböző rendelkezésre állási zónák között. Ha a teljes adatközpont, amelyen a webkiszolgáló vagy az adatbázis-kiszolgáló virtuális gépe fut, a probléma merült fel, biztos lehet benne, hogy a webkiszolgáló és az adatbázis virtuális gépei többi példánya továbbra is fut, mert teljesen különálló adatközpontokon futnak.
 
@@ -111,7 +111,7 @@ az vm availability-set list-sizes \
      --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -126,5 +126,5 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
 
 * Ha többet szeretne megtudni a rendelkezésre állási zónákról, látogasson el a [Availability Zones dokumentációra](../../availability-zones/az-overview.md).
-* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció is elérhető. [](./manage-availability.md)
+* A rendelkezésre állási csoportokról és a rendelkezésre állási zónákról további dokumentáció [is elérhető.](./manage-availability.md)
 * A rendelkezésre állási zónák kipróbálásához látogasson el a [linuxos virtuális gép létrehozása rendelkezésre állási zónába az Azure CLI-vel](./create-cli-availability-zone.md)
