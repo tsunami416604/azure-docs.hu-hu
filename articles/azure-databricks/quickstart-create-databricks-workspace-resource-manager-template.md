@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Spark-feladatok futtatása Azure Databricks Resource Manager-sablon használatával '
+title: Azure Databricks munkaterület létrehozása az Azure Resource Managerrel
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure Resource Manager-sablon egy Azure Databricks-munkaterület, majd egy Apache Spark-fürt létrehozásához, illetve Spark-feladatok futtatásához.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 8d4cfb2be687f258255379d93fd60028dcd2eb2c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68932598"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274156"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Gyors útmutató: Spark-feladatok futtatása Azure Databricks a Azure Resource Manager sablon használatával
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Resource Manager-sablon használatával
 
 Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hoz létre egy Apache Spark-fürtöt tartalmazó Azure Databricks-munkaterületet. Futtat egy feladatot a fürtön, és egyéni diagramokkal valós idejű jelentéseket hozhat létre az ingyenes/fizetős használatból a demográfiai adatok alapján.
 
@@ -27,7 +27,7 @@ Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hoz létre egy
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
+Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 
 > [!Note]
 > Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
@@ -101,7 +101,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
    ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
 
-   Kattintson a **Create** (Létrehozás) gombra.
+   Kattintson a  **Create** (Létrehozás) gombra.
 
 3. Ebben a lépésben társítsa az Azure Storage-fiókot a Databricks Spark-fürttel. A társítás két különböző módon végezhető el. Az Azure Storage-fiókot csatlakoztathatja a Databricks fájlrendszerhez (DBFS), vagy közvetlenül hozzáférhet a létrehozott alkalmazásból.
 
@@ -170,7 +170,7 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
    * Az **Értékek** mezőben adja meg a **level** értéket.
    * Az **Összesítés** mezőben adja meg a **COUNT** értéket.
 
-   Kattintson az **Alkalmaz** gombra.
+   Kattintson az **Apply** (Alkalmaz) gombra.
 
 9. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 
@@ -182,11 +182,11 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ön nem állítja le manuálisan a fürt automatikusan leáll, ha a kiválasztott megadott a **leállítása után \_ \_ ennyi perc inaktivitás** jelölőnégyzetet a fürt létrehozásakor. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A Resource Manager-sablont is megtekintheti, ha [egyéni VNET-címmel szeretne létrehozni Azure Databricks-munkaterületet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). A sablonban használandó JSON-szintaxis és-tulajdonságok a [Microsoft. Databricks/](/azure/templates/microsoft.databricks/workspaces) munkaterületek sablonjának dokumentációjában találhatók.
+Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve lefuttatott egy Spark-feladatot az Azure-tárterület adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. A Resource Manager-sablont is megtekintheti, ha [egyéni VNET-címmel szeretne létrehozni Azure Databricks-munkaterületet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace-with-custom-vnet-address). A sablonban használandó JSON-szintaxis és-tulajdonságok a [Microsoft. Databricks/munkaterületek](/azure/templates/microsoft.databricks/workspaces) sablonjának dokumentációjában találhatók.
 
 Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műveletet (adatok kinyerését, átalakítását és betöltését) az Azure Databricks használatával.
 
