@@ -10,55 +10,55 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990147"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299807"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>A Azure Active Directory-(Azure AD-) hitelesítés használata a magától ellátott olvasó szolgáltatással
 
-A következő fejezetekben a Azure Cloud Shell vagy az Azure CLI használatával hozzon létre egy új, magára ejtő olvasó-erőforrást egy egyéni altartománnyal, majd konfigurálja az Azure AD-t az Azure-bérlőben. A kezdeti konfiguráció befejezése után az Azure AD-t hívja meg egy hozzáférési token beszerzéséhez, amely hasonló ahhoz, ahogyan a magával ragadó olvasói SDK használatakor el fog végezni. Ha elakad, az egyes szakaszokban az egyes Azure CLI-parancsokra vonatkozó összes lehetőségre mutató hivatkozásokat talál.
+A következő fejezetekben a Azure Cloud Shell-környezet vagy a Azure PowerShell használatával hozzon létre egy új, magára ejtő olvasó-erőforrást egy egyéni altartománnyal, majd konfigurálja az Azure AD-t az Azure-bérlőben. A kezdeti konfiguráció befejezése után az Azure AD-t hívja meg egy hozzáférési token beszerzéséhez, amely hasonló ahhoz, ahogyan a magával ragadó olvasói SDK használatakor el fog végezni. Ha elakad, az egyes szakaszokban a Azure PowerShell parancsaihoz elérhető összes lehetőségre mutató hivatkozásokat talál.
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>Önmagára kiolvasó erőforrás létrehozása egyéni altartománnyal
 
-1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ezután [válasszon ki egy](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description)előfizetést:
+1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview). Ezután [válasszon ki egy előfizetést](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
-2. Következő lépésként [hozzon létre egy](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) önmagára kiolvasó erőforrást egy egyéni altartománnyal.
+2. Következő lépésként [hozzon létre egy önmagára kiolvasó erőforrást](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) egy egyéni altartománnyal.
 
    >[!NOTE]
    > Az altartomány nevét a rendszer a magától elolvasó SDK-ban használja az olvasó launchAsync függvénnyel való indításakor.
 
    – A SkuName lehet F0 (ingyenes szint) vagy S0 (standard szint, a nyilvános előzetes verzióban is ingyenes). A S0 szintjének száma magasabb, a hívások számának havi kvótája pedig nem megengedett.
 
-   – A hely a következők bármelyike lehet: `eastus` `australiaeast`, `westus` `centralindia`,,, `japaneast` `northeurope`,,`westeurope`
+   – A hely a következők bármelyike lehet: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`, `westeurope`
 
    – A CustomSubdomainName globálisan egyedinek kell lennie, és nem tartalmazhat speciális karaktereket, például: ".", "!", ",".
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
    $resource
    ```
 
-   Ha a művelet sikeres, az erőforrás-végpontnak az erőforrás egyedi altartománynevét kell megjelenítenie.
+   Ha a művelet sikeres, az erőforrás- **végpontnak** az erőforrás egyedi altartománynevét kell megjelenítenie.
 
    Itt rögzítjük az újonnan létrehozott erőforrás-objektumot egy **$Resource** változóba, mivel később az erőforráshoz való hozzáférés megadásakor lesz használatban.
 
 
    >[!NOTE]
-   > Ha erőforrást hoz létre a Azure Portalban, a "Name" erőforrást a rendszer egyéni altartományként használja. Az altartomány nevét a portálon tekintheti meg az erőforrás-áttekintés oldalon, és megkeresheti az altartományt az ott felsorolt végponton, például `https://[SUBDOMAIN].cognitiveservices.azure.com/`:. Emellett később is megtekintheti, ha az SDK-val való integráláshoz be kell szereznie az altartományt.
+   > Ha erőforrást hoz létre a Azure Portalban, a "Name" erőforrást a rendszer egyéni altartományként használja. Az altartomány nevét a portálon tekintheti meg az erőforrás-áttekintés oldalon, és megkeresheti az altartományt az ott felsorolt végponton, például `https://[SUBDOMAIN].cognitiveservices.azure.com/`. Emellett később is megtekintheti, ha az SDK-val való integráláshoz be kell szereznie az altartományt.
 
-   Ha az erőforrás a portálon lett létrehozva, akkor már [meglévő erőforrást](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0) is beszerezhet.
+   Ha az erőforrás a portálon lett létrehozva, akkor már [meglévő erőforrást is beszerezhet](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0) .
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ Most, hogy az erőforráshoz tartozó egyéni altartománnyal rendelkezik, hozz�
    >[!NOTE]
    > A hitelesítő jogkivonatok beszerzéséhez a rendszer a "Client Secret" néven is ismert jelszót fogja használni.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -85,9 +85,9 @@ Most, hogy az erőforráshoz tartozó egyéni altartománnyal rendelkezik, hozz�
 
    Itt rögzítjük az újonnan létrehozott Azure AD App-objektumot egy **$aadApp** változóba a következő lépésben való használatra.
 
-2. Ezután létre kell hoznia [egy egyszerű szolgáltatásnevet](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) az Azure ad-alkalmazáshoz.
+2. Ezután [létre kell hoznia egy egyszerű szolgáltatásnevet](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) az Azure ad-alkalmazáshoz.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ Most, hogy az erőforráshoz tartozó egyéni altartománnyal rendelkezik, hozz�
 
 3. Az utolsó lépés a ["Cognitive Services user" szerepkör társítása](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) az egyszerű szolgáltatáshoz (hatóköre az erőforrás). Szerepkör hozzárendelésével a szolgáltatás egyszerű hozzáférést biztosít ehhez az erőforráshoz. Az előfizetés több erőforrásához is biztosíthatja ugyanazt a szolgáltatást.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ Most, hogy az erőforráshoz tartozó egyéni altartománnyal rendelkezik, hozz�
 Ebben a példában a jelszót az egyszerű szolgáltatásnév hitelesítésére használja az Azure AD-jogkivonat beszerzéséhez.
 
 1. A **TenantId**beszerzése:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Token beszerzése:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
@@ -128,13 +128,13 @@ Ebben a példában a jelszót az egyszerű szolgáltatásnév hitelesítésére 
    ```
 
    >[!NOTE]
-   > A alámerülés olvasó SDK a token AccessToken tulajdonságát használja, például $token. AccessToken. A részletekért [](reference.md) tekintse meg az SDK-referenciát és a kód [mintáit](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples) .
+   > A alámerülés olvasó SDK a token AccessToken tulajdonságát használja, például $token. AccessToken. A részletekért tekintse meg az SDK- [referenciát](reference.md) és a kód [mintáit](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples) .
 
 Másik lehetőségként az egyszerű szolgáltatás hitelesítése tanúsítvánnyal végezhető el. Az egyszerű szolgáltatásnév mellett a felhasználói rendszerbiztonsági tag is támogatott, ha egy másik Azure AD-alkalmazáson keresztül delegált engedélyekkel rendelkezik. Ebben az esetben a jelszavak vagy tanúsítványok helyett a felhasználókat a rendszer a tokenek beszerzése során a kétfaktoros hitelesítésre kéri.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [Node. js](./tutorial-nodejs.md) -oktatóanyagot, amelyből megtudhatja, hogy a Node. js használatával milyen egyéb műveleteket végezhet el az olvasói SDK-val
-* Tekintse meg a [Python](./tutorial-python.md) -oktatóanyagot, amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
-* Tekintse meg a [Swift](./tutorial-ios-picture-immersive-reader.md) -oktatóanyagot, amelyből megtudhatja, mit tehet a gyors
-* Ismerkedjen meg a magára az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK](./reference.md) -referenciával
+* Tekintse meg a [Node. js-oktatóanyagot](./tutorial-nodejs.md) , amelyből megtudhatja, hogy a Node. js használatával milyen egyéb műveleteket végezhet el az olvasói SDK-val
+* Tekintse meg a [Python-oktatóanyagot](./tutorial-python.md) , amelyből megtudhatja, hogy mit tehet a részletes olvasó SDK-val a Python használatával
+* Tekintse meg a [Swift-oktatóanyagot](./tutorial-ios-picture-immersive-reader.md) , amelyből megtudhatja, mit tehet a gyors
+* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](./reference.md)
