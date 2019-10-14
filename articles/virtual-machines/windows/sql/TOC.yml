@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: Feladatátvevőfürt-példány
           items:
-            - name: Konfigurálás
+            - name: Közvetlen tárolóhelyekkel
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: Prémium fájltárolóval
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Referencia
   items:
     - name: Azure PowerShell

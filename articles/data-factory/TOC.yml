@@ -410,10 +410,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming-tevékenység
           href: transform-data-using-hadoop-streaming.md
-        - name: ML kötegelt végrehajtási tevékenység
+        - name: Machine Learning kötegelt végrehajtási tevékenység
           href: transform-data-using-machine-learning.md
-        - name: ML Update-erőforrástevékenység
+        - name: Machine Learning Update-erőforrástevékenység
           href: update-machine-learning-models.md
+        - name: Machine Learning folyamat-végrehajtási tevékenység
+          href: transform-data-machine-learning-service.md
         - name: Tárolt eljárási tevékenység
           href: transform-data-using-stored-procedure.md
         - name: Társított szolgáltatások számítása

@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: Adatok tárolása a peremhálózaton
       items:
+        - name: Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
+          href: how-to-access-host-storage-from-module.md
         - name: Azure Blob Storage az IoT Edge-ben
           href: how-to-store-data-blob.md
         - name: Blob Storage-modulok üzembe helyezése

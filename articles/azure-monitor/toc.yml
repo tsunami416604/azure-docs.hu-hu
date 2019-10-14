@@ -606,6 +606,8 @@
                   href: insights/vminsights-overview.md
                 - name: Ismert problémák
                   href: insights/vminsights-known-issues.md
+                - name: Általános rendelkezésre állás – gyakori kérdések
+                  href: insights/vminsights-ga-release-faq.md
                 - name: GYIK
                   href: insights/vminsights-faq.md
                 - name: Monitorozás engedélyezése

@@ -1,17 +1,17 @@
 ---
-title: Minta – ISO 27001 Megosztott szolgáltatások terve – Áttekintés
+title: ISO 27001 Megosztott szolgáltatások tervminta – Áttekintés
 description: Az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintése és architektúrája. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az ISO 27001 adott vezérlőit.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: d344ccab2587494f14c4f518294032016fa3cb21
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8a7ad23fbe63943ffff5958d399ce8ae60a76622
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248906"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299126"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
 
