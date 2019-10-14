@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000329"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303524"
 ---
 # <a name="what-is-passwordless"></a>Mi a jelszó nélküli hitelesítés?
 
@@ -55,13 +55,13 @@ A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **k
 | 3 | HMAC – titkos kód | Ez a bővítmény biztosítja, hogy bejelentkezzen az eszközre, amikor az offline vagy a repülőgép üzemmódban van. |
 | 4 | Több fiók/RP | Ez a funkció biztosítja, hogy ugyanazt a biztonsági kulcsot használja több szolgáltatáshoz, például a Microsoft-fiókhoz és a Azure Active Directory. |
 
-A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek legyenek a paswordy felülettel. A Microsoft arra bátorítja az ügyfeleket, hogy értékelik a kulcsok biztonsági tulajdonságait, ha kapcsolatba lép a szállítóval, valamint a következővel:.
+A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. A Microsoft arra bátorítja az ügyfeleket, hogy értékelik a kulcsok biztonsági tulajdonságait, ha kapcsolatba lép a szállítóval, valamint a következővel:.
 
-| Szolgáltató | Kapcsolattartó |
+| Szolgáltató | Kapcsolatfelvétel |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
-| HID FÁJLOK | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
+| HID fájlok | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
@@ -75,10 +75,10 @@ A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvá
 - A rendszergazdák az összes felhasználót megcélozhatja, vagy kiválaszthatják a bérlőn belüli felhasználókat és csoportokat az egyes módszereknél
 - A végfelhasználók a fiók-portálon regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket
 - A végfelhasználók ezekkel a jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be
-   - Microsoft Authenticator alkalmazás: Olyan forgatókönyvekben fog működni, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) beállítását és az integrált Mobile apps-t bármely operációs rendszeren.
-   - Biztonsági kulcsok: A a Windows 10 1809-es vagy újabb verziójának zárolási képernyőjén, illetve a weben támogatott böngészőkben, például a Microsoft Edge-ben fog működni.
+   - Microsoft Authenticator alkalmazás: olyan helyzetekben fog működni, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) telepítése során, valamint az integrált Mobile apps bármely operációs rendszeren.
+   - Biztonsági kulcsok: a Windows 10 1809-es vagy újabb verziójának zárolási képernyőjén fog működni, és a weben támogatott böngészőkben, például a Microsoft Edge-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A FIDO2 biztonsági kulcs passwordlesss beállításainak engedélyezése a szervezetben](howto-authentication-passwordless-security-key.md)
 

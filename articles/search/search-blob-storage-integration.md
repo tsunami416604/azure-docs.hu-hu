@@ -1,30 +1,29 @@
 ---
-title: Teljes szöveges keresés hozzáadása az Azure Blob Storage-Azure Search
-description: Az Azure Blob Storage-ban lévő szöveges tartalmak feltérképezése Azure Search indexeléshez a kódban a HTTP-REST API használatával.
-services: search
+title: Teljes szöveges keresés hozzáadása az Azure Blob Storage
+titleSuffix: Azure Search
+description: Kinyerheti a tartalmat, és felépítheti az Azure-blobokat a teljes szöveges keresési index kiépítésekor Azure Search.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650085"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302895"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Teljes szöveges keresés hozzáadása az Azure-Blobok adataihoz Azure Search használatával
 
 Az Azure Blob Storage-ban tárolt különböző tartalomtípusok közötti keresés nehéz megoldás lehet. Az Azure Search használatával azonban néhány kattintással indexelheti és keresheti meg a Blobok tartalmát. A blob Storage-on való kereséshez Azure Search szolgáltatást kell kiépíteni. A [díjszabási oldalon](https://aka.ms/azspricing)a Azure Search különböző szolgáltatási korlátai és díjszabása található.
 
-## <a name="what-is-azure-search"></a>Mi az az Azure Search?
+## <a name="what-is-azure-search"></a>Mi az Azure Search?
 [Azure Search](https://aka.ms/whatisazsearch) egy keresési szolgáltatás, amely megkönnyíti a fejlesztők számára a webes és mobil alkalmazások robusztus teljes szöveges keresési funkcióinak hozzáadását. Szolgáltatásként a Azure Search eltávolítja a keresési infrastruktúra felügyeletének szükségességét, és [99,9%-os rendelkezésre állási SLA](https://aka.ms/azuresearchsla)-t kínál.
 
 ## <a name="index-and-search-enterprise-document-formats"></a>Index és keresés a vállalati dokumentumok formátuma
-Az Azure Blob Storage-ban a [dokumentumok](https://aka.ms/azsblobindexer) kinyerésének támogatásával a következő tartalmakat indexelheti:
+Az Azure Blob Storage-ban a [dokumentumok kinyerésének](https://aka.ms/azsblobindexer) támogatásával a következő tartalmakat indexelheti:
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
@@ -45,12 +44,12 @@ Azure Search konfigurálható a JSON-t tartalmazó blobokban található struktu
 
 A JSON-elemzés jelenleg nem konfigurálható a portálon keresztül. [További információ a JSON-elemzésről Azure Searchban.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Gyors üzembe helyezés
+## <a name="quickstart"></a>Gyors útmutató
 Azure Search közvetlenül a blob Storage portál lapról adható hozzá a blobokhoz.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
 Kattintson a **Azure Search hozzáadása** elemre egy olyan folyamat elindításához, amelyen kiválaszthat egy meglévő Azure Search szolgáltatást, vagy létrehozhat egy új szolgáltatást. Ha létrehoz egy új szolgáltatást, a rendszer kikeresi a Storage-fiók portáljának felhasználói felületét. Váltson vissza a Storage Portal lapra, és válassza újra a **Azure Search hozzáadása** lehetőséget, ahol kiválaszthatja a meglévő szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
-További információ a Azure Search blob indexelő a teljes dokumentációban [](https://aka.ms/azsblobindexer).
+## <a name="next-steps"></a>Következő lépések
+További információ a Azure Search blob indexelő a teljes [dokumentációban](https://aka.ms/azsblobindexer).

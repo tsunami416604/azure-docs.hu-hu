@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: 9676b10eafbc72a04cb68fc828a72f77e6c3916f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d3035572e629bc11207cc473b51e3edb4f6a5a13
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298582"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302834"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
 
@@ -255,10 +255,12 @@ Ennek a cikknek a használatához a Azure PowerShell modul az a Version 2.6.0 va
     * Válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.  
     * Adja meg a **myfilepath1** a kötet exportálási elérési útjának létrehozásához használt fájl elérési útjaként.  
     * Válassza ki a kötet NFS-verzióját (**NFSv3** vagy **nfsv 4.1**).  
+      Lásd az NFS-verziók [szempontjait](azure-netapp-files-create-volumes.md#considerations) és [ajánlott eljárásait](azure-netapp-files-create-volumes.md#best-practice) . 
+      
 > [!IMPORTANT] 
 > A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a kérelmet <anffeedback@microsoft.com> értékre. 
 
-    ![Specify NFS protocol for quickstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+  ![Az NFS protokoll megadása a gyors üzembe helyezéshez](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Kattintson az **Áttekintés + létrehozás** elemre.
 

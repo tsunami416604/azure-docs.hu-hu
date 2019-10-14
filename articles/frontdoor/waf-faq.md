@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375340"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302842"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban
 
@@ -31,7 +31,7 @@ Az Azure-WAF szabályzatok alkalmazhatók Application Gateway vagy Azure bejára
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Mi a WAF az Azure bejárati ajtó szolgáltatásához? 
 
-Az Azure bejárati ajtó egy rugalmasan méretezhető, globálisan elosztott alkalmazás-és Content Delivery Network. Az Azure WAF a bejárati ajtóval integráltan leállítja az Azure-hálózat peremén a szolgáltatásmegtagadási és a megcélzó alkalmazások támadásait, és a virtuális hálózat megkezdése előtt a támadási forrásokhoz közeledik, és a teljesítmény feláldozása nélkül nyújt védelmet.
+Az Azure bejárati ajtó egy rugalmasan méretezhető, globálisan elosztott alkalmazás-és Content Delivery Network. Ha az Azure WAF integrálva van az Azure bejárati ajtóval, a szolgáltatásmegtagadás és a megtámadott alkalmazások elleni támadások az Azure-hálózat peremén állnak le. Ez a védelem közel van a támadások forrásához, mielőtt a vitrual-hálózat megadására lenne lehetőségük. A WAF for Azure bejárati ajtó szolgáltatás a teljesítmény feláldozása nélkül nyújt védelmet.
 
 ## <a name="does-azure-waf-support-https"></a>Támogatja az Azure WAF a HTTPS-t?
 
@@ -70,7 +70,7 @@ Az Azure-beli hálózati éleken globálisan elosztott Azure bejárati ajtó ké
 Javasoljuk, hogy a DDoS-támadási felület csökkentése érdekében az éles környezetben zárolja a háttérrendszer-környezeteket. Lásd [hogyan a háttérbeli hozzáférés zárolása csak az Azure bejárati ajtót?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door) című témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg az [Azure webalkalmazási tűzfalat](waf-overview.md).
 - További információ az [Azure bejáratáról](front-door-overview.md).

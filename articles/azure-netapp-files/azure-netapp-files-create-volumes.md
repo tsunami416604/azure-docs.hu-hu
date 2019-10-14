@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: b7474ca8e8489edb37b3ac9b7c8b5be52867363c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298495"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302756"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 
@@ -33,11 +33,11 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 
 ## <a name="considerations"></a>Megfontolandó szempontok 
 
-* A használni kívánt NFS-verzió meghatározása  
-  A NFSv3 sokféle használati esetet kezelhet, és általában a legtöbb vállalati alkalmazásban üzembe helyezhető. Ellenőriznie kell, hogy az alkalmazás melyik verziót (NFSv3 vagy NFSv 4.1) igényli, és a megfelelő verzió használatával hozza létre a kötetet. Ha például az [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)-t használja, a nfsv 4.1-es fájl zárolása ajánlott a NFSv3-en keresztül. 
-
 > [!IMPORTANT] 
 > A NFSv 4.1 szolgáltatáshoz való hozzáféréshez az engedélyezés szükséges.  Az engedélyezési kérelem elküldéséhez küldje el a kérelmet <anffeedback@microsoft.com> értékre. 
+
+* A használni kívánt NFS-verzió meghatározása  
+  A NFSv3 sokféle használati esetet kezelhet, és általában a legtöbb vállalati alkalmazásban üzembe helyezhető. Ellenőriznie kell, hogy az alkalmazás melyik verziót (NFSv3 vagy NFSv 4.1) igényli, és a megfelelő verzió használatával hozza létre a kötetet. Ha például az [Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave)-t használja, a nfsv 4.1-es fájl zárolása ajánlott a NFSv3-en keresztül. 
 
 * Biztonság  
   A UNIX módú BITS (olvasás, írás és végrehajtás) támogatása a NFSv3 és a NFSv 4.1 esetében érhető el. A gyökérszintű hozzáférés szükséges az NFS-ügyfélen az NFS-kötetek csatlakoztatásához.

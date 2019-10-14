@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatni vagy leválasztani az Azure Files-NetApp kötet Windows vagy Linux rendszerű virtuális gépek |} A Microsoft Docs
-description: Ismerteti, hogyan lehet csatlakoztatni vagy leválasztani a virtuális gépeket vagy Linux rendszerű virtuális gépek egy kötetet.
+title: Azure NetApp Files kötet csatlakoztatása vagy leválasztása Windows vagy Linux rendszerű virtuális gépekhez | Microsoft Docs
+description: Ismerteti, hogyan lehet kötetet csatlakoztatni vagy leválasztani a virtuális gépekhez vagy a Linux rendszerű virtuális gépekhez.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: b-juche
-ms.openlocfilehash: a401cae7140d9ceec5ec81274e1b6f3b2b46b55a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76e01055043932f2c7e7d57bd7eed6265d666a8c
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60371529"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302775"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Kötet Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatása és leválasztása 
 
-Csatlakoztathatja, vagy válassza le a Windows vagy Linux rendszerű virtuális gépek szükség szerint egy kötetet.  A csatlakoztatási utasítások a Linux rendszerű virtuális gépek az Azure Files-NetApp érhetők el.  
+Szükség szerint csatlakoztathat vagy leválaszthat Windows-vagy Linux-alapú virtuális gépek kötetét.  A Linux rendszerű virtuális gépek csatlakoztatására vonatkozó utasítások a Azure NetApp Fileson érhetők el.  
 
-1. Kattintson a **kötetek** panelen, majd válassza ki a kötetet, amelyhez csatlakoztatni szeretné. 
-2. Kattintson a **csatlakoztatási utasítások** a kijelölt kötetről, majd kövesse az utasításokat a kötet csatlakoztatásához. 
+1. Kattintson a **kötetek** panelre, majd válassza ki azt a kötetet, amelyhez csatlakoztatni kívánja. 
+2. Kattintson a kijelölt kötet **csatlakoztatási utasításai** elemre, majd kövesse az utasításokat a kötet csatlakoztatásához. 
 
     ![Csatlakoztatási utasítások NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
     ![Csatlakoztatási utasítások SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
+    
+Ha a NFSv 4.1-et használja, használja a következő parancsot a fájlrendszer csatlakoztatásához: `sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`

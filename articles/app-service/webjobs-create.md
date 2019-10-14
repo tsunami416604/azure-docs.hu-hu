@@ -1,33 +1,31 @@
 ---
 title: Háttérben futó feladatok futtatása webjobs-Azure App Service
 description: Ismerje meg, hogyan futtathat webjobs-feladatokat Azure App Service webalkalmazásokban, API-alkalmazásokban vagy mobil alkalmazásokban a háttérben végzett feladatok futtatásához.
-services: app-service
 author: ggailey777
-manager: jeconnoc
-editor: jimbe
-ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
+manager: wgallace
+s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d97f826f4288d13589a2fb9da8148d58a2c5e1e
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177493"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303577"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérben futó feladatok futtatása webjobs-feladatokkal Azure App Service
 
+Ez a cikk bemutatja, hogyan telepíthet webjobs-feladatokat a [Azure Portal](https://portal.azure.com) használatával egy végrehajtható fájl vagy parancsfájl feltöltéséhez. További információ a webjobs-feladatok a Visual Studióval való fejlesztéséről és üzembe helyezéséről: [Webjobs-feladatok üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md).
+
 ## <a name="overview"></a>Áttekintés
-A webjobs olyan [Azure app Service](https://docs.microsoft.com/azure/app-service/) szolgáltatása, amely lehetővé teszi, hogy egy programot vagy parancsfájlt egy webalkalmazás, egy API-alkalmazás vagy egy Mobile App használatával azonos környezetben futtasson. A webjobs használata nem jár további díjszabással.
+A webjobs olyan [Azure app Service](index.yml) szolgáltatása, amely lehetővé teszi, hogy egy programot vagy parancsfájlt egy webalkalmazás, egy API-alkalmazás vagy egy Mobile App használatával azonos környezetben futtasson. A webjobs használata nem jár további díjszabással.
 
 > [!IMPORTANT]
 > A webjobs-feladatok még nem támogatottak a Linux rendszeren való App Service.
-
-Ez a cikk bemutatja, hogyan telepíthet webjobs-feladatokat a [Azure Portal](https://portal.azure.com) használatával egy végrehajtható fájl vagy parancsfájl feltöltéséhez. További információ a webjobs-feladatok a Visual Studióval való fejlesztéséről és üzembe helyezéséről: [Webjobs-feladatok üzembe helyezése a Visual Studióval](webjobs-dotnet-deploy-vs.md).
 
 A Azure WebJobs SDK a webjobs használatával számos programozási feladatot egyszerűsítheti. További információ: [Mi a Webjobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 
@@ -180,6 +178,8 @@ Megadhat egy [NCRONTAB kifejezést](../azure-functions/functions-bindings-timer.
 ```
 
 További információ: [aktivált Webjobs ütemezése](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ## <a name="ViewJobHistory"></a>A feladatok előzményeinek megtekintése
 

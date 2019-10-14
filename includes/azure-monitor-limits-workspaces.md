@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350858"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72302313"
 ---
 **Adatgyűjtés mennyisége és megőrzése** 
 
@@ -28,41 +28,41 @@ ms.locfileid: "71350858"
 
 **Munkaterületek száma/előfizetés.**
 
-| Tarifacsomag    | Munkaterület korlátja | Megjegyzések
+| Díjcsomag    | Munkaterület korlátja | Megjegyzések
 |:---|:---|:---|
-| Ingyenes csomag  | 10 | Ez a korlát nem növelhető. |
+| Ingyenes szint  | 10 | Ez a korlát nem növelhető. |
 | Az összes többi szintje | Korlátlan | Az erőforráscsoport erőforrásainak száma és az egyes előfizetésekhez tartozó erőforráscsoportok száma korlátozza. |
 
-**Azure Portal**
+**Azure Portalra**
 
-| Category | Korlátok | Megjegyzések |
+| Kategória | Korlátozások | Megjegyzések |
 |:---|:---|:---|
 | Egy napló lekérdezés által visszaadott maximális rekordok | 10,000 | Csökkentheti az eredményeket a lekérdezés hatóköre, az időtartomány és a lekérdezésben szereplő szűrők használatával. |
 
 
 **Adatgyűjtő API**
 
-| Category | Korlátok | Megjegyzések |
+| Kategória | Korlátozások | Megjegyzések |
 |:---|:---|:---|
 | Egyetlen bejegyzés maximális mérete | 30 MB | Nagyobb kötetek felosztása több bejegyzésbe. |
 | Mezőértékek maximális mérete  | 32 KB | A 32 KB-nál hosszabb mezők csonkolva lesznek. |
 
 **Keresési API**
 
-| Category | Korlátok | Megjegyzések |
+| Kategória | Korlátozások | Megjegyzések |
 |:---|:---|:---|
-| Egyetlen lekérdezésben visszaadott rekordok maximális száma | 500,000 | |
+| Egyetlen lekérdezésben visszaadott rekordok maximális száma | 500 000 | |
 | Visszaadott adatmennyiség maximális mérete | 64 000 000 bájt (~ 61 MiB)| |
 | Lekérdezés maximális futási ideje | 10 perc | További részletek: [időtúllépések](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
 | Kérelmek maximális száma | 200 kérelem/30 másodperc/HRE felhasználó vagy ügyfél IP-címe | Részletekért lásd a [díjszabási korlátokat](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
 **Általános munkaterület korlátai**
 
-| Category | Korlátok | Megjegyzések |
+| Kategória | Korlátozások | Megjegyzések |
 |:---|:---|:---|
 | Oszlopok maximális száma egy táblában         | 500 | |
 | Oszlop nevének maximális száma | 500 | |
-| Kapacitású régiók | USA nyugati középső régiója | Ebben a régióban jelenleg nem hozhat létre új munkaterületet, mert az átmeneti kapacitási korláttal rendelkezik. Ez a korlát 2019 október végére tervezett. |
+| Kapacitású régiók | USA nyugati középső régiója | Ebben a régióban jelenleg nem hozhat létre új munkaterületet, mert az átmeneti kapacitási korláttal rendelkezik. Ezt a korlátot a tervek szerint 2019 november végéig kell megcélozni. |
 | Adatexportálás | Jelenleg nem érhető el | Az Azure Function vagy a Logic App használatával összesítheti és exportálhatja az adatokat. | 
 
 **Adatfeldolgozási kötetek aránya**

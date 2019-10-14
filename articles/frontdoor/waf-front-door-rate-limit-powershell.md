@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846249"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303595"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Webalkalmazási tűzfal sebességének korlátozási szabályának konfigurálása Azure PowerShell használatával
 Az Azure-beli Azure webalkalmazási tűzfal (WAF) díjszabási szabálya az Azure-beli bejárati ajtónál az egyperces időtartam alatt egyetlen ügyfél-IP-címről engedélyezett kérelmek számát szabályozza.
@@ -49,7 +49,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>Bejárati ajtó profiljának létrehozása
-A rövid útmutatóban ismertetett [utasításokat követve hozzon létre egy bejárati ajtót. Bejárati ajtó profiljának létrehozása](quickstart-create-front-door.md)
+Hozzon létre egy bevezető ajtót a következő témakörben ismertetett utasításokat követve [: első ajtós profil létrehozása](quickstart-create-front-door.md)
 
 ## <a name="define-url-match-conditions"></a>URL-egyeztetési feltételek meghatározása
 Definiáljon egy URL-egyeztetési feltételt (az URL-cím/promo tartalmaz) a [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)használatával.
@@ -76,11 +76,9 @@ Adja meg a díjszabási korlátot a [New-AzFrontDoorWafCustomRuleObject](/powers
 
 ## <a name="configure-a-security-policy"></a>Biztonsági házirend konfigurálása
 
-Keresse meg annak az erőforráscsoportnak a nevét, amely az első ajtó profilját tartalmazza a használatával `Get-AzureRmResourceGroup`. Ezután állítson be egy biztonsági házirendet egyéni díjszabási szabályként a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoport, amely tartalmazza az előtérben profilt.
+Az `Get-AzureRmResourceGroup` paranccsal keresse meg a bejárati ajtót profilt tartalmazó erőforráscsoport nevét. Ezután állítson be egy biztonsági házirendet egyéni díjszabási szabályként a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) használatával a megadott erőforráscsoport, amely tartalmazza az előtérben profilt.
 
-Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta az előtérben profilt a gyors útmutatóban megadott [utasításokkal: Hozzon létre egy](quickstart-create-front-door.md) bejárati ajtót.
-
- a [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)használata.
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtó profilt a rövid útmutatóban található utasítások használatával [:](quickstart-create-front-door.md) [a New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -94,7 +92,7 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 Csatolja a biztonsági házirend objektumot egy meglévő előtér-előtéri gazdagéphez, és frissítse a bejárati ajtó tulajdonságait. Először a [Get-AzFrontDoor](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) parancs használatával olvassa be az előtérben lévő objektumot.
 Ezután állítsa be az előtér- *WebApplicationFirewallPolicyLink* tulajdonságot az előző lépésben létrehozott "$RatePolicy" *resourceId* a [set-AzFrontDoor](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) parancs használatával. 
 
-Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta az előtérben profilt a gyors útmutatóban megadott [utasításokkal: Hozzon létre egy](quickstart-create-front-door.md) bejárati ajtót. Emellett az alábbi példában cserélje le a $frontDoorName nevet a bejárati ajtó profiljának nevére. 
+Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használja azzal a feltételezéssel, hogy létrehozta a bevezető ajtó profilt a rövid útmutatóban található utasításokkal [: hozzon létre egy bejárati ajtót](quickstart-create-front-door.md) . Emellett az alábbi példában cserélje le a $frontDoorName nevet a bejárati ajtó profiljának nevére. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `
@@ -107,8 +105,8 @@ Az alábbi példa a *myResourceGroupFD1* nevű erőforráscsoport-nevet használ
 > [!NOTE]
 > A *WebApplicationFirewallPolicyLink* tulajdonságot csak egyszer kell beállítania, hogy egy biztonsági szabályzatot egy előtér-előtérben csatoljon. A következő házirend-frissítéseket a rendszer automatikusan alkalmazza az előtérben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [](front-door-overview.md) bejárati ajtóról 
+- További információ a [bejárati ajtóról](front-door-overview.md) 
 
 

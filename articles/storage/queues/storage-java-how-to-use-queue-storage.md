@@ -1,6 +1,6 @@
 ---
 title: A üzenetsor-tároló használata a Java-Azure Storage-ból
-description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az Azure Queue szolgáltatás használatával, valamint hogyan szúrhat be, kérhet le és törölhet üzeneteket. Java-ban írt minták.
+description: Megtudhatja, hogyan hozhat létre és törölhet várólistákat az üzenetsor-tárolóval, illetve hogyan szúrhat be, kérhet le és törölhet üzeneteket a Javához készült Azure Storage ügyféloldali kódtár használatával.
 author: mhopkins-msft
 ms.service: storage
 ms.author: mhopkins
@@ -8,33 +8,36 @@ ms.date: 12/08/2016
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 5d2bd94f6b95ff993ae367b99f48746c091f5739
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 33123c823a2e0d6044e3419f62a512f3e84f953f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721428"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303001"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>How to use Queue Storage from Java (A Queue Storage használata Javával)
+
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A minták Java nyelven íródtak, és a Javához készült [Azure Storage SDK][Azure Storage SDK for Java]-t használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, bepillantása, beolvasása és **törlése** , valamint a várólisták **létrehozása** és **törlése** . A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure üzenetsor-tárolási szolgáltatás használatával. A minták Java nyelven íródtak, és a [Javához készült Azure Storage SDK][Azure Storage SDK for Java]-t használják. A tárgyalt forgatókönyvek közé tartozik például a várólista-üzenetek **beszúrása**, **bepillantása**, **beolvasása**és **törlése** , valamint a várólisták **létrehozása** és **törlése** . A várólistákkal kapcsolatos további információkért tekintse meg a [következő lépések](#next-steps) szakaszt.
 
-Megjegyzés: Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információkért lásd az Androidhoz készült [Azure Storage SDK][Azure Storage SDK for Android]-t.
+> [!NOTE]
+> Egy SDK elérhető az Azure Storage-et Android-eszközökön használó fejlesztők számára. További információkért lásd az [Androidhoz készült Azure Storage SDK][Azure Storage SDK for Android]-t.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-Ebben az útmutatóban olyan tárolási funkciókat fog használni, amelyek egy Java-alkalmazáson belül helyileg, vagy az Azure-ban webes szerepkör vagy feldolgozói szerepkörben futó kódban futnak.
 
-Ehhez telepítenie kell a Java Development Kit-t (JDK), és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésében. Miután végzett, ellenőriznie kell, hogy a fejlesztői rendszer megfelel-e a GitHubon elérhető [Azure Storage SDK][Azure Storage SDK for Java] -ban felsorolt minimális követelményeknek és függőségeknek. Ha a rendszer megfelel ezeknek a követelményeknek, kövesse a Java rendszerhez készült Azure Storage-kódtárak letöltésére és telepítésére vonatkozó utasításokat az adott adattárból. A feladatok elvégzése után létrehozhat egy Java-alkalmazást, amely a jelen cikkben szereplő példákat használja.
+Ebben az útmutatóban olyan tárolási szolgáltatásokat fog használni, amelyek egy Java-alkalmazásban helyileg, vagy egy Azure-beli webalkalmazásban futó kódban futtathatók.
+
+Ehhez telepítenie kell a Java Development Kit-t (JDK), és létre kell hoznia egy Azure Storage-fiókot az Azure-előfizetésében. Miután végzett, ellenőriznie kell, hogy a fejlesztői rendszer megfelel-e a GitHubon a Java-tárházhoz készült [Azure Storage SDK][Azure Storage SDK for Java] -ban felsorolt minimális követelményeknek és függőségeknek. Ha a rendszer megfelel ezeknek a követelményeknek, kövesse a Java rendszerhez készült Azure Storage-kódtárak letöltésére és telepítésére vonatkozó utasításokat az adott adattárból. A feladatok elvégzése után létrehozhat egy Java-alkalmazást, amely a jelen cikkben szereplő példákat használja.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Az alkalmazás konfigurálása a várólista-tároló eléréséhez
+
 Adja hozzá a következő importálási utasításokat azon Java-fájl elejéhez, amelyen az Azure Storage API-kat szeretné használni a várólisták eléréséhez:
 
 ```java
@@ -43,8 +46,9 @@ import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.queue.*;
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
-Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ügyfélalkalmazás esetén a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia, a Storage-fiók nevével és az [Azure Portalon](https://portal.azure.com) az *accountname* -hez felsorolt Storage-fiók elsődleges elérési kulcsával. és *AccountKey* értékeket. Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
+## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
+
+Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ügyfélalkalmazásban történő futtatáskor a tárolási kapcsolati sztringet a következő formátumban kell megadnia: Használja a Storage-fiók nevét és az [Azure Portalon](https://portal.azure.com) megtalálható elsődleges hozzáférési kulcsát az *AccountName* és *AccountKey* értékeként. Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 ```java
 // Define the connection-string with your values.
@@ -64,8 +68,8 @@ String storageConnectionString =
 
 Az alábbi minták azt feltételezik, hogy az ezen két módszer egyikével kérte le a Storage kapcsolati sztringjét.
 
-## <a name="how-to-create-a-queue"></a>Útmutató: Üzenetsor létrehozása
-A **CloudQueueClient** objektum lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód létrehoz egy **CloudQueueClient** objektumot. (Megjegyzés: A **CloudStorageAccount** -objektumok létrehozásának további módjai is vannak; További információ: **CloudStorageAccount** az [Azure Storage ügyféloldali SDK-referencia]-referenciájában.)
+## <a name="how-to-create-a-queue"></a>Útmutató: üzenetsor létrehozása
+A **CloudQueueClient** objektum lehetővé teszi a várólisták hivatkozási objektumainak lekérését. A következő kód létrehoz egy **CloudQueueClient** objektumot. (Megjegyzés: a **CloudStorageAccount** -objektumok létrehozásának további módjai is vannak; további tudnivalókért lásd: **CloudStorageAccount** az [Azure Storage ügyféloldali SDK-referencia].)
 
 A **CloudQueueClient** objektum használatával kérjen egy hivatkozást a használni kívánt várólistára. Ha nem létezik, létrehozhat egy várólistát.
 
@@ -92,7 +96,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-add-a-message-to-a-queue"></a>Útmutató: Üzenet hozzáadása egy várólistához
+## <a name="how-to-add-a-message-to-a-queue"></a>Útmutató: üzenet hozzáadása egy várólistához
 Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy **CloudQueueMessage** elemet. Ezután hívja meg a **addMessage** metódust. Egy **CloudQueueMessage** karakterláncból (UTF-8 formátumban) vagy egy bájtos tömbből hozható létre. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja a "Hello, World" üzenetet.
 
 ```java
@@ -122,7 +126,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Útmutató: Betekintés a következő üzenetbe
+## <a name="how-to-peek-at-the-next-message"></a>Útmutató: betekintés a következő üzenetbe
 A várólista elején lévő üzenetbe való betekintés nélkül is betekintést nyerhet a várólistából a **peekMessage**meghívásával.
 
 ```java
@@ -154,8 +158,8 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: Üzenetsorban található üzenet tartalmának módosítása
-Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Elmenti az üzenethez társított feladat állapotát, és az ügyfél számára további egy percet biztosít az üzenet használatának folytatására. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Útmutató: várólistán lévő üzenet tartalmának módosítása
+Egy üzenetet tartalmát helyben, az üzenetsorban módosíthatja. Ha az üzenet munkafeladatot jelöl, ezzel a funkcióval frissítheti a munkafeladat állapotát. Az alábbi kód frissíti az üzenetsorban található üzenetet az új tartalommal, és a láthatósági időkorlátot további 60 másodperccel bővíti. Ha kiterjeszti a láthatósági időtúllépést, az üzenethez társított munkahelyi állapotot menti, és egy másik percet ad az ügyfélnek, hogy folytassa a munkát az üzeneten. Ezzel a technikával többlépéses munkafolyamatokat is nyomon követhet az üzenetsor üzenetein anélkül, hogy újra kéne kezdenie, ha a folyamat valamelyik lépése hardver- vagy szoftverhiba miatt meghiúsul. A rendszer általában nyilván tartja az újrapróbálkozások számát, és ha az üzenettel *n* alkalomnál többször próbálkoznak, akkor törlődik. Ez védelmet biztosít az ellen, hogy egy üzenetet minden feldolgozásakor kiváltson egy alkalmazáshibát.
 
 A következő mintakód az üzenetek várólistáján keres, megkeresi az első üzenetet, amely megfelel a tartalomnak a "Hello, World" kifejezésnek, majd módosítja az üzenet tartalmát és kilép.
 
@@ -237,7 +241,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Útmutató: Az üzenetsor hosszának lekérése
+## <a name="how-to-get-the-queue-length"></a>Útmutató: a várólista hosszának beolvasása
 Megbecsülheti egy üzenetsorban található üzenetek számát. A **downloadAttributes** metódus több aktuális értékhez kérdezi le a Queue szolgáltatást, többek között annak számát, hogy hány üzenet van egy várólistában. A darabszám csak hozzávetőleges, mert az üzenetek hozzáadhatók vagy eltávolíthatók, miután a Queue szolgáltatás válaszol a kérelemre. A **getApproximateMessageCount** metódus a **downloadAttributes**hívása által lekért utolsó értéket adja vissza a Queue szolgáltatás hívása nélkül.
 
 ```java
@@ -269,7 +273,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Útmutató: A következő üzenet elküldése a sorból
+## <a name="how-to-dequeue-the-next-message"></a>Útmutató: a következő üzenet elküldése
 A kód két lépésben elvégez egy üzenetsor-várólistán lévő üzenetet. A **retrieveMessage**meghívásakor a következő üzenet jelenik meg egy várólistában. A **retrieveMessage** által visszaadott üzenet láthatatlanná válik minden más, a várólistáról olvasó üzenetben. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Az üzenet várólistából való eltávolításának befejezéséhez a **deleteMessage**is hívnia kell. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód a **deleteMessage** közvetlenül az üzenet feldolgozása után hívja meg.
 
 ```java
@@ -304,7 +308,7 @@ catch (Exception e)
 ## <a name="additional-options-for-dequeuing-messages"></a>További beállítások a dequeuing üzenetek számára
 Két módon szabhatja testre az üzenetek lekérését egy üzenetsorból. Az első lehetőség az üzenetkötegek (legfeljebb 32) lekérése. A második lehetőség az, hogy beállít egy hosszabb vagy rövidebb láthatatlansági időkorlátot, így a kódnak lehetősége van hosszabb vagy rövidebb idő alatt teljesen feldolgozni az egyes üzeneteket.
 
-A következő kódrészlet a **retrieveMessages** metódus használatával 20 üzenetet kap egy hívásban. Ezután feldolgozza az egyes üzeneteket a **for** loop használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Vegye figyelembe, hogy az öt perc egyszerre kezdődik az összes üzenetnél, így ha a **retrieveMessages**hívása óta öt perc telt el, akkor a nem törölt üzenetek ismét láthatóvá válnak.
+A következő kódrészlet a **retrieveMessages** metódus használatával 20 üzenetet kap egy hívásban. Ezután feldolgozza az egyes üzeneteket a **for** loop használatával. Azt is beállítja, hogy az egyes üzenetek esetében a láthatósági időkorlát 5 perc (300 másodperc) legyen. Az összes üzenetet egyszerre 5 percben indítja el, így ha a **retrieveMessages**hívása óta öt perc telt el, akkor a nem törölt üzenetek ismét láthatóvá válnak.
 
 ```java
 try
@@ -333,7 +337,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-list-the-queues"></a>Útmutató: A várólisták listázása
+## <a name="how-to-list-the-queues"></a>Útmutató: a várólisták listázása
 Az aktuális várólisták listájának beszerzéséhez hívja meg a **CloudQueueClient. listQueues ()** metódust, amely **CloudQueue** objektumok gyűjteményét fogja visszaadni.
 
 ```java
@@ -361,7 +365,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="how-to-delete-a-queue"></a>Útmutató: Üzenetsor törlése
+## <a name="how-to-delete-a-queue"></a>Útmutató: üzenetsor törlése
 Ha törölni szeretne egy várólistát és a benne található összes üzenetet, hívja meg a **deleteifexists paranccsal** metódust a **CloudQueue** objektumon.
 
 ```java
@@ -387,7 +391,7 @@ catch (Exception e)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a várólista-tárolás alapjait, az alábbi hivatkozásokat követve megismerheti az összetettebb tárolási feladatokat.
 
 * [Javához készült Azure Storage SDK][Azure Storage SDK for Java]

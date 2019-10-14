@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8163bcb4189cbec545544b7d43ba7142d34e29dd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286156"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302742"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -37,7 +37,7 @@ Az alábbi adatokat tekintheti meg erről az oldalról:
 
 - Ha meg szeretné tekinteni az ügyfélhez társított összes előfizetést, ajánlatot és delegálást, válassza ki az ügyfél nevét.
 - Ha további részleteket szeretne látni egy ajánlatról és annak delegálásáról, válassza az ajánlat nevét.
-- A delegált előfizetések vagy erőforráscsoportok acrolecess-hozzárendeléseivel kapcsolatos további részletek megtekintéséhez válassza ki a bejegyzést a **delegálások** oszlopban.
+- A delegált előfizetések vagy erőforráscsoportok szerepkör-hozzárendeléseivel kapcsolatos további részletek megtekintéséhez válassza ki a bejegyzést a **delegálások** oszlopban.
 
 ## <a name="view-delegations"></a>Delegálások megtekintése
 
