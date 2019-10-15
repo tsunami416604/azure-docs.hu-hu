@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 03e6852f5b54160bed6336e253e38423b5ecea51
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294306"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312140"
 ---
 # <a name="entity-functions-preview"></a>Entity functions (előzetes verzió)
 
@@ -206,6 +206,68 @@ Például módosíthatjuk a fenti számláló entitást, így egy "mérföldkő 
         currentValue += amount;
         break;
 ```
+
+Az alábbi kódrészlet bemutatja, hogyan építheti be a befecskendezett szolgáltatást az Entity osztályba.
+
+```csharp
+public class HttpEntity
+{
+    private readonly HttpClient client;
+
+    public HttpEntity(IHttpClientFactory factory)
+    {
+        this.client = factory.CreateClient();
+    }
+
+    public async Task<int> GetAsync(string url)
+    {
+        using (var response = await this.client.GetAsync(url))
+        {
+            return (int)response.StatusCode;
+        }
+    }
+
+    // The function entry point must be declared static
+    [FunctionName(nameof(HttpEntity))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<HttpEntity>();
+}
+```
+
+> [!NOTE]
+> A normál .NET-Azure Functions konstruktorának használatakor a függvények belépési pontjának metódusát az osztály *alapú entitásokhoz* `static` értékkel kell deklarálni. A nem statikus függvény belépési pontjának deklarálása ütközést okozhat a normál Azure Functions objektum-inicializáló és a tartós entitások objektum-inicializáló között.
+
+### <a name="bindings-in-entity-classes-net"></a>Kötések az entitás osztályaiban (.NET)
+
+A normál függvényektől eltérően az Entity Class metódusok nem rendelkeznek közvetlen hozzáféréssel a bemeneti és kimeneti kötésekhez. Ehelyett a kötési adatrögzítést a belépési pont függvény deklarációjában kell rögzíteni, majd át kell adni a `DispatchAsync<T>` metódusnak. A rendszer a `DispatchAsync<T>` értékre átadott összes objektumot automatikusan átadja az entitás osztály konstruktorának argumentumként.
+
+Az alábbi példa azt szemlélteti, hogyan lehet elérhetővé tenni egy `CloudBlobContainer` hivatkozást a [blob bemeneti kötésből](../functions-bindings-storage-blob.md#input) egy osztály alapú entitás számára.
+
+```csharp
+public class BlobBackedEntity
+{
+    private readonly CloudBlobContainer container;
+
+    public BlobBackedEntity(CloudBlobContainer container)
+    {
+        this.container = container;
+    }
+
+    // ... entity methods can use this.container in their implementations ...
+    
+    [FunctionName(nameof(BlobBackedEntity))]
+    public static Task Run(
+        [EntityTrigger] IDurableEntityContext context,
+        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
+    {
+        // passing the binding object as a parameter makes it available to the
+        // entity class constructor
+        return context.DispatchAsync<BlobBackedEntity>(container);
+    }
+}
+```
+
+A Azure Functions-kötésekkel kapcsolatos további információkért tekintse meg a [Azure functions triggerek és kötések](../functions-triggers-bindings.md) dokumentációját.
 
 ## <a name="entity-coordination"></a>Entitások koordinálása
 

@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676689"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311590"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Profiltároló létrehozása gazdagépkészlet számára fájlmegosztás használatával
 
 A Windows rendszerű virtuális asztali szolgáltatás az ajánlott felhasználói profil megoldásként kínálja a FSLogix-profilok tárolóit. Nem javasoljuk a felhasználói profil lemez (UPD) megoldás használatát, amely a Windows rendszerű virtuális asztal jövőbeli verzióiban elavulttá válik.
 
 Ebből a cikkből megtudhatja, hogyan állíthat be egy FSLogix-profil tároló-megosztást egy gazdagép-készlethez egy virtuálisgép-alapú fájlmegosztás használatával. További FSLogix dokumentációt a [FSLogix webhelyen](https://docs.fslogix.com/)talál.
+
+>[!NOTE]
+>Ha összehasonlító anyagot keres az Azure-beli különböző FSLogix-profilok tárolási lehetőségeivel kapcsolatban, tekintse meg a [FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Hozzon létre egy új virtuális gépet, amely fájlmegosztásként fog működni
 
@@ -56,16 +59,16 @@ A virtuális gépek FSLogix-szoftverrel való konfigurálásához tegye a követ
 
 1. [Kapcsolódjon a virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) a virtuális gép létrehozásakor megadott hitelesítő adatokkal.
 2. Nyisson meg egy webböngészőt, és navigáljon [erre a hivatkozásra](https://go.microsoft.com/fwlink/?linkid=2084562) a FSLogix-ügynök letöltéséhez.
-3. \\ \\ Navigáljon\\a. zip fájl Win32 vagyx64\\kiadására, és futtassa a FSLogixAppsSetup-t a FSLogix-ügynök telepítéséhez. \\ \\  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](https://docs.microsoft.com/fslogix/install-ht).
+3. Navigáljon \\ @ no__t-1Win32 @ no__t-2Release vagy \\ @ no__t-4X64 @ no__t-5Release a. zip fájlban, és futtassa a **FSLogixAppsSetup** -t a FSLogix-ügynök telepítéséhez.  További információ a FSLogix telepítéséről: a [FSLogix letöltése és telepítése](https://docs.microsoft.com/fslogix/install-ht).
 4. Navigáljon a **programfájlok** > **FSLogix** > **alkalmazások** elemre, hogy erősítse meg az ügynök telepítését.
 5. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon a következő **számítógéphez: @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**.
 6. Hozzon létre egy **profilok**nevű kulcsot.
 7. Hozza létre a következő értékeket a profilok kulcshoz:
 
-| Name (Név)                | Type               | Az adatértékek/értékek                        |
+| Név                | Type (Típus)               | Az adatértékek/értékek                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | DWORD              | 1                                 |
+| Engedélyezve             | DWORD              | 1                                 |
 | VHDLocations        | Több karakterláncos érték | "Fájlmegosztás hálózati elérési útja"     |
 
 >[!IMPORTANT]
->A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../security-center/security-center-just-in-time.md).

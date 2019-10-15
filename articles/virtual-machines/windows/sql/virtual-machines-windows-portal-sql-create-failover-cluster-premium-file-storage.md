@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301866"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311872"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure-ban Virtual Machines
 
@@ -37,7 +37,7 @@ A következő technológiákat kell megismernie:
 - [Windows-fürtök technológiái](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server feladatátvevő fürt példányai](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Az egyik fontos különbség az, hogy egy Azure IaaS VM feladatátvevő fürtön egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot ajánlunk. Az Azure-hálózatok fizikai redundanciával rendelkeznek, így nincs szükség további hálózati adapterre és alhálózatra az Azure IaaS virtuális gépek vendégfürtjén. Bár a fürt ellenőrzési jelentése figyelmeztetést ad arról, hogy a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS VM feladatátvevő fürtökön. 
+Az egyik fontos különbség az, hogy egy Azure IaaS VM feladatátvevő fürtön egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot ajánlunk. Az Azure-hálózatkezelés olyan fizikai redundanciával rendelkezik, amely szükségtelen hálózati adaptereket és alhálózatokat tesz lehetővé az Azure IaaS VM-vendég fürtön. Bár a fürt ellenőrzési jelentése figyelmeztetést ad arról, hogy a csomópontok csak egyetlen hálózaton érhetők el, ez a figyelmeztetés nyugodtan figyelmen kívül hagyható az Azure IaaS VM feladatátvevő fürtökön. 
 
 Emellett általános ismeretekkel kell rendelkeznie az alábbi technológiákról:
 
@@ -51,7 +51,7 @@ Emellett általános ismeretekkel kell rendelkeznie az alábbi technológiákró
 
 A prémium szintű fájlmegosztás biztosítja a IOPS és a teljes kapacitást, amely megfelel a sok számítási feladat igényeinek. Az i/o-igényes számítási [feladatokhoz](virtual-machines-windows-portal-sql-create-failover-cluster.md) azonban a felügyelt prémium lemezeken vagy az ultra-lemezeken alapuló közvetlen tárolóhelyek SQL Server.  
 
-Ellenőrizze az aktuális környezet IOPS tevékenységét, és ellenőrizze, hogy a prémium fájlok biztosítják-e a szükséges IOPS az üzembe helyezés vagy az áttelepítés megkezdése előtt. Használja a Windows Teljesítményfigyelő lemezeit számlálókat, és figyelje a IOPS (átviteli sebesség/mp) és az adatátviteli sebességet (bájt/s), amely a SQL Server adatokhoz, a naplóhoz és a temp DB-fájlokhoz szükséges. Sok számítási feladat kitörte az i/o-t, ezért érdemes a nagy mennyiségű használati időszak során megtekinteni a maximális IOPS és az átlagos IOPS is. A prémium szintű fájlok megosztása a megosztás méretétől függően biztosít IOPS. A prémium szintű fájlok ingyenes kitörést biztosítanak, ahol akár egy óráig is megadhatja az alapértéket. 
+Ellenőrizze az aktuális környezet IOPS tevékenységét, és ellenőrizze, hogy a prémium fájlok biztosítják-e a szükséges IOPS az üzembe helyezés vagy az áttelepítés megkezdése előtt. Használja a Windows Teljesítményfigyelő lemezeit számlálókat, és figyelje a teljes IOPS (átviteli sebesség/mp) és az adatátviteli sebességet (bájt/s) a SQL Server adatokhoz, a naplóhoz és a temp DB-fájlokhoz. Sok számítási feladat kitörte az i/o-t, ezért érdemes a nagy mennyiségű használati időszak során megtekinteni a maximális IOPS és az átlagos IOPS is. A prémium szintű fájlok megosztása a megosztás méretétől függően biztosít IOPS. A prémium szintű fájlok ingyenes kitörést biztosítanak, ahol akár egy óráig is megadhatja az alapértéket. 
 
 ### <a name="licensing-and-pricing"></a>Licencelés és díjszabás
 
@@ -165,34 +165,20 @@ A virtuális gépek létrehozása és konfigurálása után beállíthatja a pr�
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és nyissa meg a Storage-fiókját.
 1. Nyissa meg a **file** shares elemet a **Fájlszolgáltatások** területen, és válassza ki az SQL-tárolóhoz használni kívánt prémium fájlmegosztást. 
 1. Válassza a **Kapcsolódás** lehetőséget a fájlmegosztás kapcsolati karakterláncának megadásához. 
-1. Válassza ki a legördülő listából a használni kívánt meghajtóbetűjelet, majd másolja a két PowerShell-parancsot a két PowerShell-parancs blokkból.  Illessze be őket egy szövegszerkesztőbe, például a Jegyzettömbbe. 
+1. Válassza ki a legördülő listából a használni kívánt meghajtóbetűjelet, majd másolja mindkét kódrészletet egy Jegyzettömbbe.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="Mindkét PowerShell-parancs másolása a fájlmegosztás csatlakozási portálján":::
 
 1. Az RDP-t a SQL Server VM a fiókkal, amelyet a SQL Server a szolgáltatási fiókhoz fog használni. 
 1. Nyisson meg egy rendszergazdai PowerShell-parancssori konzolt. 
-1. Futtassa a `Test-NetConnection` parancsot a Storage-fiókkal létesített kapcsolat teszteléséhez. Ne futtassa az `cmdkey` parancsot az első kód blokkból. 
+1. Futtassa a korábban mentett portál parancsait. 
+1. Navigáljon a megosztáshoz a fájlkezelővel vagy a **Futtatás** párbeszédpanellel (Windows billentyű + r) a hálózati elérési út `\\storageaccountname.file.core.windows.net\filesharename` használatával. Például: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. Futtassa a `cmdkey` parancsot a *második* kódrészletből a fájlmegosztás meghajtóként való csatlakoztatásához és a megtartásához. 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. Nyissa meg a **fájlkezelőt** , és navigáljon a **számítógéphez**. A fájlmegosztás a hálózati telephelyek területen jelenik meg: 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="Fájlmegosztás látható tárolóként a Fájlkezelőben":::
-
-1. Nyissa meg az újonnan hozzárendelt meghajtót, és hozzon létre legalább egy mappát az SQL-adatfájlok a alkalmazásba történő elhelyezéséhez. 
+1. Hozzon létre legalább egy mappát az újonnan csatlakoztatott fájlmegosztás számára az SQL-adatfájlok a alkalmazásba történő elhelyezéséhez. 
 1. Ismételje meg ezeket a lépéseket minden olyan SQL Server VM, amely részt vesz a fürtben. 
 
   > [!IMPORTANT]
-  > Ne használja ugyanazt a fájlmegosztást mindkét adatfájlhoz és a Back UPS-hez. Ugyanezen lépések végrehajtásával konfigurálhat másodlagos fájlmegosztást a biztonsági mentésekhez, ha biztonsági mentést szeretne készíteni az adatbázisokról egy fájlmegosztás számára. 
+  > Érdemes lehet külön fájlmegosztást használni a biztonságimásolat-fájlokhoz, hogy mentse a megosztás IOPS és méretét az adatfájlok és a naplófájlok számára. A biztonsági másolati fájlok prémium vagy standard fájlmegosztás használatával is használhatók
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>3\. lépés: a feladatátvevő fürt konfigurálása fájlmegosztási fájllal 
 

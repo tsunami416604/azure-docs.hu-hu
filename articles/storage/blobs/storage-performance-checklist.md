@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303040"
+ms.locfileid: "72311135"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -45,6 +45,9 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 | &nbsp; |Eszközök |[A Microsoft által biztosított ügyféloldali kódtárak és eszközök legújabb verzióit használja?](#client-libraries-and-tools) |
 | &nbsp; |Újrapróbálkozások |[Újrapróbálkozási szabályzatot használ egy exponenciális leállítási a hibák és időtúllépések szabályozásához?](#timeout-and-server-busy-errors) |
 | &nbsp; |Újrapróbálkozások |[Az alkalmazás elkerüli a nem újrapróbálkozást okozó hibák újrapróbálkozását?](#non-retryable-errors) |
+| &nbsp; |Blobok másolása |[A lehető leghatékonyabb módon másolja a blobokat?](#blob-copy-apis) |
+| &nbsp; |Blobok másolása |[A AzCopy legújabb verzióját használja a tömeges másolási műveletekhez?](#use-azcopy) |
+| &nbsp; |Blobok másolása |[A Azure Data Box családot használja nagy adatmennyiségek importálására?](#use-azure-data-box) |
 | &nbsp; |Tartalom terjesztése |[CDN-t használ a tartalom terjesztéséhez?](#content-distribution) |
 | &nbsp; |Metaadatok használata |[Tárolja a Blobok gyakran használt metaadatait a metaadatokban?](#use-metadata) |
 | &nbsp; |Gyors feltöltés |[Amikor egy blob gyors feltöltését kísérli meg, párhuzamosan kell feltölteni a blokkokat?](#upload-one-large-blob-quickly) |
@@ -183,7 +186,7 @@ A .NET Core teljesítményével kapcsolatos újdonságokról a következő blogb
 
 ### <a name="increase-default-connection-limit"></a>Az alapértelmezett kapcsolatok korlátjának megemelése
 
-A .NET-ben a következő kód növeli az alapértelmezett kapcsolódási korlátot (amely általában 2 egy ügyfél-környezetben, vagy 10 a kiszolgálói környezetben) 100-re. Az értéket általában az alkalmazás által használt szálak számának körülbelül értékre kell állítani. A kapcsolatok megnyitása előtt állítsa be a kapcsolati korlátot.
+A .NET-ben a következő kód növeli az alapértelmezett kapcsolódási korlátot (amely általában kettő egy ügyfél-környezetben, vagy tíz a kiszolgálói környezetben) a 100-re. Az értéket általában az alkalmazás által használt szálak számának körülbelül értékre kell állítani. A kapcsolatok megnyitása előtt állítsa be a kapcsolati korlátot.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -227,9 +230,23 @@ Az ügyféloldali kódtárak kezelik az újrapróbálkozásokat, és megismerik,
 
 Az Azure Storage-hibakódokkal kapcsolatos további információkért lásd: [állapot-és hibakódok](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="transfer-data"></a>Adatátvitel
+## <a name="copying-and-moving-blobs"></a>Blobok másolása és áthelyezése
 
-További információ az adatok blob Storage-ba vagy a Storage-fiókok közötti hatékony átviteléről: [Azure-megoldás kiválasztása adatátvitelhez](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Az Azure Storage számos megoldást kínál a Blobok másolására és áthelyezésére egy Storage-fiókban, a Storage-fiókok, valamint a helyszíni rendszerek és a felhő között. Ez a szakasz a teljesítményre gyakorolt hatásuk alapján ismerteti ezeket a lehetőségeket. További információ a blob Storage-ból vagy-ból való adatátvitelről: [Azure-megoldás kiválasztása adatátvitelhez](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="blob-copy-apis"></a>BLOB-másolási API-k
+
+Ha a blobokat a Storage-fiókok között szeretné másolni, használja a [put blokkot az URL-](/rest/api/storageservices/put-block-from-url) címről művelettel. A művelet szinkron módon másolja az adatforrásokat bármely URL-címről egy blokk-blobba. A `Put Block from URL` művelet használata jelentősen csökkentheti a szükséges sávszélességet, ha a Storage-fiókok között telepíti át az adatforgalmat. Mivel a másolási művelet a szolgáltatás oldalán zajlik, nem kell letöltenie és újra feltöltenie az adatfájlokat.
+
+Ha ugyanazon a Storage-fiókon belül szeretne Adatmásolást készíteni, használja a [blob másolása](/rest/api/storageservices/Copy-Blob) műveletet. Az adatok ugyanabban a Storage-fiókban való másolása általában gyorsan elvégezhető.  
+
+### <a name="use-azcopy"></a>Az AzCopy használata
+
+A AzCopy parancssori segédprogram egyszerű és hatékony megoldás a Blobok tömeges átvitelére a, a-ból és a különböző Storage-fiókokba. A AzCopy erre a forgatókönyvre van optimalizálva, és magas adatátviteli sebességet érhet el. A AzCopy 10-es verziója a `Put Block From URL` művelettel másolja a blob-adattárakat a Storage-fiókok között. További információ: [adatok másolása vagy áthelyezése az Azure Storage-ba az AzCopy v10 használatával](/azure/storage/common/storage-use-azcopy-v10).  
+
+### <a name="use-azure-data-box"></a>Azure Data Box használata
+
+Nagyméretű adatmennyiségek blob Storage-ba történő importálásához érdemes lehet a Azure Data Box családot használni az offline átvitelekhez. A Microsoft által biztosított Data Box eszközök használata jó választás a nagy mennyiségű adatforgalom Azure-ba történő áthelyezéséhez, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. További információt az [Azure DataBox dokumentációjában](/azure/databox/)talál.
 
 ## <a name="content-distribution"></a>Tartalom terjesztése
 
@@ -239,7 +256,7 @@ További információ a Azure CDNről: [Azure CDN](../../cdn/cdn-overview.md).
 
 ## <a name="use-metadata"></a>Metaadatok használata
 
-A Blob service támogatja a fő kérelmeket, amelyek tartalmazhatnak blob-tulajdonságokat vagy-metaadatokat is. Ha például az alkalmazásnak egy fényképből származó EXIF (képformátumos) adatokra van szüksége, lekérheti a fényképet, és kinyerheti azt. A sávszélesség mentéséhez és a teljesítmény javításához az alkalmazás képes tárolni az EXIF-adatokat a blob metaadataiban, amikor az alkalmazás feltölti a fényképet. Ezután csak egy HEAD kérelem használatával kérheti le az EXIF-adatokat a metaadatokban. A csak metaadatok beolvasása és a blob teljes tartalma nem ment jelentős sávszélességet, és csökkenti az EXIF-adatok kinyeréséhez szükséges feldolgozási időt. Ne feledje, hogy blobban csak 8 KB metaadat tárolható.  
+A Blob service támogatja a fő kérelmeket, amelyek tartalmazhatnak blob-tulajdonságokat vagy-metaadatokat is. Ha például az alkalmazásnak egy fényképből származó EXIF (képformátumos) adatokra van szüksége, lekérheti a fényképet, és kinyerheti azt. A sávszélesség mentéséhez és a teljesítmény javításához az alkalmazás képes tárolni az EXIF-adatokat a blob metaadataiban, amikor az alkalmazás feltölti a fényképet. Ezután csak egy HEAD kérelem használatával kérheti le az EXIF-adatokat a metaadatokban. A csak metaadatok beolvasása és a blob teljes tartalma nem ment jelentős sávszélességet, és csökkenti az EXIF-adatok kinyeréséhez szükséges feldolgozási időt. Ne feledje, hogy blobban 8 KiB-nál több metaadat is tárolható.  
 
 ## <a name="upload-blobs-quickly"></a>Blobok gyors feltöltése
 

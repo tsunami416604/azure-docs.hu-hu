@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 85f7ea11638278a010b2a94d9c6472857f51b687
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710173"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311214"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -50,15 +50,15 @@ A következő eszközök bármelyikével feltöltheti a tartalmakat a **$web** t
 
 A felhasználók a webhely nyilvános URL-címének használatával tekinthetik meg a tartalmak böngészőből való megtekintését. Az URL-címet a Azure Portal, az Azure CLI vagy a PowerShell használatával keresheti meg. Ezt a táblázatot útmutatóként használhatja.
 
-|Eszköz| Útmutatás |
+|Eszköz| Segédletek |
 |----|----|
-|**Azure Portal** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure Portalra** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [A webhely URL-címének megkeresése az Azure CLI használatával](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modul** | [A webhely URL-címének megkeresése a PowerShell használatával](storage-blob-static-website-how-to.md#powershell-find-url) |
 
 A hely URL-címe tartalmaz egy regionális kódot. Például a `https://contosoblobaccount.z22.web.core.windows.net/` URL-cím a következő regionális kódot tartalmazza: `z22`.
 
-Amíg a kódnak meg kell felelnie az URL-címnek, csak belső használatra van szüksége, és semmilyen más módon nem kell ezt a kódot használnia.
+Habár a kódnak az URL-címben kell maradnia, csak belső használatra szolgál, és semmilyen más módon nem kell ezt a kódot használnia.
 
 A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg egy adott fájlt (például: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
@@ -82,7 +82,7 @@ Azonban a `https://contosoblobaccount.blob.core.windows.net/$web/index.html` els
 
 Annak érdekében, hogy a statikus webhelyek fájljai elérhetők legyenek az egyéni tartományon és a HTTPS-en keresztül, tekintse meg a következőt: [a Azure CDN használata a Blobok egyéni tartományokkal](storage-https-custom-domain-cdn.md) Ennek a folyamatnak a részeként be kell mutatnia a CDN-t az elsődleges *statikus webhely* -végpontra, szemben az elsődleges *blob Service* -végponttal. Előfordulhat, hogy néhány percet várnia kell, amíg a tartalom látható lesz, mivel a CDN-konfiguráció nem kerül azonnal végrehajtásra.
 
-A statikus webhely frissítésekor ügyeljen arra, hogy a CDN peremhálózati kiszolgálókon törölje a gyorsítótárazott tartalmat a CDN-végpont törlésével. További információkért lásd az [Azure CDN-végpontok végleges törléséről](../../cdn/cdn-purge-endpoint.md) szóló cikket.
+A statikus webhely frissítésekor ügyeljen arra, hogy a CDN peremhálózati kiszolgálókon törölje a gyorsítótárazott tartalmat a CDN-végpont törlésével. További információkért lásd: [CDN-végpont végleges törlése](../../cdn/cdn-purge-endpoint.md).
 
 > [!NOTE]
 > A HTTPS a fiók webes végpontján keresztül natív módon támogatott, így a webes végpont a HTTP és a HTTPS protokollon keresztül érhető el. Ha azonban a Storage-fiók úgy van konfigurálva, hogy biztonságos átvitelt igényel a HTTPS protokollon keresztül, akkor a felhasználóknak a HTTPS-végpontot kell használniuk. További információ: [biztonságos átvitel megkövetelése az Azure Storage-ban](../common/storage-require-secure-transfer.md).
@@ -99,13 +99,13 @@ A tartomány Azure-beli üzemeltetésének részletes ismertetését a [tartomá
 
 A statikus webhelyek üzemeltetése díjmentesen engedélyezhető. Csak a hely által használt BLOB Storage-hoz és az üzemeltetési költségekhez kell fizetnie. Az Azure Blob Storage áraival kapcsolatos további információkért tekintse meg az [azure blob Storage díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák engedélyezése után a **$web** tárolóban található fájlokra vonatkozó forgalmi statisztikát a metrikák irányítópultján kell jelenteni.
 
 A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [meg a metrikák engedélyezése statikus webhelyeken](storage-blob-static-website-how-to.md#metrics)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
 * [A Blobok egyéni tartományokkal való elérésének Azure CDN használata HTTPS-kapcsolaton keresztül](storage-https-custom-domain-cdn.md)
@@ -113,4 +113,4 @@ A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [me
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Az első kiszolgáló nélküli Webalkalmazás létrehozása](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [Oktatóanyag: A tartomány üzemeltetése a Azure DNS @ no__t-0
+* [Oktatóanyag: a tartomány üzemeltetése Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)

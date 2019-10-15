@@ -5,109 +5,70 @@ services: logic-apps
 author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 05/15/2018
+ms.openlocfilehash: aa1001661d8fe03855e1a28b882f674bee3606b2
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179372"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311955"
 ---
-* Ha az Azure SQL Database használata esetén kövesse a [csatlakozhat az Azure SQL Database](#connect-azure-sql-db). 
+* Ha Azure SQL Database használ, kövesse a [Kapcsolódás a Azure SQL Databasehoz](#connect-azure-sql-db)című témakör lépéseit.
 
-* Ha az SQL Servert használ, kövesse a [csatlakozhat az SQL Server](#connect-sql-server).
+* Ha SQL Server használ, kövesse a [Kapcsolódás a SQL Serverhoz](#connect-sql-server)című témakör lépéseit.
 
 <a name="connect-azure-sql-db"></a>
 
-### <a name="connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database
+### <a name="connect-to-azure-sql-database"></a>Kapcsolódás Azure SQL Databasehoz
 
-1. Ha az SQL-eseményindítót vagy műveletet kéri a kapcsolati adatokat, kövesse az alábbi lépéseket:
+Ha az SQL-eseményindító vagy-művelet megkérdezi a kapcsolati adatokat, kövesse az alábbi lépéseket, amelyek az eseményindítók és a műveletek esetében is működnek.
 
-   1. Hozzon létre a kapcsolat nevét.
+1. A **kapcsolatok neve**mezőben hozzon létre egy nevet a kapcsolatok számára.
 
-   2. Válassza ki az SQL Servert, és válassza ki az adatbázis. 
+1. A **SQL Server neve**alatt válassza ki az Azure SQL Servert. Amikor megjelenik a **SQL Database neve** lista, válassza ki az adatbázist. Adja meg az Azure SQL Server-kiszolgáló felhasználónevét és jelszavát.
 
-      Az adatbázisok listája csak az SQL-kiszolgáló kiválasztása után jelenik meg.
- 
-   3. Adja meg a felhasználónevet és jelszót a kiszolgálóhoz.
+   Ezeket az információkat vagy a Azure Portal az SQL Database-tulajdonságok vagy a kapcsolatok karakterlánca alatt is megtalálhatja:
 
-      Találja meg ezeket az információkat az Azure Portalon vagy az SQL database tulajdonságainál vagy a kapcsolati karakterlánc: 
-      
-      "Felhasználói azonosító = <*felhasználónév*>"
-      <br>
-      "Jelszó = <*yourPassword*>"
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-   Ez a példa bemutatja a kapcsolatadatokat az eseményindító, de ezek a lépések műveletek túl.
+   ![Azure SQL Database-kapcsolatok létrehozása](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
 
-   ![Azure SQL Database-kapcsolat létrehozása](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
-   <br>
-   Csillag (*) azt jelzi, hogy szükséges értékeket.
+1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-   | Tulajdonság | Érték | Részletek | 
-   |----------|-------|---------| 
-   | Kapcsolat neve | <*my-sql-connection*> | A kapcsolat neve | 
-   | SQL-kiszolgáló neve | <*my-sql-server*> | Az SQL Server neve |
-   | SQL-adatbázis neve | <*my-sql-database*>  | Az SQL-adatbázis neve | 
-   | Felhasználónév | <*my-sql-username*> | A felhasználónév, az adatbázis eléréséhez |
-   | Jelszó | <*my-sql-password*> | A jelszót az adatbázis eléréséhez | 
-   |||| 
-
-2. Ha elkészült, kattintson a **Létrehozás** gombra.
-
-3. Miután létrehozta a kapcsolatot, folytassa [hozzáadása SQL eseményindító](#add-sql-trigger) vagy [hozzáadása SQL művelet](#add-sql-action).
+1. A kapcsolat létrehozása után folytassa az SQL- [trigger hozzáadásával](#add-sql-trigger) vagy [egy SQL-művelet hozzáadásával](#add-sql-action).
 
 <a name="connect-sql-server"></a>
 
 ### <a name="connect-to-sql-server"></a>Csatlakozás az SQL Serverhez
 
-Az átjáró kiválasztása előtt ellenőrizze, hogy Ön már [állítsa be a data gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). Ezzel a módszerrel az átjáró listájában jelenik meg az átjárók a kapcsolat létrehozásakor.
+Ha az SQL-eseményindító vagy-művelet megkérdezi a kapcsolati adatokat, kövesse az alábbi lépéseket, amelyek az eseményindítók és a műveletek esetében is működnek. A Kezdés előtt azonban győződjön meg arról, hogy már [beállította a helyszíni adatátjárót](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection). Ellenkező esetben az átjáró nem jelenik meg az átjárók listájában a kapcsolódás létrehozásakor.
 
-1. Ha az SQL-eseményindítót vagy műveletet kéri a kapcsolati adatokat, kövesse az alábbi lépéseket:
+1. A **kapcsolatok neve**mezőben hozzon létre egy nevet a kapcsolatok számára.
 
-   1. Válassza az eseményindítót vagy műveletet **kapcsolódás helyszíni adatátjárón keresztül** úgy, hogy az SQL server beállítások jelennek meg.
+1. Az trigger vagy művelet területen válassza a **kapcsolat helyszíni adatátjárón keresztül** lehetőséget, hogy megjelenjenek az SQL Server beállításai.
 
-   2. Hozzon létre a kapcsolat nevét.
+1. Az **SQL Server-név** és az **SQL-adatbázis neve**mezőben adja meg az SQL-kiszolgáló és a-adatbázis nevét. A **Felhasználónév** és a **jelszó**mezőben adja meg a kiszolgáló felhasználónevét és jelszavát.
 
-   3. Adja meg az SQL server-címét, majd adja meg az adatbázis nevét.
-   
-      Ez az információ található a kapcsolati karakterlánc: 
-      
-      * "Server=<*yourServerAddress*>"
-      * "Adatbázis = <*yourDatabaseName*>"
+   A következő információk is megtalálhatók a kapcsolatok karakterláncában:
 
-   4. Adja meg a felhasználónevet és jelszót a kiszolgálóhoz.
+   * `Server=<your-server-address>`
+   * `Database=<your-database-name>`
+   * `User ID=<your-user-name>`
+   * `Password=<your-password>`
 
-      Ez az információ található a kapcsolati karakterlánc: 
-      
-      * "Felhasználói azonosító = <*felhasználónév*>"
-      * "Jelszó = <*yourPassword*>"
+   ![SQL Server-kapcsolatok létrehozása](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
 
-   5. Ha az SQL server Windows vagy az alapszintű hitelesítést használ, válassza ki a hitelesítési típus.
+1. Ha az SQL Server Windows vagy alapszintű hitelesítést használ, válassza ki a **hitelesítési típust**.
 
-   6. Válassza ki a helyszíni adatátjárót, korábban létrehozott nevét.
-   
-      Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [az átjáró beállításához](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
+1. Az **átjárók**területen válassza ki a korábban létrehozott helyszíni adatátjáróhoz társított Azure-előfizetést, és válassza ki a helyszíni adatátjáró nevét.
 
-   Ez a példa bemutatja a kapcsolatadatokat az eseményindító, de ezek a lépések műveletek túl.
+   Ha az átjáró nem jelenik meg a listában, ellenőrizze, hogy megfelelően [állította-e be az átjárót](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection).
 
-   ![SQL Server közötti kapcsolat létrehozása](./media/connectors-create-api-sqlazure/sql-server-create-connection.png)
-   <br>
-   Csillag (*) azt jelzi, hogy szükséges értékeket.
+   ![SQL Server-kapcsolatok létrehozása befejeződött](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
 
-   | Tulajdonság | Érték | Részletek | 
-   |----------|-------|---------| 
-   | Csatlakozás helyszíni átjárón keresztül | A beállítás először az SQL Server-beállítások. | | 
-   | Kapcsolat neve | <*my-sql-connection*> | A kapcsolat neve | 
-   | SQL-kiszolgáló neve | <*my-sql-server*> | Az SQL Server neve |
-   | SQL-adatbázis neve | <*my-sql-database*>  | Az SQL-adatbázis neve |
-   | Felhasználónév | <*my-sql-username*> | A felhasználónév, az adatbázis eléréséhez |
-   | Jelszó | <*my-sql-password*> | A jelszót az adatbázis eléréséhez | 
-   | Hitelesítés típusa | Windows- vagy alapszintű | Nem kötelező: Az SQL server által használt hitelesítési típus | 
-   | Átjárók | <*my-data-gateway*> | A helyszíni adatátjáró neve | 
-   |||| 
+1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-2. Ha elkészült, kattintson a **Létrehozás** gombra. 
-
-3. Miután létrehozta a kapcsolatot, folytassa [hozzáadása SQL eseményindító](#add-sql-trigger) vagy [hozzáadása SQL művelet](#add-sql-action).
+1. A kapcsolat létrehozása után folytassa az SQL- [trigger hozzáadásával](#add-sql-trigger) vagy az [SQL-művelet hozzáadásával](#add-sql-action).

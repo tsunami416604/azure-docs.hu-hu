@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: aad601a48b2b420a809a385e336f103612d2e378
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167092"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311693"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
 
@@ -704,4 +704,4 @@ A `-showErr` paraméterrel megtekintheti a feladatok futtatásakor létrehozott 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Ismerje meg, hogyan használható az az sqlline használata az Apache HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Ismerje meg, hogyan használható az az sqlline használata az Apache HBase](apache-hbase-query-with-phoenix.md)

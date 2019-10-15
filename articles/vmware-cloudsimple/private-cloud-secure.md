@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 39f451e94f2a825e69425f71aceda5f34de7eeb5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c9d3b2858ea3d80836b280b795025f2ce2eb85c7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642642"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311769"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>Saját felhőalapú környezet biztonságossá tétele
 
@@ -33,12 +33,12 @@ További információ a RBAC: [Mi az Azure-erőforrások szerepköralapú hozzá
 
 ## <a name="rbac-for-private-cloud-vcenter"></a>RBAC a saját felhőalapú vCenter
 
-A rendszer létrehoz `CloudOwner@cloudsimple.local` egy alapértelmezett felhasználót a vCenter SSO-tartományban a saját felhő létrehozásakor.  A CloudOwner-felhasználó jogosultságokkal rendelkezik a vCenter kezeléséhez.   A rendszer további identitási forrásokat ad hozzá a vCenter SSO-hoz a különböző felhasználókhoz való hozzáférés biztosítása érdekében.  Az előre definiált szerepkörök és csoportok a vCenter vannak beállítva, amelyek további felhasználók hozzáadására használhatók.
+A vCenter SSO-tartományban egy alapértelmezett felhasználó `CloudOwner@cloudsimple.local` jön létre, ha létrehoznak egy privát felhőt.  A CloudOwner-felhasználó jogosultságokkal rendelkezik a vCenter kezeléséhez. A rendszer további identitási forrásokat ad hozzá a vCenter SSO-hoz a különböző felhasználókhoz való hozzáférés biztosítása érdekében.  Az előre definiált szerepkörök és csoportok a vCenter vannak beállítva, amelyek további felhasználók hozzáadására használhatók.
 
 ### <a name="add-new-users-to-vcenter"></a>Új felhasználók hozzáadása a vCenter
 
-1. [](escalate-private-cloud-privileges.md) A *CloudOwner@cloudsimple.local* felhasználói jogosultságok kiterjesztésének megvonása a privát felhőben.
-2. Bejelentkezés a vCenter használatával *CloudOwner@cloudsimple.local*
+1. A **CloudOwner@cloudsimple.local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a vCenter **CloudOwner@cloudsimple.local** használatával
 3. [VCenter egyszeri bejelentkezési felhasználók hozzáadása](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html).
 4. Felhasználók hozzáadása az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
@@ -49,10 +49,10 @@ Az előre definiált szerepkörökkel és csoportokkal kapcsolatos további info
 További identitás-szolgáltatókat is hozzáadhat a privát felhő vCenter SSO-tartományához.  Az identitás-szolgáltatók hitelesítési és vCenter SSO-csoportokat biztosítanak a felhasználók számára.
 
 * A [Active Directory identitás-szolgáltatóként használhatja](set-vcenter-identity.md) a saját Felhőbeli vCenter.
-* Az [Azure ad használata identitás](azure-ad.md) -szolgáltatóként a saját felhőalapú vCenter
+* Az [Azure ad használata identitás-szolgáltatóként](azure-ad.md) a saját felhőalapú vCenter
 
-1. [](escalate-private-cloud-privileges.md) A *CloudOwner@cloudsimple.local* felhasználói jogosultságok kiterjesztésének megvonása a privát felhőben.
-2. Bejelentkezés a vCenter használatával *CloudOwner@cloudsimple.local*
+1. A **CloudOwner@cloudsimple.local** felhasználóhoz tartozó [jogosultságok kiterjesztését](escalate-private-cloud-privileges.md) a privát felhőben.
+2. Jelentkezzen be a vCenter **CloudOwner@cloudsimple.local** használatával
 3. Adja hozzá a felhasználókat az identitás-szolgáltatótól az [egyszeri bejelentkezési csoportok vCenter](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html).
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>Biztonságos hálózat a saját felhőalapú környezetében

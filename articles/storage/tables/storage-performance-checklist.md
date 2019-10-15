@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cb9f37d5e2c33984189c90857b409d3a59e74e59
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303119"
+ms.locfileid: "72311609"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -47,15 +47,15 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan egy olya
 | &nbsp; |Táblák és partíciók |[Megfelelően particionálta az adatait?](#schema) |
 | &nbsp; |Gyakori partíciók |[Elkerüli a csak Hozzáfűzés és a csak előtag mintázatot?](#append-only-and-prepend-only-patterns) |
 | &nbsp; |Gyakori partíciók |[A lapkák/frissítések több partíció között oszlanak meg?](#high-traffic-data) |
-| &nbsp; |Lekérdezés hatóköre |[Úgy tervezte a sémát, hogy lehetővé tegye a pontok lekérdezéseit a legtöbb esetben használni, és a táblázatos lekérdezéseket takarékosan kell használni?](#query-scope) |
+| &nbsp; |Lekérdezési hatókör |[Úgy tervezte a sémát, hogy lehetővé tegye a pontok lekérdezéseit a legtöbb esetben használni, és a táblázatos lekérdezéseket takarékosan kell használni?](#query-scope) |
 | &nbsp; |Lekérdezési sűrűség |[A lekérdezések általában csak az alkalmazás által használt sorok vizsgálatát és visszaküldését végzik?](#query-density) |
 | &nbsp; |Visszaadott adatértékek korlátozása |[A szűrést használja a nem szükséges entitások visszaküldésének elkerüléséhez?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Visszaadott adatértékek korlátozása |[Kivetítést használ a nem szükséges tulajdonságok visszaadásának elkerülésére?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Denormalizáció |[Leválasztotta az adatait úgy, hogy elkerülje a nem hatékony lekérdezéseket vagy több olvasási kérést az adatlekérdezés során?](#denormalization) |
-| &nbsp; |Beszúrás/frissítés/törlés |[Olyan kérelmeket dolgoz fel, amelyeknek tranzakciós igényeknek kell lenniük, vagy egyidejűleg is elvégezhető a ciklikus utak csökkentése?](#batching) |
-| &nbsp; |Beszúrás/frissítés/törlés |[Elkerüli az entitások beolvasását, hogy megtörténjen a Beszúrás vagy a frissítés meghívása?](#upsert) |
-| &nbsp; |Beszúrás/frissítés/törlés |[Vannak olyan adatsorozatok, amelyek gyakran egy entitásban lesznek beolvasva több entitás helyett tulajdonságokként?](#storing-data-series-in-a-single-entity) |
-| &nbsp; |Beszúrás/frissítés/törlés |[Azokat az entitásokat, amelyek mindig együtt lesznek lekérdezve, és kötegekben (például idősorozat-adatsorokban) is írhatók, a táblázatok helyett blobokat használtak?](#storing-structured-data-in-blobs) |
+| &nbsp; |INSERT, Update és DELETE |[Olyan kérelmeket dolgoz fel, amelyeknek tranzakciós igényeknek kell lenniük, vagy egyidejűleg is elvégezhető a ciklikus utak csökkentése?](#batching) |
+| &nbsp; |INSERT, Update és DELETE |[Elkerüli az entitások beolvasását, hogy megtörténjen a Beszúrás vagy a frissítés meghívása?](#upsert) |
+| &nbsp; |INSERT, Update és DELETE |[Vannak olyan adatsorozatok, amelyek gyakran egy entitásban lesznek beolvasva több entitás helyett tulajdonságokként?](#storing-data-series-in-a-single-entity) |
+| &nbsp; |INSERT, Update és DELETE |[Azokat az entitásokat, amelyek mindig együtt lesznek lekérdezve, és kötegekben (például idősorozat-adatsorokban) is írhatók, a táblázatok helyett blobokat használtak?](#storing-structured-data-in-blobs) |
 
 ## <a name="scalability-targets"></a>Méretezhetőségi célok
 
@@ -254,7 +254,7 @@ Ha az ügyfélalkalmazás csak korlátozott tulajdonságokat igényel a tábla e
 
 A kapcsolati adatbázisokkal való együttműködéstől eltérően bevált eljárások a Table-adatforrások hatékony lekérdezéséhez az adataik denormalizálása érdekében. Ez azt eredményezi, hogy ugyanazokat az adatokkal duplikálja több entitásban (egyet az egyes kulcsokhoz, amelyeket az adatok kereséséhez használhat), hogy csökkentse azon entitások számát, amelyeket a lekérdezésnek meg kell vizsgálnia az ügyfél által igényelt adatok megkereséséhez, és nem kell nagy számú entitást beolvasnia az alkalmazás által használt adatok megtalálásához mazáskészlet szükséges. Egy e-kereskedelmi webhelyen például érdemes lehet megrendelést keresni az ügyfél-azonosító alapján (adja meg az ügyfél megrendeléseit) és a dátumot (dátummal megadhatja a rendeléseket). A Table Storageban az entitást (vagy az arra mutató hivatkozást) kétszer kell tárolnia – egyszer a Table Name, a PK és a RK használatával, hogy megkönnyítse az ügyfél-azonosító alapján történő keresését  
 
-### <a name="insertupdatedelete"></a>Beszúrás/frissítés/törlés
+### <a name="insert-update-and-delete"></a>INSERT, Update és DELETE
 
 Ez a szakasz a Table serviceban tárolt entitások módosítására vonatkozó bevált eljárásokat ismerteti.  
 

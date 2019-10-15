@@ -1,6 +1,6 @@
 ---
-title: Phoenix-lekérdezéskiszolgáló REST SDK – Azure HDInsight
-description: Telepítse, és az Azure HDInsight Phoenix-lekérdezéskiszolgáló REST SDK-t használni.
+title: Phoenix Query Server REST SDK – Azure HDInsight
+description: Telepítse és használja a REST SDK-t az Azure HDInsight Phoenix Query Serverához.
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -8,51 +8,51 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695951"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311677"
 ---
-# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix lekérdezési kiszolgáló – REST SDK
 
-[Az Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, nagy mértékben párhuzamosított alapuló relációs Adatbázisréteg a [Apache HBase](apache-hbase-overview.md). A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket a hbase-ben az SSH-eszközök segítségével például [az SQLLine](apache-hbase-phoenix-squirrel-linux.md). A Phoenix nevű Phoenix lekérdezés kiszolgáló (PQS), a vékony ügyfelek, amelyek kétféle átviteli módszer támogatja az ügyfél-kommunikációhoz HTTP-kiszolgáló is biztosít: JSON-t és a Protokollpufferekhez. Protokollpuffereket az olyan alapértelmezett mechanizmus, és JSON-nál több hatékony kommunikációt biztosít.
+A [Apache Phoenix](https://phoenix.apache.org/) egy nyílt forráskódú, nagymértékben párhuzamos, az [Apache HBase](apache-hbase-overview.md)-t tartalmazó, nagymértékben párhuzamos, összehasonlítható adatbázis-réteg. A Phoenix lehetővé teszi, hogy az SQL-szerű lekérdezéseket az HBase SSH-eszközökkel, például a [az sqlline használata](apache-hbase-query-with-phoenix.md)használatával használja. A Phoenix egy Phoenix Query Server (PQS) nevű HTTP-kiszolgálót is biztosít, amely egy olyan vékony ügyfél, amely két átviteli mechanizmust támogat az ügyfél-kommunikációhoz: JSON-és protokoll-pufferek. A protokoll-pufferek az alapértelmezett mechanizmus, amely hatékonyabb kommunikációt biztosít, mint a JSON.
 
-Ez a cikk ismerteti, hogyan használhatja az PQS REST SDK-t létrehozni a táblákat, upsert sorok, egyenként és tömegesen, és válassza ki az SQL-utasítások használatával adatokat. A példákban a [a Microsoft .NET-illesztő az Apache Phoenix-lekérdezéskiszolgáló](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Ez az SDK épül [Apache kalcit Avatica](https://calcite.apache.org/avatica/) API-k, amely kizárólag a szerializálási formátumot használja Protokollpuffereket.
+Ez a cikk azt ismerteti, hogyan lehet a PQS REST SDK-val táblákat létrehozni, upsert a sorokat és tömegesen, és az SQL-utasítások használatával kijelölni az adatokat. A példák a [Apache Phoenix lekérdezési kiszolgáló Microsoft .net illesztőprogramját](https://www.nuget.org/packages/Microsoft.Phoenix.Client)használják. Ez az SDK az [Apache kalcit Avatica](https://calcite.apache.org/avatica/) API-kra épül, amelyek kizárólag a szerializálási formátumhoz használják a protokollok puffereit.
 
-További információkért lásd: [Apache pufferek kalcit Avatica Protokollreferenciáját](https://calcite.apache.org/avatica/docs/protobuf_reference.html).
+További információ: [Apache kalcit Avatica Protocol-pufferek referenciája](https://calcite.apache.org/avatica/docs/protobuf_reference.html).
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
-Az Apache Phoenix-lekérdezéskiszolgáló a Microsoft .NET-illesztőprogram NuGet-csomagként, amely a Visual studióból is telepíthető biztosított **NuGet Package Manager Console** a következő paranccsal:
+Apache Phoenix Query Server Microsoft .NET illesztőprogramja NuGet-csomagként van megadva, amely a Visual Studio **NuGet Package Manager konzolról** telepíthető a következő paranccsal:
 
     Install-Package Microsoft.Phoenix.Client
 
-## <a name="instantiate-new-phoenixclient-object"></a>Új PhoenixClient objektumpéldányt
+## <a name="instantiate-new-phoenixclient-object"></a>Új PhoenixClient objektumának példánya
 
-A kezdéshez a kódtár használatával hozható létre egy új `PhoenixClient` objektum átadása az `ClusterCredentials` tartalmazó a `Uri` a fürt és a fürt Apache Hadoop-felhasználónevet és jelszót.
+A könyvtár használatának megkezdéséhez hozzon létre egy új `PhoenixClient` objektumot, amely `ClusterCredentials` értéket tartalmaz, amely tartalmazza a `Uri` fürtöt és a fürt Apache Hadoop felhasználónevét és jelszavát.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
 client = new PhoenixClient(credentials);
 ```
 
-Cserélje le a HDInsight HBase-fürt nevét, és a FELHASZNÁLÓNÉVVEL és JELSZÓVAL CLUSTERNAME a fürt létrehozásakor megadott Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop felhasználónév **rendszergazdai**.
+Cserélje le a CLUSTERNAME-t a HDInsight HBase-fürt nevére, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Hadoop hitelesítő adatokkal. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda**.
 
-## <a name="generate-unique-connection-identifier"></a>Hozzon létre egyedi azonosítója
+## <a name="generate-unique-connection-identifier"></a>Egyedi kapcsolatazonosító létrehozása
 
-Egy vagy több kérést küld PQS, a kérelem társítása a kapcsolat egyedi kapcsolat azonosítónak tartalmaznia kell.
+Egy vagy több kérelem PQS való elküldéséhez meg kell adnia egy egyedi kapcsolatazonosító, hogy társítsa a kérés (eke) t a kapcsolódáshoz.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
 ```
 
-Minden példánál először hívást indít a `OpenConnectionRequestAsync` módot, a kapcsolat egyedi azonosítót ad át. Ezt követően adja meg `ConnectionProperties` és `RequestOptions`, átadja azokat az objektumokat és a létrehozott kapcsolat azonosító a `ConnectionSyncRequestAsync` metódust. A PQS `ConnectionSyncRequest` objektum segítségével győződjön meg arról, hogy az ügyfél és a kiszolgáló rendelkezik-e az adatbázis tulajdonságainak egységes megjelenítése.
+Mindegyik példa első lépésként meghívja a `OpenConnectionRequestAsync` metódust, amely az egyedi kapcsolatazonosító alapján lesz átadva. Ezután definiálja `ConnectionProperties` és `RequestOptions` értéket, adja át ezeket az objektumokat és a generált kapcsolatazonosító a `ConnectionSyncRequestAsync` metódusnak. A PQS `ConnectionSyncRequest` objektuma segít biztosítani, hogy az ügyfél és a kiszolgáló is konzisztens képet biztosítson az adatbázis tulajdonságairól.
 
-## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest and its ConnectionProperties
+## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest és az ConnectionProperties
 
-A hívás `ConnectionSyncRequestAsync`, adja át a `ConnectionProperties` objektum.
+@No__t-0 meghívásához adjon meg egy `ConnectionProperties` objektumot.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -69,32 +69,32 @@ ConnectionProperties connProperties = new ConnectionProperties
 await client.ConnectionSyncRequestAsync(connId, connProperties, options);
 ```
 
-Az alábbiakban néhány lényeges tulajdonságát:
+Íme néhány érdekes tulajdonság:
 
 | Tulajdonság | Leírás |
 | -- | -- |
-| AutoCommit | Egy logikai jelzi, hogy e `autoCommit` Phoenix tranzakciók engedélyezve van. |
-| ReadOnly | Egy logikai értéket jeleníti meg, hogy a kapcsolat csak olvasható. |
-| TransactionIsolation | Egy egész számot jelzi, hogy a szint a JDBC - specifikációi a tranzakció elkülönítési lásd az alábbi táblázatot.|
-| Katalógus | A katalógus kapcsolati tulajdonságok beolvasása során használandó neve. |
-| Séma | Neve a kapcsolati tulajdonságok beolvasása során használandó sémát. |
-| IsDirty | Jelzi, hogy módosultak-e a Tulajdonságok logikai érték. |
+| Autocommit | Logikai érték, amely azt jelzi, hogy a `autoCommit` engedélyezve van-e a Phoenix-tranzakciókban. |
+| ReadOnly | Logikai érték, amely azt jelzi, hogy a hálózat írásvédett-e. |
+| TransactionIsolation | Egy egész szám, amely a tranzakciós elkülönítés szintjét jelöli a JDBC-specifikáció alapján – lásd a következő táblázatot.|
+| Katalógus | A kapcsolódási tulajdonságok beolvasásakor használandó katalógus neve. |
+| Séma | A kapcsolódási tulajdonságok beolvasásakor használandó séma neve. |
+| IsDirty | Logikai érték, amely azt jelzi, hogy a tulajdonságok módosultak-e. |
 
-Az alábbiakban a `TransactionIsolation` értékeket:
+A `TransactionIsolation` értékek:
 
-| Elkülönítés érték | Leírás |
+| Elkülönítési érték | Leírás |
 | -- | -- |
-| 0 | Tranzakciók nem támogatottak. |
-| 1 | A nem véglegesített adatokat, nem ismételhető olvasások és fantom olvasási fordulhat elő. |
-| 2 | Inkonzisztencia olvasási ebben az esetben, de nem ismételhető olvasási és fantom olvasási fordulhat elő. |
-| 4 | Inkonzisztencia olvasási és nem ismételhető olvasási akadályozza meg, de fantom olvasási fordulhat elő. |
-| 8 | A nem véglegesített adatokat, nem ismételhető olvasások és fantom olvasási összes ebben az esetben. |
+| 0 | A tranzakciók nem támogatottak. |
+| 1 | A piszkos olvasások, a nem ismételhető olvasások és a látszólagos olvasások is előfordulhatnak. |
+| 2 | A piszkos olvasások nem érhetők el, de előfordulhat, hogy a nem ismételhető olvasások és a látszólagos olvasások is előfordulhatnak. |
+| 4 | A piszkos olvasási és nem ismételhető olvasások nem érhetők el, de a látszólagos olvasások is előfordulhatnak. |
+| 8 | A piszkos olvasások, a nem ismételhető olvasások és a látszólagos olvasások mind megelőzve vannak. |
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-Mint bármely más relációsadatbázis-kezelő rendszer, a HBase táblák tárolja az adatokat. Phoenix standard SQL-lekérdezések használatával hozzon létre új táblákat, miközben meghatározza az elsődleges kulcsot, az oszlop típusa.
+A HBase, mint bármely más RDBMS, a táblákban tárolja az adattárolást. A Phoenix szabványos SQL-lekérdezéseket használ új táblák létrehozásához az elsődleges kulcs és az oszlopok típusának meghatározásakor.
 
-Ebben a példában és minden későbbi példák, használja a példányosított `PhoenixClient` ahogyan az az objektum [új PhoenixClient objektumpéldányt](#instantiate-new-phoenixclient-object).
+Ez a példa és az összes további példa, a példányok [új PhoenixClient objektumának létrehozása](#instantiate-new-phoenixclient-object)során definiált `PhoenixClient` objektumot használja.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,17 +160,17 @@ finally
 }
 ```
 
-Az előző példában létrehoz egy új táblát nevű `Customers` használatával a `IF NOT EXISTS` lehetőséget. A `CreateStatementRequestAsync` hívás létrehoz egy új állapotkimutatást a Avitica (PQS) kiszolgálón. A `finally` blokk bezárja a visszaadott `CreateStatementResponse` és a `OpenConnectionResponse` objektumokat.
+Az előző példa egy `Customers` nevű új táblát hoz létre a `IF NOT EXISTS` kapcsoló használatával. A `CreateStatementRequestAsync` hívás új utasítást hoz létre a Avitica-(PQS-) kiszolgálón. A `finally` blokk lezárja a visszaadott `CreateStatementResponse` és a `OpenConnectionResponse` objektumot.
 
-## <a name="insert-data-individually"></a>Adatok beszúrása a külön-külön
+## <a name="insert-data-individually"></a>Az adatbeszúrás egyenként
 
-Ez a példa bemutatja egy egyéni adatok beszúrása, hivatkozik egy `List<string>` amerikai állami és területi rövidítések gyűjteményét:
+Ez a példa egy egyéni adatbeszúrást mutat be, amely az Amerikai Egyesült államokbeli és a területi rövidítések `List<string>` gyűjteményére hivatkozik:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-A tábla `StateProvince` oszlop értéket fogja használni, jelölje be ezt követő művelet.
+A tábla `StateProvince` oszlopának értéke egy későbbi kiválasztási műveletben lesz használatban.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-Az insert utasítás végrehajtása struktúráját nagyon hasonlít egy új táblát. Vegye figyelembe, hogy a végén a `try` letiltása, a tranzakció számára fontos, explicit módon. Ebben a példában az egy insert tranzakció 300 többször ismétlődik. Az alábbi példa bemutatja egy hatékonyabb kötegelt insert folyamat.
+Az INSERT utasítás végrehajtásának szerkezete hasonló egy új tábla létrehozásához. Vegye figyelembe, hogy a `try` blokk végén a tranzakció explicit módon véglegesítve lesz. Ez a példa egy INSERT tranzakció 300-szor ismétlődik. Az alábbi példa egy hatékonyabb kötegelt beszúrási folyamatot mutat be.
 
-## <a name="batch-insert-data"></a>Kötegelt insert adatok
+## <a name="batch-insert-data"></a>Kötegek beszúrása
 
-A következő kódot majdnem megegyezik a kódot az adatok külön-külön beszúrása. Ez a példa a `UpdateBatch` objektum egy hívás `ExecuteBatchRequestAsync`, ahelyett, hogy ismételten hívása `ExecuteRequestAsync` rendelkező előkészített utasítás.
+A következő kód majdnem azonos az adatbeszúrási kóddal. Ez a példa a `UpdateBatch` objektumot használja a `ExecuteBatchRequestAsync` hívásához, nem pedig többször hívja meg a `ExecuteRequestAsync`-t egy előkészített utasítással.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -391,15 +391,15 @@ finally
 }
 ```
 
-Egy tesztkörnyezetben 300 új rekordok külön-külön beszúrása majdnem 2 percet vett igénybe. Ezzel szemben a 300 rekordok beszúrása egy kötegelt szükséges csak 6 másodperc.
+Egy tesztkörnyezetben a 300-es új rekordok egyenként történő beszúrása csaknem 2 percet vett igénybe. Ezzel szemben a 300-as rekordok kötegként való beszúrása csak 6 másodpercet igényel.
 
 ## <a name="select-data"></a>Adatok kiválasztása
 
-Ez a példa bemutatja, hogyan használhat újból egy kapcsolatot, több lekérdezés végrehajtásához:
+Ebből a példából megtudhatja, hogyan használhatja újra az egyik kapcsolódást több lekérdezés végrehajtásához:
 
-1. Válassza ki az összes rekordot, és majd beolvassa a hátralévő rekordok, után az alapértelmezett maximális 100 adja vissza.
-2. Teljes sor száma select utasítás használatával kérje le az egyetlen skaláris eredményt.
-3. Hajtsa végre egy kiválasztási utasítás által visszaadott állam vagy régió per ügyfelek teljes száma.
+1. Jelölje ki az összes rekord elemet, majd a visszaadott alapértelmezett 100 után olvassa be a fennmaradó rekordokat.
+2. Az egyetlen skaláris eredmény beolvasásához használja az összes sor száma SELECT utasítást.
+3. Egy SELECT utasítás végrehajtása, amely az összes ügyfél/állam vagy terület teljes számát adja vissza.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -492,7 +492,7 @@ finally
 }
 ```
 
-A kimenetét a `select` utasításokat az alábbi eredményt kell lennie:
+A `select` utasítások kimenetének a következő eredménynek kell lennie:
 
 ```
 id0 first0
@@ -537,7 +537,7 @@ MH: 6
 FM: 5
 ```
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
-* [A HDInsight Apache Phoenixhez](../hdinsight-phoenix-in-hdinsight.md)
-* [Az Apache HBase REST SDK-val](apache-hbase-rest-sdk.md)
+* [Apache Phoenix a HDInsight](../hdinsight-phoenix-in-hdinsight.md)
+* [Az Apache HBase REST SDK használata](apache-hbase-rest-sdk.md)

@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6368a36eaa2e6832f22a13f20bc35d66c4425b4b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66170486"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311579"
 ---
-# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Rendszerkép létrehozása és használata egy egyéni virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
+# <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -99,6 +99,8 @@ A virtuális gép felszabadítása és általánosítása eltarthat néhány per
 
 Most hozzon létre egy rendszerképet a virtuális gépről az [az image create](/cli//azure/image) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
 
+> Megjegyzés Ha az erőforráscsoport és a virtuális gép helye eltérő, akkor a `--location` paramétert hozzáadhatja az alábbi parancsokhoz a rendszerkép létrehozásához használt forrásoldali virtuális gép helyétől függően. 
+
 ```azurecli-interactive
 az image create \
   --resource-group myResourceGroup \
@@ -160,7 +162,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure CLI-vel:
 
 > [!div class="checklist"]

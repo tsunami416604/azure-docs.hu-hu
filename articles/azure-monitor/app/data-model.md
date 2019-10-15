@@ -1,6 +1,6 @@
 ---
-title: Az Azure Application Insights Telemetria adatmodellt |} A Microsoft Docs
-description: Az Application Insights data model áttekintése
+title: Az Azure Application Insights Telemetria adatmodellje | Microsoft Docs
+description: Az Application Insights adatmodell áttekintése
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,51 +9,51 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 50109d7ba4688606a5a4f1b813d15d78636b7817
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899202"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311783"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights telemetria adatmodell
 
-[Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetriai adatokat küld a webalkalmazásból az Azure Portalra, így elemezheti a teljesítményét és használatát az alkalmazás. A telemetriai adatok modell szabványosított, hogy lehet létrehozni a platform és a figyelés nyelvtől független legyen. 
+Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetria küld a webalkalmazásból a Azure Portalba, így elemezheti az alkalmazás teljesítményét és használatát. A telemetria modell úgy van szabványosítva, hogy platform-és nyelvtől független monitorozást lehessen létrehozni. 
 
-Az Application Insights által gyűjtött adatokat a jellemző végrehajtási alkalmazásminta modellek:
+A Application Insights által gyűjtött adatok ez a tipikus alkalmazás-végrehajtási minta:
 
-![Application Insights-alkalmazásmodell](./media/data-model/application-insights-data-model.png)
+![Application Insights alkalmazás modellje](./media/data-model/application-insights-data-model.png)
 
-A következő típusú telemetriát az alkalmazás végrehajtását figyelésére használható. A következő három típusú általában automatikusan gyűjti össze az Application Insights SDK-t, a webalkalmazás-keretrendszer:
+Az alkalmazás végrehajtásának figyeléséhez a következő típusú telemetria használják. A következő három típust általában automatikusan gyűjti a Application Insights SDK a webalkalmazási keretrendszerből:
 
-* [**Kérelem** ](data-model-request-telemetry.md) – az alkalmazás által fogadott kérelem bejelentkezni generált. Például az Application Insights webes SDK automatikusan előállít egy kérelemben szereplő telemetriai elem minden HTTP-kérelem, amely megkapja a webalkalmazás. 
+* [**Kérelem**](data-model-request-telemetry.md) – az alkalmazás által fogadott kérelem naplózása. A Application Insights web SDK például automatikusan létrehoz egy kérelem telemetria-elemét minden olyan HTTP-kérelem esetében, amelyet a webalkalmazás fogad. 
 
-    Egy **művelet** végrehajtási, hogy a kérelmet feldolgozó szál van. Emellett [kód írása](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) más típusú műveletet, figyeléséhez, mint például egy "felébresztéséhez" egy webes feladat, vagy nem működik, amely rendszeres időközönként feldolgozza az adatokat.  Minden művelet-azonosítóval rendelkezik. Ezt az Azonosítót, amely az alábbiakra használhatók [csoport](../../azure-monitor/app/correlation.md) összes telemetriai adat, míg az alkalmazás a kérés feldolgozása folyamatban van. Minden művelet vagy sikeres vagy sikertelen lesz, és idő időtartama.
-* [**Kivétel** ](data-model-exception-telemetry.md) – általában a egy művelet meghiúsulását okozó kivételt jelenti.
-* [**Függőségi** ](data-model-dependency-telemetry.md) -hívást az alkalmazásból egy külső szolgáltatás vagy a REST API-t vagy az SQL, például jelöli. Az ASP.NET, a következőre irányuló függőséghívás SQL által meghatározott `System.Data`. HTTP-végpontokra irányuló hívásokat által meghatározott `System.Net`. 
+    A **művelet** a kérelmeket feldolgozó végrehajtási szálakat dolgozza fel. Más típusú műveletek figyelésére is [kódot írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) , például egy olyan webes feladat vagy függvény felébresztését, amely rendszeresen dolgozza fel az adatfeldolgozást.  Minden művelet rendelkezik AZONOSÍTÓval. Ez az azonosító a kérelem feldolgozásakor az alkalmazás által létrehozott összes telemetria [csoportosítására](../../azure-monitor/app/correlation.md) használható. Minden művelet sikeres vagy sikertelen, és időtartammal rendelkezik.
+* [**Kivétel**](data-model-exception-telemetry.md) – a művelet általában egy olyan kivételt jelöl, amely egy műveletet eredményez.
+* [**Függőség**](data-model-dependency-telemetry.md) – az alkalmazástól érkező hívást egy külső szolgáltatásra vagy tárhelyre, például egy REST API vagy SQL-példányra hívja. A ASP.NET-ben az SQL-függőségi hívások `System.Data` értékkel vannak meghatározva. A HTTP-végpontokra irányuló hívásokat a `System.Net` határozza meg. 
 
-Az Application Insights további adattípusok egyéni telemetriát biztosít:
+A Application Insights három további adattípust biztosít az egyéni telemetria:
 
-* [Nyomkövetési](data-model-trace-telemetry.md) – vagy közvetlenül használni, vagy keresztül az adapter megvalósításához a diagnosztikai naplózás használatával egy rendszerállapot-keretrendszer, amely ismerős lehet, mint például `Log4Net` vagy `System.Diagnostics`.
-* [Esemény](data-model-event-telemetry.md) – felhasználói interakció a szolgáltatáshoz, a használati minták elemzése rögzítéséhez használt.
-* [A metrika](data-model-metric-telemetry.md) – az időszakos skaláris mérések jelentést.
+* [Nyomkövetés](data-model-trace-telemetry.md) – közvetlenül vagy adapteren keresztül, a diagnosztikai naplózás megvalósításához olyan rendszerállapot-keretrendszer használatával, amely ismerős, például `Log4Net` vagy `System.Diagnostics`.
+* [Esemény](data-model-event-telemetry.md) – jellemzően a szolgáltatással való felhasználói interakció rögzítésére használatos a használati minták elemzése érdekében.
+* [Metrika](data-model-metric-telemetry.md) – az időszakos skaláris mérések jelentésére szolgál.
 
-Minden telemetriai elem adhatja meg a [környezeti információkat](data-model-context.md) például alkalmazás verziója vagy a felhasználói munkamenet-azonosító. Környezet a típusos mezők halmaza, amelyek bizonyos forgatókönyvek feloldja. Alkalmazásverzió megfelelően van inicializálva, az Application Insights képes észlelni a új mintákat korrelált újbóli üzembe helyezés az alkalmazás működésében. A munkamenet-azonosító a szolgáltatáskimaradás elhárítása után vagy egy problémát okozzon a felhasználóknak kiszámításához használható. Függőségi munkamenet-azonosító értékek eltérők száma az egyes kiszámítása nem sikerült, hiba történt a nyomkövetési vagy kritikus kivétel kínál jól ismerik a hatást.
+Minden telemetria-eleme meghatározhatja a [környezeti adatokat](data-model-context.md) , például az alkalmazás vagy a felhasználói munkamenet azonosítóját. A kontextus olyan szigorúan beírt mezők összessége, amelyek feloldják bizonyos helyzeteket. Ha az alkalmazás verziója megfelelően van inicializálva, a Application Insights az újbóli üzembe helyezéssel összefügg az alkalmazás viselkedésében rejlő új mintázatok észlelésével. A munkamenet-azonosító a leállás kiszámításához, vagy a probléma a felhasználókra gyakorolt hatásának kiszámításához használható. Bizonyos sikertelen függőségek, a hibák nyomon követése vagy a kritikus kivételek eltérő számának kiszámításával jól megértettük a hatását.
 
-Application Insights telemetria modell módját határozzák meg [összekapcsolását](../../azure-monitor/app/correlation.md) telemetriai adatokat a műveletet, amely egy részét képezi. Például egy kérelem egy SQL Database-hívásokat indíthatna és rögzített diagnosztikai adatok. Vissza a kérelmek telemetriai adatai rendelését telemetriai elemeket korrelációs kontextusa állíthatja be.
+Application Insights telemetria modell meghatározza a telemetria azon műveletének a [módját, amelynek](../../azure-monitor/app/correlation.md) a része. Egy kérelem például létrehozhat egy SQL Database hívást és a rögzített diagnosztikai adatokat. Megadhatja azon telemetria-elemek korrelációs környezetét, amelyek visszakötik a kérelem telemetria.
 
-## <a name="schema-improvements"></a>Séma fejlesztései
+## <a name="schema-improvements"></a>Sémák fejlesztése
 
-Application Insights adatmodell módja egy egyszerű és egyszerű, mégis hatékony modellezésére a telemetriai. Igyekszünk tartani a modell, egyszerű és slim alapvető alkalmazási helyzetet támogatásához, és lehetővé teszi a speciális használható a séma kiterjesztését.
+A Application Insights adatmodell egyszerű és alapszintű, mégis hatékony módja az alkalmazás telemetria modellezésének. Arra törekszünk, hogy a modell egyszerű és karcsú legyen, hogy támogassa az alapvető forgatókönyveket, és lehetővé tegye a séma speciális használatra való kiterjesztését.
 
-Data modell és séma problémák és javaslatok használata a GitHub jelentéséhez [ApplicationInsights – kezdőlap](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) tárház.
+Az adatmodell vagy séma problémáinak és javaslatainak jelentéséhez használja a GitHub [ApplicationInsights-Home](https://github.com/Microsoft/ApplicationInsights-Home/issues) repositoryt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md)
-- Ismerje meg, hogyan [bővítése és szűrőtelemetria](../../azure-monitor/app/api-filtering-sampling.md).
-- Használat [mintavételi](../../azure-monitor/app/sampling.md) mennyiségű telemetriai adat modellen alapuló minimalizálása érdekében.
-- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.
+- [Egyéni telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md)
+- Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](../../azure-monitor/app/api-filtering-sampling.md).
+- A [mintavétel](../../azure-monitor/app/sampling.md) használatával minimálisra csökkenthető az adatmodellen alapuló telemetria mennyisége.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

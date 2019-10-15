@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/10/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: a4a4eefc1b31e8412392f5ffed404201b98e0386
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cefd0653985e4340e62e0ea56f73ff2cabf5741b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996361"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312126"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtuális WAN-partnerek és virtuális központ helyei
 
@@ -40,13 +40,13 @@ Néhány csatlakozási partner kiterjesztheti az automationt, hogy az tartalmazz
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-A következő partnerek a közeljövőben a tervek szerint vannak felkészülve: Arista, F5 Networks, Fortinet, Silver-Peak, Velocloud, Nuage Nokia.
+A következő partnereink a közeljövőben: Arista, F5 Networks, Fortinet, Silver-Peak, Velocloud, Nuage Nokia.
 
 ## <a name="locations"></a>Helyek
 
 [!INCLUDE [regions](../../includes/virtual-wan-regions-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A virtuális WAN-ról további információt a [virtuális WAN gyakori kérdések](virtual-wan-faq.md)című témakörben talál.
 
