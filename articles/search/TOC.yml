@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Tevékenység és naplózás monitorozása
           href: search-monitor-usage.md
-        - name: Forgalmi elemzések keresése
-          href: search-traffic-analytics.md
 - name: Referencia
   items:
     - name: Azure CLI

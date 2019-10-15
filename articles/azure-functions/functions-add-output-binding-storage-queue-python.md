@@ -1,26 +1,22 @@
 ---
 title: Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
-description: Ismerje meg, hogyan adhat hozzá egy Azure Storage-üzenetsor kimeneti kötést a Python-függvényhez az Azure CLI és a functions Core eszközök használatával.
-services: functions
-keywords: ''
+description: Ismerje meg, hogyan adhat hozzá egy Azure Storage-üzenetsor kimeneti kötését a Python-függvényhez.
 author: ggailey777
 ms.author: glenga
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
-ms.custom: mvc
-ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+manager: gwallace
+ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839180"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329728"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Azure Storage-várólista kötésének hozzáadása a Python-függvényhez
 
-Azure Functions lehetővé teszi az Azure-szolgáltatások és egyéb erőforrások összekapcsolását a funkciókhoz anélkül, hogy saját integrációs kódot kellene írnia. Ezek a *kötések*, amelyek a bemeneti és a kimeneti adatokat jelölik, a függvény definíciójában vannak deklarálva. A kötések adatait paraméterként a függvény kapja meg. Az *trigger* egy speciális típusú bemeneti kötés. Bár a függvénynek csak egy triggere van, több bemeneti és kimeneti kötés is lehet. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
+[!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
 Ez a cikk bemutatja, hogyan integrálhatja az előző rövid útmutató [cikkében](functions-create-first-function-python.md) létrehozott függvényt egy Azure Storage-üzenetsor használatával. Az ehhez a függvényhez hozzáadott kimeneti kötés egy HTTP-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
@@ -34,7 +30,7 @@ A cikk elkezdése előtt végezze el a [Python rövid útmutató 1. részében](
 
 ## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+[!INCLUDE [functions-app-settings-download-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Bővítmény-csomagok engedélyezése
 
@@ -63,7 +59,7 @@ func host start
 ```
 
 > [!NOTE]  
-> Mivel az előző rövid útmutatóban engedélyezte a bővítmények használatát a Host. JSON fájlban, a rendszer letölti és telepítette a [Storage kötési bővítményt](functions-bindings-storage-blob.md#packages---functions-2x) az indítás során, valamint a többi Microsoft-kötési bővítményt is.
+> Mivel engedélyezte a bővítmények használatát a Host. JSON fájlban, a [Storage kötési bővítmény](functions-bindings-storage-blob.md#packages---functions-2x) le lett töltve és telepítve lett az indításakor, valamint a többi Microsoft-kötési bővítménysel együtt.
 
 Másolja ki a `HttpTrigger` függvény URL-címét a futtatókörnyezetének kimenetéből, majd illessze be a böngészője címsorába. Fűzze hozzá a `?name=<yourname>` lekérdezési karakterláncot ehhez az URL-címhez, és futtassa a kérelmet. Ugyanezt a választ kell megjelennie a böngészőben, ahogy az előző cikkben is volt.
 
@@ -71,17 +67,17 @@ Ezúttal a kimeneti kötés is létrehoz egy `outqueue` nevű várólistát a St
 
 Ezután az Azure CLI használatával megtekintheti az új várólistát, és ellenőrizheti, hogy hozzá lett-e adva üzenet. Az üzenetsor a [Microsoft Azure Storage Explorer][Azure Storage Explorer] vagy a [Azure Portal](https://portal.azure.com)használatával is megtekinthető.
 
-### <a name="set-the-storage-account-connection"></a>A Storage-fiók kapcsolatainak beállítása
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>A tárolási várólista lekérdezése
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
-Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmazást az Azure-ban.
+### <a name="redeploy-the-project"></a>A projekt újbóli üzembe helyezése 
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+A közzétett alkalmazás frissítéséhez használja a [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools parancsot a projekt kódjának az Azure-ban való üzembe helyezéséhez. Ebben a példában a `<APP_NAME>` helyére írja be az alkalmazás nevét.
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
 
 A cURL vagy a böngésző használatával tesztelheti az üzembe helyezett függvényt. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez, az alábbi példában látható módon:
 
@@ -89,11 +85,11 @@ A cURL vagy a böngésző használatával tesztelheti az üzembe helyezett függ
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
 ```
 
-[Megvizsgálhatja a tárolási üzenetsor üzenetét](#query-the-storage-queue) annak ellenőrzéséhez, hogy a kimeneti kötés ismét létrehoz egy új üzenetet a várólistában.
+[Megvizsgálhatja a tárolási üzenetsor üzenetét](#query-the-storage-queue) annak ellenőrzéséhez, hogy a kimeneti kötés a várt módon létrehoz egy új üzenetet a várólistában.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Frissítette a HTTP-triggert a függvényt, hogy az adatait egy tárolási várólistába írja. Ha többet szeretne megtudni a Python Azure Functions fejlesztéséről, tekintse meg a [Python fejlesztői útmutató Azure functions](functions-reference-python.md) és [Azure functions triggerek és kötések](functions-triggers-bindings.md)című témakört. A Python függvényekben a teljes körű függvények projektjeiről a [Python functions](/samples/browse/?products=azure-functions&languages=python)példákban olvashat. 
 

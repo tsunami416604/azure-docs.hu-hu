@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Azure cache használata a Node. js-sel rendelkező Redis'
+title: 'Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure cache-t a Node. js és a node_redis Redis.
 services: cache
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057864"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329826"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: Az Azure cache használata a Node. js-sel rendelkező Redis
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Gyors útmutató: az Azure cache használata a Node. js-sel rendelkező Redis
 
 Ebben a rövid útmutatóban egy Node. js-alkalmazásba beépítheti az Azure cache-t, hogy hozzáférhessen egy olyan biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető Redis.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), amelyet a paranccsal `npm install redis`telepíthet. 
+- [node_redis](https://github.com/mranney/node_redis), amelyet a `npm install redis` paranccsal telepíthet. 
 
 Az egyéb Node.js-ügyfeleket használó példákért tekintse meg az egyes Node.js-ügyfelek dokumentációját a [Node.js Redis-ügyfeleket](https://redis.io/clients#nodejs) felsoroló weblapon.
 
@@ -113,7 +113,7 @@ node redistest.js
 
 Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyorsítótárazott értéke volt, amely az Azure Portalon, a Redis Console használatával lett beállítva. Az alkalmazás frissítette ezt a gyorsítótárazott értéket. Az alkalmazás továbbá végrehajtotta a `PING` és a `CLIENT LIST` parancsot.
 
-![Kész gyorsítótár-alkalmazás](./media/cache-nodejs-get-started/cache-app-complete.png)
+![Redis Cache alkalmazás befejeződött](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -122,20 +122,20 @@ Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és �
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
 A **szűrés név alapján** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
 
-![Törlés](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![Azure-erőforráscsoport törlése](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
 A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t a Redis egy Node. js-alkalmazásból. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

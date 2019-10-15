@@ -1,8 +1,6 @@
 ---
 title: Az első függvény létrehozása az Azure-ban a Visual Studióval
 description: Hozzon létre és tegyen közzé HTTP-triggerrel aktivált Azure Functions-függvényt a Visual Studióval.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 keywords: azure functions, függvények, eseményfeldolgozás, számítás, kiszolgáló nélküli architektúra
@@ -12,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096575"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329489"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Az első függvény létrehozása a Visual Studio használatával
 
@@ -39,7 +37,7 @@ Az oktatóanyag elvégzéséhez először telepítenie kell a [Visual Studio 201
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A metódus `HttpTrigger`attribútuma beállítja a függvény nevét, amely alapértelmezés szerint a. `FunctionName` Az `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
+A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A metódus `FunctionName` attribútuma beállítja a függvény nevét, amely alapértelmezés szerint `HttpTrigger`. A `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
 
 A függvény képességeit a bemeneti és kimeneti kötésekkel bővítheti, ha a megfelelő attribútumokat alkalmazza a metódusra. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md) [Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
 
@@ -71,9 +69,9 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
     ![A függvény által visszaadott válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Visual Studióval egy egyszerű HTTP-triggerrel C# aktivált függvény használatával hozhat létre és tehet közzé egy Function-alkalmazást az Azure-ban. Ha többet szeretne megtudni a függvények .NET-es kódtáraként való fejlesztéséről, tekintse meg a [ C# Azure functions fejlesztői referenciát](functions-dotnet-class-library.md).
+A Visual Studióval egy egyszerű HTTP-triggerrel C# aktivált függvény használatával hozhat létre és tehet közzé egy Function-alkalmazást az Azure-ban. Ha többet szeretne megtudni a függvények .NET-es kódtáraként való fejlesztéséről, tekintse meg a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
 > [!div class="nextstepaction"]
 > [Azure Storage-várólista kötésének hozzáadása a függvényhez](functions-add-output-binding-storage-queue-vs.md)

@@ -1,5 +1,5 @@
 ---
-title: Gyors útmutató – Docker-tároló üzembe helyezése Azure Container Instances-CLI-ben
+title: 'Gyors útmutató: Docker-tároló üzembe helyezése Azure Container Instances – Azure CLI'
 description: Ebben a rövid útmutatóban az Azure CLI használatával gyorsan üzembe helyezhet egy elkülönített Azure Container-példányon futó tároló-webalkalmazást
 services: container-instances
 author: dlepow
@@ -8,15 +8,18 @@ ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
 ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+ms.openlocfilehash: 111191aa664650fe1ffdfd8de492e13e98349b34
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050629"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327434"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Gyors útmutató: Tároló-példány üzembe helyezése az Azure-ban az Azure CLI használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Gyors útmutató: tároló-példány üzembe helyezése az Azure-ban az Azure CLI használatával
 
 A Azure Container Instances használatával a kiszolgáló nélküli Docker-tárolókat az Azure-ban, az egyszerűség és a gyorsaság segítségével futtathatja. Igény szerint üzembe helyezhet egy alkalmazást egy tároló-példányon, ha nincs szüksége a teljes Container-előkészítési platformra, például az Azure Kubernetes szolgáltatásra.
 
@@ -30,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutató teljesítéséhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Ha helyileg szeretné használni, a 2.0.55 vagy újabb verzió használata javasolt. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
@@ -42,11 +45,11 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ha tároló-példányt szeretne létrehozni az Azure CLI-vel, adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét az az [Container Create][az-container-create] paranccsal. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használhatja. Ez a rendszerkép egy statikus HTML-oldalt kiszolgáló, Node. js-ben írt kisméretű webalkalmazást csomagol.
+Most, hogy rendelkezik egy erőforráscsoporttal, futtathat egy tárolót az Azure-ban. Ha tároló-példányt szeretne létrehozni az Azure CLI-vel, adjon meg egy erőforráscsoport-nevet, egy tároló-példány nevét és a Docker-tároló rendszerképét az az [Container Create][az-container-create] paranccsal. Ebben a rövid útmutatóban a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképet használja. Ez a rendszerkép egy statikus HTML-oldalt kiszolgáló, Node. js-ben írt kisméretű webalkalmazást csomagol.
 
-A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy a webalkalmazás nyilvánosan elérhető legyen.
+Közzéteheti a tárolókat az interneten egy vagy több port megnyitásával, egy DNS-névcímke megadásával, vagy mindkettővel. Ebben a rövid útmutatóban egy DNS-név címkével rendelkező tárolót helyez üzembe, hogy a webalkalmazás nyilvánosan elérhető legyen.
 
-Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Olyan `--dns-name-label` értéket állítson be, amely egyedi azon az Azure-régión belül, ahol létrehozza a példányt. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+Egy tároló-példány elindításához a következőhöz hasonló parancsot kell végrehajtania. Állítson be egy `--dns-name-label` értéket, amely egyedi azon az Azure-régión belül, ahol létrehozta a példányt. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 ```azurecli-interactive
 az container create --resource-group myResourceGroup --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld --dns-name-label aci-demo --ports 80
@@ -67,7 +70,7 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Ha a tároló `ProvisioningState` **sikeres**, nyissa meg a teljes tartománynevet a böngészőben. Ha egy, az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
+Ha a tároló `ProvisioningState` **sikeres**, nyissa meg a teljes tartománynevet a böngészőben. Ha az alábbihoz hasonló weboldal jelenik meg, gratulálunk! Sikeresen üzembe helyezett egy Docker-tárolóban futó alkalmazást az Azure-ban.
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható][aci-app-browser]
 
@@ -145,7 +148,7 @@ Ha végzett a *myResourceGroup* -erőforráscsoport és a benne található öss
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container-példányt egy nyilvános Microsoft-rendszerkép használatával. Ha saját maga szeretne létrehozni és üzembe helyezni egy tárolórendszerképet egy Azure-beli privát tárolóregisztrációs adatbázisból, lépjen tovább az Azure Container Instances oktatóanyagára.
 

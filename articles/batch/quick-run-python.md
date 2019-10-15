@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Batch-feladat futtatása – Python
+title: 'Gyors útmutató: Azure Batch-feladatok futtatása – Python API'
 description: Batch-feladatok és -tevékenységek gyors futtatása a Batch Python ügyfélkódtárával.
 services: batch
 author: laurenhughes
@@ -9,15 +9,17 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
-ms.custom: mvc
-ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom:
+- seo-python-october2019
+- mvc
+ms.openlocfilehash: e5ec131e73c40e72862122d360574bb4ee5d3cda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090770"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329364"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Gyors útmutató: Futtassa az első batch-feladatot a Python API-val
+# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 
 Ez a rövid útmutató egy Azure Batch-feladatot futtat egy, az Azure Batch Python API-ra épülő alkalmazásból. Az alkalmazás feltölt több bemeneti adatfájlt az Azure Storage-ba, majd létrehoz egy Batch számítási csomópontokból (virtuális gépekből) álló *készletet*. Ezután létrehoz egy minta*feladatot*, amely *tevékenységek* futtatásával és egy alapvető parancs használatával minden egyes bemeneti fájlt feldolgoz a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
  
@@ -47,7 +49,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Nyissa meg a Python-szkriptet `python_quickstart_client.py`tartalmazó könyvtárat.
+Nyissa meg a könyvtárat, amely a `python_quickstart_client.py` Python-szkriptet tartalmazza.
 
 A Python fejlesztési környezetében telepítse a szükséges csomagokat a `pip` segítségével.
 
@@ -232,7 +234,7 @@ Az alkalmazás automatikusan törli a létrehozott Storage-tárolót, és felkí
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez a Azure Portal válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy, a Batch Python API-val létrehozott kisméretű alkalmazást futtatott, és létrehozott vele egy Batch-készletet és egy Batch-feladatot. A feladat mintatevékenységeket futtatott, és letöltötte a csomópontokon létrehozott kimeneteket. Most, hogy megismerkedett a Batch szolgáltatás fő fogalmaival, készen áll a Batch szolgáltatás realisztikusabb számítási feladatokkal, nagyobb léptékben történő kipróbálására. Ha többet szeretne megtudni az Azure Batchről, és végig szeretne nézni egy párhuzamos számítási feladatot egy valós alkalmazással, folytassa a Batch Python oktatóanyaggal.
 

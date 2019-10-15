@@ -1,23 +1,23 @@
 ---
-title: Az Azure Blockchain Development Kit for Ethereum használata az Azure Blockchain Service-hez való kapcsolódáshoz
+title: Az Azure Blockchain Development Kit for Ethereum – Azure Blockchain Service használata
 description: Kapcsolódás Azure Blockchain Service Consortium-hálózathoz a Visual Studio Code-ban található Ethereum-bővítményhez készült Azure Blockchain Development Kit használatával
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/10/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 82b71a9d837ed3cb1d9461c0de2559178685b4b4
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6364e887c699219d80974d592a8ff7c77cca2621
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935816"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329305"
 ---
-# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: A Visual Studio Code használata Azure Blockchain Service Consortium-hálózathoz való kapcsolódáshoz
+# <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: Azure Blockchain Service Consortium-hálózathoz való kapcsolódás a Visual Studio Code használatával
 
 Ebben a rövid útmutatóban a Ethereum Visual Studio Code-bővítményhez készült Azure Blockchain Development Kit használatával telepítheti és használhatja az Azure Blockchain szolgáltatásban található konzorciumhoz való csatolást. Az Azure Blockchain Development Kit leegyszerűsíti a Ethereum-főkönyvekben található intelligens szerződések létrehozását, összekapcsolását, létrehozását és üzembe helyezését. 
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban a Ethereum Visual Studio Code-bővítményhez kész
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [gyors útmutató: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI-vel](create-member-cli.md)
+* Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js](https://nodejs.org)
@@ -38,7 +38,7 @@ Ebben a rövid útmutatóban a Ethereum Visual Studio Code-bővítményhez kész
 
 Az Azure Blockchain Development Kit ellenőrzi, hogy teljesülnek-e a fejlesztési környezet előfeltételei. A fejlesztési környezet ellenőrzése:
 
-A vs Code parancs palettáján válassza **az Azure Blockchain: Kezdőlap**megjelenítése.
+A VS Code parancs palettáján válassza az **Azure Blockchain: Kezdőlap megjelenítése**lehetőséget.
 
 Az Azure Blockchain Development Kit olyan érvényesítési parancsfájlt futtat, amely körülbelül egy percet vesz igénybe. Megtekintheti a kimenetet a **terminal > új terminál**lehetőség kiválasztásával. A terminál menüsorában válassza a **kimenet** fület és az **Azure Blockchain** a legördülő menüben. A sikeres érvényesítés az alábbi képhez hasonlóan néz ki:
 
@@ -54,7 +54,7 @@ A rövid útmutató folytatása előtt telepítse a hiányzó előfeltételeket.
 
 A konzorcium tagjaihoz az Azure Blockchain Development Kit VS Code bővítmény használatával csatlakozhat. A konzorciumhoz való csatlakozás után intelligens szerződéseket állíthat össze, építhet ki és helyezhet üzembe egy Azure Blockchain Service Consortium-tag számára.
 
-Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre [az előfeltételként szükséges rövid útmutatót: Blockchain-tag létrehozása a Azure Portal](create-member.md) vagy [a gyors útmutató használatával: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI](create-member-cli.md)használatával.
+Ha nincs hozzáférése az Azure Blockchain Service Consortium egyik tagjához, hajtsa végre az előfeltételként szükséges rövid útmutatót [: hozzon létre egy Blockchain-tagot a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure Blockchain Service Blockchain-tag létrehozása az Azure CLI használatával ](create-member-cli.md).
 
 1. A Visual Studio Code (VS Code) Explorer ablaktáblán bontsa ki az **Azure Blockchain** bővítményt.
 1. Válassza **a kapcsolódás konzorciumhoz**lehetőséget.
@@ -70,7 +70,7 @@ A konzorcium és a blockchain tagjai a Visual Studio Explorer oldalsó sávján 
 
 ![A konzorcium megjelenik az Explorerben](./media/connect-vscode/consortium-node.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban az Azure Blockchain fejlesztői készletet használta a Ethereum Visual Studio Code-bővítményhez, hogy az Azure Blockchain Service-ben lévő konzorciumhoz csatoljon. Próbálja ki a következő oktatóanyagot az Azure Blockchain Development Kit for Ethereum és a szarvasgomba használatával egy intelligens szerződési funkció egy tranzakción keresztül történő létrehozásához, létrehozásához, üzembe helyezéséhez és végrehajtásához.
 

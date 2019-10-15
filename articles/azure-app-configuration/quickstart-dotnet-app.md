@@ -3,8 +3,8 @@ title: Gyors útmutató az Azure-alkalmazások konfigurálásához a .NET-keretr
 description: Gyors útmutató az Azure-alkalmazások konfigurációjának a .NET-keretrendszer alkalmazásaival való használatához
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326525"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329794"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: .NET-keretrendszerbeli alkalmazás létrehozása az Azure app Configuration használatával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET-keretrendszer 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET-keretrendszer 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
 
@@ -37,28 +37,31 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
 6. Válassza a **Configuration Explorer** >  **+ Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
-    | Kulcs | Value |
+    | Jelmagyarázat | Value (Díj) |
     |---|---|
-    | TestApp:Settings:Message | Adatok az Azure-alkalmazás konfigurációjától |
+    | TestApp: beállítások: üzenet | Adatok az Azure-alkalmazás konfigurációjától |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
 ## <a name="create-a-net-console-app"></a>.NET-konzol alkalmazás létrehozása
 
-1. Indítsa el a Visual studiót, és válassza a **fájl** > **új** > **projekt**lehetőséget.
+1. Indítsa el a Visual studiót, és válassza a **fájl**@no__t – 1**új** > **projektet**.
 
-2. Az **új projekt**területen válassza a **telepített** > **C#Visual**   > Windows Desktop elemet. Válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, és adja meg a projekt nevét. Válassza a **.NET-keretrendszer 4.7.1** vagy a fel lehetőséget, majd kattintson **az OK gombra**.
+1. A **create a New Project (új projekt létrehozása**) területen szűrje a **konzol** projekt típusát, és kattintson a **Console app (.NET-keretrendszer)** elemre. Kattintson a **Tovább** gombra.
+
+1. Az **új projekt konfigurálása**területen adja meg a projekt nevét. A **keretrendszer**területen válassza a **.NET-keretrendszer 4.7.1** vagy újabb lehetőséget. Kattintson a  **Create** (Létrehozás) gombra.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez. Ha nem találja őket, jelölje be az **előzetes verzió** belefoglalása jelölőnégyzetet.
+1. Kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget. A **Tallózás** lapon keresse meg és adja hozzá a következő NuGet-csomagokat a projekthez. Ha nem találja őket, jelölje be az **előzetes verzió belefoglalása** jelölőnégyzetet.
 
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. Frissítse a projekt *app. config* fájlját a következőképpen:
+1. Frissítse a projekt *app. config* fájlját a következőképpen:
 
     ```xml
     <configSections>
@@ -78,14 +81,14 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
     </appSettings>
     ```
 
-   Az alkalmazás konfigurációs tárolójának a környezeti változóból `ConnectionString`való beolvasása a kapcsolatok karakterlánca. Adja hozzá `Environment` a Configuration Builder `MyConfigStore` `configBuilders` -taszakasztulajdonságához.`appSettings`
+   Az alkalmazás konfigurációs tárolójának a (`ConnectionString` környezeti változóból való beolvasása során a rendszer a A `appSettings` szakasz `configBuilders` tulajdonságában adja hozzá a `Environment` konfigurációs szerkesztőt a `MyConfigStore` értékhez.
 
-3. Nyissa meg a *program.cs*, `Main` és frissítse a metódust az alkalmazás `ConfigurationManager`konfigurációjának meghívásával való használatára.
+1. Nyissa meg a *program.cs*, és frissítse az `Main` metódust úgy, hogy az `ConfigurationManager` hívásával használja az alkalmazás konfigurációját.
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
@@ -101,13 +104,13 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET-
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
+1. Indítsa újra a Visual studiót, hogy a módosítás érvénybe lépjen. A konzol alkalmazás létrehozásához és futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta azt egy .NET Framework Console alkalmazással. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa a következő oktatóanyaggal, amely bemutatja a hitelesítést.
 

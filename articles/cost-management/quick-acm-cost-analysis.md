@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2019
+ms.date: 10/14/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 2ca0c0741ea543b30695303d473389979f2e1045
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f2e1d19f69b426cee870d2ede489b7c458404704
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855045"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374772"
 ---
-# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: Fedezze fel és elemezze a költségeket a Cost Analysis szolgáltatással
+# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: költségek feltárása és elemzése a Cost Analysis szolgáltatással
 
 Ahhoz, hogy érdemben szabályozhassa és optimalizálhassa Azure-költségeit, fontos, hogy tudja a vállalaton belül hol keletkeznek ezek a költségek. Azt is érdemes megismerni, hogy Mennyibe kerül a szolgáltatás díja, és hogy mely környezetek és rendszerek támogatására van lehetőség. A költségek teljes spektrumának ismerete elengedhetetlen a szervezet kiadásaiban fellépő mintázatok pontos megértéséhez. A költségkeretek segítségével kikényszerítheti a költség-ellenőrzési mechanizmusokat, például a költségvetést.
 
@@ -34,16 +34,7 @@ Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
 A Cost Analysis különböző típusú Azure-fiókokat támogat. A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md). A költségadatok megtekintéséhez legalább olvasási hozzáféréssel kell rendelkeznie az Azure-fiókhoz.
 
-[Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ügyfelek esetében legalább olvasási hozzáféréssel kell rendelkeznie a következő hatókörök közül egy vagy többhöz a költségadatok megtekintéséhez.
-
-- Számlázási fiók
-- Részleg
-- Regisztrációs fiók
-- Felügyeleti csoport
-- Előfizetés
-- Resource group
-
-A Azure Cost Management adatokhoz való hozzáférés kiosztásával kapcsolatos további információkért lásd az [adatokhoz való hozzáférés](assign-access-acm-data.md)kiosztását ismertető témakört.
+További információ a Azure Cost Management adatokhoz való hozzáférés kiosztásáról: az [adatokhoz való hozzáférés kiosztása](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -51,36 +42,36 @@ A Azure Cost Management adatokhoz való hozzáférés kiosztásával kapcsolatos
 
 ## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
 
-Ha szeretné áttekinteni a költségeket a Cost Analysis szolgáltatásban, nyissa meg a hatókört a Azure Portalban, és válassza a **Cost Analysis** lehetőséget a menüben Például lépjen az előfizetések elemre, válasszon ki egy előfizetést a listából, majd válassza a menü **Cost Analysis** elemét. A **hatókör** -pirula használatával váltson át egy másik hatókörre a Cost Analysis szolgáltatásban. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
+Ha szeretné áttekinteni a költségeket a Cost Analysis szolgáltatásban, nyissa meg a hatókört a Azure Portalban, és válassza a **Cost Analysis** lehetőséget a menüben Például lépjen az **előfizetések**elemre, válasszon ki egy előfizetést a listából, majd válassza a menü **Cost Analysis** elemét. A **Hatókör** elemmel másik hatókörre válthat a költségelemzésben. További információ a hatókörökről: a [hatókörök megismerése és használata](understand-work-scopes.md).
 
 A kiválasztott hatókört a rendszer az egész Cost Management használja az adatösszesítés biztosításához és a költségadatok hozzáférésének szabályozásához. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett nagyobb hatókört kell választania, amelyet mások is felhasználhatnak, majd szűrniük kell azokat a beágyazott hatókörökre, amelyekre szüksége van. Ez a megközelítés azért fontos, mert előfordulhat, hogy egyes személyek nem férhetnek hozzá egyetlen szülő hatókörhöz, amely több beágyazott hatókörre is kiterjed.
 
 A kezdeti Cost Analysis View a következő területeket tartalmazza.
 
-**Halmozott Cost nézet**: Az előre definiált Cost Analysis View konfigurációt jelöli. Minden nézet tartalmazza a dátumtartomány, a részletesség, a Csoportosítás és a szűrés beállításait. Az alapértelmezett nézetben az aktuális számlázási időszak összesített költségei láthatók, de más beépített nézetekre is válthat. További információ: a [Cost views testreszabása](#customize-cost-views).
+**Halmozott Cost nézet**: az előre definiált Cost Analysis View konfigurációt jelöli. Minden nézet tartalmazza a dátumtartomány, a részletesség, a Csoportosítás és a szűrés beállításait. Az alapértelmezett nézetben az aktuális számlázási időszak összesített költségei láthatók, de más beépített nézetekre is válthat. További információ: a [Cost views testreszabása](#customize-cost-views).
 
-**Tényleges díj**: Az aktuális hónap teljes használati és vásárlási költségeit jeleníti meg, amint azok felhalmozódnak, és megjelennek a számlán.
+**Tényleges költség**: az aktuális hónap teljes használati és vásárlási költségét jeleníti meg, amint azok felhalmozódnak, és megjelennek a számlán.
 
-**Előrejelzés**: Megjeleníti a kiválasztott időszakra vonatkozó összes előre jelzett költséget. (Az előrejelzés előzetes verzióban érhető el.)
+**Előrejelzés**: a kiválasztott időszakra vonatkozó összes előrejelzett költséget jeleníti meg. (Az előrejelzés előzetes verzióban érhető el.)
 
-**Költségvetés**: A kiválasztott hatókör tervezett költségkeretét jeleníti meg, ha van ilyen.
+Költségvetés: a kiválasztott hatókör tervezett **költségkeretét**jeleníti meg, ha van ilyen.
 
-**Halmozott részletesség**: A számlázási időszak elejétől számított összesített napi költségek megjelenítése. Miután számlázási fiókjához vagy előfizetéséhez [létrehozta költségvetését](tutorial-acm-create-budgets.md), itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
+**Halmozott részletesség**: a számlázási időszak elejétől számított összesített napi költségeket mutatja. Miután számlázási fiókjához vagy előfizetéséhez [létrehozta költségvetését](tutorial-acm-create-budgets.md), itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
 
-**Pivot (fánk) diagramok**: Adja meg a dinamikus kimutatásokat, és a teljes költségeket a szokásos tulajdonságok közös készletével bontsa ki. Az aktuális hónap legnagyobb költségét jelenítik meg. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségeket a szolgáltatás (fogyasztásmérő kategória), a hely (régió) és a gyermek hatóköre alapértelmezés szerint kategorizálja. Például a beléptetési fiókok számlázási fiókok alatt találhatók, az erőforráscsoportok az előfizetések alatt találhatók, és az erőforrások az erőforráscsoportok alatt találhatók.
+**Pivot (fánk) diagramok**: dinamikus kimutatások biztosítása, a teljes díj lebontása a szokásos tulajdonságok közös készletével. Az aktuális hónap legnagyobb költségét jelenítik meg. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségeket a szolgáltatás (fogyasztásmérő kategória), a hely (régió) és a gyermek hatóköre alapértelmezés szerint kategorizálja. Például a beléptetési fiókok számlázási fiókok alatt találhatók, az erőforráscsoportok az előfizetések alatt találhatók, és az erőforrások az erőforráscsoportok alatt találhatók.
 
-![Az Azure Portalon költségelemzés kezdeti nézete](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+![A Cost Analysis kezdeti nézete a Azure Portalban](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
 ## <a name="customize-cost-views"></a>Költségnézetek testreszabása
 
 A Cost Analysis négy beépített nézetet tartalmaz, amelyek a leggyakoribb célokhoz vannak optimalizálva:
 
-Nézet | Válaszoljon például a következő kérdésekre:
+Megtekintés | Válaszoljon például a következő kérdésekre:
 --- | ---
-Halmozott költség | Mennyit töltöttem eddig ebben a hónapban? Belül maradok-e a költségkeretemen?
-Napi költség | Az elmúlt 30 napban a napi költségek növekedtek?
-Díj szolgáltatás szerint | Hogyan változik a havi használat az elmúlt három számlán?
-Díjak erőforrások szerint | Mely erőforrások jelentik a legtöbbet ebben a hónapban?
+Halmozott díj | Mennyit töltöttem eddig ebben a hónapban? Belül maradok-e a költségkeretemen?
+Napi díj | Az elmúlt 30 napban a napi költségek növekedtek?
+Szolgáltatás díja | Hogyan változik a havi használat az elmúlt három számlán?
+Cost erőforrás szerint | Mely erőforrások jelentik a legtöbbet ebben a hónapban?
 
 ![Az adott hónapra kijelölni kívánt példát mutató választó megtekintése](./media/quick-acm-cost-analysis/view-selector.png)
 
@@ -88,7 +79,7 @@ Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszab�
 
 Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A dátumválasztó használatával gyorsan válthat a gyakori dátumtartomány-tartományokra. Ilyenek például az elmúlt hét nap, az utolsó hónap, az aktuális év vagy egy egyéni dátumtartomány. Az utólagos elszámolású előfizetések a számlázási időszak alapján is tartalmazzák a dátumtartományt, amely nem a naptári hónaphoz van kötve, például az aktuális számlázási időszakhoz vagy az utolsó számlához. A menü tetején lévő **< előző** és **következő >** hivatkozásokat használva ugorjon az előző vagy a következő időszakra. Az **előző <** például az **elmúlt 7 nap** és **8-14 napja** , illetve a **15-21 napja**után vált.
 
-![Dátum-választó megjelenítése egy példa kiválasztása ebben a hónapban](./media/quick-acm-cost-analysis/date-selector.png)
+![Az adott hónapra kiválasztható dátumválasztó](./media/quick-acm-cost-analysis/date-selector.png)
 
 A költségelemzés alapértelmezetten a **Halmozott** költségeket jeleníti meg. A halmozott költségek a napi összesített költségek folyamatosan bővülő, az előző napokra vonatkozó összes költségét tartalmazzák. A nézetet arra optimalizáltuk, hogy megvizsgálhassa, hogyan alakulnak költségei az adott időszakban a tervezett költségvetéshez képest.
 
@@ -101,38 +92,38 @@ Emellett a **napi** nézet használatával az egyes napok költségeit is megtek
 Ha a napi költségek konzisztensek a becsült napi költségkeret felett, akkor várható, hogy a havi költségkeretet meghaladja. A becsült napi költségkeret egy olyan eszköz, amely segít a költségvetés alacsonyabb szintű megjelenítésében. Ha napi költségei ingadozóak, a becsült napi költségkeret viszonya a havi költségkeretével kevésbé lesz pontos.
 
 Itt látható a közelmúltbeli kiadások száma, amelyekben az előrejelzés bekapcsolva.
-![Napi nézet – példa napi költségek az aktuális hónapra vonatkozóan](./media/quick-acm-cost-analysis/daily-view.png)
+@no__t – 0Daily nézet, amely az aktuális hónapra vonatkozó napi költségeket mutatja @ no__t-1
 
 Ha kikapcsolja a kiadások előrejelzését, a jövőbeli dátumok esetében nem látja a tervezett kiadásokat. Továbbá, ha a múltbeli időszakokra vonatkozó költségeket tekinti meg, a költségek előrejelzése nem mutatja a költségeket.
 
 Általánosságban elmondható, hogy a felhasznált erőforrásokra vonatkozó adatok vagy értesítések 8 – 12 órán belül megjelennek.
 
 
-Csoportosítsa a közös tulajdonságok **alapján** a költségeket, és azonosítsa a legfontosabb közreműködőket. Az erőforrás-címkék csoportosításához például válassza ki azt a címke-kulcsot, amelyet szeretne csoportosítani. A költségek az egyes kódelemek szerint vannak lebontva, és az olyan erőforrások külön szegmense van, amelyeken nincs alkalmazva a címke.
+**Csoportosítsa** a közös tulajdonságok alapján a költségeket, és azonosítsa a legfontosabb közreműködőket. Az erőforrás-címkék csoportosításához például válassza ki azt a címke-kulcsot, amelyet szeretne csoportosítani. A költségek az egyes kódelemek szerint vannak lebontva, és az olyan erőforrások külön szegmense van, amelyeken nincs alkalmazva a címke.
 
-A legtöbb [Azure-erőforrás támogatja](../azure-resource-manager/tag-support.md)a címkézést. Azonban egyes címkék nem érhetők el Cost Management és számlázásban. Emellett az erőforráscsoportok címkéi nem támogatottak. Cost Management csak abban a dátumban támogatja az erőforrás-címkéket, amikor a címkék közvetlenül az erőforrásra lesznek alkalmazva. Tekintse meg, [Hogyan tekintheti át a címkézési szabályzatokat Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) videóval, hogy megtudja, hogyan használhatja az Azure-címkézési házirendet a költségadatok láthatóságának
+A legtöbb [Azure-erőforrás támogatja a címkézést](../azure-resource-manager/tag-support.md). Azonban egyes címkék nem érhetők el Cost Management és számlázásban. Emellett az erőforráscsoportok címkéi nem támogatottak. Cost Management csak abban a dátumban támogatja az erőforrás-címkéket, amikor a címkék közvetlenül az erőforrásra lesznek alkalmazva. Tekintse meg, [Hogyan tekintheti át a címkézési szabályzatokat Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) videóval, hogy megtudja, hogyan használhatja az Azure-címkézési házirendet a költségadatok láthatóságának
 
 Itt látható az aktuális hónapra vonatkozó Azure-szolgáltatás költségeinek áttekintése.
 
-![Csoportosított napi halmozott nézet-példa az Azure szolgáltatási költségei teszik a múlt hónapban](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
+![Napi összesített nézet csoportosítva, amely az Azure szolgáltatási költségeit mutatja az előző hónapban](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Alapértelmezés szerint a Cost Analysis megjeleníti az összes használati és vásárlási költséget, amint azok felhalmozódnak, és megjelennek a számlán, más néven a **tényleges költségek**. A tényleges díj megtekintése ideális a számla egyeztetéséhez. A költségek megvásárlása azonban riasztó lehet, ha a felmerülő hibákért és a költségek egyéb változásaihoz vezet. A foglalások vásárlásának költségei által okozott tüskék kisimításáhozváltson az elszámolt költségekre. 
+Alapértelmezés szerint a Cost Analysis megjeleníti az összes használati és vásárlási költséget, amint azok felhalmozódnak, és megjelennek a számlán, más néven a **tényleges költségek**. A tényleges díj megtekintése ideális a számla egyeztetéséhez. A költségek megvásárlása azonban riasztó lehet, ha a felmerülő hibákért és a költségek egyéb változásaihoz vezet. A foglalások vásárlásának költségei által okozott tüskék kisimításához váltson az elszámolt **költségekre**.
 
 ![A tényleges és az elszámolt díj közötti váltás a foglalási vásárlások elosztása és a foglalást használó erőforrások kiosztása között](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Az elszámolt díj a foglalások napi adattömbökbe való beszerzését, valamint a foglalás időtartama alatt terjeszti. Ha például a január 1-től a $365-es vásárlást látja, akkor minden nap január 1-től december 31-ig megjelenik a $1-es vásárlás. Az alapszintű amortizáción kívül ezeket a költségeket a foglalást használó konkrét erőforrásokkal is újra kiosztjuk és társítjuk. Ha például a $1-es napi díjat két virtuális gép között osztották fel, akkor a napi díj $2 0,50. Ha a foglalás egy részét nem használják fel a napra, a $1 0,50 díjat számítjuk fel a megfelelő virtuális géphez és egy másik $0,50 díjat, amelynek `UnusedReservation`a díjszabása a következő:. Vegye figyelembe, hogy a fel nem használt foglalási költségek csak az elszámolt költségek megtekintésekor láthatók.
+Az elszámolt díj a foglalások napi adattömbökbe való beszerzését, valamint a foglalás időtartama alatt terjeszti. Ha például a január 1-től a $365-es vásárlást látja, akkor minden nap január 1-től december 31-ig megjelenik a $1-es vásárlás. Az alapszintű amortizáción kívül ezeket a költségeket a foglalást használó konkrét erőforrásokkal is újra kiosztjuk és társítjuk. Ha például a $1-es napi díjat két virtuális gép között osztották fel, akkor a napi díj $2 0,50. Ha a foglalás egy részét nem használják fel a napra, akkor a megfelelő virtuális géphez és egy másik $0,50-as `UnusedReservation` díjfizetési típussal társított $1 0,50 díjat számítunk fel. Vegye figyelembe, hogy a fel nem használt foglalási költségek csak az elszámolt költségek megtekintésekor láthatók.
 
 A költségek kiosztásának változása miatt fontos megjegyezni, hogy a tényleges költségek és az elszámolt költségek különböző összesített számokat mutatnak. Általánosságban elmondható, hogy a foglalások megvásárlása után a hónapok teljes költsége csökken az elszámolt költségek megtekintésekor, és a foglalások megvásárlását követő hónapok száma növekedni fog. Az amortizáció csak foglalási vásárlások esetén érhető el, és jelenleg nem vonatkozik az Azure Marketplace-beli vásárlásokra.
 
 Az alábbi képen az erőforráscsoportok nevei láthatók. Az adott erőforráshoz tartozó összes címke megtekintéséhez csoportosítsa a címkét a címkék teljes költségének megtekintéséhez, vagy használja a **Cost by Resource View (költség szerint** ) lehetőséget.
 
-![Összes adat megjelenítése az erőforrás csoportnevek aktuális nézet](./media/quick-acm-cost-analysis/full-data-set.png)
+![Az aktuális nézet összes adata, amely az erőforráscsoportok nevét mutatja](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Ha egy adott attribútum alapján csoportosítja a költségeket, a Top 10 Cost közreműködők a legmagasabbtól a legalacsonyabb értékig jelennek meg. Ha több mint 10 van, akkor az első kilenc Cost közreműködő egy **másik** csoporttal együtt jelenik meg, amely az összes többi csoport együttesét jelöli. Címkék alapján történő csoportosítás esetén a címke nélküli csoportok nem jelennek meg azoknál a költségeknél, amelyek nem rendelkeznek a tag kulcsával. A címkézetlen érték mindig utolsó, még akkor is, ha a címkézett költségek nagyobbak a címkézett költségeknél. A címkézetlen költségek **mások**részei lesznek, ha 10 vagy több címke érték létezik. Váltson a Table (táblázat) nézetre, és módosítsa a részletességet a **nincs** értékre, hogy az összes érték a legmagasabbról a legalacsonyabbra legyen rangsorolva.
+Ha egy adott attribútum alapján csoportosítja a költségeket, a Top 10 Cost közreműködők a legmagasabbtól a legalacsonyabb értékig jelennek meg. Ha több mint 10 van, akkor az első kilenc Cost közreműködő egy **másik** csoporttal együtt jelenik meg, amely az összes többi csoport együttesét jelöli. Címkék alapján történő csoportosítás **esetén a címke nélküli csoportok** nem jelennek meg azoknál a költségeknél, amelyek nem rendelkeznek a tag kulcsával. A **címkézetlen** érték mindig utolsó, még akkor is, ha a címkézett költségek nagyobbak a címkézett költségeknél. A címkézetlen költségek **mások**részei lesznek, ha 10 vagy több címke érték létezik. Váltson a Table (táblázat) nézetre, és módosítsa a részletességet a **nincs** értékre, hogy az összes érték a legmagasabbról a legalacsonyabbra legyen rangsorolva.
 
 A klasszikus virtuális gépek, a Hálózatkezelés és a tárolási erőforrások nem osztják meg a részletes számlázási információt. Ezeket **klasszikus szolgáltatásként** egyesítjük a költségek csoportosításakor.
 
-A fő diagram alatti diagramokon különböző Csoportosítások jelennek meg, amelyek a kiválasztott időszakra és szűrőkre vonatkozó általános költségekkel kapcsolatos átfogó képet nyújtanak. Válasszon egy tulajdonságot vagy címke minden dimenzió összesített költségeit megtekintésére.
+A fő diagram alatti diagramokon különböző Csoportosítások jelennek meg, amelyek a kiválasztott időszakra és szűrőkre vonatkozó általános költségekkel kapcsolatos átfogó képet nyújtanak. Válasszon ki egy tulajdonságot vagy címkét az összesített költségek bármely dimenzió alapján való megtekintéséhez.
 
 ![Példa pivot diagramokra](./media/quick-acm-cost-analysis/pivot-charts.png)
 
@@ -145,12 +136,12 @@ Megtekintheti bármely nézet teljes adatkészletét. Attól függően, hogy mil
 
 A következő táblázat felsorolja a leggyakoribb csoportosítási és szűrési lehetőségeket, valamint azt, hogy mikor érdemes használni őket.
 
-| Tulajdonság | A következő esetekben használja |
+| Tulajdonság | When to use |
 | --- | --- |
 | **Számlázási időszak** | Költségek lebontása a számla hónapja szerint. Ez a lehetőség az utólagos elszámolású és fejlesztési/tesztelési előfizetések esetében fontos, amelyek nem a naptári hónapokhoz kötődnek. Az EA/MCA-fiókok naptári hónapokat használhatnak a dátumválasztó vagy a havi részletesség használatával, hogy ugyanazt a célt lehessen elérni. |
 | **Díj típusa** | A használat, a vásárlás, a visszatérítés és a nem használt foglalási költségek lebontása. A foglalási beszerzések és a visszatérítések csak akkor érhetők el, ha az elszámolt költségek használata nem történik meg. A nem használt foglalási költségek csak az elszámolt költségeknél érhetők el. |
 | **Felhő** | Az AWS és az Azure költségeinek lebontása. Az AWS-költségek csak felügyeleti csoportok, külső számlázási fiókok és külső előfizetések esetén érhetők el. |
-| Részleg / **számla szakasza** | A költségeket a nagyvállalati szerződés vagy az MCA-számla szakasza alapján bontják le. Ez a beállítás csak az EA/MCA számlázási fiókokhoz és az MCA számlázási profiljaihoz érhető el. |
+| **Részleg**@no__t – 1.**számla szakasz** | A költségeket a nagyvállalati szerződés vagy az MCA-számla szakasza alapján bontják le. Ez a beállítás csak az EA/MCA számlázási fiókokhoz és az MCA számlázási profiljaihoz érhető el. |
 | **Beléptetési fiók** | Az EA-fiók tulajdonosának költségeinek lebontása. Ez a beállítás csak EA számlázási fiókokhoz és részlegekhez érhető el. |
 | **Gyakoriság** | A használaton alapuló, egyszeri és ismétlődő költségek lebontása. |
 | **Mérő** | A költségeket az Azure használati mérőszáma alapján bontják le. Ez a beállítás csak az Azure-használathoz érhető el. A vásárlások és a Piactérek használata **nem megadott vagy nem** **hozzárendelt**módon jelenik meg. |
@@ -169,11 +160,11 @@ A feltételekkel kapcsolatos további információkért lásd: az [Azure-haszná
 
 ## <a name="saving-and-sharing-customized-views"></a>Testreszabott nézetek mentése és megosztása
 
-Testreszabott nézeteket menthet és oszthat meg másokkal a Cost Analysis Azure Portal-irányítópultra való rögzítésével vagy a Cost Analysis-ra mutató hivatkozás másolásával. 
+Testreszabott nézeteket menthet és oszthat meg másokkal a Cost Analysis Azure Portal-irányítópultra való rögzítésével vagy a Cost Analysis-ra mutató hivatkozás másolásával.
 
 A költségadatok rögzítéséhez válassza a jobb felső sarokban található rögzítés ikont. A rögzítési ár elemzése csak a fő diagramot vagy a táblázat nézetet fogja menteni. Ossza meg az irányítópultot, hogy mások hozzáférhessenek a csempéhez. Vegye figyelembe, hogy ez csak az irányítópult konfigurációját osztja meg, és nem biztosít másoknak hozzáférést az alapul szolgáló adathoz. Ha nincs hozzáférése a költségekhez, de van hozzáférése egy megosztott irányítópulthoz, a "hozzáférés megtagadva" üzenet jelenik meg.
 
-Ha meg szeretné osztani a Cost Analysis-ra mutató hivatkozást, válassza a panel tetején található **megosztás** elemet. Egy egyéni URL-cím fog megjelenni, amely megnyitja ezt az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése az URL-címhez, akkor a "hozzáférés megtagadva" üzenet jelenik meg. 
+Ha meg szeretné osztani a Cost Analysis-ra mutató hivatkozást, válassza a panel tetején található **megosztás** elemet. Egy egyéni URL-cím fog megjelenni, amely megnyitja ezt az adott hatókörre vonatkozó nézetet. Ha nincs hozzáférése az URL-címhez, akkor a "hozzáférés megtagadva" üzenet jelenik meg.
 
 Ha többet szeretne megtudni az egyes támogatott hatókörökkel kapcsolatos költségek elérésének biztosításáról, tekintse át a [hatókörök ismertetése és használata](understand-work-scopes.md)című témakört.
 
@@ -181,16 +172,16 @@ Ha többet szeretne megtudni az egyes támogatott hatókörökkel kapcsolatos k�
 
 Ha további elemzés céljából le kell töltenie az adatait, egyesíteni kell azokat a saját adataival, vagy integrálnia kell azokat a saját rendszereibe. Cost Management néhány különböző lehetőséget kínál. Kiindulási pontként, ha az ad hoc magas szintű összefoglalásra van szüksége, például a Cost Analysis szolgáltatásban, hozza létre a szükséges nézetet. Ezután töltse le az **Exportálás** lehetőséget, majd válassza az adatfájlok **letöltése CSV-be** vagy az **Excelbe való letöltés**lehetőséget. Az Excel Letöltés további kontextust biztosít a letöltés, például a hatókör, a lekérdezés konfigurációja, a teljes és a dátum létrehozásához használt nézetben.
 
-Ha a teljes, nem aggregált adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén a szolgáltatások listájából válassza a **Cost Management + számlázás**lehetőséget. Válassza ki a számlázási fiókját, ha van ilyen. Nyissa meg a **használati**és díjszabási lehetőséget, majd válassza ki a kívánt számlázási időszak **Letöltés** ikonját.
+Ha a teljes, nem aggregált adatkészletre van szüksége, töltse le a számlázási fiókból. Ezután a portál bal oldali navigációs paneljén a szolgáltatások listájából válassza a **Cost Management + számlázás**lehetőséget. Válassza ki a számlázási fiókját, ha van ilyen. Nyissa meg a **használati és díjszabási**lehetőséget, majd válassza ki a kívánt számlázási időszak **Letöltés** ikonját.
 
-Hasonló megközelítést használhat a költségadatok fogadásának automatizálására. A [lekérdezési API](/rest/api/cost-management/query) -val gazdagabb elemzést végezhet a dinamikus szűréssel, csoportosítással és összesítéssel, vagy használhatja a [UsageDetails API](/rest/api/consumption/usageDetails) -t a teljes, nem aggregált adatkészlet esetében. Ezen API-k általánosan elérhető (GA) verziója 2019-01-01. A **2019-04-01 – előzetes** verzió használatával elérheti a foglalási és Piactéri vásárlások előnézetét ezeken az API-kon belül. 
+Hasonló megközelítést használhat a költségadatok fogadásának automatizálására. A [lekérdezési API](/rest/api/cost-management/query) -val gazdagabb elemzést végezhet a dinamikus szűréssel, csoportosítással és összesítéssel, vagy használhatja a [UsageDetails API](/rest/api/consumption/usageDetails) -t a teljes, nem aggregált adatkészlet esetében. Ezen API-k általánosan elérhető (GA) verziója 2019-01-01. A **2019-04-01 – előzetes** verzió használatával elérheti a foglalási és Piactéri vásárlások előnézetét ezeken az API-kon belül.
 
 A következőkben például az elszámolási költségek összesített nézete (használat, vásárlás vagy visszatérítés), a közzétevő típusa (Azure vagy Marketplace), az erőforráscsoport (a vásárlások esetében üres) és a foglalás (üres, ha nem alkalmazható).
 
 ```
 POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
 Content-Type: application/json
- 
+
 {
   "type": "AmortizedCost",
   "timeframe": "Custom",
@@ -220,11 +211,11 @@ Ha nincs szüksége az összesítésre, és inkább a teljes, nyers adatkészlet
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
 ```
 
-Ha tényleges költségekre van szüksége a beérkező beszerzések megjelenítéséhez, módosítsa a **típus**/**metrikáját** **ActualCost**értékre. További információ ezekről az API-król: [lekérdezési](/rest/api/cost-management/query) és [UsageDetails](/rest/api/consumption/usageDetails) API-dokumentáció. Vegye figyelembe, hogy a közzétett dokumentumok a GA verzióra vonatkoznak. Ugyanakkor a *2019-04-01 – előzetes* verziójú API-verzió esetében is ugyanúgy működnek, mint az új Type/metrikus attribútumon kívül, és megváltozott a tulajdonságok nevei. (További információ az alábbi tulajdonságok neveiről.)
- 
+Ha tényleges költségekre van szüksége a beérkező beszerzések megjelenítéséhez, módosítsa a **type**/**metrikát** a **ActualCost**értékre. További információ ezekről az API-król: [lekérdezési](/rest/api/cost-management/query) és [UsageDetails](/rest/api/consumption/usageDetails) API-dokumentáció. Vegye figyelembe, hogy a közzétett dokumentumok a GA verzióra vonatkoznak. Ugyanakkor a *2019-04-01 – előzetes* verziójú API-verzió esetében is ugyanúgy működnek, mint az új Type/metrikus attribútumon kívül, és megváltozott a tulajdonságok nevei. (További információ az alábbi tulajdonságok neveiről.)
+
 Cost Management API-k az erőforrások feletti összes hatókörben működnek: erőforráscsoport, előfizetés és felügyeleti csoport az Azure RBAC-hozzáférés, az EA számlázási fiókok (beléptetések), a részlegek és a regisztrációs fiókok használata az EA portálon keresztül. További információ a hatókörökről, többek között a hatókör-azonosító meghatározásáról vagy a hozzáférés kezeléséről a [hatókörök megismerése és használata](understand-work-scopes.md)című témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lépjen tovább az első oktatóanyaghoz, amely a költségvetés létrehozását és kezelését mutatja be.
 

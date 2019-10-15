@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Azure Data Lake Storage Gen2 adatai elemzése a Azure Databricks használatával | Microsoft Docs'
+title: 'Gyors útmutató: az adatelemzés a Azure Data Lake Storage Gen2ban Azure Databricks használatával | Microsoft Docs'
 description: Megtudhatja, hogyan futtathat Spark-feladatokat Azure Databrickson a Azure Portal és egy Azure Data Lake Storage Gen2 Storage-fiók használatával.
 author: normesta
 ms.author: normesta
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992298"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331013"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Azure Data Lake Storage Gen2i adatelemzés Azure Databricks használatával
+# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával
 
 Ebből a rövid útmutatóból megtudhatja, hogyan futtathat egy Apache Spark feladatot a Azure Databricks használatával, hogy elvégezze az elemzést olyan Storage-fiókban tárolt adatokon, amelyek Azure Data Lake Storage Gen2 engedélyezve vannak.
 
@@ -25,20 +25,20 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy Data Lake Gen2 Storage-fiókot. Lásd [: gyors útmutató: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
+* Hozzon létre egy Data Lake Gen2 Storage-fiókot. Lásd [: rövid útmutató: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
 
   Illessze be a Storage-fiók nevét egy szövegfájlba. Hamarosan szüksége lesz rá.
 
-* Egyszerű szolgáltatásnév létrehozása. További [információ: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  :heavy_check_mark: Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+  : heavy_check_mark: az [alkalmazás szerepkörhöz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szükséges lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  :heavy_check_mark: A cikk beléptetési [értékek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) beolvasása szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 
@@ -78,11 +78,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     ![Databricks Spark-fürt létrehozása az Azure-on](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
 
-    Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
+    Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
 
-    * Adjon egy nevet a fürtnek.
-    * Hozzon létre egy **5,1** futtatókörnyezettel rendelkező fürtöt.
-    * Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+    - Adjon egy nevet a fürtnek.
+     
+    - Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
 4. Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
@@ -121,7 +121,7 @@ Ebben a szakaszban létrehoz egy jegyzetfüzetet az Azure Databricks-munkaterül
     > [!NOTE]
     > Ez a kódrészlet közvetlenül hozzáfér a Data Lake Gen2-végponthoz a OAuth használatával, de más módokon is csatlakozhat a Databricks-munkaterülethez a Data Lake Storage Gen2-fiókhoz. Például csatlakoztathatja a tárolót a OAuth használatával, vagy közvetlen hozzáférést használhat megosztott kulccsal. <br>A módszerek példáinak megtekintéséhez tekintse meg a [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket a Azure Databricks webhelyén.
 
-5. A kód blokkban cserélje le a `storage-account-name` `password`, `appID`,, és `tenant-id` helyőrző értékeit a kódban az egyszerű szolgáltatásnév létrehozásakor összegyűjtött értékekre. A `container-name` helyőrző értékét állítsa a tárolóhoz adni kívánt névre.
+5. A kód blokkban cserélje le a `storage-account-name`, `appID`, `password` és `tenant-id` helyőrző értékeket a kód blokkba az egyszerű szolgáltatásnév létrehozásakor összegyűjtött értékekkel. Állítsa be a `container-name` helyőrző értékét a tárolóhoz adni kívánt névre.
 
     > [!NOTE]
     > Éles környezetben érdemes megfontolni a hitelesítési kulcs tárolását Azure Databricks-ben. Ezután adjon hozzá egy megkeresési kulcsot a kódjához a hitelesítési kulcs helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
@@ -175,7 +175,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
     ![JSON-mintaadatok](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-mintaadatok")
 
-    Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, nem), valamint azt, hogyaz előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
+    Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
 
 4. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
@@ -190,7 +190,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
     - Az **Értékek** mezőben adja meg a **level** értéket.
     - Az **Összesítés** mezőben adja meg a **COUNT** értéket.
 
-6. Kattintson az **Alkalmaz** gombra.
+6. Kattintson az **Apply** (Alkalmaz) gombra.
 
 7. A kimenetben a következő képernyőképen látható vizuális megjelenítés jelenik meg:
 
@@ -202,9 +202,9 @@ Ha elkészült ezzel a cikkel, leállíthatja a fürtöt. Az Azure Databricks-mu
 
 ![Databricks-fürt leállítása](./media/data-lake-storage-quickstart-create-databricks-account/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás perc inaktivitás után \_ \_**  jelölőnégyzetet. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor a **megszakítást választotta \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ha bejelöli ezt a lehetőséget, a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Databricksben, illetve futtatott egy Spark-feladatot a Data Lake Storage Gen2-kompatibilis tárfiók adatainak felhasználásával. A [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) áttekintésével azt is megismerheti, hogyan importálhat adatokat más adatforrásokból az Azure Databricksbe. Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műveletet (adatok kinyerését, átalakítását és betöltését) az Azure Databricks használatával.
 

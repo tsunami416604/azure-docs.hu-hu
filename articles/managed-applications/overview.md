@@ -1,17 +1,17 @@
 ---
 title: Az Azure Managed Applications áttekintése | Microsoft Docs
-description: Az Azure Managed Applications fogalmainak ismertetése
+description: Ismerteti a Azure Managed Applications fogalmakat, amelyek olyan felhőalapú megoldásokat biztosítanak, amelyek megkönnyítik a felhasználók számára az üzembe helyezést és a működést.
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: fa37536b800203e981a841d049dc385640733f92
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234758"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332691"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
 
@@ -77,7 +77,7 @@ Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törl�
 
 A felügyelt alkalmazásra [Azure-szabályzatot](../governance/policy/overview.md) alkalmazhat. Szabályzatokat alkalmazhat annak érdekében, hogy a felügyelt alkalmazás üzembe helyezett példányai megfeleljenek a biztonsági és adatkövetelményeknek. Ha az alkalmazás bizalmas adatokkal lép interakcióba, mindenképpen értékelje ki, hogyan kell védeni az adatokat. Ha például az alkalmazás az Office 365-ből származó adatokat használ, alkalmazzon egy szabályzatot az adattitkosítás engedélyezése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerkedett a felügyelt alkalmazások használatának előnyeivel. A következő cikkben egy felügyelt alkalmazás definícióját hozza létre.
 

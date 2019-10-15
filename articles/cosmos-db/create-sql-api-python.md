@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Cosmos DB: Alkalmazás létrehozása a Python és az SQL API használatával'
+title: 'Gyors útmutató: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával'
 description: Egy Python-kódmintát mutat be, amellyel csatlakozni lehet az Azure Cosmos DB SQL API-hoz, és lekérdezést lehet végezni vele
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,14 +8,18 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.openlocfilehash: f085ca6de2c04caa90c34bc1293da1210d2883eb
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+ms.openlocfilehash: f00d0e4f659c1ebe104dac1a25ea3688c9a1f2e5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020151"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327253"
 ---
-# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Az Azure Cosmos DB: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB: Python-alkalmazás létrehozása Azure Cosmos DB SQL API-fiók használatával
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -25,7 +29,7 @@ ms.locfileid: "70020151"
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Gyorsan létrehozhat és lekérhet dokumentumokat, kulcs/érték, széles oszlop-és Graph-adatbázisokat. Az összes ilyen művelet a Azure Cosmos DB elosztásával és méretezésével jár.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Gyorsan létrehozhat és lekérhet dokumentumokat, kulcs/érték, széles oszlop-és Graph-adatbázisokat. Az összes ilyen művelet a Azure Cosmos DB elosztásával és méretezésével jár.
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB [SQL API](sql-api-introduction.md)-fiókot, dokumentum-adatbázist és tárolót az Azure Portal segítségével. Ezután megtudhatja, hogyan hozhat létre és futtathat egy, a Python SDK for [SQL API](sql-api-sdk-python.md)-val létrehozott konzolalkalmazást. Ez a rövid útmutató a [PYTHON SDK](https://pypi.org/project/azure-cosmos)3,0-es verzióját használja.
 
@@ -33,7 +37,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 3,6](https://www.python.org/downloads/), `python` az alkalmazásban elérhető `PATH`végrehajtható fájlokkal.
+* [Python 3,6](https://www.python.org/downloads/), a `python` végrehajtható fájl a `PATH`-ben érhető el.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)
 
@@ -57,7 +61,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB
 
 Most pedig klónozzon egy SQL API-alkalmazást a GitHubról, állítsa be a kapcsolati sztringet, és futtassa az alkalmazást.
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```cmd
     md "git-samples"
@@ -86,9 +90,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)az Azure Cosmos-fiókban a bal oldali navigációs menüben válassza a **kulcsok**lehetőséget. A következő lépésben a képernyő jobb oldalán lévő másolási gombokkal másolhatja az **URI** és az **Elsődleges kulcs** értékét a `CosmosGetStarted.py` fájlba.
 
-    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal kulcsok paneljén](./media/create-sql-api-dotnet/keys.png)
+    ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok panelén](./media/create-sql-api-dotnet/keys.png)
 
-2. Nyissa `CosmosGetStarted.py` meg a fájlt a \git-samples\azure-Cosmos-db-Python-Getting-Started-ben a Visual Studio Code-ban.
+2. Nyissa meg a `CosmosGetStarted.py` fájlt a \git-samples\azure-Cosmos-db-Python-Getting-Started-ben a Visual Studio Code-ban.
 
 3. A másolási gomb használatával másolja ki az **URI** érteket a Portalról, és azt adja meg a **végpont** kulcs értékeként a ``CosmosGetStarted.py`` fájlban. 
 
@@ -175,7 +179,7 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
 1. Válassza a Visual Studio Code-ban a **Nézet** > **Parancskatalógus** lehetőséget. 
 
-2. A parancssorba írja be **a következőt: Python: Válassza a tolmács** lehetőséget, majd válassza ki a használni kívánt Python-verziót.
+2. A megjelenő panelen írja be a **Python: Select Interpreter** szöveget, majd válassza ki a használandó Python-verziót.
 
     A választott értelmező ekkor megjelenik a Visual Studio Code ablakának állapotsorában. 
 
@@ -213,9 +217,9 @@ Az alábbi kódrészletek mind a `CosmosGetStarted.py` fájlból származnak.
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan futtathat egy alkalmazást. Így már további adatokat importálhat a Cosmos DB-fiókba. 
+Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre egy Azure Cosmos-fiókot, hogyan hozhat létre tárolót a Adatkezelő használatával, és hogyan futtathat egy alkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 
 > [!div class="nextstepaction"]
 > [Adatok importálása az Azure Cosmos DB-be az SQL API-hoz](import-data.md)

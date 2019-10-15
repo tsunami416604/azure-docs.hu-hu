@@ -1,20 +1,20 @@
 ---
-title: 'Gyors útmutató: Windows rendszerű DSVM létrehozása'
-description: Konfigurálja és a egy adatelemző virtuális gép létrehozása az Azure-ban Analytics és a gépi tanulás.
+title: 'Gyors útmutató: Windows DSVM létrehozása'
+description: Azure-beli Data Science Virtual Machine konfigurálása és létrehozása az elemzéshez és a gépi tanuláshoz.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: c9b72c90bc23cfac6f064445c4f6f98d05d7fe16
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675106"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331771"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Gyors útmutató: A Windows Data Science Virtual Machine beállítása
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rövid útmutató: a Windows Data Science Virtual Machine beállítása
 
 Megkezdheti a Windows Data Science Virtual Machineának futtatását.
 
@@ -37,20 +37,20 @@ DSVM-példány létrehozása:
     [![](media/provision-vm/create-windows.png "Windows rendszerű gép létrehozásához szükséges gomb")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. A rendszer átirányítja a virtuális gép létrehozása panelre.
-   ![A Windows rendszerű virtuális géphez tartozó alapismeretek lap](./media/provision-vm/review-create-windows.png)
+   @no__t – a Windows rendszerű virtuális géphez tartozó 0Basics lap @ no__t-1
 
 1. Adja meg az **alapok** lapot:
-      * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létrehoz és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
-      * **Erőforráscsoport**: Hozzon létre egy új csoportot, vagy használjon egy meglévőt.
-      * **Virtuális gép neve**: Adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
-      * **Hely**: Válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Rendszerkép**: Ne módosítsa az alapértelmezett értéket.
-      * **Méret**: Az automatikus feltöltésnek az általános számítási feladatokhoz megfelelő méretűnek kell lennie. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/windows/sizes.md).
-      * **Felhasználónév**: Adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel.
-      * **Jelszó**: Adja meg azt a jelszót, amelyet a virtuális gépre való bejelentkezéshez használni fog.    
+      * **Előfizetés**: Ha egynél több előfizetéssel rendelkezik, válassza ki azt a számítógépet, amelyet a gép létre fog hozni és számláz. Ehhez az előfizetéshez erőforrás-létrehozási jogosultságokkal kell rendelkeznie.
+      * **Erőforráscsoport**: hozzon létre egy új csoportot, vagy használjon egy meglévőt.
+      * **Virtuális gép neve**: adja meg a virtuális gép nevét. Így fog megjelenni a Azure Portalban.
+      * **Hely**: válassza ki a legmegfelelőbb adatközpontot. A leggyorsabb hálózati hozzáféréshez ez az adatközpont, amely a legtöbb adattal rendelkezik, vagy a legközelebb áll a fizikai helyhez. További információ az [Azure-régiókról](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Rendszerkép**: hagyja meg az alapértelmezett értéket.
+      * **Méret**: az általános számítási feladatokhoz megfelelő méretű automatikus feltöltést kell megadni. További információ a [Windowsos virtuális gépek méretéről az Azure-ban](../../virtual-machines/windows/sizes.md).
+      * **Felhasználónév**: adja meg a rendszergazda felhasználónevét. Ezt a felhasználónevet fogja használni a virtuális gépre való bejelentkezéshez, és nem kell megegyeznie az Azure-felhasználónévvel.
+      * **Password (jelszó**): adja meg a virtuális gépre való bejelentkezéshez használni kívánt jelszót.    
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 1. **Felülvizsgálat + létrehozás**
-   * Győződjön meg arról, hogy helyesen szerepel-e a megadott összes információt. 
+   * Győződjön meg arról, hogy a megadott összes adat helyes. 
    * Kattintson a **Létrehozás** gombra.
 
 
@@ -62,20 +62,19 @@ DSVM-példány létrehozása:
 
 A virtuális gép létrehozása és üzembe helyezése után kövesse a felsorolt lépéseket az [Azure-alapú virtuális géphez való kapcsolódáshoz](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Használja a virtuális gép létrehozásának **alapjai** lépésében konfigurált rendszergazdai fiók hitelesítő adatait. 
 
-Készen áll az eszközöket, amelyek telepítése és konfigurálása történik meg a virtuális gép használatának megkezdéséhez. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
+Készen áll a virtuális gépen telepített és konfigurált eszközök használatának megkezdésére. A **Start** menü csempéi és asztali ikonjai számos eszközt is elérhet.
 
 Emellett DSVM is csatolhat Azure Notebooks a Jupyter notebookok futtatásához a virtuális gépen, és megkerülheti az ingyenes szolgáltatási szintek korlátozásait. További információ: [notebook-projektek kezelése és konfigurálása](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
 
 <a name="tools"></a>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A **Start** menü megnyitásával tárja fel a DSVM található eszközöket.
 * Ismerkedjen meg a Azure Machine Learning szolgáltatással, olvassa el a [Mi az Azure Machine learning Service?](../service/overview-what-is-azure-ml.md) című témakört, és próbálja ki az [oktatóanyagokat](../index.yml).
 * A Fájlkezelőben keresse meg a C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts azokat a mintákat, amelyek az R RevoScaleR-könyvtárat használják, és nagyvállalati szintű adatelemzést támogatnak. 
 * Olvassa el a [Data Science Virtual Machineon](https://aka.ms/dsvmtenthings)elvégezhető tíz dolgot.
-* Megtudhatja, hogyan teljes körű elemzési megoldásokat rendszeresen használatával hozhat létre a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml).
-* Látogasson el a [Azure AI-katalógusban](https://gallery.cortanaintelligence.com) machine learning és a data analytics minták az Azure Machine Learning és a kapcsolódó adatokat használó szolgáltatások az Azure-ban. A katalógushoz a **Start** menüben és a virtuális gép asztalán is elérhető egy ikon.
-* Olvassa el a virtuális gép megfelelő [dokumentációját](./reference-windows-vm.md) .
+* Ismerje meg, hogyan hozhat létre rendszeresen teljes körű analitikai megoldásokat a [csoportos adatelemzési folyamat](../team-data-science-process/index.yml)használatával.
+* Látogasson el az Azure-ban Azure Machine Learning és kapcsolódó adatszolgáltatásokat használó gépi tanulási és adatelemzési minták [Azure AI Gallery](https://gallery.cortanaintelligence.com) . A katalógushoz a **Start** menüben és a virtuális gép asztalán is elérhető egy ikon.
 

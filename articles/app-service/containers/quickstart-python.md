@@ -1,5 +1,5 @@
 ---
-title: Python-alkalmazás létrehozása Linux rendszeren – Azure App Service | Microsoft Docs
+title: 'Gyors útmutató: Python-alkalmazás létrehozása Linux rendszeren – Azure App Service'
 description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
 services: app-service\web
 documentationcenter: ''
@@ -13,18 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
+ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7a0aded07c2cd4da6ada72bdb967b1d485a56b85
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242462"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329971"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Python-alkalmazás létrehozása Azure App Service Linuxon
 
-Ebben a rövid útmutatóban egy egyszerű Python-alkalmazást telepít [app Service Linuxon](app-service-linux-intro.md), amely egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az Azure parancssori felületét (az [Azure CLI](/cli/azure/install-azure-cli)-t) az interaktív, böngészőalapú Azure Cloud Shell használatával hajthatja végre, így követheti a Mac, Linux vagy Windows rendszerű számítógépek használatának lépéseit.
+Ebben a cikkben egy egyszerű Python-alkalmazást helyez üzembe [a Linuxon való app Servicehoz](app-service-linux-intro.md), amely egy rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Az Azure parancssori felületét (az [Azure CLI](/cli/azure/install-azure-cli)-t) az interaktív, böngészőalapú Azure Cloud Shell használatával hajthatja végre, így követheti a Mac, Linux vagy Windows rendszerű számítógépek használatának lépéseit.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 

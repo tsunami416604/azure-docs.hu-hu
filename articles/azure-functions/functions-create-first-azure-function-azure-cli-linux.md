@@ -1,24 +1,21 @@
 ---
 title: Az első függvény létrehozása Linux rendszeren az Azure-ban
-description: Arra vonatkozó tudnivalók, hogyan hozhatja létre Linuxon futó első Azure-függvényét az Azure Functions Core Tools és az Azure CLI használatával.
-services: functions
-keywords: ''
+description: Megtudhatja, hogyan hozhatja létre az első, Linuxon futó függvényt az Azure-ban a parancssori eszközök, Azure Functions Core Tools és az Azure CLI használatával.
 author: ggailey777
 ms.author: glenga
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-ms.devlang: javascript
-manager: jeconnoc
-ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562971"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329680"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>A Linuxon üzemeltetett első függvény létrehozása a Core Tools és az Azure CLI használatával
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Rövid útmutató: az első függvény létrehozása Linux rendszeren a parancssori eszközök használatával
 
 Az Azure Functions lehetővé teszi a kód végrehajtását [kiszolgáló nélküli](https://azure.com/serverless) Linux-környezetben anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. A Linux-üzemeltetéshez [a 2. x](functions-versions.md)-es függvények szükségesek. A kiszolgáló nélküli függvények a használati [tervben](functions-scale.md#consumption-plan)futnak.
 
@@ -30,7 +27,7 @@ Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógép
 
 A minta futtatásához az alábbiakkal kell rendelkeznie:
 
-- Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verziót.
++ Telepítse [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verziót.
 
 + Telepítse az [Azure CLI-t]( /cli/azure/install-azure-cli). Ehhez a cikkhez az Azure CLI 2.0-ás vagy újabb verziója szükséges. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Használhatja az [Azure Cloud Shellt](https://shell.azure.com/bash) is.
 
@@ -56,7 +53,7 @@ A minta futtatásához az alábbiakkal kell rendelkeznie:
 
 Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben való végrehajtásának biztosításához. A függvényalkalmazás egy kiszolgáló nélküli környezetet biztosít a függvénykód végrehajtásához. Lehetővé teszi, hogy logikai egységbe csoportosítsa a függvényeket az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében. Hozzon létre egy Linuxon futó függvényalkalmazást az [az functionapp create](/cli/azure/functionapp#az-functionapp-create) paranccsal.
 
-A következő parancsban az `<app_name>` helyőrzőt cserélje le egy függvényalkalmazás egyedi nevére, a `<storage_name>` helyőrzőt pedig a tárfiók nevére. Az `<app_name>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja. `<language>` A Function alkalmazás `dotnet` futtatókörnyezetét a (C#), `node` (JavaScript/írógéppel) vagy `python`a () függvény futtatásával is be kell állítania.
+A következő parancsban az `<app_name>` helyőrzőt cserélje le egy függvényalkalmazás egyedi nevére, a `<storage_name>` helyőrzőt pedig a tárfiók nevére. Az `<app_name>` egyben a függvényalkalmazás alapértelmezett DNS-tartományaként is szolgál, ezért az Azure összes alkalmazásában csak egyszer használhatja. A Function alkalmazáshoz a `<language>` futtatókörnyezetet is be kell állítania `dotnet` (C#), `node` (JavaScript/írógéppel) vagy `python` alapján.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

@@ -1,24 +1,22 @@
 ---
-title: Hozza létre az első függvényt a Azure Portalból | Microsoft Docs
+title: Hozza létre az első kiszolgáló nélküli függvényt a Azure Portal
 description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eb3df5ace97e5a09b2869c0857d49926f354f2b0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097004"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329668"
 ---
-# <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
+# <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure Portalon
 
 Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebből a cikkből megtudhatja, hogyan használhatók a függvények a "Hello World" függvény létrehozásához a Azure Portal.
 
@@ -77,7 +75,7 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Létrehozott egy egyszerű HTTP által aktivált függvényt tartalmazó Function alkalmazást.  
 

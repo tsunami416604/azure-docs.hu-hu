@@ -1,5 +1,5 @@
 ---
-title: Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez | Microsoft Docs
+title: 'Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre olyan Python-alkalmazást, amely az Azure cache-t használja a Redis
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743939"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329870"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: Az Azure cache használata a Redis és a Python használatával
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: az Azure cache használata a Redis és a Python használatával
 
-Ebben a rövid útmutatóban egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-ba, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
+Ebben a cikkben egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-be, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +53,7 @@ Az alábbi példa a *pip3* for Python3 használatával telepíti a Redis-a Windo
 
 ## <a name="read-and-write-to-the-cache"></a>Olvasás és írás a gyorsítótárban
 
-Futtassa a Pythont, és teszteljen a gyorsítótárral a parancssorból. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis Azure-gyorsítótárának értékeire. 
+Futtassa a Pythont, és teszteljen a gyorsítótárral a parancssorból. Cserélje le a `<Your Host Name>` és a `<Your Access Key>` értéket a Redis Azure-gyorsítótárának értékeire. 
 
 ```python
 >>> import redis
@@ -70,7 +72,7 @@ b'bar'
 
 Hozzon létre egy *PythonApplication1.py* nevű új szöveges szkriptfájlt.
 
-Adja a következő szkriptet a *PythonApplication1.py* fájlhoz, és mentse a fájlt. Ez a szkript teszteli a gyorsítótár hozzáférését. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis Azure-gyorsítótárának értékeire. 
+Adja a következő szkriptet a *PythonApplication1.py* fájlhoz, és mentse a fájlt. Ez a szkript teszteli a gyorsítótár hozzáférését. Cserélje le a `<Your Host Name>` és a `<Your Access Key>` értéket a Redis Azure-gyorsítótárának értékeire. 
 
 ```python
 import redis
@@ -108,7 +110,7 @@ Ha azt tervezi, hogy egy másik oktatóanyaggal folytatja, megtarthatja és újb
 Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díjak elkerülése érdekében törölheti az ebben a rövid útmutatóban létrehozott Azure-erőforrásokat. 
 
 > [!IMPORTANT]
-> Az erőforráscsoport törlése nem vonható vissza; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
+> Az erőforráscsoport törlése nem visszaállítható; az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen arra, hogy ne töröljön véletlenül erőforráscsoportot vagy erőforrásokat. Ha a jelen minta üzemeltetését végző erőforrásokat egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforrásokat az erőforráscsoport törlése helyett külön-külön törölheti a megfelelő panelekről.
 >
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
@@ -121,7 +123,7 @@ A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. A
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)

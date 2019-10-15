@@ -553,7 +553,7 @@
         - name: Hitelesítés
           items:
             - name: Hitelesítési alapok
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: Az OAuth 2.0 és az OpenID Connect protokoll
               items:
                 - name: OpenID Connect

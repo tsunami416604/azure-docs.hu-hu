@@ -1,5 +1,5 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban Python használatával | Microsoft Docs
+title: 'Gyors útmutató: blob létrehozása az Azure Blob Storage-ban Python-vel'
 description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Majd a Storage Pythonhoz készült ügyféloldali kódtára segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981212"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331800"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Gyors útmutató: Blobok feltöltése, letöltése és listázása Python-val
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Python használatával
 
-Ebben a rövid útmutatóban a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat az Azure Blob Storage-tárolóban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
+Ebben a cikkben a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat egy tárolóban az Azure Blob Storage-ban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -218,7 +219,7 @@ A Python-fejlesztés és a blob Storage szolgáltatással kapcsolatos további i
 - További információ a Python-ügyfél könyvtáráról: a [Pythonhoz készült Azure Storage kódtárak](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. 
 

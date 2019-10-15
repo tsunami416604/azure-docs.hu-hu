@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285970"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372239"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Privát végpont létrehozása Azure Portal használatával
 
@@ -115,8 +115,8 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Adatbázis neve  | Adja meg a *mydatabase*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |||
-5. A **kiszolgáló**területen válassza az **új létrehozása**lehetőséget. 
-6. Az **új kiszolgáló**mezőbe írja be vagy válassza ki az alábbi adatokat:
+5. A **kiszolgáló**területen válassza az **új létrehozása**lehetőséget. 
+6. Az **új kiszolgáló**mezőbe írja be vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
@@ -125,9 +125,9 @@ Ebben a szakaszban egy SQL Database-kiszolgálót fog létrehozni az Azure-ban.
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Földrajzi egység | Válassza ki azt az Azure-régiót, ahol a SQL Server szeretné tárolni. |
     
-7. Kattintson **az OK gombra**. 
-8. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + create** page, ahol az Azure ellenőrzi a konfigurációt. 
-9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
+7. Kattintson az **OK** gombra. 
+8. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+9. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a **Létrehozás**lehetőséget. 
 10. Amikor megjelenik az átadott üzenet ellenőrzése lehetőség, válassza a létrehozás lehetőséget. 
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
@@ -147,18 +147,18 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | Név | Adja meg a * myPrivateEndpoint*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     |Region (Régió)|Válassza a **WestCentralUS**lehetőséget.|
     |||
-5. Válassza a **Tovább: erőforrás**elemet.
-6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
+5. Válassza a **Tovább: erőforrás**elemet.
+6. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
     | Előfizetés| Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók**lehetőséget. |
+    | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók**lehetőséget. |
     | Erőforrás |*MyServer* kiválasztása|
     |Cél alerőforrása |*SqlServer* kiválasztása|
     |||
-7. Válassza a **Tovább: konfigurálás**lehetőséget.
+7. Válassza a **Tovább: konfigurálás**lehetőséget.
 8. A **privát végpont létrehozása (előzetes verzió) – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value (Díj) |
@@ -167,12 +167,12 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
     | Alhálózat | Válassza a *mySubnet*lehetőséget. |
     |**MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**||
-    |Integrálás saját DNS-zónával |Válassza az **Igen**lehetőséget. |
+    |Integrálás saját DNS-zónával |Válassza az **Igen**lehetőséget. |
     |saját DNS zóna |Válassza az *(új) privatelink. database. Windows. net* elemet |
     |||
 
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. A **felülvizsgálat + create** page, ahol az Azure ellenőrzi a konfigurációt. 
-2. Amikor megjelenik a @no__t által **átadott érvényesítési**1message, válassza a **Létrehozás**lehetőséget. 
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Kapcsolódás virtuális géphez Távoli asztal (RDP) használatával
 
@@ -217,7 +217,7 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
     ```
 3. Telepítse a [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017).
 
-4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
+4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
@@ -227,16 +227,16 @@ A **myVm*létrehozása után az alábbi módon csatlakozhat az internetről:
     |Jelszó |Adja meg az SQL-kiszolgáló létrehozásakor megadott jelszót. |
     |Jelszó megjegyzése|Válassza az **Igen**lehetőséget.|
     |||
-1. Válassza a **kapcsolat**lehetőséget.
+1. Kattintson a **Csatlakozás** gombra.
 2. A bal oldali menüben lévő adatbázisok tallózása.
 3. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 4. A távoli asztali kapcsolat bezárásával *myVm*. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
-1. Adja meg a *myResourceGroup* In a **Keresés**@no__t – 3box a portál tetején, majd válassza a *myResourceGroup*@no__t – 5from a keresési eredményeket. 
-2. Válassza az **erőforráscsoport törlése**lehetőséget. 
-3. Írja be **a myResourceGroup nevet az erőforráscsoport neve** and válassza a **Törlés**lehetőséget.
+1. Adja meg a *myResourceGroup* in a portál felső részén található **keresőmezőt** , és válassza a *myResourceGroup* from a keresési eredményeket. 
+2. Válassza az **Erőforráscsoport törlése** elemet. 
+3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
