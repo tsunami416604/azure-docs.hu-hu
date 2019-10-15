@@ -169,7 +169,7 @@
           href: search-howto-complex-data-types.md
         - name: Relációs adatok modellezése
           href: index-sql-relational-data.md
-    - name: Adatok betöltése
+    - name: Bármely adat indexelése
       items:
         - name: Adatimportálás áttekintése
           href: search-what-is-data-import.md
@@ -181,7 +181,21 @@
           href: search-howto-large-index.md
         - name: Egyidejű frissítések kezelése
           href: search-howto-concurrency.md
-    - name: Adatok betöltése indexelők használatával
+    - name: Azure-blobadatok indexelése
+      items:
+        - name: AI használata blobadatokkal
+          href: search-blob-ai-integration.md
+        - name: Teljes szöveges keresés hozzáadása
+          href: search-blob-storage-integration.md
+        - name: Blobindexelő beállítása
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: Egy-a-többhöz típusú blobok indexelése
+          href: search-howto-index-one-to-many-blobs.md
+        - name: CSV-blobok indexelése
+          href: search-howto-index-csv-blobs.md
+        - name: JSON-blobok indexelése
+          href: search-howto-index-json-blobs.md
+    - name: Indexelés „indexelőkkel”
       items:
         - name: Az indexelők áttekintése
           href: search-indexer-overview.md
@@ -191,16 +205,6 @@
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
         - name: Azure Cosmos DB-indexelő
           href: search-howto-index-cosmosdb.md
-        - name: Azure Blob Storage-indexelő
-          items:
-            - name: Blobindexelő beállítása
-              href: search-howto-indexing-azure-blob-storage.md
-            - name: Egy-a-többhöz típusú blobok indexelése
-              href: search-howto-index-one-to-many-blobs.md
-            - name: CSV-blobok indexelése
-              href: search-howto-index-csv-blobs.md
-            - name: JSON-blobok indexelése
-              href: search-howto-index-json-blobs.md
         - name: Indexelők ütemezése
           href: search-howto-schedule-indexers.md
         - name: Mezők leképezése

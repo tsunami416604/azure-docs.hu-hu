@@ -41,7 +41,7 @@ A leállított virtuális gép elindítására irányuló kérelmet a Cloud Serv
 ### <a name="resolution"></a>Megoldás:
 * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból, majd indítsa újra az egyes virtuális gépeket.
   
-  1. Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai***a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
+  1. Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** *a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
   2. Az összes virtuális gép leállítása után válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 * Próbálja megismételni az újraindítási kérelmet később.
 
@@ -57,7 +57,7 @@ A virtuális gép átméretezésére irányuló kérelmet a Cloud Service-t futt
   
   1. Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
      
-     * Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai***a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
+     * Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** *a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
   2. Az összes virtuális gép leállítása után méretezze át a kívánt virtuális gépet nagyobb méretre.
   3. Jelölje ki az átméretezett virtuális gépet, és kattintson a **Start**gombra, majd indítsa el az egyes leállított virtuális gépeket.
 
