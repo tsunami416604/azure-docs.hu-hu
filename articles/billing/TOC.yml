@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: További előfizetés létrehozása
       href: billing-create-subscription.md
-    - name: További előfizetés létrehozása – Microsoft ügyfélszerződés
-      href: billing-mca-create-subscription.md
     - name: Nagyvállalati előfizetések létrehozása programozott módon
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Előfizetési adatok exportálása

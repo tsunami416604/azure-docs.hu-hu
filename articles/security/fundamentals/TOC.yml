@@ -3,6 +3,10 @@
 - name: Architektúra és kialakítás
   href: overview.md
   expanded: false
+  items: null
+- name: Architektúra és kialakítás
+  href: overview.md
+  expanded: false
   items:
     - name: Fejlett fenyegetésészlelés
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Azure hálózati biztonság
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: A kiszolgáló nélküli Azure-platform biztonsága
-      href: abstract-serverless-platform-security.md
-    - name: Tárolóbiztonság az Azure-ban
-      href: abstract-container-security.md
-    - name: Működési biztonság engedélyezése
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Elkülönítés az Azure-felhőben
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Biztonságtechnikai képességek
       href: technical-capabilities.md
-    - name: Biztonságos alkalmazások fejlesztése az Azure-ban
-      href: abstract-develop-secure-apps.md
 - name: Adatbiztonság és titkosítás
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: Lemeztitkosítás Azure AD-alkalmazással Linux rendszerű virtuális gépekhez
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Az Azure Storage biztonsága
-      href: storage-overview.md
     - name: Biztonsági útmutató a tároláshoz
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Ügyfélszéf
