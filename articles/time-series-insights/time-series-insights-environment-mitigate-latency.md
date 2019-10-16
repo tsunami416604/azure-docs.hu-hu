@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 389e1472e1e1fcbed6dd3b6c1d155199246d877f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123763"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332971"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
@@ -44,15 +44,15 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
 
 1. A Azure Portal válassza a **riasztások**elemet.
 
-   [![Riasztások](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [@no__t – 1Alerts](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
 1. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
-   [![Riasztás hozzáadása](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [@no__t – 1Add riasztás](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
 1. Ezután konfigurálja a jel logikájának pontos feltételeit.
 
-   [![Jel logikájának konfigurálása](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
+   [@no__t – 1Configure jel logikája](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
    Innentől kezdve a következő feltételek valamelyikével konfigurálhatja a riasztásokat:
 
@@ -62,23 +62,23 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
    |**A bejövő forgalom érvénytelen üzeneteket kapott**     | Az összes Azure-Event Hubs vagy az Azure IoT Hub-eseményforrás által beolvasott érvénytelen üzenetek száma.      |
    |**Bejövő fogadott üzenetek**   | Az összes Event Hubs vagy IoT hub-eseményforrás által olvasott üzenetek száma.        |
    |**Bejövő forgalomban tárolt bájtok**     | A lekérdezéshez tárolt és elérhető események teljes mérete. A méret kiszámítása csak a tulajdonság értékén történik.        |
-   |**Bejövő tárolt események**    |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
-   |**Beérkező üzenetek** időeltolódása   |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
-   |**Bejövő fogadott üzenetek számának késése**   |  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
+   |**Beáramló tárolt események** @no__t – 1 |   A lekérdezéshez rendelkezésre álló és elérhető összeolvasztott események száma.      |
+   |**Bejövő fogadott üzenet Időeltolódása**    |  Az üzenet az várólistán lévő való beérkezése és a bejövő forgalomban történő feldolgozás időpontja közötti különbség másodpercben kifejezve.      |
+   |**Bejövő fogadott üzenetek száma – késés** @no__t – 1|  Az eseményforrás-partíció utolsó várólistán lévő-üzenetének sorszáma és a bejövő forgalomban feldolgozott üzenet sorszáma közötti különbség.      |
 
    Válassza a **Done** (Kész) lehetőséget.
 
 1. A kívánt jel logikájának konfigurálása után vizuálisan tekintse át a kiválasztott riasztási szabályt.
 
-   [![Behatolása](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [@no__t – 1Ingress](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 
-* Ha a szabályozása folyamatban van, megjelenik egy érték a bejövő forgalomhoz *kapott üzenet*időkorlátja, amely arról tájékoztatja, hogy az ÁME mögötti idő hány másodpercig tart a tényleges idő, amikor az üzenet megkeresi az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
+* Ha a szabályozása folyamatban van, megjelenik a *Bejövő üzenetek fogadásának időkorlátja*, amely arról tájékoztatja, hogy hány másodpercig tart az idősorozat-elemzési környezete, és az üzenet tényleges időpontja (az indexelési idő kizárása nélkül). Appx. 30-60 másodperc).  
 
   A *bejövő fogadott üzenetek számának késési* értékének is szerepelnie kell, ami lehetővé teszi, hogy megtudja, hány üzenet mögött van.  A legkönnyebben elsajátítható, hogy növelje a környezet kapacitását olyan méretre, amely lehetővé teszi a különbség leküzdését.  
 
-  Ha például egyetlen egység S1-környezettel rendelkezik, és láthatja, hogy van egy 5 000 000-os üzenet késése, akkor a környezet méretét akár hat egységre növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
+  Ha például úgy látja, hogy S1-környezete 5 000 000-üzenetek késését mutatja be, a környezet méretét akár hat egységre is növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
 
 * Egy másik módszer egy **bejövő tárolt események** riasztásának beállítása > = egy küszöbérték kis mértékben a teljes környezeti kapacitás alatt 2 órán keresztül.  Ez a riasztás segít megismerni, hogy folyamatosan van-e kapacitása, ami nagy valószínűséggel jelzi a késést. 
 
@@ -92,8 +92,8 @@ A szabályozás és a késések csökkentése érdekében a legjobb megoldás a 
 
 A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet. A kapacitásnak a környezethez való hozzáadásával kapcsolatos további információkért lásd: [a környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További hibaelhárítási lépéseket a [Time Series Insights-környezetben felmerülő problémák diagnosztizálásához és megoldásához](time-series-insights-diagnose-and-solve-problems.md).
+- További információ a [Time Series Insights-környezetben felmerülő problémák diagnosztizálásáról és megoldásáról](time-series-insights-diagnose-and-solve-problems.md).
 
-- Ha további segítségre van, indítson el egy beszélgetést az [MSDN fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Az [Azure támogatási](https://azure.microsoft.com/support/options/) szolgálata segítséget nyújt a támogatott támogatási lehetőségekhez is.
+- Ismerje meg [, hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md).
