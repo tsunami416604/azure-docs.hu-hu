@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285792"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330966"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database funkciók
 
@@ -137,7 +137,7 @@ Az Azure platform számos olyan, a szabványos adatbázis-funkciókhoz hozzáado
 | [SQL-elemzés](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Igen | Igen |
 | [SQL-adatszinkronizálás](sql-database-get-started-sql-data-sync.md) | Igen | Nem |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. | Nem, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) egy különálló Azure Cloud Service. |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a Azure SQL Database által futtatott és az Azure SSIS Integration Runtime (IR) szolgáltatásban futtatott SSISDB történik, lásd: [Azure-SSIS IR létrehozása ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database-kiszolgáló és a felügyelt példány SSIS-szolgáltatásainak összehasonlítását lásd: [Azure SQL Database önálló adatbázisok/rugalmas készletek és felügyelt példányok összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a felügyelt példány által üzemeltetett SSISDB történik, és az Azure SSIS Integration Runtime (IR) hajtja végre, lásd: [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database és a felügyelt példány SSIS funkcióinak összehasonlítását lásd: [Azure SQL Database önálló adatbázisok/rugalmas készletek és felügyelt példányok összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a Azure SQL Database által futtatott és az Azure SSIS Integration Runtime (IR) szolgáltatásban futtatott SSISDB történik, lásd: [Azure-SSIS IR létrehozása ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database-kiszolgáló és a felügyelt példány SSIS-szolgáltatásainak összehasonlításához tekintse meg az [Azure SQL Database önálló adatbázis, a rugalmas készlet és a felügyelt példány összevetését](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)ismertető témakört. | Igen, felügyelt SSIS Azure Data Factory (ADF) környezetben, ahol a csomagok tárolása a felügyelt példány által üzemeltetett SSISDB történik, és az Azure SSIS Integration Runtime (IR) hajtja végre, lásd: [Create Azure-SSIS IR in ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>A SQL Database és a felügyelt példány SSIS funkcióinak összehasonlításához tekintse meg az [Azure SQL Database önálló adatbázis, a rugalmas készlet és a felügyelt példány összevetését](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance)ismertető témakört. |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) | Nem – [lásd Power bi](https://docs.microsoft.com/power-bi/) |
 | [Teljesítménytesztek lekérdezése (QPI)](sql-database-query-performance.md) | Igen | Nem. SQL Server Management Studio és Azure Data Studio beépített jelentéseinek használata. |
 | [Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részleges, lehetővé teszi a korlátozott hozzáférést a [VNet-végpontok](sql-database-vnet-service-endpoint-rule-overview.md) használatával | Igen, a felügyelt példány az ügyfél VNet van befecskendezve. Lásd: [alhálózat](sql-database-managed-instance-transact-sql-information.md#subnet) és [VNet](sql-database-managed-instance-transact-sql-information.md#vnet) |

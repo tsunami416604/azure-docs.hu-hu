@@ -4,22 +4,24 @@ description: Használjon környezeti változókat, és hozzon létre beállítá
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2019
+ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2526f33f0053b5805394a4a898af88d86187066c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301281"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330805"
 ---
-# <a name="give-modules-access-to-a-devices-local-storage"></a>Modulok elérésének biztosítása az eszköz helyi tárolójához
+# <a name="give-modules-access-to-a-devices-local-storage"></a>Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
 
 Az adatok Azure Storage-szolgáltatásokkal vagy az eszköz tároló-tárolóban való tárolása mellett a tárolót is kioszthatja a gazdagépen IoT Edge eszközön is, így a megbízhatóságot, különösen a kapcsolat nélküli üzemmódban.
 
-Ha a gazdagép rendszerén szeretné beállítani a tárolót, hozzon létre egy környezeti változót a modulhoz, amely a tároló egyik tárolási mappájára mutat. Ezt követően a létrehozási beállításokkal társítsa a Storage mappát a gazdaszámítógép egyik mappájához.
+## <a name="link-module-storage-to-device-storage"></a>Modul tárterületének csatolása az eszköz tárterületéhez
+
+Ha a modul Storage-ból a gazdagépen lévő tárolóra mutató hivatkozást szeretne engedélyezni, hozzon létre egy környezeti változót a modulhoz, amely a tároló egyik tárolási mappájára mutat. Ezt követően a létrehozási beállításokkal társítsa a Storage mappát a gazdaszámítógép egyik mappájához.
 
 Ha például engedélyezni szeretné az IoT Edge hub számára az üzenetek tárolását az eszköz helyi tárolójában, és később lekéri őket, a környezeti változókat és a létrehozási beállításokat a Azure Portal a **speciális Edge-futtatókörnyezet beállításainak konfigurálása szakaszában állíthatja be.** szakasz.
 
@@ -80,3 +82,7 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 További részleteket a [Docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)szolgáltatásbeli létrehozási lehetőségekről talál.
+
+## <a name="next-steps"></a>Következő lépések
+
+További példa a gazdagépek egy modulból való elérésére: [adatok tárolása az Azure Blob Storage on IoT Edge](how-to-store-data-blob.md).

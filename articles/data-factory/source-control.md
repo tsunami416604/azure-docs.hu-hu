@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: fd8168b5786f669de0c5c2109c9e02b43c62c582
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f3d443eed43cc1e131cd3dc47407ce2dfb023ce8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933656"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326383"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 
@@ -25,6 +25,9 @@ A Azure Data Factory felhasználói felületi élmény (UX) a Visual authoring s
 
 - Szerzői közvetlenül a Data Factory szolgáltatással
 - Az Azure Repos git vagy a GitHub integrációjának szerzője
+
+> [!NOTE]
+> A Azure Government-felhőben csak a Data Factory szolgáltatással történő közvetlen szerzői műveletek támogatottak.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Szerzői közvetlenül a Data Factory szolgáltatással
 
@@ -57,7 +60,7 @@ A Azure Data Factory kezdőlapján válassza a **kódlap beállítása**lehetős
 
 ![Azure Repos-programkódok tárházának konfigurálása](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX szerzői vászon
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX authoring Canvas
 A Azure Data Factory UX authoring vásznon válassza a **Data Factory** legördülő menüt, majd válassza a **kódlap beállítása**lehetőséget.
 
 ![A Code adattár beállításainak konfigurálása az UX-létrehozáshoz](media/author-visually/configure-repo-2.png)
@@ -68,16 +71,16 @@ Mindkét módszer megnyithatja a tárház beállításainak konfigurációs pane
 
 A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai láthatók:
 
-| Beállítás | Leírás | Value |
+| Beállítás | Leírás | Value (Díj) |
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa.<br/> | Azure DevOps git vagy GitHub |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | `<your tenant name>` |
-| **Azure Repos-szervezet** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet nevét itt találja: `https://{organization name}.visualstudio.com`. Bejelentkezhet az [Azure Repos](https://www.visualstudio.com/team-services/git/) -szervezetbe a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
-| **ProjectName** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét itt találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
+| **Azure Repos-szervezet** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet neve a következő címen található: `https://{organization name}.visualstudio.com`. Bejelentkezhet az [Azure Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
+| **Projektnév** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét a következő helyen találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **RepositoryName** | Az Azure Repos-kód tárházának neve. Az Azure Repos-projektek git-adattárakat tartalmaznak, amelyekkel a projekt növekedésével kezelhetők a forráskód. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a projektben. | `<your Azure Repos code repository name>` |
 | **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a `master`. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch name>` |
 | **Gyökérmappa** | Az Azure Repos együttműködési ág gyökérkönyvtára. | `<your root folder name>` |
-| **Meglévő Data Factory-erőforrások importálása adattárba** | Itt adhatja meg, hogy a rendszer importálja-e a meglévő adatok gyári erőforrásait az UX authoring vászonból egy Azure Repos git-tárházba. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
+| **Meglévő Data Factory-erőforrások importálása adattárba** | Itt adhatja meg, hogy a rendszer importálja-e a meglévő adatok gyári erőforrásait az UX **authoring vászonból** egy Azure Repos git-tárházba. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
 | **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
 
 > [!NOTE]
@@ -103,9 +106,9 @@ Az Azure Repos szervezete Active Directoryhoz való csatlakoztatásával kapcsol
 
 ## <a name="author-with-github-integration"></a>Létrehozás a GitHub-integrációval
 
-A GitHub-integrációval rendelkező vizuális szerzői műveletek támogatják a forrás-és együttműködési munkát a saját adatfeldolgozó-folyamataiban. Egy GitHub-fiók adattárral társíthat egy adatgyárat a verziókövetés, az együttműködés, a verziószámozás érdekében. Egyetlen GitHub-fióknak több tárháza is lehet, de egy GitHub-tárház csak egy adatgyárhoz társítható. Ha nem rendelkezik GitHub-fiókkal vagy-adattárral, kövesse az [alábbi utasításokat](https://github.com/join) az erőforrások létrehozásához.
+A GitHub-integrációval rendelkező vizuális szerzői műveletek támogatják a forrás-és együttműködési munkát a saját adatfeldolgozó-folyamataiban. Egy GitHub-fiók adattárral társíthat egy adatgyárat a verziókövetés, az együttműködés, a verziószámozás érdekében. Egyetlen GitHub-fióknak több tárháza is lehet, de egy GitHub-tárház csak egy adatgyárhoz társítható. Ha nem rendelkezik GitHub-fiókkal vagy-adattárral, kövesse az [alábbi utasításokat](https://github.com/join)@no__t – 1to hozza létre az erőforrásokat.
 
-A GitHub-integráció Data Factory a nyilvános GitHub (azaz [https://github.com](https://github.com)) és a GitHub Enterprise használatát is támogatja. A nyilvános és a privát GitHub-adattárakat Data Factory is használhatja, ha már rendelkezik olvasási és írási engedéllyel a GitHubon lévő tárházhoz.
+A GitHub-integráció Data Factory a nyilvános GitHubot (azaz [https://github.com](https://github.com)) és a GitHub Enterprise-t is támogatja. A nyilvános és a privát GitHub-adattárakat Data Factory is használhatja, ha már rendelkezik olvasási és írási engedéllyel a GitHubon lévő tárházhoz.
 
 GitHub-tárház konfigurálásához rendszergazdai jogosultságokkal kell rendelkeznie a használt Azure-előfizetéshez.
 
@@ -123,7 +126,7 @@ A Azure Data Factory kezdőlapján válassza a **kódlap beállítása**lehetős
 
 ![Azure Repos-programkódok tárházának konfigurálása](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX szerzői vászon
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>2\. konfigurációs módszer: UX authoring Canvas
 
 A Azure Data Factory UX authoring vásznon válassza a **Data Factory** legördülő menüt, majd válassza a **kódlap beállítása**lehetőséget.
 
@@ -140,7 +143,7 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 | **Tárház típusa** | Az Azure Repos Code adattár típusa. | GitHub |
 | **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kiválasztva (alapértelmezett) |
 | **GitHub Enterprise URL-cím** | A GitHub vállalati gyökérkönyvtárának URL-címe. Például: https://github.mydomain.com. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
-| **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https:\//GitHub.com/{Account Name}/{repository neve} helyről érhető el. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
+| **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https: \//GitHub. com/{Account Name}/{repository neve} címen érhető el. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
 | **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
 | **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
 | **Gyökérmappa** | A legfelső szintű mappa a GitHub-együttműködési ágban. |`<your root folder name>` |
@@ -173,17 +176,17 @@ A verziókövetés rendszerei (más néven a _verziókövetés_) lehetővé tesz
 
 ### <a name="creating-feature-branches"></a>Szolgáltatási ágak létrehozása
 
-Minden olyan Azure Repos git-tárház, amely egy adatgyárhoz van társítva, együttműködési ág tartozik. (`master` az alapértelmezett együttműködési ág). A felhasználók létrehozhatnak szolgáltatási ágakat is, ha a ág legördülő menüben az **+ új ág** lehetőségre kattintanak. Miután megjelenik az új ág ablaktábla, adja meg a szolgáltatási ág nevét.
+Minden olyan Azure Repos git-tárház, amely egy adatgyárhoz van társítva, együttműködési ág tartozik. (@no__t – 0 az alapértelmezett együttműködési ág). A felhasználók létrehozhatnak szolgáltatási ágakat is, ha a ág legördülő menüben az **+ új ág** lehetőségre kattintanak. Miután megjelenik az új ág ablaktábla, adja meg a szolgáltatási ág nevét.
 
 ![Új ág létrehozása](media/author-visually/new-branch.png)
 
-Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az együttműködési ágra, kattintson az ág legördülő listára, és válassza a **pull-kérelem létrehozása**lehetőséget. Ezzel a művelettel elvégezheti az Azure Repos git-t, ahol lekéréses kérelmeket tehet fel, kód-felülvizsgálatokat végezhet, és egyesítheti az együttműködési ág módosításait. (`master` az alapértelmezett érték). Az együttműködési ágban csak a Data Factory szolgáltatásban lehet közzétenni. 
+Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az együttműködési ágra, kattintson az ág legördülő listára, és válassza a **pull-kérelem létrehozása**lehetőséget. Ezzel a művelettel elvégezheti az Azure Repos git-t, ahol lekéréses kérelmeket tehet fel, kód-felülvizsgálatokat végezhet, és egyesítheti az együttműködési ág módosításait. (@no__t – 0 az alapértelmezett). Az együttműködési ágban csak a Data Factory szolgáltatásban lehet közzétenni. 
 
 ![Új lekéréses kérelem létrehozása](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-A közzétételi ág (azaz a Resource Manager-sablonok mentésének helye) konfigurálásához vegyen fel egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárba. Data Factory beolvassa ezt a fájlt, megkeresi a mezőt `publishBranch`, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Példa:
+A közzétételi ág (azaz a Resource Manager-sablonok mentésének helye) konfigurálásához adja hozzá a `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárához. Data Factory beolvassa ezt a fájlt, a `publishBranch` mezőt keresi, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Példa:
 
 ```json
 {
@@ -194,11 +197,11 @@ A közzétételi ág (azaz a Resource Manager-sablonok mentésének helye) konfi
 Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha azt szeretné, hogy az előző közzétételi ág távoli legyen, manuálisan törölje azt.
 
 > [!NOTE]
-> Data Factory csak akkor olvassa `publish_config.json` be a fájlt, amikor betölti a gyárat. Ha már betöltötte a gyárat a portálon, frissítse a böngészőt a módosítások érvénybe léptetéséhez.
+> Data Factory csak a `publish_config.json` fájlt olvassa be, amikor betölti a gyárat. Ha már betöltötte a gyárat a portálon, frissítse a böngészőt a módosítások érvénybe léptetéséhez.
 
 ### <a name="publish-code-changes"></a>Kód módosításának közzététele
 
-Miután összevonta a módosításokat az együttműködési ágra (`master` az alapértelmezett beállítás), kattintson a **Közzététel** gombra a kód módosításának manuális közzétételéhez a főág és a Data Factory szolgáltatás között.
+Miután összevonta a módosításokat az együttműködési ágra (`master` az alapértelmezett), kattintson a **Közzététel** gombra a kód módosításának manuális közzétételéhez a főágra a Data Factory szolgáltatásban.
 
 ![Módosítások közzététele a Data Factory szolgáltatásban](media/author-visually/publish-changes.png)
 
@@ -207,7 +210,7 @@ Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzét
 ![A megfelelő közzétételi ág megerősítése](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> A fő ág nem reprezentatív a Data Factory szolgáltatásban üzembe helyezett szolgáltatások esetében. A fő ágat manuálisan közzé kell tenni a Data Factory szolgáltatásban.
+> A fő ág nem reprezentatív a Data Factory szolgáltatásban üzembe helyezett szolgáltatások esetében. A *fő ágat manuálisan közzé kell tenni* a Data Factory szolgáltatásban.
 
 ## <a name="advantages-of-git-integration"></a>A git-integráció előnyei
 
@@ -227,7 +230,7 @@ Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzét
 Általában nem szeretné, hogy minden csapattag rendelkezzen a gyár frissítéséhez szükséges engedélyekkel. A következő engedélyek használata ajánlott:
 
 *   Az összes csapattagnak olvasási engedéllyel kell rendelkeznie az adatelőállítóhoz.
-*   A gyárban csak a kiválasztott személyek adhatók közzé. Ehhez rendelkeznie kell a **Data Factory közreműködő** szerepkörrel a gyárban. Az engedélyekkel kapcsolatos további információkért lásd: [szerepkörök és engedélyek](concepts-roles-permissions.md)a Azure Data Factoryhoz.
+*   A gyárban csak a kiválasztott személyek adhatók közzé. Ehhez rendelkeznie kell a **Data Factory közreműködő** szerepkörrel a gyárban. Az engedélyekkel kapcsolatos további információkért lásd: [szerepkörök és engedélyek a Azure Data Factoryhoz](concepts-roles-permissions.md).
    
 az ajánlott, hogy a közvetlen bejelentkezések ne legyenek engedélyezve az együttműködési ágban. Ez a korlátozás segít megakadályozni a hibákat, mivel minden bejelentkezés a pull-kérelmek folyamatán keresztül történik.
 
@@ -244,16 +247,16 @@ A Key Vault használata is megkönnyíti a folyamatos integrációt és üzembe 
 Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzététel ellenére elavult erőforrásokat tartalmaz, próbálkozzon a következő lépésekkel:
 
 1. Az aktuális git-tárház eltávolítása
-1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása** az adattárba lehetőség van kiválasztva
+1. Konfigurálja újra a git-t ugyanazokkal a beállításokkal, de győződjön meg arról, hogy a **meglévő Data Factory erőforrások importálása az adattárba** lehetőség van **kiválasztva**
 1. Az együttműködési ág összes erőforrásának törlése
 1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
-Válassza ki a visszajelzéseket a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
+Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
 
 ![Visszajelzés](media/author-visually/provide-feedback.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A folyamatok figyelésével és kezelésével kapcsolatos további információkért lásd a [folyamatok programozott figyelését és](monitor-programmatically.md)felügyeletét ismertető témakört.
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse [meg az Azure Data Factory folyamatos integrációját és továbbítását (CI/CD)](continuous-integration-deployment.md).

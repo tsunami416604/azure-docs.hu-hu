@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB ORDER BY záradék
-description: Az Azure Cosmos DB ismerje meg az SQL ORDER BY záradékban. Használ SQL-t egy Azure Cosmos DB JSON lekérdezési nyelvvel.
+title: ORDER BY záradék Azure Cosmos DB
+description: Az SQL ORDER BY záradék megismerése Azure Cosmos DB. Az SQL használata Azure Cosmos DB JSON-lekérdezési nyelvként.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: d0a1ed33d5848c3ed8d5f83af8b320d77fe0dc65
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342809"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326838"
 ---
-# <a name="order-by-clause"></a>ORDER BY záradék
+# <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
 
-A választható ORDER BY záradék megadja a rendezési sorrendjét a lekérdezés által visszaadott eredményeket.
+A választható ORDER BY záradék a lekérdezés által visszaadott eredmények rendezési sorrendjét határozza meg.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,31 +29,31 @@ ORDER BY <sort_specification>
   
 - `<sort_specification>`  
   
-   Megadja egy tulajdonságot vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés. A rendezési oszlop neve vagy tulajdonság aliasként adható meg.  
+   Megadja azt a tulajdonságot vagy kifejezést, amelyen a lekérdezési eredményhalmaz rendezése történik. A rendezési oszlop nevet vagy tulajdonság-aliasként is megadható.  
   
-   Több tulajdonságok adhatók meg. A tulajdonság nevének egyedinek kell lennie. A feladatütemezés az ORDER BY záradékban rendezési tulajdonság határozza meg, hogy a szervezet az rendezett eredményhalmaz. Azt jelenti az eredményhalmaz az első tulajdonság szerint van rendezve, és ezután a rendezett lista van rendezve, a második tulajdonságot, és így tovább.  
+   Több tulajdonság is megadható. A tulajdonságok nevének egyedinek kell lennie. Az ORDER BY záradékban szereplő rendezési tulajdonságok sorrendje határozza meg a rendezett eredményhalmaz szervezetét. Ez azt jelenti, hogy az eredményhalmaz az első tulajdonság szerint van rendezve, és a rendezett listát a második tulajdonság rendezi, és így tovább.  
   
-   Az ORDER BY záradékban hivatkozott tulajdonságneveket vagy egy tulajdonság a kiválasztási listán, vagy bármely kétértelműséget nélkül a FROM záradékban megadott gyűjtemény meghatározott tulajdonságot meg kell felelnie.  
+   Az ORDER BY záradékban hivatkozott tulajdonságok neveinek meg kell egyezniük a kiválasztási listán szereplő tulajdonsággal vagy a FROM záradékban meghatározott tulajdonsággal, kétértelműség nélkül.  
   
 - `<sort_expression>`  
   
-   Itt adhatja meg, egy vagy több tulajdonságait, vagy a lekérdezés eredményhalmazában rendezéshez használandó kifejezés.  
+   Egy vagy több olyan tulajdonságot vagy kifejezést ad meg, amelyeken a lekérdezési eredményhalmaz sorba rendezésére kerül sor.  
   
 - `<scalar_expression>`  
   
-   Tekintse meg a [skaláris kifejezések](sql-query-scalar-expressions.md) című szakasz részletezi.  
+   A részletekért tekintse meg a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
   
 - `ASC | DESC`  
   
-   Itt adhatja meg, hogy a megadott oszlopban szereplő értékek növekvő vagy csökkenő sorrendben jelennek meg. ASC rendezi a legkisebb érték a legmagasabb érték. DESC rendezi a legmagasabb érték a legkisebb értéket. ASC az alapértelmezett rendezési sorrend. A legkisebb lehetséges értékek NULL értéket kell kezelni.  
+   Megadja, hogy a megadott oszlopban szereplő értékeket növekvő vagy csökkenő sorrendbe kell rendezni. Az ASC a legalacsonyabb értékről a legmagasabb értékre rendez. A DESC a legmagasabb értékről a legalacsonyabb értékre rendez. Az ASC az alapértelmezett rendezési sorrend. A null értékeket a lehető legalacsonyabb értékként kezeli a rendszer.  
   
 ## <a name="remarks"></a>Megjegyzések  
   
-   Az ORDER BY záradék szükséges, hogy az indexelési házirendet rendezi a mezőket egy indexet. Az Azure Cosmos DB lekérdezési modul támogatja a rendezési tulajdonság nevét és nem számított tulajdonságokat ellen. Az Azure Cosmos DB támogatja a több ORDER BY tulajdonságot. Annak érdekében, hogy a lekérdezések futtatása több ORDER BY tulajdonsággal rendelkező, meg kell határozni egy [összetett index](index-policy.md#composite-indexes) rendezi a mező alapján.
+   Az ORDER BY záradék megköveteli, hogy az indexelési házirend tartalmazzon egy indexet a rendezés alatt álló mezőkhöz. A Azure Cosmos DB lekérdezési futtatókörnyezet támogatja a tulajdonságok neve szerinti rendezést, és nem a számított tulajdonságokkal. Azure Cosmos DB több SORRENDet is támogat a tulajdonságok alapján. Ha több SORRENDet tartalmazó lekérdezést szeretne futtatni, definiálnia kell egy [összetett indexet](index-policy.md#composite-indexes) a rendezés alatt álló mezőkben.
 
 ## <a name="examples"></a>Példák
 
-Ha például a következő családok növekvő sorrendben a tartózkodási város neve, amely:
+Például itt egy olyan lekérdezés, amely a családokat a rezidens város nevének növekvő sorrendjében kéri le:
 
 ```sql
     SELECT f.id, f.address.city
@@ -76,7 +76,7 @@ Az eredmények a következők:
     ]
 ```
 
-Az alábbi lekérdezés lekéri a család `id`s, az elem létrehozásának dátuma sorrendben. Elem `creationDate` van egy számot jelölő a *alapidőpont*, vagy 1970. január 1. másodpercek alatt óta eltelt idő.
+A következő lekérdezés lekérdezi a Family `id`s-t az elemek létrehozási dátumának megfelelően. A `creationDate` elem egy szám, amely az *időpontot*jelöli, vagy eltelt időt a Jan. 1, 1970 másodpercben.
 
 ```sql
     SELECT f.id, f.creationDate
@@ -99,7 +99,7 @@ Az eredmények a következők:
     ]
 ```
 
-Emellett a több tulajdonságot is rendezés. A lekérdezéshez, amely több tulajdonság alapján rendezi egy [összetett index](index-policy.md#composite-indexes). Vegye figyelembe a következő lekérdezést:
+Emellett több tulajdonság is megrendelhető. A több tulajdonság által megrendelt lekérdezéseknek [összetett indexre](index-policy.md#composite-indexes)van szükségük. Vegye figyelembe a következő lekérdezést:
 
 ```sql
     SELECT f.id, f.creationDate
@@ -107,10 +107,10 @@ Emellett a több tulajdonságot is rendezés. A lekérdezéshez, amely több tul
     ORDER BY f.address.city ASC, f.creationDate DESC
 ```
 
-Ez a lekérdezés lekéri a család `id` növekvő sorrendben az városa nevétől. Ha több elem az városa névvel rendelkezik, a lekérdezés rendezés lesz a `creationDate` csökkenő sorrendben.
+Ez a lekérdezés lekérdezi a `id` családot a város nevének növekvő sorrendjében. Ha több elem neve megegyezik a város nevével, a lekérdezés a `creationDate` sorrend szerint csökkenő sorrendbe kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
-- [ELTOLÁS korlát záradék](sql-query-offset-limit.md)
+- [ELTOLÁSi korlát záradéka](sql-query-offset-limit.md)

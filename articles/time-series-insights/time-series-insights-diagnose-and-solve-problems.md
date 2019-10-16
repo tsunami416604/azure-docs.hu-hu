@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129119"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330873"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
@@ -34,17 +34,17 @@ A [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) s
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták, lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
 * Az Azure IoT Hub IoT hub esetében meg kell adnia a **szolgáltatás-csatlakozási** engedélyekkel rendelkező kulcsot. A **iothubowner** vagy a **szolgáltatási** házirendek egyike is működni fog, mivel mindkettőnek van **Service-csatlakozási** engedélye.
 
-   [![IoT Hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [@no__t – 1IoT hub szolgáltatás csatlakozási engedélyei](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
-* Az Azure Event Hubsban található Event hub esetében meg kell adnia a **figyelési** engedélyekkel rendelkező kulcsot. Az **olvasási** vagy a **kezelési** szabályzatok egyike sem fog működni, mert mindkettő figyelési engedéllyel rendelkezik.
+* Az Azure Event Hubsban található Event hub esetében meg kell adnia a **figyelési** engedélyekkel rendelkező kulcsot. Az **olvasási** vagy a **kezelési** szabályzatok egyike sem fog működni, mert mindkettő **figyelési** engedéllyel rendelkezik.
 
-   [![Event hub – figyelési engedélyek](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [@no__t – 1Event hub figyelési engedélyei](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>C: a megadott fogyasztói csoport nem kizárólag Time Series Insights
 
@@ -69,7 +69,7 @@ A szabályozási korlátot a környezet SKU-típusa és kapacitása alapján ké
 
 Az alábbi ábrán egy olyan Time Series Insights-környezet látható, amely egy S1-es SKU-t és 3 kapacitást tartalmaz. Naponta 3 000 000 eseményt tud beáramlani.
 
-[![A környezeti SKU jelenlegi kapacitása](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[@no__t – 1Environment SKU jelenlegi kapacitása](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Tegyük fel például, hogy egy környezet az Event hub üzeneteit tölti be. A napi bejövő forgalom aránya ~ 67 000 üzenet. Ez a sebesség percenként körülbelül 46 üzenetet fordít. 
 
@@ -105,16 +105,16 @@ Győződjön meg arról, hogy az időbélyeg-tulajdonság neve és értéke megf
 
 Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Explorer használata. A Time Series Insights Explorerben a diagramot használva válasszon ki egy időszakot, miután megadta az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, majd válassza az **események feltárása** lehetőséget.
 
-Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A szó időbélyege mellett a következő jelenik meg: **($TS)** .
+Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A szó **időbélyege**mellett a következő jelenik meg: **($TS)** .
 
 A következő értékek nem láthatók:
 
-- *(ABC)* : Azt jelzi, hogy Time Series Insights karakterláncként olvassa be az adatértékeket.
-- *Naptár ikonja*: Azt jelzi, hogy Time Series Insights az adatértéket *datetime*típusúként olvassa.
-- *#* : Azt jelzi, hogy Time Series Insights egész számként olvassa az adatértékeket.
+- *(ABC)* : azt jelzi, hogy Time Series Insights karakterláncként olvassa be az adatértékeket.
+- *Naptár ikonja*: azt jelzi, hogy Time Series Insights az adatértéket *datetime*típusúként olvassa.
+- *#* : azt jelzi, hogy a Time Series Insights egész számként olvassa be az adatértékeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Segítségért kezdjen el beszélgetni az [MSDN fórumon](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) vagy [stack overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights).
+- Olvassa el a [Azure Time Series Insights késésének enyhítését](time-series-insights-environment-mitigate-latency.md)ismertető témakört.
 
-- A támogatott támogatási lehetőségekért használja az [Azure-támogatást](https://azure.microsoft.com/support/options/).
+- Ismerje meg [, hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md).

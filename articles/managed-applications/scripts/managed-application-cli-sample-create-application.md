@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-példaszkript – Felügyelt alkalmazás üzembe helyezése | Microsoft Docs
-description: Azure CLI-példaszkript – Felügyelt alkalmazás definíciójának üzembe helyezése
+description: Olyan Azure CLI-parancsfájlt biztosít, amely egy Azure által felügyelt alkalmazás-definíciót telepít az előfizetésre.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: f09d9dcb60370c2cc51f5652def92e5ad9c9b512
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 18dbd46df3e5e1f7dc0368b2c007e0c15d76decc
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61226395"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330161"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Felügyelt alkalmazás üzembe helyezése a szolgáltatáskatalógusból az Azure CLI használatával
 
@@ -42,7 +42,7 @@ Ez a szkript a következő parancsot használja egy felügyelt alkalmazás üzem
 | [az managedapp create](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-create) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).

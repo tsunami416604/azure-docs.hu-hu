@@ -1,23 +1,23 @@
 ---
-title: Az Azure Cosmos DB ELTOLÁS korlát záradék
-description: További információk a korlát ELTOLÁS záradék az Azure Cosmos DB.
+title: ELTOLÁSi korlát záradéka Azure Cosmos DB
+description: Tudnivalók a Azure Cosmos DB ELTOLÁSi korlát záradékáról.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 60ac28c80e9f7cc72f4d6005c12cb5f68671341e
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 7aae56783f83f13b50321c88d69f07d910e589dd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67342481"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326870"
 ---
-# <a name="offset-limit-clause"></a>ELTOLÁS korlát záradék
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>ELTOLÁSi korlát záradéka Azure Cosmos DB
 
-Az ELTOLÁS korlát záradék egy nem kötelező záradék, hagyja ki, majd vennie néhány a lekérdezésből származó értékek száma. Az ELTOLÁS száma és a korlát a korlát ELTOLÁS záradékban szükségesek.
+Az ELTOLÁSi korlát záradék egy opcionális záradék, amely a lekérdezésből néhány értéket igénybe vehet. Az eltolási korlátot és a HATÁRÉRTÉKek számát kötelező megadni az ofszet LIMIT záradékban.
 
-ELTOLÁS KORLÁTOT egy ORDER BY záradékkal együtt kell használni, amikor az eredményhalmaz kihagyása végrehajtásával előállítása, és igénybe vehet a rendezett értékekhez. Nincs ORDER BY záradék használata esetén azt eredményezi értékek determinisztikus sorrendjét.
+Ha az ELTOLÁSi KORLÁTot ORDER BY záradékkal együtt használja, az eredményhalmaz a kihagyás és a megrendelt értékek megtételével jön létre. Ha nem használ ORDER BY záradékot, a rendszer determinisztikus sorrendet eredményez.
 
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,19 +29,19 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   Adja meg az egész számmal megadott elemek, amelyek a lekérdezés eredményeinek ki kell hagyni.
+   Meghatározza, hogy hány elemből kell kihagyni a lekérdezés eredményeit.
 
 - `<limit_amount>`
   
-   Adja meg az elemek, amelyek tartalmaznia kell a lekérdezés eredményeit az egész számmal megadott
+   Meghatározza, hogy hány elemnek kell szerepelnie a lekérdezés eredményei között.
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Az ELTOLÁS száma és a korlát száma is szükségesek a korlát ELTOLÁS záradékban. Ha egy nem kötelező `ORDER BY` záradék használata esetén az eredményhalmaz előállítása a skip rendezett értékek végrehajtásával. Ellenkező esetben a lekérdezés visszaadja az olyan rögzített értékek sorrendjét. Jelenleg ez a záradék támogatott lekérdezések csak egyetlen partíción belül, partícióra kiterjedő lekérdezések még nem támogatják ezt.
+  Az eltolási korlátot és a KORLÁTot is meg kell adni az OFFSet LIMIT záradékban. Ha nem kötelező `ORDER BY` záradékot használ, az eredményhalmaz a megrendelt értékek kihagyásával jön létre. Ellenkező esetben a lekérdezés az értékek rögzített sorrendjét fogja visszaadni. Jelenleg ez a záradék csak egy partíción belüli lekérdezésekhez támogatott, a több partíciós lekérdezések még nem támogatják azt.
 
 ## <a name="examples"></a>Példák
 
-Ha például a következő lekérdezés, amely kihagyja az első értékét adja vissza (a legerősebbtől a tartózkodási város nevét a) a második érték:
+Például itt egy olyan lekérdezés, amely kihagyja az első értéket, és a második értéket adja vissza (a rezidens város nevének sorrendjében):
 
 ```sql
     SELECT f.id, f.address.city
@@ -61,7 +61,7 @@ Az eredmények a következők:
     ]
 ```
 
-A következő lekérdezés, amely kihagyja az első érték második értéket adja vissza (rendelés) nélkül:
+Íme egy olyan lekérdezés, amely kihagyja az első értéket, és a második értéket adja vissza (megrendelés nélkül):
 
 ```sql
    SELECT f.id, f.address.city
@@ -80,8 +80,8 @@ Az eredmények a következők:
     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [ORDER BY záradék](sql-query-order-by.md)

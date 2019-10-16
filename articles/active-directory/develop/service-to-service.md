@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory Service-to-service-alkalmazások
-description: Protokoll flow, a regisztráció és az alkalmazástípushoz jogkivonat lejárati azt ismerteti, milyen szolgáltatások, alkalmazások és az alapokat.
+title: Szolgáltatások közötti alkalmazások Azure Active Directory
+description: Leírja, hogy milyen szolgáltatások közötti alkalmazások és az alkalmazás típusához tartozó protokollok, regisztráció és tokenek lejáratának alapjai.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,60 +17,60 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540292"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373889"
 ---
-# <a name="service-to-service-apps"></a>Szolgáltatások – alkalmazások
+# <a name="service-to-service-apps"></a>Szolgáltatások közötti alkalmazások
 
-Szolgáltatások – alkalmazások lehet egy démon, vagy a kiszolgáló alkalmazást, amelyet erőforrások lekérése a webes API-k. Nincsenek alkalmazandó az ebben a szakaszban két alárendelt forgatókönyvek:
+A szolgáltatások közötti alkalmazások lehetnek olyan démonok vagy kiszolgálóalkalmazások, amelyeknek egy webes API-ból kell lekérniük az erőforrásokat. A szakaszra két aleset vonatkozik:
 
-- Egy démon, amelyet egy webes API, épülő az OAuth 2.0 ügyfél-hitelesítő adatok engedélyezési típus meghívásához
+- Egy, a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési típusán alapuló webes API-t meghívó démon
 
-    Ebben az esetben fontos tudni, hogy néhány dolgot. Első lépésként felhasználói interakció esetén nem lehet egy démon alkalmazással, amelyhez szükség van az alkalmazás a saját identitás rendelkezik. Egy démon alkalmazás például a batch-feladat vagy egy operációs rendszer szolgáltatás fut a háttérben. Ez az alkalmazástípus egy hozzáférési jogkivonatot kér az alkalmazás azonosítóját és az Alkalmazásazonosítót, hitelesítő adat (jelszó vagy tanúsítvány) és alkalmazás bemutatása az Azure AD-Alkalmazásazonosító URI-ja. Sikeres hitelesítést követően a démon kap egy hozzáférési jogkivonatot az Azure AD-ben szereznek, majd a webes API meghívásához.
+    Ebben az esetben fontos megérteni néhány dolgot. Először is a felhasználói interakció nem lehetséges egy Daemon-alkalmazásban, amelyhez az alkalmazásnak saját identitása szükséges. Egy démon-alkalmazás például egy batch-feladat, vagy egy, a háttérben futó operációsrendszer-szolgáltatás. Az ilyen típusú alkalmazás hozzáférési jogkivonatot kér az alkalmazás identitásával, és megjeleníti az alkalmazás AZONOSÍTÓját, hitelesítő adatait (jelszavát vagy tanúsítványát), valamint az alkalmazás AZONOSÍTÓjának URI-JÁT az Azure AD-hez. A sikeres hitelesítés után a démon kap egy hozzáférési jogkivonatot az Azure AD-től, amelyet a rendszer a webes API meghívására használ.
 
-- Kiszolgálói alkalmazás (például a webes API-k), amelyek egy webes API-t OAuth 2.0-alapú meghatalmazásos draft specifikáció épül
+- Egy olyan kiszolgálói alkalmazás (például webes API), amelynek meg kell hívnia egy webes API-t, amely a OAuth 2,0-re épül a draft-specifikáció alapján.
 
-    Ebben a forgatókönyvben tegyük fel, hogy a felhasználó a natív alkalmazások hitelesítette, és a natív alkalmazásnak kell webes API-hívás. Az Azure AD kibocsát egy JWT jogkivonat a webes API meghívásához. Ha a webes API meghívása egy másik alsóbb rétegbeli webes API-t, a alapú meghatalmazásos folyamat használhatja a felhasználói identitás delegálásához, és a második szintű webes API hitelesítésére.
+    Ebben az esetben Képzelje el, hogy egy felhasználó natív alkalmazáson hitelesített, és ez a natív alkalmazásnak webes API-t kell meghívnia. Az Azure AD egy JWT hozzáférési tokent bocsát ki a webes API meghívásához. Ha a webes API-nak egy másik alsóbb rétegbeli webes API-t kell meghívnia, akkor használhatja a folyamaton belüli folyamatot a felhasználó identitásának delegálására és a második szintű webes API-ra való hitelesítésre.
 
 ## <a name="diagram"></a>Ábra
 
-![Démon, vagy az webes API-diagram](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
+![Daemon vagy Server alkalmazás webes API-diagramra](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
 ## <a name="dprotocol-flow"></a>DProtocol folyamat
 
-### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Identita aplikace az OAuth 2.0 ügyfél-hitelesítő adatok megadása
+### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Alkalmazás-identitás OAuth 2,0 ügyfél-hitelesítő adatokkal
 
-1. Először a kiszolgálói alkalmazás hitelesítenie kell az Azure AD szolgáltatásba, például egy interaktív bejelentkezési párbeszédpanel emberi beavatkozás nélkül történik. Adatbeolvasási kérelmet küld az Azure AD jogkivonat végpontra, a hitelesítő adat, alkalmazás Azonosítóját és alkalmazás Alkalmazásazonosító URI-t biztosít.
-1. Az Azure AD hitelesíti magát az alkalmazást, és a webes API meghívásához használt JWT hozzáférési jogkivonatot ad vissza.
-1. HTTPS-en keresztüli a webes alkalmazás használja a kapott JWT jogkivonat a JWT-karakterlánc a "Tulajdonos" megnevezéssel a kérelem az engedélyezési fejléc hozzáadása a webes API-t. A webes API majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.
+1. Először is a kiszolgálónak az Azure AD-vel kell hitelesítenie magát, anélkül, hogy emberi beavatkozást kellene végeznie, például egy interaktív bejelentkezési párbeszédpanelt. Kérést küld az Azure AD jogkivonat-végpontjának, amely megadja a hitelesítő adatokat, az alkalmazás AZONOSÍTÓját és az alkalmazás-azonosító URI-t.
+1. Az Azure AD hitelesíti az alkalmazást, és egy JWT hozzáférési tokent ad vissza, amely a webes API meghívására szolgál.
+1. HTTPS-kapcsolaton keresztül a webalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot a "tulajdonos" jelöléssel a webes API-nak küldött kérelem engedélyezési fejlécében. A webes API ezt követően ellenőrzi az JWT tokent, és ha az érvényesítés sikeres, a visszaadja a kívánt erőforrást.
 
-### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>A meghatalmazott felhasználó identitását az OAuth 2.0-alapú meghatalmazásos Draft specifikáció
+### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>Delegált felhasználói azonosító a OAuth 2,0-ben – a draft-specifikáció nevében
 
-A folyamat az alábbiak ismertetik feltételezi, hogy a felhasználó hitelesítése egy másik alkalmazás (például egy natív alkalmazást), és az első szintű webes API hozzáférési jogkivonat beszerzése a felhasználói identitás használják.
+Az alább tárgyalt folyamat azt feltételezi, hogy egy felhasználó egy másik alkalmazásban (például egy natív alkalmazáson) lett hitelesítve, és a felhasználói identitásuk hozzáférési token beszerzésére lett használva az első szintű webes API-hoz.
 
-1. A natív alkalmazás elküldi a hozzáférési jogkivonatot az első szintű webes API-t.
-1. Az első szintű webes API-t egy kérést küld az Azure AD jogkivonat-végpont, így az alkalmazás azonosítója és a hitelesítő adatokat, valamint a felhasználói jogkivonat. Emellett a kérést küld-e egy on_behalf_of paraméter, amely azt jelzi, hogy a webes API-t az eredeti felhasználó nevében alsóbb rétegbeli webes API-hívás új jogkivonat kér.
-1. Az Azure AD ellenőrzi, hogy az első szintű webes API-t a második szintű webes API-k elérésére jogosult, és érvényesíti a kérést, a JWT-jogkivonatokkal visszaadó jwt-t az első szintű webes API-jogkivonat frissítésére.
-1. HTTPS-en keresztüli az első szintű webes API ekkor meghívja a második szintű webes API a jogkivonat-karakterláncot a kérelem az engedélyezési fejléc hozzáfűzésével. Az első szintű webes API-t továbbra is a második szintű webes API hívása, mindaddig, amíg a hozzáférési jogkivonatot és frissítési jogkivonatok érvényesek.
+1. A natív alkalmazás elküldi a hozzáférési jogkivonatot az első szintű webes API-nak.
+1. Az első rétegbeli webes API kérelmet küld az Azure AD jogkivonat-végpontjának, amely az alkalmazás AZONOSÍTÓját és hitelesítő adatait, valamint a felhasználó hozzáférési jogkivonatát adja meg. Emellett a rendszer egy on_behalf_of paraméterrel küldi el a kérelmet, amely azt jelzi, hogy a webes API új jogkivonatokat kér az alárendelt webes API-k meghívásához az eredeti felhasználó nevében.
+1. Az Azure AD ellenőrzi, hogy az első szintű webes API-nak van-e engedélye a második szintű webes API eléréséhez, és érvényesíti a kérést, JWT hozzáférési tokent és JWT frissítési tokent ad vissza az első szintű webes API-hoz.
+1. A HTTPS-en keresztül az első rétegbeli webes API ezt követően meghívja a második rétegbeli webes API-t úgy, hogy hozzáfűzi a jogkivonat-karakterláncot a kérelemben található engedélyezési fejlécben. Az első rétegbeli webes API továbbra is meghívhatja a második rétegbeli webes API-t, amíg a hozzáférési jogkivonat és a frissítési tokenek érvényesek.
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták démon vagy kiszolgálói alkalmazás webes API-forgatókönyvekhez. És a új mintát gyakran hozzáadása során gyakran készítsen biztonsági ellenőrzést. [Kiszolgáló vagy alkalmazás démon a webes API-hoz](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Tekintse meg a Daemon vagy a Server alkalmazás webes API-forgatókönyvekhez készült mintáit. Az új minták hozzáadásakor gyakran térjen vissza újra. [Kiszolgáló vagy démon alkalmazás webes API-hoz](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-* Egyetlen bérlő – az alkalmazás azonosítóját és a delegált felhasználó identitás esetben a démon, vagy server alkalmazást regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, amelyek segítségével korlátozhatja a démon, vagy az erőforrásokhoz való hozzáférése konfigurálható. Ha egy meghatalmazott felhasználói identitástípus használatban van, a kiszolgálói alkalmazás kell válassza ki a kívánt engedélyekkel a "Engedélyeket az egyéb alkalmazások" legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
-* Több-bérlős-First, a démon vagy kiszolgálói alkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Amikor a felhasználó vagy rendszergazda hozzájárul, mind a webes API-k a címtárban van regisztrálva.
+* Egyetlen bérlő – az alkalmazás identitása és a delegált felhasználó identitása esetében a démont vagy a kiszolgálói alkalmazást ugyanabban a címtárban kell regisztrálni az Azure AD-ben. A webes API beállítható úgy, hogy a démon vagy a kiszolgáló erőforrásaihoz való hozzáférés korlátozására szolgáló engedélyek körét tegye elérhetővé. Ha a delegált felhasználói azonosító típusa használatban van, a kiszolgálói alkalmazásnak ki kell választania a kívánt engedélyeket az "engedélyek más alkalmazásokhoz" legördülő menüből a Azure Portal. Ez a lépés nem kötelező, ha az alkalmazás identitásának típusa használatban van.
+* Több-bérlős – először a démon vagy a kiszolgálóalkalmazás úgy van konfigurálva, hogy jelezze a működéséhez szükséges engedélyeket. A szükséges engedélyek listája egy párbeszédpanelen jelenik meg, ha a célként megadott könyvtárban lévő felhasználó vagy rendszergazda beleegyezik az alkalmazásba, ami elérhetővé teszi a szervezet számára. Egyes alkalmazásokhoz csak felhasználói szintű engedélyek szükségesek, amelyeket a szervezet bármely felhasználója jóváhagyhat. Más alkalmazásokhoz rendszergazdai szintű engedélyek szükségesek, amelyeket a szervezet felhasználója nem tud jóváhagyni. Csak a címtár-rendszergazda engedélyezheti az ilyen szintű engedélyeket igénylő alkalmazásokhoz való hozzáférést. A felhasználó vagy a rendszergazda beleegyezése esetén mindkét webes API regisztrálva van a címtárában.
 
-## <a name="token-expiration"></a>Jogkivonat lejáratáról
+## <a name="token-expiration"></a>Jogkivonat lejárata
 
-Az első alkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód használja, amikor a JWT-frissítési jogkivonatok is fogad. Ha a hozzáférési jogkivonat lejár, a frissítési jogkivonat használható újra hitelesíteni kell a felhasználói hitelesítő adatok kérése nélkül. A frissítési jogkivonat majd segítségével hitelesíti a felhasználót, amely egy új hozzáférési jogkivonatot és a frissítési jogkivonatot eredményez.
+Ha az első alkalmazás az engedélyezési kódját használja egy JWT hozzáférési jogkivonat beszerzéséhez, akkor a JWT frissítési tokent is kap. Ha a hozzáférési jogkivonat lejár, a frissítési token használatával újra hitelesítheti a felhasználót a hitelesítő adatok kérése nélkül. Ezt a frissítési tokent a rendszer a felhasználó hitelesítésére használja, amely új hozzáférési jogkivonatot és frissítési jogkivonatot eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
-- További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
+- További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
+- Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

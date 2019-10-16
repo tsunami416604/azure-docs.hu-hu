@@ -13,38 +13,27 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 992bc7acbb02dcdbc33d00349ddc7ae821f3ed01
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264425"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329453"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>A Application Insights használatának és költségeinek kezelése
 
 > [!NOTE]
 > Ez a cikk a Application Insights költségeinek megismerését és szabályozását ismerteti.  A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez.
 
-Ha kérdése van a Application Insights díjszabásával kapcsolatban, tegye fel kérdéseit a [fórumunkat](https://social.msdn.microsoft.com/Forums/home?forum=ApplicationInsights).
+Application Insights úgy lett kialakítva, hogy a webalkalmazások rendelkezésre állásának, teljesítményének és használatának nyomon követéséhez szükséges mindent meg lehessen figyelni, függetlenül attól, hogy az Azure-ban vagy a helyszínen vannak tárolva. Application Insights támogatja a népszerű nyelveket és keretrendszerek, például a .NET, a Java és a Node. js használatát, és integrálható a DevOps-folyamatokkal és-eszközökkel, például az Azure DevOps, a JIRA és a PagerDuty. Fontos tisztában lenni azzal, hogy mi határozza meg az alkalmazások monitorozásának költségeit. Ebben a cikkben áttekintjük, hogy mi vezet az alkalmazás figyelési költségeihez, és hogyan lehet proaktívan figyelni és vezérelni azokat.
+
+Ha kérdése van a Application Insights díjszabásával kapcsolatban, tegye fel kérdéseit a [fórumunkat](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights&filter=alltypes&sort=lastpostdesc).
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Az [Azure Application Insights][start] díjszabása egy utólagos elszámolású modell, amely a betöltött adatmennyiségtől és opcionálisan a hosszú adatmegőrzéstől függ. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. 
+Az [Azure Application Insights][start] díjszabása egy **utólagos** elszámolású modell, amely a betöltött adatmennyiségen és opcionálisan a hosszú adatmegőrzésen alapul. Minden Application Insights erőforrás külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatmennyiséget a rendszer az alkalmazásból Application Insights által fogadott, tömörítetlen JSON-adatcsomag méretének megfelelően méri. A [élő metrikastream](../../azure-monitor/app/live-stream.md)használatához nincs adatmennyiség.
 
-### <a name="data-volume-details"></a>Adatmennyiség adatai
-
-* Az adatmennyiség az Application Insights által fogadott telemetria bájtok száma. Az adatmennyiséget a rendszer az alkalmazásból Application Insights által fogadott, tömörítetlen JSON-adatcsomag méretének megfelelően méri. Az [elemzésbe importált táblázatos adatokat](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)az adatmennyiség a Application Insightsba küldendő fájlok tömörítetlen méretének megfelelően méri.
-* Az alkalmazás adatmennyiségére vonatkozó díjak mostantól a 2018. április 1-től az **adatfeldolgozás** nevű új számlázási mérőszámban szerepelnek. Ez az új mérőszám olyan megfigyelési technológiák között van megosztva, mint például az Application bepillantást és a Log Analytics, és jelenleg a szolgáltatás neve **log Analytics**. 
-* A [élő metrikastream](../../azure-monitor/app/live-stream.md) -adatértékek nem számítanak fel díjszabási célokra.
-
-> [!NOTE]
-> Az ebben a cikkben szereplő képernyőképeken megjelenő árak csak példaként szolgálnak. A pénznem és a régió aktuális áraiért lásd: [Application Insights díjszabása][pricing].
-
-### <a name="multi-step-web-tests"></a>Többlépéses webes teszt
-
-A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) felár ellenében merülhetnek fel. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre.
-
-Egyetlen oldal *pingelési tesztei* esetében nincs külön díj. A ping tesztekből és a többlépéses tesztekből származó telemetria az alkalmazás más telemetria azonos módon kell fizetni.
+A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) felár ellenében merülhetnek fel. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre. Egyetlen oldal *pingelési tesztei* esetében nincs külön díj. A ping tesztekből és a többlépéses tesztekből származó telemetria az alkalmazás más telemetria azonos módon kell fizetni.
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével kapcsolatos költségek becslése 
 
@@ -64,7 +53,7 @@ Ha a Application Insights Azure monitoring díjszabási számológépében enged
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>A használati és becsült költségek megismerése
 
-A Application Insights segítségével könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Első lépésként a Azure Portal Application Insights erőforráshoz lépjen a **használati és becsült költségek** lapra:
+A Application Insights segítségével könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Első lépésként a Azure Portal Application Insights erőforráshoz lépjen a **használati és becsült költségek** lapra: 
 
 ![Díjszabás kiválasztása](./media/pricing/pricing-001.png)
 
@@ -73,6 +62,8 @@ B. A [többlépéses webes tesztekért](../../azure-monitor/app/availability-mul
 C. Az elmúlt hónap adatmennyiség-trendjeinek megtekintése.  
 D. Adatfeldolgozási [mintavételezés](../../azure-monitor/app/sampling.md)engedélyezése.   
 E. Állítsa be a napi adatmennyiség korlátját.  
+
+(Vegye figyelembe, hogy az ebben a cikkben szereplő képernyőképeken megjelenő összes ár csak példaként szolgál. A pénznem és a régió aktuális áraival kapcsolatban lásd: [Application Insights díjszabása][pricing].)
 
 A Application Insights használatának mélyebb vizsgálatához nyissa meg a **metrikák** lapot, adja hozzá az "adatpont kötete" nevű metrikát, majd válassza a *felosztás alkalmazása* lehetőséget az adatok "telemetria-elem típusa" szerinti felosztásához. 
 
@@ -183,7 +174,7 @@ Az adatmegőrzés módosításához a Application Insights erőforrásból lépj
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-005.png)
 
-A megőrzés a [PowerShell használatával is beállítható](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) a `retentionInDays` paraméterrel programozott módon. Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméterrel azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak az ARM-on keresztül érhető el, és rendkívül körültekintően használható. 
+A megőrzés a [PowerShell használatával is beállítható](https://docs.microsoft.com/azure/azure-monitor/app/powershell#set-the-data-retention) a `retentionInDays` paraméterrel programozott módon. Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméterrel azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak Azure Resource Manageron keresztül érhető el, és rendkívül körültekintően használható. 
 
 Ha a számlázás a 2019. december elején megtartja a hosszabb adatmegőrzést, a 90 napnál hosszabb ideig tartott adatok számlázása ugyanaz, mint a jelenleg az Azure Log Analytics adatmegőrzési szolgáltatás díja. További információt a [Azure monitor díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/monitor/)olvashat. A [javaslathoz való szavazással](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)naprakész maradhat a változó adatmegőrzési folyamaton. 
 

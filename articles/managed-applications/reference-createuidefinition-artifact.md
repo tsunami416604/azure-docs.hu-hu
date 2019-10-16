@@ -1,20 +1,20 @@
 ---
 title: Az Azure Managed Application createUiDefinition-összetevő referenciája
-description: Ez a cikk a createUiDefinition-összetevőre mutató hivatkozás.
+description: Bemutatja, hogyan hozhatja létre az createUiDefinition-összetevőt egy Azure által felügyelt alkalmazáshoz. A fájl neve createUiDefinition. JSON.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336477"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330199"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Leírások: Felhasználói felület elemeinek összetevője
+# <a name="reference-user-interface-elements-artifact"></a>Hivatkozás: felhasználói felület elemeinek összetevője
 
 Ez a cikk a Azure Managed Applications *createUiDefinition. JSON* összetevőjét ismerteti. A felhasználói felület elemeinek létrehozásáról további információt a [felhasználói felület elemeinek létrehozása](create-uidefinition-elements.md)című témakörben talál.
 
@@ -81,8 +81,8 @@ A következő JSON a Azure Managed Applications *createUiDefinition. JSON* fájl
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
-- [Referencia Telepítési sablon összetevő](reference-main-template-artifact.md)
-- [Referencia Definíciós összetevő megtekintése](reference-view-definition-artifact.md)
+- [Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal](tutorial-create-managed-app-with-custom-provider.md)
+- [Hivatkozás: telepítési sablon összetevő](reference-main-template-artifact.md)
+- [Hivatkozás: definíciós összetevő megtekintése](reference-view-definition-artifact.md)

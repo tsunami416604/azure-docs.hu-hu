@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc93a7de824aeaf173e7179de0b0233b73488feb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 91947c243b521e970a89152f76abe9a99142b89d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321157"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374005"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Fejlesztői útmutató Azure Active Directory feltételes hozzáféréshez
 
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
-* Multi-Factor Authentication
+* Többtényezős hitelesítés
 * Csak az Intune-ban regisztrált eszközök hozzáférésének engedélyezése adott szolgáltatásokhoz
 * Felhasználói helyszínek és IP-címtartományok korlátozása
 
@@ -35,7 +35,7 @@ További információ a feltételes hozzáférés teljes képességeiről: [Azur
 
 Az Azure AD-alkalmazások fejlesztésére szolgáló fejlesztők számára ez a cikk bemutatja, hogyan használhatja a feltételes hozzáférést, és megtudhatja, hogy milyen hatással van az olyan erőforrásokhoz való hozzáférésre, amelyeken nem szabályozható a feltételes hozzáférési szabályzatok alkalmazása. A cikk azt is vizsgálja, hogy milyen hatással van a feltételes hozzáférés a folyamat, a webalkalmazások, a Microsoft Graph elérése és az API-k hívása során.
 
-A rendszer feltételezi az [önálló](quickstart-v1-integrate-apps-with-azure-ad.md) és a [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazások, valamint a [gyakori hitelesítési minták](authentication-scenarios.md) ismeretét.
+A rendszer feltételezi az [önálló](quickstart-v1-integrate-apps-with-azure-ad.md) és a [több-bérlős](howto-convert-app-to-be-multi-tenant.md) alkalmazások, valamint a [gyakori hitelesítési minták](v1-authentication-scenarios.md) ismeretét.
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>Hogyan befolyásolja a feltételes hozzáférés az alkalmazást?
 
@@ -50,7 +50,7 @@ Az alábbi forgatókönyvek a feltételes hozzáférés "kihívásai" kezelésé
 * ADAL. js-t használó egyoldalas alkalmazások
 * Erőforrás meghívása Web Apps
 
-A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzatok konfigurálásával kapcsolatos további tudnivalókért lásd [: gyors útmutató: Többtényezős hitelesítés megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../conditional-access/app-based-mfa.md).
+A feltételes hozzáférési szabályzatok alkalmazhatók az alkalmazásra, de az alkalmazáshoz hozzáférő webes API-ra is alkalmazhatók. A feltételes hozzáférési szabályzat konfigurálásával kapcsolatos további tudnivalókért tekintse meg a következőt: gyors útmutató: többtényezős hitelesítés [megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](../conditional-access/app-based-mfa.md).
 
 A forgatókönyvtől függően a nagyvállalati ügyfelek bármikor alkalmazhatják és eltávolíthatják a feltételes hozzáférési szabályzatokat. Ahhoz, hogy az alkalmazás továbbra is működőképes legyen egy új házirend alkalmazása esetén, meg kell valósítania a "Challenge" kezelést. Az alábbi példák a kihívások kezelését szemléltetik.
 
@@ -79,7 +79,7 @@ Egy alkalmazás elvárható, hogy a felhasználók teljesítik a foglalások és
 
 Számos különböző alkalmazás-topológiához a rendszer kiértékel egy feltételes hozzáférési szabályzatot a munkamenet létrehozásakor. Mivel a feltételes hozzáférési szabályzat az alkalmazások és szolgáltatások részletességén működik, a meghívott pont nagy mértékben függ a végrehajtani kívánt forgatókönyvtől.
 
-Amikor az alkalmazás egy feltételes hozzáférési szabályzattal próbál hozzáférni egy szolgáltatáshoz, előfordulhat, hogy feltételes hozzáférési kihívással találkozik. Ez a `claims` kihívás az Azure ad válaszában kapott paraméterben van kódolva. Íme egy példa erre a Challenge paraméterre: 
+Amikor az alkalmazás egy feltételes hozzáférési szabályzattal próbál hozzáférni egy szolgáltatáshoz, előfordulhat, hogy feltételes hozzáférési kihívással találkozik. Ez a kihívás a `claims` paraméterben van kódolva, amely az Azure AD válaszában érkezik. Íme egy példa erre a Challenge paraméterre: 
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -87,7 +87,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 A fejlesztők igénybe vehetik ezt a kihívást, és hozzáfűzik azt egy új Azure AD-kéréshez. Ha átadja ezt az állapotot, a rendszer felszólítja a végfelhasználót, hogy végezzen el minden olyan műveletet, amely a feltételes hozzáférési szabályzat betartásához szükséges. A következő esetekben a rendszer a hiba részleteit és a paraméter kibontását ismerteti.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -103,7 +103,7 @@ A következő információk csak a feltételes hozzáférési forgatókönyvekbe
 
 Az alábbi fejezetek az összetettebb általános forgatókönyveket tárgyalják. Az alapszintű működési elv a feltételes hozzáférési házirendek kiértékelése, amikor a rendszer a jogkivonatot arra a szolgáltatásra kéri, amelyhez feltételes hozzáférési szabályzat van alkalmazva.
 
-## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: A meghatalmazásos folyamatot végrehajtó alkalmazás
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Forgatókönyv: a folyamaton kívüli folyamatot végrehajtó alkalmazás
 
 Ebben az esetben a natív alkalmazás egy webszolgáltatást/API-t hív meg. Ez a szolgáltatás pedig a "folyamatban lévő" folyamatot hívja fel egy alsóbb rétegbeli szolgáltatás meghívására. A mi esetünkben a feltételes hozzáférési szabályzatot alkalmazták az alsóbb rétegbeli szolgáltatásra (webes API 2), és nem kiszolgálói/démoni alkalmazás helyett natív alkalmazást használnak. 
 
@@ -114,7 +114,7 @@ A webes API 1-es verziójának kezdeti jogkivonat-kérelme nem kéri a végfelha
 Az Azure AD egy HTTP-választ ad vissza néhány érdekes adattal:
 
 > [!NOTE]
-> Ebben az esetben ez egy multi-Factor Authentication-hiba leírása, de a feltételes hozzáférés széles köre `interaction_required` lehetséges.
+> Ebben az esetben ez egy multi-Factor Authentication-hiba leírása, de a feltételes hozzáférésre vonatkozó `interaction_required` széles köre van.
 
 ```
 HTTP 400; Bad Request
@@ -123,11 +123,11 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 ```
 
-A webes API 1-es verziójában elkapjuk a hibát `error=interaction_required`, és visszaküldjük `claims` a kihívást az asztali alkalmazásnak. Ezen a ponton az asztali alkalmazás új `acquireToken()` hívást hajthat végre, és hozzáfűzheti a `claims`kihívást extra lekérdezési karakterlánc paraméterként. Ehhez az új kérelemhez a felhasználónak többtényezős hitelesítést kell végeznie, majd újra el kell küldenie az új jogkivonatot a webes API 1-nek, és el kell végeznie a folyamaton kívüli folyamatot.
+A web API 1-es verziójában a `error=interaction_required` hibát kapjuk meg, és a `claims` kihívás visszaküldését az asztali alkalmazásba. Ezen a ponton az asztali alkalmazás új `acquireToken()` hívást hajthat végre, és hozzáfűzheti a `claims`challenge kiegészítő lekérdezési karakterlánc paraméterként. Ehhez az új kérelemhez a felhasználónak többtényezős hitelesítést kell végeznie, majd újra el kell küldenie az új jogkivonatot a webes API 1-nek, és el kell végeznie a folyamaton kívüli folyamatot.
 
 A forgatókönyv kipróbálásához tekintse meg a [.net-kód mintáját](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Azt mutatja be, hogyan lehet a jogcímeket visszaadni a webes API 1-ből a natív alkalmazásba, és új kérelmet létrehozni az ügyfélalkalmazás számára.
 
-## <a name="scenario-app-accessing-multiple-services"></a>Forgatókönyv: Az alkalmazás több szolgáltatáshoz fér hozzá
+## <a name="scenario-app-accessing-multiple-services"></a>Forgatókönyv: az alkalmazás több szolgáltatáshoz fér hozzá
 
 Ebben az esetben a webalkalmazás két szolgáltatáshoz fér hozzá, amelyek közül az egyikhez tartozik egy feltételes hozzáférési szabályzat. Az alkalmazás logikája alapján előfordulhat, hogy az alkalmazás elérési útja nem igényli mindkét webszolgáltatáshoz való hozzáférést. Ebben az esetben a token igénylésének sorrendje fontos szerepet játszik a végfelhasználói élményben.
 
@@ -135,7 +135,7 @@ Tegyük fel, hogy az A és B webszolgáltatás és A B webszolgáltatás a felt�
 
 ![Az alkalmazás több szolgáltatáshoz fér hozzá.](./media/conditional-access-dev-guide/app-accessing-multiple-services-scenario.png)
 
-Ha az alkalmazás kezdetben jogkivonatot kér a webszolgáltatáshoz, a végfelhasználó nem hívja meg a feltételes hozzáférési házirendet. Ez lehetővé teszi, hogy az alkalmazás fejlesztője vezérelje a végfelhasználói élményt, és ne kényszerítse a feltételes hozzáférési szabályzat meghívását minden esetben. A trükkös eset az, ha az alkalmazás ezt követően jogkivonatot kér a B webszolgáltatás számára. Ezen a ponton a felhasználónak meg kell felelnie a feltételes hozzáférési szabályzatnak. Amikor az alkalmazás megpróbálja a `acquireToken`-t, a következő hibaüzenetet hozhatja elő (az alábbi ábrán látható):
+Ha az alkalmazás kezdetben jogkivonatot kér a webszolgáltatáshoz, a végfelhasználó nem hívja meg a feltételes hozzáférési házirendet. Ez lehetővé teszi, hogy az alkalmazás fejlesztője vezérelje a végfelhasználói élményt, és ne kényszerítse a feltételes hozzáférési szabályzat meghívását minden esetben. A trükkös eset az, ha az alkalmazás ezt követően jogkivonatot kér a B webszolgáltatás számára. Ezen a ponton a felhasználónak meg kell felelnie a feltételes hozzáférési szabályzatnak. Amikor az alkalmazás megpróbál `acquireToken`-ra, a következő hibát eredményezheti (a következő ábrán látható):
 
 ```
 HTTP 400; Bad Request
@@ -146,23 +146,23 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![Alkalmazás, amely új jogkivonatot kér több szolgáltatáshoz](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-Ha az alkalmazás a ADAL könyvtárat használja, a jogkivonat beszerzésének sikertelensége mindig interaktív módon próbálkozik újra. Ha ez az interaktív kérelem bekövetkezik, a végfelhasználónak lehetősége van a feltételes hozzáférés betartására. Ez csak akkor igaz, ha a kérelem `AcquireTokenSilentAsync` olyan `PromptBehavior.Never` , vagy ebben az esetben, amikor az alkalmazásnak ```AcquireToken``` interaktív kérelmet kell elvégeznie ahhoz, hogy a végfelhasználó a szabályzatnak való megfelelést lehetővé tegye.
+Ha az alkalmazás a ADAL könyvtárat használja, a jogkivonat beszerzésének sikertelensége mindig interaktív módon próbálkozik újra. Ha ez az interaktív kérelem bekövetkezik, a végfelhasználónak lehetősége van a feltételes hozzáférés betartására. Ez csak akkor igaz, ha a kérelem `AcquireTokenSilentAsync` vagy `PromptBehavior.Never`, amely esetben az alkalmazásnak interaktív ```AcquireToken``` kérést kell végrehajtania, hogy a végfelhasználó a szabályzatnak való megfelelést biztosítson.
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: Egyoldalas alkalmazás (SPA) a ADAL. js használatával
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Forgatókönyv: egyoldalas alkalmazás (SPA) a ADAL. js használatával
 
 Ebben a forgatókönyvben bemutatjuk, mi történik, ha egy egyoldalas alkalmazást (SPA) használunk a ADAL. js használatával egy feltételes hozzáférésű védett webes API meghívásához. Ez egy egyszerű architektúra, de van néhány olyan árnyalata, amelyet figyelembe kell venni a feltételes hozzáféréshez való fejlesztés során.
 
-A ADAL. js fájlban van néhány olyan függvény, amely tokeneket szerez be `login()`: `acquireToken(...)` `acquireTokenPopup(…)`,, és `acquireTokenRedirect(…)`.
+A ADAL. js fájlban van néhány olyan függvény, amely tokeneket szerez be: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)` és `acquireTokenRedirect(…)`.
 
-* `login()`egy interaktív bejelentkezési kéréssel szerzi be az azonosító jogkivonatot, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
-* `acquireToken(…)`Ezután egy hozzáférési jogkivonat csendes beszerzésére használható, ami azt jelenti, hogy nem jeleníti meg a felhasználói felületet semmilyen körülmények között.
-* `acquireTokenPopup(…)`a `acquireTokenRedirect(…)` és mindkét esetben az erőforrás-tokenek interaktív igénylésére szolgálnak, ami azt jelenti, hogy mindig bejelentkezési felhasználói felületet mutatnak.
+* a `login()` egy interaktív bejelentkezési kérésen keresztül szerzi be az azonosító tokent, de nem kap hozzáférési jogkivonatokat bármely szolgáltatáshoz (beleértve a feltételes hozzáférésű védett webes API-t).
+* a `acquireToken(…)` a hozzáférési jogkivonat csendes beszerzéséhez használható, ami azt jelenti, hogy a felhasználói felület nem jeleníthető meg semmilyen körülmények között.
+* a `acquireTokenPopup(…)` és a `acquireTokenRedirect(…)` egyaránt használják a tokenek interaktív igénylésére egy erőforráshoz, ami azt jelenti, hogy mindig bejelentkezési felhasználói felületet mutatnak be.
 
-Ha egy alkalmazásnak hozzáférési tokenre van szüksége a webes API meghívásához, `acquireToken(…)`az megkísérli a-t. Ha a jogkivonat-munkamenet lejárt, vagy meg kell felelnie egy feltételes hozzáférési szabályzatnak, a *acquireToken* függvény meghiúsul, és az alkalmazás a `acquireTokenPopup()` vagy `acquireTokenRedirect()`a alkalmazást használja.
+Ha egy alkalmazásnak hozzáférési jogkivonatra van szüksége a webes API meghívásához, akkor a `acquireToken(…)` értéket kísérli meg. Ha a jogkivonat-munkamenet lejárt, vagy meg kell felelnie egy feltételes hozzáférési szabályzatnak, a *acquireToken* függvény meghiúsul, és az alkalmazás `acquireTokenPopup()` vagy `acquireTokenRedirect()` protokollt használ.
 
 ![Egyoldalas alkalmazás ADAL flow diagram használatával](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
-Lássunk egy példát a feltételes hozzáférési forgatókönyvre. A végfelhasználó csak a helyen landolt, és nem rendelkezik munkamenettel. Az azonosító jogkivonat `login()` beszerzése a multi-Factor Authentication használata nélkül végezhető. Ezután a felhasználó egy olyan gombot talál, amely megköveteli, hogy az alkalmazás egy webes API-ból kérjen adatkérést. Az alkalmazás megkísérli a `acquireToken()` hívást, de sikertelen, mert a felhasználó még nem hajtotta végre a többtényezős hitelesítést, és meg kell felelnie a feltételes hozzáférési szabályzatnak.
+Lássunk egy példát a feltételes hozzáférési forgatókönyvre. A végfelhasználó csak a helyen landolt, és nem rendelkezik munkamenettel. A többtényezős hitelesítés nélkül egy @no__t 0 hívást végzünk. Ezután a felhasználó egy olyan gombot talál, amely megköveteli, hogy az alkalmazás egy webes API-ból kérjen adatkérést. Az alkalmazás megpróbál `acquireToken()` hívást végrehajtani, de sikertelen, mert a felhasználó még nem hajtotta végre a többtényezős hitelesítést, és meg kell felelnie a feltételes hozzáférési szabályzatnak.
 
 Az Azure AD a következő HTTP-választ küldi vissza:
 
@@ -172,11 +172,11 @@ error=interaction_required
 error_description=AADSTS50076: Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to access '<Web API App/Client ID>'.
 ```
 
-Az alkalmazásnak meg kell fognia a `error=interaction_required`következőt:. Az alkalmazás ezt követően `acquireTokenPopup()` vagy `acquireTokenRedirect()` ugyanazon az erőforráson is használható. A felhasználónak egy többtényezős hitelesítést kell végeznie. Miután a felhasználó befejezte a többtényezős hitelesítést, az alkalmazás egy friss hozzáférési jogkivonatot bocsát ki a kért erőforráshoz.
+Az alkalmazásnak meg kell fognia a `error=interaction_required` értéket. Az alkalmazás ezután a `acquireTokenPopup()` vagy a `acquireTokenRedirect()` értéket használhatja ugyanazon az erőforráson. A felhasználónak egy többtényezős hitelesítést kell végeznie. Miután a felhasználó befejezte a többtényezős hitelesítést, az alkalmazás egy friss hozzáférési jogkivonatot bocsát ki a kért erőforráshoz.
 
 Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként kiválaszthatja az általános [szögletes. js-kód mintáját](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) , amely útmutatást nyújt egy szögletes fürdőhöz
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../active-directory-conditional-access-azure-portal.md)című témakört.
 * További Azure AD-kódrészletek: a [Code Samples GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)-tárháza.

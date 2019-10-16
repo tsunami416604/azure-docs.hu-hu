@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 78c924ebe15186025f4f2a79f87be6fb4fbf5db9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: bc5029e0ea2d743fffe258af8e66728269d0933e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71680049"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374341"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: A Linux rendszerű virtuális gépek változásainak figyelése és frissítése az Azure-ban
+# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: a változások monitorozása és a Linux rendszerű virtuális gépek frissítése az Azure-ban
 
 Az Azure [change Tracking](../../automation/change-tracking.md) segítségével könnyedén azonosíthatja a módosításokat, és [Update Management](../../automation/automation-update-management.md) lehetővé teszi az operációs rendszer frissítéseinek kezelését az Azure Linux rendszerű virtuális gépekhez.
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
-Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -111,15 +111,15 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 Új frissítés központi telepítésének létrehozásához válassza a **frissítés központi telepítésének ütemezett**beállítást. Megnyílik az **új frissítés központi telepítése** oldal. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás**gombra:
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 | --- | --- |
-| Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
+| Név |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management.md#using-dynamic-groups)|
+| Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management-groups.md)|
 | Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást|
-|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [beilleszkedési viselkedés](../../automation/automation-update-management.md#inclusion-behavior) |
-|Ütemezési beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
+|Frissítések belefoglalása/kizárása|Ekkor megnyílik a **Belefoglalás/kizárás** oldal. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a bevonások kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|Ütemezett beállítások|Válassza ki a kezdéshez szükséges időt, és válasszon egyszer vagy ismétlődő lehetőséget az ismétlődéshez|
 | Parancsfájlok előtti + parancsfájlok utáni|Válassza ki az üzembe helyezés előtt és után futtatandó parancsfájlokat|
 | Karbantartási időszak |A frissítések számára beállított percek száma. Az érték nem lehet kevesebb, mint 30 perc, legfeljebb 6 óra |
 | Vezérlő újraindítása| Meghatározza az újraindítások kezelését. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
@@ -193,7 +193,7 @@ A virtuális gép leállítása és elindítása egy-egy eseményt rögzít a te
 
 A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevékenységnapló-kapcsolat hozzáadása után a felül látható vonaldiagramon az Azure tevékenységnapló eseményei jelennek meg. A sávdiagramok minden egyes sora más-más követhető változástípust jelenít meg. Ezek a típusok lehetnek Linux-démonok, fájlok és szoftverek. A Változások lapon jelennek meg a vizualizációban látható változások részletei a változás bekövetkezte szerinti fordított időrendben (vagyis a legutóbbi van legelöl).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

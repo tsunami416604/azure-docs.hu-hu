@@ -1,21 +1,21 @@
 ---
-title: Az Azure Blockchain szolgáltatás által támogatott Főkönyv verziója, javítása és frissítése
+title: Az Azure Blockchain Service Ledger verziója, javítása és frissítése
 description: Az Azure Blockchain szolgáltatás támogatott főkönyvek verzióinak áttekintése, beleértve a rendszerek javításával, a rendszer által felügyelt és a felhasználó által felügyelt frissítésekkel kapcsolatos házirendeket is.
 services: azure-blockchain
 keywords: blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286524"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329124"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Támogatott Azure Blockchain Service Ledger-verziók
 

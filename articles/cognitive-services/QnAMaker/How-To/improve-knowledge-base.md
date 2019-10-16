@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: e605f2ab0e79fa3d7d3ee3735f47776654566cb6
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 83d60487922e3355aab8e34f6a8409c529901d14
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802333"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328036"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -71,7 +71,7 @@ Az aktív tanulás alapértelmezés szerint ki van kapcsolva. A javasolt kérdé
 
 1. Keresse meg a QnA Maker szolgáltatást, majd állítsa be az **aktív tanulást**. 
 
-    [![A szolgáltatás beállításai lapon kapcsolja be az aktív tanulási funkciót. Ha nem tudja váltani a szolgáltatást, előfordulhat, hogy frissítenie kell a szolgáltatást.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    [@no__t – a 1On lapon kapcsolja be az aktív tanulási funkciót. Ha nem tudja váltani a szolgáltatást, előfordulhat, hogy frissítenie kell a szolgáltatást.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
     > Az előző képen megadott pontos verzió csak példaként jelenik meg. A verzió eltérő lehet. 
@@ -84,15 +84,15 @@ Az aktív tanulás megváltoztatja a tudásbázist vagy Search Service a javasla
 
 1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások**, majd az **aktív tanulási javaslatok megjelenítése**lehetőséget. 
 
-    [![A portál szerkesztés szakaszában válassza a javaslatok megjelenítése lehetőséget, hogy megtekintse az aktív tanulás új kérdéseit.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [@no__t – a portál szerkesztési szakaszának 1On válassza a javaslatok megjelenítése lehetőséget, hogy megtekintse az aktív tanulás új kérdéseit.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
 1. A tudásbázist a kérdések és válaszok párok alapján szűrheti, hogy csak a javaslatok jelenjenek meg a **szűrési javaslatok**lehetőség kiválasztásával.
 
-    [![A szűrés javaslatok szerint váltógomb csak az aktív tanulás javasolt kérdéseit jeleníti meg.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [@no__t – a szűrési javaslatok 1Use megtekintheti az aktív tanulás javasolt kérdéseit.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Minden QnA pár az új kérdéses alternatívákat javasolja a pipa jelzéssel `✔` , a kérdés elfogadásához `x` vagy a javaslatok elutasításához. Jelölje be a jelölőnégyzetet a kérdés hozzáadásához. 
+1. Minden QnA pár azt javasolja, hogy a kérdés vagy egy `x` bejelöléssel fogadja el az új kérdésekkel kapcsolatos alternatívákat, `✔`. Jelölje be a jelölőnégyzetet a kérdés hozzáadásához. 
 
-    [![Válassza ki vagy utasítsa el az aktív tanulás javasolt kérdésének alternatívákat a zöld pipa vagy a vörös törlés jelölésének kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [@no__t az aktív tanulás javasolt kérdéseit a zöld pipa vagy a vörös törlés jelzés kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     Az összes _javaslat_ hozzáadásához vagy törléséhez kattintson az összes **hozzáadása** vagy az **összes elutasítása** lehetőségre a környezetfüggő eszköztáron.
 
@@ -109,7 +109,7 @@ Az aktív tanulás megváltoztatja a tudásbázist vagy Search Service a javasla
 
 A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot használja az aktív tanulás használatához:
 
-* A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) a választ `top` , és a tulajdonság használatával számos választ kaphat.
+* A robot megkapja a GenerateAnswer API-val [kapott választ a Tudásbázisban](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) , és a `top` tulajdonságot használva számos választ kaphat.
 * A bot explicit visszajelzést határoz meg:
     * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
     * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
@@ -118,7 +118,7 @@ A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot haszn
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
 
-Ha egy kérdés beküldésekor QnA Maker választ, a `top` JSON-törzs tulajdonsága beállítja a visszaadott válaszok számát. 
+Ha egy kérdésre választ küld QnA Maker, a JSON törzs `top` tulajdonsága beállítja a visszaadott válaszok számát. 
 
 ```json
 {
@@ -130,7 +130,7 @@ Ha egy kérdés beküldésekor QnA Maker választ, a `top` JSON-törzs tulajdons
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>A score (pontszám) tulajdonság és az üzleti logika használata a felhasználók számára megjelenített válaszok listájának lekéréséhez
 
-Ha az ügyfélalkalmazás (például egy csevegési robot) megkapja a választ, a rendszer az első 3 kérdést adja vissza. `score` A tulajdonság használatával elemezheti a pontszámok közötti közelséget. A közelségi tartományt a saját üzleti logikája határozza meg. 
+Ha az ügyfélalkalmazás (például egy csevegési robot) megkapja a választ, a rendszer az első 3 kérdést adja vissza. A pontszámok közötti közelség elemzéséhez használja a `score` tulajdonságot. A közelségi tartományt a saját üzleti logikája határozza meg. 
 
 ```json
 {
@@ -186,22 +186,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-kérelem tulajdonsága|Name (Név)|Type|Cél|
+|HTTP-kérelem tulajdonsága|Név|Type (Típus)|Rendeltetés|
 |--|--|--|--|
-|URL-útvonal paraméter|Tudásbázis-azonosító|Karakterlánc|A Tudásbázis GUID azonosítója.|
-|Egyéni altartomány|QnAMaker-erőforrás neve|Karakterlánc|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista `host`.|
-|Fejléc|Content-Type|Karakterlánc|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték:`application/json`|
-|Fejléc|Authorization|Karakterlánc|A végpont kulcsa (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
+|URL-útvonal paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
+|Egyéni altartomány|QnAMaker-erőforrás neve|sztring|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista `host`.|
+|Fejléc|Content-Type|sztring|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték: `application/json`|
+|Fejléc|Engedélyezés|sztring|A végpont kulcsa (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Post törzs|JSON-objektum|JSON|A betanítási visszajelzés|
 
 A JSON-törzs több beállítással rendelkezik:
 
-|JSON-törzs tulajdonság|Type|Cél|
+|JSON-törzs tulajdonság|Type (Típus)|Rendeltetés|
 |--|--|--|--|
-|`feedbackRecords`|array|Visszajelzések listája.|
-|`userId`|Karakterlánc|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Nem kötelező.|
-|`userQuestion`|Karakterlánc|A felhasználó lekérdezésének pontos szövege. Kötelező.|
-|`qnaID`|number|A [GenerateAnswer válaszban](metadata-generateanswer-usage.md#generateanswer-response-properties)található kérdés azonosítója. |
+|`feedbackRecords`|tömb|Visszajelzések listája.|
+|`userId`|sztring|A javasolt kérdéseket elfogadó személy felhasználói azonosítója. A felhasználói azonosító formátuma. Például egy e-mail-cím lehet érvényes felhasználói azonosító az architektúrában. Választható.|
+|`userQuestion`|sztring|A felhasználó lekérdezésének pontos szövege. Kötelező.|
+|`qnaID`|szám|A [GenerateAnswer válaszban](metadata-generateanswer-usage.md#generateanswer-response-properties)található kérdés azonosítója. |
 
 A JSON-törzs például a következőképpen néz ki:
 
@@ -368,9 +368,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Az aktív tanulás az exportált Tudásbázisban lett mentve
 
-Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, `SuggestedQuestions` a TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait. 
+Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, a TSV-fájlban lévő `SuggestedQuestions` oszlop megőrzi az aktív tanulási adatait. 
 
-Az `SuggestedQuestions` oszlop az implicit, `autosuggested`a és a kifejezett `usersuggested` visszajelzések JSON-objektuma. Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés `help` esetén:
+A `SuggestedQuestions` oszlop implicit, `autosuggested` és explicit, `usersuggested` visszajelzést tartalmazó JSON-objektumot tartalmaz. Példa erre a JSON-objektumra a `help` egy felhasználó által küldött kérdéséhez:
 
 ```JSON
 [
@@ -402,7 +402,7 @@ Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az 
 
 Az aktív tanulás használata esetén ajánlott eljárások: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 > [!div class="nextstepaction"]
 > [Metaadatok használata a GenerateAnswer API-val](metadata-generateanswer-usage.md)

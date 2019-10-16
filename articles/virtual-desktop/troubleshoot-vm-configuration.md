@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274493"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330816"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -302,10 +302,17 @@ Ha rendszergazdai fiókkal jelentkezik be a Windows 10-es nagyvállalati munkame
 
 Ha lejár az időkorlát, megjelenik egy hibaüzenet, amely azt jelzi, hogy "a távoli munkamenet le lett választva, mert nincs elérhető Távoli asztal ügyfél-hozzáférési licenc ehhez a számítógéphez."
 
-Ha ezeket az üzeneteket látja, ez azt jelenti **, hogy a**rendszerkép nem rendelkezik a legújabb Windows-frissítések telepítésével, vagy a távoli asztal licencelési mód beállítása felhasználónként. Távolítson el minden olyan konfigurációt, amely ezt a házirendet beállítja, majd kövesse a lépéseket a Windows 10 Enterprise-munkamenet verziójának azonosításához, és telepítse a megfelelő frissítést.  
+Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek telepítve a legújabb Windows-frissítések, vagy a csoportházirenden keresztül állítja be a Távoli asztal licencelési módot. A következő szakaszokban ismertetett lépéseket követve ellenőrizheti a csoportházirend-beállítást, azonosíthatja a Windows 10 Enterprise több munkamenet verzióját, és telepítheti a megfelelő frissítést.  
 
 >[!NOTE]
 >A Windows rendszerű virtuális asztali számítógépeken csak a távoli asztali szolgáltatások ügyféllicencei (CAL) szükségesek, ha a gazdagép Windows Server-munkamenet-gazdagépeket tartalmaz. A RDS CAL konfigurálásának megismeréséhez tekintse meg [az RDS-telepítés licence az ügyfél-hozzáférési licencekkel](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license)című témakört.
+
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
+
+A csoportházirend-beállítás megadásával nyissa meg a Csoportházirend-szerkesztőt a virtuális gépen, és navigáljon a **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > **Távoli asztal munkamenet-gazdagép**@no __t-7**licencelési**@no__t – 9.**állítsa be a távoli asztal licencelési módot**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+
+>[!NOTE]
+>Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
 
 ### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Annak meghatározása, hogy a Windows 10 Enterprise több munkamenet melyik verzióját használja
 

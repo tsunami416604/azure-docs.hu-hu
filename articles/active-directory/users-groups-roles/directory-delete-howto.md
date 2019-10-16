@@ -1,6 +1,6 @@
 ---
-title: Törölje az Azure AD-címtár – Azure Active Directory |} A Microsoft Docs
-description: Azt ismerteti, hogyan készíti elő az Azure AD-címtár törlésre, ideértve az önkiszolgáló könyvtárak
+title: Azure AD-címtár törlése – Azure Active Directory | Microsoft Docs
+description: Elmagyarázza, hogyan lehet előkészíteni egy Azure AD-címtárat törlésre, beleértve az önkiszolgáló címtárakat is
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,124 +11,132 @@ ms.subservice: users-groups-roles
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: curtand
-ms.reviewer: elkuzmen
+ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e4fb2019b0298520d6bc2400e9fc2a2732664812
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473128"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329961"
 ---
-# <a name="delete-a-directory-in-azure-active-directory"></a>Az Azure Active Directoryban könyvtár törlése
+# <a name="delete-a-directory-in-azure-active-directory"></a>Könyvtár törlése Azure Active Directory
 
-A törölt Azure AD-címtár abban a könyvtárban található összes erőforrás is törlődik. A szervezet felkészítése a csökkenthetik az összes kapcsolódó erőforrás törlése előtt. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölheti az Azure AD-címtárat a portálról.
+Az Azure AD-címtár törlésekor a rendszer a címtárban található összes erőforrást is törli. Készítse elő a szervezetét, hogy a törlés előtt minimalizálja a hozzájuk tartozó erőforrásokat. Csak egy Azure Active Directory (Azure AD) globális rendszergazda törölhet egy Azure AD-címtárat a portálról.
 
 ## <a name="prepare-the-directory"></a>A könyvtár előkészítése
 
-Az Azure AD, amíg nem adja át, több ellenőrzést könyvtár nem törölhető. Az ellenőrzések csökkentse annak veszélyét, hogy az Azure AD-címtár törlése kedvezőtlen hatással van a bejelentkezni az Office 365 vagy a hozzáférés az Azure-erőforrások, például a felhasználói hozzáférés. Például ha az egy előfizetéshez tartozó címtár véletlenül törölnek, majd felhasználók nem férhetnek hozzá az adott előfizetéshez tartozó Azure-erőforrások. A rendszer a következő feltételek teljesülését ellenőrzi:
+Nem törölhet címtárat az Azure AD-ben, amíg át nem halad több ellenőrzés. Ezek az ellenőrzések csökkentik annak a kockázatát, hogy az Azure AD-címtár törlése negatív hatással van a felhasználói hozzáférésre, például az Office 365-be való bejelentkezésre vagy az Azure-beli erőforrásokhoz való hozzáférésre. Ha például egy előfizetéshez társított könyvtárat véletlenül törölnek, akkor a felhasználók nem férhetnek hozzá az adott előfizetéshez tartozó Azure-erőforrásokhoz. A rendszer a következő feltételek teljesülését ellenőrzi:
 
-* Egy globális rendszergazda törölheti a címtárat, kivéve a címtár egyik felhasználó sem lehet. A címtár törlése előtt az összes többi felhasználót törölni kell. Ha a helyszíni felhasználók szinkronizálása, majd szinkronizálási először ki kell kapcsolni, és a felhasználók törölni kell a felhőalapú címtárat az Azure portal vagy Azure PowerShell-parancsmagok használatával.
-* A címtárban nem lehetnek alkalmazások. Az alkalmazásokat a címtár törlése előtt el kell távolítani.
-* Nem a multi-factor authentication-szolgáltatók, a címtárhoz társított lehet.
+* A címtárban nem lehetnek felhasználók, kivéve egy globális rendszergazda, aki törli a könyvtárat. A címtár törlése előtt az összes többi felhasználót törölni kell. Ha a felhasználók szinkronizálása a helyszíni rendszerből történik, akkor először ki kell kapcsolni a szinkronizálást, és a felhasználóknak a Azure Portal vagy Azure PowerShell parancsmagokkal kell törölniük a Felhőbeli könyvtárban.
+* A címtárban nem lehetnek alkalmazások. A címtár törlése előtt minden alkalmazást el kell távolítani.
+* A címtárhoz nem köthető multi-Factor Authentication-szolgáltatók.
 * Törölni kell minden, a címtárhoz társított Microsoft Online Services-előfizetést, például a Microsoft Azure-t, az Office 365-öt vagy a Prémium szintű Azure AD-t. Ha például az alapértelmezett címtár az Azure-ban lett létrehozva, nem törölheti azt mindaddig, amíg Azure-előfizetésének hitelesítése továbbra is ezen a címtáron alapul. Hasonlóképpen olyan címtárat sem törölhet, amelyhez egy másik felhasználó előfizetést társított.
 
 ## <a name="delete-the-directory"></a>A könyvtár törlése
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája.
 
 2. Válassza az **Azure Active Directory** elemet.
 
-3. A törölni kívánt címtárra váltani.
+3. Váltson arra a könyvtárra, amelyet törölni szeretne.
   
-   ![Erősítse meg a szervezet törlése előtt](./media/directory-delete-howto/delete-directory-command.png)
+   ![A szervezet megerősítése a törlés előtt](./media/directory-delete-howto/delete-directory-command.png)
 
-4. Válassza ki **Delete directory**.
+4. Válassza a **könyvtár törlése**lehetőséget.
   
-   ![Válassza ki a parancs törli a szervezet](./media/directory-delete-howto/delete-directory-list.png)
+   ![Válassza ki a szervezet törlésére szolgáló parancsot](./media/directory-delete-howto/delete-directory-list.png)
 
-5. A címtár nem felel meg egy vagy több ellenőrzést, ha van megadott hogyan adhatók át a további információkra mutató hivatkozás. Után át kell adnia az összes ellenőrzés, jelölje be az **törlése** a folyamat befejezéséhez.
+5. Ha a címtár nem ad át egy vagy több ellenőrzést, a rendszer egy hivatkozást tartalmaz, amely további információkat tartalmaz a továbbításáról. Az összes ellenőrzés átadása után válassza a **Törlés** lehetőséget a folyamat befejezéséhez.
 
-## <a name="if-you-cant-delete-the-directory"></a>Ha a könyvtár nem törölhető
+## <a name="if-you-cant-delete-the-directory"></a>Ha nem tudja törölni a könyvtárat
 
-Ha konfigurálta az Azure AD-címtárhoz, előfordulhat, hogy is aktiválta előfizetések licenc-alapú Azure AD Premium P2, Office 365 vállalati prémium vagy Enterprise Mobility + Security E5 hasonlóan a szervezet számára. Véletlen adatvesztés elkerülése érdekében olyan címtárat sem törölhet, csak az előfizetések teljes mértékben törlése. Az előfizetések kell lennie egy **megszüntetett** lehetővé teszi, hogy a címtár törlésre. Egy **lejárt** vagy **megszakított** előfizetés áthelyezi a **letiltott** állapotát, és az utolsó fáziséit a **megszüntetett** állapota.
+Ha az Azure AD-címtárat konfigurálta, akkor lehet, hogy aktiválta a licenc-alapú előfizetéseket a szervezete számára, mint például a prémium szintű Azure AD P2, az Office 365 Business Premium vagy a Enterprise Mobility + Security E5. A véletlen adatvesztés elkerülése érdekében nem törölhet könyvtárat, amíg az előfizetések teljes mértékben nem törlődnek. Az előfizetéseket el kell **helyezni a címtár** törlésének engedélyezéséhez. Egy **lejárt** vagy **megszakított** előfizetés a **letiltott** állapotba kerül, és a végső szakasz a **kiépített** állapot.
 
-Mire számítson, ha az Office 365 próba-előfizetés lejárt (nem fizetős Partner/CSP, nagyvállalati szerződéssel vagy mennyiségi licencelési beleértve) tekintse meg az alábbi táblázat. Az Office 365 adatok megőrzésére és az előfizetés életciklusának további információkért lásd: [mi történik az adatokkal és a hozzáférés, ha az Office 365 üzleti előfizetési befejeződik?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
+A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Előfizetés állapota | Adatok | Adatokhoz való hozzáférés
+Előfizetés állapota | Adatok | Hozzáférés az adatkezeléshez
 ----- | ----- | -----
-Aktív (próbaverzió 30 nap) | Az összes elérhető adat | Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák normál hozzáférhet a Microsoft 365 felügyeleti központot és erőforrások 
-Lejárt (30 nap) | Az összes elérhető adat| Felhasználók normális férhetnek hozzá az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák normál hozzáférhet a Microsoft 365 felügyeleti központot és erőforrások
-Le van tiltva (30 nap) | Csak rendszergazda számára elérhető adatok | Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák a Microsoft 365 felügyeleti központ eléréséhez, de nem szükséges licencek kiosztása vagy felhasználók frissítése
-Felfüggesztést (30 nap után le van tiltva) | Törölt adatok (Ha nincs más szolgáltatások is automatikusan törölve) | Felhasználók nem férhetnek hozzá, az Office 365-fájlok vagy alkalmazások<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központban vásárolhat és más előfizetések kezelése
+Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók az Office 365-fájlokhoz vagy-alkalmazásokhoz normál hozzáféréssel rendelkeznek<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz 
+Lejárt (30 nap) | Az összes elérhető| A felhasználók az Office 365-fájlokhoz vagy-alkalmazásokhoz normál hozzáféréssel rendelkeznek<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
+Letiltva (30 nap) | Csak a rendszergazda számára elérhető adathozzáférés | A felhasználók nem férhetnek hozzá az Office 365-fájlokhoz vagy-alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz, de nem rendelhetnek hozzá licenceket vagy frissíthetnek felhasználókat
+Kiépítve (30 nappal a letiltottak után) | Az adattörlés (automatikusan törlődik, ha nincs más szolgáltatás használatban) | A felhasználók nem férhetnek hozzá az Office 365-fájlokhoz vagy-alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz más előfizetések megvásárlásához és kezeléséhez
 
-## <a name="delete-a-subscription"></a>Töröl egy előfizetést
+## <a name="delete-a-subscription"></a>Előfizetés törlése
 
-A megszüntetett állapotban három nap, a Microsoft 365 felügyeleti központ használatával a törlendő előfizetés is elhelyezhető.
+A **kiépített** állapotba egy előfizetést a Microsoft 365 felügyeleti központot használva három napon belül törölhet.
 
-1. Jelentkezzen be a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com) a szervezet globális rendszergazdai fiókkal. Ha a "Contoso" címtár, amely a contoso.onmicrosoft.com-ot a kezdeti alapértelmezett tartomány törölni próbál, jelentkezzen be egy egyszerű felhasználónév például admin@contoso.onmicrosoft.com.
+1. Jelentkezzen be a [Microsoft 365 felügyeleti központba](https://admin.microsoft.com) egy olyan fiókkal, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónévvel, például admin@contoso.onmicrosoft.com.
 
-2. Válassza ki **számlázási** válassza **előfizetések**, majd válassza ki az előfizetést, szeretné visszavonni. Miután rákattintott **Mégse**, frissítse az oldalt.
+2. A törlés előtt le kell mondania egy előfizetést. Válassza a **számlázás** lehetőséget, válassza a **termékek & szolgáltatások**elemet, majd válassza az **előfizetés megszakítása** lehetőséget a megszakítani kívánt előfizetéshez. Egy visszajelzési oldalra kerül.
+
+   ![Válassza ki a törölni kívánt előfizetést](./media/directory-delete-howto/cancel-choose-subscription.png)
+
+3. Fejezze be a visszajelzési űrlapot, és válassza az **előfizetés megszüntetése** lehetőséget az előfizetés megszakításához.
+
+   ![Megszakított parancs az előfizetés előnézetében](./media/directory-delete-howto/cancel-command.png)
+
+4. Most már törölheti is az előfizetést. Válassza **a Törlés lehetőséget** a törölni kívánt előfizetéshez. Ha nem találja az előfizetést a **termékek & szolgáltatások** lapon, győződjön meg arról, hogy az **előfizetés állapota** **mind**értékre van állítva.
+
+   ![Előfizetés törlésére szolgáló hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
+
+5. Válassza az **előfizetés törlése** lehetőséget az előfizetés törléséhez és a használati feltételek elfogadásához. Az összes adatfeldolgozás három napon belül véglegesen törölve lesz. Ha meggondolja magát, újra [aktiválhatja az előfizetést](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide) a három napos időszakban.
   
-   ![Előfizetés törlése a hivatkozás törlése](./media/directory-delete-howto/delete-command.png)
+   ![a feltételek és kikötések körültekintő beolvasása](./media/directory-delete-howto/delete-terms.png)
+
+6. Az előfizetés állapota most módosult, és az előfizetés törlésre van megjelölve. Az előfizetés a **kiépített** állapotot 72 órával később írja be.
+
+7. Miután törölte az előfizetést a címtárban, és 72 óra telt el, újra bejelentkezhet az Azure AD felügyeleti központba, és nem lehet szükséges művelet, és nincs olyan előfizetés, amely blokkolja a címtár törlését. Az Azure AD-címtárat sikeresen törölni kell.
   
-3. Válassza ki **törlése** törölni az előfizetést, és fogadja el a feltételeket és kikötéseket. Összes adat véglegesen törlődik a három napon belül. Ha megváltoztatja döntését újraaktiválhatja az előfizetés a 3 napos időszakban.
-  
-   ![Figyelmesen olvassa el a használati feltételek](./media/directory-delete-howto/delete-terms.png)
+   ![előfizetés továbbításának engedélyezése a törlési képernyőn](./media/directory-delete-howto/delete-checks-passed.png)
 
-4. Most az előfizetés állapota megváltozott, az előfizetés törlésre van kijelölve. Az előfizetés beírja a **megszüntetett** állapot 72 óra múlva.
+## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Olyan próbaverziós előfizetésem van, amely blokkolja a törlést
 
-5. Miután egy előfizetést törölt a címtárban, és 72 óra telt, jelentkezhet be az Azure AD felügyeleti központ biztonsági újra és van kell nincs szükség művelet, és nem blokkolja-e a címtár törlése előfizetések. Sikerült törölni az Azure AD-címtár tudjon kell lennie.
-  
-   ![át, törlés képernyő előfizetés ellenőrzése](./media/directory-delete-howto/delete-checks-passed.png)
+Az [önkiszolgáló regisztrációs termékek](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , például a Microsoft Power BI, Rights Management szolgáltatások, a Microsoft Power apps vagy a Dynamics 365, az egyes felhasználók regisztrálhatnak az Office 365-on keresztül, amely egy vendég felhasználót is létrehoz az Azure ad-címtárban történő hitelesítéshez . Ezek az önkiszolgáló termékek az adatvesztés elkerülése érdekében letiltják a címtár törlését, amíg azok nem törlődnek teljesen a címtárból. Ezeket csak az Azure AD-rendszergazda törölheti, függetlenül attól, hogy a felhasználó regisztrálta-e a terméket.
 
-## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Van egy próba-előfizetést, amely blokkolja a törlése
+Az önkiszolgáló regisztrációs termékek két típusa van a hozzárendelésük módjában: 
 
-Nincsenek [önkiszolgáló regisztrációs termékek](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide) , a Microsoft Power bi-ban, a Rights Management Services, a Microsoft Power Apps vagy a Dynamics 365, az egyes felhasználók Office 365-höz, ami szintén létrehoz egy vendégfelhasználó való hitelesítéshez keresztül regisztrálhat. az Azure AD-címtárhoz. Önkiszolgáló termékek directory törlések letiltása, amíg teljesen törlődik a címtárban, adatvesztés elkerülése érdekében. Azok törölhetők kizárólag az Azure AD-rendszergazda számára, hogy a felhasználó regisztrált egyenként, vagy hozzá lett rendelve a termék.
+* Szervezeti szintű hozzárendelés: az Azure AD-rendszergazda hozzárendeli a terméket a teljes szervezethez, és a felhasználó aktívan használhatja a szolgáltatást ezzel a szervezeti szintű hozzárendeléssel, még akkor is, ha nem rendelkezik külön licenccel.
+* Felhasználói szintű hozzárendelés: az önkiszolgáló regisztráció során egy egyéni felhasználó lényegében a terméket rendszergazda nélkül rendeli hozzá önmagához. Ha a szervezetet egy rendszergazda felügyeli (lásd: nem [felügyelt címtár rendszergazdai átvétele](domains-admin-takeover.md), akkor a rendszergazda közvetlenül is hozzárendelheti a terméket a felhasználókhoz önkiszolgáló regisztráció nélkül.  
 
-Önkiszolgáló regisztráció termékek hogyan hozzá vannak rendelve a két típusa van: 
+Az önkiszolgáló regisztrációs termék törlésének megkezdése után a művelet véglegesen törli az információkat, és eltávolítja az összes felhasználói hozzáférést a szolgáltatáshoz. Minden olyan felhasználó, aki egyénileg vagy a szervezet szintjén lett hozzárendelve, a rendszer letiltja a bejelentkezést vagy a meglévő adatok elérését. Ha szeretné megakadályozni az adatvesztést az önkiszolgáló regisztrációs termékkel, például a [Microsoft Power bi irányítópultokkal](https://docs.microsoft.com/power-bi/service-export-to-pbix) vagy [Rights Management Services házirend-konfigurációval](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), győződjön meg arról, hogy az adatbiztonsági mentés és a Mentés máshol megtörtént.
 
-* Szervezeti szintű hozzárendelése: Azure AD-rendszergazdát a termék rendel a teljes szervezet számára, és a felhasználó is lehet aktívan használnak a szolgáltatás a szervezeti szintű hozzárendelés akkor is, ha azok nem teszi lehetővé külön-külön.
-* Felhasználó-hozzárendelés szint: Önkiszolgáló regisztráció során egy adott felhasználó lényegében rendel a termék maguk nem rendszergazda. Ha a szervezet rendszergazdája felügyeljen (lásd: [rendszergazdai átvételt egy nem felügyelt címtár](domains-admin-takeover.md), rendelheti hozzá a rendszergazda is közvetlenül a termék a nem önkiszolgáló felhasználók számára.  
+A jelenleg elérhető önkiszolgáló regisztrációs termékekkel és szolgáltatásokkal kapcsolatos további információkért lásd a [rendelkezésre álló](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)önkiszolgáló programok című témakört.
 
-Amikor megkezdi az önkiszolgáló regisztráció termék törlését, a művelet véglegesen törli az adatokat, és eltávolítja az összes felhasználói hozzáférés a szolgáltatáshoz. Azok a felhasználók, az ajánlat lett hozzárendelve, egyenként, vagy a szervezet szintjén majd le van tiltva, a bejelentkezés, vagy fér hozzá a meglévő adatokat. Ha szeretné megakadályozni az adatvesztést a önkiszolgáló regisztrációs termékkel, például [a Microsoft Power BI-irányítópultok](https://docs.microsoft.com/power-bi/service-export-to-pbix) vagy [Rights Management Services szabályzatkonfiguráció](https://docs.microsoft.com/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy), győződjön meg arról, hogy az adatok biztonsági mentésének és mentett máshol.
+A következő táblázat ismerteti, hogy mire számíthat, ha a próbaverziós Office 365-előfizetés lejár (nem tartalmazza a fizetős partner/CSP, Nagyvállalati Szerződés vagy mennyiségi licencelés). Az Office 365 adatmegőrzési és-előfizetési életciklusával kapcsolatos további információkért lásd: [Mi történik az adatok és a hozzáférés, amikor az office 365 for Business-előfizetés lejár?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Jelenleg elérhető önkiszolgáló regisztrációs termékekre és szolgáltatásokra vonatkozó további információkért lásd: [elérhető önkiszolgáló programok](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
-
-Mire számítson, ha az Office 365 próba-előfizetés lejárt (nem fizetős Partner/CSP, nagyvállalati szerződéssel vagy mennyiségi licencelési beleértve) tekintse meg az alábbi táblázat. Az Office 365 adatok megőrzésére és az előfizetés életciklusának további információkért lásd: [mi történik az adatokkal és a hozzáférés, ha az Office 365 üzleti előfizetési befejeződik?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
-
-Termék állapota | Adatok | Adatokhoz való hozzáférés
+Termék állapota | Adatok | Hozzáférés az adatkezeléshez
 ------------- | ---- | --------------
-Aktív (próbaverzió 30 nap) | Az összes elérhető adat | Felhasználók normális férhetnek hozzá az önkiszolgáló regisztrációs termék, fájlok vagy alkalmazások<br>A rendszergazdák normál hozzáférhet a Microsoft 365 felügyeleti központot és erőforrások
-Törölve | Adat törölve | Felhasználók nem férhetnek hozzá, önkiszolgáló regisztrációs termék, fájlok vagy alkalmazások<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központban vásárolhat és más előfizetések kezelése
+Aktív (30 nap próbaverzió esetén) | Az összes elérhető | A felhasználók normál hozzáféréssel rendelkeznek az önkiszolgáló regisztrációs termékekhez, fájlokhoz vagy alkalmazásokhoz<br>A rendszergazdáknak normális hozzáférésük van Microsoft 365 felügyeleti központhoz és erőforrásokhoz
+Törölve | Az adattörlés | A felhasználók nem férhetnek hozzá az önkiszolgáló regisztrációs termékekhez, fájlokhoz és alkalmazásokhoz<br>A rendszergazdák hozzáférhetnek a Microsoft 365 felügyeleti központhoz más előfizetések megvásárlásához és kezeléséhez
 
-## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hogyan törölhetek egy önkiszolgáló regisztrációs terméket az Azure Portalon?
+## <a name="how-can-i-delete-a-self-service-sign-up-product-in-the-azure-portal"></a>Hogyan törölhetek önkiszolgáló regisztrációs terméket a Azure Portal?
 
-Önkiszolgáló regisztrációs termék például a Microsoft Power bi-ban vagy az Azure Rights Management Services, elhelyezhet egy **törlése** azonnal törölve az Azure AD-portálon az állapot.
+Az Azure AD-portálon azonnal törölheti az önkiszolgáló regisztrációs terméket, például a Microsoft Power BI vagy **az azure** Rights Management Services szolgáltatást.
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a szervezet globális rendszergazdai fiókkal. Ha a "Contoso" címtár, amely a contoso.onmicrosoft.com-ot a kezdeti alapértelmezett tartomány törölni próbál, jelentkezzen be egy egyszerű felhasználónév például admin@contoso.onmicrosoft.com.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) with egy olyan fiókot, amely a szervezet globális rendszergazdája. Ha törölni szeretné a "contoso" könyvtárat, amely a kezdeti alapértelmezett tartományi contoso.onmicrosoft.com rendelkezik, jelentkezzen be egy egyszerű felhasználónévvel, például admin@contoso.onmicrosoft.com.
 
-2. Válassza ki **licencek**, majd válassza ki **önkiszolgáló regisztrációs termékek**. Láthatja az összes önkiszolgáló regisztrációs termék elkülönítve a munkaállomás-alapú előfizetéseket. Válassza ki a termék véglegesen törli. Íme egy példa a Microsoft Power bi-ban:
+2. Válassza a **licencek**lehetőséget, majd válassza az **önkiszolgáló regisztrációs termékek**lehetőséget. Az összes önkiszolgáló regisztrációs terméket külön tekintheti meg az ülésen alapuló előfizetések között. Válassza ki a véglegesen törölni kívánt terméket. Íme egy példa a Microsoft Power BIban:
 
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/directory-delete-howto/licenses-page.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/licenses-page.png)
 
-3. Válassza ki **törlése** törölheti a terméket, és fogadja el a használati adatok azonnal és visszavonhatatlanul törlődik. A törlési művelet eltávolítja az összes felhasználó és szervezet férhessenek hozzá a termék. Kattintson az Igen gombra a törlés folytatná.  
+3. Válassza a **törlés**@no__t – 1to törölje a terméket, és fogadja el azokat a feltételeket, amelyeket a rendszer azonnal és visszavonhatatlanul töröl. Ez a törlési művelet törli az összes felhasználót, és eltávolítja a szervezet hozzáférését a termékhez. Az Igen gombra kattintva lépjen tovább a törlésre.  
 
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/directory-delete-howto/delete-product.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-product.png)
 
-4. Ha bejelöli **Igen**, a törlés önkiszolgáló termék kezdődik. Egy üzenetet kap, a Törlés folyamatban van.  
+4. Ha az **Igen**lehetőséget választja, a rendszer kezdeményezi az önkiszolgáló termék törlését. Értesítés jelenik meg arról, hogy a törlés folyamatban van.  
 
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/directory-delete-howto/progress-message.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/progress-message.png)
 
-5. Most az önkiszolgáló regisztráció termék állapota megváltozott a **törölt**. Amikor frissíti az oldalt, a termék el kell távolítani a **önkiszolgáló regisztrációs termékek** lapot.  
+5. Az önkiszolgáló bejelentkezési termék állapota most már **törölve**lett. Az oldal frissítésekor a terméket el kell távolítani az **önkiszolgáló regisztrációs termékek** oldaláról.  
 
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/directory-delete-howto/product-deleted.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/product-deleted.png)
 
-6. Ha törölt minden termék, jelentkezhet be az Azure AD felügyeleti központ újra, és nincs szükség művelet, és nem blokkolja-e a címtár törlésre termékek kell. Sikerült törölni az Azure AD-címtár tudjon kell lennie.
+6. Miután törölte az összes terméket, újra bejelentkezhet az Azure AD felügyeleti központba, és nem lehet szükséges művelet, és nincs olyan termék, amely blokkolja a címtár törlését. Az Azure AD-címtárat sikeresen törölni kell.
 
-    ![a felhasználónév rosszul adott meg, vagy nem található](./media/directory-delete-howto/delete-organization.png)
+    ![a Felhasználónév típusa helytelen, vagy nem található](./media/directory-delete-howto/delete-organization.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Az Azure Active Directory-dokumentáció](https://docs.microsoft.com/azure/active-directory/)
+[Azure Active Directory dokumentáció](https://docs.microsoft.com/azure/active-directory/)

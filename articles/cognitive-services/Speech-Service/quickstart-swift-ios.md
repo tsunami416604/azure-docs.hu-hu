@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerés felismerése, Swift-Speech szolgáltatás'
+title: 'Gyors útmutató: beszédfelismerés felismerése, Swift-Speech szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan ismerheti fel az iOS-beli Swift-beszédfelismerést a Speech SDK használatával
 services: cognitive-services
@@ -10,85 +10,94 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: cdd09a860c3840823661e30c9f8ebcb900574531
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0a62e670587f271eb9a1beba034886c5f95976a7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803208"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327752"
 ---
-# <a name="quickstart-recognize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Gyors útmutató: Az iOS-es Swift-beszéd felismerése a Speech SDK használatával
+# <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Gyors útmutató: az iOS-es Swift-beszéd felismerése a Speech SDK használatával
 
 A hangfelismerések is elérhetők a [Speech szintézishez](quickstart-text-to-speech-swift-ios.md).
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre egy iOS-alkalmazást Swift használatával a Cognitive Services Speech SDK-val a mikrofonról szövegre rögzített beszéd átírásához.
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy iOS-alkalmazást Swift-ben az Azure Cognitive Services Speech SDK használatával, amely a mikrofonról szövegre rögzített beszédet mutatja be.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, a következő előfeltételek listáját:
+A Kezdés előtt a következőkre lesz szüksége:
 
 * A beszédfelismerési szolgáltatáshoz tartozó [előfizetési kulcs](get-started.md) .
 * A [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb verzióval és a [CocoaPods](https://cocoapods.org/) -mel telepített MacOS-es gép.
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Az iOS-re szánt Speech SDK letöltése
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Vegye figyelembe, hogy ez az oktatóanyag nem fog működni a 1.6.0-nál korábbi SDK-verzióval.
+Ez az oktatóanyag a 1.6.0-nél korábbi SDK-verzióval nem működik.
 
-Az iOS-hez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik.
-Xcode-projektekben használható [CocoaPod](https://cocoapods.org/), vagy a https://aka.ms/csspeech/macosbinary címről tölthető le, és manuálisan is csatolható. Ez az útmutató egy CocoaPod használ.
+Az iOS-hez készült Cognitive Services Speech SDK-t keretrendszer-csomagként terjesztik. A Xcode-projektekben [CocoaPod](https://cocoapods.org/) vagy https://aka.ms/csspeech/macosbinary címről tölthető le, és manuálisan is használható. Ez a cikk egy CocoaPod használ.
 
 ## <a name="create-an-xcode-project"></a>Xcode-projekt létrehozása
 
-Indítsa el az Xcode-ot, majd a **File** > **New** > **Project** lehetőséget választva kezdjen új projektet.
-A sablonválasztó párbeszédpanelen válassza az „iOS Single View App” sablont.
+Indítsa el a Xcode, és indítson el egy új projektet a **fájl** > **új** > **projekt**kiválasztásával.
+A sablon kiválasztása párbeszédpanelen válassza ki az **iOS Egynézetű alkalmazás** sablonját.
 
-A további párbeszédpaneleken válassza az alábbi lehetőségeket:
+Az alábbi párbeszédpaneleken végezze el a következő beállításokat.
 
-1. Project Options párbeszédpanel
-    1. Adja meg a gyorsindítási alkalmazás nevét, például: `helloworld`.
-    1. Ha már rendelkezik Apple Developer-fiókkal, adja meg a megfelelő szervezet nevét és a szervezet azonosítóját. Kipróbálás céljából választhat bármilyen nevet, például: `testorg`. Az alkalmazás aláírásához megfelelő kiépítési profilra van szükség. További részletekért tekintse meg az [Apple Developer webhelyét](https://developer.apple.com/) .
-    1. Győződjön meg arról, hogy a Swift a projekt nyelve van-e kiválasztva.
-    1. Tiltsa le a jelölőnégyzeteket a forgatókönyvek használatához és egy dokumentum alapú alkalmazás létrehozásához. A minta alkalmazás egyszerű felhasználói felülete programozott módon lesz létrehozva.
-    1. Távolítsa el a jelölést a tesztekre és az alapvető adatokra vonatkozó jelölőnégyzetekből.
-1. A projektkönyvtár kiválasztása
-    1. Válassza ki azt a könyvtárat, ahová a projektet be szeretné állítani. Ezzel létrehoz egy `helloworld` könyvtárat a kiválasztott könyvtárban, amely a Xcode-projekt összes fájlját tartalmazza.
+1. A **Project Options (projekt beállításai** ) párbeszédpanelen:
+    1. Adja meg a Gyorsindítás alkalmazás nevét, például *HelloWorld*.
+    1. Ha már rendelkezik Apple Developer-fiókkal, adja meg a megfelelő szervezet nevét és a szervezet azonosítóját. Tesztelési célból használjon olyan nevet, mint például a *testorg*. Az alkalmazás aláírásához megfelelő kiépítési profilra van szükség. További információt az [Apple fejlesztői webhelyén](https://developer.apple.com/)talál.
+    1. Győződjön meg arról, hogy a **Swift** a projekt nyelve van-e kiválasztva.
+    1. Tiltsa le a jelölőnégyzeteket a storyboardok használatához és egy dokumentum alapú alkalmazás létrehozásához. A minta alkalmazás egyszerű felhasználói felületét programozott módon hozza létre.
+    1. Törölje az összes jelölőnégyzetet a tesztekhez és az alapértékekhez.
+1. Válasszon egy projekt könyvtárat:
+    1. Válassza ki azt a könyvtárat, ahová a projektet be szeretné állítani. Ez a lépés létrehoz egy HelloWorld könyvtárat a kiválasztott könyvtárban, amely a Xcode projekt összes fájlját tartalmazza.
     1. Ennél a próbaprojektnél tiltsa le a Git-adattár létrehozását.
-1. Az alkalmazásnak meg kell adnia a mikrofon használatát a `Info.plist` fájlban. Kattintson a fájlra az áttekintésben, és adja hozzá a "privacy-mikrofon használati Leírás" kulcsot, amelynek értéke például "mikrofon szükséges a beszédfelismeréshez".
-    @no__t – 0Settings az info. plist @ no__t-1
+1. Az alkalmazásnak meg kell adnia a mikrofon használatát a `Info.plist` fájlban. Válassza ki a fájlt az áttekintésben, és adja hozzá az **Adatvédelem-mikrofon használati Leírás** kulcsát egy olyan értékkel, mint például a *beszédfelismeréshez a mikrofon szükséges*.
+
+    ![Beállítások az info. plist fájlban](media/sdk/qs-swift-ios-info-plist.png)
+
 1. A Xcode projekt lezárása. A CocoaPods beállítása után később egy másik példányt fog használni.
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
-1. Helyezzen egy új, `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` nevű fejlécet a HelloWorld projektben található `helloworld` könyvtárba, és illessze be a következő kódot a fájlba:  
-   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. Adja hozzá a relatív elérési utat @no__t – 0 értéket az áthidaló fejléchez a HelloWorld-cél Swift-projekt beállításainál az *Objective-C áthidaló fejléc* mezőjében ![Header Properties @ no__t-3
-1. Cserélje le az automatikusan létrehozott `AppDelegate.swift` fájl tartalmát az alábbi kódra:  
-   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]
-1. Cserélje le az automatikusan létrehozott `ViewController.swift` fájl tartalmát az alábbi kódra:  
-   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/ViewController.swift#code)]
+1. Helyezzen egy új, `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` nevű fejlécet a HelloWorld könyvtárba a HelloWorld projekten belül. Illessze be a következő kódot:
+
+   [!code-objectivec[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+
+1. Adja hozzá a relatív elérési utat @no__t – 0 értéket az áthidaló fejléchez a HelloWorld cél **– C áthidaló fejléc** mezőjében található Swift-projekt beállításainál.
+
+   ![Fejléc tulajdonságai](media/sdk/qs-swift-ios-bridging-header.png)
+
+1. Cserélje le az automatikusan generált `AppDelegate.swift` fájl tartalmát a következő kódra:
+
+   [!code-swift[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]
+1. Cserélje le az automatikusan generált `ViewController.swift` fájl tartalmát a következő kódra:
+
+   [!code-swift[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/helloworld/ViewController.swift#code)]
 1. A `ViewController.swift` értéknél cserélje le a `YourSubscriptionKey` karakterláncot az előfizetési kulcsra.
-1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
+1. Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](regions.md) . Használja például a `westus` értéket az ingyenes próbaverziós előfizetéshez.
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Az SDK telepítése CocoaPod
 
 1. Telepítse a CocoaPod-függőség kezelőjét a [telepítési utasításokban](https://guides.cocoapods.org/using/getting-started.html)leírtak szerint.
-1. Navigáljon a minta alkalmazás könyvtárába (`helloworld`). Helyezzen egy `Podfile` nevű szövegfájlt, valamint a következő tartalmat a könyvtárba:  
-   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/Podfile)]
-1. Navigáljon a `helloworld` könyvtárba egy terminálon, és futtassa a parancsot `pod install`. Ez egy `helloworld.xcworkspace` Xcode-munkaterületet hoz majd, amely a minta alkalmazást és a Speech SDK-t is függőségként fogja tartalmazni. Ezt a munkaterületet a következőben fogjuk használni.
+1. Nyissa meg a HelloWorld, amely a minta alkalmazás könyvtára. Helyezzen egy *cocoapods* nevű szövegfájlt és a következő tartalmat a könyvtárba:
+
+   [!code-ruby[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/swift-ios/helloworld/Podfile)]
+1. Nyissa meg a HelloWorld könyvtárat egy terminálon, és futtassa a következő parancsot: `pod install`. Ez a parancs létrehoz egy `helloworld.xcworkspace` Xcode-munkaterületet, amely a minta alkalmazást és a Speech SDK-t is tartalmazza függőségként. Ezt a munkaterületet a következő lépésekben lehet használni.
 
 ## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Nyissa meg a `helloworld.xcworkspace` munkaterületet a Xcode.
-1. Tegye láthatóvá a hibakeresési kimenetet (**View** > **Debug Area** > **Activate Console**).
+1. Nyissa meg `helloworld.xcworkspace` munkaterületet a Xcode.
+1. A hibakeresési kimenet láthatóvá tételéhez válassza a **nézet** > **hibakeresési körzet** > **aktiválási konzol**lehetőséget.
 1. Válassza ki az iOS-szimulátort vagy egy olyan iOS-eszközt, amely a fejlesztői géphez van csatlakoztatva, mint az alkalmazás célhelye a **Product** > **cél** menüben.
-1. Fordítsa le és futtassa a példakódot az iOS-szimulátorban úgy, hogy a **Product** > **Run** lehetőséget választja a menüből, vagy a **Play** gombra kattint.
-1. Miután rákattintott az alkalmazás "felismerés" gombjára, és néhány szót mondott, a képernyő alsó részén látható szöveg jelenik meg.
+1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a menü **termék** > **futtatása** elemét. A **Lejátszás** gombot is kiválaszthatja.
+1. Miután kiválasztotta a **felismerés** gombot az alkalmazásban, és néhány szót kimondottan, a képernyő alsó részén megjelenő szöveget kell látnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

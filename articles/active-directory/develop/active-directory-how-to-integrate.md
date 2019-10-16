@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835366"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374033"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integráció a Azure Active Directory
 
@@ -31,13 +31,13 @@ ms.locfileid: "68835366"
 
 Ebből a cikkből megtudhatja, milyen előnyökkel jár az alkalmazás integrálása Azure Active Directory (Azure AD) és erőforrások beszerzése az integrációhoz. Az Azure AD nagyvállalati szintű Identitáskezelés-kezelést kínál a felhőalapú alkalmazásokhoz. Az Azure AD-integráció lehetővé teszi a felhasználók számára, hogy zökkenőmentes bejelentkezési élményt biztosítson, és segít az alkalmazásnak megfelelni az informatikai szabályzatoknak.
 
-## <a name="how-to-integrate"></a>Az integrálás menete
+## <a name="how-to-integrate"></a>Integráció
 
 Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Használja ki az alkalmazásának megfelelő számos vagy több ilyen forgatókönyvet.
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Az Azure AD támogatása az alkalmazásba való bejelentkezéshez
 
-**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha az Azure AD-vel bejelentkezik az alkalmazásba, a felhasználók nem fognak tudni még egy nevet és jelszót használni. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. Az Azure AD-ben a világ legnépszerűbb felhőalapú alkalmazásai, például az Office 365 és a Microsoft Azure is bejelentkezhetnek. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve az Azure AD-be. További információ [Az Azure ad-bejelentkezés támogatásának hozzáadásáról](authentication-scenarios.md).
+**Csökkentse a bejelentkezés súrlódását, és csökkentse a támogatási költségeket.** Ha az Azure AD-vel bejelentkezik az alkalmazásba, a felhasználók nem fognak tudni még egy nevet és jelszót használni. Fejlesztőként egy kevesebb jelszót fog tárolni és védelemmel ellátni. Az elfelejtett jelszó-visszaállítások kezelésének mellőzése önmagában jelentős megtakarítás lehet. Az Azure AD-ben a világ legnépszerűbb felhőalapú alkalmazásai, például az Office 365 és a Microsoft Azure is bejelentkezhetnek. A felhasználók milliói több száz millió felhasználót érintenek, így a felhasználó már be van jelentkezve az Azure AD-be. További információ [Az Azure ad-bejelentkezés támogatásának hozzáadásáról](v1-authentication-scenarios.md).
 
 **Egyszerűsítse az alkalmazás regisztrálását.**  Az alkalmazásra való regisztráció során az Azure AD alapvető információkat küldhet a felhasználóról, így előre kitöltheti a regisztrációs űrlapot, vagy teljesen megszüntetheti a regisztrációt. A felhasználók az Azure AD-fiókjával regisztrálhatnak az alkalmazásra, mint a közösségi médiában és a mobil alkalmazásokban található, ismerős hozzájárulással. Bármely felhasználó regisztrálhat, és bejelentkezhet az Azure AD-be integrált alkalmazásba anélkül, hogy ez bevonást igényel. További információ az [alkalmazás Azure ad-fiókba való bejelentkezésének regisztrálásáról](../../app-service/configure-authentication-provider-aad.md).
 
@@ -53,7 +53,7 @@ Az alkalmazás az Azure AD-vel való integrálásának számos módja van. Haszn
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Hozzáférés a felhasználói profilhoz, a naptárhoz, az e-mailekhez, a névjegyekhez és a fájlokhoz
 
-**Az Azure AD az Office 365 és más Microsoft üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja az Azure AD-t, hogy bejelentkezzen az alkalmazásba, vagy támogassa a jelenlegi felhasználói fiókjainak az Azure AD felhasználói fiókjaihoz való összekapcsolását a OAuth 2,0 használatával, olvasási és írási hozzáférést kérhet a felhasználó profiljához, naptárához, e-mailekhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Az eseményeket zökkenőmentesen is megírhatja a felhasználó naptárába, és fájlokat olvashat vagy írhat a OneDrive. További információ [az Office 365 API](https://msdn.microsoft.com/office/office365/howto/platform-development-overview)-k eléréséről.
+**Az Azure AD az Office 365 és más Microsoft üzleti szolgáltatások engedélyezési kiszolgálója.**  Ha támogatja az Azure AD-t, hogy bejelentkezzen az alkalmazásba, vagy támogassa a jelenlegi felhasználói fiókjainak az Azure AD felhasználói fiókjaihoz való összekapcsolását a OAuth 2,0 használatával, olvasási és írási hozzáférést kérhet a felhasználó profiljához, naptárához, e-mailekhez, névjegyekhez, fájlokhoz és egyéb információkhoz. Az eseményeket zökkenőmentesen is megírhatja a felhasználó naptárába, és fájlokat olvashat vagy írhat a OneDrive. További információ [az Office 365 API-k eléréséről](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Népszerűsítse alkalmazását az Azure-ban és az Office 365-piactéren
 
@@ -77,7 +77,7 @@ Az Azure AD-val való integráció olyan előnyökkel jár, amelyek nem igényli
 
 ### <a name="advanced-security-features"></a>Speciális biztonsági funkciók
 
-**Multi-Factor Authentication.**  Az Azure AD natív multi-Factor Authentication szolgáltatást nyújt. A rendszergazdák megkövetelhetik a többtényezős hitelesítés használatát az alkalmazáshoz való hozzáféréshez, így Önnek nem kell ezt a támogatást leírnia. További információ a [](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)többtényezős hitelesítésről.
+**Multi-Factor Authentication.**  Az Azure AD natív multi-Factor Authentication szolgáltatást nyújt. A rendszergazdák megkövetelhetik a többtényezős hitelesítés használatát az alkalmazáshoz való hozzáféréshez, így Önnek nem kell ezt a támogatást leírnia. További információ a [multi-Factor Authenticationról](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
 **Rendellenes bejelentkezési észlelés.**  Az Azure AD naponta több mint egy milliárd bejelentkezést dolgoz fel, a gépi tanulási algoritmusok használatával pedig észlelheti a gyanús tevékenységeket, és értesíti a rendszergazdákat a lehetséges problémákról. Az Azure AD-bejelentkezés támogatásával az alkalmazás megkapja a védelem előnyeit. További információ a [Azure Active Directory Access-jelentés megtekintéséről](../active-directory-view-access-usage-reports.md).
 
@@ -93,9 +93,9 @@ Az Azure AD-val való integráció olyan előnyökkel jár, amelyek nem igényli
 
 **Az Azure AD a világ különböző pontjain üzemelő adatközpontokban van üzembe helyezve, és az óra körül felügyelhető és figyelhető.**  Az Azure AD a Microsoft Azure és az Office 365 Identity Management rendszer, amely a világ 28 adatközpontjában van üzembe helyezve. A címtáradatok legalább három adatközpontba való replikálásra vannak garantálva. A globális Load Balancer biztosítja, hogy a felhasználók hozzáférjenek az Azure AD legközelebbi példányához, amely tartalmazza az adatmennyiséget, és ha problémát észlel, automatikusan átirányítja a kéréseket más adatközpontokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A [kód írásának](v2-overview.md#getting-started)megkezdése.
+A [kód írásának megkezdése](v2-overview.md#getting-started).
 
-[Felhasználók aláírása a Microsoft Identity platform használatával](authentication-scenarios.md)
+[Felhasználók aláírása a Microsoft Identity platform használatával](v1-authentication-scenarios.md)
 

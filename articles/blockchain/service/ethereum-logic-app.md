@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/26/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
 manager: femila
-ms.openlocfilehash: 26652a956f9f50f82f462c564d6daf0dc37b0722
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cff1085d14f2f849134b0b6f602e272fbb5bc561
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254960"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329280"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
 
@@ -219,7 +219,7 @@ A fiókra és a jelszóra vonatkozó további információkért lásd: [Ethereum
 
 ## <a name="get-the-contract-abi"></a>A szerződési ABI beszerzése
 
-A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja, hogyan kezelheti az intelligens szerződést. A szerződési ABI-t a Ethereum készült Azure Blockchain Development Kit használatával szerezheti be. Azt is megteheti, hogy beolvassa a szerződés metaadatainak fájlját a szilárdtest-fordítóban.
+A szerződési ABI definiálja az intelligens szerződési felületeket. Leírja, hogyan kezelheti az intelligens szerződést. A szerződési ABI-t a Ethereum készült Azure Blockchain Development Kit használatával szerezheti be. Azt is megteheti, hogy a Solidion compiler által létrehozott szerződési metaadatokat tartalmazó fájlból származik.
 
 **A fejlesztői csomag használata:**
 

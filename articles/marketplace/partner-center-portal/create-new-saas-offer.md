@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: d035f26e4b550eb1e5d2cca161f14880814a15f6
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244167"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376290"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -435,7 +435,8 @@ Válassza ki azt a gyakoriságot, amellyel az ügyfeleknek meg kell fizetniük a
 
 - **Díj**: USD/hó vagy USD/év
 
-A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. A jelen díjszabás és a saját beállítások ellenőrzése a felelős.@no__t – 0*először mentenie kell a díjszabási módosításokat, hogy engedélyezze a díjszabási adatai exportálását.*
+A helyi pénznemben (USD = Egyesült Államok dollár) beállított díjak az összes kiválasztott piac helyi pénznemére lesznek átalakítva a telepítés során elérhető aktuális árfolyamok használatával. A közzététel előtt érvényesítse ezeket az árakat a díjszabási táblázat exportálásával, és tekintse át az egyes piacokon érvényes díjakat. Ha egyéni árakat szeretne beállítani egyedi piacon, módosítsa és importálja a díjszabási táblázatot. A jelen díjszabás és a saját beállítások ellenőrzése a felelős.
+*@no__t – a 1You először mentenie kell a díjszabási módosításokat, hogy lehetővé váljon az árképzési adatmennyiség exportálása.*
 
 A közzététel előtt körültekintően tekintse át az árakat, mivel bizonyos korlátozások vonatkoznak a csomag közzététele után megjelenő változásokra:
 

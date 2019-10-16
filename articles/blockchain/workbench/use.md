@@ -1,23 +1,23 @@
 ---
-title: Alkalmazások használata az Azure Blockchain Workbench előzetes verziójában
+title: Alkalmazások használata az Azure Blockchain Workbenchben
 description: Oktatóanyag az alkalmazás-szerződések használatáról az Azure Blockchain Workbench előzetes verziójában.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845143"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328956"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: Alkalmazások használata az Azure Blockchain Workbenchben
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: alkalmazások használata az Azure Blockchain Workbenchben
 
 A Blockchain Workbench használatával létrehozhat és alkalmazhat műveleteket a szerződéseken. Megtekintheti a szerződés részleteit, például az állapot és a tranzakciók előzményeit is.
 
@@ -67,11 +67,11 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 
     ![Szerződés részletei](./media/use/contract-details.png)
 
-    | `Section`  | Leírás  |
+    | Section  | Leírás  |
     |---------|---------|
-    | State | A szerződés szakaszain belüli aktuális folyamat felsorolása |
+    | Állapot | A szerződés szakaszain belüli aktuális folyamat felsorolása |
     | Részletek | A szerződés aktuális értékei |
-    | Action | Az utolsó művelet részletei |
+    | Műveletek | Az utolsó művelet részletei |
     | Tevékenység | A szerződés tranzakciós előzményei |
     
 3. A **művelet** szakaszban válassza a **művelet elvégzése**lehetőséget.
@@ -83,11 +83,11 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 5. A művelet elindításához válassza a **művelet elvégzése** lehetőséget.
 6. Ha paraméterekre van szükség a művelethez, határozza meg a művelet értékeit.
 
-    ![Művelet végrehajtása](./media/use/take-action.png)
+    ![Művelet elvégzése](./media/use/take-action.png)
 
 7. A művelet végrehajtásához válassza a **művelet elvégzése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench-alkalmazás verziószámozása](version-app.md)

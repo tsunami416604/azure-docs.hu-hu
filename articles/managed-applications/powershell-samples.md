@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell-minták – Azure felügyelt alkalmazások |} A Microsoft Docs
-description: Az Azure PowerShell-minták – Azure felügyelt alkalmazások
+title: Azure PowerShell minták – Azure Managed Applications | Microsoft Docs
+description: A Azure Managed Applications használatakor használandó Azure PowerShell minta parancsfájlokat biztosít.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: c1a960077ed96bb395ade9a09f47b035e6ff4318
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b93abd774cf3145c485a294c009b00892a878509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60252127"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330215"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-minták
 
-Az alábbi táblázat az Azure által felügyelt alkalmazásokat, amelyek használják az Azure PowerShell parancsfájlok hivatkozásokat tartalmaz.
+A következő táblázat a Azure PowerShellt használó Azure Managed Applications parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
 |**Felügyelt alkalmazás létrehozása**||
-| [Felügyelt alkalmazás definíciójának létrehozása](scripts/managed-application-powershell-sample-create-definition.md) | Létrehoz egy felügyelt alkalmazás definícióját a szolgáltatáskatalógusban.  |
-| [Felügyelt alkalmazás üzembe helyezése](scripts/managed-application-poweshell-sample-create-application.md) | Üzembe helyez egy felügyelt alkalmazást a szolgáltatáskatalógusból.  |
+| [Felügyelt alkalmazás definíciójának létrehozása](scripts/managed-application-powershell-sample-create-definition.md) | Létrehoz egy felügyelt alkalmazás definícióját a szolgáltatási katalógusban.  |
+| [Felügyelt alkalmazás telepítése](scripts/managed-application-poweshell-sample-create-application.md) | Felügyelt alkalmazást telepít a szolgáltatás-katalógusból.  |
 | | |
 |**Felügyelt erőforráscsoport frissítése**||
-| [Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Erőforrások olvas be a felügyelt erőforráscsoporthoz, és átméretezi a virtuális gépeket. |
+| [Erőforrások lekérése a felügyelt erőforráscsoporthoz és a virtuális gépek átméretezése](scripts/managed-application-powershell-sample-get-managed-group-resize-vm.md) | Lekéri a felügyelt erőforráscsoport erőforrásait, és átméretezi a virtuális gépeket. |

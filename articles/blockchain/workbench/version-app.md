@@ -1,21 +1,21 @@
 ---
-title: Blockchain az Azure Blockchain Workbench előzetes verziójában
+title: Blockchain-alkalmazás verziószámozása – Azure Blockchain Workbench
 description: Az alkalmazások verzióinak használata az Azure Blockchain Workbench előzetes verziójában.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f6edbb54962ff11b5ed1497b6a202b9010c67aae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843877"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328828"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Az Azure Blockchain Workbench előzetes verziójának alkalmazása
 
@@ -32,7 +32,7 @@ Létrehozhat és használhat egy Azure Blockchain Workbench előzetes verziójú
 
 Új verzió hozzáadásához töltse fel az új konfigurációs és intelligens szerződési fájlokat a Blockchain Workbenchbe.
 
-1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. Ha például `https://{workbench URL}.azurewebsites.net/` meg szeretné tudni, hogyan keresheti meg a Blockchain Workbench webcímet, tekintse meg a [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címét.
+1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. Például `https://{workbench URL}.azurewebsites.net/` a Blockchain Workbench-webcím megkeresésével kapcsolatos információkért lásd: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) cím
 2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
 3. Válassza ki a frissíteni kívánt blockchain alkalmazást egy másik verzióval.
 4. Válassza a **verzió hozzáadása**lehetőséget. Megjelenik a **verzió hozzáadása** panel.
@@ -60,6 +60,6 @@ Alapértelmezés szerint az alkalmazás legújabb engedélyezett verziója a Blo
 
     Létrehozhat új szerződéseket, vagy műveleteket hajthat végre a korábbi verziójú szerződések esetében. Az alkalmazás verziója megjelenik az alkalmazás neve után, és egy figyelmeztetés jelenik meg a régebbi verzióról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Blockchain Workbench – hibaelhárítás](troubleshooting.md)

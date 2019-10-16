@@ -8,16 +8,16 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: aab64822730531acdcf5f3d91ed8bf028ce7cfd4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971918"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328088"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Gyors útmutató: A QnA Maker-tudásbázis létrehozása, betanítása és közzététele
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
 Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ebből a cikkből megtudhatja, hogyan hozhat létre egy QnA Maker tudásbázist egy egyszerű gyakori kérdések weblapján, hogy válaszoljon a BitLocker-kulcsok helyreállításával kapcsolatos kérdésekre.
 
@@ -52,7 +52,7 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra. 
 
-1. Válassza ki **létrehozása a KB-os**.
+1. Válassza **a kb létrehozása**lehetőséget.
 
     A kinyerési folyamat eltarthat néhány percig, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
 
@@ -138,9 +138,9 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információk:
+További információ:
 
 * [Markdown-formátum a válaszokban](../concepts/data-sources-supported.md)
 * [A Markdown tesztelése](../concepts/data-sources-supported.md#testing-your-markdown)

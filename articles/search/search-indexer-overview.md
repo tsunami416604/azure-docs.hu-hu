@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: e50d88181a27dcc46da858f220404eb09ad9b4bd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308975"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376389"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
@@ -45,10 +45,12 @@ Az indexelő rendszerhez kapcsolódó összes művelet, beleértve az állapot v
 
 Az indexelő adattárakat térképez fel az Azure-ban.
 
-* [Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
+* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [SQL Server az Azure Virtual Machines szolgáltatásban](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+* [SQL felügyelt példányok az Azure-ban](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
@@ -64,7 +66,7 @@ Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyo
 > [!Tip]
 > Az indexelők nem tudnak indexet létrehozni Önnek, de a portál **Adatok importálása** varázslója a segítségére lehet ebben. A legtöbb esetben a varázsló következtetni tud az indexsémára a forrás meglévő metaadataiból, és előállít egy olyan előzetes indexsémát, amely beágyazott módon szerkeszthető mindaddig, amíg a varázsló aktív. Miután létrejött az index a szolgáltatásban, a további szerkesztés a portálon a legtöbb esetben új mezők hozzáadására van korlátozva. A varázsló használatát érdemes megfontolnia az indexek létrehozásakor, de az áttekintésükkor nem. A gyakorlati tanuláshoz végezze el a [portál útmutatójában](search-get-started-portal.md) foglalt lépéseket.
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>3\. lépés: Az indexelő létrehozása és beosztása
+### <a name="step-3-create-and-schedule-the-indexer"></a>3\. lépés: Az indexelő létrehozása és ütemezése
 Az indexelő definíciója egy olyan szerkezet, amely az adatfeldolgozással kapcsolatos összes elemet egyesíti. A szükséges elemek közé tartozik az adatforrás és az index. A választható elemek közé tartozik az ütemterv és a mező leképezése. A mező-hozzárendelés csak akkor választható, ha a forrás mezők és az index mezők világosan megfelelnek. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
@@ -121,7 +123,7 @@ A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő)
 
 A végrehajtási előzmények legfeljebb a 50 legutóbbi befejezett végrehajtást tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (így a legutóbbi végrehajtás a válaszban elsőként jelenik meg).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.
 
 * [Azure SQL Database vagy SQL Server egy Azure virtuális gépen](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

@@ -1,21 +1,21 @@
 ---
-title: Azure Cost Management hatókörök megismerése és használata | Microsoft Docs
+title: Azure Cost Management hatókörök megismerése és használata
 description: Ez a cikk segít megérteni az Azure-ban elérhető számlázási és erőforrás-kezelési hatóköröket, valamint a hatókörök használatát Cost Management és API-kkal.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338639"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374484"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -41,7 +41,7 @@ Az Azure három hatókört támogat az erőforrás-kezeléshez. Minden hatókör
 
     Erőforrás típusa: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
 
-- Előfizetések – elsődleges tárolók az Azure-erőforrásokhoz.
+- **Előfizetések** – elsődleges tárolók az Azure-erőforrásokhoz.
 
     Erőforrás típusa: [Microsoft. Resources/előfizetések](/rest/api/resources/subscriptions)
 
@@ -106,7 +106,7 @@ Az egyéni ajánlatokból (például utólagos elszámolású és kapcsolódó t
 
 - [**Számlázási fiók**](../billing/billing-view-all-accounts.md) – egy vagy több Azure-előfizetéshez tartozó egyetlen fiók tulajdonosát jelöli. Jelenleg nem támogatja több személy hozzáférésének biztosítását, vagy az összesített Cost-nézetekhez való hozzáférést.
 
-    Erőforrás típusa: Nem alkalmazható
+    Erőforrás típusa: nem alkalmazható
 
 Az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik és kezelhetik a számlázási adatait, például a számlákat és a kifizetéseket a [Azure Fiókközpont](https://account.azure.com/subscriptions). Azonban nem tekinthetik meg a költségeket, és nem kezelhetik az erőforrásokat a Azure Portalban. Ha hozzáférést szeretne adni a fiók rendszergazdájához, használja a korábban említett Cost Management-szerepköröket.
 
@@ -128,7 +128,10 @@ A Microsoft Customer Agreement számlázási fiókjai a következő hatókörök
 
     Erőforrás típusa: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Ügyfél** – olyan előfizetések egy csoportját jelöli, amelyek egy adott ügyfélhez vannak társítva, amely egy partner által készített Microsoft-ügyfél-szerződésbe tartozik. Ez a hatókör a CSP-re vonatkozik.
+
 Az EA számlázási hatóköröktől eltérően az ügyfél-szerződés számlázási fiókjai egyetlen címtárhoz _vannak_ kötve, és több Azure ad-címtárban nem lehetnek előfizetések.
+
 
 Az ügyfél-szerződés számlázási hatókörei a következő szerepköröket támogatják:
 
@@ -149,7 +152,7 @@ Az AWS-integráció befejezése után tekintse meg az [AWS-integráció beállí
 - **Külső számlázási fiók** – a harmadik féltől származó gyártótól származó vásárlói szerződést jelöl. Ez hasonló az EA számlázási fiókhoz.
 
     Erőforrás típusa: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **Külső előfizetés** – egy külső gyártótól származó ügyfél-működési fiókot képvisel. Ez hasonló az Azure-előfizetésekhez.
 
     Erőforrás típusa: `Microsoft.CostManagement/externalSubscriptions`
@@ -194,7 +197,7 @@ Cost Management API-k használatakor a hatókör ismerete kritikus fontosságú.
 ### <a name="ea-departments"></a>EA-részlegek
 
 1. Nyissa meg a Azure Portal, majd a szolgáltatások listájában keresse meg **Cost Management + számlázás** lehetőséget.
-2. A számlázási fiók menüben válassza a részlegek lehetőséget.
+2. A Számlázási fiók menüben válassza a **részlegek** lehetőséget.
 3. Kattintson a kívánt részleg nevére.
 4. A részleg menüben válassza a **Tulajdonságok** lehetőséget.
 5. Másolja a számlázási fiókot és a részleg azonosítóit.
@@ -216,9 +219,9 @@ Cost Management API-k használatakor a hatókör ismerete kritikus fontosságú.
 3. Másolja a felügyeleti csoport AZONOSÍTÓját a táblából.
 4. A hatóköre: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Előfizetés
 
-1. Nyissa meg a Azure Portal, és navigáljon a szolgáltatások listájában lévő előfizetésekhez.
+1. Nyissa meg a Azure Portal, és navigáljon a szolgáltatások listájában lévő **előfizetésekhez** .
 2. Másolja az előfizetés-azonosítót a táblából.
 3. A hatóköre: `"/subscriptions/{id}"`
 
@@ -232,6 +235,6 @@ Cost Management API-k használatakor a hatókör ismerete kritikus fontosságú.
 
 A Cost Management jelenleg az [Azure globális](https://management.azure.com) és [Azure Government](https://management.usgovcloudapi.net)támogatja. További információ a Azure Governmentről: [Azure globális és kormányzati API-végpontok](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Ha még nem elvégezte már az első rövid Költségkezelés, olvassa el a [elemezheti a költségek](quick-acm-cost-analysis.md).
+- Ha még nem végezte el a Cost Management első gyors útmutatóját, olvassa el a [költségeket](quick-acm-cost-analysis.md).

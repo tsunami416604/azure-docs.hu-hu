@@ -1,6 +1,6 @@
 ---
-title: Egyoldalas alkalmazások az Azure Active Directoryban
-description: Ismerteti, milyen egyoldalas alkalmazások (gyógyfürdők) vannak, és a protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz az alapokat.
+title: Egyoldalas alkalmazások a Azure Active Directory
+description: Leírja, hogy mi az egyoldalas alkalmazások (SPAs), valamint a protokollok, a regisztráció és a jogkivonat lejáratának alapjai az alkalmazás típusához.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,55 +17,55 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6f66779bec9ed4e38e5a662c2d3728ba2034b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545297"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373857"
 ---
-# <a name="single-page-applications"></a>Egylapos alkalmazások
+# <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
-Egyoldalas alkalmazások (gyógyfürdők) általában egy JavaScript-megjelenítési réteg (előtérbeli), amely a böngészőben, és a egy webes API-háttéralkalmazás számára az olyan kiszolgálón fut, és valósítja meg az alkalmazás üzleti logikája szerint vannak felépítve. Tudjon meg többet az implicit engedélyezés megadásáról, és segít eldönteni, hogy ez az alkalmazás forgatókönyvhöz jobb: [OAuth2 implicit ismertetése adja meg az Azure Active Directoryban folyamat](v1-oauth2-implicit-grant-flow.md).
+Az egyoldalas alkalmazások (SPAs) jellemzően JavaScript megjelenítési rétegként (előtér) vannak strukturálva, amely a böngészőben fut, valamint egy webes API-háttérrendszer, amely egy kiszolgálón fut, és megvalósítja az alkalmazás üzleti logikáját. Ha többet szeretne megtudni az implicit engedélyezési támogatásról, és segít eldönteni, hogy megfelelő-e az alkalmazási forgatókönyvhöz, tekintse meg [a OAuth2 implicit engedélyezési folyamat Azure Active Directoryban való megismerését](v1-oauth2-implicit-grant-flow.md)ismertető témakört.
 
-Ebben a forgatókönyvben, ha a felhasználó bejelentkezik, a JavaScript előtér-célból használ [Active Directory Authentication Library for JavaScript (adal-t. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és a egy azonosító jogkivonat (id_token) beszerzése az Azure ad-ben az implicit engedélyezés megadásáról. A jogkivonatot a rendszer gyorsítótárazza, és az ügyfél csatlakoztatja a kérést, a tulajdonosi jogkivonatot, amikor a webes API háttéralkalmazás, amely az OWIN közbenső szoftver használatával lett biztonságossá téve.
+Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript előtér [Active Directory-hitelesítési tárt használ a javascripthez (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az implicit engedélyezési engedély az azonosító jogkivonat (id_token) Azure ad-ből való beszerzéséhez. A rendszer gyorsítótárazza a tokent, és az ügyfél a tulajdonosi jogkivonatként csatolja a kérést a webes API-háttér felé irányuló hívásokhoz, amely a OWIN-alapú middleware használatával biztosítva van.
 
 ## <a name="diagram"></a>Ábra
 
-![Egyoldalas alkalmazás diagram](./media/authentication-scenarios/single_page_app.png)
+![Egyoldalas alkalmazás diagramja](./media/authentication-scenarios/single_page_app.png)
 
-## <a name="protocol-flow"></a>Protokoll folyamat
+## <a name="protocol-flow"></a>Protokoll folyamatábrája
 
-1. A felhasználó ellép a webalkalmazáshoz.
-1. Az alkalmazás a böngészőben a JavaScript-kezelőfelület (megjelenítési réteg) adja vissza.
-1. A felhasználó bejelentkezési, például a bejelentkezési hivatkozásra kattintva indítja el. A böngészőben a GET-azonosító jogkivonat kérése az Azure AD engedélyezési végpont küld. Ezt a kérelmet az alkalmazás Azonosítóját és a válasz URL-címe tartalmazza a lekérdezési paraméterek.
-1. Az Azure AD ellenőrzi a válasz URL-cím, szemben a regisztrált válasz URL-cím, amelyet az Azure Portalon.
+1. A felhasználó a webalkalmazásra navigál.
+1. Az alkalmazás a JavaScript előtér-(bemutató réteget) adja vissza a böngészőnek.
+1. A felhasználó kezdeményezi a bejelentkezést, például egy bejelentkezési hivatkozásra kattintva. A böngésző elküldi az Azure AD-engedélyezési végpontot egy azonosító jogkivonat igényléséhez. Ez a kérelem tartalmazza az alkalmazás AZONOSÍTÓját és a válasz URL-címét a lekérdezési paraméterekben.
+1. Az Azure AD ellenőrzi a válasz URL-címét a Azure Portalban konfigurált regisztrált válasz URL-címén.
 1. A felhasználó bejelentkezik a bejelentkezési oldalon.
-1. Sikeres hitelesítés esetén az Azure AD-azonosító jogkivonat hoz létre, és visszaadja egy URL-cím töredék (#), az alkalmazás válasz URL-cím. Éles alkalmazás esetén a válasz URL-cím HTTPS kell lennie. A visszaadott jogkivonat tartalmazza a jogkivonatot érvényesíteni az alkalmazás által igényelt jogcímeket a felhasználó és az Azure AD.
-1. A JavaScript-ügyfél a böngészőben futó kód kigyűjti a választ az alkalmazás webes API back end hívások biztonságossá tételéhez használja a jogkivonatot.
-1. A böngésző meghívja az alkalmazás webes API vissza az engedélyezési fejléc végződhet az azonosító jogkivonat. Az Azure AD-hitelesítési szolgáltatás kiad egy azonosító jogkivonat használható tulajdonosi jogkivonattal, ha az erőforrás ugyanaz, mint az ügyfél-azonosító (ebben az esetben ez igaz, a webes API-t az alkalmazás saját háttér).
+1. Ha a hitelesítés sikeres, az Azure AD létrehoz egy azonosító jogkivonatot, és visszaadja azt URL-töredékként (#) az alkalmazás válasz URL-címére. Éles alkalmazás esetében a válasz URL-címének HTTPS-nek kell lennie. A visszaadott jogkivonat tartalmazza a felhasználóval és az Azure AD-val kapcsolatos jogcímeket, amelyek az alkalmazás által a jogkivonat érvényesítéséhez szükségesek.
+1. A böngészőben futó JavaScript-ügyfél kódja kibontja a tokent az alkalmazás webes API-hátterében megjelenő hívások biztonságossá tételéhez használt válasz alapján.
+1. A böngésző az engedélyezési fejléc azonosító jogkivonatával hívja meg az alkalmazás webes API-hátterét. Az Azure AD hitelesítési szolgáltatás olyan azonosító jogkivonatot bocsát ki, amely tulajdonosi jogkivonatként használható, ha az erőforrás megegyezik az ügyfél-AZONOSÍTÓval (ebben az esetben ez igaz, mert a webes API az alkalmazás saját háttere).
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a [egyoldalas alkalmazás-forgatókönyvek Kódminták](sample-v1-code.md#single-page-applications). Ügyeljen arra, hogy térjen vissza később gyakran új mintát gyakran kerülnek.
+Tekintse [meg az egyoldalas alkalmazás forgatókönyveit tartalmazó kódot](sample-v1-code.md#single-page-applications). Ügyeljen arra, hogy gyakran térjen vissza az új minták hozzáadásakor.
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-* Egyetlen bérlő – Ha egy alkalmazás csak a szervezet számára hoz létre, azt regisztrálni kell a vállalati címtárban az Azure portal használatával.
-* Több-bérlős – Ha olyan alkalmazás, amely a szervezeten kívüli felhasználók által használható épít, a vállalati címtárban szerepelnie kell, de is regisztrálni kell az alkalmazást használó minden egyes szervezet címtárában. Elérhetővé teszi az alkalmazás a címtárban, megadhatja a regisztrációs folyamat, amely lehetővé teszi, hogy engedélyt adjanak az alkalmazásnak az ügyfelek számára. Amikor regisztrál az alkalmazáshoz, akkor megjelenik egy párbeszédpanel, amely tartalmazza az alkalmazáshoz szükséges engedélyeket, majd a beállítást, hogy engedélyt adjanak. Attól függően, a szükséges engedélyekkel a másik szervezet rendszergazda is szükség beleegyezés. A felhasználó vagy rendszergazda beleegyezik, az alkalmazás regisztrálva lesz a címtárban.
+* Egyetlen bérlő – ha a szervezete számára hoz létre alkalmazást, azt a Azure Portal használatával kell regisztrálni a vállalati címtárban.
+* Több-bérlő – ha olyan alkalmazást hoz létre, amelyet a szervezeten kívüli felhasználók is használhatnak, regisztrálni kell a vállalati címtárban, de az alkalmazást használó összes szervezet címtárában is regisztrálni kell. Ahhoz, hogy az alkalmazás elérhető legyen a címtárában, olyan regisztrációs folyamatot is megadhat az ügyfeleknek, amely lehetővé teszi számukra az alkalmazáshoz való hozzájárulásukat. Amikor regisztrálnak az alkalmazásra, a rendszer egy párbeszédpanelt jelenít meg, amely megjeleníti az alkalmazás által igényelt engedélyeket, majd a beleegyező lehetőséget. A szükséges engedélyektől függően szükség lehet a másik szervezet rendszergazdájának jóváhagyásra. Ha a felhasználó vagy a rendszergazda beleegyezik, az alkalmazás regisztrálva van a címtárában.
 
-Miután felvette az alkalmazást, azt kell konfigurálni az OAuth 2.0 típusú implicit engedélyezés protokoll használatára. Ez a protokoll alkalmazások alapértelmezés szerint le van tiltva. Ahhoz, hogy az alkalmazás az OAuth2 típusú implicit engedélyezés protokoll, az Azure Portalról az alkalmazásjegyzék szerkesztése és az "oauth2AllowImplicitFlow" értéket Igaz értékre van állítva. További információ: [alkalmazásjegyzék](reference-app-manifest.md).
+Az alkalmazás regisztrálását követően úgy kell konfigurálni, hogy az OAuth 2,0 implicit engedélyezési protokollt használja. Alapértelmezés szerint ez a protokoll le van tiltva az alkalmazásokhoz. Az alkalmazáshoz tartozó implicit OAuth2 engedélyezéséhez szerkessze az alkalmazás jegyzékfájlját a Azure Portal, és állítsa a "oauth2AllowImplicitFlow" értéket igaz értékre. További információ: [Application manifest](reference-app-manifest.md).
 
-## <a name="token-expiration"></a>Jogkivonat lejáratáról
+## <a name="token-expiration"></a>Jogkivonat lejárata
 
-ADAL.js használatával segít:
+A ADAL. js használata a következőkkel segít:
 
-* egy lejárt jogkivonat frissítését
-* a webes API-erőforrás meghívásához hozzáférési jogkivonatot kér
+* Lejárt jogkivonat frissítése
+* Hozzáférési jogkivonat kérése webes API-erőforrás meghívásához
 
-A sikeres hitelesítés után az Azure AD hozzon létre egy munkamenetet a felhasználó böngészőben a cookie-k ír. Vegye figyelembe, hogy létezik-e a munkamenet a felhasználó és az Azure ad-ben (nem a felhasználó és a webes alkalmazás közötti) között. Amikor a jogkivonat lejár, ADAL.js ehhez a munkamenethez beavatkozás nélkül juthat hozzá egy másik jogkivonatot használ. ADAL.js küldeni és fogadni a kérést, az OAuth típusú implicit engedélyezés protokollal egy rejtett iFrame használatával. ADAL.js használatával is ugyanezzel a módszerrel a más webes API-erőforrásoknak az alkalmazás meghívja a mindaddig, amíg ezek az erőforrások támogatja az eltérő eredetű erőforrások megosztása (CORS), regisztrálva van a felhasználó könyvtárában, és minden szükséges jóváhagyás volt csendes hozzáférési tokenek beszerzése a felhasználó által megadott bejelentkezés során.
+A sikeres hitelesítés után az Azure AD egy cookie-t ír a felhasználó böngészőjében egy munkamenet létrehozásához. Figyelje meg, hogy a munkamenet létezik a felhasználó és az Azure AD között (nem a felhasználó és a webalkalmazás között). Ha egy jogkivonat lejár, a ADAL. js ezt a munkamenetet használja egy másik jogkivonat csendes beszerzéséhez. A ADAL. js egy rejtett iFrame használatával küldi el és fogadja el a kérést az OAuth implicit engedélyezési protokollal. A ADAL. js ugyanezt a mechanizmust is használhatja a más webes API-erőforrások elérési jogkivonatának csendes beszerzéséhez, feltéve, hogy ezek az erőforrások támogatják az eltérő eredetű erőforrás-megosztást (CORS), regisztrálva vannak a felhasználói címtárban, és minden szükséges beleegyezik a felhasználó adja meg a bejelentkezés során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
-* További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
+* További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
+* Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

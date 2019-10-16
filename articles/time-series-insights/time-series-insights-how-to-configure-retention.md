@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9986f57b05032c1e12769d59781e8b7aca443abb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298991"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330881"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Adatmegőrzés konfigurálása Time Series Insights
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható az **adatmegőrzési idő** és
 
 Az egyes Azure Time Series Insights környezetek az **adatmegőrzési idő**konfigurálására szolgáló beállítással rendelkeznek. Az érték 1 – 400 nap. Az adatok törlődnek a környezet tárolókapacitása vagy a megőrzési időtartam (1-400) alapján, attól függően, hogy melyik következik be először.
 
-Az egyes ÁME-környezetek további **tárolási korlátja túllépte a működést**. Ezzel a beállítással szabályozható a bejövő és a kiürítési viselkedés, ha elérik a környezetek maximális kapacitását. Két viselkedés közül választhat:
+Minden Time Series Insights környezetnek van egy további **tárolási korlátja, amely túllépte a működést**. Ezzel a beállítással szabályozható a bejövő és a kiürítési viselkedés, ha elérik a környezetek maximális kapacitását. Két viselkedés közül választhat:
 
 - **Régi adattörlés** (alapértelmezett)
 - **Bejövő forgalom szüneteltetése**
@@ -49,10 +49,14 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 1. A **tárolási korlát túllépte a viselkedési** beállítást. Válassza a **régi adattörlés** vagy a **Bejövő forgalom szüneteltetése** lehetőséget.
 
-    [@no__t – 1Data-megőrzési elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [@no__t – 1Data megőrzése – elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. A jelölőnégyzet bejelölésével megtekintheti, hogy áttekintette a dokumentációt, és megértette az adatvesztés lehetséges kockázatait. A módosítások konfigurálásához válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
 - További információkért tekintse át [a Time Series Insights megőrzésének ismertetése](time-series-insights-concepts-retention.md)című témakört.
+
+- Ismerje meg [, hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md).
+
+- Ismerje meg [a környezet megtervezését](time-series-insights-environment-planning.md).

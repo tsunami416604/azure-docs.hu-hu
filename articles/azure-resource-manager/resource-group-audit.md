@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286123"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329442"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Tevékenységek naplóinak megtekintése az erőforrásokon végzett műveletek figyeléséhez
 
@@ -193,7 +193,7 @@ A tevékenység naplójának működéséhez szükséges REST-műveletek a [bepi
 
 * Az Azure-Tevékenységnaplók a Power BI használatával nagyobb információkhoz juthatnak az előfizetése műveleteivel kapcsolatban. További információ: Azure-beli [tevékenységek naplóinak megtekintése és elemzése Power bi](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * A biztonsági szabályzatok beállításával kapcsolatos további tudnivalókért lásd: [Azure szerepköralapú Access Control](../role-based-access-control/role-assignments-portal.md).
-* Az alkalmazásoknak az infrastruktúra rétegből való módosításaival kapcsolatos további részletekért tekintse meg az alkalmazások központi telepítésének módját: [alkalmazás-módosítási elemzés használata Azure Monitor] (.. /Azure-Monitor/App/Change-Analysis. MD).
+* Az alkalmazásoknak az infrastruktúra-rétegből való módosításaival kapcsolatos további részletekért tekintse meg az alkalmazások telepítésének az [alkalmazás-módosítási elemzés használata a Azure monitorban](../azure-monitor/app/change-analysis.md)című témakört.
 * Az üzembe helyezési műveletek megtekintésére szolgáló parancsokról az [üzembe helyezési műveletek megtekintése](resource-manager-deployment-operations.md)című témakörben olvashat bővebben.
 * Ha meg szeretné tudni, hogyan akadályozza meg az erőforrások törlését az összes felhasználó számára, tekintse meg [az erőforrások zárolása Azure Resource Manager](resource-group-lock-resources.md)használatával című témakört.
 * Az egyes Microsoft Azure Resource Manager-szolgáltatók számára elérhető műveletek listájának megtekintéséhez lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md)

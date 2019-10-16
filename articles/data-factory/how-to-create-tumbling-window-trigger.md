@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 940b3010713f2f32b2c4d9880c425b1e88820729
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915551"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374512"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Folyamatokat futtató trigger létrehozása egy kieséses ablakban
 Ez a cikk a bukdácsoló ablakos triggerek létrehozásának, indításának és figyelésének lépéseit ismerteti. Az eseményindítókkal és a támogatott típusokkal kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -47,10 +47,10 @@ A kiesési ablak a következő típusú trigger-tulajdonságokkal rendelkezik:
             "startTime": "<<datetime>>",
             "endTime: <<datetime – optional>>,
             "delay": <<timespan – optional>>,
-            “maxConcurrency”: <<int>> (required, max allowed: 50),
+            "maxConcurrency": <<int>> (required, max allowed: 50),
             "retryPolicy": {
                 "count": <<int - optional, default: 0>>,
-                “intervalInSeconds”: <<int>>,
+                "intervalInSeconds": <<int>>,
             },
             "dependsOn": [
                 {
@@ -92,21 +92,21 @@ A kiesési ablak a következő típusú trigger-tulajdonságokkal rendelkezik:
 
 Az alábbi táblázat áttekintést nyújt azokról a fő JSON-elemekről, amelyek a kieséses ablak eseményindítójának ismétlődésével és ütemezésével kapcsolatosak:
 
-| JSON-elem | Leírás | Type | Megengedett értékek | Kötelező |
+| JSON-elem | Leírás | Type (Típus) | Megengedett értékek | Szükséges |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Az trigger típusa. A típus a "TumblingWindowTrigger" rögzített érték. | String | "TumblingWindowTrigger" | Igen |
-| **runtimeState** | Az trigger futási idejének jelenlegi állapota.<br/>**Megjegyzés**: Ez az elem \<ReadOnly >. | String | "Started", "leállítva", "Letiltva" | Igen |
-| **frequency** | Az a gyakorisági egység (perc vagy óra) jelölő sztring, amelynél az trigger ismétlődik. Ha a **kezdő** időpontok értékének részletessége nagyobb, mint a **gyakoriság** értéke, a rendszer a **kezdő** időpontokat veszi figyelembe az ablak határainak kiszámításakor. Ha például a **gyakoriság** értéke óránként, a **kezdő időpont** pedig 2017-09-01T10:10:10Z, az első ablak a következő: (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | String | "minute", "Hour"  | Igen |
-| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, és a **gyakoriság** értéke "Hour", az trigger 3 óránként ismétlődik. <br/>**Megjegyzés**: A minimális ablak időköze 15 perc. | Integer | Pozitív egész szám. | Igen |
-| **startTime**| Az első előfordulás, amely múltbeli lehet. Az első trigger időköze akövetkező: (Kezdés, **kezdő** + **időköz**). | DateTime | Egy DateTime érték. | Igen |
-| **endTime**| A legutóbbi előfordulás, amely múltbeli lehet. | DateTime | Egy DateTime érték. | Igen |
-| **delay** | Az ablak adatfeldolgozásának megkezdését késleltető idő. A folyamat futtatása a várt végrehajtási idő és a **késleltetés**mennyisége után indul el. A **késleltetés** határozza meg, hogy mennyi ideig várakozik az indítás a határidő lejártakor az új Futtatás elindítása előtt. A **késleltetés** nem változtatja meg az ablak **kezdő**időkeretét. Például az 00:10:00- as késleltetési érték 10 percet vesz igénybe. | Timespan<br/>(óó: PP: SS)  | Egy TimeSpan érték, amely az alapértelmezett 00:00:00. | Nem |
-| **maxConcurrency** | Azon egyidejű trigger-futtatások száma, amelyek készen állnak a Windows rendszerre. Például a tegnapi értékre való kitöltés óránkénti futtatásához 24 Windowson. Ha a **maxConcurrency** = 10, az aktiválási események csak az első 10 Windows rendszerre (00:00-01:00-09:00-10:00) vannak kirúgva. Az első 10 aktivált folyamat befejezése után a trigger-futtatások a következő 10 Windows rendszerre (10:00-11:00-19:00-20:00) lesznek kirúgva. Ha a **maxConcurrency** = 10 esetében ebben a példában 10 Windows áll rendelkezésre, 10 teljes folyamat fut. Ha csak 1 ablak áll készen, csak 1 folyamat fut. | Integer | 1 és 50 közötti egész szám. | Igen |
-| **RetryPolicy Száma** | Az újrapróbálkozások száma, mielőtt a folyamat futása "sikertelen" állapotúként van megjelölve.  | Integer | Egész szám, ahol az alapértelmezett érték 0 (nincs újrapróbálkozás). | Nem |
-| **retryPolicy: intervalInSeconds** | A másodpercben megadott újrapróbálkozási kísérletek közötti késleltetés. | Integer | Azon másodpercek száma, amelyekben az alapértelmezett érték 30. | Nem |
-| **dependsOn: típus** | A TumblingWindowTriggerReference típusa. Kötelező, ha függőség van beállítva. | String |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nem |
-| **dependsOn: méret** | A függőséget jelző ablak mérete | Timespan<br/>(óó: PP: SS)  | Pozitív TimeSpan érték, amelynél az alapértelmezett érték a gyermek trigger ablakának mérete  | Nem |
-| **dependsOn: eltolás** | A függőségi trigger eltolása. | Timespan<br/>(óó: PP: SS) |  Egy TimeSpan érték, amelynek negatívnak kell lennie az önfüggőségben. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Önálló függőség: Igen<br/>Más Nem  |
+| **type** | Az trigger típusa. A típus a "TumblingWindowTrigger" rögzített érték. | Sztring | "TumblingWindowTrigger" | Igen |
+| **runtimeState** | Az trigger futási idejének jelenlegi állapota.<br/>**Megjegyzés**: ez az elem @no__t 1readOnly >. | Sztring | "Started", "leállítva", "Letiltva" | Igen |
+| **frequency** | Az a gyakorisági egység (perc vagy óra) jelölő sztring, amelynél az trigger ismétlődik. Ha a **kezdő** időpontok értékének részletessége nagyobb, mint a **gyakoriság** értéke, a rendszer a **kezdő** időpontokat veszi figyelembe az ablak határainak kiszámításakor. Ha például a **gyakoriság** értéke óránként, a **kezdő időpont** pedig 2017-09-01T10:10:10Z, az első ablak a következő: (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "minute", "Hour"  | Igen |
+| **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Ha például az **intervallum** 3, és a **gyakoriság** értéke "Hour", az trigger 3 óránként ismétlődik. <br/>**Megjegyzés**: a minimális ablak időköze 15 perc. | Egész szám | Pozitív egész szám. | Igen |
+| **startTime**| Az első előfordulás, amely múltbeli lehet. Az első trigger időköze a következő **: (Kezdés**, **kezdő időpont**@no__t – 2**időköz**). | Dátum és idő | Egy DateTime érték. | Igen |
+| **endTime**| A legutóbbi előfordulás, amely múltbeli lehet. | Dátum és idő | Egy DateTime érték. | Igen |
+| **késedelem** | Az ablak adatfeldolgozásának megkezdését késleltető idő. A folyamat futtatása a várt végrehajtási idő és a **késleltetés**mennyisége után indul el. A **késleltetés** határozza meg, hogy mennyi ideig várakozik az indítás a határidő lejártakor az új Futtatás elindítása előtt. A **késleltetés** nem változtatja meg az ablak **kezdő**időkeretét. Például az 00:10:00-as **késleltetési** érték 10 percet vesz igénybe. | Időtartomány<br/>(óó: PP: SS)  | Egy TimeSpan érték, amely az alapértelmezett 00:00:00. | Nem |
+| **maxConcurrency** | Azon egyidejű trigger-futtatások száma, amelyek készen állnak a Windows rendszerre. Például a tegnapi értékre való kitöltés óránkénti futtatásához 24 Windowson. Ha a **maxConcurrency** = 10, az aktiválási események csak az első 10 Windows rendszerre (00:00-01:00-09:00-10:00) vannak kirúgva. Az első 10 aktivált folyamat befejezése után a trigger-futtatások a következő 10 Windows rendszerre (10:00-11:00-19:00-20:00) lesznek kirúgva. Ha a **maxConcurrency** = 10 esetében ebben a példában 10 Windows áll rendelkezésre, 10 teljes folyamat fut. Ha csak 1 ablak áll készen, csak 1 folyamat fut. | Egész szám | 1 és 50 közötti egész szám. | Igen |
+| **retryPolicy: darabszám** | Az újrapróbálkozások száma, mielőtt a folyamat futása "sikertelen" állapotúként van megjelölve.  | Egész szám | Egész szám, ahol az alapértelmezett érték 0 (nincs újrapróbálkozás). | Nem |
+| **retryPolicy: intervalInSeconds** | A másodpercben megadott újrapróbálkozási kísérletek közötti késleltetés. | Egész szám | Azon másodpercek száma, amelyekben az alapértelmezett érték 30. | Nem |
+| **dependsOn: típus** | A TumblingWindowTriggerReference típusa. Kötelező, ha függőség van beállítva. | Sztring |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Nem |
+| **dependsOn: méret** | A függőséget jelző ablak mérete | Időtartomány<br/>(óó: PP: SS)  | Pozitív TimeSpan érték, amelynél az alapértelmezett érték a gyermek trigger ablakának mérete  | Nem |
+| **dependsOn: eltolás** | A függőségi trigger eltolása. | Időtartomány<br/>(óó: PP: SS) |  Egy TimeSpan érték, amelynek negatívnak kell lennie az önfüggőségben. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Önálló függőség: igen<br/>Egyéb: nem  |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart és WindowEnd rendszerváltozók
 
@@ -147,7 +147,7 @@ Ha több Windows-telepítés van folyamatban (különösen backfill-forgatókön
 A következő pontok érvényesek a meglévő **TriggerResource** elemekre:
 
 * Ha az trigger változásának **gyakorisági** elemének (vagy ablakának mérete) értéke megváltozik, a már feldolgozott Windows-állapot *nem* áll alaphelyzetbe. Az trigger továbbra is az új ablak méretének használatával folytatja a Windowst az utolsó ablakból.
-* Ha az indítás **utolsó** eleme elemének értéke (hozzáadott vagy frissített), a már feldolgozott Windows-állapot *nem* áll alaphelyzetbe. Az trigger tiszteletben tartja az új **utolsó** értéket. Ha az új **befejezési** érték a már végrehajtott Windows előtt van, az trigger leáll. Ellenkező esetben az aktiválás leáll, amikor az új befejezési érték észlelhető.
+* Ha az indítás **utolsó** eleme elemének értéke (hozzáadott vagy frissített), a már feldolgozott Windows-állapot *nem* áll alaphelyzetbe. Az trigger tiszteletben tartja az új **utolsó** értéket. Ha az új **befejezési** érték a már végrehajtott Windows előtt van, az trigger leáll. Ellenkező esetben az aktiválás leáll, amikor az új **befejezési** érték észlelhető.
 
 ### <a name="tumbling-window-trigger-dependency"></a>Kiesési ablak trigger-függősége
 
@@ -162,7 +162,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure PowerShell egy trigger lét
 1. Hozzon létre egy **MyTrigger. JSON** nevű JSON-fájlt a C:\ADFv2QuickStartPSH\ mappában a következő tartalommal:
 
     > [!IMPORTANT]
-    > A JSON-fájl mentése előtt állítsa be az időponthoz tartozó elem értékét az aktuális UTC-időre. Állítsa a befejezési elem értékét egy órára az aktuális UTC időpontnál.
+    > A JSON-fájl mentése előtt állítsa be az időponthoz **tartozó elem értékét** az aktuális UTC-időre. Állítsa a **befejezési** elem értékét egy órára az aktuális UTC időpontnál.
 
     ```json
     {
@@ -227,7 +227,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure PowerShell egy trigger lét
     
 Az trigger-futtatások és a folyamat-futtatások figyeléséhez a Azure Portalban lásd: [folyamatok futtatásának figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers).
 * [Kieséses ablak trigger-függőségének létrehozása](tumbling-window-trigger-dependency.md)

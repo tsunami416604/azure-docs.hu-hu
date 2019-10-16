@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1dcc28313d1d8e59024fbc70738567cb59585d20
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026978"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326466"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
@@ -44,6 +44,19 @@ Az összesített átalakítások szorosan egyenértékűek az SQL aggregált vá
 * Összesítő függvény használata a további oszlop, például az utolsó () vagy az első () érték befoglalásához
 * Csatlakoztassa újra az oszlopokat az összesítéshez a [saját illesztési minta](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
+
+![Összesített adatfolyam-parancsfájl](media/data-flow/aggdfs1.png "összesített adatfolyam-parancsfájlja")
+
+* ```MoviesYear```: származtatott oszlop, amely az év és a cím oszlopot definiálja
+* @no__t – 0: a vígjátékok átlagos minősítésének összesített átalakítása év szerint csoportosítva
+* @no__t – 0: az összesített érték tárolásához létrehozott új oszlop neve
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
+```
+  
+## <a name="next-steps"></a>Következő lépések
 
 * Ablak alapú összesítés definiálása az ablak- [transzformáció](data-flow-window.md) használatával

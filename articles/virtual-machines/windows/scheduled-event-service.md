@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051855"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376195"
 ---
 # <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
 
@@ -38,7 +38,7 @@ Ebben a példában létre kell hoznia egy [Windows rendszerű virtuális gépet 
 
 Ne törölje a csoport erőforráscsoportot az oktatóanyag végén.
 
-[Létre kell hoznia egy log Analytics](/azure/azure-monitor/learn/quick-create-workspace) munkaterületet is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
+[Létre kell hoznia egy log Analytics munkaterületet](/azure/azure-monitor/learn/quick-create-workspace) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 Töltse le a projekt telepítési. zip fájlját a [githubról](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip).
 
-Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a mappát `SchService.ps1`tartalmazó mappába, például `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`:, és állítsa be a szolgáltatást.
+Kapcsolódjon a **myCollectorVM** , és másolja a. zip fájlt a virtuális gépre, és bontsa ki az összes fájlt. Nyisson meg egy PowerShell-parancssort a virtuális gépen. Helyezze át a promptot a `SchService.ps1` tartalmú mappába, például: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`, és állítsa be a szolgáltatást.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Ellenőrizze a szolgáltatás állapotát, és győződjön meg róla, hogy fut.
 .\SchService.ps1 -status  
 ```
 
-Ennek vissza kell `Running`térnie.
+Ennek `Running` értéket kell visszaadnia.
 
 A szolgáltatás mostantól 10 másodpercenként megkezdi a lekérdezést minden ütemezett eseményre, és jóváhagyja az eseményeket a karbantartás meggyorsításához.  A befagyasztás, az újraindítás, az újbóli üzembe helyezés és a megelőzik az események ütemezett eseményei által rögzített események. Kiterjesztheti a szkriptet bizonyos enyhítések elindításához az esemény jóváhagyása előtt.
 
@@ -98,7 +98,7 @@ Ha az események az ütemezett esemény szolgáltatásban vannak rögzítve, akk
 >
 > A beállításhoz a Windowst választottuk, de a Linuxon hasonló megoldást is tervezhet.
 
-Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a kapcsolók `–stop` és `–remove`a használatával.
+Bármikor leállíthatja vagy eltávolíthatja az ütemezett esemény szolgáltatást a `–stop` és a `–remove` kapcsolók használatával.
 
 ## <a name="connect-to-the-workspace"></a>Kapcsolódás a munkaterülethez
 
@@ -108,7 +108,7 @@ Most szeretnénk csatlakozni egy Log Analytics munkaterülethez a gyűjtő virtu
  Ahhoz, hogy a Scheduled Events az eseménynaplóba irányítsa, amelyet a szolgáltatás az alkalmazási naplóként fog menteni, a virtuális gépet a Log Analytics-munkaterülethez kell kötnie.  
  
 1. Nyissa meg a létrehozott munkaterület oldalát.
-1. **A kapcsolódás** adatforráshoz területen válassza az **Azure Virtual Machines (VM)** lehetőséget.
+1. **A kapcsolódás adatforráshoz** területen válassza az **Azure Virtual Machines (VM)** lehetőséget.
 
     ![Kapcsolódás virtuális géphez adatforrásként](./media/notifications/connect-to-data-source.png)
 
@@ -120,7 +120,7 @@ Ekkor a rendszer telepíti a [Microsoft monitoring agentet](/azure/virtual-machi
 ## <a name="configure-the-workspace"></a>A munkaterület konfigurálása
 
 1. Nyissa meg a munkaterülethez tartozó lapot, és válassza a **Speciális beállítások**lehetőséget.
-1. Válassza az **adatok** lehetőséget a bal oldali menüben, majd válassza a **Windows**-eseménynaplók lehetőséget.
+1. Válassza az **adatok** lehetőséget a bal oldali menüben, majd válassza a **Windows-eseménynaplók**lehetőséget.
 1. A **következő eseménynaplók**beírásával kezdje el beírni az *alkalmazást* , majd válassza az **alkalmazás** elemet a listából.
 
     ![Speciális beállítások kiválasztása](./media/notifications/advanced.png)
@@ -153,28 +153,28 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Válassza a **Mentés**lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* kategóriába, majd válassza a **Mentés**lehetőséget. 
+1. Válassza a **Mentés**lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* **kategóriába**, majd válassza a **Mentés**lehetőséget. 
 
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
 1. Válassza az **új riasztási szabály**lehetőséget. 
-1. A **szabály létrehozása** lapon hagyja `collectorworkspace` meg az erőforrást.
-1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése történik <login undefined>* . Ekkor megnyílik a **jel logikai beállítása** lap.
+1. A **szabály létrehozása** lapon hagyja a `collectorworkspace` **erőforrásként**.
+1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése <login undefined>* . Ekkor megnyílik a **jel logikai beállítása** lap.
 1. A **küszöbérték**mezőben adja meg a *0* értéket, majd válassza a **kész**lehetőséget.
 1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
 1. A **műveleti csoport neve**mezőbe írja be a következőt: *myActionGroup*.
 1. A **rövid név**mezőbe írja be a következőt: **myActionGroup**.
-1. Az **erőforráscsoport**területen válassza a *myResourceGroupAvailability* * elemet.
+1. Az **erőforráscsoport**területen válassza a **myResourceGroupAvailability**lehetőséget.
 1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail**nevet, majd válassza az **E-mail/SMS/leküldés/hang**lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
 1. Válassza az **e-mail**lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.
 1. A **műveleti csoport hozzáadása** lapon kattintson az **OK gombra**. 
-1. A **szabály létrehozása** lap **riasztás részletei**területén írja be a *myAlert* nevet a **riasztási szabály neveként**, majd írja be a **leíráshoz**az *e-mailes riasztási szabályt* .
+1. A **szabály létrehozása** lap **riasztás részletei**területén írja be a *myAlert* **nevet a riasztási szabály neveként**, majd írja be a **leíráshoz**az *e-mailes riasztási szabályt* .
 1. Ha elkészült, válassza a **riasztási szabály létrehozása**lehetőséget.
 1. Indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportból. Néhány percen belül egy e-mailt kell kapnia arról, hogy a riasztás aktiválva lett.
 
-A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a riasztások elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.
+A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a **riasztások** elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.
 
      
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [ütemezett események szolgáltatás](https://github.com/microsoft/AzureScheduledEventsService) lapja a githubon.

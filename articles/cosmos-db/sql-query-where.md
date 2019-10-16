@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003469"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326644"
 ---
-# <a name="where-clause"></a>WHERE záradék
+# <a name="where-clause-in-azure-cosmos-db"></a>WHERE záradék Azure Cosmos DB
 
-A választható WHERE záradék (`WHERE <filter_condition>`) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott `true` feltételeket kell figyelembe venni az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
+A választható WHERE záradék (`WHERE <filter_condition>`) olyan feltételt határoz meg, amelynek a forrás JSON-elemeinek meg kell felelniük ahhoz, hogy a lekérdezés tartalmazza azokat az eredmények között. A JSON-elemek kiértékeléséhez a megadott feltételeknek kell megfelelnie `true` értéknek az eredmény szempontjából. Az index réteg a WHERE záradék használatával határozza meg az eredmény részét képező forrásoldali elemek legkisebb részhalmazát.
   
 ## <a name="syntax"></a>Szintaxis
   
@@ -29,20 +29,20 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Itt adhatja meg az állapotot, a dokumentumok vissza kell teljesülniük.  
+   Meghatározza a visszaadott dokumentumok számára teljesítendő feltételt.  
   
 - `<scalar_expression>`  
   
-   A kifejezés a következő időpontban számítja értéket jelölő. Részletekért lásd a [skaláris kifejezéseket](sql-query-scalar-expressions.md) .  
+   A kiszámítani kívánt értéket jelölő kifejezés. Részletekért lásd a [skaláris kifejezéseket](sql-query-scalar-expressions.md) .  
   
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Ahhoz, hogy a dokumentum egy kifejezést a megadott kifejezés adja vissza a feltétel igaz értéket kell adnia. Csak az IGAZ logikai értéket eleget tesz a feltételt, semmilyen más érték: nem meghatározott, NULL értékű, false, szám, tömböt vagy objektumot nem teljesítik a feltételt. 
+  Ahhoz, hogy a dokumentum visszaadja a szűrési feltételnek megadott kifejezést, az igaz értéket kell kiértékelni. Csak a True logikai érték felel meg a feltételnek, a nem definiált, a null, a false, a number, a Array vagy az Object érték nem felel meg a feltételnek. 
 
 ## <a name="examples"></a>Példák
 
-A következő lekérdezés olyan `id` elemeket kér, amelyek `AndersenFamily`értéke a tulajdonság. Kizár minden olyan olyan tételt, amely nem rendelkezik `id` tulajdonsággal, vagy amelynek értéke nem egyezik. `AndersenFamily`
+A következő lekérdezés olyan elemeket kér, amelyek egy `id` tulajdonságot tartalmaznak, amelynek értéke `AndersenFamily`. Kizár minden olyan olyan tételt, amely nem rendelkezik `id` tulajdonsággal, vagy amelynek értéke nem egyezik a `AndersenFamily` értékkel.
 
 ```sql
     SELECT f.address
@@ -64,17 +64,17 @@ Az eredmények a következők:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>Skaláris kifejezések a WHERE záradékban
 
-Az előző példából kiderült, egy egyszerű egyenlőség lekérdezést. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt olyan bináris és egyoperandusú kifejezés. A forrás JSON-objektumból tulajdonság hivatkozásokat akkor is érvényes kifejezések.
+Az előző példában egy egyszerű egyenlőségi lekérdezés látható. Az SQL API különböző [skaláris kifejezéseket](sql-query-scalar-expressions.md)is támogat. A leggyakrabban használt bináris és egyoperandusú kifejezések. A forrás JSON-objektumra mutató tulajdonságok szintén érvényes kifejezések.
 
 A következő támogatott bináris operátorok használhatók:  
 
-|**Művelettípus**  | **Értékek** |
+|**Operátor típusa**  | **Értékek** |
 |---------|---------|
 |Aritmetikai | +,-,*,/,% |
-|Bitenkénti    | \|, &, ^, <<>>,, >>> (nulla ki jobbra tolást) |
-|Logikai    | ÉS, VAGY SEM      |
-|Összehasonlítás | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Karakterlánc     |  \|\| (fűzze össze) |
+|Bitenkénti    | \|, &, ^, < <, > >, > > > (nulla kitöltés jobb eltolása) |
+|Logikai    | ÉS, VAGY NEM      |
+|Összehasonlítás | =,! =, &lt;, &gt;, &lt; =, &gt; =, < > |
+|Sztring     |  \| @ no__t-1 (összefűzés) |
 
 A következő lekérdezések bináris operátorokat használnak:
 
@@ -104,10 +104,10 @@ A következő példákban látható módon használhatja az unáris operátorok 
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-A lekérdezésekben tulajdonságok hivatkozásait is használhatja. Például `SELECT * FROM Families f WHERE f.isRegistered` visszaadja a tulajdonságot `isRegistered` tartalmazó olyan JSON- `true`tételt, amelynek értéke egyenlő. Bármely `false`más érték, például `Undefined` `null` ,,`<number>`,,, vagy`<array>`, kizárja az elemet az eredményből. `<string>` `<object>` 
+A lekérdezésekben tulajdonságok hivatkozásait is használhatja. A `SELECT * FROM Families f WHERE f.isRegistered` például a (`isRegistered`) tulajdonságot tartalmazó JSON-tételt adja vissza, amely `true` értékkel egyenlő. Bármely más érték, például `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` vagy `<array>`, kizárja az elemet az eredményből. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [FROM záradékban](sql-query-from.md)
+- [Első lépések](sql-query-getting-started.md)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [FROM záradék](sql-query-from.md)

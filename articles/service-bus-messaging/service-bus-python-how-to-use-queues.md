@@ -1,5 +1,5 @@
 ---
-title: A Azure Service Bus Queues használata a Python használatával | Microsoft Docs
+title: 'Oktatóanyag: Azure Service Bus-várólisták használata a Python használatával'
 description: Ismerje meg, hogyan használhatók a Azure Service Bus Queues a Pythonból.
 services: service-bus-messaging
 documentationcenter: python
@@ -14,12 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 3561d7e3569b31698fbbc5f8cf2518d9fe1fc398
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141910"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331132"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus Queues használata a Python használatával
 
@@ -28,14 +29,14 @@ ms.locfileid: "70141910"
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Python-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) -előfizetői előnyeit, vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja MSDN- [előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. [Service Bus üzenetsor létrehozásához kövesse az Azure Portal használata](service-bus-quickstart-portal.md) című témakör lépéseit.
     1. Olvassa el Service Bus **várólisták**gyors **áttekintését** . 
-    2. Hozzon létreegy Service Bus névteret. 
+    2. Hozzon létre egy Service Bus **névteret**. 
     3. A **kapcsolatok karakterláncának**beolvasása. 
 
         > [!NOTE]
-        > Az oktatóanyagban a Python használatával hozzon létre egy várólistát a Service Bus névtérben. 
+        > Az oktatóanyagban a Python használatával hozzon létre egy **várólistát** a Service Bus névtérben. 
 1. Telepítse a Pythont vagy a [python Azure Service Bus csomagot][Python Azure Service Bus package], lásd a [Python telepítési útmutatóját](/azure/python/python-sdk-azure-install). A Python SDK Service Bus teljes dokumentációja [itt](/python/api/overview/azure/servicebus?view=azure-python)található.
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
@@ -45,7 +46,7 @@ A **ServiceBusClient** objektum lehetővé teszi a várólistákkal való munkav
 from azure.servicebus import ServiceBusClient
 ```
 
-A következő kód létrehoz egy **ServiceBusClient** objektumot. Cserélje `<CONNECTION STRING>` le a karakterláncot a servicebus ConnectionString kifejezésre.
+A következő kód létrehoz egy **ServiceBusClient** objektumot. Cserélje le a `<CONNECTION STRING>` értéket a servicebus ConnectionString értékre.
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
@@ -57,7 +58,7 @@ Az SAS-kulcs nevének és értékének értékei a [Azure Portal][Azure portal] 
 sb_client.create_queue("taskqueue")
 ```
 
-A `create_queue` metódus további beállításokat is támogat, amelyek segítségével felülbírálhatja az alapértelmezett várólista-beállításokat, például az üzenet élettartamát (TTL) vagy a várólista maximális méretét. A következő példa az üzenetsor maximális méretét 5 GB-ra állítja, az élettartam értéke pedig 1 perc:
+A `create_queue` metódus további lehetőségeket is támogat, amelyek segítségével felülbírálhatja az alapértelmezett üzenetsor-beállításokat, például az üzenet élettartamát (TTL) vagy a várólista maximális méretét. A következő példa az üzenetsor maximális méretét 5 GB-ra állítja, az élettartam értéke pedig 1 perc:
 
 ```python
 sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
@@ -67,9 +68,9 @@ sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
 További információ: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja `send` a metódust `ServiceBusClient` az objektumon.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send` metódust az `ServiceBusClient` objektumon.
 
-Az alábbi példa bemutatja, hogyan küldhet tesztüzenet üzenetet a nevű `taskqueue` várólistára a következő paranccsal: `send_queue_message`
+Az alábbi példa bemutatja, hogyan küldhet tesztüzenet a `taskqueue` nevű várólistára `send_queue_message` használatával:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -88,7 +89,7 @@ A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.
 További információ: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
-Az üzenetek egy várólistából érkeznek az `get_receiver` `ServiceBusService` objektum metódusának használatával:
+Az üzenetek egy várólistából érkeznek, az `ServiceBusService` objektum `get_receiver` metódusának használatával:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -108,11 +109,11 @@ with queue_client.get_receiver() as queue_receiver:
 További információ: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
 
 
-Az üzenetek törlődnek a várólistából, mert a paraméter `peek_lock` **hamis**értékre van állítva. A paraméter `peek_lock` **true**értékre állításával elolvashatja (betekintést) és zárolhatja az üzenetet anélkül, hogy törölné azt a sorból.
+Az üzenetek törölve lesznek a várólistáról, amikor a `peek_lock` paraméter **false**értékre van állítva. A (z) `peek_lock` paraméter **true**értékre állításával elolvashatja (betekintést), és zárolhatja az üzenetet az üzenetsor törlése nélkül.
 
 A fogadási művelet részeként az üzenet olvasásának és törlésének viselkedése a legegyszerűbb modell, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus a rendszer felhasználja az üzenetet, amikor az alkalmazás újraindul, és újrakezdi az üzenetek felhasználását, az összeomlás előtt kimaradt az üzenetből.
 
-Ha a `peek_lock` paraméter értéke TRUE ( **igaz**), a fogadás kétlépéses művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a fogadási folyamat második szakaszát a **delete** metódus meghívásával végzi el az **üzenet** objektumon. A **delete** metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
+Ha a `peek_lock` paraméter értéke TRUE ( **igaz**), a fogadás kétlépéses művelet lesz, ami lehetővé teszi a hiányzó üzeneteket nem toleráló alkalmazások támogatását. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a fogadási folyamat második szakaszát a **delete** metódus meghívásával végzi el az **üzenet** objektumon. A **delete** metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
 
 ```python
 msg.delete()
@@ -128,10 +129,10 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte Service Bus várólisták alapjait, további információért tekintse meg ezeket a cikkeket.
 
-* [Queues, topics, and subscriptions][Queues, topics, and subscriptions] (Üzenetsorok, témakörök és előfizetések)
+* [Üzenetsorok, témakörök és előfizetések][Queues, topics, and subscriptions]
 
 [Azure portal]: https://portal.azure.com
 [Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  

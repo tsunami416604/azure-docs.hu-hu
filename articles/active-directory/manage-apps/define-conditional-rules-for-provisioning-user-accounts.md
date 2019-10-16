@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70812684"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
@@ -65,7 +65,7 @@ A hatókör-szűrőnek megfelelően a felhasználóknak meg kell felelniük a k�
 A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési összekötők attribútum-hozzárendeléseinek részeként vannak konfigurálva. Az alábbi eljárás azt feltételezi, hogy már beállította az automatikus kiépítési műveletet az [egyik támogatott alkalmazáshoz](../saas-apps/tutorial-list.md) , és egy hatókör-szűrőt ad hozzá.
 
 ### <a name="create-a-scoping-filter"></a>Hatókör-szűrő létrehozása
-1. A [Azure Portal](https://portal.azure.com)nyissa meg a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszt.
+1. A [Azure Portal](https://portal.azure.com)lépjen a **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** szakaszra.
 
 2. Válassza ki azt az alkalmazást, amelyhez az automatikus kiépítés konfigurálva van: például "ServiceNow".
 
@@ -79,21 +79,21 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort**és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
 
-   a. **EQUALS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
+   a. **Egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
-   b. **NEM EGYENLŐ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
+   b. **nem egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
-   c. **IGAZ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke TRUE (igaz) logikai érték.
+   c. **igaz**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum értéke TRUE (igaz) logikai érték.
 
-   d. **HAMIS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum a hamis logikai értéket tartalmazza.
+   d. **hamis**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum a hamis logikai értéket tartalmazza.
 
-   e. **NULL ÉRTÉKŰ**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum üres.
+   e. **NULL értékű**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum üres.
 
-   f. **NEM NULL**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem üres.
+   f. **nem null**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem üres.
 
-   g. **REGEX EGYEZÉS**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
+   g. **REGEX egyezés**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum megfelel egy reguláris kifejezési mintának. Például: ([1-9] [0-9]) a 10 és 99 közötti számra illeszkedik.
 
-   h. **NEM A REGEX EGYEZÉSE**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintának.
+   h. **nem a REGEX egyezése**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum nem felel meg a reguláris kifejezési mintának.
 
 8. Válassza az **Új hatókör hozzáadása záradékot**.
 

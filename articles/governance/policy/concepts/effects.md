@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255884"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330768"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -99,8 +99,7 @@ A hozzáfűzési effektushoz csak a **részletek** tömbje szükséges. A **rés
 
 ## <a name="modify"></a>Módosítás
 
-A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási házirendnek mindig `mode` értékűnek kell lennie _indexelt_értékre. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható.
-Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
+A módosítás a létrehozás vagy a frissítés során az erőforrásokhoz tartozó címkék hozzáadására, frissítésére és eltávolítására szolgál. Gyakori példa az olyan erőforrásokra vonatkozó címkék frissítése, mint például a costCenter. A módosítási házirendnek mindig `mode` értékűnek _kell lennie, ha_ a célként megadott erőforrás egy erőforráscsoport. A meglévő, nem megfelelő erőforrások szervizelése [szervizelési feladattal](../how-to/remediate-resources.md)javítható. Egyetlen módosítási szabálynak tetszőleges számú művelete lehet.
 
 > [!IMPORTANT]
 > A módosítás jelenleg csak címkékkel használható. Ha címkéket kezel, javasolt a hozzáfűzés helyett a módosítás használata, amely további műveleti típusokat és a meglévő erőforrások javítását is lehetővé teszi. A Hozzáfűzés azonban ajánlott, ha nem tud felügyelt identitást létrehozni.

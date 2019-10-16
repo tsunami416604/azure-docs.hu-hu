@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan használhatja a tömeges végrehajtó függvén
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827268"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327177"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Ez az adattár tartalmazza a GraphBulkExecutor mintát a következő fájlokkal:
 
-Fájl|Leírás
+File|Leírás
 ---|---
 `App.config`|Itt vannak megadva az alkalmazás- és adatbázis-specifikus paraméterek. Ezt a fájlt előbb módosítani kell, hogy a céladatbázishoz és -gyűjteményekhez csatlakozzon.
 `Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozását, a tisztítások kezelését és a tömeges végrehajtó kérések küldését.
@@ -154,7 +154,7 @@ Beállítás|Leírás
 2. Futtassa az alkalmazást. Ez kétszer hívja meg a `BulkImportAsync` metódust, egyszer a csúcsok és egyszer az élek importálása végett. Ha bármelyik objektum beszúrása során hiba lép fel, a rendszer felveszi az objektumot a `.\BadVertices.txt` vagy a `.\BadEdges.txt` fájlba.
 3. Ellenőrizze az eredményeket a gráfadatbázis lekérdezésével. Ha a `ShouldCleanupOnFinish` beállítás értéke true (igaz), az adatbázis automatikusan törölve lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Nuget csomag részleteiről és a tömeges végrehajtó .NET-függvénytár kibocsátási megjegyzéséről: [tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-dot-net.md). 
 * Tekintse át a [teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) a tömeges végrehajtó használatának további optimalizálása érdekében.
 * Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet).

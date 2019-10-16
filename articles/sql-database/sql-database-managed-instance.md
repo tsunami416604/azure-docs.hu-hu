@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: ebf4f516b8f90ce2ba8b277281300ae3239821c5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0d59b1cfed1de710725a5dfc91341fec0baa6cb4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640805"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331029"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -29,38 +29,38 @@ A következő ábra a felügyelt példányok legfontosabb funkcióit vázolja fe
 
 ![főbb funkciók](./media/sql-database-managed-instance/key-features.png)
 
-A felügyelt példány üzembe helyezési modellje olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást telepíthetnek a helyszíni vagy IaaS, a saját készítésű vagy a független szoftvergyártók által biztosított környezetből teljes körűen felügyelt, kihasználatlan Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. Az Azure-ban a teljes mértékben automatizált adatáttelepítési [szolgáltatás (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) használatával az ügyfelek megemelik és áthelyezhetik a helyszíni SQL Server egy felügyelt példányra, amely kompatibilis a helyszíni SQL Serverekkel és az ügyfelek példányainak teljes elkülönítését natív VNet-támogatás.  A frissítési garanciával lehetősége van arra, hogy a meglévő licenceket a felügyelt példányok kedvezményes díjszabására cserélje le a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával.  A felhőben a legjobb áttelepítési cél a felügyelt példány, ha olyan SQL Server-példányok, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
+A felügyelt példány üzembe helyezési modellje olyan ügyfelek számára készült, akik nagy mennyiségű alkalmazást telepíthetnek a helyszíni vagy IaaS, a saját készítésű vagy a független szoftvergyártók által biztosított környezetből teljes körűen felügyelt, kihasználatlan Felhőbeli környezetbe, a lehető legkevesebb migrációs erőfeszítéssel. Az Azure-ban a teljes mértékben automatizált [adatáttelepítési szolgáltatás (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) használatával az ügyfelek megemelik és áthelyezhetik a helyszíni SQL Server egy felügyelt példányra, amely kompatibilis a helyszíni SQL Serverekkel és az ügyfelek példányainak teljes elkülönítését natív VNet-támogatás.  A frissítési garanciával lehetősége van arra, hogy a meglévő licenceket a felügyelt példányok kedvezményes díjszabására cserélje le a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával.  A felhőben a legjobb áttelepítési cél a felügyelt példány, ha olyan SQL Server-példányok, amelyek magas biztonságot és sokoldalú programozható felületet igényelnek.
 
 A felügyelt példány üzembe helyezési lehetőségének célja, hogy a szakaszos kiadási csomagon keresztül 100%-os felülettel kompatibilis legyen a legújabb helyszíni SQL Server verzióval.
 
-A Azure SQL Database központi telepítési lehetőségek közül: az önálló adatbázis, a készletezett adatbázis és a felügyelt példányok, valamint a virtuális gépen futtatott SQL Server az Azure-beli [SQL Server megfelelő verziójának](sql-database-paas-vs-sql-server-iaas.md)kiválasztását ismertető témakörben talál.
+A Azure SQL Database központi telepítési lehetőségek közül: az önálló adatbázis, a készletezett adatbázis és a felügyelt példányok, valamint a virtuális gépen futtatott SQL Server az Azure-beli [SQL Server megfelelő verziójának kiválasztását](sql-database-paas-vs-sql-server-iaas.md)ismertető témakörben talál.
 
 ## <a name="key-features-and-capabilities"></a>Főbb funkciók és képességek
 
 A felügyelt példány ötvözi a Azure SQL Database és SQL Server adatbázismotor által elérhető legjobb funkciókat.
 
 > [!IMPORTANT]
-> A felügyelt példányok a SQL Server legújabb verziójának összes szolgáltatásával futnak, beleértve az online műveleteket, az automatikus terv javításait és az egyéb vállalati teljesítménybeli fejlesztéseket. Az elérhető funkciók összehasonlítását a funkció- [összehasonlítás ismerteti: Azure SQL Database versus SQL Server](sql-database-features.md).
+> A felügyelt példányok a SQL Server legújabb verziójának összes szolgáltatásával futnak, beleértve az online műveleteket, az automatikus terv javításait és az egyéb vállalati teljesítménybeli fejlesztéseket. Az elérhető funkciók összehasonlítása a szolgáltatások [összehasonlítása: Azure SQL Database versus SQL Server](sql-database-features.md).
 
 | **Pásti előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
-|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>[Automatizált biztonsági mentéssel](sql-database-automated-backups.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>Időponthoz tartozó [adatbázis-visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
+|Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>[Automatizált biztonsági mentéssel](sql-database-automated-backups.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyeleti**|
 |Elszigetelt környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure ad-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure ad-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> (**nyilvános előzetes**verzió) <br>Megfelel a megfelelőségi szabványoknak, mint az Azure SQL Database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Adatáttelepítési szolgáltatás
 
 > [!IMPORTANT]
-> Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) központot, ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
+> Azure SQL Database (az összes központi telepítési lehetőség), számos megfelelőségi szabványnak megfelelő minősítéssel rendelkezik. További információkért tekintse meg a [Microsoft Azure adatvédelmi központot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi minősítések legfrissebb listáját.
 
 A felügyelt példányok legfontosabb funkciói a következő táblázatban láthatók:
 
-|Funkció | Leírás|
+|Szolgáltatás | Leírás|
 |---|---|
 | SQL Server verzió/Build | SQL Server adatbázismotor (legújabb stabil) |
 | Felügyelt automatizált biztonsági másolatok | Igen |
 | Beépített példány-és adatbázis-figyelés és-metrikák | Igen |
 | Szoftver automatikus javítása | Igen |
 | Az adatbázismotor legújabb funkciói | Igen |
-| Adatfájlok (sorok) száma az adatbázisban | Több |
+| Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
 | VNet – Azure Resource Manager üzemelő példány | Igen |
 | VNet – klasszikus üzembe helyezési modell | Nem |
@@ -79,7 +79,7 @@ A virtuális mag modellben a hardver generációi közül választhat.
 - **Gen4** A logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD, fizikai magok, 7 GB RAM/mag, valamint 8 és 24 virtuális mag közötti számítási méretek.
 - **Gen5** A logikai CPU-k Intel E5-2673 v4 (Broadwell) 2,3-GHz processzorok, gyors NVMe SSD, Hyper-threaded Logic Core és számítási méretek 4 és 80 magok között.
 
-További információk a [felügyelt példányok erőforrás](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)-korlátaiban található hardveres generációk közötti különbségről.
+További információk a [felügyelt példányok erőforrás-korlátaiban](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)található hardveres generációk közötti különbségről.
 
 > [!IMPORTANT]
 > Az új Gen4-adatbázisok már nem támogatottak a Kelet-Ausztrália vagy Brazília déli régiójában.
@@ -88,8 +88,8 @@ További információk a [felügyelt példányok erőforrás](sql-database-manag
 
 A felügyelt példány két szolgáltatási rétegben érhető el:
 
-- **Általános célú**: Tipikus teljesítmény-és IO-késési követelményekkel rendelkező alkalmazásokhoz tervezve.
-- **Üzleti szempontból kritikus**: Olyan alkalmazásokhoz lett tervezve, amelyek alacsony IO-késési követelményekkel rendelkeznek, és minimális hatással vannak a számítási feladatok mögötti karbantartási műveletekre.
+- **Általános célú**: olyan alkalmazásokhoz tervezve, amelyek jellemző teljesítménybeli és IO-késési követelményekkel rendelkeznek.
+- **Üzleti szempontból kritikus**: az alacsony i/o-késési követelményekkel rendelkező alkalmazások számára lett kialakítva, és a számítási feladatok mögöttes karbantartási műveletek minimális hatása.
 
 Mindkét szolgáltatási szinten 99,99%-os rendelkezésre állást garantálunk, és lehetővé teszi a tárolási méret és a számítási kapacitás egymástól független kiválasztását. A Azure SQL Database magas rendelkezésre állású architektúrával kapcsolatos további információkért lásd: [magas rendelkezésre állás és Azure SQL Database](sql-database-high-availability.md).
 
@@ -114,7 +114,7 @@ Az alábbi lista a üzletileg kritikus szolgáltatási szintje főbb jellemzőit
 - A legnagyobb teljesítménnyel és HA követelményekkel rendelkező üzleti alkalmazásokhoz tervezve
 - A szolgáltatás villámgyors helyi SSD-tárolóval (1 TB-ig Gen4 és akár 4 TB-ig Gen5) is rendelkezik
 - Az [Always On rendelkezésre állási csoportokon](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és az [Azure Service Fabricon](../service-fabric/service-fabric-overview.md)alapuló beépített [magas rendelkezésre állás](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) .
-- Beépített további [írásvédett adatbázis](sql-database-read-scale-out.md) -replikák, amelyek jelentéskészítésre és más írásvédett számítási feladatokra is használhatók
+- Beépített további [írásvédett adatbázis-replikák](sql-database-read-scale-out.md) , amelyek jelentéskészítésre és más írásvédett számítási feladatokra is használhatók
 - [Memóriabeli OLTP](sql-database-in-memory.md) , amely nagy teljesítményű követelményekkel használható munkaterheléshez  
 
 További információk a [felügyelt példányok erőforrás-korlátai](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)között a szolgáltatási szintek közötti különbségről.
@@ -122,13 +122,13 @@ További információk a [felügyelt példányok erőforrás-korlátai](sql-data
 
 ## <a name="managed-instance-management-operations"></a>Felügyelt példányok kezelési műveletei
 
-A Azure SQL Database felügyeleti műveleteket biztosít az új felügyelt példányok automatikus telepítéséhez, a példány tulajdonságainak frissítéséhez és a példányok törléséhez, ha már nincs rá szükség. Ez a szakasz a felügyeleti műveletekkel és azok jellemző időtartamával kapcsolatos információkat tartalmaz.
+Az Azure SQL Database olyan felügyeleti műveleteket biztosít, amelyekkel automatikusan üzembe helyezhet új felügyelt példányokat, frissítheti a példány tulajdonságait és törölheti a szükségtelenné vált példányokat. Ez a szakasz a felügyeleti műveletekkel és azok jellemző időtartamával kapcsolatos információkat tartalmaz.
 
 Az [Azure Virtual Networks (virtuális hálózatok) szolgáltatáson belüli központi telepítések](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) támogatásához, valamint az ügyfelek elkülönítésének és biztonságának biztosítása érdekében a felügyelt példányok a [virtuális fürtökre](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)támaszkodnak, amelyek a (z) rendszerben üzembe helyezett elkülönített virtuális gépek dedikált készletét jelölik ügyfél virtuális hálózati alhálózata. Az üres alhálózat minden felügyelt példányának telepítése lényegében egy új virtuális fürt buildout eredményez.
 
 A központilag telepített felügyelt példányok további műveletei hatással lehetnek a mögöttes virtuális fürtre is. Ez befolyásolja a felügyeleti műveletek időtartamát, mivel a további virtuális gépek üzembe helyezése olyan terheléssel jár, amelyet figyelembe kell venni, amikor új központi telepítéseket vagy frissítéseket tervez a meglévő felügyelt példányokra.
 
-Az összes felügyeleti művelet a következőképpen kategorizálható:
+A felügyeleti műveleteket a következőképpen lehet kategorizálni:
 
 - Példány üzembe helyezése (új példány létrehozása). 
 - Példány frissítése (példány tulajdonságainak módosítása, például virtuális mag, fenntartott tárterület stb.).
@@ -136,9 +136,9 @@ Az összes felügyeleti művelet a következőképpen kategorizálható:
 
 Általában a virtuális fürtökön végrehajtott műveletek a leghosszabb időt jelentik. A virtuális fürtök műveleteinek időtartama eltérő lehet – az alábbi értékek általában a meglévő telemetria-adatokon alapulnak:
 
-- Virtuális fürtök létrehozása. Ez egy szinkron lépés a példányok kezelési műveleteihez. **a műveletek 90%-a 4 órán**belül befejeződik.
+- Virtuális fürtök létrehozása. Ez egy szinkron lépés a példányok kezelési műveleteihez. **a műveletek 90%-a 4 órán belül befejeződik**.
 - Virtuális fürt átméretezése (bővítés vagy zsugorodás). A bővítés egy szinkron lépés, míg a zsugorodás aszinkron módon történik (a példány-kezelési műveletek időtartamára gyakorolt hatás nélkül). a **fürt bővítésének 90%-a kevesebb, mint 2,5 óra**.
-- Virtuális fürt törlése. A törlés egy aszinkron lépés, de [manuálisan](sql-database-managed-instance-delete-virtual-cluster.md) is elindítható egy üres virtuális fürtön, ebben az esetben a rendszer szinkron módon hajtja végre. a **virtuális fürtök törlésének 90%-a 1,5 órában fejeződik be**.
+- Virtuális fürt törlése. A törlés egy aszinkron lépés, de [manuálisan is elindítható](sql-database-managed-instance-delete-virtual-cluster.md) egy üres virtuális fürtön, ebben az esetben a rendszer szinkron módon hajtja végre. a **virtuális fürtök törlésének 90%-a 1,5 órában fejeződik be**.
 
 Emellett a példányok kezelése az üzemeltetett adatbázisokra vonatkozó egyik műveletet is tartalmazhatja, ami hosszabb időtartamot eredményez:
 
@@ -147,28 +147,28 @@ Emellett a példányok kezelése az üzemeltetett adatbázisokra vonatkozó egyi
 
 A következő táblázat összefoglalja a műveleteket és a jellemző általános időtartamokat:
 
-|Category  |Művelet  |Hosszan futó szegmens  |Becsült időtartam  |
+|Kategória  |Művelet  |Hosszan futó szegmens  |Becsült időtartam  |
 |---------|---------|---------|---------|
 |**Üzembe helyezés** |Első példány egy üres alhálózaton|Virtuális fürt létrehozása|a műveletek 90%-a 4 órán belül befejeződik|
-|Környezet |Egy másik hardver generációjának első példánya egy nem üres alhálózatban (például az első gen 5 példány egy 4. generációs példánnyal rendelkező alhálózatban)|Virtuális fürt létrehozása *|a műveletek 90%-a 4 órán belül befejeződik|
-|Környezet |4 virtuális mag első példányának létrehozása üres vagy nem üres alhálózatban|Virtuális fürt létrehozása * *|a műveletek 90%-a 4 órán belül befejeződik|
-|Környezet |A következő példány létrehozása a nem üres alhálózaton belül (2., 3. stb. példány)|Virtuális fürtök átméretezése|a műveletek 90%-a befejezve 2,5 órában|
+|Üzembe helyezés |Egy másik hardver generációjának első példánya egy nem üres alhálózatban (például az első gen 5 példány egy 4. generációs példánnyal rendelkező alhálózatban)|Virtuális fürt létrehozása *|a műveletek 90%-a 4 órán belül befejeződik|
+|Üzembe helyezés |4 virtuális mag első példányának létrehozása üres vagy nem üres alhálózatban|Virtuális fürt létrehozása * *|a műveletek 90%-a 4 órán belül befejeződik|
+|Üzembe helyezés |A következő példány létrehozása a nem üres alhálózaton belül (2., 3. stb. példány)|Virtuális fürtök átméretezése|a műveletek 90%-a befejezve 2,5 órában|
 |**Update** |Példány tulajdonságainak módosítása (rendszergazdai jelszó, HRE bejelentkezés, Azure Hybrid Benefit jelző)|–|Legfeljebb 1 perc|
-|frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
-|frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
-|frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
-|frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
-|frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 4 óra 5 percben * *|
-|frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>-Always On rendelkezésre állási csoport bevetése|a műveletek 90%-a 4 órán belül befejeződik + az összes adatbázis kivetéséhez szükséges idő (220 GB/óra)|
-|frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
-|**Törlés**|Példány törlése|Az összes adatbázis biztonsági másolatának naplózása|90%-os művelet akár 1 percenként is befejeződik.<br>Megjegyzés: Ha az alhálózat utolsó példánya törölve lett, a művelet a virtuális fürt törlését 12 óra elteltével * * * fogja ütemezni.|
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
+|Frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 4 óra 5 percben * *|
+|Frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>-Always On rendelkezésre állási csoport bevetése|a műveletek 90%-a 4 órán belül befejeződik + az összes adatbázis kivetéséhez szükséges idő (220 GB/óra)|
+|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
+|**Törlés**|Példány törlése|Az összes adatbázis biztonsági másolatának naplózása|90%-os művelet akár 1 percenként is befejeződik.<br>Megjegyzés: Ha az alhálózat utolsó példánya törölve lett, a művelet a virtuális fürt törlését 12 óra elteltével * * * fogja ütemezni. * * *|
 |Törlés|Virtuális fürt törlése (felhasználó által kezdeményezett művelet)|Virtuális fürt törlése|a műveletek 90%-a befejezve legfeljebb 1,5 óra|
 
-\*A virtuális fürt hardveres generálásra épül.
+a \* virtuális fürt hardveres generálásra épül.
 
-\*\*A 4 virtuális mag üzembe helyezési lehetőség 2019 júniusában jelent meg, és egy új virtuális fürt verzióját igényli. Ha a cél alhálózatban olyan példányok voltak, amelyek mind a 12. június előtt jöttek létre, a rendszer automatikusan telepíti az új virtuális fürtöt a 4 virtuális mag-példányok üzemeltetésére.
+\* @ no__t-1 a 4 virtuális mag üzembe helyezési lehetőség 2019 júniusában jelent meg, és egy új virtuális fürt verzióját igényli. Ha a cél alhálózatban olyan példányok voltak, amelyek mind a 12. június előtt jöttek létre, a rendszer automatikusan telepíti az új virtuális fürtöt a 4 virtuális mag-példányok üzemeltetésére.
 
-\*\*\*12 óra az aktuális konfiguráció, de a jövőben változhat, így nem kell nehéz függőséget okozni. Ha korábban törölni kell egy virtuális fürtöt (például az alhálózat felszabadításához), tekintse meg az [alhálózat törlése Azure SQL Database felügyelt példány törlése után](sql-database-managed-instance-delete-virtual-cluster.md)című témakört.
+\* @ no__t-1 @ no__t-2 12 óra az aktuális konfiguráció, de a jövőben változhat, így nem fog nehéz függőséget okozni. Ha korábban törölni kell egy virtuális fürtöt (például az alhálózat felszabadításához), tekintse meg az [alhálózat törlése Azure SQL Database felügyelt példány törlése után](sql-database-managed-instance-delete-virtual-cluster.md)című témakört.
 
 ### <a name="instance-availability-during-management"></a>Példány rendelkezésre állása a felügyelet során
 
@@ -199,7 +199,7 @@ Az alábbi ábra az alkalmazások különböző csatlakozási lehetőségeit ism
 
 ![magas rendelkezésre állás](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 
-Ha többet szeretne megtudni a VNet-integrációval és a hálózatkezelési házirendek kényszerítésével kapcsolatban az alhálózat szintjén, tekintse meg a felügyelt példányok [VNet](sql-database-managed-instance-connectivity-architecture.md) -architektúráját és [az alkalmazás felügyelt példányhoz való csatlakozását](sql-database-managed-instance-connect-app.md)
+Ha többet szeretne megtudni a VNet-integrációval és a hálózatkezelési házirendek kényszerítésével kapcsolatban az alhálózat szintjén, tekintse meg a [felügyelt példányok VNet-architektúráját](sql-database-managed-instance-connectivity-architecture.md) és [az alkalmazás felügyelt példányhoz való csatlakozását](sql-database-managed-instance-connect-app.md)
 
 > [!IMPORTANT]
 > Helyezzen több felügyelt példányt ugyanabba az alhálózatba, bárhol is legyen a biztonsági követelményei, mivel ez további előnyöket biztosít. Az ugyanabban az alhálózatban lévő Collocating-példányok jelentősen leegyszerűsítik a hálózati infrastruktúra karbantartását, és csökkentik a példányok kiépítésének idejét, mivel a hosszú kiépítési időtartam az első felügyelt példánynak az alhálózaton való üzembe helyezésének költségeit veszi alapul.
@@ -221,13 +221,13 @@ A titkosított adatbázisok felügyelt példányra történő áttelepítése a 
 
 A felügyelt példány központi telepítési lehetősége támogatja a hagyományos SQL Server adatbázismotor-bejelentkezéseket és a Azure Active Directory (HRE) szolgáltatással integrált bejelentkezéseket. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) (**nyilvános előzetes**verzió) a helyszíni adatbázis-bejelentkezések Azure Cloud-verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgáló rendszerbiztonsági tagjai (bejelentkezések) lehetővé teszik, hogy az Azure Active Directory-bérlőtől származó felhasználókat és csoportokat az igaz példányok hatókörű tagjaiként adja meg, amelyek képesek bármilyen szintű művelet végrehajtására, beleértve az azonos felügyelt adatbázison belüli lekérdezéseket is. például.
 
-A rendszer új szintaxist vezet be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) (**nyilvános előzetes**verzió) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [felügyelt példány Azure Active Directory](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) -rendszergazdájának kiépítése című cikket.
+A rendszer új szintaxist vezet be az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) (**nyilvános előzetes**verzió) létrehozásához **a külső szolgáltatótól**. A szintaxissal kapcsolatos további információkért tekintse meg a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Bejelentkezés létrehozása</a>című témakört, és tekintse át a [felügyelt példány Azure Active Directory-rendszergazdájának kiépítése](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) című cikket.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-integráció és többtényezős hitelesítés
 
 A felügyelt példányok központi telepítésének beállításával központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](sql-database-aad-authentication.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. Az Azure Active Directory a [többtényezős hitelesítés](sql-database-ssms-mfa-authentication-configure.md) (MFA) támogatásával javítja az adatok és alkalmazások biztonságát, miközben támogatja az egyszeri bejelentkezést.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 A felügyelt példányok hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:  
 
@@ -238,7 +238,7 @@ A felügyelt példányok hitelesítése arra utal, hogy a felhasználók hogyan 
 
   Ez a hitelesítési módszer Azure Active Directory által felügyelt identitásokat használ, és felügyelt és integrált tartományok esetén támogatott. [Amikor csak lehet](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode), használja az Active Directory-hitelesítést (beépített biztonság).
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Engedélyezés
 
 Az engedélyezés arra utal, hogy a felhasználók mit tehetnek egy Azure SQL Databaseon belül, és a felhasználói fiók adatbázis-szerepkör-tagságai és objektum-szintű engedélyei vezérlik. A felügyelt példányok ugyanazokkal az engedélyezési képességekkel rendelkeznek, mint a SQL Server 2017.
 
@@ -258,7 +258,7 @@ Az áttelepítési módszer az SQL-alapú biztonsági mentéseket használja az 
 
 ### <a name="data-migration-service"></a>Adatáttelepítési szolgáltatás
 
-A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik fél áttelepítéséhez szükséges feladatokat, valamint SQL Server adatbázisok Azure SQL Database (egyetlen adatbázis, a rugalmas készletekben lévő készletezett adatbázisok és a felügyelt példányban található példány-adatbázisok) és az Azure-beli virtuális gépek SQL Server. Lásd: a helyszíni adatbázis áttelepítését felügyelt példányra a [DMS használatával](https://aka.ms/migratetoMIusingDMS).
+A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy a zökkenőmentes áttelepítések több adatbázisból az Azure-beli adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik fél áttelepítéséhez szükséges feladatokat, valamint SQL Server adatbázisok Azure SQL Database (egyetlen adatbázis, a rugalmas készletekben lévő készletezett adatbázisok és a felügyelt példányban található példány-adatbázisok) és az Azure-beli virtuális gépek SQL Server. Lásd: a helyszíni [adatbázis áttelepítését felügyelt példányra a DMS használatával](https://aka.ms/migratetoMIusingDMS).
 
 ## <a name="sql-features-supported"></a>Támogatott SQL-funkciók
 
@@ -268,7 +268,7 @@ A felügyelt példány központi telepítési lehetősége támogatja az SQL 200
   
 Az alábbi ábrán a felügyelt példányok felületének kompatibilitása látható:  
 
-![áttelepítési](./media/sql-database-managed-instance/migration.png)
+![Áttelepítési](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>SQL Server helyszíni és felügyelt példány közötti fő különbségek
 
@@ -276,14 +276,14 @@ A felügyelt példány központi telepítési lehetőségének előnye, hogy min
 
 - A magas rendelkezésre állás az [Always On rendelkezésre állási csoportokhoz](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)hasonló technológiával beépített és előre konfigurált.
 - Automatizált biztonsági mentések és időpontok visszaállítása. Az ügyfél olyan `copy-only` biztonsági mentéseket kezdeményezhet, amelyek nem akadályozzák az automatikus biztonsági mentési láncot.
-- A felügyelt példány nem engedélyezi a teljes fizikai elérési utak megadását, így az összes vonatkozó forgatókönyvet másképp kell támogatni: A Restore DB nem támogatja az ÁTHELYEZÉSt, az adatbázis létrehozása nem engedélyezi a fizikai elérési utakat, BULK INSERT csak az Azure-Blobokkal működik, stb.
+- A felügyelt példány nem teszi lehetővé teljes fizikai elérési utak megadását, így az összes vonatkozó forgatókönyvet másképp kell támogatni: az adatbázis visszaállítása nem támogatja az ÁTHELYEZÉSt, az adatbázis létrehozása nem teszi lehetővé a fizikai elérési utak használatát, BULK INSERT csak az Azure-Blobokkal működik, stb.
 - A felügyelt példány támogatja az [Azure ad-hitelesítést](sql-database-aad-authentication.md) Felhőbeli Alternatívaként a Windows-hitelesítéshez.
 - A felügyelt példány automatikusan kezeli a memóriában tárolt OLTP objektumokat tartalmazó adatbázisok XTP-fájlcsoportja és-fájljait
-- A felügyelt példány támogatja a SQL Server Integration Services (SSIS) szolgáltatást, és üzemeltetheti a SSIS-csomagokat tároló SSIS-katalógust (SSISDB), de az Azure Data Factory (ADF) felügyelt Azure-SSIS Integration Runtime (IR) használatával hajtja végre az [Azure-SSIS IR létrehozása ADF-ben című témakört. ](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Az SQL Database SSIS funkcióinak összehasonlítását lásd: [Azure SQL Database önálló adatbázisok/rugalmas készletek és felügyelt példányok összehasonlítása](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance).
+- A felügyelt példány támogatja a SQL Server Integration Services (SSIS) szolgáltatást, és képes tárolni a SSIS-csomagokat tároló SSIS-katalógust (SSISDB), de az Azure Data Factory (ADF) felügyelt Azure-SSIS Integration Runtime (IR) hajtja végre, lásd: [Azure-SSIS IR létrehozása ADF-ben ](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Az SQL Database SSIS funkcióinak összehasonlítását lásd: [Azure SQL Database önálló adatbázis, rugalmas készlet és felügyelt példány összevetése](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példányok felügyeleti funkciói
 
-A felügyelt példány központi telepítésének lehetősége lehetővé teszi, hogy a rendszergazda kevesebb időt fordítson a felügyeleti feladatokra, mert az SQL Database szolgáltatás elvégzi ezeket a feladatokat, vagy nagy mértékben leegyszerűsíti ezeket a feladatokat. Például az [operációs rendszer/RDBMS telepítése és javítása](sql-database-high-availability.md), a [dinamikus példányok átméretezése és konfigurálása](sql-database-single-database-scale.md), [biztonsági mentések](sql-database-automated-backups.md), [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisokat is), [magas rendelkezésre állású konfiguráció](sql-database-high-availability.md)és az állapot-és [teljesítmény](../azure-monitor/insights/azure-sql.md) -figyelési adatfolyamok konfigurálása.
+A felügyelt példány központi telepítésének lehetősége lehetővé teszi, hogy a rendszergazda kevesebb időt fordítson a felügyeleti feladatokra, mert az SQL Database szolgáltatás elvégzi ezeket a feladatokat, vagy nagy mértékben leegyszerűsíti ezeket a feladatokat. Például az [operációs rendszer/RDBMS telepítése és javítása](sql-database-high-availability.md), a [dinamikus példányok átméretezése és konfigurálása](sql-database-single-database-scale.md), [biztonsági mentések](sql-database-automated-backups.md), [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisokat is), [magas rendelkezésre állású konfiguráció](sql-database-high-availability.md)és az állapot-és [teljesítmény-figyelési](../azure-monitor/insights/azure-sql.md) adatfolyamok konfigurálása.
 
 > [!IMPORTANT]
 > A támogatott, részben támogatott és nem támogatott szolgáltatások listáját itt tekintheti meg: [SQL Database szolgáltatások](sql-database-features.md). A felügyelt példányok és a SQL Server közötti T-SQL-különbségek listáját a következő témakörben tekintheti meg: [felügyelt példányok t-SQL-különbözetek SQL Server](sql-database-managed-instance-transact-sql-information.md)
@@ -292,19 +292,19 @@ A felügyelt példány központi telepítésének lehetősége lehetővé teszi,
 
 A következő táblázat több, a Transact SQL szolgáltatáson keresztül elérhető tulajdonságot mutat be, amelyekkel észlelhető, hogy az alkalmazás felügyelt példányon dolgozik, és fontos tulajdonságokat kér le.
 
-|Tulajdonság|Value|Megjegyzés|
+|Tulajdonság|Value (Díj)|Megjegyzés|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, ahol `<instanceName>` az ügyfél által megadott név közben `<dnsPrefix>` a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|A teljes példány DNS-neve a következő formátumban: `<instanceName>`. `<dnsPrefix>`.database.windows.net, ahol a `<instanceName>` nevet adja meg az ügyfél, míg a `<dnsPrefix>` automatikusan generált része a globális DNS-név egyediségének ("wcus17662feb9ce98"). például|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](sql-database-managed-instance-get-started.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](sql-database-features.md).
 - A VNet-konfigurációval kapcsolatos további információkért lásd: [felügyelt példányok VNet konfigurációja](sql-database-managed-instance-connectivity-architecture.md).
-- Egy felügyelt példányt létrehozó gyors útmutató, valamint egy adatbázis biztonságimásolat-fájlból való visszaállítása: felügyelt [példány létrehozása](sql-database-managed-instance-get-started.md).
-- A Azure Database Migration Service (DMS) áttelepítésre való használatát ismertető oktatóanyagért lásd: a felügyelt példányok áttelepítése a [DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).
+- Egy felügyelt példányt létrehozó gyors útmutató, valamint egy adatbázis biztonságimásolat-fájlból való visszaállítása: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md).
+- A Azure Database Migration Service (DMS) áttelepítésre való használatát ismertető oktatóanyagért lásd: a [felügyelt példányok áttelepítése a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).
 - A felügyelt példányok adatbázisának teljesítményének speciális figyelése a beépített hibaelhárítási intelligenciával: [Azure SQL Database figyelése Azure SQL Analytics használatával](../azure-monitor/insights/azure-sql.md).
 - A díjszabással kapcsolatos információkért lásd: [SQL Database felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Beszédfelismerés felismerése, Java (Android) – Speech Service'
+title: 'Gyors útmutató: beszédfelismerés felismerése, Java (Android) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan ismerheti fel a beszédfelismerést Java nyelven Androidon a Speech SDK használatával
 services: cognitive-services
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
 ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71803314"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Gyors útmutató: Az Androidon futó beszédfelismerés felismerése a Speech SDK használatával
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Androidon, Java nyelven a Speech SDK segítségével
 
 A rövid útmutatók a [beszédfelismeréshez](quickstart-text-to-speech-java-android.md) és a [hang-első virtuális asszisztenshez](quickstart-virtual-assistant-java-android.md)is elérhetők.
 
@@ -88,12 +88,12 @@ Nyomja meg az alkalmazásban található gombot a szövegfelismerés aktiválás
 
 ![Az Android-alkalmazás képernyőképe](media/sdk/qs-java-android-13-gui-on-device.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Java-minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
 - [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

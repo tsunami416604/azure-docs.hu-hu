@@ -1,6 +1,6 @@
 ---
-title: Webes API-alkalmazások az Azure Active Directoryban
-description: Mik azok a webes API-alkalmazások és az alapokat ismerteti protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz.
+title: Webes API-alkalmazások Azure Active Directory
+description: Leírja, hogy mi a webes API-alkalmazás, és milyen alapismereteket biztosít a protokollok, a regisztráció és a jogkivonat lejárata ehhez az alkalmazás típusához.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,68 +17,68 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 484e6b4c5f0e064254c957b07b8ba15ef98f2634
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4babb7e869f4fc83bcdb530a580a29dda234293
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545212"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373780"
 ---
 # <a name="web-api"></a>Webes API
 
-Webes API-alkalmazások olyan webes alkalmazások, a webes API-k erőforrások le kell töltenie. Ebben a forgatókönyvben két identitás típusa van, a webes alkalmazás hitelesítéséhez és a webes API hívása segítségével:
+A webes API-alkalmazások olyan webalkalmazások, amelyeknek egy webes API-ból kell lekérniük az erőforrásokat. Ebben a forgatókönyvben két olyan identitás létezik, amelyet a webalkalmazás a webes API hitelesítésére és meghívására használhat:
 
-- **Identita aplikace** – ebben a példában az OAuth 2.0 ügyfélhitelesítő adatok hitelesítse magát az alkalmazást, és a webes API-k eléréséhez. A webes API-t csak azt észleli, hogy a webalkalmazás, hívja az Alkalmazásidentitás használatakor, a webes API-t nem kapja meg a felhasználó semmilyen információt. Az alkalmazás fogad a felhasználó adatait, ha az alkalmazás protokollon keresztül küld, és nem írta alá a Azure ad-ben. A webes API megbízik, hogy a webalkalmazás hitelesítette a felhasználót. Ezért ez a minta egy megbízható alrendszer neve.
-- **Felhasználói identitás delegált** – ebben a forgatókönyvben két módon is elvégezhető: OpenID Connect, és az OAuth 2.0 hitelesítési kódmegadás bizalmas-ügyféllel. A webalkalmazás lekéri a hozzáférési jogkivonatot a felhasználóhoz, amely igazolja, a webes API-t, hogy a webalkalmazás sikeresen hitelesíteni a felhasználót és a webes alkalmazás volt a webes API meghívásához egy meghatalmazott felhasználói identitás szerezhetik be. A hozzáférési jogkivonatot a webes API-t, amely engedélyezi a felhasználó, és adja vissza a kívánt erőforrást. a kérelem küldése.
+- **Alkalmazás identitása** – ez a forgatókönyv OAuth 2,0 ügyfél-hitelesítő adatokat használ az alkalmazásként való hitelesítéshez és a webes API eléréséhez. Az alkalmazás identitásának használatakor a webes API csak azt észlelheti, hogy a webalkalmazás meghívja azt, mivel a webes API nem kap semmilyen információt a felhasználóról. Ha az alkalmazás adatokat kap a felhasználóról, a rendszer az alkalmazási protokollon keresztül küldi el, és az Azure AD nem írja alá. A webes API megbízik abban, hogy a webalkalmazás hitelesítette a felhasználót. Emiatt ezt a mintát megbízható alrendszernek nevezzük.
+- **Delegált felhasználói identitás** – ez a forgatókönyv kétféleképpen valósítható meg: az OpenID Connect és a OAuth 2,0 engedélyezési kód engedélyezése egy bizalmas ügyféllel. A webalkalmazás hozzáférési jogkivonatot szerez be a felhasználó számára, amely igazolja, hogy a felhasználó sikeresen hitelesítette a webes API-t, és hogy a webalkalmazás megszerezte a delegált felhasználói identitást a webes API meghívásához. Ezt a hozzáférési jogkivonatot a rendszer elküldi a webes API-nak a kérelemben, amely engedélyezi a felhasználót, és visszaadja a kívánt erőforrást.
 
-Az alkalmazás azonosítóját és a delegált felhasználói identitás típusai a folyamat az alábbi tárgyalja. A fő különbség az, hogy a delegált felhasználó identitását először kell szerezni az engedélyezési kódot, mielőtt a felhasználó bejelentkezhet és a webes API-k eléréséhez.
+Az alábbi folyamat az alkalmazás identitását és a delegált felhasználói azonosító típusát is tárgyalja. A legfontosabb különbség az, hogy a delegált felhasználói identitásnak először be kell szereznie egy engedélyezési kódot ahhoz, hogy a felhasználó bejelentkezzen, és hozzáférhessen a webes API-hoz.
 
 ## <a name="diagram"></a>Ábra
 
-![Webalkalmazás, webes API-diagram](./media/authentication-scenarios/web_app_to_web_api.png)
+![Webalkalmazás webes API-diagramja](./media/authentication-scenarios/web_app_to_web_api.png)
 
-## <a name="protocol-flow"></a>Protokoll folyamat
+## <a name="protocol-flow"></a>Protokoll folyamatábrája
 
-### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Identita aplikace az OAuth 2.0 ügyfél-hitelesítő adatok megadása
+### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Alkalmazás-identitás OAuth 2,0 ügyfél-hitelesítő adatokkal
 
-1. A webalkalmazás az Azure AD a bejelentkezett felhasználó (lásd a **Web apps** további információ a következő szakaszban).
-1. A webalkalmazás kell, hogy a webes API-t hitelesítésre és a kívánt erőforrást beolvasni a hozzáférési jogkivonat beszerzése. Adatbeolvasási kérelmet küld az Azure AD jogkivonat végpontra, a hitelesítő adatokat, a Alkalmazásazonosító és a webes API-k alkalmazás Alkalmazásazonosító URI-t biztosít.
-1. Az Azure AD hitelesíti magát az alkalmazást, és a webes API meghívásához használt JWT hozzáférési jogkivonatot ad vissza.
-1. HTTPS-en keresztüli a webes alkalmazás használja a kapott JWT jogkivonat a JWT-karakterlánc a "Tulajdonos" megnevezéssel a kérelem az engedélyezési fejléc hozzáadása a webes API-t. A webes API majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.
+1. A felhasználók bejelentkeznek az Azure AD-be a webalkalmazásban (további információért lásd a **Web Apps** szakaszt).
+1. A webalkalmazásnak meg kell szereznie egy hozzáférési jogkivonatot, hogy az hitelesíthető legyen a webes API-ban, és beolvassa a kívánt erőforrást. Kérést küld az Azure AD jogkivonat-végpontjának, amely megadja a hitelesítő adatokat, az alkalmazás AZONOSÍTÓját és a webes API alkalmazásspecifikus AZONOSÍTÓjának URI azonosítóját.
+1. Az Azure AD hitelesíti az alkalmazást, és egy JWT hozzáférési tokent ad vissza, amely a webes API meghívására szolgál.
+1. HTTPS-kapcsolaton keresztül a webalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot a "tulajdonos" jelöléssel a webes API-nak küldött kérelem engedélyezési fejlécében. A webes API ezt követően ellenőrzi az JWT tokent, és ha az érvényesítés sikeres, a visszaadja a kívánt erőforrást.
 
-### <a name="delegated-user-identity-with-openid-connect"></a>A meghatalmazott felhasználó identitását az OpenID Connect
+### <a name="delegated-user-identity-with-openid-connect"></a>Delegált felhasználói identitás OpenID Connecttel
 
-1. A felhasználó van bejelentkezve az Azure AD-vel webalkalmazásnak (lásd a webböngésző a webalkalmazás című fenti szakaszban). A webes alkalmazás a felhasználó még nem járult hozzá, így a webalkalmazás a webes API meghívásához nyújtsanak a nevében, ha a felhasználó jóváhagyást kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyekkel, nem lesz képes, hogy engedélyt adjanak a normál felhasználót a címtárban. A jóváhagyási folyamat csak több-bérlős alkalmazások, nem egybérlős alkalmazások arra vonatkozik, ahogy az alkalmazás már rendelkezik a szükséges engedélyekkel. Amikor a felhasználó bejelentkezett, a webes alkalmazás kapott egy azonosító jogkivonat a felhasználó, valamint egy hozzáférési kóddal kapcsolatos információkat.
-1. Használja az Azure AD által kiállított hozzáférési kód, a webes alkalmazás egy kérést küld az Azure AD jogkivonat-végpont, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrást (Alkalmazásazonosító URI a webes API-t).
-1. Az engedélyezési kódot, valamint a webalkalmazás és webes API Azure ad-ben érvényesítette. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT-jogkivonatokkal és a egy JWT frissítési jogkivonatot.
-1. HTTPS-en keresztüli a webes alkalmazás használja a kapott JWT jogkivonat a JWT-karakterlánc a "Tulajdonos" megnevezéssel a kérelem az engedélyezési fejléc hozzáadása a webes API-t. A webes API majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.
+1. A felhasználók az Azure AD-vel jelentkeznek be egy webalkalmazásba (lásd a fenti webalkalmazási szakaszt). Ha a webalkalmazás felhasználója még nem járult hozzá, hogy a webalkalmazás meghívja a webes API-t az Ön nevében, a felhasználónak meg kell egyeznie. Az alkalmazás megjeleníti a szükséges engedélyeket, és ha ezek bármelyike rendszergazdai szintű engedély, a címtárban lévő normál felhasználó nem fogja tudni beleegyezni. Ez a belelépési folyamat csak a több-bérlős alkalmazásokra vonatkozik, nem egy bérlői alkalmazásra, mert az alkalmazás már rendelkezik a szükséges engedélyekkel. Amikor a felhasználó bejelentkezett, a webalkalmazás egy azonosító jogkivonatot kapott a felhasználóval kapcsolatos információkkal, valamint egy engedélyezési kóddal.
+1. Az Azure AD által kiadott engedélyezési kód használatával a webalkalmazás egy kérést küld az Azure AD jogkivonat-végpontjának, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás részleteit (az alkalmazás AZONOSÍTÓját és az átirányítási URI-t) és a kívánt erőforrást (alkalmazás-azonosító). A webes API URI-ja).
+1. Az Azure AD ellenőrzi az engedélyezési kódot és a webalkalmazással és a webes API-val kapcsolatos információkat. A sikeres ellenőrzés után az Azure AD két tokent ad vissza: egy JWT hozzáférési tokent és egy JWT frissítési tokent.
+1. HTTPS-kapcsolaton keresztül a webalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot a "tulajdonos" jelöléssel a webes API-nak küldött kérelem engedélyezési fejlécében. A webes API ezt követően ellenőrzi az JWT tokent, és ha az érvényesítés sikeres, a visszaadja a kívánt erőforrást.
 
-### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>A meghatalmazott felhasználó identitását az OAuth 2.0 hitelesítési kódmegadás
+### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>Delegált felhasználói identitás a OAuth 2,0 engedélyezési kód engedélyezésével
 
-1. A felhasználó már bejelentkezett egy webalkalmazás, amelynek hitelesítési mechanizmust független az Azure ad-ben.
-1. Az alkalmazás egy hozzáférési jogkivonatot beszerezni, így a problémák az egy kérelmet a böngészőben az Azure AD engedélyezési végpont, így az alkalmazás azonosítója, és átirányítási URI a webes alkalmazás sikeres hitelesítés után az engedélyezési kódot igényel. A felhasználó bejelentkezik az Azure ad-hez.
-1. A webes alkalmazás a felhasználó még nem járult hozzá, így a webalkalmazás a webes API meghívásához nyújtsanak a nevében, ha a felhasználó jóváhagyást kell. Az alkalmazás megjeleníti a szükséges engedélyekkel, és ha ezek egyikét sem rendszergazdai engedélyekkel, nem lesz képes, hogy engedélyt adjanak a normál felhasználót a címtárban. A jóváhagyás egyetlen és több-bérlős alkalmazás vonatkozik. Egyetlen bérlő esetben egy rendszergazda hajthat végre a rendszergazdai jóváhagyás való hozzájárulás azok a felhasználók nevében. Ehhez használja a `Grant Permissions` gombra a [az Azure portal](https://portal.azure.com). 
-1. Miután a felhasználó hozzájárult, a webes alkalmazás kap az engedélyezési kódot, amely a szükséges hozzáférési jogkivonat beszerzése.
-1. Használja az Azure AD által kiállított hozzáférési kód, a webes alkalmazás egy kérést küld az Azure AD jogkivonat-végpont, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás (alkalmazás Azonosítóját és átirányítási URI-t), és a kívánt erőforrást (Alkalmazásazonosító URI a webes API-t).
-1. Az engedélyezési kódot, valamint a webalkalmazás és webes API Azure ad-ben érvényesítette. Sikeres ellenőrzés esetén az Azure AD két jogkivonatok adja vissza: a JWT-jogkivonatokkal és a egy JWT frissítési jogkivonatot.
-1. HTTPS-en keresztüli a webes alkalmazás használja a kapott JWT jogkivonat a JWT-karakterlánc a "Tulajdonos" megnevezéssel a kérelem az engedélyezési fejléc hozzáadása a webes API-t. A webes API majd érvényesíti a JWT jogkivonatot, és ha az érvényesítés sikeres, visszaadja a kívánt erőforrást.
+1. Egy felhasználó már be van jelentkezve egy webalkalmazásba, amelynek hitelesítési mechanizmusa független az Azure AD-től.
+1. A webalkalmazásnak egy hozzáférési jogkivonat beszerzéséhez engedélyezési kódnak kell lennie, ezért a böngészővel az Azure AD engedélyezési végpontján keresztül küldi el a kérést, így a sikeres hitelesítés után megadhatja az alkalmazás AZONOSÍTÓját és átirányítási URI-JÁT a webalkalmazáshoz. A felhasználó bejelentkezik az Azure AD-be.
+1. Ha a webalkalmazás felhasználója még nem járult hozzá, hogy a webalkalmazás meghívja a webes API-t az Ön nevében, a felhasználónak meg kell egyeznie. Az alkalmazás megjeleníti a szükséges engedélyeket, és ha ezek bármelyike rendszergazdai szintű engedély, a címtárban lévő normál felhasználó nem fogja tudni beleegyezni. Ez a beleegyező alkalmazás az önálló és a több-bérlős alkalmazások esetében is érvényes. Az egybérlős esetekben a rendszergazda rendszergazdai beleegyezett a felhasználók nevében való részvételre. Ezt a [Azure Portal](https://portal.azure.com)`Grant Permissions` gombjának használatával teheti meg. 
+1. A felhasználó beleegyezése után a webalkalmazás megkapja a hozzáférési token beszerzéséhez szükséges hitelesítési kódot.
+1. Az Azure AD által kiadott engedélyezési kód használatával a webalkalmazás egy kérést küld az Azure AD jogkivonat-végpontjának, amely tartalmazza az engedélyezési kódot, az ügyfélalkalmazás részleteit (az alkalmazás AZONOSÍTÓját és az átirányítási URI-t) és a kívánt erőforrást (alkalmazás-azonosító). A webes API URI-ja).
+1. Az Azure AD ellenőrzi az engedélyezési kódot és a webalkalmazással és a webes API-val kapcsolatos információkat. A sikeres ellenőrzés után az Azure AD két tokent ad vissza: egy JWT hozzáférési tokent és egy JWT frissítési tokent.
+1. HTTPS-kapcsolaton keresztül a webalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot a "tulajdonos" jelöléssel a webes API-nak küldött kérelem engedélyezési fejlécében. A webes API ezt követően ellenőrzi az JWT tokent, és ha az érvényesítés sikeres, a visszaadja a kívánt erőforrást.
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a Kódminták webalkalmazás, webes API-forgatókönyvekhez. És térjen vissza később gyakran – új mintát gyakran kerülnek. Webes [webes API alkalmazást](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
+Tekintse meg a webalkalmazás webes API-forgatókönyvekre vonatkozó példákat. És gyakran tekintse át a gyakran előforduló új mintákat. [Webalkalmazás webes API-hoz](sample-v1-code.md#web-applications-signing-in-users-calling-microsoft-graph-or-a-web-api-with-the-users-identity).
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-Alkalmazás regisztrálása az Azure AD-1.0-s verziójú végpont, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
+Az alkalmazások regisztrálásához az Azure AD 1.0-s verziójának végpontján tekintse meg az alkalmazás [regisztrálása](quickstart-register-app.md)című témakört.
 
-* Egyetlen bérlő – az alkalmazás azonosítóját és delegált felhasználói identitás esetek, a webalkalmazás és a webes API regisztrálni kell ugyanabban a címtárban az Azure ad-ben. A webes API elérhetővé engedélykészletet, a webes alkalmazás férjenek hozzá az erőforrásokhoz használt konfigurálható. A delegált felhasználói identitástípus használja, ha a webalkalmazás kell válassza ki a kívánt engedélyeket, a **egyéb alkalmazások engedélyei** legördülő menüből az Azure Portalon. Ebben a lépésben nincs szükség, ha az identitás alkalmazástípus használatban van.
-* Több-bérlős – először a webalkalmazás jelzi a megfelelő működéséhez szükséges engedélyekkel van konfigurálva. Szükséges engedélyek listája egy párbeszédpanel jelenik meg, amikor egy felhasználó vagy rendszergazda a célkönyvtárban duplikátum beleegyezésével az alkalmazáshoz, ami lehetővé teszi a szervezet számára elérhető. Egyes alkalmazások csak a felhasználói szintű engedélyeket, amelyeket a szervezet bármely felhasználója jóváhagyhat van szükségük. Más alkalmazások szükséges rendszergazdai engedélyekkel, amelyek a szervezet egy felhasználója nem járulhatnak hozzá. Csak egy könyvtár rendszergazda engedélyezheti, hogy ez a jogosultsági szint szükséges alkalmazásokat. Járul hozzá a felhasználó vagy rendszergazda, ha a webalkalmazás és a webes API egyaránt regisztrálva vannak a címtárban.
+* Egyetlen bérlő – az alkalmazás identitása és a delegált felhasználó identitása esetében a webalkalmazást és a webes API-t ugyanabban a címtárban kell regisztrálni az Azure AD-ben. A webes API beállítható úgy, hogy a webalkalmazás erőforrásokhoz való hozzáférésének korlátozására szolgáló engedélyeket biztosítson. Ha a delegált felhasználói azonosító típusa használatban van, a webalkalmazásnak ki kell választania a kívánt engedélyeket az engedélyek között a Azure Portal **egyéb alkalmazások** legördülő menüjében. Ez a lépés nem kötelező, ha az alkalmazás identitásának típusa használatban van.
+* Több-bérlős – először a webalkalmazás úgy van konfigurálva, hogy jelezze a működéséhez szükséges engedélyeket. A szükséges engedélyek listája egy párbeszédpanelen jelenik meg, ha a célként megadott könyvtárban lévő felhasználó vagy rendszergazda beleegyezik az alkalmazásba, ami elérhetővé teszi a szervezet számára. Egyes alkalmazásokhoz csak felhasználói szintű engedélyek szükségesek, amelyeket a szervezet bármely felhasználója jóváhagyhat. Más alkalmazásokhoz rendszergazdai szintű engedélyek szükségesek, amelyeket a szervezet felhasználója nem tud jóváhagyni. Csak a címtár-rendszergazda engedélyezheti az ilyen szintű engedélyeket igénylő alkalmazásokhoz való hozzáférést. A felhasználó vagy a rendszergazda beleegyezése esetén a webalkalmazás és a webes API egyaránt regisztrálva van a címtárában.
 
-## <a name="token-expiration"></a>Jogkivonat lejáratáról
+## <a name="token-expiration"></a>Jogkivonat lejárata
 
-Amikor a webalkalmazás eléréséhez a JWT jogkivonat a hozzáférési kód használ, a JWT-frissítési jogkivonatok is fogad. Ha a hozzáférési jogkivonat lejár, a frissítési jogkivonat segítségével hitelesítse magát újra a felhasználó anélkül, hogy jelentkezzen be újra őket. A frissítési jogkivonat majd segítségével hitelesíti a felhasználót, amely egy új hozzáférési jogkivonatot és a frissítési jogkivonatot eredményez.
+Ha a webalkalmazás az engedélyezési kódját használja egy JWT hozzáférési jogkivonat beszerzéséhez, akkor a JWT frissítési tokent is kap. Ha a hozzáférési jogkivonat lejár, a frissítési token használatával újra hitelesítheti a felhasználót anélkül, hogy újra be kellene jelentkeznie. Ezt a frissítési tokent a rendszer a felhasználó hitelesítésére használja, amely új hozzáférési jogkivonatot és frissítési jogkivonatot eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
-- További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
+- További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
+- Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

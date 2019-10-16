@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311872"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330089"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure-ban Virtual Machines
 
@@ -52,6 +52,8 @@ Emellett általános ismeretekkel kell rendelkeznie az alábbi technológiákró
 A prémium szintű fájlmegosztás biztosítja a IOPS és a teljes kapacitást, amely megfelel a sok számítási feladat igényeinek. Az i/o-igényes számítási [feladatokhoz](virtual-machines-windows-portal-sql-create-failover-cluster.md) azonban a felügyelt prémium lemezeken vagy az ultra-lemezeken alapuló közvetlen tárolóhelyek SQL Server.  
 
 Ellenőrizze az aktuális környezet IOPS tevékenységét, és ellenőrizze, hogy a prémium fájlok biztosítják-e a szükséges IOPS az üzembe helyezés vagy az áttelepítés megkezdése előtt. Használja a Windows Teljesítményfigyelő lemezeit számlálókat, és figyelje a teljes IOPS (átviteli sebesség/mp) és az adatátviteli sebességet (bájt/s) a SQL Server adatokhoz, a naplóhoz és a temp DB-fájlokhoz. Sok számítási feladat kitörte az i/o-t, ezért érdemes a nagy mennyiségű használati időszak során megtekinteni a maximális IOPS és az átlagos IOPS is. A prémium szintű fájlok megosztása a megosztás méretétől függően biztosít IOPS. A prémium szintű fájlok ingyenes kitörést biztosítanak, ahol akár egy óráig is megadhatja az alapértéket. 
+
+További információ a prémium szintű fájlmegosztás teljesítményéről: [fájlmegosztás teljesítményi szintjei](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers). 
 
 ### <a name="licensing-and-pricing"></a>Licencelés és díjszabás
 

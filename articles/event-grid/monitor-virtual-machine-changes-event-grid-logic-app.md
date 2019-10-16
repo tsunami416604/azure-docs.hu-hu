@@ -1,6 +1,6 @@
 ---
-title: Virtuális gépek módosításainak monitorozása – Azure Event Grid és Logic Apps | Microsoft Docs
-description: Virtuális gépek (VM-ek) konfigurációváltozásainak ellenőrzése az Azure Event Grid és a Logic Apps segítségével
+title: Virtuális gépek változásainak figyelése – Azure Event Grid & Logic Apps
+description: A virtuális gépek (VM-EK) változásainak keresése Azure Event Grid és Logic Apps használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,26 +8,29 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
-ms.date: 05/14/2019
-ms.openlocfilehash: 33634773b436114f4a5f2942028710ae50e0e703
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.date: 10/11/2019
+ms.openlocfilehash: ed48a4e5bab807695000fe6cdbecf1c1b7b01e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65801092"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72325768"
 ---
-# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps segítségével
+# <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Oktatóanyag: a virtuális gépek változásainak figyelése Azure Event Grid és Logic Apps használatával
 
-Az Azure-beli vagy külső erőforrásokban bekövetkező adott események esetén elindíthat automatizált [logikaialkalmazás-munkafolyamatokat](../logic-apps/logic-apps-overview.md). Ezek az erőforrások közzétehetik az eseményeket az [Azure Event Griden](../event-grid/overview.md). Az eseményrács ezután leküldi az eseményeket a végpontként üzenetsorokkal, webhookokkal vagy [eseményközpontokkal](../event-hubs/event-hubs-what-is-event-hubs.md) rendelkező feliratkozókra. Feliratkozóként logikai alkalmazása fogadhatja az eseményeket az eseményrácsról, és azok alapján automatizált munkafolyamatokat hajthat végre – mindehhez nem szükséges programkódot írnia.
+Az Azure-erőforrásokban vagy harmadik féltől származó erőforrásokban megjelenő egyes események figyeléséhez és megválaszolásához a feladatokat a minimális kódot használó [logikai alkalmazások](../logic-apps/logic-apps-overview.md) létrehozásával automatizálhatja és futtathatja munkafolyamatként. Ezek az erőforrások az eseményeket az [Azure Event Gridben](../event-grid/overview.md)tehetik közzé. Az eseményrács ezután leküldi az eseményeket a végpontként üzenetsorokkal, webhookokkal vagy [eseményközpontokkal](../event-hubs/event-hubs-what-is-event-hubs.md) rendelkező feliratkozókra. Előfizetőként a logikai alkalmazás megvárhatja ezeket az eseményeket az Event gridből, mielőtt automatizált munkafolyamatokat futtat a feladatok végrehajtásához.
 
 Például íme néhány esemény, amelyeket a közzétevők az Azure Event Grid szolgáltatáson keresztül küldhetnek a feliratkozóknak:
 
-* Erőforrás létrehozása, olvasása, frissítése vagy törlése. Például monitorozhatja az olyan változásokat, amelyek költségekkel terhelhetik Azure-előfizetését, és befolyásolhatják az egyenlegét. 
+* Erőforrás létrehozása, olvasása, frissítése vagy törlése. Például monitorozhatja az olyan változásokat, amelyek költségekkel terhelhetik Azure-előfizetését, és befolyásolhatják az egyenlegét.
+
 * Személy hozzáadása vagy eltávolítása egy Azure-előfizetésben.
+
 * Az alkalmazás végrehajt egy bizonyos műveletet.
+
 * Egy új üzenet jelenik meg egy üzenetsorban.
 
-Ebben az oktatóanyagban létrehoz egy logikai alkalmazást, amely figyeli a módosítások egy virtuális géphez, és ezeket a módosításokat kapcsolatos e-mailt küld. Amikor létrehoz egy logikai alkalmazást egy eseményfeliratkozással egy Azure-erőforrásra, az erőforrás eseményei az eseményrácson keresztül adódnak át a logikai alkalmazásnak. Az oktatóanyag ennek a logikai alkalmazásnak a létrehozását mutatja be:
+Ez az oktatóanyag egy logikai alkalmazást hoz létre, amely figyeli a virtuális gép módosításait, és e-maileket küld a változásokról. Amikor létrehoz egy logikai alkalmazást egy eseményfeliratkozással egy Azure-erőforrásra, az erőforrás eseményei az eseményrácson keresztül adódnak át a logikai alkalmazásnak. Az oktatóanyag ennek a logikai alkalmazásnak a létrehozását mutatja be:
 
 ![Áttekintés – virtuális gép monitorozása eseményrács és logikai alkalmazás használatával](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
@@ -42,171 +45,162 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* E-mail-fiók e-mail-értesítések küldését, például az Office 365 Outlook, Outlook.com vagy Gmail a Logic Apps által támogatott szolgáltató. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). 
+* Az Logic Apps által támogatott e-mail-szolgáltatótól származó e-mail-fiók értesítések küldéséhez, például Office 365 Outlook, Outlook.com vagy gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/).
 
-  Ebben az oktatóanyagban az Office 365 Outlook-fiókot használja. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
+  Ez az oktatóanyag egy Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések ugyanazok, a felhasználói felület azonban némiképp eltérhet.
 
-* Egy [virtuális gép](https://azure.microsoft.com/services/virtual-machines). Ha ezt még nem tette meg, hozzon létre egy virtuális gép a [hozzon létre egy virtuális gép oktatóanyag](../virtual-machines/windows/quick-create-portal.md). Ahhoz, hogy a virtuális gép eseményeket tegyen közzé, [semmi egyebet nem kell tennie](../event-grid/overview.md).
+* Egy [virtuális gép](https://azure.microsoft.com/services/virtual-machines) , amely önmagában a saját Azure-erőforráscsoport. Ha még nem tette meg, hozzon létre egy virtuális gépet a virtuális gép [létrehozása oktatóanyag](../virtual-machines/windows/quick-create-portal.md)használatával. Ahhoz, hogy a virtuális gép eseményeket tegyen közzé, [semmi egyebet nem kell tennie](../event-grid/overview.md).
 
 ## <a name="create-blank-logic-app"></a>Üres logikai alkalmazás létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival. 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
-1. Az Azure fő menüjéből válassza **erőforrás létrehozása** > **integrációs** > **logikai alkalmazás**.
+1. Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integráció** > **logikai alkalmazás**lehetőséget.
 
    ![Logikai alkalmazás létrehozása](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
-1. A **logikai alkalmazás**, adja meg a logikai alkalmazással kapcsolatos információkat. Ha elkészült, kattintson a **Létrehozás** gombra.
+1. A **logikai alkalmazás**területen adja meg a logikai alkalmazás erőforrásával kapcsolatos információkat. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
    ![A logikai alkalmazás részleteinek megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
-   | Tulajdonság | Ajánlott érték | Leírás |
-   | -------- | --------------- | ----------- |
-   | **Name (Név)** | <*logic-app-name*> | Adjon meg egy egyedi nevet a logikai alkalmazás. |
-   | **Előfizetés** | <*Azure-előfizetés-neve*> | Válassza ugyanazt az Azure-előfizetést az oktatóanyagban szereplő minden szolgáltatáshoz. |
-   | **Erőforráscsoport** | <*Azure-resource-group*> | Válassza ugyanazt az Azure-erőforráscsoportot az oktatóanyagban szereplő minden szolgáltatáshoz. |
-   | **Hely** | <*Azure-datacenter-region*> | Válassza ugyanazt a régiót az oktatóanyagban szereplő minden szolgáltatáshoz. |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
+   |----------|----------|-------|-------------|
+   | **Name (Név)** | Igen | <*Logic-app-name*> | Adjon egyedi nevet a logikai alkalmazásnak. |
+   | **Előfizetés** | Igen | <*Azure-előfizetés-neve*> | Válassza ki ugyanazt az Azure-előfizetést az oktatóanyag összes szolgáltatásához. |
+   | **Erőforráscsoport** | Igen | <*Azure-Resource-group*> | Az Azure-erőforráscsoport neve a logikai alkalmazáshoz, amelyet az oktatóanyag összes szolgáltatásához kiválaszthat. |
+   | **Hely** | Igen | <*Azure-régió*> | Válassza ugyanazt a régiót az oktatóanyagban szereplő minden szolgáltatáshoz. |
    |||
 
-   Ezzel létrehozott egy Azure-erőforrást a logikai alkalmazás számára. 
-
-1. Miután az Azure üzembe helyezte a logikai alkalmazás, a Logic Apps Designerben videó a bevezetés oldalt jelenít meg, és a gyakran használt triggereket. Görgessen át a videón és a triggereken. 
+1. Miután az Azure üzembe helyezte a logikai alkalmazást, a Logic Apps Designer egy bemutató videót és gyakran használt eseményindítókat tartalmazó oldalt jelenít meg. Görgessen át a videón és a triggereken.
 
 1. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
 
-   ![Logikaialkalmazás-sablon kiválasztása](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
+   ![Logikai alkalmazás sablonjának kiválasztása](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
-   A Logic Apps Designerben most már megtekintheti a [ *eseményindítók* ](../logic-apps/logic-apps-overview.md#logic-app-concepts) , hogy a logikai alkalmazás indítására használhatja. Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. 
-   Minden alkalommal, amikor az eseményindító elindulása, az Azure Logic Apps létrehoz egy munkafolyamat-példányt, amely a logikai alkalmazás fut.
+   A Logic Apps Designer most megjeleníti a logikai alkalmazás elindításához használható [*eseményindítókat*](../logic-apps/logic-apps-overview.md#logic-app-concepts) . Mindegyik logikai alkalmazásnak egy eseményindítóval kell indulnia, amelyet egy adott esemény vagy adott feltételek teljesülése aktivál. A Azure Logic Apps a logikai alkalmazást futtató munkafolyamat-példányt hoz létre minden alkalommal, amikor az eseményindító bekövetkezik.
 
-## <a name="add-event-grid-trigger"></a>Event Grid-trigger hozzáadása 
+## <a name="add-an-event-grid-trigger"></a>Event Grid trigger hozzáadása
 
-Ezután adja hozzá az Event Grid eseményindító, amely figyeli a virtuális gép erőforráscsoportját. 
+Most adja hozzá a Event Grid triggert, amelyet a virtuális géphez tartozó erőforráscsoport figyelésére használ.
 
-1. A tervezőben a keresőmezőbe írja be szűrőként "event grid". Az eseményindítók listában jelölje ki az eseményindító: **Erőforrás-esemény bekövetkezésekor – Azure Event Griddel**
+1. A tervezőben a keresőmezőbe írja be a `event grid` értéket a szűrőként. Az eseményindítók listából válassza ki az **erőforrás-esemény bekövetkeztekor** eseményindítót.
 
-   ![Ez az eseményindító kiválasztása: "A"erőforrás-esemény](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Válassza ki ezt az eseményindítót: "erőforrás-esemény esetén"](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
-1. Amikor a rendszer kéri, jelentkezzen be az Azure Event Grid az Azure-fiók hitelesítő adataival. Az a **bérlői** listát, amely bemutatja az Azure Active Directory-bérlőhöz társított Azure-előfizetése, ellenőrizze, hogy a megfelelő bérlő jelenik meg.
+1. Ha a rendszer kéri, jelentkezzen be Azure Event Grid az Azure-fiókja hitelesítő adataival. A **bérlő** listában, amely az Azure-előfizetéshez társított Azure Active Directory bérlőt jeleníti meg, győződjön meg arról, hogy a megfelelő bérlő jelenik meg, például:
 
    ![Bejelentkezés az Azure-beli hitelesítő adatokkal](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Ha személyes Microsoft-fiókkal jelentkezett be (például @outlook.com vagy @hotmail.com), az Event Grid-trigger esetleg nem megfelelően jelenik meg. Kerülő megoldásként válassza a [Csatlakozás szolgáltatásnévvel](../active-directory/develop/howto-create-service-principal-portal.md) lehetőséget, vagy jelentkezzen be az Azure-előfizetéséhez tartozó Azure Active Directory tagjaként (például *felhasználónév*@emailoutlook.onmicrosoft.com).
+   > Ha személyes Microsoft-fiókkal jelentkezett be (például @outlook.com vagy @hotmail.com), az Event Grid-trigger esetleg nem megfelelően jelenik meg. Megkerülő megoldásként válassza a [kapcsolat egyszerű szolgáltatásnév](../active-directory/develop/howto-create-service-principal-portal.md)használatával lehetőséget, vagy az Azure-előfizetéshez társított Azure Active Directory tagjaként hitelesítse magát, például: *Felhasználónév*@emailoutlook.onmicrosoft.com.
 
-1. Most iratkoztassa fel a logikai alkalmazást a közzétevők eseményeire. Az eseményfeliratkozáshoz az alábbi táblázatban megadott adatokat adja meg:
+1. Most fizessen elő a logikai alkalmazást a közzétevő eseményeire. Adja meg az esemény-előfizetés részleteit az alábbi táblázatban leírtak szerint, például:
 
-   ![Eseményfeliratkozás adatainak megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details-generic.png)
+   ![Eseményfeliratkozás adatainak megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Előfizetés** | Igen | <*event-publisher-Azure-subscription-name*> | Válassza ki az Azure-előfizetéséhez társított az esemény-közzétevő nevét. A jelen oktatóanyag esetében válassza ki a virtuális gép Azure-előfizetés nevét. |
-   | **Erőforrás típusa** | Igen | <*event-publisher-Azure-resource-type*> | Válassza ki az Azure-erőforrás típusa az esemény-közzétevő. A jelen oktatóanyag esetében válassza ki ezt az értéket figyelése az Azure-erőforráscsoportok: <p><p>**Microsoft.Resources.ResourceGroups** |
-   | **Erőforrás neve** |  Igen | <*event-publisher-Azure-resource-name*> | Válassza ki az Azure-erőforrás nevét az esemény-közzétevő esetében. A kiválasztott erőforrás típusa attól függően változik, a listában. A jelen oktatóanyag esetében válassza ki az Azure-erőforráscsoportot a virtuális gép nevét. |
-   | **Esemény típusú elem** |  Nem | <*event-types*> | Válassza ki egy vagy több adott eseménytípusok szűrése és az event grid küldhet. Ha például azt is megteheti e eseménytípusok megállapítani, ha az erőforrások módosítva vagy törölve: <p><p>- **Microsoft.Resources.ResourceActionSuccess** <br>- **Microsoft.Resources.ResourceDeleteSuccess** <br>- **Microsoft.Resources.ResourceWriteSuccess** <p>További információkért lásd az alábbi témakörök: <p><p>- [Megismerheti az események szűrése](../event-grid/event-filtering.md) <br>- [Az Event Griddel kapcsolatos események szűrése](../event-grid/how-to-filter-events.md) <br>- [Az erőforráscsoportok az Azure Event Grid eseménysémája](../event-grid/event-schema-resource-groups.md) |
-   | **Előfizetés neve** | Nem | <*event-subscription-name*> | Adjon egy egyedi nevet az esemény-előfizetésnek. |
-   | Választható beállítások kiválasztása **új paraméter hozzáadása**. | Nem | {a leírásokat lásd:} | * **Előtagszűrő**: Ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy előtagsztringet is, például egy elérési útvonalat és egy adott erőforrás paraméterét. <p>* **Szűrő utótag**: Ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy utótagsztringet is, például egy fájlnévkiterjesztést, ha csak adott fájltípusokra kíváncsi. |
+   | **Előfizetés** | Igen | <*esemény – közzétevő-Azure-előfizetés-név*@no__t – 2 | Válassza ki az *esemény-közzétevőhöz*társított Azure-előfizetés nevét. Ebben az oktatóanyagban válassza ki a virtuális géphez tartozó Azure-előfizetés nevét. |
+   | **Erőforrás típusa** | Igen | @no__t – 0*esemény – közzétevő-Azure-Resource-type*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás típusát. Az Azure-erőforrásokkal kapcsolatos további információkért lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md). Ebben az oktatóanyagban válassza ki a `Microsoft.Resources.ResourceGroups` értéket az Azure-erőforráscsoportok figyeléséhez. Ha csak a virtuális gépeket szeretné figyelni,  |
+   | **Erőforrás neve** |  Igen | <*esemény – közzétevő-Azure-Resource-name*> | Válassza ki az esemény-közzétevőhöz tartozó Azure-erőforrás nevét. Ez a lista a kiválasztott erőforrástípus alapján változik. Ebben az oktatóanyagban válassza ki a virtuális gépet tartalmazó Azure-erőforráscsoport nevét. |
+   | **Eseménytípus eleme** |  Nem | <*Event-types*> | Válasszon ki egy vagy több olyan eseménytípus-típust, amelyet szűrni szeretne, majd küldje el az Event Gridnek. Megadhatja például, hogy az ilyen típusú eseménytípus felderítse az erőforrások módosításait vagy törlését: <p><p>- `Microsoft.Resources.ResourceActionSuccess` <br>- `Microsoft.Resources.ResourceDeleteSuccess` <br>- `Microsoft.Resources.ResourceWriteSuccess` <p>További információkért tekintse meg a következő témaköröket: <p><p>@no__t – 0[Azure Event Grid az erőforráscsoportok esetén](../event-grid/event-schema-resource-groups.md) <br>@no__t – 0 –[események szűrésének megismerése](../event-grid/event-filtering.md) <br>@no__t – 0[szűrési események Event Grid](../event-grid/how-to-filter-events.md) |
+   | Opcionális tulajdonságok hozzáadásához válassza az **új paraméter hozzáadása**lehetőséget, majd válassza ki a kívánt tulajdonságokat. | Nem | {lásd a leírások} | * **előtag-szűrő**: ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy előtagsztringet is, például egy elérési útvonalat és egy adott erőforrás paraméterét. <p>* **utótag-szűrő**: ebben az oktatóanyagban hagyja üresen ezt a tulajdonságot. Az alapértelmezett beállítás minden értéket megenged. Azonban megadhat szűrőként egy utótagsztringet is, például egy fájlnévkiterjesztést, ha csak adott fájltípusokra kíváncsi. <p>* **előfizetés neve**: ebben az oktatóanyagban megadhatja az esemény-előfizetés egyedi nevét. |
    |||
 
-   Ha elkészült, az Event Grid eseményindító ebben a példában látható:
-
-   ![Példa Event Grid-trigger részletei](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
-
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** parancsot. A logikai alkalmazásban lévő egyes műveletek részleteinek összecsukásához és elrejtéséhez kattintson az adott művelet címsorára.
+1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. A művelet részleteinek összecsukása és elrejtése a logikai alkalmazásban kattintson a művelet címsorára.
 
    ![A logikai alkalmazás mentése](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
    Amikor ment egy eseményrács-triggerrel rendelkező logikai alkalmazást, az Azure automatikusan létrehoz egy eseményfeliratkozást a logikai alkalmazás számára a kiválasztott erőforráshoz. Így amikor az erőforrás közzétesz egy eseményt az eseményrácson, az eseményrács automatikusan leküldi az eseményt a logikai alkalmazásnak. Az esemény aktiválja a logikai alkalmazást, majd létrehozza és futtatja a következő lépésekben meghatározott munkafolyamat egy példányát.
 
-A logikai alkalmazás most már működőképes, és figyeli az eseményrácsról érkező eseményeket, de amíg fel nem vesz a munkafolyamatba műveleteket, semmit nem csinál. 
+A logikai alkalmazás most már működőképes, és figyeli az eseményrácsról érkező eseményeket, de amíg fel nem vesz a munkafolyamatba műveleteket, semmit nem csinál.
 
-## <a name="add-condition"></a>Feltétel hozzáadása
+## <a name="add-a-condition"></a>Feltétel hozzáadása
 
-Ahhoz, hogy a logikai alkalmazás munkafolyamata csak akkor fusson, ha egy adott esemény bekövetkezik, adjon hozzá egy feltételt, amely a virtuális gép „írás” műveleteit figyeli. Ha ez a feltétel teljesül, a logikai alkalmazás e-mailben elküldi a frissített virtuális gép adatait.
+Ha azt szeretné, hogy a logikai alkalmazás csak akkor fusson, amikor egy adott esemény vagy művelet történik, adjon hozzá egy feltételt, amely ellenőrzi a `Microsoft.Compute/virtualMachines/write` műveletet. Ha ez a feltétel teljesül, a logikai alkalmazás e-mailben elküldi a frissített virtuális gép adatait.
 
-1. A Logikaialkalmazás-Tervező, az event grid-trigger alatt válassza a **új lépés**.
+1. A Logic app Designerben az Event Grid eseményindító alatt válassza az **új lépés**lehetőséget.
 
-   ![Válassza az "Új lépés"](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
+   ![Válassza az "új lépés" lehetőséget](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
-1. A Keresés mezőbe írja be a "feltétel" szűrőként. A műveletek listából válassza a következő műveletet: **A feltétel**
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `condition` értéket a szűrő mezőbe. A műveletek listából válassza ki a **feltétel** műveletet.
 
    ![Feltétel hozzáadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
    A Logic App Designer hozzáad egy üres feltételt a munkafolyamathoz, beleértve a feltétel igaz vagy hamis értékei esetén követendő műveleti útvonalakat.
 
-   ![Üres feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
+   ![Üres feltétel jelenik meg](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
-1. Nevezze át a feltételt cím `If a virtual machine in your resource group has changed`. A feltétel címsorán válassza a három pontra (**...** ) gombra, és válassza **átnevezése**.
+1. Nevezze át a feltétel címét a következőre: `If a virtual machine in your resource group has changed`. A feltétel címsorán válassza a három pontot ( **...** ), majd az **Átnevezés**lehetőséget.
 
-   ![Feltétel átnevezése](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
+   ![A feltétel átnevezése](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
-1. Hozzon létre egy feltételt, amely ellenőrzi az esemény `body` számára egy `data` objektum, a `operationName` tulajdonság értéke a `Microsoft.Compute/virtualMachines/write` műveletet. További tudnivalók az [Event Grid eseménysémáról](../event-grid/event-schema.md).
+1. Hozzon létre egy olyan feltételt, amely ellenőrzi a `body` eseményt egy olyan `data` objektum esetében, amelyben a `operationName` tulajdonság megegyezik a `Microsoft.Compute/virtualMachines/write` művelettel. További tudnivalók az [Event Grid eseménysémáról](../event-grid/event-schema.md).
 
-   1. Az első sorban az **And** (És) alatt kattintson a bal oldali mezőbe. A dinamikus tartalmak listájában jelenik meg, válassza ki a **kifejezés**.
+   1. Az első sorban az **And** (És) alatt kattintson a bal oldali mezőbe. A megjelenő dinamikus tartalmak listájában válassza a **kifejezés**lehetőséget.
 
-      ![Válassza az "Expression"](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
+      ![Válassza a "kifejezés" lehetőséget a kifejezés-szerkesztő megnyitásához.](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
 
-   1. A kifejezésszerkesztőbe írja be a kifejezést, és válassza a **OK**: 
+   1. A kifejezés-szerkesztőben adja meg ezt a kifejezést, amely visszaadja a művelet nevét az triggerből, majd kattintson **az OK gombra**:
 
       `triggerBody()?['data']['operationName']`
 
       Példa:
 
-      ![Válassza az "Expression"](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
+      ![Kifejezés beírása a művelet nevének kinyeréséhez](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
    1. A középső mezőben tartsa meg az **is equal to** (egyenlő) operátort.
 
-   1. A jobb oldali mezőbe írja be ezt az értéket:
+   1. A jobb oldali mezőben adja meg ezt az értéket, amely a figyelni kívánt művelet:
 
       `Microsoft.Compute/virtualMachines/write`
 
-   A befejezett feltétel most példához hasonlóan néz ki:
+   A befejezett állapot most a következő példához hasonlít:
 
-   ![Befejezett feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
+   ![A műveletet összehasonlító befejezett feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
-   Átállás a tervezés nézetbe, és a kód nézet és a Tervező nézetre vissza, ha a kifejezés, amely a feltételben megadott feloldja a **data.operationName** token:
+   Ha a tervező nézetből a kód nézetre vált, és vissza a Tervező nézetre, a feltételben megadott kifejezés az **adatok. operationName** tokenre van feloldva:
 
-   ![Megoldott feltétel](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+   ![Feloldott tokenek a feltételben](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
 1. Mentse a logikai alkalmazást.
 
 ## <a name="send-email-notifications"></a>E-mail-értesítések küldése
 
-Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-app-concepts), amely egy e-mailt küld a megadott feltétel teljesülésekor.
+Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-app-concepts) , hogy e-mailt kapjon, ha a megadott feltétel igaz.
 
-1. A feltétel **Ha igaz** mezőjében válassza a **Művelet hozzáadása** lehetőséget.
+1. A feltétel, **Ha igaz** mezőben válassza a **művelet hozzáadása**lehetőséget.
 
    ![Művelet hozzáadása a feltétel igaz értéke esetére](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
-1. A Keresés mezőbe írja be a "e-mail küldése" szűrőként. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Példa: 
+1. A **válasszon műveletet**területen a keresőmezőbe írja be a `send an email` értéket a szűrő mezőbe. Az e-mail-szolgáltató alapján keresse meg és válassza ki a megfelelő összekötőt. Ezután válassza ki az „e-mail küldése” műveletet az összekötőn. Példa:
 
-   * Azure munkahelyi vagy iskolai fiókok esetében válassza az Office 365 Outlook-összekötőt. 
+   * Azure munkahelyi vagy iskolai fiókok esetében válassza az Office 365 Outlook-összekötőt.
 
-   * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt. 
+   * Személyes Microsoft-fiókok esetében válassza az Outlook.com-összekötőt.
 
-   * Gmail-fiókok esetében válassza a Gmail-összekötőt. 
+   * Gmail-fiókok esetében válassza a Gmail-összekötőt.
 
-   Ebben az oktatóanyagban az Office 365 Outlook-összekötővel továbbra is. 
-   Ha egy másik szolgáltatót használ, a lépések ugyanazok, de a felhasználói felület némiképp eltérhet. 
+   Ez az oktatóanyag az Office 365 Outlook Connectort is folytatja. Ha más szolgáltatót használ, a lépések változatlanok maradnak, de a felhasználói felülete némileg eltérő lehet.
 
    ![Az „e-mail küldése” művelet kiválasztása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
 
 1. Ha még nem rendelkezik kapcsolattal az e-mail-szolgáltatójához, amikor a rendszer kéri, hogy hitelesítse magát, jelentkezzen be az e-mail-fiókjába.
 
-1. Nevezze át a cím a küldési e-mail cím: `Send email when virtual machine updated`
+1. Nevezze át az e-mail küldése műveletet erre a címre: `Send email when virtual machine updated`
 
-1. Az e-mailre vonatkozóan az alábbi táblázatban megadott adatokat adja meg:
+1. Adja meg az e-mailre vonatkozó információkat az alábbi táblázatban megadott módon:
 
-   ![Üres e-mail-művelet](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
+   ![Az e-mail művelettel kapcsolatos információk megadása](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
 
    > [!TIP]
-   > A munkafolyamat előző lépésekből származó eredmények közül válassza ki, kattintson a szerkesztőmezőkhöz, a dinamikus tartalmak listája jelenik meg, vagy válasszon **dinamikus tartalom hozzáadása**. Válassza a további találatok **Továbbiak** a lista minden egyes szakaszában. Zárja be a dinamikus tartalmú listából, válassza a **dinamikus tartalom hozzáadása** újra.
+   > A munkafolyamat előző lépéseiből származó kimenet kiválasztásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalom lista, vagy válassza a **dinamikus tartalom hozzáadása**lehetőséget. További találatok esetén válassza a **továbbiak** lehetőséget a lista egyes szakaszaiban. A dinamikus tartalom listájának bezárásához válassza ismét a **dinamikus tartalom hozzáadása** lehetőséget.
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Címzett** | Igen | <*címzett\@tartomány*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy** | Igen | Erőforrás frissítése: **Tárgy** | Adja meg az e-mail tárgymezőjének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveg, és válassza ki az esemény **tulajdonos** mező. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. |
-   | **Törzs** | Igen | Erőforrás: **A témakör** <p>Eseménytípus: **Esemény típusa**<p>Eseményazonosító: **Azonosító**<p>Idő: **Esemény időpontja** | Adja meg az e-mail törzsének tartalmát. A jelen oktatóanyag esetében írja be a megadott szöveget, és válassza ki az esemény **témakör**, **eseménytípus**, **azonosító**, és **esemény időpontja** mezőket, hogy a e-mailt az, hogy az aktivált az esemény, eseménytípus, esemény időbélyegzője és a frissítés eseményazonosító erőforrást tartalmaz. Ebben az oktatóanyagban az erőforrás a az eseményindító a kiválasztott Azure-erőforráscsoportot. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
+   | **Címzett** | Igen | <*címzett @ no__t-2domain*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Tárgy** | Igen | `Resource updated:` **Tárgy** | Adja meg az e-mail tárgymezőjének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, majd válassza ki az esemény **Tárgy** mezőjét. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. |
+   | **Törzs** | Igen | @no__t – 0 **témakör** <p>@no__t – 0 **eseménytípus**<p>@no__t – 0 **azonosító**<p>@no__t – 0 **esemény időpontja** | Adja meg az e-mail törzsének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, és válassza ki az esemény **témakörét**, az **esemény típusát**, az **azonosítóját**és az **esemény időpontját** , hogy az e-mail-cím tartalmazza az eseményt elindító erőforrást, az esemény típusát, az esemény időbélyegét és az esemény azonosítóját frissítése. Ebben az oktatóanyagban az erőforrás az a triggerben kiválasztott Azure-erőforráscsoport. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
    ||||
 
    > [!NOTE]
@@ -220,10 +214,9 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    ![Befejezett logikai alkalmazás](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
 
-1. Mentse a logikai alkalmazást. A logikai alkalmazásban lévő egyes műveletek részleteinek összecsukásához és elrejtéséhez kattintson az adott művelet címsorára.
+1. Mentse a logikai alkalmazást. Az egyes műveletek részleteinek összecsukása és elrejtése a logikai alkalmazásban válassza ki a művelet címsorát.
 
-   A logikai alkalmazás most már működőképes, de mielőtt bármit is tenne, vár a virtuális gép változásaira. 
-   A logikai alkalmazás teszteléséhez folytassa a következő szakasszal.
+   A logikai alkalmazás most már működőképes, de mielőtt bármit is tenne, vár a virtuális gép változásaira. A logikai alkalmazás teszteléséhez folytassa a következő szakasszal.
 
 ## <a name="test-your-logic-app-workflow"></a>A logikai alkalmazás munkafolyamatának tesztelése
 
@@ -235,7 +228,7 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    ![A virtuális gép módosításáról tájékoztató e-mail](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
-1. Tekintse át a futtatások és eseményindítási előzményeinek a logikai alkalmazás, a logikai alkalmazás menüjében válassza **áttekintése**. Futtatás részleteinek megtekintéséhez jelölje ki a sorát.
+1. A logikai alkalmazás futtatások és triggerek előzményeinek áttekintéséhez válassza az **Áttekintés**lehetőséget a logikai alkalmazás menüjében. A futtatással kapcsolatos további részletek megtekintéséhez válassza ki a futtatási sort.
 
    ![Logikai alkalmazás futtatási előzményei](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
 
@@ -256,15 +249,15 @@ Más konfigurációváltozásokat is monitorozhat eseményrácsok és logikai al
 
 Ez az oktatóprogram olyan erőforrásokat és műveleteket alkalmaz, amelyek költségekkel terhelik Azure-előfizetését. Ezért miután végzett az oktatóanyaggal és a teszteléssel, mindenképp tiltsa le vagy inaktiválja azokat az erőforrásokat, amelyek költségeit nem szeretné fizetni.
 
-* Ha a munkája törlése nélkül kívánja leállítani a logikai alkalmazást, akkor tiltsa le. A logikai alkalmazás menüjében válassza **áttekintése**. Az eszköztáron válassza a **Letiltás** parancsot.
+* Ha a munkája törlése nélkül kívánja leállítani a logikai alkalmazást, akkor tiltsa le. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az eszköztáron válassza a **Letiltás**lehetőséget.
 
   ![A logikai alkalmazás kikapcsolása](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
   > Ha nem látja a logikai alkalmazás menüjét, próbáljon meg visszatérni az Azure-irányítópultra, és nyissa meg ismét a logikai alkalmazást.
 
-* Véglegesen törli a logikai alkalmazást, a logikai alkalmazás menüjében válassza **áttekintése**. Az eszköztáron válassza a **Törlés** parancsot. Győződjön meg arról, hogy szeretné-e a logikai alkalmazás törlése, és válassza a **törlése**.
+* A logikai alkalmazás végleges törléséhez a logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. Az eszköztáron válassza a **Törlés**lehetőséget. Erősítse meg, hogy törölni kívánja a logikai alkalmazást, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyéni események létrehozása és átirányítása az Event Griddel](../event-grid/custom-event-quickstart.md)

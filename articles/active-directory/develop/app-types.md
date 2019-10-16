@@ -1,6 +1,6 @@
 ---
-title: Az 1.0-s verziójú alkalmazástípusok |} Az Azure
-description: Ismerteti az alkalmazások és az Azure Active Directory v2.0-végpont által támogatott forgatókönyveket.
+title: Az alkalmazások típusai a v 1.0-ban | Azure
+description: Az Azure Active Directory v 2.0 végpont által támogatott alkalmazások és forgatókönyvek típusait ismerteti.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,69 +17,69 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540662"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374065"
 ---
-# <a name="application-types-in-v10"></a>Alkalmazástípusok az 1.0-s verzió
+# <a name="application-types-in-v10"></a>Alkalmazások típusai a v 1.0-ban
 
-Az Active Directory (Azure AD) támogatja a hitelesítés az Azure számos különböző modern alkalmazásarchitektúrához, mindegyiket szabványos protokollok, az OAuth 2.0 vagy OpenID Connect alapján.
+Azure Active Directory (Azure AD) támogatja a különböző modern alkalmazás-architektúrák hitelesítését, mind az iparági szabványnak megfelelő protokollok, OAuth 2,0 vagy OpenID Connect alapján.
 
-A következő ábra szemlélteti a forgatókönyvek és az alkalmazástípusok, és hogyan adhatók hozzá különböző összetevők:
+Az alábbi ábrán a forgatókönyvek és az alkalmazások típusai láthatók, valamint a különböző összetevők hozzáadásának módja:
 
 ![Alkalmazástípusok és forgatókönyvek](./media/authentication-scenarios/application_types_and_scenarios.png)
 
-Az Azure AD által támogatott öt elsődleges alkalmazás-forgatókönyvek a következők:
+Az Azure AD az alábbi öt elsődleges alkalmazási forgatókönyvet támogatja:
 
-- **[Egyoldalas alkalmazás (SPA)](single-page-application.md)** : A felhasználónak kell jelentkezzen be egy egyoldalas alkalmazás Azure AD által védett.
-- **[Webes alkalmazás webböngészőben](web-app.md)** : A felhasználónak kell egy Azure AD által védett webes alkalmazásba való bejelentkezés.
-- **[Webes API a natív alkalmazás](native-app.md)** : Egy natív alkalmazás egy telefonon, táblagépen vagy számítógépen futó kell hitelesíteni a felhasználót, hogy a webes API-k az Azure AD által védett erőforrások beolvasása.
-- **[Webes API-webalkalmazás](web-api.md)** : Egy webalkalmazás kell kapnia az erőforrások az Azure AD által biztonságossá tett webes API.
-- **[Webes API-hoz démon vagy a server application](service-to-service.md)** : A démon alkalmazások vagy kiszolgálói alkalmazás webes felhasználói felület nélkül kell erőforrások lekérése az Azure AD által védett webes API-hoz.
+- **[Egyoldalas alkalmazás (Spa)](single-page-application.md)** : A felhasználónak be kell jelentkeznie egy egyoldalas alkalmazásba, amelyet az Azure ad biztosít.
+- Webböngésző webes **[alkalmazásba](web-app.md)** : a felhasználónak be kell jelentkeznie egy Azure ad által védett webalkalmazásba.
+- **[Natív alkalmazás webes API-](native-app.md)** hoz: a telefonon, táblaszámítógépen vagy számítógépen futó natív alkalmazásnak hitelesítenie kell egy felhasználót az Azure ad által védett webes API erőforrásainak lekéréséhez.
+- **[Webalkalmazás webes API-hoz](web-api.md)** : egy webalkalmazásnak az Azure ad által védett webes API-erőforrásokból kell lekérnie az erőforrásokat.
+- **[Daemon vagy Server Application to web API](service-to-service.md)** : egy webfelhasználói felület nélküli démon-alkalmazás vagy kiszolgálóalkalmazás számára szükséges az Azure ad által védett webes API erőforrásainak lekérése.
 
-Kövesse a hivatkozásokat tudjon meg többet a különböző típusú alkalmazás, és ismerje meg a magas szintű forgatókönyveket, a kód használatának megkezdése előtt. Emellett tudhat meg kell tudni az egy adott alkalmazást, amely az 1.0-s verziójú végpont vagy a v2.0-végpont írásakor különbségekről.
+Kövesse a hivatkozásokat, és ismerkedjen meg az egyes alkalmazási típusokkal, és ismerkedjen meg a magas szintű forgatókönyvekkel a kód használatának megkezdése előtt. Azt is megismerheti, hogy milyen különbségek szükségesek a 1.0-s vagy a v 2.0-s végponttal működő adott alkalmazás írásakor.
 
 > [!NOTE]
-> A v2.0-végpont nem támogatja az összes Azure AD-forgatókönyvek és funkciók. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
+> A v 2.0-végpont nem támogatja az összes Azure AD-forgatókönyvet és-funkciót. Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a 2.0-s [verzióra vonatkozó korlátozásokat](active-directory-v2-limitations.md).
 
-Az alkalmazások és a leírt forgatókönyvek ide használatával a különböző nyelvekhez és platformokhoz is fejleszthet. Ezek vannak mindehhez a szilárd hátteret a kód minták útmutatóban elérhető teljes körű Kódminták: [1.0-s verziójú Kódminták forgatókönyv szerint](sample-v1-code.md) és [2.0-s verziójú Kódminták forgatókönyv szerint](sample-v2-code.md). A közvetlenül a megfelelő is letölteni a mintakódokat [minta GitHub-adattárak](https://github.com/Azure-Samples?q=active-directory).
+Az itt ismertetett alkalmazások és forgatókönyvek az egyes nyelveken és platformokon is kidolgozhatók. Mindegyiket a Code Samples útmutatóban elérhető, a kód mintái: [v 1.0 Code Samples by forgatókönyv](sample-v1-code.md) és a [v 2.0 Code Samples by forgatókönyv szerint](sample-v2-code.md)támogatja. A kód mintáit közvetlenül a megfelelő [GitHub-minta tárházból](https://github.com/Azure-Samples?q=active-directory)is letöltheti.
 
-Emellett, ha az alkalmazásnak egy adott adatrészletet, vagy a szegmens egy végpontok közötti forgatókönyv a legtöbb esetben a funkció is hozzáadhatók egymástól függetlenül. Például ha egy natív alkalmazást, amely meghívja a webes API-k, egyszerűen hozzáadhat egy webalkalmazást, a webes API meghívásához.
+Továbbá, ha az alkalmazásnak egy végpontok közötti forgatókönyv egy adott darabját vagy szegmensét kell használnia, a legtöbb esetben a funkciók egymástól függetlenül is hozzáadhatók. Ha például egy olyan natív alkalmazással rendelkezik, amely webes API-t hív meg, egyszerűen hozzáadhat egy webalkalmazást, amely a webes API-t is meghívja.
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Az Azure AD-1.0-s verziójú végpont használó alkalmazás regisztrálása
+### <a name="registering-an-app-that-uses-the-azure-ad-v10-endpoint"></a>Az Azure AD v 1.0-s végpontot használó alkalmazás regisztrálása
 
-Minden olyan alkalmazás, amely az Azure AD-hitelesítés outsources regisztrálni kell egy könyvtárban. Ennek a lépésnek része az Azure ad-ben mondanunk az alkalmazásról, beleértve az URL-címet, hogy hol található, küldje a választ az URI-t az alkalmazás és más azonosíthatja a hitelesítés után az URL-cím. Ez az információ akkor szükséges, néhány fő okok miatt:
+Minden olyan alkalmazást, amely kiszervezi az Azure AD-hitelesítést, regisztrálni kell egy címtárban. Ez a lépés magában foglalja az alkalmazással kapcsolatos Azure AD-t, beleértve a helyét tartalmazó URL-címet, a hitelesítés utáni válaszokat, az URI-t az alkalmazás azonosítására, és így tovább. Ezek az információk néhány fő okból szükségesek:
 
-* Azure ad-ben kell kommunikálnia a az alkalmazás bejelentkezési vagy cserélő jogkivonatok kezelésekor. Az Azure AD között továbbított információk és az alkalmazás a következőket tartalmazza:
+* Az Azure AD-nak kommunikálnia kell az alkalmazással a bejelentkezés vagy a tokenek cseréje során. Az Azure AD és az alkalmazás között átadott információk a következőket tartalmazzák:
   
-  * **Alkalmazásazonosító URI-ja** -alkalmazás azonosítója. Ez az érték jelzi, hogy melyik alkalmazás a hívó szeretne egy tokent az Azure AD-hitelesítés során zajlik. Ezenkívül ezt az értéket tartalmazza a tokent, hogy az alkalmazás tudja, hogy ez volt a szándékolt cél.
-  * **Válasz URL-cím** és **átirányítási URI-t** – egy webes API-t vagy webes alkalmazás, a válasz-URL az a hely, ahol az Azure AD elküldi a hitelesítési választ, beleértve egy jogkivonatot, ha a hitelesítés sikerült. Natív alkalmazás esetén az átirányítási URI az az egyedi azonosítója, amelyre az Azure AD átirányítja a felhasználói ügynököt az OAuth 2.0-kérelmek.
-  * **Alkalmazásazonosító** -alkalmazáshoz, ha az alkalmazás regisztrálva van az Azure AD által generált az azonosító. Amikor kér az engedélyezési kód vagy a jogkivonatot, az alkalmazás Azonosítóját és kulcsát kapnak az Azure AD-hitelesítés során.
-  * **Kulcs** -együtt küldött egy Alkalmazásazonosítót hitelesítéséhez az Azure AD a webes API-hívás a kulcsot.
-* Az Azure AD meg kell győződnie arról az alkalmazás rendelkezik a szükséges engedélyekkel hozzáférhet a címtár adataihoz, más alkalmazásokat a szervezeten belül, és így tovább.
+  * **Application ID URI** – az alkalmazás azonosítója. Ezt az értéket a rendszer a hitelesítés során elküldi az Azure AD-nek, amely jelzi, hogy a hívó melyik alkalmazáshoz kér tokent. Emellett ez az érték szerepel a jogkivonatban, hogy az alkalmazás tudja, hogy a kívánt cél volt.
+  * **Válasz URL-cím** és **átirányítási URI** – webes API-hoz vagy webalkalmazáshoz a válasz URL-címe az a hely, ahol az Azure ad elküldi a hitelesítési választ, beleértve a tokent, ha a hitelesítés sikeres volt. Natív alkalmazások esetében az átirányítási URI egy egyedi azonosító, amely számára az Azure AD átirányítja a felhasználói ügynököt egy OAuth 2,0-kérelemben.
+  * **Alkalmazás azonosítója** – az alkalmazás azonosítója, amelyet az Azure ad generál az alkalmazás regisztrálásakor. Ha hitelesítési kódot vagy tokent kér, a hitelesítés során az alkalmazás AZONOSÍTÓját és kulcsát a rendszer elküldi az Azure AD-nek.
+  * **Kulcs** – a kulcs, amelyet a rendszer az alkalmazás-azonosítóval együtt továbbít az Azure ad-ben a webes API meghívásához való hitelesítéskor.
+* Az Azure AD-nek biztosítania kell, hogy az alkalmazás rendelkezik a címtáradatok eléréséhez szükséges engedélyekkel, a szervezet más alkalmazásaival és így tovább.
 
-Részletekért megtudhatja, hogyan [alkalmazás regisztrálása](quickstart-register-app.md).
+Részletekért olvassa el az [alkalmazások regisztrálását](quickstart-register-app.md)ismertető témakört.
 
-## <a name="single-tenant-and-multi-tenant-apps"></a>Egybérlős és több-bérlős alkalmazások
+## <a name="single-tenant-and-multi-tenant-apps"></a>Egyetlen bérlős és több-bérlős alkalmazások
 
-Kiépítés válik világosabb, miután megértette, hogy az alkalmazásokat, amelyek az alkalmazáskódok fejlesztésének és Azure AD-vel integrált két kategóriába sorolhatók:
+A kiépítés világossá válik, ha tudomásul veszi, hogy az alkalmazások két kategóriája van, amelyeket az Azure AD-vel lehet fejleszteni és integrálni:
 
-* **Egyetlen bérlő alkalmazás** – egy egybérlős alkalmazást egy szervezeten belüli használatra szolgál. Ezek a általában az üzletági (LoB) alkalmazásokat egy vállalati fejlesztők által írt. Egy egybérlős alkalmazást csak kell a felhasználók egy címtárban lehet elérni, és ennek eredményeképpen csak kell egy címtárban ki kell építeni. Ezek az alkalmazások általában egy fejlesztő a szervezetben vannak regisztrálva.
-* **Több-bérlős alkalmazás** – több-bérlős alkalmazás használatra szánt szervezetekben, nem csak egyetlen szervezet. Ezek a független szoftverszállító (ISV-k) által írt általában-as-szoftverszolgáltatások (SaaS) alkalmazások. Több-bérlős alkalmazásokhoz szükség lesz összes könyvtárban, ahol használni fogják őket, amelyhez szükség van a felhasználó vagy rendszergazda hozzájárulását, regisztrálja őket. A jóváhagyási folyamat akkor kezdődik, amikor egy alkalmazás regisztrálva van a címtárban, és a Graph API vagy akár egy másik webes API-hoz való hozzáféréssel kap. Amikor az alkalmazás regisztrál egy felhasználó vagy egy másik szervezet rendszergazdájának, jelenjenek meg ezek egy párbeszédpanel, amely megjeleníti az alkalmazáshoz szükséges engedélyeket. A felhasználó vagy rendszergazda ezután jóváhagyhatja az alkalmazáshoz, amely az alkalmazás hozzáférést biztosít a megadott adatokat, és végül regisztrálja az alkalmazást a címtárban. További információkért lásd: [a hozzájárulási keretrendszer áttekintése](consent-framework.md).
+* **Egybérlős alkalmazás** – egyetlen bérlői alkalmazás az egyik szervezet számára készült. Ezek általában vállalati fejlesztő által írt üzletági (LoB) alkalmazások. Egyetlen bérlői alkalmazást csak a felhasználóknak kell elérniük egy címtárban, és ennek eredményeképpen csak egy címtárban kell kiépíteni őket. Ezeket az alkalmazásokat általában egy fejlesztő regisztrálja a szervezeten belül.
+* **Több-bérlős alkalmazás** – a több-bérlős alkalmazások számos szervezet számára készültek, nem csupán egyetlen szervezet számára. Ezek jellemzően egy független szoftvergyártó (ISV) által írt, szolgáltatott szoftveres (SaaS) alkalmazások. Több-bérlős alkalmazásokat kell kiépíteni minden olyan címtárban, ahol azokat használni fogják, ami felhasználói vagy rendszergazdai jogosultságot igényel a regisztráláshoz. Ez a engedélyezési folyamat akkor indul el, amikor egy alkalmazás regisztrálva van a címtárban, és hozzáférést kap a Graph APIhoz vagy esetleg egy másik webes API-hoz. Ha egy másik szervezet felhasználói vagy rendszergazdái feliratkozik az alkalmazás használatára, a rendszer egy párbeszédpanelt jelenít meg, amely megjeleníti az alkalmazás által igényelt engedélyeket. A felhasználó vagy a rendszergazda megadhatja az alkalmazásnak, amely hozzáférést biztosít az alkalmazás számára a megadott értékekhez, és végül regisztrálja az alkalmazást a címtárában. További információ: [az engedélyezési keretrendszer áttekintése](consent-framework.md).
 
-### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>További szempontok fejlesztése során egyetlen bérlő vagy a több-bérlős alkalmazások
+### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>További szempontok egyetlen bérlő vagy több-bérlős alkalmazások fejlesztéséhez
 
-Néhány további szempontot helyett egy egybérlős alkalmazást egy több-bérlős alkalmazások fejlesztése során merülnek fel. Például, ha az alkalmazás elérhető a felhasználók számára több címtár, kell meghatározni, melyik bérlőhöz egy olyan mechanizmust is a. Egy egybérlős alkalmazást kell csak egy felhasználó a saját címtárban keresse meg, amíg egy több-bérlős alkalmazást az Azure ad-ben egy adott felhasználó összes címtárakban azonosítania kell. Ennek a feladatnak, az Azure AD biztosít egy közös hitelesítési végpont, ahol minden olyan több-bérlős alkalmazás irányíthatók a bejelentkezési kérelmek, a bérlő-specifikus végpont helyett. Ez a végpont https://login.microsoftonline.com/common az Azure AD-ben minden címtár esetében, mivel lehet, hogy egy bérlő-specifikus végpont https://login.microsoftonline.com/contoso.onmicrosoft.com. A közös végpontot különösen fontos figyelembe venni, amikor az alkalmazás fejlesztése, mert a bejelentkezési, kijelentkezési, és a jogkivonat érvényesítése során több bérlő kezeléséhez szükséges logikát kell.
+További szempontokat is figyelembe kell venni, amikor több-bérlős alkalmazást fejlesztenek egyetlen bérlős alkalmazás helyett. Ha például az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn van. Egyetlen bérlői alkalmazásnak csak a saját címtárában kell megkeresnie egy felhasználó számára, míg a több-bérlős alkalmazásnak egy adott felhasználót kell azonosítania az Azure AD összes könyvtárából. A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, ahol a több-bérlős alkalmazások a bérlői végpontok helyett a bejelentkezési kéréseket is megadhatják. Ez a végpont @no__t – 0 az Azure AD összes könyvtárához, míg a bérlői specifikus végpontok lehetnek https://login.microsoftonline.com/contoso.onmicrosoft.com. A közös végpontot különösen fontos figyelembe venni az alkalmazás fejlesztésekor, mert a bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára van szükség.
 
-Ha éppen fejleszt egy egybérlős alkalmazást, de győződjön meg a rendelkezésre álló számos szervezet hasonló, egyszerűen módosításokat végezheti el az alkalmazást és annak konfigurációját az Azure ad-ben, hogy több-bérlős képes. Emellett az Azure AD használja az ugyanazon aláírókulcsot összes jogkivonat található összes, hogy meg van adva egy egybérlős vagy több-bérlős alkalmazásban hitelesítést.
+Ha jelenleg egy bérlői alkalmazást fejleszt, de számos szervezet számára elérhetővé szeretné tenni azt, egyszerűen módosíthatja az alkalmazást és annak konfigurációját az Azure AD-ben, hogy az informatikai részleg képes legyen a több-bérlős működésre. Emellett az Azure AD ugyanazt az aláíró kulcsot használja az összes címtárban található összes tokenhez, függetlenül attól, hogy egyetlen bérlő vagy több-bérlős alkalmazásban biztosít hitelesítést.
 
-A jelen dokumentumban szereplő minden egyes forgatókönyv egy alszakasz, amely leírja annak üzembe helyezési követelményeket tartalmazza. Részletesebb információ a kiépítése az alkalmazások az Azure AD és a egy vagy több-bérlős alkalmazások közötti különbségekről: [alkalmazások integrálása az Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) további információt. Az Azure ad-ben a gyakori alkalmazási helyzet megértéséhez olvassa tovább.
+A dokumentumban felsorolt minden forgatókönyv tartalmaz egy alszakaszt, amely leírja a létesítési követelményeit. Az alkalmazások Azure AD-ben való kiépítésével és az önálló és több-bérlős alkalmazások közötti különbségekkel kapcsolatos további információkért lásd: [alkalmazások integrálása a Azure Active Directoryval](quickstart-v1-integrate-apps-with-azure-ad.md) további információ. Folytassa az olvasást a gyakori alkalmazási forgatókönyvek megismeréséhez az Azure AD-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További tudnivalók a más Azure ad-ben [hitelesítés alapjai](authentication-scenarios.md)
+- További információ az Azure AD- [alapú hitelesítés egyéb alapjairól](v1-authentication-scenarios.md)

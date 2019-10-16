@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5799974581ba74d3265f0a5a66f9b081ded9f800
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 2939e37c891a6ecc0421062493cab2e5d79223b5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948205"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330905"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Az adatmegőrzés ismertetése Azure Time Series Insights
 
@@ -28,32 +28,31 @@ Ez a cikk két olyan beállítást ismertet, amelyek hatással vannak az adatok 
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Az Azure idősorozat-környezetek mindegyike egy olyan beállítással rendelkezik, amely az **adatok megőrzési idejét**vezérli. Az érték 1 – 400 nap. Az adatok törlődnek a környezet tárolási kapacitása vagy a megőrzési időtartam alapján, attól függően, hogy melyik következik be először.
+Az Azure Time Series Insights környezetek mindegyike rendelkezik egy olyan beállítással, amely az **adatok megőrzési idejét**vezérli. Az érték 1 – 400 nap. Az adatok törlődnek a környezet tárolási kapacitása vagy a megőrzési időtartam alapján, attól függően, hogy melyik következik be először.
 
-Emellett az Azure idősorozat-környezete **túllépte a tárolási korlátot** . A bejövő és a kiürítési viselkedést vezérli, ha elérik a környezetek maximális kapacitását. A konfigurálása során két viselkedés közül választhat:
+Emellett a Azure Time Series Insights-környezet **tárolási korlátja túllépte a működési** beállítást. A bejövő és a kiürítési viselkedést vezérli, ha elérik a környezetek maximális kapacitását. A konfigurálása során két viselkedés közül választhat:
 
 - **Régi adattörlés** (alapértelmezett)  
 - **Bejövő forgalom szüneteltetése**
 
 > [!NOTE]
 > Új környezet létrehozásakor alapértelmezés szerint a megőrzés a **régi adatok törlésére**van konfigurálva. Ez a beállítás a Time Series Insights-környezet **configure (Konfigurálás** ) lapjának a Azure Portal használatával történő létrehozása után igény szerint állítható be.
+> * Az adatmegőrzési szabályzatok konfigurálásával kapcsolatos információkért olvassa el a [Time Series Insights megőrzésének konfigurálása](time-series-insights-how-to-configure-retention.md)című témakört.
 
-A megőrzési viselkedés váltásával kapcsolatos információkért tekintse át [az adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
+Az adatmegőrzési szabályzatokat az alábbiakban részletesebben ismertetjük.
 
-Az adatmegőrzési viselkedés összehasonlítása:
+## <a name="purge-old-data"></a>Régi adattörlés
 
-## <a name="purge-old-data"></a>Régi adatok végleges törlése
-
-- Ez a viselkedés Time Series Insights környezetek alapértelmezett viselkedése.  
-- Ez a viselkedés akkor javasolt, ha a felhasználók mindig látják a legutóbbi adatTime Series Insights-környezetben lévő összes *információt* .
-- Ez a viselkedés *kiüríti* az adatmennyiséget, ha a környezet korlátait (a megőrzési időt, a méretet vagy a darabszámot) eléri. Alapértelmezés szerint a megőrzés értéke 30 nap.
-- A legrégebbi betöltött adatot a rendszer először megtisztítja (FIFO-megközelítés).
+- Azure Time Series Insights környezetek esetében az alapértelmezett beállítás a **régi értékek törlése** .  
+- A **régi adattörlést** akkor érdemes használni, ha a felhasználók mindig megtekinthetik a legutóbbi adatTime Series Insights-környezetben lévő összes *információt* .
+- A **régi adattörlési** beállítás *kiüríti* az adatmennyiséget, ha a környezet korlátait (a megőrzési időt, a méretet vagy a darabszámot) eléri. Alapértelmezés szerint a megőrzés értéke 30 nap.
+- A legrégebbi betöltött adatot a rendszer először kiüríti (a "először az elsőben" megközelítést).
 
 ### <a name="example-one"></a>Példa egy
 
 Vegye figyelembe, hogy az adatmegőrzési viselkedést biztosító környezet **továbbra is beáramlik és törli a régi adatokból**:
 
-Az **adatok megőrzési ideje** 400 napra van állítva. A **kapacitás** értéke S1 egység, amely 30 GB teljes kapacitást tartalmaz.   Tegyük fel, hogy a bejövő adat átlagosan 500 MB-ra halmozódik. Ez a környezet a bejövő adatmennyiség miatt csak 60 napos adatot tud megőrizni, mivel a maximális kapacitás 60 nap. A bejövő adatmennyiség a következőképpen halmozódik: 500 MB minden nap x 60 nap = 30 GB.
+Az **adatok megőrzési ideje** 400 napra van állítva. A **kapacitás** értéke S1 egység, amely 30 GB teljes kapacitást tartalmaz. Tegyük fel, hogy a bejövő adat átlagosan 500 MB-ra halmozódik. Ez a környezet a bejövő adatmennyiség miatt csak 60 napos adatot tud megőrizni, mivel a maximális kapacitás 60 nap. A bejövő adat a következőképpen halmozódik: 500 MB minden nap x 60 nap = 30 GB.
 
 A 61st napján a környezet a legfrissebb adatforrásokat jeleníti meg, de a legrégebbi, 60 napnál régebbi adat kiürítését. A kiürítés lehetővé teszi az új adatfolyam-továbbítást a alkalmazásban, így továbbra is megvizsgálhatja az új adatátvitelt. Ha a felhasználó továbbra is meg szeretné őrizni az adatmennyiséget, a további egységek hozzáadásával növelheti a környezet méretét, vagy kevesebb adat leküldését teszi lehetővé.  
 
@@ -66,7 +65,7 @@ Ha a környezet napi beléptetési aránya meghaladja a napi 0,166 GB-ot, az ada
 ## <a name="pause-ingress"></a>Bejövő forgalom szüneteltetése
 
 - A **Bejövő forgalom felfüggesztése** beállítás úgy van kialakítva, hogy az adatok ne legyenek kiürítve, ha a méret és a szám a megőrzési időtartam előtt eléri a korlátot.  
-- A **felfüggesztések szüneteltetése** további időt biztosít a felhasználók számára, hogy a megőrzési idő megszegése miatt megnövelje a környezete kapacitását, mielőtt az adatok törlődnek.
+- A **felfüggesztett behatolások** további időt biztosítanak a felhasználók számára a környezet kapacitásának növelésére, mielőtt az adatok megmaradnak a megőrzési idő megszegése miatt.
 - Segít az adatvesztés elleni védelemben, de létrehozhat egy lehetőséget a legutóbbi adatok elvesztésére, ha a bejövő forgalom szünetel az eseményforrás megőrzési időtartamán túl.
 - A környezet maximális kapacitásának elérésekor azonban a környezet szünetelteti az adatbevitelt, amíg a következő további műveletek nem történnek:
 
@@ -93,8 +92,10 @@ Az érintett Event Hubsban érdemes lehet módosítani az üzenet- **megőrzési
 
 Ha az eseményforrás egyik tulajdonsága sincs konfigurálva (`timeStampPropertyName`), a Time Series Insights az Event hub-ban az X tengelyként való megérkezés időbélyegét állítja be. Ha a `timeStampPropertyName` úgy van beállítva, hogy valami másra legyen konfigurálva, a környezet a beállított `timeStampPropertyName` értéket keresi az adatcsomagban az események elemzésekor.
 
-Ha a környezetet úgy kell méretezni, hogy a további kapacitást is kielégítse, vagy növelje a megőrzési időt, tekintse meg a [Time Series Insights környezet skálázását](time-series-insights-how-to-scale-your-environment.md) ismertető témakört.  
+Olvassa el, [Hogyan méretezheti Time Series Insights-környezetét](time-series-insights-how-to-scale-your-environment.md) úgy, hogy a környezetét a további kapacitásra vagy a megőrzési időtartamra növelje.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatmegőrzési beállítások konfigurálásával és módosításával kapcsolatos információkért tekintse át [az adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
+
+- Ismerje meg a [Azure Time Series Insights késésének csökkentését](time-series-insights-environment-mitigate-latency.md).

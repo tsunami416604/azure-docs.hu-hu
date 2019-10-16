@@ -1,21 +1,21 @@
 ---
-title: Az Azure Blockchain Workbench előzetes verziójának használata REST API
+title: Az Azure Blockchain Workbench REST API-jának használata
 description: Az Azure Blockchain Workbench előzetes verziójának használatának forgatókönyvei REST API
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 412b78363be70918969734cd8890a8ee940df431
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843808"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328858"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Az Azure Blockchain Workbench előzetes verziójának használata REST API
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 Ha a felhasználó úgy dönt, hogy részletesen belevetik a szerződést, a blockchain-ügyfél ezután megjelenítheti az elérhető felhasználói műveleteket a szerződés állapota alapján. Ebben a példában a felhasználó megtekinti egy frissen létrehozott intelligens szerződés összes elérhető műveletét:
 
-* Módosítása Lehetővé teszi, hogy a felhasználó módosítsa egy eszköz leírását és árát.
-* Felmondhatja Lehetővé teszi a felhasználó számára az eszköz szerződésének befejezését.
+* Módosítás: A felhasználó módosíthatja egy objektum leírását és árát.
+* Megszakítás: lehetővé teszi a felhasználó számára az eszköz szerződésének befejezését.
 
 Használja a [Contract Action GET API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
 
@@ -277,8 +277,8 @@ Content-type: application/json
 
 A felhasználó ezután eldöntheti, hogy milyen műveletet kíván végezni az adott intelligensszerződés-példányon. Ebben az esetben vegye figyelembe azt a forgatókönyvet, amelyben a felhasználó módosítani szeretné egy eszköz leírását és árát a következő művelethez:
 
-* Leírás: "Frissített autó"
-* Ár: 54321
+* Leírás: „Az én frissített autóm”
+* Ár: 543210
 
 Használja a [Contract Action POST API-t](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):
 
@@ -307,7 +307,7 @@ HTTP/1.1 200 OK
 Content-type: application/json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure Blockchain Workbench REST API leírása](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)

@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178096"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331109"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Hálózati leképezés és IP-címzés beállítása a virtuális hálózatok
 
@@ -76,8 +76,7 @@ A célként megadott virtuális gépen található egyes hálózati adapterek IP
 **Forrás és cél alhálózatok** | **Részletek**
 --- | ---
 Azonos címtartomány | A forrásként szolgáló virtuális gép hálózati adapterének IP-címe a célként megadott virtuálisgép-hálózati adapter IP-címe.<br/><br/> Ha a cím nem érhető el, a következő elérhető IP-cím célként van beállítva.
-
-Eltérő címterület<br/><br/> A célként megadott alhálózat következő elérhető IP-címe a célként megadott virtuálisgép-NIC-címnek van beállítva.
+Eltérő címterület | A célként megadott alhálózat következő elérhető IP-címe a célként megadott virtuálisgép-NIC-címnek van beállítva.
 
 
 
@@ -85,8 +84,8 @@ Eltérő címterület<br/><br/> A célként megadott alhálózat következő el�
 
 **Célként megadott hálózat** | **Részletek**
 --- | ---
-A célként megadott hálózat a feladatátvételi VNet | – A célként megadott IP-cím statikus, de nem ugyanaz az IP-cím, mint a feladatátvétel számára fenntartva.<br/><br/>  – A hozzárendelt címek az alhálózat tartományának végéről következő elérhető címek.<br/><br/> Például: Ha a forrás IP-címe 10.0.0.19, és a feladatátvételi hálózat a 10.0.0.0/24 tartományt használja, akkor a célként megadott virtuális géphez hozzárendelt következő IP-cím 10.0.0.254.
-A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz a feladatátvételhez fenntartott IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Például: Ha a forrás statikus IP-címe 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
+A célként megadott hálózat a feladatátvételi VNet | – A cél IP-cím statikus lesz ugyanazzal az IP-címmel. <br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő. Például: Ha a forrás IP-címe 10.0.0.19, és a feladatátvételi hálózat a 10.0.0.0/24 tartományt használja, akkor a célként megadott virtuális géphez hozzárendelt következő IP-cím 10.0.0.254.
+A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz ugyanazzal az IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Például: Ha a forrás statikus IP-címe 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
 
 - A feladatátvételi VNet a katasztrófa-helyreállítás beállításakor kiválasztott célként megadott hálózat.
 - Javasoljuk, hogy mindig használjon nem éles hálózatot a feladatátvételi teszthez.

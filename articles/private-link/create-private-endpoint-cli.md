@@ -7,21 +7,21 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219368"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376312"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gépeket egy virtuális hálózaton, egy SQL Database-kiszolgálót az Azure CLI használatával. Ezután elérheti a virtuális gépet, és biztonságosan hozzáférhet a privát kapcsolati erőforráshoz (ebben a példában egy privát Azure SQL Database-kiszolgáló). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verziójának megkereséséhez `az --version`futtassa a parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a `az --version` parancsot. További információ: az [Azure CLI telepítése](/cli/azure/install-azure-cli) a telepítéshez vagy a frissítéshez.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot a Virtual Network üzemeltetéséhez. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Ez a példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *westcentralus* helyen:
 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>Alhálózat magánhálózati végponti házirendjeinek letiltása 
-Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok hálózati házirendjeinek letiltásához. Frissítse a * mySubnet * * nevű alhálózati konfigurációt az [az Network vnet subnet Update paranccsal](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Az Azure üzembe helyezi az erőforrásokat egy virtuális hálózaton belüli alhálózaton, ezért létre kell hoznia vagy frissítenie kell az alhálózatot a magánhálózati végpontok hálózati házirendjeinek letiltásához. Frissítsen egy *mySubnet* with [az Network vnet subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)nevű alhálózati konfigurációt:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -81,7 +81,7 @@ az sql db create \
     --capacity 1 
 ```
 
-Vegye figyelembe, hogy a SQL Server azonosítója ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/myserver.``` hasonló ahhoz, hogy a következő lépésben a SQL Server azonosítót fogja használni. 
+Vegye figyelembe, hogy a SQL Server-azonosító a @ no__t-0 értékhez hasonlóan a SQL Server azonosítót fogja használni a következő lépésben. 
 
 ## <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása 
 Hozzon létre egy privát végpontot a Virtual Network SQL Database-kiszolgálóhoz: 
@@ -127,7 +127,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza ki **RDP-fájl letöltése**. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a letöltött. rdp fájlt.
 
@@ -136,7 +136,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget**kell választania @no__t **-1.**
 
 1. Kattintson az **OK** gombra.
 
@@ -149,7 +149,7 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 Ebben a szakaszban a virtuális gépről a magánhálózati végpont használatával fog csatlakozni a SQL Database-kiszolgálóhoz.
 
  1. A *myVM*távoli asztal nyissa meg a PowerShellt.
- 2. Adja meg az  nslookup MyServer.database.Windows.net, amely a következőhöz hasonló üzenetet kap: 
+ 2. Adja meg az nslookup MyServer. database. Windows. net @ no__t-0 a következőhöz hasonló üzenetet fog kapni: 
 
 ```
       Server:  UnKnown 
@@ -160,10 +160,10 @@ Ebben a szakaszban a virtuális gépről a magánhálózati végpont használat�
       Aliases:  myserver.database.windows.net 
 ```
  3. SQL Server Management Studio telepítése 
- 4. A Kapcsolódás a kiszolgálóhoz lapon adja meg vagy válassza ki az alábbi adatokat: Kiszolgáló típusa: Válassza az adatbázismotor lehetőséget.
- Kiszolgáló neve: Myserver.database.windows.net Felhasználónév kiválasztása: Adja meg a létrehozás során megadott felhasználónevet.
- Jelszó Adja meg a létrehozás során megadott jelszót.
- Jelszó megjegyzése: Válassza az Igen lehetőséget.
+ 4. A Kapcsolódás a kiszolgálóhoz mezőben adja meg vagy válassza ki ezt az információt: kiszolgáló típusa: adatbázismotor kiválasztása.
+ Kiszolgáló neve: válassza ki a myserver.database.windows.net Felhasználónév: adjon meg egy, a létrehozás során megadott felhasználónevet.
+ Password (jelszó): adja meg a létrehozás során megadott jelszót.
+ Jelszó megjegyzése: válassza az Igen lehetőséget.
  
  5. Válassza a **kapcsolat**lehetőséget.
  6. A bal oldali menüben lévő **adatbázisok** tallózása.
@@ -177,6 +177,6 @@ Ha már nincs rá szükség, az az Group delete paranccsal eltávolíthatja az e
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private linkről](private-link-overview.md)
  

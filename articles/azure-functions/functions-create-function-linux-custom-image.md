@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950392"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329580"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
@@ -195,12 +195,12 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-A létrehozott HTTP-trigger függvényhez egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) szükséges a végpont meghívásakor. Jelenleg a legegyszerűbb módszer a függvény URL-címének lekérésére, a kulcsot is beleértve, a [Azure Portal]. 
+A létrehozott HTTP-trigger függvényhez egy [funkcióbillentyű](functions-bindings-http-webhook.md#authorization-keys) szükséges a végpont meghívásakor. Jelenleg a legegyszerűbb módszer a függvény URL-címének lekérésére, a kulcsot is beleértve, a [Azure Portalra]. 
 
 > [!TIP]
 > A funkcióbillentyűk a [Kulcskezelő API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)-k segítségével is beszerezhetők, amelyekhez [tulajdonosi jogkivonatot](/cli/azure/account#az-account-get-access-token)kell bemutatnia a hitelesítéshez.
 
-Keresse meg az új Function alkalmazást a [Azure Portal] írja be a Function alkalmazás nevét a lap tetején található **keresőmezőbe** , és válassza ki a **app Service** erőforrást.
+Keresse meg az új Function alkalmazást a [Azure Portalra] írja be a Function alkalmazás nevét a lap tetején található **keresőmezőbe** , és válassza ki a **app Service** erőforrást.
 
 Válassza ki a **MyHttpTrigger** függvényt, válassza a **</> a függvény URL-címének beolvasása** > **alapértelmezett (Function Key)**  > **Másolás**elemet.
 
@@ -365,17 +365,13 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 A függvény elindításához ugyanazt az URL-címet használja, mint a böngészőben. Ugyanezt a választ kell látnia. Ezúttal azonban a `name` paraméternek átadott karakterlánc a `outqueue` tárolási várólistába íródik.
 
-### <a name="set-the-storage-account-connection"></a>A Storage-fiók kapcsolatainak beállítása
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>A tárolási várólista lekérdezése
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen telepítette az egyéni tárolót egy Azure-beli Function-alkalmazásba, érdemes megfontolnia a következő témaköröket:
 
@@ -383,4 +379,4 @@ Most, hogy sikeresen telepítette az egyéni tárolót egy Azure-beli Function-a
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)
 + [Kubernetes-alapú kiszolgáló nélküli üzemeltetés](functions-kubernetes-keda.md)
 
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

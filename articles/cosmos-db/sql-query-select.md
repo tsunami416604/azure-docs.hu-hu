@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003512"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326791"
 ---
-# <a name="select-clause"></a>SELECT záradék
+# <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék Azure Cosmos DB
 
 Minden lekérdezés egy SELECT záradékból, valamint opcionális és [Where](sql-query-where.md) záradékokból áll, és az ANSI SQL-szabványok [alapján](sql-query-from.md) . A FROM záradékban lévő forrás jellemzően enumerálásra kerül, és a WHERE záradék egy szűrőt alkalmaz a forráson a JSON-elemek egy részhalmazának lekéréséhez. A SELECT záradék ezt követően a kért JSON-értékeket a kiválasztási listában adja meg.
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Tulajdonságok vagy ki kell választania a az eredményhalmaz érték.  
+  Az eredményhalmaz számára kijelölhető tulajdonságok vagy értékek.  
   
 - `'*'`  
 
-  Itt adhatja meg, hogy az érték legyen beolvasva módosítása nélkül. Kifejezetten a feldolgozott értéke egy objektumot, ha a rendszer lekéri az összes tulajdonság.  
+  Megadja, hogy az értéket a módosítások végrehajtása nélkül kell beolvasni. Különösen, ha a feldolgozott érték egy objektum, az összes tulajdonságot lekéri a rendszer.  
   
 - `<object_property_list>`  
   
-  Meghatározza a lekérdezni kívánt tulajdonságok listája. Minden egyes visszaküldött érték a megadott tulajdonságokkal rendelkező objektum lesz.  
+  Meghatározza a lekérdezni kívánt tulajdonságok listáját. Minden visszaadott érték egy objektum lesz, amely a megadott tulajdonságokkal rendelkezik.  
   
 - `VALUE`  
 
-  Itt adhatja meg, hogy a JSON értéke legyen beolvasva a teljes JSON-objektum helyett. Ezzel ellentétben `<property_list>` nem wrap funkciót az előre jelzett érték egy objektumot.  
+  Megadja, hogy a JSON-értéket a teljes JSON-objektum helyett le kell olvasni. Ez a `<property_list>` értékkel ellentétben a kijelzett értéket nem zárja be egy objektumban.  
  
 - `DISTINCT`
   
@@ -56,29 +56,29 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  A kifejezés a következő időpontban számítja értéket jelölő. Lásd: [skaláris kifejezések](sql-query-scalar-expressions.md) című szakasz részletezi.  
+  A kiszámítani kívánt értéket jelölő kifejezés. Részletekért lásd a [skaláris kifejezések](sql-query-scalar-expressions.md) szakaszt.  
 
 ## <a name="remarks"></a>Megjegyzések
 
-A `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban van deklarálva pontosan egy aliast. `SELECT *` Itt egy identitás leképezése, amely lehet hasznos, ha nincs leképezés van szükség. Válassza ki * csak akkor érvényes, ha a FROM záradék van megadva, és csak egyetlen bemeneti forrás bevezetni.  
+A `SELECT *` szintaxis csak akkor érvényes, ha a FROM záradékban pontosan egy alias van deklarálva. a `SELECT *` egy identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség leképezésre. A SELECT * utasítás csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást mutat be.  
   
-Mindkét `SELECT <select_list>` és `SELECT *` "szintaktikai cukor", és azt is megteheti egyszerű SELECT utasítás használatával, ahogy az alábbi jelöl.  
+Mind a `SELECT <select_list>`, mind a `SELECT *` a "szintaktikai cukor", és az alábbiakban látható egyszerű SELECT utasításokkal is megadható.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   a következő azonos:  
+   egyenértékű a következővel:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   a következő azonos:  
+   egyenértékű a következővel:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Példák
 
-A következő Select lekérdezési példa `address` azt adja `id` vissza `AndersenFamily`, hogy mely egyezések közül `Families` választhat:
+A következő SELECT lekérdezési példa a `address` értéket adja vissza `Families` közül, amelynek `id` értéke `AndersenFamily`:
 
 ```sql
     SELECT f.address
@@ -99,7 +99,7 @@ Az eredmények a következők:
 ```
 
 ### <a name="quoted-property-accessor"></a>Idézett tulajdonság-hozzáférés
-A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti el. Ha például `SELECT c.grade` és `SELECT c["grade"]` egyenértékűek. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
+A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti el. Például a `SELECT c.grade` és a `SELECT c["grade"]` egyenértékű. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ A tulajdonságokat az idézett tulajdonság operátor [] használatával érheti
 
 ### <a name="nested-properties"></a>Beágyazott tulajdonságok
 
-A következő példa két beágyazott tulajdonságot `f.address.state` és. `f.address.city`
+Az alábbi példa két beágyazott tulajdonságot, `f.address.state` és `f.address.city`.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Az eredmények a következők:
     }]
 ```
 
-Az előző példában a SELECT záradéknak létre kell hoznia egy JSON-objektumot, és mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentum változó nevét `$1`használja. A következő lekérdezés két implicit argumentum változót ad `$1` vissza `$2`: és.
+Az előző példában a SELECT záradéknak létre kell hoznia egy JSON-objektumot, és mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentum változó nevét használja `$1`. A következő lekérdezés két implicit argumentum változót ad vissza: `$1` és `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -170,8 +170,8 @@ Az eredmények a következők:
     }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
-- [Azure Cosmos DB .NET-minták](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Első lépések](sql-query-getting-started.md)
+- [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [WHERE záradék](sql-query-where.md)

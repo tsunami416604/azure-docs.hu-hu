@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687080"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376166"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -21,7 +21,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre virtuális gép
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforrások létrehozása előtt létre kell hoznia egy erőforráscsoportot, amely a Virtual Network és a privát végpontot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)tárolja. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *WestUS* helyen:
 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Alhálózat hozzáadása
 
-Az Azure egy Virtual Networkon belüli alhálózatra helyezi az erőforrásokat, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *mySubnet* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)paranccsal. A következő példa létrehoz egy *mySubnet* nevű alhálózatot a privát végpont hálózati házirendjének jelzővel, amely **le van tiltva**.
+Az Azure egy Virtual Networkon belüli alhálózatra helyezi az erőforrásokat, ezért létre kell hoznia egy alhálózatot. Hozzon létre egy *mySubnet* nevű alhálózati konfigurációt az [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)paranccsal. A következő példa létrehoz egy *mySubnet* nevű alhálózatot a privát végpont hálózati házirendjének jelzővel, amely **le van tiltva**.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -85,7 +85,7 @@ New-AzVm `
     -AsJob  
 ```
 
-A `-AsJob` beállítás a háttérben hozza létre a virtuális gépet. Folytassa a következő lépéssel.
+A `-AsJob` lehetőség a virtuális gépet a háttérben hozza létre. Folytassa a következő lépéssel.
 
 Amikor az Azure a háttérben elkezdi létrehozni a virtuális gépet, a következőhöz hasonló lesz:
 
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
-A [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) használatával visszaállíthatja egy virtuális gép nyilvános IP-címét. Ez a példa a *myVM* virtuális gép nyilvános IP-címét adja vissza:
+Használja a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) TO a virtuális gép nyilvános IP-címét. Ez a példa a *myVM* virtuális gép nyilvános IP-címét adja vissza:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -175,7 +175,7 @@ Get-AzPublicIpAddress `
   -ResourceGroupName myResourceGroup `
   | Select IpAddress 
 ```  
-Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje <publicIpAddress>le az elemet az utolsó lépésből visszaadott nyilvános IP-címhez: 
+Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancsot. Cserélje le a @ no__t-0 @ no__t-1with az utolsó lépésből visszaadott nyilvános IP-címet: 
 
 
 > [!NOTE]
@@ -184,18 +184,18 @@ Nyisson meg egy parancssort a helyi számítógépen. Futtassa az mstsc parancso
 mstsc /v:<publicIpAddress>
 ```
 
-1. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget. 
+1. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. 
 2. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
   > [!NOTE]
   > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell kiválasztania > eltérő fiókot használjon. 
   
-3. Kattintson **az OK gombra**. 
-4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
+3. Kattintson az **OK** gombra. 
+4. A tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha így tesz, válassza az **Igen** vagy a **Folytatás**lehetőséget. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
 
 1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Adja `nslookup myserver.database.windows.net`meg a értéket. 
+2. Adja meg a @ no__t-0 értéket. 
 
     Ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
@@ -207,14 +207,14 @@ mstsc /v:<publicIpAddress>
     Aliases:   myserver.database.windows.net
     ```
 3. SQL Server Management Studio telepítése
-4. A Kapcsolódás a kiszolgálóhoz lapon adja meg vagy válassza ki az alábbi adatokat: Érték-kiszolgáló típusának beállítása válassza az adatbázismotor lehetőséget.
+4. A Kapcsolódás a kiszolgálóhoz lapon adja meg vagy válassza ki ezt az információt: érték-kiszolgáló típusának beállítása adatbázismotor.
       Kiszolgáló neve válassza a myserver.database.windows.net felhasználónevet, adja meg a létrehozás során megadott felhasználónevet.
       A jelszó mezőbe írja be a létrehozás során megadott jelszót.
       Jelszó megjegyzése: válassza az Igen lehetőséget.
 5. Válassza a kapcsolat lehetőséget.
 6. A bal oldali menüben lévő adatbázisok tallózása. 
 7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase
-8. A távoli asztali kapcsolat bezárásával *myVM*. 
+8. A távoli asztali kapcsolat bezárásával *myVM*. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a privát végponttal, SQL Database-kiszolgálóval és a virtuális géppel, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával távolítsa el az erőforráscsoportot és az összes erőforrást:
@@ -223,5 +223,5 @@ Ha végzett a privát végponttal, SQL Database-kiszolgálóval és a virtuális
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Azure Private linkről](private-link-overview.md)

@@ -1,136 +1,136 @@
 ---
-title: Egy helyszíni helyhez az Azure virtuális gépek ismételt védelme a során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása |} A Microsoft Docs
-description: Miután a feladatátvétel során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása az Azure-bA megtudhatja, hogyan meghiúsul az Azure-ból a helyszíni helyre.
+title: A VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítása során az Azure-ból a helyszíni helyre irányuló virtuális gépek újravédése | Microsoft Docs
+description: A VMware virtuális gépek és fizikai kiszolgálók vész-helyreállítását követően az Azure-ba történő feladatátvétel után megtudhatja, hogyan térhet vissza az Azure-ból a helyszíni helyre.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 3/12/2019
+ms.date: 10/14/2019
 ms.author: mayg
-ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f6f865f019b8b2a403865db4e59a7e86f59e509
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482931"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331063"
 ---
-# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően
+# <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Gépek ismételt védetté és visszavétele a helyszíni helyre az Azure-ba történő feladatátvétel után
 
-Miután [feladatátvételi](site-recovery-failover.md) a helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba, a sikertelen első lépése az a helyszíni hely, hogy a feladatátvétel során létrehozott Azure virtuális gépek ismételt védelme. Ez a cikk azt ismerteti, hogyan teheti ezt. 
+A helyszíni VMware virtuális gépek vagy fizikai kiszolgálók Azure-ba történő [feladatátvétele](site-recovery-failover.md) után az első lépés a helyszíni helyre történő visszaállításának első lépése a feladatátvétel során létrehozott Azure-beli virtuális gépek ismételt védelemmel való ellátása. Ez a cikk azt ismerteti, hogyan teheti ezt meg. 
 
-Röviden tekintse meg a következő videó bemutatja, hogyan a feladatátvételt az Azure-ból a helyszíni helyre.<br /><br />
+A gyors áttekintésért tekintse meg az alábbi videót, amely bemutatja, hogyan végezheti el a feladatátvételt az Azure-ból egy helyszíni helyre.<br /><br />
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video5-Failback-from-Azure-to-On-premises/player]
 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Ha egy sablont a virtuális gépek létrehozásakor, győződjön meg arról, hogy minden virtuális gép rendelkezik-e a saját UUID azonosító, a lemezek. Ha a helyszíni virtuális gép UUID ütközik a fő célkiszolgáló UUID, mert mindkettő egy sablon alapján létrehozott, az ismételt védelem sikertelen lesz. Helyezze üzembe, amely nem az azonos sablon alapján létrehozott egy másik fő célkiszolgálót. Tekintse meg az alábbi információkat:
-- Ha a feladat-visszavételhez egy másik vCenter, ügyeljen arra, hogy az új vCenter és a fő célkiszolgáló felderítése történik meg. Egy tipikus tünete, hogy állomásához nem érhetők el, vagy nem láthatók a a **ismételt védelme** párbeszédpanel bezárásához.
-- Replikálja a helyszíni, a feladat-visszavételi szabályzatra van szükség. Ez a szabályzat automatikusan létrejön, amikor létrehoz egy előre szabályzatot. Tekintse meg az alábbi információkat:
-    - Ez a szabályzat automatikus létrehozása során a konfigurációs kiszolgáló társítva.
+Ha sablont használt a virtuális gépek létrehozásához, győződjön meg arról, hogy minden virtuális gép saját UUID-t használ a lemezekhez. Ha a helyszíni virtuális gép UUID-je a fő célként megadott UUID-val ütközne, mert mindkettő ugyanabból a sablonból lett létrehozva, az ismételt védelem sikertelen lesz. Helyezzen üzembe egy másik fő célt, amely nem ugyanabból a sablonból lett létrehozva. Tekintse meg az alábbi információkat:
+- Ha egy másik vCenter kísérli meg a feladatátvételt, győződjön meg arról, hogy az új vCenter és a fő célkiszolgáló fel van derítve. A tipikus tünet az, hogy az adattárolók nem érhetők el, vagy nem láthatók az ismételt **védelem** párbeszédpanelen.
+- A helyszíni környezetbe való replikáláshoz feladat-visszavételi szabályzatra van szükség. Ez a szabályzat automatikusan létrejön a továbbítási irány házirendjének létrehozásakor. Tekintse meg az alábbi információkat:
+    - Ez a szabályzat automatikusan társítva van a konfigurációs kiszolgálóval a létrehozás során.
     - Ez a szabályzat nem szerkeszthető.
-    - A készlet a szabályzat értékei a következők (helyreállítási Időkorlát küszöbértéke = 15 perc, a helyreállítási pont megőrzése = 24 óra, az alkalmazás konzisztenciájának pillanatkép gyakorisága = 60 perc).
-- Ismételt védelem és a feladat-visszavétel során a helyszíni konfigurációs kiszolgálón fut és csatlakoztatva kell lennie.
-- Ha a vCenter-kiszolgáló kezeli a virtuális gépek, amelyhez Ön fogja feladat-visszavételt, győződjön meg arról, hogy rendelkezik-e a [szükséges engedélyek](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) virtuális gépek a vCenter-kiszolgálók felderítéséhez.
-- Az ismételt védelem előtt törölje a pillanatképek a fő célkiszolgálón. Ha pillanatképeket megadva, a helyszíni fő célkiszolgáló és a virtuális gépen, az ismételt védelem sikertelen lesz. A pillanatképek a virtuális gép ismételt védelmi feladat során automatikusan összefésülése megtörténjen.
-- A replikációs csoport összes virtuális gép azonos típusú operációs rendszer (az összes Windows vagy az összes Linux) kell lennie. Vegyes operációs rendszert jelenleg egy replikációs csoport védelem-újrabeállítást és a helyszíni feladat-visszavétel nem támogatott. Ennek oka az, a fő célkiszolgáló kell lennie, mint a virtuális gép ugyanazt az operációs rendszert. Replikációs csoport összes virtuális gépet az azonos fő célkiszolgálót kell rendelkeznie. 
-- Konfigurációs kiszolgáló szükséges helyszíni esetén, feladat-visszavételt. A feladat-visszavétel során a virtuális gép léteznie kell a konfigurációs kiszolgáló adatbázisát. Ellenkező esetben a feladat-visszavétel nem sikerül. Győződjön meg arról, hogy a konfigurációs kiszolgáló rendszeresen ütemezett biztonsági mentéseket. Katasztrófa esetén állítsa vissza a kiszolgáló ugyanazt az IP-címmel, hogy a feladat-visszavétel működik.
-- Ismételt védelem és a feladat-visszavétel szükséges az adatok replikálásához site-to-site (S2S) VPN. Adja meg a hálózati, így a feladatátvételi virtuális gépek az Azure-ban érhető el (ping), a helyszíni konfigurációs kiszolgáló. Emellett érdemes az Azure-hálózatot a feladatátvételi virtuális gép a folyamatkiszolgáló üzembe helyezése. A folyamatkiszolgálóhoz is tud kommunikálni a helyszíni konfigurációs kiszolgálón kell lennie.
-- Győződjön meg arról, hogy nyissa meg a feladatátvétel és feladat-visszavételt a következő portokat:
+    - A szabályzat beállított értékei (RPO küszöbérték = 15 perc, helyreállítási pont megőrzése = 24 óra, alkalmazás konzisztencia-pillanatképének gyakorisága = 60 perc).
+- Az ismételt védelem és a feladat-visszavétel során a helyszíni konfigurációs kiszolgálónak futnia és csatlakoztatva kell lennie.
+- Ha a vCenter-kiszolgáló felügyeli azokat a virtuális gépeket, amelyeken a feladat-visszavételt végzi, győződjön meg arról, hogy rendelkezik a [szükséges engedélyekkel](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) a vCenter-kiszolgálókon futó virtuális gépek felderítéséhez.
+- Az ismételt védelem előtt törölje a pillanatképeket a fő célkiszolgálón. Ha Pillanatképek találhatók a helyszíni fő tárolón vagy a virtuális gépen, az ismételt védelem sikertelen lesz. A virtuális gépen lévő Pillanatképek automatikusan egyesülnek egy újravédelemi feladatokban.
+- A replikációs csoport összes virtuális gépnek azonos operációsrendszer-típusnak kell lennie (vagy az összes Windows vagy az összes Linux rendszernek). A vegyes operációs rendszerekkel rendelkező replikációs csoportok jelenleg nem támogatottak a helyszíni védelemhez és a feladat-visszavételhez. Ennek az az oka, hogy a fő célhelynek a virtuális géppel megegyező operációs rendszernek kell lennie. A replikációs csoport összes virtuális gépnek ugyanazzal a fő célként kell tartoznia. 
+- A feladat-visszavételt követően konfigurációs kiszolgáló szükséges a helyszínen. A feladat-visszavétel során a virtuális gépnek léteznie kell a konfigurációs kiszolgáló adatbázisában. Ellenkező esetben a feladat-visszavétel sikertelen. Győződjön meg arról, hogy rendszeresen ütemezett biztonsági mentést készít a konfigurációs kiszolgálóról. Ha vészhelyzet van, állítsa vissza a kiszolgálót ugyanazzal az IP-címmel, hogy a feladat-visszavétel működik. 
+- Az ismételt védelem és a feladat-visszavétel egy helyek közötti (S2S) VPN-vagy ExpressRoute-alapú magánhálózati kapcsolatot igényel az adatreplikáláshoz. Adja meg a hálózatot úgy, hogy az Azure-beli feladatátvételt használó virtuális gépek elérjék (pingelni) a helyszíni konfigurációs kiszolgálót. A feladatátvételi virtuális gép (ek) Azure-hálózatán kell telepítenie egy folyamat-kiszolgálót. A folyamat-kiszolgálónak képesnek kell lennie kommunikálni a helyszíni konfigurációs kiszolgálóval és a fő célkiszolgálón is.
+- Abban az esetben, ha a replikált elemek IP-címeit megtartották a feladatátvétel során, S2S vagy ExpressRoute kapcsolatot kell létesíteni az Azure-beli virtuális gépek és a konfigurációs kiszolgáló feladat-visszavételi NIC-je között. Vegye figyelembe, hogy az IP-címek megőrzése megköveteli, hogy a konfigurációs kiszolgáló két hálózati adapterrel rendelkezzen – egyet a forrásoldali gépekhez, és egyet az Azure feladat-visszavétel kapcsolatához. Ennek célja, hogy elkerülje a forrás alhálózati címtartományok átfedését és a feladatátvételt a virtuális gépeken.
+- Győződjön meg arról, hogy a következő portokat nyitja meg a feladatátvételhez és a feladat-visszavételhez:
 
-    ![A feladatátvétel és feladat-visszavétel portok](./media/vmware-azure-reprotect/failover-failback.png)
+    ![Feladatátvételi és feladat-visszavételi portok](./media/vmware-azure-reprotect/failover-failback.png)
 
-- Olvassa el az összes a [portok és URL-engedélyezési előfeltételei](vmware-azure-deploy-configuration-server.md#prerequisites).
+- A [portok és az URL-címek engedélyezési követelményeinek](vmware-azure-deploy-configuration-server.md#prerequisites)beolvasása.
 
-## <a name="deploy-a-process-server-in-azure"></a>Az Azure-ban folyamatkiszolgáló üzembe helyezése
+## <a name="deploy-a-process-server-in-azure"></a>Folyamat-kiszolgáló üzembe helyezése az Azure-ban
 
-Az Azure-ban folyamatkiszolgáló lehet szükség, mielőtt visszaadja a feladatokat a helyszíni helyre:
-- A folyamatkiszolgáló adatokat fogad a védett virtuális gépen az Azure-ban, és ezután elküldi az adatokat a helyszíni helyre.
-- Egy kis késleltetésű hálózatra szükség a folyamatkiszolgáló és a védett virtuális gép között. Általánosságban elmondható figyelembe kell vennie a késés, amikor eldönti, hogy szükséges-e a folyamatkiszolgáló az Azure-ban:
-    - Ha az Azure ExpressRoute-kapcsolatok beállítása, használhatja a helyszíni folyamatkiszolgálót küldhet adatokat, mert a virtuális gép és a folyamatkiszolgáló között késés alacsony.
-    - Javasoljuk azonban, ha csak egy S2S VPN, az Azure-ban a folyamatkiszolgáló üzembe helyezése.
-    - Feladat-visszavétel során egy Azure-alapú folyamatkiszolgáló használatát javasoljuk. A replikációs teljesítmény értéke magasabb, ha a folyamatkiszolgáló közelebb a replikáló virtuális gépre (a átvevő gépen az Azure-ban). Egy megvalósíthatósági használata a helyi folyamatkiszolgáló és az ExpressRoute privát társviszony-létesítés.
+A helyszíni helyhez való visszatérés előtt szüksége van egy Azure-beli Process Serverre:
 
-Az Azure-ban folyamatkiszolgáló üzembe helyezése:
+- A Process Server adatokat fogad a védett virtuális gépekről az Azure-ban, majd adatokat küld a helyszíni helyre.
+- A folyamat-kiszolgáló és a védett virtuális gép között kis késleltetésű hálózatra van szükség. Ezért javasoljuk, hogy telepítsen egy Process Servert az Azure-ban. A replikálási teljesítmény magasabb, ha a folyamat-kiszolgáló közelebb van a replikálási virtuális géphez (az Azure-beli feladatátvételt végző géphez). 
+- A koncepció igazolásához használhatja a helyszíni folyamat-kiszolgálót és a ExpressRoute a privát társak használatával.
 
-1. Ha az Azure-ban folyamatkiszolgáló üzembe helyezése van szüksége, tekintse meg [állítsa be a folyamatkiszolgáló, az Azure-ban feladat-visszavételhez](vmware-azure-set-up-process-server-azure.md).
-2. Az Azure virtuális gépek küldhetnek replikációs adatokat a folyamatkiszolgálónak. Konfigurálja a hálózatokat, így az Azure virtuális gépek elérheti a folyamatkiszolgáló.
-3. Ne feledje, hogy a replikáció az Azure-ból a helyszíni akkor fordulhat elő, csak az S2S VPN-kapcsolattal, vagy a privát társviszony-létesítésen keresztül, az ExpressRoute-hálózaton. Győződjön meg arról, hogy elegendő sávszélesség, hálózati csatornán keresztül érhető el.
+Folyamat-kiszolgáló üzembe helyezése az Azure-ban:
 
-## <a name="deploy-a-separate-master-target-server"></a>Egy különálló fő célkiszolgálót üzembe helyezése
+1. Ha egy folyamat-kiszolgálót kell üzembe helyeznie az Azure-ban, tekintse [meg a folyamat-kiszolgáló beállítása az Azure-ban feladat-visszavételhez](vmware-azure-set-up-process-server-azure.md)című részt
+2. Az Azure-beli virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak. Konfigurálja a hálózatokat úgy, hogy az Azure-beli virtuális gépek el tudják érni a folyamat-kiszolgálót.
+3. Ne feledje, hogy az Azure-ból a helyszíni rendszerbe történő replikáció csak a S2S VPN-en vagy a ExpressRoute-hálózat privát kapcsolatán keresztül történhet. Gondoskodjon arról, hogy elegendő sávszélesség álljon rendelkezésre a hálózati csatornán keresztül.
 
-A fő célkiszolgáló fogadja a feladat-visszavételi adatokat. Alapértelmezés szerint a fő célkiszolgáló a helyszíni konfigurációs kiszolgálón fut. Azonban nem sikerült biztonsági forgalom mennyiségétől függően előfordulhat, hogy szeretne hozzon létre egy különálló fő célkiszolgálót a feladat-visszavételhez. Hogyan hozhat létre egyet a következő:
+## <a name="deploy-a-separate-master-target-server"></a>Különálló fő célkiszolgáló üzembe helyezése
 
-* [Hozzon létre egy Linux rendszerű fő célkiszolgálót](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételhez. Ez a szükséges. Vegye figyelembe, hogy, fő célkiszolgáló az LVM nem támogatott.
-* Szükség esetén hozzon létre egy különálló fő célkiszolgálót a Windows virtuális gép feladat-visszavételhez. Ehhez futtassa újra az egyesített telepítő, és válassza ki a fő célkiszolgáló létrehozása. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
+A fő célkiszolgáló fogadja a feladat-visszavételi adatokat. Alapértelmezés szerint a fő célkiszolgáló a helyszíni konfigurációs kiszolgálón fut. A sikertelen forgalom mennyiségétől függően azonban előfordulhat, hogy a feladat-visszavételhez létre kell hoznia egy külön fő célkiszolgáló-kiszolgálót. A következőképpen hozhat létre egyet:
 
-Miután létrehozott egy fő célkiszolgálót, a következő feladatokat végezheti el:
+* Linuxos [fő célkiszolgáló létrehozása](vmware-azure-install-linux-master-target.md) a Linux rendszerű virtuális gépek feladat-visszavételéhez. Erre szükség van. Vegye figyelembe, hogy az LVM fő célkiszolgáló nem támogatott.
+* Ha szeretné, hozzon létre egy különálló fő célkiszolgáló a Windows virtuális gép feladat-visszavételéhez. Ehhez futtassa újra az egyesített telepítőt, és válassza a fő célkiszolgáló létrehozásához. [További információk](site-recovery-plan-capacity-vmware.md#deploy-additional-master-target-servers). 
 
-- Ha a virtuális gép nem található a helyszíni vCenter-kiszolgálón, a fő célkiszolgáló kell tudnia érnie a helyszíni virtuális gép, virtuálisgép-lemezek (VMDK) fájlba. A replikált adatokat a virtuálisgép-lemezek írási hozzáférés szükséges. Győződjön meg arról, hogy a helyszíni virtuális gép adattárolója olvasási/írási hozzáférést a fő célkiszolgáló gazdagép csatlakoztatva van.
-- Ha a virtuális gép nem található a helyszíni vCenter-kiszolgálón, a Site Recovery szolgáltatás kell hozzon létre egy új virtuális gép ismételt védelem során. Az ESX-gazdagépen, amelyen a fő célkiszolgáló létrehozása a virtuális gép jön létre. Válassza ki az ESX-gazdagép figyelmesen, hogy a feladat-visszavételi virtuális gép jön létre, amelyeket szeretne a gazdagépen.
-- A fő célkiszolgáló nem használhatja a Storage vMotion. A fő célkiszolgáló a Storage vMotion használatával, előfordulhat, hogy a feladat-visszavételi sikertelen lesz. A virtuális gép nem indítható el, mivel a lemezek nem érhetők el azt. A probléma elkerüléséhez, zárja ki a fő célkiszolgálókat a vMotion-listából.
-- A fő célkiszolgáló a Storage vMotion feladat ismételt védelem után megy keresztül, ha a védett virtuálisgép-lemezeket a fő célkiszolgálóhoz csatolt át a cél a vMotion feladat. Ha megpróbálja ezt követően ismét sikertelen, a lemez terméknek sikertelen lesz, mivel a lemezek nem találhatók. Nehéz majd lesz található lemezeket a storage-fiókokban. Keresse meg őket manuálisan, és csatolja őket a virtuális gép kell. Ezt követően a helyszíni virtuális gép rendszerindításra alkalmas.
-- Adja hozzá a meglévő Windows fő célkiszolgáló adatmegőrzési meghajtó. Adjon hozzá egy új lemezt, és formázza a meghajtót. Állítsa le a pontok időpontban, amikor a virtuális gépet replikálja a helyszíni hely az adatmegőrzési meghajtó szolgál. Az alábbiakban egy adatmegőrzési meghajtó néhány feltétele. Ha ezek a feltételek nem teljesülnek, a meghajtó nem szerepel a listán a fő célkiszolgáló:
-    - A kötet nem használható az semmilyen más célra, például a replikációs cél.
-    - A kötet nem található zárolási üzemmódban.
-    - A kötet nem a gyorsítótár kötetében. A fő célkiszolgáló telepítése a köteten lévő nem létezik. A folyamat-kiszolgáló és a fő cél az egyéni telepítési kötete nem megfelelő egy adatmegőrzési kötetnek. A folyamatkiszolgáló és fő célkiszolgáló egy köteten vannak telepítve, a kötet esetén a fő célkiszolgáló gyorsítótárkötet.
+A fő célkiszolgáló létrehozása után végezze el a következő feladatokat:
+
+- Ha a virtuális gép a vCenter-kiszolgálón található a helyszínen, a fő célkiszolgáló számára elérhetőnek kell lennie a helyszíni virtuális gép virtuálisgép-lemezének (VMDK) fájljának. A replikált információnak a virtuális gép lemezére való írásához hozzáférés szükséges. Győződjön meg arról, hogy a helyszíni virtuális gép adattára a fő cél gazdagépére van csatlakoztatva írási/olvasási hozzáféréssel.
+- Ha a virtuális gép nem található a helyszínen a vCenter-kiszolgálón, a Site Recovery szolgáltatásnak létre kell hoznia egy új virtuális gépet az ismételt védelem során. Ez a virtuális gép az ESX-gazdagépen jön létre, amelyen létrehozta a fő célt. Gondosan válassza ki az ESX-gazdagépet, hogy a feladat-visszavételi virtuális gép a kívánt gazdagépen legyen létrehozva.
+- A fő célkiszolgáló tárolási vMotion nem használható. Ha a fő célkiszolgáló tárolási vMotion használ, a feladat-visszavétel sikertelen lesz. A virtuális gép nem indítható el, mert a lemezek nem érhetők el. Ennek megelőzése érdekében zárja ki a fő célkiszolgáló a vMotion listájáról.
+- Ha egy fő cél az ismételt védelem után egy tárolási vMotion feladatot is végrehajt, a fő célhelyhez csatolt védett virtuálisgép-lemezek áttelepülnek a vMotion feladat céljára. Ha ezt követően próbálkozik vissza, a lemez leválasztása meghiúsul, mert a lemezek nem találhatók. Ezután nehéz lesz megkeresni a tároló fiókjaiban található lemezeket. Manuálisan kell megkeresnie őket, és csatolni kell őket a virtuális géphez. Ezt követően a helyszíni virtuális gép indítható el.
+- Adjon hozzá egy adatmegőrzési meghajtót a meglévő Windows fő célkiszolgáló számára. Adjon hozzá egy új lemezt, és formázza a meghajtót. Az adatmegőrzési meghajtó segítségével leállíthatja azokat az időpontokat, amikor a virtuális gép a helyszíni helyre replikálódik. A következő egy adatmegőrzési meghajtó néhány feltétele. Ha ezek a feltételek nem teljesülnek, a meghajtó nem jelenik meg a fő célkiszolgáló számára:
+    - A kötet nem használatos más célra, például a replikálás céljára.
+    - A kötet nincs zárolási módban.
+    - A kötet nem gyorsítótár-kötet. A fő célhely telepítése nem létezik ezen a köteten. A Process Server és a fő cél egyéni telepítési kötete nem jogosult az adatmegőrzési kötetre. Ha a Process Server és a fő cél egy kötetre van telepítve, a kötet a fő cél gyorsítótár-kötete.
     - A kötet fájlrendszerének típusa nem FAT vagy FAT32.
     - A kötet kapacitása nem nulla.
-    - Az a Windows alapértelmezett adatmegőrzési kötete az R kötet.
-    - A Linux alapértelmezett adatmegőrzési kötete/mnt/Retention.
-- Egy új meghajtót kell adni, ha server/konfigurációs kiszolgáló meglévő folyamat gép vagy egy méretezési csoport vagy a folyamat vagy a fő cél server gépet használ. Az új meghajtó az előző követelményeknek kell megfelelnie. Ha az adatmegőrzési meghajtó nincs jelen, nem jelenik meg a portálon lévő legördülő listában. Ha egy meghajtót ad hozzá a helyszíni fő célkiszolgáló, megjelennek a portálon a kijelölést az a meghajtó akár 15 percet vesz igénybe. Ha a meghajtó nem jelenik meg, 15 perc után is frissítheti a konfigurációs kiszolgálón.
-- Telepítse a VMware-eszközök vagy a nyílt-vm-eszközök a fő célkiszolgálón. Az eszközök nélkül az adattárolók a fő célkiszolgáló ESXi-gazdagépen nem észlelhető.
-- Állítsa be a `disk.EnableUUID=true` beállítást a konfigurációs paraméterek, a fő virtuális gép VMware-ben. Ha a sor nem létezik, adja hozzá. Ez a beállítás szükséges, hogy megfelelően csatlakoztatja, adjon meg egy egységes UUID a VMDK.
-- Az ESX-gazdagép, amelyen jön létre a fő célkiszolgáló rendelkeznie kell legalább egy virtuális gép fájl system (VMFS) csatlakoztatott adattároló. Ha nincs VMFS adattárolók, a **adattárolója** a védelem-újrabeállítás oldalon bemenet üres, és nem folytatható.
-- A fő célkiszolgáló nem lehet pillanatképeket a lemezeket. Ha a pillanatképek vannak, sikertelen ismételt védelem és a feladat-visszavétel.
-- A fő célkiszolgáló nem rendelkezik Paravirtual SCSI-vezérlőhöz. A vezérlő csak egy LSI Logic-vezérlő lehet. LSI Logic-vezérlő, nélkül ismételt védelem sikertelen lesz.
-- Minden példány esetében a fő célkiszolgáló lehet a hozzá csatolt lemezeket legfeljebb 60. Ha több mint 60 lemezek teljes száma, a helyszíni fő célkiszolgáló védelme alatt álló rendelkezik a virtuális gépek száma a fő célkiszolgálóhoz reprotects megkezdéséhez sikertelen lesz. Győződjön meg arról, hogy rendelkezik-e elegendő fő cél a lemez a bővítőhelyek, vagy üzembe helyezhet további fő célkiszolgálókat.
+    - A Windows alapértelmezett megőrzési kötete az R-kötet.
+    - A Linux alapértelmezett megőrzési kötete a/mnt/Retention.
+- Új meghajtót kell hozzáadnia, ha meglévő Process Server-vagy konfigurációs kiszolgáló számítógépet vagy egy méretezési vagy feldolgozási kiszolgálót vagy egy fő célkiszolgáló számítógépét használja. Az új meghajtónak meg kell felelnie az előző követelményeknek. Ha az adatmegőrzési meghajtó nincs jelen, a portálon nem jelenik meg a kiválasztás legördülő listában. Miután hozzáadta a meghajtót a helyszíni fő célhoz, akár 15 percet is igénybe vehet, hogy a meghajtó megjelenjen a portálon a kijelölésben. A konfigurációs kiszolgálót akkor is frissítheti, ha a meghajtó 15 perc elteltével nem jelenik meg.
+- Telepítse a VMware-eszközöket, vagy nyissa meg a VM-Tools eszközt a fő célkiszolgálón. Az eszközök nélkül a fő cél ESXi-gazdagépén lévő adattárolók nem észlelhetők.
+- Állítsa be a `disk.EnableUUID=true` beállítást a fő célként megadott virtuális gép konfigurációs paraméterei között a VMware-ben. Ha ez a sor nem létezik, adja hozzá. Erre a beállításra akkor van szükség, ha konzisztens UUID-t biztosít a VMDK, hogy az megfelelően legyen csatolva.
+- Az ESX-gazdagépen, amelyen a fő cél létrejön, rendelkeznie kell legalább egy, a hozzá csatolt virtuálisgép-fájlrendszer (VMFS) adattárral. Ha nincsenek csatolva VMFS adattárolók, **akkor az adattároló bemenete** az ismételt védelem lapon üres, és nem folytathatja a folytatást.
+- A fő célkiszolgáló nem rendelkezhet pillanatképekkel a lemezeken. Ha vannak Pillanatképek, az ismételt védelem és a feladat-visszavétel sikertelen.
+- A fő cél nem rendelkezhet Paravirtual SCSI-vezérlővel. A vezérlő csak LSI logikai vezérlő lehet. LSI logikai vezérlő nélkül az ismételt védelem sikertelen lesz.
+- A fő cél bármelyik példányhoz legfeljebb 60 lemez csatlakoztatható. Ha a helyszíni fő célhelyre újra védelemmel ellátott virtuális gépek száma meghaladja a 60-nél több lemezt, akkor a fő célhelyre való ismételt védelem sikertelen lesz. Győződjön meg arról, hogy elegendő fő céllemez-tárolóhelytel rendelkezik, vagy telepítsen további fő célkiszolgáló-kiszolgálókat.
     
 
 ## <a name="enable-reprotection"></a>Ismételt védelem engedélyezése
 
-Ha egy virtuális gép elindul az Azure-ban, az ügynököt, hogy a konfigurációs kiszolgálóra (akár 15 perc) regisztrálása egy kis ideig vesz igénybe. Ebben az időszakban nem lehet virtuális gép ismételt védelmére, és a egy hibaüzenet tájékoztatja, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, és próbálkozzon az ismételt védelem újra:
+Miután egy virtuális gép elindul az Azure-ban, eltarthat egy ideig, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót (akár 15 percet is igénybe vehet). Ebben az időszakban nem fogja tudni újból védelemmel ellátni, és hibaüzenet jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, majd próbálkozzon újra az ismételt védelemsel:
 
 
-1. Válassza ki **tároló** > **replikált elemek**. Kattintson a jobb gombbal a virtuális gépet, hogy átadta a feladatait, és válassza **ismételt védelem**. Vagy, a parancs a gombot, válassza ki a gépet, és válassza **ismételt védelem**.
-2. Ellenőrizze, hogy a **a helyszíni Azure** iránya védelem van kiválasztva.
-3. A **fő célkiszolgáló** és **Folyamatkiszolgáló**, válassza ki a helyszíni fő célkiszolgáló és a folyamatkiszolgáló.  
-4. A **adattárolója**, válassza ki az adattárhoz, amelyre a lemezeket a helyszínen helyre szeretné. Ha a helyszíni virtuális gép törlődik, és hozzon létre új lemezeket kell ezt a beállítást használják. A rendszer figyelmen kívül hagyja ezt a beállítást, ha a lemez már létezik. Továbbra is szeretné adjon meg egy értéket.
-5. Válassza ki az adatmegőrzési meghajtó.
+1. Válassza **a**tár  > **replikált elemek**lehetőséget. Kattintson a jobb gombbal a feladatátvétel alatt álló virtuális gépre, majd válassza az **ismételt védelem**lehetőséget. Vagy a parancsgombok közül válassza ki a gépet, majd válassza az **ismételt védelem**lehetőséget.
+2. Ellenőrizze, hogy be van-e jelölve az **Azure és a** helyszíni védelem iránya.
+3. A **fő célkiszolgáló** és a **folyamat-kiszolgáló**területen válassza ki a helyszíni fő célkiszolgáló és a Process Server kiszolgálót.  
+4. Az **adattár**mezőben válassza ki azt az adattárolót, amelyre a helyi lemezeket helyre kívánja állítani. Ez a beállítás akkor használható, ha a helyszíni virtuális gép törlődik, és új lemezeket kell létrehoznia. Ezt a beállítást a rendszer figyelmen kívül hagyja, ha a lemezek már léteznek. Továbbra is meg kell adnia egy értéket.
+5. Válassza ki az adatmegőrzési meghajtót.
 6. A feladat-visszavételi szabályzat automatikusan ki van jelölve.
-7. Válassza ki **OK** az ismételt védelem megkezdéséhez. Egy feladat elkezdi replikálni a virtuális gépet az Azure-ból a helyszíni helyre. A **Feladatok** lapon követheti nyomon a folyamat állapotát. Ha az ismételt védelem sikeres, a virtuális gépek védett állapotba kerül.
+7. A védelem megkezdéséhez kattintson **az OK gombra** . Egy feladat elkezdi replikálni a virtuális gépet az Azure-ból a helyszíni helyre. Nyomon követheti a folyamat előrehaladását a **feladatok** lapon. Ha az ismételt védelem sikeres, a virtuális gép védett állapotba kerül.
 
 Tekintse meg az alábbi információkat:
-- Ha azt szeretné, (ha törölték a helyszíni virtuális gép) egy másodlagos helyre történő helyreállítást, válassza ki az adatmegőrzési meghajtó és a fő célkiszolgáló konfigurált adattároló. Visszaadja a feladatokat a helyszíni hely, a VMware virtuális gépek, a feladat-visszavétel védelmi terv a fő célkiszolgáló ugyanezt az adattárat használjuk. A vCenter majd jön létre egy új virtuális gépet.
-- Ha meg szeretné helyreállítani a virtuális gépet a meglévő helyszíni virtuális gépként az Azure-ban, csatlakoztassa az olvasási/írási hozzáférést a helyszíni virtuális gép adattárolók a fő célkiszolgáló ESXi-gazdagépen.
+- Ha egy másik helyre kíván helyreállítani (a helyszíni virtuális gép törlésekor), válassza ki a fő célkiszolgáló számára konfigurált adatmegőrzési meghajtót és adattárat. Ha a helyszíni helyre végzi a feladatátvételt, a feladat-visszavételi védelmi tervben található VMware virtuális gépek ugyanazt az adattárat használják, mint a fő célkiszolgáló. Ezután létrejön egy új virtuális gép a vCenter-ben.
+- Ha az Azure-beli virtuális gépet egy meglévő helyszíni virtuális gépre szeretné helyreállítani, csatlakoztassa a helyszíni virtuális gép adattárolóit olvasási/írási hozzáféréssel a fő célkiszolgáló ESXi-gazdagépén.
 
     ![Ismételt védelem párbeszédpanel](./media/vmware-azure-reprotect/reprotectinputs.png)
 
-- A helyreállítási terv szintjén is megvédhetné. Replikációs csoport csak a helyreállítási terv keretében is újra. A helyreállítási terv használatával ismételt védelme, amikor meg kell adnia az értékeket minden védett gép.
-- Ugyanazt a fő célkiszolgálót használja a replikációs csoportok ismételt védelméhez. Replikációs csoportok ismételt védelméhez használhatja egy másik fő célkiszolgálót, ha a kiszolgáló nem tudja megállapítani közös időben.
-- Ismételt védelem során a helyszíni virtuális gép ki van kapcsolva. Ez elősegíti az adatok konzisztenciáját a replikáció során. Nem kapcsolja be a virtuális gép ismételt védelem befejeződése után.
+- A helyreállítási terv szintjén is újravédhető. Egy replikációs csoport csak helyreállítási terven keresztül védhető újra. Helyreállítási terv használatával történő ismételt védelem esetén meg kell adnia minden védett gép értékét.
+- Ugyanazt a fő célkiszolgálót használja a replikációs csoportok ismételt védelméhez. Ha egy másik fő célkiszolgáló használatával szeretné újból védetté tenni a replikációs csoportokat, a kiszolgáló nem tud közös időpontot biztosítani.
+- A helyszíni virtuális gép ki van kapcsolva az ismételt védelem során. Ez elősegíti az adatok konzisztenciáját a replikáció során. Az ismételt védelem befejeződése után ne kapcsolja be a virtuális gépet.
 
 
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-- Ha egy olvasási jogosultsággal rendelkező felhasználó vCenter észlelését, és virtuális gépek védelme, védelmi sikeres lesz, és feladatátvételi működik. Ismételt védelem, során feladatátvétel sikertelen lesz, mivel a állomásához nem lesz felderítve. A probléma tünete, hogy a adattárainak ismételt védelem során nem jelennek meg. A probléma megoldásához, a vCenter hitelesítő adatainak frissítése egy megfelelő engedélyekkel rendelkező fiókkal, és próbálkozzon újra a feladatot. 
-- Ha a feladat-visszavételt Linux rendszerű virtuális gép, és futtassa azt a helyszíni, láthatja, hogy a hálózatkezelő csomagot el lett távolítva a gépről. Ez az Eltávolítás az oka, hogy a hálózatkezelő csomagot törlődik, ha a virtuális gép van helyreállította az Azure-ban.
-- Ha Linux rendszerű virtuális gép statikus IP-címmel van konfigurálva, és a feladatátvétel alatt áll az Azure-ba, az IP-cím igényelve, a DHCP-Kiszolgálótól. Ha átadja a feladatokat a helyszíni, a virtuális gép továbbra is az IP-cím beszerzése a DHCP használatával. Manuálisan jelentkezzen be a gépre, és majd állítsa vissza a statikus cím szükség esetén az IP-címet. Windows virtuális gép újra is szerez a statikus IP-címére.
-- Vagy az ESXi 5.5-ös free Edition kiadása, vagy a vSphere 6 hipervizor ingyenes kiadás használatakor a feladatátvétel sikeres, de feladat-visszavétel nem jár sikerrel. Ahhoz, hogy a feladat-visszavételt, frissíteni vagy program próbalicencre.
-- A folyamatkiszolgáló a konfigurációs kiszolgáló nem érhető el, ha a Telnet használatával ellenőrizze a kapcsolatot és a konfigurációs kiszolgáló 443-as porton. Akkor is is próbálja meg megpingelni a konfigurációs kiszolgáló a folyamatkiszolgálóról. Folyamatkiszolgáló is kell rendelkeznie a szívverést, ha és a konfigurációs kiszolgáló csatlakoztatva van.
-- A Windows Server 2008 R2 SP1 kiszolgáló által védett sikertelenként egy a helyszíni fizikai kiszolgáló nem lehet az Azure-ból a helyszíni helyhez.
-- Nem utasíthat el az alábbi esetekben:
-    - Migrált gépek az Azure-bA. [További információk](migrate-overview.md#what-do-we-mean-by-migration).
-    - Egy virtuális Gépet egy másik erőforrás-csoportba helyezte át.
-    - Törli az Azure virtuális Gépen.
-    - A virtuális gép védelmének letiltotta.
-    - Létrehozta a virtuális Gépet manuálisan az Azure-ban. A gép kell eredetileg védett a helyszíni rendszer és ismételt védelem előtt az Azure-bA feladatátvétele.
-    - Csak az ESXi-gazdagép sikertelen lehet. Feladat-visszavétel VMware virtuális gépek vagy fizikai kiszolgálók Hyper-V-gazdagépek, a fizikai gépek vagy a VMware-munkaállomások nem.
+- Ha csak olvasási jogosultsággal rendelkező felhasználói vCenter-felderítést végez, és a virtuális gépek védelme, a védelem sikeres és a feladatátvétel működik. Az ismételt védelem során a feladatátvétel meghiúsul, mert nem lehet felderíteni az adattárolókat. A tünet az, hogy az adattárolók nem jelennek meg az ismételt védelem során. A probléma megoldásához frissítse a vCenter hitelesítő adatait egy olyan fiókkal, amely rendelkezik engedélyekkel, majd próbálja megismételni a feladatot. 
+- Ha egy linuxos virtuális gépet hajt végre, és a helyszínen futtatja azt, láthatja, hogy a Network Manager-csomag el lett távolítva a gépről. Ez az Eltávolítás azért fordul elő, mert a Network Manager-csomag el lesz távolítva a virtuális gép Azure-ban való helyreállításakor.
+- Ha egy Linux rendszerű virtuális gép statikus IP-címmel van konfigurálva, és a feladatátvétel az Azure-ba történik, az IP-cím beszerzése a DHCP-ből történik. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gép továbbra is DHCP-t használ az IP-cím megvásárlásához. Manuálisan jelentkezzen be a gépre, és szükség esetén állítsa vissza az IP-címet statikusra. A Windows rendszerű virtuális gépek újra megvásárolhatják statikus IP-címét.
+- Ha az ESXi 5,5 Free Edition vagy a vSphere 6 hypervisor Free Edition verziót használja, a feladatátvétel sikeres lesz, de a feladat-visszavétel nem sikerül. A feladat-visszavétel engedélyezéséhez frissítsen a program próbaverziós licencére.
+- Ha nem tudja elérni a konfigurációs kiszolgálót a folyamat-kiszolgálóról, a Telnet használatával ellenőrizze a 443-es porton futó konfigurációs kiszolgálóval létesített kapcsolatot. A konfigurációs kiszolgálót a Process Serverről is megpróbálhatja pingelni. A folyamat kiszolgálójának szívverése is lehet, ha a konfigurációs kiszolgálóhoz csatlakozik.
+- A fizikai helyszíni kiszolgálóként védett Windows Server 2008 R2 SP1-kiszolgálót nem lehet visszaadni az Azure-ból a helyszíni helyre.
+- A következő esetekben nem végezhető el a feladat-visszavétel:
+    - A gépeket áttelepítette az Azure-ba. [További információk](migrate-overview.md#what-do-we-mean-by-migration).
+    - Áthelyezett egy virtuális gépet egy másik erőforráscsoporthoz.
+    - Törölte az Azure-beli virtuális gépet.
+    - Letiltotta a virtuális gép védelmét.
+    - A virtuális gépet manuálisan hozta létre az Azure-ban. Az ismételt védelem előtt a gépet először a helyszínen, a feladatátvételt pedig az Azure-ba kellett volna védeni.
+    - Csak egy ESXi-gazdagépre lehet sikertelen. A VMware virtuális gépeket és fizikai kiszolgálókat nem lehet feladat-visszavétel Hyper-V-gazdagépekre, fizikai gépekre vagy VMware-munkaállomásokra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Miután a virtuális gépet egy védett állapotba került, [feladat-visszavétel kezdeményezése](vmware-azure-failback.md). A feladat-visszavételi leállítja a virtuális gép az Azure-ban, és a helyszíni virtuális gép elindul. Némi állásidővel, az alkalmazás várható. Válassza ki a feladat-visszavételhez egy időpontot, amikor az alkalmazás működését állásidő.
+Miután a virtuális gép védett állapotba lépett, [elindíthatja a feladat-visszavételt](vmware-azure-failback.md). A feladat-visszavétel leállítja az Azure-beli virtuális gépet, és elindítja a helyszíni virtuális gépet. Némi állásidőt vár az alkalmazáshoz. Válassza ki a feladat-visszavétel időpontját, amikor az alkalmazás képes elviselni az állásidőt.
 
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840896"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375980"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
@@ -30,13 +30,13 @@ ms.locfileid: "71840896"
 * Megoldás hozzáadása
 * Mentett keresések létrehozása
 * Számítógépcsoport létrehozása
-* Telepített Windows-ügynökkel rendelkező számítógépek IIS-naplók gyűjtésének engedélyezéséhez
-* A Linux és Windows-számítógépekről teljesítményszámlálók gyűjtése
-* Syslog események gyűjtésére a Linux rendszerű számítógépek 
-* Windows-Eseménynapló eseményeinek gyűjtése
+* IIS-naplók gyűjteményének engedélyezése a telepített Windows-ügynökkel rendelkező számítógépekről
+* Teljesítményszámlálók összegyűjtése Linux és Windows rendszerű számítógépekről
+* Események gyűjtése a syslog-ből Linux rendszerű számítógépeken 
+* Események gyűjtése a Windows-eseménynaplóból
 * Egyéni naplók gyűjtése a Windows rendszerű számítógépről
-* A log analytics-ügynök hozzáadása egy Azure virtuális gépen
-* Konfigurálja a log analytics index adatokat gyűjteni, az Azure diagnostics használatával
+* A log Analytics-ügynök hozzáadása egy Azure-beli virtuális géphez
+* A log Analytics konfigurálása az Azure Diagnostics használatával gyűjtött adatok indexeléséhez
 
 Ez a cikk olyan sablon-mintákat tartalmaz, amelyek a sablonokkal végrehajtható egyes konfigurációkat szemléltetik.
 
@@ -44,10 +44,10 @@ Ez a cikk olyan sablon-mintákat tartalmaz, amelyek a sablonokkal végrehajthat�
 
 A következő táblázat felsorolja az ebben a példában használt erőforrások API-verzióját.
 
-| Resource | Erőforrás típusa | API-verzió |
+| Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
 | Munkaterület   | munkaterületek    | 2017-03-15 – előzetes verzió |
-| Keresés      | savedSearches | 2015-03-20 |
+| Search      | savedSearches | 2015-03-20 |
 | Adatforrás | adatforrások   | 2015-11-01 – előzetes verzió |
 | Megoldás    | megoldások     | 2015-11-01 – előzetes verzió |
 
@@ -55,7 +55,7 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 
 A következő példa egy munkaterületet hoz létre egy sablon használatával a helyi gépről. A JSON-sablon úgy van konfigurálva, hogy csak az új munkaterület nevét és helyét használja (a többi munkaterület paraméterének alapértelmezett értékeivel, például az árképzési csomaggal és a megőrzéssel).  
 
-### <a name="create-and-deploy-template"></a>Hozzon létre, és a sablon üzembe helyezése
+### <a name="create-and-deploy-template"></a>Sablon létrehozása és üzembe helyezése
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -119,8 +119,8 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
     }
     ```
 
-2. Szerkessze a sablont az igényeknek. Felülvizsgálat [Microsoft.OperationalInsights/workspaces sablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) referencia megtudhatja, milyen tulajdonságok és értékek támogatottak. 
-3. Mentse a fájlt **deploylaworkspacetemplate.json** egy helyi mappába.
+2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
+3. Mentse ezt a fájlt **deploylaworkspacetemplate. JSON** néven egy helyi mappába.
 4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozásához használja a PowerShellt vagy a parancssort, és adja meg a munkaterület nevét és helyét a parancs részeként. A munkaterület nevének globálisan egyedinek kell lennie az összes Azure-előfizetésen belül.
 
    * A PowerShell használatához használja az alábbi parancsokat a sablont tartalmazó mappából:
@@ -136,7 +136,7 @@ A következő példa egy munkaterületet hoz létre egy sablon használatával a
         azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json --workspaceName <workspace-name> --location <location>
         ```
 
-Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, megjelenik egy üzenet, amely tartalmazza az eredmény az alábbihoz hasonló:<br><br> ![Ha üzembe helyezés kész eredményének](./media/template-workspace-configuration/template-output-01.png)
+Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:<br><br> ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](./media/template-workspace-configuration/template-output-01.png)
 
 ## <a name="configure-a-log-analytics-workspace"></a>Log Analytics munkaterület konfigurálása
 
@@ -145,11 +145,11 @@ A következő sablon szemlélteti a következőket:
 1. Megoldások hozzáadása a munkaterülethez
 2. Mentett keresések létrehozása
 3. Számítógépcsoport létrehozása
-4. Telepített Windows-ügynökkel rendelkező számítógépek IIS-naplók gyűjtésének engedélyezéséhez
-5. Logikai lemez teljesítményszámlálók gyűjtése Linux rendszerű számítógépek (% Inode-OK; Szabad hely MB-ban; Foglalt hely; % Lemez átvitel/mp-ben; Lemezolvasások/mp; Lemezírások/mp)
-6. Syslog-események gyűjtésére a Linux rendszerű számítógépek
-7. Az alkalmazások eseménynaplójában a Windows-számítógépek hiba és figyelmeztetés eseményeinek gyűjtése
-8. Windows-számítógépekről memória rendelkezésre álló memória (MB) teljesítményszámláló gyűjtése.
+4. IIS-naplók gyűjteményének engedélyezése a telepített Windows-ügynökkel rendelkező számítógépekről
+5. Logikai lemezes teljesítmény-számlálók gyűjtése Linux rendszerű számítógépekről (felhasznált inode%-ban) Szabad megabájt; Felhasznált terület%-ban; Lemez átvitele/mp; Olvasási sebesség (lemez/mp) Írási idő/mp)
+6. Syslog-események gyűjtése Linux rendszerű számítógépekről
+7. Hiba-és figyelmeztetési események gyűjtése a Windows rendszerű számítógépekről származó alkalmazás-eseménynaplóból
+8. Memória rendelkezésre álló memóriájának összegyűjtése (MB) teljesítményszámláló a Windows rendszerű számítógépekről
 9. Az Azure Diagnostics által a Storage-fiókba írt IIS-naplók és Windows-eseménynaplók összegyűjtése
 10. Egyéni naplók gyűjtése a Windows rendszerű számítógépről
 
@@ -243,7 +243,7 @@ A következő sablon szemlélteti a következőket:
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ A következő sablon szemlélteti a következőket:
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ A következő sablon szemlélteti a következőket:
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ A következő sablon szemlélteti a következőket:
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>A minta sablon üzembe helyezése
 
 A minta sablon üzembe helyezése:
@@ -623,7 +624,7 @@ Az Azure rövid útmutató sablonjának katalógusa számos Log Analytics sablon
 * [Azure-Web Apps figyelése meglévő Log Analytics munkaterület használatával](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [Meglévő Storage-fiók hozzáadása a Log Analytics](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Windows-ügynök üzembe helyezése az Azure-beli virtuális gépeken Resource Manager-sablon használatával](../../virtual-machines/extensions/oms-windows.md).
 

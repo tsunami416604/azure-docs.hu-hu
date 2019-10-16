@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969580"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330241"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
@@ -24,7 +24,7 @@ Válaszok az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori
 
 **Mi az Azure Marketplace?**
 
-Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) hozzáférést és információkat biztosít a Microsofttól és partnereinktől származó megoldásokkal és szolgáltatásokkal kapcsolatban. Az ügyfelek (informatikai szakemberek és fejlesztők) felfedezhetik az Azure-ra épülő vagy azokra épülő felhőalapú szoftveres megoldásokat. A 8000 és a listings katalógusa Azure-építőelemeket, például Virtual Machines (VM), API-kat, Azure-alkalmazásokat, megoldás-sablonokat és felügyelt alkalmazásokat, SaaS-alkalmazásokat, tárolókat és tanácsadási szolgáltatásokat biztosít. 
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) hozzáférést és információkat biztosít a Microsofttól és partnereinktől származó megoldásokkal és szolgáltatásokkal kapcsolatban. Az ügyfelek felfedezhetik, kipróbálhatják vagy vásárolhatják az Azure-ra épülő felhőalapú szoftveres megoldásokat. A 8000 és a listings katalógusa Azure-építőelemeket, például Virtual Machines (VM), API-kat, Azure-alkalmazásokat, megoldás-sablonokat és felügyelt alkalmazásokat, SaaS-alkalmazásokat, tárolókat és tanácsadási szolgáltatásokat biztosít.
 
 **Kik az Azure Marketplace-ügyfelek?**
 
@@ -32,24 +32,21 @@ Az Azure Marketplace olyan informatikai szakembereknek és felhőalapú fejleszt
 
 **Milyen típusú termékek érhetők el jelenleg az Azure piactéren?**
 
-Az Azure Marketplace olyan Microsoftos és partneri technikai megoldásokat és szolgáltatásokat kínál, amelyek az Azure-termékek és -szolgáltatások kiterjesztésére szolgálnak. A megoldás katalógusa több kategóriára is kiterjed, többek között a következőkre:
+Az Azure Marketplace olyan Microsoftos és partneri technikai megoldásokat és szolgáltatásokat kínál, amelyek az Azure-termékek és -szolgáltatások kiterjesztésére szolgálnak. A megoldás katalógusa több kategóriára is kiterjed, beleértve a következőket:
 
 * alapszintű operációs rendszerek
 * databases
 * biztonság
-* identity
+* identitáskezelés
 * hálózat
 * blockchain
 * fejlesztői eszközök
-* és még sok minden más
-
-Az Azure piactéren SaaS-alkalmazások, Virtual Machines, megoldások sablonjai, Azure által felügyelt alkalmazások és tanácsadási szolgáltatások is elérhetők.
 
 ### <a name="azure-marketplace-for-customers"></a>Azure Marketplace ügyfeleknek
 
 **Hogyan első lépések az Azure piactéren?**
 
-Az Azure [piactéren](https://azuremarketplace.microsoft.com/marketplace/apps)megtekintheti az Azure-on való futtatásra hitelesített és optimalizált nagyvállalati alkalmazásokat és megoldásokat. Az Azure Marketplace a [Azure Portal] keresztül is elérhető, amikor [**létrehoz egy erőforrást**](https://portal.azure.com/#create/hub).
+Az Azure [piactéren](https://azuremarketplace.microsoft.com/marketplace/apps)megtekintheti az Azure-on való futtatásra hitelesített és optimalizált nagyvállalati alkalmazásokat és megoldásokat. Az Azure Marketplace a [Azure Portalra] keresztül is elérhető, amikor [**létrehoz egy erőforrást**](https://portal.azure.com/#create/hub).
 
 **Mik az Azure Marketplace legfőbb előnyei?**
 
@@ -60,7 +57,7 @@ Az Azure piactéren az ügyfelek felfedezhetik az Azure-ra épülő vagy azokra 
 Az Azure Marketplace-ajánlatok a következőket vehetik fel:
 
 * [A web-alapú kirakat](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [A Azure Portal][Azure Portal]
+* [A Azure Portal][azure portalra]
 * [Az Azure parancssori felülete (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -96,11 +93,11 @@ A tranzakciók a következő 17 pénznemben hajthatók végre: AUD, BRL, CAD, CH
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Megoldás üzembe helyezése az Azure Marketplace-ből
 
-@no__t – a 0I üzembe helyezett egy Azure Marketplace-beli virtuális gépet egy előfizetéshez, és most szeretném áttelepíteni az előfizetést egy Azure-fiókból egy másikba. Ez jelenleg támogatott? **
+**Üzembe helyezettem egy Azure Marketplace-beli virtuális gépet egy előfizetéshez, és most egy Azure-fiókból egy másikba szeretném áttelepíteni az előfizetést. Ez jelenleg támogatott?**
 
 Azure-előfizetések áttelepítéséhez, beleértve az Azure Marketplace-beli virtuális gépeket és szolgáltatásokat, törölje vagy szakítsa meg az összes korábbi Azure-előfizetést az új Azure-fiók társítása előtt Az áttelepítés befejezése után a használati díjak számlázása az új regisztrált fiók fizetési mód használatával történik.
 
-@no__t – a 0I szeretné áttelepíteni egy Azure Marketplace virtuálisgép-előfizetést az Nagyvállalati Szerződésba. Ez jelenleg támogatott? **
+**Szeretnék áttelepíteni egy Azure Marketplace virtuálisgép-előfizetést a Nagyvállalati Szerződésra. Ez jelenleg támogatott?**
 
 Az Azure Marketplace virtuálisgép-előfizetés Nagyvállalati Szerződésra való áttelepítéséhez állítsa le vagy szakítsa meg az összes korábbi előfizetést az áttelepítés előtt. Miután elvégezte az Azure-fiók és a kapcsolódó előfizetések áttelepítését, újra megvásárolhatja az Azure Marketplace-beli virtuális gépet vagy szolgáltatást.  Az eredményül kapott használati díjak negyedéves számlázása a Nagyvállalati Szerződés alapján történik.
 
@@ -112,7 +109,7 @@ A díjszabás a terméktípusoktól és a kiadók specifikációitól függ. A s
 
 *Átengedése*
 
-+ *Saját licencű (BYOL) modell*: Ha közvetlenül a közzétevőtől vagy viszonteladótól szerzi be a szoftvert, nincs további szoftverekkel kapcsolatos díj vagy díj.
++ *Saját Licences (BYOL) modell*: Ha közvetlenül a közzétevőtől vagy viszonteladótól szerzi be a szoftvert, nincs további szoftverekkel kapcsolatos díj vagy díj.
 
 *Köteg*
 
@@ -120,7 +117,7 @@ Az Azure-előfizetést a kiadó független szoftvergyártók (ISV-k) megoldásá
 
 *Felszámolásra*
 
-+ *Ingyenes* Ingyenes termékváltozat. Nem számítunk fel díjat az ajánlat szoftverlicenc-díja vagy használata esetén.
++ *Ingyenes:* Ingyenes SKU. Nem számítunk fel díjat az ajánlat szoftverlicenc-díja vagy használata esetén.
 
 + *Ingyenes szoftver próbaverziója:* Korlátozott ideig ingyenes ajánlat. A kiadó szoftverlicenc-díja nem számítható fel a próbaidőszak alatt történő használathoz. A lejárat után a rendszer automatikusan átalakítja a fizetős ajánlatot a kiadó által kiadott normál díjszabás alapján.
 
@@ -130,7 +127,7 @@ Az Azure-előfizetést a kiadó független szoftvergyártók (ISV-k) megoldásá
 
 + *Felhasználónkénti:* Az SaaS-előfizetések díjszabása felhasználónként, havonta vagy évente történik. 
 
-Az ajánlatra vonatkozó díjszabás a megoldás részletei oldalon található [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) vagy a [Azure Portal]belül.
+Az ajánlatra vonatkozó díjszabás a megoldás részletei oldalon található [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) vagy a [Azure Portalra]belül.
 
 > [!Note]
 > A havi díjak kivételével az Azure-használati díjak minden díjszabási modellre érvényesek, kivéve, ha másként van megadva.
@@ -183,9 +180,9 @@ Nem. Az Azure Marketplace-en található megoldásokat birtokló közzétevők d
 
 **Hol tekinthetem meg az Azure Marketplace-előfizetés részleteit és a számlázási adatokat?**
 
-MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (webes Direct) ügyfelei megtekinthetik a piactér vásárlási részleteit a [Azure Portal]Cost Management + számlázási szakaszának számlák lapján.
+MOSP – a [Microsoft online előfizetési program](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (webes Direct) ügyfelei megtekinthetik a piactér vásárlási részleteit a [Azure Portalra]Cost Management + számlázási szakaszának számlák lapján.
 
-A Nagyvállalati Szerződés (EA) ügyfelek a [Azure Portal]Cost Management + számlázás szakaszának számlák lapján tekinthetik meg a Piactéri vásárlás részleteit.
+A Nagyvállalati Szerződés (EA) ügyfelek a [Azure Portalra]Cost Management + számlázás szakaszának számlák lapján tekinthetik meg a Piactéri vásárlás részleteit.
 
 A felhőalapú megoldás-szolgáltató (CSP) partnerei a megrendelési Előzmények lapon tekinthetik meg a Piactéri vásárlási adatokat a partner Centerben, miután kiválasztotta a vállalatot az ügyfelek nézetben.
 
@@ -211,7 +208,7 @@ Az *Ár* a szoftver futtatásához szükséges Azure-beli virtuális gép költs
 
 **Hogyan megtudhatja, mennyibe került az Azure Marketplace-beli vásárlásom?**
 
-A becsült használati adatok a [Azure Portal]találhatók. A becsült használati adatok nem tartalmazhatják a közelmúltbeli tevékenységeket, és a múltbeli felhasználásból származtatott előrejelzések alapján is előfordulhatnak. Előfordulhat, hogy a nyilvános előzetes verzióban ez a funkció nem érhető el minden vásárláshoz, és a terméktípus alapján eltérő lehet.
+A becsült használati adatok a [Azure Portalra]találhatók. A becsült használati adatok nem tartalmazhatják a közelmúltbeli tevékenységeket, és a múltbeli felhasználásból származtatott előrejelzések alapján is előfordulhatnak. Előfordulhat, hogy a nyilvános előzetes verzióban ez a funkció nem érhető el minden vásárláshoz, és a terméktípus alapján eltérő lehet.
 
 ### <a name="customer-support"></a>Ügyfélszolgálat
 
@@ -338,7 +335,7 @@ Az érdeklődők olyan ügyfelek, akik a piactéren telepítik termékeiket. Az,
 
 **Hol kaphatok segítséget az érdeklődői cél beállításakor?**
 
-További információ: [Cloud Partner Portal – ügyfél-érdeklődők](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) dokumentációja, vagy támogatási jegy beküldése a [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) lehetőséggel az ajánlat típusának és a vezető felügyeletének kiválasztásával.
+További információt a [partner Center – az ügyfél-érdeklődők](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) dokumentációjában talál, vagy támogatási jegyet küldhet [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) az ajánlat típusának és a vezető felügyeletének kiválasztásával.
 
 **Meg kell-e adni egy érdeklődői célhelyet egy ajánlat közzétételéhez a piactéren?**
 
@@ -346,17 +343,17 @@ Igen, ha a velem, az **SaaS-alkalmazással**vagy a **tanácsadási szolgáltatá
 
 **Hogyan ellenőrizhető, hogy helyes-e az érdeklődő konfigurációja?**
 
-Az ajánlat befejezése és a vezető célhely beállítása után a lista megfelelően közzétehető a [Cloud Partner Portalban](https://cloudpartner.azure.com/). A lista életbe lépését megelőzően ellenőrizheti, hogy megfelelően működik-e a vezető konfigurációjának beállítása.  Teszt küldése az ajánlatban konfigurált vezető célhelyre.
+Az ajánlat befejezése és a vezető célhely beállítása után a lista megfelelően közzétehető a [partner Centerben](https://cloudpartner.azure.com/). A lista életbe lépését megelőzően ellenőrizheti, hogy megfelelően működik-e a vezető konfigurációjának beállítása.  Teszt küldése az ajánlatban konfigurált vezető célhelyre.
 
 **Mely országok/régiók érhetők el a kiadók számára az Azure piactéren?**
 
-A következő országokban/régiókban található közzétevők jelenleg az Azure Marketplace-en értékesíthetők: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Belarusz, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, Közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Comore-szigetek, Kongó, Kongói Demokratikus Köztársaság, Costa Rica, Elefántcsontpart, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek Szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Montenegró, Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
+A következő országokban és régiókban található közzétevők jelenleg az Azure piactéren értékesíthetők: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Fehéroroszország, Belgium, Benin, Bolívia, Bosznia-Hercegovina, Botswana, Brazília, Bulgária, Egyesült Királyság, Cseh Köztársaság, Kelet-Kanada, Dél-Ausztrália, Csehország, Svájc, Közép-afrikai Köztársaság, Csád, Chile, Colombia, Comore-szigetek, Kongó, Kongói Demokratikus Köztársaság, Costa Rica, Elefántcsontpart, Horvátország, Ciprus Dánia, Dominikai Köztársaság, Egyesült Királyság, Ecuador, Egyiptom, Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Montenegró, Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Királyság Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
 
 **Hogyan törölni az Azure Marketplace-en található listát?**
 
 *Azure-alkalmazások & virtuális gép:*
 
-1. Jelentkezzen be a [Cloud Partner Portalba](https://cloudpartner.azure.com/).
+1. Jelentkezzen be a [partner központba](https://cloudpartner.azure.com/).
 1. Válassza ki az ajánlatot a **minden ajánlat** lapon.
 1. A képernyő bal oldalán lévő ablaktáblán válassza a **SKUs** fület.
 1. Válassza ki a törölni kívánt SKU-t, és kattintson az adott SKU **Törlés** gombjára.
@@ -366,7 +363,7 @@ További információ: [ajánlat törlése](./cloud-partner-portal/manage-offers
 
 *Web Apps (SaaS-alkalmazások,-bővítmények) & Consulting Services:*
 
-1. A Cloud Partner Portal válassza a kérdőjel ikont, majd kattintson a **támogatás**elemre.
+1. A partner Centerben válassza a kérdőjel ikont, majd kattintson a **támogatás**elemre.
 1. Nyissa meg a következőt: <https://go.microsoft.com/fwlink/?linkid=844975>.
 1. A támogatás lapon válassza ki az ajánlat típusát.
 1. Válassza a közzétett ajánlat **eltávolítása** lehetőséget.
@@ -395,7 +392,7 @@ Látogasson el a [Microsoft GTM Services webhelyére](https://partner.microsoft.
 
 **Hol támogatják a Microsoft Web Properties szolgáltatásban elérhető Azure Marketplace-megoldásokat?**
 
-Az Azure Marketplace-megoldások a Microsoft [Azure Portal]és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőalapú fejlesztők és informatikai szakemberek minden bejelentkezéskor a partneri megoldásokat használják. A partneri megoldások egy részhalmaza is be van mutatva és el lesz forgatva az [Azure Marketplace kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure Solutions oldalán](https://azure.microsoft.com/solutions/).
+Az Azure Marketplace-megoldások a Microsoft [Azure Portalra]és az [Azure Marketplace webhelyén](https://azuremarketplace.microsoft.com/marketplace/)érhetők el. Az Azure-t használó felhőalapú fejlesztők és informatikai szakemberek minden bejelentkezéskor a partneri megoldásokat használják. A partneri megoldások egy részhalmaza is be van mutatva és el lesz forgatva az [Azure Marketplace kezdőlapján](https://azuremarketplace.microsoft.com/marketplace) és az [Azure Solutions oldalán](https://azure.microsoft.com/solutions/).
 
 ### <a name="billing-and-payments"></a>Számlázás és fizetés
 
@@ -419,19 +416,19 @@ Jelentkezzen be [Microsoft ügyfélszolgálatatel](https://support.microsoft.com
 
 **Kihez fordulok az Azure Marketplace általános támogatási problémáira?**
 
-A használhatósággal vagy hibaelhárítással kapcsolatos általános alkalmazások támogatásához forduljon [Cloud Partner Portal támogatási szolgálathoz](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
+A használhatósággal vagy hibaelhárítással kapcsolatos általános alkalmazások támogatásához forduljon a [partner Center támogatási szolgálatához](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
 
 Az Azure Marketplace megvásárlásával kapcsolatos számlázási és előfizetési problémákért forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
 **Kivel tudok kapcsolatba lépni a közzétételi vagy ajánlat-kezelési kérdésekkel?**
 
-Látogasson el az [Azure Marketplace kiadói útmutatóba](marketplace-publishers-guide.md) a naprakész erőforrásokhoz és dokumentumokhoz a gyakori kérdések között. Emellett [a Cloud Partner Portal Microsoft ügyfélszolgálata](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)is bejelentkezhet a jegybe.
+Látogasson el az [Azure Marketplace kiadói útmutatóba](marketplace-publishers-guide.md) a naprakész erőforrásokhoz és dokumentumokhoz a gyakori kérdések között. Emellett a [partner Center Microsoft ügyfélszolgálata](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)is naplózhatja a jegyeket.
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace kiadóknak
 
 **Hogyan a földrajzi rendelkezésre állást a különböző országokban/régiókban való értékesítés engedélyezéséhez?**
 
-1.  A Cloud Partner Portal Navigáljon arra az SKU-ra, amelyhez új országokat/régiókat szeretne hozzáadni.  Az **SKU részletei**között navigáljon az **ország/régió rendelkezésre állása** területre, és kattintson a **régiók kiválasztása**elemre.
+1.  A partner Centerben Navigáljon arra az SKU-ra, amelyhez új országokat/régiókat szeretne hozzáadni.  Az **SKU részletei**között navigáljon az **ország/régió rendelkezésre állása** területre, és kattintson a **régiók kiválasztása**elemre.
 
     ![Régiók kiválasztása](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
@@ -474,9 +471,9 @@ Ha a vásárlást nagyon alacsony áron szeretné elvégezni, a Microsoft javasl
 
 Igen, a támogatási jegyen keresztüli kérelme alapján a Microsoft feldolgozza a krediteket az ügyfélnek, ha azt indokoltnak tartja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](/azure/marketplace/marketplace-publishers-guide) oldalára.
 
 
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "69997819"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz 
@@ -37,7 +37,7 @@ Az identitás az informatikai biztonság új vezérlő síkja. Így a hitelesít
 ### <a name="out-of-scope"></a>Hatókörön kívül
 Azok a szervezetek, amelyek nem rendelkeznek meglévő helyszíni címtár-lábnyommal, nem a jelen cikk középpontjában állnak. Ezek a vállalatok jellemzően csak a felhőben hoznak létre identitásokat, ami nem igényel hibrid identitási megoldást. A csak felhőalapú identitások kizárólag a felhőben találhatók, és nem kapcsolódnak a megfelelő helyszíni identitásokhoz.
 
-## <a name="authentication-methods"></a>Hitelesítési módszerek
+## <a name="authentication-methods"></a>Hitelesítési módok
 Ha az Azure AD Hybrid Identity megoldás az új vezérlő síkja, a hitelesítés a Felhőbeli hozzáférés alapja. A megfelelő hitelesítési módszer kiválasztása kulcsfontosságú első döntés az Azure AD Hybrid Identity megoldás létrehozásához. A Azure AD Connect használatával konfigurált hitelesítési módszer implementálása, amely a felhőben lévő felhasználókat is kiépíti.
 
 A hitelesítési módszer kiválasztásához figyelembe kell vennie az időt, a meglévő infrastruktúrát, az összetettséget és a választott megvalósítás költségeit. Ezek a tényezők minden szervezet esetében eltérőek, és idővel változhatnak. 
@@ -67,9 +67,6 @@ A következő szakasz segítségével eldöntheti, hogy melyik hitelesítési m�
 
 ## <a name="decision-tree"></a>Döntési fa
 
-> [!NOTE]
-> A PTA csak alternatív AZONOSÍTÓval működik, ha a UserPrincipalName másik AZONOSÍTÓként van kiválasztva. Csak ezután szinkronizálja a helyszíni UserPrincipalName az AD-ből a HRE-be. További információ: [az áteresztő hitelesítés támogatása "alternatív azonosító" néven felhasználónévként a "userPrincipalName" helyett?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
-
 ![Azure AD-hitelesítés döntési fája](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 A döntéssel kapcsolatos kérdések részletei:
@@ -89,7 +86,7 @@ A döntéssel kapcsolatos kérdések részletei:
 
 ## <a name="detailed-considerations"></a>Részletes megfontolások
 
-### <a name="cloud-authentication-password-hash-synchronization"></a>Felhőbeli hitelesítés: Jelszókivonat-szinkronizálás
+### <a name="cloud-authentication-password-hash-synchronization"></a>Felhőbeli hitelesítés: jelszó-kivonat szinkronizálása
 
 * **Erőfeszítés**. A jelszó-kivonatolási szinkronizáláshoz a legkevesebb erőfeszítést kell tenni az üzembe helyezés, a karbantartás és az infrastruktúra terén.  Ez az erőkifejtési szint jellemzően olyan szervezetekre vonatkozik, amelyeknek csak a felhasználóknak kell bejelentkezniük az Office 365, az SaaS-alkalmazásokba és más Azure AD-alapú erőforrásokhoz. Ha be van kapcsolva, a jelszó-kivonat szinkronizálása a Azure AD Connect szinkronizálási folyamatának része, és két percenként fut.
 
@@ -111,7 +108,7 @@ A döntéssel kapcsolatos kérdések részletei:
 
 Tekintse át a [jelszó-kivonatok szinkronizálásának megvalósítása](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) című témakört.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Felhőbeli hitelesítés: Átmenő hitelesítés  
+### <a name="cloud-authentication-pass-through-authentication"></a>Felhőalapú hitelesítés: átmenő hitelesítés  
 
 * **Erőfeszítés**. Az átmenő hitelesítéshez egy vagy több (három) egyszerűsített ügynököt kell telepíteni a meglévő kiszolgálókon. Ezeknek az ügynököknek hozzáféréssel kell rendelkezniük a helyszíni Active Directory tartományi szolgáltatásokokhoz, beleértve a helyszíni AD-tartományvezérlőket is. Kimenő hozzáférésre van szükségük az internethez és a tartományvezérlőkhöz való hozzáféréshez. Emiatt nem támogatott az ügynökök üzembe helyezése peremhálózati hálózatban. 
 
@@ -139,12 +136,12 @@ Tekintse át az [átmenő hitelesítés implementálása](../../active-directory
 
 * **Felhasználói élmény**. Az összevont hitelesítés felhasználói élménye az összevonási Farm funkcióinak, topológiájának és konfigurációjának megvalósításán múlik. Egyes szervezeteknek erre a rugalmasságra van szükségük az összevonási farmhoz való hozzáféréshez és a biztonsági követelmények kielégítéséhez. Beállíthatja például, hogy a belsőleg csatlakoztatott felhasználók és eszközök automatikusan jelentkezzenek be a felhasználókba anélkül, hogy hitelesítő adatokat kelljen megadniuk. Ez a konfiguráció azért működik, mert már be van jelentkezve az eszközeibe. Ha szükséges, néhány speciális biztonsági funkció nehezebbé teszi a felhasználók bejelentkezési folyamatát.
 
-* **Speciális forgatókönyvek**. Általában akkor van szükség összevont hitelesítési megoldásra, ha az ügyfeleknek olyan hitelesítési követelményük van, amelyet az Azure AD natív módon nem támogat. [A megfelelő bejelentkezési lehetőség](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)kiválasztásához tekintse meg a részletes információkat. Vegye figyelembe a következő gyakori követelményeket:
+* **Speciális forgatókönyvek**. Általában akkor van szükség összevont hitelesítési megoldásra, ha az ügyfeleknek olyan hitelesítési követelményük van, amelyet az Azure AD natív módon nem támogat. [A megfelelő bejelentkezési lehetőség kiválasztásához](https://blogs.msdn.microsoft.com/samueld/2017/06/13/choosing-the-right-sign-in-option-to-connect-to-azure-ad-office-365/)tekintse meg a részletes információkat. Vegye figyelembe a következő gyakori követelményeket:
 
   * Intelligens kártyák vagy tanúsítványok használatát igénylő hitelesítés.
   * A helyszíni MFA-kiszolgálók vagy az összevont identitás-szolgáltatót igénylő külső többtényezős szolgáltatók.
   * Hitelesítés harmadik féltől származó hitelesítési megoldások használatával. Tekintse meg az [Azure ad-összevonás kompatibilitási listáját](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * A bejelentkezéshez szükség van egy sAMAccountName, például: tartomány \ Felhasználónév, egyszerű felhasználónév (UPN) helyett, például user@domain.com:.
+  * A bejelentkezéshez szükség van egy sAMAccountName, például: tartomány \ Felhasználónév, egyszerű felhasználónév (UPN) helyett, például user@domain.com.
 
 * Az **üzletmenet folytonossága**. Az összevont rendszerek általában a kiszolgálók terheléses, farmként ismert tömbjét igénylik. Ez a farm belső hálózati és peremhálózati topológiában van konfigurálva a hitelesítési kérések magas rendelkezésre állásának biztosítása érdekében.
 
@@ -177,13 +174,13 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 
 ## <a name="comparing-methods"></a>Módszerek összehasonlítása
 
-|Figyelembe|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS-sel|
+|Figyelembe|Jelszó-kivonat szinkronizálása + zökkenőmentes SSO|Átmenő hitelesítés + zökkenőmentes egyszeri bejelentkezés|Összevonás az AD FS rendszerrel|
 |:-----|:-----|:-----|:-----|
-|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni követelmények|
-|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|Nincsenek|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
-|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|Nincsenek|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
+|Hol történik a hitelesítés?|A felhőben|A felhőben a biztonságos jelszó-ellenőrzési csere után a helyszíni hitelesítési ügynökkel|Helyszíni|
+|A helyszíni kiszolgálóra vonatkozó követelmények a kiépítési rendszeren túl: Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynökhöz|Két vagy több AD FS-kiszolgáló<br><br>Két vagy több WAP-kiszolgáló a peremhálózati/DMZ-hálózaton|
+|Milyen követelmények vonatkoznak a helyszíni internetre és a hálózatkezelésre a kiépítési rendszeren túl?|None|[Kimenő internet-hozzáférés](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) a hitelesítési ügynököket futtató kiszolgálókról|[Bejövő internetes hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a peremhálózati WAP-kiszolgálókhoz<br><br>Bejövő hálózati hozzáférés AD FS kiszolgálókhoz a peremhálózati WAP-kiszolgálókról<br><br>Hálózati terheléselosztás|
 |Van SSL-tanúsítványra vonatkozó követelmény?|Nem|Nem|Igen|
-|Van állapot-figyelési megoldás?|Nem kötelező|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
+|Van állapot-figyelési megoldás?|Nem szükséges|A [Azure Active Directory felügyeleti központ](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) által megadott ügynök állapota|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
 |A felhasználók egyszeri bejelentkezést kapnak a felhőalapú erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen, [zökkenőmentes egyszeri bejelentkezéssel](../../active-directory/hybrid/how-to-connect-sso.md)|Igen|
 |Milyen típusú bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + jelszó<br><br>Integrált Windows-hitelesítés [zökkenőmentes SSO](../../active-directory/hybrid/how-to-connect-sso.md) használatával<br><br>[Másodlagos bejelentkezési azonosító](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + jelszó<br><br>sAMAccountName + jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány-és intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Másodlagos bejelentkezési azonosító](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Támogatott a vállalati Windows Hello?|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*A Windows Server 2016-tartomány működési szintjét igényli*|[Kulcs megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modellje](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
@@ -197,7 +194,7 @@ Az alábbi ábrák az Azure AD Hybrid Identity megoldással használható, az eg
 > [!NOTE] 
 > Az Azure AD feltételes hozzáférés szolgáltatásban az egyéni vezérlők jelenleg nem támogatják az eszközök regisztrálását.
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlatok
 Az Identity rendszer biztosítja, hogy a felhasználók hozzáférjenek a felhőalapú alkalmazásokhoz, valamint az áttelepített és a felhőben elérhetővé tenni kívánt üzletági alkalmazásokhoz. Annak érdekében, hogy a jogosult felhasználók a szervezet bizalmas adataiból származó, produktív és rosszul működő felhasználókat is megőrizzen, a hitelesítés szabályozza az alkalmazásokhoz való hozzáférést.
 
 A jelszó-kivonatolási szinkronizálást a választott hitelesítési módszerhez használhatja vagy engedélyezheti a következő okok miatt:
@@ -222,7 +219,7 @@ Ez a cikk a felhőalapú alkalmazásokhoz való hozzáférés támogatásához a
 
 Vegye figyelembe az egyes hitelesítési módszereket. A megoldás üzembe helyezésének és a felhasználói élményének a megterhelése az üzleti igények kielégítése érdekében? Értékelje ki, hogy a szervezetnek szüksége van-e az egyes hitelesítési módszerek speciális forgatókönyvekre és üzletmenet-folytonossági szolgáltatásaira. Végezetül értékelje ki az egyes hitelesítési módszerek szempontjait. Ezek közül bármelyiket meggátolja az Ön döntésének megvalósításában?
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Napjaink világában a fenyegetések napi 24 órában jelennek meg, és bárhonnan érkeznek. Implementálja a megfelelő hitelesítési módszert, és csökkenti a biztonsági kockázatokat, és gondoskodik az identitások védelméről.
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure PowerShell példaszkript – felügyelt erőforráscsoport lekérése és virtuális gépek átméretezése |} A Microsoft Docs
-description: Azure PowerShell-példaszkript – felügyelt erőforráscsoport lekérése és virtuális gépek átméretezése
+title: Azure PowerShell parancsfájl-minta – felügyelt erőforráscsoport lekérése és virtuális gépek átméretezése | Microsoft Docs
+description: Azure PowerShell parancsfájlt biztosít az Azure által felügyelt alkalmazásokhoz tartozó felügyelt erőforráscsoport beszerzéséhez. A szkript átméretezi a virtuális gépeket.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9e8930c95495673c0082a82757ed6d8137900b6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171490"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330122"
 ---
-# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és a PowerShell-lel virtuális gépek átméretezése
+# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése a PowerShell-lel
 
 Ez a parancsfájl erőforrásokat kér le egy felügyelt erőforráscsoportból, és átméretezi az erőforráscsoportban található virtuális gépeket.
 
@@ -38,12 +38,12 @@ Ez a szkript a következő parancsokat használja egy felügyelt alkalmazás üz
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport-nevet az eredmények szűréséhez. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és az erőforrás típusa, az eredmények szűréséhez. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Frissíti egy virtuális gép méretét. |
+| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Listázza a felügyelt alkalmazásokat. Adja meg az erőforráscsoport nevét az eredmények kiépítéséhez. |
+| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Listázza az erőforrásokat. Adjon meg egy erőforráscsoportot és egy erőforrástípust az eredmény kiépítéséhez. |
+| [Frissítés – AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Frissíti egy virtuális gép méretét. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).

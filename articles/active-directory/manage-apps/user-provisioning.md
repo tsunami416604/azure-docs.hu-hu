@@ -15,12 +15,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef652b05f62218ee1d0e72543bfa546f0c14abe
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 5ff6d9e33e15aa04adfa03705172166492f87e30
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001709"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330023"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>A felhasználók üzembe helyezésének automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory
 
@@ -56,11 +56,11 @@ A funkció használatának néhány gyakori indítéka a következők:
 
 Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az egyes alkalmazások gyártói által biztosított felhasználói felügyeleti API-végpontokhoz való csatlakozással. Ezek a felhasználói felügyeleti API-végpontok lehetővé teszik az Azure AD számára a felhasználók programozott módon történő létrehozását, frissítését és eltávolítását. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat.
 
-![Azure AD-kiépítési szolgáltatás @ no__t-1 @ no__t-2Figure 1: Az Azure AD-kiépítési szolgáltatás @ no__t-0
+![Azure AD-kiépítési szolgáltatás @ no__t-1 *. ábra: az Azure ad kiépítési szolgáltatása*
 
-@no__t 0Outbound-felhasználó kiépítési munkafolyamata @ no__t-1 @ no__t-2Figure 2: "Kimenő" felhasználó kiépítési munkafolyamata az Azure AD-ből a népszerű SaaS-alkalmazásokhoz @ no__t-0
+@no__t – 0Outbound-felhasználó kiépítési munkafolyamata @ no__t – 1 *. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből népszerű SaaS-alkalmazásokhoz*
 
-@no__t 0Inbound-felhasználó kiépítési munkafolyamata @ no__t-1 @ no__t-2Figure 3: "Bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows Server Active Directory @ no__t-0
+@no__t – 0Inbound-felhasználó kiépítési munkafolyamata @ no__t – 1 *. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows Server Active Directory*
 
 ## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Milyen alkalmazásokat és rendszereket használhatok az Azure AD automatikus felhasználói üzembe helyezéséhez?
 
@@ -99,7 +99,7 @@ A Azure Active Directory portál használatával konfigurálhatja az Azure AD ki
 
 1. Válassza a **létesítési mód** automatikus beállítását a rendszergazdai hitelesítő adatok, hozzárendelések, Indítás és Leállítás, valamint a szinkronizálás beállításainak megadásához.
 
-   - A **rendszergazdai hitelesítő adatok** kibontásával adja meg azokat a hitelesítő adatokat, amelyek szükségesek ahhoz, hogy az Azure ad csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Ez a szakasz azt is lehetővé teszi, hogy engedélyezze az e-mailes értesítéseket, ha a hitelesítő adatok meghiúsulnak, vagy a kiépítési feladat [karanténba](#quarantine)kerül.
+   - A **rendszergazdai hitelesítő adatok** kibontásával adja meg azokat a hitelesítő adatokat, amelyek szükségesek ahhoz, hogy az Azure ad csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Ez a szakasz azt is lehetővé teszi, hogy engedélyezze az e-mailes értesítéseket, ha a hitelesítő adatok meghiúsulnak, vagy a kiépítési feladat [karanténba](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)kerül.
    - A **leképezések** kibontásával megtekintheti és szerkesztheti az Azure ad és a célalkalmazás közötti felhasználói attribútumokat, amikor a felhasználói fiókokat kiépítik vagy frissítik. Ha a célalkalmazás támogatja azt, ez a szakasz lehetővé teszi a csoportok és felhasználói fiókok üzembe helyezésének igény szerinti konfigurálását. Válasszon ki egy leképezést a táblázatban a leképezési szerkesztő jobbra való megnyitásához, ahol megtekintheti és testreszabhatja a felhasználói attribútumokat.
 
      A **hatóköri szűrők** közlik a kiépítési szolgáltatással, hogy a forrásrendszer mely felhasználói és csoportjai legyenek kiépítve vagy kiépítve a célként megadott rendszerbe. Az **attribútum-hozzárendelés** ablaktáblán válassza ki a **forrásoldali objektum hatókörét** az adott attribútumérték szűréséhez. Például megadhatja, hogy csak a „Department” attribútumhoz „Sales” értékkel rendelkező felhasználók tartozzanak az átadás hatókörébe. További információkért tekintse meg [a hatókörszűrők használatát ismertető cikket](define-conditional-rules-for-provisioning-user-accounts.md).
@@ -125,7 +125,7 @@ A kiépítési szolgáltatás indításakor a rendszer az első szinkronizálás
 
 1. Az összes felhasználó és csoport lekérdezése a forrásoldali rendszerből, az [attribútum-hozzárendelésekben](customize-application-attributes.md)definiált összes attribútum beolvasása.
 1. A visszaadott felhasználók és csoportok szűrése bármely konfigurált [hozzárendelés](assign-user-or-group-access-portal.md) vagy [attribútum-alapú hatókör-szűrő](define-conditional-rules-for-provisioning-user-accounts.md)használatával.
-1. Ha egy felhasználó hozzá van rendelve vagy hatókörben van az üzembe helyezéshez, a szolgáltatás lekérdezi a megfelelő felhasználót a megadott [egyező attribútumokkal](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha a userPrincipal neve megegyezik a megfelelő attribútummal, és leképezi a felhasználónevet a célhelyen, akkor a kiépítési szolgáltatás lekérdezi a célként megadott rendszerrendszert a forrásrendszer userPrincipal nevének megfelelő felhasználónevek számára.
+1. Ha egy felhasználó hozzá van rendelve vagy hatókörben van az üzembe helyezéshez, a szolgáltatás lekérdezi a megfelelő felhasználót a megadott [egyező attribútumokkal](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha a userPrincipal neve megegyezik a megfelelő attribútummal, és leképezi a felhasználónevet a célként megadott rendszeren, a kiépítési szolgáltatás lekérdezi a célként megadott rendszerrendszert a forrásrendszer userPrincipal-értékeinek megfelelő felhasználónevek számára.
 1. Ha nem található egyező felhasználó a célszámítógépen, a rendszer a forrásrendszer által visszaadott attribútumok használatával hozza létre. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját, amely az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 1. Ha a rendszer megfelelő felhasználót talál, az a forrásrendszer által megadott attribútumok használatával frissül. A felhasználói fiók egyeztetése után a kiépítési szolgáltatás észleli és gyorsítótárazza az új felhasználóhoz tartozó rendszer AZONOSÍTÓját, amely az adott felhasználóra vonatkozó összes jövőbeli művelet futtatására szolgál.
 1. Ha az attribútum-hozzárendelések "Reference" attribútumokat tartalmaznak, a szolgáltatás további frissítéseket hoz létre a célszámítógépen a hivatkozott objektumok létrehozásához és összekapcsolásához. Előfordulhat például, hogy egy felhasználó "Manager" attribútummal rendelkezik a célszámítógépen, amely egy másik, a célszámítógépen létrehozott felhasználóhoz van társítva.
@@ -173,7 +173,7 @@ Ha a megcélzott rendszerre irányuló hívások többsége vagy mindegyike egy 
 
 Karantén esetén a növekményes ciklusok gyakorisága naponta egyszer csökken.
 
-A kiépítési feladatot a rendszer eltávolítja a karanténba, miután az összes jogsértő hibát kijavította, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva.
+A kiépítési feladatot a rendszer eltávolítja a karanténba, miután az összes jogsértő hibát kijavította, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Mennyi időt vesz igénybe a felhasználók kiépítése?
 

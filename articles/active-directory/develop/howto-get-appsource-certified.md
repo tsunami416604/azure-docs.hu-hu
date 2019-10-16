@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835214"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374096"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>A Azure Active Directory minősítésének beszerzése a AppSource
 
@@ -33,15 +33,15 @@ Ha önálló SaaS-alkalmazást szeretne listázni a AppSource-on, az alkalmazás
 
 ## <a name="guides-and-code-samples"></a>Útmutatók és mintakód-minták
 
-Ha szeretné megtudni, hogyan integrálhatja alkalmazását az Azure AD-vel az Open ID-vel való kapcsolat használatával, kövesse az útmutatókat és a kód mintáit a [Azure Active Directory fejlesztői útmutatójában], és ismerkedjen meg a(v1-overview.md#get-started "fejlesztők számára készült Azure ad-val").
+Ha szeretné megtudni, hogyan integrálhatja alkalmazásait az Azure AD-vel az Open ID-kapcsolat használatával, kövesse a [Azure Active Directory fejlesztői útmutatójában](v1-overview.md#get-started "Ismerkedés az Azure AD fejlesztői szolgáltatásokkal való használatába")található útmutatók és kódok mintáit.
 
 ## <a name="multi-tenant-applications"></a>Több-bérlős alkalmazások
 
-A *több-bérlős alkalmazások* olyan alkalmazások, amelyek bármely olyan cég vagy szervezet felhasználóitól fogadnak bejelentkezést, amely külön példány, konfiguráció vagy központi telepítés nélkül rendelkezik az Azure ad-vel. A AppSource javasolja, hogy az alkalmazások több-bérlőt alkalmazzanak az ingyenes próbaidőszakos felhasználói élmény érdekében.
+A *több-bérlős alkalmazások* olyan alkalmazások, amelyek bármely olyan cég vagy szervezet felhasználóitól fogadnak bejelentkezést, amely külön példány, konfiguráció vagy központi telepítés nélkül rendelkezik az Azure ad-vel. A AppSource javasolja, hogy az alkalmazások több-bérlőt alkalmazzanak *az ingyenes* próbaidőszakos felhasználói élmény érdekében.
 
 Az alkalmazáson belüli több-bérlő engedélyezéséhez kövesse az alábbi lépéseket:
-1. Állítsa `Multi-Tenanted` be a `Yes` tulajdonságot az alkalmazás regisztrációjának adataira a [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások egybérlős konfigurációként vannak konfigurálva. *[](#single-tenant-applications)*
-1. Frissítse a kódot a kérelmeknek a `common` végpontba való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}` `https://login.microsoftonline.com/common*`a verzióról a verzióra.
+1. Állítsa be `Multi-Tenanted` tulajdonságot `Yes` értékre az alkalmazás regisztrációs adataiban a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Alapértelmezés szerint a Azure Portalban létrehozott alkalmazások *[egybérlős](#single-tenant-applications)* konfigurációként vannak konfigurálva.
+1. Frissítse a kódot a kérelmeknek a `common` végpontra való küldéséhez. Ehhez frissítse a végpontot `https://login.microsoftonline.com/{yourtenant}` értékről `https://login.microsoftonline.com/common*`-re.
 1. Egyes platformok, például az ASP .NET esetében frissíteni kell a kódot, hogy több kiállító is el legyen fogadva.
 
 A több-bérlős alkalmazással kapcsolatos további információkért lásd: [Hogyan lehet bejelentkezni bármelyik Azure Active Directory (Azure ad) felhasználót a több-bérlős alkalmazás mintájának használatával](howto-convert-app-to-be-multi-tenant.md).
@@ -50,9 +50,9 @@ A több-bérlős alkalmazással kapcsolatos további információkért lásd: [H
 
 Az *egybérlős alkalmazások* olyan alkalmazások, amelyek csak egy meghatározott Azure ad-példány felhasználóitól fogadnak bejelentkezéseket. A külső felhasználók (beleértve a más szervezetektől származó munkahelyi vagy iskolai fiókokat, vagy a személyes fiókok) bejelentkezhetnek egy egybérlős alkalmazásba az egyes felhasználók vendég fiókként való hozzáadása után az Azure AD-példányhoz, amelyet az alkalmazás regisztrál. 
 
-A felhasználókat az Azure ad [B2B](../b2b/what-is-b2b.md) -együttműködésen keresztül is hozzáadhatja vendég fiókként az Azure ad-hez, és ezt [programozott](../../active-directory-b2c/code-samples.md)módon is elvégezheti. A B2B használatakor a felhasználók létrehozhatnak olyan önkiszolgáló portált, amelyhez nem szükséges meghívót bejelentkezni. További információ: önkiszolgáló [portál az Azure ad B2B Collaboration-regisztrációhoz](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
+A felhasználókat az Azure ad [B2B-együttműködésen](../b2b/what-is-b2b.md) keresztül is hozzáadhatja vendég fiókként az Azure ad-hez, és ezt [programozott](../../active-directory-b2c/code-samples.md)módon is elvégezheti. A B2B használatakor a felhasználók létrehozhatnak olyan önkiszolgáló portált, amelyhez nem szükséges meghívót bejelentkezni. További információ: [önkiszolgáló portál az Azure ad B2B Collaboration-regisztrációhoz](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
-Az egybérlős alkalmazások lehetővé teszik a kapcsolatfelvételt, de ha engedélyezni szeretné a AppSource által javasolt egyszeres vagy ingyenes próbaverziót, engedélyezze a többszörös kihelyezés használatát az alkalmazásban.
+Az egybérlős alkalmazások lehetővé teszik a *kapcsolatfelvételt* , de ha engedélyezni szeretné a AppSource által javasolt egyszeres vagy ingyenes próbaverziót, engedélyezze a többszörös kihelyezés használatát az alkalmazásban.
 
 ## <a name="appsource-trial-experiences"></a>AppSource próbaverziók
 
@@ -111,22 +111,22 @@ A partneri próbaidőszakot akkor használhatja, ha egy manuális vagy hosszú t
 
 A AppSource-próbaverzióval kapcsolatos további információkért tekintse meg [ezt a videót](https://aka.ms/trialexperienceforwebapps). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- Az Azure AD-bejelentkezéseket támogató alkalmazások létrehozásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
 - A SaaS-alkalmazás AppSource való listázásával kapcsolatos információkért lásd: AppSource- [partner adatai](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Támogatás kérése
 
 Az Azure AD-integrációhoz a [stack Overflowt](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) használjuk a Közösséggel a támogatás biztosításához.
 
-Javasoljuk, hogy először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései szerepelnek a [ `[azure-active-directory]` és `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)a címkével.
+Javasoljuk, hogy először Kérdezzen rá Stack Overflow kérdéseire, és Böngésszen a meglévő problémák között, és ellenőrizze, hogy valaki megkérdezte-e a kérdést. Győződjön meg arról, hogy a kérdései vagy megjegyzései [`[azure-active-directory]` és `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)címkével rendelkeznek.
 
 A következő Megjegyzések szakaszban visszajelzéseket adhat meg, és segítheti a tartalom pontosítását és kialakítását.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

@@ -1,17 +1,17 @@
 ---
 title: Egyéni szolgáltató létrehozása és használata
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és használhat egyéni szolgáltatót.
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre és használhat egy egyéni Azure-szolgáltatót. Egyéni szolgáltatók használata az Azure-beli munkafolyamatok módosításához.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 053cf9fca03bf58cf10c313ae2569ce1918a46b9
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6217e9007f20cb365aff0837f58f1a6074a3e6ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172903"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330057"
 ---
 # <a name="create-and-use-a-custom-provider"></a>Egyéni szolgáltató létrehozása és használata
 
@@ -34,15 +34,15 @@ A végpont létrehozása után létrehozhat egy egyéni szolgáltatót a szolgá
 
 Tulajdonság | Szükséges | Leírás
 ---|---|---
-**name** | Igen | A végpont definíciójának neve. Az Azure a/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders alatti API-n keresztül teszi elérhetővé a nevet<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
+**név** | Igen | A végpont definíciójának neve. Az Azure a/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders alatti API-n keresztül teszi elérhetővé a nevet<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName}
 **routingType** | Nem | A végponti szerződés típusa Ha az érték nincs megadva, a rendszer alapértelmezés szerint a "proxy" értéket adja meg.
 **végpont** | Igen | A végpont, amelybe a kérelmeket át kell irányítani. Ez a végpont kezeli a kérés válaszát, illetve a kérelem mellékhatásait.
 
-A **végpont** értéke az Azure Function alkalmazás triggerének URL-címe. A `<yourapp>`, `<funcname>`, és`<functionkey>` helyőrzőket a létrehozott Function alkalmazás értékeivel kell helyettesíteni.
+A **végpont** értéke az Azure Function alkalmazás triggerének URL-címe. A `<yourapp>`, `<funcname>` és `<functionkey>` helyőrzőket a létrehozott Function alkalmazás értékeivel kell helyettesíteni.
 
 ## <a name="define-custom-actions-and-resources"></a>Egyéni műveletek és erőforrások definiálása
 
-Az egyéni szolgáltató a **műveletek** és a **resourceTypes** tulajdonságai között modellezett végpont-definíciók listáját tartalmazza. A **műveletek** tulajdonság az egyéni szolgáltató által elérhetővé tett egyéni műveletekre mutat, a **resourceTypes** tulajdonság pedig az egyéni erőforrások. Ebben az oktatóanyagban az egyéni szolgáltatónak van egy nevű `myCustomAction` művelet tulajdonsága és egy nevű `myCustomResources` **resourceTypes** tulajdonsága.
+Az egyéni szolgáltató a **műveletek** és a **resourceTypes** tulajdonságai között modellezett végpont-definíciók listáját tartalmazza. A **műveletek** tulajdonság az egyéni szolgáltató által elérhetővé tett egyéni műveletekre mutat, a **resourceTypes** tulajdonság pedig az egyéni erőforrások. Ebben az oktatóanyagban az egyéni szolgáltató egy `myCustomAction` nevű **Actions** tulajdonságot és egy `myCustomResources` nevű **resourceTypes** tulajdonságot tartalmaz.
 
 ```JSON
 {
@@ -113,7 +113,7 @@ Miután létrehozta az egyéni szolgáltatót, használhatja az új Azure API-ka
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> A `{subscriptionId}` és`{resourceGroupName}` a helyőrzőket le kell cserélnie az előfizetés és az erőforráscsoport között, ahol az egyéni szolgáltatót telepítette.
+> A `{subscriptionId}` és a `{resourceGroupName}` helyőrzőket le kell cserélnie az előfizetéssel és az erőforrás-csoporttal, ahol az egyéni szolgáltatót telepítette.
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -141,7 +141,7 @@ Nincs.
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> A `{subscriptionId}` és`{resourceGroupName}` a helyőrzőket le kell cserélnie az előfizetés és az erőforráscsoport között, ahol az egyéni szolgáltatót telepítette.
+> A `{subscriptionId}` és a `{resourceGroupName}` helyőrzőket le kell cserélnie az előfizetéssel és az erőforrás-csoporttal, ahol az egyéni szolgáltatót telepítette.
 
 #### <a name="create-a-custom-resource"></a>Egyéni erőforrás létrehozása
 
@@ -160,7 +160,7 @@ az resource create --is-full-object \
 Paraméter | Szükséges | Leírás
 ---|---|---
 *teljes objektum* | Igen | Azt jelzi, hogy a tulajdonságok objektum tartalmaz-e más beállításokat, például a helyet, a címkéket, az SKU-t vagy a csomagot.
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
+*ID* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
 *Tulajdonságok* | Igen | A végpontnak küldendő kérelem törzse.
 
 #### <a name="delete-a-custom-resource"></a>Egyéni erőforrás törlése
@@ -171,7 +171,7 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 Paraméter | Szükséges | Leírás
 ---|---|---
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
+*ID* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
 
 #### <a name="retrieve-a-custom-resource"></a>Egyéni erőforrás lekérése
 
@@ -181,7 +181,7 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 Paraméter | Szükséges | Leírás
 ---|---|---
-*id* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
+*ID* | Igen | Az egyéni erőforrás erőforrás-azonosítója. Ez az azonosító az egyéni szolgáltató erőforrás-AZONOSÍTÓjának kiterjesztése.
 
 # <a name="templatetabtemplate"></a>[Sablon](#tab/template)
 
@@ -207,7 +207,7 @@ Példa Resource Manager-sablonra:
 
 Paraméter | Szükséges | Leírás
 ---|---|---
-*resourceTypeName* | Igen | Az egyéni szolgáltatóban definiált **resourceTypes** tulajdonság értéke.`name`
+*resourceTypeName* | Igen | Az egyéni szolgáltatóban definiált **resourceTypes** tulajdonság `name` értéke.
 *resourceProviderName* | Igen | Az egyéni szolgáltató példányának neve.
 *customResourceName* | Igen | Az egyéni erőforrás neve.
 
@@ -216,9 +216,9 @@ Paraméter | Szükséges | Leírás
 > [!NOTE]
 > Az egyéni szolgáltató üzembe helyezésének és használatának befejezése után ne felejtse el törölni az összes létrehozott erőforrást, beleértve az Azure Function alkalmazást is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta az egyéni szolgáltatókat. További információkért lásd:
+Ebben a cikkben megtanulta az egyéni szolgáltatókat. További információ eléréséhez lásd:
 
-- [Útmutató: Egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
-- [Útmutató: Egyéni erőforrások hozzáadása az Azure REST APIhoz](./custom-providers-resources-endpoint-how-to.md)
+- [Útmutató: egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
+- [Útmutató: egyéni erőforrások hozzáadása az Azure REST APIhoz](./custom-providers-resources-endpoint-how-to.md)

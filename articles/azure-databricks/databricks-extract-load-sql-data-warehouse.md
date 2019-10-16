@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: ETL-műveletek végrehajtása Azure Databricks használatával'
+title: 'Oktatóanyag: ETL-műveletek végrehajtása az Azure Databricks használatával'
 description: Megtudhatja, hogyan nyerheti ki a Data Lake Storage Gen2 adatait a Azure Databricksba, átalakíthatja az adatait, majd betöltheti őket a Azure SQL Data Warehouseba.
 author: mamccrea
 ms.author: mamccrea
@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 172921dcb082f511d16394b7693f40edf8394821
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826052"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329769"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
 
 Ebben az oktatóanyagban egy ETL-műveletet (kinyerési, átalakítási és betöltési) műveletet hajt végre Azure Databricks használatával. Az adatok kinyerése Azure Data Lake Storage Gen2ból a Azure Databricksba, a Azure Databricks lévő adatokon futtatott átalakítások futtatása, valamint az átalakított adatok Azure SQL Data Warehouseba való betöltése.
 
@@ -40,32 +40,32 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 > [!Note]
-> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós**előfizetésével.
-> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg azelőfizetését az utólagos elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
+> Ez az oktatóanyag nem hajtható végre az **Azure ingyenes próbaverziós előfizetésével**.
+> Ha ingyenes fiókkal rendelkezik, lépjen a profilba, és változtassa meg az előfizetését **az utólagos**elszámolású verzióra. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket. Ezután [távolítsa el a](https://docs.microsoft.com/azure/billing/billing-spending-limit#remove-the-spending-limit-in-account-center)költségkeretet, és [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) a régiójában lévő vCPU. A Azure Databricks munkaterületének létrehozásakor kiválaszthatja a **próbaverzió (prémium-14 napos ingyenes dBu)** díjszabását, hogy a munkaterület 14 napig elérhető legyen az ingyenes prémium Azure Databricks dBu.
      
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt végezze el ezeket a feladatokat:
 
-* Hozzon létre egy Azure SQL-adattárházat, hozzon létre egy kiszolgálói szintű tűzfalszabály-szabályt, és kapcsolódjon a kiszolgálóhoz kiszolgáló-rendszergazdaként. Lásd [: gyors útmutató: Azure SQL-adattárház létrehozása és lekérdezése a Azure Portalban](../sql-data-warehouse/create-data-warehouse-portal.md).
+* Hozzon létre egy Azure SQL-adattárházat, hozzon létre egy kiszolgálói szintű tűzfalszabály-szabályt, és kapcsolódjon a kiszolgálóhoz kiszolgáló-rendszergazdaként. Tekintse [meg a rövid útmutató: Azure SQL-adattárház létrehozása és lekérdezése a Azure Portal](../sql-data-warehouse/create-data-warehouse-portal.md).
 
-* Hozzon létre egy adatbázis-főkulcsot az Azure SQL-adattárházhoz. Lásd: [adatbázis-főkulcs létrehozása](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
+* Hozzon létre egy főkulcsot az Azure SQL-adattárházhoz. Lásd: [adatbázis-főkulcs létrehozása](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Lásd [: gyors útmutató: Blobok feltöltése, letöltése és listázása a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Lásd [: rövid útmutató: Blobok feltöltése, letöltése és listázása a Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot. Lásd [: gyors útmutató: Hozzon létre egy Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-quickstart-create-account.md)Storage-fiókot.
+* Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot. Tekintse meg a rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](../storage/blobs/data-lake-storage-quickstart-create-account.md)című témakört.
 
-* Egyszerű szolgáltatásnév létrehozása. További [információ: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
    A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-   * Az [alkalmazás szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) való hozzárendelésével kapcsolatos lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatásnév számára a Data Lake Storage Gen2 fiók hatókörében. Ha a szerepkört a szülő erőforráscsoporthoz vagy előfizetéshez rendeli hozzá, akkor az engedélyekkel kapcsolatos hibák addig jelentkeznek, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
+   * Az [alkalmazás szerepkörhöz való hozzárendelésével](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) kapcsolatos lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatásnév számára a Data Lake Storage Gen2 fiók hatókörében. Ha a szerepkört a szülő erőforráscsoporthoz vagy előfizetéshez rendeli hozzá, akkor az engedélyekkel kapcsolatos hibák addig jelentkeznek, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
       Ha egy hozzáférés-vezérlési listát (ACL) szeretne használni az egyszerű szolgáltatás egy adott fájlhoz vagy könyvtárhoz való hozzárendeléséhez, akkor [a Azure Data Lake Storage Gen2 a hozzáférés-vezérlést](../storage/blobs/data-lake-storage-access-control.md).
 
-   * A cikk beléptetési [értékek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) beolvasása szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+   * A cikk beléptetési [értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Gyűjtse össze a szükséges információkat
 
@@ -73,17 +73,17 @@ Győződjön meg arról, hogy elvégezte az oktatóanyag előfeltételeit.
 
    Mielőtt elkezdené, a következő információkat kell megjelennie:
 
-   :heavy_check_mark:  Az adatbázis neve, az adatbázis-kiszolgáló neve, a Felhasználónév és az Azure SQL-adattárház jelszava.
+   : heavy_check_mark: az Azure SQL-adattárház adatbázisának neve, adatbázis-kiszolgálójának neve, felhasználóneve és jelszava.
 
-   :heavy_check_mark:  A blob Storage-fiók hozzáférési kulcsa.
+   : heavy_check_mark: a blob Storage-fiók elérési kulcsa.
 
-   :heavy_check_mark:  A Data Lake Storage Gen2 Storage-fiók neve.
+   : heavy_check_mark: a Data Lake Storage Gen2 Storage-fiók neve.
 
-   :heavy_check_mark:  Az előfizetés bérlői azonosítója.
+   : heavy_check_mark: az előfizetés bérlői azonosítója.
 
-   :heavy_check_mark:  Az Azure Active Directory (Azure AD) szolgáltatásban regisztrált alkalmazás AZONOSÍTÓját.
+   : heavy_check_mark: a Azure Active Directory (Azure AD) szolgáltatásban regisztrált alkalmazás AZONOSÍTÓját.
 
-   :heavy_check_mark:  Az Azure AD-ben regisztrált alkalmazás hitelesítési kulcsa.
+   : heavy_check_mark: az Azure AD-ben regisztrált alkalmazás hitelesítési kulcsa.
 
 ## <a name="create-an-azure-databricks-service"></a>Azure Databricks szolgáltatás létrehozása
 
@@ -123,7 +123,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
     * Adjon egy nevet a fürtnek.
 
-    * Győződjön meg arról, hogy a **megszakítás perc \_ inaktivitás után \_**  jelölőnégyzet be van állítva. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
+    * Győződjön meg arról, hogy a **Befejezés után \_ @ no__t-2 perc inaktivitás** jelölőnégyzetet választja. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
 
     * Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
@@ -135,11 +135,11 @@ Ebben a szakaszban egy jegyzetfüzetet hoz létre Azure Databricks munkaterület
 
 2. A bal oldalon válassza a **munkaterület**lehetőséget. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
 
-    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
+    ![Jegyzetfüzet létrehozása a Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Scala** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    A ![Databricks lévő jegyzetfüzet részleteinek megadása] A (./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks lévő jegyzetfüzet részleteinek megadása")
+    A ![Databricks található jegyzetfüzet részleteinek]megadása a(./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks")
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -182,11 +182,11 @@ Ebben a szakaszban egy jegyzetfüzetet hoz létre Azure Databricks munkaterület
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. A kód blokkban cserélje le a `<app-id>` `<tenant-id>`, `<password>`,, és `<storage-account-name>` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le `<file-system-name>` a helyőrző értékét bármilyen névre, amelyet a fájlrendszerhez szeretne adni.
+6. Ebben a kódban a blokkban cserélje le a `<app-id>`, `<password>`, `<tenant-id>` és `<storage-account-name>` helyőrző értékeket az oktatóanyag előfeltételeinek teljesítése során gyűjtött értékekre. Cserélje le a `<file-system-name>` helyőrző értéket a fájlrendszert adni kívánt névre.
 
-   * A `<app-id>` és`<password>` az az alkalmazás, amelyet az Active Directoryban regisztrált az egyszerű szolgáltatásnév létrehozása során.
+   * A `<app-id>` és a `<password>` az Active Directory szolgáltatásban regisztrált alkalmazásból származik, egy egyszerű szolgáltatásnév létrehozása során.
 
-   * Az `<tenant-id>` előfizetésből származik.
+   * A `<tenant-id>` az előfizetésből származik.
 
    * A `<storage-account-name>` a Azure Data Lake Storage Gen2 Storage-fiók neve.
 
@@ -365,17 +365,17 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
    ```
 
    > [!NOTE]
-   > Ez a példa a `forward_spark_azure_storage_credentials` jelzőt használja, ami azt eredményezi, hogy az SQL Data Warehouse egy hozzáférési kulccsal fér hozzá az adatokhoz a blob Storage-ból. Ez az egyetlen támogatott hitelesítési módszer.
+   > Ez a példa a `forward_spark_azure_storage_credentials` jelzőt használja, ami azt eredményezi, hogy a SQL Data Warehouse hozzáférési kulccsal fér hozzá az adatokhoz a blob Storage-ból. Ez az egyetlen támogatott hitelesítési módszer.
    >
    > Ha az Azure Blob Storage a virtuális hálózatok kiválasztására korlátozódik, SQL Data Warehouse a [hozzáférési kulcsok helyett Managed Service Identity](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)szükséges. Ez a következő hibaüzenetet eredményezi: "Ez a kérelem nem jogosult a művelet végrehajtására."
 
 6. Kapcsolódjon az SQL-adatbázishoz, és ellenőrizze, hogy megjelenik-e a **SampleTable**nevű adatbázis.
 
-   ![A minta táblázat ellenőrzése](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Minta tábla ellenőrzése")
+   ![A minta tábla](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "ellenőrzésének") ellenőrzése
 
 7. Futtasson egy választó lekérdezést a tábla tartalmának ellenőrzéséhez. A táblának ugyanazzal az adattal kell rendelkeznie, mint a **renamedColumnsDF** dataframe.
 
-    ![A minta táblázat tartalmának ellenőrzése](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "A minta táblázat tartalmának ellenőrzése")
+    ![A](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "") minta táblázat tartalmának ellenőrzése
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -383,9 +383,9 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. A Azure Databricks 
 
 ![Databricks-fürt leállítása](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítás ennyi perc \_ inaktivitás után \_**  jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

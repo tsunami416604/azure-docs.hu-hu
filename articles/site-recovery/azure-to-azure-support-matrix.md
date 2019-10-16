@@ -5,25 +5,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 895ce98f290ce23580bb70023e2539ab4272f8b8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350266"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376328"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
-Ez a cikk az Azure-beli virtuális gépeknek az egyik Azure-régióból a másikba való vész-helyreállításának támogatását és előfeltételeit foglalja össze a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
+Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régióból a másikba való vész-helyreállításának támogatását és előfeltételeit a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával.
 
 
 ## <a name="deployment-method-support"></a>Üzembe helyezési módszer támogatása
 
 **Üzembe helyezés** |  **Támogatás**
 --- | ---
-**Azure Portal** | Támogatott.
+**Azure Portalra** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
 **Parancssori felület** | Jelenleg nem támogatott
@@ -32,7 +32,7 @@ Ez a cikk az Azure-beli virtuális gépeknek az egyik Azure-régióból a másik
 ## <a name="resource-support"></a>Erőforrás-támogatás
 
 **Erőforrás-művelet** | **Részletek**
---- | --- | ---
+--- | --- 
 **Tárolók áthelyezése az erőforráscsoportok között** | Nem támogatott
 **Számítási/tárolási/hálózati erőforrások áthelyezése az erőforráscsoportok között** | Nem támogatott.<br/><br/> Ha a virtuális gép replikálása után áthelyez egy virtuális gépet vagy a hozzá tartozó összetevőket, például a Storage/Network szolgáltatást, le kell tiltania, majd újra engedélyeznie kell a virtuális gép replikálását.
 **Azure-beli virtuális gépek replikálása egyik előfizetésből a másikba vész-helyreállítás céljából** | Ugyanazon Azure Active Directory bérlőn belül támogatott.
@@ -57,15 +57,15 @@ Országon belüli vész-helyreállításra fenntartott korlátozott régiók |A 
 
 >[!NOTE]
 >
-> - **Dél-Brazíliában**a következő régiókba replikálhatja és átveheti a feladatátvételt: USA déli középső régiója, az USA nyugati középső régiója, USA 2. keleti régiója, USA nyugati régiója, USA 2. nyugati régiója és az USA északi középső régiója.
-> - A Dél-Brazília csak olyan forrás-régióként használható, amelyből a virtuális gépek a Site Recovery használatával replikálhatók. Nem működhet célként megadott régióként. Ez a földrajzi távolságok miatti késési problémák miatt fordul elő.
+> - **Dél-Brazíliában**a következő régiókba replikálhatja és átveheti a feladatokat: USA déli középső régiója, USA nyugati középső régiója, USA 2. keleti régiója, USA nyugati régiója, USA 2. nyugati régiója és az USA északi középső régiója.
+> - A Dél-Brazília csak olyan forrás-régióként használható, amelyből a virtuális gépek a Site Recovery használatával replikálhatók. Nem működhet célként megadott régióként. Ez a földrajzi távolságok miatti késési problémák miatt fordul elő. Vegye figyelembe, hogy ha a feladat a Dél-Brazília régióból való átadását célozza meg, a feladat-visszavétel Dél-Brazíliában is támogatott.
 > - Olyan régiókban is dolgozhat, amelyekhez megfelelő hozzáférése van.
 > - Ha a régió, amelyben létre kívánja hozni a tárolót, nem jelenik meg, győződjön meg arról, hogy az előfizetése hozzáfér az adott régióban található erőforrások létrehozásához.
 > - Ha a replikáció engedélyezésekor nem látja a földrajzi fürtön belüli régiót, győződjön meg arról, hogy az előfizetése rendelkezik a virtuális gépek létrehozásához szükséges engedélyekkel az adott régióban.
 
 
 
-## <a name="cache-storage"></a>Gyorsítótár
+## <a name="cache-storage"></a>Gyorsítótár-tároló
 
 Ez a táblázat a Site Recovery által a replikálás során használt cache Storage-fiók támogatását foglalja össze.
 
@@ -84,15 +84,16 @@ Site Recovery támogatja az ebben a részben felsorolt operációs rendszereket 
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-A Windows Server 2019 | Server Core, kiszolgáló asztali felhasználói felülettel
-Windows Server 2016  | Server Core, kiszolgáló asztali felhasználói felülettel
-Windows Server 2012 R2 |
-Windows Server 2012 |
-Windows Server 2008 R2 | SP1 vagy újabb verzió futtatása
-Windows 10 (x64) |
-Windows 8,1 (x64) |
-Windows 8 (x64) |
-Windows 7 (x64) | SP1 vagy újabb futtatása (a Windows 7 RTM nem támogatott)
+Windows Server 2019 | A Server Core és a Server asztali felhasználói felülettel támogatott.
+Windows Server 2016  | Támogatott Server Core, kiszolgáló asztali felülettel.
+Windows Server 2012 R2 | Támogatott.
+Windows Server 2012 | Támogatott.
+Windows Server 2008 R2 SP1/SP2 | Támogatott.<br/><br/> Az Azure-beli virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 R2 SP1/SP2 rendszert futtató számítógépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows Server 2008 SP2 | Az Azure-beli virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4493730) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 SP2-t futtató gépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows 10 (x64) | Támogatott.
+Windows 8,1 (x64) | Támogatott.
+Windows 8 (x64) | Támogatott.
+Windows 7 (x64) SP1-től | Az Azure virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 7 SP1 rendszert futtató számítógépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 
 #### <a name="linux"></a>Linux
 
@@ -119,20 +120,20 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 14,04 LTS | 9,26 | 3.13.0-24 – általános – 3.13.0 – 170 – általános,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.15.0-1023-Azure-4.15.0-1045-Azure |
 14,04 LTS | 9,25 | 3.13.0-24 – általános – 3.13.0-169-Generic,<br/>3.16.0-25 – általános – 3.16.0-77 – általános,<br/>3.19.0-18 – általános – 3.19.0 – 80 – általános,<br/>4.2.0-18 – általános – 4.2.0 – 42 – általános,<br/>4.4.0-21 – általános 4.4.0-146-Generic,<br/>4.15.0-1023-Azure-4.15.0-1042-Azure |
 |||
-16.04 LTS | 9,28 | 4.4.0-21 – általános – 4.4.0 – 159 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 58 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1055-Azure|
-16.04 LTS | 9,27 | 4.4.0-21 – általános – 4.4.0 – 154 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-55 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1051-Azure|
-16.04 LTS | 9,26 | 4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 50 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1045-Azure|
-16.04 LTS | 9,25 | 4.4.0-21 – általános 4.4.0-146-Generic,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 48 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1042-Azure|
+16,04 LTS | 9,28 | 4.4.0-21 – általános – 4.4.0 – 159 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 58 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1055-Azure|
+16,04 LTS | 9,27 | 4.4.0-21 – általános – 4.4.0 – 154 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0-55 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1051-Azure|
+16,04 LTS | 9,26 | 4.4.0-21 – általános – 4.4.0 – 148 – általános,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0-42 – általános<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 50 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1045-Azure|
+16,04 LTS | 9,25 | 4.4.0-21 – általános 4.4.0-146-Generic,<br/>4.8.0-34 – általános – 4.8.0 – 58 – általános,<br/>4.10.0-14 – általános – 4.10.0 – 42 – általános,<br/>4.11.0-13-Generic – 4.11.0-14 – általános,<br/>4.13.0-16 – általános – 4.13.0 – 45 – általános,<br/>4.15.0-13 – általános – 4.15.0 – 48 – általános<br/>4.11.0-1009-Azure-4.11.0-1016-Azure,<br/>4.13.0-1005-Azure-ról 4.13.0-1018-Azure <br/>4.15.0-1012-Azure-4.15.0-1042-Azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Az Azure Virtual Machines által támogatott Debian kernel-verziók
 
 **Kiadási** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-Debian 7 | 9.25, 9.26, 9.27, 9.28 | 3.2.0-4-amd64 to 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.25, 9.26, 9.27, 9.28 | 3.2.0-4-amd64 – 3.2.0-6-amd64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
 Debian 8 | 9,28 | 3.16.0-4-amd64 – 3.16.0-10-amd64, 4.9.0 -0. BPO. 4-amd64 – 4.9.0 -0. BPO. 9 – amd64 |
 Debian 8 | 9,27 | 3.16.0-4-amd64 – 3.16.0-9-amd64, 4.9.0 -0. BPO. 4 – amd64 – 4.9.0 -0. BPO. 9 – amd64 |
-Debian 8 | 9,25, 9,26 | 3.16.0-4-amd64 to 3.16.0-8-amd64, 4.9.0-0.bpo.4-amd64 to 4.9.0-0.bpo.8-amd64 |
+Debian 8 | 9,25, 9,26 | 3.16.0-4-amd64 – 3.16.0-8-amd64, 4.9.0 -0. BPO. 4 – amd64 – 4.9.0 -0. BPO. 8 – amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Támogatott SUSE Linux Enterprise Server 12 kernel-verzió az Azure Virtual Machines szolgáltatásban
 
@@ -146,7 +147,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11 –
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikált gépek – Linux fájlrendszer/vendég tárterület
 
 * Fájlrendszerek: ext3, ext4, ReiserFS (csak SUSE Linux Enterprise Server esetén), XFS, BTRFS
-* A Volume Manager: LVM2
+* Volume Manager: LVM2
 * Többutas szoftver: Device Mapper
 
 
@@ -154,11 +155,11 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11 –
 
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
-Size | Bármely Azure-beli VM-méret legalább 2 CPU-maggal és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/windows/sizes.md).
+Méret | Bármely Azure-beli VM-méret legalább 2 CPU-maggal és 1 GB RAM-mal | Ellenőrizze az Azure-beli [virtuális gépek méretét](../virtual-machines/windows/sizes.md).
 Rendelkezésre állási csoportok | Támogatott | Ha az alapértelmezett beállításokkal engedélyezi egy Azure-beli virtuális gép replikálását, a rendszer automatikusan létrehoz egy rendelkezésre állási készletet a forrás régió beállításai alapján. Ezek a beállítások módosíthatók.
 Rendelkezésre állási zónák | Támogatott |
 Hybrid use Benefit (HUB) | Támogatott | Ha a forrásoldali virtuális gépen engedélyezve van a HUB-licenc, a feladatátvételi teszt vagy a feladatátvételi művelet a HUB-licencet is használja.
-Virtuálisgép-méretezési csoportok | Nem támogatott |
+Virtuális gépek méretezési csoportjai | Nem támogatott |
 Azure Gallery-lemezképek – Microsoft published | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Azure Gallery-rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
 Egyéni rendszerképek – harmadik féltől származó közzététel | Támogatott | Támogatott, ha a virtuális gép támogatott operációs rendszeren fut.
@@ -202,7 +203,7 @@ Azure Disk Encryption (ADE) Windows operációs rendszerhez | Felügyelt lemezek
 Azure Disk Encryption (ADE) Linux operációs rendszerhez | Nem támogatott |
 Gyors Hozzáadás | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében.
 Gyors lemez eltávolítása | Nem támogatott | Ha eltávolít egy adatlemezt a virtuális gépen, le kell tiltania a replikációt, és újra engedélyeznie kell a replikációt a virtuális gépen.
-Lemez kizárása | Támogatja. A konfiguráláshoz [](azure-to-azure-exclude-disks.md) a PowerShellt kell használnia. |  Az ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
+Lemez kizárása | Támogatja. A konfiguráláshoz a [PowerShellt](azure-to-azure-exclude-disks.md) kell használnia. |  Az ideiglenes lemezek alapértelmezés szerint ki vannak zárva.
 Közvetlen tárolóhelyek  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
 Kibővíthető fájlkiszolgáló  | Összeomlás-konzisztens helyreállítási pontok esetén támogatott. Az alkalmazás konzisztens helyreállítási pontjai nem támogatottak. |
 LRS | Támogatott |
@@ -243,10 +244,10 @@ Belső terheléselosztó | Támogatott | Az előre konfigurált terheléseloszt�
 Nyilvános IP-cím | Támogatott | Társítson egy meglévő nyilvános IP-címet a hálózati adapterhez. Vagy hozzon létre egy nyilvános IP-címet, és társítsa azt a hálózati adapterhez egy helyreállítási tervben Azure Automation parancsfájl használatával.
 NSG a hálózati adapteren | Támogatott | Társítsa a NSG a hálózati adapterhez egy helyreállítási tervben Azure Automation parancsfájl használatával.
 NSG az alhálózaton | Támogatott | Társítsa a NSG az alhálózathoz egy helyreállítási tervben Azure Automation parancsfájl használatával.
-Fenntartott (statikus) IP-cím | Támogatott | Ha a forrás virtuális gépen lévő hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózatnak ugyanaz az IP-címe, akkor a feladatátvételi virtuális géphez van rendelve.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik a rendelkezésre álló IP-címmel, az alhálózat egyik elérhető IP-címe a virtuális gép számára van fenntartva.<br/><br/> Rögzített IP-címet és alhálózatot is megadhat **a replikált elemek** > **beállításainak** > **számítási és hálózati** > **adapterei**között.
+Fenntartott (statikus) IP-cím | Támogatott | Ha a forrás virtuális gépen lévő hálózati adapter statikus IP-címmel rendelkezik, és a célként megadott alhálózatnak ugyanaz az IP-címe, akkor a feladatátvételi virtuális géphez van rendelve.<br/><br/> Ha a célként megadott alhálózat nem rendelkezik a rendelkezésre álló IP-címmel, az alhálózat egyik elérhető IP-címe a virtuális gép számára van fenntartva.<br/><br/> Rögzített IP-címet és alhálózatot is megadhat a **replikált elemekben** > **Beállítások** > **számítási és hálózati** > **hálózati adapterek**esetében.
 Dinamikus IP-cím | Támogatott | Ha a forrás hálózati adaptere dinamikus IP-címzést tartalmaz, a feladatátvételt okozó virtuális gép hálózati adaptere alapértelmezés szerint is dinamikus.<br/><br/> Ha szükséges, módosíthatja a rögzített IP-címet.
 Több IP-cím | Nem támogatott | Ha olyan virtuális gépet hajt végre, amelynek több IP-címmel rendelkező hálózati adaptere van, akkor a rendszer csak a forrás régióban lévő hálózati adapter elsődleges IP-címét tárolja. Több IP-cím hozzárendeléséhez hozzáadhat virtuális gépeket egy [helyreállítási tervhez](recovery-plan-overview.md) , és csatolhat egy parancsfájlt további IP-címek hozzárendeléséhez a csomaghoz, vagy a módosítást manuálisan vagy parancsfájllal is elvégezheti a feladatátvétel után. 
-Traffic Manager     | Támogatott | A Traffic Manager előre konfigurálható úgy, hogy a forgalmat a rendszer rendszeres időközönként a forrás régiójában lévő végpontra irányítsa, a feladatátvétel esetén pedig a cél régióban lévő végpontra.
+Forgalomkezelő     | Támogatott | A Traffic Manager előre konfigurálható úgy, hogy a forgalmat a rendszer rendszeres időközönként a forrás régiójában lévő végpontra irányítsa, a feladatátvétel esetén pedig a cél régióban lévő végpontra.
 Azure DNS | Támogatott |
 Egyéni DNS  | Támogatott |
 Nem hitelesített proxy | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
@@ -254,10 +255,10 @@ Hitelesített proxy | Nem támogatott | Ha a virtuális gép hitelesített proxy
 Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](site-recovery-azure-to-azure-networking-guidance.md)    
 VNET – VNET-kapcsolatok | Támogatott | [További információ](site-recovery-azure-to-azure-networking-guidance.md)  
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások hozzáférése engedélyezett a Storage-fiókhoz.
-Felgyorsított hálózat | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](site-recovery-azure-to-azure-networking-guidance.md) .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](site-recovery-azure-to-azure.md).

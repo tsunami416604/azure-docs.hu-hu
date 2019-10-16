@@ -1,35 +1,39 @@
 ---
-title: Azure Data Factory leképezési adatfolyam JSON-fogalmai
-description: Data Factory a leképezési adatfolyam beépített képességekkel rendelkezik a JSON-dokumentumok hierarchiákkal való kezeléséhez
+title: A JSON használata a Azure Data Factory adatforgalmának leképezésében
+description: Azure Data Factory a leképezési adatfolyam beépített képességekkel rendelkezik a JSON-dokumentumok hierarchiákkal való kezeléséhez
 author: kromerm
 ms.author: makromer
+ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029661"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326514"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Az adatfolyam JSON-kezelésének leképezése
 
+## <a name="creating-json-structures-in-derived-column"></a>JSON-struktúrák létrehozása származtatott oszlopban
 
+A származtatott oszlop Expression Builder használatával hozzáadhat egy összetett oszlopot az adatfolyamathoz. A származtatott oszlop transzformációjában adjon hozzá egy új oszlopot, és nyissa meg a Kifejezésszerkesztőt a kék mezőre kattintva. Az oszlopok összetett létrehozásához manuálisan megadhatja a JSON-struktúrát, vagy a UX használatával interaktív módon adhat hozzá aloszlopokat.
 
-## <a name="creating-json-structures-in-expression-editor"></a>JSON-struktúrák létrehozása a kifejezés-szerkesztőben
-### <a name="derived-column-transformation"></a>Származtatott oszlop átalakítása
-Egy összetett oszlop az adatfolyamathoz való hozzáadása egyszerűbb a származtatott oszlop kifejezés-szerkesztőjén keresztül. Új oszlop hozzáadását és a szerkesztő megnyitását követően két lehetőség közül választhat: írja be a JSON-struktúrát manuálisan, vagy használja a felhasználói felületet az aloszlopok interaktív hozzáadásához.
+### <a name="using-the-expression-builder-ux"></a>A Expression Builder UX használata
 
-#### <a name="interactive-ui-json-design"></a>Interaktív felhasználói felület JSON-kialakítása
-A kimeneti séma oldali ablaktáblán új aloszlopokat adhat hozzá a `+` menü használatával: ![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
+A kimeneti séma oldali ablaktáblán vigye az egérmutatót egy oszlop fölé, és kattintson a plusz ikonra. Válassza az **aloszlop hozzáadása** lehetőséget az oszlop összetett típusának elvégzéséhez.
 
-Ettől kezdve az új oszlopok és aloszlopok is hozzáadhatók ugyanúgy. Minden nem összetett mezőhöz egy kifejezés adható hozzá a jobb oldali kifejezés-szerkesztőben.
+![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
+
+Ugyanilyen módon adhat hozzá további oszlopokat és aloszlopokat. Minden nem összetett mezőhöz egy kifejezés adható hozzá a jobb oldali kifejezés-szerkesztőben.
 
 ![Összetett oszlop](media/data-flow/complexcolumn.png "összetett oszlopa")
 
-#### <a name="manual-json-design"></a>Kézi JSON-kialakítás
+### <a name="entering-the-json-structure-manually"></a>A JSON-struktúra manuális megadása
+
 JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és adja meg a kifejezést a szerkesztőben. A kifejezés a következő általános formátumot követi:
+
 ```
 @(
     field1=0,
@@ -38,7 +42,9 @@ JSON-struktúra manuális hozzáadásához vegyen fel egy új oszlopot, és adja
     )
 )
 ```
-Ha ezt a kifejezést egy "complexColumn" nevű oszlophoz adta meg, akkor a rendszer a következő JSON-ként írja a fogadóba:
+
+Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a rendszer a fogadóba írja a következő JSON-t:
+
 ```
 {
     "complexColumn": {
@@ -77,7 +83,15 @@ Ha ezt a kifejezést egy "complexColumn" nevű oszlophoz adta meg, akkor a rends
 ```
 
 ## <a name="source-format-options"></a>Forrás formátum beállításai
+
+A JSON-adatkészletek adatáramlási forrásaként való használata lehetővé teszi öt további beállítás megadását. Ezek a beállítások a **forrás beállításai** lap **JSON-beállítások** című részében találhatók.  
+
+![JSON-beállítások](media/data-flow/json-settings.png "JSON-beállításai")
+
 ### <a name="default"></a>Alapértelmezett
+
+Alapértelmezés szerint a JSON-adatolvasás a következő formátumban történik.
+
 ```
 { "json": "record 1" }
 { "json": "record 2" }
@@ -85,23 +99,10 @@ Ha ezt a kifejezést egy "complexColumn" nevű oszlophoz adta meg, akkor a rends
 ```
 
 ### <a name="single-document"></a>Egyetlen dokumentum
-* Egy lehetőség
-```
-[
-    {
-        "json": "record 1"
-    },
-    {
-        "json": "record 2"
-    },
-    {
-        "json": "record 3"
-    }
-]
-```
 
-* Második lehetőség
-```
+Ha **egyetlen dokumentum** van kiválasztva, az adatforgalom leképezése minden fájlból beolvas egy JSON-dokumentumot. 
+
+``` json
 File1.json
 {
     "json": "record 1"
@@ -117,6 +118,9 @@ File3.json
 ```
 
 ### <a name="unquoted-column-names"></a>Nem jegyzett oszlopnevek
+
+Ha nem **jegyzett oszlopnevek** vannak kiválasztva, az adatfolyamatok leképezése beolvassa azokat a JSON-oszlopokat, amelyeket nem idézőjelek öveznek. 
+
 ```
 { json: "record 1" }
 { json: "record 2" }
@@ -124,13 +128,19 @@ File3.json
 ```
 
 ### <a name="has-comments"></a>Megjegyzésekkel rendelkezik
-```
+
+Válassza a **Megjegyzések lehetőséget,** ha a JSON-adatként C++ C vagy stílusú Megjegyzés van.
+
+``` json
 { "json": /** comment **/ "record 1" }
 { "json": "record 2" }
 { /** comment **/ "json": "record 3" }
 ```
 
 ### <a name="single-quoted"></a>Egyszer idézett
+
+Válassza az **egyszeres** idézőjel lehetőséget, ha a JSON-mezők és-értékek idézőjelek helyett szimpla idézőjeleket használnak.
+
 ```
 { 'json': 'record 1' }
 { 'json': 'record 2' }
@@ -138,6 +148,9 @@ File3.json
 ```
 
 ### <a name="backslash-escaped"></a>Megmenekült fordított perjel
+
+Jelölje ki az **egyszeres idézőjelet** , ha fordított perjeleket használ a JSON-Adatkarakterek elmenekülni.
+
 ```
 { "json": "record 1" }
 { "json": "\} \" \' \\ \n \\n record 2" }
@@ -145,38 +158,41 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Magasabb rendű függvények
-## <a name="filter"></a>filter
+
+A magasabb rendű függvény egy függvény, amely egy vagy több függvényt argumentumként vesz igénybe. Az alábbi lista a tömböket engedélyező adatfolyamatok leképezése által támogatott magasabb rendű függvények listáját tartalmazza.
+
+### <a name="filter"></a>Szűrő
 Kiszűri a tömb azon elemeit, amelyek nem felelnek meg a megadott predikátumnak. A szűrő a predikátum függvény egy elemére mutató hivatkozást vár #itemként.
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 ```
 filter([1, 2, 3, 4], #item > 2) => [3, 4]
 filter(['a', 'b', 'c', 'd'], #item == 'a' || #item == 'b') => ['a', 'b']
 ```
 
-## <a name="map"></a>térkép
+### <a name="map"></a>térkép
 A tömb minden elemét egy új elemre képezi le a megadott kifejezés használatával. A Térkép a kifejezés függvény egy elemére mutató hivatkozást vár #itemként.
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 ```
 map([1, 2, 3, 4], #item + 2) => [3, 4, 5, 6]
 map(['a', 'b', 'c', 'd'], #item + '_processed') => ['a_processed', 'b_processed', 'c_processed', 'd_processed']
 ```
 
-## <a name="reduce"></a>csökkentheti
+### <a name="reduce"></a>csökkentheti
 Egy tömb elemeinek felhalmozódása. A csökkentés egy gyűjtőre és egy elemre mutató hivatkozást vár az első kifejezésben #acc és #itemként, és az eredményül kapott értéket a második kifejezés függvényében használt #resultnak számítja ki.
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 ```
 reduce([1, 2, 3, 4], 0, #acc + #item, #result) => 10
 reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>Rendezés
+### <a name="sort"></a>Rendezés
 Rendezi a tömböt a megadott predikátum függvény használatával. A rendezés két egymást követő elemre mutató hivatkozást vár a kifejezés függvényben #item1 és #item2.
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 ```
 sort([4, 8, 2, 3], compare(#item1, #item2)) => [2, 3, 4, 8]
 sort(['a3', 'b2', 'c1'],
@@ -185,15 +201,15 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-## <a name="contains"></a>contains
+### <a name="contains"></a>tartalmaz
 Igaz értéket ad vissza, ha a megadott tömb bármely eleme igaz értékre értékeli a megadott predikátumban. A tartalmaz egy hivatkozást a predikátum függvény egyik elemére #itemként.
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 ```
 contains([1, 2, 3, 4], #item == 3) => true
 contains([1, 2, 3, 4], #item > 5) => false
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A származtatott oszlop transzformációjának használata a hierarchikus struktúrák kiépítéséhez](data-flow-derived-column.md)

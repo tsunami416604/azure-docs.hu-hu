@@ -14,25 +14,25 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972906"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329427"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
 > [!NOTE]
 > Ez a cikk azt ismerteti, hogyan értelmezhető és szabályozható a Azure Monitor naplók költségei. A kapcsolódó cikkek, a [monitorozási használat és a becsült költségek](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) azt írják le, hogyan lehet megtekinteni a használati és becsült költségeket több Azure-figyelési funkció között különböző díjszabási modellekhez.
 
-Azure Monitor naplókat úgy tervezték, hogy a nagyvállalati forrásból származó vagy az Azure-ban üzembe helyezett nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa.  Ez lehet egy elsődleges illesztőprogram, a szervezet számára, miközben költséghatékonyságot végső soron az alapul szolgáló illesztőprogram. Ebből a célból fontos tisztában lenni azzal, hogy egy Log Analytics munkaterület díja nem csak a gyűjtött adatok mennyiségétől függ, hanem a kiválasztott csomagtól, és azt is, hogy mennyi ideig kell tárolnia a csatlakoztatott forrásokból generált adatokat.  
+Azure Monitor naplókat úgy tervezték, hogy a nagyvállalati forrásból származó vagy az Azure-ban üzembe helyezett nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa.  Habár ez lehet a szervezet elsődleges illesztőprogramja, a költséghatékonyság végül a mögöttes illesztőprogram. Ebből a célból fontos tisztában lenni azzal, hogy egy Log Analytics munkaterület díja nem csak a gyűjtött adatok mennyiségétől függ, hanem a kiválasztott csomagtól, és azt is, hogy mennyi ideig kell tárolnia a csatlakoztatott forrásokból generált adatokat.  
 
 Ebben a cikkben áttekintjük, hogyan lehet proaktív módon figyelni a betöltött adatmennyiséget és a tárterület növekedését, valamint korlátokat meghatározni a kapcsolódó költségek szabályozására. 
 
 ## <a name="pricing-model"></a>Díjszabási modell
 
-Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését és opcionálisan **a hosszú** adatmegőrzést is igénybe véve. Minden Log Analytics munkaterület külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatfeldolgozás mennyisége az alábbi tényezőktől függően jelentős lehet: 
+Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését és opcionálisan **a hosszú** adatmegőrzést is igénybe véve. Az adatmennyiséget a rendszer a tárolni kívánt adattárolás méretének megfelelően méri. Minden Log Analytics munkaterület külön szolgáltatásként lesz felszámítva, és hozzájárul az Azure-előfizetéshez tartozó számlához. Az adatfeldolgozás mennyisége az alábbi tényezőktől függően jelentős lehet: 
 
   - Az engedélyezett felügyeleti megoldások száma és konfigurációja (például 
   - Figyelt virtuális gépek száma
@@ -48,17 +48,17 @@ Ha még nem használ Azure Monitor naplókat, a [Azure monitor árképzési szá
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>A használati és becsült költségek megismerése
 
-Ha most Azure Monitor naplókat használ, könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Ehhez használja a **log Analytics használati és becsült költségeket** az adatfelhasználás áttekintéséhez és elemzéséhez. Az egyes megoldások által összegyűjtött adatok mennyiségét jeleníti meg, mennyi adatot alatt marad, és a költségek becslése betöltött adatok és adatmegőrzés minden csomagban foglalt adatmennyiségen felüli mennyisége alapján.
+Ha most Azure Monitor naplókat használ, könnyen megismerheti, hogy milyen költségek várhatók a legutóbbi használati szokások alapján. Ehhez használja a **log Analytics használati és becsült költségeket** az adatfelhasználás áttekintéséhez és elemzéséhez. Azt mutatja, hogy az egyes megoldások milyen mennyiségű adatot gyűjtenek, mennyi adatot tartanak fenn, és a költségek becslését a betöltött adatok mennyisége és a benne foglalt mennyiség utáni további megőrzés alapján.
 
 ![Használat és becsült költségek](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
-Ismerje meg részletesen az adatokat, kattintson a felső ikonra vagy a diagramokat, jobb a **használat és becsült költségek** lap. Most már dolgozhat a lekérdezés további részletek, amely a használat.  
+Az adatok részletesebb megismeréséhez kattintson a **használati és becsült költségek** oldalon található diagramok valamelyikének jobb felső sarkában található ikonra. Ezzel a lekérdezéssel a használat további részleteit is megismerheti.  
 
-![Naplók megtekintése](media/manage-cost-storage/logs.png)
+![Naplók nézet](media/manage-cost-storage/logs.png)
 
-A **használat és a becsült költségek** lapon áttekintheti az adatmennyiséget a hónapban. Ez magában foglalja a fogadott és a Log Analytics-munkaterület összes adatot.  A lap tetején található **használati** adatok lehetőségre kattintva megtekintheti a használati irányítópultot, amely a forrás, a számítógép és az ajánlat adatmennyiség-trendjeivel kapcsolatos információkat jeleníti meg. Megtekintheti, és állítsa be a maximális napi adatmennyiséget, vagy módosíthatja a megőrzési időszak kattintson **adatmennyiség-kezelés**.
+A **használat és a becsült költségek** lapon áttekintheti az adatmennyiséget a hónapban. Ebbe beletartozik az Log Analytics munkaterületen fogadott és megőrzött összes adat.  A lap tetején található **használati** adatok lehetőségre kattintva megtekintheti a használati irányítópultot, amely a forrás, a számítógép és az ajánlat adatmennyiség-trendjeivel kapcsolatos információkat jeleníti meg. Ha szeretné megtekinteni és beállítani a napi korlátot, vagy módosítani szeretné a megőrzési időtartamot, kattintson az **adatkötet-kezelés**elemre.
  
-Log Analytics díjak az Azure-elszámolások kerülnek. A számlázás szakaszában az Azure Portal vagy a számlázás az Azure részleteit láthatja a [Azure Billing Portal](https://account.windowsazure.com/Subscriptions).  
+Log Analytics díjak hozzáadódnak az Azure-számlához. Az Azure-számlázás részleteit a Azure Portal vagy a [Azure elszámolási portál](https://account.windowsazure.com/Subscriptions)számlázási szakaszában tekintheti meg.  
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Log Analytics használatának megtekintése az Azure-számlán 
 
@@ -68,50 +68,50 @@ A használatról további ismereteket kaphat, ha [letölti a használatot az Azu
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>A maximális napi adatmennyiség kezelése
 
-Konfigurálja a maximális napi adatmennyiséget, és korlátozhatja a napi bevitelt a munkaterületen, de körültekintően járjon el, mert a cél nem lehet eléri a napi korlátot.  Ellenkező esetben az a nap fennmaradó részében, ami hatással lehet más Azure-szolgáltatások és megoldások, amelynek funkció függhet, naprakész adatok legyenek elérhetők a munkaterület az adatok elvesznek.  Ennek eredményeképpen figyelje meg, és fogadjon megítélnie riasztást küld, ha is hatással van az informatikai szolgáltatásokat támogató erőforrásokban egészségügyi feltételeit.  A napi korlát arra szolgál, hogy kezelje az adatmennyiség váratlan növekedését a felügyelt erőforrásokból, és a korláton belül maradjon, vagy ha korlátozni szeretné a munkaterülethez tartozó nem tervezett díjakat.  
+Beállíthatja a napi korlátot, és korlátozhatja a napi betöltést a munkaterülethez, de körültekintően használhatja, mert a cél nem a napi korlát.  Ellenkező esetben a nap hátralevő részében elveszíti az adatok mennyiségét, ami hatással lehet más Azure-szolgáltatásokra és-megoldásokra, amelyek működése a munkaterületen elérhető naprakész adatoktól függ.  Ennek eredményeképpen az IT-szolgáltatásokat támogató erőforrások állapotára vonatkozó riasztások megfigyelésére és fogadására van lehetőség.  A napi korlát arra szolgál, hogy kezelje az adatmennyiség váratlan növekedését a felügyelt erőforrásokból, és a korláton belül maradjon, vagy ha korlátozni szeretné a munkaterülethez tartozó nem tervezett díjakat.  
 
-A napi korlátot, a gyűjtemény számlázható adattípusok leállítja az a nap hátralevő. Egy figyelmeztetés szalagcím jelenik meg a kiválasztott Log Analytics-munkaterületet a lap tetején, és a egy műveletet a rendszer a *művelet* tábla alatt **LogManagement** kategória. Az adatgyűjtés után a visszaállítási idő alatt meghatározott folytatja *napi korlát lesz beállítva*. Azt javasoljuk, hogy arra az esetre, ha a napi korlátot elérte a konfigurált Ez a művelet események alapján riasztási szabály meghatározása. 
+A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap hátralevő részében leáll. A kijelölt Log Analytics munkaterülethez tartozó oldal tetején megjelenik egy figyelmeztető szalagcím, és a **LogManagement** kategóriában a *művelet* táblába egy műveleti esemény érkezik. Az adatgyűjtés a *napi korlát*alatt megadott alaphelyzetbe állítás időpontját követően fog folytatódni. Javasoljuk, hogy a műveleti esemény alapján határozzon meg egy riasztási szabályt, amely úgy van konfigurálva, hogy értesítést kapjon a napi adatkorlát elérésekor. 
 
 > [!NOTE]
 > A napi korlát nem állítja le az adatgyűjtést Azure Security Centerból, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Milyen napi korlátot meghatározásához azonosítása
+### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
 
-Felülvizsgálat [Log Analytics-használat és becsült költségek](usage-estimated-costs.md) megtudhatja, hogy az adatok betöltési trend és mi az a napi mennyiségi korlát meghatározásához. Kell tekinteni, körültekintően, mivel nem lehet az erőforrások figyeléséhez, a korlát elérése után. 
+Tekintse át [log Analytics használati és becsült költségét](usage-estimated-costs.md) , és Ismerje meg az adatfeldolgozási trendet, valamint azt, hogy mi a napi mennyiségi korlát. Körültekintően kell fontolóra venni, mert a korlát elérésekor nem fogja tudni figyelni az erőforrásokat. 
 
 ### <a name="set-the-daily-cap"></a>A napi korlát beállítása
 
 A következő lépések azt ismertetik, hogyan konfigurálható egy korlát a Log Analytics munkaterület által naponta betöltött adatmennyiség kezelésére.  
 
 1. A munkaterületen válassza a **Felhasználás és becsült költségek** lehetőséget a bal oldali panelen.
-2. Az a **felhasználás és becsült költségek** a kijelölt munkaterület oldalára, kattintson **adatmennyiség-kezelés** az oldal tetején. 
-3. Napi korlát a következő **OFF** – alapértelmezés szerint kattintson **ON** az engedélyezéshez, és állítsa az mennyiségi korlát a GB/nap.
+2. A kiválasztott munkaterület **használati és becsült költségek** lapján kattintson a lap tetején található **adatkötet-kezelés** elemre. 
+3. A napi korlát alapértelmezés szerint **ki van kapcsolva** – az engedélyezéshez kattintson **a** be lehetőségre, majd állítsa be az adatmennyiség korlátját GB/nap értékre.
 
     ![Az adatkorlát konfigurálása Log Analytics](media/manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-daily-cap-reached"></a>Riasztás, ha elérte a napi korlátot
 
-Hogy jelen visual köteg az Azure Portalon, ha az adatok korlát küszöbértéket, amíg ez a viselkedés nem feltétlenül igazítás azonnali figyelmet igénylő működési problémák kezelése.  Az Azure Monitor riasztási értesítés fogadására, létrehozhat egy új riasztási szabály.  További információt a [riasztások létrehozása, megtekintése és kezelése](alerts-metric.md)című témakörben talál.
+Noha a Azure Portal vizualizációs mutatót mutatunk be, amikor eléri az adatkorlátot, ez a viselkedés nem feltétlenül igazodik az azonnali beavatkozást igénylő működési problémák kezeléséhez.  Riasztási értesítés fogadásához létrehozhat egy új riasztási szabályt Azure Monitorban.  További információt a [riasztások létrehozása, megtekintése és kezelése](alerts-metric.md)című témakörben talál.
 
-Az első lépésekhez, az alábbiakban a riasztás az ajánlott beállításokat:
+Az első lépésekhez tekintse meg a riasztás ajánlott beállításait:
 
-- Cél: Válassza ki a Log Analytics erőforrást
-- Feltételek: 
-   - Jel neve: Egyéni naplók keresése
-   - Keresési lekérdezés: Művelet | ahol a Részletek "túlkvóta"
-   - Alapja: Eredmények száma
-   - Feltétel Nagyobb, mint
-   - Küszöb 0
-   - Időszak 5 (perc)
-   - Frekvencia 5 (perc)
-- Riasztási szabály neve: Elérte a napi adatkorlátot
-- Súlyosság: Figyelmeztetés (1. pont)
+- Cél: válassza ki a Log Analytics erőforrást
+- Kritériumok 
+   - Jel neve: egyéni naplók keresése
+   - Keresési lekérdezés: művelet | ahol a Részletek "túlkvóta"
+   - A következő alapján: az eredmények száma
+   - Feltétel: nagyobb, mint
+   - Küszöbérték: 0
+   - Időszak: 5 (perc)
+   - Gyakoriság: 5 (perc)
+- Riasztási szabály neve: elérte a napi adatkorlátot
+- Súlyosság: figyelmeztetés (1. pont)
 
-Riasztás van definiálva, és a eléri a korlátot, riasztás akkor aktiválódik, és hajtja végre a választ a műveletcsoport meghatározott. Küldjön értesítést munkatársainak e-mailek és SMS-EK, valamint automatizálja a műveleteket webhookok, Automation-runbookok használatával vagy [integrálása egy külső ITSM-megoldással](itsmc-overview.md#create-itsm-work-items-from-azure-alerts). 
+Miután meghatározta a riasztást, és elérte a korlátot, a rendszer riasztást indít el, és végrehajtja a műveleti csoportban definiált választ. E-mailben és SMS-ben értesítheti a csapatot, vagy automatizálhatja a műveleteket webhookok, Automation runbookok vagy [külső ITSM-megoldásokkal való integráció](itsmc-overview.md#create-itsm-work-items-from-azure-alerts)révén. 
 
-## <a name="change-the-data-retention-period"></a>Módosítsa az Adatmegőrzés időtartama
+## <a name="change-the-data-retention-period"></a>Az adatmegőrzési időszak módosítása
 
-Az alábbi lépéseket adatért által a munkaterületen milyen hosszú log konfigurálását ismertetik.
+A következő lépések azt írják le, hogyan kell konfigurálni, hogy a rendszer mennyi ideig tárolja a napló adatait a munkaterületen.
 
 ### <a name="default-retention"></a>Alapértelmezett megőrzés
 
@@ -119,17 +119,17 @@ A munkaterület alapértelmezett megőrzésének beállításához
  
 1. Az Azure Portalon a munkaterületen válassza a **használat és becsült költségek** lehetőséget a bal oldali panelen.
 2. A **Felhasználás és becsült költségek** oldalon kattintson az oldal tetején található **Adatmennyiség-kezelés** elemre.
-3. A panelen a csúszka segítségével növelheti vagy csökkentheti a napok számát, és kattintson a **OK**.  Ha a *ingyenes* szint, nem tudja módosítani az Adatmegőrzés időtartama, és annak érdekében, hogy ez a beállítás szabályozza a fizetős csomagra frissíteni szeretne.
+3. A panelen mozgassa a csúszkát a napok számának növeléséhez vagy csökkentéséhez, majd kattintson **az OK**gombra.  Ha az *ingyenes* szintet választja, nem fogja tudni módosítani az adatmegőrzési időszakot, és frissítenie kell a fizetős szintre a beállítás szabályozása érdekében.
 
     ![Munkaterület adatmegőrzési beállításának módosítása](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Az adatmegőrzés a `retentionInDays` paraméterrel is megadható [ARM-n keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméterrel azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a funkció csak az ARM-on keresztül érhető el. 
+Az adatmegőrzés a `retentionInDays` paraméter használatával is [beállítható Azure Resource Manageron keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméterrel azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a funkció csak Azure Resource Manageron keresztül érhető el. 
 
 Két adattípus – `Usage` és `AzureActivity` – alapértelmezés szerint 90 napig őrzi meg a rendszer, és a 90 nap megtartására nem számítunk fel díjat. Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
 
 ### <a name="retention-by-data-type"></a>Megőrzés adattípus szerint
 
-Az egyes adattípusok esetében más adatmegőrzési beállításokat is meg lehet adni. Minden adattípus a munkaterület alerőforrása. A SecurityEvent tábla például a következő módon kezelhető [Azure Resource Managerban (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) :
+Az egyes adattípusok esetében más adatmegőrzési beállításokat is meg lehet adni. Minden adattípus a munkaterület alerőforrása. A SecurityEvent tábla például a következő módon kezelhető [Azure Resource Managerban](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) :
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -161,7 +161,7 @@ Ha egy adott adattípus (ebben a példában SecurityEvent) megőrzését 730 nap
 
 A `Usage` és a `AzureActivity` adattípusok nem állíthatók be egyéni megőrzési értékkel. Ezek az alapértelmezett munkaterület-megőrzési vagy a 90 napos maximális értékkel lesznek végrehajtva. 
 
-Egy nagyszerű eszköz, amely közvetlenül a ARM-hoz csatlakozik az adattípusok megőrzésének beállításához az OSS-eszköz [ARMclient](https://github.com/projectkudu/ARMClient).  További információ a cikkek ARMclient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Íme egy példában a ARMClient használatával, amely a SecurityEvent-adatok 730 napos megőrzését állítja be:
+Egy nagyszerű eszköz, amellyel közvetlenül csatlakozhat Azure Resource Managerhoz az adattípusok megőrzésének beállításához az OSS-eszköz [ARMclient](https://github.com/projectkudu/ARMClient).  További információ a cikkek ARMclient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Íme egy példában a ARMClient használatával, amely a SecurityEvent-adatok 730 napos megőrzését állítja be:
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -172,7 +172,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt árképzési szintek
 
-Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek az 2018. április 2. előtt, vagy a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a régi díjszabási szintek használatához: **Ingyenes**, **önálló (GB-onként)** és **/node (OMS)** .  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a Azure Security Center által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek felhasználó által konfigurálható megőrzése legfeljebb 2 év lehet. 
+Azok az előfizetések, amelyek Log Analytics munkaterülettel vagy Application Insights-erőforrással rendelkeztek az 2018. április 2. előtt, vagy a 2019. február 1. előtt elindított Nagyvállalati Szerződéshoz kapcsolódnak, továbbra is hozzáférhetnek a korábbi díjszabási szintek használatához: **ingyenes**, **Önálló (GB-onként)** és **/csomópont (OMS)** .  Az ingyenes díjszabási szinten lévő munkaterületek napi adatfeldolgozása a 500 MB-ra korlátozódik (kivéve a Azure Security Center által gyűjtött biztonsági adattípusokat), és az adatmegőrzés legfeljebb 7 napig tart. Az ingyenes díjszabási csomag kizárólag értékelési célokra szolgál. Az önálló vagy a csomópontok díjszabási szintjein lévő munkaterületek felhasználó által konfigurálható megőrzése legfeljebb 2 év lehet. 
 
 A 2016. április előtt létrehozott munkaterületek az eredeti **standard** és **prémium** szintű díjszabáshoz is hozzáférnek, amely a 30 és 365 nap rögzített adatmegőrzéssel rendelkezik. Nem hozhatók létre új munkaterületek a **standard** vagy a **prémium** szintű díjszabásban, és ha a munkaterületet kihelyezték ezekből a rétegekből, nem helyezhető vissza. 
 
@@ -186,30 +186,30 @@ Az árképzési szintek korlátozásait [itt](https://docs.microsoft.com/azure/a
 
 Ha a Log Analytics munkaterület örökölt díjszabási csomagokhoz fér hozzá, a régi árképzési szintek közötti váltáshoz:
 
-1. Az Azure Portalon a Log Analytics-előfizetések panelen válasszon ki egy munkaterületet.
+1. A Azure Portal Log Analytics-előfizetések ablaktábláján válasszon ki egy munkaterületet.
 
-2. A munkaterület ablaktáblán alatt **általános**válassza **tarifacsomag**.  
+2. A munkaterület panel **általános**területén válassza az **árképzési szintet**.  
 
-3. A **tarifacsomag**válassza ki a tarifacsomagot, majd kattintson a **kiválasztása**.  
-    ![A kijelölt tarifacsomag](media/manage-cost-storage/workspace-pricing-tier-info.png)
+3. Az **árképzési**szinten válassza ki a díjszabási szintet, majd kattintson a **kiválasztás**elemre.  
+    @no__t – 0Selected díjszabási terv @ no__t-1
 
-Az [árképzési szintet a ARM-n keresztül is beállíthatja](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) a `sku` paraméterrel (`pricingTier` az ARM-sablonban). 
+[Az árképzési szintet a Azure Resource Manager használatával is beállíthatja](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) az ARM-sablonban található `sku` paraméterrel (`pricingTier`). 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Hibaelhárítás, hogy miért Log Analytics már nem gyűjti az adatgyűjtést
 
-Ha az örökölt ingyenes díjszabási szinten van, és naponta több mint 500 MB-nyi adat lett elküldve, az adatgyűjtés a nap hátralevő részében leáll. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  A log Analytics művelet típusú eseményt hoz létre, amikor adatgyűjtés indítása és leállítása. Futtassa a következő lekérdezést a keresésben, és ellenőrizze, hogy eléri-e a napi korlátot és a hiányzó adatértékeket: 
+Ha az örökölt ingyenes díjszabási szinten van, és naponta több mint 500 MB-nyi adat lett elküldve, az adatgyűjtés a nap hátralevő részében leáll. A napi korlát elérésének gyakori oka, hogy Log Analytics leállítja az adatgyűjtést, vagy az adatok hiányoznak.  A Log Analytics egy típusú eseményt hoz létre az adatgyűjtés indításakor és leállításakor. Futtassa a következő lekérdezést a keresésben, és ellenőrizze, hogy eléri-e a napi korlátot és a hiányzó adatértékeket: 
 
 ```kusto
 Operation | where OperationCategory == 'Data Collection Status'
 ```
 
-Amikor az adatgyűjtés leáll, a OperationStatus **figyelmeztetést**jelenít meg. Az adatgyűjtés megkezdésekor a OperationStatus **sikeres**. A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést javasolt művelet:  
+Amikor az adatgyűjtés leáll, a OperationStatus **figyelmeztetést**jelenít meg. Az adatgyűjtés megkezdésekor a OperationStatus **sikeres**. Az alábbi táblázat leírja, hogy az adatgyűjtés miért leáll és egy javasolt művelet az adatgyűjtés folytatásához:  
 
-|OK gyűjtemény leáll| Megoldás| 
+|Az OK gyűjtése leáll| Megoldás| 
 |-----------------------|---------|
-|Elérte az örökölt ingyenes díjszabási csomag napi korlátját |Várja meg, amíg a gyűjtemény indítja újra automatikusan a következő napon, vagy módosítása fizetős tarifacsomagra.|
+|Elérte az örökölt ingyenes díjszabási csomag napi korlátját |Várjon, amíg a gyűjtemény automatikusan újraindul, vagy váltson egy fizetős díjszabási csomagra.|
 |Elérte a munkaterület napi korlátját|Várjon, amíg a gyűjtemény automatikusan újraindul, vagy növelje a napi adatmennyiség kezelése című témakörben leírt napi adatmennyiség korlátját. A napi korlát alaphelyzetbe állításának ideje az **adatmennyiség-kezelés** oldalon látható. |
-|Azure-előfizetés miatt felfüggesztett állapotban van:<br> Ingyenes próbaidőszak véget ért<br> Az Azure pass lejárt<br> Havonta költségkeret elérése (például az MSDN vagy a Visual Studio előfizetési)|Fizetős előfizetéssé alakítani<br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása|
+|Az Azure-előfizetés felfüggesztett állapotban van, a következő okból:<br> Az ingyenes próbaverzió véget ért<br> Az Azure pass lejárt<br> Elérte a havi költségkeretet (például MSDN-vagy Visual Studio-előfizetéssel)|Váltás fizetős előfizetésre<br> Törlési korlát, vagy várjon, amíg a korlát alaphelyzetbe nem áll|
 
 Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *napi adatsapka* -riasztás létrehozása című témakörben leírt lépéseket az adatgyűjtés leállításakor. A következő témakörben ismertetett lépések végrehajtásával konfigurálhat egy e-mailt, webhookot vagy runbook műveletet a riasztási szabályhoz: [műveleti csoport létrehozása](action-groups.md) . 
 
@@ -264,16 +264,16 @@ union withsource = tt *
 
 ## <a name="understanding-ingested-data-volume"></a>A betöltött adatmennyiség ismertetése
 
-Az a **használat és becsült költségek** lapon a *adatbetöltés megoldásonként* küldött adatok teljes mennyiségét, és mekkora küld a rendszer egyes megoldások által látható diagramon. Ez lehetővé teszi, hogy határozza meg a trendeket, például hogy a teljes adathasználat (vagy egy adott megoldás használatának) nő, állandó vagy csökken van hátra. Ennek létrehozásához használt lekérdezés
+A **használat és a becsült költségek** lapon az *adatfeldolgozás egy adott megoldási* diagramon megjeleníti az elküldött adatok teljes mennyiségét, valamint azt, hogy az egyes megoldások milyen mértékben küldik el az adatokat. Ez lehetővé teszi olyan trendek meghatározását, mint például, hogy a teljes adatfelhasználás (vagy egy adott megoldás használata) egyre növekszik-e, és továbbra is állandó vagy csökkenő marad. A létrehozásához használt lekérdezés
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
-Vegye figyelembe, hogy a záradék "ahol IsBillable = true" szűri ki az egyes megoldások, amelynek nem jár Adatbetöltési adattípusok. 
+Vegye figyelembe, hogy a "Where számlázható = true" záradék kiszűri az adattípusokat bizonyos olyan megoldásoktól, amelyekhez nincs betöltési díj. 
 
-Lásd: adatok trendjeit adott adattípusok, például ha az IIS-naplók miatt az adatok tanulmánya szeretné tovább, részletesebben is megtekintheti a:
+Részletesebben is megtekintheti az egyes adattípusok adatváltozásait, például ha az IIS-naplók miatt szeretné tanulmányozni az adatelemzéseket:
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
@@ -303,7 +303,7 @@ union withsource = tt *
 | summarize eventCount=count() by computerName  | sort by count_ nulls last
 ```
 
-Ha meg szeretné tekinteni a számlázható adattípusok darabszáma adatot küldenek, adott számítógéphez, használja:
+Ha szeretné látni, hogy a számlázható adattípusok száma egy adott számítógépre küld adatokat, használja a következőt:
 
 ```kusto
 union withsource = tt *
@@ -336,11 +336,11 @@ Ha a `subscriptionId` értéket `resourceGroup` értékre módosítja, az Azure-
 
 
 > [!NOTE]
-> A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógép** valamint Adatbetöltési kapcsolódó mezőket (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** és **AverageProcessingTimeMs**.
+> A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**).
 
 ### <a name="querying-for-common-data-types"></a>Gyakori adattípusok lekérdezése
 
-Ezután részletesen áttekintjük az adatforrás egy adott típusú, Íme néhány hasznos példa a lekérdezésekre:
+Az adatforrások egy adott adattípussal való mélyebb feltárásához Íme néhány hasznos példa a lekérdezésekre:
 
 + **Biztonsági** megoldás
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
@@ -358,24 +358,24 @@ Ezután részletesen áttekintjük az adatforrás egy adott típusú, Íme néh�
 + **AzureDiagnostics** adattípus
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-### <a name="tips-for-reducing-data-volume"></a>Tippek az adatmennyiség csökkentése
+### <a name="tips-for-reducing-data-volume"></a>Az adatmennyiség csökkentésére szolgáló tippek
 
-Néhány javaslatot a gyűjtött naplók mennyiségét csökkenti a következők:
+Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 
 | A nagy adatmennyiség forrása | Az adatmennyiség csökkentésének módja |
 | -------------------------- | ------------------------- |
 | Biztonsági események            | Válassza a [gyakori vagy minimális biztonsági események](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) lehetőséget <br> Módosítsa a biztonsági naplózási szabályzatot, hogy csak a szükséges eseményeket gyűjtse be. Tekintse át a következőkhöz való eseménygyűjtés szükségességét: <br> - [szűrőplatform naplózása](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [beállításjegyzék naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [fájlrendszer naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernelobjektum naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [leírókezelés naplózása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> – Cserélhető tároló naplózása |
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
-| Rendszernapló                     | Módosítsa a [rendszernapló konfigurációját](data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
+| Syslog                     | Módosítsa a [rendszernapló konfigurációját](data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
 | AzureDiagnostics           | Az erőforrásnapló-gyűjtés módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldáscélzási](../insights/solution-targeting.md) funkcióval megadhatja, hogy csak a szükséges számítógépcsoportoktól gyűjtsön adatokat. |
 
 ### <a name="getting-security-and-automation-node-counts"></a>Biztonsági és automatizálási csomópontok számának beolvasása
 
-Ha a "Száma csomópontonként (OMS)" tarifacsomag, akkor számítunk fel a csomópontok és megoldások száma alapján használja, a Insights számát, valamint a tábla, amelynek, számolunk fel az Analytics-csomópontok megjelennek a a **használat és becsült költségek**lapot.  
+Ha a "per node (OMS)" díjszabási szinten van, akkor a használt csomópontok és megoldások száma alapján számítjuk fel a díjat, az elemzések és az elemzési csomópontok száma a **használat és a becsült költség** lapon jelenik meg a táblázatban.  
 
-Tekintse meg a különböző biztonsági csomópontok számát, a lekérdezés használhatja:
+A különböző biztonsági csomópontok számának megtekintéséhez használhatja a lekérdezést:
 
 ```kusto
 union
@@ -401,7 +401,7 @@ union
 | count
 ```
 
-Különböző automatizálási csomópontok számának megtekintéséhez használja a lekérdezés:
+A különböző Automation-csomópontok számának megtekintéséhez használja a következő lekérdezést:
 
 ```kusto
  ConfigurationData 
@@ -485,7 +485,7 @@ Az adatok Log Analytics való küldése adatsávszélességi díjat eredményezh
 Vannak további Log Analytics korlátok, amelyek némelyike a Log Analytics díjszabási szintjétől függ. Ezeket [itt](https://docs.microsoft.com/azure/azure-subscription-service-limits#log-analytics-workspaces)dokumentáljuk.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A keresési nyelv használatának megismeréséhez tekintse meg a [naplóban megkeresett Azure monitor naplókat](../log-query/log-query-overview.md) . A keresési lekérdezésekkel további elemzéseket végezhet a használati adatokon.
 - Az [új naplózási riasztás létrehozásával kapcsolatos](alerts-metric.md) szakaszban leírt lépéseket követve beállíthatja, hogy értesítést kapjon, ha teljesül egy keresési feltétel.
