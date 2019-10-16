@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968283"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333121"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Felügyelt identitás Service Fabric alkalmazáshoz (előzetes verzió)
 
@@ -23,7 +23,7 @@ Az Azure-erőforrások felügyelt identitás funkciója ingyenes az Azure AD-vel
 > [!NOTE]
 > Az Azure-erőforrások felügyelt identitása a korábban Managed Service Identity (MSI) néven ismert szolgáltatás új neve.
 
-## <a name="terminology"></a>Terminológia
+## <a name="terminology"></a>Szakkifejezések
 
 A felügyelt identitás az Azure-erőforrások dokumentációs készletében a következő kifejezéseket használja:
 
@@ -45,7 +45,7 @@ A felügyelt identitás az Azure-erőforrások dokumentációs készletében a k
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric alkalmazások támogatott forgatókönyvei
 
-A Service Fabric felügyelt identitásai csak az Azure-ban üzembe helyezett Service Fabric-fürtökön támogatottak, és csak az Azure-erőforrásként üzembe helyezett alkalmazásokhoz. Az Azure-erőforrásként nem telepített alkalmazások nem rendelhetők hozzá identitáshoz. Elméletileg a felügyelt identitások támogatása az Azure Service Fabric-fürtben két fázisból áll:
+A Service Fabric felügyelt identitásai csak az Azure-ban üzembe helyezett Service Fabric-fürtökön támogatottak, és csak az Azure-erőforrásként üzembe helyezett alkalmazásokhoz. a nem Azure-erőforrásként üzembe helyezett alkalmazások nem rendelhetők hozzá identitáshoz. Elméletileg a felügyelt identitások támogatása az Azure Service Fabric-fürtben két fázisból áll:
 
 1. Rendeljen hozzá egy vagy több felügyelt identitást az alkalmazás-erőforráshoz; egy alkalmazáshoz egyetlen rendszer által hozzárendelt identitás és/vagy 32 felhasználó által hozzárendelt identitás rendelhető hozzá.
 
@@ -64,12 +64,14 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 
    - Egy alkalmazáshoz rendelt identitások eltávolítása vagy módosítása; Ha módosításokat kell végeznie, külön központi telepítéseket kell elküldenie, hogy először új identitás-hozzárendelést adjon hozzá, majd egy korábban hozzárendelt egyet. Az identitás meglévő alkalmazásból való eltávolítása nem kívánt hatással lehet, például nem frissíthető állapotban hagyja az alkalmazást. Biztonságosan törölheti az alkalmazást, ha szükség van az identitás eltávolítására; vegye figyelembe, hogy ez törli az alkalmazáshoz társított rendszer-hozzárendelt identitást (ha van ilyen), és eltávolítja az alkalmazáshoz rendelt felhasználó által hozzárendelt identitásokkal rendelkező társításokat.
 
+   - A felügyelt identitások SF-támogatása jelenleg nem integrált a [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md); az integrációt a felügyelt identitás funkciójának előzetes verziójának végéig fogja megvalósítani.
+
 >
 > [!NOTE]
 >
 > Ez a funkció előzetes verzióban érhető el. ilyen esetben előfordulhat, hogy a gyakori változások változhatnak, és előfordulhat, hogy nem alkalmasak az éles környezetekben való üzembe helyezésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Új Azure Service Fabric-fürt üzembe helyezése felügyelt identitások támogatásával](./configure-new-azure-service-fabric-enable-managed-identity.md) 
 * [Felügyelt identitás támogatásának engedélyezése meglévő Azure Service Fabric-fürtben](./configure-existing-cluster-enable-managed-identity-token-service.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167404"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333108"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 Az éles üzembe helyezéshez a kapacitás megtervezése fontos lépés. Íme néhány olyan elem, amelyet a folyamat részeként kell figyelembe vennie.
@@ -81,7 +81,7 @@ A tartóssági szint azt jelzi, hogy a rendszer a virtuális gépek által a mö
 | Bronz           | 1                              | Legalább 50 GB helyi SSD-vel rendelkező virtuális gépek                                              | Nem késlelteti a Service Fabric-fürt           | Nem késleltethető jelentős időszakra                                                    |
 
 > [!WARNING]
-> A bronz tartóssággal futó csomópont-típusok _nem kapnak jogosultságot_. Ez azt jelenti, hogy az állapot nélküli munkaterheléseket befolyásoló infrastrukturális feladatok nem lesznek leállítva vagy késleltetve, ami hatással lehet a számítási feladatokra. Csak az állapot nélküli munkaterheléseket futtató csomópont-típusok esetében használjon Bronzat. Az éles számítási feladatokhoz a Silver vagy a Above futtatása ajánlott. 
+> A bronz tartóssággal futó csomópont-típusok _nem kapnak jogosultságot_. Ez azt jelenti, hogy az állapot-nyilvántartó számítási feladatokat befolyásoló infrastrukturális feladatok nem lesznek leállítva vagy késleltetve, ami hatással lehet a számítási feladatokra. Csak az állapot nélküli munkaterheléseket futtató csomópont-típusok esetében használjon Bronzat. Az éles számítási feladatokhoz a Silver vagy a Above futtatása ajánlott. 
 > 
 > Bármilyen tartóssági szinttől függetlenül a virtuálisgép-méretezési csoport [felszabadítási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) művelete el fogja pusztítani a fürtöt.
 
@@ -123,7 +123,7 @@ A megbízhatósági szint azon rendszerszolgáltatások replikáinak a megadás�
 
 A megbízhatósági szintek a következő értékeket vehetik igénybe:
 
-* Platinum – a rendszerszolgáltatások futtatása egy célként megadott replikakészlet-készlettel hét
+* Platinum – a rendszerszolgáltatások futtatása a célként megadott replikakészlet kilencnél több számával
 * Gold – a rendszerszolgáltatások futtatása egy célként megadott replikakészlet-készlettel hét
 * Silver – a rendszerszolgáltatások futtatása a célként megadott replikakészlet öt értékének számával 
 * Bronz – a rendszerszolgáltatások futtatása a célként megadott replikakészlet három számával

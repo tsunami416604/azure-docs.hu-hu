@@ -1,6 +1,6 @@
 ---
-title: Az Azure szövegmező felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Common.TextBox felhasználói felületi elem ismerteti.
+title: Az Azure szövegmező felhasználói felületének eleme | Microsoft Docs
+description: Ismerteti a Microsoft. Common. szövegmező felhasználói felületének a Azure Portalhoz tartozó elemét. Formázatlan szöveg hozzáadására használható.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044556"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331606"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI element
-Segítségével szerkesztheti a formázatlan szöveges vezérlő.
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. szövegdoboz felhasználói felületének eleme
+Formázatlan szöveg szerkesztésére szolgáló vezérlőelem.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+## <a name="ui-sample"></a>Felhasználói felület mintája
+![Microsoft. Common. szövegmező](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Séma
 ```json
@@ -44,10 +44,10 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- Ha `constraints.required` értékre van állítva **igaz**, majd a szövegmező sikeresen érvényesíthető értékkel kell rendelkeznie. Az alapértelmezett érték **hamis**.
-- `constraints.regex` van egy JavaScript Reguláriskifejezés-mintának. Ha meg van adva, majd a szövegmező értéknek egyeznie kell a minta ellenőrzése sikerült. Az alapértelmezett érték **null**.
-- `constraints.validationMessage` : a szövegmező értékét érvényesítése sikertelen megjelenített karakterlánc. Ha nincs megadva, a szövegmező beépített ellenőrzési üzenetek szolgálnak. Az alapértelmezett érték **null**.
-- Adjon meg egy értéket meg lehet `constraints.regex` amikor `constraints.required` értékre van állítva **hamis**. Ebben a forgatókönyvben egy érték nem sikerült érvényesíteni a beviteli mező szükséges. Ha meg van adva, akkor meg kell egyeznie a reguláris kifejezési minta.
+- Ha a `constraints.required` értéke **true (igaz**), akkor a szövegmezőnek rendelkeznie kell egy, a sikeres ellenőrzéshez szükséges értékkel. Az alapértelmezett érték **false (hamis**).
+- a `constraints.regex` JavaScript reguláris kifejezési minta. Ha meg van adva, akkor a szövegmező értékének meg kell egyeznie a sikeres ellenőrzéshez szükséges mintázattal. Az alapértelmezett érték **Null**.
+- a `constraints.validationMessage` egy karakterlánc, amely akkor jeleníthető meg, ha a szövegmező értéke sikertelen az ellenőrzés során. Ha nincs megadva, a rendszer a szövegmező beépített érvényesítési üzeneteit használja. Az alapértelmezett érték **Null**.
+- @No__t-0 érték megadására akkor van lehetősége, ha a `constraints.required` értéke **false (hamis**). Ebben az esetben nincs szükség értékre a szövegmező sikeres ellenőrzéséhez. Ha meg van adva, meg kell egyeznie a reguláris kifejezési mintával.
 
 ## <a name="sample-output"></a>Példa kimenet
 
@@ -55,6 +55,6 @@ Segítségével szerkesztheti a formázatlan szöveges vezérlő.
 "my text value"
 ```
 
-## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Következő lépések
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

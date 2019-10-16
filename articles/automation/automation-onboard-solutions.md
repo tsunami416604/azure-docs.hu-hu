@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60739561"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372817"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Az Update és a Change Tracking megoldás előkészítése az Azure Automationhöz
 
@@ -81,7 +81,7 @@ Most, hogy engedélyezte a megoldásokat, hozzáadhat egy Azure-beli virtuális 
    ![Az Update megoldás engedélyezése a virtuális gépen](media/automation-onboard-solutions/enable-update.png)
 
 > [!NOTE]
-> Ha nem várja meg a másik megoldás hajtsa végre a következő megoldás engedélyezésekor a következő üzenetet kapja: *Ez vagy egy másik virtuális gépet folyamatban van egy másik megoldás telepítése. Amikor a telepítés befejeződik, az Engedélyezés gomb újra aktívvá válik, és kérheti a megoldás telepítését ezen a virtuális gépen.*
+> Ha nem várja meg a másik megoldás befejeződését, akkor a következő megoldás engedélyezésekor egy üzenet jelenik *meg: egy másik megoldás telepítése folyamatban van ezen vagy egy másik virtuális gépen. Ha a telepítés befejeződött, az engedélyezés gomb engedélyezve van, és a megoldás telepítését a virtuális gépen is kérheti.*
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
@@ -131,7 +131,14 @@ A runbook indításához elő kellett készítenie a change tracking vagy az upd
 1. A runbookfeladat indításához kattintson az **OK** gombra.
 1. A folyamat előrehaladását és az esetleges hibákat a runbookfeladat oldalán követheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Virtuális gép eltávolítása Update Managementról:
+
+* A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció `MicrosoftDefaultScopeConfig-Updates` mentett keresésből. A mentett keresések a munkaterület **általános** területén találhatók.
+* Távolítsa el a [Microsoft monitoring agentet](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linux rendszerhez készült log Analytics-ügynököt](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

@@ -8,46 +8,46 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: ed5f3d1cd505270eb91c9cfbd6fb5c38b908f33d
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 8d6cd5e925e17130e9ddee8074294275558d3cc2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71974460"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331882"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database importálási/exportálási szolgáltatás hosszú időt vesz igénybe az adatbázisok importálásához vagy exportálásához
 
-Azure SQL Database importálási/exportálási szolgáltatás használatakor észreveheti, hogy néha a folyamat végrehajtása hosszabb ideig is tarthat. Ez a cikk további információkat tartalmaz a késések lehetséges okairól, valamint a problémák megoldásához használható alternatív módszerekről.
+Ha a Azure SQL Database importálási/exportálási szolgáltatást használja, a folyamat a vártnál hosszabb időt is igénybe vehet. Ez a cikk a késés és az alternatív megoldási módszerek lehetséges okait ismerteti.
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database importálási/exportálási szolgáltatás
 
-A Azure SQL Database import/export szolgáltatás egy REST-alapú webszolgáltatás, amely minden Microsoft Azure adatközpontban fut. Ez az a szolgáltatás, amely akkor lesz meghívva, amikor az [adatbázis importálása](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) vagy az [Exportálás](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) lehetőség használatával helyezi át az SQL-adatbázist a Microsoft Azure Portal. A szolgáltatás ingyenes kérések üzenetsor-kezelő szolgáltatást és ingyenes számítási szolgáltatást biztosít egy Microsoft Azure SQL-adatbázisból Microsoft Azure bináris nagy objektum (BLOB) tárolóba történő Importálás és exportálás végrehajtásához.
+A Azure SQL Database import/export szolgáltatás egy REST-alapú webszolgáltatás, amely minden Azure-adatközpontban fut. A szolgáltatás akkor lesz meghívva, ha az [adatbázis importálása](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) vagy [exportálása](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) lehetőséget használja az SQL-adatbázis áthelyezéséhez a Azure Portal. A szolgáltatás ingyenes kérelmek üzenetsor-kezelő és számítási szolgáltatásokat biztosít az Azure SQL Database és az Azure Blob Storage közötti importálás és exportálás végrehajtásához.
 
-Az importálási és exportálási műveletek nem a hagyományos fizikai adatbázis biztonsági mentése, hanem a speciális BACPAC formátumot használó adatbázis logikai biztonsági mentése. Ez a logikai BACPAC formátum lehetővé teszi, hogy ne kelljen olyan fizikai formátumot használnia, amely a SQL Server és SQL Database verziói között változhat. Ezért a segítségével biztonságosan állíthatja vissza az adatbázist egy SQL-adatbázisba és egy SQL Server adatbázisba.
+Az importálási és exportálási műveletek nem a hagyományos fizikai adatbázis biztonsági mentését jelentik, hanem a speciális BACPAC formátumot használó adatbázis logikai biztonsági mentését. A BACPAC formátuma lehetővé teszi, hogy ne kelljen olyan fizikai formátumot használnia, amely a Microsoft SQL Server és Azure SQL Database verziói között változhat. Ezért a segítségével biztonságosan visszaállíthatja az adatbázist egy SQL Server adatbázisba és egy SQL-adatbázisba.
 
-## <a name="what-causes-the-process-to-take-a-long-time"></a>Mi okozza, hogy a folyamat hosszú ideig tart
+## <a name="what-causes-delays-in-the-process"></a>Mi okozza a folyamat késéseit?
 
-A Azure SQL Database importálási/exportálási szolgáltatás régiónként korlátozott számú számítási virtuális gépet (VM) biztosít az importálási és exportálási műveletek feldolgozásához. A számítási virtuális gép régiónként üzemel, így biztos lehet abban, hogy az Importálás vagy az Exportálás elkerüli a régiók közötti sávszélesség késését és díját. Ha azonban túl sok kérést adott meg ugyanabban a régióban, akkor a műveletek feldolgozásakor jelentős késések történnek. A kérések végrehajtásához szükséges idő néhány másodperctől akár több óráig is változhat.
+A Azure SQL Database importálási/exportálási szolgáltatás korlátozott számú számítási virtuális gépet (VM) kínál régiónként az importálási és exportálási műveletek feldolgozásához. A számítási virtuális gépek régiónként vannak tárolva, így biztos lehet benne, hogy az Importálás vagy az Exportálás elkerüli a régiók közötti sávszélesség késését és díját. Ha túl sok kérést hajtanak végre ugyanabban a régióban, a műveletek feldolgozásakor jelentős késések merülhetnek fel. A kérelmek teljesítéséhez szükséges idő néhány másodperctől akár több óráig is változhat.
 
 > [!NOTE]
 > Ha a kérést négy napon belül nem dolgozzák fel, a szolgáltatás automatikusan megszakítja a kérést.
 
 ## <a name="recommended-solutions"></a>Ajánlott megoldások
 
-Ha az adatbázis-exportálást csak a véletlen adattörlésből történő helyreállításra használja, az összes Azure SQL Server adatbázis-kiadás biztosítja az önkiszolgáló visszaállítási képességet a rendszer által létrehozott biztonsági mentésből. Ha azonban más okból is szükség van ezekre az exportálásokra, és ha következetesen gyorsabb vagy kiszámítható importálási vagy exportálási teljesítményre van szüksége, vegye figyelembe a következő lehetőségeket:
+Ha az adatbázis-exportálást csak a véletlen adattörlésből történő helyreállításra használja, az összes Azure SQL Database kiadás a rendszer által létrehozott biztonsági másolatok önkiszolgáló visszaállítási funkcióját biztosítja. Ha azonban szükség van ezekre az exportálásokra más okokból, és ha következetesen gyorsabb vagy kiszámítható importálási/exportálási teljesítményre van szüksége, vegye figyelembe a következő lehetőségeket:
 
-* [Exportálás BACPAC-fájlba az SQLPackage segédprogram használatával](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility)
-* [Exportálás BACPAC-fájlba SQL Server Management Studio (SSMS) használatával](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms)
-* Futtassa a BACPAC Importálás vagy exportálás közvetlenül a kódban a Microsoft® SQL Server® adatrétegbeli alkalmazás-keretrendszer (DacFx) API használatával. További információk áttekintése
+* [EXPORTÁLÁS BACPAC-fájlba az SQLPackage segédprogram használatával](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-sqlpackage-utility).
+* [EXPORTÁLÁS BACPAC-fájlba SQL Server Management Studio (SSMS) használatával](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-sql-server-management-studio-ssms).
+* Futtassa a BACPAC Importálás vagy exportálás közvetlenül a kódban a Microsoft SQL Server Data-Tier Application Framework (DacFx) API használatával. További információt a következő témakörben talál:
   * [Adatrétegbeli alkalmazás exportálása](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
   * [Microsoft. SqlServer. DAC névtér](https://docs.microsoft.com/dotnet/api/microsoft.sqlserver.dac)
   * [DACFx letöltése](https://www.microsoft.com/download/details.aspx?id=55713)
 
-## <a name="considerations-when-exporting-or-importing-an-azure-sql-database"></a>Az Azure SQL Database-adatbázisok exportálásával vagy importálásával kapcsolatos megfontolások
+## <a name="things-to-consider-when-you-export-or-import-an-azure-sql-database"></a>Az Azure SQL Database-adatbázisok exportálásakor és importálásakor megfontolandó szempontok
 
-* Az ebben a cikkben ismertetett módszerek a DTU kvótát használják, ami az Azure SQLDB szolgáltatás általi szabályozást eredményez. Az [adatbázis DTU-statisztikáit a Azure Portal tekintheti meg](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#monitor-database-performance). Ha az adatbázis eléri az erőforrások korlátait, [frissítse a szolgáltatási szintet](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) további erőforrások hozzáadásához.
-* Az ügyfélalkalmazások (például a sqlpackage segédprogram vagy az egyéni DAC-alkalmazás) ideális esetben egy virtuális gépről (VM) futnak az SQL Database-adatbázissal azonos régióban, vagy ha a hálózat késése miatt teljesítménybeli problémákba kerülhetnek.
-* A nagyméretű táblák fürtözött indexek nélküli exportálása nagyon lassú lehet, vagy meghibásodást eredményezhet. Ennek az az oka, hogy a táblázatot nem lehet párhuzamosan felosztani és exportálni, és egyetlen tranzakcióban kell exportálni, amely a lassú és a lehetséges hibákat okozza az exportálás során, különösen nagy táblák esetén. 
+* A cikkben tárgyalt összes módszer az adatbázis-tranzakciós egység (DTU) kvótáját használja, amely a Azure SQL Database szolgáltatás általi szabályozást okoz. Az [adatbázis DTU-statisztikáit a Azure Portal tekintheti meg](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#monitor-database-performance). Ha az adatbázis elérte az erőforrás-korlátozásokat, [frissítse a szolgáltatási szintet](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources) további erőforrások hozzáadásához.
+* Ideális esetben az ügyfélalkalmazások (például a sqlpackage segédprogram vagy az egyéni DAC-alkalmazás) egy, az SQL-adatbázissal megegyező régióban lévő virtuális gépről kell futniuk. Ellenkező esetben a hálózati késéssel kapcsolatos teljesítményproblémák merülhetnek fel.
+* A nagyméretű táblák fürtözött indexek nélküli exportálása nagyon lassú lehet, vagy akár hibát okozhat. Ez a viselkedés azért fordul elő, mert a tábla nem bontható fel és nem exportálható párhuzamosan. Ehelyett egyetlen tranzakcióban kell exportálni, ami lassú teljesítményt és lehetséges meghibásodást okoz az exportálás során, különösen nagy táblák esetén.
 
 
 ## <a name="related-documents"></a>Kapcsolódó dokumentumok

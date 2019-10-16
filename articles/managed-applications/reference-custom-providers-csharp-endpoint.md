@@ -1,18 +1,18 @@
 ---
 title: Egyéni szolgáltató C# Rest-végponti referenciája – Azure
-description: Ez a cikk az egyéni szolgáltató C# Rest-végpontjának alapszintű referenciája.
+description: Alapszintű referenciát biztosít az Azure C# -beli egyéni szolgáltatók Rest-végpontja számára. A végpontot egy Azure Function-alkalmazáson keresztül biztosítjuk.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172928"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332647"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Egyéni szolgáltató C# Rest-végponti referenciája
 
@@ -255,9 +255,9 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure egyéni erőforrás-szolgáltatóinak áttekintése](./custom-providers-overview.md)
-- [Oktatóanyag: Egyéni Azure-erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
-- [Útmutató: Egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
-- [Referencia Egyéni erőforrás-gyorsítótár referenciája](./custom-providers-proxy-cache-resource-endpoint-reference.md)
+- [Oktatóanyag: egyéni Azure-erőforrás-szolgáltató létrehozása és egyéni erőforrások üzembe helyezése](./create-custom-provider.md)
+- [Útmutató: egyéni műveletek hozzáadása az Azure REST APIhoz](./custom-providers-action-endpoint-how-to.md)
+- [Hivatkozás: az erőforrás-gyorsítótár egyéni leírása](./custom-providers-proxy-cache-resource-endpoint-reference.md)

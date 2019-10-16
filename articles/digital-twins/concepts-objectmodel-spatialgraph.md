@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950015"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372616"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>A digitális ikrek Object models és a térbeli intelligencia Graph ismertetése
 
@@ -78,14 +78,14 @@ Miután a [Azure Portal](https://portal.azure.com)a digitális Twins üzembe hel
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name (Név) | Csere erre |
+| Név | Csere erre |
 | --- | --- |
-| YOUR_INSTANCE_NAME | A digitális Twins-példány nevét |
-| YOUR_LOCATION | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_INSTANCE_NAME | A digitális Twins-példány neve |
+| YOUR_LOCATION | A példány által üzemeltetett kiszolgálói régió |
 
  A képen megjelenik a teljes URL-cím formátuma.
 
-(![Digitális Twins portál Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (média/fogalmak/Digital-Twins-Spatial-Graph-Management-API-URL. png # Lightbox)
+[![Digital Twins portál Management API](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 További információ a térbeli intelligencia-diagramok használatáról: Azure digitális Twins Management API-k – előzetes verzió.
 
@@ -97,7 +97,7 @@ További információ a [hencegés használatáról](how-to-use-swagger.md).
 
 Az összes API-hívást hitelesíteni kell a [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code)használatával. Az API-k a [Microsoft REST API irányelvek konvencióit](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md)követik. A gyűjteményeket visszaadó API-k többsége támogatja a [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszer-lekérdezési lehetőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az eszközök kapcsolatának megismeréséhez és a digitális Twins telemetria-üzeneteinek elküldéséhez olvassa el az [Azure Digital Twins-eszközök csatlakoztatása és a telemetria](concepts-device-ingress.md)beáramlása című témakört.
 

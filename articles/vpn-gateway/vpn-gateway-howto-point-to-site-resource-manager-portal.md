@@ -1,5 +1,5 @@
 ---
-title: 'Csatlakozás Azure-beli virtuális hálózathoz pont – hely VPN és natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal | Microsoft Docs'
+title: 'Csatlakozás Azure-beli virtuális hálózathoz a számítógépek pont – hely VPN és a natív Azure-tanúsítvány hitelesítése használatával: Azure Portal | Microsoft Docs'
 description: A Windows, Mac OS X és a Linux rendszerű ügyfelek biztonságos csatlakoztatása egy Azure-beli virtuális hálózathoz P2S és önaláírt vagy HITELESÍTÉSSZOLGÁLTATÓ által kibocsátott tanúsítványok használatával. Ebben a cikkben az Azure Portalon fogunk dolgozni.
 services: vpn-gateway
 author: cherylmc
@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: ea80fda927d293d743f1fdc69f9a7f5fa29838fa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266583"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333249"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely VPN-kapcsolat konfigurálása egy VNet natív Azure tanúsítványalapú hitelesítés használatával: Azure Portal
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Pont – hely VPN-kapcsolat konfigurálása VNet natív Azure tanúsítványalapú hitelesítéssel: Azure Portal
 
 Ez a cikk segítséget nyújt a Windows, Linux vagy Mac OS X rendszerű ügyfelek biztonságos csatlakoztatásához egy Azure-VNet. A pont–hely VPN-kapcsolat akkor hasznos, ha távoli helyről szeretne csatlakozni a virtuális hálózathoz, például otthonról vagy egy konferenciáról. Pont–hely kapcsolatot is használhat helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy virtuális hálózathoz csatlakoztatni. A pont–hely kapcsolatok nem igényelnek VPN-eszközt vagy nyilvános IP-címet. Pont–hely kapcsolat esetén SSTP (Secure Socket Tunneling Protocol) vagy IKEv2-protokoll használatával jön létre a VPN-kapcsolat. További információkat a pont–hely VPN-ről a [pont–hely VPN-t ismertető](point-to-site-about.md) témakör tartalmaz.
 
@@ -33,29 +33,29 @@ A natív Azure-tanúsítvánnyal hitelesített pont–hely kapcsolatok a követk
 
 Az alábbi értékek használatával létrehozhat egy tesztkörnyezetet, vagy segítségükkel értelmezheti a cikkben szereplő példákat:
 
-* **VNet neve:** VNet1
-* **Címterület:** 192.168.0.0/16<br>Ebben a példában csak egy címteret használunk. Azonban a virtuális hálózatához több címteret is használhat.
-* **Alhálózat neve:** Előtér
+* **Virtuális hálózat neve:** VNet1
+* **Címtér:** 192.168.0.0/16<br>Ebben a példában csak egy címteret használunk. Azonban a virtuális hálózatához több címteret is használhat.
+* **Alhálózat neve:** FrontEnd
 * **Alhálózati címtartomány:** 192.168.1.0/24
-* **Előfizetés** Ha egynél több előfizetéssel rendelkezik, ellenőrizze, hogy a megfelelőt használja-e.
+* **Előfizetés:** Ha több előfizetése is van, ellenőrizze, hogy a megfelelőt használja-e.
 * **Erőforráscsoport:** TestRG
-* **Location** (Hely): East US
-* **GatewaySubnet** 192.168.200.0/24<br>
+* **Hely:** az USA keleti régiója
+* **Átjáró-alhálózat:** 192.168.200.0/24<br>
 * **Virtuális hálózati átjáró neve:** VNet1GW
 * **Átjáró típusa:** VPN
-* **VPN típusa:** Útvonalalapú
+* **VPN típusa:** útvonalalapú
 * **Nyilvános IP-cím neve:** VNet1GWpip
-* **Kapcsolattípus:** Pont–hely kapcsolat
-* **Ügyfél-címkészlet:** 172.16.201.0/24<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, az ügyfélcímkészletből kapnak IP-címet.
+* **Kapcsolat típusa:** pont–hely
+* **Ügyfélcímkészlet:** 172.16.201.0/24<br>Azok a VPN-ügyfelek, amelyek ezzel a pont–hely kapcsolattal csatlakoznak a virtuális hálózathoz, az ügyfélcímkészletből kapnak IP-címet.
 
-## <a name="createvnet"></a>1. Virtuális hálózat létrehozása
+## <a name="createvnet"></a>1. virtuális hálózat létrehozása
 
 Mielőtt elkezdi végrehajtani a lépéseket, győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
 
-## <a name="creategw"></a>2. Virtuális hálózati átjáró létrehozása
+## <a name="creategw"></a>2. virtuális hálózati átjáró létrehozása
 
-Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fogja létrehozni. Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
@@ -65,21 +65,21 @@ Ebben a lépésben a virtuális hálózat virtuális hálózati átjáróját fo
 >Az alapszintű átjáró SKU nem támogatja a IKEv2 vagy a RADIUS-hitelesítést. Ha azt tervezi, hogy a Mac-ügyfelek csatlakoznak a virtuális hálózathoz, ne használja az alapszintű SKU-t.
 >
 
-## <a name="generatecert"></a>3. Tanúsítványok előállítása
+## <a name="generatecert"></a>3. tanúsítványok előállítása
 
 A tanúsítványokat az Azure a virtuális hálózathoz pont–hely VPN-kapcsolaton keresztül csatlakozó ügyfelek hitelesítésére használja. Amint beszerzett egy főtanúsítványt, a nyilvánoskulcs-adatait [feltölti](#uploadfile) az Azure-ba. Az Azure a főtanúsítványt ettől kezdve „megbízhatónak” tekinti a virtuális hálózathoz pont–hely kapcsolaton keresztüli csatlakozás esetén. Létrehoz ügyféltanúsítványokat is a megbízható főtanúsítványból, majd telepíti őket az összes ügyfélszámítógépeken. Az ügyféltanúsítványt a rendszer az ügyfél hitelesítésére használja, amikor az a VNethez próbál csatlakozni. 
 
-### <a name="getcer"></a>1. A .cer fájl beszerzése a főtanúsítványhoz
+### <a name="getcer"></a>1. a. cer fájl beszerzése a főtanúsítványhoz
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="generateclientcert"></a>2. Ügyféltanúsítvány létrehozása
+### <a name="generateclientcert"></a>2. ügyféltanúsítvány létrehozása
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="addresspool"></a>4. Az ügyfélcímkészlet hozzáadása
+## <a name="addresspool"></a>4. az ügyfél-Címkészlet hozzáadása
 
-Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont–hely VPN-kapcsolattal csatlakozó ügyfelek ebből a tartományból kapnak dinamikusan IP-címet. Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik.
+Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont–hely VPN-kapcsolattal csatlakozó ügyfelek ebből a tartományból kapnak dinamikusan IP-címet. Olyan magánhálózati IP-címtartományt használjon, amely nincs átfedésben azzal a helyszíni hellyel, amelyről csatlakozik, vagy azzal a virtuális hálózattal, amelyhez csatlakozik. Ha több protokollt konfigurál, és az SSTP a protokollok egyike, akkor a konfigurált címkészlet egyenlően oszlik meg a konfigurált protokollok között.
 
 1. Miután létrehozta a virtuális hálózati átjárót, navigáljon a virtuális hálózati átjáró lapjának **Beállítások** részéhez. A **Beállítások** szakaszban kattintson a **Pont-hely konfiguráció** elemre.
 
@@ -95,19 +95,19 @@ Az ügyfélcímkészlet megadott magánhálózati IP-címek tartománya. A pont�
    >Ha a portál e lapján nem jelenik meg az Alagúttípus vagy a Hitelesítés típusa, akkor az átjáró az alapszintű termékváltozatot használja. Az alapszintű termékváltozat nem támogatja az IKEv2- vagy RADIUS-hitelesítést.
    >
 
-## <a name="tunneltype"></a>5. Alagúttípus konfigurálása
+## <a name="tunneltype"></a>5. alagút típusának konfigurálása
 
 Kiválaszthatja az alagút típusát. Az alagút beállításai az OpenVPN, az SSTP és a IKEv2. Az Android- és Linux-alapú strongSwan-ügyfél, valamint az iOS- és OS X-alapú natív IKEv2 VPN-ügyfél csak IKEv2-alagutat használ a kapcsolódáshoz. A Windows-ügyfél először az IKEv2-vel próbálkozik, majd ha azzal nem sikerült, visszavált SSTP-re. Az OpenVPN-ügyfél használatával kapcsolódhat az OpenVPN-alagút típusához.
 
-![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
+![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
-## <a name="authenticationtype"></a>6. Hitelesítés típusának konfigurálása
+## <a name="authenticationtype"></a>6. a hitelesítés típusának konfigurálása
 
 Válassza ki az **Azure-tanúsítvány** lehetőséget.
 
-  ![Alagút típusa](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
+  ![Alagúttípus](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
-## <a name="uploadfile"></a>7. A főtanúsítvány nyilvános tanúsítványadatainak feltöltése
+## <a name="uploadfile"></a>7. Töltse fel a főtanúsítvány nyilvános tanúsítványának adatkészletét
 
 További megbízható főtanúsítványokat is feltölthet (legfeljebb 20-at). Miután feltöltötte a nyilvános tanúsítványadatokat, az Azure felhasználhatja azon ügyfelek hitelesítéséhez, amelyeken telepítve lett egy, a megbízható főtanúsítványból létrehozott ügyféltanúsítvány. Töltse fel a főtanúsítvány nyilvánoskulcs-adatait az Azure-ba.
 
@@ -123,7 +123,7 @@ További megbízható főtanúsítványokat is feltölthet (legfeljebb 20-at). M
 
    ![Mentés](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
-## <a name="installclientcert"></a>8. Exportált ügyféltanúsítvány telepítése
+## <a name="installclientcert"></a>8. exportált ügyféltanúsítvány telepítése
 
 Ha a tanúsítvány létrehozásához használttól eltérő ügyfélszámítógépről szeretne pont–hely kapcsolatot létesíteni, akkor telepítenie kell egy ügyféltanúsítványt. Az ügyféltanúsítvány telepítésekor szükség lesz az ügyféltanúsítvány exportálásakor létrehozott jelszóra.
 
@@ -131,11 +131,11 @@ Győződjön meg arról, hogy az ügyféltanúsítványt .pfx fájlként export�
 
 A telepítés lépései az [ügyféltanúsítvány telepítésével](point-to-site-how-to-vpn-client-install-azure-cert.md) foglalkozó részben találhatók.
 
-## <a name="clientconfig"></a>9. A VPN-ügyfél konfigurációs csomagjának létrehozása és telepítése
+## <a name="clientconfig"></a>9. a VPN-ügyfél konfigurációs csomagjának előállítása és telepítése
 
 A VPN-ügyfél konfigurációs fájljai tartalmazzák az eszközök azon beállításait, amelyekkel pont–hely kapcsolaton keresztül kapcsolódhatnak egy virtuális hálózathoz. A VPN-ügyfél konfigurációs fájljainak létrehozásához és telepítéséhez szükséges utasításokért lásd:[A VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése az Azure natív tanúsítványalapú hitelesítést használó pont–hely kapcsolatokhoz](point-to-site-vpn-client-configuration-azure-cert.md).
 
-## <a name="connect"></a>10. Csatlakozás az Azure szolgáltatáshoz
+## <a name="connect"></a>10. kapcsolódás az Azure-hoz
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Csatlakozás Windows VPN-ügyfélről
 
@@ -170,7 +170,7 @@ Részletes utasításokért lásd: [install-Mac (OS X)](https://docs.microsoft.c
 Ezek az utasítások Windows-ügyfelekre érvényesek.
 
 1. Annak ellenőrzéséhez, hogy a VPN-kapcsolat aktív-e, nyisson meg egy rendszergazda jogú parancssort, és futtassa az *ipconfig/all* parancsot.
-2. Tekintse meg az eredményeket. Figyelje meg, hogy a kapott IP-cím azok közül a címek közül való, amelyeket a pont–hely VPN-ügyfél konfigurációjának címkészletében megadott. Az eredmények az alábbi példában szereplőkhöz hasonlóak:
+2. Tekintse meg az eredményeket. Figyelje meg, hogy a kapott IP-cím azok közül a címek közül való, amelyeket a pont–hely VPN-ügyfél konfigurációjának címkészletében megadott. Az eredmények az alábbi példához hasonlóak:
 
    ```
    PPP adapter VNet1:
@@ -227,7 +227,7 @@ Az ügyféltanúsítványok visszavonásához vegye fel az ujjlenyomatot a vissz
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért lásd: [Virtuális gépek](https://docs.microsoft.com/azure/). A hálózatok és virtuális gépek ismertetését lásd az [Azure- és Linux-alapú virtuálisgép-hálózatok áttekintésében](../virtual-machines/linux/azure-vm-network-overview.md).
 
 A pont–hely hibaelhárítási információiért tekintse át az [Azure pont–hely kapcsolatok hibaelhárításával](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) foglalkozó cikket.

@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-példaszkript – felügyelt alkalmazás üzembe |} A Microsoft Docs
-description: Azure PowerShell-példaszkript – felügyelt alkalmazás definíciójának üzembe
+title: Azure PowerShell parancsfájl-minta – felügyelt alkalmazás üzembe helyezése | Microsoft Docs
+description: Azure PowerShell minta parancsfájl-mintát biztosít, amely egy felügyelt alkalmazás definícióját telepíti az előfizetésre.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 03b453e441b92d21f29e7e1f401bebae0b8589da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d450c2292f5d2982b7c8b266cc6780a72d426321
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171449"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332559"
 ---
-# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Felügyelt alkalmazás üzembe helyezése a szolgáltatáskatalógus a PowerShell-lel
+# <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Felügyelt alkalmazás üzembe helyezése egy szolgáltatás-katalógusban a PowerShell használatával
 
 Ez a szkript üzembe helyezi egy felügyelt alkalmazás definícióját a szolgáltatáskatalógusból.
 
@@ -39,10 +39,10 @@ Ez a szkript a következő parancsot használja egy felügyelt alkalmazás üzem
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
+| [Új – AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplication) | Létrehoz egy felügyelt alkalmazást. Megadja a sablonhoz szükséges definícióazonosítót és paramétereket. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).

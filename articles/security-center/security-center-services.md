@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254505"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331141"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -56,7 +56,7 @@ A következő szakaszban Security Center a [támogatott platformokhoz](security-
 |[Endpoint Protection-Értékelés](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Ingyenes|
 |Lemez titkosításának felmérése|✔|✔|X|✔|✔|X|Ingyenes|
 |Harmadik féltől származó sebezhetőségi felmérés|✔|X|X|✔|X|X|Ingyenes|
-|[Hálózati biztonsági értékelés]()|✔|✔|X|✔|✔|X|Ingyenes|
+|[Hálózati biztonsági értékelés](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)|✔|✔|X|✔|✔|X|Ingyenes|
 
 ### Támogatott Endpoint Protection-megoldások<a name="endpoint-supported"></a>
 

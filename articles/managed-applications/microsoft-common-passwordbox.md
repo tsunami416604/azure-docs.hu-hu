@@ -1,6 +1,6 @@
 ---
-title: Az Azure PasswordBox felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Common.PasswordBox felhasználói felületi elem ismerteti.
+title: Az Azure PasswordBox felhasználói felületének eleme | Microsoft Docs
+description: A Azure Portal Microsoft. Common. PasswordBox felhasználói felületi elemének ismertetése. Lehetővé teszi, hogy a felhasználók titkos értéket adjanak a felügyelt alkalmazások telepítésekor.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 944f59da680c3a058a3cd245cca48d903e44ab87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710939"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332804"
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI element
-Egy olyan vezérlőelem, adja meg és erősítsen meg egy jelszót is lehet.
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox felhasználói felületi elem
+A jelszó megadására és megerősítésére szolgáló vezérlőelem.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
-![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
+## <a name="ui-sample"></a>Felhasználói felület mintája
+![Microsoft. Common. PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
 
 ## <a name="schema"></a>Séma
 ```json
@@ -49,15 +49,15 @@ Egy olyan vezérlőelem, adja meg és erősítsen meg egy jelszót is lehet.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- Ez az elem nem támogatja a `defaultValue` tulajdonság.
-- A megvalósítás részleteit, `constraints`, lásd: [Microsoft.Common.TextBox](microsoft-common-textbox.md).
-- Ha `options.hideConfirmation` értékre van állítva **igaz**, rejtett szöveget a másodikba általában a felhasználó jelszavát. Az alapértelmezett érték **hamis**.
+- Ez az elem nem támogatja a `defaultValue` tulajdonságot.
+- A `constraints` implementációjának részleteiért lásd: [Microsoft. Common. szövegmező](microsoft-common-textbox.md).
+- Ha a `options.hideConfirmation` értéke **true (igaz**), a felhasználó jelszavának megerősítésére szolgáló második szövegmező rejtve marad. Az alapértelmezett érték **false (hamis**).
 
 ## <a name="sample-output"></a>Példa kimenet
 ```json
 "p4ssw0rd"
 ```
 
-## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Következő lépések
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

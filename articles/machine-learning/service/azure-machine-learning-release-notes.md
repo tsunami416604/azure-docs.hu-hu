@@ -10,18 +10,63 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: da0c674eaf3bc650beae0a05f8f8a0c3613fbeaf
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f51b9c3032518fb66215126c5a8bf26ab9b59526
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177905"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331575"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
 Ebben a cikkben megismerheti Azure Machine Learning kiadásait.  A teljes SDK-hivatkozási tartalomért keresse fel a Azure Machine Learning [**fő SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -referenciát tartalmazó oldalt. 
 
 Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az ismert problémák listáját](resource-known-issues.md) .
+
+## <a name="2019-10-14"></a>2019-10-14
+
+### <a name="azure-machine-learning-sdk-for-python-v1069"></a>Azure Machine Learning SDK a Python v 1.0.69
+
++ **Hibajavítások és javítások**
+  + **azureml-automl-Core**
+    + A modell magyarázatait a legjobb futtatásra korlátozza, és nem kell minden futtatáskor számítási magyarázatot felvennie. Ez a viselkedés a helyi, a távoli és az ADB esetében is változhat.
+    + Igény szerinti modellhez kapcsolódó magyarázatok támogatása a felhasználói felületen
+    + A psutil hozzáadva a automl függőségéhez, és a psutil Conda függőségként szerepel a amlcompute-ben.
+    + Az előrejelzési adatkészletek esetében a heurisztikus késéssel és a gördülő ablak méretével kapcsolatos probléma kijavítva egy sor, ami lineáris algebra-hibákhoz vezethet
+      + Kinyomtatva az előrejelzési futtatások heurisztikus meghatározású paramétereinek kinyomtatása.
+  + **azureml – datadrift**
+    + A védelem a kimeneti metrikák létrehozásakor lett hozzáadva, ha az adatkészletek szintjének eltolódása nem az első szakaszban található.
+  + **azureml – összetétel – értelmezés**
+    + azureml – összevont – magyarázat – a modell csomagja át lett nevezve a azureml-retribal-értelmezze
+  + **azureml – mag**
+    + API hozzáadása az adatkészletek regisztrációjának megszüntetéséhez. `dataset.unregister_all_versions()`
+    + Az adatkészlet API-ját hozzáadta az adatváltozások időpontjához. `dataset.data_changed_time` kérdésre adott válaszban foglalt lépéseket.
+    + A `FileDataset` és a `TabularDataset` felhasználható bemenetként `PythonScriptStep`, `EstimatorStep` és `HyperDriveStep` értékre Azure Machine Learning folyamat során
+    + A `FileDataset.mount` teljesítményének javítása a nagy mennyiségű fájllal rendelkező mappák esetében
+    + A Futtatás részleteiben szereplő ismert hibajelentések URL-címe hozzáadva.
+    + Kijavítva egy hiba a Futtatás során. _metrics beolvasása, ahol a kérelmek sikertelenek lesznek, ha egy Futtatás túl sok gyermeket tartalmaz
+    + Támogatás hozzáadva az Arcadia-fürtön történő hitelesítéshez.
+    + A kísérlet objektum létrehozása vagy létrehozása a kísérletet a Azure Machine Learning munkaterületen a futtatási előzmények nyomon követéséhez. A kísérlet azonosítója és az archivált idő a létrehozáskor a kísérlet objektumban van feltöltve. Példa: Experiment = Experiment (munkaterület, "New Experiment") Experiment_ID = experiment.id Archive () és reactivate () függvények, amelyek meghívhatók egy kísérletre, hogy elrejtsék és visszaállítsák a kísérletet az UX-ben, vagy alapértelmezés szerint visszaadott hívás a kísérletek listázásához. Ha egy új kísérlet ugyanazzal a névvel lett létrehozva, mint az archivált kísérlet, az újraaktiváláskor átnevezheti az archivált kísérletet egy új név átadásával. Egy adott névvel csak egy aktív kísérlet lehet. Például: experiment1 = Experiment (munkaterület, "Active Experiment") experiment1. Archive () # hozzon létre új aktív kísérletet ugyanazzal a névvel, mint az archivált. experiment2. = Kísérlet (munkaterület, "aktív kísérlet") experiment1. reactivate (new_name = "előző aktív kísérlet") a kísérlet során a statikus metódusok listája () is megteheti a nevet és a nézet típusa szűrőt. A nézet típusa értéke "ACTIVE_ONLY", "ARCHIVED_ONLY" és "ALL" Példa: archived_experiments = Experiment. list (munkaterület, view_type = "ARCHIVED_ONLY") all_first_experiments = Experiment. list (munkaterület, név = "első kísérlet", view_type = "ALL")
+    + A környezet támogatása a modell üzembe helyezéséhez és a szolgáltatás frissítéséhez
+  + **azureml – datadrift**
+    + A DataDriftDector osztály show attribútuma nem támogatja többé a (z) "with_details" opcionális argumentumot. A show attribútum csak az adateltolódási együtthatót és a szolgáltatás oszlopainak adateltolódási hozzájárulását mutatja.
+    + A "get_output" DataDriftDetector-attribútum változásai:
+      + A bemeneti paraméter start_time, a end_time nem kötelező;
+      + Ha egy adott nput megadott start_time és/vagy end_time adott meg, akkor a rendszer hibát eredményez, mivel ezek kölcsönösen kizárják egymást 
+      + Megadott start_time és/vagy end_time csak az ütemezett futtatások eredményei lesznek visszaadva. 
+      + A "daily_latest_only" paraméter elavult.
+    + Támogatja az adatkészlet-alapú adateltolódások kimenetének beolvasását.
+  + **azureml – magyarázat – modell**
+    + Átnevezi a AzureML-magyarázza-Model csomagot a AzureML-értelmezésre, így a régi csomagot a visszamenőleges kompatibilitás érdekében megtarthatja
+    + rögzített automl hiba a RAW-magyarázatokkal a besorolási feladatra vonatkozóan a regresszió helyett alapértelmezetten a ExplanationClient-ből való letöltéskor
+    + A `ScoringExplainer` támogatásának hozzáadása közvetlenül a `MimicWrapper` használatával hozható létre
+  + **azureml – folyamat – mag**
+    + Nagyobb teljesítmény a nagy adatcsatornák létrehozásakor
+  + **azureml-Train-Core**
+    + TensorFlow 2,0-támogatás hozzáadva a TensorFlow kalkulátorhoz
+  + **azureml-Train-automl**
+    + A szülő futtatása nem fog sikerülni, ha a telepítés iterációja meghiúsult, mivel a folyamat már gondoskodik róla.
+    + Helyi Docker-és helyi Conda-támogatás hozzáadva a AutoML-kísérletekhez
 
 ## <a name="2019-10-08"></a>2019-10-08
 
@@ -382,7 +427,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Az előrejelzési feladatokban a `target_lags` paraméter mostantól egyetlen egész értéket, vagy egész számok listáját fogadja el. Ha az egész számot adta meg, csak egy késés lesz létrehozva. Ha egy lista van megadva, a rendszer a lemaradás egyedi értékeit veszi figyelembe. a target_lags = [1, 2, 2, 4] egy, 2 és 4 időszakból álló késéseket fog létrehozni.
     + Javítsa ki a hibát az oszlopok típusának elvesztése után az átalakítás után (hiba összekapcsolva);
     + @No__t – 0 esetében engedélyezze, hogy a y_query a none (s) értéket tartalmazó objektumtípus legyen a BEGIN (#459519).
-    + Várt értékek hozzáadása a automl kimenetéhez
+    + várt értékek hozzáadása a automl kimenetéhez
   + **azureml – datadrift**
     +  Többek között a jegyzetfüzetek fejlesztése, beleértve a azureml-opendatasets való váltást, a azureml-opendatasets és a teljesítmény javítását az adatgazdagítás során
   + **azureml – feltörzs – magyarázat – modell**

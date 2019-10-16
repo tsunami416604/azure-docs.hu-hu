@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170326"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333211"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -25,7 +25,7 @@ A Microsoft a GZRS használatát javasolja a konzisztencia, a tartósság, a mag
 
 ## <a name="about-the-preview"></a>Az előzetes verzió ismertetése
 
-Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, a nem VHD-lemezeket, a fájlokat, a táblákat és a várólistákat.
+Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és az RA-GZRS támogatja a blokk blobokat, az oldal blobokat (amelyek nem VHD-lemezek), a fájlokat, a táblákat és a várólistákat.
 
 A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő régiókban:
 

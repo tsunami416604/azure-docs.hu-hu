@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/15/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174734"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373547"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -40,6 +40,16 @@ Ez az oldal havonta frissül, ezért rendszeresen újra kell látogatnia. Ha hat
 ---
 
 ## <a name="september-2019"></a>Szeptember 2019
+
+### <a name="deprecation-of-the-power-bi-content-packs"></a>A Power BI Content Packs elavult
+
+**Írja be a következőt:** Elavult  
+**Szolgáltatás kategóriája:** Jelentési  
+A **termék képességei:** & Jelentéskészítés figyelése
+
+Power BI elavultak az áruházból származó tartalmi csomagok, és az **2019. október 1-től**az Azure ad Power bi-csomag támogatása már nem támogatott. Azok a felhasználók, akik jelenleg a Content Pack csomagot használják, továbbra is használhatják azt annak ellenére, hogy az alapul szolgáló API-k régebbi verziójúak. Ennek a csomagnak a alternatívájaként használhatja az Azure ad-munkafüzeteket (Log Analytics), hogy betekintést nyerjen az Azure AD-hez kapcsolódó szolgáltatásaiba.
+
+További információ a munkafüzetekről: [Azure monitor munkafüzetek használata Azure Active Directory jelentésekhez](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). További információ a tartalmi csomagok érvénytelenítéséről: a [Bejelentési Power bi sablon alkalmazásai általános elérhetősége](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) blogbejegyzés.
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>A saját profil átnevezése és integrálása a Microsoft Office Account (fiók) oldallal
 

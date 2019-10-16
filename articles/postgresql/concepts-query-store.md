@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: deab527d44713bffed1f430ec283592d0e4232ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/14/2019
+ms.openlocfilehash: 198ef6889ffb7874c44f15338afbd8b3135ae3ef
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764416"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331322"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Teljesítmény figyelése a lekérdezési tárolóval
 
@@ -29,11 +29,11 @@ A lekérdezési tároló egy opt-in funkció, így alapértelmezés szerint nem 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a Azure Database for PostgreSQL-kiszolgálót.
 2. Válassza ki a **kiszolgáló paramétereit** a menü **Beállítások** szakaszában.
 3. Keresse meg a `pg_qs.query_capture_mode` paramétert.
-4. Állítsa be `TOP` és **mentse**a értéket.
+4. Állítsa az értéket `TOP` értékre, és **mentse**a következőt:.
 
 A várakozási statisztika engedélyezése a lekérdezési tárolóban: 
 1. Keresse meg a `pgms_wait_sampling.query_capture_mode` paramétert.
-1. Állítsa be `ALL` és **mentse**a értéket.
+1. Állítsa az értéket `ALL` értékre, és **mentse**a következőt:.
 
 
 A paramétereket az Azure CLI használatával is megadhatja.
@@ -58,6 +58,10 @@ A Query Store használatának gyakori forgatókönyvei a következők:
 
 A lemezterület-használat minimalizálásához a futásidejű statisztika tárolójában lévő futtatókörnyezet-végrehajtási statisztika egy rögzített, konfigurálható időablakban van összesítve. Az ezekben a tárolókban található információk láthatók a lekérdezési tár nézeteinek lekérdezésével.
 
+## <a name="access-query-store-information"></a>Hozzáférési lekérdezési tár adatai
+
+A lekérdezési tár adatait a rendszer a postgres-kiszolgáló azure_sys-adatbázisában tárolja. 
+
 A következő lekérdezés adatokat ad vissza a lekérdezési tárolóban található lekérdezésekről:
 ```sql
 SELECT * FROM query_store.qs_view; 
@@ -67,6 +71,9 @@ Vagy a várakozási statisztikák lekérdezése:
 ```sql
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
+
+A lekérdezési tárolóban lévő adattárakat is kibocsáthatja [Azure monitor naplókba](../azure-monitor/log-query/log-query-overview.md) az elemzéshez és a riasztásokhoz, Event Hubs a folyamatos átvitelhez és az Azure Storage-hoz az archiváláshoz. A konfigurálandó naplózási kategóriák a következők: **QueryStoreRuntimeStatistics** és **QueryStoreWaitStatistics**. A telepítéssel kapcsolatos további tudnivalókért tekintse meg a [Azure monitor diagnosztikai beállításokról](../azure-monitor/platform/diagnostic-settings.md) szóló cikket.
+
 
 ## <a name="finding-wait-queries"></a>Várakozási lekérdezések keresése
 A várakozási eseménytípus hasonló módon kombinálja a különböző várakozási eseményeket a gyűjtők között. A lekérdezési tároló a várakozási esemény típusát, az adott várakozási esemény nevét és a kérdéses lekérdezést biztosítja. A várakozási idő és a lekérdezési futtatókörnyezet statisztikájának összekapcsolása azt jelenti, hogy mélyebben meg kell ismernie, hogy mi járul hozzá a teljesítmény jellemzőinek lekérdezéséhez.
@@ -84,18 +91,18 @@ Ha a lekérdezési tároló engedélyezve van, a rendszer 15 perces összesíté
 
 A lekérdezési tároló paramétereinek konfigurálásához a következő beállítások érhetők el.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | Meghatározza, hogy mely utasítások legyenek követve. | nincs | nincs, felül, mind |
+| pg_qs.query_capture_mode | Meghatározza, hogy mely utasítások legyenek követve. | Nincs | nincs, felül, mind |
 | pg_qs. max _query_text_length | Beállítja a maximálisan menthető lekérdezési hosszt. A rendszer csonkolja a hosszú lekérdezéseket. | 6000 | 100 – 10K |
 | pg_qs.retention_period_in_days | Beállítja a megőrzési időtartamot. | 7 | 1 - 30 |
-| pg_qs.track_utility | Beállítja, hogy nyomon követhető-e a segédprogram parancsai | be | be, ki |
+| pg_qs.track_utility | Beállítja, hogy nyomon követhető-e a segédprogram parancsai | A | be, ki |
 
 A következő lehetőségek kifejezetten a várakozási statisztikára vonatkoznak.
 
-| **A paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
+| **Paraméter** | **Leírás** | **Alapértelmezett** | **Tartomány**|
 |---|---|---|---|
-| pgms_wait_sampling.query_capture_mode | Meghatározza, hogy mely utasítások követik nyomon a várakozási statisztikát. | nincs | nincs, az összes|
+| pgms_wait_sampling.query_capture_mode | Meghatározza, hogy mely utasítások követik nyomon a várakozási statisztikát. | Nincs | nincs, az összes|
 | Pgms_wait_sampling.history_period | Adja meg a gyakoriságot (ezredmásodpercben), amikor a várakozási események mintavételezése történik. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -112,23 +119,23 @@ A lekérdezések normalizálása úgy történik, hogy a konstansok és konstans
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van. 
 
-|**Name**   |**Típus** | **Hivatkozik**  | **Leírás**|
+|**Name (Név)**   |**Típus** | **Hivatkozik**  | **Leírás**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | AZONOSÍTÓ a runtime_stats_entries táblából|
-|user_id    |oid    |pg_authid.oid  |Az utasítást végrehajtó felhasználó OID azonosítója|
-|db_id  |oid    |pg_database.oid    |Az utasítást elvégező adatbázis OID azonosítója|
+|user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
+|db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
 |query_id   |bigint  || Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva|
 |query_sql_text |Varchar (10000)  || Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege.|
 |plan_id    |bigint |   |A lekérdezésnek megfelelő csomag azonosítója, még nem érhető el|
-|start_time |timestamp  ||  A lekérdezések időgyűjtők szerint vannak összesítve – a gyűjtő időkerete alapértelmezés szerint 15 percet vesz igénybe. Ez a bejegyzéshez tartozó időgyűjtőnek megfelelő kezdési idő.|
-|end_time   |timestamp  ||  A bejegyzéshez tartozó Time gyűjtőnek megfelelő befejezési idő.|
-|hívás  |bigint  || A lekérdezés végrehajtásainak száma|
+|start_time |időbélyeg  ||  A lekérdezések időgyűjtők szerint vannak összesítve – a gyűjtő időkerete alapértelmezés szerint 15 percet vesz igénybe. Ez a bejegyzéshez tartozó időgyűjtőnek megfelelő kezdési idő.|
+|end_time   |időbélyeg  ||  A bejegyzéshez tartozó Time gyűjtőnek megfelelő befejezési idő.|
+|hívások  |bigint  || A lekérdezés végrehajtásainak száma|
 |total_time |dupla pontosság   ||  Lekérdezés végrehajtásának teljes ideje (ezredmásodperc)|
 |min_time   |dupla pontosság   ||  Lekérdezés minimális végrehajtási ideje (ezredmásodperc)|
 |max_time   |dupla pontosság   ||  Lekérdezés végrehajtásának maximális ideje (ezredmásodperc)|
 |mean_time  |dupla pontosság   ||  A lekérdezés végrehajtásának átlagos ideje ezredmásodpercben|
 |stddev_time|   dupla pontosság    ||  A lekérdezés végrehajtásához használt idő szórása ezredmásodpercben |
-|sor   |bigint ||  Az utasítás által lekért vagy érintett sorok száma összesen|
+|sorok   |bigint ||  Az utasítás által lekért vagy érintett sorok száma összesen|
 |shared_blks_hit|   bigint  ||  A megosztott blokk gyorsítótárának találatok száma az utasítás szerint|
 |shared_blks_read|  bigint  ||  Az utasítás által olvasott megosztott blokkok teljes száma|
 |shared_blks_dirtied|   bigint   || Az utasítás által dirtied megosztott blokkok teljes száma |
@@ -145,7 +152,7 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Minden különböző query_text egy sor van.
 
-|**Name**|  **Típus**|   **Leírás**|
+|**Name (Név)**|  **Típus**|   **Leírás**|
 |---|---|---|
 |query_text_id  |bigint     |A query_texts tábla azonosítója|
 |query_sql_text |Varchar (10000)     |Egy reprezentatív utasítás szövege. Az azonos struktúrával rendelkező különböző lekérdezések együtt vannak csoportosítva; Ez a szöveg a fürtben lévő lekérdezések első példányának szövege.|
@@ -153,24 +160,24 @@ Ez a nézet a lekérdezési tárolóban lévő szöveges adatok visszaadása. Mi
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-|**Name**|  **Típus**|   **Hivatkozik**| **Leírás**|
+|**Name (Név)**|  **Típus**|   **Hivatkozik**| **Leírás**|
 |---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |Az utasítást végrehajtó felhasználó OID azonosítója|
-|db_id  |oid    |pg_database.oid    |Az utasítást elvégező adatbázis OID azonosítója|
+|user_id    |OID    |pg_authid. OID  |Az utasítást végrehajtó felhasználó OID azonosítója|
+|db_id  |OID    |pg_database. OID    |Az utasítást elvégező adatbázis OID azonosítója|
 |query_id   |bigint     ||Belső kivonatoló kód, amely az utasítás elemzési fájából lett kiszámítva|
-|event_type |text       ||Az esemény típusa, amelynek a háttere várakozik|
-|esemény  |text       ||A várakozási esemény neve, ha a háttér jelenleg várakozik|
-|hívás  |Integer        ||A rögzített esemény száma|
+|event_type |szöveg       ||Az esemény típusa, amelynek a háttere várakozik|
+|esemény  |szöveg       ||A várakozási esemény neve, ha a háttér jelenleg várakozik|
+|hívások  |Egész szám        ||A rögzített esemény száma|
 
 
-### <a name="functions"></a>Funkciók
+### <a name="functions"></a>Functions
 Az Query_store. qs_reset () érvénytelen értéket ad vissza.
 
-`qs_reset` a lekérdezési tároló által eddig összegyűjtött összes statisztika elvetése. Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
+`qs_reset` @ no__t – a lekérdezési tároló által eddig összegyűjtött összes statisztika 1discards. Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
 
 Az Query_store. staging_data_reset () érvénytelen értéket ad vissza.
 
-`staging_data_reset` a lekérdezési tár által a memóriában összegyűjtött összes statisztikát elveti (azaz a memóriában lévő olyan adatokat, amelyek még nem lettek kiürítve az adatbázisba). Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
+`staging_data_reset` @ no__t – a 1discards a memóriában gyűjtött összes statisztikát (azaz a memóriában lévő olyan adatokat, amelyek még nem lettek kiürítve az adatbázisba). Ezt a függvényt csak a kiszolgáló-rendszergazdai szerepkörrel lehet végrehajtani.
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 - Ha a PostgreSQL-kiszolgáló rendelkezik a default_transaction_read_only paraméterrel, a Query Store nem tudja rögzíteni az adatmennyiséget.
@@ -178,6 +185,6 @@ Az Query_store. staging_data_reset () érvénytelen értéket ad vissza.
 - [Olvasási replikák](concepts-read-replicas.md) : a rendszer a főkiszolgálóról replikálja a lekérdezési tároló adatait. Ez azt jelenti, hogy egy olvasási replika lekérdezési tárolója nem biztosít statisztikát az olvasási replikán futó lekérdezésekről.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [olyan forgatókönyvekről, ahol a lekérdezési tár különösen hasznos lehet](concepts-query-store-scenarios.md).
 - További információ a [query Store használatának ajánlott eljárásairól](concepts-query-store-best-practices.md).

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 18c11198f6b81e72e371b3ab06ed3a7330078c52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5d4c549eaded78c69d3e7fa7173b5ad9b1d82f2f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023786"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333142"
 ---
-# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: Egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
+# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Oktatóanyag: egyéni analitikus szabályok létrehozása a gyanús fenyegetések észleléséhez
 
 Miután [csatlakoztatta az adatforrásokat](quickstart-onboard.md) To az Azure sentinelhez, létrehozhat olyan egyéni szabályokat, amelyek meghatározott feltételeket kereshetnek a környezetében, és incidenseket hozhatnak létre a feltételek teljesülése esetén, így kivizsgálhatja azokat. Ez az oktatóanyag segít egyéni szabályok létrehozásában az Azure Sentinel használatával észlelt fenyegetések észleléséhez.
 
@@ -56,7 +56,7 @@ Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresh
     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
    > [!NOTE]
-   > A lekérdezés hosszának 1 és 1, 0000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \*" vagy "Union \*" karaktert.
+   > A lekérdezés hosszának 1 és 1 000 karakter közöttinek kell lennie, és nem tartalmazhat "Search \*" vagy "Union \*" karaktert.
 
     1. A **lekérdezés ütemezése**területen állítsa be a következő paramétereket:
 
@@ -84,7 +84,7 @@ Egyéni analitikai szabályokat hozhat létre, amelyek segítségével megkeresh
 > [!NOTE]
 > Az Azure Sentinelben létrehozott riasztások [Microsoft Graph biztonságon](https://aka.ms/securitygraphdocs)keresztül érhetők el. További információ: [Microsoft Graph Security riasztások dokumentációja](https://aka.ms/graphsecurityreferencebetadocs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993623"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Integrált megoldások az Azure Marketplace-en és a AppSource-ben
@@ -20,15 +20,15 @@ Az integrált megoldás a Microsoft-partnerektől származó legjobb technológi
 
 Ezek a megoldások egy adott ügyfél-szükséglet vagy-forgatókönyv megoldására készültek, amely az iparági kihívások vagy a fájdalom pontok megismerésével kezdődik. Ezt követően két vagy több, a legjobbat alkalmazó technológia integrálható egy egységes és megismételhető üzembe helyezési környezettel az ügyfelek számára, így gyorsan felhasználhatja őket. A rendszerintegrátor emellett egyetlen kapcsolódási pontot biztosít az ügyfél számára, biztosítva a megfelelő testreszabást és tanácsadást, és támogatja a megoldás körét.  Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
-## <a name="advantages"></a>Előnyök
+## <a name="advantages"></a>Előnyei
 
 Az integrált megközelítés előnyei a következők:
 
-* *Iparági szakértelem*: Az iparági megoldások és a tudást biztosító rendszerintegrátorok
-* *Érték*: Integrált üzembe helyezési megközelítés, amely segítséget nyújt az azonnali előnyök megvalósításában
-* *Legjobb megoldás*: Fedezze fel a könnyű, integrált vásárlási és megvalósítási élményt
+* *Iparági szakértelem*: rendszerintegrátorok, amelyek iparági megoldásokat és ismereteket biztosítanak
+* *Az érték*: integrált üzembe helyezési megközelítés, amely segít az azonnali előnyök megvalósításában
+* *Legjobb megoldási megoldások*: az integrált vásárlási és megvalósítási élmény észlelése
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Fedezze fel az integrált megoldásokat, és kapcsolódjon ezekkel az értékes partnerekkel, ha az alábbi adatokat szeretné megtekinteni:
 

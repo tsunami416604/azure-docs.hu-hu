@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ThousandEyes |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és ThousandEyes között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ThousandEyes | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és ThousandEyes között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,246 +13,204 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 10/04/2019
 ms.author: jeedes
-ms.openlocfilehash: bb78b014ffe2d40b9a61da8e47893056e435ddc6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088656"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ThousandEyes
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ThousandEyes
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan ThousandEyes integrálása az Azure Active Directory (Azure AD).
-ThousandEyes integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a ThousandEyes a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az ThousandEyes-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá ThousandEyes Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve ThousandEyes (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A ThousandEyes-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a ThousandEyes az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-ThousandEyes az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* ThousandEyes egyszeri bejelentkezéses engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* ThousandEyes egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a ThousandEyes **SP** által kezdeményezett egyszeri bejelentkezés
+* A ThousandEyes támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A ThousandEyes támogatja az [ **automatikus** felhasználó-kiépítés használatát](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
 
-* Támogatja a ThousandEyes [ **automatikus** felhasználók átadása](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+> [!NOTE]
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
 
-## <a name="adding-thousandeyes-from-the-gallery"></a>ThousandEyes hozzáadása a katalógusból
+## <a name="adding-thousandeyes-from-the-gallery"></a>ThousandEyes hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a ThousandEyes konfigurálásához hozzá kell ThousandEyes a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A ThousandEyes Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a ThousandEyes a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**ThousandEyes hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **ThousandEyes** kifejezést a keresőmezőbe.
+1. Válassza ki a **ThousandEyes** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-thousandeyes"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a ThousandEyes
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a ThousandEyes a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a ThousandEyes-ben.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a ThousandEyes konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[THOUSANDEYES SSO konfigurálása](#configure-thousandeyes-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre ThousandEyes-teszt felhasználót](#create-thousandeyes-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-ThousandEyes rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A Keresés mezőbe írja be a **ThousandEyes**válassza **ThousandEyes** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/) **ThousandEyes** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-     ![Az eredmények listájában ThousandEyes](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az ThousandEyes nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó ThousandEyes hivatkozás kapcsolata kell létrehozni.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-Az Azure AD egyszeri bejelentkezés az ThousandEyes tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://app.thousandeyes.com/login/sso`
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[ThousandEyes egyszeri bejelentkezés konfigurálása](#configure-thousandeyes-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre ThousandEyes tesztfelhasználót](#create-thousandeyes-test-user)**  – egy megfelelője a Britta Simon ThousandEyes, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+1. A **ThousandEyes beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ThousandEyes, hajtsa végre az alábbi lépéseket:
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **ThousandEyes** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a ThousandEyes.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **ThousandEyes**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-    ![ThousandEyes tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-signonurl.png)
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címe:  `https://app.thousandeyes.com/login/sso`
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+## <a name="configure-thousandeyes-sso"></a>ThousandEyes SSO konfigurálása
 
-6. Az a **ThousandEyes beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Egy másik böngészőablakban jelentkezzen be a **ThousandEyes** vállalati webhelyre rendszergazdaként.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL
-
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL
-
-### <a name="configure-thousandeyes-single-sign-on"></a>ThousandEyes egyszeri bejelentkezés konfigurálása
-
-1. Egy másik böngészőablakban, jelentkezzen be a **ThousandEyes** rendszergazdaként a vállalati webhely.
-
-2. A felső menüben kattintson **beállítások**.
+2. A felső menüben kattintson a **Beállítások**elemre.
 
     ![Beállítások](./media/thousandeyes-tutorial/ic790066.png "beállításai")
 
-3. Kattintson a **fiók**
+3. Kattintson a **fiók** lehetőségre
 
-    ![Fiók](./media/thousandeyes-tutorial/ic790067.png "fiók")
+    ![Fiók](./media/thousandeyes-tutorial/ic790067.png "fiókja")
 
-4. Kattintson a **biztonság és hitelesítés** fülre.
+4. Kattintson a **biztonság & hitelesítés** fülre.
 
-    ![A biztonság és hitelesítés](./media/thousandeyes-tutorial/ic790068.png "biztonság és hitelesítés")
+    ![Biztonság & hitelesítési](./media/thousandeyes-tutorial/ic790068.png "Biztonság & hitelesítés")
 
-5. Az a **beállítása egyszeri bejelentkezéshez** szakaszban, hajtsa végre az alábbi lépéseket:
+5. Az **egyszeri bejelentkezés beállítása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés beállítása](./media/thousandeyes-tutorial/ic790069.png "egyszeri bejelentkezés beállítása")
+    Egyszeri ![Bejelentkezés]beállítása(./media/thousandeyes-tutorial/ic790069.png "egyszeri bejelentkezésre")
 
-    a. Válassza ki **egyszeri bejelentkezés engedélyezése**.
+    a. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
 
-    b. A **bejelentkezési oldal URL-cím** szövegmezőjébe illessze be **bejelentkezési URL-cím**, az Azure Portalról másolt.
+    b. A **bejelentkezési oldal URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
-    c. A **kijelentkezési URL-címe** szövegmezőjébe illessze be **kijelentkezési URL-címe**, amely az Azure Portalról másolt.
+    c. A **kijelentkezési oldal URL-címe** szövegmezőben illessze be a **KIjelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
-    d. **Identitásszolgáltató kibocsátója** szövegmezőjébe illessze be **az Azure AD-azonosító**, amely az Azure Portalról másolt.
+    d. **Identitáskezelés kiállítójának** szövegmezője: illessze be az **Azure ad-azonosítót**, amelyet a Azure Portalból másolt.
 
-    e. A **ellenőrző tanúsítvány**, kattintson a **fájl kiválasztása**, majd töltse fel a tanúsítványt, hogy letöltötte az Azure Portalról.
+    e. Az **ellenőrző tanúsítvány**területen kattintson a **fájl kiválasztása**lehetőségre, majd töltse fel a Azure Portalból letöltött tanúsítványt.
 
     f. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-thousandeyes-test-user"></a>ThousandEyes-tesztelési felhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a ThousandEyes-ben. A ThousandEyes támogatja az automatikus felhasználó-kiépítés használatát, amely alapértelmezés szerint engedélyezve van. További részletekért tekintse [meg az automatikus](thousandeyes-provisioning-tutorial.md) felhasználó-kiépítés konfigurálását ismertető témakört.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+**Ha manuálisan kell létrehoznia a felhasználót, hajtsa végre a következő lépéseket:**
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+1. Jelentkezzen be a ThousandEyes vállalati webhelyre rendszergazdaként.
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
-
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
-
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
-
-    d. Kattintson a **Create** (Létrehozás) gombra.
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés ThousandEyes Azure egyszeri bejelentkezés használatára.
-
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **ThousandEyes**.
-
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában jelölje ki a **ThousandEyes**.
-
-    ![Az alkalmazások listáját a ThousandEyes hivatkozásra](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-thousandeyes-test-user"></a>ThousandEyes tesztfelhasználó létrehozása
-
-Ez a szakasz célja ThousandEyes Britta Simon nevű felhasználó létrehozásához. ThousandEyes támogatja a felhasználók automatikus átadása, amely alapértelmezés szerint van engedélyezve. További részleteket talál [Itt](thousandeyes-provisioning-tutorial.md) konfigurálásának a felhasználók automatikus átadása.
-
-**Hozza létre a felhasználó manuálisan kell, ha hajtsa végre a következő lépéseket:**
-
-1. Jelentkezzen be rendszergazdaként a ThousandEyes vállalati webhely.
-
-2. Kattintson a **beállítások**.
+2. Kattintson a **Beállítások**elemre.
 
     ![Beállítások](./media/thousandeyes-tutorial/IC790066.png "beállításai")
 
-3. Kattintson a **fiók**.
+3. Kattintson a **fiók**lehetőségre.
 
-    ![Fiók](./media/thousandeyes-tutorial/IC790067.png "fiók")
+    ![Fiók](./media/thousandeyes-tutorial/IC790067.png "fiókja")
 
-4. Kattintson a **fiókok és a felhasználók** fülre.
+4. Kattintson a **fiókok & felhasználók** lapra.
 
-    ![Fiókok és a felhasználók](./media/thousandeyes-tutorial/IC790073.png "fiókok és a felhasználók")
+    ![Fiókok & felhasználói](./media/thousandeyes-tutorial/IC790073.png "fiókok & felhasználók")
 
-5. Az a **hozzáadása felhasználók és fiókok** szakaszban, hajtsa végre az alábbi lépéseket:
+5. A **felhasználók & fiókok hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Felhasználói fiókok hozzáadása](./media/thousandeyes-tutorial/IC790074.png "felhasználói fiókok hozzáadása")
+    Felhasználói ![fiókok hozzáadása](./media/thousandeyes-tutorial/IC790074.png "felhasználói fiókok hozzáadása")
 
-    a. A **neve** szövegmezőbe írja be a nevet a felhasználó például **Britta Simon**.
+    a. A **név** szövegmezőbe írja be a (z **) B. Simon**nevű felhasználó nevét.
 
-    b. A **E-mail** szövegmezőbe írja be az e-mailt, felhasználó, például brittasimon@contoso.com.
+    b. Az **e-mail** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: b.simon@contoso.com.
 
-    b. Kattintson a **új felhasználó hozzáadása a fiókhoz**.
+    b. Kattintson **az új felhasználó hozzáadása a fiókhoz**lehetőségre.
 
     > [!NOTE]
-    > Az Azure Active Directory fióktulajdonos fog kapni egy e-mailt és a telepítőre mutató erősítse meg, és a fiók aktiválásához.
+    > A Azure Active Directory fiók tulajdonosa egy e-mailt kap, amely tartalmazza a fiók megerősítésére és aktiválására szolgáló hivatkozást is.
 
 > [!NOTE]
-> Bármely más ThousandEyes felhasználói fiók létrehozása eszközöket használhatja, vagy API-k által biztosított ThousandEyes üzembe helyezni az Azure Active Directory felhasználói fiókokat.
+> A ThousandEyes által biztosított egyéb ThousandEyes-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ha a hozzáférési panelen a ThousandEyes csempére kattint, meg kell lehet automatikusan bejelentkezett a ThousandEyes, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+
+Ha a hozzáférési panelen a ThousandEyes csempére kattint, automatikusan be kell jelentkeznie arra a ThousandEyes, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Felhasználók átadásának konfigurálása](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)
+- [A ThousandEyes kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [A felhasználók üzembe helyezésének konfigurálása](https://docs.microsoft.com/azure/active-directory/saas-apps/thousandeyes-provisioning-tutorial)

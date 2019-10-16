@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169479"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372564"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -33,8 +33,8 @@ A mintavétel csökkenti a forgalom és az adatforgalmi költségeket, és segí
 * Az adaptív mintavételezés alapértelmezés szerint engedélyezve van a ASP.NET legújabb verziójában, és ASP.NET Core szoftverfejlesztői készletek (SDK-k).
 * A mintavételt manuálisan is beállíthatja. Ez a portálon, a *használati és becsült költségek lapon*, a ASP.net SDK-ban, a ApplicationInsights. config fájlban, az ASP.net Core SDK-n keresztül, a ApplicationInsights. xml fájlban pedig a Java SDK-ban is konfigurálható.
 * Ha egyéni eseményeket naplóz, és meg kell győződnie arról, hogy az események egy csoportjának megőrzése vagy elvetése megtörtént, akkor az eseményeknek azonos OperationId értékkel kell rendelkezniük.
-* A (z) *n* típusú mintavétel a tulajdonság `itemCount`minden rekordjában megjelenik, amely a keresés alatt a "kérések száma" vagy az "események száma" rövid névvel jelenik meg. `itemCount==1`Ha a mintavételezés nem működik.
-* Ha elemzési lekérdezéseket ír, [vegye figyelembe a mintavételezést](../../azure-monitor/log-query/aggregations.md). Különösen a rekordok számbavétele helyett használja `summarize sum(itemCount)`a parancsot.
+* A mintavétel *n* minden olyan rekordban szerepel a (z) `itemCount` tulajdonságban, amely a keresésben a "kérések száma" vagy az "események száma" mezőben jelenik meg. @no__t – a 0when mintavételezése nem működik.
+* Ha elemzési lekérdezéseket ír, [vegye figyelembe a mintavételezést](../../azure-monitor/log-query/aggregations.md). A rekordok egyszerűen számlálása helyett a `summarize sum(itemCount)` értéket kell használnia.
 
 ## <a name="types-of-sampling"></a>Mintavételi típusok
 
@@ -53,7 +53,7 @@ Ha az adaptív vagy rögzített arányú mintavétel működik, a betöltési mi
 
 Az adaptív mintavételezés Application Insights a ASP.NET v 2.0.0-beta3 és újabb, a Microsoft. ApplicationInsights. AspNetCore SDK v 2.2.0 – béta és újabb verziókban érhető el, és alapértelmezés szerint engedélyezve van.
 
-Az adaptív mintavételezés hatással van a webkiszolgáló-alkalmazásból a Application Insights szolgáltatási végpontra elküldett telemetria mennyiségére. A kötetet a rendszer automatikusan módosítja, hogy a megadott maximális forgalmon belül maradjon, és a beállítással `MaxTelemetryItemsPerSecond`legyen vezérelve. Ha az alkalmazás alacsony telemetria (például hibakeresés vagy alacsony kihasználtság miatt) hoz létre, akkor a mintavételi processzor nem távolítja el az elemeket, amíg a kötet lejjebb `MaxTelemetryItemsPerSecond`van. Ahogy a telemetria mennyisége növekszik, a mintavételezési arány úgy módosul, hogy a cél kötetet lehessen elérni.
+Az adaptív mintavételezés hatással van a webkiszolgáló-alkalmazásból a Application Insights szolgáltatási végpontra elküldett telemetria mennyiségére. A kötet automatikusan módosul, hogy a megadott maximális adatforgalomon belül maradjon, és a `MaxTelemetryItemsPerSecond` beállítással legyen vezérelve. Ha az alkalmazás alacsony telemetria (például hibakeresés vagy alacsony kihasználtság miatt) hoz létre, akkor a mintavételi processzor nem fogja eldobni az elemeket, amíg a kötet `MaxTelemetryItemsPerSecond` alatt van. Ahogy a telemetria mennyisége növekszik, a mintavételezési arány úgy módosul, hogy a cél kötetet lehessen elérni.
 
 A cél kötet eléréséhez a létrehozott telemetria némelyikét elveti a rendszer. Más típusú mintavételezéshez hasonlóan az algoritmus is megőrzi a kapcsolódó telemetria elemeket. Ha például a keresés során megkeresi a telemetria, az adott kivételhez kapcsolódó kérést is megtalálhatja.
 
@@ -92,11 +92,11 @@ A [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-w
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők: Függőség, esemény, kivétel, oldalmegtekintés, kérelem, nyomkövetés. A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak.
+    Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok: függőség, esemény, kivétel, oldalmegtekintés, kérelem, nyomkövetés. A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája. A felismert típusok a következők: Függőség, esemény, kivétel, oldalmegtekintés, kérelem, nyomkövetés. A megadott típusok mintául szolgálnak. a többi típus összes példánya mindig továbbítva lesz.
+    A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája. A felismert típusok: függőség, esemény, kivétel, oldalmegtekintés, kérelem, nyomkövetés. A megadott típusok mintául szolgálnak. a többi típus összes példánya mindig továbbítva lesz.
 
 
 Az adaptív mintavételezés **kikapcsolásához** távolítsa el a AdaptiveSamplingTelemetryProcessor csomópont (oka) t a applicationinsights-config fájlból.
@@ -105,7 +105,7 @@ Az adaptív mintavételezés **kikapcsolásához** távolítsa el a AdaptiveSamp
 
 Ahelyett, hogy a mintavételi paramétert a. config fájlban állítsa be, programozott módon állíthatja be ezeket az értékeket.
 
-1. Távolítsa el `AdaptiveSamplingTelemetryProcessor` az összes csomópontot a. config fájlból.
+1. Távolítsa el az összes `AdaptiveSamplingTelemetryProcessor` csomópontot a. config fájlból.
 2. Használja az alábbi kódrészletet az adaptív mintavételezés konfigurálásához.
 
 *C#*
@@ -145,12 +145,12 @@ Az egyes telemetria-típusok mintavételi sebességét egyenként is beállítha
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Az adaptív mintavételezés konfigurálása ASP.NET Core alkalmazásokhoz.
 
-ASP.net Core alkalmazások esetében `ApplicationInsights.Config` nem, így minden konfiguráció kód használatával történik.
+ASP.NET Core alkalmazások esetében nincs @no__t – 0, így minden konfiguráció kód használatával történik.
 Az adaptív mintavételezés alapértelmezés szerint engedélyezve van az összes ASP.NET Core alkalmazáshoz. Letilthatja vagy testreszabhatja a mintavételezési viselkedést.
 
 ### <a name="turning-off-adaptive-sampling"></a>Az adaptív mintavételezés kikapcsolása
 
-Az alapértelmezett mintavételi funkció letiltható a Application Insights szolgáltatás hozzáadásakor a metódusban ```ConfigureServices``` ```ApplicationInsightsServiceOptions``` a `Startup.cs` fájlon belül:
+Az alapértelmezett mintavételi funkció letiltható a Application Insights szolgáltatás hozzáadásakor a (z) ```ConfigureServices``` metódusban ```ApplicationInsightsServiceOptions``` használatával a `Startup.cs` fájlon belül:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -168,7 +168,7 @@ A fenti kód letiltja a mintavételezési funkciót. Kövesse az alábbi lépés
 
 ### <a name="configure-sampling-settings"></a>Mintavételezési beállítások konfigurálása
 
-A mintavételezési viselkedés ```TelemetryProcessorChainBuilder``` testreszabásához használja az alább látható bővítmény-metódusokat.
+A mintavételezési viselkedés testre szabásához használja a ```TelemetryProcessorChainBuilder``` kiterjesztési módszereit.
 
 > [!IMPORTANT]
 > Ha ezzel a módszerrel konfigurálja a mintavételezést, győződjön meg arról, hogy a aiOptions. EnableAdaptiveSampling = FALSE; értéket használja. beállítások a AddApplicationInsightsTelemetry ().
@@ -195,9 +195,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ```
 
-**Ha a fenti módszer használatával konfigurálja a mintavételezést, ügyeljen arra, ```aiOptions.EnableAdaptiveSampling = false;``` hogy a beállításokat a AddApplicationInsightsTelemetry () metódussal használja.**
+**Ha a fenti módszer használatával konfigurálja a mintavételezést, ügyeljen arra, hogy a AddApplicationInsightsTelemetry () ```aiOptions.EnableAdaptiveSampling = false;``` beállításait használja.**
 
-## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites"></a>Rögzített arányú mintavételezés ASP.NET, ASP.NET Core és Java-webhelyekhez
+## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>Rögzített díjszabás a ASP.NET, a ASP.NET Core, a Java-webhelyekhez és a Python-alkalmazásokhoz
 
 A rögzített arányú mintavételezés csökkenti a webkiszolgálóról és a webböngészőkből eljuttatott forgalmat. Az adaptív mintavételezéstől eltérően az Ön által meghatározott rögzített arányban csökkenti a telemetria. Emellett szinkronizálja az ügyfél és a kiszolgáló mintavételezését is, hogy a kapcsolódó elemek megmaradjanak – például amikor megtekinti a keresési oldal nézetét, megtalálhatja a kapcsolódó kérést.
 
@@ -207,7 +207,7 @@ Metrikaböngésző esetében a kérelmek és a kivételek számát a rendszer a 
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>Rögzített arányú mintavételezés konfigurálása a ASP.NET-ben
 
-1. **Adaptív mintavételezés letiltása**: A [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md)távolítsa el vagy véleményezze `AdaptiveSamplingTelemetryProcessor` a csomópontot.
+1. Az **adaptív mintavételezés letiltása**: a [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md)távolítsa el vagy írja be a `AdaptiveSamplingTelemetryProcessor` csomópontot.
 
     ```xml
 
@@ -262,7 +262,7 @@ Metrikaböngésző esetében a kérelmek és a kivételek számát a rendszer a 
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet-core"></a>Rögzített arányú mintavételezés konfigurálása ASP.NET Core
 
-1. **Adaptív mintavételezés letiltása**:  A metódus ```ConfigureServices```módosításai a következő használatával ```ApplicationInsightsServiceOptions```hajthatók végre:
+1. Az **adaptív mintavételezés letiltása**: a (z) ```ConfigureServices``` metódusban végrehajtott módosítások a ```ApplicationInsightsServiceOptions``` használatával módosíthatók:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -276,7 +276,7 @@ Metrikaböngésző esetében a kérelmek és a kivételek számát a rendszer a 
     }
     ```
 
-2. **Engedélyezze a rögzített sebességű mintavételi modult.** A (z) metódus ```Configure``` módosításait az alábbi kódrészletben látható módon végezheti el:
+2. **Engedélyezze a rögzített sebességű mintavételi modult.** A módosítások a ```Configure``` metódusban hajthatók végre, ahogy az alábbi kódrészletben is látható:
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -327,7 +327,7 @@ Metrikaböngésző esetében a kérelmek és a kivételek számát a rendszer a 
         </IncludedTypes>
     ```
 
-A mintavételből befoglalható vagy kizárható telemetria-típusok a következők: Függőség, esemény, kivétel, oldalmegtekintés, kérelem és nyomkövetés.
+A mintavételből befoglalható vagy kizárható telemetria-típusok a következők: függőség, esemény, kivétel, oldalmegtekintés, kérelem és nyomkövetés.
 
 > [!NOTE]
 > A mintavételezési százaléknál válasszon egy olyan százalékot, amely a 100/N értéknél közelebb van, ahol N egész szám.  A mintavétel jelenleg nem támogatja a többi értéket.
@@ -336,7 +336,27 @@ A mintavételből befoglalható vagy kizárható telemetria-típusok a következ
 
 <a name="other-web-pages"></a>
 
+### <a name="configuring-fixed-rate-sampling-in-opencensus-python"></a>Rögzített arányú mintavételezés konfigurálása a OpenCensus Pythonban ###
 
+1. Az alkalmazást a legújabb [OpenCensus Azure monitor-exportőrökkel](../../azure-monitor/app/opencensus-python.md)alakíthatja ki.
+
+> [!NOTE]
+> A rögzített arányú mintavételezés csak a trace exportőr használatával érhető el. Ez azt jelenti, hogy a bejövő és a kimenő kérelmek az egyetlen telemetria, ahol a mintavétel konfigurálható.
+> 
+> 
+
+2. Megadhat egy `sampler` elemet is a(z) `Tracer` konfigurációja részeként. Ha nincs megadva explicit sampler, a rendszer alapértelmezés szerint a ProbabilitySampler fogja használni. A ProbabilitySampler alapértelmezés szerint a 1/10000-as sebességet fogja használni, ami azt jelenti, hogy minden 10000-kérelem közül egyet Application Insights küld a rendszer. A továbbiakban megtudhatja, hogyan adhat meg mintavételezési frekvenciát.
+
+3. A mintavételező megadása során győződjön meg arról, hogy a(z) `Tracer` 0,0 és 1,0 közötti mintavételezési frekvenciát ad meg (a végértékeket is beleértve). A 1,0-es mintavételi sebesség a 100%-ot jelöli, ami azt jelenti, hogy az összes kérést a rendszer telemetria fogja elküldeni Application Insights.
+
+    ```python
+    tracer = Tracer(
+        exporter=AzureExporter(
+            instrumentation_key='00000000-0000-0000-0000-000000000000',
+        ),
+        sampler=ProbabilitySampler(1.0),
+    )
+    ```
 
 ## <a name="ingestion-sampling"></a>Betöltési mintavételezés
 
@@ -361,7 +381,7 @@ A betöltési mintavételezés nem működik, ha az SDK-alapú adaptív vagy rö
 ## <a name="sampling-for-web-pages-with-javascript"></a>A JavaScripttel rendelkező weblapok mintavételezése
 Bármely kiszolgálóról konfigurálhat weblapokat rögzített arányú mintavételezéshez. 
 
-Ha [Application Insights weblapjait konfigurálja](../../azure-monitor/app/javascript.md), módosítsa a Application Insights portálról beolvasott JavaScript-kódrészletet. (A ASP.NET-alkalmazásokban a kódrészlet általában a _Layout. cshtml.)  Szúrjon be egy `samplingPercentage: 10,` sort, például a kialakítási kulcs előtt:
+Ha [Application Insights weblapjait konfigurálja](../../azure-monitor/app/javascript.md), módosítsa a Application Insights portálról beolvasott JavaScript-kódrészletet. (A ASP.NET-alkalmazásokban a kódrészlet általában a _Layout. cshtml.)  Szúrjon be egy sort (például @no__t – 0) a kialakítási kulcs előtt:
 
     <script>
     var appInsights= ... 
@@ -519,7 +539,7 @@ A Azure Functions alkalmazásban futó alkalmazások mintavételezésének konfi
 
 *Bizonyos ritkán előforduló események mindig látni szeretnék. Hogyan szerezhetem be a mintavételi modult a múltban?*
 
-* Ennek a legjobb módja az, ha egy egyéni [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)ír, amely a `SamplingPercentage` 100-et a megőrizni kívánt telemetria-elemre állítja be az alább látható módon. Mivel az inicializálók garantáltan a telemetria processzorok (beleértve a mintavételezést is) előtt futnak, ez biztosítja, hogy az összes mintavételi módszer figyelmen kívül hagyja ezt az elemet a mintavételezési megfontolások alapján.
+* Ennek eléréséhez a legjobb módszer, ha egy egyéni [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)ír, amely a `SamplingPercentage` és 100 értékre állítja be a megőrizni kívánt telemetria-elemre az alább látható módon. Mivel az inicializálók garantáltan a telemetria processzorok (beleértve a mintavételezést is) előtt futnak, ez biztosítja, hogy az összes mintavételi módszer figyelmen kívül hagyja ezt az elemet a mintavételezési megfontolások alapján.
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer
@@ -534,7 +554,7 @@ A Azure Functions alkalmazásban futó alkalmazások mintavételezésének konfi
       }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szűréssel](../../azure-monitor/app/api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
 * Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](https://msdn.microsoft.com/magazine/mt808502.aspx).

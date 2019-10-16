@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8bee226c85e6433500fcbef9b084cc547ef2b58f
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc869bc0c52a54044cbc095cd20f0395e590c852
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301671"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332819"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
@@ -27,9 +27,9 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 |Jellemzők|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
 |Platform szolgáltatás|Igen, Azure-natív megoldás|Igen, Azure-natív megoldás|Nem, önállóan felügyelt|
-|Regionális elérhetőség|0\. gyűrű, széles körű rendelkezésre állás|1\. gyűrű, jelenleg [legalább kilenc régióban](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) elérhető|Az Azure-beli számítások által támogatott DC-régiók, a prémium szintű lemezek széles körben elérhetők és ajánlottak a Közvetlen tárolóhelyek|
+|Regionális elérhetőség|Minden régió|[Régiók kiválasztása](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Minden régió|
 |Redundancia|Helyileg redundáns/Zone-redundáns/geo-redundáns|Locally redundant (Helyileg redundáns)|Helyileg redundáns/Zone-redundáns/geo-redundáns|
-|Rétegek és teljesítmény|Standard<br>Prémium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultranagy<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát|
+|Rétegek és teljesítmény|Standard<br>Prémium<br>Akár 100 000 000 IOPS, 5 GB/s megosztással, körülbelül 3 MS késéssel|Standard<br>Prémium<br>Ultranagy<br>Akár 320k (16K) IOPS 4,5 GB/s-onként, körülbelül 1 MS késéssel|Standard HDD: legfeljebb 500 IOPS korlát<br>Standard SSD: legfeljebb 4k IOPS korlát<br>Prémium SSD: legfeljebb 20000 IOPS korlát<br>A prémium szintű lemezeket ajánlott Közvetlen tárolóhelyek|
 |Kapacitás|100 TiB/megosztás|100 TiB/kötet, akár 12,5 PiB/előfizetés|Maximális 32 TiB/lemez|
 |Szükséges infrastruktúra|Minimális megosztás mérete 1 GiB|Minimális kapacitási készlet 4 TiB, min. kötet mérete 100 GiB|Két virtuális gép az Azure IaaS (+ Felhőbeli tanúsító) vagy legalább három virtuális gép nélkül, valamint a lemezek költségei|
 |Protokollok|SMB 2.1/3. és REST|NFSv3, NFSv 4.1 (előzetes verzió), SMB 3. x/2. x|NFSv3, NFSv 4.1, SMB 3,1|
@@ -39,7 +39,6 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 |Jellemzők|Azure Files|Azure NetApp Files|Közvetlen tárolóhelyek|
 |--------|-----------|------------------|---------------------|
 |Hozzáférés|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
-|Azure Active Directory-integráció|Azure Active Directory és Azure Active Directory Domain Services|Azure Active Directory Domain Services és natív Active Directory|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|
 |Backup|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
 |Biztonság és megfelelőség|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO befejezve|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-integráció|Azure Active Directory és Azure Active Directory Domain Services|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729216"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373386"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -67,7 +67,7 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 | Az automatikus kiépítés által engedélyezett vagy továbbfejlesztett képességek| Azure AD-kiépítési szolgáltatás (SCIM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JIT |
 |---|---|---|---|
 | Felhasználók és csoportok kezelése az Azure AD-ben| √| √| Csak felhasználó |
-| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √*| √*| Csak felhasználó * |
+| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √| √| Csak felhasználó * |
 | A felhasználók és csoportok feletti adathozzáférés a O365-alapú adathozzáféréshez (csapatok, SharePoint, E-mail, naptár, dokumentumok stb.) való kiépítés során történik.| X +| √| X |
 | Felhasználók létrehozása, olvasása és frissítése üzleti szabályok alapján| √| √| √ |
 | Felhasználók törlése üzleti szabályok alapján| √| √| X |
@@ -76,24 +76,24 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 | Támogató vendég fiókok (B2B)| √| √| √ |
 | Nem vállalati fiókok (B2C) támogatása| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect telepítés szükséges a felhasználók az AD-ből az Azure AD-be való szinkronizálásához.  
-<sup>+</sup >– A SCIM használata az üzembe helyezéshez nem zárja ki, hogy az alkalmazást a MIcrosoft Graph-ban más célokra is integrálja.
+<sup>*</sup> – Azure ad Connect telepítő szükséges a felhasználók az ad-ből az Azure ad-be való szinkronizálásához.  
+<sup>+</sup >– a scim használata az üzembe helyezéshez nem zárja ki, hogy az alkalmazás a MIcrosoft Graph-ban más célokra is integrálható legyen.
 
-## <a name="azure-ad-provisioning-service"></a>Azure AD-kiépítési szolgáltatás
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD kiépítési szolgáltatás (SCIM)
 
-Az Azure AD-kiépítési szolgáltatások a SCIM protokollt használják, amelyet számos Identity Provider (IDP) támogat. Azt javasoljuk, hogy az Azure AD kiépítési szolgáltatását használja, ha az Azure AD mellett szeretné támogatni a IDP-t, mivel bármely SCIM-kompatibilis identitásszolgáltató csatlakozhat a SCIM-végponthoz.
+Az Azure AD-kiépítési szolgáltatások a következőt használják: [SCIM] (https://aka.ms/SCIMOverview, a sok Identity Provider által támogatott protokoll (IDP). Azt javasoljuk, hogy az Azure AD kiépítési szolgáltatását használja, ha az Azure AD mellett szeretné támogatni a IDP-t, mivel bármely SCIM-kompatibilis identitásszolgáltató csatlakozhat a SCIM-végponthoz.
 
 Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további információkért lásd: 
+
+* [További információ a SCIM standardról](https://aka.ms/SCIMOverview)
 
 * [Rendszer használata a tartományok közötti Identitáskezelés (SCIM) számára a felhasználók és csoportok automatikus kiépítéséhez Azure Active Directoryról alkalmazásokba](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Az Azure AD SCIM implementációjának ismertetése](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [SCIM-végpont létrehozása a Microsoft CLI-kódtárak használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
 ## <a name="microsoft-graph-for-provisioning"></a>Kiépítés Microsoft Graph
 
-Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a Microsoft Graphban elérhető több [](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)száz más adatmennyiséget. 
+Ha Microsoft Grapht használ a kiépítés során, akkor a Graph-ban elérhető összes gazdag felhasználói adattal hozzáférhet. A felhasználók és csoportok részletein kívül további információkat is beolvashat, például a felhasználó szerepköreit, felettesét és közvetlen jelentéseit, a tulajdonában lévő és regisztrált eszközöket, valamint a [Microsoft Graphban](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)elérhető több száz más adatmennyiséget. 
 
 Több mint 15 000 000 szervezet és a Fortune 500 90%-a az Azure AD-t használja a Microsoft Cloud Services, például az Office 365, a Microsoft Azure, a nagyvállalati mobilitási csomag vagy a Microsoft 365ra való feliratkozáskor. A Microsoft Graph használatával integrálhatja az alkalmazást a felügyeleti munkafolyamatokkal, például az alkalmazottak bevezetésével (és megszüntetésével), a profil karbantartásával és egyéb lehetőségekkel. 
 
@@ -123,7 +123,7 @@ Ha csak az első bejelentkezés alkalmával szeretné kiépíteni a felhasznál�
 
 Az SAML JIT az SAML-jogkivonat jogcím-információi alapján hozza létre és frissíti a felhasználói adatokat az alkalmazásban. Az ügyfelek igény szerint konfigurálhatják ezeket a szükséges jogcímeket az Azure AD-alkalmazásban. Időnként az JIT-kiépítés engedélyezése szükséges az alkalmazás oldaláról, hogy az ügyfél használhassa ezt a funkciót. Az SAML JIT hasznos a felhasználók létrehozásához és frissítéséhez, de nem tudja törölni vagy inaktiválni a felhasználókat az alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 

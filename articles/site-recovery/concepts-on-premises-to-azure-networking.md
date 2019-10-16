@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937560"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333048"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Kapcsolódás Azure-beli virtuális gépekhez a helyszíni feladatátvétel után 
 
@@ -77,8 +77,8 @@ Ha egy nyilvános IP-címet manuálisan rendel egy Azure-beli virtuális géphez
 
 Ha egy Azure-beli virtuális gép belső IP-címét feladatátvétel után szeretné beállítani, néhány lehetőség közül választhat:
 
-- **Azonos IP-cím megőrzése**: Használhatja ugyanazt az IP-címet az Azure-beli virtuális gépen, mint amelyet a helyszíni géphez rendeltek.
-- **Eltérő IP-cím használata**: Más IP-címet is használhat az Azure-beli virtuális géphez.
+- **Azonos IP-cím megőrzése**: az Azure-beli virtuális gépen ugyanazt az IP-címet használhatja, mint a helyszíni gép számára.
+- **Eltérő IP-cím használata**: használhat másik IP-címet az Azure-beli virtuális géphez.
 
 
 ## <a name="retain-ip-addresses"></a>IP-címek megőrzése
@@ -91,12 +91,12 @@ Site Recovery lehetővé teszi, hogy ugyanazokat az IP-címeket őrizze meg, ami
 
 Az IP-címek megtartásához a következő lépések szükségesek:
 
-- A helyszíni gép tulajdonságainál állítsa be a hálózati és IP-címzést a cél Azure-beli virtuális gép számára a helyszíni beállítás tükrözéséhez.
+- A replikált elem számítási & hálózati tulajdonságainál állítsa be a hálózati és IP-címzést a cél Azure-beli virtuális gép számára a helyszíni beállítás tükrözéséhez.
 - Az alhálózatokat a vész-helyreállítási folyamat részeként kell kezelni. Szüksége van egy Azure-VNet, amely megfelel a helyszíni hálózatnak, és a feladatátvételi hálózati útvonalakat úgy kell módosítani, hogy azt tükrözzék, hogy az alhálózat át lett helyezve az Azure-ba, és új IP-címek találhatók.  
 
 ### <a name="failover-example"></a>Példa feladatátvételre
 
-Lássunk erre egy példát.
+Nézzük meg egy példát.
 
 - A fiktív vállalati Woodgrove Bank a helyileg üzemeltetett üzleti alkalmazásokat üzemelteti a mobil alkalmazásaikat az Azure-ban.
 - A helyek közötti VPN-kapcsolaton keresztül csatlakoznak a helyszínről az Azure-hoz. 
@@ -120,7 +120,7 @@ A címek megőrzése érdekében a következő műveleteket végzi el.
     > Az alkalmazás követelményeitől függően a VNet-VNet kapcsolatok a feladatátvétel előtt állíthatók be, manuális lépés/parancsfájl-lépés/Azure Automation-runbook egy Site Recovery [helyreállítási tervben](site-recovery-create-recovery-plans.md)vagy a feladatátvétel befejeződése után.
 
 4. A feladatátvétel előtt a Site Recovery számítógép tulajdonságainál a célként megadott IP-címet a rendszer a helyszíni gép címére állítja be a következő eljárásban leírtak szerint.
-5. A feladatátvételt követően az Azure-beli virtuális gépek ugyanazzal az IP-címmel jönnek létre. A Woodgrove az **Azure-hálózatról** a **helyreállítási hálózati** VNet való csatlakozást használja 
+5. A feladatátvételt követően az Azure-beli virtuális gépek ugyanazzal az IP-címmel jönnek létre. A Woodgrove az **Azure-hálózatról** a **helyreállítási hálózati** VNet csatlakoztatja a VNet-társítás használatával (az átviteli kapcsolat engedélyezve van).
 6. A helyszíni Woodgrove hálózati módosításokat kell végeznie, beleértve az útvonalak módosítását is, hogy a 192.168.1.0/24 átkerüljön az Azure-ba.  
 
 **Infrastruktúra a feladatátvétel előtt**
@@ -153,7 +153,7 @@ Ebben az esetben az Azure-beli virtuális gép új IP-címet kap a feladatátvé
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tudnivalók](site-recovery-active-directory.md) a helyszíni Active Directory és a DNS Azure-ba történő replikálásáról.
 
 

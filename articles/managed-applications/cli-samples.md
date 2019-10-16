@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI-minták – Azure felügyelt alkalmazások |} A Microsoft Docs
-description: Az Azure CLI-minták – Azure felügyelt alkalmazások
+title: Azure CLI-minták – Azure Managed Applications | Microsoft Docs
+description: Lehetővé teszi az Azure CLI-szkriptek használatát a Azure Managed Applications használatakor.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b7c645bd9ee87faf51eab58651ddc5c7cde46a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77a25e3d92306e4e5d0f597a02a69dfb62d54398
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60588870"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332719"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-minták
 
-Az alábbi táblázat a bash-szkriptek az Azure által felügyelt alkalmazásokat, amelyek használják az Azure CLI mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure CLI-t használó Azure Managed Applications bash-parancsfájlokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
 |**Felügyelt alkalmazás létrehozása**||
-| [Felügyelt alkalmazás definíciójának létrehozása](scripts/managed-application-cli-sample-create-definition.md) | Létrehoz egy felügyelt alkalmazás definícióját a szolgáltatáskatalógusban.  |
-| [Felügyelt alkalmazás üzembe helyezése](scripts/managed-application-cli-sample-create-application.md) | Üzembe helyez egy felügyelt alkalmazást a szolgáltatáskatalógusból.  |
+| [Felügyelt alkalmazás definíciójának létrehozása](scripts/managed-application-cli-sample-create-definition.md) | Létrehoz egy felügyelt alkalmazás definícióját a szolgáltatási katalógusban.  |
+| [Felügyelt alkalmazás telepítése](scripts/managed-application-cli-sample-create-application.md) | Felügyelt alkalmazást telepít a szolgáltatás-katalógusból.  |
 | | |
 |**Felügyelt erőforráscsoport frissítése**||
-| [Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Erőforrások olvas be a felügyelt erőforráscsoporthoz, és átméretezi a virtuális gépeket. |
+| [Erőforrások lekérése a felügyelt erőforráscsoporthoz és a virtuális gépek átméretezése](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Lekéri a felügyelt erőforráscsoport erőforrásait, és átméretezi a virtuális gépeket. |

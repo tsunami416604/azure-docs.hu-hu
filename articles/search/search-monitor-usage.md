@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327145"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331216"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Az erőforrás-felhasználás és a lekérdezési tevékenységek figyelése Azure Search
 
@@ -30,7 +30,8 @@ Az Áttekintés lapon beépített **használati** és **figyelési** szakaszt az
 
 A **használat** lapon az erőforrások rendelkezésre állása az aktuális [határértékekhez](search-limits-quotas-capacity.md)viszonyítva jelenik meg. Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektumára, illetve 50 MB tárterületre van korlátozva. Egy alapszintű vagy standard szolgáltatás magasabb korláttal rendelkezik, és ha megnöveli a partíciók számát, a maximális tárterület arányosan növekszik.
 
-A ![használati állapot a hatályos határértékekhez képest]@no__t 1Usage állapota a hatályos határértékekhez képest @ no__t-2
+A ![használati állapot a hatályos határértékek](./media/search-monitor-usage/usage-tab.png
+ "használati állapotához viszonyítva, a hatályos határértékekhez képest")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Másodpercenkénti lekérdezések (QPS) és egyéb mérőszámok
 
@@ -55,9 +56,8 @@ Azure Search nem tárol semmilyen, az általa kezelt objektumon túli adattárol
 
 A következő táblázat összehasonlítja a naplók tárolásának lehetőségeit, és részletesen figyeli a szolgáltatási műveleteket és a lekérdezési feladatokat a Application Insightson keresztül.
 
-| Resource | Alkalmazási cél |
+| Erőforrás | Alkalmazási cél |
 |----------|----------|
-| [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | A naplózott események és a lekérdezési mérőszámok az alábbi sémák alapján korreláltak az alkalmazás felhasználói eseményeivel. Ez az egyetlen olyan megoldás, amely felhasználói műveleteket vagy jeleket vesz igénybe, és a felhasználó által kezdeményezett keresésből származó eseményeket térképezi fel, az alkalmazás kódja által küldött szűrési kérelmek helyett. Ha ezt a módszert szeretné használni, másolja be a rendszerállapot-kódot a forrásfájlokba, hogy átirányítsa a kérés adatait a Application Insightsba. További információ: [Search Traffic Analytics](search-traffic-analytics.md). |
 | [Azure Monitor-naplók](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események naplózása egy Log Analytics munkaterületre történik. Futtathat lekérdezéseket egy munkaterületen, ha részletes információkat ad vissza a naplóból. További információ: Ismerkedés [a Azure monitor-naplókkal](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Naplózott események és lekérdezések mérőszámai az alábbi sémák alapján. Az események egy blob-tárolóba kerülnek, és JSON-fájlokban tárolódnak. A fájl tartalmának megtekintéséhez használjon JSON-szerkesztőt.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | A naplózott események és a lekérdezési metrikák a cikkben leírt sémák alapján. Válassza ezt alternatív adatgyűjtési szolgáltatásként a nagyon nagy naplók számára. |
@@ -80,7 +80,7 @@ Ez a szakasz azt ismerteti, hogyan használható a blob Storage a naplózott ese
 
    ![](./media/search-monitor-usage/enable-monitoring.png "Figyelés") engedélyezésének engedélyezése
 
-3. Válassza ki az exportálni kívánt adatbevitelt: Naplók, metrikák vagy mindkettő. Átmásolhatja egy Storage-fiókba, elküldheti egy Event hubhoz, vagy exportálhatja Azure Monitor naplókba.
+3. Válassza ki az exportálni kívánt adatokat: naplók, metrikák vagy mindkettő. Átmásolhatja egy Storage-fiókba, elküldheti egy Event hubhoz, vagy exportálhatja Azure Monitor naplókba.
 
    A blob Storage-hoz való archiváláshoz csak a Storage-fióknak kell léteznie. A rendszer a tárolók és Blobok létrehozásához szükség lesz a naplófájlok exportálására.
 
@@ -92,10 +92,10 @@ Ez a szakasz azt ismerteti, hogyan használható a blob Storage a naplózott ese
 
 A naplózás a profil mentésekor van engedélyezve. A tárolók csak akkor jönnek létre, ha van egy tevékenység a naplóba vagy a mértékbe. Amikor az adat egy Storage-fiókba másolódik, az adat JSON-ként van formázva, és két tárolóba kerül:
 
-* insights-logs-operationlogs: a keresési forgalmi naplók
-* insights-mérőszámok – pt1m: metrikák
+* elemzések – naplók – operationlogs: keresési forgalmi naplók
+* áttekintések – mérőszámok – pt1m: metrikák esetén
 
-@no__t – a 0It egy órát vesz igénybe, mielőtt a tárolók megjelenjenek a blob Storage-ban. A tárolók száma óránként egy blob. **
+**A tárolók a blob Storage-ban való megjelenítése előtt egy órával tartanak. A tárolók száma óránként egy blob.**
 
 A fájlok megtekintéséhez használhatja a [Visual Studio Code](#download-and-open-in-visual-studio-code) -ot vagy egy másik JSON-szerkesztőt is. 
 
@@ -105,52 +105,52 @@ A fájlok megtekintéséhez használhatja a [Visual Studio Code](#download-and-o
 resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
 ```
 
-## <a name="log-schema"></a>Séma
-A keresési szolgáltatás forgalmi naplóit tartalmazó Blobok strukturálva vannak a jelen szakaszban leírtak szerint. Az egyes Blobok egy, a log objektumok tömbjét tartalmazó rekordokat tartalmaznak. Minden blob az adott órában végrehajtott összes művelethez tartalmaz rekordokat.
+## <a name="log-schema"></a>Napló sémája
+A keresési szolgáltatás forgalmi naplóit tartalmazó Blobok strukturálva vannak a jelen szakaszban leírtak szerint. Az egyes Blobok egy, a log objektumok tömbjét tartalmazó **rekordokat** tartalmaznak. Minden blob az adott órában végrehajtott összes művelethez tartalmaz rekordokat.
 
-| Name (Név) | Típus | Példa | Megjegyzések |
+| Név | Type (Típus) | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |A művelet időbélyeg |
-| resourceId |sztring |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/> A MICROSOFT. KERESÉS/SEARCHSERVICES/SEARCHSERVICE" |Az erőforrás-azonosító |
-| operationName |sztring |"Query.Search" |A művelet neve |
-| operationVersion |Karakterlánc |"2019-05-06" |A használt api-verzió |
+| time |dátum/idő |"2018-12-07T00:00:43.6872559 Z" |A művelet időbélyege |
+| resourceId |sztring |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK/<br/> Microsoft. KERESÉS/SEARCHSERVICES/SEARCHSERVICE " |Az Ön ResourceId |
+| operationName |sztring |"Lekérdezés. keresés" |A művelet neve |
+| operationVersion |sztring |"2019-05-06" |A használt API-verzió |
 | category |sztring |"OperationLogs" |állandó |
-| resultType |sztring |"Sikeres" |Lehetséges értékek: Sikeres vagy sikertelen |
-| resultSignature |int |200 |HTTP-eredménykód |
-| durationMS |int |50 |Ennyi ezredmásodpercig tart a művelet időtartama |
-| properties |objektum |az alábbi táblázatban foglaltuk össze |A művelet-specifikus adatokat tartalmazó objektum |
+| resultType |sztring |Sikeres |Lehetséges értékek: sikeres vagy sikertelen |
+| resultSignature |int |200 |HTTP-eredmény kódja |
+| Átl |int |50 |A művelet időtartama ezredmásodpercben |
+| properties |objektum |Tekintse meg a következő táblázatot |Művelet-specifikus adathalmazt tartalmazó objektum |
 
 **Tulajdonságok séma**
 
-| Name (Név) | Típus | Példa | Megjegyzések |
+| Név | Type (Típus) | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| Leírás |sztring |"GET /indexes('content')/docs" |A művelet végpont |
-| Lekérdezés |Karakterlánc |"?search=AzureSearch&$count=true&api-version=2019-05-06" |A lekérdezési paraméterek |
+| Leírás |sztring |"/Indexes beolvasása (" tartalom ")/docs" |A művelet végpontja |
+| Lekérdezés |sztring |"? Search = AzureSearch & $count = igaz & API-Version = 2019-05-06" |A lekérdezési paraméterek |
 | Dokumentumok |int |42 |Feldolgozott dokumentumok száma |
-| indexName |sztring |"testindex" |A művelethez társított az index neve |
+| indexName |sztring |"testindex" |A művelethez társított index neve |
 
-## <a name="metrics-schema"></a>Metrikák séma
+## <a name="metrics-schema"></a>Mérőszámok sémája
 
 A rendszer a lekérdezési kérelmek esetében rögzíti a metrikákat.
 
-| Name (Név) | Típus | Példa | Megjegyzések |
+| Név | Type (Típus) | Példa | Megjegyzések |
 | --- | --- | --- | --- |
-| resourceId |sztring |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK /<br/>A MICROSOFT. KERESÉS/SEARCHSERVICES/SEARCHSERVICE" |az erőforrás-azonosító |
-| MetricName |sztring |"Késés" |a metrika neve |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |a művelet időbélyeg |
-| átlag |int |64 |Átlagos értéke a metrika időközben a nyers minták |
-| minimum |int |37 |A minimális érték a metrika időközben a nyers minták |
-| maximum |int |78 |A maximális érték a metrika időközben a nyers minták |
-| összeg |int |258 |A metrika időközben a nyers minták teljes értéke |
-| count |int |4 |A metrika létrehozásához használt nyers minták száma. |
-| timegrain |sztring |"PT1M" |A metrika az ISO 8601 az aggregációs időköz |
+| resourceId |sztring |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/ALAPÉRTELMEZETT/SZOLGÁLTATÓK/<br/>Microsoft. KERESÉS/SEARCHSERVICES/SEARCHSERVICE " |az erőforrás-azonosító |
+| metricName |sztring |Késleltetés |a metrika neve |
+| time |dátum/idő |"2018-12-07T00:00:43.6872559 Z" |a művelet időbélyege |
+| átlagos |int |64 |A nyers minták átlagos értéke a metrika időintervallumában |
+| Minimális |int |37 |A nyers minták minimális értéke a metrika időintervallumában |
+| Maximális |int |78 |A nyers minták maximális értéke a metrikai időintervallumban |
+| teljes |int |258 |A nyers minták teljes értéke a metrikai időintervallumban |
+| count |int |4 |A metrika létrehozásához használt nyers minták száma |
+| timegrain |sztring |"PT1M" |A metrika időbeli kiőrlése ISO 8601 |
 
-Az összes metrikák szerepelnek a jelentésben, az egy perces időközönként. Minden mérőszám minimális, maximális és átlagos értékek száma percenként.
+Az összes metrika egyperces időközönként szerepel. Minden metrika percenkénti minimális, maximális és átlagos értékeket tesz elérhetővé.
 
-A metrika-SearchQueriesPerSecond minimális érték a legkisebb érték a keresési lekérdezések másodpercenként, amely az adott percben regisztrálták. Ugyanez vonatkozik a maximális értéknél. A teljes perc átlagos, esetében az összesítést.
-Ebben a forgatókönyvben egy perc alatt gondoljunk: egy második magas betöltése, amely a legnagyobb SearchQueriesPerSecond, átlagos terhelés, 58 másodperc követ, és végül egy második csak egy lekérdezést, amely a minimális.
+A SearchQueriesPerSecond metrika esetében a minimális érték az adott percben regisztrált keresési lekérdezések másodpercenkénti legalacsonyabb értéke. Ugyanez vonatkozik a maximális értékre is. Az átlag a teljes percenkénti összesítés.
+Gondolja át ezt a forgatókönyvet egy percen belül: egy másodperces nagy terhelést, amely a SearchQueriesPerSecond maximális értéke, majd az átlagos terhelés 58 másodperc, végül egy másodperc csak egy lekérdezéssel, amely a minimum.
 
-ThrottledSearchQueriesPercentage, a minimális, maximális, átlagos és teljes, az összes ugyanazzal az értékkel rendelkeznek: voltak szabályozva, egy perc alatt keresési lekérdezések teljes száma a keresési lekérdezések aránya.
+A ThrottledSearchQueriesPercentage, a minimum, a maximum, az átlag és az összes érték esetében ugyanaz az érték: a leszabályozott keresési lekérdezések százalékos aránya a keresési lekérdezések teljes számától egy percen belül.
 
 ## <a name="download-and-open-in-visual-studio-code"></a>Letöltés és Megnyitás a Visual Studio Code-ban
 
@@ -168,12 +168,12 @@ Miután letöltötte a fájlt, nyissa meg egy JSON-szerkesztőben a tartalom meg
 A Azure Search REST API és a .NET SDK egyaránt biztosít programozott hozzáférést a szolgáltatási metrikák, az index és az indexelő adataihoz, valamint a dokumentumok számát.
 
 * [Szolgáltatások statisztikáinak beolvasása](/rest/api/searchservice/get-service-statistics)
-* [Index statisztikájának beolvasása](/rest/api/searchservice/get-index-statistics)
-* [Dokumentumok száma](/rest/api/searchservice/count-documents)
-* [Az indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status)
+* [Index statisztikáinak beolvasása](/rest/api/searchservice/get-index-statistics)
+* [Dokumentumok számlálása](/rest/api/searchservice/count-documents)
+* [Indexelő állapotának beolvasása](/rest/api/searchservice/get-indexer-status)
 
-A PowerShell vagy az Azure CLI használatával engedélyezéséhez tekintse a dokumentáció [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
+A PowerShell vagy az Azure CLI használatával történő engedélyezéshez tekintse meg a dokumentációt [itt](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szolgáltatás felügyeletével és [teljesítményével, valamint](search-performance-optimization.md) a hangolási útmutatóval kapcsolatos további információkért a [Microsoft Azure felügyelheti a Search szolgáltatást](search-manage.md) .

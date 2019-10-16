@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: 125f1bc14a376523a22984e9d8efa7848408bf7a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 654e4bc35de1ed33842944ba360d319705589683
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035205"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372513"
 ---
-# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>A .NET/.NET Core nyomkövetési naplók megismerése Application Insights
+# <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>A .NET/.NET Core és a Python nyomkövetési naplók megismerése Application Insights
 
-Diagnosztikai nyomkövetési naplók küldése a ASP.NET/ASP.NET Core-alkalmazáshoz a ILogger, a NLog, a log4Net vagy a System. Diagnostics. Traceből az [Azure Application Insightsba][start]. Ezután megtekintheti és megkeresheti őket. Ezek a naplók az alkalmazás más naplófájljaiba vannak egyesítve, így azonosíthatók az egyes felhasználói kérésekhez társított nyomkövetési adatok, és más eseményekkel és kivételekkel kapcsolatos jelentések is összekapcsolhatók.
+Diagnosztikai nyomkövetési naplók küldése a ASP.NET/ASP.NET Core-alkalmazáshoz a ILogger, a NLog, a log4Net vagy a System. Diagnostics. Traceből az [Azure Application Insightsba][start]. Python-alkalmazások esetén a diagnosztikai nyomkövetési naplók küldéséhez használja a AzureLogHandler a OpenCensus Pythonban Azure Monitor. Ezután megtekintheti és megkeresheti őket. Ezek a naplók az alkalmazás más naplófájljaiba vannak egyesítve, így azonosíthatók az egyes felhasználói kérésekhez társított nyomkövetési adatok, és más eseményekkel és kivételekkel kapcsolatos jelentések is összekapcsolhatók.
 
 > [!NOTE]
 > Szüksége van a log-Capture modulra? Ez egy hasznos adapter a külső gyártótól származó adatgyűjtők számára. Ha azonban még nem használja a NLog, a log4Net vagy a System. Diagnostics. Tracet, vegye figyelembe, hogy közvetlenül a [**Application Insights TrackTrace ()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) metódust hívja meg.
@@ -43,12 +43,12 @@ Telepítse a kiválasztott naplózási keretrendszert a projektben, amelynek ere
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>Application Insights konfigurálása naplók gyűjtéséhez
-Ha még nem tette meg, [adja hozzá Application Insights](../../azure-monitor/app/asp-net.md) a projekthez. Megjelenik egy lehetőség, amely tartalmazza a napló gyűjtőjét.
+Ha még nem tette meg, [adja hozzá Application Insights a projekthez](../../azure-monitor/app/asp-net.md) . Megjelenik egy lehetőség, amely tartalmazza a napló gyűjtőjét.
 
 Vagy kattintson a jobb gombbal a projektre Megoldáskezelő a **Application Insights konfigurálásához**. Válassza a **nyomkövetési gyűjtemény konfigurálása** lehetőséget.
 
 > [!NOTE]
-> Nincs Application Insights menü vagy a log Collector lehetőség? Próbálja [](#troubleshooting)ki a hibaelhárítást.
+> Nincs Application Insights menü vagy a log Collector lehetőség? Próbálja ki a [hibaelhárítást](#troubleshooting).
 
 ## <a name="manual-installation"></a>Manuális telepítés
 Ezt a módszert akkor használja, ha a projekt típusát nem támogatja a Application Insights telepítője (például egy Windows asztali projekt).
@@ -58,19 +58,19 @@ Ezt a módszert akkor használja, ha a projekt típusát nem támogatja a Applic
 3. Keressen rá a "Application Insights" kifejezésre.
 4. Válasszon egyet az alábbi csomagok közül:
 
-   - ILogger esetén: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - ILogger: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - NLog esetén: [Microsoft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - NLog: [Microsoft. ApplicationInsights. NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Log4Net esetén: [Microsoft.ApplicationInsights.Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Log4Net: [Microsoft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - A System. Diagnostics esetében: [Microsoft.ApplicationInsights.TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - System. Diagnostics: [Microsoft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
    - [Microsoft. ApplicationInsights. DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
    - [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 [![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
 A NuGet csomag telepíti a szükséges szerelvényeket, és módosítja a web. config vagy az app. config fájlt, ha az alkalmazható.
@@ -89,7 +89,7 @@ Ha a log4net vagy az NLog-t részesíti előnyben, használja a következőket:
     logger.Warn("Slow response - database01");
 
 ## <a name="use-eventsource-events"></a>EventSource-események használata
-Konfigurálhatja a [System. Diagnostics. Trace. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze `TelemetryModules` a [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájl szakaszát.
+Konfigurálhatja a [System. Diagnostics. Trace. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze a [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájl `TelemetryModules` szakaszát.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -101,8 +101,8 @@ Konfigurálhatja a [System. Diagnostics. Trace. EventSource](https://msdn.micros
 
 Az egyes forrásokhoz a következő paramétereket állíthatja be:
  * A **név** megadja a gyűjteni kívánt EventSource nevét.
- * A **szint** meghatározza a gyűjteni kívánt naplózási szintet: *Kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
- * **Kulcsszavak** (nem kötelező) a használandó kulcsszó-kombinációk egész értékének megadása.
+ * A **szint** meghatározza a gyűjteni kívánt naplózási szintet: *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
+ * **Kulcsszavak** (nem kötelező) Itt adhatja meg a használni kívánt kulcsszó-kombinációk egész értékét.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource-események használata
 Konfigurálhatja a [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) eseményeket, amelyeket a rendszer nyomkövetési Application Insightsként fog elküldeni. Először telepítse a [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet csomagot. Ezután szerkessze a [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájl "TelemetryModules" szakaszát.
@@ -133,7 +133,7 @@ Windows esemény-nyomkövetés (ETW) eseményeket úgy is konfigurálhatja, hogy
 
 Az egyes forrásokhoz a következő paramétereket állíthatja be:
  * A **ProviderName** a gyűjteni kívánt ETW-szolgáltató neve.
- * A **ProviderGuid** meghatározza a gyűjteni kívánt ETW-szolgáltató GUID azonosítóját. A `ProviderName`használata helyett használhatja.
+ * A **ProviderGuid** meghatározza a gyűjteni kívánt ETW-szolgáltató GUID azonosítóját. @No__t – 0 helyett használható.
  * A **szint** beállítja a begyűjteni kívánt naplózási szintet. Ez lehet *kritikus*, *hiba*, *tájékoztató*, *LogAlways*, *részletes*vagy *Figyelmeztetés*.
  * **Kulcsszavak** (nem kötelező) a kulcsszó-kombinációk egész értékének megadására használható.
 
@@ -154,7 +154,24 @@ Az üzenethez súlyossági szintet is hozzáadhat. A többi telemetria hasonlóa
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-Ez lehetővé teszi, hogy egyszerűen kiszűrje [][diagnostic] az adott adatbázishoz kapcsolódó adott súlyossági szint összes üzenetét.
+Ez lehetővé [teszi, hogy][diagnostic] egyszerűen kiszűrje az adott adatbázishoz kapcsolódó adott súlyossági szint összes üzenetét.
+
+## <a name="azureloghandler-for-opencensus-python"></a>AzureLogHandler a OpenCensus Pythonhoz
+A Azure Monitor log Handler lehetővé teszi a Python-naplók exportálását Azure Monitorba.
+
+Az alkalmazást a [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md) for Azure monitor eszközzel alakíthatja ki.
+
+Ez a példa bemutatja, hogyan küldhet figyelmeztetési szintű naplót Azure Monitorba.
+
+```python
+import logging
+
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=<your-instrumentation_key-here>'))
+logger.warning('Hello, World!')
+```
 
 ## <a name="explore-your-logs"></a>A naplók megismerése
 Futtassa az alkalmazást hibakeresési módban, vagy telepítse élőben.
@@ -172,18 +189,18 @@ Például a következőket teheti:
 >Ha az alkalmazás sok adatmennyiséget küld, és a ASP.NET 2.0.0-beta3 vagy újabb verziójához készült Application Insights SDK-t használja, akkor az *adaptív mintavételi* funkció működhet, és csak a telemetria egy részét küldheti el. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
 >
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 ### <a name="how-do-i-do-this-for-java"></a>Hogyan ezt a javát?
-Használja a [Java log](../../azure-monitor/app/java-trace-logs.md)-adaptereket.
+Használja a [Java log-adaptereket](../../azure-monitor/app/java-trace-logs.md).
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Nincs Application Insights lehetőség a projekt helyi menüjében
-* Győződjön meg arról, hogy a fejlesztői elemzési eszközök telepítve vannak a fejlesztői gépen. A Visual Studio **Tools** > **Extensions és Updates**szolgáltatásban keresse meg a **fejlesztői elemzési eszközöket**. Ha nincs a **telepített** lapon, nyissa meg az **online** lapot, és telepítse.
+* Győződjön meg arról, hogy a fejlesztői elemzési eszközök telepítve vannak a fejlesztői gépen. A Visual Studio **tools** > **bővítmények és frissítések**területen keresse meg a **fejlesztői elemzési eszközöket**. Ha nincs a **telepített** lapon, nyissa meg az **online** lapot, és telepítse.
 * Lehet, hogy a devloper Analytics-eszközök nem támogatják a projekt típusát. [Manuális telepítés](#manual-installation)használata.
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>A konfigurációs eszközben nincs naplózási adapter beállítás
 * Először telepítse a naplózási keretrendszert.
 * Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web. config fájlban*van konfigurálva](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
-* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök** > **bővítmények és frissítések**menüpontot, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
+* Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban lépjen az **eszközök** > **bővítmények és frissítések**menüpontra, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
 
 ### <a name="emptykey"></a>A "rendszerállapot-kulcs nem lehet üres" hibaüzenet jelenik meg
 Valószínűleg telepítette a naplózási adapter Nuget-csomagját Application Insights telepítése nélkül. Megoldáskezelő kattintson a jobb gombbal a *ApplicationInsights. config fájlra*, és válassza a **frissítés Application Insights**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be az Azure-ba, és hozzon létre egy Application Insights-erőforrást, vagy egy meglévőt újra. Ezt a problémát ki kell javítani.
@@ -202,7 +219,7 @@ Ha az alkalmazás terjedelmes mennyiségű adatokat küld, és a ASP.NET 2.0.0-b
 * [Hibák és kivételek diagnosztizálása a ASP.NET-ben][exceptions]
 * [További információ a keresésről][diagnostic]
 * [Rendelkezésre állási és válaszadási tesztek beállítása][availability]
-* [Hibaelhárítás][qna]
+* [hibaelhárítással][qna]
 
 <!--Link references-->
 

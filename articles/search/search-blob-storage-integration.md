@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 1aec65ab08cd1c0711e51a222a8e674ef56ef508
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 24886d8b8a7b679f6474789748a002c8d045a746
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312183"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331278"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Teljes szöveges keresés hozzáadása az Azure-Blobok adataihoz Azure Search használatával
 
@@ -28,21 +28,28 @@ A blob Indexer tárolón való futtatásával a következő tartalomtípusokból
 A [mesterséges intelligenciát](search-blob-ai-integration.md) *készségkészlet* formájában is csatolhatja, hogy új információkat és struktúrát hozzon létre a blobokból, beleértve a képfájlok szövegének ábrázolását is. A AI-bővítés hozzáadásával kibonthatja a tartalomtípus-listát, hogy tartalmazza a JPEG és a PNG-t. Olyan képfeldolgozási képességeket biztosít, mint például az [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és a [vizuális funkciók](cognitive-search-skill-image-analysis.md) azonosítása, amelyek segítségével indexelheti az egyes képekben található vizuális tartalmat.
 
 ## <a name="search-through-your-blob-metadata"></a>Keresés a blob metaadatainak között
-Egy gyakori forgatókönyv, amely megkönnyíti a tetszőleges tartalomtípusú Blobok rendezését, az egyéni metaadatok és a Rendszertulajdonságok indexelése az egyes blobokhoz. Így az összes blobra vonatkozó információ indexelve van, tekintet nélkül a dokumentum típusára. Ezután folytathatja az összes blob Storage-tartalom rendezését, szűrését és aspektusát.
+Egy gyakori forgatókönyv, amely megkönnyíti a tetszőleges tartalomtípusú Blobok rendezését, az egyéni metaadatok és a Rendszertulajdonságok indexelése az egyes blobokhoz. Így az összes blobra vonatkozó információ indexelve van, tekintet nélkül a Azure Search indexében tárolt adatokra. Az új index használatával folytathatja az összes blob Storage-tartalom rendezését, szűrését és aspektusát.
 
-[További információ a blob-metaadatok indexeléséről.](https://aka.ms/azsblobmetadataindexing)
+### <a name="indexing-json-blobs"></a>JSON-Blobok indexelése
+Azure Search konfigurálható a JSON-t tartalmazó blobokban található strukturált tartalom kinyeréséhez. A Azure Search beolvashatja a JSON-blobokat, és elemezheti a strukturált tartalmat egy Azure Search dokumentum megfelelő mezőibe. A Azure Search olyan blobokat is tartalmazhat, amelyek JSON-objektumok tömbjét tartalmazzák, és az egyes elemeket egy külön Azure Search dokumentumra képezik le. Az elemzési mód beállítható úgy, hogy az az indexelő által létrehozott JSON-objektum típusát is befolyásolja.
 
-## <a name="index-and-search-through-json-blobs"></a>Indexelés és keresés JSON-blobokon
-Azure Search konfigurálható a JSON-t tartalmazó blobokban található strukturált tartalom kinyeréséhez. A Azure Search beolvashatja a JSON-blobokat, és elemezheti a strukturált tartalmat egy Azure Search dokumentum megfelelő mezőibe. A Azure Search olyan blobokat is tartalmazhat, amelyek JSON-objektumok tömbjét tartalmazzák, és az egyes elemeket egy külön Azure Search dokumentumra képezik le.
+## <a name="how-to-get-started"></a>A szolgáltatások használatba vétele
 
-A JSON-elemzés jelenleg nem konfigurálható a portálon keresztül. [További információ a JSON-elemzésről Azure Searchban.](https://aka.ms/azsjsonblobindexing)
-
-## <a name="quickstart"></a>Gyors útmutató
-Azure Search közvetlenül a blob Storage portál lapról adható hozzá a blobokhoz.
+A Storage-fiók portálján közvetlenül is elindíthatja a lapot. Kattintson a **Azure Search hozzáadása** elemre egy olyan folyamat elindításához, amelyen kiválaszthat egy meglévő Azure Search szolgáltatást, vagy létrehozhat egy új szolgáltatást. Ha létrehoz egy új szolgáltatást, a rendszer kikeresi a Storage-fiók portáljának felhasználói felületét. Váltson vissza a Storage Portal lapra, és válassza újra a **Azure Search hozzáadása** lehetőséget, ahol kiválaszthatja a meglévő szolgáltatást. 
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
-Kattintson a **Azure Search hozzáadása** elemre egy olyan folyamat elindításához, amelyen kiválaszthat egy meglévő Azure Search szolgáltatást, vagy létrehozhat egy új szolgáltatást. Ha létrehoz egy új szolgáltatást, a rendszer kikeresi a Storage-fiók portáljának felhasználói felületét. Váltson vissza a Storage Portal lapra, és válassza újra a **Azure Search hozzáadása** lehetőséget, ahol kiválaszthatja a meglévő szolgáltatást.
+Ha már rendelkezik egy meglévő keresési szolgáltatással ugyanahhoz az előfizetéshez, a **Azure Search Hozzáadás** gombra kattintva megnyithatja az adatimportálás varázslót, így azonnal áttekintheti az indexelést, a bővítést és az index definícióját.
+
+[Létrehozhat egy Azure Search szolgáltatást](search-create-index-portal.md) is, és meghatározhatja azokat a blob-indexelő, amelyek a blob-tárolók tartalmát lehívhatják.
+
+A következő rövid útmutatók és oktatóanyagok a blob-adatgyűjtést használják:
+
++ [Félig strukturált Blobok indexelése REST API-k használatával](search-semi-structured-data.md)
++ [AI-dúsítási folyamat létrehozása a portálon](cognitive-search-quickstart-blob.md)
++ [AI-dúsítási folyamat létrehozása a-benC#](cognitive-search-tutorial-blob-dotnet.md)
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a Azure Search blob indexelő a teljes [dokumentációban](https://aka.ms/azsblobindexer).
+
+> [!div class="nextstepaction"]
+> [BLOB-indexelő beállítása](search-howto-indexing-azure-blob-storage.md) 

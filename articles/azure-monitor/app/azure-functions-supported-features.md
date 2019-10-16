@@ -12,20 +12,20 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959921"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372441"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
 
-A Azure Functions [beépített integrációt](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) biztosít Application Insightsekkel, amely a ILogger felületen keresztül érhető el. Alább látható a jelenleg támogatott funkciók listája. Tekintse át a Azure Functions útmutatót az [első lépésekhez](https://github.com/Azure/Azure-Functions/wiki/App-Insights).
+A Azure Functions [beépített integrációt](../../azure-functions/functions-monitoring.md) biztosít Application Insightsekkel, amely a ILogger felületen keresztül érhető el. Alább látható a jelenleg támogatott funkciók listája. Tekintse át a Azure Functions útmutatót az [első lépésekhez](../../azure-functions/functions-monitoring.md#enable-application-insights-integration).
 
 ## <a name="supported-features"></a>Támogatott funkciók
 
-| Azure Functions                       | 1-es verzió                | V2 (Ignite 2018)  | 
+| Azure Functions                       | 1\. verzió                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
@@ -34,10 +34,10 @@ A Azure Functions [beépített integrációt](https://docs.microsoft.com/azure/a
 | @no__t – 0 kivétel                   | Igen             | Igen               | 
 | @no__t – 0 teljesítményszámlálók         | Igen             | Igen               |
 | @no__t – 0 függőség                   |                   |                   |               
-| &nbsp; @ NO__T-1 @ NO__T-2 @ NO__T-3 HTTP      |                 | Igen               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Igen               | 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Igen               | 
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Igen               | 
 | | | | 
 | **Támogatott funkciók**                |                   |                   |               
 | @no__t – 0 QuickPulse/LiveMetrics       | Igen             | Igen               | 
@@ -62,7 +62,7 @@ A teljesítményszámlálók automatikus gyűjtése csak a Windows rendszerű g�
 
 Az egyéni szűrők megadott feltételeit a rendszer visszaküldi a Application Insights SDK élő metrikák összetevőjére. A szűrők potenciálisan bizalmas adatokat is tartalmazhatnak, például customerIDs. A csatornát titkos API-kulccsal is biztonságossá teheti. További útmutatásért lásd [a vezérlési csatorna biztonságossá](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) tételét ismertető témakört.
 
-## <a name="sampling"></a>Mintavételezés
+## <a name="sampling"></a>Mintavétel
 
 A Azure Functions alapértelmezés szerint engedélyezi a mintavételezést a konfigurációban. További információ: a [mintavételezés konfigurálása](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
 

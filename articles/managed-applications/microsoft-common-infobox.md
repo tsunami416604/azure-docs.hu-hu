@@ -1,6 +1,6 @@
 ---
-title: Az Azure InfoBox felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Common.TextBlock felhasználói felületi elem ismerteti.
+title: Az Azure bezárása felhasználói felületének eleme | Microsoft Docs
+description: A Azure Portal Microsoft. Common. bezárása felhasználói felületi elemének ismertetése. A segítségével szöveget vagy figyelmeztetéseket adhat hozzá a felügyelt alkalmazás telepítésekor.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2330197b4512dfdd72de3529145103b644594e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67ae05c2ec7b36d76e49f26d5765bbc68b952292
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711216"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331688"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI element
-Egy olyan vezérlőelem, amely hozzáad egy információs mező. A box fontos szöveget tartalmaz, vagy figyelmeztetések, amelyek segítségével a felhasználók a tartalmat értékek ismertetése. Azt is kapcsolat egy URI-t további információt.
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft. Common. bezárása felhasználói felületi elem
+Egy adatmezőt tartalmazó vezérlőelem. A mező olyan fontos szöveget vagy figyelmeztetéseket tartalmaz, amelyek segítségével a felhasználók megismerhetik az általuk nyújtott értékeket. További információkhoz is hivatkozhat egy URI-ra.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
-![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+## <a name="ui-sample"></a>Felhasználói felület mintája
+![Microsoft. Common. bezárása](./media/managed-application-elements/microsoft.common.infobox.png)
 
 
 ## <a name="schema"></a>Séma
@@ -43,7 +43,7 @@ Egy olyan vezérlőelem, amely hozzáad egy információs mező. A box fontos sz
 
 ## <a name="remarks"></a>Megjegyzések
 
-* A `icon`, használjon **nincs**, **Info**, **figyelmeztetés**, vagy **hiba**.
+* @No__t – 0 esetén használja a **none**, az **info**, a **Warning**vagy a **Error**értéket.
 * A `uri` tulajdonság nem kötelező.
 
 ## <a name="sample-output"></a>Példa kimenet
@@ -52,6 +52,6 @@ Egy olyan vezérlőelem, amely hozzáad egy információs mező. A box fontos sz
 "Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim. Sed et felis metus, rhoncus ornare nibh. Ut at magna leo."
 ```
 
-## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Következő lépések
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

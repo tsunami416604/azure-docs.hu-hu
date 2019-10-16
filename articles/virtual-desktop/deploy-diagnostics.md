@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177771"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332835"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -108,7 +108,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 3. A **Beállítások** szakaszban válassza a **Speciális beállítások**lehetőséget.
 4. Ezt követően navigáljon az adat  > **Windows** -teljesítményszámlálók **elemre**, és adja hozzá a következő számlálókat:
 
-    -   LogicalDisk (\*) \|% szabad terület
+    -   LogicalDisk (\*) @no__t – 1Free terület
     -   LogicalDisk (C:) \\Avg. Disk várólista hossza
     -   Memória (\*) \\Available MB-ban
     -   Processzor adatai (\*) @no__t – 1Processor idő
@@ -142,7 +142,7 @@ Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált 
 3. Ezután lépjen az adat  >  Windows-**teljesítményszámlálók** **elemre**.
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
-   - LogicalDisk (\*) \|% szabad terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
+   - LogicalDisk (\*) @no__t – 1Free terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
    - LogicalDisk (C:) \\Avg. Disk várólista hossza: a C meghajtóhoz tartozó fájlátviteli kérelem hossza. Az érték nem haladhatja meg a 2 értéket a rövid idő alatt.
    - Memória (\*) \\Available MB-ban: a rendszer számára rendelkezésre álló memória megabájtban.
    - Processzor adatai (\*) @no__t – 1Processor idő: az eltelt idő százalékos aránya, ameddig a processzor nem üresjárati szálat hajt végre.

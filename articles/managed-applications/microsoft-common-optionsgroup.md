@@ -1,6 +1,6 @@
 ---
-title: Az Azure OptionsGroup felhasználói felületi elemben |} A Microsoft Docs
-description: Az Azure portal a Microsoft.Common.OptionsGroup felhasználói felületi elem ismerteti.
+title: Az Azure OptionsGroup felhasználói felületének eleme | Microsoft Docs
+description: A Azure Portal Microsoft. Common. OptionsGroup felhasználói felületi elemének ismertetése. Lehetővé teszi, hogy a felhasználók a felügyelt alkalmazások telepítésekor a rendelkezésre álló lehetőségek közül választhatnak.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9aee881844e9338cc1da2484a94c8355f2516c82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7bec506575f1c526e59487edb67349cdf862f1a7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720759"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331668"
 ---
-# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI element
-A rendelkezésre álló lehetőségek sor kijelölési vezérlő.
+# <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft. Common. OptionsGroup felhasználói felületi elem
+Az elérhető lehetőségek sorát tartalmazó kiválasztási vezérlő.
 
-## <a name="ui-sample"></a>Felhasználói felület minta
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+## <a name="ui-sample"></a>Felhasználói felület mintája
+![Microsoft. Common. OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
 
 ## <a name="schema"></a>Séma
 ```json
@@ -52,15 +52,15 @@ A rendelkezésre álló lehetőségek sor kijelölési vezérlő.
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- A címke `constraints.allowedValues` egy elem a megjelenített szöveg, és a kimeneti érték, amikor a kijelölt elem értéke.
-- Ha meg van adva, az alapértelmezett érték lehet egy címke szerepel `constraints.allowedValues`. Ha nincs megadva, az első elem az `constraints.allowedValues` alapértelmezés szerint ki van választva. Az alapértelmezett érték **null**.
-- `constraints.allowedValues` rendelkeznie kell legalább egy elemet.
+- A `constraints.allowedValues` címkéje egy elem megjelenített szövege, és az értéke az elem kimeneti értéke, ha ki van választva.
+- Ha meg van adva, az alapértelmezett értéknek a `constraints.allowedValues` címkének kell lennie. Ha nincs megadva, a `constraints.allowedValues` első eleme alapértelmezés szerint ki van választva. Az alapértelmezett érték **Null**.
+- a `constraints.allowedValues` értéknek legalább egy elemmel kell rendelkeznie.
 
 ## <a name="sample-output"></a>Példa kimenet
 ```json
 "two"
 ```
 
-## <a name="next-steps"></a>További lépések
-* Felhasználóifelület-definíciók létrehozása bevezetésért lásd: [CreateUiDefinition használatának első lépései](create-uidefinition-overview.md).
-* Egy felhasználói felületi elemeket általános tulajdonságok leírásáért lásd: [CreateUiDefinition elemek](create-uidefinition-elements.md).
+## <a name="next-steps"></a>Következő lépések
+* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
+* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

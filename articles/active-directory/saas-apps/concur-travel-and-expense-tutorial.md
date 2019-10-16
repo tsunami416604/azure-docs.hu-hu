@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 03/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9dddd9f6904aa5ef7840850792aeabf04666dddc
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026715"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373414"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a egyetértett utazással és költségekkel
 
@@ -38,16 +38,18 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Egyetért az utazással és a költségekkel kapcsolatos egyszeri bejelentkezéssel (SSO) engedélyezett előfizetéssel.
+* Egyetért az utazási és a költségek előfizetésével.
+* A "céges rendszergazda" szerepkör az Ön által birtokolt felhasználói fiókban. Tesztelheti, hogy rendelkezik-e a megfelelő hozzáféréssel, ha a megtartja az [egyszeri bejelentkezés önkiszolgáló eszközét](https://www.concursolutions.com/nui/authadmin/ssoadmin). Ha nem rendelkezik hozzáféréssel, lépjen kapcsolatba a partneri támogatással vagy a megvalósítás projekt kezelőjével. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését végzi.
 
-* Az utazás és a költségek egyetértenek a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezéssel
+* Az utazás és a költségek egyetértenek a **identitásszolgáltató** és az **SP** által kezdeményezett SSO-val
+* Az utazás és a költségek egyetértenek az egyszeri bejelentkezés tesztelésével mind az üzemi, mind a megvalósítási környezetben 
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték a következő három régióban: USA, EMEA és Kína. Így csak egy példány konfigurálható az egyes bérlők mindegyik régiójában. 
 
 ## <a name="adding-concur-travel-and-expense-from-the-gallery"></a>A katalógusban való megváltozások és költségek hozzáadása
 
@@ -85,27 +87,30 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfigurációs** szakaszban az alkalmazás előre konfigurálva van a **identitásszolgáltató** által kezdeményezett módban, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a **Save (Mentés** ) gombra kattintva.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+    > [!NOTE]
+    > Az azonosító (Entity ID) és a válasz URL-címe (a fogyasztói szolgáltatás URL-címe) a régióra jellemző. Válasszon a saját egyetértő entitás adatközpontja alapján. Ha nem ismeri az Ön egyetértő entitásának adatközpontját, vegye fel a kapcsolatot a egyetértek támogatási szolgálatával. 
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+5. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a beállítások szerkesztéséhez kattintson a Szerkesztés/toll ikonra a **felhasználói attribútumhoz** . Az egyedi felhasználói azonosítónak egyeznie kell a felhasználói login_id. A **User. userPrincipalName** általában módosítania kell a User. **mail**.
 
-1. A a megkötéses **utazás és a költségek beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
+    ![Felhasználói attribútum szerkesztése](common/edit-attribute.png)
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a metaadatok letöltéséhez és a számítógépre mentéséhez.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az utazás és a költségek megadásával való hozzáférés biztosításával.
 
@@ -113,7 +118,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **egyetért az utazás és a költség**lehetőséggel.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -125,15 +130,35 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>A "egyetértő" utazás és a költségek egyszeri bejelentkezésének konfigurálása
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **egyetértő utazás és a költség** oldalon, el kell küldenie a letöltött **összevonási metaadatok XML** -fájlját és a megfelelő másolt url-címeket a Azure Portalről, hogy az [utazási és a költségekkel](https://www.concur.com/support)foglalkozó Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+1. Ha be szeretné állítani az egyszeri bejelentkezést a **egyetértő utazás és a költség** oldalon, fel kell töltenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** , hogy az [SSO önkiszolgáló eszközre](https://www.concursolutions.com/nui/authadmin/ssoadmin) lépjen, és a "vállalati rendszergazda" szerepkörrel rendelkező fiókkal jelentkezzen be. 
+
+1. Kattintson a **Hozzáadás** parancsra.
+1. Adja meg a identitásszolgáltató egyéni nevét, például: "Azure AD (US)". 
+1. Kattintson az **XML-fájl feltöltése** elemre, és csatolja a korábban letöltött **összevonási METAADATOKAT tartalmazó XML-** fájlt.
+1. A módosítás mentéséhez kattintson a **metaadatok hozzáadása** elemre.
+
+    ![Az egyszeri bejelentkezéses önkiszolgáló eszköz képernyőképe](./media/concur-travel-and-expense-tutorial/add-metadata-concur-self-service-tool.png)
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>A Create egyetért az utazási és a költségek tesztelése felhasználóval
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre, és egyetért az utazással és a költségekkel. A egyetértő [utazási és költségtérítési támogatási csapatával](https://www.concur.com/support) a felhasználók a egyetértő utazási és költség platformon adhatók hozzá. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre, és egyetért az utazással és a költségekkel. A egyetértő támogatási csapattal együttműködve veheti fel a felhasználókat a egyetértett utazási és költség platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat. 
+
+> [!NOTE]
+> B. Simon egyetértett bejelentkezési azonosítójának meg kell egyeznie a B. Simon egyedi azonosítójával az Azure AD-ben. Ha például a B. Simon Azure AD egyedi termékazonosító `B.Simon@contoso.com`. B. Simon egyetértett bejelentkezési azonosítójának `B.Simon@contoso.com` is kell lennie. 
+
+## <a name="configure-concur-mobile-sso"></a>Az egybeesik Mobile SSO konfigurálása
+A megtagadott mobil egyszeri bejelentkezés engedélyezéséhez meg kell adnia a támogatási csoport **felhasználói hozzáférésének URL-címét**. Kövesse az alábbi lépéseket a **felhasználói hozzáférés URL-címének** lekéréséhez az Azure ad-ből:
+1. **Vállalati alkalmazások** ugrása
+1. Kattintson **a egyetértek utazási és költségek** elemre.
+1. Kattintson a **Tulajdonságok** elemre.
+1. **Felhasználói hozzáférési URL-cím** másolása és az URL-cím megadása a támogatás megadásához
+
+> [!NOTE]
+> Az egyszeri bejelentkezés konfigurálására szolgáló önkiszolgáló beállítás nem érhető el, ezért az összevont támogatási csapattal együttműködve engedélyezheti a mobil egyszeri bejelentkezést. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen az egyezményes utazás és ráfordítás csempére kattint, automatikusan be kell jelentkeznie a egyetértett utazásra és költségekre, amelyekhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

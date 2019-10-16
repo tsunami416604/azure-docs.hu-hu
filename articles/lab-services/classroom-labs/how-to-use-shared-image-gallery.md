@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389978"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332072"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény használata Azure Lab Services
 Ebből a cikkből megtudhatja, hogy a tanárok/labor-rendszergazdák hogyan menthetik a sablonhoz tartozó virtuálisgép-rendszerképeket, hogy azok újra felhasználhatók legyenek Ezeket a lemezképeket egy Azure-beli [megosztott rendszerkép](../../virtual-machines/windows/shared-image-galleries.md)-katalógusba menti a rendszer. Első lépésként a tesztkörnyezet rendszergazdája csatol egy meglévő megosztott képtárat a labor-fiókhoz. Miután csatolta a megosztott képtárat, a labor fiókban létrehozott laborok menthetik a lemezképeket a megosztott képkatalógusba. Más oktatók is kiválaszthatják ezt a rendszerképet a megosztott képkatalógusból, hogy sablont hozzanak létre az osztályaik számára. 
@@ -31,18 +31,18 @@ Ebből a cikkből megtudhatja, hogy a tanárok/labor-rendszergazdák hogyan ment
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Rendszerkép mentése a megosztott képtárba
 Egy megosztott képkatalógus csatolása után egy labor-fiók rendszergazdája vagy egy oktató mentheti a képeket a megosztott képkatalógusba, hogy más tanárok is felhasználhatják őket. 
 
-1. A labor kezdőlapján kattintson a **rendszerkép mentése** gombra a **sablon** szakaszban található csempén.
+1. A labor **sablon** lapján válassza az **Exportálás a közös rendszerkép** -katalógusba lehetőséget az eszköztáron.
 
-    ![Rendszerkép mentése gomb](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  A **virtuális gép rendszerképének mentése** ablakban adja meg a rendszerkép nevét, majd kattintson a **Mentés**gombra. 
+    ![Rendszerkép mentése gomb](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. Az **Exportálás megosztott rendszerkép** -katalógusba párbeszédpanelen adja meg a **rendszerkép nevét**, majd válassza az **Exportálás**lehetőséget. 
 
-    ![Virtuális gép rendszerképének mentése ablak](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. Keresse meg az állapotot a labor csempén. 
+    ![Exportálás megosztott képgyűjteménybe párbeszédpanel](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. A művelet előrehaladását a **sablon** lapon tekintheti meg. A művelet eltarthat egy ideig. 
 
-    ![A rendszerkép mentése művelet állapota](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. Győződjön meg arról, hogy a művelet sikeres.
+    ![Exportálás folyamatban](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. Ha az exportálási művelet sikeres, a következő üzenet jelenik meg:
 
-    ![A rendszerkép mentése művelet sikeresen befejeződött.](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![Az Exportálás befejeződött](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 Képeket is feltölthet a megosztott rendszerkép-katalógusba egy labor kontextusán kívül. További információ: [megosztott képgyűjtemény – áttekintés](../../virtual-machines/windows/shared-images.md). 
 
@@ -51,5 +51,5 @@ Egy tanár/professzor kiválaszthat egy egyéni rendszerképet, amely a sablon m
 
 ![Virtuálisgép-rendszerkép használata a katalógusból](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A megosztott képtárakkal kapcsolatos további információkért lásd a [megosztott képtárat](../../virtual-machines/windows/shared-image-galleries.md).

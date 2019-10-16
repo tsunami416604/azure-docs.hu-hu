@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262720"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372277"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
@@ -60,9 +60,9 @@ A veszélyforrások indikátorait továbbíthatja az Azure Sentinelnek a követk
 
 1. Azure Active Directory [alkalmazás regisztrálása](/graph/auth-v2-service#1-register-your-app) az alkalmazás-azonosító, az alkalmazás titkos kódjának és a Azure Active Directory bérlői azonosító beszerzéséhez. Ezekre az értékekre akkor van szükség, amikor az integrált tipp termékét vagy alkalmazását a Microsoft Graph Security tiIndicators API-val való közvetlen integrációt használó alkalmazáshoz konfigurálja.
 
-2. [API-engedélyek konfigurálása](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) a regisztrált alkalmazáshoz: Adja hozzá a Microsoft Graph alkalmazás engedély **ThreatIndicators. ReadWrite. OwnedBy** a regisztrált alkalmazáshoz.
+2. [API-engedélyek konfigurálása](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) a regisztrált alkalmazáshoz: adja hozzá a Microsoft Graph alkalmazás engedély **ThreatIndicators. ReadWrite. OwnedBy** a regisztrált alkalmazáshoz.
 
-3. Kérje meg a Azure Active Directory bérlői rendszergazdát, hogy rendszergazdai jóváhagyást adjon a szervezete regisztrált alkalmazásának. A Azure Portal: **Azure Active Directory** > **Alkalmazásregisztrációk** **az alkalmazásnevének>megtekintéséreszolgáló API-engedélyek rendszergazdai jóváhagyást biztosítanak a következőhöz:\<**  >  >  >  ***bérlő neve*.> \<**
+3. Kérje meg a Azure Active Directory bérlői rendszergazdát, hogy rendszergazdai jóváhagyást adjon a szervezete regisztrált alkalmazásának. A Azure Portal: **Azure Active Directory** > **Alkalmazásregisztrációk** >  **\<_alkalmazás neve_>**  > **View API-engedélyek**0**engedélyezési rendszergazdai jóváhagyás 2_bérlő neve_ @no__t – 14**.
 
 4. Konfigurálja a tipp termékét vagy alkalmazását, amely közvetlen integrációt használ Microsoft Graph Security tiIndicators API-val a mutatók Azure Sentinelbe való küldéséhez az alábbiak megadásával:
     
@@ -72,13 +72,13 @@ A veszélyforrások indikátorait továbbíthatja az Azure Sentinelnek a követk
     
     c. A művelethez válassza a riasztást.
 
-5. A Azure Portal navigáljon az **Azure Sentinel** > -**adatösszekötők** elemre, majd válassza ki a **Threat Intelligence Platforms (előzetes verzió)** összekötőt.
+5. A Azure Portal navigáljon az **Azure Sentinel** > **adatösszekötők** elemre, majd válassza ki a **Threat Intelligence Platforms (előzetes verzió)** összekötőt.
 
 6. Válassza az **összekötő megnyitása lapot**, majd a **Csatlakozás**lehetőséget.
 
-7. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs** > **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
+7. Az Azure Sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-Logs** > **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator**csomópontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a veszélyforrások elleni intelligencia szolgáltatója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
 

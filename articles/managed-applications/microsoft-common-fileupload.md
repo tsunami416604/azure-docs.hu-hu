@@ -1,6 +1,6 @@
 ---
 title: Az Azure FileUpload felhasználói felületének eleme | Microsoft Docs
-description: A Azure Portal Microsoft. Common. FileUpload felhasználói felületi elemének ismertetése.
+description: A Azure Portal Microsoft. Common. FileUpload felhasználói felületi elemének ismertetése. Lehetővé teszi, hogy a felhasználók fájlokat töltsenek fel a felügyelt alkalmazások telepítésekor.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827999"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331702"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. FileUpload felhasználói felületi elem
 Olyan vezérlőelem, amely lehetővé teszi, hogy a felhasználó megadhat egy vagy több feltölteni kívánt fájlt.
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
-![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+![Microsoft. Common. FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>Séma
 ```json
@@ -49,7 +49,7 @@ Olyan vezérlőelem, amely lehetővé teszi, hogy a felhasználó megadhat egy v
 
 ## <a name="remarks"></a>Megjegyzések
 - a `constraints.accept` a böngésző fájljának párbeszédpanelén megjelenő fájlok típusait határozza meg. Tekintse meg a [HTML5-specifikációt](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) az engedélyezett értékekhez. Az alapértelmezett érték **Null**.
-- Ha a `options.multiple` értéke **true (igaz**), a felhasználó több fájlt is kijelölhet a böngésző fájljának párbeszédpanelén. Az alapértelmezett érték **hamis**.
+- Ha a `options.multiple` értéke **true (igaz**), a felhasználó több fájlt is kijelölhet a böngésző fájljának párbeszédpanelén. Az alapértelmezett érték **false (hamis**).
 - Ez az elem támogatja a fájlok feltöltését két módban `options.uploadMode` érték alapján. Ha a **fájl** meg van adva, a kimenet blobként jeleníti meg a fájl tartalmát. Ha meg van adva az **URL-cím** , a rendszer feltölti a fájlt egy ideiglenes helyre, a kimenet pedig a blob URL-címével. Az ideiglenes Blobok 24 óra elteltével törlődnek. Az alapértelmezett érték a **fájl**.
 - A feltöltött fájlok védettek. A kimeneti URL-cím tartalmaz egy [sas-tokent](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) , amely a fájlnak az üzembe helyezés során való eléréséhez szükséges
 - A `options.openMode` érték határozza meg a fájl olvasásának módját. Ha a fájlnak egyszerű szövegnek kell lennie, **szöveget**kell megadnia; Máskülönben a **bináris**fájlt kell megadnia. Az alapértelmezett érték a **text (szöveg**).
@@ -92,6 +92,6 @@ Ha a options. Multiple értéke igaz, és a options. uploadMode URL-cím, akkor 
 Egy CreateUiDefinition tesztelésekor egyes böngészők (például a Google Chrome) a Microsoft. Common. FileUpload elem által generált URL-címeket csonkítják a böngésző konzolján. Előfordulhat, hogy a teljes URL-címek másolásához a jobb gombbal az egyes hivatkozásokra kell kattintania.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
 * A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).

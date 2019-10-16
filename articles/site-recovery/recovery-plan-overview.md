@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814437"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331912"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
@@ -33,6 +33,9 @@ A helyreállítási terv segítséget nyújt egy rendszeres helyreállítási fo
 
 
 ## <a name="model-apps"></a>Modell alkalmazások
+
+> [!NOTE]
+> Akár 100 védett példány is hozzáadható egy helyreállítási tervhez.
 
 Az alkalmazás-specifikus tulajdonságok rögzítéséhez létrehozhat egy helyreállítási csoportot. Tegyük fel például, hogy egy tipikus háromrészes alkalmazást alkalmazunk egy SQL Server-háttérrel, a köztes hálózattal és egy webes előtérben. A helyreállítási tervet általában úgy szabhatja testre, hogy az egyes rétegekbe tartozó gépek a feladatátvétel után megfelelő sorrendben induljon el.
 
@@ -60,16 +63,16 @@ Ennek a testreszabásnak a helyén a következő történik, ha feladatátvétel
 
 A nagyméretű alkalmazások helyreállítása összetett feladat lehet. A manuális lépések végrehajtásával a folyamat hibát észlelt, és előfordulhat, hogy a feladatátvételt futtató személy nem veszi figyelembe az alkalmazás összes bonyolult feltételét. A helyreállítási terv segítségével megadhatja a sorrendet, és automatizálhatja az egyes lépésekhez szükséges műveleteket, Azure Automation runbookok használatával végezheti el a feladatátvételt az Azure-ba vagy a parancsfájlokba. Olyan feladatokhoz, amelyek nem lehetnek automatizáltak, a manuális műveletekre vonatkozó szüneteltetéseket is beillesztheti helyreállítási tervbe. Több különböző típusú feladat is konfigurálható:
 
-* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha az Azure-ba végez feladatátvételt, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Példa: 
+* **Feladatok az Azure virtuális gépen feladatátvétel után**: Ha feladatátvételt végez az Azure-ba, általában műveleteket kell végrehajtania, hogy a feladatátvételt követően csatlakozni lehessen a virtuális géphez. Példa: 
     * Hozzon létre egy nyilvános IP-címet az Azure-beli virtuális gépen.
     * Rendeljen egy hálózati biztonsági csoportot az Azure-beli virtuális gép hálózati adapteréhez.
     * Terheléselosztó hozzáadása egy rendelkezésre állási készlethez.
-* A **virtuális gépen belüli feladatok feladatátvétel után**: Ezek a feladatok általában a gépen futó alkalmazást konfigurálja újra, így az új környezetben továbbra is megfelelően működik. Példa:
+* **Feladatok a virtuális gépen a feladatátvételt követően**: ezek a feladatok általában újrakonfigurálja a gépen futó alkalmazást, hogy az továbbra is megfelelően működjön az új környezetben. Példa:
     * Módosítsa az adatbázis-kapcsolatok karakterláncát a gépen belül.
     * Módosítsa a webkiszolgáló konfigurációját vagy szabályait.
 
 
-## <a name="test-failover"></a>Feladatátvételi teszt
+## <a name="test-failover"></a>Feladatátvétel tesztelése
 
 Helyreállítási terv használatával feladatátvételi tesztet indíthat. Használja az alábbi ajánlott eljárásokat:
 
@@ -81,7 +84,7 @@ Helyreállítási terv használatával feladatátvételi tesztet indíthat. Hasz
 
     ![Képernyőkép egy példa tesztelési helyreállítási tervről Site Recovery](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Videó megtekintése
+## <a name="watch-the-video"></a>A videó megtekintése
 
 Tekintse meg a kétrétegű WordPress-alkalmazásra vonatkozó on-Click feladatátvételt bemutató gyors példát tartalmazó videót.
     
@@ -89,7 +92,7 @@ Tekintse meg a kétrétegű WordPress-alkalmazásra vonatkozó on-Click feladat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzon létre](site-recovery-create-recovery-plans.md) egy helyreállítási tervet.
 - További információ a [feladatátvételek futtatásáról](site-recovery-failover.md).  

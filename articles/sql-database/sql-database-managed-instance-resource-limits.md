@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: 17ffc07bb5632b1b56b7bff1e843e5955d396089
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982787"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372201"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -27,7 +27,7 @@ Ez a cikk áttekintést nyújt a Azure SQL Database felügyelt példányának te
 
 ## <a name="hardware-generation-characteristics"></a>Hardver generálási jellemzői
 
-A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. Azure SQL Database felügyelt példány két hardveres generáción is üzembe helyezhető: Gen4 és Gen5. A hardveres generációk különböző jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
+A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. Azure SQL Database felügyelt példány két hardveres generációra telepíthető: Gen4 és Gen5. A hardveres generációk különböző jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
@@ -39,7 +39,7 @@ A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal
 
 > [!IMPORTANT]
 > - A Gen4 hardvere folyamatban van. Ajánlott új felügyelt példányokat telepíteni a Gen5 hardveren.
-> - A Gen4 hardver jelenleg csak a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, az USA nyugati régiója, USA középső régiója, Közép-Kanada, Dél-India, Délkelet-Ázsia
+> - A Gen4 hardver jelenleg csak a következő régiókban érhető el: Észak-Európa, Nyugat-Európa, az USA keleti régiója, az USA déli középső régiója, az USA északi középső régiója, USA 2. nyugati régiója, az USA középső régiója, Közép-India, Délkelet-Ázsia és Közép-Korea.
 
 ### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
 
@@ -58,35 +58,35 @@ A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
 
-A felügyelt példány két szolgáltatási szintet tartalmaz: [Általános célú](sql-database-service-tier-general-purpose.md) és [üzletileg kritikus](sql-database-service-tier-business-critical.md). Ezek a szintek [különböző képességeket](sql-database-service-tiers-general-purpose-business-critical.md)biztosítanak, az alábbi táblázatban leírtak szerint.
+A felügyelt példány két szolgáltatási szintet tartalmaz: [általános célú](sql-database-service-tier-general-purpose.md) és [üzletileg kritikus](sql-database-service-tier-business-critical.md). Ezek a szintek [különböző képességeket](sql-database-service-tiers-general-purpose-business-critical.md)biztosítanak, az alábbi táblázatban leírtak szerint.
 
 > [!Important]
 > A üzletileg kritikus Service-réteg további beépített példányt (másodlagos replikát) tartalmaz, amelyek csak olvasható számítási feladatokhoz használhatók. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikus/jelentéskészítési lekérdezéseket, akkor a rendszer kétszer virtuális mag és memóriát is biztosít ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodpercen belül elmarad az elsődleges példány mögött, ezért olyan jelentéskészítési/elemzési számítási feladatok kiszervezésére lett kialakítva, amelyek nem igényelnek pontos aktuális állapotot. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
 | **Funkció** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
-| Virtuális mag száma @ no__t-0 | Gen4 8, 16, 24<br/>Gen5 4, 8, 16, 24, 32, 40, 64, 80 | Gen4 8, 16, 24 <br/> Gen5 4, 8, 16, 24, 32, 40, 64, 80 <br/>@no__t – a virtuális mag 0Same száma csak olvasható lekérdezésekhez van hozzárendelve. |
-| Maximális memória | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4 56 GB - 168 GB (7GB/vCore)<br/>Gen5 20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
-| Példány maximális tárolási mérete (fenntartott) | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4 1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
+| Virtuális mag száma @ no__t-0 | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>@no__t – a virtuális mag 0Same száma csak olvasható lekérdezésekhez van hozzárendelve. |
+| Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
+| Példány maximális tárolási mérete (fenntartott) | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4:1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
 | Adatbázisok maximális mérete | Az aktuálisan elérhető példány mérete (legfeljebb 2 TB-8 TB a virtuális mag számától függően). | Akár jelenleg elérhető példány mérete (max. 1 TB-4 TB a virtuális mag számától függően). |
-| Maximális tempDB-méret | Legfeljebb 24 GB/virtuális mag (96-1 920 GB) és jelenleg elérhető példányok tárolási mérete.<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el. | Az aktuálisan elérhető példányok tárolási mérete. A TempDB-naplófájl mérete jelenleg a 24GB/virtuális mag értékre van korlátozva. |
+| Maximális tempDB-méret | Legfeljebb 24 GB/virtuális mag (96-1 920 GB) és jelenleg elérhető példányok tárolási mérete.<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el.<br/> A naplófájl mérete legfeljebb 120 GB lehet.| Az aktuálisan elérhető példányok tárolási mérete. |
 | Adatbázisok maximális száma egy példányon | 100, kivéve, ha elérte a példány tárolási méretének korlátját. | 100, kivéve, ha elérte a példány tárolási méretének korlátját. |
 | Adatbázisfájlok maximális száma egy példányban | Akár 280-ig, kivéve, ha elérte a példány tárolási méretét vagy az [Azure Premium lemez tárterületének lefoglalási](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) korlátját. | 32 767 fájl/adatbázis, kivéve, ha elérte a példány tárolási méretének korlátját. |
 | Az adatfájlok maximális mérete | A jelenleg elérhető példányok tárolási mérete (max. 2 TB-8 TB) és az [Azure Premium Disk Storage kiosztási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)korlátozódik. | A jelenleg elérhető példányok tárolási méretére korlátozódik (legfeljebb 1 TB-4 TB). |
 | Naplófájl maximális mérete | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. |
-| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>@no__t – 0[a fájlméret növelésével további IOPS érhet el](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
+| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>@no__t – 0[a fájlméret növelésével további IOPS érhet el](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
 | Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
-| Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>@no__t – 0[a fájlméret növelése a jobb i/o-teljesítmény eléréséhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Nem korlátozott. |
+| Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>@no__t – 0[a fájlméret növelése a jobb i/o-teljesítmény eléréséhez](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
 | Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
+| Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 
 > [!NOTE]
 > - A **jelenleg elérhető példányok tárolási mérete** a fenntartott példányok méretének és a felhasznált tárolóhelynek a különbsége.
 > - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
-> - Az átviteli sebesség és a IOPS a felügyelt példányok által kifejezetten nem korlátozott oldalméret is függ.
-> Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
+> - Az átviteli sebesség és a IOPS általános célú szinten a felügyelt példányok által kifejezetten nem korlátozott [fájlméretet](#file-io-characteristics-in-general-purpose-tier) is függ.
+> - Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
 > - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Ha például 7 x GB-nyi fájlt hoz létre, amely Max 5K IOPS-val rendelkezik, minden egyes és 7 kis fájl (128 GB-nál kisebb) és 500 IOPS mindegyike 38500, akkor a számítási feladatok az összes fájlt igénybe vehetik (7x5000 + 7x500). Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
 
 > [!NOTE]
@@ -124,8 +124,8 @@ A felügyelt példány jelenleg csak a következő típusú előfizetések eset�
 
 A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez az igény szerint növelhető, ha egy speciális [támogatási kérelmet hoz létre a Azure Portal) az](#obtaining-a-larger-quota-for-sql-managed-instance)előfizetés típusától függően:
 
-- **Alhálózat korlátja**: Azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag-egység korlátja**: Az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
+- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
+- **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
 
 > [!Note]
 > Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.
@@ -135,16 +135,16 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 |Előfizetés típusa| Felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
 |Utólagos, használatalapú fizetés|3|320|
-|CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
+|Felhőszolgáltató (CSP) |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
-|Enterprise Dev/Test|3|320|
-|Nagyvállalati szerződés|8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
+|Nagyvállalati Szerződés – Fejlesztés és tesztelés|3|320|
+|EA|8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-@no__t – 0 a központi telepítések tervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási réteghez négy (4) idő szükséges, mint a általános célú (GP) virtuális mag kapacitása. Példa: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben a felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+@no__t – 0 a központi telepítések tervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási réteghez négy (4) idő szükséges, mint a általános célú (GP) virtuális mag kapacitása. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben a felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
 
-@no__t – 0 @ no__t – 1 nagyobb alhálózat-és virtuális mag-korlát a következő régiókban érhető el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója
+\* @ no__t-1 nagyobb alhálózat-és virtuális mag-korlát a következő régiókban érhető el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Nagyobb kvóta beszerzése a felügyelt SQL-példányhoz
 
@@ -178,9 +178,9 @@ Nagyobb kvóta beszerzési folyamatának kezdeményezése:
 
 5. Kattintson a **Tovább** gombra.
 6. Az új támogatási kérelem kapcsolattartási adatok lapján adja meg az előnyben részesített kapcsolattartási módszert (e-mail vagy telefon) és a kapcsolattartási adatokat.
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson a  **Create** (Létrehozás) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md).
 - A díjszabással kapcsolatos információkért lásd: [SQL Database felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

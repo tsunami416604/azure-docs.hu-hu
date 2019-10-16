@@ -5,20 +5,35 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8e034153a2e98a101527f411c78ace6e46b01b29
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: MT
+ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937527"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372252"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
 A [Azure site Recovery](site-recovery-overview.md) szolgáltatás folyamatosan frissül és fejleszthető. Ez a cikk a legfrissebb kiadásokról, új funkciókról és új tartalmakról nyújt tájékoztatást. Ez az oldal rendszeresen frissül.
 
 Az [Azure](https://azure.microsoft.com/updates/?product=site-recovery) Updates csatornán követheti és előfizethet site Recovery frissítési értesítéseire.
+
+## <a name="update-to-servicing-stack-updatesha-2"></a>Frissítés a karbantartási verem frissítéséhez/SHA-2
+
+Ha az Azure-beli virtuális gépeket másodlagos régióba vagy helyszíni VMware virtuális gépekre vagy fizikai kiszolgálókra szeretné helyreállítani az Azure-ba, vegye figyelembe a következőket:
+
+- A mobilitási szolgáltatás bővítményének (Azure-beli virtuális gépek esetén) és a mobilitási szolgáltatás ügynökének (VMware/fizikai gépek esetén) 9.30. x. x verziójából néhány gépi operációs rendszernek a karbantartási verem frissítését és az SHA-2-et kell futtatnia. A részletek az alábbi táblázatban láthatók.
+- Telepítse a frissítést és az SHA-2-et a csatolt KB-nak megfelelően.
+- További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+
+**Operációs rendszer** | **Azure virtuális gép** | **VMware VM/fizikai gép**
+--- | --- | ---
+**Windows 2008 R2 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 2008 SP2** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4493730)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
+**Windows 7 SP1** | [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [Karbantartási verem frissítése](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419).
+
 
 ## <a name="supported-updates"></a>Támogatott frissítések
 
@@ -222,7 +237,7 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 **Funkció** | **Részletek**
 --- | ---
 **Hálózati leképezés** | Az Azure-beli virtuális gépek vész-helyreállítási folyamata esetén a replikáció engedélyezésekor bármilyen elérhető célszámítógépet is használhat. 
-**Standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)használatával.
+**standard SSD** | Most már beállíthatja az Azure-beli virtuális gépek vész-helyreállítását [standard SSD lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)használatával.
 **Közvetlen tárolóhelyek** | Az Azure VM-alkalmazásokon futó alkalmazások vész-helyreállítását a magas rendelkezésre állás érdekében [közvetlen tárolóhelyek](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) használatával állíthatja be.  A Közvetlen tárolóhelyek (S2D) és a Site Recovery együttes használata átfogó védelmet nyújt az Azure-beli virtuális gépek számítási feladataihoz. A S2D lehetővé teszi a vendég fürtök üzemeltetését az Azure-ban. Ez különösen akkor hasznos, ha egy virtuális gép kritikus alkalmazást (például SAP ASCS Layer, SQL Server vagy kibővített fájlkiszolgáló) üzemeltet.
 
 
@@ -311,7 +326,7 @@ A frissítések nem igénylik a virtuális gépek újraindítását, és nem ér
 
 ### <a name="pricing-calculator-for-azure-vm-disaster-recovery"></a>Díjszabás az Azure-beli virtuális gép vész-helyreállításához
 
-Az Azure-beli virtuális gépek vész-helyreállítási költségei a virtuálisgép-licencelési költségek, valamint a hálózati és tárolási költségek. Az Azure egy [díjszabási számológépet](https://aka.ms/a2a-cost-estimator) biztosít, amely segít kideríteni ezeket a költségeket. A Site Recovery mostantól [](https://aka.ms/a2a-cost-estimator) egy példaként értékeli a becslést, amely egy három rétegből álló, 12 standard HDD lemezzel és 6 prémium SSD lemezzel rendelkező, háromrészes alkalmazáson alapuló minta-telepítés árát tartalmazza.
+Az Azure-beli virtuális gépek vész-helyreállítási költségei a virtuálisgép-licencelési költségek, valamint a hálózati és tárolási költségek. Az Azure egy [díjszabási számológépet](https://aka.ms/a2a-cost-estimator) biztosít, amely segít kideríteni ezeket a költségeket. A Site Recovery mostantól egy példaként értékeli a [becslést](https://aka.ms/a2a-cost-estimator) , amely egy három rétegből álló, 12 standard HDD lemezzel és 6 prémium SSD lemezzel rendelkező, háromrészes alkalmazáson alapuló minta-telepítés árát tartalmazza.
 
 - A minta azt feltételezi, hogy a standard és 20 GB-os adatváltozások napi 10 GB-ban változnak.
 - Az adott központi telepítés esetében módosíthatja a változókat a költségek becslése érdekében.
@@ -411,6 +426,6 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Naprakészen tarthatja frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalon.

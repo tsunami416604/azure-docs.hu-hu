@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182286"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333166"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Központi telepítési stratégiák és ajánlott eljárások a teljesítmény optimalizálásához Azure Search
 
@@ -88,22 +88,17 @@ Itt látható egy magas szintű vizualizáció, hogy az architektúra milyen mó
    ![Egyetlen adatforrás elosztott indexelő és szolgáltatási kombinációkkal][2]
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>A REST API-k használata a tartalmi frissítések több szolgáltatásban való leküldéséhez
-Ha a Azure Search REST APIt használja a [Azure Search indexben lévő tartalom](https://docs.microsoft.com/rest/api/searchservice/update-index)leküldéséhez, a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
+Ha a Azure Search REST APIt használja a [Azure Search indexben lévő tartalom leküldéséhez](https://docs.microsoft.com/rest/api/searchservice/update-index), a különböző keresési szolgáltatásokat szinkronizálhatja, ha az összes keresési szolgáltatás módosítását kéri, amikor frissítésre van szükség. Ügyeljen arra, hogy a kódban olyan eseteket kezeljen, amelyekben az egyik keresési szolgáltatás frissítése meghiúsul, de a többi keresési szolgáltatás sikeres.
 
 ## <a name="leverage-azure-traffic-manager"></a>Az Azure Traffic Manager kihasználása
 Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehetővé teszi, hogy több Azure Search-szolgáltatás által támogatott, több földrajzi helyen lévő webhelyre irányítsa át a kérelmeket. Az Traffic Manager az egyik előnye, hogy képes Azure Search a mintavételre, hogy elérhető legyen, és átirányítsa a felhasználókat az alternatív keresési szolgáltatásokra leállás esetén. Emellett, ha az Azure-webhelyeken keresztül irányítja a keresési kérelmeket, az Azure Traffic Manager lehetővé teszi a terheléselosztási esetek terhelését, ha a webhely nem Azure Search. Íme egy példa arra, hogy milyen architektúrát használ a Traffic Manager.
 
    ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
-## <a name="monitor-performance"></a>Teljesítmény figyelése
-Azure Search lehetővé teszi a szolgáltatás teljesítményének elemzését és figyelését a [Search Traffic Analytics](search-traffic-analytics.md)használatával. Ha engedélyezi ezt a funkciót, és felveszi a rendszerállapotot az ügyfélalkalmazás számára, megadhatja az egyes keresési műveleteket, valamint az összesített mérőszámokat egy olyan Azure Storage-fiókba, amely az elemzéshez és a Power BIban való megjelenítéshez használható fel. A metrikák ily módon rögzítik a teljesítménnyel kapcsolatos statisztikákat, például a lekérdezések átlagos számát vagy a lekérdezési válaszidőt. Emellett a művelet naplózása lehetővé teszi az adott keresési műveletek részleteinek részletezését.
-
-A Traffic Analytics hasznos a késési arányok Azure Search perspektívából való megismeréséhez. Mivel a lekérdezési teljesítmény mérőszámai azon időpontokon alapulnak, amikor egy lekérdezés teljes feldolgozásra kerül Azure Searchban (a kérelem elküldésekor szükséges idő alapján), ezzel megállapíthatja, hogy a késéssel kapcsolatos problémák a Azure Search szolgáltatás oldaláról vagy kimenetéről származnak-e. a szolgáltatás ide, például a hálózati késéstől.  
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a díjszabási csomagokról és a szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [Azure Search szolgáltatási korlátozásait](search-limits-quotas-capacity.md).
 
-A particionálási és a replika-kombinációkkal kapcsolatos további információkért látogasson el a [kapacitás](search-capacity-planning.md) megtervezésére.
+A particionálási és a replika-kombinációkkal kapcsolatos további információkért látogasson el a [kapacitás megtervezésére](search-capacity-planning.md) .
 
 Ha többet szeretne megtudni a teljesítményről és a jelen cikkben ismertetett optimalizációk megvalósításával kapcsolatos néhány bemutatóról, tekintse meg a következő videót:
 

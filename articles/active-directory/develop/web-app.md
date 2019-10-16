@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory Web apps
-description: Protokoll flow, a regisztráció és a jogkivonat lejárati az alkalmazástípushoz a webalkalmazások vannak és alapjainak ismertetése
+title: Azure Active Directory webalkalmazások
+description: Leírja, hogy mely webalkalmazások és az alkalmazás típusához tartozó protokollok, regisztráció és tokenek lejáratának alapjai.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,44 +17,44 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544725"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373646"
 ---
 # <a name="web-apps"></a>Webalkalmazások
 
-Web Apps alkalmazások olyan alkalmazások, amelyek egy webalkalmazást egy webböngészőben a felhasználó hitelesítéséhez. Ebben a forgatókönyvben a webes alkalmazás a felhasználó böngészőben jelentkezzen be őket az Azure AD irányítja. Az Azure AD választ jelentkezzen be a felhasználó böngészőjében, amely tartalmazza a biztonsági jogkivonat a felhasználóval kapcsolatos jogcímek keresztül. Ebben a forgatókönyvben támogatja a bejelentkezést az OpenID Connect, SAML 2.0 és WS-Federation protokollal.
+A webalkalmazások olyan alkalmazások, amelyek egy webböngészőben hitelesítik a felhasználókat egy webalkalmazásban. Ebben az esetben a webalkalmazás irányítja a felhasználó böngészőjében, hogy bejelentkezzen az Azure AD-be. Az Azure AD egy bejelentkezési választ ad vissza a felhasználó böngészőjén keresztül, amely a felhasználóhoz tartozó jogcímeket tartalmaz egy biztonsági jogkivonatban. Ez a forgatókönyv az OpenID Connect, az SAML 2,0 és a WS-Federation protokollok használatával támogatja a bejelentkezést.
 
 ## <a name="diagram"></a>Ábra
 
-![A böngészőben a webalkalmazás a hitelesítési folyamat](./media/authentication-scenarios/web_browser_to_web_api.png)
+![A böngésző és a webes alkalmazás közötti hitelesítési folyamat](./media/authentication-scenarios/web_browser_to_web_api.png)
 
-## <a name="protocol-flow"></a>Protokoll folyamat
+## <a name="protocol-flow"></a>Protokoll folyamatábrája
 
-1. Amikor egy felhasználó meglátogat alkalmazáshoz, és jelentkezzen be kell, akkor a rendszer átirányítja egy bejelentkezési kérelmet a hitelesítési végpontra keresztül az Azure ad-ben.
+1. Amikor egy felhasználó meglátogatja az alkalmazást, és be kell jelentkeznie, a rendszer átirányítja az Azure AD hitelesítési végpontjának bejelentkezési kérelmén keresztül.
 1. A felhasználó bejelentkezik a bejelentkezési oldalon.
-1. Sikeres hitelesítés esetén a Azure ad-ben létrehoz egy hitelesítési tokent, és választ küld be az alkalmazás válasz URL-cím, amelyet az Azure Portalon. Éles alkalmazás esetén a válasz URL-cím HTTPS kell lennie. A visszaadott jogkivonat tartalmazza a jogkivonatot érvényesíteni az alkalmazás által igényelt jogcímeket a felhasználó és az Azure AD.
-1. Az alkalmazás egy nyilvános aláírókulcs és issuer információk használatával érhető el, az összevonási metaadatok dokumentuma az Azure Active Directory érvényesíti a jogkivonatot. Az alkalmazás érvényesíti a jogkivonatot, miután a felhasználó egy új munkamenetet kezdődik. Ez a munkamenet a felhasználó az alkalmazás eléréséhez, amíg le nem jár.
+1. Ha a hitelesítés sikeres, az Azure AD létrehoz egy hitelesítési jogkivonatot, és egy bejelentkezési választ ad vissza az alkalmazásnak a Azure Portal konfigurált válasz URL-címére. Éles alkalmazás esetében a válasz URL-címének HTTPS-nek kell lennie. A visszaadott jogkivonat tartalmazza a felhasználóval és az Azure AD-val kapcsolatos jogcímeket, amelyek az alkalmazás által a jogkivonat érvényesítéséhez szükségesek.
+1. Az alkalmazás érvényesíti a jogkivonatot egy nyilvános aláíró kulccsal és kiállítói információval az Azure AD összevonási metaadat-dokumentumában. Miután az alkalmazás érvényesíti a jogkivonatot, egy új munkamenetet indít el a felhasználóval. Ez a munkamenet lehetővé teszi, hogy a felhasználó az érvényesség lejárta előtt hozzáférjen az alkalmazáshoz.
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a webes alkalmazás-forgatókönyvek a webböngésző Kódminták. És a új mintát gyakran hozzáadása során gyakran készítsen biztonsági ellenőrzést.
+Tekintse meg a webalkalmazási forgatókönyvek webböngészőben való megjelenítéséhez használható példákat. Az új minták hozzáadásakor gyakran térjen vissza újra.
 
 ## <a name="app-registration"></a>Alkalmazásregisztráció
 
-Webes alkalmazás regisztrálni, lásd: [alkalmazás regisztrálása](quickstart-register-app.md).
+Webalkalmazás regisztrálásához tekintse meg [az alkalmazás regisztrálása](quickstart-register-app.md)című témakört.
 
-* Egyetlen bérlő – Ha egy alkalmazás csak a szervezet számára hoz létre, azt regisztrálni kell a vállalati címtárban az Azure portal használatával.
-* Több-bérlős – Ha olyan alkalmazás, amely a szervezeten kívüli felhasználók által használható épít, a vállalati címtárban szerepelnie kell, de is regisztrálni kell az alkalmazást használó minden egyes szervezet címtárában. Elérhetővé teszi az alkalmazás a címtárban, megadhatja a regisztrációs folyamat, amely lehetővé teszi, hogy engedélyt adjanak az alkalmazásnak az ügyfelek számára. Amikor regisztrál az alkalmazáshoz, akkor megjelenik egy párbeszédpanel, amely tartalmazza az alkalmazáshoz szükséges engedélyeket, majd a beállítást, hogy engedélyt adjanak. Attól függően, a szükséges engedélyekkel a másik szervezet rendszergazda is szükség beleegyezés. A felhasználó vagy rendszergazda beleegyezik, az alkalmazás regisztrálva lesz a címtárban.
+* Egyetlen bérlő – ha a szervezete számára hoz létre alkalmazást, azt a Azure Portal használatával kell regisztrálni a vállalati címtárban.
+* Több-bérlő – ha olyan alkalmazást hoz létre, amelyet a szervezeten kívüli felhasználók is használhatnak, regisztrálni kell a vállalati címtárban, de az alkalmazást használó összes szervezet címtárában is regisztrálni kell. Ahhoz, hogy az alkalmazás elérhető legyen a címtárában, olyan regisztrációs folyamatot is megadhat az ügyfeleknek, amely lehetővé teszi számukra az alkalmazáshoz való hozzájárulásukat. Amikor regisztrálnak az alkalmazásra, a rendszer egy párbeszédpanelt jelenít meg, amely megjeleníti az alkalmazás által igényelt engedélyeket, majd a beleegyező lehetőséget. A szükséges engedélyektől függően szükség lehet a másik szervezet rendszergazdájának jóváhagyásra. Ha a felhasználó vagy a rendszergazda beleegyezik, az alkalmazás regisztrálva van a címtárában.
 
-## <a name="token-expiration"></a>Jogkivonat lejáratáról
+## <a name="token-expiration"></a>Jogkivonat lejárata
 
-A felhasználói munkamenet lejár, ha lejár az Azure AD által kiállított jogkivonatok élettartamát. Az alkalmazás ebben az időszakban igény szerint adott ideig tartó alapuló felhasználók kijelentkeztetése például lerövidítheti. Ha a munkamenet lejár, a felhasználó kéri, jelentkezzen be újra.
+A felhasználó munkamenete lejár, ha az Azure AD által kiadott jogkivonat élettartama lejár. Az alkalmazás igény szerint lerövidítheti ezt az időtartamot, például a felhasználók inaktivitási időtartam alapján történő kijelentkezését. A munkamenet lejáratakor a rendszer kérni fogja a felhasználótól, hogy jelentkezzen be újra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információk egyéb [alkalmazástípusok és forgatókönyvek](app-types.md)
-* További tudnivalók az Azure AD [hitelesítés alapjai](authentication-scenarios.md)
+* További információ az egyéb [alkalmazási típusokról és forgatókönyvekről](app-types.md)
+* Tudnivalók az Azure AD- [alapú hitelesítés alapjairól](v1-authentication-scenarios.md)

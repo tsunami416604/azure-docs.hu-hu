@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240613"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372408"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel"></a>Fenyegetések vadászata az Azure Sentinelben
 
@@ -35,22 +35,22 @@ Például az egyik beépített lekérdezés szolgáltatja az infrastruktúrán f
 
 Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
-- Beépített lekérdezések: Az első lépésekhez a kezdőlapon előre betöltött lekérdezési példákat talál, amelyek az első lépésekhez készültek, és megismerheti a táblákat és a lekérdezési nyelvet. Ezeket a beépített vadászati lekérdezéseket folyamatosan fejlesztjük a Microsoft biztonsági kutatói, új lekérdezések hozzáadásával és a meglévő lekérdezések finomhangolásával, amely lehetővé teszi az új észlelések keresését, és kideríteni, hogy hol kezdjen el vadászni a új támadások kezdete. 
+- Beépített lekérdezések: az első lépésekhez a kezdőlapon előre betöltött lekérdezési példákat talál a kezdéshez, és megismerheti a táblákat és a lekérdezési nyelvet. Ezeket a beépített vadászati lekérdezéseket folyamatosan fejlesztjük a Microsoft biztonsági kutatói, új lekérdezések hozzáadásával és a meglévő lekérdezések finomhangolásával, amely lehetővé teszi az új észlelések keresését, és kideríteni, hogy hol kezdjen el vadászni a új támadások kezdete. 
 
-- Hatékony lekérdezési nyelv IntelliSense-vel: Egy olyan lekérdezési nyelvre épül, amely a következő szintre való vadászathoz szükséges rugalmasságot biztosítja.
+- Hatékony lekérdezési nyelv az IntelliSense használatával: olyan lekérdezési nyelvre épül, amely a következő szintre való vadászathoz szükséges rugalmasságot biztosítja.
 
-- Saját könyvjelzők létrehozása: A vadászati folyamat során előfordulhat, hogy a találatok, az irányítópultok vagy a szokatlan vagy gyanús tevékenységek között találkozhatnak. Ha meg szeretné jelölni ezeket az elemeket, hogy később vissza lehessen őket használni, használja a könyvjelző funkciót. A könyvjelzők lehetővé teszik, hogy később mentse az elemeket, hogy egy incidenst hozzon létre a vizsgálathoz. A könyvjelzők használatával kapcsolatos további információkért lásd: a [könyvjelzők használata a vadászatban](hunting.md).
-- Jegyzetfüzetek használata a vizsgálat automatizálásához: A jegyzetfüzetek olyan lépésről lépésre haladó forgatókönyvek, amelyeket a vizsgálat és a vadászat lépésein hozhat létre.  A jegyzetfüzetek egy újrafelhasználható forgatókönyvben lévő összes vadászati lépést bemutatnak, amelyek megoszthatók másokkal a szervezeten belül. 
-- A tárolt adatértékek lekérdezése: Az adattábla a lekérdezéshez érhető el. Lekérdezheti például a folyamat létrehozását, a DNS-eseményeket és számos más eseménytípus lekérdezését.
+- Hozzon létre saját könyvjelzőket: a vadászati folyamat során előfordulhat, hogy a találatok, az irányítópultok vagy a szokatlan vagy gyanús tevékenységek között találkozhat. Ha meg szeretné jelölni ezeket az elemeket, hogy később vissza lehessen őket használni, használja a könyvjelző funkciót. A könyvjelzők lehetővé teszik, hogy később mentse az elemeket, hogy egy incidenst hozzon létre a vizsgálathoz. A könyvjelzők használatával kapcsolatos további információkért lásd: a [könyvjelzők használata a vadászatban](hunting.md).
+- Jegyzetfüzetek használata a vizsgálat automatizálásához: a jegyzetfüzeteket olyan lépésről lépésre haladó forgatókönyvekhez használhatja, amelyeket a vizsgálat és a vadászat lépésein hozhat létre.  A jegyzetfüzetek egy újrafelhasználható forgatókönyvben lévő összes vadászati lépést bemutatnak, amelyek megoszthatók másokkal a szervezeten belül. 
+- A tárolt adatértékek lekérdezése: az adattábla a lekérdezéshez elérhető. Lekérdezheti például a folyamat létrehozását, a DNS-eseményeket és számos más eseménytípus lekérdezését.
 
-- A Közösségre mutató hivatkozások: A nagyobb Közösség hatékonyságát kihasználva további lekérdezéseket és adatforrásokat kereshet.
+- A Közösségre mutató hivatkozások: kihasználhatja a nagyobb Közösség hatékonyságát további lekérdezések és adatforrások kereséséhez.
  
 ## <a name="get-started-hunting"></a>Ismerkedés a vadászattal
 
 1. Az Azure Sentinel-portálon kattintson a **vadászat**gombra.
-  ![Az Azure Sentinel vadászatot kezd](media/tutorial-hunting/hunting-start.png)
+  @no__t – a 0Azure Sentinel elkezdi a vadászatot @ no__t-1
 
-2. A vadászati oldal megnyitásakor az összes vadászati lekérdezés egyetlen táblában jelenik meg. A táblázat felsorolja a Microsoft biztonsági elemzők csapata által írt összes lekérdezést, valamint a létrehozott vagy módosított további lekérdezéseket. Mindegyik lekérdezés leírja, hogy mire vadászik, és milyen típusú adatfeldolgozást futtat. Ezek a sablonok különböző taktikák szerint vannak csoportosítva – a jobb oldali ikonok kategorizálják a fenyegetés típusát, például a kezdeti hozzáférést, az adatmegőrzést és a kiszűrése. Ezeket a vadászati lekérdezési sablonokat bármely mező alapján szűrheti. Bármilyen lekérdezést menthet a Kedvencek közé. Ha egy lekérdezést a Kedvencek közé ment, a lekérdezés automatikusan lefut, amikor a **vadászati** oldal elérhető. Létrehozhatja saját vadászati lekérdezését vagy klónját, és testre is szabhatja a meglévő vadászati lekérdezési sablont. 
+2. A **vadászati** oldal megnyitásakor az összes vadászati lekérdezés egyetlen táblában jelenik meg. A táblázat felsorolja a Microsoft biztonsági elemzők csapata által írt összes lekérdezést, valamint a létrehozott vagy módosított további lekérdezéseket. Mindegyik lekérdezés leírja, hogy mire vadászik, és milyen típusú adatfeldolgozást futtat. Ezek a sablonok különböző taktikák szerint vannak csoportosítva – a jobb oldali ikonok kategorizálják a fenyegetés típusát, például a kezdeti hozzáférést, az adatmegőrzést és a kiszűrése. Ezeket a vadászati lekérdezési sablonokat bármely mező alapján szűrheti. Bármilyen lekérdezést menthet a Kedvencek közé. Ha egy lekérdezést a Kedvencek közé ment, a lekérdezés automatikusan lefut, amikor a **vadászati** oldal elérhető. Létrehozhatja saját vadászati lekérdezését vagy klónját, és testre is szabhatja a meglévő vadászati lekérdezési sablont. 
  
 2. Kattintson a **lekérdezés futtatása** elemre a vadászati lekérdezés részletei lapon, hogy bármilyen lekérdezést futtasson anélkül, hogy elhagyja a vadászati oldalt.  A egyezések száma a táblában jelenik meg. Tekintse át a vadászati lekérdezések listáját és azok egyezéseit. Tekintse meg, hogy a kill lánc melyik szakaszában van társítva a egyezés.
 
@@ -60,7 +60,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
 5. Ezután lépjen vissza a fő **vadászat** oldalra, és kattintson a **könyvjelzők** lapra az összes gyanús tevékenység megtekintéséhez. 
 
-6. Jelöljön ki egy könyvjelzőt, majd kattintson a vizsgálat gombra a vizsgálati élmény megnyitásához. Szűrheti a könyvjelzőket. Ha például egy kampányt vizsgál, létrehozhat egy címkét a kampányhoz, majd a kampány alapján szűrheti az összes könyvjelzőt.
+6. Jelöljön ki egy könyvjelzőt, **majd kattintson a vizsgálat gombra a** vizsgálati élmény megnyitásához. Szűrheti a könyvjelzőket. Ha például egy kampányt vizsgál, létrehozhat egy címkét a kampányhoz, majd a kampány alapján szűrheti az összes könyvjelzőt.
 
 1. Miután felfedezte, hogy melyik vadászati lekérdezés magas értéket biztosít a lehetséges támadásoknak, létrehozhat egyéni észlelési szabályokat is a lekérdezés alapján, és felhasználhatja ezeket az elemzéseket riasztásként a biztonsági incidensek válaszadói számára.
 
@@ -68,7 +68,7 @@ Az Azure Sentinel-vadászattal az alábbi lehetőségek közül választhat:
 
 ## <a name="query-language"></a>Lekérdezés nyelve 
 
-Az Azure Sentinelben való vadászat az Azure Log Analytics lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](https://docs.loganalytics.io/docs/Language-Reference/)című témakört.
+Az Azure Sentinelben való vadászat a Kusto lekérdezési nyelvén alapul. A lekérdezési nyelvre és a támogatott operátorokra vonatkozó további információkért lásd a [lekérdezés nyelvi referenciája](https://docs.loganalytics.io/docs/Language-Reference/)című témakört.
 
 ## <a name="public-hunting-query-github-repository"></a>Nyilvános vadászati lekérdezés GitHub-tárháza
 
@@ -78,7 +78,7 @@ Tekintse meg a [vadászati lekérdezés tárházát](https://github.com/Azure/Or
 
 ## <a name="sample-query"></a>Példa lekérdezésre
 
-Egy tipikus lekérdezés a tábla nevével kezdődik, majd egy, a által \|elválasztott operátorok sorozata.
+Egy tipikus lekérdezés a táblázat nevével kezdődik, majd a \| karakterrel elválasztott operátorok sorozata.
 
 A fenti példában Kezdje a Table Name SecurityEvent, és szükség szerint adja hozzá a vezetékes elemeket.
 
@@ -140,7 +140,7 @@ Meglévő vadászati lekérdezés klónozása és módosítása:
 
    ![egyéni lekérdezés](./media/tutorial-hunting/custom-query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan futtathat egy vadászati vizsgálatot az Azure Sentinel használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 

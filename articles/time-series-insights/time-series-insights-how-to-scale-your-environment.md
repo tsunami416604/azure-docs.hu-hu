@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129114"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332895"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>A Time Series Insights-környezet skálázása
 
-Ez a cikk azt ismerteti, hogyan változtathatja meg a környezete kapacitását Time Series Insights környezetében a Azure Portal használatával. A kapacitás a beáramlási sebességre, a tárolási kapacitásra és a kiválasztott SKU-ra vonatkozó díjakra érvényes szorzó.
+Ez a cikk azt ismerteti, hogyan módosítható a Time Series Insights-környezet kapacitása a [Azure Portal](https://portal.azure.com)használatával. A kapacitás a beáramlási sebességre, a tárolási kapacitásra és a kiválasztott SKU-ra vonatkozó díjakra érvényes szorzó.
 
 A Azure Portal használatával növelheti vagy csökkentheti a kapacitást egy adott árképzési SKU-n belül.
 
@@ -49,16 +49,22 @@ A kapacitások lineárisan méretezhetők, ezért a 2. kapacitású S1 SKU 2 GB-
 
 1. A Time Series Insights-környezet menüjében válassza a **Konfigurálás**lehetőséget.
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [@no__t -1configure. png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
 1. Állítsa be a **kapacitás** csúszkát, és válassza ki azt a kapacitást, amely megfelel a bejövő és a tárolási kapacitás követelményeinek. Figyelje meg, hogy a **Bejövő forgalom sebessége**, a **tárolókapacitás**és a **becsült költségek** dinamikusan frissülnek a változás hatásának megjelenítéséhez.
 
-   [![Csúszka](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [@no__t – 1Slider](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
    Másik lehetőségként beírhatja a kapacitás szorzójának számát a csúszka jobb oldalán található szövegmezőbe.
 
 1. A környezet méretezéséhez válassza a **Mentés** lehetőséget. A folyamatjelző addig jelenik meg, amíg a módosítás véglegesítése nem történik meg.
 
-## <a name="next-steps"></a>További lépések
+1. Győződjön meg arról, hogy az új kapacitás [elegendő a szabályozás megakadályozásához](time-series-insights-diagnose-and-solve-problems.md).
 
-- Győződjön meg arról, hogy az új kapacitás [elegendő a szabályozás megakadályozásához](time-series-insights-diagnose-and-solve-problems.md).
+## <a name="next-steps"></a>Következő lépések
+
+- További információkért tekintse át [a Time Series Insights megőrzésének ismertetése](time-series-insights-concepts-retention.md)című témakört.
+
+- Tudnivalók az [adatmegőrzés konfigurálásáról Azure Time Series Insightsban](time-series-insights-how-to-configure-retention.md).
+
+- Ismerje meg [a környezet megtervezését](time-series-insights-environment-planning.md).

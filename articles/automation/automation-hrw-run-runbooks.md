@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5ff36230095b90418a2619bbf1c5bb02863072b5
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240327"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372843"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
 A runbookok struktúrája nem különbözik a hibrid Runbook-feldolgozón futó Azure Automation-és runbookok. Az egyes legvalószínűbben használt runbookok jelentősen eltérnek. Ez a különbség azért van, mert a hibrid Runbook-feldolgozót célzó runbookok jellemzően a helyi számítógépen lévő erőforrásokat, vagy a helyi környezetben lévő erőforrásokat kezelik. A Azure Automation runbookok általában az Azure-felhőben lévő erőforrásokat kezelik.
 
-Ha hibrid Runbook-feldolgozón futtatja a runbookok-t, akkor a hibrid feldolgozót üzemeltető gépen belül kell szerkesztenie és tesztelni a runbookok. A gazdagépen minden PowerShell-modul és hálózati hozzáférés szükséges a helyi erőforrások kezeléséhez és eléréséhez. Miután tesztelte a runbook a hibrid munkavégző gépen, feltöltheti azt a Azure Automation-környezetbe, ahol a hibrid feldolgozón futtatható. Fontos tudni, hogy a Windows helyi rendszerfiókja vagy a Linux rendszerhez készült speciális felhasználói fiók `nxautomation` alatt futó feladatok. Linux rendszeren ez azt jelenti, hogy a `nxautomation` fióknak hozzáféréssel kell rendelkeznie ahhoz a helyhez, ahol a modulokat tárolja. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, a **AllUsers** `-Scope` megadásával ellenőrizze, hogy a `naxautomation` fiók hozzáfér-e a paraméterhez.
+Ha hibrid Runbook-feldolgozón futtatja a runbookok-t, akkor a hibrid feldolgozót üzemeltető gépen belül kell szerkesztenie és tesztelni a runbookok. A gazdagépen minden PowerShell-modul és hálózati hozzáférés szükséges a helyi erőforrások kezeléséhez és eléréséhez. Miután tesztelte a runbook a hibrid munkavégző gépen, feltöltheti azt a Azure Automation-környezetbe, ahol a hibrid feldolgozón futtatható. Fontos tudni, hogy a Windows rendszerhez tartozó helyi rendszerfiókban futó feladatok, illetve a Linuxon `nxautomation` speciális felhasználói fiók esetén. Linux rendszeren ez azt jelenti, hogy a `nxautomation` fióknak hozzáféréssel kell rendelkeznie ahhoz a helyhez, ahol a modulokat tárolja. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, akkor a `-Scope` paraméter **AllUsers** megadása után ellenőrizze, hogy a `naxautomation` fiók rendelkezik-e hozzáféréssel.
 
 A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
@@ -45,7 +45,7 @@ A hibrid Runbook-feldolgozón futó runbookok nem használhatja ugyanazt a metó
 
 ### <a name="runbook-authentication"></a>Runbook-hitelesítés
 
-Alapértelmezés szerint a runbookok a helyi rendszerfiók környezetében fut a Windows rendszerhez, és egy speciális felhasználói `nxautomation` fiók a Linux rendszerhez a helyszíni számítógépen, ezért meg kell adnia saját hitelesítését az általuk elért erőforrásokhoz.
+Alapértelmezés szerint a runbookok a helyi rendszerfiók környezetében fut a Windows rendszerhez, és egy speciális felhasználói fiók, `nxautomation` a Linux rendszerhez a helyszíni számítógépen, ezért meg kell adniuk a saját hitelesítését az általuk elért erőforrásokhoz.
 
 A runbook olyan parancsmagokkal használhatja a [hitelesítő adatokat](automation-credentials.md) és [tanúsítványokat](automation-certificates.md) , amelyek lehetővé teszik a hitelesítő adatok megadását, így a különböző erőforrásokhoz is elvégezheti a hitelesítést. Az alábbi példa egy runbook egy részét mutatja be, amely újraindítja a számítógépet. Hitelesítő adatokat kér le a hitelesítő adatokból és a számítógép nevét egy változó objektumból, majd ezeket az értékeket használja a restart-Computer parancsmaggal.
 
@@ -60,7 +60,7 @@ Használhatja a [InlineScript](automation-powershell-workflow.md#inlinescript)is
 
 ### <a name="runas-account"></a>Futtató fiók
 
-Alapértelmezés szerint a hibrid Runbook-feldolgozó a Windows helyi rendszerét és egy speciális felhasználói `nxautomation` fiókot használ a Linux rendszerhez a runbookok végrehajtásához. Ahelyett, hogy a runbookok saját hitelesítéssel lássa el a helyi erőforrásokat, megadhat egy **futtató fiókot egy** hibrid feldolgozói csoport számára. Olyan hitelesítőadat- [eszközt](automation-credentials.md) kell megadnia, amely hozzáféréssel rendelkezik a helyi erőforrásokhoz, beleértve a tanúsítványtárolókat és a hitelesítő adatokban futtatott összes runbookok, ha a csoport egy hibrid Runbook-feldolgozóján fut.
+Alapértelmezés szerint a hibrid Runbook-feldolgozó a Windows helyi rendszerét és egy speciális felhasználói fiókot használ, `nxautomation` a Linux rendszerhez a runbookok végrehajtásához. Ahelyett, hogy a runbookok saját hitelesítéssel lássa el a helyi erőforrásokat, megadhat egy **futtató fiókot egy** hibrid feldolgozói csoport számára. Olyan hitelesítőadat- [eszközt](automation-credentials.md) kell megadnia, amely hozzáféréssel rendelkezik a helyi erőforrásokhoz, beleértve a tanúsítványtárolókat és a hitelesítő adatokban futtatott összes runbookok, ha a csoport egy hibrid Runbook-feldolgozóján fut.
 
 A hitelesítő adatok felhasználónevének a következő formátumok egyikében kell lennie:
 
@@ -89,11 +89,10 @@ Ha egy hibrid Runbook-feldolgozón felügyelt identitást szeretne használni az
 
 1. Azure-beli virtuális gép létrehozása
 2. [Felügyelt identitások konfigurálása az Azure-erőforrásokhoz a virtuális gépen](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
-3. [A virtuális gép hozzáférésének biztosítása egy erőforráscsoport számára a Resource Managerben](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
-4. [Hozzáférési jogkivonat beszerzése a virtuális gép rendszer által hozzárendelt felügyelt identitásának használatával](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
-5. [Telepítse a Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) szolgáltatást a virtuális gépre.
+3. [A virtuális gép hozzáférésének biztosítása a Resource Managerben](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) – Windows-VM-Access-ARM. MD # Get-a-Access-Token-using-the-VMS-System-on Assigned-Managed-Identity-and-use-it-to-call-Azure-Resource-Manager
+4. [Telepítse a Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) szolgáltatást a virtuális gépre.
 
-Miután az előző lépések befejeződik, a runbook használatával `Connect-AzureRmAccount -Identity` hitelesítheti magát az Azure-erőforrásokban. Ez a konfiguráció csökkenti a futtató fiók használatának és a tanúsítványnak a futtató fiókhoz való felügyeletének szükségességét.
+Az előző lépések befejezését követően a runbook `Connect-AzureRmAccount -Identity` használatával hitelesítheti az Azure-erőforrásokat. Ez a konfiguráció csökkenti a futtató fiók használatának és a tanúsítványnak a futtató fiókhoz való felügyeletének szükségességét.
 
 ```powershell
 # Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
@@ -102,6 +101,9 @@ Connect-AzureRmAccount -Identity
 # Get all VM names from the subscription
 Get-AzureRmVm | Select Name
 ```
+
+> [!NOTE]
+> `Connect-AzureRMAccount -Identity` a hibrid Runbook-feldolgozók számára egy rendszerhez rendelt identitást és egyetlen felhasználó által hozzárendelt identitást használ. Ha több felhasználóhoz rendelt identitást kell használnia a HRW, meg kell adnia a `-AccountId` paramétert az adott felhasználóhoz rendelt identitás kiválasztásához.
 
 ### <a name="runas-script"></a>Automation futtató fiók
 
@@ -256,15 +258,15 @@ Ha Linux hibrid Runbook-feldolgozón szeretné aláírni a runbookok, a hibrid R
 
 #### <a name="create-a-gpg-keyring-and-keypair"></a>GPG-kulcstartó és-kulcspár létrehozása
 
-A kulcstartó és a kulcspár létrehozásához a hibrid Runbook Worker-fiókot `nxautomation`kell használnia.
+A kulcstartó és a kulcspár létrehozásához a hibrid Runbook Worker-fiókot kell használnia `nxautomation`.
 
-A `sudo` használatával jelentkezzen be `nxautomation` fiókként.
+@No__t-1 fiókkal való bejelentkezéshez használja a `sudo` értéket.
 
 ```bash
 sudo su – nxautomation
 ```
 
-A `nxautomation` fiók használata után létrehozza a GPG-kulcspárt.
+Miután a `nxautomation` fiókot használta, létrehozza a GPG-kulcspárt.
 
 ```bash
 sudo gpg --generate-key
@@ -272,7 +274,7 @@ sudo gpg --generate-key
 
 A GPG végigvezeti a kulcspár létrehozásának lépésein. Meg kell adnia egy nevet, egy e-mail-címet, a lejárati időt, a hozzáférési kódot, és várnia kell a gép megfelelő entrópia-azonosítóját a kulcs generálásához.
 
-Mivel a GPG könyvtárat a sudo hozta létre, módosítania kell a tulajdonosát a `nxautomation`következőre:.
+Mivel a GPG könyvtárat a sudo hozta létre, módosítania kell a tulajdonosát `nxautomation` értékre.
 
 Futtassa a következő parancsot a tulajdonos módosításához.
 
@@ -282,7 +284,7 @@ sudo chown -R nxautomation ~/.gnupg
 
 #### <a name="make-the-keyring-available-the-hybrid-runbook-worker"></a>A kulcstartó elérhetővé tétele a hibrid Runbook Worker számára
 
-A kulcstartó létrehozása után elérhetővé kell tennie a hibrid Runbook Worker számára. Módosítsa a beállítási fájlt `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` úgy, hogy az tartalmazza a következő példát a szakasz`[worker-optional]`
+A kulcstartó létrehozása után elérhetővé kell tennie a hibrid Runbook Worker számára. Módosítsa a `/var/opt/microsoft/omsagent/state/automationworker/diy/worker.conf` beállítási fájlt a következő példának a `[worker-optional]` szakaszban való belefoglalásához.
 
 ```bash
 gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
@@ -290,7 +292,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Aláírás ellenőrzésének ellenőrzése bekapcsolva
 
-Ha az aláírás-ellenőrzés le van tiltva a gépen, be kell kapcsolni. Futtassa az alábbi parancsot az aláírás-ellenőrzés engedélyezéséhez. Cserélje `<LogAnalyticsworkspaceId>` le a kifejezést a munkaterület-azonosítóra.
+Ha az aláírás-ellenőrzés le van tiltva a gépen, be kell kapcsolni. Futtassa az alábbi parancsot az aláírás-ellenőrzés engedélyezéséhez. A `<LogAnalyticsworkspaceId>` helyére a munkaterület-azonosítót kell cserélni.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -304,11 +306,11 @@ Az aláírás-ellenőrzés konfigurálása után a következő paranccsal lehet 
 gpg –-clear-sign <runbook name>
 ```
 
-Az aláírt runbook neve `<runbook name>.asc`fog megjelenni.
+Az aláírt runbook neve `<runbook name>.asc` lesz.
 
 Az aláírt runbook mostantól a Azure Automationba tölthetők fel, és normál runbook is végrehajthatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a runbook elindításához használható különböző módszerekről, tekintse meg a [runbook Megkezdése Azure Automationban](automation-starting-a-runbook.md)című témakört.
 * A Azure Automation PowerShell-runbookok a szöveges szerkesztővel való használatának különböző módjairól a következő témakörben talál további információt: [Runbook szerkesztése Azure Automation](automation-edit-textual-runbook.md)

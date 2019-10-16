@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828169"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332922"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -25,23 +25,23 @@ Ez a cikk azt ismerteti, hogyan tervezze meg a Azure Time Series Insights által
 
 ## <a name="video"></a>Videó
 
-**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és**a tervezéshez:<br /><br />
+**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-A Time Series Insightsének megkezdéséhez érdemes megismerni, hogy mennyi adattal kell leküldeni a percben, és hogy mennyi ideig kell tárolnia az adatait.  
+A Azure Time Series Insightsének megkezdéséhez érdemes megismerni, hogy mennyi adattal kell leküldeni a percben, és hogy mennyi ideig kell tárolnia az adatait.  
 
 A Time Series Insights SKU kapacitásával és megtartásával kapcsolatos további információkért lásd a [Time Series Insights díjszabását](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Az Time Series Insights-környezet hosszú távú sikeres megtervezéséhez vegye figyelembe a következő attribútumokat:
 
-- <a href="#storage-capacity">Tárkapacitás</a>
-- <a href="#data-retention">Adatmegőrzési időszak</a>
-- <a href="#ingress-capacity">Bejövő kapacitás</a>
-- <a href="#shape-your-events">Az események átalakítása</a>
-- <a href="#ensure-that-you-have-reference-data">A rendelkezésre álló adathivatkozások biztosítása</a>
+- [Tárkapacitás](#storage-capacity)
+- [Adatmegőrzési időszak](#data-retention)
+- [Bejövő kapacitás](#ingress-capacity)
+- [Az események átalakítása](#shape-your-events)
+- [A rendelkezésre álló adathivatkozások biztosítása](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Tárkapacitás
 
@@ -49,15 +49,17 @@ Alapértelmezés szerint a Time Series Insights a kiépített tárterület menny
 
 ## <a name="data-retention"></a>Adatmegőrzés
 
-Módosíthatja az adatmegőrzési **idő** beállításait a Time Series Insights-környezetben. Akár 400 napig is engedélyezheti a megőrzést. 
+Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series Insights-környezetben. Akár 400 napig is engedélyezheti a megőrzést. 
 
-Time Series Insights két móddal rendelkezik. Az egyik mód optimalizálja annak biztosítását, hogy a környezet naprakész adatokkal rendelkezik. Alapértelmezés szerint ez a mód be van kapcsolva. 
+Azure Time Series Insights két mód van:
 
-A másik mód optimalizálja a megőrzési korlátok teljesítésének biztosítását. A második módban a bejövő forgalom szünetel, ha a környezet teljes tárolókapacitása teljesül. 
+* Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva. 
+* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A belépés **szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a kiválasztott **tárolási korlát túllépte a tárterületet**. 
 
 Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapjának két módja között állítható be.
 
-A Time Series Insights-környezetben legfeljebb 400 napos adatmegőrzést állíthat be.
+> [!IMPORTANT]
+> A Azure Time Series Insights GA-környezetben legfeljebb 400 napos adatmegőrzést állíthat be.
 
 ### <a name="configure-data-retention"></a>Az adatmegőrzés konfigurálása
 
@@ -65,22 +67,22 @@ A Time Series Insights-környezetben legfeljebb 400 napos adatmegőrzést állí
 
 1. A **Time Series Insights környezet** ablaktáblájának **Beállítások**területén válassza a **Konfigurálás**lehetőséget.
 
-1. Az adatmegőrzési **idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
+1. Az **adatmegőrzési idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
 
-   [![Megőrzés konfigurálása](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [@no__t – 1Configure megőrzése](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, tekintse meg a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.
 
 ## <a name="ingress-capacity"></a>Bejövő kapacitás
 
-A Time Series Insights-környezet megtervezésére koncentráló második terület a bejövő kapacitás. A bejövő kapacitás a percenkénti foglalás származtatása.
+A második terület, amelyre a Time Series Insights környezet megtervezése során összpontosítani kell, *beáramlik a kapacitást*. A bejövő kapacitás a percenkénti foglalás származtatása.
 
 A szabályozás szempontjából a 32 KB méretű ingressed-adatcsomagok 32 eseményként, 1 KB-os méretekben vannak kezelve. A maximálisan engedélyezett esemény mérete 32 KB. Az 32 KB-nál nagyobb adatcsomagok csonkítva vannak.
 
 Az alábbi táblázat összefoglalja az egységenkénti bejövő kapacitást az egyes Time Series Insights SKU-ra vonatkozóan:
 
-|SKU  |Események száma havonta  |Esemény mérete havonta  |Események száma percenként  |Esemény mérete percenként  |
+|SKU (Cikkszám)  |Események száma havonta  |Esemény mérete havonta  |Események száma percenként  |Esemény mérete percenként  |
 |---------|---------|---------|---------|---------|
 |S1     |   30 000 000     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 000 000    |   300 GB   | 7 200   | 7 200 KB  |
@@ -125,7 +127,7 @@ Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel é
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként hozzon létre [egy új Time Series Insights környezetet a Azure Portal](time-series-insights-get-started.md).
 

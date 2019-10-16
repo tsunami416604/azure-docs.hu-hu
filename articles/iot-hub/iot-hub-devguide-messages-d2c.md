@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147363"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372713"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -79,7 +79,7 @@ A blob Storage-hoz való útválasztás esetén javasoljuk a Blobok bekapcsolás
 
 Service Bus várólisták és a IoT Hub végpontként használt témakörök nem rendelkezhetnek engedélyezett **munkamenetekkel** vagy **duplikált észleléssel** . Ha bármelyik beállítás engedélyezve van, a végpont nem **érhető el** a Azure Portalban.
 
-### <a name="event-hubs"></a>Event Hubs
+### <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
 
 A beépített Event Hubs kompatibilis végponton kívül az adatok átirányítása Event Hubs típusú egyéni végpontokra is elvégezhető. 
 
@@ -115,6 +115,12 @@ A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az 
 
 Új útvonal létrehozásakor vagy egy meglévő útvonal szerkesztésekor az útvonal lekérdezését egy minta üzenettel kell tesztelni. Az egyes útvonalak tesztelését vagy az összes útvonal tesztelését egyszerre hajthatja végre, és a rendszer nem irányítja át az üzeneteket a végpontokhoz a teszt során. A Azure Portal, a Azure Resource Manager, a Azure PowerShell és az Azure parancssori felület használható teszteléshez. Az eredmények segítenek megállapítani, hogy a minta üzenet megfelel-e a lekérdezésnek, az üzenet nem felelt meg a lekérdezésnek, vagy a teszt nem sikerült, mert a minta üzenet vagy a lekérdezés szintaxisa helytelen. További információ: az [útvonal tesztelése](/rest/api/iothub/iothubresource/testroute) és az [összes útvonal tesztelése](/rest/api/iothub/iothubresource/testallroutes).
 
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>Jótállás megrendelése legalább egyszeri kézbesítéssel
+
+IoT Hub üzenet-útválasztási garancia megrendelt, és legalább egyszer kézbesíti az üzeneteket a végpontoknak. Ez azt jelenti, hogy előfordulhat, hogy a rendszer duplikált üzeneteket küld, és az eredeti üzenet megrendelése után újraküldhető az üzenetek sorozata. Ha például az eredeti üzenet sorrendje [1, 2, 3, 4], akkor a következőhöz hasonló üzenet jelenhet meg: [1, 2, 1, 2, 3, 1, 2, 3, 4]. A rendezési garancia az, hogy ha valaha is megkapja a következő üzenetet: [1], a rendszer mindig ezt követi [2, 3, 4].
+
+A duplikált üzenetek kezelésére javasolt az üzenet alkalmazási tulajdonságaiban egy egyedi azonosítót kijelölni, amely általában egy eszköz vagy egy modul. Az üzeneteket használó szolgáltatás képes a duplikált üzenetek kezelésére ezzel az azonosítóval.
+
 ## <a name="latency"></a>Késés
 
 Ha a beépített végpontok használatával irányítja az eszközről a felhőbe irányuló telemetria üzeneteket, az első útvonal létrehozása után kis mértékben megnő a végpontok közötti késés.
@@ -129,7 +135,7 @@ A végpontok [állapotának beolvasásához](iot-hub-devguide-endpoints.md#custo
 
 Az Azure Monitor [diagnosztikai beállításokban](../iot-hub/iot-hub-monitor-resource-health.md)található diagnosztikai naplók használatával nyomon követheti **az útválasztási** lekérdezések és a végpontok állapotának kiértékelése során felmerülő hibákat IoT hub, például ha egy végpont meghalt. Ezeket a diagnosztikai naplókat Azure Monitor naplókba, Event Hubsba vagy az Azure Storage-ba is elküldhetik egyéni feldolgozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzenetküldési útvonalak létrehozásával kapcsolatos információkért lásd: [IoT hub eszközről a felhőbe irányuló üzenetek feldolgozása útvonalak használatával](tutorial-routing.md).
 

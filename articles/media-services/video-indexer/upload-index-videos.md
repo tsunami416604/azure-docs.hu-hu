@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128203"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372376"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -29,8 +29,9 @@ A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-porta
 
 A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős megoldással olyan Video Indexer fiókot hozhat létre, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
-## <a name="uploading-considerations"></a>Feltöltési szempontok
+## <a name="uploading-considerations-and-limitations"></a>Szempontok és korlátozások feltöltése
  
+- A videó neve nem lehet nagyobb, mint 80 karakter.
 - Ha a videót az URL-cím alapján tölti fel (előnyben részesített), a végpontot a TLS 1,2-as (vagy újabb) titkosítással kell védeni.
 - A feltöltési méret és az URL-cím beállítás a 30 GB-ra van korlátozva.
 - A kérelem URL-címének hossza legfeljebb 6144 karakter hosszúságú lehet, ahol a lekérdezési karakterlánc URL-címe legfeljebb 4096 karakter hosszúságú lehet.
@@ -60,22 +61,22 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
 - Az indexelési állapot változása: 
     - Tulajdonságok    
     
-        |Name (Név)|Leírás|
+        |Név|Leírás|
         |---|---|
         |id|A videó azonosítója|
         |state|A videó állapota|  
-    - Például: https:\//test.com/Notifyme?projectName=MyProject&id=1234abcd&State=Processed
+    - Például: https: \//test. com/Notifyme? projektnév = MyProject & id = 1234abcd & State = Processed
 - A videóban azonosított személy:
-  - properties
+  - Tulajdonságok
     
-      |Name (Név)|Leírás|
+      |Név|Leírás|
       |---|---|
       |id| A videó azonosítója|
       |faceId|A videó indexében megjelenő Arcfelismerés|
       |knownPersonId|Az arc-modellen belül egyedi személy azonosítója|
       |personName|A személy neve|
         
-    - Például: https:\//test.com/Notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Például: https: \//test. com/Notifyme? projektnév = MyProject & id = 1234abcd & faceid = 12 & knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
 
 #### <a name="notes"></a>Megjegyzések
 
@@ -92,9 +93,9 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
-### <a name="priority"></a>priority
+### <a name="priority"></a>prioritású
 
-A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **Alacsony**, **normál** (alapértelmezett) és **magas**.
+A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett) és **magas**.
 
 A **priority** paraméter csak a fizetős fiókok esetében támogatott.
 
@@ -289,6 +290,6 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 |400|VIDEO_ALREADY_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az API által létrehozott Azure Video Indexer-kimenet vizsgálata](video-indexer-output-json-v2.md)

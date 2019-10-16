@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873295"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372773"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -22,7 +22,7 @@ ms.locfileid: "70873295"
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablonnal](../../azure-resource-manager/resource-group-authoring-templates.md) [újabb metrikai riasztásokat](../../azure-monitor/platform/alerts-metric-near-real-time.md) Azure monitor. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. Az újabb metrikai riasztások jelenleg [ezen erőforrástípusok készletén](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)érhetők el.
 
 > [!IMPORTANT]
-> Erőforrás-sablon metrikai riasztások létrehozásához: Az Azure log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces`további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
+> Erőforrás-sablon metrikai riasztások létrehozásához az erőforrás típusa: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces`, további lépéseket igényel. Részletekért tekintse meg a [naplók – erőforrás-sablon metrikai riasztása](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)című cikket.
 
 Az alapszintű lépések a következők:
 
@@ -32,7 +32,7 @@ Az alapszintű lépések a következők:
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy `Microsoft.Insights/metricAlerts` típusú erőforrást, és adja meg az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
 Mentse az alábbi JSON-t simplestaticmetricalert. JSON néven az útmutató céljára.
 
@@ -281,7 +281,7 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Egyszerű dinamikus küszöbértékek metrikai riasztásának sablonja
 
-Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy típusú `Microsoft.Insights/metricAlerts` erőforrást, és töltse ki az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
+Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy `Microsoft.Insights/metricAlerts` típusú erőforrást, és adja meg az összes kapcsolódó tulajdonságot. Az alábbi minta sablon egy metrikai riasztási szabályt hoz létre.
 
 Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
 
@@ -2480,7 +2480,7 @@ Mentse az alábbi JSON-t a-VM-static. JSON néven az útmutató céljára.
                 "PT5M",
                 "PT15M",
                 "PT30M",
-                "PT1H""
+                "PT1H"
             ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
@@ -3097,7 +3097,7 @@ az group deployment create \
     --parameters @availabilityalert.parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ [Az Azure-beli riasztásokról](alerts-overview.md)
 - Megtudhatja, hogyan [hozhat létre műveleti csoportot Resource Manager-sablonokkal](action-groups-create-resource-manager-template.md)

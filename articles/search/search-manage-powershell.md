@@ -9,20 +9,20 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648097"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331247"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Azure Search szolgáltatás kezelése a PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Portál](search-manage.md)
+> * [Portal](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)@no__t – 1 
 
 A PowerShell-parancsmagokat és parancsfájlokat Windows, Linux vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) rendszeren is futtathatja Azure Search létrehozásához és konfigurálásához. Az az **. Search** modul a [Azure Search felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement)-kkal teljes paritással bővíti Azure PowerShell]. A Azure PowerShell és **az az. Search**használatával a következő feladatokat végezheti el:
 
@@ -40,13 +40,13 @@ Habár nincsenek a tartalomkezelésre vonatkozó dedikált PowerShell-parancsok,
 
 A PowerShell vagy más API-k (csak portál) által nem támogatott egyéb feladatok a következők:
 + [Egy kognitív szolgáltatások erőforrásának](cognitive-search-attach-cognitive-services.md) összekapcsolása [AI-gazdagított indexeléshez](cognitive-search-concept-intro.md). A kognitív szolgáltatás egy készségkészlet, nem pedig előfizetéshez vagy szolgáltatáshoz van csatolva.
-+ Az Azure Search figyeléséhez használt [kiegészítő figyelési megoldások](search-monitor-usage.md#add-on-monitoring-solutions) vagy [keresési Traffic Analytics](search-traffic-analytics.md) .
++ [Kiegészítő figyelési megoldások](search-monitor-usage.md#add-on-monitoring-solutions) a Azure Search figyeléséhez.
 
 <a name="check-versions-and-load"></a>
 
 ## <a name="check-versions-and-load-modules"></a>Verziók és betöltési modulok keresése
 
-A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Azure PowerShell (az az modul) telepíteni kell. További információ: [Install Azure PowerShell](/powershell/azure/overview).
+A cikkben szereplő példák interaktívak, és emelt szintű engedélyeket igényelnek. Azure PowerShell **(az az modul)** telepíteni kell. További információ: [Install Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="powershell-version-check-51-or-later"></a>PowerShell-verzió-ellenőrzési (5,1 vagy újabb)
 
@@ -58,7 +58,7 @@ $PSVersionTable.PSVersion
 
 ### <a name="load-azure-powershell"></a>Betöltés Azure PowerShell
 
-Ha nem tudja biztosan, hogy az az telepítve van-e, futtassa a következő parancsot ellenőrzési lépésként. 
+Ha nem tudja biztosan, **hogy az az telepítve** van-e, futtassa a következő parancsot ellenőrzési lépésként. 
 
 ```azurepowershell-interactive
 Get-InstalledModule -Name Az
@@ -84,7 +84,7 @@ Ha több Azure-előfizetéssel rendelkezik, állítsa be az Azure-előfizetésé
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve `ContosoSubscription`:.
+Az előfizetés megadásához futtassa a következő parancsot. A következő példában az előfizetés neve `ContosoSubscription`.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -94,7 +94,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-all-azure-search-services-in-your-subscription"></a>Az előfizetéshez tartozó összes Azure Search-szolgáltatás listázása
 
-A következő parancsok az [**az.** ](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)Resources, az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
+A következő parancsok az [**az. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources), az előfizetésben már üzembe helyezendő meglévő erőforrásokkal és szolgáltatásokkal kapcsolatos információkat adnak vissza. Ha nem tudja, hogy hány keresési szolgáltatás van már létrehozva, ezek a parancsok visszaküldik ezt az információt, és megmenti a portálon.
 
 Az első parancs visszaadja az összes keresési szolgáltatást.
 
@@ -197,11 +197,11 @@ Tags
 
 A [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) a felügyeleti [API-kulcsok](search-security-api-keys.md)átadására szolgál. A hitelesített hozzáféréshez a szolgáltatás két rendszergazdai kulcsot hoz létre. Minden kérelemhez kulcsokra van szükség. Mindkét rendszergazdai kulcs funkcionálisan egyenértékű, és teljes írási hozzáférést biztosít egy keresési szolgáltatáshoz bármilyen információ lekéréséhez, illetve bármely objektum létrehozásához és törléséhez. Két kulcs létezik, hogy a másikat cserélje le. 
 
-Egyszerre csak egyszer lehet újradefiniálni, a vagy `primary` `secondary` a kulcsként megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
+Egyszerre csak egyszer lehet újból előállítani, ha a `primary` vagy a `secondary` kulccsal van megadva. A nem folytonos szolgáltatás esetében ne felejtse el frissíteni az összes állapotkódot, hogy másodlagos kulcsot használjon, miközben az elsődleges kulcsra mutat. Ne változtassa meg a kulcsokat, amíg a műveletek bekerülnek a repülésbe.
 
 Ahogy várható, ha az ügyfél kódjának frissítése nélkül újragenerálja a kulcsokat, a régi kulcsot használó kérelmek sikertelenek lesznek. Az összes új kulcs újragenerálása nem zárja ki véglegesen a szolgáltatást, és a portálon keresztül továbbra is hozzáférhet a szolgáltatáshoz. Az elsődleges és a másodlagos kulcsok újragenerálása után frissítheti az ügyfélszoftvert az új kulcsok használatára, és ennek megfelelően folytathatja a műveletet.
 
-Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot a használni kívánt Azure Searchhoz. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy `secondary`vagy. 
+Az API-kulcsok értékeit a szolgáltatás hozza létre. Nem adhat meg egyéni kulcsot a használni kívánt Azure Searchhoz. Hasonlóképpen, a rendszergazda API-kulcsok nem rendelkeznek felhasználó által definiált névvel. A kulcsra mutató hivatkozások rögzített karakterláncok, `primary` vagy `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary
@@ -217,7 +217,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>Lekérdezési kulcsok létrehozása vagy törlése
 
-A [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) használatával lekérdezési [API](search-security-api-keys.md) -kulcsokat hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
+A [**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) használatával lekérdezési [API-kulcsokat](search-security-api-keys.md) hozhat létre a csak olvasási hozzáféréshez az ügyfélalkalmazások és egy Azure Search index között. A lekérdezési kulcsok egy adott indexre való hitelesítésre szolgálnak a keresési eredmények beolvasása céljából. A lekérdezési kulcsok nem biztosítanak csak olvasási hozzáférést a szolgáltatás más elemeihez, például az indexhez, az adatforráshoz vagy az indexelő.
 
 Nem adhat meg kulcsot a használni kívánt Azure Searchhoz. Az API-kulcsokat a szolgáltatás hozza létre.
 
@@ -227,7 +227,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>Replikák és partíciók skálázása
 
-A [**set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) használatával megnövelhető [vagy csökkenthető a replikák és partíciók](search-capacity-planning.md) a szolgáltatásban lévő számlázható erőforrások újraigazítása érdekében. Egyre több replika vagy partíció járul hozzá a számlához, amely rögzített és változó díjakat is tartalmaz. Ha átmenetileg további feldolgozási teljesítményre van szüksége, növelheti a replikákat és a partíciókat a munkaterhelés kezeléséhez. Az áttekintő portál figyelés területén található csempék a lekérdezési késéssel, a másodpercenkénti lekérdezésekkel és a szabályozással kapcsolatban, és jelzi, hogy az aktuális kapacitás megfelelő-e.
+A [**set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) használatával [megnövelhető vagy csökkenthető a replikák és partíciók](search-capacity-planning.md) a szolgáltatásban lévő számlázható erőforrások újraigazítása érdekében. Egyre több replika vagy partíció járul hozzá a számlához, amely rögzített és változó díjakat is tartalmaz. Ha átmenetileg további feldolgozási teljesítményre van szüksége, növelheti a replikákat és a partíciókat a munkaterhelés kezeléséhez. Az áttekintő portál figyelés területén található csempék a lekérdezési késéssel, a másodpercenkénti lekérdezésekkel és a szabályozással kapcsolatban, és jelzi, hogy az aktuális kapacitás megfelelő-e.
 
 Eltarthat egy darabig a reforrások hozzáadásához vagy eltávolításához is. A kapacitás módosítása a háttérben történik, ami lehetővé teszi a meglévő munkaterhelések folytatását. A beérkező kérésekhez további kapacitást kell használni, amint az készen áll, és nincs szükség további konfigurálásra. 
 
@@ -253,9 +253,9 @@ Id                : /subscriptions/65a1016d-0f67-45d2-b838-b8f373d6d52e/resource
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Hozzon [](search-what-is-an-index.md)létre egy indexet, és kérdezzen le [egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
+Hozzon létre [egy indexet, és](search-what-is-an-index.md) [Kérdezzen le egy indexet](search-query-overview.md) a portál, a REST API-k vagy a .net SDK használatával.
 
 * [Azure Search index létrehozása a Azure Portal](search-create-index-portal.md)
 * [Indexelő beállítása az adatok más szolgáltatásokból való betöltéséhez](search-indexer-overview.md)

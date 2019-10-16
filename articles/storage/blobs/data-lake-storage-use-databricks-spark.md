@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Databricks a Spark használatával Azure Data Lake Storage Gen2 adataihoz való hozzáféréshez | Microsoft Docs'
+title: 'Oktatóanyag: Azure Data Lake Storage Gen2-adatelérés Azure Databricks a Spark használatával | Microsoft Docs'
 description: Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure Databricks-fürtön egy Azure Data Lake Storage Gen2 Storage-fiókban lévő adateléréshez.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992265"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331849"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adathozzáférés Azure Databricks a Spark használatával
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatelérés Azure Databricks a Spark használatával
 
 Ez az oktatóanyag bemutatja, hogyan csatlakoztatható a Azure Databricks-fürt egy olyan Azure Storage-fiókban tárolt adataihoz, amely Azure Data Lake Storage Gen2 engedélyezve van. Ez a kapcsolat lehetővé teszi, hogy natív módon futtasson lekérdezéseket és elemzéseket a fürtből az adatokból.
 
@@ -38,22 +38,22 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 * Telepítse a AzCopy V10-es frissítést. [Adatok átvitele az AzCopy v10-vel](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Egyszerű szolgáltatásnév létrehozása. További [információ: A portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)az erőforrásokhoz.
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  :heavy_check_mark: Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+  : heavy_check_mark: az [alkalmazás szerepkörhöz való hozzárendeléséhez](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szükséges lépések végrehajtásakor ügyeljen arra, hogy hozzárendelje a **Storage blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  :heavy_check_mark: A cikk beléptetési [értékek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) beolvasása szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékeit egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
 Ez az oktatóanyag repülési adatokat használ az Bureau of közlekedési statisztikából, hogy bemutassa, hogyan hajthat végre ETL-műveletet. Az oktatóanyag befejezéséhez le kell töltenie ezeket az adatfájlokat.
 
-1. Látogasson el a [Research and innovatív Technology Administration, a közlekedés statisztikáit](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)ismertető irodára.
+1. Látogasson el a [Research and innovatív Technology Administration, a közlekedés statisztikáit ismertető irodára](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time).
 
 2. Jelölje be az **előtömörített fájl** jelölőnégyzetet az összes adatmező kiválasztásához.
 
@@ -97,17 +97,15 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
     ![Databricks Spark-fürt létrehozása az Azure-on](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
 
-4. Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
+    Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
 
-    * Adjon egy nevet a fürtnek.
+    - Adjon egy nevet a fürtnek.
+     
+    - Mindenképpen jelölje be a **Leállítás 120 percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-    * Ehhez a cikkhez hozzon létre egy fürtöt az **5,1** futtatókörnyezettel.
+4. Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
-    * Győződjön meg arról, hogy a **megszakítás perc \_ inaktivitás után \_**  jelölőnégyzet be van állítva. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
-
-    * Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
-
-## <a name="ingest-data"></a>Adatok betöltése
+## <a name="ingest-data"></a>Adatok kigyűjtése
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 
@@ -127,11 +125,11 @@ A AzCopy segítségével másolja át az adatait a *. csv* -fájlból a Data Lak
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Cserélje le `<csv-folder-path>` a helyőrző értékét a *. csv* -fájl elérési útjára.
+   * Cserélje le a `<csv-folder-path>` helyőrző értéket a *. csv* -fájl elérési útjára.
 
-   * Cserélje le `<storage-account-name>` a helyőrző értékét a Storage-fiók nevére.
+   * Cserélje le a `<storage-account-name>` helyőrző értéket a Storage-fiók nevére.
 
-   * Cserélje le `<container-name>` a helyőrzőt minden olyan névre, amelyet a tárolóba szeretne adni.
+   * Cserélje le a `<container-name>` helyőrzőt minden olyan névre, amelynek a tárolóját meg szeretné adni.
 
 ## <a name="create-a-container-and-mount-it"></a>Tároló létrehozása és csatlakoztatása
 
@@ -141,7 +139,7 @@ Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiók
 
 2. A bal oldalon válassza a **munkaterület**lehetőséget. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
 
-    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
+    ![Jegyzetfüzet létrehozása a Databricks](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Python** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
@@ -163,17 +161,17 @@ Ebben a szakaszban egy tárolót és egy mappát fog létrehozni a Storage-fiók
     extra_configs = configs)
     ```
 
-18. A kód blokkban cserélje le a `appId` `tenant`, `password`,, és `storage-account-name` helyőrző értékeket a kódban az oktatóanyag előfeltételeinek teljesítése során összegyűjtött értékekre. Cserélje le `container-name` a helyőrző értékét az előző lépésben a tárolóhoz adott névre.
+18. Ebben a kódban a blokkban cserélje le a `appId`, `password`, `tenant` és `storage-account-name` helyőrző értékeket az oktatóanyag előfeltételeinek teljesítése során gyűjtött értékekre. Cserélje le a `container-name` helyőrző értékét az előző lépésben a tárolóhoz megadott névre.
 
 Ezeknek az értékeknek a használatával cserélheti le az említett helyőrzőket.
 
-   * A `appId` és`password` az az alkalmazás, amelyet az Active Directoryban regisztrált az egyszerű szolgáltatásnév létrehozása során.
+   * A `appId` és a `password` az Active Directory szolgáltatásban regisztrált alkalmazásból származik, egy egyszerű szolgáltatásnév létrehozása során.
 
-   * Az `tenant-id` előfizetésből származik.
+   * A `tenant-id` az előfizetésből származik.
 
    * A `storage-account-name` a Azure Data Lake Storage Gen2 Storage-fiók neve.
 
-   * Cserélje le `container-name` a helyőrzőt minden olyan névre, amelyet a tárolóba szeretne adni.
+   * Cserélje le a `container-name` helyőrzőt minden olyan névre, amelynek a tárolóját meg szeretné adni.
 
    > [!NOTE]
    > Éles környezetben érdemes megfontolni a jelszó tárolását Azure Databricks. Ezután adjon hozzá egy megkeresési kulcsot a kódhoz a jelszó helyett. A rövid útmutató elvégzése után tekintse meg a Azure Databricks webhelyén található [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) cikket, ahol megtekintheti a megközelítés példáit.
@@ -224,7 +222,7 @@ Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdez
 
 Az adatforrások adatkeretének létrehozásához futtassa a következő parancsfájlt:
 
-* Cserélje le `<csv-folder-path>` a helyőrző értékét a *. csv* -fájl elérési útjára.
+* Cserélje le a `<csv-folder-path>` helyőrző értéket a *. csv* -fájl elérési útjára.
 
 ```python
 # Copy this into a Cmd cell in your notebook.
@@ -289,7 +287,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"] 
 > [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)
