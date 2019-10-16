@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: A nagyvállalati szerződéses számla értelmezése
       href: billing-understand-your-bill-ea.md
-    - name: A számla értelmezése – csak Microsoft ügyfélszerződések esetén
+    - name: A számla értelmezése – Microsoft-ügyfélszerződések
       href: billing-mca-understand-your-bill.md
+    - name: A számla értelmezése – Microsoft Partnerszerződések
+      href: billing-mpa-understand-your-bill.md
     - name: A Microsoft Azure-számla megtekintése és letöltése
       href: billing-download-azure-invoice.md
     - name: A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése
       href: billing-download-azure-daily-usage.md
-    - name: A Microsoft ügyfélszerződés adózási dokumentumainak megtekintése és letöltése
+    - name: Adózási dokumentumok megtekintése és letöltése
       href: billing-mca-download-tax-document.md
     - name: Külső szolgáltatási díjak
       href: billing-understand-your-azure-marketplace-charges.md
     - name: A használattal kapcsolatos kifejezések értelmezése
       href: billing-understand-your-usage.md
-    - name: A használattal kapcsolatos kifejezések értelmezése – csak Microsoft ügyfélszerződések esetén
+    - name: A használattal kapcsolatos kifejezések értelmezése – Microsoft-ügyfélszerződések
       href: billing-mca-understand-your-usage.md
     - name: A számlában használatos kifejezések értelmezése
       href: billing-understand-your-invoice.md
-    - name: A számlában használatos kifejezések értelmezése – csak Microsoft ügyfélszerződések esetén
+    - name: A számlában használatos kifejezések értelmezése – Microsoft-ügyfélszerződések
       href: billing-mca-understand-your-invoice.md
-    - name: A számla befizetése – csak Microsoft ügyfélszerződések esetén
+    - name: A számlában használatos kifejezések értelmezése – Microsoft Partnerszerződések
+      href: billing-mpa-invoice-terms-explained.md
+    - name: A számla befizetése – Microsoft-ügyfélszerződések
       href: billing-how-to-pay-bill.md
     - name: A Microsoft ügyfélszerződés számlázási fiókjai
       href: billing-mca-overview.md
+    - name: A Microsoft Partnerszerződés számlázási fiókjai
+      href: mpa-overview.md
 - name: Költségek kezelése
   items:
     - name: Váratlan költségek megelőzése
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Használat ellenőrzése
           href: billing-check-free-service-usage.md
-        - name: Váltás magasabb szintű előfizetésre
+        - name: Fiók bővítése
           href: billing-upgrade-azure-subscription.md
-        - name: A mérőtársítások ismertetése
-          href: billing-understand-free-service-meter-mapping.md
     - name: Profil szerkesztése
       href: billing-how-to-change-azure-account-profile.md
     - name: Nyílt bankolási és erős ügyfél-hitelesítés
@@ -158,7 +162,7 @@
         - name: A Microsoft ügyfélszerződés EA-feladatai
           href: billing-mca-enterprise-operations.md
     - name: Számlázási fiók beállítása a Microsoft ügyfélszerződéshez
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Regisztráció Office 365-fiókkal
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Regisztrálás az Office 365-be Azure-fiókkal
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: Tulajdonjog kérelmezése – Microsoft ügyfélszerződés
       href: billing-mca-request-billing-ownership.md
+    - name: Tulajdonjog kérelmezése – Microsoft Partnerszerződés
+      href: mpa-request-ownership.md
     - name: Előfizetés lemondása
       href: billing-how-to-cancel-azure-subscription.md
     - name: Hitelkártya módosítása

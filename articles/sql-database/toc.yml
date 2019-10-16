@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: vCore-alapú modell
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: Kiszolgáló nélküli számítási szint
+                  href: sql-database-serverless.md
+                - name: Előre fizetés fenntartott kapacitásért
+                  href: sql-database-reserved-capacity.md
             - name: DTU szolgáltatási szint
               href: sql-database-service-tiers-dtu.md
-            - name: Kiszolgáló nélküli számítási szint
-              href: sql-database-serverless.md
-            - name: Előre fizetés fenntartott kapacitásért
-              href: sql-database-reserved-capacity.md
-            - name: Migrálás prémium RS szolgáltatási szintről
-              href: sql-database-service-tiers-prs.md
         - name: Számítás és tárolás
           items:
             - name: Áttekintés
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: Rugalmas skálázással kapcsolatos gyakori kérdések
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Migrálás prémium RS szolgáltatási szintről
+              href: sql-database-service-tiers-prs.md
 - name: Gyors útmutatók
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: Helyreállítási gyakorlatok
               href: sql-database-disaster-recovery-drills.md
+            - name: Feladatátvételi csoport konfigurálása
+              href: sql-database-configure-failover-group.md
     - name: Figyelés és hangolás
       items:
         - name: Dokumentáció monitorozása és hangolása
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Az Azure SQL Data Sync beállítása
           href: sql-database-get-started-sql-data-sync.md
-        - name: Hozzáadás feladatátvételi csoporthoz rugalmas készletben
+        - name: Rugalmas készlet hozzáadása feladatátvételi csoporthoz
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Biztonság konfigurálása
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Georeplikák védelmének konfigurálása
           href: sql-database-geo-replication-security-config.md
-        - name: Feladatátvételi csoport konfigurálása
-          href: sql-database-configure-failover-group.md
         - name: Memóriabeli funkciók kipróbálása
           href: sql-database-in-memory-sample.md
         - name: Automatikus hangolás engedélyezése
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: Biztonság konfigurálása
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: Felügyelt példány hozzáadása feladatátvételi csoporthoz
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: Alapelvek
       items:
         - name: Felügyeleti API-referencia

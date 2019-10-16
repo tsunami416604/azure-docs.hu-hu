@@ -102,7 +102,7 @@
           items:
             - name: Közvetlen tárolóhelyekkel
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Prémium fájltárolóval
+            - name: Prémium fájlmegosztással
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Referencia
   items:

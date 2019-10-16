@@ -26,7 +26,7 @@
     - name: Adatok streamelése az Event Hubs használatával
       href: databricks-stream-from-eventhubs.md
     - name: Hangulatelemzés a Cognitive Services használatával
-  href: databricks-sentiment-analysis-cognitive-services.md
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: Útmutatók
   items:
     - name: Első lépések
@@ -543,7 +543,7 @@
         - name: A Delta Lake bemutatása
           href: /azure/databricks/delta/delta-intro
           maintainContext: true
-        - name: Bevezetés a Delta használatába
+        - name: Bevezetés a Delta Lake használatába
           href: /azure/databricks/delta/quick-start
           maintainContext: true
         - name: Bevezető jegyzetfüzetek
@@ -617,6 +617,9 @@
               maintainContext: true
         - name: Gyakori kérdések
           href: /azure/databricks/delta/delta-faq
+          maintainContext: true
+        - name: További Delta-erőforrások
+          href: /azure/databricks/delta/delta-resources
           maintainContext: true
     - name: Adatkeretek és adathalmazok
       items:
@@ -699,7 +702,7 @@
             - name: Példa döntési fára
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLlib-folyamatok és strukturált streamelés
+            - name: MLib-folyamatok és strukturált streamelés
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
             - name: Speciális MLlib-példa
@@ -771,9 +774,6 @@
               maintainContext: true
             - name: PyTorch
               href: /azure/databricks/applications/deep-learning/single-node-training/pytorch
-              maintainContext: true
-            - name: JCuda
-              href: /azure/databricks/applications/deep-learning/single-node-training/jcuda
               maintainContext: true
             - name: Egycsomópontos PyTorch elosztott mély tanulásba
               href: /azure/databricks/applications/deep-learning/distributed-training/mnist-pytorch
@@ -852,35 +852,28 @@
           maintainContext: true
     - name: Gráfelemzés
       items:
-        - name: Gráfelemzési oktatóanyag a GraphFrames használatával
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames – Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames – Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
-          maintainContext: true
-        - name: Gráfelemzés a GraphX (örökölt) használatával
-          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
-          maintainContext: true
         - name: A gráfelemzés áttekintése
           href: /azure/databricks/spark/latest/graph-analysis/index
           maintainContext: true
-        - name: A gráfelemzés oktatóanyaga
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: A GraphFrames áttekintése
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/index
-          maintainContext: true
-        - name: GraphFrames – Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames – Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+        - name: GraphFrames
+          items:
+            - name: Gráfelemzési oktatóanyag a GraphFrames használatával
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
+              maintainContext: true
+            - name: GraphFrames – Python
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
+              maintainContext: true
+            - name: GraphFrames – Scala
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+              maintainContext: true
+        - name: Gráfelemzés a GraphX (örökölt) használatával
+          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
           maintainContext: true
     - name: Genomics
       items:
+        - name: A Genomics áttekintése
+          href: /azure/databricks/applications/genomics/index
+          maintainContext: true
         - name: A Genomics ETL áttekintése
           href: /azure/databricks/applications/genomics/etl/index
           maintainContext: true
@@ -921,6 +914,9 @@
             - name: A minta minőségének ellenőrzése
               href: /azure/databricks/applications/genomics/etl/sample-qc
               maintainContext: true
+            - name: Átemelés
+              href: /azure/databricks/applications/genomics/etl/lift-over
+              maintainContext: true
         - name: Harmadlagos elemzés
           items:
             - name: A harmadlagos elemzés áttekintése
@@ -937,9 +933,6 @@
               maintainContext: true
             - name: Regressziós tesztek
               href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: SAIGE és SAIGE-GENE
-              href: /azure/databricks/applications/genomics/tertiary/saige
               maintainContext: true
             - name: Python-statisztikatárak
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
@@ -1072,6 +1065,9 @@
               maintainContext: true
             - name: Virtuális hálózatok közötti társviszony létesítése
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering
+              maintainContext: true
+            - name: Előzetes verziójú munkaterület frissítése általánosan elérhetőre
+              href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject-upgrade
               maintainContext: true
             - name: Az Azure Databricks üzembe helyezése a virtuális hálózaton
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
@@ -1282,6 +1278,9 @@
               maintainContext: true
             - name: Lefagy a Spark-feladat egy egyéni felhasználói függvény miatt
               href: /azure/databricks/kb/jobs/spark-udf-performance
+              maintainContext: true
+            - name: 'Meghiúsult feladat, maxresultsize'
+              href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
               maintainContext: true
         - name: Kódtárak
           items:
@@ -1587,8 +1586,17 @@
                 - name: Támogatott futtatókörnyezet-kiadások
                   href: /azure/databricks/release-notes/runtime/supported
                   maintainContext: true
+                - name: Databricks Runtime 6.1
+                  href: /azure/databricks/release-notes/runtime/6.1
+                  maintainContext: true
+                - name: Databricks Runtime 6.1 ML
+                  href: /azure/databricks/release-notes/runtime/6.1ml
+                  maintainContext: true
                 - name: Databricks Runtime 6.0
                   href: /azure/databricks/release-notes/runtime/6.0
+                  maintainContext: true
+                - name: Databricks Runtime 6.0 a Condával
+                  href: /azure/databricks/release-notes/runtime/6.0conda
                   maintainContext: true
                 - name: Databricks Runtime 6.0 ML
                   href: /azure/databricks/release-notes/runtime/6.0ml

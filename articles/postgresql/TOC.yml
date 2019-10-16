@@ -103,7 +103,7 @@
           items:
             - name: Figyelés és hangolás
               href: concepts-monitoring.md
-            - name: Kiszolgálói naplók
+            - name: Naplók
               href: concepts-server-logs.md
             - name: Naplók
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
-        - name: Hozzáférés a kiszolgálói naplókhoz
+        - name: Hozzáférési naplók
           items:
             - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md

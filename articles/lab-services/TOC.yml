@@ -96,22 +96,22 @@
           items:
             - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: Sablonok beállítása és közzététele
+            - name: 'Sablonok beállítása, testreszabása és közzététele'
               href: classroom-labs/how-to-create-manage-template.md
-            - name: A használat konfigurálása és szabályozása
+            - name: Virtuális gépek készleteinek létrehozása és kezelése
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: Tesztkörnyezeti felhasználók létrehozása és felügyelete
               href: classroom-labs/how-to-configure-student-usage.md
             - name: Ütemezések létrehozása és felügyelete
               href: classroom-labs/how-to-create-schedules.md
-            - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: Megosztott rendszerkép-katalógus használata
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Távoli asztali kapcsolat engedélyezése Linuxon
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: Virtuális gépek jelszavának beállítása vagy visszaállítása
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
             - name: Beágyazott virtualizálás engedélyezése sablonalapú virtuális gépen
               href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: Környezet létrehozása több virtuális géppel egy sablon virtuális gépen belül
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: Csatlakozás virtuális gépekhez osztályterem-tesztkörnyezetekben (tanuló)
           items:
             - name: Osztályterem-tesztkörnyezetek elérése

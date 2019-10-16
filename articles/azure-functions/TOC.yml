@@ -15,7 +15,7 @@
   items:
     - name: 'Függvény létrehozása – C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: Függvény létrehozása – Java/Maven
+    - name: Függvény létrehozása – Java
       href: functions-create-first-java-maven.md
     - name: Függvény létrehozása – JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: 'Tár – C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: Tár – Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: Tár – JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Storage – Python

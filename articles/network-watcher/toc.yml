@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: További források
   items:
+    - name: A Network Watcherre vonatkozó gyakori kérdések
+      href: frequently-asked-questions.md
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-fórum

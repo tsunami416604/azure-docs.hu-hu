@@ -38,6 +38,10 @@
           href: aws-integration-set-up-configure.md
         - name: Az AWS költségeinek és használatának felügyelete
           href: aws-integration-manage.md
+        - name: Cost Management partnerek számára
+          href: get-started-partners.md
+        - name: Kapcsolódás Power BI Desktoppal
+          href: /power-bi/desktop-connect-azure-cost-management
     - name: Referencia
       items:
         - name: Azure Cost Management REST API
