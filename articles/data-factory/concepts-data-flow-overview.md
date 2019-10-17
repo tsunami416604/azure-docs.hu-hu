@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/7/2019
-ms.openlocfilehash: 8d0ad794caee8a06c8d403a981037d6560fb3f43
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 37fec388acda78f3d13c8e85ddddf780ad099d69
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030140"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387997"
 ---
 # <a name="what-are-mapping-data-flows"></a>Mik azok a leképezési adatfolyamok?
 
@@ -20,11 +20,11 @@ Az adatfolyamatok leképezése vizuálisan tervezett adatátalakítások Azure D
 
 Az adatforgalom leképezése teljes körű vizuális élményt biztosít, és nem igényel kódolást. Az adatfolyamatok a saját végrehajtási fürtön lesznek végrehajtva a kibővített adatfeldolgozáshoz. Azure Data Factory kezeli az összes kód fordítását, az elérési út optimalizálását és az adatfolyam-feladatok végrehajtását.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 Az adatfolyamatok létrehozásához kattintson a gyári erőforrások területen a plusz jelre. 
 
-![új]adatfolyam(media/data-flow/newdataflow2.png "új") adatfolyamként
+![új adatfolyam](media/data-flow/newdataflow2.png "új adatfolyam")
 
 Ekkor megjelenik az adatáramlási vászon, ahol létrehozhatja az átalakítási logikát. A forrás-átalakítás konfigurálásának megkezdéséhez kattintson a "forrás hozzáadása" mezőre. További információ: forrás- [átalakítás](data-flow-source.md).
 
@@ -32,13 +32,13 @@ Ekkor megjelenik az adatáramlási vászon, ahol létrehozhatja az átalakítás
 
 Az adatfolyam-vászon három részből áll: a felső sáv, a gráf és a konfigurációs panel. 
 
-![Vászon](media/data-flow/canvas1.png "vászon")
+![Vászon](media/data-flow/canvas1.png "Vászon")
 
-### <a name="graph"></a>Graph
+### <a name="graph"></a>Gráf
 
 A gráf megjeleníti az átalakítási adatfolyamot. Megjeleníti a forrásadatok vonalát, mivel az egy vagy több mosogatóba áramlik. Új forrás hozzáadásához kattintson a "forrás hozzáadása" mezőre. Új átalakítás hozzáadásához kattintson a meglévő átalakítás jobb alsó sarkában található pluszjelre.
 
-![Vászon](media/data-flow/canvas2.png "vászon")
+![Vászon](media/data-flow/canvas2.png "Vászon")
 
 ### <a name="configuration-panel"></a>Konfigurációs panel
 
@@ -50,13 +50,13 @@ Minden átalakításhoz legalább négy konfigurációs lap tartozik:
 
 Az egyes átalakítások konfigurációs paneljének első lapja az adott átalakításra vonatkozó beállításokat tartalmazza. További információkért tekintse meg az átalakítás dokumentációs oldalát.
 
-![Forrás beállításai lap](media/data-flow/source1.png "forrás beállításai lap")
+![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
 
 #### <a name="optimize"></a>Optimalizálás
 
 Az _optimalizálás_ lap a particionálási sémák konfigurálásához szükséges beállításokat tartalmazza.
 
-![](media/data-flow/optimize1.png "Optimalizálás") optimalizálása
+![Optimalizálás](media/data-flow/optimize1.png "Optimalizálás")
 
 Az alapértelmezett beállítás az "aktuális particionálás használata", amely arra utasítja a Azure Data Factoryot, hogy a meglevő particionálási séma a Sparkon futó adatfolyamatoknál natív legyen. A legtöbb esetben ez a beállítás az ajánlott módszer.
 
@@ -84,7 +84,7 @@ A dinamikus tartomány a megadott oszlopok vagy kifejezések alapján a Spark di
 
 Hozzon létre egy olyan kifejezést, amely rögzített tartományt biztosít a particionált adatoszlopokban lévő értékek számára. Ennek a lehetőségnek a használata előtt érdemes megismernie az adatait, hogy elkerülje a partíciók eldöntését. A kifejezéshez megadott értékek a Partition függvény részeként lesznek felhasználva. Megadhatja a fizikai partíciók számát.
 
-##### <a name="key"></a>Kulcs
+##### <a name="key"></a>Jelmagyarázat
 
 Ha jól ismeri az Ön adatait, a fő particionálás lehet jó partíciós stratégia. A kulcsok particionálásakor a rendszer létrehozza a partíciókat az oszlop minden egyedi értékéhez. A partíciók száma nem állítható be, mert a szám az adatok egyedi értékein alapul.
 
@@ -92,7 +92,7 @@ Ha jól ismeri az Ön adatait, a fő particionálás lehet jó partíciós strat
 
 Az _ellenőrzés_ lapon megtekintheti az átalakítás alatt álló adatfolyam metaadatait. Láthatja az oszlopok számát, a megváltoztatott oszlopokat, a hozzáadott oszlopokat, az adattípusokat, az oszlopok sorrendjét és az oszlopok hivatkozásait. A vizsgálat a metaadatok csak olvasható nézete. Nem kell engedélyezni a hibakeresési módot a metaadatok megjelenítéséhez a vizsgálat ablaktáblán.
 
-![](media/data-flow/inspect1.png "Vizsgálat") vizsgálata
+![Vizsgálata](media/data-flow/inspect1.png "Vizsgálata")
 
 Amikor átalakításokon keresztül módosítja az adatok alakját, a metaadatok változásai a vizsgálat panelen jelennek meg. Ha nincs definiált séma a forrás-átalakításban, akkor a metaadatok nem lesznek láthatók a vizsgálat ablaktáblán. A metaadatok hiánya gyakori a séma-drift forgatókönyvekben.
 
@@ -104,13 +104,13 @@ Ha a hibakeresési mód be van kapcsolva, az _adatelőnézet_ lap interaktív pi
 
 A felső sáv olyan műveleteket tartalmaz, amelyek befolyásolják a teljes adatfolyamot, például a mentést és az érvényesítést. A Graph és a konfigurációs üzemmód közötti váltás a **Graph megjelenítése** és a Graph billentyűk **elrejtése** gomb használatával is lehetséges.
 
-![Gráf](media/data-flow/hideg.png "elrejtése gráf") elrejtése
+![Gráf elrejtése](media/data-flow/hideg.png "Gráf elrejtése")
 
 Ha elrejti a gráfot, később az **előző** és a **következő** gombokon keresztül navigálhat az átalakítási csomópontokon.
 
-![Navigáljon]a(media/data-flow/showhide.png "navigálni")
+![Lépjen](media/data-flow/showhide.png "Lépjen")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató a [forrás-átalakítás](data-flow-source.md) létrehozásához
 * Ismerje meg, hogyan hozhat létre adatfolyamatokat [hibakeresési módban](concepts-data-flow-debug-mode.md)

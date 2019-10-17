@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082550"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390640"
 ---
 # <a name="openshift-in-azure"></a>Az OpenShift az Azure-ban
 
@@ -31,7 +31,7 @@ A OpenShift tartalmazza a Kubernetes és a felügyeletet. A következőket enged
 - Egyszerű üzembe helyezés és skálázás.
 - A csoportok és alkalmazások hosszú távú életciklus-karbantartása.
 
-A OpenShift több verziója érhető el.  Ezen verziók közül csak kettő érhető el az Azure-ban üzembe helyezett ügyfelek számára: OpenShift-tároló platform és OKD (korábban OpenShift Origin).
+A OpenShift több verziója érhető el.  Ezen verziók közül csak kettő érhető el az Azure-ban üzembe helyezett ügyfelek számára: OpenShift Container platform and OKD (korábban OpenShift Origin).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -47,11 +47,11 @@ Mivel az ügyfelek a teljes platformot használják, a saját helyszíni adatkö
 
 A OKD egy [nyílt forráskódú](https://www.okd.io/) , OpenShift által támogatott felső szintű projekt. A OKD telepíthető CentOS vagy Red Hat Enterprise Linux (RHEL) rendszerre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure-beli OpenShift általános előfeltételeinek konfigurálása](./openshift-prerequisites.md)
-- [OpenShift-tároló platform üzembe helyezése az Azure-ban](./openshift-container-platform.md)
-- [A OpenShift-tároló platform saját üzemeltetésű Piactéri ajánlatának üzembe helyezése](./openshift-marketplace-self-managed.md)
+- [Az Azure-beli OpenShift általános előfeltételeinek konfigurálása](./openshift-container-platform-3x-prerequisites.md)
+- [OpenShift-tároló platform üzembe helyezése az Azure-ban](./openshift-container-platform-3x.md)
+- [A OpenShift-tároló platform saját üzemeltetésű Piactéri ajánlatának üzembe helyezése](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [OpenShift üzembe helyezése Azure Stack](./openshift-azure-stack.md)
-- [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
-- [OpenShift-telepítés hibáinak megoldása](./openshift-troubleshooting.md)
+- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift-telepítés hibáinak megoldása](./openshift-container-platform-3x-troubleshooting.md)

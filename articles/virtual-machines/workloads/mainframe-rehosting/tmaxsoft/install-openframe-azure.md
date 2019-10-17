@@ -1,6 +1,6 @@
 ---
-title: TmaxSoft OpenFrame telepítése Azure-beli virtuális gépeken
-description: Áthelyezési IBM z/OS nagyszámítógépes feladatait TmaxSoft OpenFrame környezet Azure-beli virtuális gépeken (VM-EK) használatával.
+title: TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure Virtual Machines
+description: Az IBM z/OS mainframe-alapú munkaterheléseket a TmaxSoft OpenFrame Kiindulópontul-környezettel helyezheti át az Azure Virtual Machines (VM) használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,58 +8,58 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410113"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436044"
 ---
-# <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft OpenFrame telepítése Azure-ban
+# <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban
 
-Ismerje meg, hogyan fejlesztési, bemutatók, tesztelési vagy éles üzemi környezetekhez alkalmasak az Azure-ban OpenFrame környezet beállításával. Ez az oktatóanyag végigvezeti az egyes lépések.
+Ismerje meg, hogyan állíthat be olyan OpenFrame Kiindulópontul-környezetet az Azure-ban, amely fejlesztési, bemutatói, tesztelési és éles számítási feladatokhoz alkalmas. Ez az oktatóanyag végigvezeti az egyes lépéseken.
 
-OpenFrame magában foglalja a több összetevőt, amely a nagyszámítógépes emulációs környezet létrehozása az Azure-ban. Ha például OpenFrame online szolgáltatások, cserélje le a nagyszámítógépes közbenső például IBM vásárlói adatokat vezérlő rendszer (CICS), és OpenFrame Batch, a TJES összetevővel váltja fel az IBM Nagyszámítógépek feladat bejegyzés alrendszer (JES).
+A OpenFrame Kiindulópontul több olyan összetevőt tartalmaz, amelyek az Azure-ban létrehozzák a nagyszámítógépi emulációs környezetet. Például a OpenFrame Kiindulópontul online szolgáltatások lecseréli a nagyvállalati middleware-t, például az IBM Customer Information Control System (CICS) és a OpenFrame Kiindulópontul batch szolgáltatást a TJES-összetevőjével, lecseréli az IBM mainframe-EK feladatának bejegyzési alrendszerét (csatlakoztatva).
 
-Minden olyan relációs adatbázis, beleértve az Oracle Database, a Microsoft SQL Server, az IBM DB2-höz és a MySQL OpenFrame működik. A telepítést OpenFrame TmaxSoft Tibero relációs adatbázist használja. OpenFrame és a Linux operációs rendszeren futtassa Tibero. Ebben az oktatóanyagban CentOS 7.3, telepíti, bár egyéb támogatott Linux-disztribúciók is használhatja. A OpenFrame-kiszolgáló és az Tibero adatbázis egy virtuális gépen (VM) vannak telepítve.
+A OpenFrame Kiindulópontul bármilyen kapcsolódó adatbázissal működik, beleértve a Oracle Database, a Microsoft SQL Server, az IBM DB2 és a MySQL-t. A OpenFrame Kiindulópontul telepítése a TmaxSoft Tibero-kapcsolatot használó adatbázist használja. A OpenFrame Kiindulópontul és a Tibero is Linux operációs rendszeren futnak. Ez az oktatóanyag a CentOS 7,3-et telepíti, de más támogatott Linux-disztribúciókat is használhat. A OpenFrame Kiindulópontul-alkalmazáskiszolgáló és a Tibero-adatbázis egyetlen virtuális gépre (VM) van telepítve.
 
-Az oktatóanyag végigvezeti Önt a OpenFrame csomag összetevőinek telepítését. Néhány külön kell telepíteni.
+Az oktatóanyag végigvezeti a OpenFrame Kiindulópontul Suite-összetevők telepítésének lépésein. Néhányat külön kell telepíteni.
 
-Fő OpenFrame összetevők:
+Fő OpenFrame Kiindulópontul összetevők:
 
-- Szükséges telepítési csomagokat.
-- Tibero adatbázis.
-- Nyissa meg adatbázis-kapcsolat (ODBC) OpenFrame alkalmazások használják a Tibero adatbázissal való kommunikációhoz.
-- OpenFrame alap, a közbenső szoftver, amely a teljes rendszer felügyeli.
-- A megoldás, amely kiváltja a nagyszámítógépes batch rendszerek OpenFrame kötegben.
-- TACF, a szolgáltatás a modul, amely szabályozza a rendszerek és az erőforrások felhasználói hozzáférését.
-- ProSort, rendezési eszközt a kötegelt tranzakciókat.
-- OFCOBOL, fordító, amely értelmezi a nagyszámítógépes COBOL programok.
-- OFASM, fordító, amely értelmezi a nagyszámítógépes assembler programok.
-- OpenFrame kiszolgáló típusú C (OSC), a megoldás, amely a nagyszámítógépes közbenső és IBM CICS váltja fel.
-- A Java Enterprise felhasználói megoldás (JEUS), egy webalkalmazás-kiszolgáló, amely a Java Enterprise Edition 6 minősítéssel.
-- OFGW, a OpenFrame átjáró összetevője, amely egy 3270 figyelő.
-- OFManager, egy megoldás, amely a webes környezet OpenFrame a művelet és a felügyeleti funkciókat biztosít.
+- Szükséges telepítési csomagok.
+- Tibero-adatbázis.
+- A OpenFrame Kiindulópontul alkalmazások a nyílt adatbázis-kapcsolatot (ODBC) használják a Tibero adatbázissal való kommunikációhoz.
+- OpenFrame Kiindulópontul Base, a teljes rendszerét kezelő middleware.
+- OpenFrame Kiindulópontul batch, a nagyszámítógépek batch rendszereit lecserélő megoldás.
+- TACF, amely a rendszerekhez és erőforrásokhoz való felhasználói hozzáférés szabályozására szolgál.
+- A Batch-tranzakciók rendezési eszköze.
+- OFCOBOL, egy fordító, amely a mainframe COBOL programját értelmezi.
+- OFASM, egy fordító, amely a nagyvállalati szerelvények programjait értelmezi.
+- A OpenFrame Kiindulópontul Server Type C (OSC), a nagyvállalati middleware-t és az IBM-CICS lecserélő megoldás.
+- Java Enterprise felhasználói megoldás (JEUS), a Java Enterprise Edition 6-os verziójára hitelesített webalkalmazás-kiszolgáló.
+- OFGW, a OpenFrame Kiindulópontul-átjáró összetevő, amely egy 3270-figyelőt biztosít.
+- A OFManager olyan megoldás, amely a OpenFrame Kiindulópontul működését és felügyeleti funkcióit biztosítja a webes környezetben.
 
-Egyéb szükséges OpenFrame összetevők:
+Egyéb szükséges OpenFrame Kiindulópontul-összetevők:
 
-- OSI, a megoldás, amely a nagyszámítógépes közbenső szoftveres és a tartományvezérlő IMS váltja fel.
-- TJES, a megoldás, amely a nagyszámítógépes JES környezetet biztosít.
-- OFTSAM, a megoldás, amely lehetővé teszi a nyílt rendszerben használható SAM (V) fájlokat.
-- OFHiDB, a megoldás, amely a nagyszámítógépes lecseréli a IMS DB.
-- OFPLI, fordító, amely értelmezi a nagyszámítógépes a PL / I programokat.
-- PROTRIEVE, olyan megoldás, amely végrehajtja a CA-Easytrieve nagyszámítógépes nyelvét.
-- OFMiner, olyan megoldás, amely elemzi az Nagyszámítógépek eszközöket, és ezután áttelepíti őket az Azure-bA.
+- OSI, a nagyszámítógépi middleware-t és az IMS DC-t lecserélő megoldás.
+- TJES, a nagyszámítógépek csatlakoztatva lévő környezetét biztosító megoldás.
+- A OFTSAM az a megoldás, amely lehetővé teszi (V) SAM-fájlok használatát a nyitott rendszeren.
+- OFHiDB, a nagyszámítógépek IMS-ADATBÁZISát lecserélő megoldás.
+- OFPLI, egy fordító, amely a nagyszámítógépek PL/I programjait értelmezi.
+- A PROTRIEVE olyan megoldás, amely végrehajtja a nagyvállalati nyelvi HITELESÍTÉSSZOLGÁLTATÓI Easytrieve.
+- A OFMiner olyan megoldás, amely elemzi a nagyszámítógépeket, majd áttelepíti azokat az Azure-ba.
 
 ## <a name="architecture"></a>Architektúra
 
-Az alábbi ábra az ebben az oktatóanyagban telepítette OpenFrame 7.0 architektúra összetevői áttekintést nyújt:
+A következő ábra áttekintést nyújt az oktatóanyagban telepített OpenFrame Kiindulópontul 7,0 architektúra-összetevőkről:
 
-![OpenFrame összetevők](media/openframe-02.png)
+![OpenFrame Kiindulópontul-összetevők](media/openframe-02.png)
 
-## <a name="azure-system-requirements"></a>Az Azure rendszerre vonatkozó követelmények
+## <a name="azure-system-requirements"></a>Azure rendszerkövetelmények
 
-Az alábbi táblázat felsorolja az Azure-ban a telepítési követelményeinek.
+A következő táblázat az Azure-beli telepítés követelményeit sorolja fel.
 <!-- markdownlint-disable MD033 -->
 
 <table>
@@ -67,28 +67,28 @@ Az alábbi táblázat felsorolja az Azure-ban a telepítési követelményeinek.
     <tr><th>Követelmény</th><th>Leírás</th></tr>
 </thead>
 <tbody>
-<tr><td>Az Azure-ban támogatott Linux-disztribúciók
+<tr><td>Támogatott Linux-disztribúciók az Azure-ban
 </td>
 <td>
-Linux x86 2.6-os (32 bites, 64 bites)<br/>
-Red Hat 7.x<br/>
-CentOS 7.x<br/>
+Linux x86 2,6 (32 bites, 64-bit)<br/>
+Red Hat 7. x<br/>
+CentOS 7. x<br/>
 </td>
 </tr>
 <tr><td>Hardver
 </td>
-<td>Mag: 2 (legalább)<br/>
+<td>Magok: 2 (minimum)<br/>
 Memória: 4 GB (minimum)<br/>
-Lapozófájl: 1 GB (legalább)<br/>
-Merevlemez: 100 GB (legalább)<br/>
+Felcserélhető terület: 1 GB (minimum)<br/>
+Merevlemez: 100 GB (minimum)<br/>
 </td>
 </tr>
-<tr><td>Windows-felhasználók számára nem kötelező szoftverek
+<tr><td>Választható szoftverek Windows-felhasználók számára
 </td>
-<td>Putty-kapcsolaton keresztül: Ebben az útmutatóban használt virtuális gép funkciók konfigurálása<br/>
-WinSCP: Egy népszerű SFTP-ügyfél és az FTP-ügyfél használata<br/>
-For Windows eclipse-ben: Egy fejlesztői platform TmaxSoft által támogatott<br/>
-(A Microsoft Visual Studio nem támogatott jelenleg)
+<td>Putty: ebben az útmutatóban a virtuális gépek funkcióinak konfigurálásához használható<br/>
+Megnyerő: egy népszerű SFTP-ügyfél és FTP-ügyfél, amelyet használhat<br/>
+Eclipse for Windows: A TmaxSoft által támogatott fejlesztői platform<br/>
+(A Microsoft Visual Studio jelenleg nem támogatott)
 </td>
 </tr>
 </tbody>
@@ -98,116 +98,116 @@ For Windows eclipse-ben: Egy fejlesztői platform TmaxSoft által támogatott<br
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Tervezze meg a kiadások néhány napig az összes szükséges szoftver össze, és végezze el a manuális folyamatokat.
+Az összes szükséges szoftver összeállításához és az összes manuális folyamat befejezéséhez tervezze meg a kiadások elköltését.
 
 Az első lépések előtt tegye a következőket:
 
-- A OpenFrame telepítési adathordozó beszerzése TmaxSoft. Ha Ön már TmaxSoft ügyfél, a képviselőjétől TmaxSoft licencelt másolatot. Ellenkező esetben a rendszer próbaverzióját az kérelem [TmaxSoft](https://www.tmaxsoft.com/contact/).
+- Szerezze be a OpenFrame Kiindulópontul telepítési adathordozóját a TmaxSoft-ből. Ha Ön már meglévő TmaxSoft-ügyfél, az TmaxSoft-képviselőjétől kaphat egy licenccel rendelkező példányt. Ellenkező esetben kérjen próbaverziót a [TmaxSoft](https://www.tmaxsoft.com/contact/)webhelyről.
 
-- E-mailek küldése a OpenFrame dokumentáció kérni <support@tmaxsoft.com>.
+- Kérje meg a OpenFrame Kiindulópontul dokumentációját úgy, hogy e-mailt küld a <support@tmaxsoft.com> címre.
 
-- Ha még nem rendelkezik egy Azure-előfizetés beszerzése. Ezenkívül létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) megkezdése előtt.
+- Azure-előfizetés beszerzése, ha még nem rendelkezik ilyennel. Mielőtt elkezdené, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) is.
 
-- Választható. Site-to-site VPN-alagúton vagy korlátozza a hozzáférést a feljogosított felhasználók a szervezet az Azure virtuális Gépen a jumpbox beállítása. Ez a lépés nem kötelező, de az ajánlott eljárás.
+- Választható. Hozzon létre egy helyek közötti VPN-alagutat vagy egy olyan Jumpbox, amely korlátozza az Azure-beli virtuális géphez való hozzáférést a szervezeten belüli engedélyezett felhasználók számára. Ez a lépés nem kötelező, de ez az ajánlott eljárás.
 
-## <a name="set-up-a-vm-on-azure-for-openframe-and-tibero"></a>Azure-beli virtuális gép OpenFrame és Tibero beállítva
+## <a name="set-up-a-vm-on-azure-for-openframe-and-tibero"></a>Virtuális gép beállítása az Azure-ban OpenFrame Kiindulópontul és Tibero
 
-Beállíthatja a OpenFrame-környezet különböző üzembe helyezési minták, de az alábbi eljárás bemutatja a OpenFrame-kiszolgáló és a egy virtuális gépen a Tibero adatbázis üzembe helyezése. Nagyobb környezetekben, és jelentős számítási feladatokhoz ajánlott eljárás, hogy az adatbázis a saját virtuális Gépet, a jobb teljesítmény érdekében külön-külön telepíti-e.
+A OpenFrame Kiindulópontul környezetet különböző üzembe helyezési mintákkal állíthatja be, de az alábbi eljárás bemutatja, hogyan helyezheti üzembe a OpenFrame Kiindulópontul-alkalmazáskiszolgáló és a Tibero-adatbázist egy virtuális gépen. Nagyobb környezetekben és nagy teljesítményű számítási feladatokban az ajánlott eljárás az, hogy az adatbázist külön virtuális gépen helyezik üzembe a jobb teljesítmény érdekében.
 
 **Virtuális gép létrehozása**
 
-1. Nyissa meg az Azure Portalra a <https://portal.azure.com> , és jelentkezzen be a fiókjába.
+1. Lépjen a Azure Portal a <https://portal.azure.com> címen, és jelentkezzen be a fiókjába.
 
-2. Kattintson a **virtuális gépek**.
+2. Kattintson a **virtuális gépek**elemre.
 
-    ![Az Azure portal Resource list](media/vm-01.png)
+    ![Erőforrások listája a Azure Portal](media/vm-01.png)
 
-3. Kattintson a **Hozzáadás**lehetőségre.
+3. Kattintson a **Hozzáadás** parancsra.
 
-    ![A beállítás hozzáadása az Azure Portalon](media/vm-02.png)
+    ![Lehetőség hozzáadása a Azure Portal](media/vm-02.png)
 
-4. Jobb oldalán **operációs rendszerek**, kattintson a **további**.
+4. Az **operációs rendszerektől**jobbra kattintson a **továbbiak**elemre.
 
-     ![További lehetőség az Azure Portalon](media/vm-03.png)
+     ![További lehetőség a Azure Portal](media/vm-03.png)
 
-5. Kattintson a **CentOS-alapú 7.3** pontosan, kövesse az ebben az útmutatóban, vagy választhat egy másik támogatott Linux-disztribúció.
+5. Kattintson a **CentOS-alapú 7,3** -re, hogy ezt a lépéseket pontosan kövesse, vagy válasszon másik támogatott Linux-disztribúciót is.
 
-     ![Operációs rendszer beállításait, az Azure Portalon](media/vm-04.png)
+     ![Operációs rendszer beállításai a Azure Portal](media/vm-04.png)
 
-6. Az a **alapjai** adja meg a beállításokat, **neve**, **felhasználónév**, **hitelesítési típus**, **előfizetés** (Használatalapú a fizetés AWS stílusa), és **erőforráscsoport** (használjon egy meglévőt, vagy hozzon létre egy TmaxSoft).
+6. Az **alapvető** beállítások területen adja meg a **név**, a **Felhasználónév**, a **Hitelesítés típusa**, az **előfizetés** (utólagos elszámolású a fizetés AWS-stílusa) és az **erőforráscsoport** (használjon egy meglévőt, vagy hozzon létre egy TmaxSoft csoportot).
 
-7. Ha végzett (beleértve a nyilvános/titkos kulcspárt a **hitelesítési típus**), kattintson a **küldés**.
+7. Ha elkészült (beleértve a **hitelesítési típushoz**tartozó nyilvános/titkos kulcspárt is), kattintson a **Submit (Küldés**) gombra.
 
 > [!NOTE]
-> Ha egy nyilvános SSH-kulcs, a használatával **hitelesítési típus**, tekintse meg a lépéseket a nyilvános/titkos kulcspár létrehozásához a következő szakaszban, majd folytathatja a lépéseket.
+> Ha a **hitelesítési típushoz**egy nyilvános SSH-kulcsot használ, tekintse meg a következő szakaszban ismertetett lépéseket a nyilvános/titkos kulcspár létrehozásához, majd folytassa a lépéseket itt.
 
-### <a name="generate-a-publicprivate-key-pair"></a>Egy nyilvános/titkos kulcspár létrehozása
+### <a name="generate-a-publicprivate-key-pair"></a>Nyilvános/titkos kulcspár létrehozása
 
-Ha egy Windows operációs rendszert használ, egy nyilvános/titkos kulcspár létrehozásához PuTTYgen kell.
+Ha Windows operációs rendszert használ, PuTTYgen kell létrehoznia egy nyilvános/titkos kulcspár létrehozásához.
 
-A nyilvános kulcs szabadon megoszthatók, de a titkos kulcs teljes egészében titkos kell tartani, és a egy másik fél soha nem lehet megosztva. A kulcsok létrehozása, után kell beilleszteni a **nyilvános SSH-kulcs** be a konfiguráció – érvényben, feltölti a Linux rendszerű virtuális gép. Tárolt belül engedélyezett\_belül a kulcsok a \~a felhasználói fiók kezdőkönyvtár /.ssh könyvtár. A Linux rendszerű virtuális gép majd tudja majd felismerni és a kapcsolat ellenőrzése után adja meg a társított **titkos SSH-kulcs** (esetünkben putty-t) SSH-ügyfél a.
+A nyilvános kulcs szabadon megosztható, de a titkos kulcsot teljesen titokban kell tartani, és soha nem szabad megosztani egy másik féllel. A kulcsok létrehozása után be kell illesztenie a **nyilvános SSH-kulcsot** a konfigurációba, és fel kell őket feltölteni a Linux rendszerű virtuális gépre. A rendszer a felhasználói fiók kezdőkönyvtárának \~/. ssh könyvtárában tárolja a hitelesítő @ no__t-0keys belül. A Linux rendszerű virtuális gép ezután képes felismerni és érvényesíteni a kapcsolódást, miután megadta a társított **SSH titkos kulcsot** az SSH-ügyfélen (esetünkben, PuTTY).
 
-Ha új egyéni felhasználók számára a virtuális gép hozzáférés megadását: 
+Amikor új személyeknek adnak hozzáférést a virtuális géphez: 
 
-- Minden egyes új személy a saját nyilvános/titkos kulcsok PuTTYgen használatával hoz létre.
-- Egyéni felhasználók számára a saját titkos kulcsok külön tárolja, és a nyilvánoskulcs-adatokat küldeni a rendszergazdának, a virtuális gép.
-- A rendszergazda a nyilvános kulcs tartalmát illeszti be a \~/.ssh/authorized\_kulcsok fájlja.
-- Az új egyéni a PuTTY-n keresztül kapcsolódik.
+- Minden egyes új egyéni saját nyilvános/titkos kulcsot hoz létre a PuTTYgen használatával.
+- Az egyének külön tárolják saját titkos kulcsaikat, és a nyilvános kulcs adatait a virtuális gép rendszergazdájától küldik el.
+- A rendszergazda beillesztette a nyilvános kulcs tartalmát a \~/. ssh/engedélyezve @ no__t-1keys fájlba.
+- Az új egyéni kapcsolódás a PuTTY használatával.
 
-**Egy nyilvános/titkos kulcspár létrehozása**
+**Nyilvános/titkos kulcspár létrehozása**
 
-1.  Töltse le a PuTTYgen <https://www.putty.org/> , és telepítse az alapértelmezett beállítások használatával.
+1.  Töltse le a PuTTYgen <https://www.putty.org/> címről, és telepítse az összes alapértelmezett beállítással.
 
-2.  Nyissa meg a PuTTYgen, keresse meg a PuTTY telepítési könyvtár c:\\Program Files\\putty-kapcsolaton keresztül.
+2.  A PuTTYgen megnyitásához keresse meg a PuTTY telepítési könyvtárat a C: \\Program Files @ no__t-1PuTTY.
 
-    ![PuTTY felülete](media/puttygen-01.png)
+    ![Putty felület](media/puttygen-01.png)
 
-3.  Kattintson a **készítése**.
+3.  Kattintson a **generált**elemre.
 
-    ![PuTTY Key Generator párbeszédpanel](media/puttygen-02.png)
+    ![A PuTTY Key Generator párbeszédpanel](media/puttygen-02.png)
 
-4.  Generáció, után mentse a nyilvános kulcs és a titkos kulcsot. Illessze be a nyilvános kulcsot a tartalmát a **nyilvános SSH-kulcs** szakaszában a **hozzon létre virtuális gépet \> alapjai** (6. és 7 az előző szakaszban látható) panelen.
+4.  A létrehozást követően mentse a nyilvános kulcsot és a titkos kulcsot is. Illessze be a nyilvános kulcs **tartalmát a** **virtuális gép létrehozása @no__t – 2 alapismeretek** panel (az előző szakasz 6. és 7. lépésében látható).
 
-    ![PuTTY Key Generator párbeszédpanel](media/puttygen-03.png)
+    ![A PuTTY Key Generator párbeszédpanel](media/puttygen-03.png)
 
-### <a name="configure-vm-features"></a>Virtuális gép funkciók konfigurálása
+### <a name="configure-vm-features"></a>VIRTUÁLIS gépek funkcióinak konfigurálása
 
-1. Az Azure Portalon az a **méret kiválasztása** panelen válassza ki a kívánt Linux rendszerű gép hardver beállításokat. A *minimális* Tibero és a OpenFrame telepítésének követelményei 2 processzorra és 4 GB RAM-MAL telepítési példában látható módon:
+1. Azure Portal a **méret kiválasztása** panelen válassza ki a kívánt Linux-gép hardveres beállításait. A Tibero és a OpenFrame Kiindulópontul telepítésének *minimális* követelményei 2 processzor és 4 GB RAM, ahogy az ebben a példában szereplő telepítésben látható:
 
-    ![Hozzon létre virtuálisgép - alapjai](media/create-vm-01.png)
+    ![Virtuális gép létrehozása – alapismeretek](media/create-vm-01.png)
 
-2. Kattintson a **3 beállítások** és az alapértelmezett beállításokat használja a választható funkciók konfigurálása.
-3. Tekintse át a fizetési adatait.
+2. Kattintson a **3 beállítások** lehetőségre, és használja az alapértelmezett beállításokat a választható funkciók konfigurálásához.
+3. Tekintse át a fizetési adatokat.
 
-    ![Hozzon létre virtuálisgép - beszerzési](media/create-vm-02.png)
+    ![Virtuális gép létrehozása – vásárlás](media/create-vm-02.png)
 
-4. Küldje el a beállításokat. Az Azure elkezdi a virtuális gép üzembe helyezése. Ez a folyamat általában néhány percet vesz igénybe.
+4. Adja meg a beállításokat. Az Azure megkezdi a virtuális gép üzembe helyezését. Ez a folyamat általában néhány percet vesz igénybe.
 
-5. A virtuális gép telepítésekor a hozzá tartozó irányítópult látható, a konfiguráció során megadott beállításokat. Jegyezze fel a **nyilvános IP-cím**.
+5. A virtuális gép üzembe helyezésekor megjelenik az irányítópult, amely megjeleníti a konfiguráció során kiválasztott beállításokat. Jegyezze fel a **nyilvános IP-címet**.
 
-    ![Azure-irányítópulton Tmax](media/create-vm-03.png)
+    ![Tmax az Azure-irányítópulton](media/create-vm-03.png)
 
 6. Nyissa meg a PuTTY eszközt.
 
-7. A **állomásnév**, írja be a felhasználónevét és a nyilvános IP-cím, másolja. Ha például **felhasználónév\@publicip**.
+7. Az **állomásnév**mezőben adja meg a felhasználónevét és a másolt nyilvános IP-címet. Például: **username @ no__t-1publicip**.
 
-    ![PuTTY konfiguráció párbeszédpanel](media/putty-01.png)
+    ![A PuTTY konfigurációja párbeszédpanel](media/putty-01.png)
 
-8. Az a **kategória** kattintson **kapcsolat \> SSH \> Auth**. Az elérési útját adja meg a **titkos kulcs** fájlt.
+8. A **Kategória** mezőben kattintson a **kapcsolatok \> SSH \> hitelesítés**elemre. Adja meg a **titkos kulcs** fájljának elérési útját.
 
-    ![PuTTY konfiguráció párbeszédpanel](media/putty-02.png)
+    ![A PuTTY konfigurációja párbeszédpanel](media/putty-02.png)
 
-9. Kattintson a **nyílt** a PuTTY ablak megnyitása. Ha ez sikeres, csatlakozik az új CentOS virtuális gép az Azure-ban.
+9. Kattintson a **Megnyitás** gombra a PuTTY ablak elindításához. Ha a művelet sikeres, az Azure-on futó új CentOS virtuális géphez csatlakozik.
 
-10. Jelentkezzen be gyökér szintű felhasználó, írja be a következőt **sudo bash**.
+10. Ha root felhasználóként szeretne bejelentkezni, gépelje be a **sudo bash**értéket.
 
-    ![Legfelső szintű felhasználói bejelentkezési parancssori ablakban](media/putty-03.png)
+    ![Root felhasználói bejelentkezés a parancsablakban](media/putty-03.png)
 
 ## <a name="set-up-the-environment-and-packages"></a>A környezet és a csomagok beállítása
 
-Most, hogy a virtuális gép létrejött, és be van jelentkezve, néhány beállítás lépésekkel, és a szükséges előtelepítési csomagok telepítéséhez.
+Most, hogy létrejött a virtuális gép, és be van jelentkezve, végre kell hajtania néhány telepítési lépést, és telepítenie kell a szükséges előtelepítési csomagokat.
 
-1. A név hozzárendelése **ofdemo** vi használatával a hosts fájl szerkesztése a helyi IP-címre (`vi /etc/hosts`). Feltéve, hogy az IP 192.168.96.148 ofdemo, ez az a váltás előtt:
+1. Rendelje hozzá a **ofdemo** nevet a helyi IP-címhez a VI használatával a Hosts fájl szerkesztéséhez (`vi /etc/hosts`). Feltételezve, hogy az IP-192.168.96.148 ofdemo, ez a változás előtt van:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -215,7 +215,7 @@ Most, hogy a virtuális gép létrejött, és be van jelentkezve, néhány beál
     <IP Address>    <your hostname>
     ```
 
-     Ez a váltás után:
+     Ez a változás után:
 
     ```vi
     127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 
@@ -223,14 +223,14 @@ Most, hogy a virtuális gép létrejött, és be van jelentkezve, néhány beál
     192.168.96.148   ofdemo
     ```
 
-2. Felhasználók és csoportok létrehozása:
+2. Csoportok és felhasználók létrehozása:
 
     ```vi
     [root@ofdemo ~]# adduser -d /home/oframe7 oframe7 
     [root@ofdemo ~]# passwd oframe7
     ```
 
-3. A felhasználó oframe7 jelszavának módosítása:
+3. Felhasználói oframe7 jelszavának módosítása:
 
     ```vi
     New password: 
@@ -238,7 +238,7 @@ Most, hogy a virtuális gép létrejött, és be van jelentkezve, néhány beál
     passwd: all authentication tokens updated successfully.
     ```
 
-4. Frissítse a kernel paramétereket /etc/sysctl.conf:
+4. A kernel paramétereinek frissítése a/etc/sysctl.conf-ben:
 
     ```vi
     [root@ofdemo ~]# vi /etc/sysctl.conf
@@ -246,35 +246,35 @@ Most, hogy a virtuális gép létrejött, és be van jelentkezve, néhány beál
     kernel.sem = 10000 32000 10000 10000
     ```
 
-5. Frissítse a kernel paraméterek dinamikusan újraindítás nélkül:
+5. Frissítse a kernel paramétereit dinamikusan újraindítás nélkül:
 
     ```vi
     [root@ofdemo ~]# /sbin/sysctl -p
     ```
 
-6. Kérje le a szükséges csomagokat: Győződjön meg arról, hogy a kiszolgáló kapcsolódik az internethez, töltse le a következő csomagokat, és telepítse őket:
+6. A szükséges csomagok beszerzése: Ellenőrizze, hogy a kiszolgáló csatlakozik-e az internethez, töltse le a következő csomagokat, majd telepítse őket:
 
      - dos2unix
-     - glibc
-     - glibc.i686 glibc.x86\_64
+     - Glibc
+     - folyékony beszédű. i686 folyékonyan. x86 @ no__t-064
      - libaio
      - ncurses
 
           > [!NOTE]
-          > A ncurses csomag telepítése után a következő szimbolikus hivatkozás létrehozása:
+          > A ncurses csomag telepítése után hozza létre a következő szimbolikus hivatkozásokat:
          ```
          ln -s /usr/lib64/libncurses.so.5.9 /usr/lib/libtermcap.so
          ln -s /usr/lib64/libncurses.so.5.9 /usr/lib/libtermcap.so.2
          ```
 
-     - gcc
-     - gcc-c++
-     - libaio-devel.x86\_64
+     - GCC
+     - GCC-c + +
+     - libaio-devel. x86 @ no__t-064
      - strace
      - ltrace
      - gdb
 
-7. Java RPM telepítési, esetén tegye a következőket:
+7. Java RPM-telepítés esetén tegye a következőket:
 
 ```
 root@ofdemo ~]# rpm -ivh jdk-7u79-linux-x64.rpm
@@ -295,27 +295,27 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 [root@ofdemo ~]# echo $JAVA_HOME /usr/java/jdk1.7.0_79/
 ```
 
-## <a name="install-the-tibero-database"></a>A Tibero adatbázisának telepítése
+## <a name="install-the-tibero-database"></a>A Tibero-adatbázis telepítése
 
-Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az Azure-ban:
+A Tibero a OpenFrame Kiindulópontul-környezet számos kulcsfontosságú funkcióját biztosítja az Azure-ban:
 
-- Tibero OpenFrame belső adattárként szolgál különféle rendszerfunkciók.
-- VSAM fájlok, KSDS RRDS és ESDS, beleértve a Tibero adatbázis belső szolgáltatást használják adattárolásra.
-- Tibero TACF adattár tárolja.
-- A OpenFrame katalógusadatokat Tibero van tárolva.
-- A Tibero adatbázis helyett az IBM DB2-höz, az alkalmazások adatainak tárolására használható.
+- A rendszer a Tibero használja a OpenFrame Kiindulópontul belső adattárként a különböző rendszerfunkciókhoz.
+- A VSAM-fájlok, például a KSDS, a RRDS és a ESDS, a Tibero-adatbázist belsőleg használják az adattárolás számára.
+- A TACF-adattár a Tibero-ben van tárolva.
+- A OpenFrame Kiindulópontul-katalógus információit a rendszer a Tibero tárolja.
+- Az Tibero-adatbázis helyettesítőként használható az IBM DB2-ben az alkalmazásadatok tárolásához.
 
-**Tibero telepítése**
+**A Tibero telepítése**
 
-1. Ellenőrizze, hogy megtalálható-e a Tibero bináris telepítőfájllal, és tekintse át a verziószámot.
-2. Másolja a Tibero szoftver Tibero felhasználói fiók (oframe). Példa:
+1. Ellenőrizze, hogy megtalálható-e a Tibero bináris telepítőfájl, és tekintse át a verziószámot.
+2. Másolja a Tibero szoftvert a Tibero felhasználói fiókba (oframe). Példa:
 
     ```
     [oframe7@ofdemo ~]$ tar -xzvf tibero6-bin-6_rel_FS04-linux64-121793-opt-tested.tar.gz 
     [oframe7@ofdemo ~]$ mv license.xml /opt/tmaxdb/tibero6/license/
     ```
 
-3. Nyissa meg a .bash\_profil vi (`vi .bash_profile`), és illessze be a következőket:
+3. Nyissa meg a. bash @ no__t-0profile a VI-ben (`vi .bash_profile`), és illessze be a következőt:
 
     ```
     # Tibero6 ENV
@@ -325,20 +325,20 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
     export PATH=$TB_HOME/bin:$TB_HOME/client/bin:$PATH
     ```
 
-4. A bash-profilt, a parancssorba írja be a végrehajtásához:
+4. A bash-profil végrehajtásához írja be a parancssorba a következőt:
 
     ```
     source .bash_profile
     ```
 
-5. Hozza létre a tip-fájlt (konfigurációs fájlt az Tibero), majd nyissa meg a vi. Példa:
+5. Hozzon elő egy tipp-fájlt (a Tibero konfigurációs fájlját), majd nyissa meg a VI-ben. Példa:
 
     ```
     [oframe7@ofdemo ~]$ sh $TB_HOME/config/gen_tip.sh
     [oframe7@ofdemo ~]$ vi $TB_HOME/config/$TB_SID.tip
     ```
 
-6. Módosítsa \$TB\_HOME/client/config/tbdsn.tbr, és csak 127.0.0.1 inkább oflocalhost látható módon:
+6. Módosítsa a \$TB @ no__t-1HOME/Client/config/tbdsn. TBR fájlt, és helyezze a 127.0.0.1 helyet a oflocalhost-re, ahogy az ábrán látható:
 
     ```
     TVSAM=( 
@@ -349,7 +349,7 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
      )
     ```
 
-7. Az adatbázis létrehozásához. A következő eredmény jelenik meg:
+7. Hozza létre az adatbázist. A következő kimenet jelenik meg:
 
     ```
     Change core dump dir to /opt/tmaxdb/tibero6/bin/prof.
@@ -386,14 +386,14 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
      ******************************************************************************
     ```
 
-8. Újrahasznosítást Tibero, először állítsa le használatával a `tbdown` parancsot. Példa:
+8. A Tibero újrahasznosításához először állítsa le a `tbdown` parancs használatával. Példa:
 
     ```
     [oframe7@ofdemo ~]$$ tbdown 
     Tibero instance terminated (NORMAL mode).
     ```
 
-9. Most indítsa el az Tibero `tbboot`. Példa:
+9. A rendszerindítási Tibero `tbboot` használatával. Példa:
 
     ```
     [oframe7@ofdemo ~]$ tbboot
@@ -404,7 +404,7 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
     Tibero instance started up (NORMAL mode).
     ```
 
-10. Hozzon létre egy táblaterületre, nyissa meg az adatbázis SYS felhasználói (sys/tmax), majd hozza létre a szükséges táblaterületen. keresse az alapértelmezett mennyiségi és TACF:
+10. Egy tablespace létrehozásához nyissa meg az adatbázist a SYS-felhasználó (sys/Tmax) használatával, majd hozza létre a szükséges tablespace-t az alapértelmezett kötet-és TACF:
 
     ```
     [oframe7@ofdemo ~]$ tbsql tibero/tmax
@@ -423,7 +423,7 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
     SQL> SQL> Disconnected.
     ```
 
-12. Rendszerindítási Tibero, és győződjön meg arról, hogy futnak-e a Tibero folyamatok:
+12. Indítsa el a Tibero, és ellenőrizze, hogy fut-e a Tibero folyamatok:
 
     ```
     [oframe7@ofdemo ~]$ tbboot 
@@ -432,43 +432,43 @@ Tibero OpenFrame környezetben számos kulcsfontosságú funkciót biztosít az 
 
 Kimenet:
 
-![Tibero kimenet](media/tibero-01.png)
+![Tibero kimenete](media/tibero-01.png)
 
-## <a name="install-odbc"></a>Telepítse az ODBC
+## <a name="install-odbc"></a>Az ODBC telepítése
 
-OpenFrame az alkalmazásokat az Tibero adatbázissal, a nyílt forráskódú unixodbc szoftverre projekt által biztosított az ODBC-API-val folytatott kommunikációhoz.
+A OpenFrame Kiindulópontul lévő alkalmazások a nyílt forráskódú unixODBC projekt által biztosított ODBC API használatával kommunikálnak a Tibero-adatbázissal.
 
-ODBC telepítése:
+Az ODBC telepítése:
 
-1. Győződjön meg arról, hogy a unixodbc szoftverre-2.3.4.tar.gz installer fájl jelen-e, vagy használja a `wget unixODBC-2.3.4.tar.gz` parancsot. Példa:
+1. Győződjön meg arról, hogy a unixODBC-2.3.4. tar. gz telepítőfájl létezik, vagy használja a `wget unixODBC-2.3.4.tar.gz` parancsot. Példa:
 
      ```
      [oframe7@ofdemo ~]$ wget ftp://ftp.unixodbc.org/pub/unixODBC/unixODBC-2.3.4.tar.gz
      ```
 
-2. Csomagolja ki a bináris fájlt. Példa:
+2. Bontsa ki a bináris fájlt. Példa:
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf unixODBC-2.3.4.tar.gz
      ```
 
-3. Lépjen abba a könyvtárba unixodbc szoftverre-2.3.4, és a Makefile létrehozása a ellenőrzési adatai alapján. Példa:
+3. Navigáljon a unixODBC-2.3.4 könyvtárba, és állítson elő a Makefile-t a számítógép adatainak ellenőrzése paranccsal. Példa:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ ./configure --prefix=/opt/tmaxapp/unixODBC/ --sysconfdir=/opt/tmaxapp/unixODBC/etc
      ```
 
-     Alapértelmezés szerint unixodbc szoftverre van telepítve usr végrehajtásához, ezért `--prefix` helyének módosításához értéket továbbítja. Hasonlóképpen, konfigurációs fájlokat az/etc alapértelmezés szerint települnek, így `--sysconfdir` átadja a kívánt helyre értékét.
+     Alapértelmezés szerint a unixODBC a/usr/local-ben van telepítve, így a `--prefix` érték áthalad egy értéket a hely módosításához. Hasonlóképpen, a konfigurációs fájlok alapértelmezés szerint telepítve vannak a/etc könyvtárban, így a `--sysconfdir` a kívánt hely értékét adja át.
 
-4. Hajtsa végre a Makefile: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
+4. Makefile végrehajtása: `[oframe7@ofdemo unixODBC-2.3.4]$ make`
 
-5. A végrehajtható fájlt másolja a program könyvtárban fordítása után. Példa:
+5. Másolja a végrehajtható fájlt a program könyvtárába a fordítás után. Példa:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ make install
      ```
 
-6. A bash-profil szerkesztése vi használatával (`vi ~/.bash_profile`), és adja hozzá a következő:
+6. A VI használatával szerkessze a bash-profilt (`vi ~/.bash_profile`), és adja hozzá a következőket:
 
      ```
      # UNIX ODBC ENV 
@@ -479,7 +479,7 @@ ODBC telepítése:
      export ODBCSYSINI=$HOME
      ```
 
-7. A alkalmazni az ODBC. Ennek megfelelően módosítsa a következő fájlokat. Példa:
+7. Alkalmazza az ODBC-t. A következő fájlokat ennek megfelelően szerkessze. Példa:
 
      ```
      [oframe7@ofdemo unixODBC-2.3.4]$ source ~/.bash_profile
@@ -524,7 +524,7 @@ ODBC telepítése:
      password = tmax
      ```
 
-8. Hozzon létre szimbolikus hivatkozást, és a Tibero adatbázis-kapcsolat ellenőrzése:
+8. Hozzon létre egy szimbolikus hivatkozást, és ellenőrizze a Tibero adatbázis-kapcsolatát:
 
      ```
      [oframe7@ofdemo ~]$ ln $ODBC_HOME/lib/libodbc.so $ODBC_HOME/lib/libodbc.so.1 [oframe7@ofdemo ~]$ ln $ODBC_HOME/lib/libodbcinst.so 
@@ -535,17 +535,17 @@ ODBC telepítése:
 
 A következő kimenet jelenik meg:
 
-![Az SQL ODBC-kimenetet megjelenítő csatlakoztatva](media/odbc-01.png)
+![Az SQL-hez kapcsolódó ODBC-kimenet](media/odbc-01.png)
 
-## <a name="install-openframe-base"></a>Telepítési OpenFrame
+## <a name="install-openframe-base"></a>A OpenFrame Kiindulópontul alapszintű telepítése
 
-Az alapszintű application server telepítve van az egyes szolgáltatásokat használó OpenFrame kezelése az Azure-ban, beleértve a kiszolgálói folyamatokat kezeli a tranzakciót a rendszer előtt.
+Az alapalkalmazás-kiszolgáló telepítése a OpenFrame Kiindulópontul által az Azure-beli rendszer felügyeletéhez használt egyes szolgáltatások előtt történik, beleértve a tranzakció-kezelő kiszolgáló folyamatait is.
 
-**A telepítési OpenFrame**
+**A OpenFrame Kiindulópontul-alap telepítése**
 
-1. Ellenőrizze, hogy a Tibero telepítése sikeres volt, akkor ellenőrizze, hogy a következő OpenFrame\_Base7\_0\_Linux\_x86\_64. bin installer fájl- és base.properties konfigurációs fájlban találhatók.
+1. Győződjön meg arról, hogy a Tibero telepítése sikeres volt, majd ellenőrizze, hogy a következő OpenFrame Kiindulópontul @ no__t-0Base7 @ no__t-10 @ no__t-2Linux @ no__t-3x86\_64.bin Installer fájl és alap. properties konfigurációs fájl jelen van.
 
-2. A bash-profil frissítése a következő Tibero-specifikus információkkal:
+2. Frissítse a bash-profilt a következő Tibero-specifikus információkkal:
 
      ```bash
      alias ofhome='cd $OPENFRAME_HOME'
@@ -558,7 +558,7 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
      alias defvol='cd $OPENFRAME_HOME/volume_default'
      ```
 
-3. Hajtsa végre a bash-profilhoz:`[oframe7@ofdemo ~]$ . .bash_profile`
+3. A bash-profil végrehajtása: `[oframe7@ofdemo ~]$ . .bash_profile`
 4. Győződjön meg arról, hogy a Tibero folyamatok futnak. Példa:
 
      ```linux
@@ -568,16 +568,16 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
     ![Alapszintű](media/base-01.png)
 
      > [!IMPORTANT]
-     > Ellenőrizze, hogy a telepítés előtt Tibero megkezdése.
+     > A telepítés előtt győződjön meg róla, hogy elindítja a Tibero.
 
-5. A licenc létrehozása [technet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do) és OSC licenceket a OpenFrame alap, a Batch, a TACF HELYEZNI, a megfelelő mappát:
+5. Licenc előállítása a [technet.tmaxsoft.com](https://technet.tmaxsoft.com/en/front/main/main.do) -ben, és a megfelelő mappában helyezze el a OpenFrame Kiindulópontul Base, a Batch, a TACF és az OSC licenceket:
 
      ```
      [oframe7@ofdemo ~]$ cp license.dat /opt/tmaxapp/OpenFrame/core/license/
      [oframe7@ofdemo ~]$ cp lictjes.dat lictacf.dat licosc.dat $OPENFRAME_HOME/license/
      ```
 
-6. Töltse le a OpenFrame alap bináris és base.properties fájlokat:
+6. Töltse le a OpenFrame Kiindulópontul Base bináris és Base. properties fájlokat:
 
      ```
      [oframe7@ofdemo ~]$ vi base.properties
@@ -602,16 +602,16 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
      OPENFRAME_LICENSE_PATH=/opt/tmaxapp/license/OPENFRAME TMAX_LICENSE_PATH=/opt/tmaxapp/license/TMAX
      ```
 
-7. A telepítő a base.properties fájllal hajtható végre. Példa:
+7. Hajtsa végre a telepítőt a Base. properties fájl használatával. Példa:
 
     ```
     [oframe7@ofdemo ~]$ chmod a+x OpenFrame_Base7_0_Linux_x86_64.bin 
     [oframe7@ofdemo ~]$ ./OpenFrame_Base7_0_Linux_x86_64.bin -f base.properties
     ```
 
-    Amikor végzett, a telepítés befejezése üzenetet kötelező tulajdonságlapján látható.
+    Ha elkészült, a telepítés befejezése üzenet el lesz játszva.
 
-8. Ellenőrizze a OpenFrame alap directory szerkezet használatával a `ls -ltr` parancsot. Példa:
+8. Ellenőrizze a OpenFrame Kiindulópontul alapkönyvtárának struktúráját a `ls -ltr` parancs használatával. Példa:
 
      ```
      [oframe7@ofdemo OpenFrame]$ ls -ltr
@@ -635,7 +635,7 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
      drwxrwxr-x. 2 oframe7 oframe7 25 Nov 30 16:58 volume_default
      ```
 
-9. Indítsa el a OpenFrame alapja:
+9. Start OpenFrame Kiindulópontul Base:
 
      ```
      [oframe7@ofdemo ~]$ cp /usr/lib/libtermcap.so.2 $TMAXDIR/lib
@@ -645,11 +645,11 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
 
      ![tmboot parancs kimenete](media/base-02.png)
 
-10. Ellenőrizze, hogy a folyamat állapotának készen áll a tmadmin paranccsal si-e. RDY jelenik meg a **állapot** oszlop az egyes folyamatok:
+10. Ellenőrizze, hogy a folyamat állapota készen áll-e a tmadmin parancs használatával az si-ben. A RDY az **állapot** oszlopban jelenik meg az egyes folyamatok esetében:
 
      ![tmadmin parancs kimenete](media/base-03.png)
 
-11. Állítsa le a OpenFrame alapja:
+11. OpenFrame Kiindulópontul-alap leállítása:
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -671,17 +671,17 @@ Az alapszintű application server telepítve van az egyes szolgáltatásokat has
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-openframe-batch"></a>OpenFrame köteg telepítése
+## <a name="install-openframe-batch"></a>A OpenFrame Kiindulópontul batch telepítése
 
-OpenFrame Batch nagyszámítógépes batch környezetek szimuláló több összetevőből áll, és az Azure-ban kötegelt feladatok futtatására szolgál.
+A OpenFrame Kiindulópontul batch számos olyan összetevőből áll, amelyek a mainframe-alapú batch-környezeteket szimulálják, és a Batch-feladatok Azure-beli futtatására használatosak.
 
 **A Batch telepítése**
 
-1. Győződjön meg arról, hogy az alapul szolgáló telepítés sikeres volt, akkor ellenőrizze, hogy a OpenFrame\_Batch7\_0\_Fix2\_MVS\_Linux\_x86\_64. bin telepítőfájllal, és konfigurációs fájl Batch.Properties válnak elérhetővé:
+1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze, hogy a OpenFrame Kiindulópontul @ no__t-0Batch7 @ no__t-10 @ no__t-2Fix2 @ no__t-3MVS @ no__t-4Linux @ no__t-5x86\_64.bin Installer fájl és Batch. properties konfigurációs fájl jelen van:
 
-2. A parancssorba írja be a `vi batch.properties` vi használatával batch.properties fájl szerkesztése.
+2. A parancssorba írja be a `vi batch.properties` parancsot a Batch. properties fájl a VI használatával való szerkesztéséhez.
 
-3. Módosítsa a paramétereket a következőképpen:
+3. Módosítsa a paramétereket az alábbiak szerint:
 
      ```
      OPENFRAME_HOME = /opt/tmaxapp/OpenFrame
@@ -700,19 +700,19 @@ OpenFrame Batch nagyszámítógépes batch környezetek szimuláló több össze
      BATCH_TABLE_CREATE=YES
      ```
 
-4. A batch-telepítő, a parancssorba írja be a végrehajtásához:
+4. A Batch telepítőjének végrehajtásához írja be a parancssorba a következőt:
 
      ```
      ./OpenFrame_Batch7_0_Fix2_MVS_Linux_x86_64.bin -f batch.properties
      ```
 
-5. A telepítés befejeződése után indítsa el a telepített OpenFrame ügyfélcsomagok beírásával `tmboot` parancsot a parancssorba.
+5. Ha a telepítés befejeződött, indítsa el a telepített OpenFrame Kiindulópontul-csomagokat `tmboot` beírásával a parancssorba.
 
-    ![tmboot kimenet](media/tmboot-01.png)
+    ![tmboot kimenete](media/tmboot-01.png)
 
-6. Típus `tmadmin` parancsot a parancssorba a OpenFrame folyamat ellenőrzéséhez.
+6. A OpenFrame Kiindulópontul folyamatának vizsgálatához írja be a `tmadmin` parancsot a parancssorba.
 
-    ![Tmax rendszergazdai képernyős](media/tmadmin-01.png)
+    ![Tmax-adminisztrátor képernyő](media/tmadmin-01.png)
 
 7. Hajtsa végre a következő parancsokat:
 
@@ -721,7 +721,7 @@ OpenFrame Batch nagyszámítógépes batch környezetek szimuláló több össze
      ADM quit for node (NODE1)
      ```
 
-8. Használja a `tmdown` indítsa el, és állítsa le a Batch parancsot:
+8. A Batch elindításához és leállításához használja a `tmdown` parancsot:
 
      ```
      [oframe7@ofdemo ~]$tmdown
@@ -759,15 +759,15 @@ OpenFrame Batch nagyszámítógépes batch környezetek szimuláló több össze
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-tacf"></a>TACF telepítése
+## <a name="install-tacf"></a>A TACF telepítése
 
-TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek és RACF biztonsági erőforrásai a felhasználói hozzáférést.
+A TACF Manager egy OpenFrame Kiindulópontul szolgáltatás-modul, amely a RACF biztonság használatával vezérli a rendszerekhez és az erőforrásokhoz való felhasználói hozzáférést.
 
-**TACF telepítése**
+**A TACF telepítése**
 
-1. Ellenőrizze, hogy a OpenFrame\_Tacf7\_0\_Fix2\_Linux\_x86\_64. bin installer fájl- és tacf.properties konfigurációs fájlban találhatók.
-2. Győződjön meg arról, hogy a kötegelt telepítés sikeres volt, majd nyissa meg a tacf.properties fájlt vi használatával (`vi tacf.properties`).
-3. Módosítsa a TACF paramétereket:
+1. Győződjön meg arról, hogy a OpenFrame Kiindulópontul @ no__t-0Tacf7 @ no__t-10 @ no__t-2Fix2 @ no__t-3Linux @ no__t-4x86\_64.bin Installer fájl és tacf. properties konfigurációs fájl megtalálható.
+2. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd a VI paranccsal nyissa meg a tacf. properties fájlt (`vi tacf.properties`).
+3. Módosítsa a TACF paramétereit:
 
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame 
@@ -779,19 +779,19 @@ TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek
      TACF_TABLE_CREATE=YES
      ```
 
-4. Miután befejezte a TACF telepítő, TACF környezeti változók vonatkoznak. A parancssorba írja be a következőt:
+4. A TACF telepítőjének befejezése után alkalmazza a TACF környezeti változóit. A parancssorba írja be a következőt:
 
      ```
      source \~/.bash\_profile
      ```
 
-5. Hajtsa végre a TACF telepítő. A parancssorba írja be a következőt:
+5. Futtassa a TACF telepítőjét. A parancssorba írja be a következőt:
 
      ```
      ./OpenFrame_Tacf7_0_Fix2_Linux_x86_64.bin -f tacf.properties
      ```
 
-     Kimenet az alábbihoz hasonlóan jelenik meg:
+     A kimenet valahogy így néz ki:
 
      ```
      Wed Dec 07 17:36:42 EDT 2016
@@ -812,7 +812,7 @@ TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek
      /tmp/install.dir.41422/Linux/resource/jre/lib/resources.jar /tmp/install.dir.41422/Linux/resource/jre/lib/rt.jar /tmp/install.dir.41422/Linux/resource/jre/lib/sunrsasign.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jsse.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jce.jar /tmp/install.dir.41422/Linux/resource/jre/lib/charsets.jar /tmp/install.dir.41422/Linux/resource/jre/lib/jfr.jar /tmp/install.dir.41422/Linux/resource/jre/classes
      ```
 
-6. A parancssorba írja be a `tmboot` OpenFrame újraindítására. Kimenet az alábbihoz hasonlóan jelenik meg:
+6. A parancssorba írja be a következőt: `tmboot` a OpenFrame Kiindulópontul újraindításához. A kimenet valahogy így néz ki:
 
      ```
      TMBOOT for node(NODE1) is starting: 
@@ -849,15 +849,15 @@ TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek
      TMBOOT: SVR(tmsvr) is starting: Wed Sep  7 17:48:53 2016
      ```
 
-7. Ellenőrizze, hogy a folyamat állapota Kész használatával `tmadmin` a a `si` parancsot. Példa:
+7. Ellenőrizze, hogy a folyamat állapota készen áll-e a `si` parancsban található `tmadmin` használatával. Példa:
 
      ```
      [oframe7\@ofdemo \~]\$ tmadmin
      ```
 
-     Az a **állapot** oszlop, RDY jelenik meg:
+     Az **állapot** OSZLOPBAN a RDY megjelenik:
 
-    ![Az Állapot oszlopban RDY](media/tmboot-02.png)
+    ![RDY az Állapot oszlopban](media/tmboot-02.png)
 
 8. Hajtsa végre a következő parancsokat:
 
@@ -875,7 +875,7 @@ TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek
      [oframe7@ofdemo ~]$ tmdow
      ```
 
-9. A kiszolgáló leállítása használatával a `tmdown` parancsot. Kimenet az alábbihoz hasonlóan jelenik meg:
+9. Állítsa le a kiszolgálót a `tmdown` parancs használatával. A kimenet valahogy így néz ki:
 
      ```
      [oframe7@ofdemo ~]$ tmdown 
@@ -903,27 +903,27 @@ TACF Manager egy OpenFrame szolgáltatás modul, amely szabályozza a rendszerek
      TMDOWN: TMAX is down
      ```
 
-## <a name="install-prosort"></a>ProSort telepítése
+## <a name="install-prosort"></a>A rendezés telepítése
 
-ProSort rendezésre használni a kötegelt tranzakciókat a data egy segédprogram.
+A rendezés az Adatrendezésre szolgáló batch-tranzakciókban használt segédprogram.
 
-**ProSort telepítése**
+**A rendezés telepítése**
 
-1. Győződjön meg arról, hogy a kötegelt telepítés sikeres volt, és ellenőrizze, hogy a **prosort bin-prosort\_2sp3-linux64-2123-opt.tar.gz** installer fájl jelen.
+1. Győződjön meg arról, hogy a Batch telepítése sikeres volt, majd ellenőrizze, hogy megtalálható-e a **prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz** -telepítő fájl.
 
-2. A telepítő a Tulajdonságok fájllal hajtható végre. A parancssorba írja be a következőt:
+2. Futtassa a telepítőt a tulajdonságok fájl használatával. A parancssorba írja be a következőt:
 
      ```
      tar -zxvf prosort-bin-prosort\_2sp3-linux64-2123-opt.tar.gz
      ```
 
-3. Helyezze át a prosort könyvtár az otthoni régiója. A parancssorba írja be a következőt:
+3. Helyezze át a rendezési könyvtárat a Kezdőlap helyére. A parancssorba írja be a következőt:
 
      ```
      mv prosort /opt/tmaxapp/prosort
      ```
 
-4. Létrehoz egy licencet, és másolja a licencfájl van. Példa:
+4. Hozzon létre egy licenc alkönyvtárat, és másolja a licencfájlba. Példa:
 
      ```
      cd /opt/tmaxapp/prosort 
@@ -931,7 +931,7 @@ ProSort rendezésre használni a kötegelt tranzakciókat a data egy segédprogr
      cp /opt/tmaxsw/oflicense/prosort/license.xml /opt/tmaxapp/prosort/license
      ```
 
-5. Nyissa meg a bash.profile vi (`vi .bash_profile`), és frissítse a következőképpen:
+5. Nyissa meg a bash. profil a VI-ben (`vi .bash_profile`), és frissítse a következő módon:
 
      ```bash
      #       PROSORT
@@ -945,9 +945,9 @@ ProSort rendezésre használni a kötegelt tranzakciókat a data egy segédprogr
      export PATH
      ```
 
-6. Hajtsa végre a bash profil parancsot a parancssorba írja be: `. .bash_profile`
+6. A bash-profil végrehajtásához írja be a következőt a parancssorba: `. .bash_profile`
 
-7. A konfigurációs fájl létrehozása. Példa:
+7. Hozza létre a konfigurációs fájlt. Példa:
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/prosort/config 
@@ -956,14 +956,14 @@ ProSort rendezésre használni a kötegelt tranzakciókat a data egy segédprogr
       /home/oframe7/prosort/config/gbg.tip generated
      ```
 
-8. Hozzon létre a szimbolikus hivatkozást. Példa:
+8. Hozza létre a szimbolikus hivatkozást. Példa:
 
      ```
      oframe@oframe7: cd /opt/tmaxapp/OpenFrame/util/ 
      oframe@oframe7home/oframe7/OpenFrame/util :  ln -s DFSORT SORT
      ```
 
-9. ProSort telepítésének ellenőrzéséhez futtassa a `prosort -h` parancsot. Példa:
+9. A `prosort -h` parancs végrehajtásával ellenőrizze a rendezési telepítést. Példa:
 
      ```
      oframe@oframe7: prosort -h
@@ -977,23 +977,23 @@ ProSort rendezésre használni a kötegelt tranzakciókat a data egy segédprogr
      -x             Use SyncSort compatible mode
      ```
 
-## <a name="install-ofcobol"></a>OFCOBOL telepítése
+## <a name="install-ofcobol"></a>A OFCOBOL telepítése
 
-OFCOBOL, amely értelmezi a nagyszámítógépes COBOL programok OpenFrame nyelvű fordítón belülre. 
+A OFCOBOL a OpenFrame Kiindulópontul-fordító, amely a nagyszámítógép COBOL programját értelmezi. 
 
-**OFCOBOL telepítése**
+**A OFCOBOL telepítése**
 
-1. Győződjön meg arról, hogy a Batch/Online telepítése sikeres volt, akkor ellenőrizze, hogy a OpenFrame\_COBOL3\_0\_40\_Linux\_x86\_64. bin installer fájl jelen.
+1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze, hogy a OpenFrame Kiindulópontul @ no__t-0COBOL3 @ no__t-10 @ no__t-240 @ no__t-3Linux @ no__t-4x86\_64.bin Installer fájl található-e.
 
-2. Hajtsa végre a OFCOBOL telepítő parancsot a parancssorba írja be:
+2. A OFCOBOL-telepítő végrehajtásához írja be a következőt a parancssorba:
 
      ```
       ./OpenFrame\_COBOL3\_0\_40\_Linux\_x86\_64.bin
      ```
 
-3. Olvassa el a licencszerződést, és nyomja le az Enter billentyűt.
+3. A folytatáshoz olvassa el a licencszerződést, és nyomja le az ENTER billentyűt.
 
-4. Fogadja el a licencszerződést. A telepítés befejeződése után a következő jelenik meg:
+4. Fogadja el a licencszerződést. A telepítés befejezésekor a következő jelenik meg:
 
      ```
      Choose Install Folder 
@@ -1017,33 +1017,33 @@ OFCOBOL, amely értelmezi a nagyszámítógépes COBOL programok OpenFrame nyelv
      PRESS <ENTER> TO EXIT THE INSTALLER
      ```
 
-5. Nyissa meg a bash-profil vi (`vi .bash_profile`), és ellenőrizze, hogy frissül a OFCOBOL változók.
-6. Hajtsa végre a bash-profilhoz. A parancssorba írja be a következőt:
+5. Nyissa meg a bash-profilt a VI-ben (`vi .bash_profile`), és ellenőrizze, hogy a frissítése OFCOBOL-változókkal történt-e.
+6. Hajtsa végre a bash-profilt. A parancssorba írja be a következőt:
 
      ```
       source ~/.bash_profile
      ```
 
-7. A telepített mappába másolja a OFCOBOL licenc. Példa:
+7. Másolja a OFCOBOL-licencet a telepített mappába. Példa:
      ```
      mv licofcob.dat $OFCOB_HOME/license
      ```
-8. Nyissa meg a OpenFrame tjclrun.conf konfigurációs fájlt, és nyissa meg a vi. Példa:
+8. Lépjen a OpenFrame Kiindulópontul tjclrun. conf konfigurációs fájlra, és nyissa meg a VI-ben. Példa:
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-   A módosítás SYSLIB szakaszt a következő:
+   Itt látható a SYSLIB szakasz a változás előtt:
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib
      ```
-   A módosítás után a következő a SYSLIB szakaszban:
+   A módosítás után a SYSLIB szakasz a következő:
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bin LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${COBDIR}/lib:/ usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib :${ODBC_HOME}/lib 
      :${OFCOB_HOME}/lib
      ```
-9. Tekintse át a OpenFrame\_COBOL\_InstallLog.log vi fájlt, és győződjön meg arról, hogy nincsenek-e hibák. Példa:
+9. Tekintse át a OpenFrame Kiindulópontul @ no__t-0COBOL\_InstallLog.log-fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Példa:
      ```
      [oframe7@ofdemo ~]$ vi $OFCOB_HOME/UninstallerData/log/OpenFrame_COBOL_InstallLog.log 
      …….. 
@@ -1055,7 +1055,7 @@ OFCOBOL, amely értelmezi a nagyszámítógépes COBOL programok OpenFrame nyelv
      0 NonFatalErrors 
      0 FatalError
      ```
-10. Használja a `ofcob --version` parancsot, és tekintse át a verziószámot a telepítés ellenőrzése. Példa:
+10. A telepítés ellenőrzéséhez használja a `ofcob --version` parancsot, és tekintse át a verziószámot. Példa:
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1063,15 +1063,15 @@ OFCOBOL, amely értelmezi a nagyszámítógépes COBOL programok OpenFrame nyelv
      CommitTag:: 645f3f6bf7fbe1c366a6557c55b96c48454f4bf
      ```
 
-11. Indítsa újra a OpenFrame használatával a `tmdown/tmboot` parancsot.
+11. Indítsa újra a OpenFrame Kiindulópontul a `tmdown/tmboot` paranccsal.
 
-## <a name="install-ofasm"></a>OFASM telepítése
+## <a name="install-ofasm"></a>A OFASM telepítése
 
-OFASM, amely értelmezi a nagyszámítógépes assembler programok OpenFrame nyelvű fordítón belülre.
+A OFASM a OpenFrame Kiindulópontul-fordító, amely a nagyvállalati szerelvények programjait értelmezi.
 
-**OFASM telepítése**
+**A OFASM telepítése**
 
-1. Győződjön meg arról, hogy a Batch/Online telepítése sikeres volt, akkor ellenőrizze, hogy a OpenFrame\_ASM3\_0\_Linux\_x86\_64. bin installer fájl jelen.
+1. Győződjön meg arról, hogy a Batch/online telepítés sikeresen befejeződött, majd ellenőrizze, hogy megtalálható-e a OpenFrame Kiindulópontul @ no__t-0ASM3 @ no__t-10 @ no__t-2Linux @ no__t-3x86\_64.bin Installer fájl.
 
 2. Hajtsa végre a telepítőt. Példa:
 
@@ -1079,9 +1079,9 @@ OFASM, amely értelmezi a nagyszámítógépes assembler programok OpenFrame nye
      [oframe7@ofdemo ~]$ ./OpenFrame_ASM3_0_Linux_x86_64.bin
      ```
 
-3. Olvassa el a licencszerződést, és nyomja le az Enter billentyűt.
+3. A folytatáshoz olvassa el a licencszerződést, és nyomja le az ENTER billentyűt.
 4. Fogadja el a licencszerződést.
-5. Ellenőrizze, hogy a bash-profilhoz OFASM változók frissül. Példa:
+5. Ellenőrizze, hogy a bash-profil frissítése OFASM-változókkal történt-e. Példa:
 
      ```
      [oframe7@ofdemo ~]$ source .bash_profile
@@ -1098,26 +1098,26 @@ OFASM, amely értelmezi a nagyszámítógépes assembler programok OpenFrame nye
      export LD_LIBRARY_PATH="./:$OFASM_HOME/lib:$LD_LIBRARY_PATH"
      ```
 
-6. Nyissa meg a OpenFrame tjclrun.conf konfigurációs fájl a vi, és módosítsa az alábbiak szerint:
+6. Nyissa meg a OpenFrame Kiindulópontul tjclrun. conf konfigurációs fájlt a VI-ben, és szerkessze a következő módon:
 
      ```
      [oframe7@ofdemo ~]$ cd $OPENFRAME_HOME/config 
      [oframe7@ofdemo ~]$ vi tjclrun.conf
      ```
 
-     Íme a [SYSLIB] szakaszban *előtt* módosítása:
+     Itt látható a [SYSLIB] szakasz a változás *előtt* :
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib
      ```
 
-     Íme a [SYSLIB] szakaszban *után* módosítása:
+     A változás *után* a [SYSLIB] szakasz a következő:
 
      ```
      [SYSLIB] BIN_PATH=${OPENFRAME_HOME}/bin:${OPENFRAME_HOME}/util:${COBDIR}/bin:/usr/local/bin:/bi n:${OPENFRAME_HOME}/volume_default/SYS1.LOADLIB LIB_PATH=${OPENFRAME_HOME}/lib:${OPENFRAME_HOME}/core/lib:${TB_HOME}/client/lib:${CO BDIR}/lib:/usr/lib:/lib:/lib/i686:/usr/local/lib:${PROSORT_HOME}/lib:/opt/FSUNbsort/lib:${OFCOB_HOM E}/lib:${ODBC_HOME}/lib:${OFPLI_HOME}/lib:${OFASM_HOME}/lib
      ```
 
-7. Nyissa meg a OpenFrame\_ASM\_InstallLog.log vi fájlt, és győződjön meg arról, hogy nincsenek-e hibák. Példa:
+7. Nyissa meg a OpenFrame Kiindulópontul @ no__t-0ASM\_InstallLog.log fájlt a VI-ben, és ellenőrizze, hogy nincsenek-e hibák. Példa:
 
      ```
      [oframe7@ofdemo ~]$ vi 
@@ -1134,40 +1134,40 @@ OFASM, amely értelmezi a nagyszámítógépes assembler programok OpenFrame nye
      0 FatalErrors
      ```
 
-8. Indítsa újra a OpenFrame alapján a következő parancsok egyikét:
+8. Indítsa újra a OpenFrame Kiindulópontul az alábbi parancsok egyikének kiadásával:
 
      ```
      tmdown / tmboot
      ```
 
-     – vagy –
+     vagy
 
      ```
      oscdown / oscboot
      ```
 
-## <a name="install-osc"></a>OSC telepítése
+## <a name="install-osc"></a>Az OSC telepítése
 
-OSC a OpenFrame környezet, IBM, amely támogatja a nagy sebességű OLTP-tranzakciók és egyéb felügyeleti funkciókkal CICS hasonló.
+Az OSC az IBM CICS hasonló OpenFrame Kiindulópontul-környezet, amely támogatja a nagy sebességű OLTP-tranzakciókat és más felügyeleti funkciókat.
 
-**OSC telepítése**
+**Az OSC telepítése**
 
-1. Győződjön meg arról, hogy az alapul szolgáló telepítés sikeres volt, akkor ellenőrizze, hogy a OpenFrame\_OSC7\_0\_Fix2\_Linux\_x86\_64. bin installer-fájl és a osc.properties konfigurációs fájl jelen.
-2. Szerkessze a osc.properties fájlban a következő paraméterekkel:
+1. Győződjön meg arról, hogy az alap telepítése sikeres volt, majd ellenőrizze, hogy a OpenFrame Kiindulópontul @ no__t-0OSC7 @ no__t-10 @ no__t-2Fix2 @ no__t-3Linux @ no__t-4x86\_64.bin Installer fájl és az OSC. properties konfigurációs fájl található-e.
+2. Szerkessze a következő paramétereket az OSC. properties fájlban:
      ```
      OPENFRAME_HOME=/opt/tmaxapp/OpenFrame OSC_SYS_OSC_NCS_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_NCS OSC_APP_OSC_TC_PATH=/opt/tmaxapp/OpenFrame/temp/OSC_TC
      ```
 
-3. Hajtsa végre a telepítő használatával a tulajdonságok fájl látható módon:
+3. Hajtsa végre a telepítőt a tulajdonságok fájl használatával, ahogy az a következőképpen jelenik meg:
 
      ```
      [oframe7@ofdemo ~]$ chmod a+x OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin [oframe7@ofdemo ~]$ ./OpenFrame_OSC7_0_Fix2_Linux_x86_64.bin -f osc.properties
      ```
 
-     Amikor végzett, a "Telepítés befejeződött" üzenet jelenik meg.
+     Ha elkészült, a "telepítés kész" üzenet jelenik meg.
 
-4. Győződjön meg arról, hogy a bash-profilhoz OSC változók frissül.
-5. Tekintse át a OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log fájlt. A következőhöz hasonló eredményt kell kapnia:
+4. Győződjön meg arról, hogy a bash-profil frissítése OSC-változókkal történik.
+5. Tekintse át a OpenFrame Kiindulópontul @ no__t-0OSC7 @ no__t-10 @ no__t-2Fix2\_InstallLog.log fájlt. A következőhöz hasonló eredményt kell kapnia:
 
      ```
      Summary 
@@ -1180,13 +1180,13 @@ OSC a OpenFrame környezet, IBM, amely támogatja a nagy sebességű OLTP-tranza
      0 FatalError
      ```
 
-6. Nyissa meg a ofsys.seq konfigurációs fájl a vi használatával. Példa:
+6. A VI segítségével nyissa meg a ofsys. SEQ konfigurációs fájlt. Példa:
 
      ```
      vi $OPENFRAME_HOME/config/ofsys.seq
      ```
 
-7. Az a \#alap és \#BATCH-szakaszok, szerkesztheti a paraméterek látható módon.
+7. A \#BASE és a \#BATCH szakaszban az ábrán látható módon szerkessze a paramétereket.
 
      ```
      Before changes
@@ -1224,7 +1224,7 @@ OSC a OpenFrame környezet, IBM, amely támogatja a nagy sebességű OLTP-tranza
      TPFMAGENT      tmsvr
     ```
 
-8. Másolja a licencfájlt. Példa:
+8. Másolja ki a licencfájl fájlját. Példa:
 
      ```
      [oframe7@ofdemo ~]$ cp /home/oframe7/oflicense/ofonline/licosc.dat 
@@ -1238,9 +1238,9 @@ OSC a OpenFrame környezet, IBM, amely támogatja a nagy sebességű OLTP-tranza
      -rwxrwxr-x. 1 oframe mqm 80 Sep  3 11:54 lictjes.da
      ```
 
-9. Elindításához, és állítsa le a OSC, inicializálni a CICS régió, a megosztott memória beírásával `osctdlinit OSCOIVP1` parancsot a parancssorba.
+9. Az OSC elindításához és leállításához inicializálja a CICS régió megosztott memóriáját `osctdlinit OSCOIVP1` érték beírásával a parancssorba.
 
-10. Futtatás `oscboot` OSC indításához. Kimenet az alábbihoz hasonlóan jelenik meg:
+10. Futtassa a `oscboot` parancsot a OSC rendszerindításához. A kimenet valahogy így néz ki:
 
      ```
      OSCBOOT : pre-processing       [ OK ]
@@ -1254,39 +1254,39 @@ OSC a OpenFrame környezet, IBM, amely támogatja a nagy sebességű OLTP-tranza
           TMBOOT: TLM(tlm) is starting: Mon Sep 12 01:40:25 2016 
      ```
 
-11. Győződjön meg arról, hogy készen áll-e a folyamat állapotát, használja a `tmadmin` si parancsot. Összes folyamat kell megjelenítenie a RDY a **állapot** oszlop.
+11. A folyamat készenléti állapotának ellenőrzéséhez használja a `tmadmin` parancsot az si-ben. Az összes folyamatnak az **állapot** oszlopban kell megjelennie a RDY.
 
-    ![Folyamatok RDY megjelenítése](media/tmadmin-02.png)
+    ![RDY megjelenítő folyamatok](media/tmadmin-02.png)
 
-12. OSC állítsa le, használja a `oscdown` parancsot.
+12. Állítsa le az OSC-t a `oscdown` parancs használatával.
 
-## <a name="install-jeus"></a>JEUS telepítése
+## <a name="install-jeus"></a>A JEUS telepítése
 
-JEUS (Java vállalati felhasználó megoldás), a OpenFrame webalkalmazás-kiszolgáló a bemutató réteget biztosít.
+A JEUS (Java Enterprise felhasználói megoldás) a OpenFrame Kiindulópontul webalkalmazás-kiszolgáló megjelenítési rétegét biztosítja.
 
-Mielőtt telepítené a JEUS, telepítse az Apache Ant csomagot, amely biztosítja a kódtárakat és parancssori eszközök JEUS telepítéséhez szükséges.
+A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telepítéséhez szükséges kódtárakat és parancssori eszközöket biztosítja.
 
 **Az Apache Ant telepítése**
 
-1. Letöltési Ant bináris használatával a `wget` parancsot. Példa:
+1. Töltse le az Ant bináris fájlt a `wget` parancs használatával. Példa:
 
      ```
      wget http://apache.mirror.cdnetworks.com/ant/binaries/apacheant-1.9.7-bin.tar.gz
      ```
 
-2. Használja a `tar` segédprogramot, bontsa ki a bináris fájlt, és helyezze át a megfelelő helyére. Példa:
+2. A `tar` segédprogram használatával bontsa ki a bináris fájlt, és helyezze át a megfelelő helyre. Példa:
 
      ```
      tar -xvzf apache-ant-1.9.7-bin.tar.gz
      ```
 
-3. A hatékonyság érdekében hozzon létre szimbolikus csatolást:
+3. A hatékonyság érdekében hozzon létre egy szimbolikus hivatkozást:
 
      ```
      ln -s apache-ant-1.9.7 ant
      ```
 
-4. Nyissa meg a bash-profil vi (`vi .bash_profile`), és frissítse a következő változókkal:
+4. Nyissa meg a bash-profilt a VI-ben (`vi .bash_profile`), és frissítse a következő változókkal:
 
      ```
      # Ant ENV
@@ -1294,28 +1294,28 @@ Mielőtt telepítené a JEUS, telepítse az Apache Ant csomagot, amely biztosít
      export PATH=$HOME/ant/bin:$PATH
      ```
 
-5.  A alkalmazni a módosított környezeti változót. Példa:
+5.  Alkalmazza a módosított környezeti változót. Példa:
 
      ```
      [oframe7\@ofdemo \~]\$ source \~/.bash\_profile
      ```
 
-**JEUS telepítése**
+**A JEUS telepítése**
 
-1. A telepítő használatával bontsa ki a `tar` segédprogramot. Példa:
+1. Bontsa ki a telepítőt a `tar` segédprogram használatával. Példa:
 
      ```
      [oframe7@ofdemo ~]$ tar -zxvf jeus704.tar.gz
      ```
 
-2. Hozzon létre egy **jeus** mappa (`mkdir jeus7`) és a bináris fájlt csomagolja ki.
-3. Módosítsa a **telepítő** könyvtár (vagy a saját környezetének JEUS paraméter használata). Példa:
+2. Hozzon létre egy **jeus** mappát (`mkdir jeus7`), és bontsa ki a bináris fájlt.
+3. Váltson a **telepítési** könyvtárra (vagy használja a JEUS paramétert a saját környezetéhez). Példa:
 
      ```
      [oframe7@ofdemo ~]$ cd jeus7/setup/
      ```
 
-4. Hajtsa végre `ant clean-all` a build végrehajtása előtt. Kimenet az alábbihoz hasonlóan jelenik meg:
+4. Hajtsa végre a `ant clean-all` értéket a Build végrehajtása előtt. A kimenet valahogy így néz ki:
 
      ```
      Buildfile: /home/oframe7jeus7/setup/build.xml
@@ -1330,22 +1330,22 @@ Mielőtt telepítené a JEUS, telepítse az Apache Ant csomagot, amely biztosít
      Total time: 0 seconds
      ```
 
-5.  Készítsen biztonsági másolatot a tartomány-config-template.properties fájlt. Példa:
+5.  Készítsen biztonsági másolatot a tartományi konfiguráció-sablon. properties fájlról. Példa:
 
      ```
      [oframe7@ofdemo ~]$ cp domain-config-template.properties domain-configtemplate.properties.bkp
      ```
 
-6. Nyissa meg a tartomány-config-template.properties fájl a vi:
+6. Nyissa meg a tartomány-config-template. properties fájlt a VI-ben:
 
      ```
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Változás `jeus.password=jeusadmin nodename=Tmaxsoft` , `jeus.password=tmax1234 nodename=ofdemo`
+7. Módosítsa a `jeus.password=jeusadmin nodename=Tmaxsoft` értéket `jeus.password=tmax1234 nodename=ofdemo` értékre
 
-8. Hajtsa végre a `ant install` parancsot JEUS felépítéséhez.
-9.  Frissítse a .bash\_profilfájl látható módon a JEUS változókkal:
+8. Hajtsa végre a `ant install` parancsot a JEUS létrehozásához.
+9.  Frissítse a. bash @ no__t-0profile fájlt a JEUS változókkal az alábbiak szerint:
 
      ```
      # JEUS ENV 
@@ -1353,13 +1353,13 @@ Mielőtt telepítené a JEUS, telepítse az Apache Ant csomagot, amely biztosít
      export PATH
      ```
 
-10. Hajtsa végre a bash-profilhoz. Példa:
+10. Hajtsa végre a bash-profilt. Példa:
 
      ```
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Választható*. Hozzon létre egyszerűen, leállás és rendszerindító JEUS összetevők alias:
+11. *Választható*. Hozzon létre egy aliast a JEUS-összetevők egyszerű leállításához és indításához:
 
      ```     
      # JEUS alias
@@ -1370,66 +1370,66 @@ Mielőtt telepítené a JEUS, telepítse az Apache Ant csomagot, amely biztosít
      alias dsdown=‘jeusadmin -domain jeus_domain -u administrator -p tmax1234 "local-shutdown“’
      ```
 
-12. Ellenőrizze a telepítés, indítsa el a tartományi felügyeleti kiszolgáló látható módon:
+12. A telepítés ellenőrzéséhez indítsa el a tartományi felügyeleti kiszolgálót a következő módon:
 
      ```
      [oframe7@ofdemo ~]$ startDomainAdminServer -domain jeus_domain -u administrator -p jeusadmin
      ```
 
-13. Ellenőrizze a webalkalmazás bejelentkezési a szintaxis használatával:
+13. Ellenőrizze a webes bejelentkezés használatával a következő szintaxissal:
 
      ```
      http://<IP>:<port>/webadmin/login
      ```
 
-     Ha például <http://192.168.92.133:9736/webadmin/login.> a bejelentkezési képernyőn jelenik meg:
+     Például <http://192.168.92.133:9736/webadmin/login.> a bejelentkezési képernyő jelenik meg:
     
-     ![JEUS WebAdmin bejelentkezési képernyő](media/jeus-01.png)
+     ![JEUS webadminisztrátor bejelentkezési képernyője](media/jeus-01.png)
 
      > [!NOTE]
-     > Problémákat tapasztal a port-biztonságát, nyissa meg a portot 9736 vagy a tűzfal letiltása (`systemctl stop firewall`).
+     > Ha a port biztonságával kapcsolatos problémákat tapasztal, nyissa meg a 9736-es portot, vagy tiltsa le a tűzfalat (`systemctl stop firewall`).
 
-14. Az állomásnév a kiszolgáló1 módosításához kattintson **zárolása sz & Erkessze**, majd kattintson a **kiszolgáló1**. A kiszolgáló ablakban módosítsa az állomásnevet az alábbiak szerint:
+14. A Kiszolgáló1-hez tartozó állomásnév módosításához kattintson a **zárolás & szerkesztés**elemre, majd a **Kiszolgáló1**elemre. A kiszolgáló ablakban módosítsa az állomásnevet a következőképpen:
 
-    1.  Változás **csomópontnév** való **ofdemo**.
-    2.  Kattintson a **OK** az ablak jobb oldalán.
-    3.  Kattintson a **módosítások alkalmazása** a bal alsó és leírást az ablak, írja be az *eszköznév módosítása*.
+    1.  Módosítsa a **csomópontnév** a **ofdemo**értékre.
+    2.  Az ablak jobb oldalán kattintson az **OK gombra** .
+    3.  Kattintson a **módosítások alkalmazása** gombra az ablak bal alsó részén, és a leíráshoz adja meg a *hostname Change (állomásnév módosítása*) értéket.
 
-    ![JEUS WebAdmin screen](media/jeus-02.png)
+    ![JEUS webfelügyeleti képernyő](media/jeus-02.png)
 
-15. Ellenőrizze, hogy a konfiguráció sikeres, a megerősítő képernyőn.
+15. Ellenőrizze, hogy a konfiguráció sikeres-e a megerősítő képernyőn.
 
-    ![jeus_domain kiszolgáló képernyő](media/jeus-03.png)
+    ![jeus_domain-kiszolgáló képernyő](media/jeus-03.png)
 
-16. Indítsa el a felügyelt kiszolgáló folyamat "kiszolgáló1" a következő paranccsal:
+16. Indítsa el a felügyelt kiszolgáló "Kiszolgáló1" nevű folyamatát a következő parancs használatával:
 
      ```
      [oframe7@ofdemo ~]$ startManagedServer -domain jeus_domain -server server1 -u administrator -p jeusadmin
      ```
 
-## <a name="install-ofgw"></a>OFGW telepítése
+## <a name="install-ofgw"></a>A OFGW telepítése
 
-OFGW a OpenFrame átjáró, amely támogatja a 3270 terminálemulátorral és OSI alap közötti kommunikációt, és a munkamenetek között a terminálemulátorral és OSI kezeli.
+A OFGW az a OpenFrame Kiindulópontul-átjáró, amely támogatja az 3270-es terminál-emulátor és az OSI-alap közötti kommunikációt, és kezeli a terminál emulátora és az OSI közötti munkameneteket.
 
-**OFGW telepítése**
+**A OFGW telepítése**
 
-1. Győződjön meg arról, hogy JEUS telepítése sikeres volt, akkor ellenőrizze, hogy a OFGW7\_0\_1\_Generic.bin installer fájl jelen.
+1. Győződjön meg arról, hogy a JEUS telepítése sikeresen megtörtént, majd ellenőrizze, hogy megtalálható-e a OFGW7 @ no__t-00 @ no__t-11\_Generic.bin Installer-fájl.
 2. Hajtsa végre a telepítőt. Példa:
 
      ```
      [oframe7@ofdemo ~]$ ./OFGW7_0_1_Generic.bin
      ````
 
-3. A következő helyeken használja a megfelelő utasításokat:
-     -   JEUS kezdőkönyvtára
-     -   JEUS Domain Name
-     -   JEUS Server Name
-     -   Tibero illesztőprogram
-     -   Csomópont-azonosító Tmax ofdemo
+3. A következő helyszíneket használhatja a megfelelő kérésekhez:
+     -   JEUS-kezdőkönyvtár
+     -   JEUS tartomány neve
+     -   JEUS-kiszolgáló neve
+     -   Tibero-illesztőprogram
+     -   Tmax csomópont-azonosító ofdemo
 
-4. Fogadja el a többi alapértelmezett beállítást, majd nyomja le az Enter billentyűt, hogy a telepítőből való kilépéshez.
+4. Fogadja el a többi alapértelmezett értéket, majd nyomja le az ENTER billentyűt a telepítőből való kilépéshez.
 
-5. Győződjön meg arról, hogy a várt módon működik-e OFGW URL-címe:
+5. Ellenőrizze, hogy a OFGW URL-címe a várt módon működik-e:
 
      ```
      Type URL 
@@ -1439,43 +1439,43 @@ OFGW a OpenFrame átjáró, amely támogatja a 3270 terminálemulátorral és OS
 
      A következő képernyő jelenik meg:
 
-    ![OpenFrame WebTerminal](media/ofgw-01.png)
+    ![OpenFrame Kiindulópontul webterminál](media/ofgw-01.png)
 
-## <a name="install-ofmanager"></a>OFManager telepítése
+## <a name="install-ofmanager"></a>A OFManager telepítése
 
-OFManager biztosít műveletet és felügyeleti funkciók OpenFrame a webes környezetben.
+A OFManager üzemeltetési és felügyeleti funkciókat biztosít a OpenFrame Kiindulópontul számára a webes környezetben.
 
-**OFManager telepítése**
+**A OFManager telepítése**
 
-1. Ellenőrizze, hogy a OFManager7\_Generic.bin installer fájl jelen.
+1. Ellenőrizze, hogy megtalálható-e a OFManager7\_Generic.bin telepítőfájl.
 2. Hajtsa végre a telepítőt. Példa:
 
      ```
      OFManager7_Generic.bin
      ```
 
-3.  Nyomja le az Enter billentyűt a folytatáshoz, majd fogadja el a licencszerződést.
-4.  Válassza ki a telepítési mappát.
+3.  Nyomja le az ENTER billentyűt a folytatáshoz, majd fogadja el a licencszerződést.
+4.  Válassza a telepítési mappát.
 5.  Fogadja el az alapértelmezett beállításokat.
-6.  Válassza ki a Tibero-adatbázisként.
-7.  Nyomja le az Enter billentyűt, hogy a telepítőből való kilépéshez.
-8.  Győződjön meg arról, hogy a várt módon működik-e OFManager URL-címe:
+6.  Válassza a Tibero-adatbázis elemet.
+7.  Az ENTER billentyű lenyomásával kiléphet a telepítőből.
+8.  Ellenőrizze, hogy a OFManager URL-címe a várt módon működik-e:
 
      ```
      Type URL http://192.168.92.133:8088/ofmanager and press enter <  IP >  : < PORT >  ofmanager Enter ID:   ROOT 
      Password: SYS1
      ```
 
-A kezdőképernyő jelenik meg:
+Megjelenik a kezdőképernyő:
 
-![Tmax OpenFrame Manager bejelentkezési képernyő](media/ofmanager-01.png)
+![Tmax OpenFrame Kiindulópontul-kezelő bejelentkezési képernyője](media/ofmanager-01.png)
 
-Ezzel befejezte a OpenFrame összetevők telepítése.
+Ezzel befejezte a OpenFrame Kiindulópontul-összetevők telepítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A nagyszámítógépes migráció használatát fontolgatja, ha segítséget nyújtanak a növekvő partneri ökoszisztémánkban érhető el. Egy partneri megoldás kiválasztásával kapcsolatban részletes útmutatásért tekintse meg a [Platform korszerűsítése Alliance](https://www.platformmodernization.org/pages/mainframe.aspx).
+Ha a nagyszámítógépek áttelepítését tervezi, a bővülő partneri ökoszisztémánk segítséget nyújt Önnek. A partneri megoldások kiválasztásával kapcsolatos részletes útmutatásért tekintse meg a [platform modernizációs szövetségét](https://datamigration.microsoft.com/).
 
 -   [Bevezetés az Azure használatába](https://docs.microsoft.com/azure/)
--   [Host Integration Server (HIS) dokumentációja](https://docs.microsoft.com/host-integration-server/)
--   [Az Azure virtuális adatközpont Lift-and-Shift-útmutató](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [A gazdagép integrációs kiszolgálójának dokumentációja](https://docs.microsoft.com/host-integration-server/)
+-   [Útmutató az Azure Virtual adatközponthoz](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)

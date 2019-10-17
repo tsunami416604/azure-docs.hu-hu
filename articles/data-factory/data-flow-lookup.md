@@ -6,18 +6,18 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: d762bddbe098e30cbf9e9c02da3c06073a358b12
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249251"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387858"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
 A lookup használatával adjon meg egy másik forrásból származó referenciát az adatfolyamathoz. A keresési átalakításhoz olyan definiált forrásra van szükség, amely a hivatkozási táblára mutat, és megfelel a kulcs mezőinek.
 
-![Keresési transzformáció](media/data-flow/lookup1.png "keresése")
+![Keresési transzformáció](media/data-flow/lookup1.png "Keresés")
 
 Válassza ki azokat a legfontosabb mezőket, amelyeknek meg kell egyeznie a bejövő adatfolyam mezői és a hivatkozási forrás mezői között. Először létre kell hoznia egy új forrást az adatfolyam-tervezési vászonon, hogy az a keresés jobb oldalán legyen.
 
@@ -33,7 +33,7 @@ A keresési átalakítás után a következő átalakításokkal vizsgálhatja m
 
 Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
 
-![Szórásos csatlakozás](media/data-flow/broadcast.png "szórásos csatlakoztatása")
+![Szórásos csatlakozás](media/data-flow/broadcast.png "Szórásos csatlakozás")
 
 ### <a name="broadcast-join"></a>Szórásos csatlakozás
 

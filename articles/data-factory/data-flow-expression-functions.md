@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: c062a75516a1b865c1ff6c35f00d4fbf7c4881c6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 27d968aa5202fbeb38be9a2416514d2185c1d8b9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029373"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436742"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban 
 
@@ -68,7 +68,13 @@ ___
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
 Lekérdezi az aktuális dátumot, amikor a feladatnak futnia kell. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``currentDate() == toDate('2250-12-31') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
 Lekérdezi az aktuális időbélyeget, amikor a feladatok a helyi időzónával kezdődnek * ``currentTimestamp() == toTimestamp('2250-12-31 12:12:12') -> false`` @ no__t-1 @ no__t-2<br/><br/>
-Az aktuális időbélyeg beolvasása UTC-ként. Ha azt szeretné, hogy a jelenlegi idő a fürt időzónája szerint egy másik időzónában legyen értelmezve, a választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában lehet átadni. Alapértelmezés szerint az aktuális időzóna. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. @no__t – 0 az UTC-idő konvertálása egy másik időzónára a fromUTC () * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
+Az aktuális időbélyeg beolvasása UTC-ként. Ha azt szeretné, hogy a jelenlegi idő a fürt időzónája szerint egy másik időzónában legyen értelmezve, a választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában lehet átadni. Alapértelmezés szerint az aktuális időzóna. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. A [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) használatával alakítsa át az UTC-időt egy másik időzónára a fromUTC () használatával.
+* ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+* ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
+* ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
+___
+### <code>dayOfMonth</code>
+<code><b>dayOfMonth(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 Beolvassa a hónap napját a dátum * ``dayOfMonth(toDate('2018-06-08')) -> 8`` @ no__t-1 @ no__t-2<br/><br/>
 A hét napját adja meg egy dátummal. 1 – vasárnap, 2 – hétfő..., 7 – szombat * ``dayOfWeek(toDate('2018-06-08')) -> 6`` @ no__t-1 @ no__t-2<br/><br/>
 Az év napjának beolvasása * ``dayOfYear(toDate('2016-04-09')) -> 100`` @ no__t-1 @ no__t-2 dátummal<br/><br/>
@@ -84,20 +90,12 @@ Mindig hamis értéket ad vissza. Ha van "false" nevű oszlop, használja a füg
 Kiszűri a tömb azon elemeit, amelyek nem felelnek meg a megadott predikátumnak. A szűrő a predikátum függvény egy elemére mutató hivatkozást vár #item * ``filter([1, 2, 3, 4], #item > 2) -> [3, 4]`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
 Egy oszlopcsoport első értékének beolvasása. Ha a második paraméter ignoreNulls ki van hagyva, a rendszer hamis * ``first(sales)`` @ no__t-1 @ no__t-2 @ no__t-3 értéket feltételez.<br/><br/>
 A legnagyobb egész számot adja vissza, amely nem nagyobb, mint a szám * ``floor(-0.1) -> -1`` @ no__t-1 @ no__t-2<br/><br/>
-Az UTC értékre konvertálja az időbélyeget. Igény szerint átadhatja az időzónát "GMT", "PST", "UTC", "Amerika/Kajmán" formátumban. Alapértelmezés szerint az aktuális timezoneRefer Java SimpleDateFormat elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
-* ``fromUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
-___
-### <code>greater</code>
-<code><b>greater(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => boolean</b></code><br/><br/>
+Az UTC értékre konvertálja az időbélyeget. Igény szerint átadhatja az időzónát "GMT", "PST", "UTC", "Amerika/Kajmán" formátumban. Alapértelmezés szerint az aktuális timezoneRefer Java SimpleDateFormat elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false`` @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 Összehasonlítási nagyobb operátor. Ugyanaz, mint > operátor * ``greater(12, 24) -> false`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 Összehasonlítás nagyobb vagy egyenlő operátorral. Ugyanaz, mint a > = operátor * ``greaterOrEqual(12, 12) -> true`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
 A legnagyobb értéket adja vissza az értékek listájában, mivel a bemenet a null értékek kihagyása. Null értéket ad vissza, ha minden bemenet null * ``greatest(10, 30, 15, 20) -> 30`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5<br/><br/>
 Az oszlop értékének ellenőrzése a streamben név szerint. A második argumentumként átadhat egy opcionális stream-nevet.  A tervezési időszakban ismert oszlopnevek csak a nevük alapján kezelhetők. A számított bemenetek nem támogatottak, de használhat paraméteres helyettesítéseket * ``hasColumn('parent')`` @ no__t-1 @ no__t-2<br/><br/>
-Egy időbélyeg óra értékének beolvasása. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
-* ``hour(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 12``
-___
-### <code>hours</code>
-<code><b>hours(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+Egy időbélyeg óra értékének beolvasása. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12`` @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 Az órák számának időtartama (ezredmásodpercben) * ``hours(2) -> 7200000L`` @ no__t-1 @ no__t-2<br/><br/>
 A tömb minden elemét egy új elemre képezi le a megadott kifejezés használatával. A Térkép a kifejezés függvény egy elemére mutató hivatkozást vár #itemként, és az elem indexére mutató hivatkozást #index * ``iMap([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]`` @ no__t-1 @ no__t-2<br/><br/>
 Egy feltétel alapján egy vagy több érték is érvényes. Ha más nincs meghatározva, akkor NULL értékűnek számít. Mindkét értéknek kompatibilisnek kell lennie (numerikus, karakterlánc...) * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
@@ -145,28 +143,18 @@ A feltételek alapján egy oszlop maximális értékét kapja meg * ``maxIf(regi
 Kiszámítja a változó primitív adattípusú oszlopok MD5-kivonatát, és egy 32 karakteres hexadecimális karakterláncot ad vissza. Felhasználható egy sor ujjlenyomatának kiszámítására * ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'`` @ no__t-1 @ no__t-2<br/><br/>
 Egy oszlop értékeinek középértékét kapja meg. Ugyanaz, mint az AVG * ``mean(sales)`` @ no__t-1 @ no__t-2<br/><br/>
 A feltételek alapján egy oszlop értékeinek középértékét kapja meg. Ugyanaz, mint a avgIf * ``meanIf(region == 'West', sales)`` @ no__t-1 @ no__t-2<br/><br/>
-Lekéri egy dátum ezredmásodperc értékét. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
-___
-### <code>milliseconds</code>
-<code><b>milliseconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+Lekéri egy dátum ezredmásodperc értékét. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871`` @ no__t-2 @ no__t-3<br/><br/>
 Időtartam ezredmásodpercben * ``seconds(2) -> 2L`` @ no__t-1 @ no__t-2<br/><br/>
 Lekéri egy oszlop minimális értékét * ``min(sales)`` @ no__t-1 @ no__t-2<br/><br/>
 A feltételek alapján lekéri egy oszlop minimális értékét * ``minIf(region == 'West', sales)`` @ no__t-1 @ no__t-2<br/><br/>
 Számok kivonása. Kivonás a napok számától számítva. Kivonni időtartama egy időbélyegből. A kivonni két időbélyeget kap, hogy a különbség ezredmásodpercben legyen. Ugyanaz, mint a-Operator * ``minus(20, 10) -> 10`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7<br/><br/>
-Egy időbélyeg perces értékének beolvasása. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
-* ``minute(toTimestamp('2009-07-30 12:58:59'), 'PST') -> 58``
-___
-### <code>minutes</code>
-<code><b>minutes(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+Egy időbélyeg perces értékének beolvasása. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58`` @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 A percek számának időtartama (ezredmásodpercben) * ``minutes(2) -> 120000L`` @ no__t-1 @ no__t-2<br/><br/>
 Pár számjegyből álló modulus. Ugyanaz, mint a (z)% operátor * ``mod(20, 8) -> 4`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
 Lekéri egy dátum vagy időbélyeg hónapjának értékét * ``month(toDate('2012-8-8')) -> 8`` @ no__t-1 @ no__t-2<br/><br/>
-A két dátum közötti hónapok számának beolvasása. Kikapcsolhatja a számítást. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``
-___
-### <code>multiply</code>
-<code><b>multiply(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
+A két dátum közötti hónapok számának beolvasása. Kikapcsolhatja a számítást. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677`` @ no__t-2 @ no__t-3<br/><br/>
 A számok összeszorzása. Ugyanaz, mint a * operátor * ``multiply(20, 10) -> 200`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
-A NTile függvény az egyes ablakos partíciók sorait a `n` gyűjtőre osztja, 1-től egészen a legtöbb `n` értékig. A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A NTile függvény a tertiles, a quartiles, a deciles és más gyakori összesítő statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: A normál gyűjtők mérete egy további sorral bővül. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális gyűjtő betömött).
+A NTile függvény az egyes ablakos partíciók sorait a `n` gyűjtőre osztja, 1-től egészen a legtöbb `n` értékig. A gyűjtő értéke legfeljebb 1 lesz. Ha a partícióban lévő sorok száma nem egyenletesen oszlik meg a gyűjtők számával, akkor a fennmaradó értékeket a rendszer egy gyűjtőre osztja szét, az első gyűjtőtől kezdve. A NTile függvény a tertiles, a quartiles, a deciles és más gyakori összesítő statisztikák kiszámításához hasznos. A függvény két változót számít ki az inicializálás során: a normál gyűjtő méretének egy további sora lesz hozzáadva. Mindkét változó az aktuális partíció méretétől függ. A számítási folyamat során a függvény nyomon követi az aktuális sorszámot, az aktuális gyűjtő számát, valamint azt a sorszámot, amelynél a gyűjtő módosul (bucketThreshold). Ha az aktuális sor száma eléri a gyűjtő küszöbértékét, a rendszer eggyel növeli a gyűjtő értékét, a küszöbértéket pedig a gyűjtő mérete növeli (plusz egy extra, ha az aktuális gyűjtő betömött).
 * ``nTile()``
 * ``nTile(numOfBuckets)``
 ___
@@ -200,10 +188,7 @@ Egy számot kerekít egy opcionális skálán és egy opcionális kerekítési m
 Szekvenciális sorszámozást rendel egy ablakban lévő sorokhoz 1 * ``rowNumber()`` @ no__t-1 @ no__t-2<br/><br/>
 A jobb gombbal a karakterláncot a megadott kitöltés alapján kell kiadni, amíg az adott hosszúságú nem lesz. Ha a karakterlánc egyenlő vagy nagyobb, mint a hossz, akkor azt a hossz * ``rpad('dumbo', 10, '-') -> 'dumbo-----'`` @ no__t-1 @ no__t-2 @ no__t-3rtrim @ no__t-4 @ no__t-5 értékre vágja.<br/><br/>
 A jobb oldali levágja a kezdő karakterek egy sztringjét. Ha a második paraméter nem lett megadva, a szóközöket vágja le. Más esetben a második paraméterben megadott karaktereket vágja * ``rtrim('  dumbo  ') -> '  dumbo'`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
-Egy dátum második értékét kéri le. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
-___
-### <code>seconds</code>
-<code><b>seconds(<i>&lt;value1&gt;</i> : integer) => long</b></code><br/><br/>
+Egy dátum második értékét kéri le. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. A helyi időzónát használja a rendszer alapértelmezettként. Tekintse át a Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59`` @ no__t-2 @ no__t-3<br/><br/>
 Időtartam ezredmásodpercben a másodpercek száma * ``seconds(2) -> 2000L`` @ no__t-1 @ no__t-2<br/><br/>
 Kiszámítja a változó primitív adattípusok oszlopának SHA-1 kivonatát, és egy 40 karakteres hexadecimális karakterláncot ad vissza. Felhasználható egy sor ujjlenyomatának kiszámítására * ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'`` @ no__t-1 @ no__t-2<br/><br/>
 Kiszámítja a változó primitív adattípusú oszlop SHA-2 kivonatát, amely egy kis hosszúságú, ami csak 0 (256), 224, 256, 384, 512 érték lehet. Felhasználható egy sor ujjlenyomatának kiszámítására * ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'`` @ no__t-1 @ no__t-2<br/><br/>
@@ -243,11 +228,7 @@ Tetszőleges numerikus vagy sztringet alakít át hosszú értékre. Az átalak�
 Bármilyen numerikus vagy sztringet alakít át egy rövid értékre. Az átalakításhoz választható Java decimális formátumot is használhat. Bármilyen egész szám, hosszú, float, Double * ``toShort(123) -> 123`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 Egy primitív adattípust karakterlánccá alakít át. A számok és a dátum formátuma megadható. Ha nincs megadva, a rendszer alapértelmezés szerint ki van választva. A Java decimális formátum a számok esetében használatos. Tekintse meg a Java SimpleDateFormat az összes lehetséges dátumformátumot; az alapértelmezett formátum: éééé-hh-dd * ``toString(10) -> '10'`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 @ no__t-8 @ no__t-9<br/><br/>
 Egy karakterláncot egy időbélyeg-formátumra konvertál, és nem kötelező időbélyeg-formátumot. Tekintse meg a Java SimpleDateFormat az összes lehetséges formátumot. Ha az időbélyeg ki van hagyva az alapértelmezett mintának. éééé-[M] M-[d] d óó: PP: SS [. f...] használatos. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg támogatja a legfeljebb ezredmásodperces pontosságot a 999Refer Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')`` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6<br/><br/>
-Az időbélyeget UTC értékre alakítja. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Alapértelmezés szerint az aktuális timezoneRefer Java SimpleDateFormat elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
-* ``toUTC(currentTimeStamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
-___
-### <code>translate</code>
-<code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
+Az időbélyeget UTC értékre alakítja. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Alapértelmezés szerint az aktuális timezoneRefer Java SimpleDateFormat elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false`` @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 Egy karakterkészletet cseréljen fel egy másik karakterkészletre a karakterláncban. A karakterek 1 és 1 közötti helyettesítéssel rendelkeznek * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
 Egy kezdő és záró karakterből álló karakterláncot metsz. Ha a második paraméter nem lett megadva, a szóközöket vágja le. Más esetben a második paraméterben megadott karaktereket vágja * ``trim('  dumbo  ') -> 'dumbo'`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
 Mindig igaz értéket ad vissza. Használja a Function szintaxist (true ()), ha van egy "true" nevű oszlop, * ``(10 + 20 == 30) -> true`` @ no__t-1 @ no__t-2 @ no__t-3<br/><br/>
@@ -265,6 +246,6 @@ A hetek számának időtartama (ezredmásodpercben) * ``weeks(2) -> 1209600000L`
 Logikai XOR operátor. Ugyanaz, mint a ^ operátor * ``xor(true, false) -> true`` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4<br/><br/>
 A dátum év értékének beolvasása @no__t – 0
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg a Expression Builder használatát](concepts-data-flow-expression-builder.md).

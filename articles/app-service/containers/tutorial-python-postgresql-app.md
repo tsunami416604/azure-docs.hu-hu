@@ -15,18 +15,18 @@ ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: c816d2ee76002f60963415b1027579eb6db94089
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329994"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439426"
 ---
-# <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Python-(Django-) Webalkalmazás létrehozása a PostgreSQL-sel Azure App Service
+# <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python-(Django-) Webalkalmazás létrehozása a PostgreSQL-sel Azure App Service
 
 A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy adatvezérelt Python-(Django-) webalkalmazást a PostgreSQL használatával adatbázis-háttérként. Ha elkészült, Django webalkalmazása Azure App Service Linuxon fut.
 
-![Python Django-webalkalmazás App Service Linuxon](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Python Django-webalkalmazás Azure App Service Linuxon](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -147,7 +147,7 @@ Nyissa meg a `http://localhost:8000` böngészőt a böngészőben. A következ�
 
 Lépjen a `http://localhost:8000/admin` lehetőségre, és jelentkezzen be az utolsó lépésben létrehozott rendszergazdai felhasználóval. Válassza a **Hozzáadás** lehetőséget a **kérdések** mellett, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 
-![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Python Django-alkalmazás futtatása helyileg App Services](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Lépjen a `http://localhost:8000` lapra, és tekintse meg a megjelenő lekérdezési kérdést.
 
@@ -276,7 +276,7 @@ Nyissa meg ismét a `http://localhost:8000` értéket. @No__t – 0 üzenetet ke
 
 Lépjen a `http://localhost:8000/admin` elemre, és jelentkezzen be a létrehozott rendszergazda felhasználóval, és hozzon létre egy lekérdezési kérdést, mint korábban.
 
-![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-local.png)
+![Python Django-alkalmazás futtatása helyileg App Services](./media/tutorial-python-postgresql-app/run-python-django-app-locally.png)
 
 Lépjen a `http://localhost:8000` lapra, és tekintse meg a megjelenő lekérdezési kérdést. Az alkalmazás most már az Azure-adatbázisba írja az adatait.
 
@@ -391,7 +391,7 @@ App Service egy Django-projektet észlel a tárházban úgy, hogy az egyes alkö
 
 Lépjen a `<app-name>.azurewebsites.net` értékre, és jelentkezzen be ugyanazzal a rendszergazda felhasználóval, akit Ön hozott létre. Ha szeretné, próbálkozzon még több lekérdezési kérdés létrehozásával.
 
-![Helyileg futó Python Django-alkalmazás](./media/tutorial-python-postgresql-app/django-admin-azure.png)
+![Python Django-alkalmazás futtatása App Services az Azure-ban](./media/tutorial-python-postgresql-app/run-python-django-app-in-azure.png)
 
 **Gratulálunk!** Python-(Django-) webalkalmazást futtat Azure App Service Linux rendszeren.
 
@@ -405,11 +405,11 @@ A létrehozott alkalmazás megjelenítéséhez nyissa meg a [Azure Portal](https
 
 A bal oldali menüben válassza a **app Services**lehetőséget, majd válassza ki az Azure-alkalmazás nevét.
 
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/tutorial-python-postgresql-app/app-resource.png)
+![Navigáljon a Python Django alkalmazáshoz a Azure Portal](./media/tutorial-python-postgresql-app/navigate-to-django-app-in-app-services-in-the-azure-portal.png)
 
 Alapértelmezés szerint a portál az alkalmazás **Áttekintés** lapját jeleníti meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
 
-![Az App Service lap az Azure Portalon](./media/tutorial-python-postgresql-app/app-mgmt.png)
+![A Python Django-alkalmazás kezelése a Azure Portal áttekintés lapján](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

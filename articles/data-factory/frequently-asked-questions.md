@@ -1,5 +1,5 @@
 ---
-title: 'Azure Data Factory: Gyakori kérdések | Microsoft Docs'
+title: 'Azure Data Factory: gyakori kérdések | Microsoft Docs'
 description: Választ kaphat a Azure Data Factoryával kapcsolatos gyakori kérdésekre.
 services: data-factory
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: c4836d519556e5a031f81279fef4891ba8d47c05
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ee57d943016c2d166f3c8469b403b56b1009385c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141566"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387065"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory GYIK
 Ez a cikk a Azure Data Factoryával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.  
@@ -48,7 +48,7 @@ A Data Factory biztosítja az adatintegrációhoz szükséges adatáramlási st�
 - Különbözeti folyamatok:
     - A paraméterekkel határozható meg a Delta másolás magas vízjele, miközben a dimenzió-vagy hivatkozásokat a helyszíni vagy a felhőben lévő, a helyi vagy a felhőben lévő adattárakba helyezi át az adatoknak a tóba való betöltéséhez. 
 
-További információ [: oktatóanyag: Folyamatok](tutorial-control-flow.md)vezérlése.
+További információ: [oktatóanyag: folyamatok vezérlése](tutorial-control-flow.md).
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Nagy léptékű, kód nélküli folyamatokkal átalakított adatmennyiség
 Az új böngészőalapú szerszámozási élmény kód nélküli folyamat-létrehozási és üzembe helyezési lehetőséget kínál modern, interaktív webes felülettel.
@@ -74,7 +74,7 @@ Ha át szeretné helyezni a SSIS számítási feladatait, létrehozhat egy Data 
 ### <a name="sdks"></a>SDK-k
 Ha Ön fejlett felhasználó, és egy programozott felületet keres, a Data Factory az SDK-k széles választékát kínálja, amelyeket a folyamatok létrehozásához, kezeléséhez vagy monitorozásához használhat a kedvenc IDE használatával. A nyelvi támogatás magában foglalja a .NET, a PowerShell, a Python és a REST használatát.
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitoring
 A böngésző felhasználói felületén a PowerShell, az SDK vagy a vizuális monitorozási eszközök segítségével figyelheti az adatgyárait. Hatékony és hatékony módon figyelheti és kezelheti az igény szerinti, trigger-és órajel-alapú egyéni folyamatokat. Szakítsa meg a meglévő feladatokat, tekintse meg a hibák áttekintését, a részletes hibaüzenetek lekérését és a problémák hibakeresését, mindezt egyetlen panelről, háttérbeli váltás nélkül, vagy navigáljon a képernyők között. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>A SSIS új szolgáltatásai Data Factory
@@ -94,9 +94,9 @@ A 2017-es kezdeti nyilvános előzetes kiadás óta a Data Factory a következő
 ## <a name="what-is-the-integration-runtime"></a>Mi az Integration Runtime?
 Az Integration Runtime az a számítási infrastruktúra, amelyet a Azure Data Factory használ a következő adatintegrációs képességek biztosítására különböző hálózati környezetekben:
 
-- **Adatáthelyezés**: Az adatáthelyezés esetében az integrációs modul áthelyezi az adatforrások és a célhelyek közötti adattárakat, miközben támogatja a beépített összekötőket, a formázást, az oszlop-hozzárendelést, valamint a teljesítménybeli és skálázható adatátvitelt.
-- **Küldési tevékenységek**: Átalakítás esetén az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
-- **SSIS-csomagok végrehajtása**: Az Integration Runtime natív módon hajtja végre a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
+- **Adatáthelyezés**: az adatáthelyezéshez az integrációs modul a forrás és a cél adattárolók között helyezi át az adatátvitelt, miközben támogatja a beépített összekötőket, a formátum átalakítását, az oszlopok hozzárendelését, valamint a teljesítmény és a skálázható adatátvitelt.
+- **Küldési tevékenységek**: átalakításhoz az integrációs modul képes natív módon végrehajtani a SSIS-csomagokat.
+- **SSIS-csomagok végrehajtása**: az Integration Runtime natív módon végrehajtja a SSIS-csomagokat egy felügyelt Azure számítási környezetben. Az Integration Runtime számos számítási szolgáltatáson (például Azure HDInsight, Azure Machine Learning, SQL Database és SQL Server) futó átalakítási tevékenységek elküldését és figyelését is támogatja.
 
 Az integrációs modul egy vagy több példányát is telepítheti az adatáthelyezéshez és-átalakításhoz szükséges módon. Az Integration Runtime egy Azure-beli nyilvános hálózaton vagy egy privát hálózaton (helyszíni, Azure Virtual Network vagy Amazon Web Services virtuális magánhálózati felhőben [VPC]) is futtatható. 
 
@@ -111,21 +111,21 @@ Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-el
 ### <a name="pipelines"></a>Adatcsatornák
 A data factory egy vagy több folyamattal rendelkezhet. A folyamat a tevékenységek logikai csoportosítása a Munkaegységek elvégzéséhez. A folyamatban lévő tevékenységek együtt egy feladatot hajtanak végre. Egy folyamat például tartalmazhat olyan tevékenységeket, amelyek egy Azure-blobból töltenek le adatot, majd egy HDInsight-fürtön futtatnak egy kaptár-lekérdezést az adatok particionálásához. Ennek az az előnye, hogy egy folyamattal kezelheti a tevékenységeket készletként ahelyett, hogy az egyes tevékenységeket külön kell kezelnie. Egy folyamaton belül összekapcsolhatja a tevékenységeket, hogy azok egymás után is működjenek, vagy egymástól függetlenül, párhuzamosan is működhetnek.
 
-### <a name="activities"></a>Tevékenységek
+### <a name="activities"></a>Activities (Tevékenységek)
 Egy folyamatban a tevékenységek a feldolgozási lépéseket jelentik. A másolási tevékenység használatával például az adatok egy adattárból egy másik adattárba másolhatók. Ehhez hasonlóan használhat egy kaptár-tevékenységet is, amely egy Azure HDInsight-fürtön futó kaptár-lekérdezést futtat az adatai átalakításához vagy elemzéséhez. A Data Factory három típusú tevékenységet támogat: az adattovábbítási tevékenységeket, az adat-átalakítási tevékenységeket és a vezérlési tevékenységeket.
 
 ### <a name="datasets"></a>Adathalmazok
 Az adatkészletek adatstruktúrákat jelölnek az adattárakon belül, amelyek egyszerűen rámutatnak vagy meghivatkozzák az adatokat, amelyeket a tevékenységekben be- vagy kimenetként használni szeretne. 
 
-### <a name="linked-services"></a>Összekapcsolt szolgáltatások
-A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. A következőképpen képzelheti el: A társított szolgáltatás határozza meg az adatforráshoz való kapcsolódást, és egy adatkészlet az adat szerkezetét jelöli. Egy Azure Storage-beli társított szolgáltatás például meghatározza az Azure Storage-fiókhoz való kapcsolódáshoz használt kapcsolati karakterláncot. Az Azure Blob-adatkészlet pedig meghatározza a BLOB-tárolót és az adatokat tartalmazó mappát.
+### <a name="linked-services"></a>Társított szolgáltatások
+A társított szolgáltatások nagyon hasonlóak a kapcsolati sztringekhoz, amelyek meghatározzák azokat a kapcsolati információkat, amelyeket a Data Factory a külső erőforrásokhoz történő csatlakozáshoz igényel. Így Képzelje el: A társított szolgáltatás határozza meg az adatforráshoz való kapcsolódást, és egy adatkészlet az adat szerkezetét jelöli. Egy Azure Storage-beli társított szolgáltatás például meghatározza az Azure Storage-fiókhoz való kapcsolódáshoz használt kapcsolati karakterláncot. Az Azure Blob-adatkészlet pedig meghatározza a BLOB-tárolót és az adatokat tartalmazó mappát.
 
 A társított szolgáltatásoknak két célja van Data Factoryban:
 
-- Egy olyan *adattár* képviseletére, amely tartalmazza, de nem korlátozódik a helyszíni SQL Server példányra, egy Oracle Database-példányra, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: másolási [tevékenység Azure Data Factoryban](copy-activity-overview.md).
+- Egy olyan *adattár* képviseletére, amely tartalmazza, de nem korlátozódik a helyszíni SQL Server példányra, egy Oracle Database-példányra, egy fájlmegosztás vagy egy Azure Blob Storage-fiókra. A támogatott adattárak listáját lásd: [másolási tevékenység Azure Data Factoryban](copy-activity-overview.md).
 - Olyan *számítási erőforrás* jelölésére, amelyen végrehajtható a tevékenység. A HDInsight struktúra tevékenység például egy HDInsight Hadoop-fürtön fut. Az átalakítási tevékenységek és a támogatott számítási környezetek listáját lásd: az [adatok átalakítása Azure Data Factoryban](transform-data.md).
 
-### <a name="triggers"></a>Triggerek
+### <a name="triggers"></a>Eseményindítók
 Az eseményindítók olyan feldolgozási egységeket jelölnek, amelyek meghatározzák, hogy mikor indul el a folyamat végrehajtása. A különböző típusú eseményekhez eltérő típusú eseményindítók tartoznak. 
 
 ### <a name="pipeline-runs"></a>Folyamatfuttatások
@@ -170,13 +170,13 @@ Igen, a paraméterek a Data Factory első osztályú, legfelső szintű koncepci
 Igen. Megadhatja a folyamatok paramétereinek alapértelmezett értékeit. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Lehet egy folyamat egy tevékenysége egy folyamat futtatására átadott argumentumokat használni? 
-Igen. A folyamaton belül minden tevékenység felhasználhatja a folyamatnak átadott paraméterérték értékét, és futtathatja `@parameter` a konstrukciót. 
+Igen. A folyamaton belül minden tevékenység felhasználhatja a folyamatnak átadott paraméterérték értékét, és a `@parameter` szerkezettel fut. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Felhasználható egy tevékenység kimeneti tulajdonsága egy másik tevékenységben? 
-Igen. Egy tevékenység kimenete egy későbbi tevékenységben is felhasználható `@activity` a konstrukcióval.
+Igen. Egy tevékenység kimenete felhasználható egy későbbi tevékenységben a `@activity` szerkezettel.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Hogyan szabályosan kezeli a tevékenység kimenetében lévő null értékeket? 
-A kifejezésekben a `@coalesce` szerkezet használatával a null értékek megfelelően kezelhető. 
+A kifejezésekben a `@coalesce` konstruktor használatával a null értékeket szabályosan kezelheti. 
 
 ## <a name="mapping-data-flows"></a>Adatfolyamatok leképezése
 
@@ -207,8 +207,8 @@ A leképezési adatfolyam funkció jelenleg lehetővé teszi Azure SQL Database,
 
 A másolási tevékenység használatával a többi összekötőtől származó adatok is megadhatók, majd az adatok átalakítását követően végrehajthat egy adatfolyam-tevékenységet. Például a folyamat először a blob Storage-ba másol, majd egy adatfolyam-tevékenység egy adatkészletet fog használni a forrásban az adatátalakításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adat-előállító létrehozásával kapcsolatos részletes utasításokért tekintse meg a következő oktatóanyagokat:
 
-- [Rövid útmutató: Adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md)
-- [Oktatóanyag: A felhőben tárolt Adatmásolás](tutorial-copy-data-dot-net.md)
+- [Gyors útmutató: adatelőállító létrehozása](quickstart-create-data-factory-dot-net.md)
+- [Oktatóanyag: Adatmásolás a felhőben](tutorial-copy-data-dot-net.md)

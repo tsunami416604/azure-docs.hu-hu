@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937fca5698378a8c877b4a981557f87d06170e9a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5100af99046a03345230ed0468071766aae1c77b
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879342"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389608"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: Ügyfélalkalmazás konfigurálása a webes API-k elérésére
+# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása a webes API-k eléréséhez
 
 Ahhoz, hogy egy webes/bizalmas ügyfélalkalmazás részt vehessen egy hitelesítést (és hozzáférési jogkivonat beszerzését) előíró engedélyezési folyamatban, biztonságos hitelesítő adatokat kell létesítenie. Az Azure Portal által támogatott alapértelmezett hitelesítési módszer egy ügyfél-azonosítót és egy titkos kulcsot igényel.
 
@@ -80,8 +80,9 @@ Ha átirányítási URI-t szeretne hozzáadni alkalmazásához:
 
 1. Ha a nyilvános (mobil, asztali) ügyfelekhez javasolt átirányítási URI-k közül szeretne választani, kövesse az alábbi lépéseket:
     1. Keresse meg a **Javasolt átirányítási URI-k nyilvános ügyfelekhez (mobil, asztali)** szakaszt.
-    1. A jelölőnégyzetekkel válassza ki a megfelelő átirányítási URI-t vagy URI-kat az alkalmazása számára.
+    1. A jelölőnégyzetekkel válassza ki a megfelelő átirányítási URI-t vagy URI-kat az alkalmazása számára. Egyéni átirányítási URI-t is megadhat. Ha nem tudja, mit kell használni, tekintse meg a könyvtár dokumentációját.
 
+Bizonyos korlátozások vonatkoznak az átirányítási URI-k használatára. További információ az [átirányítási URI-korlátozásokról és korlátozásokról](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
 > [!NOTE]
 > Próbálja ki az új **hitelesítési** beállításokat, ahol konfigurálhatja az alkalmazás beállításait a célként használni kívánt platform vagy eszköz alapján.
 >
@@ -105,18 +106,18 @@ A regisztrálni kívánt alkalmazástól függően szükség lehet néhány tov�
 
 A **támogatott fióktípus** határozza meg, hogy ki használhatja az alkalmazást, vagy hogyan férhet hozzá az API-hoz.
 
-Miután konfigurálta [a támogatott fióktípus beállításait](quickstart-register-app.md) , amikor először regisztrálta az alkalmazást, csak akkor módosíthatja ezt a beállítást az Application manifest Editor használatával, ha:
+Miután [konfigurálta a támogatott fióktípus beállításait](quickstart-register-app.md) , amikor először regisztrálta az alkalmazást, csak akkor módosíthatja ezt a beállítást az Application manifest Editor használatával, ha:
 
 * A **AzureADMyOrg** vagy **AzureADMultipleOrgs** típusú fiókokat a **AzureADandPersonalMicrosoftAccount**értékre, vagy fordítva.
 * A **AzureADMyOrg** a **AzureADMultipleOrgs**-re módosítható, vagy fordítva.
 
 Meglévő alkalmazás-regisztráció támogatott fiók-típusainak módosítása:
 
-* Lásd: [az alkalmazás jegyzékfájljának konfigurálása](reference-app-manifest.md) és `signInAudience` a kulcs frissítése.
+* Lásd: [az alkalmazás jegyzékfájljának konfigurálása](reference-app-manifest.md) és a `signInAudience` kulcs frissítése.
 
 ## <a name="configure-platform-settings-for-your-application"></a>A platform beállításainak konfigurálása az alkalmazáshoz
 
-[![Az alkalmazás beállításainak konfigurálása a platform vagy az eszköz alapján](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
+[@no__t 1Configure-beállítások az alkalmazáshoz a platform vagy az eszköz alapján](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-expanded.png)](./media/quickstart-update-azure-ad-app-preview/authentication-new-platform-configurations-small.png#lightbox)
 
 Az Alkalmazásbeállítások a platform vagy az eszköz alapján történő konfigurálásához célozza meg a következőt:
 
@@ -129,9 +130,9 @@ Az Alkalmazásbeállítások a platform vagy az eszköz alapján történő konf
    | Platform                | Választás              | Konfigurációs beállítások            |
    |-------------------------|----------------------|-----------------------------------|
    | **Webalkalmazások**    | **Web**              | Adja meg az alkalmazás **átirányítási URI-ját** . |
-   | **Mobil alkalmazások** | **iOS**              | Adja meg az alkalmazás **köteg**-azonosítóját, amely az info. plist fájlban vagy a Build Settings Xcode található. A köteg-azonosító hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz. |
+   | **Mobil alkalmazások** | **iOS**              | Adja meg az alkalmazás **köteg-azonosítóját**, amely az info. plist fájlban vagy a Build Settings Xcode található. A köteg-azonosító hozzáadása automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz. |
    |                         | **Android**          | * Adja meg az alkalmazás **csomagjának nevét**, amelyet a AndroidManifest. xml fájlban talál.<br/>* Az **aláírás kivonatának**előállítása és megadása. Az aláírási kivonat hozzáadásakor a rendszer automatikusan létrehoz egy átirányítási URI-t az alkalmazáshoz.  |
-   | **Asztali és eszközök**   | **Asztali és eszközök** | Választható. Válassza a javasolt átirányítási **URI** -k egyikét, ha asztali és eszközökhöz készült alkalmazásokat készít.<br/>Választható. Adjon meg egy **Egyéni átirányítási URI**-t, amely azt a helyet használja, ahol az Azure ad átirányítja a felhasználókat a hitelesítési kérésekre adott válaszként. Például olyan .NET Core-alkalmazásokhoz, ahol az interakciót szeretné `https://localhost`használni, használja a következőt:. |
+   | **Asztali és eszközök**   | **Asztali és eszközök** | Választható. Válassza a javasolt **átirányítási URI** -k egyikét, ha asztali és eszközökhöz készült alkalmazásokat készít.<br/>Választható. Adjon meg egy **Egyéni átirányítási URI**-t, amely azt a helyet használja, ahol az Azure ad átirányítja a felhasználókat a hitelesítési kérésekre adott válaszként. Ha például a .NET Core-alkalmazásokhoz szeretne interakciót használni, használja a `https://localhost` értéket. |
 
    > [!IMPORTANT]
    > Olyan mobileszközök esetében, amelyek nem a legújabb MSAL függvénytárat használják, vagy nem használ közvetítőt, konfigurálnia kell az alkalmazások átirányítási URI-azonosítóit az asztali és a- **eszközök**esetében.
@@ -177,12 +178,12 @@ Ha erőforrás-API-k ügyfélről való elérésére vonatkozó engedélyt vagy 
 1. Miután kiválasztotta az API-kat, **Az API-engedélyek kérése** lap jelenik meg. Ha az API delegált és alkalmazásengedélyeket egyaránt közzétesz, válassza ki, milyen típusú engedélyre van szüksége az alkalmazásának.
 1. Miután végzett, válassza az **Engedélyek hozzáadása** lehetőséget. Újra megjelenik az **API-engedélyek** lap, ahol az engedélyek a mentést követően bekerülnek a táblázatba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 
 * [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
-* [Alkalmazás konfigurálása webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
+* [Alkalmazás konfigurálása a webes API-k közzétételére](quickstart-configure-app-expose-web-apis.md)
 * [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)
 

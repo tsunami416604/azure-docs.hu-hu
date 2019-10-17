@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202210"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438628"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Security Center szolgáltatások kivonása (július 2019)
 
@@ -47,13 +47,13 @@ A Security Center a Microsoft monitoring Agent használatával gyűjt különfé
 
 Kivontuk a munkaterület kijelölésekor megjelenő események irányítópultot:
 
-![Események irányítópultja][2]
+![Események irányítópult][2]
 
 ### <a name="events-dashboard---the-new-experience"></a>Események irányítópult – az új felület
 
 Javasoljuk, hogy az Azure Log Analytics natív funkcióinak használatával megtekinthesse a jelentős eseményeket a munkaterületeken.
 
-Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A log Analytics területen lépjen a **munkaterület** > **mentett keresések**kiválasztása elemre. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
+Ha Security Centerban egyéni jelentős eseményeket hozott létre, azok elérhetővé válnak. A Log Analytics területen válassza a **munkaterület kiválasztása** > **mentett keresések**lehetőséget. Az adatai nem vesznek el vagy nem módosulnak. A natív jelentős események a Log Analytics azonos képernyőjén is elérhetők.
 
 ![Munkaterület által mentett keresések][3]
 
@@ -115,7 +115,7 @@ A meglévő adatai elérhetők maradnak a Log Analytics biztonsági megoldásban
 
 ### <a name="security-events-map---the-new-experience"></a>Biztonsági események térképe – az új felület
 
-Javasoljuk, hogy a Security Center beépített riasztások leképezési funkcióját használja: **Biztonsági riasztások térképe (előzetes verzió)** . Ez a funkció optimalizált élményt nyújt, és az összes előfizetésben és a társított munkaterületeken is működik. Magas szintű áttekintést nyújt a környezetről, és nem egyetlen munkaterületre koncentrál.
+Javasoljuk, hogy a Security Center beépített riasztások leképezési funkcióját használja: **biztonsági riasztások térképe (előzetes verzió)** . Ez a funkció optimalizált élményt nyújt, és az összes előfizetésben és a társított munkaterületeken is működik. Magas szintű áttekintést nyújt a környezetről, és nem egyetlen munkaterületre koncentrál.
 
 ## Egyéni riasztási szabályok (előzetes verzió)<a name="menu_customalerts"></a>
 
@@ -169,9 +169,9 @@ Ha már rendelkezik csatlakoztatott megoldásokkal, javasoljuk, hogy váltson az
 
 Az Azure Security Center a biztonsági konfigurációk monitorozásához egy [több mint 150 ajánlott szabályt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) tartalmazó készletet alkalmaz az operációs rendszer védelmének fokozására. Ezek a szabályok a tűzfalakra, a naplózásra, a jelszó-házirendekre és egyebekre vonatkoznak. Ha egy gép konfigurációját sebezhetőnek találja, a Security Center egy biztonsági javaslatot állít elő. A [biztonsági beállítások szerkesztése képernyő](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) lehetővé teszi, hogy az ügyfelek testre szabják az operációs rendszer alapértelmezett biztonsági konfigurációját Security Centerban.
 
-Kivontuk ezt az előzetes funkciót. Ha a biztonsági konfigurációkat vissza szeretné állítani az alapértelmezett értékekre a lejárati dátum után, tegye a következőket az API-val vagy a PowerShell-lel az [alábbi utasítások](https://aka.ms/ascresetsecurityconfigurations) használatával
+Kivontuk ezt az előzetes funkciót. Ha a biztonsági konfigurációkat vissza szeretné állítani az alapértelmezett értékekre a lejárati dátum után, tegye a következőket az API-val vagy a PowerShell-lel az [alábbi utasítások](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization) használatával
 
-![Biztonsági beállítások szerkesztése][17]
+![Biztonsági konfigurációk szerkesztése][17]
 
 ### <a name="edit-security-configurations---the-new-experience"></a>Biztonsági konfigurációk szerkesztése – az új felület
 
@@ -189,7 +189,7 @@ Javasoljuk, hogy váltson Azure Security Centerra. Ugyanazt a biztonsági áttek
 
 A biztonsági és auditálási irányítópultot a Security Centerhoz tartozó [GitHub-tárházban](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards) töltheti le az eredeti log Analytics lekérdezéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Security Centerról](https://docs.microsoft.com/azure/security-center/).
 - További információ az [Azure sentinelről](https://docs.microsoft.com/azure/sentinel).

@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Szintetizáló beszéd, Objective-C-Speech Service'
+title: 'Gyors útmutató: szintetizálás beszéd, Objective-C-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan szintetizálhat beszédet a Objective-C-ben iOS-ben a Speech SDK használatával
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 9d7fb4dfef2ac3ab14a8a10eb4d9a7afb91ac71e
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 099a2f707431827996aa304aa706a9efbe54f589
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803977"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438836"
 ---
-# <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: Az iOS-es Objective-C beszédének szintetizálása a Speech SDK használatával
+# <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: beszédfelismerési célú beszéd a Objective-C-ben iOS-ben a Speech SDK használatával
 
 A [beszédfelismerés](quickstart-objectivec-ios.md)is elérhetővé teszi a gyors útmutatókat.
 
@@ -25,10 +25,10 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy iOS-alkalmazást a Objec
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, a következő előfeltételek listáját:
+Az első lépések megkezdése előtt tekintse meg az előfeltételek listáját:
 
-* A [előfizetési kulcs](get-started.md) a beszédfelismerési szolgáltatás
-* Olyan macOS-gépeken, [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb
+* A beszédfelismerési szolgáltatáshoz tartozó [előfizetési kulcs](get-started.md)
+* MacOS rendszerű gép [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) vagy újabb verzióval
 * A cél az iOS 9,3-es vagy újabb verziójára van beállítva
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Az iOS-re szánt Speech SDK letöltése
@@ -67,7 +67,8 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
 1. Nyissa meg a `helloworld.xcworkspace` munkaterületet a Xcode.
-1. Cserélje le az automatikusan generált `AppDelegate.m` fájl tartalmát az alábbiak szerint: [!code-objectivec @ no__t-2
+1. Cserélje le az automatikusan létrehozott `AppDelegate.m` fájl tartalmát az alábbi kódra:  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/objectivec-ios/helloworld/helloworld/AppDelegate.m#code)]
 1. Cserélje le az automatikusan létrehozott `ViewController.m` fájl tartalmát az alábbi kódra:  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
 1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
@@ -83,12 +84,12 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Objective-C minták megismerése a GitHubon](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Hangbetűkészletek testreszabása](how-to-customize-voice-font.md)
 - [Hangminták rögzítése](record-custom-voice-samples.md)

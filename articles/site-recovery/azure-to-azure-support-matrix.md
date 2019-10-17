@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 843cac8c7a5e6c80b7663df2a48079dd307b7d5a
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376328"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383509"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Támogatási mátrix az Azure virtuális gépek egyik régióból a másikba való replikálásához
 
@@ -82,18 +82,21 @@ Site Recovery támogatja az ebben a részben felsorolt operációs rendszereket 
 
 ### <a name="windows"></a>Windows
 
+
 **Operációs rendszer** | **Részletek**
 --- | ---
 Windows Server 2019 | A Server Core és a Server asztali felhasználói felülettel támogatott.
 Windows Server 2016  | Támogatott Server Core, kiszolgáló asztali felülettel.
 Windows Server 2012 R2 | Támogatott.
 Windows Server 2012 | Támogatott.
-Windows Server 2008 R2 SP1/SP2 | Támogatott.<br/><br/> Az Azure-beli virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 R2 SP1/SP2 rendszert futtató számítógépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
-Windows Server 2008 SP2 | Az Azure-beli virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4493730) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 SP2-t futtató gépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 SP1/SP2 | Támogatott.<br/><br/> Az Azure-beli virtuális gépek mobilitási szolgáltatás-bővítményének 2019. x. x verziójának 9.30. x. x verziójától (a várt kiadástól kezdve, a Windows Server 2008 R2 SP1/SP2 verziót futtató számítógépeken telepíteni kell a Windows [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) .  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows Server 2008 SP2 | Az Azure-beli virtuális gépek mobilitási szolgáltatás-bővítményének 2019. x. x verziójának 9.30. x. x verziójától (a várt kiadástól számítva) telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4493730) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows Server 2008 SP2-t futtató számítógépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Támogatott.
 Windows 8,1 (x64) | Támogatott.
 Windows 8 (x64) | Támogatott.
-Windows 7 (x64) SP1-től | Az Azure virtuális gépek mobilitási szolgáltatás bővítményének 9.30. x. x verziójától kezdve telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és az [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 7 SP1 rendszert futtató számítógépeken.  Ha ezek a frissítések nincsenek telepítve, előfordulhat, hogy az ügynök bővítménye nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+Windows 7 (x64) SP1-től | A 9.30. x. x verziótól (a várt kiadás, amely az Azure virtuális gépek mobilitási szolgáltatásának 2019. novembertől kezdődően kezdődik), telepítenie kell egy Windows- [karbantartási verem frissítését (SSU)](https://support.microsoft.com/help/4490628) és [SHA-2 frissítést](https://support.microsoft.com/help/4474419) a Windows 7 SP1 rendszert futtató gépeken.  Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni. További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
+
+
 
 #### <a name="linux"></a>Linux
 

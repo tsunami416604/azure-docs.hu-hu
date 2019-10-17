@@ -1,6 +1,6 @@
 ---
 title: A Azure Resource Manager biztonsági vezérlői
-description: A Azure Resource Manager értékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
+description: A Azure Resource Manager szolgáltatás értékelésére szolgáló beépített biztonsági vezérlők ellenőrzőlistája.
 services: azure-resource-manager
 author: msmbaldwin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97fd6611d7e2a2787b865365c4c7579f89f17d01
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886741"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390461"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>A Azure Resource Manager biztonsági vezérlői
 
@@ -48,12 +48,12 @@ Ez a cikk a Azure Resource Manager beépített biztonsági vezérlőket dokument
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A Tevékenységnaplók teszik elérhetővé az erőforrásokon végrehajtott összes írási műveletet (PUT, POST, DELETE). Lásd: [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek naplózásához](resource-group-audit.md). |
 | Adatsíkok naplózása és naplózása| – | |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | [Azure Active Directory](/azure/active-directory) alapján.|
-| Authorization| Igen | |
+| Hitelesítés| Igen | [Azure Active Directory](/azure/active-directory) alapján.|
+| Engedélyezés| Igen | |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
@@ -61,6 +61,6 @@ Ez a cikk a Azure Resource Manager beépített biztonsági vezérlőket dokument
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen |  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).
