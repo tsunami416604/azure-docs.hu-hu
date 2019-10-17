@@ -285,6 +285,8 @@
       items:
         - name: Adategység közzététele – parancssori felület
           href: cli-publish-asset.md
+        - name: Leíró hang jelzése
+          href: signal-descriptive-audio-howto.md
 - name: Referencia
   items:
     - name: OpenAPI-specifikáció (Swagger)

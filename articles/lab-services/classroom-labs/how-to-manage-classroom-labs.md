@@ -11,39 +11,37 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 85a3a9f7afac8250b225d42462f6b29042e34a2a
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873582"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330281"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. A labor tulajdonosa további felhasználókat adhat hozzá a labor létrehozói szerepkörhöz a következő cikkben ismertetett lépések segítségével: [Adjon hozzá egy felhasználót a labor létrehozói szerepkörhöz](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnyezetfiókban ahhoz, hogy létrehozhasson egy osztályterem-tesztkörnyezetet. A tesztkörnyezetfiók létrehozásához használt fiók automatikusan hozzáadódik ehhez a szerepkörhöz. A tesztkörnyezet tulajdonosa a [felhasználó a Tesztkörnyezet-létrehozó szerepkörhöz történő hozzáadását](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role) ismertető cikkben leírt lépésekkel adhat hozzá további felhasználókat a Tesztkörnyezet-létrehozó szerepkörhöz.
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 
 1. Lépjen az [Azure Lab Services weboldalára](https://labs.azure.com). Vegye figyelembe, hogy az Internet Explorer 11 még nem támogatott. 
-2. Válassza **a bejelentkezés**lehetőséget. Válasszon ki vagy adjon meg egy olyan **felhasználói azonosítót** , amely tagja a **labor Creator** szerepkörnek a labor-fiókban, majd írja be a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
+2. Válassza a **Bejelentkezés** lehetőséget, és adja meg a hitelesítő adatait. Válasszon ki vagy adjon meg egy olyan **felhasználói azonosítót** , amely tagja a **labor Creator** szerepkörnek a labor-fiókban, majd írja be a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
+3. Válassza az **új Labor**elemet. 
+    
+    ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-button.png)
 3. Az **Új tesztkörnyezet** ablakban tegye a következőket: 
     1. Adjon egy **nevet** a tesztkörnyezetnek. 
-    2. A laborban található **virtuális gépek maximális számát** határozza meg. A laborban később növelheti vagy csökkentheti a virtuális gépek számát. 
+    2. Válassza ki az osztályhoz szükséges **virtuális gépek méretét** . Az elérhető méretek listáját a virtuálisgép- [méretek](#vm-sizes) című szakaszban találja. 
+    3. Válassza ki az osztályterem laborhoz használni kívánt **virtuálisgép-rendszerképet** . Ha Linux-rendszerképet választ, megjelenik egy lehetőség, amely lehetővé teszi a távoli asztali kapcsolat engedélyezését. Részletekért lásd: [Távoli asztali kapcsolat engedélyezése Linux](how-to-enable-remote-desktop-linux.md)rendszerhez.
+    4. Tekintse át az oldalon megjelenő **teljes óradíjat** . 
     6. Kattintson a **Mentés** gombra.
 
-        ![Osztályterem-tesztkörnyezet létrehozása](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-4. A **virtuális gép specifikációinak kiválasztására** szolgáló lapon hajtsa végre a következőket:
-    1. Válasszon **méretet** a tesztkörnyezetben létrehozott virtuális gépeknek. Jelenleg a **kis**, **közepes**, **közepes (virtualizációs)** , **nagyméretű**és **GPU** méretek használata engedélyezett. Részletekért lásd a [VM-méretek](#vm-sizes) szakaszt.
-    1. Válassza ki a **régiót**, amelyben létre szeretné hozni a virtuális gépeket. 
-    1. Válassza ki a tesztkörnyezetben a virtuális gépek létrehozásához használni kívánt **virtuálisgép-rendszerképet**. Ha Linux-rendszerképet választ, megjelenik egy lehetőség, amely lehetővé teszi a távoli asztali kapcsolat engedélyezését. Részletekért lásd: [Távoli asztali kapcsolat engedélyezése Linux](how-to-enable-remote-desktop-linux.md)rendszerhez.
-    1. Kattintson a **Tovább** gombra.
-
-        ![Virtuális gép specifikációinak megadása](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
-5. A **Hitelesítő adatok beállítása** oldalon adja meg az alapértelmezett hitelesítő adatokat a tesztkörnyezet összes virtuális gépéhez. 
+        ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+4. A **virtuális gép hitelesítő adatai** lapon a tesztkörnyezet összes virtuális gépe alapértelmezett hitelesítő adatait adhatja meg.
     1. Adja meg a **felhasználónevet** a tesztkörnyezet összes virtuális gépéhez.
     2. Adja meg a felhasználó **jelszavát**. 
 
@@ -51,47 +49,50 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
         > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.
     3. Ha azt szeretné, hogy a diákok saját jelszavukat állítsanak be, tiltsa le **ugyanazt a jelszót az összes virtuális gép** beállításnál. Ez a lépés **nem kötelező**. 
 
-        A tanár dönthet úgy, hogy ugyanazt a jelszót használja a laborban lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux-lemezkép esetében engedélyezve van. Ha az **Ubuntu** virtuális gépet választja, akkor ez a beállítás le van tiltva, így a tanulóknak először be kell állítania egy jelszót, amikor első alkalommal jelentkeznek be.
-    1. Kattintson a **Létrehozás** gombra. 
+        A tanár dönthet úgy, hogy ugyanazt a jelszót használja a laborban lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux-lemezkép esetében engedélyezve van. Ha az **Ubuntu** virtuális gépet választja, akkor ez a beállítás le van tiltva, így a tanulóknak először be kell állítania egy jelszót, amikor első alkalommal jelentkeznek be.  
 
-        ![Hitelesítő adatok beállítása](../media/tutorial-setup-classroom-lab/set-credentials.png)
-6. A **Sablon konfigurálása** oldalon látható a tesztkörnyezet létrehozási folyamatának állapota. A sablon létrehozása a tesztkörnyezetben akár 20 percig is eltarthat. A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Úgy állítsa be a virtuálisgép-sablont, hogy az pontosan aszerint legyen konfigurálva, amit a tesztkörnyezet felhasználóinak biztosítani kíván.  
+        ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
+        > [!IMPORTANT]
+        > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.    
+    4. Ezután válassza a **tovább** lehetőséget a **virtuális gép hitelesítő adatai** lapon. 
+5. A **labor-házirendek** lapon adja meg, hogy az egyes felhasználók számára hány óra legyen kiválasztva (az**egyes felhasználókra vonatkozó kvóta**) a tesztkörnyezet ütemezett idején kívül, majd válassza a **Befejezés**gombot. 
 
-    ![Sablon konfigurálása](../media/tutorial-setup-classroom-lab/configure-template.png)
-7. Miután a sablon konfigurálása befejeződött, az alábbi oldal jelenik meg: 
+    ![Kvóta az egyes felhasználók számára](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+5. Az alábbi képernyő jelenik meg, amely a sablon virtuális gépek létrehozásának állapotát jeleníti meg. A sablon létrehozása a tesztkörnyezetben akár 20 percig is eltarthat. 
 
-    ![Sablon konfigurálása oldal a folyamat befejeződése után](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Az oktatóanyag alábbi lépéseit nem kötelező végrehajtani: 
+    ![A sablon virtuális gép létrehozási állapota](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
+8. A **sablon** oldalon hajtsa végre a következő lépéseket: ezek a lépések nem **kötelezőek** az oktatóanyaghoz.
+
     2. A **Csatlakozás** gomb kiválasztásával csatlakozzon a virtuálisgép-sablonhoz. Linux-sablonos virtuális gép esetén válassza ki, hogy SSH vagy RDP használatával szeretne-e csatlakozni (ha az RDP engedélyezve van).
-    1. A virtuális gép jelszavának alaphelyzetbe állításához válassza a **jelszó** alaphelyzetbe állítása lehetőséget. 
+    1. A virtuális gép jelszavának alaphelyzetbe állításához válassza a **jelszó alaphelyzetbe állítása** lehetőséget. 
     1. Telepítsen és konfiguráljon szoftvert a virtuálisgép-sablonon. 
     1. **Állítsa le** a virtuális gépet.  
     1. Adja meg a sablon **leírását**.
-9. Válassza ki a **Tovább** gombot a sablon oldalán. 
-10. A **Sablon közzététele** oldalon tegye az alábbiakat. 
-    1. A sablon azonnali közzétételéhez jelölje be a következő figyelmeztetés jelölőnégyzetét: *Megértettem, hogy közzététel után nem lehet módosítani a sablont. A folyamatot csak egyszer lehet elvégezni, és akár egy órát is igénybe vehet*, majd válassza ki a **Közzététel** gombot.  A sablon közzétételével a tesztkörnyezet felhasználói számára elérhető példányokat hozhat létre a virtuálisgép-sablonról.
+10. A **sablon** lapon válassza a **Közzététel** lehetőséget az eszköztáron. 
 
-        > [!WARNING]
-        > Közzététel után a lépés nem vonható vissza. 
-    2. Későbbi közzétételhez kattintson a **Mentés későbbre** gombra. A varázsló futtatása után közzéteheti a virtuálisgép-sablont. A varázsló befejeződése után történő konfigurálásával és közzétételével kapcsolatos részletekért tekintse meg a következő témakört: a konfigurálás és közzététel a varázsló befejezése után című rész, a sablon közzététele című [](how-to-manage-classroom-labs.md) szakasz, témakör.
+    ![Sablon közzététele gomb](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
-        ![Sablon közzététele](../media/tutorial-setup-classroom-lab/publish-template.png)
-11. Nyomon követheti, hogy **hol tart a sablon közzététele**. Ez a folyamat akár egy órát is igénybe vehet. 
+    > [!WARNING]
+    > Közzététel után a lépés nem vonható vissza. 
+8. A **sablon közzététele** lapon adja meg a laborban létrehozni kívánt virtuális gépek számát, majd válassza a **Közzététel**lehetőséget. 
+
+    ![Sablon közzététele – virtuális gépek száma](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
+11. A sablon **közzétételének állapota** az oldalon látható. Ez a folyamat akár egy órát is igénybe vehet. 
 
     ![Sablon közzétételének folyamata](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-12. Miután a sablon közzététele sikeresen befejeződött, az alábbi oldalt fogja látni. Válassza a **Done** (Kész) lehetőséget.
-
-    ![Sablon sikeres közzététele](../media/tutorial-setup-classroom-lab/publish-success.png)
-1. A rendszer megjeleníti a tesztkörnyezet **irányítópultját**. 
-    
-    ![Az osztályterem-tesztkörnyezet irányítópultja](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
-4. Váltson a **Virtuális gépek** lapra, és ellenőrizze, hogy vannak-e ott **Nem hozzárendelt** állapotú virtuális gépek. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
+4. Váltson a **Virtual Machines Pool** lapra a bal oldali menüben, vagy válassza a virtuális gépek csempét. Győződjön meg arról, hogy a nem **hozzárendelt** állapotú virtuális gépek láthatók. Ezek a virtuális gépek még nincsenek diákokhoz rendelve. **Leállított** állapotban kell lenniük. Ezen a lapon indíthatja el a virtuális gépeket, csatlakozhat hozzájuk, leállíthatja, valamint törölheti őket. A virtuális gépeket elindíthatja ezen a lapon, vagy engedheti, hogy a diákjai indítsák el őket. 
 
     ![Leállított állapotban levő virtuális gépek](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
-### <a name="vm-sizes"></a>A virtuális gépek mérete  
+    Ezen a lapon a következő feladatokat hajthatja végre (ezeket a lépéseket nem kell végrehajtania az oktatóanyaghoz. Ezek a lépések csak az Ön adataira vonatkoznak.): 
+    
+    1. A labor kapacitásának módosításához (a laborban lévő virtuális gépek száma) válassza ki a **labor kapacitás** elemet az eszköztáron.
+    2. Ha az összes virtuális gépet egyszerre szeretné elindítani, válassza az **összes elindítása** lehetőséget az eszköztáron. 
+    3. Egy adott virtuális gép indításához válassza a lefelé mutató nyilat az **állapotban**, majd kattintson a **Start**gombra. Egy virtuális gépet úgy is elindíthat, ha kijelöl egy virtuális gépet az első oszlopban, majd kiválasztja az **Indítás** lehetőséget az eszköztáron.                
 
-| Size | Processzormagok | RAM | Leírás | 
+### <a name="vm-sizes"></a>Virtuálisgép-méretek  
+
+| Méret | Processzormagok | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kicsi | 2 | 3,5 GB | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | 4 | 7 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. | 
@@ -104,29 +105,26 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 ## <a name="view-all-classroom-labs"></a>Az összes tantermi labor megtekintése
 1. Navigáljon [Azure Lab Services portálra](https://labs.azure.com).
 2. Válassza **a bejelentkezés**lehetőséget. Válasszon ki vagy adjon meg egy olyan **felhasználói azonosítót** , amely tagja a **labor Creator** szerepkörnek a labor-fiókban, majd írja be a jelszót. Az Azure Lab Services támogatja a szervezeti fiókok és a Microsoft-fiókok használatát is. 
-3. Ellenőrizze, hogy megjelenik-e az összes labor a kiválasztott labor-fiókban. 
+3. Ellenőrizze, hogy megjelenik-e az összes labor a kiválasztott labor-fiókban. A labor csempén láthatja a laborban található virtuális gépek számát és az egyes felhasználók kvótáját (az ütemezett időponton kívül).
 
     ![Minden labor](../media/how-to-manage-classroom-labs/all-labs.png)
 3. A felső legördülő listából válassza ki a másik Lab-fiókot. A Labs a kiválasztott labor-fiókban jelenik meg. 
 
 ## <a name="delete-a-classroom-lab"></a>Tantermi labor törlése
-1. A labor csempén válassza a három pontot (...) a sarokban. 
-
-    ![A tesztkörnyezet kiválasztása](../media/how-to-manage-classroom-labs/select-three-dots.png)
-2. Válassza a **Törlés** elemet. 
+1. A labor csempén válassza a három pontot (...) a sarokban, majd válassza a **Törlés**lehetőséget. 
 
     ![Törlés gomb](../media/how-to-manage-classroom-labs/delete-button.png)
-3. A **labor törlése** párbeszédpanelen válassza a **Törlés**lehetőséget. 
-
-    ![Törlés párbeszédpanel](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
+3. A törlés folytatásához a **labor törlése** párbeszédpanelen válassza a **Törlés** lehetőséget. 
 
 ## <a name="switch-to-another-classroom-lab"></a>Váltás másik osztályterem laborra
 Ha át szeretne váltani egy másik tantermi laborra az aktuálisból, válassza ki a labor-fiók felső részén található Labs legördülő listáját.
 
 ![Válassza ki a labort a felül lévő legördülő listából.](../media/how-to-manage-classroom-labs/switch-lab.png)
 
+Ehhez a legördülő listából új labort is létrehozhat az **új Labor** használatával. 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)

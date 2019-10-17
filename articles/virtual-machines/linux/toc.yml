@@ -445,18 +445,20 @@
           items:
             - name: OpenShift áttekintése
               href: openshift-get-started.md
-            - name: OpenShift előfeltételei
-              href: openshift-prerequisites.md
-            - name: OpenShift tárolóplatform
-              href: openshift-container-platform.md
-            - name: 'OpenShift Marketplace, önállóan felügyelt'
-              href: openshift-marketplace-self-managed.md
+            - name: Az OpenShift-tárolóplatform 4.x-es verziója
+              href: openshift-container-platform-4x.md
+            - name: Az OpenShift-tárolóplatform 3.11-es verziójának előfeltételei
+              href: openshift-container-platform-3x-prerequisites.md
+            - name: Az OpenShift-tárolóplatform 3.11-es verziója
+              href: openshift-container-platform-3x.md
+            - name: Az OpenShift-tárolóplatform 3.11-es verziójának önállóan felügyelt Marketplace-e
+              href: openshift-container-platform-3x-marketplace-self-managed.md
             - name: Azure Stack
               href: openshift-azure-stack.md
-            - name: OpenShift telepítés utáni feladatai
-              href: openshift-post-deployment.md
-            - name: Környezetek hibaelhárítása
-              href: openshift-troubleshooting.md
+            - name: Az OpenShift-tárolóplatform 3.11-es verziójának üzembe helyezés utáni feladatai
+              href: openshift-container-platform-3x-post-deployment.md
+            - name: Az OpenShift-tárolóplatform 3.11-es verzióján alapuló környezetek hibáinak elhárítása
+              href: openshift-container-platform-3x-troubleshooting.md
         - name: Az SAP az Azure-on
           href: ../workloads/sap/get-started.md
         - name: Oracle

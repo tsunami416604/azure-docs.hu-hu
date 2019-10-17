@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: Példányvédelem (előzetes verzió)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: Leskálázási szabályzat (előzetes verzió)
+          href: virtual-machine-scale-sets-scale-in-policy.md
         - name: Megszűnésre figyelmeztető értesítés törléskor (előzetes verzió)
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: Megosztott lemezkép-katalógusok

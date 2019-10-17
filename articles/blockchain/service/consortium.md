@@ -1,88 +1,88 @@
 ---
-title: Az Azure Blockchain-szolgáltatás Consortium
-description: ''
+title: Azure Blockchain Service Consortium
+description: Ismerje meg, hogy az Azure Blockchain szolgáltatás hogyan használ privát konzorciumot
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e745a4ee4789ef46a61b5cb0bbf806c41ef631ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 04ea4a4ebecec958ba9d9a72711e101adb3690ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027915"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329288"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Az Azure Blockchain-szolgáltatás Consortium
+# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
 
-Használja az Azure Blockchain-szolgáltatás, hozhat létre saját consortium blockchain hálózatokhoz, ahol minden egyes blockchain-hálózat lehet korlátozni meghatározott résztvevők a hálózatban. Csak a privát consortium blockchain hálózati résztvevői megtekintheti és interakcióba a blockchain. Consortium hálózatok az Azure Blockchain Service kétféle típusú tag a résztvevő szerepkörök tartalmazza:
+Az Azure Blockchain szolgáltatással olyan privát konzorciumi Blockchain-hálózatokat hozhat létre, amelyekben az egyes Blockchain-hálózatok a hálózat meghatározott résztvevőinek korlátozhatók. Csak a privát konzorcium blockchain-hálózatának résztvevői tekinthetik meg és kezelhetik a blockchain. Az Azure Blockchain szolgáltatásban található konzorciumi hálózatok két típusú tag-résztvevő szerepkört tartalmazhatnak:
 
-* **Rendszergazdai** – az emelt szintű résztvevők emelik, akik consortium felügyeleti műveleteket hajthatja végre, és részt vehet a blockchain-tranzakciókat.
+* **Rendszergazdai** jogosultsággal rendelkező résztvevők, akik konzorcium-felügyeleti műveleteket végezhetnek, és részt vehetnek a blockchain-tranzakciókban.
 
-* **Felhasználói** -résztvevők emelik, akik nem semmit sem consortium felügyeleti, de a blockchain tranzakciók vehet részt.
+* **Felhasználó** – azok a résztvevők, akik nem végezhetnek konzorcium-felügyeleti műveleteket, de részt vehetnek a blockchain-tranzakciókban.
 
-Consortium hálózatok résztvevő szerepkörök kombinációját, és a egy tetszőleges számú mindegyik. Legalább egy rendszergazdának kell lennie.
+A konzorciumi hálózatok a résztvevői szerepkörök vegyesen használhatók, és tetszőleges számú szerepkörrel rendelkezhetnek. Legalább egy rendszergazdának kell lennie.
 
-Az alábbi ábrán látható egy konzorciumhálózat több résztvevők:
+A következő ábra egy több résztvevős konzorciumi hálózatot mutat be:
 
-![Privát consortium hálózati diagramja](./media/consortium/network-diagram.png)
+![Privát konzorcium hálózati diagramja](./media/consortium/network-diagram.png)
 
-A consortium-kezelés az Azure Blockchain-szolgáltatás kezelheti a consortium network résztvevői. Felügyeleti konzorcium a consensus modell, a hálózat alapján történik. A jelenlegi előzetes kiadásban az Azure Blockchain-szolgáltatás központi konszenzus modell consortium kezelését biztosítja. Egy rendszergazda szerepkörrel rendelkező bármely kiemelt résztvevő consortium felügyeleti műveleteket, például hozzáadásával vagy eltávolításával a résztvevők hálózatról is igénybe vehet.
+Az Azure Blockchain szolgáltatásban a konzorciumok felügyeletével felügyelheti a résztvevőket a konzorcium hálózatában. A konzorcium felügyelete a hálózat konszenzusi modelljén alapul. Az aktuális előzetes kiadásban az Azure Blockchain szolgáltatás központosított konszenzusos modellt biztosít a konzorciumok felügyeletéhez. A felügyeleti szerepkörrel rendelkező Kiemelt résztvevők olyan konzorcium-felügyeleti műveleteket végezhetnek, mint például a résztvevők hozzáadása vagy eltávolítása a hálózatból.
 
 ## <a name="roles"></a>Szerepkörök
 
-Konzorcium résztvevői lehet felhasználók vagy szervezetek, és egy felhasználó vagy egy rendszergazda szerepkör lehet hozzárendelni. Az alábbi táblázat a két lehetséges szerepkör magas szintű különbségeit sorolja fel:
+A konzorcium résztvevői lehetnek magánszemélyek vagy szervezetek, és felhasználói szerepkört vagy rendszergazdai szerepkört rendelhetnek hozzá. A következő táblázat a két szerepkör közötti magas szintű különbségeket sorolja fel:
 
 | Műveletek | Felhasználói szerepkör | Rendszergazdai szerepkör
 |--------|:----:|:------------:|
 | Új tag létrehozása | Igen | Igen |
 | Új tagok meghívása | Nem | Igen |
-| Beállítása vagy módosítása a tag résztvevők szerepkör | Nem | Igen |
-| Tag megjelenítendő nevének módosítása | Csak a saját tag | Csak a saját tag |
-| Tagok eltávolítása | Csak a saját tag | Igen |
-| Blockchain-tranzakciók részt | Igen | Igen |
+| Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Igen |
+| Tag megjelenítendő nevének módosítása | Csak a saját tag számára | Csak a saját tag számára |
+| Tagok eltávolítása | Csak a saját tag számára | Igen |
+| Részvétel a blockchain-tranzakciókban | Igen | Igen |
 
 ### <a name="user-role"></a>Felhasználói szerepkör
 
-Nincs rendszergazdai képességek consortium résztvevő, a felhasználók. Ezek nem vehet részt a consortium kapcsolatos tagok kezelése. A felhasználók módosíthatják a tag megjelenítendő neve, és eltávolíthat maguk konzorcium.
+A felhasználók nem rendszergazdai képességekkel rendelkező konzorciumi résztvevők. Nem vehetnek részt a konzorciumhoz kapcsolódó tagok felügyeletében. A felhasználók megváltoztathatják a tag megjelenítendő nevét, és maguk is eltávolíthatják a konzorciumot.
 
 ### <a name="administrator"></a>Rendszergazda
 
-A rendszergazda tagok találhatóak a consortium kezelheti. A rendszergazda tagok meghívása, tagok eltávolítása, vagy frissítse a consortium tagok szerepköröket.
-Mindig legalább egy rendszergazdai konzorcium belül kell. Az utolsó rendszergazdának meg kell adnia egy másik résztvevő rendszergazdai szerepköréhez konzorcium elhagyása előtt.
+A rendszergazdák a konzorcium tagjait is kezelhetik. A rendszergazdák meghívhatják a tagokat, eltávolíthatnak tagokat vagy frissíthetik a tagok szerepkörét a konzorciumon belül.
+A konzorciumon belül mindig legalább egy rendszergazdának kell lennie. Az utolsó rendszergazdának egy másik résztvevőt kell megadnia rendszergazdai szerepkörként a konzorcium elhagyása előtt.
 
 ## <a name="managing-members"></a>Tagok kezelése
 
-Csak a rendszergazdák további résztvevőket a consortium küldhetnek meghívót. A rendszergazdák a résztvevők saját Azure-előfizetés-azonosítójával meghívása
+Csak rendszergazdák hívhatnak meg más résztvevőket a konzorciumba. A rendszergazdák az Azure-előfizetésük azonosítójával meghívhatják a résztvevőket.
 
-Ha meghívót, résztvevők csatlakozhatnak a blockchain consortium üzembe helyezése az Azure Blockchain-szolgáltatás az új tag. Megtekintheti, és csatlakozzon a meghívott consortium, meg kell adnia az ugyanazon a meghívó a hálózati rendszergazda által használt Azure-előfizetés azonosítója.
+A meghívást követően a résztvevők egy új tag üzembe helyezésével csatlakozhatnak az blockchain-konzorciumhoz az Azure Blockchain szolgáltatásban. A meghívott konzorcium megtekintéséhez és csatlakoztatásához ugyanazt az Azure-előfizetési azonosítót kell megadnia, amelyet a hálózati rendszergazda meghívóban használ.
 
-A rendszergazdák bármely résztvevő eltávolíthatja a consortium, beleértve a más rendszergazdák számára. A tagok csak eltávolíthatók maguk konzorcium.
+A rendszergazdák eltávolíthatják a konzorcium bármely résztvevőjét, beleértve a többi rendszergazdát is. A tagok csak a konzorciumból tudják eltávolítani magukat.
 
-## <a name="consortium-management-smart-contract"></a>Consortium felügyeleti intelligens szerződés
+## <a name="consortium-management-smart-contract"></a>A Consortium Management intelligens szerződése
 
-Consortium-kezelés az Azure Blockchain-szolgáltatás consortium felügyeleti smart contracts használatával történik. Az intelligens szerződések a rendszer automatikusan telepíti a csomópontokat, amikor telepít egy új blockchain tag.
+Az Azure Blockchain szolgáltatásban a konzorciumok kezelése intelligens szerződések használatával történik. Az intelligens szerződéseket a rendszer automatikusan telepíti a csomópontokra új blockchain-tag telepítésekor.
 
-A cím a legfelső szintű consortium felügyeleti intelligens szerződés az Azure Portalon is megtekinthetők. A **RootContract cím** blockchain-tag-áttekintés szakaszban szerepel.
+A gyökérszintű konzorcium felügyeleti intelligens szerződésének címe a Azure Portal tekinthető meg. A **RootContract címe** a blockchain tag Áttekintés szakaszában található.
 
 ![RootContract címe](./media/consortium/rootcontract-address.png)
 
-Használhatja a consortium felügyeleti intelligens szerződés a consortium Management [PowerShell-modul](manage-consortium-powershell.md), az Azure Portal webhelyen, vagy közvetlenül az intelligens szerződés használatával az Azure Blockchain-szolgáltatás generált Ethereum fiók.
+Az Azure Blockchain szolgáltatás által generált Ethereum-fiók használatával a Consortium Management [PowerShell-modullal](manage-consortium-powershell.md), Azure Portal vagy közvetlenül az intelligens szerződés használatával dolgozhat a konzorcium-felügyeleti intelligens szerződéssel.
 
 ## <a name="ethereum-account"></a>Ethereum-fiók
 
-Tag létrehozásakor jön létre Ethereum fiók kulcsára. Az Azure Blockchain-szolgáltatás a kulccsal létrehozott consortium kezelésével kapcsolatos tranzakciók. Az Ethereum-fiókkulcs automatikusan kezeli az Azure Blockchain-szolgáltatás.
+Egy tag létrehozásakor létrejön egy Ethereum-fiók kulcsa. Az Azure Blockchain szolgáltatás a kulcsot használja a konzorcium-felügyelettel kapcsolatos tranzakciók létrehozásához. A Ethereum fiók kulcsát az Azure Blockchain szolgáltatás automatikusan kezeli.
 
-A tagsági fiók az Azure Portalon is megtekinthetők. A tag fiókneve blockchain-tag-áttekintés szakaszban szerepel.
+A tag fiók megtekinthető a Azure Portalban. A tag fiók a blockchain tag Áttekintés szakaszában található.
 
-![Tagsági fiók](./media/consortium/member-account.png)
+![Tag fiók](./media/consortium/member-account.png)
 
-Ethereum-fiókja alaphelyzetbe állíthatja a fiókja tagja kattint, és új jelszó megadásával. A Ethereum-fiók címét és jelszavát is alaphelyzetbe állítja.  
+A Ethereum-fiók alaphelyzetbe állításához kattintson a tag fiókjára, és adjon meg egy új jelszót. A Ethereum-fiók címe és a jelszó is vissza lesz állítva.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A PowerShell-lel az Azure Blockchain-szolgáltatás tagok kezelése](manage-consortium-powershell.md)
+[Az Azure Blockchain szolgáltatás tagjainak kezelése a PowerShell használatával](manage-consortium-powershell.md)

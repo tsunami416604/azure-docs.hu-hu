@@ -80,7 +80,7 @@
           items:
             - name: Adatok másolása eszköz
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Adatok átalakítása adatfolyam leképezésével
+    - name: Adatok átalakítása adatfolyam-leképezéssel
       href: tutorial-data-flow.md
     - name: Adatok átalakítása a felhőben
       items:
@@ -616,7 +616,7 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Adatok migrálása helyszíni Netezza-kiszolgálóról az Azure-ba
           href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Átalakítás adatfolyam leképezésével
+    - name: Átalakítás adatfolyam-leképezéssel
       items:
         - name: Rögzített szélességű szövegfájlok feldolgozása
           href: how-to-fixed-width.md

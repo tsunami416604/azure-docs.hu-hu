@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: Jelszó nélküli
       items:
+        - name: Jelszó nélküli használat üzembe helyezése
+          href: howto-authentication-passwordless-deployment.md
         - name: Jelszó nélküli biztonsági kulcsok
           href: howto-authentication-passwordless-security-key.md
         - name: Jelszó nélküli telefonos bejelentkezés

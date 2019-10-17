@@ -595,6 +595,8 @@
               href: ./hbase/apache-hbase-rest-sdk.md
             - name: Java-alkalmazások fejlesztése
               href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: Az Apache Phoenix és az Apache Zeppelin együttes használata
+              href: ./hbase/apache-hbase-phoenix-zeppelin.md
             - name: Apache Phoenix a HDInsightban
               href: ./hdinsight-phoenix-in-hdinsight.md
             - name: Az Apache Phoenix-lekérdezéskiszolgáló REST SDK használata
