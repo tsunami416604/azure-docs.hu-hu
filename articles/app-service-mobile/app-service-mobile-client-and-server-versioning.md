@@ -14,17 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 87c64a98d783d2604c985017fbce586ed51e5c9d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5be72a4125b276d85174a7a056cbbc2c23053e89
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025424"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388888"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Az ügyfél és a kiszolgáló verziószámozása Mobile Apps és Mobile Services
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Az Azure Mobile Services legújabb verziója a Azure App Service **Mobile apps** szolgáltatása.
 
@@ -38,11 +39,11 @@ A (@no__t – 0. kulcs a HTTP-fejlécben vagy a lekérdezési sztringben adható
 
 Példa:
 
-BEOLVASÁS @NO__T – 0
+Beolvasás @no__t – 0
 
-FEJLÉCEK ZUMO-API-VERSION: 2.0.0
+FEJLÉCEK: ZUMO-API-VERSION: 2.0.0
 
-POST @NO__T – 0
+POST @no__t – 0
 
 ## <a name="opting-out-of-version-checking"></a>A verziók ellenőrzésének megtagadása
 A verzió-ellenőrzés letiltásához állítsa az **igaz** értéket a **MS_SkipVersionCheck**beállításnál. Adja meg ezt a web. config fájlban, vagy a Azure Portal alkalmazás beállításai szakaszában.
@@ -54,7 +55,7 @@ A verzió-ellenőrzés letiltásához állítsa az **igaz** értéket a **MS_Ski
 ### <a name="MobileAppsClients"></a>Mobile *apps* ügyféloldali SDK-k
 A verzió-ellenőrzés az Azure-hoz készült ügyfél-SDK következő verzióival kezdődően lett bevezetve **Mobile apps**:
 
-| Ügyféloldali platform | Version | Verzió fejlécének értéke |
+| Ügyféloldali platform | Verzió | Verzió fejlécének értéke |
 | --- | --- | --- |
 | Felügyelt ügyfél (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
@@ -65,16 +66,16 @@ A verzió ellenőrzése a következő kiszolgálói SDK-verziókba tartozik:
 
 | Kiszolgálói platform | SDK | Elfogadott verzió fejléce |
 | --- | --- | --- |
-| .NET |[Microsoft.Azure.Mobile.Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
-| Node.js |[azure-mobile-apps)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
+| .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
+| Node.js |[Azure-Mobile-alkalmazások)](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Mobile Apps háttérrendszer működése
 | ZUMO-API-VERSION | MS_SkipVersionCheck értéke | Válasz |
 | --- | --- | --- |
-| x. y. z vagy Null |True |200 - OK |
+| x. y. z vagy Null |True (Igaz) |200 – OK |
 | Null |Hamis/nincs megadva |400 – Hibás kérés |
 | 1. x. y |Hamis/nincs megadva |400 – Hibás kérés |
-| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 - OK |
+| 2.0.0 – 2. x. y |Hamis/nincs megadva |200 – OK |
 | 3.0.0-3. x. y |Hamis/nincs megadva |400 – Hibás kérés |
 
 [Mobile Services clients]: #MobileServicesClients

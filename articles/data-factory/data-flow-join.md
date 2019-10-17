@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: da6c3c90ebbeffcf468aad3809da097976d8ef0d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029322"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387240"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Az adatfolyam-csatlakozás átalakításának leképezése
 
@@ -20,7 +20,7 @@ ms.locfileid: "72029322"
 
 A JOIN paranccsal egyesítheti az adatfolyamatban lévő két táblázat adatait. Kattintson az átalakításra, amely a bal oldali kapcsolat lesz, és vegyen fel egy JOIN transzformációt az eszközkészletből. Az illesztési átalakítón belül egy másik adatfolyamot kell kiválasztania az adatfolyamatból, hogy a megfelelő kapcsolat legyen.
 
-![Csatlakozás transzformációs](media/data-flow/join.png "csatlakoztatáshoz")
+![Csatlakozás az átalakításhoz](media/data-flow/join.png "Csatlakozás")
 
 ## <a name="join-types"></a>Illesztési típusok
 
@@ -54,9 +54,9 @@ Legalább 1 (1. n) csatlakozási feltételt kell megadnia. Lehetnek közvetlenü
 
 ## <a name="join-performance-optimizations"></a>Csatlakozás a teljesítmény optimalizálásához
 
-Az egyesítési Illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az ADF-adatfolyamban való csatlakozás nem kötelező egyesítő illesztési művelet. Ezért az illesztési kulcsokat nem kell elsőként rendezni. Az illesztési művelet a Spark optimális illesztési művelete alapján fog történni: Szórás/Térkép – csatlakozás:
+Az egyesítési Illesztéstől eltérően az olyan eszközökhöz, mint a SSIS, az ADF-adatfolyamban való csatlakozás nem kötelező egyesítő illesztési művelet. Ezért az illesztési kulcsokat nem kell elsőként rendezni. Az illesztési művelet a Spark-beli optimális illesztési műveleten alapul: szórás/Térkép – csatlakozás:
 
-![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "illesztés optimalizálása")
+![Összekapcsolási átalakítás optimalizálása](media/data-flow/joinoptimize.png "Csatlakozás optimalizálása")
 
 Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja az illesztési teljesítményt. Az illesztési művelet során az adatai particionálását is megadhatja olyan adatkészletek létrehozásához, amelyek jobban illeszkednek a memóriába egy munkavégzőn.
 
@@ -64,7 +64,7 @@ Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizá
 
 A meglévő streamek aliasának kiválasztása lehetőséggel az átalakítás lehetőséget választva önillesztési feltételeket érhet el az ADF-adatfolyamban. Először hozzon létre egy "új ágat" egy adatfolyamból, majd adjon hozzá egy kijelölést a teljes eredeti adatfolyamhoz.
 
-![Önillesztés saját](media/data-flow/selfjoin.png "illesztéssel")
+![Önálló csatlakozás](media/data-flow/selfjoin.png "Önálló csatlakozás")
 
 A fenti ábrán az átalakító kijelölése felül van. A művelet során a rendszer az eredeti streamet aliasként "OrigSourceBatting". Az alább látható összekapcsolási átalakítóban láthatja, hogy ezt a Select alias streamet használjuk a jobb oldali csatlakozáshoz, ami lehetővé teszi, hogy ugyanarra a kulcsra hivatkozzon a belső illesztés bal & jobb oldalán.
 
@@ -72,6 +72,6 @@ A fenti ábrán az átalakító kijelölése felül van. A művelet során a ren
 
 Az illesztési transzformáción belül egyéni és összetett kulcsokat is létrehozhat menet közben. Sorok hozzáadása a további illesztési oszlopokhoz az egyes kapcsolati sorok melletti plusz jelre (+). Vagy egy új kulcs értékének kiszámítása a Kifejezésszerkesztő egy on-the-fly JOIN értékhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adategyesítést követően [új oszlopokat hozhat létre](data-flow-derived-column.md) , és [az adatait a célhely adattárában](data-flow-sink.md)is elvégezheti.

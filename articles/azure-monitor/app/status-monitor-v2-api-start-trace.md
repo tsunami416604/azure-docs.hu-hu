@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotmonitor v2 API-referenciája: Nyomkövetés indítása | Microsoft Docs'
-description: Állapotmonitor v2 API-referenciát. Start-trace. ETW-naplók gyűjtése Állapotmonitor és Application Insights SDK-ból.
+title: 'Az Azure Application Insights Agent API-referenciája: Nyomkövetés indítása | Microsoft Docs'
+description: Application Insights Agent API-referenciája. Start-trace. ETW-naplók gyűjtése Állapotmonitor és Application Insights SDK-ból.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: f4c43e6bdb70687606041c2f0859ab072db2b587
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200373"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389848"
 ---
-# <a name="status-monitor-v2-api-start-applicationinsightsmonitoringtrace"></a>Állapotmonitor v2 API: Start – ApplicationInsightsMonitoringTrace
+# <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights Agent API: Start-ApplicationInsightsMonitoringTrace
 
 Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
@@ -29,7 +29,7 @@ A [ETW-eseményeket](https://docs.microsoft.com/windows/desktop/etw/event-tracin
 
 Az összegyűjtött események valós időben lesznek kinyomtatva a konzolra, és egy ETL-fájlba lesznek mentve. A kimeneti ETL-fájl a [perfview eszköz](https://github.com/microsoft/perfview) segítségével nyitható meg további vizsgálat céljából.
 
-Ez a parancsmag addig fut, amíg el nem éri az időtúllépés időtartamát (alapértelmezés szerint 5 perc)`Ctrl + C`, vagy manuálisan leállt ().
+Ez a parancsmag addig fut, amíg el nem éri az időtúllépési időtartamot (az alapértelmezett 5 perc), vagy manuálisan leállították (`Ctrl + C`).
 
 > [!IMPORTANT] 
 > Ehhez a parancsmaghoz rendszergazdai engedélyekkel rendelkező PowerShell-munkamenet szükséges.
@@ -43,17 +43,17 @@ Ez a parancsmag addig fut, amíg el nem éri az időtúllépés időtartamát (a
 A kód-visszacsatolási futtatókörnyezet ETW eseményeket bocsát ki az IIS indításakor és az alkalmazás indításakor.
 
 Az események összegyűjtése:
-1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /stop` az IIS és az összes webalkalmazás kikapcsolását.
+1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre az `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
 2. A parancsmag végrehajtása
-3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon futtassa `iisreset /start` a parancsot az IIS elindításához.
+3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre a `iisreset /start` parancsot az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.
 5. Miután az alkalmazás befejezte a betöltést, manuálisan leállíthatja (`Ctrl + C`), vagy megvárhatja az időtúllépést.
 
 ### <a name="what-events-to-collect"></a>A gyűjteni kívánt események
 
 Az események gyűjtésére három lehetőség áll rendelkezésre:
-1. Használja a kapcsolót `-CollectSdkEvents` a Application Insights SDK-ból kibocsátott események gyűjtéséhez.
-2. A kapcsolóval `-CollectRedfieldEvents` összegyűjtheti Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott eseményeket. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
+1. A Application Insights SDK-ból származó események gyűjtéséhez használja a `-CollectSdkEvents` kapcsolót.
+2. A Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott események összegyűjtéséhez használja a `-CollectRedfieldEvents` kapcsolót. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
 3. Mindkét kapcsolót mindkét eseménytípus összegyűjtésére használhatja.
 4. Alapértelmezés szerint, ha nincs megadva kapcsoló, mindkét eseménytípus összegyűjtve lesz.
 
@@ -61,24 +61,24 @@ Az események gyűjtésére három lehetőség áll rendelkezésre:
 ## <a name="parameters"></a>Paraméterek
 
 ### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
-**Nem kötelező.** Ezzel a paraméterrel állíthatja be, hogy a parancsfájl mennyi ideig gyűjtsön eseményeket. Az alapértelmezett érték 5 perc.
+**Választható.** Ezzel a paraméterrel állíthatja be, hogy a parancsfájl mennyi ideig gyűjtsön eseményeket. Az alapértelmezett érték 5 perc.
 
 ### <a name="-logdirectory"></a>– LogDirectory
-**Nem kötelező.** Ezzel a kapcsolóval állíthatja be az ETL-fájl kimeneti könyvtárát. Alapértelmezés szerint ez a fájl a PowerShell-modulok könyvtárban lesz létrehozva. A parancsfájl végrehajtása során a teljes elérési út megjelenik.
+**Választható.** Ezzel a kapcsolóval állíthatja be az ETL-fájl kimeneti könyvtárát. Alapértelmezés szerint ez a fájl a PowerShell-modulok könyvtárban lesz létrehozva. A parancsfájl végrehajtása során a teljes elérési út megjelenik.
 
 
 ### <a name="-collectsdkevents"></a>-CollectSdkEvents
-**Nem kötelező.** Ezzel a kapcsolóval Application Insights SDK-eseményeket gyűjthet.
+**Választható.** Ezzel a kapcsolóval Application Insights SDK-eseményeket gyűjthet.
 
 ### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
-**Nem kötelező.** Ezzel a kapcsolóval gyűjthet eseményeket a Állapotmonitor és a Redfield futtatókörnyezetből.
+**Választható.** Ezzel a kapcsolóval gyűjthet eseményeket a Állapotmonitor és a Redfield futtatókörnyezetből.
 
 ### <a name="-verbose"></a>-Részletes
 **Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Kimenet
 
 
 ### <a name="example-of-application-startup-logs"></a>Alkalmazás-indítási naplók – példa
@@ -111,17 +111,17 @@ Timeout Reached. Stopping...
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítás:
 
 - Tekintse át a további hibaelhárítási lépéseket itt: https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-troubleshoot
-- A kihagyott paraméterek megismeréséhez tekintse át az [API](status-monitor-v2-overview.md#powershell-api-reference) -referenciát.
-- Ha további segítségre van szüksége, felveheti velünk a [](https://github.com/Microsoft/ApplicationInsights-Home/issues)kapcsolatot a githubon.
+- A kihagyott paraméterek megismeréséhez tekintse át az [API-referenciát](status-monitor-v2-overview.md#powershell-api-reference) .
+- Ha további segítségre van szüksége, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 
 
- További Állapotmonitor v2:
- - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
- - [A konfiguráció](status-monitor-v2-api-get-config.md) beszerzésével ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
- - [A](status-monitor-v2-api-get-status.md) figyelés ellenőrzésének állapotának beolvasása.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
+ - [A konfiguráció beszerzésével](status-monitor-v2-api-get-config.md) ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
+ - A figyelés ellenőrzésének [állapotának beolvasása](status-monitor-v2-api-get-status.md) .

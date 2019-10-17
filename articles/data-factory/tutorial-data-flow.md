@@ -7,12 +7,12 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 8c9043db8159e2b7ff6520e9525472048cf73ae1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 5b618798c74393f3e7d89cfc69c67ba831356ce4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031278"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72385556"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Adatátalakítás a leképezési adatfolyamok használatával
 
@@ -115,7 +115,7 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
     ![Adatfolyam-vászon](media/tutorial-data-flow/dataflow5.png)
 1. Nevezze el a szűrő átalakítási **FilterYears**. Kattintson a **szűrés** elem melletti kifejezés mezőre a Kifejezésszerkesztő megnyitásához. Itt adja meg a szűrési feltételt. 
     
-    ![Szűrés](media/tutorial-data-flow/filter1.png)
+    ![Szűrő](media/tutorial-data-flow/filter1.png)
 1. Az adatfolyam-kifejezés-szerkesztővel interaktív módon hozhat létre kifejezéseket különböző átalakításokban való használatra. A kifejezések tartalmazhatnak beépített függvényeket, a bemeneti sémából származó oszlopokat és a felhasználó által definiált paramétereket. A kifejezések létrehozásával kapcsolatos további információkért lásd: [adatáramlási kifejezés-szerkesztő](concepts-data-flow-expression-builder.md).
     
     Ebben az oktatóanyagban a műfaji komédia azon filmjeit szeretné szűrni, amelyek a 1910-es és a 2000-as évek közötti időszakban jöttek létre. Az év jelenleg karakterlánc, a ```toInteger()``` függvénnyel át kell alakítani egész számra. Használja a nagyobb vagy egyenlő értéket (> =), és kisebb vagy egyenlő, mint a (< =) operátorok az 1910 és a 200 – literális Year értékekkel való összehasonlításhoz. Egyesítse ezeket a kifejezéseket a és (& &) operátorral együtt. A kifejezés a következőképpen érkezik:
@@ -128,13 +128,13 @@ Miután létrehozta az adatfolyamatot, a rendszer automatikusan elküldi az adat
 
     Ha a hibakeresési fürt aktív, a **frissítés** gombra kattintva ellenőrizheti, hogy a kifejezés kimenete a használt bemenetekhez képest látható-e. A logikát az adatáramlás kifejezésének nyelve alapján több, mint egy megfelelő választ kaphat.
     
-    ![Szűrés](media/tutorial-data-flow/filter2.png)
+    ![Szűrő](media/tutorial-data-flow/filter2.png)
 
     Kattintson a **Mentés és Befejezés** gombra, ha elkészült a kifejezéssel.
 
 1. Egy **Adatelőnézet** beolvasása annak ellenőrzéséhez, hogy a szűrő megfelelően működik-e.
     
-    ![Szűrés](media/tutorial-data-flow/filter3.png)
+    ![Szűrő](media/tutorial-data-flow/filter3.png)
 1. A hozzáadni kívánt következő átalakítás a **séma-módosító**alatt létrehozott **összesített** transzformáció.
     
     ![Összesítés](media/tutorial-data-flow/agg1.png)
@@ -184,14 +184,14 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
     ![Folyamat](media/tutorial-data-flow/pipeline2.png)
 1. A figyelés ablaktáblán láthatja az egyes átalakítási lépésekben eltöltött sorok és idő számát.
     
-    ![Figyelés](media/tutorial-data-flow/pipeline3.png)
+    ![Monitoring](media/tutorial-data-flow/pipeline3.png)
 1. A transzformációra kattintva részletes információkat kaphat az oszlopokról és az adatok particionálásáról.
     
-    ![Figyelés](media/tutorial-data-flow/pipeline4.png)
+    ![Monitoring](media/tutorial-data-flow/pipeline4.png)
 
 Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban szereplő folyamat egy olyan adatfolyamot futtat, amely összegzi a 1910 és 2000 közötti vígjátékok átlagos minősítését, és az adatokat a ADLS írja. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

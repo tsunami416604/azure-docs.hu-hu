@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotmonitor v2 API-referenciája: Figyelés letiltása | Microsoft Docs'
-description: Állapotmonitor v2 API-referenciát. Disable-ApplicationInsightsMonitoring. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: 'Az Azure Application Insights Agent API-referenciája: a figyelés letiltása | Microsoft Docs'
+description: Application Insights Agent API-referenciája. Disable-ApplicationInsightsMonitoring. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: af105a6a819ced475f490d3c99fc1e63d8eee5c8
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: d305e664c68af34027510a4e27d293bb24abc021
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203432"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389895"
 ---
-# <a name="status-monitor-v2-api-disable-applicationinsightsmonitoring"></a>Állapotmonitor v2 API: ApplicationInsightsMonitoring letiltása
+# <a name="application-insights-agent-api-disable-applicationinsightsmonitoring"></a>Application Insights ügynök API: disable-ApplicationInsightsMonitoring
 
 Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
@@ -42,7 +42,7 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="-verbose"></a>-Részletes
 **Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Kimenet
 
 
 #### <a name="example-output-from-successfully-disabling-monitoring"></a>Példa a figyelés sikeres letiltására
@@ -69,7 +69,7 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
- További Állapotmonitor v2:
- - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .

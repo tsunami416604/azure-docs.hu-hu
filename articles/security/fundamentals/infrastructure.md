@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 3da9fef8c7de248f30100f94724cd5dcdb7db8e3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a17d98d49d2c653e2498a663829d26e8a171fd74
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727076"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433510"
 ---
 # <a name="azure-infrastructure-security"></a>Azure-infrastruktúra biztonsága
 A Microsoft Azure a Microsoft által felügyelt és üzemeltetett adatközpontokban fut. Ezek a földrajzilag elosztott adatközpontok megfelelnek a legfontosabb iparági szabványoknak, például az ISO/IEC 27001:2013 és a NIST SP 800-53 számára a biztonság és a megbízhatóság érdekében. Az adatközpontokat a Microsoft Operations munkatársai felügyelik, figyelik és felügyelik. Az operatív munkatársaknak több éve van tapasztalata a világ legnagyobb online szolgáltatásokának 24 x 7 folytonossággal való megvalósításában.
@@ -45,14 +45,14 @@ Fontos megérteni az Ön és a Microsoft közötti felelősség megosztását. A
 
 Mindig az alábbiakért felelős, függetlenül az üzembe helyezés típusától:
 
-- Data
-- Végpontok
+- Adatok
+- Endpoints (Végpontok)
 - Fiók
 - Hozzáférés-kezelés
 
-Győződjön meg róla, hogy tisztában van az Ön és a Microsoft között a SaaS-, a Pásti-és a IaaS-telepítésben. További információ: [a felhőalapú számítástechnika megosztott feladatai](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf).
+Győződjön meg róla, hogy tisztában van az Ön és a Microsoft között a SaaS-, a Pásti-és a IaaS-telepítésben. További információ: [a felhőalapú számítástechnika megosztott feladatai](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225237/1/Shared%20Responsibilities%20for%20Cloud%20Computing%20(2017-04-03).pdf).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

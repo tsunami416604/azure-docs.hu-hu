@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése Android-alkalmazások meghatározott felhasználóinak az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése adott Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
 description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: android
 services: notification-hubs
@@ -17,18 +17,18 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: ff9666384d1747e311d3ab1c1dfc384baceba93a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213370"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387422"
 ---
-# <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítés az Android-alkalmazások adott felhasználói számára az Azure Notification Hubs használatával
+# <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Az oktatóanyag bemutatja, hogy hogyan küldhetők leküldéses értesítések adott alkalmazásfelhasználónak, adott eszközre az Azure Notification Hubs használatával. Az ASP.NET WebAPI háttérrendszer lehetővé teszi az ügyfelek hitelesítését és az értesítések létrehozását, amint az a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című útmutató cikkben olvasható. Ez az oktatóanyag az [oktatóanyagban létrehozott értesítési központra épül: Leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és](notification-hubs-android-push-notification-google-fcm-get-started.md)a Firebase Cloud Messaging használatával.
+Az oktatóanyag bemutatja, hogyan küldhetők az Azure Notification Hubs használatával leküldéses értesítések adott alkalmazásfelhasználónak, meghatározott eszközre. Az ASP.NET WebAPI háttérrendszer lehetővé teszi az ügyfelek hitelesítését és az értesítések létrehozását, amint az a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című útmutató cikkben olvasható. Ez az oktatóanyag a következő oktatóanyagban létrehozott értesítési központra épül [: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -39,15 +39,15 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fejezze be [az oktatóanyagot: Az oktatóanyag elvégzése előtt leküldéses értesítések az Android-](notification-hubs-android-push-notification-google-fcm-get-started.md) eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával.
+Fejezze be az [oktatóanyagot: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md) az oktatóanyag végrehajtása előtt.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="create-the-android-project"></a>Az Android-projekt létrehozása
 
-A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás frissítése: Leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és](notification-hubs-android-push-notification-google-fcm-get-started.md)a Firebase Cloud Messaging használatával.
+A következő lépés az oktatóanyagban létrehozott Android-alkalmazás frissítése [: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-1. Nyissa meg a fájlt, cserélje le a következő tartalmi definíciókat: `res/layout/activity_main.xml`
+1. Nyissa meg `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
 
     Új EditText vezérlőket ad hozzá a felhasználóként való bejelentkezéshez. Egy felhasználónév-címke számára kijelölt mezőt is hozzáad, amely szerepelni fog az elküldött értesítésekben:
 
@@ -138,7 +138,7 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
         />
     </RelativeLayout>
     ```
-2. Nyissa meg a `send_button` `send_button` fájlt, és cserélje le a definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a és a más vezérlőkhöz tartozó karakterláncok hozzáadásához: `res/values/strings.xml`
+2. Nyissa meg `res/values/strings.xml` fájlt, és cserélje le a `send_button` definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button` számára, és karakterláncokat adhat hozzá a többi vezérlőhöz:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -149,10 +149,10 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
     <string name="notification_message_tag_hint">Recipient username</string>
     ```
 
-    A `main_activity.xml` grafikus elrendezésnek ekkor az alábbi képhez hasonlóan kell kinéznie:
+    A `main_activity.xml` grafikus elrendezésnek most a következő képhez hasonlóan kell kinéznie:
 
     ![][A1]
-3. Hozzon létre egy nevű `RegisterClient` új osztályt ugyanabban a csomagban `MainActivity` , mint az osztályt. Használja az alábbi kódot az új osztályfájlhoz.
+3. Hozzon létre egy `RegisterClient` nevű új osztályt ugyanabban a csomagban, mint a `MainActivity` osztály. Használja az alábbi kódot az új osztályfájlhoz.
 
     ```java
   
@@ -261,7 +261,7 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
     ```
 
     Ez az összetevő azokat a REST-hívásokat valósítja meg, amelyek szükségesek ahhoz, hogy a leküldéses értesítések regisztrálásához kapcsolatba lépjenek az alkalmazás- Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A **Bejelentkezés** gombra kattintva a helyi tárolóban tárolt engedélyezési jogkivonatot használja.
-4. Az osztályban, és adjon hozzá egy mezőt az `RegisterClient` osztályhoz, valamint egy karakterláncot a ASP.net-háttér végpontjának. `MainActivity` Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
+4. A `MainActivity` osztályban, és adjon hozzá egy mezőt a `RegisterClient` osztályhoz és egy karakterláncot a ASP.NET-háttér végpontjának. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```java
     private RegisterClient registerClient;
@@ -412,7 +412,7 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
     }
     ```
 
-    A bejelentkezési gomb `RegisterClient` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (a hitelesítési séma által használt bármely tokent jelöli), majd a használatával meghívja a háttérrendszer regisztrációját. `login` .
+    A **bejelentkezési** gomb `login` kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelképezi), majd a `RegisterClient` használatával hívja meg a háttér-használatot a regisztrációhoz.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 
@@ -467,12 +467,12 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
         }
     }
     ```
-12. A fájlban adja hozzá a következő sort `android` a szakaszhoz a `buildTypes` szakasz után. `build.gradle`
+12. A `build.gradle` fájlban adja hozzá a következő sort a `android` szakaszhoz a `buildTypes` szakasz után.
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, akkor `<application>` a következő `AndroidManifest.xml`deklarációt kell tartalmaznia a elemében:.
+13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, akkor a következő deklarációt kell tartalmaznia a `AndroidManifest.xml` `<application>` elemén belül.
 
     ```xml
     <uses-library
@@ -493,7 +493,7 @@ A következő lépés az [oktatóanyagban létrehozott Android-alkalmazás friss
 6. Adjon meg egy üzenetet, amelyet a felhasználó leküldéses értesítés formájában fog megkapni.
 7. Kattintson a **Send Notification** (Értesítés küldése) gombra.  A leküldéses értesítés minden olyan eszközre megérkezik, amely rendelkezik a megfelelő felhasználónév-címkével ellátott regisztrációval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

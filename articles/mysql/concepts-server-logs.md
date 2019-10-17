@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 4d801ada8fd8a8b35c71601d3ca274f26afb24f6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262280"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434283"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -21,7 +21,7 @@ További információ a MySQL lassú lekérdezési naplóról: a MySQL-hivatkoz�
 ## <a name="access-slow-query-logs"></a>Lassú lekérdezési naplók elérése
 A Azure Portal és az Azure CLI használatával Azure Database for MySQL lassú lekérdezési naplókat listázhat és tölthet le.
 
-Az Azure Portalon válassza ki az Azure Database for MySQL-kiszolgálóhoz. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
+A Azure Portal válassza ki a Azure Database for MySQL kiszolgálót. A **figyelés** fejléc alatt válassza ki a **kiszolgálói naplók** lapot.
 
 Az Azure CLI-vel kapcsolatos további információkért lásd: [kiszolgálók naplófájljainak konfigurálása és elérése az Azure CLI használatával](howto-configure-server-logs-in-cli.md).
 
@@ -40,6 +40,9 @@ Az egyéb paraméterek a következők:
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, ha a log_queries_not_using_indexes beállítása be értékre van állítva.
 
+> [!Note]
+> @No__t – 0 esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
+
 A lassú lekérdezési napló paramétereinek teljes leírását a MySQL [lassú lekérdezési napló dokumentációjában](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) találja.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
@@ -54,20 +57,20 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
+| @no__t – 0 [UTC] | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig @no__t – 0 |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | A kiszolgáló neve |
-| `start_time_t`UTC | A lekérdezés elkezdésének ideje |
-| `query_time_s` | A lekérdezés végrehajtásának teljes ideje |
-| `lock_time_s` | A lekérdezés zárolásának teljes ideje |
+| @no__t – 0 [UTC] | A lekérdezés elkezdésének ideje |
+| `query_time_s` | A lekérdezés végrehajtásának teljes időtartama (másodpercben) |
+| `lock_time_s` | A lekérdezés zárolásának teljes ideje másodpercben |
 | `user_host_s` | Felhasználónév |
 | `rows_sent_s` | Elérkezett sorok száma |
 | `rows_examined_s` | Megvizsgált sorok száma |
@@ -78,5 +81,5 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `thread_id_s` | Szál azonosítója |
 | `\_ResourceId` | Erőforrás URI-ja |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A kiszolgálói naplók konfigurálása és elérése az Azure CLI-](howto-configure-server-logs-in-cli.md)vel.

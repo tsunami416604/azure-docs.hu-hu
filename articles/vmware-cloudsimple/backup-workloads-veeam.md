@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 930e482ab85113ac802932929fdbea358ee26035
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 880b31702cf1c0a92ab7ee536cd88e8e6957f6f8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619598"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430848"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Munkaterhelési virtuális gépek biztonsági mentése a CloudSimple privát felhőben a Veeam B & R használatával
 
@@ -38,7 +38,7 @@ A proxykiszolgáló a biztonsági mentési kiszolgáló és a biztonsági menté
 * Virtuálisgép-adatok lekérése az üzemi tárolóból
 * Tömörítés
 * Deduplikáció
-* Encryption
+* Titkosítás
 * Adatátvitel a biztonsági mentési tárházba
 
 **Biztonsági mentési adattár**
@@ -54,7 +54,7 @@ A 30 TB-nál kevesebb környezet esetén a CloudSimple a következő konfigurác
 
 * A Veeam a biztonsági mentési kiszolgáló és a proxykiszolgáló ugyanarra a virtuális gépre van telepítve a privát felhőben.
 * Egy Linux-alapú elsődleges biztonsági mentési tárház az Azure-ban, amely a biztonsági mentési feladatok céljaként van konfigurálva.
-* `azcopy`az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
+* @no__t – 0 az adatok elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba történő másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-basicdeployment.png)
 
@@ -65,7 +65,7 @@ A 30 TB-nál több biztonsági mentést végző környezetek esetén a CloudSimp
 * Egy proxykiszolgáló a vSAN-fürtben, a Veeam által javasolt módon.
 * A Windows-alapú elsődleges biztonsági mentési tárház a privát felhőben a gyors visszaállítások öt napjainak gyorsítótárazásához.
 * Linux Backup-tárház az Azure-ban, mint a hosszabb időtartamú adatmegőrzési feladatok biztonsági másolatának célhelye. Ezt a tárházat kibővíthető biztonsági mentési tárházként kell konfigurálni.
-* `azcopy`az elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba másolt adatok másolására szolgál.
+* @no__t – 0 az adatok elsődleges biztonsági mentési tárházból egy másik régióba replikált Azure Blob-tárolóba történő másolására szolgál.
 
 ![Alapszintű üzembe helyezési forgatókönyvek](media/veeam-advanceddeployment.png)
 
@@ -88,17 +88,17 @@ Az alábbi szakaszok azt ismertetik, hogyan telepíthet és konfigurálhat egy V
 
 Az üzembe helyezési folyamat a következő lépésekből áll:
 
-1. [vCenter felhasználói felülete: Infrastruktúra-szolgáltatások beállítása a saját felhőben](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
-2. [CloudSimple-portál: Privát felhőalapú hálózatkezelés beállítása a Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
-3. [CloudSimple-portál: Jogosultságok eszkalációja](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
-4. [Azure Portal: A virtuális hálózat összekötése a saját felhővel](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-5. [Azure Portal: Biztonsági mentési Tárház létrehozása az Azure-ban](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
-6. [Azure Portal: Az Azure Blob Storage konfigurálása hosszú távú adatmegőrzéshez](#configure-azure-blob-storage-for-long-term-data-retention)
-7. [Privát felhő vCenter felhasználói felülete: Telepítse a Veeam B & R-t](#vcenter-console-of-private-cloud-install-veeam-br)
+1. [vCenter felhasználói felület: infrastruktúra-szolgáltatások beállítása saját felhőben](#vcenter-ui-set-up-infrastructure-services-in-your-private-cloud)
+2. [CloudSimple-portál: saját felhőalapú hálózatkezelés beállítása a Veeam](#cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam)
+3. [CloudSimple-portál: jogosultságok kiterjesztésének megvonása](#cloudsimple-private-cloud-escalate-privileges-for-cloudowner)
+4. [Azure Portal: a virtuális hálózat összekötése a saját felhővel](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+5. [Azure Portal: biztonsági mentési adattár létrehozása az Azure-ban](#azure-portal-connect-your-virtual-network-to-the-private-cloud)
+6. [Azure Portal: az Azure Blob Storage konfigurálása hosszú távú adatmegőrzéshez](#configure-azure-blob-storage-for-long-term-data-retention)
+7. [Privát felhő vCenter felhasználói felülete: install Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)
 8. [Veeam-konzol: Veeam biztonsági mentési & helyreállítási szoftver konfigurálása](#veeam-console-install-veeam-backup-and-recovery-software)
-9. [CloudSimple-portál: A Veeam hozzáférés beállítása és a deeszkalációs jogosultságok](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
+9. [CloudSimple-portál: az Veeam-hozzáférés beállítása és a deeszkalációs jogosultságok](#cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges)
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 A Veeam üzembe helyezésének megkezdése előtt a következők szükségesek:
 
@@ -115,7 +115,7 @@ A megvalósítási fázisban a következő elemek szükségesek:
 * A biztonsági mentési hálózathoz hozzárendelni kívánt alhálózat CIDR
 * Veeam 9,5 U3-as telepíthető adathordozó (ISO) a privát felhő vSAN-adattárához feltöltve
 
-### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter felhasználói felülete: Infrastruktúra-szolgáltatások beállítása a saját felhőben
+### <a name="vcenter-ui-set-up-infrastructure-services-in-your-private-cloud"></a>vCenter felhasználói felület: infrastruktúra-szolgáltatások beállítása saját felhőben
 
 Konfigurálja az infrastruktúra-szolgáltatásokat a privát felhőben, így könnyebben kezelheti a számítási feladatokat és eszközöket.
 
@@ -126,7 +126,7 @@ Konfigurálja az infrastruktúra-szolgáltatásokat a privát felhőben, így k�
   * Az Azure AD-t szeretné használni.
 * Ha IP-címeket keres, IP-címek kezelését és névfeloldási szolgáltatásokat szeretne biztosítani a saját számítási feladataihoz a saját felhőben, állítson be egy DHCP-és DNS-kiszolgálót a [DNS-és DHCP-alkalmazások és-munkaterhelések beállítása a CloudSimple privát felhőben](dns-dhcp-setup.md)című részben leírtak szerint.
 
-### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple privát felhő: Privát felhőalapú hálózatkezelés beállítása a Veeam
+### <a name="cloudsimple-private-cloud-set-up-private-cloud-networking-for-veeam"></a>CloudSimple: privát felhőalapú hálózatkezelés beállítása a Veeam
 
 Nyissa meg a CloudSimple-portált, és hozzon létre privát felhőalapú hálózatkezelést a Veeam-megoldáshoz.
 
@@ -153,24 +153,24 @@ Hozzon létre tűzfalszabályokat a munkaterhelési alhálózat és a biztonság
 
 Alapértelmezés szerint a CloudSimple egy 1Gbps ExpressRoute-hivatkozást biztosít. Nagyobb méretű környezeti méretek esetén nagyobb sávszélesség-kapcsolatra lehet szükség. További információért forduljon az Azure támogatási szolgálatához.
 
-A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a társ áramköri URI-ra, valamint az Azure-előfizetéséhez való hozzáférésre.  Ezek az információk a CloudSimple-portál Virtual Network kapcsolatok lapján érhetők el. Útmutatásért lásd: az [Azure-beli virtuális hálózatra vonatkozó információk beszerzése az CloudSimple való kapcsolódáshoz](virtual-network-connection.md). Ha bármilyen problémája van az információ beszerzésével, [forduljon](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)az ügyfélszolgálathoz.
+A telepítés folytatásához szüksége lesz az engedélyezési kulcsra és a társ áramköri URI-ra, valamint az Azure-előfizetéséhez való hozzáférésre.  Ezek az információk a CloudSimple-portál Virtual Network kapcsolatok lapján érhetők el. Útmutatásért lásd: az [Azure-beli virtuális hálózatra vonatkozó információk beszerzése az CloudSimple való kapcsolódáshoz](virtual-network-connection.md). Ha bármilyen problémája van az információ beszerzésével, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple privát felhő: A cloudowner jogosultságának megemelése
+### <a name="cloudsimple-private-cloud-escalate-privileges-for-cloudowner"></a>CloudSimple privát felhő: a cloudowner jogosultságának kiemelése
 
 Az alapértelmezett "cloudowner" felhasználó nem rendelkezik megfelelő jogosultsággal a privát felhő vCenter a VEEAM telepítéséhez, így a felhasználó vCenter jogosultságait ki kell bővíteni. További információ: a [jogosultságok kiterjesztésének](escalate-private-cloud-privileges.md)megemelése.
 
-### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: A virtuális hálózat összekötése a saját felhővel
+### <a name="azure-portal-connect-your-virtual-network-to-the-private-cloud"></a>Azure Portal: a virtuális hálózat összekötése a saját felhővel
 
 Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtual Network-kapcsolat](azure-expressroute-connection.md)utasításait követve az ExpressRoute használatával.
 
-### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: Biztonsági mentési tárházat tartalmazó virtuális gép létrehozása
+### <a name="azure-portal-create-a-backup-repository-vm"></a>Azure Portal: biztonsági mentési tárházat tartalmazó virtuális gép létrehozása
 
 1. Hozzon létre egy standard D2 v3 virtuális gépet (2 vCPU és 8 GB memóriával).
 2. Válassza ki a CentOS 7,4-alapú rendszerképet.
 3. Konfiguráljon egy hálózati biztonsági csoportot (NSG) a virtuális géphez. Győződjön meg arról, hogy a virtuális gép nem rendelkezik nyilvános IP-címmel, és nem érhető el a nyilvános internetről.
 4. Hozzon létre egy felhasználónevet és egy jelszó-alapú felhasználói fiókot az új virtuális géphez. Útmutatásért lásd: [Linux rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/linux/quick-create-portal.md).
 5. Hozzon létre 1x512 GiB standard HDD-t, és csatolja azt a tárház virtuális géphez.  Útmutatásért lásd: [felügyelt adatlemez csatolása Windows rendszerű virtuális géphez a Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md).
-6. [Hozzon létre egy XFS kötetet a felügyelt lemezen](https://www.digitalocean.com/docs/volumes/how-to/format-and-mount). Jelentkezzen be a virtuális gépre a korábban említett hitelesítő adatok használatával. Hajtsa végre a következő parancsfájlt logikai kötet létrehozásához, adja hozzá a lemezt, hozzon létre egy XFS fájlrendszer-partíciót, és csatlakoztassa a partíciót a/backup1 elérési útja alatt.
+6. [Hozzon létre egy XFS kötetet a felügyelt lemezen](https://www.digitalocean.com/docs/volumes/how-to/). Jelentkezzen be a virtuális gépre a korábban említett hitelesítő adatok használatával. Hajtsa végre a következő parancsfájlt logikai kötet létrehozásához, adja hozzá a lemezt, hozzon létre egy XFS fájlrendszer- [partíciót](https://www.digitalocean.com/docs/volumes/how-to/partition/) , és [csatlakoztassa](https://www.digitalocean.com/docs/volumes/how-to/mount/) a partíciót a/backup1 elérési útja alatt.
 
     Példa szkriptre:
 
@@ -196,7 +196,7 @@ Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtua
 
 1. Hozzon létre egy általános célú Storage-fiókot (GPv2) a standard típusú és egy blob-tárolóhoz a Microsoft video [első lépések Azure Storage](https://azure.microsoft.com/en-gb/resources/videos/get-started-with-azure-storage)-ban leírtak szerint.
 2. Hozzon létre egy Azure Storage-tárolót a [tároló létrehozása](https://docs.microsoft.com/rest/api/storageservices/create-container) hivatkozásban leírtak szerint.
-2. Töltse le `azcopy` a Linux parancssori segédprogramját a Microsofttól. A következő parancsokat használhatja a bash-rendszerhéjban a CentOS 7,5-ben.
+2. Töltse le a Linux rendszerhez készült `azcopy` parancssori segédprogramot a Microsofttól. A következő parancsokat használhatja a bash-rendszerhéjban a CentOS 7,5-ben.
 
     ```
     wget -O azcopy.tar.gz https://aka.ms/downloadazcopylinux64
@@ -206,9 +206,9 @@ Csatlakoztathatja a virtuális hálózatot a privát felhőhöz az [Azure Virtua
     sudo yum -y install icu
     ```
 
-3. `azcopy` A paranccsal másolja a biztonságimásolat-fájlokat a blob-tárolóba.  A részletes parancsokért lásd: [adatok átvitele a AzCopy Linuxon](../storage/common/storage-use-azcopy-linux.md) .
+3. A `azcopy` paranccsal másolja a biztonságimásolat-fájlokat a blob-tárolóba.  A részletes parancsokért lásd: [adatok átvitele a AzCopy Linuxon](../storage/common/storage-use-azcopy-linux.md) .
 
-### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-konzol a privát felhőhöz: Telepítse a Veeam B & R-t
+### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>vCenter-konzol: install Veeam B & R
 
 Hozzáférés a vCenter a saját felhőből a Veeam-szolgáltatásfiók létrehozásához, a Veeam B & R 9,5-es verziójának telepítéséhez, valamint a Veeam a szolgáltatásfiók használatával történő konfigurálásához.
 
@@ -219,16 +219,16 @@ Hozzáférés a vCenter a saját felhőből a Veeam-szolgáltatásfiók létreho
     ![Veeam-szolgáltatásfiók létrehozása](media/veeam-vcenter01.png)
 
 4. Hozzon létre egy elosztott portot a vCenter a biztonsági mentési hálózat VLAN használatával. További részletekért tekintse meg a VMware-videót, [amely az elosztott vSphere webes ügyfélprogramban történő létrehozását](https://www.youtube.com/watch?v=wpCd5ZbPOpA)ismerteti.
-5. Hozza létre a virtuális gépeket a vCenter Veeam biztonsági mentési és proxykiszolgáló számára a [Veeam](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)rendszerkövetelményeinek megfelelően. Használhatja a Windows 2012 R2 vagy a Linux rendszert. További információ: [a Linux Backup-Tárházak használatára vonatkozó követelmények](https://www.veeam.com/kb2216).
+5. Hozza létre a virtuális gépeket a vCenter Veeam biztonsági mentési és proxykiszolgáló számára a [Veeam rendszerkövetelményeinek](https://helpcenter.veeam.com/docs/backup/vsphere/system_requirements.html?ver=95)megfelelően. Használhatja a Windows 2012 R2 vagy a Linux rendszert. További információ: [a Linux Backup-Tárházak használatára vonatkozó követelmények](https://www.veeam.com/kb2216).
 6. Csatlakoztassa a telepíthető Veeam ISO-t CDROM-eszközként a Veeam Backup Server virtuális gépen.
 7. RDP-munkamenet használata a Windows 2012 R2 rendszerű géphez (a Veeam telepítésének céljával), [telepítse a Veeam B & R 9.5 U3](https://helpcenter.veeam.com/docs/backup/vsphere/install_vbr.html?ver=95) -ot egy Windows 2012 R2 RENDSZERű virtuális gépen.
 8. Keresse meg a Veeam biztonsági mentési kiszolgáló virtuális gépe belső IP-címét, és konfigurálja az IP-címet statikusra a DHCP-kiszolgálón. Az ehhez szükséges pontos lépések a DHCP-kiszolgálótól függenek. Példaként a NETGATE <a href="https://www.netgate.com/docs/pfsense/dhcp/dhcp-server.html" target="_blank">statikus DHCP-hozzárendelések</a> elmagyarázza, hogyan kell konfigurálni a DHCP-kiszolgálót egy pfsense-útválasztó használatával.
 
-### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam-konzol: A Veeam biztonsági mentési és helyreállítási szoftver telepítése
+### <a name="veeam-console-install-veeam-backup-and-recovery-software"></a>Veeam-konzol: a Veeam biztonsági mentési és helyreállítási szoftver telepítése
 
 A Veeam-konzol használatával konfigurálja a Veeam biztonsági mentési és helyreállítási szoftvereit. Részletekért lásd: [Veeam Backup & Replication v9 – telepítés és üzembe helyezés](https://www.youtube.com/watch?v=b4BqC_WXARk).
 
-1. VMware vSphere hozzáadása felügyelt kiszolgálói környezetként. Ha a rendszer kéri, adja meg a Veeam-szolgáltatásfiók azon hitelesítő adatait, amelyet a [vCenter-konzoljának elején hozott létre: Telepítse a Veeam B &](#vcenter-console-of-private-cloud-install-veeam-br)R-t.
+1. VMware vSphere hozzáadása felügyelt kiszolgálói környezetként. Ha a rendszer kéri, adja meg a Veeam-szolgáltatásfiók azon hitelesítő adatait, amelyet a vCenter-konzoljának elején hozott létre [: telepítse a Veeam B & R](#vcenter-console-of-private-cloud-install-veeam-br)-t.
 
     * A Load Control és az alapértelmezett speciális beállítások alapértelmezett beállításainak használata.
     * Állítsa be a csatlakoztatási kiszolgáló helyét a biztonsági mentési kiszolgálóként.
@@ -253,18 +253,18 @@ A Veeam-konzol használatával konfigurálja a Veeam biztonsági mentési és he
     * A biztonsági másolatok másolási feladatainak konfigurálásához kövesse a videóban található utasításokat a [biztonsági](https://www.youtube.com/watch?v=LvEHV0_WDWI&t=2s)másolat készítéséhez.
     * Engedélyezze a biztonságimásolat-fájlok titkosítását a **Speciális beállítások > tároló**területen.
 
-### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple-portál: A Veeam hozzáférés beállítása és a deeszkalációs jogosultságok
-Hozzon létre egy nyilvános IP-címet a Veeam biztonsági mentési és helyreállítási kiszolgálójának. Útmutatásért lásd: [nyilvános IP-címek](public-ips.md)lefoglalása.
+### <a name="cloudsimple-portal-set-up-veeam-access-and-de-escalate-privileges"></a>CloudSimple-portál: az Veeam-hozzáférés beállítása és a deeszkalációs jogosultságok
+Hozzon létre egy nyilvános IP-címet a Veeam biztonsági mentési és helyreállítási kiszolgálójának. Útmutatásért lásd: [nyilvános IP-címek lefoglalása](public-ips.md).
 
 Hozzon létre egy tűzfalszabály használatával, amely lehetővé teszi, hogy a Veeam Backup kiszolgáló kimenő kapcsolatokat hozzon létre a Veeam webhelye számára a frissítések/javítások letöltéséhez a 80-as TCP-porton. Útmutatásért tekintse [meg a tűzfalak és szabályok beállítása](firewall.md)című témakört.
 
-A jogosultságok megszüntetéséhez tekintse meg [](escalate-private-cloud-privileges.md#de-escalate-privileges)a jogosultságok dekiterjesztését ismertető témakört.
+A jogosultságok megszüntetéséhez tekintse meg a [jogosultságok dekiterjesztését](escalate-private-cloud-privileges.md#de-escalate-privileges)ismertető témakört.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Tudástár
 
 ### <a name="cloudsimple-references"></a>CloudSimple-referenciák
 
-* [Privát felhő létrehozása](create-private-cloud.md)
+* [Magánfelhő létrehozása](create-private-cloud.md)
 * [VLAN-ok/alhálózatok létrehozása és kezelése](create-vlan-subnet.md)
 * [vCenter-identitás forrása](set-vcenter-identity.md)
 * [A számítási feladatok DNS-és DHCP-beállítása](dns-dhcp-setup.md)
@@ -298,7 +298,7 @@ A jogosultságok megszüntetéséhez tekintse meg [](escalate-private-cloud-priv
 
 * [Elosztott porttartomány létrehozása a vSphere webes ügyfélprogramban – videó](https://www.youtube.com/watch?v=wpCd5ZbPOpA)
 
-### <a name="other-references"></a>Egyéb segédanyagok
+### <a name="other-references"></a>Egyéb referenciák
 
 * [XFS-kötet létrehozása a felügyelt lemezen – RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-xfs)
 * [NFS-csatlakoztatás beállítása CentOS 7 rendszeren – HowToForge](https://www.howtoforge.com/nfs-server-and-client-on-centos-7)

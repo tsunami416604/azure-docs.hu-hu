@@ -1,6 +1,6 @@
 ---
-title: Azure Állapotmonitor v2 – hibaelhárítás és ismert problémák | Microsoft Docs
-description: Állapotmonitor v2 ismert problémái és hibaelhárítási példák. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Azure Application Insights-ügynök hibaelhárítása és ismert problémái | Microsoft Docs
+description: Application Insights-ügynök ismert problémái és a hibaelhárítási példák. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3e9bffaf3b533ef8fbe3e32c1dca671fb67c911
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ab1ce01c41679c6ff686ab37692d3b8e9167a4f8
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058294"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388201"
 ---
-# <a name="troubleshooting-status-monitor-v2"></a>Hibaelhárítási Állapotmonitor v2
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
 Ha engedélyezi a figyelést, az adatgyűjtést akadályozó problémák merülhetnek fel.
 Ez a cikk felsorolja az összes ismert problémát, és hibaelhárítási példákat tartalmaz.
@@ -31,9 +31,9 @@ Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapc
 
 Ha a DLL-fájlok bármelyike megtalálható a bin könyvtárban, a figyelés sikertelen lehet:
 
-- Microsoft.ApplicationInsights.dll
-- Microsoft.AspNet.TelemetryCorrelation.dll
-- System.Diagnostics.DiagnosticSource.dll
+- Microsoft. ApplicationInsights. dll
+- Microsoft. AspNet. TelemetryCorrelation. dll
+- System. Diagnostics. DiagnosticSource. dll
 
 Ezek a DLL-fájlok a Visual Studio alapértelmezett alkalmazás-sablonjaiba tartoznak, még akkor is, ha az alkalmazás nem használja őket.
 A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
@@ -88,7 +88,7 @@ Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/is
 
     
     
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
     
 ### <a name="troubleshooting-powershell"></a>A PowerShell hibaelhárítása
 
@@ -96,13 +96,13 @@ Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/is
 A `Get-Module -ListAvailable` parancs használatával meghatározhatja, hogy mely modulok vannak telepítve.
 
 #### <a name="import-a-module-into-the-current-session"></a>Modul importálása az aktuális munkamenetbe
-Ha egy modult nem töltöttek be egy PowerShell-munkamenetbe, manuálisan is betöltheti `Import-Module <path to psd1>` azt a parancs használatával.
+Ha egy modult nem töltöttek be egy PowerShell-munkamenetbe, manuálisan is betöltheti azt a `Import-Module <path to psd1>` parancs használatával.
 
 
-### <a name="troubleshooting-the-status-monitor-v2-module"></a>A Állapotmonitor v2 modul hibaelhárítása
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Az Application Insights Agent modul hibaelhárítása
 
-#### <a name="list-the-commands-available-in-the-status-monitor-v2-module"></a>A Állapotmonitor v2 modulban elérhető parancsok listázása
-Futtassa a parancsot `Get-Command -Module Az.ApplicationMonitor` az elérhető parancsok beszerzéséhez:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>A Application Insights Agent modulban elérhető parancsok listázása
+Futtassa az `Get-Command -Module Az.ApplicationMonitor` parancsot az elérhető parancsok beszerzéséhez:
 
 ```
 CommandType     Name                                               Version    Source
@@ -117,13 +117,13 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-status-monitor-v2-module"></a>Az Állapotmonitor v2 modul aktuális verziójának meghatározása
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Az Application Insights Agent modul aktuális verziójának meghatározása
 Futtassa a `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot a következő információk megjelenítéséhez a modulról:
    - PowerShell-modul verziója
    - Application Insights SDK-verzió
    - A PowerShell-modul fájlelérési útjai
     
-A parancsmag használatának részletes ismertetését az [API](status-monitor-v2-api-get-status.md) -referenciában tekintheti meg.
+A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-get-status.md) tekintheti meg.
 
 
 ### <a name="troubleshooting-running-processes"></a>Futó folyamatok hibaelhárítása
@@ -131,36 +131,36 @@ A parancsmag használatának részletes ismertetését az [API](status-monitor-v
 Megvizsgálhatja a rendszerbe helyezett számítógépek folyamatait annak megállapítására, hogy az összes DLL-fájl be van-e töltve.
 Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Használja a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancsot a DLL-fájlok vizsgálatához.
+A DLL-fájlok a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` paranccsal ellenőrizhetők.
 
-A parancsmag használatának részletes ismertetését az [API](status-monitor-v2-api-get-status.md) -referenciában tekintheti meg.
+A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-get-status.md) tekintheti meg.
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a Perfview eszköz használatával
 
 #### <a name="setup"></a>Beállítás
 
-1. Töltse le a Perfview eszköz. exe és a PerfView64 [](https://github.com/Microsoft/perfview/releases). exe fájlt a githubról.
+1. Töltse le a Perfview eszköz. exe és a PerfView64. exe fájlt a [githubról](https://github.com/Microsoft/perfview/releases).
 2. Indítsa el a PerfView64. exe fájlt.
 3. Bontsa ki a **Speciális beállítások elemet**.
 4. Törölje a jelet a következő jelölőnégyzetekből:
     - **Zip**
     - **Körlevél**
     - **.NET-szimbólum gyűjteménye**
-5. **További szolgáltatók**beállítása:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. **További szolgáltatók**beállítása: `61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
 #### <a name="collecting-logs"></a>Naplók összegyűjtése
 
 1. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
 2. A Perfview eszköz területen válassza a **gyűjtés indítása**elemet.
-3. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /start` parancsot az IIS elindításához.
+3. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa az `iisreset /start` parancsot az IIS elindításához.
 4. Próbálja meg megkeresni az alkalmazást.
 5. Az alkalmazás betöltése után térjen vissza a Perfview eszköz, és válassza a **gyűjtemény leállítása**lehetőséget.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A kihagyott paraméterek megismeréséhez tekintse át az [API](status-monitor-v2-overview.md#powershell-api-reference) -referenciát.
+- A kihagyott paraméterek megismeréséhez tekintse át az [API-referenciát](status-monitor-v2-overview.md#powershell-api-reference) .
 - Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).

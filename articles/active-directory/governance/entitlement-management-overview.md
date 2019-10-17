@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a467856550bf2deaab931b3fe2f54b7986f12f8a
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827153"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430300"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Mi az az Azure AD-jogosultságkezelés? (Előzetes verzió)
 
@@ -80,11 +80,11 @@ A jogosultság-kezeléssel a következő típusú erőforrásokat kezelheti:
 Az Azure AD biztonsági csoportjaira vagy az Office 365-csoportokra támaszkodó egyéb erőforrásokhoz való hozzáférést is szabályozhatja.  Példa:
 
 - A Microsoft Office 365-es verzióra vonatkozó licenccel rendelkező felhasználók számára engedélyezheti az Azure AD biztonsági csoportját egy hozzáférési csomagban, és konfigurálhatja az adott csoportra vonatkozó [csoport alapú licencelést](../users-groups-roles/licensing-groups-assign.md) .
-- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure](../../role-based-access-control/role-assignments-portal.md) -beli szerepkör-hozzárendelésének létrehozásával
+- Hozzáférést biztosíthat a felhasználóknak az Azure-erőforrások kezeléséhez egy hozzáférési csomagban található Azure AD biztonsági csoport használatával és az adott csoport [Azure-beli szerepkör-hozzárendelésének](../../role-based-access-control/role-assignments-portal.md) létrehozásával
 
 ## <a name="what-are-access-packages-and-policies"></a>Mik azok a hozzáférési csomagok és szabályzatok?
 
-A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a katalógusok nevűtárolókban vannak meghatározva.
+A jogosultságok kezelése bevezeti a *hozzáférési csomag*fogalmát. A hozzáférési csomag az összes olyan erőforrás kötegét képezi, amelyet a felhasználónak egy projekten kell dolgoznia, vagy feladatait kell végrehajtania. Az erőforrások közé tartoznak a csoportok, az alkalmazások és a webhelyek hozzáférése. A hozzáférési csomagok a belső alkalmazottak és a szervezeten kívüli felhasználók hozzáférésének szabályozására szolgálnak. A hozzáférési csomagok a *katalógusok*nevű tárolókban vannak meghatározva.
 
 A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szabályzatok határozzák meg a hozzáférési csomag elérésére vonatkozó szabályokat vagy guardrails. A szabályzat engedélyezése kényszeríti, hogy csak a megfelelő felhasználók férhessenek hozzá a megfelelő erőforrásokhoz, és a megfelelő időtartamra.
 
@@ -92,7 +92,7 @@ A hozzáférési csomagok egy vagy több *szabályzatot*is tartalmaznak. A szab�
 
 A hozzáférési csomag és a hozzá tartozó házirendek esetében a hozzáférés-csomagkezelő a következőket határozza meg:
 
-- További források
+- Segédanyagok és eszközök
 - A felhasználók számára szükséges szerepkörök az erőforrásokhoz
 - A hozzáférést kérő külső felhasználók belső felhasználói és partnerszervezetek
 - Jóváhagyási folyamat és a hozzáférést engedélyező vagy megtagadó felhasználók
@@ -105,34 +105,24 @@ Az alábbi ábrán egy példa látható a jogosultságok kezelésének különb�
 
 ![A jogosultságok kezelésének áttekintése](./media/entitlement-management-overview/elm-overview.png)
 
-## <a name="external-users"></a>Külső felhasználók
-
-Az [Azure ad vállalatközi (B2B)](../b2b/what-is-b2b.md) Meghívási szolgáltatás használatakor már ismernie kell azon külső vendég felhasználók e-mail-címeit, akiket be szeretne állítani az erőforrás-könyvtárba, és együttműködik a szolgáltatással. Ez remekül működik, ha kisebb vagy rövid távú projekttel dolgozik, és már ismeri az összes résztvevőt, de ez nehezebben kezelhető, ha sok felhasználóval szeretne dolgozni, vagy ha a résztvevők idővel változnak.  Előfordulhat például, hogy egy másik szervezettel dolgozik, és egy kapcsolattartási ponttal rendelkezik az adott szervezethez, de az adott szervezet további felhasználói számára is hozzáférésre van szüksége.
-
-A jogosultságok kezelésével meghatározhatja azt a szabályzatot, amely lehetővé teszi, hogy az Azure AD-t is használó szervezetek felhasználói hozzáférhessenek a hozzáférési csomag igényléséhez. Megadhatja, hogy szükséges-e a jóváhagyás, valamint a hozzáférés lejárati dátuma. Ha jóváhagyásra van szükség, akkor azt is megadhatja, hogy jóváhagyóként egy vagy több felhasználót a korábban meghívott külső szervezettől, mivel valószínűleg tudni fogja, hogy a szervezet külső felhasználói számára van-e hozzáférése. Miután konfigurálta a hozzáférési csomagot, a külső szervezet kapcsolattartója számára is elküldheti a hozzáférési csomagra mutató hivatkozást. Ez a kapcsolat a külső szervezet más felhasználóival is megosztható, és ezt a hivatkozást használhatja a hozzáférési csomag igényléséhez.  Az adott szervezet azon felhasználói, akik már meghívást kaptak a címtárba, a hivatkozást is használhatják.
-
-A kérések jóváhagyása esetén a jogosultságok kezelése a szükséges hozzáféréssel fogja kiépíteni a felhasználót, amely magában foglalhatja a felhasználó meghívását, ha még nem szerepelnek a címtárban. Az Azure AD automatikusan létrehoz egy B2B-fiókot.  Vegye figyelembe, hogy a rendszergazdák korábban már korlátozták az együttműködésre engedélyezett szervezeteket, ha egy [B2B engedélyezési vagy megtagadási listát](../b2b/allow-deny-list.md) állítanak be a más szervezetek számára történő meghívások engedélyezéséhez vagy letiltásához.  Ha a felhasználó számára nem engedélyezett az engedélyezési vagy a tiltási lista, a rendszer nem kéri le őket.
-
-Mivel nem szeretné, hogy a külső felhasználó hozzáférhessen az utolsó Forever-hez, meg kell adnia egy lejárati dátumot a szabályzatban, például 180 nap. 180 nap után, ha a hozzáférésük nincs megújítva, a jogosultságok kezelése eltávolítja a hozzáférési csomaghoz társított összes hozzáférést.  Ha a jogosultságok kezelésében meghívott felhasználó nem rendelkezik más hozzáférési csomag-hozzárendelésekkel, akkor amikor elvesztik az utolsó hozzárendelést, a rendszer 30 napig letiltja a B2B-fiókját, és ezt követően eltávolítja azt.  Ez megakadályozza a szükségtelen fiókok elterjedését.  
-
-## <a name="terminology"></a>Terminológia
+## <a name="terminology"></a>Szakkifejezések
 
 A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez tekintse át a következő feltételeket.
 
 | Kifejezés vagy fogalom | Leírás |
 | --- | --- |
 | jogosultságok kezelése | Hozzáférési csomagokat hozzárendelő, visszavonó és felügyelő szolgáltatás. |
-| Hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. |
+| hozzáférési csomag | Egy csoport vagy projekt által igényelt erőforrás-csomag, amely szabályzatokkal van szabályozva. Egy hozzáférési csomag mindig szerepel a katalógusban. |
 | hozzáférési kérelem | Egy hozzáférési csomag erőforrásaihoz való hozzáférésre vonatkozó kérelem. A kérések általában egy munkafolyamaton keresztül haladnak át. |
-| policy | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók. Például a szabályzatok az alkalmazottak hozzáférését és a külső hozzáférést is tartalmazzák. |
-| catalog | Kapcsolódó erőforrások és hozzáférési csomagok tárolója. |
+| szabályzat | Olyan szabályok összessége, amelyek meghatározzák a hozzáférési életciklust, például azt, hogy a felhasználók hogyan férhetnek hozzá, ki hagyhatják jóvá, és hogy mennyi ideig férhetnek hozzá a felhasználók. Például a szabályzatok az alkalmazottak hozzáférését és a külső hozzáférést is tartalmazzák. |
+| Katalógus | Kapcsolódó erőforrások és hozzáférési csomagok tárolója. |
 | Általános katalógus | Olyan beépített katalógus, amely mindig elérhető. Ahhoz, hogy erőforrásokat vegyen fel az általános katalógusba, bizonyos engedélyekre van szükség. |
-| resource | Egy eszköz vagy szolgáltatás (például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely) számára, amelyhez engedélyeket adhat a felhasználóknak. |
-| erőforrástípus | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
+| Erőforrás | Egy eszköz vagy szolgáltatás (például egy Office-csoport, egy biztonsági csoport, egy alkalmazás vagy egy SharePoint Online-webhely) számára, amelyhez engedélyeket adhat a felhasználóknak. |
+| Erőforrás típusa | Az erőforrás típusa, amely magában foglalja a csoportokat, az alkalmazásokat és a SharePoint Online-webhelyeket. |
 | erőforrás-szerepkör | Egy erőforráshoz társított engedélyek gyűjteménye. |
 | erőforrás könyvtára | Egy vagy több megosztani kívánt erőforrással rendelkező könyvtár. |
 | hozzárendelt felhasználók | Hozzáférési csomag hozzárendelése egy felhasználóhoz, így a felhasználó rendelkezik az adott hozzáférési csomag összes erőforrás-szerepkörével. |
-| engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
+| Engedélyezése | Hozzáférési csomag elérhetővé tétele a felhasználók számára a kéréshez. |
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
@@ -152,7 +142,7 @@ A tagok felhasználói számára a licencek részeként több vendég is engedé
 
 További információ a licenceknek a felhasználókhoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Oktatóanyag: Az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
+- [Oktatóanyag: az első hozzáférési csomag létrehozása](entitlement-management-access-package-first.md)
 - [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

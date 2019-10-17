@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: b36ed2cac7e5009a0581091252b36dcd5af81bd7
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311609"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389994"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -65,7 +65,7 @@ A Table service skálázhatósági céljaival kapcsolatos további információk
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
-Ha egy adott előfizetés/régió kombináció számára engedélyezett maximális számú Storage-fiókot használ, több Storage-fiókot is használhat a beléptetés, a kimenő forgalom, az I/O műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a standard Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+Ha egy adott előfizetés/régió kombináció számára engedélyezett maximális számú Storage-fiókot használ, több Storage-fiókot is használhat a beléptetés, a kimenő forgalom, az I/O műveletek másodpercenkénti (IOPS) vagy kapacitásának növelésére? Ebben a forgatókönyvben a Microsoft azt javasolja, hogy a Storage-fiókok megnövekedett korlátainak kihasználásával csökkentse a munkaterhelés számára szükséges tárolási fiókok számát, ha lehetséges. Vegye fel a kapcsolatot az [Azure támogatási szolgálatával](https://azure.microsoft.com/support/options/) , és kérjen nagyobb korlátokat a Storage-fiókjához. További információ: [nagyobb méretű, magasabb szintű Storage-fiókok bejelentése](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
 ### <a name="capacity-and-transaction-targets"></a>Kapacitás-és tranzakciós célok
 
@@ -282,6 +282,4 @@ Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvas
 ## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure Storage skálázhatósági és teljesítménybeli céljai a Storage-fiókok esetében](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
-- [A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../blobs/storage-performance-checklist.md)
-- [A várólista tárolásának teljesítmény-és méretezhetőségi ellenőrzőlistája](../queues/storage-performance-checklist.md)
 - [Állapot-és hibakódok](/rest/api/storageservices/Status-and-Error-Codes2)

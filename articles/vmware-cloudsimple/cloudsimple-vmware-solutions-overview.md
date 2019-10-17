@@ -8,20 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6edbd21eaf6f0a6f4f07263e006cc31fb1529511
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7b5017cdeade14e53778b58154456412507c5ce8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877835"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430702"
 ---
-# <a name="what-is-vmware-solution-on-azure-by-cloudsimple"></a>Mi az Azure-beli VMware-megoldás a CloudSimple
+# <a name="what-is-azure-vmware-solution-by-cloudsimple"></a>Mi az Azure VMware-megoldás a CloudSimple
 
-A **CloudSimple által használt VMware-megoldás** egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a VMware platform futtatását az Azure-ban. Ez a megoldás magában foglalja az vSphere, a vCenter, a vSAN, a NSX-T és a megfelelő eszközöket. A VMware-környezet natív módon fut az Azure-beli operációs rendszer nélküli infrastruktúrában az Azure felhőalapú helyein. A szolgáltatás minden olyan funkciót magában foglal, amely a VMware-platformok hatékony és biztonságos felhasználásához szükséges.
+A **CloudSimple által nyújtott Azure VMware-megoldás** egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a VMware platform futtatását az Azure-ban. Ez a megoldás magában foglalja az vSphere, a vCenter, a vSAN, a NSX-T és a megfelelő eszközöket. A VMware-környezet natív módon fut az Azure-beli operációs rendszer nélküli infrastruktúrában az Azure felhőalapú helyein. A szolgáltatás minden olyan funkciót magában foglal, amely a VMware-platformok hatékony és biztonságos felhasználásához szükséges.
 
 ![VMware-megoldás az Azure-ban a CloudSimple áttekintése](media/azure-vmware-solution-by-cloudsimple.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Jellemzők
 
 * VMware felhőalapú környezetek igény szerinti, önkiszolgáló üzembe helyezése. Kapacitás igény szerinti hozzáadásának és eltávolításának lehetősége.
 * VMware platform üzembe helyezése, frissítés, felügyeleti sík biztonsági mentése, állapot/kapacitás figyelése, riasztások, hibaelhárítás és szervizelés.
@@ -40,7 +40,7 @@ A **CloudSimple által használt VMware-megoldás** egy teljes körűen felügye
     * Alkalmazások
     * Műveletek
     * Biztonság
-    * Tartalék
+    * Backup
     * Vészhelyreállítás
     * Naplózás
     * Megfelelőségi eszközök
@@ -53,7 +53,7 @@ A **CloudSimple által használt VMware-megoldás** egy teljes körűen felügye
 * **Infrastruktúra-figyelés, hibaelhárítás és támogatás**. A CloudSimple szolgáltatásként működteti a mögöttes infrastruktúrát. A meghiúsult hardver automatikusan lecserélve. Koncentrálhat a felhasználásra, miközben a CloudSimple biztosítja, hogy a környezet zökkenőmentesen fusson.
 * **Házirend-kompatibilitás**. Megtarthatja VMware-alapú eszközeit, biztonsági eljárásait, auditálási gyakorlatait és megfelelőségi tanúsítványait.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 * **Adatközpont-nyugdíjazás vagy áttelepítés**. Ha eléri a meglévő adatközpont korlátait, vagy frissíti a hardvert, további kapacitást érhet el. Könnyedén felveheti a szükséges kapacitást a felhőbe, és nem távolítja el a hardveres frissítések kezelésének fejfájását. Csökkentse a felhőbe való Migrálás kockázatát és költségeit az időigényes átalakítások vagy az újraarchitektúrák összehasonlításával. A felhőbe történő Migrálás felgyorsításához használja a jól ismert VMware-eszközöket és-képességeket. A felhőben az Azure-szolgáltatások segítségével modernizálhatja alkalmazásait a tempóban.
 * **Kibontás igény szerint**. Bontsa ki a felhőt a nem várt igények kielégítéséhez, például az új fejlesztési környezetekhez vagy a szezonális kapacitások kitöréséhez. Igény szerint egyszerűen hozhat létre új kapacitást, és megtarthatja azt, amíg szüksége van rá. Csökkentse a kezdeti befektetéseket, gyorsítsa fel a kiépítés sebességét, és csökkentse a bonyolultságot ugyanazzal az architektúrával és házirenddel mind a helyszínen, mind a felhőben.
@@ -61,9 +61,9 @@ A **CloudSimple által használt VMware-megoldás** egy teljes körűen felügye
 * **Nagy teljesítményű alkalmazások és adatbázisok**. A CloudSimple egy hiperkonvergens-architektúrát biztosít, amely a legigényesebb VMware-alapú számítási feladatok futtatására szolgál. Az Oracle, a Microsoft SQL Server, a köztes rendszerek és a nagy teljesítményű, nem SQL-adatbázisok futtatása. A felhőt saját adatközpontként használhatja nagy sebességű, 25 GB/s-os hálózati kapcsolatokkal, amelyek lehetővé teszik a helyszíni, VMware-alapú és Azure-beli privát számítási feladatok futtatását a teljesítmény veszélyeztetése nélkül.
 * **Valódi hibrid**. Egyesítse a DevOps a VMware és az Azure között. Optimalizálja a VMware-felügyeletet az Azure-szolgáltatásokhoz és-megoldásokhoz, amelyek az összes számítási feladatra alkalmazhatók. A nyilvános felhőalapú szolgáltatásokat anélkül érheti el, hogy kibővíti az adatközpontot, vagy újratervezi az alkalmazásokat. Az Azure-beli VMware-alkalmazások identitásának, hozzáférés-vezérlési házirendjeinek, naplózásának és figyelésének központosítása.
 
-![Forgatókönyvek](media/cloudsimple-scenarios.png)
+![Alkalmazási helyzetek](media/cloudsimple-scenarios.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [CloudSimple szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
 * [Privát felhő létrehozása](quickstart-create-private-cloud.md)

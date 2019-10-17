@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266857"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390547"
 ---
 ## <a name="benefits"></a>Előnyök 
 
@@ -42,7 +42,7 @@ A magas rendelkezésre állás érdekében több virtuális gépet kell üzembe 
 
 ### <a name="use-availability-zones-for-fault-isolation"></a>A Availability Zones használata a hibák elkülönítéséhez
 
-A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. Minden zóna egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található tevődik össze. Egy gazdagép-csoport egyetlen rendelkezésre állási zónában jön létre. A létrehozást követően a rendszer az összes gazdagépet a zónán belül helyezi el. Ha magas rendelkezésre állást szeretne biztosítani a zónák között, létre kell hoznia több gazdagép-csoportot (egy zónán belül), és ennek megfelelően kell elosztania a gazdagépeket.
+A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. Minden rendelkezésreállási zóna egy vagy több, független áramforrással, hűtéssel és hálózatkezelési megoldással ellátott adatközpontból áll. Egy gazdagép-csoport egyetlen rendelkezésre állási zónában jön létre. A létrehozást követően a rendszer az összes gazdagépet a zónán belül helyezi el. Ha magas rendelkezésre állást szeretne biztosítani a zónák között, létre kell hoznia több gazdagép-csoportot (egy zónán belül), és ennek megfelelően kell elosztania a gazdagépeket.
 
 Ha egy rendelkezésre állási zónához rendel hozzá egy gazdagépet, akkor a gazdagépen létrehozott összes virtuális gépet ugyanabban a zónában kell létrehozni.
 
@@ -71,7 +71,7 @@ A **karbantartási ellenőrzés** lehetővé teszi az ügyfeleknek, hogy kihagyh
 > [!NOTE]
 >  A karbantartási szabályozás jelenleg korlátozott előzetes verzióban érhető el, és bevezetési folyamatra van szükség. Az előzetes verzióra vonatkozó [nevezési kérdőív](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)beküldésével érvényes.
 
-## <a name="capacity-considerations"></a>A kapacitás szempontok
+## <a name="capacity-considerations"></a>Kapacitással kapcsolatos megfontolások
 
 A dedikált gazdagép kiosztása után az Azure hozzárendeli azt a fizikai kiszolgálóhoz. Ez garantálja a kapacitás rendelkezésre állását, ha üzembe kell helyeznie a virtuális gépet. Az Azure a régió (vagy zóna) teljes kapacitását használja a gazdagép fizikai kiszolgálójának kiválasztásához. Ez azt is jelenti, hogy az ügyfelek várhatóan növekedni tudnak a dedikált gazdagépek lábnyomán anélkül, hogy a fürtön kívülről kellene kifogyni.
 
@@ -82,6 +82,8 @@ Az alapértelmezett kvóta 3000 vCPU a dedikált gazdagépekhez régiónként. A
 ![Képernyőkép a portál használati és kvóták oldaláról](./media/virtual-machines-common-dedicated-hosts/quotas.png)
 
 További információ: [virtuális gépek vCPU kvótái](/azure/virtual-machines/windows/quotas).
+
+Az ingyenes próbaverzió és az MSDN-előfizetések nem rendelkeznek kvótával az Azure dedikált gazdagépekhez.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -97,11 +99,11 @@ További információ: [Azure dedikált gazdagép díjszabása](https://aka.ms/A
 
 Egy gazdagéphez van definiálva SKU, és a virtuális gép mérete adatsorozatot és típust jelöl. A különböző méretű virtuális gépeket egyetlen gazdagépen belül is keverheti, ha azok azonos méretű adatsorozattal rendelkeznek. A típus a jelenleg elérhető hardverek létrehozása a régióban.
 
-`types` Ugyanaz a virtuálisgép-sorozat különböző CPU-szállítóktól származik, és a CPU-generációk és a magok száma eltérő lesz.
+Ugyanannak a virtuálisgép-sorozatnak különböző `types` lesz a különböző CPU-szállítóktól, és különböző CPU-generációk és magok száma.
 
 További információért tekintse meg a gazdagép [díjszabását ismertető oldalt](https://aka.ms/ADHPricing) .
 
-Az előzetes verzió során a következő gazdagép-SKU\types fogjuk támogatni:  DSv3_Type1 és ESv3_Type1
+Az előzetes verzió során a következő gazdagép-SKU\types fogjuk támogatni: DSv3_Type1 és ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Gazdagép életciklusa
@@ -109,10 +111,10 @@ Az előzetes verzió során a következő gazdagép-SKU\types fogjuk támogatni:
 
 Az Azure figyeli és kezeli a gazdagépek állapotát. A következő állapotok lesznek visszaadva a gazdagép lekérdezésekor:
 
-| Üzemállapot   | Leírás       |
+| Állapot   | Leírás       |
 |----------|----------------|
 | Gazdagép elérhető     | A gazdagépen nincsenek ismert problémák.   |
 | A vizsgálat alatt álló gazdagép  | Problémák léptek fel a gazdagépen, amit keresünk. Ez egy átmeneti állapot szükséges ahhoz, hogy az Azure kipróbálja és azonosítani tudja az azonosított probléma hatókörét és alapvető okát. A gazdagépen futó virtuális gépek befolyásolhatják a működését. |
-| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha `autoReplaceOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerülnek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
-| Gazdagép felszabadítva  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
+| Gazdagép függőben lévő felszabadítása   | Az Azure nem tudja visszaállítani a gazdagépet Kifogástalan állapotba, és megkéri, hogy telepítse újra a virtuális gépeket a gazdagépről. Ha a `autoReplaceOnFailure` engedélyezve van, a virtuális gépek a *szolgáltatás* Kifogástalan állapotba kerültek. Ellenkező esetben előfordulhat, hogy a virtuális gép olyan gazdagépen fut, amely hamarosan sikertelen lesz.|
+| Gazdagép delefoglalt  | Az összes virtuális gép el lett távolítva a gazdagépről. Ez a gazdagép már nem töltődik fel, mivel a hardver elforgatása nem történt meg.   |
 

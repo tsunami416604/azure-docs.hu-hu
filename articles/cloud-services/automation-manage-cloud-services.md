@@ -2,23 +2,20 @@
 title: Azure-Cloud Services kezelése Azure Automation használatával | Microsoft Docs
 description: Ismerje meg, hogyan használható a Azure Automation szolgáltatás az Azure Cloud Services nagy léptékű kezeléséhez.
 services: cloud-services, automation
-documentationcenter: ''
 author: jodoglevy
 manager: timlt
 editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 1fc1ac9668454578ee137a2ddd1b85319fea0a28
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945505"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72439075"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Az Azure Cloud Services kezelése Azure Automation használatával
 Ez az útmutató bemutatja a Azure Automation szolgáltatást, valamint azt, hogy miként használható az Azure Cloud Services kezelésének egyszerűbbé tételéhez.
@@ -38,9 +35,8 @@ Néhány példa a Azure Automation használatára az Azure Cloud Services kezel�
 * [Felhőalapú szolgáltatás folyamatos üzembe helyezése, amikor a cscfg vagy a cspkg frissül az Azure Blob Storage-ban](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
 * [Cloud Service-példányok újraindítása párhuzamosan, egyszerre egy frissítési tartomány](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a Azure Automation alapjait és az Azure Cloud Services felügyeletének módját, az alábbi hivatkozásokat követve további információkat tudhat meg a Azure Automationról.
 
 * [Azure Automation áttekintése](../automation/automation-intro.md)
 * [Az első runbookom](../automation/automation-first-runbook-graphical.md)
-* [Azure Automation tanulási Térkép](https://azure.microsoft.com/documentation/learning-paths/automation/)

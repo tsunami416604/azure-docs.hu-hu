@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotmonitor v2 API-referenciája: Instrumentation-motor engedélyezése | Microsoft Docs'
-description: Állapotmonitor v2 API-referenciát. Az Enable-InstrumentationEngine. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: 'Azure Application Insights Agent API-referenciák: Instrumentation-motor engedélyezése | Microsoft Docs'
+description: Application Insights Agent API-referenciája. Az Enable-InstrumentationEngine. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 3c0f4e015d3e01e86daaf101c15e16857540a520
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033139"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388289"
 ---
-# <a name="status-monitor-v2-api-enable-instrumentationengine"></a>Állapotmonitor v2 API: InstrumentationEngine engedélyezése
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights ügynök API: Enable-InstrumentationEngine
 
 Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
@@ -51,12 +51,12 @@ PS C:\> Enable-InstrumentationEngine
 ## <a name="parameters"></a>Paraméterek
 
 ### <a name="-acceptlicense"></a>-AcceptLicense
-**Nem kötelező.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
+**Választható.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
 
 ### <a name="-verbose"></a>-Részletes
 **Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
-## <a name="output"></a>Output
+## <a name="output"></a>Kimenet
 
 
 #### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Példa a Instrumentation-motor sikeres engedélyezésének eredményére
@@ -66,12 +66,12 @@ Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje](../../azure-monitor/app/metrics-explorer.md) meg a mérőszámokat a teljesítmény és a használat figyeléséhez.
+ - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További [](../../azure-monitor/app/analytics.md) speciális lekérdezésekhez használja az elemzést.
+- További speciális lekérdezésekhez használja az [elemzést](../../azure-monitor/app/analytics.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
@@ -79,7 +79,7 @@ Configuring registry for instrumentation engine...
 - [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
 - [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
  
- További Állapotmonitor v2:
- - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
- - [A konfiguráció](status-monitor-v2-api-get-config.md) beszerzésével ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
- - [A](status-monitor-v2-api-get-status.md) figyelés ellenőrzésének állapotának beolvasása.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
+ - [A konfiguráció beszerzésével](status-monitor-v2-api-get-config.md) ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
+ - A figyelés ellenőrzésének [állapotának beolvasása](status-monitor-v2-api-get-status.md) .

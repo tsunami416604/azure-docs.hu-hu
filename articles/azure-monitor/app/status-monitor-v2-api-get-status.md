@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotmonitor v2 API-referenciája: Állapot beolvasása | Microsoft Docs'
-description: Állapotmonitor v2 API-referenciát. Get-ApplicationInsightsMonitoringStatus. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
+title: 'Azure Application Insights Agent API-referenciák: lekérési állapot | Microsoft Docs'
+description: Application Insights Agent API-referenciája. Get-ApplicationInsightsMonitoringStatus. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. A helyszíni, valamint a virtuális gépeken, illetve az Azure-ban üzemeltetett ASP.NET-webappokhoz is használható.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6e103e1856e338669224540a991c4b9ea6b10d6d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058257"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389873"
 ---
-# <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Állapotmonitor v2 API: Get-ApplicationInsightsMonitoringStatus
+# <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Application Insights ügynök API: Get-ApplicationInsightsMonitoringStatus
 
 Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
@@ -34,9 +34,9 @@ Ez a parancsmag a figyeléshez szükséges kulcsfontosságú fájlokkal kapcsola
 
 ## <a name="examples"></a>Példák
 
-### <a name="example-application-status"></a>Példa: Alkalmazás állapota
+### <a name="example-application-status"></a>Példa: alkalmazás állapota
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus` a webhelyek figyelési állapotának megjelenítéséhez.
+A webhelyek figyelési állapotának megjelenítéséhez futtassa a következő parancsot: `Get-ApplicationInsightsMonitoringStatus`.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -82,7 +82,7 @@ Ebben a példában;
 
 ### <a name="example-powershell-module-information"></a>Példa: PowerShell-modul adatai
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` az aktuális modul adatainak megjelenítéséhez:
+Futtassa az `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot az aktuális modul adatainak megjelenítéséhez:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -134,11 +134,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-### <a name="example-runtime-status"></a>Példa: Futtatókörnyezetbeli állapot
+### <a name="example-runtime-status"></a>Példa: futtatókörnyezet állapota
 
 Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DLL-fájl be van-e töltve. Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Futtassa az `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancsot:
 
 
 ```
@@ -192,7 +192,7 @@ Emellett letölti a külső eszközöket is annak megállapításához, hogy a s
 
 
 Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a parancsokat:
-- iisreset.exe /status
+- iisreset. exe/status
 - [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
 - [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
@@ -202,7 +202,7 @@ Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a 
 **Választható**. Csak a InspectProcess használatával használható. Ezzel a kapcsolóval átugorhatja a további eszközök letöltése előtt megjelenő felhasználói üzenetet.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
- További Állapotmonitor v2:
- - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .

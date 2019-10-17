@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése Android-alkalmazásokba az Azure Notification Hubs és a Google Cloud Messaging használatával | Microsoft Docs
+title: Leküldéses értesítések küldése Androidra az Azure Notification Hubs és az Google Cloud Messaging használatával | Microsoft Docs
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan küldhet leküldéses értesítéseket Android-eszközökre az Azure Notification Hubs és a Google Firebase Cloud Messaging használatával.
 services: notification-hubs
 documentationcenter: android
@@ -18,14 +18,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212362"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72386319"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: Leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és Google Cloud Messaging (elavult) használatával
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítések Android-eszközökre az Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -166,9 +166,9 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 
     Frissítse ezt a három helyőrzőt a `NotificationSettings` osztály alábbi kódjában:
 
-   * `SenderId`: A [Google Cloud Console](https://cloud.google.com/console)-ban korábban beszerzett projekt száma.
-   * `HubListenConnectionString`: A `DefaultListenAccessSignature` központhoz tartozó kapcsolatok karakterlánca. Ez a kapcsolati sztring az [Azure portal] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
-   * `HubName`: Használja a [Azure Portal]központ lapján megjelenő értesítési központ nevét.
+   * `SenderId`: a [Google Cloud Console](https://cloud.google.com/console)-ban korábban beszerzett projekt száma.
+   * `HubListenConnectionString`: a hub `DefaultListenAccessSignature` kapcsolatok karakterlánca. Ez a kapcsolati sztring az [Azure Portalra] a központ **Beállítások** paneljének **Hozzáférési szabályzatok** elemére kattintva másolható át.
+   * `HubName`: használja az értesítési központ nevét, amely megjelenik a [Azure Portalra]központ lapján.
 
      `NotificationSettings` kód:
 
@@ -468,7 +468,7 @@ Az értesítési központ konfigurálva lett a GCM-mel való együttműködésre
 
 ### <a name="test-send-push-notifications-from-the-azure-portal"></a>Leküldéses értesítések küldésének tesztelése az Azure Portalról
 
-A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portal].
+A leküldéses értesítések fogadásának az alkalmazásban való teszteléséhez értesítéseket küldhet az [Azure Portalra].
 
 1. A **Hibaelhárítás** szakaszban válassza a **Tesztküldés** lehetőséget.
 2. A **Platformok** beállításnál válassza az **Android** lehetőséget.
@@ -518,7 +518,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     ```
 3. A `NotificationSetting.java` fájlban adja hozzá az alábbi beállítást a `NotificationSettings` osztályhoz.
 
-    Frissítse a `HubFullAccess` fájlt a központ **DefaultFullSharedAccessSignature** kapcsolati sztringjével. Ez a kapcsolati sztring az [Azure portal] az értesítési központ **Beállítások** oldalának **Hozzáférési szabályzatok** elemére kattintva másolható át.
+    Frissítse a `HubFullAccess` fájlt a központ **DefaultFullSharedAccessSignature** kapcsolati sztringjével. Ez a kapcsolati sztring az [Azure Portalra] az értesítési központ **Beállítások** oldalának **Hozzáférési szabályzatok** elemére kattintva másolható át.
 
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
@@ -714,7 +714,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált Android-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott Android-eszközökre, lépjen tovább a következő oktatóanyagra:  
 
@@ -746,4 +746,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[Azure Portal]: https://portal.azure.com
+[Azure Portalra]: https://portal.azure.com

@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 06/28/2019
-ms.openlocfilehash: b1331865224d34f731dbd388cebdaec8b7c9fe7f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c7b6abb9874c8b6bb2469595b9ce53541656834f
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264663"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430129"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -183,7 +183,7 @@ Annak megakadályozása érdekében, hogy mások módosíthassák vagy törölj�
 
 ## <a name="access-to-run-history-data"></a>Hozzáférés a futtatási előzményekhez
 
-A logikai alkalmazások futtatása során az összes adatok titkosítva vannak az átvitel során [Transport Layer Security (TLS)](https://azure.microsoft.com/updates/app-service-and-functions-hosted-apps-can-now-update-tls-versions/) és a [nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Ha a logikai alkalmazás futása befejeződött, megtekintheti a Futtatás előzményeit, beleértve az egyes műveletek állapotával, időtartamával, bemenetével és kimenetével együtt futtatott lépéseket is. Ez a részletes információk betekintést biztosítanak a logikai alkalmazás futtatásának módjára, valamint az esetlegesen felmerülő problémák elhárítására.
+A logikai alkalmazások futtatása során az összes adatok [titkosítva](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) vannak az átvitel során TRANSPORT Layer Security (TLS) és [a nyugalmi](../security/fundamentals/encryption-atrest.md)állapotban. Ha a logikai alkalmazás futása befejeződött, megtekintheti a Futtatás előzményeit, beleértve az egyes műveletek állapotával, időtartamával, bemenetével és kimenetével együtt futtatott lépéseket is. Ez a részletes információk betekintést biztosítanak a logikai alkalmazás futtatásának módjára, valamint az esetlegesen felmerülő problémák elhárítására.
 
 Amikor hozzáfér a logikai alkalmazás futtatási előzményeihez, Logic Apps hitelesíti a hozzáférést, és hivatkozásokat biztosít a logikai alkalmazás futtatásához tartozó kérések és válaszok bemeneteit és kimeneteit illetően. A jelszavakat, titkos kulcsokat vagy más bizalmas adatokat kezelő műveletek esetében azonban meg kell akadályozni, hogy mások megtekintsék és hozzáférjenek az adatokhoz. Ha például a logikai alkalmazás a HTTP-műveletek hitelesítéséhez [Azure Key Vault](../key-vault/key-vault-overview.md) titkos kulcsot kap, akkor a titkos kulcsot el szeretné rejteni a nézetből.
 

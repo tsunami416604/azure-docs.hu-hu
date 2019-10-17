@@ -5,28 +5,40 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/08/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 89b52f356b112cff51105ed44c79788ee4542c6e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303524"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430515"
 ---
-# <a name="what-is-passwordless"></a>Mi a jelszó nélküli hitelesítés?
+# <a name="passwordless-authentication-options"></a>Jelszóval nem rendelkező hitelesítési lehetőségek
 
 A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók a további rétegekkel is megjegyezik a jelszavukat. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, amit Ön, vagy amit tud.
 
 |   | Valamilyen dolog | Amit Ön vagy ismer |
 | --- | --- | --- |
-| Jelszó nélküli | Telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
+| Jelszó nélküli | Windows 10-es eszköz, telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
-A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft jelenleg a Windows Hello-et kínálja a Windows rendszerű számítógépekhez. Felvesszük a Microsoft Authenticator alkalmazást és a FIDO2 biztonsági kulcsait a jelszóval nem rendelkező családba.
+A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Microsoft háromféle jelszavas hitelesítési lehetőséget kínál:
+
+- Vállalati Windows Hello 
+- A Microsoft Authenticator alkalmazás 
+- FIDO2 biztonsági kulcsok
+
+![Hitelesítés: biztonság és kényelem](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
+
+## <a name="windows-hello-for-business"></a>Vállalati Windows Hello 
+
+A vállalati Windows Hello ideális olyan információkkal dolgozó munkatársak számára, akik saját kijelölt Windows-számítógéppel rendelkeznek. A biometrikus és PIN-kód közvetlenül a felhasználó SZÁMÍTÓGÉPéhez van kötve, ami megakadályozza a hozzáférést a tulajdonostól eltérő személyek számára. A PKI-integrációval és az egyszeri bejelentkezés (SSO) beépített támogatásával a Windows Hello for Business egyszerű és kényelmes módszert kínál a vállalati erőforrások zökkenőmentes elérésére a helyszínen és a felhőben.
+
+A vállalati Windows Hello [tervezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével döntéseket hozhat a vállalati Windows Hello üzembe helyezésének típusáról és a szükséges lehetőségekről.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 
@@ -44,7 +56,7 @@ A nyilvános előzetes verzióban az alkalmazottak külső biztonsági kulcsok h
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
-Noha a FIDO2 számos kulcsot használ, a Microsoft a FIDO2 CTAP-specifikáció néhány opcionális kiterjesztését igényli a gyártó megvalósításához, így biztosítva a maximális biztonságot és a legjobb élményt.
+Noha a FIDO2 által hitelesített kulcsok sok kulcsot használnak, a Microsoft a FIDO2 ügyfél és a hitelesítő protokoll (CTAP) specifikációjának bizonyos opcionális kiterjesztését igényli, amely biztosítja a maximális biztonságot és a legjobb élmény.
 
 A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **kell** megvalósítania a FIDO2 CTAP-protokollból, hogy a Microsoft-kompatibilis legyen:
 

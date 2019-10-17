@@ -11,12 +11,12 @@ ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1702a0c7ab2d2a76e6ec0e8b217539804a683ff7
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c9cc6ab0342682bce7befdfe412221ec581312be
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834816"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389603"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Átirányítási URI/válasz URL-cím korlátozásai
 
@@ -24,20 +24,26 @@ Az átirányítási URI-vagy válasz-URL-cím az a hely, amelyet az engedélyez�
 
 ## <a name="maximum-number-of-redirect-uris"></a>Átirányítási URI-k maximális száma
 
-A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja. 
+A következő táblázat az alkalmazás regisztrálásakor felvehető átirányítási URI-k maximális számát mutatja.
 
 | Bejelentkezett fiókok | Átirányítási URI-k maximális száma | Leírás |
 |--------------------------|---------------------------------|-------------|
-| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | `signInAudience`az alkalmazás jegyzékfájljában lévő mező beállítása *AzureADMyOrg* vagy *AzureADMultipleOrgs* |
-| Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | `signInAudience`az alkalmazás jegyzékfájljának mezője *AzureADandPersonalMicrosoftAccount* értékre van állítva |
+| Microsoft munkahelyi vagy iskolai fiókok bármely szervezet Azure Active Directory (Azure AD) bérlőben | 256 | az alkalmazás jegyzékfájljának `signInAudience` mezője *AzureADMyOrg* vagy *AzureADMultipleOrgs* értékre van beállítva. |
+| Személyes Microsoft-fiókok és munkahelyi és iskolai fiókok | 100 | az alkalmazás jegyzékfájljának `signInAudience` mezője a *AzureADandPersonalMicrosoftAccount* értékre van állítva. |
 
 ## <a name="maximum-uri-length"></a>URI maximális hossza
 
 Az alkalmazások regisztrálásához hozzáadott átirányítási URI-azonosítóhoz legfeljebb 256 karaktert használhat.
 
+## <a name="supported-schemes"></a>Támogatott sémák
+Az Azure AD-alkalmazás modellje jelenleg a HTTP-és a HTTPS-sémákat is támogatja olyan alkalmazásokhoz, amelyek bármely szervezet Azure Active Directory (Azure AD) bérlőben jelentkeznek be a Microsoft munkahelyi vagy iskolai fiókjaiba. Az alkalmazás jegyzékfájljának `signInAudience` mezője a *AzureADMyOrg* vagy a *AzureADMultipleOrgs*értékre van beállítva. A személyes Microsoft-fiókokat és munkahelyi és iskolai fiókokat (ez `signInAudience` *AzureADandPersonalMicrosoftAccount*) bejelentkező alkalmazások esetében csak a https-séma engedélyezett.
+
+> [!NOTE]
+> Az új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felület nem teszi lehetővé a fejlesztők számára, hogy a felhasználói felületen http-sémával adjanak hozzá URI-ket. A munkahelyi vagy iskolai fiókokat bejelentkező alkalmazásokhoz HTTP-URI-k hozzáadására csak az alkalmazás jegyzékfájl-szerkesztője használható. A jövőben az új alkalmazások nem fogják tudni használni a HTTP-sémákat az átirányítási URI-ban. Az átirányítási URI-k által használt HTTP-sémákat tartalmazó régebbi alkalmazások azonban továbbra is működni fognak. A fejlesztőknek HTTPS-sémákat kell használniuk az átirányítási URI-k között.
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>A helyettesítő karakterek használata URI-k használatával
 
-A helyettesítő karakteres URI `https://*.contoso.com`-k (például) kényelmesek, de elkerülhetők. Az átirányítási URI-ban a helyettesítő karakterek használata biztonsági következményekkel jár. Az OAuth 2,0 specifikációnak megfelelően (az[RFC 6749 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2). szakasza) az átirányítási VÉGPONT URI azonosítójának abszolút URI-nak kell lennie. 
+A helyettesítő URI-k (például `https://*.contoso.com`) kényelmesek, de el kell kerülni. Az átirányítási URI-ban a helyettesítő karakterek használata biztonsági következményekkel jár. Az OAuth 2,0 specifikációnak megfelelően (az[RFC 6749 3.1.2. szakasza](https://tools.ietf.org/html/rfc6749#section-3.1.2)) az átirányítási VÉGPONT URI azonosítójának abszolút URI-nak kell lennie. 
 
 Az Azure AD-alkalmazás modelljében nem támogatottak a személyes Microsoft-fiókokhoz és munkahelyi vagy iskolai fiókokhoz való bejelentkezésre konfigurált alkalmazások helyettesítő URI-azonosítói. A helyettesítő URI-k használata azonban engedélyezett olyan alkalmazások esetében, amelyek a munkahelyi vagy iskolai fiókoknak a szervezet Azure AD-bérlőben való bejelentkezésére vannak konfigurálva. 
  
@@ -53,7 +59,7 @@ Ha több altartománya van, és ha a forgatókönyve megköveteli, hogy a felhas
 Ebben a megközelítésben:
 
 1. Hozzon létre egy "Shared" átirányítási URI-t az alkalmazásban az engedélyezési végponttól kapott biztonsági jogkivonatok feldolgozásához.
-1. Az alkalmazás elküldheti az alkalmazásspecifikus paramétereket (például altartomány URL-címét, ahol a felhasználó származik, vagy bármi más, mint a márkaépítési információ) az állapot paraméterben. A State paraméter használatakor az CSRF elleni védelem az [RFC 6749 10,12](https://tools.ietf.org/html/rfc6749#section-10.12). szakaszának megfelelően van megadva. 
+1. Az alkalmazás elküldheti az alkalmazásspecifikus paramétereket (például altartomány URL-címét, ahol a felhasználó származik, vagy bármi más, mint a márkaépítési információ) az állapot paraméterben. A State paraméter használatakor az CSRF elleni védelem az [RFC 6749 10,12. szakaszának](https://tools.ietf.org/html/rfc6749#section-10.12)megfelelően van megadva. 
 1. Az alkalmazásspecifikus paraméterek tartalmazzák az alkalmazás számára a megfelelő felhasználói élmény megjelenítéséhez szükséges összes információt, azaz a megfelelő alkalmazás-állapotot. Az Azure AD engedélyezési végpontja a HTML-kódot az állapot paraméterből adja meg, ezért ügyeljen arra, hogy ne legyenek átadva a HTML-tartalom ebben a paraméterben.
 1. Ha az Azure AD választ küld a "Shared" átirányítási URI-nak, az állapot-paraméter visszakerül az alkalmazásnak.
 1. Az alkalmazás ezután használhatja az állapot paraméter értékét annak meghatározásához, hogy melyik URL-címet szeretné elküldeni a felhasználónak. Győződjön meg arról, hogy a CSRF-védelem érvényesítése megtörtént.
@@ -63,8 +69,8 @@ Ebben a megközelítésben:
 
 ### <a name="add-redirect-uris-to-service-principals"></a>Átirányítási URI-k hozzáadása az egyszerű szolgáltatásokhoz
 
-Egy másik módszer az, hogy átirányítási URI [](app-objects-and-service-principals.md#application-and-service-principal-relationship) -ket adjon hozzá az alkalmazás regisztrálásához bármely Azure ad-bérlőben. Ezt a módszert akkor használhatja, ha nem használhat State paramétert, vagy ha a forgatókönyv megköveteli, hogy új átirányítási URI azonosítókat adjon az alkalmazás regisztrálásához minden Ön által támogatott új bérlőhöz. 
+Egy másik módszer az, hogy átirányítási URI-ket adjon [hozzá az alkalmazás](app-objects-and-service-principals.md#application-and-service-principal-relationship) regisztrálásához bármely Azure ad-bérlőben. Ezt a módszert akkor használhatja, ha nem használhat State paramétert, vagy ha a forgatókönyv megköveteli, hogy új átirányítási URI azonosítókat adjon az alkalmazás regisztrálásához minden Ön által támogatott új bérlőhöz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [alkalmazás jegyzékfájljának](reference-app-manifest.md) megismerése

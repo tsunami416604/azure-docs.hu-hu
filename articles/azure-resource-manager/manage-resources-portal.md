@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások kezelése az Azure portal használatával |} A Microsoft Docs
-description: Az Azure portal és az Azure Resource Manager használatával kezelheti az erőforrásokat.
+title: Azure-erőforrások kezelése a Azure Portal használatával | Microsoft Docs
+description: Az erőforrások kezeléséhez használja a Azure Portal és a Azure Resource Manager. Az erőforrások üzembe helyezésének és törlésének módját mutatja be.
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: mumian
@@ -8,120 +8,120 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: a4ff94a98514041290518e72e1b13c76722b9d4f
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205600"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390397"
 ---
-# <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése az Azure portal használatával
+# <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-erőforrások kezelése a Azure Portal használatával
 
-Ismerje meg, hogyan használható a [az Azure portal](https://portal.azure.com) a [Azure Resource Manager](resource-group-overview.md) az Azure-erőforrások kezeléséhez. Erőforráscsoportok kezeléséhhez lásd: [kezelése Azure-erőforráscsoportok az Azure portal használatával](./manage-resource-groups-portal.md).
+Ismerje meg, hogyan kezelheti az Azure-erőforrásokat a [Azure Portal](https://portal.azure.com) és a [Azure Resource Manager](resource-group-overview.md) használatával. Az erőforráscsoportok kezelésével kapcsolatban lásd: [Az Azure-erőforráscsoportok kezelése a Azure Portal használatával](./manage-resource-groups-portal.md).
 
-Egyéb erőforrások kezelésével kapcsolatos cikkek:
+További cikkek az erőforrások kezelésével kapcsolatban:
 
-- [Azure-erőforrások kezelése az Azure CLI-vel](./manage-resources-cli.md)
-- [Azure-erőforrások kezelése az Azure PowerShell használatával](./manage-resources-powershell.md)
+- [Azure-erőforrások kezelése az Azure CLI használatával](./manage-resources-cli.md)
+- [Azure-erőforrások kezelése Azure PowerShell használatával](./manage-resources-powershell.md)
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="deploy-resources-to-a-resource-group"></a>Erőforrások üzembe helyezése egy erőforráscsoportot
+## <a name="deploy-resources-to-a-resource-group"></a>Erőforrások üzembe helyezése erőforráscsoporthoz
 
-Resource Manager-sablon létrehozása után az Azure-erőforrások üzembe helyezése az Azure portal használatával. A sablonok létrehozása, lásd: [a rövid útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md). A portál használatával sablonok telepítésével, lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](resource-group-template-deploy-portal.md).
+A Resource Manager-sablonok létrehozása után a Azure Portal használatával üzembe helyezheti Azure-erőforrásait. Sablon létrehozásához tekintse meg [a rövid útmutató: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](./resource-manager-quickstart-create-templates-use-the-portal.md)című témakört. Ha a portál használatával helyez üzembe egy sablont, tekintse meg az [erőforrások üzembe helyezése Resource Manager-sablonokkal és-Azure Portalokkal](resource-group-template-deploy-portal.md)című témakört.
 
-## <a name="open-resources"></a>Nyissa meg erőforrásokat
+## <a name="open-resources"></a>Erőforrások megnyitása
 
-Azure-erőforrások és erőforráscsoportok Azure-szolgáltatások által vannak rendszerezve. Az alábbi eljárás bemutatja, hogyan nyissa meg a storage-fiók neve **mystorage0207**. A virtuális gép nevű erőforráscsoportban található **mystorage0207rg**.
+Az Azure-erőforrások az Azure-szolgáltatások és az erőforráscsoportok szerint vannak rendszerezve. Az alábbi eljárások azt mutatják be, hogyan nyitható meg a **mystorage0207**nevű Storage-fiók. A virtuális gép egy **mystorage0207rg**nevű erőforráscsoporthoz tartozik.
 
-A szolgáltatás típusának egy erőforrás megnyitása:
+Erőforrás megnyitása a szolgáltatás típusa szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali panelen válassza ki az Azure-szolgáltatás. Ebben az esetben **tárfiókok**.  Ha nem látja a szolgáltatásnak, válassza ki a **minden szolgáltatás**, majd válassza ki a szolgáltatást.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. A bal oldali ablaktáblán válassza ki az Azure-szolgáltatást. Ebben az esetben a **Storage-fiókok**.  Ha nem látja a felsorolt szolgáltatást, válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a szolgáltatás típusát.
 
-    ![Nyissa meg azure-erőforráscsoportot a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
+    ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
 
 3. Válassza ki a megnyitni kívánt erőforrást.
 
-    ![Nyissa meg azure-erőforráscsoportot a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
+    ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource.png)
 
-    Storage-fiók hasonlóan néz ki:
+    A Storage-fiók A következőképpen néz ki:
 
-    ![Nyissa meg azure-erőforráscsoportot a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
+    ![Az Azure-erőforrás megnyitása a portálon](./media/manage-resources-portal/manage-azure-resources-portal-open-resource-storage.png)
 
-Erőforrás szerint erőforráscsoport megnyitása:
+Erőforrás megnyitása erőforráscsoport szerint:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali panelen válassza ki a **erőforráscsoportok** listázásához az erőforrás a csoporton belül.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. A bal oldali ablaktáblában válassza az **erőforráscsoportok** lehetőséget a csoporton belüli erőforrás listázásához.
 3. Válassza ki a megnyitni kívánt erőforrást. 
 
 ## <a name="manage-resources"></a>Erőforrások kezelése
 
-A portálon egy erőforrás megtekintésekor láthatja az adott erőforráshoz kezelésére vonatkozó beállítások.
+Amikor megtekint egy erőforrást a portálon, megtekintheti az adott erőforrás kezelésének lehetőségeit.
 
 ![Azure-erőforrások kezelése](./media/manage-resources-portal/manage-azure-resources-portal-manage-resource.png)
 
-A képernyőfelvételen a felügyeleti lehetőségeket az Azure virtuális gépként. Például indítása, az újraindítás és a egy virtuális gép leállítása műveleteket hajthat végre.
+A képernyőképen az Azure-beli virtuális gépek felügyeleti lehetőségei láthatók. Olyan műveleteket is végrehajthat, mint például a virtuális gépek indítása, újraindítása és leállítása.
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
-1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [megnyithat erőforrásokat](#open-resources).
-2. Válassza a **Törlés** elemet. Az alábbi képernyőképen látható a virtuális gép felügyeleti lehetőségeket.
+1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
+2. Válassza a **Törlés** elemet. Az alábbi képernyőfelvételen egy virtuális gép felügyeleti lehetőségei láthatók.
 
-    ![az azure-erőforrás törlése](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
-3. Adja meg a törlés jóváhagyásához, és válassza ki az erőforrást a **törlése**.
+    ![Azure-erőforrás törlése](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
+3. Írja be az erőforrás nevét a törlés megerősítéséhez, majd válassza a **Törlés**lehetőséget.
 
-Milyen az Azure Resource Manager orders erőforrások törlését kapcsolatos további információkért lásd: [törölni az Azure Resource Manager-erőforrást csoport](./resource-group-delete.md).
+További információ arról, hogy a Azure Resource Manager hogyan rendeli az erőforrások törlését: [Azure Resource Manager erőforráscsoport törlése](./resource-group-delete.md).
 
 ## <a name="move-resources"></a>Erőforrások áthelyezése
 
-1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [megnyithat erőforrásokat](#open-resources).
-2. Válassza ki **áthelyezése**. Az alábbi képernyőfelvételen egy storage-fiók a felügyeleti beállításokat.
+1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
+2. Válassza az **Áthelyezés**lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
-    ![azure-erőforrások áthelyezése](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
-3. Válassza ki **áthelyezése másik erőforráscsoportba** vagy **egy másik előfizetéshez Moeve** igényeitől függően.
+    ![Azure-erőforrás áthelyezése](./media/manage-resources-portal/manage-azure-resources-portal-move-resource.png)
+3. Válassza az **Áthelyezés másik erőforráscsoporthoz** lehetőséget, vagy **váltson egy másik előfizetésre** az igényeitől függően.
 
 További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](resource-group-move-resources.md).
 
 ## <a name="lock-resources"></a>Erőforrások zárolása
 
-Zárolás megakadályozza a véletlen törlését vagy módosítását a kritikus fontosságú erőforrások, például az Azure-előfizetésre, erőforráscsoportra vagy erőforrásra a szervezet más felhasználói. 
+A zárolás megakadályozza a szervezet más felhasználói számára a kritikus erőforrások, például az Azure-előfizetés, az erőforráscsoport vagy az erőforrás véletlen törlését vagy módosítását. 
 
-1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [megnyithat erőforrásokat](#open-resources).
-2. Válassza ki **zárolja**. Az alábbi képernyőfelvételen egy storage-fiók a felügyeleti beállításokat.
+1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
+2. Válassza a **zárolások**lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
-    ![az azure alkalmazászárolási erőforrás](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
-3. Válassza ki **Hozzáadás**, és adja meg a zárolási tulajdonságait.
+    ![Azure-erőforrás zárolása](./media/manage-resources-portal/manage-azure-resources-portal-lock-resource.png)
+3. Válassza a **Hozzáadás**lehetőséget, majd adja meg a zárolási tulajdonságokat.
 
 További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](resource-group-lock-resources.md).
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-Az erőforráscsoport és erőforrások rendszerezéséhez logikailag címkézési segít. 
+A címkézés segítségével logikailag rendszerezheti az erőforráscsoportot és az erőforrásokat. 
 
-1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [megnyithat erőforrásokat](#open-resources).
-2. Válassza a **Címkék** lehetőséget. Az alábbi képernyőfelvételen egy storage-fiók a felügyeleti beállításokat.
+1. Nyissa meg az erőforrást a portálon. A lépésekért lásd: [erőforrások megnyitása](#open-resources).
+2. Válassza a **Címkék** lehetőséget. Az alábbi képernyőfelvételen egy Storage-fiók felügyeleti lehetőségei láthatók.
 
-    ![a címke az azure-erőforrás](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
-3. Adja meg a címke tulajdonságait, és válassza ki **mentése**.
+    ![Azure-erőforrás címkézése](./media/manage-resources-portal/manage-azure-resources-portal-tag-resource.png)
+3. Adja meg a címke tulajdonságait, majd kattintson a **Mentés**gombra.
 
-További információ: [az Azure-erőforrások rendszerezése címkék használatával](./resource-group-using-tags.md#portal).
+További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](./resource-group-using-tags.md#portal).
 
 ## <a name="monitor-resources"></a>Erőforrások megfigyelése
 
-Amikor megnyit egy erőforrást, a portál megjelenít alapértelmezett diagram és táblák figyeléshez az erőforrás típusát. Az alábbi képernyőképen egy virtuális gépet a diagramokon látható:
+Amikor megnyit egy erőforrást, a portál alapértelmezett gráfokat és táblázatokat jelenít meg az erőforrástípus figyeléséhez. A következő képernyőképen egy virtuális gép diagramjai láthatók:
 
-![az azure monitor erőforrás](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
+![Azure-erőforrás figyelése](./media/manage-resources-portal/manage-azure-resources-portal-monitor-resource.png)
 
-Kiválaszthatja a rajzszög ikonra a diagramok rögzítése az irányítópulton a diagram jobb felső sarkában található. Az irányítópultok használata kapcsolatos további információkért lásd: [létrehozása és az Azure Portalon irányítópultok megosztásával](../azure-portal/azure-portal-dashboards.md).
+A diagram jobb felső sarkában található rögzítés ikont választva rögzítheti a diagramot az irányítópulton. További információ az irányítópultok használatáról: [irányítópultok létrehozása és megosztása a Azure Portalban](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="manage-access-to-resources"></a>Az erőforrásokhoz való hozzáférés kezelése
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információkért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../role-based-access-control/role-assignments-portal.md).
+A [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) az erőforrásokhoz való hozzáférés kezelésének a módja az Azure-ban. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../role-based-access-control/role-assignments-portal.md) ismertető cikket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Azure Resource Manager kapcsolatban lásd: [Azure Resource Manager áttekintése](./resource-group-overview.md).
-- A Resource Manager-sablon szintaxisáról kapcsolatban lásd: [struktúra és az Azure Resource Manager-sablonok szintaxisát](./resource-group-authoring-templates.md).
-- Ismerje meg, hogyan fejleszthet sablonokat, tekintse meg a [lépésről lépésre haladó oktatóanyagok](/azure/azure-resource-manager/).
-- Az Azure Resource Manager-sablon sémák megtekintése: [sablonreferenciája](/azure/templates/).
+- Azure Resource Manager megismeréséhez tekintse meg a [Azure Resource Manager áttekintése](./resource-group-overview.md)című témakört.
+- A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](./resource-group-authoring-templates.md)című témakört.
+- A sablonok fejlesztésének megismeréséhez tekintse meg az útmutató [lépésről lépésre szóló oktatóanyagokat](/azure/azure-resource-manager/).
+- A Azure Resource Manager sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

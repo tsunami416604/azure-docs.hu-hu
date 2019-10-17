@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 5c449136339a4c31cb1829b53f62e1724caa4736
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
-ms.translationtype: HT
+ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372252"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72383566"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -24,8 +24,8 @@ Az [Azure](https://azure.microsoft.com/updates/?product=site-recovery) Updates c
 
 Ha az Azure-beli virtuális gépeket másodlagos régióba vagy helyszíni VMware virtuális gépekre vagy fizikai kiszolgálókra szeretné helyreállítani az Azure-ba, vegye figyelembe a következőket:
 
-- A mobilitási szolgáltatás bővítményének (Azure-beli virtuális gépek esetén) és a mobilitási szolgáltatás ügynökének (VMware/fizikai gépek esetén) 9.30. x. x verziójából néhány gépi operációs rendszernek a karbantartási verem frissítését és az SHA-2-et kell futtatnia. A részletek az alábbi táblázatban láthatók.
-- Telepítse a frissítést és az SHA-2-et a csatolt KB-nak megfelelően.
+- A mobilitási szolgáltatás bővítményének (Azure-beli virtuális gépek esetén) és a mobilitási szolgáltatás ügynökének (VMware/fizikai gépek esetén) a 9.30. x. x verziójáról (a várt kiadás november 2019.), egyes gépek operációs rendszereinek a karbantartási verem frissítését és az SHA-2-t kell futtatniuk. A részletek az alábbi táblázatban láthatók.
+- Telepítse a frissítést és az SHA-2-et a csatolt KB-nak megfelelően. Az SHA-1 nem támogatott szeptember 2019-tól, és ha az SHA-2 kód aláírása nincs engedélyezve, az ügynök bővítmény nem a várt módon fog települni/frissíteni.
 - További információ az [SHA-2 frissítésről és a követelményekről](https://aka.ms/SHA-2KB).
 
 **Operációs rendszer** | **Azure virtuális gép** | **VMware VM/fizikai gép**

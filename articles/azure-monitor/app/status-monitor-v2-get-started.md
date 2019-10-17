@@ -1,6 +1,6 @@
 ---
-title: Azure Állapotmonitor v2 – első lépések | Microsoft Docs
-description: Egy rövid útmutató a Állapotmonitor v2-hez. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Azure Application Insights-ügynök – első lépések | Microsoft Docs
+description: Útmutató Application Insights-ügynökhöz. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: f1911d8187b186f301bea771963f922ee3574fd6
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058236"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388216"
 ---
-# <a name="get-started-with-status-monitor-v2"></a>Első lépések az Állapotfigyelő v2-höz
+# <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Ismerkedés a Azure Monitor Application Insights-ügynökkel a helyszíni kiszolgálók esetében
 
 Ez a cikk a legtöbb környezetben várhatóan használható gyors üzembe helyezési parancsokat tartalmazza.
 Az utasítások a frissítések terjesztésének PowerShell-galéria függenek.
-Ezek a parancsok támogatják a `-Proxy` PowerShell-paramétert.
+Ezek a parancsok támogatják a PowerShell `-Proxy` paramétert.
 
 A parancsok magyarázatát, a testreszabási utasításokat és a hibaelhárítással kapcsolatos információkat a [részletes utasításokban](status-monitor-v2-detailed-instructions.md)találja.
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="download-and-install-via-powershell-gallery"></a>Letöltés és telepítés PowerShell-galéria használatával
 
-### <a name="install-prerequisites"></a>Előfeltételek telepítése
+### <a name="install-prerequisites"></a>Az előfeltételek telepítése
 Futtassa a PowerShellt rendszergazdaként.
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -41,14 +41,14 @@ Install-Module -Name PowerShellGet -Force
 ``` 
 A PowerShell bezárásához.
 
-### <a name="install-status-monitor-v2"></a>A Állapotmonitor v2 telepítése
+### <a name="install-application-insights-agent"></a>Application Insights ügynök telepítése
 Futtassa a PowerShellt rendszergazdaként.
 ```powershell   
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
 ``` 
 
-### <a name="enable-monitoring"></a>Figyelés engedélyezése
+### <a name="enable-monitoring"></a>Monitorozás engedélyezése
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -57,9 +57,9 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
         
 ## <a name="download-and-install-manually-offline-option"></a>Manuális letöltés és telepítés (offline beállítás)
 ### <a name="download-the-module"></a>A modul letöltése
-A modul legújabb verziójának manuális letöltése PowerShell-galériaról [](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+A modul legújabb verziójának manuális letöltése [PowerShell-galériaról](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
 
-### <a name="unzip-and-install-status-monitor-v2"></a>Állapotmonitor v2 kicsomagolása és telepítése
+### <a name="unzip-and-install-application-insights-agent"></a>Application Insights-ügynök kicsomagolása és telepítése
 ```powershell
 $pathToNupkg = "C:\Users\t\Desktop\Az.ApplicationMonitor.0.3.0-alpha.nupkg"
 $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
@@ -67,20 +67,20 @@ $pathToNupkg | rename-item -newname $pathToZip
 $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\Az.ApplicationMonitor"
 Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
 ```
-### <a name="enable-monitoring"></a>Figyelés engedélyezése
+### <a name="enable-monitoring"></a>Monitorozás engedélyezése
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  A telemetriai adatok megtekintése:
 
-- [Ismerje](../../azure-monitor/app/metrics-explorer.md) meg a mérőszámokat a teljesítmény és a használat figyeléséhez.
+- [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja](../../azure-monitor/app/analytics.md) az elemzést.
+- További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
 
  További telemetriai funkciók hozzáadása:
@@ -89,7 +89,7 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx
 - [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
 - [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
 
-További Állapotmonitor v2:
+Több Application Insights-ügynökkel:
 
 - Tekintse át az itt található parancsok magyarázatának [részletes utasításait](status-monitor-v2-detailed-instructions.md) .
-- A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
+- Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .

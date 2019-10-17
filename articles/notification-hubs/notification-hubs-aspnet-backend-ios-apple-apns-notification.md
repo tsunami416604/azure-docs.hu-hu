@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések adott felhasználóknak az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával | Microsoft Docs
 description: Ebből az anyagból megtudhatja, hogyan küldhet leküldéses értesítéseket meghatározott felhasználóknak az Azure Notification Hubs használatával.
 documentationcenter: ios
 author: sethm
@@ -16,18 +16,18 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 85461f72d4385805e2aa13691a574a2161036ca5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 48135ea614bbab4ca6649a83895ae5f632918c61
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212237"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387478"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések adott felhasználóknak az Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-Az oktatóanyag bemutatja, hogy hogyan küldhetők leküldéses értesítések adott alkalmazásfelhasználónak, adott eszközre az Azure Notification Hubs használatával. A ASP.NET-WebAPI háttérrendszer az ügyfelek hitelesítésére és értesítések létrehozására szolgál, ahogyan az az [alkalmazás-háttérbeli regisztrációban](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)szereplő útmutató témakörben látható.
+Az oktatóanyag bemutatja, hogyan küldhetők az Azure Notification Hubs használatával leküldéses értesítések adott alkalmazásfelhasználónak, meghatározott eszközre. A ASP.NET-WebAPI háttérrendszer az ügyfelek hitelesítésére és értesítések létrehozására szolgál, ahogyan az az [alkalmazás-háttérbeli regisztrációban](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)szereplő útmutató témakörben látható.
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -54,21 +54,21 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
    > [!NOTE]
    > Ez a szakasz azt feltételezi, hogy a projekt üres nevű szervezettel van konfigurálva. Ha nem, meg kell adnia a szervezet nevét az összes osztály nevéhez.
 
-2. `Main.storyboard` A fájlban adja hozzá az objektum könyvtárából a képernyőképen látható összetevőket.
+2. A `Main.storyboard` fájlban adja hozzá a képernyőképen látható összetevőket az objektum könyvtárából.
 
     ![Storyboard szerkesztése a Xcode Interface Builder-ben][1]
 
-   * **Felhasználónév**: Egy helyőrző szöveggel rendelkező UITextField, amely közvetlenül a küldési eredmények címkéje alá kerül, és a bal és a jobb oldali margóra, valamint az eredmények küldése címke alá van korlátozva.
-   * **Jelszó**: Egy helyőrző szöveggel rendelkező UITextField, *írja be a jelszót*, közvetlenül a Felhasználónév szövegmező alá, és korlátozza a bal és a jobb oldali margókat, valamint a Felhasználónév szövegmező alatt. Tekintse meg az attribútum-ellenőr **biztonságos szövegbeviteli** beállítását a *visszatérési kulcs*területen.
-   * **Bejelentkezés**: Egy közvetlenül a jelszó szövegmezője alatt megjelenő UIButton, és törölje a jelölést az attribútumok ellenőrben a *vezérlés – tartalom* területen.
-   * **WNS**: Jelölje be a feliratot, és váltson úgy, hogy engedélyezze az értesítési Windows értesítési szolgáltatás küldését, ha az a központban lett beállítva. Tekintse meg a [Windows első lépések](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyagot.
-   * **GCM**: Jelölje be a címkét, és váltson úgy, hogy engedélyezze az értesítés küldését Google Cloud Messaging, ha be lett állítva a központban. Lásd: [Android első lépések](notification-hubs-android-push-notification-google-gcm-get-started.md) oktatóanyag.
-   * **APNS**: A címke és a váltás engedélyezésével engedélyezheti az értesítés küldését az Apple platform Notification szolgáltatásnak.
+   * **Username**: helyőrző szöveggel rendelkező UITextField, *írja be a felhasználónevet*, közvetlenül a küldési eredmények címkéje alatt, és a bal és a jobb oldali margóra, valamint az eredmények küldése címke alá.
+   * **Password (jelszó**): helyőrző szöveggel rendelkező UITextField, *írja be a jelszót*, közvetlenül a Felhasználónév szövegmező alá, és korlátozza a bal és a jobb oldali margókat, valamint a Felhasználónév szövegmező alatt. Tekintse meg az attribútum-ellenőr **biztonságos szövegbeviteli** beállítását a *visszatérési kulcs*területen.
+   * **Bejelentkezés**: közvetlenül a jelszó szövegmezője alatt megjelenő UIButton, és **törölje a** jelölést az attribútumok ellenőrben a *vezérlés – tartalom* területen.
+   * **WNS**: címke és kapcsoló, amely lehetővé teszi az értesítési Windows értesítési szolgáltatás küldését, ha az a központban lett beállítva. Tekintse meg a [Windows első lépések](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyagot.
+   * **GCM**: címke és kapcsoló, amely lehetővé teszi az értesítés küldését Google Cloud Messaging, ha be lett állítva a központban. Lásd: [Android első lépések](notification-hubs-android-push-notification-google-gcm-get-started.md) oktatóanyag.
+   * **APNS**: címke és kapcsoló, amely lehetővé teszi az értesítés küldését az Apple platform Notification Service-be.
    * **Címzett felhasználóneve:** helyőrző szöveggel rendelkező UITextField, *címzett felhasználónevet jelölő címke*, közvetlenül a GCM címke alatt, a bal és a jobb oldali margók, valamint a GCM-címke alatt van korlátozva.
 
      Egyes összetevők a [Első lépések Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) oktatóanyaggal lettek hozzáadva.
 
-3. A **CTRL billentyűt lenyomva** lévő összetevőkből `ViewController.h` húzza a mutatót az új kivezetések hozzáadásához.
+3. A **CTRL billentyűt lenyomva** a `ViewController.h` értékre húzhatja, és hozzáadhatja ezeket az új elemeket.
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -88,13 +88,13 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. A `ViewController.h`alkalmazásban adja hozzá `#define` a következőt az importálási utasítások után. Helyettesítse `<Enter Your Backend Endpoint>` be a helyőrzőt az alkalmazás-backend az előző szakaszban való üzembe helyezéséhez használt célként megadott URL-címmel. Például: `http://your_backend.azurewebsites.net`.
+4. A `ViewController.h` mezőben adja hozzá a következő `#define` értéket az importálási utasítások után. Helyettesítse be a `<Enter Your Backend Endpoint>` helyőrzőt az alkalmazás-backend az előző szakaszban való üzembe helyezéséhez használt célként megadott URL-címmel. Például: `http://your_backend.azurewebsites.net`.
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
     ```
 
-5. A projektben hozzon létre egy nevű `RegisterClient` új kakaó Touch osztályt a ASP.net felülettel, amelyet Ön hozott létre. Hozza létre az osztály öröklését `NSObject`. Ezután adja hozzá a következő kódot a `RegisterClient.h`alkalmazásban.
+5. A projektben hozzon létre egy új, `RegisterClient` nevű kakaó Touch osztályt a ASP.NET-háttér létrehozásával. Hozza létre a `NSObject` értékből származtatott osztályt. Ezután adja hozzá a következő kódot a `RegisterClient.h` értékhez.
 
     ```objc
     @interface RegisterClient : NSObject
@@ -109,7 +109,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     @end
     ```
 
-6. A `RegisterClient.m`alkalmazásban frissítse a `@interface` szakaszt:
+6. A `RegisterClient.m` értéknél frissítse a `@interface` szakaszt:
 
     ```objc
     @interface RegisterClient ()
@@ -127,7 +127,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     @end
     ```
 
-7. Cserélje le `@implementation` az RegisterClient. m szakaszban található szakaszt a következő kódra:
+7. Cserélje le a RegisterClient. m `@implementation` szakaszt a következő kódra:
 
     ```objc
     @implementation RegisterClient
@@ -290,9 +290,9 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
     Ez a kód a NSURLSession használatával az alkalmazás [-háttérből való regisztráláskor](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) az útmutatóban ismertetett logikát valósítja meg, és az NSUserDefaults az értesítési központ által visszaadott regisztrációban helyileg tárolja.
 
-    Ehhez az osztályhoz a `authorizationHeader` tulajdonságot be kell állítani ahhoz, hogy megfelelően működjön. Ezt a tulajdonságot a bejelentkezés `ViewController` után az osztály állítja be.
+    Ennek az osztálynak a megfelelő működéséhez `authorizationHeader` tulajdonságot kell beállítani. Ezt a tulajdonságot a bejelentkezés után a `ViewController` osztály állítja be.
 
-8. A `ViewController.h`alkalmazásban adjon `#import` hozzá egy `RegisterClient.h`utasítást a következőhöz:. Ezután adjon hozzá egy deklarációt az eszköz jogkivonatához, `RegisterClient` és hivatkozzon a `@interface` szakasz egyik példányára:
+8. A `ViewController.h` mezőben adjon hozzá egy `#import` utasítást a következőhöz: `RegisterClient.h`. Ezután adjon hozzá egy deklarációt az eszköz jogkivonatához, és hivatkozzon egy `RegisterClient` példányra az `@interface` szakaszban:
 
     ```objc
     #import "RegisterClient.h"
@@ -301,7 +301,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     @property (strong, nonatomic) RegisterClient* registerClient;
     ```
 
-9. A ViewController. m-ben adjon hozzá egy privát metódus deklarációt a `@interface` szakaszban:
+9. A ViewController. m-ben adjon hozzá egy privát metódus deklarációját a `@interface` szakaszban:
 
     ```objc
     @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
@@ -314,9 +314,9 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     ```
 
     > [!NOTE]
-    > A következő kódrészlet nem biztonságos hitelesítési séma, a- `createAndSetAuthenticationHeaderWithUsername:AndPassword:` t az adott hitelesítési mechanizmussal kell helyettesítenie, amely létrehoz egy hitelesítési jogkivonatot, amelyet a regisztrációs ügyfél osztály használ fel, például: OAuth, Active Directory.
+    > A következő kódrészlet nem biztonságos hitelesítési séma, érdemes helyettesíteni a `createAndSetAuthenticationHeaderWithUsername:AndPassword:` implementációját az adott hitelesítési mechanizmussal, amely létrehoz egy hitelesítési jogkivonatot, amelyet a regisztrációs ügyfél osztálya használ, például OAuth, Active Directory.
 
-10. Ezután adja hozzá a következő `ViewController.m`kódot a szakaszához,amelyhozzáadjaazeszköz-jogkivonatésahitelesítésifejlécbeállításánakmegvalósítását.`@implementation`
+10. Ezután a `ViewController.m` `@implementation` szakaszban adja hozzá a következő kódot, amely hozzáadja az eszköz-jogkivonat és a hitelesítési fejléc beállításának megvalósítását.
 
     ```objc
     -(void) setDeviceToken: (NSData*) deviceToken
@@ -446,7 +446,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     }
     ```
 
-13. A függvényben adja hozzá a következőt a `RegisterClient` példány létrehozásához, és állítsa be a szöveges mezők delegált értékét. `ViewDidLoad`
+13. A `ViewDidLoad` függvényben adja hozzá a következőt a `RegisterClient` példány létrehozásához, és állítsa be a szöveg mezőinek delegált értékét.
 
     ```objc
     self.UsernameField.delegate = self;
@@ -455,7 +455,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
     ```
 
-14. Ezután távolítsa el a metódus `application:didRegisterForPushNotificationWithDeviceToken:` összes tartalmát ,éscseréljeleakövetkezőre(annakellenőrzéséhez,hogyavezérlőtartalmazza-eaAPNsáltallekértlegújabbeszköztokent):`AppDelegate.m`
+14. Most `AppDelegate.m`, távolítsa el az összes `application:didRegisterForPushNotificationWithDeviceToken:` metódus tartalmát, és cserélje le a következőre (annak ellenőrzéséhez, hogy a vezérlő tartalmazza-e a APNs által lekért legújabb eszköz tokent):
 
     ```objc
     // Add import to the top of the file
@@ -469,7 +469,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     }
     ```
 
-15. Végül a `AppDelegate.m`-ben ellenőrizze, hogy rendelkezik-e a következő módszerrel:
+15. Végül `AppDelegate.m`-ban ellenőrizze, hogy rendelkezik-e a következő módszerrel:
 
     ```objc
     - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
@@ -494,7 +494,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
     ![iOS-teszt címkézett értesítése][4]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra: 
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082503"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390530"
 ---
 # <a name="deploy-okd-in-azure"></a>OKD üzembe helyezése az Azure-ban
 
@@ -40,7 +40,7 @@ Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következő
 
 A [OKD sablonban](https://github.com/Microsoft/openshift-origin) több ág is elérhető a OKD különböző verzióihoz.  Igény szerint közvetlenül a tárházból is üzembe helyezhető, vagy a tárházat leválaszthatja, és egyéni módosításokat hajthat végre az üzembe helyezés előtt.
 
-Használja a `aadClientId` paraméterhez korábban létrehozott egyszerű szolgáltatásnév értékét.`appId`
+Használja a `appId` értéket az `aadClientId` paraméterhez korábban létrehozott egyszerű szolgáltatásnév alapján.
 
 A következő példa egy azuredeploy. Parameters. JSON nevű paramétereket tartalmazó fájlt mutat be az összes szükséges bemenettel.
 
@@ -143,11 +143,11 @@ Az üzembe helyezés legalább 30 percet vesz igénybe, a telepített csomópont
 }
 ```
 
-Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik, adja hozzá `--no-wait` a csoport központi telepítésének egyik beállítását. A központi telepítés kimenete az erőforráscsoport telepítési szakaszában található Azure Portalból kérhető le.
+Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik, adja hozzá a `--no-wait` értéket a csoport központi telepítésének egyik beállításaként. A központi telepítés kimenete az erőforráscsoport telepítési szakaszában található Azure Portalból kérhető le.
 
 ## <a name="connect-to-the-okd-cluster"></a>Kapcsolódás a OKD-fürthöz
 
-Az üzembe helyezés befejezésekor kapcsolódjon a OpenShift-konzolhoz a böngésző használatával `OpenShift Console Url`. Azt is megteheti, hogy SSH-t használ a OKD-főkiszolgálóval. Az alábbi példa az üzemelő példány kimenetét használja:
+Az üzembe helyezés befejezésekor a `OpenShift Console Url` használatával kapcsolódjon a OpenShift-konzolhoz a böngészőben. Azt is megteheti, hogy SSH-t használ a OKD-főkiszolgálóval. Az alábbi példa az üzemelő példány kimenetét használja:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -161,8 +161,8 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
-- [OpenShift-telepítés hibáinak megoldása](./openshift-troubleshooting.md)
+- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift-telepítés hibáinak megoldása](./openshift-container-platform-3x-troubleshooting.md)
 - [A OKD első lépései](https://docs.okd.io)

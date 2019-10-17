@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect Health - az állapotfigyelő szolgáltatás adatai nem dátum riasztás legfeljebb |} A Microsoft Docs
-description: Ez a dokumentum ismerteti az "Állapotfigyelő szolgáltatás adatai nem naprakészek" riasztás és hibaelhárítás annak okát.
+title: Azure AD Connect Health – az állapotfigyelő szolgáltatásra vonatkozó adatok nem naprakészek a riasztások számára | Microsoft Docs
+description: Ez a dokumentum leírja, hogy az "állapotfigyelő szolgáltatásbeli adatok nem naprakészek" riasztást és a hibaelhárítás módját ismerteti.
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
@@ -14,60 +14,60 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5bc2ea76c558e47eaa5f297ebe36a629aa5754
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41c1c102e88e1712d561874aef87a6f22ed250a9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702643"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430213"
 ---
-# <a name="health-service-data-is-not-up-to-date-alert"></a>Az állapotfigyelő szolgáltatás adatai nem naprakészek riasztás
+# <a name="health-service-data-is-not-up-to-date-alert"></a>Az állapotfigyelő szolgáltatás nem naprakész állapotú riasztás
 
 ## <a name="overview"></a>Áttekintés
 
-Az ügynökök a helyszíni gépeken, az Azure AD Connect Health rendszeresen figyeli az Azure AD Connect Health szolgáltatás feltölteni az adatokat. Ha a szolgáltatás nem kap adatokat az ügynök, az adatokat, a portál megjelenít elavult lesz. Jelölje ki a problémát, hogy a szolgáltatás kiváltja a **az állapotfigyelő szolgáltatás adatai nem naprakészek** riasztás. Ez a riasztás akkor jön létre, ha a szolgáltatás nem kapott mindazok az adatok az elmúlt két órában.  
+Az ügynökök a helyszíni gépeken, amelyek Azure AD Connect Health figyelik rendszeresen az adatok feltöltését a Azure AD Connect Health szolgáltatásba. Ha a szolgáltatás nem kap adatokat az ügynöktől, a portál által megjelenített információk elavultak lesznek. A probléma kiemeléséhez a szolgáltatás nem naprakész állapotba állítja az állapotfigyelő **szolgáltatás adatait** . Ez a riasztás akkor jön létre, ha a szolgáltatás nem kapott teljes adatkérést az elmúlt két órában.  
 
-- A **figyelmeztetés** ügyfélállapot-riasztás akkor aktiválódik, ha az állapotfigyelő szolgáltatás csak kapott **részleges** a kiszolgálóról az elmúlt két órában küldött adattípusokat. A figyelmeztetés állapot nem indítja el a megadott címzetteknek e-mail-értesítéseket. 
-- A **hiba** ügyfélállapot-riasztás akkor aktiválódik, ha az állapotfigyelő szolgáltatás nem kapott bármilyen típusú adatokat a kiszolgálóról az elmúlt két órában. A hiba állapot riasztási eseményindítók a beállított címzettek e-mail-értesítések.
+- A **Figyelmeztetési** állapot riasztást küld, ha a állapotfigyelő szolgáltatás csak a kiszolgáló által az elmúlt két órában küldött **részleges** adattípusokat fogadta. A figyelmeztetési állapot riasztása nem indítja el az e-mailes értesítéseket a konfigurált címzetteknek. 
+- A **hiba** állapotának riasztása akkor következik be, ha a állapotfigyelő szolgáltatás nem kapott adattípust a kiszolgálóról az elmúlt két órában. A hiba állapota riasztás elindítja az e-mailes értesítéseket a konfigurált címzetteknek.
 
-A szolgáltatás az adatok lekérése a helyszíni gépeken, a szolgáltatás típusától függően futtató ügynökök. Az alábbi táblázat az ügynökök arról, hogy a gép, mit tesznek azt, és az adattípusok, amelyek a szolgáltatás állít elő. Bizonyos esetekben vannak több szolgáltatást a folyamat, így ezek közül bármelyik a probléma oka lehet. 
+A szolgáltatás a szolgáltatás típusától függően lekéri a helyszíni gépeken futó ügynökök adatait. A következő táblázat felsorolja a gépen futó ügynököket, azok teendőit és a szolgáltatás által generált adattípusokat. Bizonyos esetekben a folyamat több szolgáltatást is magában foglal, így ezek közül bármelyik lehet a bűnös. 
 
 ## <a name="understanding-the-alert"></a>A riasztás ismertetése
 
-A **riasztás részletei** panelen jelenik meg, ha a riasztás történt, és a legutóbb észlelt. Háttérben futó folyamat, amely két óránként állít elő, és értékelje ki ismétlődően a riasztás. A következő példában a kezdeti riasztás történt a 03/10 9-kor: 59. A riasztás még létezik a 03/12/10:00 órakor Ha a riasztás értékelése újra. A panel is részletezi az idő, az állapotfigyelő szolgáltatás utoljára fogadott adattípust. 
+A **riasztás részletei** panelen látható, hogy mikor történt a riasztás, és utoljára észlelte a rendszer. A két óránként futó háttérbeli folyamat létrehozza és újraértékeli a riasztást. A következő példában a kezdeti riasztás a 03/10-es időpontban történt a 9:59 ÓRAKOR. A riasztás továbbra is létezett a 03/12-on 10:00 ÓRAKOR, ha a riasztást újra kiértékelték. A panel azt az időpontot is részletezi, amikor a Állapotfigyelő szolgáltatás utoljára kapott egy adott adattípust. 
  
- ![Az Azure AD Connect Health riasztás részletei](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
+ ![Azure AD Connect Health riasztás részletei](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-Az alábbi táblázat szükséges adatok típusával azonos szolgáltatástípusok képez le:
+A következő táblázat a megfelelő adattípusokhoz rendeli a szolgáltatási típusokat:
 
-| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Cél | Generált adatok típusa  |
+| Szolgáltatás típusa | Ügynök (Windows-szolgáltatás neve) | Rendeltetés | Adattípus létrehozva  |
 | --- | --- | --- | --- |  
-| Azure AD Connect (Sync) | Azure AD Connect Health Sync Insights szolgáltatás | Gyűjtsön AAD Connect-specifikus információkat (összekötők, szinkronizálási szabályait, stb.) | - AadSyncService-SynchronizationRules <br />  - AadSyncService-Connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
-|  | Azure AD Connect Health Sync Monitoring szolgáltatás | AAD Connect-specifikus gyűjthető teljesítményszámlálókhoz, ETW-nyomkövetések, fájlok gyűjtése | Teljesítményszámláló |
-| AD DS | Azure AD Connect Health AD DS Insights szolgáltatás | Szintetikus tesztek végrehajtása, a replikálási metaadatok topológia információ gyűjtése |  -Ad-TopologyInfo-Json <br /> -Közös-TestData-Json (hoz létre a vizsgálati eredmények)   | 
-|  | Azure AD Connect Health AD DS Monitoring szolgáltatás | ADDS-specifikus gyűjthető teljesítményszámlálókhoz, ETW-nyomkövetések, fájlok gyűjtése | – A teljesítményszámláló  <br /> -Közös-TestData-Json (feltölti a vizsgálati eredmények)  |
-| AD FS | Azure AD Connect Health AD FS Diagnostics szolgáltatás | Szintetikus tesztek végrehajtása | TestResult (hoz létre a vizsgálati eredmények) | 
-| | Azure AD Connect Health AD FS Insights szolgáltatás  | AD FS használati metrikák gyűjtése | Adfs-UsageMetrics |
-| | Azure AD Connect Health AD FS Monitoring szolgáltatás | AD FS-specifikus gyűjthető teljesítményszámlálókhoz, ETW-nyomkövetések, fájlok gyűjtése | TestResult (feltölti a vizsgálati eredmények) |
+| Azure AD Connect (szinkronizálás) | Azure AD Connect Health Sync Insights szolgáltatás | HRE-kapcsolatra vonatkozó információk gyűjtése (összekötők, szinkronizálási szabályok stb.) | - AadSyncService-SynchronizationRules <br />  -AadSyncService – összekötők <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+|  | Azure AD Connect Health Sync Monitoring szolgáltatás | HRE-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | Teljesítményszámláló |
+| AD DS | Azure AD Connect Health AD DS Insights szolgáltatás | Szintetikus tesztek végrehajtása, topológiai információk gyűjtése, replikációs metaadatok |  -Add-TopologyInfo-JSON <br /> -Common-TestData-JSON (létrehozza a teszt eredményeit)   | 
+|  | Azure AD Connect Health AD DS Monitoring szolgáltatás | A Hozzáadás-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések és-fájlok gyűjtése | – Teljesítményszámláló  <br /> -Common-TestData-JSON (feltölti a teszt eredményeit)  |
+| AD FS | Azure AD Connect Health AD FS Diagnostics szolgáltatás | Szintetikus tesztek végrehajtása | TestResult (a tesztek eredményeinek létrehozása) | 
+| | Azure AD Connect Health AD FS Insights szolgáltatás  | ADFS használati metrikáinak összegyűjtése | ADFS – UsageMetrics |
+| | Azure AD Connect Health AD FS Monitoring szolgáltatás | ADFS-specifikus teljesítményszámláló-számlálók, ETW-Nyomkövetések, fájlok gyűjtése | TestResult (a tesztek eredményeinek feltöltése) |
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések 
 
-A probléma diagnosztizálásához szükséges lépéseket az alábbiakban található. Az első olyan közös minden szolgáltatástípus alapvető ellenőrzések. Az alábbi táblázat minden egyes szolgáltatás típusa és az adattípus el adott lépéseket felsoroló. 
+A probléma diagnosztizálásához szükséges lépések alább láthatók. Az első olyan alapszintű ellenőrzések összessége, amelyek az összes szolgáltatás típusával közösek. 
 
 > [!IMPORTANT] 
-> Ez a riasztás a következő Connect Health [adatmegőrzési szabályzat](reference-connect-health-user-privacy.md#data-retention-policy)
+> Ez a riasztás a kapcsolati állapot [adatmegőrzési szabályzatát](reference-connect-health-user-privacy.md#data-retention-policy) követi
 
-* Győződjön meg arról, hogy az ügynökök legfrissebb verziója van telepítve. Nézet [korábbi kiadások](reference-connect-health-version-history.md). 
-* Ügyeljen arra, hogy az Azure AD Connect Health-ügynökök szolgáltatások **futó** a gépen. Például a Connect Health for AD FS mindhárom szolgáltatást kell rendelkeznie.
-  ![Az Azure AD Connect Health ellenőrzése](./media/how-to-connect-health-agent-install/install5.png)
+* Győződjön meg arról, hogy az ügynökök legújabb verziói vannak telepítve. [Kiadási előzmények](reference-connect-health-version-history.md)megtekintése. 
+* Győződjön meg arról, hogy a Azure AD Connect Health Agent Services **fut** a gépen. A AD FShoz tartozó kapcsolati állapotnak például három szolgáltatással kell rendelkeznie.
+  ![Verify Azure AD Connect Health @ no__t-1
 
-* Ügyeljen arra, hogy haladnak át, és megfelelnek a [követelmények szakaszt](how-to-connect-health-agent-install.md#requirements).
-* Használat [teszt kapcsolódási eszköz](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) kapcsolati hibák felderítésére.
-* Ha egy HTTP-proxyt, kövesse az alábbi [konfigurációs lépések](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Győződjön meg arról, hogy átugorja és megfelel a [követelmények szakasznak](how-to-connect-health-agent-install.md#requirements).
+* A kapcsolódási problémák felderítéséhez használja a [test connectivity Tool eszközt](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) .
+* Ha HTTP-proxyval rendelkezik, kövesse az alábbi [konfigurációs lépéseket](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
 
-## <a name="next-steps"></a>További lépések
-Ha problémát észlelt, a fenti lépések bármelyike javítást, és várja meg a riasztás megoldásához. A riasztási rétegzést 2 óránként fut, így a a riasztás feloldásához jelenítse akár 2 órát fog igénybe. 
+## <a name="next-steps"></a>Következő lépések
+Ha a fenti lépések bármelyike problémát észlelt, javítsa ki, és várjon, amíg a riasztás feloldódik. A riasztások hátterének folyamata 2 óránként fut, így a riasztás feloldása akár 2 óráig is eltarthat. 
 
-* [Az Azure AD Connect Health adatmegőrzési szabályzata](reference-connect-health-user-privacy.md#data-retention-policy)
+* [Adatmegőrzési szabályzat Azure AD Connect Health](reference-connect-health-user-privacy.md#data-retention-policy)
 * [Azure AD Connect Health – gyakori kérdések](reference-connect-health-faq.md)

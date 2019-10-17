@@ -1,6 +1,6 @@
 ---
-title: Az Azure-kvóta hibák |} A Microsoft Docs
-description: Erőforrás-kvóta hibák megoldását ismerteti.
+title: Azure-kvóta hibái | Microsoft Docs
+description: Ismerteti, Hogyan oldhatók fel az erőforrás-kvótával kapcsolatos hibák az erőforrások Azure Resource Manager használatával történő telepítésekor.
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7938f2c47e4af8d8804191fbb9e55b379f9554ef
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 201ddf69f9c28b5b3a4197f91768f749152094de
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60390192"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390307"
 ---
-# <a name="resolve-errors-for-resource-quotas"></a>Erőforráskvóták hibáinak megoldásához
+# <a name="resolve-errors-for-resource-quotas"></a>Erőforrás-kvóták hibáinak elhárítása
 
-Ez a cikk ismerteti a kvóta hibák erőforrások üzembe helyezésekor.
+Ez a cikk az erőforrások telepítése során felmerülő kvóta-hibákat ismerteti.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Ha telepít egy sablont, amely az Azure a kvóták túllépéséből erőforrást hoz létre, kap egy központi telepítési hiba, amely a következőhöz hasonló:
+Ha olyan sablont helyez üzembe, amely túllépi az Azure-kvótákat, a következőhöz hasonló telepítési hiba jelenik meg:
 
 ```
 Code=OperationNotAllowed
@@ -36,7 +36,7 @@ Message=Operation results in exceeding quota limits of Core.
 Maximum allowed: 4, Current in use: 4, Additional requested: 2.
 ```
 
-Vagy jelenhetnek meg:
+Vagy a következőket láthatja:
 
 ```
 Code=ResourceQuotaExceeded
@@ -47,20 +47,20 @@ please delete some resources of this type before creating a new one.
 
 ## <a name="cause"></a>Ok
 
-Egy erőforráscsoport, előfizetések, partnerek és más hatókörök kvótái vonatkoznak. Például az előfizetés konfigurálhatók korlátozni a régió magok számát. Ha megpróbálja telepíteni, mint a megengedett mennyiséget több maggal rendelkező virtuális gép, a kvóta túl lett lépve érvénytelenségét jelző hibaüzenet kap.
-Teljes kvóta információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
+A kvóták erőforráscsoportonként, előfizetésenként, fiókonként és egyéb hatókörönként érvényesek. Lehetséges például, hogy az előfizetése úgy van konfigurálva, hogy korlátozza a régiónként elérhető magok számát. Ha olyan virtuális gépet próbál üzembe helyezni, amely a megengedettnél több magot tartalmaz, akkor hibaüzenetet kap a kvóta túllépéséről.
+A kvóta részletes ismertetését az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../azure-subscription-service-limits.md)című témakörben tekintheti meg.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
-Azure CLI esetén használja a `az vm list-usage` parancs használatával keresse meg a virtuális gép kvóták.
+Az Azure CLI esetén a `az vm list-usage` paranccsal keresse meg a virtuálisgép-kvótákat.
 
 ```azurecli
 az vm list-usage --location "South Central US"
 ```
 
-Amely értéket ad vissza:
+Amely a következőket adja vissza:
 
 ```azurecli
 [
@@ -78,13 +78,13 @@ Amely értéket ad vissza:
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell esetén használja a **Get-AzVMUsage** parancs használatával keresse meg a virtuális gép kvóták.
+A PowerShell esetében használja a **Get-AzVMUsage** parancsot a virtuálisgép-kvóták megkereséséhez.
 
 ```powershell
 Get-AzVMUsage -Location "South Central US"
 ```
 
-Amely értéket ad vissza:
+Amely a következőket adja vissza:
 
 ```powershell
 Name                             Current Value Limit  Unit
@@ -96,28 +96,28 @@ Virtual Machines                             0 10000 Count
 
 ## <a name="solution"></a>Megoldás
 
-Kérje egy kvótájának növelését, lépjen a portálra, és a egy támogatási a problémát. A támogatási problémát, a a régió, amelybe telepíteni kívánja a kvóta növelését.
+A kvóta növeléséhez lépjen a portálra, és küldjön egy támogatási problémát. A támogatási probléma esetén a kvóta növelését kell megadnia ahhoz a régióhoz, amelybe telepíteni kívánja.
 
 > [!NOTE]
-> Ne feledje, hogy az erőforráscsoportok, a kvóta minden egyes régió, a teljes előfizetés esetében nem. Ha kell telepíteni az USA nyugati adatközpontjába 30 magot, meg kell kérnie 30 Resource Manager-magok az USA nyugati RÉGIÓJA. Ha szeretne üzembe helyezése bármely, a régiók, amelyhez rendelkezik hozzáféréssel 30 magot, kérdezze meg 30 Resource Manager-magok minden régióban.
+> Ne feledje, hogy az erőforráscsoportok esetében a kvóta minden egyes régióra érvényes, nem a teljes előfizetéshez. Ha 30 magot kell üzembe helyeznie az USA nyugati régiójában, az USA nyugati régiójában 30 Resource Manager-magot kell kérnie. Ha minden olyan régióban 30 magot kell üzembe helyeznie, amelyhez hozzáférése van, akkor minden régióban 30 Resource Manager-magot kell kérnie.
 >
 >
 
 1. Válassza az **Előfizetések** lehetőséget.
 
-   ![Subscriptions](./media/resource-manager-quota-errors/subscriptions.png)
+   ![Előfizetések](./media/resource-manager-quota-errors/subscriptions.png)
 
 2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
 
    ![Előfizetés kiválasztása](./media/resource-manager-quota-errors/select-subscription.png)
 
-3. Válassza ki **használat + kvóták**
+3. **Használat + kvóták** kiválasztása
 
-   ![Válassza ki a használat és kvóták](./media/resource-manager-quota-errors/select-usage-quotas.png)
+   ![Használat és kvóták kiválasztása](./media/resource-manager-quota-errors/select-usage-quotas.png)
 
-4. A jobb felső sarokban, válassza ki **növelésére**.
+4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
 
-   ![Növelés kérése](./media/resource-manager-quota-errors/request-increase.png)
+   ![Kérések növekedése](./media/resource-manager-quota-errors/request-increase.png)
 
 5. Töltse ki az űrlapot ahhoz a kvótatípushoz, amelyet növelni szeretne.
 

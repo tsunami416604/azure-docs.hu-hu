@@ -1,6 +1,6 @@
 ---
 title: Azure-erőforrások kezelése az Azure CLI használatával | Microsoft Docs
-description: Az Azure CLI és az Azure Erőforrás-kezelés használatával kezelheti az erőforrásokat.
+description: Az Azure CLI és a Azure Resource Manager használatával kezelheti az erőforrásokat. Az erőforrások üzembe helyezésének és törlésének módját mutatja be.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: d3c3ca4a95cff8b9a81be8e75b011ca83799dcaa
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274255"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390383"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-erőforrások kezelése az Azure CLI használatával
 

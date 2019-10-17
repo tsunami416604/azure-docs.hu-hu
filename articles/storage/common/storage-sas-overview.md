@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/14/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0410da26a2ea5811c5a107ce233f2442b60fd9ca
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670831"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72382010"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Korlátozott hozzáférés biztosítása az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával
 
@@ -24,17 +24,25 @@ A közös hozzáférésű aláírás (SAS) biztonságos delegált hozzáférést
 
 Az Azure Storage három különböző típusú közös hozzáférési aláírást támogat:
 
-- **Felhasználói delegálási SAS (előzetes verzió).** A felhasználói delegálási SAS Azure Active Directory (Azure AD) hitelesítő adatokkal, valamint a SAS számára megadott engedélyekkel van védve. A felhasználói delegálási SAS csak a blob Storage-ra vonatkozik. Felhasználói delegálási SAS létrehozásához először egy felhasználói delegálási kulcsot kell igényelnie, amely az SAS aláírására szolgál. A felhasználói delegálási SAS-vel kapcsolatos további információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
-- **Szolgáltatás SAS.** A Storage-fiók kulcsa a Service SAS védelmét biztosítja. A szolgáltatás SAS delegál egy erőforráshoz való hozzáférést az Azure Storage-szolgáltatások egyikében: BLOB Storage, üzenetsor-tároló, Table Storage vagy Azure Files. További információ a szolgáltatás SAS-ről: [Service sas létrehozása (REST API)](/rest/api/storageservices/create-service-sas).
-- **Fiók SAS.** A fiók SAS védelmét a Storage-fiók kulcsa biztosítja. A fiókalapú SAS egy vagy több tárolószolgáltatás erőforrásaihoz nyújt hozzáférést. A szolgáltatáson vagy a felhasználói delegálási SAS-n keresztül elérhető összes művelet a fiók SAS-n keresztül is elérhető. Emellett a fiók SAS használatával delegálhatja a hozzáférést a szolgáltatás szintjén érvényes műveletekhez, például **lekérheti/beállíthatja a szolgáltatás tulajdonságait** , és **lekérheti a szolgáltatás-statisztika** műveleteit. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. A fiók SAS-vel kapcsolatos további információkért [hozzon létre egy FIÓKOT sas (REST API)](/rest/api/storageservices/create-account-sas).
+- **Felhasználói delegálási SAS (előzetes verzió).** A felhasználói delegálási SAS Azure Active Directory (Azure AD) hitelesítő adatokkal, valamint a SAS számára megadott engedélyekkel van védve. A felhasználói delegálási SAS csak a blob Storage-ra vonatkozik.
+
+    A felhasználói delegálási SAS-vel kapcsolatos további információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+
+- **Szolgáltatás SAS.** A Storage-fiók kulcsa a Service SAS védelmét biztosítja. A szolgáltatás-SAS delegál egy erőforráshoz való hozzáférést csak az egyik Azure Storage-szolgáltatásban: blob Storage, üzenetsor-tároló, Table Storage vagy Azure Files. 
+
+    További információ a szolgáltatás SAS-ről: [Service sas létrehozása (REST API)](/rest/api/storageservices/create-service-sas).
+
+- **Fiók SAS.** A fiók SAS védelmét a Storage-fiók kulcsa biztosítja. A fiókalapú SAS egy vagy több tárolószolgáltatás erőforrásaihoz nyújt hozzáférést. A szolgáltatáson vagy a felhasználói delegálási SAS-n keresztül elérhető összes művelet a fiók SAS-n keresztül is elérhető. Emellett a fiók SAS használatával delegálhatja a hozzáférést a szolgáltatás szintjén érvényes műveletekhez, például **lekérheti/beállíthatja a szolgáltatás tulajdonságait** , és **lekérheti a szolgáltatás-statisztika** műveleteit. A blobtárolók, táblák, üzenetsorok és fájlmegosztások olvasási, írási és törlési műveleteihez is hozzáférést biztosíthat, amelyeket a szolgáltatásalapú SAS nem engedélyez. 
+
+    A fiók SAS-vel kapcsolatos további információkért [hozzon létre egy FIÓKOT sas (REST API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > A Microsoft azt javasolja, hogy az Azure AD hitelesítő adatait akkor használja, ha a fiók kulcsa helyett biztonsági szempontból ajánlott, ami könnyebben sérülhet. Ha az alkalmazás kialakításához közös hozzáférésű aláírásokra van szükség a blob Storage-hoz való hozzáféréshez, az Azure AD-beli hitelesítő adatok használatával hozzon létre egy felhasználói delegálási SAS-t, ha lehetséges,
 
 A közös hozzáférésű aláírás két űrlap egyikét veheti igénybe:
 
-- **Ad hoc SAS:** Ha ad hoc SAS-t hoz létre, a kezdési idő, a lejárati idő és az SAS-engedélyek mind meg vannak adva az SAS URI-ban (vagy hallgatólagosan, ha a kezdési idő nincs megadva). Bármilyen típusú SAS lehet ad hoc SAS.
-- **A tárolt hozzáférési házirenddel rendelkező Service SAS:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Amikor egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, az SAS örökli a @ no__t-0the kezdési idejét, lejárati idejét és az engedélyek @ no__t-1defined a tárolt hozzáférési házirendhez.
+- **Ad hoc sas:** Ha ad hoc SAS-t hoz létre, a kezdési idő, a lejárati idő és az SAS-engedélyek mind meg vannak adva az SAS URI-ban (vagy hallgatólagosan, ha a kezdési idő nincs megadva). Bármilyen típusú SAS lehet ad hoc SAS.
+- **A tárolt hozzáférési házirenddel rendelkező Service sas:** Egy tárolt hozzáférési szabályzat definiálva van egy erőforrás-tárolón, amely lehet blob-tároló,-tábla,-várólista vagy-fájlmegosztás. A tárolt hozzáférési szabályzat segítségével kezelheti a korlátozásokat egy vagy több szolgáltatás közös hozzáférési aláírásakor. Amikor egy szolgáltatás SAS-t társít egy tárolt hozzáférési szabályzathoz, az SAS örökli a @ no__t-0the kezdési idejét, lejárati idejét és az engedélyek @ no__t-1defined a tárolt hozzáférési házirendhez.
 
 > [!NOTE]
 > A felhasználói delegálási SAS vagy a fiók SAS-nak ad hoc SAS-nek kell lennie. A tárolt hozzáférési szabályzatok nem támogatottak a felhasználói delegálási SAS vagy a fiók SAS számára.
@@ -47,13 +55,13 @@ A közös hozzáférésű aláírás egy aláírt URI, amely egy vagy több tár
 
 Az SAS-t kétféleképpen lehet aláírni:
 
-- Azure Active Directory (Azure AD) hitelesítő adatok használatával létrehozott felhasználói delegálási kulccsal. Felhasználói delegálási SAS van aláírva a felhasználói delegálási kulccsal.
+- Azure Active Directory (Azure AD) hitelesítő adatok használatával létrehozott *felhasználói delegálási kulccsal* . Felhasználói delegálási SAS van aláírva a felhasználói delegálási kulccsal.
 
     A felhasználói delegálási kulcs beszerzéséhez és az SAS létrehozásához egy Azure AD rendszerbiztonsági tag hozzá kell rendelni egy szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört, amely tartalmazza a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. A felhasználói delegálási kulcs beszerzéséhez szükséges engedélyekkel rendelkező RBAC-szerepkörökkel kapcsolatos részletes információkért lásd: [felhasználói delegálási sas létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas).
 
 - A Storage-fiók kulcsaként. A Service SAS és a fiók SAS is a Storage-fiók kulcsával van aláírva. A fiók kulccsal aláírt SAS létrehozásához az alkalmazásnak hozzá kell férnie a fiók kulcsához.
 
-### <a name="sas-token"></a>SAS-jogkivonat
+### <a name="sas-token"></a>SAS-token
 
 Az SAS-jogkivonat egy olyan karakterlánc, amelyet az ügyfél oldalán állít elő, például az egyik Azure Storage ügyféloldali kódtára használatával. A SAS-tokent semmilyen módon nem követik nyomon az Azure Storage. Korlátlan számú SAS-tokent hozhat létre az ügyféloldali oldalon. Miután létrehozott egy SAS-t, terjesztheti azt olyan ügyfélalkalmazások számára, amelyek hozzáférést igényelnek a Storage-fiók erőforrásaihoz.
 
@@ -71,11 +79,11 @@ Gyakori eset, ha egy SAS hasznos szolgáltatás, ahol a felhasználók a saját 
 
 1. Az ügyfelek az előtér-proxy szolgáltatáson keresztül tölthetik le és tölthetik le az adatletöltést, amely hitelesítést végez. Az előtér-proxy szolgáltatásnak megvan az előnye, hogy lehetővé teszi az üzleti szabályok érvényesítését, de nagy mennyiségű vagy nagy mennyiségű adatforgalom esetén az igényeknek megfelelően méretezhető szolgáltatás létrehozása költséges vagy nehézkes lehet.
 
-   ![Forgatókönyv diagramja: Előtér-proxy szolgáltatás](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
+   ![Forgatókönyv diagramja: előtér-proxy szolgáltatás](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
 1. Egy egyszerű szolgáltatás szükség szerint hitelesíti az ügyfelet, majd létrehoz egy SAS-t. Miután az ügyfélalkalmazás megkapja az SAS-t, közvetlenül hozzáférhetnek a Storage-fiók erőforrásaihoz a SAS által meghatározott engedélyekkel és az SAS által engedélyezett időtartammal. Az SAS csökkenti az összes, az előtér-proxy szolgáltatáson keresztüli útválasztási művelet szükségességét.
 
-   ![Forgatókönyv diagramja: SAS-szolgáltató szolgáltatás](./media/storage-sas-overview/sas-storage-provider-service.png)
+   ![Forgatókönyv-diagram: SAS-szolgáltatói szolgáltatás](./media/storage-sas-overview/sas-storage-provider-service.png)
 
 Számos valós szolgáltatás a két módszer hibrid használatát is felhasználhatja. Előfordulhat például, hogy egyes adatforrásokat az előtér-proxyn keresztül lehet feldolgozni és érvényesíteni, míg más adatmentést és/vagy közvetlenül az SAS használatával.
 
@@ -125,7 +133,7 @@ A közös hozzáférésű aláírások megkezdéséhez tekintse meg az egyes SAS
 
 - [Fiók SAS létrehozása a .NET-tel](storage-account-sas-create-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzáférés delegálása közös hozzáférési aláírással (REST API)](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

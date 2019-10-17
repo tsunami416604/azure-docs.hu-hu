@@ -3,17 +3,17 @@ title: Az első lekérdezés futtatása az Azure CLI használatával
 description: Ez a cikk végigvezeti az Azure CLI-hez szükséges Resource Graph bővítmény aktiválásának lépésein és az első lekérdezése futtatásán.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 34325fe8e8fdf7f53eb730818dc57800b65076e2
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b50a21f9c1a4bae7ced8afd9a49c33cc936983ac
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976712"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389732"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure CLI használatával
 
 Az Azure Resource Graph használatához először is meg kell győződnie arról, hogy az [Azure CLI-hez](/cli/azure/) szükséges bővítmény telepítve van. E rövid útmutató segítségével hozzáadhatja a bővítményt a telepített Azure CLI-hez. A bővítményt helyileg telepített Azure CLI-vel vagy az [Azure Cloud Shellen](https://shell.azure.com) keresztül is használhatja.
 
@@ -54,7 +54,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
    # Login first with az login if not using Cloud Shell
 
    # Run Azure Resource Graph query
-   az graph query -q 'project name, type | limit 5'
+   az graph query -q 'Resources | project name, type | limit 5'
    ```
 
    > [!NOTE]
@@ -64,7 +64,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
-   az graph query -q 'project name, type | limit 5 | order by name asc'
+   az graph query -q 'Resources | project name, type | limit 5 | order by name asc'
    ```
 
    > [!NOTE]
@@ -74,7 +74,7 @@ Miután az Azure CLI-bővítmény hozzá lett adva a választott környezethez, 
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
-   az graph query -q 'project name, type | order by name asc | limit 5'
+   az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
@@ -88,11 +88,11 @@ Ha el szeretné távolítani a Resource Graph bővítményt az Azure CLI környe
 az extension remove -n resource-graph
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
-- Információk az [erőforrások felfedezéséről](./concepts/explore-resources.md)
+- Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
 - Az első lekérdezés futtatása az [Azure PowerShell-lel](first-query-powershell.md)
 - Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- A [Speciális lekérdezések](./samples/advanced.md) példáinak megtekintése
+- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
 - Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)

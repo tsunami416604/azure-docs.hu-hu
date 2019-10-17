@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jovanpop-msft
+author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
-ms.date: 10/11/2019
-ms.openlocfilehash: 0307a905c1d3d7d9bc707fbda87fb8f3fd6d2aee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/14/2019
+ms.openlocfilehash: 28b702192b41d3b4a8151e3127a4297c28712fa2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299709"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390700"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állás és Azure SQL Database
 
@@ -88,6 +88,13 @@ A magas rendelkezésre állású architektúra zóna redundáns verzióját a k�
 ## <a name="accelerated-database-recovery-adr"></a>Gyorsított adatbázis-helyreállítás (ADR)
 
 A [gyorsított adatbázis-helyreállítás (ADR)](sql-database-accelerated-database-recovery.md) egy új SQL Database motor-szolgáltatás, amely nagy mértékben javítja az adatbázisok rendelkezésre állását, különösen a hosszú ideig futó tranzakciók jelenlétében. Az ADR jelenleg egyazon adatbázisok, rugalmas készletek és Azure SQL Data Warehouse számára érhető el.
+
+## <a name="testing-database-fault-resiliency"></a>Adatbázis-hibatűrési rugalmasság tesztelése
+
+A magas rendelkezésre állás a Azure SQL Database platform fundamenental része, és az adatbázis-alkalmazás számára transzparens módon működik. Azonban Felismertük, hogy tesztelni szeretné, hogy a tervezett vagy nem tervezett események során kezdeményezett automatikus feladatátvételi műveletek hatással lennének-e az alkalmazásra az éles környezetbe történő üzembe helyezése előtt. Meghívhat egy speciális API-t az adatbázis vagy a rugalmas készlet újraindításához, ami viszont elindítja a feladatátvételt. A zóna redundáns adatbázisa vagy a rugalmas készlet esetében az API-hívás azt eredményezi, hogy az ügyfélkapcsolatok átirányítása az új elsődlegesre egy másik az alkalmazásban. Tehát azon kívül, hogy a feladatátvétel milyen hatással van a meglévő adatbázis-munkamenetekre, azt is ellenőrizheti, hogy az hatással van-e a végpontok közötti teljesítményre. Mivel az újraindítási művelet zavaró, és nagy számú közülük kiemelheti a platformot, minden adatbázishoz vagy rugalmas készlethez 30 percenként csak egy feladatátvételi hívás engedélyezett. Részletekért lásd: [adatbázis-feladatátvételi](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover) és [rugalmas készlet feladatátvétele](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover).       
+
+> [!IMPORTANT]
+> A feladatátvételi parancs jelenleg nem érhető el Hypescale-adatbázisokhoz és felügyelt instancses.  
 
 ## <a name="conclusion"></a>Összegzés
 

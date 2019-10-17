@@ -14,19 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 44a6261819ee8e880d9a5763e92678bc359f5eff
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e0baf64c3490dd5b7edd8c3f7d209c135c546ed5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025095"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388446"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hitelesítés hozzáadása a Xamarin. Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez a témakör bemutatja, hogyan hitelesítheti a Mobile apps felhasználóit az ügyfélalkalmazás használatával. Ebben az oktatóanyagban a gyors üzembe helyezési projekthez egy Azure Mobile Apps által támogatott identitás-szolgáltató használatával ad hozzá hitelesítést. A sikeres hitelesítés és engedélyezés után a rendszer a felhasználói azonosító értékét jeleníti meg.
@@ -101,7 +102,7 @@ Az alkalmazás frissül, hogy a felhasználók a **Bejelentkezés** gombra koppi
     Ez egy új módszert hoz létre egy felhasználó és egy új **bejelentkezési** gomb metódus-kezelője hitelesítéséhez. A fenti példában szereplő kódot Facebook-bejelentkezéssel hitelesíti a rendszer. A rendszer egy párbeszédpanelt használ a felhasználó AZONOSÍTÓjának a hitelesítéssel történő megjelenítéséhez.
    
    > [!NOTE]
-   > Ha a Facebooktól eltérő identitás-szolgáltatót használ, módosítsa az átadott értéket a **LoginAsync** fölé a következők egyikére: *MicrosoftAccount*, *Twitter*, *Google*vagy *WindowsAzureActiveDirectory*.
+   > Ha a Facebooktól eltérő identitás-szolgáltatót használ, módosítsa az átadott értéket a **LoginAsync** -re a következők egyikére *: MicrosoftAccount*, *Twitter*, *Google*vagy *WindowsAzureActiveDirectory*.
    > 
    > 
 2. A **OnCreate** metódusban törölje vagy véleményezze a következő kódrészletet:
@@ -131,11 +132,11 @@ Az alkalmazás frissül, hogy a felhasználók a **Bejelentkezés** gombra koppi
 
 6. A Visual Studióban vagy a Xamarin Studióban futtassa az ügyfél projektet egy eszközön vagy emulátoron, és jelentkezzen be a kiválasztott identitás-szolgáltatóval. Ha sikeresen bejelentkezett, az alkalmazás megjeleníti a bejelentkezési azonosítót és a ToDo-elemek listáját, és frissítheti az adatokat.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 **Az alkalmazás összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-Bizonyos esetekben a támogatási csomagok csak figyelmeztetésként jelennek meg a Visual Studióban, de az alkalmazás a futtatáskor összeomlik ezzel a kivétellel. Ebben az esetben meg kell győződnie arról, hogy a projektben hivatkozott összes támogatási csomag ugyanazzal a verzióval rendelkezik. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
+Bizonyos esetekben a támogatási csomagok csak figyelmeztetésként jelennek meg a Visual Studióban, de az alkalmazás a futtatáskor összeomlik ezzel a kivétellel. Ebben az esetben meg kell győződnie arról, hogy a projektben hivatkozott összes támogatási csomag ugyanazzal a verzióval rendelkezik. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 <!-- URLs. -->
 [Xamarin. Android-alkalmazás létrehozása]: app-service-mobile-xamarin-android-get-started.md

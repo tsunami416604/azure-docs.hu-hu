@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 8a3f8b5f8944552c92ac5a1c1d5fb2eabffad2c9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331800"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430153"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Python használatával
+# <a name="quickstart-upload-download-and-list-blobs-in-azure-blob-storage-with-python"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása az Azure Blob Storage-ban a Pythonban
 
 Ebben a cikkben a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat egy tárolóban az Azure Blob Storage-ban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
 

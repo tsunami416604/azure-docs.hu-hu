@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2019
+ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 705dfb0b62327d9675fe9bf3e5860b1396e2fab9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4384d29811d29f06422802abba5d3eb1ea5737e9
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101305"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430075"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -33,7 +33,7 @@ Egy adatbázis biztonsági mentése, amely bármely időpontra visszaállíthat�
 
 A visszaállítási képesség eléréséhez két típusú biztonsági mentést kell végrehajtani:
 
-- Adatbázis biztonsági mentései: Teljes, növekményes vagy különbözeti biztonsági másolatok
+- Adatbázis biztonsági mentései: teljes, növekményes vagy differenciált biztonsági másolatok
 - Tranzakciónapló biztonsági mentései
 
 A teljes adatbázisra vonatkozó biztonsági másolatok alkalmazási szinten történő végrehajtása mellett a tárolási pillanatképekkel rendelkező biztonsági mentéseket is végrehajthat. A tárolási Pillanatképek nem helyettesítik a tranzakciónapló biztonsági másolatait. A tranzakciónapló biztonsági mentései továbbra is fontosak maradnak az adatbázis egy adott időpontra való visszaállításához, vagy a már Véglegesített tranzakciók naplófájljainak kiürítéséhez. A tárolási Pillanatképek felgyorsítják a helyreállítást azáltal, hogy gyorsan továbbítják az adatbázis egy előre látható képét. 
@@ -67,7 +67,7 @@ Olyan tárolási pillanatképeket is végrehajthat, amelyek a kötetek három os
 - Külön pillanatkép A/Hana/logbackups.
 - Operációs rendszer partíciója.
 
-A pillanatképek legújabb parancsfájljainak és dokumentációjának lekéréséhez lásd: [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1). Amikor letölti a pillanatkép-parancsfájl csomagot [](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1)a githubról, három fájlt kap. Az egyik fájl dokumentálva van egy PDF-fájlban a megadott funkciókhoz. Az eszközkészlet letöltése után kövesse a "pillanatkép-eszközök beszerzése" című témakör utasításait.
+A pillanatképek legújabb parancsfájljainak és dokumentációjának lekéréséhez lásd: [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). Amikor letölti a pillanatkép-parancsfájl csomagot a [githubról](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md), három fájlt kap. Az egyik fájl dokumentálva van egy PDF-fájlban a megadott funkciókhoz. Az eszközkészlet letöltése után kövesse a "pillanatkép-eszközök beszerzése" című témakör utasításait.
 
 ## <a name="storage-snapshot-considerations"></a>Tárolási pillanatképgel kapcsolatos megfontolások
 
@@ -112,79 +112,79 @@ Győződjön meg arról, hogy a pillanatkép-parancsfájl futtatása sikeresen m
 
 A nagyméretű HANA-példányokkal rendelkező tárolási Pillanatképek beállításához kövesse az alábbi lépéseket.
 1. Győződjön meg arról, hogy a Perl a HANA Large instances-kiszolgálón a Linux operációs rendszerre van telepítve.
-1. Módosítsa a/etc/ssh/SSH\_konfigurációját, és adja hozzá a következő sort: _Mac HMAC-SHA1_.
+1. Módosítsa a/etc/ssh/SSH @ no__t-0config sort a _Mac HMAC-SHA1_vonal hozzáadásához.
 1. Hozzon létre egy SAP HANA biztonsági mentési felhasználói fiókot a főcsomóponton minden egyes futtatott SAP HANA-példányhoz, ha van ilyen.
 1. Telepítse a SAP HANA HDB-ügyfelet az összes SAP HANA Large Instances-kiszolgálóra.
 1. Az egyes régiók első SAP HANA Large Instances kiszolgálóján hozzon létre egy nyilvános kulcsot a pillanatkép-készítést vezérlő mögöttes tárolási infrastruktúra eléréséhez.
-1. Másolja a szkripteket és a konfigurációs [](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) fájlt a githubról a **hdbsql** helyére a SAP HANA telepítésben.
+1. Másolja a szkripteket és a konfigurációs fájlt a [githubról](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md) a **hdbsql** helyére a SAP HANA telepítésben.
 1. Módosítsa a *HANABackupDetails. txt* fájlt a megfelelő ügyfél-specifikációk szerint.
 
-Szerezze be a legfrissebb pillanatkép-szkripteket [](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1)és dokumentációt a githubról. A korábban felsorolt lépésekért lásd: [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf).
+Szerezze be a legfrissebb pillanatkép-szkripteket és dokumentációt a [githubról](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md). A korábban felsorolt lépésekért lásd: [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 ### <a name="consideration-for-mcod-scenarios"></a>MCOD-forgatókönyvek megfontolása
-Ha egy HANA nagyméretű példány-egységen több SAP HANA példánnyal rendelkező [MCOD-forgatókönyvet](https://launchpad.support.sap.com/#/notes/1681092) futtat, külön tárolási köteteket kell kiépíteni az egyes SAP HANA példányokhoz. A MDC és egyéb szempontokkal kapcsolatos további információkért tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-eszközeinek "fontos tudnivalók" című témakörét.
+Ha egy HANA nagyméretű példány-egységen több SAP HANA példánnyal rendelkező [MCOD-forgatókönyvet](https://launchpad.support.sap.com/#/notes/1681092) futtat, külön tárolási köteteket kell kiépíteni az egyes SAP HANA példányokhoz. A MDC és egyéb szempontokkal kapcsolatos további információkért tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép-eszközeinek](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"fontos tudnivalók" című témakörét.
  
 
-### <a name="step-1-install-the-sap-hana-hdb-client"></a>1\. lépés: A SAP HANA HDB-ügyfél telepítése
+### <a name="step-1-install-the-sap-hana-hdb-client"></a>1\. lépés: a SAP HANA HDB-ügyfél telepítése
 
-Az Azure-on SAP HANA telepített Linux operációs rendszer (nagyméretű példányok) tartalmazza azokat a mappákat és parancsfájlokat, amelyek szükségesek SAP HANA tárolási Pillanatképek futtatásához a biztonsági mentéshez és a vész-helyreállítási célokra. Újabb verziók a Githubban. [](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1) A szkriptek legújabb kiadási verziója 4,1. A különböző szkriptek eltérő alverziókkal rendelkezhetnek ugyanazon a fő kiadáson belül.
+Az Azure-on SAP HANA telepített Linux operációs rendszer (nagyméretű példányok) tartalmazza azokat a mappákat és parancsfájlokat, amelyek szükségesek SAP HANA tárolási Pillanatképek futtatásához a biztonsági mentéshez és a vész-helyreállítási célokra. Újabb verziók a [githubban](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/release.md). 
 
 Az Ön felelőssége, hogy a SAP HANA HDB-ügyfelet a HANA nagyméretű példányok egységére telepítse a SAP HANA telepítésekor.
 
-### <a name="step-2-change-the-etcsshssh_config"></a>2\. lépés: A/etc/ssh/SSH\_konfigurációjának módosítása
+### <a name="step-2-change-the-etcsshssh_config"></a>2\. lépés: a/etc/ssh/SSH @ no__t-0config módosítása
 
-Ez a lépés a [Microsoft Snapshot Tools for SAP HANA on Azure-on](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)való kommunikáció engedélyezése a Storage szolgáltatással című témakörben található.
+Ez a lépés a [Microsoft Snapshot Tools for SAP HANA on Azure-on](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)való kommunikáció engedélyezése a Storage szolgáltatással című témakörben található.
 
 
-### <a name="step-3-create-a-public-key"></a>3\. lépés: Nyilvános kulcs létrehozása
+### <a name="step-3-create-a-public-key"></a>3\. lépés: nyilvános kulcs létrehozása
 
 Ha engedélyezni szeretné a HANA nagyméretű példányának bérlője számára a Storage pillanatkép-interfészek elérését, hozzon létre egy bejelentkezési eljárást egy nyilvános kulcson keresztül. 
 
 A bérlőben az Azure-beli (nagyméretű példányok) kiszolgáló első SAP HANA hozzon létre egy nyilvános kulcsot a tárolási infrastruktúra eléréséhez. Nyilvános kulccsal nem kell jelszót bejelentkezni a Storage pillanatkép-felületekre. Nem kell nyilvános kulccsal megtartania a jelszó hitelesítő adatait is. 
 
-Nyilvános kulcs létrehozásához tekintse meg az Azure-beli SAP HANAhez készült [Microsoft pillanatkép-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)"a tárolóval való kommunikáció engedélyezése" címűét.
+Nyilvános kulcs létrehozásához tekintse meg az Azure-beli [SAP HANAhez készült Microsoft pillanatkép-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"a tárolóval való kommunikáció engedélyezése" címűét.
 
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>4\. lépés: SAP HANA felhasználói fiók létrehozása
 
 SAP HANA Pillanatképek létrehozásának megkezdéséhez hozzon létre egy felhasználói fiókot SAP HANA, hogy a tárolási pillanatkép parancsfájljai használhatók. Hozzon létre egy SAP HANA felhasználói fiókot a SAP HANA Studióban erre a célra. A felhasználót a SYSTEMDB alatt kell létrehozni, *nem* a MDC SID-adatbázisában. Az egytárolós környezetben a felhasználó létrehozása a bérlői adatbázisban történik. Ennek a fióknak a **Backup admin** és a **Catalog olvasási** jogosultsággal kell rendelkeznie. 
 
-Felhasználói fiók beállításához és használatához tekintse meg a "kommunikáció engedélyezése SAP HANA használatával" című [](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1)részt a githubon.
+Felhasználói fiók beállításához és használatához tekintse meg a "kommunikáció engedélyezése SAP HANA használatával" című részt a [githubon](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 
-### <a name="step-5-authorize-the-sap-hana-user-account"></a>5\. lépés: A SAP HANA felhasználói fiók engedélyezése
+### <a name="step-5-authorize-the-sap-hana-user-account"></a>5\. lépés: a SAP HANA felhasználói fiók engedélyezése
 
-Ebben a lépésben engedélyezi a létrehozott SAP HANA felhasználói fiókot, hogy a parancsfájlok ne kelljen a jelszavakat futásidőben elküldeni. Az SAP HANA parancs `hdbuserstore` lehetővé teszi egy SAP HANA felhasználói kulcs létrehozását. A kulcsot egy vagy több SAP HANA csomópont tárolja. A felhasználói kulcs lehetővé teszi a felhasználó hozzáférését SAP HANA anélkül, hogy a jelszavakat a parancsfájl-kezelési folyamaton belül kellene kezelnie. A parancsfájlkezelési folyamatot a cikk későbbi részében tárgyaljuk.
+Ebben a lépésben engedélyezi a létrehozott SAP HANA felhasználói fiókot, hogy a parancsfájlok ne kelljen a jelszavakat futásidőben elküldeni. A SAP HANA parancs `hdbuserstore` lehetővé teszi SAP HANA felhasználói kulcs létrehozását. A kulcsot egy vagy több SAP HANA csomópont tárolja. A felhasználói kulcs lehetővé teszi a felhasználó hozzáférését SAP HANA anélkül, hogy a jelszavakat a parancsfájl-kezelési folyamaton belül kellene kezelnie. A parancsfájlkezelési folyamatot a cikk későbbi részében tárgyaljuk.
 
 >[!IMPORTANT]
 >Futtassa ezeket a konfigurációs parancsokat ugyanazzal a felhasználói környezettel, mint amelyen a pillanatkép-parancsok futnak. Ellenkező esetben a pillanatkép-parancsok nem fognak megfelelően működni.
 
 
-### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>6\. lépés: A pillanatkép-parancsfájlok beszerzése, a pillanatképek konfigurálása és a konfiguráció és a kapcsolat tesztelése
+### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>6\. lépés: a pillanatkép-parancsfájlok beszerzése, a pillanatképek konfigurálása és a konfiguráció és a kapcsolat tesztelése
 
-Töltse le a szkriptek legújabb verzióját a [githubról](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1). A parancsfájlok telepítésének módja a parancsfájlok 4,1-es kiadásával módosult. További információ: "a kommunikáció engedélyezése SAP HANAvel" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-ban.
+Töltse le a szkriptek legújabb verzióját a [githubról](https://github.com/Azure/hana-large-instances-self-service-scripts/tree/master/snapshot_tools_v4.1). A parancsfájlok telepítésének módja a parancsfájlok 4,1-es kiadásával módosult. További információ: "a kommunikáció engedélyezése SAP HANAvel" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-ban.
 
-A parancsok pontos sorrendjének megtekintéséhez tekintse meg az Azure-beli SAP HANAhoz készült [Microsoft Snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)Tools (alapértelmezett) a pillanatkép-eszközök egyszerű telepítését ismertető témakört. Az alapértelmezett telepítés használatát javasoljuk. 
+A parancsok pontos sorrendjének megtekintéséhez tekintse meg az Azure-beli [SAP HANAhoz készült Microsoft Snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)Tools (alapértelmezett) a pillanatkép-eszközök egyszerű telepítését ismertető témakört. Az alapértelmezett telepítés használatát javasoljuk. 
 
-A 3. x verzióról a 4,1-re való frissítéshez tekintse meg a "meglévő telepítés frissítése" című részt a [Microsoft pillanatkép-eszközök SAP HANA az Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-ban című témakörben. Az 4,1 eszközkészlet eltávolításához tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-eszközeinek "a pillanatkép-eszközök eltávolítása" című részét.
+A 3. x verzióról a 4,1-re való frissítéshez tekintse meg a "meglévő telepítés frissítése" című részt a [Microsoft pillanatkép-eszközök SAP HANA az Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-ban című témakörben. Az 4,1 eszközkészlet eltávolításához tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-eszközeinek "a pillanatkép-eszközök eltávolítása" című részét.
 
-Ne felejtse el futtatni a "pillanatkép-eszközök telepítésének befejezése" című témakörben leírt lépéseket az Azure-beli SAP HANAhez készült [Microsoft Snapshot Tools eszközben](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf).
+Ne felejtse el futtatni a "pillanatkép-eszközök telepítésének befejezése" című témakörben leírt lépéseket az Azure-beli [SAP HANAhez készült Microsoft Snapshot Tools eszközben](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
-A különböző parancsfájlok és fájlok telepítésének célját a "Mik ezek a pillanatkép-eszközök?" című cikk ismerteti. a [Microsoft Snapshot Tools for SAP HANA az Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-ban.
+A különböző parancsfájlok és fájlok telepítésének célját a "Mik ezek a pillanatkép-eszközök?" című cikk ismerteti. a [Microsoft Snapshot Tools for SAP HANA az Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-ban.
 
-A pillanatkép-eszközök konfigurálása előtt győződjön meg arról, hogy a HANA biztonsági mentési helyei és beállításai helyesen vannak konfigurálva. További információkért tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)"SAP HANA konfigurálása" című témakörét.
+A pillanatkép-eszközök konfigurálása előtt győződjön meg arról, hogy a HANA biztonsági mentési helyei és beállításai helyesen vannak konfigurálva. További információkért tekintse meg az Azure-beli [SAP HANA Microsoft pillanatkép-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)"SAP HANA konfigurálása" című témakörét.
 
-A pillanatkép-eszközkészlet konfigurációját az Azure-beli [SAP HANA a Microsoft Snapshot Tools (](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)konfigurációs fájl-HANABackupCustomerDetails. txt) című szakaszában találja.
+A pillanatkép-eszközkészlet konfigurációját az Azure-beli [SAP HANA a Microsoft Snapshot Tools (](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)konfigurációs fájl-HANABackupCustomerDetails. txt) című szakaszában találja.
 
 #### <a name="test-connectivity-with-sap-hana"></a>Kapcsolat tesztelése SAP HANA
 
-Miután az összes konfigurációs adatok bekerültek a *HANABackupCustomerDetails. txt* fájlba, győződjön meg arról, hogy a konfigurációk helyesek-e a HANA-példányok számára. Használja a parancsfájlt `testHANAConnection`, amely független egy SAP HANA vertikális Felskálázási vagy kibővíthető konfigurációtól.
+Miután az összes konfigurációs adatok bekerültek a *HANABackupCustomerDetails. txt* fájlba, győződjön meg arról, hogy a konfigurációk helyesek-e a HANA-példányok számára. Használja a `testHANAConnection` parancsfájlt, amely független egy SAP HANA vertikális Felskálázási vagy kibővíthető konfigurációtól.
 
-További információkért tekintse meg a "kapcsolat ellenőrzése SAP HANA-testHANAConnection" című részt az Azure-beli [SAP HANA Microsoft Snapshot](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-eszközökben.
+További információkért tekintse meg a "kapcsolat ellenőrzése SAP HANA-testHANAConnection" című részt az Azure-beli [SAP HANA Microsoft Snapshot-eszközökben](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 #### <a name="test-storage-connectivity"></a>Tárolási kapcsolat tesztelése
 
-A következő lépés a *HANABackupCustomerDetails. txt* konfigurációs fájlba helyezett adatkapcsolaton keresztül ellenőrzi a tárolóhoz való kapcsolódást. Ezután futtasson egy teszt pillanatképet. A `azure_hana_backup` parancs futtatása előtt futtatnia kell ezt a tesztet. A teszt parancsainak sorozata a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-ban című témakör "kapcsolat ellenőrzése a Storage-testStorageSnapshotConnection" című részében található.
+A következő lépés a *HANABackupCustomerDetails. txt* konfigurációs fájlba helyezett adatkapcsolaton keresztül ellenőrzi a tárolóhoz való kapcsolódást. Ezután futtasson egy teszt pillanatképet. A `azure_hana_backup` parancs futtatása előtt futtatnia kell ezt a tesztet. A teszt parancsainak sorozata a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-ban című témakör "kapcsolat ellenőrzése a Storage-testStorageSnapshotConnection" című részében található.
 
 A tárolási virtuálisgép-felületek sikeres bejelentkezését követően a parancsfájl a 2. fázissal folytatódik, és egy teszt pillanatképet hoz létre. A kimenet itt látható a SAP HANA három csomópontos kibővíthető konfigurációjában.
 
@@ -195,9 +195,9 @@ Ha a teszt pillanatképe sikeresen lefut a parancsfájllal, a tényleges tárol�
 
 Az előkészítési lépések elvégzése után megkezdheti a tényleges tárolási Pillanatképek konfigurálását és beosztását. Az ütemezni kívánt szkript SAP HANA Felskálázási és kibővíthető konfigurációkkal működik. A biztonsági mentési parancsfájl rendszeres és rendszeres végrehajtásához a cron segédprogram használatával ütemezze a parancsfájlt. 
 
-A parancs szintaxisának és működésének pontos szintaxisát lásd: "a pillanatképek biztonsági mentésének elvégzése azure_hana_backup" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+A parancs szintaxisának és működésének pontos szintaxisát lásd: "a pillanatképek biztonsági mentésének elvégzése azure_hana_backup" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
-A szkript `azure_hana_backup` futtatásakor a a következő három fázisban hozza létre a tárolási pillanatképet:
+Ha a szkript `azure_hana_backup` fut, a a következő három fázisban hozza létre a tárolási pillanatképet:
 
 1. SAP HANA pillanatképet futtat.
 1. Egy tárolási pillanatképet futtat.
@@ -281,15 +281,15 @@ Ha az adatbázisról még soha nem készült biztonsági másolat, az utolsó l�
 ![Fájl alapú biztonsági másolat készítése egyetlen biztonsági mentési bejegyzés létrehozásához](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
-Az első sikeres tárolási Pillanatképek futtatása után törölje a 6. lépésben futtatott teszt-pillanatképet. További információ: "test Snapshots-removeTestStorageSnapshot eltávolítása" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+Az első sikeres tárolási Pillanatképek futtatása után törölje a 6. lépésben futtatott teszt-pillanatképet. További információ: "test Snapshots-removeTestStorageSnapshot eltávolítása" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
 
 ### <a name="monitor-the-number-and-size-of-snapshots-on-the-disk-volume"></a>A lemez kötetén található Pillanatképek számának és méretének figyelése
 
-Egy adott tárolási köteten figyelheti a pillanatképek számát és a pillanatképek tárolási felhasználását. A `ls` parancs nem jeleníti meg a pillanatképek könyvtárát vagy fájljait. A Linux operációs rendszer `du` parancs megjeleníti a tárolási Pillanatképek részleteit, mivel azok ugyanazon a köteten vannak tárolva. Használja a parancsot a következő beállításokkal:
+Egy adott tárolási köteten figyelheti a pillanatképek számát és a pillanatképek tárolási felhasználását. A `ls` parancs nem jeleníti meg a pillanatképek könyvtárát vagy fájljait. A Linux OS Command `du` a tárolási Pillanatképek részleteit jeleníti meg, mivel azok ugyanazon a köteten vannak tárolva. Használja a parancsot a következő beállításokkal:
 
 - `du –sh .snapshot`: Ez a beállítás a pillanatképek könyvtárában lévő összes pillanatképet tartalmazza.
-- `du –sh --max-depth=1`: Ez a beállítás felsorolja a **. Snapshot** mappában mentett összes pillanatképet, valamint az egyes Pillanatképek méretét.
+- `du –sh --max-depth=1`: Ez a lehetőség felsorolja a **. Snapshot** mappában mentett összes pillanatképet és az egyes Pillanatképek méretét.
 - `du –hc`: Ez a beállítás biztosítja az összes pillanatkép által használt teljes méretet.
 
 Ezekkel a parancsokkal gondoskodhat arról, hogy a végrehajtott és tárolt Pillanatképek ne használják a kötetek összes tárolóját.
@@ -298,16 +298,16 @@ Ezekkel a parancsokkal gondoskodhat arról, hogy a végrehajtott és tárolt Pil
 >A rendszerindító LUN pillanatképei nem láthatók az előző parancsokkal.
 
 ### <a name="get-details-of-snapshots"></a>Pillanatképek részleteinek beolvasása
-A pillanatképekkel kapcsolatos további részletekért használja a parancsfájlt `azure_hana_snapshot_details`. Ezt a parancsfájlt bármelyik helyen futtathatja, ha van aktív kiszolgáló a vész-helyreállítási helyen. A parancsfájl a következő kimenetet adja meg, amely a pillanatképeket tartalmazó kötetek szerinti bontásban található: 
+A pillanatképekkel kapcsolatos további részletekért használja a következő szkriptet: `azure_hana_snapshot_details`. Ezt a parancsfájlt bármelyik helyen futtathatja, ha van aktív kiszolgáló a vész-helyreállítási helyen. A parancsfájl a következő kimenetet adja meg, amely a pillanatképeket tartalmazó kötetek szerinti bontásban található: 
    * Egy kötet összes pillanatképének mérete
    * Az alábbi részletek az adott kötet minden pillanatképében: 
       - Pillanatkép neve 
-      - Létrehozás időpontja 
+      - Létrehozás ideje 
       - A pillanatkép mérete
       - A pillanatkép gyakorisága
       - Az adott pillanatképhez társított HANA biztonsági mentési azonosító, ha van ilyen
 
-A parancsok és kimenetek szintaxisát lásd: "Pillanatképek listázása azure_hana_snapshot_details" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf). 
+A parancsok és kimenetek szintaxisát lásd: "Pillanatképek listázása azure_hana_snapshot_details" a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
 
 
@@ -332,11 +332,11 @@ Ha ezzel a beállítással futtatja a parancsfájlt, a pillanatképek száma, am
 
 Ha már nem szeretné, hogy a **dailyhana** található biztonsági mentési előtaggal rendelkező Pillanatképek ne legyenek karbantartva, futtassa a szkriptet **0** értékkel a megőrzési számként. Ezután eltávolítja a címkének megfelelő összes pillanatképet. Az összes pillanatkép eltávolítása hatással lehet a HANA nagy példányszámú vész-helyreállítási funkció képességeire.
 
-Az adott Pillanatképek törlésére szolgáló második lehetőség a szkript `azure_hana_snapshot_delete`használata. Ez a szkript egy pillanatkép vagy Pillanatképek készletének törlésére szolgál a Hana Studióban található HANA Backup-azonosító használatával vagy maga a pillanatkép-névvel. Jelenleg a biztonsági mentési azonosító csak a **Hana** pillanatkép-típushoz létrehozott pillanatképekhez van kötve. A **naplók** és a **rendszerindítás** pillanatképes biztonsági mentései nem végeznek SAP HANA pillanatképet, így nem található biztonsági mentési azonosító a pillanatképekhez. Ha a pillanatkép neve meg van adva, a rendszer az összes pillanatképet keresi a különböző köteteken, amelyek megfelelnek a megadott pillanatkép nevének. 
+Egy második lehetőség az adott Pillanatképek törlésére, ha a `azure_hana_snapshot_delete` parancsfájlt használja. Ez a szkript egy pillanatkép vagy Pillanatképek készletének törlésére szolgál a Hana Studióban található HANA Backup-azonosító használatával vagy maga a pillanatkép-névvel. Jelenleg a biztonsági mentési azonosító csak a **Hana** pillanatkép-típushoz létrehozott pillanatképekhez van kötve. A **naplók** és a **rendszerindítás** pillanatképes biztonsági mentései nem végeznek SAP HANA pillanatképet, így nem található biztonsági mentési azonosító a pillanatképekhez. Ha a pillanatkép neve meg van adva, a rendszer az összes pillanatképet keresi a különböző köteteken, amelyek megfelelnek a megadott pillanatkép nevének. 
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
 
-A parancsfájllal kapcsolatos további információkért tekintse meg a "pillanatkép törlése-azure_hana_snapshot_delete" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf)-ban.
+A parancsfájllal kapcsolatos további információkért tekintse meg a "pillanatkép törlése-azure_hana_snapshot_delete" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)-ban.
 
 Futtassa a parancsfájlt felhasználói **gyökérként**.
 
@@ -363,7 +363,7 @@ Egy másik helyzetben az időponthoz tartozó helyreállítás alacsony sürgős
 
 A kérelem elküldése előtt elő kell készítenie a következőt:. A SAP HANA az Azure csapata képes kezelni a kérést, és megadhatja a visszaállított köteteket. Ezt követően visszaállíthatja a HANA-adatbázist a pillanatképek alapján.
 
-Az új eszközkészlettel visszaállított Pillanatképek lekérésének lehetőségeiről "pillanatkép visszaállítása" című részében talál további információt az [Azure-](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)beli SAP HANAról a tárolási pillanatképből.
+Az új eszközkészlettel visszaállított Pillanatképek lekérésének lehetőségeiről "pillanatkép visszaállítása" című részében talál további információt az [Azure-beli SAP HANAról a tárolási pillanatképből](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md).
 
 A kérelem előkészítéséhez kövesse az alábbi lépéseket.
 
@@ -379,9 +379,9 @@ A kérelem előkészítéséhez kövesse az alábbi lépéseket.
 
 1. Nyisson meg egy Azure-támogatási kérést, és adjon meg egy adott pillanatkép visszaállítására vonatkozó utasításokat:
 
-   - A visszaállítás során: SAP HANA az Azure-szolgáltatásban megkérheti, hogy vegyen részt egy konferenciahívásban, hogy koordinálja, ellenőrizze és erősítse meg a megfelelő tárolási pillanatkép visszaállítását. 
+   - A helyreállítás során: SAP HANA az Azure szolgáltatásban megkérheti, hogy vegyen részt egy konferenciahívásban, hogy koordinálja, ellenőrizze és erősítse meg, hogy a megfelelő tárolási pillanatkép vissza lett-e állítva. 
 
-   - A visszaállítás után: Az Azure-szolgáltatás SAP HANA értesíti, ha visszaállítja a tárolási pillanatképet.
+   - A visszaállítást követően a SAP HANA az Azure szolgáltatásban értesítést küld, amikor visszaállítja a tárolási pillanatképet.
 
 1. A visszaállítási folyamat befejezése után csatlakoztassa újra az összes adatkötetet.
 
@@ -389,17 +389,17 @@ A kérelem előkészítéséhez kövesse az alábbi lépéseket.
 
 
 
-Egy másik lehetőség a tárolási pillanatképből visszaállított adatfájlok beszerzésére, például az Azure-beli SAP HANA- [re vonatkozó kézi helyreállítási útmutató](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)7. lépésében, a tárolási pillanatképből való SAP HANA.
+Egy másik lehetőség a tárolási pillanatképből visszaállított adatfájlok beszerzésére, például az Azure-beli SAP HANA- [re vonatkozó kézi helyreállítási útmutató](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md)7. lépésében, a tárolási pillanatképből való SAP HANA.
 
-A pillanatképek biztonsági másolatból való visszaállításáról további információt [Az Azure-beli SAP HANA manuális helyreállítási útmutatójában](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf)talál a tárolási pillanatképből. 
+A pillanatképek biztonsági másolatból való visszaállításáról további információt [Az Azure-beli SAP HANA manuális helyreállítási útmutatójában talál a tárolási pillanatképből](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
 >[!Note]
 >Ha a pillanatképet a Microsoft műveletei visszaállították, nem kell elvégeznie a 7. lépést.
 
 
 ### <a name="recover-to-another-point-in-time"></a>Helyreállítás másik időpontra
-Egy adott időpontra való visszaállításhoz tekintse meg a "adatbázis helyreállítása a következő időpontra" című részt a [manuális helyreállítási útmutatóban SAP HANA Azure-ban egy tárolási pillanatképből](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/guides/Manual%20recovery%20of%20snapshot%20with%20HANA%20Studio.pdf). 
+Egy adott időpontra való visszaállításhoz tekintse meg a "adatbázis helyreállítása a következő időpontra" című részt a [manuális helyreállítási útmutatóban SAP HANA Azure-ban egy tárolási pillanatképből](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/latest/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20Guide.md). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Lásd: vész [-helyreállítási alapelvek és előkészítés](hana-concept-preparation.md).

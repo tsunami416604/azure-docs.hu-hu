@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1a6d7901368d19cf5ca8221bc00f426980e6f48
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169930"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429569"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Erőforrások katalógusának létrehozása és kezelése az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -52,7 +52,7 @@ A katalógus erőforrások és hozzáférési csomagok tárolója. Létre kell h
 
 1. Ha engedélyezni szeretné a kiválasztott külső címtárakban lévő felhasználók számára a hozzáférési csomagok kérését ebben a katalógusban, akkor a **külső felhasználók számára engedélyezze a** beállítást **Igen**értékre.
 
-    ![Új katalógus panel](./media/entitlement-management-catalog-create/new-catalog.png)
+    ![Új katalógus panel](./media/entitlement-management-shared/new-catalog.png)
 
 1. A katalógus létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -130,7 +130,9 @@ Szerkesztheti a katalógus nevét és leírását. A felhasználók ezt az infor
 
 1. A katalógus **Áttekintés** lapján kattintson a **Szerkesztés**elemre.
 
-1. Szerkessze a katalógus nevét vagy leírását.
+1. Szerkessze a katalógus nevét, leírását vagy engedélyezett beállításait.
+
+    ![Katalógus beállításainak szerkesztése](./media/entitlement-management-shared/catalog-edit.png)
 
 1. Kattintson a **Save** (Mentés) gombra.
 

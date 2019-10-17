@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: d6885e9b30cc71bda822a29574c4d574f2b020a0
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962126"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387050"
 ---
 # <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Rögzített hosszúságú szövegfájlok feldolgozása Data Factory leképezési adatfolyamatok használatával
 
@@ -65,13 +65,13 @@ Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített sz�
 
     ```substring(Column_1,1,4)```
 
-    ![Származtatott oszlop](media/data-flow/fwderivedcol1.png)
+    ![származtatott oszlop](media/data-flow/fwderivedcol1.png)
 
 11. Ismételje meg a 10. lépést az összes elemezni kívánt oszlop esetében.
 
 12. Válassza a **vizsgálat** fület a létrehozandó új oszlopok megtekintéséhez:
 
-    ![vizsgálata](media/data-flow/fwinspect.png)
+    ![Vizsgálata](media/data-flow/fwinspect.png)
 
 13. Az átalakítás kijelölése lehetőséggel távolítsa el a nem szükséges oszlopokat a transzformációhoz:
 
@@ -87,6 +87,6 @@ Microsoft Azure Data Factory adatforgalmának leképezésével a rögzített sz�
 
   A rögzített szélességű adat már fel van osztva, és négy karakterből áll, amelyek mindegyike Col1, Col2, Col3, Col4 és így tovább van rendelve. Az előző példa alapján az adatgyűjtés négy oszlopra oszlik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Hozza létre a többi adatáramlási logikát az adatforgalom- [átalakítások](concepts-data-flow-overview.md)leképezése használatával.

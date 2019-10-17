@@ -1,21 +1,21 @@
 ---
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
-ms.author: tamram
-ms.openlocfilehash: 5be5cf6cd410874d870b351c209517e90fcf3848
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: rogarana
+ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699318"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391668"
 ---
 Az Azure File Sync-ügynök rendszeres időközönként frissül új funkciók hozzáadásával és a problémák megoldásával. Javasoljuk, hogy konfigurálja Microsoft Update a Azure File Sync-ügynök frissítéseinek elérhetővé tételéhez.
 
 #### <a name="major-vs-minor-agent-versions"></a>Fő vagy másodlagos ügynök verziói
-* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Példa: \*2.\*.\*\*
-* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \* \*. 3.\*\*
+* A fő ügynök verziói gyakran tartalmaznak új funkciókat, és a verziószám első részeként növekvő számmal rendelkeznek. Például: \*2. \*. \* @ no__t-3
+* A másodlagos ügynök verzióit "javítások" is nevezik, és a főverziónál gyakrabban jelennek meg. Gyakran tartalmaznak hibajavításokat és kisebb javításokat, de nincsenek új funkciók. Például: \* @ no__t-1.3. \* @ no__t-3
 
 #### <a name="upgrade-paths"></a>Frissítési útvonalak
 A Azure File Sync ügynök frissítéseinek telepítése négy jóváhagyott és tesztelt módon történik. 
@@ -37,18 +37,23 @@ Az ügynök 6-os verziójában a file Sync csapata bevezette az ügynök automat
 
 Az alábbi utasítások azt írják le, hogyan módosíthatja a beállításokat a telepítő befejezése után, ha módosítania kell.
 
-Nyisson meg egy rendszerhéjat, és navigáljon ahhoz a könyvtárhoz, ahol a Szinkronizáló ügynököt telepítette, majd importálja a kiszolgálói parancsmagokat, alapértelmezés szerint ez a következőhöz hasonló lesz:
+Nyisson meg egy PowerShell-konzolt, és keresse meg azt a könyvtárat, ahová a Szinkronizáló ügynököt telepítette, majd importálja a kiszolgálói parancsmagokat. Alapértelmezés szerint ez a következőképpen néz ki:
 ```powershell
-cd C:\Program Files\Azure\StorageSyncAgent
-
-ipmo .\StorageSync.Management.ServerCmdlets.dll
+cd 'C:\Program Files\Azure\StorageSyncAgent'
+Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
 ```
 
-A futtatásával `Get-StorageSyncAgentAutoUpdatePolicy` ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.
+A `Get-StorageSyncAgentAutoUpdatePolicy` futtatásával ellenőrizze az aktuális házirend-beállítást, és határozza meg, hogy szeretné-e módosítani.
 
-Ha módosítani szeretné a jelenlegi házirend-beállítást a késleltetett frissítés nyomon követésére, a következőt használhatja:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration`
+Ha módosítani szeretné a jelenlegi házirend-beállítást a késleltetett frissítés nyomon követésére, a következőt használhatja:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
+```
 
-Ha módosítani szeretné az aktuális házirend-beállítást az azonnali frissítés nyomon követésére, a következőt használhatja:`Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest`
+Ha módosítani szeretné az aktuális házirend-beállítást az azonnali frissítés nyomon követésére, a következőt használhatja:
+```powershell
+Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
+```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Az ügynök életciklusa és a változás-kezelési garanciái
 A Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan bemutatja az új szolgáltatásokat és a továbbfejlesztett funkciókat. Ez azt jelenti, hogy egy adott Azure File Sync ügynök verziója csak korlátozott ideig használható. Az üzembe helyezés megkönnyítéséhez a következő szabályok garantálják, hogy elegendő idő és értesítés szükséges ahhoz, hogy az ügynökök frissítései/frissítései a változás-kezelési folyamat során is megfeleljenek:
@@ -56,7 +61,7 @@ A Azure File Sync egy felhőalapú szolgáltatás, amely folyamatosan bemutatja 
 - A fő ügynök verziói a kezdeti kiadás dátumától számítva legalább hat hónapig támogatottak.
 - Garantáljuk, hogy a főbb ügynökök verzióinak támogatása között legalább három hónapig átfedésben van. 
 - A figyelmeztetéseket a rendszer a hamarosan lejárt ügynökkel rendelkező regisztrált kiszolgálók számára adja ki, legalább három hónappal a lejárat előtt. Megtekintheti, hogy egy regisztrált kiszolgáló az ügynök egy régebbi verzióját használja-e a Storage Sync szolgáltatás regisztrált kiszolgálók szakasza alatt.
-- A másodlagos ügynök verziójának élettartama a társított főverzióhoz van kötve. Ha például az ügynök 3,0-es verziója megjelent, az ügynök 2. verzió. \* az összes beállítása együtt jár le.
+- A másodlagos ügynök verziójának élettartama a társított főverzióhoz van kötve. Ha például az ügynök 3,0-es verziójának kiadása megtörténik, az ügynök 2. \* értékre lesz állítva.
 
 > [!Note]
 > A lejárati figyelmeztetést tartalmazó ügynök verziójának telepítése figyelmeztetést jelenít meg, de sikeres lesz. A lejárt ügynök verziójának telepítésére vagy kapcsolódására tett kísérlet nem támogatott, és le lesz tiltva.

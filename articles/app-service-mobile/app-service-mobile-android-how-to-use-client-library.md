@@ -13,18 +13,19 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: b67e0eaabe63707455eaa6cd4b235ec828dddff3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 991f3c8939c0f9e270423ff30282b02f110eb39e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025444"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388921"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Az Androidhoz készült Azure Mobile Apps SDK használata
 
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 Ez az útmutató bemutatja, hogyan használhatók a Mobile Apps androidos ügyfél-SDK a gyakori forgatókönyvek megvalósításához, például:
 
@@ -165,7 +166,7 @@ Az Azure Mobile Apps SDK lényege, hogy hozzáférést biztosítson a Mobile app
 SQL Azure táblák adatainak eléréséhez definiáljon olyan ügyféloldali adatosztályokat, amelyek megfelelnek a Mobile apps-háttér tábláinak. A témakörben szereplő példák egy **MyDataTable**nevű táblázatot feltételeznek, amelynek a következő oszlopai vannak:
 
 * id
-* text
+* szöveg
 * teljes
 
 A megfelelő begépelt ügyféloldali objektum egy **MyDataTable. Java**nevű fájlban található:
@@ -201,15 +202,15 @@ public final void setPriority(Integer priority) {
 }
 ```
 
-További táblázatok létrehozásával kapcsolatban a Mobile Apps-háttérrel kapcsolatban lásd: [How: Definiáljon egy táblát a @ no__t-0 (.NET-háttérrendszer) számára, vagy [adjon meg egy dinamikus sémát][16] (node. js háttérrendszer) használó táblákat.
+A Mobile Apps-háttérbeli további táblázatok létrehozásáról további információt a következő témakörben talál [: útmutató: table Controller][15] (.net-háttérrendszer) definiálása vagy [táblák definiálása dinamikus sémával][16] (node. js-háttérrel).
 
 Az Azure Mobile Apps háttérbeli táblázat öt speciális mezőt határoz meg, amelyek közül négy az ügyfelek számára érhető el:
 
-* `String id`: A rekord globálisan egyedi azonosítója.  Ajánlott eljárásként az azonosítót egy [UUID][17] -objektum karakterlánc-ábrázolása alapján végezze el.
-* `DateTimeOffset updatedAt`: Az utolsó frissítés dátuma/időpontja.  A updatedAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
-* `DateTimeOffset createdAt`: Az objektum létrehozásának dátuma és időpontja.  A createdAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
-* `byte[] version`: Általában karakterláncként jelképezve a-kiszolgáló is beállítja a verziót.
-* `boolean deleted`: Azt jelzi, hogy a rekord törlése megtörtént, de még nincs törölve.  Ne használja a `deleted` tulajdonságot az osztályban.
+* `String id`: a rekord globálisan egyedi azonosítója.  Ajánlott eljárásként az azonosítót egy [UUID][17] -objektum karakterlánc-ábrázolása alapján végezze el.
+* `DateTimeOffset updatedAt`: az utolsó frissítés dátuma/időpontja.  A updatedAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
+* `DateTimeOffset createdAt`: az objektum létrehozásának dátuma és időpontja.  A createdAt mezőt a kiszolgáló állítja be, és soha nem állítható be az ügyfél kódja.
+* @no__t – 0: általában karakterláncként van megjelölve, a-kiszolgáló is beállítja a verziót.
+* @no__t – 0: azt jelzi, hogy a rekord törölve lett, de még nem történt meg.  Ne használja a `deleted` tulajdonságot az osztályban.
 
 Az `id` mező kötelező.  A `updatedAt` mező és a `version` mező a kapcsolat nélküli szinkronizáláshoz használatos (növekményes szinkronizáláshoz és ütközés feloldásához).  A `createdAt` mező egy hivatkozási mező, amelyet az ügyfél nem használ.  A nevek "over-the-wire" névvel rendelkeznek a tulajdonságok között, és nem állíthatók be.  Azonban létrehozhat egy leképezést az objektum és az "over-the-wire" nevek között a [gson][3] könyvtár használatával.  Példa:
 
@@ -458,7 +459,7 @@ A metódust használó összes rekordra vonatkozó kérelem legalább két kére
 > [!TIP]
 > A jobb oldal méretének kiválasztása a memóriahasználat és a kérések közötti egyensúly, valamint a sávszélesség-használat és az adatok teljes fogadásának késleltetése.  Az alapértelmezett (50 rekord) minden eszköz számára megfelelő.  Ha kizárólag nagyobb memória-eszközökön működik, növelje a 500-ot.  Úgy találtuk, hogy az oldal méretének növelése 500 rekordnál továbbra is elfogadhatatlan késéseket és nagy memóriabeli problémákat eredményez.
 
-### <a name="chaining"></a>kézikönyv: Lekérdezési módszerek összefűzése
+### <a name="chaining"></a>Útmutató: lekérdezési módszerek összefűzése
 
 A háttérbeli táblázatok lekérdezésében használt módszerek összefűzése is lehetséges. A láncolási lekérdezési módszerek lehetővé teszik a rendezett és lapozható szűrt sorok adott oszlopainak kiválasztását. Létrehozhat összetett logikai szűrőket.  Minden lekérdezési metódus egy lekérdezési objektumot ad vissza. A metódusok sorozatának befejezéséhez és a lekérdezés tényleges futtatásához hívja meg a **végrehajtás** metódust. Példa:
 
@@ -684,7 +685,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>kézikönyv: Nem típusos adatmennyiség használata
+## <a name="untyped"></a>Útmutató: nem típusos adatmennyiségek használata
 
 A nem típusos programozási modell pontosan szabályozza a JSON-szerializálást.  Vannak olyan gyakori helyzetek, amikor nem típusos programozási modellt szeretne használni. Ha például a háttérbeli tábla sok oszlopot tartalmaz, és csak az oszlopok egy részhalmazára van szükség.  A típusos modellhez meg kell határoznia az adatosztály Mobile Apps backendjában definiált összes oszlopot.  Az adatok eléréséhez használt API-hívások többsége hasonló a beírt programozási hívásokhoz. A fő különbség az, hogy a nem típusos modellben a **MobileServiceTable** objektum helyett metódusokat hív meg a **MobileServiceJsonTable** objektumon.
 
@@ -779,10 +780,10 @@ A típusos modellhez hasonló szűrési, szűrési és lapozási módszerek is e
 
 Az Azure Mobile Apps Client SDK az adatkapcsolat nélküli szinkronizálást is alkalmazza egy SQLite-adatbázis használatával, amely helyileg tárolja a kiszolgáló adatainak másolatát.  Az offline táblán végrehajtott műveletekhez nem szükséges a mobil kapcsolat a működéshez.  A rugalmasság és a teljesítmény kapcsolat nélküli szinkronizálásának támogatása az összeütközés feloldásához szükséges összetettebb logika rovására.  Az Azure Mobile Apps Client SDK a következő funkciókat valósítja meg:
 
-* Növekményes szinkronizálás: A rendszer csak a frissített és új rekordok letöltését, a sávszélesség és a memória felhasználását menti.
-* Optimista Egyidejűség: A műveletek végrehajtása sikeres.  Az ütközés feloldása késleltetve, amíg a rendszer frissíti a frissítéseket a kiszolgálón.
-* Ütközés feloldása: Az SDK észleli, ha a kiszolgálón ütköző módosítás történt, és a a felhasználó riasztására szolgáló hookokat biztosít.
-* Nem kötelező törlés: A törölt rekordok törlésre vannak megjelölve, így más eszközök is frissíthetik az offline gyorsítótárat.
+* Növekményes szinkronizálás: a rendszer csak a frissített és új rekordokat tölti le, így a sávszélességet és a memóriát is megtakarítja.
+* Optimista Egyidejűség: a műveletek sikerességét feltételezik.  Az ütközés feloldása késleltetve, amíg a rendszer frissíti a frissítéseket a kiszolgálón.
+* Ütközés feloldása: az SDK észleli, ha ütköző módosítás történt a kiszolgálón, és a hookokat biztosít a felhasználó riasztásához.
+* Helyreállítható törlés: a törölt rekordok törölve lettek, így más eszközök is frissíthetik a kapcsolat nélküli gyorsítótárat.
 
 ### <a name="initialize-offline-sync"></a>Kapcsolat nélküli szinkronizálás inicializálása
 
@@ -919,7 +920,7 @@ Négy lépés szükséges a hitelesítés engedélyezéséhez az alkalmazásban:
 
 A táblákra vonatkozó engedélyeket úgy állíthatja be, hogy az adott műveletekhez való hozzáférést csak a hitelesített felhasználókra korlátozza. A kérések módosításához használhatja a hitelesített felhasználó biztonsági azonosítóját is.  További információkért tekintse át az Ismerkedés [Ismerkedés a hitelesítéssel] és a Server SDK howto dokumentációját.
 
-### <a name="caching"></a>Hitelesítés Kiszolgálói folyamat
+### <a name="caching"></a>Hitelesítés: kiszolgálói folyamat
 
 A következő kód elindítja a kiszolgálói flow bejelentkezési folyamatát a Google Provider használatával.  A Google Provider biztonsági követelményei miatt további konfigurálásra van szükség:
 

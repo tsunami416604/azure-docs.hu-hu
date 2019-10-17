@@ -14,19 +14,20 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 0c96442de5b8eea2ec969c48e6a815b6ae78b5c4
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f29a28f9a80b64ef0a6890fa8fc7ecd0ca205e66
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027279"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388756"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Az iOS Mobile apps szolgáltatással való offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag az iOS rendszerhez készült Azure App Service Mobile Apps szolgáltatásával folytatott offline szinkronizálást ismerteti. A kapcsolat nélküli szinkronizálással a végfelhasználók akkor is kezelhetik a mobil alkalmazásokat, ha nem rendelkeznek hálózati kapcsolattal. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a módosítások szinkronizálva lesznek a távoli háttérrel.
@@ -133,7 +134,7 @@ A Swift verzióban, mivel a leküldéses művelet nem volt feltétlenül szüks�
 
 A Objective-C és a Swift verzióban egyaránt használhatja a **pullWithQuery** metódust a lekérdezni kívánt rekordok szűrésére szolgáló lekérdezés megadásához. Ebben a példában a lekérdezés a távoli `TodoItem` tábla összes rekordját lekérdezi.
 
-A **pullWithQuery** második paramétere a *növekményes szinkronizáláshoz*használt lekérdezési azonosító. A növekményes szinkronizálás csak azokat a rekordokat kérdezi le, amelyek a legutóbbi szinkronizálás óta módosultak, a rekord @no__t – 0 időbélyegző használatával (a helyi tárolóban `updatedAt` néven). A lekérdezés AZONOSÍTÓjának olyan leíró sztringnek kell lennie, amely egyedi az alkalmazás minden logikai lekérdezéséhez. Ha ki szeretné kapcsolni a növekményes szinkronizálást, adja át a `nil` értéket a lekérdezési AZONOSÍTÓként. Ez a megközelítés potenciálisan nem hatékony lehet, mert az összes rekordot lekéri minden lekérési művelethez.
+A **pullWithQuery** második paramétere a *növekményes szinkronizáláshoz*használt lekérdezési azonosító. A növekményes szinkronizálás csak azokat a rekordokat kérdezi le, amelyek a legutóbbi szinkronizálás óta módosultak, a rekord `UpdatedAt` időbélyegző használatával (a helyi tárolóban `updatedAt` néven). A lekérdezés AZONOSÍTÓjának olyan leíró sztringnek kell lennie, amely egyedi az alkalmazás minden logikai lekérdezéséhez. Ha ki szeretné kapcsolni a növekményes szinkronizálást, adja át a `nil` értéket a lekérdezési AZONOSÍTÓként. Ez a megközelítés potenciálisan nem hatékony lehet, mert az összes rekordot lekéri minden lekérési művelethez.
 
 A Objective-C alkalmazás szinkronizálja az adatok módosításakor vagy hozzáadásakor, amikor egy felhasználó végrehajtja a frissítési kézmozdulatot, és elindul.
 
@@ -145,10 +146,10 @@ Mivel az alkalmazás szinkronizálja az adatmódosítást (Objective-C), vagy am
 Ha az alapadatok offline tárolóját használja, meg kell határoznia az adatmodellben meghatározott táblákat és mezőket. A mintául szolgáló alkalmazás már tartalmaz egy megfelelő formátumú adatmodellt. Ebben a szakaszban bemutatjuk, hogyan használják a táblázatokat.
 
 Nyissa meg a **QSDataModel. xcdatamodeld**. Négy tábla van definiálva – három, amelyet az SDK használ, és amelyek a tennivalók számára is használatosak:
-  * MS_TableOperations: A kiszolgálóval szinkronizálandó elemek nyomon követése.
-  * MS_TableOperationErrors: Az offline szinkronizálás során megjelenő hibák nyomon követése.
-  * MS_TableConfig: A legutóbbi szinkronizálási művelet utolsó frissítésének időpontját követi az összes lekéréses művelet esetében.
-  * TodoItem A tennivaló elemeket tárolja. A rendszeroszlopok **createdAt**, **updatedAt**és **verziószáma** opcionális rendszertulajdonság.
+  * MS_TableOperations: a-kiszolgálóval szinkronizálni kívánt elemek nyomon követése.
+  * MS_TableOperationErrors: nyomon követi az offline szinkronizálás során felmerülő hibákat.
+  * MS_TableConfig: az összes lekéréses művelet utolsó szinkronizálási műveletének utolsó frissítési idejét követi nyomon.
+  * TodoItem: a tennivaló elemeket tárolja. A rendszeroszlopok **createdAt**, **updatedAt**és **verziószáma** opcionális rendszertulajdonság.
 
 > [!NOTE]
 > A Mobile Apps SDK fenntartja a " **``** " kezdetű oszlop nevét. Ne használja ezt az előtagot a rendszeroszlopok kivételével. Ellenkező esetben az oszlopnevek a távoli háttér használatakor módosulnak.
@@ -163,49 +164,49 @@ Ha az offline szinkronizálás funkciót használja, adja meg a három rendszert
 
 ![MS_TableOperations táblázat attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Type |
+| Attribútum | Type (Típus) |
 | --- | --- |
-| id | Integer 64 |
+| id | Egész szám 64 |
 | elemazonosító | Sztring |
-| properties | Binary Data |
-| table | Sztring |
-| tableKind | Integer 16 |
+| properties | Bináris adatértékek |
+| Tábla | Sztring |
+| tableKind | 16. egész szám |
 
 
 **MS_TableOperationErrors**
 
  ![MS_TableOperationErrors táblázat attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Type |
+| Attribútum | Type (Típus) |
 | --- | --- |
 | id |Sztring |
-| operationId |Integer 64 |
-| properties |Binary Data |
-| tableKind |Integer 16 |
+| operationId |Egész szám 64 |
+| properties |Bináris adatértékek |
+| tableKind |16. egész szám |
 
  **MS_TableConfig**
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Type |
+| Attribútum | Type (Típus) |
 | --- | --- |
 | id |Sztring |
-| key |Sztring |
-| keyType |Integer 64 |
-| table |Sztring |
-| value |Sztring |
+| kulcs |Sztring |
+| keyType |Egész szám 64 |
+| Tábla |Sztring |
+| érték |Sztring |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Type | Megjegyzés |
+| Attribútum | Type (Típus) | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, megjelölve kötelező |Elsődleges kulcs a távoli tárolóban |
 | teljes | Logikai | Teendő mező |
-| text |Sztring |Teendő mező |
-| CreatedAt | Date | választható A **createdAt** System tulajdonságának leképezése |
-| updatedAt | Date | választható A **updatedAt** System tulajdonságának leképezése |
+| szöveg |Sztring |Teendő mező |
+| CreatedAt | Dátum | választható A **createdAt** System tulajdonságának leképezése |
+| updatedAt | Dátum | választható A **updatedAt** System tulajdonságának leképezése |
 | version | Sztring | választható Ütközések észlelésére használatos, leképezve a verzióra |
 
 ## <a name="setup-sync"></a>Az alkalmazás szinkronizálási viselkedésének módosítása
@@ -265,7 +266,7 @@ Megjelenik egy folyamatjelző.
 
 7. Tekintse meg ismét a **TodoItem** -adatbázisokat. Ekkor meg kell jelennie az új és a módosított teendő elemek megjelenítésének.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az offline szinkronizálási funkció támogatásához a `MSSyncTable` felületet használtuk, és a `MSClient.syncContext` inicializálása helyi tárolóval. Ebben az esetben a helyi tároló egy alapszintű adatalapú adatbázis volt.
 
 Ha alapszintű adattárat használ, több táblát kell megadnia a [megfelelő rendszer-tulajdonságokkal](#review-core-data).
@@ -276,7 +277,7 @@ Amikor szinkronizálta a helyi tárolót a-kiszolgálóval, a **MSSyncTable. pul
 
 ## <a name="additional-resources"></a>További források
 * [Offline adatszinkronizálás a Mobile Appsban]
-* @no__t – 0Cloud fedél: Offline szinkronizálás az Azure-ban Mobile Services @ no__t-0 \(a videó a Mobile Services, de Mobile Apps offline szinkronizálás hasonló módon működik. \)
+* [Cloud Cover: offline szinkronizálás az Azure-ban Mobile Services] @no__t – a 1a-videó a Mobile Services, de Mobile apps offline szinkronizálás hasonló módon működik. \)
 
 <!-- URLs. -->
 
@@ -289,5 +290,5 @@ Amikor szinkronizálta a helyi tárolót a-kiszolgálóval, a **MSSyncTable. pul
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-@no__t – 0Cloud fedél: Offline szinkronizálás az Azure-ban Mobile Services @ no__t-0
+[Cloud Cover: offline szinkronizálás az Azure-ban Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

@@ -1,25 +1,25 @@
 ---
-title: Az Azure szülő erőforrás hibák |} A Microsoft Docs
-description: Javítsa ki a hibákat, ha egy szülő erőforrás-használata módját ismerteti.
+title: Azure-szülő erőforrás-hibák | Microsoft Docs
+description: Ismerteti, Hogyan oldhatók meg a hibák, amikor egy Azure Resource Manager sablonban lévő szülő erőforrással dolgozik.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6111f9128c56fed97414734275a21612544cccb8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 197554e16e28b4928cab351838f00e1631c269fd
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205393"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390238"
 ---
-# <a name="resolve-errors-for-parent-resources"></a>Szülő erőforrások ki a hibákat
+# <a name="resolve-errors-for-parent-resources"></a>A szülő erőforrások hibáinak elhárítása
 
-Ez a cikk ismerteti a hibákat, előfordulhat, hogy kap egy erőforrás, amelynek van egy szülő erőforrástól függ-e üzembe helyezésekor.
+Ez a cikk azokat a hibákat ismerteti, amelyekkel a szülő erőforrástól függő erőforrások telepítése végezhető el.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Egy erőforrás, amely egy másik erőforrás alárendelt üzembe helyezésekor, a következő hiba jelenhet meg:
+Ha olyan erőforrást telepít, amely egy gyermek egy másik erőforráshoz, a következő hibaüzenetet kaphatja:
 
 ```
 Code=ParentResourceNotFound;
@@ -28,7 +28,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Ok
 
-Ha egy erőforrás egy másik erőforrás gyermek, a szülő erőforrás a gyermek-erőforrás létrehozása előtt léteznie kell. A gyermek-erőforrás nevét határozza meg, hogy a kapcsolat a szülő erőforrással. A gyermek-erőforrás neve a következő formátumban kell `<parent-resource-name>/<child-resource-name>`. Ha például egy SQL Database előfordulhat, hogy meghatározása:
+Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. A gyermek erőforrás neve határozza meg a fölérendelt erőforrással létesített kapcsolatokat. A gyermek erőforrás nevének `<parent-resource-name>/<child-resource-name>` formátumúnak kell lennie. Előfordulhat például, hogy egy SQL Database a következőként van meghatározva:
 
 ```json
 {
@@ -37,13 +37,13 @@ Ha egy erőforrás egy másik erőforrás gyermek, a szülő erőforrás a gyerm
   ...
 ```
 
-Ha a kiszolgáló és a ugyanazt a sablont-adatbázis üzembe helyezése, de egy függőség nem adja meg a kiszolgálón, az adatbázis központi telepítése előtt a kiszolgálón telepített is elindíthatják. 
+Ha a kiszolgálót és az adatbázist is ugyanabban a sablonban telepíti, de nem ad meg függőséget a kiszolgálón, előfordulhat, hogy az adatbázis központi telepítése a kiszolgáló üzembe helyezése előtt elindul. 
 
-Ha a szülő erőforrás már létezik, és ugyanabban a sablonban nincs telepítve, megjelenik a hibaüzenet, ha a Resource Manager a szülővel nem társítható a gyermek-erőforrás. Ez a hiba akkor fordulhat elő, amikor a gyermek-erőforrás nincs megfelelő formátumú, vagy a gyermek-erőforrás üzembe van helyezve, egy erőforráscsoportba, amely eltér attól az erőforráscsoport, a szülő erőforrás.
+Ha a fölérendelt erőforrás már létezik, és nem ugyanabban a sablonban van telepítve, akkor ez a hiba akkor jelenik meg, ha a Resource Manager nem tudja hozzárendelni a gyermek erőforrást szülővel. Ez a hiba akkor fordulhat elő, ha a gyermek erőforrás formátuma nem megfelelő, vagy a gyermek erőforrás olyan erőforráscsoporthoz van telepítve, amely eltér a szülő erőforrás erőforráscsoport-csoportjához.
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához, ha a szülő és gyermek erőforrások telepítése ugyanazt a sablont, például egy függőséget.
+Ha meg szeretné oldani ezt a hibát, ha a szülő-és alárendelt erőforrások ugyanabban a sablonban vannak telepítve, akkor vegyen fel egy függőséget.
 
 ```json
 "dependsOn": [
@@ -51,7 +51,7 @@ A probléma megoldásához, ha a szülő és gyermek erőforrások telepítése 
 ]
 ```
 
-A probléma megoldásához, ha a szülő erőforrás korábban telepítve lett egy másik sablonba, függőség nem állít be. Ehelyett az alárendelt ugyanabban az erőforráscsoportban üzembe helyezése, és adja meg a szülő erőforrás nevét.
+Ha ezt a hibát szeretné megoldani, ha a fölérendelt erőforrást korábban egy másik sablonban telepítették, akkor nem kell függőséget beállítania. Ehelyett helyezze üzembe a gyermeket ugyanarra az erőforrás-csoportba, és adja meg a szülő erőforrás nevét.
 
 ```json
 {
@@ -81,4 +81,4 @@ A probléma megoldásához, ha a szülő erőforrás korábban telepítve lett e
 }
 ```
 
-További információkért lásd: [üzembe erőforrásokat az Azure Resource Manager-sablonokban a sorrendben](resource-group-define-dependencies.md).
+További információ: [erőforrások üzembe helyezési sorrendjének meghatározása Azure Resource Manager-sablonokban](resource-group-define-dependencies.md).

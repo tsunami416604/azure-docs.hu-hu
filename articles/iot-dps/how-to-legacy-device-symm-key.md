@@ -1,6 +1,6 @@
 ---
-title: Szimmetrikus kulcsok használata az Azure IoT Hub Device Provisioning Service szolgáltatással örökölt eszközök kiépítése |} A Microsoft Docs
-description: A szimmetrikus kulcsok használata a device provisioning service-példány az örökölt eszközök kiépítése
+title: A szimmetrikus kulcsok használata a régi eszközök Azure-IoT Hub Device Provisioning Service való kiépítéséhez | Microsoft Docs
+description: A szimmetrikus kulcsok használata a régi eszközök kiépítéséhez az eszköz kiépítési szolgáltatásának példányával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,42 +8,43 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 00161f8158ad73591687764528258e1081f81ce2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65914300"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434836"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Örökölt eszközök kiépítése szimmetrikus kulcsok használatával
 
+Számos régi eszközzel kapcsolatos gyakori probléma, hogy gyakran van olyan identitásuk, amely egyetlen információból áll. Ezek az azonosító adatok általában MAC-címek vagy sorozatszámok. Az örökölt eszközökhöz nem tartozhat tanúsítvány, TPM vagy más olyan biztonsági funkció, amely az eszköz biztonságos azonosítására szolgál. Az IoT hub eszköz-kiépítési szolgáltatása magában foglalja a szimmetrikus kulcs igazolását. A szimmetrikus kulcs igazolásával azonosítható egy eszköz, például a MAC-címe vagy sorozatszáma alapján.
 
-Örökölt eszközök számos gyakori probléma, hogy milyen gyakran legyen az identitás, amely egy darab információ áll. Ez az azonosító adatokat általában a MAC-címet vagy sorozatszámot. Az örökölt eszközök nem rendelkezhet egy tanúsítványt, a TPM vagy bármely más biztonsági funkció, amely az eszköz biztonságos azonosítására használható. Az IoT hub Device Provisioning Service szimmetrikus kulcsát a kulcsigazoláshoz tartalmazza. Szimmetrikus kulcsát a kulcsigazoláshoz használható, hogy egy eszköz ki további információkat, például a MAC-cím vagy sorozatszám alapján.
+Ha egyszerűen telepítheti a [hardveres biztonsági modult (HSM)](concepts-security.md#hardware-security-module) és a tanúsítványt, akkor ez jobb megoldás lehet az eszközök azonosításához és üzembe helyezéséhez. Mivel ez a megközelítés lehetővé teszi, hogy megkerüljék az összes eszközre telepített kód frissítését, és nem rendelkezik az eszköz lemezképében beágyazott titkos kulccsal.
 
-Ha egyszerűen telepítheti a [hardveres biztonsági modul (HSM)](concepts-security.md#hardware-security-module) és a egy tanúsítványt, majd, amely lehet, hogy esetleg jobb megközelítés azonosítása, és üzembe helyezheti az eszközök. Mivel azt a módszert is lehetővé teszi, hogy átugorja az összes eszközre telepített a kód frissítése, és azt nem kell egy titkos kulcsot az eszközképre ágyazva.
+Ez a cikk azt feltételezi, hogy egyik HSM vagy tanúsítvány sem életképes megoldás. Azonban feltételezhető, hogy az eszközök üzembe helyezéséhez az eszköz kiépítési szolgáltatásával valamilyen módon frissítheti az eszköz kódját. 
 
-Ez a cikk azt feltételezi, hogy hardveres biztonsági modul és a egy tanúsítványt nem kivitelezhető lehetőség. Azonban feltételezzük, hogy a frissítési kód a Device Provisioning Service használatával ezek az eszközök kiépítése néhány módszer. 
-
-Ez a cikk azt is feltételezi, hogy az eszköz frissítése a jogosulatlan hozzáférés elkerülése érdekében a fő csoportkulcs vagy származtatott eszközkulcs biztonságos környezetben történik.
+A cikk azt is feltételezi, hogy az eszköz frissítése biztonságos környezetben történik, hogy megakadályozza a főcsoporti kulcs vagy a származtatott eszköz kulcsának jogosulatlan elérését.
 
 A cikk során egy Windows-alapú munkaállomást fogunk használni. Azonban az eljárások Linux esetében is alkalmazhatóak. Linux-munkaállomást használó példát a [Több bérlős regisztráció](how-to-provision-multitenant.md) című cikkben talál.
 
+> [!NOTE]
+> A cikkben használt minta C nyelven íródott. Létezik egy [ C# eszköz kiépítési szimmetrikus kulcsának mintája](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) is. A minta használatához töltse le vagy klónozott [Azure-IOT-Samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) adattárát, és kövesse a mintakód beépített utasításait. A cikk utasításait követve hozzon létre egy szimmetrikus kulcsú beléptetési csoportot a portál használatával, és keresse meg az azonosító hatókörét és a beléptetési csoportot, amely a minta futtatásához szükséges elsődleges és másodlagos kulcsokat tartalmaz. A minta használatával egyéni regisztrációkat is létrehozhat.
 
 ## <a name="overview"></a>Áttekintés
 
-Egy egyedi regisztrációs Azonosítót fogja definiálni minden egyes eszközhöz, amely azonosítja az adott eszköz információk alapján. Ha például a MAC-cím vagy sorozatszám.
+Minden eszközhöz egyedi regisztrációs azonosítót határozunk meg az eszközt azonosító információk alapján. Például a MAC-címe vagy sorozatszáma.
 
-Egy regisztrációs csoportnak, amely [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md) jön létre a Device Provisioning Service szolgáltatással. A regisztrációs csoport csoport főkulcs tartalmazza. A főkulcs kivonatához minden egyedi regisztrációs azonosító minden eszközhöz egyedi eszközkulcs létrehozásához használható. Az eszköz kulcsot fogja használni a származtatott eszköz egyedi regisztrációs Azonosítóval rendelkező igazolja a Device Provisioning Service szolgáltatással, és a egy IoT hubot kell rendelni.
+A rendszer az eszköz kiépítési szolgáltatásával hozza létre a [szimmetrikus kulcsú igazolást](concepts-symmetric-key-attestation.md) használó regisztrációs csoportot. A regisztrációs csoport tartalmazni fog egy csoport főkulcsát. Ez a főkulcs az egyes egyedi regisztrációs AZONOSÍTÓk kivonatolására szolgál az egyes eszközökhöz tartozó egyedi eszköz kulcsának létrehozásához. Az eszköz ezt a származtatott eszközt használja az egyedi regisztrációs AZONOSÍTÓval, hogy tanúsítsa az eszköz kiépítési szolgáltatását, és hozzá legyen rendelve egy IoT hubhoz.
 
-Ebben a cikkben bemutatott eszközkóddal, ugyanezt a mintát követi a [a rövid útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md). A kód fogja-minta használatával eszköz szimulálása a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). A szimulált eszközt egy regisztrációs csoport helyett egyéni regisztrációt a bizonyítja, ahogyan az a rövid útmutató is.
+A cikkben bemutatott kód a gyors üzembe helyezési ponttal megegyező mintázatot követ [: szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md). A kód az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-ból származó minta használatával szimulálja az eszközt. A szimulált eszköz egy regisztrációs csoporttal fog tanúsítani egy, a rövid útmutatóban bemutatott módon, egyéni regisztráció helyett.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Befejezése után a [IoT Hub Device Provisioning Service beállítása az Azure Portallal](./quick-setup-auto-provision.md) rövid.
-* [A Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 vagy újabb verzió a ["asztali fejlesztés C++"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) számítási feladat engedélyezve van.
+* A [beállított IoT hub Device Provisioning Service befejezése a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015-as vagy újabb verziójának használata az ["asztali fejlesztés C++](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) a munkaterheléssel" beállítással.
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
 
@@ -51,9 +52,9 @@ Ebben a cikkben bemutatott eszközkóddal, ugyanezt a mintát követi a [a rövi
 
 Ebben a szakaszban előkészítjük az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) build készítésére szolgáló fejlesztőkörnyezetet. 
 
-Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált eszköz a beléptetést az rendszerindítási során fogja megkísérelni.
+Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimulált eszköz a beléptetést az rendszerindítási során fogja megkísérelni.
 
-1. Töltse le a [CMake buildelési rendszert](https://cmake.org/download/).
+1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
 
@@ -98,58 +99,58 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
     ```
 
 
-## <a name="create-a-symmetric-key-enrollment-group"></a>Hozzon létre egy szimmetrikus kulcs regisztrációs csoportot
+## <a name="create-a-symmetric-key-enrollment-group"></a>Szimmetrikus kulcsú beléptetési csoport létrehozása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a Device Provisioning Service-példány.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
-2. Válassza ki a **beléptetések kezelése** fülre, majd a **regisztrációs csoport hozzáadása** gombra a lap tetején. 
+2. Válassza a **regisztrációk kezelése** fület, majd kattintson a **regisztrációs csoport hozzáadása** gombra az oldal tetején. 
 
-3. A **regisztrációs csoport hozzáadásához**, adja meg a következőket, majd kattintson a **mentése** gombra.
+3. A **regisztrációs csoport hozzáadása**párbeszédpanelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
 
-   - **Csoport neve**: Adja meg **mylegacydevices**.
+   - **Csoport neve**: adja meg a **mylegacydevices**.
 
-   - **Tanúsítvány típusa**: Válassza ki **szimmetrikus kulcs**.
+   - **Igazolás típusa**: válassza a **szimmetrikus kulcs**lehetőséget.
 
-   - **Kulcsok automatikus létrehozása**: Ezt a jelölőnégyzetet.
+   - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
 
-   - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket hubs**: Válassza ki **statikus konfiguráció** így hozzárendelhet egy adott hubhoz.
+   - **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a hubokhoz**: válassza a **statikus konfiguráció** lehetőséget, hogy egy adott hubhoz rendeljen hozzá.
 
-   - **Válassza ki az IoT-központok ennek a csoportnak rendelhetők**: Válassza ki a hub egyikét.
+   - **Válassza ki azokat a IoT hubokat, amelyekre ez a csoport hozzá lehet rendelni**: válassza ki az egyik hubok közül a megfelelőt.
 
-     ![Adja hozzá a szimmetrikus kulcsát a kulcsigazoláshoz regisztrációs csoportot](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Beléptetési csoport hozzáadása a szimmetrikus kulcs igazolásához](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. Megjelenik a szimmetrikus kulcs regisztrációs csoportot **mylegacydevices** alatt a *csoportnév* oszlopa a *regisztrációs csoportok* fülre. 
+4. Ha mentette a regisztrációt, a rendszer létrehozza az **Elsődleges kulcsot** és a **Másodlagos kulcsot**, majd hozzáadja őket a regisztrációs bejegyzéshez. A szimmetrikus kulcs beléptetési csoportja **mylegacydevices** néven jelenik meg a *beléptetési csoportok* lapon, a *csoport neve* oszlopban. 
 
-    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ezt a kulcsot a fő csoportkulcs.
+    Nyissa meg a regisztrációt, és másolja ki a generált **Elsődleges kulcsot**. Ez a kulcs a főcsoport kulcsa.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Válasszon egy egyedi regisztrációs Azonosítót az eszköz
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Válasszon egyedi regisztrációs azonosítót az eszközhöz
 
-Minden egyes eszköz azonosítására definiálni kell egy egyedi regisztrációs Azonosítót. A MAC-cím, sorozatszám vagy az eszköz egyedi információit is használhatja. 
+Az egyes eszközök azonosításához egyedi regisztrációs azonosítót kell megadni. Az eszköz MAC-címe, sorozatszáma vagy bármely egyedi adata használható. 
 
-Ebben a példában egy MAC-cím és alkosson a következő karakterláncot a regisztrációs azonosító sorozatszámot kombinációját használjuk
+Ebben a példában egy MAC-címe és sorozatszáma kombinációját használjuk, amely a következő karakterláncot képezi a regisztrációs AZONOSÍTÓhoz.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Hozzon létre egy egyedi regisztrációs Azonosítót az eszközt. Érvényes karakterek: alfanumerikus kisbetűt és kötőjelet ("-").
+Hozzon létre egy egyedi regisztrációs azonosítót az eszközhöz. Az érvényes karakterek a kisbetűs alfanumerikus és kötőjel ("-").
 
 
-## <a name="derive-a-device-key"></a>Származtasson egy eszközkulcs 
+## <a name="derive-a-device-key"></a>Eszköz kulcsának származtatása 
 
-Az eszköz kulcs létrehozásához használja a csoport főkulcs számítási egy [HMAC-SHA256 algoritmust](https://wikipedia.org/wiki/HMAC) az eszköz és az eredmény Base64 formátumra alakítható az egyedi regisztrációs ID.
+Az eszköz kulcsának létrehozásához használja a csoport főkulcsát az eszköz egyedi regisztrációs AZONOSÍTÓjának [HMAC](https://wikipedia.org/wiki/HMAC) számításához, és Base64 formátumra alakítsa át az eredményt.
 
-A csoport főkulcs nem tartalmazzák az eszköz-kódjában.
+Ne foglalja bele a csoport főkulcsát az eszköz kódjába.
 
 
-#### <a name="linux-workstations"></a>Linux-munkaállomásokon
+#### <a name="linux-workstations"></a>Linux-munkaállomások
 
-Egy Linux munkaállomáson használja, ha openssl használatával hozhatja létre a származtatott eszköz kulcsot a következő példában látható módon.
+Ha Linux-munkaállomást használ, az OpenSSL használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
-Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
 
-Cserélje le a értékét **REG_ID** regisztrációs ID azonosítójával.
+Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -166,11 +167,11 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 #### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
 
-Ha egy Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja létre a származtatott eszköz kulcsot a következő példában látható módon.
+Ha Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja elő a származtatott eszköz kulcsát az alábbi példában látható módon.
 
-Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
+Cserélje le a **kulcs** értékét a korábban feljegyzett **elsődleges kulcsra** .
 
-Cserélje le a értékét **REG_ID** regisztrációs ID azonosítójával.
+Cserélje le a **REG_ID** értékét a regisztrációs azonosítóra.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -188,21 +189,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Az eszköz kulcsot fogja használni a származtatott eszköz az egyedi regisztrációs azonosítóval, hajtsa végre a szimmetrikus kulcs igazolási a regisztrációs csoport a kiépítés során.
+Az eszköz a származtatott eszköz kulcsát az egyedi regisztrációs azonosítójával fogja használni a kiépítés során a beléptetési csoportba tartozó szimmetrikus kulcs igazolásának elvégzéséhez.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Lemezkép létrehozása a eszköz kiépítéséhez
+## <a name="create-a-device-image-to-provision"></a>Rendszerkép létrehozása a kiépíthető eszközhöz
 
-Ebben a szakaszban egy nevű eszközkiépítési minta frissíteni **prov\_fejlesztési\_ügyfél\_minta** korábban állítsa be az Azure IoT C SDK-ban található. 
+Ebben a szakaszban a korábban beállított Azure No__t C SDK-ban található **prov @ no__t-1dev @ no__t-2client @ 3sample-IoT** nevű kiépítési mintát fogja frissíteni. 
 
-A mintakód a kiépítési kérést küld a Device Provisioning Service-példány eszköz rendszerindítási sorrend szimulálja. A rendszerindítási sorrend miatt az eszköz és az IoT hubot konfigurált a regisztrációs csoport rendelve.
+Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküldi a kiépítési kérést az eszköz kiépítési szolgáltatásának példányára. A rendszerindítási folyamat azt eredményezi, hogy az eszköz fel lesz ismerve, és hozzá lesz rendelve a beléptetési csoportban konfigurált IoT hubhoz.
 
 1. Az Azure Portalon válassza ki az eszközkiépítési szolgáltatás **Áttekintés** lapját, és jegyezze fel az **_Azonosító hatóköre_** értéket.
 
     ![Az eszközkiépítési szolgáltatás végpontadatainak kinyerése a portál paneljéről](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. A Visual Studióban nyissa meg a **azure_iot_sdks.sln** megoldásfájlt a CMake futó korábban létrehozott. A megoldásfájlnak a következő helyen kell lennie:
+2. A Visual Studióban nyissa meg a **azure_iot_sdks. SLN** megoldást, amelyet korábban a CMAK futtatása hozott létre. A megoldásfájlnak a következő helyen kell lennie:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -225,14 +226,14 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Keresse meg a hívást `prov_dev_set_symmetric_key_info()` a **prov\_fejlesztési\_ügyfél\_sample.c** amely megjegyzésként szerepel.
+6. Keresse meg a `prov_dev_set_symmetric_key_info()` meghívását a **prov @ no__t-2Dev @ no__t-3client @ no__t-4sample. c** címen.
 
     ```c
     // Set the symmetric key if using they auth type
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Állítsa vissza a függvény hívásához szükséges, és az eszköz és a származtatott eszközkulcs létrehozott egyedi regisztrációs azonosítóval (beleértve a csúcsos zárójeleket) helyőrzőértékeket cserélje le.
+    Adja meg a függvény hívását, és cserélje le a helyőrző értékeket (beleértve a szögletes zárójeleket is) az eszköz egyedi regisztrációs azonosítójával és a létrehozott származtatott eszköz kulcsával.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -262,25 +263,25 @@ A mintakód a kiépítési kérést küld a Device Provisioning Service-példán
     Press enter key to exit:
     ```
 
-9. A Portalon lépjen ahhoz az IoT-központhoz, amelyhez a szimulált eszköz rendelve lett, és kattintson az **IoT-eszközök** fülre. Ha sikeresen kiépült a szimulált eszköz, annak eszközazonosítója megjelenik az **IoT-eszközök** panelen, a hozzá tartozó *ÁLLAPOT* pedig **Engedélyezve** értéket mutat. Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
+9. A portálon navigáljon a szimulált eszközhöz rendelt IoT hubhoz, és kattintson a IoT- **eszközök** fülre. Ha sikeresen kiépíti a szimulált eszközt a központba, az eszköz azonosítója megjelenik az **IoT-eszközök** panelen, amely **engedélyezve** *állapotú* . Lehet, hogy rá kell kattintania fent a **Frissítés** gombra. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
 
 
-## <a name="security-concerns"></a>Biztonsági szempontok
+## <a name="security-concerns"></a>Biztonsági okokból
 
-Vegye figyelembe, hogy ennek következtében a származtatott eszköz kulcsát a lemezképet, amely nem ajánlott biztonsági szempontból ajánlott részét. Ez az egyik OK, miért biztonsági és könnyű használatára kompromisszumot. 
-
-
+Ügyeljen arra, hogy ez a rendszerkép részét képező származtatott eszköz kulcsát elhagyja, amely nem ajánlott biztonsági megoldás. Ez az egyik oka annak, hogy a biztonság és a könnyű használat Milyen kompromisszumokat jelent. 
 
 
 
-## <a name="next-steps"></a>További lépések
 
-* További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisioning fogalmak](concepts-device-reprovision.md) 
-* [Rövid útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
-* Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
+
+## <a name="next-steps"></a>Következő lépések
+
+* További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
+* [Gyors útmutató: szimulált eszköz kiépítése szimmetrikus kulcsokkal](quick-create-simulated-device-symm-key.md)
+* További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
 
 
 

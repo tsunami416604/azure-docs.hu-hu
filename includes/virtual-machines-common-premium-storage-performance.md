@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 961f4595d60e85677d2c7c4a1abd97736d0180ec
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71975306"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391663"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -21,13 +21,13 @@ Kivizsgáljuk, hogy az alkalmazás megfelelően működnek-e, vagy sem olyan tel
 
 Ebben a szakaszban a közös teljesítménymutatókat tárgyaljuk a Premium Storage kontextusában. A következő, az alkalmazásokra vonatkozó követelmények összegyűjtését ismertető szakaszban megtudhatja, hogyan mérjük az alkalmazáshoz tartozó teljesítménymutatókat. Az alkalmazások teljesítményének optimalizálásában később megismerheti azokat a tényezőket, amelyek hatással vannak a teljesítménymutatók és a javaslatok optimalizálására.
 
-## <a name="iops"></a>IOPS
+## <a name="iops"></a>IO
 
 A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hogy az alkalmazás milyen kérelmeket küld a Storage-lemezeknek egy másodperc alatt. Egy bemeneti/kimeneti művelet olvasható vagy írható, szekvenciális vagy véletlenszerű lehet. Az online tranzakció-feldolgozási (OLTP) alkalmazások, mint például az online kiskereskedelmi webhelyek, azonnal fel kell dolgoznia számos egyidejű felhasználói kérést. A felhasználói kérések olyan intenzív adatbázis-tranzakciókat szúrnak be és frissítenek, amelyeket az alkalmazásnak gyorsan kell feldolgoznia. Ezért a OLTP-alkalmazások nagyon magas IOPS igényelnek. Ilyen alkalmazások több millió kis-és véletlenszerű IO-kérelmet kezelnek. Ha van ilyen alkalmazás, meg kell terveznie az alkalmazás-infrastruktúrát, hogy optimalizálja a IOPS. A későbbi, az *alkalmazások teljesítményének optimalizálása*című szakaszban részletesen ismertetjük az összes olyan tényezőt, amelyet meg kell fontolnia, hogy magas IOPS kapjon.
 
 Ha prémium szintű Storage-lemezt csatol a nagy léptékű virtuális géphez, az Azure-ban garantált IOPS-mennyiségeket biztosítunk. Például egy P50-lemez 7500 IOPS. Minden nagy méretű virtuálisgép-mérethez egy adott IOPS-korlát is tartozik, amely képes fenntartani. A standard GS5 virtuális gép például 80 000 IOPS korláttal rendelkezik.
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Adatforgalom
 
 Az átviteli sebesség vagy a sávszélesség azt az adatmennyiséget adja meg, amelyet az alkalmazás a megadott intervallumban küld a Storage-lemezeknek. Ha az alkalmazás nagy i/o-méretű bemeneti/kimeneti műveleteket végez, nagy átviteli sebességre van szükség. Az adatraktár-alkalmazások általában nagy mennyiségű adathoz hozzáférő, nagyméretű műveleteket végző, nagyszámú adatokhoz hozzáférő, intenzíven végrehajtott ellenőrzéseket adnak ki. Más szóval az ilyen alkalmazások esetében nagyobb átviteli sebességre van szükség. Ha van ilyen alkalmazás, meg kell terveznie az infrastruktúráját az átviteli sebesség optimalizálása érdekében. A következő szakaszban részletesen ismertetjük azokat a tényezőket, amelyeket meg kell valósítania.
 
@@ -72,12 +72,12 @@ Ezután mérje fel az alkalmazás maximális teljesítményre vonatkozó követe
 | Szekvenciális műveletek%-ban | | | |
 | I/o-kérelem mérete | | | |
 | Átlagos átviteli sebesség | | | |
-| Legfeljebb Teljesítmény | | | |
+| Legfeljebb Adatforgalom | | | |
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
 | Átlagos CPU | | | |
-| Legfeljebb Memory (Memória) | | | |
+| Legfeljebb Memória | | | |
 | Átlagos memória | | | |
 | Várólista mélysége | | | |
 
@@ -94,13 +94,13 @@ A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló m
 
 | Számláló | Leírás | PerfMon | Iostat |
 | --- | --- | --- | --- |
-| **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Lemezolvasások/mp <br> Lemezírások/mp |TPS <br> r/s <br> w/s |
+| **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
-| **Átviteli sebesség** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemezolvasási sebesség (bájt/s) <br> Lemezírási sebesség (bájt/s) |kB_read/s <br> kB_wrtn/s |
+| **Átviteli sebesség** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
-| **Max. Memória @ no__t – 0 |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória%-ban használatban |Vmstat használata |
+| **Max. Memória** |Az alkalmazás zökkenőmentes futtatásához szükséges memória mennyisége |Előjegyzett memória%-ban használatban |Vmstat használata |
 | **Max. CPU** |Az alkalmazás zökkenőmentes futtatásához szükséges mennyiségű CPU |Processzoridő (%) |% util |
 
 További információ a [iostat](https://linux.die.net/man/1/iostat) és a [perfmon](https://msdn.microsoft.com/library/aa645516.aspx)szolgáltatásról.
@@ -154,12 +154,12 @@ Ha olyan alkalmazást használ, amely lehetővé teszi az IO-méret módosítás
 
 Itt látható egy példa arra, hogyan számítható ki az alkalmazás IOPS és átviteli sebessége/sávszélessége. Vegye fontolóra egy alkalmazás P30 lemez használatával történő használatát. A P30-lemez maximális IOPS és átviteli sebessége/sávszélessége 5000 IOPS és 200 MB/másodperc. Ha az alkalmazása megköveteli a maximális IOPS a P30-lemezről, és kisebb i/o-méretet (például 8 KB) használ, az eredményül kapott sávszélesség 40 MB/s lesz. Ha azonban az alkalmazás a maximális átviteli sebességet/sávszélességet igényli a P30 lemezről, és nagyobb i/o-méretet használ, mint például a 1024 KB, az eredményül kapott IOPS kevesebb lesz, 200 IOPS. Ezért állítsa be úgy az IO-méretet, hogy az megfeleljen az alkalmazás IOPS, valamint az átviteli sebességre/sávszélességre vonatkozó követelménynek. A következő táblázat összefoglalja a különböző i/o-méreteket, valamint a P30-lemezek megfelelő IOPS és átviteli sebességét.
 
-| Alkalmazásra vonatkozó követelmény | I/O-méret | IOPS | Átviteli sebesség/sávszélesség |
+| Alkalmazásra vonatkozó követelmény | I/O-méret | IO | Átviteli sebesség/sávszélesség |
 | --- | --- | --- | --- |
-| Maximális IOPS-érték |8 KB |5,000 |40 MB/másodperc |
+| Maximális IOPS |8 KB |5000 |40 MB/másodperc |
 | Maximális átviteli sebesség |1024 KB |200 |200 MB/másodperc |
-| Maximális átviteli sebesség + magas IOPS |64 KB |3,200 |200 MB/másodperc |
-| Max IOPS + magas átviteli sebesség |32 KB |5,000 |160 MB/másodperc |
+| Maximális átviteli sebesség + magas IOPS |64 KB |3 200 |200 MB/másodperc |
+| Max IOPS + magas átviteli sebesség |32 KB |5000 |160 MB/másodperc |
 
 Ahhoz, hogy a IOPS és a sávszélesség nagyobb legyen, mint egy prémium szintű Storage-lemez maximális értéke, több prémium lemez is használható egymásba. Tegyük fel például, hogy a két P30 lemez a 10 000 IOPS kombinált IOPS, vagy 400 MB/s kombinált átviteli sebességgel rendelkezik. A következő szakaszban leírtaknak megfelelően olyan virtuálisgép-méretet kell használniuk, amely támogatja a kombinált lemez IOPS és átviteli sebességét.
 
@@ -174,10 +174,10 @@ Amikor elkezd megtervezni egy alkalmazást, az egyik első teendő, válasszon e
 
 A nagy léptékű virtuális gépek különböző méretekben érhetők el, különböző számú CPU-mag, memória, operációs rendszer és ideiglenes lemez mérete miatt. Minden virtuálisgép-mérethez a virtuális géphez csatolható adatlemezek maximális száma is tartozik. Ezért a kiválasztott virtuálisgép-méret befolyásolja, hogy mennyi feldolgozási, memória-és tárolókapacitás érhető el az alkalmazás számára. Emellett a számítási és tárolási költségeket is befolyásolja. Az alábbiakban például a DS-sorozatok, a DSv2-sorozatok és a GS-sorozatok legnagyobb virtuálisgép-méretének specifikációi szerepelnek:
 
-| Virtuális gép mérete | CPU-magok | Memory (Memória) | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IOPS | Sávszélesség-gyorsítótár i/o-korlátai |
+| Virtuális gép mérete | Processzormagok | Memória | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IO | Sávszélesség-gyorsítótár i/o-korlátai |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Helyi SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB/másodperc |4 000 IOPS és 33 MB/másodperc |
-| Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Helyi SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB/másodperc |5 000 IOPS és 50 MB/másodperc |
+| Standard_DS14 |16 |112 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB/másodperc |4 000 IOPS és 33 MB/másodperc |
+| Standard_GS5 |32 |448 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB/másodperc |5 000 IOPS és 50 MB/másodperc |
 
 Az összes elérhető Azure-beli virtuálisgép-méret teljes listájának megtekintéséhez tekintse meg a [Windows rendszerű virtuális gépek méreteit](../articles/virtual-machines/windows/sizes.md) vagy a [linuxos virtuális gépek méretét](../articles/virtual-machines/linux/sizes.md). Válasszon olyan virtuálisgép-méretet, amely képes megfelelni és méretezni a kívánt alkalmazás teljesítményére vonatkozó követelményeket. Emellett a virtuális gépek méretének kiválasztásakor figyelembe kell vennie a következő fontos szempontokat is.
 
@@ -199,7 +199,7 @@ Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premiu
 | --- | --- | --- |
 | **Virtuális gép ára havonta** |$1 570,58 (szabványos @ no__t-0D14) |$1 003,66 (szabványos @ no__t-0DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
-| **Teljes díj havonta** |$3,208.98 |$1,544.34 |
+| **Teljes díj havonta** |$3 208,98 |$1 544,34 |
 
 *Linux-disztribúciók*  
 
@@ -252,7 +252,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -265,7 +265,7 @@ A Premium Storage adatlemezek ReadOnly gyorsítótárazásának konfigurálásá
 *ReadWrite*  
 Alapértelmezés szerint az operációsrendszer-lemezeken engedélyezve van a ReadWrite gyorsítótárazás. Mostanában a ReadWrite gyorsítótárazásának támogatása is támogatott az adatlemezeken. Ha ReadWrite gyorsítótárazást használ, megfelelő módon kell megadnia az adatok gyorsítótárból állandó lemezzé való írását. Például a SQL Server kezeli a gyorsítótárazott adatlemezek saját tárolóba való írását. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
 
-*Nincsenek*  
+*NEz egy*  
 Jelenleg a **none** érték csak adatlemezeken támogatott. OPERÁCIÓSRENDSZER-lemezeken nem támogatott. Ha a **nincs** beállítást egy operációsrendszer-lemezen állítja be, akkor a rendszer felülbírálja ezt belsőleg, és **readonly**értékre állítja azt.
 
 Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQL Server a következő műveleteket:
@@ -286,24 +286,24 @@ Az összes olyan prémium szintű SSD-vagy Ultra-lemez esetében, amelynek a gyo
 * A prémium szintű Storage-lemezek esetében a cache a **READWRITE**beállításnál engedélyezze a korlátokat az írási tartósság érdekében.
 * Ahhoz, hogy a kötetek a virtuális gép újraindítása után is fennmaradnak, frissítenie kell az/etc/fstabet az univerzálisan egyedi azonosítóval (UUID) a lemezekre mutató hivatkozásokkal. További információ: [felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](../articles/virtual-machines/linux/add-disk.md).
 
-A prémium SSD-k esetében a következő Linux-disztribúciók lettek érvényesítve. A prémium SSD-k jobb teljesítményének és stabilitásának érdekében javasoljuk, hogy a virtuális gépeket a fenti vagy újabb verzióra frissítse. 
+A prémium SSD-k esetében a következő Linux-disztribúciók lettek érvényesítve. A prémium SSD-k jobb teljesítményének és stabilitásának érdekében javasoljuk, hogy a virtuális gépeket az alábbi vagy újabb verzióra frissítse. 
 
 A verziók némelyike az Azure-hoz készült legújabb Linux Integration Services (LIS), v 4.0-s verziójára van szükség. A terjesztés letöltéséhez és telepítéséhez kövesse az alábbi táblázatban szereplő hivatkozást. A listában szereplő képeket a teljes ellenőrzés befejezése után vesszük fel. Az érvényesítések azt mutatják, hogy a teljesítmény minden rendszerkép esetében változik. A teljesítmény a munkaterhelés jellemzőitől és a rendszerkép beállításaitól függ. Különböző rendszerképek vannak hangolva különböző típusú számítási feladatokhoz.
 
-| Disztribúció | Version | Támogatott kernel | Részletek |
+| Terjesztés | Verzió | Támogatott kernel | Részletek |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
-| Debian | 7.x, 8.x | 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
-| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 szükséges](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
-| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 ajánlott](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
-| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
-| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 vagy RHCK |
-| Oracle | 7.0-7.1 | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
-| Oracle | 6.4-6.7 | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
+| Ubuntu | 12,04 vagy újabb| 3.2.0 – 75.110 + | Ubuntu-12_04_5-LTS-amd64-Server-20150119-en-US-30 GB |
+| Ubuntu | 14,04 vagy újabb| 3.13.0-44.73 +  | Ubuntu-14_04_1-LTS-amd64-Server-20150123-en-US-30 GB |
+| Debian | 7. x, 8. x vagy újabb| 3.16.7-ckt4-1 + | &nbsp; |
+| SUSE | SLES 12 vagy újabb| 3.12.36-38.1 + | SUSE-SLES-12-priority-v20150213 <br> SUSE-SLES-12 – v20150213 |
+| SUSE | SLES 11 SP4 vagy újabb| 3.0.101-0.63.1 + | &nbsp; |
+| CoreOS | 584.0.0 + vagy újabb| 3.18.4 + | CoreOS 584.0.0 |
+| CentOS | 6,5, 6,6, 6,7, 7,0 vagy újabb| &nbsp; | [LIS4 szükséges](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
+| CentOS | 7.1 + vagy újabb| 3.10.0-229.1.2. el7 + | [LIS4 ajánlott](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Lásd: Megjegyzés a következő szakaszban* |
+| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + vagy újabb | &nbsp; | &nbsp; |
+| Oracle | 6.0 +, 7.2 + vagy újabb | &nbsp; | UEK4 vagy RHCK |
+| Oracle | 7.0 – 7.1 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
+| Oracle | 6.4 – 6,7 vagy újabb | &nbsp; | UEK4 vagy RHCK (w/[lis 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) ) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-illesztőprogramok a OpenLogic CentOS-hez
 
@@ -322,7 +322,7 @@ Ha egy nagy méretű virtuális gép több Premium Storage állandó lemezzel va
 
 Windows rendszeren a tárolóhelyek együtt használhatók a lemezek szalagos tárolására. A készlet minden lemezéhez egy oszlopot kell konfigurálnia. Ellenkező esetben a csíkozott kötet teljes teljesítménye a vártnál alacsonyabb lehet, mert a forgalom a lemezeken nem egyenletes eloszlású.
 
-Fontos: A Kiszolgálókezelő felhasználói felületén beállíthatja, hogy az oszlopok teljes száma legfeljebb 8 legyen a csíkozott kötetek esetében. Nyolcnál több lemez csatolásakor a PowerShell használatával hozza létre a kötetet. A PowerShell használatával megadhatja az oszlopok számát a lemezek számával megegyezően. Ha például 16 lemez van egyetlen szalagos készletben, a *New-VirtualDisk PowerShell-* parancsmag *NumberOfColumns* paraméterében 16 oszlopot kell megadnia.
+Fontos: a Kiszolgálókezelő felhasználói felületének használatával beállíthatja, hogy az oszlopok száma összesen legfeljebb 8 legyen a csíkozott kötetnél. Nyolcnál több lemez csatolásakor a PowerShell használatával hozza létre a kötetet. A PowerShell használatával megadhatja az oszlopok számát a lemezek számával megegyezően. Ha például 16 lemez van egyetlen szalagos készletben, a *New-VirtualDisk PowerShell-* parancsmag *NumberOfColumns* paraméterében 16 oszlopot kell megadnia.
 
 Linux rendszeren a lemezek együttes kiépítéséhez használja a MDADM segédprogramot. A Linux rendszerű lemezek csíkozásával kapcsolatos részletes lépéseket a [szoftveres RAID konfigurálása Linuxon](../articles/virtual-machines/linux/configure-raid.md)című témakörben talál.
 
@@ -377,9 +377,9 @@ A várakozási sor mélységét ne konfigurálja olyan magas értékre, hanem eg
 A csíkozott kötetek esetében elég magas a várólista mélységének megőrzése, hogy minden lemezhez külön-külön legyen a maximális várólista mélysége. Vegyünk például egy olyan alkalmazást, amely egy 2. üzenetsor-mélységet küld, és négy lemez van a sávban. A két IO-kérelem két lemezre mutat, és a fennmaradó két lemez üresjáratban lesz. Ezért konfigurálja úgy a várólista mélységét, hogy az összes lemez foglalható legyen. Az alábbi képlet azt mutatja be, hogyan határozható meg a csíkozott kötetek üzenetsor-mélysége.  
     ![](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Szabályozás
+## <a name="throttling"></a>Throttling
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 

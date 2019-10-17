@@ -1,6 +1,6 @@
 ---
-title: Támogatás és súgó lehetőségeket az Azure AD-alkalmazások fejlesztőinek |} A Microsoft Docs
-description: Tudja, hogyan szerezze be a Súgó és támogatás a fejlesztéssel kapcsolatos kérdések és problémák, amelyek integrálhatók a Microsoft-identitás (Azure Active Directory és a Microsoft-fiók) alkalmazás létrehozásakor
+title: Az Azure AD App Developers támogatási és Súgó lehetőségei | Microsoft Docs
+description: Ismerje meg, hogyan szerezhet segítséget és támogatást a fejlesztéssel kapcsolatos kérdésekre és problémákról a Microsoft-identitásokkal integrálható alkalmazások létrehozásakor (Azure Active Directory és Microsoft-fiók)
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -17,87 +17,81 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235341"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429982"
 ---
-# <a name="support-and-help-options-for-developers"></a>Fejlesztői támogatás és súgó lehetőségei
+# <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
-Ha még csak most kezdi integrálása az Azure Active Directory (Azure AD), a Microsoft identitások vagy a Microsoft Graph API, vagy ha az alkalmazás egy új szolgáltatás implementálja, esetekben szükség súgó beszerzése a Közösségtől, vagy megismerheti a támogatási lehetőségek, hogy a fejlesztők rendelkezésére. Ez a cikk segít megismerni az ezeket a beállításokat, beleértve:
+Ha most kezdi az integrációt a Azure Active Directory (Azure AD), a Microsoft-identitásokkal vagy a Microsoft Graph API-val, vagy ha új funkciót valósít meg az alkalmazáshoz, akkor a Közösség segítségére van szüksége, vagy megismerheti a a fejlesztőknek nyújtott támogatási lehetőségek. Ez a cikk segít megismerni ezeket a lehetőségeket, beleértve a következőket:
 
 > [!div class="checklist"]
-> * Létezik-e a kérdést a Közösségnek nincs megválaszolva, vagy ha egy meglévő dokumentáció a szolgáltatás kívánt már megvalósítása keresésének módjai
-> * Bizonyos esetekben csak át szeretné a támogatási eszközök segítségével is egy konkrét problémával kapcsolatban
-> * Ha nem találja a választ, amely van szüksége, érdemes a kérdés feltevése *Stack overflow-n*
-> * Ha úgy találja, a hitelesítési tárak egyik hibát, növelje a *GitHub* probléma
-> * Végül szüksége, vegye fel a kapcsolatot, előfordulhat, hogy szeretné-e, nyisson egy támogatási kérést
+> * Hogyan lehet megkeresni a kérdést, hogy a Közösség nem válaszolt-e, vagy ha már létezik a megvalósítani kívánt szolgáltatás meglévő dokumentációja
+> * Bizonyos esetekben csak azt szeretné, hogy támogatási eszközeink segítségével hibakeresést végezzen egy adott probléma esetén
+> * Ha nem találja a szükséges választ, felteheti kérdéseit *stack overflow*
+> * Ha a hitelesítési kódtárak egyikével kapcsolatos problémát talál, akkor adjon meg egy *GitHub* -problémát
+> * Végül, ha valakivel szeretne kommunikálni, érdemes lehet egy támogatási kérést megnyitni
 
-## <a name="search"></a>Keresés
+## <a name="search"></a>Search
 
-Ha fejlesztéssel kapcsolatos kérdése van, akkor előfordulhat, hogy tudni találja a választ a dokumentációban [GitHub-minták](https://github.com/azure-samples), vagy adott válaszok [Stack Overflow](https://www.stackoverflow.com) kérdéseket.
+Ha a fejlesztéssel kapcsolatos kérdése van, előfordulhat, hogy megtalálja a választ a dokumentációban, a GitHub- [mintákat](https://github.com/azure-samples), vagy választ [stack overflow](https://www.stackoverflow.com) kérdéseire.
 
 ### <a name="scoped-search"></a>Hatókörön belüli keresés
 
-A gyorsabb eredmény érdekében hatókörét a keresést, hogy a Stack overflow-n, a dokumentáció és Kódminták a kedvenc keresőmotor használatával a következő lekérdezést:
+A gyorsabb eredmény érdekében a keresés hatókörét Stack Overflow, a dokumentációt és a kód mintákat a következő lekérdezéssel használhatja a kedvenc keresőmotorjában:
 
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/graph)
 ```
 
-Ahol *{Your keresőkifejezéseket}* felel meg a keresési kulcsszavakat.
+Ahol *{a keresési kifejezések}* megfelelnek a keresési kulcsszavaknak.
 
 ## <a name="use-the-development-support-tools"></a>A fejlesztői támogatási eszközök használata
 
 | Eszköz  | Leírás  |
 |---------|---------|
-| [jwt.ms](https://jwt.ms) | Illessze be az Azonosítót, vagy a hozzáférési tokent való dekódolandó jogcímek neveket és értékeket. |
-| [A Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmeket, és tekintse meg a válaszok a Microsoft Graph API ellen. |
+| [jwt.ms](https://jwt.ms) | A jogcímek nevének és értékének dekódolásához illesszen be egy azonosítót vagy hozzáférési tokent. |
+| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Eszköz, amely lehetővé teszi a kérelmek elfogadását és a válaszok megtekintését a Microsoft Graph API-ra. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Új kérdést tenne fel a Stack overflow-n
+## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
 
-A stack Overflow az előnyben részesített csatorna fejlesztéssel kapcsolatos kérdéseket. Itt a fejlesztői közösség tagjai, és a Microsoft a csapattagok közvetlenül érintett annak megakadályozása, hogy a problémák megoldásában.
+Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. Itt a fejlesztői közösség és a Microsoft csapattagok tagjai közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem találja a választ a kérdésére keresési keresztül, küldje el a Stack Overflow egy másik kérdést. Használja a következő címkék egyikét, ha kérdéseket feltenni a közösségi azonosításához, és gyorsabban választ a kérdésére segítségével:
+Ha nem talál választ a kérdésére a kereséssel, küldjön új kérdést Stack Overflow. A következő címkék egyikével teheti fel a kérdést, hogy a Közösség könnyebben azonosítsa és válaszolja meg a kérdést:
 
-|Összetevő/terület  | Tags |
+|Összetevő/régió  | Címkék |
 |---------|---------|
-| ADAL-könyvtár | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
-| Az MSAL könyvtár     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
-| OWIN közbenső szoftvert  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
-| A hitelesítési vagy engedélyezési kapcsolatos más területeken kapcsolatos témakörök | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| ADAL-könyvtár | [adal](https://stackoverflow.com/questions/tagged/adal) |
+| MSAL-könyvtár     | [msal](https://stackoverflow.com/questions/tagged/msal) |
+| OWIN middleware  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-ad-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-ad-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| A hitelesítési vagy engedélyezési témakörökhöz kapcsolódó egyéb területek | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
-A Stack overflow-n a következő bejegyzések kérdéseket tehet fel és hozzáadása a forráskódja tippeket tartalmaz. Kövesse ezeket az irányelveket növelheti annak esélyét segítségével mérheti fel, és gyorsan válaszolni a Közösség tagjai:
+A következő bejegyzések Stack Overflow tartalmaznak tippeket, hogyan tehet fel kérdéseket és hogyan adhat hozzá forráskódot. Kövesse az alábbi irányelveket, hogy növelje a közösségi tagok számára a kérdés gyors értékelését és megválaszolását:
 
-* [Hogyan jó kérdések feltevése](https://stackoverflow.com/help/how-to-ask)
-* [A minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
+* [Hogyan tegyen fel egy jó kérdést](https://stackoverflow.com/help/how-to-ask)
+* [Minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
 
-## <a name="create-a-github-issue"></a>Egy GitHub-probléma létrehozása
+## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
-Ha egy hiba vagy probléma a könyvtárakhoz kapcsolódó talál, növelje a problémát a GitHub-tárházakban. Mivel a könyvtárak nyílt forráskódú, elküldheti a lekéréses kérelem is.
+Ha a kódtárakkal kapcsolatos hibát vagy problémát talál, akkor a GitHub-adattárakban probléma merülhet fel. Mivel a kódtárak nyílt forráskódúak, lekéréses kérelmet is küldhet.
 
-Szalagtárak és a GitHub-adattárak listáját lásd:
+A kódtárak és a GitHub-adattárak listáját a következő témakörben találja:
 
-* [ADAL](active-directory-authentication-libraries.md) , valamint a GitHub-adattárak
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android), és [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) , valamint a GitHub-adattárak
+* [ADAL](active-directory-authentication-libraries.md) -kódtárak és GitHub-adattárak
+* [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)és [MSAL. obj c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) -könyvtárak és GitHub-adattárak
 
-## <a name="open-a-support-request"></a>Hozzon létre egy támogatási kérést
+## <a name="open-a-support-request"></a>Támogatási kérelem megnyitása
 
-Ha szüksége, vegye fel a kapcsolatot, megnyithatja egy támogatási kérést. Ha Ön Azure-ügyfeleket, többféle módon támogatás érhető el. Csomagok összehasonlítása, lásd: [ezt oldal](https://azure.microsoft.com/support/plans/). Fejlesztői támogatás is az Azure-ügyfelek számára érhető el. Fejlesztői támogatási csomagok kapcsolatos információkért lásd: [ezt oldal](https://azure.microsoft.com/support/plans/developer/).
+Ha valakivel szeretne kommunikálni, nyisson meg egy támogatási kérést. Ha Ön Azure-ügyfél, számos támogatási lehetőség közül választhat. A csomagok összehasonlításához tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/). A fejlesztői támogatás az Azure-ügyfelek számára is elérhető. A fejlesztői támogatási csomagok megvásárlásával kapcsolatos információkért tekintse meg [ezt a lapot](https://azure.microsoft.com/support/plans/developer/).
 
-* Ha már rendelkezik egy Azure támogatási csomag, [nyisson egy támogatáskérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+* Ha már rendelkezik Azure-támogatási csomaggal, [Nyisson meg egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-* Ha nem Azure-ügyfeleket, is megnyithat egy támogatási kérést a Microsoft csapatához [a kereskedelmi támogatási](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial).
+* Ha Ön nem Azure-ügyfél, akkor a Microsoft [kereskedelmi támogatási szolgálatán](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)keresztül is megnyithatja a támogatási kérést.
 
-Megpróbálhat egy [virtuális ügynök](https://support.microsoft.com/contactus/?ws=support) juthat támogatáshoz, vagy tegyen fel kérdéseket.
-
-### <a name="free-chat-support-for-a-limited-time"></a>Korlátozott ideig ingyenes csevegéses támogatás
-
-A csevegéses támogatás, amely korlátozott ideig ingyenesen használható Microsoft Partners is használhatja. Ha a vállalata nem Microsoft-Partner, regisztrálása, ingyenes, és szerezze be az egyéb előnyök címen [Itt](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx).
-
-Miután regisztrált a vállalat, indítsa el a Csevegés kérelem [Itt](https://aka.ms/devchat).
+Egy [virtuális ügynököt](https://support.microsoft.com/contactus/?ws=support) is kipróbálhat, hogy támogatást kapjon vagy kérdéseket tegyen fel.

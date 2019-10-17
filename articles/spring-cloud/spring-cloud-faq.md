@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 09970468a277dcaf3f28b4f5065572568089a12e
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039118"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433319"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -30,12 +30,12 @@ Az Azure Spring Cloud a fejlesztők és a kezelők számára a Azure Monitor, a 
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Milyen szolgáltatási csomagokkal rendelkezik az Azure Spring Cloud ajánlat?
 
-Az Azure Spring Cloud ingyenes az előzetes verzió ideje alatt.
+Az Azure Spring Cloud egy szolgáltatási csomagot kínál az előzetes verzió ideje alatt.
 
-Resource | Mennyiség
+Erőforrás | Mennyiség
 ------- | -------
 vCPU | 4
-Memory (Memória) | 8 GByte
+Memória | 8 GByte
 Alkalmazás-példányok rugós alkalmazásként | 20
 Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 50 *
 Azure Spring Cloud Service instances régiónként/előfizetés | 2
@@ -92,12 +92,12 @@ Igen, további részletekért látogasson el az [elosztott nyomkövetésre](spri
 
 ### <a name="what-resource-types-does-service-binding-support"></a>Milyen típusú erőforrásokat támogat a szolgáltatás-kötés?
 
-Jelenleg három szolgáltatás támogatott: Azure Cosmos DB, Azure Database for MySQL és Azure cache a Redis-hez.
+Jelenleg három szolgáltatás támogatott: Azure Cosmos DB, Azure Database for MySQL és Azure cache a Redis.
 
 ### <a name="can-i-viewaddmove-persistent-volumes-from-inside-my-applications"></a>Megtekinthetem, hogyan lehet állandó köteteket megtekinteni/felvenni vagy áthelyezni az alkalmazásaim belsejében?
 Igen.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Támogatja az Azure Spring Cloud a Blue-Green üzembe helyezést?
 Igen, tekintse meg az [átmeneti környezet útmutatóját](spring-cloud-howto-staging-environment.md) további részletekért.
@@ -125,6 +125,6 @@ A meglévő Spring-szolgáltatásoknak az Azure Spring Cloud-ba való migrálás
 
 Az áttelepítés után figyelje a CPU/RAM mérőszámait és a hálózati forgalmat annak érdekében, hogy az alkalmazás példányai megfelelően méretezhetők legyenek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ha további kérdései vannak, tekintse meg a hibaelhárítási útmutatót](spring-cloud-troubleshoot.md).

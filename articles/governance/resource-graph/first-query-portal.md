@@ -3,17 +3,17 @@ title: Az első lekérdezés futtatása az Azure Resource Graph Explorerrel
 description: Ebből a cikkből megtudhatja, hogyan futtathatja első lekérdezését Azure Portal az Azure Resource Graph Explorer használatával.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: d533d24f9bfe133955c0f503e2458c8fcb0bf1de
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981250"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387602"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Gyors útmutató: Az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
 
 Az Azure Resource Graph hatékonysága közvetlenül az Azure Resource Graph Explorerben Azure Portal érhető el. Az erőforrás-Graph Explorer böngészhető információt nyújt a lekérdezhető Azure Resource Manager erőforrástípusok és tulajdonságok közül. A Resource Graph Explorer egy tiszta felületet is biztosít a több lekérdezéssel való munkához, az eredmények kiértékeléséhez, valamint néhány lekérdezés eredményének konvertálásához egy olyan diagramra, amely rögzíthető egy Azure-irányítópulton.
 
@@ -27,19 +27,19 @@ Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel k
 
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali ablaktáblán. Keresse meg és válassza ki a **Resource Graph Explorert**.
 
-1. Az ablak **lekérdezés 1** részében adja meg a `project name, type | limit 5` lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
+1. Az ablak **lekérdezés 1** részében adja meg a `Resources | project name, type | limit 5` lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
    > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót, mint például a `order by`, a lekérdezés többszöri futtatása valószínűleg különböző erőforrás-készletet eredményez.
 
-1. Tekintse át a lekérdezési választ a **Results (eredmények** ) lapon. Válassza az **üzenetek** fület a lekérdezés részleteinek megtekintéséhez, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
+1. Tekintse át a lekérdezési választ az **eredmények** lapon. a lekérdezés részleteinek megtekintéséhez válassza az **üzenetek** fület, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
 
-1. Frissítse a lekérdezést a `order by` **névre a Name (név** ) tulajdonságra: `project name, type | limit 5 | order by name asc`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést a `order by` **névre a Name (név** ) tulajdonságra: `Resources | project name, type | limit 5 | order by name asc`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
    > [!NOTE]
    > Csakúgy, mint az első lekérdezésnél, e lekérdezés többszöri futtatása esetén is valószínűleg minden kéréssel eltérő erőforráslistát fog kapni. Fontos a lekérdezési parancsok sorrendje. Ebben a példában az `order by` a `limit` után következik. Így először korlátozza a lekérdezés eredményeit, majd rendezi őket.
 
-1. Frissítse a lekérdezést az első `order by` **névre a name** tulajdonságra, majd @no__t – 2 értéket az első öt eredményre: `project name, type | order by name asc | limit 5`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
+1. Frissítse a lekérdezést az első `order by` **névre a name** tulajdonságra, majd @no__t – 2 értéket az első öt eredményre: `Resources | project name, type | order by name asc | limit 5`. Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
 Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a várt módon jelennek meg – a **Name** tulajdonság szerint rendezve, de továbbra is az első öt találatra korlátozódik.
 
@@ -54,7 +54,8 @@ A fenti utolsó lekérdezés futtatása után a **diagramok** lapon megjelenik e
 1. Az ablak **lekérdezés 1** részében adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
@@ -114,11 +115,11 @@ Ha el szeretné távolítani a minta erőforrás-gráf irányítópultokat a Azu
 
 1. Válassza a **Törlés** lehetőséget az irányítópult tetején található irányítópult menüjében, majd kattintson **az OK gombra** a megerősítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezés nyelvéről](./concepts/query-language.md)
 - Információ az [erőforrások felfedezéséről](./concepts/explore-resources.md)
 - Az első lekérdezés futtatása az [Azure CLI-vel](first-query-azurecli.md)
 - Az [Alapszintű lekérdezések](./samples/starter.md) példáinak megtekintése
-- A [Speciális lekérdezések](./samples/advanced.md) példáinak megtekintése
+- Tekintse meg a [Speciális lekérdezések](./samples/advanced.md) példáit
 - Visszajelzés küldése a [UserVoice-ról](https://feedback.azure.com/forums/915958-azure-governance)

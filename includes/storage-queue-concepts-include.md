@@ -4,12 +4,13 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 935a6201e24e97deaa0a1a65e499310f74a49e2d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: seo-python-october2019
+ms.openlocfilehash: 92f638666d9ac832ee5e6a7d4dccf9a9e669f908
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059034"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72428010"
 ---
 ## <a name="what-is-queue-storage"></a>Mi a várólista-tároló?
 
@@ -19,16 +20,16 @@ Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárol�
 
 Az Azure Queue szolgáltatás a következő összetevőket tartalmazza:
 
-![Queue1](./media/storage-queue-concepts-include/queue1.png)
+![Azure Queue szolgáltatás-összetevők](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL-formátum:** A várólisták a következő URL-formátummal érhetők el:   
+* **URL-formátum:** Az üzenetsorok a következő URL-formátummal érhetők el:   
     http://`<storage account>`.queue.core.windows.net/`<queue>` 
   
     Az ábra egyik üzenetsora a következő URL-címmel érhető el:  
   
     `http://myaccount.queue.core.windows.net/images-to-download`
 
-* **Storage-fiók:** Az Azure Storage-hoz való összes hozzáférés egy Storage-fiókon keresztül történik. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
-* **Várólista** A várólista üzenetek készletét tartalmazza. Az összes üzenetnek üzenetsorban kell lennie. Vegye figyelembe, hogy az üzenetsor neve csak kisbetűket tartalmazhat. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
-* **Üzenetet** Legfeljebb 64 KB méretű, bármilyen formátumú üzenet. Egy üzenet legfeljebb 7 napig maradhat egy üzenetsorban.
+* **Tárfiók:** Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Azure Storage Scalability and Performance Targets](../articles/storage/common/storage-scalability-targets.md) (Az Azure Storage méretezhetőségi és teljesítménycéljai).
+* **Üzenetsor:** Az üzenetsorok üzenetek készleteit tartalmazzák. Az összes üzenetnek üzenetsorban kell lennie. Vegye figyelembe, hogy az üzenetsor neve csak kisbetűket tartalmazhat. Az üzenetsorok elnevezésével kapcsolatos információkat lásd: [Naming Queues and Metadata](https://msdn.microsoft.com/library/azure/dd179349.aspx) (Üzenetsorok és metaadatok elnevezése).
+* **Üzenet:** Egy legfeljebb 64 KB méretű, tetszőleges méretű üzenet. Egy üzenet legfeljebb 7 napig maradhat egy üzenetsorban.
 

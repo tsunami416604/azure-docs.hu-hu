@@ -7,12 +7,12 @@ ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: HT
+ms.openlocfilehash: fe412e9e682fb55f1664c546e6b6c5a347527adb
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326514"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387346"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Az adatfolyam JSON-kezelésének leképezése
 
@@ -24,11 +24,11 @@ A származtatott oszlop Expression Builder használatával hozzáadhat egy össz
 
 A kimeneti séma oldali ablaktáblán vigye az egérmutatót egy oszlop fölé, és kattintson a plusz ikonra. Válassza az **aloszlop hozzáadása** lehetőséget az oszlop összetett típusának elvégzéséhez.
 
-![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
+![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
 
 Ugyanilyen módon adhat hozzá további oszlopokat és aloszlopokat. Minden nem összetett mezőhöz egy kifejezés adható hozzá a jobb oldali kifejezés-szerkesztőben.
 
-![Összetett oszlop](media/data-flow/complexcolumn.png "összetett oszlopa")
+![Összetett oszlop](media/data-flow/complexcolumn.png "Összetett oszlop")
 
 ### <a name="entering-the-json-structure-manually"></a>A JSON-struktúra manuális megadása
 
@@ -86,7 +86,7 @@ Ha ez a kifejezés egy "complexColumn" nevű oszlophoz lett megadva, akkor a ren
 
 A JSON-adatkészletek adatáramlási forrásaként való használata lehetővé teszi öt további beállítás megadását. Ezek a beállítások a **forrás beállításai** lap **JSON-beállítások** című részében találhatók.  
 
-![JSON-beállítások](media/data-flow/json-settings.png "JSON-beállításai")
+![JSON-beállítások](media/data-flow/json-settings.png "JSON-beállítások")
 
 ### <a name="default"></a>Alapértelmezett
 

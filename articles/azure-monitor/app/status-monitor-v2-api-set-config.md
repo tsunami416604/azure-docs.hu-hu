@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure Állapotmonitor v2 API-referenciája: Konfiguráció beállítása | Microsoft Docs'
-description: Állapotmonitor v2 API-referenciát. Set-ApplicationInsightsMonitoringConfig. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: 'Azure Application Insights Agent API-referenciája: set config | Microsoft Docs'
+description: Application Insights Agent API-referenciája. Set-ApplicationInsightsMonitoringConfig. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 6d93be5b01be63a75041b939f6b8deb9106c4262
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2ab941b5587a8836f1e472fbce3966b12bfa1e11
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200446"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388259"
 ---
-# <a name="status-monitor-v2-api-set-applicationinsightsmonitoringconfig"></a>Állapotmonitor v2 API: Set-ApplicationInsightsMonitoringConfig
+# <a name="application-insights-agent-api-set-applicationinsightsmonitoringconfig"></a>Application Insights ügynök API: set-ApplicationInsightsMonitoringConfig
 
 Ez a dokumentum egy olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
@@ -43,11 +43,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 
 ### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
-- `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
-- `AppFilter='WebAppExclude'``null` rendszerállapot-kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
-- `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
-- Végezetül a`'.*'` helyettesítő karaktert ishasználjaakorábbiszabályoknaknemmegfelelőwebalkalmazásokésazalapértelmezettkialakításikulcshozzárendeléséhez.`AppFilter`
+- @no__t – 0 a `'.*'` helyettesítő karakterrel egyezik az aktuális számítógéppel.
+- a `AppFilter='WebAppExclude'` `null` kialakítási kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppOne'` – a megadott alkalmazást egyedi kialakítási kulcsként rendeli hozzá.
+- `AppFilter='WebAppTwo'` – a megadott alkalmazást egyedi kialakítási kulcsként rendeli hozzá.
+- Végezetül `AppFilter` a `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
 - A szóközök hozzáadódnak az olvashatósághoz.
 
 ```powershell
@@ -67,7 +67,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
 **Szükséges.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
-A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
+A `MachineFilter` beállítás megadásával egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
 
 > [!IMPORTANT]
 > Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
@@ -89,7 +89,7 @@ A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létreho
 **Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
 
-## <a name="output"></a>Output
+## <a name="output"></a>Kimenet
 
 Alapértelmezés szerint nincs kimenet.
 
@@ -119,12 +119,12 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje](../../azure-monitor/app/metrics-explorer.md) meg a mérőszámokat a teljesítmény és a használat figyeléséhez.
+ - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja](../../azure-monitor/app/analytics.md) az elemzést.
+- További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
@@ -132,7 +132,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 - [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
 - [Adja hozzá a Application INSIGHTS SDK-t a kódjához](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el
  
- További Állapotmonitor v2:
- - A Állapotmonitor v2 [hibáinak megoldásához](status-monitor-v2-troubleshoot.md) használja az útmutatót.
- - [A konfiguráció](status-monitor-v2-api-get-config.md) beszerzésével ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
- - [A](status-monitor-v2-api-get-status.md) figyelés ellenőrzésének állapotának beolvasása.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
+ - [A konfiguráció beszerzésével](status-monitor-v2-api-get-config.md) ellenőrizze, hogy a beállítások megfelelően vannak-e rögzítve.
+ - A figyelés ellenőrzésének [állapotának beolvasása](status-monitor-v2-api-get-status.md) .

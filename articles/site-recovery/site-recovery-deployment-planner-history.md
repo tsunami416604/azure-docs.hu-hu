@@ -6,22 +6,30 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 10/16/2019
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620103"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433410"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner korábbi verziók
 
 Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzményeit, valamint a javításokat, az ismert korlátozásokat és azok kiadási dátumát tartalmazza.
 
+## <a name="version-251"></a>2,51-es verzió
+
+**Kiadás dátuma: augusztus 22., 2019**
+
+**Hibajavítások**
+
+- A Deployment Planner 2,5-es verzióval kapcsolatos Cost-javaslati probléma kijavítva
+
 ## <a name="version-25"></a>2,5-es verzió
 
-**Kiadás dátuma: Július 29., 2019**
+**Kiadás dátuma: július 29., 2019**
 
 **Hibajavítások**
 
@@ -30,7 +38,7 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 ## <a name="version-24"></a>2,4-es verzió
 
-**Kiadás dátuma: Április 17., 2019**
+**Kiadás dátuma: április 17., 2019**
 
 **Hibajavítások**
 
@@ -44,7 +52,7 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 ## <a name="version-23"></a>2,3-es verzió
 
-**Kiadás dátuma: 2018. december 3.**
+**Kiadás dátuma: december 3., 2018**
 
 **Hibajavítások**
 
@@ -52,7 +60,7 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 ## <a name="version-22"></a>2,2-es verzió 
 
-**Kiadás dátuma: 2018. április 25.**
+**Kiadás dátuma: április 25., 2018**
 
 **Hibajavítások**
 
@@ -83,7 +91,7 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 ## <a name="version-201"></a>2\.0.1-es verzió
 
-**Kiadás dátuma: December 7., 2017**
+**Kiadás dátuma: december 7., 2017**
 
 **Hibajavítások**
 
@@ -91,7 +99,7 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 ## <a name="version-20"></a>2,0-es verzió
 
-**Kiadás dátuma: November 28., 2017**
+**Kiadás dátuma: november 28., 2017**
 
 **Hibajavítások**
 
@@ -101,12 +109,12 @@ Ez a cikk a Azure Site Recovery Deployment Planner összes verziójának előzm�
 
 **Ismert korlátozások:**
 
-- A Hyper-V – Azure vész-helyreállítás esetén a következő karaktereket tartalmazó virtuális gép neve `,`: `"` `[`,, `]`,, ``` ` ``` és nem támogatott. A beolvasás során a jelentés létrehozása sikertelen lesz, vagy helytelen az eredmény.
+- A Hyper-V – Azure vész-helyreállítás esetén a következő karaktereket tartalmazó virtuális gép neve: `,`, `"`, `[`, `]`, és ``` ` ``` nem támogatott. A beolvasás során a jelentés létrehozása sikertelen lesz, vagy helytelen az eredmény.
 - A VMware – Azure vész-helyreállítás esetén a vesszőt tartalmazó virtuális gép nem támogatott. A beolvasás során a jelentés létrehozása meghiúsul, vagy helytelen eredményt ad.
 
 ## <a name="version-131"></a>1\.3.1-es verzió
 
-**Kiadás dátuma: Július 19., 2017** 
+**Kiadás dátuma: július 19., 2017** 
 
 **Hibajavítások**
 
@@ -115,7 +123,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 ## <a name="version-13"></a>1,3-es verzió
 
-**Kiadás dátuma: 2017. május 9.**
+**Kiadás dátuma: május 9., 2017**
 
 **Hibajavítások**
 
@@ -123,7 +131,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 ## <a name="version-12"></a>1,2-es verzió
 
-**Kiadás dátuma: 2017. április 7.**
+**Kiadás dátuma: április 7., 2017**
 
 **Hibajavítások**
 
@@ -135,7 +143,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 ## <a name="version-11"></a>1,1-es verzió
 
-**Kiadás dátuma: 2017. március 9.**
+**Kiadás dátuma: március 9., 2017**
 
 **Hibajavítások**
 
@@ -144,7 +152,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 ## <a name="version-10"></a>1,0-es verzió
 
-**Kiadás dátuma: Február 23., 2017**
+**Kiadás dátuma: február 23., 2017**
 
 **Ismert korlátozások:**
 

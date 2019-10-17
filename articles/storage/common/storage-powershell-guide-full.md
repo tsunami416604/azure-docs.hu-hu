@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ac210a03f8b1a0a5f7fff07cbc68b4cd6bc98632
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016349"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430062"
 ---
-# <a name="using-azure-powershell-with-azure-storage"></a>Using Azure PowerShell with Azure Storage (Az Azure PowerShell és az Azure Storage együttes használata)
+# <a name="using-azure-powershell-with-azure-storage"></a>Az Azure PowerShell és az Azure Storage együttes használata
 
 Azure PowerShell az Azure-erőforrások PowerShell-parancssorból vagy parancsfájlokból való létrehozására és kezelésére szolgál. Az Azure Storage esetében ezek a parancsmagok két kategóriába sorolhatók – a vezérlési síkon és az adatsíkon. A vezérlő síkja parancsmagok a Storage-fiók kezelésére szolgálnak – a Storage-fiókok létrehozásához, a tulajdonságok beállításához, a tárolási fiókok törléséhez, a hozzáférési kulcsok elforgatásához stb. Az adatsík-parancsmagok segítségével kezelheti a Storage *-* fiókban tárolt adattárakat. Például Blobok feltöltése, fájlmegosztás létrehozása és üzenetek hozzáadása egy várólistához.
 
@@ -24,7 +24,7 @@ Ez a cikk a felügyeleti sík parancsmagokat használó általános műveleteket
 > [!div class="checklist"]
 > * Storage-fiókok listázása
 > * Meglévő Storage-fiókra mutató hivatkozás beszerzése
-> * Tárfiók létrehozása
+> * Create a storage account
 > * A Storage-fiók tulajdonságainak beállítása
 > * Hozzáférési kulcsok beolvasása és újragenerálása
 > * A Storage-fiókhoz való hozzáférés biztosítása
@@ -76,7 +76,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 Most már rendelkezik $storageAccount, amely egy meglévő Storage-fiókra mutat.
 
-### <a name="create-a-storage-account"></a>Tárfiók létrehozása
+### <a name="create-a-storage-account"></a>Create a storage account
 
 Az alábbi szkript bemutatja, hogyan hozhat létre egy általános célú Storage-fiókot a [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount)használatával. Miután létrehozta a fiókot, lekérheti a környezetét, amely a következő parancsokban is használható, nem pedig az egyes hívásokhoz való hitelesítés megadásával.
 
@@ -105,11 +105,11 @@ $ctx = $storageAccount.Context
 
 A szkript a következő PowerShell-parancsmagokat használja:
 
-*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) – az érvényes helyszínek listáját kéri le. A példa a `eastus` helyet használja.
+*   [Get-AzLocation](/powershell/module/az.resources/get-azlocation) – az érvényes helyszínek listáját kéri le. A példa `eastus` értéket használ a helyhez.
 
 *   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) – új erőforráscsoport létrehozása. Az erőforráscsoport olyan logikai tároló, amelybe az Azure-erőforrások üzembe helyezése és kezelése történik. A miénk neve `teststoragerg`.
 
-*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) – létrehozza a Storage-fiókot. A példa a `testpshstorage`-t használja.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) – létrehozza a Storage-fiókot. A példa `testpshstorage` értéket használ.
 
 Az SKU neve megadja a Storage-fiók replikálásának típusát (például LRS (helyileg redundáns tárolás). További információ a replikálásról: az [Azure Storage replikációja](storage-redundancy.md).
 
@@ -131,15 +131,15 @@ A Storage-fiók beállításainak módosításához használja a [set-AzStorageA
 
 * A Storage-fiókhoz rendelt **címkék** . A címkéket gyakran használják az erőforrások számlázási célokra való kategorizálására.
 
-* Az **SKU** a Storage-fiók replikációs beállítása, például a LRS a helyileg redundáns tároláshoz. Előfordulhat például,\_\_hogy a standard szintű LRS standard GRS vagy standard\_RAGRS vált. Vegye figyelembe, hogy a standard\_szintű ZRS,\_a standard szintű\_GZRS, a standard\_szintű RAGZRS és a prémium LRS nem módosítható más SKU-ra, vagy más SKU-ket is módosíthat ezekre.
+* Az **SKU** a Storage-fiók replikációs beállítása, például a LRS a helyileg redundáns tároláshoz. Előfordulhat például, hogy a standard @ no__t-0LRS a standard @ no__t-1GRS vagy a standard @ no__t-2RAGRS értékre vált. Vegye figyelembe, hogy a @ no__t-0ZRS, a standard @ no__t-1GZRS, a standard @ no__t-2RAGZRS vagy a Premium @ no__t-3LRS nem módosítható más SKU-ra, vagy más SKU-ket is módosíthat ezekre.
 
-* A blob Storage-fiókok **hozzáférési szintje** . A hozzáférési szint értéke a gyakori vagy a ritka elérésű értékre van állítva, és lehetővé teszi, hogy a Storage-fiók használatával összehangolt hozzáférési szint kiválasztásával csökkentse a költségeket. További információ: gyakori, ritka elérésű [és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+* A blob Storage-fiókok **hozzáférési szintje** . A hozzáférési szint **értéke a gyakori vagy a** ritka elérésű értékre van **állítva, és lehetővé teszi, hogy**a Storage-fiók használatával összehangolt hozzáférési szint kiválasztásával csökkentse a költségeket. További információ: gyakori, ritka elérésű [és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 * Csak HTTPS-forgalom engedélyezése.
 
 ### <a name="manage-the-access-keys"></a>A hozzáférési kulcsok kezelése
 
-Az Azure Storage-fiókhoz két fiók kulcsa tartozik. A kulcsok lekéréséhez használja a [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Ez a példa az első kulcsot kéri le. Ha a másikat szeretné lekérni `Value[1]` , használja `Value[0]`a helyett a következőt:.
+Az Azure Storage-fiókhoz két fiók kulcsa tartozik. A kulcsok lekéréséhez használja a [Get-AzStorageAccountKey](/powershell/module/az.Storage/Get-azStorageAccountKey). Ez a példa az első kulcsot kéri le. A másik lekéréséhez használja a `Value[1]` értéket `Value[0]` helyett.
 
 ```powershell
 $storageAccountKey = `
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-A másik kulcs újralétrehozásához használja `key2` a nevet a `key1`helyett.
+A másik kulcs újralétrehozásához használja a `key2` értéket a kulcs neveként a `key1` helyett.
 
 Egy kulcs újragenerálása, majd az új érték megjelenítéséhez újra lekéri.
 
@@ -182,7 +182,7 @@ Alapértelmezés szerint az összes Storage-fiók minden olyan hálózat számá
 
 A cikk bemutatja, hogyan kezelheti ezeket a beállításokat a következő PowerShell-parancsmagok használatával:
 * [Add-AzStorageAccountNetworkRule](/powershell/module/az.Storage/Add-azStorageAccountNetworkRule)
-* [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
+* [Frissítés – AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
 ## <a name="use-storage-analytics"></a>A Storage Analytics használata  
@@ -201,7 +201,7 @@ A figyelést a [Azure Portal](https://portal.azure.com), a PowerShell vagy progr
 
 * Ha szeretné megtudni, hogyan engedélyezheti és tekintheti meg a tárolási metrikák adatait a PowerShell használatával, tekintse meg a [Storage Analytics mérőszámait](storage-analytics-metrics.md).
 
-* Ha szeretné megtudni, hogyan engedélyezheti és kérheti le a tárolási naplózási adatait a PowerShell használatával, tekintse meg a tárolók [naplózásának engedélyezése a PowerShell használatával](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) és [a tárolási naplózási naplófájlok](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)megkeresése
+* Ha szeretné megtudni, hogyan engedélyezheti és kérheti le a tárolási naplózási adatait a PowerShell használatával, tekintse meg a tárolók [naplózásának engedélyezése a PowerShell használatával](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) és [a tárolási naplózási naplófájlok megkeresése](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data)
 
 * A tárolási mérőszámok és a tárolók naplózásának a tárolási problémák elhárításához való használatával kapcsolatos részletes információkért lásd: [figyelés, diagnosztizálás és hibaelhárítás Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 
@@ -235,14 +235,14 @@ Ha létrehozott egy új erőforráscsoportot és egy Storage-fiókot ehhez a gya
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a felügyeleti sík parancsmagokat használó általános műveleteket ismerteti a Storage-fiókok kezeléséhez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Storage-fiókok listázása
 > * Meglévő Storage-fiókra mutató hivatkozás beszerzése
-> * Tárfiók létrehozása
+> * Create a storage account
 > * A Storage-fiók tulajdonságainak beállítása
 > * Hozzáférési kulcsok beolvasása és újragenerálása
 > * A Storage-fiókhoz való hozzáférés biztosítása
@@ -252,4 +252,4 @@ Ez a cikk több más cikkre is hivatkozik, például az adatobjektumok kezelés�
 
 * [Azure Storage-vezérlési sík PowerShell-parancsmagok](/powershell/module/az.storage/)
 * [Azure Storage-adatsíkok PowerShell-parancsmagjai](/powershell/module/azure.storage/)
-* [Windows PowerShell-dokumentáció](https://msdn.microsoft.com/library/ms714469.aspx)
+* [Windows PowerShell-dokumentáció](/powershell/scripting/developer/windows-powershell)

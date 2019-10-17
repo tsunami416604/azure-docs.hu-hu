@@ -3,15 +3,15 @@ title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan hozhat létre jobb lekérdezéseket az Azure Resource Graph-ba irányuló kérések szabályozásának elkerülése érdekében.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/19/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 85d68beb27ab27a2ada9acbf9482d35dec438c06
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980304"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387629"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -30,8 +30,8 @@ Az Azure Resource Graph az egyes felhasználók számára időintervallum alapj�
 
 Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejlécet hoz létre:
 
-- @no__t – 0 (int): A felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
-- @no__t – 0 (óó: PP: SS): Az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
+- `x-ms-user-quota-remaining` (int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- `x-ms-user-quota-resets-after` (óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
 
 A fejlécek működésének szemléltetéséhez nézzük meg a lekérdezési választ, amely a `x-ms-user-quota-remaining: 10` és a `x-ms-user-quota-resets-after: 00:00:03` fejlécét és értékeit tartalmazta.
 
@@ -55,7 +55,7 @@ Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lek
   {
       var userQueryRequest = new QueryRequest(
           subscriptions: new[] { subscriptionId },
-          query: "project name, type");
+          query: "Resoures | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -78,7 +78,7 @@ Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lek
       var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
       var userQueryRequest = new QueryRequest(
           subscriptions: currSubscriptionBatch,
-          query: "project name, type");
+          query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -102,7 +102,7 @@ Az előfizetés, az erőforráscsoport vagy az egyes erőforrások kötegelt lek
           resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -196,7 +196,7 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "project id, name, type | top 5000");
+      query: "Resources | project id, name, type | top 5000");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -218,11 +218,11 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
   Az Azure CLI vagy a Azure PowerShell használatakor a rendszer automatikusan lekérdezi az Azure Resource Graph lekérdezéseit, hogy a legtöbb 5000 bejegyzést beolvassa. A lekérdezés eredménye a bejegyzések összesített listáját jeleníti meg az összes többoldalas hívásból. Ebben az esetben a lekérdezési eredmény bejegyzéseinek számától függően egy többoldalas lekérdezés egynél több lekérdezési kvótát is használhat. Az alábbi példában például a lekérdezés egyetlen futtatása akár öt lekérdezési kvótát is felhasználhat:
 
   ```azurecli-interactive
-  az graph query -q 'project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' -top 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
   ```
 
 ## <a name="still-get-throttled"></a>Továbbra is szabályozható?
@@ -236,7 +236,7 @@ Adja meg a következő adatokat:
 - Milyen típusú erőforrások érdeklik?
 - Mi a lekérdezési minta? X lekérdezés/Y másodperc stb.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

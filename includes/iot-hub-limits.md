@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: f0de7aedc3883978582da1950e95aaabac9a1695
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72272982"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72391661"
 ---
 A következő táblázat felsorolja az S1, S2, S3 és F1 különböző szolgáltatási szintjeihez társított korlátokat. További információ az egyes *egységek* költségéről: [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -56,7 +56,7 @@ A következő táblázat felsorolja a IoT Hub erőforrásokra vonatkozó korlát
 > Ha egy Azure-előfizetésben több mint 50 fizetős IoT-hubhoz van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata.
 
 > [!NOTE]
-> Jelenleg az egyetlen IoT hubhoz csatlakoztatható eszközök maximális száma 1 000 000. Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
+> Jelenleg az egyetlen IoT-hubhoz regisztrálható eszközök és modulok száma 1 000 000. Ha szeretné megnövelni ezt a korlátot, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
 A IoT Hub szabályozza a kérelmeket, ha túllépi a következő kvótákat.
 

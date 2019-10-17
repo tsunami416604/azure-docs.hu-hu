@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030289"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388054"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Adatforgalmi kifejezés-szerkesztő leképezése
 
@@ -19,37 +19,37 @@ ms.locfileid: "72030289"
 
 Azure Data Factory leképezési adatfolyamatban megtalálhatja azokat a kifejezéseket, amelyekben kifejezéseket adhat meg az adatátalakításhoz. Ezekben a mezőkben oszlopok, mezők, változók, paraméterek és függvények használhatók az adatforgalomból. A kifejezés létrehozásához használja a kifejezés-szerkesztőt, amelyet az átalakítás során a kifejezés szövegmezőre kattintva indít el. Időnként a "számított oszlop" lehetőséget is láthatja az átalakítási oszlopok kiválasztásakor. Ha erre kattint, megjelenik a Kifejezésszerkesztő elindítva.
 
-![Expression Builder](media/data-flow/xpb1.png "Expression Builder")
+![Expression Builder](media/data-flow/xpb1.png "Kifejezésszerkesztő")
 
 A Kifejezésszerkesztő eszköz alapértelmezett értéke a szövegszerkesztő beállítás. az automatikus kiegészítés funkció a teljes Azure Data Factory adatfolyam-objektum modellből olvassa be a szintaxis-ellenőrzést és a kiemelést.
 
-![Expression Builder automatikus befejezése](media/data-flow/expb1.png "Expression Builder automatikus kiegészítése")
+![Expression Builder automatikus kiegészítése](media/data-flow/expb1.png "Expression Builder automatikus kiegészítése")
 
 ## <a name="build-schemas-in-output-schema-pane"></a>Sémák összeállítása a kimeneti séma ablaktáblán
 
-![Összetett oszlop]hozzáadása(media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
+![Összetett oszlop hozzáadása](media/data-flow/complexcolumn.png "Oszlopok hozzáadása")
 
 A bal oldali kimeneti séma ablaktáblán látni fogja a módosított oszlopokat, és hozzáadja a sémához. Itt interaktív módon hozhat létre egyszerű és összetett adatstruktúrákat. Vegyen fel további mezőket az "oszlop hozzáadása" és a hierarchiák létrehozása az "aloszlop hozzáadása" használatával.
 
-![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "aloszlop hozzáadása")
+![Aloszlop hozzáadása](media/data-flow/addsubcolumn.png "Aloszlop hozzáadása")
 
 ## <a name="data-preview-in-debug-mode"></a>Az adatelőnézet hibakeresési módban
 
-![Expression Build](media/data-flow/exp4b.png "Expression – adatelőnézet")
+![Expression Builder](media/data-flow/exp4b.png "Kifejezési adatelőnézet")
 
 Ha az adatfolyam-kifejezéseken dolgozik, kapcsolja be a hibakeresési módot a Azure Data Factory adatfolyam tervezési felületéről, amely lehetővé teszi, hogy a rendszer az Ön által létrehozott kifejezésből élő, folyamatban lévő előnézetet jelenítse meg az adatok eredményeiről. A valós idejű élő hibakeresés engedélyezve van a kifejezésekhez.
 
-![Hibakeresési mód](media/data-flow/debugbutton.png "hibakeresése gomb")
+![Hibakeresési mód](media/data-flow/debugbutton.png "Hibakeresés gomb")
 
 A frissítés gombra kattintva frissítheti a kifejezés eredményét a forrás élő mintáján valós időben.
 
-![Expression Build](media/data-flow/exp5.png "Expression – adatelőnézet")
+![Expression Builder](media/data-flow/exp5.png "Kifejezési adatelőnézet")
 
 ## <a name="comments"></a>Megjegyzések
 
 Megjegyzések hozzáadása a kifejezésekhez az egysoros és a többsoros Megjegyzés szintaxisának használatával:
 
-![Hozzászólások](media/data-flow/comments.png "megjegyzései")
+![Megjegyzések](media/data-flow/comments.png "Megjegyzések")
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
@@ -71,13 +71,13 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 A tömböket visszaadó Expression függvények a szögletes zárójelek ([]) használatával kezelik a visszaadott tömb objektumon belüli indexeket. A tömb a-alapú.
 
-![Expression Build Array](media/data-flow/expb2.png "kifejezés adatelőnézete")
+![Expression Builder-tömb](media/data-flow/expb2.png "Kifejezési adatelőnézet")
 
 ## <a name="handling-names-with-special-characters"></a>Nevek speciális karakterekkel való kezelésére
 
 Ha speciális karaktereket vagy szóközöket tartalmazó oszlopnevek vannak, a nevet kapcsos zárójelekkel kell megadnia.
 * ```{[dbo].this_is my complex name$$$}```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Adatátalakítási kifejezések létrehozásának megkezdése](data-flow-expression-functions.md)

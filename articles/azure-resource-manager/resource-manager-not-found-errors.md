@@ -1,32 +1,32 @@
 ---
-title: Azure-erőforrás nem található a hibák |} A Microsoft Docs
-description: Ismerteti, hogyan lehet javítsa ki a hibákat, amikor egy erőforrás nem található.
+title: Az Azure-erőforrások nem találhatók hibák | Microsoft Docs
+description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy Azure Resource Manager sablonnal való üzembe helyezéskor nem található erőforrás.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9c999a70ffdbed0c954cfc960b5febdaff06e4ae
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 4db50bbb3073fe98599923843e6afdded3a8ca62
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206189"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390279"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibák megoldása
+# <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibáinak elhárítása
 
-Ez a cikk ismerteti a hibákat, amikor egy erőforrás nem található üzembe helyezés során látni.
+Ez a cikk azokat a hibákat ismerteti, amelyeket akkor láthat, ha egy erőforrás nem található az üzembe helyezés során.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Amikor a sablont is tartalmaz, amely nem oldható fel egy erőforrás nevét, a következőhöz hasonló hibaüzenetet kap:
+Ha a sablon egy nem feloldható erőforrás nevét tartalmazza, a következőhöz hasonló hibaüzenet jelenik meg:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Ha használja a [referencia](resource-group-template-functions-resource.md#reference) vagy [listkeys műveletének](resource-group-template-functions-resource.md#listkeys) a functions és a egy erőforrás, amely nem oldható fel, a következő hibaüzenetet kapja:
+Ha a [Reference](resource-group-template-functions-resource.md#reference) vagy a [listkeys műveletének beolvasása](resource-group-template-functions-resource.md#listkeys) függvényt olyan erőforrással használja, amely nem oldható fel, a következő hibaüzenet jelenik meg:
 
 ```
 Code=ResourceNotFound;
@@ -36,11 +36,11 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Ok
 
-Erőforrás-kezelő erőforrás tulajdonságainak lekéréséhez szükséges, de nem tudja azonosítani az erőforrást az előfizetésében.
+A Resource Managernek le kell kérnie egy erőforrás tulajdonságait, de nem tudja azonosítani az erőforrást az előfizetésében.
 
-## <a name="solution-1---set-dependencies"></a>Függőségek beállítása 1 - megoldás
+## <a name="solution-1---set-dependencies"></a>1\. megoldás – függőségek beállítása
 
-Ha a hiányzó erőforrást, a sablon üzembe helyezéséhez, ellenőrizze, hogy szükséges-e hozzáadjon egy függőséget. Resource Manager üzembe helyezési optimalizálja-erőforrások létrehozását, párhuzamos, amikor csak lehetséges. Ha egy erőforrás egy másik erőforrás után kell telepíteni, szeretné-e használni a **dependsOn** elem a sablonban. Például egy webes alkalmazás üzembe helyezésekor, az App Service-csomag léteznie kell. Ha nem adott meg, hogy a webalkalmazás az App Service-csomag függ, a Resource Manager mindkét erőforrás létrehoz egy időben. Hibaüzenetet kap arról, hogy az App Service csomag erőforrás nem található, mert nem létezik még megkísérelte beállítani egy tulajdonságot a webalkalmazásban. Ez a hiba megakadályozása a függőség beállítása a webalkalmazásban.
+Ha a hiányzó erőforrást a sablonban próbálja telepíteni, ellenőrizze, hogy hozzá kell-e adnia egy függőséget. A Resource Manager optimalizálja az üzembe helyezést az erőforrások párhuzamos létrehozásával, ha lehetséges. Ha egy erőforrást egy másik erőforrás után kell telepíteni, akkor a sablon **dependsOn** elemét kell használnia. Egy webalkalmazás telepítésekor például a App Service tervnek léteznie kell. Ha nem adta meg, hogy a webalkalmazás a App Service-csomagtól függ, a Resource Manager mindkét erőforrást egyszerre hozza létre. Hibaüzenet jelenik meg arról, hogy a App Service-csomag erőforrása nem található, mert még nem létezik, amikor a webalkalmazásban tulajdonságot próbál beállítani. Ezt a hibát a webalkalmazás függőségének beállításával megakadályozhatja.
 
 ```json
 {
@@ -53,29 +53,29 @@ Ha a hiányzó erőforrást, a sablon üzembe helyezéséhez, ellenőrizze, hogy
 }
 ```
 
-Azonban el szeretné kerülni, amelyek nem szükségesek a függőségek beállítása. A szükségtelen függőségekkel rendelkezik, amikor a központi telepítés tartamára meghosszabbítása szerint megakadályozza az erőforrások, amelyek nem a párhuzamos parancsfájlműveletekkel egymástól függenek. Emellett előfordulhat, hogy hozzon létre, amely az üzembe helyezés letiltása körkörös függőségi. A [referencia](resource-group-template-functions-resource.md#reference) függvény és [lista *](resource-group-template-functions-resource.md#list) funkciók az implicit függ a hivatkozott erőforrás hoz létre, ha ennek az erőforrásnak ugyanabban a sablonban telepítve van, és hivatkozik a nevét (nem erőforrás-azonosító ). Ezért előfordulhat, mint a függőségek megadott további függőségek a **dependsOn** tulajdonság. A [resourceId](resource-group-template-functions-resource.md#resourceid) függvény létrehozása egy implicit függőség nem, vagy ellenőrizze, hogy létezik-e az erőforrás. A [referencia](resource-group-template-functions-resource.md#reference) függvény és [lista *](resource-group-template-functions-resource.md#list) funkciók nem létrehozása egy implicit függőség, amikor az erőforrás hivatkozik az erőforrás-azonosítója. Hozzon létre egy implicit függőség, át kell adnia ugyanazt a sablont az üzembe helyezett erőforrás nevére.
+Azonban érdemes elkerülni a nem szükséges függőségek beállítását. Ha szükségtelen függőségekkel rendelkezik, akkor meghosszabbítja a telepítés időtartamát azáltal, hogy megakadályozza, hogy azok az erőforrások, amelyek nem függnek egymástól, párhuzamosan legyenek telepítve. Emellett körkörös függőségeket is létrehozhat, amelyek letiltják az üzemelő példányt. A [hivatkozási](resource-group-template-functions-resource.md#reference) függvény és a [lista *](resource-group-template-functions-resource.md#list) függvények implicit függőséget hoznak létre a hivatkozott erőforráson, ha az adott erőforrás ugyanabban a sablonban van telepítve, és a neve (nem erőforrás-azonosító) hivatkozik rá. Ezért előfordulhat, hogy több függősége van, mint a **dependsOn** tulajdonságban megadott függőségek. A [resourceId](resource-group-template-functions-resource.md#resourceid) függvény nem hoz létre implicit függőséget, vagy ellenőrzi, hogy az erőforrás létezik-e. A [hivatkozási](resource-group-template-functions-resource.md#reference) függvény és a [lista *](resource-group-template-functions-resource.md#list) függvények nem hoznak létre implicit függőséget, ha az erőforrást az erőforrás-azonosítója hivatkozik rá. Implicit függőség létrehozásához adja meg az ugyanabban a sablonban üzembe helyezett erőforrás nevét.
 
-Függőségi problémák megjelenésekor kell betekintést nyerhet az erőforrások üzembe helyezésének sorrendjét. Üzembehelyezési műveletek sorrendjét megtekintése:
+Ha megtekinti a függőségi problémákat, meg kell ismernie az erőforrás-telepítés sorrendjét. Az üzembe helyezési műveletek sorrendjének megtekintése:
 
 1. Válassza ki az erőforráscsoport üzembe helyezési előzményeit.
 
-   ![Válassza ki az üzembe helyezési előzmények](./media/resource-manager-not-found-errors/select-deployment.png)
+   ![Telepítési előzmények kiválasztása](./media/resource-manager-not-found-errors/select-deployment.png)
 
-2. Jelölje ki a telepítést az előzményekben tekintheti át, és válassza ki **események**.
+2. Válasszon ki egy központi telepítést az előzmények közül, és válassza az **események**lehetőséget.
 
-   ![Válassza ki a központi telepítési események](./media/resource-manager-not-found-errors/select-deployment-events.png)
+   ![telepítési események kiválasztása](./media/resource-manager-not-found-errors/select-deployment-events.png)
 
-3. Vizsgálja meg az egyes erőforrások események sorozatát. Az egyes műveletek állapota figyelmet fordítania. Ha például az alábbi képen látható három tárfiókot tartalmaz, amelyek telepítve párhuzamosan. Figyelje meg, hogy a három tárfiókot tartalmaz egy időben elindulnak.
+3. Vizsgálja meg az egyes erőforrások eseményeinek sorozatot. Ügyeljen az egyes műveletek állapotára. Az alábbi képen például három, párhuzamosan telepített Storage-fiók látható. Figyelje meg, hogy a három Storage-fiók egyszerre van elindítva.
 
    ![párhuzamos üzembe helyezés](./media/resource-manager-not-found-errors/deployment-events-parallel.png)
 
-   A következő képen három tárfiókot tartalmaz, amelyek nincsenek telepítve párhuzamosan. A második tárfiók függ, hogy az első storage-fiókját, és a harmadik tárfiók attól függ, a második tárfiók. Az első storage-fiók elindult, fogadja, és befejeződött a következő indítása előtt.
+   A következő képen három olyan Storage-fiók látható, amelyek nincsenek párhuzamosan telepítve. A második Storage-fiók az első Storage-fióktól függ, és a harmadik Storage-fiók a második Storage-fióktól függ. Az első Storage-fiók elindítva, elfogadva és befejeződött a következő elindítása előtt.
 
-   ![egymást követő üzembe helyezési](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
+   ![szekvenciális üzembe helyezés](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>2\. megoldás erőforrás le másik erőforráscsoportba
+## <a name="solution-2---get-resource-from-different-resource-group"></a>2\. megoldás – erőforrás beolvasása különböző erőforráscsoporthoz
 
-Ha az erőforrás már létezik egy másik erőforráscsoportban található, mint a folyamatban való üzembe helyezése, használja a [resourceId függvény](resource-group-template-functions-resource.md#resourceid) beolvasni az erőforrás a teljes nevet.
+Ha az erőforrás létezik egy másik erőforráscsoporthoz, mint amelyet a központilag telepített, akkor a [resourceId függvénnyel](resource-group-template-functions-resource.md#resourceid) kérheti le az erőforrás teljes nevét.
 
 ```json
 "properties": {
@@ -84,9 +84,9 @@ Ha az erőforrás már létezik egy másik erőforráscsoportban található, mi
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>Megoldás 3. Ellenőrizze a hivatkozási funkció
+## <a name="solution-3---check-reference-function"></a>3\. megoldás – a hivatkozás-ellenőrzési funkció
 
-Keressen egy kifejezés, amely tartalmazza a [referencia](resource-group-template-functions-resource.md#reference) függvény. Az erőforrás-e ugyanazt a sablont, erőforráscsoportban és előfizetésben található, adja meg az értékeket függ. Ellenőrizze, hogy Ön adja-e a szükséges paraméterértékeket a forgatókönyvhöz. Ha az erőforrás egy másik erőforráscsoportban található, adja meg a teljes erőforrás-azonosítója. Ha például való hivatkozáshoz egy storage-fiók egy másik erőforráscsoportban található, használja:
+Keresse meg a [hivatkozási](resource-group-template-functions-resource.md#reference) függvényt tartalmazó kifejezést. Az Ön által megadott értékek attól függően változnak, hogy az erőforrás ugyanabban a sablonban, erőforráscsoporthoz és előfizetésben található-e. Ellenőrizze, hogy az adott forgatókönyvhöz szükséges paramétereket adja meg. Ha az erőforrás egy másik erőforráscsoporthoz esik, adja meg a teljes erőforrás-azonosítót. Ha például egy másik erőforráscsoport Storage-fiókjára szeretne hivatkozni, használja a következőt:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

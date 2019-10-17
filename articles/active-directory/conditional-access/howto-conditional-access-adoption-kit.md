@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075274"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430054"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD feltételes hozzáférés bevezetése
 
@@ -33,7 +33,7 @@ Az Azure AD feltételes hozzáférés használatának legfontosabb előnyei a k�
 * **Címek megfelelősége és szabályozása:** Az alkalmazáshoz kapcsolódó hozzáférési kérelmek és jóváhagyások naplózása, valamint az alkalmazások általános használatának megismerése egyszerűbb az Azure AD-ben, mivel a natív naplókat támogat minden egyes alkalmazás-hozzáférési kérelemhez. A naplózás magában foglalja a kérelmező identitását, a kért dátumot, az üzleti indoklást, a jóváhagyási állapotot és a jóváhagyó identitását. Ezek az adatok egy API-ból is elérhetők, amely lehetővé teszi az adatok importálását egy olyan biztonsági incidensre és esemény-figyelési (SIEM) rendszerre, amely választható.
 * **Kezelés díja:** A hozzáférési szabályzatok az Azure AD-be való áthelyezésével csökkenthető a feltételes hozzáférésre vonatkozó egyéni vagy helyszíni megoldások, például a Active Directory összevonási szolgáltatások (AD FS) (ADFS), ami csökkenti az infrastruktúra futtatásának költségeit.
 
-## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
+## <a name="customer-case-studies"></a>Ügyfél-esettanulmányok
 
 Ismerje meg, hogy a legtöbb szervezet hogyan használja az Azure AD feltételes hozzáférést az automatizált hozzáférés-vezérlési döntések definiálásához és megvalósításához a feltételek alapján a felhőalapú alkalmazások eléréséhez. A következő Kiemelt történetek bemutatják, hogyan teljesítik ezeket az ügyfelek igényeit.
 
@@ -43,16 +43,16 @@ Ismerje meg, hogy a legtöbb szervezet hogyan használja az Azure AD feltételes
 
 Ha többet szeretne megtudni az Azure AD feltételes hozzáférésével kapcsolatos ügyfelekkel és partneri tapasztalatokkal kapcsolatban, látogasson el ide [: az Azure-ban megjelenő csodálatos dolgok](https://azure.microsoft.com/case-studies/?service=active-directory).
 
-## <a name="announcements"></a>Közlemények
+## <a name="announcements"></a>Bejelentések
 
-Az Azure AD folyamatosan fejlesztései kap. Ha naprakészen szeretne maradni a legújabb fejleményekkel, tekintse meg az Újdonságok [a Azure Active Directory?](../fundamentals/whats-new.md) című témakört.
+Az Azure AD folyamatosan fejleszti a fejlesztéseket. Ha naprakészen szeretne maradni a legújabb fejleményekkel, tekintse meg az Újdonságok [a Azure Active Directory?](../fundamentals/whats-new.md) című témakört.
 
 A legújabb blogok a technikai Közösség és a Microsoft Identity Division:
 
 * Szeptember 24., 2018 [Azure Active Directory feltételes hozzáférés Azure Databricks](https://azure.microsoft.com/updates/azure-active-directory-conditional-access-in-azure-databricks/)
 * 2018. szeptember 21-én [Az Azure ad feltételes hozzáférés egyéni vezérlői nyilvános előzetes verzióban érhetők el](https://azure.microsoft.com/updates/azure-ad-conditional-access-custom-controls-are-in-public-preview/)
 * Szeptember 21., 2018, az [Azure ad feltételes hozzáférés támogatása a korlátozott hozzáféréshez Microsoft Cloud app Security mostantól elérhető](https://azure.microsoft.com/updates/azure-ad-conditional-access-support-for-limited-access-with-microsoft-cloud-app-security-is-now-available/)
-* Szeptember 21., 2018 [, Azure ad feltételes hozzáférés: Az iOS-és Android-platformok felügyelt böngésző általi támogatása mostantól előzetes verzióban](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/)
+* Szeptember 21., 2018, [Azure ad feltételes hozzáférés: felügyelt böngésző támogatása iOS/Android platformokhoz most előzetes](https://azure.microsoft.com/updates/azure-ad-conditional-access-managed-browser-support-for-ios-android-platforms-now-in-preview/) verzióban
 * Szeptember 21., 2018. az [Azure ad feltételes hozzáférése az ország-kódokhoz nyilvános előzetes](https://azure.microsoft.com/updates/azure-ad-conditional-access-for-country-codes-is-in-public-preview/) verzióban érhető el
 * Szeptember 21., 2018, [Az Azure ad használati feltételei mostantól elérhetők](https://azure.microsoft.com/updates/azure-ad-terms-of-use-now-available/)
 
@@ -69,7 +69,6 @@ Az alábbi hivatkozásokat követve megismerheti az Azure AD feltételes hozzáf
 
 Emellett tekintse meg az alábbi hivatkozásokat, amelyekkel biztosíthatja az Azure Active Directory-hoz integrált összes szolgáltatás elérését.
 
-* [Mi az alapkonfiguráció-védelem (előzetes verzió)?](baseline-protection.md) Az alapkonfiguráció védelme biztosítja, hogy legalább az alapszintű biztonság engedélyezve legyen a Azure Active Directory környezetben.
 * [Identitás-és eszköz-hozzáférési konfigurációk](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations). Ismerteti, hogyan lehet biztonságos hozzáférést beállítani a felhőalapú szolgáltatásokhoz Enterprise Mobility + Security termékeken keresztül egy javasolt környezet és konfiguráció megvalósításával, beleértve a feltételes hozzáférési szabályzatok és a kapcsolódó képességek előírt készletét.
 * [Azure Active Directory feltételes hozzáférési beállítások leírása](technical-reference.md). Tanulni
    * Milyen alkalmazások használják a feltételes hozzáférést?
@@ -94,7 +93,7 @@ Tekintse meg a következő feltételes hozzáférési tanfolyamokat, és még t�
 * Pluralsight.com: [Identitáskezelés tervezése Microsoft Azureban](https://www.pluralsight.com/courses/microsoft-azure-identity-management-design)
    * "Ez a tanfolyam végigvezeti az Identitáskezelés az Azure AD-vel való megtervezéséhez szükséges legfontosabb elemeken." Az Azure AD feltételes hozzáférését a "szerepkörök és Access Control az Azure AD-vel" modullal tárgyaljuk.
 
-* Pluralsight.com: [Tervezési hitelesítés Microsoft Azurehoz](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
+* Pluralsight.com: [Microsoft Azure-alapú hitelesítés tervezése](https://www.pluralsight.com/courses/microsoft-azure-authentication-design)
    * "Ez a tanfolyam azt ismerteti, hogyan használható az Azure AD az összes felhőalapú hitelesítési követelmény megoldásához." Az Azure AD feltételes hozzáférése a "különböző forgatókönyvek hitelesítési követelményei" modulra vonatkozik.
 
 * Pluralsight.com: [Microsoft Azure kialakításának engedélyezése](https://www.pluralsight.com/courses/microsoft-azure-authorization-design)
@@ -116,7 +115,7 @@ Tekintse meg a következő feltételes hozzáférési tanfolyamokat, és még t�
 * Közzétette: 2018. szeptember 18., [az alkalmazások áttelepítésének forrásai Azure Active Directory](../manage-apps/migration-resources.md)
    * Ez a tanulmány az alkalmazások hozzáférésének és hitelesítésének Azure Active Directory (Azure AD) való áttelepíteni kívánt erőforrások listáját tartalmazza.
 
-* Közzétéve 2018 [. július 12-én Azure Security and Compliance Blueprint: A brit hivatalos számítási feladatokhoz tartozó Péter webalkalmazás-üzemeltetés](../../security/blueprints/ukofficial-paaswa-overview.md)
+* Published július 12., 2018 [Azure Security and Compliance Blueprint: Péter webalkalmazás üzemeltetése az Egyesült Királyság hivatalos Munkaterhelései számára](../../security/blueprints/ukofficial-paaswa-overview.md)
    * Az Azure-tervrajzok olyan útmutató dokumentumokból és automatizálási sablonokból állnak, amelyek felhőalapú architektúrákat helyeznek üzembe olyan forgatókönyvekhez, amelyek akkreditációs vagy megfelelőségi követelményekkel rendelkeznek.
 
 ## <a name="guidance-for-it-administrators"></a>Útmutató rendszergazdáknak
@@ -129,32 +128,32 @@ Itt találhat hasznos hivatkozásokat az első lépésekhez:
 
 * [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](best-practices.md)
 * [Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez](../governance/conditional-access-exclusion.md)
-* [Útmutató: A feltételes hozzáférési telepítés megtervezése Azure Active Directory](plan-conditional-access.md)
-* [Rövid útmutató: MFA megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)
-* [Rövid útmutató: Használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)
-* [Rövid útmutató: Hozzáférés letiltása a Azure Active Directory feltételes hozzáféréssel rendelkező munkamenet-kockázat észlelésekor](app-sign-in-risk.md)
+* [Útmutató: a feltételes hozzáférési telepítés megtervezése Azure Active Directory](plan-conditional-access.md)
+* [Rövid útmutató: többtényezős hitelesítés megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel](app-based-mfa.md)
+* [Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt](require-tou.md)
+* [Gyors útmutató: hozzáférés letiltása, ha a rendszer a munkamenet kockázatát észleli Azure Active Directory feltételes hozzáféréssel](app-sign-in-risk.md)
 * [Azure AD feltételes hozzáférés – gyakori kérdések](faqs.md)
    * További kérdésekért tekintse meg az [MSDN fórumot](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD&sort=relevancedesc&brandIgnore=True&searchTerm=password+reset+azure)is.
    * Ha nem találja a választ a problémára, a támogatási csapatunk mindig szívesen segít Önnek. [Vegye fel a kapcsolatot a Microsoft ügyfélszolgálatával](../authentication/active-directory-passwords-troubleshoot.md#contact-microsoft-support).
 
 ### <a name="tutorials"></a>Oktatóanyagok
 
-* [**QuickStart MFA megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel**](app-based-mfa.md)
+* [**Rövid útmutató: többtényezős hitelesítés megkövetelése adott alkalmazásokhoz Azure Active Directory feltételes hozzáféréssel**](app-based-mfa.md)
    * Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy Azure AD feltételes hozzáférési szabályzatot, amely megköveteli a többtényezős hitelesítést egy kiválasztott felhőalapú alkalmazás számára a környezetben.
 
-* [**QuickStart Használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt**](require-tou.md)
+* [**Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt**](require-tou.md)
    * Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy olyan Azure AD feltételes hozzáférési szabályzatot, amely megköveteli, hogy a környezetében egy kiválasztott felhőalapú alkalmazásnak el kell fogadnia a felhasználási feltételeket.
 
-* [**QuickStart Hozzáférés letiltása a Azure Active Directory feltételes hozzáféréssel rendelkező munkamenet-kockázat észlelésekor**](app-sign-in-risk.md)
+* [**Gyors útmutató: hozzáférés letiltása, ha a rendszer a munkamenet kockázatát észleli Azure Active Directory feltételes hozzáféréssel**](app-sign-in-risk.md)
    * Ez a rövid útmutató bemutatja, hogyan konfigurálhat egy feltételes hozzáférési szabályzatot, amely letiltja a bejelentkezést a beállított bejelentkezési kockázati szint észlelésekor.
 
-* [Oktatóanyag: **A többtényezős hitelesítést igénylő klasszikus szabályzat áttelepítését a Azure Portal**](policy-migration-mfa.md)
+* [Oktatóanyag: a **többtényezős hitelesítést igénylő klasszikus szabályzat áttelepítését a Azure Portal**](policy-migration-mfa.md)
    * Ez az oktatóanyag bemutatja, hogyan telepíthet át egy olyan klasszikus szabályzatot, amely a többtényezős hitelesítést (MFA) igényli a felhőalapú alkalmazásokhoz.
 
 ## <a name="end-user-readiness-and-communication"></a>Végfelhasználói készültség és kommunikáció
 
 A feltételes hozzáférés más Azure AD-funkciókat is használ, amelyek befolyásolhatják a végfelhasználói élményt. Használhatja például az Azure multi-Factor Authenticationt a felhasználók erős hitelesítésének engedélyezéséhez. Ebben az esetben az Azure MFA végfelhasználói sablonjait fogja használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Indítsa el a telepítést a [feltételes hozzáférés telepítési tervezési dokumentációjában](plan-conditional-access.md).

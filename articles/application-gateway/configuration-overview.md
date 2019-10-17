@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177436"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389970"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -48,7 +48,7 @@ Azt javasoljuk, hogy legalább/28 alhálózat-alhálózati méretet használjon.
 
 Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. Több korlátozás is létezik:
 
-- Kivételeket kell tartalmaznia a bejövő forgalomra vonatkozóan a 65503-65534-es portokon a Application Gateway v1 SKU esetében, valamint a 65200-65535-es portokat a v2 SKU-hoz. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A külső entitások, beleértve az átjárók ügyfeleit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
+- Engedélyeznie kell a bejövő internetes forgalmat a 65503-65534-as TCP-portokon a Application Gateway v1 SKU-hoz *, valamint a*65200-65535-es TCP-portokat a v2 SKU-hoz a célként megadott alhálózattal. Ez a porttartomány az Azure-infrastruktúra kommunikációja esetén szükséges. Ezeket a portokat az Azure-tanúsítványok védik (zárolják). A külső entitások, beleértve az átjárók ügyfeleit, nem indíthatnak módosításokat a végpontokon a megfelelő tanúsítványok nélkül.
 
 - A kimenő internetkapcsolatot nem lehet blokkolni. A NSG alapértelmezett kimenő szabályai lehetővé teszik az internetkapcsolatot. A következő megoldást javasoljuk:
 

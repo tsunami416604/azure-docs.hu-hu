@@ -1,5 +1,5 @@
 ---
-title: Leküldéses értesítések küldése Xamarin.Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
+title: Leküldéses értesítések küldése Xamarin. Android-alkalmazásokba az Azure Notification Hubs használatával | Microsoft Docs
 description: Ebben az oktatóanyagban elsajátíthatja, hogy hogyan használható az Azure Notification Hubs leküldéses értesítések küldésére Xamarin Android-alkalmazásokba.
 author: sethmanheim
 manager: femila
@@ -17,14 +17,14 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: cba84b0f07db3a69cc964e47657a3f6b64659e6a
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213563"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387651"
 ---
-# <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések Xamarin. Android-alkalmazásokhoz az Azure Notification Hubs használatával
+# <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése a Xamarin. Android-alkalmazásoknak Notification Hubs használatával
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -87,12 +87,12 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     ![Csomag neve a GCM-ben](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 4. Állítsa be a projekt cél Android-verzióját az **android 9,0 (Pie)** értékre a következő lépések végrehajtásával: 
     1. Kattintson a jobb gombbal a projektre, és válassza a **Tulajdonságok**lehetőséget. 
-    1. A fordításhoz az **Android-verzió használatával: (Cél-keretrendszer)** mezőben válassza az **Android 9,0 (torta)** lehetőséget. 
+    1. Az **Android-verzióval való fordításhoz: (cél keretrendszer)** mezőben válassza az **Android 9,0 (torta)** lehetőséget. 
     1. Válassza az **Igen** lehetőséget az üzenetablakban a cél keretrendszer módosításának folytatásához.
 1. Adja hozzá a szükséges NuGet-csomagokat a projekthez a következő lépések végrehajtásával:
     1. Kattintson a jobb gombbal a projektre, és válassza a **Manage Nuget Packages…** (NuGet-csomagok kezelése) lehetőséget.
     1. Váltson a **telepített** lapra, válassza a **Xamarin. Android. support. design**lehetőséget, majd a jobb oldali ablaktáblán kattintson a **frissítés** elemre a csomag legújabb verzióra való frissítéséhez.
-    1. Váltson a **Tallózás** lapra. Keressen rá a **Xamarin.GooglePlayServices.Base** kifejezésre. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
+    1. Váltson a **Tallózás** lapra. keressen rá a **Xamarin. GooglePlayServices. Base**kifejezésre. A találatok listájában válassza a **Xamarin.GooglePlayServices.Base** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
 
         ![Google Play-szolgáltatások NuGet-csomagjai](./media/partner-xamarin-notification-hubs-android-get-started/google-play-services-nuget.png)
     6. A **NuGet Package Manager** (NuGet-csomagkezelő) ablakban keressen rá a **Xamarin.Firebase.Messaging** kifejezésre. A találatok listájában válassza a **Xamarin.Firebase.Messaging** elemet. Ezt követően válassza az **Install** (Telepítés) parancsot.
@@ -100,9 +100,9 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 ### <a name="add-the-google-services-json-file"></a>A Google-szolgáltatás JSON-fájljának hozzáadása
 
-1. Másolja a `google-services.json` letöltött fájlt a Google Firebase-konzolról a projekt mappájába.
-2. Hozzáadás `google-services.json` a projekthez.
-3. Válassza `google-services.json` a **megoldáskezelő** ablakot.
+1. Másolja a Google Firebase-konzolról letöltött `google-services.json` fájlt a projekt mappájába.
+2. Adja hozzá a `google-services.json` értéket a projekthez.
+3. A **megoldáskezelő** ablakban válassza a `google-services.json` elemet.
 4. A **Properties** (Tulajdonságok) panelen a Build Action (Felépítési művelet) számára állítsa be a **GoogleServicesJson** értéket. Ha nem látja a **GoogleServicesJson** műveletet, zárja be a Visual Studiót, indítsa el újra, nyissa meg újra a projektet, és próbálkozzon újból.
 
     ![GoogleServicesJson felépítési művelet](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
@@ -111,7 +111,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Regisztráció a Firebase Cloud Messagingben
 
-1. Nyissa `AndroidManifest.xml` meg a fájlt, és `<receiver>` szúrja be `<application>` a következő elemeket a elembe:
+1. Nyissa meg a `AndroidManifest.xml` fájlt, és szúrja be az alábbi `<receiver>` elemeket a `<application>` elembe:
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -135,10 +135,10 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 3. Gyűjtse össze az alábbi információikat az Android-alkalmazásra és az értesítési központra vonatkozóan:
 
-   * **Figyelési kapcsolatok karakterlánca**: A [Azure Portal]irányítópultján válassza a **kapcsolatok karakterláncok megtekintése**lehetőséget. Másolja ki `DefaultListenSharedAccessSignature` az értékhez tartozó kapcsolatok karakterláncát.
-   * **Hub neve**: A központ neve a Azure Portalból []. Például: *mynotificationhub2*.
+   * **Figyelési kapcsolati sztring**: Az [Azure Portalra] irányítópultján válassza a **Kapcsolati sztringek megtekintése** elemet. Másolja az értékhez a `DefaultListenSharedAccessSignature` kapcsolatok karakterláncát.
+   * **Központ neve**: A központ neve az [Azure Portalra]. Például: *mynotificationhub2*.
 4. A **megoldáskezelő** ablakban kattintson a jobb gombbal a **projektre**, válassza a **Hozzáadás**, majd a **Class (osztály**) lehetőséget.
-5. Hozzon `Constants.cs` létre egy osztályt a Xamarin projekt számára, és adja meg a következő állandó értékeket a osztályban. A helyőrzőket cserélje le az értékekkel.
+5. Hozzon létre egy `Constants.cs` osztályt a Xamarin projekt számára, és adja meg a következő állandó értékeket a osztályban. A helyőrzőket cserélje le az értékekkel.
 
     ```csharp
     public static class Constants
@@ -148,7 +148,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-6. Adja hozzá a következő using utasításokat `MainActivity.cs`a következőkhöz:
+6. Adja hozzá a következő using utasításokat a `MainActivity.cs` értékhez:
 
     ```csharp
     using Android.Util;
@@ -210,7 +210,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     }
     ```
 
-10. A `MainActivity.cs`alkalmazásban adja hozzá az alábbi `OnCreate` kódot `base.OnCreate(savedInstanceState)`a következőhöz:
+10. A `MainActivity.cs` mezőben adja hozzá a következő kódot a `OnCreate` értékhez `base.OnCreate(savedInstanceState)` után:
 
     ```csharp
     if (Intent.Extras != null)
@@ -229,8 +229,8 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     CreateNotificationChannel();
     ```
 
-15. Adjon hozzá egy nevű `MyFirebaseMessagingService` osztályt a projekthez. 
-16. Adja hozzá az alábbi using utasításokat `MyFirebaseMessagingService.cs`a következőhöz:.
+15. Adjon hozzá egy `MyFirebaseMessagingService` nevű osztályt a projekthez. 
+16. Adja hozzá a következő using utasításokat a `MyFirebaseMessagingService.cs` értékhez.
 
     ```csharp
     using Android.Util;
@@ -239,7 +239,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     using WindowsAzure.Messaging;
     ```
 
-17. Adja hozzá a következőt a Class deklarációhoz, és az osztályának `FirebaseMessagingService`öröklése:
+17. Adja hozzá a következőt a Class deklarációhoz, és az osztályának öröklése `FirebaseMessagingService`:
 
     ```csharp
     [Service]
@@ -248,7 +248,7 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Adja hozzá a következő kódot `MyFirebaseMessagingService.cs` a fogadott üzenetek feldolgozásához. 
+18. Adja hozzá a következő kódot a `MyFirebaseMessagingService.cs` értékhez a fogadott üzenetek feldolgozásához. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -318,13 +318,13 @@ Az értesítési központ konfigurálva van az FCM-mel való együttműködésre
 
 ## <a name="send-test-notification-from-the-azure-portal"></a>Tesztértesítés küldése az Azure Portalról
 
-Az [Azure Portal] **Tesztküldés** lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
+Az [Azure Portalra] **Tesztküldés** lehetőségével tesztelheti az alkalmazásban az értesítések fogadását. A parancs egy leküldéses tesztértesítést küld az eszközre.
 
 ![Azure Portal – Küldés tesztelése](media/partner-xamarin-notification-hubs-android-get-started/send-test-notification.png)
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha egy könyvtár nem érhető el a háttérhez, a REST API közvetlenül is használhatja az értesítési üzenetek küldéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált Android-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott Android-eszközökre, lépjen tovább a következő oktatóanyagra:
 
@@ -361,7 +361,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio és Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

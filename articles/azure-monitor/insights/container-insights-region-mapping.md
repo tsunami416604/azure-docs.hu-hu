@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor tárolók régióban leképezések
-description: Ez a cikk ismerteti a tárolók, a Log Analytics-munkaterületet és egyéni mérőszámok az Azure Monitor között támogatott régióban leképezések.
+title: Azure Monitor a tárolók régiójának leképezéséhez
+description: Ez a cikk a Azure Monitor for containers, a Log Analytics munkaterület és az egyéni metrikák között támogatott régió-hozzárendeléseket ismerteti.
 services: azure-monitor
 ms.service: azure-monitor
 ms.workload: infrastructure-services
@@ -9,31 +9,31 @@ ms.author: magoedte
 ms.date: 06/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 481a2a400be4e983e0a2337a200324061494efa1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518078"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388183"
 ---
-# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>A tárolók az Azure Monitor által támogatott régióban leképezések
+# <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>A tárolók Azure Monitor által támogatott régió-hozzárendelések
 
- Azure Monitor-tárolókhoz engedélyezésekor csak bizonyos régiókban támogatottak összekapcsolása a Log Analytics-munkaterület és a egy AKS-fürtöt, és az Azure Monitor egyéni metrikákat gyűjt benyújtani.
+ A tárolók Azure Monitorának engedélyezésekor csak bizonyos régiók támogatottak egy Log Analytics-munkaterület és egy AK-fürt összekapcsolásához, valamint az Azure Monitor elküldött egyéni metrikák összegyűjtéséhez.
 
-## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics-munkaterület támogatott leképezések
+## <a name="log-analytics-workspace-supported-mappings"></a>Log Analytics munkaterület által támogatott leképezések
 
-Az AKS-fürt erőforrásainak vagy a Log Analytics-munkaterület más régiókban is lehetnek, és az alábbi táblázatban láthatók a leképezéseket.
+Az AK-fürterőforrás vagy Log Analytics munkaterület más régiókban is lehet, és a következő táblázat a leképezéseket mutatja be.
 
-|**AKS-fürt régió** | **Log Analytics-munkaterület régió** |
+|**AK-fürt régiója** | **Log Analytics munkaterület-régió** |
 |-----------------------|------------------------------------|
 |**Afrika** | |
 |SouthAfricaNorth |WestEurope |
 |SouthAfricaWest |WestEurope |
 |**Ausztrália** | |
-|Kelet-Ausztrália |Kelet-Ausztrália |
+|AustraliaEast |AustraliaEast |
 |AustraliaCentral |AustraliaCentral |
 |AustraliaCentral2 |AustraliaCentral |
-|Kelet-Ausztrália |Kelet-Ausztrália |
+|AustraliaEast |AustraliaEast |
 |**Ázsia és a Csendes-óceáni térség** | |
 |EastAsia |EastAsia |
 |SoutheastAsia |SoutheastAsia |
@@ -65,14 +65,15 @@ Az AKS-fürt erőforrásainak vagy a Log Analytics-munkaterület más régiókba
 |EastUS2 |EastUS2 |
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
-|WestCentralUS<sup>1</sup>|USA keleti régiója<sup>1</sup>|
+|<sup>1</sup> . WestCentralUS|<sup>1</sup> . EastUS|
+|US Gov Virginia |US Gov Virginia |
 
-<sup>1</sup> kapacitás korlátozások, mert a régió nem érhető el új erőforrás létrehozásakor. Ez magában foglalja a Log Analytics-munkaterületet. A régió már létező kapcsolt erőforrások azonban továbbra is működik.
+<sup>1</sup> a kapacitás korlátozásai miatt a régió nem érhető el új erőforrások létrehozásakor. Ez Log Analytics munkaterületet tartalmaz. A régióban azonban a már meglévő társított erőforrások továbbra is működőképesek maradnak.
 
-## <a name="custom-metrics-supported-regions"></a>Egyéni metrikák támogatott régiók
+## <a name="custom-metrics-supported-regions"></a>Egyéni metrikák támogatott régiói
 
-Metrikákat gyűjt az Azure Kubernetes-szolgáltatások (AKS)-fürtök csomópontjai, és csak az a következő egyéni mérőszámokként közzététel podok támogatott [Azure-régiók](../platform/metrics-custom-overview.md#supported-regions).
+Az Azure Kubernetes Services (ak) fürtök csomópontjaiból és hüvelyből származó metrikák összegyűjtése csak az alábbi [Azure-régiókban](../platform/metrics-custom-overview.md#supported-regions)támogatott egyéni metrikák való közzétételre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az AKS-fürt a figyelés megkezdése előtt tekintse át a [engedélyezése az Azure Monitor-tárolókhoz](container-insights-onboard.md) engedélyezése a figyelési követelmények és választható módszerek.  
+Az AK-fürt figyelésének megkezdéséhez tekintse át az [Azure monitor a tárolók számára című témakört](container-insights-onboard.md) , és Ismerje meg a figyelés engedélyezésének követelményeit és rendelkezésre álló módszereit.  

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 119c46ac2d1d34d86a6bfb9f75384f262f89219b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373386"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429451"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -81,7 +81,7 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD kiépítési szolgáltatás (SCIM)
 
-Az Azure AD-kiépítési szolgáltatások a következőt használják: [SCIM] (https://aka.ms/SCIMOverview, a sok Identity Provider által támogatott protokoll (IDP). Azt javasoljuk, hogy az Azure AD kiépítési szolgáltatását használja, ha az Azure AD mellett szeretné támogatni a IDP-t, mivel bármely SCIM-kompatibilis identitásszolgáltató csatlakozhat a SCIM-végponthoz.
+Az Azure AD-kiépítési szolgáltatások a [scim](https://aka.ms/SCIMOverview)-t, az iparági szabványokat használják számos Identity Provider (IDP) és alkalmazások (például Slack, g Suite, Dropbox) által támogatott üzembe helyezéshez. Azt javasoljuk, hogy az Azure AD kiépítési szolgáltatását használja, ha az Azure AD mellett szeretné támogatni a IDP-t, mivel bármely SCIM-kompatibilis identitásszolgáltató csatlakozhat a SCIM-végponthoz. Egy egyszerű/User-végpont létrehozása nélkül is engedélyezheti a kiépítést, anélkül, hogy a saját szinkronizálási motorját kellene fenntartania. 
 
 Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további információkért lásd: 
 
@@ -106,16 +106,6 @@ További információ a kiépítés Microsoft Graph használatáról:
 * [Microsoft Graph hitelesítés áttekintése](https://docs.microsoft.com/graph/auth/)
 
 * [A Microsoft Graph első lépései](https://developer.microsoft.com/graph/get-started)
-
-* [A Microsoft Graph API használata](https://docs.microsoft.com/graph/use-the-api)
-
-* [Microsoft Graph Explorer](https://aka.ms/ge) 
-
-* [Microsoft Graph engedélyek referenciája](https://docs.microsoft.com/graph/permissions-reference)
-
-* [Ajánlott eljárások a Microsoft Graph használatáról](https://docs.microsoft.com/graph/best-practices-concept)
-
-* [Kiemelt forgatókönyvek Microsoft Graph](https://developer.microsoft.com/graph/examples)
 
 ## <a name="using-saml-jit-for-provisioning"></a>Az SAML JIT használata az üzembe helyezéshez
 

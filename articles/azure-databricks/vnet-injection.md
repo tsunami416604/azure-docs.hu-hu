@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 07591517211d5334b9bf055d778f00b171e7056f
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263448"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432661"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network"></a>Az Azure Databricks üzembe helyezése virtuális hálózaton
 
@@ -101,7 +101,7 @@ A sablon használatakor nincs szükség az alhálózati forgalom manuális enged
 
 ### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
-Ha hálózati biztonsági csoportokat szeretne létrehozni egy meglévő virtuális hálózathoz szükséges szabályokkal, használja a [hálózati biztonsági csoport sablonját a Databricks VNet injekcióhoz](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection).
+Ha hálózati biztonsági csoportokat szeretne létrehozni egy meglévő virtuális hálózathoz szükséges szabályokkal, használja a [hálózati biztonsági csoport sablonját a Databricks VNet injekcióhoz](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/).
 
 A sablon használatakor nincs szükség az alhálózati forgalom manuális engedélyezési listájának megadására.
 
@@ -153,7 +153,7 @@ Az alhálózati forgalom engedélyezési listája a következő IP-címek haszn�
 |Nyugat-India|Vezérlési sík NAT </br></br>WebApp|104.211.89.81/32 </br></br>104.211.101.14/32|
 |Délkelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
 |Kelet-Ázsia|Vezérlési sík NAT </br></br>WebApp|52.187.0.85/32 </br></br>52.187.145.107/32|
-|Kelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
+|Ausztrália keleti régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Délkelet-Ausztrália|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Ausztrália középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|
 |Ausztrália 2. középső régiója|Vezérlési sík NAT </br></br>WebApp|13.70.105.50/32 </br></br>13.75.218.172/32|

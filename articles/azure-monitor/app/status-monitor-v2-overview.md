@@ -1,6 +1,6 @@
 ---
-title: Az Azure Állapotmonitor v2 áttekintése | Microsoft Docs
-description: A Állapotmonitor v2 áttekintése. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
+title: Az Azure Application Insights Agent áttekintése | Microsoft Docs
+description: A Application Insights-ügynök áttekintése. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 services: application-insights
 documentationcenter: .net
 author: TimothyMothra
@@ -12,23 +12,28 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 294b0d2d91650f33f0b92179a069a8c7cd845525
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286441"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389836"
 ---
-# <a name="status-monitor-v2"></a>Állapotmonitor v2
+# <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>A helyszíni kiszolgálók Azure Monitor Application Insights ügynökének üzembe helyezése
 
-Állapotmonitor v2 a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)közzétett PowerShell-modul.
+> [!IMPORTANT]
+> Ez az útmutató a Application Insights-ügynök helyszíni és nem Azure-beli Felhőbeli üzembe helyezéséhez ajánlott. Az [Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport üzembe helyezésének](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)ajánlott módszere.
+
+Application Insights ügynök (korábbi nevén Állapotmonitor v2) a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)közzétett PowerShell-modul.
 Lecseréli [Állapotmonitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-A modul az IIS szolgáltatásban üzemeltetett .NET-webalkalmazások kódolását teszi lehetővé.
 A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) követheti az alkalmazást.
+
+> [!NOTE]
+> A modul jelenleg csak az IIS-ben üzemeltetett .NET-webalkalmazások Code uninstrumentation-alapú rendszerállapotát támogatja. SDK használata ASP.NET Core, Java és Node. js-alkalmazásokhoz.
 
 ## <a name="powershell-gallery"></a>PowerShell-galéria
 
-Állapotmonitor v2 itt található: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights ügynök itt található: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![PowerShell-galéria](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -54,9 +59,9 @@ A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.m
 
 ## <a name="faq"></a>Gyakori kérdések
 
-- Támogatja a Állapotmonitor v2 a proxy telepítéseit?
+- Támogatja a Application Insights ügynök a proxy telepítéseit?
 
-  *Igen*. A Állapotmonitor v2 letöltése több módon is lehetséges. Ha a számítógép rendelkezik internet-hozzáféréssel, `-Proxy` paraméterek használatával bejelentkezhet a PowerShell-galériaba.
+  *Igen*. Application Insights-ügynök letöltése több módon is lehetséges. Ha a számítógép rendelkezik internet-hozzáféréssel, `-Proxy` paraméterek használatával bejelentkezhet a PowerShell-galériaba.
 Manuálisan is letöltheti a modult, és telepítheti a számítógépre, vagy közvetlenül is használhatja azt.
 Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed-instructions.md)ismertetik.
 

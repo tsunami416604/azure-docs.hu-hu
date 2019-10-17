@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027817"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387375"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Adatfolyam-hibakeresési mód leképezése
 
@@ -22,11 +22,11 @@ ms.locfileid: "72027817"
 
 Azure Data Factory a leképezési adatfolyam hibakeresési módja lehetővé teszi, hogy interaktív módon figyelje az adatalakzatok átalakítóját az adatfolyamatok létrehozásakor és hibakeresése során. A hibakeresési munkamenet egyaránt használható az adatfolyam-tervezési munkamenetekben, valamint az adatfolyamatok hibakeresési folyamatának végrehajtása során. A hibakeresési mód bekapcsolásához használja a tervezési felület tetején található "adatfolyam-hibakeresés" gombot.
 
-![Hibakeresési csúszka](media/data-flow/debugbutton.png "hibakeresési csúszkája")
+![Hibakeresési csúszka](media/data-flow/debugbutton.png "Hibakeresési csúszka")
 
 A csúszka bekapcsolását követően meg kell adnia, hogy melyik Integration Runtime-konfigurációt kívánja használni. Ha a AutoResolveIntegrationRuntime van kiválasztva, akkor a rendszer egy, a 60 perces élettartammal rendelkező, nyolc maggal rendelkező fürtöt hoz létre. Az adatfolyam-integrációs modulokkal kapcsolatos további információkért lásd: [adatáramlási teljesítmény](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime).
 
-![Debug IR-kijelölés](media/data-flow/debugbutton2.png "hibakeresése – IR kijelölés")
+![IR-kijelölés hibakeresése](media/data-flow/debugbutton2.png "IR-kijelölés hibakeresése")
 
 Ha a hibakeresési mód be van kapcsolva, interaktív módon felépítheti az adatfolyamot egy aktív Spark-fürttel. A munkamenet akkor zárul le, ha a Azure Data Factoryban bekapcsolja a hibakeresést. Tisztában kell lennie azzal, hogy a hibakeresési munkamenet bekapcsolásának ideje alatt a Azure Databricks óradíjat számol fel.
 
@@ -42,17 +42,17 @@ Ha befejezte a hibakeresést, kapcsolja ki a hibakeresési kapcsolót, hogy a Az
 
 A hibakeresési beállítások szerkesztéséhez kattintson a "hibakeresési beállítások" lehetőségre az adatfolyam-vászon eszköztáron. Itt kiválaszthatja az egyes forrás-átalakításokhoz használandó sor korlátját vagy forrását. Az ebben a beállításban szereplő sorokra vonatkozó korlátok csak az aktuális hibakeresési munkamenet esetében érvényesek. Kiválaszthatja az SQL DW-forráshoz használandó átmeneti társított szolgáltatást is. 
 
-![Hibakeresési beállítások](media/data-flow/debug-settings.png "hibakeresési beállításai")
+![Hibakeresési beállítások](media/data-flow/debug-settings.png "Hibakeresési beállítások")
 
 Ha az adatfolyamban vagy valamelyik hivatkozott adatkészletben paraméterek vannak megadva, megadhatja, hogy a hibakeresés során milyen értékeket kell használni a **Parameters (paraméterek** ) lapon.
 
-![Hibakeresési beállítások paraméterei](media/data-flow/debug-settings2.png "hibakeresési beállítások paraméterei")
+![Hibakeresési beállítások paraméterei](media/data-flow/debug-settings2.png "Hibakeresési beállítások paraméterei")
 
 ## <a name="data-preview"></a>Adatelőnézet
 
 Ha a hibakeresés be van kapcsolva, az adatelőnézet lap az alsó panelen jelenik meg. A hibakeresési mód nélkül az adatfolyam csak az egyes átalakítások aktuális metaadatait jeleníti meg a vizsgálat lapon. Az adatelőnézet csak a hibakeresési beállításokban beállított sorok számát kérdezi le. Az adatelőnézet beolvasásához kattintson a **frissítés** gombra.
 
-![Az adatelőnézet](media/data-flow/datapreview.png "adatelőnézete")
+![Adatelőnézet](media/data-flow/datapreview.png "Adatelőnézet")
 
 > [!NOTE]
 > A fájlok forrása csak a megjelenő sorokra korlátozza a beolvasott sorokat. A nagyon nagy adatkészletek esetében ajánlott a fájl egy kis részének elvégzése, és a teszteléshez használni. Egy ideiglenes fájlt is kijelölhet a hibakeresési beállításokban minden olyan forrás esetében, amely egy fájl-adatkészlet típusú.
@@ -67,15 +67,15 @@ Ha a mértékegység-tesztelés összekapcsolását, létezését vagy keresési
 
 Ha az adatelőnézet megjelenik, gyorsan átalakíthatja a typecast, eltávolíthatja vagy végrehajthatja az oszlop módosítását. Kattintson az oszlop fejlécére, majd válassza ki az egyik lehetőséget az adatok előnézetének eszköztárán.
 
-![Gyors műveletek]–(media/data-flow/quick-actions1.png "gyors műveletek")
+![Gyors műveletek](media/data-flow/quick-actions1.png "Gyors műveletek")
 
 Miután kiválasztott egy módosítást, az adatelőnézet azonnal frissülni fog. Új átalakítás létrehozásához kattintson a jobb felső sarokban található **megerősítés** gombra.
 
-![Gyors műveletek]–(media/data-flow/quick-actions2.png "gyors műveletek")
+![Gyors műveletek](media/data-flow/quick-actions2.png "Gyors műveletek")
 
 A **Typecast** és a **módosítás** egy származtatott oszlop átalakítását eredményezi, és az **Eltávolítás** egy kiválasztott átalakítást fog eredményezni.
 
-![Gyors műveletek]–(media/data-flow/quick-actions3.png "gyors műveletek")
+![Gyors műveletek](media/data-flow/quick-actions3.png "Gyors műveletek")
 
 > [!NOTE]
 > Ha szerkeszti az adatfolyamatot, a gyors átalakítás hozzáadása előtt újra be kell olvasnia az adatelőnézetet.
@@ -84,9 +84,9 @@ A **Typecast** és a **módosítás** egy származtatott oszlop átalakítását
 
 Ha kijelöl egy oszlopot az adatelőnézet lapon, és a **statisztikák** elemre kattint az adatelőnézet eszköztáron, az adatrács jobb oldalán megjelenik egy diagram, amely az egyes mezők részletes statisztikáit jeleníti meg. A Azure Data Factory az adatmintavétel alapján határozza meg, hogy milyen típusú diagramot kell megjeleníteni. A legfelső szintű mezők alapértelmezett értéke NULL/nem NULL értékű, míg a kategorikus és a numerikus adat, amely alacsony fokú, az adatértékek gyakoriságát ábrázoló sáv diagramokat jeleníti meg. A sztring mezők, a minimális/maximális érték numerikus mezőkben, a standard fejlesztés, a percentilis, a Count és az átlag mezőben is látható.
 
-![Oszlop statisztikái](media/data-flow/stats.png "oszlop statisztikái")
+![Oszlop statisztikái](media/data-flow/stats.png "Oszlop statisztikái")
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miután befejezte az adatfolyamok létrehozását és hibakeresését, [hajtsa végre a folyamatot egy folyamatból.](control-flow-execute-data-flow-activity.md)
 * Amikor adatfolyamként teszteli a folyamatot, használja a folyamat [hibakeresési futtatásának futtatása beállítást.](iterative-development-debugging.md)

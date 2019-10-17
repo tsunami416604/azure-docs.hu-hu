@@ -3,15 +3,15 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogyan lehet elhárítani az Azure-erőforrások Azure Resource Graph használatával történő lekérdezésével kapcsolatos problémákat.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/21/2019
+ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 030fe26a0aa8fc4ed855fb7744e576366f4fd2e2
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976606"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72389700"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -23,7 +23,7 @@ A legtöbb hiba az Azure Resource Graph-lekérdezés futtatásakor felmerülő p
 
 ## <a name="general-errors"></a>Általános hibák
 
-### <a name="toomanysubscription"></a>Forgatókönyv Túl sok előfizetés
+### <a name="toomanysubscription"></a>Forgatókönyv: túl sok előfizetés
 
 #### <a name="issue"></a>Probléma
 
@@ -33,13 +33,13 @@ Azok az ügyfelek, akik több mint 1000 előfizetéshez férnek hozzá, beleért
 
 Az Azure CLI és a PowerShell csak az első 1000-előfizetést továbbítja az Azure Resource Graph-ba. Az Azure Resource Graph REST API maximális számú előfizetést fogad el a lekérdezés végrehajtásához.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Batch-kérelmek a lekérdezéshez az előfizetések egy olyan részhalmazával, amely az 1000-os előfizetési korlát alatt marad. A megoldás az **előfizetés** paramétert használja a PowerShellben.
 
 ```azurepowershell-interactive
 # Replace this query with your own
-$query = 'project type'
+$query = 'Resources | project type'
 
 # Fetch the full array of subscription IDs
 $subscriptions = Get-AzSubscription
@@ -60,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Forgatókönyv Nem támogatott tartalom típusú REST-fejléc
+### <a name="rest-contenttype"></a>Forgatókönyv: nem támogatott Content-Type REST-fejléc
 
 #### <a name="issue"></a>Probléma
 
@@ -70,10 +70,11 @@ Az Azure Resource Graph REST API lekérdező ügyfelek megkapják a _500_ (bels�
 
 Az Azure Resource Graph REST API csak az **Application/json**`Content-Type` használatát támogatja. Néhány REST-eszköz vagy-ügynök alapértelmezett értéke **text/plain**, amelyet a REST API nem támogat.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Ellenőrizze, hogy az Azure Resource Graph lekérdezéséhez használt eszköz vagy ügynök REST API fejléce `Content-Type` van-e konfigurálva az **alkalmazáshoz/JSON**-hoz.
-### <a name="rest-403"></a>Forgatókönyv Nincs olvasási engedélye a listában szereplő összes előfizetéshez
+
+### <a name="rest-403"></a>Forgatókönyv: nincs olvasási engedély a listában szereplő összes előfizetéshez
 
 #### <a name="issue"></a>Probléma
 
@@ -83,11 +84,11 @@ Azok az ügyfelek, akik explicit módon átadják egy Azure Resource Graph-leké
 
 Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfizetéshez, a rendszer a megfelelő biztonsági jogosultságok hiánya miatt megtagadja a kérelmet.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Felbontás
 
 Vegyen fel legalább egy előfizetést az előfizetések listájában, amelyet a lekérdezést futtató ügyfélnek legalább olvasási hozzáféréssel kell rendelkezniük. További információ: [engedélyek az Azure Resource Graph-ban](../overview.md#permissions-in-azure-resource-graph).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

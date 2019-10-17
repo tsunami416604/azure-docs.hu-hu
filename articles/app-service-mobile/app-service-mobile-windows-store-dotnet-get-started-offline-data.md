@@ -14,19 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 2ffd80f60543c3136eff2d5774a850347eb68427
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1f15bd86debd98104a408c00650f5acfab94c526
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72027096"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388578"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Windows-alkalmazás kapcsolat nélküli szinkronizálásának engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az oktatóanyag bemutatja, hogyan adhat offline támogatást egy Univerzális Windows-platform-(UWP-) alkalmazáshoz egy Azure Mobile apps-háttér használatával. Az offline szinkronizálás lehetővé teszi, hogy a végfelhasználók a mobil alkalmazásokkal is használhassák az adatmegjelenítést, hozzáadást vagy módosítást, még akkor is, ha nincs hálózati kapcsolat. A módosításokat a rendszer egy helyi adatbázisban tárolja. Miután az eszköz ismét online állapotba került, a változások szinkronizálva lesznek a távoli háttérrel.
@@ -40,7 +41,7 @@ Ehhez az oktatóanyaghoz a következő előfeltételek szükségesek:
 
 * A Visual Studio 2013 Windows 8,1 vagy újabb rendszeren fut.
 * Windows- [alkalmazás]létrehozásának befejezése[Windows-alkalmazás létrehozása].
-* [Azure Mobile Services SQLite Store][sqlite store nuget]
+* [Azure Mobile Services SQLite-tároló][sqlite store nuget]
 * [SQLite Univerzális Windows-platform-fejlesztéshez](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Az ügyfélalkalmazás frissítése az offline funkciók támogatására
@@ -49,7 +50,7 @@ Az Azure Mobile App offline funkciói lehetővé teszik a helyi adatbázissal va
 1. Telepítse az [SQLite futtatókörnyezetet a univerzális Windows-platformhoz](https://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 2. A Visual Studióban nyissa meg a NuGet csomagkezelő alkalmazást a UWP alkalmazás-projekthez, amelyet a [Windows-alkalmazás létrehozása] oktatóanyagban végzett.
     Keresse meg és telepítse a **Microsoft. Azure. Mobile. Client. SQLiteStore** NuGet csomagot.
-3. Megoldáskezelő kattintson a jobb gombbal a **hivatkozások** > **hivatkozás hozzáadása elemre...** > **univerzális Windows** > **bővítmény**, majd a Univerzális Windows-platform és **a C++ Visual 2015 Runtime**mindkét **SQLite** engedélyezése univerzális Windows-platform alkalmazásokhoz.
+3. Megoldáskezelőban kattintson a jobb gombbal **a hivatkozások** > **hivatkozás hozzáadása...** > **univerzális Windows** > **bővítmények**elemre, majd engedélyezze mindkét SQLite-t **a univerzális Windows-platform és a** **Visual 2015 C++ Futtatókörnyezet Univerzális Windows-platform alkalmazásokhoz**.
 
     ![SQLite UWP-hivatkozás hozzáadása][1]
 4. Nyissa meg a MainPage.xaml.cs fájlt, és a `#define OFFLINE_SYNC_ENABLED` definíciójának megjegyzését.

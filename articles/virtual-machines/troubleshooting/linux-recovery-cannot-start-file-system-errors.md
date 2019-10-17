@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 298fd336e87d07f9e65221d5e5f539e255c94993
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245330"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432307"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Linux rendszerű virtuális gép hibáinak elhárítása fájlrendszerbeli hibák miatt
 
@@ -71,7 +71,7 @@ Checking all file systems.
 
 Ez a probléma akkor fordulhat elő, ha a fájlrendszer nem állt le tisztán vagy tárolással kapcsolatos problémákkal. A problémák közé tartoznak a hardveres vagy szoftveres hibák, az illesztőprogramok vagy programok hibái, az írási hibák stb. Mindig fontos, hogy biztonsági másolatot készítsen a kritikus fontosságú adatmennyiségekről. A cikkben ismertetett eszközök segíthetnek a fájlrendszerek helyreállításában, de az adatvesztés továbbra is előfordulhat.
 
-A Linux rendszerben számos fájlrendszer-ellenőr érhető el. Az Azure-beli disztribúciók leggyakoribb része a következő: [FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)és [Xfs_repair](https://access.redhat.com/documentation/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+A Linux rendszerben számos fájlrendszer-ellenőr érhető el. Az Azure-beli disztribúciók leggyakoribb része a következő: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)és [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
 ## <a name="resolution"></a>Felbontás
 
