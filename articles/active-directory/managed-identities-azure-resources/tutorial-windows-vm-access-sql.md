@@ -1,5 +1,5 @@
 ---
-title: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
+title: Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használata az Azure SQL eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával.
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2018
+ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d5452f23e830ca7a9ffe5ca5ed3d4aa12fb717
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236051"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433171"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Hozzáférés az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -65,7 +65,7 @@ A következő lépéshez a [Microsoft SQL Server Management Studióra](https://d
 - [Univerzális hitelesítés az SQL Database és az SQL Data Warehouse használatával (SSMS-támogatás az MFA-hoz)](/azure/sql-database/sql-database-ssms-mfa-authentication)
 - [Azure Active Directory-hitelesítés konfigurálása és kezelése az SQL Database vagy az SQL Data Warehouse használatával](/azure/sql-database/sql-database-aad-authentication-configure)
 
-Az SQL DB szükséges egyedi AAD megjelenítendő nevét. Ennek az AAD-fiókok például a felhasználók, csoportok és az egyszerű szolgáltatások (alkalmazások), és felügyelt identitás számára engedélyezve van egy virtuális gép neve egyedileg kell meghatározni az aad-ben megjelenített neveinek kapcsolatban. Az SQL DB ellenőrzi az aad-ben az ilyen felhasználók T-SQL-létrehozása során megjelenített neve, és ha nem egyedi, a parancs sikertelen kér, adja meg egy adott fiókon egy egyedi AAD megjelenítendő nevét.
+Az SQL-ADATBÁZIShoz egyedi HRE megjelenítendő nevek szükségesek. Ezzel a HRE-fiókokat, például a felhasználókat, a csoportokat és az egyszerű szolgáltatásokat (alkalmazásokat), valamint a felügyelt identitás számára engedélyezett virtuálisgép-neveket egyedi módon kell definiálni a HRE a megjelenítendő nevükkel kapcsolatban. Az SQL DB ellenőrzi a HRE megjelenítendő nevét az ilyen felhasználók T-SQL-létrehozása során, és ha az nem egyedi, a parancs sikertelenül kéri az adott fiók egyedi HRE-megjelenítési nevének megadását.
 
 1. Indítsa el az SQL Server Management Studiót.
 2. A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédablakban írja be az SQL-kiszolgáló nevét a **Server name** (Kiszolgáló neve) mezőbe.
@@ -103,7 +103,7 @@ A virtuális gépen futó kód most le tud kérni egy jogkivonatot a rendszer á
 
 Az Azure SQL natív támogatást nyújt az Azure AD-hitelesítéshez, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásaival beszerzett hozzáférési jogkivonatokat. Az SQL-lel létesített kapcsolat létrehozásához használja az **access token** metódust. Ez az Azure SQL és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
-Íme egy .NET kód példa az SQL-hozzáférési token használatával egy kapcsolat megnyitásával. Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez. **.NET-keretrendszer 4.6** vagy újabb verziója szükséges az access-token módszer használatához. Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre. Vegye figyelembe az erőforrás-azonosító az Azure SQL `https://database.windows.net/`.
+A .NET-kód példa arra, hogy egy hozzáférési jogkivonat használatával nyitja meg az SQL-kapcsolatot. Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez. A hozzáférési jogkivonat metódusának használatához a **.NET-keretrendszer 4,6** -es vagy újabb verziójára vagy a **.net Core 2,2** -es vagy újabb verziójára van szükség. Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre. Figyelje meg, hogy az Azure SQL erőforrás-azonosítója `https://database.windows.net/`.
 
 ```csharp
 using System.Net;
@@ -193,7 +193,7 @@ A PowerShell használatával is gyorsan tesztelhető a végpontok közötti beá
 
 Vizsgálja meg a `$DataSet.Tables[0]` értékét, hogy áttekinthesse a lekérdezés eredményeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure SQL Serverhez való hozzáférésre. További információ az Azure SQL Serverről:
 

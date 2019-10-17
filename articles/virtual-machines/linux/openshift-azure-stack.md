@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082597"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390656"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift-tároló platform vagy OKD üzembe helyezése Azure Stack
 
@@ -45,7 +45,7 @@ Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azure
 ```
 
 Az összes beállításhoz szükség van egy Red Hat-előfizetésre. Az üzembe helyezés során a Red Hat Enterprise Linux példány regisztrálva van a Red Hat-előfizetésben, és ahhoz a készlet-AZONOSÍTÓhoz van csatolva, amely tartalmazza a jogosultságokat a OpenShift-tároló platformhoz.
-Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be a alkalmazásba https://access.redhat.com.
+Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be https://access.redhat.com -ra.
 
 ## <a name="azure-stack-prerequisites"></a>Előfeltételek Azure Stack
 
@@ -66,9 +66,9 @@ Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következő
 - OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
 - RHEL-rendszerkép referenciája (változó a azuredeploy. JSON fájlban)
 
-Az Azure CLI használatával történő üzembe helyezés lépéseinek végrehajtásához kövesse a [OpenShift Container platform](./openshift-container-platform.md) szakasz vagy a [OKD](./openshift-okd.md) szakasz megfelelő szakaszát.
+Az Azure CLI használatával történő üzembe helyezés lépéseinek végrehajtásához kövesse a [OpenShift Container platform](./openshift-container-platform-3x.md) szakasz vagy a [OKD](./openshift-okd.md) szakasz megfelelő szakaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Üzembe helyezés utáni feladatok](./openshift-post-deployment.md)
-- [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-troubleshooting.md)
+- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

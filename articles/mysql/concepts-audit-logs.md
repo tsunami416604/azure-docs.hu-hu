@@ -1,53 +1,59 @@
 ---
-title: Auditnaplók az Azure Database for MySQL-hez
-description: Azure Database-ben elérhető auditnaplók a MySQL és a naplózási szintek engedélyezésének paramétereket ismerteti.
+title: Azure Database for MySQL naplózási naplói
+description: Ismerteti a Azure Database for MySQLban elérhető naplókat, valamint a naplózási szintek engedélyezéséhez elérhető paramétereket.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: 86750cea5e7f0d4726f3e0e9a03795ef2a602d8b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443848"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434400"
 ---
-# <a name="audit-logs-in-azure-database-for-mysql"></a>Auditnaplók az Azure Database for MySQL-hez
+# <a name="audit-logs-in-azure-database-for-mysql"></a>Naplók naplózása Azure Database for MySQL
 
-Az Azure Database for MySQL-hez a napló a felhasználók számára érhető el. Az auditnapló adatbázisszintű tevékenységek nyomon követésére használható, és megfelelőségi gyakran használják.
+A Azure Database for MySQL a napló a felhasználók számára érhető el. A napló az adatbázis szintű tevékenységek nyomon követésére használható, és általában a megfelelőséghez használatos.
 
 > [!IMPORTANT]
-> Auditálási napló funkció jelenleg előzetes verzióban érhető el.
+> A naplózási funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="configure-audit-logging"></a>Naplózás konfigurálása
 
-A napló alapértelmezés szerint le van tiltva. Annak engedélyezéséhez állítsa `audit_log_enabled` ON értékre állítása.
+Alapértelmezés szerint a napló le van tiltva. A beállítás engedélyezéséhez állítsa a `audit_log_enabled` értéket a következőre:.
 
-Egyéb úgy módosíthatja a paraméterek a következők:
+Az egyéb paraméterek a következők:
 
-- `audit_log_events`: az események naplózását szabályozza. Lásd az alábbi táblázat az adott naplózási események.
-- `audit_log_exclude_users`: MySQL-felhasználók ki lesznek zárva a naplózást. Lehetővé teszi, hogy legfeljebb négy felhasználó. A paraméter a maximális hossz 256 karakter.
+- `audit_log_events`: a naplózandó események szabályozása. Tekintse meg az alábbi táblázatot az egyes naplózási eseményekhez.
+- `audit_log_include_users`: a naplózáshoz a MySQL-felhasználók tartoznak. A paraméter alapértelmezett értéke üres, amely tartalmazza a naplózáshoz szükséges összes felhasználót. Ez magasabb prioritással rendelkezik `audit_log_exclude_users` felett. A paraméter maximális hossza 512 karakter.
+> [!Note]
+> a `audit_log_include_users` magasabb prioritással rendelkezik a `audit_log_exclude_users` esetében, például ha a audit_log_include_users = `demouser` és a audit_log_exclude_users = `demouser`, akkor a naplózza a naplókat, mert a `audit_log_include_users` magasabb prioritással rendelkezik.
+- `audit_log_exclude_users`: a naplózásból kizárandó MySQL-felhasználók. A paraméter maximális hossza 512 karakter.
+
+> [!Note]
+> @No__t – 0 esetén a rendszer csonkolja a naplót, ha az meghaladja a 2048 karaktert.
 
 | **Esemény** | **Leírás** |
 |---|---|
-| `CONNECTION` | – Csatlakozás kezdeményezéséhez (sikeres vagy sikertelen) <br> -Felhasználó újbóli hitelesítés különböző felhasználó/jelszó munkamenet során <br> – A kapcsolat megszüntetése |
-| `DML_SELECT`| A VÁLASZTÓ lekérdezések |
-| `DML_NONSELECT` | BESZÚRÁSI vagy törlési/frissítési lekérdezések |
+| `CONNECTION` | – A kapcsolatok kezdeményezése (sikeres vagy sikertelen) <br> – A felhasználó újrahitelesítése eltérő felhasználóval/jelszóval a munkamenet során <br> – A kapcsolatok megszakítása |
+| `DML_SELECT`| Lekérdezések kiválasztása |
+| `DML_NONSELECT` | Lekérdezések beszúrása/törlése/frissítése |
 | `DML` | DML = DML_SELECT + DML_NONSELECT |
-| `DDL` | Például a "DROP DATABASE" lekérdezések |
-| `DCL` | Például a "ENGEDÉLYEZHETI" lekérdezések |
-| `ADMIN` | Például a "ÁLLAPOTKIJELZÉS" lekérdezések |
-| `GENERAL` | Az összes a DML_SELECT DML_NONSELECT, DML, DDL, Kapcsolattárak,., rendszergazda |
-| `TABLE_ACCESS` | -A MySQL 5.7 csak érhető el. <br> -Táblázat például VÁLASSZA vagy az INSERT INTO beolvasása... SELECT <br> -Table delete utasítások, mint például a TRUNCATE TABLE vagy törlése <br> -Table insert utasítások, például BESZÚRÁSA vagy LECSERÉLÉSE <br> -Table update utasításokban, mint a frissítés |
+| `DDL` | Lekérdezések, például "DROP DATABASE" |
+| `DCL` | Lekérdezések, például "engedély megadása" |
+| `ADMIN` | Lekérdezések, például "állapot megjelenítése" |
+| `GENERAL` | Mind a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a ADMIN |
+| `TABLE_ACCESS` | – Csak MySQL 5,7 esetén érhető el <br> – Táblázatos olvasási utasítások, például kijelölés vagy Beszúrás a következőbe:... Válassza <br> – Tábla-törlési utasítások, például törlés vagy TRUNCATE TABLE <br> – Táblázatos beszúrási utasítások, például INSERT vagy replace <br> – Táblázatos frissítési utasítások, például frissítés |
 
 ## <a name="access-audit-logs"></a>Hozzáférés az auditnaplókhoz
 
-Naplók integrálva vannak az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló a vizsgálati naplók engedélyezése, után az Azure Monitor naplók, az Event Hubs vagy Azure Storage kibocsátható őket. Diagnosztikai naplók az Azure Portalon engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [auditálási napló portál cikk](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
+A naplófájlok integrálva vannak Azure Monitor diagnosztikai naplókba. Miután engedélyezte a naplók használatát a MySQL-kiszolgálón, kibocsáthatja őket Azure Monitor naplókba, Event Hubsba vagy az Azure Storage szolgáltatásba. Ha szeretne többet megtudni arról, hogyan engedélyezheti a diagnosztikai naplókat a Azure Portalban, tekintse meg a [napló-portált ismertető cikket](howto-configure-audit-logs-portal.md#set-up-diagnostic-logs).
 
-## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémák
+## <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
-A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MySQL auditnaplók kimenete. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
+A következő szakaszok ismertetik a MySQL-naplók kimenetét az esemény típusa alapján. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 
 ### <a name="connection"></a>Kapcsolat
 
@@ -55,81 +61,81 @@ A következő szakaszok ismertetik, mit jelent az eseménytípus alapján MySQL 
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
-| `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
-| `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
+| `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Erőforrás-URI |
+| `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (csak MySQL 5.7-es érhető el) |
-| `connection_id_d` | MySQL által létrehozott egyedi Kapcsolatazonosító |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (csak MySQL 5,7 esetén érhető el) |
+| `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
 | `host_s` | Üres |
 | `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
 | `user_s` | A lekérdezést végrehajtó felhasználó neve |
-| `db_s` | Csatlakoztatott adatbázis neve |
-| `\_ResourceId` | Erőforrás-URI |
+| `db_s` | A következőhöz kapcsolódó adatbázis neve |
+| `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
-Az alábbi séma általános, DML_SELECT, DML_NONSELECT, DML, DDL, Kapcsolattárak és felügyeleti eseménytípusok vonatkozik.
+Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a DCL és a rendszergazdai események típusára vonatkozik.
 
 | **Tulajdonság** | **Leírás** |
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
-| `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
-| `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
+| `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Erőforrás-URI |
+| `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5.6-os érhető el) |
-| `event_time` | Lekérdezés indítsa el a másodperc, a UNIX-időbélyege |
-| `error_code_d` | Hibakód: Ha a lekérdezés nem sikerült. `0` azt jelenti, hogy nem történt hiba |
-| `thread_id_d` | A lekérdezés végrehajtása szál azonosítója |
+| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (csak MySQL 5,6 esetén érhető el) |
+| `event_time` | Lekérdezés kezdési időpontja (UTC) időbélyegzővel |
+| `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. a `0` nem jelent hibát. |
+| `thread_id_d` | A lekérdezést futtató szál azonosítója |
 | `host_s` | Üres |
 | `ip_s` | A MySQL-hez csatlakozó ügyfél IP-címe |
 | `user_s` | A lekérdezést végrehajtó felhasználó neve |
-| `sql_text_s` | A lekérdezés teljes szövege |
-| `\_ResourceId` | Erőforrás-URI |
+| `sql_text_s` | Teljes lekérdezés szövege |
+| `\_ResourceId` | Erőforrás URI-ja |
 
-### <a name="table-access"></a>Tábla hozzáférés
+### <a name="table-access"></a>Tábla-hozzáférés
 
 | **Tulajdonság** | **Leírás** |
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
-| `SubscriptionId` | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
-| `ResourceGroup` | A kiszolgáló tartozik az erőforráscsoport neve |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig @no__t – 0 |
+| `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
+| `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig @no__t – 0 |
 | `ResourceType` | `Servers` |
-| `ResourceId` | Erőforrás-URI |
+| `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlAuditLogs` |
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | A kiszolgáló neve |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`, vagy `DELETE` |
-| `connection_id_d` | MySQL által létrehozott egyedi Kapcsolatazonosító |
-| `db_s` | Elérhető adatbázis neve |
-| `table_s` | Elért tábla neve |
-| `sql_text_s` | A lekérdezés teljes szövege |
-| `\_ResourceId` | Erőforrás-URI |
+| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` vagy `DELETE` |
+| `connection_id_d` | A MySQL által generált egyedi kapcsolatazonosító |
+| `db_s` | Az elért adatbázis neve |
+| `table_s` | Az elért tábla neve |
+| `sql_text_s` | Teljes lekérdezés szövege |
+| `\_ResourceId` | Erőforrás URI-ja |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Naplók konfigurálása az Azure Portalon](howto-configure-audit-logs-portal.md)
+- [Naplók konfigurálása a Azure Portalban](howto-configure-audit-logs-portal.md)

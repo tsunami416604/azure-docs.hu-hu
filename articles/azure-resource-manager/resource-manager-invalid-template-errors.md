@@ -1,63 +1,63 @@
 ---
-title: Az Azure érvénytelen sablon típusú hiba |} A Microsoft Docs
-description: Érvénytelen sablon típusú hiba megoldását ismerteti.
+title: Érvénytelenek az Azure-sablon hibái | Microsoft Docs
+description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0417a975ffbbe0acd94ceac6c0f8e1de27a27aa6
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: bdf1d66ab345cc0d86206413db6617e9568b4d22
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206262"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390322"
 ---
-# <a name="resolve-errors-for-invalid-template"></a>Érvénytelen a sablonhoz ki a hibákat
+# <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablon hibáinak elhárítása
 
-Ez a cikk bemutatja, hogyan érvénytelen sablon típusú hiba megoldásához.
+Ez a cikk azt ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái.
 
-## <a name="symptom"></a>Jelenség
+## <a name="symptom"></a>Hibajelenség
 
-Sablon üzembe helyezésekor, hibaüzenetet kapja:
+A sablonok telepítésekor a következő hibaüzenet jelenik meg:
 
 ```
 Code=InvalidTemplate
 Message=<varies>
 ```
 
-A hibaüzenet hiba típusától függ.
+A hibaüzenet a hiba típusától függ.
 
 ## <a name="cause"></a>Ok
 
-Ez a hiba a különböző típusú hibákat okozhat. Szintaxis- vagy strukturális hiba történt a sablon általában tartalmaznak.
+Ez a hiba számos különböző típusú hibát eredményezhet. Általában a sablonban valamilyen szintaxissal vagy szerkezeti hibával járnak.
 
 <a id="syntax-error" />
 
-## <a name="solution-1---syntax-error"></a>1 – szintaktikai hiba megoldás
+## <a name="solution-1---syntax-error"></a>1\. megoldás – szintaktikai hiba
 
-Ha egy hibaüzenet, amely azt jelzi, hogy a sablon nem sikerült érvényesítése kap, előfordulhat, szintaktikai hiba a sablonban.
+Ha hibaüzenet jelenik meg, amely jelzi, hogy a sablon sikertelen volt, szintaktikai probléma lehet a sablonban.
 
 ```
 Code=InvalidTemplate
 Message=Deployment template validation failed
 ```
 
-Ez a hiba akkor létrehozását, mert lehet, hogy a sablon kifejezések bonyolult. Például a következő hozzárendelést egy storage-fiók rendelkezik zárójelek egy készletét, három funkciót, három különböző zárójelben, szimpla idézőjelek között egy készletét és egy tulajdonságot:
+Ez a hiba könnyen elvégezhető, mert a sablon kifejezései bonyolultak lehetnek. A Storage-fiókhoz tartozó következő név-hozzárendelés például egy szögletes zárójelet, három függvényt, három zárójelet, egy szimpla idézőjelek készletét és egy tulajdonságot tartalmaz:
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 ```
 
-Ha nem ad meg a megfelelő szintaxist, az a sablon licenccsomagot eltérő értéket állít elő.
+Ha nem adja meg a megfelelő szintaxist, a sablon olyan értéket hoz létre, amely eltér a szándéktól.
 
-Az ilyen típusú hiba jelenik meg, gondosan tekintse át a kifejezés szintaxisa. Fontolja meg egy JSON-szerkesztő, például [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vagy [Visual Studio Code](resource-manager-vs-code.md), amely képes figyelmeztessen a szintaktikai hibákat.
+Ha ilyen típusú hibát kap, körültekintően tekintse át a kifejezés szintaxisát. Érdemes lehet egy JSON-szerkesztőt használni, például a [Visual studiót](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) vagy a [Visual Studio Code](resource-manager-vs-code.md)-ot, ami figyelmeztetheti a szintaktikai hibákra.
 
 <a id="incorrect-segment-lengths" />
 
-## <a name="solution-2---incorrect-segment-lengths"></a>2 – hibás szegmens hosszúságok megoldás
+## <a name="solution-2---incorrect-segment-lengths"></a>2\. megoldás – a szegmensek helytelen hossza
 
-Egy másik érvénytelen sablon-hiba akkor fordul elő, amikor az erőforrás neve nem megfelelő formátumú.
+Egy másik érvénytelen sablon-hiba történik, ha az erőforrás neve nem megfelelő formátumú.
 
 ```
 Code=InvalidTemplate
@@ -65,7 +65,7 @@ Message=Deployment template validation failed: 'The template resource {resource-
 for type {resource-type} has incorrect segment lengths.
 ```
 
-A legfelső szintű erőforrás az erőforrástípus neve eltér egy kisebb szegmenst kell rendelkeznie. Van olyan törtvonalat különbözteti meg minden szegmensben. A következő példában a típus 2 szegmensből pedig a nevét egy szegmens, így egy **érvényes nevet**.
+A legfelső szintű erőforrásnak a névben egy kisebb szegmensnek kell lennie, mint az erőforrás típusának. Az egyes szegmenseket perjelek különböztetik meg. A következő példában a típus két szegmensből áll, és a névnek egyetlen szegmense van, ezért **érvényes név**.
 
 ```json
 {
@@ -75,7 +75,7 @@ A legfelső szintű erőforrás az erőforrástípus neve eltér egy kisebb szeg
 }
 ```
 
-A következő példában viszont **nem egy érvényes nevet** szegmensek azonos számú típusként, mert.
+A következő példa azonban **nem érvényes név** , mert a típussal azonos számú szegmens található.
 
 ```json
 {
@@ -85,7 +85,7 @@ A következő példában viszont **nem egy érvényes nevet** szegmensek azonos 
 }
 ```
 
-Gyermek-erőforrás típusa és neve szegmensek azonos számú rendelkezik. A szegmensek száma teljes neve és típusa, a gyermek tartalmazza a szülő neve és típusa van értelme. Ezért a teljes fájlvisszaállítási név még kisebb, mint a teljes típus egy szegmens.
+A gyermek erőforrások esetében a típusnak és a névnek azonos számú szegmensnek kell lennie. A szegmensek száma logikus, mert a gyermek teljes neve és típusa tartalmazza a szülő nevét és típusát. Ezért a teljes névnek még egy kevesebb szegmense van, mint a teljes típus.
 
 ```json
 "resources": [
@@ -104,7 +104,7 @@ Gyermek-erőforrás típusa és neve szegmensek azonos számú rendelkezik. A sz
 ]
 ```
 
-A szegmensek megfelelő első nehéz megkülönböztetni a különböző erőforrás-szolgáltatók alkalmazott Resource Manager-típusokkal. Például egy erőforrás-zárolás alkalmazása a webhelyhez szükséges négy szegmensek típus. A név ezért szegmensek:
+A szegmensek beolvasása jobb lehet az erőforrás-szolgáltatókon keresztül alkalmazott Resource Manager-típusokkal. Ha például egy erőforrás-zárolást szeretne egy webhelyre alkalmazni, négy szegmensből álló típusra van szükség. Ezért a név három szegmens:
 
 ```json
 {
@@ -116,9 +116,9 @@ A szegmensek megfelelő első nehéz megkülönböztetni a különböző erőfor
 
 <a id="parameter-not-valid" />
 
-## <a name="solution-3---parameter-is-not-valid"></a>3 – megoldás paraméter nem érvényes
+## <a name="solution-3---parameter-is-not-valid"></a>3\. megoldás – a paraméter érvénytelen.
 
-Ha egy paraméter értéke, amely nem szerepel az engedélyezett értékeket ad meg, a következő hibához hasonló üzenetet kapja:
+Ha olyan paramétert ad meg, amely nem az engedélyezett értékek egyike, a következőhöz hasonló hibaüzenet jelenik meg:
 
 ```
 Code=InvalidTemplate;
@@ -127,40 +127,40 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-Dupla ellenőrzi az engedélyezett értékek a sablonban, és egy üzembe helyezés során. Engedélyezett értékei kapcsolatos további információkért lásd: [paraméterek szakaszban az Azure Resource Manager-sablonok](resource-group-authoring-templates.md#parameters).
+Ellenőrizze az engedélyezett értékeket a sablonban, és adjon meg egyet az üzembe helyezés során. További információ az engedélyezett paraméterek értékeiről: [Azure Resource Manager sablonok parameters (paraméterek) szakasza](resource-group-authoring-templates.md#parameters).
 
 <a id="too-many-resource-groups" />
 
-## <a name="solution-4---too-many-target-resource-groups"></a>Túl sok erőforrás célcsoportok 4 - megoldás
+## <a name="solution-4---too-many-target-resource-groups"></a>4\. megoldás – túl sok cél erőforráscsoport
 
-Ha ötnél több cél erőforráscsoportok egyetlen telepítést ad meg, ezt a hibaüzenetet kapja. Fontolja meg a központi telepítésben lévő erőforrás-csoportok száma konszolidálása vagy központi telepítése különálló üzembe helyezéseket, a sablonokat. További információkért lásd: [üzembe helyezése Azure-erőforrásokat az egynél több előfizetésen vagy erőforráscsoporton](resource-manager-cross-resource-group-deployment.md).
+Ha ötnél több célként megadott erőforráscsoport van megadva egyetlen központi telepítésben, akkor ezt a hibaüzenetet kapja. Vegye fontolóra a telepítésben lévő erőforráscsoportok számának összevonását, vagy a sablonok némelyikét különálló központi telepítésként kell üzembe helyezni. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](resource-manager-cross-resource-group-deployment.md).
 
 <a id="circular-dependency" />
 
-## <a name="solution-5---circular-dependency-detected"></a>Megoldás 5 – a rendszer körkörös függőséget észlelt
+## <a name="solution-5---circular-dependency-detected"></a>5\. megoldás – körkörös függőség észlelhető
 
-Ezt a hibaüzenetet kapja, amikor az erőforrások egymástól függenek úgy, hogy megakadályozza, hogy a telepítés indítását. Köztük fennálló függőségek kombinációja lehetővé teszi, hogy két vagy több erőforrás is váró más erőforrásokra várnia. Például resource1 resource3 függ, resource2 resource1 függ, és resource3 resource2 függ. Eltávolítja a felesleges függőségek általában is megoldhatja a problémát.
+Ez a hibaüzenet akkor jelenik meg, ha az erőforrások egymástól függenek, így megakadályozza, hogy a telepítés elinduljon. A függőségek kombinációja két vagy több erőforrás-várakozást tesz elérhetővé más erőforrások esetében is. Például a resource1 a resource3 függ, a resource2 a resource1 függ, a resource3 pedig a resource2 függ. Ezt a problémát általában a szükségtelen függőségek eltávolításával lehet megoldani.
 
-Körkörös függőséget megoldása:
+Körkörös függőség megoldása:
 
-1. A sablonban található az erőforrás, a rendszer körkörös függőséget azonosítja. 
-2. Az adott erőforráshoz, vizsgálja meg a **dependsOn** tulajdonság, és bármely használják a **referencia** függvényt, hogy mely erőforrások attól függ. 
-3. Tekintse meg ezeket az erőforrásokat, hogy mely erőforrások függenek. Kövesse a függőségeket, amíg a láthatja, hogy egy erőforrás, amely az eredeti erőforrás függ.
-5. Részt vesz a rendszer körkörös függőséget az erőforrások, gondosan vizsgálja az összes felhasználását a **dependsOn** tulajdonság nem szükséges függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha biztos benne, hogy egy függőség van szüksége, próbálja meg eltávolítani azt. 
-6. A sablon újbóli telepítése.
+1. A sablonban keresse meg a körkörös függőségben azonosított erőforrást. 
+2. Az adott erőforrás esetében ellenőrizze a **dependsOn** tulajdonságot és a **Reference** függvény bármely használatát, hogy megtekintse, mely erőforrások függenek. 
+3. Ellenőrizze ezeket az erőforrásokat, és tekintse meg, hogy mely erőforrások függenek. Kövesse a függőségeket, amíg olyan erőforrást észlel, amely az eredeti erőforrástól függ.
+5. A körkörös függőségben érintett erőforrások esetében alaposan vizsgálja meg a **dependsOn** tulajdonság összes használatát a szükségtelen függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha nem biztos benne, hogy szükség van-e függőségre, próbálja meg eltávolítani. 
+6. Telepítse újra a sablont.
 
-Az értékek eltávolítása a **dependsOn** tulajdonság hibákat eredményezhet, amikor telepíti a sablont. Ha hibaüzenetet kap, adja hozzá a függőség be újra a sablont. 
+Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telepítésekor hibákat okozhat. Ha hibaüzenetet kap, adja hozzá a függőséget a sablonhoz. 
 
-Ha ezt a megközelítést nem oldja meg a rendszer körkörös függőséget, fontolja meg az üzembe helyezés logikája megéri gyermekszintű erőforrása (például a konfigurációs beállításokat és a teljes). Ezek után a rendszer körkörös függőséget erőforrás gyermekerőforrásait konfigurálása. Tegyük fel például, hogy két virtuális gépet telepít, de a tulajdonságai az egyes hivatkozni, a másik be kell. A következő sorrendben telepíthetők:
+Ha ez a módszer nem oldja meg a körkörös függőséget, érdemes lehet áthelyezni a telepítési logika egy részét alárendelt erőforrásokra (például bővítményekre vagy konfigurációs beállításokra). Konfigurálja ezeket a alárendelt erőforrásokat úgy, hogy az a körkörös függőségben érintett erőforrások után legyen üzembe helyezhető. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
-1. vm1
-2. vm2
-3. A vm1 futtatására szolgáló bővítmény a vm1, vm2 és függ. A bővítmény a vm1, vm2 olvas, adja meg az értékeket.
-4. A vm2 bővítmény a vm1, vm2 és függ. A bővítmény lekéri a vm1, vm2 értékek beállítása.
+1. VM1
+2. VM2
+3. A VM1 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM1, amelyeket a VM2-ből kap.
+4. A VM2 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM2, amelyeket a VM1-ből kap.
 
-Ugyanezzel a megközelítéssel az App Service-alkalmazások esetében működik. Fontolja meg a konfigurációs értékeket helyezi át az alkalmazás-erőforrást gyermek erőforrása. Két webes alkalmazásokat telepíthet a következő sorrendben:
+Ugyanez a módszer App Service alkalmazások esetében is működik. Érdemes áthelyezni a konfigurációs értékeket az alkalmazás-erőforrás alárendelt erőforrásaiba. A következő sorrendben telepíthet két webalkalmazást:
 
 1. webapp1
 2. webapp2
-3. config webapp1 webapp1 és webapp2 függ. Alkalmazásbeállítások webapp2 értékeit tartalmazza.
-4. config webapp2 webapp1 és webapp2 függ. Alkalmazásbeállítások webapp1 értékeit tartalmazza.
+3. a webapp1 konfigurációja a webapp1 és a webapp2 függvénytől függ. A webapp2 származó értékekkel rendelkező alkalmazás-beállításokat tartalmaz.
+4. a webapp2 konfigurációja a webapp1 és a webapp2 függvénytől függ. A webapp1 származó értékekkel rendelkező alkalmazás-beállításokat tartalmaz.

@@ -1,66 +1,62 @@
 ---
-title: Az Azure Kubernetes Service (AKS)-fürt hitelesítő adatainak alaphelyzetbe állítása
-description: Ismerje meg, hogyan frissítés vagy visszaállítása az egyszerű szolgáltatás hitelesítő adatait egy fürtöt az Azure Kubernetes Service (AKS)
+title: Azure Kubernetes Service (ak) fürt hitelesítő adatainak alaphelyzetbe állítása
+description: Megtudhatja, hogyan frissítheti vagy állíthatja alaphelyzetbe egy fürt egyszerű szolgáltatásnév hitelesítő adatait az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 5aac941133296d2040d5dd670155b80f5807e1e9
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bda0ab50b829fa2e6d58e73b51e3a0a0f6c9e2af
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614126"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432912"
 ---
-# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Frissítés vagy a hitelesítő adatok forgatása egyszerű szolgáltatások Azure Kubernetes Service (AKS)
+# <a name="update-or-rotate-the-credentials-for-a-service-principal-in-azure-kubernetes-service-aks"></a>Egyszerű szolgáltatásnév hitelesítő adatainak frissítése vagy elforgatása az Azure Kubernetes szolgáltatásban (ak)
 
-Alapértelmezés szerint az AKS-fürtök jönnek létre, amely egy éves lejárati ideje szolgáltatásnévvel. Az Ön közelében a lejárati dátum alaphelyzetbe állíthatja a bővítése az egyszerű szolgáltatás egy további időszakban a hitelesítő adatokat. Érdemes azt is, frissítéséhez vagy, egy meghatározott biztonsági szabályzat részeként a hitelesítő adatok forgatása. Ez a cikk részletesen bemutatja ezeket a hitelesítő adatokat az AKS-fürt frissítéséhez.
+Alapértelmezés szerint az AK-fürtök olyan egyszerű szolgáltatással jönnek létre, amely egy éves lejárati idővel rendelkezik. A lejárati dátum közelében visszaállíthatja a hitelesítő adatokat, hogy a szolgáltatásnév további ideig is kiterjeszthető legyen. Előfordulhat, hogy a hitelesítő adatokat egy meghatározott biztonsági szabályzat részeként szeretné frissíteni vagy elforgatni. Ez a cikk részletesen ismerteti, hogyan frissítheti ezeket a hitelesítő adatokat egy AK-fürthöz.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Az Azure CLI 2.0.65 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A verzió megkereséséhez futtassa a @ no__t-0 parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
-## <a name="choose-to-update-or-create-a-service-principal"></a>Válassza ki a frissíteni vagy egyszerű szolgáltatás létrehozása
+## <a name="choose-to-update-or-create-a-service-principal"></a>Egy egyszerű szolgáltatás frissítésének vagy létrehozásának kiválasztása
 
-Ha meg szeretné frissíteni az AKS-fürt hitelesítő adatait, a választhat:
+Ha egy AK-fürt hitelesítő adatait szeretné frissíteni, a következőket teheti:
 
-* Frissítse a hitelesítő adatokat a meglévő szolgáltatásnévhez a fürt által használt vagy
-* Hozzon létre egy egyszerű szolgáltatást, és frissítse a fürt ezen új hitelesítő adatokkal.
+* frissítse a fürt által használt meglévő egyszerű szolgáltatás hitelesítő adatait, vagy
+* hozzon létre egy egyszerű szolgáltatásnevet, és frissítse a fürtöt az új hitelesítő adatok használatára.
 
-Ha azt szeretné, hozzon létre egy egyszerű szolgáltatást az AKS-fürt frissítése, hagyja ki az a jelen szakaszban ismertetett lépések és továbbra is [egyszerű szolgáltatás létrehozása](#create-a-service-principal). Ha szeretné frissíteni a hitelesítő adatait a meglévő egyszerű szolgáltatást az AKS-fürt által használt, folytassa a jelen szakaszban ismertetett lépéseket.
+### <a name="update-existing-service-principal-expiration"></a>Meglévő egyszerű szolgáltatásnév lejáratának frissítése
 
-### <a name="get-the-service-principal-id"></a>A résztvevő-azonosító beszerzése
-
-A létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, kérje le a szolgáltatásnév-Azonosítót, a fürt használata a [az aks show][az-aks-show] parancsot. Az alábbi példa lekéri a fürt nevű azonosítója *myAKSCluster* a a *myResourceGroup* erőforráscsoportot. A résztvevő-azonosító értéke nevű változóként *SP_ID* további parancs használható.
+A meglévő szolgáltatásnév hitelesítő adatainak frissítéséhez szerezze be a fürt egyszerű szolgáltatásnév-AZONOSÍTÓját az az az [AK show][az-aks-show] paranccsal. A következő példa lekéri a *myAKSCluster* nevű fürt azonosítóját a *myResourceGroup* erőforráscsoporthoz. Az egyszerű szolgáltatás azonosítója *SP_ID* nevű változóként van beállítva a további parancsokban való használathoz.
 
 ```azurecli-interactive
 SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
     --query servicePrincipalProfile.clientId -o tsv)
 ```
 
-### <a name="update-the-service-principal-credentials"></a>A szolgáltatásnév hitelesítő adatainak frissítése
-
-A változó beállítása, amely tartalmazza a szolgáltatásnév-Azonosítót, állítsa alaphelyzetbe a hitelesítő adatok használatával [az ad sp hitelesítő adatok alaphelyzetbe állítása][az-ad-sp-credential-reset]. Az alábbi példa az Azure-biztonságos új titkos kód létrehozása a szolgáltatásnévhez tartozó platform lehetővé teszi. Az új biztonságos titkos kulcsot is egy változóban van tárolva.
+Az egyszerű szolgáltatás AZONOSÍTÓját tartalmazó változóval most állítsa alaphelyzetbe a hitelesítő adatokat az [az ad SP hitelesítőadat-visszaállítás][az-ad-sp-credential-reset]használatával. Az alábbi példa lehetővé teszi, hogy az Azure platform új biztonságos titkos kulcsot állítson be az egyszerű szolgáltatás számára. Ez az új biztonsági titok is változóként van tárolva.
 
 ```azurecli-interactive
 SP_SECRET=$(az ad sp credential reset --name $SP_ID --query password -o tsv)
 ```
 
-Most már továbbléphet a következőre [AKS-fürt frissítése új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials).
+Most folytassa az [AK-fürt frissítését az új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials). Ez a lépés szükséges ahhoz, hogy az egyszerű szolgáltatásnév az AK-fürtön tükrözze.
 
-## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
+### <a name="create-a-new-service-principal"></a>Új egyszerű szolgáltatás létrehozása
 
-Ha úgy döntött, hogy frissítse a meglévő egyszerű szolgáltatás hitelesítő adatai az előző szakaszban, kihagyhatja ezt a lépést. Továbbra is [AKS-fürt frissítése új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials).
+Ha úgy döntött, hogy frissíti a meglévő szolgáltatásnév hitelesítő adatait az előző szakaszban, hagyja ki ezt a lépést. Folytassa az [AK-fürt frissítését az új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials).
 
-Hozzon létre egy egyszerű szolgáltatást, és frissítse az AKS-fürt új ezekkel a hitelesítő adatokkal, használja a [az ad sp create-for-rbac][az-ad-sp-create] parancsot. A következő példában a `--skip-assignment` paraméter megakadályozza bármilyen további alapértelmezett hozzárendelés használatát:
+Egyszerű szolgáltatásnév létrehozásához, majd az AK-fürt frissítéséhez az új hitelesítő adatok használatára használja az az [ad SP Create-for-RBAC][az-ad-sp-create] parancsot. A következő példában a `--skip-assignment` paraméter megakadályozza bármilyen további alapértelmezett hozzárendelés használatát:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
 ```
 
-A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `password` adatait. Ezekkel az értékekkel a következő lépésben.
+A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `password` adatait. Ezek az értékek a következő lépésben használatosak.
 
 ```json
 {
@@ -71,16 +67,18 @@ A kimenet a következő példához hasonló. Jegyezze fel a saját `appId` és `
 }
 ```
 
-Ezután határozza meg a szolgáltatás egyszerű azonosító és a titkos ügyfélkódra kimenetét a saját használatával változóival [az ad sp create-for-rbac][az-ad-sp-create] parancsot, az alábbi példában látható módon. A *SP_ID* van a *appId*, és a *SP_SECRET* van a *jelszó*:
+Most adja meg az egyszerű szolgáltatásnév és az ügyfél titkos KÓDJÁnak változóit az az [ad SP Create-for-RBAC][az-ad-sp-create] parancs kimenete alapján, az alábbi példában látható módon. A *SP_ID* a *AppID*, a *SP_SECRET* pedig a *jelszó*:
 
 ```azurecli-interactive
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```
 
-## <a name="update-aks-cluster-with-new-credentials"></a>AKS-fürt frissítése új hitelesítő adatokkal
+Most folytassa az [AK-fürt frissítését az új hitelesítő adatokkal](#update-aks-cluster-with-new-credentials). Ez a lépés szükséges ahhoz, hogy az egyszerű szolgáltatásnév az AK-fürtön tükrözze.
 
-Függetlenül attól, hogy úgy döntött, hogy a létező egyszerű szolgáltatás hitelesítő adatainak frissítéséhez, vagy hozzon létre egy egyszerű szolgáltatást, most frissítenie az AKS-fürtöt az új hitelesítő adatok használatával a [az aks-hitelesítő adatok frissítése][az-aks-update-credentials] parancsot. Változói a *– egyszerű szolgáltatás* és *--client-secret* használhatók:
+## <a name="update-aks-cluster-with-new-credentials"></a>AK-fürt frissítése új hitelesítő adatokkal
+
+Függetlenül attól, hogy frissíteni kívánja-e a meglévő szolgáltatásnév hitelesítő adatait, vagy hozzon létre egy egyszerű szolgáltatásnevet, az az [AK Update-hitelesítő adatok][az-aks-update-credentials] paranccsal frissítheti az AK-fürtöt az új hitelesítő adatokkal. A *--Service-Principal* és *--Client-Secret* változók a következők:
 
 ```azurecli-interactive
 az aks update-credentials \
@@ -91,11 +89,11 @@ az aks update-credentials \
     --client-secret $SP_SECRET
 ```
 
-Az egyszerű szolgáltatás hitelesítő adatai az AKS frissíteni kell néhány másodpercig tart.
+Néhány percet vesz igénybe, hogy az egyszerű szolgáltatás hitelesítő adatai frissítve legyenek az AK-ban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk az AKS-fürthöz tartozó egyszerű szolgáltatás frissítve lett. Identitáskezelés a fürtön belüli számítási feladatokhoz való további információkért lásd: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][best-practices-identity].
+Ebben a cikkben a saját AK-fürthöz tartozó egyszerű szolgáltatás frissült. A fürtön belüli számítási feladatok identitásának kezelésével kapcsolatos további információkért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][best-practices-identity].
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

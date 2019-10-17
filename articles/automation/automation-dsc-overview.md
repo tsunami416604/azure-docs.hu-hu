@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061384"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429399"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
-Azure Automation állapot-konfiguráció egy olyan Azure-szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfigurációjának (DSC) konfigurációjának [](/powershell/dsc/configurations), a [DSC-erőforrások](/powershell/dsc/resources)importálásának és a konfigurációk hozzárendelésének megadását a cél csomópontokhoz felhő.
+Azure Automation állapot-konfiguráció egy olyan Azure-szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfigurációjának (DSC) [konfigurációjának](/powershell/scripting/dsc/configurations/configurations), a [DSC-erőforrások](/powershell/scripting/dsc/resources/resources)importálásának és a konfigurációk hozzárendelésének megadását a cél csomópontokhoz felhő.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Miért érdemes Azure Automation állapot konfigurációját használni
 
@@ -27,11 +27,11 @@ Azure Automation állapot-konfiguráció számos előnyt biztosít a DSC-t haszn
 
 ### <a name="built-in-pull-server"></a>Beépített lekéréses kiszolgáló
 
-Azure Automation állapot-konfiguráció olyan DSC lekérési kiszolgálót biztosít, amely hasonló a [Windows-szolgáltatás DSC-Service-](/powershell/dsc/pullserver) hez, hogy a célként megadott csomópontok automatikusan megkapják a konfigurációkat, megfelelnek a kívánt állapotnak, és visszaküldjék a megfelelőségi jelentést. A Azure Automation beépített lekérési kiszolgálója kiküszöböli a saját lekéréses kiszolgáló beállításának és karbantartásának szükségességét. A Azure Automation a felhőben vagy a helyszínen is megcélozhatja a virtuális vagy fizikai Windows vagy Linux rendszerű gépeket.
+Azure Automation állapot-konfiguráció olyan DSC lekérési kiszolgálót biztosít, amely hasonló a [Windows-szolgáltatás DSC-Service-](/powershell/scripting/dsc/pull-server/pullserver) hez, hogy a célként megadott csomópontok automatikusan megkapják a konfigurációkat, megfelelnek a kívánt állapotnak, és visszaküldjék a megfelelőségi jelentést. A Azure Automation beépített lekérési kiszolgálója kiküszöböli a saját lekéréses kiszolgáló beállításának és karbantartásának szükségességét. A Azure Automation a felhőben vagy a helyszínen is megcélozhatja a virtuális vagy fizikai Windows vagy Linux rendszerű gépeket.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Az összes DSC-összetevő kezelése
 
-Azure Automation állapot-konfiguráció ugyanazokat a felügyeleti réteget adja meg a [PowerShell kívánt állapotának konfigurálásához](/powershell/dsc/overview) , mint Azure Automation a PowerShell-parancsfájlok futtatására szolgáló ajánlatokat.
+Azure Automation állapot-konfiguráció ugyanazokat a felügyeleti réteget adja meg a [PowerShell kívánt állapotának konfigurálásához](/powershell/scripting/dsc/overview/overview) , mint Azure Automation a PowerShell-parancsfájlok futtatására szolgáló ajánlatokat.
 
 A Azure Portal vagy a PowerShellből kezelheti az összes DSC-konfigurációt, erőforrást és a cél csomópontokat.
 
@@ -49,20 +49,20 @@ Azure Automation állapot konfigurációjának (DSC) használatakor vegye figyel
 
 A Windows rendszert futtató csomópontok esetében a következő verziók támogatottak:
 
-- A Windows Server 2019
+- Windows Server 2019
 - Windows Server 2016
 - Windows Server 2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
 - Windows 8.1
-- Windows 7
+- Windows 7 rendszeren
 
 Az [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) önálló termék SKU nem tartalmazza a kívánt állapot konfigurációja megvalósítását, így nem felügyelhető a PowerShell DSC-vel vagy Azure Automation állapot-konfigurációval.
 
 A Linux rendszerű csomópontok esetében a következő disztribúciók/verziók támogatottak:
 
-A DSC Linux-bővítmény támogatja a [támogatott Linux](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)-disztribúciók alatt felsorolt Linux-disztribúciókat.
+A DSC Linux-bővítmény támogatja a [támogatott Linux-disztribúciók](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)alatt felsorolt Linux-disztribúciókat.
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 
@@ -74,10 +74,10 @@ Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linu
 
 Ha a csomópontok egy magánhálózaton belül találhatók, a következő portok és URL-címek szükségesek az állapot konfigurálásához (DSC) az automatizálással való kommunikációhoz:
 
-* Port A kimenő internet-hozzáféréshez csak TCP 443 szükséges.
-* Global URL: *.azure-automation.net
+* Port: a kimenő internet-hozzáféréshez csak TCP 443 szükséges.
+* Globális URL-cím: *. azure-automation.net
 * US Gov Virginia globális URL-címe: *. azure-automation.us
-* Ügynök szolgáltatás: https://\<munkaterület azonosítója\>. agentsvc.Azure-Automation.net
+* Ügynök szolgáltatás: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
 
 Ez hálózati kapcsolatot biztosít a felügyelt csomópont számára a Azure Automationsal való kommunikációhoz.
 Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunikálnak, például a [waitfor * erőforrásai](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)között, akkor is engedélyeznie kell a csomópontok közötti forgalmat.
@@ -86,7 +86,7 @@ A hálózati követelmények megismeréséhez tekintse meg az egyes DSC-erőforr
 #### <a name="proxy-support"></a>Proxy-támogatás
 
 A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhető el.
-A beállítás konfigurálásához állítsa be a **ProxyURL** és a **ProxyCredential** értéket a csomópontok regisztrálásához használt [metaconfiguration](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) -szkriptben.
+A beállítás konfigurálásához állítsa be a **ProxyURL** és a **ProxyCredential** értéket a csomópontok regisztrálásához használt [metaconfiguration-szkriptben](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) .
 A Windows korábbi verziói esetében a proxy nem érhető el a DSC-ben.
 
 A Linux-csomópontok esetében a DSC-ügynök támogatja a proxyt, és az URL-cím meghatározásához a http_proxy változót fogja használni.
@@ -101,7 +101,7 @@ Ha egy adott régióhoz meghatározott Automation-fiókkal rendelkezik, akkor ko
 | --- | --- |
 | USA nyugati középső régiója | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
 | USA déli középső régiója |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| East US   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| USA keleti régiója   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
 | USA 2. keleti régiója |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
 | Közép-Kanada |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
 | Nyugat-Európa |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
@@ -110,10 +110,10 @@ Ha egy adott régióhoz meghatározott Automation-fiókkal rendelkezik, akkor ko
 | Közép-India |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Kelet-Japán |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Délkelet-Ausztrália |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| Az Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| USA-beli államigazgatás – Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
+| Egyesült Királyság déli régiója | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| US Gov Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
-A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatközpont IP](https://www.microsoft.com/download/details.aspx?id=41653) -címének XML-fájlját a Microsoft letöltőközpontból töltheti le.
+A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatközpont IP-címének](https://www.microsoft.com/download/details.aspx?id=41653) XML-fájlját a Microsoft letöltőközpontból töltheti le.
 
 > [!NOTE]
 > Az Azure Datacenter IP-cím XML-fájlja felsorolja az Microsoft Azure adatközpontokban használt IP-címtartományt. A fájl a számítási, az SQL-és a tárolási tartományokat tartalmazza.
@@ -122,10 +122,10 @@ A régiók neveit tartalmazó régió IP-címeinek listáját az Azure- [adatkö
 >
 > Érdemes minden héten letölteni az új XML-fájlt. Ezután frissítse a webhelyet az Azure-ban futó szolgáltatások megfelelő azonosításához. Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének frissítésére szolgál minden hónap első hetében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának megismerése](automation-dsc-getting-started.md) című témakört.
-- A csomópontok előkészítésének megismeréséhez lásd: bevezetési [gépek Azure Automation állapot-konfiguráció általi felügyelethez](automation-dsc-onboarding.md)
+- A csomópontok előkészítésének megismeréséhez lásd: [bevezetési gépek Azure Automation állapot-konfiguráció általi felügyelethez](automation-dsc-onboarding.md)
 - A DSC-konfigurációk fordításának megismeréséhez, hogy hozzá lehessen rendelni azokat a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md) című témakört.
 - A PowerShell-parancsmagok ismertetése: [Azure Automation állapot-konfigurációs parancsmagok](/powershell/module/azurerm.automation/#automation)
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/)

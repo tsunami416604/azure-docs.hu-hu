@@ -11,192 +11,194 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 09/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+experimental: false
+experiment_id: a231f2b4-2625-4d
+ms.openlocfilehash: 380e587fc8c921b395d63d1dbca10e2f5fb1b9ba
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018492"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72433205"
 ---
-# <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban
+# <a name="create-a-nodejs-web-app-in-azure"></a>Node.js-webalkalmazás létrehozása az Azure-ban 
 
-> [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Windowson futó App Service-ben. A _Linuxon_ futó App Service-ben való üzembe helyezéssel kapcsolatban lásd: [Node.js-webalkalmazás létrehozása a Linuxon futó Azure App Service-ben](./containers/quickstart-nodejs.md).
->
-
-Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás.  Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Node. js-alkalmazást a Azure App Service. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást, a ZipDeploy szoftver használatával pedig üzembe helyezheti a Node.js-mintakódot a webalkalmazásban.
-
-![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
-
-Ezeket a lépéseket Mac, Windows vagy Linux rendszert futtató gépen is követheti. Az előfeltételek telepítése után a lépések végrehajtása nagyjából öt percet vesz igénybe.   
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+A Azure App Service egy jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Node. js-alkalmazást a Azure App Service.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Ha még nem rendelkezik Azure-fiókkal, [Regisztráljon még ma](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-tutorial-app-service-extension&mktingSource=vscode-tutorial-app-service-extension) az Azure-kreditek $200-es ingyenes fiókjával, hogy kipróbálja a szolgáltatások bármilyen kombinációját.
 
-* <a href="https://nodejs.org/" target="_blank">Telepítse a Node.js-t és az NPM-et</a>
+A Node. js [és a NPM](https://nodejs.org/en/download), valamint a Node. js csomagkezelő segítségével telepítenie kell a [Visual Studio Code](https://code.visualstudio.com/) -ot.
 
-## <a name="download-the-sample"></a>A minta letöltése
+Emellett telepítenie kell a [Azure app Service bővítményt](vscode:extension/ms-azuretools.vscode-azureappservice)is, amellyel Linux-web Appseket hozhat létre, kezelhet és helyezhet üzembe az Azure platform szolgáltatásként (Péter).
 
-Töltse le a Node.js mintaprojektet a [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) címről, és bontsa ki a ZIP-archívumot.
+### <a name="sign-in"></a>Bejelentkezés
 
-Nyissa meg az _index.js_ fájlt, és keresse meg a következő sort:
+Miután telepítette a bővítményt, jelentkezzen be az Azure-fiókjába. Az **Azure app Service** Explorer megjelenítéséhez a tevékenység sávján válassza ki az Azure-emblémát. Válassza a bejelentkezés az Azure-ba **...** lehetőséget, és kövesse az utasításokat.
 
-```javascript
-const port = process.env.PORT || 1337;
+![Bejelentkezés az Azure-ba](containers/media/quickstart-nodejs/sign-in.png)
+
+### <a name="troubleshooting"></a>Hibakeresés
+
+Ha a következő hibaüzenet jelenik meg: **"nem található az előfizetés a (z) [előfizetés-azonosítóval]" névvel**, lehetséges, hogy a proxy mögött van, és nem érhető el az Azure API. A `HTTP_PROXY` és a `HTTPS_PROXY` környezeti változókat a `export` használatával konfigurálhatja a terminálban található proxy adataival.
+
+```sh
+export HTTPS_PROXY=https://username:password@proxy:8080
+export HTTP_PROXY=http://username:password@proxy:8080
 ```
 
-App Service feltölti a környezeti változót, a **Process. env. portot**. Használja ezt az alkalmazásban, hogy a kód tudja, melyik portot kell figyelni.
+Ha a környezeti változók beállítása nem javítsa ki a problémát, vegye fel velünk a kapcsolatot az alábbi, a **probléma elhárítása** gombra kattintva.
 
-Egy terminál ablakban navigáljon a minta Node. js-projekt **gyökérkönyvtárához** (az _index. js fájlt_tartalmazó könyvtárra).
+### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
 
-## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
+A folytatás előtt győződjön meg arról, hogy az összes előfeltétel telepítve és konfigurálva van.
 
-Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. A beépített Node.js HTTP-kiszolgáló a terminálablak megnyitásával és az `npm start` szkript használatával indítható el.
+A VS Code-ban az Azure **app Service** Explorerben tekintse meg az Azure-beli e-mail-címét az állapotjelző sávban és az előfizetésében.
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=getting-started)
+
+## <a name="create-your-nodejs-application"></a>A Node. js-alkalmazás létrehozása
+
+Ezután hozzon létre egy Node. js-alkalmazást, amely üzembe helyezhető a felhőben. Ez a rövid útmutató egy alkalmazás-generátort használ az alkalmazás egy terminálból való gyors előkészítéséhez.
+
+> [!TIP]
+> Ha már végrehajtotta a [Node. js-oktatóanyagot](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial), ugorjon az Azure-ba való [üzembe helyezésre](#deploy-to-azure).
+
+### <a name="scaffold-a-new-application-with-the-express-generator"></a>Új alkalmazás készítése az expressz generátorral
+
+Az [Express](https://www.expressjs.com) egy népszerű keretrendszer Node. js-alkalmazások létrehozásához és futtatásához. Az [Express Generator](https://expressjs.com/en/starter/generator.html) Tool használatával új expressz alkalmazást készíthet (létrehozhatja). Az expressz generátor NPM-modulként van elküldve, és közvetlenül (telepítés nélkül) futtatható a NPM parancssori eszköz használatával `npx`.
+
+```bash
+npx express-generator myExpressApp --view pug --git
+```
+
+A @no__t 0 paraméterrel megadhatja, hogy a generátor a [mopsz](https://pugjs.org/api/getting-started.html) -sablon motorját használja (korábbi nevén `jade`), és hozzon létre egy `.gitignore` fájlt.
+
+Az alkalmazás összes függőségének telepítéséhez nyissa meg az új mappát, és futtassa a `npm install` parancsot.
+
+```bash
+cd myExpressApp
+npm install
+```
+
+### <a name="run-the-application"></a>Az alkalmazás futtatása
+
+Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indítsa el az alkalmazást a `npm start` paranccsal, hogy elindítsa a kiszolgálót.
 
 ```bash
 npm start
 ```
 
-Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:1337` címen.
+Most nyissa meg a böngészőt, és navigáljon a [http://localhost:3000](http://localhost:3000)címre, ahol a következőhöz hasonlónak kell megjelennie:
 
-Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
-
-![A helyileg futó mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
-
-A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
-
-> [!NOTE]
-> Az Azure App Service-ben az alkalmazás IIS-ben, [iisnode](https://github.com/Azure/iisnode) használatával fut. Az alkalmazás iisnode-dal való futtatásának engedélyezéséhez az alkalmazás gyökérmappája tartalmaz egy web.config fájlt. A fájl IIS-sel olvasható és az iisnode-hoz kapcsolódó beállítások [az iisnode GitHub-adattárban](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config) vannak dokumentálva.
-
-## <a name="create-a-project-zip-file"></a>ZIP-fájl létrehozása a projekthez
-
-Győződjön meg arról, hogy még mindig a minta projekt **gyökérkönyvtárában** található (az _index. js fájlt_tartalmazó könyvtár). Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
-
-```
-# Bash
-zip -r myAppFiles.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath myAppFiles.zip
-```
-
-Később ezt a ZIP-fájlt fogja feltölteni az Azure-ba, majd üzembe helyezni az App Service-ben.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-scus.md)] 
-
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)] 
-
-## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-
-A Cloud Shellben az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy webalkalmazást a `myAppServicePlan` App Service-csomagban. 
-
-A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`).
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name>
-```
-
-A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
-
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
-
-### <a name="set-nodejs-runtime"></a>Node.js-futtatókörnyezet beállítása
-
-Állítsa a csomópont futtatókörnyezetét 10.14.1 értékre. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) parancsot.
-
-```azurecli-interactive
-# Bash and Powershell
-az webapp config appsettings set --resource-group myResourceGroup --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=10.14.1
-```
-
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le `<app_name>` egy egyedi névre.
-
-```bash
-http://<app_name>.azurewebsites.net
-```
-
-Az új webalkalmazásnak így kell kinéznie:
-
-![Üres webalkalmazás oldal](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
-
-[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-
-## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
-
-Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
-
-```
-http://<app_name>.azurewebsites.net
-```
-
-A Node.js mintakód az Azure App Service webalkalmazásban fut.
-
-![Az Azure-ban futó mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
-
-**Gratulálunk!** Elvégezte az első Node.js-app üzembe helyezését az App Service-ben.
-
-## <a name="update-and-redeploy-the-code"></a>A kód frissítése és ismételt üzembe helyezése
-
-Egy szövegszerkesztő használatával nyissa meg a Node.js-alkalmazáson belüli `index.js` fájlt, majd módosítsa annak szövegét a `response.end` hívásán belül:
-
-```javascript
-response.end("Hello Azure!");
-```
-
-A helyi terminál ablakban navigáljon az alkalmazás **gyökérkönyvtárához** (az _index. js fájlt_tartalmazó könyvtárhoz), hozzon létre egy új zip-fájlt a frissített projekthez.
-
-```azurecli-interactive
-# Bash
-zip -r myUpdatedAppFiles.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
-```
-
-Telepítse ezt az új ZIP-fájlt az App Service-be [A ZIP-fájl üzembe helyezése](#deploy-zip-file) részben már ismertetett lépésekkel.
-
-Váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
-
-![Az Azure-ban futó frissített mintaalkalmazás](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
-
-## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
-
-A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
-
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
-
-![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
-
-Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
-
-![Az App Service lap az Azure Portalon](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
-
-A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
-## <a name="next-steps"></a>További lépések
+![Expressz alkalmazás futtatása](containers/media/quickstart-nodejs/express.png)
 
 > [!div class="nextstepaction"]
-> [Node.js és MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)
+> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
+
+## <a name="deploy-to-azure"></a>Üzembe helyezés az Azure-ban
+
+Ebben a szakaszban a Node. js-alkalmazást a VS Code és a Azure App Service bővítmény használatával helyezi üzembe. Ez a rövid útmutató a legalapvetőbb üzembe helyezési modellt használja, amelyben az alkalmazás tömörített és üzembe helyezése egy Azure Web App on Linux.
+
+### <a name="deploy-using-azure-app-service"></a>Üzembe helyezés Azure App Service használatával
+
+Először nyissa meg az alkalmazás mappáját a VS Code-ban.
+
+```bash
+code .
+```
+
+Az **Azure app Service** Explorerben válassza a kék felfelé mutató nyíl ikont az alkalmazás üzembe helyezéséhez az Azure-ban.
+
+![Üzembe helyezés a webalkalmazásban](containers/media/quickstart-nodejs/deploy.png)
+
+> [!TIP]
+> A **parancssorból** (CTRL + SHIFT + P) is üzembe helyezheti az "üzembe helyezés a webalkalmazásba" parancsot, és futtathatja a **Azure app Service: Deploy to Web App** paranccsal.
+
+1. Válassza ki a jelenleg megnyitott könyvtárat, `myExpressApp`.
+
+1. Válasszon egy létrehozási lehetőséget azon operációs rendszer alapján, amelyre telepíteni kívánja a következőt:
+
+    - Linux: válassza az **új Webalkalmazás létrehozása**lehetőséget.
+    - Windows: válassza az **új Webalkalmazás létrehozása... lehetőséget. Speciális**.
+
+1. Írjon be egy globálisan egyedi nevet a webalkalmazásnak, és nyomja le az ENTER billentyűt. Az alkalmazás nevének érvényes karaktereinek neve: "a-z", "0-9" és "-".
+
+1. A Linux megcélzása esetén válasszon egy Node. js-verziót, ha a rendszer kéri. Az **LTS** -verzió használata javasolt.
+
+1. Ha a Windows rendszert a *speciális** beállítással célozza meg, kövesse a további utasításokat:
+    1. Válassza az **Új erőforráscsoport létrehozása**lehetőséget, majd adja meg az erőforráscsoport nevét.
+    1. Válassza a **Windows** lehetőséget az operációs rendszer számára.
+    1. Válasszon ki egy meglévő App Service csomagot, vagy hozzon létre egy újat. Új csomag létrehozásakor kiválaszthat egy díjszabási szintet.
+    1. Válassza **a Kihagyás lehetőséget,** amikor a rendszer rákérdez a Application Insightsra.
+    1. Válasszon egy Önhöz közeli régiót vagy az elérni kívánt erőforrások közelében.
+
+1. Az összes kérésre való válaszadás után az értesítési csatorna az alkalmazáshoz létrehozott Azure-erőforrásokat jeleníti meg.
+
+1. Válassza az **Igen** lehetőséget, ha a rendszer kéri, hogy frissítse a konfigurációt `npm install` futtatására a célkiszolgálón. Ezután üzembe helyezi az alkalmazást.
+
+    ![Konfigurált üzemelő példány](containers/media/quickstart-nodejs/server-build.png)
+
+1. Ha elindul az üzembe helyezés, a rendszer kéri, hogy frissítse a munkaterületet, hogy a későbbi központi telepítések automatikusan ugyanazt a App Service webalkalmazást célozzák meg. Válassza az **Igen** lehetőséget, hogy a módosítások a megfelelő alkalmazásra legyenek telepítve.
+
+    ![Konfigurált üzemelő példány](containers/media/quickstart-nodejs/save-configuration.png)
+
+> [!TIP]
+> Győződjön meg arról, hogy az alkalmazás figyeli a PORT környezeti változója által biztosított portot: `process.env.PORT`.
+
+### <a name="browse-the-app-in-azure"></a>Az alkalmazás tallózása az Azure-ban
+
+Miután az üzembe helyezés befejeződött, a kérdésben válassza a **Tallózás webhely** lehetőséget a frissen telepített webalkalmazás megtekintéséhez.
+
+### <a name="troubleshooting"></a>Hibakeresés
+
+Ha a következő hibaüzenet jelenik meg: **"nincs engedélye a könyvtár vagy lap megtekintésére."** , akkor az alkalmazás valószínűleg nem indult el megfelelően. Lépjen a következő szakaszra, és tekintse meg a napló kimenetét, és javítsa ki a hibát. Ha nem tudja kijavítani a problémát, lépjen kapcsolatba velünk az alábbi, a **probléma** elhárítása gombra kattintva. Örömmel segítünk!
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=deploy-app)
+
+### <a name="update-the-app"></a>Az alkalmazás frissítése
+
+Az alkalmazás módosításait ugyanazzal a folyamattal telepítheti, és a meglévő alkalmazást is kiválaszthatja, és nem hozhat létre újat.
+
+## <a name="viewing-logs"></a>Naplók megtekintése
+
+Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplókat a futó App Service alkalmazásból. Az alkalmazásban az `console.log` meghívása a Visual Studio Code kimenet ablakában jelenik meg.
+
+Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
+
+Ha a rendszer kéri, válassza a naplózás engedélyezését, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után a VS Code kimenet ablak megnyílik a log streamtel létesített kapcsolatban.
+
+![Folyamatos átviteli naplók megtekintése](containers/media/quickstart-nodejs/view-logs.png)
+
+![Naplózás engedélyezése és újraindítás](containers/media/quickstart-nodejs/enable-restart.png)
+
+Néhány másodperc elteltével megjelenik egy üzenet, amely jelzi, hogy csatlakozik a log-streaming szolgáltatáshoz. Frissítse az oldalt néhányszor, hogy láthassa a tevékenységeket.
+
+    ```bash
+    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+    ```
+
+> [!div class="nextstepaction"]
+> [Egy hibába ütközött](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)
+
+## <a name="next-steps"></a>Következő lépések
+
+Gratulálunk, sikeresen elvégezte ezt a rövid útmutatót!
+
+Ezután tekintse meg a többi Azure-bővítményt.
+
+* [Cosmos DB](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
+* [Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+* [Docker-eszközök](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+* [Azure CLI-eszközök](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)
+* [Eszközök Azure Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+
+Az Azure Extension Packhez készült [Node Pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) telepítésével vagy az összes beszerzésével.

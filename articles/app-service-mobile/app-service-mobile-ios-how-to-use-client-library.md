@@ -13,27 +13,28 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 44b3259745877ddb43e643f1fa8307e100ca8b38
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 175351d6bab6cc6aee06b83bdeb8544c2e7c2d24
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025237"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435393"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Az iOS-hez készült ügyféloldali kódtár használata az Azure-ban Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 > [!NOTE]
-> Visual Studio App Center támogatja a teljes körű és integrált szolgáltatások központi használatát a Mobile apps fejlesztéséhez. A fejlesztők a szolgáltatások **kiépítését**, **tesztelését** és **terjesztését** használhatják a folyamatos integráció és a kézbesítési folyamat beállításához. Az alkalmazás üzembe helyezését követően a fejlesztők az **elemzési** és **diagnosztikai** szolgáltatások segítségével ellenőrizhetik az alkalmazás állapotát és használatát, és a **leküldéses** szolgáltatást használó felhasználókkal is elvégezhetik a felhasználókat. A fejlesztők **a hitelesítést a** felhasználók **és az adatszolgáltatások** hitelesítésére is használhatják a Felhőbeli alkalmazásadatok megőrzése és szinkronizálása érdekében.
-> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon App Center [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
+> A Visual Studio App Center támogatja a végpontok közötti, valamint az integrált szolgáltatásközpont és a mobilalkalmazás közötti fejlesztést. A fejlesztők **buildelési**, **tesztelési** és **elosztási** szolgáltatásokkal állíthatják be a folyamatos integrációval és szolgáltatásnyújtással kapcsolatos folyamatot. Az alkalmazás üzembe helyezése után a fejlesztők **elemzési** és **diagnosztikai** szolgáltatásokkal monitorozhatják az alkalmazás állapotát és használatát, illetve **leküldéses** szolgáltatással kommunikálhatnak a felhasználókkal. Emellett a fejlesztők a **Hitelesítés** szolgáltatással hitelesíthetik felhasználóikat, az **Adatok** szolgáltatással pedig megőrizhetik és szinkronizálhatják az alkalmazásadatokat a felhőben.
+>
+> Ha szeretné integrálni a Cloud Servicest a mobil alkalmazásban, regisztráljon [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) még ma.
 
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket a legújabb [Azure Mobile apps iOS SDK][1]használatával. Ha még nem ismeri az Azure Mobile Appst, először fejezze be az [azure Mobile Apps gyorskonfigurálás] a háttérrendszer létrehozásához, egy tábla létrehozásához és egy előre elkészített iOS Xcode-projekt letöltéséhez. Ebben az útmutatóban az ügyféloldali iOS SDK-ra fogunk összpontosítani. Ha többet szeretne megtudni a háttérbeli kiszolgálóoldali SDK-ról, tekintse meg a Server SDK-val kapcsolatos tudnivalókat.
 
 ## <a name="reference-documentation"></a>Segédanyagok
 
-Az iOS-ügyfél SDK dokumentációja itt található: Az [Azure Mobile apps iOS-ügyfél referenciája][2].
+Az iOS-es ügyfél-SDK dokumentációja itt található: [Azure Mobile apps iOS-ügyfél referenciája][2].
 
 ## <a name="supported-platforms"></a>Támogatott platformok
 
@@ -46,7 +47,7 @@ Ez az SDK ezért nem alkalmas a Watch-Type vagy a hasonló módon korlátozott e
 
 Ez az útmutató azt feltételezi, hogy létrehozott egy táblázatot tartalmazó hátteret. Ez az útmutató azt feltételezi, hogy a tábla ugyanazzal a sémával rendelkezik, mint az oktatóanyagokban szereplő táblák. Ez az útmutató azt is feltételezi, hogy a kódban a `MicrosoftAzureMobile.framework` és az import `MicrosoftAzureMobile/MicrosoftAzureMobile.h`.
 
-## <a name="create-client"></a>kézikönyv: Ügyfél létrehozása
+## <a name="create-client"></a>Útmutató: ügyfél létrehozása
 
 Egy Azure Mobile Apps-háttér a projektben való eléréséhez hozzon létre egy `MSClient` értéket. Cserélje le a `AppUrl` értéket az alkalmazás URL-címére. A `gatewayURLString` és a `applicationKey` üres maradhat. Ha beállít egy átjárót a hitelesítéshez, töltse ki a `gatewayURLString` értéket az átjáró URL-címével.
 
@@ -62,7 +63,7 @@ MSClient *client = [MSClient clientWithApplicationURLString:@"AppUrl"];
 let client = MSClient(applicationURLString: "AppUrl")
 ```
 
-## <a name="table-reference"></a>kézikönyv: Táblázat létrehozása – hivatkozás
+## <a name="table-reference"></a>Útmutató: CREATE TABLE Reference
 
 Az adatok elérése vagy frissítése érdekében hozzon létre a háttértáblára mutató hivatkozást. A `TodoItem` helyére írja be a tábla nevét.
 
@@ -78,7 +79,7 @@ MSTable *table = [client tableWithName:@"TodoItem"];
 let table = client.tableWithName("TodoItem")
 ```
 
-## <a name="querying"></a>kézikönyv: Adatlekérdezés
+## <a name="querying"></a>Útmutató: az adatlekérdezés
 
 Adatbázis-lekérdezés létrehozásához kérdezze le a `MSTable` objektumot. A következő lekérdezés lekéri `TodoItem` összes elemét, és naplózza az egyes elemek szövegét.
 
@@ -110,7 +111,7 @@ table.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="filtering"></a>kézikönyv: Visszaadott adatértékek szűrése
+## <a name="filtering"></a>Útmutató: a visszaadott adatértékek szűrése
 
 Az eredmények szűréséhez számos lehetőség közül választhat.
 
@@ -150,7 +151,7 @@ table.readWithPredicate(predicate) { (result, error) in
 }
 ```
 
-## <a name="query-object"></a>kézikönyv: MSQuery használata
+## <a name="query-object"></a>Útmutató: a MSQuery használata
 
 Összetett lekérdezés (beleértve a rendezést és a lapozást is) elvégzéséhez hozzon létre egy `MSQuery` objektumot közvetlenül vagy predikátum használatával:
 
@@ -179,7 +180,7 @@ a `MSQuery` lehetővé teszi több lekérdezési viselkedés szabályozását.
 
 Hajtson végre egy `MSQuery` lekérdezést az objektumon `readWithCompletion` hívásával.
 
-## <a name="sorting"></a>kézikönyv: Az Adatrendezés a MSQuery
+## <a name="sorting"></a>Útmutató: az Adatrendezés a MSQuery
 
 Az eredmények rendezéséhez nézzük meg a példát. Ha a "text" (növekvő) mező szerint szeretné rendezni a rendezést, akkor a "Befejezés" csökkenő sorrendben hívja meg a `MSQuery` értéket, például:
 
@@ -215,7 +216,7 @@ query.readWithCompletion { (result, error) in
 }
 ```
 
-## <a name="selecting"></a><a name="parameters"></a>kézikönyv: Mezők korlátozása és a lekérdezési karakterlánc paramétereinek kibontása a MSQuery
+## <a name="selecting"></a><a name="parameters"></a>Útmutató: mezők korlátozása és a lekérdezési karakterlánc paramétereinek kibontása a MSQuery
 
 A lekérdezésben visszaadott mezők korlátozásához adja meg a mezők nevét a **selectFields** tulajdonságban. Ez a példa csak a szöveget és a befejezett mezőket adja vissza:
 
@@ -248,7 +249,7 @@ query.parameters = @{
 query.parameters = ["myKey1": "value1", "myKey2": "value2"]
 ```
 
-## <a name="paging"></a>kézikönyv: Oldalméret konfigurálása
+## <a name="paging"></a>Útmutató: oldalméret konfigurálása
 
 Az Azure Mobile Apps az oldalméret a háttérbeli táblákban egyszerre lehúzott rekordok számát szabályozza. Ha a `pull` adatok hívása után az adatok kötegelt fel lesznek véve, az adott oldalméret alapján, amíg nincs több lekéréses rekord.
 
@@ -260,7 +261,7 @@ Ez a beállítás csak az oldal méretét szabályozza az ügyféloldali oldalon
 
 Ez a beállítás az adatrekordok *száma* is, nem pedig a *bájtok mérete*.
 
-Ha megnövelte az ügyfél oldalának méretét, növelje az oldalméret méretét is a kiszolgálón. Lásd @no__t – 0 "útmutató: Állítsa be a "](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)" tábla lapozófájljának méretét a lépések végrehajtásához.
+Ha megnövelte az ügyfél oldalának méretét, növelje az oldalméret méretét is a kiszolgálón. A lépések végrehajtásához tekintse meg a ["útmutató: a tábla lapozófájlja méretének módosítása"](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) című témakört.
 
 **Objective-C**:
 
@@ -285,7 +286,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 }
 ```
 
-## <a name="inserting"></a>kézikönyv: Adatbeszúrás
+## <a name="inserting"></a>Útmutató: az adatbeszúrás
 
 Új táblázat beszúrásához hozzon létre egy `NSDictionary` értéket, és hívja meg a `table insert` parancsot. Ha engedélyezve van a [dinamikus séma] , a Azure app Service Mobile háttérrendszer automatikusan új oszlopokat hoz létre a `NSDictionary` alapján.
 
@@ -319,7 +320,7 @@ table.insert(newItem) { (result, error) in
 }
 ```
 
-## <a name="modifying"></a>kézikönyv: Az adatmódosítás
+## <a name="modifying"></a>Útmutató: Az adatmódosítás
 
 Meglévő sor frissítéséhez módosítsa az elemeket, és hívja meg a `update` értéket:
 
@@ -380,7 +381,7 @@ table.update(["id": "custom-id", "text": "my EDITED item"]) { (result, error) in
 
 Legalább a `id` attribútumot be kell állítani a frissítések elkészítésekor.
 
-## <a name="deleting"></a>kézikönyv: Adattörlés
+## <a name="deleting"></a>Útmutató: az adattörlés
 
 Egy elem törléséhez hívja meg a `delete` argumentumot a következő elemmel:
 
@@ -436,7 +437,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 A törléshez legalább a `id` attribútumot be kell állítani.
 
-## <a name="customapi"></a>kézikönyv: Egyéni API hívása
+## <a name="customapi"></a>Útmutató: az egyéni API meghívása
 
 Az egyéni API-k segítségével bármilyen háttérbeli funkció elérhetővé teheti. Nem kell táblázatos műveletre leképezni. Nem csak az üzenetkezelés nagyobb mértékű szabályozására van lehetőség, de a fejléceket is olvashatja/beállíthatja, és módosíthatja a válasz törzsének formátumát.
 
@@ -477,7 +478,7 @@ client.invokeAPI("sendEmail",
         }
 ```
 
-## <a name="templates"></a>kézikönyv: Leküldéses sablonok regisztrálása platformfüggetlen értesítések küldéséhez
+## <a name="templates"></a>Útmutató: leküldéses sablonok regisztrálása platformfüggetlen értesítések küldéséhez
 
 A sablonok regisztrálásához adjon át sablonokat a **Client. push registerDeviceToken** metódussal az ügyfélalkalmazás számára.
 
@@ -517,7 +518,7 @@ let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 
 Az összes címke el lett távolítva a biztonsági kérésből.  Ha címkéket szeretne hozzáadni a telepítésekhez vagy sablonokhoz a telepítések között, tekintse meg a következőt: [Az Azure-hoz készült .net backend Server SDK használata Mobile apps][4]  Ha ezekkel a regisztrált sablonokkal szeretne értesítéseket küldeni, használja a [Notification Hubs API-kat][3].
 
-## <a name="errors"></a>kézikönyv: Hibák kezelése
+## <a name="errors"></a>Útmutató: hibák kezelése
 
 Ha Azure App Service mobil hátteret hív meg, a befejezési blokk egy `NSError` paramétert tartalmaz. Hiba esetén ez a paraméter nem üres. A kódban tekintse meg ezt a paramétert, és szükség szerint kezelje a hibát az előző kódrészletekben bemutatott módon.
 
@@ -549,7 +550,7 @@ if (error.code == MSErrorPreconditionFailed) {
 if (error.code == MSErrorPreconditionFailed) {
 ```
 
-## <a name="adal"></a>kézikönyv: Felhasználók hitelesítése a Active Directory-hitelesítési tár
+## <a name="adal"></a>Útmutató: felhasználók hitelesítése a Active Directory-hitelesítési tár
 
 A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat a Azure Active Directory használatával lehet az alkalmazásba írni. Az ügyfél-adatáramlás hitelesítése az Identity Provider SDK-val előnyösebb a `loginWithProvider:completion:` metódus használata esetén.  Az ügyfél-átfolyásos hitelesítés több natív UX-érzést biztosít, és lehetővé teszi a további testreszabást.
 
@@ -567,7 +568,7 @@ A Active Directory-hitelesítési tár (ADAL) használatával a felhasználókat
 3. A terminál használatával futtassa a `pod install` elemet a projektet tartalmazó könyvtárból, majd nyissa meg a létrehozott Xcode-munkaterületet (nem a projektből).
 4. Adja hozzá a következő kódot az alkalmazáshoz a használt nyelv alapján. Mindkét esetben végezze el a következő cseréket:
 
-   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com értékűnek kell lennie. Ez az érték a [Azure Portal]Azure Active Directory tartomány lapjáról másolható.
+   * Cserélje le a **Insert-Authority-here** nevet annak a bérlőnek a nevére, amelyben az alkalmazást kiépítte. A formátumnak https://login.microsoftonline.com/contoso.onmicrosoft.com értékűnek kell lennie. Ez az érték a [Azure Portalra]Azure Active Directory tartomány lapjáról másolható.
    * Cserélje le a **Insert-Resource-id-** t a Mobile apps-háttér ügyfél-azonosítójával. Az ügyfél-azonosítót a portál **Azure Active Directory beállítások** területén található **speciális** lapon szerezheti be.
    * Cserélje le az **Insert-Client-ID-** t a natív ügyfélalkalmazás által másolt ügyfél-azonosítóra.
    * Cserélje le a **Insert-redirect-URI-t – itt** a hely */.auth/login/Done* -végpontján a https-séma használatával. Ennek az értéknek a következőhöz hasonlónak kell lennie: *https://contoso.azurewebsites.net/.auth/login/done* .
@@ -636,7 +637,7 @@ func authenticate(parent: UIViewController, completion: (MSUser?, NSError?) -> V
 }
 ```
 
-## <a name="facebook-sdk"></a>kézikönyv: Felhasználók hitelesítése az iOS-hez készült Facebook SDK-val
+## <a name="facebook-sdk"></a>Útmutató: felhasználók hitelesítése az iOS-hez készült Facebook SDK-val
 
 Az iOS-hez készült Facebook SDK használatával a felhasználók a Facebook használatával jelentkezhetnek be az alkalmazásba.  Az ügyfél-átfolyásos hitelesítés használata előnyösebb a `loginWithProvider:completion:` metódus használatával.  Az ügyfél flow-hitelesítése több natív UX-élményt nyújt, és lehetővé teszi a további testreszabást.
 
@@ -715,7 +716,7 @@ Az iOS-hez készült Facebook SDK használatával a felhasználók a Facebook ha
     }
     ```
 
-## <a name="twitter-fabric"></a>kézikönyv: Felhasználók hitelesítése az iOS-hez készült Twitter-hálóval
+## <a name="twitter-fabric"></a>Útmutató: felhasználók hitelesítése az iOS-hez készült Twitter-hálóval
 
 Az iOS-es háló használatával a felhasználók a Twitter használatával jelentkezhetnek be az alkalmazásba. Az ügyfél-átfolyásos hitelesítés a `loginWithProvider:completion:` módszer használatát részesíti előnyben, mivel ez egy több natív UX-élményt nyújt, és lehetővé teszi a további testreszabást.
 
@@ -797,7 +798,7 @@ Az iOS-es háló használatával a felhasználók a Twitter használatával jele
     }
     ```
 
-## <a name="google-sdk"></a>kézikönyv: Felhasználók hitelesítése az iOS-hez készült Google bejelentkezési SDK-val
+## <a name="google-sdk"></a>Útmutató: felhasználók hitelesítése az iOS-hez készült Google bejelentkezési SDK-val
 
 Az iOS-hez készült Google bejelentkezési SDK-val a felhasználók Google-fiókkal való bejelentkezését is elvégezheti az alkalmazásba.  A Google nemrég bejelentette a OAuth biztonsági szabályzatok módosításait.  A szabályzat módosításaihoz a jövőben a Google SDK használatára lesz szükség.
 
@@ -903,13 +904,13 @@ Az iOS-hez készült Google bejelentkezési SDK-val a felhasználók Google-fió
 [Mobile Services SDK]: https://go.microsoft.com/fwLink/p/?LinkID=266533
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
 [Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
 [Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Dinamikus séma]: https://go.microsoft.com/fwlink/p/?LinkId=296271
+[Dinamikus séma]: https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/dynamic-schema
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
 [Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
 [NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965

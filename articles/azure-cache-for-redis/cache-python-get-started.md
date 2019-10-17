@@ -17,14 +17,14 @@ ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5367896c931bf7c5f52b0874d49ede2fc78614ab
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329870"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72435525"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Gyors útmutató: az Azure cache használata a Redis és a Python használatával
+# <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Gyors útmutató: az Azure cache-t használó Python-alkalmazás létrehozása a Redis-hez
 
 Ebben a cikkben egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-be, hogy hozzáférhessen egy biztonságos, dedikált gyorsítótárhoz, amely az Azure-on belül bármely alkalmazásból elérhető.
 
@@ -48,7 +48,7 @@ Az alábbi példa a *pip3* for Python3 használatával telepíti a Redis-a Windo
     pip3 install redis
 ```
 
-![A redis-py telepítése](./media/cache-python-get-started/cache-python-install-redis-py.png)
+![A Redis-a Python-felület telepítése az Azure cache-be a Redis-hez](./media/cache-python-get-started/cache-python-install-redis-py.png)
 
 
 ## <a name="read-and-write-to-the-cache"></a>Olvasás és írás a gyorsítótárban
@@ -100,7 +100,7 @@ for c in result:
 
 Futtassa a szkriptet a Pythonnal.
 
-![Python-teszt befejezve](./media/cache-python-get-started/cache-python-completed.png)
+![Python-szkript futtatása a gyorsítótár-hozzáférés teszteléséhez az Azure cache-ben a Redis-hez](./media/cache-python-get-started/cache-python-completed.png)
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -117,7 +117,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az 
 
 A **szűrés név szerint...** szövegmezőbe írja be az erőforráscsoport nevét. A jelen cikk utasításai egy *TestResources* nevű erőforráscsoportot használtak. Az erőforráscsoport az eredmény listán válassza a **...** , majd az **erőforráscsoport törlése**elemet.
 
-![Törlés](./media/cache-web-app-howto/cache-delete-resource-group.png)
+![A Redis Azure cache-hez készült gyors üzembe helyezési erőforráscsoport törlése](./media/cache-web-app-howto/delete-your-resource-group-for-azure-cache-for-redis.png)
 
 A rendszer az erőforráscsoport törlésének megerősítését fogja kérni. Adja meg a megerősíteni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
