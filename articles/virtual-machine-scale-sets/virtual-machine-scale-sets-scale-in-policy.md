@@ -1,0 +1,180 @@
+---
+title: Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs
+description: Ismerje meg, hogyan használhatja az egyéni méretezési szabályzatokat az Azure-beli virtuálisgép-méretezési csoportokkal, amelyek az automatikus skálázási konfiguráció használatával kezelik a példányszámot
+services: virtual-machine-scale-sets
+author: avverma
+manager: vashan
+tags: azure-resource-manager
+ms.service: virtual-machine-scale-sets
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm
+ms.topic: article
+ms.date: 10/11/2019
+ms.author: avverma
+ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72453159"
+---
+# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Előzetes verzió: egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
+
+A virtuálisgép-méretezési csoport üzembe helyezése mérőszámok tömbje alapján méretezhető vagy méretezhető, beleértve a platformot és a felhasználó által definiált egyéni metrikákat is. Míg a méretezési csoport modellje új Virtual Machines hoz létre, a méretezési funkció hatással van a futó virtuális gépekre, amelyek különböző konfigurációkkal és/vagy funkciókkal rendelkeznek a méretezési csoport számítási feladatainak kialakulásához. 
+
+A skálázási szabályzat funkció lehetővé teszi a felhasználóknak a virtuális gépek skálázási sorrendjének konfigurálását. Az előzetes verzió három méretezési konfigurációt vezet be: 
+
+1. Alapértelmezett
+2. NewestVM
+3. OldestVM
+
+***Ez az előzetes verziójú funkció szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.***
+
+### <a name="default-scale-in-policy"></a>Alapértelmezett méretezési házirend
+
+Alapértelmezés szerint a virtuálisgép-méretezési csoport alkalmazza ezt a házirendet annak meghatározására, hogy mely példányok lesznek méretezve a-ben. Az *alapértelmezett* szabályzattal a virtuális gépek a következő sorrendben vannak kiválasztva a méretezéshez:
+
+1. Virtuális gépek elosztása a rendelkezésre állási zónák között (ha a méretezési csoport a zóna-konfigurációban van telepítve)
+2. Virtuális gépek elosztása a tartalék tartományok között (a legjobb megoldás)
+3. A legmagasabb AZONOSÍTÓJÚ virtuális gép törlése
+
+A felhasználóknak nem kell megadniuk a méretezési szabályzatot, ha csak az alapértelmezett sorrendet szeretnék követni.
+
+Vegye figyelembe, hogy a rendelkezésre állási zónák vagy a tartalék tartományok közötti egyensúly nem helyezi át a példányokat a rendelkezésre állási zónák vagy a tartalék tartományok Az egyensúly a virtuális gépek nem kiegyensúlyozatlan rendelkezésre állási zónákból vagy tartalék tartományokból való törlésével érhető el, amíg a virtuális gépek eloszlása kiegyensúlyozatlan lesz.
+
+### <a name="newestvm-scale-in-policy"></a>NewestVM skálázási szabályzat
+
+Ez a szabályzat törli a legújabb létrehozott virtuális gépet a méretezési csoportból, a virtuális gépek elosztása a rendelkezésre állási zónák között (a zónák szerinti üzembe helyezések esetében). Ennek a szabályzatnak az engedélyezéséhez a virtuálisgép-méretezési csoport modelljében konfigurációs módosításra van szükség.
+
+### <a name="oldestvm-scale-in-policy"></a>OldestVM skálázási szabályzat
+
+Ez a szabályzat törli a legrégebben létrehozott virtuális gépet a méretezési csoportból, miután kiegyensúlyozta a virtuális gépeket a rendelkezésre állási zónák között (a zónák szerinti üzembe helyezések esetében). Ennek a szabályzatnak az engedélyezéséhez a virtuálisgép-méretezési csoport modelljében konfigurációs módosításra van szükség.
+
+## <a name="enabling-scale-in-policy"></a>A skálázási szabályzat engedélyezése
+
+A méretezési szabályzatok a virtuálisgép-méretezési csoport modelljében vannak meghatározva. Ahogy az a fenti szakaszban is látható, a "NewestVM" és a "OldestVM" szabályzat használatakor szükség van egy méretezési házirend-definícióra. A virtuálisgép-méretezési csoport automatikusan az "alapértelmezett" méretezési házirendet fogja használni, ha a méretezési csoport modelljében nem található skálázási házirend-definíció. 
+
+A következő módokon lehet definiálni egy méretezési szabályzatot a virtuálisgép-méretezési csoport modelljében:
+
+### <a name="using-api"></a>Az API használata
+
+Hajtson végre egy PUT-t a virtuálisgép-méretezési csoporton a 2019-03-01-es API használatával:
+
+```
+PUT
+https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVMSS>?api-version=2019-03-01
+
+{ 
+"location": "<VMSS location>", 
+    "properties": { 
+        "scaleInPolicy": {  
+            "rules": ["OldestVM"]  
+        } 
+    }    
+} 
+```
+
+### <a name="using-template"></a>Sablon használata
+
+A sablon "tulajdonságok" területén adja hozzá a következőt:
+
+```json
+"scaleInPolicy": {  
+      "rules": ["OldestVM"]  
+}
+```
+
+A fenti blokkok azt határozzák meg, hogy a virtuálisgép-méretezési csoport törli a legrégebbi virtuális gépet egy elosztott méretezési csoportból (Automatikus méretezéssel vagy manuális törléssel).
+
+Ha egy virtuálisgép-méretezési csoport nem kiegyensúlyozott, a méretezési csoport először törli a virtuális gépeket a kiegyensúlyozatlan zóná (k) között. A kiegyensúlyozatlan zónákon belül a méretezési csoport a fent megadott méretezési házirend alapján határozza meg, hogy melyik virtuális gépet szeretné méretezni a alkalmazásban. Ebben az esetben a méretezési csoport a törölni kívánt zónában a legrégebbi virtuális gépet fogja kiválasztani.
+
+A nem zónákra kiterjedő virtuálisgép-méretezési csoport esetében a házirend kiválasztja a legrégebbi virtuális gépet a törléshez a méretezési csoporton belül.
+
+Ugyanez a folyamat érvényes a "NewestVM" használatakor a fenti méretezési házirendben.
+
+## <a name="modifying-scale-in-policies"></a>Méretezési szabályzatok módosítása
+
+A skálázási szabályzat módosítása a skálázási szabályzat alkalmazásával megegyező eljárást követi. Ha például a fenti példában a "OldestVM" és a "NewestVM" szabályzatot szeretné módosítani, ezt a következő módon teheti meg:
+
+### <a name="using-api"></a>Az API használata
+
+Hajtson végre egy PUT-t a virtuálisgép-méretezési csoporton a 2019-03-01-es API használatával:
+
+```
+PUT
+https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/providers/Microsoft.Compute/virtualMachineScaleSets/<myVMSS>?api-version=2019-03-01 
+
+{ 
+"location": "<VMSS location>", 
+    "properties": { 
+        "scaleInPolicy": {  
+            "rules": ["NewestVM"]  
+        } 
+    }    
+}
+```
+
+### <a name="using-template"></a>Sablon használata
+
+A sablonban a "tulajdonságok" területen módosítsa a sablont az alábbiak szerint, és telepítse újra: 
+
+```json
+"scaleInPolicy": {  
+      "rules": ["NewestVM"]  
+} 
+```
+
+Ugyanez a folyamat akkor is érvényes, ha úgy dönt, hogy a "NewestVM" értéket "default" vagy "OldestVM" értékre módosítja
+
+## <a name="instance-protection-and-scale-in-policy"></a>A példányok védelme és a skálázási szabályzat
+
+A virtuálisgép-méretezési csoportok két típusú [példány-védelmet](./virtual-machine-scale-sets-instance-protection.md#types-of-instance-protection)biztosítanak:
+
+1. Védelem a méretezésből
+2. Védelem a méretezési csoport műveleteiből
+
+Egy védett virtuális gép nem törlődik egy méretezési művelettel, függetlenül az alkalmazott méretezési házirendtől. Ha például a VM_0 (a méretezési csoport legrégebbi virtuális gépe) védett a méretezési szolgáltatásban, és a méretezési csoport "OldestVM" skálázási házirendje engedélyezve van, a VM_0 nem veszi figyelembe, hogy a méretezési csoport legrégebbi virtuális gépe. 
+
+A felhasználó bármikor manuálisan törölheti a védett virtuális gépeket, függetlenül a méretezési csoporton engedélyezett skálázási házirendtől. 
+
+## <a name="usage-examples"></a>Használati példák 
+
+Az alábbi példák azt mutatják be, hogy egy virtuálisgép-méretezési csoport hogyan válassza ki a kibővíthető esemény bekövetkeztekor törölni kívánt virtuális gépeket. A legmagasabb példány-azonosítóval rendelkező virtuális gépeket a rendszer feltételezi, hogy a méretezési csoport legújabb virtuális gépei, a legkisebb példány-azonosítóval rendelkező virtuális gépek pedig a méretezési csoport legrégebbi virtuális gépei. 
+
+### <a name="oldestvm-scale-in-policy"></a>OldestVM skálázási szabályzat
+
+| Esemény                 | Példány-azonosítók a (1-ben  | Példány-azonosítók a Zone2-ben  | Példány-azonosítók a Zone3-ben  | Méretezés – kijelölés                                                                                                               |
+|-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Kezdeti               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Skálázás              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között, még akkor is, ha 3. zóna a legrégebbi virtuális géppel rendelkezik. Törölje a 2. zóna VM2, mert ez az adott zónában a legrégebbi virtuális gép.   |
+| Skálázás              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Válassza 1. zóna még akkor is, ha 3. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a 1. zóna VM3, mert ez az adott zónában a legrégebbi virtuális gép.                  |
+| Skálázás              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | A zónák egyensúlyban vannak. Törölje a VM1 3. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                               |
+| Skálázás              | ***4***, 5, 10         | 6, 9, 11               | 7, 8                   | 1\. zóna és 2. zóna közül választhat. Törölje a VM4 1. zóna, mivel ez a legrégebbi virtuális gép a két zónában.                              |
+| Skálázás              | 5, 10                  | ***6***, 9, 11         | 7, 8                   | Válassza 2. zóna még akkor is, ha 1. zóna rendelkezik a legrégebbi virtuális géppel. Törölje a VM6 1. zóna, mert ez a zóna legrégebbi virtuális gépe.                    |
+| Skálázás              | ***5***, 10            | 9, 11                  | 7, 8                   | A zónák egyensúlyban vannak. Törölje a VM5 1. zóna, mert a méretezési csoport legrégebbi virtuális gépe.                                                |
+
+A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a szabályzat a legrégebben használt virtuális gépet választja a törléshez. A rendszer kihagyja a "védett" virtuális gépet törlésre.
+
+### <a name="newestvm-scale-in-policy"></a>NewestVM skálázási szabályzat
+
+| Esemény                 | Példány-azonosítók a (1-ben  | Példány-azonosítók a Zone2-ben  | Példány-azonosítók a Zone3-ben  | Méretezés – kijelölés                                                                                                               |
+|-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
+| Kezdeti               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Skálázás              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Válasszon a 1. zóna és a 2 között. Törölje a VM11 2. zóna, mert ez a legújabb virtuális gép a két zónán belül.                                |
+| Skálázás              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Válassza a 1. zóna lehetőséget, mert több virtuális gépet tartalmaz, mint a többi két zónában. Törölje a VM10 a 1. zónaről, mert az adott zónában a legújabb virtuális gép.          |
+| Skálázás              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | A zónák egyensúlyban vannak. 2\. zóna VM9 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
+| Skálázás              | 3, 4, 5                | 2, 6                   | 1, 7, ***8***          | 1\. zóna és 3. zóna közül választhat. Törölje a VM8 3. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                                      |
+| Skálázás              | 3, 4, ***5***          | 2, 6                   | 1, 7                   | Válassza 1. zóna annak ellenére, hogy 3. zóna rendelkezik a legújabb virtuális géppel. Törölje a VM5 1. zóna, mert ez az adott zónában lévő legújabb virtuális gép.                    |
+| Skálázás              | 3, 4                   | 2, 6                   | 1, ***7***             | A zónák egyensúlyban vannak. 3\. zóna VM7 törlése, mert ez a méretezési csoport legújabb virtuális gépe.                                                |
+
+A nem zónákra kiterjedő virtuálisgép-méretezési csoportok esetében a szabályzat a legújabb virtuális gépet választja a törléshez a méretezési csoporton belül. A rendszer kihagyja a "védett" virtuális gépet törlésre. 
+
+## <a name="troubleshoot"></a>Hibaelhárítás
+
+1. Nem sikerült engedélyezni a scaleInPolicy-t, ha "BadRequest" hibaüzenetet kap, amely azt jelzi, hogy "a" tulajdonság "típusú objektum nem találta a" scaleInPolicy "tagot, majd ellenőrizze a virtuálisgép-méretezési csoporthoz használt API-verziót. Ehhez az előzetes verzióhoz az API 2019-03-01-es vagy újabb verziója szükséges.
+
+2. A virtuális gépeknek a méretezéshez való helytelen kiválasztása a fenti példákra vonatkozik. Ha a virtuálisgép-méretezési csoport egy zónákra épülő telepítés, a skálázási szabályzatot először a kiegyensúlyozatlan zónákra alkalmazza a rendszer, majd a méretezési csoporton keresztül, ha a zóna kiegyensúlyozott. Ha a skálázási sorrend nem konzisztens a fenti példákkal, a hibaelhárításhoz hozzon létre egy lekérdezést a virtuálisgép-méretezési csoport csapatával.
+
+## <a name="next-steps"></a>Következő lépések
+
+Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

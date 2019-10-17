@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: MT
+ms.openlocfilehash: 927f5bc191c1bbd3e9f8ea89b9f4171ce82df612
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066112"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388157"
 ---
-# <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Nyelvfelismerés-tároló üzembe helyezése az Azure Kubernetes Service-ben
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>A Text Analytics nyelvfelismerés tároló üzembe helyezése az Azure Kubernetes Service-ben
 
 Megtudhatja, hogyan helyezheti üzembe a nyelvfelismerés-tárolót. Ez az eljárás bemutatja, hogyan hozza létre a helyi Docker-tárolókat, leküldheti a tárolókat a saját privát tároló-beállításjegyzékbe, futtathatja a tárolót egy Kubernetes-fürtben, és tesztelheti azt egy böngészőben.
 
@@ -28,7 +28,7 @@ Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg k
 * Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Git](https://git-scm.com/downloads) az operációs rendszerhez, így az eljárásban használt [minta](https://github.com/Azure-Samples/cognitive-services-containers-samples) klónozása is megtörténik.
 * [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* [](https://www.docker.com/products/docker-engine) A Docker-motort, és ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
+* A [Docker-motort](https://www.docker.com/products/docker-engine) , és ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * Egy megfelelő árképzési szintű Azure-erőforrás. Nem minden díjszabási csomag működik ezzel a tárolóval:
   * Csak F0 vagy standard árképzési szinttel rendelkező erőforrást **text Analytics** .
@@ -46,13 +46,13 @@ A mintának két tároló képe van, egyet a előtér-webhelyhez. A második ren
 
 ### <a name="the-language-frontend-container"></a>A Language-frontend tároló
 
-Ez a webhely egyenértékű a saját ügyféloldali alkalmazásával, amely a nyelvfelismerés-végpontra vonatkozó kéréseket tesz lehetővé. Ha az eljárás elkészült, egy karakterlánc felderített nyelvét kapja meg egy böngészőben `http://<external-IP>/<text-to-analyze>`a alkalmazásban a webhely tárolóban. Példa erre az URL-címre `http://132.12.23.255/helloworld!`. Az eredmény a böngészőben `English`.
+Ez a webhely egyenértékű a saját ügyféloldali alkalmazásával, amely a nyelvfelismerés-végpontra vonatkozó kéréseket tesz lehetővé. Ha az eljárás elkészült, egy karakterlánc felderített nyelvét kapja meg, ha a `http://<external-IP>/<text-to-analyze>` karakterrel fér hozzá a webhely tárolóhoz egy böngészőben. Ez az URL-cím például `http://132.12.23.255/helloworld!`. Az eredmény a böngészőben `English`.
 
 ### <a name="the-language-container"></a>A nyelvi tároló
 
 A nyelvfelismerés-tároló ebben az adott eljárásban bármely külső kérelem számára elérhető. A tároló semmilyen módon nem változott, így a standard Cognitive Services Container-specifikus nyelvi észlelési API elérhető.
 
-Ebben a tárolóban ez az API egy, a nyelvfelismerés utáni kérelem. Ahogy az összes Cognitive Services tárolóhoz hasonlóan, további információkat tudhat meg a tárolóról a kihelyezett `http://<external-IP>:5000/swagger/index.html`hencegő adatairól.
+Ebben a tárolóban ez az API egy, a nyelvfelismerés utáni kérelem. Ahogy az összes Cognitive Services tárolóhoz hasonlóan, a tárolót a kihelyezett hencegő adataiból is megismerheti, `http://<external-IP>:5000/swagger/index.html`.
 
 Az 5000-es port a Cognitive Services tárolók által használt alapértelmezett port.
 
@@ -66,19 +66,19 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     az login
     ```
 
-1. Hozzon létre egy nevű `cogserv-container-rg` erőforráscsoportot az ebben az eljárásban létrehozott összes erőforrás tárolásához.
+1. Hozzon létre egy `cogserv-container-rg` nevű erőforráscsoportot az ebben az eljárásban létrehozott összes erőforrás tárolásához.
 
     ```azurecli-interactive
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Hozza létre saját Azure Container Registry a neve `registry`formátumával, `pattyregistry`például:. Ne használjon kötőjelet vagy aláhúzás karaktert a névben.
+1. Hozzon létre saját Azure Container Registry a név formátumával, majd @no__t – 0, például `pattyregistry`. Ne használjon kötőjelet vagy aláhúzás karaktert a névben.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
     ```
 
-    Mentse az eredményeket a **lekéréséhez** tulajdonság beszerzéséhez. Ez lesz a tárolt tároló címe, amelyet később a `language.yml` fájl használ.
+    Mentse az eredményeket a **lekéréséhez** tulajdonság beszerzéséhez. Ez a tárolt tároló címe lesz, amelyet később a `language.yml` fájl használ.
 
     ```console
     > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -124,7 +124,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     docker build -t language-frontend -t pattiyregistry.azurecr.io/language-frontend:v1 .
     ```
 
-    A tároló-beállításjegyzék verziójának nyomon követéséhez adja hozzá a címkét a verzió formátumához, `v1`például:.
+    A tároló-beállításjegyzék verziójának nyomon követéséhez adja hozzá a címkét a verzió formátumához, például `v1`.
 
 1. Küldje le a rendszerképet a tároló-beállításjegyzékbe. Ez eltarthat néhány percig.
 
@@ -132,7 +132,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     docker push pattyregistry.azurecr.io/language-frontend:v1
     ```
 
-    Ha `unauthorized: authentication required` hibaüzenetet kap, jelentkezzen be a `az acr login --name <your-container-registry-name>` paranccsal. 
+    Ha `unauthorized: authentication required` hibát kap, jelentkezzen be a `az acr login --name <your-container-registry-name>` paranccsal. 
 
     A folyamat elvégzése után az eredmények a következőhöz hasonlóak:
 
@@ -150,13 +150,13 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
 ## <a name="get-language-detection-docker-image"></a>Nyelvfelismerés Docker-rendszerkép lekérése
 
-1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa az értéket `1.1.006770001-amd64-preview` az újabb verzióra.
+1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa @no__t – 0 értéket az újabb verzióra.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
     ```
 
-1. A rendszerkép címkézése a tároló beállításjegyzékével. Keresse meg a legújabb verziót, és cserélje `1.1.006770001-amd64-preview` le a verziót, ha újabb verzióval rendelkezik. 
+1. A rendszerkép címkézése a tároló beállításjegyzékével. Keresse meg a legújabb verziót, és cserélje le a `1.1.006770001-amd64-preview` verziót, ha újabb verzióval rendelkezik. 
 
     ```console
     docker tag mcr.microsoft.com/azure-cognitive-services/language pattiyregistry.azurecr.io/language:1.1.006770001-amd64-preview
@@ -178,7 +178,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Mentse a befoglaló paraméter eredmény `appId` értékét a `<appId>`3. lépésben. Mentse a `password` következő szakasz Client-Secret paraméterét `<client-secret>`.
+    Mentse az eredményeket @no__t – 0 értéket a 3. lépésben, `<appId>`. lépésben szereplő megbízott paraméterhez. Mentse a `password` értéket a következő szakasz ügyfél-titkos paraméteréhez `<client-secret>`.
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -197,7 +197,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
     az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
     ```
 
-    Mentse a hatókör-paraméter értékének `<acrId>`kimenetét a következő lépésben. A következőképpen néz ki:
+    Mentse a hatókör paraméterének kimenetét `<acrId>` értékre a következő lépésben. A következőképpen néz ki:
 
     ```console
     > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
@@ -206,7 +206,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
 
     Mentse a szakasz 3. lépésének teljes értékét.
 
-1. Hozzon létre egy szerepkör-hozzárendelést ahhoz, hogy megfelelő hozzáférést biztosítson az AK-fürt számára a tároló beállításjegyzékében tárolt rendszerképek használatához. Cserélje `<appId>` le `<acrId>` az és az értéket az előző két lépésben összegyűjtött értékekre.
+1. Hozzon létre egy szerepkör-hozzárendelést ahhoz, hogy megfelelő hozzáférést biztosítson az AK-fürt számára a tároló beállításjegyzékében tárolt rendszerképek használatához. Cserélje le a `<appId>` és a `<acrId>` értéket az előző két lépésben összegyűjtött értékekre.
 
     ```azurecli-interactive
     az role assignment create --assignee <appId> --scope <acrId> --role Reader
@@ -214,7 +214,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
 
 ## <a name="create-azure-kubernetes-service"></a>Azure Kubernetes szolgáltatás létrehozása
 
-1. Hozza létre a Kubernetes-fürtöt. Az összes paraméter értéke az előző szakaszban szerepel, kivéve a name paramétert. Válasszon egy nevet, amely azt jelzi, hogy ki hozta létre, és `patty-kube`a célja, például:.
+1. Hozza létre a Kubernetes-fürtöt. Az összes paraméter értéke az előző szakaszban szerepel, kivéve a name paramétert. Válasszon egy nevet, amely azt jelzi, hogy ki hozta létre, és a célja, például `patty-kube`.
 
     ```azurecli-interactive
     az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
@@ -307,29 +307,29 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
     ```
 
-1. Másolja a következő fájlt, és nevezze `language.yml`el. A fájl tartalmaz egy `service` szakaszt és egy `deployment` szakaszt a két típusú tárolóhoz, a `language-frontend` webhely-tárolóhoz és `language` az észlelési tárolóhoz.
+1. Másolja a következő fájlt, és nevezze el `language.yml`. A fájl `service` szakaszt tartalmaz, valamint egy `deployment` szakaszt a két típusú tárolóhoz, a `language-frontend` webhely tárolóhoz és a `language` észlelési tárolóhoz.
 
     [!code-yml[Kubernetes orchestration file for the Cognitive Services containers sample](~/samples-cogserv-containers/Kubernetes/language/language.yml "Kubernetes orchestration file for the Cognitive Services containers sample")]
 
-1. A következő táblázat `language.yml` alapján módosítsa a Language-frontend központi telepítési sorokat a saját tároló beállításjegyzék-rendszerkép nevének, az ügyfél titkos kódjának és a szöveges elemzési beállításoknak a megadásához.
+1. Módosítsa a `language.yml` nyelv – felület központi telepítési sorait a következő táblázat alapján, hogy hozzáadja a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
-    Nyelv – előtér-telepítési beállítások|Cél|
+    Nyelv – előtér-telepítési beállítások|Rendeltetés|
     |--|--|
-    |32. sor<br> `image`tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |44. sor<br> `name`tulajdonság|Container Registry a rendszerkép titkát, amelyet egy korábbi `<client-secret>` szakaszban is említett.|
+    |32. sor<br> @no__t – 0 tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |44. sor<br> @no__t – 0 tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
 
-1. Módosítsa a nyelvi telepítési sorokat `language.yml` a következő táblázat alapján, hogy hozzáadja a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
+1. Módosítsa a `language.yml` nyelvi telepítési sorait az alábbi táblázat alapján, és adja hozzá a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
-    |Nyelvi telepítési beállítások|Cél|
+    |Nyelvi telepítési beállítások|Rendeltetés|
     |--|--|
-    |78. sor<br> `image`tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |95. sor<br> `name`tulajdonság|Container Registry a rendszerkép titkát, amelyet egy korábbi `<client-secret>` szakaszban is említett.|
-    |91. sor<br> `apiKey`tulajdonság|A Text Analytics-erőforrás kulcsa|
-    |92. sor<br> `billing`tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |78. sor<br> @no__t – 0 tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |95. sor<br> @no__t – 0 tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
+    |91. sor<br> @no__t – 0 tulajdonság|A Text Analytics-erőforrás kulcsa|
+    |92. sor<br> @no__t – 0 tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
-    Mivel a **apiKey** és a **Számlázási végpont** a Kubernetes-előkészítési definíció részeként van beállítva, a webhely-tárolónak nem kell tudnia ezeket, vagy át kell adnia őket a kérelem részeként. A webhely-tároló a Orchestrator neve `language`alapján a nyelvfelismerés-tárolóra hivatkozik.
+    Mivel a **apiKey** és a **Számlázási végpont** a Kubernetes-előkészítési definíció részeként van beállítva, a webhely-tárolónak nem kell tudnia ezeket, vagy át kell adnia őket a kérelem részeként. A webhely tárolója a nyelvfelismerés tárolóra hivatkozik a Orchestrator neve `language`.
 
-1. Töltse be a minta előkészítési definíciós fájlját abban a mappában, ahová a fájlt létrehozta és mentette `language.yml`.
+1. Töltse be a minta előkészítési definíciós fájlját abban a mappában, ahová létrehozta és mentette a `language.yml` elemet.
 
     ```console
     kubectl apply -f language.yml
@@ -347,7 +347,7 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
 ## <a name="get-external-ips-of-containers"></a>Külső IP-címek beolvasása tárolók számára
 
-A két tároló esetében ellenőrizze, hogy `language-frontend` futnak `language` -e a és a szolgáltatások, és kérje le a külső IP-címet.
+A két tároló esetében ellenőrizze, hogy a `language-frontend` és a `language` szolgáltatás fut-e, és hogy a külső IP-címet kéri-e le.
 
 ```console
 kubectl get all
@@ -381,17 +381,17 @@ replicaset.apps/language-586849d8dc            1         1         1         13h
 replicaset.apps/language-frontend-68b9969969   1         1         1         13h
 ```
 
-Ha a szolgáltatáshoz függőben állapot jelenik meg,futtassaújraaparancsot,amígazIP-címmegnemjelenikakövetkezőlépésrevalóáttéréselőtt.`EXTERNAL-IP`
+Ha a szolgáltatáshoz tartozó `EXTERNAL-IP` a függőben állapotú jelenik meg, futtassa újra a parancsot, amíg az IP-cím meg nem jelenik a következő lépésre való áttérés előtt.
 
 ## <a name="test-the-language-detection-container"></a>Nyelvfelismerés-tároló tesztelése
 
-Nyisson meg egy böngészőt, és navigáljon a `language` tároló külső IP-címéhez az előző szakaszban:. `http://<external-ip>:5000/swagger/index.html` Az API `Try it` funkciója segítségével tesztelheti a nyelvfelismerés végpontját.
+Nyisson meg egy böngészőt, és navigáljon a `language` tároló külső IP-címéhez az előző szakaszban leírtak szerint: `http://<external-ip>:5000/swagger/index.html`. A nyelvi észlelési végpont teszteléséhez használhatja az API `Try it` funkcióját.
 
 ![A tároló felvágási dokumentációjának megtekintése](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>Az ügyfélalkalmazás tárolójának tesztelése
 
-Módosítsa a böngészőben található URL-címet a `language-frontend` tároló külső IP-címére a következő formátumban:. `http://<external-ip>/helloworld` Az angol kulturális szöveg a `helloworld` következőképpen `English`van megjósolva:.
+Módosítsa a böngészőben található URL-címet a `language-frontend` tároló külső IP-címére a következő formátum használatával: `http://<external-ip>/helloworld`. A `helloworld` angol kulturális szövege a `English` értékként van jelezve.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -405,7 +405,7 @@ az group delete --name cogserv-container-rg
 
 * [kubectl a Docker-felhasználók számára](https://kubernetes.io/docs/reference/kubectl/docker-cli-to-kubectl/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services tárolók](../cognitive-services-container-support.md)

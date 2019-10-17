@@ -9,21 +9,21 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: b00e38259bc3fe8cb6998c64ec453a17963a5ee5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 77e731c1f737b579c68a0eba74fe9918b3f370d3
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595787"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388138"
 ---
-# <a name="glossary"></a>Szószedet
+# <a name="custom-translator-glossary"></a>Egyéni fordítói Szószedet
 
 Az [Egyéni fordítói](https://portal.customtranslator.azure.ai) Szószedet ismerteti azokat a feltételeket, amelyek az egyéni fordítóval való együttműködés során merülhetnek fel.
 
 | **Szó vagy kifejezés**       | **Definíció**                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 |--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Forrásnyelv          | A forrás nyelve a kezdéshez használt nyelv, és egy másik nyelvre (a "cél") kíván váltani.                                                                                                                                                                                                                                                                                                                                                         |
-| Célnyelv          | A célként megadott nyelv az a nyelv, amelyet a gépi fordításnak meg kell adnia, miután megkapta a forrás nyelvét.                                                                                                                                                                                                                                                                                                                                               |
+| Forrás nyelve          | A forrás nyelve a kezdéshez használt nyelv, és egy másik nyelvre (a "cél") kíván váltani.                                                                                                                                                                                                                                                                                                                                                         |
+| Cél nyelve          | A célként megadott nyelv az a nyelv, amelyet a gépi fordításnak meg kell adnia, miután megkapta a forrás nyelvét.                                                                                                                                                                                                                                                                                                                                               |
 | Egynyelvű fájl         | Egy egynyelvű fájl egyetlen nyelvet tartalmaz, amely nem párosítható más nyelvű fájllal.                                                                                                                                                                                                                                                                                                                                                                 |
 | Párhuzamos fájlok           | A párhuzamos fájlok a megfelelő szöveggel rendelkező két fájl kombinációját jelentik. Az egyik fájlban a forrás nyelve szerepel. A másik nyelv is a cél.                                                                                                                                                                                                                                                                                                                                         |
 | Mondat igazítása       | A párhuzamos adatkészlethez igazított mondatoknak kell tartoznia, amelyek mindkét nyelven azonos szövegnek felelnek meg. A forrás párhuzamos fájlban például az első mondatnak elvileg a cél párhuzamos fájl első mondatához kell rendelnie.                                                                                                                                                                                                                               |

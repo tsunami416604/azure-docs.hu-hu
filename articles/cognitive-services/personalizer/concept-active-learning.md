@@ -1,5 +1,5 @@
 ---
-title: Aktív tanulás – személyre szabás
+title: Aktív és inaktív események – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,47 +10,36 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8c1579be3d11ae14ca45ee861de2d4f705e5d62c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: aa6f53901f21dcb0726454d641a4a2a66007f9e0
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663711"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429042"
 ---
-# <a name="active-learning-and-learning-policies"></a>Aktív tanulási és képzési szabályzatok 
+# <a name="active-and-inactive-events"></a>Aktív és inaktív események
 
-Ha az alkalmazás meghívja a Rank API-t, akkor a tartalom rangját kapja meg. Az üzleti logika ezt a rangsort használva állapíthatja meg, hogy a tartalom megjelenjen-e a felhasználó számára. Ha megjeleníti a rangsorolt tartalmat, az egy _aktív_ Range esemény. Ha az alkalmazás nem jeleníti meg a rangsorolt tartalmat, ez egy inaktív Range esemény. 
+Ha az alkalmazás meghívja a Rank API-t, akkor az alkalmazásnak az rewardActionId mezőben megjelenítendő műveletnek kell megjelennie.  Ettől kezdve a személyre szabott jutalom meghívása ugyanazzal a Napszállta történik. A jutalom pontszám a jövőbeli rangsorolási hívásokhoz használt modell betanítására szolgál majd. Ha a Napszállta nem érkezik jutalmazási hívás, a rendszer a defaul jutalmat alkalmazza. Az alapértelmezett jutalmak az Azure Portalon vannak kialakítva.
 
-A rendszer az aktív Range eseményre vonatkozó információkat adja vissza a személyre. Ezek az információk a modell tanításának folytatására szolgálnak a jelenlegi tanulási szabályzaton keresztül.
-
-## <a name="active-events"></a>Aktív események
-
-Az aktív eseményeket mindig a felhasználónak kell megjelennie, és a jutalmazási hívást vissza kell adni a tanulási hurok bezárásához. 
-
-### <a name="inactive-events"></a>Inaktív események 
-
-Az inaktív események nem változtathatják meg az alapul szolgáló modellt, mert a felhasználó nem adott lehetőséget a rangsorolt tartalom kiválasztására.
-
-## <a name="dont-train-with-inactive-rank-events"></a>Ne legyen betanítva az inaktív Range eseményeivel 
-
-Egyes alkalmazások esetében előfordulhat, hogy a rangsor API-t kell meghívnia anélkül, hogy még tudnia kellene, hogy az alkalmazás az eredményeket a felhasználónak fogja megjeleníteni. 
-
-Ez a következő esetekben fordul elő:
+Bizonyos esetekben előfordulhat, hogy az alkalmazásnak meg kell hívnia a Rank Range-t, de tudja, hogy az eredményt fogja használni vagy displayedn a felhasználó számára. Ez olyan helyzetekben fordulhat elő, amikor például a előléptetett tartalom lapja megjelenik egy marketing-kampányban. Ha a rangsorolási hívás eredménye soha nem volt használatban, és a felhasználónak soha nem kellett volna megnéznie, akkor helytelen lenne a betanítása bármilyen jutalommal, nulla vagy egyéb módon.
+Ez általában akkor fordul elő, ha:
 
 * Előfordulhat, hogy a felhasználó előre megjelenít néhány felhasználói felületet, amelyet a felhasználónak esetleg nem fog látni. 
 * Előfordulhat, hogy az alkalmazás prediktív megszemélyesítést végez, amelyben a rangsorolási hívások kevésbé valós idejű környezettel történnek, és az alkalmazás nem használja fel a kimenetet. 
 
-### <a name="disable-active-learning-for-inactive-rank-events-during-rank-call"></a>Inaktív rangsorolási események aktív tanulásának letiltása a rangsor hívása során
+Ezekben az esetekben a személyre szabást úgy használhatja, hogy az eseményt az esemény _inaktívvá_tételét kérő rangsorban hívja meg. A személyre szabott eszköz nem vár jutalmat erre az eseményre, és nem alkalmaz alapértelmezett jutalmat sem. Letr az üzleti logikában, ha az alkalmazás a rangsor hívásában található információkat használja, mindössze annyit kell tennie, hogy _aktiválja_ az eseményt. Az esemény aktív állapotában a személyre szabott jutalom várható az eseményhez, vagy ha a jutalom API-ra nem érkezik kifejezett hívás, akkor az alapértelmezett jutalmat kell alkalmaznia.
 
-Az automatikus tanulás letiltásához hívja a `learningEnabled = False`rangsort a következővel:.
+## <a name="get-inactive-events"></a>Inaktív események beolvasása
 
-Az inaktív események megismerése implicit módon aktiválódik, ha a Rangsorért jutalmat küld.
+Egy esemény betanításának letiltásához hívja a Rank értéket `learningEnabled = False` értékkel.
 
-## <a name="learning-policies"></a>Képzési szabályzatok
+Az inaktív események betanítása implicit módon aktiválódik, ha jutalmat küld a Napszállta, vagy meghívja a `activate` API-t az adott Napszállta.
 
-A képzési szabályzat meghatározza a modell betanításának konkrét *hiperparaméterek beállítása* . A különböző tanulási szabályzatokra kitanított két modell eltérő módon viselkedik.
+## <a name="learning-settings"></a>Tanulási beállítások
 
-### <a name="importing-and-exporting-learning-policies"></a>Tanulási szabályzatok importálása és exportálása
+A tanulási beállítások határozzák meg a modell képzésének adott *hiperparaméterek beállítása* . A különböző tanulási beállításokra kitanított két modell ugyanazokat az adattípusokat veszi át.
+
+### <a name="import-and-export-learning-policies"></a>Képzési szabályzatok importálása és exportálása
 
 A Azure Portalból importálhat és exportálhat tanulási házirend-fájlokat. Ez lehetővé teszi a meglévő szabályzatok mentését, tesztelését, cseréjét és archiválását a forráskód vezérlőelemben a későbbi referenciák és auditálások összetevőiként.
 

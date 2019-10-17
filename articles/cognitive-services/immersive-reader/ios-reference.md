@@ -9,20 +9,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: 615c09dd8a7287918bb009ce11854278b21554c1
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 1f85740c358bd0949fed9c954537f0926538995d
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899415"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388119"
 ---
-# <a name="immersive-reader-sdk-reference"></a>A részletes olvasó SDK-referenciája
+# <a name="immersive-reader-sdk-reference-for-ios"></a>A részletes olvasó SDK-referenciája iOS rendszerhez
 
 A lebilincselő olvasó iOS SDK egy gyors CocoaPod, amely lehetővé teszi, hogy az iOS-alkalmazásba integrálja a magával ragadó olvasót.
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>Functions
 
-Az SDK egyetlen függvényt `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`tesz elérhetővé.
+Az SDK egyetlen függvényt tesz elérhetővé, `launchImmersiveReader(navController, token, subdomain, content, options, onSuccess, onFailure)`.
 
 ### <a name="launchimmersivereader"></a>launchImmersiveReader
 
@@ -34,17 +34,17 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 
 #### <a name="parameters"></a>Paraméterek
 
-| Name (Név) | Típus | Leírás |
+| Név | Type (Típus) | Leírás |
 | ---- | ---- |------------ |
 | `navController` | UINavigationController | Az iOS-alkalmazás navigációs vezérlője, amelyet a függvény hívása folyamatban van. |
 | `token` | Sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `subdomain` | Sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
-| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Nem kötelező. |
+| `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 | `onSuccess` | () – > Void | A magával ragadó olvasó sikeres elindítása után meghívott Bezárás. |
-| `onFailure` | (_ hiba: [Hiba](#error)) – > Void | Egy olyan Bezárás, amely akkor lép fel, amikor az olvasó nem töltődik be. Ez a Bezárás egy [`Error`](#error) olyan objektumot ad vissza, amely a hibához tartozó hibakódot és hibaüzenetet jelöli. További információ: hibakódok. [](#error-codes) |
+| `onFailure` | (_ hiba: [hiba](#error)) – > Void | Egy olyan Bezárás, amely akkor lép fel, amikor az olvasó nem töltődik be. Ez a Bezárás egy [`Error`](#error) objektumot ad vissza, amely a hibához tartozó hibakódot és hibaüzenetet jelöli. További információ: [hibakódok](#error-codes). |
 
-## <a name="types"></a>Típusok
+## <a name="types"></a>Típusú
 
 ### <a name="content"></a>Tartalom
 
@@ -90,17 +90,17 @@ struct Error {
 
 | Kód | Leírás |
 | ---- | ----------- |
-| BadArgument | A megadott argumentum érvénytelen. a `message` részletekért tekintse meg a következőt:. |
-| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
+| BadArgument | A megadott argumentum érvénytelen. a részletekért tekintse meg a `message` értéket. |
+| időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
 | Szabályozott | Túllépte a hívási sebesség korlátját. |
-| InternalError | Belső hiba történt a megtekintő olvasó nézet vezérlőn belül. Részletekért lásd: `message` .|
+| InternalError | Belső hiba történt a megtekintő olvasó nézet vezérlőn belül. További részletek: `message`.|
 
 ## <a name="os-version-support"></a>Operációs rendszer verziójának támogatása
 
 Az iOS 9,0-es vagy újabb verzióban az olvasói iOS-SDK az iPaden és az iPhone-on is támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Fedezze fel az [olvasói iOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) -t a githubon
-* [Rövid útmutató: Hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)](./ios-quickstart.md)
+* Fedezze fel az [olvasói iOS SDK-t a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS)
+* [Gyors útmutató: hozzon létre egy iOS-alkalmazást, amely elindítja a részletes olvasót (Swift)](./ios-quickstart.md)
