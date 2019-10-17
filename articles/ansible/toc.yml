@@ -71,6 +71,10 @@
       items:
         - name: Azure-erőforrások kezelése
           href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: Virtual machines (Virtuális gépek)
+      items:
+        - name: Megosztott rendszerkép-katalógus létrehozása
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: Virtuálisgép-méretezési csoportok
       items:
         - name: Konfigurálás
@@ -81,6 +85,8 @@
           href: ./ansible-auto-scale-vmss.md
         - name: Egyéni rendszerkép létrehozása
           href: ./ansible-vmss-update-image.md
+        - name: Megosztott rendszerkép-katalógus létrehozása
+          href: ansible-vm-create-from-shared-generalized-image.md
     - name: Virtuális hálózat
       items:
         - name: Társviszony-létesítés konfigurálása
