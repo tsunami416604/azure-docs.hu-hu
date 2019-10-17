@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Az Azure felügyelt alkalmazások dokumentációja
 metadata:
-  title: 'Az Azure felügyelt alkalmazások dokumentációja – oktatóanyagok, API-referencia'
+  title: Az Azure felügyelt alkalmazások dokumentációja
   description: Az Azure felügyelt alkalmazások használatával az ügyfelek által egyszerűbben fenntartható felhőalapú megoldásokat tehet közzé.
   services: managed-applications
   author: tfitzmac

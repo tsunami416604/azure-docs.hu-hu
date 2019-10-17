@@ -150,8 +150,14 @@
     - name: Infrastruktúra automatizálása
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: Biztonság és szabályzatok
-      href: ../virtual-machines/windows/security-policy.md
+    - name: Biztonság
+      items:
+        - name: Biztonság és szabályzatok
+          href: ../virtual-machines/windows/security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: Beépített biztonsági vezérlők
+          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: Figyelés
       href: ../virtual-machines/windows/monitor.md
@@ -163,8 +169,6 @@
           maintainContext: true
     - name: Méretezési csoport – gyakran ismételt kérdések
       href: virtual-machine-scale-sets-faq.md
-    - name: Beépített biztonsági vezérlők
-      href: virtual-machine-scale-sets-security-controls.md
 - name: Útmutató
   items:
     - name: Tervezés és kialakítás
@@ -212,12 +216,15 @@
         - name: Méretezési csoportokban lévő lemezek titkosítása
           items:
             - name: A PowerShell használata
-              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+              href: disk-encryption-powershell.md
             - name: Az Azure parancssori felületének használata
-              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+              href: disk-encryption-cli.md
+            - name: Használjon Azure Resource Manager-sablonokat
+              href: disk-encryption-azure-resource-manager.md
             - name: Bővítmények sorrendbe állítása
-              href: ../security/azure-security-disk-encryption-extension-sequencing.md
-              maintainContext: true
+              href: disk-encryption-extension-sequencing.md
+            - name: Key Vault az Azure Disk Encryptionhöz
+              href: disk-encryption-key-vault.md
         - name: Nagyméretű méretezési csoportokkal végzett munka
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
