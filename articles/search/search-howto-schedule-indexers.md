@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d30c4532c43c5df568cf32a1025b796b3be9ee8e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186570"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533621"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Indexelő ütemezett Azure Search
 Az indexelő általában egyszer fut, közvetlenül a létrehozása után. Igény szerint újra futtathatja a portál, a REST API vagy a .NET SDK használatával. Az indexelő konfigurálható úgy is, hogy rendszeres időközönként fusson az ütemterven.
@@ -23,7 +23,7 @@ Bizonyos helyzetekben hasznos lehet az indexelő ütemezése:
 
 * A forrásadatok idővel változnak, és azt szeretné, hogy a Azure Search indexelő automatikusan feldolgozzák a módosított adatait.
 * Az index több adatforrásból lesz feltöltve, és biztosítani szeretné, hogy az indexelő a konfliktusok csökkentése érdekében különböző időpontokban fussanak.
-* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: a [nagyméretű](search-howto-large-index.md)adathalmazok indexelése Azure Searchban.
+* A forrásadatok nagyon nagy méretűek, és az indexelő feldolgozását az idő múlásával szeretné elosztani. A nagy mennyiségű adat indexelésével kapcsolatos további információkért lásd: a [nagyméretű adathalmazok indexelése Azure Searchban](search-howto-large-index.md).
 
 Az ütemező a Azure Search beépített funkciója. A keresési indexelő vezérléséhez nem használhat külső ütemező funkciót.
 
@@ -37,7 +37,7 @@ Az indexelő első létrehozásakor megadhat egy ütemtervet, vagy később is f
 
 Egyszerre csak egy indexelő végrehajtása futhat. Ha egy indexelő már fut a következő végrehajtás ütemezésekor, a végrehajtás a következő ütemezett időpontig Elhalasztva lesz.
 
-Vegyünk egy példát erre a konkrétra. Tegyük fel, hogy az indexelő- ütemtervet óránként, a 2019-as és a 8:00:00-es UTC-kor számított 1. június 1-től **kezdődően** konfiguráljuk. Ez akkor fordulhat elő, ha egy indexelő futtatása egy óránál hosszabb időt vesz igénybe:
+Vegyünk egy példát erre a konkrétra. Tegyük fel, hogy az indexelő-ütemtervet **óránként, a** 2019-as és a 8:00:00-es UTC-kor számított 1. június 1-től **kezdődően** konfiguráljuk. Ez akkor fordulhat elő, ha egy indexelő futtatása egy óránál hosszabb időt vesz igénybe:
 
 * Az első indexelő végrehajtása a 2019-as vagy az 8:00-os UTC-kor kezdődik. Feltételezzük, hogy ez a végrehajtás 20 percet vesz igénybe (vagy 1 óránál rövidebb ideig).
 * A második végrehajtás 2019 9:00 AM UTC vagy újabb időpontban kezdődik. Tegyük fel, hogy ez a végrehajtás 70 percet vesz igénybe – több mint egy óra –, és a 10:10-es UTC-ig nem fog elindulni.
@@ -48,13 +48,13 @@ Vegyünk egy példát erre a konkrétra. Tegyük fel, hogy az indexelő- ütemte
 
 <a name="portal"></a>
 
-## <a name="define-a-schedule-in-the-portal"></a>Ütemterv meghatározása a portálon
+## <a name="schedule-in-the-portal"></a>Ütemterv a portálon
 
 A portálon az adatimportálás varázsló lehetővé teszi az indexelő ütemezésének definiálását a létrehozási időpontnál. Az alapértelmezett ütemterv-beállítás **óránként**történik, ami azt jelenti, hogy az indexelő a létrehozása után egyszer fut, és ezt követően minden órában fut.
 
-Ha nem szeretné, hogy az indexelő automatikusan fusson, vagy **naponta** egyszer fusson, módosítsa az ütemterv beállítását. Állítsa be az **Egyéni** értékre, ha más intervallumot vagy adott jövőbeli kezdési időt szeretne megadni.
+**Ha nem** szeretné, hogy az indexelő automatikusan fusson, vagy **naponta** egyszer fusson, módosítsa az ütemterv beállítását. Állítsa be az **Egyéni** értékre, ha más intervallumot vagy adott jövőbeli kezdési időt szeretne megadni.
 
-Ha az ütemtervet **Egyéni**értékre állítja, a mezők úgy jelennek meg , hogy megadják az intervallumot és a kezdési időpontot **(UTC)** . A legrövidebb időtartam 5 perc, a leghosszabb pedig 1440 perc (24 óra).
+Ha az ütemtervet **Egyéni**értékre állítja, a mezők úgy jelennek meg, hogy megadják az **intervallumot** és a **kezdési időpontot (UTC)** . A legrövidebb időtartam 5 perc, a leghosszabb pedig 1440 perc (24 óra).
 
    ![Az indexelő ütemtervének beállítása az adatimportálás varázslóban](media/search-howto-schedule-indexers/schedule-import-data.png "Az indexelő ütemtervének beállítása az adatimportálás varázslóban")
 
@@ -64,7 +64,7 @@ Az indexelő létrehozása után az indexelő szerkesztési paneljén módosíth
 
 <a name="restApi"></a>
 
-## <a name="define-a-schedule-using-the-rest-api"></a>Ütemterv meghatározása a REST API használatával
+## <a name="schedule-using-rest-apis"></a>Ütemezett REST API-k használatával
 
 Az indexelő ütemtervét az REST API használatával adhatja meg. Ehhez adja meg a **Schedule** tulajdonságot az indexelő létrehozásakor vagy frissítésekor. Az alábbi példa egy PUT-kérelmet mutat be egy meglévő indexelő frissítéséhez:
 
@@ -78,7 +78,7 @@ Az indexelő ütemtervét az REST API használatával adhatja meg. Ehhez adja me
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))`. Példák: `PT15M` 15 percenként, `PT2H` minden 2 órában.
+Az **intervallum** paraméter megadása kötelező. Az intervallum a két egymást követő indexelő végrehajtásának kezdete közötti időpontra utal. A legkisebb megengedett intervallum 5 perc; a leghosszabb egy nap. A fájlnak XSD "dayTimeDuration" értéknek kell lennie (az [ISO 8601 időtartam](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) értékének korlátozott részhalmaza). A minta ehhez a következő: `P(nD)(T(nH)(nM))`. Példák: `PT15M` minden 15 percenként, `PT2H` 2 óránként.
 
 Az opcionális kezdési **időpont** azt jelzi, hogy mikor kell megkezdeni az ütemezett végrehajtást. Ha nincs megadva, a rendszer az aktuális UTC-időt használja. Ez az idő lehet a múltban, amely esetben az első végrehajtás ütemezve van, mintha az indexelő az eredeti **kezdő időpont**óta folyamatosan fut.
 
@@ -86,7 +86,7 @@ Az indexelő igény szerint bármikor futtatható a Run indexelő hívásával i
 
 <a name="dotNetSdk"></a>
 
-## <a name="define-a-schedule-using-the-net-sdk"></a>Ütemterv meghatározása a .NET SDK használatával
+## <a name="schedule-using-the-net-sdk"></a>Ütemterv a .NET SDK használatával
 
 Az indexelő ütemtervét a Azure Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
 

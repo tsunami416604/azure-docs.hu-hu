@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell parancsfájl-minta – felügyelt erőforráscsoport lekérése és virtuális gépek átméretezése | Microsoft Docs
+title: Felügyelt erőforráscsoport lekérése & virtuális gépek átméretezése – Azure PowerShell
 description: Azure PowerShell parancsfájlt biztosít az Azure által felügyelt alkalmazásokhoz tartozó felügyelt erőforráscsoport beszerzéséhez. A szkript átméretezi a virtuális gépeket.
 services: managed-applications
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f11f9b56a8a17330fac3fb50bfd5f560357463e7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330122"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529416"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Felügyelt erőforráscsoport erőforrásainak lekérése és virtuális gépek átméretezése a PowerShell-lel
 

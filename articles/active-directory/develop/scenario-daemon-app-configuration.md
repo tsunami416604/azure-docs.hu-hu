@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394137a1b7901a3272e36f6a6d74944b87f30082
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 76337c471a4032f879bee8382b2d958f6600671e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056486"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527065"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -34,16 +34,16 @@ A Daemon-alkalmazásokat támogató Microsoft-kódtárak a következők:
   MSAL-könyvtár | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A Daemon-alkalmazások létrehozásához támogatott platformok a .NET-keretrendszer és a .NET Core-platformok (a UWP, a Xamarin. iOS és a Xamarin. Android is, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használhatók)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | Fejlesztés folyamatban – nyilvános előzetes verzió
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL. Python | Fejlesztés folyamatban – nyilvános előzetes verzió
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL. Java | Fejlesztés folyamatban – nyilvános előzetes verzió
 
 ## <a name="configuration-of-the-authority"></a>A szolgáltató konfigurációja
 
-Mivel a démon-alkalmazások nem használnak delegált engedélyeket, de az alkalmazás engedélyei, a *támogatott fióktípus* nem lehet *fiók a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)* . Valójában nincs bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjaihoz tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim fiókjait *minden szervezetnél*ki kell választania.
+Mivel a démon-alkalmazások nem használnak delegált engedélyeket, de az alkalmazás engedélyei, a *támogatott fióktípus* nem lehet *fiók a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)* . Valójában nincs bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjaihoz tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim *fiókjait* *minden szervezetnél*ki kell választania.
 
 Ezért az alkalmazás konfigurációjában megadott szolgáltatónak bérlő-ED típusúnak kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
 
-Ha Ön ISV, és több-bérlős eszközt szeretne biztosítani, használja `organizations`a következőt:. Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. További részletekért lásd: a [teljes bérlők](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) belefoglalásának kérelmezése. A MSAL-ben jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
+Ha Ön ISV, és több-bérlős eszközt szeretne biztosítani, használhatja a `organizations`. Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. További részletekért lásd: a [teljes bérlők](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) belefoglalásának kérelmezése. A MSAL esetében jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
 
 ## <a name="application-configuration-and-instantiation"></a>Alkalmazás konfigurációja és példánya
 
@@ -103,7 +103,7 @@ Ha tanúsítványokkal rendelkező bizalmas ügyfelet hoz létre, akkor ez a kiv
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Itt látható a msal4j dev-mintákban használt osztály a minták konfigurálásához: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Itt látható a msal4j dev-mintákban használt osztály a következő minták konfigurálásához: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 public class TestData {
@@ -126,14 +126,14 @@ A MSAL alkalmazás létrehozásához a következőket kell tennie:
 - a MSAL-csomag hozzáadása, hivatkozása vagy importálása (a nyelvtől függően)
 - Ezután az építkezés eltérő lesz attól függően, hogy az ügyfél titkos kulcsait vagy tanúsítványait használja (vagy speciális forgatókönyvként, aláírt kijelentésként)
 
-A démon alkalmazást egy`IConfidentialClientApplication`
+A démon alkalmazást egy `IConfidentialClientApplication` fogja megjeleníteni
 
 #### <a name="reference-the-package"></a>A csomagra mutató hivatkozás
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 Adja hozzá a [Microsoft. IdentityClient](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-csomagot az alkalmazáshoz.
-A MSAL.net-ben a bizalmas ügyfélalkalmazás az `IConfidentialClientApplication` illesztőfelületet jelképezi.
+A MSAL.NET-ben a bizalmas ügyfélalkalmazás a `IConfidentialClientApplication` felület által reprezentált.
 MSAL.NET-névtér használata a forráskódban
 
 ```CSharp
@@ -243,7 +243,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         .build();
 ```
 
-or
+vagy
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -269,7 +269,7 @@ A MSAL.NET kétféle módszerrel biztosítanak aláírt állításokat a bizalma
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-A használatakor `WithClientAssertion`meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél](msal-net-client-assertions.md) -kijelentésekben
+@No__t_0 használatakor meg kell adnia egy aláírt JWT. Ez a speciális forgatókönyv részletesen szerepel az [ügyfél-kijelentésekben](msal-net-client-assertions.md)
 
 ```CSharp
 string signedClientAssertion = ComputeAssertion();
@@ -278,7 +278,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-A használatakor `WithClientClaims`a MSAL.net saját maga fogja kiszámítani az Azure ad által várt jogcímeket tartalmazó aláírt állítást, valamint az elküldeni kívánt további ügyfelek jogcímeit.
+@No__t_0 használatakor a MSAL.NET saját maga fogja kiszámítani az Azure AD által várt jogcímeket, valamint az elküldeni kívánt további ügyfél-jogcímeket tartalmazó aláírt állítást.
 Az alábbi kódrészlettel végezheti el az alábbiakat:
 
 ```CSharp
@@ -295,7 +295,7 @@ További részletekért lásd: [ügyfél-kijelentések](msal-net-client-assertio
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A MSAL Pythonban megadhatja az ügyfél jogcímeit azon jogcímek használatával, `ConfidentialClientApplication`amelyeket ez a titkos kulcs aláír majd.
+A MSAL Pythonban megadhatja az ügyfél jogcímeit azon jogcímek használatával, amelyeket az `ConfidentialClientApplication` titkos kulcsa aláír.
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -319,7 +319,21 @@ a msal4j nyilvános előzetes verzióban érhető el. Az aláírt kijelentések 
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](./scenario-daemon-acquire-token.md)
+> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon-alkalmazás – jogkivonatok beszerzése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+
+---

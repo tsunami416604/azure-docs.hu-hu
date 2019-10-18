@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 4e29aacb1357509e2b000a9d05c5ced8f9a30dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146400"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517158"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Csoport (előzetes verzió) csoportos letöltése Azure Active Directory
 
 A Azure Active Directory (Azure AD) portál használatával tömegesen töltheti le a szervezet egy csoportjának tagjait vesszővel tagolt (CSV) fájlba.
 
-> [!NOTE]
-> Az Azure AD tömeges műveletei az Azure AD nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhetők. Az előzetes verzió használati feltételeivel kapcsolatos további információkért lásd: a [Microsoft Azure előnézetekhez tartozó kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="to-bulk-download-group-membership"></a>Csoporttagság tömeges letöltése
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjait is tömegesen tölthetik le.
-1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Az Azure AD-ben válassza a **csoportok**  > **az összes csoport**elemet.
 1. Nyissa meg azt a csoportot, amelynek tagságát le szeretné tölteni, majd válassza a **tagok**lehetőséget.
 1. A **tagok** lapon válassza a **tagok letöltése** lehetőséget, hogy letöltse a csoporttagokat felsoroló CSV-fájlt.
 
@@ -46,7 +43,7 @@ Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet
 
 A csoporttagok listájának letöltéséhez minden tömeges tevékenység legfeljebb egy óráig futhat. Ez lehetővé teszi, hogy letöltse legalább 500 000 tag listáját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoporttagok tömeges importálása](groups-bulk-import-members.md)
 - [Csoporttagok tömeges eltávolítása](groups-bulk-download-members.md)

@@ -1,5 +1,5 @@
 ---
-title: Összesített átalakítás a leképezési adatfolyamban – Azure Data Factory | Microsoft Docs
+title: Összesített átalakítás Azure Data Factory leképezési adatforgalomban | Microsoft Docs
 description: Megtudhatja, hogyan összesítheti a Azure Data Factory méretezési adatokat a leképezési adatfolyam összesített átalakításával.
 author: kromerm
 ms.author: makromer
@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f2a3219a731133ecaedf30fec1854f1a128caa3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: add548a184440c408b8b74e131f2249b4f616ddc
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431618"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514826"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Összesített átalakítás a leképezési adatfolyamban 
 
@@ -68,7 +68,9 @@ Az összesített átalakítások hasonlóak az SQL aggregált választó lekérd
 
 ### <a name="example"></a>Példa
 
-Az alábbi példában egy bejövő stream `MoviesYear`, és az `year` oszlop szerint csoportosítja a sorokat. Az átalakítás egy `avgrating` összesítő oszlopot hoz létre, amely a `Rating` oszlop átlagát értékeli ki. Az összesített átalakítás neve `AvgComedyRatingsByYear`. Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
+Az alábbi példában egy bejövő stream `MoviesYear`, és az `year` oszlop szerint csoportosítja a sorokat. Az átalakítás egy `avgrating` összesítő oszlopot hoz létre, amely a `Rating` oszlop átlagát értékeli ki. Az összesített átalakítás neve `AvgComedyRatingsByYear`.
+
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
 ![Csoportosítás példa alapján](media/data-flow/agg-script1.png "Csoportosítás példa alapján")
 

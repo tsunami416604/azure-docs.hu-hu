@@ -11,21 +11,21 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 10/17/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: c475bfc6179f3604ed6b83cafc75d34f4359513f
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373547"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532836"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítések számára az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` a ![RSS hírcsatorna-olvasó ikon @ no__t-2 hírcsatorna-olvasó.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` a ![RSS hírcsatorna-olvasó ikonjára ](./media/whats-new/feed-icon-16x16.png) a hírcsatorna-olvasót.
 
 Az Azure AD folyamatosan fejleszti a fejlesztéseket. A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
@@ -39,7 +39,21 @@ Ez az oldal havonta frissül, ezért rendszeresen újra kell látogatnia. Ha hat
 
 ---
 
-## <a name="september-2019"></a>Szeptember 2019
+## <a name="october-2019"></a>Október 2019
+
+### <a name="deprecation-of-the-identityriskevent-api-for-azure-ad-identity-protection-risk-detections"></a>A identityRiskEvent API elavult változata Azure AD Identity Protection kockázati észlelések esetén  
+
+**Írja be a következőt:** Tervezze meg a változást  
+**Szolgáltatás kategóriája:** Identity Protection  
+A **termék képességei:** Identitás-biztonsági & védelme
+
+A fejlesztői visszajelzésekre adott válaszként prémium szintű Azure AD P2 előfizetők mostantól összetett lekérdezéseket végezhetnek a Azure AD Identity Protection kockázati észlelési adatain az új riskDetection API-val Microsoft Graph. A meglévő [identityRiskEvent](https://docs.microsoft.com/en-us/graph/api/resources/identityriskevent?view=graph-rest-beta) API bétaverziója leállítja az adatvisszaadás **2020. január 10**. után. Ha a szervezete a identityRiskEvent API-t használja, térjen át az új riskDetection API-ra.
+
+További információ az új riskDetection API-ról: [kockázatkezelési API-dokumentáció](https://aka.ms/RiskDetectionsAPI).
+
+---
+
+## <a name="september-2019"></a>2019. szeptember
 
 ### <a name="deprecation-of-the-power-bi-content-packs"></a>A Power BI Content Packs elavult
 
@@ -50,6 +64,8 @@ A **termék képességei:** & Jelentéskészítés figyelése
 Power BI elavultak az áruházból származó tartalmi csomagok, és az **2019. október 1-től**az Azure ad Power bi-csomag támogatása már nem támogatott. Azok a felhasználók, akik jelenleg a Content Pack csomagot használják, továbbra is használhatják azt annak ellenére, hogy az alapul szolgáló API-k régebbi verziójúak. Ennek a csomagnak a alternatívájaként használhatja az Azure ad-munkafüzeteket (Log Analytics), hogy betekintést nyerjen az Azure AD-hez kapcsolódó szolgáltatásaiba.
 
 További információ a munkafüzetekről: [Azure monitor munkafüzetek használata Azure Active Directory jelentésekhez](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). További információ a tartalmi csomagok érvénytelenítéséről: a [Bejelentési Power bi sablon alkalmazásai általános elérhetősége](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) blogbejegyzés.
+
+---
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>A saját profil átnevezése és integrálása a Microsoft Office Account (fiók) oldallal
 
@@ -175,7 +191,7 @@ Ha Ön egy meglévő ügyfél, aki az MFA-kiszolgálót 2019. július 1. előtt 
 
 ---
 
-## <a name="august-2019"></a>Augusztus 2019
+## <a name="august-2019"></a>2019. augusztus
 
 ### <a name="plan-for-change-deprecation-of-the-power-bi-content-packs"></a>Tervezze meg a változást: a Power BIi csomagok elavulttá váltása
 
@@ -367,7 +383,7 @@ A **termék képességei:** Felhasználói hitelesítés
 
 2019. szeptember 25-én kikapcsoljuk a régi, nem továbbfejlesztett biztonsági információkat a felhasználói biztonsági adatok regisztrálásához és kezeléséhez, és csak az új, [továbbfejlesztett verzió](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)bekapcsolását. Ez azt jelenti, hogy a felhasználók többé nem fogják tudni használni a régi felhasználói élményt.
 
-A fokozott biztonsági információkkal kapcsolatos további információkért tekintse meg a [rendszergazdai dokumentációt](https://aka.ms/securityinfodocs)@no__t – 1and [felhasználói dokumentációját](https://aka.ms/securityinfoguide).
+A fokozott biztonsági információkkal kapcsolatos további információkért tekintse meg a [rendszergazdai dokumentációt](https://aka.ms/securityinfodocs)  and [felhasználói dokumentációját](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>Az új felhasználói élmény bekapcsolásához a következőket kell tennie:
 
@@ -400,7 +416,7 @@ További információ: az [Azure ad Breaking Changes – megjegyzések](https://
 
 ---
 
-## <a name="july-2019"></a>Július 2019
+## <a name="july-2019"></a>2019. július
 
 ### <a name="plan-for-change-application-proxy-service-update-to-support-only-tls-12"></a>Tervezze meg a változást: az Application proxy szolgáltatás frissítése csak a TLS 1,2-et támogatja
 
@@ -444,7 +460,7 @@ A **termék képességei:** Felhasználói hitelesítés
 
 2019. július 26-án módosítjuk, hogy az [ügyfél hitelesítő adataival](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)hogyan biztosítjuk az alkalmazáshoz tartozó jogkivonatokat. Korábban az alkalmazások jogkivonatokat kérhetnek más alkalmazások meghívásához, függetlenül attól, hogy az ügyfélalkalmazás a bérlőben volt-e. Frissítettük ezt a viselkedést, így az egybérlős erőforrásokat – más néven webes API-kat – csak az erőforrás-bérlőben található ügyfélalkalmazások hívhatják meg.
 
-Ha az alkalmazás nem az erőforrás-bérlőben található, a következő hibaüzenet jelenik meg: `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` a probléma megoldásához létre kell hoznia az ügyfélalkalmazás-szolgáltatást a bérlőben a rendszergazdai jogosultsági [végpont](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)használatával. Ez biztosítja, hogy a bérlő a bérlőn belül működjön az alkalmazás engedélyével.
+Ha az alkalmazás nem az erőforrás-bérlőben található, a következő hibaüzenet jelenik meg: `The service principal named <app_name> was not found in the tenant named <tenant_name>. This can happen if the application has not been installed by the administrator of the tenant.` a probléma megoldásához létre kell hoznia az ügyfélalkalmazás-szolgáltatást a bérlőben, a [rendszergazdai engedélyezési végponttal](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#using-the-admin-consent-endpoint) vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/develop/howto-authenticate-service-principal-powershell)használatával. Ez biztosítja, hogy a bérlő a bérlőn belül működjön az alkalmazás engedélyével.
 
 További információ: [Újdonságok a hitelesítéshez](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#app-only-tokens-for-single-tenant-applications-are-only-issued-if-the-client-app-exists-in-the-resource-tenant).
 
@@ -657,7 +673,7 @@ További információ ezekről a frissítésekről: a [naplózási naplók szűr
 
 ---
 
-## <a name="june-2019"></a>Június 2019
+## <a name="june-2019"></a>2019. június
 
 ### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Új riskDetections API a Microsoft Graphhoz (nyilvános előzetes verzió)
 
@@ -927,7 +943,7 @@ A feltételes hozzáféréssel és a jelszó-visszaállítással kapcsolatos tov
 
 ---
 
-## <a name="april-2019"></a>Április 2019
+## <a name="april-2019"></a>2019. április
 
 ### <a name="new-azure-ad-threat-intelligence-detection-is-now-available-as-part-of-azure-ad-identity-protection"></a>Az Azure AD veszélyforrások felderítésének új észlelése mostantól a Azure AD Identity Protection részeként érhető el
 

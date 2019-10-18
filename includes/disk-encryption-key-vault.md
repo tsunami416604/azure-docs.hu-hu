@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: e145c7af3ff3cdd6d3cca2a7b0da0fdc23a418b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 398da52ba424c08bd1bbdc6f02641109e136f45c
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245252"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72511483"
 ---
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -131,7 +131,7 @@ Ha a titkosítási kulcsok további biztonsági rétegéhez kulcs titkosítási 
 
 Létrehozhat egy új KEK-t az Azure CLI az [kulcstartó kulcs létrehozása](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) parancs, a Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmag vagy a [Azure Portal](https://portal.azure.com/)használatával. RSA-kulcs típusát kell előállítania; Azure Disk Encryption még nem támogatja az elliptikus görbe kulcsait.
 
-Ehelyett egy KEK-t is importálhat a helyszíni kulcskezelő HSM-ből. További információ: [Key Vault dokumentáció](/key-vault/key-vault-hsm-protected-keys). 
+Ehelyett egy KEK-t is importálhat a helyszíni kulcskezelő HSM-ből. További információ: [Key Vault dokumentáció](/azure/key-vault/key-vault-hsm-protected-keys).
 
 A Key Vault KEK URL-címeinek verziószámozással kell rendelkezniük. Az Azure ezt a verziószámozási korlátozást alkalmazza. Érvényes titkos és KEK URL-címek esetén tekintse meg az alábbi példákat:
 

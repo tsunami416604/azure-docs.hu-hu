@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330089"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529434"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure-ban Virtual Machines
 
@@ -45,7 +45,7 @@ Emellett általános ismeretekkel kell rendelkeznie az alábbi technológiákró
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Távolítsa el a teljes bővítményt a feladatátvevő fürtben részt vevő virtuális gépekről, majd regisztrálja őket az SQL VM erőforrás-szolgáltató `lightweight` módban. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
+> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Ha a teljes kiterjesztésű módból a Lightweight értékre szeretné váltani, törölje az "SQL virtuális gép" erőforrást a correspinding virtuális gépekhez, majd regisztrálja őket az SQL VM erőforrás-szolgáltató `lightweight` módban. Az "SQL virtuális gép" erőforrásnak a Azure Portal használatával történő törlésekor a tényleges virtuális gép kijelölésének törlését kell választania. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
 
 ### <a name="workload-consideration"></a>Számítási feladatok megfontolása
 
@@ -293,7 +293,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 1. **Feladatátvevőfürt-kezelő**ellenőrizze, hogy az összes fürt alapvető erőforrása az első virtuális gépen van-e. Ha szükséges, helyezze át az összes erőforrást erre a virtuális gépre.
 
-1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a `C:\SQLServer_<version number>_Full` helyen található. Kattintson a **telepítés**elemre.
+1. Keresse meg a telepítési adathordozót. Ha a virtuális gép az egyik Azure Marketplace-lemezképet használja, az adathordozó a következő helyen található: `C:\SQLServer_<version number>_Full`. Kattintson a **telepítés**elemre.
 
 1. A **SQL Server telepítési központban**kattintson a **telepítés**elemre.
 
@@ -344,8 +344,7 @@ A terheléselosztó létrehozása:
    Tekintse meg a következő képet:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
-
-   ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)
+   
 
 ### <a name="configure-the-load-balancer-backend-pool"></a>A terheléselosztó háttér-készletének konfigurálása
 

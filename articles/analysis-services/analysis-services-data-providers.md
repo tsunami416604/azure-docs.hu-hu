@@ -4,15 +4,15 @@ description: Az ügyfélalkalmazások és eszközök kapcsolódásához szüksé
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1ea14f141ed4fa698a21da8030878b04a81f1d08
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 89f8ffc58458ce75d1acd897f224f61bab9158b4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298659"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512771"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Az Azure Analysis Serviceshoz való csatlakozáshoz használható ügyféloldali kódtárak
 
@@ -44,7 +44,7 @@ A Analysis Services három ügyféloldali kódtárat (más néven adatszolgálta
 
 A Microsoft ügyfélalkalmazások, például a Power BI Desktop és az Excel mind a három ügyféloldali kódtárat telepítik, és új verziók esetén frissítik azokat. A verziótól vagy a frissítések gyakoriságtól függően előfordulhat, hogy egyes ügyféloldali kódtárak nem a Azure Analysis Services által igényelt legújabb verziók. Ugyanez vonatkozik az egyéni alkalmazásokra vagy olyan egyéb felületekre, mint például az AsCmd, a TOM vagy az ADOMD.NET. Ezeknek az alkalmazásoknak manuálisan vagy programozott módon kell telepíteniük a kódtárakat. A manuális telepítéshez szükséges ügyféloldali kódtárak a SQL Server szervizcsomagok terjeszthető csomagként szerepelnek. Ezek az ügyféloldali kódtárak azonban a SQL Server verziójához vannak kötve, és előfordulhat, hogy nem a legújabbak.  
 
-Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Services kiszolgálóról az adatforráshoz való csatlakozáshoz szükséges adatszolgáltatóktól. További információ a DataSource-kapcsolatokról: [adatforrás-kapcsolatok](analysis-services-datasource.md).
+Az ügyfélkapcsolatok ügyféloldali kódtárai eltérnek a Azure Analysis Services kiszolgálóról az adatforráshoz való csatlakozáshoz szükséges adatszolgáltatóktól. További információ az adatforrás-kapcsolatokról: [adatforrás-kapcsolatok](analysis-services-datasource.md).
 
 ## <a name="client-library-types"></a>Ügyféloldali függvénytár-típusok
 

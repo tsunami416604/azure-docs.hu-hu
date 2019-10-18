@@ -1,5 +1,5 @@
 ---
-title: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal | Microsoft Docs
+title: Virtuálisgép-bővítmények üzembe helyezése – Azure Resource Manager sablonok
 description: Útmutató virtuális gépi bővítmények üzembe helyezéséhez Azure Resource Manager-sablonokkal.
 services: azure-resource-manager
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 338054aadbf04c6c6e2b496677476c2c5634b6ba
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5eb7a8d82f7f61e18afc49c61444354dcde77b5e
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169301"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533427"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Oktatóanyag: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal
 
@@ -60,7 +60,7 @@ Ha úgy dönt, hogy közzéteszi a fájlt a saját tartózkodási helyén, az ok
 
 Az Azure Gyorsindítás sablonjai a Resource Manager-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
-1. A Visual Studio Code-ban válassza a **fájl @no__t-** 1**megnyitott fájl**elemet.
+1. A Visual Studio Code-ban válassza a **fájl**  >  fájl**megnyitása**lehetőséget.
 1. A **fájlnév** mezőben illessze be a következő URL-címet: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
 
 1. A fájl megnyitásához válassza a **Megnyitás**lehetőséget.

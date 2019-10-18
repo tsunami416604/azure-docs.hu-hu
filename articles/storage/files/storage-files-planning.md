@@ -4,15 +4,15 @@ description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi te
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249351"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514658"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -26,7 +26,7 @@ A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlm
 
 * **Storage-fiók**: Minden Azure Storage-hozzáférés tárfiókon keresztül valósítható meg. A tárfiókok kapacitásával kapcsolatos további információkért lásd: [Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Méretezhetőségi és teljesítménycélok).
 
-* **Megosztás**: A File Storage-megosztás egy SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak egy szülőmegosztásban kell létrejönnie. Egy fiók korlátlan számú megosztást tartalmazhat, és egy megosztás korlátlan számú fájlt tárolhat, akár a fájlmegosztás teljes kapacitásával. A standard fájlmegosztás esetében az összesített kapacitás legfeljebb 5 TiB (GA) vagy 100 TiB (előzetes verzió), prémium szintű fájlmegosztás esetén a teljes kapacitás akár 100 TiB.
+* **Megosztás**: A File Storage-megosztás egy SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak egy szülőmegosztásban kell létrejönnie. Egy fiók korlátlan számú megosztást tartalmazhat, és egy megosztás korlátlan számú fájlt tárolhat, akár a fájlmegosztás teljes kapacitásával. A prémium és a standard fájlmegosztás teljes kapacitása 100 TiB.
 
 * **Könyvtár**: Egy választható könyvtár-hierarchia.
 
@@ -79,10 +79,8 @@ A Azure Files két teljesítményszint, a standard és a prémium szintet kíná
 
 A standard fájlmegosztást merevlemez-meghajtók (HDD-k) végzik. A standard fájlmegosztás megbízható teljesítményt biztosít olyan IO-munkaterhelések esetében, amelyek kevésbé érzékenyek a teljesítmény változékonyságára, például az általános célú fájlmegosztás és a fejlesztési/tesztelési környezetek számára. A standard fájlmegosztás csak utólagos elszámolású számlázási modellben érhető el.
 
-A standard fájlmegosztás legfeljebb 5 TiB-mérettel érhető el. Míg a nagyobb fájlmegosztás, amely 5 TiB-nál nagyobb mennyiségű, legfeljebb 100 TiB-t kínál, jelenleg előzetes verzióként érhető el.
-
 > [!IMPORTANT]
-> A bevezetési lépések, valamint az előzetes verzió hatókörét és korlátozásait lásd a bevezetésben a [nagyobb fájlmegosztás (standard szint)](#onboard-to-larger-file-shares-standard-tier) szakaszban.
+> Ha 5 TiB-nál nagyobb fájlmegosztást szeretne használni, tekintse meg a bevezetést a [nagyobb fájlmegosztás (standard szint)](#onboard-to-larger-file-shares-standard-tier) című szakaszt a bevezetéshez, valamint a regionális rendelkezésre álláshoz és korlátozásokhoz.
 
 ### <a name="premium-file-shares"></a>Prémium fájlmegosztás
 
@@ -195,75 +193,43 @@ Tartsa szem előtt ezeket a szempontokat, amikor dönti el, hogy melyik repliká
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Nagyobb fájlmegosztás beléptetése (standard szint)
 
-Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szintű fájlmegosztás a 100 TiB szolgáltatással érhető el.
+Ez a szakasz csak a normál fájlmegosztás esetében érvényes. A prémium szintű fájlmegosztás 100 TiB-kapacitással érhető el.
 
 ### <a name="restrictions"></a>Korlátozások
 
-- Az Azure előzetes verziójának [feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a nagyméretű fájlmegosztás esetében az előzetes verzióban is érvényesek, beleértve a Azure file Sync üzemelő példányokkal való használatot is.
-- Új általános célú Storage-fiókot kell létrehoznia (a meglévő Storage-fiókok nem terjeszthetők ki).
-- A LRS/ZRS a GRS/GZRS fiók átalakítására nem lesz lehetséges az előfizetés elfogadása után létrehozott új Storage-fiókoknál a nagyobb fájlmegosztás előzetes verziójára.
-
+- A LRS/ZRS és a GRS/GZRS fiók átalakítása nem lehetséges a nagyméretű fájlmegosztást engedélyező Storage-fiókok esetében.
 
 ### <a name="regional-availability"></a>Regionális elérhetőség
 
-A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhető el, ezek a régiók az alábbi táblázatban láthatók:
+A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régiókban 100 TiB-korláttal érhetők el, ezek a régiók a következő táblázatban láthatók:
 
-|Region (Régió) |Támogatott redundancia |Meglévő Storage-fiókok támogatása |Portál támogatása * |
-|-------|---------|---------|---------|
-|Kelet-Ausztrália |LRS     |Nem    |Igen|
-|Délkelet-Ausztrália|LRS |Nem    |Igen|
-|Közép-India  |LRS     |Nem    |Igen|
-|Kelet-Ázsia      |LRS     |Nem    |Igen|
-|USA keleti régiója        |LRS     |Nem    |Igen|
-|Közép-Franciaország |LRS, ZRS|Nem    |Igen|
-|Dél-Franciaország   |LRS     |Nem    |Igen|
-|Észak-Európa   |LRS     |Nem    |még nem|
-|Dél-India    |LRS     |Nem    |Igen|
-|Délkelet-Ázsia |LRS, ZRS|Nem    |Igen|
-|USA nyugati középső régiója|LRS     |Nem    |Igen|
-|Nyugat-Európa    |LRS, ZRS|Nem    |Igen|
-|USA nyugati régiója        |LRS     |Nem    |Igen|
-|USA 2. nyugati régiója      |LRS, ZRS|Nem    |Igen|
+|Region (Régió) |Támogatott redundancia |
+|-------|---------|
+|Ausztrália keleti régiója |LRS     |
+|Délkelet-Ausztrália|LRS |
+|Közép-India  |LRS     |
+|Kelet-Ázsia      |LRS     |
+|USA keleti régiója *        |LRS     |
+|Közép-Franciaország |LRS, ZRS|
+|Dél-Franciaország   |LRS     |
+|Dél-India    |LRS     |
+|Délkelet-Ázsia |LRS, ZRS|
+|USA nyugati középső régiója|LRS     |
+|Nyugat-Európa *    |LRS, ZRS|
+|USA nyugati régiója *        |LRS     |
+|USA 2. nyugati régiója      |LRS, ZRS|
 
-
-\* A portál támogatása nélküli régiók esetében továbbra is használhatja a PowerShell vagy az Azure parancssori felület (CLI) használatát 5 TiB-nál nagyobb megosztás létrehozásához. Másik lehetőségként létrehozhat egy új megosztást a portálon a kvóta meghatározása nélkül. Ezzel létrehoz egy, az 100 TiB alapértelmezett mérettel rendelkező megosztást, amely később frissíthető a PowerShell vagy az Azure CLI használatával.
+az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot.
 
 Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/azurefilesatscalesurvey)az új régiók és szolgáltatások rangsorolása érdekében.
 
-### <a name="steps-to-onboard"></a>A bevezetéshez szükséges lépések
+### <a name="enable-and-create-larger-file-shares"></a>Nagyobb fájlmegosztás engedélyezése és létrehozása
 
-Az előfizetés nagyobb fájlmegosztás előzetesre való regisztrálásához Azure PowerShellt kell használnia. Használhatja [Azure Cloud Shell](https://shell.azure.com/) vagy helyileg is telepítheti a [Azure PowerShell modult](https://docs.microsoft.com/powershell/azure/install-Az-ps?view=azps-2.4.0) a következő PowerShell-parancsok futtatásához:
-
-Először győződjön meg arról, hogy az előzetes verzióban regisztrálni kívánt előfizetés van kiválasztva:
-
-```powershell
-$context = Get-AzSubscription -SubscriptionId ...
-Set-AzContext $context
-```
-
-Ezután regisztráljon az előzetes verzióra az alábbi parancsokkal:
-
-```powershell
-Register-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-```
-Az előfizetés automatikusan jóvá lesz hagyva mindkét parancs futtatásakor.
-
-A regisztráció állapotának ellenőrzéséhez futtassa a következő parancsot:
-
-```powershell
-Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
-```
-
-Az állapot frissítése akár 15 percet is igénybe **vehet.** Miután **regisztrálta**az állapotát, használhatja a funkciót.
-
-### <a name="use-larger-file-shares"></a>Nagyobb fájlmegosztás használata
-
-A nagyobb fájlmegosztás használatának megkezdéséhez hozzon létre egy új általános célú v2 Storage-fiókot és egy új fájlmegosztást.
+A nagyobb fájlmegosztás használatának megkezdéséhez tekintse meg a [nagyméretű fájlmegosztás engedélyezése](storage-files-how-to-create-large-file-share.md)című cikket.
 
 ## <a name="data-growth-pattern"></a>Adatmennyiség növekedési mintája
 
-Napjainkban az Azure-fájlmegosztás maximális mérete 5 TiB (100 TiB az előzetes verzióban). A jelenlegi korlátozás miatt figyelembe kell vennie az adatmennyiség várható növekedését az Azure-fájlmegosztás telepítésekor.
+Az Azure-fájlmegosztás maximális mérete jelenleg 100 TiB. A jelenlegi korlátozás miatt figyelembe kell vennie az adatmennyiség várható növekedését az Azure-fájlmegosztás telepítésekor.
 
 Több Azure-fájlmegosztás egyetlen Windows-fájlkiszolgálón is szinkronizálható Azure File Sync használatával. Így biztosíthatja, hogy a régebbi, nagyméretű fájlmegosztás a helyszínen is bevihető legyen Azure File Syncba. További információ: [Azure file Sync központi telepítésének tervezése](storage-files-planning.md).
 

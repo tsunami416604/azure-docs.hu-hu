@@ -13,24 +13,21 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08708c23f9c8f4c4a8fc9f2f0aa5cd20d8333a42
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146378"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517104"
 ---
 # <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Csoporttagok tömeges eltávolítása (előzetes verzió) Azure Active Directory
 
 A Azure Active Directory (Azure AD) portál használatával számos tagot eltávolíthat egy csoportból egy vesszővel tagolt (CSV) fájl használatával a csoporttagok tömeges eltávolításához.
 
-> [!NOTE]
-> Az Azure AD tömeges műveletei az Azure AD nyilvános előzetes funkciója, és minden fizetős Azure AD-licenccel elérhetők. Az előzetes verzió használati feltételeivel kapcsolatos további információkért lásd: a [Microsoft Azure előnézetekhez tartozó kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="to-bulk-remove-group-members"></a>Csoporttagok tömeges eltávolítása
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjainak tömeges eltávolítására is jogosultak.
-1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Az Azure AD-ben válassza a **csoportok**  > **az összes csoport**elemet.
 1. Nyissa meg azt a csoportot, amelyből el kívánja távolítani a tagokat, majd válassza a **tagok**elemet.
 1. A **tagok** lapon válassza a **tagok eltávolítása**lehetőséget.
 1. A csoporttagok **eltávolítása (előzetes verzió)** lapon válassza a **Letöltés** lehetőséget a CSV-sablonfájl a szükséges csoporttagok tulajdonságaival való beszerzéséhez.
@@ -58,7 +55,7 @@ A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válass
 
 Minden tömeges tevékenység, amelyből a csoporttagok listája akár egy óráig is futtatható. Ez lehetővé teszi, hogy legalább 40 000 tagot tartalmazó lista legyen eltávolítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoporttagok tömeges importálása](groups-bulk-import-members.md)
 - [Csoport tagjainak letöltése](groups-bulk-download-members.md)

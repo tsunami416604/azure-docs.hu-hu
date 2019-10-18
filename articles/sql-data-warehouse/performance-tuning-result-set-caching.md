@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
-ms.openlocfilehash: 2fa3da028e6e897921786889579c6de9a048c3e8
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f6323501fc0078677c4c0e2cd0e43a15583df29b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392643"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513979"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-Finomhangolás az eredményhalmaz gyorsítótárazásával  
 Ha engedélyezve van az eredményhalmaz gyorsítótárazása, Azure SQL Data Warehouse automatikusan gyorsítótárazza a lekérdezés eredményeit a felhasználói adatbázisban ismétlődő használatra.  Ez lehetővé teszi, hogy a későbbi lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így az újraszámításra nincs szükség.   Az eredményhalmaz gyorsítótárazása javítja a lekérdezési teljesítményt, és csökkenti a számítási erőforrások használatát.  Emellett a gyorsítótárazott eredményeket használó lekérdezések nem használnak párhuzamossági tárolóhelyeket, így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor érhetik el a gyorsítótárazott eredményeket, ha ugyanazokat az adatelérési engedélyeket használják, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
@@ -37,6 +37,8 @@ Ha az eredményhalmaz gyorsítótárazása be van kapcsolva egy adatbázishoz, a
 - Az 64 kb nagyobb sorszámú adatvisszaadó lekérdezések
 
 A nagyméretű eredményhalmaz lekérdezései (például > 1 000 000 sor) az első futtatás során lassabb teljesítményt tapasztalhatnak az eredmények gyorsítótárának létrehozásakor.
+
+Az eredményhalmaz gyorsítótárazása nem támogatja a sorok szintjének biztonságát.  
 
 ## <a name="when-cached-results-are-used"></a>A gyorsítótárazott eredmények használatakor
 

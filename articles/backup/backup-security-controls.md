@@ -8,16 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: f44be7556b6d741df93faeeab1dbdfc15bc8ebfd
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8170022a3ee4b4b65e8da0d9e5a2f8464675d08f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211803"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528113"
 ---
 # <a name="security-controls-for-azure-backup"></a>A Azure Backup biztonsági vezérlői
 
-Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja. 
+Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
@@ -34,16 +34,16 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| | Dokumentáció
 |---|---|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | A Log Analytics a diagnosztikai naplók használatával támogatott. További információért lásd: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) . |  |
+| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | A Log Analytics erőforrás-naplókon keresztül támogatott. További információért lásd: [Azure Backup védett munkaterhelések figyelése log Analytics használatával](https://azure.microsoft.com/blog/monitor-all-azure-backup-protected-workloads-using-log-analytics/) . |  |
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | A Azure Portal összes ügyfél által aktivált műveletét a rendszer naplózza a tevékenység naplófájljaiba. |  |
 | Adatsíkok naplózása és naplózása| Nem | Azure Backup az adatsík nem érhető el közvetlenül.  |  |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| | Dokumentáció
 |---|---|--|
-| Authentication| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |  |
-| Authorization| Igen | A rendszer felhasználja az ügyfél által létrehozott és beépített RBAC-szerepköröket. További információért lásd: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](/azure/backup/backup-rbac-rs-vault) . |  |
+| Hitelesítés| Igen | A hitelesítés Azure Active Directoryon keresztül történik. |  |
+| Engedélyezés| Igen | A rendszer felhasználja az ügyfél által létrehozott és beépített RBAC-szerepköröket. További információért lásd: [szerepköralapú Access Control használata Azure Backup helyreállítási pontok kezeléséhez](/azure/backup/backup-rbac-rs-vault) . |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -61,6 +61,6 @@ Ez a cikk a Azure Backup beépített biztonsági vezérlőket dokumentálja.
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen|  |  |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

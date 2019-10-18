@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2019
+ms.date: 10/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb47d60f609e63e5a17fd8abd3efe420ea7fd187
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 75f0669a474c24647e71eae8b5e0e0830b7c0bef
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264101"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533090"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CloudGuard Dome9 Arcmal
 
@@ -89,17 +89,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
-    > [!NOTE]
-    > A dome9 felügyeleti portálon ki kell választania a vállalat nevének értékét, amelyet az oktatóanyag későbbi részében ismertetünk.
-
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek beszerzéséhez forduljon a [CloudGuard Dome9 arc ügyfél-támogatási csapatához](mailto:Dome9@checkpoint.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. A `<company name>` értéket a **configure Point CloudGuard Dome9 arc SSO** szakaszban találja, amelyet az oktatóanyag későbbi részében ismertetünk. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A CloudGuard Dome9-ív használatához az Azure AD-ben konfigurálni kell a szerepköröket. A szerepkör-jogcím előre konfigurálva van, így nem kell konfigurálnia, de az Azure AD-ben is létre kell hoznia őket a jelen [cikk](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)használatával.
+1. A CloudGuard Dome9 arc alkalmazás az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+
+    ![image](common/edit-attribute.png)
+
+1. A fentieken kívül a CloudGuard Dome9 arc alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
+    
+    | Név |  Forrás attribútum|
+    | ---------------| --------------- |
+    | memberOf | User. assignedroles |
+
+    >[!NOTE]
+    >Ide [kattintva](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/apptio-tutorial) megtudhatja, hogyan hozhat létre szerepköröket az Azure ad-ben.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -163,7 +171,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure3.png)
 
-    a. Adja meg a vállalat nevét a **fiókazonosító** szövegmezőben. Ezt az értéket a Azure Portal **alapszintű SAML-konfiguráció** szakaszban említett válasz-URL-címben kell használni.
+    a. Adja meg a vállalat nevét a **fiókazonosító** szövegmezőben. Ezt az értéket a Azure Portal **alapszintű SAML-konfiguráció** szakaszában említett **Válasz** és **Bejelentkezés** URL-címében kell használni.
 
     b. A **kiállító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet másolt a Azure Portal.
 
@@ -221,4 +229,3 @@ Ha a hozzáférési panelen a pipa CloudGuard Dome9 ív csempére kattint, a ren
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Próbálja ki a CloudGuard Dome9-ívet az Azure AD-vel](https://aad.portal.azure.com/)
-

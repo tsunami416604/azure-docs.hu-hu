@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Személyre szabott ügyféloldali kódtár a Pythonhoz | Microsoft Docs'
+title: 'Gyors útmutató: megszemélyesítő ügyféloldali kódtár a Pythonhoz | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedjen meg a személyre szabott ügyféloldali kódtáraval a Pythonhoz egy tanulási hurok használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 947ca0b603483479479285ff14636240d2ac7433
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802530"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515185"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Gyors útmutató: Az ügyféloldali kódtár testreszabása a Pythonhoz
+# <a name="quickstart-personalizer-client-library-for-python"></a>Gyors útmutató: személyre szabott ügyféloldali kódtár a Pythonhoz
 
 Személyre szabott tartalom megjelenítése ebben a Python rövid útmutatóban a személyre szabási szolgáltatással.
 
@@ -26,12 +26,12 @@ Ismerkedjen meg a Python személyre szabott ügyféloldali kódtáraval. Az alá
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[Csomag (PyPI)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Csomag (PyPI)](https://pypi.org/project/azure-cognitiveservices-personalizer/)  | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="using-this-quickstart"></a>A rövid útmutató használata
 
@@ -54,8 +54,8 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 
 A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_KEY`az erőforrás-kulcshoz.
-* `PERSONALIZER_ENDPOINT`az erőforrás-végponthoz.
+* `PERSONALIZER_KEY` az erőforrás-kulcshoz.
+* `PERSONALIZER_ENDPOINT` az erőforrás-végponthoz.
 
 A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
@@ -96,7 +96,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
-Hozzon létre egy új Python-alkalmazást az előnyben részesített `sample.py`szerkesztőben vagy a nevű ide-ben. 
+Hozzon létre egy új Python-alkalmazást az előnyben részesített szerkesztőben vagy `sample.py` nevű IDE. 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
@@ -106,7 +106,7 @@ A projekt könyvtárában nyissa meg a **sample.py** fájlt az előnyben részes
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_RESOURCE_KEY` ( `PERSONALIZER_RESOURCE_ENDPOINT`z) és a (z) nevű környezeti változók alapján. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+Hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz és végponthoz a `PERSONALIZER_RESOURCE_KEY` és `PERSONALIZER_RESOURCE_ENDPOINT` nevű környezeti változókból. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
 Az erőforrás neve a végpont URL-címének része: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
@@ -114,7 +114,7 @@ Az erőforrás neve a végpont URL-címének része: `https://<your-resource-nam
 
 ## <a name="create-a-personalizer-client"></a>Személyre szabott ügyfél létrehozása
 
-Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus `PERSONALIZER_RESOURCE_ENDPOINT` paramétere a és a ApiKey `PERSONALIZER_RESOURCE_KEY`.
+Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paraméterének értéke a `PERSONALIZER_RESOURCE_ENDPOINT`, a ApiKey pedig a `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
@@ -146,7 +146,7 @@ Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választ�
 
 ## <a name="request-a-rank"></a>Rangsor igénylése
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` tartalom-választási lehetőséget. A folyamat létrehozhat olyan `excludeActions`tartalmat, amely kizárható a rangsorból, amely a következőként jelenik meg:. A rangsorolási kérelemnek szüksége van a műveletekre, a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-AZONOSÍTÓra (GUID) a rangsorolt válasz fogadásához. 
+A rangsorolási kérelem elvégzéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` a tartalom megválasztásához. A folyamat olyan tartalmat hozhat létre, amely kizárható a rangsorból, `excludeActions`ként jelenik meg. A rangsorolási kérelemnek szüksége van a műveletekre, a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-AZONOSÍTÓra (GUID) a rangsorolt válasz fogadásához. 
 
 Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](concepts-features.md) meghatározása és [értékelése](concept-feature-evaluation.md) nem triviális kérdés lehet.  
 
@@ -174,15 +174,15 @@ python sample.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[A megszemélyesítő működése](how-personalizer-works.md)
 
 * [Mi az a személyre szabott?](what-is-personalizer.md)
 * [Hol használható a személyre szabás?](where-can-you-use-personalizer.md)
-* [Hibaelhárítás](troubleshooting.md)
+* [hibaelhárítással](troubleshooting.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)található.

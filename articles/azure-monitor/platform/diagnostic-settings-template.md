@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71262335"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
@@ -58,8 +58,8 @@ A diagnosztikai beállítás [célhelyei](diagnostic-settings.md#destinations) a
 }
 ```
 
-### <a name="resources"></a>További források
-Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné hozni, adjon hozzá egy típusú `[resource namespace]/providers/diagnosticSettings`erőforrást. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja hozzá `metrics` a tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
+### <a name="resources"></a>Segédanyagok és eszközök
+Az erőforrás tömbben, amelyhez a diagnosztikai beállítást létre szeretné hozni, adjon hozzá `[resource namespace]/providers/diagnosticSettings` típusú erőforrást. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
    
 ```json
 "resources": [
@@ -237,6 +237,6 @@ Az alábbi példa egy logikai alkalmazást hoz létre, és olyan diagnosztikai b
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [Azure-beli platform-naplókról](platform-logs-overview.md).
 * További információ a [diagnosztikai beállításokról](diagnostic-settings.md).

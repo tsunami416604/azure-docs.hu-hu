@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f5694e18d5743118e2b6e73708dd3acb17151198
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 68fe50c75fc25106a0f47af8bf6cfc0db562fbe5
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874929"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529117"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Virtuális gép hálózati sávszélessége
 
@@ -30,7 +30,7 @@ Az egyes virtuális gépek számára lefoglalt hálózati sávszélesség méré
  
 A bejövő forgalom nem mérhető vagy nem korlátozódik közvetlenül. Vannak azonban más tényezők, például a processzor-és tárolási korlátok, ami hatással lehet a virtuális gépeknek a bejövő adatok feldolgozására.
 
-A gyorsított hálózatkezelés egy olyan szolgáltatás, amely a hálózati teljesítmény javítására szolgál, beleértve a késést, az átviteli sebességet és a CPU-kihasználtságot. Míg a gyorsított hálózatkezelés javíthatja a virtuális gépek átviteli sebességét, így csak a virtuális gép lefoglalt sávszélességére képes. A gyorsított hálózatkezeléssel kapcsolatos további tudnivalókért tekintse meg a [Windows](create-vm-accelerated-networking-powershell.md) vagy [Linux](create-vm-accelerated-networking-cli.md) rendszerű virtuális gépek gyorsított hálózatkezelését ismertető témakört.
+A gyorsított hálózatkezelés egy olyan szolgáltatás, amely a hálózati teljesítmény javítására szolgál, beleértve a késést, az átviteli sebességet és a CPU-kihasználtságot. Míg a gyorsított hálózatkezelés javíthatja a virtuális gépek átviteli sebességét, így csak a virtuális gép lefoglalt sávszélességére képes. A gyorsított hálózatkezeléssel kapcsolatos további tudnivalókért tekintse meg a Windows vagy [Linux](create-vm-accelerated-networking-cli.md) [rendszerű](create-vm-accelerated-networking-powershell.md) virtuális gépek gyorsított hálózatkezelését ismertető témakört.
  
 Az Azure Virtual Machines szolgáltatásnak rendelkeznie kell egy, de több hálózati adapterrel is. A virtuális géphez lefoglalt sávszélesség az összes kimenő forgalom összege a virtuális géphez csatlakoztatott összes hálózati adapteren. Más szóval a lefoglalt sávszélesség virtuális gépenként történik, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a virtuális géphez. Ha szeretné megtudni, hogy a különböző Azure-beli virtuálisgép-méretek hány hálózati adaptert támogatnak, tekintse meg az Azure Windows-és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
@@ -39,10 +39,10 @@ Az Azure Virtual Machines szolgáltatásnak rendelkeznie kell egy, de több hál
 A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure Windows-és [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - [alapú](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuális gépek méretei szerint van részletezve. Válasszon egy típust, például az általános célú elemet, majd válassza ki az eredményül kapott lapon lévő méret sorozatot (például a Dv2 sorozatot). Minden adatsorozat tartalmaz egy táblázatot, amely a hálózati specifikációkat tartalmazza az utolsó oszlopban, amely a hálózati **adapterek/várt hálózati teljesítmény (MB/s)** . 
 
 Az átviteli sebesség korlátja a virtuális gépre vonatkozik. A következő tényezők nem érintik az átviteli sebességet:
-- **Hálózati adapterek száma**: A sávszélesség korlátja a virtuális gépről érkező összes kimenő forgalom összesített értéke.
-- **Gyorsított hálózatkezelés**: Bár a szolgáltatás hasznos lehet a közzétett korlát elérésében, nem változtatja meg a korlátot.
-- **Forgalom célhelye**: A célhelyek száma a kimenő korlát felé.
-- **Protokoll**: Az összes protokollon keresztüli kimenő forgalom a korlát irányába számít.
+- **Hálózati adapterek száma**: a sávszélesség korlátja a virtuális gépről érkező összes kimenő forgalom összesített értéke.
+- **Gyorsított hálózatkezelés**: bár a szolgáltatás hasznos lehet a közzétett korlát elérésében, nem változtatja meg a korlátot.
+- **Forgalmi cél**: minden célhely a kimenő korlát felé mutat.
+- **Protokoll**: az összes protokollon keresztüli kimenő forgalom a korlát irányába számít.
 
 ## <a name="network-flow-limits"></a>Hálózati forgalom korlátai
 
@@ -60,15 +60,15 @@ Napjainkban az Azure hálózati verem támogatja a 250K teljes hálózati folyam
 |---|---|---|
 |<b>Jó teljesítmény</b>|100 000 folyamat |250K-folyamatok|
 |<b>Csökkentett teljesítmény</b>|Több mint 100 000 folyamat|250K-folyamatok felett|
-|<b>Folyamat korlátja</b>|1 millió folyamat|1 millió folyamat|
+|<b>Folyamat korlátja</b>|500K-folyamatok|500K-folyamatok|
 
 A metrikák a [Azure monitorban](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) érhetők el, hogy nyomon kövessék a hálózati folyamatok számát és a folyamat létrehozásának sebességét a virtuális GÉPEN vagy VMSS-példányokon.
 
-![azure-monitor-flow-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![Azure-monitor-flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
 A kapcsolat létesítése és a megszüntetési díjak is befolyásolhatják a hálózati teljesítményt, mivel a kapcsolat létesítési és megszüntetési megosztása a CPU-t a csomagok feldolgozására szolgáló rutinokkal. Azt javasoljuk, hogy a számítási feladatokat a várt forgalmi mintákkal és a teljesítménybeli igényeknek megfelelő méretezéssel bővítse. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hálózati teljesítmény optimalizálása egy virtuális gép operációs rendszere esetében](virtual-network-optimize-network-bandwidth.md)
 - Egy virtuális gép [hálózati teljesítményének tesztelése](virtual-network-bandwidth-testing.md) .

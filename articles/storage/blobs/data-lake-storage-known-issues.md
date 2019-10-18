@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 300da59aa1a16bb2c4cfeaf8035cbe882ae83358
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f635360c5a6da19d60f3992878a8950b03c5f748
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300245"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513879"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -105,7 +105,8 @@ A következő táblázat felsorolja az összes olyan funkciót és eszközt, ame
 | **Objektum szintű szintek** |A ritka elérésű és az archiválási szint a [több protokollos hozzáférés Data Lake Storage](data-lake-storage-multi-protocol-access.md) előzetes verzióban támogatott. <br><br> Az összes többi hozzáférési szintet még nem támogatja a rendszer.|
 | **A PowerShell és a parancssori felület támogatása** | Korlátozott funkcionalitás <br><br>A felügyeleti műveletek, például a fiókok létrehozása is támogatottak. Az adatsík-műveletek, például a fájlok feltöltése és letöltése nyilvános előzetes verzióban érhető el [Data Lake Storage a többprotokollos hozzáférés](data-lake-storage-multi-protocol-access.md)részeként. A címtárak használata és a hozzáférés-vezérlési listák (ACL-ek) beállítása még nem támogatott. |
 | **Statikus webhelyek** |Még nem támogatott <br><br>Konkrétan a fájlok [statikus webhelyekre](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)való kiszolgálásának lehetősége.|
-| **Harmadik féltől származó alkalmazások** | Korlátozott támogatás <br><br>A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha Data Lake Storage Gen2 használatával használják őket. <br>A blob API-kat meghívó alkalmazások valószínűleg a [Data Lake Storage több protokollos hozzáférésének](data-lake-storage-multi-protocol-access.md)nyilvános előzetes verziójával fognak működni. 
-| **Verziószámozási funkciók** |Még nem támogatott <br><br>Ide tartoznak a [Pillanatképek](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob) és a helyreállítható [Törlés](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete).|
+| **Harmadik féltől származó alkalmazások** | Korlátozott támogatás <br><br>A REST API-kat használó harmadik féltől származó alkalmazások továbbra is működni fognak, ha Data Lake Storage Gen2 használatával használják őket. <br>A blob API-kat meghívó alkalmazások valószínűleg a [Data Lake Storage több protokollos hozzáférésének](data-lake-storage-multi-protocol-access.md)nyilvános előzetes verziójával fognak működni. |
+|**Helyreállítható törlés** |Még nem támogatott|
+| **Verziószámozási funkciók** |Még nem támogatott <br><br>Ez magában foglalja a [Soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)és más verziószámozási funkciókat, például a [pillanatképeket](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

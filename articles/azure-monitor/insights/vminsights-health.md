@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: 65ad9e1f5ef62ab2dd9f37a13d3c18871c30e603
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933121"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515498"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Az Azure-beli virtuális gépek állapotának megismerése
 
@@ -36,7 +36,7 @@ További információ a Azure Monitor for VMs konfigurálásáról: [Azure monit
 
 Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelésére vonatkozó alapértelmezett állapot-feltételeket ismerteti. Az összes állapotra vonatkozó feltétel előre konfigurálva van, hogy riasztást küldjön, ha nem kifogástalan állapotot azonosítanak.
 
-| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Operator | Küszöbérték | Riasztás állapot szerint | severity | Munkaterhelés kategóriája | 
+| Figyelő neve | Gyakoriság (perc) | Lookback időtartama (perc) | Művelet | Küszöb | Riasztás állapot szerint | Súlyosság | Munkaterhelés kategóriája | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Online logikai lemez | 5 | 15 | <> | 1 (igaz) | Kritikus | Sev1 | Linux | 
 | Logikai lemez – szabad terület | 5 | 15 | < | 200 MB (figyelmeztetés)<br> 100 MB (kritikus) | Figyelmeztetés | Sev1<br> Sev2 | Linux | 
@@ -44,9 +44,9 @@ Ez a szakasz az Azure-beli Windows-és Linux-alapú virtuális gépek figyelés�
 | Logikai lemez – szabad terület (%) | 5 | 15 | < | 5% | Kritikus | Sev1 | Linux | 
 | Hálózati adapter állapota | 5 | 15 | <> | 1 (igaz) | Figyelmeztetés | Sev2 | Linux | 
 | Operációs rendszer rendelkezésre álló mérete (MB) | 5 | 10 | < | 2,5 MB | Kritikus | Sev1 | Linux | 
-| Lemez átlaga Lemez mp/Olvasás | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
-| Lemez átlaga Lemez mp/átvitel | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
-| Lemez átlaga Lemez mp/írás | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
+| Lemez átlagos olvasási ideje (mp/olvasás) | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
+| Lemez átlagos műveleti idő (mp/átvitel) | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
+| Lemez átlagos írási ideje (mp/írás) | 5 | 25 | > | 0,05 s | Kritikus | Sev1 | Linux | 
 | Lemez állapota | 5 | 25 | <> | 1 (igaz) | Kritikus | Sev1 | Linux | 
 | Operációs rendszer processzorának teljes kihasználtsága (%) | 5 | 10 | >= | 95% | Kritikus | Sev1 | Linux | 
 | Teljes CPU-kihasználtság százalékos aránya | 5 | 10 | >= | 95% | Kritikus | Sev1 | Windows | 
@@ -117,7 +117,7 @@ Ismeretlen állapotot okozhat a következő problémák:
 - Az ügynököt újrakonfigurálták, és a Azure Monitor for VMs engedélyezésekor megadott munkaterületre már nem jelent jelentést. Ha úgy szeretné beállítani az ügynököt, hogy a munkaterületre jelentsen, tekintse át a [munkaterület hozzáadását vagy eltávolítását](../platform/agent-manage.md#adding-or-removing-a-workspace).
 - A virtuális gép törölve lett.
 - A Azure Monitor for VMshoz társított munkaterület törölve lett. A munkaterületet a Premier szintű támogatás előnyeivel állíthatja helyre. Lépjen a [premierre](https://premier.microsoft.com/) , és nyisson meg egy támogatási kérést.
-- A megoldás függőségei törölve lettek. Ha újra engedélyezni szeretné a ServiceMap és a InfrastructureInsights-megoldásokat a Log Analytics munkaterületen, telepítse újra ezeket a megoldásokat a [Azure Resource Manager sablon](vminsights-enable-at-scale-powershell.md#install-the-servicemap-and-infrastructureinsights-solutions)használatával. Vagy használja az első lépések lapon található munkaterület konfigurálása lehetőséget.
+- A megoldás függőségei törölve lettek. Ha újra engedélyezni szeretné a ServiceMap és a InfrastructureInsights-megoldásokat a Log Analytics munkaterületen, telepítse újra a ServiceMap-megoldást a [Azure Resource Manager sablon](vminsights-enable-at-scale-powershell.md#install-the-servicemap-solution)használatával. A InfastructureInsights-megoldás újratelepítéséhez e-mail-vminsights@microsoft.com. 
 - A virtuális gép le lett állítva.
 - Az Azure-beli virtuális gép szolgáltatás nem érhető el, vagy folyamatban van a karbantartás.
 - A munkaterület [napi adatok vagy a megőrzési korlát](../platform/manage-cost-storage.md) teljesült.
@@ -214,13 +214,13 @@ Egy összetevőhöz (például a logikai lemezhez, a PROCESSZORhoz stb.) defini�
 
 Emellett a feltételek kategória az **állapot feltételei** oszlop mellett is látható. Ha a feltételek nem egyeznek a kiválasztott kategóriával, akkor a **kijelölt kategóriára vonatkozóan nem érhetők el** az **állapotot** jelző üzenet, amely az állapotfigyelő feltételek oszlopban jelenik meg.
 
-Az állapot feltételeinek meghatározása négy típus egyikével történik: **Kritikus**, **Figyelmeztetés**, **kifogástalan**és **ismeretlen**. Az első három konfigurálható, ami azt jelenti, hogy a figyelők küszöbértékeit közvetlenül az **állapot feltételeinek** beállítása ablaktáblán módosíthatja. Ez az Azure Monitor REST API [Update Monitor művelettel](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)is lehetséges. Az **ismeretlen** nem konfigurálható, és meghatározott forgatókönyvek számára van fenntartva.
+Az állapot feltételeit négy típus egyike határozza meg: **kritikus**, **Figyelmeztetés**, **kifogástalan**és **ismeretlen**. Az első három konfigurálható, ami azt jelenti, hogy a figyelők küszöbértékeit közvetlenül az **állapot feltételeinek** beállítása ablaktáblán módosíthatja. Ez az Azure Monitor REST API [Update Monitor művelettel](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update)is lehetséges. Az **ismeretlen** nem konfigurálható, és meghatározott forgatókönyvek számára van fenntartva.
 
 Az **állapot-diagnosztika** lapon három fő szakaszt talál:
 
-* Összetevőmodell
-* Üzemállapot-feltételek
-* Állapotváltozások
+* Összetevő-modell
+* Állapotra vonatkozó feltételek
+* Állapot módosításai
 
 ![Az Health Diagnostics-oldal részei](./media/vminsights-health/health-diagnostics-page-02.png)
 
@@ -282,9 +282,9 @@ A három oszlop egymáshoz van csatolva. Ha kiválaszt egy példányt az összet
 
 Ha például a *lemez-1 d:* lehetőséget választja, a listában az **összetevő-modell**területen az állapot- **feltételek** szűrők a *lemezre-1d:* értékre, az **állapot változásai** pedig az *1 D lemez*rendelkezésre állása alapján változnak.
 
-A frissített állapot megjelenítéséhez a **frissítés** hivatkozásra kattintva frissítheti az állapot-diagnosztika lapot. Ha az állapotra vonatkozó feltétel állapota az előre definiált lekérdezési időköz alapján frissül, ez a feladat lehetővé teszi, hogy elkerülje a legutóbbi állapot várakozását, és tükrözze azt. Az állapotra **vonatkozó feltételek állapota** olyan szűrő, amely lehetővé teszi az eredmények hatókörét a kiválasztott állapot alapján: Kifogástalan, figyelmeztetés, kritikus, ismeretlen és mind. A jobb felső sarokban lévő **utolsó frissítés** az állapot-diagnosztika lap utolsó frissítésekor jelent meg.
+A frissített állapot megjelenítéséhez a **frissítés** hivatkozásra kattintva frissítheti az állapot-diagnosztika lapot. Ha az állapotra vonatkozó feltétel állapota az előre definiált lekérdezési időköz alapján frissül, ez a feladat lehetővé teszi, hogy elkerülje a legutóbbi állapot várakozását, és tükrözze azt. Az állapotra **vonatkozó feltételek állapota** olyan szűrő, amely lehetővé teszi az eredmények hatókörét a kiválasztott állapot alapján: kifogástalan, figyelmeztetés, kritikus, ismeretlen és mind. A jobb felső sarokban lévő **utolsó frissítés** az állapot-diagnosztika lap utolsó frissítésekor jelent meg.
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 
 Azure Monitor for VMs az állapot integrálható az [Azure-riasztásokkal](../../azure-monitor/platform/alerts-overview.md). Riasztást küld, ha a rendszer előre definiált feltételek alapján észleli, hogy kifogástalan állapotról sérült állapotra vált. A riasztások súlyosság szerint vannak kategorizálva, a "0" és "4" között, a legmagasabb szinttel 0.
 
@@ -302,16 +302,16 @@ A más erőforrástípusok vagy szolgáltatások riasztásai nem tartoznak ebbe 
 
 A nézet szűréséhez válassza az értékek lehetőséget a lap tetején található legördülő menükben.
 
-|Oszlop |Leírás |
+|Column |Leírás |
 |-------|------------|
-|Subscription |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
+|Előfizetés |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben lévő riasztások szerepelnek a nézetben. |
 |Erőforráscsoport |Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
 |Erőforrás típusa |Válasszon ki egy vagy több erőforrástípust. Alapértelmezés szerint csak a cél **virtuális gépekre** vonatkozó riasztások vannak kiválasztva, és ebben a nézetben szerepelnek. Ez az oszlop csak az erőforráscsoport megadása után érhető el. |
-|Resource |Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
-|severity |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
-|A figyelőre érvényes feltétel |Válassza ki a figyelési feltételt a riasztások szűréséhez, ha azokat a rendszer kilőtte vagy feloldotta, ha a feltétel már nem aktív. Vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
+|Erőforrás |Válasszon ki egy erőforrást. A nézet csak az adott erőforrással rendelkező riasztásokat tartalmazza célként. Ez az oszlop csak az erőforrástípus megadása után érhető el. |
+|Súlyosság |Válasszon ki egy riasztási súlyosságot, vagy válassza az **összes** lehetőséget az összes súlyossági szintű riasztás befoglalásához. |
+|Figyelési feltétel |Válassza ki a figyelési feltételt a riasztások szűréséhez, ha azokat a rendszer kilőtte vagy feloldotta, ha a feltétel már nem aktív. Vagy válassza az **összes** lehetőséget az összes feltétel riasztásának befoglalásához. |
 |Riasztás állapota |Válassza ki a riasztási állapotot, az **új**, a **nyugtázás**, a **lezárt**vagy az **összes** beállítást, hogy az összes állapotú riasztást tartalmazzon. |
-|Szolgáltatás monitorozása |Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. Ehhez a szolgáltatáshoz csak a VM-adatokból származó riasztások támogatottak.|
+|Szolgáltatás figyelése |Válasszon ki egy szolgáltatást, vagy válassza az **összes** lehetőséget az összes szolgáltatás belefoglalásához. Ehhez a szolgáltatáshoz csak a VM-adatokból származó riasztások támogatottak.|
 |Időtartomány| A nézet csak a kijelölt időintervallumban kilőtt riasztásokat tartalmazza. A támogatott értékek az elmúlt óra, az elmúlt 24 óra, az elmúlt 7 nap és az elmúlt 30 nap. |
 
 Amikor kiválaszt egy riasztást, megjelenik a **riasztás részletei** lap. Ez az oldal a riasztás részleteit tartalmazza, és lehetővé teszi az állapotának módosítását.
@@ -438,7 +438,8 @@ A Azure Monitor for VMs Health támogatja az SMS-és e-mail-értesítéseket, ha
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
+
 - Az észlelt alkalmazások függőségeivel kapcsolatos további tudnivalókért lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).

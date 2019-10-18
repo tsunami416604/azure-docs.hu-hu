@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 290fc279a7d2ff2369758c170b3fb64635ee01af
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212102"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532269"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK-k és CLI-eszközök
 
@@ -44,7 +44,7 @@ Az alábbi táblázat felsorolja a támogatott CLI-eszközöket és azok parancs
 
 |    Eszköz    |    A parancs leírása    |
 |------------------|--------------------------------------------|
-|    Azure CLI  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
+|    Azure parancssori felület (CLI)  |    [az netappfiles](https://docs.microsoft.com/cli/azure/netappfiles?view=azure-cli-latest)    |
 |    PowerShell   |    [Azure NetApp Files Azure PowerShell](https://docs.microsoft.com/powershell/module/az.netappfiles/?view=azps-2.5.0#netapp_files)    |
 
 ## <a name="code-samples"></a>Kódminták
@@ -53,8 +53,8 @@ Az alábbi táblázat felsorolja a hivatkozáshoz tartozó kódrészleteket.
 
 |    Nyelv/eszköz    |    Mintakód dokumentációja    |
 |------------------|--------------------------------------------|
-|    .NET   |    [Azure NetApp Files SDK-minta a következőhöz:. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
+|    .NET   |    [Azure NetApp Files SDK-minta a következőhöz:. NETCore](https://docs.microsoft.com/en-us/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
 |    Python    |    [Azure NetApp Files SDK-minta a Pythonhoz](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
-## <a name="next-steps"></a>További lépések   
+## <a name="next-steps"></a>Következő lépések   
  [Azure SDK-k letöltése](https://azure.microsoft.com/downloads/)

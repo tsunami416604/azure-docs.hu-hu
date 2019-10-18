@@ -7,14 +7,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3f89b5aa427689d5f3da28726897d7a772bf0781
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018674"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533158"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
+
 A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági mentést készíthet a helyszíni gépekről és munkaterhelésekről, valamint az Azure-beli virtuális gépekről. Ez a cikk az Azure-beli virtuális gépek Azure Backup-vel történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat foglalja össze.
 
 Egyéb támogatási mátrixok:
@@ -29,7 +30,7 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását a
 
 **Forgatókönyv** | **Biztonsági mentés** | **Ügynök** |**Visszaállítás**
 --- | --- | --- | ---
-Azure-beli virtuális gépek közvetlen biztonsági mentése  | A teljes virtuális gép biztonsági mentése.  | Nincs szükség ügynökre az Azure-beli virtuális gépen. Azure Backup telepíti és egy bővítményt használ a virtuális gépen futó [Azure VM](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -ügynökhöz. | Visszaállítás a következőképpen:<br/><br/> - **Hozzon létre egy alapszintű virtuális gépet**. Ez akkor hasznos, ha a virtuális gépnek nincs olyan speciális konfigurációja, mint például több IP-cím.<br/><br/> - **Állítsa vissza a virtuális gép lemezét**. Állítsa vissza a lemezt. Ezután csatolja egy meglévő virtuális géphez, vagy hozzon létre egy új virtuális gépet a PowerShell használatával.<br/><br/> - **Cserélje le a virtuális gép lemezét**. Ha egy virtuális gép létezik, és felügyelt lemezeket használ (titkosítatlan), akkor visszaállíthat egy lemezt, és felhasználhatja egy meglévő lemez lecserélésére a virtuális gépen.<br/><br/> - **Adott fájlok vagy mappák visszaállítása**. A virtuális gépek fájljait és mappáit a teljes virtuális gépről nem lehet visszaállítani.
+Azure-beli virtuális gépek közvetlen biztonsági mentése  | A teljes virtuális gép biztonsági mentése.  | Nincs szükség ügynökre az Azure-beli virtuális gépen. Azure Backup telepíti és egy bővítményt használ a virtuális gépen futó [Azure VM-ügynökhöz](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) . | Visszaállítás a következőképpen:<br/><br/> - **hozzon létre egy alapszintű virtuális gépet**. Ez akkor hasznos, ha a virtuális gépnek nincs olyan speciális konfigurációja, mint például több IP-cím.<br/><br/> - **állítsa vissza a virtuális gép lemezét**. Állítsa vissza a lemezt. Ezután csatolja egy meglévő virtuális géphez, vagy hozzon létre egy új virtuális gépet a PowerShell használatával.<br/><br/> - **cserélje le a virtuális gép lemezét**. Ha egy virtuális gép létezik, és felügyelt lemezeket használ (titkosítatlan), akkor visszaállíthat egy lemezt, és felhasználhatja egy meglévő lemez lecserélésére a virtuális gépen.<br/><br/> - **adott fájlok/mappák visszaállítása**. A virtuális gépek fájljait és mappáit a teljes virtuális gépről nem lehet visszaállítani.
 Azure-beli virtuális gépek közvetlen biztonsági mentése (csak Windows)  | Biztonsági másolat készítése adott fájlokról/mappákról/kötetről. | Telepítse az [Azure Recovery Services Agent ügynököt](backup-azure-file-folder-backup-faq.md).<br/><br/> A MARS-ügynököt az Azure virtuálisgép-ügynök biztonsági mentési bővítményével együtt futtathatja a virtuális gép biztonsági mentéséhez a fájl/mappa szintjén. | Adott mappák vagy fájlok visszaállítása.
 Azure-beli virtuális gép biztonsági mentése a Backup Serverbe  | Fájlok/mappák/kötetek biztonsági mentése; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok a System Center DPM vagy a Microsoft Azure Backup kiszolgálóra (MABS).<br/><br/> A DPM/MABS ezután biztonsági mentést készít a Backup-tárolóba. | Telepítse a DPM/MABS védelmi ügynököt a virtuális gépre. A MARS-ügynök telepítve van a DPM/MABS.| Fájlok/mappák/kötetek visszaállítása; rendszerállapot/operációs rendszer nélküli fájlok; alkalmazásadatok.
 
@@ -40,21 +41,20 @@ További információ a biztonsági mentésről [a Backup Server használatával
 **Művelet** | **Támogatás**
 --- | ---
 Biztonsági mentés engedélyezése Windows Azure-beli virtuális gép létrehozásakor | Támogatott: <br/><br/> – Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
-Biztonsági mentés engedélyezése Linux rendszerű virtuális gép létrehozásakor | Támogatott:<br/><br/> -Ubuntu-kiszolgáló: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> Debian 8, 9<br/><br/> CentOS 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
+Biztonsági mentés engedélyezése Linux rendszerű virtuális gép létrehozásakor | Támogatott:<br/><br/> -Ubuntu Server: 18,04, 17,10, 17,04, 16,04 (LTS), 14,04 (LTS)<br/><br/> -Red Hat: RHEL 6,7, 6,8, 6,9, 7,2, 7,3, 7,4<br/><br/> -SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> -Debian: 8, 9<br/><br/> -CentOS: 6,9, 7,3<br/><br/> -Oracle Linux: 6,7, 6,8, 6,9, 7,2, 7,3
 Leállítás/offline virtuális gép biztonsági mentése | Támogatott.<br/><br/> A pillanatkép csak Crash-konzisztens, nem az alkalmazás-konzisztens.
-Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Semmit nem kell tenni.
+Lemezek biztonsági mentése a felügyelt lemezekre való Migrálás után | Támogatott.<br/><br/> A biztonsági mentés továbbra is működni fog. Nincs szükség műveletre.
 Felügyelt lemezek biztonsági mentése az erőforráscsoport zárolásának engedélyezése után | Nem támogatott.<br/><br/> Azure Backup nem tudja törölni a régebbi visszaállítási pontokat, és a biztonsági mentések sikertelenek lesznek, ha elérik a visszaállítási pontok maximális korlátját.
 Virtuális gép biztonsági mentési szabályzatának módosítása | Támogatott.<br/><br/> A virtuális gép biztonsági mentése az új házirend ütemterv és adatmegőrzési beállítások használatával történik. Ha a megőrzési beállítások meg vannak hosszabbítva, a meglévő helyreállítási pontok meg vannak jelölve és megmaradnak. Ha csökkennek, a rendszer a meglévő helyreállítási pontokat metszi a következő karbantartási feladatokban, és végül törölve lesz.
-Biztonsági mentési feladat megszakítása | A pillanatkép-készítési folyamat során támogatott.<br/><br/> Nem támogatott, ha a pillanatképet a tárolóba helyezi át.
-A virtuális gép biztonsági mentése egy másik régióba vagy előfizetésbe |  Nem támogatott.
+Biztonsági mentési feladat megszakítása| A pillanatkép-készítési folyamat során támogatott.<br/><br/> Nem támogatott, ha a pillanatképet a tárolóba helyezi át.
+A virtuális gép biztonsági mentése egy másik régióba vagy előfizetésbe |Nem támogatott.
 Biztonsági mentések naponta (az Azure virtuálisgép-bővítmény használatával) | Naponta egy ütemezett biztonsági mentés.<br/><br/> Naponta legfeljebb négy igény szerinti biztonsági mentést készíthet.
 Biztonsági mentések naponta (a MARS-ügynökön keresztül) | Naponta három ütemezett biztonsági mentés.
 Biztonsági mentések naponta (DPM/MABS-n keresztül) | Naponta két ütemezett biztonsági mentés.
-Havi/éves biztonsági mentés   | Nem támogatott az Azure virtuálisgép-bővítménysel történő biztonsági mentés során. Csak naponta és hetente támogatott.<br/><br/> Beállíthatja a szabályzatot, hogy megőrizze a napi/heti biztonsági mentéseket a havi/éves megőrzési időszakra.
+Havi/éves biztonsági mentés| Nem támogatott az Azure virtuálisgép-bővítménysel történő biztonsági mentés során. Csak naponta és hetente támogatott.<br/><br/> Beállíthatja a szabályzatot, hogy megőrizze a napi/heti biztonsági mentéseket a havi/éves megőrzési időszakra.
 Automatikus órajel-beállítás | Nem támogatott.<br/><br/> A Azure Backup nem módosítja automatikusan a nyári időmegtakarítást a virtuális gép biztonsági mentésekor.<br/><br/>  Szükség szerint módosítsa manuálisan a szabályzatot.
-[Biztonsági funkciók a hibrid biztonsági mentéshez](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |  A biztonsági funkciók letiltása nem támogatott.
+[Biztonsági funkciók a hibrid biztonsági mentéshez](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |A biztonsági funkciók letiltása nem támogatott.
 Azon virtuális gép biztonsági mentése, amelynek a gépi ideje módosult | Nem támogatott.<br/><br/> Ha a gép ideje a virtuális gép biztonsági mentésének engedélyezése után egy jövőbeli dátumra módosul. Ha azonban az idő változása visszaállt, a sikeres biztonsági mentés nem garantált.  
-
 
 ## <a name="operating-system-support-windows"></a>Operációs rendszer támogatása (Windows)
 
@@ -62,7 +62,7 @@ A következő táblázat összefoglalja a Windows Azure virtuális gépek bizton
 
 **Forgatókönyv** | **Operációs rendszer támogatása**
 --- | ---
-Biztonsági mentés az Azure VM Agent bővítménnyel | Windows-ügyfél: Nem támogatott<br/><br/>– Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
+Biztonsági mentés az Azure VM Agent bővítménnyel | Windows-ügyfél: nem támogatott<br/><br/>– Windows Server 2019 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/standard) <br/><br/> – Windows Server 2008 R2 (RTM és SP1 standard)
 Biztonsági mentés a MARS-ügynökkel | [Támogatott](backup-support-matrix-mars-agent.md#support-for-direct-backups) operációs rendszerek.
 Biztonsági mentés a DPM/MABS | A [MABS](backup-mabs-protection-matrix.md) és [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)biztonsági mentéshez támogatott operációs rendszerek.
 
@@ -78,13 +78,12 @@ Linuxos Azure-beli virtuális gépek biztonsági mentése a DPM/MABS | Nem támo
 
 ## <a name="operating-system-support-linux"></a>Operációs rendszer támogatása (Linux)
 
-Az Azure-beli virtuális gépek linuxos biztonsági mentését Azure Backup támogatja az [Azure által támogatott](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)Linux-disztribúciók listáját. Vegye figyelembe a következőket:
+Az Azure-beli virtuális gépek linuxos biztonsági mentését Azure Backup támogatja az [Azure által támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)listáját. Vegye figyelembe a következőket:
 
 - A Azure Backup nem támogatja a Core OS Linux rendszert.
 - A Azure Backup nem támogatja a 32 bites operációs rendszereket.
 - Más, saját linuxos disztribúciók is működhetnek, ha a Linux rendszerhez készült [Azure VM-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) elérhető a virtuális gépen, és a Python is támogatott.
 - A Azure Backup nem támogatja a proxyval konfigurált linuxos virtuális gépeket, ha nincs telepítve a Python 2,7-es verziója.
-
 
 ## <a name="backup-frequency-and-retention"></a>Biztonsági mentés gyakorisága és megőrzése
 
@@ -129,66 +128,62 @@ A következő táblázat összefoglalja a virtuális gépek felügyeleti feladat
 Visszaállítás az előfizetés/régió/zóna között. | Nem támogatott.
 Visszaállítás meglévő virtuális gépre | Használja a lemez cseréje lehetőséget.
 Lemez visszaállítása az Azure Storage Service Encryption (SSE) számára engedélyezett Storage-fiókkal | Nem támogatott.<br/><br/> Állítsa vissza olyan fiókra, amely nem rendelkezik SSE-támogatással.
-Visszaállítás vegyes Storage-fiókokba | Nem támogatott.<br/><br/> A Storage-fiók típusa alapján az összes visszaállított lemez prémium vagy standard szintű lesz, és nem vegyes.
+Visszaállítás vegyes Storage-fiókokba |Nem támogatott.<br/><br/> A Storage-fiók típusa alapján az összes visszaállított lemez prémium vagy standard szintű lesz, és nem vegyes.
 Virtuális gép visszaállítása közvetlenül a rendelkezésre állási csoportba | Felügyelt lemezek esetén visszaállíthatja a lemezt, és használhatja a sablon rendelkezésre állási csoportját.<br/><br/> Nem felügyelt lemezek esetén nem támogatott. Nem felügyelt lemezek esetén állítsa vissza a lemezt, majd hozzon létre egy virtuális gépet a rendelkezésre állási csoporton belül.
 Nem felügyelt virtuális gépek biztonsági másolatának visszaállítása a felügyelt virtuális gépre való frissítés után| Támogatott.<br/><br/> Visszaállíthatja a lemezeket, majd létrehozhatja a felügyelt virtuális gépet.
 Virtuális gép visszaállítása a visszaállítási pontra a virtuális gép felügyelt lemezekre való migrálása előtt | Támogatott.<br/><br/> Visszaállítja a nem felügyelt lemezeket (alapértelmezés), átalakítja a visszaállított lemezeket a felügyelt lemezekre, és létrehoz egy virtuális gépet a felügyelt lemezekkel.
 Egy törölt virtuális gép visszaállítása. | Támogatott.<br/><br/> A virtuális gépet helyreállítási pontról állíthatja vissza.
 Több tartományvezérlős konfiguráció részét képező tartományvezérlő (DC) virtuális gép visszaállítása a portálon keresztül | Támogatott, ha visszaállítja a lemezt, és létrehoz egy virtuális gépet a PowerShell használatával.
-Virtuális gép visszaállítása eltérő virtuális hálózatban |   Támogatott.<br/><br/> A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie.
+Virtuális gép visszaállítása eltérő virtuális hálózatban |Támogatott.<br/><br/> A virtuális hálózatnak ugyanabban az előfizetésben és régióban kell lennie.
 
 ## <a name="vm-compute-support"></a>VIRTUÁLIS gépek számítási támogatása
 
 **Számítás** | **Támogatás**
 --- | ---
-Virtuális gép mérete |   Bármely Azure-beli virtuálisgép-méret legalább 2 CPU-maggal és 1 GB RAM-mal.<br/><br/> [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
+Virtuális gép mérete |Bármely Azure-beli virtuálisgép-méret legalább 2 CPU-maggal és 1 GB RAM-mal.<br/><br/> [Részletek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 Virtuális gépek biztonsági mentése a [rendelkezésre állási csoportokban](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) | Támogatott.<br/><br/> Az elérhető készletekben lévő virtuális gépeket nem állíthatja helyre a virtuális gép gyors létrehozásához szükséges lehetőség használatával. Ehelyett a virtuális gép visszaállításakor állítsa vissza a lemezt, és használja egy virtuális gép üzembe helyezéséhez, vagy egy lemez visszaállításához, és használja egy meglévő lemez cseréjéhez.
 A [Hybrid use Benefit (hub) használatával](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) üzembe helyezett virtuális gépek biztonsági mentése | Támogatott.
-Méretezési csoportokban üzembe helyezett virtuális gépek biztonsági [](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) mentése |  Nem támogatott.
-Az [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) -ről üzembe helyezett virtuális gépek biztonsági mentése<br/><br/> (Közzétette: Microsoft, harmadik fél) |  Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani. A virtuális gépeken futó Azure piactér-beli virtuális gépeket nem állítjuk vissza, mivel ezekre a vásárlási információkra, de csak lemezekre van szükség.
-Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek biztonsági mentése |   Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani.
-Az Azure-ba migrált virtuális gépek biztonsági mentése  | Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.
+[Méretezési csoportokban](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) üzembe helyezett virtuális gépek biztonsági mentése |Nem támogatott.
+Az [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images) -ről üzembe helyezett virtuális gépek biztonsági mentése<br/><br/> (Közzétette: Microsoft, harmadik fél) |Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani. A virtuális gépeken futó Azure piactér-beli virtuális gépeket nem állítjuk vissza, mivel ezekre a vásárlási információkra, de csak lemezekre van szükség.
+Egyéni rendszerképből (külső féltől) üzembe helyezett virtuális gépek biztonsági mentése |Támogatott.<br/><br/> A virtuális gépnek támogatott operációs rendszernek kell futnia.<br/><br/> A virtuális gépen lévő fájlok helyreállításakor csak kompatibilis operációs rendszerre (nem egy korábbi vagy újabb operációs rendszerre) lehet visszaállítani.
+Az Azure-ba migrált virtuális gépek biztonsági mentése| Támogatott.<br/><br/> A virtuális gép biztonsági mentéséhez telepíteni kell a virtuálisgép-ügynököt az áttelepített gépre.
 Több virtuális gépre kiterjedő konzisztencia biztonsági mentése | A Azure Backup nem biztosít több virtuális gép között az adatés az alkalmazások konzisztenciáját.
-Biztonsági mentés [diagnosztikai beállításokkal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
+Biztonsági mentés [diagnosztikai beállításokkal](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Támogatott. <br/><br/> Ha a diagnosztikai beállításokkal rendelkező Azure-beli virtuális gép visszaállítása [új](backup-azure-arm-restore-vms.md#create-a-vm) lehetőség használatával aktiválódik, a visszaállítás sikertelen lesz.
 A zóna által rögzített virtuális gépek visszaállítása | Támogatott (olyan virtuális gépek esetén, amelyekről január 2019 után biztonsági mentés készül, és ahol rendelkezésre áll a [rendelkezésre állási zóna](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>Jelenleg a virtuális gépeken rögzített zónára történő visszaállítást támogatjuk. Ha azonban a zóna nem érhető el, a visszaállítás sikertelen lesz.
 Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtuális gépek](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)biztonsági mentését és helyreállítását. Ha ezeket a virtuális gépeket helyreállítási pontról állítják vissza, a rendszer [Gen2 virtuális gépekként](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)állítja vissza őket.
-
 
 ## <a name="vm-storage-support"></a>VM-tároló támogatása
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel. <br/><br/> A támogatja a virtuális gépek biztonsági mentését, amely az egyes lemezek mérete 30TB, és legfeljebb 256TB kombinálható a virtuális gép összes lemeze számára.
-Adatlemez mérete | Az egyes lemezek akár 30TB is lehetnek.
-Tárolótípus | Standard HDD, standard SSD, prémium SSD.
-Felügyelt lemezek | Támogatott.
+Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel.
+Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
+Tárhely típusa | Standard HDD, standard SSD, prémium SSD.
+Managed Disks | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
 írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> Az Azure Backup automatikusan kizárja a lemezeket, amelyeken engedélyezve van a írásgyorsító a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem tudja visszaállítani ezeket a lemezeket a virtuális gép helyreállítási pontjairól.
 Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support) <br/> <br/>  -Azure Backup nem duplikálja a Recovery Services-tárolóban lévő virtuális gépek között <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot.
 Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.
-Megosztott tároló| Nem ajánlott biztonsági másolatot készíteni a virtuális gépekről Fürt megosztott kötete (CSV) vagy kibővíthető fájlkiszolgáló használatával. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
-
+Megosztott tároló| Nem ajánlott biztonsági másolatot készíteni a virtuális gépekről Fürt megosztott kötete (CSV) vagy Kibővíthető fájlkiszolgáló használatával. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
 
 ## <a name="vm-network-support"></a>VM-hálózat támogatása
 
 **Összetevő** | **Támogatás**
 --- | ---
 Hálózati adapterek (NIC-EK) száma | Egy adott Azure-beli virtuálisgép-méret számára támogatott hálózati adapterek maximális száma.<br/><br/> A hálózati adapterek akkor jönnek létre, amikor a virtuális gép a visszaállítási folyamat során jön létre.<br/><br/> A visszaállított virtuális gépen lévő hálózati adapterek száma tükrözi a virtuális gép hálózati adapterek számát a védelem engedélyezésekor. A hálózati adapterek eltávolítása a védelem engedélyezése után nem befolyásolja a darabszámot.
-Külső/belső terheléselosztó |   Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
-Több fenntartott IP-cím |    Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
-Több hálózati adapterrel rendelkező virtuális gépek  | Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
-Nyilvános IP-címmel rendelkező virtuális gépek    | Támogatott.<br/><br/> Társítson egy meglévő nyilvános IP-címet a hálózati adapterhez, vagy hozzon létre egy címet, és társítsa a hálózati adapterhez a visszaállítás után.
-Hálózati biztonsági csoport (NSG) a NIC/subnet-on. |   Támogatott.
+Külső/belső terheléselosztó |Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
+Több fenntartott IP-cím |Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
+Több hálózati adapterrel rendelkező virtuális gépek| Támogatott. <br/><br/> [További](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) információ a virtuális gépek speciális hálózati beállításokkal történő visszaállításáról.
+Nyilvános IP-címmel rendelkező virtuális gépek| Támogatott.<br/><br/> Társítson egy meglévő nyilvános IP-címet a hálózati adapterhez, vagy hozzon létre egy címet, és társítsa a hálózati adapterhez a visszaállítás után.
+Hálózati biztonsági csoport (NSG) a NIC/subnet-on. |Támogatott.
 Statikus IP-cím | Nem támogatott.<br/><br/> Egy visszaállítási pontból létrehozott új virtuális gép egy dinamikus IP-címet kap.<br/><br/> A klasszikus virtuális gépek esetében nem lehet biztonsági másolatot készíteni egy fenntartott IP-címmel rendelkező virtuális gépről, és nincs definiálva végpont.
-Dinamikus IP-cím |    Támogatott.<br/><br/> Ha a forrás virtuális gép hálózati adaptere dinamikus IP-címzést használ, alapértelmezés szerint a visszaállított virtuális gép hálózati adaptere is ezt fogja használni.
-Azure Traffic Manager   | Támogatott.<br/><br/>Ha a biztonsági másolatban szereplő virtuális gép Traffic Manager található, manuálisan adja hozzá a visszaállított virtuális gépet ugyanahhoz a Traffic Manager-példányhoz.
-Azure DNS | Támogatott.
-Egyéni DNS |    Támogatott.
+Dinamikus IP-cím |Támogatott.<br/><br/> Ha a forrás virtuális gép hálózati adaptere dinamikus IP-címzést használ, alapértelmezés szerint a visszaállított virtuális gép hálózati adaptere is ezt fogja használni.
+Azure Traffic Manager| Támogatott.<br/><br/>Ha a biztonsági másolatban szereplő virtuális gép Traffic Manager található, manuálisan adja hozzá a visszaállított virtuális gépet ugyanahhoz a Traffic Manager-példányhoz.
+Azure DNS |Támogatott.
+Egyéni DNS |Támogatott.
 Kimenő kapcsolat HTTP-proxyn keresztül | Támogatott.<br/><br/> A hitelesített proxyk nem támogatottak.
-Virtuális hálózati szolgáltatásvégpontok   | Támogatott.<br/><br/> A tűzfal és a virtuális hálózati Storage-fiók beállításainak minden hálózatról engedélyezniük kell a hozzáférést.
-
-
+Virtuális hálózati szolgáltatásvégpontok| Támogatott.<br/><br/> A tűzfal és a virtuális hálózati Storage-fiók beállításainak minden hálózatról engedélyezniük kell a hozzáférést.
 
 ## <a name="vm-security-and-encryption-support"></a>VIRTUÁLIS gépek biztonsági és titkosítási támogatása
 
@@ -210,15 +205,12 @@ Adatbiztonság:
 - A Azure Backup támogatja a Azure Disk Encryption, amely a BitLockert a Windows rendszerű virtuális gépeken és az USA **-beli dm-crypt-** ben használja Linux virtuális gépeken.
 - Az Azure Backup a háttérben az [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) használatával biztosít védelmet az inaktív adatok számára.
 
-
 **Gép** | **Átvitel közben** | **Nyugalmi állapotban**
 --- | --- | ---
 Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Igen][green]
 Azure-beli virtuális gépek | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
-
-
 
 ## <a name="vm-compression-support"></a>VM-tömörítés támogatása
 
@@ -229,13 +221,12 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 
 **Gép** | **Tömörítés a MABS/DPM (TCP)** | **Tömörítés a tárolóba (HTTPS)**
 --- | --- | ---
-Helyszíni Windows rendszerű gépek DPM/MABS nélkül | NA | ![Igen][green]
-Azure-beli virtuális gépek | NA | NA
+Helyszíni Windows rendszerű gépek DPM/MABS nélkül | n/a | ![Igen][green]
+Azure-beli virtuális gépek | n/a | n/a
 Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli virtuális gépek biztonsági mentése](backup-azure-arm-vms-prepare.md).
 - [Windows rendszerű gépek biztonsági mentése](tutorial-backup-windows-server-to-azure.md)biztonsági mentési kiszolgáló nélkül.

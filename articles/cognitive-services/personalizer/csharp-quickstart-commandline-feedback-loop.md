@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Személyre szabott ügyféloldali kódtár a .NET-hez | Microsoft Docs'
+title: 'Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedjen meg a .NET személyre szabott ügyféloldali kódtáraval egy tanulási hurok használatával.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4308ed6d00bd3900986f08a93a686f0d7d00bcfb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345233"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515594"
 ---
-# <a name="quickstart-personalize-client-library-for-net"></a>Gyors útmutató: A .NET-hez készült ügyféloldali kódtár személyre szabása
+# <a name="quickstart-personalizer-client-library-for-net"></a>Gyors útmutató: személyre szabott ügyféloldali kódtár a .NET-hez
 
 Személyre szabott tartalom megjelenítése C# ebben a rövid útmutatóban a személyre szabási szolgáltatással.
 
@@ -26,7 +26,7 @@ Ismerkedés a .NET-hez készült személyre szabott ügyféloldali kódtár hasz
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[A dokumentációs](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [-csomagjához (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
+[Dokumentáció](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview)  | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer)  | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/)  | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,8 +53,8 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 <!-- rename TBD_KEY to something meaningful for your service, like TEXT_ANALYTICS_KEY -->
 A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
 
-* `PERSONALIZER_RESOURCE_KEY`az erőforrás-kulcshoz.
-* `PERSONALIZER_RESOURCE_ENDPOINT`az erőforrás-végponthoz.
+* `PERSONALIZER_RESOURCE_KEY` az erőforrás-kulcshoz.
+* `PERSONALIZER_RESOURCE_ENDPOINT` az erőforrás-végponthoz.
 
 A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzembe helyezési** lapon.
 
@@ -70,7 +70,7 @@ Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendel
 
 Hozzon létre egy új .NET Core-alkalmazást az előnyben részesített szerkesztőben vagy az IDE-ben. 
 
-A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, a nevű `personalizer-quickstart`Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: `Program.cs`. 
+A konzol ablakban (például cmd, PowerShell vagy bash) a DotNet `new` paranccsal hozzon létre egy új, `personalizer-quickstart` nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C# projektet hoz létre egyetlen forrásfájlban: `Program.cs`. 
 
 ```console
 dotnet new console -n personalizer-quickstart
@@ -122,19 +122,19 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a 
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
-A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a `using` meglévő kódot a következő `using` irányelvekre:
+A projekt könyvtárában nyissa meg a **program.cs** fájlt az előnyben részesített szerkesztőben vagy az ide-ben. Cserélje le a meglévő `using` kódot a következő `using` irányelvekre:
 
 [!code-csharp[Using statements](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Személyre szabott erőforrás-információk hozzáadása
 
-A **program** osztályban hozzon létre változókat az erőforráshoz tartozó Azure-kulcshoz, és a végpontot a `PERSONALIZER_RESOURCE_KEY` named és `PERSONALIZER_RESOURCE_ENDPOINT`a nevű környezeti változóból kihúzta. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
+A **program** osztályban hozzon létre változókat az erőforrás Azure-kulcsához, és a végpontot a `PERSONALIZER_RESOURCE_KEY` és `PERSONALIZER_RESOURCE_ENDPOINT` nevű környezeti változókból kihúzta. Ha az alkalmazás elindítása után hozta létre a környezeti változókat, akkor a változó eléréséhez be kell zárnia és újra kell töltenie a szerkesztőt, az IDE-t vagy a shellt. A metódusokat később a rövid útmutatóban fogja létrehozni.
 
 [!code-csharp[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=classVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Személyre szabott ügyfél létrehozása
 
-Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus `PERSONALIZER_RESOURCE_ENDPOINT` paramétere a és a ApiKey `PERSONALIZER_RESOURCE_KEY`.
+Ezután hozzon létre egy metódust, amely egy személyre szabott ügyfelet ad vissza. A metódus paraméterének értéke a `PERSONALIZER_RESOURCE_ENDPOINT`, a ApiKey pedig a `PERSONALIZER_RESOURCE_KEY`.
 
 [!code-csharp[Create the Personalizer client](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=authorization)]
 
@@ -154,7 +154,7 @@ Mindkét módszer a `GetKey` metódus használatával olvassa be a felhasználó
 
 A személyre szabott tanulási hurok a Range és a jutalmazási hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
 
-A program `main` metódusában a következő kód hurkot mutat a felhasználó preferenciáinak a parancssorban való megadására, az információknak a személyre szabására való elküldésére, valamint a rangsorolt kijelölés az ügyfélnek való kiválasztására listáról, majd egy jutalom küldésével személyre szabhatja, hogy a szolgáltatás mennyire rangsorolta a kijelölést.
+A program `main` metódusában szereplő következő kód hurkot mutat be, amely arra kéri a felhasználót, hogy adja meg a beállításait a parancssorban, és küldje el az adatokat a személynek a rangsorba, és a lista közül válassza ki a rangsorolt kijelölést az ügyfélnek. , majd jutalom küldése a személyre szabási jelzésnek, hogy a szolgáltatás milyen mértékben rangsorolta a kijelölést.
 
 ```csharp
 static void Main(string[] args)
@@ -242,7 +242,7 @@ Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választ�
 
 ## <a name="request-a-rank"></a>Rangsor igénylése
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` tartalom-választási lehetőséget. A folyamat létrehozhat olyan `excludeActions`tartalmat, amely kizárható a rangsorból, amely a következőként jelenik meg:. A rangsorolási kérelemnek szüksége van a műveletekre, a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-AZONOSÍTÓra (GUID) a rangsorolt válasz fogadásához. 
+A rangsorolási kérelem elvégzéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre egy `currentContent` a tartalom megválasztásához. A folyamat olyan tartalmat hozhat létre, amely kizárható a rangsorból, `excludeActions`ként jelenik meg. A rangsorolási kérelemnek szüksége van a műveletekre, a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-AZONOSÍTÓra (GUID) a rangsorolt válasz fogadásához. 
 
 Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](concepts-features.md) meghatározása és [értékelése](concept-feature-evaluation.md) nem triviális kérdés lehet.  
 
@@ -272,15 +272,15 @@ A rövid útmutató [forráskódja](https://github.com/Azure-Samples/cognitive-s
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 >[A megszemélyesítő működése](how-personalizer-works.md)
 
 * [Mi az a személyre szabott?](what-is-personalizer.md)
 * [Hol használható a személyre szabás?](where-can-you-use-personalizer.md)
-* [Hibaelhárítás](troubleshooting.md)
+* [hibaelhárítással](troubleshooting.md)
 

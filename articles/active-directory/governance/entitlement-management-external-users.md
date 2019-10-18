@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 419970985b9531ffab348491730aaf6c00e143b1
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452990"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527098"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében (előzetes verzió)
 
@@ -90,12 +90,15 @@ Kiválaszthatja, hogy mi történjen, ha egy külső felhasználó, aki egy, a h
 
 1. Ha egy külső felhasználó elveszíti az utolsó hozzárendelését bármely hozzáférési csomagba, ha le szeretné tiltani a címtárba való bejelentkezést, állítsa be a **külső felhasználó letiltása a címtárba való bejelentkezést** **Igen**értékre.
 
-1. Ha egy külső felhasználó elveszíti az utolsó hozzárendelését bármely hozzáférési csomaghoz, ha el szeretné távolítani a vendég felhasználói fiókját a címtárban, állítsa a **külső felhasználó eltávolítása** **Igen értéket**.
+    > [!NOTE]
+    > Ha a felhasználó blokkolva van a címtárba való bejelentkezéskor, akkor a felhasználó nem kérheti újra a hozzáférési csomagot, vagy további hozzáférést kérhet a címtárban. Ne állítsa be, hogy blokkolja a bejelentkezést, ha később más hozzáférési csomagokhoz is hozzáférést kell kérniük.
+
+1. Ha egy külső felhasználó elveszíti az utolsó hozzárendelését bármely hozzáférési csomaghoz, ha el szeretné távolítani a vendég felhasználói fiókját ebben a címtárban, állítsa a **külső felhasználó eltávolítása** beállítást **Igen**értékre.
 
     > [!NOTE]
-    > A jogosultságok kezelése csak azokat a fiókokat távolítja el, amelyeket a jogosultsági felügyeleten keresztül meghívtak. Azt is vegye figyelembe, hogy a rendszer letiltja a felhasználót a bejelentkezéstől, és akkor is eltávolítja a címtárból, ha a felhasználó olyan erőforrásokhoz lett hozzáadva a címtárban, amelyek nem férnek hozzá a csomag-hozzárendelésekhez. Ha a vendég a címtárban a hozzáférési csomag hozzárendeléseinek fogadása előtt szerepelt, akkor a rendszer továbbra is megmarad. Ha azonban a vendéget egy hozzáférési csomagon keresztül kérték fel, és a meghívást követően a OneDrive vállalati vagy SharePoint Online-webhelyhez is hozzá lett rendelve, akkor továbbra is el lesznek távolítva.
+    > A jogosultságok kezelése csak azokat a fiókokat távolítja el, amelyeket a jogosultsági felügyeleten keresztül meghívtak. Azt is vegye figyelembe, hogy a rendszer letiltja a felhasználót a bejelentkezéshez, és onnan eltávolítja a címtárból, még akkor is, ha az adott felhasználó hozzá lett adva az ebben a könyvtárban található erőforrásokhoz, amelyek nem férnek hozzá a csomagok hozzárendeléseihez Ha a vendég ebben a könyvtárban található a hozzáférési csomag hozzárendeléseinek fogadása előtt, azok továbbra is megmaradnak. Ha azonban a vendéget egy hozzáférési csomagon keresztül kérték fel, és a meghívást követően a OneDrive vállalati vagy SharePoint Online-webhelyhez is hozzá lett rendelve, akkor továbbra is el lesznek távolítva.
 
-1. Ha el szeretné távolítani a vendég felhasználói fiókot a címtárban, beállíthatja, hogy hány nap elteltével távolítsa el a rendszer. Ha el szeretné távolítani a vendég felhasználói fiókot, amint elvesztik az utolsó hozzárendelését bármelyik hozzáférési csomaghoz, állítsa be a **napok számát, mielőtt eltávolítja a külső felhasználót a címtárból** **0-ra**.
+1. Ha el szeretné távolítani a vendég felhasználói fiókot ebben a címtárban, beállíthatja, hogy hány nap elteltével távolítsa el a rendszer. Ha el szeretné távolítani a vendég felhasználói fiókot, amint elvesztik az utolsó hozzárendelését bármelyik hozzáférési csomaghoz, állítsa be a **napok számát, mielőtt eltávolítja a külső felhasználót a címtárból** **0-ra**.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
@@ -113,6 +116,6 @@ Ezt a beállítást a katalógus létrehozása után is módosíthatja.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
+- [A címtárban nem szereplő felhasználók számára](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
 - [Erőforrások katalógusának létrehozása és kezelése](entitlement-management-catalog-create.md)
 - [Delegálás és szerepkörök](entitlement-management-delegate.md)

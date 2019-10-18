@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 04cd5035d012e7846cc97a5a057fd71ebe103ce3
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168752"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515567"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -37,7 +37,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-1. Válassza **az + erőforrás létrehozása** > **hálózatkezelés**@no__t – 3**virtuális hálózat**lehetőséget.
+1. Válassza **az + erőforrás létrehozása**  > **hálózatkezelés**  > **virtuális hálózat**lehetőséget.
 2. Adja meg vagy válassza ki a következő beállítások értékeit, majd válassza a **Létrehozás**lehetőséget:
    - **Név**: a névnek egyedinek kell lennie abban az [erőforráscsoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) , amelyet a virtuális hálózat létrehozásához választ. A virtuális hálózat létrehozása után a név nem módosítható. Az idő múlásával több virtuális hálózatot is létrehozhat. A névadási javaslatokért lásd: [elnevezési konvenciók](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming). Az elnevezési konvenciók segítségével könnyebben kezelhet több virtuális hálózatot.
    - **Címterület**: egy virtuális hálózat címterület egy vagy több nem átfedésben lévő címtartományból áll, amelyek CIDR-jelöléssel vannak megadva. Az Ön által definiált címtartomány lehet nyilvános vagy privát (RFC 1918). Függetlenül attól, hogy a címtartományt nyilvános vagy magánjellegűként határozza meg, a címtartomány csak a virtuális hálózatról, az összekapcsolt virtuális hálózatokról és a virtuális hálózathoz csatlakoztatott helyszíni hálózatokról érhető el. A következő címtartományok nem vehetők fel:
@@ -47,7 +47,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
      - 169.254.0.0/16 (hivatkozás – helyi)
      - 168.63.129.16/32 (belső DNS, DHCP és Azure Load Balancer [Health](../load-balancer/load-balancer-custom-probe-overview.md#probesource)mintavétel)
 
-     Bár a virtuális hálózat létrehozásakor csak egy címtartományt határozhat meg, a virtuális hálózat létrejötte után további címtartományt is hozzáadhat a Címterület számára. Ha meg szeretné tudni, hogyan adhat hozzá címtartományt egy meglévő virtuális hálózathoz, tekintse meg a [Címtartomány hozzáadása vagy eltávolítása](#add-or-remove-an-address-range)című témakört.
+     Bár csak egy címtartományt határozhat meg a virtuális hálózat portálon történő létrehozásakor, a virtuális hálózat létrehozása után további címtartományt is hozzáadhat a Címterület számára. Ha meg szeretné tudni, hogyan adhat hozzá címtartományt egy meglévő virtuális hálózathoz, tekintse meg a [Címtartomány hozzáadása vagy eltávolítása](#add-or-remove-an-address-range)című témakört.
 
      >[!WARNING]
      >Ha a virtuális hálózat olyan címtartományt tartalmaz, amelyek átfedésben vannak egy másik virtuális hálózattal vagy helyszíni hálózattal, a két hálózat nem csatlakoztatható. Címtartomány meghatározása előtt gondolja át, hogy szeretne-e a virtuális hálózatot más virtuális hálózatokhoz vagy helyi hálózatokhoz csatlakozni a jövőben.

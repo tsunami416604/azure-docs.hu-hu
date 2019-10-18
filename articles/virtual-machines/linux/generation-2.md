@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 6f787760c1224172982e0818d8592ce0d36b5e2c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299497"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527288"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>2\. generációs virtuális gépek (előzetes verzió) támogatása az Azure-ban
 
@@ -50,6 +50,10 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [NCv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv2-series) és [NCv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#ncv3-series)
 * [ND sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nd-series)
 * [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
+
+
+>[!NOTE]
+>A 2. generációs virtuálisgép-rendszerképek használata a Mv2-sorozathoz általánosan elérhető, mivel a Mv2 sorozat 2. generációs virtuálisgép-rendszerképekkel működik. Az 1. generációs virtuálisgép-lemezképek nem működnek az Mv2 sorozattal. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>2\. generációs VM-lemezképek az Azure Marketplace-en
 

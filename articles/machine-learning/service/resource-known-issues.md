@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: b69eda59c9c8032510df036d3aa0d160105fbc16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286547"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533174"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -37,7 +37,7 @@ Előfordulhat, hogy egy kísérletet csak olyan adatkészletet szeretne futtatni
  
 A javítás előtt összekapcsolhatjuk az adatkészletet bármely Adatátalakítási modulhoz (oszlop kijelölése az adatkészletben, a metaadatok szerkesztése, adatok felosztása stb.), és futtathatja a kísérletet. Ezután megjelenítheti az adatkészletet. 
 
-Az alábbi képen látható, hogyan: ![visulize-adatok @ no__t-1
+Az alábbi képen látható, hogyan: ![visulize adat](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK-telepítési problémák
 
@@ -101,7 +101,7 @@ Ha Azure Databrickson automatikus gépi tanulási képességeket használ a Futt
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>> 10 iteráció az automatizált gépi tanuláshoz
 
-Ha több mint 10 iterációja van, akkor az automatikus gépi tanulás beállításainál állítsa a `show_output` értéket `False` értékre a Futtatás elküldésekor.
+Ha több mint 10 iterációja van, az automatikus gépi tanulás beállításainál állítsa a `show_output` `False`re a Futtatás elküldésekor.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget a Azure Machine Learning SDK/automatikus gépi tanuláshoz
 
@@ -128,9 +128,9 @@ Ha ezek a lépések nem oldják meg a problémát, próbálja meg újraindítani
 
 ### <a name="failtosendfeather"></a>FailToSendFeather
 
-Ha Azure Databricks-fürtön lévő adatolvasáskor @no__t – 0 hiba jelenik meg, tekintse meg a következő megoldásokat:
+Ha Azure Databricks fürtön lévő adatolvasáskor `FailToSendFeather` hibaüzenet jelenik meg, tekintse meg a következő megoldásokat:
 
-* Frissítse `azureml-sdk[automl_databricks]` csomagot a legújabb verzióra.
+* @No__t_0 csomag frissítése a legújabb verzióra.
 * Adja hozzá a `azure-dataprep` 1.1.8 vagy újabb verziót.
 * Adja hozzá `pyarrow` 0,11-es vagy újabb verziót.
 
@@ -218,7 +218,7 @@ kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` összetevőinek a `attach_config.enable_ssl` értékhez való megadása előtt a következőt kell elvégeznie: Base-64. 
+>A Kubernetes Base-64 kódolású formátumban tárolja a titkokat. A titkos kód `cert.pem` és `key.pem` 64-összetevőjét a `attach_config.enable_ssl` megadását megelőzően el kell végeznie. 
 
 ## <a name="recommendations-for-error-fix"></a>Hibajavítási javaslatok
 Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori hibáinak kijavítására szolgálnak.
@@ -226,7 +226,7 @@ Az általános megfigyelésen alapuló Azure ML-javaslatok az Azure ML gyakori h
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (nincs nevű modul)
 Ha a ModuleErrors-ben futtatja a kísérleteket az Azure ML-ben, az azt jelenti, hogy a betanítási parancsfájl egy telepítendő csomagot vár, de nincs hozzáadva. A csomag nevének megadása után az Azure ML a betanításhoz használt környezetben fogja telepíteni a csomagot. 
 
-Ha a [becslések](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. YML-fájlt is megadhat az összes függőségével `conda_dependencies_file`or lista minden pip-követelményét egy txt-fájlban `pip_requirements_file` paraméter használatával.
+Ha a [becslések](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) -t használja a kísérletek elküldéséhez, megadhatja a csomag nevét `pip_packages` vagy `conda_packages` paraméterrel a kalkulátor alapján, attól függően, hogy melyik forrásból szeretné telepíteni a csomagot. Egy YML-fájlt is megadhat az összes függőséggel `conda_dependencies_file`or a `pip_requirements_file` paraméter használatával egy txt-fájlban lévő összes pip-követelményt listázhatja.
 
 Az Azure ML a Tensorflow, a PyTorch, a Chainer és a SKLearn keretrendszer-specifikus becslések is biztosítja. Ezeknek a becslések a használata biztosítja, hogy a keretrendszer függőségei a betanításhoz használt környezetben legyenek telepítve az Ön nevében. Lehetősége van további függőségek megadására a fentiekben leírtak szerint. 
  
@@ -236,7 +236,7 @@ A keretrendszer-specifikus függőségek a megfelelő keretrendszer dokumentáci
 >[Megjegyzés!] Ha úgy gondolja, hogy egy adott csomag elég gyakori ahhoz, hogy hozzá lehessen adni az Azure ML karbantartott lemezképekhez és környezetekhez, hozzon létre GitHub-problémát a [AzureML-tárolókban](https://github.com/Azure/AzureML-Containers). 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (név nincs meghatározva), AttributeError (az objektumnak nincs attribútuma)
-Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK-ból a következő hibaüzenetet használhatja: `run.get_details()`. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, javítsa ki a hibát, és próbálkozzon újra. 
+Ez a kivétel a betanítási szkriptből származik. A naplófájlokat a Azure Portalból tekintheti meg, ha további információt szeretne kapni a nem definiált névvel vagy az attribútum hibával kapcsolatban. Az SDK-ból a `run.get_details()` használatával tekintheti meg a hibaüzenetet. Ekkor a rendszer a futtatáshoz létrehozott összes naplófájlt is felsorolja. Győződjön meg arról, hogy megtekinti a betanítási szkriptet, javítsa ki a hibát, és próbálkozzon újra. 
 
 ### <a name="horovod-is-shutdown"></a>A Horovod leállítása
-A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod leállítását okozó folyamatok egyikében egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg a `Traceback` értéket a driver_log-fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 
+A legtöbb esetben ez a kivétel azt jelenti, hogy a horovod leállítását okozó folyamatok egyikében egy mögöttes kivétel történt. Az MPI-feladatok mindegyik rangsora saját dedikált naplófájlba kerül az Azure ML-ben. Ezek a naplók neve `70_driver_logs`. Elosztott képzés esetén a naplók neve a `_rank` utótaggal van ellátva, hogy könnyen megkülönböztesse a naplókat. A horovod leállítását okozó pontos hiba megtalálásához hajtsa végre az összes naplófájlt, és keresse meg `Traceback` a driver_log-fájlok végén. Ezen fájlok egyike megadja a tényleges mögöttes kivételt. 

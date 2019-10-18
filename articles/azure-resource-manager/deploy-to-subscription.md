@@ -1,17 +1,17 @@
 ---
-title: Erőforráscsoportok és erőforrások létrehozása az előfizetés-Azure Resource Manager sablonban
+title: Előfizetési szint üzembe helyezése – Azure Resource Manager sablon
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: tomfitz
-ms.openlocfilehash: 913014a9b7e24345cd21979ba20ea1a1a938d022
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001602"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532193"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -76,14 +76,14 @@ Az előfizetési szintű központi telepítések esetében meg kell adnia egy he
 
 Megadhatja a központi telepítés nevét, vagy használhatja az alapértelmezett központi telepítési nevet is. Az alapértelmezett név a sablonfájl neve. Egy **azuredeploy. JSON** nevű sablon üzembe helyezése például létrehoz egy alapértelmezett központi telepítési nevet a **azuredeploy**.
 
-Az egyes központi telepítési nevek esetében a hely nem módosítható. Nem hozhat létre központi telepítést egy helyen, ha már van ilyen nevű, de eltérő helyen üzemelő példány. Ha a hibakód `InvalidDeploymentLocation`, akkor használjon más nevet vagy ugyanazt a helyet, mint az adott név előző üzembe helyezését.
+Az egyes központi telepítési nevek esetében a hely nem módosítható. Nem hozhat létre központi telepítést egy helyen, ha már van ilyen nevű, de eltérő helyen üzemelő példány. Ha `InvalidDeploymentLocation` hibakódot kap, vagy más nevet vagy azonos helyet használ a korábbi üzembe helyezéshez a névben.
 
 ## <a name="use-template-functions"></a>A Template functions használata
 
 Az előfizetési szintű központi telepítések esetében néhány fontos szempontot figyelembe kell venni a sablon funkcióinak használatakor:
 
 * A [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
-* A [resourceId ()](resource-group-template-functions-resource.md#resourceid) függvény támogatott. Ezzel az eszközzel lekérheti az előfizetés szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például a házirend-definíció erőforrás-AZONOSÍTÓjának lekérése `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` értékkel
+* A [resourceId ()](resource-group-template-functions-resource.md#resourceid) függvény támogatott. Ezzel az eszközzel lekérheti az előfizetés szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például egy házirend-definíció erőforrás-AZONOSÍTÓjának beolvasása a következővel: `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`
 * A [Reference ()](resource-group-template-functions-resource.md#reference) és a [List ()](resource-group-template-functions-resource.md#list) függvények támogatottak.
 
 ## <a name="create-resource-groups"></a>Erőforráscsoportok létrehozása
@@ -153,7 +153,7 @@ Több erőforráscsoport létrehozásához használja a [Másolás elemet](resou
 }
 ```
 
-Az erőforrás-iterációval kapcsolatos információkért lásd: az [erőforrás vagy tulajdonság több példányának telepítése Azure Resource Manager sablonokban](./resource-group-create-multiple.md), valamint [Tutorial: Több erőforrás-példány létrehozása Resource Manager-sablonokkal @ no__t-0.
+Az erőforrás-iterációval kapcsolatos információkért tekintse [meg az erőforrás vagy tulajdonság több példányának telepítése Azure Resource Manager sablonokban](./resource-group-create-multiple.md)és [oktatóanyag: több erőforrás-példány létrehozása Resource Manager-sablonokkal](./resource-manager-tutorial-create-multiple-instances.md)című témakört.
 
 ## <a name="resource-group-and-resources"></a>Erőforráscsoport és erőforrások
 
@@ -226,7 +226,7 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
 
 ## <a name="create-policies"></a>Szabályzatok létrehozása
 
-### <a name="assign-policy"></a>Szabályzat hozzárendelése
+### <a name="assign-policy"></a>Házirend kiosztása
 
 Az alábbi példa egy meglévő szabályzat-definíciót rendel hozzá az előfizetéshez. Ha a házirend paramétereket fogad, adja meg őket objektumként. Ha a házirend nem fogad paramétereket, használja az alapértelmezett üres objektumot.
 
@@ -355,7 +355,7 @@ New-AzDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A szerepkörök hozzárendelésével kapcsolatos további tudnivalókért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával](../role-based-access-control/role-assignments-template.md).
 * A Azure Security Center munkaterület-beállításainak üzembe helyezésére példát a következő témakörben talál: [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).

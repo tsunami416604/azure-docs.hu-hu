@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073739"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514852"
 ---
 # <a name="api-management-authentication-policies"></a>API Management hitelesítési házirendek
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
 ##  <a name="AuthenticationPolicies"></a>Hitelesítési házirendek
 
--   [](api-management-authentication-policies.md#Basic) Egyszerű hitelesítéssel hitelesítheti alapszintű hitelesítést a háttér-szolgáltatással.
+-   Egyszerű hitelesítéssel [hitelesítheti alapszintű](api-management-authentication-policies.md#Basic) hitelesítést a háttér-szolgáltatással.
 
 -   [Hitelesítés az ügyféltanúsítvány](api-management-authentication-policies.md#ClientCertificate) használatával – az Ügyféltanúsítványok segítségével végezzen hitelesítést egy háttér-szolgáltatással.
 
@@ -48,26 +48,26 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 ### <a name="elements"></a>Elemek
 
-|Name (Név)|Leírás|Kötelező|
+|Név|Leírás|Szükséges|
 |----------|-----------------|--------------|
 |hitelesítés – alapszintű|Gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|
+|Név|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|username|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|–|
-|password|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|–|
+|felhasználónév|Megadja az alapszintű hitelesítő adat felhasználónevét.|Igen|–|
+|jelszó|Megadja az alapszintű hitelesítő adat jelszavát.|Igen|–|
 
 ### <a name="usage"></a>Használat
- Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.
 
 -   **Házirend fejezetei:** bejövő
 
 -   **Házirend-hatókörök:** az összes hatókör
 
 ##  <a name="ClientCertificate"></a>Hitelesítés ügyféltanúsítvány használatával
- Használja a `authentication-certificate` szabályzatot a háttér-szolgáltatással történő hitelesítéshez az ügyféltanúsítvány használatával. Először az [API Management kell telepíteni](https://go.microsoft.com/fwlink/?LinkID=511599) a tanúsítványt, és annak ujjlenyomata azonosítja.
+ A `authentication-certificate` házirenddel hitelesítheti a háttér-szolgáltatást az ügyféltanúsítvány használatával. Először az [API Management kell telepíteni](https://go.microsoft.com/fwlink/?LinkID=511599) a tanúsítványt, és annak ujjlenyomata azonosítja.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
 
@@ -88,26 +88,26 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Név|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |hitelesítés – tanúsítvány|Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Név|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Az ügyféltanúsítvány ujjlenyomata.|`thumbprint` Vagy`certificate-id` kell lennie.|–|  
-|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|`thumbprint` Vagy`certificate-id` kell lennie.|–|  
+|ujjlenyomat|Az ügyféltanúsítvány ujjlenyomata.|@No__t_0 vagy `certificate-id`nek kell lennie.|–|  
+|tanúsítvány-azonosító|A tanúsítvány erőforrásának neve.|@No__t_0 vagy `certificate-id`nek kell lennie.|–|  
   
 ### <a name="usage"></a>Használat  
- Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
   
 -   **Házirend fejezetei:** bejövő  
   
 -   **Házirend-hatókörök:** az összes hatókör  
 
 ##  <a name="ManagedIdentity"></a>Hitelesítés felügyelt identitással  
- `authentication-managed-identity` A szabályzat használatával a API Management szolgáltatás felügyelt identitásával hitelesítheti a háttér-szolgáltatást. Ez a szabályzat lényegében a felügyelt identitás használatával szerez hozzáférési jogkivonatot Azure Active Directoryről a megadott erőforrás eléréséhez. A jogkivonat sikeres beszerzését követően a szabályzat a `Authorization` fejlécben lévő jogkivonat értékét a `Bearer` séma alapján állítja be.
+ A `authentication-managed-identity` szabályzat használatával hitelesítheti a háttér-szolgáltatást a API Management szolgáltatás felügyelt identitásával. Ez a szabályzat lényegében a felügyelt identitás használatával szerez hozzáférési jogkivonatot Azure Active Directoryről a megadott erőforrás eléréséhez. A jogkivonat sikeres beszerzését követően a házirend a `Bearer` séma használatával állítja be a token értékét a `Authorization` fejlécben.
   
 ### <a name="policy-statement"></a>Szabályzati utasítás  
   
@@ -119,6 +119,21 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Felügyelt identitás használata a háttér-szolgáltatással történő hitelesítéshez
 ```xml  
 <authentication-managed-identity resource="https://graph.windows.net"/> 
+```
+```xml  
+<authentication-managed-identity resource="https://management.azure.com/"/> <!--Azure Resource Manager-->
+```
+```xml  
+<authentication-managed-identity resource="https://vault.azure.net"/> <!--Azure Key Vault-->
+```
+```xml  
+<authentication-managed-identity resource="https://servicebus.azure.net/"/> <!--Azure Service Busr-->
+```
+```xml  
+<authentication-managed-identity resource="https://storage.azure.com/"/> <!--Azure Blob Storage-->
+```
+```xml  
+<authentication-managed-identity resource="https://database.windows.net/"/> <!--Azure SQL-->
 ```
   
 #### <a name="use-managed-identity-in-send-request-policy"></a>Felügyelt identitás használata a küldési kérelmek házirendjében
@@ -132,26 +147,26 @@ Ebben a példában az ügyféltanúsítvány az erőforrás neve alapján azonos
 
 ### <a name="elements"></a>Elemek  
   
-|Name (Név)|Leírás|Kötelező|  
+|Név|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
-|authentication-managed-identity |Gyökérelem.|Igen|  
+|hitelesítés – felügyelt – identitás |Gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Name (Név)|Leírás|Kötelező|Alapértelmezett|  
+|Név|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|resource|Karakterlánc. A cél webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja Azure Active Directoryban.|Igen|–|  
-|output-token-változó-neve|Karakterlánc. Annak a környezeti változónak a neve, amely a jogkivonat értékét objektum típusúként `string`fogja fogadni. |Nem|–|  
-|Mellőzés – hiba|Logikai. Ha a értékre `true`van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|false|  
+|Erőforrás|karakterlánc. A cél webes API (biztonságos erőforrás) alkalmazás-azonosító URI-ja Azure Active Directoryban.|Igen|–|  
+|output-token-változó-neve|karakterlánc. Annak a környezeti változónak a neve, amely a jogkivonat értékét a következő objektumtípusként fogja fogadni: `string`. |Nem|–|  
+|Mellőzés – hiba|Logikai. Ha `true` értékre van állítva, akkor a házirend-folyamat akkor is végre fog hajtani, ha nem kapott hozzáférési jogkivonatot.|Nem|hamis|  
   
 ### <a name="usage"></a>Használat  
- Ez a szabályzat a következő házirend-részekben [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
+ Ez a szabályzat a következő házirend- [részekben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörökben](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)használható.  
   
 -   **Házirend fejezetei:** bejövő  
   
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

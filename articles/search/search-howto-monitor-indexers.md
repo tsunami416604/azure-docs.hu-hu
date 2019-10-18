@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 6a8eaca029767e1d6bce4bc8ce22ce5523be26d8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0096334e06051b9ff474543384febb37bdf1c8e2
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186590"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533699"
 ---
 # <a name="how-to-monitor-azure-search-indexer-status-and-results"></a>Azure Search indexelő állapotának és eredményeinek figyelése
 
@@ -27,7 +27,7 @@ Az indexelő figyelése a következő esetekben hasznos:
 * Tekintse át a folyamatban vagy az előző indexelő futtatásának eredményét.
 * Azonosíthatja a legfelső szintű indexelő hibákat, valamint az indexelt dokumentumok egyes dokumentumaival kapcsolatos hibákat és figyelmeztetéseket.
 
-## <a name="find-indexer-status-and-history-details"></a>Indexelő állapotának és előzményeinek megkeresése
+## <a name="get-status-and-history"></a>Állapot és előzmények beolvasása
 
 Az indexelő figyelési információit többféleképpen is elérheti, többek között:
 
@@ -45,7 +45,7 @@ A nagyméretű adatmennyiséget feldolgozó indexelő hosszú időt vehetnek ig�
 
 <a name="portal"></a>
 
-## <a name="monitor-indexers-in-the-portal"></a>Indexelő figyelése a portálon
+## <a name="monitor-using-the-portal"></a>Figyelés a portál használatával
 
 Az összes indexelő állapotát megtekintheti a keresési szolgáltatás áttekintés lapján lévő **Indexelő** listában.
 
@@ -53,7 +53,7 @@ Az összes indexelő állapotát megtekintheti a keresési szolgáltatás áttek
 
 Az indexelő végrehajtásakor a listában szereplő állapot megjelenik a **folyamatban**, és a **docs sikeres** értéke az eddig feldolgozott dokumentumok számát mutatja. Eltarthat néhány percig, amíg a portál az indexelő állapotának és a dokumentumok számának frissítésére is képes.
 
-Sikeres sikert mutat egy indexelő, amelynek alegutóbbi futtatása sikeres volt. Az indexelő futása akkor is sikeres lehet, ha az egyes dokumentumok hibákkal rendelkeznek, ha a hibák száma kisebb, mint az indexelő **nem megfelelő elemek maximális** beállítása.
+Sikeres **sikert**mutat egy indexelő, amelynek a legutóbbi futtatása sikeres volt. Az indexelő futása akkor is sikeres lehet, ha az egyes dokumentumok hibákkal rendelkeznek, ha a hibák száma kisebb, mint az indexelő **nem megfelelő elemek maximális** beállítása.
 
 Ha a legutóbbi Futtatás hibával fejeződött be, az állapot **nem sikerült**. Az alaphelyzetbe **állítás** állapot azt jelenti, hogy az indexelő változás-követési állapota alaphelyzetbe áll.
 
@@ -79,9 +79,9 @@ Az indexelő hibáival és a figyelmeztetésekkel kapcsolatos további informác
 
 <a name="restapi"></a>
 
-## <a name="monitor-indexers-using-the-rest-api"></a>Indexelő figyelése a REST API használatával
+## <a name="monitor-using-rest-apis"></a>Figyelés REST API-k használatával
 
-Az indexelő állapotának és végrehajtásának előzményeit az indexelő állapotának lekérése [paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
+Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
@@ -120,13 +120,13 @@ Figyelje meg, hogy két különböző állapotüzenetek vannak. A legfelső szin
 
 Az indexelő minden futtatása saját állapottal rendelkezik, amely azt jelzi, hogy az adott végrehajtás folyamatban van-e (**fut**), vagy már befejeződött **sikeres**, **transientFailure**vagy **persistentFailure** állapottal. 
 
-Ha egy indexelő visszaáll a Change Tracking állapotának frissítésére, egy külön végrehajtási előzmény kerül a visszaállítási állapotba.
+Ha egy indexelő visszaáll a Change Tracking állapotának frissítésére, egy külön végrehajtási előzmény kerül a **visszaállítási** állapotba.
 
 Az állapotkódok és az indexelő adatainak figyelésével kapcsolatos további információkért lásd: [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
 
 <a name="dotnetsdk"></a>
 
-## <a name="monitor-indexers-using-the-net-sdk"></a>Indexelő figyelése a .net SDK használatával
+## <a name="monitor-using-the-net-sdk"></a>Figyelés a .NET SDK használatával
 
 Az indexelő ütemtervét a Azure Search .NET SDK használatával határozhatja meg. Ehhez az indexelő létrehozásakor vagy frissítésekor adja meg az **Schedule** tulajdonságot.
 
@@ -177,10 +177,10 @@ Figyelje meg, hogy két különböző állapotüzenetek vannak. A legfelső szin
 
 Az indexelő minden futtatása saját állapottal rendelkezik, hogy az adott végrehajtás folyamatban van-e (**fut**), vagy már befejeződött **sikeres** vagy **TransientError** állapottal. 
 
-Ha egy indexelő visszaáll a változás követési állapotának frissítésére, egy külön előzmény kerül a visszaállítási állapotba.
+Ha egy indexelő visszaáll a változás követési állapotának frissítésére, egy külön előzmény kerül a **visszaállítási** állapotba.
 
 Az állapotkódok és az indexelő figyelési információkkal kapcsolatos további információkért lásd: [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) a REST API.
 
-A dokumentum-specifikus hibákra vagy figyelmeztetésekre vonatkozó részletek a lista `IndexerExecutionResult.Errors` és `IndexerExecutionResult.Warnings`a felsorolás enumerálásával olvashatók be.
+A dokumentum-specifikus hibákkal és figyelmeztetésekkel kapcsolatos részletek a lista `IndexerExecutionResult.Errors` és `IndexerExecutionResult.Warnings` felsorolásának enumerálásával olvashatók be.
 
 Az indexelő figyeléséhez használt .net SDK-osztályokkal kapcsolatos további információkért lásd: [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) és [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

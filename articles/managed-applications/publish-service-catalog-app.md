@@ -1,5 +1,5 @@
 ---
-title: Az Azure-szolgáltatáskatalógusban elérhető felügyelt alkalmazás létrehozása és közzététele | Microsoft Docs
+title: Azure Service Catalog-beli felügyelt alkalmazás közzététele
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 services: managed-applications
 author: tfitzmac
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 62d8de4f36ab110f7bd871c9de0e5d843516970c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224544"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529014"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -216,7 +216,7 @@ New-AzManagedApplicationDefinition `
 
 Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](publish-marketplace-app.md) című témakört.
 * A felügyelt alkalmazás egy példányának üzembe helyezéséről további információt [a szolgáltatáskatalógusban elérhető alkalmazás az Azure Portalon keresztül történő üzembe helyezését](deploy-service-catalog-quickstart.md) ismertető cikkben találhat.

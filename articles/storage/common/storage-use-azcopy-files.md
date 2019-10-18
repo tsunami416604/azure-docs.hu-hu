@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 361b16ff074baaf0118ccfe6d3c2a20f0e66c623
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8f86839a11afca746b228aa9b9c25c9813b69ec7
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273915"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528684"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele a AzCopy és a file Storage szolgáltatással 
 
@@ -195,7 +195,7 @@ A `--include-pattern` és a `--exclude-pattern` beállítások csak a fájlnevek
 
 A AzCopy használatával fájlokat másolhat más Storage-fiókokba. A másolási művelet szinkronban van, így amikor a parancs visszatér, ez azt jelzi, hogy az összes fájl másolása megtörtént.
 
-A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. Az `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének beállításával növelheti a műveletek átviteli sebességét. További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
+A AzCopy [kiszolgálók](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) közötti [API](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)-kat használ, így az Adatmásolás közvetlenül a Storage-kiszolgálók között történik. Ezek a másolási műveletek nem használják a számítógép hálózati sávszélességét. Az `AZCOPY_CONCURRENCY_VALUE` környezeti változó értékének megadásával növelheti a műveletek átviteli sebességét. További információ: az [átviteli sebesség optimalizálása](storage-use-azcopy-configure.md#optimize-throughput).
 
 Ez a szakasz a következő példákat tartalmazza:
 
@@ -237,7 +237,7 @@ A részletes dokumentációt lásd: [azcopy másolás](storage-ref-azcopy-copy.m
 
 ## <a name="synchronize-files"></a>Fájlok szinkronizálása
 
-A helyi fájlrendszer tartalmát egy fájlmegosztás használatával szinkronizálhatja. A szinkronizálás egyirányú. Más szóval kiválaszthatja, hogy a két végpont melyik a forrás, és melyik a cél. A szinkronizálás a kiszolgálót kiszolgáló API-kra is használja.
+Egy fájlmegosztás tartalmát egy másik fájlmegosztást is szinkronizálhatja. Egy fájlmegosztás könyvtárának tartalmát is szinkronizálhatja egy olyan könyvtár tartalmával, amely egy másik fájlmegosztást tartalmaz. A szinkronizálás egyirányú. Más szóval kiválaszthatja, hogy a két végpont melyik a forrás, és melyik a cél. A szinkronizálás a kiszolgálót kiszolgáló API-kra is használja.
 
 > [!NOTE]
 > Ez a forgatókönyv jelenleg csak olyan fiókok esetében támogatott, amelyek nem rendelkeznek hierarchikus névtérrel. A AzCopy jelenlegi kiadása nem szinkronizál Azure Files és Blob Storage között.
@@ -248,23 +248,23 @@ Ha a `--delete-destination` jelzőt úgy állítja be, hogy `true` AzCopy, a fá
 
 A részletes dokumentációs dokumentáció: [azcopy Sync](storage-ref-azcopy-sync.md).
 
-### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>Fájlmegosztás frissítése egy helyi fájlrendszer módosításaival
+### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Fájlmegosztás frissítése egy másik fájlmegosztás módosításaival
 
-Ebben az esetben a fájlmegosztás a cél, a helyi fájlrendszer pedig a forrás.
-
-|    |     |
-|--------|-----------|
-| **Szintaxis** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
-| **Példa** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/mycontainer' --recursive` |
-
-### <a name="update-a-local-file-system-with-changes-to-a-file-share"></a>Helyi fájlrendszer frissítése egy fájlmegosztás módosításaival
-
-Ebben az esetben a helyi fájlrendszer a cél, és a fájlmegosztás a forrás.
+Az ebben a parancsban megjelenő első fájlmegosztás a forrás. A második a cél.
 
 |    |     |
 |--------|-----------|
-| **Szintaxis** | `azcopy sync 'https://<storage-account-name>.file.core.windows.net/<file-share-name>' 'C:\myDirectory' --recursive` |
-| **Példa** | `azcopy sync 'https://mystorageaccount.file.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+| **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>' --recursive` |
+| **Példa** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare' --recursive` |
+
+### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Könyvtár frissítése egy másik fájlmegosztás könyvtárának módosításaival
+
+A parancsban megjelenő első könyvtár a forrás. A második a cél.
+
+|    |     |
+|--------|-----------|
+| **Szintaxis** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>' --recursive` |
+| **Példa** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory' --recursive` |
 
 ## <a name="next-steps"></a>Következő lépések
 

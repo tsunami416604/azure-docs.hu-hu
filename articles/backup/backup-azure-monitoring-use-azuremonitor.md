@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 2d460688392ae017c0d87ce60fa980701e5d47d3
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177712"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528192"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>A monitor méretezése Azure Monitor használatával
 
@@ -29,15 +29,15 @@ A Azure Backup [beépített figyelési és riasztási képességeket](backup-azu
 ## <a name="using-log-analytics-workspace"></a>Log Analytics munkaterület használata
 
 > [!NOTE]
-> Az Azure virtuális gépek biztonsági mentései, a Azure Backup ügynök, a System Center Data Protection Manager, az Azure-beli virtuális gépek SQL-biztonsági mentései, valamint a Azure Files megosztási biztonsági mentések a Log Analytics munkaterületre állnak a diagnosztikai beállítások segítségével. 
+> Az Azure virtuális gépek biztonsági mentései, a Azure Backup ügynök, a System Center Data Protection Manager, az Azure-beli virtuális gépek SQL-biztonsági mentései, valamint a Azure Files megosztási biztonsági mentések a Log Analytics munkaterületre állnak a diagnosztikai beállítások segítségével.
 
-A skála figyeléséhez vagy jelentéséhez két Azure-szolgáltatás képességeire van szükség. A *diagnosztikai beállítások* több Azure Resource Manager erőforrás adatait küldik egy másik erőforrásnak. A *log Analytics* olyan egyéni riasztásokat hoz létre, amelyekben a műveleti csoportok más értesítési csatornákat is meghatározhatnak. 
+A skála figyeléséhez vagy jelentéséhez két Azure-szolgáltatás képességeire van szükség. A *diagnosztikai beállítások* több Azure Resource Manager erőforrás adatait küldik egy másik erőforrásnak. A *log Analytics* olyan egyéni riasztásokat hoz létre, amelyekben a műveleti csoportok más értesítési csatornákat is meghatározhatnak.
 
 A következő részekben részletesen ismertetjük, hogyan használhatók a Log Analytics a Azure Backup a méretekben való figyelésére.
 
 ### <a name="configure-diagnostic-settings"></a>Diagnosztikai beállítások konfigurálása
 
-Azure Resource Manager erőforrásokat, például a Recovery Services-tárolót, rögzítse az ütemezett műveletekkel és a felhasználó által aktivált műveletekkel kapcsolatos információkat diagnosztikai adatként. 
+Azure Resource Manager erőforrásokat, például a Recovery Services-tárolót, rögzítse az ütemezett műveletekkel és a felhasználó által aktivált műveletekkel kapcsolatos információkat diagnosztikai adatként.
 
 A figyelés szakaszban válassza a **diagnosztikai beállítások** elemet, és adja meg a Recovery Services tároló diagnosztikai adatcélját.
 
@@ -66,21 +66,21 @@ A sablon üzembe helyezése után a Azure Backup figyelésére és jelentéskés
 
 Az áttekintő csempék bármelyikét kiválasztva további információkat jeleníthet meg. Íme néhány jelentés, amelyet látni fog:
 
-* Nem naplózott biztonsági mentési feladatok
+- Nem naplózott biztonsági mentési feladatok
 
    ![Log Analytics gráfok a biztonsági mentési feladatokhoz](media/backup-azure-monitoring-laworkspace/la-azurebackup-backupjobsnonlog.png)
 
-* Azure-erőforrások biztonsági mentésével kapcsolatos riasztások
+- Azure-erőforrások biztonsági mentésével kapcsolatos riasztások
 
    ![Log Analytics gráf a visszaállítási feladatokhoz](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertsazure.png)
 
 Hasonlóképpen, ha a többi csempére kattint, megtekintheti a visszaállítási feladatok, a felhőalapú tárolás, a biztonsági mentési elemek, a helyszíni erőforrások biztonsági mentésével kapcsolatos riasztások és a biztonsági mentési feladatok naplóját.
- 
+
 Ezek a diagramok a sablonnal együtt érhetők el. A diagramokat szerkesztheti, vagy további gráfokat is hozzáadhat, ha szükséges.
 
 ### <a name="create-alerts-by-using-log-analytics"></a>Riasztások létrehozása Log Analytics használatával
 
-Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja létre. A munkaterületen Azure- *műveleti csoportokat* használ a kívánt értesítési mechanizmus kiválasztásához. 
+Azure Monitor a saját riasztásokat a Log Analytics munkaterületen hozhatja létre. A munkaterületen Azure- *műveleti csoportokat* használ a kívánt értesítési mechanizmus kiválasztásához.
 
 > [!IMPORTANT]
 > További információ a lekérdezés létrehozásának költségéről: [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
@@ -115,7 +115,7 @@ További információ: a [naplók létrehozása, megtekintése és kezelése Azu
 
 Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítanak Kusto-lekérdezéseket, amelyeken riasztásokat hozhat létre. A lekérdezéseket úgy is módosíthatja, hogy megkapják azokat az adatkéréseket, amelyekről riasztást szeretne kapni. Illessze be a következő minta Kusto-lekérdezéseket a **naplók** lapra, majd hozzon létre riasztásokat a lekérdezéseken:
 
-* Minden sikeres biztonsági mentési feladat
+- Minden sikeres biztonsági mentési feladat
 
     ````Kusto
     AzureDiagnostics
@@ -124,8 +124,8 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Completed"
     ````
-    
-* Az összes sikertelen biztonsági mentési feladat
+
+- Az összes sikertelen biztonsági mentési feladat
 
     ````Kusto
     AzureDiagnostics
@@ -134,8 +134,8 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     | where OperationName == "Job" and JobOperation_s == "Backup"
     | where JobStatus_s == "Failed"
     ````
-    
-* Minden sikeres Azure-beli virtuális gép biztonsági mentési feladata
+
+- Minden sikeres Azure-beli virtuális gép biztonsági mentési feladata
 
     ````Kusto
     AzureDiagnostics
@@ -158,7 +158,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     | project-away Resource
     ````
 
-* Az összes sikeres SQL-napló biztonsági mentési feladata
+- Az összes sikeres SQL-napló biztonsági mentési feladata
 
     ````Kusto
     AzureDiagnostics
@@ -181,7 +181,7 @@ Az alapértelmezett diagramok olyan alapszintű forgatókönyvekhez biztosítana
     | project-away Resource
     ````
 
-* Az összes sikeres Azure Backup ügynök feladatai
+- Az összes sikeres Azure Backup ügynök feladatai
 
     ````Kusto
     AzureDiagnostics
@@ -223,7 +223,7 @@ A tárolóból származó diagnosztikai adatok bekerülnek a Log Analytics munka
 A tevékenység-naplók segítségével értesítéseket kaphat az eseményekről, például a biztonsági mentés sikerességéről. A kezdéshez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be a Azure Portalba.
-1. Nyissa meg a megfelelő Recovery Services-tárolót. 
+1. Nyissa meg a megfelelő Recovery Services-tárolót.
 1. A tároló tulajdonságai között nyissa meg a **tevékenység napló** szakaszt.
 
 A megfelelő napló azonosítása és riasztás létrehozása:
@@ -233,7 +233,7 @@ A megfelelő napló azonosítása és riasztás létrehozása:
    ![Az Azure-beli virtuális gépek biztonsági másolatainak keresésére szolgáló szűrési műveletek](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 1. A megfelelő részletek megtekintéséhez válassza ki a művelet nevét.
-1. Válassza az **új riasztási szabály** lehetőséget a **szabály létrehozása** lap megnyitásához. 
+1. Válassza az **új riasztási szabály** lehetőséget a **szabály létrehozása** lap megnyitásához.
 1. Hozzon létre egy riasztást a [műveletnapló riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)című témakör lépéseit követve.
 
    ![Új riasztási szabály](media/backup-azure-monitoring-laworkspace/new-alert-rule.png)
@@ -247,7 +247,7 @@ Megtekintheti a tevékenységek naplóiból létrehozott összes riasztást és 
 Bár a tevékenység-naplókon keresztül kaphat értesítéseket, javasoljuk, hogy használja a Log Analyticst, és ne a tevékenység naplóit, hanem a nagy léptékű monitorozást. Ezért:
 
 - **Korlátozott forgatókönyvek**: a tevékenység-naplókon keresztüli értesítések csak az Azure-beli virtuális gépek biztonsági mentésére vonatkoznak. Az értesítéseket minden Recovery Services-tárolóhoz be kell állítani.
-- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett összehangolja a [diagnosztikai naplókat](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace). Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
+- **Definíciós igazítás**: az ütemezett biztonsági mentési tevékenység nem felel meg a tevékenységek naplófájljainak legújabb definíciójának. Ehelyett az [erőforrás-naplókhoz](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)igazodik. Ez az igazítás váratlan hatásokat okoz, ha a tevékenység naplójának csatornáján áthaladó adat megváltozik.
 - **Problémák a tevékenység naplójának csatornájában**: Recovery Services-tárolókban, a Azure Backup bepumpált tevékenység-naplók egy új modellt követnek. Ez a változás sajnos a Azure Government, az Azure Germany és az Azure China 21Vianet tevékenység-naplófájljainak előállítására is hatással van. Ha a felhőalapú szolgáltatások felhasználói a Azure Monitorban lévő tevékenységi naplókból hoznak létre vagy konfigurálnak riasztásokat, a riasztások nem aktiválódnak. Továbbá, ha a felhasználó az összes Azure-beli nyilvános régióban [begyűjti Recovery Services tevékenység naplóit egy log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), akkor ezek a naplók nem jelennek meg.
 
 A Azure Backup által védett munkaterhelések esetében használjon Log Analytics munkaterületet a nagy léptékű figyeléshez és riasztáshoz.

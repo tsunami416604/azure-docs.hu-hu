@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: 192d1a7b3bb10395aa662a4b915fe0189b1306b5
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434030"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529378"
 ---
 # <a name="use-ai-to-understand-blob-data"></a>A Blobok használatának ismertetése a mesterséges intelligenciával
 
@@ -40,7 +40,7 @@ A kimenet mindig Azure Search index, amely a gyors szöveges kereséshez, a lek�
 
 A két között a folyamat architektúrája. A folyamat az *Indexelő* szolgáltatáson alapul, amelyhez hozzárendelhet egy *készségkészlet*, amely egy vagy több, a mesterséges intelligenciát biztosító *szaktudásból* áll. A folyamat célja, hogy olyan *dúsított dokumentumokat* hozzon létre, amelyek nyers tartalomként jelennek meg, de további szerkezetet, környezetet és információt vesznek fel a folyamaton keresztül. Az indexelés során a rendszer felhasználja a bővített dokumentumokat, így fordított indexeket és más, teljes szöveges keresésben vagy feltárásban és elemzésben használt struktúrákat hozhat létre.
 
-## <a name="start-with-services-and-data"></a>A szolgáltatásokkal és az adatkezeléssel kapcsolatos lépések
+## <a name="start-with-services"></a>Kezdés a szolgáltatásokkal
 
 Azure Search és Azure Blob Storage szükséges. A blob Storage-ban olyan tárolóra van szükség, amely a forrás tartalmát biztosítja.
 

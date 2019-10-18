@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: A Javához készült ügyféloldali kódtár Bing Visual Search | Microsoft Docs'
+title: 'Rövid útmutató: Bing Visual Search ügyféloldali kódtár a Javához | Microsoft Docs'
 description: Töltsön fel egy rendszerképet a Bing Visual Search SDK-val, és szerezzen információt.
 services: cognitive-services
 author: aahill
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.date: 09/30/2019
 ms.author: aahi
 ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
+ms.lasthandoff: 10/17/2019
 ms.locfileid: "71695861"
 ---
-# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Gyors útmutató: A Javához készült ügyféloldali kódtár Bing Visual Search
+# <a name="quickstart-bing-visual-search-client-library-for-java"></a>Gyors útmutató: Bing Visual Search a Javához készült ügyféloldali kódtár
 
 Ismerkedjen meg a Javához készült Bing Visual Search-ügyfél függvénytárával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. 
 
@@ -25,7 +25,7 @@ A Javához készült Bing Visual Search ügyféloldali kódtár a következőre 
 * Töltsön fel egy képet egy vizuális keresési kérelem küldéséhez.
 * Szerezze be a kép Insight-tokenjét és a vizuális keresési címkéket.
 
-[A dokumentációs](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable) | [könyvtár forráskódját](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch) | [(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/) | ismertető[minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Dokumentáció](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/bingvisualsearch?view=azure-java-stable)  | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingVisualSearch)  |  összetevő[(Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-visualsearch/)  | [minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. H
 * A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services/#decision) ingyenes hét napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
-Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) nevű `BING_SEARCH_V7_SUBSCRIPTION_KEY`kulcshoz.
+Miután beolvasott egy kulcsot a próbaverziós előfizetésből vagy erőforrásból, [hozzon létre egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a (z) `BING_SEARCH_V7_SUBSCRIPTION_KEY` nevű kulcshoz.
 
 ### <a name="create-a-new-gradle-project"></a>Új Gradle-projekt létrehozása
 
@@ -92,7 +92,7 @@ Hozzon létre egy mappát ahhoz a rendszerképhez, amelyet fel szeretne tölteni
 mkdir -p src/main/resources
 ``` 
 
-Navigáljon az új mappára, és hozzon létre egy *BingVisualSearchSample. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy ide, és adja `import` hozzá a következő utasításokat:
+Navigáljon az új mappára, és hozzon létre egy *BingVisualSearchSample. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
 
 [!code-java[Import statements](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=imports)]
 
@@ -103,7 +103,7 @@ public class BingVisualSearchSample {
 }
 ```
 
-Az alkalmazás `main` metódusában hozzon létre változókat az erőforrás Azure-végpontja és kulcsa számára. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt. Ezután hozzon létre egy `byte[]` értéket a feltölteni kívánt rendszerképhez. Hozzon létre egy `try` blokkot a később definiált módszerekhez, majd töltse be a rendszerképet, és konvertálja bájtra a `toByteArray()` használatával.
+Az alkalmazás `main` metódusában hozzon létre változókat az erőforrás Azure-végpontja és kulcsa számára. Ha a környezeti változót az alkalmazás elindítása után hozta létre, akkor a változó eléréséhez be kell állítania és újra meg kell nyitnia a szerkesztőt, az IDE-t vagy a shellt. Ezután hozzon létre egy `byte[]`t a feltölteni kívánt rendszerképhez. Hozzon létre egy `try` blokkot a később definiálni kívánt módszerekhez, majd töltse be a rendszerképet, és konvertálja bájtba `toByteArray()` használatával.
 
 [!code-java[Main method](~/cognitive-services-java-sdk-samples/Search/BingVisualSearch/src/main/java/BingVisualSearchSample.java?name=main)]
 
@@ -112,7 +112,7 @@ Az alkalmazás `main` metódusában hozzon létre változókat az erőforrás Az
 
 Ez a rövid útmutató a Gradle függőség-kezelőt használja. Megtalálhatja az ügyféloldali függvénytárat és az egyéb függőségi kezelők információit a [Maven központi adattárában](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/).
 
-Ügyeljen arra, hogy a projekt *Build. gradle. KTS* fájljában szerepeljen az ügyféloldali kódtár `implementation` utasításként. 
+A projekt *Build. gradle. KTS* fájljában ügyeljen arra, hogy az ügyféloldali függvénytárat `implementation` utasításként adja meg. 
 
 ```kotlin
 dependencies {
@@ -133,7 +133,7 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE]
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a Bing Visual Search kulcshoz, `BING_SEARCH_V7_SUBSCRIPTION_KEY` névvel.
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a `BING_SEARCH_V7_SUBSCRIPTION_KEY` nevű Bing Visual Search kulcshoz.
 
 
 A Main metódusban mindenképpen használja az előfizetési kulcsot egy [BingVisualSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable) objektum létrehozásához.
@@ -162,7 +162,7 @@ Az alkalmazást az alábbiakkal hozhatja létre:
 gradle build
 ```
 
-Futtassa az alkalmazást a `run` célnak megfelelően:
+Az alkalmazás futtatása a `run` céllal:
 
 ```console
 gradle run
@@ -172,10 +172,10 @@ gradle run
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portál](../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Portal](../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)

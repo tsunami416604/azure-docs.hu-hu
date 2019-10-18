@@ -7,118 +7,121 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: c67f21a6ed8a7697977bb7737f0e46348efb2530
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "71266652"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529564"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase-teljesítménnyel kapcsolatos problémák elhárítása az Azure HDInsight
 
-Ez a dokumentum a különböző Apache HBase teljesítmény-hangolási irányelveit és az Azure HDInsight optimális teljesítményének megkezdésére vonatkozó tippeket ismerteti. Ezek a tippek sok esetben az adott számítási feladattól, valamint az írási/olvasási/beolvasási mintáktól függenek. Éles környezetben való alkalmazása előtt alaposan tesztelje a konfigurációt.
+Ez a cikk a különböző Apache HBase teljesítmény-hangolási irányelveit és az Azure HDInsight optimális teljesítményének megkezdésére vonatkozó tippeket ismerteti. Ezek a tippek sok esetben az adott számítási feladattól, valamint az írási/olvasási/beolvasási mintáktól függenek. Mielőtt éles környezetben alkalmazza a konfigurációs módosításokat, alaposan tesztelje azokat.
 
-## <a name="hdinsight-hbase-performance-insights"></a>HDInsight HBase teljesítmény-áttekintés
+## <a name="hbase-performance-insights"></a>HBase teljesítmény-felismerés
 
-A legtöbb HBase-számítási feladat leggyakoribb szűk keresztmetszete az írási előre látható napló (WAL). Ez súlyosan befolyásolja az írási teljesítményt. A HDInsight HBase elválasztott tárolási modellje – vagyis az adatok tárolása távolról történik az Azure Storage-ban, de a régió-kiszolgálók a virtuális gépeken futnak. Egészen a közelmúltig az írási előre írt napló az Azure Storage-ba is bekerült, így a szűk keresztmetszetet a HDInsight esetében kiterjesztjük. A [gyorsított](./apache-hbase-accelerated-writes.md) írási funkció úgy van kialakítva, hogy megoldja ezt a problémát az Azure Premium SSD által felügyelt lemezekre való írás előtt. Ez nagy mértékben csökkenti a teljesítményt, és számos olyan problémát tesz lehetővé, amely a sok írási igényű munkaterheléssel szembesül.
+A legtöbb HBase-számítási feladat leggyakoribb szűk keresztmetszete az írási előre látható napló (WAL). Ez súlyosan befolyásolja az írási teljesítményt. A HDInsight HBase egy elkülönített tárolási modellel rendelkezik. Az Azure Storage-ban a rendszer távolról tárolja az adattárolást, bár a virtuális gépek üzemeltetik a régió kiszolgálóit. A legutóbb a WAL az Azure Storage-ba is lett írva. A HDInsight ez a szűk keresztmetszetet fokozza. A [gyorsított írási](./apache-hbase-accelerated-writes.md) funkció a probléma megoldására szolgál. A WAL-t az Azure prémium SSD által felügyelt lemezekre írja. Ez jelentősen hozzájárul az írási teljesítményhez, és számos olyan problémát nyújt, amely a nagy írási igényű munkaterhelések esetében is hasznos.
 
-A [Prémium szintű Block Blob Storage-fiókok](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) távoli tárhelyként való használatával jelentősen javíthatja az olvasási műveleteket. Ez a lehetőség csak akkor érhető el, ha az Előre írt naplók funkció engedélyezve van.
+Az olvasási műveletek jelentős javításához használja a [Premium Block blob Storage fiókot](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/) a távoli tárolóként. Ez a beállítás csak akkor lehetséges, ha a WAL funkció engedélyezve van.
 
 ## <a name="compaction"></a>Tömörítés
 
-A tömörítés egy másik potenciális szűk keresztmetszet, amely alapvetően megállapodik a Közösségben.  Alapértelmezés szerint a nagyobb tömörítés le van tiltva a HDInsight HBase-fürtökön. Ennek az az oka, hogy ez egy erőforrás-igényes folyamat, ezért teljes rugalmasságot szeretnénk biztosítani ügyfeleinknek a számítási feladatok jellemzőinek megfelelően, azaz a munkaidőn kívül. Mivel a tárhely távoli (az Azure Storage által támogatott) helyett a helyi HDFS, amely a legtöbb helyszíni példány esetében gyakori, az adatközpont nem aggodalomra ad okot, amely a főbb tömörítés elsődleges céljainak egyike.
+A tömörítés egy másik potenciális szűk keresztmetszet, amely alapvetően a Közösségben van elfogadva. Alapértelmezés szerint a nagyobb tömörítés le van tiltva a HDInsight HBase-fürtökön. A tömörítés le van tiltva, mert annak ellenére, hogy erőforrás-igényes folyamat, az ügyfelek teljes rugalmasságot biztosítanak a számítási feladatoknak megfelelően. Előfordulhat például, hogy a munkaidőn kívüli órákban ütemezhetik. Emellett az adatterület nem aggodalomra ad okot, mert a tárterület távoli (az Azure Storage által támogatott) helyett egy helyi Hadoop elosztott fájlrendszer (HDFS).
 
-Ennek feltételezése az, hogy az ügyfél gondoskodik a nagyobb tömörítésnek a kényelem alapján történő megadásáról. Ha ez a karbantartás nem történt meg, a tömörítés nagy mértékben hatással lesz az olvasási teljesítményre hosszú távon.
+Az ügyfeleknek érdemes a nagy tömörítést ütemezniük. Ha nem végzik el a karbantartást, a tömörítés hosszú távon negatív hatással lesz az olvasási teljesítményre.
 
-Különösen a vizsgálati műveletek esetében a 100 MS-nál sokkal nagyobb késésnek kell lennie, ami aggodalomra ad okot. Ellenőrizze, hogy a fő tömörítés ütemezése pontosan megtörtént-e.
+A vizsgálati műveletek esetében aggodalomra ad okot, hogy az 100 ezredmásodpercnél jóval nagyobb késést jelent. Ellenőrizze, hogy a fő tömörítés ütemezése pontosan megtörtént-e.
 
-## <a name="know-your-apache-phoenix-workload"></a>Apache Phoenix munkaterhelésének megismerése
+## <a name="apache-phoenix-workload"></a>Apache Phoenix munkaterhelés
 
 A következő kérdések megválaszolásával jobban megismerheti az Apache Phoenix munkaterhelést:
 
 * A rendszer az összes "olvasást" lefordítja a vizsgálatokba?
     * Ha igen, Mik a vizsgálatok jellemzői?
     * Optimalizálta a Phoenix Table sémáját ezekhez a vizsgálatokhoz, beleértve a megfelelő indexelést is?
-* Használta a `EXPLAIN` utasítást, hogy megértse a "olvasások" létrehozásához szükséges lekérdezési terveket.
+* Használta a `EXPLAIN` utasítást, hogy megértse a "olvasások" előállítására szolgáló lekérdezési terveket?
 * Az írásai "upsert – kiválasztja"?
-    * Ha igen, akkor is végeznek vizsgálatokat. A keresések várható késése átlagosan 100 MS, a HBase pedig a ponthoz képest 10 ms.  
+    * Ha igen, akkor is végeznek vizsgálatokat. A vizsgálatok átlaga körülbelül 100 milliszekundum, a HBase pedig 10 ezredmásodpercnél kevesebb időt vesz igénybe.  
 
 ## <a name="test-methodology-and-metrics-monitoring"></a>Tesztelési módszertan és metrikák figyelése
 
-Ha olyan teljesítménymutatókat használ, mint például a YCSB, a JMeter vagy a Pherf a Perf teszteléséhez és finomhangolásához, ügyeljen a következőkre:
+Ha olyan viszonyítási pontokat használ, mint például a Yahoo! A teljesítmény teszteléséhez és finomhangolásához szükséges teljesítményteszt-, JMeter-vagy Pherf-alapú felhő:
 
-1. Az ügyfélgépek nem lesznek szűk keresztmetszetek (a CPU-használat ellenőrzését az ügyfélgépeken).
+- Az ügyfélgépek nem lesznek szűk keresztmetszetek. Ehhez keresse meg a CPU-használatot az ügyfélszámítógépeken.
 
-1. Az ügyféloldali konfigurációk – például a szálak száma stb. – megfelelően vannak hangolva az ügyfelek sávszélességének csökkentése érdekében.
+- Az ügyféloldali konfigurációk, például a szálak száma, megfelelően vannak hangolva az ügyfelek sávszélességének csökkentése érdekében.
 
-1. A tesztek eredményei pontosan és szisztematikusan vannak rögzítve.
+- A tesztek eredményei pontosan és szisztematikusan vannak rögzítve.
 
-Ha a lekérdezések váratlanul sokkal rosszabbak voltak, mint korábban – a lehetséges hibák keresése az alkalmazás kódjában – hirtelen nagy mennyiségű érvénytelen adatmennyiséget generál, így természetesen növekszik az olvasási késés?
+Ha a lekérdezések hirtelen megkezdése sokkal rosszabb, mint korábban, ellenőrizze a lehetséges hibákat az alkalmazás kódjában. Hirtelen nagy mennyiségű érvénytelen adattal generál? Ha igen, növelheti az olvasási késéseket.
 
 ## <a name="migration-issues"></a>Áttelepítési problémák
 
-Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy az áttelepítést szisztematikusan és pontosan, lehetőleg automatizáláson keresztül végzi el. Kerülje a manuális áttelepítést. Ügyeljen a következőkre:
+Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a Migrálás szisztematikusan és pontosan, lehetőleg automatizáláson keresztül történik. Kerülje a manuális áttelepítést. Ügyeljen rá, hogy:
 
-1. A táblázat attribútumait – például a tömörítést, a Bloom szűrőket stb. – pontosan át kell telepíteni.
+- A tábla attribútumai pontosan települnek át. Az attribútumok tartalmazhatnak tömörítést, virágzási szűrőket stb.
 
-1. A Phoenix-táblák esetében a sós beállításokat az új fürt méretének megfelelően kell leképezni. Előfordulhat például, hogy a rendszer a fürtben lévő munkavégző csomópontok számának többszörösét ajánlja a sós gyűjtők számára.  
+- A Phoenix-táblák sós beállításai megfelelően vannak leképezve az új fürt méretére. Például a sós gyűjtők számának a fürtben lévő munkavégző csomópontok számának többszörösének kell lennie. A gyakori bepecsételés mértékének faktora pedig több is lehet.
 
-## <a name="server-side-config-tunings"></a>Kiszolgálóoldali konfiguráció-hangolások
+## <a name="server-side-configuration-tunings"></a>Kiszolgálóoldali konfiguráció-hangolások
 
-A HDInsight-HBase a HFiles-ket a rendszer a távoli tárolóban tárolja – így ha van gyorsítótár-hiány, a beolvasások díja határozottan magasabb, mint a helyszíni rendszerek, és a hálózati késésnek köszönhetően a helyi HDFS által támogatott adatokat is megtalálhatja. A legtöbb esetben a HBase cache-gyorsítótárak intelligens használata (a gyorsítótár és a gyűjtő gyorsítótárának blokkolása) úgy lett kialakítva, hogy kikerülje ezt a problémát. Azonban továbbra is esetenként előfordulnak olyan esetek, amikor ez problémát jelenthet az ügyfelek számára. A prémium szintű blokk blob-fiók használata némileg segítette ezt. A WASB (Windows Azure Storage illesztőprogram) blob azonban bizonyos tulajdonságokra támaszkodik, például az `fs.azure.read.request.size` értékre, hogy a blokkokban tárolt adatokat az olvasási mód alapján (szekvenciális vagy véletlenszerű) tekintse meg, ezért továbbra is láthatjuk a nagyobb késésű példányokat az olvasásokkal. Olyan empirikus kísérleteken keresztül találtuk, hogy az olvasási kérések blokkjának mérete (`fs.azure.read.request.size`) 512 KB-ra van állítva, és a HBase táblák blokk-méretének megfeleltetése a legjobb eredményt adja a gyakorlatban.
+A HDInsight HBase a HFiles a távoli tárolóban tárolódnak. Gyorsítótár-hiány esetén a beolvasások díja magasabb, mint a helyszíni rendszerek esetében, mert a helyszíni rendszerekre vonatkozó adatokat a helyi HDFS támogatja. A legtöbb esetben a HBase cache-gyorsítótárak intelligens használata (a gyorsítótár és a gyűjtő gyorsítótárának blokkolása) úgy lett kialakítva, hogy kikerülje ezt a problémát. Abban az esetben, ha a probléma nem kerül kijátszásra, a prémium szintű blokk blob-fiók használatával segíthet a probléma megoldásában. A Windows Azure Storage Blob illesztőprogram bizonyos tulajdonságokra támaszkodik, például a `fs.azure.read.request.size`, hogy a blokkokban lévő adatokat az olvasási mód (szekvenciális és véletlenszerű) alapján olvassa be. A empirikus kísérletek során úgy találtuk, hogy az olvasási kérelmek blokkjának mérete (`fs.azure.read.request.size`) 512 KB-ra van állítva, és a HBase táblák blokk-méretének megfelelő mérettel egyező méretben állítja elő a legjobb eredményt a gyakorlatban.
 
-A HDInsight HBase a legtöbb nagy méretű csomópontos fürtök esetében `bucketcache` fájlt biztosít a virtuális géphez csatlakoztatott helyi SSD-hez, amely a `regionservers`-et futtatja. Időnként a kikapcsolt halom-gyorsítótár kikapcsolásával némi javulást biztosíthat. Ezzel a korlátozással csökkenthető a rendelkezésre álló memória használata, és elképzelhető, hogy a fájl-alapú gyorsítótár mérete kisebb, így ez nem mindig a legjobb választás.
+A legtöbb nagy méretű csomópontos fürtök esetében a HDInsight HBase a `regionservers`-t futtató virtuális géphez csatolt helyi prémium SSD fájlként `bucketcache` biztosít. Előfordulhat, hogy a kikapcsolt halom gyorsítótár használata némi javulást eredményezhet. Ez a megkerülő megoldás a rendelkezésre álló memória korlátozásával, illetve a fájl-alapú gyorsítótárnál kisebb mérettel rendelkezik, így előfordulhat, hogy nem mindig a legjobb választás.
 
-Néhány más megadott paraméter, amely úgy tűnik, hogy a következő indoklással több különböző fokkal segített volna:
+Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat ismertetünk, amelyek többek között a következőkhöz nyújtanak segítséget:
 
-1. Növelje `memstore` méretet az alapértelmezett 128 MB-ról 256 MB-ra – ez a beállítás általában nagy mennyiségű írási forgatókönyv esetén ajánlott.
+- Növelje `memstore` méretét az alapértelmezett 128 MB-ról 256 MB-ra. Ez a beállítás általában nagy írási helyzetekben ajánlott.
 
-1. A tömörítéshez dedikált szálak számának növelése – az alapértelmezett 1 és 4 közötti érték. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
+- Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4**közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
 
-1. Ne blokkolja a `memstore` ürítést a tároló korlátja miatt. a `Hbase.hstore.blockingStoreFiles` érték 100-ra növelhető a puffer megadásához.
+- Ne blokkolja a `memstore` ürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100**-re.
 
-1. A kiürítések szabályozásához az alapértelmezett értékek az alábbiak szerint kezelhetők:
+- A kiürítések szabályozásához használja az alábbi beállításokat:
 
-    1. a `Hbase.regionserver.maxlogs` a 32-től 140-ig lehet (a upped elkerülése érdekében).
+    - `Hbase.regionserver.maxlogs`: **140** (a kiürítés elkerülése a Wal-korlátok miatt)
 
-    1. @no__t – 0 = 0,55.
+    - `Hbase.regionserver.global.memstore.lowerLimit`: **0,55**
 
-    1. @no__t – 0 = 0,60.
+    - `Hbase.regionserver.global.memstore.upperLimit`: **0,60**
 
-1. Phoenix-specifikus konfigurációk a szál-készlet hangolásához:
+- Phoenix-specifikus konfigurációk a szál-készlet hangolásához:
 
-    1. a `Phoenix.query.queuesize` a 10000-re növelhető.
+    - `Phoenix.query.queuesize`: **10000**
 
-    1. a `Phoenix.query.threadpoolsize` a 512-re növelhető.
+    - `Phoenix.query.threadpoolsize`: **512**
 
-1. Egyéb Phoenix-specifikus konfigurációk:
+- Egyéb Phoenix-specifikus konfigurációk:
 
-    1. a `Phoenix.rpc.index.handler.count` értéke 50, ha nagy vagy sok indexelési keresési lehetőség van.
+    - `Phoenix.rpc.index.handler.count`: **50** (nagy vagy sok indexelési keresés esetén)
 
-    1. @no__t – 0 – az alapértelmezett 15 percből 1 órára lehet upped.
+    - `Phoenix.stats.updateFrequency`: **1 óra**
 
-    1. `Phoenix.coprocessor.maxmetadatacachetimetolivems` – 30 percen belül 1 órára lehet upped.
+    - `Phoenix.coprocessor.maxmetadatacachetimetolivems`: **1 óra**
 
-    1. `Phoenix.coprocessor.maxmetadatacachesize` – 20 MB-tól 50 MB-ra lehet upped.
+    - `Phoenix.coprocessor.maxmetadatacachesize`: **50 MB**
 
-1. RPC időtúllépések – a HBase RPC-időtúllépés, a HBase-ügyfél képolvasó-időtúllépése és a Phoenix-lekérdezés időtúllépése 3 percig is növekedhet. Fontos megjegyezni, hogy a `hbase.client.scanner.caching` paraméter olyan értékre van beállítva, amely megegyezik a kiszolgáló végén és az ügyfél végén. Ellenkező esetben ez a beállítás az ügyfél végén található `OutOfOrderScannerException`-hoz kapcsolódó hibákhoz vezet. Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket 100-re állítjuk be.
+- RPC-időtúllépések: **3 perc**
+
+   - Az RPC-időtúllépések közé tartozik a HBase RPC-időtúllépés, a HBase-ügyfél képolvasó-időtúllépése és a Phoenix-lekérdezés időtúllépése. 
+   - Győződjön meg arról, hogy a `hbase.client.scanner.caching` paraméter ugyanarra az értékre van beállítva a kiszolgáló végén és az ügyfél végén is. Ha ezek nem azonosak, ez a beállítás a `OutOfOrderScannerException`höz kapcsolódó ügyféloldali hibákhoz vezet. Ezt a beállítást kis értékre kell állítani a nagyméretű keresések esetében. Ezt az értéket **100**-re állítjuk be.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 
-A hangoláshoz szükséges egyéb paraméterek:
+A következő további paramétereket érdemes megfontolni a hangoláshoz:
 
-1. `Hbase.rs.cacheblocksonwrite` – Ez a beállítás alapértelmezés szerint True (igaz) értékre van állítva a HDI esetében.
+- `Hbase.rs.cacheblocksonwrite` – alapértelmezés szerint a HDI esetében ez a beállítás **igaz**értékre van állítva.
 
-1. Beállítások, amelyek lehetővé teszik a kisebb tömörítés késleltetését később.
+- Beállítások, amelyek lehetővé teszik a kisebb tömörítés késleltetését később.
 
-1. Olyan kísérleti beállítások, mint például az olvasási és írási kérelmek számára fenntartott várólisták százalékos arányának beállítása.
+- A kísérleti beállítások, például az olvasási és írási kérelmek számára fenntartott várólisták százalékos arányának módosítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+Ha a probléma továbbra is megoldatlan marad, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+- Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport). Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

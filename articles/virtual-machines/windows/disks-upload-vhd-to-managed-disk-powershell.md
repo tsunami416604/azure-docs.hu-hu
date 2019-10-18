@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 88b5cacf432e467c893dac6fc5839c468b2eafbd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828657"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512438"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>VHD feltöltése az Azure-ba a Azure PowerShell használatával
 
@@ -27,7 +27,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps).
-- Ha a virtuális merevlemezt a PEM-ról szeretné feltölteni: Az Azure-hoz [készült](prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemez.
+- Ha a virtuális merevlemezt a PEM-ról kívánja feltölteni: az Azure-hoz [készült](prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
@@ -39,9 +39,9 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 - ReadToUpload, ami azt jelenti, hogy a lemez készen áll a feltöltésre, de nem jött létre [biztonságos hozzáférési aláírás](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
 - ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
 
-Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak `revoke-access` akkor lesz érvényes, ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
+Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak akkor lesz igaz, ha `revoke-access` a felügyelt lemezen van meghívva, amely ahhoz szükséges, hogy a lemezt egy virtuális géphez csatlakoztassa.
 
-Mielőtt üres szabványos HDD-t hozna létre a feltöltéshez, szüksége lesz a feltölteni kívánt vhd-fájl mérete bájtban. A példában a kód a következőt fogja használni: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Ez az érték a **-UploadSizeInBytes** paraméter megadásakor használatos.
+Mielőtt üres szabványos HDD-t hozna létre a feltöltéshez, szüksége lesz a feltölteni kívánt vhd-fájl mérete bájtban. A példában szereplő kód a következőt fogja használni: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Ez az érték a **-UploadSizeInBytes** paraméter megadásakor használatos.
 
 Most a helyi rendszerhéjon hozzon létre egy üres szabványos HDD-t a feltöltéshez, és adja meg a **feltöltési** beállítást a **-CreateOption** paraméterben, valamint a **-UploadSizeInBytes** paramétert a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) parancsmagban. Ezután hívja a [New-AzDisk-](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) t a lemez létrehozásához:
 
@@ -77,7 +77,7 @@ Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos 
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlob
 ```
 
-Ha a sas lejár a feltöltés során, és még nem hívta `revoke-access` meg, egy új sas-t is beszerezhet a feltöltés folytatásához a használatával. `grant-access`
+Ha a SAS lejár a feltöltés során, és még nem nevezte meg `revoke-access`, akkor új SAS-t kaphat a feltöltés folytatásához `grant-access` használatával.
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 
@@ -94,7 +94,7 @@ A következő szkript ezt elvégzi Önnek, a folyamat hasonló a korábban ismer
 > [!IMPORTANT]
 > Ha az Azure-ból felügyelt lemez mérete bájtban van megadva, akkor 512 eltolást kell hozzáadnia. Ennek az az oka, hogy az Azure kihagyja a láblécet a lemez méretének visszaadása során. Ha ezt nem teszi meg, a másolás sikertelen lesz. A következő szkript ezt már elvégezte Önnek.
 
-Cserélje le a `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` és `<yourTargetLocationHere>` (például a uswest2) értékeit, majd futtassa a következő szkriptet a felügyelt lemez másolásához.
+Cserélje le a `<sourceResourceGroupHere>`, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` és `<yourTargetLocationHere>` (például egy uswest2) az értékekkel, majd futtassa a következő parancsfájlt a felügyelt lemez másolásához.
 
 ```powershell
 
@@ -124,8 +124,8 @@ Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
 Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt egy virtuális géphez, és megkezdheti a használatát.
 
-Ha szeretné megtudni, hogyan csatolhat lemezeket egy virtuális géphez, tekintse meg a tárgyban található cikket: [Adatlemez csatlakoztatása egy Windows rendszerű virtuális géphez a PowerShell használatával](attach-disk-ps.md).
+Ha szeretné megtudni, hogyan csatolhat adatlemezt egy virtuális géphez, tekintse meg a tárgyat ismertető cikket: [adatlemez csatlakoztatása egy Windows rendszerű virtuális géphez a PowerShell használatával](attach-disk-ps.md). A lemez operációsrendszer-lemezként való használatához tekintse meg [a Windows rendszerű virtuális gép létrehozása speciális lemezről](create-vm-specialized.md#create-the-new-vm)című témakört.

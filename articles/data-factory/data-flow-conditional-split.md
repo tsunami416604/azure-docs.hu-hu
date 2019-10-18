@@ -1,34 +1,64 @@
 ---
-title: Azure Data Factory leképezési adatfolyam feltételes felosztásának átalakítása
-description: Azure Data Factory adatfolyam feltételes felosztásának átalakítása
+title: Feltételes felosztású átalakítás Azure Data Factory leképezési adatforgalomban | Microsoft Docs
+description: Adatfelosztás különböző streamekre a feltételes felosztás átalakításával Azure Data Factory leképezési adatfolyamban
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 02/03/2019
-ms.openlocfilehash: d06b5b86737d0940930a3ccea3b6d65be0a802f9
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 10/16/2019
+ms.openlocfilehash: 2d794714f27340e8886843988b6c075dd8d3366e
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387889"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72527414"
 ---
-# <a name="mapping-data-flow-conditional-split-transformation"></a>Az adatforgalom feltételes felosztásának leképezése
+# <a name="conditional-split-transformation-in-mapping-data-flow"></a>Feltételes felosztású átalakítás a leképezési adatfolyamban
 
+A feltételes felosztott átalakítás az adatsorokat különböző streamekre irányítja a megfelelő feltételek alapján. A feltételes felosztott átalakítás a programozási nyelv eset döntési struktúrájához hasonlít. Az átalakítás kiértékeli a kifejezéseket, és az eredmények alapján a megadott adatfolyamra irányítja az adatsort.
 
+## <a name="configuration"></a>Konfiguráció
 
-![feltételes felosztási eszközkészlet](media/data-flow/conditionalsplit2.png "feltételes felosztási eszközkészlet")
+A **felosztás bekapcsolva** beállítás határozza meg, hogy az adatsorok az első egyező adatfolyamra vagy minden adatfolyamra vonatkoznak-e.
 
-A feltételes felosztású átalakítás az adatsorokat különböző adatfolyamokra irányíthatja az adattartalomtól függően. A feltételes felosztású átalakítás implementálása hasonló egy programozási nyelvben lévő eset döntési struktúrához. Az átalakítás kiértékeli a kifejezéseket, és az eredmények alapján a megadott adatfolyamra irányítja az adatsort. Ez a transzformáció egy alapértelmezett kimenetet is biztosít, így ha egy sor nem felel meg a kifejezésnek, az alapértelmezett kimenetre lesz irányítva.
+Az adatfolyam-Kifejezésszerkesztő használatával adjon meg egy kifejezést a felosztott feltételhez. Új feltétel hozzáadásához kattintson a plusz ikonra egy meglévő sorban. Egy alapértelmezett adatfolyamot is hozzáadhat a feltételnek nem megfelelő sorokhoz.
 
 ![feltételes felosztás](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
 
-## <a name="multiple-paths"></a>Több elérési út
+## <a name="data-flow-script"></a>Adatfolyam-parancsfájl
 
-További feltételek hozzáadásához válassza az "adatfolyam hozzáadása" lehetőséget az alsó konfigurációs ablaktáblán, majd a kifejezés létrehozásához kattintson a Kifejezésszerkesztő szövegmezőbe.
+### <a name="syntax"></a>Szintaxis
 
-![feltételes felosztású többszörös](media/data-flow/conditionalsplit3.png "feltételes felosztású többszörös")
+```
+<incomingStream>
+    split(
+        <conditionalExpression1>
+        <conditionalExpression2>
+        ...
+        disjoint: {true | false}
+    ) ~> <splitTx>@(stream1, stream2, ..., <defaultStream>)
+```
+
+### <a name="example"></a>Példa
+
+Az alábbi példa egy `SplitByYear` nevű feltételes felosztású átalakítás, amely bekerül a bejövő stream `CleanData`ba. Az átalakításnak két felosztott feltétele van `year < 1960` és `year > 1980`. a `disjoint` hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor az adatfolyam-`moviesBefore1960` kimenetére mutat. A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyam `moviesAFter1980`. Az összes többi sor az alapértelmezett stream-`AllOtherMovies`on keresztül folyik.
+
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
+
+![feltételes felosztás](media/data-flow/conditionalsplit1.png "feltételes felosztási beállítások")
+
+Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
+
+```
+CleanData
+    split(
+        year < 1960,
+        year > 1980,
+        disjoint: false
+    ) ~> SplitByYear@(moviesBefore1960, moviesAfter1980, AllOtherMovies)
+```
 
 ## <a name="next-steps"></a>Következő lépések
 
-Feltételes felosztással használt közös adatfolyam-átalakítások: [összekapcsolási transzformáció](data-flow-join.md), [keresési átalakítás](data-flow-lookup.md), [átalakítás kiválasztása](data-flow-select.md)
+A feltételes felosztással használt közös adatfolyam-átalakítások az [összekapcsolási transzformáció](data-flow-join.md), a [keresési átalakítás](data-flow-lookup.md)és az [átalakítás kiválasztása](data-flow-select.md)

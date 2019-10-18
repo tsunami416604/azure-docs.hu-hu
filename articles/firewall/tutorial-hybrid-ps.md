@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 5/3/2019
+ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ecc46f9ce4ec953d481bf8110326630053938524
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073077"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533335"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -43,7 +43,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A virtuális gépek létrehozása
 > * A tűzfal tesztelése
 
-Ha az oktatóanyag elvégzése helyett a Azure Portalt szeretné használni, [tekintse meg az oktatóanyagot: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal](tutorial-hybrid-portal.md)használatával.
+Ha az oktatóanyag elvégzése helyett a Azure Portalt szeretné használni, tekintse meg a következőt [: oktatóanyag: Azure Firewall telepítése és konfigurálása hibrid hálózaton a Azure Portal használatával](tutorial-hybrid-portal.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -62,14 +62,14 @@ Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv me
 Tekintse meg a jelen cikk [útvonalak létrehozása](#create-the-routes) című szakaszát, amelyből megtudhatja, hogyan jönnek létre ezek az útvonalak.
 
 >[!NOTE]
->Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat fenntartása érdekében ezt a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel. Alapértelmezés szerint a Azure Firewall nem támogatja a kényszerített bújtatást egy helyszíni hálózatra.
+>Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 >
->Ha azonban a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, a Microsoft eseti alapon fogja támogatni azt. Forduljon az ügyfélszolgálathoz, és tekintse át az esetet. Ha elfogadják, az előfizetését és a szükséges tűzfal internetkapcsolatát is meg kell őrizni.
+>A Azure Firewall jelenleg nem támogatja a kényszerített bújtatást. Ha a konfigurációhoz kényszerített bújtatásra van szükség egy helyszíni hálózathoz, és meghatározhatja az internetes célhelyek cél IP-előtagjait, akkor ezeket a tartományokat a helyszíni hálózattal is konfigurálhatja a következő ugrásként a felhasználó által megadott útvonalon keresztül a AzureFirewallSubnet. Vagy a BGP használatával is meghatározhatja ezeket az útvonalakat.
 
 >[!NOTE]
 >A közvetlenül összekapcsolt virtuális hálózatok közötti forgalom közvetlenül akkor is átirányítva van, ha egy UDR az alapértelmezett átjáróként való Azure Firewallre mutat. Ha ebben a forgatókönyvben az alhálózatot alhálózati forgalomra szeretné küldeni a tűzfalra, a UDR mindkét alhálózaton explicit módon tartalmaznia kell a célként megadott alhálózat hálózati előtagot.
 
-A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)-referenciát.
+A kapcsolódó Azure PowerShell dokumentációjának áttekintéséhez tekintse meg a [Azure PowerShell-referenciát](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -293,7 +293,7 @@ Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatoka
 
 #### <a name="verify-the-connection"></a>A kapcsolat ellenőrzése
 
-A sikeres kapcsolatok ellenőrzéséhez használja a *Get-AzVirtualNetworkGatewayConnection* parancsmagot a hibakereséshez vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolat nevére utal.
+A sikeres kapcsolatok ellenőrzéséhez használja a *Get-AzVirtualNetworkGatewayConnection* parancsmagot a *hibakereséshez*vagy anélkül. A következő parancsmag-példával az értékeket a sajátjaival megegyezően konfigurálhatja. Ha a rendszer arra kéri, válassza az **A** lehetőséget az összes (**All**) futtatásához. A példában a *-Name* a tesztelni kívánt kapcsolat nevére utal.
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -464,7 +464,7 @@ Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse\<meg a http://VM-küllő-\>01 magánhálózati IP-címét.
+Nyisson meg egy webböngészőt a **VM-helyszíni**, és keresse meg a http://\<VM-küllő-01 magánhálózati IP-\>.
 
 Az Internet Information Services alapértelmezett oldalának kell megjelennie.
 
@@ -493,8 +493,8 @@ Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kel
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
-[Oktatóanyag: Azure Firewall naplók figyelése](./tutorial-diagnostics.md)
+[Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

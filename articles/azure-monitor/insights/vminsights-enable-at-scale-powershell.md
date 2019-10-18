@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/09/2019
+ms.date: 10/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 1025041ae69f2048a6c5396aaebb50b5fa884f86
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.openlocfilehash: 78fe9eec757274e4262857ac0441af61c47a992b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444171"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515543"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése Azure PowerShell vagy Resource Manager-sablonok használatával
 
@@ -26,24 +26,25 @@ ms.locfileid: "68444171"
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs (előzetes verzió) Azure-beli virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz Azure PowerShell vagy Azure Resource Manager sablonok használatával. A folyamat végén sikeresen megkezdődött az összes virtuális gép figyelése, és megtudhatja, hogy vannak-e teljesítmény-vagy rendelkezésre állási problémák.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics-munkaterület beállítása 
+## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics munkaterület beállítása 
 
 Ha nem rendelkezik Log Analytics munkaterülettel, létre kell hoznia egyet. Tekintse át az [Előfeltételek](vminsights-enable-overview.md#log-analytics) szakaszban javasolt módszereket, mielőtt folytatná a konfigurálásához szükséges lépéseket. Ezután befejezheti Azure Monitor for VMs telepítését a Azure Resource Manager sablon metódus használatával.
 
 ### <a name="enable-performance-counters"></a>Teljesítményszámlálók engedélyezése
 
-Ha a Log Analytics-munkaterületet a megoldás által hivatkozott már nincs konfigurálva a megoldás által igényelt a teljesítményszámlálók adatainak összegyűjtése, meg kell engedélyezheti őket. Ezt kétféleképpen teheti meg:
-* Leírtak szerint manuálisan [a Log Analytics Windows és Linux rendszerű teljesítmény adatforrások](../../azure-monitor/platform/data-sources-performance-counters.md)
+Ha a megoldás által hivatkozott Log Analytics munkaterület még nincs konfigurálva a megoldáshoz szükséges teljesítményszámlálók összegyűjtéséhez, engedélyeznie kell azokat. Ezt kétféleképpen teheti meg:
+* Manuálisan, a [Windows és a Linux teljesítmény adatforrásai](../../azure-monitor/platform/data-sources-performance-counters.md) című témakörben leírtak szerint log Analytics
 * A [Azure PowerShell](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) -katalógusból elérhető PowerShell-szkript letöltésével és futtatásával
 
-### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Telepítse a ServiceMap és InfrastructureInsights megoldásokat
-Ez a módszer egy JSON-sablon, amely a megoldás-összetevőket a Log Analytics-munkaterület engedélyezése konfigurációját tartalmazza.
+### <a name="install-the-servicemap-solution"></a>A ServiceMap-megoldás telepítése
+
+Ez a metódus egy JSON-sablont tartalmaz, amely meghatározza a megoldás összetevőinek a Log Analytics munkaterületen való engedélyezésének konfigurációját.
 
 Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, tekintse meg a következőt:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -84,24 +85,6 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
                             "product": "[Concat('OMSGallery/', 'ServiceMap')]",
                             "promotionCode": ""
                         }
-                    },
-                    {
-                        "apiVersion": "2015-11-01-preview",
-                        "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                        "type": "Microsoft.OperationsManagement/solutions",
-                        "dependsOn": [
-                            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        ],
-                        "properties": {
-                            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
-                        },
-                        "plan": {
-                            "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
-                            "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
-                            "promotionCode": ""
-                        }
                     }
                 ]
             }
@@ -109,9 +92,9 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
     }
     ```
 
-1. Mentse a fájlt *installsolutionsforvminsights.json* egy helyi mappába.
+1. Mentse ezt a fájlt *installsolutionsforvminsights. JSON* néven egy helyi mappába.
 
-1. Rögzítse a *WorkspaceName*, a *ResourceGroupName*és a *WorkspaceLocation*értékeit. A *WorkspaceName* értéke a log Analytics munkaterület neve. Az érték *WorkspaceLocation* a régió, a munkaterület van definiálva.
+1. Rögzítse a *WorkspaceName*, a *ResourceGroupName*és a *WorkspaceLocation*értékeit. A *WorkspaceName* értéke a log Analytics munkaterület neve. A *WorkspaceLocation* értéke az a régió, amelyben a munkaterület definiálva van.
 
 1. Most már készen áll a sablon üzembe helyezésére.
  
@@ -127,7 +110,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
         provisioningState       : Succeeded
         ```
 
-    * A következő parancs futtatása az Azure CLI-vel:
+    * A következő parancs futtatása az Azure CLI használatával:
     
         ```azurecli
         az login
@@ -142,6 +125,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
         ```
 
 ## <a name="enable-with-azure-resource-manager-templates"></a>Engedélyezés Azure Resource Manager-sablonokkal
+
 Létrehoztuk például Azure Resource Manager sablonokat a virtuális gépek és a virtuálisgép-méretezési csoportok bevezetéséhez. Ezek a sablonok olyan forgatókönyveket tartalmaznak, amelyekkel engedélyezheti a figyelést egy meglévő erőforráson, és létrehozhat egy olyan új erőforrást, amelyen engedélyezve van a figyelés.
 
 >[!NOTE]
@@ -149,9 +133,9 @@ Létrehoztuk például Azure Resource Manager sablonokat a virtuális gépek és
 
 Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, tekintse meg a következőt:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="download-templates"></a>Sablonok letöltése
 
@@ -163,7 +147,7 @@ A letöltési fájl a következő sablonokat tartalmazza különböző forgatók
 - A **NewVmOnboarding** sablon egy virtuális gépet hoz létre, és lehetővé teszi Azure monitor for VMS számára a figyelését.
 - A **ExistingVmssOnboarding** -sablon lehetővé teszi, hogy Azure monitor for VMS, ha a virtuálisgép-méretezési csoport már létezik.
 - A **NewVmssOnboarding** sablon virtuálisgép-méretezési csoportokat hoz létre, és lehetővé teszi a Azure monitor for VMS számára a figyelését.
-- A **ConfigureWorksapce** -sablon úgy konfigurálja a log Analytics munkaterületet, hogy támogassa a Azure monitor for VMS a Linux és a Windows operációs rendszer teljesítményszámlálói által kínált megoldások és gyűjtemények engedélyezésével.
+- A **ConfigureWorkspace** -sablon úgy konfigurálja a log Analytics munkaterületet, hogy támogassa a Azure monitor for VMS a Linux és a Windows operációs rendszer teljesítményszámlálói által kínált megoldások és gyűjtemények engedélyezésével.
 
 >[!NOTE]
 >Ha a virtuálisgép-méretezési csoportok már jelen voltak, és a frissítési szabályzat **manuálisra**van állítva, akkor a **ExistingVmssOnboarding** Azure Resource Manager-sablon futtatása után a rendszer alapértelmezés szerint nem engedélyezi a példányok számára a Azure monitor for VMS. A példányokat manuálisan kell frissítenie.
@@ -180,6 +164,7 @@ A konfiguráció módosítása több percet is igénybe vehet. Ha elkészült, e
 ```powershell
 provisioningState       : Succeeded
 ```
+
 ### <a name="deploy-by-using-the-azure-cli"></a>Üzembe helyezés az Azure CLI használatával
 
 A következő lépés lehetővé teszi a figyelést az Azure CLI használatával.
@@ -196,7 +181,7 @@ A kimenet a következőhöz hasonló:
 provisioningState       : Succeeded
 ```
 
-## <a name="enable-with-powershell"></a>Engedélyezze a PowerShell-lel
+## <a name="enable-with-powershell"></a>Engedélyezés a PowerShell-lel
 
 Több virtuális gép vagy virtuálisgép-méretezési csoport Azure Monitor for VMsának engedélyezéséhez használja a [install-VMInsights. Ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)PowerShell-szkriptet. A Azure PowerShell katalógusból érhető el. Ez a szkript a következő lépésekből áll:
 
@@ -204,11 +189,11 @@ Több virtuális gép vagy virtuálisgép-méretezési csoport Azure Monitor for
 - A *ResourceGroup*által megadott hatókörön belüli erőforráscsoport. 
 - Egyetlen virtuális gép vagy virtuálisgép-méretezési csoport, amelyet a *név*határoz meg.
 
-Minden virtuális gép vagy a virtuális gép méretezési csoport esetében a szkript ellenőrzi a Virtuálisgép-bővítmény telepítve van-e már. Ha a virtuálisgép-bővítmény nincs telepítve, a parancsfájl megpróbálja újratelepíteni. Ha a Virtuálisgép-bővítmény telepítve van, a parancsfájl telepíti a Log Analytics és a függőségi ügynök Virtuálisgép-bővítmények.
+A parancsfájl minden virtuális gép vagy virtuálisgép-méretezési csoport esetében ellenőrzi, hogy a virtuális gép bővítménye már telepítve van-e. Ha a virtuálisgép-bővítmény nincs telepítve, a parancsfájl megpróbálja újratelepíteni. Ha a virtuálisgép-bővítmény telepítve van, a parancsfájl telepíti a Log Analytics és a függőségi ügynök virtuálisgép-bővítményeit.
 
-Győződjön meg arról, hogy a Azure PowerShell-modult használja az `Enable-AzureRM` az Version 1.0.0 vagy újabb verzióval, és a kompatibilitási aliasok engedélyezve vannak. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Connect-AzAccount` kapcsolat létrehozása az Azure-ral.
+Győződjön meg arról, hogy a Azure PowerShell-modult használja az az Version 1.0.0 vagy újabb verzióval, `Enable-AzureRM` kompatibilitási aliasok engedélyezve vannak. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor a `Connect-AzAccount` futtatásával is létre kell hoznia egy, az Azure-hoz való kapcsolódást.
 
-A parancsfájl argumentum részletek és a példa használati listájának lekéréséhez futtassa `Get-Help`.
+A parancsfájl argumentumának részleteiről és a példa használatáról a `Get-Help` futtatásával kaphat listát.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -310,7 +295,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-A következő példa bemutatja a mappában található a PowerShell-parancsok segítségével engedélyezése az Azure Monitor-beli virtuális gépek és a várt kimeneti megismerése:
+Az alábbi példa a mappában található PowerShell-parancsok használatát mutatja be Azure Monitor for VMs és a várt kimenet megismeréséhez:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -359,11 +344,10 @@ Not running - start VM to configure: (0)
 Failed: (0)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
  
-- Az állapotfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS állapotának megtekintése](vminsights-health.md)című témakört. 
-- Felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md). 
+- A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md). 
+
 - Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:. 
-- Felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md).

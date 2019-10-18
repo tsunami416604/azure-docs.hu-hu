@@ -1,5 +1,5 @@
 ---
-title: Több erőforráspéldány létrehozása az Azure Resource Manager használatával | Microsoft Docs
+title: Több erőforrás-példány létrehozása – Azure Resource Manager
 description: Ismerje meg, hogyan hozhat létre több Azure-erőforráspéldány létrehozására alkalmas Azure Resource Manager-sablont.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cf2559b280a1c43269c0cf45d77ee98dcd5ee5a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388794"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528265"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozásával létrehozása a Resource Manager-sablonokkal
+# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozása Resource Manager-sablonokkal
 
 Ismerje meg, hogyan hozhat létre több Azure-erőforráspéldányt az Azure Resource Manager-sablonban való iterálással. Ebben az oktatóanyagban egy sablon módosításával három tárfiókpéldányt hoz létre.
 
-![Az Azure Resource Manager hoz létre több példány diagramja](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager több példány diagramot hoz létre](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -64,7 +64,7 @@ A Visual Studio Code-ban végezze el az alábbi négy módosítást:
 ![Az Azure Resource Manager több példányt hoz létre](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
 1. Adjon hozzá egy `copy` elemet a tárfiók erőforrás-definíciójához. A másolási elemben adja meg az iterációk számát, és egy változót a ciklushoz. Az értéknek egy 801-nél kisebb pozitív egész számnak kell lennie.
-2. A `copyIndex()` függvény a ciklus aktuális iterációját adja vissza. Ezt az indexet fogja a név előtagjaként használni. A `copyIndex()` nulla alapú. Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Például *copyIndex(1)*.
+2. A `copyIndex()` függvény a ciklus aktuális iterációját adja vissza. Ezt az indexet fogja a név előtagjaként használni. A `copyIndex()` nulla alapú. Az indexérték eltolásához megadhat egy értéket a copyIndex() függvényben. Például *copyIndex(1)* .
 3. Törölje a **változók** elemet, mivel már nincs rá szükség.
 4. Törölje a **kimenetek** elemet. A továbbiakban nincs rá szükség.
 
@@ -153,7 +153,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 3. Válassza ki az erőforráscsoport nevét.  Összesen hat erőforrásnak kell lennie az erőforráscsoportban.
 4. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre több tárfiókpéldány.  A következő oktatóanyagban egy több erőforrást és több erőforrástípust tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
 

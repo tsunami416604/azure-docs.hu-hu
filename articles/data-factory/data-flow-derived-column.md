@@ -1,17 +1,17 @@
 ---
-title: Származtatott oszlop átalakítása a leképezési adatfolyamban – Azure Data Factory | Microsoft Docs
+title: Származtatott oszlop átalakítása Azure Data Factory leképezési adatfolyamban | Microsoft Docs
 description: Megtudhatja, hogyan alakíthatja át az adatmennyiséget a Azure Data Factory a leképezési adatfolyam származtatott oszlopainak átalakításával.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 5a4ee90717d46fe593d9e10083b349e069216dac
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
-ms.translationtype: HT
+ms.openlocfilehash: 60451fa6152590ed0fde51be436c867f39906acf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72436772"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514813"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Származtatott oszlop átalakítása a leképezési adatfolyamban
 
@@ -46,7 +46,9 @@ További származtatott oszlopok hozzáadásához vigye a kurzort egy meglévő 
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy `CleanData` nevű származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear`, és két származtatott oszlopot hoz létre. Az első származtatott oszlop a `Rating` oszlopot helyettesíti egész típusú értékként. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlop esetében egy `movie` oszlopot hoz létre, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
+Az alábbi példa egy `CleanData` nevű származtatott oszlop, amely egy bejövő adatfolyamot `MoviesYear`, és két származtatott oszlopot hoz létre. Az első származtatott oszlop a `Rating` oszlopot helyettesíti egész típusú értékként. A második származtatott oszlop egy minta, amely minden olyan oszlopnak megfelel, amelynek a neve "Movies" karakterrel kezdődik. Minden egyező oszlophoz létrehoz egy olyan oszlopot `movie`, amely megegyezik az "movie_" előtaggal ellátott egyező oszlop értékével. 
+
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
 ![Példa származtatása](media/data-flow/derive-script1.png "Példa származtatása")
 

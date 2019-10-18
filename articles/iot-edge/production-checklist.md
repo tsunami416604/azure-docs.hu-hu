@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244043"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529026"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -93,7 +93,7 @@ Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxyk
 
 Az IoT Edge hub és az Agent modulok a helyi tárterületet használják az állapot fenntartásához és a modulok, eszközök és a felhő közötti üzenetkezelés engedélyezéséhez. A jobb megbízhatóság és teljesítmény érdekében konfigurálja a rendszermodulokat a gazdagép fájlrendszerén a tároló használatára.
 
-További információ: [Host Storage for System modulok](offline-capabilities.md#host-storage-for-system-modules).
+További információ: [Host Storage for System modulok](how-to-access-host-storage-from-module.md).
 
 ### <a name="reduce-memory-space-used-by-iot-edge-hub"></a>IoT Edge hub által használt memória méretének csökkentése
 
@@ -176,10 +176,10 @@ Ez az ellenőrzőlista a tűzfalszabályok kiindulási pontja:
    | ----- | ----- | ----- |
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS-hozzáférés (nem kötelező) |
-   | @no__t – 0.azurecr.io | 443 | Személyes és harmadik féltől származó tároló-nyilvántartások |
+   | \*. azurecr.io | 443 | Személyes és harmadik féltől származó tároló-nyilvántartások |
    | \*.blob.core.windows.net | 443 | Azure Container Registry rendszerkép-különbözetek letöltése a blob Storage-ból  | 
-   | @no__t – 0.azure-devices.net | 5671, 8883, 443 | IoT Hub hozzáférés |
-   | @no__t – 0.docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
+   | \*. azure-devices.net | 5671, 8883, 443 | IoT Hub hozzáférés |
+   | \*. docker.io  | 443 | Docker hub-hozzáférés (nem kötelező) |
 
 A tűzfalszabályok némelyike a Azure Container Registry örököl. További információkért lásd: [szabályok konfigurálása Azure Container Registry eléréséhez tűzfal mögött](../container-registry/container-registry-firewall-access-rules.md).
 
@@ -195,7 +195,7 @@ Ha az eszközök egy proxykiszolgálót használó hálózaton lesznek telepítv
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A démon-naplók lekérdezéséhez használhatja a `journalctl` parancssori eszközt. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. @No__t – 0 használatával kérdezheti le a naplókat a démonból. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
+Linux rendszeren a IoT Edge démon az alapértelmezett naplózási illesztőprogramként használja a naplókat. A démon-naplók lekérdezéséhez használhatja a `journalctl` parancssori eszközt. Windows rendszeren a IoT Edge démon PowerShell-diagnosztikát használ. @No__t_0 használatával kérdezheti le a naplókat a démonból. IoT Edge modulok a JSON-illesztőprogramot használják a naplózáshoz, amely az alapértelmezett.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

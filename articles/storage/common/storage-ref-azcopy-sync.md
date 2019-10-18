@@ -4,18 +4,18 @@ description: Ez a cikk a azcopy Sync paranccsal kapcsolatos tudnivalókat tartal
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fb6c3b711a89ae7e4ef403a75927c4c6172523d0
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195762"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513422"
 ---
-# <a name="azcopy-sync"></a>azcopy szinkronizálása
+# <a name="azcopy-sync"></a>azcopy sync
 
 A forrás helyét replikálja a célhelyre.
 
@@ -26,19 +26,18 @@ A rendszer az utolsó módosítás időpontját használja az összehasonlítás
 A támogatott párok a következők:
 
 - helyi < – > Azure-Blob (SAS-vagy OAuth-hitelesítés is használható)
+- Azure Blob <-> Azure Blob (a forrásnak tartalmaznia kell SAS-t vagy nyilvánosan elérhetőnek kell lennie, vagy az SAS vagy a OAuth hitelesítés használható a célhelyre)
+- Azure file <-> Azure-fájl (a forrásnak tartalmaznia kell SAS vagy nyilvánosan elérhető; Az SAS-hitelesítést a célhelyre kell használni.)
 
 A szinkronizálási parancs többféle módon eltér a másolási parancstól:
 
-  1. A rekurzív jelző alapértelmezés szerint be van kapcsolva.
-  2. A forrás és a cél nem tartalmazhat mintázatot (például * vagy?).
-  3. A belefoglalási és kizárási jelzők a fájlneveknek megfelelő mintázatok listája lehet. Tekintse meg az ábrán látható példa szakaszt.
-  4. Ha a célhelyen olyan fájlok vagy Blobok találhatók, amelyek nem szerepelnek a forrásban, a rendszer felszólítja a felhasználót a törlésre.
+1. Alapértelmezés szerint a rekurzív jelző igaz értékű, és a szinkronizálás az összes alkönyvtárat átmásolja. A szinkronizálás csak akkor másolja a legfelső szintű fájlokat egy könyvtárba, ha a rekurzív jelző hamis.
+2. A virtuális könyvtárak közötti szinkronizáláskor adjon hozzá egy perjelet az elérési úthoz (példák), ha van olyan blob, amelynek a neve megegyezik a virtuális könyvtárak egyikével.
+3. Ha az "deleteDestination" jelző értéke TRUE (igaz) vagy prompt, akkor a Sync törli a célhelyen található fájlokat és blobokat, amelyek nem szerepelnek a forrásban.
 
-     Ezt a kérést a megfelelő jelzők használatával lehet meghallgatni a törlési kérdés automatikus megválaszolása érdekében.
+### <a name="advanced"></a>Extra szintű
 
-### <a name="advanced"></a>Speciális
-
-A AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
+Ha nem ad meg fájlkiterjesztést, a AzCopy automatikusan észleli a fájlok tartalomtípusát a helyi lemezről történő feltöltéskor a fájlkiterjesztés vagy a tartalom alapján (ha nincs megadva kiterjesztés).
 
 A beépített keresési táblázat kicsi, de a UNIX rendszeren a helyi rendszer MIME. types fájl (ok), ha az alábbi nevek közül egy vagy több található:
 
@@ -72,7 +71,7 @@ Egy teljes könyvtár szinkronizálása alkönyvtárakkal együtt (a rekurzív a
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-or
+vagy
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -96,30 +95,63 @@ Egy teljes címtár szinkronizálása, de bizonyos fájlok kizárása a hatókö
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
+Egyetlen blob szinkronizálása:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
+
+Sync a virtual directory:
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
+```
+
+Egy blobtal megegyező nevű virtuális könyvtár szinkronizálása (a egyértelműsítse az elérési útra a záró perjelet adja hozzá):
+
+```azcopy
+azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
+```
+
+Azure file Directory szinkronizálása (a Blobtal megegyező szintaxis):
+
+```azcopy
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+```
+
 > [!NOTE]
 > Ha a belefoglalási/kizárási jelzők együtt vannak használatban, csak a belefoglalási mintáknak megfelelő fájlok fognak megjelenni, a kizárási mintáknak megfelelők azonban mindig figyelmen kívül lesznek hagyva.
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
-|--|--|
-|--Block-Size-MB lebegőpontos|Ezt a blokk-méretet (a MiB-ben megadott) használja az Azure Storage-ba való feltöltéshez vagy az Azure Storage-ból való letöltéshez A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. A tizedes törtek engedélyezettek (például: 0,25).|
-|--ellenőrzési-MD5 karakterlánc|Azt határozza meg, hogy a letöltéskor a szigorúan MD5-kivonatok legyenek érvényesítve. Ez a lehetőség csak a letöltéskor érhető el. Az elérhető értékek a következők: Nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett "FailIfDifferent").|
-|--delete-Destination sztring|meghatározza, hogy a rendszer törli-e a forrásban nem szereplő további fájlokat a célhelyről. Értéke true, false vagy prompt lehet. Ha a beállítás értéke prompt, a rendszer megkérdezi a felhasználót, mielőtt ütemezi a fájlok és a Blobok törlését. (alapértelmezés szerint "false").|
-|– karakterlánc kizárása|Zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: *. jpg;* . PDF; exactName.|
-|-h,-– Súgó|A szinkronizálási parancshoz tartozó súgótartalom megjelenítése.|
-|--karakterlánc belefoglalása|Csak olyan fájlokat adjon meg, amelyeknek a neve megegyezik a minta listával. Például: *. jpg;* . PDF; exactName.|
-|--log szintű sztring|Adja meg a naplófájl részletességét, a rendelkezésre álló szinteket: INFO (minden kérelem/válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérelmek) és NONE (nincs kimeneti napló). (alapértelmezett "információ").|
-|--Put-MD5|Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.|
-|– rekurzív|Alapértelmezés szerint a címtárak közötti szinkronizáláskor a rendszer rekurzív módon vizsgálja meg az alkönyvtárakat. (alapértelmezés szerint igaz).|
+**--Block-Size-MB** lebegőpontos használata esetén ez a blokk mérete (a MIB-ben van megadva) az Azure Storage-ba való feltöltéskor vagy az Azure Storage-ból való letöltéskor. A rendszer automatikusan kiszámítja az alapértelmezett értéket a fájlméret alapján. Tizedes törtek engedélyezettek (például: 0,25).
+
+**--ellenőrzés-MD5** karakterlánc megadja, hogy a letöltéskor milyen szigorúan kell ellenőrizni az MD5-kivonatok érvényességét. Ez a lehetőség csak a letöltéskor érhető el. Az elérhető értékek a következők: nincs vizsgálat, bejelentkezés, FailIfDifferent, FailIfDifferentOrMissing. (alapértelmezett érték: "FailIfDifferent"). (alapértelmezett "FailIfDifferent")
+
+**--delete-Destination** sztring meghatározza, hogy a rendszer törli-e a forrásban nem szereplő további fájlokat a célhelyről. Értéke true, false vagy prompt lehet. Ha a beállítás értéke prompt, a rendszer megkérdezi a felhasználót, mielőtt ütemezi a fájlok és a Blobok törlését. (alapértelmezett érték: "false"). (alapértelmezett "false")
+
+**– kizárás – attribútumok** karakterlánca (csak Windows) kizárhatja azokat a fájlokat, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
+
+**--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: *. jpg;* . PDF; exactName
+
+**-h,--Súgó** a szinkronizáláshoz
+
+**– include-attributes** sztring (csak Windows) csak azokat a fájlokat tartalmazza, amelyek attribútumai megegyeznek az attribútumok listájával. Például: A; S R
+
+**--include-Pattern** sztring csak olyan fájlokat tartalmazhat, amelyekben a név megegyezik a minta listával. Például: *. jpg;* . PDF; exactName
+
+**--a log szintű** karakterlánc határozza meg a naplófájl részletességét, a rendelkezésre álló szinteket: info (minden kérelem és válasz), figyelmeztetés (lassú válasz), hiba (csak sikertelen kérések), és nincs (nincs kimeneti napló). (alapértelmezett információ). (alapértelmezett "információ")
+
+**--put-MD5**                     Hozzon létre egy MD5-kivonatot minden fájlhoz, és mentse a kivonatot a cél blob vagy fájl tartalom-MD5 tulajdonságának megfelelően. (Alapértelmezés szerint a rendszer nem hozza létre a kivonatot.) Csak feltöltéskor érhető el.
+
+**– rekurzív**                   Alapértelmezés szerint a címtárak közötti szinkronizáláskor a rendszer rekurzív módon vizsgálja meg az alkönyvtárakat. (alapértelmezés szerint igaz). (alapértelmezett true)
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Lehetőség|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [azcopy](storage-ref-azcopy.md)

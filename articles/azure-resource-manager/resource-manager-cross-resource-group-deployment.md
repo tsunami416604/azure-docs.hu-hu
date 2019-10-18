@@ -1,34 +1,34 @@
 ---
-title: Több előfizetés és erőforrás-csoportok az Azure erőforrások üzembe helyezése |} A Microsoft Docs
-description: Bemutatja, hogyan célcsoport egynél több Azure előfizetésben és erőforráscsoportban üzembe helyezés során.
+title: Azure-erőforrások, több előfizetés & erőforráscsoport üzembe helyezése
+description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33b0a998206b68f1807f5bfa3c3f39164798842c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205472"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528327"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Egynél több előfizetésen vagy erőforráscsoporton az Azure-erőforrások üzembe helyezése
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Általában végzi az üzembe helyezést összes erőforrást a sablonhoz, amelyekkel egy [erőforráscsoport](resource-group-overview.md). Vannak azonban forgatókönyvek, ahol szeretné erőforráscsoport telepítsen együtt, de különböző erőforráscsoport vagy előfizetés helyezze el őket. Például előfordulhat, hogy számára telepíteni kívánja a biztonsági mentési virtuális gép Azure Site Recovery egy külön erőforráscsoportot és helyet. Resource Manager lehetővé teszi, hogy használjon beágyazott cél különböző előfizetésekhez és erőforráscsoportokhoz, mint az előfizetés és a fölérendelt sablon használt erőforráscsoport-sablonok.
+A sablonban lévő összes erőforrást általában egyetlen [erőforráscsoporthoz](resource-group-overview.md)kell telepíteni. Vannak azonban olyan forgatókönyvek, amelyekben különböző erőforrás-készleteket kíván üzembe helyezni, de más erőforráscsoportokbe vagy előfizetésbe helyezi őket. Előfordulhat például, hogy a Azure Site Recovery biztonsági mentési virtuális gépet külön erőforráscsoport és hely számára szeretné telepíteni. A Resource Manager lehetővé teszi, hogy a beágyazott sablonok használatával különböző előfizetéseket és erőforráscsoportokat célozjon meg, mint a fölérendelt sablonhoz használt előfizetés és erőforráscsoport.
 
 > [!NOTE]
-> Telepíthet egy központi telepítésben csak öt erőforráscsoportokhoz. Ez a korlátozás általában azt jelenti, egy erőforráscsoport megadva, a fölérendelt sablon, és legfeljebb négy erőforráscsoportok beágyazott vagy hivatkozott telepítések esetén telepítheti. Azonban ha a fölérendelt sablon csak a beágyazott vagy hivatkozott sablont tartalmaz, és nem magát nem erőforrások üzembe helyezése bármely, majd megadhatja legfeljebb öt erőforráscsoportok beágyazott vagy hivatkozott telepítések esetén.
+> Egyetlen üzemelő példányban csak öt erőforráscsoport helyezhető üzembe. Ez a korlátozás általában azt jelenti, hogy egy, a szülő sablonhoz megadott erőforráscsoport, valamint a beágyazott vagy csatolt központi telepítések legfeljebb négy erőforráscsoport számára telepíthető. Ha azonban a fölérendelt sablon csak beágyazott vagy csatolt sablonokat tartalmaz, és nem helyezi üzembe az erőforrásokat, akkor akár öt erőforráscsoportot is tartalmazhat beágyazott vagy csatolt központi telepítések esetén.
 
-## <a name="specify-a-subscription-and-resource-group"></a>Adjon meg egy előfizetésben és erőforráscsoportban csoportot
+## <a name="specify-a-subscription-and-resource-group"></a>Előfizetés és erőforráscsoport meghatározása
 
-Egy másik erőforrás célozza meg, használjon a beágyazott vagy hivatkozott sablont. A `Microsoft.Resources/deployments` erőforrástípust biztosít paramétereinek `subscriptionId` és `resourceGroup`. Ezek a tulajdonságok lehetővé teszik a beágyazott üzemelő példány egy másik előfizetésben és erőforráscsoportban csoporthoz adja meg. Az erőforráscsoportok léteznie kell a központi telepítés futtatása előtt. Ha nincs megadva vagy az előfizetési Azonosítóját vagy erőforrás-csoport, az előfizetésben és erőforráscsoportban a szülő sablonból használatos.
+Egy másik erőforrás megcélzásához használjon beágyazott vagy csatolt sablont. A `Microsoft.Resources/deployments` erőforrástípus a `subscriptionId` és a `resourceGroup` paramétereit adja meg. Ezek a tulajdonságok lehetővé teszik egy másik előfizetés és erőforráscsoport megadását a beágyazott telepítéshez. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt. Ha nem ad meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból.
 
-A sablon telepítéséhez használt fióknak jogosultnak kell lennie a központi telepítése a megadott előfizetés-azonosítójára. Ha a megadott előfizetés már létezik egy másik Azure Active Directory-bérlőhöz, kell [vendég felhasználók hozzáadása másik címtárból](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+A sablon telepítéséhez használt fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való központi telepítéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Egy másik erőforráscsoportot és egy előfizetést, akkor adja meg:
+Másik erőforráscsoport és előfizetés megadásához használja a következőt:
 
 ```json
 "resources": [
@@ -43,9 +43,9 @@ Egy másik erőforráscsoportot és egy előfizetést, akkor adja meg:
 ]
 ```
 
-Ha az erőforráscsoportok ugyanabban az előfizetésben, eltávolíthatja a **subscriptionId** értéket.
+Ha az erőforráscsoportok ugyanahhoz az előfizetéshez tartoznak, akkor eltávolíthatja a **subscriptionId** értéket.
 
-Az alábbi példa két tárfiókot – egy, a telepítés során megadott erőforráscsoportban helyezi üzembe, és a egy erőforráscsoport a megadott a `secondResourceGroup` paramétert:
+A következő példa két Storage-fiókot telepít – egyet az üzembe helyezés során megadott erőforráscsoporthoz, és egyet a `secondResourceGroup` paraméterben megadott erőforráscsoporthoz:
 
 ```json
 {
@@ -120,13 +120,13 @@ Az alábbi példa két tárfiókot – egy, a telepítés során megadott erőfo
 }
 ```
 
-Ha `resourceGroup` egy nem létező erőforráscsoport neve, a központi telepítés sikertelen lesz.
+Ha a `resourceGroup`t egy nem létező erőforráscsoport nevére állítja be, akkor a telepítés sikertelen lesz.
 
-## <a name="use-the-resourcegroup-and-subscription-functions"></a>A resourceGroup() és subscription() függvények használata
+## <a name="use-the-resourcegroup-and-subscription-functions"></a>A resourceGroup () és az előfizetés () függvények használata
 
-A tartományok közötti erőforráscsoportok üzemelő példányainak, a [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) és [subscription()](resource-group-template-functions-resource.md#subscription) funkciók megoldásához eltérően alapján adhatja meg a beágyazott sablont. 
+A többerőforrásos csoportok telepítésekor a [resourceGroup ()](resource-group-template-functions-resource.md#resourcegroup) és az [előfizetés ()](resource-group-template-functions-resource.md#subscription) függvények a beágyazott sablon megadása alapján eltérő módon oldhatók meg. 
 
-Egy sablon belül egy másik sablon beágyazásakor a beágyazott sablonban függvények feloldani a szülő erőforráscsoportban és előfizetésben. Egy beágyazott sablont a következő formátumot használja:
+Ha egy sablont ágyaz be egy másik sablonba, a beágyazott sablonban lévő függvények a szülő erőforráscsoporthoz és az előfizetésre is feloldhatók. A beágyazott sablon a következő formátumot használja:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -142,7 +142,7 @@ Egy sablon belül egy másik sablon beágyazásakor a beágyazott sablonban füg
 }
 ```
 
-Ha külön sablonok, a hivatkozott sablonnak az a funkciók feloldani a beágyazott erőforrás-csoport és az előfizetés. Egy hivatkozott sablonnak a következő formátumot használja:
+Ha egy különálló sablonra hivatkozik, a társított sablonban lévő függvények a beágyazott erőforráscsoporthoz és előfizetésre is feloldhatók. A csatolt sablonok a következő formátumot használják:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -158,18 +158,18 @@ Ha külön sablonok, a hivatkozott sablonnak az a funkciók feloldani a beágyaz
 }
 ```
 
-## <a name="example-templates"></a>Példa sablonok
+## <a name="example-templates"></a>Példák sablonokra
 
-Az alábbi sablonok több erőforráscsoportok üzemelő példányainak mutatják be. A sablonok üzembe helyezése szkriptek jelennek meg a táblázat után.
+A következő sablonok több erőforráscsoport-telepítést mutatnak be. A sablonok üzembe helyezéséhez szükséges parancsfájlok a tábla után jelennek meg.
 
 |Sablon  |Leírás  |
 |---------|---------|
-|[Adatbázisközi előfizetés sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Üzembe helyez egy erőforráscsoportot egy storage-fiókot és a egy storage-fiók egy másik erőforráscsoportba. Ha a második erőforráscsoportot egy másik előfizetésben található értéket tartalmazza az előfizetés-azonosító. |
-|[Adatbázisközi sablon az erőforrás-csoport tulajdonságai](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Bemutatja, hogyan a `resourceGroup()` függvény szándékot oldja fel. Azt nem kell telepítenie minden olyan erőforrásokat. |
+|[Több előfizetési sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Egyetlen Storage-fiókot telepít egy erőforráscsoporthoz és egy Storage-fiókot egy második erőforráscsoporthoz. Adja meg az előfizetés-azonosító értékét, ha a második erőforráscsoport egy másik előfizetésben található. |
+|[Több erőforráscsoport tulajdonságai sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Bemutatja, hogyan oldja meg a `resourceGroup()` függvény. Nem helyez üzembe semmilyen erőforrást. |
 
 ### <a name="powershell"></a>PowerShell
 
-A PowerShell, a két erőforráscsoport központi telepítése két tárfiókot a **ugyanahhoz az előfizetéshez**, használja:
+Ahhoz, hogy a PowerShell két Storage-fiókot helyezzen üzembe két **ugyanabba az előfizetésbe**tartozó erőforráscsoporthoz, használja a következőt:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -186,7 +186,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-PowerShell esetén két tárfiókot való üzembe helyezéséhez **két előfizetéssel**, használja:
+Ahhoz, hogy a PowerShell két Storage-fiókot helyezzen üzembe **két előfizetésben**, használja a következőt:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -210,7 +210,7 @@ New-AzResourceGroupDeployment `
   -secondSubscriptionID $secondSub
 ```
 
-PowerShell, tesztelje a **erőforrás csoportobjektum** oldja fel a fölérendelt sablon, a beágyazott sablont és a hivatkozott sablonnak használatra:
+A PowerShell esetében annak teszteléséhez, hogy az **erőforráscsoport-objektum** hogyan oldja fel a fölérendelt sablont, a beágyazott sablont és a csatolt sablont, használja a következőt:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -222,7 +222,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-Az előző példában mindkét **parentRG** és **inlineRG** oldja fel a **parentGroup**. **linkedRG** mutat **linkedGroup**. Az előző példából kimenete:
+Az előző példában a **parentRG** és a **inlineRG** is megoldódik a **parentGroup**. a **linkedRG** feloldja a **linkedGroup**. Az előző példa kimenete a következő:
 
 ```powershell
  Name             Type                       Value
@@ -253,9 +253,9 @@ Az előző példában mindkét **parentRG** és **inlineRG** oldja fel a **paren
                                              }
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
-Azure CLI-hez, a két erőforráscsoport központi telepítése két tárfiókot a **ugyanahhoz az előfizetéshez**, használja:
+Az Azure CLI esetében két Storage-fiókot helyezzen üzembe két **ugyanabba az előfizetésbe**tartozó erőforráscsoporthoz, használja a következőt:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -270,7 +270,7 @@ az group deployment create \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-Azure CLI telepítése a két tárfiókot **két előfizetéssel**, használja:
+Az Azure CLI esetében két **Storage-fiók**üzembe helyezéséhez használja a következőt:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -292,7 +292,7 @@ az group deployment create \
   --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
 ```
 
-Azure CLI-hez, tesztelheti a **erőforrás csoportobjektum** oldja fel a fölérendelt sablon, a beágyazott sablont és a hivatkozott sablonnak használatra:
+Az Azure CLI esetében annak teszteléséhez, hogy az **erőforráscsoport-objektum** hogyan oldja fel a fölérendelt sablont, a beágyazott sablont és a csatolt sablont, használja a következőt:
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus
@@ -305,7 +305,7 @@ az group deployment create \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
-Az előző példában mindkét **parentRG** és **inlineRG** oldja fel a **parentGroup**. **linkedRG** mutat **linkedGroup**. Az előző példából kimenete:
+Az előző példában a **parentRG** és a **inlineRG** is megoldódik a **parentGroup**. a **linkedRG** feloldja a **linkedGroup**. Az előző példa kimenete a következő:
 
 ```azurecli
 ...
@@ -347,8 +347,8 @@ Az előző példában mindkét **parentRG** és **inlineRG** oldja fel a **paren
 ...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A sablonban szereplő paraméterekkel definiálása ismertetése: [struktúra és az Azure Resource Manager-sablonok szintaxisát](resource-group-authoring-templates.md).
-* Gyakori üzembehelyezési hibák elhárítása a tippek: [hibáinak elhárítása a közös Azure-beli hibák az Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* SAS-token igénylő sablonok telepítésével kapcsolatos információkért lásd: [saját sablon üzembe helyezése SAS-jogkivonat használatával](resource-manager-powershell-sas-token.md).
+* Ha szeretné megtudni, hogyan határozhat meg paramétereket a sablonban, olvassa el [a Azure Resource Manager sablonok struktúrájának és szintaxisának megismerését](resource-group-authoring-templates.md)ismertető témakört.
+* A gyakori telepítési hibák megoldásával kapcsolatos tippekért lásd: [gyakori Azure-telepítési hibák elhárítása Azure Resource Managerokkal](resource-manager-common-deployment-errors.md).
+* A SAS-tokent igénylő sablonok telepítésével kapcsolatos információkért lásd: [privát sablon üzembe helyezése sas-tokenrel](resource-manager-powershell-sas-token.md).

@@ -1,6 +1,6 @@
 ---
 title: Log Analytics munkaterületek kezelése Azure Monitorban | Microsoft Docs
-description: A Azure Monitor Log Analytics munkaterületen tárolt adataihoz erőforrás, munkaterület vagy tábla szintű engedélyek használatával kezelheti a hozzáférést. Ez a cikk részletesen ismerteti ezeket a lépéseket.
+description: A Azure Monitor Log Analytics munkaterületen tárolt adataihoz erőforrás, munkaterület vagy tábla szintű engedélyek használatával kezelheti a hozzáférést. Ez a cikk részletesen ismerteti a befejezését.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2f9c50053fca73aeee0ed9a286b4c286486bac86
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329406"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532324"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>A naplózási és munkaterületekhez való hozzáférés kezelése Azure Monitor
 
@@ -68,7 +68,7 @@ DefaultWorkspace38917: True
 DefaultWorkspace21532: False
 ```
 
-@No__t-0 érték azt jelenti, hogy a munkaterület a munkaterület-környezet elérési módjával van konfigurálva.  A `True` érték azt jelenti, hogy a munkaterület az erőforrás-kontextus hozzáférési móddal van konfigurálva.
+@No__t_0 érték azt jelenti, hogy a munkaterület a munkaterület-környezet elérési módjával van konfigurálva.  A `True` érték azt jelenti, hogy a munkaterület az erőforrás-kontextus hozzáférési móddal van konfigurálva.
 
 > [!NOTE]
 > Ha egy munkaterületet logikai érték nélkül ad vissza, és üres, akkor a `False` érték eredményeinek is megfelel.
@@ -148,7 +148,7 @@ A Log Analytics olvasó szerepkör a következő Azure-műveleteket tartalmazza:
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
 
-* Az összes figyelési érték olvasása a Log Analytics olvasója képes
+* A *log Analytics olvasó szerepkör*összes jogosultságát tartalmazza, így a felhasználó beolvashatja az összes figyelési adatát
 * Automation-fiókok létrehozása és konfigurálása
 * Felügyeleti megoldások hozzáadása és eltávolítása
 
@@ -187,7 +187,7 @@ Ezen szerepkörökkel különféle hatókörökben biztosíthat hozzáférést a
 * Erőforráscsoport – Hozzáférés az erőforráscsoportban lévő összes munkaterülethez
 * Erőforrás – Hozzáférés kizárólag az adott erőforráshoz
 
-A pontos hozzáférés-vezérlés biztosításához az erőforrás szintjén (munkaterület) kell végrehajtania a hozzárendeléseket.  Az [egyéni szerepkörök](../../role-based-access-control/custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
+Javasoljuk, hogy az erőforrás szintjén (munkaterület) végezze el a hozzárendeléseket, hogy biztosítsa a pontos hozzáférés-vezérlést. Az [egyéni szerepkörök](../../role-based-access-control/custom-roles.md) segítségével létrehozhat a szükséges egyedi engedélyekkel rendelkező szerepköröket.
 
 ### <a name="resource-permissions"></a>Erőforrás-engedélyek
 
@@ -198,7 +198,7 @@ Ha a felhasználók erőforrás-kontextusos hozzáférés használatával kérde
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Példák:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
 | `Microsoft.Insights/diagnosticSettings/write` | A diagnosztikai beállítások konfigurálásának lehetősége az erőforráshoz tartozó naplók beállításának engedélyezéséhez. |
 
-a `/read` jogosultságot általában olyan szerepkör kapja meg, amely _\*/olvasási vagy_ _\*_ engedélyeket tartalmaz, például a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) -és [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepköröket. Vegye figyelembe, hogy az adott műveleteket vagy dedikált beépített szerepköröket tartalmazó egyéni szerepkörök nem tartalmazzák ezt az engedélyt.
+a `/read` jogosultságot általában olyan szerepkör kapja meg, amely _\*/olvasási vagy_ _\*_ engedélyeket tartalmaz, például a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) -és [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepköröket. Előfordulhat, hogy az adott műveleteket vagy a dedikált beépített szerepköröket tartalmazó egyéni szerepkörök nem tartalmazzák ezt az engedélyt.
 
 Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblákhoz, tekintse meg a [táblázatos hozzáférés-vezérlés meghatározása](#table-level-rbac) című szakaszt.
 
@@ -224,7 +224,7 @@ Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblá
 
     * Adja meg a felhasználóknak a következő engedélyeket az erőforrásokhoz: `Microsoft.Insights/logs/*/read`.
 
-    * Adja hozzá a következő nem műveletet, hogy a felhasználók beolvassák a SecurityEvent típusát: `Microsoft.Insights/logs/SecurityEvent/read`. A nem műveletnek ugyanabban az egyéni szerepkörben kell lennie, mint az olvasási engedélyt biztosító műveletnek (`Microsoft.Insights/logs/*/read`). Ha a felhasználó egy másik, az erőforráshoz vagy az előfizetéshez vagy az erőforráscsoporthoz rendelt szerepkörből származó olvasási művelettel rendelkezik, akkor az összes naplózási típust el tudja olvasni. Ez akkor is igaz, ha a `*/read` értéket öröklik, például az olvasó vagy a közreműködő szerepkörrel.
+    * Adja hozzá a következő nem műveletet, hogy a felhasználók beolvassák a SecurityEvent típusát: `Microsoft.Insights/logs/SecurityEvent/read`. A nem műveletnek ugyanabban az egyéni szerepkörben kell lennie, mint az olvasási engedélyt biztosító műveletnek (`Microsoft.Insights/logs/*/read`). Ha a felhasználó egy másik, az erőforráshoz vagy az előfizetéshez vagy az erőforráscsoporthoz rendelt szerepkörből származó olvasási művelettel rendelkezik, akkor az összes naplózási típust el tudja olvasni. Ez akkor is igaz, ha a `*/read` öröklik, amelyek például az olvasó vagy a közreműködő szerepkörrel rendelkeznek.
 
 4. A következő lépésekkel biztosíthatja, hogy a felhasználók hozzáférjenek az erőforrásaik adataihoz, és beolvassák az összes Azure AD-bejelentkezést, és beolvassák Update Management a megoldás naplójának adatait a munkaterületről:
 
@@ -233,13 +233,13 @@ Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblá
     * Adja meg a felhasználók számára a következő engedélyeket a munkaterületen: 
 
         * `Microsoft.OperationalInsights/workspaces/read` – kötelező, így a használat felszámolhatja a munkaterületet, és megnyithatja a munkaterület panelt a Azure Portal
-        * @no__t – 0 – kötelező minden olyan felhasználó számára, aki lekérdezéseket futtathat
-        * @no__t – 0 – az Azure AD bejelentkezési naplók olvasásához
-        * @no__t – 0 – a Update Management-megoldási naplók olvasásához
-        * @no__t – 0 – a Update Management-megoldási naplók olvasásához
-        * @no__t – 0 – a frissítési felügyeleti naplók olvasásához
-        * @no__t – 0 – szükséges ahhoz, hogy használni tudja a Update Management megoldást
-        * @no__t – 0 – szükséges ahhoz, hogy használni tudja a Update Management megoldást
+        * `Microsoft.OperationalInsights/workspaces/query/read` – kötelező minden olyan felhasználó számára, aki lekérdezéseket futtathat
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` – az Azure AD bejelentkezési naplói olvasásához
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` – a Update Management-megoldási naplók olvasásához
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` – a Update Management-megoldási naplók olvasásához
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` – az Update Management-naplók olvasásához
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` – a Update Management megoldás használatához szükséges
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` – a Update Management megoldás használatához szükséges
 
     * Adja meg a felhasználóknak a következő engedélyeket az erőforrásokhoz: `*/read`, hozzárendelve az olvasó szerepkörhöz, vagy `Microsoft.Insights/logs/*/read`. 
 
@@ -293,7 +293,7 @@ Ha olyan szerepkört szeretne létrehozni, amely csak _SecurityBaseline_ és má
 * Ha egy felhasználó számára engedélyezett a táblán belüli hozzáférés, de nincs más engedélye, akkor hozzáférhetnek a naplóbeli adatokhoz az API-ból, de nem a Azure Portal. A Azure Portal való hozzáférés biztosításához használja az Log Analytics olvasót alapszerepkörként.
 * Az előfizetés rendszergazdái hozzáférhetnek az összes adattípushoz, függetlenül attól, hogy más engedélyek is érvényesek.
 * A munkaterület tulajdonosai úgy vannak kezelve, mint bármely más felhasználó a táblán belüli hozzáférés-vezérléshez.
-* Az egyes felhasználók helyett szerepköröket kell hozzárendelni a biztonsági csoportokhoz a hozzárendelések számának csökkentése érdekében. Ez segítséget nyújt a meglévő csoport-felügyeleti eszközök használatához a hozzáférés konfigurálásához és ellenőrzéséhez.
+* Azt javasoljuk, hogy egyéni felhasználók helyett szerepköröket rendeljen a biztonsági csoportokhoz a hozzárendelések számának csökkentése érdekében. Ez segítséget nyújt a meglévő csoport-felügyeleti eszközök használatához a hozzáférés konfigurálásához és ellenőrzéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

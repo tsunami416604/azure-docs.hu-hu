@@ -1,17 +1,17 @@
 ---
-title: Azure-Virtual Machines áthelyezése új előfizetésre vagy erőforráscsoporthoz | Microsoft Docs
+title: Azure-beli virtuális gépek áthelyezése új előfizetésre vagy erőforráscsoport-csoportba
 description: A Azure Resource Manager használatával áthelyezheti a virtuális gépeket egy új erőforráscsoporthoz vagy előfizetésbe.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tomfitz
-ms.openlocfilehash: 443d6f2bcbb61d9106b079a4e63c48bb433d19c6
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: faeba1c0d7342a4c00f19d4cee8d67b8dbde8e6a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286731"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528426"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Útmutató a virtuális gépekhez
 
@@ -33,11 +33,11 @@ A következő forgatókönyvek még nem támogatottak:
 Azure Backup használatával konfigurált virtuális gépek áthelyezéséhez használja a következő megkerülő megoldást:
 
 * Keresse meg a virtuális gép helyét.
-* Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1`, például AzureBackupRG_westus2_1
+* Keressen egy erőforráscsoportot a következő elnevezési mintával: `AzureBackupRG_<location of your VM>_1` például AzureBackupRG_westus2_1
 * Ha Azure Portal, akkor jelölje be a "rejtett típusok megjelenítése" lehetőséget.
 * Ha a PowerShellben használja a `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmagot
 * Ha a CLI-ben használja a `az resource list -g AzureBackupRG_<location of your VM>_1`
-* Keresse meg a `Microsoft.Compute/restorePointCollections` típusú erőforrást, amelynek elnevezési mintája `AzureBackup_<name of your VM that you're trying to move>_###########`.
+* Keresse meg az erőforrást olyan típusú `Microsoft.Compute/restorePointCollections`, amelynek elnevezési mintája `AzureBackup_<name of your VM that you're trying to move>_###########`
 * Az erőforrás törlése. Ez a művelet csak az azonnali helyreállítási pontokat törli, a tárolóban lévő biztonsági másolatból nem.
 * A törlés befejezése után áthelyezheti a tárolót és a virtuális gépet a cél előfizetésbe. Az áthelyezést követően folytathatja a biztonsági mentéseket az adatvesztés hiányában.
 * További információ a helyreállítási tár biztonsági mentéséhez való áthelyezéséről: [Recovery Services korlátozások](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).

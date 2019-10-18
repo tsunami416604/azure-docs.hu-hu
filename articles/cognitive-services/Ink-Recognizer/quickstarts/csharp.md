@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API ésC#'
+title: 'Gyors útmutató: Digitális tinta felismerése a kézírás-felismerővel REST API ésC#'
 titleSuffix: Azure Cognitive Services
 description: A tinta-felismerő API használatával megkezdheti a digitális tollvonások felismerését.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 0c7d3ed7e2cbaee7d30f368efa004bbb3daaafdd
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 6ef58d1444eb0ec7b2b8891f944b428a613edf3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996869"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515611"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerő REST API ésC#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Gyors útmutató: Digitális tinta felismerése a kézírás-felismerővel REST API ésC#
 
 Ezzel a rövid útmutatóval megkezdheti a digitális tollvonások küldését a tinta-felismerő API-nak. Ez C# az alkalmazás egy olyan API-kérést küld, amely JSON formátumú szabadkézi adatokat tartalmaz, és lekéri a választ.
 
@@ -32,11 +32,11 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) bármely kiadása.
-- [Newtonsoft.Json](https://www.newtonsoft.com/json)
+- [Newtonsoft. JSON](https://www.newtonsoft.com/json)
     - A Newtonsoft. JSON telepítése NuGet-csomagként a Visual Studióban:
         1. Kattintson a jobb gombbal a **megoldás-kezelőre**
         2. Kattintson a **NuGet-csomagok kezelése...** lehetőségre.
-        3. Keressen rá a `Newtonsoft.Json` kifejezésre, és telepítse a csomagot
+        3. @No__t_0 keresése és a csomag telepítése
 - Ha Linux/MacOS rendszert használ, az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
 
 - Ebben a rövid útmutatóban a jelen rövid útmutatóban szereplő tollvonási adatsorok a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json)találhatók.
@@ -49,11 +49,11 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 1. A Visual Studióban hozzon létre egy új konzolos megoldást, és adja hozzá a következő csomagokat. 
     
-    [!code-csharp[imports](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
-2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz, valamint a JSON-fájlhoz. A végpontot később a `inkRecognitionUrl` értékkel együtt kell elérni az API-hoz való hozzáféréshez. 
+2. Hozzon létre változókat az előfizetési kulcshoz és a végponthoz, valamint a JSON-fájlhoz. A végpontot később a `inkRecognitionUrl` együtt kell egyesíteni az API-hoz való hozzáféréshez. 
 
-    [!code-csharp[endpoint file path and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Függvény létrehozása a kérelmek küldéséhez
 
@@ -61,13 +61,13 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 2. Állítsa be az ügyfél biztonsági protokollját és fejlécének adatait egy `HttpClient` objektum használatával. Ügyeljen arra, hogy hozzáadja az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez. Ezután hozzon létre egy `StringContent` objektumot a kérelemhez.
  
-3. Küldje el a kérelmet `PutAsync()` értékkel. Ha a kérelem sikeres, küldje vissza a választ.  
+3. Küldje el a kérelmet `PutAsync()`. Ha a kérelem sikeres, küldje vissza a választ.  
     
     [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Kézírás-felismerési kérelem küldése
 
-1. Hozzon létre egy `recognizeInk()` nevű új függvényt. Hozza létre a kérést, és küldje el úgy, hogy meghívja a `Request()` függvényt a végponttal, az előfizetési kulccsal, az API URL-címével és a digitális tinta körvonalával kapcsolatos adataival.
+1. Hozzon létre egy új, `recognizeInk()` nevű függvényt. Hozza létre a kérést, és küldje el úgy, hogy meghívja a `Request()` függvényt a végponttal, az előfizetés kulcsával, az API URL-címével és a digitális tinta körvonalának adataival.
 
 2. Deszerializálja a JSON-objektumot, és írja a konzolba. 
     
@@ -75,7 +75,7 @@ Ennek a rövid útmutatónak a forráskódja a [githubon](https://go.microsoft.c
 
 ## <a name="load-your-digital-ink-data"></a>A digitális tinta adatai betöltése
 
-Hozzon létre egy `LoadJson()` nevű függvényt a tinta-adat JSON-fájljának betöltéséhez. A `StreamReader` és a `JsonTextReader` használatával hozzon létre egy `JObject` értéket, és küldje vissza.
+Hozzon létre egy `LoadJson()` nevű függvényt a szabadkézi adat JSON-fájljának betöltéséhez. @No__t_0 és `JsonTextReader` használatával hozzon létre egy `JObject`, majd küldje vissza.
 
 [!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
@@ -83,7 +83,7 @@ Hozzon létre egy `LoadJson()` nevű függvényt a tinta-adat JSON-fájljának b
 
 1. Az alkalmazás fő metódusában töltse be a JSON-adatait a fent létrehozott függvénnyel. 
 
-2. Hívja meg a fent létrehozott `recognizeInk()` függvényt. Az alkalmazás futtatása után a konzol ablak megnyitásához használja a `System.Console.ReadKey()` értéket.
+2. Hívja meg a fent létrehozott `recognizeInk()` függvényt. A `System.Console.ReadKey()` használatával megtarthatja a konzolablak megnyitását az alkalmazás futtatása után.
     
     [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
@@ -93,7 +93,7 @@ Hozzon létre egy `LoadJson()` nevű függvényt a tinta-adat JSON-fájljának b
 Futtassa az alkalmazást. A sikeres válaszokat JSON formátumban adja vissza a rendszer. A JSON-választ is megtalálja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [REST API – referencia](https://go.microsoft.com/fwlink/?linkid=2089907)

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: fd0829afca05058892d3a0ceeb50c9955d792dc3
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174198"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517058"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>A felhasználók listájának letöltése (előzetes verzió) a Azure Active Directory portálon
 
@@ -35,6 +35,38 @@ Az Azure AD felügyeleti központban lévő felhasználók listájának letölt�
 1. A **felhasználók letöltése** lapon kattintson a **Start** gombra a felhasználói profil tulajdonságait tartalmazó CSV-fájl fogadásához. Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a tömeges művelet eredményei lapon. A fájl az egyes hibák okát tartalmazza.
 
    ![Válassza ki, hova szeretné listázni a letölteni kívánt felhasználókat](./media/users-bulk-download/bulk-download.png)
+
+   A letöltési fájl a felhasználók szűrt listáját fogja tartalmazni.
+
+   A rendszer a következő felhasználói attribútumokat fogja tartalmazni: 
+
+   - userPrincipalName
+   - DisplayName
+   - Vezetéknév
+   - Levelezési
+   - GivenName
+   - objectId
+   - userType
+   - Beosztás
+   - Részleg
+   - Manager
+   - AccountEnabled
+   - usageLocation
+   - streetAddress
+   - state
+   - Ország
+   - physicalDeliveryOfficeName
+   - city
+   - Irányítószám
+   - TelephoneNumber
+   - mobileszköz
+   - authenticationPhoneNumber
+   - authenticationAlternativePhoneNumber
+   - authenticationEmail
+   - alternateEmailAddress
+   - Beszerzésimennyiség
+   - consentProvidedForMinor
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 

@@ -4,16 +4,16 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a2858ac73838b50c21a76db5860675171a306192
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179588"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533276"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
-Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely adatokat másol a gépen futó SQL Serverről az Azure Blob Storage-ba. 
+Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely a gépen lévő SQL Server adatait másolja az Azure SQL Database-be. 
 
 1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyag későbbi részében használni fogja. 
 
@@ -29,12 +29,12 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
    Itt látható a minta kimenete:
 
    ```json
-    Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
+    Name              : <Integration Runtime name>
     Type              : SelfHosted
-    ResourceGroupName : ADFTutorialResourceGroup
-    DataFactoryName   : onpremdf0914
-    Name              : myonpremirsp0914
-    Description       :
+    ResourceGroupName : <ResourceGroupName>
+    DataFactoryName   : <DataFactoryName>
+    Description       : 
+    Id                : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DataFactory/factories/<DataFactoryName>/integrationruntimes/ADFTutorialIR
     ```
   
 3. Futtassa az alábbi parancsot a létrehozott integrációs modul állapotának lekéréséhez. Ellenőrizze, hogy a **State** tulajdonság **NeedRegistration** értékű-e. 
@@ -45,21 +45,25 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
    Itt látható a minta kimenete:
 
-   ```json
-   Nodes                     : {}
-   CreateTime                : 9/14/2017 10:01:21 AM
-   InternalChannelEncryption :
-   Version                   :
+   ```json  
+   State                     : NeedRegistration
+   Version                   : 
+   CreateTime                : 9/24/2019 6:00:00 AM
+   AutoUpdate                : On
+   ScheduledUpdateDate       : 
+   UpdateDelayOffset         : 
+   LocalTimeZoneOffset       : 
+   InternalChannelEncryption : 
    Capabilities              : {}
-   ScheduledUpdateDate       :
-   UpdateDelayOffset         :
-   LocalTimeZoneOffset       :
-   AutoUpdate                :
-   ServiceUrls               : {eu.frontend.clouddatahub.net, *.servicebus.windows.net}
+   ServiceUrls               : {eu.frontend.clouddatahub.net}
+   Nodes                     : {}
+   Links                     : {}
+   Name                      : ADFTutorialIR
+   Type                      : SelfHosted
    ResourceGroupName         : <ResourceGroup name>
    DataFactoryName           : <DataFactory name>
-   Name                      : <Integration Runtime name>
-   State                     : NeedRegistration
+   Description               : 
+   Id                        : /subscriptions/<subscription ID>/resourceGroups/<ResourceGroup name>/providers/Microsoft.DataFactory/factories/<DataFactory name>/integrationruntimes/<Integration Runtime name>
    ```
 
 4. Futtassa az alábbi parancsot a hitelesítési kulcsok lekéréséhez, hogy a saját üzemeltetésű integrációsmodul-átjárót regisztrálhassa az Azure Data Factory szolgáltatásban a felhőben: 
@@ -72,8 +76,8 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
    ```json
    {
-       "AuthKey1":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
-       "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
+    "AuthKey1": "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx=",
+    "AuthKey2":  "IR@0000000000-0000-0000-0000-000000000000@xy0@xy@yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy="
    }
    ```    
 
@@ -92,27 +96,17 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
 6. **A Microsoft Integration Runtime telepítésre kész** oldalon válassza a **Telepítés** elemet.
 
-7. Ha figyelmeztető üzenet jelenik meg azzal kapcsolatban, hogy a számítógép használaton kívül automatikus alvó módba lépésre vagy hibernálásra lesz konfigurálva, kattintson az **OK** gombra.
+7. **A Microsoft Integration Runtime telepítővarázslójának befejező lapján** kattintson a **Befejezés** gombra.
 
-8. Ha megjelenik az **Energiagazdálkodási lehetőségek** oldal, zárja be, és váltson a telepítési oldalra.
-
-9. **A Microsoft Integration Runtime telepítővarázslójának befejező lapján** kattintson a **Befejezés** gombra.
-
-10. Az **Integration Runtime (helyi) regisztrálása** lapon illessze be az előző szakaszban mentett kulcsot, és válassza a **Regisztráció** elemet. 
+8. Az **Integration Runtime (helyi) regisztrálása** lapon illessze be az előző szakaszban mentett kulcsot, és válassza a **Regisztráció** elemet. 
 
     ![Az integrációs modul regisztrálása](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-11. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
+9. Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés**lehetőséget. 
+
+10. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
 
     ![Sikeres regisztráció](media/data-factory-create-install-integration-runtime/registered-successfully.png)
-
-12. Az **Új Integration Runtime (helyi) csomópont** lapon válassza a **Tovább** elemet. 
-
-    ![Új integrációs modulcsomópont lap](media/data-factory-create-install-integration-runtime/new-integration-runtime-node-page.png)
-
-13. Az **Intranetes kommunikációs csatorna** lapon válassza a **Kihagyás** elemet. A több csomópontos integrációsmodul-környezetekben a csomóponton belüli kommunikáció biztonságának garantálásához válasszon TLS-/SSL-hitelesítést. 
-
-    ![Intranetes kommunikációs csatorna lap](media/data-factory-create-install-integration-runtime/intranet-communication-channel-page.png)
 
 14. Az **Integration Runtime (helyi) regisztrálása** lapon válassza a **Konfigurációkezelő indítása** elemet.
 
@@ -136,7 +130,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     f. Adja meg a felhasználónevet.
 
-    g. Adja meg felhasználónévhez tartozó jelszót.
+    g. Adja meg a felhasználónévhez társított jelszót.
 
     h. Válassza a **Teszt** elemet annak ellenőrzéséhez, hogy az integrációs modul kapcsolódni tud-e az SQL Serverhez. Sikeres kapcsolódás esetén egy zöld pipa jelenik meg. Sikertelen kapcsolódás esetén egy hibaüzenet jelenik meg. Javítsa ki a hibákat, és ellenőrizze, hogy az integrációs modul kapcsolódik-e az SQL Serverhez.    
 

@@ -4,15 +4,15 @@ description: Az oktatóanyagnak ez a leckéje a mintamodellek hozzáadását ism
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a9721b05fbd478d108f06c36017ee444f721d28
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c6679e8075afd2f25e4baf73c79c35907ded4e2b
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298676"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512869"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Oktatóanyag : Mintamodell hozzáadása a portálról
 
@@ -43,7 +43,7 @@ Jelentkezzen be a [portálra](https://portal.azure.com/).
 
     ![Mintamodell létrehozása](./media/analysis-services-create-sample-model/aas-create-sample-new-model.png)
 
-2. Győződjön meg arról, hogy az **Új modell** > **Adatforrás kiválasztása** alatt a **Mintaadatok** van kijelölve, és kattintson a **Hozzáadás** gombra.
+2. Az **új modell**  > **válasszon ki egy adatforrást**, ellenőrizze a **mintaadatok** elemet, majd kattintson a **Hozzáadás**gombra.
 
     ![Mintaadatok kijelölése](./media/analysis-services-create-sample-model/aas-create-sample-data.png)
 

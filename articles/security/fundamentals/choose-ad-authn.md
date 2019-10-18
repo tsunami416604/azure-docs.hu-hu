@@ -9,18 +9,14 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4de4da63abea1c4f6ab006ffd65a58ea0e34c015
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "69997819"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529397"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert a Azure Active Directory Hybrid Identity megoldáshoz 
-
-Ez a cikk egy cikksorozatot indít el, amely segít a szervezeteknek a teljes Azure Active Directory (Azure AD) hibrid identitási megoldás megvalósításában. Ezt a megoldást a [hibrid identitások digitális átalakítási keretrendszere](https://aka.ms/aadframework)ismerteti. Az üzleti eredményekre és a célokat szolgáló szervezetekre összpontosítva robusztus és biztonságos hibrid identitás-megoldást alkalmazhat. 
-
-A keretrendszer első üzleti eredménye kifejti a szervezetek követelményeit a hitelesítési folyamat biztonságossá tételéhez, amikor a felhasználók hozzáférnek a felhőalapú alkalmazásokhoz. A hitelesítés biztonságos üzleti eredményének első üzleti célja, hogy a felhasználók helyszíni felhasználóneveik és jelszavaik segítségével bejelentkezhetnek a felhőalapú alkalmazásokba. Ez a bejelentkezési és hitelesítési folyamat lehetővé teszi a felhőben minden lehetséges lehetőséget.
 
 A megfelelő hitelesítési módszer kiválasztásával az alkalmazásait a felhőbe áthelyezni kívánó szervezeteknek az első szempontja. Ne tegye meg ezt a döntést a következő okok miatt:
 

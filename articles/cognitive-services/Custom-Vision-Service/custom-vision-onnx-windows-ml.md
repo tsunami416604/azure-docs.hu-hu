@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: ONNX-modell használata Windows ML-Custom Vision Service'
+title: 'Oktatóanyag: Az ONNX-modell használata Windows ML-gel – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan hozhat létre az Azure Cognitive Servicesből exportált ONNX modellt használó Windows UWP-alkalmazást.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: larryfr
-ms.openlocfilehash: 65956ab9fa182794b4cb9ac1fc1800198f2dcdaa
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 025779edd1400c65d10788def17529e84349d582
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561112"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515746"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-vel (előzetes verzió)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-lel (előzetes verzió)
 
 Megismerheti, hogyan használhatja a Custom Vision Service-ből exportált ONNX modellt Windows ML-gel (előzetes verzió).
 
@@ -31,9 +31,9 @@ A dokumentum bemutatja, hogyan lehet a Custom Vision Service-ből exportált ONN
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Windows 10 17738-as vagy újabb build
+* Windows 10 1809-es vagy újabb verzió
 
-* Windows SDK a 17738-as vagy újabb buildhez
+* Windows SDK Build 17763 vagy újabb verzióra
 
 * Visual Studio 2017 15.7-es vagy újabb verzió engedélyezett __Univerzális Windows-platform fejlesztési__ tevékenységprofillal.
 
@@ -45,7 +45,7 @@ Az alkalmazás általános Windows UWP alkalmazás. Lehetővé teszi, hogy kivá
 
 ## <a name="get-the-example-code"></a>A példa kódjának letöltése
 
-A mintaalkalmazás itt érhető el: [https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/](https://github.com/Azure-Samples/cognitive-services-onnx12-customvision-sample/).
+A mintaalkalmazás itt érhető el: [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
 
 ## <a name="run-the-example"></a>A példa futtatása
 
@@ -59,7 +59,7 @@ Saját modell esetén a következőképpen járjon el:
 
 1. Besoroló [létrehozása és betanítása](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) a Custom Vision Service használatával. A modell exportálásához válasszon ki egy __kompakt__ tartományt, például az **Általános (kompakt)** tartományt. Egy meglévő besoroló exportálásához alakítsa kompakttá a tartományt a jobb felső részen lévő fogaskerék kiválasztásával. A __Beállítások__ területen válasszon egy kompakt modellt, mentse, majd tanítsa be a projektet.  
 
-1. [A modell exportálásához](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) lépjen a Teljesítmény lapra. Válasszon ki egy kompakt tartománnyal betanított iterációt. Ekkor megjelenik egy "Exportálás" gomb. Válassza az *Exportálás*, *ONNX*, *ONNX1.2*, majd az *Exportálás* elemet. Amikor a fájl elkészült, kattintson a *Letöltés* gombra.
+1. [Exportálja a modellt](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) úgy, hogy a teljesítmény lapra kattint. Válasszon ki egy kompakt tartománnyal betanított iterációt, ekkor megjelenik az "Exportálás" gomb. Válassza az *Exportálás*, a *ONNX*, majd az *Exportálás*lehetőséget. Amikor a fájl elkészült, kattintson a *Letöltés* gombra.
 
 1. Helyezze az ONNX-fájlt a projekt __Assets__ (Objektumok) mappájába. 
 
@@ -76,7 +76,7 @@ Saját modell esetén a következőképpen járjon el:
 
 1. Kattintson a gombra az értékelni kívánt kép kiválasztásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egyéb exportálási lehetőségekről és a Custom Vision modell használatáról bővebb információt a következő dokumentumokban talál:
 

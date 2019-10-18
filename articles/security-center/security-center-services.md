@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: b6de3a520150a95316371c4454fd2537f2beab5d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 275598aa50c252512348f4a04543e1beaf538626
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331141"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529481"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>A Azure Security Centerban elérhető támogatott szolgáltatások
 
@@ -74,10 +74,10 @@ További információ az egyes védelemekhez kapcsolódó javaslatok létrehozá
 | Trend Micro – minden verzió * | Windows Server termékcsalád  | Nem | Igen |
 | Symantec v12.1.1100+| Windows Server termékcsalád  | Nem | Igen |
 | McAfee v10+ | Windows Server termékcsalád  | Nem | Igen |
-| McAfee v10+ | Linux Server termékcsalád  | Nem | Igen **@no__t – 1** |
-| Sophos v9 +| Linux Server termékcsalád  | Nem | Igen **@no__t – 1**  |
+| McAfee v10+ | Linux Server termékcsalád  | Nem | Igen **\*** |
+| Sophos v9 +| Linux Server termékcsalád  | Nem | Igen **\***  |
 
- **@no__t – 1** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
+ **\*** A lefedettségi állapot és a támogató adatmennyiség jelenleg csak a védett előfizetésekhez társított Log Analytics munkaterületen érhető el. Ez nem jelenik meg a Azure Security Center-portálon.
 
 > [!NOTE]
 >
@@ -96,14 +96,14 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Blobtároló|✔| ✔|
-|Tárfiók|✔| n/a|
+|Tárfiók|✔| X|
 |App Service|✔| ✔|
 |Függvény|✔| X|
 |Felhőszolgáltatás|✔| X|
-|VNet|✔| n/a|
-|Alhálózat|✔| n/a|
-|Hálózati adapter|✔| n/a|
-|NSG|✔| n/a|
+|VNet|✔| X|
+|Alhálózat|✔| X|
+|Hálózati adapter|✔| X|
+|NSG|✔| X|
 |Előfizetés|✔ * *| ✔|
 |Batch-fiók|✔| X|
 |Service Fabric-fiók|✔| X|
@@ -114,14 +114,14 @@ A Azure Security Center a következő Pásti-erőforrásokat támogatja:
 |Stream Analytics|✔| X|
 |Eseményközpont-névtér|✔| X|
 |Logikai alkalmazások|✔| X|
-|Redis|✔| n/a|
+|Redis|✔| X|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
 |Key Vault|✔| X|
 
 \* ezek a funkciók jelenleg a nyilvános előzetes verzióban támogatottak.
 
-\* @ no__t-1 Azure Active Directory (Azure AD) javaslatok csak standard előfizetések esetén érhetők el.
+\* \* Azure Active Directory (Azure AD) javaslatok csak a standard előfizetések esetén érhetők el.
 
 ## <a name="next-steps"></a>Következő lépések
 

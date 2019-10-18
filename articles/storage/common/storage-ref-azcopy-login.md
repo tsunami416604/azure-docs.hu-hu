@@ -4,18 +4,18 @@ description: Ez a cikk a azcopy login parancsra vonatkozó tudnivalókat tartalm
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 2938d85becbea738acc21fc7b15991301eef759f
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195723"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514717"
 ---
-# <a name="azcopy-login"></a>azcopy bejelentkezés
+# <a name="azcopy-login"></a>azcopy login
 
 Bejelentkezik a Azure Active Directoryba az Azure Storage-erőforrások eléréséhez.
 
@@ -23,7 +23,7 @@ Bejelentkezik a Azure Active Directoryba az Azure Storage-erőforrások elérés
 
 Az Azure Storage-erőforrások eléréséhez jelentkezzen be Azure Active Directoryba.
 
-Az Azure Storage-fiókjának engedélyezéséhez hozzá kell rendelnie a **Storage blob** -adatközreműködői szerepkört a felhasználói fiókhoz a Storage-fiók, a szülő erőforráscsoport vagy a szülő-előfizetés kontextusában.
+Az Azure Storage-fiókjának engedélyezéséhez hozzá kell rendelnie a **Storage blob-adatközreműködői** szerepkört a felhasználói fiókhoz a Storage-fiók, a szülő erőforráscsoport vagy a szülő-előfizetés kontextusában.
 
 Ez a parancs az operációs rendszer beépített mechanizmusaival gyorsítótárazza az aktuális felhasználó titkosított bejelentkezési adatait.
 
@@ -50,25 +50,25 @@ Interaktív bejelentkezés egy megadott bérlői AZONOSÍTÓval:
 azcopy login --tenant-id "[TenantID]"
 ```
 
-Bejelentkezés a virtuális gép rendszer által hozzárendelt identitásával:
+Bejelentkezés egy virtuális gép rendszer által hozzárendelt identitásával (VM):
 
 ```azcopy
 azcopy login --identity
 ```
 
-Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával a szolgáltatás identitásának ügyfél-azonosítójával:
+Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának ügyfél-AZONOSÍTÓjának használatával:
 
 ```azcopy
 azcopy login --identity --identity-client-id "[ServiceIdentityClientID]"
 ```
 
-Jelentkezzen be egy virtuális gép felhasználó által hozzárendelt identitásával a szolgáltatás identitásának azonosítójával:
+Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának azonosítójával:
 
 ```azcopy
 azcopy login --identity --identity-object-id "[ServiceIdentityObjectID]"
 ```
 
-Jelentkezzen be egy virtuális gép felhasználó által hozzárendelt identitásával a szolgáltatás identitásának erőforrás-azonosítójával:
+Jelentkezzen be a virtuális gép felhasználó által hozzárendelt identitásával és a szolgáltatás identitásának erőforrás-azonosítójával:
 
 ```azcopy
 azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/resourcegroups/myRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myID"
@@ -92,7 +92,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Leírás|
+|Lehetőség|Leírás|
 |--|--|
 |--Application-ID karakterlánc|A felhasználó által hozzárendelt identitás alkalmazás-azonosítója. Az egyszerű szolgáltatás hitelesítéséhez szükséges.|
 |--Certificate-Path karakterlánc|A tanúsítvány elérési útja az SPN-hitelesítéshez. A tanúsítványalapú szolgáltatásnév hitelesítéséhez szükséges.|
@@ -101,16 +101,16 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 |--Identity-Client-ID karakterlánc|A felhasználó által hozzárendelt identitás ügyfél-azonosítója.|
 |--Identity-Object-ID karakterlánc|Felhasználó által hozzárendelt identitás objektum-azonosítója.|
 |--Identity-Resource-id karakterlánc|A felhasználó által hozzárendelt identitás erőforrás-azonosítója.|
-|--szolgáltatás – rendszerbiztonsági tag|Jelentkezzen be SPN-ben (egyszerű szolgáltatásnév) a tanúsítvány vagy a titkos kulcs használatával. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. A `AzCopy env` környezeti változók nevének és leírásának megjelenítéséhez írja be a következőt:.|
+|--szolgáltatás – rendszerbiztonsági tag|Jelentkezzen be SPN-ben (egyszerű szolgáltatásnév) a tanúsítvány vagy a titkos kulcs használatával. Az ügyfél titkos vagy tanúsítványának jelszavát a megfelelő környezeti változóba kell helyezni. Írja be a `AzCopy env` nevet a környezeti változók neveinek és leírásának megtekintéséhez.|
 |--Bérlő-azonosító sztring| az OAuth-eszköz interaktív bejelentkezéséhez használandó Azure Active Directory-bérlői azonosító.|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Leírás|
+|Lehetőség|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [azcopy](storage-ref-azcopy.md)

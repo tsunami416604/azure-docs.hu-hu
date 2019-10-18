@@ -1,78 +1,78 @@
 ---
-title: Konfigurálja, és hagyja jóvá a igény szerinti elérése az Azure által felügyelt alkalmazások
-description: Ismerteti, hogyan fogyasztók számára az Azure Managed Applications jóváhagyások just-in-time-hozzáférés a felügyelt alkalmazásokhoz.
+title: Igény szerinti hozzáférés jóváhagyása – Azure által felügyelt alkalmazás
+description: Azt ismerteti, hogyan Azure Managed Applications a felhasználók a felügyelt alkalmazásokhoz való igény szerinti hozzáférésre vonatkozó kérések jóváhagyását.
 author: MSEvanhi
 ms.service: managed-applications
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
-ms.openlocfilehash: 55fbf7292ab894cad3de3de9e96ddc96fe0b79b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd5c3f21b1a4b71d129ccbebeaa7ee66274a672f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66481714"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529123"
 ---
-# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Konfigurálja, és hagyja jóvá a igény szerinti elérése az Azure által felügyelt alkalmazások
+# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>Igény szerinti hozzáférés konfigurálása és jóváhagyása Azure Managed Applications
 
-Egy felügyelt alkalmazás vásárlói, nem feltétlenül okoz gondot a közzétevő jogosultságot ad a felügyelt erőforráscsoporthoz való állandó hozzáférést. Nagyobb mértékben vezérelheti a felügyelt erőforrásokhoz való hozzáférést biztosíthat, Azure által felügyelt alkalmazások a szolgáltatás jelenleg előzetes verzióban – igény (szerinti JIT) hozzáférési biztosít. Ez lehetővé teszi, hogy mikor jóváhagyása, és mennyi ideig a közzétevő férhet hozzá az erőforráscsoportot. A közzétevő teheti a szükséges frissítések ebben az időszakban, de az időpont fölé esetén a kiadó hozzáférés lejár.
+A felügyelt alkalmazások felhasználóinak nem biztos, hogy a kiadó állandó hozzáférést biztosítanak a felügyelt erőforráscsoporthoz. A felügyelt erőforrásokhoz való hozzáférés biztosításának nagyobb mértékű szabályozása érdekében Azure Managed Applications biztosít egy igény szerinti (JIT) hozzáférés szolgáltatást, amely jelenleg előzetes verzióban érhető el. Ezzel a beállítással jóváhagyhatja, hogy a közzétevő mikor és mennyi ideig férhet hozzá az erőforráscsoporthoz. A közzétevő az idő múlásával elvégezheti a szükséges frissítéseket, de ha az idő véget ért, a közzétevő hozzáférése lejár.
 
-A munkafolyamat hozzáférés biztosításához a következő:
+A hozzáférés biztosításának munkafolyamata a következő:
 
-1. A közzétevő ad hozzá egy felügyelt alkalmazást, a piactéren, és megadja, hogy az igény szerinti hozzáférés érhető el.
+1. A közzétevő egy felügyelt alkalmazást ad hozzá a piactérhez, és megadja, hogy az JIT-hozzáférés elérhető.
 
-1. A telepítés során engedélyezi igény szerinti hozzáférés a felügyelt alkalmazás példánya esetében.
+1. Az üzembe helyezés során engedélyezheti a felügyelt alkalmazás példányának JIT-hozzáférését.
 
-1. Az üzembe helyezést követően módosíthatja a JIT hozzáférési beállításait.
+1. Az üzembe helyezés után módosíthatja a JIT-hozzáférés beállításait.
 
-1. A közzétevő vonatkozó hozzáférési kérést küld.
+1. A közzétevő kérelmet küld a hozzáféréshez.
 
-1. Jóváhagyhatja a kérést.
+1. Jóváhagyja a kérelmet.
 
-Ez a cikk a fogyasztók igény szerinti elérésének lehetővé tétele és a kérések jóváhagyása műveletek összpontosít. Igény szerinti hozzáféréssel rendelkező felügyelt alkalmazás közzététele kapcsolatos további információkért lásd: [just-in-time-hozzáférés az Azure Managed Applications kérése](request-just-in-time-access.md).
+Ez a cikk a felhasználók által a JIT-hozzáférés engedélyezéséhez és a kérelmek jóváhagyásához szükséges műveletekre összpontosít. A felügyelt alkalmazások JIT-hozzáféréssel való közzétételének megismeréséhez tekintse meg [az igény szerinti hozzáférés kérése Azure Managed Applicationsban](request-just-in-time-access.md)című témakört.
 
 > [!NOTE]
-> Igény szerinti hozzáférés használatához rendelkeznie kell egy [Azure Active Directory P2-licenc](../active-directory/privileged-identity-management/subscription-requirements.md).
+> Az igény szerinti hozzáférés használatához [Azure Active Directory P2-licenccel](../active-directory/privileged-identity-management/subscription-requirements.md)kell rendelkeznie.
 
-## <a name="enable-during-deployment"></a>Üzembe helyezés során engedélyezése
+## <a name="enable-during-deployment"></a>Engedélyezés az üzembe helyezés során
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-1. A Marketplace-en bejegyzés megkeresi egy felügyelt alkalmazás igény szerinti engedélyezve van. Kattintson a **Létrehozás** gombra.
+1. Egy felügyelt alkalmazáshoz tartozó piactér-bejegyzés keresése, amelyen engedélyezve van az JIT. Kattintson a **Létrehozás** gombra.
 
-1. Értékek az új felügyelt alkalmazás, miközben a **igény szerinti konfigurációs** a lépés lehetővé teszi, hogy engedélyezi vagy letiltja a felügyelt alkalmazás igény szerinti hozzáférést. Válassza ki **Igen** a **igény szerinti elérésének lehetővé tétele**. A beállítás engedélyezve van a Marketplace-en JIT meghatározott felügyelt alkalmazások számára alapértelmezés szerint.
+1. Az új felügyelt alkalmazáshoz tartozó értékek megadásakor az **JIT konfigurációs** lépés lehetővé teszi a felügyelt alkalmazáshoz tartozó JIT-hozzáférés engedélyezését vagy letiltását. Válassza az **Igen** lehetőséget a **JIT-hozzáférés engedélyezéséhez**. Ez a beállítás alapértelmezés szerint a piactéren engedélyezett JIT-vel definiált felügyelt alkalmazások esetében van kiválasztva.
 
    ![Hozzáférés konfigurálása](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   Üzembe helyezés során csak engedélyezheti az igény szerinti hozzáférést. Ha **nem**, a közzétevő állandó hozzáférést kap a felügyelt erőforráscsoporthoz. JIT hozzáférési később nem engedélyezhető.
+   Az üzembe helyezés során csak a JIT-hozzáférés engedélyezésére van lehetőség. Ha a **nem**lehetőséget választja, a közzétevő állandó hozzáférést kap a felügyelt erőforráscsoporthoz. Az JIT-hozzáférés később nem engedélyezhető.
 
-1. Az alapértelmezett jóváhagyási beállítások módosításához válasszon **testreszabása igény szerinti konfigurációs**.
+1. Az alapértelmezett jóváhagyási beállítások módosításához válassza a **JIT-konfiguráció testreszabása**lehetőséget.
 
    ![Hozzáférés testreszabása](./media/approve-just-in-time-access/customize-jit-access.png)
 
-   Alapértelmezés szerint egy felügyelt alkalmazást, az igény szerinti engedélyezve van a következő beállításokkal rendelkezik:
+   Alapértelmezés szerint a JIT-t használó felügyelt alkalmazás a következő beállításokkal rendelkezik:
 
-   * Engedélyezéses mód – automatikus
-   * Hozzáférés maximális időtartama – 8 óránként
-   * A jóváhagyók – none
+   * Jóváhagyási mód – automatikus
+   * Maximális hozzáférés időtartama – 8 óra
+   * Jóváhagyók – nincs
 
-   Ha a jóváhagyási mód beállítása **automatikus**, a jóváhagyók az egyes kérések értesítést kapni, de a kérelem jóváhagyása automatikus. Ha a beállítása **manuális**, a jóváhagyók értesítés küldése az egyes kérések és, az egyiket kell jóváhagynia.
+   Ha a jóváhagyási mód **automatikus**értékre van állítva, a jóváhagyók értesítést kapnak az egyes kérésekről, de a kérést a rendszer automatikusan jóváhagyja. Ha a **manuális**értékre van állítva, a jóváhagyók értesítést kapnak minden kérelemről, és az egyiknek jóvá kell hagynia.
 
-   Az aktiválás maximális időtartama meghatározza a maximális időt közzétevő kérheti a felügyelt erőforráscsoporthoz való hozzáféréshez.
+   Az aktiválás maximális időtartama határozza meg azt a maximális időtartamot, ameddig a közzétevő a felügyelt erőforráscsoport számára hozzáférést igényelhet.
 
-   Az Azure Active Directory-felhasználók, amelyek a JIT hozzáférési kérelem jóváhagyhatja a jóváhagyók Tranzakciólista. Jóváhagyó hozzáadása, válassza ki a **jóváhagyó hozzáadása** , és keresse meg a felhasználót.
+   A jóváhagyók listája az a Azure Active Directory felhasználók, akik elfogadják a JIT hozzáférési kérelmeket. A jóváhagyó hozzáadásához válassza a **jóváhagyó hozzáadása** lehetőséget, és keresse meg a felhasználót.
 
-   Miután frissítette a beállítást, jelölje be a **mentése**.
+   A beállítás frissítése után válassza a **Mentés**lehetőséget.
 
-## <a name="update-after-deployment"></a>Üzembe helyezés után frissítése
+## <a name="update-after-deployment"></a>Frissítés az üzembe helyezés után
 
-Hogyan kérések engedélyezett értékeit módosíthatja. Azonban ha nem engedélyezte az igény szerinti hozzáférés üzembe helyezése során, nem engedélyezhető, később.
+Módosíthatja a kérések jóváhagyásának értékeit. Ha azonban nem engedélyezte a JIT-hozzáférést az üzembe helyezés során, később nem engedélyezheti.
 
-A központilag telepített felügyelt alkalmazás beállításainak módosítása:
+Telepített felügyelt alkalmazás beállításainak módosítása:
 
-1. A portálon válassza a manage alkalmazás.
+1. A portálon válassza az alkalmazás kezelése lehetőséget.
 
-1. Válassza ki **igény szerinti konfigurációs** és szükség szerint módosítsa a beállításokat.
+1. Válassza a **JIT-konfiguráció** lehetőséget, és szükség szerint módosítsa a beállításokat.
 
    ![Hozzáférési beállítások módosítása](./media/approve-just-in-time-access/change-settings.png)
 
@@ -80,34 +80,34 @@ A központilag telepített felügyelt alkalmazás beállításainak módosítás
 
 ## <a name="approve-requests"></a>Kérések jóváhagyása
 
-Amikor a közzétevő hozzáféréssel, értesítést kap a kérelem. JIT hozzáférési kérelmeket, vagy közvetlenül a felügyelt alkalmazás, vagy az Azure AD Privileged Identity Management szolgáltatáson keresztül felügyelt alkalmazások közötti jóváhagyhatja. Igény szerinti hozzáférés használatához rendelkeznie kell egy [Azure Active Directory P2-licenc](../active-directory/privileged-identity-management/subscription-requirements.md).
+Amikor a közzétevő hozzáférést kér, értesítést kap a kérelemről. A JIT hozzáférési kérelmeket közvetlenül a felügyelt alkalmazáson vagy az összes felügyelt alkalmazáson keresztül is jóváhagyhatja a Azure AD Privileged Identity Management szolgáltatáson keresztül. Az igény szerinti hozzáférés használatához [Azure Active Directory P2-licenccel](../active-directory/privileged-identity-management/subscription-requirements.md)kell rendelkeznie.
 
-Jóváhagyásra váró kérelmek a felügyelt alkalmazáson keresztül:
+Kérelmek jóváhagyása a felügyelt alkalmazáson keresztül:
 
-1. Válassza ki **JIT hozzáférési** a felügyelt alkalmazást, és válassza a **kérések jóváhagyása**.
+1. Válassza a felügyelt alkalmazáshoz tartozó **JIT-hozzáférés** lehetőséget, majd válassza a **kérések jóváhagyása**lehetőséget.
 
    ![Kérések jóváhagyása](./media/approve-just-in-time-access/approve-requests.png)
  
 1. Válassza ki a jóváhagyandó kérést.
 
-   ![Válassza ki a kérés](./media/approve-just-in-time-access/select-request.png)
+   ![Kérelem kiválasztása](./media/approve-just-in-time-access/select-request.png)
 
-1. A képernyőn, adja meg a jóváhagyási, és válassza az az oka **jóváhagyás**.
+1. Az űrlapon adja meg a jóváhagyás okát, és válassza a **jóváhagyás**lehetőséget.
 
-Jóváhagyásra váró kérelmek keresztül az Azure AD Privileged Identity Management:
+Kérelmek jóváhagyása Azure AD Privileged Identity Managementon keresztül:
 
-1. Válassza ki **minden szolgáltatás** és kezdeni a keresést a **Azure AD Privileged Identity Management**. Válassza ki az elérhető lehetőségek közül.
+1. Válassza a **minden szolgáltatás** lehetőséget, és kezdje meg a **Azure ad Privileged Identity Management**keresését. Válassza ki az elérhető lehetőségek közül.
 
-   ![Keresési szolgáltatás](./media/approve-just-in-time-access/search.png)
+   ![Szolgáltatás keresése](./media/approve-just-in-time-access/search.png)
 
-1. Válassza ki **kérések jóváhagyása**.
+1. Válassza a **kérelmek jóváhagyása**lehetőséget.
 
-   ![Válassza ki a kérések jóváhagyása](./media/approve-just-in-time-access/select-approve-requests.png)
+   ![Válassza ki a kérelmek jóváhagyása lehetőséget](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. Válassza ki **Azure által felügyelt alkalmazások**, és válassza ki a jóváhagyandó kérést.
+1. Válassza ki az **Azure által felügyelt alkalmazások**elemet, majd válassza ki a jóváhagyásra vonatkozó kérést.
 
-   ![Válassza ki a kérelmek](./media/approve-just-in-time-access/view-requests.png)
+   ![Kérelmek kiválasztása](./media/approve-just-in-time-access/view-requests.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Igény szerinti hozzáféréssel rendelkező felügyelt alkalmazás közzététele kapcsolatos további információkért lásd: [just-in-time-hozzáférés az Azure Managed Applications kérése](request-just-in-time-access.md).
+A felügyelt alkalmazások JIT-hozzáféréssel való közzétételének megismeréséhez tekintse meg [az igény szerinti hozzáférés kérése Azure Managed Applicationsban](request-just-in-time-access.md)című témakört.

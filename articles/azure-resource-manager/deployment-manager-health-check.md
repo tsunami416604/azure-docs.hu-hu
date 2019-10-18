@@ -1,6 +1,6 @@
 ---
-title: Egészségügyi integrációs Bevezetés az Azure Deployment Manager bevezetése
-description: Ismerteti, hogyan lehet a szolgáltatás telepítése több választható régióban az Azure Deployment Manager keresztül. Ellenőrizze a telepítés előtt minden régióban elérhetőek stabilitását biztonságos üzembe helyezési eljárásokat jeleníti meg.
+title: Health Integration bevezetése – Azure telepítéskezelő
+description: Ismerteti, hogyan helyezhet üzembe egy szolgáltatást több régióban az Azure telepítéskezelő használatával. A biztonságos üzembe helyezési eljárásokat mutatja be a telepítés stabilitásának ellenőrzéséhez, mielőtt az összes régióba bekerül.
 services: azure-resource-manager
 documentationcenter: na
 author: mumian
@@ -8,43 +8,43 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: jgao
-ms.openlocfilehash: 0c6d32f06e30bd85c12967ce4b15a053bb505ab7
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 72ddc900a892e6391d6b54046ac6f3a42358526f
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594308"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528564"
 ---
-# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Vezessen be egészségügyi integrációs Bevezetés az Azure Deployment Manager (nyilvános előzetes verzió)
+# <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>Állapot-integráció bevezetése az Azure telepítéskezelő (nyilvános előzetes verzió)
 
-[Az Azure Deployment Manager](./deployment-manager-overview.md) végezhető el az Azure Resource Manager-erőforrások előkészített kibocsátások. Az erőforrások telepítése régiónként rendezett módon. A beépített állapot-ellenőrzése az Azure Deployment Manager figyelheti kibocsátások, és automatikusan stop problémás kibocsátások, így csökkentheti a méretezési csoport a hatás és hibáinak elhárítása. Ez a funkció csökkentheti a szolgáltatás elérhetetlensége regressziót a frissítések által okozott.
+Az [Azure Telepítéskezelő](./deployment-manager-overview.md) lehetővé teszi Azure Resource Manager erőforrások szakaszos bevezetésének végrehajtását. Az erőforrások régiónként vannak üzembe helyezve egy megrendelt módon. Az Azure telepítéskezelő integrált állapot-ellenőrzésével nyomon követheti a bevezetéseket, és automatikusan leállíthatja a problémás bevezetéseket, így elháríthatja és csökkentheti a hatás méretezését. Ezzel a szolgáltatással csökkenthető a frissítések miatti regressziós szolgáltatás által okozott elérhetetlenség.
 
-## <a name="health-monitoring-providers"></a>Állapotfigyelési szolgáltatók
+## <a name="health-monitoring-providers"></a>Állapotfigyelő szolgáltatók
 
-Annak érdekében, hogy lehető egészségügyi integráció, a Microsoft dolgozott a egyes felső szolgáltatás állapotfigyelési cégeket azzal, hogy Ön egy egyszerű, másolási és beillesztési megoldással állapot-ellenőrzések integrálhatja az üzemelő példányok. Ha még nem használ állapotfigyelő, az alábbiak nagyszerű megoldások a kezdéshez:
+Ahhoz, hogy a lehető legkönnyebben elérhető legyen az állapot-integráció, a Microsoft a legfelső szintű Service Health monitoring vállalatokkal együttműködve egyszerű másolási/beillesztési megoldást biztosít az állapot-ellenőrzéseknek az üzembe helyezésekkel való integrálásához. Ha még nem használja az állapotfigyelő szolgáltatás használatát, ezek nagyszerű megoldást jelentenek:
 
-| ![Azure-beli manager állapot figyelő szolgáltató datadoggal](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Azure-beli manager állapot figyelő szolgáltató site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Azure-beli manager állapot figyelő szolgáltató wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
+| ![Az Azure Deployment Manager állapotfigyelő szolgáltatójának datadoggal](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-datadog.svg) | ![Az Azure Deployment Manager állapotfigyelő szolgáltatójának site24x7](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-site24x7.svg) | ![Az Azure Deployment Manager állapotfigyelő szolgáltatójának Wavefront](./media/deployment-manager-health-check/azure-deployment-manager-health-monitor-provider-wavefront.svg) |
 |-----|------|------|
-|Datadoggal vezető figyelése és az analytics platform a modern felhőalapú környezetek. Lásd: [Datadoggal együttműködéséről az Azure Deployment Manager](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, teljes körű privát és nyilvános felhőbeli szolgáltatások figyelési megoldást. Lásd: [Site24x7 együttműködéséről az Azure Deployment Manager](https://www.site24x7.com/azure/adm.html).| Wavefront, a monitorozási és elemzési platform az többfelhős környezetek számára. Lásd: [Wavefront együttműködéséről az Azure Deployment Manager](https://go.wavefront.com/wavefront-adm/).|
+|Datadoggal, a vezető monitorozási és elemzési platform a modern felhőalapú környezetekhez. Ismerje meg [, hogyan integrálható az datadoggal az Azure telepítéskezelőval](https://www.datadoghq.com/azure-deployment-manager/).|Site24x7, a teljes körű magán-és nyilvános Cloud Services-figyelési megoldás. Ismerje meg [, hogyan integrálható az Site24x7 az Azure telepítéskezelőval](https://www.site24x7.com/azure/adm.html).| Wavefront, a többfelhős alkalmazás-környezetek figyelési és elemzési platformja. Ismerje meg [, hogyan integrálható az Wavefront az Azure telepítéskezelőval](https://go.wavefront.com/wavefront-adm/).|
 
-## <a name="how-service-health-is-determined"></a>Hogyan határozza meg, a service health
+## <a name="how-service-health-is-determined"></a>A szolgáltatás állapotának meghatározása
 
-[Állapotfigyelési szolgáltatók](#health-monitoring-providers) szolgáltatások figyelésre és riasztásra service health problémákról több mechanizmust kínálnak. [Az Azure Monitor](../azure-monitor/overview.md) egy ilyen ajánlat mutat példát. Az Azure Monitor segítségével riasztásokat hozhat létre, amikor a meghatározott küszöbérték túllépése. Például a memória és CPU-kihasználtság hirtelen várt szintek túl új frissítést a szolgáltatáshoz való központi telepítésekor. Az értesítés, amikor javítási műveleteket végezhet.
+Az állapotfigyelő [szolgáltatók](#health-monitoring-providers) számos módszert kínálnak a szolgáltatások figyelésére és a szolgáltatás állapotával kapcsolatos problémák riasztására. [Azure monitor](../azure-monitor/overview.md) példa erre az ajánlatra. Azure Monitor használatával riasztásokat hozhat létre bizonyos küszöbértékek túllépése esetén. A memória és a CPU kihasználtsága például a várt szinteken túl, amikor új frissítést telepít a szolgáltatásba. Ha értesítést küld, megteheti a kijavítani kívánt műveleteket.
 
-Ilyen egészségügyi szolgáltatók általában kínálnak REST API-k, úgy, hogy a szolgáltatás figyelők állapotának programozott módon kell vizsgálni. A REST API-k vagy térjen vissza, az egyszerű megfelelő vagy nem megfelelő jel (határozza meg a HTTP-válaszkód), illetve részletes információkat a jelek fogadja.
+Ezek az állapot-szolgáltatók jellemzően REST API-kat kínálnak, így a szolgáltatás figyelők állapota programozott módon megvizsgálható. A REST API-k vagy visszatérhetnek egy egyszerű, kifogástalan/nem kifogástalan állapotú jellel (a HTTP-válasz kódja alapján), és/vagy a kapott jelekkel kapcsolatos részletes információkkal.
 
-Az új *healthCheck* lépés az Azure Deployment Manager lehetővé teszi, hogy a HTTP-kódrészletek, amelyek jelzik a kifogástalan állapotú szolgáltatási deklarálja, vagy összetettebb REST eredményt, még akkor is adja meg a reguláris kifejezések jelző, ha azok megfelelnek a kifogástalan állapotú válasz.
+Az Azure telepítéskezelő új *healthCheck* lépése lehetővé teszi olyan http-kódok bejelentését, amelyek egy kifogástalan szolgáltatást jeleznek, vagy összetettebb Rest-eredmények esetén akár olyan reguláris kifejezéseket is megadhat, amelyek – ha egyeznek – egy kifogástalan választ jelezhetnek.
 
-A folyamat a kezdeti beállítását az Azure Deployment Manager állapot-ellenőrzések:
+A telepítés Azure telepítéskezelő állapot-ellenőrzésekkel való beszerzésének folyamata:
 
-1. Az állapotfigyelők tetszőleges egészségügyi szolgáltató használatával hozzon létre.
-1. Hozzon létre egy vagy több healthCheck lépéseket az Azure Deployment Manager bevezetés részeként. Adja meg a healthCheck lépéseket a következő információkat:
+1. Hozzon létre egészségügyi figyelőket egy Ön által választott állapotfigyelő szolgáltatón keresztül.
+1. Hozzon létre egy vagy több healthCheck lépést az Azure-telepítéskezelő bevezetésének részeként. Töltse ki a healthCheck lépéseket a következő információkkal:
 
-    1. Az URI-t, a REST API-hoz a Health figyeli (az egészségügyi szolgáltató által meghatározott).
-    1. Hitelesítési adatok. Jelenleg csak az API-kulcs stílus hitelesítést is támogatja.
-    1. [HTTP-állapotkódok](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) vagy reguláris kifejezésekkel, amelyek meghatározzák a megfelelő választ. Vegye figyelembe, hogy a reguláris kifejezések, mely minden kell egyezik meg a válasz lehet benyújtani kifogástalan, vagy rendelkezhetnek, amelyek bármely meg kell egyeznie a válasz lehet benyújtani kifogástalan kifejezések rendelkezhetnek. Mindkét módszer használata támogatott.
+    1. Az állapotfigyelő figyelő REST APIjának URI-ja (az állapotfigyelő szolgáltató által definiált módon).
+    1. Hitelesítő adatok. Jelenleg csak az API-kulcs stílusú hitelesítés támogatott.
+    1. [Http-állapotkódok](https://www.wikipedia.org/wiki/List_of_HTTP_status_codes) vagy reguláris kifejezések, amelyek egészséges választ határoznak meg. Vegye figyelembe, hogy olyan reguláris kifejezéseket is megadhat, amelyeknek meg kell egyezniük ahhoz, hogy a válasz kifogástalan legyen, vagy olyan kifejezéseket is megadhat, amelyeknek meg kell egyezniük a válasz megfelelő állapotával. Mindkét módszer támogatott.
 
-    A következő Json-ja egy példa:
+    A következő JSON egy példa:
 
     ```json
     {
@@ -93,7 +93,7 @@ A folyamat a kezdeti beállítását az Azure Deployment Manager állapot-ellen�
     },
     ```
 
-1. Hívja meg a healthCheck lépéseket az Azure Deployment Manager bevezetés során a megfelelő időben. A következő példában egy állapot-ellenőrzési lépést a meghívott **postDeploymentSteps** , **stepGroup2**.
+1. A healthCheck lépések meghívása az Azure-telepítéskezelő bevezetésének megfelelő időpontjában. A következő példában egy állapot-ellenőrzési lépést hív meg a **StepGroup2** **postDeploymentSteps** .
 
     ```json
     "stepGroups": [
@@ -131,33 +131,33 @@ A folyamat a kezdeti beállítását az Azure Deployment Manager állapot-ellen�
     ]
     ```
 
-Megtudhatja, hogyan egy példa, lásd: [oktatóanyag: Állapot-ellenőrzés használata az Azure Deployment Manager](./deployment-manager-health-check.md).
+A következő témakörben talál egy példát [: oktatóanyag: az állapot-ellenőrzési szolgáltatás használata az Azure telepítéskezelőban](./deployment-manager-health-check.md).
 
-## <a name="phases-of-a-health-check"></a>Állapot-ellenőrzés fázisai
+## <a name="phases-of-a-health-check"></a>Állapot-ellenőrzési fázisok
 
-Ezen a ponton az Azure Deployment Manager tudja, hogyan kérdezhet le, és mi fázisok ehhez a bevezetés során a szolgáltatás adminisztrátoránál. Azonban az Azure Deployment Manager is lehetővé teszi az ellenőrzések időzítése részletes konfigurációjáig. 3 egymást követő fázisban történik, amelyek mindegyike rendelkezik konfigurálható időtartamok healthCheck lépés hajtja végre: 
+Ezen a ponton az Azure telepítéskezelő tudja, hogyan kérdezheti le a szolgáltatás állapotát, és hogy milyen fázisokban történik a bevezetés. Az Azure telepítéskezelő azonban az ellenőrzések időzítésének mélyreható konfigurálását is lehetővé teszi. Egy healthCheck lépés 3 szekvenciális fázisban fut, amelyek mindegyike konfigurálható időtartammal rendelkezik: 
 
 1. Várakozás
 
-    1. Egy központi telepítési művelet befejezése után előfordulhat, hogy újraindítja a virtuális gépek rendszert, újrakonfigurálása az új adatok, vagy először is lépések alapján. Is szolgáltatások állapotának jelekkel, hogy valami hasznos állapotfigyelési szolgáltató kibocsátó időt vesz igénybe. A tumultuous folyamat során, előfordulhat, hogy nincs értelme szolgáltatásállapot kereséséhez, mivel a frissítés még nem érte el egy stabil állapotot. Sőt a szolgáltatás előfordulhat, hogy kell oszcilláló kifogástalan és nem kifogástalan állapot között, az erőforrások rendezéséhez. 
-    1. A várakozási fázis során a service health nem áll felügyelet. Ezt lehetővé teszik az üzembe helyezett erőforrások használják az egészségügyi ellenőrzési folyamat megkezdése előtt os időt. 
+    1. Egy üzembe helyezési művelet befejezése után a virtuális gépek újraindulnak, újrakonfigurálják az új adatforrások alapján, vagy akár első alkalommal is elindítják őket. Azt is időt vesz igénybe, hogy a szolgáltatások elindítsák az egészségügyi jeleket, amelyeket az állapotfigyelő szolgáltatónak hasznosnak kell lennie. Ez a viharos folyamat során nem feltétlenül érdemes megkeresni a szolgáltatás állapotát, mivel a frissítés még nem érte el a stabil állapotot. A szolgáltatás valójában a kifogástalan állapotú és a nem megfelelő állapotok között ingadozik az erőforrások rendezése során. 
+    1. A várakozási fázisban a szolgáltatás állapota nincs figyelve. Ezzel lehetővé válik, hogy a központilag telepített erőforrások az állapot-ellenőrzési folyamat megkezdése előtt is sütni legyenek. 
 1. Rugalmas
 
-    1. Mivel az nem lehet tudni, hogy mennyi ideig minden esetben erőforrások os, mielőtt azok stabil, a rugalmas fázis egy rugalmas időszak között lehetővé teszi, hogy ha az erőforrások nem potenciálisan stabilak, és amikor a kifogástalan állapotú stabil fenntartásához szükséges fog tartani állapot.
-    1. Amikor megkezdődik a rugalmas fázist, az Azure Deployment Manager kezdődik, a megadott REST végpontot service Health lekérdezésével rendszeres időközönként. A lekérdezési időköz nem konfigurálható. 
-    1. Ha az állapotfigyelő, visszatér a jelek jelzi, hogy a szolgáltatás nem megfelelő állapotban, ezek a jeleket a rendszer figyelmen kívül hagyja, a rugalmas fázis továbbra is fennáll, és lekérdezési folytatódik. 
-    1. Amint a állapotfigyelő vissza tartalmaz, jelek arról, hogy a szolgáltatás nem kifogástalan állapotú, a rugalmas fázisa véget ér, és a HealthyState fázis kezdődik. 
-    1. Így az időtartam lett megadva a rugalmas fázis az a maximális, előtt adott megfelelő válasz kötelező a service health-lekérdezés is töltött időt. 
+    1. Mivel nem lehet tudni, hogy az erőforrások milyen hosszú időt vesznek igénybe ahhoz, hogy stabilak legyenek, a rugalmas fázis lehetővé teszi a rugalmas időszakot, ha az erőforrások potenciálisan instabilak, és amikor szükségesek az egészséges egyensúly fenntartásához állapot.
+    1. A rugalmas fázis megkezdése után az Azure telepítéskezelő rendszeresen megkezdi a szolgáltatás állapotának lekérdezését a megadott REST-végponton. A lekérdezési időköz konfigurálható. 
+    1. Ha az állapotfigyelő olyan jeleket tartalmaz, amelyek jelzik, hogy a szolgáltatás állapota nem megfelelő, akkor a rendszer figyelmen kívül hagyja ezeket a jeleket, a rugalmas fázis folytatódik, és folytatja a lekérdezést. 
+    1. Amint az állapotfigyelő visszakerül a szolgáltatás kifogástalan állapotára, a rugalmas fázis véget ér, és megkezdődik a HealthyState fázis. 
+    1. Így a rugalmas fázishoz megadott időtartam azt a maximális időt adja meg, ameddig a szolgáltatás állapotának lekérdezése az egészséges válasz megadása előtt elvégezhető. 
 1. HealthyState
 
-    1. HealthyState fázis során a szolgáltatás állapotát, a rugalmas fázis azonos időnként folyamatosan lekérdezve. 
-    1. A szolgáltatás várhatóan megfelelő állapotú jelek figyelési állapot szolgáltatójáról karbantartása megadott teljes időtartama alatt. 
-    1. Bármikor nem megfelelő állapotú választ észlelése esetén az Azure Deployment Manager állítsa le a teljes bevezetés, és a szerepkör végrehajtsa a nem megfelelő állapotú jelekkel REST választ adja vissza.
-    1. Miután HealthyState idejére véget ért, a healthCheck befejeződött, és üzembe helyezés továbbra is fennáll, a következő lépéssel.
+    1. A HealthyState fázisban a szolgáltatás állapotának lekérdezése a rugalmas fázissal megegyező időközönként történik. 
+    1. A szolgáltatásnak meg kell őriznie az egészséges jeleket az állapotfigyelő szolgáltatótól a teljes megadott időtartamra. 
+    1. Ha a rendszer egy nem Kifogástalan állapotra vonatkozó választ észlel, az Azure telepítéskezelő leállítja a teljes bevezetést, és visszaküldi a nem megfelelő állapotú szolgáltatási jeleket eredményező REST-választ.
+    1. A HealthyState időtartamának befejeződése után a healthCheck befejeződött, és a telepítés a következő lépéssel folytatódik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megismerhette integrálása az Azure Deployment Manager szolgáltatásállapot-figyelést. Folytassa a következő cikkben megtudhatja, hogyan helyezhet üzembe a Deployment Manager.
+Ebben a cikkben megtanulta, hogyan integrálhatja az állapotfigyelő szolgáltatásait az Azure telepítéskezelőba. A következő cikkből megtudhatja, hogyan helyezheti üzembe a telepítéskezelő használatával.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: integrálása az Azure Deployment Manager állapot-ellenőrzése](./deployment-manager-tutorial-health-check.md)
+> [Oktatóanyag: állapot-ellenõrzés integrálása az Azure-ban telepítéskezelő](./deployment-manager-tutorial-health-check.md)

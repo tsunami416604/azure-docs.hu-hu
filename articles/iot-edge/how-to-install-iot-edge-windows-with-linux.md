@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 9e9028d0c9aeff19dc221b81defa5e2057927fa6
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3cf30b53f950ff18dd6dcde332b7e97e332133aa
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034198"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516566"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>A Windows IoT Edge használata Linux-tárolók futtatásához
 
@@ -40,14 +40,14 @@ Ha virtuális gépen szeretné telepíteni a IoT Edget, engedélyezze a beágyaz
 
 A Azure IoT Edge egy [OCI-kompatibilis](https://www.opencontainers.org/) tároló motorra támaszkodik. A Windows-és Linux-tárolók Windows-gépen való futtatása közötti legnagyobb különbség az, hogy a IoT Edge telepítés tartalmaz egy Windows Container Runtime-t, de a IoT Edge telepítése előtt meg kell adnia a Linux-tárolók saját futtatókörnyezetét. 
 
-Egy Windows rendszerű gép létrehozásához és a Linux-eszközökhöz készült tárolók teszteléséhez [](https://www.docker.com/docker-windows) használhatja a Docker Desktopot a tároló motorként. A IoT Edge telepítése előtt telepítenie kell a Docker-t, és konfigurálnia kell a [Linux-tárolók használatát](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .  
+Egy Windows rendszerű gép létrehozásához és a Linux-eszközökhöz készült tárolók teszteléséhez használhatja a [Docker Desktopot](https://www.docker.com/docker-windows) a tároló motorként. A IoT Edge telepítése előtt telepítenie kell a Docker-t, és konfigurálnia kell a [Linux-tárolók használatát](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) .  
 
-Ha a IoT Edge eszköz egy Windows rendszerű számítógép, ellenőrizze, hogy az [](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) megfelel-e a Hyper-V rendszerkövetelményeinek.
+Ha a IoT Edge eszköz egy Windows rendszerű számítógép, ellenőrizze, hogy az megfelel-e a Hyper-V [rendszerkövetelményeinek](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) .
 
 ## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge telepítése új eszközre
 
 >[!NOTE]
->Az Azure IoT Edge szoftvercsomagok feltételei vonatkoznak rá a licencet (a címtárban licenccel) a csomagokban található. Kérjük, olvassa el a licencfeltételeket, a csomag használata előtt. Az üzembe helyezése és használata a csomag jelent a feltételek elfogadása. Ha nem fogadja el a licencfeltételeket, ne használja a csomag.
+>Azure IoT Edge szoftvercsomagok a csomagokban (a LICENCek könyvtárában) található licencfeltételek hatálya alá esnek. A csomag használata előtt olvassa el a licencfeltételeket. A csomag telepítése és használata jelenti a jelen feltételek elfogadását. Ha nem fogadja el a licencfeltételeket, ne használja a csomagot.
 
 A PowerShell-parancsfájlok letöltik és telepítik a Azure IoT Edge biztonsági démont. A biztonsági démon ezután elindítja az első két futásidejű modult, a IoT Edge ügynököt, amely lehetővé teszi más modulok távoli központi telepítését. 
 
@@ -57,7 +57,7 @@ A különböző telepítési lehetőségekről és paraméterekről további inf
 
 1. Ha még nem tette meg, regisztráljon egy új IoT Edge eszközt, és kérje le az eszköz csatlakoztatási karakterláncát. Másolja a kapcsolódási karakterláncot a szakasz későbbi részében való használatra. Ezt a lépést a következő eszközök használatával végezheti el:
 
-   * [Azure Portal](how-to-register-device-portal.md)
+   * [Azure Portalra](how-to-register-device-portal.md)
    * [Azure CLI](how-to-register-device-cli.md)
    * [Visual Studio Code](how-to-register-device-vscode.md)
 
@@ -88,32 +88,37 @@ A különböző telepítési lehetőségekről és paraméterekről további inf
 
 6. Ha a rendszer kéri, adja meg az 1. lépésben lekért eszköz-kapcsolódási karakterláncot. Az eszköz-csatlakoztatási karakterlánc a fizikai eszközt a IoT Hub eszköz-azonosítójával társítja. 
 
-   Az eszköz-kapcsolatok karakterlánca a következő formátumot veszi figyelembe, és nem tartalmazhat idézőjeleket:`HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   Az eszköz-kapcsolatok karakterlánca a következő formátumot veszi figyelembe, és nem tartalmazhat idézőjeleket: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-## <a name="verify-successful-installation"></a>A sikeres telepítésének ellenőrzése
+## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 
-Ellenőrizze az IoT Edge-szolgáltatás állapotát. A lista futtatásaként kell szerepelnie.  
+A IoT Edge szolgáltatás állapotának ellenõrzése: 
 
 ```powershell
 Get-Service iotedge
 ```
 
-Vizsgálja meg a szolgáltatási naplók az elmúlt 5 percben. 
+A szolgáltatási naplók vizsgálata az elmúlt 5 percben: 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Futó modulok listája. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön. 
+Futtasson automatizált vizsgálatot a leggyakoribb konfigurációs és hálózati hibákhoz: 
 
+```powershell
+iotedge check
+```
+
+Futó modulok listázása. Új telepítés után az egyetlen modulnak kell megjelennie a **edgeAgent**. A [IoT Edge-modulok első üzembe helyezése](how-to-deploy-modules-portal.md) után a **edgeHub**másik rendszermodulja is elindul az eszközön. 
 
 ```powershell
 iotedge list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy az IoT Edge-eszköz kiosztva a modul telepítve van, [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md).
+Most, hogy már telepített egy IoT Edge eszközt a futtatott futtatókörnyezettel, telepítheti [IoT Edge modulokat](how-to-deploy-modules-portal.md).
 
 Ha nem sikerül a IoT Edge megfelelően telepíteni, tekintse meg a [hibaelhárítási](troubleshoot.md) oldalt.
 

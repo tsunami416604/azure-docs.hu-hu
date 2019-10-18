@@ -1,5 +1,5 @@
 ---
-title: Biztonságos összetevők a Azure Resource Manager-sablonok üzembe helyezésében | Microsoft Docs
+title: Biztonságos összetevők – Azure Resource Manager sablonok
 description: Megtudhatja, hogyan védheti meg a Azure Resource Manager-sablonokban használt összetevőket.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bcf64d98f53d85937ee7960ec3938280814267d8
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170194"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528268"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Oktatóanyag: összetevők védelme Azure Resource Manager sablon központi telepítései során
 
@@ -113,7 +113,7 @@ A fájlok feltöltése előtt blob-tárolóra van szükség.
     * **Hitelesítés típusa**: válassza az **sas**elemet.  Az *sas* az alapértelmezett érték.
 3. Válassza a **Feltöltés** lehetőséget.  Miután a fájl feltöltése sikeresen megtörtént, a fájl neve szerepelni fog a tárolóban.
 
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a>@no__t – SAS-token 0Generate
+### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a>SAS-token <a name="generate-a-sas-token" />Generate
 
 1. Kattintson a jobb gombbal a **SQLDatabaseExtension. bacpac** elemre a tárolóból, majd válassza az SAS-csoport **előállítása**lehetőséget.
 2. Írja be a következő értékeket:

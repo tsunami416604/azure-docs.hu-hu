@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 9fbe6768014550a3746085406e9039e83185c20f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0d48f3eacad86dac520d837b80605a75cce8cfd5
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949688"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514484"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
 
@@ -29,105 +29,105 @@ A soros konzol a virtuális gépek és a virtuálisgép-méretezési csoport pé
 A Linux soros konzoljának dokumentációját a [Linux rendszerhez készült Azure soros konzolon](serial-console-linux.md)találja.
 
 > [!NOTE]
-> A soros konzol általánosan elérhető a globális Azure-régiókban. Ez még nem érhető el az Azure government vagy Azure China felhőkben.
+> A soros konzol általánosan elérhető a globális Azure-régiókban. Még nem érhető el az Azure governmentben vagy az Azure China-felhőkben.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Resource Management-alapú üzemi modellt kell használnia. Klasszikus üzemi modellben nem támogatottak.
+* A virtuális gép vagy virtuálisgép-méretezési csoport példányának a Resource Management-alapú üzemi modellt kell használnia. A klasszikus központi telepítések nem támogatottak.
 
 - A soros konzolt használó fióknak rendelkeznie kell a [virtuálisgép-közreműködő szerepkörrel a virtuális](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) géphez és a [rendszerindítási diagnosztika](boot-diagnostics.md) Storage-fiókhoz.
 
-- A virtuális gép vagy virtuálisgép-méretezési csoport példányának jelszó-alapú felhasználónak kell lennie. Létrehozhat egyet a [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) a Virtuálisgép-hozzáférési bővítmény funkcióját. Válassza ki **jelszó alaphelyzetbe állítása** származó a **támogatás + hibaelhárítás** szakaszban.
+- A virtuális gép vagy virtuálisgép-méretezési csoport példányának jelszó-alapú felhasználónak kell lennie. Létrehozhat egyet a virtuálisgép-hozzáférési bővítmény [jelszó alaphelyzetbe állítása](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkciójával. Válassza a **jelszó alaphelyzetbe állítása** lehetőséget a **támogatás + hibaelhárítás** szakaszban.
 
 * A virtuálisgép-méretezési csoport példányának virtuális gépnek engedélyezve kell lennie a [rendszerindítási diagnosztika](boot-diagnostics.md) szolgáltatásnak.
 
-    ![Rendszerindítási diagnosztikai beállításokat](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    ![Rendszerindítási diagnosztika beállításai](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
 ## <a name="enable-serial-console-functionality-for-windows-server"></a>A soros konzol funkcióinak engedélyezése a Windows Serverhez
 
 > [!NOTE]
 > Ha nem lát semmit a soros konzolon, győződjön meg arról, hogy a rendszerindítási diagnosztika engedélyezve van a virtuális gépen vagy a virtuálisgép-méretezési csoporton.
 
-### <a name="enable-the-serial-console-in-custom-or-older-images"></a>A soros konzol egyéni vagy régebbi rendszerképek engedélyezése
-Az Azure-ban újabb Windows Server-rendszerképekhez a [Speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. SAC a Windows server-verziók esetében támogatott, de nem érhető el, az ügyfél-verziók (például a Windows 10, Windows 8 vagy Windows 7).
+### <a name="enable-the-serial-console-in-custom-or-older-images"></a>A soros konzol engedélyezése egyéni vagy régebbi lemezképekben
+Az Azure-ban újabb Windows Server-rendszerképekhez a [Speciális felügyeleti konzol](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) alapértelmezés szerint engedélyezve van. A SAC támogatott a Windows Server-verzióiban, de nem érhető el az ügyfél verzióiban (például Windows 10, Windows 8 vagy Windows 7).
 
-A régebbi Windows Server-rendszerképeket (a 2018 Februárja előtt létrehozott) a soros konzolon keresztül az Azure Portalon futtatási parancs funkciója automatikusan engedélyezheti. A Azure Portal válassza a **Futtatás parancs**elemet, majd válassza ki a **EnableEMS** nevű parancsot a listából.
+A régebbi Windows Server-rendszerképekhez (2018 februárjában létrehozott) a soros konzol automatikusan engedélyezhető a Azure Portal Futtatás parancsával. A Azure Portal válassza a **Futtatás parancs**elemet, majd válassza ki a **EnableEMS** nevű parancsot a listából.
 
-![Futtassa a parancsot listája](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+![Parancsok futtatása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
 Azt is megteheti, hogy manuálisan engedélyezi a soros konzolt a 2018 februárjában létrehozott, Windows rendszerű virtuális gépekhez/virtuálisgép-méretezési csoportokhoz, az alábbi lépéseket követve:
 
-1. A Windows virtuális gép kapcsolódni a távoli asztal használatával
-1. Egy rendszergazdai parancssorból futtassa a következő parancsokat:
+1. Kapcsolódás a Windows rendszerű virtuális géphez Távoli asztal használatával
+1. A rendszergazdai parancssorból futtassa a következő parancsokat:
     - `bcdedit /ems {current} on`
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-1. Indítsa újra a rendszer a SAC konzol engedélyezni kell.
+1. Engedélyezze újra a SAC-konzol rendszerét.
 
-    ![SAC konzol](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
+    ![SAC-konzol](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Szükség esetén a SAC is engedélyezése kapcsolat nélküli módban is:
+Ha szükséges, a SAC offline is engedélyezhető:
 
-1. A windows lemez legyen konfigurálva, a meglévő virtuális gép egy adatlemezt SAC csatlakoztatásához.
+1. Csatlakoztassa azt a Windows-lemezt, amelyhez a SAC-t adatlemezként kell konfigurálni a meglévő virtuális géphez.
 
-1. Egy rendszergazdai parancssorból futtassa a következő parancsokat:
+1. A rendszergazdai parancssorból futtassa a következő parancsokat:
    - `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
    - `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-#### <a name="how-do-i-know-if-sac-is-enabled"></a>Honnan tudhatom meg, hogy engedélyezve van-e SAC?
+#### <a name="how-do-i-know-if-sac-is-enabled"></a>Hogyan tudni, hogy a SAC engedélyezve van-e?
 
-Ha [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nincs engedélyezve, a soros konzol nem jeleníti meg a SAC használatával. Bizonyos esetekben a virtuális gép állapotára vonatkozó látható, és más esetben üres. Ha a 2018 Februárja előtt létrehozott Windows Server-rendszerképet használ, SAC valószínűleg nem engedélyezhető.
+Ha a [SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) nincs engedélyezve, a soros konzol nem jeleníti meg a SAC-kérést. Bizonyos esetekben a virtuális gép állapotával kapcsolatos információk jelennek meg, más esetekben pedig üresek. Ha a február 2018. előtt létrehozott Windows Server-rendszerképet használ, a SAC valószínűleg nem lesz engedélyezve.
 
-### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>A soros konzol a Windows rendszertöltő menü engedélyezése
+### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>A Windows rendszerindító menüjének engedélyezése a soros konzolon
 
-Ha a Windows rendszertöltő betöltő utasításokat a soros konzolon megjelenítendő engedélyeznie kell, a következő beállítások is hozzáadhat a rendszerindítási konfigurációs adatok. További információkért lásd: [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
+Ha engedélyezni szeretné a Windows rendszerindítási kérések megjelenítését a soros konzolon, a következő további beállításokat adhatja hozzá a rendszerindítási konfigurációs adataihoz. További információ: [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
 
 1. A Távoli asztal használatával csatlakozhat a Windows rendszerű virtuális géphez vagy a virtuálisgép-méretezési csoport példányaihoz.
 
-1. Egy rendszergazdai parancssorból futtassa a következő parancsokat:
+1. A rendszergazdai parancssorból futtassa a következő parancsokat:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
    - `bcdedit /set {bootmgr} timeout 10`
    - `bcdedit /set {bootmgr} bootems yes`
 
-1. Indítsa újra a rendszert, engedélyezni kell a rendszerindító menü
+1. A rendszer újraindítása a rendszerindító menü engedélyezéséhez
 
 > [!NOTE]
-> Az időkorlát, a rendszerindító manager menü megjelenítéséhez beállított negatív hatással lesz az operációs rendszer rendszerindítási ideje. Ha úgy gondolja, hogy a 10 másodperces időtúllépési érték túl rövid, vagy túl hosszú, állítsa be egy másik értéket.
+> A rendszerindítási kezelő menüjéhez megadott időkorlát hatással lesz az operációs rendszer rendszerindítási idejére. Ha úgy gondolja, hogy a 10 másodperces időkorlát túl rövid vagy túl hosszú, állítsa egy másik értékre.
 
 ## <a name="use-serial-console"></a>Soros konzol használata
 
 ### <a name="use-cmd-or-powershell-in-serial-console"></a>A CMD vagy a PowerShell használata a soros konzolon
 
-1. Csatlakozás soros konzolon. Sikeresen csatlakozott, a rendszer kéri-e **SAC >** :
+1. Kapcsolódjon a soros konzolhoz. Ha sikeresen kapcsolódott, a kérdés **SAC >** :
 
-    ![SAC csatlakozni](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+    ![Kapcsolódás SAC-hez](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Adja meg `cmd` hozhat létre egy csatornát, amely megtalálható a CMD példánya.
+1.  Adja meg a `cmd`t egy olyan csatorna létrehozásához, amely egy CMD-példánnyal rendelkezik.
 
-1.  Adja meg a `ch -si 1` értéket, vagy nyomja meg a `<esc>+<tab>` billentyűparancsot a CMD-példányt futtató csatornára való váltáshoz.
+1.  Adja meg `ch -si 1` vagy nyomja meg `<esc>+<tab>` billentyűparancsok lehetőséget a CMD-példányt futtató csatornára való váltáshoz.
 
-1.  Nyomja meg **Enter**, majd adja meg a bejelentkezési hitelesítő adatok rendszergazdai engedélyekkel.
+1.  Nyomja le az **ENTER**billentyűt, majd adja meg a bejelentkezési hitelesítő adatokat rendszergazdai engedélyekkel.
 
-1.  Miután megadta az érvényes hitelesítő adatokat, megnyílik a CMD-példány.
+1.  Az érvényes hitelesítő adatok megadása után megnyílik a CMD-példány.
 
-1.  Adjon meg egy PowerShell-példány indításához `PowerShell` a CMD-példányt, és nyomja le az **Enter**.
+1.  PowerShell-példány elindításához írja be `PowerShell` a CMD-példányba, majd nyomja le az **ENTER**billentyűt.
 
-    ![Nyissa meg a PowerShell-példány](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+    ![PowerShell-példány megnyitása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
-### <a name="use-the-serial-console-for-nmi-calls"></a>Használja a soros konzol NMI hívások
-Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva. Napjainkban a programozók és a rendszergazdák gyakran használják a NMI-t a nem válaszoló rendszerek hibakeresésére vagy hibaelhárítására.
+### <a name="use-the-serial-console-for-nmi-calls"></a>A soros konzol használata NMI-hívásokhoz
+A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet hozzon létre, amelyet a virtuális gépen lévő szoftver nem hagy figyelmen kívül. A NMIs korábban a hardveres problémák figyelésére használták az adott válaszidőt igénylő rendszereken. Napjainkban a programozók és a rendszergazdák gyakran használják a NMI-t a nem válaszoló rendszerek hibakeresésére vagy hibaelhárítására.
 
-A soros konzol segítségével egy Azure-beli virtuálisgép-NMI küldje el a billentyűzet ikon használatával a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer. Windows beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása egy NMI fogadásakor.
+A soros konzol segítségével NMI küldhet egy Azure-beli virtuális gépre a parancssáv billentyűzet ikonjának használatával. A NMI elszállítása után a virtuális gép konfigurációja vezérli, hogy a rendszer hogyan reagáljon. A Windows beállítható úgy, hogy összeomlik, és hozzon létre egy memóriakép-fájlt a NMI fogadásakor.
 
 ![NMI küldése](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
-Windows összeomlási memóriaképfájl létrehozásához, amikor kap egy NMI konfigurálásával kapcsolatos további információkért lásd: [egy összeomlási memóriakép létrehozása egy NMI használatával](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
+Arról, hogy a Windows hogyan hozható létre összeomlási memóriaképet tartalmazó fájl létrehozásához, ha NMI kap, lásd: [összeomlási memóriakép fájljának létrehozása NMI használatával](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
-### <a name="use-function-keys-in-serial-console"></a>Függvény-kulcsok használata a soros konzol
-Funkcióbillentyűk engedélyezve vannak a soros konzol a Windows virtuális gépek használatát. A soros konzol legördülő listában az F8 biztosít, egyszerűen írja be a speciális rendszerindítási beállítások menü a kényelem érdekében, de a soros konzol kompatibilis a függvény minden más kulcsok. Előfordulhat, hogy a billentyűzetén meg kell nyomnia az **Fn** + **F1** (vagy F2, F3 stb.) billentyűt, attól függően, hogy melyik számítógépen használja a soros konzolt.
+### <a name="use-function-keys-in-serial-console"></a>Funkcióbillentyűk használata a soros konzolon
+A funkcióbillentyűk engedélyezve vannak a soros konzol használatához a Windows rendszerű virtuális gépeken. A soros konzolon a legördülő menüben található F8 egyszerűen beírhatja a speciális rendszerindítási beállítások menüt, de a soros konzol kompatibilis az összes többi funkcióbillentyű használatával. Előfordulhat, hogy a billentyűzeten kell megnyomnia az **Fn**  + **F1** (vagy F2, F3 stb.) billentyűt a billentyűzeten attól függően, hogy melyik számítógépről használja a soros konzolt.
 
-### <a name="use-wsl-in-serial-console"></a>A soros konzol WSL használata
-A Windows alrendszer Linux (WSL) engedélyezve van a Windows Server 2019 vagy újabb verzió, így is lehet engedélyezni WSL soros konzolon belüli használatra, ha futtatja a Windows Server 2019 vagy újabb verziója. Egy Linux-parancsok ismeretét rendelkező felhasználók számára előnyös lehet. A Windows Server WSL engedélyezéséhez utasításokért lásd: a [telepítési útmutató](https://docs.microsoft.com/windows/wsl/install-on-server).
+### <a name="use-wsl-in-serial-console"></a>A WSL használata a soros konzolon
+A Linux rendszerhez készült Windows alrendszer (WSL) engedélyezve van a Windows Server 2019-es vagy újabb verziójára, ezért a soros konzolon is engedélyezhető a WSL, ha Windows Server 2019 vagy újabb rendszert futtat. Ez hasznos lehet olyan felhasználók számára, akik is ismerik a Linux-parancsokat. A Windows Server WSL engedélyezésével kapcsolatos utasításokért tekintse meg a [telepítési útmutatót](https://docs.microsoft.com/windows/wsl/install-on-server).
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>A Windows rendszerű virtuális gép/virtuálisgép-méretezési csoport példányának újraindítása a soros konzolon belül
 A soros konzolon belül kezdeményezheti az újraindítást, ha a főkapcsoló gombra kattint, és a "virtuális gép újraindítása" lehetőségre kattint. Ez elindítja a virtuális gép újraindítását, és értesítést fog látni a Azure Portalon belül az újraindítással kapcsolatban.
@@ -139,84 +139,85 @@ Ez olyan helyzetekben lehet hasznos, amikor a soros konzol felhasználói felül
 ## <a name="disable-the-serial-console"></a>A soros konzol letiltása
 Alapértelmezés szerint minden előfizetéshez engedélyezve van a soros konzolhoz való hozzáférés. A soros konzolt letilthatja az előfizetés szintjén vagy a VM/virtuálisgép-méretezési csoport szintjén. Részletes útmutatásért látogasson el [Az Azure soros konzol engedélyezése és letiltása](./serial-console-enable-disable.md)című részhez.
 
-## <a name="serial-console-security"></a>Soros konzol biztonsága
+## <a name="serial-console-security"></a>Serial console biztonság
 
-### <a name="access-security"></a>Hozzáférés-biztonságot
-A soros konzoljához való hozzáférés hozzáférési szerepkörrel rendelkező felhasználók korlátozódik, [virtuális gépek Közreműködője](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) vagy újabb, a virtuális géphez. Ha az Azure Active Directory-bérlő a multi-factor authentication (MFA) szükséges, akkor a soros konzoljához való hozzáférés is kell többtényezős hitelesítés, mert a soros konzol fér hozzá a [az Azure portal](https://portal.azure.com).
+### <a name="access-security"></a>Hozzáférés biztonsága
+A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozódik, akik a virtuális gép [közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) vagy magasabb hozzáférési szerepkörével rendelkeznek. Ha a Azure Active Directory bérlő a többtényezős hitelesítés (MFA) használatát igényli, akkor a soros konzolhoz való hozzáféréshez is szüksége lesz az MFA-ra, mivel a soros konzol hozzáférése a [Azure Portalon](https://portal.azure.com)keresztül történik.
 
-### <a name="channel-security"></a>Csatorna biztonsági
-Hálózati oda-vissza küldött összes adatot titkosított.
+### <a name="channel-security"></a>Csatorna biztonsága
+A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
 ### <a name="audit-logs"></a>Naplók
-A soros konzoljához való hozzáférés teljes jelenleg be van jelentkezve a [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) naplók a virtuális gép. Ezek a naplók elérését tulajdonában lévő és az Azure-beli virtuálisgép-rendszergazda határozza meg.
+A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
-> A konzol nem hozzáférést jelszavát a rendszer naplózza. Azonban a konzolon belül futó parancsok tartalmaznak, vagy a jelszavak, titkos kódok, felhasználói neveket, vagy bármely más személyes azonosításra alkalmas adatok (PII) kimeneti, ha azok lesz írva az a virtuális gép rendszerindítási diagnosztikai naplók. Ezek lesz írva az összes többi látható szöveg, valamint a soros konzolon görgessen vissza végrehajtásának részeként függvény. Ezeket a naplókat. kör alakú és egyetlen egyéni felhasználók számára a diagnosztikai tárfiók olvasási jogosultsággal rendelkező tudja elérni őket. Azonban javasoljuk, hogy kövesse az ajánlott eljárás szerint az összes adat távoli asztallal, amelyek magukban foglalhatják a titkos kódok és/vagy a személyazonosításra alkalmas adatok.
+> Nincsenek naplózva a konzol hozzáférési jelszava. Ha azonban a konzolon belül futnak a jelszavak, a titkos kódok, a felhasználónevek vagy a személyazonosításra alkalmas adatok bármilyen más formája, akkor azokat a rendszer a virtuális gép rendszerindítási diagnosztikai naplóiba írja. A soros konzol görgetőgomb-visszagörgetési funkciója megvalósításának részeként minden más látható szöveggel együtt lesznek írva. Ezek a naplók körkörösek, és csak azok a személyek férhetnek hozzájuk, akik olvasási engedéllyel rendelkeznek a diagnosztikai Storage-fiókhoz. Javasoljuk azonban, hogy a Távoli asztal használatának ajánlott eljárását a titkokat és/vagy személyes adatokat is magában foglaló bármit is felhasználjon.
 
-### <a name="concurrent-usage"></a>Egyidejű használata
-Ha egy felhasználó csatlakozik a soros konzol és a egy másik felhasználó sikeresen kéri, hogy ugyanahhoz a virtuális géphez való hozzáférés, az első felhasználó megszakítja, és a második felhasználó csatlakozik-e ugyanabban a munkamenetben.
+### <a name="concurrent-usage"></a>Egyidejű használat
+Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó sikeresen kér hozzáférést ugyanahhoz a virtuális géphez, akkor az első felhasználó le lesz választva, és a második felhasználó ugyanahhoz a munkamenethez csatlakozik.
 
 > [!CAUTION]
-> Ez azt jelenti, hogy le van választva a felhasználó nem kijelentkeztetjük. Képes érvényesíteni a kijelentkezési kapcsolat bontása esetén (használatával SIGHUP vagy hasonló mechanizmus) továbbra is szerepel az ütemterv részét képezi. A Windows van egy automatikus időtúllépés, SAC; engedélyezve Linux esetén konfigurálhatja úgy a terminál időkorlátozási beállítást.
+> Ez azt jelenti, hogy a leválasztott felhasználó nem lesz kijelentkezve. A Kilépés (SIGHUP vagy hasonló mechanizmus használatával) leválasztásának lehetősége továbbra is az ütemtervben van. Windows esetén a SAC szolgáltatásban automatikus időtúllépés van engedélyezve. a Linux esetében beállíthatja a terminál időtúllépési beállítását.
 
 ## <a name="accessibility"></a>Kisegítő lehetőségek
-Kisegítő lehetőségek egy kulcsfontosságú fókuszának az Azure-soros konzolon. Ebből a célból keresztülhaladnak, hogy a soros konzolon érhető el a visual és szolgálhattunk korlátozott, valamint azokat, akik nem feltétlenül tudja az egérrel.
+A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ebből a célból biztosítjuk, hogy a soros konzol elérhető legyen a vizualizációhoz és a halláshoz, valamint hogy a felhasználók ne tudják használni az egeret.
 
-### <a name="keyboard-navigation"></a>Billentyűzetnavigációt
-Használja a **lapon** billentyűt a billentyűzeten a soros konzol felületen az Azure Portalról nyissa meg. A hely kiemelten jelenik meg a képernyőn. Hagyja a lépéseknek az ismertetése, a soros konzol ablakából, nyomja le a **Ctrl**+**F6** a billentyűzeten.
+### <a name="keyboard-navigation"></a>Billentyűzetes Navigálás
+A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **Ctrl** +**F6** billentyűt a billentyűzeten.
 
-### <a name="use-the-serial-console-with-a-screen-reader"></a>A soros konzol használata a képernyőolvasó
-A soros konzol rendelkezik beépített képernyőolvasó támogatása. Kapcsolva képernyőolvasóval való navigálni lehetővé teszi a helyettesítő szöveget a jelenleg kijelölt gombra kattintva a képernyőolvasó felolvassa olvasni.
+### <a name="use-the-serial-console-with-a-screen-reader"></a>A soros konzol használata képernyőolvasóval
+A soros konzol beépített képernyőolvasó-támogatással rendelkezik. A bekapcsolt képernyőolvasóval való navigálás lehetővé teszi, hogy az aktuálisan kijelölt gombhoz tartozó ALT szöveg hangosan felolvassa a képernyőolvasót.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol eléréséhez a gyakori forgatókönyvek
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol elérésének gyakori forgatókönyvei
 
-Forgatókönyv          | A soros konzol műveletek
+Alkalmazási helyzet          | Műveletek a soros konzolon
 :------------------|:-----------------------------------------
-Helytelen tűzfal-szabályok | Soros konzolon, és javítsa a Windows tűzfalszabályok eléréséhez.
-Fájlrendszer sérülése és ellenőrzése | A soros konzol eléréséhez, és a fájlrendszer helyreállítani.
-RDP-konfigurációs problémák | A soros konzol eléréséhez, és módosítsa a beállításokat. További információkért lásd: a [RDP-dokumentáció](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Rendszer hálózati zárolása | A soros konzol eléréséhez a rendszer kezelését az Azure Portalról. Néhány hálózati parancs szerepel a [Windows parancsokban: CMD és PowerShell @ no__t-0.
-A rendszertöltő használata | Hozzáférés a BCD soros konzolon keresztül. További információ: [engedélyezése a soros konzol a Windows rendszerindítási menüjében](#enable-the-windows-boot-menu-in-the-serial-console).
+Helytelen tűzfalszabályok | Nyissa meg a soros konzolt, és javítsa a Windows tűzfal szabályait.
+Fájlrendszer-sérülés/-ellenőrzési | Nyissa meg a soros konzolt, és állítsa helyre a fájlrendszert.
+RDP-konfigurációs problémák | Nyissa meg a soros konzolt, és módosítsa a beállításokat. További információkért tekintse meg az [RDP-dokumentációt](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
+Hálózati zárolási rendszerek | A rendszer kezeléséhez nyissa meg a soros konzolt a Azure Portal. Egyes hálózati parancsok a Windows- [parancsok: cmd és PowerShell](serial-console-cmd-ps-commands.md)című részben vannak felsorolva.
+A rendszerbetöltővel való interakció | A BCD elérése a soros konzolon keresztül. További információ: [a Windows rendszerindítási menüjének engedélyezése a soros konzolon](#enable-the-windows-boot-menu-in-the-serial-console).
 
 ## <a name="known-issues"></a>Ismert problémák
 Tisztában vagyunk a soros konzollal és a virtuális gép operációs rendszerével kapcsolatos problémákkal. Ezen problémák listája és a Windows rendszerű virtuális gépek enyhítésének lépései. Ezek a problémák és enyhítések mind a virtuális gépek, mind a virtuálisgép-méretezési csoport példányai esetében érvényesek. Ha ezek nem egyeznek a megjelenő hibával, tekintse meg a soros konzol gyakori [hibáival](./serial-console-errors.md)kapcsolatos általános hibákat.
 
 Probléma                             |   Kezelés
 :---------------------------------|:--------------------------------------------|
-Billentyű **Enter** után a kapcsolaton transzparens, nem váltják ki a bejelentkezési kérések jelenhetnek megjeleníteni. | További információkért lásd: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez a hiba akkor fordulhat elő, ha egy egyéni virtuális Gépet, megerősített készülék vagy rendszerindítási konfiguráció, amelynek hatására a Windows a soros port megfelelően csatlakozni sikertelen futtatja. Ez a hiba akkor is előfordulhat, ha Windows 10 rendszerű virtuális gépet futtat, mert csak a Windows Server rendszerű virtuális gépekre van beállítva, hogy az EMS engedélyezve legyen.
-Csak az egészségügyi információk Windows virtuális Géphez való csatlakozáskor jelenik meg| Ez a hiba akkor fordul elő, ha a speciális felügyeleti konzol nincs engedélyezve a Windows-rendszerképhez. Lásd: [engedélyezése a soros konzol egyéni vagy régebbi képeken](#enable-the-serial-console-in-custom-or-older-images) manuálisan engedélyezni a virtuális Gépen Windows SAC létrehozásával kapcsolatos útmutatást. További információkért lásd: [Windows egészségügyi jelek](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
-Írja be a SAC kérdezzen rá Ha engedélyezve van a kernel hibakeresés nem. | A virtuális gép, és futtassa az RDP `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha nem használhatja az RDP, akkor ehelyett az operációsrendszer-lemez csatolása egy másik Azure virtuális géphez és módosítsa, amíg a futó adatlemezként csatlakoztatott `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, majd felcserélése vissza a lemezt.
-Beillesztése PowerShell rendszerbe SAC eredményez olyan harmadik karaktert, ha az eredeti rendelkezett ismétlődő karaktert. | A probléma megoldásához futtassa `Remove-Module PSReadLine` való eltávolítása a PSReadLine modul az aktuális munkamenet. Ez a művelet nem törli vagy eltávolítja a modult.
-Bizonyos billentyűzetet bemenetek furcsa SAC kimeneti előállításához (például **[A**, **[3 ~** ). | [VT100](https://aka.ms/vtsequences) escape-karaktersorozatokat a SAC használatával által nem támogatott.
-Illessze be a hosszú karakterláncok nem működik. | A soros konzol illeszthetők be a terminál 2048 karakter hosszúságú lehet, megelőzve a soros port sávszélesség sztring hossza korlátozza.
+Az **ENTER** billentyű lenyomása után a kapcsolódási szalagcím nem eredményezi a bejelentkezési üzenet megjelenítését. | További információ: [ütő ENTER do Nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez a hiba akkor fordulhat elő, ha egy egyéni virtuális gépet, megerősített készüléket vagy rendszerindítási konfigurációt futtat, amelynek hatására a Windows nem tud megfelelően csatlakozni a soros porthoz. Ez a hiba akkor is előfordulhat, ha Windows 10 rendszerű virtuális gépet futtat, mert csak a Windows Server rendszerű virtuális gépekre van beállítva, hogy az EMS engedélyezve legyen.
+Windows rendszerű virtuális géphez való csatlakozáskor csak állapotadatok jelennek meg| Ez a hiba akkor fordul elő, ha a speciális felügyeleti konzol nincs engedélyezve a Windows-rendszerképhez. Lásd: [a soros konzol engedélyezése egyéni vagy régebbi lemezképekben](#enable-the-serial-console-in-custom-or-older-images) a Windows rendszerű virtuális GÉPEN a SAC manuális engedélyezésével kapcsolatos utasításokért. További információ: [Windows Health Signals](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
+A SAC nem veszi át a teljes soros konzolt a böngészőben | Ez egy ismert probléma a Windowsban és a terminál-emulátorban. Ezt a problémát mindkét csapatnál nyomon követjük, de jelenleg nincs megoldás.
+Nem lehet beírni a SAC-parancssorba, ha a kernel hibakeresése engedélyezve van. | RDP-t a virtuális géphez, és futtassa `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha nem tud RDP-t, az operációs rendszer lemezét csatlakoztathatja egy másik Azure-beli virtuális géphez, és a `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` futtatásával, majd a lemez visszaállításával módosíthatja azt.
+Ha az eredeti tartalom ismétlődő karaktert tartalmaz, a PowerShellbe való beillesztés egy harmadik karaktert eredményez. | Megkerülő megoldásként futtassa a `Remove-Module PSReadLine`t a PSReadLine modul aktuális munkamenetből való eltávolításához. Ez a művelet nem törli vagy eltávolítja a modult.
+A billentyűzet egyes bemenetei furcsa SAC-kimenetet hoznak létre (például **[a**, **[3 ~** ). | A SAC-parancssor nem támogatja a [VT100](https://aka.ms/vtsequences) escape-sorozatot.
+A hosszú karakterláncok beillesztése nem működik. | A soros konzol korlátozza a terminálba beillesztett sztringek hosszát 2048 karakterre, hogy megakadályozza a soros port sávszélességének túlterhelését.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-**Q. Hogyan küldhetek visszajelzést?**
+**K. Hogyan küldhetek visszajelzést?**
 
-A. Visszajelzés a githubon található létrehozásával https://aka.ms/serialconsolefeedback. Másik lehetőségként (kevésbé elsődleges), visszajelzést küldhet keresztül azserialhelp@microsoft.com vagy virtuálisgép-kategóriába https://feedback.azure.com.
+A. Küldjön visszajelzést a GitHub-probléma létrehozásához https://aka.ms/serialconsolefeedback címen. Másik lehetőségként (kevésbé előnyben részesített) küldhet visszajelzést azserialhelp@microsoft.com vagy https://feedback.azure.com virtuális gép kategóriájában.
 
-**Q. Támogatja a soros konzol másolja és illessze be?**
+**K. támogatja a soros konzol a másolást és beillesztést?**
 
-A. Igen. Használat **Ctrl**+**Shift**+**C** és **Ctrl**+**Shift** + **V** másolja és illessze be a terminálba.
+A. Igen. A **CTRL** billentyűt lenyomva tartva a +**SHIFT** +**C** és **CTRL** +**SHIFT** +**V** billentyűkombinációt a terminálba való másoláshoz és beillesztéshez.
 
-**Q. Ki engedélyezheti vagy letilthatja a soros konzol az előfizetésemet?**
+**K. ki engedélyezheti vagy letilthatja az előfizetéshez tartozó soros konzolt?**
 
-A. Engedélyezi vagy letiltja a soros konzol egy előfizetési szintű szintjén, az előfizetés írási engedélyekkel rendelkeznie. Írási engedéllyel rendelkező szerepek közé tartozik a rendszergazda vagy tulajdonos szerepkörök. Egyéni szerepkörök is lehet írási engedéllyel.
+A. A soros konzol előfizetés szintű engedélyezéséhez vagy letiltásához írási engedéllyel kell rendelkeznie az előfizetéshez. Az írási engedéllyel rendelkező szerepkörök rendszergazdai vagy tulajdonosi szerepköröket is tartalmaznak. Az egyéni szerepkörök rendelkezhetnek írási engedélyekkel is.
 
-**Q. Virtuális gép férhet hozzá a soros konzol?**
+**K. ki férhet hozzá a virtuális géphez tartozó soros konzolhoz?**
 
-A. A virtuális gép közreműködő szerepkörrel kell rendelkeznie legalább egy virtuális géphez a virtuális gép soros konzol eléréséhez.
+A. A virtuális gép soros konzoljának eléréséhez rendelkeznie kell a virtuálisgép-közreműködő szerepkörrel vagy magasabb jogosultsággal.
 
-**Q. A soros konzol nem jelennek meg, mi a teendő?**
+**K. a soros konzol nem jelenít meg semmit, mit tegyek?**
 
-A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. A lemezkép engedélyezése a soros konzol konfigurálásával kapcsolatos további információkért lásd: [engedélyezése a soros konzol egyéni vagy régebbi képeken](#enable-the-serial-console-in-custom-or-older-images).
+A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolhoz való hozzáféréshez. További információ a lemezképnek a soros konzol engedélyezéséhez való konfigurálásáról: [a soros konzol engedélyezése egyéni vagy régebbi lemezképekben](#enable-the-serial-console-in-custom-or-older-images).
 
-**Q. A soros konzolon érhető el a virtuálisgép-méretezési csoportok?**
+**K. elérhető a soros konzol a virtuálisgép-méretezési csoportokhoz?**
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-## <a name="next-steps"></a>További lépések
-* A Windows SAC szolgáltatásban használható CMD-és PowerShell-parancsok részletes útmutatója: [Windows parancsok: CMD és PowerShell @ no__t-0.
-* A soros konzolon érhető el is [Linux](serial-console-linux.md) virtuális gépeket.
-* Tudjon meg többet [rendszerindítási diagnosztika](boot-diagnostics.md).
+## <a name="next-steps"></a>Következő lépések
+* A Windows SAC szolgáltatásban használható CMD-és PowerShell-parancsok részletes útmutatója [: Windows-parancsok: cmd és PowerShell](serial-console-cmd-ps-commands.md).
+* A soros konzol [Linux](serial-console-linux.md) rendszerű virtuális gépekhez is elérhető.
+* További információ a [rendszerindítási diagnosztika](boot-diagnostics.md)szolgáltatásról.

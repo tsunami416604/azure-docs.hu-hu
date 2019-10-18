@@ -1,17 +1,17 @@
 ---
-title: Gyermek erőforrások neve és típusa Azure Resource Manager-sablonokban
+title: Gyermek erőforrások – Azure Resource Manager sablonok
 description: Ismerteti, hogyan lehet a Azure Resource Manager sablonban megadhatja a gyermek-erőforrások nevét és típusát.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd1c38547866c34eb5c4808ed5b185b50fa44a01
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3a90b2155b11d4c12bc1f571af3f15fdbceb12b9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035564"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72532299"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Adja meg a gyermek erőforrások nevét és típusát
 
@@ -54,7 +54,7 @@ Ha a szülő erőforrástípus definiálja, a típus és a név értékeket perj
 "name": "{child-resource-name}",
 ```
 
-Az alábbi példa egy virtuális hálózatot és egy alhálózatot mutat be. Figyelje meg, hogy az alhálózat szerepel a virtuális hálózathoz tartozó erőforrások tömbben. A név a **Subnet1** értékre van állítva, a típus pedigalhálózatokra van beállítva. A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
+Az alábbi példa egy virtuális hálózatot és egy alhálózatot mutat be. Figyelje meg, hogy az alhálózat szerepel a virtuális hálózathoz tartozó erőforrások tömbben. A név a **Subnet1** értékre van állítva, a típus pedig **alhálózatokra**van beállítva. A gyermek erőforrás a szülő erőforrástól függőként van megjelölve, mert a szülő erőforrásnak léteznie kell a gyermek erőforrás üzembe helyezése előtt.
 
 ```json
 "resources": [
@@ -133,7 +133,7 @@ Az alábbi példa egy virtuális hálózatot és alhálózatot mutat be, amely a
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Azure Resource Manager sablonok létrehozásával kapcsolatos további tudnivalókért lásd: [sablonok készítése](resource-group-authoring-templates.md). 
 

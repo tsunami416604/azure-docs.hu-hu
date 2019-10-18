@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Webes keresés végrehajtása a C# -Bing Web Search REST API'
+title: 'Gyors útmutató: webes keresés végrehajtása Java-Bing Web Search REST API'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval kérést küldhet a Bing News Search REST API Javával, és JSON-választ kap.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 6/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 414287b4a279ac76abf62d3721a51627380a8668
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423758"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515643"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek keresése a Java és a Bing News Search használatával REST API
 
@@ -35,7 +35,7 @@ A minta forráskódja elérhető [a githubon](https://github.com/Azure-Samples/c
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+Lásd még: [Cognitive Services díjszabása – BING Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
@@ -224,7 +224,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

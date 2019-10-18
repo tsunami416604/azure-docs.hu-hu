@@ -1,5 +1,5 @@
 ---
-title: Azure-beli felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
+title: Azure által felügyelt alkalmazás egyéni műveletekkel & erőforrásokkal
 description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre Azure-beli felügyelt alkalmazás egy egyéni Azure-szolgáltatóval.
 services: managed-applications
 ms.service: managed-applications
@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
-ms.openlocfilehash: 3dd0887114156956b55f554d0265e3ca2b9b10ab
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f70bb768dae3de80f85ffc49558b9ef51d2fce49
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335998"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529216"
 ---
-# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: Felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
+# <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Oktatóanyag: felügyelt alkalmazás létrehozása egyéni műveletekkel és erőforrásokkal
 
-Ebben az oktatóanyagban saját felügyelt alkalmazást hoz létre egyéni műveletekkel és erőforrásokkal. A felügyelt alkalmazás egy egyéni műveletet fog tartalmazni `Overview` az oldalon, egy egyéni erőforrástípust, amely külön menüelemként `Table of Content` jelenik meg az egyéni erőforrás lapon, valamint egy egyéni környezeti művelet.
+Ebben az oktatóanyagban saját felügyelt alkalmazást hoz létre egyéni műveletekkel és erőforrásokkal. A felügyelt alkalmazás a `Overview` oldalon egy egyéni műveletet fog tartalmazni, amely külön menüelemként jelenik meg `Table of Content` és az egyéni erőforrás lapon egyéni környezeti művelet.
 
 Ez az oktatóanyag a következő lépéseket tartalmazza:
 
@@ -32,17 +32,17 @@ Ez az oktatóanyag a következő lépéseket tartalmazza:
 
 Az oktatóanyag elvégzéséhez ismernie kell a következőket:
 
-* Felügyelt [alkalmazás definíciójának létrehozása és közzététele](publish-service-catalog-app.md).
+* [Felügyelt alkalmazás definíciójának létrehozása és közzététele](publish-service-catalog-app.md).
 * A [Service Catalog alkalmazás üzembe helyezése Azure Portal használatával](deploy-service-catalog-quickstart.md).
 * [Azure Portal felhasználói felület létrehozása a felügyelt alkalmazáshoz](create-uidefinition-overview.md).
-* [](concepts-view-definition.md) Megtekintheti a definíciós összetevők képességeit.
+* [Megtekintheti a definíciós](concepts-view-definition.md) összetevők képességeit.
 * Az [Azure egyéni szolgáltatói](custom-providers-overview.md) képességei.
 
 ## <a name="user-interface-definition"></a>Felhasználói felület definíciója
 
 Ebben az oktatóanyagban egy felügyelt alkalmazást hoz létre, és a felügyelt erőforráscsoport egyéni szolgáltatói példányt, Storage-fiókot és-függvényt fog tartalmazni. Az ebben a példában használt Azure-függvény olyan API-t valósít meg, amely kezeli az egyéni szolgáltatói műveleteket a műveletekhez és az erőforrásokhoz. Az Azure Storage-fiók alapszintű tárolóként használható az egyéni szolgáltatói erőforrások számára.
 
-A felügyelt alkalmazás példányának létrehozásához szükséges felhasználói felület `funcname` definíciója tartalmazza a és `storagename` a bemeneti elemeket. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a függvény fájljai a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesznek telepítve, de a *createUIDefinition. JSON*fájlban lévő csomaghoz tartozó beviteli elem hozzáadásával módosíthatja azt:
+A felügyelt alkalmazás példányának létrehozásához használt felhasználói felület definíciója `funcname` és `storagename` bemeneti elemeket tartalmaz. A Storage-fiók nevének és a függvény nevének globálisan egyedinek kell lennie. Alapértelmezés szerint a függvény fájljai a [minta Function csomagból](https://github.com/Azure/azure-quickstart-templates/tree/master/101-custom-rp-with-function/artifacts/functionzip)lesznek telepítve, de a *createUIDefinition. JSON*fájlban lévő csomaghoz tartozó beviteli elem hozzáadásával módosíthatja azt:
 
 ```json
 {
@@ -83,13 +83,13 @@ A felügyelt alkalmazás példányának létrehozásához szükséges felhaszná
   "zipFileBlobUri": "[steps('applicationSettings').zipFileBlobUri]"
 ```
 
-A teljes *createUIDefinition. JSON* minta a következő címen [érhető el: A felhasználói felület elemei összetevők](reference-createuidefinition-artifact.md).
+A teljes *createUIDefinition. JSON* minta a következő [hivatkozáson található: felhasználói felület elemeinek összetevői](reference-createuidefinition-artifact.md).
 
 ## <a name="template-with-custom-provider"></a>Sablon egyéni szolgáltatóval
 
-Az egyéni szolgáltatóval felügyelt alkalmazási példány létrehozásához meg kell határoznia az egyéni szolgáltatói erőforrást a **nyilvános** névvel, és be kell írnia a **Microsoft. CustomProviders/ResourceProviders** értéket a **mainTemplate. JSON**fájlban. Ebben az erőforrásban meg kell határoznia a szolgáltatáshoz tartozó erőforrás-típusokat és műveleteket. Az Azure Function és az Azure Storage-fiók példányainak üzembe helyezéséhez `Microsoft.Storage/storageAccounts` adja meg a Type és a típusú `Microsoft.Web/sites` erőforrásokat.
+Az egyéni szolgáltatóval felügyelt alkalmazási példány létrehozásához meg kell határoznia az egyéni szolgáltatói erőforrást a **nyilvános** névvel, és be kell írnia a **Microsoft. CustomProviders/ResourceProviders** értéket a **mainTemplate. JSON**fájlban. Ebben az erőforrásban meg kell határoznia a szolgáltatáshoz tartozó erőforrás-típusokat és műveleteket. Az Azure Function és az Azure Storage-fiók példányainak üzembe helyezéséhez `Microsoft.Web/sites` és `Microsoft.Storage/storageAccounts` típusú erőforrásokat kell megadni.
 
-Ebben az oktatóanyagban létre fog hozni egy `users` erőforrás-típust, `ping` egy egyéni `users/contextAction` műveletet és egy egyéni műveletet, amelyet egy `users` egyéni erőforrás kontextusában fog végrehajtani. Minden erőforrástípus és művelet esetében adjon meg egy végpontot, amely a [createUIDefinition. JSON](#user-interface-definition)fájlban megadott nevű függvényre mutat. A **routingType** `Proxy,Cache` megadása az erőforrástípusok és `Proxy` a műveletek esetében:
+Ebben az oktatóanyagban létre fog hozni egy `users` erőforrástípust, `ping` egyéni műveletet, és `users/contextAction` egyéni műveletet, amelyet egy `users` egyéni erőforrás kontextusában fog végrehajtani. Minden erőforrástípus és művelet esetében adjon meg egy végpontot, amely a [createUIDefinition. JSON](#user-interface-definition)fájlban megadott nevű függvényre mutat. Válassza a **routingType** `Proxy,Cache` az erőforrástípusok és a `Proxy` műveletekhez:
 
 ```json
 {
@@ -124,16 +124,16 @@ Ebben az oktatóanyagban létre fog hozni egy `users` erőforrás-típust, `ping
 }
 ```
 
-A teljes *mainTemplate. JSON* minta a következő címen [érhető el: Telepítési sablon](reference-main-template-artifact.md)összetevő.
+A teljes *mainTemplate. JSON* minta a következő [hivatkozáson található: telepítési sablon](reference-main-template-artifact.md)összetevő.
 
 ## <a name="view-definition-artifact"></a>Meghatározás megtekintése összetevő
 
-A felügyelt alkalmazásban egyéni műveleteket és egyéni erőforrásokat tartalmazó felhasználói felület definiálásához **viewDefinition. JSON** -összetevőt kell létrehoznia. A definíciós összetevők megtekintésével kapcsolatos további információkért lásd: definíciós összetevő [megtekintése Azure Managed Applicationsban](concepts-view-definition.md).
+A felügyelt alkalmazásban egyéni műveleteket és egyéni erőforrásokat tartalmazó felhasználói felület definiálásához **viewDefinition. JSON** -összetevőt kell létrehoznia. A definíciós összetevők megtekintésével kapcsolatos további információkért lásd: [definíciós összetevő megtekintése Azure Managed Applicationsban](concepts-view-definition.md).
 
 Ebben az oktatóanyagban az alábbiakat határozza meg:
-* Az alapszintű szövegbevitelt használó egyéni műveletet `TestAction` jelképező eszköztár gombbal rendelkező *áttekintő* lap.
-* Egy egyéni erőforrástípust `users`képviselő *felhasználók* lap.
-* Egyéni erőforrás-művelet `users/contextAction` a *felhasználók* lapon, amelyet a rendszer a típusú `users`egyéni erőforrás kontextusában hajt végre.
+* Egy olyan *áttekintő* lap, amely az egyéni művelet `TestAction` és az alapszintű szövegbevitelt jelképező eszköztár gombját jelöli.
+* A *felhasználók* lap, amely egyéni erőforrástípust jelöl `users`.
+* Egyéni erőforrás-művelet `users/contextAction` a *felhasználók* lapon, amely `users` típusú egyéni erőforrás kontextusában lesz elvégezve.
 
 Az alábbi példa egy "áttekintés" oldal konfigurációjának megtekintését szemlélteti:
 
@@ -176,13 +176,13 @@ Az alábbi példa a "felhasználók" erőforrások oldal konfigurációját tart
   }
 ```
 
-A teljes *viewDefinition. JSON* minta a következő címen [érhető el: Definíciós](reference-view-definition-artifact.md)összetevő megtekintése
+A teljes *viewDefinition. JSON* minta a következő [hivatkozáson található: definíciós összetevő megtekintése](reference-view-definition-artifact.md).
 
 ## <a name="managed-application-definition"></a>Felügyelt alkalmazás definíciója
 
 Csomagolja a következő felügyelt alkalmazási összetevőket a zip Archive-be, majd töltse fel a Storage-ba:
 
-* createUiDefinition.json
+* createUiDefinition. JSON
 * mainTemplate. JSON
 * viewDefinition. JSON
 
@@ -246,7 +246,7 @@ az managedapp definition create \
   --package-file-uri "path to your app.zip package"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájában írja be és válassza a **felügyelt alkalmazások központ**elemet.
 2. A **felügyelt alkalmazások központban**válassza a **Service Catalog alkalmazás definíciója** elemet, majd kattintson a **Hozzáadás**gombra. 
@@ -256,7 +256,7 @@ az managedapp definition create \
 3. Adja meg a Service Catalog-definíciók létrehozásához szükséges értékeket:
 
     * Adja meg a szolgáltatás-katalógus definíciójának egyedi **nevét** , a **megjelenítendő nevet** és a *leírást*(nem kötelező).
-    * Válassza kiazt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
+    * Válassza ki azt az **előfizetést**, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-definíciót létre kívánja hozni. Használhatja ugyanazt az erőforráscsoportot, amelyet a zip-csomaghoz használ, vagy létrehozhat egy új erőforráscsoportot.
     * A **Package file URI**esetében adja meg az előző lépésben létrehozott zip-fájl elérési útját.
 
     ![Értékek megadása](./media/managed-application-with-custom-providers/add-service-catalog-managed-application.png)
@@ -302,7 +302,7 @@ az managedapp create \
   --parameters "{\"funcname\": {\"value\": \"managedusersappfunction\"}, \"storageName\": {\"value\": \"managedusersappstorage\"}}"
 ```
 
-# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájában írja be és válassza a **felügyelt alkalmazások központ**elemet.
 2. A **felügyelt alkalmazások központban**válassza a **Service Catalog-alkalmazások** elemet, majd kattintson a **Hozzáadás**gombra. 
@@ -315,7 +315,7 @@ az managedapp create \
 
 4. Adja meg a felügyelt alkalmazás példányának a Service Catalog-definícióból való létrehozásához szükséges értékeket:
 
-    * Válassza kiazt az előfizetést, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
+    * Válassza ki azt az **előfizetést**, **erőforráscsoportot**és **helyet** , ahová az alkalmazás-példányt létre kívánja hozni.
     * Adjon meg egy egyedi Azure-függvény nevét és az Azure Storage-fiók nevét.
 
     ![Alkalmazásbeállítások](./media/managed-application-with-custom-providers/application-settings.png)
@@ -328,7 +328,7 @@ az managedapp create \
 
 ## <a name="custom-actions-and-resources"></a>Egyéni műveletek és erőforrások
 
-A Service Catalog alkalmazás példányának telepítése után két új erőforráscsoport van. Az első erőforráscsoport `applicationGroup` a felügyelt alkalmazás egy példányát tartalmazza, a második `managedResourceGroup` erőforráscsoport tárolja a felügyelt alkalmazás erőforrásait, beleértve az **egyéni szolgáltatót**is.
+A Service Catalog alkalmazás példányának telepítése után két új erőforráscsoport van. Az első erőforráscsoport `applicationGroup` a felügyelt alkalmazás egy példányát tartalmazza, a második erőforráscsoport `managedResourceGroup` tárolja a felügyelt alkalmazás erőforrásait, beleértve az **egyéni szolgáltatót**is.
 
 ![Alkalmazás-erőforráscsoportok](./media/managed-application-with-custom-providers/application-resource-groups.png)
 
@@ -350,8 +350,8 @@ Megtekintheti a felügyelt alkalmazás példányát, és **egyéni műveleteket*
 
 ## <a name="looking-for-help"></a>Segítség keresése
 
-Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke `azure-managedapps` hozzáadásával gyors választ kaphat!
+Ha kérdése van a Azure Managed Applicationsával kapcsolatban, próbálja meg megkérdezni a [stack overflow](http://stackoverflow.com/questions/tagged/azure-managedapps). Előfordulhat, hogy egy hasonló kérdést már megtettek és megválaszoltak, ezért először A feladás előtt érdemes megnézni. A címke `azure-managedapps` hozzáadásával gyorsan választ kaphat!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha közzétenné felügyelt alkalmazását az Azure Marketplace-en, tekintse meg az [Azure-beli felügyelt alkalmazások a Marketplace piactéren](publish-marketplace-app.md) című témakört.

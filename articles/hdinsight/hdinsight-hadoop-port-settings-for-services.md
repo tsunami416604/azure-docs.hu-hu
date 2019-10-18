@@ -1,23 +1,23 @@
 ---
 title: A Hadoop Services által a HDInsight-ben használt portok – Azure
-description: Ez az Azure HDInsight futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza.
+description: Ez a cikk az Azure HDInsight futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/15/2019
+ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70733423"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529547"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>A HDInsight Apache Hadoop Services által használt portok
 
-Ez a dokumentum a Linux-alapú HDInsight-fürtökön futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza. Emellett információkat nyújt a fürt SSH-kapcsolaton keresztüli csatlakozásához használt portokról is.
+Ez a dokumentum a HDInsight-fürtökön futó Apache Hadoop-szolgáltatások által használt portok listáját tartalmazza. Emellett információkat nyújt a fürt SSH-kapcsolaton keresztüli csatlakozásához használt portokról is.
 
 ## <a name="public-ports-vs-non-public-ports"></a>Nyilvános portok és nem nyilvános portok
 
@@ -34,7 +34,7 @@ Ha további gépeket szeretne csatlakoztatni a virtuális hálózathoz, előszö
 
 Egy HDInsight-fürt összes csomópontja egy Azure-Virtual Network található, és nem lehet közvetlenül hozzáférni az internetről. A nyilvános átjárók a következő portokhoz biztosítanak internet-hozzáférést, amelyek az összes HDInsight esetében közösek.
 
-| Szolgáltatás | Port | Protocol | Leírás |
+| Szolgáltatás | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- |
 | sshd |22 |SSH |Összekapcsolja az ügyfeleket az sshd-vel az elsődleges átjárócsomóponthoz. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Összekapcsolja az ügyfeleket az sshd-vel a peremhálózati csomóponton. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
@@ -47,14 +47,14 @@ Egy HDInsight-fürt összes csomópontja egy Azure-Virtual Network található, 
 
 A következő típusok érhetők el adott fürtökhöz:
 
-| Szolgáltatás | Port | Protocol | Fürt típusa | Leírás |
+| Szolgáltatás | Port | Protocol (Protokoll) | Fürttípus | Leírás |
 | --- | --- | --- | --- | --- |
 | Stargate |443 |HTTPS |HBase |HBase REST API. Lásd: [az Apache HBase használatának első lépései](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API. Lásd: [Apache Spark feladatok távoli elküldése az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md) |
 | Spark-takarékos kiszolgáló |443 |HTTPS |Spark |A Spark-takarékossági kiszolgáló a kaptár-lekérdezések elküldésére szolgál. Lásd: [a beeline Apache Hive használata a HDInsight-on](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Storm webes felhasználói felület. Lásd: [Apache Storm-topológiák üzembe helyezése és kezelése a HDInsight-](storm/apache-storm-deploy-monitor-topology-linux.md) ben |
+| A Storm |443 |HTTPS |A Storm |Storm webes felhasználói felület. Lásd: [Apache Storm-topológiák üzembe helyezése és kezelése a HDInsight-](storm/apache-storm-deploy-monitor-topology-linux.md) ben |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Hitelesítés
 
 Az interneten nyilvánosan elérhető összes szolgáltatást hitelesíteni kell:
 
@@ -73,18 +73,18 @@ Az interneten nyilvánosan elérhető összes szolgáltatást hitelesíteni kell
 
 ### <a name="ambari"></a>Ambari
 
-| Szolgáltatás | Csomópontok | Port | URL-cím | Protocol | 
+| Szolgáltatás | Csomópontok | Port | URL-cím elérési útja | Protocol (Protokoll) |
 | --- | --- | --- | --- | --- |
 | Ambari webes felhasználói felület | Átjárócsomópontok | 8080 | / | HTTP |
 | Ambari REST API | Átjárócsomópontok | 8080 | /api/v1 | HTTP |
 
 Példák:
 
-* Ambari REST API:`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | NameNode webes felhasználói felület |Átjárócsomópontok |30070 |HTTPS |Az állapot megtekintésére szolgáló webes KEZELŐFELÜLET |
 | NameNode metaadat-szolgáltatás |fő csomópontok |8020 |IPC |Fájlrendszer metaadatainak |
@@ -95,7 +95,7 @@ Példák:
 
 ### <a name="yarn-ports"></a>FONALas portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | Resource Manager webes felhasználói felület |Átjárócsomópontok |8088 |HTTP |A Resource Manager webes felhasználói felülete |
 | Resource Manager webes felhasználói felület |Átjárócsomópontok |8090 |HTTPS |A Resource Manager webes felhasználói felülete |
@@ -109,20 +109,20 @@ Példák:
 
 ### <a name="hive-ports"></a>Struktúra portjai
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | HiveServer2 |Átjárócsomópontok |10001 |Takarékosság |Szolgáltatás a Kaptárhoz való csatlakozáshoz (takarékosság/JDBC) |
 | Hive-metaadattár |Átjárócsomópontok |9083 |Takarékosság |Szolgáltatás a kaptár-metaadatokhoz való csatlakozáshoz (takarékosság/JDBC) |
 
 ### <a name="webhcat-ports"></a>Webhcaten-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | Webhcaten-kiszolgáló |Átjárócsomópontok |30111 |HTTP |Webes API a HCatalog és más Hadoop-szolgáltatásokhoz |
 
 ### <a name="mapreduce-ports"></a>MapReduce-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | JobHistory |Átjárócsomópontok |19888 |HTTP |MapReduce JobHistory webes felhasználói felület |
 | JobHistory |Átjárócsomópontok |10020 |&nbsp; |MapReduce JobHistory-kiszolgáló |
@@ -130,21 +130,21 @@ Példák:
 
 ### <a name="oozie"></a>Oozie
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | Oozie-kiszolgáló |Átjárócsomópontok |11000 |HTTP |Oozie-szolgáltatás URL-címe |
 | Oozie-kiszolgáló |Átjárócsomópontok |11001 |HTTP |Oozie-rendszergazda portja |
 
 ### <a name="ambari-metrics"></a>Ambari-metrikák
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | Idősor (alkalmazás előzményei) |Átjárócsomópontok |6188 |HTTP |Az idővonal-szolgáltatás webes felhasználói felülete |
 | Idősor (alkalmazás előzményei) |Átjárócsomópontok |30200 |RPC |Az idővonal-szolgáltatás webes felhasználói felülete |
 
 ### <a name="hbase-ports"></a>HBase-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
 | HMaster |Átjárócsomópontok |16000 |&nbsp; |&nbsp; |
 | HMaster-információ webes felhasználói felülete |Átjárócsomópontok |16010 |HTTP |A HBase Master webes felhasználói felületének portja |
@@ -153,19 +153,19 @@ Példák:
 
 ### <a name="kafka-ports"></a>Kafka-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- | --- |
-| Bróker |Munkavégző csomópontok |9092 |[Kafka-huzal protokoll](https://kafka.apache.org/protocol.html) |Ügyfél-kommunikációhoz használatos |
+| Bróker |Munkavégző-csomópontok |9092 |[Kafka-huzal protokoll](https://kafka.apache.org/protocol.html) |Ügyfél-kommunikációhoz használatos |
 | &nbsp; |Zookeeper-csomópontok |2181 |&nbsp; |Az ügyfelek által a Zookeeper való csatlakozáshoz használt port |
 
 ### <a name="spark-ports"></a>Spark-portok
 
-| Szolgáltatás | Csomópontok | Port | Protocol | URL-cím | Leírás |
+| Szolgáltatás | Csomópontok | Port | Protocol (Protokoll) | URL-cím elérési útja | Leírás |
 | --- | --- | --- | --- | --- | --- |
 | Spark-kiszolgálók |Átjárócsomópontok |10002 |Takarékosság | &nbsp; | Szolgáltatás a Spark SQL-hez való csatlakozáshoz (takarékosság/JDBC) |
 | Livy-kiszolgáló | Átjárócsomópontok | 8998 | HTTP | &nbsp; | Az utasítások, feladatok és alkalmazások futtatására szolgáló szolgáltatás |
-| Jupyter Notebook | Átjárócsomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhelye |
+| Jupyter notebook | Átjárócsomópontok | 8001 | HTTP | &nbsp; | Jupyter notebook webhelye |
 
 Példák:
 
-* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. Ebben a példában `10.0.0.11` a a Livy szolgáltatást futtató átjárócsomóponthoz IP-címe.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. Ebben a példában a `10.0.0.11` a Livy szolgáltatást futtató átjárócsomóponthoz IP-címe.
