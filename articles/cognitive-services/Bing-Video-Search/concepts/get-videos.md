@@ -1,5 +1,5 @@
 ---
-title: Keresési kérelmek küldése a Bing Video Search APInak
+title: Videók keresése a Bing Video Search API használatával
 titleSuffix: Azure Cognitive Services
 description: További információ a keresési lekérdezések küldéséről a Bing Video Search API.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: b565ad8be1d8529d3650ec36fe7c4d61f6c5dc8f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879089"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512415"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
 
@@ -144,7 +144,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>A lekérdezés bővítése
 
-Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például a lekérdezés a *csatornák tisztítását*használta, a kibontott lekérdezések a következőket tehetik: A ereszcsatorna tisztító **eszközei**, **a lemez**tisztítása, a ereszcsatorna tisztítása és az **Easy** ereszcsatorna tisztítása.
+Ha a Bing ki tudja bővíteni a lekérdezést az eredeti keresés szűkítéséhez, a [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) objektumban szerepelni fog a `queryExpansions` mező. Ha például az eredeti lekérdezés a *Cleaning Gutters* volt, a bővített lekérdezések a következők lehetnek: Gutter Cleaning **Tools**, Cleaning Gutters **From the Ground**, Gutter Cleaning **Machine** és **Easy** Gutter Cleaning.
 
 Az alábbi példában a *Cleaning Gutters* bővített lekérdezései láthatók.
 

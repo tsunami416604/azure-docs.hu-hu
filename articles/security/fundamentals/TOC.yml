@@ -49,16 +49,6 @@
             - name: Tudnivalók az Azure Disk Encryptionről
               displayName: 'BitLocker, bek'
               href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Gyors útmutatók
-              items:
-                - name: Linux rendszerű virtuális gép titkosítása az Azure CLI-vel
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-cli-quickstart'
-                - name: Linux rendszerű virtuális gép titkosítása az Azure PowerShell-lel
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-linux-powershell-quickstart'
-                - name: Windows rendszerű virtuális gép titkosítása az Azure CLI-vel
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-cli-quickstart'
-                - name: Windows rendszerű virtuális gép titkosítása az Azure PowerShell-lel
-                  href: 'https://docs.microsoft.com/azure/security/azure-disk-encryption-windows-powershell-quickstart'
             - name: Azure Disk Encryption
               items:
                 - name: Lemeztitkosítás előfeltételei
@@ -151,8 +141,6 @@
           href: network-best-practices.md
         - name: DDoS Protection
           href: ddos-best-practices.md
-        - name: Határbiztonság
-          href: network-best-practices.md
 - name: Alkalmazás
   items:
     - name: PaaS
@@ -185,9 +173,6 @@
   items:
     - name: Naplózás
       items:
-        - name: Biztonság kezelése
-          displayName: 'vulnerability, incident, virus,'
-          href: 'https://docs.microsoft.com/azure/security-center/security-center-intro?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
         - name: Távfelügyeleti biztonság
           href: management.md
         - name: Azure-naplók integrációja
@@ -199,9 +184,6 @@
             - name: Az Azure AD auditnaplóinak integrálása
               displayName: active directory
               href: azure-log-integration-ad.md
-            - name: A Security Center riasztásainak integrálása
-              displayName: splunk
-              href: 'https://docs.microsoft.com/azure/security-center/security-center-export-data-to-siem?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
             - name: A Key Vault naplóinak integrálása
               displayName: keyvault
               href: azure-log-integration-keyvault-eventhub.md

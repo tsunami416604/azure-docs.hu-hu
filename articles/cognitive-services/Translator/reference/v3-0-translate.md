@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 02/01/2019
+ms.date: 10/16/2019
 ms.author: swmachan
-ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 24f27dfde34413d1ac98f795eddc07103d3cbf3c
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299828"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515256"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: fordítás
 
@@ -23,7 +23,7 @@ Lefordítja a szöveget.
 
 ## <a name="request-url"></a>Kérés URL-címe
 
-@No__t-0 kérelem küldése a következőnek:
+@No__t_0 kérelem küldése a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
@@ -102,7 +102,7 @@ A kérelem fejlécei a következők:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: <code>application/json</code>.</td>
+    <td><em>Kötelező kérelem fejléce</em><br/>Megadja az adattartalom tartalomtípusát.<br/> Az elfogadott érték <code>application/json; charset=UTF-8</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -165,7 +165,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     A mondatok határai csak akkor jelennek meg, ha a kérelem paraméterének `includeSentenceLength` értéke `true`.
 
-  * `sourceText`: egy `text` nevű karakterlánc-tulajdonsággal rendelkező objektum, amely a forrás nyelvének alapértelmezett parancsfájljában megadja a bemeneti szöveget. @no__t – 0 tulajdonság csak akkor van jelen, ha a bemenet olyan parancsfájlban van kifejezve, amely nem a nyelv szokásos parancsfájlja. Ha például a bemenet arab nyelven íródott, akkor a `sourceText.text` az Arab-parancsfájlba konvertált Arab szöveg lesz.
+  * `sourceText`: egy `text` nevű karakterlánc-tulajdonsággal rendelkező objektum, amely a forrás nyelvének alapértelmezett parancsfájljában megadja a bemeneti szöveget. `sourceText` tulajdonság csak akkor jelenik meg, ha a bemenet olyan parancsfájlban van kifejezve, amely nem a nyelv szokásos parancsfájlja. Ha például a bemenet arab nyelven íródott, akkor a `sourceText.text` az Arab-parancsfájlba konvertált Arab szöveg lesz.
 
 Példa a JSON-válaszokra a [példák](#examples) szakaszban.
 
@@ -234,7 +234,7 @@ Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 
 Ebből a példából megtudhatja, hogyan fordítható le egy angolról egyszerűsített kínaira egy adott mondat.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 A válasz törzse:
@@ -256,7 +256,7 @@ A `translations` tömb egyetlen elemet tartalmaz, amely a bemenetben egyetlen sz
 Ebből a példából megtudhatja, hogyan fordítható le egy angolról egyszerűsített kínaira egy adott mondat. A kérelem nem adja meg a szövegbeviteli nyelvet. Ehelyett a rendszer automatikusan észleli a forrás nyelvét.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 A válasz törzse:
@@ -278,7 +278,7 @@ A válasz hasonló az előző példában szereplő válaszhoz. Mivel a rendszer 
 Az előző példát kiterjesztjük az írás hozzáadásával. A következő kérelem egy latin írásrendszerben írt kínai nyelvű fordítást kér.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 A válasz törzse:
@@ -305,7 +305,7 @@ A fordítási eredmény mostantól tartalmaz egy `transliteration` tulajdonságo
 Ha egyszerre több karakterláncot fordít le, egyszerűen csak a karakterláncok tömbjét kell megadnia a kérelem törzsében.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
 A válasz törzse:
@@ -330,7 +330,7 @@ A válasz törzse:
 Ebből a példából megtudhatja, hogyan fordíthatja le ugyanazt a bemenetet több nyelvre egy kérelemben.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}]"
 ```
 
 A válasz törzse:
@@ -372,19 +372,19 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
   <tr>
     <td><code>Marked</code></td>
     <td>A profán szavakat a kimenet jelölője váltja fel. A jelölő a <code>ProfanityMarker</code> paramétertől függ.<br/><br/>
-@No__t – 0 esetén a profán szavakat <code>***</code> értékre cseréli:<br/>
+@No__t_0 esetén a profán szavak helyébe <code>***</code>:<br/>
     <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: \* @ no__t-2 @ no__t-3.<br/><br/>
-@No__t – 0 esetén a profán szavakat az XML-címkék veszik körül &lt;profanity @ no__t-2 és &lt;/káromkodás @ no__t-4:<br/>
+    <strong>Példa fordítás (angol)</strong>: \* \* \*.<br/><br/>
+@No__t_0 a profán szavakat az XML-címkék veszik körül &lt;profanity &gt; és &lt;/profanity &gt;:<br/>
     <strong>Példa forrása (Japán)</strong>: 彼はジャッカスです 。<br/>
-    <strong>Példa fordítás (angol)</strong>: ez egy @no__t 1profanity @ no__t-2jackass @ no__t-3/profán @ no__t-4.
+    <strong>Példa fordítás (angol)</strong>: &lt;profanity &gt;jackass &lt;/profanity &gt;.
   </tr>
 </table> 
 
 Példa:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 A visszatérési érték:
 
@@ -401,7 +401,7 @@ A visszatérési érték:
 Összehasonlítás a rel:
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 A legutóbbi kérelem visszatérési értéke:
@@ -428,7 +428,7 @@ Gyakori, hogy olyan tartalmat fordítson le, amely tartalmaz egy HTML-lapról sz
 Itt látható egy példa a bemutatóra.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
 ```
 
 A válasz:
@@ -448,7 +448,7 @@ A válasz:
 Az igazítási adatok fogadásához a lekérdezési karakterláncon `includeAlignment=true` értéket kell megadnia.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation.'}]"
 ```
 
 A válasz:
@@ -484,7 +484,7 @@ Vegye figyelembe a következő korlátozásokat:
 Ha információt szeretne kapni a mondat hosszáról a forrás szövegében és a lefordított szövegben, a lekérdezési karakterláncon `includeSentenceLength=true` értéket kell megadnia.
 
 ```curl
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
 ```
 
 A válasz:
@@ -516,7 +516,7 @@ Az ellátási kód a következő szintaxist használja.
 Tegyük fel például, hogy a "The Word wordomatic egy szótár bejegyzés" angol mondatot. Ha meg szeretné őrizni a fordítás _wordomatic_ a szót, küldje el a kérelmet:
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'The word <mstrans:dictionary translation=\"wordomatic\">word or phrase</mstrans:dictionary> is a dictionary entry.'}]"
 ```
 
 Az eredmény a következőket eredményezi:

@@ -8,14 +8,6 @@
 - name: Gyors útmutatók
   expanded: true
   items:
-    - name: REST API
-      items:
-        - name: 'A C# használata'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: A Java használata
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: A Python használata
-          href: quickstarts/detect-data-anomalies-python.md
     - name: Ügyfélkódtár
       items:
         - name: 'A C# használata'
@@ -24,6 +16,14 @@
           href: quickstarts/detect-data-anomalies-python-sdk.md
         - name: A Node.js használata
           href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+    - name: REST API
+      items:
+        - name: 'A C# használata'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: A Java használata
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: A Python használata
+          href: quickstarts/detect-data-anomalies-python.md
 - name: Oktatóanyagok
   items:
     - name: Rendellenességek vizualizálása kötegként a Power BI használatával

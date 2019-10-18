@@ -1,7 +1,7 @@
 ---
-title: Futtassa az Azure Container Instances szolgáltatásban
+title: Face tároló futtatása Azure Container Instances
 titleSuffix: Azure Cognitive Services
-description: A Face tároló üzembe egy Azure-Tárolópéldányon, és tesztelje a szolgáltatást egy webböngészőben.
+description: Üzembe helyezheti a Face tárolót egy Azure Container-példányon, és tesztelheti egy böngészőben.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 7/5/2019
 ms.author: dapine
-ms.openlocfilehash: e67846b6b304b5425f7e8334eb3a4499a029d5ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2a596ea1f6f6405078d0e031de00212995342a19
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711592"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516805"
 ---
-# <a name="deploy-the-face-container-to-azure-container-instances"></a>A Face-tároló üzembe helyezése az Azure Container Instances szolgáltatásban
+# <a name="deploy-the-face-container-to-azure-container-instances"></a>A Face tároló üzembe helyezése Azure Container Instances
 
-Ismerje meg, hogyan helyezhet üzembe a Cognitive Services [Face](../face-how-to-install-containers.md) tárolót az Azure-bA [Container Instances](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás bemutatja egy Azure Face erőforrást. Majd bemutatjuk, hogy a társított tároló rendszerképének lekérése. Végül azt jelölje ki a azon képessége, hogy a böngésző a két vezénylését. Tárolók használatával is shift figyelmét a fejlesztők számára az alkalmazásfejlesztés inkább összpontosító infrastruktúra kezelése.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Face](../face-how-to-install-containers.md) tárolót az Azure [Container Instancesban](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás egy Azure Face-erőforrás létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>A privát tárolóregisztrációs hozzáférés kérése
+## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
 
 [!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: e1e89612ee48aaf5ee9bda51f954add426bf6720
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935203"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516794"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Az Azure authoring-erőforrásba való Migrálás lépései
 
@@ -43,7 +43,7 @@ Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulaj
 
     ![Első előugró ablak az áttelepítési folyamatban válassza az áttelepítés most lehetőséget.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Ha bármelyik alkalmazás rendelkezik közreműködővel, a rendszer arra kéri, hogy **küldjön nekik egy e-mailt** , amely tájékoztatja őket az áttelepítésről. Ez az egy választható lépés. 
+1. Ha bármelyik alkalmazás rendelkezik közreműködővel, a rendszer arra kéri, hogy **küldjön nekik egy e-mailt** , amely tájékoztatja őket az áttelepítésről. Ez egy választható lépés. 
 
     Miután áttelepítette fiókját az Azure-ba, az alkalmazások már nem lesznek elérhetők a közreműködők számára.
 
@@ -91,14 +91,14 @@ Az áttelepítési folyamat akkor érhető el, ha Ön a LUIS-alkalmazások tulaj
 
     Nem kell tudnia, hogy az authoring Resource kulcsa az alkalmazások a LUIS Portalon való szerkesztésének folytatásához szükséges. Ha programozott módon szeretné szerkeszteni az alkalmazásokat, szüksége lesz a szerzői kulcs értékeire. Ezek az értékek a LUIS **-portál Manage-> Azure-erőforrások** lapján jelennek meg, és az erőforrás **kulcsai** oldalának Azure Portal is elérhetők.  
 
-1. Az alkalmazásokhoz való hozzáférés előtt válassza ki az előfizetést és a LUIS authoring erőforrást, és tekintse meg az Ön által létrehozott alkalmazásokat.
+1. Az alkalmazásokhoz való hozzáférés előtt válassza ki az előfizetés és a LUIS authoring Resource elemet a megjelenő alkalmazások megtekintéséhez.
 
     ![Válassza ki az előfizetés és a LUIS authoring Resource elemet a megadható alkalmazások megtekintéséhez.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
 ## <a name="app-contributor-begins-the-migration-process"></a>Az alkalmazás közreműködője megkezdi az áttelepítési folyamatot
 
-Kövesse az alkalmazás tulajdonosának áttelepítéséhez szükséges lépéseket. A folyamat létrehoz egy új authoring Resource típusú `LUIS.Authoring`erőforrást. 
+Kövesse az alkalmazás tulajdonosának áttelepítéséhez szükséges lépéseket. A folyamat létrehoz egy `LUIS.Authoring` típusú új szerzői erőforrást. 
 
 A fiókját át kell telepíteni ahhoz, hogy közreműködőként hozzá lehessen adni a mások tulajdonában lévő áttelepített alkalmazásokat.  
 
@@ -110,9 +110,9 @@ Ismerje meg [, hogyan vehet fel közreműködőket](luis-how-to-collaborate.md).
 
 ## <a name="troubleshooting-errors-with-the-migration-process"></a>Hibák elhárítása az áttelepítési folyamattal
 
-Ha az áttelepítési folyamat során `MissingSubscriptionRegistration` hibaüzenetet kap a Luis-portálon egy piros értesítési sávon, hozzon létre egy kognitív szolgáltatási erőforrást a [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)-ben. További információ a [hiba okairól](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
+Ha `MissingSubscriptionRegistration` hibát kap a LUIS-portálon, és az áttelepítési folyamat során piros értesítési sáv jelenik meg, hozzon létre egy kognitív szolgáltatási erőforrást a [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) vagy az [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)-ben. További információ a [hiba okairól](../../azure-resource-manager/resource-manager-register-provider-errors.md#cause).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * A szerzői és futtatókörnyezeti kulcsokkal kapcsolatos [fogalmak](luis-concept-keys.md) áttekintése

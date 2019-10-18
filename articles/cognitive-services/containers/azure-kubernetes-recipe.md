@@ -1,5 +1,5 @@
 ---
-title: Kubernetes szolgáltatás futtatása
+title: Nyelvfelismerés tároló futtatása a Kubernetes szolgáltatásban
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Üzembe helyezheti a nyelvfelismerés tárolót egy futó mintával az Azure Kubernetes szolgáltatásban, és tesztelheti egy böngészőben.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: dapine
-ms.openlocfilehash: 927f5bc191c1bbd3e9f8ea89b9f4171ce82df612
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388157"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515238"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>A Text Analytics nyelvfelismerés tároló üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -72,7 +72,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
     az group create --name cogserv-container-rg --location westus
     ```
 
-1. Hozzon létre saját Azure Container Registry a név formátumával, majd @no__t – 0, például `pattyregistry`. Ne használjon kötőjelet vagy aláhúzás karaktert a névben.
+1. Hozzon létre saját Azure Container Registry a név formátumával, majd `registry`, például `pattyregistry`. Ne használjon kötőjelet vagy aláhúzás karaktert a névben.
 
     ```azurecli-interactive
     az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
@@ -150,7 +150,7 @@ Ha a tárolót az Azure Kubernetes szolgáltatásban szeretné üzembe helyezni,
 
 ## <a name="get-language-detection-docker-image"></a>Nyelvfelismerés Docker-rendszerkép lekérése
 
-1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa @no__t – 0 értéket az újabb verzióra.
+1. A Docker-rendszerkép legújabb verziójának lekérése a helyi gépre. Ez eltarthat néhány percig. Ha a tároló újabb verziója van, módosítsa `1.1.006770001-amd64-preview` értékét az újabb verzióra.
 
     ```console
     docker pull mcr.microsoft.com/azure-cognitive-services/language:1.1.006770001-amd64-preview
@@ -178,7 +178,7 @@ A következő lépések szükségesek ahhoz, hogy a tároló-beállításjegyzé
     az ad sp create-for-rbac --skip-assignment
     ```
 
-    Mentse az eredményeket @no__t – 0 értéket a 3. lépésben, `<appId>`. lépésben szereplő megbízott paraméterhez. Mentse a `password` értéket a következő szakasz ügyfél-titkos paraméteréhez `<client-secret>`.
+    Mentse az eredmények `appId` értékét a 3. lépésben szereplő, `<appId>`. lépésben szereplő megbízott paraméterhez. Mentse a `password` értéket a következő szakasz ügyfél-titkos paraméteréhez `<client-secret>`.
 
     ```console
     > az ad sp create-for-rbac --skip-assignment
@@ -315,17 +315,17 @@ Ez a szakasz a **kubectl** CLI használatával kommunikál az Azure Kubernetes s
 
     Nyelv – előtér-telepítési beállítások|Rendeltetés|
     |--|--|
-    |32. sor<br> @no__t – 0 tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
-    |44. sor<br> @no__t – 0 tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
+    |32. sor<br> `image` tulajdonság|Rendszerképek helye a Container Registry<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
+    |44. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
 
 1. Módosítsa a `language.yml` nyelvi telepítési sorait az alábbi táblázat alapján, és adja hozzá a saját tároló beállításjegyzék-rendszerképének nevét, az ügyfél titkos kulcsát és a szöveges elemzési beállításokat.
 
     |Nyelvi telepítési beállítások|Rendeltetés|
     |--|--|
-    |78. sor<br> @no__t – 0 tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
-    |95. sor<br> @no__t – 0 tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
-    |91. sor<br> @no__t – 0 tulajdonság|A Text Analytics-erőforrás kulcsa|
-    |92. sor<br> @no__t – 0 tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+    |78. sor<br> `image` tulajdonság|A Container Registryban található nyelvi rendszerkép rendszerképének helye<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
+    |95. sor<br> `name` tulajdonság|Container Registry a rendszerkép titkát, amelyet az előző szakaszban `<client-secret>` néven nevezünk.|
+    |91. sor<br> `apiKey` tulajdonság|A Text Analytics-erőforrás kulcsa|
+    |92. sor<br> `billing` tulajdonság|A szöveges elemzési erőforrás számlázási végpontja.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Mivel a **apiKey** és a **Számlázási végpont** a Kubernetes-előkészítési definíció részeként van beállítva, a webhely-tárolónak nem kell tudnia ezeket, vagy át kell adnia őket a kérelem részeként. A webhely tárolója a nyelvfelismerés tárolóra hivatkozik a Orchestrator neve `language`.
 

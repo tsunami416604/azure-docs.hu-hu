@@ -1,5 +1,5 @@
 ---
-title: Offline értékelés – személyre szabás
+title: Offline próbaverzió végrehajtása – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan elemezheti tanulási ciklusát offline kiértékeléssel
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: bd57880b11f56b13b4225652071593d29dcc6280
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884487"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515228"
 ---
 # <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>A tanulási hurok elemzése offline kiértékeléssel
 
@@ -35,7 +35,7 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 
 1. A [Azure Portal](https://azure.microsoft.com/free/)keresse meg a személyre szabott erőforrást.
 1. A Azure Portal lépjen az **értékelések** szakaszra, és válassza az **Értékelés létrehozása**elemet.
-    ![A Azure Portal nyissa meg a * * értékelések * * szakaszt, és válassza a * * Create reértékelés * * elemet.](./media/offline-evaluation/create-new-offline-evaluation.png)
+    ![In a Azure Portal, nyissa meg a * * értékelések * * szakaszt, és válassza a * * Értékelés létrehozása * * elemet. ](./media/offline-evaluation/create-new-offline-evaluation.png)
 1. Válassza ki a következő beállításokat:
 
     * Értékelés neve
@@ -46,7 +46,7 @@ További információért olvassa el a [kapcsolat nélküli értékeléseket](co
 
 1. A kiértékelés elindításához kattintson **az OK gombra**. 
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Az értékelések hosszú időt vehetnek igénybe a feldolgozandó adatmennyiségtől, az összehasonlítani kívánt tanulási szabályzatok számától és a kért optimalizálástól függően.
 
@@ -54,16 +54,16 @@ Ha elkészült, kiválaszthatja a kiértékelést az értékelések listájában
 
 A tanulási szabályzatok összehasonlítása a következőket foglalja magában:
 
-* **Online házirend**: A személyre szabott alkalmazásban használt aktuális tanulási szabályzat
-* **Alapterv**: Az alkalmazás alapértelmezett értéke (amelyet a Rank-hívásokban elindított első művelet határoz meg),
-* **Véletlenszerű házirend**: Egy képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.
-* **Egyéni szabályzatok**: A próbaverzió indításakor feltöltött további képzési szabályzatok.
-* **Optimalizált szabályzat**: Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, azt a rendszer összehasonlítja, és letöltheti, vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.
+* **Online házirend**: a személyre szabott, jelenleg használt képzési szabályzat
+* **Alapkonfiguráció: az**alkalmazás alapértelmezett értéke (a Rank-hívásokban elindított első művelet határozza meg),
+* **Véletlenszerű házirend**: olyan képzeletbeli rangsorolási viselkedés, amely mindig véletlenszerű választ ad vissza a megadott műveletek közül.
+* **Egyéni szabályzatok**: a próbaverzió indításakor feltöltött további képzési szabályzatok.
+* **Optimalizált házirend**: Ha a kiértékelést az optimalizált szabályzat felderítésére szolgáló lehetőséggel indította el, a rendszer összehasonlítja azt is, és letöltheti vagy elvégezheti az online tanulási szabályzatot, amely az aktuálisat váltja fel.
 
 ![Offline kiértékelési beállítások eredményeinek diagramja](./media/offline-evaluation/evaluation-results.png)
 
 A műveletek és a környezet [funkcióinak](concepts-features.md) hatékonysága.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, [hogyan működnek az offline értékelések](concepts-offline-evaluation.md).

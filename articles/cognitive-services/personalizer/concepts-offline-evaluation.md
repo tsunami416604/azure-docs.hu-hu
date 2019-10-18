@@ -1,5 +1,5 @@
 ---
-title: Offline értékelés – személyre szabás
+title: Az offline kiértékelési módszer használata – személyre szabás
 titleSuffix: Azure Cognitive Services
 description: Hozzon létre visszajelzési C# hurkot ebben a rövid útmutatóban a személyre szabott szolgáltatással.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 5e9e745d73623e03e2530e1712a50e6670ee7ed3
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662855"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515584"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
 Az offline kiértékelés egy olyan módszer, amely lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül. Az offline kiértékelés az alkalmazásból a rangsor API-ba elküldett múltbeli adatokkal hasonlítja össze a különböző rangsorolt feladatok végrehajtását.
 
-Az offline értékelés a Dátumtartomány alapján történik. A tartomány az aktuális időpontig véget ér. A tartomány kezdete nem lehet nagyobb, mint az adatmegőrzéshez megadott napok száma [](how-to-settings.md).
+Az offline értékelés a Dátumtartomány alapján történik. A tartomány az aktuális időpontig véget ér. A tartomány kezdete nem lehet nagyobb, mint az [adatmegőrzéshez](how-to-settings.md)megadott napok száma.
 
 Az offline értékelés a következő kérdések megválaszolásához nyújt segítséget:
 
@@ -52,7 +52,7 @@ Az offline értékelés elvégzése után a személyre szabás az aktuális onli
 
 ## <a name="understanding-the-relevance-of-offline-evaluation-results"></a>Az offline kiértékelés eredményeinek ismertetése
 
-Ha offline kiértékelést futtat, nagyon fontos, hogy elemezze az eredmények megbízhatósági határait. Ha széleskörűek, ez azt jelenti, hogy az alkalmazás nem kapott elegendő adatmennyiséget a jutalmak becsléséhez, hogy azok pontosak vagy jelentősek legyenek. Mivel a rendszer további adatmennyiséget gyűjt, és offline értékeléseket futtat hosszabb időszakokon keresztül, a megbízhatósági intervallumok keskenyebbek lesznek.
+Ha offline kiértékelést futtat, nagyon fontos, hogy elemezze az eredmények _megbízhatósági határait_ . Ha széleskörűek, ez azt jelenti, hogy az alkalmazás nem kapott elegendő adatmennyiséget a jutalmak becsléséhez, hogy azok pontosak vagy jelentősek legyenek. Mivel a rendszer további adatmennyiséget gyűjt, és offline értékeléseket futtat hosszabb időszakokon keresztül, a megbízhatósági intervallumok keskenyebbek lesznek.
 
 ## <a name="how-offline-evaluations-are-done"></a>Hogyan történik az offline értékelések
 
@@ -96,7 +96,7 @@ Javasoljuk, hogy tekintse meg a funkciók értékeléseit, és kérje a követke
 * Vannak olyan nemkívánatos funkciók, amelyek nem használhatók a jogszabályi vagy a felelősségteljes használati megfontolások miatt? Vannak-e olyan szolgáltatások, amelyek proxyként (azaz szorosan tükrözve vagy korrelálva) nemkívánatos funkciókkal rendelkeznek?
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[](how-to-settings.md)
-A megszemélyesítő[Offline értékelések](how-to-offline-evaluation.md) konfigurálása a [személyre szabás működésének](how-personalizer-works.md) megismerése
+[Személyre szabás](how-to-settings.md) 
+[Offline értékelések futtatása](how-to-offline-evaluation.md) a [megszemélyesítő működésének](how-personalizer-works.md) megismerése
