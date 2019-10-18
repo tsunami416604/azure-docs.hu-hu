@@ -304,19 +304,33 @@
           href: spark-job.md
         - name: A GPU-k használata
           href: gpu-cluster.md
-        - name: Az Istio használata
-          items:
-            - name: Telepítés és konfigurálás
-              href: istio-install.md
-            - name: Intelligens útválasztás és tesztcsoportos kiadások
-              href: istio-scenario-routing.md
-        - name: A Hashicorp Consul Connect használata
-          items:
-            - name: Telepítés és konfigurálás
-              href: consul-install.md
         - name: Az Azure Database for PostgreSQL használata
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+    - name: Szolgáltatásháló kiválasztása és üzembe helyezése
+      items:
+        - name: A szolgáltatáshálók bemutatása
+          href: servicemesh-about.md
+        - name: Az Istio használata
+          items:
+            - name: Az Istio bemutatása
+              href: servicemesh-istio-about.md
+            - name: Telepítés és konfigurálás
+              href: servicemesh-istio-install.md
+            - name: Forgatókönyv – Intelligens útválasztás és tesztcsoportos kiadások
+              href: servicemesh-istio-scenario-routing.md
+        - name: A Linkerd használata
+          items:
+            - name: A Linkerd bemutatása
+              href: servicemesh-linkerd-about.md
+            - name: Telepítés és konfigurálás
+              href: servicemesh-linkerd-install.md
+        - name: A Consul használata
+          items:
+            - name: A Consul bemutatása
+              href: servicemesh-consul-about.md
+            - name: Telepítés és konfigurálás
+              href: servicemesh-consul-install.md
     - name: DevOps
       items:
         - name: Az Ansible használata AKS-fürtök létrehozásához

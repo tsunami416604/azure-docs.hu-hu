@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 79bd0ce90c76f95ce12662e0d496b481382e805a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 84be9c2b1d8e28fb847e52bda36f9857bd28da28
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177682"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72528871"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rövid útmutató: a Node. js-webalkalmazás figyelésének megkezdése az Azure Application Insights
 
@@ -43,7 +43,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet.
 
-   ![Application Insights-erőforrások hozzáadása](./media/nodejs-quick-start/1createresourseappinsights.png)
+   ![Azure Application Insights-erőforrás hozzáadása](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
    >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) doc webhelyén olvashat.
@@ -62,7 +62,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Válassza az **Áttekintés** lehetőséget, és másolja az alkalmazás kialakítási **kulcsát**.
 
-   ![Új App Insights-erőforrás űrlap](./media/nodejs-quick-start/3key.png)
+   ![A Application Insights rendszerállapot-kulcs megtekintése](./media/nodejs-quick-start/azure-app-insights-instrumentation-key.png)
 
 2. Adja hozzá a Node.js-hez készült Application Insights SDK-t az alkalmazáshoz. Az alkalmazás gyökérmappájából futtassa a következőket:
 
@@ -86,19 +86,19 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 1. Most megnyithatja ismét az Application Insights **Áttekintés** lapját az Azure Portalon (ahol a kialakítási kulcsot is megjelenítette) a jelenleg futó alkalmazás részleteinek megtekintéséhez.
 
-   ![Az Application Insights áttekintése menü](./media/nodejs-quick-start/4overview.png)
+   ![Application Insights áttekintése menü](./media/nodejs-quick-start/azure-app-insights-overview-menu.png)
 
 2. Válassza ki az alkalmazás-összetevők közötti függőségi kapcsolatok vizualizációs elrendezéséhez tartozó **Application Map** elemet. Minden egyes összetevőnél megjelennek a KPI-k, például a terhelés, a teljesítmény, a hibák és a riasztások.
 
-   ![Alkalmazástérkép](./media/nodejs-quick-start/5appmap.png)
+   ![Application Insights alkalmazás-hozzárendelés](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Válassza ki az **alkalmazás-elemzési** ikont ![Application Térkép ikon @ no__t-2 **nézetet az Analyticsben**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Válassza ki az **alkalmazás-elemzési** ikont ![Application Térkép ikont az elemzés ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **nézetben**.  Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
-   ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/nodejs-quick-start/6analytics.png)
+   ![Application Insights elemzési gráfok](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
 4. Lépjen vissza az **Áttekintés** lapra, és vizsgálja meg a KPI-gráfokat.  Ezen az irányítópulton az alkalmazás állapotával kapcsolatos statisztikák jelennek meg, köztük a bejövő kérések száma, az egyes kérések időtartama, valamint az esetleges hibák.
 
-   ![Az Állapotáttekintési időegyenes diagramjai](./media/nodejs-quick-start/7kpidashboards.png)
+   ![Application Insights állapot áttekintése – ütemterv diagramjai](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
    Ahhoz, hogy a **Lapmegtekintés betöltési ideje** diagramon megjelenjenek az **ügyféloldali telemetria** adatai, adja az alábbi szkriptet minden olyan oldalhoz, amelyet nyomon kíván követni:
 
@@ -124,7 +124,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 5. A bal oldalon válassza a **metrikák**lehetőséget. Az erőforrás állapotának és kihasználtságának vizsgálatához használja a metrikák Explorert. Az **új diagram hozzáadása** lehetőség kiválasztásával további egyéni nézeteket hozhat létre, vagy a **Szerkesztés** gombra kattintva módosíthatja a meglévő diagramtípust, a magasságot, a színpalettát, a csoportosításokat és a metrikákat. Létrehozhat például egy olyan diagramot, amely megjeleníti a böngésző átlagos betöltési idejét, ha a mérőszámok legördülő menüből kiválasztja a "böngésző oldal betöltési ideje" lehetőséget, és az összesítést az "AVG" értékre. Ha többet szeretne megtudni az Azure Metrikaböngésző-ról, látogasson el [az azure Metrikaböngésző](../../azure-monitor/platform/metrics-getting-started.md)használatába.
 
-   ![Kiszolgálómetrikák diagram](./media/nodejs-quick-start/8metrics.png)
+   ![Application Insights kiszolgálói metrikák gráfja](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
 A Node.js monitorozásával kapcsolatos további információkért tekintse át [az App Insights további Node.js-dokumentációját](../../azure-monitor/app/nodejs.md).
 

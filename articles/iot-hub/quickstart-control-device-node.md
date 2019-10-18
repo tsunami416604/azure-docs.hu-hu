@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Eszköz vezérlése az Azure IoT (node. js)'
+title: 'Gyors útmutató: eszköz vezérlése az Azure IoT (node. js)'
 description: Ebben a rövid útmutatóban két Node.js mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
 author: wesmc7777
 manager: philmea
@@ -8,20 +8,20 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 107b3401d23ea853a16722544385d72432cff308
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ed3946c40d8e3eff665e4454b81f408c2033c09a
+ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841325"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72529614"
 ---
-# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Gyors útmutató: Az Azure IoT hub-hoz csatlakoztatott eszköz vezérlése a Node. js használatával
+# <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>Rövid útmutató: a Node. js használata egy Azure IoT hub-hoz csatlakoztatott eszköz vezérléséhez
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-Az IoT Hub olyan Azure-szolgáltatás, amely lehetővé teszi nagy mennyiségű telemetria betöltését az IoT-eszközökről a felhőbe, valamint az eszközök kezelését a felhőből. Ebben a rövid útmutatóban egy *közvetlen metódussal* fogja vezérelni az IoT Hubhoz csatlakoztatott szimulált eszközt. A közvetlen metódusok használatával távolról módosíthatja az IoT Hubhoz csatlakoztatott eszköz működését.
+A IoT Hub egy olyan Azure-szolgáltatás, amely lehetővé teszi a IoT-eszközök Felhőbeli kezelését, valamint a felhőbe irányuló nagy mennyiségű eszköz telemetria történő tárolását és feldolgozását. Ebben a rövid útmutatóban egy *közvetlen metódussal* fogja vezérelni az IoT Hubhoz csatlakoztatott szimulált eszközt. A közvetlen metódusok használatával távolról módosíthatja az IoT Hubhoz csatlakoztatott eszköz működését.
 
 Ez a rövid útmutató két előre megírt Node.js-alkalmazást használ:
 
@@ -55,34 +55,34 @@ Ha még nem tette meg, töltse le a Node.js-mintaprojektet a https://github.com/
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha végrehajtotta az előző [rövid útmutatót: Telemetria küldése az eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md), ezt a lépést kihagyhatja.
+Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md) című előző útmutatót, kihagyhatja ezt a lépést.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Ha végrehajtotta az előző [rövid útmutatót: Telemetria küldése az eszközről egy IoT-hubhoz](quickstart-send-telemetry-node.md), ezt a lépést kihagyhatja.
+Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md) című előző útmutatót, kihagyhatja ezt a lépést.
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
 1. Futtassa az alábbi parancsot a Azure Cloud Shell az eszköz identitásának létrehozásához.
 
-   **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+   **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
-   **MyNodeDevice**: Annak az eszköznek a neve, amelyhez regisztrálva van. Használja a **MyNodeDevice** az ábrán látható módon. Ha más nevet választ az eszközének, ezt a nevet kell használnia ebben a cikkben, és frissítenie kell az eszköz nevét a minta alkalmazásokban a futtatása előtt.
+   **MyNodeDevice**: a regisztrált eszköz neve. Javasoljuk, hogy a **MyNodeDevice** használja az ábrán látható módon. Ha másik nevet választ az eszköznek, akkor a jelen cikkben is ezt a nevet kell használnia, és a futtatásuk előtt frissítenie kell az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
     az iot hub device-identity create \
-      --hub-name YourIoTHubName --device-id MyNodeDevice
+      --hub-name {YourIoTHubName} --device-id MyNodeDevice
     ```
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-    **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
-      --hub-name YourIoTHubName \
+      --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
     ```
@@ -95,18 +95,19 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 3. Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
-    **YourIoTHubName**: Az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
+    **YourIoTHubName**: az alábbi helyőrzőt cserélje le az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --name YourIoTHubName --policy-name service --output table
+      --policy-name service --name {YourIoTHubName} --output table
+
     ```
 
     Jegyezze fel a szolgáltatáskapcsolati sztringet, amely a következőképpen néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}`
 
-    Ezt az értéket használni fogja a rövid útmutató későbbi részében. A szolgáltatáskapcsolati sztring nem azonos az eszközkapcsolati sztringgel.
+    Ezt az értéket használni fogja a rövid útmutató későbbi részében. Ez a szolgáltatási kapcsolatok karakterlánca különbözik az előző lépésben feljegyzett eszköz-összekapcsolási karakterlánctól.
 
 ## <a name="listen-for-direct-method-calls"></a>Közvetlen metódusok hívásának figyelése
 
@@ -116,7 +117,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
 2. Nyissa meg a **SimulatedDevice.js** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le a `connectionString` változó értékét az eszköz korábban lejegyzett kapcsolati sztringjére. Ezután mentse a **SimulatedDevice.js** fájl módosításait.
+    Cserélje le a `connectionString` változó értékét a korábban jegyzett eszköz-összekapcsolási sztringre. Ezután mentse a módosításokat a **SimulatedDevice. js**fájlba.
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a szimulálteszköz-alkalmazás futtatásához:
 
@@ -127,7 +128,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](./media/quickstart-control-device-node/SimulatedDevice-1.png)
+    ![A szimulált eszköz futtatása](./media/quickstart-control-device-node/simulated-device-telemetry-iot-hub.png)
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
@@ -137,7 +138,7 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
 2. Nyissa meg a **BackEndApplication.js** fájlt egy Ön által választott szövegszerkesztőben.
 
-    Cserélje le az `connectionString` változó értéket a szolgáltatás korábban lejegyzett kapcsolati sztringjére. Mentse a **BackEndApplication.js** fájl módosításait.
+    Cserélje le a `connectionString` változó értékét a szolgáltatás-összekapcsolási sztringre, amelyet korábban jegyzett készített. Ezután mentse a módosításokat a **BackEndApplication. js**fájlba.
 
 3. Futtassa az alábbi parancsokat a helyi terminálablakban a szükséges kódtárak telepítéséhez és a háttéralkalmazás futtatásához:
 
@@ -148,21 +149,21 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
     Az alábbi képernyőfelvételen a kimenet látható, mivel az alkalmazás közvetlen metódust hív meg az eszköznek, és nyugtát kap:
 
-    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-node/BackEndApplication.png)
+    ![Kimenet, amikor az alkalmazás közvetlen metódust hív meg az eszközre.](./media/quickstart-control-device-node/direct-method-device-call.png)
 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
-    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-node/SimulatedDevice-2.png)
+    ![Kimenet a szimulált ügyfél változásakor](./media/quickstart-control-device-node/simulated-device-message-change.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban közvetlen metódust hívott egy eszközön egy háttérbeli alkalmazásból, és a közvetlen metódus hívására válaszolt egy szimulált eszköz alkalmazásban.
 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Telemetria átirányítása különböző végpontokra feldolgozás céljából](tutorial-routing.md)
+> [Oktatóanyag: Telemetria irányítása különböző végpontokra feldolgozás céljából](tutorial-routing.md)

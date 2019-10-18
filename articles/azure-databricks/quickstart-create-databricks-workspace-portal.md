@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 4ace735d116ef73e8a6fee8c0a244d520e730189
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 21a3e8541441e6139c1c84138870b3ffaf3cacc1
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312156"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72515802"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rövid útmutató: Spark-feladatok futtatása Azure Databricksen az Azure Portal használatával
 
@@ -39,11 +39,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
 
-    ![Databricks az Azure Portalon](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks az Azure Portalon")
+    ![Databricks Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Databricks Azure Portal")
 
 2. Az **Azure Databricks szolgáltatás** pontban adja meg az értékeket Databricks-munkaterület létrehozásához.
 
-    ![Azure Databricks-munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
+    ![Azure Databricks munkaterület létrehozása](./media/quickstart-create-databricks-workspace-portal/create-databricks-workspace.png "Azure Databricks-munkaterület létrehozása")
 
     Adja meg a következő értékeket:
     
@@ -54,8 +54,9 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport egy tároló, amely Azure-megoldásokhoz kapcsolódó erőforrásokat tárol. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../azure-resource-manager/resource-group-overview.md). |
     |**Hely**     | Válassza az **USA 2. nyugati régióját**. A további elérhető régiókért tekintse meg az [elérhető Azure-szolgáltatások régiók szerinti bontását](https://azure.microsoft.com/regions/services/).        |
     |**Tarifacsomag**     |  Válassza a **standard**, **prémium**vagy **próbaverzió**lehetőséget. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Virtual Network**     |  Válassza a saját Virtual Network (VNet) Azure Databricks munkaterület üzembe helyezését. További információ: [Azure Databricks üzembe helyezése az Azure-Virtual Network (VNet Injection)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).        |
 
-    Kattintson a  **Create** (Létrehozás) gombra.
+    Kattintson a **Létrehozás** gombra.
 
 4. A munkaterület létrehozása eltarthat néhány percig. A munkaterület létrehozása során megtekintheti a központi telepítés állapotát az **értesítésekben**.
 
@@ -70,11 +71,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
 2. A rendszer átirányítja az Azure Databricks portáljára. A portálon kattintson az **új fürt**elemre.
 
-    ![Databricks az Azure-on](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks az Azure-on")
+    ![Databricks az Azure-ban](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Databricks Spark-fürt létrehozása az Azure-on](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
+    ![Databricks Spark-fürt létrehozása az Azure-ban](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
@@ -92,11 +93,11 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
 1. A bal oldali ablaktáblán válassza a **Azure Databricks**lehetőséget. Az **Általános feladatok**területen válassza az **új jegyzetfüzet**lehetőséget.
 
-    ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 2. A **Jegyzetfüzet létrehozása** párbeszédpanelen adjon meg egy nevet, válassza ki a **Python** nyelvet, és válassza ki a korábban létrehozott Spark-fürtöt.
 
-    ![Notebook létrehozása a Databricksben](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Notebook létrehozása a Databricksben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
     Kattintson a **Létrehozás** gombra.
 
@@ -136,15 +137,15 @@ A következő feladatok végrehajtásával hozzon létre egy jegyzetfüzetet a D
 
 5. Így egy, az alábbi képernyőképhez hasonló táblázatos kimenet jelenik meg (csak egyes oszlopok láthatók):
 
-    ![Minta]ADATminta(./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "JSON-adathalmaza")
+    ![Mintaadatok](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "JSON-adatminta")
 
 6. Most létre kell hoznia egy vizualizációs ábrázolást, amely megmutatja, hogy hány biztonsági eseményt jelentettek a polgárok az alkalmazás és a városi feldolgozói alkalmazás használatával más források helyett. A táblázatos kimenet alján válassza a **oszlopdiagram** ikont, majd kattintson a **ábrázolási beállítások**elemre.
 
-    ![Oszlopdiagram létrehozása](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Oszlopdiagram létrehozása")
+    ![Sávdiagram létrehozása](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Sávdiagram létrehozása")
 
 8. A **Ábrázolás testreszabása** lapon húzza az értékeket a megfelelő helyre a képernyőképen látható módon.
 
-    ![Kördiagram](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "testreszabása oszlopdiagram testreszabása")
+    ![Tortadiagram testreszabása](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Oszlopdiagram testreszabása")
 
    * **Kulcsok** beállítása a **forráshoz**.
    * **Értékek** beállítása **< \id >** .
@@ -159,7 +160,7 @@ Ha végzett a cikkel, leállíthatja a fürtöt. Ehhez az Azure Databricks-munka
 
 ![Databricks-fürt leállítása](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, a rendszer automatikusan leállítja, ha a fürt létrehozásakor bejelölte **\_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>Következő lépések
 

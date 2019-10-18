@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager-sablon létrehozása és üzembe helyezése a IntelliJ IDEA használatával | Microsoft Docs
+title: Azure Resource Manager sablon üzembe helyezése – IntelliJ IDEA
 description: Megtudhatja, hogyan hozhatja létre első Azure Resource Manager-sablonját a IntelliJ IDEA használatával, és hogyan helyezheti üzembe.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
+ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169449"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72533659"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása és telepítése a IntelliJ IDEA használatával
 
@@ -48,7 +48,7 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
     ![Resource Manager-sablon – kattintson a jobb gombbal az üzembe helyezés létrehozásához](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Adja meg a **központi telepítési nevet**, az **előfizetést**, az **erőforráscsoportot**és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoporthoz @no__t – 0. Ezután válassza ki az **erőforrás-sablon** elérési útját `azuredeploy.json` és **erőforrás-paraméterekként** , ahogy `azuredeploy.parameters.json` letöltötte.
+1. Adja meg a **központi telepítési nevet**, az **előfizetést**, az **erőforráscsoportot**és a **régiót**. Itt telepítjük a sablont egy új erőforráscsoport-`testRG`ba. Ezután válassza ki az **erőforrás-sablon** elérési útját `azuredeploy.json` és **erőforrás-paraméterekként** , ahogy `azuredeploy.parameters.json` letöltötte.
 
     ![Resource Manager-sablon a központi telepítés létrehozására szolgáló fájlok kiválasztása](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 
@@ -72,11 +72,11 @@ Teljesen új sablon létrehozása helyett megnyithat egy sablont az [Azure gyors
 
     ![Resource Manager-sablon – telepítés szerkesztése](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment.png)
 
-1. Ezen a lapon szerkesztheti a két fájlt, és üzembe helyezheti az Azure-ban történt módosításokat. Itt módosítjuk a **tárfióktípus** értékét a `Standard_LRS` értékről a `Standard_GRS` értékre. Ezután kattintson az alul lévő **központi telepítés frissítése** elemre, és erősítse meg a frissítést.
+1. Ezen a lapon szerkesztheti a két fájlt, és üzembe helyezheti az Azure-ban történt módosításokat. Itt módosítjuk a **tárfióktípus** értékét a `Standard_LRS`tól a `Standard_GRS`ig. Ezután kattintson az alul lévő **központi telepítés frissítése** elemre, és erősítse meg a frissítést.
 
     ![Resource Manager-sablon – telepítés szerkesztése](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-edit-deployment-update.png)
 
-1. A frissítés telepítésének befejezése után ellenőrizheti a portálon, hogy a létrehozott Storage-fiók `Standard_GRS` értékre változott-e.
+1. A frissítés telepítésének befejezése után ellenőrizheti a portálon, hogy a létrehozott Storage-fiók `Standard_GRS`re módosult-e.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

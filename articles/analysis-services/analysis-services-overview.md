@@ -4,15 +4,15 @@ description: Az Azure Analysis Services átfogó áttekintése.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/11/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 25366a550887461c6d36d4870a2c9062120ede47
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 4369f1ce7d6ef90e8489dbec5daa181406c0fecf
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294772"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512609"
 ---
 # <a name="what-is-azure-analysis-services"></a>Az Azure Analysis Services ismertetése
 
@@ -103,12 +103,12 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 |Nyugat-Európa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Nyugat-Európa    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Ázsia és a csendes-óceáni térség 
+### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
 |Region (Régió)  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
-|Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Kelet-Ausztrália     |    S8, S9, S8v2, S9v2    |    1     |
+|Ausztrália keleti régiója     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Ausztrália keleti régiója     |    S8, S9, S8v2, S9v2    |    1     |
 |Délkelet-Ausztrália     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Kelet-Japán     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Délkelet-Ázsia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
@@ -134,11 +134,11 @@ A teljes költség számos tényezőtől (például a választott régiótól, s
 
 ## <a name="built-on-sql-server-analysis-services"></a>Az SQL Server Analysis Servicesre épül
 
-Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A Partitions, a perspektíva, a soros szintű biztonság, a kétirányú kapcsolatok és a fordítások mind a @ no__t-0 támogatottak. A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
+Az Azure Analysis Services kompatibilis az SQL Server Analysis Services Enterprise Editionben már meglévő számos nagyszerű funkcióval. Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és az ennél magasabb [kompatibilitási szinteken](analysis-services-compat-level.md). A táblázatos modellek olyan relációs modellezési szerkezetek (modell, táblák, oszlopok), amelyek táblázatos metaadatok objektumdefinícióiban vannak meghatározva a táblázatos modell parancsnyelvén (TMSL) és a táblázatos objektummodell (TOM) kódjában. A partíciók, a perspektívák, a sor szintű biztonság, a kétirányú kapcsolatok és a fordítások mind támogatottak \*. A többdimenziós modellek és a SharePoint rendszerhez készült PowerPivot Azure Analysis Services *nem* támogatottak.
 
 A táblázatos modelleket a memóriában tárolt és a DirectQuery módok egyaránt támogatják. A memóriában tárolt mód (alapértelmezett) táblázatos modelljei több adatforrás használatát is támogatják. Nagy mennyiségű adatok esetében ez a mód biztosítja a leggyorsabb lekérdezési választ, mivel a modell adatai nagymértékben tömörítettek, és a memóriában vannak gyorsítótárazva. Összetett adatkészletek és lekérdezések esetében szintén ez a mód biztosítja a legnagyobb rugalmasságot. A particionálás révén elérhetővé válik a növekményes betöltés, növelhető a párhuzamos folyamatkezelés mértéke, és csökkenthető a memóriahasználat. Ezen kívül olyan speciális adatmodellezési funkciók is támogatottak, mint például a számított táblázatok és az összes DAX-függvény. Az adatforrásokból származó, gyorsítótárazott adatok frissítéséhez a memóriában tárolt modelleket frissíteni kell (fel kell dolgozni). Az Azure-szolgáltatás egyszerű támogatása, a PowerShell, a TOM, a TMSL és a REST használatával végzett felügyelet nélküli frissítési műveletekkel rugalmasan biztosítható, hogy a modell adatai mindig naprakészek legyenek. 
 
-A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. Az egyedi SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure SQL Data Warehouse-, Oracle- és Teradata-adatforrások rendkívül nagy méretű adatkészletei is támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Érvényesek még további korlátozások (például adatforrás-típusokra és DAX-képletekre vonatkozó korlátozások), illetve bizonyos speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
+A tároláshoz és a lekérdezések futtatásához a DirectQuery mód* a háttérbeli relációs adatbázist használja. Az egyedi SQL Server-, SQL Server Data Warehouse-, Azure SQL Database-, Azure SQL Data Warehouse-, Oracle- és Teradata-adatforrások rendkívül nagy méretű adatkészletei is támogatottak. A háttérbeli adatkészletek mérete meghaladhatja a rendelkezésre álló kiszolgálói erőforrás memóriájának méretét. Nincs szükség az összetett adatmodellek frissítésére. Vannak olyan korlátozások is, mint például a korlátozott adatforrások, a DAX-képlet korlátozásai, és egyes speciális adatmodellezési funkciók nem támogatottak. Az Ön számára legmegfelelőbb mód kiválasztása előtt tekintse át a [DirectQuery mód](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular) szakaszban leírtakat.
 
 \* A rendelkezésre álló funkciók köre a választott szinttől függ.
 
@@ -200,7 +200,7 @@ További információk az Azure Securityről: [Microsoft biztonsági és adatkez
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. Az SSDT már tartalmazza a Tabular 1400-modellekkel használható modern Adatok lekérése adatforrás-lekérdezési és adategyesítési funkciót is. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
+Az ingyenes [Visual Studióhoz készült SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) használatával modelleket fejleszthet és helyezhet üzembe. Az SSDT Analysis Services-projektsablonokat is tartalmaz a gyors üzembe állítás érdekében. A SSDT mostantól tartalmazza a modern Get adatforrások lekérdezését és az adategyesítési funkciókat táblázatos 1400-modellekhez. Ha már ismeri a Power BI Desktop és az Excel 2016 Adatok lekérése funkcióját, akkor tudja, milyen egyszerűen hozhat létre nagymértékben testre szabott adatforrás-lekérdezéseket. 
 
 Ha a Visual Studio 2017-es vagy újabb verzióját használja, a Microsoft Analysis Services projektek ingyenes telepíthető VSIX-csomagként érhetők el. [Letöltés a Marketplace-ről](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 

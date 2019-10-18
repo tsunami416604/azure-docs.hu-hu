@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Azure Durable Functions – dokumentáció
+summary: A Durable Functions az Azure Functions egyik bővítménye, amelynek segítségével állapotalapú függvényeket írhat kiszolgáló nélküli számítási környezetekben.
+metadata:
+  title: Azure Durable Functions – dokumentáció
+  description: A Durable Functions az Azure Functions egyik bővítménye, amelynek segítségével állapotalapú függvényeket írhat kiszolgáló nélküli számítási környezetekben.
+  ms.service: azure-functions
+  ms.topic: landing-page
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 10/04/2019
+  ms.openlocfilehash: f0f47c8d997a3d02ad3bae1bc4634f4c7ad2155c
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529686"
+landingContent:
+- title: A tartós függvények ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mik azok a tartós függvények?
+      url: durable-functions-overview.md
+    - text: A kiszolgáló nélküli lehetőségek összehasonlítása
+      url: ../functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: A tartós függvények típusai
+      url: durable-functions-types-features-overview.md
+  - linkListType: video
+    links:
+    - text: Kiszolgáló nélküli határ áttörése
+      url: https://azure.microsoft.com/resources/videos/break-through-the-serverless-barriers-with-durable-functions/
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tartós függvények létrehozása (C#)
+      url: durable-functions-create-first-csharp.md
+    - text: Az első függvény létrehozása (JavaScript)
+      url: quickstart-js-vscode.md
+  - linkListType: learn
+    links:
+    - text: Hosszan futó kiszolgáló nélküli munkafolyamat létrehozása
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/
+  - linkListType: video
+    links:
+    - text: Tekintse meg az első lépések megismeréséhez
+      url: https://azure.microsoft.com/resources/videos/azure-friday-durable-functions-in-azure-functions/
+- title: Fő fogalmak
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vezénylések
+      url: durable-functions-orchestrations.md
+    - text: Állapotalapú entitások
+      url: durable-functions-entities.md
+    - text: HTTP-funkciók
+      url: durable-functions-http-features.md
+    - text: Feladatközpontok
+      url: durable-functions-task-hubs.md
+    - text: Verziókezelés
+      url: durable-functions-versioning.md
+  - linkListType: video
+    links:
+    - text: Kiszolgáló nélküli entitások, összeszerelések és állapotalapú függvények
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B206
+- title: Alkalmazásminták
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Függvényláncolás
+      url: durable-functions-sequence.md
+    - text: Aszinkron HTTP API-k
+      url: durable-functions-create-first-csharp.md
+    - text: Elosztás/összevonás
+      url: durable-functions-cloud-backup.md
+    - text: Monitorozások
+      url: durable-functions-monitor.md
+    - text: Emberi beavatkozás
+      url: durable-functions-phone-verification.md
+    - text: Összesítő
+      url: durable-functions-entities.md
+- title: Teljesítmény és monitorozás
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Diagnosztika
+      url: durable-functions-diagnostics.md
+  - linkListType: concept
+    links:
+    - text: Függvények figyelés
+      url: ../functions-monitoring.md
+    - text: Hálózati megfontolások
+      url: ../functions-networking-options.md
+- title: Példák
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Tartósfüggvény-példák
+      url: /samples/browse/?products=azure-functions&term=durable
+    - text: Azure kiszolgáló nélküli közösségi kódtár
+      url: https://www.serverlesslibrary.net/
+    - text: Azure Resource Manager-sablonok
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI-minták
+      url: ../functions-cli-samples.md

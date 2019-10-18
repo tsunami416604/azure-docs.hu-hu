@@ -1,6 +1,6 @@
 ---
-title: Egy eszköz alkalmazáshoz a kommunikációhoz C# keresztül az Azure IoT Hub eszköz adatfolyamok (előzetes verzió) |} A Microsoft Docs
-description: Ebben a rövid útmutatóban a két minta futtatása C# IoT hubon keresztül létrehozott eszköz adatfolyam-n keresztül kommunikáló alkalmazásokat.
+title: Kommunikáció egy eszköz alkalmazásával az C# Azure IoT hub-eszközökön keresztül (előzetes verzió) | Microsoft Docs
+description: Ebben a rövid útmutatóban két minta C# alkalmazást futtat, amelyek egy IoT hub használatával létrehozott eszköz-adatfolyamon keresztül kommunikálnak.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: de581362371e28523c99f961dfdb5c2009901343
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 85905f97500848be0e17da7d8a65209878713fc2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446108"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516521"
 ---
-# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Egy eszköz alkalmazás a kommunikációhoz C# keresztül az IoT Hub eszköz adatfolyamok (előzetes verzió)
+# <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: IoT Hub- C# adatfolyamon keresztüli kommunikáció egy eszköz alkalmazásával (előzetes verzió)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Az Azure IoT Hub jelenleg támogatja az eszköz adatfolyamok, mint egy [előzetes verziójú funkció](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Az Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)támogatja az eszközök streamjét.
 
-[Az IoT Hub eszköz Streamek](./iot-hub-device-streams-overview.md) szolgáltatás és eszköz alkalmazások biztonságos és tűzfalbarát módon kommunikálnak. Ez a rövid útmutató magában foglalja a két C# alkalmazásokat, amelyek az eszköz streameket is küldhet adatokat oda-vissza (echo) előnyeit.
+[IoT hub az eszközökön elérhető streamek](./iot-hub-device-streams-overview.md) lehetővé teszik a szolgáltatás-és eszköz-alkalmazások számára a biztonságos és tűzfalon alapuló kommunikációt. Ez a rövid útmutató C# két olyan alkalmazást foglal magába, amelyek kihasználják az adatfolyamok számára az adatküldés (ECHO) által nyújtott előnyöket.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -30,25 +30,25 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Előzetes verziójának eszköz Streamek jelenleg csak az IoT hub, az alábbi régiókban létrehozott támogatott:
+* Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
   * USA középső régiója
-  * USA középső RÉGIÓJA – EUAP
+  * USA középső – EUAP
 
-* Ebben a rövid útmutatóban futtató két mintaalkalmazásból használatával írt C#. A .NET Core SDK 2.1.0, vagy később a fejlesztői gépén van szüksége.
-  * Töltse le a [.NET Core SDK a .NET használatával több platformon](https://www.microsoft.com/net/download/all).
-  * Ellenőrizze a jelenlegi verziója C# a fejlesztői gépen, a következő paranccsal:
+* Az ebben a rövid útmutatóban futtatott két minta alkalmazás beírása folyamatban van C#. A fejlesztői gépen szükség van a .NET Core SDK 2.1.0 vagy újabb verzióra.
+  * Töltse le a [.net Core SDKt több platformra a .net-ről](https://www.microsoft.com/net/download/all).
+  * A következő parancs használatával ellenőrizze C# a fejlesztői gépen a jelenlegi verzióját:
 
    ```
    dotnet --version
    ```
 
-* Adja hozzá az Azure IoT-bővítmény az Azure CLI-vel a Cloud Shell-példányhoz a következő parancs futtatásával. Az IOT-bővítmény hozzáadja az IoT Hub, IoT Edge és IoT Device Provisioning Service (DPS) – az Azure CLI parancsok.
+* A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Azure IoT-bővítményt a Cloud Shell-példányához. Az IOT bővítmény hozzáadja az Azure CLI-hez IoT Hub, IoT Edge és IoT eszközök kiépítési szolgáltatásának (DPS) specifikus parancsait.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     ```
 
-* [Töltse le a mintát C# projekt](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és bontsa ki a ZIP-archívumot. Az eszköz oldalán és a Szolgáltatásoldali van szükség.
+* [Töltse le a C# minta projektet](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és CSOMAGOLja ki a zip-archívumot. Szüksége lesz rá az eszköz és a szolgáltatás oldalán is.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -56,58 +56,58 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban használhatja az Azure Cloud Shell regisztrál egy szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
-1. Hozza létre az eszközidentitást, a Cloud Shellben futtassa az alábbi parancsot:
-
-   > [!NOTE]
-   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
-   > * Használat *Sajáteszköz*látható módon. A regisztrált eszköz a megadott név legyen. Ha úgy dönt, hogy az eszköz egy másik nevet, használja során ez a cikk ezt a nevet, és az eszköz nevére a mintaalkalmazásból ahhoz, hogy futtatni őket.
-
-    ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
-    ```
-
-1. Az első a *eszköz kapcsolati karakterláncának* az imént regisztrált eszközhöz, futtassa a következő parancsot a Cloud Shellben:
+1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
 
    > [!NOTE]
-   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
+   > * Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
+   > * Annak az eszköznek a nevére, amelyet regisztrál, javasolt a *MyDevice* használata az ábrán látható módon. Ha más nevet választ az eszköznek, ezt a nevet használja ebben a cikkben, és a futtatásuk előtt frissítse az eszköz nevét a minta alkalmazásokban.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDevice --output table
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDevice
     ```
 
-    Megjegyzés: az eszköz kapcsolati karakterláncának későbbi használatra ebben a rövid útmutatóban. Az alábbi példához hasonlóan néz ki:
+1. Az imént regisztrált eszközhöz tartozó *eszköz-kapcsolódási karakterlánc* lekéréséhez futtassa a következő parancsot a Cloud Shellban:
+
+   > [!NOTE]
+   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
+
+    ```azurecli-interactive
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    ```
+
+    Jegyezze fel a visszaadott eszköz csatlakoztatási karakterláncát a rövid útmutató későbbi verzióihoz. Az alábbi példához hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyDevice;SharedAccessKey={YourSharedAccessKey}`
 
-3. Emellett a *szolgáltatáskapcsolati karakterláncra* az IoT hub a Szolgáltatásoldali alkalmazás csatlakoztatása az IoT hubhoz, és létrehozza a eszköz stream engedélyezése. Az alábbi parancs lekéri az IoT hub ezt az értéket:
+3. Emellett az IoT hub *szolgáltatás kapcsolati karakterláncára* is szüksége lesz ahhoz, hogy a kiszolgálóoldali alkalmazás kapcsolódjon az IoT hubhoz, és hozzon létre egy adatfolyamot. A következő parancs lekérdezi ezt az értéket az IoT hub esetében:
 
    > [!NOTE]
-   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub választott név.
+   > Cserélje le a *YourIoTHubName* helyőrzőt az IoT hub számára kiválasztott névre.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
     ```
 
-    Megjegyzés: a visszaadott érték az ebben a rövid útmutató későbbi használatra. Az alábbi példához hasonlóan néz ki:
+    Jegyezze fel a visszaadott szolgáltatás-kapcsolatok karakterláncát a rövid útmutató későbbi verzióihoz. Az alábbi példához hasonlóan néz ki:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Az eszköz és az eszköz Streamek keresztül a szolgáltatás közötti kommunikációhoz
+## <a name="communicate-between-the-device-and-the-service-via-device-streams"></a>Kommunikáció az eszköz és a szolgáltatás között az eszköz streamen keresztül
 
-Ebben a szakaszban az eszközoldali alkalmazás, mind a Szolgáltatásoldali alkalmazás futtatásához, és a kettő közötti kommunikációhoz.
+Ebben a szakaszban az eszköz-és a kiszolgálóoldali alkalmazást is futtatja, és kommunikál a kettő között.
 
-### <a name="run-the-service-side-application"></a>A Szolgáltatásoldali alkalmazás futtatása
+### <a name="run-the-service-side-application"></a>A szolgáltatás-oldali alkalmazás futtatása
 
-Nyissa meg a *iot-hub/rövid útmutatók és-adatfolyamok-echo/szolgáltatás* könyvtárat a kicsomagolt projektet tartalmazó mappában. Tartsa praktikus a következő információkat:
+A helyi terminál ablakban navigáljon a kibontott projekt mappájában található `iot-hub/Quickstarts/device-streams-echo/service` könyvtárhoz. A következő információk hasznosak maradnak:
 
-| Paraméter neve | Hodnota parametru |
+| Paraméter neve | Paraméter értéke |
 |----------------|-----------------|
-| `ServiceConnectionString` | Adja meg az IoT hub szolgáltatáskapcsolati karakterláncát. |
-| `DeviceId` | Adja meg a korábban létrehozott az eszköz Azonosítóját (például *Sajáteszköz*). |
+| `ServiceConnectionString` | Az IoT hub szolgáltatási kapcsolatok karakterlánca. |
+| `MyDevice` | A korábban létrehozott eszköz azonosítója. |
 
-Fordítsa le és futtassa a kódot az alábbiak szerint:
+Fordítsa le és futtassa a kódot az alábbi parancsokkal:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/service/
@@ -117,24 +117,25 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<ServiceConnectionString>" "<MyDevice>"
+dotnet run "{ServiceConnectionString}" "MyDevice"
 
 # In Windows
-dotnet run <ServiceConnectionString> <MyDevice>
+dotnet run {ServiceConnectionString} MyDevice
 ```
+Az alkalmazás megvárja, amíg az alkalmazás elérhetővé válik.
 
 > [!NOTE]
-> Időtúllépés történik, ha az eszköz ügyféloldali alkalmazás időben nem válaszol.
+> Időtúllépés történik, ha az eszköz oldali alkalmazás nem válaszol időben.
 
-### <a name="run-the-device-side-application"></a>Az eszközoldali alkalmazás futtatása
+### <a name="run-the-device-side-application"></a>Az eszköz oldali alkalmazás futtatása
 
-Nyissa meg a *iot-hub/rövid útmutatók/eszköz-adatfolyamok-echo/eszköz* könyvtárat a kicsomagolt projektet tartalmazó mappában. Tartsa praktikus a következő információkat:
+Egy másik helyi terminál ablakban navigáljon a kibontott projekt mappájában található `iot-hub/Quickstarts/device-streams-echo/device` könyvtárhoz. A következő információk hasznosak maradnak:
 
-| Paraméter neve | Hodnota parametru |
+| Paraméter neve | Paraméter értéke |
 |----------------|-----------------|
-| `DeviceConnectionString` | Adja meg az IoT hub, az eszköz kapcsolati karakterláncát. |
+| `DeviceConnectionString` | A IoT Hub eszköz-csatlakoztatási karakterlánca. |
 
-Fordítsa le és futtassa a kódot az alábbiak szerint:
+Fordítsa le és futtassa a kódot az alábbi parancsokkal:
 
 ```
 cd ./iot-hub/Quickstarts/device-streams-echo/device/
@@ -144,33 +145,33 @@ dotnet build
 
 # Run the application
 # In Linux or macOS
-dotnet run "<DeviceConnectionString>"
+dotnet run "{DeviceConnectionString}"
 
 # In Windows
-dotnet run <DeviceConnectionString>
+dotnet run {DeviceConnectionString}
 ```
 
-Az utolsó lépés végén a Szolgáltatásoldali alkalmazás elindítja az eszköz egy stream. A stream létrejötte után az alkalmazás egy karakterláncpuffert a szolgáltatás az adatfolyam keresztül küld. Ebben a példában a Szolgáltatásoldali alkalmazás egyszerűen ad vissza az eszközön, amely bemutatja egy sikeres kétirányú kommunikációt a két alkalmazás közötti ugyanazokat az adatokat.
+Az utolsó lépés végén a szolgáltatás-oldali alkalmazás elindít egy streamet az eszközre. A stream létrehozása után az alkalmazás karakterlánc-puffert küld a szolgáltatásnak az adatfolyamon keresztül. Ebben a példában a szolgáltatás oldali alkalmazás egyszerűen visszaigazolja ugyanazokat az eszközöket az eszközre, amely sikeres kétirányú kommunikációt mutat be a két alkalmazás között.
 
-A konzol kimenetét, az eszköz oldalán:
+Konzol kimenete az eszköz oldalán:
 
-![Az eszköz oldalán a konzol kimenete](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
+![Konzol kimenete az eszköz oldalán](./media/quickstart-device-streams-echo-csharp/device-console-output.png)
 
-A konzol kimenetét, a szolgáltatás oldalon:
+Konzol kimenete a szolgáltatás oldalán:
 
-![A szolgáltatás oldalán a konzol kimenete](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
+![Konzol kimenete a szolgáltatás oldalán](./media/quickstart-device-streams-echo-csharp/service-console-output.png)
 
-A forgalom, a stream keresztül küld az IoT hubon keresztül bújtatott ahelyett, küldi. A aktiválásáért részletesen ismertetett [eszköz streameli előnyöket](./iot-hub-device-streams-overview.md#benefits).
+Az adatfolyamon keresztül küldött forgalom a IoT hub használatával lesz átirányítva ahelyett, hogy közvetlenül elküldjék. A megadott előnyök az [eszközök stream-előnyeiben](./iot-hub-device-streams-overview.md#benefits)vannak részletezve.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid, már beállítása egy IoT hubot, regisztrált egy eszközt, egy eszköz stream között létrehozott C# alkalmazások az eszköz és szolgáltatás oldalán, és a stream oda-vissza az alkalmazások közötti adatküldéshez.
+Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszköz és a szolgáltatás oldalán C# lévő alkalmazások közötti adatfolyamot állított be, és a stream használatával visszaküldheti az alkalmazásokat az alkalmazások között.
 
-Eszköz Streamek kapcsolatos további információkért lásd:
+További információ az eszközök streamekről:
 
 > [!div class="nextstepaction"]
-> [Eszköz Streamek áttekintése](./iot-hub-device-streams-overview.md)
+> [Az eszközök adatfolyamának áttekintése](./iot-hub-device-streams-overview.md)

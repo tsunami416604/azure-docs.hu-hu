@@ -11,14 +11,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: ca0dcc850b2db513c8d85d43ad76bc75053c0d04
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744408"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514009"
 ---
-# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Gyors útmutató: Adatbázis visszaállítása felügyelt példányra
+# <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rövid útmutató: adatbázis visszaállítása felügyelt példányra
 
 Ebben a rövid útmutatóban SQL Server Management Studio (SSMS) használatával állítja vissza az adatbázist (a Wide World Importers-standard Backup fájlt) az Azure Blob Storage-ból egy Azure SQL Database [felügyelt példányba](sql-database-managed-instance.md).
 
@@ -37,10 +37,10 @@ Ez a rövid útmutató:
 - A SSMS használata szükséges a felügyelt példányhoz való kapcsolódáshoz. A kapcsolódás menetét a következő útmutatókban tekintheti meg:
   - [Csatlakozás Azure SQL Database felügyelt példányhoz egy Azure virtuális gépről](sql-database-managed-instance-configure-vm.md)
   - [Pont – hely kapcsolat konfigurálása egy Azure SQL Database felügyelt példányhoz a helyszínen](sql-database-managed-instance-configure-p2s.md).
-- Az Azure Blob Storage fiók (például a Standard_LRS v2) használatát igényli a **nyilvános IP-címekhez** , `rw` amelyeken engedélyezve van az **sas-hitelesítő adat** . A tűzfal és az Azure Blob Storage Service-végpontok [által védett blob Storage magánhálózati IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) -címei jelenleg nem támogatottak.
+- Az Azure Blob Storage fiók (például Standard_LRS v2) használatát igényli a **nyilvános IP-** címen, amely `rw` engedéllyel rendelkező **sas-hitelesítő adatokkal** védett. A tűzfal és az Azure Blob Storage Service-végpontok [által védett blob Storage magánhálózati IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) -címei jelenleg nem támogatottak.
 
 > [!NOTE]
-> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](sql-database-managed-instance-get-started-restore.md)című témakörben talál.
+> A SQL Server-adatbázisok Azure Blob Storage használatával történő biztonsági mentéséről és visszaállításáról további [információt a](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [SQL Server biztonsági mentés az URL-címre](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017)című témakörben talál.
 
 ## <a name="restore-the-database-from-a-backup-file"></a>Adatbázis visszaállítása biztonságimásolat-fájlból
 
@@ -88,8 +88,8 @@ A SSMS-ben kövesse az alábbi lépéseket a Wide World importing-adatbázis a f
 
 7. Ha a visszaállítás elkészült, tekintse meg az Object Explorerben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Az alkalmazás-csatlakozási lehetőségek áttekintését lásd: [alkalmazások csatlakoztatása felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
-- Ha kedvenc eszközeit vagy nyelveit szeretné lekérdezni, tekintse meg a gyors útmutatókat [: Azure SQL Database a kapcsolatot és](sql-database-connect-query.md)a lekérdezést.
+- Ha kedvenc eszközeit vagy nyelveit szeretné lekérdezni, tekintse meg a rövid útmutatók [: Azure SQL Database a kapcsolódás és a lekérdezés](sql-database-connect-query.md)című témakört.
