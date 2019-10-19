@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: d4edc634ad41042642b1d73f28ec61cb6dc15ac4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 69b3827bbb53a5f989f3bdec0d5c4ea6035130f0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433319"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592308"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -30,18 +30,16 @@ Az Azure Spring Cloud a fejlesztők és a kezelők számára a Azure Monitor, a 
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Milyen szolgáltatási csomagokkal rendelkezik az Azure Spring Cloud ajánlat?
 
-Az Azure Spring Cloud egy szolgáltatási csomagot kínál az előzetes verzió ideje alatt.
+Az Azure Spring Cloud egy szolgáltatási csomagot kínál az előzetes verzió ideje alatt.  A Spring Cloud üzemelő példány 16 vCPU magot és 32GB memóriát tartalmaz.  Egy üzemelő példányon belül az egyes vCPU felső határa 4 mag, 8 GB memóriával.
 
 Erőforrás | Mennyiség
 ------- | -------
-vCPU | 4
-Memória | 8 GByte
 Alkalmazás-példányok rugós alkalmazásként | 20
 Alkalmazás-példányok teljes száma Azure Spring Cloud Service-példányon | 50 *
 Azure Spring Cloud Service instances régiónként/előfizetés | 2
 Állandó kötetek | 10 x 50 GByte
 
-@no__t – 0 _[támogatási jegyet](https://azure.microsoft.com/support/faq/) nyit a korlát növelésére._
+*_a korlát növeléséhez nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/faq/) ._
 
 További részletekért tekintse meg az [Azure-támogatással kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/support/faq/).
 
@@ -62,7 +60,7 @@ USA keleti régiója, USA 2. nyugati régiója, Nyugat-Európa és Délkelet-Áz
 Itt láthatja az Azure Spring Cloud ismert korlátozásait, miközben a szolgáltatás előzetes verzióban érhető el.
 
 * a `spring.application.name` felülbírálja az egyes alkalmazások létrehozásához használt alkalmazás nevét.
-* @no__t – 0 nem engedélyezett a git-tárház konfigurációs fájljában. A konfigurációs fájlhoz való hozzáadás valószínűleg azt eredményezi, hogy az alkalmazás nem érhető el más alkalmazásokból vagy internetről.
+* `server.port` nem engedélyezett a git-tárház konfigurációs fájljában. A konfigurációs fájlhoz való hozzáadás valószínűleg azt eredményezi, hogy az alkalmazás nem érhető el más alkalmazásokból vagy internetről.
 * A Azure Portal és Resource Manager-sablonok nem támogatják az alkalmazáscsomag feltöltését. Ez csak az Azure CLI-vel történő alkalmazás-telepítéssel végezhető el.
 * A kvóta korlátaival kapcsolatban tekintse meg, hogy az [Azure Spring Cloud ajánlat milyen szolgáltatási csomagokra](#what-service-plans-does-azure-spring-cloud-offer)vonatkozik.
 
@@ -121,7 +119,7 @@ A meglévő Spring-szolgáltatásoknak az Azure Spring Cloud-ba való migrálás
 * Készítse elő a konfigurációs bejegyzéseket, a környezeti változókat és a JVM paramétereket, hogy összehasonlítsa őket az Azure Spring Cloud üzembe helyezésével.
 * Ha szolgáltatási kötést szeretne használni, ugorjon az Azure-szolgáltatásaihoz, és győződjön meg arról, hogy megfelelő hozzáférési engedélyeket adott meg.
 * Javasoljuk, hogy távolítsa el vagy tiltsa le azokat a beágyazott szolgáltatásokat, amelyek ütközhetnek az Azure Spring Cloud által kezelt szolgáltatásokkal, például a Service Discovery szolgáltatással, a konfigurációs kiszolgálóval stb..
-*@no__t – 1* Javasoljuk, hogy használja a hivatalos és a stabil Pivotal Spring könyvtárakat. A Pivotal Spring-kódtárak nem hivatalos, bétaverziós vagy elágazó verziói nem rendelkeznek SLA-támogatással.
+*-* Javasoljuk, hogy használja a hivatalos és a stabil Pivotal Spring könyvtárakat. A Pivotal Spring-kódtárak nem hivatalos, bétaverziós vagy elágazó verziói nem rendelkeznek SLA-támogatással.
 
 Az áttelepítés után figyelje a CPU/RAM mérőszámait és a hálózati forgalmat annak érdekében, hogy az alkalmazás példányai megfelelően méretezhetők legyenek.
 

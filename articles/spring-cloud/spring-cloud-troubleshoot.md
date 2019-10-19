@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: ee51841046962a6896b4c16e651f85ff761a69fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554373"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592481"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gyakori problémák hibaelhárítási útmutatója
 
@@ -151,8 +151,8 @@ Tekintse meg [az első lépéseket ismertető cikket](https://docs.microsoft.com
 
 A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolgáltatást, hogy az Azure tisztában legyen azzal, hol és hogyan konfigurálhatja az alkalmazást alkotó szolgáltatásokat.  A környezeti változók helyességének biztosításához szükséges első lépés a lehetséges problémák elhárítása.  A Spring boot indítószerkezet végpontja segítségével áttekintheti a környezeti változókat.  
 
-[!WARNING]
-> Ez az eljárás a környezeti változókat teheti elérhetővé.  Ne folytassa, ha a tesztelési végpont nyilvánosan elérhető, vagy ha tartománynevet rendelt hozzá az alkalmazáshoz.
+> [!WARNING]
+> Ez az eljárás a környezeti változókat a tesztelési végponton keresztül teszi elérhetővé.  Ne folytassa, ha a tesztelési végpont nyilvánosan elérhető, vagy ha tartománynevet rendelt hozzá az alkalmazáshoz.
 
 1. Navigáljon a következő URL-címre: `https://<your application test endpoint>/actuator/health`.  
     - A `{"status":"UP"}`hoz hasonló válasz azt jelzi, hogy a végpont engedélyezve van.
@@ -186,6 +186,9 @@ A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolg�
     ```
 
 Keresse meg `systemEnvironment` nevű gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
+
+> [!IMPORTANT]
+> Ne felejtse el megfordítani a környezeti változók expozícióját, mielőtt az alkalmazása elérhetővé váljon a nyilvánosság számára.  Nyissa meg a Azure Portal, keresse meg az alkalmazás konfigurációs lapját, és törölje a következő környezeti változót: `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE`.
 
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazás metrikáit vagy naplóit
 

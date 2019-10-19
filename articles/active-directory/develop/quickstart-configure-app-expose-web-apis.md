@@ -18,13 +18,13 @@ ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68989275"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: Alkalmazás konfigurálása webes API-k elérhetővé tétele érdekében
+# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
 Fejleszthet saját webes API-kat,és [engedélyek/hatókörök](developer-glossary.md#scopes) és [szerepkörök](developer-glossary.md#roles) közzétételével elérhetővé teheti azokat az ügyfélalkalmazások számára. A megfelelően konfigurált webes API-k a Microsoft többi webes API-jához hasonlóan érhetők el, mint például a Graph API vagy az Office 365 API-k.
 
@@ -42,7 +42,7 @@ Először is győződjön meg arról, hogy az alábbi előfeltételek teljesüln
 
 Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lépéseket:
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást, majd válassza a **Alkalmazásregisztrációk**lehetőséget.
 1. Keresse meg és jelölje ki a konfigurálni kívánt alkalmazást. Miután kijelölte az alkalmazást, az alkalmazás **Áttekintés** lapja vagy regisztrációs főoldala jelenik meg.
@@ -52,7 +52,7 @@ Mielőtt konfigurálhatná az alkalmazást, végre kell hajtania az alábbi lép
 
 ## <a name="expose-a-new-scope-through-the-ui"></a>Új hatókör közzététele a felhasználói felületen
 
-[![Bemutatja, hogyan tehet elérhetővé egy API-t a felhasználói felületen](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
+[API-k közzététele a felhasználói felület használatával ![Shows](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-api-through-ui-expanded.png#lightbox)
 
 Ha a felhasználói felületen kíván közzétenni új hatókört:
 
@@ -117,8 +117,8 @@ Ha az alkalmazásjegyzékben kívánja közzétenni új hatókört:
 
 1. Lépjen vissza az Azure AD-bérlőre, válassza az **Alkalmazásregisztrációk** lehetőséget, majd keresse meg és válassza ki a konfigurálni kívánt ügyfélalkalmazást.
 1. Hajtsa végre ismét az [Ügyfélalkalmazás konfigurálása webes API-k elérésére](quickstart-configure-app-access-web-apis.md) című cikkben leírt lépéseket.
-1. Ha egy API [](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-)kiválasztására szolgáló lépésre lép, válassza ki az erőforrást. Meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélykéréseihez.
+1. Ha [egy API kiválasztására](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
+)szolgáló lépésre lép, válassza ki az erőforrást. Meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélykéréseihez.
 
 ## <a name="more-on-the-application-manifest"></a>További információk az alkalmazásjegyzékről
 
@@ -129,7 +129,7 @@ Az alkalmazásjegyzék az alkalmazásentitás frissítésére szolgáló mechani
 
 Az alkalmazásjegyzékekkel kapcsolatos fogalmakról általános felvilágosítást nyújt [Az Azure Active Directory-alkalmazásjegyzék megismerése](reference-app-manifest.md) című cikk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 

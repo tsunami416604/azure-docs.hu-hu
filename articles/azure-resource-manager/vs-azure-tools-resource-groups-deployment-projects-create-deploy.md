@@ -4,14 +4,14 @@ description: A Visual Studióval hozzon létre egy Azure erőforráscsoport-proj
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.date: 06/20/2019
+ms.date: 10/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170237"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597660"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure erőforráscsoport-sablonok létrehozása és telepítése a Visual Studio alkalmazással
 
@@ -23,7 +23,8 @@ Ez a cikk bemutatja, hogyan használható [a Visual Studio 2019-es vagy újabb v
 
 Ebben a szakaszban egy Azure erőforráscsoport-projektet hoz létre egy **webalkalmazás** -sablonnal.
 
-1. A Visual Studióban válassza a **fájl**, **új**és **projekt**lehetőséget. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
+1. A Visual Studióban válassza a **fájl** >**új** >**projekt**lehetőséget.
+1. Válassza ki az **Azure erőforráscsoport** -projekt sablonját, és kattintson a **Tovább gombra**.
 
     ![Projekt létrehozása](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
 
@@ -247,7 +248,7 @@ Ha az az Module parancsfájlt használja, egy kis módosítást kell végeznie a
 "packageUri": "[concat(parameters('_artifactsLocation'), parameters('ExampleAppPackageFolder'), '/', parameters('ExampleAppPackageFileName'), parameters('_artifactsLocationSasToken'))]",
 ```
 
-Figyelje meg, hogy az előző példában nincs @no__t – 0 **paraméter ("_artifactsLocation")** és **Parameters ("ExampleAppPackageFolder")** között.
+Figyelje meg, hogy az előző példában nincs `'/',` **paraméterek ("_artifactsLocation")** és **Parameters ("ExampleAppPackageFolder")** között.
 
 Hozza létre újra a projektet. A projekt létrehozása biztosítja, hogy a telepíteni kívánt fájlok hozzá legyenek adva az átmeneti mappához.
 
@@ -283,7 +284,7 @@ A AzureRM modul parancsfájlhoz használja a Visual studiót:
 
 Nem csak a Visual Studio felületén keresztül elérhető erőforrásokat használhatja. Az üzemelő példány testreszabásához adjon egyéni erőforrást a sablonhoz. Az erőforrás hozzáadásának megjelenítéséhez műveleti irányítópultot kell hozzáadnia az üzembe helyezett erőforrás kezelése érdekében.
 
-1. Nyissa meg a webhely. JSON fájlt, és adja hozzá a következő JSON-t a Storage-fiók erőforrása után, de az erőforrások szakasz záró `]` értékének megkezdése előtt.
+1. Nyissa meg a webhely. JSON fájlt, és adja hozzá a következő JSON-t a Storage-fiók erőforrása után, de az erőforrások szakasz záró `]` előtt.
 
    ```json
     ,{

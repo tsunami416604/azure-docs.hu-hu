@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási aj
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c358c728f7fe008ee8d9138cd081932524e7eaf9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 10105d06e48a727e71ea5cb03f2ffceb589df50a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300301"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595263"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en
 
@@ -132,7 +132,7 @@ Ha már elégedett az összes megadott információval, a következő lépés az
 
 ## <a name="the-customer-onboarding-process"></a>Az ügyfél bevezetési folyamata
 
-Amikor egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources) , amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg.
+Amikor egy ügyfél felveszi az ajánlatot, [egy vagy több konkrét előfizetést vagy erőforráscsoportot delegálhat](view-manage-service-providers.md#delegate-resources) , amelyek ezután bekerülnek az Azure-beli delegált erőforrás-kezelésbe. Ha egy ügyfél elfogadta az ajánlatot, de még nem delegált erőforrást, akkor a Azure Portal [**szolgáltatók**](view-manage-service-providers.md) lapján a **szolgáltatói ajánlatok** szakaszának felső részén egy megjegyzés jelenik meg. Ha az ügyfél bérlője nem tudja végrehajtani ezt a delegálást, valószínűleg azért, mert nem rendelkeznek tulajdonosi szerepkörrel az előfizetéshez. Az előfizetést delegáló felhasználók megkereséséhez a felhasználó kiválaszthatja az előfizetést a Azure Portalban, megnyithatja a **hozzáférés-vezérlés (iam)** lehetőséget, és [megtekintheti a tulajdonosi szerepkörrel rendelkező összes felhasználót](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
 Ahhoz, hogy előkészítse az előfizetést (vagy az előfizetéshez tartozó erőforráscsoportokat), az előfizetést a **Microsoft. ManagedServices** erőforrás-szolgáltató manuális regisztrálásával kell engedélyezni a bevezetéshez. Az ügyfél bérlője és a tulajdonos szerepkör felhasználója ezt az [Azure Resource Providers és types](../../azure-resource-manager/resource-manager-supported-services.md)című témakörben ismertetett lépéseket követve teheti meg.
 

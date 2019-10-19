@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e1ae0501e2a558967b7d53229dc629e035c5e067
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676554"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597905"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ Néhány dolog szükséges a Windows rendszerű virtuális asztali környezet be
 
 Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendszerekhez, ezért győződjön meg arról, hogy rendelkezik a [megfelelő licenccel](https://azure.microsoft.com/pricing/details/virtual-desktop/) a felhasználók számára a telepíteni kívánt asztali és alkalmazások alapján:
 
-|OS|Szükséges licenc|
+|Operációs rendszer|Szükséges licenc|
 |---|---|
 |Windows 10 Enterprise multi-session vagy Windows 10 Enterprise|Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, a3, a5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, a3, a5|
@@ -74,16 +74,16 @@ Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszer�
 
 * Egy [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
 * A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következő módon engedélyezheti:
-  * Azure Active Directory Connect
-  * Azure AD Domain Services
-  >[!NOTE]
-  >A Windows rendszerű virtuális asztali szolgáltatás csak a Azure Active Directory forrásból származó Azure AD Domain Services-felhasználókat támogatja. A Windows Server AD-ből származó felhasználók jelenleg nem támogatottak.
+  * Azure AD Connect
+  * Azure AD tartományi szolgáltatások
+     >[!NOTE]
+     >Ha Azure AD Domain Services használ, a felhasználóknak Azure Active Directoryból kell származnia. Jelenleg nem támogatott a Azure AD Domain Services használata a Windows Server AD-ből származó felhasználókkal.
 * Egy Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
   
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
 * [Szabványos tartományhoz csatlakoztatott](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [hibrid ad-csatlakozás](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
-* A következő [támogatott operációsrendszer](#supported-virtual-machine-os-images)-lemezképek egyikének futtatása.
+* A következő [támogatott operációsrendszer-lemezképek](#supported-virtual-machine-os-images)egyikének futtatása.
 
 >[!NOTE]
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
@@ -92,7 +92,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 
 * *. wvd.microsoft.com
 * *.blob.core.windows.net
-* *.core.windows.net
+* *. core.windows.net
 * *.servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
@@ -122,7 +122,7 @@ A Windows virtuális asztal a következő operációsrendszer-lemezképeket tám
 * Windows 10 Enterprise multi-session
 * Windows 10 Enterprise
 * Windows 7 Enterprise
-* A Windows Server 2019
+* Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
@@ -135,11 +135,11 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|Automatikus|
 |Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|Automatikus|
 |Windows 7 Enterprise|Igen|Igen|Nem|Nem|Kézi|
-|A Windows Server 2019|Igen|Igen|Nem|Nem|Automatikus|
+|Windows Server 2019|Igen|Igen|Nem|Nem|Automatikus|
 |Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
 |Windows Server 2012 R2|Igen|Igen|Nem|Nem|Automatikus|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
 

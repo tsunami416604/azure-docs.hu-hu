@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: af6542757e75d7d6226c2470adf3c2b51d60875a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 35fd511f2383a09898bcd7e7a5227b750c36125a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383531"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595515"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
@@ -26,7 +26,7 @@ A Microsoft Azure Media Services számos médiafájl-formátum kódolására has
 
 Media Services a streaming- [végpont](streaming-endpoint-concept.md) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül az ügyfél-lejátszó alkalmazásba, a Common Streaming Media-protokollok egyikének használatával teszi elérhetővé. a következő szakaszban szerepel. A dinamikus csomagolási funkciót minden Streamvégpont tartalmazza (a standard és a prémium szintűek egyaránt). 
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>@no__t – 0To előkészítése a forrásfájlok továbbítására
+## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a>a forrásfájlok továbbítása <a id="delivery-protocols"/>To előkészítése
 
 A dinamikus csomagolás kihasználása érdekében a közbenső (forrás) fájlt több bitrátás MP4-(ISO Base Media 14496-12) fájlba kell [kódolnia](encoding-concept.md) . Rendelkeznie kell egy olyan [eszközzel](assets-concept.md) , amely a kódolt MP4-fájlokkal és a Media Services dinamikus csomagoláshoz szükséges adatfolyam-konfigurációs fájlokkal rendelkezik. Az MP4-fájlok ebből a készletből a dinamikus csomagolás használatával továbbíthatja a videókat a következő Streaming Media-protokollokon keresztül:
 
@@ -98,9 +98,9 @@ További információ a Media Services v3 élő közvetítéséről: [élő köz
 A dinamikus csomagolás támogatja a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és a [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmazó MP4-fájlokat.
 
 > [!NOTE]
-> Akár 4K-ig terjedő, akár 60 képkocka/másodperces képkocka-arányt is teszteltek, és dinamikus csomagolással lettek tesztelve. A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül. Ha kérdése van a témakörben, lépjen kapcsolatba @no__t – 0. 
+> Akár 4K-ig terjedő, akár 60 képkocka/másodperces képkocka-arányt is teszteltek, és dinamikus csomagolással lettek tesztelve. A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>a dinamikus csomagolás által támogatott @no__t 0Audio-kodekek
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a>a dinamikus csomagolás által támogatott <a id="audio-codecs"/>Audio kodekek
 
 A dinamikus csomagolás támogatja a következő protokollokkal kódolt hanganyagot:
 
@@ -124,7 +124,7 @@ A dinamikus csomagolás több hangsávot is támogat a DASH vagy a HLS (4-es vag
 A dinamikus csomagolás nem támogatja a [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) hanganyagot tartalmazó fájlokat (ez egy örökölt kodek).
 
 > [!NOTE]
-> A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a Dolby Digital Plus-kódolást az örökölt v2 API-k segítségével. Ha kérdése van a témakörben, lépjen kapcsolatba @no__t – 0. 
+> A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a Dolby Digital Plus-kódolást az örökölt v2 API-k segítségével. 
 
 ## <a name="manifests"></a>Jegyzékek 
  
@@ -272,6 +272,10 @@ A *dinamikus titkosítás* használatával az élő vagy igény szerinti tartalm
 ## <a name="more-information"></a>További információ
 
 Tekintse meg [Azure Media Services közösségét](media-services-community.md) , hogy különböző módokon lásson kérdéseket, visszajelzést küldjön, és frissítéseket kérjen a Media Servicesról.
+
+## <a name="need-help"></a>Segítség
+
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
 ## <a name="next-steps"></a>Következő lépések
 
