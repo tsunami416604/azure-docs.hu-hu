@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
-ms.translationtype: MT
+ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035100"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554550"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
@@ -119,16 +119,20 @@ Itt látható egy példa arra, hogy egy rendezett CCI-táblázat eloszlása null
 ## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagyméretű táblákon
 A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó táblák esetében az adathozzáférés nem lesz elérhető a felhasználók számára, amíg a rendezett CCI-létrehozási folyamat be nem fejeződik.   A particionált táblák esetében, mivel a motor partíció alapján hozza létre a rendezett CCI-partíciót, a felhasználók továbbra is hozzáférhetnek az olyan partíciókban lévő adatbázisokhoz, ahol a rendezett CCI-létrehozás nincs folyamatban.   Ezzel a beállítással minimálisra csökkentheti az állásidőt a nagy táblákon a rendezett CCI-létrehozás során: 
 
-1.  Hozzon létre partíciókat a cél nagyméretű táblán (az A. táblázat néven).
-2.  Hozzon létre egy üres rendezett CCI-táblázatot (a B táblázatnak nevezett tábla) ugyanazzal a táblával és partíciós sémával, amely az A. táblázat.
+1.  Hozzon létre partíciókat a cél nagy táblán (Table_A néven).
+2.  Hozzon létre egy üres rendezett CCI-táblázatot (Table_B néven) ugyanazzal a tábla-és partíciós sémával az A táblázattal.
 3.  Váltson át egy partíciót az A táblából a B táblázatba.
-4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > Újraépítés PARTITION = < Partition_ID > a B táblán a bekapcsolt partíció újraépítéséhez.  
-5.  Ismételje meg a 3. és a 4. lépést az A tábla minden partíciója esetében.
-6.  Ha az összes partíció át lett állítva az A táblából a B táblába, és újraépítve lett, az A táblázatba vonja át A táblázatot, és nevezze át a B táblát az A táblázatba. 
+4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > < Table_B > Újraépítés partíció = < Partition_ID > a B táblán a bekapcsolt partíció újraépítéséhez.  
+5.  Ismételje meg a 3. és a 4. lépést a Table_A minden partícióján.
+6.  Ha az összes partíciót Table_A-ről Table_B-re váltották át, a rendszer újraépíti, elvetette a Table_A, és átnevezi a Table_B a Table_A. 
+
+>[!NOTE]
+>Az Azure SQL Data Warehouse rendezett fürtözött oszlopcentrikus indexének (CCI) előnézetében ismétlődő adatmennyiség hozható létre, ha a rendezett CCI létrehozása vagy újraépítése egy particionált táblán létrehozott FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX használatával történik. Nincs adatvesztés. A probléma megoldása hamarosan elérhető lesz. Megkerülő megoldásként a felhasználók létrehozhatnak rendezett CCI-ket egy particionált táblán a CTAS parancs használatával.
+
 
 ## <a name="examples"></a>Példák
 
-@NO__T – 0A. A rendezett oszlopok és a sorrend sorszámának keresése: **
+**A. a rendezett oszlopok és a sorrend sorszámának keresése:**
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -136,12 +140,12 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-@NO__T – 0B. Az oszlopok sorszámának módosításához, oszlopok hozzáadásához vagy eltávolításához a sorrend listából, vagy a CCI-ből a rendezett CCI-re való váltáshoz: **
+**B. az oszlopok sorszámának módosításához, oszlopok hozzáadásához vagy eltávolításához a sorrend listából, vagy a CCI-ből a rendezett CCI-re való váltáshoz:**
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)
 WITH (DROP_EXISTING = ON)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További fejlesztési tippek: [SQL Data Warehouse fejlesztői áttekintés](sql-data-warehouse-overview-develop.md).

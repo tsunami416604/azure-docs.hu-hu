@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170663"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550855"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -33,11 +33,11 @@ A Function apps több módon is üzemeltethető:
 
 |                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium csomag (előzetes verzió)](functions-scale.md#premium-plan)|[App Service-csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Bejövő IP-korlátozások & Private site Access](#inbound-ip-restrictions)|✅ Igen|✅ Igen|✅ Igen|✅ Igen|
-|[Virtuális hálózat integrációja](#virtual-network-integration)|❌ Nem|✅ Igen (regionális)|✅ Igen (regionális és átjáró)|✅ Igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌ Nem| ❌ Nem|✅ Igen|✅ Igen|
-|[Hibrid kapcsolatok](#hybrid-connections)|❌ Nem|❌ Nem|✅ Igen|✅ Igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌ Nem| ❌ Nem|❌ Nem|✅ Igen|
+|[Bejövő IP-korlátozások & Private site Access](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[Virtuális hálózat integrációja](#virtual-network-integration)|❌No|✅Yes (regionális)|✅Yes (regionális és átjáró)|✅Yes|
+|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
+|[Hibrid kapcsolatok](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
@@ -52,9 +52,9 @@ További információ: [Azure app Service statikus hozzáférési korlátozások
 ## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
 
 A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak a magánhálózaton keresztül érhető el, például egy Azure-beli virtuális hálózaton belülről. 
-* A privát helyhez való hozzáférés a **szolgáltatási végpontok** konfigurálásakor a [prémium](./functions-premium-plan.md), a használati és a [app Servicei](functions-scale.md#app-service-plan) csomagban érhető el. [](functions-scale.md#consumption-plan) 
+* A privát webhely elérése a [prémium](./functions-premium-plan.md), a [fogyasztási], a (functions-Scale. MD # fogyasztás-terv) és a [app Service tervben](functions-scale.md#app-service-plan) érhető el, amikor a **szolgáltatási végpontok** konfigurálva vannak. 
     * A szolgáltatási végpontok a platform funkciói > hálózatkezelés > a hozzáférési korlátozások konfigurálása > a szabály hozzáadása lehetőséggel konfigurálhatók. A virtuális hálózatok mostantól a szabály típusaként is kiválaszthatók.
-    * További információ: [Virtual Network szolgáltatás](../virtual-network/virtual-network-service-endpoints-overview.md) -végpontok
+    * További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md)
         * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
 * A privát helyhez való hozzáférés egy belső terheléselosztó (ILB) által konfigurált App Service Environment is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../app-service/environment/create-ilb-ase.md).
 
@@ -87,8 +87,8 @@ A használt verziótól függetlenül a VNet integrációja lehetővé teszi a F
 A VNet integrációs funkciója:
 
 * Standard, prémium vagy PremiumV2 App Service csomagra van szükség
-* A TCP és az UDP támogatása
-* Együttműködik App Service alkalmazásokkal és a Function apps szolgáltatással
+* a TCP és az UDP támogatása
+* együttműködik App Service alkalmazásokkal és a Function apps szolgáltatással
 
 Néhány dolog, amit a VNet-integráció nem támogat, beleértve a következőket:
 
@@ -100,14 +100,22 @@ A functions Virtual Network Integration a App Service Web Apps szolgáltatással
 * [Regionális VNET-integráció](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
 * [Átjáró szükséges VNet-integráció](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
-A Virtual Network Integration használatával kapcsolatos további tudnivalókért lásd: [Function App-alkalmazás integrálása Azure](functions-create-vnet.md)-beli virtuális hálózattal.
+A Virtual Network Integration használatával kapcsolatos további tudnivalókért lásd: [Function App-alkalmazás integrálása Azure-beli virtuális hálózattal](functions-create-vnet.md).
 
-### <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
+## <a name="connecting-to-service-endpoint-secured-resources"></a>Kapcsolódás a szolgáltatás végpontjának biztonságos erőforrásaihoz
 
 > [!note] 
-> Átmenetileg akár 12 órát is igénybe vehet, amíg a Storage-fiók elérhetővé válik a Function app számára, miután beállította a hozzáférési korlátozásokat a Storage-fiókhoz. Ez idő alatt az alkalmazás teljesen offline állapotba kerül.
+> Átmenetileg akár 12 órát is igénybe vehet, amíg az új szolgáltatási végpontok elérhetővé válnak a Function app számára, ha az alsóbb rétegbeli erőforráshoz hozzáférési korlátozásokat konfigurál. Ebben az időszakban az erőforrás teljes mértékben elérhetetlenné válik az alkalmazás számára.
 
-Magasabb szintű biztonság biztosítása érdekében korlátozhatja az alkalmazás Storage-fiókját egy virtuális hálózatra. Ezután integrálnia kell a helyet az adott virtuális hálózattal a Storage-fiók eléréséhez. Ezt a konfigurációt minden olyan csomag támogatja, amely támogatja a virtuális hálózatok integrálását.
+Magasabb szintű biztonság biztosítása érdekében a szolgáltatás-végpontok segítségével számos Azure-szolgáltatást korlátozhat egy virtuális hálózatra. Ezután integrálnia kell a Function alkalmazást az adott virtuális hálózattal az erőforrás eléréséhez. Ezt a konfigurációt minden olyan csomag támogatja, amely támogatja a virtuális hálózatok integrálását.
+
+[A Virtual Network szolgáltatásbeli végpontokról itt olvashat bővebben.](../virtual-network/virtual-network-service-endpoints-overview.md)
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>A Storage-fiók korlátozása egy virtuális hálózatra
+A Function app létrehozásakor létre kell hoznia vagy hivatkoznia kell egy általános célú Azure Storage-fiókra, amely támogatja a blob, a üzenetsor és a Table Storage használatát. Ezen a fiókon jelenleg nem lehet virtuális hálózati korlátozásokat használni. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a Function alkalmazáshoz használt Storage-fiókon, akkor az alkalmazás megszakítja az alkalmazást.
+
+[A Storage-fiókra vonatkozó követelményekről itt olvashat bővebben.](./functions-create-function-app-portal.md#storage-account-requirements
+) 
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuális hálózati eseményindítók (nem HTTP)
 
@@ -131,7 +139,7 @@ A kimenő IP-korlátozások csak egy App Service Environment központilag telep�
 
 Ha egy Function app-t egy prémium csomagba vagy egy virtuális hálózattal App Service tervbe integrál, az alkalmazás továbbra is képes lesz kimenő hívásokat kezdeményezni az internethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a hálózatkezelésről és a Azure Functions: 
 
 * [Kövesse a virtuális hálózatok integrálásának első lépéseit ismertető oktatóanyagot](./functions-create-vnet.md)

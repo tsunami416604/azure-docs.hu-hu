@@ -1,24 +1,19 @@
 ---
 title: Mentett keresések a felügyeleti megoldásokban | Microsoft Docs
 description: A felügyeleti megoldások általában a Log Analytics mentett kereséseket tartalmaznak a megoldás által gyűjtött adatok elemzéséhez. Emellett riasztásokat is meghatározhatnak a felhasználó értesítése céljából, vagy a kritikus problémákra reagálva automatikusan műveleteket hajtanak végre. Ez a cikk bemutatja, hogyan határozhatja meg Log Analytics mentett kereséseket egy Resource Manager-sablonban, hogy azok a felügyeleti megoldásokban is szerepeljenek.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/29/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772988"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553920"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics mentett keresések és riasztások hozzáadása a felügyeleti megoldáshoz (előzetes verzió)
 
@@ -57,7 +52,7 @@ A következő táblázat az ebben a példában használt erőforrás API-verzió
 ## <a name="saved-searches"></a>Mentett keresések
 Belefoglalja a [mentett kereséseket](../../azure-monitor/log-query/log-query-overview.md) egy megoldásba, hogy lehetővé tegye a felhasználók számára a megoldás által gyűjtött adatok lekérdezését. A mentett keresések a Azure Portal **mentett keresések** területén jelennek meg. Minden egyes riasztáshoz szükség van egy mentett keresésre is.
 
-[Log Analytics mentett keresési](../../azure-monitor/log-query/log-query-overview.md) erőforrások típusa, `Microsoft.OperationalInsights/workspaces/savedSearches` és a következő szerkezettel rendelkezik. Ilyenek például a gyakori változók és paraméterek, hogy a kódrészletet másolja és illessze be a megoldás fájljába, és módosítsa a paraméterek nevét.
+[Log Analytics mentett keresési](../../azure-monitor/log-query/log-query-overview.md) erőforrások típusa `Microsoft.OperationalInsights/workspaces/savedSearches`, és a következő szerkezettel rendelkezik. Ilyenek például a gyakori változók és paraméterek, hogy a kódrészletet másolja és illessze be a megoldás fájljába, és módosítsa a paraméterek nevét.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -76,19 +71,19 @@ Belefoglalja a [mentett kereséseket](../../azure-monitor/log-query/log-query-ov
 
 A mentett keresés minden tulajdonságát az alábbi táblázat ismerteti.
 
-| Tulajdonság | description |
+| Tulajdonság | Leírás |
 |:--- |:--- |
 | category | A mentett keresés kategóriája.  Az azonos megoldásban mentett keresések gyakran egyetlen kategóriába kerülnek, így a konzolon együtt lesznek csoportosítva. |
-| displayName | A portálon a mentett kereséshez megjelenítendő név. |
-| query | A futtatandó lekérdezés. |
+| DisplayName | A portálon a mentett kereséshez megjelenítendő név. |
+| lekérdezés | A futtatandó lekérdezés. |
 
 > [!NOTE]
-> Előfordulhat, hogy Escape-karaktereket kell használnia a lekérdezésben, ha olyan karaktereket tartalmaz, amelyek JSON-ként értelmezhetők. Ha például a lekérdezés **AzureActivity volt | OperationName: "Microsoft. számítás/virtualMachines/írás"** , a megoldás fájljában kell megírni a **AzureActivity | OperationName:/\"Microsoft. számítás/virtualMachines/írás\"** .
+> Előfordulhat, hogy Escape-karaktereket kell használnia a lekérdezésben, ha olyan karaktereket tartalmaz, amelyek JSON-ként értelmezhetők. Ha például a lekérdezés **AzureActivity volt | OperationName: "Microsoft. számítás/virtualMachines/írás"** , a megoldás fájljában kell megírni a **AzureActivity | OperationName:/\"Microsoft. számítás/virtualMachines/írás \"** .
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 Az Azure- [naplók riasztásait](../../azure-monitor/platform/alerts-unified-log.md) az Azure riasztási szabályai hozzák létre, amelyek rendszeres időközönként futtatják a megadott naplózási lekérdezéseket. Ha a lekérdezés eredményei megfelelnek a megadott feltételeknek, egy riasztási rekord jön létre, és egy vagy több művelet is fut a [műveleti csoportok](../../azure-monitor/platform/action-groups.md)használatával.
 
-A felhasználók számára, hogy a riasztások kiterjesztése az Azure-bA műveletek most már az Azure action groups általi szabályozza. Ha egy munkaterület és a hozzá tartozó riasztások ki vannak bővítve az Azure-ra, a [műveleti csoport – Azure Resource Manager sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)segítségével lekérheti vagy hozzáadhatja a műveleteket.
+A riasztásokat az Azure-ra kiterjesztő felhasználók számára mostantól az Azure-műveleti csoportok vezérlik a műveleteket. Ha egy munkaterület és a hozzá tartozó riasztások ki vannak bővítve az Azure-ra, a [műveleti csoport – Azure Resource Manager sablon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)segítségével lekérheti vagy hozzáadhatja a műveleteket.
 A régi felügyeleti megoldás riasztási szabályai a következő három különböző erőforrásból állnak.
 
 - **Mentett keresés.** Meghatározza a futtatott naplóbeli keresést. Több riasztási szabály is megoszthat egyetlen mentett keresést.
@@ -99,7 +94,7 @@ A fentiekben a mentett keresési erőforrások szerepelnek. A többi erőforrás
 
 ### <a name="schedule-resource"></a>Erőforrás-ütemterv
 
-Egy mentett kereséshez egy vagy több ütemterv is tartozhat, amely egy külön riasztási szabályt jelképez. Az ütemterv meghatározza, hogy a keresés milyen gyakran fusson, és milyen időintervallumot kell lekérni az adat lekéréséhez. Az erőforrások ütemezett erőforrásai rendelkeznek `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` a következő szerkezettel: Ilyenek például a gyakori változók és paraméterek, hogy a kódrészletet másolja és illessze be a megoldás fájljába, és módosítsa a paraméterek nevét.
+Egy mentett kereséshez egy vagy több ütemterv is tartozhat, amely egy külön riasztási szabályt jelképez. Az ütemterv meghatározza, hogy a keresés milyen gyakran fusson, és milyen időintervallumot kell lekérni az adat lekéréséhez. Az erőforrások ütemezett típusa `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/`, és a következő szerkezettel rendelkezik. Ilyenek például a gyakori változók és paraméterek, hogy a kódrészletet másolja és illessze be a megoldás fájljába, és módosítsa a paraméterek nevét.
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name)]",
@@ -117,10 +112,10 @@ Egy mentett kereséshez egy vagy több ütemterv is tartozhat, amely egy külön
     }
 Az ütemezett erőforrások tulajdonságait az alábbi táblázat ismerteti.
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| enabled       | Igen | Megadja, hogy a riasztás engedélyezve van-e a létrehozásakor. |
-| tartam      | Igen | Milyen gyakran fut a lekérdezés percek alatt. |
+| Engedélyezve       | Igen | Megadja, hogy a riasztás engedélyezve van-e a létrehozásakor. |
+| interval      | Igen | Milyen gyakran fut a lekérdezés percek alatt. |
 | queryTimeSpan | Igen | Az az időtartam, ameddig az eredmények kiértékelése megtörténik. |
 
 Az ütemezett erőforrásnak a mentett kereséstől kell függ lennie, hogy az az ütemterv előtt legyen létrehozva.
@@ -128,10 +123,10 @@ Az ütemezett erőforrásnak a mentett kereséstől kell függ lennie, hogy az a
 > Az ütemterv nevének egyedinek kell lennie egy adott munkaterületen; két ütemterv nem rendelkezhet ugyanazzal az AZONOSÍTÓval, még akkor sem, ha különböző mentett keresésekhez vannak társítva. Emellett a Log Analytics API-val létrehozott összes mentett kereséshez, ütemtervhez és művelethez is neve legyen kisbetűs.
 
 ### <a name="actions"></a>Műveletek
-Egy több művelet is lehet. Művelet egy vagy több folyamat végrehajtásához, például egy levelet küld, vagy a runbook indítása adhat meg, vagy azt adhat meg egy küszöbértéket, amely azt határozza meg, ha a keresési eredmények bizonyos feltételeknek megfelelő-e. Bizonyos műveleteket meghatározzuk is, hogy a folyamatok hajtja végre, hogy a küszöbértéket.
+Egy ütemterv több művelettel is rendelkezhet. Egy művelet egy vagy több folyamatot is meghatározhat, például e-mailek küldését vagy runbook elindítását, vagy meghatározhat egy küszöbértéket, amely meghatározza, hogy egy adott keresési eredmény megfelel-e bizonyos feltételeknek. Néhány művelet mindkét esetben meghatározza, hogy a rendszer a küszöbérték teljesülése esetén hajtsa végre a folyamatokat.
 A műveletek a [műveleti csoport] erőforrás vagy a műveleti erőforrás használatával definiálhatók.
 
-A **Type** tulajdonságnak két típusú művelet-erőforrása van megadva. Az ütemtervnek egy **riasztási** műveletre van szüksége, amely meghatározza a riasztási szabály részleteit, valamint azt, hogy milyen műveleteket kell végrehajtani a riasztások létrehozásakor. A művelet erőforrásainak típusa a `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`következő:.
+A **Type** tulajdonságnak két típusú művelet-erőforrása van megadva. Az ütemtervnek egy **riasztási** műveletre van szüksége, amely meghatározza a riasztási szabály részleteit, valamint azt, hogy milyen műveleteket kell végrehajtani a riasztások létrehozásakor. A műveleti erőforrások típusa `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
 
 A riasztási műveletek az alábbi struktúrával rendelkeznek. Ilyenek például a gyakori változók és paraméterek, hogy a kódrészletet másolja és illessze be a megoldás fájljába, és módosítsa a paraméterek nevét.
 
@@ -174,14 +169,14 @@ A riasztási művelet erőforrásaihoz tartozó tulajdonságokat az alábbi táb
 | `type` | Igen | A művelet típusa.  **Riasztás a** riasztási műveletekhez. |
 | `name` | Igen | A riasztás megjelenítendő neve.  Ez a név jelenik meg a konzolon a riasztási szabályhoz. |
 | `description` | Nem | A riasztás opcionális leírása. |
-| `severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **critical**<br>**Figyelmeztetés**<br>**tájékoztató**
+| `severity` | Igen | A riasztási rekord súlyossága a következő értékekkel:<br><br> **kritikus**<br>**Figyelmeztetés**<br>**tájékoztató**
 
-#### <a name="threshold"></a>Küszöbérték
+#### <a name="threshold"></a>Küszöb
 Ezt a szakaszt kötelező megadni. Meghatározza a riasztási küszöbérték tulajdonságait.
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
+| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb, mint <br>lt = kisebb, mint** |
 | `Value` | Igen | Az eredmények összehasonlítására szolgáló érték. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -189,24 +184,24 @@ Ez a szakasz nem kötelező. Adja meg egy metrika-mérési riasztáshoz.
 
 | Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
-| `TriggerCondition` | Igen | Azt határozza meg, hogy a küszöbérték a következő értékek összes megszegése vagy egymást követő megszegése esetén:<br><br>**Összesen<br>egymást követő** |
-| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb,<br>mint lt = kisebb, mint** |
+| `TriggerCondition` | Igen | Azt határozza meg, hogy a küszöbérték a következő értékek összes megszegése vagy egymást követő megszegése esetén:<br><br>**@No__t_1Consecutive összesen** |
+| `Operator` | Igen | A következő értékek összehasonlítására szolgáló operátor:<br><br>**gt = nagyobb, mint <br>lt = kisebb, mint** |
 | `Value` | Igen | Azon időpontok száma, amelyeknek a feltételeknek teljesülnie kell a riasztás indításához. |
 
 
-#### <a name="throttling"></a>Szabályozás
+#### <a name="throttling"></a>Throttling
 Ez a szakasz nem kötelező. Akkor adja meg ezt a szakaszt, ha a riasztások létrehozása után bizonyos időtartamon belül szeretné letiltani a riasztásokat egy adott szabályból.
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | DurationInMinutes | Igen, ha a szabályozás eleme tartalmaz | Azon percek száma, ameddig a riasztások elhagyása után a rendszer létrehoz egy azonos riasztási szabályból. |
 
 #### <a name="azure-action-group"></a>Azure-műveleti csoport
-Az Azure-ban, az összeset műveletcsoport használja az alapértelmezett mechanizmusként műveletek kezelésére. A műveletcsoport adja meg a műveletet egyszer, és társíthatja a műveletcsoport több riasztás – az Azure-ban. Nem szükséges, ismételten deklarálja és újra ugyanazokat a műveleteket. Műveletcsoportok támogatja a több műveletek – például az e-mailben, SMS, hanghívás, az ITSM-kapcsolatot, Automation-Runbook, Webhook URI.
+Minden riasztás az Azure-ban, a műveleti csoport használata a műveletek kezelésére szolgáló alapértelmezett mechanizmusként. A műveleti csoport segítségével egyszer adhatja meg a műveleteket, majd a műveleti csoportot több riasztáshoz társíthatja az Azure-on keresztül. Anélkül, hogy szükség lenne rá, hogy ismételten deklarálja ugyanazokat a műveleteket újra és újra. A műveleti csoportok több műveletet is támogatnak – például e-maileket, SMS-t, hanghívást, ITSM, Automation Runbook, webhook URI-t és egyebeket.
 
-A felhasználó számára ki van bővítve a riasztások az Azure-bA – ütemezés most rendelkezik küszöbértéket, riasztást létrehozni a együtt átadott műveletcsoport részletei. Az e-mailek adatait, a webhook URL-jeit, a Runbook Automation részleteit és az egyéb műveleteket a riasztás létrehozása előtt először a műveleti csoportba kell definiálni. Létrehozhat [műveleti csoportot Azure monitor](../../azure-monitor/platform/action-groups.md) a portálon, vagy használhat [műveleti csoport – erőforrás sablont](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Ahhoz, hogy a felhasználók ki tudják terjeszteni a riasztásokat az Azure-ba, az ütemtervnek mostantól a küszöbértékkel együtt át kell esnie a műveleti csoport adataival, hogy létre lehessen hozni a riasztást. Az e-mailek adatait, a webhook URL-jeit, a Runbook Automation részleteit és az egyéb műveleteket a riasztás létrehozása előtt először a műveleti csoportba kell definiálni. Létrehozhat [műveleti csoportot Azure monitor](../../azure-monitor/platform/action-groups.md) a portálon, vagy használhat [műveleti csoport – erőforrás sablont](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Elem neve | Szükséges | description |
+| Elem neve | Szükséges | Leírás |
 |:--|:--|:--|
 | AzNsNotification | Igen | Azon Azure-műveleti csoport erőforrás-azonosítója, amelyet a riasztáshoz kell társítani a szükséges műveletek elvégzéséhez, ha a riasztási feltételek teljesülnek. |
 | CustomEmailSubject | Nem | Az e-mailek egyéni tárgya a társított műveleti csoportban megadott összes címre elküldve. |
@@ -218,7 +213,7 @@ Az alábbi példa egy olyan megoldást mutat be, amely a következő erőforrás
 
 - Mentett keresés
 - Ütemezés
-- Műveletcsoport
+- Műveleti csoport
 
 A minta a [standard megoldás paramétereinek]( solutions-solution-file.md#parameters) változóit használja, amelyeket általában egy megoldásban használtak, szemben az rögzítjük lévő értékekkel.
 
@@ -406,6 +401,6 @@ A következő paraméter a megoldáshoz tartozó minták értékeit tartalmazza.
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Nézetek hozzáadása](solutions-resources-views.md) a felügyeleti megoldáshoz.
 * Az [Automation-runbookok és egyéb erőforrásokat is hozzáadhat](solutions-resources-automation.md) a felügyeleti megoldáshoz.

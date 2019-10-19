@@ -1,86 +1,80 @@
 ---
-title: Felügyeleti megoldás létrehozása az Azure-ban |} A Microsoft Docs
-description: Felügyeleti megoldások közé tartoznak a csomagolt felügyeleti forgatókönyvek az Azure-ügyfeleket adhat hozzá a Log Analytics-munkaterületet.  Ez a cikk részletesen hogyan használható a saját környezetben felügyeleti megoldásokat hozhat létre, vagy szeretné elérhetővé tenni az ügyfelek számára.
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
+title: Felügyeleti megoldás létrehozása az Azure-ban | Microsoft Docs
+description: A felügyeleti megoldások közé tartoznak az Azure-ban csomagolt felügyeleti forgatókönyvek, amelyeket az ügyfelek hozzáadhatnak Log Analytics munkaterülethez.  Ez a cikk részletesen ismerteti, hogyan hozhat létre a saját környezetében használt felügyeleti megoldásokat, illetve hogyan teheti elérhetővé az ügyfelek számára.
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
+ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ef1af4d3d27bc098341a4de716e293557baa946a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60595809"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555291"
 ---
-# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Megtervezik és megvalósítják a felügyeleti megoldás az Azure-ban (előzetes verzió)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Felügyeleti megoldás kialakítása és létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
-> Ez a felügyeleti megoldások létrehozásához az Azure-ban, jelenleg előzetes verzióban érhető el előzetes dokumentációjában talál. Semmilyen sémát, az alábbiakban a változhat.
+> Ez az előzetes dokumentáció az Azure-ban jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásához. Az alább ismertetett sémák változhatnak.
 
-[Felügyeleti megoldások]( solutions.md) adja meg a csomagolt felügyeleti forgatókönyvek, amelyek az ügyfelek adhat hozzá a Log Analytics-munkaterületet.  Ez a cikk egy alapszintű folyamatot megtervezni és létrehozni egy felügyeleti megoldás, amely lehetővé teszi a leggyakoribb követelményekre mutat be.  Ha most ismerkedik a felügyeleti megoldások fejlesztése, akkor használja ezt a folyamatot a kiindulási pontként, és akkor támaszkodjon az összetett megoldások, a követelményeinek változását követve fogalmakat.
+A [felügyeleti megoldások]( solutions.md) olyan csomagolt felügyeleti forgatókönyveket biztosítanak, amelyeket az ügyfelek hozzáadhatnak log Analytics munkaterülethez.  Ez a cikk egy alapszintű folyamatot mutat be a leggyakoribb követelményekhez megfelelő felügyeleti megoldás kialakításához és kiépítéséhez.  Ha most ismerkedik a felügyeleti megoldások létrehozásával, akkor ezt a folyamatot kiindulási pontként használhatja, majd kihasználhatja a fogalmakat, amelyekkel összetettebb megoldásokat hozhat létre.
 
-## <a name="what-is-a-management-solution"></a>Mi az felügyeleti megoldás?
+## <a name="what-is-a-management-solution"></a>Mi az a felügyeleti megoldás?
 
-Felügyeleti megoldások Azure-erőforrások, amelyek együttműködve érhet el egy adott felügyeleti forgatókönyvet tartalmaz.  Ezek vannak implementálva [Resource Management-sablonokat](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) bemutatja, hogyan telepítheti és konfigurálhatja a benne foglalt erőforrásokat a megoldás telepítésekor, amely tartalmazza.
+A felügyeleti megoldások olyan Azure-erőforrásokat tartalmaznak, amelyek együttműködve egy adott felügyeleti forgatókönyv megvalósítására használhatók.  Olyan [erőforrás-kezelési sablonokként](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) valósulnak meg, amelyek részletesen ismertetik, hogyan kell telepíteni és konfigurálni a tartalmazott erőforrásokat a megoldás telepítésekor.
 
-Az alapszintű stratégia, hogy indítsa el a felügyeleti megoldás az Azure-környezetben az egyes összetevők létrehozásával.  Ha már rendelkezik az a funkciók működését, megkezdheti a csomagolás őket egy [felügyeleti megoldásfájlt]( solutions-solution-file.md). 
+Az alapszintű stratégia a felügyeleti megoldás elindítása az Azure-környezet egyes összetevőinek létrehozásával.  A funkciók megfelelő működésének megkezdése után megkezdheti a csomagolást egy [felügyeleti megoldás fájljába]( solutions-solution-file.md). 
 
 
 ## <a name="design-your-solution"></a>A megoldás tervezése
-A leggyakrabban használt minta egy felügyeleti megoldás az alábbi ábrán látható.  Ebben a mintában a különböző összetevők ismertetik az alább.
+A felügyeleti megoldások leggyakoribb mintája az alábbi ábrán látható.  A minta különböző összetevőit az alábbiakban tárgyaljuk.
 
-![Megoldás áttekintése](media/solutions-creating/solution-overview.png)
+![Felügyeleti megoldás áttekintése](media/solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Adatforrások
-A megoldás tervezésének első lépése annak meghatározása, az adatokat, amelyekre szüksége van a Log Analytics-adattárból.  Előfordulhat, hogy ezeket az adatokat gyűjti össze a [adatforrás](../../azure-monitor/platform/agent-data-sources.md) vagy [egy másik megoldás]( solutions.md), vagy a megoldás lehet, hogy kell adnia azt gyűjti.
+A megoldás kialakításának első lépése a Log Analytics adattárból szükséges adatok meghatározása.  Ezeket az adatokat egy [adatforrás](../../azure-monitor/platform/agent-data-sources.md) vagy [egy másik megoldás]( solutions.md)gyűjtheti, vagy előfordulhat, hogy a megoldásnak meg kell adnia a gyűjtés folyamatát.
 
-Adatforrások leírtak szerint a Log Analytics-adattárban gyűjtött számos módon vannak [adatforrásokat a Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Ez magában foglalja a Windows eseménynaplóban az események vagy Syslog által generált teljesítményszámlálók mellett a Windows- és Linux-ügyfelek.  Az Azure-erőforrások Azure Monitor által gyűjtött is gyűjthet adatokat.  
+Számos módon gyűjthet adatforrásokat a Log Analytics adattárban az [log Analytics adatforrásaiban](../../azure-monitor/platform/agent-data-sources.md)leírtak szerint.  Ez a Windows-eseménynaplóban vagy a syslog által generált eseményeket is magában foglalja a Windows-és Linux-ügyfelekhez tartozó teljesítményszámlálók mellett.  A Azure Monitor által összegyűjtött Azure-erőforrásokból is gyűjthet adatokat.  
 
-Nem minden elérhető adatforrások-n keresztül elérhető adatok van szüksége, akkor használhatja a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) így a használatával írhat adatokat a Log Analytics-tárházba bármely ügyfélnek, amely segítségével meghívhatja a REST API-t.  A leggyakoribb azt jelenti, hogy egyéni adatgyűjtés felügyeleti megoldás az, hogy hozzon létre egy [az Azure Automation runbook](../../automation/automation-runbook-types.md) , amely a szükséges adatokat gyűjti össze az Azure- vagy külső erőforrásokat, és az adatgyűjtő API segítségével írni a adattár.  
+Ha olyan adatokra van szüksége, amelyek nem érhetők el az elérhető adatforrások bármelyikén keresztül, akkor használhatja a [http-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) -t, amely lehetővé teszi az adatok írását a log Analytics adattárba bármely olyan ügyféltől, amely képes REST API meghívására.  Egy felügyeleti megoldásban az egyéni adatgyűjtés leggyakoribb módja egy olyan runbook létrehozása, amely az Azure-ból vagy külső erőforrásokból származó szükséges adatokat gyűjti [Azure Automation](../../automation/automation-runbook-types.md) , és az adatgyűjtő API-t használja az adattárba való íráshoz.  
 
-### <a name="log-searches"></a>Naplókeresések
-[Naplókeresések](../../azure-monitor/log-query/log-query-overview.md) kibontása és elemzése a Log Analytics-adattárban lévő adatok használhatók.  Ezek a nézetek és riasztások mellett lehetővé teszi a felhasználónak az ad hoc elemzést az adatok a tárházban szolgálnak.  
+### <a name="log-searches"></a>Naplók keresése
+A [naplók keresése](../../azure-monitor/log-query/log-query-overview.md) a log Analytics adattárban található adatok kinyerésére és elemzésére szolgál.  Ezeket a nézeteket és riasztásokat a felhasználók is használják, így a felhasználó az adattárban lévő adatok ad hoc elemzését is elvégezheti.  
 
-Meg kell határozni, hogy úgy gondolja, hogy akkor is hasznos lehet a felhasználónak, akkor is, ha nem használta azokat bármilyen nézeteket és riasztásokat lekérdezéseket.  Ezek őket a mentett keresések, a portálon elérhető lesz, és is hozzáadhatja őket egy [lista a lekérdezés vizualizációs rész](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) az egyéni nézetben.
+Meg kell határoznia azokat a lekérdezéseket, amelyeket úgy gondol, hogy a felhasználó számára hasznos lesz, még akkor is, ha azokat nem használja egyetlen nézet vagy riasztás sem.  Ezek a portálon mentett keresésként lesznek elérhetők a portálon, és a [lekérdezések vizualizációs részét](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) is felvehetik az egyéni nézetben.
 
-### <a name="alerts"></a>Riasztások
-[Riasztások a Log Analyticsben](../../azure-monitor/platform/alerts-overview.md) azonosíthatja a problémákat keresztül [naplókereséseket](#log-searches) az adatokban a tárházban.  Vagy a felhasználó értesítése, vagy automatikusan válaszként futtatni a műveletet. Azonosítsa az alkalmazás különböző riasztási feltételeket kell és adathordozófájlba felvenni a megoldás megfelelő riasztási szabályok.
+### <a name="alerts"></a>Értesítések
+A [log Analytics riasztásai](../../azure-monitor/platform/alerts-overview.md) azonosítják a [naplóbeli keresések](#log-searches) során felmerülő problémákat a tárházban lévő adattárakban.  Vagy értesítik a felhasználót, vagy egy válaszban automatikusan futtatják a műveletet. Meg kell határoznia az alkalmazás különböző riasztási feltételeit, és tartalmaznia kell a megfelelő riasztási szabályokat a megoldás fájljában.
 
-Ha a probléma esetleg egy automatizált folyamattal javítani kell, majd általában létrehozhat egy runbook az Azure Automationben a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatások kezelhetők [parancsmagok](/powershell/azure/overview) , amely a runbook szeretné kihasználni a funkció végrehajtásához.
+Ha a probléma kijavítása egy automatizált folyamattal lehetséges, akkor általában egy runbook hoz létre Azure Automation a szervizelés végrehajtásához.  A legtöbb Azure-szolgáltatás olyan [parancsmagokkal](/powershell/azure/overview) kezelhető, amelyeket a runbook az ilyen funkciók elvégzésére használhat.
 
-Ha a megoldáshoz szükséges külső funkciók egy riasztásra adott válaszként, akkor használhat egy [webhook válasza](../../azure-monitor/platform/alerts-metric.md).  Ez lehetővé teszi, hogy egy külső webes szolgáltatás adatokat küld a riasztásokból meghívható.
+Ha a megoldás külső funkciókat igényel a riasztásokra adott válaszként, akkor használhat [webhook-választ](../../azure-monitor/platform/alerts-metric.md).  Ez lehetővé teszi, hogy meghívjon egy külső webszolgáltatás által küldött adatokat a riasztásból.
 
 ### <a name="views"></a>Nézetek
-A nézetek a Log Analytics segítségével a Log Analytics-adattárban adatainak megjelenítése.  Egyes megoldások általában fogja tartalmazni a szolgáltatással egyetlen nézetben egy [csempe](../../azure-monitor/platform/view-designer-tiles.md) , amely a felhasználó fő irányítópultján jelenik meg.  A nézet tartalmazhat tetszőleges számú [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) különböző megjelenítését tartalmazza az összegyűjtött adatokat biztosít a felhasználó számára.
+A Log Analytics nézetei a Log Analytics adattárból származó adatok megjelenítésére szolgálnak.  Minden megoldás általában egyetlen nézetet tartalmaz, amely a felhasználó fő irányítópultján megjelenő [csempével](../../azure-monitor/platform/view-designer-tiles.md) fog szerepelni.  A nézet tetszőleges számú [vizualizációs alkatrészt](../../azure-monitor/platform/view-designer-parts.md) tartalmazhat, amelyek különböző vizualizációkat biztosítanak az összegyűjtött adatoknak a felhasználó számára.
 
-Ön [Az adatforrásnézet-tervezőből segítségével egyéni nézeteket hozhat létre](../../azure-monitor/platform/view-designer.md) , amelyek később exportálhatja, hogy a megoldás fájlban.  
+[Az egyéni nézeteket a View Designer használatával hozhatja létre](../../azure-monitor/platform/view-designer.md) , amelyet később exportálhat a megoldás fájljába való felvételhez.  
 
 
-## <a name="create-solution-file"></a>Megoldás-fájl létrehozása
-Miután konfigurált és tesztelt az összetevőket, amelyek a megoldás része lesz, akkor is [hozzon létre egy megoldást fájlt]( solutions-solution-file.md).  A megoldás-összetevőket a megvalósítandó egy [Resource Manager-sablon](../../azure-resource-manager/resource-group-authoring-templates.md) , amely tartalmaz egy [megoldás erőforrás]( solutions-solution-file.md#solution-resource) kapcsolatok egyéb erőforrások a fájlban.  
+## <a name="create-solution-file"></a>Megoldás fájljának létrehozása
+Miután konfigurálta és tesztelte a megoldás részét képező összetevőket, létrehozhat [egy megoldási fájlt]( solutions-solution-file.md).  A megoldás-összetevőket egy [Resource Manager-sablonban](../../azure-resource-manager/resource-group-authoring-templates.md) kell megvalósítani, amely tartalmaz egy [megoldási erőforrást]( solutions-solution-file.md#solution-resource) , amely a fájlban található többi erőforrással való kapcsolattal rendelkezik.  
 
 
 ## <a name="test-your-solution"></a>A megoldás tesztelése
-Bár a megoldás fejleszt, telepítse és tesztelje a munkaterületen kell.  Ezt megteheti a rendelkezésre álló módszerek bármelyikével [tesztelése, és telepítse a Resource Manager-sablonok](../../azure-resource-manager/resource-group-template-deploy.md).
+A megoldás fejlesztése során telepítenie és tesztelni kell a munkaterületen.  Ezt bármely elérhető módszer használatával végezheti el a [Resource Manager-sablonok teszteléséhez és telepítéséhez](../../azure-resource-manager/resource-group-template-deploy.md).
 
-## <a name="publish-your-solution"></a>Tegye közzé a megoldását
-Befejeződött, és a tesztelt megoldását, akkor is tegye elérhetővé a következő forrásokból ügyfeleket.
+## <a name="publish-your-solution"></a>A megoldás közzététele
+Miután elvégezte és tesztelte a megoldást, az alábbi forrásokon keresztül elérhetővé teheti az ügyfelek számára.
 
-- **Az Azure gyorsindítási sablonok**.  [Az Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) Resource Manager-sablonok a Githubon keresztül Közösség által biztosított készlete.  Elérhetővé teheti a megoldás a következő információkat a [közreműködői útmutató](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE).
-- **Az Azure Marketplace**.  A [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/) lehetővé teszi, hogy terjesztése, és értékesítse a megoldását azt más fejlesztők, független szoftverszállítók, és informatikai szakemberek számára.  Megismerheti a megoldás közzététele az Azure piactéren, hogy [hogyan tehet közzé és kezelése az Azure Marketplace-ajánlat](../../marketplace/marketplace-publishers-guide.md).
+- **Azure Gyorsindítás sablonok**.  Az Azure gyors üzembe helyezési [sablonok](https://azure.microsoft.com/resources/templates/) a Közösség által a githubon keresztül hozzájáruló Resource Manager-sablonok.  A megoldás elérhetővé tételéhez a [hozzájárulási útmutatóban](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)talál további információt.
+- Az **Azure Marketplace**-en.  Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) lehetővé teszi a megoldás terjesztését és értékesítését más fejlesztőknek, szoftvergyártóknak és informatikai szakembereknek.  Megtudhatja, hogyan teheti közzé megoldásait az Azure Marketplace-en [az ajánlat közzétételéhez és kezeléséhez az Azure piactéren](../../marketplace/marketplace-publishers-guide.md).
 
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [létrehozza a megoldásfájlt]( solutions-solution-file.md) a felügyeleti megoldás.
-* Ismerje meg az adatait [Azure Resource Manager-sablonok készítése](../../azure-resource-manager/resource-group-authoring-templates.md).
-* Keresés [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates) minták a különböző Resource Manager-sablonok.
+## <a name="next-steps"></a>Következő lépések
+* Megtudhatja, hogyan [hozhat létre megoldást]( solutions-solution-file.md) a felügyeleti megoldáshoz.
+* A [Azure Resource Manager-sablonok létrehozási](../../azure-resource-manager/resource-group-authoring-templates.md)részleteinek megismerése.
+* Más Resource Manager-sablonokból származó mintákhoz is kereshet Azure-beli [Gyorsindítás sablonokat](https://azure.microsoft.com/documentation/templates) .

@@ -1,126 +1,123 @@
 ---
-title: Az Azure Monitor erőforráscsoport Insights |} A Microsoft Docs
-description: Az állapotát és teljesítményét az elosztott alkalmazások és szolgáltatások az Azure monitorral, az erőforráscsoport szintjén ismertetése
-services: azure-monitor
-author: NumberByColors
-manager: carmonm
+title: Erőforráscsoport-bepillantást Azure Monitor | Microsoft Docs
+description: Az erőforráscsoport szintjén megismerheti az elosztott alkalmazások és szolgáltatások állapotát és teljesítményét Azure Monitor
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.subservice: ''
 ms.topic: conceptual
+author: NumberByColors
+ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.author: daviste
-ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119421"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553992"
 ---
-# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>A figyelő erőforráscsoportok és az Azure Monitor (előzetes verzió)
+# <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
 
-A modern alkalmazások gyakran összetett és elosztott rendelkező, sok diszkrét részt együttműködése valamilyen szolgáltatás biztosításához. FELISMERVE, ezt a komplexitást, az Azure Monitor nyújt figyelési erőforráscsoportokhoz. Így egyszerűen, osztályozhatja és diagnosztizálhatja problémáit az egyes erőforrások észlel, miközben környezet beállítására állapotát és teljesítményét az erőforráscsoport&mdash;és az alkalmazás&mdash;egészére.
+A modern alkalmazások gyakran bonyolultak, és számos különálló részből állnak, amelyek egy szolgáltatás nyújtására szolgálnak. Az összetettség felismerése Azure Monitor az erőforráscsoportok figyelését teszi lehetővé. Így egyszerűen osztályozhatja és diagnosztizálhatja az egyes erőforrásaival kapcsolatos problémákat, miközben az &mdash;and az alkalmazás &mdash;as a teljes környezet állapotát és teljesítményét.
 
-## <a name="access-insights-for-resource-groups"></a>Erőforrás-csoportok férhetnek hozzá az információkhoz
+## <a name="access-insights-for-resource-groups"></a>Erőforrás-csoportok elérésének elérése
 
-1. Válassza ki **erőforráscsoportok** a bal oldali navigációs sávban.
-2. Válasszon egyet az erőforrás-csoportok, amelyeket fel szeretne. (Ha rendelkezik az előfizetés szerinti szűrés erőforráscsoportok sok néha hasznos lehet.)
-3. Egy erőforráscsoport insights eléréséhez kattintson **Insights** bármely erőforráscsoport a bal oldali menüben.
+1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs sávon.
+2. Válasszon ki egy, a felderíteni kívánt erőforráscsoportot. (Ha az előfizetés nagy számú erőforráscsoport-szűrést használ, időnként hasznos lehet.)
+3. Egy erőforráscsoport információinak eléréséhez kattintson az összes erőforráscsoport bal oldali menüjének **elemzése elemére** .
 
-![Erőforrás csoport insights áttekintési oldalának képernyőképe](./media/resource-group-insights/0001-overview.png)
+![Az erőforráscsoport-információk áttekintési oldalának képernyőképe](./media/resource-group-insights/0001-overview.png)
 
-## <a name="resources-with-active-alerts-and-health-issues"></a>Erőforrások az aktív riasztások és állapotbeli problémák
+## <a name="resources-with-active-alerts-and-health-issues"></a>Aktív riasztásokkal és egészségügyi problémákkal rendelkező erőforrások
 
-Az Áttekintés oldal jeleníti meg, hány riasztást formázás és még aktív, a jelenlegi Azure Resource Health az egyes erőforrások együtt. Együtt ezek az információk segítségével gyorsan azonosíthatják a problémákat tapasztal, amikor erőforrásokat. Riasztások segítségével észlelheti a problémákat a kódot, és hogyan konfigurálta az infrastruktúrát. Az Azure Resource Health felületek probléma és az Azure platform magát, amely nem az egyes alkalmazásoknak.
+Az Áttekintés oldalon látható, hogy hány riasztást indítottak el, és amelyek még aktívak, valamint az egyes erőforrások aktuális Azure Resource Health. Ezen információk együttes használatával gyorsan megtalálhatja a problémákat okozó erőforrásokat. A riasztások segítséget nyújtanak a kódban felmerülő problémák észlelésében és az infrastruktúra konfigurálásában. Azure Resource Health felületek az Azure platformmal kapcsolatos problémát jelentenek, amely nem kifejezetten az egyes alkalmazásokra vonatkozik.
 
-![Képernyőkép az Azure Resource Health panelen](./media/resource-group-insights/0002-overview.png)
+![Azure Resource Health panel képernyőképe](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
-Az Azure Resource Health megjelenítéséhez, ellenőrizze a **megjelenítése az Azure Resource Health** a táblázat felett található. A lap betöltése gyorsan segítségével alapértelmezés szerint ez az oszlop rejtett.
+Azure Resource Health megjelenítéséhez jelölje be a táblázat feletti **Azure Resource Health megjelenítése** jelölőnégyzetet. Ez az oszlop alapértelmezés szerint el van rejtve az oldal betöltésének gyors megkönnyítése érdekében.
 
-![Képernyőkép a resource health graph hozzáadva](./media/resource-group-insights/0003-overview.png)
+![Képernyőfelvétel a Resource Health gráf hozzáadásával](./media/resource-group-insights/0003-overview.png)
 
-Alapértelmezés szerint az erőforrások app réteget és az erőforrástípus szerint vannak csoportosítva. **App-réteget** erőforrástípusok, egy egyszerű kategorizálása, amely csak az erőforráscsoport insights áttekintő oldalán keretén belül van. Nincsenek erőforrástípusok kapcsolódó alkalmazáskód, a számítási infrastruktúra, hálózatkezelési, tárolási + adatbázisok. Felügyeleti eszközök a saját alkalmazás rétegek lekérése, és minden más erőforráshoz tartozó kategorizált a **más** app réteget. Ez a csoportosítás segítséget talál egy pillantással milyen az alkalmazás alrendszere megfelelő állapotú, és nem kifogástalan.
+Alapértelmezés szerint az erőforrások az alkalmazási réteg és az erőforrástípus szerint vannak csoportosítva. Az **alkalmazási réteg** az erőforrástípusok egyszerű kategorizálása, amely csak az erőforráscsoport-információk Áttekintés oldalának kontextusában létezik. Az alkalmazás kódjához, a számítási infrastruktúrához, a hálózatkezeléshez, a tároláshoz és az adatbázisokhoz kapcsolódó erőforrástípusok tartoznak. A felügyeleti eszközök beszerezhetik saját alkalmazási rétegeiket, és minden más erőforrás kategorizálva van a **másik** alkalmazás rétegében. Ez a csoportosítás segíthet megtekinteni, hogy az alkalmazás mely alrendszerei egészségesek és nem kifogástalanok.
 
-## <a name="diagnose-issues-in-your-resource-group"></a>Diagnosztizálhatja a problémákat az erőforráscsoportban
+## <a name="diagnose-issues-in-your-resource-group"></a>Az erőforráscsoport problémáinak diagnosztizálása
 
-Az erőforráscsoport lapján insights segítségével diagnosztizálhatja a problémákat hatókörön belüli más eszközöket biztosít
+Az erőforráscsoport-elemzések oldal számos más eszközt is tartalmaz, amelyek a problémák diagnosztizálásához nyújtanak segítséget
 
    |         |          |
    | ---------------- |:-----|
-   | [**Riasztások**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Megtekintheti, hozzon létre, és a riasztásokat. |
-   | [**Metrikák**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Adatok megjelenítése és feltárása a metrika alapján.    |
-   | [**Tevékenységnaplók**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Előfizetési szintű történt események az Azure-ban.  |
-   | [**Alkalmazástérkép**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Keresse meg az elosztott alkalmazás topológia a teljesítmény szűk vagy hiba elérési pontokhoz való azonosítására. |
+   | [**Riasztások**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  A riasztások megtekintése, létrehozása és kezelése. |
+   | [**Mutatókat**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Jelenítse meg és vizsgálja meg a metrika-alapú adatokat.    |
+   | [**Tevékenységnaplók**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Az Azure-ban történt előfizetési szintű események.  |
+   | [**Alkalmazástérkép**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Navigáljon az elosztott alkalmazás topológiájában a teljesítménnyel kapcsolatos szűk keresztmetszetek vagy a meghibásodási pontok azonosításához. |
 
 ## <a name="failures-and-performance"></a>Hibák és teljesítmény
 
-Mi történik, ha az alkalmazás észrevette lassan fut, vagy a felhasználók hibákat jelzett? Érdemes időt vesz át az összes erőforrás probléma azonosítása.
+Mi a teendő, ha észrevette, hogy az alkalmazás lassan fut, vagy a felhasználók hibát jelentettek? Itt az idő, hogy az összes erőforrásra rákeresve elkülönítse a problémákat.
 
-A **teljesítmény** és **hibák** lapokat biztosít, köszönhetően a teljesítmény és a sikertelen diagnosztikai nézetek számos gyakori erőforrástípusok a folyamat leegyszerűsítése érdekében.
+A **teljesítmény** -és **meghibásodási** lapok leegyszerűsítik ezt a folyamatot azáltal, hogy számos gyakori erőforrástípus esetében egyesítik a teljesítménnyel és a hibákkal kapcsolatos diagnosztikai nézeteket.
 
-A legtöbb erőforrástípusok megnyílik egy katalógus az Azure Monitor munkafüzet sablonokat. Minden munkafüzet létrehozása mentett megosztott munkatársaival és a jövőben, hasonló problémák diagnosztizálása újrafelhasznált szabható testre.
+A legtöbb erőforrástípus megnyit egy Azure Monitor munkafüzet-sablonok gyűjteményét. A létrehozott munkafüzetek testreszabhatók, menthetők, megoszthatók a csapatával, és a jövőben újra felhasználhatók a hasonló problémák diagnosztizálására.
 
 ### <a name="investigate-failures"></a>Hibák vizsgálata
 
-Hibák lapon válassza a kipróbálásához **hibák** alatt **vizsgálat** a bal oldali menüben.
+A hibák lap teszteléséhez válassza a bal oldali menüben a **vizsgálat** alatt a **hibák** lehetőséget.
 
-A bal oldali menüsáv változik, ha a kijelölt létrejött, új lehetőségeket kínál.
+A bal oldali menüsor a kijelölés után módosul, és új lehetőségeket kínál.
 
-![Képernyőfelvétel: a hiba áttekintő panel](./media/resource-group-insights/00004-failures.png)
+![A hiba áttekintése panel képernyőképe](./media/resource-group-insights/00004-failures.png)
 
-Ha ki van választva az App Service, lehetősége lesz a katalógus az Azure Monitor munkafüzet sablonokkal.
+Ha App Service van kiválasztva, Azure Monitor munkafüzet-sablonok gyűjteménye jelenik meg.
 
-![Képernyőkép a munkafüzet alkalmazáskatalógusában](./media/resource-group-insights/0005-failure-insights-workbook.png)
+![Képernyőfelvétel az Application munkafüzet-katalógusról](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
-A sablon kiválasztása hiba insights nyílik meg a munkafüzetet.
+A hiba miatti bepillantást nem tartalmazó sablon kiválasztása megnyitja a munkafüzetet.
 
-![Képernyőkép a hiba jelentése](./media/resource-group-insights/0006-failure-visual.png)
+![A hibajelentési jelentés képernyőképe](./media/resource-group-insights/0006-failure-visual.png)
 
-A sorok közül választhat. A kijelölt majd egy grafikus részletek nézetben jelenik meg.
+Bármelyik sort kiválaszthatja. A kijelölés ekkor megjelenik a grafikus Részletek nézetben.
 
-![Képernyőkép a hiba részletei](./media/resource-group-insights/0007-failure-details.png)
+![Képernyőkép a hiba részleteiről](./media/resource-group-insights/0007-failure-details.png)
 
-Munkafüzetek absztrakt azonnal egyéni jelentések és Vizualizációk egy könnyen megérthető formátumba létrehozása nehéz munkáját. Néhány felhasználó előfordulhat, hogy szeretné, hogy csak az előre összeállított paraméterek beállítása, munkafüzetek is teljes mértékben testre szabható.
+A munkafüzetek elvonták az egyéni jelentések és vizualizációk egyszerű formátumba való létrehozásának nehéz munkáját. Míg egyes felhasználók csak az előre elkészített paramétereket szeretnék módosítani, a munkafüzetek teljesen testreszabhatók.
 
-Válassza ki, hogyan működik ez a munkafüzet belsőleg megtapasztalhatja, hogy **szerkesztése** a lap tetején található.
+A munkafüzet belső működésének megértéséhez válassza a **Szerkesztés** lehetőséget a felső sávon.
 
-![Képernyőkép a további szerkesztés lehetőség](./media/resource-group-insights/0008-failure-edit.png)
+![Képernyőkép a további szerkesztési lehetőségekről](./media/resource-group-insights/0008-failure-edit.png)
 
-Számos **szerkesztése** mező jelenik meg a munkafüzetet a különböző elemek mellett. Válassza ki a **szerkesztése** műveletek a táblázat alatti mezőbe.
+A munkafüzet különböző elemei közelében számos **szerkesztési** mező jelenik meg. Válassza a művelet tábla alatti **Szerkesztés** mezőt.
 
-![Képernyőkép a Szerkesztés mezők](./media/resource-group-insights/0009-failure-edit-graph.png)
+![Képernyőfelvétel a mezők szerkesztéséről](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Ez a tárja fel az alapjául szolgáló log lekérdezés, amelyek a tábla vizualizációra.
+Ez felfedi a tábla vizualizációját vezető mögöttes napló-lekérdezést.
 
- ![Napló lekérdezési ablak képernyőképe](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![A napló lekérdezési ablakának képernyőképe](./media/resource-group-insights/0010-failure-edit-query.png)
 
-A lekérdezés közvetlenül módosíthatja. Vagy használja azt referenciaként, és kérjen kölcsön származó, a saját egyéni paraméteres munkafüzet tervezésekor.
+A lekérdezést közvetlenül is módosíthatja. Használhatja hivatkozásként, és felhasználhatja azt a saját, egyéni paraméteres munkafüzet tervezésekor.
 
 ### <a name="investigate-performance"></a>Teljesítmény vizsgálata
 
-Teljesítmény-munkafüzetek a saját katalógus kínál. Az App Service-ben az előre összeállított alkalmazás teljesítményének munkafüzet kínál az alábbi nézetben jelenítheti meg:
+A teljesítmény a munkafüzetek saját katalógusát kínálja. App Service az előre elkészített alkalmazás-teljesítmény munkafüzet a következő nézetet kínálja:
 
- ![Képernyőkép a teljesítmény nézet](./media/resource-group-insights/0011-performance.png)
+ ![A teljesítmény nézet képernyőképe](./media/resource-group-insights/0011-performance.png)
 
-Ebben az esetben ha szerkesztési látni fogja, hogy az Azure Monitor-metrikák Vizualizációk egy készlete működteti.
+Ebben az esetben, ha a szerkesztés lehetőséget választja, látni fogja, hogy a vizualizációk ezen készlete Azure Monitor mérőszámokkal van-e kikapcsolva.
 
- ![Teljesítmény nézet az Azure-mérőszámok – képernyőfelvétel](./media/resource-group-insights/0012-performance-metrics.png)
+ ![Képernyőkép a teljesítmény nézetről az Azure-metrikákkal](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
-### <a name="enabling-access-to-alerts"></a>Riasztások való hozzáférés engedélyezése
+### <a name="enabling-access-to-alerts"></a>Riasztásokhoz való hozzáférés engedélyezése
 
-Az erőforráscsoportok az Azure Monitor riasztások megtekintéséhez ennél az előfizetésnél tulajdonos vagy közreműködő szerepkörrel rendelkező személy meg kell nyitnia a Azure Monitor erőforráscsoportok bármely erőforráscsoport az előfizetésben. Ez lehetővé teszi bárki, olvasási hozzáférés tekintse meg az Azure monitorban riasztásokat az erőforráscsoport az előfizetésben található összes erőforrás-csoportokhoz. Ha rendelkezik olyan tulajdonosi vagy közreműködői szerepkörhöz, frissítse a lapot néhány perc múlva.
+Ha meg szeretné tekinteni az erőforráscsoportok Azure Monitor riasztásait, akkor az előfizetéshez tartozó tulajdonosi vagy közreműködői szerepkörrel rendelkező személynek meg kell nyitnia az erőforrás-csoportokhoz tartozó Azure Monitor az előfizetésben található összes erőforráscsoport számára. Ezzel a beállítással bárki olvasási hozzáféréssel láthatja el a riasztásokat az előfizetésben lévő összes erőforráscsoport számára az erőforráscsoportok Azure Monitor. Ha rendelkezik tulajdonosi vagy közreműködői szerepkörrel, frissítse ezt a lapot néhány perc múlva.
 
-Az Azure Monitor erőforrás-csoportok az Azure Monitor riasztások felügyeleti rendszer riasztás állapotának lekéréséhez támaszkodik. Alapértelmezés szerint minden erőforráscsoport és az előfizetés nincs konfigurálva a riasztások kezelése, és azt csak egy tulajdonos vagy közreműködő szerepkörrel rendelkező bármely személy engedélyezhető. Ezek lehetnek engedélyezett vagy:
-* Nyissa meg az Azure Monitor erőforráscsoportok bármely erőforráscsoport az előfizetésben.
-* Vagy az előfizetést, kattintással lépjen **erőforrás-szolgáltatók**, majd kattintson a **Alerts.Management regisztráljon**.
+Az erőforráscsoportok Azure Monitor a riasztási állapot lekéréséhez Azure Monitor riasztások felügyeleti rendszerére támaszkodik. A riasztások kezelése nincs konfigurálva minden erőforráscsoport és előfizetés számára alapértelmezés szerint, és csak egy tulajdonos vagy közreműködő szerepkörrel rendelkező személy engedélyezhető. A következők bármelyikét engedélyezheti:
+* Az erőforrás-csoportokhoz tartozó Azure Monitor megnyitása az előfizetés egyik erőforráscsoport számára.
+* Vagy nyissa meg az előfizetést, kattintson az **erőforrás-szolgáltatók**, majd a **regisztráció a riasztásokhoz**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure Monitor munkafüzetek](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
+- [Munkafüzetek Azure Monitor](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 - [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Az Azure Monitor riasztások](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)
+- [Riasztások Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

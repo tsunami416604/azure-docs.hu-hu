@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 4e2cd3b66385d37815d0fc51a70ca31aba25db29
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528612"
+ms.locfileid: "72551959"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -1437,68 +1437,78 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 |Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincsenek méretek|
-|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincsenek méretek|
-|log_write_percent|Naplózási IO-százalék|Százalék|Átlag|Naplózási IO-százalék Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU százalék. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
-|tárterület|Felhasznált adatterület|Bájt|Maximum|Az adatbázis teljes mérete. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|connection_successful|Sikeres kapcsolatok|Mennyiség|Összes|Sikeres kapcsolatok|Nincsenek méretek|
-|connection_failed|Sikertelen kapcsolatok|Mennyiség|Összes|Sikertelen kapcsolatok|Nincsenek méretek|
-|blocked_by_firewall|Tűzfal blokkolja|Mennyiség|Összes|Tűzfal blokkolja|Nincsenek méretek|
-|Holtpont|Holtpontok|Mennyiség|Összes|Holtpontok. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|storage_percent|Felhasznált adatterület százalékos aránya|Százalék|Maximum|Az adatbázis mérete százalékban megadva. Nem alkalmazható adattárházak vagy nagy kapacitású-adatbázisokra.|Nincsenek méretek|
-|xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Százalék|Átlag|Memóriában tárolt OLTP-tárolási százalék. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|workers_percent|Munkavégzők százalékos aránya|Százalék|Átlag|Munkavégzők százalékos aránya. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
-|dtu_limit|DTU korlátja|Mennyiség|Átlag|DTU korlátja. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
-|dtu_used|Használt DTU|Mennyiség|Átlag|DTU használatban. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
-|cpu_limit|CPU-korlát|Mennyiség|Átlag|CPU-korlát. A virtuális mag-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
-|cpu_used|Felhasznált CPU|Mennyiség|Átlag|A processzor használatban van. A virtuális mag-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
-|dwu_limit|DWU korlátja|Mennyiség|Maximum|DWU korlátja. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
-|dwu_consumption_percent|DWU százalékos aránya|Százalék|Maximum|DWU százalék. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
-|dwu_used|Használt DWU|Mennyiség|Maximum|DWU használatban. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
-|dw_cpu_percent|A DW-csomópont szintjének CPU-aránya|Százalék|Átlag|A DW-csomópont szintjének CPU-aránya|DwLogicalNodeId|
-|dw_physical_data_read_percent|A DW-csomópont szintű adat IO-aránya|Százalék|Átlag|A DW-csomópont szintű adat IO-aránya|DwLogicalNodeId|
-|cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka Csak az adattárházak esetében érvényes.|Nincsenek méretek|
-|cache_used_percent|Gyorsítótár használt százaléka|Százalék|Maximum|Gyorsítótárban használt százalék. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
-|local_tempdb_usage_percent|Helyi tempdb százalékos aránya|Százalék|Átlag|Helyi tempdb százalékban. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
 |app_cpu_billed|Az alkalmazás CPU-számlázása|Mennyiség|Összes|Az alkalmazás CPU-számlázása. A kiszolgáló nélküli adatbázisokra vonatkozik.|Nincsenek méretek|
 |app_cpu_percent|Alkalmazás CPU-aránya|Százalék|Átlag|Alkalmazás CPU-aránya (%) A kiszolgáló nélküli adatbázisokra vonatkozik.|Nincsenek méretek|
 |app_memory_percent|Alkalmazás memóriájában használt százalék|Százalék|Átlag|Az alkalmazás memóriájában használt százalék. A kiszolgáló nélküli adatbázisokra vonatkozik.|Nincsenek méretek|
-|allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|blocked_by_firewall|Tűzfal blokkolja|Mennyiség|Összes|Tűzfal blokkolja|Nincsenek méretek|
+|cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|cache_used_percent|Gyorsítótár használt százaléka|Százalék|Maximum|Gyorsítótárban használt százalék. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|connection_failed|Sikertelen kapcsolatok|Mennyiség|Összes|Sikertelen kapcsolatok|Nincsenek méretek|
+|connection_successful|Sikeres kapcsolatok|Mennyiség|Összes|Sikeres kapcsolatok|Nincsenek méretek|
+|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincsenek méretek|
+|cpu_limit|CPU-korlát|Mennyiség|Átlag|CPU-korlát. A virtuális mag-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
+|cpu_used|Felhasznált CPU|Mennyiség|Átlag|A processzor használatban van. A virtuális mag-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
+|Holtpont|Holtpontok|Mennyiség|Összes|Holtpontok. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|dtu_limit|DTU korlátja|Mennyiség|Átlag|DTU korlátja. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
+|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU százalék. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
+|dtu_used|Használt DTU|Mennyiség|Átlag|DTU használatban. A DTU-alapú adatbázisokra vonatkozik.|Nincsenek méretek|
+|dw_cpu_percent|A DW-csomópont szintjének CPU-aránya|Százalék|Átlag|A DW-csomópont szintjének CPU-aránya|DwLogicalNodeId|
+|dw_physical_data_read_percent|A DW-csomópont szintű adat IO-aránya|Százalék|Átlag|A DW-csomópont szintű adat IO-aránya|DwLogicalNodeId|
+|dwu_consumption_percent|DWU százalékos aránya|Százalék|Maximum|DWU százalék. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|dwu_limit|DWU korlátja|Mennyiség|Maximum|DWU korlátja. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|dwu_used|Használt DWU|Mennyiség|Maximum|DWU használatban. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|local_tempdb_usage_percent|Helyi tempdb százalékos aránya|Százalék|Átlag|Helyi tempdb százalékban. Csak az adattárházak esetében érvényes.|Nincsenek méretek|
+|log_write_percent|Naplózási IO-százalék|Százalék|Átlag|Naplózási IO-százalék Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincsenek méretek|
+|sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|sqlserver_process_core_percent|SQL Server Process Core százalék|Százalék|Maximum|Ez a metrika helyőrző, és nem töltődik fel jelenleg.|Nincsenek méretek|
+|sqlserver_process_memory_percent|SQL Server feldolgozási memória százalékos aránya|Százalék|Maximum|Ez a metrika helyőrző, és nem töltődik fel jelenleg.|Nincsenek méretek|
+|tárterület|Felhasznált adatterület|Bájt|Maximum|Az adatbázis teljes mérete. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|storage_percent|Felhasznált adatterület százalékos aránya|Százalék|Maximum|Az adatbázis mérete százalékban megadva. Nem alkalmazható adattárházak vagy nagy kapacitású-adatbázisokra.|Nincsenek méretek|
+|tempdb_data_size|Tempdb adatfájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb az adatfájl mérete kilobájtban. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|tempdb_log_size|Tempdb-naplófájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb-naplófájl mérete (kilobájt) Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|tempdb_log_used_percent|Tempdb százalékos naplója használatban|Százalék|Maximum|A tempdb százalékos naplója használatban van. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|workers_percent|Munkavégzők százalékos aránya|Százalék|Átlag|Munkavégzők százalékos aránya. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
+|xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Százalék|Átlag|Memóriában tárolt OLTP-tárolási százalék. Az adattárházak esetében nem alkalmazható.|Nincsenek méretek|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/kiszolgálók/elasticPools
 
 |Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincsenek méretek|
-|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincsenek méretek|
-|log_write_percent|Naplózási IO-százalék|Százalék|Átlag|Naplózási IO-százalék|Nincsenek méretek|
-|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU százalék. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
-|storage_percent|Felhasznált adatterület százalékos aránya||Százalék|Átlag|Tárolási százalék|Nincsenek méretek|
-|workers_percent|Munkavégzők százalékos aránya|Százalék|Átlag|Munkavégzők százalékos aránya|Nincsenek méretek|
-|sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|Nincsenek méretek|
-|eDTU_limit|eDTU korlátja|Mennyiség|Átlag|eDTU korlátja. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
-|storage_limit|Az adatmaximális méret|Bájt|Átlag|Tárolási korlát|Nincsenek méretek|
-|eDTU_used|használt eDTU|Mennyiség|Átlag|eDTU használatban. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
-|storage_used|Felhasznált adatterület|Bájt|Átlag|Felhasznált tárterület|Nincsenek méretek|
-|xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Százalék|Átlag|Memóriában tárolt OLTP tárolási százaléka|Nincsenek méretek|
-|cpu_limit|CPU-korlát|Mennyiség|Átlag|CPU-korlát. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
-|cpu_used|Felhasznált CPU|Mennyiség|Átlag|A processzor használatban van. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
 |allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|Nincsenek méretek|
 |allocated_data_storage_percent|Lefoglalt adatterület százalékos aránya|Százalék|Maximum|Lefoglalt adatterület százalékos aránya|Nincsenek méretek|
+|cpu_limit|CPU-korlát|Mennyiség|Átlag|CPU-korlát. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
+|cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Nincsenek méretek|
+|cpu_used|Felhasznált CPU|Mennyiség|Átlag|A processzor használatban van. A virtuális mag-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
+|dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU százalék. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
+|eDTU_limit|eDTU korlátja|Mennyiség|Átlag|eDTU korlátja. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
+|eDTU_used|használt eDTU|Mennyiség|Átlag|eDTU használatban. A DTU-alapú rugalmas készletekre vonatkozik.|Nincsenek méretek|
+|log_write_percent|Naplózási IO-százalék|Százalék|Átlag|Naplózási IO-százalék|Nincsenek méretek|
+|physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|Nincsenek méretek|
+|sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|Nincsenek méretek|
+|storage_limit|Az adatmaximális méret|Bájt|Átlag|Tárolási korlát|Nincsenek méretek|
+|storage_percent|Felhasznált adatterület százalékos aránya||Százalék|Átlag|Tárolási százalék|Nincsenek méretek|
+|storage_used|Felhasznált adatterület|Bájt|Átlag|Felhasznált tárterület|Nincsenek méretek|
+|sqlserver_process_core_percent|SQL Server Process Core százalék|Százalék|Maximum|Ez a metrika helyőrző, és nem töltődik fel jelenleg.|Nincsenek méretek|
+|sqlserver_process_memory_percent|SQL Server feldolgozási memória százalékos aránya|Százalék|Maximum|Ez a metrika helyőrző, és nem töltődik fel jelenleg.|Nincsenek méretek|
+|tempdb_data_size|Tempdb adatfájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb az adatfájl mérete kilobájtban. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|tempdb_log_size|Tempdb-naplófájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb-naplófájl mérete (kilobájt) Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|tempdb_log_used_percent|Tempdb százalékos naplója használatban|Százalék|Maximum|A tempdb százalékos naplója használatban van. Az adattárházak esetében nem alkalmazható. Ez a metrika a virtuális mag beszerzési modellel vagy a 100 DTU, illetve a DTU-alapú vásárlási modellekhez magasabb szintű adatbázisok számára lesz elérhető.|Nincsenek méretek|
+|workers_percent|Munkavégzők százalékos aránya|Százalék|Átlag|Munkavégzők százalékos aránya|Nincsenek méretek|
+|xtp_storage_percent|Memóriában tárolt OLTP tárolási százaléka|Százalék|Átlag|Memóriában tárolt OLTP tárolási százaléka|Nincsenek méretek|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
 |Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|virtual_core_count|Virtuális mag száma|Mennyiség|Átlag|Virtuális mag száma|Nincsenek méretek|
 |avg_cpu_percent|Átlagos CPU-százalék|Százalék|Átlag|Átlagos CPU-százalék|Nincsenek méretek|
+|io_bytes_read|I/o-bájtok olvasása|Bájt|Átlag|I/o-bájtok olvasása|Nincsenek méretek|
+|io_requests|IO-kérelmek száma|Mennyiség|Átlag|IO-kérelmek száma|Nincsenek méretek|
+|io_bytes_written|I/o-bájtok írása|Bájt|Átlag|I/o-bájtok írása|Nincsenek méretek|
 |reserved_storage_mb|Tárterület fenntartva|Mennyiség|Átlag|Tárterület fenntartva|Nincsenek méretek|
 |storage_space_used_mb|Felhasznált tárterület|Mennyiség|Átlag|Felhasznált tárterület|Nincsenek méretek|
-|io_requests|IO-kérelmek száma|Mennyiség|Átlag|IO-kérelmek száma|Nincsenek méretek|
-|io_bytes_read|I/o-bájtok olvasása|Bájt|Átlag|I/o-bájtok olvasása|Nincsenek méretek|
-|io_bytes_written|I/o-bájtok írása|Bájt|Átlag|I/o-bájtok írása|Nincsenek méretek|
+|virtual_core_count|Virtuális mag száma|Mennyiség|Átlag|Virtuális mag száma|Nincsenek méretek|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

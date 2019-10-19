@@ -1,31 +1,29 @@
 ---
 title: Azure Diagnostics bővítmények konfigurációs sémájának korábbi verziói
 description: Az Azure Virtual Machines, VM Scale Sets, Service Fabric és Cloud Services teljesítmény-számlálóinak gyűjtéséhez szükséges.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/04/2019
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/04/2019
+ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735087"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552131"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics bővítmények konfigurációs sémájának verziói és előzményei
 Ez az oldal indexeli Azure Diagnostics bővítmények sémájának a Microsoft Azure SDK részeként szállított verzióit.  
 
 > [!NOTE]
 > A Azure Diagnostics bővítmény a teljesítményszámlálók és más statisztikák gyűjtésére szolgáló összetevő a következő helyekről:
-> - Azure Virtual Machines
-> - Virtuálisgép-méretezési csoportok
+> - Azure-alapú virtuális gépek
+> - Virtual Machine Scale Sets
 > - Service Fabric
 > - Cloud Services
-> - Network Security Groups (Hálózati biztonsági csoportok)
+> - Hálózati biztonsági csoportok
 >
 > Ez a lap csak akkor fontos, ha az egyik szolgáltatást használja.
 
@@ -33,20 +31,20 @@ A Azure Diagnostics bővítményt más Microsoft diagnosztikai termékek (péld�
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Az Azure SDK és a diagnosztikai verziók szállítási diagramja  
 
-|Azure SDK version | Diagnosztikai bővítmény verziója | Modell|  
+|Azure SDK-verzió | Diagnosztikai bővítmény verziója | Modell|  
 |------------------|-------------------------------|------|  
 |1. x               |1.0                            |beépülő modul|  
-|2.0 - 2.4         |1.0                            |beépülő modul|  
-|2.5               |1.2                            |kiterjesztés|  
-|2.6               |1.3                            |"|  
-|2.7               |1.4                            |"|  
-|2.8               |1.5                            |"|  
-|2.9               |1.6                            |"|
-|2.96              |1.7                            |"|
-|2.96              |1.8                            |"|
-|2.96              |1.8.1                          |"|
-|2.96              |1.9                            |"|
-|2.96              |1,11                           |"|
+|2,0 – 2,4         |1.0                            |beépülő modul|  
+|2,5               |1.2                            |kiterjesztés|  
+|2,6               |1.3                            |"|  
+|2,7               |1,4                            |"|  
+|2,8               |1.5                            |"|  
+|2,9               |1,6                            |"|
+|2,96              |1,7                            |"|
+|2,96              |1,8                            |"|
+|2,96              |1.8.1                          |"|
+|2,96              |1,9                            |"|
+|2,96              |1,11                           |"|
 
 
  A Azure Diagnostics 1,0-es verziójának első része egy beépülőmodul-modellben – ami azt jelenti, hogy amikor az Azure SDK-t telepítette, az Azure Diagnostics azon verzióját kapta, amelyet a szolgáltatással szállított.  
@@ -62,7 +60,7 @@ Az Azure Diagnostics különböző verziói eltérő konfigurációs sémákat h
 A Azure Monitor-fogadó támogatása. Ez a fogadó csak a teljesítményszámlálók esetében alkalmazható. Lehetővé teszi a virtuális gépen, VMSS vagy Cloud Service-ben gyűjtött teljesítményszámlálók küldését egyéni metrikák Azure Monitor. A Azure Monitor fogadó a következőket támogatja:
 * A Azure Monitor eljuttatott teljesítményszámlálók beolvasása a [Azure monitor metrikák API](https://docs.microsoft.com/rest/api/monitor/metrics/list) -kon keresztül.
 * Riasztás a Azure Monitor elküldhető összes teljesítményszámlálók számára az új, [egyesített riasztások](../../azure-monitor/platform/alerts-overview.md) használatával Azure monitor
-* A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk (\*)/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D: stb.) esetében a "példány" dimenzióra bontva vagy a riasztást is fel lehet osztani a lemezre, illetve a riasztásra.
+* A helyettesítő karakterek kezelése a teljesítményszámlálók esetében a mérőszámban a "példány" dimenzió. Ha például összegyűjtötte a "LogicalDisk (\*)/DiskWrites/sec" számlálót, akkor az egyes logikai lemezek (C:, D:, stb.) esetében a "példány" dimenzióra kiszűrhetők és eloszthatók a "példány" dimenzió.
 
 Azure Monitor definiálása új fogadóként a diagnosztikai bővítmény konfigurációjában
 ```json
@@ -174,14 +172,14 @@ Hozzáadta a mosogató elemet, és lehetővé teszi a diagnosztikai adataik kül
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2,6 és diagnosztikai bővítmény 1,3
 A Visual Studióban a Cloud Service-projektek esetében a következő módosítások történnek. (Ezek a módosítások az Azure SDK újabb verzióira is érvényesek.)
 
-* A helyi emulátor mostantól támogatja a diagnosztikát. Ez a módosítás azt jelenti, hogy diagnosztikai adatokat gyűjthet, és biztosítja, hogy az alkalmazás a megfelelő nyomkövetést hozza létre a Visual Studióban történő fejlesztés és tesztelés során. A kapcsolati `UseDevelopmentStorage=true` karakterlánc lehetővé teszi a diagnosztikai adatgyűjtést, miközben a Cloud Service-projektet a Visual Studióban futtatja az Azure Storage Emulator használatával. Az összes diagnosztikai adatokat a (fejlesztői tároló) Storage-fiók gyűjti.
+* A helyi emulátor mostantól támogatja a diagnosztikát. Ez a módosítás azt jelenti, hogy diagnosztikai adatokat gyűjthet, és biztosítja, hogy az alkalmazás a megfelelő nyomkövetést hozza létre a Visual Studióban történő fejlesztés és tesztelés során. A kapcsolati sztring `UseDevelopmentStorage=true` lehetővé teszi a diagnosztikai adatgyűjtést, miközben a Cloud Service-projektet a Visual Studióban futtatja az Azure Storage Emulator használatával. Az összes diagnosztikai adatokat a (fejlesztői tároló) Storage-fiók gyűjti.
 * A diagnosztika Storage-fiók kapcsolati karakterláncát (Microsoft. WindowsAzure. plugins. Diagnostics. ConnectionString) a szolgáltatás konfigurációs (. cscfg) fájljában ismét tárolja a rendszer. Az Azure SDK 2,5-as verziójában a Diagnostics Storage-fiók meg lett adva a Diagnostics. wadcfgx fájlban.
 
 A kapcsolati karakterlánc az Azure SDK 2,4-es és korábbi verzióiban, illetve az Azure SDK 2,6-es és újabb verzióiban is működik.
 
 * Az Azure SDK 2,4-es és korábbi verzióiban a diagnosztika beépülő modul a következőhöz használta a kapcsolódási karakterláncot a diagnosztikai naplók átadásához szükséges Storage-fiók adatainak lekéréséhez:.
 * Az Azure SDK 2,6-as és újabb verzióiban a Visual Studio a diagnosztika-kapcsolódási karakterlánc használatával konfigurálja a diagnosztika bővítményt a közzététel során a megfelelő Storage-fiók adataival. A kapcsolódási karakterlánc lehetővé teszi különböző tárolási fiókok definiálását különböző szolgáltatási konfigurációkhoz, amelyeket a Visual Studio a közzétételkor használni fog. Mivel azonban a diagnosztikai beépülő modul már nem érhető el (az Azure SDK 2,5 után), a. cscfg fájl önmagában nem tudja engedélyezni a diagnosztikai bővítményt. A bővítményt külön kell engedélyeznie, például a Visual Studióban vagy a PowerShellben.
-* A diagnosztikai bővítmény PowerShell-lel való konfigurálásának egyszerűbbé tétele érdekében a Visual studióból származó csomag kimenete tartalmazza az egyes szerepkörökhöz tartozó diagnosztikai bővítmény nyilvános konfigurációs XML-fájlját is. A Visual Studio a diagnosztikai kapcsolódási karakterlánc használatával tölti fel a nyilvános konfigurációban lévő Storage-fiók adatait. A nyilvános konfigurációs fájlok a Extensions mappában jönnek létre, és követik `PaaSDiagnostics.<RoleName>.PubConfig.xml`a mintát. A PowerShell-alapú telepítések ezt a mintát használhatják az egyes konfigurációknak egy szerepkörhöz való leképezéséhez.
+* A diagnosztikai bővítmény PowerShell-lel való konfigurálásának egyszerűbbé tétele érdekében a Visual studióból származó csomag kimenete tartalmazza az egyes szerepkörökhöz tartozó diagnosztikai bővítmény nyilvános konfigurációs XML-fájlját is. A Visual Studio a diagnosztikai kapcsolódási karakterlánc használatával tölti fel a nyilvános konfigurációban lévő Storage-fiók adatait. A nyilvános konfigurációs fájlok a Extensions mappában jönnek létre, és követik a `PaaSDiagnostics.<RoleName>.PubConfig.xml` mintázatot. A PowerShell-alapú telepítések ezt a mintát használhatják az egyes konfigurációknak egy szerepkörhöz való leképezéséhez.
 * A. cscfg fájlban található kapcsolati karakterláncot a Azure Portal is használja a diagnosztikai információ eléréséhez, hogy az megjelenjen a **figyelés** lapon. A kapcsolati karakterlánc szükséges ahhoz, hogy a szolgáltatás beállítható legyen a portálon a részletes monitorozási adatai megjelenítéséhez.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Projektek migrálása az Azure SDK 2,6-es és újabb verzióiba
@@ -195,7 +193,7 @@ Ha az Azure SDK 2,5-ból az Azure SDK 2,6-es vagy újabb verziójára végez át
 #### <a name="what-does-the-update-development-storage-connection-strings-checkbox-do"></a>Mit jelent a "fejlesztési tárolói kapcsolatok frissítése karakterláncok..." jelölőnégyzetet?
 A **frissítési fejlesztési tároló kapcsolódási karakterláncai a diagnosztika és a gyorsítótárazás esetében Microsoft Azure Storage-fiók hitelesítő adataival a Microsoft Azure közzétételkor** kényelmes módszert biztosítanak a fejlesztői Storage-fiókok frissítésére a közzététel során megadott Azure Storage-fiókkal rendelkező csatlakozási karakterláncok.
 
-Tegyük fel például, hogy bejelöli ezt a jelölőnégyzetet, `UseDevelopmentStorage=true`és a diagnosztikai kapcsolatok karakterlánca határozza meg. Amikor közzéteszi a projektet az Azure-ban, a Visual Studio automatikusan frissíti a diagnosztikai kapcsolódási karakterláncot a Közzétételi varázslóban megadott Storage-fiókkal. Ha azonban valódi Storage-fiókot adott meg diagnosztikai kapcsolatok karakterláncként, akkor a rendszer ezt a fiókot használja helyette.
+Tegyük fel például, hogy bejelöli ezt a jelölőnégyzetet, és a diagnosztikai kapcsolatok karakterlánca megadja `UseDevelopmentStorage=true`. Amikor közzéteszi a projektet az Azure-ban, a Visual Studio automatikusan frissíti a diagnosztikai kapcsolódási karakterláncot a Közzétételi varázslóban megadott Storage-fiókkal. Ha azonban valódi Storage-fiókot adott meg diagnosztikai kapcsolatok karakterláncként, akkor a rendszer ezt a fiókot használja helyette.
 
 ### <a name="diagnostics-functionality-differences-between-azure-sdk-24-and-earlier-and-azure-sdk-25-and-later"></a>Az Azure SDK 2,4-es és korábbi verziói, valamint az Azure SDK 2,5-es és újabb verziói közötti diagnosztikai funkciók
 Ha az Azure SDK 2,4-ból az Azure SDK 2,5-es vagy újabb verziójára frissíti a projektet, vegye figyelembe a következő diagnosztikai funkciók különbségeit.

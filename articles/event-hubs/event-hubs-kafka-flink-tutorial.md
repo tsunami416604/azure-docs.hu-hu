@@ -1,73 +1,73 @@
 ---
-title: Az Apache Flink használata Apache kafka platformmal – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk ismerteti, hogyan lehet Apache Flink csatlakozni az Apache Kafka információkat engedélyezve van az Azure event hub
+title: Az Apache flink használata a Apache Kafkahoz – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan csatlakoztatható az Apache flink egy Apache Kafka engedélyezett Azure Event hub-hoz
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: dc4a982dde62f62eb8f2d91a61fd70ba79fa13d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 881546a97b01bef993cc24c6b868ec97ddf5ac36
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60821428"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555723"
 ---
-# <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Azure Event Hubs-beli Apache kafka Apache Flink használata
-Az oktatóanyag bemutatja, hogyan lehet Apache Flink csatlakozni Kafka-kompatibilis az event hubs nélkül módosítja a protokollt használó ügyfelek vagy a saját fürtök. Támogatja az Azure Event Hubs [Apache Kafka 1.0-s verziója.](https://kafka.apache.org/10/documentation.html).
+# <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache flink használata az Azure Event Hubs for Apache Kafka
+Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az Apache flink a Kafka-kompatibilis Event hubokhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az Azure Event Hubs támogatja az 1,0-es [Apache Kafka-verziót.](https://kafka.apache.org/10/documentation.html)
 
-Apache Kafka használatának legfontosabb előnyei egyike az ökoszisztéma-keretrendszereket, hogy kapcsolódni. A Kafka a rugalmasságot, a kafka engedélyezve az Event Hubs ötvözi a méretezhetőség, a konzisztencia és a támogatása az Azure-rendszerbe.
+A Apache Kafka használatának egyik legfőbb előnye, hogy a keretrendszerek ökoszisztémája, amelyhez csatlakozni tud. A Kafka-kompatibilis Event Hubs ötvözi a Kafka rugalmasságát az Azure-ökoszisztéma skálázhatóságával, konzisztenciájával és támogatásával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * A példaprojekt klónozása
-> * Flink előállító Futtatás 
-> * Futtatási Flink fogyasztói
+> * Flink-gyártó futtatása 
+> * Flink-fogyasztó futtatása
 
 > [!NOTE]
 > Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez, ellenőrizze, hogy a következő előfeltételek vonatkoznak:
+Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
 * Olvassa át az [Apache Kafkához készült Event Hubsot](event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket. 
 * Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), mielőtt hozzákezd.
 * [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks)
     * Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.
     * Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
-* [Töltse le](https://maven.apache.org/download.cgi) és [telepítése](https://maven.apache.org/install.html) a Maven bináris archívum
+* Maven bináris Archívum [letöltése](https://maven.apache.org/download.cgi) és [telepítése](https://maven.apache.org/install.html)
     * Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez.
 * [Git](https://www.git-scm.com/downloads)
     * Ubuntu rendszeren futtathatja a `sudo apt-get install git` parancsot a Git telepítéséhez.
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Event Hubs-névtér elküldeni vagy fogadni a minden Event Hubs szolgáltatás szükséges. Lásd: [Kafka létrehozása az Event Hubs engedélyezve](event-hubs-create-kafka-enabled.md) Bevezetés az Event Hubs Kafka végpont kapcsolatos információkat. Ellenőrizze, hogy az Event Hubs kapcsolati karakterláncot a későbbi használatra.
+Bármely Event Hubs szolgáltatásból történő küldéshez vagy fogadáshoz Event Hubs névtér szükséges. A Event Hubs Kafka-végpont beszerzésével kapcsolatos információkért tekintse meg a [Kafka-kompatibilis Event Hubs létrehozása](event-hubs-create-kafka-enabled.md) című témakört. Ügyeljen arra, hogy későbbi használatra másolja a Event Hubs-kapcsolódási karakterláncot.
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy a Kafka-kompatibilis az Event Hubs kapcsolati karakterláncot, az Azure Event Hubs, Kafka-tárház klónozása, és keresse meg a `flink` almappát:
+Most, hogy már van egy Kafka-kompatibilis Event Hubs kapcsolódási karakterlánca, klónozott az Azure Event Hubs a Kafka-tárházhoz, és navigáljon a `flink` almappába:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
-## <a name="run-flink-producer"></a>Flink előállító Futtatás
+## <a name="run-flink-producer"></a>Flink-gyártó futtatása
 
-A megadott Flink előállítói példáját, üzenetek küldése az Event Hubs szolgáltatás.
+A megadott flink-előállító példa használatával üzeneteket küldhet a Event Hubs szolgáltatásnak.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Adja meg az Event Hubs Kafka-végpont
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="producerconfig"></a>Producer.config
+#### <a name="producerconfig"></a>producer. config
 
-Frissítés a `bootstrap.servers` és `sasl.jaas.config` lévő értékeknek `producer/src/main/resources/producer.config` irányítani az előállítói, a megfelelő hitelesítési az Event Hubs Kafka-végpontra.
+Frissítse a `producer/src/main/resources/producer.config` `bootstrap.servers` és `sasl.jaas.config` értékeit, hogy a gyártót az Event Hubs Kafka-végpontra irányítsa a megfelelő hitelesítéssel.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -79,26 +79,26 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Gyártó futtatása a parancssorból
+### <a name="run-producer-from-the-command-line"></a>A gyártó futtatása a parancssorból
 
-Az előállítói futtatása a parancssorból, készítése a fájlt, majd futtatni Maven belül (vagy készítése a mavennel, majd futtatása Java környezetben ad hozzá a szükséges Kafka JAR(s) az osztályútvonal JAR):
+Ha a parancssorból szeretné futtatni a gyártót, a JAR-t, majd a Mavenből futtatva futtassa a jar-t, majd futtassa a-t a Maven használatával, majd futtassa a Java-ban a szükséges Kafka-JAR (ok) hozzáadásával a osztályútvonal):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Az előállítói most elkezdi az Eseményközpont eseményeket küldeni a Kafka engedélyezve a témakör `test` és nyomtatására az stdout és eseményeket.
+A gyártó most megkezdi az események küldését a Kafka-kompatibilis Event hubhoz a `test` témakörben, és az eseményeket az stdout-ra nyomtassa.
 
-## <a name="run-flink-consumer"></a>Futtatási Flink fogyasztói
+## <a name="run-flink-consumer"></a>Flink-fogyasztó futtatása
 
-A megadott fogyasztói példához használja érkező üzenetek fogadása a Kafka Event hubs szolgáltatás engedélyezve van.
+A megadott fogyasztói példa használatával üzeneteket fogadhat a Kafka által engedélyezett Event Hubsról.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Adja meg az Event Hubs Kafka-végpont
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Event Hubs Kafka-végpont megadása
 
-#### <a name="consumerconfig"></a>Consumer.config
+#### <a name="consumerconfig"></a>Consumer. config
 
-Frissítés a `bootstrap.servers` és `sasl.jaas.config` lévő értékeknek `consumer/src/main/resources/consumer.config` való közvetlen a felhasználó a megfelelő hitelesítési az Event Hubs Kafka-végpontra.
+Frissítse a `bootstrap.servers` és `sasl.jaas.config` értékeket a `consumer/src/main/resources/consumer.config`, hogy a fogyasztót a Event Hubs Kafka-végpontra irányítsa a megfelelő hitelesítéssel.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -110,27 +110,27 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Fogyasztói futtatása a parancssorból
+### <a name="run-consumer-from-the-command-line"></a>A felhasználó futtatása a parancssorból
 
-A fogyasztó futtatása a parancssorból, készítése a fájlt, majd futtatni Maven belül (vagy készítése a mavennel, majd futtatása Java környezetben ad hozzá a szükséges Kafka JAR(s) az osztályútvonal JAR):
+Ha a parancssorból szeretné futtatni a fogyasztót, adja ki a JAR-t, majd futtassa a Mavenből (vagy a Maven használatával a JAR-t használva, majd futtassa a Java-ban a szükséges Kafka-JAR (ok) hozzáadásával a osztályútvonal):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Ha a Kafka-kompatibilis eseményközpont események (például, ha a gyártó is fut), majd a fogyasztó már megkezdi események fogadása a témakör `test`.
+Ha a Kafka-kompatibilis Event hub eseményekkel rendelkezik (például ha a gyártó is fut), akkor a fogyasztó most elkezdi fogadni az eseményeket a következő témakörből: `test`.
 
-Tekintse meg [Flink a Kafka összekötő útmutató](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) részletesebb Flink Kafka való csatlakozással kapcsolatos információkat.
+Tekintse [meg a flink Kafka-összekötő útmutatóját](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) , amely részletesebb információkat biztosít a flink és a Kafka összekapcsolásáról.
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a megismert Apache Flink Kafka-kompatibilis az event hubs kapcsolódás nélkül módosítja a protokollt használó ügyfelek vagy a saját fürtök. Ez az oktatóanyag részeként végezte a következő lépéseket: 
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban megtanulta, hogyan csatlakoztatható az Apache flink a Kafka-kompatibilis Event hubokhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az oktatóanyag részeként a következő lépéseket hajtotta végre: 
 
 > [!div class="checklist"]
 > * Event Hubs-névtér létrehozása
 > * A példaprojekt klónozása
-> * Flink előállító Futtatás 
-> * Futtatási Flink fogyasztói
+> * Flink-gyártó futtatása 
+> * Flink-fogyasztó futtatása
 
 Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
 

@@ -1,29 +1,27 @@
 ---
 title: Azure Diagnostics bővítmény 1,3-es és újabb konfigurációs sémája
 description: A 1,3-es és újabb verziókban az Azure Diagnostics a Microsoft Azure SDK 2,4-es és újabb verzióiban lett leképezve.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: reference
-ms.date: 09/20/2018
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.topic: reference
+author: rboucher
+ms.author: robb
+ms.date: 09/20/2018
+ms.openlocfilehash: 1d378571a02f30c223338eef5c7d142ed02ff4c8
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735099"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555553"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1,3-es és újabb konfigurációs séma
 > [!NOTE]
 > A Azure Diagnostics bővítmény a teljesítményszámlálók és más statisztikák gyűjtésére szolgáló összetevő a következő helyekről:
-> - Azure Virtual Machines
-> - Virtuálisgép-méretezési csoportok
+> - Azure-alapú virtuális gépek
+> - Virtual Machine Scale Sets
 > - Service Fabric
 > - Cloud Services
-> - Network Security Groups (Hálózati biztonsági csoportok)
+> - Hálózati biztonsági csoportok
 >
 > Ez a lap csak akkor fontos, ha az egyik szolgáltatást használja.
 
@@ -406,7 +404,7 @@ A PublicConfig és a PrivateConfig el vannak különítve, mert a legtöbb JSON-
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration elem  
- *Fa Gyökér – DiagnosticsConfiguration*
+ *Tree: root-DiagnosticsConfiguration*
 
 Az 1,3-es verzióban lett hozzáadva.  
 
@@ -419,11 +417,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
 |**PublicConfig**|Kötelező. Ezen a lapon a Leírás máshol található.|  
-|**PrivateConfig**|Nem kötelező. Ezen a lapon a Leírás máshol található.|  
+|**PrivateConfig**|Választható. Ezen a lapon a Leírás máshol található.|  
 |**IsEnabled**|Logikai. Ezen a lapon a Leírás máshol található.|  
 
 ## <a name="publicconfig-element"></a>PublicConfig elem  
- *Fa Root-DiagnosticsConfiguration – PublicConfig*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig*
 
  Ismerteti a nyilvános diagnosztika konfigurációját.  
 
@@ -432,24 +430,24 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|Kötelező. Ezen a lapon a Leírás máshol található.|  
 |**StorageAccount**|Annak az Azure Storage-fióknak a neve, amelybe az adattárakat tárolni szeretné. A set-AzureServiceDiagnosticsExtension parancsmag végrehajtásakor paraméterként is megadható.|  
 |**StorageType**|*Tábla*, *blob*vagy *TableAndBlob*lehet. A tábla alapértelmezett. Ha a TableAndBlob van kiválasztva, a diagnosztikai adattípust kétszer, egyszer kell megírni.|  
-|**LocalResourceDirectory**|Annak a virtuális gépnek a könyvtára, ahol a figyelési ügynök az eseményekre vonatkozó adatgyűjtést tárolja. Ha nem, akkor a rendszer az alapértelmezett könyvtárat használja:<br /><br /> Feldolgozói/webes szerepkör esetén:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Virtuális gépek esetén:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> A kötelező attribútumok a következők:<br /><br /> - **elérési út** – a rendszer Azure Diagnostics által használandó könyvtára.<br /><br /> - **expandEnvironment** – meghatározza, hogy a környezeti változók ki vannak-e bontva az elérési útban.|  
+|**LocalResourceDirectory**|Annak a virtuális gépnek a könyvtára, ahol a figyelési ügynök az eseményekre vonatkozó adatgyűjtést tárolja. Ha nem, akkor a rendszer az alapértelmezett könyvtárat használja:<br /><br /> Feldolgozói/webes szerepkör esetén: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Virtuális gép esetén: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> A kötelező attribútumok a következők:<br /><br /> - **path (elérési út** ) – a rendszer Azure Diagnostics által használandó könyvtára.<br /><br /> - **expandEnvironment** – meghatározza, hogy a környezeti változók ki vannak-e bontva az elérési útban.|  
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
- *Fa Gyökér-DiagnosticsConfiguration-PublicConfig-WadCFG*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG*
 
  Azonosítja és konfigurálja az összegyűjtött telemetria-adatokat.  
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Kötelező
+ Szükséges
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | A Azure Diagnostics által gyűjtött különböző diagnosztikai adatok által felhasználható helyi lemezterület maximális mérete. Az alapértelmezett beállítás 4096 MB.<br />
 |**useProxyServer** | Konfigurálja Azure Diagnostics az IE-beállításokban beállított proxykiszolgáló-beállítások használatára.|
-|**fogadóként** | 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, hogy az összes olyan gyermekobjektum számára is küldjön diagnosztikai adatokat, amelyek támogatják a mosogatókat. A fogadó példa Application Insights vagy Event Hubs.|  
+|**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, hogy az összes olyan gyermekobjektum számára is küldjön diagnosztikai adatokat, amelyek támogatják a mosogatókat. A fogadó példa Application Insights vagy Event Hubs.|  
 
 
 <br /> <br />
@@ -457,7 +455,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
 |**CrashDumps**|Ezen a lapon a Leírás máshol található.|  
-|**DiagnosticInfrastructureLogs**|A Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezése. A diagnosztikai infrastruktúra naplói a diagnosztikai rendszer hibaelhárításához hasznosak. A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a begyűjtött naplók minimális súlyossági szintjét konfigurálja.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|A Azure Diagnostics által létrehozott naplók gyűjtésének engedélyezése. A diagnosztikai infrastruktúra naplói a diagnosztikai rendszer hibaelhárításához hasznosak. A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a begyűjtött naplók minimális súlyossági szintjét konfigurálja.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti intervallum a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Címtárak**|Ezen a lapon a Leírás máshol található.|  
 |**EtwProviders**|Ezen a lapon a Leírás máshol található.|  
 |**Metrikák**|Ezen a lapon a Leírás máshol található.|  
@@ -467,23 +465,23 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="crashdumps-element"></a>CrashDumps Element  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-CrashDumps*
+## <a name="crashdumps-element"></a>CrashDumps elem  
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-CrashDumps*
 
  Az összeomlási memóriaképek gyűjtésének engedélyezése.  
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
-|**containerName**|Nem kötelező. Az összeomlási memóriaképek tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
-|**crashDumpType**|Nem kötelező.  A Azure Diagnostics konfigurálja a mini-vagy teljes összeomlási memóriaképek gyűjtésére.|  
-|**directoryQuotaPercentage**|Nem kötelező.  Az összeomlási memóriaképek számára fenntartott **overallQuotaInMB** százalékos arányát konfigurálja a virtuális gépen.|  
+|**containerName**|Választható. Az összeomlási memóriaképek tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|  
+|**crashDumpType**|Választható.  A Azure Diagnostics konfigurálja a mini-vagy teljes összeomlási memóriaképek gyűjtésére.|  
+|**directoryQuotaPercentage**|Választható.  Az összeomlási memóriaképek számára fenntartott **overallQuotaInMB** százalékos arányát konfigurálja a virtuális gépen.|  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Kötelező. Meghatározza az egyes folyamatok konfigurációs értékeit.<br /><br /> A következő attribútumra is szükség van:<br /><br /> **processName** – annak a folyamatnak a neve, amelyet az összeomlási memóriakép gyűjtéséhez Azure Diagnostics szeretne.|  
 
 ## <a name="directories-element"></a>Címtárak elem
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak*
 
  Engedélyezi egy könyvtár tartalmának gyűjtését, az IIS nem tudta elérni a hozzáférési kérelmek naplóit és/vagy az IIS-naplókat.  
 
@@ -499,7 +497,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="datasources-element"></a>Adatforrások eleme  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak-adatforrások*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak-adatforrások*
 
  A figyelni kívánt címtárak listája.  
 
@@ -512,31 +510,31 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration elem  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak-adatforrások-DirectoryConfiguration*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-könyvtárak-DataSources-DirectoryConfiguration*
 
  Az **abszolút** vagy **LocalResource** elemet is tartalmazhat, de mindkettőt nem.  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
-|**Abszolút**|A figyelni kívánt könyvtár abszolút elérési útja. A következő attribútumok szükségesek:<br /><br /> - **Elérési út** – a figyelni kívánt könyvtár abszolút elérési útja.<br /><br /> - **expandEnvironment** – azt határozza meg, hogy az elérési úton lévő környezeti változók kibontása megtörténjen-e.|  
-|**LocalResource**|A figyelni kívánt helyi erőforráshoz viszonyított elérési út. A kötelező attribútumok a következők:<br /><br /> - **Név** – a figyelni kívánt könyvtárat tartalmazó helyi erőforrás<br /><br /> - **relativePath** – a figyelni kívánt könyvtárat tartalmazó névhez viszonyított elérési út|  
+|**Abszolút**|A figyelni kívánt könyvtár abszolút elérési útja. A következő attribútumok szükségesek:<br /><br /> - **path** – a figyelni kívánt könyvtár abszolút elérési útja.<br /><br /> - **expandEnvironment** – beállítja, hogy az elérési úton lévő környezeti változók ki vannak-e bontva.|  
+|**LocalResource**|A figyelni kívánt helyi erőforráshoz viszonyított elérési út. A kötelező attribútumok a következők:<br /><br /> - **neve** – a figyelni kívánt könyvtárat tartalmazó helyi erőforrás<br /><br /> - **relativePath** – a figyelni kívánt könyvtárat tartalmazó név relatív elérési útja|  
 
 
 
 ## <a name="etwproviders-element"></a>EtwProviders elem  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders*
 
  A EventSource és/vagy a ETW manifest-alapú szolgáltatók ETW-eseményeinek gyűjteményét konfigurálja.  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|A [EventSource osztályból](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)generált események gyűjteményét konfigurálja. Kötelező attribútum:<br /><br /> **szolgáltató** – a EventSource esemény osztályának neve.<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **Provider** – az esemény SZOLGÁLTATÓJÁNAK GUID azonosítója<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti időköz a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|A [EventSource osztályból](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)generált események gyűjteményét konfigurálja. Kötelező attribútum:<br /><br /> **szolgáltató** – a EventSource esemény osztályának neve.<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – az a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti intervallum a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Kötelező attribútum:<br /><br /> **Provider** – az esemény SZOLGÁLTATÓJÁNAK GUID azonosítója<br /><br /> A választható attribútumok a következők:<br /><br /> - **scheduledTransferLogLevelFilter** – az a minimális súlyossági szint, amelyet át kell vinni a Storage-fiókjába.<br /><br /> - **scheduledTransferPeriod** – az ütemezett átvitelek közötti intervallum a legközelebbi percre kerekítve. Az érték egy [XML "időtartam adattípusa".](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
-## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
+## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration elem  
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwEventSourceProviderConfiguration*
 
  A [EventSource osztályból](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)generált események gyűjteményét konfigurálja.  
 
@@ -547,8 +545,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 
-## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration Element  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
+## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration elem  
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-EtwProviders-EtwManifestProviderConfiguration*
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
@@ -558,11 +556,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="metrics-element"></a>Metrikák elem  
- *Fa Gyökér-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-metrikák*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-metrikák*
 
  Lehetővé teszi a gyors lekérdezésekhez optimalizált teljesítményszámláló-tábla létrehozását. A **PerformanceCounters** elemben definiált minden teljesítményszámláló a teljesítményszámláló táblán kívül a metrikák táblázatban található.  
 
- A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **Tallózás** -> **erőforráscsoportok** ->  **< anév\>** elemet. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
+ A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **tallózás**  -> **erőforráscsoportok**  ->  **< név \>** lehetőséget. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
@@ -571,7 +569,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="performancecounters-element"></a>PerformanceCounters elem  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-PerformanceCounters*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-PerformanceCounters*
 
  A teljesítményszámlálók gyűjteményének engedélyezése.  
 
@@ -581,14 +579,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermek elem|Leírás|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen található teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **mintavételi** – milyen gyakran kell mintát venni a számlálóból.<br /><br /> Nem kötelező attribútum:<br /><br /> **Unit (egység** ) – a számláló mértékegysége.|
-|**fogadóként** | 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Azure Monitor vagy Event Hubs.|    
+|**PerformanceCounterConfiguration**|A következő attribútumok szükségesek:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen található teljesítményszámlálók listájának lekéréséhez futtassa a következő parancsot: `typeperf`.<br /><br /> - **mintavételi** – milyen gyakran kell mintát venni a számlálóból.<br /><br /> Nem kötelező attribútum:<br /><br /> **Unit (egység** ) – a számláló mértékegysége.|
+|**fogadóként** | 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Azure Monitor vagy Event Hubs.|    
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog elem
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-WindowsEventLog*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-WindowsEventLog*
 
  Engedélyezi a Windows-eseménynaplók gyűjteményét.  
 
@@ -602,21 +600,21 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="logs-element"></a>Elemek naplózása  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-logs*
+ *Fa: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-logs*
 
  Megtalálható a 1,0-es és a 1,1-es verzióban. Hiányzik a 1,2-es verzióban. Ismét hozzáadva a 1,3-es verzióhoz.  
 
  Meghatározza az alapszintű Azure-naplók pufferének konfigurációját.  
 
-|Attribútum|Type|Leírás|  
+|Attribútum|Type (Típus)|Leírás|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Nem kötelező. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Nem kötelező. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
-|**scheduledTransferPeriod**|**Időtartam**|Nem kötelező. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
-|**fogadóként** |**string**| 1,5-ben hozzáadva. Nem kötelező. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs.|  
+|**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
+|**scheduledTransferLogLevelFilter**|**karakterlánc**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
+|**scheduledTransferPeriod**|**időtartama**|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
+|**fogadóként** |**karakterlánc**| 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
 
  1,9-ben hozzáadva.
 
@@ -625,56 +623,56 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Statisztikák**|Azt jelzi, hogy a rendszer a Docker-tárolók statisztikáit gyűjti|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig elem  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig*
 
  Azon helyszínek listája, amelyek diagnosztikai adatait küldik, valamint az ezekhez a helyszínekhez társított konfigurációt.  
 
 |Elem neve|Leírás|  
 |------------------|-----------------|  
-|**Sink**|Ezen a lapon a Leírás máshol található.|  
+|**Mosogató**|Ezen a lapon a Leírás máshol található.|  
 
 ## <a name="sink-element"></a>Fogadó elem
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató*
 
  Az 1,5-es verzióban lett hozzáadva.  
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútum|Type|Leírás|  
+|Attribútum|Type (Típus)|Leírás|  
 |---------------|----------|-----------------|  
-|**name**|Karakterlánc|A sinkname azonosító sztring.|  
+|**név**|sztring|A sinkname azonosító sztring.|  
 
-|Elem|Type|Leírás|  
+|Elem|Type (Típus)|Leírás|  
 |-------------|----------|-----------------|  
-|**Application Insights**|Karakterlánc|Csak akkor használható, ha az adatokat Application Insightsba küldi. Egy aktív Application Insights fiók kialakítási kulcsát tartalmazza, amelyhez hozzáféréssel rendelkezik.|  
-|**Csatornák**|Karakterlánc|Egy minden további szűréshez, amelyet a stream|  
+|**Application Insights**|sztring|Csak akkor használható, ha az adatokat Application Insightsba küldi. Egy aktív Application Insights fiók kialakítási kulcsát tartalmazza, amelyhez hozzáféréssel rendelkezik.|  
+|**Csatornák**|sztring|Egy minden további szűréshez, amelyet a stream|  
 
 ## <a name="channels-element"></a>Csatornák elem  
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-csatornák*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-csatornák*
 
  Az 1,5-es verzióban lett hozzáadva.  
 
  Meghatározza a fogadón keresztül áthaladó naplózási adatstreamek szűrőit.  
 
-|Elem|Type|Leírás|  
+|Elem|Type (Típus)|Leírás|  
 |-------------|----------|-----------------|  
-|**Csatorna**|Karakterlánc|Ezen a lapon a Leírás máshol található.|  
+|**Csatorna**|sztring|Ezen a lapon a Leírás máshol található.|  
 
 ## <a name="channel-element"></a>Csatorna elem
- *Fa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-csatornák-csatorna*
+ *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-mosogató-channels-Channel*
 
  Az 1,5-es verzióban lett hozzáadva.  
 
  Azokat a helyszíneket határozza meg, amelyekben diagnosztikai adatként küldenek. Például a Application Insights szolgáltatás.  
 
-|Attribútumok|Type|Leírás|  
+|Attribútumok|Type (Típus)|Leírás|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
-|**name**|**string**|A csatorna egyedi neve, amelyre hivatkozni kell|  
+|**Naplózási szint**|**karakterlánc**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
+|**név**|**karakterlánc**|A csatorna egyedi neve, amelyre hivatkozni kell|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig elem
- *Fa Root-DiagnosticsConfiguration – PrivateConfig*
+ *Tree: root-DiagnosticsConfiguration-PrivateConfig*
 
  Az 1,3-es verzióban lett hozzáadva.  
 
@@ -684,11 +682,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermek elemek|Leírás|  
 |--------------------|-----------------|  
-|**StorageAccount**|A használandó Storage-fiók. A következő attribútumok szükségesek<br /><br /> - **név** – a Storage-fiók neve.<br /><br /> - **kulcs** – a Storage-fiók kulcsa.<br /><br /> - **Endpoint (végpont** ) – a Storage-fiók eléréséhez használt végpont. <br /><br /> -**sasToken** (hozzáadott 1.8.1) – a privát konfigurációban a Storage-fiók kulcsa helyett egy SAS-tokent is megadhat. Ha meg van adni, a rendszer figyelmen kívül hagyja a Storage-fiók kulcsát. <br />Az SAS-tokenre vonatkozó követelmények: <br />-Csak a fiók SAS-tokenjét támogatja <br />- *b*, a *t* szolgáltatás típusának megadása kötelező. <br /> - *a*, *c*, *u*, *w* engedélyekre van szükség. <br /> - *c*, *o* típusú erőforrásokra van szükség. <br /> – Csak a HTTPS protokollt támogatja <br /> – A kezdő és a lejárati időre érvényesnek kell lennie.|  
+|**StorageAccount**|A használandó Storage-fiók. A következő attribútumok szükségesek<br /><br /> - **neve** – a Storage-fiók neve.<br /><br /> - **kulcs** – a Storage-fiók kulcsa.<br /><br /> - **végpont** – a Storage-fiók eléréséhez használt végpont. <br /><br /> -**sasToken** (hozzáadott 1.8.1) – a privát konfigurációban megadhat egy sas-jogkivonatot a Storage-fiók kulcsa helyett. Ha meg van adni, a rendszer figyelmen kívül hagyja a Storage-fiók kulcsát. <br />Az SAS-tokenre vonatkozó követelmények: <br />-Csak a fiók SAS-tokenjét támogatja <br />- *b*, a *t* szolgáltatás típusának megadása kötelező. <br /> - *a*, *c*, *u*, *w* engedélyekre van szükség. <br /> - *c*, *o* típusú erőforrás-típusok szükségesek. <br /> – Csak a HTTPS protokollt támogatja <br /> – A kezdő és a lejárati időre érvényesnek kell lennie.|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled elem  
- *Fa Root-DiagnosticsConfiguration – IsEnabled*
+ *Tree: root-DiagnosticsConfiguration-IsEnabled*
 
- Logikai. A `true` használatával engedélyezheti a diagnosztikát `false` , vagy letilthatja a diagnosztikát.
+ Logikai. Az `true` használatával engedélyezheti a diagnosztika vagy a `false` számára a diagnosztika letiltását.
 

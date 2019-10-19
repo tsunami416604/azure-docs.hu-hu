@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy önálló Azure Service Fabric-fürtön |} A Microsoft Docs
-description: Azure Service Fabric-fürt létrehozása (fizikai vagy virtuális) bármely gépen Windows Server rendszert futtató, akár a helyszínen vagy a felhőben.
+title: Önálló Azure Service Fabric-fürt létrehozása | Microsoft Docs
+description: Hozzon létre egy Azure Service Fabric-fürtöt bármely olyan gépen (fizikai vagy virtuális gépen), amely Windows Server rendszert futtat, akár helyszíni, akár bármilyen felhőben.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,70 +14,70 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ed775bfca2db02b9bfddebb85bbd3f1f668cf3e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fce1957101050c6ff3a2c3aba2b4b87d4f66f1d
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142698"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554650"
 ---
-# <a name="create-a-standalone-cluster-running-on-windows-server"></a>A Windows Server rendszert futtató önálló fürt létrehozása
-Az Azure Service Fabric segítségével Service Fabric-fürtök létrehozása virtuális gépek vagy a Windows Server rendszert futtató számítógépeket. Ez azt jelenti, is telepíti, és futtassa a Service Fabric-alkalmazásokat minden olyan környezetben, amely tartalmazza az egyes hálózatáról van szó, a Windows Server számítógépek, legyen az a helyszínen vagy bármely más szolgáltatónál. A Service Fabric biztosít az új telepítési csomagot hozhat létre a Service Fabric-fürtök a különálló Windows Server-csomag neve.
+# <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó önálló fürt létrehozása
+Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások.
 
-Ez a cikk végigvezeti az önálló Service Fabric-fürt létrehozására vonatkozó lépéseket.
+Ez a cikk végigvezeti a Service Fabric önálló fürt létrehozásának lépésein.
 
 > [!NOTE]
-> A különálló Windows Server-csomag kereskedelmi forgalomban beszerezhető költségek nélkül, és éles környezetekben üzemelő példányok is használható. Ez a csomag új Service Fabric-szolgáltatások, amelyek az "Előnézet" tartalmazhat. Görgessen le a "[előzetes verziójú funkciók a csomagban](#previewfeatures_anchor)." az előzetes verziójú funkciók szakasz listája. Is [töltse le a végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?LinkID=733084) most.
+> Ez a különálló Windows Server-csomag díjmentesen elérhető, és üzemi környezetben is használható. Ez a csomag olyan új Service Fabric szolgáltatásokat tartalmazhat, amelyek az előzetes verzióban találhatók. Görgessen le az "[előzetes verziójú szolgáltatások ebben a csomagban" című részhez](#previewfeatures_anchor). az előzetes verziójú funkciók listájának szakasza. [A végfelhasználói licencszerződés másolatát most letöltheti](https://go.microsoft.com/fwlink/?LinkID=733084) .
 > 
 > 
 
 <a id="getsupport"></a>
 
-## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Támogatás a Service Fabric Windows Server-csomag
-* Kérdezzen a Közösségtől önálló Service Fabric-csomaggal kapcsolatos, a Windows Server a [Azure Service Fabric-fórum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
-* Nyisson meg egy jegyet [professzionális támogatás a Service fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  További információ a Microsoft a professzionális támogatás [Itt](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
-* Is kaphat támogatást a csomag részeként [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier).
-* További részletekért tekintse meg [Azure Service Fabric támogatási lehetőségeinek](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
-* Jellegű támogatási célból naplóinak összegyűjtése, futtassa a [Service Fabric önálló naplógyűjtő](service-fabric-cluster-standalone-package-contents.md).
+## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>A Windows Server-csomag Service Fabric támogatásának beolvasása
+* Kérdezze meg a Közösséget a Windows Server Service Fabric önálló csomagjáról az [Azure Service Fabric fórumban](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?).
+* Nyisson meg egy jegyet a [Service Fabric szakmai támogatásához](https://support.microsoft.com/oas/default.aspx?prid=16146).  További információ [a Microsoft szakmai](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)támogatásáról.
+* A csomag támogatását a [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier)részeként is elérheti.
+* További részletekért tekintse meg az [Azure Service Fabric támogatási lehetőségeit](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* A naplók támogatási célból történő gyűjtéséhez futtassa a [Service Fabric önálló napló gyűjtőjét](service-fabric-cluster-standalone-package-contents.md).
 
 <a id="downloadpackage"></a>
 
 ## <a name="download-the-service-fabric-for-windows-server-package"></a>A Windows Serverhez készült Service Fabric-csomag letöltése
-A fürt létrehozásához használja a Service Fabric Windows Server-csomag (Windows Server 2012 R2 és újabb) itt található: <br>
-[Töltse le a Windows Server - Service Fabric önálló csomag - hivatkozás](https://go.microsoft.com/fwlink/?LinkId=730690)
+A fürt létrehozásához használja a Service Fabric a Windows Server-csomaghoz (Windows Server 2012 R2 és újabb), amely itt található: <br>
+[Link letöltése – Service Fabric önálló csomag – Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690)
 
-Keresse meg a részleteket a csomag tartalma a [Itt](service-fabric-cluster-standalone-package-contents.md).
+A csomag tartalmával kapcsolatban [itt](service-fabric-cluster-standalone-package-contents.md)talál részleteket.
 
-A Service Fabric futtatókörnyezet-csomag automatikusan letölti a fürt létrehozása során. Ha üzembe helyezése a gép nem csatlakozik az internethez, töltse le a sávon kívüli futtatókörnyezet-csomag innen: <br>
-[Töltse le a Windows Server - Service Fabric-futtatókörnyezet - hivatkozás](https://go.microsoft.com/fwlink/?linkid=839354)
+A Service Fabric futtatókörnyezet-csomagot a rendszer automatikusan letölti a fürt létrehozásakor. Ha egy olyan gépről telepít, amely nem kapcsolódik az internethez, töltse le a sávon kívüli futtatókörnyezetet innen: <br>
+[Hivatkozás letöltése – Service Fabric futtatókörnyezet – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)
 
-Önálló fürtkonfiguráció minták keresése: <br>
-[Önálló fürt konfigurációs minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
+Önálló fürtözött konfigurációs minták keresése a következő helyen: <br>
+[Önálló fürtözött konfigurációs minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 <a id="createcluster"></a>
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 Több fürtkonfigurációs mintafájl is települ a telepítőcsomaggal. A *ClusterConfig.Unsecure.DevCluster.json* a legegyszerűbb fürtkonfiguráció: egy nem védett, egyetlen számítógépen futó, három csomóponttal rendelkező fürt.  A többi konfigurációs fájl X.509 tanúsítványokkal vagy a Windows biztonsági szolgáltatásaival védett egy- vagy többgépes fürtöket ír le.  Ehhez az oktatóanyaghoz az alapértelmezett konfigurációs beállítások egyikét sem kell módosítania, csak át kell tekintenie a konfigurációs fájlt, és meg kell ismerkednie a beállításokkal.  A **csomópontok** szakasz ismerteti a fürt három csomópontját: név, IP-cím, [csomóponttípus, tartalék tartomány és frissítési tartomány](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  A **tulajdonságok** szakasz definiálja a fürt [biztonságát, megbízhatósági szintjét, diagnosztikai gyűjteményét és a benne lévő csomópontok típusait](service-fabric-cluster-manifest.md#cluster-properties).
 
-Ebben a cikkben létrehozott fürt nem biztonságos.  Bárki csatlakozhat hozzá névtelenül és végrehajthat kezelési műveleteket, ezért az üzemben lévő fürtöket mindig X.509 tanúsítványok vagy a Windows rendszerbiztonság használatával kell védeni.  A biztonság konfigurálására csak a fürt létrehozásakor van lehetőség, a fürt létrehozása után már nem lehet engedélyezni. Frissítés a konfigurációs fájl engedélyezése [biztonsági tanúsítvány](service-fabric-windows-cluster-x509-security.md) vagy [Windows biztonsági](service-fabric-windows-cluster-windows-security.md). A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md).
+A cikkben létrehozott fürt nem biztonságos.  Bárki csatlakozhat hozzá névtelenül és végrehajthat kezelési műveleteket, ezért az üzemben lévő fürtöket mindig X.509 tanúsítványok vagy a Windows rendszerbiztonság használatával kell védeni.  A biztonság konfigurálására csak a fürt létrehozásakor van lehetőség, a fürt létrehozása után már nem lehet engedélyezni. A konfigurációs fájl frissítése engedélyezze a [tanúsítványok biztonsági](service-fabric-windows-cluster-x509-security.md) vagy a [Windows-biztonságot](service-fabric-windows-cluster-windows-security.md). A Service Fabric-fürtök védelmével kapcsolatos további tudnivalókért lásd: [Fürt biztonságossá tétele](service-fabric-cluster-security.md).
 
-### <a name="step-1-create-the-cluster"></a>1\. lépés: A fürt létrehozása
+### <a name="step-1-create-the-cluster"></a>1\. lépés: a fürt létrehozása
 
-#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>„A” alkalmazási helyzet: Egy nem biztonságos helyi fejlesztési fürt létrehozása
-A Service Fabric használatával bármely helyezhető egy gép egy fejlesztési fürtöt a *ClusterConfig.Unsecure.DevCluster.json* fájlban szereplő [minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>"A" forgatókönyv: nem biztonságos helyi fejlesztési fürt létrehozása
+A Service Fabric a *ClusterConfig. unsecure. DevCluster. JSON* fájl használatával helyezhetők üzembe egy egyszámítógépes fejlesztési fürtön [.](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
-Csomagolja ki a különálló csomag a számítógépre, a minta konfigurációs fájl a helyi számítógépre másolja, majd futtassa a *CreateServiceFabricCluster.ps1* a különálló csomag mappájából egy rendszergazdai PowerShell-munkameneten keresztül parancsfájl .
+Csomagolja ki az önálló csomagot a gépre, másolja a minta konfigurációs fájlt a helyi gépre, majd futtassa a *CreateServiceFabricCluster. ps1* parancsfájlt egy rendszergazdai PowerShell-munkameneten keresztül az önálló csomag mappájából.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-A környezet beállítása című [tervezze meg és készítse elő a fürt üzembe helyezése](service-fabric-cluster-standalone-deployment-preparation.md) hibaelhárítási részleteket.
+A hibaelhárítással kapcsolatos részletekért tekintse meg a környezet beállítása szakaszt [, és készítse elő a fürt üzembe helyezését](service-fabric-cluster-standalone-deployment-preparation.md) .
 
-Ha végzett a futó fejlesztési forgatókönyvek, eltávolíthatja a Service Fabric-fürtön a gépről hivatkozó szakaszban ismertetett lépések szerint "[fürt eltávolítása](#removecluster_anchor)". 
+Ha végzett a fejlesztési forgatókönyvek futtatásával, távolítsa el a Service Fabric fürtöt a gépről a "[fürt eltávolítása](#removecluster_anchor)" szakasz lépéseit követve. 
 
-#### <a name="scenario-b-create-a-multi-machine-cluster"></a>„B” alkalmazási helyzet: Egy többgépes fürt létrehozása
-Miután elvégezte a tervezési és előkészítő lépések részletes [tervezze meg és készítse elő a fürt üzembe helyezése](service-fabric-cluster-standalone-deployment-preparation.md), készen áll az éles fürt a fürt konfigurációs fájl használatával létrehozásához.
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>B forgatókönyv: több számítógépből álló fürt létrehozása
+Miután elvégezte a [fürt üzembe helyezésének](service-fabric-cluster-standalone-deployment-preparation.md)megtervezése és előkészítése során megjelenő tervezési és előkészítési lépéseket, készen áll arra, hogy létrehozza az üzemi fürtöt a fürt konfigurációs fájljának használatával.
 
 A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdának rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen. A Service Fabric tartományvezérlőn nem telepíthető.
 
@@ -87,7 +87,7 @@ A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdána
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Az alábbihoz hasonló kimenetnek kell megjelennie. Ha a "Sikeres" adja vissza "true"értékre, melyeknél sikeres az megerősítések alsó mezőbe, és a fürt üzembe helyezhető kell bemeneti konfigurációja alapján.
+    Az alábbihoz hasonló kimenetnek kell megjelennie. Ha a "Passed" alsó mező értéke "true" (igaz), a rendszer az alapértékeket ellenőrzi, és a fürt úgy tűnik, hogy a bemeneti konfiguráció alapján telepíthető.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -106,7 +106,7 @@ A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdána
     Passed                     : True
     ```
 
-2. A fürt létrehozása:  Futtassa a *CreateServiceFabricCluster.ps1* üzembe helyezi a Service Fabric-fürtön a konfigurációban minden gép között. 
+2. Hozza létre a fürtöt: futtassa a *CreateServiceFabricCluster. ps1* parancsfájlt, hogy az Service Fabric-fürtöt a konfiguráció minden számítógépén üzembe helyezi. 
     ```powershell
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -AcceptEULA
     ```
@@ -116,20 +116,20 @@ A fürt üzembe helyezését és konfigurálását végző fürtrendszergazdána
 > 
 > 
 
-#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Forgatókönyv: C: Egy kapcsolat nélküli (internet-kapcsolat nélkül)-fürt létrehozása
-A Service Fabric futtatókörnyezet-csomag automatikusan letölti a fürt létrehozásakor. Amikor a fürt üzembe helyezése a gép nem csatlakozik az internethez, kell külön töltse le a Service Fabric futtatókörnyezet-csomag, és adja meg a fürt létrehozásakor az elérési utat.
-A futtatókörnyezet-csomag tölthetők, az internethez csatlakozik másik gépről [letöltési hivatkozás - Service Fabric-futtatókörnyezet – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Ahol a kapcsolat nélküli fürtre végzi, és a fürt létrehozásához futtassa a futtatókörnyezet-csomag másolása `CreateServiceFabricCluster.ps1` együtt a `-FabricRuntimePackagePath` paramétert tartalmaz, ebben a példában látható módon: 
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>C. forgatókönyv: kapcsolat nélküli (internetről leválasztott) fürt létrehozása
+A rendszer automatikusan letölti a Service Fabric futtatókörnyezet-csomagot a fürt létrehozásakor. Amikor fürtöt telepít az internethez nem csatlakozó gépekre, le kell töltenie a Service Fabric Runtime csomagot, és meg kell adnia a fürt létrehozásához szükséges elérési utat.
+A futásidejű csomag külön tölthető le, az internethez csatlakozó másik gépről, a [letöltési hivatkozás – Service Fabric futtatókörnyezet – Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Másolja a futtatókörnyezetet arra a pontra, ahová a kapcsolat nélküli fürtöt telepíti, és hozza létre a fürtöt `CreateServiceFabricCluster.ps1` futtatásával a `-FabricRuntimePackagePath` paraméterrel, ahogy az ebben a példában is látható: 
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.json -FabricRuntimePackagePath .\MicrosoftAzureServiceFabric.cab
 ```
 
-*.\ClusterConfig.JSON* és *.\MicrosoftAzureServiceFabric.cab* rendre vannak a fürt konfigurációját, és a futtatókörnyezet .cab-fájl elérési útja.
+A *.\ClusterConfig.JSON* és a *.\MicrosoftAzureServiceFabric.cab* a fürtkonfiguráció és a Runtime. cab fájl elérési útja.
 
-### <a name="step-2-connect-to-the-cluster"></a>2\. lépés: Csatlakozás a fürthöz
-Csatlakozás a fürthöz, ellenőrizheti a fürt fut, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürtcsomópontok közül, vagy egy távoli számítógépről a Service Fabric-futtatókörnyezet képes csatlakozni a fürthöz.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.
+### <a name="step-2-connect-to-the-cluster"></a>2\. lépés: Kapcsolódás a fürthöz
+Kapcsolódjon a fürthöz, és ellenőrizze, hogy a fürt fut-e, és elérhető-e. A ServiceFabric PowerShell-modul a futtatókörnyezettel együtt települ.  A fürthöz a fürtcsomópontokon vagy a Service Fabric futtatókörnyezettel rendelkező távoli számítógépről is csatlakozhat.  A [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) parancsmag kiépít egy kapcsolatot a fürttel.
 
-A nem biztonságos fürtökhöz csatlakozhat, futtassa a következő PowerShell-parancsot:
+Nem biztonságos fürthöz való kapcsolódáshoz futtassa a következő PowerShell-parancsot:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client connection end point port>
@@ -152,8 +152,8 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3\. lépés: A fürt megjelenítése a Service Fabric Explorerrel
-A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorert a szolgáltatást, amely a fürt, amely egy böngészővel megnyitásával érhető [ http://localhost:19080/Explorer ](http://localhost:19080/Explorer).
+### <a name="step-3-visualize-the-cluster-using-service-fabric-explorer"></a>3\. lépés: a fürt megjelenítése a Service Fabric Explorer használatával
+A [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) hatékony eszköz a fürtök megjelenítéséhez és az alkalmazások kezeléséhez.  Service Fabric Explorer egy olyan szolgáltatás, amely a fürtben fut, és a böngészővel fér hozzá a [http://localhost:19080/Explorer hoz](http://localhost:19080/Explorer).
 
 A fürt irányítópultja áttekintést nyújt a fürtről, beleértve az alkalmazások és a csomópontok állapotának összefoglalását. A csomópontnézet a fürt fizikai elrendezését mutatja. Az egyes csomópontoknál megtekintheti, hogy melyik alkalmazások kódja üzemel az adott csomóponton.
 
@@ -166,7 +166,7 @@ Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontok
 ## <a name="remove-a-cluster"></a>Fürt eltávolítása
 Egy fürt eltávolításához futtassa a *RemoveServiceFabricCluster.ps1* PowerShell-szkriptet a csomag mappájából, és adja meg a JSON-konfigurációs fájl elérési útját. Megadhatja a törlés naplójának mentési helyét is.
 
-Ezt a parancsfájlt minden olyan gép, amely számítanak csomópontnak a fürt konfigurációs fájlban felsorolt összes gép rendszergazdai hozzáféréssel rendelkezik. Ez a szkript futtatott a gép nem rendelkezik a fürt részeként.
+Ez a parancsfájl bármely olyan gépen futtatható, amely rendszergazdai hozzáféréssel rendelkezik az összes olyan géphez, amely csomópontként szerepel a fürt konfigurációs fájljában. A parancsfájl futtatásához használt gépnek nem kell a fürt részét képeznie.
 
 ```powershell
 # Removes Service Fabric from each machine in the configuration
@@ -180,18 +180,18 @@ Ezt a parancsfájlt minden olyan gép, amely számítanak csomópontnak a fürt 
 
 <a id="telemetry"></a>
 
-## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Az összegyűjtött telemetrikus adatok, és hogyan
-Alapértelmezés szerint a termék telemetriai adatokat a termék javítása érdekében a Service Fabric használati adatokat gyűjt. Az ajánlott eljárásokat elemző eszköz, amely futtatja a telepítés részeként ellenőrzi a csatlakozást [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1). Ha nem érhető el, a telepítés sikertelen lesz, kivéve, ha kikapcsolja a telemetriai adatokat.
+## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Telemetria gyűjtött adatok és az onnan való leiratkozás
+Alapértelmezés szerint a termék a termék telemetria gyűjti a Service Fabric használatot. A telepítés részeként futó ajánlott eljárásokat elemző eszköz a [https://vortex.data.microsoft.com/collect/v1 hoz](https://vortex.data.microsoft.com/collect/v1)való kapcsolódást ellenőrzi. Ha nem érhető el, a telepítés sikertelen lesz, hacsak nem törli a telemetria.
 
-1. A telemetriai adatok folyamat megpróbálja töltse fel az alábbi adatokat [ https://vortex.data.microsoft.com/collect/v1 ](https://vortex.data.microsoft.com/collect/v1) naponta egyszer. A legjobb feltöltése és nem befolyásolja a fürt funkciót. A telemetria csak is küld a csomópont, amely a feladatátvétel elsődleges kezelőben. Nincsenek más csomópontok telemetriai adatok küldése.
-2. A telemetriát a következőkből áll:
+1. A telemetria folyamat naponta egyszer megpróbálja [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) a következő adatok feltöltését. Ez a legjobb feltöltés, és nincs hatással a fürt működésére. A telemetria csak a Feladatátvevőfürt-kezelőt futtató csomópontról lesz elküldve. Más csomópontok nem küldenek telemetria.
+2. A telemetria a következőkből áll:
 
 * Szolgáltatások száma
 * ServiceTypes száma
 * Alkalmazások száma
 * ApplicationUpgrades száma
-* Feladatátvételi egységek száma
-* Inbuild feladatátvételi egységek száma
+* Szabályozott száma
+* InBuildFailoverUnits száma
 * UnhealthyFailoverUnits száma
 * Replikák száma
 * InBuildReplicas száma
@@ -201,33 +201,33 @@ Alapértelmezés szerint a termék telemetriai adatokat a termék javítása ér
 * QueryQueueLength
 * FailoverUnitQueueLength
 * CommitQueueLength
-* A csomópontok száma
-* IsContextComplete: Igaz/hamis
-* ClusterId: Ez az, ha mindegyik fürthöz véletlenszerűen előállított GUID
+* Csomópontok száma
+* IsContextComplete: TRUE/FALSE
+* ClusterId: minden fürthöz véletlenszerűen generált GUID
 * ServiceFabricVersion
-* IP-címet a virtuális gép és a gép, amelyről a telemetriai adatok feltöltése
+* Annak a virtuális gépnek vagy gépnek az IP-címe, amelyről a telemetria feltöltve van
 
-Telemetria letiltásához adja hozzá a következőt *tulajdonságok* a fürt config: *enableTelemetry: hamis*.
+A telemetria letiltásához adja hozzá a következő *tulajdonságokat* a fürt konfigurációjában: *enableTelemetry: false*.
 
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
-## <a name="preview-features-included-in-this-package"></a>Ebben a csomagban szereplő előzetes verziójú funkciók
+## <a name="preview-features-included-in-this-package"></a>A csomagban található előzetes verziójú szolgáltatások
 Nincs.
 
 
 > [!NOTE]
-> Az új kezdve [általánosan elérhető verziója a Windows Server különálló fürt (verzió 5.3.204.x)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/), manuálisan vagy automatikusan is frissítse a fürtöt a jövőbeli kiadások. Tekintse meg [egy önálló Service Fabric-fürt verziója frissítés](service-fabric-cluster-upgrade-windows-server.md) dokumentum részleteiről.
+> A [Windows Serverhez készült önálló fürt új GA-verziójától (5.3.204. x verzió)](https://azure.microsoft.com/blog/azure-service-fabric-for-windows-server-now-ga/)kezdve a fürtöt a későbbi kiadásokra, manuálisan vagy automatikusan is frissítheti. További részletekért tekintse meg az [önálló Service Fabric-fürt verziójának frissítése](service-fabric-cluster-upgrade-windows-server.md) című dokumentumot.
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
-* [Üzembe helyezése és távolíthat el alkalmazásokat a PowerShell használatával](service-fabric-deploy-remove-applications.md)
-* [Különálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
-* [Hozzáadása vagy eltávolítása, csomópontok önálló Service Fabric-fürt](service-fabric-cluster-windows-server-add-remove-nodes.md)
-* [Egy önálló Service Fabric-fürt verziója frissítése](service-fabric-cluster-upgrade-windows-server.md)
-* [Önálló Service Fabric-fürt létrehozása Windows rendszert futtató Azure virtuális gépekkel](service-fabric-cluster-creation-with-windows-azure-vms.md)
-* [Különálló fürt védelme a a Windows, Windows-rendszerbiztonság használatával](service-fabric-windows-cluster-windows-security.md)
-* [Különálló fürt védelme a Windows X509 használ a tanúsítványok](service-fabric-windows-cluster-x509-security.md)
+## <a name="next-steps"></a>Következő lépések
+* [Alkalmazások telepítése és eltávolítása a PowerShell használatával](service-fabric-deploy-remove-applications.md)
+* [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
+* [Csomópontok hozzáadása vagy eltávolítása önálló Service Fabric-fürthöz](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Önálló Service Fabric fürt verziójának frissítése](service-fabric-cluster-upgrade-windows-server.md)
+* [Önálló Service Fabric-fürt létrehozása Windows rendszerű Azure-beli virtuális gépekkel](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Önálló fürt biztonságossá tétele Windows rendszeren Windows-Biztonság használatával](service-fabric-windows-cluster-windows-security.md)
+* [Önálló fürt biztonságossá tétele a Windowsban X509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
 
 <!--Image references-->
 [Trusted Zone]: ./media/service-fabric-cluster-creation-for-windows-server/TrustedZone.png

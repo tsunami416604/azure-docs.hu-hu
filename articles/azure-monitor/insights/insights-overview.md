@@ -1,57 +1,52 @@
 ---
-title: Az Azure monitorban Insights áttekintése |} A Microsoft Docs
-description: Insights testre szabott figyelési felületet tudjon biztosítani az Azure Monitor az adott alkalmazáshoz és szolgáltatáshoz. A cikk ismerteti, amelyek jelenleg az insights mindegyike rövid leírását.
-services: azure-monitor
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
+title: Az információk áttekintése Azure Monitorban | Microsoft Docs
+description: Az adatvizsgálatok testreszabott figyelési élményt nyújtanak az egyes alkalmazások és szolgáltatások Azure Monitor. Ez a cikk a jelenleg elérhető összes információ rövid leírását tartalmazza.
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 05/22/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 8cb39a174c570b7019e872d731f49252a9505406
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/22/2019
+ms.openlocfilehash: 3abf3d562b9ca4d6fc9907c065dbaf9a52d58c5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66247229"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555340"
 ---
-# <a name="overview-of-insights-in-azure-monitor"></a>Az Azure monitorban Insights áttekintése
-Insights figyelési testreszabott élményt biztosítani adott alkalmazásokat és szolgáltatásokat. Ezek az adatok tárolása a [Azure Monitor adatplatform](../platform/data-platform.md) és más az Azure Monitor funkciói elemzés és riasztás céljából, de előfordulhat, hogy további adatok gyűjtése és a egy egyedi felhasználói felületet biztosít az Azure Portalon. Is használható elemzéseket készítsenek eléréséhez a **Insights** az Azure Portalon az Azure figyelő menü szakaszában.
+# <a name="overview-of-insights-in-azure-monitor"></a>Az információk áttekintése Azure Monitor
+Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A [Azure monitor adatplatformban](../platform/data-platform.md) tárolják az adatokat, és más Azure monitor funkciókat is kihasználhatnak az elemzéshez és a riasztásokhoz, azonban további adatokat gyűjthetnek, és egyedi felhasználói élményt biztosíthatnak a Azure Portal. A Azure Portal Azure Monitor menüjének bepillantást **nyerhet a bepillantást az** adatokból.
 
-A következő szakaszok az elemzéseket, amelyek jelenleg az Azure monitorral rövid leírását. Az egyes tekintse meg a részletes dokumentációjában.
+A következő szakaszokban a Azure Monitor aktuálisan elérhető információinak rövid leírását találhatja meg. További részletekért tekintse meg a részletes dokumentációt.
 
 ## <a name="application-insights"></a>Application Insights
-Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Számos különböző platformokról, többek között a .NET, Node.js és Java EE-alapú alkalmazások esetében működik a helyszíni, hibrid vagy bármely nyilvános felhőben üzemeltetett. Is integrálható a fejlesztési és üzemeltetési folyamatot, és rendelkezik kapcsolódási ponttal, számos különböző fejlesztői eszközöket.
+Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Számos platformon használható, többek között a .NET, a Node. js és a Java EE, helyszíni, hibrid vagy nyilvános felhőben üzemelő alkalmazásokhoz. Emellett a DevOps folyamattal is integrálható, és a különböző fejlesztői eszközökhöz kapcsolódó kapcsolódási pontokkal rendelkezik.
 
-Lásd: [Mi az Application Insights?](../app/app-insights-overview.md).
+Lásd: [Mi az Application Insights?](../app/app-insights-overview.md)
 
 ![Application Insights](media/insights-overview/app-insights.png)
 
-## <a name="azure-monitor-for-containers"></a>Az Azure Monitor for containers szolgáltatásban
-A tárolók figyelők az Azure Monitor a tárolók számítási feladatainak teljesítményét vagy az Azure Container Instances szolgáltatásban üzembe helyezett, vagy az Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt. A tárolók alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
+## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolók számára
+A tárolók Azure Monitor figyeli az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét. A tárolók monitorozása kritikus fontosságú, különösen akkor, ha éles fürtöt futtat, több alkalmazással.
 
-Lásd: [tárolók áttekintése az Azure Monitor](../insights/container-insights-overview.md).
+Lásd: [Azure monitor a tárolók áttekintéséhez](../insights/container-insights-overview.md).
 
-![Az Azure Monitor for containers szolgáltatásban](media/insights-overview/container-insights.png)
+![Azure Monitor tárolók számára](media/insights-overview/container-insights.png)
 
-## <a name="azure-monitor-for-resource-groups-preview"></a>Az Azure Monitor az erőforrás-csoportokhoz (előzetes verzió)
-Erőforráscsoportok az Azure Monitor segítségével, osztályozhatja és diagnosztizálhatja problémáit az egyes erőforrások észlel, miközben környezet állapotát és teljesítményét az erőforráscsoport, egy teljes esetleges szabályozási hiányosságok elhárítását.
+## <a name="azure-monitor-for-resource-groups-preview"></a>Erőforráscsoportok Azure Monitor (előzetes verzió)
+Az erőforráscsoportok Azure Monitor segíti az egyes erőforrásokkal kapcsolatos problémák osztályozását és diagnosztizálását, miközben az erőforráscsoport állapotára és teljesítményére vonatkozó kontextust kínál.
 
-Lásd: [erőforráscsoportok monitorozása az Azure Monitor (előzetes verzió) szolgáltatással](../insights/resource-group-insights.md).
+Lásd: [erőforráscsoportok figyelése Azure monitor (előzetes verzió)](../insights/resource-group-insights.md).
 
-![Az Azure Monitor erőforrás-csoportok](media/insights-overview/resource-group-insights.png)
+![Erőforráscsoportok Azure Monitor](media/insights-overview/resource-group-insights.png)
 
-## <a name="azure-monitor-for-vms-preview"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió)
-A virtuális gépek az Azure Monitor figyeli az Azure-beli virtuális gépek (VM), és a virtuálisgép-méretezési csoportok ipari méretekben. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket.
+## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (előzetes verzió)
+Azure Monitor for VMs az Azure-beli virtuális gépeket (VM) és a virtuálisgép-méretezési csoportokat nagy méretben figyeli. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket.
 
-Lásd: [Mi az Azure Monitor-beli virtuális gépek?](vminsights-overview.md)
+Lásd: [Mi az Azure monitor for VMS?](vminsights-overview.md)
 
 ![Azure Monitor virtuális gépekhez](media/insights-overview/vm-insights.png)
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet a [Azure Monitor adatplatform](../platform/data-platform.md) insights által használható.
-* További információ a különböző [Azure figyelő által használt adatforrások](../platform/data-sources.md) és az egyes az insights által gyűjtött adatok különböző fajtáit.
+## <a name="next-steps"></a>Következő lépések
+* További információ az elemzések által kihasználható [Azure monitor adatplatformról](../platform/data-platform.md) .
+* Ismerje meg a [Azure monitor által használt különböző adatforrásokat](../platform/data-sources.md) , valamint az egyes elemzések által gyűjtött különféle adatokat.

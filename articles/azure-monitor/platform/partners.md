@@ -1,19 +1,18 @@
 ---
 title: A Azure Monitorrel integrált partnerek
 description: Ismerkedjen meg Azure Monitor partnereivel, és hogyan férhet hozzá az integrációhoz szükséges dokumentációhoz.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 03/14/2019
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 03/14/2019
+ms.openlocfilehash: d4a16fc3d4c29b1e270fa088af75d287a81180c0
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262300"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552064"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor partner-integrációk
 
@@ -198,7 +197,7 @@ A SignalFx az adatvezérelt DevOps valós idejű operatív intelligenciának vez
 
 [Nyissa meg a dokumentációt.][signalfx-doc]
 
-## <a name="signl4"></a>SIGNL4 HASZNÁLATÁVAL
+## <a name="signl4"></a>SIGNL4 használatával
 ![SIGNL4 használatával embléma](./media/partners/signl4.png)
 
 SIGNL4 használatával – az operatív csapatoknak szóló mobil riasztási alkalmazás – az a leggyorsabb módszer, amellyel a kritikus riasztásokat Azure Monitorról a megfelelő személyekre irányíthatja a megfelelő időben – bárhol leküldés, szöveg és hanghívások útján. A SIGNL4 használatával kezeli a feladatokkal kapcsolatos feladatokat és a csapatok változásait, nyomon követheti a riasztások kézbesítését és tulajdonjogát, és szükség esetén kiterjesztheti azokat. Teljes körű átláthatóság a csapaton belül. A SIGNL4 használatával Super-Easy REST web-Hook használatával bármely Azure-szolgáltatáshoz csatlakozhat. A SIGNL4 használatával-mel az e-mailes értesítések és a manuális riasztások között akár 10x-es gyorsabb reagálást is láthat.
@@ -233,7 +232,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 
 [Részletek][turbonomic-doc]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További információ a Azure Monitor](../../azure-monitor/overview.md)
 - [Metrikák elérése a REST API használatával](rest-api-walkthrough.md)
 - [A tevékenység naplójának továbbítása nem Microsoft-szolgáltatásba](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

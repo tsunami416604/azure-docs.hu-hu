@@ -1,141 +1,138 @@
 ---
-title: A virtuális gépek (előzetes verzió) gyakran ismételt kérdések az Azure Monitor |} A Microsoft Docs
-description: A virtuális gépek az Azure Monitor egy olyan megoldás, az Azure-ban, amely egyesíti az állapotának és teljesítményének figyelése az Azure virtuális gép operációs rendszerének, valamint alkalmazás-összetevők és az egyéb erőforrások függőségeinek automatikus felderítése, és feltérképezi a közötti kommunikációt őket. Ez a cikk gyakori kérdésekre ad választ.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
-editor: tysonn
+title: Azure Monitor for VMs (előzetes verzió) – gyakori kérdések | Microsoft Docs
+description: A Azure Monitor for VMs az Azure-ban olyan megoldás, amely az Azure-beli virtuális gép operációs rendszerének állapotát és teljesítményét ötvözi, valamint az alkalmazás-összetevők és a függőségek automatikus felfedését más erőforrásokkal, és leképezi a közötti kommunikációt őket. Ez a cikk a gyakori kérdésekre ad választ.
 ms.service: azure-monitor
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 420ba9d74532095c2d028fef8f549d532e5dfa05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/09/2018
+ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522210"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555212"
 ---
-# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Az Azure Monitor-beli virtuális gépek (előzetes verzió) gyakran ismételt kérdések
-A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
+# <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (előzetes verzió) – gyakori kérdések
+A Microsoft gyakori kérdései a Azure Monitor for VMskal kapcsolatos gyakori kérdések listája. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
-## <a name="can-i-onboard-to-an-existing-workspace"></a>Lehetőségeket felvétele egy meglévő munkaterületet?
-Ha a virtuális gépek már kapcsolódik egy Log Analytics-munkaterületet, továbbra is munkaterületet használja, ha bevezetése az Azure monitornak a virtuális gépek esetében megadtuk a felsorolt támogatott régiók egyikében [Itt](vminsights-enable-overview.md#prerequisites).
+## <a name="can-i-onboard-to-an-existing-workspace"></a>Bejelentkezhetek egy meglévő munkaterületre?
+Ha a virtuális gépek már csatlakoznak egy Log Analytics-munkaterülethez, akkor továbbra is használhatja ezt a munkaterületet Azure Monitor for VMsba való bevezetéskor, amennyiben az [itt](vminsights-enable-overview.md#prerequisites)felsorolt támogatott régiók egyikében található.
 
-Amikor végzett előkészítési műveletekhez, konfigurálnánk teljesítményszámlálóit a munkaterületet, amely újraindítja a virtuális gépek mindegyikének adatokról szóló jelentéseket küldeni a munkaterületre való gyűjtésére a virtuális gépek megjelenítése és elemzése az Azure monitorban információit.  Ennek eredményeképpen a virtuális gépeket a kijelölt munkaterülethez kapcsolódó összes teljesítményadatokat megjelenik.  Az egészségügyi és térkép funkciók csak engedélyezve vannak a virtuális gépek, amelyek a megadott felvétele.
+A bevezetéskor a munkaterülethez olyan teljesítményszámlálók vannak konfigurálva, amelyek az összes, a munkaterületnek adatokat jelentő virtuális gépet begyűjtik, hogy a megjelenítéshez és az elemzéshez Azure Monitor for VMs az adatokat.  Ennek eredményeképpen a kiválasztott munkaterülethez csatlakoztatott összes virtuális gép teljesítményadatait fogja látni.  Az állapot és a leképezés funkció csak a bevezetéshez megadott virtuális gépek esetében engedélyezett.
 
-További információ a teljesítményszámlálók számlálók engedélyezve vannak, tekintse meg a [engedélyezése – áttekintés](vminsights-enable-overview.md#performance-counters-enabled) cikk.
+A teljesítményszámlálók engedélyezésével kapcsolatos további információkért tekintse meg az [Engedélyezés áttekintését ismertető](vminsights-enable-overview.md#performance-counters-enabled) cikket.
 
-## <a name="can-i-onboard-to-a-new-workspace"></a>Lehetőségeket felvétele egy új munkaterületet? 
-Ha a virtuális gépek jelenleg nem csatlakoznak a meglévő Log Analytics-munkaterületet, létre kell hozzon létre egy új munkaterületet, az adatok tárolásához. Egy új alapértelmezett munkaterületet automatikusan történik, ha konfigurál egy Azure virtuális Gépen az Azure Monitor-beli virtuális gépek az Azure Portalon keresztül.
+## <a name="can-i-onboard-to-a-new-workspace"></a>Bejelentkezhetek egy új munkaterületre? 
+Ha a virtuális gépek jelenleg nem kapcsolódnak meglévő Log Analytics-munkaterülethez, létre kell hoznia egy új munkaterületet az adatai tárolásához. Az új alapértelmezett munkaterület létrehozása automatikusan történik, ha egyetlen Azure-beli virtuális gépet állít be Azure Monitor for VMs a Azure Portal keresztül.
 
-Ha használja a parancsprogramfájlon alapuló módszert választja, ezeket a lépéseket ismertetjük a [engedélyezése az Azure Monitor (előzetes verzió) virtuális gépek Azure PowerShell vagy a Resource Manager-sablon használatával](vminsights-enable-at-scale-powershell.md) cikk. 
+Ha úgy dönt, hogy a parancsfájl-alapú módszert használja, ezeket a lépéseket a [Azure PowerShell vagy Resource Manager-sablon használatával foglalkozó Azure monitor for VMS engedélyezése (előzetes verzió)](vminsights-enable-at-scale-powershell.md) című cikk tartalmazza. 
 
-## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mit tegyek, ha a virtuális gépem egy létező munkaterülethez már jelent?
-Már a virtuális gépekről származó adatokat gyűjt, ha lehetséges, hogy már konfigurálta a azt a jelentésadatok meglévő Log Analytics-munkaterülethez.  Mindaddig, amíg a munkaterület a támogatott régiók valamelyikében van, a már meglévő munkaterületet az Azure Monitor engedélyezheti a virtuális gépek.  Ha már használja a munkaterületet nem a támogatott régiók egyikében, nem kell üzembe helyezni az Azure monitornak a virtuális gépek jelenleg.  Aktívan dolgozunk további régiók támogatása.
+## <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Mi a teendő, ha a virtuális gép már jelent egy meglévő munkaterületet?
+Ha már begyűjti az adatait a virtuális gépekről, lehetséges, hogy már konfigurálta az adatok jelentését egy meglévő Log Analytics-munkaterületre.  Ha a munkaterület az egyik támogatott régióban található, akkor a Azure Monitor for VMst engedélyezheti a meglévő munkaterületen.  Ha a már használt munkaterület nem a támogatott régiókban található, akkor a Azure Monitor for VMs jelenleg nem fog tudni bejelentkezni.  Aktívan dolgozunk a további régiók támogatásán.
 
 >[!NOTE]
->A munkaterület-e kíván üzembe helyezni őket az Azure Monitor-beli virtuális gépek összes virtuális gépet, amely a munkaterületnek érintő teljesítményszámlálóit konfigurálja azt. A teljesítményszámlálók konfigurációjától a munkaterületre vonatkozó további információért tekintse meg a [dokumentáció](../../azure-monitor/platform/data-sources-performance-counters.md). A virtuális gépek az Azure Monitor konfigurált számlálók kapcsolatos információkért tekintse meg a [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md#performance-counters-enabled) cikk.  
+>A munkaterülethez tartozó összes virtuális gépet érintő teljesítményszámlálókat a munkaterülethez konfiguráljuk, függetlenül attól, hogy Azure Monitor for VMsbe kívánja-e bevezetni őket. A munkaterülethez tartozó teljesítményszámlálók konfigurálásával kapcsolatos további információkért tekintse meg a [dokumentációt](../../azure-monitor/platform/data-sources-performance-counters.md). A Azure Monitor for VMshoz konfigurált számlálókkal kapcsolatos információkért tekintse meg a [Azure monitor for VMS engedélyezése](vminsights-enable-overview.md#performance-counters-enabled) című cikket.  
 
-## <a name="why-did-my-vm-fail-to-onboard"></a>A virtuális gépem miért volt sikertelen üzembe helyezni?
-Ha az Azure Portalon egy Azure virtuális Gépen végzett előkészítési műveletekhez, a következő lépések történnek:
+## <a name="why-did-my-vm-fail-to-onboard"></a>Miért nem sikerült bejelentkezni a virtuális gépre?
+Amikor Azure-beli virtuális gépet telepít a Azure Portalból, a következő lépések történnek:
 
-* Alapértelmezett Log Analytics-munkaterület jön létre, ha, amely lehetőséget választotta.
-* A teljesítményszámlálók kijelölt munkaterülethez van konfigurálva. Ha ezt a lépést nem sikerül, megfigyelheti, hogy adatokat a teljesítmény-diagramok és táblázatok némelyike nem jelennek meg a virtuális gép előkészítése. A dokumentált PowerShell-parancsfájl futtatásával is megoldásához [Itt](vminsights-enable-at-scale-powershell.md#enable-performance-counters).
-* A Log Analytics-ügynök telepítve van egy VM-bővítmény használata az Azure virtuális gépek esetén szükség rá.  
-* A virtuális gépek térkép függőségi ügynök az Azure Monitor-bővítmény használata Azure virtuális gépeken telepítve van, ha szükség rá.  
-* Az állapotfigyelő szolgáltatást támogató Azure figyelő-összetevőkkel vannak konfigurálva, ha szükséges, és a virtuális gép van beállítva a jelentés egészségügyi adatok.
+* Ha ez a beállítás be van jelölve, egy alapértelmezett Log Analytics munkaterület jön létre.
+* A teljesítményszámlálók konfigurálva vannak a kiválasztott munkaterülethez. Ha ez a lépés meghiúsul, láthatja, hogy a teljesítmény-diagramok és a táblák némelyike nem jeleníti meg a bekészített virtuális gép adatait. Ezt az [itt](vminsights-enable-at-scale-powershell.md#enable-performance-counters)leírt PowerShell-szkript futtatásával javíthatja.
+* A Log Analytics ügynök virtuálisgép-bővítmény használatával települ az Azure-beli virtuális gépekre, ha azt meg kell határozni.  
+* A Azure Monitor for VMs Map-függőségi ügynök az Azure-beli virtuális gépeken bővítmény használatával van telepítve, ha azt meg kell határozni.  
+* Azure Monitor az állapotfigyelő funkciót támogató összetevők konfigurálása szükséges, és a virtuális gép az állapotadatok jelentésére van konfigurálva.
 
-A előkészítése során ellenőrizzük állapotát az egyes való visszatéréshez értesítési állapotot, a portálon a fentiek közül. A munkaterület és az ügynök telepítésének konfigurációja általában 5-10 percet vesz igénybe. A portálon figyelési és adatok megtekintése egy további 5-10 percet vehet igénybe.  
+A bevezetési folyamat során a fent ismertetett állapotot vizsgáljuk, hogy az értesítési állapotot a portálon vissza lehessen adni. A munkaterület és az ügynök telepítésének konfigurálása általában 5 – 10 percet vesz igénybe. A figyelési és egészségvédelmi információk megtekintése a portálon további 5 – 10 percet vesz igénybe.  
 
-Ha bevezetési kezdeményezett, és tekintse meg a virtuális Gépet kell előkészíteni elérhetőségére, lehetővé teszi a virtuális gép a folyamat akár 30 percig. 
+Ha kezdeményezte a bevezetést, és megtekinti, hogy a virtuális gépet be kell-e állítani, akkor akár 30 percet is igénybe vehet, amíg a virtuális gép elvégezheti a folyamatot. 
 
-## <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>I csak engedélyezve van az Azure Monitor-beli virtuális gépek, miért jelenik meg az állapotfigyelő szolgáltatás által figyelt valamennyi virtuális gépek?
-Az állapotfigyelő szolgáltatás engedélyezve van, akkor is, ha a művelet egyetlen virtuális gép indításakor a Log Analytics-munkaterülethez kapcsolódó összes virtuális gép.
+## <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Csak a Azure Monitor for VMs Engedélyeztem, Miért látok minden virtuális gépet az állapotfigyelő szolgáltatás által figyelt állapottal?
+Az állapotfigyelő szolgáltatás minden olyan virtuális gép esetében engedélyezve van, amely a Log Analytics munkaterülethez van csatlakoztatva, még akkor is, ha a művelet egyetlen virtuális gépre van kezdeményezve.
 
-## <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Módosíthatja az ütemezését, mikor állapotára vonatkozó feltételek kiértékeli a feltételt?
-Nem, az adott időszakban és gyakoriságát tartalmazza állapotára vonatkozó feltételek nem módosítható ebben a kiadásban. 
+## <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Módosíthatom azt az időpontot, amikor az állapot feltételei kiértékelik a feltételt?
+Nem, az időtartam és az állapot gyakorisága nem módosítható ezzel a kiadással. 
 
-## <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Letilthatja a állapotára vonatkozó feltételek figyelésére nincs szükség egy adott feltételt?
-Ebben a kiadásban nem lehet letiltani a állapotára vonatkozó feltételek.
+## <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Letilthatom az állapotra vonatkozó feltételeket olyan feltételnél, amelyet nem kell figyelni?
+Ebben a kiadásban nem lehet letiltani az állapotra vonatkozó feltételeket.
 
-## <a name="are-the-health-alert-severities-configurable"></a>Az egészségügyi konfigurálható a riasztás súlyossági vannak?  
-Riasztás súlyossága állapota nem módosítható, akkor is csak engedélyezhető vagy letiltható. Néhány a riasztás súlyossági frissítése emellett az állapotára vonatkozó feltételek állapota alapján. 
+## <a name="are-the-health-alert-severities-configurable"></a>Konfigurálható az állapot-riasztási tartomány?  
+Az állapot riasztásának súlyossága nem módosítható, csak engedélyezhető vagy letiltható. Emellett néhány riasztási tagság az állapot feltételei alapján frissül. 
 
-## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Ha e egy adott állapotára vonatkozó feltételek újrakonfigurálnia, azt hatóköre egy adott példányt?  
-Egészségügyi feltétel példányok beállítás módosítása esetén az összes állapotfigyelő feltételek példányok az Azure virtuális gépen azonos típusú módosítják. Például ha a küszöb a lemez szabad tárolóhely állapotának feltétel példány megfelelő logikai lemez C: módosítanak, ezt a küszöbértéket vonatkozik az összes többi logikai lemez, amely felderítésének és figyelésének a virtuális gép ugyanazon a.
+## <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Ha újrakonfiguráltam egy adott állapotra vonatkozó feltétel beállításait, hatóköre alkalmazható egy adott példányra?  
+Ha módosítja az állapot-feltétel példányának bármelyik beállítását, akkor az Azure-beli virtuális gépen található azonos típusú összes állapotra vonatkozó feltétel módosítva lesz. Ha például a lemez szabad területének állapotára vonatkozó feltétel példánya a C logikai lemeznek felel meg, akkor ez a küszöbérték az azonos virtuális géphez felderített és felügyelt összes többi logikai lemezre vonatkozik.
 
-## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Az állapotfigyelő szolgáltatás logikai processzorral és magok figyelése?
-Nem, az egyes processzor és a logikai processzor szint állapotára vonatkozó feltételek nem tartalmazza a Windows, hatékonyan a CPU nyomás az Azure virtuális gép számára elérhető logikai CPU teljes száma alapján kiértékelheti, hogy alapértelmezés szerint csak a teljes CPU-kihasználtság figyel. 
+## <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Figyeli az állapotfigyelő szolgáltatás a logikai processzorokat és a magokat?
+Nem, az egyes processzorok és a logikai processzorok szintjének állapotára vonatkozó feltételek nem szerepelnek a Windowsban, a rendszer alapértelmezés szerint csak a teljes CPU-kihasználtságot figyeli, hogy az Azure-beli virtuális gép számára elérhető logikai processzorok száma alapján hatékonyan kiértékelje a processzor terhelését. 
 
-## <a name="are-all-health-criteria-thresholds-configurable"></a>Összes állapotfigyelő konfigurálható feltételek küszöbértékek vannak?  
-Küszöbértékek állapotára vonatkozó feltételek, amelyek Windows virtuális gép cél nem módosítható, mert a saját állapotokat vannak beállítva, hogy *futó* vagy *elérhető*. Az állapot a lekérdezésénél a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), megjeleníti a *ÖsszehasonlítóOperátor* értékét **LessThan** vagy **GreaterThan** együtt egy *küszöbérték* értékét **4** a szolgáltatás vagy az entitás ha:
-   - DNS-ügyfél szolgáltatásának állapota – szolgáltatás nem fut. 
-   - DHCP-ügyfél szolgáltatásának állapota – szolgáltatás nem fut. 
-   - RPC szolgáltatás állapota – szolgáltatás nem fut. 
-   - Windows tűzfal szolgáltatásának állapota – szolgáltatás nem fut.
-   - Windows Eseménynapló szolgáltatás állapota – szolgáltatás nem fut. 
-   - Kiszolgálói szolgáltatás állapota – szolgáltatás nem fut. 
-   - Windows távoli felügyeleti szolgáltatásának állapota – a szolgáltatás nem fut. 
-   - Fájlrendszer hibája vagy -sérülés – logikai lemez nem érhető el.
+## <a name="are-all-health-criteria-thresholds-configurable"></a>Az összes állapotra vonatkozó feltétel küszöbértéke konfigurálható?  
+A Windows rendszerű virtuális gépeket megcélozó állapotra vonatkozó feltételek küszöbértékei nem módosíthatók, mert az állapotuk a *Futtatás* vagy az *elérhető*állapotra van állítva. Amikor lekérdezi az állapotot a [munkaterhelés-figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)-ból, a **LessThan** vagy a **GreaterThan** *ÖsszehasonlítóOperátor* értékét a szolgáltatás vagy az entitás esetében a **4-es** *értékkel* jeleníti meg, ha:
+   - A DNS-ügyfél Service Health – a szolgáltatás nem fut. 
+   - DHCP-ügyfélszolgáltatás állapota – a szolgáltatás nem fut. 
+   - RPC Service Health – a szolgáltatás nem fut. 
+   - A Windows tűzfal szolgáltatás állapota – a szolgáltatás nem fut.
+   - A Windows Eseménynapló szolgáltatás állapota – a szolgáltatás nem fut. 
+   - Kiszolgáló szolgáltatás állapota – a szolgáltatás nem fut. 
+   - A Windows távfelügyeleti szolgáltatás állapota – a szolgáltatás nem fut. 
+   - Fájlrendszer hibája vagy sérülése – a logikai lemez nem érhető el.
 
-A következő Linux állapotára vonatkozó feltételek küszöbértékek nem módosítható, azok állapotát már be van állítva mert *igaz*. Állapotát jeleníti meg a *ÖsszehasonlítóOperátor* értékkel **LessThan** és *küszöbérték* értékét **1** a lekérdezéskor a Számítási feladatok figyelés API az entitás a környezettől függően:
-   - Logikai lemez állapota – a logikai lemez nem online / érhető el
-   - Lemez állapota – a lemez nem online / érhető el
-   - Hálózati Adapter állapotát - hálózati adapter le van tiltva.
+A következő linuxos állapotra vonatkozó feltételek küszöbértékei nem módosíthatók, mert az állapotuk már *igaz*értékre van állítva. Az állapot a **LessThan** és az **1** . *küszöbértéket* tartalmazó *ÖsszehasonlítóOperátor* jeleníti meg, amikor a rendszer az entitáshoz tartozó munkaterhelés-figyelési API-ból kérdezi le, a környezettől függően:
+   - Logikai lemez állapota – a logikai lemez nem online/elérhető
+   - Lemez állapota – a lemez nem online állapotú/elérhető
+   - Hálózati adapter állapota – a hálózati adapter le van tiltva
 
-## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hogyan módosítani az állapotfigyelő szolgáltatás a riasztások?
-Riasztási szabályok esetében minden egyes állapotfigyelő feltétel megadott nem jelennek meg az Azure Portalon. Engedélyezheti vagy letilthatja a Szolgáltatásállapot-riasztás kizárólag a szabály a [számítási feladatok a figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Emellett nem lehet hozzárendelni egy [Azure Monitor műveletcsoport](../../azure-monitor/platform/action-groups.md) health-riasztások az Azure Portalon. Az értesítési beállítás API segítségével csak műveletcsoport, amint egy szolgáltatásállapot-riasztás aktiválódik aktiválását konfigurálhatja. Jelenleg a virtuális gépek elleni a Műveletcsoportok rendelhet, hogy az összes *állapotriasztások* ugyanazt a Műveletcsoportok ellen a virtuális gép eseményindító aktiválva. Ellentétben a hagyományos Azure-riasztások, és nincs külön művelet minden szolgáltatásállapot-riasztási szabály a csoport. Emellett a csak adja meg az e-mailben vagy SMS-értesítések konfigurált Műveletcsoportok health-riasztások előállítása esetén támogatottak. 
+## <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Hogyan módosítja a Health szolgáltatásban található riasztásokat?
+Az egyes állapot-kritériumokhoz definiált riasztási szabályok nem jelennek meg a Azure Portal. Csak a [munkaterhelés-figyelő API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)-ban engedélyezheti vagy tilthatja le az állapot riasztási szabályait. A Azure Portalban nem rendelhet [Azure monitor műveleti csoportot](../../azure-monitor/platform/action-groups.md) az állapottal kapcsolatos riasztásokhoz. Az értesítési beállítások API-val csak akkor állítható be, ha egy adott állapotra figyelmeztető riasztást indít el. Jelenleg a virtuális gépekhez hozzárendelheti a műveleti csoportokat, hogy az összes, a virtuális gépen indított *állapottal kapcsolatos riasztás* ugyanazzal a műveleti csoporttal legyen elindítva. A hagyományos Azure-riasztásokkal ellentétben az egyes állapot-riasztási szabályokhoz nem tartoznak külön műveleti csoportok. Emellett csak az e-mailek vagy SMS-értesítések küldésére konfigurált műveleti csoportok támogatottak az állapot-riasztások aktiválásakor. 
 
-## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Virtuális gép nem látható a teljesítménydiagramok néhány vagy minden olyan adatok
-Ha a teljesítményadatokat a lemez táblában vagy a teljesítmény diagramok némelyike nem jelenik meg, akkor a teljesítményszámlálók nem konfigurálható a munkaterületen. Futtassa a következő [PowerShell-parancsprogram](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
+## <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Nem látok olyan információt, amely a virtuális gép teljesítmény-diagramjaiban található
+Ha nem látja a teljesítményadatokat a lemez táblában vagy egyes teljesítmény-diagramoknál, akkor előfordulhat, hogy a teljesítményszámlálók nem konfigurálhatók a munkaterületen. A megoldáshoz futtassa a következő [PowerShell-szkriptet](vminsights-enable-at-scale-powershell.md#enable-with-powershell).
 
-## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor szolgáltatás virtuális gépek térkép a Service Map?
-Virtuális gépek térkép funkció az Azure Monitor Service Map alapul, de rendelkezik a következő eltérésekkel:
+## <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Miben különbözik az Azure Monitor for VMs Map funkció a Service Maptól?
+Az Azure Monitor for VMs-leképezési funkció Service Mapon alapul, de a következő különbségek vannak:
 
-* A térképnézet elérhetők a virtuális gép paneljéről és az Azure Monitor alatt az Azure Monitor-beli virtuális gépek.
-* A kapcsolatok a térképen kattintható és kapcsolati metrika adatainak megjelenítése a kiszolgálóoldali panelen a kiválasztott kapcsolathoz tartozó.
-* Van egy új API-t, amellyel az jobb támogatása érdekében a maps összetettebb térképek létrehozása.
-* Figyelt virtuális gépek mostantól szerepelnek az ügyfél csoport csomópontot, és a fánkdiagramot az időarány, amíg a figyelt vs nem monitorozott virtuális gépek megjeleníti a csoportban.  Is használható, ha ki van bontva, a csoport a gépek szűréséhez.
-* Figyelt virtuális gépek mostantól beletartoznak a port csoport csomópontok, és a fánkdiagramot az időarány, amíg nem figyelt gépeket figyelt vs megjeleníti a csoportban.  Is használható, ha ki van bontva, a csoport a gépek szűréséhez.
-* A térkép stílus egységesebb Alkalmazástérkép az Application insightsból is frissítve lett.
-* A kiszolgálóoldali panelek frissítve lett-e, és nem rendelkezik a teljes körű integráció a Szolgáltatástérkép - frissítéskezelés, változáskövetés, biztonsági és ügyfélszolgálat is támogatott. 
-* Leképezni a csoportok és számítógépek kiválasztására vonatkozó beállítás frissítve lett, és már támogatja az előfizetések, erőforráscsoportok, Azure-beli virtuálisgép-méretezési csoportok és a Cloud services.
-* Az Azure Monitor szolgáltatás virtuális gépek térkép nem hozhat létre új Service Map gépcsoportok.  
+* A Térkép nézet a virtuális gép paneljéről, illetve a Azure Monitor alatt Azure Monitor for VMs érhető el.
+* A térképen lévő kapcsolatok most már rákattintanak, és megjelenítik a kapcsolat metrikájának adatait a kijelölt kapcsolat oldalsó paneljén.
+* Létezik egy új API, amely a térképek létrehozásához használható összetettebb térképek jobb támogatásához.
+* A figyelt virtuális gépek már szerepelnek az ügyféloldali csoport csomópontban, és a fánk diagramon látható a csoportban lévő figyelt vs nem figyelt virtuális gépek aránya.  A csoport kibontásakor a számítógépek listájának szűrésére is használható.
+* A figyelt virtuális gépek már szerepelnek a kiszolgáló portjának csomópontjaiban, és a fánk diagramon a figyelt és a nem figyelt gépek aránya látható a csoportban.  A csoport kibontásakor a számítógépek listájának szűrésére is használható.
+* A Térkép stílusa úgy lett frissítve, hogy jobban konzisztens legyen az Application-adatokból származó app Map szolgáltatással.
+* Az oldalsó panelek frissítve lettek, és nem rendelkeznek a Service Map-Update Management, a Change Tracking, a Security és a Service Desk által támogatott teljes integrációs készlettel. 
+* A csoportok és gépek leképezésre való kiválasztásának lehetősége frissítve lett, és mostantól támogatja az előfizetéseket, az erőforráscsoportok, az Azure virtuálisgép-méretezési csoportokat és a Cloud Services szolgáltatást.
+* Az új Service Map számítógépcsoportok nem hozhatók létre a Azure Monitor for VMs Map szolgáltatásban.  
 
-## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért jelennek meg saját teljesítménydiagramok pontozott vonal?
-Ez akkor fordulhat elő, a több okból is.  Azokban az esetekben, ahol az adatok gyűjtésének eseményáramlási kimaradást azt jelzik a pontozott, a sorokat.  Ha módosította a teljesítményszámlálókkal, engedélyezve van az adatok mintavételi gyakoriság (az alapértelmezett beállítás a adatgyűjtéshez 60 másodpercenként), pontozott vonal a diagramon látható, ha úgy dönt, hogy a diagram keskeny időtartományt, és a mintavételi gyakoriság kevesebb, mint a gyűjtő mérete a diagramon használt (például a mintavételi gyakoriság 10 percenként pedig a diagramon az egyes gyűjtők 5 perc).  Megtekintéséhez szélesebb körű időtartomány kiválasztása eredményezhetik a diagram sorokat pontok helyett a folytonos vonal ebben az esetben jelennek meg.
+## <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért mutatnak pontozott vonalakat a teljesítmény-diagramok?
+Ez néhány ok miatt fordulhat elő.  Abban az esetben, ha az adatgyűjtésben hézag van, a vonalakat pontozott értékre ábrázoljuk.  Ha módosította az adatok mintavételi gyakoriságát az engedélyezett teljesítményszámlálók esetében (az alapértelmezett beállítás az adatok összegyűjtése 60 másodpercenként), akkor a diagramon szaggatott vonalakat láthat, ha a diagramhoz a keskeny időtartományt választja, és a mintavételi gyakoriság kisebb, mint a diagramon használt gyűjtő mérete (például a mintavételezési gyakoriság 10 percenként, a diagram minden gyűjtője pedig 5 perc).  Ha szélesebb időtartományt szeretne megtekinteni, akkor a diagram sorai nem pontokként, hanem folytonos vonalakként jelennek meg.
 
-## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Csoportok támogatottak az Azure Monitor szolgáltatással a virtuális gépek?
-Igen, a csoportok alapján az előfizetés, erőforráscsoport, a megjelenítéséhez a virtuális gépekről gyűjtött információkat függőségi ügynök telepítése után virtuálisgép-méretezési csoportokban, és felhőszolgáltatásokat fejleszthet.  Ha már használja a Service Map és gépcsoportok hozott létre, ezeket is megjelenik.  Ha a munkaterület megtekintésekor hozott számítógépcsoportok is megjelennek a csoportok szűrőt. 
+## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Támogatottak-e a csoportok Azure Monitor for VMs?
+Igen, a függőségi ügynök telepítése után adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési csoportok és a Cloud Services alapján.  Ha már használta a Service Map és létrehozott számítógép-csoportokat, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportok szűrőben, ha létrehozta őket a megtekintett munkaterülethez. 
 
-## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekinthető meg a részleteket az Előfeltételek a 95. percentilis vonal aggregált teljesítménydiagramok?
-Alapértelmezés szerint a lista rendezett mutatni, a virtuális gépek, amelyek esetén a 95. percentilis a kiválasztott metrika a legmagasabb érték kivételével a rendelkezésre álló memória diagram, amely a gépek az 5. percentilis legalacsonyabb értékét jeleníti meg.  A diagramra kattintva megnyílik a **felső N lista** a megfelelő a kiválasztott metrika tartalmazó nézetet.
+## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekintse meg a 95. percentilis-sor az összesített teljesítményű diagramokon való vezetésének részleteit?
+Alapértelmezés szerint a lista úgy van rendezve, hogy megjelenítse azokat a virtuális gépeket, amelyek a 95. percentilis legmagasabb értékkel rendelkeznek a kiválasztott metrika esetében, kivéve a rendelkezésre álló memória diagramot, amely az 5. percentilis legalacsonyabb értékkel rendelkező gépeket jeleníti meg.  A diagramra kattintva megnyílik a **legfelső N listanézet** nézet a megfelelő metrika kiválasztásával.
 
-## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan a térkép szolgáltatás kezeli ismétlődő IP-címek különböző virtuális hálózatok és alhálózatok között?
-Ha meg vannak duplikálásához IP-címtartományok vagy virtuális gépek vagy az Azure-beli virtuálisgép-méretezési csoportokban alhálózatok és virtuális hálózatok, virtuális gépeket a térképen helytelen információk megjelenítése az Azure Monitor okozhat. Ez egy ismert probléma az, és vizsgálja az beállításokat, amelyekkel javíthatja a felhasználói élményt.
+## <a name="how-does-the-map-feature-handle-duplicate-ips-across-different-vnets-and-subnets"></a>Hogyan kezeli a Map szolgáltatás a duplikált IP-címeket különböző virtuális hálózatok és alhálózatokon?
+Ha az IP-tartományokat virtuális gépek vagy Azure virtuálisgép-méretezési csoportok között duplikálja az alhálózatok és a virtuális hálózatok között, akkor Azure Monitor for VMs leképezés helytelen információk megjelenítésére vezethet. Ez egy ismert probléma, amely a tapasztalatok fejlesztését vizsgálja.
 
-## <a name="does-map-feature-support-ipv6"></a>A szolgáltatás támogatja az IPv6 nem leképezés?
-Térkép szolgáltatás jelenleg csak támogatja IPv4 és IPv6-támogatás vizsgálja. IPv4, IPv6 belül bújtatott is támogatja.
+## <a name="does-map-feature-support-ipv6"></a>Támogatja az IPv6 a Map funkciót?
+A Térkép funkció jelenleg csak az IPv4-t támogatja, és az IPv6 támogatását vizsgáljuk. Az IPv6-on belül bújtatott IPv4-t is támogatja.
 
-## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Ha egy erőforráscsoportot, vagy más nagy csoport esetén egy térkép betölteni a térkép is nehézkes megtekintése
-Fejlesztéseket hajtottunk végre térképhez nagy és összetett konfigurációk kezelésére, miközben tisztában vagyunk vele egy térkép is sok csomópontokat, a kapcsolatok és a csomópont fürtként működik.  Kötelességünknek tekintjük, folyamatos támogatás bővítése érdekében növelése érdekében.   
+## <a name="when-i-load-a-map-for-a-resource-group-or-other-large-group-the-map-is-difficult-to-view"></a>Egy erőforráscsoport vagy más nagyméretű csoport térképének betöltésekor nehéz megtekinteni a térképet
+Habár a nagy és összetett konfigurációk kezelésére tettük elérhetővé a térképet, rájövünk, hogy a térképen számos csomópont, kapcsolat és csomópont működik fürtként.  Elkötelezettek vagyunk a skálázhatóság növelésének támogatásával.   
 
-## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért nem a hálózati diagram a Teljesítmény lapon máshogy néznek ki, mint a hálózati diagram az Azure virtuális gépek – Áttekintés oldalon?
+## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Miért különbözik a hálózati diagram a teljesítmény lapon, mint a hálózati diagram az Azure-beli virtuális gépek áttekintő oldalán?
 
-Az Áttekintés oldal egy Azure virtuális gép a gazdagép mérési tevékenység a Vendég virtuális Gépen alapuló diagramot jelenít meg.  A hálózati diagram az Azure virtuális gépek áttekintése a hálózati forgalom, számlázunk csak megjeleníti.  Ez nem tartalmazza a virtuális hálózatok közötti forgalmat.  Az adatok és a virtuális gépek az Azure Monitor látható diagramokat adatait a Vendég virtuális Gépen alapul, és a hálózati diagram, amely a virtuális Gépre, beleértve a virtuális hálózatok közötti kimenő és bejövő összes TCP/IP-forgalmat jeleníti meg.
+Az Azure-beli virtuális gépek áttekintő lapja diagramokat jelenít meg a vendég virtuális gép tevékenységének mérése alapján.  Az Azure-beli virtuális gépek áttekintő hálózati diagramja csak a számlázásra kerülő hálózati forgalmat jeleníti meg.  Ez nem tartalmazza a vnet közötti forgalmat.  A Azure Monitor for VMs számára megjelenített adatok és diagramok a vendég virtuális gépről származó adatokon alapulnak, és a hálózati diagram megjeleníti a virtuális gép számára bejövő és kimenő összes TCP/IP-forgalmat, beleértve a vnet is.
 
-## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérik a válaszidő VMConnection tárolja, és a kapcsolat panelen és a munkafüzetekben megjelenő adatokat?
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Hogyan mérjük a válaszidő a VMConnection tárolt és a kapcsolatok paneljén és a munkafüzetek között?
 
-Közelítés elképesztően. Mivel nem alakítsa ki az alkalmazás kódját, hogy nem igazán tudjuk, amikor a kérelem kezdődik, és a válasz érkezésekor. Ehelyett azt vizsgálja meg kapcsolaton keresztül küldött adatok, majd vissza a kapcsolat érkező adatokat. Az ügynök nyomon követi az alábbi küld és fogad és párosítsa őket próbál: sorozata küld, sorozatát követ, kap egy kérés-válasz párosai kerül értelmezésre. Között ezek a műveletek időzítését, a válasz ideje. Ez magában foglalja a késés és a kiszolgáló feldolgozási ideje.
+A válaszidő egy közelítés. Mivel nem használjuk az alkalmazás kódját, nem igazán tudjuk, hogy mikor kezdődik a kérelem, és mikor érkezik a válasz. Ehelyett megfigyeljük, hogy a rendszer egy kapcsolatban küldi az adatküldést, majd az adott kapcsolatban visszaérkező adatforrásokat. Az ügynök nyomon követi ezeket a küldési és fogadási kísérleteket, és párosítja őket: az elküldött sorok sorozata, amelyet a fogadások sorozata, a kérelem/válasz pároknak kell értelmezni. A műveletek közötti időzítés a válaszidő. Ez magában foglalja a hálózati késést és a kiszolgáló feldolgozási idejét is.
 
-E közelítés jól működik, amelyek a kérelem-válasz alapú protokollok: egyetlen kérelem kerül ki a kapcsolat, és egyetlen válasz érkezik. Ez a helyzet HTTP (S) (nélkül az adatcsatornás feldolgozás), de nem teljesített más protokollokat.
+Ez a közelítés a kérelmek/válaszok alapjául szolgáló protokollok esetében jól működik: egyetlen kérelem érkezik a hálózatra, és egyetlen válasz érkezik. Ez a HTTP (S) esetén (csővezeték nélkül), de más protokollok esetében nem teljesül.
 
-## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>A korlátozás, ha a Log Analytics ingyenes díjszabással vagyok?
-Ha már konfigurálta az Azure Monitor egy Log Analytics munkaterület használatával a *ingyenes* tarifacsomagban van, az Azure Monitor tartozó virtuális gépek térkép funkció csak öt csatlakoztatott gépek támogatni fogja a munkaterülethez csatlakozik. Ha rendelkezik egy ingyenes munkaterülethez csatlakoztatott öt virtuális gépek, válassza le a virtuális gépek közül, és később fogja összekapcsolni egy új virtuális Gépet, az új virtuális gép nem felügyelt és a térkép oldalon megjelennek.  
+## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>A korlátozások vonatkoznak a Log Analytics ingyenes díjszabási csomagra?
+Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log Analytics munkaterülettel, Azure monitor for VMS a Térkép funkció csak a munkaterülethez csatlakozó öt csatlakoztatott gépet fogja támogatni. Ha az ingyenes munkaterülethez öt virtuális gép csatlakozik, az egyik virtuális gép leválasztását követően később egy új virtuális gépet csatlakoztat, az új virtuális gép nem lesz figyelve, és a Térkép oldalon jelenik meg.  
 
-Ez a feltétel alapján meg kell adnia a a **próbálja ki most** beállítást, nyissa meg a virtuális Gépet, majd válassza **Insights (előzetes verzió)** a bal oldali panelen, még akkor is, miután a virtuális gépen már telepítették.  Azonban nem kéri a beállításokkal, akkor általában fordulhat elő, ha a virtuális gép nem lett előkészítve az Azure Monitor-beli virtuális gépek. 
+Ebben az esetben a rendszer megkéri a **kipróbálás most** lehetőséget, amikor megnyitja a virtuális gépet, és kiválasztja az adatok **(előzetes verzió)** elemet a bal oldali ablaktáblán, még azután is, hogy már telepítette a virtuális gépre.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
-## <a name="next-steps"></a>További lépések
-Felülvizsgálat [engedélyezése az Azure Monitor-beli virtuális gépek](vminsights-enable-overview.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.
+## <a name="next-steps"></a>Következő lépések
+A virtuális gépek figyelésének engedélyezéséhez tekintse át a [Azure monitor for VMS engedélyezése](vminsights-enable-overview.md) a követelmények és módszerek megismeréséhez című témakört.

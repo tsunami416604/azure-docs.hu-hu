@@ -1,19 +1,18 @@
 ---
 title: Intelligens csoportok
 description: Az intelligens csoportok olyan riasztások összesítései, amelyek segítenek csökkenteni a riasztási zajt
-author: anantr
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/15/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 08657163eb170b8d3185ce15bd724f1f55bbe2bd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 05/15/2018
+ms.openlocfilehash: 83ea68ad92a6c78ccf56483e1f0c2cbcbcd7d22a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702858"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552348"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
 A riasztások kezelése során felmerülő gyakori kihívás, hogy megtudja, mi a helyzet, ha az intelligens csoportok a probléma megoldására szolgálnak.  
@@ -25,15 +24,15 @@ Az algoritmus jelenleg csak ugyanazon figyelő szolgáltatásból származó ria
 Megtekintheti az intelligens csoportok részleteit, és a riasztásokhoz hasonlóan állíthatja be az állapotot is. Mindegyik riasztás egy és csak egy intelligens csoport tagja. 
 
 ## <a name="smart-group-state"></a>Intelligens csoport állapota
-Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a nyugtázott vagy a **lezárt**értékre is.
+Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a **nyugtázott** vagy a **lezárt**értékre is.
 
 A következő intelligens csoportos állapotok támogatottak.
 
-| State | Leírás |
+| Állami | Leírás |
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nem lett ellenőrizve. |
-| Arra vonatkozik | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
-| Lezárva | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Elismerte | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
+| zárt | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 [Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](https://aka.ms/managing-alert-smart-group-states)
 
@@ -49,16 +48,16 @@ Ha intelligens csoportot választ, az intelligens csoport részletei lap jelenik
 
 Az intelligens csoport részleteit tartalmazó oldal a következő részekből áll.
 
-| `Section` | Leírás |
+| Section | Leírás |
 |:---|:---|
-| Riasztások | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
+| Értesítések | Felsorolja az intelligens csoportban található egyes riasztásokat. Válasszon ki egy riasztást a riasztás részletei lap megnyitásához. |
 | Előzmények | Felsorolja az intelligens csoport által végrehajtott összes műveletet, valamint a rajta végrehajtott módosításokat. Ez jelenleg csak az állapot változásaira és a riasztások tagságának változásaira korlátozódik. |
 
 ## <a name="smart-group-taxonomy"></a>Intelligens csoport besorolása
 
 Az intelligens csoport neve az első riasztás neve. Intelligens csoportok nem hozhatók létre és nem nevezhetők át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
 - [A riasztás és az intelligens csoport állapotának módosítása](https://aka.ms/managing-alert-smart-group-states)

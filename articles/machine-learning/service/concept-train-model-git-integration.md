@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 10/11/2019
-ms.openlocfilehash: db96663ef3d901546e1b32362a9eb9c9ae09dd21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1ef9f3f847cb74aca0cae66dc8354838d28a645f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377511"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553646"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Git-integráció a Azure Machine Learning
 
@@ -26,15 +26,15 @@ Mivel Azure Machine Learning nyomon követi a helyi git-tárház adatait, nem k�
 
 Amikor beküld egy képzést a Python SDK-ból vagy Machine Learning CLI-ből, a modell betanításához szükséges fájlok fel lesznek töltve a munkaterületre. Ha a `git` parancs elérhető a fejlesztői környezetben, a feltöltési folyamat segítségével ellenőrizze, hogy a fájlokat git-tárházban tárolja-e a rendszer. Ha igen, akkor a git-tárházból származó információk is fel vannak töltve a betanítási Futtatás részeként. Ezeket az adatokat a következő tulajdonságok tárolják a betanítási futtatáshoz:
 
-| Tulajdonság | Leírás |
-| ----- | ----- |
-| `azureml.git.repository_uri` | Az a URI, amelyből a tárház klónozott volt. |
-| `mlflow.source.git.repoURL` | Az a URI, amelyből a tárház klónozott volt. |
-| `azureml.git.branch` | Az aktív ág a Futtatás elküldését követően. |
-| `mlflow.source.git.branch` | Az aktív ág a Futtatás elküldését követően. |
-| `azureml.git.commit` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
-| `mlflow.source.git.commit` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
-| `azureml.git.dirty` | @no__t – 0, ha a véglegesítés inkonzisztens; Ellenkező esetben `false`. |
+| Tulajdonság | Az érték beolvasásához használt git-parancs | Leírás |
+| ----- | ----- | ----- |
+| `azureml.git.repository_uri` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
+| `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Az a URI, amelyből a tárház klónozott volt. |
+| `azureml.git.branch` | `git symbolic-ref --short HEAD` | Az aktív ág a Futtatás elküldését követően. |
+| `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Az aktív ág a Futtatás elküldését követően. |
+| `azureml.git.commit` | `git rev-parse HEAD` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
+| `mlflow.source.git.commit` | `git rev-parse HEAD` | A futtatáshoz benyújtott kód véglegesítő kivonata. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, ha a ág/véglegesítés piszkos; Ellenkező esetben `false`. |
 
 Ezeket az információkat a rendszer a becsléseket, a gépi tanulási folyamatot vagy a parancsfájlok futtatását használó futtatásokhoz továbbítja.
 
@@ -49,7 +49,9 @@ A git-adatokat egy tanítási Futtatás tulajdonságai tárolják. Ezeket az inf
 1. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet.
 1. Válassza a __kísérletek__lehetőséget, majd válassza ki az egyik kísérletet.
 1. Válassza ki a __futtatások száma__ oszlop egyik futtatását.
-1. Válassza a __naplók__lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a __### @ no__t-2azure__kezdetű hivatkozást.
+1. Válassza a __naplók__lehetőséget, majd bontsa ki a __naplók__ és a __azureml__ bejegyzéseket. Válassza ki a __### \_azure__kezdetű hivatkozást.
+
+    ![A # # #_azure bejegyzés a portálon](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
 A naplózott információ a következő JSON-hoz hasonló szöveget tartalmaz:
 

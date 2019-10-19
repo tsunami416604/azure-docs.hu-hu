@@ -1,56 +1,50 @@
 ---
-title: Felügyeleti megoldások nézetekben |} A Microsoft Docs
-description: 'Felügyeleti megoldások általában egy vagy több nézetek segítségével ábrázolhatja adatait tartalmazza.  Ez a cikk ismerteti, hogyan lehet exportálni az adatforrásnézet-tervezőből által létrehozott nézetet és a egy megoldás. '
-services: monitoring
-documentationcenter: ''
-author: bwren
-manager: jwhit
-editor: tysonn
-ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
+title: Nézetek a felügyeleti megoldásokban | Microsoft Docs
+description: 'A felügyeleti megoldások általában egy vagy több nézetet is tartalmaznak az adatmegjelenítéshez.  Ez a cikk azt ismerteti, hogyan exportálhatók a View Designer által létrehozott nézetek, és hogyan vehetők fel felügyeleti megoldásba. '
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/16/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/16/2018
+ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596633"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553895"
 ---
-# <a name="views-in-management-solutions-preview"></a>Nézetek az eszközkezelési megoldások (előzetes verzió)
+# <a name="views-in-management-solutions-preview"></a>Nézetek a felügyeleti megoldásokban (előzetes verzió)
 > [!NOTE]
-> Ez az előzetes dokumentum, jelenleg előzetes verzióban elérhető kezelési megoldások létrehozásához. Semmilyen sémát, az alábbiakban a változhat.    
+> Ez a jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásának előzetes dokumentációja. Az alább ismertetett sémák változhatnak.    
 
 
-[Felügyeleti megoldások](solutions.md) általában egy vagy több nézetek segítségével ábrázolhatja adatait tartalmazza.  Ez a cikk bemutatja, hogyan exportálja által létrehozott nézetre a [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md) és a egy megoldás.  
+A [felügyeleti megoldások](solutions.md) általában egy vagy több nézetet is tartalmaznak az adatmegjelenítéshez.  Ez a cikk azt ismerteti, hogyan exportálhatók a [View Designer](../../azure-monitor/platform/view-designer.md) által létrehozott nézetek, és hogyan vehetők fel felügyeleti megoldásba.  
 
 > [!NOTE]
-> Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban](solutions-creating.md)
+> A cikkben szereplő minták olyan paramétereket és változókat használnak, amelyek szükségesek vagy közösek a felügyeleti megoldásokhoz, és az Azure-beli [felügyeleti megoldás kialakítása és](solutions-creating.md) létrehozása című témakörben olvashatók.
 >
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy már megismerkedett az [felügyeleti megoldás létrehozása](solutions-creating.md) és a egy megoldás-fájl szerkezete.
+Ez a cikk azt feltételezi, hogy már ismeri a [felügyeleti megoldás létrehozását](solutions-creating.md) és a megoldás fájljának szerkezetét.
 
 ## <a name="overview"></a>Áttekintés
-Nézet tartalmazza a felügyeleti megoldás, hozzon létre egy **erőforrás** a hozzá tartozó a [megoldásfájlt](solutions-creating.md).  A nézet részletes konfigurációs leíró JSON-t pedig jellemzően összetett, ha valami nem, hogy egy tipikus megoldás Szerző tudná manuális létrehozása.  A leggyakrabban használt módszer, ha a nézet használata a [adatforrásnézet-tervezőből](../../azure-monitor/platform/view-designer.md), exportálhatja, és a részletes konfigurációs hozzáadása a megoldáshoz.
+Ahhoz, hogy egy nézetet egy felügyeleti megoldásban is felvegyen, létre kell hoznia egy **erőforrást** a [megoldás fájljában](solutions-creating.md).  A nézet részletes konfigurációját leíró JSON általában összetett, és nem valami, amit egy tipikus megoldás szerzője manuálisan tud létrehozni.  A leggyakoribb módszer a nézet létrehozása a [tervező](../../azure-monitor/platform/view-designer.md)használatával, exportálás, majd a megoldás részletes konfigurációjának hozzáadása.
 
-Nézet hozzáadása egy megoldás alapvető lépéseit az alábbiak szerint.  Minden lépés az alábbi szakaszokban részletesen ismertetjük.
+A nézetnek a megoldáshoz való hozzáadásának alapvető lépései a következők.  Az alábbi szakaszokban részletesen ismertetjük az egyes lépéseket.
 
-1. A nézet exportálja egy fájlba.
-2. A nézet erőforrás létrehozása a megoldásban.
-3. Adja hozzá a részleteinek megtekintése.
+1. A nézet exportálása fájlba.
+2. Hozza létre a nézet erőforrását a megoldásban.
+3. Adja meg a nézet részleteit.
 
-## <a name="export-the-view-to-a-file"></a>A nézet exportálja egy fájlba
-Kövesse az utasításokat, [Log Analytics Nézettervező](../../azure-monitor/platform/view-designer.md) nézet exportálása fájlba.  Az exportált fájl azonos JSON formátumban lesznek [elemek, a megoldás fájllal](solutions-solution-file.md).  
+## <a name="export-the-view-to-a-file"></a>Nézet exportálása fájlba
+A nézetek fájlba való exportálásához kövesse a következő témakör utasításait: [log Analytics View Designer](../../azure-monitor/platform/view-designer.md) .  Az exportált fájl JSON formátumú, és ugyanazokkal az elemekkel fog megjelenni [, mint a megoldás fájlja](solutions-solution-file.md).  
 
-A **erőforrások** elem a nézet fájl lesz típusú erőforrás **Microsoft.OperationalInsights/workspaces** , amely jelzi, hogy a Log Analytics-munkaterületet.  Ez az elem lesz egy alelem típusú **nézetek** , amely a nézet jelöl, és a részletes konfigurációs tartalmaz.  Másolja vágólapra az adatokat, ezt az összetevőt, és másolja a megoldás.
+A nézet fájljának **erőforrások** elemében egy, a log Analytics munkaterületet jelképező **Microsoft. OperationalInsights/munkaterület** típusú erőforrás lesz.  Ez az elem egy olyan alelemmel fog rendelkezni, amely a nézetet jelképező **nézettel** rendelkezik, és tartalmazza annak részletes konfigurációját.  Másolja az elem részleteit, majd másolja be a megoldásba.
 
-## <a name="create-the-view-resource-in-the-solution"></a>A megoldás a nézet erőforrás létrehozása
-Adja hozzá a következő nézet erőforrást a **erőforrások** elem a megoldásfájl.  Ez a változókat, amelyek az alábbiakban tekintheti át, hogy hozzá kell adnia is használja.  Vegye figyelembe, hogy a **irányítópult** és **OverviewTile** tulajdonságait a rendszer a helyőrzők, amely felülírja az exportált nézet fájlból a megfelelő tulajdonságokkal.
+## <a name="create-the-view-resource-in-the-solution"></a>A nézet erőforrásának létrehozása a megoldásban
+Adja hozzá az alábbi megtekintési erőforrást a megoldás fájljának **erőforrások** eleméhez.  Ez az alább leírt változókat használja, amelyeket szintén hozzá kell adnia.  Vegye figyelembe, hogy az **irányítópult** -és **OverviewTile** -tulajdonságok olyan helyőrzők, amelyeket a rendszer az exportált nézet megfelelő tulajdonságaival felülír.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -72,39 +66,39 @@ Adja hozzá a következő nézet erőforrást a **erőforrások** elem a megold�
         }
     }
 
-Adja hozzá a következő változókat a megoldásfájl változók elemének, és cserélje le az értékeket, mint a megoldását.
+Adja hozzá a következő változókat a megoldás fájljának változók eleméhez, és cserélje le az értékeket a megoldására.
 
     "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
 
-Vegye figyelembe, hogy a teljes nézet erőforrás sikerült másolja az exportált nézet fájlból, de kell, hogy működjön a megoldás a következő módosításokat.  
+Vegye figyelembe, hogy a teljes nézet erőforrást átmásolhatja az exportált nézetből, de a következő módosításokat kell elvégeznie ahhoz, hogy működjön a megoldásban.  
 
-* A **típus** a nézet erőforrás kell módosítható **nézetek** való **Microsoft.OperationalInsights/workspaces**.
-* A **neve** tulajdonság az erőforrás megtekintése a munkaterület neve is módosítani kell.
-* A munkaterület függőség kell lehet eltávolítani, mert a munkaterület-erőforráshoz nincs definiálva a megoldásban.
-* **DisplayName** tulajdonságot kell adni a nézetet.  A **azonosító**, **neve**, és **DisplayName** összes egyeznie kell.
-* Paraméterek nevei a szükséges paraméterek készletét megfelelően módosítani kell.
-* Változók kell definiálva a megoldásban, és használja a megfelelő tulajdonságokat.
+* A megtekintési erőforrás **típusát** módosítani kell a **nézetekről** a **Microsoft. OperationalInsights/munkaterületekre**.
+* A nézet erőforráshoz tartozó **Name** tulajdonságot módosítani kell, hogy tartalmazza a munkaterület nevét.
+* El kell távolítani a munkaterület függőségét, mert a munkaterület-erőforrás nincs definiálva a megoldásban.
+* A **DisplayName** tulajdonságot fel kell venni a nézetbe.  Az **azonosító**, a **név**és a **DisplayName** értéknek egyeznie kell.
+* A paraméterek nevét módosítani kell, hogy megfeleljenek a szükséges paramétereknek.
+* A változókat a megoldásban kell meghatározni, és a megfelelő tulajdonságokban kell használni.
 
 ### <a name="log-analytics-api-version"></a>Log Analytics API-verzió
-Egy Resource Manager-sablonban definiált összes Log Analytics erőforrás rendelkezik egy tulajdonság **apiVersion** , amely meghatározza, hogy használja az erőforrás API-verzió.  Ez a verzió nem egyezik a nézetek lekérdezésekkel, amelyek használják a [örökölt és a frissített lekérdezési nyelv](../../azure-monitor/log-query/log-query-overview.md).  
+A Resource Manager-sablonban definiált összes Log Analytics-erőforráshoz tartozik egy **apiVersion** , amely meghatározza az erőforrás által használandó API verzióját.  Ez a verzió különbözik az [örökölt és a frissített lekérdezési nyelvet](../../azure-monitor/log-query/log-query-overview.md)használó lekérdezések nézeteinek.  
 
- Az alábbi táblázat felsorolja a nézetek a Log Analytics API-verziók a régebbi és a frissített munkaterületeken: 
+ A következő táblázat a régi és a frissített munkaterületek nézeteinek Log Analytics API-verzióit határozza meg: 
 
-| Munkaterület-verzió | API-verzió | Lekérdezés |
+| Munkaterület verziója | API-verzió | Lekérdezés |
 |:---|:---|:---|
-| V1 (örökölt)   | 2015\. 11. 01-előzetes verzió | Örökölt formátum.<br> Példa: Type=Event EventLevelName = Error  |
-| v2 (frissítve) | 2015\. 11. 01-előzetes verzió | Örökölt formátum.  Telepítse a frissített formátumra alakítja át.<br> Példa: Type=Event EventLevelName = Error<br>Konvertálva: Esemény &#124; ahol Error == "Error"  |
-| v2 (frissítve) | 2017-03-03-előzetes verzió | Frissítési formátum. <br>Példa: Esemény &#124; ahol Error == "Error"  |
+| v1 (örökölt)   | 2015-11-01 – előzetes verzió | Örökölt formátum.<br> Példa: Type = Event EventLevelName = Error  |
+| v2 (frissített) | 2015-11-01 – előzetes verzió | Örökölt formátum.  A telepítés frissített formátumára lett konvertálva.<br> Példa: Type = Event EventLevelName = Error<br>Konvertálva: esemény &#124; , ahol a EventLevelName = = "Error"  |
+| v2 (frissített) | 2017-03-03 – előzetes verzió | Frissítési formátum. <br>Példa: esemény &#124; , ahol a EventLevelName = = "Error"  |
 
 
-## <a name="add-the-view-details"></a>Adja hozzá a részleteinek megtekintése
-A nézet exportált fájlban a nézet erőforrás tartalmazni fogja a két elem a **tulajdonságok** nevű elem **irányítópult** és **OverviewTile** tartalmazza a részletes a nézet konfigurációja.  Ez a két elem és azok tartalmát, másolja a **tulajdonságok** elem a nézet erőforrás a megoldásfájl.
+## <a name="add-the-view-details"></a>A nézet részleteinek hozzáadása
+Az exportált nézetben található erőforrás nézet az **irányítópult** és a **OverviewTile** nevű **Tulajdonságok** elemben két elemet tartalmaz, amelyek tartalmazzák a nézet részletes konfigurációját.  Másolja ezt a két elemet és azok tartalmát a megoldási fájlban lévő erőforrás megtekintése elem **Tulajdonságok** elemébe.
 
 ## <a name="example"></a>Példa
-Például a következő minta bemutatja egy egyszerű megoldást a fájl nézetet.  Három pont (...) jelennek meg a **irányítópult** és **OverviewTile** terület okokból tartalmát.
+Az alábbi minta például egy egyszerű megoldási fájlt mutat be, amely nézettel rendelkezik.  Az **irányítópultok** és a **OverviewTile** esetében az ellipszisek (...) láthatók.
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -186,6 +180,6 @@ Például a következő minta bemutatja egy egyszerű megoldást a fájl nézete
 
 
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg a részleteket létrehozásának [felügyeleti megoldások](solutions-creating.md).
-* Például [a felügyeleti megoldás az Automation-runbookok](solutions-resources-automation.md).
+## <a name="next-steps"></a>Következő lépések
+* A [felügyeleti megoldások](solutions-creating.md)létrehozásának részletes ismertetését itt találja.
+* Az [Automation-runbookok belefoglalása a felügyeleti megoldásba](solutions-resources-automation.md).

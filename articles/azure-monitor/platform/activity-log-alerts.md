@@ -1,24 +1,23 @@
 ---
 title: Műveletnapló riasztásai Azure Monitor
 description: Értesítés küldése SMS-ben, webhookon, SMS-ben, e-mailben és más üzenetekben, ha bizonyos események történnek a tevékenység naplójában.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/17/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/17/2018
+ms.openlocfilehash: d3cb075d5ec0607453ca21f2574df7def02a4453
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675236"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553706"
 ---
 # <a name="alerts-on-activity-log"></a>Riasztások a tevékenység naplójában 
 
 ## <a name="overview"></a>Áttekintés
-A műveletnapló riasztásai olyan riasztások, amelyek akkor jelentkeznek be, amikor a riasztásban megadott feltételeknek megfelelő új [műveletnapló-esemény](activity-log-schema.md) következik be. Az Azure-beli [tevékenység naplójában](activity-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
+A műveletnapló riasztásai olyan riasztások, amelyek akkor [jelentkeznek](activity-log-schema.md) be, amikor a riasztásban megadott feltételeknek megfelelő új műveletnapló-esemény következik be. Az Azure-beli [tevékenység naplójában](activity-logs-overview.md)rögzített események sorrendje és mennyisége alapján a riasztási szabály tüzet fog eredményezni. A műveletnapló riasztási szabályai Azure-erőforrások, így a Azure Resource Manager sablon segítségével hozhatók létre. Emellett a Azure Portal is létrehozhatók, frissíthetők és törölhetők. Ez a cikk a tevékenység naplójának riasztásai mögötti fogalmakat ismerteti. A műveletnapló riasztási szabályainak létrehozásával és használatával kapcsolatos további információkért lásd: [műveletnapló riasztások létrehozása és kezelése](alerts-activity-log.md).
 
 > [!NOTE]
 > **Nem** hozhatók létre riasztások a tevékenység naplójának riasztási kategóriájában lévő eseményekhez.
@@ -36,22 +35,22 @@ Egy műveletnapló-eseményen a JSON-objektum minden legfelső szintű tulajdons
 
 A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
 
-- **Kategória**: Adminisztráció, Service Health, autoskálázás, biztonság, házirend és javaslat. 
-- **Hatókör**: Az adott erőforrás vagy erőforrás (ok), amelyhez a riasztás a tevékenység naplójában meg van határozva. A tevékenység naplójának riasztási hatóköre különböző szinteken határozható meg:
-    - Erőforrás szintje: Egy adott virtuális gép esetében például
-    - Erőforráscsoport szintje: Egy adott erőforráscsoport összes virtuális gépe például
-    - Előfizetés szintje: Például az előfizetésben lévő összes virtuális gép (vagy) az előfizetés összes erőforrása
-- **Erőforráscsoport**: Alapértelmezés szerint a rendszer a riasztási szabályt ugyanabban az erőforráscsoporthoz menti, mint a hatókörben definiált cél. A felhasználó megadhatja azt az erőforráscsoportot is, amelyben a riasztási szabályt tárolni szeretné.
-- **Erőforrás típusa**: Erőforrás-kezelő által definiált névtér a riasztás céljához.
-- **Művelet neve**: A [Azure Resource Manager művelet](../../role-based-access-control/resource-provider-operations.md) neve szerepköralapú Access Control számára lett kihasználva. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
-- **Szint**: Az esemény súlyossági szintje (részletes, tájékoztató, figyelmeztetés, hiba vagy kritikus).
-- **Állapot**: Az esemény állapota, általában elindítva, sikertelen, vagy sikeres.
-- **Esemény kezdeményezője**: Más néven "hívó". A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
+- **Kategória**: adminisztráció, Service Health, autoskálázás, biztonság, házirend és javaslat. 
+- **Hatókör**: azon erőforrások vagy erőforrások csoportja, amelyekhez a riasztás a tevékenység naplójában meg van határozva. A tevékenység naplójának riasztási hatóköre különböző szinteken határozható meg:
+    - Erőforrás szintje: például egy adott virtuális gép esetében
+    - Erőforráscsoport szintje: például egy adott erőforráscsoport összes virtuális gépe
+    - Előfizetési szint: például az előfizetésben lévő összes virtuális gép (vagy) az előfizetés összes erőforrása
+- **Erőforráscsoport**: alapértelmezés szerint a rendszer a riasztási szabályt a hatókörben definiált célként megadott erőforrás-csoportba menti. A felhasználó megadhatja azt az erőforráscsoportot is, amelyben a riasztási szabályt tárolni szeretné.
+- **Erőforrás típusa**: erőforrás-kezelő által definiált névtér a riasztás céljához.
+- **Művelet neve**: a [Azure Resource Manager művelet](../../role-based-access-control/resource-provider-operations.md) neve a szerepköralapú Access Controlhoz. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
+- **Szint**: az esemény súlyossági szintje (részletes, tájékoztató, figyelmeztetés, hiba vagy kritikus).
+- **Állapot**: az esemény állapota, általában elindítva, sikertelen, vagy sikeres.
+- A (z) **által kezdeményezett esemény**, más néven "hívó". A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
 
 > [!NOTE]
 > Egy előfizetésben akár 100 riasztási szabály is létrehozható egy hatóköri tevékenységhez: egyetlen erőforrás, az erőforráscsoport összes erőforrása (vagy) a teljes előfizetési szint.
 
-Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések létrehozásához egy műveleti csoportot használ. A műveleti csoport az értesítési fogadók újrafelhasználható készlete, például e-mail-címek, webhook URL-címek vagy SMS-telefonszámok. A fogadók több riasztásból is hivatkozhatnak az értesítési csatornák központosítására és csoportosítására. A műveletnapló riasztásának meghatározásakor két lehetőség közül választhat. A következőket teheti:
+Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések létrehozásához egy műveleti csoportot használ. A műveleti csoport az értesítési fogadók újrafelhasználható készlete, például e-mail-címek, webhook URL-címek vagy SMS-telefonszámok. A fogadók több riasztásból is hivatkozhatnak az értesítési csatornák központosítására és csoportosítására. A műveletnapló riasztásának meghatározásakor két lehetőség közül választhat. Előnyök:
 
 * Meglévő műveleti csoport használata a tevékenység naplójának riasztásában.
 * Hozzon létre egy új műveleti csoportot.
@@ -59,9 +58,9 @@ Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések
 A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](action-groups.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A riasztások áttekintése](alerts-overview.md).
 - Tudnivalók a [műveletnapló-riasztások létrehozásáról és módosításáról](alerts-activity-log.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](activity-log-alerts-webhook.md).
-- Tudnivalók a [szolgáltatás állapotával](service-notifications.md)kapcsolatos értesítésekről.
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](service-notifications.md).

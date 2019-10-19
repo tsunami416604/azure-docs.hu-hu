@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor PowerShell – gyors üzembe helyezési minták
 description: A PowerShell használatával férhet hozzá olyan Azure Monitor-funkciókhoz, mint például az autoscale, a riasztások, a webhookok és a keresési tevékenységek naplói.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 2/14/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: 886eb8578e004eba3b6fabc1deb42db0fb7fac70
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 2/14/2018
+ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350245"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72551851"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor PowerShell – gyors üzembe helyezési minták
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -98,10 +97,10 @@ A következő parancs lekéri az utolsó 1000 eseményt a tevékenység naplój�
 Get-AzLog -MaxRecord 10
 ```
 
-a `Get-AzLog` számos más paramétert is támogat. További információért tekintse meg a `Get-AzLog` referenciát.
+a `Get-AzLog` számos más paramétert is támogat. További információért tekintse meg a `Get-AzLog`-referenciát.
 
 > [!NOTE]
-> a `Get-AzLog` csak 15 napos előzményt biztosít. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-C# t (minta az SDK használatával). Ha nem tartalmazza az időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
+> `Get-AzLog` csak a 15 napos előzményeket biztosítja. A **-MaxRecords** paraméter használata lehetővé teszi az utolsó N esemény lekérdezését 15 nap után. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-C# t (minta az SDK használatával). Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
 > 
 > 
 
@@ -141,27 +140,27 @@ A célként megadott erőforráshoz beállított összes riasztási szabály beo
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-a `Get-AzAlertRule` más paramétereket is támogat. További információ: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
+`Get-AzAlertRule` támogatja a többi paramétert. További információ: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
 
 ## <a name="create-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások létrehozása
-Riasztási szabály létrehozásához, frissítéséhez vagy letiltásához használhatja a `Add-AlertRule` parancsmagot.
+A riasztási szabály létrehozásához, frissítéséhez vagy letiltásához a `Add-AlertRule` parancsmagot használhatja.
 
 Az e-mailek és webhook-tulajdonságok a `New-AzAlertRuleEmail` és a `New-AzAlertRuleWebhook` használatával hozhatók létre. A riasztási szabály parancsmagban ezeket a tulajdonságokat adja hozzá műveletként a riasztási szabály **műveletek** tulajdonságához.
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| Paraméter | value |
+| Paraméter | érték |
 | --- | --- |
-| Name (Név) |simpletestdiskwrite |
-| A riasztási szabály helye |East US |
+| Név |simpletestdiskwrite |
+| A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
-| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| A létrehozott riasztás MetricName |\PhysicalDisk(_Total)\Disk Writes/sec. Tekintse meg a `Get-MetricDefinitions` parancsmaggal kapcsolatos hogyan kérheti le a pontos metrikus nevek |
-| operator |GreaterThan |
+| Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| A létrehozott riasztás MetricName |\PhysicalDisk (összesen) \ írás/mp. Tekintse meg a `Get-MetricDefinitions` parancsmagot a pontos metrikák nevének beolvasásáról |
+| üzemeltető |GreaterThan |
 | Küszöbérték (darabszám/mp a metrika esetében) |1 |
 | WindowSize (óó: PP: SS formátum) |00:05:00 |
-| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Average |
-| Egyéni e-mailek (karakterlánc-tömb) |'foo@example.com','bar@example.com' |
+| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Átlag |
+| Egyéni e-mailek (karakterlánc-tömb) |"foo@example.com", "bar@example.com" |
 | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
 
 E-mail művelet létrehozása
@@ -191,7 +190,7 @@ Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 A riasztás hozzáadása parancsmag szintén frissíti a szabályt, ha már létezik riasztási szabály a megadott tulajdonságokhoz. A riasztási szabályok letiltásához adja meg a **-DisableRule**paramétert.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>A riasztásokhoz elérhető metrikák listájának beolvasása
-A `Get-AzMetricDefinition` parancsmaggal megtekintheti egy adott erőforráshoz tartozó összes metrika listáját.
+Az `Get-AzMetricDefinition` parancsmaggal megtekintheti egy adott erőforráshoz tartozó összes metrika listáját.
 
 ```powershell
 Get-AzMetricDefinition -ResourceId <resource_id>
@@ -203,10 +202,10 @@ Az alábbi példa egy táblázatot hoz létre a metrika nevével és a hozzá ta
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-A `Get-AzMetricDefinition` elérhető lehetőségeinek teljes listája a [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)címen érhető el.
+Az `Get-AzMetricDefinition` elérhető lehetőségeinek teljes listája a [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)címen érhető el.
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Műveletnapló-riasztások létrehozása és kezelése
-A `Set-AzActivityLogAlert` parancsmag használatával beállíthatja a műveletnapló riasztását. A műveletnapló riasztásához először meg kell határoznia a feltételeket szótárként, majd létre kell hoznia egy riasztást, amely ezeket a feltételeket használja.
+A műveletnapló riasztását a `Set-AzActivityLogAlert` parancsmaggal állíthatja be. A műveletnapló riasztásához először meg kell határoznia a feltételeket szótárként, majd létre kell hoznia egy riasztást, amely ezeket a feltételeket használja.
 
 ```powershell
 
@@ -219,7 +218,7 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 
 ```
 
-A további webhook-tulajdonságok nem kötelezőek. @No__t-0 használatával visszaállíthatja a tevékenység naplójának tartalmát.
+A további webhook-tulajdonságok nem kötelezőek. @No__t_0 használatával visszaállíthatja a tevékenység naplójának tartalmát.
 
 ## <a name="create-and-manage-autoscale-settings"></a>Az autoskálázási beállítások létrehozása és kezelése
 Egy erőforrás (webalkalmazás, virtuális gép, felhőalapú szolgáltatás vagy virtuálisgép-méretezési csoport) csak egy, a számára konfigurált méretezési beállítással rendelkezhet.
@@ -229,7 +228,7 @@ A következő lépéseket kell használni:
 
 1. Szabály (ok) létrehozása.
 2. Profil (ok) létrehozása a korábban létrehozott szabályoknak a profilokhoz való hozzárendelésével.
-3. Nem kötelező: Hozzon létre értesítéseket az autoskálázáshoz a webhook és az e-mail-tulajdonságok konfigurálásával.
+3. Nem kötelező: értesítések létrehozása az autoskálázáshoz webhook és e-mail-tulajdonságok konfigurálásával.
 4. Az előző lépésekben létrehozott profilok és értesítések leképezésével hozzon létre egy, a cél erőforrásban található névvel rendelkező autoskálázási beállítást.
 
 Az alábbi példák bemutatják, hogyan hozhat létre egy virtuálisgép-méretezési csoportra vonatkozó, a CPU-kihasználtság metrikája alapján egy Windows operációs rendszerhez készült, a virtuális gépek méretezésére szolgáló beállítást.
@@ -279,7 +278,7 @@ Az alábbi példa bemutatja, hogyan tekintheti meg a legutóbbi méretezési és
 Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartTime 2015-03-01
 ```
 
-A `Get-AzAutoScaleHistory` parancsmag használatával lekérheti az autoskálázási előzményeket.
+A `Get-AzAutoScaleHistory` parancsmaggal lekérheti az autoskálázási előzményeket.
 
 ```powershell
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
@@ -303,7 +302,7 @@ Get-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting -DetailedOu
 ```
 
 ### <a name="remove-an-autoscale-setting"></a>Egy autoskálázási beállítás eltávolítása
-Az autoskálázási beállítás törléséhez használja a `Remove-Autoscalesetting` parancsmagot.
+Az `Remove-Autoscalesetting` parancsmaggal törölheti az autoskálázási beállításokat.
 
 ```powershell
 Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
@@ -389,7 +388,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterület *erőforrás-azonosítóját* veszi át. Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
+Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterület *erőforrás-azonosítóját* veszi át. A Log Analytics munkaterület erőforrás-AZONOSÍTÓját a következő paranccsal szerezheti be:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

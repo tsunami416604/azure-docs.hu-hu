@@ -1,19 +1,18 @@
 ---
 title: A közös riasztási séma integrálása a Logic Apps
 description: Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a gyakori riasztási sémát használja az összes riasztás kezeléséhez.
-author: ananthradhakrishnan
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/27/2019
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: ananthradhakrishnan
+ms.author: robb
+ms.date: 05/27/2019
+ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702948"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555648"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A közös riasztási séma integrálása a Logic Apps
 
@@ -35,13 +34,13 @@ Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt
 
 1. Kövesse a [logikai alkalmazás létrehozásához szükséges lépéseket](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
 
-1.  Válassza ki az triggert: **Http-kérelem fogadásakor**.
+1.  Válassza ki a triggert: **http-kérés fogadásakor**.
 
-    ![Logikai alkalmazás-eseményindítók](media/action-groups-logic-app/logic-app-triggers.png "Logikai alkalmazás-eseményindítók")
+    ![Logikai alkalmazás-eseményindítók](media/action-groups-logic-app/logic-app-triggers.png "A logikai alkalmazások eseményindítói")
 
 1.  A HTTP-kérelem triggerének módosításához válassza a **Szerkesztés** lehetőséget.
 
-    ![Http-kérelem eseményindítói](media/action-groups-logic-app/http-request-trigger-shape.png "Http-kérelem eseményindítói")
+    ![HTTP-kérelem eseményindítói](media/action-groups-logic-app/http-request-trigger-shape.png "HTTP-kérelem eseményindítói")
 
 
 1.  Másolja és illessze be a következő sémát:
@@ -113,7 +112,7 @@ Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt
         }
     ```
 
-1. Válassza **+** az **új lépés** , majd **a művelet hozzáadása**lehetőséget.
+1. Válassza ki **+** **új lépést** , majd válassza **a művelet hozzáadása**lehetőséget.
 
     ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "Művelet hozzáadása")
 
@@ -139,7 +138,7 @@ Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt
     
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
 * [További információ a közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).

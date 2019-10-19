@@ -2,7 +2,6 @@
 title: Windows rendszerű virtuális gép létrehozása speciális virtuális merevlemezről az Azure-ban | Microsoft Docs
 description: Hozzon létre egy új Windowsos virtuális gépet úgy, hogy a Resource Manager-alapú üzemi modell használatával egy speciális felügyelt lemezt csatlakoztat az operációsrendszer-lemezként.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
@@ -12,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: be773779b25a32a5904012ae31950b18c33341dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390594"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553428"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről a PowerShell használatával
 
@@ -63,100 +62,15 @@ Egy új virtuális gép létrehozásához használja a virtuális merevlemezt.
   * Győződjön meg arról, hogy a virtuális gép konfigurálva van a DHCP IP-címének és DNS-beállításainak lekérésére. Ez biztosítja, hogy a kiszolgáló az indításkor megszerezze a virtuális hálózaton belüli IP-címet. 
 
 
-### <a name="get-the-storage-account"></a>A Storage-fiók beszerzése
-A feltöltött virtuális merevlemez tárolásához szüksége lesz egy Storage-fiókra az Azure-ban. Használhat meglévő Storage-fiókot, vagy létrehozhat egy újat. 
+### <a name="upload-the-vhd"></a>A VHD feltöltése
 
-A rendelkezésre álló Storage-fiókok megjelenítése.
-
-```powershell
-Get-AzStorageAccount
-```
-
-Meglévő Storage-fiók használatához folytassa a VHD-fájl [feltöltésével](#upload-the-vhd-to-your-storage-account) foglalkozó szakaszt.
-
-Tárfiók létrehozása.
-
-1. Szüksége lesz annak az erőforráscsoport-csoportnak a nevére, amelyben a Storage-fiókot létrehozza. A Get-AzResourceGroup használatával tekintse meg az előfizetésében található összes erőforráscsoportot.
-   
-    ```powershell
-    Get-AzResourceGroup
-    ```
-
-    Hozzon létre egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA nyugati* régiójában.
-
-    ```powershell
-    New-AzResourceGroup `
-       -Name myResourceGroup `
-       -Location "West US"
-    ```
-
-2. Hozzon létre egy *mystorageaccount* nevű Storage-fiókot az új erőforráscsoporthoz a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) parancsmag használatával.
-   
-    ```powershell
-    New-AzStorageAccount `
-       -ResourceGroupName myResourceGroup `
-       -Name mystorageaccount `
-       -Location "West US" `
-       -SkuName "Standard_LRS" `
-       -Kind "Storage"
-    ```
-
-### <a name="upload-the-vhd-to-your-storage-account"></a>Töltse fel a VHD-t a Storage-fiókjába 
-Az [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) parancsmag használatával töltse fel a VHD-t a Storage-fiókjában lévő tárolóba. Ez a példa feltölti a *myVHD. vhd* fájlt a "C:\Users\Public\Documents\Virtual Hard Disks @ no__t-1 egy *mystorageaccount* nevű Storage-fiókba a *myResourceGroup* erőforráscsoporthoz. A fájl tárolása a *mycontainer* nevű tárolóban történik, és az új fájlnév *myUploadedVHD. vhd*lesz.
-
-```powershell
-$resourceGroupName = "myResourceGroup"
-$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $resourceGroupName `
-   -Destination $urlOfUploadedVhd `
-   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Ha a parancsok sikeresek, a következőhöz hasonló választ kap:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Ez a parancs hosszabb időt is igénybe vehet, a hálózati kapcsolatban és a VHD-fájl méretétől függően.
-
-### <a name="create-a-managed-disk-from-the-vhd"></a>Felügyelt lemez létrehozása a VHD-ből
-
-Hozzon létre egy felügyelt lemezt a Storage-fiókjában lévő speciális virtuális merevlemezről a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)használatával. Ez a példa *myOSDisk1* használ a lemez neveként, a lemezt a *Standard_LRS* -tárolóba helyezi, és a forrás VHD-hez tartozó URI-t használja *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd -* ként.
-
-Hozzon létre egy új erőforráscsoportot az új virtuális géphez.
-
-```powershell
-$destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzResourceGroup -Location $location `
-   -Name $destinationResourceGroup
-```
-
-Hozza létre az új operációsrendszer-lemezt a feltöltött VHD-ből. 
-
-```powershell
-$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-$osDiskName = 'myOsDisk'
-$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
-    (New-AzDiskConfig -AccountType Standard_LRS  `
-    -Location $location -CreateOption Import `
-    -SourceUri $sourceUri) `
-    -ResourceGroupName $destinationResourceGroup
-```
+Most már közvetlenül is feltölthet egy virtuális merevlemezt egy felügyelt lemezre. Útmutatásért lásd: [virtuális merevlemez feltöltése az Azure-ba Azure PowerShell használatával](disks-upload-vhd-to-managed-disk-powershell.md).
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>3\. lehetőség: meglévő Azure-beli virtuális gép másolása
 
 Létrehozhat egy, a felügyelt lemezeket használó virtuális gép másolatát a virtuális gép pillanatképének elkészítésével, majd a pillanatkép használatával új felügyelt lemez és új virtuális gép létrehozásához.
 
+Ha egy meglévő virtuális gépet egy másik régióba szeretne másolni, érdemes lehet a azcopy használatával másolatot készíteni egy [lemezről egy másik régióban](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációsrendszer-lemezről
 

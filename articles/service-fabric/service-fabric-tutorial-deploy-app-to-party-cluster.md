@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d637b01eb9e4d1664def9eb537b810603eea18ea
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598806"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553575"
 ---
-# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Service Fabric-alkalmazás üzembe helyezése egy Azure-fürtön
+# <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Service Fabric-alkalmazás üzembe helyezése egy fürtön az Azure-ban
 
 Ez az oktatóanyag egy sorozat második része. Azt mutatja be, hogy hogyan helyezhetők üzembe az Azure Service Fabric-alkalmazások egy új fürtön az Azure-ban.
 
@@ -47,6 +47,9 @@ Az oktatóanyag elkezdése előtt:
 * [Telepítse a Visual Studio 2019](https://www.visualstudio.com/)alkalmazást, és telepítse az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** feladatokat.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md).
 
+> [!NOTE]
+> Előfordulhat, hogy az ingyenes fiók nem teljesíti a virtuális gép létrehozásához szükséges követelményeket. Ez megakadályozza az oktatóanyag befejezését.
+
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
 Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-sorozat első részében](service-fabric-tutorial-create-dotnet-app.md), akkor le is töltheti. A parancssorablakban futtassa a következő kódot a minta alkalmazás-tárház helyi gépre történő klónozásához.
@@ -61,7 +64,7 @@ Nyissa meg az alkalmazást a Visual Studióban, futtassa rendszergazdaként, és
 
 Most, hogy az alkalmazás készen áll, hozzon létre egy Service Fabric fürtöt, majd telepítse az alkalmazást a fürtön. A [Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) virtuális és fizikai gépek hálózaton keresztül csatlakozó készlete, amelyen mikroszolgáltatásokat helyezhet üzembe és felügyelhet.
 
-Ebben az oktatóanyagban egy új, három csomópontos tesztelési fürtöt hoz létre a Visual Studio IDE-ben, majd közzéteszi az alkalmazást a fürtön. A termelési fürtök létrehozásával kapcsolatos információkért tekintse meg a [fürt létrehozása és kezelése](service-fabric-tutorial-create-vnet-and-windows-cluster.md) című oktatóanyagot. Az alkalmazást telepítheti egy meglévő, a [Azure Portal](https://portal.azure.com)által korábban létrehozott fürtre is, a [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) vagy az [Azure CLI](./scripts/cli-create-cluster.md) parancsfájlok használatával vagy egy [Azure Resource Manager sablonból](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Ebben az oktatóanyagban egy új, három csomópontos tesztelési fürtöt hoz létre a Visual Studio IDE-ben, majd közzéteszi az alkalmazást a fürtön. A termelési fürtök létrehozásával kapcsolatos információkért tekintse meg a [fürt létrehozása és kezelése című oktatóanyagot](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Az alkalmazást telepítheti egy meglévő, a [Azure Portal](https://portal.azure.com)által korábban létrehozott fürtre is, a [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) vagy az [Azure CLI](./scripts/cli-create-cluster.md) parancsfájlok használatával vagy egy [Azure Resource Manager sablonból](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 > [!NOTE]
 > A szavazati alkalmazás és sok más alkalmazás a Service Fabric fordított proxy használatával kommunikál a szolgáltatások között. A Visual studióból létrehozott fürtök esetében a fordított proxy alapértelmezés szerint engedélyezve van. Ha meglévő fürtön végez üzembe helyezést, engedélyeznie kell [a fordított proxyt a fürtben](service-fabric-reverseproxy-setup.md) a szavazati alkalmazás működéséhez.
@@ -69,7 +72,7 @@ Ebben az oktatóanyagban egy új, három csomópontos tesztelési fürtöt hoz l
 
 ### <a name="find-the-votingweb-service-endpoint"></a>A VotingWeb szolgáltatásvégpontjának megkeresése
 
-A szavazó alkalmazás előtér-webszolgáltatása egy adott portot figyel (8080, ha követte a [jelen oktatóanyag-Sorozat](service-fabric-tutorial-create-dotnet-app.md)első részében ismertetett lépéseket. Az alkalmazások Azure-beli fürtön való üzembe helyezésekor a fürt és az alkalmazás is Azure-terheléselosztó mögött fut. Az alkalmazás portját egy szabály használatával kell megnyitni az Azure Load balancerben. A szabály bejövő forgalmat küld a terheléselosztó és a webszolgáltatás között. Ezt a portot a **VotingWeb/PackageRoot/ServiceManifest.xml** fájlban találhatja meg az **Endpoint** elemben. 
+A szavazó alkalmazás előtér-webszolgáltatása egy adott portot figyel (8080, ha követte a [jelen oktatóanyag-sorozat első részében](service-fabric-tutorial-create-dotnet-app.md)ismertetett lépéseket. Az alkalmazások Azure-beli fürtön való üzembe helyezésekor a fürt és az alkalmazás is Azure-terheléselosztó mögött fut. Az alkalmazás portját egy szabály használatával kell megnyitni az Azure Load balancerben. A szabály bejövő forgalmat küld a terheléselosztó és a webszolgáltatás között. Ezt a portot a **VotingWeb/PackageRoot/ServiceManifest.xml** fájlban találhatja meg az **Endpoint** elemben. 
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
@@ -90,7 +93,7 @@ A **tanúsítvány** lapon adja meg a fürt tanúsítványának jelszavát és k
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-A **virtuális gép részletei** lapon adja meg a  fürt rendszergazdai fiókjának felhasználónevét és **jelszavát** .  Válassza ki a fürt csomópontjaihoz tartozó **virtuálisgép** -rendszerképet és a fürt minden egyes csomópontjának **virtuális gép méretét** .  Kattintson a **speciális** fülre.
+A **virtuális gép részletei** lapon adja meg a fürt rendszergazdai fiókjának **felhasználónevét** és **jelszavát** .  Válassza ki a fürt csomópontjaihoz tartozó **virtuálisgép-rendszerképet** és a fürt minden egyes csomópontjának **virtuális gép méretét** .  Kattintson a **speciális** fülre.
 
 ![Fürt létrehozása](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -105,7 +108,7 @@ Ha az új fürt elkészült, közvetlenül a Visual studióból is üzembe helye
 A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget. Megjelenik a **Publish** (Közzététel) párbeszédpanel.
 
 A **csatlakoztatási végpont**területen válassza ki az előző lépésben létrehozott fürt végpontját.  Például: "mytestcluster.southcentral.cloudapp.azure.com:19000". Ha a **speciális kapcsolatok paramétereit**választja, a tanúsítvány információit automatikusan ki kell tölteni.  
-![Service Fabric alkalmazás közzététele](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+Service Fabric alkalmazás ![Publish ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
 Kattintson a **Publish** (Közzététel) elemre.
 
@@ -114,7 +117,7 @@ Az alkalmazás üzembe helyezése után nyisson meg egy böngészőt, és adja m
 ![Service Fabric szavazási minta](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 > [!div class="checklist"]

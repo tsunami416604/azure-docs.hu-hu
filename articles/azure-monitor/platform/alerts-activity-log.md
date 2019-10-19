@@ -1,18 +1,18 @@
 ---
 title: Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor
 description: Hozzon létre műveletnapló-riasztásokat a Azure Portal, egy Azure Resource Manager sablon és a Azure PowerShell használatával.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 06/25/2019
+author: rboucher
 ms.author: robb
-ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.date: 06/25/2019
+ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675257"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552811"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -40,7 +40,7 @@ A Azure Portal a műveletnapló riasztási szabályainak létrehozására és m�
 
 Használja az alábbi eljárást.
 
-1. A Azure Portal válassza a > **riasztások** **figyelése**lehetőséget.
+1. A Azure Portal válassza a **figyelő**  > **riasztások**lehetőséget.
 2. A **riasztások** ablak bal felső sarkában válassza az **új riasztási szabály** lehetőséget.
 
      ![Új riasztási szabály](media/alerts-activity-log/AlertsPreviewOption.png)
@@ -51,7 +51,7 @@ Használja az alábbi eljárást.
 
 3. A **riasztási feltétel meghatározása**területen adja meg a következő információkat, majd válassza a **kész**lehetőséget:
 
-   - **Riasztási cél:** Az új riasztás céljának megtekintéséhez és kiválasztásához használja az **előfizetés** / szerinti szűrés az**erőforrástípus alapján értéket**. Válassza ki az erőforrást vagy erőforráscsoportot a megjelenő listából.
+   - **Riasztási cél:** Az új riasztás céljának megtekintéséhez és kiválasztásához használja az **előfizetés szerinti szűrés**  / **szűrés erőforrás-típus alapján**lehetőséget. Válassza ki az erőforrást vagy erőforráscsoportot a megjelenő listából.
 
      > [!NOTE]
      > 
@@ -69,15 +69,15 @@ Használja az alábbi eljárást.
 
      **Feltételek hozzáadása képernyő**
 
-     ![Feltétel hozzáadása](media/alerts-activity-log/add-criteria.png)
+     ![Feltételek hozzáadása](media/alerts-activity-log/add-criteria.png)
 
-     - **Előzmények időpontja**: A kiválasztott művelethez elérhető események az elmúlt 6, 12 vagy 24 órában, vagy az elmúlt héten láthatók.
+     - **Előzmények időpontja**: a kiválasztott művelethez rendelkezésre álló események az elmúlt 6, 12 vagy 24 órában, vagy az elmúlt héten láthatók.
 
      - **Riasztási logika**:
 
-       - **Esemény szintje**: Az esemény súlyossági szintje: _Részletes_, _tájékoztató_, _Figyelmeztetés_, _hiba_vagy _kritikus_.
-       - **Állapot**: Az esemény állapota:Elindítva, _sikertelen_, vagy _sikeres_.
-       - **Esemény kezdeményezője**: Más néven a hívó. A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
+       - **Esemény szintje**: az esemény súlyossági szintje: _részletes_, _tájékoztató_, _Figyelmeztetés_, _hiba_vagy _kritikus_.
+       - **Állapot**: az esemény állapota: _elindítva_, _sikertelen_, vagy _sikeres_.
+       - A (z) **által kezdeményezett esemény**, más néven a hívó. A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
 
        Ez a mintavételi gráf a riasztási logikát alkalmazza:
 
@@ -85,13 +85,13 @@ Használja az alábbi eljárást.
 
 4. A **riasztás részleteinek megadása**területen adja meg a következő adatokat:
 
-    - **Riasztási szabály neve**: Az új riasztási szabály neve.
-    - **Leírás**: Az új riasztási szabály leírása.
-    - **Riasztás mentése az erőforráscsoporthoz**: Válassza ki azt az erőforráscsoportot, amelybe menteni szeretné az új szabályt.
+    - **Riasztási szabály neve**: az új riasztási szabály neve.
+    - **Leírás**: az új riasztási szabály leírása.
+    - **Riasztás mentése az erőforráscsoporthoz**: válassza ki azt az erőforráscsoportot, amelybe menteni szeretné ezt az új szabályt.
 
 5. A **Művelettípus**alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](../../azure-monitor/platform/action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az **+ új csoport**lehetőséget.
 
-6. Ha a létrehozás után engedélyezni szeretné a szabályokat, válassza az **Igen** lehetőséget a **szabály engedélyezése** a létrehozáskor beállításnál.
+6. Ha a létrehozás után engedélyezni szeretné a szabályokat, válassza az **Igen** lehetőséget a **szabály engedélyezése a létrehozáskor** beállításnál.
 7. Válassza a **riasztási szabály létrehozása**lehetőséget.
 
     A rendszer létrehozza a műveletnapló új riasztási szabályát, és egy megerősítő üzenet jelenik meg az ablak jobb felső sarkában.
@@ -106,7 +106,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 ### <a name="view-and-manage-in-the-azure-portal"></a>Megtekintés és kezelés a Azure Portal
 
-1. A Azure Portal válassza a > **riasztások** **figyelése**lehetőséget. Az ablak bal felső sarkában válassza a **riasztási szabályok kezelése** lehetőséget.
+1. A Azure Portal válassza a **figyelő**  > **riasztások**lehetőséget. Az ablak bal felső sarkában válassza a **riasztási szabályok kezelése** lehetőséget.
 
     ![Riasztási szabályok kezelése](media/alerts-activity-log/manage-alert-rules.png)
 
@@ -116,7 +116,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
     ![Keresési tevékenység naplójának riasztási szabályai](media/alerts-activity-log/searth-activity-log-rule-to-edit.png)
 
-    A szerkeszteni kívánt tevékenységi szabály megkereséséhez használhatja az elérhető szűrőket, előfizetést, _erőforráscsoportot_, _erőforrást_, _jel típusát_vagy _állapotát_.
+    A szerkeszteni kívánt tevékenységi szabály megkereséséhez használhatja az elérhető szűrőket, _előfizetést_, _erőforráscsoportot_, _erőforrást_, _jel típusát_vagy _állapotát_.
 
    > [!NOTE]
    > 
@@ -130,7 +130,7 @@ A tevékenység naplójában a riasztási szabályok létrehozására szolgáló
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-Ha Azure Resource Manager sablonnal szeretne létrehozni egy műveletnapló-riasztást, hozzon létre egy típusú `microsoft.insights/activityLogAlerts`erőforrást. Ezután töltse ki az összes kapcsolódó tulajdonságot. A következő sablon egy műveletnapló-riasztást hoz létre:
+Ha Azure Resource Manager sablonnal szeretne létrehozni egy műveletnapló-riasztást, hozzon létre egy `microsoft.insights/activityLogAlerts` típusú erőforrást. Ezután töltse ki az összes kapcsolódó tulajdonságot. A következő sablon egy műveletnapló-riasztást hoz létre:
 
 ```json
 {
@@ -222,29 +222,29 @@ ahol a sampleActivityLogAlert. Parameters. JSON tartalmazza a riasztási szabál
 
 A műveletnapló riasztásai dedikált PowerShell-parancsmagokat is elérhetők:
 
-- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert): Új műveletnapló-riasztást hoz létre, vagy egy meglévő műveletnapló riasztását frissíti.
-- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert): Egy vagy több tevékenység naplójának riasztási erőforrásának beolvasása.
-- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert): Engedélyezi egy meglévő műveletnapló riasztását, és beállítja annak címkéit.
-- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): Letiltja egy meglévő műveletnapló-riasztást, és beállítja annak címkéit.
-- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): Eltávolítja a tevékenység naplójának riasztását.
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert): új műveletnapló riasztást hoz létre, vagy egy meglévő műveletnapló riasztását frissíti.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert): egy vagy több műveletnapló riasztási erőforrásának beolvasása.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert): lehetővé teszi egy meglévő műveletnapló riasztását, és beállítja annak címkéit.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert): letiltja a meglévő műveletnapló riasztását, és beállítja annak címkéit.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert): eltávolítja a tevékenység naplójának riasztását.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 A set az [monitor Activity-log riasztás](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) alatt DEDIKÁLT Azure CLI-parancsok érhetők el a műveletnapló riasztási szabályainak kezeléséhez.
 
 Új műveletnapló riasztási szabály létrehozásához használja a következő parancsokat ebben a sorrendben:
 
-1. [az figyelő tevékenység-napló riasztás létrehozása](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): Hozzon létre egy új műveletnapló riasztási szabályának erőforrását.
-1. [az monitor Activity-log riasztás hatóköre](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): Hatókör hozzáadása a létrehozott tevékenység naplójának riasztási szabályához.
-1. [az monitor Activity-log riasztás műveleti-csoport](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): Adjon hozzá egy műveleti csoportot a tevékenység naplójának riasztási szabályához.
+1. [az monitor Activity-log riasztás létrehozása](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): hozzon létre egy új műveletnapló riasztási szabály erőforrást.
+1. az [monitor Activity-log riasztás hatóköre](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): a létrehozott műveletnapló riasztási szabály hatókörének hozzáadása.
+1. az [monitor Activity-log riasztás műveleti-csoport](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): műveleti csoport hozzáadása a műveletnapló riasztási szabályához.
 
-Az egyik műveletnapló riasztási szabály erőforrásának lekéréséhez használja az Azure [CLI-parancsot az monitor Activity-](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
-)log Alert show paranccsal. Ha meg szeretné tekinteni az összes műveletnapló riasztási szabályának erőforrását egy erőforráscsoporthoz, használja az [az monitor Activity-log riasztások listáját](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Az egyik műveletnapló riasztási szabály erőforrásának lekéréséhez használja az Azure CLI-parancsot az [monitor Activity-log Alert show](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+)paranccsal. Ha meg szeretné tekinteni az összes műveletnapló riasztási szabályának erőforrását egy erőforráscsoporthoz, használja az [az monitor Activity-log riasztások listáját](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
 A műveletnapló riasztási szabályának erőforrásai eltávolíthatók az Azure CLI-paranccsal az [monitor Activity-log riasztás törlése](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete)lehetőséggel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [tevékenységi naplók webhook](../../azure-monitor/platform/activity-log-alerts-webhook.md)-sémájáról.
+- További információ a [tevékenységi naplók webhook-sémájáról](../../azure-monitor/platform/activity-log-alerts-webhook.md).
 - Olvassa el [a Tevékenységnaplók áttekintését](../../azure-monitor/platform/activity-log-alerts.md).
 - További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).  
-- Tudnivalók a [szolgáltatás állapotával](../../azure-monitor/platform/service-notifications.md)kapcsolatos értesítésekről.
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../../azure-monitor/platform/service-notifications.md).

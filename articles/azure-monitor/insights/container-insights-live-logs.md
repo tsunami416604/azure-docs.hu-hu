@@ -1,24 +1,18 @@
 ---
 title: A tárolók naplóinak Azure Monitor valós idejű megtekintése | Microsoft Docs
 description: Ez a cikk a tároló-naplók (StdOut/stderr) és az események valós idejű nézetét ismerteti, anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: d947b44177e9aa5777d759286d982e974e378497
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
-ms.translationtype: HT
+ms.date: 07/12/2019
+ms.openlocfilehash: 25cfe10ec192f874d050bca22ce1b85c2d1afbb4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389788"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554086"
 ---
 # <a name="how-to-view-logs-and-events-in-real-time-preview"></a>Naplók és események valós idejű megtekintése (előzetes verzió)
 A tárolók Azure Monitor tartalmaz egy olyan funkciót, amely jelenleg előzetes verzióban érhető el, amely élő nézetet biztosít az Azure Kubernetes szolgáltatásbeli (ak) tároló-naplókhoz (StdOut/stderr) és az eseményekhez anélkül, hogy kubectl parancsokat kellene futtatnia. Ha bármelyik lehetőséget választja, egy új ablaktábla jelenik meg a **csomópontokon**, **vezérlőkön**és **tárolók** nézetben a teljesítményadatok tábla alatt. Az élő naplózást és a tárolórendszer által létrehozott eseményeket jeleníti meg, hogy a hibák elhárítása valós időben további segítséget nyújtson.

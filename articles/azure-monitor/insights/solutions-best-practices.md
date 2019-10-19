@@ -1,57 +1,51 @@
 ---
-title: Megoldás az Azure-ajánlások |} A Microsoft Docs
+title: Felügyeleti megoldás az Azure-ban – ajánlott eljárások | Microsoft Docs
 description: ''
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
-ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/27/2017
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: a4f982f6265d1c8cab2ae666b9d6e2e33beb5064
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.date: 04/27/2017
+ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672921"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553938"
 ---
-# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások az eszközkezelési megoldások létrehozása az Azure-ban (előzetes verzió)
+# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Ajánlott eljárások a felügyeleti megoldások létrehozásához az Azure-ban (előzetes verzió)
 > [!NOTE]
-> Ez a felügyeleti megoldások létrehozásához az Azure-ban, jelenleg előzetes verzióban érhető el előzetes dokumentációjában talál. Semmilyen sémát, az alábbiakban a változhat.  
+> Ez az előzetes dokumentáció az Azure-ban jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásához. Az alább ismertetett sémák változhatnak.  
 
-Ez a cikk ismerteti az ajánlott eljárások a [hozzon létre egy felügyeleti megoldás fájlt](solutions-solution-file.md) az Azure-ban.  Ezt az információt a további ajánlott eljárások meghatározott frissül.
+Ez a cikk az Azure-beli [felügyeleti megoldási fájlok létrehozásával](solutions-solution-file.md) kapcsolatos ajánlott eljárásokat ismerteti.  Ezek az információk frissülnek, mivel a rendszer további ajánlott eljárásokat azonosít.
 
 ## <a name="data-sources"></a>Adatforrások
-- Adatforrások lehet [Resource Manager-sablonnal konfigurált](../../azure-monitor/platform/template-workspace-configuration.md), de azok nem szerepelnie kell a megoldásfájlt.  A hiba oka, hogy adatforrások konfigurálása jelenleg nem idempotens, ami azt jelenti, hogy a megoldás felülírhatja a felhasználó munkaterületét a meglévő konfigurációt.<br><br>A megoldás például szükség lehet az alkalmazások eseménynaplójában a figyelmeztetési és eseményeket.  Ha megadja ezt adatforrásként a megoldásában, azzal kockáztatja információs események eltávolítása, ha a felhasználó a saját munkaterületen konfigurált.  Ha tartalmazza az összes eseményt, majd, előfordulhat, hogy kell események gyűjtése a túlzott információkat a felhasználó munkaterületén.
+- Az adatforrások [Resource Manager-sablonnal konfigurálhatók](../../azure-monitor/platform/template-workspace-configuration.md), de nem szerepelhetnek a megoldási fájlban.  Ennek az az oka, hogy az adatforrások konfigurálása jelenleg nem idempotens, ami azt jelenti, hogy a megoldás felülírhatja a felhasználó munkaterületének meglévő konfigurációját.<br><br>Előfordulhat például, hogy a megoldás figyelmeztetési és hiba eseményeket igényel az alkalmazás eseménynaplójában.  Ha ezt a megoldást adatforrásként adja meg a megoldásban, akkor az információs események eltávolítását kockáztatja, ha a felhasználó ezt a munkaterületen konfigurálta.  Ha az összes eseményt tartalmazza, akkor előfordulhat, hogy a felhasználó munkaterületén túl sok információt gyűjthet.
 
-- Ha a megoldáshoz szükséges a standard szintű forrásokból származó adatokat, majd meg kell határozni a előfeltételként.  Állapot a dokumentációban, hogy az ügyfél önállóan kell állítania az adatforrás.  
-- Adjon hozzá egy [Data Flow ellenőrzési](../../azure-monitor/platform/view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.  Ez az üzenet jelenik meg a nézet a csempe a szükséges adatok nem található.
+- Ha a megoldás egy szabványos adatforrásból származó adatokra van szüksége, ezt előfeltételként kell megadnia.  A dokumentációban szereplő állapot, amelyben az ügyfélnek saját maga kell konfigurálnia az adatforrást.  
+- Vegyen fel egy adatfolyam- [ellenőrző](../../azure-monitor/platform/view-designer-tiles.md) üzenetet a megoldás bármely nézetére, hogy utasítsa a felhasználót olyan adatforrásokra, amelyeket be kell állítani a szükséges adatok gyűjtéséhez.  Ez az üzenet a nézet csempén jelenik meg, ha a szükséges adatmennyiség nem található.
 
 
 ## <a name="runbooks"></a>Runbookok
-- Adjon hozzá egy [Automation ütemezési](../../automation/automation-schedules.md) minden runbook a megoldásban, amelyet futtatása ütemezés szerint.
-- Tartalmazza a [IngestionAPI modul](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) írja az adatokat a Log Analytics-adattárban runbookok által használható a megoldásban.  A megoldás konfigurálása arra [referencia](solutions-solution-file.md#solution-resource) így, hogy a megoldás a rendszer eltávolítja, ha ehhez az erőforráshoz.  Ez lehetővé teszi több megoldások megosztása a modult.
-- Használat [automatizálási változók](../../automation/automation-schedules.md) megadhatja, hogy a felhasználók később módosítani szeretné a megoldáshoz értékeket.  Akkor is, ha a változó tartalmazza a megoldás van konfigurálva, annak értéke továbbra is módosítható.
+- Adjon hozzá egy [automatizálási ütemtervet](../../automation/automation-schedules.md) a megoldás minden olyan runbook, amelynek ütemezett futtatást kell futtatnia.
+- Adja meg a [IngestionAPI modult](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) a megoldásban, amelyet a runbookok a log Analytics adattárba írt.  Konfigurálja a megoldást úgy, hogy az erőforrásra [hivatkozzon](solutions-solution-file.md#solution-resource) , hogy az a megoldás eltávolítása után is fennmaradjon.  Ez lehetővé teszi, hogy több megoldás ossza meg a modult.
+- Az [Automation-változók](../../automation/automation-schedules.md) használatával megadhatja a megoldásnak azokat a megoldásokat, amelyeket a felhasználók később módosítani kívánnak.  Még ha a megoldás úgy van konfigurálva, hogy tartalmazza a változót, az értéke továbbra is módosítható.
 
 ## <a name="views"></a>Nézetek
-- Az összes megoldáshoz tartalmaznia kell, hogy a felhasználói portálon jelenik meg egyetlen nézetben.  A nézet tartalmazhat több [Vizualizáció részek](../../azure-monitor/platform/view-designer-parts.md) mutatja be az adatokat más-más részhalmazához.
-- Adjon hozzá egy [Data Flow ellenőrzési](../../azure-monitor/platform/view-designer-tiles.md) meg azokat az adatforrásokat, úgy kell konfigurálni a szükséges adatokat gyűjteni a felhasználót a megoldás nézetekhez üzenet.
-- A megoldás konfigurálása arra [tartalmazhat](solutions-solution-file.md#solution-resource) úgy, hogy a eltávolítja a rendszer, ha a megoldás a rendszer eltávolítja a nézetet.
+- Minden megoldásnak tartalmaznia kell egyetlen nézetet, amely megjelenik a felhasználó portálján.  A nézet több [vizualizációs alkatrészt](../../azure-monitor/platform/view-designer-parts.md) is tartalmazhat, amelyek különböző adatkészleteket mutatnak be.
+- Vegyen fel egy adatfolyam- [ellenőrző](../../azure-monitor/platform/view-designer-tiles.md) üzenetet a megoldás bármely nézetére, hogy utasítsa a felhasználót olyan adatforrásokra, amelyeket be kell állítani a szükséges adatok gyűjtéséhez.
+- Konfigurálja a megoldást úgy, hogy [tartalmazza](solutions-solution-file.md#solution-resource) a nézetet, hogy a rendszer eltávolítsa, ha a megoldás el lett távolítva.
 
-## <a name="alerts"></a>Riasztások
-- A címzettek listája határozza meg a megoldásfájlt a paramétert, a felhasználó megadhatja őket, amikor a megoldás telepítése.
-- A megoldás konfigurálása arra [referencia](solutions-solution-file.md#solution-resource) riasztási szabályok, így a felhasználó módosíthatja a konfigurációt.  Szeretnék, hogy a változások, például a címzettlista módosítása, a riasztás a küszöbérték módosítása vagy a riasztási szabály letiltása. 
+## <a name="alerts"></a>Értesítések
+- Adja meg a címzettek listáját paraméterként a megoldás fájljában, így a felhasználó megadhatja azokat a megoldás telepítésekor.
+- Konfigurálja a megoldást úgy, hogy a riasztási szabályokra [hivatkozzon](solutions-solution-file.md#solution-resource) , hogy a felhasználó módosíthatja a konfigurációt.  Előfordulhat, hogy olyan módosításokat szeretne végezni, mint például a címzettek listájának módosítása, a riasztás küszöbértékének módosítása vagy a riasztási szabály letiltása. 
 
 
-## <a name="next-steps"></a>További lépések
-* Az alapvető folyamatainak végig [megtervezéséért és építéséért felügyeleti megoldás](solutions-creating.md).
-* Ismerje meg, hogyan [létrehozza a megoldásfájlt](solutions-solution-file.md).
-* [Adja hozzá a mentett keresések és a riasztások](solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.
+## <a name="next-steps"></a>Következő lépések
+* Végigvezeti a [felügyeleti megoldások tervezésének és kialakításának](solutions-creating.md)alapvető folyamatán.
+* Útmutató [a megoldási fájlok létrehozásához](solutions-solution-file.md).
+* [Mentett keresések és riasztások hozzáadása](solutions-resources-searches-alerts.md) a felügyeleti megoldáshoz.
 * [Nézetek hozzáadása](solutions-resources-views.md) a felügyeleti megoldáshoz.
-* [Adja hozzá az Automation-runbookok és egyéb erőforrások](solutions-resources-automation.md) a felügyeleti megoldáshoz.
+* Az [Automation-runbookok és egyéb erőforrásokat is hozzáadhat](solutions-resources-automation.md) a felügyeleti megoldáshoz.
 

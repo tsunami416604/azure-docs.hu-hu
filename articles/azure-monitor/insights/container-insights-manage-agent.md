@@ -1,45 +1,39 @@
 ---
-title: Az Azure Monitor tárolók ügynök kezelése |} A Microsoft Docs
-description: Ez a cikk ismerteti a leggyakoribb karbantartási feladatok kezelése a tárolók az Azure Monitor által használt tárolóalapú Log Analytics-ügynököket.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: A containers Agent Azure Monitor kezelése | Microsoft Docs
+description: Ez a cikk ismerteti a leggyakoribb karbantartási feladatok kezelését a Azure Monitor által a tárolók számára használt Log Analytics ügynökkel.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/06/2018
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e1d47be159d4721aed4b055a51acf675688b855e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/06/2018
+ms.openlocfilehash: bfedd7989e71bcb8cf58cef7ad7122749350ae26
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65071795"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554054"
 ---
-# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Az Azure Monitor tárolók ügynök kezelése
-Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log Analytics-ügynök Linux rendszeren. Kezdeti telepítés után nincsenek rutin vagy választható feladatok végrehajtásához életciklusa során szükség lehet. Ez a cikk részletesen manuálisan frissítse az ügynököt, és tiltsa le az adott tároló környezeti változóit. 
+# <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>A containers Agent Azure Monitor kezelése
+A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. A kezdeti üzembe helyezést követően a rendszer rutin vagy opcionális feladatokat hajt végre, amelyekre szükség lehet az életciklusa során. Ez a cikk azt ismerteti, hogyan lehet manuálisan frissíteni az ügynököt, és letiltani a környezeti változók gyűjteményét egy adott tárolóból. 
 
-## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>Az Azure Monitor tárolók ügynök frissítése
-Tárolókhoz az Azure Monitor egy tárolóalapú verzióját használja, a Log Analytics-ügynök Linux rendszeren. Az ügynök egy új verziója jelent meg, amikor a rendszer automatikusan frissíti az ügynök a felügyelt Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes fürtökön.  
+## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>A Azure Monitor a tárolók ügynökének frissítése
+A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. Az ügynök új verziójának felszabadításakor az ügynök automatikusan frissül az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön.  
 
-Ha az ügynök frissítése sikertelen, ez a cikk ismerteti a folyamatot, az ügynök manuális frissítése. Tekintse kiadott verziói követéséhez [ügynök közleményekért](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).   
+Ha az ügynök frissítése sikertelen, ez a cikk az ügynök manuális frissítésének folyamatát ismerteti. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.   
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Felügyelt Kubernetes-fürtön az ügynök frissítése
-Az ügynök frissítési folyamata két egyszerű lépésből áll. Az első lépés, hogy tiltsa le az Azure CLI használatával az Azure Monitor szolgáltatással figyelést.  Az ismertetett lépéseket követve a [letiltani a figyelést](container-insights-optout.md?#azure-cli) cikk. Azure CLI használatával lehetővé teszi számunkra, hogy az ügynök eltávolítása a fürt csomópontjainak a megoldás és a vonatkozó adatok a munkaterületen tárolt befolyásolása nélkül. 
+### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Ügynök frissítése a figyelt Kubernetes-fürtön
+Az ügynök frissítésének folyamata két egyenes továbbítási lépésből áll. Első lépésként le kell tiltania a figyelést Azure Monitor az Azure CLI-vel rendelkező tárolók esetében.  Kövesse a [figyelés letiltása](container-insights-optout.md?#azure-cli) című cikkben ismertetett lépéseket. Az Azure CLI használata lehetővé teszi, hogy az ügynököt a fürt csomópontjairól távolítsa el anélkül, hogy ez hatással lenne a megoldásra és a munkaterületen tárolt megfelelő adatokra. 
 
 >[!NOTE]
->Ezt a karbantartási tevékenységet hajt végre, gyűjtött adatokat nem továbbítja a fürt csomópontjainak, majd azt teljesítménynézetet nem jelenik meg az adatok közötti idő eltávolíthatja az ügynököt, és az új verzió telepítése. 
+>A karbantartási tevékenység végrehajtása közben a fürt csomópontjai nem továbbítják az összegyűjtött adatokat, és a teljesítmény nézetek nem jelenítik meg az ügynök eltávolítása és az új verzió telepítésének időpontja közötti adatokat. 
 >
 
-Az ügynök az új verzió telepítéséhez kövesse a leírt lépéseket követve a [engedélyezze a monitorozást az Azure CLI-vel](container-insights-enable-new-cluster.md#enable-using-azure-cli), a folyamat befejezéséhez.  
+Az ügynök új verziójának telepítéséhez kövesse a [figyelés engedélyezése az Azure CLI](container-insights-enable-new-cluster.md#enable-using-azure-cli)-vel című cikkben ismertetett lépéseket a folyamat befejezéséhez.  
 
-Miután a figyelés újbóli engedélyezését, körülbelül 15 percet, mielőtt a fürt frissített mérőszámok megtekintéséhez vehet igénybe. Az ügynök frissítése sikerült ellenőrzéséhez futtassa a parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
+A figyelés ismételt engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürt frissített állapotának mérőszámait. Az ügynök sikeres frissítésének ellenőrzéséhez futtassa a következő parancsot: `kubectl logs omsagent-484hw --namespace=kube-system`
 
-Az állapot a következő példában kell hasonlítania ahol értéke *omi* és *omsagent* egyeznie kell a legújabb verzióra a megadott a [ügynök verziókiadások előzményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
+Az állapotnak az alábbi példához hasonlónak kell lennie, ahol a *omsagent* értékének meg kell egyeznie az [ügynök kiadási előzményeiben](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)megadott legújabb verzióval.  
 
     User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
     :
@@ -60,26 +54,26 @@ Az állapot a következő példában kell hasonlítania ahol értéke *omi* és 
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
 
-## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változó gyűjtemény egy tároló letiltása
-Környezeti változók gyűjti össze a tárolók fut egy pod-tárolókhoz az Azure Monitor és a jeleníti meg őket a tulajdonság panelen a kiválasztott tároló a **tárolók** megtekintése. Ez a viselkedés szabályozhatja az AKS-fürtöt, vagy után üzembe helyezés során vagy egy adott tároló gyűjtés letiltása a környezeti változó beállításával *AZMON_COLLECT_ENV*. Ez a funkció érhető el az ügynök verziója – ciprod11292018 és újabb verzióit.  
+## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változók gyűjteményének letiltása tárolón
+A tárolók Azure Monitor környezeti változókat gyűjtenek a hüvelyben futó tárolókban, és **a tárolók nézetben a** kiválasztott tároló tulajdonságok ablaktábláján jelenítik meg azokat. Ezt a viselkedést úgy szabályozhatja, ha letiltja a gyűjteményt egy adott tárolóhoz az AK-fürt telepítése során vagy a *AZMON_COLLECT_ENV*környezeti változó beállításával. Ez a funkció az ügynök verziójában érhető el – ciprod11292018 és újabb.  
 
-Egy új vagy meglévő tárolón környezeti változók gyűjteményét letiltásához állítsa be a változó **AZMON_COLLECT_ENV** értékkel **hamis** a Kubernetes üzembe helyezési yaml konfigurációs fájlban.   
+Ha le szeretné tiltani a környezeti változók új vagy meglévő tárolón való gyűjtését, állítsa a **AZMON_COLLECT_ENV** változó értékét **false** értékre a Kubernetes telepítési YAML konfigurációs fájljában.   
 
 ```  
 - name: AZMON_COLLECT_ENV  
   value: "False"  
 ```  
 
-A következő parancsot a módosítás alkalmazásához az AKS-tároló: `kubectl apply -f  <path to yaml file>`.
+A következő parancs futtatásával alkalmazza a módosítást az AK-tárolóra: `kubectl apply -f  <path to yaml file>`.
 
-Annak ellenőrzéséhez, hogy a konfiguráció módosításának érvénybe tartott, válassza ki a tároló a **tárolók** megtekintheti az Azure monitorban tárolókhoz, valamint a tulajdonság panelen, bontsa ki a **környezeti változók**.  A szakasz csak a korábban - létrehozott változó megjelennie **AZMON_COLLECT_ENV = FALSE**. Minden más tárolók a környezeti változók szakaszban kell listázza az összes felderített a környezeti változókat.   
+A konfiguráció módosításának ellenőrzéséhez jelöljön ki egy tárolót **Azure monitor tárolók nézetben,** és a Tulajdonságok panelen bontsa ki a **környezeti változók**elemet.  A szakasznak csak a korábban létrehozott változót kell megjelenítenie – **AZMON_COLLECT_ENV = false**. Az összes többi tároló esetében a környezeti változók szakaszban fel kell sorolni az összes felderített környezeti változót.   
 
-Kívánja újból engedélyezni a környezeti változók felderítési, korábban alkalmazza ugyanazt a folyamatot, és módosítsa az értéket **false (hamis)** való **igaz**, majd futtassa újra a `kubectl` parancsot a tároló frissítésére.  
+A környezeti változók felderítésének újbóli engedélyezéséhez alkalmazza ugyanezt a folyamatot, és módosítsa a **hamis** értéket **true**értékre, majd futtassa újra a `kubectl` parancsot a tároló frissítéséhez.  
 
 ```  
 - name: AZMON_COLLECT_ENV  
   value: "True"  
 ```  
 
-## <a name="next-steps"></a>További lépések
-Ha az ügynök frissítése közben problémákat tapasztal, tekintse át a [hibaelhárítási útmutató](container-insights-troubleshoot.md) támogatást.
+## <a name="next-steps"></a>Következő lépések
+Ha problémák merülnek fel az ügynök frissítésekor, tekintse át a támogatási [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .

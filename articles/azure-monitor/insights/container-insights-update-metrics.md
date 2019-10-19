@@ -1,56 +1,50 @@
 ---
-title: Frissítése az Azure Monitor metrikákhoz tárolókhoz |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan frissíti az Azure Monitor-tárolókhoz az egyéni metrikákat funkció, amely támogatja a és a riasztások összesített mérőszámok a engedélyezéséhez.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/06/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: f4e15c4fc7bd7b786c5204153fe64f010e5ffe85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/06/2019
+ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65148857"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554066"
 ---
-# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Az Azure Monitor for containers szolgáltatásban, hogy engedélyezze a mérőszámok frissítése
-Tárolók az Azure Monitor metrikáinak begyűjtését Azure Kubernetes Services-(AKS-) fürt csomópontok és a podok és rögzíti őket az Azure Monitor-metrikák áruház támogatása vezet. Ez a változás célja biztosít továbbfejlesztett aktualitása teljesítménydiagramok, teljesítmény-diagramok az Azure portal irányítópultok, a rögzítés támogatási összesített számítások (Avg, Count, maximális, minimális, Sum) szerkesztésekor és metrikariasztásokat támogatja.
+# <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Tárolók Azure Monitor frissítése a metrikák engedélyezéséhez
+A tárolók Azure Monitor támogatja a metrikák gyűjtését az Azure Kubernetes Services (ak) fürtök csomópontjairól és a hüvelyekről, és azokat a Azure Monitor metrikák tárolójába írja. Ennek a változásnak a célja, hogy jobb ütemezést nyújtson az összesített számítások (AVG, Darabszám, max. min.) bemutatása a teljesítménymutatók esetében, támogatja a teljesítmény-diagramok Azure Portal-irányítópultokon való rögzítését, valamint a metrikai riasztások támogatását.
 
-A következő metrikák engedélyezve vannak a szolgáltatás részeként:
+A szolgáltatás részeként a következő metrikák engedélyezettek:
 
-| Metrika névtér | Metrika | Leírás |
+| Metrikai névtér | Metrika | Leírás |
 |------------------|--------|-------------|
-| insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* metrikákat, és *gazdagép* dimenzió, valamint azok is tartalmaz, a<br> értéke a csomópont nevét a *gazdagép* dimenzió. |
-| insights.container/pods | podCount | Ezek a *pod* metrikák és a következők dimenziók - ControllerName, Kubernetes-névtér, a neve, a fázis. |
+| bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
+| bepillantást nyerhet. tároló/hüvely | PodCount | Ezek a *Pod* mérőszámok, és a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
 
-Ezek a funkciók támogatásához a fürt frissítése elvégezhető az Azure Portalon, az Azure PowerShell vagy az Azure CLI használatával. Az Azure PowerShell és CLI, engedélyezheti a felhasználónkénti vagy az előfizetés összes fürtök esetén. Ez a konfiguráció módosításának és képességek automatikus módon kiegészül AKS új központi telepítéséhez.
+A fürt frissítése az új képességek támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. A Azure PowerShell és a CLI használatával engedélyezheti ezt a fürtön vagy az előfizetésben lévő összes fürtön. Az AK új üzemelő példányai automatikusan tartalmazzák ezt a konfigurációs változást és képességet.
 
-Vagy feldolgozni rendel a **figyelési metrikákat közzétevő** szerepkört a fürt egyszerű szolgáltatást, hogy az ügynök által gyűjtött adatokat teheti közzé a fürtök erőforrás. Figyelési metrikák közzétevő jogosult csak leküldéses metrikák az erőforráshoz, azt nem lehet megváltoztatni bármilyen állapot, az erőforrás frissítésével, vagy olvassa el az adatokat. A szerepkör kapcsolatos további információkért lásd: [figyelési metrikákat közzétevői szerepkör](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+Bármelyik folyamat hozzárendeli a **figyelési metrika közzétevői** szerepkörét a fürt egyszerű szolgáltatásához, így az ügynök által gyűjtött adatok közzétehetők a fürtök erőforrásában. A monitorozási metrikák közzétevője csak az erőforráshoz tartozó mérőszámok leküldésére jogosult, nem változtathat meg semmilyen állapotot, nem frissítheti az erőforrást, illetve nem olvashatja el az adatokat. További információ a szerepkörről: a [metrikák közzétevői szerepkörének figyelése](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Előfeltételek 
-Mielőtt elkezdené, győződjön meg arról, hogy Ön a tagja a **[tulajdonosa](../../role-based-access-control/built-in-roles.md#owner)** AKS-fürt erőforráson csomópont gyűjtésének engedélyezéséhez és a pod egyéni teljesítmény-mérőszámok szerepkör. 
+Mielőtt elkezdené, győződjön meg arról, hogy tagja a **[tulajdonos](../../role-based-access-control/built-in-roles.md#owner)** szerepkörnek az AK-fürt erőforrásán, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét. 
 
-Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Az Azure CLI 2.0.59 verzióját kell futtatnia vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a `az --version` parancsot. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
 
-## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Fürt frissítése az Azure Portalról
+## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Fürt frissítése a Azure Portal
 
-A meglévő AKS-fürtök a tárolók Azure figyelő által figyelt, megtekintheti az állapotát az Azure monitorban több fürt nézetből vagy közvetlenül a fürt a fürt kijelölése után **Insights** , a bal oldali ablaktáblán megjelenik egy szalagcím, amely a portál tetején.
+A tárolók Azure Monitor által figyelt meglévő AK-fürtök esetében, miután kiválasztotta a fürtöt, hogy a fürt állapotát a több fürtből származó nézetből Azure Monitor vagy közvetlenül a fürtből tekintse meg, a bal oldali ablaktáblán található információk **kiválasztásával** a portál tetején található szalagcím.
 
-![Az Azure Portalon AKS-fürt szalagcím frissítése](./media/container-insights-update-metrics/portal-banner-enable-01.png)
+![Az AK-fürt szalagcímének frissítése Azure Portal](./media/container-insights-update-metrics/portal-banner-enable-01.png)
 
-Kattintson a **engedélyezése** kezdeményez a fürt frissítésének folyamatát. A folyamat eltarthat néhány másodpercig befejeződik, és az értesítések a folyamat állapotát a menü követheti nyomon.
+Ha az **Engedélyezés** gombra kattint, a rendszer elindítja a fürt frissítésének folyamatát. Ez a folyamat több másodpercig is eltarthat, és a menü értesítések részén nyomon követheti a folyamat állapotát.
 
-## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>A Bash használatával Azure parancs-rendszerhéjban összes fürt frissítése
-Hajtsa végre az alábbi lépéseket az előfizetésében a Bash használatával az Azure-Parancsrendszerhéj az összes fürtök frissítéséhez.
+## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Az összes fürt frissítése a bash használatával az Azure Command shellben
+A következő lépésekkel frissítheti az előfizetésben lévő összes fürtöt a bash használatával az Azure Command shellben.
 
-1. Futtassa a következő parancsot az Azure parancssori felület használatával.  Az érték szerkesztése **subscriptionId** származó értékkel a **az AKS áttekintése** oldala az AKS-fürtöt.
+1. Futtassa az alábbi parancsot az Azure CLI használatával.  Szerkessze a **subscriptionId** értékét az AK-fürt **AK-áttekintés** oldalának értékével.
 
     ```azurecli
     az login
@@ -58,16 +52,16 @@ Hajtsa végre az alábbi lépéseket az előfizetésében a Bash használatával
     curl -sL https://aka.ms/ci-md-onboard-atscale | bash -s subscriptionId   
     ```
 
-    A konfigurációs módosítás néhány másodpercig, is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
     ```azurecli
     completed role assignments for all AKS clusters in subscription: <subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-cli"></a>Azure CLI-vel fürtönként frissítése
-Hajtsa végre az alábbi lépéseket az Azure CLI-vel előfizetésében adott fürt frissítéséhez.
+## <a name="upgrade-per-cluster-using-azure-cli"></a>Frissítés egy fürtön az Azure CLI használatával
+A következő lépésekkel frissítheti az előfizetéséhez tartozó adott fürtöt az Azure CLI használatával.
 
-1. Futtassa a következő parancsot az Azure parancssori felület használatával. Értékeinek szerkesztéséhez **subscriptionId**, **resourceGroupName**, és **clusterName** az értékekkel a **az AKS áttekintése** lapján a AKS-fürtöt.  A gépkulcsengedélyek értékének **clientIdOfSPN**, a parancs futtatásakor visszaadott `az aks show` az alábbi példában látható módon.
+1. Futtassa az alábbi parancsot az Azure CLI használatával. Szerkessze a **subscriptionId**, a **ResourceGroupName**és a **clusterName** értékeit az AK-fürt **AK-áttekintés** lapján található értékek használatával.  A **clientIdOfSPN**értékének lekéréséhez a parancs `az aks show` az alábbi példában látható módon lesz visszaadva.
 
     ```azurecli
     az login
@@ -76,10 +70,10 @@ Hajtsa végre az alábbi lépéseket az Azure CLI-vel előfizetésében adott f�
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ``` 
 
-## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell-lel minden fürt frissítése
-Hajtsa végre az alábbi lépéseket az Azure PowerShell-lel előfizetés összes fürtök frissítéséhez.
+## <a name="upgrade-all-clusters-using-azure-powershell"></a>Az összes fürt frissítése Azure PowerShell használatával
+A következő lépések végrehajtásával frissítheti az előfizetésben lévő összes fürtöt a Azure PowerShell használatával.
 
-1. Másolja és illessze be a következő szkriptet az fájlba:
+1. Másolja és illessze be a következő szkriptet a fájlba:
 
     ```powershell
     <# 
@@ -319,22 +313,22 @@ Hajtsa végre az alábbi lépéseket az Azure PowerShell-lel előfizetés össze
     Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
     ```
 
-2. Mentse a fájlt **onboard_metrics_atscale.ps1** egy helyi mappába.
-3. Futtassa a következő parancsot az Azure PowerShell használatával.  Az érték szerkesztése **subscriptionId** származó értékkel a **az AKS áttekintése** oldala az AKS-fürtöt.
+2. Mentse ezt a fájlt **onboard_metrics_atscale. ps1** néven egy helyi mappába.
+3. Futtassa a következő parancsot a Azure PowerShell használatával.  Szerkessze a **subscriptionId** értékét az AK-fürt **AK-áttekintés** oldalának értékével.
 
     ```powershell
     .\onboard_metrics_atscale.ps1 subscriptionId
     ```
-    A konfigurációs módosítás néhány másodpercig, is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
     ```powershell
     Completed adding role assignment for the aks clusters in subscriptionId :<subscriptionId>
     ```
 
-## <a name="upgrade-per-cluster-using-azure-powershell"></a>Azure PowerShell-lel fürtönként frissítése
-Hajtsa végre az alábbi lépéseket az Azure PowerShell-lel adott fürt frissítéséhez.
+## <a name="upgrade-per-cluster-using-azure-powershell"></a>Frissítés egy fürtön Azure PowerShell használatával
+A következő lépések végrehajtásával frissítheti egy adott fürtöt a Azure PowerShell használatával.
 
-1. Másolja és illessze be a következő szkriptet az fájlba:
+1. Másolja és illessze be a következő szkriptet a fájlba:
 
     ```powershell
     <# 
@@ -568,18 +562,18 @@ Hajtsa végre az alábbi lépéseket az Azure PowerShell-lel adott fürt frissí
     }
     ```
 
-2. Mentse a fájlt **onboard_metrics.ps1** egy helyi mappába.
-3. Futtassa a következő parancsot az Azure PowerShell használatával. Értékeinek szerkesztéséhez **subscriptionId**, **resourceGroupName**, és **clusterName** az értékekkel a **az AKS áttekintése** lapján a AKS-fürtöt.
+2. Mentse ezt a fájlt **onboard_metrics. ps1** néven egy helyi mappába.
+3. Futtassa a következő parancsot a Azure PowerShell használatával. Szerkessze a **subscriptionId**, a **ResourceGroupName**és a **clusterName** értékeit az AK-fürt **AK-áttekintés** lapján található értékek használatával.
 
     ```powershell
     .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
-    A konfigurációs módosítás néhány másodpercig, is igénybe vehet. Ha elkészült, megjelenik egy üzenet, amely a következő példához hasonló, és az eredmény tartalmazza:
+    A konfiguráció módosítása néhány másodpercig is eltarthat. Ha elkészült, egy üzenet jelenik meg, amely a következőhöz hasonló, és az eredményt tartalmazza:
 
     ```powershell
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>
     ```
 
-## <a name="verify-update"></a>Ellenőrizze a frissítés 
-Kezdeményezése a frissítést, a fentebb leírt módszerek egyikével, után az Azure Monitor metrikaböngészőjének használata és a ellenőrizze a **metrika névtér** , amely **insights** szerepel a listán. Ha igen, ez azt jelzi, hogy lépjen tovább, és telepítése [metrikákhoz kapcsolódó riasztások](../platform/alerts-metric.md) vagy a diagramok rögzítése [irányítópultok](../../azure-portal/azure-portal-dashboards.md).  
+## <a name="verify-update"></a>Frissítés ellenőrzése 
+Miután a korábban ismertetett módszerek valamelyikével kezdeményezte a frissítést, használhatja Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, ez azt jelzi, hogy mehet előre, és megkezdheti a [metrikus riasztások](../platform/alerts-metric.md) beállítását, illetve a diagramok [irányítópultokon](../../azure-portal/azure-portal-dashboards.md)való rögzítését.  

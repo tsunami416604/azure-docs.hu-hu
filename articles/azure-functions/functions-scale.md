@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: ce91d53bec3c74a8a55d46fd53bc3cf0ccd7e28a
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180103"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550639"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Méretezés és üzemeltetés Azure Functions
 
-Ha az Azure-ban hoz létre egy Function alkalmazást, ki kell választania egy üzemeltetési csomagot az alkalmazáshoz. A Azure Functions három üzemeltetési csomag érhető el: [Fogyasztási terv](#consumption-plan), [prémium csomag](#premium-plan)és [app Service-csomag](#app-service-plan).
+Ha az Azure-ban hoz létre egy Function alkalmazást, ki kell választania egy üzemeltetési csomagot az alkalmazáshoz. A Azure Functions három üzemeltetési csomag érhető el: a használati [terv](#consumption-plan), a [Prémium csomag](#premium-plan)és a [app Service csomag](#app-service-plan).
 
 A kiválasztott üzemeltetési csomag a következő viselkedéseket diktálja:
 
@@ -78,11 +78,12 @@ A Prémium csomag használatakor a rendszer a Azure Functions gazdagép példán
 
 A beállítások konfigurálásának módjával kapcsolatban a [Azure functions Premium csomag dokumentációjában](functions-premium-plan.md)találhat további információt.
 
-A számlázás és a felhasznált memória helyett a Prémium csomag számlázása a szükséges és fenntartott példányok által használt fő másodpercek, végrehajtási idő és memória száma alapján történik.  Legalább egy példánynak mindig melegnek kell lennie. Ez azt jelenti, hogy a végrehajtások számától függetlenül az aktív csomag rögzített havi díja.
+A számlázás és a felhasznált memória helyett a Prémium csomag számlázása a szükséges és az előre bemelegített példányok által használt fő másodpercek és memória számától függ. Legalább egy példánynak minden esetben melegnek kell lennie. Ez azt jelenti, hogy a végrehajtások számától függetlenül az aktív csomagokra vonatkozó minimális havi költség. Ne feledje, hogy a prémium szintű csomag összes funkciója előre bemelegítő és aktív példányokat oszt meg.
 
 Vegye figyelembe a Azure Functions prémium csomagot a következő helyzetekben:
 
 * A Function apps folyamatosan vagy csaknem folyamatosan fut.
+* Nagy számú kisméretű végrehajtással rendelkezik, és magas végrehajtási számlával rendelkezik, de a használati terv alacsony GB-os, második számlával rendelkezik.
 * Több CPU-vagy memória-beállításra van szüksége, mint amit a használati terv biztosít.
 * A kódnak hosszabb ideig kell futnia, mint a felhasználási tervben [engedélyezett maximális végrehajtási idő](#timeout) .
 * Olyan funkciókat kell megkövetelni, amelyek csak prémium csomagon, például VNET/VPN-kapcsolaton érhetők el.
@@ -112,7 +113,7 @@ Ha App Service csomagot futtat, engedélyezze a **mindig** beállítást, hogy a
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Még ha az Always on is engedélyezve van, az egyes függvények végrehajtási időtúllépését `functionTimeout` a [Host. JSON](functions-host-json.md#functiontimeout) projektfájl beállítása szabályozza.
+Még ha a mindig engedélyezve van, az egyes függvények végrehajtási időtúllépését a [Host. JSON](functions-host-json.md#functiontimeout) projektfájl `functionTimeout` beállítása vezérli.
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Meglévő alkalmazás üzemeltetési tervének meghatározása
 
@@ -127,7 +128,7 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Ha a parancs `dynamic`kimenete a, a Function alkalmazás a használati tervben van. Ha a parancs `ElasticPremium`kimenete a, a Function alkalmazás a prémium csomagban van. Az összes többi érték egy App Service terv különböző szintjeire utal.
+Ha a parancs kimenete `dynamic`, a Function alkalmazás a használati tervben van. Ha a parancs kimenete `ElasticPremium`, a Function alkalmazás a prémium csomagban van. Az összes többi érték egy App Service terv különböző szintjeire utal.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 

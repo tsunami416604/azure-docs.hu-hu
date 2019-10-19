@@ -1,81 +1,80 @@
 ---
-title: Az Azure Monitor parancssori felület gyors üzembe helyezési minták
-description: Minta CLI-parancsok az Azure Monitor-funkciók. Az Azure Monitor egy Microsoft Azure-szolgáltatás, amely lehetővé teszi, hogy a riasztási értesítéseket küldeni, a hívások webes URL-címek, a konfigurált telemetriai adatokat, és az automatikus méretezés a Cloud Services, a virtuális gépek és a Web Apps értékek alapján.
-author: rboucher
-services: azure-monitor
+title: Azure Monitor parancssori felület gyors üzembe helyezési mintái
+description: CLI-parancsok Azure Monitor szolgáltatásokhoz. A Azure Monitor egy Microsoft Azure-szolgáltatás, amely riasztási értesítések küldését teszi lehetővé, a konfigurált telemetria-adatok értékei alapján meghívja a webes URL-címeket, valamint az Cloud Services, a Virtual Machines és a Web Apps.
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 05/16/2018
-ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fa3293346fee6f6666db01dab5587dd760df84b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 05/16/2018
+ms.openlocfilehash: 48ce748a95f58abb060cd6f54ac29c877356f5de
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60740883"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555586"
 ---
-# <a name="azure-monitor-cli-quick-start-samples"></a>Az Azure Monitor parancssori felület gyors üzembe helyezési minták
-Ez a cikk bemutatja, mintaadatokat parancssori felület (CLI) parancsai segítséget nyújtanak az Azure Monitor funkcióhoz férhet hozzá. Az Azure Monitor lehetővé teszi az automatikus méretezés a Cloud Services, a virtuális gépek és a Web Apps, és a riasztási értesítéseket küldeni, vagy hívja a webes URL-címek, a konfigurált telemetriai adat értékek alapján.
+# <a name="azure-monitor-cli-quick-start-samples"></a>Azure Monitor parancssori felület gyors üzembe helyezési mintái
+Ez a cikk a parancssori felület (CLI) parancsait mutatja be Azure Monitor szolgáltatások elérésének megkönnyítéséhez. A Azure Monitor lehetővé teszi a Cloud Services, a Virtual Machines és a Web Apps autoskálázását, illetve riasztási értesítések küldését vagy webes URL-címek meghívását a konfigurált telemetria-adatok értékei alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem telepítette az Azure CLI, kövesse az utasításokat [az Azure CLI telepítése](/cli/azure/install-azure-cli). Is [Azure Cloud Shell](/azure/cloud-shell) futtassa a parancssori Felületet, mint egy interaktív élmény a böngészőben. Tekintse meg az összes elérhető parancsok a teljes hivatkozást a [Azure Monitor CLI-referenciáját](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Ha még nem telepítette az Azure CLI-t, kövesse az [Azure CLI telepítésének](/cli/azure/install-azure-cli)utasításait. A [Azure Cloud Shell](/azure/cloud-shell) használatával a CLI-t interaktív módon is futtathatja a böngészőben. Tekintse meg az összes elérhető parancs teljes hivatkozását a [Azure monitor CLI-referenciában](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Az első lépés az, hogy jelentkezzen be az Azure-fiókjába.
+Első lépésként jelentkezzen be az Azure-fiókjába.
 
 ```azurecli
 az login
 ```
 
-Ez a parancs futtatása után be kell jelentkezniük a keresztül a képernyőn megjelenő utasításokat. Minden parancs működik, az alapértelmezett előfizetést kontextusában.
+A parancs futtatása után be kell jelentkeznie a képernyőn megjelenő utasítások segítségével. Az összes parancs az alapértelmezett előfizetés kontextusában működik.
 
-Az aktuális előfizetés részleteinek megtekintéséhez a következő paranccsal.
+Az aktuális előfizetés részleteinek listázásához használja az alábbi parancsot.
 
 ```azurecli
 az account show
 ```
 
-Egy másik előfizetésbe működő környezetben módosításához használja a következő parancsot.
+Ha másik előfizetésre szeretné módosítani a munkakörnyezetet, használja a következő parancsot.
 
 ```azurecli
 az account set -s <Subscription ID or name>
 ```
 
-Az összes támogatott Azure Monitor-parancsok listájának megtekintéséhez hajtsa végre a következő.
+Az összes támogatott Azure Monitor parancs listájának megtekintéséhez hajtsa végre a következő műveleteket.
 
 ```azurecli
 az monitor -h
 ```
 
-## <a name="view-activity-log-for-a-subscription"></a>Egy előfizetéshez tartozó tevékenység napló megtekintése
+## <a name="view-activity-log-for-a-subscription"></a>Előfizetés tevékenységi naplójának megtekintése
 
-Tevékenységnapló-események listájának megtekintéséhez hajtsa végre a következő.
+A műveletnapló eseményeinek megtekintéséhez hajtsa végre a következő műveleteket.
 
 ```azurecli
 az monitor activity-log list
 ```
 
-Próbálja ki az összes rendelkezésre álló beállítások megtekintéséhez a következő.
+Az összes elérhető beállítás megtekintéséhez próbálkozzon a következőkkel.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Íme egy példa a lista naplók egy erőforráscsoport szerint
+Íme egy példa a naplók resourceGroup való listázására
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Példa a hívó által megadott lista naplók
+Példa a hívó által a naplók listázására
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Példa egy erőforrástípusra, adott dátumtartományban a hívó által megadott lista naplókkal
+Példa arra, hogy egy adott időtartományon belül a hívó által az erőforrás típusán lévő naplókat listázza
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -84,18 +83,18 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>A riasztások kezelése 
+## <a name="work-with-alerts"></a>Riasztások használata 
 > [!NOTE]
-> Csak riasztások (klasszikus) jelenleg támogatott parancssori felületen. 
+> Jelenleg csak a (klasszikus) riasztások támogatottak a CLI-ben. 
 
-### <a name="get-alert-classic-rules-in-a-resource-group"></a>Egy erőforráscsoportba tartozó riasztás (klasszikus) szabályok beolvasása
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Riasztás (klasszikus) szabályok beolvasása egy erőforráscsoporthoz
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-classic-rule"></a>Metrikaalapú riasztás (klasszikus) szabály létrehozása
+### <a name="create-a-metric-alert-classic-rule"></a>Metrikai riasztás (klasszikus) szabály létrehozása
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -105,24 +104,24 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-classic-rule"></a>Egy riasztás (klasszikus) szabály törlése
+### <a name="delete-an-alert-classic-rule"></a>Riasztás (klasszikus) szabály törlése
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-## <a name="log-profiles"></a>Naplóprofilok
+## <a name="log-profiles"></a>Log-profilok
 
-Ebben a szakaszban található információk segítségével naplóprofilok dolgozhat.
+Az ebben a szakaszban található információk a log-profilokkal használhatók.
 
-### <a name="get-a-log-profile"></a>A napló profil beolvasása
+### <a name="get-a-log-profile"></a>Log-profil beolvasása
 
 ```azurecli
 az monitor log-profiles list
 az monitor log-profiles show --name <profile name>
 ```
 
-### <a name="add-a-log-profile-with-retention"></a>Az adatmegőrzési naplót profil hozzáadása
+### <a name="add-a-log-profile-with-retention"></a>Adatmegőrzést biztosító log-profil hozzáadása
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -133,7 +132,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
     --storage-account-id <storage account ID to store the logs in>
 ```
 
-### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Napló megőrzése és az EventHub profil hozzáadása
+### <a name="add-a-log-profile-with-retention-and-eventhub"></a>Adatmegőrzési és EventHub-naplózási profil hozzáadása
 
 ```azurecli
 az monitor log-profiles create --name <profile name> --location <location of profile> \
@@ -145,7 +144,7 @@ az monitor log-profiles create --name <profile name> --location <location of pro
     --service-bus-rule-id <service bus rule ID to stream to>
 ```
 
-### <a name="remove-a-log-profile"></a>Napló profil eltávolítása
+### <a name="remove-a-log-profile"></a>Log-profil eltávolítása
 
 ```azurecli
 az monitor log-profiles delete --name <profile name>
@@ -153,7 +152,7 @@ az monitor log-profiles delete --name <profile name>
 
 ## <a name="diagnostics"></a>Diagnosztika
 
-Ebben a szakaszban található információk segítségével a diagnosztikai beállítások kezelése.
+Az ebben a szakaszban található információk segítségével a diagnosztikai beállításokkal dolgozhat.
 
 ### <a name="get-a-diagnostic-setting"></a>Diagnosztikai beállítás beolvasása
 
@@ -161,7 +160,7 @@ Ebben a szakaszban található információk segítségével a diagnosztikai be�
 az monitor diagnostic-settings list --resource <target resource ID>
 ```
 
-### <a name="create-a-diagnostic-log-setting"></a>Diagnosztikai napló beállítás létrehozása 
+### <a name="create-a-diagnostic-log-setting"></a>Diagnosztikai napló beállításainak létrehozása 
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -178,7 +177,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-### <a name="delete-a-diagnostic-setting"></a>Diagnosztikai beállítás törlése
+### <a name="delete-a-diagnostic-setting"></a>Diagnosztikai beállítások törlése
 
 ```azurecli
 az monitor diagnostic-settings delete --name <diagnostic name> \
@@ -187,21 +186,21 @@ az monitor diagnostic-settings delete --name <diagnostic name> \
 
 ## <a name="autoscale"></a>Automatikus méretezés
 
-Ebben a szakaszban található információk segítségével automatikus méretezési beállításokkal való munka. Ezekben a példákban módosítania.
+Az ebben a szakaszban található információk segítségével az autoskálázási beállításokkal dolgozhat. Ezeket a példákat módosítania kell.
 
-### <a name="get-autoscale-settings-for-a-resource-group"></a>Automatikus skálázási beállítások egy erőforráscsoport beolvasása
+### <a name="get-autoscale-settings-for-a-resource-group"></a>Erőforráscsoport méretezési beállításainak beolvasása
 
 ```azurecli
 az monitor autoscale list --resource-group <group name>
 ```
 
-### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Lépjen be az automatikus méretezési beállítások név szerint egy erőforráscsoportot
+### <a name="get-autoscale-settings-by-name-in-a-resource-group"></a>Az autoskálázási beállítások beolvasása egy erőforráscsoport neve alapján
 
 ```azurecli
 az monitor autoscale show --name <settings name> --resource-group <group name>
 ```
 
-### <a name="set-autoscale-settings"></a>Automatikus skálázási beállítások megadása
+### <a name="set-autoscale-settings"></a>Az autoskálázás beállításainak megadása
 
 ```azurecli
 az monitor autoscale create --name <settings name> --resource-group <group name> \

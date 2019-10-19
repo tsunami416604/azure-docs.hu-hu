@@ -1,24 +1,18 @@
 ---
 title: Mi az Azure Monitor for VMs (előzetes verzió)? | Microsoft Docs
 description: A Azure Monitor for VMs Azure Monitor, amely az Azure VM operációs rendszer állapotát és teljesítményét ötvözi, valamint az alkalmazások összetevőinek és függőségeinek automatikus felfedését más erőforrásokkal, és a kommunikációt leképezi közöttük. Ez a cikk áttekintést nyújt.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: 3569247ad560f985c041eeb11a7d274e15bfeb4c
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
-ms.translationtype: HT
+ms.date: 10/15/2019
+ms.openlocfilehash: 2364218a9ccbde1cbfc276e3354cb93e42e5ce0b
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515373"
+ms.locfileid: "72553756"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Mi az Azure Monitor for VMs (előzetes verzió)?
 

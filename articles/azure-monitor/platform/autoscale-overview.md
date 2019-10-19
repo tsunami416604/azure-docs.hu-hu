@@ -1,19 +1,18 @@
 ---
 title: Az Virtual Machines-, Cloud Services-és Web Apps-méretezési funkció áttekintése
 description: Microsoft Azure az autoskálázás. A Virtual Machinesre, a virtuálisgép-méretezési csoportokra, a Cloud Servicesra és a Web Appsre vonatkozik.
-author: rboucher
-services: azure-monitor
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 3c70d11b83a116a9ce29ce202edeac6fe9464674
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959050"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72552289"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az Microsoft Azure Virtual Machines-, Cloud Services-és Web Apps-méretezési funkció áttekintése
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
@@ -43,7 +42,7 @@ A virtuálisgép-méretezési csoportok telemetria-adatok használatával haszn�
 ## <a name="custom-metrics"></a>Egyéni metrikák
 Saját egyéni metrikákat is használhat, amelyeket az alkalmazás (ok) okozhat. Ha úgy konfigurálta az alkalmazás (oka) t, hogy metrikákat küldjön a Application Insightsre, a mérőszámok kihasználása lehetővé teszi, hogy a méretezés vagy a nem.
 
-## <a name="time"></a>Time
+## <a name="time"></a>Idő
 Az ütemezett szabályok az UTC-alapúak. A szabályok beállításakor megfelelően be kell állítania az időzónát.  
 
 ## <a name="rules"></a>Szabályok
@@ -61,7 +60,7 @@ A szabályok egy vagy több típusú műveletet indíthatnak el.
 * **E-mail** – e-mail küldése az előfizetés-adminisztrátoroknak, a közös rendszergazdáknak és/vagy az Ön által megadott további e-mail-címnek
 * **Automatizálás webhookok használatával** – webhookok hívása, amely több, az Azure-on belüli vagy kívüli összetett műveletet indíthat el. Az Azure-ban elindíthat egy Azure Automation runbook, egy Azure-függvényt vagy egy Azure logikai alkalmazást. Példa külső gyártótól származó URL-cím az Azure-on kívül olyan szolgáltatások, mint a Slack és a Twilio.
 
-## <a name="autoscale-settings"></a>Automatikus skálázási beállítások
+## <a name="autoscale-settings"></a>Automatikus méretezési beállítások
 Az autoscale a következő terminológiát és struktúrát használja.
 
 - Az autoskálázási **beállítással** megtudhatja, hogy a méretezés felfelé vagy lefelé történjen-e. Egy vagy több profilt tartalmaz, a cél erőforrással kapcsolatos információkat és az értesítési beállításokat.
@@ -95,7 +94,7 @@ Ezzel szemben a vertikális skálázás eltérő. Ugyanazokat a virtuális gépe
 ## <a name="methods-of-access"></a>Hozzáférési módszerek
 Beállíthatja az autoscale on
 
-* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [Azure Portalra](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformfüggetlen parancssori felület (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
@@ -103,15 +102,15 @@ Beállíthatja az autoscale on
 ## <a name="supported-services-for-autoscale"></a>Az autoscale támogatott szolgáltatásai
 | Szolgáltatás | Séma & docs |
 | --- | --- |
-| Web Apps |[Méretezés Web Apps](../../azure-monitor/platform/autoscale-get-started.md) |
+| Webalkalmazások |[Méretezés Web Apps](../../azure-monitor/platform/autoscale-get-started.md) |
 | Cloud Services |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtual Machines: Klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtual Machines: Windows-méretezési csoportok |[Virtuálisgép-méretezési csoportok méretezése a Windowsban](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
-| Virtual Machines: Linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
+| Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
-| API Management-szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
+| API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az autoscale használatával kapcsolatban, használja az előzőleg felsorolt, vagy a következő erőforrásokra vonatkozó információkat:
 
 * [Általános mérőszámok Azure Monitor](../../azure-monitor/platform/autoscale-common-metrics.md)

@@ -1,30 +1,30 @@
 ---
-title: Az Apache Kafka engedélyezett esemény központ létrehozása – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk ismerteti a forgatókönyv létrehozásához egy Apache Kafka az Azure Event Hubs-névtér az Azure portal használatával engedélyezve van.
+title: Apache Kafka engedélyezett Event hub létrehozása – Azure Event Hubs | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre egy Apache Kafka engedélyezett Azure Event Hubs-névteret a Azure Portal használatával.
 services: event-hubs
 documentationcenter: .net
-author: basilhariri
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
-ms.author: bahariri
-ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: shvija
+ms.openlocfilehash: 9ce0f74ec6d4e536bfb3fe827ae6f8ae143b640e
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822486"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555802"
 ---
-# <a name="create-apache-kafka-enabled-event-hubs"></a>Az Apache Kafka engedélyezve van az event hubs létrehozása
+# <a name="create-apache-kafka-enabled-event-hubs"></a>Apache Kafka engedélyezett Event hubok létrehozása
 
-Az Azure Event Hubs egy big Data típusú Adatstreamelési Platform (PaaS) szolgáltatás, amely másodpercenként több millió fogadnak és alacsony késéssel és nagy átviteli sebességet biztosít a valós idejű elemzési és vizualizációs szolgáltatás.
+Az Azure Event Hubs egy nagy adatátviteli platform, amely másodpercenként több millió eseményt tesz elérhetővé, és alacsony késést és nagy átviteli sebességet biztosít a valós idejű elemzésekhez és vizualizációhoz.
 
-Az Azure Event Hubs egy Kafka-végpontot biztosít. Ez a végpont lehetővé teszi, hogy a natív módon megérteni az Event Hubs-névtér [Apache Kafka](https://kafka.apache.org/intro) üzenetek protokoll és API-k. Ez a képesség kommunikálhat az event hubs, mint a Kafka-témaköröket a protokollt használó ügyfelek módosítása, vagy saját fürtök futtatása nélkül. Az Event Hubs támogatja [Apache Kafka verziók 1.0](https://kafka.apache.org/10/documentation.html) és újabb verziók.
+Az Azure Event Hubs egy Kafka-végpontot biztosít. Ez a végpont lehetővé teszi, hogy a Event Hubs névteret natív módon tudja értelmezni [Apache Kafka](https://kafka.apache.org/intro) üzenetküldési protokoll és API-k. Ezzel a képességgel a Kafka-témakörökhöz hasonlóan tud kommunikálni az Event hubokkal a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Event Hubs a Apache Kafka 1,0-es és újabb [verzióit](https://kafka.apache.org/10/documentation.html) támogatja.
 
-Ez a cikk ismerteti, hogyan hozzon létre egy Event Hubs-névtér és a Kafka-kompatibilis az event hubs Kafka alkalmazások való csatlakoztatásához szükséges kapcsolati sztring lekérése.
+Ez a cikk azt ismerteti, hogyan hozhat létre Event Hubs névteret, és hogyan kérheti le a Kafka-alkalmazások a Kafka-kompatibilis Event hubokhoz való csatlakoztatásához szükséges kapcsolati karakterláncot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,13 +32,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
 
-1. Jelentkezzen be a [az Azure portal][Azure portal], és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
+1. Jelentkezzen be a [Azure Portalba][Azure portal], és kattintson a képernyő bal felső részén található **erőforrás létrehozása** elemre.
 
 2. Keressen rá az Event Hubsra, és válassza az itt látható lehetőségeket:
     
     ![Event Hubs keresése a portálon](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra.
+3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a  **Create** (Létrehozás) gombra.
     
     ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -54,9 +54,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Így már streamelheti az eseményeket az Event Hubsba a Kafka-protokollt használó alkalmazásaiból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Event Hubs kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
+Ha többet szeretne megtudni a Event Hubsről, tekintse meg a következő hivatkozásokat:
 
 * [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 * [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)

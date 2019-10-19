@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/16/2019
 ms.author: lahugh
-ms.openlocfilehash: 6f787760c1224172982e0818d8592ce0d36b5e2c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
-ms.translationtype: HT
+ms.openlocfilehash: 3d4585e032d92049a4f087cd510bdef963025250
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527288"
+ms.locfileid: "72550146"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>2\. generációs virtuális gépek (előzetes verzió) támogatása az Azure-ban
 
@@ -52,8 +52,8 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [NVv3 sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu#nvv3-series--1)
 
 
->[!NOTE]
->A 2. generációs virtuálisgép-rendszerképek használata a Mv2-sorozathoz általánosan elérhető, mivel a Mv2 sorozat 2. generációs virtuálisgép-rendszerképekkel működik. Az 1. generációs virtuálisgép-lemezképek nem működnek az Mv2 sorozattal. 
+> [!NOTE]
+> A 2. generációs virtuálisgép-lemezképek használata a Mv2 sorozatú virtuális gépek esetében általánosan elérhető, mivel a Mv2 sorozat csak a 2. generációs virtuálisgép-rendszerképekkel működik együtt. Az 1. generációs virtuálisgép-lemezképek nem támogatottak a Mv2 sorozatú virtuális gépeken. 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>2\. generációs VM-lemezképek az Azure Marketplace-en
 

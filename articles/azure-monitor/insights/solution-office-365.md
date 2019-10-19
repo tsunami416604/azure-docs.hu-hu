@@ -1,23 +1,18 @@
 ---
 title: Office 365 felügyeleti megoldás az Azure-ban | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Office 365-megoldás konfigurálását és használatát az Azure-ban.  A Azure Monitorban létrehozott Office 365-rekordok részletes leírását tartalmazza.
-services: operations-management-suite
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
 ms.service: azure-monitor
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 08/13/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.date: 08/13/2019
+ms.openlocfilehash: 032d52961b4867cad94d06802adb0a1f3eb00f5f
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061605"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553950"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -25,7 +20,7 @@ ms.locfileid: "70061605"
 
 
 > [!NOTE]
-> Az Office 365-megoldás telepítéséhez és konfigurálásához ajánlott módszer az [office 365-összekötő](../../sentinel/connect-office-365.md) engedélyezése az [Azure sentinelben](../../sentinel/overview.md) a jelen cikk lépéseinek használata helyett. Ez az Office 365-megoldás frissített verziója, amely továbbfejlesztett konfigurációs felülettel rendelkezik. Az Azure AD-naplók összekapcsolásához használhatja az [Azure Sentinel Azure ad](../../sentinel/connect-azure-active-directory.md) -összekötőt, vagy konfigurálhatja az [Azure ad diagnosztikai beállításait](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), amely gazdagabb naplófájlokat biztosít, mint az Office 365 felügyeleti naplói. 
+> Az Office 365-megoldás telepítéséhez és konfigurálásához ajánlott módszer az [office 365-összekötő](../../sentinel/connect-office-365.md) engedélyezése az [Azure sentinelben](../../sentinel/overview.md) a jelen cikk lépéseinek használata helyett. Ez az Office 365-megoldás frissített verziója, amely továbbfejlesztett konfigurációs felülettel rendelkezik. Az Azure AD-naplók összekapcsolásához használhatja az [Azure Sentinel Azure ad-összekötőt](../../sentinel/connect-azure-active-directory.md) , vagy [konfigurálhatja az Azure ad diagnosztikai beállításait](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md), amely gazdagabb naplófájlokat biztosít, mint az Office 365 felügyeleti naplói. 
 >
 > Az [Azure Sentinel](../../sentinel/quickstart-onboard.md)bevezetéséhez válassza ki azt a log Analytics munkaterületet, amelyre telepíteni kívánja az Office 365-megoldást. Miután engedélyezte az összekötőt, a megoldás elérhető lesz a munkaterületen, és pontosan ugyanazok lesznek, mint a telepített többi figyelési megoldás.
 >
@@ -48,7 +43,7 @@ A megoldás telepítése és konfigurálása előtt a következőkre van szüks�
 
 - Szervezeti Office 365-előfizetés.
 - Egy globális rendszergazda felhasználói fiók hitelesítő adatai.
-- A naplózási adatai fogadásához konfigurálnia kell a [naplózást](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) az Office 365-előfizetésben.  Vegye figyelembe, hogy a [postaláda-naplózás](https://technet.microsoft.com/library/dn879651.aspx) külön van konfigurálva.  Továbbra is telepítheti a megoldást, és más adatokat is gyűjthet, ha a naplózás nincs konfigurálva.
+- A naplózási adatai fogadásához [konfigurálnia kell a naplózást](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) az Office 365-előfizetésben.  Vegye figyelembe, hogy a [postaláda-naplózás](https://technet.microsoft.com/library/dn879651.aspx) külön van konfigurálva.  Továbbra is telepítheti a megoldást, és más adatokat is gyűjthet, ha a naplózás nincs konfigurálva.
  
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
@@ -58,7 +53,7 @@ Ez a megoldás nem telepít felügyeleti csomagokat a [csatlakoztatott felügyel
 
 ## <a name="install-and-configure"></a>Telepítés és konfigurálás
 
-Először adja hozzá az [Office 365-megoldást](solutions.md#install-a-monitoring-solution)az előfizetéséhez. A hozzáadást követően el kell végeznie a konfigurációs lépéseket ebben a szakaszban, hogy hozzáférést biztosítson az Office 365-előfizetéséhez.
+Először adja hozzá az [Office 365-megoldást az előfizetéséhez](solutions.md#install-a-monitoring-solution). A hozzáadást követően el kell végeznie a konfigurációs lépéseket ebben a szakaszban, hogy hozzáférést biztosítson az Office 365-előfizetéséhez.
 
 ### <a name="required-information"></a>Szükséges információk
 
@@ -66,16 +61,16 @@ Az eljárás megkezdése előtt Gyűjtse össze a következő információkat.
 
 Az Log Analytics munkaterületről:
 
-- Munkaterület neve: Az a munkaterület, amelybe a rendszer az Office 365-adatokat gyűjti.
-- Erőforráscsoport neve: A munkaterületet tartalmazó erőforráscsoport.
-- Azure-előfizetés azonosítója: A munkaterületet tartalmazó előfizetés.
+- Munkaterület neve: az Office 365-adatokat összegyűjtő munkaterület.
+- Erőforráscsoport neve: a munkaterületet tartalmazó erőforráscsoport.
+- Azure-előfizetés azonosítója: a munkaterületet tartalmazó előfizetés.
 
 Az Office 365-előfizetésből:
 
-- Username Egy rendszergazdai fiók e-mail-címe.
-- Bérlő azonosítója: Az Office 365-előfizetés egyedi azonosítója.
+- Username: rendszergazdai fiók e-mail-címe.
+- Bérlő azonosítója: az Office 365-előfizetés egyedi azonosítója.
 - Ügyfél-azonosító: 16 karakterből álló karakterlánc, amely az Office 365-ügyfelet jelöli.
-- Ügyfél titkos kulcsa: A hitelesítéshez szükséges titkosított karakterlánc.
+- Ügyfél titka: a hitelesítéshez szükséges titkosított karakterlánc.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Office 365-alkalmazás létrehozása Azure Active Directory
 
@@ -121,7 +116,7 @@ Első lépésként létre kell hoznia egy alkalmazást Azure Active Directory, a
 
     ![Kulcsok](media/solution-office-365/secret.png)
  
-1. Adja meg az új kulcs leírását és **időtartamát** .
+1. Adja meg az új kulcs **leírását** és **időtartamát** .
 1. Kattintson a **Hozzáadás** elemre, majd másolja ki a generált **értéket** .
 
     ![Kulcsok](media/solution-office-365/keys.png)
@@ -189,7 +184,7 @@ A rendszergazdai fiók első engedélyezéséhez meg kell adnia az alkalmazásho
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
     ```
 
-1. Az alábbihoz hasonló ablak jelenik meg. Kattintson a **fogadja el**.
+1. Az alábbihoz hasonló ablak jelenik meg. Kattintson az **elfogadás**gombra.
     
     ![Rendszergazdai jóváhagyás](media/solution-office-365/admin-consent.png)
 
@@ -373,7 +368,7 @@ Az utolsó lépés az alkalmazás Log Analytics munkaterületre való előfizet�
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troubleshooting"></a>Hibaelhárítás
+### <a name="troubleshooting"></a>Hibakeresés
 
 Ha az alkalmazás már előfizetett erre a munkaterületre, vagy ha a bérlő egy másik munkaterületre van előfizetve, a következő hibaüzenet jelenhet meg:
 
@@ -507,14 +502,14 @@ Az Office 365-megoldás nem kéri le az összes [log Analytics ügynök](../plat
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
-Az adatok kezdetben való gyűjtése igénybe vehet néhány órát. A gyűjtés megkezdése után az Office 365 egy webhook- [értesítést](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) küld a részletes adatokkal, hogy Azure monitor minden alkalommal, amikor létrejön egy rekord. Ez a rekord a kézhezvételt követően néhány percen belül Azure Monitor érhető el.
+Az adatok kezdetben való gyűjtése igénybe vehet néhány órát. A gyűjtés megkezdése után az Office 365 egy [webhook-értesítést](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) küld a részletes adatokkal, hogy Azure monitor minden alkalommal, amikor létrejön egy rekord. Ez a rekord a kézhezvételt követően néhány percen belül Azure Monitor érhető el.
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
 Amikor hozzáadja az Office 365-megoldást a Log Analytics munkaterülethez, az **office 365** csempe hozzá lesz adva az irányítópulthoz. Ez a csempe a környezetben jelenleg elérhető számítógépek számát és grafikus ábrázolását jeleníti meg, valamint a frissítési megfelelőségi állapotukat.<br><br>
-![Office 365 összefoglaló csempe](media/solution-office-365/tile.png)  
+![Office 365 összefoglaló csempe ](media/solution-office-365/tile.png)  
 
 Kattintson az **office 365** csempére az **Office 365** irányítópultjának megnyitásához.
 
@@ -522,10 +517,10 @@ Kattintson az **office 365** csempére az **Office 365** irányítópultjának m
 
 Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Minden oszlop felsorolja az első tíz riasztást az oszlopnak a megadott hatókörhöz és időtartományhoz tartozó feltételeinek megfelelő számokkal. Futtathat egy naplóbeli keresést, amely a teljes listát az oszlop alján található az összes megjelenítése elemre kattintva vagy az oszlop fejlécére kattintva jeleníti meg.
 
-| Oszlop | Leírás |
+| Column | Leírás |
 |:--|:--|
 | Műveletek | Az összes figyelt Office 365-előfizetés aktív felhasználóival kapcsolatos információkat nyújt. Megtekintheti az idő múlásával zajló tevékenységek számát is.
-| Exchange | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
+| Adatcsere | Megjeleníti az Exchange Server-tevékenységek részletezését, például a Add-Mailbox engedélyt vagy a set-Mailbox műveletet. |
 | SharePoint | Megjeleníti a felhasználók által a SharePoint-dokumentumokon végrehajtott legfontosabb tevékenységeket. Ha ezen a csempén végez részletezést, a Keresés lap megjeleníti a tevékenységek részleteit, például a célként megadott dokumentumot és a tevékenység helyét. Egy fájlhoz hozzáférő esemény esetében például megtekintheti az elérni kívánt dokumentumot, a hozzá tartozó fióknevet és IP-címet. |
 | Azure Active Directory | Magában foglalja a leggyakoribb felhasználói tevékenységeket, például a felhasználói jelszavak visszaállítását és a bejelentkezési kísérleteket. A részletezés során látni fogja a tevékenységek részleteit, például az eredmény állapotát. Ez általában akkor hasznos, ha a Azure Active Directory gyanús tevékenységeket szeretne figyelni. |
 
@@ -540,18 +535,18 @@ Az Office 365-megoldás által Azure Monitor Log Analytics munkaterületen létr
 
 A következő tulajdonságok minden Office 365-rekordnál közösek.
 
-| Tulajdonság | Description |
+| Tulajdonság | Leírás |
 |:--- |:--- |
-| Type | *OfficeActivity* |
-| ClientIP | Annak az eszköznek az IP-címe, amelyet a tevékenység naplózása során használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
-| OfficeWorkload | Az Office 365 szolgáltatás, amelyre a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Type (Típus) | *OfficeActivity* |
+| Ügyfélip | Annak az eszköznek az IP-címe, amelyet a tevékenység naplózása során használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
+| OfficeWorkload | Az Office 365 szolgáltatás, amelyre a rekord hivatkozik.<br><br>AzureActiveDirectory<br>Adatcsere<br>SharePoint|
 | Művelet | A felhasználó vagy a rendszergazda tevékenység neve.  |
 | OrganizationId | A szervezet Office 365-bérlője GUID azonosítója. Ez az érték mindig ugyanaz lesz a szervezetnél, függetlenül attól, hogy melyik Office 365-szolgáltatásban történik. |
-| RecordType | A végrehajtott művelet típusa. |
+| Rekordtípus | A végrehajtott művelet típusa. |
 | ResultStatus | Azt jelzi, hogy a művelet (a műveleti tulajdonságban megadott művelet) sikeres volt-e. A lehetséges értékek sikeresek, PartiallySucceeded vagy sikertelenek. Exchange-rendszergazdai tevékenység esetén az érték igaz vagy hamis. |
-| UserId | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például my_name@my_domain_name:. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
+| userId | A naplózni kívánt műveletet végrehajtó felhasználó UPN-neve (egyszerű felhasználónév); például my_name@my_domain_name. Vegye figyelembe, hogy a rendszerfiókok (például SHAREPOINT\system vagy NTAUTHORITY\SYSTEM) által végzett tevékenységekre vonatkozó rekordok is szerepelnek. | 
 | UserKey | A felhasználóazonosító tulajdonságban azonosított felhasználó alternatív azonosítója.  Ez a tulajdonság például a Passport egyedi azonosítójával (PUID) van feltöltve a felhasználók által a SharePointban, a vállalati OneDrive és az Exchange-ben végrehajtott eseményekhez. Ez a tulajdonság a felhasználóazonosító tulajdonsággal megegyező értéket is megadhat a más szolgáltatásokban és a rendszerfiókokban végrehajtott eseményekben előforduló események esetében.|
-| UserType | A műveletet végrehajtó felhasználó típusa.<br><br>rendszergazda<br>Alkalmazás<br>DcAdmin<br>Normál<br>Fenntartva<br>ServicePrincipal<br>Rendszer |
+| userType | A műveletet végrehajtó felhasználó típusa.<br><br>Felügyeleti<br>Jelentkezés<br>DcAdmin<br>Rendszeres<br>Foglalt<br>ServicePrincipal<br>Rendszer |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory alapja
@@ -561,9 +556,9 @@ A következő tulajdonságok minden Azure Active Directory rekordnál közösek.
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Rekordtípus     | AzureActiveDirectory |
 | AzureActiveDirectory_EventType | Az Azure AD-esemény típusa. |
-| ExtendedProperties | Az Azure AD-esemény kiterjesztett tulajdonságai. |
+| Extendedproperties példányt paraméterként | Az Azure AD-esemény kiterjesztett tulajdonságai. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory fiók bejelentkezése
@@ -587,9 +582,9 @@ Ezek a rekordok akkor jönnek létre, amikor módosítást vagy kiegészítést 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
-| RecordType     | AzureActiveDirectory |
+| Rekordtípus     | AzureActiveDirectory |
 | AADTarget | A felhasználó, aki a műveletet (a művelet tulajdonsága azonosítja) elvégezte. |
-| Szereplő | Az a felhasználó vagy szolgáltatásnév, amely végrehajtotta a műveletet. |
+| Színész | Az a felhasználó vagy szolgáltatásnév, amely végrehajtotta a műveletet. |
 | ActorContextId | Annak a szervezetnek a GUID azonosítója, amelyhez a szereplő tartozik. |
 | ActorIpAddress | A szereplő IP-címe IPV4-vagy IPV6-cím formátumban. |
 | InterSystemsId | A GUID-azonosító, amely az Office 365 szolgáltatásban található összetevők közötti műveleteket nyomon követi. |
@@ -620,11 +615,11 @@ Ezek a rekordok akkor jönnek létre, amikor módosításokat végeznek az Excha
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeAdmin |
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeAdmin |
 | ExternalAccess |  Megadja, hogy a parancsmagot a szervezet egy felhasználója, a Microsoft Datacenter személyzete vagy egy adatközpont-szolgáltatásfiók vagy egy meghatalmazott rendszergazda futtatta-e. A False érték azt jelzi, hogy a parancsmagot a szervezet egy személye futtatta. Az igaz érték azt jelzi, hogy a parancsmagot az adatközpont munkatársai, egy adatközpont-szolgáltatásfiók vagy meghatalmazott rendszergazda futtatták. |
 | ModifiedObjectResolvedName |  Ez a parancsmag által módosított objektum felhasználóbarát neve. Ezt csak akkor naplózza a rendszer, ha a parancsmag módosítja az objektumot. |
-| Cégnév | A bérlő neve. |
+| Szervezetnév | A bérlő neve. |
 | OriginatingServer | Annak a kiszolgálónak a neve, amelyből a parancsmag végre lett hajtva. |
 | Paraméterek | Az Operations tulajdonságban azonosított parancsmaggal használt összes paraméter neve és értéke. |
 
@@ -635,8 +630,8 @@ Ezek a rekordok akkor jönnek létre, amikor az Exchange-postaládák módosít�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeItem |
 | ClientInfoString | A művelet végrehajtásához használt e-mail-ügyféllel kapcsolatos információk, például a böngésző verziószáma, az Outlook verziója és a mobileszköz-információ. |
 | Client_IPAddress | Annak az eszköznek az IP-címe, amelyet a művelet naplózásakor használt. Az IP-cím IPv4-vagy IPv6-cím formátumban jelenik meg. |
 | ClientMachineName | Az Outlook-ügyfelet futtató számítógépnév. |
@@ -658,9 +653,9 @@ Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek l
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
-| RecordType     | ExchangeItem |
-| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
+| OfficeWorkload | Adatcsere |
+| Rekordtípus     | ExchangeItem |
+| Tétel | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
 | SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
 | SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
 | SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
@@ -673,7 +668,7 @@ Ezek a rekordok akkor jönnek létre, amikor változtatásokat vagy kiegészít�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| OfficeWorkload | Exchange |
+| OfficeWorkload | Adatcsere |
 | OfficeWorkload | ExchangeItemGroup |
 | AffectedItems | Információk a csoport egyes elemeiről. |
 | CrossMailboxOperations | Azt jelzi, hogy a művelet több postaládát is érintett-e. |
@@ -694,7 +689,7 @@ Ezek a tulajdonságok az összes SharePoint-rekord esetében azonosak.
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
-| EventSource | Azt azonosítja, hogy egy esemény történt a SharePointban. A lehetséges értékek a következők: SharePoint vagy ObjectModel. |
+| eventSource | Azt azonosítja, hogy egy esemény történt a SharePointban. A lehetséges értékek a következők: SharePoint vagy ObjectModel. |
 | ItemType | Az elért vagy módosított objektum típusa. Az objektumok típusairól a ItemType táblázatban talál további információt. |
 | MachineDomainInfo | Az eszköz-szinkronizálási műveletekkel kapcsolatos információk. Ezek az adatok csak akkor jelennek meg, ha szerepelnek a kérelemben. |
 | MachineId |   Az eszköz-szinkronizálási műveletekkel kapcsolatos információk. Ezek az adatok csak akkor jelennek meg, ha szerepelnek a kérelemben. |
@@ -744,14 +739,14 @@ A következő táblázat a megoldás által összegyűjtött frissítési rekord
 | Lekérdezés | Leírás |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összesített száma () művelet szerint |
-|SharePoint-webhelyek használata|OfficeActivity &#124; , ahol a OfficeWorkload = ~ " &#124; SharePoint" összesítési szám () \| SiteUrl szerint rendezve|
+|SharePoint-webhelyek használata|OfficeActivity &#124; , ahol a OfficeWorkload = ~ " &#124; SharePoint" összesítő darabszám () SiteUrl szerint \| rendezése az ASC szám szerint|
 |Fájl-hozzáférési műveletek felhasználói típus szerint|Keresés a következőben: (OfficeActivity) OfficeWorkload = ~ "azureactivedirectory" és "MyTest"|
 |Keresés adott kulcsszóval|Type = OfficeActivity OfficeWorkload = azureactivedirectory "MyTest"|
-|Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
+|Külső műveletek figyelése az Exchange-ben|OfficeActivity &#124; , ahol OfficeWorkload = ~ "Exchange" és ExternalAccess = = True|
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.

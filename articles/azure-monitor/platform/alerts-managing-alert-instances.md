@@ -1,19 +1,18 @@
 ---
 title: Riasztási példányok kezelése a Azure Monitorban
 description: Riasztási példányok kezelése az Azure-ban
-author: anantr
-services: monitoring
 ms.service: azure-monitor
-ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.topic: conceptual
+author: anantr
+ms.author: robb
+ms.date: 09/24/2018
+ms.openlocfilehash: 955ed75f8253798e6970c02b0abf5794298ae6da
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702909"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555640"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>Riasztási példányok kezelése egyesített riasztásokkal
 A Azure Monitor [egységes riasztások terén](https://aka.ms/azure-alerts-overview) az összes különböző típusú riasztást láthatja az Azure-ban. Ez több előfizetést ölel fel egyetlen ablaktáblán. Ez a cikk bemutatja, hogyan tekintheti meg a riasztási példányokat, és hogyan keresheti meg a hibaelhárításhoz adott riasztási példányokat.
@@ -25,8 +24,8 @@ A Azure Monitor [egységes riasztások terén](https://aka.ms/azure-alerts-overv
 
 A riasztások oldal a következő módokon léphet fel:
 
-   + A [Azure Portal](https://portal.azure.com/)válassza a**riasztások** **figyelése** > lehetőséget.  
-     ![Képernyőkép a figyelő riasztásokról](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
+   + A [Azure Portal](https://portal.azure.com/)válassza a **figyelő**  > **riasztások**lehetőséget.  
+     Figyelő riasztások ![Screenshot ](media/alerts-managing-alert-instances/monitoring-alerts-managing-alert-instances-toc.jpg)
   
    + Egy adott erőforrás kontextusának használata. Nyisson meg egy erőforrást, nyissa meg a **figyelés** szakaszt, és válassza a **riasztások**lehetőséget. A Kezdőlap előre szűrve van a riasztások számára az adott erőforráson.
    
@@ -39,7 +38,7 @@ A riasztások oldal a következő módokon léphet fel:
 ## <a name="find-alert-instances"></a>Riasztási példányok keresése
 
 A **riasztások összegzése** lap áttekintést nyújt az összes Azure-beli riasztási példányról. Az összegző nézetet úgy módosíthatja, hogy **több előfizetést** választ ki (legfeljebb 5), vagy az **erőforráscsoportok**, adott **erőforrások**vagy **időtartományok**szűrésével. Válassza ki az **összes riasztást**, vagy a súlyossági sávok bármelyikét, hogy megnyissa a riasztások listájának nézetét.     
-   ![A riasztások összegzése lap képernyőképe](media/alerts-managing-alert-instances/alerts-summary.jpg)
+   Riasztások összefoglaló lapja ![Screenshot ](media/alerts-managing-alert-instances/alerts-summary.jpg)
  
 A **minden riasztás** oldalon az összes Azure-beli riasztási példány megjelenik. Ha riasztási értesítésből érkezik a portálra, az adott riasztási példányon elérhető szűrők használatával szűkítheti a rendelkezésre álló szűrőket.
 
@@ -54,5 +53,5 @@ Az előző oldalon elérhető szűrőktől eltekintve a figyelési szolgáltatá
    >  Ha a súlyossági sávok bármelyikét kiválasztva az oldalra került, a lista az adott súlyossági szinthez előre szűrve lesz.
  
 Bármelyik riasztási példány kiválasztásával megnyílik a **riasztás részletei** lap, amely lehetővé teszi az adott riasztási példányra vonatkozó további részletek megtekintését.   
-   ![A riasztás részletei lap képernyőképe](media/alerts-managing-alert-instances/alert-details.jpg)  
+   Riasztás részletei lap ![Screenshot ](media/alerts-managing-alert-instances/alert-details.jpg)  
 

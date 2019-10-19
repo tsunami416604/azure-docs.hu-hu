@@ -1,20 +1,18 @@
 ---
 title: Adatfolyam Azure Diagnosticsi az adatEvent Hubs
 description: Event Hubs végpontok közötti Azure Diagnostics konfigurálása, beleértve a gyakori forgatókönyvekhez kapcsolódó útmutatást.
-services: azure-monitor
-author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/13/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: c5fc2199de8623dd3a9f2bc5faf23c7c40d67d75
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.topic: conceptual
+author: rboucher
+ms.author: robb
+ms.date: 07/13/2017
+ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "64922836"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72555525"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics adatok továbbítása a gyors elérési úton a Event Hubs használatával
 A Azure Diagnostics rugalmas módszereket biztosít a Cloud Services virtuális gépekről származó mérőszámok és naplók gyűjtésére, valamint az eredmények Azure Storage-ba történő átvitelére. Az 2016-as (SDK 2,9) időkerettől kezdve a diagnosztika elküldhető az egyéni adatforrásokhoz, és másodpercek alatt átviheti az elérési utat az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)használatával.
@@ -24,7 +22,7 @@ A támogatott adattípusok a következők:
 * A Windows esemény-nyomkövetés (ETW) eseményei
 * Teljesítményszámlálók
 * Windows-eseménynaplók
-* Alkalmazásnaplók
+* Alkalmazás-naplók
 * Azure Diagnostics-infrastruktúranaplók
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Diagnosticst Event Hubs a végpontok között. A következő gyakori forgatókönyvekhez is útmutatást nyújtunk:
@@ -40,12 +38,12 @@ Az Azure Diagnostics Event Hubs adatok fogadása támogatott a Cloud Services, a
 * Azure Diagnostics Extension 1,6 ([Az Azure SDK for .net 2,9 vagy újabb verzió](https://azure.microsoft.com/downloads/) , amely alapértelmezés szerint ezt célozza meg)
 * [Visual Studio 2013 vagy újabb](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
 * A Azure Diagnostics meglévő konfigurációk egy alkalmazásban *. wadcfgx* -fájl és az alábbi módszerek egyikének használatával:
-  * Visual Studio: [Diagnosztika konfigurálása az Azure Cloud Services és Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
-  * Windows PowerShell: [Diagnosztika engedélyezése az Azure Cloud Services a PowerShell használatával](../../cloud-services/cloud-services-diagnostics-powershell.md)
+  * Visual Studio: [diagnosztika konfigurálása az Azure Cloud Services és Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)
+  * Windows PowerShell: [diagnosztika engedélyezése az Azure-ban Cloud Services a PowerShell használatával](../../cloud-services/cloud-services-diagnostics-powershell.md)
 * Event Hubs a cikk alapján kiépített névtér – első [lépések Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics összekötése Event Hubs fogadóval
-Alapértelmezés szerint a Azure Diagnostics mindig egy Azure Storage-fiókba küldi a naplókat és a metrikákat. Az alkalmazások a *. wadcfgx* fájl **PublicConfig** / **WadCfg** eleme alatt egy új **mosogató** szakasz hozzáadásával is küldhetnek adatEvent Hubs. A Visual Studióban a *. wadcfgx* fájlt a következő elérési út tárolja: **Cloud Service Project** > **roles** >  **(RoleName)**  > **Diagnostics. wadcfgx** fájl.
+Alapértelmezés szerint a Azure Diagnostics mindig egy Azure Storage-fiókba küldi a naplókat és a metrikákat. Az alkalmazások az Event Hubs számára is küldhetnek egy új **mosogató** szakaszt a *. wadcfgx* fájl **PublicConfig**  / **WadCfg** eleme alatt. A Visual Studióban a *. wadcfgx* fájlt a következő elérési úton tárolja: **Cloud Service Project**  > **roles**  >  **(RoleName)**  > **Diagnostics. wadcfgx** fájl.
 
 ```xml
 <SinksConfig>
@@ -100,10 +98,10 @@ A Event Hubs fogadót is deklarálni kell, és meg kell határozni a *. wadcfgx*
 }
 ```
 
-Az `SharedAccessKeyName` értéknek meg kell egyeznie egy megosztott elérési aláírás (SAS) kulcsával és a **Event Hubs** névtérben definiált házirenddel. Keresse meg a Event Hubs irányítópultot a [Azure Portalban](https://portal.azure.com), kattintson a **configure (Konfigurálás** ) fülre, és állítson be egy elnevezett szabályzatot (például "SendRule"), amely a *küldési* engedélyekkel rendelkezik. A **StorageAccount** a **PrivateConfig**-ben is deklarálva van. Itt nem kell módosítania az értékeket, ha működnek. Ebben a példában az értékeket üresen hagyjuk, ami azt a jele, hogy egy alsóbb rétegbeli eszköz beállítja az értékeket. Például a *ServiceConfiguration. Cloud. cscfg* környezeti konfigurációs fájl állítja be a környezetet – a megfelelő neveket és kulcsokat.  
+A `SharedAccessKeyName` értéknek meg kell egyeznie egy megosztott elérési aláírás (SAS) kulcsával és a **Event Hubs** névtérben definiált házirenddel. Keresse meg a Event Hubs irányítópultot a [Azure Portalban](https://portal.azure.com), kattintson a **configure (Konfigurálás** ) fülre, és állítson be egy elnevezett szabályzatot (például "SendRule"), amely a *küldési* engedélyekkel rendelkezik. A **StorageAccount** a **PrivateConfig**-ben is deklarálva van. Itt nem kell módosítania az értékeket, ha működnek. Ebben a példában az értékeket üresen hagyjuk, ami azt a jele, hogy egy alsóbb rétegbeli eszköz beállítja az értékeket. Például a *ServiceConfiguration. Cloud. cscfg* környezeti konfigurációs fájl állítja be a környezetet – a megfelelő neveket és kulcsokat.  
 
 > [!WARNING]
-> A Event Hubs SAS-kulcsot egyszerű szövegként tárolja a *. wadcfgx* fájlban. Ez a kulcs gyakran be van jelölve a forráskód vezérlőelembe, vagy a Build-kiszolgáló eszközeként érhető el, ezért szükség szerint gondoskodni kell a védelemről. Javasoljuk, hogy itt *csak* a küldési engedélyek használatával használjon sas-kulcsot, hogy egy rosszindulatú felhasználó írjon az Event hub-ba, de ne hallgassa meg vagy ne kezelje.
+> A Event Hubs SAS-kulcsot egyszerű szövegként tárolja a *. wadcfgx* fájlban. Ez a kulcs gyakran be van jelölve a forráskód vezérlőelembe, vagy a Build-kiszolgáló eszközeként érhető el, ezért szükség szerint gondoskodni kell a védelemről. Javasoljuk, hogy itt *csak a küldési* engedélyek használatával használjon sas-kulcsot, hogy egy rosszindulatú felhasználó írjon az Event hub-ba, de ne hallgassa meg vagy ne kezelje.
 >
 >
 
@@ -184,7 +182,7 @@ A fenti példában a rendszer a fogadót a hierarchia szülő **PerformanceCount
 }
 ```
 
-Az előző példában a fogadó csak három számlálóra lesz alkalmazva: **Várólistára helyezett kérelmek**, **elutasított kérelmek**és **processzoridő%** -ban.  
+Az előző példában a fogadó csak három számlálóra van alkalmazva: a **kérelmek várólistára**helyezése, **visszautasított kérések**és a **processzoridő%-os ideje**.  
 
 Az alábbi példa bemutatja, hogyan korlátozhatja a fejlesztő az elküldett adatok mennyiségét a szolgáltatás állapotához használt kritikus mérőszámoknak.  
 
@@ -202,7 +200,7 @@ Az alábbi példa bemutatja, hogyan korlátozhatja a fejlesztő az elküldett ad
 Ebben a példában a fogadó a naplókra van alkalmazva, és csak a hiba szintű nyomkövetésre van szűrve.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services alkalmazás és diagnosztika konfigurációjának központi telepítése és frissítése
-A Visual Studio biztosítja az alkalmazás üzembe helyezéséhez és Event Hubs fogadó konfigurációjának legegyszerűbb elérési útját. A fájl megtekintéséhez és szerkesztéséhez nyissa meg a *. wadcfgx* fájlt a Visual Studióban, szerkessze, majd mentse. Az elérési út a **Cloud Service Project** > **roles** >  **(RoleName)**  > **Diagnostics. wadcfgx**.  
+A Visual Studio biztosítja az alkalmazás üzembe helyezéséhez és Event Hubs fogadó konfigurációjának legegyszerűbb elérési útját. A fájl megtekintéséhez és szerkesztéséhez nyissa meg a *. wadcfgx* fájlt a Visual Studióban, szerkessze, majd mentse. Az elérési út a **Cloud Service Project**  > **roles**  >  **(RoleName)**  > **Diagnostics. wadcfgx**.  
 
 Ezen a ponton a Visual Studióban, a Visual Studio Team Systemben, valamint az MSBuild-on alapuló összes központi telepítési és üzembe helyezési frissítési művelet, valamint a **/t: publish** cél a *. wadcfgx* tartalmazza a csomagolási folyamat során. Emellett a központi telepítések és frissítések az Azure-ba helyezik üzembe a fájlt a megfelelő Azure Diagnostics ügynök-bővítmény használatával a virtuális gépeken.
 
@@ -310,18 +308,18 @@ namespace EventHubListener
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs mosogatók hibáinak megoldása
 * Az Event hub a várt módon nem jeleníti meg a bejövő vagy kimenő események tevékenységeit.
 
-    Győződjön meg arról, hogy az Event hub sikeresen kiépítve. A *. Wadcfgx* **PrivateConfig** szakaszában található összes kapcsolatbiztonsági információnak meg kell egyeznie az erőforrásnak a portálon látható értékeivel. Győződjön meg arról, hogy a portálon van definiálva SAS-szabályzat ("SendRule"), és hogy a küldési engedély meg van adva.  
+    Győződjön meg arról, hogy az Event hub sikeresen kiépítve. A *. Wadcfgx* **PrivateConfig** szakaszában található összes kapcsolatbiztonsági információnak meg kell egyeznie az erőforrásnak a portálon látható értékeivel. Győződjön meg arról, hogy a portálon van definiálva SAS-szabályzat ("SendRule"), és hogy a *küldési* engedély meg van adva.  
 * A frissítés után az Event hub már nem jeleníti meg a bejövő vagy kimenő események tevékenységeit.
 
     Először ellenőrizze, hogy az Event hub és a konfigurációs adatok helyesek-e a korábban leírtak szerint. Előfordulhat, hogy a **PrivateConfig** alaphelyzetbe áll egy központi telepítési frissítésben. A javasolt javítás az, hogy az összes módosítást végrehajtsa a projektben *. wadcfgx* , majd leküldi a teljes alkalmazás frissítését. Ha ez nem lehetséges, győződjön meg arról, hogy a diagnosztikai frissítés leküld egy teljes **PrivateConfig** , amely tartalmazza az SAS-kulcsot.  
 * Megpróbáltam a javaslatokat, és az Event hub még nem működik.
 
-    Próbálja ki az Azure Storage-táblázatot, amely a Azure Diagnostics naplóit és hibáit tartalmazza: **WADDiagnosticInfrastructureLogsTable**. Az egyik lehetőség egy olyan eszköz használata, mint például a [Azure Storage Explorer](https://www.storageexplorer.com) az ehhez a Storage-fiókhoz való kapcsolódáshoz, a táblázat megtekintése és az időbélyegzőhöz tartozó lekérdezés hozzáadása az elmúlt 24 órában. Az eszközzel exportálhat egy. csv-fájlt, és megnyithatja azt egy alkalmazásban, például a Microsoft Excelben. Az Excel megkönnyíti a hívó kártyás karakterláncok, például a **EventHubs**keresését a jelentett hibák megtekintéséhez.  
+    Próbálja ki az Azure Storage-táblázatot, amely a naplókat és a hibákat tartalmazza Azure Diagnostics magáról: **WADDiagnosticInfrastructureLogsTable**. Az egyik lehetőség egy olyan eszköz használata, mint például a [Azure Storage Explorer](https://www.storageexplorer.com) az ehhez a Storage-fiókhoz való kapcsolódáshoz, a táblázat megtekintése és az időbélyegzőhöz tartozó lekérdezés hozzáadása az elmúlt 24 órában. Az eszközzel exportálhat egy. csv-fájlt, és megnyithatja azt egy alkalmazásban, például a Microsoft Excelben. Az Excel megkönnyíti a hívó kártyás karakterláncok, például a **EventHubs**keresését a jelentett hibák megtekintéséhez.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 • [További információ a Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Függelék Azure Diagnostics konfigurációs fájl (. wadcfgx) befejezése – példa
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>Függelék: Azure Diagnostics konfigurációs fájl (. wadcfgx) teljes végrehajtása – példa
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -505,7 +503,7 @@ Védett beállítások:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](../../event-hubs/event-hubs-about.md)

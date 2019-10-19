@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d555c51838f3595367e931341a3cf6161857faef
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431274"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554609"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Az SSL (SSL) titkosítás és a hitelesítés beállítása az Azure HDInsight Apache Kafkahoz
 
 Ez a cikk bemutatja, hogyan állíthatja be az SSL-titkosítást Apache Kafka-ügyfelek és a Apache Kafka-ügynökök között. Azt is bemutatja, hogyan állíthatja be az ügyfelek hitelesítését (más néven kétirányú SSL).
 
 > [!Important]
-> Két ügyfél használhatja a Kafka-alkalmazásokhoz: egy Java-ügyfelet és egy konzol-ügyfelet. Csak a Java-ügyfél @no__t – 0 az SSL-t használhatja mind a gyártó, mind a fogyasztó számára. A konzol termelői ügyfele `console-producer.sh` nem működik az SSL protokollal.
+> Két ügyfél használhatja a Kafka-alkalmazásokhoz: egy Java-ügyfelet és egy konzol-ügyfelet. Csak a Java-ügyfél `ProducerConsumer.java` használhatja az SSL-t mind a gyártó, mind a fogyasztó számára. A konzol termelői ügyfele `console-producer.sh` nem működik az SSL protokollal.
 
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka Broker beállítása
 
@@ -49,7 +49,7 @@ A közvetítő telepítési folyamatának összefoglalása a következő:
 A következő részletes utasításokat követve hajthatja végre a Broker telepítését:
 
 > [!Important]
-> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és szükség esetén `wn0`, `wn1` vagy `wn2` értékkel kell helyettesíteni. `WorkerNode0_Name` és `HeadNode0_Name` értéket a megfelelő gépek neveivel kell helyettesíteni, például: `wn0-abcxyz` vagy `hn0-abcxyz`.
+> A következő kódrészletekben a wnX a három munkavégző csomópont egyikének rövidítése, és szükség esetén `wn0`, `wn1` vagy `wn2` értékkel kell helyettesíteni. `WorkerNode0_Name` és `HeadNode0_Name` a megfelelő gépek nevével kell helyettesíteni, például `wn0-abcxyz` vagy `hn0-abcxyz`.
 
 1. Hajtsa végre a kezdeti beállítást a 0. fő csomóponton, amely a HDInsight kitölti a hitelesítésszolgáltató (CA) szerepkörét.
 
@@ -76,6 +76,12 @@ A következő részletes utasításokat követve hajthatja végre a Broker telep
     keytool -genkey -keystore kafka.server.keystore.jks -validity 365 -storepass "MyServerPassword123" -keypass "MyServerPassword123" -dname "CN=FQDN_WORKER_NODE" -storetype pkcs12
     keytool -keystore kafka.server.keystore.jks -certreq -file cert-file -storepass "MyServerPassword123" -keypass "MyServerPassword123"
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
+    ```
+
+1. A hitelesítésszolgáltatói számítógépen futtassa a következő parancsot a CA-CERT és a CA-Key fájlok létrehozásához:
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
     ```
 
 1. Váltson a HITELESÍTÉSSZOLGÁLTATÓI gépre, és írja alá az összes fogadott tanúsítvány-aláírási kérelmet:
@@ -128,30 +134,18 @@ A konfiguráció módosításának befejezéséhez hajtsa végre a következő l
 
     ![A Kafka SSL konfigurációs tulajdonságainak szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Futtassa az alábbi parancsokat, amelyek a teljes tartománynév (FQDN) helyett az IP-címek megadásához a Kafka `server.properties` fájlhoz adja hozzá a konfigurációs tulajdonságokat.
+1. A **speciális Kafka-env** alatt adja hozzá a következő sorokat a **Kafka-env template** tulajdonság végéhez.
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. Annak ellenőrzéséhez, hogy az előző módosítások helyesen lettek-e beállítva, ellenőrizheti, hogy a következő sorok találhatók-e a Kafka `server.properties` fájlban.
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![Kafka-env template tulajdonság szerkesztése a Ambari-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. Indítsa újra az összes Kafka-közvetítőt.
 1. Indítsa el a felügyeleti ügyfelet a producer és a fogyasztói lehetőségek közül annak ellenőrzéséhez, hogy mindkét gyártó és a fogyasztó dolgozik-e a 9093-es porton.

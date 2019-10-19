@@ -1,89 +1,83 @@
 ---
-title: Az Azure Monitor-beli virtuális gépek (előzetes verzió) engedélyezése értékelés |} A Microsoft Docs
-description: Megtudhatja, hogyan értékelheti ki az Azure Monitor-beli virtuális gépek, egy Azure virtuális gépen vagy egy virtuálisgép-méretezési csoportot.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
+title: Azure Monitor for VMs (előzetes verzió) engedélyezése a kiértékeléshez | Microsoft Docs
+description: Megtudhatja, hogyan értékelheti ki Azure Monitor for VMs egyetlen Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/09/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ec909bcd16f923bbd7036f6a69df2bbb07e561b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 05/09/2019
+ms.openlocfilehash: 1182f48d2d05c90cc90b1832f9305001dd2d1211
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67122532"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553819"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Az Azure Monitor engedélyezése a virtuális gépek (előzetes verzió) az értékeléshez
+# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése kiértékeléshez
 
-Értékelődik ki az Azure Monitor-beli virtuális gépek (előzetes verzió) az Azure-beli virtuális gépek (VM) kis számú, vagy egy egyetlen virtuális gép vagy virtuálisgép-méretezési állítsa be. A legegyszerűbb és leggyakrabban közvetlen engedélyezze a monitorozást módja az Azure Portalról. A cél, hogy a virtuális gépek figyelése és a teljesítmény vagy a rendelkezésre állási problémák felderítése. 
+Kiértékelheti Azure Monitor for VMs (előzetes verzió) szolgáltatást kis számú Azure-beli virtuális gépen (VM), vagy egyetlen virtuális gépen vagy virtuálisgép-méretezési csoporton. A figyelés engedélyezésének legegyszerűbb és legközvetlenebb módja a Azure Portal. A cél a virtuális gépek monitorozása és a teljesítmény-vagy rendelkezésre állási problémák felderítése. 
 
-Mielőtt elkezdené, tekintse át a [Előfeltételek](vminsights-enable-overview.md) és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.  
+Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overview.md) , és győződjön meg arról, hogy az előfizetése és erőforrásai megfelelnek a követelményeknek.  
 
-## <a name="enable-monitoring-for-a-single-azure-vm"></a>Engedélyezze a monitorozást az egy Azure virtuális Gépen
-Az Azure virtuálisgép-figyelés engedélyezése:
+## <a name="enable-monitoring-for-a-single-azure-vm"></a>Egyetlen Azure-beli virtuális gép figyelésének engedélyezése
+Az Azure-beli virtuális gép monitorozásának engedélyezése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-1. Válassza ki **virtuális gépek**.
+1. Válassza a **Virtual Machines**lehetőséget.
 
 1. Válasszon ki egy virtuális gépet a listából.
 
-1. A virtuális gép lapon található a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
+1. A virtuális gép lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
 
-1. Az a **Insights (előzetes verzió)** lapon jelölje be **kipróbálása**.
+1. Az **áttekintések (előzetes verzió)** lapon válassza a **kipróbálás most**lehetőséget.
 
-    ![A virtuális gépek az Azure Monitor engedélyezése a virtuális gép](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![Virtuális gép Azure Monitor for VMsának engedélyezése](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
 
-1. Az a **Azure Monitor Insights felvételi** lapon, ha rendelkezik egy meglévő Log Analytics munkaterület ugyanabban az előfizetésben, válassza a legördülő listában.  
+1. Ha egy meglévő Log Analytics munkaterülettel rendelkezik ugyanabban az előfizetésben, akkor a **Azure monitor** megállapítások bevezetése lapon válassza ki azt a legördülő listából.  
 
-    A listában az alapértelmezett munkaterületre és a hely, ahol a virtuális gép az előfizetésben üzembe helyezett preselects. 
-
-    >[!NOTE]
-    >A virtuális gépről a monitorozási adatok tárolásához egy új Log Analytics-munkaterület létrehozásához lásd: [hozzon létre egy Log Analytics-munkaterület](../../azure-monitor/learn/quick-create-workspace.md). A Log Analytics-munkaterületre kell tartoznia az egyik a [támogatott régiók](vminsights-enable-overview.md#log-analytics).
-
-Miután engedélyezte a figyelés, szüksége lehet várjon körülbelül 10 percet a virtuális gép a mérőszámok megtekintéséhez.
-
-![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
-
-## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Engedélyezze a monitorozást az egyetlen virtuális gép méretezési
-
-Ahhoz, hogy az Azure-beli virtuálisgép-méretezési készlet figyelése:
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-
-2. Válassza ki **Virtual Machine Scale Sets**.
-
-3. A listában jelölje ki a virtuálisgép-méretezési csoportot.
-
-4. A virtuális gép méretezési csoport lapján, a a **figyelés** szakaszban jelölje be **Insights (előzetes verzió)** .
-
-5. Az a **Insights (előzetes verzió)** lapon, ha szeretné használni egy meglévő Log Analytics-munkaterületet, válassza ki a legördülő listából.
-
-    A lista preselects az alapértelmezett munkaterületre és a helyre, amely a virtuális gép telepítve van az előfizetésben. 
-
-    ![Az Azure Monitor egy virtuálisgép-méretezési csoportot a virtuális gépek előkészítése](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+    A lista előjelöli az alapértelmezett munkaterületet és helyet, ahol a virtuális gép üzembe lett helyezve az előfizetésben. 
 
     >[!NOTE]
-    >A virtuálisgép-méretezési csoportban a monitorozási adatok tárolásához egy új Log Analytics-munkaterület létrehozásához lásd: [hozzon létre egy Log Analytics-munkaterület](../learn/quick-create-workspace.md). A Log Analytics-munkaterületre kell tartoznia az egyik a [támogatott régiók](vminsights-enable-overview.md#log-analytics).
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok virtuális gépről való tárolásához, tekintse meg a [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
 
-Miután engedélyezte a figyelés, szüksége lehet várjon körülbelül 10 percet a méretezési csoport esetében a figyelési adatok megtekintéséhez.
+A figyelés engedélyezése után előfordulhat, hogy körülbelül 10 percet várnia kell, mielőtt megtekintheti a virtuális gép állapotának mérőszámait.
+
+![Azure Monitor for VMs figyelés telepítésének engedélyezése](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+
+## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Egyetlen virtuálisgép-méretezési csoport figyelésének engedélyezése
+
+Az Azure virtuálisgép-méretezési csoport figyelésének engedélyezéséhez tegye a következőket:
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+
+2. Válassza a **Virtual Machine Scale sets**lehetőséget.
+
+3. A listából válassza ki a virtuálisgép-méretezési csoport elemet.
+
+4. A virtuálisgép-méretezési csoport lap **figyelés** területén válassza az eredmények **(előzetes verzió)** lehetőséget.
+
+5. Ha meglévő Log Analytics munkaterületet szeretne használni a megállapítások **(előzetes verzió)** lapon, válassza ki azt a legördülő listából.
+
+    A lista előadja az alapértelmezett munkaterületet és helyet, amelyre a virtuális gép telepítve van az előfizetésben. 
+
+    ![Virtuálisgép-méretezési csoport Azure Monitor for VMsának engedélyezése](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal-01.png)
+
+    >[!NOTE]
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatoknak a virtuálisgép-méretezési csoportból való tárolásához, tekintse meg [a log Analytics munkaterület létrehozása](../learn/quick-create-workspace.md)című témakört. A Log Analytics-munkaterületnek a [támogatott régiók](vminsights-enable-overview.md#log-analytics)egyikéhez kell tartoznia.
+
+A figyelés engedélyezése után előfordulhat, hogy körülbelül 10 percet várnia kell, mielőtt megtekinti a méretezési csoport figyelési adatait.
 
 >[!NOTE]
->Ha a méretezési csoporthoz a manuális frissítési modellt használ, frissítse a példányok a telepítés befejezéséhez. Történő frissítés megkezdése a **példányok** lap a **beállítások** szakaszban.
+>Ha a méretezési csoporthoz manuális frissítési modellt használ, frissítse a példányokat a telepítés befejezéséhez. A frissítések elindításához a **példányok** lapon, a **Beállítások** szakaszban olvashat.
 
-![Az Azure Monitor engedélyezése a virtuális gépek figyelése a központi telepítés feldolgozása](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+![Azure Monitor for VMs figyelés telepítésének engedélyezése](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
 
-Most, hogy engedélyezte, hogy a virtuális gép vagy virtuálisgép-méretezési csoporthoz figyelése, elemezhetők az Azure Monitor-beli virtuális gépek a monitorozási információkhoz érhető el. 
+Most, hogy engedélyezte a virtuális gép vagy a virtuálisgép-méretezési csoport figyelését, a figyelési információk a Azure Monitor for VMs elemzéséhez érhetők el. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [megismerheti az Azure virtuális gépek figyelése állapotát](vminsights-health.md). 
-* Felderített alkalmazások függőségeinek megtekintése: [használata az Azure Monitor virtuális gépeket a térképen](vminsights-maps.md). 
-* Azonosíthatja a szűk keresztmetszeteket, teljes kihasználtság és a virtuális gép teljesítményét, lásd: [megtekintése az Azure virtuális gép teljesítménye](vminsights-performance.md).
+* Az állapotfigyelő funkció használatának megismeréséhez tekintse meg [a Azure monitor virtuális gépek állapotának megismerése](vminsights-health.md)című témakört. 
+* A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép használata](vminsights-maps.md). 
+* A szűk keresztmetszetek, a teljes kihasználtság és a virtuális gép teljesítményének meghatározása: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).

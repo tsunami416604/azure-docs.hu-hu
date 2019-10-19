@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor for VMs integráció a System Center Operations Managertal | Microsoft Docs
 description: Azure Monitor for VMs automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ebből a cikkből megtudhatja, hogyan hozhat létre automatikusan elosztott alkalmazás-diagramokat a Operations Manager a Térkép funkcióval.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: b16505eb2c12819532b8675472cf0e6f4177f7bf
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 07/12/2019
+ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489722"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553972"
 ---
 # <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager integráció Azure Monitor for VMs Térkép funkcióval
 
@@ -31,7 +25,7 @@ Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az
 
 * Egy System Center Operations Manager felügyeleti csoport (2012 R2 vagy újabb).
 * Azure Monitor for VMs támogatására konfigurált Log Analytics munkaterület.
-* Egy vagy több Windows-és Linux-alapú virtuális gép vagy fizikai számítógép, amelyet Operations Manager figyel, és adatokat küld a Log Analytics munkaterületre. A Operations Manager felügyeleti csoportnak jelentést küldő Linux-kiszolgálókat úgy kell konfigurálni, hogy közvetlenül kapcsolódjanak Azure Monitorhoz. További információkért tekintse át a naplófájlok [adatainak összegyűjtése a log Analytics ügynökkel](../platform/log-analytics-agent.md)című témakör áttekintését.
+* Egy vagy több Windows-és Linux-alapú virtuális gép vagy fizikai számítógép, amelyet Operations Manager figyel, és adatokat küld a Log Analytics munkaterületre. A Operations Manager felügyeleti csoportnak jelentést küldő Linux-kiszolgálókat úgy kell konfigurálni, hogy közvetlenül kapcsolódjanak Azure Monitorhoz. További információkért tekintse át a [naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](../platform/log-analytics-agent.md)című témakör áttekintését.
 * Az Log Analytics munkaterülethez társított Azure-előfizetéshez hozzáférő egyszerű szolgáltatás. További információ: [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal).
 
 ## <a name="install-the-service-map-management-pack"></a>A Service Map felügyeleti csomag telepítése
@@ -48,7 +42,7 @@ A Microsoft. SystemCenter. ServiceMap felügyeleti csomag (Microsoft. SystemCent
 Miután telepítette a Service Map felügyeleti csomagot, a Operations Manager operatív konzol **Adminisztráció** paneljén az **Operations Management Suite** alatt megjelenik egy új csomópont, **Service Map**.
 
 >[!NOTE]
->Az [Operations Management Suite a](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) log Analytics részét képező szolgáltatások gyűjteménye volt, immár [Azure monitor](../overview.md)része.
+>Az [Operations Management Suite a log Analytics részét képező szolgáltatások gyűjteménye volt](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , immár [Azure monitor](../overview.md)része.
 
 Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőket:
 
@@ -78,7 +72,7 @@ Azure Monitor for VMs Map-integráció konfigurálásához tegye a következőke
 
      ![A Operations Manager konfigurációs csoport](media/service-map-scom/scom-config-group.png)
 
-6. Nem kötelező: Válassza a minden felügyeleti kiszolgáló erőforráskészlet lehetőséget, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása**lehetőségre.
+6. Nem kötelező: válassza a minden felügyeleti kiszolgáló erőforráskészlet elemet, hogy kommunikáljon Log Analyticsokkal, majd kattintson a **munkaterület hozzáadása**lehetőségre.
 
     ![A Operations Manager konfigurációs erőforráskészlet](media/service-map-scom/scom-config-pool.png)
 
@@ -94,29 +88,29 @@ A Log Analytics munkaterület csatlakoztatása után az Operations Manager opera
 
 A Service Map mappa négy csomóponttal rendelkezik:
 
-* **Aktív riasztások**: A Operations Manager és Azure Monitor közötti kommunikációval kapcsolatos összes aktív riasztást listázza.  
+* **Aktív riasztások**: felsorolja az Operations Manager és Azure monitor közötti kommunikációval kapcsolatos összes aktív riasztást.  
 
   >[!NOTE]
   >Ezek a riasztások nem Log Analytics a Operations Managersal szinkronizált riasztásokat, a Service Map felügyeleti csomagban meghatározott munkafolyamatok alapján jönnek létre a felügyeleti csoportban.
 
-* **Kiszolgálók**: Azokat a figyelt kiszolgálókat sorolja fel, amelyek a Azure Monitor for VMs Map szolgáltatásból való szinkronizálásra vannak konfigurálva.
+* **Kiszolgálók**: felsorolja azokat a figyelt kiszolgálókat, amelyek Azure monitor for VMS térképi szolgáltatásból való szinkronizálásra vannak konfigurálva.
 
     ![A Operations Manager figyelési kiszolgálók panel](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Számítógép-csoport függőségeinek nézetei**: A Térkép szolgáltatásból szinkronizált összes számítógépcsoport listája. A bármely csoportra kattintva megtekintheti az elosztott alkalmazás diagramját.
+* **Számítógép-függőségi nézetek**: a Térkép szolgáltatásból szinkronizált összes számítógépcsoport listája. A bármely csoportra kattintva megtekintheti az elosztott alkalmazás diagramját.
 
     ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-group-dad.png)
 
-* **Kiszolgáló függőségi nézetei**: A Térkép szolgáltatásból szinkronizált összes kiszolgáló felsorolása. A bármely kiszolgálóra kattintva megtekintheti az elosztott alkalmazás diagramját.
+* **Kiszolgáló-függőségi nézetek**: felsorolja az összes olyan kiszolgálót, amely szinkronizálva van a Térkép szolgáltatásból. A bármely kiszolgálóra kattintva megtekintheti az elosztott alkalmazás diagramját.
 
     ![Az Operations Manager elosztott alkalmazás diagramja](media/service-map-scom/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Munkaterület szerkesztése vagy törlése
 
-A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **Operations Management Suite** > **Service Map**).
+A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **operations Management Suite**  > **Service Map**).
 
 >[!NOTE]
->Az [Operations Management Suite a](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) log Analytics részét képező szolgáltatások gyűjteménye volt, amely már [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)része.
+>Az [Operations Management Suite a log Analytics részét képező szolgáltatások gyűjteménye volt](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand) , amely már [Azure monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md)része.
 
 Ebben az aktuális kiadásban csak egy Log Analytics munkaterületet lehet konfigurálni.
 
@@ -128,10 +122,10 @@ A szabály, a *Microsoft. SystemCenter. ServiceMapImport. Rule*, rendszeres idő
 
 ![A Operations Manager felülbírálások tulajdonságai ablak](media/service-map-scom/scom-overrides.png)
 
-* **Engedélyezve**: Az automatikus frissítések engedélyezése vagy letiltása.
-* **IntervalMinutes**: Megadja a frissítések közötti időt. Az alapértelmezett intervallum egy óra. Ha gyakrabban szeretné szinkronizálni a térképeket, módosíthatja az értéket.
-* **TimeoutSeconds**: Meghatározza azt az időtartamot, ameddig a kérelem időtúllépése megtörténjen.
-* **TimeWindowMinutes**: Meghatározza az adatlekérdezés időtartományát. Az alapértelmezett érték 60 perc, amely a maximálisan engedélyezett időköz.
+* **Engedélyezve**: az automatikus frissítések engedélyezése vagy letiltása.
+* **IntervalMinutes**: a frissítések közötti időpontot határozza meg. Az alapértelmezett intervallum egy óra. Ha gyakrabban szeretné szinkronizálni a térképeket, módosíthatja az értéket.
+* **TimeoutSeconds**: Megadja azt az időtartamot, ameddig a kérelem időtúllépése megtelt.
+* **TimeWindowMinutes**: az adatlekérdezés időtartományát adja meg. Az alapértelmezett érték 60 perc, amely a maximálisan engedélyezett időköz.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
