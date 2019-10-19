@@ -170,6 +170,7 @@
       items:
         - name: VS-projekt folyamatokkal
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: Sablon exportálása
       href: export-template-portal.md
     - name: Áthelyezés

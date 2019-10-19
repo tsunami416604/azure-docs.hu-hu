@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Az Azure Notebooks dokumentációja
 metadata:
-  title: 'Az Azure Notebooks dokumentációja – Rövid útmutatók, oktatóanyagok és útmutatók | Microsoft Docs'
+  title: Az Azure Notebooks dokumentációja
   description: 'Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett Azure Notebooks-szolgáltatással.'
   services: notebooks
   author: kraigb
