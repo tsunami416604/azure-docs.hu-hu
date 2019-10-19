@@ -9,12 +9,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/07/2019
 ms.author: v-vasuke
-ms.openlocfilehash: ebb960085691206b096090813636ef56366e6536
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
-ms.translationtype: MT
+ms.openlocfilehash: 51062437b4fc1169ce166eb27067e56b9de262e6
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039027"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554373"
 ---
 # <a name="troubleshooting-guide-for-common-problems"></a>Gyakori problémák hibaelhárítási útmutatója
 
@@ -31,13 +31,13 @@ A következő hiba megkeresése a naplókban két valószínű probléma egyiké
 `org.springframework.context.ApplicationContextException: Unable to start web server`
 
 * Hiányzik az egyik bab vagy annak valamelyik függősége.
-* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben valószínűleg `java.lang.IllegalArgumentException` lesz látható.
+* A bean egyik tulajdonsága hiányzik vagy érvénytelen. Ebben az esetben valószínűleg `java.lang.IllegalArgumentException` fog megjelenni.
 
 A szolgáltatási kötések az alkalmazás indítási hibáját is okozhatják. A naplók lekérdezéséhez használjon a kötött szolgáltatásokhoz kapcsolódó kulcsszavakat.  Tegyük fel például, hogy az alkalmazáshoz kötés tartozik egy helyi rendszeridőre beállított MySQL-példányhoz. Ha az alkalmazás nem indul el, a következő hibaüzenet jelenhet meg a naplóban:
 
 `java.sql.SQLException: The server time zone value 'Coordinated Universal Time' is unrecognized or represents more than one time zone.`
 
-Ennek a hibának a kijavításához lépjen a MySql-példány `server parameters`-ra, és változtassa meg a `time_zone` értéket `SYSTEM` és `+0:00` között.
+A hiba kijavításához nyissa meg a MySql-példány `server parameters`ét, és módosítsa a `time_zone`t `SYSTEM`ról `+0:00`ra.
 
 
 ### <a name="my-application-crashes-or-throws-an-unexpected-error"></a>Az alkalmazás összeomlik, vagy váratlan hibát ad vissza
@@ -49,11 +49,11 @@ Az alkalmazások hibakeresése során először ellenőrizze az alkalmazás fut�
 * Ha a felderítés állapota _fel van állítva_, a _metrikák_ elemre kattintva ellenőrizze az alkalmazás állapotát. Vizsgálja meg a következő metrikákat:
 
 
-  - `TomcatErrorCount` (_tomcat.global.error_): Itt láthatja a Spring-alkalmazáskivételek számát. Ha ez a szám nagy, nyissa meg az _Azure log Analytics_ az alkalmazás naplófájljainak vizsgálatához.
+  - `TomcatErrorCount` (_tomcat. Global. Error_): a program az összes tavaszi alkalmazás kivételét itt számítja fel. Ha ez a szám nagy, nyissa meg az _Azure log Analytics_ az alkalmazás naplófájljainak vizsgálatához.
 
-  - `AppMemoryMax` (_jvm.memory.max_): Az alkalmazás számára elérhető maximális memória mennyisége. Lehet, hogy nem definiált, vagy az idő múlásával módosul, ha meg van adva. A felhasznált és lefoglalt memória mennyisége mindig legfeljebb annyi lehet, mint a maximális érték, ha az meg van adva. Előfordulhat azonban, hogy a memóriafoglalás meghiúsul a(z) `OutOfMemoryError` hibával, ha megkísérli megnövelni a felhasznált memóriát úgy, hogy a felhasznált memória mennyisége > a lefoglalt memória mennyiség, még akkor is, ha továbbra is igaz, hogy a felhasznált memória mennyisége <= a maximális memóriamennyiség. Ilyen esetben próbálja megnövelni a maximális halommemória-méretet a(z) `-Xmx` paraméterrel.
+  - `AppMemoryMax` (_JVM. Memory. max_): az alkalmazás számára rendelkezésre álló memória maximális mennyisége. Lehet, hogy nem definiált, vagy az idő múlásával módosul, ha meg van adva. A felhasznált és lefoglalt memória mennyisége mindig legfeljebb annyi lehet, mint a maximális érték, ha az meg van adva. Előfordulhat azonban, hogy a memóriafoglalás meghiúsul a(z) `OutOfMemoryError` hibával, ha megkísérli megnövelni a felhasznált memóriát úgy, hogy a felhasznált memória mennyisége > a lefoglalt memória mennyiség, még akkor is, ha továbbra is igaz, hogy a felhasznált memória mennyisége <= a maximális memóriamennyiség. Ilyen esetben próbálja megnövelni a maximális halommemória-méretet a(z) `-Xmx` paraméterrel.
 
-  - `AppMemoryUsed` (_jvm.memory.used_): Az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. Egy normál terhelésű Java-alkalmazás esetében ez a metrikasorozat „fűrészfog” alakú mintát eredményez, amelyben a memóriahasználat kisebb növekményekben egyenletesen nő és csökken, gyakran hirtelen leesik, majd ez a minta ismétlődik. Ennek az az oka, hogy a Java virtuális gépen belül a szemetet gyűjti, ahol a gyűjtési műveletek a "sawteeth" cseppeket jelölik.
+  - `AppMemoryUsed` (_JVM. Memory. használt_): az alkalmazás által jelenleg használt memória mennyisége bájtban kifejezve. Egy normál terhelésű Java-alkalmazás esetében ez a metrikasorozat „fűrészfog” alakú mintát eredményez, amelyben a memóriahasználat kisebb növekményekben egyenletesen nő és csökken, gyakran hirtelen leesik, majd ez a minta ismétlődik. Ennek az az oka, hogy a Java virtuális gépen belül a szemetet gyűjti, ahol a gyűjtési műveletek a "sawteeth" cseppeket jelölik.
     Ez a mérőszám fontos a memória-problémák azonosításához, például: * memória alábontása a legelején * a nagy mennyiségű memória kiosztása egy adott logikai útvonalon * fokozatos memóriavesztés
 
   További részletekért tekintse meg a [metrikákat](spring-cloud-concept-metrics.md).
@@ -70,7 +70,7 @@ A helyzet megállapításához
 
 1. Lépjen a _Metrikák_ területre, és válassza a(z) `Service CPU Usage Percentage` vagy a(z) `Service Memory Used` lehetőséget,
 2. Adjon hozzá egy `App=` szűrőt, hogy megadja, melyik alkalmazást kívánja monitorozni.
-3. A metrikák felosztása `Instance` értékkel.
+3. A metrikák felosztása `Instance` alapján.
 
 Ha az összes példány magas CPU-/memória-értékkel rendelkezik, akkor fel kell mérnie az alkalmazást, vagy fel kell mérnie a PROCESSZORt vagy a memóriát. További részletekért tekintse meg az [alkalmazások méretezése](spring-cloud-tutorial-scale-manual.md)
 
@@ -105,7 +105,7 @@ Ha azonban az Azure _Spring Cloud_ Service-példányt az [Azure CLI](https://doc
 * A példányhoz tartozó erőforráscsoport már létre van hozva.
 * Az erőforrás neve megfelel az elnevezési szabálynak. (Csak kisbetűket, számokat és kötőjeleket tartalmazhat. Az első karakternek betűnek kell lennie. Az utolsó karakternek betűnek vagy számnak kell lennie. Az értéknek 2 – 32 karakter hosszúnak kell lennie.)
 
-Ha az _Azure Spring Cloud_ Service-példányt a Resource Manager-sablonon keresztül próbálja kiépíteni, látogasson el https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates -re a sablon szintaxisának megtekintéséhez.
+Ha a Resource Manager-sablon segítségével próbálja kiépíteni az _Azure Spring Cloud_ Service-példányt, látogasson el https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates a sablon szintaxisának megtekintéséhez.
 
 A rendszer az _Azure Spring Cloud_ Service-példány nevét fogja használni a `azureapps.io` alatti altartomány nevének megadásához, ezért a kiépítés meghiúsul, ha a név ütközik egy meglévővel. További részleteket a tevékenységnaplókban talál.
 
@@ -147,11 +147,51 @@ A _szolgáltatás beállításjegyzékbeli_ ügyfél-naplófájljait is megtekin
 
 Tekintse meg [az első lépéseket ismertető cikket](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) az _Azure log Analytics_megismeréséhez. A naplók lekérdezése [Kusto lekérdezési nyelv](https://docs.microsoft.com/azure/kusto/query/)használatával.
 
+### <a name="i-want-to-inspect-my-applications-environment-variables"></a>Meg szeretném vizsgálni az alkalmazás környezeti változóit
+
+A környezeti változók tájékoztatják az Azure Spring Cloud Framework szolgáltatást, hogy az Azure tisztában legyen azzal, hol és hogyan konfigurálhatja az alkalmazást alkotó szolgáltatásokat.  A környezeti változók helyességének biztosításához szükséges első lépés a lehetséges problémák elhárítása.  A Spring boot indítószerkezet végpontja segítségével áttekintheti a környezeti változókat.  
+
+[!WARNING]
+> Ez az eljárás a környezeti változókat teheti elérhetővé.  Ne folytassa, ha a tesztelési végpont nyilvánosan elérhető, vagy ha tartománynevet rendelt hozzá az alkalmazáshoz.
+
+1. Navigáljon a következő URL-címre: `https://<your application test endpoint>/actuator/health`.  
+    - A `{"status":"UP"}`hoz hasonló válasz azt jelzi, hogy a végpont engedélyezve van.
+    - Ha a válasz negatív, vegye fel a következő függőséget a `POM.xml`ba:
+
+        ```xml
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-actuator</artifactId>
+            </dependency>
+        ```
+
+1. Ha engedélyezve van a Spring boot indítószerkezet végpontja, lépjen a Azure Portalra, és keresse meg az alkalmazás konfigurációs lapját.  Adja hozzá a (z) `MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE' and the value ` * "nevű környezeti változót. 
+
+1. Indítsa újra az alkalmazást.
+
+1. Navigáljon a `https://<the test endpoint of your app>/actuator/env`ra, és vizsgálja meg a választ.  A listának így kell kinéznie:
+
+    ```json
+    {
+        "activeProfiles": [],
+        "propertySources": {,
+            "name": "server.ports",
+            "properties": {
+                "local.server.port": {
+                    "value": 1025
+                }
+            }
+        }
+    }
+    ```
+
+Keresse meg `systemEnvironment` nevű gyermek csomópontot.  Ez a csomópont tartalmazza az alkalmazás környezeti változóit.
+
 ### <a name="i-cannot-find-metrics-or-logs-for-my-application"></a>Nem találom az alkalmazás metrikáit vagy naplóit
 
 Nyissa meg az _app Management_ szolgáltatást, és _ellenőrizze, hogy_ _fut_ -e az alkalmazás.
 
-Ha a _JVM_ metrikák láthatók, de a _tomcat_nem rendelkezik metrikával, akkor ellenőrizze, hogy a @ no__t-2 függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
+Ha a _JVM_ metrikák láthatók, de a _tomcat_nem rendelkezik metrikával, akkor ellenőrizze, hogy a `spring-boot-actuator` függőség engedélyezve van-e az alkalmazáscsomag, és hogy sikeresen elindul-e.
 
 ```xml
 <dependency>

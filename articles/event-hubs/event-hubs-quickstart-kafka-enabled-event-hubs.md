@@ -1,21 +1,21 @@
 ---
-title: Az Azure Event Hubs a Kafka protokollal adatstreamelési |} A Microsoft Docs
-description: Ez a cikk információt nyújt az adatfolyamot, az Azure Event Hubsba a Kafka protokoll és API-k használatával.
+title: Adatstream az Azure Event Hubs a Kafka protokoll használatával | Microsoft Docs
+description: Ez a cikk az Azure-Event Hubs a Kafka protokoll és az API-k használatával történő adatfolyam-továbbítással kapcsolatos információkat tartalmazza.
 services: event-hubs
-author: basilhariri
-ms.author: bahariri
+author: ShubhaVijayasarathy
+ms.author: shvija
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 05/06/2019
-ms.openlocfilehash: a4e050fdef20cdc62ee92e6383c455ffcb9abc90
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ebe3dc39cf135f09c084a8325d380b9bc9ef48dc
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65203908"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72554964"
 ---
-# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Az Event hubs szolgáltatással, a Kafka protokollal streamelési adatok
+# <a name="data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Adatfolyamok Event Hubs a Kafka protokoll használatával
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
 
 > [!NOTE]
@@ -34,13 +34,13 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és kattintson a **erőforrás létrehozása** , a képernyő bal felső.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és kattintson a képernyő bal felső részén található **erőforrás létrehozása** elemre.
 
 2. Keressen rá az Event Hubsra, és válassza az itt látható lehetőségeket:
     
     ![Event Hubs keresése a portálon](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a **Create** (Létrehozás) gombra. Megjegyzés: Az Event Hubs a kafka csak támogatott a standard és a dedikált Event Hubs szint. Alapszintű Event Hubs válaszul Kafka műveleteket a témakör engedélyezési hibaüzenetet ad vissza.
+3. Adjon meg egy egyedi nevet, és engedélyezze a Kafkát a névtéren. Kattintson a  **Create** (Létrehozás) gombra. Megjegyzés: a Kafka-Event Hubs csak a standard és a dedikált szint Event Hubs támogatja. Az alapszintű Event Hubs az összes Kafka-műveletre adott válaszként egy témakör-engedélyezési hibát ad vissza.
     
     ![Névtér létrehozása](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  
@@ -98,11 +98,11 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 Ha az Event Hubs Kafka-fürtön vannak események, most el kell kezdeniük érkezni a fogyasztóról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. További információért folytassa az alábbi oktatóanyaggal:
 
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 * [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
 * [További minták megismerése a Kafkához készült Event Hubs GitHub-oldalán](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Használat [Mirrormakerrel](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a [a Kafkából a helyszíni eseményeket stream Kafka engedélyezve van az Event hubs szolgáltatás a felhőben.](event-hubs-kafka-mirror-maker-tutorial.md)
+* A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) segítségével [továbbíthatja a helyszíni Kafka-eseményeket a felhőben elérhető Event Hubs Kafka-ra.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Ismerje meg, hogyan streamelhet a Kafka-kompatibilis Event Hubsba az [Apache Flink](event-hubs-kafka-flink-tutorial.md) vagy az [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) használatával

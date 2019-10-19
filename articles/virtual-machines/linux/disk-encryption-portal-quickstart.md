@@ -6,14 +6,14 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 0249867a6af16505a692e7090639807ed3d239c9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 83446d30de17973352e836d6107ad545b2da63e3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72031076"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550312"
 ---
-# <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Gyors útmutató: Virtuális gép létrehozása és titkosítása a Azure Portal
+# <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Rövid útmutató: virtuális gép létrehozása és titkosítása a Azure Portal
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület a virtuális gépek és a társított erőforrások létrehozására. Ebben a rövid útmutatóban az Ubuntu 18,04 LTS rendszert futtató linuxos virtuális gép (VM) üzembe helyezéséhez a Azure Portal fogja használni a titkosítási kulcsok tárolásához és a virtuális gép titkosításához.
 
@@ -21,7 +21,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
@@ -60,8 +60,8 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A **régió**mezőben válassza ki ugyanazt a régiót, amelyet a fenti kulcstartó létrehozásakor használt (például az **USA keleti**régiója).
 1. Győződjön meg arról, hogy a **méret** *szabványos D2s v3*.
 1. A **rendszergazdai fiók**területen válassza a **jelszó**lehetőséget. Adja meg a felhasználónevet és a jelszót.
-    ![ResourceGroup-létrehozási képernyő @ no__t-1
-1. Válassza a "felügyelet" fület, és ellenőrizze, hogy rendelkezik-e diagnosztikai Storage-fiókkal. Ha nincs Storage-fiókja, válassza az "új létrehozása" lehetőséget, adja meg az új fiók nevét, és válassza az "OK" ![ResourceGroup-létrehozási képernyő @ no__t-1
+    ![ResourceGroup létrehozási képernyő ](./media/disk-encryption/portal-qs-vm-creation.png)
+1. Válassza a "felügyelet" fület, és ellenőrizze, hogy rendelkezik-e diagnosztikai Storage-fiókkal. Ha nincs Storage-fiókja, válassza az "új létrehozása" lehetőséget, adja meg az új fiók nevét, és válassza az "OK" ![ResourceGroup létrehozás képernyőt ](./media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Kattintson a "felülvizsgálat + létrehozás" gombra.
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
@@ -77,7 +77,7 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
 
 1. A titkosítás képernyőn a **titkosítani kívánt lemezek**területen válassza az **operációs rendszer és az adatlemezek**lehetőséget.
 1. A **titkosítási beállítások**területen kattintson a "kulcstartó és kulcs kiválasztása a titkosításhoz" elemre.
-1. A jobb oldali oldalsávon válassza ki a korábban a * Key Vault * * értékként létrehozott kulcstartó nevét, majd kattintson a **kiválasztás**gombra.
+1. A jobb oldali oldalsávon válassza ki a **Key Vault**értékeként korábban létrehozott kulcstartó nevét, majd kattintson a **kiválasztás**gombra.
 
     ![lemezek és titkosítás kiválasztása](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. A titkosítás képernyő felső részén kattintson a Mentés gombra. A felugró ablak figyelmezteti, hogy a virtuális gép újraindul. Kattintson a **Yes** (Igen) gombra.
@@ -87,7 +87,7 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, válassza a Törlés lehetőséget, majd erősítse meg a törölni kívánt erőforráscsoport nevét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, amely engedélyezte a titkosítási kulcsokat, létrehozta a virtuális gépet, és engedélyezte a virtuális gép titkosítását.  
 

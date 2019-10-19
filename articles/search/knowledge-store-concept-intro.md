@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: b092c7251bc2a6794db36f8eaa279a7eeb931723
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
-ms.translationtype: HT
+ms.openlocfilehash: 8a0022ce429b1359d8771f5089589fc779b8a751
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533779"
+ms.locfileid: "72554892"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Mi az a Knowledge Store a Azure Searchban?
 
@@ -21,17 +21,17 @@ ms.locfileid: "72533779"
 > A Knowledge áruház előzetes verzióban érhető el, és nem éles használatra készült. A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) biztosítja ezt a funkciót. Jelenleg nincs .NET SDK-támogatás.
 >
 
-A Knowledge Store a Azure Search egyik funkciója, amely egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kimenetét őrzi meg későbbi elemzések vagy más alsóbb rétegbeli feldolgozás céljából. A bővített *dokumentum* egy olyan folyamat kimenete, amely a Cognitive Services erőforrásai által kinyert, strukturált és elemzett tartalomból lett létrehozva. A standard AI-alapú folyamatokban a dúsított dokumentumok átmenetiek, csak indexelés során használatosak, majd elvetették őket. A Knowledge Store-ban a dokumentumok más alkalmazásokban vagy az adatelemzési folyamatokban való használatra lesznek mentve. 
+A Knowledge Store a Azure Search egyik funkciója, amely egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kimenetét őrzi meg későbbi elemzések vagy más alsóbb rétegbeli feldolgozás céljából. A *dúsított dokumentum* egy folyamat kimenete, amely az AI-folyamatokkal kinyert, strukturált és elemzett tartalomból készült. A standard AI-folyamatokban a dúsított dokumentumok átmenetiek, csak indexelés során használhatók, majd elvetették őket. A Knowledge Store-ban a dúsított dokumentumok megmaradnak. 
 
-Ha korábban már használta a mesterséges intelligenciával Azure Search kapcsolatos ismereteket, már tudja, hogy a *szakértelmével* egy dokumentum a dúsítások sorozatából való áthelyezésére szolgál. Az eredmény lehet egy Azure Search index, vagy (ebben az előzetes verzióban új) vetítések egy Tudásbázisban. A két kimenet, a keresési index és a Knowledge Store, fizikailag különbözik egymástól. Ugyanazt a tartalmat használják, de nagyon különböző módokon vannak tárolva és használva.
+Ha korábban már használta a mesterséges intelligenciát Azure Search, akkor már tudja, hogy a *szakértelmével* egy adott dokumentumon keresztül helyez át egy dokumentumot. Az eredmény lehet keresési index, vagy (ebben az előzetes verzióban új) vetítések egy Tudásbázisban. A két kimenet, a keresési index és a Tudásbázis, ugyanazokat a tartalmakat használja, de a tárolása és használata nagyon különböző módokon történik.
 
-Fizikailag a Knowledge Store egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview), amely az Azure Table Storage, az Azure Blob Storage vagy mindkettő, attól függően, hogy hogyan konfigurálja a folyamatot. Minden olyan eszköz vagy folyamat, amely tud csatlakozni egy Azure Storage-fiókhoz, felhasználhatja egy Tudásbázis tartalmát.
+Fizikailag a Knowledge Store az [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), az Azure Table Storage, az Azure Blob Storage vagy mindkettő. Minden olyan eszköz vagy folyamat, amely képes az Azure Storage-hoz kapcsolódni, felhasználhatja a Tudásbázis tartalmát.
 
-A kivetítések az adattárakban lévő adatstrukturálás mechanizmusa. A kivetítések segítségével például megadhatja, hogy a kimenet egyetlen blobként vagy kapcsolódó táblák gyűjteménye legyen mentve. Az Azure Storage beépített [Storage Explorerán](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) keresztül könnyedén megtekintheti a Knowledge Store-tartalmakat.
+![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Knowledge Store a folyamat ábráján")
 
-![Knowledge Store a folyamat ábráján](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Knowledge Store a folyamat ábráján")
+A kivetítések az adattárakban lévő adatstrukturálás mechanizmusa. A kivetítések segítségével például megadhatja, hogy a kimenet egyetlen blobként vagy kapcsolódó táblák gyűjteménye legyen mentve. 
 
-A Knowledge Store használatához adjon hozzá egy `knowledgeStore` elemet egy készségkészlet, amely az indexelési folyamat lépés-Wise műveleteit definiálja. A végrehajtás során Azure Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a folyamaton belül létrehozott definícióval.
+A Knowledge Store használatához adjon hozzá egy `knowledgeStore` elemet egy készségkészlet, amely az indexelési folyamat lépés-Wise műveleteit definiálja. A végrehajtás során Azure Search létrehoz egy helyet az Azure Storage-fiókban, és a dúsított dokumentumokat a konfigurációtól függően blobként vagy táblázatként adja meg.
 
 ## <a name="benefits-of-knowledge-store"></a>A Knowledge Store előnyei
 

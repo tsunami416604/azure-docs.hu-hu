@@ -1,24 +1,27 @@
 ---
 title: A felhőszolgáltatói program megfontolandó szempontjai
-description: Az Azure-beli delegált erőforrás-kezelés használatakor fontos figyelembe venni a biztonsági és hozzáférés-vezérlést.
+description: A CSP-partnerek esetében az Azure-beli delegált erőforrás-kezelés a részletes engedélyek engedélyezésével segíti a biztonságot és a szabályozást.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 08/22/2019
+ms.date: 10/17/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 76df2942b176fd7d0e785213e44655ffd11da410
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: cdb9eaf0b1f1a6e7a136432586ad186308e4e3d3
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286201"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72550296"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Az Azure Lighthouse és a Cloud Solution Provider program
 
 Ha Ön CSP- [(felhőalapú szolgáltatói)](https://docs.microsoft.com/partner-center/csp-overview) partner, akkor már hozzáférhet az ÜGYFELEKNEK a CSP programon keresztül létrehozott Azure-előfizetésekhez a (z [) (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) funkció használatával. Ez a hozzáférés lehetővé teszi az ügyfelek előfizetésének közvetlen támogatását, konfigurálását és felügyeletét.
 
 Az Azure Lighthouse használatával az Azure-beli delegált erőforrás-kezelést és az AOBO-et is használhatja. Ez segít javítani a biztonságot, és csökkenti a szükségtelen hozzáférést azáltal, hogy részletesebb engedélyeket biztosít a felhasználók számára. Emellett nagyobb hatékonyságot és méretezhetőséget is biztosít, mivel a felhasználók több ügyfél-előfizetésben is működhetnek, ha egyetlen bejelentkezést használnak a bérlőben.
+
+> [!TIP]
+> Az ügyfelek erőforrásainak védelme érdekében mindenképpen tekintse át és kövesse az [ajánlott biztonsági eljárásokat](recommended-security-practices.md) a [partneri biztonsági követelményekkel](https://docs.microsoft.com/partner-center/partner-security-requirements)együtt.
 
 ## <a name="administer-on-behalf-of-aobo"></a>Felügyelet a következő nevében (AOBO)
 

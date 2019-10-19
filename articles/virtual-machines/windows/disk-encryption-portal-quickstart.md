@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 240c0e157d7fcd8b76ee7f42f4c780361df6281d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: bde0c483eacec7fb8e076530bba594eb33a32a12
+ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246122"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72553441"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Gyors útmutató: Windows rendszerű virtuális gép létrehozása és titkosítása a Azure Portal
 
@@ -60,8 +60,8 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. A **régió**mezőben válassza ki ugyanazt a régiót, amelyet a fenti kulcstartó létrehozásakor használt (például az **USA keleti**régiója).
 1. Győződjön meg arról, hogy a **méret** *szabványos D2s v3*.
 1. A **rendszergazdai fiók**területen válassza a **jelszó**lehetőséget. Adja meg a felhasználónevet és a jelszót.
-    ![ResourceGroup-létrehozási képernyő @ no__t-1
-1. Válassza a "felügyelet" fület, és ellenőrizze, hogy rendelkezik-e diagnosztikai Storage-fiókkal. Ha nincs Storage-fiókja, válassza az "új létrehozása" lehetőséget, adja meg az új fiók nevét, és válassza az "OK" ![ResourceGroup-létrehozási képernyő @ no__t-1
+    ![ResourceGroup létrehozási képernyő ](../media/disk-encryption/portal-qs-windows-vm-creation.png)
+1. Válassza a "felügyelet" fület, és ellenőrizze, hogy rendelkezik-e diagnosztikai Storage-fiókkal. Ha nincs Storage-fiókja, válassza az "új létrehozása" lehetőséget, adja meg az új fiók nevét, és válassza az "OK" ![ResourceGroup létrehozás képernyőt ](../media/disk-encryption/portal-qs-vm-creation-storage.png)
 1. Kattintson a "felülvizsgálat + létrehozás" gombra.
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
@@ -77,7 +77,7 @@ A virtuális gép üzembe helyezése eltarthat néhány percig. Az üzembe helye
 
 1. A titkosítás képernyőn a **titkosítani kívánt lemezek**területen válassza az **operációs rendszer és az adatlemezek**lehetőséget.
 1. A **titkosítási beállítások**területen kattintson a "kulcstartó és kulcs kiválasztása a titkosításhoz" elemre.
-1. A jobb oldali oldalsávon válassza ki a korábban a * Key Vault * * értékként létrehozott kulcstartó nevét, majd kattintson a **kiválasztás**gombra.
+1. A jobb oldali oldalsávon válassza ki a **Key Vault**értékeként korábban létrehozott kulcstartó nevét, majd kattintson a **kiválasztás**gombra.
 
     ![lemezek és titkosítás kiválasztása](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
 1. A titkosítás képernyő felső részén kattintson a Mentés gombra. A felugró ablak figyelmezteti, hogy a virtuális gép újraindul. Kattintson a **Yes** (Igen) gombra.
