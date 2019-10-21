@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: dfcf9ea61a1f0fb5fd2d3b613c2449480753b3a1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71717174"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595098"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>VHD feltöltése az Azure-ba az Azure CLI használatával
 
@@ -29,7 +29,7 @@ A közvetlen feltöltés jelenleg a standard HDD, a standard SSD és a prémium 
 - Töltse le a [AzCopy v10 legújabb verzióját](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy).
 - [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 - Helyileg tárolt vhd-fájl
-- Ha a virtuális merevlemezt a PEM-ról szeretné feltölteni: Az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemez.
+- Ha a virtuális merevlemezt a PEM-ról kívánja feltölteni: az Azure-hoz [készült](../windows/prepare-for-upload-vhd-image.md), helyileg tárolt virtuális merevlemezt.
 - Vagy egy felügyelt lemezt az Azure-ban, ha egy másolási műveletet kíván végrehajtani.
 
 ## <a name="create-an-empty-managed-disk"></a>Üres felügyelt lemez létrehozása
@@ -41,9 +41,9 @@ Az ilyen felügyelt lemez két egyedi állapottal rendelkezik:
 - ReadToUpload, ami azt jelenti, hogy a lemez készen áll a feltöltésre, de nem jött létre [biztonságos hozzáférési aláírás](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) (SAS).
 - ActiveUpload, ami azt jelenti, hogy a lemez készen áll a feltöltés fogadására, és a SAS létrejött.
 
-Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak `revoke-access` akkor lesz érvényes, ha a felügyelt lemezre van meghívva, ami szükséges ahhoz, hogy csatlakoztatni lehessen a lemezt egy virtuális géphez.
+Ezen állapotok bármelyikében a felügyelt lemez a [standard szintű HDD díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/)alapján kerül kiszámlázásra, a lemez tényleges típusától függetlenül. Egy P10 például egy S10-ként lesz kiszámlázva. Ez csak akkor lesz igaz, ha `revoke-access` a felügyelt lemezen van meghívva, amely ahhoz szükséges, hogy a lemezt egy virtuális géphez csatlakoztassa.
 
-Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, bájtban kell megadnia a feltölteni kívánt vhd-fájl méretét. Ehhez használja a `wc -c <yourFileName>.vhd` vagy a `ls -al <yourFileName>.vhd` értéket. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
+Ahhoz, hogy a feltöltéshez üres szabványos HDD-t hozzon létre, bájtban kell megadnia a feltölteni kívánt vhd-fájl méretét. Ehhez `wc -c <yourFileName>.vhd` vagy `ls -al <yourFileName>.vhd` is használhatja. Ez az érték a **--upload-size-Bytes** paraméter megadásakor használatos.
 
 Hozzon létre egy üres szabványos HDD-t a feltöltéshez a **-– for-upload** paraméter és a **--upload-size-Bytes** paraméter megadásával a [lemez létrehozása](/cli/azure/disk#az-disk-create) parancsmagban:
 
@@ -81,7 +81,7 @@ Ez a feltöltés azonos átviteli sebességgel rendelkezik, mint a [szabványos 
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
-Ha a sas lejár a feltöltés során, és még nem hívta `revoke-access` meg, egy új sas-t is beszerezhet a feltöltés folytatásához a használatával. `grant-access`
+Ha a SAS lejár a feltöltés során, és még nem nevezte meg `revoke-access`, akkor új SAS-t kaphat a feltöltés folytatásához `grant-access` használatával.
 
 Miután a feltöltés befejeződött, és többé nem kell további adatokra írnia a lemezt, vonja vissza a SAS-t. Az SAS visszavonása megváltoztatja a felügyelt lemez állapotát, és lehetővé teszi a lemez csatlakoztatását egy virtuális géphez.
 
@@ -109,11 +109,11 @@ targetLocale = <yourTargetLocationHere>
 
 sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
 
-az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 
-sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
 .\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
@@ -122,8 +122,8 @@ az disk revoke-access -n $sourceDiskName -g $sourceRG
 az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy sikeresen feltöltött egy virtuális merevlemezt egy felügyelt lemezre, csatlakoztathatja a lemezt egy virtuális géphez, és megkezdheti a használatát.
 
-Ha szeretné megtudni, hogyan csatolhat lemezeket egy virtuális géphez, tekintse meg a tárgyban található cikket: [Lemez hozzáadása Linux rendszerű virtuális géphez](add-disk.md).
+Ha meg szeretné tudni, hogyan lehet lemezeket csatlakoztatni egy virtuális géphez, tekintse meg a tárgyat ismertető cikket: [lemez hozzáadása Linux rendszerű virtuális géphez](add-disk.md).
