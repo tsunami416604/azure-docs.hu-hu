@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e9bc5c876da6bd2be1b22b389b819e51330b2e50
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: adbc21c3e963a98a8482de0c26bf5e257f43013e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595461"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675458"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Mondat párosítása és igazítása párhuzamos dokumentumokban
 
@@ -26,21 +26,26 @@ Az egyéni fordító egyszerre tanulja meg a mondatok egy mondatának fordítás
 
 ## <a name="pre-aligned-documents"></a>Előre igazított dokumentumok
 
-Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és egy `.align` kiterjesztéssel feltöltheti a fájlt. A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
+Ha tudja, hogy rendelkezik párhuzamos dokumentumokkal, felülbírálhatja a mondatok igazítását az előre igazított szövegfájlok beszerzésével. Mindkét mondatot kinyerheti szövegfájlba, soronként egy mondatot, és feltöltheti `.align` bővítménnyel. A `.align` bővítmény egyéni fordítóként jelzi, hogy ki kell hagyni a mondatok igazítását.
 
 A legjobb eredmények érdekében érdemes meggyőződni arról, hogy soronként egy mondat van a fájlokban. Egy mondaton belül ne legyen sortörés karakter, mert ez gyenge igazítást okoz.
 
-## <a name="suggested-minimum-number-of-extracted-and-aligned-sentences"></a>A kinyert és igazított mondatok minimális száma javasolt
+## <a name="suggested-minimum-number-of-sentences"></a>Javasolt minimális számú mondat
 
-Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat a kinyert mondatok és az egyes adatkészletekben szükséges igazított mondatok minimális számát mutatja. A kinyert mondatok javasolt minimális száma sokkal nagyobb, mint a javasolt minimális számú, igazított mondatok, amelyek figyelembe veszik, hogy a mondat igazítása nem képes az összes kinyert mondatot sikeresen összehangolni.
+Ahhoz, hogy egy képzés sikeres legyen, az alábbi táblázat az egyes dokumentum-típusokban szükséges mondatok minimális számát mutatja. Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elég egyedi szókincset tartalmazzanak a fordítási modell sikeres betanításához. Az általános útmutatóban az emberi fordítási minőség több tartományra kiterjedő párhuzamos mondata is magasabb színvonalú modelleket eredményezhet.
 
-| Adathalmaz   | Javasolt minimális kinyert mondatok száma | Javasolt minimálisan igazított mondatok száma | Igazított mondatok maximális száma |
-|------------|--------------------------------------------|------------------------------------------|--------------------------------|
-| Képzés   | 10,000                                     | 2,000                                    | Nincs felső korlát                 |
-| Tuning     | 2,000                                      | 500                                      | 2,500                          |
-| Tesztelés    | 2,000                                      | 500                                      | 2,500                          |
-| Szótár | 0                                          | 0                                        | Nincs felső korlát                 |
+| Dokumentumtípusok   | Javasolt minimális mondatok száma | Mondatok maximális száma |
+|------------|--------------------------------------------|--------------------------------|
+| Képzés   | 10,000                                     | Nincs felső korlát                 |
+| Tuning     | 5000                                      | 2 500                          |
+| Tesztelés    | 5000                                      | 2 500                          |
+| Szótár | 0                                          | Nincs felső korlát                 |
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> - A képzés nem indul el, és sikertelen lesz, ha a betanításhoz a 10 000-es minimális számú mondat nem teljesül. 
+> - A hangolás és a tesztelés nem kötelező. Ha nem adja meg őket, a rendszer eltávolítja a megfelelő százalékot az ellenőrzéshez és teszteléshez használt képzésből. 
+> - A modelleket csak a szótárak adatai alapján lehet betanítani. Tekintse meg a [Mi az a szótár](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)című témakört.
 
-- Megtudhatja, hogyan [](what-is-dictionary.md) használhat szótárt az egyéni fordítóban.
+## <a name="next-steps"></a>Következő lépések
+
+- Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

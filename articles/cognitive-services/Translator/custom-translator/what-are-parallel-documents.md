@@ -1,5 +1,5 @@
 ---
-title: Mik azok a párhuzamos dokumentumok? -Egyéni a fordítót
+title: Mik azok a párhuzamos dokumentumok? -Egyéni fordító
 titleSuffix: Azure Cognitive Services
 description: A párhuzamos dokumentumok olyan dokumentumok, amelyekben az egyik a másik fordítása. A pár egyik dokumentuma mondatokat tartalmaz a forrás nyelvén, a másik dokumentum pedig ezeket a mondatokat a célként megadott nyelvre lefordítva tartalmazza.
 author: swmachan
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: fb54df2e1eb89d30e62ae80355635356343994ee
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d7c38a44e3111a319e4146b3c9b71a22b0d31bfd
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595450"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675468"
 ---
 # <a name="what-are-parallel-documents"></a>Mik azok a párhuzamos dokumentumok?
 
@@ -23,7 +23,7 @@ Nem számít, hogy melyik nyelven van megjelölve a "forrás", és hogy melyik n
 
 ## <a name="requirements"></a>Követelmények
 
-A rendszer betanításához legalább 10 000 egyedi párhuzamos mondatra lesz szükség. Az ajánlott eljárás az, hogy a fordítási rendszer minőségének javítása érdekében folyamatosan bővítse a párhuzamos tartalmakat és az újraképzést.
+A rendszer betanításához legalább 10 000 egyedi, egymásra igazított párhuzamos mondatra lesz szüksége. Ez a korlátozás egy biztonsági háló, amely biztosítja, hogy a párhuzamos mondatok elég egyedi szókincset tartalmazzanak a fordítási modell sikeres betanításához. Ajánlott eljárásként a fordítási rendszer minőségének javításához folyamatosan vegyen fel több párhuzamos tartalmat és újratanítást. Tekintse meg a [mondatok igazítását](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment).
 
 A Microsoft megköveteli, hogy az egyéni fordítónak feltöltött dokumentumok ne sértsék harmadik fél szerzői jogi vagy szellemi tulajdonságait. További információkért tekintse meg a használati [feltételeket](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 A dokumentum a portál használatával történő feltöltése nem módosítja a szellemi tulajdon tulajdonjogát a dokumentumban.
@@ -44,6 +44,6 @@ A feltöltött dokumentumok magánjellegűek az egyes munkaterületeken, és tet
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan [](what-is-dictionary.md) használhat szótárt az egyéni fordítóban.
+- Megtudhatja, hogyan használhat [szótárt](what-is-dictionary.md) az egyéni fordítóban.

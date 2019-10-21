@@ -1,7 +1,7 @@
 ---
-title: A Microsoft Translator Hub munkaterületet és projektek migrálni? -Egyéni a fordítót
+title: Áttelepíti a Microsoft Translator hub-munkaterületet és-projekteket? -Egyéni fordító
 titleSuffix: Azure Cognitive Services
-description: Telepítse át a Hub munkaterület és projektek egyéni a fordítót.
+description: Telepítse át a központi munkaterületet és a projekteket az egyéni Fordítóba.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,141 +9,141 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cd821ad8fce813d269ace8fb4945cb796c2ae758
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9c97eaef30a08123605ed4c01810745e312d6aa0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595733"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675497"
 ---
-# <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
+# <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
-Egyszerűen áttelepítheti a [Microsoft Translator Hub](https://hub.microsofttranslator.com/) munkaterületet és projektek egyéni a fordítót. Jelölje ki a egy munkaterületet, vagy a projektet, majd egyéni a fordítót kell választania egy munkaterületet, és válassza az átvinni kívánt betanítások Microsoft Hub áttelepítési kezdeményezni. Az áttelepítés indítása után a a kiválasztott beállításokat az összes releváns dokumentumok lesz áthelyezve. Üzembe helyezett modellnél be van tanítva, és autodeployed befejezését követően.
+A [Microsoft Translator hub](https://hub.microsofttranslator.com/) -munkaterületét és-projektjeit egyszerűen áttelepítheti egyéni fordítóba. Az áttelepítés a Microsoft hub-ból kezdeményezhető egy munkaterület vagy projekt kiválasztásával, majd a munkaterületek egyéni fordítóban való kiválasztásával, majd az átvinni kívánt képzések kiválasztásával. Az áttelepítés megkezdése után a kiválasztott képzési beállítások az összes vonatkozó dokumentummal lesznek átadva. A központilag telepített modellek betanítva vannak, és a befejezést követően is üzembe helyezhetők.
 
-Ezek a műveletek a migrálás során kell végrehajtani:
-* Minden dokumentumnak és projekt definíciók nevük neve elé "hub_" igény szerinti hozzáadásával át lesz. Az automatikusan generált tesztelési és hangolási adatértékek\<a hub_systemtune_ ModelID >\<vagy a hub_systemtest_ ModelID > lesznek elnevezve.
-* Bármely, amely a telepített állapotban volt, ha az áttelepítés történik betanítások automatikusan fog a használatával a dokumentumok a Hub képzés képezni. Ez a képzés az előfizetéshez nem számítunk fel. Ha automatikus telepítése választotta az áttelepítés befejezését követően a betanított modell fájltól. A normál üzemeltetési költségek lépnek érvénybe.
-* Minden áttelepített betanítások, amelyek nem az üzembe helyezett állapotú az áttelepített draft állapotba fog kerülni. Ebben az állapotban lesz lehetősége az áttelepített definíció modell képzési, de rendszeres képzési díjakat számolunk fel.
-* Bármikor, a BLEU pontszám átemelt képzés a modell a "Bleu pontszám MT hub" TrainingDetails lapján tekintheti meg a Hub fejléc.
+Ezeket a műveleteket az áttelepítés során hajtja végre a rendszer:
+* Az összes dokumentum és projekt-definíció neve a "hub_" előtaggal lesz elküldve a névben. Az automatikusan generált tesztelési és hangolási adat\<modelid hub_systemtune_, > vagy hub_systemtest_ \<modelid > lesznek elnevezve.
+* A központilag telepített állapotban lévő, a Migrálás során bekövetkezett képzések automatikusan betanítva lesznek a hub betanításának dokumentumaival. Ez a képzés nem lesz felszámítva az előfizetésre. Ha az automatikus központi telepítés be van jelölve az áttelepítéshez, a rendszer a betanított modellt a befejezés után telepíti. A rendszer a rendszeres üzemeltetési díjakat alkalmazza.
+* Az üzembe helyezett állapotban nem lévő áttelepített Betanítások az áttelepített vázlat állapotba kerülnek. Ebben az állapotban lehetősége lesz az áttelepített definícióval rendelkező modellek betanítására, de a normál betanítási díjak is érvényesek lesznek.
+* A központi képzésből áttelepített BLEU-pontszám a modell TrainingDetails oldalán található a "Bleu pontszám az MT hub-ban" című szakaszban.
 
-> [!Note]
-> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences)kevesebb tanítást.
+> [!Note] 
+> A sikeres képzés érdekében a Custom Translator legalább 10 000 egyedi kinyert mondatot igényel. Az egyéni fordító nem végezheti el a [javasolt minimálisnál](sentence-alignment.md#suggested-minimum-number-of-sentences)kevesebb tanítást.
 
-## <a name="find-custom-translator-workspace-id"></a>Keresse meg az egyéni a fordítót a munkaterület-azonosító
+## <a name="find-custom-translator-workspace-id"></a>Egyéni Translator-munkaterület AZONOSÍTÓjának keresése
 
-Áttelepítendő [Microsoft Translator Hub](https://hub.microsofttranslator.com/) munkaterületen cél egyéni a fordítót a munkaterület-azonosító van szüksége. Az egyéni a fordítót a célként megadott munkaterület, ahol minden a Hub munkaterületeket és projekteket kell telepíthető át.
+A [Microsoft Translator hub](https://hub.microsofttranslator.com/) -munkaterület átmigrálása érdekében egyéni fordítóban kell megadnia a cél munkaterület azonosítóját. Az egyéni Translator cél munkaterülete az a hely, ahol az összes központ-munkaterületet és projektet át kell telepíteni.
 
-A cél a munkaterület-azonosító egyéni Translator beállítások oldalon talál:
+A cél munkaterület-azonosítót a Custom Translator Settings (egyéni fordítói beállítások) lapon találja:
 
-1. Nyissa meg az egyéni a fordítót portál "Beállítás" lapján.
+1. Nyissa meg a "beállítás" lapot az egyéni Translator portálon.
 
-2. A munkaterület-Azonosítót az alapvető információkat szakaszban talál.
+2. A munkaterület-azonosítót az alapszintű információk szakaszban találja.
 
-    ![Cél munkaterület Azonosítójának megkeresése](media/how-to/how-to-find-destination-ws-id.png)
+    ![A cél-munkaterület AZONOSÍTÓjának megkeresése](media/how-to/how-to-find-destination-ws-id.png)
 
-3. Tartsa meg a cél, tekintse meg az áttelepítési folyamat során a munkaterület-Azonosítót.
+3. Tartsa meg a cél-munkaterület AZONOSÍTÓját, hogy az áttelepítési folyamat során hivatkozzon.
 
-## <a name="migrate-a-project"></a>Migrate-projekt
+## <a name="migrate-a-project"></a>Projekt migrálása
 
-Ha azt szeretné, külön-külön migrálni a projekteket, a Microsoft Translator Hub lehetőséget nyújt a.
+Ha szelektíven szeretné áttelepíteni a projekteket, a Microsoft Translator hub ezt lehetővé teszi.
 
-A projekt áttelepítéséhez:
+Projekt átmigrálása:
 
-1. Jelentkezzen be a Microsoft Translator Hub.
+1. Jelentkezzen be a Microsoft Translator hub-ba.
 
-2. Nyissa meg a "Projektek" lap.
+2. Nyissa meg a "projektek" lapot.
 
-3. Kattintson a megfelelő projektet "Áttelepítése" hivatkozásra.
+3. Kattintson az áttelepítés hivatkozásra a megfelelő projekthez.
 
-    ![A Hub áttelepítése](media/how-to/how-to-migrate-from-hub.png)
+    ![Áttelepítés az elosztóról](media/how-to/how-to-migrate-from-hub.png)
 
-4. A migrate-hivatkozás megnyomásakor megjelenik egy űrlapot, amely lehetővé teszi:
-   * Adja meg a kívánt egyéni a fordítót átvitele munkaterület
-   * Adja meg, hogy szeretné-e minden betanítások sikeres betanítások vagy csak az üzembe helyezett betanítások átvitele. Alapértelmezés szerint az összes sikeres betanítások adjuk meg.
-   * Adja meg, hogy szeretné-e a betanítási automatikus üzembe helyezett képzési befejezéséről. Alapértelmezés szerint a tanítási nem lesz automatikusan üzembe helyezett befejezését követően.
+4. Az áttelepítés hivatkozás megnyomásakor a következő űrlapot fogja megjeleníteni:
+   * Adja meg azt a munkaterületet, amelyet át szeretne vinni az egyéni Fordítóba
+   * Jelezze, hogy szeretné-e átvinni az összes betanítást a sikeres képzésekkel vagy csak az üzembe helyezett képzésekkel. Alapértelmezés szerint minden sikeres tanítás átkerül.
+   * Jelezze, hogy szeretné-e automatikusan üzembe helyezni a képzést, ha befejeződik a képzés. Alapértelmezés szerint a képzés nem lesz automatikusan telepítve a befejezés után.
 
-5. Kattintson a "Kérelem küldése".
+5. Kattintson a kérelem elküldése elemre.
 
-## <a name="migrate-a-workspace"></a>A munkaterület áttelepítése
+## <a name="migrate-a-workspace"></a>Munkaterület átmigrálása
 
-Mellett telepít át egy projekt, is át lehet, hogy sikeres betanítások egy adott munkaterület minden projektek. Ennek eredményeként minden projekt ki kell értékelni, mintha a migrate-hivatkozás aktiválták lett volna a munkaterületen. Ez a funkció lehetővé teszi a felhasználók az összes egyéni a fordítót áttelepítése ugyanazokkal a beállításokkal, akik projektek közül sok. Az áttelepítés munkaterületen kezdeményezhet Translator Hub beállításai lapján.
+Egyetlen projekt áttelepítése mellett az összes projektet áttelepítheti egy munkaterületen a sikeres képzések használatával is. Ez azt eredményezi, hogy a munkaterületen minden projekt kiértékelése megtörtént, mintha az áttelepítési hivatkozás le lett nyomva. Ez a szolgáltatás olyan felhasználók számára megfelelő, akik sok projekttel szeretnék áttelepíteni az összeset az egyéni Fordítóba ugyanazokkal a beállításokkal. A munkaterületek áttelepítése a Translator hub Settings (beállítások) lapjáról indítható el.
 
-A munkaterület áttelepítéséhez:
+Munkaterület átmigrálása:
 
-1. Jelentkezzen be a Microsoft Translator Hub.
+1. Jelentkezzen be a Microsoft Translator hub-ba.
 
-2. Nyissa meg a "Beállítások" lap.
+2. Nyissa meg a "beállítások" lapot.
 
-3. A "Beállítások" lapon kattintson a "Egyéni a fordítót adat áttelepítése munkaterület".
+3. A "beállítások" lapon kattintson a munkaterület-adatáttelepítés egyéni Fordítóba elemre.
 
-    ![A Hub áttelepítése](media/how-to/how-to-migrate-workspace-from-hub.png)
+    ![Áttelepítés az elosztóról](media/how-to/how-to-migrate-workspace-from-hub.png)
 
-4. A következő oldalon válassza ki a két lehetőség közül választhat:
+4. A következő lapon válassza ki a két lehetőség egyikét:
 
-    a. Csak központilag telepített képzések: Ha ezt a lehetőséget választja, csak a telepített rendszerek és a kapcsolódó dokumentumok lesznek áttelepítve.
+    a. Csak központilag telepített képzések: Ha ezt a lehetőséget választja, a rendszer csak a telepített rendszereket és a kapcsolódó dokumentumokat telepíti át.
 
-    b. Minden sikeres tanítás: A beállítás kiválasztásával áttelepíti az összes sikeres betanítást és kapcsolódó dokumentumot.
+    b. Minden sikeres tanítás: Ha ezt a lehetőséget választja, a rendszer áttelepíti az összes sikeres betanítást és kapcsolódó dokumentumot.
 
-    c. Adjon meg egyéni a fordítót a cél a munkaterület-azonosító.
+    c. Adja meg a cél munkaterület-azonosítót az egyéni fordítóban.
 
-    ![A Hub áttelepítése](media/how-to/how-to-migrate-from-hub-screen.png)
+    ![Áttelepítés az elosztóról](media/how-to/how-to-migrate-from-hub-screen.png)
 
-5. Kattintson a kérés elküldése.
+5. Kattintson a kérelem küldése gombra.
 
 ## <a name="migration-history"></a>Áttelepítési előzmények
 
-Munkaterület kért / hubról migrálási projekt, ha az áttelepítési előzmények egyéni Translator beállítások oldalán találhat.
+Ha a munkaterületről vagy a projektről való áttelepítést kérte a központból, az áttelepítési előzményeket az egyéni fordítói beállítások lapon találja.
 
-Áttelepítési előzmények megtekintéséhez kövesse az alábbi lépéseket:
+Az áttelepítési előzmények megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az egyéni a fordítót portál "Beállítás" lapján.
+1. Nyissa meg a "beállítás" lapot az egyéni Translator portálon.
 
-2. Áttelepítési előzmények szakaszában a beállítások lapon kattintson az áttelepítési előzmények.
+2. A beállítások lap áttelepítési előzmények szakaszában kattintson az áttelepítési előzmények elemre.
 
     ![Áttelepítési előzmények](media/how-to/how-to-migration-history.png)
 
-Áttelepítési Előzmények lapon megjeleníti a következő minden kért áttelepítés összegző információkat.
+Az áttelepítési Előzmények lap az összes kért áttelepítésre vonatkozó Összegzésként jeleníti meg a következő információkat.
 
-1. Áttelepítette: Az áttelepítési kérelmet elküldő felhasználó neve és e-mail-címe
+1. Áttelepítette: az áttelepítési kérelmet elküldő felhasználó neve és e-mail-címe
 
-2. Migrálva: Az áttelepítés dátuma és időbélyegzője
+2. Migrálva: az áttelepítés dátuma és időbélyegzője
 
-3. Projektek: Azoknak a projekteknek a száma, amelyeket a rendszer az áttelepítéshez a sikeresen áttelepített projektek száma miatt igényelt.
+3. Projektek: azoknak a projekteknek a száma, amelyeket az áttelepítéshez a sikeres Migrálás idején igényeltek.
 
-4. Tréningek Az áttelepítéshez szükséges Betanítások száma.
+4. Képzések: az áttelepítéshez szükséges Betanítások száma
 
-5. Dokumentumok Az áttelepítéshez szükséges dokumentumok száma az áttelepítés során.
+5. Dokumentumok: azoknak a dokumentumoknak a száma, amelyeket a rendszer az áttelepítéshez a sikeresen áttelepített dokumentumok száma miatt kért.
 
     ![Áttelepítési előzmények részletei](media/how-to/how-to-migration-history-details.png)
 
-Ha azt szeretné, hogy a projektek, betanítások és dokumentumok. áttelepítési jelentés részletesebb, hogy beállítás részleteinek exportálása CSV-fájlként.
+Ha részletesebb áttelepítési jelentést szeretne készíteni a projektekről, a képzésekről és a dokumentumokról, akkor a részletek CSV-ként való exportálását választja.
 
-## <a name="implementation-notes"></a>Megvalósításhoz fűzött megjegyzések
+## <a name="implementation-notes"></a>Implementációs megjegyzések
 * Az egyéni fordítóban még nem elérhető nyelvi párokkal rendelkező rendszerek csak az adathozzáféréshez és az egyéni Translator használatával történő telepítéshez lesznek elérhetők. Ezek a projektek "nem érhető el" jelöléssel jelennek meg a projektek lapon. Mivel az egyéni fordítókkal új nyelvi párokat engedélyezünk, a projektek betanításra és üzembe helyezésre lesznek aktívak. 
-* Áttelepítés egy projektet Hub egyéni a fordítót a nem fog a Hub betanítások vagy projektekhez hatást. Nem töröljük projektek vagy dokumentumok hubról áttelepítés során, és azt nem megszüntetheti a modellek.
-* Csak egyszer áttelepítése projektenként engedélyezettek. Ha ismételje meg a projekt áttelepítés van szüksége, lépjen kapcsolatba velünk a következő címen.
-* Az egyéni fordító támogatja a NMT nyelvét az angoltól és angolra. [Tekintse meg a támogatott nyelvi verziók teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub nem igényel kiindulási modelleket, és ezért a több ezer nyelveket támogatja. Nem támogatott nyelvet párjának, azonban a rendszer csak a dokumentumok az áttelepítéshez és a projekt definíciók áttelepítheti. A Microsoft nem fogja tudni az új modell betanításához. Továbbá ezeket a dokumentumokat és projektek jelenik meg inaktívként annak a megállapítására, hogy nem tudja használni őket most. Támogatás bevezetése esetén ezek projektek és/vagy a dokumentumok, aktív és trainable válnak.
-* Egyéni a fordítót jelenleg nem támogatja a monolingual betanítási adatok. Nem támogatott nyelvet párok, például áttelepítheti monolingual dokumentumok, de azok megjelenítése inaktívként, amíg nem támogatott monolingual adatok.
-* Egyéni a fordítót 10 k párhuzamos mondatokat igényel a betanításához. A Microsoft Hub egy kisebb adatkészletet a sikerült betanításához. Ha olyan betanítást telepít át, amely nem felel meg ennek a követelménynek, nem lesz betanítva.
+* Egy projekt a központból az egyéni Fordítóba való áttelepítése nem befolyásolja a hub betanításait vagy projektjeit. A Migrálás során nem törölünk projekteket vagy dokumentumokat, és nem távolítjuk el a modelleket.
+* Projektenként csak egyszer lehet áttelepíteni. Ha egy projekt áttelepítését kell megismételni, vegye fel velünk a kapcsolatot.
+* Az egyéni fordító támogatja a NMT nyelvét az angoltól és angolra. [Tekintse meg a támogatott nyelvek teljes listáját](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). A hub nem igényel alapmodelleket, ezért több ezer nyelvet támogat. Áttelepítheti a nem támogatott nyelvi párokat, de csak a dokumentumok és a projekt-definíciók áttelepítését fogjuk elvégezni. Az új modellt nem lehet majd betanítani. Emellett ezek a dokumentumok és projektek inaktívként jelennek meg, így jelezve, hogy jelenleg nem használhatók. Ha támogatást adnak a projektekhez és/vagy dokumentumokhoz, az aktív és a betanítható lesz.
+* Az egyéni Translator jelenleg nem támogatja az egynyelvű betanítási adatgyűjtést. A nem támogatott nyelvi párokhoz hasonlóan áttelepítheti az egynyelvű dokumentumokat, de inaktívként jeleníti meg őket, amíg az egynyelvű adatbevitel nem támogatott.
+* Az egyéni fordítónak 10k Parallel mondatokra van szüksége a betanításhoz. A Microsoft hub kisebb adathalmazon is betanítható. Ha olyan betanítást telepít át, amely nem felel meg ennek a követelménynek, nem lesz betanítva.
 
-## <a name="custom-translator-versus-hub"></a>Eseményközpont és egyéni fordító
+## <a name="custom-translator-versus-hub"></a>Egyéni fordító és hub
 
-Ez a tábla között a Microsoft Translator Hub és az egyéni a fordítót a szolgáltatásokat hasonlítja össze.
+Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit hasonlítja össze.
 
-|   | Eseményközpont | Custom Translator |
+|   | Hub | Custom Translator |
 |:-----|:----:|:----:|
-|Testreszabás funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
-| Text API-verzió  | 2\. verzió    | V3  |
+|Testreszabási funkció állapota   | Általános rendelkezésre állás  | Általános rendelkezésre állás |
+| Szöveges API-verzió  | 2\. verzió    | V3  |
 | SMT testreszabása | Igen   | Nem |
 | NMT testreszabása | Nem    | Igen |
-| Új egyesített Speech services testreszabása | Nem    | Igen |
+| Új Unified Speech Services testreszabása | Nem    | Igen |
 | Nincs nyomkövetés | Igen | Igen |
 
 ## <a name="new-languages"></a>Új nyelvek
 
-Ha Ön egy Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információkért [custommt@microsoft.com](mailto:custommt@microsoft.com) tekintse meg a következőt:.
+Ha Ön olyan Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információért tekintse meg [custommt@microsoft.com](mailto:custommt@microsoft.com) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A modell betanítását](how-to-train-model.md).
-- Az üzembe helyezett egyéni fordítási modellben keresztül használatának megkezdéséhez [Microsoft Translator Text API v3-as](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- [Modell betanítása](how-to-train-model.md).
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.
