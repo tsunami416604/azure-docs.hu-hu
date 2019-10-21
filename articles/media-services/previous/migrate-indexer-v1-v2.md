@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2b8553c4c4b27e70eb5e4aeff447da9526c4ed1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719968"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598300"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
@@ -29,7 +29,7 @@ A Azure Media Services Video Indexer Azure Media Analytics, Azure Search, Cognit
 A videó-és hangfájlokból kinyerheti az elemzéseket az [Azure Media Services v3 Analyzer-előállítók](../latest/analyzing-video-audio-files-concept.md) használatával, vagy közvetlenül a [video Indexer API](https://api-portal.videoindexer.ai/)-k használatával. Jelenleg a Video Indexer API-k és a Media Services V3 API-k által kínált funkciók átfedésben vannak.
 
 > [!NOTE]
-> Ha szeretne többet tudni arról, mikor érdemes a Video Indexer, illetve a Media Services-elemző előzetes beállításait használnia, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
+> Ha szeretné megismerni, hogy mikor érdemes használni a Video Indexer vs. Media Services Analyzer-készleteket, tekintse meg az [összehasonlító dokumentumot](../video-indexer/compare-video-indexer-with-media-services-presets.md). 
 
 Ez a cikk az áttelepítésének lépéseit ismerteti a Azure Media Indexer és Azure Media Indexer a 2 Azure Media Services Video Indexer.  
 
@@ -37,12 +37,12 @@ Ez a cikk az áttelepítésének lépéseit ismerteti a Azure Media Indexer és 
 
 |Ha szükséges  |Majd |
 |---|---|
-|egy olyan megoldás, amely beszéd-szöveg átírást biztosít bármely médiafájl-formátumhoz egy lezárt képaláírás-fájlformátumban: VTT, SRT vagy TTML<br/>továbbá további hangelemzéseket, például a kulcsszavakat, a témaköröket, az akusztikus eseményeket, a hangszórók diarization, az entitások kinyerését és fordítását.| frissítse alkalmazásait az Azure Video Indexer képességeinek az Video Indexer v2 REST API vagy a Azure Media Services v3 audio Analyzer-készlettel való használatához.|
+|egy olyan megoldás, amely beszéd-szöveg átírást biztosít bármilyen médiafájl formátumhoz a kódolt képfájlok formátumában: VTT, SRT vagy TTML<br/>továbbá további hangelemzéseket, például a kulcsszavakat, a témaköröket, az akusztikus eseményeket, a hangszórók diarization, az entitások kinyerését és fordítását.| frissítse alkalmazásait az Azure Video Indexer képességeinek az Video Indexer v2 REST API vagy a Azure Media Services v3 audio Analyzer-készlettel való használatához.|
 |beszéd és szöveg közötti képességek| használja közvetlenül a Cognitive Services Speech API-t.|  
 
 ## <a name="getting-started-with-video-indexer"></a>A Video Indexer első lépései
 
-A következő szakasz a kapcsolódó hivatkozásokra mutat: [Hogyan szerezhetem be a Video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+A következő szakasz a kapcsolódó hivatkozásokra mutat: Hogyan szerezhetem be a [video Indexer?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services V3 API-k – első lépések
 
@@ -50,7 +50,7 @@ A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és h
 
 A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang-vagy videofájl használatával. A kimenet tartalmaz egy VTT vagy TTML-fájlt a hangátirathoz és egy JSON-fájlhoz (az összes további hangelemzéssel). A hangelemzések közé tartoznak a kulcsszavak, a hangszórók indexelése és a beszéd hangulatának elemzése. A AudioAnalyzerPreset az egyes nyelvekhez is támogatja a nyelvfelismerés használatát. Részletes információk: [átalakítások](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Az első lépések
 
 Első lépésként tekintse meg a következőt:
 
@@ -77,11 +77,11 @@ Néhány ismert különbség:
 * A hangindexelési blob (AIB) fájljai többé nem lesznek támogatottak. Ez a funkció az indexelő 1 technológiára volt jellemző, és már nem érhető el.  
 * Cognitive Services Speech Services nem támogatja a kulcsszavak kinyerését. A Video Indexer és a Media Services v3 AudioAnalyzerPreset azonban a kulcsszavakat a JSON-fájlformátumban is hatékonyabban kínálja. 
 
-## <a name="contact-us"></a>Kapcsolat 
+## <a name="need-help"></a>Segítség
 
-Ha kérdése van a (z) Azure Media Indexer 1 és a 2. Azure Media Indexer vagy más szolgáltatásokra való áttelepítéssel kapcsolatban, kérjük, lépjen kapcsolatba velünkamshelp@microsoft.com 
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Örökölt összetevők](legacy-components.md)
 * [Díjszabási oldal](https://azure.microsoft.com/pricing/details/media-services/#encoding)
