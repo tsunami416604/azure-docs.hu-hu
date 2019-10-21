@@ -7,12 +7,12 @@ ms.service: billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b2c3fd9b59b371330e37dceb52b2e89b3db6c48e
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70806343"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390160"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -40,11 +40,11 @@ A Windows rendszerű virtuális gépek és az SQL Database esetében a licencel�
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Ki jogosult foglalás vásárlására?
 
-Egy csomag megvásárlásához rendelkeznie kell egy előfizetés-tulajdonosi szerepkörrel egy nagyvállalati (MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses előfizetésben (MS-AZR-0003P vagy MS-AZR-0023P). A felhőszolgáltatók az Azure Portalt vagy a  [Partnerközpontot](/partner-center/azure-reservations)  használhatják az Azure Reservations megvásárlásához.
+Egy csomag megvásárlásához rendelkeznie kell egy előfizetés-tulajdonosi szerepkörrel egy nagyvállalatban (MS-AZR-0017P vagy MS-AZR-0148P) vagy használatalapú fizetéses előfizetéssel (MS-AZR-0003P vagy MS-AZR-0023P) vagy Microsoft-ügyfélszerződéses előfizetéssel. A felhőszolgáltatók az Azure Portalt vagy a  [Partnerközpontot](/partner-center/azure-reservations)  használhatják az Azure Reservations megvásárlásához.
 
 A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek az EA-rendszergazdákra korlátozhatják a vásárlásokat a **Fenntartott példányok hozzáadása** beállítás EA Portalon történő letiltásával. Foglalás vásárlásához az EA-rendszergazdáknak legalább egy EA-előfizetésben előfizetés-tulajdonosnak kell lenniük. Ez a beállítás olyan vállalatok számára hasznos, amelyek azt szeretnék, hogy egy központi csapat vásárolja meg a foglalásokat különböző költséghelyek számára. A vásárlás után a központi csapatok hozzáadhatják a költséghely-tulajdonosokat a foglalásokhoz. A tulajdonosok ezután beállíthatják a foglalás hatókörét az előfizetéseikre. A központi csapatnak nem kell előfizetés-tulajdonosi hozzáféréssel rendelkeznie a foglalás vásárlási helyén.
 
-A foglalási kedvezmény csak olyan erőforrásokra érvényes, amelyek nagyvállalati, felhőszolgáltatói (CSP) vagy egyéni, használatalapú díjas csomagokkal lettek megvásárolva.
+A foglalási kedvezmény csak olyan erőforrásokra érvényes, amelyek nagyvállalati, felhőszolgáltatói (CSP), Microsoft-ügyfélszerződéses vagy egyéni, használatalapú díjas csomagokkal lettek megvásárolva.
 
 ## <a name="scope-reservations"></a>A foglalások hatókörének beállítása
 
@@ -56,7 +56,7 @@ Ha egy erőforráscsoportot állít be hatókörként, akkor az igényeitől fü
 
 - **Egyetlen erőforráscsoport hatókör** – A foglalási kedvezményt csak a kiválasztott erőforráscsoportban található egyező erőforrásokra alkalmazza.
 - **Egy előfizetésre kiterjedő hatókör** – A foglalási kedvezményt a kiválasztott előfizetésben található, egyező erőforrásokra alkalmazza.
-- **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
+- **Megosztott hatókör** – A foglalási kedvezményt a számlázási környezet jogosult előfizetéseiben található, egyező erőforrásokra alkalmazza. A Nagyvállalati Szerződéssel rendelkező ügyfelek esetében a számlázási környezet a regisztráció. A Microsoft-ügyfélszerződés ügyfelei esetében a számlázási profil a számlázási hatókör. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
 
 A foglalási kedvezmények a használatra történő alkalmazása során az Azure a következő sorrendben dolgozza fel a foglalást:
 
@@ -84,7 +84,7 @@ A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lé
 
 A foglalás használatát többféleképpen monitorozhatja: az Azure Portalon, API-kkal vagy a használati adatok alapján. Azoknak a foglalásoknak a megtekintéséhez, amelyekhez hozzáféréssel rendelkezik, lépjen az Azure Portal **Foglalások** területére. A foglalásokat megjelenítő rács a foglalás legutóbb rögzített százalékos kihasználtságát mutatja. A foglalás hosszú távú kihasználtságának megtekintéséhez kattintson a foglalásra.
 
-Ha Ön Nagyvállalati Szerződéssel rendelkező ügyfél, a foglalás kihasználtságát [API-kkal](billing-reservation-apis.md#see-reservation-usage) és a [használati adatok](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) alapján is lekérheti.
+Ha Ön Nagyvállalati Szerződéssel vagy Microsoft-ügyfélszerződéssel rendelkező ügyfél, a foglalás kihasználtságát [API-kkal](billing-reservation-apis.md#see-reservation-usage) és a [használati adatok](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) alapján is lekérheti.
 
 Ha azt tapasztalja, hogy az erőforráscsoport hatókörű foglalás kihasználtsága alacsony, akkor frissítheti a foglalás hatókörét egyetlen előfizetésre, vagy megoszthatja a számlázási környezetben. A foglalást fel is oszthatja, és a kapott foglalásokat különböző erőforráscsoportokra alkalmazhatja.
 
@@ -99,6 +99,7 @@ Ha az erőforráscsoportot áthelyezi egy másik előfizetésbe, a foglalás hat
 A foglalási kedvezmények a következő jogosult előfizetésekre és ajánlattípusokra vonatkoznak.
 
 - Nagyvállalati szerződés (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P)
+- Microsoft-ügyfélszerződéses előfizetések.
 - Egyéni csomagok a használatalapú fizetés díjszabásával (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P).
 - CSP-előfizetések
 
@@ -106,7 +107,7 @@ A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra n
 
 ## <a name="how-is-a-reservation-billed"></a>Hogy történik a foglalás számlázása?
 
-A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha nagyvállalati előfizetéssel rendelkezik, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg.
+A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha elérhető, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg.
 
 ## <a name="how-reservation-discount-is-applied"></a>A foglalási kedvezmény alkalmazása
 
@@ -120,7 +121,7 @@ Előfordulhat például, hogy később létrehoz egy erőforrást, és rendelkez
 
 Ha a virtuális gépek eltérő előfizetésben futnak a regisztráción vagy fiókon belül, akkor a hatókört megosztottként állítsa be. A megosztott hatókör lehetővé teszi a foglalási kedvezmény több előfizetésre történő alkalmazását. Foglalásvásárlás után módosíthatja a hatókört. További információkért tekintse meg [az Azure-foglalások kezelését](billing-manage-reserved-vm-instance.md) ismertető cikket.
 
-A foglalási kedvezmény csak nagyvállalati, CSP- vagy használatalapú díjas csomagokhoz társított erőforrásokra érvényes. A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
+A foglalási kedvezmény csak nagyvállalati, Microsoft-ügyfélszerződéses, CSP- vagy használatalapú díjas előfizetésekhez társított erőforrásokra érvényes. A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
 
 ## <a name="when-the-reservation-term-expires"></a>A foglalási időszak lejárata
 

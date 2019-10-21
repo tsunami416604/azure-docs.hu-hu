@@ -1,6 +1,6 @@
 ---
-title: A Microsoft-ügyfélszerződés adózási dokumentumainak megtekintése az Azure-ban
-description: Megtudhatja, hogyan tekintheti meg és töltheti le a Microsoft-ügyfélszerződéshez tartozó számlázási profil adózási nyugtáit.
+title: Az Azure-számla adózási dokumentumainak megtekintése
+description: Megtudhatja, hogyan tekintheti meg és töltheti le a számlázási profilja adózási nyugtáit.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -12,35 +12,31 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c8c39a832f54cd5075b57507ead14cbcdff2bb53
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709809"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375519"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>A Microsoft-ügyfélszerződés adózási dokumentumainak megtekintése
+# <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Az Azure-számla adózási dokumentumainak megtekintése és letöltése
 
-Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vonatkozik. [Ellenőrizze, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez](#check-access-to-a-microsoft-customer-agreement).
+Ha hozzáférése van az Azure Portalon található számlákhoz, letöltheti az Azure-számla adózási dokumentumait. Csak bizonyos szerepkörök rendelkeznek hozzáféréssel a számlákhoz, például a fiókadminisztrátor. Ha rendelkezik Microsoft-ügyfélszerződéssel, a számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie a számlák és az adózási dokumentumok letöltéséhez. Ha Microsoft-partnerszerződéssel rendelkezik, a partnerszervezet globális rendszergazdai vagy rendszergazdai ügynök szerepkörével kell rendelkeznie. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, mely jogosultságokra van szüksége az adózási dokumentumok letöltéséhez.
 
 ## <a name="view-and-download-tax-documents"></a>Adózási dokumentumok megtekintése és letöltése
 
-Az adózási dokumentumok megtekintéséhez és letöltéséhez a számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie. A Microsoft-ügyfélszerződések számlázási szerepköreivel kapcsolatos további információért lásd a [számlázási profil szerepköreit és feladatait](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
-1. Válasszon ki egy számlázási profilt.
-1. Válassza ki a **Számlák** elemet.
+1. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt.
+1. A bal oldali menüben válassza a **Számlázás** területen lévő **Számlák** elemet.
 1. A számlák rácsos elrendezésében keresse meg a letölteni kívánt adózási dokumentumnak megfelelő számla sorát.
-1. Kattintson a sor végén található három pontra (`...`).
-7. Válassza az **Adódokumentum** lehetőséget. A számlázási profil országától vagy régiójától függően számlánként több adózási dokumentumot is láthat.
+1. Kattintson a sor végén található letöltés ikonra vagy három pontra (`...`).
+7. Válassza az **Adózási dokumentum** lehetőséget a letöltési menüben. A számlázási profil országától vagy régiójától függően számlánként több adózási dokumentumot is láthat.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 - [A Microsoft Azure-számla megtekintése és letöltése](billing-download-azure-invoice.md)
 - [A Microsoft Azure használati adatainak és díjainak megtekintése és letöltése](billing-download-azure-daily-usage.md)
-- [A számlázási profil számláján szereplő díjak ismertetése](billing-mca-understand-your-bill.md).

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 486a6b46b6c4590b7f49cd8aba449204cd8f4fac
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c38cd7f4b2fb1ae88b65031d3c93b153500b96ac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709703"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375783"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>A cég vagy intézmény Azure-díjszabásának megtekintése és letöltése
 
-Az Azure Nagyvállalati Szerződéssel (EA) vagy [Microsoft-ügyfélszerződéssel](#check-your-access-to-a-microsoft-customer-agreement) rendelkező Azure-ügyfelek az Azure Portalon tekinthetik meg és tölthetik le a rájuk érvényes díjszabást.
+Az Azure Nagyvállalati Szerződéssel (EA), Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkező Azure-ügyfelek az Azure Portalon tekinthetik meg és tölthetik le a rájuk érvényes díjszabást. [További tudnivalók a számlázási fiók típusának megtekintéséről](#check-your-billing-account-type).
 
-## <a name="ea-pricing"></a>EA-díjszabás
+## <a name="download-pricing-for-an-enterprise-agreement"></a>Nagyvállalati Szerződés díjszabásának letöltése
 
 A vállalati rendszergazda által a szervezet számára beállított szabályzatoktól függően csak bizonyos felügyeleti szerepkörök biztosítanak hozzáférést a szervezet EA-díjszabási adataihoz. További információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](billing-understand-ea-roles.md).
 
@@ -42,18 +42,9 @@ A vállalati rendszergazda által a szervezet számára beállított szabályzat
 
    ![Képernyőkép az Árlistán belüli, a CSV letöltésére szolgáló gombról](./media/billing-ea-pricing/download-ea-price-sheet.png)
 
-## <a name="microsoft-customer-agreement-pricing"></a>A Microsoft-ügyfélszerződés díjszabása
+## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA- vagy MPA-fiók díjszabásának letöltése
 
-A díjszabás megtekintéséhez és letöltéséhez a számlázási profil tulajdonosának, közreműködőjének, olvasójának, illetve számlakezelőjének kell lennie. A Microsoft-ügyfélszerződések számlázási szerepköreivel kapcsolatos további információért lásd a [számlázási profil szerepköreit és feladatait](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
-
-### <a name="download-price-sheets-for-the-current-billing-period"></a>Az aktuális számlázási időszak árlistáinak letöltése
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
-1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
-1. Az **Áttekintés** területen keresse meg a letöltési hivatkozásokat az aktuális havi díjak alatt.
-1. Válassza az **Azure-árlista** lehetőséget.
-![Képernyőkép az Áttekintés területen található letöltési lehetőségről](./media/billing-ea-pricing/open-pricing.png)
+Ha MCA-val rendelkezik, a díjszabás megtekintéséhez és letöltéséhez a számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie. Ha MPA-val rendelkezik, a partnerszervezet globális rendszergazdai és rendszergazdai ügynök szerepkörével kell rendelkeznie a díjszabás megtekintéséhez és letöltéséhez.
 
 ### <a name="download-price-sheets-for-billed-charges"></a>A számlázott díjak árlistáinak letöltése
 
@@ -69,6 +60,17 @@ A díjszabás megtekintéséhez és letöltéséhez a számlázási profil tulaj
 1. Ha az adott számlázási időszakban használt összes Azure-szolgáltatás árát szeretné megtekinteni, válassza az **Azure-árlista** lehetőséget.
 
 ![Képernyőkép az árlistákat tartalmazó helyi menüről](./media/billing-ea-pricing/contextmenu-pricesheet.png)
+
+### <a name="download-price-sheets-for-the-current-billing-period"></a>Az aktuális számlázási időszak árlistáinak letöltése
+
+Ha rendelkezik MCA-val, letöltheti az aktuális számlázási időszakra vonatkozó díjszabást.
+
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
+1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
+1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
+1. Az **Áttekintés** területen keresse meg a letöltési hivatkozásokat az aktuális havi díjak alatt.
+1. Válassza az **Azure-árlista** lehetőséget.
+![Képernyőkép az Áttekintés területen található letöltési lehetőségről](./media/billing-ea-pricing/open-pricing.png)
 
 ## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Költségek kiszámítása az Azure-díjkalkulátorral
 
@@ -86,8 +88,8 @@ A szervezete díjszabásának használatával megbecsülheti a költségeket az 
 1. Keresse meg a számításhoz használni kívánt termékeket, majd adja hozzá azokat.
 1. A megjelenített becsült összegek a kiválasztott szervezet díjszabásán alapulnak.
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,19 +10,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: ed69775de71a371153a888749efc9069389e61d5
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 90fa6b0db180ca93d9b57178c32c5e156ecc3bb0
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709685"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375795"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiókhoz tartozó szolgáltatások létrehozása
 
-Az ingyenes Azure-fiók 12 hónapig korlátozott mennyiségben ingyenes szolgáltatásokat is tartalmaz. További információ: [Mi az az ingyenes Azure-fiók?](https://azure.microsoft.com/free/free-account-faq/) Az Azure nyomon követi, milyen mértékben használja az egyes szolgáltatásokat, és csak abban az esetben számol fel díjat, amennyiben túllépi a megadott korlátokat. Ezeken a korlátokon belül az ingyenes Azure-fiók lehetővé teszi azt a rugalmasságot, hogy különféle szolgáltatáskonfigurációkat használjon, az igényeinek megfelelően.
+Az ingyenes Azure-fiókja 12 hónapig korlátozott mennyiségben ingyenes szolgáltatásokat is tartalmaz. Ezeken a korlátokon belül rugalmasan használhatja az ingyenes szolgáltatások különféle konfigurációit az igényeinek megfelelően.
 
 ## <a name="create-free-services-in-the-azure-portal"></a>Ingyenes szolgáltatások létrehozása az Azure Portalon
-Új szolgáltatások létrehozásához javasoljuk az [Ingyenes szolgáltatás lap](https://go.microsoft.com/fwlink/?linkid=859151) használatát. Vagy jelentkezzen be az [Azure Portalra](https://portal.azure.com), válassza a **Minden szolgáltatás** lehetőséget a bal oldalon, és keressen az **ingyenes szolgáltatások** kifejezésre.
+Ingyenes szolgáltatások létrehozásához javasoljuk az [Ingyenes szolgáltatás lap](https://go.microsoft.com/fwlink/?linkid=859151) hivatkozás használatát. Vagy jelentkezzen be az [Azure Portalra](https://portal.azure.com), és keressen az **ingyenes szolgáltatások** kifejezésre. Amikor szolgáltatásokat hoz létre az ingyenes szolgáltatások oldalán, a legtöbb mező előre ki van választva, hogy könnyen létrehozhassa az ingyenes szolgáltatásokat.
+
+![Az ingyenes szolgáltatások oldalát megjelenítő képernyőkép](./media/billing-create-free-services-included-free-account/billing-freeservices-grid.png)
 
 ## <a name="services-can-be-created-in-any-region"></a>A szolgáltatások bármely régióban létrehozhatók
 Amíg nem lépi túl a korlátokat, ingyenesen hozhat létre szolgáltatásokat azokban a régiókban, ahol elérhetők a szolgáltatások. Például az ingyenes Azure-fiókkal a B1S sorozatú, Windows rendszerű virtuális gépek minden hónapban 750 órán keresztül díjmentesen használhatók. Bármely olyan régióban létrehozhat virtuális gépet, ahol elérhetők a B sorozatú virtuális gépek. Az Azure nem számít fel díjakat, amennyiben nem haladja meg a 750 órát. Az egyesült államokbeli ügyfelek például létrehozhatnak egy B1S Windows rendszerű virtuális gépet Nyugat-Európában, és 750 óráig ingyenesen használhatják azt.
@@ -37,5 +39,5 @@ Több szolgáltatáspéldányt is létrehozhat ingyenesen, ha a használat össz
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
-
+- Ismerje meg [az ingyenes Azure-fiókhoz kapcsolódó ingyenes szolgáltatások használata ellenőrzésének](billing-check-free-service-usage.md) módját.
 - Tudja meg, [hogyan kerülheti el, hogy díjak merüljenek fel ingyenes Azure-fiókja használatakor](billing-avoid-charges-free-account.md).

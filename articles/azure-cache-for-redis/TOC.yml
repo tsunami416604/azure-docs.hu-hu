@@ -39,6 +39,8 @@
           href: cache-best-practices.md
         - name: Azure-architektúra ajánlott eljárásai gyorsítótárazáshoz
           href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+    - name: A feladatátvétel és a javítás értelmezése
+      href: cache-failover.md
 - name: Útmutatók
   items:
     - name: Felkészülés

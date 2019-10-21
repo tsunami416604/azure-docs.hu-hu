@@ -12,48 +12,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 23cd7c3765fc99eb5907aa853d7431d5e247aea6
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: e7d1947b2194c04bb5269887b73e2f4fa13df6e7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709713"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375740"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Az Azure használati adatainak és díjainak megtekintése és letöltése
 
-Amennyiben Ön EA-ügyfél, vagy rendelkezik [Microsoft-ügyfélszerződéssel](#check-your-access-to-a-microsoft-customer-agreement), az Azure használati adatait és a díjakat letöltheti az [Azure Portal](https://portal.azure.com/) felületéről. Ha más előfizetéssel rendelkezik, lépjen az [Azure Fiókközpontba](https://account.azure.com/Subscriptions) a használati adatok letöltéséhez.
+Letöltheti az Azure-beli használati adatok és költségek napi bontását az Azure Portalon. Csak egyes szerepkörök, például a fiókadminisztrátorok és a vállalati rendszergazdák rendelkeznek engedéllyel az Azure-használattal kapcsolatos adatok lekérdezéséhez. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
 
-Csak egyes szerepkörök, például a fiókadminisztrátorok és a vállalati rendszergazdák rendelkeznek engedéllyel az Azure-használattal kapcsolatos adatok lekérdezéséhez. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
+Ha rendelkezik Microsoft-ügyfélszerződéssel (MCA), számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie az Azure-használattal és a díjakkal kapcsolatos adatok megtekintéséhez.  Ha Microsoft-partnerszerződéssel (MPA) rendelkezik, csak a partnerszervezet globális rendszergazdája és rendszergazdai ügynöke tekintheti meg és töltheti le az Azure-beli használati adatokat és díjakat. [A számlázási fiók típusának ellenőrzése az Azure Portalon](#check-your-billing-account-type).
 
-Ha rendelkezik [Microsoft-ügyfélszerződéssel](#check-your-access-to-a-microsoft-customer-agreement), számlázási profil tulajdonosának, közreműködőjének, olvasójának vagy számlakezelőjének kell lennie az Azure-használattal és a díjakkal kapcsolatos adatok megtekintéséhez. A Microsoft-ügyfélszerződések számlázási szerepköreivel kapcsolatos további információért lásd a [számlázási profil szerepköreit és feladatait](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+## <a name="download-usage-from-the-azure-portal-csv"></a>Használati adatok letöltése az Azure Portalról (.csv)
 
-## <a name="download-usage-from-the-account-center-csv"></a>Használati adatok letöltése a Fiókközpontból (.csv)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 
-1. Jelentkezzen be fiókadminisztrátorként az [Azure Fiókközpontba](https://account.windowsazure.com/subscriptions).
+    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-download-azure-usage/portal-cm-billing-search.png)
 
-2. Válassza ki azt az előfizetést, amelynek a számláját és a használattal kapcsolatos adatait le szeretné kérni.
-
-3. Válassza a **SZÁMLATÖRTÉNET** lehetőséget.
-
-    ![A számlatörténet lehetőséget megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. Megtekintheti az utolsó hat számlázási időszakra és az aktuális, nem számlázott időszakra vonatkozó kivonatokat.
-
-    ![A számlázási időszakokat, a számlák és napi használati adatok letöltési lehetőségeit és az egyes számlázási időszakok teljes díját megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. Válassza az **Aktuális számla megtekintése** lehetőséget a költségek azon becslésének megtekintéséhez, amely a becslés létrehozásakor jött létre. A becslések csak naponta egyszer frissülnek, ezért nem feltétlenül tartalmazzák az összes használati adatot. A havi számlája eltérhet ettől a becsléstől.
-
-    ![Az aktuális kivonat megtekintésére szolgáló lehetőséget megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![A becsült jelenlegi költségeket megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. Válassza a **Használati adatok letöltése** lehetőséget a napi használati adatok letöltéséhez CSV-fájlként. Ha két elérhető verziót lát, a 2. verziót töltse le.
-
-    ![A használati adatok letöltésére szolgáló lehetőséget megjelenítő képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Csak a fiókadminisztrátor férhet hozzá az Azure Fiókközponthoz. A többi számlázási adminisztrátor, például a tulajdonosok a [Billing API-k](billing-usage-rate-card-overview.md) segítségével kaphatják meg a használati adatokat.
-
-A napi használati adatokra vonatkozó további információért lásd: [Microsoft Azure számlájának megértése](billing-understand-your-bill.md). A költségek kezelésével kapcsolatos segítségért lásd [az Azure-számlázással és -költségkezeléssel kapcsolatos váratlan költségek megelőzését](billing-getting-started.md) ismertető szakaszt.
+1. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási fiókot vagy számlázási profilt.
+1. A bal oldali menüben válassza a **Számlázás** területen lévő **Számlák** elemet.
+1. A számlák rácsos elrendezésében keresse meg a letölteni kívánt használati adatnak megfelelő számlázási időszak sorát.
+1. Kattintson a jobb oldalon található letöltés ikonra vagy három pontra (`...`).
+1. Válassza ki az **Azure használati adatainak és díjainak letöltése** lehetőséget a letöltési menüből.
 
 ## <a name="download-usage-for-ea-customers"></a>Használati adatok letöltése EA-ügyfelek esetén
 
@@ -62,33 +45,14 @@ A használati adatok EA-ügyfélként történő megtekintéséhez és letölté
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 
-    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-download-azure-invoice-daily-usage-date/portal-cm-billing-search.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-download-azure-usage/portal-cm-billing-search.png)
 
 1. Válassza a **Felhasználás + díjak** lehetőséget.
 1. Válassza ki a **Letöltés** elemet a letölteni kívánt hónapnál.
 
-## <a name="download-usage-for-your-microsoft-customer-agreement"></a>A Microsoft-ügyfélszerződéshez tartozó használati adatok letöltése
+## <a name="download-usage-for-pending-charges"></a>Használati adatok letöltése függőben lévő díjak esetén
 
-Ha rendelkezik Microsoft-ügyfélszerződéssel, az Azure-beli használati adatait és díjait a számlázási profiljából töltheti le. Az Azure-használati adatok és díjak CSV-fájljának az Azure Portalról történő letöltéséhez a számlázási profil tulajdonosának, közreműködőjének, olvasójának, illetve számlakezelőjének kell lennie.
-
-### <a name="download-usage-for-billed-charges"></a>Használati adatok letöltése kiszámlázott díjak esetén
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
-3. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
-4. Válassza ki a **Számlák** elemet.
-5. A számlák rácsos elrendezésében keresse meg a letölteni kívánt használati adatnak megfelelő számla sorát.
-6. Kattintson a sor végén található három pontra (`...`).
-
-    ![A sor végén található három pontot megjelenítő képernyőkép](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
-
-7. A helyi letöltési menüben válassza az **Azure-használat és -díjak** lehetőséget.
-
-     ![A kiválasztott Azure-beli használati fájlokat és díjakat megjelenítő képernyőkép](./media/billing-download-azure-usage/contextmenu-usage.png)
-
-### <a name="download-usage-for-pending-charges"></a>Használati adatok letöltése függőben lévő díjak esetén
-
-Letöltheti az aktuális hónap a jelenlegi számlázási időszakra vonatkozó használati adatait is. Ezek a használati díjak még nem lettek kiszámlázva.
+Ha rendelkezik Microsoft-ügyfélszerződéssel, letöltheti az aktuális hónap a jelenlegi számlázási időszakra vonatkozó használati adatait. Ezek a használati díjak még nem lettek kiszámlázva.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
@@ -98,8 +62,8 @@ Letöltheti az aktuális hónap a jelenlegi számlázási időszakra vonatkozó 
 
     ![Képernyőkép az Áttekintés területen található letöltési lehetőségről](./media/billing-download-azure-usage/open-usage.png)
 
-## <a name="check-your-access-to-a-microsoft-customer-agreement"></a>Microsoft-ügyfélszerződéshez való hozzáférés ellenőrzése
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-your-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

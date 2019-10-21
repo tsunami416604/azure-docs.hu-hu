@@ -44,39 +44,8 @@
           href: data-encryption-best-practices.md
         - name: Inaktív adatok titkosítása
           href: encryption-atrest.md
-        - name: Lemeztitkosítás IaaS virtuális gépekhez
-          items:
-            - name: Tudnivalók az Azure Disk Encryptionről
-              displayName: 'BitLocker, bek'
-              href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview'
-            - name: Azure Disk Encryption
-              items:
-                - name: Lemeztitkosítás előfeltételei
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites'
-                - name: Lemeztitkosítás Windows rendszerű virtuális gépekhez
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows'
-                - name: Lemeztitkosítás Linux rendszerű virtuális gépekhez
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux'
-                - name: Lemeztitkosítás a virtuálisgép-méretezési csoportok végrehajtási sorrendbe állításával
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-extension-sequencing'
-                - name: Lemeztitkosítás függeléke
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-appendix'
-                - name: Lemeztitkosítás – gyakori kérdések
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq'
-                - name: Hibaelhárítás
-                  href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg'
-                - name: Azure Disk Encryption Azure AD-alkalmazással (korábbi kiadás)
-                  displayName: active directory
-                  items:
-                    - name: Azure AD-alkalmazással végzett lemeztitkosítás előfeltételei
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-prerequisites-aad'
-                    - name: Lemeztitkosítás Azure AD-alkalmazással Windows rendszerű virtuális gépekhez
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-windows-aad'
-                    - name: Lemeztitkosítás Azure AD-alkalmazással Linux rendszerű virtuális gépekhez
-                      displayName: active directory
-                      href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
+        - name: Azure Disk Encryption virtuális gépekhez és virtuálisgép-méretezési csoportokhoz
+          href: azure-disk-encryption-vms-vmss.md
     - name: Biztonsági útmutató a tároláshoz
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Ügyfélszéf
@@ -154,13 +123,6 @@
           href: paas-applications-using-sql.md
     - name: IoT
       href: iot-overview.md
-      items:
-        - name: Ajánlott biztonsági eljárások az IoT-hez
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-best-practices?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
-        - name: IoT-biztonság
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-security-architecture?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json#security-in-iot'
-        - name: Az IoT üzemelő példányának védelme
-          href: 'https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-security-deployment?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Az Azure Service Fabric biztonsága
       href: service-fabric-overview.md
       items:
@@ -273,8 +235,8 @@
           href: ../blueprints/ukofficial-iaaswa-overview.md
         - name: PaaS webalkalmazás
           href: ../blueprints/ukofficial-paaswa-overview.md
-- name: Tanulmányok
-  href: white-papers.md
+- name: Biztonsági tanulmányok
+  href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure biztonsági szolgáltatások
   href: services-technologies.md
 - name: Műszaki áttekintések

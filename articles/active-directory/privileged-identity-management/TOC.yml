@@ -83,6 +83,8 @@
           href: azure-pim-resource-rbac.md
         - name: Egyéni szerepkörök használata
           href: pim-resource-roles-custom-role-policy.md
+    - name: A PIM hibaelhárítása
+      href: pim-troubleshoot.md
     - name: Hozzáférési felülvizsgálatok
       items:
         - name: Azure AD-szerepkörök

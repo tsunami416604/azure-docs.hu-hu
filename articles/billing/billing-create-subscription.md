@@ -3,8 +3,8 @@ title: Egy további Azure-előfizetés létrehozása | Microsoft Docs
 description: Megtudhatja, hogyan vehet fel új Azure-előfizetést az Azure Portalon.
 services: billing
 documentationcenter: ''
-author: jrosson
-manager: jrosson
+author: amberb
+manager: amberb
 editor: ''
 ms.service: billing
 ms.workload: na
@@ -13,22 +13,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: f907ebcfc1efc2e6eb9b458f83ab11d868871946
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: acb41de8344d1467e86c38c7c99e8ad4ab517ead
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615801"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375826"
 ---
-# <a name="create-an-additional-subscription-in-the-azure-portal"></a>Egy további előfizetés létrehozása az Azure Portalon
+# <a name="create-an-additional-azure-subscription"></a>További Azure-előfizetés létrehozása
 
-További előfizetéseket is létrehozhat a fiókjához az Azure-ban. A további előfizetések létrehozásának több célja lehet: az előfizetési korlát elérésének elkerülése, különálló környezetek létrehozása a számlázáshoz és a biztonság érdekében, illetve az adatok elkülönítése megfelelőségi okokból.
+További előfizetést hozhat létre az Azure Portalon a [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), a [Microsoft-ügyfélszerződés](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) vagy a [Microsoft-partnerszerződés](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement) számlázási fiókjához. A további előfizetések létrehozásának több célja lehet: az előfizetési korlát elérésének elkerülése, különálló környezetek létrehozása a biztonság érdekében, illetve az adatok elkülönítése megfelelőségi okokból.
 
-Ha a szervezet Nagyvállalati Szerződése alatt szeretne Azure-előfizetéseket létrehozni, a szervezetben rendelkeznie kell a Fióktulajdonos szerepkörrel.
+Ha rendelkezik Microsoft Online Services Programba (MOSP) tartozó számlázási fiókkal, további előfizetéseket hozhat létre az [Azure regisztrációs portálján](https://account.azure.com/signup?offer=ms-azr-0003p).
 
-Ha még nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+A számlázási fiókokkal és a saját fiókja típusával kapcsolatos további információkért lásd [a számlázási fiókok az Azure Portalon történő megtekintését](billing-view-all-accounts.md) ismertető cikket.
 
-## <a name="create-an-additional-azure-subscription"></a>További Azure-előfizetés létrehozása
+## <a name="permission-required-to-create-azure-subscriptions"></a>Az Azure-előfizetések létrehozásához engedély szükséges
+
+A következő engedélyekre van szüksége az előfizetések létrehozásához:
+
+|Számlázási fiók  |Engedély  |
+|---------|---------|
+|Nagyvállalati Szerződés (EA) |  Fióktulajdonosi szerepkör a Nagyvállalati Szerződéses regisztrációban. További információkért lásd [az Azure Nagyvállalati Szerződés Azure-beli felügyeleti szerepköreinek ismertetését](billing-understand-ea-roles.md).    |
+|Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA) |  Tulajdonosi vagy közreműködői szerepkör a számlaszakaszban, a számlázási profilban vagy a számlázási fiókban. Vagy Azure-előfizetés létrehozója szerepkör a számlaszakaszban.  További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatát](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).    |
+|Microsoft-partnerszerződés (MPA) |   Globális rendszergazda és rendszergazdai ügynök szerepkör a partnerszervezetben. További információ: [Partnerközpont – Felhasználói szerepkörök és engedélyek hozzárendelése](https://docs.microsoft.com/partner-center/permissions-overview)  |
+
+## <a name="create-a-subscription-in-the-azure-portal"></a>Előfizetés létrehozása az Azure Portalon
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá az **Előfizetések** kifejezésre.
@@ -39,7 +49,37 @@ Ha még nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiók
 
    ![Képernyőkép az Előfizetések nézet Hozzáadás gombjáról](./media/billing-create-subscription/subscription-add.png)
 
-További előfizetéseket programozott módon is létrehozhat. További információkért tekintse meg [a nagyvállalati Azure-előfizetések programozott módon történő létrehozását](../azure-resource-manager/programmatically-create-subscription.md) ismertető cikket.
+1. Ha több számlázási fiókhoz is hozzáféréssel rendelkezik, válassza ki a számlázási fiókot, amelyhez előfizetést kíván létrehozni.
+
+1. Töltse ki az űrlapot, és kattintson a **Létrehozás** lehetőségre. Az alábbi táblázatok tartalmazzák az egyes számlázási fiókokhoz tartozó űrlapmezőket.
+
+**Nagyvállalati Szerződés**
+
+|Mező  |Meghatározás  |
+|---------|---------|
+|Name (Név)     | A megjelenítendő név segítségével egyszerűen beazonosíthatja az előfizetést az Azure Portalon.  |
+|Ajánlat     | Ha az előfizetést fejlesztésre vagy számítási feladatok tesztelésére szeretné használni, válassza a fejlesztéshez és teszteléshez készült EA Dev/Test csomagot, minden más esetben használja a Microsoft Azure Enterprise lehetőséget. EA Dev/Test-előfizetés létrehozásához engedélyezni kell a DevTest-ajánlatot a regisztrált fiókjához.|
+
+**Microsoft-ügyfélszerződés**
+
+|Mező  |Meghatározás  |
+|---------|---------|
+|Számlázási profil     | Az előfizetés díjai a kiválasztott számlázási profilra lesznek kiszámlázva. Ha csak egy előfizetéshez rendelkezik hozzáféréssel, a választási lehetőség ki van szürkítve.     |
+|Számlázási szakasz     | Az előfizetés díjai a számlázási profil e számlázási szakaszán fognak megjelenni. Ha csak egy számlázási szakaszhoz rendelkezik hozzáféréssel, a választási lehetőség ki van szürkítve.  |
+|Felkészülés     | Ha az előfizetést fejlesztésre vagy számítási feladatok tesztelésére szeretné használni, válassza a fejlesztéshez és teszteléshez készült Microsoft Azure-csomagot, minden más esetben használja a Microsoft Azure-csomag lehetőséget. Ha csak egy csomag van engedélyezve a számlázási profilhoz, a választási lehetőség ki van szürkítve.  |
+|Name (Név)     | A megjelenítendő név segítségével egyszerűen beazonosíthatja az előfizetést az Azure Portalon.  |
+
+**Microsoft-partnerszerződés**
+
+|Mező  |Meghatározás  |
+|---------|---------|
+|Ügyfél    | Létrejön az előfizetés a kiválasztott ügyfél számára. Ha csak egy ügyfele van, a választási lehetőség ki van szürkítve.  |
+|Viszonteladó    | Az a viszonteladó, aki szolgáltatásokat fog nyújtani az ügyfélnek. Ez egy nem kötelezően kitöltendő mező, és csak a közvetett szolgáltatókra vonatkozik a CSP kétrétegű modelljében. |
+|Name (Név)     | A megjelenítendő név segítségével egyszerűen beazonosíthatja az előfizetést az Azure Portalon.  |
+
+## <a name="create-an-additional-azure-subscription-programmatically"></a>További Azure-előfizetés létrehozása programozott módon
+
+További előfizetéseket programozott módon is létrehozhat. További információért tekintse meg [az Azure-előfizetések programozott módon történő létrehozását](../azure-resource-manager/programmatically-create-subscription.md) ismertető cikket.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -50,4 +90,4 @@ További előfizetéseket programozott módon is létrehozhat. További informá
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
-Ha kérdése van, vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

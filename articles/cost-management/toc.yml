@@ -32,6 +32,8 @@
       items:
         - name: Adatokhoz való hozzáférés hozzárendelése
           href: assign-access-acm-data.md
+        - name: Gyakori műveletek költségelemzése
+          href: cost-analysis-common-uses.md
         - name: Költségriasztások használata
           href: cost-mgt-alerts-monitor-usage-spending.md
         - name: AWS-integráció beállítása és konfigurálása

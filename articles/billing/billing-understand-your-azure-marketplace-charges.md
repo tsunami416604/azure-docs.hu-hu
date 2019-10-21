@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43986ce57b8d320beeae748d3b848cf9ef38744d
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 2803f8d659726ac95bcefa6191a816ed2b2dcb2d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718727"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375416"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Az Azure külső szolgáltatásaival kapcsolatos díjak ismertetése
 A külső szolgáltatásokat külső szoftverszállítók teszik közzé az Azure Marketplace-en. A SendGrid például egy olyan külső szolgáltatás, amelyet megvásárolhat az Azure-ban, de nem a Microsoft adta ki. Emellett azonban bizonyos Microsoft-termékek értékesítése is az Azure Marketplace-en történik.
 
 ## <a name="how-external-services-are-billed"></a>A külső szolgáltatások számlázása
 
-- Ha [Microsoft-ügyfélszerződéssel](#check-access) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatás számlázásával együtt történik.
-- Ha nem rendelkezik Microsoft-ügyfélszerződéssel, a külső szolgáltatások számlázása a többi Azure-szolgáltatástól külön történik.
+- Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz.
+- Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások számlázása a többi Azure-szolgáltatástól külön történik.
 - Minden egyes külső szolgáltatás eltérő számlázási modellel rendelkezik. Bizonyos szolgáltatások számlázása használatalapú fizetésessel történik, míg más szolgáltatásokért fix havi díjat kell fizetni.
 - A külső szolgáltatásokhoz nem használhatók fel az ingyenes havi kreditek. Ha [ingyenes krediteket](https://azure.microsoft.com/pricing/spending-limits/) tartalmazó Azure-előfizetést használ, a külső szolgáltatások díjaira nem alkalmazhatja azokat. Új külső szolgáltatás vagy erőforrás kiépítésekor megjelenik egy figyelmeztetés:
 
@@ -48,11 +48,11 @@ You can view a list of the external services that are on each subscription withi
 
     ![View external services billing history](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png) -->
 
-## <a name="view-and-download-invoices"></a>Számlák megtekintése és letöltése
+## <a name="view-and-download-invoices-for-external-services"></a>Számlák megtekintése és letöltése külső szolgáltatásokhoz
 
-Ha [Microsoft-ügyfélszerződéssel](#check-access) rendelkezik, a külső szolgáltatások díjai ugyanazon a számlán szerepelnek, mint az Azure-szolgáltatások díjai. Megtudhatja, hogyan [tekintheti meg és töltheti le Azure-számláját](billing-download-azure-invoice.md) az Azure Portalról a külső szolgáltatások díjainak megtekintéséhez.
+Ha Microsoft-ügyfélszerződéssel (MCA) vagy Microsoft Partnerszerződéssel (MPA) rendelkezik, a külső szolgáltatások számlázása a többi Azure-szolgáltatással együtt történik. [Ellenőrizze a számlázási fiókja típusát](#check-billing-account-type), hogy megtudja, van-e hozzáférése MCA-hoz vagy MPA-hoz. Ha van, akkor a külső szolgáltatások díjainak megtekintéséhez olvassa el a [számlák Azure Portalon történő megtekintését és letöltését](billing-download-azure-invoice.md) ismertető cikket.
 
-Ha nem rendelkezik Microsoft-ügyfélszerződéssel, a külső szolgáltatások díjairól külön számlát kap. Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
+Ha nem rendelkezik MCA-val vagy MPA-val, a külső szolgáltatások díjairól külön számlát kap. Az Azure Marketplace-számlák Azure Portalon történő megtekintéséhez és letöltéséhez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
@@ -108,8 +108,8 @@ Ha le szeretné mondani a külső szolgáltatást, törölje az erőforrást az 
     ![Erőforrás törlése](./media/billing-understand-your-azure-marketplace-charges/delete-resource.PNG)
 1. Kattintson a **Törlés** gombra.
 
-## <a name="check-access"></a>Hozzáférés ellenőrzése
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+## <a name="check-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
+[!INCLUDE [billing-check-account-type](../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

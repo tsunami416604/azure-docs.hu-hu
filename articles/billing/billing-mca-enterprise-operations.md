@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b6d1de1ee24ce9ca67d3bd8fa514ec9ea7a5c771
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ca0f83628edeef9e55ebc81798d0229791b80a7a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709542"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375503"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Nagyvállalati szerződéses feladatok elvégzése a Microsoft-ügyfélszerződés számlázási fiókjában
 
@@ -27,7 +27,7 @@ Ha a szervezete aláírta a Microsoft-ügyfélszerződést a nagyvállalati szer
 
 Az alábbi ábra az új számlázási fiók számlázási rendszerét mutatja be.
 
-![Az ea-mca-post-transition-hierarchy képe](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![Az ea-mca-post-transition-hierarchy képe](./media/mca-setup-account/mca-post-transition-hierarchy.png)
 
 | Nagyvállalati Szerződés   | Microsoft-ügyfélszerződés    |
 |------------------------|--------------------------------------------------------|
@@ -72,9 +72,9 @@ A fiókhoz tartozó előfizetések összesített költségeinek megtekintéséhe
 
 A rendszer havonta létrehoz egy számlát a számlázási fiók minden számlázási profilja számára. Minden számla esetében letöltheti az Azure-beli használati adatok és díjak CSV-fájlját, az árlistát és az adózási dokumentumokat (ha vannak). Az Azure-beli használati adatok és díjak CSV-fájlját az aktuális hónap költségeivel kapcsolatban is letöltheti.
 
-Az Azure-beli használati adatok és díjak CSV-fájljának letöltésével kapcsolatban lásd [a Microsoft-ügyfélszerződés használati adatainak letöltését](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement) ismertető cikket.
+Az Azure-beli használati adatok és díjak CSV-fájljának letöltésével kapcsolatban lásd [a Microsoft-ügyfélszerződés használati adatainak letöltését](billing-download-azure-daily-usage.md) ismertető cikket.
 
-A díjszabás letöltésével kapcsolatos tudnivalókért lásd [a Microsoft-ügyfélszerződés díjszabásának letöltését](billing-ea-pricing.md#microsoft-customer-agreement-pricing) ismertető cikket.
+A díjszabás letöltésével kapcsolatos tudnivalókért lásd [a Microsoft-ügyfélszerződés díjszabásának letöltését](billing-ea-pricing.md) ismertető cikket.
 
 Az adózási dokumentumok letöltésével kapcsolatos tudnivalókért lásd [a Microsoft-ügyfélszerződés adózási dokumentumainak megtekintését](billing-mca-download-tax-document.md#view-and-download-tax-documents) ismertető cikket.
 
@@ -90,7 +90,7 @@ A költségek igényei szerinti rendszerezéséhez a nagyvállalati szerződése
 
 ### <a name="create-a-new-account"></a>Új fiók létrehozása
 
-Hozzárendelheti az Azure-előfizetés számlázási szakaszainak létrehozói szerepkörét a felhasználókhoz, akiknek így a nagyvállalati szerződéses regisztrációban létrehozott fiókokhoz hasonlóan engedélyt adhat Azure-előfizetések létrehozására. További információkért lásd [az engedélyek másoknak történő biztosítását Azure-előfizetések létrehozásához](billing-mca-create-subscription.md#give-others-permission).
+Hozzárendelheti az Azure-előfizetés számlázási szakaszainak létrehozói szerepkörét a felhasználókhoz, akiknek így a nagyvállalati szerződéses regisztrációban létrehozott fiókokhoz hasonlóan engedélyt adhat Azure-előfizetések létrehozására. A szerepkörök hozzárendelésével kapcsolatos további információért tekintse meg [a számlázási szerepkörök az Azure Portalon történő kezelését](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) ismertető cikket.
 
 ## <a name="changes-for-department-administrators"></a>Módosítások a részlegszintű rendszergazdák esetében
 
@@ -116,7 +116,7 @@ A számlázási szakaszhoz történő hozzáférés biztosításával kapcsolato
 
 ### <a name="create-a-new-account-in-your-department"></a>Új fiók létrehozása a részlegben
 
-Hozzárendelheti a felhasználókhoz az Azure-előfizetés a részleg számára létrehozott számlázási szakaszának létrehozói szerepkörét. További információkért lásd [az engedélyek másoknak történő biztosítását Azure-előfizetések létrehozásához](billing-mca-create-subscription.md#give-others-permission).
+Hozzárendelheti a felhasználókhoz az Azure-előfizetés a részleg számára létrehozott számlázási szakaszának létrehozói szerepkörét. A szerepkörök hozzárendelésével kapcsolatos további információért tekintse meg [a számlázási szerepkörök az Azure Portalon történő kezelését](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal) ismertető cikket.
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>A részlegekben található fiókok költségeinek megtekintése
 

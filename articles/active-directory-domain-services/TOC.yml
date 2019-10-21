@@ -65,6 +65,8 @@
           href: notifications.md
         - name: Felügyelt tartomány törlése
           href: delete-aadds.md
+        - name: Migrálás klasszikus üzemi modellből (előzetes verzió)
+          href: migrate-from-classic-vnet.md
     - name: Az Azure AD DS védelme
       items:
         - name: Felügyelt tartomány védelme

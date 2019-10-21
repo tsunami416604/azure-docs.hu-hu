@@ -75,9 +75,9 @@
       href: functions-cli-samples.md
 - name: Alapelvek
   items:
-    - name: Az 1.x és a 2.x verzió összehasonlítása
+    - name: Futtatókörnyezet-verziók összehasonlítása
       href: functions-versions.md
-      displayName: 'migrate, migration'
+      displayName: 'migrate, migration, v3'
     - name: Prémium szintű csomag
       href: functions-premium-plan.md
     - name: Központi telepítés

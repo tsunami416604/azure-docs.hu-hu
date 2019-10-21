@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e652237e6faa705aa3ea09e7cf80c4eb692acc98
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300314"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375595"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hitelkártya hozzáadása, frissítése vagy eltávolítása az Azure-ban
 
@@ -131,7 +131,7 @@ Az alapértelmezett fizetési mód csekkre/átutalásra váltásához lásd [a s
 1. Válasszon ki egy meglévő kártyát, vagy vegyen fel egy újat.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha a hitelkártyájának hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt privát módban.
+Nem támogatjuk a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 A következő szakaszokból a hitelkártya-adatok módosítására vonatkozó gyakori kérdésekre kaphat választ.

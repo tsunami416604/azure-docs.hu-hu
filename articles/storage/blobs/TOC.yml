@@ -248,6 +248,16 @@
               href: storage-blob-containers-list.md
             - name: Tulajdonságok és metaadatok kezelése (.NET)
               href: storage-blob-container-properties-metadata.md
+        - name: Blobok létrehozása és kezelése
+          items:
+            - name: Blobok listázása (.NET)
+              href: storage-blobs-list.md
+            - name: Blobtulajdonságok és metaadatok kezelése (.NET)
+              href: storage-blob-properties-metadata.md
+            - name: Blob másolása (.NET)
+              href: storage-blob-copy.md
+            - name: Blobpillanatképek létrehozása és kezelése (.NET)
+              href: storage-blob-snapshots.md
         - name: Blobadatok védelme
           items:
             - name: Blobadatok hozzáférésének engedélyezése

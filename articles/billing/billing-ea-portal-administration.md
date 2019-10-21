@@ -4,16 +4,16 @@ description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f344436b1e1f1a97b981c1ead469d965b06a12ce
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035221"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329338"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -62,7 +62,7 @@ Amikor vállalati fiókokat visz át egy új regisztrációba, tartsa szem előt
 
 Az átvitel hatálybalépési dátuma lehet az átvitel céljaként kiválasztott regisztráció kezdő dátuma, vagy egy későbbi időpont. Az átvitel céljaként kiválasztott regisztráció a _célregisztráció_. A fiók átvitele után a fiókban lévő, átvitel dátuma előtti használati adatok abban a regisztrációban maradnak, amelyből átviszi a fiókot. Az átvitel forrásaként szolgáló regisztráció a _forrásregisztráció_.  A forrásregisztráció használatának költsége a pénzügyi keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
 
-A fiókátvitelt legfeljebb a célregisztráció kezdő dátumáig lehet visszakeltezni. Vagy legfeljebb a forrásregisztráció hatálybalépési dátumáig.
+A regisztrációátvitelt legfeljebb a célregisztráció kezdő dátumáig lehet visszakeltezni. Vagy legfeljebb forrásregisztráció hatálybalépése dátumáig.
 
 ### <a name="monetary-commitment"></a>Pénzügyi keret
 
@@ -212,12 +212,11 @@ Ha a felhasználó nem kap értesítést, a következő lépésekkel ellenőrizz
 ![A Kapcsolattartó hozzáadása panelt mutató példa ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-ajánlat
+
 Az Azure Sponsorship-ajánlat korlátozott számú szponzorált Microsoft Azure-fiókot takar. A Microsoft által kiválasztott, korlátozott számú ügyfél az e-mailben kapott meghívóval csatlakozhat hozzá. Ha Ön jogosult a Microsoft Azure Sponsorship-ajánlatára, akkor kapni fog egy e-mailes meghívót a fiókazonosítójára.
+
 További információkért lásd:
 
-- Szponzorajánlat áttekintése – https://azure.microsoft.com/en-us/offers/ms-azr-0143p/
-- Szponzorálás egyenlege portál – https://www.microsoftazuresponsorships.com/balance  
-- Szponzorálás – külső GYIK – https://azuresponsorships-staging.azurewebsites.net/faq
 - Támogatási kérés a szponzorálás aktiválásához – http://aka.ms/azrsponsorship
 
 ## <a name="next-steps"></a>További lépések
