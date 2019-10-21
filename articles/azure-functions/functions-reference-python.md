@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 97b954ee5e00c13211a3b2a2254b6d34bccb780c
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243275"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674940"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -278,9 +278,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         )
 ```
 
-Ebben a függvényben a `name` lekérdezési paraméter értéke a [HttpRequest] objektum `params` paraméterének beszerzése után történik. A JSON-kódolású üzenet törzse a `get_json` metódussal olvasható. 
+Ebben a függvényben a `name` lekérdezési paraméter értéke a [HttpRequest] objektum `params` paraméterének beszerzése után történik. A JSON-kódolású üzenet törzse a `get_json` metódus használatával olvasható. 
 
-Hasonlóképpen a visszaadott [HttpResponse] objektumban beállíthatja a `status_code` és a `headers` értéket is.
+Hasonlóképpen beállíthatja a válaszüzenet `status_code`ét és `headers` a visszaadott [HttpResponse] objektumban.
 
 ## <a name="concurrency"></a>Párhuzamosság
 
@@ -360,7 +360,7 @@ def main(req):
 
 ## <a name="environment-variables"></a>Környezeti változók
 
-A függvények területen az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai környezeti változókként vannak kitéve a végrehajtás során. Ezeket a beállításokat a `import os`, majd a, `setting = os.environ["setting-name"]` érték beírásával érheti el.
+A függvények területen az [Alkalmazásbeállítások](functions-app-settings.md), például a szolgáltatási kapcsolatok karakterláncai környezeti változókként vannak kitéve a végrehajtás során. Ezeket a beállításokat a `import os` deklarálása, majd a `setting = os.environ["setting-name"]` használatával érheti el.
 
 A következő példa beolvassa az [Alkalmazásbeállítások értékét](functions-how-to-use-azure-function-app-settings.md#settings)a `myAppSetting` nevű kulccsal:
 
@@ -398,22 +398,15 @@ pip install -r requirements.txt
 
 Ha készen áll a közzétételre, győződjön meg arról, hogy az összes függőség szerepel a Project könyvtárának gyökérkönyvtárában található *követelmények. txt* fájlban. A Azure Functions képes [távolról felépíteni](functions-deployment-technologies.md#remote-build) ezeket a függőségeket.
 
-A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva.  
+A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva. 
 
-Az Azure-ba történő üzembe helyezéshez és a távoli buildek elvégzéséhez használja a következő parancsot:
+A VS Code [Azure functions Core Tools](functions-run-local.md#v2) és [Azure functions bővítménye](functions-create-first-function-vs-code.md#publish-the-project-to-azure) alapértelmezés szerint távoli buildet fog végezni. Használja például a következő parancsot:
 
 ```bash
-func azure functionapp publish <app name> --build remote
+func azure functionapp publish <app name>
 ```
 
-Ha nem használ távoli buildet, és olyan csomagot használ, amely egy fordítót igényel, és nem támogatja számos, a Linux-kompatibilis kerekek PyPI való telepítését, az Azure-ba való helyi létrehozás nélküli közzététel sikertelen lesz a következő hiba miatt:
-
-```
-There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
-The terminal process terminated with exit code: 1
-```
-
-Ha helyileg szeretné kiépíteni és konfigurálni a szükséges bináris fájlokat, [telepítse a Docker](https://docs.docker.com/install/) -t a helyi gépre, és futtassa a következő parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (a) használatával történő közzétételhez. Ne felejtse el helyettesíteni a `<app name>` értéket az Azure-beli Function alkalmazás nevével. 
+Ha az Azure-beli helyett helyileg szeretné létrehozni az alkalmazást, [telepítse a Docker](https://docs.docker.com/install/) -t a helyi gépre, és futtassa a következő parancsot a [Azure functions Core Tools](functions-run-local.md#v2) (függvény) használatával történő közzétételhez. Ne felejtse el helyettesíteni a `<app name>` értéket az Azure-beli Function alkalmazás nevével. 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps

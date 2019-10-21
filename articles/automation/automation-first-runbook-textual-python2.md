@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65cd59933fa31d870a507cbe80b454934c9008d0
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 626f446c18acf1f07f458fb1b4238f182546e479
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265104"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596926"
 ---
 # <a name="my-first-python-runbook"></a>Az első Python-runbook
 
@@ -83,7 +83,7 @@ Ebben az esetben még nem rendelkezik közzétett verzióval, mert most létreho
 1. Görgessen vissza jobbra a **MyFirstRunbook-Python**ablaktáblájának megtekintéséhez.
    A felső beállítások lehetővé teszik, hogy elindítsa a runbook, megtekintse a runbook, vagy ütemezze azt úgy, hogy később elkezdődjön.
 2. El szeretné indítani a runbook, kattintson a **Start** gombra, majd kattintson az **OK** gombra a runbook indítása panel megnyitásakor.
-3. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. Lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
+3. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. lezárhatja ezt a panelt, de ebben az esetben hagyja megnyitva, hogy megtekintse a feladatok állapotát.
 1. A feladatok állapota megjelenik a **feladatok összegzése** területen, és megfelel a runbook tesztelésekor megtekintett állapotoknak.
 2. Ha a forgatókönyv a *Befejezve* állapotot mutatja, kattintson a **Kimenet** lehetőségre. Megnyílik a kimenet panel, és megtekintheti a *"Helló világ!" alkalmazás*.
 3. Zárja be a Kimenet panelt.
@@ -173,7 +173,7 @@ Tesztelje és futtassa újra a runbook, és ellenőrizze, hogy elindul-e a virtu
 A runbook jelenleg rögzített értékeket használ az erőforráscsoport és a virtuális gép neveihez.
 Most vegyünk fel egy kódot, amely beolvassa ezeket az értékeket a bemeneti paraméterekből.
 
-A paraméter értékeinek lekéréséhez használja a `sys.argv` változót.
+A paraméterek értékeinek lekéréséhez használja a `sys.argv` változót.
 Adja hozzá a következő kódot a runbook közvetlenül a többi `import` utasítás után:
 
 ```python
@@ -183,8 +183,8 @@ resource_group_name = str(sys.argv[1])
 vm_name = str(sys.argv[2])
 ```
 
-Ezzel importálja `sys` a modult, és két változót hoz létre az erőforráscsoport és a virtuális gépek neveinek tárolására.
-Figyelje meg, hogy az argumentumok listája `sys.argv[0]`, a a parancsfájl neve, és a felhasználó nem adja meg a bemenetet.
+Ezzel importálja a `sys` modult, és két változót hoz létre az erőforráscsoport és a virtuális gépek neveinek tárolására.
+Figyelje meg, hogy az argumentumok listájának (`sys.argv[0]`) eleme a parancsfájl neve, és a felhasználó nem adja meg a bemenetet.
 
 Most módosíthatja a runbook utolsó két sorát úgy, hogy a bemeneti paraméterek értékeit a rögzített értékek használata helyett használja:
 
@@ -198,7 +198,7 @@ Amikor elindít egy Python-runbook (akár a **teszt** oldalon, akár közzétett
 
 Miután megkezdte egy érték beírását az első mezőbe, egy másodperc jelenik meg, és így tovább, így tetszőleges számú paraméter-értéket adhat meg.
 
-Az értékek a parancsfájlban `sys.argv` az imént hozzáadott kódban szereplő tömbként érhetők el.
+Az értékek a parancsfájlban `sys.argv` tömbként érhetők el, mint az imént hozzáadott kódban.
 
 Adja meg az erőforráscsoport nevét az első paraméter értékeként, valamint a második paraméter értékeként elindítani kívánt virtuális gép nevét.
 
@@ -206,7 +206,31 @@ Adja meg az erőforráscsoport nevét az első paraméter értékeként, valamin
 
 A runbook elindításához kattintson **az OK** gombra. A runbook fut, és elindítja a megadott virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="error-handling-in-python"></a>Hibakezelés a Pythonban
+
+A következő konvenciókat is használhatja a különböző streamek lekéréséhez a Python-runbookok, beleértve a **figyelmeztetéseket**, a **hibákat**és a **hibakeresési** adatfolyamokat.
+
+```python
+print("Hello World output") 
+print("ERROR: - Hello world error")
+print("WARNING: - Hello world warning")
+print("DEBUG: - Hello world debug")
+print("VERBOSE: - Hello world verbose")
+```
+
+A következő példa egy `try...except` blokkban használt egyezményt mutatja be.
+
+```python
+try:
+    raise Exception('one', 'two')
+except Exception as detail:
+    print 'ERROR: Handling run-time error:', detail
+```
+
+> [!NOTE]
+> a **sys. stderr** Azure Automation nem támogatott.
+
+## <a name="next-steps"></a>Következő lépések
 
 - A PowerShell-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-forgatókönyvem](automation-first-runbook-textual-powershell.md).
 - A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).

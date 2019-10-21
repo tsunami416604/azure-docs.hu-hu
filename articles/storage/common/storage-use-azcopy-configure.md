@@ -4,16 +4,16 @@ description: AzCopy konfigurálása, optimalizálása és megoldása.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273924"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595130"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy konfigurálása, optimalizálása és megoldása
 
@@ -68,9 +68,9 @@ A `cap-mbps` jelzővel egy felső korlátot helyezhet el az adatátviteli sebess
 azcopy cap-mbps 10
 ```
 
-Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. Az átviteli sebességet a `AZCOPY_CONCURRENCY_VALUE` környezeti változó beállításával növelheti. Ez a változó határozza meg az egyidejű kérések számát.  
+Az átviteli sebesség kisebb fájlok átvitele esetén is csökkenhet. A `AZCOPY_CONCURRENCY_VALUE` környezeti változó beállításával növelheti az átviteli sebességet. Ez a változó határozza meg az egyidejű kérések számát.  
 
-Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke `32`. Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. A változó alapértelmezett értéke @no__t – 0, de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
+Ha a számítógép kevesebb mint 5 processzorral rendelkezik, akkor a változó értéke `32`. Ellenkező esetben az alapértelmezett érték 16, szorozva a processzorok számával. Ennek a változónak a maximális alapértelmezett értéke `3000`, de ezt az értéket manuálisan vagy lejjebb is állíthatja. 
 
 | Operációs rendszer | Parancs  |
 |--------|-----------|
@@ -99,7 +99,7 @@ A AzCopy minden feladattípus esetében létrehozza a naplófájlokat és megter
 
 A naplók a hiba állapotát (`UPLOADFAILED`, `COPYFAILED` és `DOWNLOADFAILED`) tartalmazzák, a teljes elérési utat és a hiba okát.
 
-Alapértelmezés szerint a napló-és a terv fájlok a `%USERPROFILE$\.azcopy` könyvtárban találhatók a Windows vagy a `$HOME$\.azcopy` könyvtáron Mac és Linux rendszeren, de ha kívánja, módosíthatja ezt a helyet.
+Alapértelmezés szerint a napló-és a megtervezési fájlok a `%USERPROFILE$\.azcopy` könyvtárban találhatók a Windows rendszeren, vagy `$HOME$\.azcopy` a Mac és Linux rendszerű címtárban, de ha kívánja, módosíthatja ezt a helyet.
 
 > [!IMPORTANT]
 > Amikor kérelmet küld a Microsoft ügyfélszolgálata (vagy bármely harmadik féltől származó probléma elhárítása), ossza meg a futtatni kívánt parancs kivont verzióját. Ez biztosítja, hogy az SAS véletlenül senkivel se legyen megosztva. A leválasztott verziót a naplófájl elején találja.
@@ -151,7 +151,7 @@ Amikor folytat egy feladatot, a AzCopy megtekinti a feladatütemezés fájlját.
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>A csomag és a naplófájlok helyének módosítása
 
-Alapértelmezés szerint a csomag-és naplófájlok a Windows `%USERPROFILE$\.azcopy` könyvtárában vagy a Mac és Linux rendszeren futó `$HOME$\.azcopy` könyvtárban találhatók. Ezt a helyet módosíthatja.
+Alapértelmezés szerint a csomag és a naplófájlok a Windows `%USERPROFILE$\.azcopy` könyvtárában vagy a Mac és Linux rendszerű `$HOME$\.azcopy` könyvtárban találhatók. Ezt a helyet módosíthatja.
 
 ### <a name="change-the-location-of-plan-files"></a>A csomag fájljai helyének módosítása
 

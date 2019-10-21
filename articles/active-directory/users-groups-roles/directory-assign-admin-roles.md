@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6e1ab2c2b02ab4279e95840135bdc87710cd66
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 56e5fb986431ec47a34b81491bc61b4c38a24e31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551659"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592888"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -224,12 +224,14 @@ Az ebben a szerepkörben lévő felhasználók beolvashatják a beállításokat
 > [!NOTE]
 > A globális olvasói szerepkörnek jelenleg néhány korlátozása van –
 >
->* SharePoint felügyeleti központ – a SharePoint felügyeleti központ nem támogatja a globális olvasó szerepkört. A bal oldali ablaktáblában nem jelenik meg a "SharePoint" a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com/Adminportal/Home#/homepage), és a rendszer megtagadja a hozzáférést, amikor megpróbál a *https://{Azure ad-szervezet neve} – admin.SharePoint.com*.
+>* SharePoint felügyeleti központ – a SharePoint felügyeleti központ nem támogatja a globális olvasó szerepkört. A "SharePoint" nem jelenik meg a bal oldali ablaktáblában a [Microsoft 365 felügyeleti központban](https://admin.microsoft.com/Adminportal/Home#/homepage), a felügyeleti központ területen.
+>* [OneDrive felügyeleti központ](https://admin.onedrive.com/) – a OneDrive felügyeleti központ nem támogatja a globális olvasó szerepkört.
 >* [Azure ad-portál](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – a globális olvasó nem tudja olvasni a vállalati alkalmazások kiépítési módját.
 >* [M365 felügyeleti központ](https://admin.microsoft.com/Adminportal/Home#/homepage) – a globális olvasó nem tudja beolvasni az ügyfél kulcstároló-kérelmeit. A M365 felügyeleti központ bal oldali ablaktáblájában nem találja a **Customer kulcstároló-kérelmek** fület a **támogatás** területen.
 >* [M365 Security Center](https://security.microsoft.com/homepage) – a globális olvasó nem tudja olvasni az érzékenységet és a megőrzési címkéket. A M365 Security Center bal oldali ablaktábláján nem találhatók az **adattartalom**, a **megőrzési címkék**és a **címke-elemzési** lapok.
 >* [Teams felügyeleti központ](https://admin.teams.microsoft.com) – a globális olvasó nem tudja beolvasni a **csapatok életciklusát**, az **elemzési & jelentéseket**, az **IP Phone-eszközök kezelését** és az **alkalmazás-katalógust**
 >* A [Privileged Access Management (PAM)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) nem támogatja a globális olvasó szerepkört.
+>* [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) – a globális olvasó csak a [központi jelentéskészítés](https://docs.microsoft.com/azure/information-protection/reports-aip) esetén támogatott, és ha a bérlő nem az [egyesített címkézési platformon](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)van.
 >
 > Ezek a funkciók jelenleg fejlesztés alatt állnak.
 >

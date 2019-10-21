@@ -1,6 +1,6 @@
 ---
-title: Az Azure Files-NetApp használatával NFS-kötet exportálási vonatkozó házirend konfigurálása |} A Microsoft Docs
-description: Ismerteti, hogyan lehet egy NFS-kötet Azure NetApp fájlokkal való hozzáférés szabályozásához export-házirend konfigurálása
+title: NFS-kötet exportálási házirendjének konfigurálása Azure NetApp Files használatával | Microsoft Docs
+description: Leírja, hogyan konfigurálható az exportálási házirend az NFS-kötetekhez való hozzáférés vezérléséhez Azure NetApp Files használatával
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 10/18/2019
 ms.author: b-juche
-ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d323bd0b9684cfe4930d8c779a6728fcfd3836fb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61086178"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72674925"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Exportálási szabályzat konfigurálása NFS-kötethez
 
-Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. Exportálás házirend a rendszer csak az NFS-kötetek esetében támogatja. 
+Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azure NetApp Files-kötethez való hozzáférést. Azure NetApp Files exportálási házirend csak az NFS-köteteket támogatja.  A NFSv3 és a Nfsv4 névleképezője egyaránt támogatott. 
 
 ## <a name="steps"></a>Lépések 
 
-1.  Kattintson az **Exportálási szabályzat létrehozása** panelre a Kötet kezelése panelen. 
+1.  Kattintson a **házirend exportálása** lehetőségre a Azure NetApp Files navigációs ablaktáblán. 
 
 2.  Töltse ki az alábbi mezőket az exportálási szabályzat létrehozásához:   
     *  **Index**   
@@ -45,14 +45,10 @@ Konfigurálhat egy exportálási szabályzatot, amellyel szabályozhatja az Azur
         * Olvasás és írás
         * Csak olvasási engedély
 
-    * **Protokollok**   
-        Adja meg az exportálási szabályzathoz használni kívánt protokollt.   
-        Az Azure Files-NetApp exportálási házirend jelenleg csak NFSv3 támogatja.
-
     ![Exportálási szabályzat](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 * [Kötetek kezelése](azure-netapp-files-manage-volumes.md)
 * [Kötet virtuális gépekhez való csatlakoztatása és leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Pillanatképek kezelése](azure-netapp-files-manage-snapshots.md)

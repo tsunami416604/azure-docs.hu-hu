@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 50337745b008cdd38dd860a0329e44ee712e7acd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "70085662"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
@@ -33,9 +33,9 @@ A következő, a függvények a tárolóhelyek cseréjével kapcsolatos hatásai
 
 Számos előnnyel jár az üzembe helyezési pontok használata. A következő forgatókönyvek a bővítőhelyek gyakori felhasználási módjait ismertetik:
 
-- Különböző **környezetek különböző célokra**: A különböző tárolóhelyek használata lehetővé teszi az alkalmazások példányainak megkülönböztetését, mielőtt az éles környezetben vagy egy átmeneti tárolóhelyre cseréli őket.
-- Előmelegítés: A közvetlenül az éles környezetbe való üzembe helyezése lehetővé teszi az alkalmazás számára, hogy az élő működés előtt belépjen. Emellett a tárolóhelyek használata csökkenti a HTTP-triggert használó munkaterhelések késését. A példányokat a rendszer az üzembe helyezés előtt felmelegszik, ami csökkenti az újonnan üzembe helyezett függvények hideg indítását.
-- **Egyszerű tartalékok**: Az éles használatot követően a korábban előkészített alkalmazás tárolóhelye már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor a swap azonnal visszafordítható az "utolsó ismert jó példány" visszaszerzéséhez.
+- Különböző **környezetek különböző célokra**: a különböző tárolóhelyek használata lehetővé teszi az alkalmazás-példányok megkülönböztetését, mielőtt az éles környezetbe vagy egy átmeneti tárolóhelyre cseréli őket.
+- **Előmelegítés**: a közvetlenül az éles környezetbe való üzembe helyezése lehetővé teszi az alkalmazás számára, hogy az élő működés előtt belépjen. Emellett a tárolóhelyek használata csökkenti a HTTP-triggert használó munkaterhelések késését. A példányokat a rendszer az üzembe helyezés előtt felmelegszik, ami csökkenti az újonnan üzembe helyezett függvények hideg indítását.
+- **Egyszerű tartalékok**: az éles használat után a korábban előkészített alkalmazáshoz tartozó tárolóhely már az előző éles alkalmazásban van. Ha az éles tárolóhelyre való váltás nem a várt módon történik, akkor a swap azonnal visszafordítható az "utolsó ismert jó példány" visszaszerzéséhez.
 
 ## <a name="swap-operations"></a>Swap-műveletek
 
@@ -52,7 +52,7 @@ A csere során az egyik tárolóhely a forrás és a másik cél. A forrás tár
 
 1. **Ismétlési művelet:** Most, hogy a forrás tárolóhelye korábban a cél tárolóhelyen lévő előzetes swap alkalmazást használja, végezze el ugyanezt a műveletet úgy, hogy az összes beállítást alkalmazza, majd újraindítja a példányokat a forrás tárolóhelyén.
 
-Vegye figyelembe a következő szempontokat:
+Tartsa szem előtt az alábbi szempontokat:
 
 - A swap-művelet bármely pontján a felcserélt alkalmazások inicializálása a forrás tárolóhelyen történik. A cél tárolóhely online marad, amíg a forrás tárolóhelye elkészült, vagy a swap sikeres vagy sikertelen lesz.
 
@@ -72,7 +72,7 @@ Ha egy tárolóhelyen létrehoz egy központi telepítési beállítást, minden
 
 A következő lépésekkel hozhat létre központi telepítési beállítást:
 
-- A Function alkalmazásban navigáljon a tárolóhelyekhez
+- A Function alkalmazásban navigáljon a *tárolóhelyekhez*
 - Kattintson a tárolóhely nevére
 - A *platform szolgáltatásai > általános beállítások*területen kattintson a **Konfigurálás** elemre.
 - Kattintson arra a beállításra, amelyet az aktuális tárolóhelyhez szeretne ragasztani
@@ -82,7 +82,7 @@ A következő lépésekkel hozhat létre központi telepítési beállítást:
 
 ![Üzembe helyezési pont beállítása](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 Tárolóhelyek létrehozásakor a tárolóhelyek üresek. A [támogatott üzembe helyezési technológiák](./functions-deployment-technologies.md) bármelyikével üzembe helyezheti az alkalmazást egy tárolóhelyen.
 
@@ -93,7 +93,7 @@ Az összes tárolóhely az üzemi tárolóhelytel azonos számú feldolgozóra m
 - A használati csomagok esetében a tárolóhely a függvény alkalmazási skálájának megfelelően méretezhető.
 - App Service csomagok esetében az alkalmazás egy rögzített számú feldolgozóra méretezhető. A bővítőhelyek ugyanazon a számú feldolgozón futnak, mint az alkalmazási csomag.
 
-## <a name="add-a-slot"></a>Tárhely felvétele
+## <a name="add-a-slot"></a>Tárolóhely hozzáadása
 
 Hozzáadhat egy tárolóhelyet a [CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) -n keresztül, vagy a portálon keresztül is. A következő lépések bemutatják, hogyan hozhat létre egy új tárolóhelyet a portálon:
 
@@ -111,8 +111,8 @@ A tárolóhelyeket a [CLI](https://docs.microsoft.com/cli/azure/functionapp/depl
 
 1. Navigáljon a Function alkalmazáshoz
 1. Kattintson a felcserélni kívánt forrás tárolóhely nevére
-1. Az *Áttekintés* lapon kattintson a felcserélés gombra ![Azure functions üzembe helyezési pontra.](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. Ellenőrizze a felcserélés konfigurációs beállításait, majd ![kattintson a swap-csere Azure functions üzembe helyezési pontra](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. Az *Áttekintés* lapon kattintson a **felcserélés** gombra ![Swap Azure functions üzembe helyezési pontra ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. Ellenőrizze a swap konfigurációs beállításait, majd kattintson a **swap** ![Swap Azure functions üzembe helyezési pontra ](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
 A művelet eltarthat egy kis ideig, amíg a rendszer végrehajtja a swap-műveletet.
 
@@ -169,15 +169,15 @@ A bővítőhely app Service-csomagjának módosításához kövesse az alábbi l
 Azure Functions üzembe helyezési pontok a következő korlátozásokkal rendelkeznek:
 
 - Az alkalmazás számára elérhető tárolóhelyek száma a csomagtól függ. A használati terv csak egy üzembe helyezési pont számára engedélyezett. További tárolóhelyek érhetők el a App Service csomag alatt futó alkalmazásokhoz.
-- A tárolóhelyek cseréje visszaállítja a kulcsokat olyan alkalmazások számára `AzureWebJobsSecretStorageType` , amelyeknek az `files`alkalmazás beállításai megegyeznek.
+- A tárolóhelyek cseréje visszaállítja a kulcsokat olyan alkalmazások számára, amelyeken a `AzureWebJobsSecretStorageType` alkalmazás beállítása `files`.
 - A Linux-használati tervhez nem érhetők el tárolóhelyek.
 
 ## <a name="support-levels"></a>Támogatási szintek
 
 Az üzembe helyezési pontok két szinten támogatottak:
 
-- **Általánosan elérhető (GA)** : Teljes mértékben támogatott és jóváhagyott éles használatra.
-- **Előzetes**verzió: Még nem támogatott, de a jövőben várhatóan eléri a GA-állapotot.
+- **Általánosan elérhető (GA)** : teljes mértékben támogatott és jóváhagyott éles használatra.
+- **Előzetes**verzió: még nem támogatott, de a jövőben várhatóan el kell érnie a ga-állapotot.
 
 | Operációs rendszer/üzemeltetési csomag           | Támogatási szint     |
 | ------------------------- | -------------------- |
@@ -188,6 +188,6 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Linux Premium (előzetes verzió)   | Előzetes verzió              |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

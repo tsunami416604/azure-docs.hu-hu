@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: dfd304b0c15b325208daba104bb79863fcd3f53f
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 79bdfc84310686b2648e12d73d783de049e9d2fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527447"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596514"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Létező átalakítás a leképezési adatfolyamban
 
@@ -20,11 +20,10 @@ A létező transzformáció egy sor-szűrési átalakítás, amely ellenőrzi, h
 
 ## <a name="configuration"></a>Konfiguráció
 
-Válassza ki, hogy melyik adatfolyamot kívánja megkeresni a **megfelelő stream** legördülő menüben.
-
-Adja meg, hogy szeretné-e, ha a létező vagy nem létező **adattípust** szeretné használni.
-
-Válassza ki, hogy mely fő oszlopokat kívánja összehasonlítani a meglévő feltételekkel. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Egy számítási érték összevetéséhez vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
+1. Válassza ki, hogy melyik adatfolyamot kívánja megkeresni a **megfelelő stream** legördülő menüben.
+1. Adja meg, hogy szeretné-e, ha a létező vagy nem létező **adattípust** szeretné használni.
+1. Válassza ki, hogy szeretne-e **Egyéni kifejezést**használni.
+1. Válassza ki, hogy mely fő oszlopokat kívánja összehasonlítani a meglévő feltételekkel. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
 
 ![Létező beállítások](media/data-flow/exists.png "létezik 1")
 

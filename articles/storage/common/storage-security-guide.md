@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72e695762f2e45309787e6f62fa97aae4c959f34
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299618"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598093"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatója
 
@@ -25,7 +25,7 @@ Az Azure Storage egy átfogó biztonsági képességeket kínál, amelyek lehet�
     - A RBAC szerepköröket hozzárendelheti a rendszerbiztonsági tagekhez, és az Azure AD használatával engedélyezheti az erőforrás-kezelési műveleteket, például a kulcskezelő műveleteket.
     - Az Azure AD-integráció a blob-és üzenetsor-adatműveletek esetében támogatott. RBAC-szerepköröket rendelhet hozzá egy előfizetéshez, egy erőforráscsoporthoz, egy Storage-fiókhoz vagy egy adott tárolóhoz vagy várólistához egy rendszerbiztonsági tag vagy egy felügyelt identitás számára az Azure-erőforrások számára. További információ: az [Azure Storage hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md).   
 - Az alkalmazások és az Azure között az [ügyféloldali titkosítás](../storage-client-side-encryption.md), a HTTPS vagy az SMB 3,0 használatával lehet biztosítani az adatátvitelt.  
-- Az Azure-beli virtuális gépek által használt operációs rendszer és adatlemezek [Azure Disk Encryption](../../security/azure-security-disk-encryption.md)használatával titkosíthatók.
+- Az Azure-beli virtuális gépek által használt operációs rendszer és adatlemezek [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)használatával titkosíthatók.
 - Az Azure Storage-beli adatobjektumokhoz delegált hozzáférés a közös hozzáférési aláírás használatával adható meg. További információ: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](storage-sas-overview.md).
 
 Ez a cikk áttekintést nyújt az Azure Storage szolgáltatással használható biztonsági funkciókról. A hivatkozások olyan cikkek számára érhetők el, amelyek részletesen ismertetik az egyes funkciók részleteit, így könnyebben végezhet további vizsgálatot az egyes témakörökben.
@@ -328,7 +328,7 @@ A megoldás nem támogatja az alábbi forgatókönyveket, szolgáltatásokat és
 Ez a funkció biztosítja, hogy a virtuálisgép-lemezeken lévő összes adatok titkosítva legyenek az Azure Storage-ban.
 
 #### <a name="resources"></a>Segédanyagok és eszközök
-* [Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
+* [Azure Disk Encryption Windows és Linux rendszerű IaaS virtuális gépekhez](../../security/fundamentals/encryption-overview.md)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Azure Disk Encryption, SSE és ügyféloldali titkosítás összehasonlítása
 
@@ -389,7 +389,7 @@ Az alábbi forrásokban szerepel egy cikk, amely a naplók számos mezőjének l
 
 ![Naplófájl mezőinek pillanatképe](./media/storage-security-guide/image3.png)
 
-Érdeklik a GetBlob vonatkozó bejegyzések és azok engedélyezése, ezért meg kell keresni a "Get-blob" típusú bejegyzéseket, és ellenőriznie kell a kérelem állapotát (negyedik @ no__t-0 oszlop) és az engedélyezési típust (nyolcadik @ no__t-1 oszlop).
+Érdeklik a GetBlob vonatkozó bejegyzések és azok engedélyezése, ezért meg kell keresni a "Get-blob" típusú bejegyzéseket, és ellenőriznie kell a kérelem állapotát (negyedik </sup> oszlop) és az engedélyezési típust (nyolcadik </sup> oszlop).
 
 Például a fenti lista első néhány sorában a kérelem állapota "sikeres", az engedélyezési típus pedig "hitelesített". Ez azt jelenti, hogy a kérés a Storage-fiók kulcsa alapján lett engedélyezve.
 

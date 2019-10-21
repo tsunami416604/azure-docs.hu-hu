@@ -5,131 +5,121 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bed661873b195694c2fd9b30b1d98a3ecf1fc8a4
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 833aa7dcce5c429b3005a378e93e2177df1eb0d4
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671104"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595184"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz
 
 Az Azure Blob és a üzenetsor-tároló támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik a blob-és üzenetsor-adatokhoz való hozzáférést az Azure-beli virtuális gépeken (VM-ben) futó alkalmazások Azure AD-beli hitelesítő adataival, a Function apps, a virtuálisgép-méretezési csoportokkal és más szolgáltatásokkal. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.  
 
-Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a blob-vagy üzenetsor-adatokhoz egy Azure-beli virtuális gép felügyelt identitásával.
+Ez a cikk bemutatja, hogyan engedélyezhető a blob-vagy üzenetsor-adatokhoz való hozzáférés az Azure-beli virtuális gépekről az Azure-erőforrások felügyelt identitásai használatával. Azt is leírja, hogyan tesztelheti a kódot a fejlesztői környezetben.
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Felügyelt identitások engedélyezése egy virtuális gépen
 
 Ahhoz, hogy az Azure-erőforrásokhoz felügyelt identitások használatával engedélyezzék a blobokhoz és a várólistákhoz való hozzáférést a virtuális gépről, először engedélyeznie kell a felügyelt identitásokat az Azure-erőforrásokhoz a virtuális gépen. Ha szeretné megtudni, hogyan engedélyezheti az Azure-erőforrások felügyelt identitásait, tekintse meg az alábbi cikkek egyikét:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portalra](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablon](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure Resource Manager ügyféloldali kódtárak](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-an-azure-ad-managed-identity"></a>Engedélyek megadása az Azure AD által felügyelt identitásnak
+A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ha az Azure Storage-alkalmazásban egy felügyelt identitástól szeretne kérelmet engedélyezni a blobnak vagy Queue szolgáltatásnek, először konfigurálja a felügyelt identitáshoz tartozó szerepköralapú hozzáférés-vezérlés (RBAC) beállításait. Az Azure Storage meghatározza azokat a RBAC-szerepköröket, amelyek magukban foglalják a blob-és üzenetsor-adataikat Ha a RBAC szerepkör felügyelt identitáshoz van rendelve, a felügyelt identitás a megfelelő hatókörben megadja a blob-vagy üzenetsor-adatokhoz tartozó engedélyeket.
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Hitelesítés az Azure Identity Library (előzetes verzió) használatával
 
-A RBAC szerepköreinek hozzárendelésével kapcsolatos további információkért tekintse meg a következő cikkek egyikét:
+Az Azure Identity .NET-hez készült ügyféloldali kódtára (előzetes verzió) egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
 
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure Portalon](storage-auth-aad-rbac-portal.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure CLI-vel](storage-auth-aad-rbac-cli.md)
-- [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával a PowerShell-lel](storage-auth-aad-rbac-powershell.md)
+Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
-## <a name="azure-storage-resource-id"></a>Azure Storage-erőforrás azonosítója
+Más fejlesztői eszközök megkérhetik a bejelentkezést egy webböngészőn keresztül. Az egyszerű szolgáltatásnév használatával is végezheti el a hitelesítést a fejlesztési környezetből. További információkért lásd: [identitás létrehozása az Azure-alkalmazáshoz a portálon](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-[!INCLUDE [storage-resource-id-include](../../../includes/storage-resource-id-include.md)]
+A hitelesítés után az Azure Identity Client Library megkapja a jogkivonat hitelesítő adatait. Ezt a jogkivonat hitelesítő adatait a rendszer az Azure Storage szolgáltatással kapcsolatos műveletek elvégzéséhez létrehozott szolgáltatási ügyfél objektumba ágyazza be. A könyvtár zökkenőmentesen kezeli ezt a megfelelő jogkivonat-hitelesítő adatok beszerzésével.
+
+Az Azure Identity ügyféloldali függvénytárával kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-szerepkörök kiosztása az adathoz való hozzáféréshez
+
+Ha egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-vagy üzenetsor-adatszolgáltatáshoz, akkor a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiókban, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít a blob-vagy üzenetsor-adatokhoz Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
+
+## <a name="install-the-preview-packages"></a>Az előzetes verziójú csomagok telepítése
+
+A jelen cikkben szereplő példák az Azure Storage ügyféloldali kódtár legújabb előzetes verzióját használják a blob Storage-hoz. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+
+```powershell
+Install-Package Azure.Storage.Blobs -IncludePrerelease
+```
+
+A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb előzetes verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+
+```powershell
+Install-Package Azure.Identity -IncludePrerelease
+```
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET-kód – példa: Blokkos blob létrehozása
 
-A Code példa bemutatja, hogyan szerezhet be egy OAuth 2,0-tokent az Azure AD-ből, és hogyan engedélyezheti a blokkos Blobok létrehozásához szükséges kérelmeket. A példa működésének megkezdéséhez kövesse az előző szakaszokban ismertetett lépéseket.
-
-[!INCLUDE [storage-app-auth-lib-include](../../../includes/storage-app-auth-lib-include.md)]
-
-### <a name="add-the-callback-method"></a>Visszahívási módszer hozzáadása
-
-A visszahívási módszer ellenőrzi a jogkivonat lejárati idejét, és szükség esetén megújítja azt:
+Adja hozzá a következő `using`-irányelveket a kódjához az Azure Identity és az Azure Storage ügyféloldali kódtárainak előzetes verziójának használatához.
 
 ```csharp
-private static async Task<NewTokenAndFrequency> TokenRenewerAsync(Object state, CancellationToken cancellationToken)
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using Azure.Identity;
+using Azure.Storage;
+using Azure.Storage.Sas;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+```
+
+Ha meg szeretné kapni a jogkivonat hitelesítő adatait, amelyet a kód használhat az Azure Storage-ba irányuló kérések engedélyezéséhez, hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát. A következő mintakód bemutatja, hogyan kérheti le a hitelesített jogkivonat hitelesítő adatait, és hogyan használhatja szolgáltatás-ügyfél objektum létrehozására, majd a szolgáltatás-ügyféllel feltöltheti az új blobokat:
+
+```csharp
+async static Task CreateBlockBlobAsync(string accountName, string containerName, string blobName)
 {
-    // Specify the resource ID for requesting Azure AD tokens for Azure Storage.
-    // Note that you can also specify the root URI for your storage account as the resource ID.
-    const string StorageResource = "https://storage.azure.com/";  
+    // Construct the blob container endpoint from the arguments.
+    string containerEndpoint = string.Format("https://{0}.blob.core.windows.net/{1}",
+                                                accountName,
+                                                containerName);
 
-    // Use the same token provider to request a new token.
-    var authResult = await ((AzureServiceTokenProvider)state).GetAuthenticationResultAsync(StorageResource);
+    // Get a credential and create a client object for the blob container.
+    BlobContainerClient containerClient = new BlobContainerClient(new Uri(containerEndpoint),
+                                                                    new DefaultAzureCredential());
 
-    // Renew the token 5 minutes before it expires.
-    var next = (authResult.ExpiresOn - DateTimeOffset.UtcNow) - TimeSpan.FromMinutes(5);
-    if (next.Ticks < 0)
+    try
     {
-        next = default(TimeSpan);
-        Console.WriteLine("Renewing token...");
-    }
+        // Create the container if it does not exist.
+        await containerClient.CreateIfNotExistsAsync();
 
-    // Return the new token and the next refresh time.
-    return new NewTokenAndFrequency(authResult.AccessToken, next);
+        // Upload text to a new block blob.
+        string blobContents = "This is a block blob.";
+        byte[] byteArray = Encoding.ASCII.GetBytes(blobContents);
+
+        using (MemoryStream stream = new MemoryStream(byteArray))
+        {
+            await containerClient.UploadBlobAsync(blobName, stream);
+        }
+    }
+    catch (StorageRequestFailedException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
 }
 ```
-
-### <a name="get-a-token-and-create-a-block-blob"></a>Token beszerzése és blokk típusú blob létrehozása
-
-Az alkalmazás-hitelesítési függvénytár biztosítja a **AzureServiceTokenProvider** osztályt. Ennek az osztálynak egy példánya átadható egy olyan visszahívás számára, amely jogkivonatot kap, majd megújítja a jogkivonatot a lejárat előtt.
-
-A következő példa lekéri a tokent, és felhasználja egy új blob létrehozásához, majd ugyanazzal a jogkivonattal olvassa be a blobot.
-
-```csharp
-const string blobName = "https://storagesamples.blob.core.windows.net/sample-container/blob1.txt";
-
-// Get the initial access token and the interval at which to refresh it.
-AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
-var tokenAndFrequency = await TokenRenewerAsync(azureServiceTokenProvider,CancellationToken.None);
-
-// Create storage credentials using the initial token, and connect the callback function
-// to renew the token just before it expires
-TokenCredential tokenCredential = new TokenCredential(tokenAndFrequency.Token,
-                                                        TokenRenewerAsync,
-                                                        azureServiceTokenProvider,
-                                                        tokenAndFrequency.Frequency.Value);
-
-StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
-
-// Create a blob using the storage credentials.
-CloudBlockBlob blob = new CloudBlockBlob(new Uri(blobName),
-                                            storageCredentials);
-
-// Upload text to the blob.
-await blob.UploadTextAsync(string.Format("This is a blob named {0}", blob.Name));
-
-// Continue to make requests against Azure Storage.
-// The token is automatically refreshed as needed in the background.
-do
-{
-    // Read blob contents
-    Console.WriteLine("Time accessed: {0} Blob Content: {1}",
-                        DateTimeOffset.UtcNow,
-                        await blob.DownloadTextAsync());
-
-    // Sleep for ten seconds, then read the contents of the blob again.
-    Thread.Sleep(TimeSpan.FromSeconds(10));
-} while (true);
-```
-
-További információ az alkalmazás hitelesítési könyvtáráról: [szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával](../../key-vault/service-to-service-authentication.md).
-
-Ha többet szeretne megtudni a hozzáférési token beszerzéséről, tekintse [meg az Azure-beli virtuális gép felügyelt identitások használata Azure-beli virtuális gépeken hozzáférési jogkivonat](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)beszerzéséhez című témakört.
 
 > [!NOTE]
 > Az Azure AD-vel a blob-vagy üzenetsor-adatkérések engedélyezéséhez HTTPS protokollt kell használnia a kérelmekhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha többet szeretne megtudni az Azure Storage RBAC szerepköreiről, tekintse meg a [hozzáférési jogosultságok kezelése a RBAC](storage-auth-aad-rbac.md)szolgáltatással című témakört.
 - Ha szeretné megtudni, hogyan engedélyezheti a tárolók és a várólisták hozzáférését a Storage-alkalmazásokban, tekintse meg az [Azure ad és a Storage-alkalmazások használatát](storage-auth-aad-app.md)ismertető témakört.

@@ -6,15 +6,15 @@ author: lenadroid
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 647cb0573922bb53232dbce3f3a7a2557553d47d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: c4fca9b8f4c8a01124074396985b1ec3f1c896c6
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263896"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675150"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futtatása az AK-on
 
@@ -33,7 +33,7 @@ A cikkben szereplő lépések végrehajtásához a következőkre lesz szükség
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-A Spark nagyméretű adatfeldolgozásra szolgál, és megköveteli, hogy a Kubernetes-csomópontok megfeleljenek a Spark-erőforrások követelményeinek. Az Azure Kubernetes szolgáltatás (ak) csomópontjaihoz legalább `Standard_D3_v2` méretet ajánlunk.
+A Spark nagyméretű adatfeldolgozásra szolgál, és megköveteli, hogy a Kubernetes-csomópontok megfeleljenek a Spark-erőforrások követelményeinek. Javasoljuk, hogy az Azure Kubernetes-szolgáltatás (ak) csomópontjaihoz `Standard_D3_v2` minimális méretet adja meg.
 
 Ha olyan AK-fürtre van szüksége, amely megfelel ennek a minimális javaslatnak, futtassa a következő parancsokat.
 
@@ -43,10 +43,16 @@ Hozzon létre egy erőforráscsoportot a fürthöz.
 az group create --name mySparkCluster --location eastus
 ```
 
-Hozza létre az AK-fürtöt `Standard_D3_v2` méretű csomópontokkal.
+Hozzon létre egy egyszerű szolgáltatásnevet a fürthöz. A létrehozást követően szüksége lesz a következő parancs egyszerű appId és jelszavára.
 
 ```azurecli
-az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2
+az ad sp create-for-rbac --name SparkSP
+```
+
+Hozza létre az AK-fürtöt `Standard_D3_v2` méretű csomópontokkal, valamint a appId és a jelszó értékeit a szolgáltatás-elsődleges és az ügyfél-titkos paraméterekként.
+
+```azurecli
+az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
 Kapcsolódjon az AK-fürthöz.
@@ -64,7 +70,7 @@ Mielőtt a Spark-feladatokat egy AK-fürtön futtatja, létre kell hoznia a Spar
 A Spark Project-tárház klónozása a fejlesztői rendszeren.
 
 ```bash
-git clone -b branch-2.3 https://github.com/apache/spark
+git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
 Váltson át a klónozott tárház könyvtárára, és mentse a Spark forrásának elérési útját egy változóra.
@@ -74,7 +80,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-Ha több JDK-verzió is van telepítve, állítsa a `JAVA_HOME` értéket az aktuális munkamenet 8-as verziójának használatára.
+Ha több JDK-verzió is van telepítve, állítsa be `JAVA_HOME` az aktuális munkamenet 8-as verziójának használatára.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -136,7 +142,7 @@ Futtassa az alábbi parancsokat egy SBT beépülő modul hozzáadásához, amely
 
 ```bash
 touch project/assembly.sbt
-echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")' >> project/assembly.sbt
+echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
 Futtassa ezeket a parancsokat a mintakód az újonnan létrehozott projektbe való másolásához, és adja hozzá az összes szükséges függőséget.
@@ -151,7 +157,7 @@ cat <<EOT >> build.sbt
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.3.0" % "provided"
 EOT
 
-sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11",/' build.sbt
+sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
@@ -214,6 +220,13 @@ Váltson vissza a Spark-tárház gyökerére.
 cd $sparkdir
 ```
 
+Hozzon létre olyan szolgáltatásfiókot, amely megfelelő engedélyekkel rendelkezik a feladatok futtatásához.
+
+```bash
+kubectl create serviceaccount spark
+kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
+```
+
 Küldje el a feladatot `spark-submit` használatával.
 
 ```bash
@@ -223,6 +236,7 @@ Küldje el a feladatot `spark-submit` használatával.
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
+  --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
   --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```

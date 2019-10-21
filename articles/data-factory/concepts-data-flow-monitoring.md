@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 5d69e29c83bcbe433b800d6877ba1c7440eceedc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387985"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597122"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -24,7 +24,7 @@ A folyamat végrehajtásakor nyomon követheti a folyamatot, valamint az adatfol
 
 ![Adatfolyam-monitorozás](media/data-flow/mon001.png "Adatfolyam-figyelés")
 
-Ezen a szinten láthatja a statisztikát, beleértve a futtatási időpontokat és az állapotot is. A futtatási azonosító a tevékenység szintjén eltér a futtatási AZONOSÍTÓtól a folyamat szintjén. A futtatási azonosító az előző szinten a folyamathoz szükséges. A szemüvegre kattintva részletes információkat talál az adatfolyam végrehajtásáról.
+Ezen a szinten láthatja a statisztikát is, beleértve a futtatási időpontokat és az állapotot. A futtatási azonosító a tevékenység szintjén eltér a futtatási AZONOSÍTÓtól a folyamat szintjén. A futtatási azonosító az előző szinten a folyamathoz szükséges. A szemüvegre kattintva részletes információkat talál az adatfolyam végrehajtásáról.
 
 ![Adatfolyam-monitorozás](media/data-flow/mon002.png "Adatfolyam-figyelés")
 
@@ -47,6 +47,11 @@ Ha az adatfolyamot a Sparkban hajtja végre, Azure Data Factory meghatározza a 
   * Számított: az oszlopot a feltételes feldolgozáshoz vagy egy kifejezésen belül használja az adatfolyamatban, de a fogadóban nem
   * Származtatott: az oszlop egy új oszlop, amelyet a folyamat során generált, azaz nem volt jelen a forrásban.
   * Leképezve: az oszlop a forrástól származik, és a leképezést egy fogadó mezőhöz rendeli hozzá
+  * Adatfolyam állapota: a végrehajtás aktuális állapota
+  * Fürt indítási ideje: a JIT Spark számítási környezet beolvasásához szükséges idő az adatfolyam-végrehajtáshoz
+  * Átalakítások száma: hány átalakítási lépést hajt végre a folyamaton belül
+  
+![Acit-adatfolyam figyelése](media/data-flow/monitornew.png "Adatfolyam-figyelés – új")  
   
 ## <a name="monitor-icons"></a>Ikonok figyelése
 

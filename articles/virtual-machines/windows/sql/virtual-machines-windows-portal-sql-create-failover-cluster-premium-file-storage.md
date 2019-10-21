@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: b281344084cb558ab490e9e3c24774311ede7866
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: cba7102c39f9e5231a3fe726f2e4c74e814109f1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529434"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597979"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure-ban Virtual Machines
 
@@ -45,7 +45,7 @@ Emellett általános ismeretekkel kell rendelkeznie az alábbi technológiákró
 - [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Ha a teljes kiterjesztésű módból a Lightweight értékre szeretné váltani, törölje az "SQL virtuális gép" erőforrást a correspinding virtuális gépekhez, majd regisztrálja őket az SQL VM erőforrás-szolgáltató `lightweight` módban. Az "SQL virtuális gép" erőforrásnak a Azure Portal használatával történő törlésekor a tényleges virtuális gép kijelölésének törlését kell választania. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
+> Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módjával támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, törölje a megfelelő virtuális gép melletti jelölőnégyzet jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt [egyszerűsített](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) felügyeleti módban újratelepítette.
 
 ### <a name="workload-consideration"></a>Számítási feladatok megfontolása
 

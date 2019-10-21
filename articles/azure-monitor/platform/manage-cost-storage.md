@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 10/17/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 1480418a70166887e7327452d407f78c2c992378
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329427"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597299"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -191,7 +191,7 @@ Ha a Log Analytics munkaterület örökölt díjszabási csomagokhoz fér hozzá
 2. A munkaterület panel **általános**területén válassza az **árképzési szintet**.  
 
 3. Az **árképzési**szinten válassza ki a díjszabási szintet, majd kattintson a **kiválasztás**elemre.  
-    @no__t – 0Selected díjszabási terv @ no__t-1
+    ![Selected árképzési csomag ](media/manage-cost-storage/workspace-pricing-tier-info.png)
 
 [Az árképzési szintet a Azure Resource Manager használatával is beállíthatja](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) az ARM-sablonban található `sku` paraméterrel (`pricingTier`). 
 
@@ -268,7 +268,7 @@ A **használat és a becsült költségek** lapon az *adatfeldolgozás egy adott
 
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 Vegye figyelembe, hogy a "Where számlázható = true" záradék kiszűri az adattípusokat bizonyos olyan megoldásoktól, amelyekhez nincs betöltési díj. 
@@ -278,12 +278,12 @@ Részletesebben is megtekintheti az egyes adattípusok adatváltozásait, péld�
 ```kusto
 Usage | where TimeGenerated > startofday(ago(31d))| where IsBillable == true
 | where DataType == "W3CIISLog"
-| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart
+| summarize TotalVolumeGB = sum(Quantity) / 1000. by bin(TimeGenerated, 1d), Solution| render barchart
 ```
 
 ### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
 
-Ha szeretné megtekinteni az egyes számítógépeken betöltött számlázható események **méretét** , használja a `_BilledSize` [tulajdonságot](log-standard-properties.md#_billedsize), amely a méretet bájtban adja meg:
+Ha szeretné megtekinteni az egyes számítógépeken betöltött számlázható események **méretét** , használja a `_BilledSize` [tulajdonságot](log-standard-properties.md#_billedsize), amely bájtban adja meg a következő méretet:
 
 ```kusto
 union withsource = tt * 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__betöltött számlázható események **mérete** elérhető, és a `_ResourceId` tulajdonságot a következő módon elemezheti:
+Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__betöltött számlázható események **mérete** az alábbiak szerint `_ResourceId` elemezhető:
 
 ```kusto
 union withsource = tt * 
@@ -428,7 +428,7 @@ A következő lekérdezés akkor ad vissza eredményt, ha több mint 100 GB adat
 ```kusto
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
-| extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type 
+| extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type 
 | where DataGB > 100
 ```
 
@@ -438,7 +438,7 @@ A következő lekérdezés egy egyszerű képlettel előrejelzi, mikor fog a ren
 union withsource = $table Usage 
 | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true 
 | extend Type = $table 
-| summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type 
+| summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type 
 | where EstimatedGB > 100
 ```
 
@@ -451,7 +451,7 @@ Az első lekérdezéshez tartozó riasztás létrehozásakor – amikor több mi
 - A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
-   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1000.)) by Type | where DataGB > 100`
    - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
    - Az **Időszak** értékét állítsa *1440* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
@@ -465,7 +465,7 @@ A második lekérdezéshez tartozó riasztás létrehozásakor – amikor több 
 - A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
    - A **Jel neve** legyen **Egyéni naplókeresés**
-   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - A **Keresési lekérdezés** legyen a következő: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1000.)) by Type | where EstimatedGB > 100`
    - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
    - Az **Időszak** értékét állítsa *180* percre, a **Riasztási időköz** pedig legyen *60* perc, mivel a használati adatok csak óránként frissülnek.
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:

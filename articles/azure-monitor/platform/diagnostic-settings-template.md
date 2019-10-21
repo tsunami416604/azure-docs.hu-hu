@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f65e3c4f9582fcc5c28412d44e513fa6bcb9e870
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71262335"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597287"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
 Az Azure [platform-naplói](platform-logs-overview.md) részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról. Ez a cikk részletesen ismerteti, hogyan lehet [Azure Resource Manager sablont](../../azure-resource-manager/resource-group-authoring-templates.md) használni a diagnosztikai beállítások konfigurálásához, hogy különböző célhelyekre gyűjtsön platform-naplókat. Ez lehetővé teszi, hogy automatikusan elindítsa a platform-naplók gyűjtését egy erőforrás létrehozásakor.
@@ -53,7 +53,7 @@ A diagnosztikai beállítás [célhelyei](diagnostic-settings.md#destinations) a
 "workspaceId":{
   "type": "string",
   "metadata": {
-    "description": "Azure Resource ID of the Log Analytics workspace for the Log Analytics workspace to which logs will be sent."
+    "description": "Azure Resource ID of the Log Analytics workspace to which logs will be sent."
   }
 }
 ```

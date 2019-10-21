@@ -4,14 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 0e4e67710c98b80dce2b0d55a86869625f3942d2
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 0bcdd315fe11b7472166a5a9ad4f7395e22d2126
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71837475"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675626"
 ---
-Ha Visual Studio-projektet szeretne létrehozni a platformfüggetlen Mobile App .NET-fejlesztéshez a Xamarin-mel, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, és telepítenie kell a Speech SDK-t.
+Ha Visual Studio-projektet szeretne létrehozni a platformfüggetlen Mobile App .NET-fejlesztéshez a Xamarin-mel, a következőket kell tennie:
+- A Visual Studio fejlesztési lehetőségeinek beállítása.
+- Hozza létre a projektet, és válassza ki a cél architektúrát. 
+- Telepítse a Speech SDK-t.
 
 ### <a name="set-up-visual-studio-development-options"></a>A Visual Studio fejlesztési lehetőségeinek beállítása
 
@@ -23,65 +26,67 @@ A kezdéshez győződjön meg arról, hogy helyesen van beállítva a Visual Stu
 
    ![Munkaterhelések lap, módosítás párbeszédpanel, Visual Studio-telepítő](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-workload.png)
 
-1. A **munkaterhelések** lapon, a **Windows**alatt keresse meg a **Mobile Development és a .net** számítási feladatok elemet. Ha a számítási feladat melletti jelölőnégyzet már be van jelölve, akkor a **módosítás** párbeszédpanelt, és lépjen az 5. lépésre.
+1. A **munkaterhelések** lapon, a **Windows**alatt keresse meg a **Mobile Development** szolgáltatást a .net munkaterhelés használatával. Ha a számítási feladat melletti jelölőnégyzet már be van jelölve, akkor a **módosítás** párbeszédpanelt, és lépjen az 5. lépésre.
 
-1. Jelölje be a **Mobile Development a .net** -tel jelölőnégyzetet, válassza a **módosítás**lehetőséget, majd az **első lépések előtt** kattintson a **tovább** gombra a Mobile Development .net számítási feladattal való telepítéséhez. Az új szolgáltatás telepítése hosszabb időt is igénybe vehet.
+1. Jelölje be a **Mobile Development a .net** -tel jelölőnégyzetet, majd kattintson a **módosítás**gombra. Az **első lépések** párbeszédpanelen válassza a **tovább** lehetőséget a Mobile Development .net-munkaterheléssel való telepítéséhez. Az új szolgáltatás telepítése hosszabb időt is igénybe vehet.
 
 1. Zárjuk be a Visual Studio telepítőjét.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-1. A Visual Studio menüsávban válassza a **fájl** > **új** > **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
+1. A Visual Studio menüsávján válassza a **fájl**  > **új**  > **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
 
    ![Új projekt létrehozása – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-create-new-project.png)
 
-1. Keresse meg és válassza ki a **Mobile App (Xamarin Forms)** elemet.
+1. Keresse meg és válassza ki a **Mobile App (Xamarin. Forms)** elemet.
 
-1. Kattintson a **tovább** gombra az **új projekt konfigurálása** képernyő megjelenítéséhez. 
+1. Kattintson a **tovább** gombra az **új projekt konfigurálása** képernyő megjelenítéséhez.
 
    ![Az új projekt konfigurálása – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-configure-your-new-project.png)
 
-1. A **Project Name (projekt neve**) mezőben adja meg a `helloworld` értéket.
+1. A **Project Name (projekt neve**) mezőben adja meg a *HelloWorld*.
 
-1. A **hely**területen navigáljon, és válassza ki vagy hozza létre azt a mappát, amelybe menteni szeretné a projektet.
+1. A **hely**mezőben válassza ki a mappát, és válassza ki vagy hozza létre azt a mappát, amelybe menteni szeretné a projektet.
 
 1. Válassza a **Létrehozás** lehetőséget az **új Mobile apps Xamarin űrlapok projekt** ablak megnyitásához.
 
    ![Új Univerzális Windows-platform projekt párbeszédpanel – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-new-xamarin-project.png)
 
-1. **Üres** sablon kiválasztása
+1. Válassza ki az **üres** sablont.
 
-1. A **platform**területen keresse meg az **Android**, **iOS** és **Windows rendszerhez készült jelölőnégyzeteket (UWP)** .
+1. A **platform**területen válassza az **Android**, **iOS**és **Windows rendszerhez készült (UWP)** jelölőnégyzetet.
 
 1. Kattintson az **OK** gombra. A rendszer visszaadja a Visual Studio IDE-nek, és a **megoldáskezelő** ablaktáblán létrehozott és látható új projekttel rendelkezik.
 
-   ![HelloWorld projekt – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-helloworld.png)
+   ![A HelloWorld projekt – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-xamarin-helloworld.png)
 
-Most válassza ki a cél platform architektúráját és az indítási projektet. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza a **megtekintés** > **eszköztárak**@no__t – 3**standard** lehetőséget a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** lehetőséget. a 64 bites Windows rendszer 32 bites alkalmazásokat is futtathat, így ha szeretné, válassza az **x86** lehetőséget. Az **indítási projektek** legördülő lista HelloWorld beállítása. UWP (univerzális Windows).
+Most válassza ki a cél platform architektúráját és indítási projektjét. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza a **megtekintés**  > **eszköztárak**  > **standard** lehetőséget a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** elemet. Ha azt szeretné, hogy a 64-bites Windows is képes legyen a 32 bites alkalmazások futtatására, válassza az **x86** lehetőséget. Az **indítási projektek** legördülő listában állítsa be a **HelloWorld. UWP (univerzális Windows)** .
 
 ### <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
-Telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget), és hivatkozzon a projektben található Speech SDK-ra:
+Telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget), és hivatkozzon a projektben található Speech SDK-ra.
 
-1. **Megoldáskezelőban**kattintson a jobb gombbal a megoldásra, és válassza a megoldás **NuGet-csomagok kezelése** lehetőséget, hogy megnyissa a **NuGet-megoldás** ablakát.
+1. A **megoldáskezelő**kattintson a jobb gombbal a megoldásra. Válassza a **megoldás NuGet-csomagok kezelése** lehetőséget a **NuGet-megoldás** ablak megnyitásához.
 
 1. Válassza a **Tallózás** lehetőséget.
 
    ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-nuget-solution-browse.png)
 
-1. A **csomag forrása**területen válassza a **nuget.org**lehetőséget.
+1. A **csomag forrása**területen válassza a nuget.org lehetőséget.
 
-1. A **keresőmezőbe** írja be a `Microsoft.CognitiveServices.Speech` értéket, majd válassza ki a csomagot, miután az megjelenik a keresési eredmények között.
+1. A **keresőmezőbe** írja be a *Microsoft. CognitiveServices. Speech*kifejezést. Ezután válassza ki a csomagot, miután megjelenik a keresési eredmények között.
 
    ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-xamarin-nuget-install.png)
-   > Megjegyzés: a Microsoft. CognitiveServices. Speech nuget lévő iOS-függvénytárat nem engedélyezte a bitcode. Ha bitcode-kompatibilis függvénytárra van szüksége az alkalmazáshoz, kifejezetten a Microsoft. CognitiveServices. Speech. Xamarin. iOS nuget használja az iOS-projekthez.
 
-1. A keresési eredmények melletti csomag állapota ablaktáblán válassza a minden projekt lehetőséget. **HelloWorld**, **HelloWorld. Android**, **HelloWorld. iOS** és **HelloWorld. UWP**.
+   > [!NOTE] 
+   > @No__t_0 NuGet belül az iOS-függvénytár nem rendelkezik bitcode-engedélyezéssel. Ha az bitcode-könyvtárra van szüksége az alkalmazáshoz, akkor az iOS-projekthez `Microsoft.CognitiveServices.Speech.Xamarin.iOS` NuGet kell használnia.
+
+1. A keresési eredmények melletti csomag állapota ablaktáblán válassza a minden projekt: **HelloWorld**, **HelloWorld lehetőséget. Android**, **HelloWorld. iOS**és **HelloWorld. UWP**.
 
 1. Válassza az **Install** (Telepítés) lehetőséget.
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom** lehetőséget, és telepítse a Speech SDK-csomag hivatkozását az összes projektre. A telepítés sikeres befejezése után a következő figyelmeztetés jelenhet meg a HelloWorld. iOS esetében. Ez ismert probléma, és nem befolyásolja az alkalmazás funkcióit.
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. Telepítse a Speech SDK-csomag hivatkozását az összes projektre. A telepítés sikeres befejezése után a következő figyelmeztetés jelenhet meg a HelloWorld. iOS esetében. Ez egy ismert probléma, és nem érintheti az alkalmazás funkcióit.
 
-> Nem oldható fel a következő hivatkozás: "C:\Users\Default @ no__t-0nuget\packages\microsoft.cognitiveservices.speech\1.7.0\build\Xamarin.iOS\libMicrosoft.CognitiveServices.Speech.core.a". Ha ezt a hivatkozást a kód megköveteli, fordítási hibákat kaphat.
+   > Nem oldható fel a következő hivatkozás: "C:\Users\Default \.nuget \packages\microsoft.cognitiveservices.speech\1.7.0\build\Xamarin.iOS\libMicrosoft.CognitiveServices.Speech.core.a". Ha ezt a hivatkozást a kód megköveteli, fordítási hibákat kaphat.

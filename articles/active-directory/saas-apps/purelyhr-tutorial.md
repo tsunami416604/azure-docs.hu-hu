@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PurelyHR |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és PurelyHR között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PurelyHR | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és PurelyHR között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,210 +13,189 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99423568de7ff6686198120fd94e9c09287b21a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 56049e1b1253cd749a8e16061957c6b5b8786e3c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67093641"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72594535"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PurelyHR
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PurelyHR
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan PurelyHR integrálása az Azure Active Directory (Azure AD).
-PurelyHR integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a PurelyHR a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az PurelyHR-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá PurelyHR Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve PurelyHR (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A PurelyHR-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a PurelyHR az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-PurelyHR az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
-* PurelyHR egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* PurelyHR egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a PurelyHR **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A PurelyHR támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
+* A PurelyHR **csak időben támogatja a** felhasználók kiépítési folyamatát
 
-* Támogatja a PurelyHR **igény szerinti** felhasználók átadása
+## <a name="adding-purelyhr-from-the-gallery"></a>PurelyHR hozzáadása a gyűjteményből
 
-## <a name="adding-purelyhr-from-the-gallery"></a>PurelyHR hozzáadása a katalógusból
+A PurelyHR Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a PurelyHR a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD integrálása a PurelyHR konfigurálásához hozzá kell PurelyHR a katalógusból a felügyelt SaaS-alkalmazások listájára.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **PurelyHR** kifejezést a keresőmezőbe.
+1. Válassza ki a **PurelyHR** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-**PurelyHR hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+## <a name="configure-and-test-azure-ad-single-sign-on-for-purelyhr"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a PurelyHR
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+Konfigurálja és tesztelje az Azure AD SSO-t a PurelyHR a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a PurelyHR-ben.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+Az Azure AD SSO és a PurelyHR konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[PURELYHR SSO konfigurálása](#configure-purelyhr-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre PurelyHR-teszt felhasználót](#create-purelyhr-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-PurelyHR rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+1. A [Azure Portal](https://portal.azure.com/) **PurelyHR** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-4. A Keresés mezőbe írja be a **PurelyHR**válassza **PurelyHR** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-     ![Az eredmények listájában PurelyHR](common/search-new-app.png)
+1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyID>.purelyhr.com/sso-consume`
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az PurelyHR nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó PurelyHR hivatkozás kapcsolata kell létrehozni.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-Az Azure AD egyszeri bejelentkezés az PurelyHR tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
-
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[PurelyHR egyszeri bejelentkezés konfigurálása](#configure-purelyhr-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre PurelyHR tesztfelhasználót](#create-purelyhr-test-user)**  – egy megfelelője a Britta Simon PurelyHR, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PurelyHR, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az a **PurelyHR** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
-
-    ![PurelyHR tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-replyurl.png)
-
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<companyID>.purelyhr.com/sso-consume`
-
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    ![PurelyHR tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-signonurl.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<companyID>.purelyhr.com/sso-initiate`
+    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyID>.purelyhr.com/sso-initiate`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges válasz URL-cím és a bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [PurelyHR ügyfél-támogatási csapatának](https://support.purelyhr.com/) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a PurelyHR ügyfélszolgálati [csapatához](https://support.purelyhr.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. Az a **PurelyHR beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. A **PurelyHR beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    b. Azure AD-azonosító
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    c. Kijelentkezési URL
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="configure-purelyhr-single-sign-on"></a>PurelyHR egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-1. Az egyszeri bejelentkezés konfigurálása **PurelyHR** oldalán, jelentkezzen be rendszergazdaként a webhelyet.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a PurelyHR.
 
-2. Nyissa meg a **irányítópult** a eszköztáron kattintson az közül **egyszeri bejelentkezési beállításainak**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **PurelyHR**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-3. Illessze be az értékeket a mezőkben, amint az alábbi-
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+## <a name="configure-purelyhr-sso"></a>PurelyHR SSO konfigurálása
+
+1. A PurelyHR belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **PurelyHR beállítása** elemre, majd a PurelyHR alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a PurelyHR való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a PurelyHR, nyisson meg egy új böngészőablakot, és jelentkezzen be a PurelyHR vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+1. Nyissa meg az **irányítópultot** az eszköztáron található beállítások közül, majd kattintson az **SSO-beállítások**elemre.
+
+1. Illessze be a mezőkben szereplő értékeket az alább leírtak szerint:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
-    a. Nyissa meg a **Certificate(Bas64)** a Jegyzettömbben az Azure Portalról letöltött, és másolja a tanúsítvány-értéket. Illessze be a másolt érték a **X.509-tanúsítvány** mezőbe.
+    a. Nyissa meg a Jegyzettömbben Azure Portal letöltött **tanúsítványt (Bas64)** , és másolja a tanúsítvány értékét. Illessze be a másolt értéket az **X. 509-tanúsítvány** mezőbe.
 
-    b. Az a **identitásszolgáltató kiállítójának URL-címe** mezőbe illessze be a **az Azure AD-azonosító** az Azure Portalról másolt.
+    b. A **identitásszolgáltató kiállító URL-címe** mezőben illessze be a Azure Portalból másolt **Azure ad-azonosítót** .
 
-    c. Az a **Idp-végpont URL-címe** mezőbe illessze be a **bejelentkezési URL-cím** az Azure Portalról másolt. 
+    c. A **identitásszolgáltató-végpont URL-címe** mezőben illessze be a Azure Portalból másolt **bejelentkezési URL-címet** . 
 
-    d. Ellenőrizze a **felhasználók automatikus létrehozása** engedélyezése a felhasználók automatikus átadása az PurelyHR jelölőnégyzetet.
+    d. Jelölje be a **felhasználók automatikus létrehozása** jelölőnégyzetet az automatikus felhasználó-kiépítés engedélyezéséhez a PurelyHR-ben.
 
-    e. Kattintson a **módosítások mentése** a beállítások mentéséhez.
+    e. A beállítások mentéséhez kattintson a **módosítások mentése** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-purelyhr-test-user"></a>PurelyHR-tesztelési felhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a lépés általában nem szükséges, mivel az alkalmazás csak időben támogatja a felhasználók üzembe helyezését. Ha az automatikus felhasználó-kiépítés nincs engedélyezve, a manuális felhasználói létrehozás az alább leírtak szerint végezhető el.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+Jelentkezzen be a Velpic SAML-céges webhelyre rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+1. Kattintson a kezelés fülre, és lépjen a felhasználók szakaszra, majd kattintson az új gombra a felhasználók hozzáadásához.
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+    ![felhasználó hozzáadása](./media/velpicsaml-tutorial/velpic_7.png)
 
-    ![Új felhasználó gomb](common/new-user.png)
+2. Az **"új felhasználó létrehozása"** párbeszédpanelen hajtsa végre a következő lépéseket.
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+    ![Felhasználói](./media/velpicsaml-tutorial/velpic_8.png)
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    a. Az **Utónév** szövegmezőbe írja be a B utónevét.
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **vezetéknév** szövegmezőbe írja be a Simon vezetéknevét.
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. A **Felhasználónév** szövegmezőbe írja be a B. Simon nevű felhasználónevet.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Az **e-mail** szövegmezőbe írja be B.Simon@contoso.com fiók e-mail-címét.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+    e. A többi adat megadása nem kötelező, szükség esetén kitöltheti.
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés PurelyHR Azure egyszeri bejelentkezés használatára.
+    f. Kattintson a **SAVE** (Mentés) gombra.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **PurelyHR**.
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-2. Az alkalmazások listájában jelölje ki a **PurelyHR**.
-
-    ![Az alkalmazások listáját a PurelyHR hivatkozásra](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-purelyhr-test-user"></a>PurelyHR tesztfelhasználó létrehozása
-
-Ahhoz, hogy az Azure AD-felhasználók PurelyHR bejelentkezni, akkor ki kell építeni PurelyHR be. PurelyHR, a kiépítés egy automatikus feladat, és nem manuális lépések szükségesek, ha a felhasználók automatikus kiépítés engedélyezve van.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a PurelyHR csempére kattint, meg kell lehet automatikusan bejelentkezett a PurelyHR, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a PurelyHR csempére kattint, automatikusan be kell jelentkeznie arra a PurelyHR, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [A PurelyHR kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

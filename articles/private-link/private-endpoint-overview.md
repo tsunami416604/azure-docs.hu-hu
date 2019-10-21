@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 75b8ea5e8dcaed533eac424bb8df1d1862889490
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937374"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592384"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -22,15 +22,15 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-k
  A privát végpontok a következő tulajdonságokat határozzák meg: 
 
 
-|Tulajdonság  |Description |
+|Tulajdonság  |Leírás |
 |---------|---------|
-|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
-|Subnet    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
+|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
 |A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a magánhálózati végpontok automatikusan is jóváhagyva lesznek. Ha RBAC nélküli privát kapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
 |Kérelem üzenete     |  Megadhat egy üzenetet, hogy a kért kapcsolatok manuálisan legyenek jóváhagyva. Ez az üzenet egy adott kérelem azonosítására szolgál.        |
-|Kapcsolati állapot   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**Jóváhagyva**: A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra.</br><br>-**Függőben**: A kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**Elutasítva**: A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.</br><br>-**Leválasztva**: A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
+|A kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**jóváhagyva**: a rendszer automatikusan vagy manuálisan jóváhagyta a kapcsolódást, és készen áll a használatra.</br><br>-**függőben**: a kapcsolat manuálisan lett létrehozva, és a privát kapcsolat erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**visszautasítva**: a kapcsolati erőforrás tulajdonosa elutasította a kapcsolatot.</br><br>-**leválasztva**: a kapcsolatot a privát kapcsolat erőforrásának tulajdonosa törölte. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
 
 Íme néhány fontos adat a privát végpontokról: 
 - A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
@@ -52,9 +52,9 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
  
 |Privát hivatkozás erőforrásának neve  |Erőforrás típusa   |Alerőforrások  |
 |---------|---------|---------|
-|**Magánhálózati kapcsolati szolgáltatás** (Saját szolgáltatás)   |  Microsoft. Network/privateLinkServices       | empty |
-|**Azure SQL Database** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Privát kapcsolati szolgáltatás** (saját szolgáltatás)   |  Microsoft. Network/privateLinkServices       | üres |
+|**Azure SQL Database** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        |
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (blob, blob_secondary)       |
  
@@ -121,14 +121,14 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 
 |Korlátozás |Leírás |Kezelés  |
 |---------|---------|---------|
-|A hálózati biztonsági csoport (NSG) szabályai nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken.   | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja.        |
+|A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához        |
 |A magánhálózati végpontok nem hozhatók létre a szolgáltatási végponthoz vagy speciális munkaterhelésekhez engedélyezett alhálózatokban.    |A magánhálózati végpontok nem helyezhetők üzembe olyan alhálózatokon, amelyek engedélyezve vannak a szolgáltatási végpontok vagy a speciális számítási feladatokhoz delegált alhálózatok számára.|  Hozzon létre egy külön alhálózatot a privát végpontok telepítéséhez.        |
 |a privát végpontok csak a privát kapcsolati szolgáltatáshoz (az ügyfél tulajdonosa) képezhetők le ugyanabban a régióban    |   A privát kapcsolati szolgáltatás (saját) egy másik régióból való csatlakoztatása nem támogatott       |  Az előzetes verzió ideje alatt telepítenie kell a Private link Service-t ugyanabban a régióban.        |
 |  A privát végpontokkal rendelkező Virtual Network csak nem támogatottak   |   Ha a privát végpontokhoz való csatlakozás a Virtual Network más számítási feladatok nélkül nem támogatott.       | Egyetlen virtuális gép üzembe helyezése a Virtual Network a kapcsolat engedélyezéséhez |
-|A speciális számítási feladatok nem férnek hozzá privát végpontokhoz    |   A virtuális hálózatba központilag telepített következő szolgáltatások nem férhetnek hozzá privát végpontokat használó privát kapcsolati erőforrásokhoz:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure Dedicated HSM<br>       |   Az előzetes verzióban nem érhető el mérséklés.       |
+|A speciális számítási feladatok nem férnek hozzá privát végpontokhoz    |   A virtuális hálózatba központilag telepített következő szolgáltatások nem férhetnek hozzá privát végpontokat használó privát kapcsolati erőforrásokhoz:<br>App Service-csomag</br>Azure Container Instance</br>Azure NetApp Files</br>Azure-beli dedikált HSM<br>       |   Az előzetes verzióban nem érhető el mérséklés.       |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Privát végpont létrehozása SQL Database kiszolgálóhoz a portál használatával](create-private-endpoint-portal.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Magánhálózati végpont létrehozása SQL Database kiszolgálóhoz a parancssori felület használatával](create-private-endpoint-cli.md)

@@ -4,15 +4,15 @@ description: A AzCopy egy parancssori segédprogram, amellyel az adatok átmáso
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 37d8c483a1ef49a87205dcc848aae974f5b0e47e
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274644"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675862"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AZCopy használatába
 
@@ -293,7 +293,15 @@ Az URL-cím megjelenik a parancs kimenetében. A szkript ezután letöltheti a A
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciális karakterek elmenekülése SAS-jogkivonatokban
 
-A `.cmd` kiterjesztésű batch-fájlokban el kell kerülnie az SAS-jogkivonatokban megjelenő `%` karaktereket. Ezt úgy teheti meg, hogy hozzáad egy `%` karaktert a meglévő `%` karakter mellett az SAS-jogkivonat karakterláncában.
+A `.cmd` kiterjesztésű batch-fájlokban el kell kerülnie az SAS-jogkivonatokban megjelenő `%` karaktereket. Ezt úgy teheti meg, hogy hozzáad egy hozzáadási `%` karaktert az SAS-jogkivonat karakterláncának meglévő `%` karaktere mellett.
+
+### <a name="run-scripts-by-using-jenkins"></a>Parancsfájlok futtatása a Jenkins használatával
+
+Ha azt tervezi, hogy a [Jenkins](https://jenkins.io/) használatával futtatja a parancsfájlokat, ügyeljen arra, hogy a parancsfájl elején helyezze el a következő parancsot.
+
+```
+/usr/bin/keyctl new_session
+```
 
 ## <a name="use-azcopy-in-storage-explorer"></a>AzCopy használata Storage Explorer
 

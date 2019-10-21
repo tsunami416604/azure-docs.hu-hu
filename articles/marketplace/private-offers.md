@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd61a30ccc9de08c3f0950d811d0d10ec5cd842a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885870"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598377"
 ---
-# <a name="private-offers"></a>Saját ajánlatok
+# <a name="private-offers"></a>Privát ajánlatok
 
 A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy csak a megrendelt ügyfelek számára látható SKU-ket hozzanak létre.
 
@@ -24,7 +24,7 @@ A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát
 A nagyvállalati ügyfelek egyre gyakrabban használják online piactéreket a felhőalapú megoldások keresésére, kipróbálására és megvásárlására. A privát ajánlatokkal a kiadók a piactéren testre szabott megoldásokat használhatnak a megcélzott ügyfelekkel a vállalatok által igényelt képességekkel:
 
 - Az *egyeztetett díjszabás* lehetővé teszi, hogy a kiadók a nyilvánosan elérhető ajánlatokból származó kedvezményeket és off-listázási díjszabást terjesszenek.
-- A *privát feltételek és* kikötések lehetővé teszik a kiadók számára a használati feltételek egy adott ügyfélhez való személyre szabását.
+- A *privát feltételek és kikötések* lehetővé teszik a kiadók számára a használati feltételek egy adott ügyfélhez való személyre szabását.
 - A *speciális konfigurációk* lehetővé teszik a kiadók számára a Virtual Machines, az Azure-alkalmazások és az SaaS-alkalmazások személyre szabását az ügyfelek igényei szerint. Ez a beállítás azt is lehetővé teszi, hogy a kiadók az új termékek funkcióinak előzetes hozzáférését is megadják, mielőtt szélesebb körben kellene elindítani az összes ügyfelet
 
 A privát ajánlatok lehetővé teszik a kiadók számára, hogy kihasználják a nyilvános piactér skálázhatóságát és globális rendelkezésre állását, valamint az egyéni ajánlatok és konfigurációk egyeztetéséhez és megvalósításához szükséges rugalmasságot és irányítást. Ezek a funkciók együttesen nyitják meg az ajtót a Felhőbeli piactérek erős nagyvállalati bevezetéséhez.  A vállalatok mostantól megvásárolhatják és értékesíthetik a várható és a keresletet.
@@ -44,12 +44,15 @@ Az ajánlat minősítése és közzététele után az ügyfelek perceken belül 
 
 ## <a name="deploying-private-offers"></a>Privát ajánlatok üzembe helyezése
 
-A privát ajánlatok csak a Azure Portalon keresztül érhetők [](https://azure.microsoft.com/features/azure-portal/) el, és nem az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en keresztül jelennek meg. Miután bejelentkezett a Azure Portalba, az ügyfelek kiválaszthatják a piactér navigációs elemét a privát ajánlatok eléréséhez. A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
+A privát ajánlatok csak a [Azure Portalon](https://azure.microsoft.com/features/azure-portal/) keresztül érhetők el, és nem az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en keresztül jelennek meg. Miután bejelentkezett a Azure Portalba, az ügyfelek kiválaszthatják a piactér navigációs elemét a privát ajánlatok eléréséhez. A privát ajánlatok is megjelennek a keresési eredmények között, és parancssorból és Azure Resource Manager-sablonokból is üzembe helyezhetők, mint bármely más ajánlat.
 
 ![[Privát ajánlatok]](./media/marketplace-publishers-guide/private-offer.png)
 
 A privát ajánlatok is megjelennek a keresési eredmények között. Csak tekintse meg a "Private" jelvényt.
 
-## <a name="next-steps"></a>További lépések
+>[!Note]
+>A nyilvános ajánlatok nem támogatottak a Cloud Solution Provider program (CSP) viszonteladóján keresztül létesített előfizetésekkel.
+
+## <a name="next-steps"></a>Következő lépések
 
 A privát ajánlatok használatának megkezdéséhez kövesse a [Private SKU-és csomagok](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) útmutatójának lépéseit.

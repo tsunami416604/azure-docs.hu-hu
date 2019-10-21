@@ -15,12 +15,12 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1453821561ab7bb361fbb3e5d57634cf23a7be2c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310059"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596728"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>Felhasználói bejelentkezést használó webalkalmazás – kód konfigurálása
 
@@ -31,7 +31,7 @@ Megtudhatja, hogyan konfigurálhatja a webalkalmazáshoz tartozó kódot, amely 
 <!-- This section can be in an include for Web App and Web APIs -->
 A webalkalmazások (és a webes API-k) elleni védelemhez használt kódtárak a következők:
 
-| Platform | Erőforrástár | Leírás |
+| Platform | Részletes ismertetés | Leírás |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Extensions for .NET azt javasolja, hogy a .NET-keretrendszer és a .NET Core rendszerű DLL-eket is használják. Egy ASP.NET/ASP.NET Core-webalkalmazásból a jogkivonat-érvényesítés a **TokenValidationParameters** osztály használatával szabályozható (különösen bizonyos ISV-forgatókönyvekben). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-MSAL – jelenleg nyilvános előzetes verzióban érhető el |
@@ -41,7 +41,7 @@ Válassza ki az Önt érdeklő platformhoz tartozó fület:
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A cikkben szereplő kódrészletek és a következők a [ASP.net Core Web App növekményes oktatóanyagból, 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg). fejezetből származnak.
+A cikkben szereplő kódrészletek és a következők a [ASP.net Core Web App növekményes oktatóanyagból, 1. fejezetből](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg)származnak.
 
 Ebben az oktatóanyagban érdemes megtekinteni a teljes megvalósítás részleteit.
 
@@ -69,11 +69,11 @@ A cikkben szereplő kódrészletek és a következők a [Microsoft Graph MSAL me
 
 A felhasználókat a Microsoft Identity platformmal bejelentkező webalkalmazások általában konfigurációs fájlokon keresztül konfigurálhatók. A kitöltendő beállítások a következők:
 
-- a felhőben `Instance` , ha azt szeretné, hogy az alkalmazás fusson (például az országos felhőkben)
-- a célközönség a`tenantId`
-- az `clientId` alkalmazáshoz a Azure Portalból másolt.
+- a felhő `Instance`, ha azt szeretné, hogy az alkalmazás fusson (például az országos felhőkben)
+- a célközönség `tenantId`
+- az alkalmazáshoz tartozó `clientId`, amelyet a Azure Portalból másoltak.
 
-Előfordulhat, hogy az alkalmazásokat a `authority`parametrized, amely a `instance` és az összefűzése`tenantId`
+Előfordulhat, hogy az alkalmazásokat a `authority` is parametrized, amely a `instance` és a `tenantId` összefűzése.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -104,7 +104,7 @@ ASP.NET Core ezek a beállítások a [appSettings. JSON](https://github.com/Azur
 }
 ```
 
-ASP.net Core egy másik [properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7) , amely tartalmazza az URL-címet (`applicationUrl`) és az SSL-portot (`sslPort`) az alkalmazáshoz és a különböző profilokhoz.
+ASP.NET Core egy másik [properties\launchSettings.JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7) található, amely tartalmazza az alkalmazás és a különböző profilok URL-címét (`applicationUrl`) és az SSL-portot (`sslPort`).
 
 ```Json
 {
@@ -136,9 +136,9 @@ ASP.net Core egy másik [properties\launchSettings.JSON](https://github.com/Azur
 }
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez azt eredményezi `https://localhost:44321/signin-oidc` , hogy a fenti két konfigurációs fájl esetében a `http://localhost:3110` applicationUrl, de a `/signin-oidc` `sslPort` megadott érték (44321) `appsettings.json`, a `CallbackPath` pedig a.
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez azt eredményezi, hogy a fenti két konfigurációs fájl `https://localhost:44321/signin-oidc`, mert a applicationUrl `http://localhost:3110`, de a `sslPort` meg van adva (44321), és a `CallbackPath` `/signin-oidc` a `appsettings.json`.
   
-Ugyanígy a kijelentkezési URI is a következőre lesz beállítva `https://localhost:44321/signout-callback-oidc`:.
+Ugyanígy a kijelentkezési URI-t is `https://localhost:44321/signout-callback-oidc` értékre kell állítani.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -164,11 +164,11 @@ A ASP.NET-ben az alkalmazás az 12-15 [web. config](https://github.com/Azure-Sam
   </appSettings>
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez a `https://localhost:44326/`.
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI-azonosítóknak meg kell egyezniük az URL-címekkel. Ez `https://localhost:44326/`.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-ban a konfiguráció az [alkalmazás. properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) fájljában található.`src/main/resources`
+A Java-ban a konfiguráció a `src/main/resources` alatt található [Application. properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) fájlban található.
 
 ```Java
 aad.clientId=Enter_the_Application_Id_here
@@ -178,7 +178,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
 ```
 
-A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI azonosítónak meg kell egyeznie az alkalmazás által meghatározott redirectUris, azaz `http://localhost:8080/msal4jsample/secure/aad` a következővel:`http://localhost:8080/msal4jsample/graph/users`
+A Azure Portal az alkalmazás **hitelesítési** lapján regisztrálni kívánt válasz URI azonosítónak meg kell egyeznie az alkalmazás által meghatározott redirectUris, amely `http://localhost:8080/msal4jsample/secure/aad` és `http://localhost:8080/msal4jsample/graph/users`
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,7 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát. Az éles alkalmazásban más módszerekkel is elvégezheti a titkos kulcs (például a kulcstartó vagy egy környezeti változó) tárolását a lombik dokumentációjában leírtak szerint: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
+> Ez a rövid útmutató azt javasolja, hogy az egyszerűség kedvéért a konfigurációs fájlban tárolja az ügyfél titkos kulcsát. Az éles alkalmazásban a titkos kód (például a kulcstartó vagy egy környezeti változó) más módon történő tárolását szeretné használni a lombik dokumentációjában leírtak szerint: https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -210,10 +210,10 @@ Az inicializálási kód a platformtól függően eltérő. ASP.NET Core és ASP
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.net Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert a vezérlőn vagy a vezérlő műveletein van egy `[Authorize]` attribútuma. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazás inicializálását végző kód a `Startup.cs` fájlban található, és a Microsoft Identity platformmal (korábban az Azure ad v 2.0-val) való hitelesítéshez hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
+ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert `[Authorize]` attribútuma van a vezérlőkön vagy a vezérlő műveletein. Ez az attribútum ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e. Az alkalmazás inicializálását végző kód a `Startup.cs` fájlban található, és a Microsoft Identity platformmal (korábban az Azure AD v 2.0-val) való hitelesítéshez hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
   > [!NOTE]
-  > Ha a projektet a Visual Studióban lévő alapértelmezett ASP.net Core webes projekttel indítja el `dotnet new mvc` , vagy `AddAzureAD` a metódust használja, alapértelmezés szerint elérhető, mert a kapcsolódó csomagok automatikusan betöltődik.
+  > Ha a projektet a Visual Studióban az alapértelmezett ASP.NET alapszintű webes projekttel indítja el, vagy a `dotnet new mvc` a metódust használja, `AddAzureAD` alapértelmezés szerint elérhető, mert a kapcsolódó csomagok automatikusan betöltődik.
   > Ha azonban teljesen új projektet hoz létre, és az alábbi kódot próbálja használni, javasoljuk, hogy a `AddAzureAD` metódus elérhetővé tételéhez adja hozzá a **"Microsoft. AspNetCore. Authentication. AzureAD. UI"** NuGet-csomagot a projekthez.
   
 A következő kód érhető el az [indításból. cs # L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34)
@@ -241,7 +241,7 @@ public class Startup
     }
 ```
 
-A `AddMicrosoftIdentityPlatformAuthentication` a [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)definiált kiterjesztési módszer. Ez
+A `AddMicrosoftIdentityPlatformAuthentication` a [Microsoft. Identity. Web/WebAppServiceCollectionExtensions. cs # L23](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L23)meghatározott kiterjesztési módszer. Ez
 
 - hozzáadja a hitelesítési szolgáltatást
 - a konfigurációs fájl olvasásához szükséges beállítások konfigurálása
@@ -249,10 +249,10 @@ A `AddMicrosoftIdentityPlatformAuthentication` a [Microsoft. Identity. Web/WebAp
 - a jogkivonat kiállítója érvényesítve van
 - a névnek megfelelő jogcímek a "preferred_username" jogcím alapján vannak leképezve az azonosító jogkivonatban. 
 
-A konfiguráció mellett a következő hívásakor `AddMicrosoftIdentityPlatformAuthentication`is megadhatja:
+A konfiguráció mellett a `AddMicrosoftIdentityPlatformAuthentication` meghívásakor megadhatja a következőt:
 
 - a konfigurációs szakasz neve (alapértelmezés szerint AzureAD)
-- Ha nyomon szeretné követni a OpenIdConnect köztes eseményeket, amelyek segíthetnek a webalkalmazás hibaelhárításában, ha a hitelesítés nem működik `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` : `true` a beállítással megtudhatja, hogyan dolgozza ki az adatokat a ASP.net Core készlete alapján. a köztes közbenső megoldás a HTTP-válaszból a felhasználó `HttpContext.User`identitására irányul.
+- Ha nyomon szeretné követni a OpenIdConnect köztes eseményeket, amelyek segíthetnek a webalkalmazás hibaelhárításában, ha a hitelesítés nem működik: a `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` beállítása `true` megmutatják, hogyan történik az információk kifejlesztése a ASP.NET Core middleware-készlet alapján a `HttpContext.User` a felhasználó identitására irányuló HTTP-válasz előrehaladása.
 
 ```CSharp
 /// <summary>
@@ -313,7 +313,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
   ...
 ```
 
-Az `AadIssuerValidator` osztály lehetővé teszi, hogy a jogkivonat kiállítója sok esetben (v 1.0 vagy v 2.0 token, egybérlős vagy több-bérlős alkalmazás vagy alkalmazás) legyen érvényesítve a felhasználók személyes Microsoft-fiókjaival, az Azure nyilvános felhőben, vagy nemzeti felhők). A [Microsoft. Identity. Web/Resource/AadIssuerValidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) fájlból érhető el
+A `AadIssuerValidator` osztály lehetővé teszi, hogy a jogkivonat kiállítója sok esetben (v 1.0 vagy v 2.0 token, egybérlős vagy több-bérlős alkalmazás vagy alkalmazás) legyen érvényesítve a felhasználók személyes Microsoft-fiókjaival, az Azure nyilvános felhőben vagy a nemzeti felhők). A [Microsoft. Identity. Web/Resource/AadIssuerValidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) fájlból érhető el
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -343,17 +343,17 @@ A ASP.NET Web App/web API-k hitelesítéséhez kapcsolódó kód a [App_Start/St
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy olyan `Filter`alkalmazást valósít meg, amely elfogja az egyes http-válaszokat. A Java-webalkalmazás rövid útmutatójában ez a `AuthFilter` szűrő `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`található. A szűrő dolgozza fel a OAuth 2,0 engedélyezési kód folyamatát, így:
+A Java-minta a Spring Framework-t használja. Az alkalmazás védett, mert egy `Filter` valósít meg, amely elfogja az egyes HTTP-válaszokat. A Java-webalkalmazás rövid útmutatójában ez a szűrő `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` `AuthFilter`. A szűrő dolgozza fel a OAuth 2,0 engedélyezési kód folyamatát, így:
 
-- ellenőrzi, hogy a felhasználó hitelesítése megtörtént-e (`isAuthenticated()` metódus)
+- ellenőrzi, hogy a felhasználó hitelesítve van-e (`isAuthenticated()` metódus)
 - Ha a felhasználó nincs hitelesítve, kiszámítja az Azure AD engedélyezési végpontok URL-címét, és átirányítja a böngészőt erre az URI-ra.
 - a válasz megérkezése után az Auth Code folyamatát tartalmazó msal4j a jogkivonat beszerzését teszi lehetővé.
 - Amikor végül megkapja a tokent a jogkivonat-végponttól (az átirányítási URI-n), a felhasználó bejelentkezett.
 
-A részletekért lásd `doFilter()` a [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) metódusát.
+További részletekért tekintse meg a [AuthFilter. java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) `doFilter()` metódusát.
 
 > [!NOTE]
-> A kódja `doFilter()` némileg eltérő sorrendben van megírva, de a folyamat az egyik leírása.
+> A `doFilter()` kódja némileg eltérő sorrendben van megírva, de a folyamat az egyik leírása.
 
 Lásd: a [Microsoft Identity platform és a OAuth 2,0 engedélyezési kód folyamatábrája](v2-oauth2-auth-code-flow.md) az engedélyezési kód folyamatával kapcsolatos részletekért, amelyet ez a módszer aktivál.
 
@@ -377,9 +377,28 @@ Session(app)
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkben megtudhatja, hogyan aktiválhatja a bejelentkezést és a kijelentkezést.
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 > [!div class="nextstepaction"]
-> [Bejelentkezés és kijelentkezés](scenario-web-app-sign-user-sign-in.md)
+> [Bejelentkezés és kijelentkezés](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Bejelentkezés és kijelentkezés](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Bejelentkezés és kijelentkezés](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Bejelentkezés és kijelentkezés](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)
+
+---

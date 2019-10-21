@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: da6903aa9f51fbba00ca599805ff3213e9388dd1
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037272"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597937"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
 
@@ -26,17 +26,17 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Táblák létrehozása HBase-fürtben
 > * Ranger-házirendek tesztelése
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
-* Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+* Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 * Hozzon létre egy [HDInsight HBase-fürtöt Enterprise Security Package](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
 
-1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse `<ClusterName>` el megváltoztatni a HBase-fürt nevét.
+1. Egy böngészőből lépjen be a Ranger rendszergazdai felhasználói felületére a következő címen: `https://<ClusterName>.azurehdinsight.net/Ranger/`. Ne felejtse el módosítani a `<ClusterName>`t a HBase-fürt nevére.
 
     > [!NOTE]  
     > A Ranger hitelesítő adatai nem ugyanazok, mint a Hadoop-fürthöz használt hitelesítő adatok. Ha meg szeretné akadályozni, hogy a böngészők gyorsítótárazott Hadoop hitelesítő adatokat használjanak, egy új InPrivate-böngészőablakból csatlakozzon a Ranger rendszergazdai felhasználói felületéhez.
@@ -59,7 +59,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
     hbase shell
     ```
 
-2. Hozzon létre egy `Customers` HBase táblázatot kétoszlopos családokkal `Contact`: `Name` és.
+2. Hozzon létre egy HBase-táblázatot `Customers` két oszlopos családdal: `Name` és `Contact`.
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -86,7 +86,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 4. A tábla tartalmának megtekintése:
     
     ```hbaseshell
-    scan 'Contacts'
+    scan 'Customers'
     ```
 
     ![HDInsight Hadoop HBase-rendszerhéj kimenete](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
@@ -95,7 +95,7 @@ Az SSH-val HBase-fürtökhöz csatlakozhat, majd az [Apache HBase-rendszerhéj](
 
 Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1**számára.
 
-1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson a  **\<ClusterName > _hbase** elemre a **hbase**alatt.
+1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**. Kattintson **\<ClusterName > _hbase** a **hbase**területen.
 
    ![HDInsight Apache Ranger felügyeleti felhasználói felülete](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
@@ -107,18 +107,18 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Szabályzat neve  |  sales_customers_name_contact   |
+   |Házirend neve  |  sales_customers_name_contact   |
    |HBase táblázat   |  Ügyfelek |
    |HBase oszlop – család   |  Név, kapcsolattartó |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
-   |Felhasználó kijelölése  | sales_user1 |
+   |Felhasználó kiválasztása  | sales_user1 |
    |Engedélyek  | Olvasás |
 
    A témakör nevében a következő helyettesítő karakterek használhatók:
 
-   * `*`nulla vagy több karakterből álló előfordulást jelez.
-   * `?`egyetlen karaktert jelöl.
+   * `*` a karakterek nulla vagy több előfordulását jelzi.
+   * `?` egyetlen karaktert jelöl.
 
    ![Apache Ranger-szabályzat – értékesítések létrehozása](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
@@ -131,12 +131,12 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
 
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
-   |Szabályzat neve  |  marketing_customers_contact   |
+   |Házirend neve  |  marketing_customers_contact   |
    |HBase táblázat   |  Ügyfelek |
-   |HBase oszlop – család   |  Kapcsolattartó |
+   |HBase oszlop – család   |  Kapcsolatfelvétel |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
-   |Felhasználó kijelölése  | marketing_user1 |
+   |Felhasználó kiválasztása  | marketing_user1 |
    |Engedélyek  | Olvasás |
 
    ![Apache Ranger-szabályzat létrehozása marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
@@ -145,7 +145,7 @@ Hozzon létre egy Ranger-szabályzatot a **sales_user1** és a **marketing_user1
 
 ## <a name="test-the-ranger-policies"></a>Ranger-házirendek tesztelése
 
-A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az oszlopok összes adatait az és `Name` `Contact` az oszlop családokban is. A **marketing_user1** csak az `Contact` oszlop családjában lévő adatmegjelenítést tudja megtekinteni.
+A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az oszlopok összes adatait a `Name` és az `Contact` oszlop családban is. A **marketing_user1** csak az `Contact` oszlop családjában lévő adatmegjelenítést tudja megtekinteni.
 
 ### <a name="access-data-as-sales_user1"></a>Hozzáférés az sales_user1-hez
 
@@ -161,14 +161,14 @@ A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az os
    kinit sales_user1
    ```
 
-2. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot.
+2. Nyissa meg a HBase rendszerhéját, és vizsgálja meg a `Customers` táblázatot.
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Figyelje meg, hogy az értékesítési felhasználó megtekintheti a `Customers` tábla összes oszlopát, beleértve az `Name` oszlop két oszlopát, valamint az `Contact` oszlop-család öt oszlopát.
+3. Figyelje meg, hogy az értékesítési felhasználó megtekintheti az `Customers` tábla összes oszlopát, beleértve a `Name` oszlop két oszlopát, valamint az `Contact` oszlop családjának öt oszlopát is.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -203,14 +203,14 @@ A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az os
    kinit marketing_user1
    ```
 
-1. Nyissa meg a HBase-rendszerhéjt `Customers`, és vizsgálja meg a táblázatot:
+1. Nyissa meg a HBase-rendszerhéjat, és ellenőrizze a táblázatot `Customers`:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-1. Figyelje meg, hogy a marketing felhasználó csak az `Contact` oszlop öt oszlopát tekintheti meg.
+1. Figyelje meg, hogy a marketinges felhasználó csak a `Contact` oszlop öt oszlopát tekintheti meg.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -235,13 +235,13 @@ A konfigurált Ranger-házirendek alapján a **sales_user1** megtekintheti az os
 
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-fürtöt a következő lépésekkel:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést. 
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Az Apache HBase első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)

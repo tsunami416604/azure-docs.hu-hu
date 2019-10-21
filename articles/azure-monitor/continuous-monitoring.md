@@ -1,23 +1,18 @@
 ---
 title: Folyamatos figyelés a Azure Monitorsal | Microsoft Docs
 description: Az Azure Monitor használatának konkrét lépéseit ismerteti a teljes munkafolyamatok folyamatos figyelésének engedélyezéséhez.
-author: bwren
-manager: carmonm
-editor: ''
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: ''
 ms.topic: conceptual
-ms.date: 10/12/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/12/2018
+ms.openlocfilehash: 88934d469ddcca50d7dfc3f35b18ab332d4bd172
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744501"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596803"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -89,7 +84,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 - Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor](overview.md)különbségi összetevőiről.
 - [Vegyen fel folyamatos figyelést](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamatba.

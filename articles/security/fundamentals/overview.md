@@ -4,7 +4,7 @@ description: Ismerkedjen meg az Azure biztonságával, szolgáltatásával és m
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ed345fdf564c62e2d323b33013da784344c7a461
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262757"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595391"
 ---
-# <a name="introduction-to-azure-security"></a>Az Azure Security bemutatása
+# <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
 Tudjuk, hogy a biztonság az egyik a felhőben, és mennyire fontos, hogy pontos és kellő időben tájékozódjon az Azure biztonságáról. Az Azure az alkalmazások és szolgáltatások használatának egyik legjobb oka az, hogy kiaknázza a biztonsági eszközök és képességek széles körét. Ezek az eszközök és képességek segítik a biztonságos megoldások létrehozását a biztonságos Azure platformon. Microsoft Azure biztosítja az ügyféladatok titkosságát, integritását és rendelkezésre állását, ugyanakkor lehetővé teszi az átlátható elszámoltathatóságot is.
 
-Annak érdekében, hogy jobban megértse az ügyfelek és a Microsoft műveleti perspektíváinak Microsoft Azure belül megvalósított biztonsági vezérlők gyűjteményét, ez a tanulmány az "Azure Security bemutatása" című tanulmányt ismerteti, amely átfogó megjelenést biztosít Microsoft Azure.
+Ez a cikk átfogó képet nyújt az Azure-ban elérhető biztonságról.
 
 ### <a name="azure-platform"></a>Azure-platform
 Az Azure egy nyilvános felhőalapú szolgáltatási platform, amely az operációs rendszerek, a programozási nyelvek, a keretrendszerek, az eszközök, az adatbázisok és az eszközök széles választékát támogatja. Linux-tárolókat is futtathat a Docker-integrációval; alkalmazások készítése JavaScript, Python, .NET, PHP, Java és Node. js használatával az iOS-, Android-és Windows-eszközökön is létrehozhatók háttérrendszer.
@@ -40,37 +40,25 @@ Emellett az Azure a konfigurálható biztonsági beállítások széles körét 
 > [!Note]
 > A dokumentum elsődleges célja az ügyfelek felé irányuló vezérlők használata, amelyek segítségével testre szabhatja és növelheti az alkalmazások és szolgáltatások biztonságát.
 >
-> Áttekintő információkat biztosítunk, de részletes információk arról, hogyan védi a Microsoft az Azure platformot, a [Microsoft adatvédelmi központban](https://www.microsoft.com/TrustCenter/default.aspx)található információk alapján.
+> További információ arról, hogy miként védi a Microsoft az Azure platformot: az [Azure-infrastruktúra biztonsága](infrastructure.md).
 
-### <a name="abstract"></a>Absztrakt
-Kezdetben a nyilvános felhőbe való áttelepítést a költségmegtakarítás és az innováció rugalmassága vezérli. A biztonság a nyilvános felhőben való áttelepítéshez egy ideig, sőt a megjelenő is jelentős problémát jelent. A nyilvános Felhőbeli biztonság azonban jelentős aggodalmat váltott ki a felhőalapú Migrálás egyik illesztőprogramján. Ennek hátterében a nagyméretű nyilvános felhőalapú szolgáltatók kiváló képessége az alkalmazások és a felhőalapú eszközök adatainak védelme.
+## <a name="summary-of-azure-security-capabilities"></a>Az Azure biztonsági képességeinek összefoglalása
 
-Az Azure infrastruktúráját úgy tervezték, hogy képes legyen ügyfelek millióit egyidejűleg kiszolgáló alkalmazásokat üzemeltetni, és olyan megbízható alapot nyújtson, amely megfelel a vállalatok biztonsági igényeinek. Emellett az Azure a konfigurálható biztonsági beállítások széles körét biztosítja, és lehetővé teszi azok vezérlését, így testre szabhatja az üzembe helyezések egyedi követelményeit, hogy megfeleljen az IT-vezérlési szabályzatoknak, és külső rendeletek.
+### <a name="features-to-secure-the-azure-platform"></a>Az Azure platform védelmét szolgáló funkciók
+A következő szolgáltatások olyan funkciók, amelyekkel ellenőrizheti, hogy biztonságos-e az Azure platform kezelése. További részletezést talál a Microsoft az ügyfelek megbízhatóságával kapcsolatos kérdésekről a következő négy területen: biztonságos platform, adatvédelem & vezérlők, megfelelőség és átláthatóság.
 
-Ez a tanulmány a Microsoft Microsoft Azure Cloud platformon belüli biztonságának megközelítését ismerteti:
-* A Microsoft által megvalósított biztonsági funkciók az Azure-infrastruktúra, az ügyféladatok és az alkalmazások biztonságossá tételéhez.
-* Az Azure-szolgáltatások és-biztonsági funkciók a szolgáltatások és az Azure-előfizetések adatai biztonságának kezeléséhez állnak rendelkezésére.
-
-## <a name="summary-azure-security-capabilities"></a>Az Azure biztonsági funkcióinak összefoglalása
-Az alábbi táblázat a Microsoft által az Azure-infrastruktúra, az ügyféladatok és a biztonságos alkalmazások biztonságossá tételéhez bevezetett biztonsági funkciók rövid leírását tartalmazza.
-### <a name="security-features-implemented-to-secure-the-azure-platform"></a>Az Azure platform biztonságossá tételéhez megvalósított biztonsági funkciók:
-Az alábbi szolgáltatások olyan funkciók, amelyekkel ellenőrizheti, hogy az Azure platform biztonságos módon van-e kezelve. További részletezést talál a Microsoft az ügyfelek megbízhatóságával kapcsolatos kérdéseivel kapcsolatban négy területen: Biztonságos platform, adatvédelem & vezérlők, megfelelőség és átláthatóság.
-
-
-| [Biztonságos platform](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Adatvédelmi & vezérlők](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
+| [Biztonságos platform](https://www.microsoft.com/trustcenter/Security/default.aspx)  | [Adatvédelmi & vezérlők](https://www.microsoft.com/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
-| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/en-us/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Kötelező biztonsági képzés, háttérbeli ellenőrzés](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Az adathely vezérlése](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan kezeli a Microsoft az adattárolási helyet az Azure-szolgáltatásokban](https://azuredatacentermap.azurewebsites.net/)|
-| [Behatolási teszt](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolás-észlelés, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [naplózás & naplózás](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Adathozzáférés biztosítása a használati feltételekhez](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services átvilágítás ellenőrzőlista](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[A Microsoft a következő feltételekkel férhet hozzá az adataihoz:](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
-| [A Art adatközpont, a](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)fizikai biztonság, a [biztonságos hálózat](network-overview.md) állapota | [Válaszadás a bűnüldözésre](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatás, hely & iparág szerint](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
-|  [Biztonsági incidens válasza](https://aka.ms/SecurityResponsepaper), [megosztott felelősség](https://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Az Azure-szolgáltatások, az átláthatósági központ minősítésének áttekintése](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
+| [Biztonsági fejlesztési ciklus](https://www.microsoft.com/sdl/), belső auditok | [Az adatkezelés minden alkalommal](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/trustcenter/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx) |
+| [Kötelező biztonsági képzés, háttérbeli ellenőrzés](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Az adathely vezérlése](https://www.microsoft.com/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls hub](https://www.microsoft.com/trustcenter/Common-Controls-Hub) |[Hogyan kezeli a Microsoft az adattárolási helyet az Azure-szolgáltatásokban](https://azuredatacentermap.azurewebsites.net/)|
+| [Behatolási teszt](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolás-észlelés, DDoS](https://www.microsoft.com/trustcenter/Security/ThreatManagement), [naplózás & naplózás](https://www.microsoft.com/trustcenter/Security/AuditingAndLogging) | [Adathozzáférés biztosítása a használati feltételekhez](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services átvilágítás ellenőrzőlista](https://www.microsoft.com/trustcenter/Compliance/Due-Diligence-Checklist) |[A Microsoft a következő feltételekkel férhet hozzá az adataihoz:](https://www.microsoft.com/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [A Art adatközpont, a](https://www.microsoft.com/cloud-platform/global-datacenters)fizikai biztonság, a [biztonságos hálózat](network-overview.md) állapota | [Válaszadás a bűnüldözésre](https://www.microsoft.com/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatás, hely & iparág szerint](https://www.microsoft.com/trustcenter/Compliance/default.aspx) |[Hogyan védi a Microsoft az ügyféladatokat az Azure-szolgáltatásokban](https://www.microsoft.com/trustcenter/Transparency/default.aspx)|
+|  [Biztonsági incidens válasza](https://aka.ms/SecurityResponsepaper), [megosztott felelősség](https://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Az Azure-szolgáltatások, az átláthatósági központ minősítésének áttekintése](https://www.microsoft.com/trustcenter/Compliance/default.aspx)|
 
-
-
-### <a name="security-features-offered-by-azure-to-secure-data-and-application"></a>Az Azure által kínált biztonsági funkciók az adatkezelés és az alkalmazások biztonságossá tételéhez
+### <a name="features-to-secure-data-and-application"></a>Az adatkezelés és az alkalmazás biztonságossá tételét szolgáló funkciók
 A Cloud Service-modelltől függően az alkalmazás vagy szolgáltatás biztonságának kezeléséért felelős személy felelőssége is fennáll. Az Azure platformon elérhető lehetőségek állnak rendelkezésre, hogy segítséget nyújtsanak a feladatoknak a beépített funkciókkal, valamint az Azure-előfizetésben üzembe helyezhető partneri megoldásokkal.
 
-A beépített funkciók hat (6) funkcionális területen vannak rendszerezve: Műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. További részletek az Azure platformon elérhető funkciókról és képességekről az alábbi hat (6) területen az összegző információk alapján.
+A beépített funkciók hat funkcionális területen vannak rendszerezve: műveletek, alkalmazások, tárolás, hálózatkezelés, számítás és identitás. Az Azure platformon elérhető funkciókkal és képességekkel kapcsolatos további részleteket az alábbi hat területen tekintheti meg összefoglaló információk alapján.
 
 ## <a name="operations"></a>Műveletek
 Ez a szakasz további információkat tartalmaz a biztonsági műveletek főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összefoglaló információkkal kapcsolatban.
@@ -104,16 +92,16 @@ Azure Monitor naplók hasznos eszközök lehetnek a kriminalisztikai és egyéb 
 A [Azure Advisor](../../advisor/index.yml) egy személyre szabott felhőalapú tanácsadó, amely segít az Azure-beli üzembe helyezések optimalizálásában. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, Ezután olyan megoldásokat javasol, amelyekkel javítható a [teljesítmény](../../advisor/advisor-performance-recommendations.md), a [Biztonság](../../advisor/advisor-security-recommendations.md)és az erőforrások [magas rendelkezésre állása](../../advisor/advisor-high-availability-recommendations.md) , miközben lehetőség van a [teljes Azure-ráfordítás csökkentésére](../../advisor/advisor-cost-recommendations.md). A Azure Advisor biztonsági javaslatokat tesz elérhetővé, ami jelentősen javíthatja az Azure-ban üzembe helyezett megoldások általános biztonsági állapotát. Ezek az ajánlások a Azure Security Center által végzett biztonsági elemzésből származnak [.](../../security-center/security-center-intro.md)
 
 ### <a name="azure-security-center"></a>Azure Security Center
-[Az Azure Security Center](../../security-center/security-center-intro.md) az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
+[Security Center](../../security-center/security-center-intro.md) segít megakadályozni, észlelni és reagálni a fenyegetésekre az Azure-erőforrások jobb láthatóságával és kézben tartásával. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
 
-Emellett a Azure Security Center a biztonsági műveleteket is segíti azáltal, hogy egyetlen irányítópultot biztosít, amely a felszínre kerülő riasztásokat és javaslatokat azonnal végrehajtja. Gyakran a Azure Security Center-konzolon egyetlen kattintással javíthatja a problémákat.
+Emellett a Security Center a biztonsági műveleteket is segíti azáltal, hogy egyetlen irányítópultot biztosít, amely a felszínre kerülő riasztásokat és javaslatokat azonnal végrehajtja. Gyakran a Security Center-konzolon egyetlen kattintással javíthatja a problémákat.
 ## <a name="applications"></a>Alkalmazások
 A szakasz további információkat tartalmaz az alkalmazások biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="web-application-vulnerability-scanning"></a>Webalkalmazások sebezhetőségének vizsgálata
 Az [app Service-alkalmazás](../../app-service/overview.md) biztonsági rések tesztelésének megkezdéséhez az egyik legegyszerűbb módszer az, hogy az [integráció a sztaniol biztonsággal](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) lehetővé tegye az alkalmazáson belüli, egykattintásos biztonsági rések vizsgálatát. A teszt eredményeit egy könnyen értelmezhető jelentésben tekintheti meg, és megtudhatja, hogyan javíthatja ki az egyes biztonsági réseket részletes utasításokkal.
 
-### <a name="penetration-testing"></a>Behatolásvizsgálat
+### <a name="penetration-testing"></a>Behatolástesztelés
 Ha szeretné elvégezni a saját behatolási teszteket, vagy egy másik képolvasó-csomagot vagy szolgáltatót szeretne használni, kövesse az [Azure penetráció tesztelési jóváhagyási folyamatát](https://docs.microsoft.com/azure/security/fundamentals/pen-testing ) , és a kívánt penetrációs tesztek végrehajtásához előzetes jóváhagyást kell kérnie.
 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
@@ -150,13 +138,13 @@ Application Diagnostics a következő módokon tekintheti meg az eseményeket:
 -   Alkalmazás hibái (a kivételek eseményeinek megjelenítése)
 -   Teljesítmény (a teljesítmény eseményeinek megjelenítése)
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Adattárolás
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC-szerepköröket](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/common/storage-security-guide.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
 
-### <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
+### <a name="shared-access-signature"></a>Közös hozzáférési aláírás
 A [közös hozzáférésű jogosultságkód (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS azt jelenti, hogy a megadott időszakra és meghatározott engedélyekkel engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül is megadhatja.
 
 ### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
@@ -190,13 +178,14 @@ Számos szervezet esetében az adattitkosítás az adatok védelme, a megfelelő
 Az eltérő [eredetű erőforrás-megosztás (CORS)](https://docs.microsoft.com/rest/api/storageservices/fileservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) egy olyan mechanizmus, amely lehetővé teszi, hogy a tartományok minden más engedélyt adjanak a többi erőforráshoz való hozzáféréshez. A felhasználói ügynök további fejléceket küld, így biztosítva, hogy az adott tartományból betöltött JavaScript-kód hozzáférjen egy másik tartományban található erőforrásokhoz. Az utóbbi tartomány ezután további fejlécekkel válaszol, amelyek engedélyezik vagy megtagadják az eredeti tartományhoz való hozzáférést az erőforrásokhoz.
 
 Az Azure Storage Services mostantól támogatja a CORS-t, így ha beállította a szolgáltatás CORS-szabályait, a rendszer kiértékeli, hogy a szolgáltatásra vonatkozó megfelelő hitelesített kérést egy másik tartományon keresztül hozták-e létre.
-## <a name="networking"></a>Hálózat
+
+## <a name="networking"></a>Hálózatkezelés
 A szakasz további információkat tartalmaz az Azure hálózati biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="network-layer-controls"></a>Hálózati réteg vezérlői
 A hálózati hozzáférés-vezérlés az adott eszközök vagy alhálózatok kapcsolatának korlátozására szolgál, és a hálózati biztonság magját jelenti. A hálózati hozzáférés-vezérlés célja annak biztosítása, hogy a virtuális gépek és szolgáltatások csak azokhoz a felhasználókhoz és eszközökhöz legyenek elérhetők, amelyekhez elérhetővé szeretné tenni őket.
 
-#### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
+#### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 A [hálózati biztonsági csoport (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md) egy alapszintű, állapot-nyilvántartó csomagszűrő tűzfal, amely lehetővé teszi, hogy [5 rekord](https://www.techopedia.com/definition/28190/5-tuple)alapján vezérelje a hozzáférést. A NSG nem biztosítanak alkalmazás-rétegbeli ellenőrzést vagy hitelesített hozzáférés-vezérlést. Használhatók az alhálózatok közötti adatforgalom vezérlésére az Azure Virtual Network és az Azure-Virtual Network és az Internet közötti forgalom között.
 
 #### <a name="route-control-and-forced-tunneling"></a>Irányítás és kényszerített bújtatás
@@ -212,7 +201,6 @@ A kényszerített bújtatás általában arra szolgál, hogy a kimenő forgalmat
 Míg a hálózati biztonsági csoportok, a felhasználó által megadott útvonalak és a kényszerített bújtatás biztosítja a biztonságot az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model)hálózati és szállítási rétegei számára, előfordulhat, hogy a verem magasabb szintjein engedélyezni szeretné a biztonságot. Ezeket a kibővített hálózati biztonsági szolgáltatásokat Azure Partner Network Security Appliance-megoldás használatával érheti el. Az Azure [Marketplace](https://azure.microsoft.com/marketplace/) -en megtekintheti a legfrissebb Azure Partner Network biztonsági megoldásokat, és megkeresheti a "biztonság" és a "hálózati biztonság" kifejezést.
 
 ### <a name="azure-virtual-network"></a>Azure Virtual Network
-
 Az Azure virtuális hálózat (VNet) az Ön saját hálózatát jelképezi a felhőben. Ez az előfizetéshez dedikált Azure Network Fabric logikai elkülönítése. A hálózaton belül teljes mértékben irányíthatja az IP-címblokkokat, a DNS-beállításokat, a biztonsági házirendeket és az útválasztási táblázatokat. A VNet alhálózatokra is feloszthatók, és az Azure IaaS virtuális gépek (VM-EK) és/vagy [Cloud Services (Péter szerepkör példányai)](../../cloud-services/cloud-services-choose-me.md) helyezhetők üzembe az Azure Virtual Networks szolgáltatásban.
 
 A virtuális hálózatot ezen felül a helyszíni hálózathoz is csatlakoztathatja az Azure-ban elérhető [kapcsolati lehetőségek](../../vpn-gateway/index.yml) egyikével. Lényegében kiterjesztheti a hálózatot az Azure-ra, az IP-címblokkok teljes körű irányítása és a vállalati méretű Azure által nyújtott előnyök mellett.
@@ -227,13 +215,13 @@ Az Azure Networking különböző biztonságos távelérési forgatókönyveket 
 
 -   [Azure-beli virtuális hálózatok összekapcsolhatók egymással](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-### <a name="vpn-gateway"></a>VPN Gateway
+### <a name="vpn-gateway"></a>VPN-átjáró
 Az Azure-Virtual Network és a helyszíni hely közötti hálózati forgalom elküldéséhez létre kell hoznia egy VPN-átjárót az Azure-Virtual Networkhoz. A [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) olyan virtuális hálózati átjáró, amely titkosított forgalmat küld nyilvános kapcsolaton keresztül. A VPN-átjárók használatával az Azure-beli virtuális hálózatok közötti adatforgalmat az Azure hálózati hálón keresztül is elküldheti.
 
-### <a name="express-route"></a>Express Route
+### <a name="express-route"></a>ExpressRoute
 A Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) egy dedikált WAN-kapcsolat, amely lehetővé teszi, hogy a helyszíni hálózatait a Microsoft Cloud-ra bővítse egy olyan dedikált privát kapcsolaton keresztül, amely egy kapcsolati szolgáltató által könnyíti meg.
 
-![Express Route](./media/overview/azure-security-fig1.png)
+![ExpressRoute](./media/overview/azure-security-fig1.png)
 
 Az ExpressRoute használatával kapcsolatokat létesíthet a Microsoft-felhőszolgáltatásokkal, például a Microsoft Azure-ral, az Office 365-tel és a CRM Online-nal. A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben.
 
@@ -251,10 +239,10 @@ Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kér
 
 Az alkalmazás számos Application Delivery Controller (ADC) funkciót kínál, többek között a HTTP-terheléselosztást, a cookie-alapú munkamenet-affinitást, a [SSL (SSL)](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) kiszervezését, az egyéni állapotú mintavételeket, a többhelyes és sok más támogatást.
 
-### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
+### <a name="web-application-firewall"></a>Web Application Firewall
 A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az Application Gatewayt használó webalkalmazásoknak a standard Application Delivery Control (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
 
-![Webalkalmazási tűzfal](./media/overview/azure-security-fig1.png)
+![Web Application Firewall](./media/overview/azure-security-fig1.png)
 
 -   SQL-injektálás elleni védelem
 
@@ -268,19 +256,19 @@ A webalkalmazási tűzfal az [Azure Application Gateway](../../application-gatew
 
 -   Az alkalmazások gyakori konfigurációs beállításainak észlelése (vagyis Apache, IIS stb.)
 
-
 A webes támadásokkal szembeni védelmet nyújtó központi webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és nagyobb biztonságot ad az alkalmazásnak a behatolások jelentette veszéllyel szemben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen lehet átalakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
 
-### <a name="traffic-manager"></a>Traffic Manager
+### <a name="traffic-manager"></a>Forgalomkezelő
 A Microsoft [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) segítségével szabályozható a különböző adatközpontokban lévő szolgáltatási végpontok felhasználói forgalmának elosztása. A Traffic Manager által támogatott szolgáltatási végpontok közé tartoznak az Azure-beli virtuális gépek, a Web Apps és a Cloud Services. A Traffic Manager külső, nem Azure-végpontokkal együtt is használható. Traffic Manager a tartománynévrendszer (DNS) használatával irányítja az ügyfelek kérelmeit a legmegfelelőbb végpontra a [forgalmi útválasztási módszer](../../traffic-manager/traffic-manager-routing-methods.md) és a végpontok állapota alapján.
 
 Traffic Manager számos forgalom-útválasztási módszert kínál a különböző alkalmazási igények kielégítésére, a végpont állapotának [figyelésére](../../traffic-manager/traffic-manager-monitoring.md)és az automatikus feladatátvételre. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
+
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Az [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. Ez egy 4. rétegbeli (TCP, UDP) terheléselosztó, amely a bejövő forgalmat egy elosztott terhelésű készletben definiált szolgáltatások kifogástalan példányai között osztja szét. A Azure Load Balancer a következőre konfigurálható:
 
 -   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt [internetre irányuló terheléselosztásnak](../../load-balancer/load-balancer-overview.md#publicloadbalancer)nevezzük.
 
--   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/load-balancer-overview.md#internalloadbalancer)nevezzük. 
+-   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/load-balancer-overview.md#internalloadbalancer)nevezzük.
 
 - Külső forgalom továbbítása egy adott virtuális géphez
 
@@ -289,18 +277,18 @@ A VNet használt DNS-kiszolgálók listáját a felügyeleti portál vagy a hál
 
 ### <a name="azure-dns"></a>Azure DNS
 A [tartománynévrendszer](https://technet.microsoft.com/library/bb629410.aspx)vagy a DNS a webhely vagy szolgáltatás nevének az IP-címére való fordítására (vagy feloldására) felelős. [Azure DNS](../../dns/dns-overview.md) a DNS-tartományok üzemeltetési szolgáltatása, amely a névfeloldást Microsoft Azure infrastruktúra használatával biztosítja. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. A DNS a "CIA" biztonsági hármas rendelkezésre állási aspektusát támogatja.
+
 ### <a name="azure-monitor-logs-nsgs"></a>Azure Monitor naplók NSG
 A következő diagnosztikai naplózási kategóriákat engedélyezheti a NSG:
--   Esemény Azokat a bejegyzéseket tartalmazza, amelyek NSG-szabályait a rendszer MAC-címen alapuló virtuális gépekre és példányokra alkalmazza. A szabályok állapotát 60 másodpercenként gyűjti a rendszer.
 
--   Szabályok számlálója: Azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak.
+-   Esemény: olyan bejegyzéseket tartalmaz, amelyek NSG-szabályait a rendszer MAC-címen alapuló virtuális gépekre és példány-szerepkörökre alkalmazza. A szabályok állapotát 60 másodpercenként gyűjti a rendszer.
 
-### <a name="azure-security-center"></a>Azure Security Center
+-   Szabályok számláló: azokat a bejegyzéseket tartalmazza, amelyekkel az egyes NSG-szabályok a forgalom megtagadására vagy engedélyezésére vonatkoznak.
 
+### <a name="security-center"></a>Security Center
 [Azure Security Center](../../security-center/security-center-intro.md) folyamatosan elemzi az Azure-erőforrások biztonsági állapotát a hálózati biztonsággal kapcsolatos ajánlott eljárásokhoz. Ha Security Center észleli a potenciális biztonsági réseket, [javaslatokat](../../security-center/security-center-recommendations.md) hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának lépésein az erőforrások megerősítéséhez és védelméhez.
 
-## <a name="compute"></a>Compute
-
+## <a name="compute"></a>Számítási szolgáltatások
 A szakasz további információkat tartalmaz ezen terület főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="antimalware--antivirus"></a>Antimalware & víruskereső
@@ -332,17 +320,14 @@ A virtuális gépeknek hálózati kapcsolatra van szükségük. Ezen követelmé
 A javítások frissítései lehetővé teszik a lehetséges problémák megkeresését és kijavítását, valamint a szoftverfrissítés-felügyeleti folyamat egyszerűsítését, a vállalaton belül üzembe helyezni kívánt szoftverfrissítések számának csökkentésével, valamint a megfelelőség monitorozására való képesség növelésével.
 
 ### <a name="security-policy-management-and-reporting"></a>Biztonsági házirendek kezelése és jelentéskészítés
-A [Azure Security Center](../../security-center/security-center-intro.md) segít megakadályozni, észlelni és reagálni a fenyegetésekre, és az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetésekben, segít észlelni azokat a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
-
-### <a name="azure-security-center"></a>Azure Security Center
-A Security Center az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
+A [Security Center](../../security-center/security-center-intro.md) segít megakadályozni, észlelni és reagálni a fenyegetésekre, és az Azure-erőforrások jobb láthatóságát és felügyeletét teszi lehetővé. Integrált biztonsági monitorozást és házirend-kezelést biztosít az Azure-előfizetésekben, segít észlelni azokat a fenyegetéseket, amelyek egyébként észrevétlenek lehetnek, és a biztonsági megoldások széles körű ökoszisztémával működnek.
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
-
 A rendszerek, alkalmazások és adatok védelme az identitás-alapú hozzáférés-vezérléssel kezdődik. A Microsoft üzleti termékeibe és szolgáltatásaiba beépített identitás-és hozzáférés-kezelési funkciók segítenek a szervezeti és személyes adatok jogosulatlan hozzáférés elleni védelmében, miközben a legitim felhasználók számára, bárhol és bármikor elérhetővé teszik azokat szükség van rá.
 
 ### <a name="secure-identity"></a>Biztonságos identitás
 A Microsoft több biztonsági gyakorlatot és technológiát használ termékei és szolgáltatásai között az identitás és a hozzáférés kezeléséhez.
+
 -   [Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) a felhasználóknak több módszert kell használniuk a helyszíni és a Felhőbeli hozzáféréshez. Erős hitelesítést biztosít számos egyszerű ellenőrzési lehetőséggel, miközben a felhasználók számára egyszerű bejelentkezési folyamattal rendelkezik.
 
 -   A [Microsoft Authenticator](https://aka.ms/authenticator) felhasználóbarát multi-Factor Authentication élményt nyújt, amely Microsoft Azure Active Directory és Microsoft-fiókkal is működik, és támogatja a hordozható és ujjlenyomat-alapú jóváhagyásokat.
@@ -377,15 +362,8 @@ A [Azure Active Directory](https://azure.microsoft.com/services/active-directory
 
 - A [Azure Active Directory Application proxy](https://azure.microsoft.com/documentation/articles/active-directory-application-proxy-get-started/) egyszeri bejelentkezést és biztonságos távoli hozzáférést biztosít a helyszínen üzemeltetett webalkalmazásokhoz.
 
-## <a name="next-steps"></a>További lépések
-- [Microsoft Azure biztonság – első lépések](https://docs.microsoft.com/azure/security)
+## <a name="next-steps"></a>Következő lépések
 
-Azure-beli adatai és szolgáltatásai számára védelmet nyújtó Azure-szolgáltatások és funkciók
+- Ismerje meg a [megosztott felelősségét a felhőben](shared-responsibility.md).
 
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/)
-
-Fenyegetések megelőzése, észlelése és elhárítása az Azure-erőforrások jobb láthatóságával és kézben tartásával
-
-- [Biztonsági állapot monitorozása az Azure Security Centerben](../../security-center/security-center-monitoring.md)
-
-A Azure Security Center figyelési képességei a szabályzatoknak való megfelelés figyelésére.
+- Ismerje meg, hogyan segítheti a [Azure Security Center](https://azure.microsoft.com/services/security-center/) a fenyegetések megelőzését, észlelését és reagálását az Azure-erőforrások jobb láthatóságával és kézben tartásával.

@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3717199d2fa342fff5996d97bc5cdaf6da6e9880
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671076"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595204"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban
 
@@ -47,16 +47,16 @@ Egyéb Azure Storage-redundancia-beállítások közé tartozik a zóna-redundá
 
 Fontos, hogy az alkalmazást a kezdettől kezdve a magas rendelkezésre állás érdekében tervezze meg. Tekintse át ezeket az Azure-erőforrásokat az alkalmazások tervezéséhez és a vész-helyreállítás megtervezéséhez:
 
-* [Rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency/)-hoz: Az Azure-beli, magasan elérhető alkalmazások tervezésével kapcsolatos főbb fogalmak áttekintése.
-* [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability): Ellenőrzőlista annak ellenőrzéséhez, hogy az alkalmazása megvalósítja-e a legjobb tervezési eljárásokat a magas rendelkezésre állás érdekében.
-* [Magasan elérhető alkalmazások tervezése ra-GRS használatával](storage-designing-ha-apps-with-ragrs.md): Tervezési útmutató alkalmazások létrehozásához az RA-GRS előnyeinek kihasználásához.
-* [Oktatóanyag: Hozzon létre egy magasan elérhető alkalmazást a blob Storage @ no__t-0: Egy oktatóanyag, amely bemutatja, hogyan hozhat létre egy olyan, magasan elérhető alkalmazást, amely automatikusan átvált a végpontok között a hibák és a helyreállítások között. 
+* [Rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency/)-hoz: áttekintés az Azure-beli, magasan elérhető alkalmazások tervezéséhez szükséges alapfogalmakról.
+* [Rendelkezésre állási ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/availability): ellenőrzőlista annak ellenőrzéséhez, hogy az alkalmazása megvalósítja-e a legjobb tervezési eljárásokat a magas rendelkezésre állás érdekében.
+* [Magasan elérhető alkalmazások tervezése ra-GRS](storage-designing-ha-apps-with-ragrs.md): tervezési útmutató az alkalmazások létrehozásához az ra-GRS használatával.
+* [Oktatóanyag: hozzon létre egy magasan elérhető alkalmazást a blob Storage szolgáltatással](../blobs/storage-create-geo-redundant-storage.md): ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan, magasan elérhető alkalmazást, amely automatikusan átvált a végpontok között a meghibásodások és a helyreállítások szimulálása érdekében. 
 
 Emellett vegye figyelembe ezeket az ajánlott eljárásokat az Azure Storage-beli adattárolási adatai magas rendelkezésre állásának fenntartásához:
 
-* **Lemezek** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
+* **Lemezek:** A [Azure Backup](https://azure.microsoft.com/services/backup/) használatával biztonsági mentést készíthet az Azure-beli virtuális gépek által használt VM-lemezekről. Vegye fontolóra a [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) használatát a virtuális gépek biztonságának biztosítása érdekében regionális katasztrófa esetén is.
 * **Blobok letiltása:** Ha a [AzCopy](storage-use-azcopy.md), a [Azure PowerShell](storage-powershell-guide-full.md)vagy az [Azure adatátviteli függvénytárat](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)használja, a [Soft delete](../blobs/storage-blob-soft-delete.md) bekapcsolásával védelmet biztosíthat az objektum-szintű törlések és a felülírások ellen, vagy más régióba másolja a blokk blobokat egy másikba.
-* **Fájlokat** A [AzCopy](storage-use-azcopy.md) vagy a [Azure PowerShell](storage-powershell-guide-full.md) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
+* **Fájlok:** A [AzCopy](storage-use-azcopy.md) vagy a [Azure PowerShell](storage-powershell-guide-full.md) segítségével másolja át a fájlokat egy másik különböző régióban lévő Storage-fiókba.
 * **Táblák:** a [AzCopy](storage-use-azcopy.md) használatával exportálhatja a tábla-és más tárolási fiókokat egy másik régióban.
 
 ## <a name="track-outages"></a>Kimaradások nyomon követése
@@ -119,8 +119,14 @@ A Azure Portal, a PowerShell, az Azure CLI vagy az Azure Storage erőforrás-szo
 
 A fiók feladatátvétele az GRS-t vagy RA-GRS-t használó összes ügyfél számára előzetes verzióban érhető el Azure Resource Manager üzemelő példányokkal. Az általános célú v1, az általános célú v2 és a blob Storage-fiókok típusai támogatottak. a fiók feladatátvétele jelenleg a következő régiókban érhető el:
 
-- USA 2. nyugati régiója
+- Kelet-Ázsia
+- Délkelet-Ázsia
+- Ausztrália keleti régiója
+- Délkelet-Ausztrália
+- USA középső régiója
+- USA 2. keleti régiója
 - USA nyugati középső régiója
+- USA 2. nyugati régiója
 
 Az előzetes verzió csak nem éles használatra készült. Az üzemi szolgáltatási szintű szerződések (SLA-kat) jelenleg nem érhetők el.
 
@@ -143,7 +149,7 @@ Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace
 
 Tekintse át az ebben a szakaszban ismertetett további szempontokat annak megismeréséhez, hogy az alkalmazások és szolgáltatások milyen hatással lehetnek a feladatátvétel kényszerítésére az előzetes verzió ideje alatt.
 
-#### <a name="azure-virtual-machines"></a>Azure-beli virtuális gépek
+#### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 
 Az Azure Virtual Machines (VM) nem végez feladatátvételt a fiók feladatátvételének részeként. Ha az elsődleges régió elérhetetlenné válik, és feladatátvételt hajt végre a másodlagos régióban, akkor a feladatátvételt követően újra létre kell hoznia a virtuális gépeket. 
 
@@ -170,7 +176,7 @@ A következő szolgáltatások vagy szolgáltatások nem támogatottak az előze
 - A Azure File Sync nem támogatja a Storage-fiók feladatátvételét. A Azure File Syncban Felhőbeli végpontként használt Azure-fájlmegosztást tartalmazó Storage-fiókok feladatátvétele nem lehetséges. Ennek hatására a szinkronizálás leáll, és az újonnan rétegű fájlok esetében váratlan adatvesztést okozhat.  
 - Az archivált blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. Az archivált blobokat egy különálló Storage-fiókban kezelheti, amelyet nem szeretne átadni.
 - A prémium szintű blokk blobokat tartalmazó Storage-fiókok feladatátvétele nem végezhető el. A prémium szintű blokk blobokat támogató Storage-fiókok jelenleg nem támogatják a Geo-redundanciát.
-- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve van: [Esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklus-szabályzatok](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
+- A feladatátvétel befejezése után a következő funkciók nem fognak működni, ha eredetileg engedélyezve vannak: [esemény-előfizetések](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [életciklus-szabályzatok](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Storage Analytics naplózás](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).
 
 ## <a name="copying-data-as-an-alternative-to-failover"></a>Adatok másolása a feladatátvétel alternatívájaként
 
@@ -180,8 +186,8 @@ Ha a Storage-fiókja RA-GRS van konfigurálva, akkor a másodlagos végpont hasz
 
 Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS van konfigurálva. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Fiók feladatátvételének kezdeményezése (előzetes verzió)](storage-initiate-account-failover.md)
 * [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
-* [Oktatóanyag: A blob Storage szolgáltatással rendelkező, magasan elérhető alkalmazások létrehozása](../blobs/storage-create-geo-redundant-storage.md) 
+* [Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val](../blobs/storage-create-geo-redundant-storage.md) 

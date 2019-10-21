@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.date: 10/17/2019
+ms.openlocfilehash: ab543ee8e379b89aaa9a1133bb75387ed9904002
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166230"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598395"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
 
@@ -70,6 +70,9 @@ SELECT * FROM mysql.query_store_wait_stats;
 ```
 
 ## <a name="finding-wait-queries"></a>Várakozási lekérdezések keresése
+
+> [!NOTE]
+> A várakozási statisztikát nem szabad engedélyezni a maximális számítási munkaterhelési órákban, vagy határozatlan időre be kell kapcsolni a bizalmas számítási feladatokhoz. <br>A magas CPU-kihasználtsággal vagy az alacsonyabb virtuális mag konfigurált kiszolgálókon futó munkaterhelések esetén körültekintően járjon el a várakozási statisztika engedélyezésekor. Nem lehet határozatlan ideig bekapcsolni. 
 
 A várakozási eseménytípus hasonló módon kombinálja a különböző várakozási eseményeket a gyűjtők között. A lekérdezési tároló a várakozási esemény típusát, az adott várakozási esemény nevét és a kérdéses lekérdezést biztosítja. A várakozási idő és a lekérdezési futtatókörnyezet statisztikájának összekapcsolása azt jelenti, hogy mélyebben meg kell ismernie, hogy mi járul hozzá a teljesítmény jellemzőinek lekérdezéséhez.
 
@@ -172,7 +175,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 
 - Ha a MariaDB-kiszolgáló `default_transaction_read_only` paraméterrel rendelkezik, a Query Store nem tudja rögzíteni az adatmennyiséget.
-- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezések (@no__t – 0 = 6000 bájt) fordulnak elő.
+- A lekérdezés-tárolási funkció megszakítható, ha hosszú Unicode-lekérdezéseket (\> = 6000 bájt) tapasztal.
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikában a példa az események töredékét rögzíti. A gyakoriság a `query_store_wait_sampling_frequency` paraméter használatával módosítható.
 

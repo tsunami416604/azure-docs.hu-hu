@@ -15,14 +15,14 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 68d47d4233aec62ec5f1955e52025b0d55221af8
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086557"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596714"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: Felhasználót bejelentkeztető webalkalmazás
+# <a name="scenario-web-app-that-signs-in-users"></a>Forgatókönyv: a felhasználók által bejelentkezett webalkalmazás
 
 Ismerje meg a Microsoft Identity platformot használó webalkalmazások létrehozásához szükséges összes információt.
 
@@ -30,35 +30,35 @@ Ismerje meg a Microsoft Identity platformot használó webalkalmazások létreho
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Ha az első olyan hordozható (ASP.NET Core) webalkalmazást szeretné létrehozni, amely felhasználói bejelentkezést végez, kövesse az alábbi rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bejelentkező felhasználók ASP.NET Core webalkalmazás](quickstart-v2-aspnet-core-webapp.md)
+> [Rövid útmutató: ASP.NET Core webalkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 f szeretné megismerni, hogyan adhat hozzá bejelentkezést egy örökölt ASP.NET-webalkalmazáshoz, próbálja ki a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: ASP.NET webalkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-webapp.md)
+> [Rövid útmutató: ASP.NET webes alkalmazás, amely bejelentkezik a felhasználók számára](quickstart-v2-aspnet-webapp.md)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 Ha Ön Java-fejlesztő, próbálja ki a következő rövid útmutatót:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
+> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba](quickstart-v2-java-webapp.md)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 Ha Python-fejlesztést végez, próbálkozzon a következőket:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba](quickstart-v2-python-webapp.md)
+> [Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba](quickstart-v2-python-webapp.md)
 
 ---
 
@@ -79,7 +79,26 @@ Második fázisként azt is engedélyezheti, hogy az alkalmazás a bejelentkezet
 - Az alkalmazás kódjában meg kell adnia azt a szolgáltatót, amelyhez a webalkalmazás a bejelentkezést delegálja. Előfordulhat, hogy testre szeretné szabni a jogkivonat-ellenőrzést (különösen az ISV-forgatókönyvekben).
 - A webalkalmazások bármilyen fióktípus használatát támogatják. További információ: [támogatott fióktípus](v2-supported-account-types.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Alkalmazásregisztráció](scenario-web-app-sign-user-app-registration.md)
+> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnetcore?tabs=aspnetcore)
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+> [!div class="nextstepaction"]
+> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=aspnet)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=java)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Alkalmazásregisztráció](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-app-registration?tabs=python)
+
+---

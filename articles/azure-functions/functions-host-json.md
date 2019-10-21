@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 9eb68bb4accafa708d738ea40210980358f60f24
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263334"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596859"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Host. JSON-hivatkozás Azure Functions 2. x rendszerhez  
 
@@ -69,7 +69,7 @@ A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van 
         "applicationInsights": {
             "samplingSettings": {
               "isEnabled": true,
-              "maxTelemetryItemsPerSecond" : 5
+              "maxTelemetryItemsPerSecond" : 20
             }
         }
     },
@@ -104,7 +104,7 @@ A [Application Insights mintavételi funkcióját](./functions-monitoring.md#con
     "applicationInsights": {
         "samplingSettings": {
           "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
+          "maxTelemetryItemsPerSecond" : 20
         }
     }
 }
@@ -116,7 +116,7 @@ A [Application Insights mintavételi funkcióját](./functions-monitoring.md#con
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |isEnabled|igaz|Engedélyezheti vagy letilthatja a mintavételezést.| 
-|maxTelemetryItemsPerSecond|5|A mintavételezés megkezdésének küszöbértéke.| 
+|maxTelemetryItemsPerSecond|20|A mintavételezés megkezdésének küszöbértéke.| 
 |EnableLiveMetrics |igaz|Élő metrikák gyűjtésének engedélyezése.|
 |EnableDependencyTracking|igaz|A függőségek követésének engedélyezése.|
 |EnablePerformanceCountersCollection|igaz|Engedélyezi a kudu teljesítményszámlálók gyűjtését.|
@@ -152,7 +152,7 @@ A gazdagép által futtatott függvények listája. Az üres tömb az összes f�
 Az összes függvény időtúllépési időtartamát jelzi. A TimeSpan karakterlánc-formátumát követi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc.  
 A dedikált (App Service) csomagban nincs általános korlát, és az alapértelmezett érték a futásidejű verziótól függ: 
 + 1\. x verzió: az alapértelmezett érték *Null*, amely nem jelez időtúllépést.   
-+ 2\. x verzió: az alapértelmezett érték 30 perc. @No__t-0 érték azt jelzi, hogy a rendszer nem kötött végrehajtást jelez.
++ 2\. x verzió: az alapértelmezett érték 30 perc. @No__t_0 értéke nem kötött végrehajtást jelez.
 
 ```json
 {

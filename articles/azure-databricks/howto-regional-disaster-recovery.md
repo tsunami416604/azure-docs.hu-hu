@@ -1,6 +1,6 @@
 ---
-title: Regionális vészhelyreállítás az Azure Databricksnek
-description: Ez a cikk ismerteti az Azure Databricksben vész-helyreállítási előkészítésétől megközelítés.
+title: Regionális katasztrófa-helyreállítási Azure Databricks
+description: Ez a cikk a Azure Databricks vész-helyreállításának módszerét ismerteti.
 services: azure-databricks
 author: mamccrea
 ms.author: mamccrea
@@ -8,71 +8,71 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 3718b79562ec05383b9881a1a97cc5bcc5e04258
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 06ab1783a6e0f4884ab46d3f00a26c47f28d02b0
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67075458"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596898"
 ---
-# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Az Azure Databricks-fürtök esetén a regionális vészhelyreállítás
+# <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionális vész-helyreállítás Azure Databricks-fürtökhöz
 
-Ez a cikk ismerteti a vész helyreállítási-architektúra az Azure Databricks-fürtök esetén hasznos, és a lépések elvégzéséhez a tervező.
+Ez a cikk a Azure Databricks fürtökhöz hasznos vész-helyreállítási architektúrát, valamint a terv megvalósításának lépéseit ismerteti.
 
-## <a name="azure-databricks-architecture"></a>Az Azure Databricks-architektúra
+## <a name="azure-databricks-architecture"></a>Azure Databricks architektúra
 
-Magas szintű, az Azure Portalról az Azure Databricks-munkaterület létrehozásakor egy [kezelt készülék](../managed-applications/overview.md) van üzembe helyezve egy Azure-erőforrást az előfizetésében, a kiválasztott Azure-régióban (például USA nyugati RÉGIÓJA). A készülék üzemel egy [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) együtt egy [hálózati biztonsági csoport](../virtual-network/manage-network-security-group.md) és a egy Azure Storage-fiókot, az előfizetésben elérhető. A virtuális hálózat szegélyhálózat-alapú biztonság a Databricks-munkaterülethez biztosít, és a hálózati biztonsági csoport használatával védett. A munkaterületen belül a Databricks-fürtök azáltal, hogy a feldolgozói és VM-típus illesztőprogram és Databricks futtatókörnyezet-verziója hozhat létre. A megőrzött adatok a storage-fiók, amely lehet az Azure Blob Storage vagy az Azure Data Lake Store érhető el. A fürt létrehozása után futtathat feladatokat notebookokat, a REST API-k, ODBC/JDBC végpontok keresztül az adott fürt csatolásával.
+Magas szinten, amikor létrehoz egy Azure Databricks munkaterületet a Azure Portalból, a [felügyelt készülék](../managed-applications/overview.md) Azure-erőforrásként lesz üzembe helyezve az előfizetésben, a kiválasztott Azure-régióban (például az USA nyugati régiójában). Ezt a készüléket egy [Azure-Virtual Network](../virtual-network/virtual-networks-overview.md) helyezi üzembe, egy [hálózati biztonsági csoporttal](../virtual-network/manage-network-security-group.md) és egy Azure Storage-fiókkal, amely elérhető az előfizetésében. A virtuális hálózat peremhálózati szintű biztonságot nyújt a Databricks-munkaterülethez, és hálózati biztonsági csoporton keresztül védett. A munkaterületen belül Databricks-fürtöket hozhat létre a feldolgozó és az illesztőprogram virtuálisgép-típusának és Databricks-futtatókörnyezetének megadásával. A megőrzött adatai elérhetők a Storage-fiókban, amely lehet Azure Blob Storage vagy Azure Data Lake Storage. A fürt létrehozása után a feladatokat jegyzetfüzetek, REST API-k, ODBC/JDBC végpontok segítségével futtathatja, ha egy adott fürthöz csatolja őket.
 
-A Databricks vezérlősík kezeli, és figyeli a Databricks-munkaterület környezet. Minden felügyeleti művelet, például a fürt létrehozása kezdődik, a vezérlősík. Minden metaadatait, ütemezett feladatok, például az Azure-adatbázis, a georeplikáció hibatűrése tárolódik.
+A Databricks vezérlő síkja felügyeli és figyeli a Databricks-munkaterület környezetét. Minden felügyeleti művelet, például a fürt létrehozása a vezérlési síkon lesz kezdeményezve. Az összes metaadatot, például az ütemezett feladatokat egy Azure-adatbázisban tárolja a rendszer a hibatűrés érdekében a Geo-replikációval.
 
-![Databricks-architektúra](media/howto-regional-disaster-recovery/databricks-architecture.png)
+![Databricks architektúra](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
-Ez az architektúra előnye egyik célja, hogy felhasználók csatlakozhatnak az Azure Databricks bármely tárolási erőforrás-fiókjukban. Egy fő előnye, hogy mindkettő (az Azure Databricks) számítási és a tárolás egymástól függetlenül skálázhatók.
+Ennek az architektúrának az egyik előnye, hogy a felhasználók a fiókjában bármilyen tárolási erőforráshoz kapcsolódhatnak Azure Databricks. Ennek egyik legfőbb előnye, hogy mind a számítás (Azure Databricks), mind a tárterület egymástól függetlenül méretezhető.
 
-## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>A regionális katasztrófa utáni helyreállítás topológiák létrehozása
+## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Regionális katasztrófa-helyreállítási topológia létrehozása
 
-Megfigyelheti, hogy az előző architektúra leírásában, mivel számos Big Data-adatcsatornák az Azure Databricks használt összetevők:  Az Azure Storage, Azure Database és más adatforrásokhoz. Az Azure databricks a *számítási* a Big Data-folyamat. Ez *rövid élettartamú* jellegűek, ami azt jelenti, hogy közben továbbra is elérhetők az Azure Storage, a *számítási* (az Azure Databricks-fürt) állíthatók le, hogy nem kell fizetnie a számítási mikor, nincs szükség. A *számítási* (az Azure Databricks) és tárolóforrás ugyanabban a régióban kell lennie, hogy a feladatok nagy a késés nem működik.  
+Ahogy az architektúra leírásában is látható, számos összetevőt használhat a Big adatfolyamatokhoz Azure Databricks: Azure Storage, az Azure Database és más adatforrásokkal. Azure Databricks a Big adatfolyamatok *számítási* felépítése. Elmúló jellegű, ami azt jelenti, hogy miközben az adatok továbbra is elérhetők az Azure Storage-ban, a *számítási* (Azure Databricks fürt) leállíthatók, így nem kell fizetnie a számításért, ha nincs rá szükség. A *számítási* (Azure Databricks) és a tárolási forrásoknak ugyanabban a régióban kell lenniük, hogy a feladatok ne tapasztalják a nagy késést.  
 
-A saját regionális katasztrófa utáni helyreállítás topológia létrehozásához hajtsa végre ezeket a követelményeket:
+A saját regionális katasztrófa-helyreállítási topológiájának létrehozásához kövesse az alábbi követelményeket:
 
-   1. Több Azure Databricks-munkaterületek külön Azure-régióban üzembe helyezheti. Például hozzon létre az elsődleges Azure Databricks-munkaterület az USA 2. keleti régiója. A vész-helyreállítási Azure Databricks-munkaterület létrehozása egy külön régióban, például az USA nyugati RÉGIÓJA.
+   1. Több Azure Databricks munkaterület kiépítése különálló Azure-régiókban. Hozza létre például az elsődleges Azure Databricks munkaterületet a Kelet-RÉGIÓJA. Hozza létre a másodlagos katasztrófa-helyreállítási Azure Databricks munkaterületet egy külön régióban, például az USA nyugati régiójában.
 
-   2. Használat [georedundáns tárolás](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage). A társított Azure Databricks az Azure Storage-ban alapértelmezés szerint tárolt adatokat. Az eredmények a Databricks-feladatok is tárolása az Azure Blob Storage, hogy a feldolgozott adatok tartós és magas rendelkezésre állású marad, miután a fürt megszakad. A Storage és a Databricks-fürt vannak elhelyezve, georedundáns tárolás úgy, hogy adatokat is elérhető a másodlagos régióba, ha az elsődleges régióban nem érhető el kell használnia.
+   2. [Geo-redundáns tárolás](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)használata. A rendszer alapértelmezés szerint az Azure Storage-ban tárolja az Azure Databricks társított adatmennyiséget. Az Databricks-feladatok eredményeit az Azure Blob Storage is tárolja, így a feldolgozott adatok tartósak maradnak, és a fürt leállítása után is nagyon elérhetők maradnak. Mivel a Storage és a Databricks fürt közös elhelyezésű, a földrajzilag redundáns tárolást kell használnia, hogy az adatelérést a másodlagos régióban lehessen elérni, ha az elsődleges régió már nem érhető el.
 
-   3. A másodlagos régió létrehozása után a felhasználók, felhasználói mappákat, notebookok, fürtkonfiguráció, konfigurációs feladatok, könyvtárak, tárolási, init parancsfájlok migrálhatja, és az konfigurálja újra a hozzáférés-vezérlés. További részleteket a következő részben ismertetett eljárásokat.
+   3. A másodlagos régió létrehozása után át kell telepítenie a felhasználókat, a felhasználói mappákat, a jegyzetfüzeteket, a fürtkonfiguráció, a feladatok konfigurációját, a kódtárakat, a tárolót, az inicializálási parancsfájlokat és a hozzáférés-vezérlés újrakonfigurálását. A következő szakaszban további részleteket is ismertetünk.
 
-## <a name="detailed-migration-steps"></a>Részletes áttelepítési lépéseit
+## <a name="detailed-migration-steps"></a>Részletes migrálási lépések
 
-1. **A számítógépen a Databricks parancssori felület beállítása**
+1. **A Databricks parancssori felület beállítása a számítógépen**
 
-   Ez a cikk egy hitelesítésikód-példák, mivel ez egy egyszerű felhasználói burkoló keresztül az Azure Databricks REST API-t használja az automatizált lépéseket a legtöbb a parancssori felület számát mutatja.
+   Ez a cikk számos olyan kódrészletet mutat be, amely a parancssori felületet használja az automatikus lépések többségéhez, mivel ez egy könnyen használható burkoló a Azure Databricks REST API.
 
-   Áttelepítési lépések végrehajtása előtt telepítse a databricks parancssori felület az asztali számítógépen vagy egy virtuális gépet, ha azt tervezi, hogy ezt a munkát. További információkért lásd: [Databricks CLI telepítése](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
+   Az áttelepítési lépések elvégzése előtt telepítse a databricks-CLI-t az asztali számítógépére vagy egy olyan virtuális gépre, ahol a munkát tervezi. További információ: [install DATABRICKS CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)
 
    ```bash
    pip install databricks-cli
    ```
 
    > [!NOTE]
-   > A cikkben minden olyan python-szkriptek a működését a Python 2.7 + várhatóan < 3.x.
+   > A cikkben megadott Python-szkriptek a Python 2.7 + < 3. x használatával működnek.
 
-2. **Két profilok konfigurálása.**
+2. **Két profil konfigurálása.**
 
-   Az egyik az elsődleges munkaterület és egy másik, a másodlagos munkaterület konfigurálása:
+   Konfigurálja az egyiket az elsődleges munkaterülethez, és egy másikat a másodlagos munkaterülethez:
 
    ```bash
    databricks configure --profile primary
    databricks configure --profile secondary
    ```
 
-   A kód tiltása, ha ez a cikk kapcsolóban minden későbbi lépés, használja a megfelelő munkaterület-parancsot a profilok közötti. Győződjön meg arról, hogy a létrehozott profilok nevei, mindegyik blokk helyettesítik.
+   Az ebben a cikkben szereplő kódrészletek az egyes későbbi lépésekben a megfelelő munkaterület parancs használatával válthatnak a profilok között. Ügyeljen arra, hogy az Ön által létrehozott profilok nevei minden kódrészletbe legyenek helyettesítve.
 
    ```python
    EXPORT_PROFILE = "primary"
    IMPORT_PROFILE = "secondary"
    ```
 
-   Manuálisan, válthat a parancssorból, szükség esetén:
+   Szükség esetén manuálisan is átválthat a parancssorba:
 
    ```bash
    databricks workspace ls --profile primary
@@ -81,16 +81,16 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
 
 3. **Azure Active Directory-felhasználók migrálása**
 
-   Az azonos Azure Active Directory – felhasználók manuális felvétele a másodlagos munkaterületen lévő elsődleges munkaterülete.
+   Manuálisan adja hozzá ugyanazt a Azure Active Directory felhasználót az elsődleges munkaterületen található másodlagos munkaterülethez.
 
-4. **A felhasználói mappák és jegyzetfüzetek áttelepítése**
+4. **A felhasználói mappák és jegyzetfüzetek migrálása**
 
-   A következő python-kód segítségével áttelepítheti az elkülönített felhasználói környezeteket, amelyek tartalmazzák a beágyazott mappastruktúra és jegyzetfüzetek felhasználónként.
+   A következő Python-kód használatával áttelepítheti a munkaterületet tartalmazó felhasználói környezeteket, amelyek tartalmazzák a beágyazott mappák struktúráját és a jegyzetfüzeteket felhasználónként.
 
    > [!NOTE]
-   > Könyvtárak nem másolódnak át keresztül ebben a lépésben, a mögöttes API nem támogatja azokat.
+   > Ez a lépés nem másolja át a kódtárakat, mivel a mögöttes API nem támogatja ezeket.
 
-   Másolja ki és a következő python-szkript mentése fájlba, és futtassa azt a Databricks parancssori. Például: `python scriptname.py`.
+   Másolja és mentse a következő Python-szkriptet egy fájlba, és futtassa azt a Databricks parancssorában. Például: `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -124,16 +124,16 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
    print "All done"
    ```
 
-5. **A fürt konfigurációjának áttelepítése**
+5. **A fürt konfigurációjának migrálása**
 
-   Miután áttelepítette a notebookok, igény szerint áttelepítheti a fürtkonfigurációkat az új munkaterülethez. Majdnem egy databricks-felületről, teljes mértékben automatizált lépés, kivéve, ha szeretné, hogy szelektív cluster config az áttelepítés végrehajtásához az összes helyett.
+   A jegyzetfüzetek migrálása után igény szerint áttelepítheti a fürt konfigurációit az új munkaterületre. Ez majdnem egy teljesen automatizált lépés a databricks-CLI használatával, ha nem az összes számára szeretné elvégezni a szelektív fürtkonfiguráció-konfiguráció áttelepítését.
 
    > [!NOTE]
-   > Sajnos nem nincs létrehozás fürtvégpont konfigurációs, és ez a szkript megpróbálja azonnal minden egyes fürt létrehozásához. Ha nincs elég mag az előfizetésben elérhető, a fürt létrehozása sikertelen lehet. A hiba figyelmen kívül hagyható, mindaddig, amíg a konfiguráció sikeresen átvitele esetén.
+   > Sajnos a fürt konfigurációs végpontja nem hozható létre, és ez a szkript azonnal megpróbál létrehozni minden fürtöt. Ha nincs elegendő mag az előfizetésben, a fürt létrehozása sikertelen lehet. A hiba figyelmen kívül hagyható, amíg a konfiguráció sikeresen át lett adva.
 
-   A következő parancsfájl a megadott jelenít meg leképezése a régiről az új fürtön azonosítóval, amely lehet használni a feladat áttelepítési később (feladatokhoz, amelyek a meglévő fürtök használatára vannak konfigurálva).
+   A következő parancsfájl a régiről az új fürt-azonosítóra való leképezést jeleníti meg, amelyet később felhasználhat a feladat áttelepítésére (a meglévő fürtök használatára konfigurált feladatok esetében).
 
-   Másolja ki és a következő python-szkript mentése fájlba, és futtassa azt a Databricks parancssori. Például: `python scriptname.py`.
+   Másolja és mentse a következő Python-szkriptet egy fájlba, és futtassa azt a Databricks parancssorában. Például: `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -216,16 +216,16 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
    print ("       If you won't use those new clusters at the moment, please don't forget terminating your new clusters to avoid charges")
    ```
 
-6. **A feladatok konfiguráció áttelepítéséhez**
+6. **A feladatok konfigurációjának migrálása**
 
-   Ha át az előző lépésben szereplő fürtkonfigurációkat, kikapcsolhatja az feladatkonfigurációkat áttelepíteni az új munkaterülethez. Ez lépése egy teljesen automatizált használatával a databricks parancssori felület, kivéve, ha szeretné, hogy szelektív feladat konfigurációs az áttelepítés végrehajtásához végezze el az összes feladat helyett.
+   Ha az előző lépésben áttelepítette a fürt konfigurációit, a feladatok konfigurációit az új munkaterületre is áttelepítheti. Ez egy teljesen automatizált lépés a databricks-CLI használatával, ha nem az összes feladathoz, hanem szelektív feladat-konfiguráció áttelepítését szeretné elvégezni.
 
    > [!NOTE]
-   > Ütemezett feladat konfigurációját is, az "ütemezés" információkat tartalmaz, ezért a alapértelmezés szerint, melynek a kezdő konfigurált időzítési megfelelően működik, amint azt a lett migrálva. Ezért a következő kódblokk eltávolítja minden ütemezési információkat (korábbi és új munkaterületek között ismétlődő futtatások elkerülésére) az áttelepítés során. Az ilyen feladatok ütemezésének konfigurálása után készen áll a megoldásról.
+   > Egy ütemezett feladathoz tartozó konfiguráció az "ütemezés" információkat is tartalmazza, így alapértelmezés szerint a rendszer az áttelepítést követően a beállított időzítéssel kezdi meg a munkát. Ezért az alábbi kódrészlet eltávolítja az összes ütemezett információt az áttelepítés során (így elkerülhető, hogy a duplikált elemek a régi és az új munkaterületeken fussanak). Konfigurálja az ilyen feladatokhoz tartozó ütemterveket, ha készen áll a átváltás.
 
-   A feladat konfigurációs beállításai egy új vagy meglévő fürthöz kell rendelkeznie. Ha meglévő fürtöt használ, az alábbi parancsfájl /code megkísérli cserélje le a régi fürt azonosító új fürtöt.
+   A feladatok konfigurációjának új vagy meglévő fürt beállításait kell megadnia. Ha meglévő fürtöt használ, az alábbi szkript ás kód megkísérli a régi fürt AZONOSÍTÓjának cseréjét új fürt-AZONOSÍTÓval.
 
-   Másolja és mentse a következő python szkript fájlba. Cserélje le az értéket a `old_cluster_id` és `new_cluster_id`, az előző lépés kész, a fürt áttelepítése kimenete. Futtassa azt a databricks-cli parancssori, például `python scriptname.py`.
+   Másolja és mentse a következő Python-szkriptet egy fájlba. Cserélje le `old_cluster_id` és `new_cluster_id` értékét, és a fürt áttelepítésének kimenetét az előző lépésben hajtsa végre. Futtassa a parancsot a databricks parancssori felületen, például `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -280,17 +280,17 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
    print "All done"
    ```
 
-7. **Szalagtárak áttelepítése**
+7. **Tárak migrálása**
 
-   Jelenleg nincs egyszerű mód kódtárak áttelepíteni egy munkaterületről egy másikra. Ehelyett telepítse újra ezeket a kódtárakat az új munkaterületre manuálisan. Lehetséges együttes használatával automatizálható [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) egyéni kódtárak feltöltéséhez a munkaterületre, és [kódtárak CLI](https://github.com/databricks/databricks-cli#libraries-cli).
+   Jelenleg nincs egyszerű mód arra, hogy az egyik munkaterületről a másikra telepítse át a kódtárakat. Ehelyett manuálisan telepítse újra ezeket a kódtárakat az új munkaterületre. A [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) kombinációjának használatával automatizálható az egyéni kódtárak feltöltése a munkaterületre és a [kódtárak parancssori](https://github.com/databricks/databricks-cli#libraries-cli)felületére.
 
-8. **Az Azure blob storage-bA migrálhatja, és csatlakoztatja az Azure Data Lake Store**
+8. **Azure Blob Storage és Azure Data Lake Storage csatlakoztatások migrálása**
 
-   Manuálisan csatlakoztassa újra az összes [Azure Blob storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) és [Azure Data Lake Store (2. generációs)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) csatlakoztatási pontok Jegyzetfüzet-alapú megoldások használata. A tárolási erőforrások lenne van csatlakoztatva az elsődleges munkaterület, és a másodlagos munkaterületen kell ismételni, amely rendelkezik. Nincsenek külső API csatlakoztatása a van nem.
+   Manuálisan csatlakoztassa az összes [Azure Blob Storage-tárolót](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html) , és [Azure Data Lake Storage (2. generációs)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) csatlakoztatási pontokat egy jegyzetfüzet-alapú megoldás használatával. A tárolási erőforrások az elsődleges munkaterülethez lettek csatlakoztatva, és ezt meg kell ismételni a másodlagos munkaterületen. Nincs külső API a csatlakoztatásokhoz.
 
-9. **Fürt init parancsfájlok áttelepítése**
+9. **A fürt inicializálási parancsfájljainak migrálása**
 
-   Minden olyan fürt inicializációs szkriptjeinek telepíthető át régi új munkaterület használatával a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Először másolja a szükséges szkriptek a `dbfs:/dat abricks/init/..` a helyi számítógépére vagy virtuális gép. Ezután másolja ezeket a szkripteket, ugyanazt az utat az új munkaterülethez.
+   A fürt inicializálási parancsfájljai a [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples)használatával a régiről az új munkaterületre is áttelepíthetők. Először másolja a szükséges parancsfájlokat `dbfs:/dat abricks/init/..`ról a helyi asztalra vagy virtuális gépre. Ezután másolja ezeket a parancsfájlokat az új munkaterületre ugyanazon az elérési úton.
 
    ```bash
    // Primary to local
@@ -300,16 +300,16 @@ A saját regionális katasztrófa utáni helyreállítás topológia létrehozá
    dbfs cp -r old-ws-init-scripts dbfs:/databricks/init --profile secondary
    ```
 
-10. **Manuálisan konfigurálja újra, és alkalmazza újra a hozzáférés-vezérlés.**
+10. **Konfigurálja manuálisan a hozzáférés-vezérlést, és alkalmazza újra.**
 
-    Ha a meglévő elsődleges munkaterület a prémium csomag (SKU) használatára van konfigurálva, akkor valószínű is használ a [hozzáférés-vezérlés funkció](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control).
+    Ha a meglévő elsődleges munkaterülete a prémium szint (SKU) használatára van konfigurálva, akkor valószínű, hogy a [Access Control funkciót](https://docs.azuredatabricks.net/administration-guide/admin-settings/index.html#manage-access-control)is használja.
 
-    A hozzáférés-vezérlés szolgáltatását használja, ha manuálisan adja meg újból a hozzáférés-vezérlést az erőforrások (notebookok, fürtök, feladatok, táblákat).
+    Ha a Access Control funkciót használja, manuálisan alkalmazza újra a hozzáférés-vezérlést az erőforrásokra (jegyzetfüzetek, fürtök, feladatok, táblák).
 
-## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Az Azure-ökoszisztéma vészhelyreállítása
+## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Vész-helyreállítás az Azure-ökoszisztéma esetében
 
-Ha más Azure-szolgáltatásokat használ, mindenképpen végrehajtása túl a katasztrófa utáni helyreállítás ajánlott eljárások az ezeket a szolgáltatásokat. Például ha egy külső Hive-metaadattár példány használatát választja, fontolja meg a vész-helyreállítási [Azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md), és/vagy [, Azure Database for MySQL ](../mysql/concepts-business-continuity.md). Vész-helyreállítási kapcsolatos általános információkért lásd: [vészhelyreállítása az Azure-alkalmazások](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Ha más Azure-szolgáltatásokat használ, mindenképpen hajtsa végre a vész-helyreállítási ajánlott eljárásokat ezen szolgáltatások esetében is. Ha például külső Hive-metaadattár-példányt szeretne használni, érdemes megfontolnia a vész-helyreállítást az [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), az [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)és/vagy a [Azure Database for MySQL](../mysql/concepts-business-continuity.md). A vész-helyreállítással kapcsolatos általános információkért lásd: vész- [helyreállítás Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd: [Azure Databricks dokumentációja](https://docs.azuredatabricks.net/user-guide/index.html).
+További információ: [Azure Databricks dokumentáció](https://docs.azuredatabricks.net/user-guide/index.html).

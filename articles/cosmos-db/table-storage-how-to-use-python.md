@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 0f0acc721fd8888953d80976234b431943985ebf
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 883965d1d59e5523527a6aab1e83521d7491bf82
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68356266"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675716"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API Pythonnal való használatával
 
@@ -44,7 +44,7 @@ A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
@@ -76,7 +76,7 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 Az Azure Cosmos DB-hez való csatlakozáshoz másolja a kapcsolati sztringet az Azure Portalról, és hozzon létre egy [TableService][py_TableService] objektumot a másolt kapcsolati sztringgel:
 
 ```python
-table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;)
+table_service = TableService(connection_string='DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;TableEndpoint=myendpoint;')
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
@@ -228,12 +228,12 @@ Ha már nincs szüksége egy táblára vagy a benne lévő entitásokra, hívja 
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](https://docs.microsoft.com/azure/cosmos-db/faq)
 * [Az Azure Cosmos DB SDK Pythonhoz API-referenciája](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Ingyenes, platformfüggetlen alkalmazás, amellyel vizuálisan dolgozhat Azure Storage-szolgáltatásokkal Windows, macOS és Linux rendszereken.
+* A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, több platformon futó alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.
 * [A Python használata a Visual Studióban (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 

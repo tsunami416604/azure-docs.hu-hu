@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268847"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595295"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault fejlesztői útmutató
 
@@ -28,7 +28,7 @@ További általános információk a Azure Key Vaultről: [Mi az Key Vault](key-
 
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
-Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, hogy mit gondol azurekeyvault@microsoft.coma szolgáltatáson keresztül, a visszajelzési e-mail-címünk alapján.
+Időnként új Key Vault szolgáltatás nyilvános előzetes verzióját bocsátjuk rendelkezésére. Próbálja ki ezeket, és tudassa velünk, mit gondol a azurekeyvault@microsoft.comon keresztül, a visszajelzési e-mail-címével.
 
 ## <a name="creating-and-managing-key-vaults"></a>Kulcstartók létrehozása és kezelése
 
@@ -84,7 +84,7 @@ A Node. js-ben a Key Vault Management API és a Key Vault Object API különáll
 
 [Key Vault Azure PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
-### <a name="quick-start-guides"></a>Gyors üzembe helyezési útmutatók
+### <a name="quickstart-guides"></a>Gyors útmutatók
 
 - [Key Vault létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [A Key Vault első lépései a Node. js-ben](https://github.com/Azure-Samples/key-vault-node-getting-started)
@@ -117,7 +117,7 @@ A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújt
 
 Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolatosak, amelyek a Key Vault-t használják vagy integrálják.
 
-- [Azure Disk Encryption](../security/azure-security-disk-encryption.md) kihasználja a Windows iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vault, hogy segítsen a lemez titkosítási kulcsainak és a titkos kulcsoknak a kulcstartó-előfizetésben való felügyeletében és kezelésében, miközben biztosítja, hogy a virtuálisgép-lemezek összes adatai titkosítva legyenek az Azure Storage-ban.
+- [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) kihasználja a Windows iparági szabvány [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatását, hogy mennyiségi titkosítást biztosítson az operációs rendszer és az adatlemezek számára. A megoldás integrálva van Azure Key Vault, hogy segítsen a lemez titkosítási kulcsainak és a titkos kulcsoknak a kulcstartó-előfizetésben való felügyeletében és kezelésében, miközben biztosítja, hogy a virtuálisgép-lemezek összes adatai titkosítva legyenek az Azure Storage-ban.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) lehetőséget biztosít a fiókban tárolt adattitkosításhoz. A kulcskezelő szolgáltatásban a Data Lake Store két módot biztosít a fő titkosítási kulcsok (MEKs) kezelésére, amelyek a Data Lake Store tárolt adatok visszafejtéséhez szükségesek. Data Lake Store kezelheti a MEKs, vagy dönthet úgy, hogy megőrzi a MEKs tulajdonjogát a Azure Key Vault-fiók használatával. Data Lake Store fiók létrehozásakor megadhatja a kulcskezelő módot.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) lehetővé teszi a saját bérlői kulcsának felettesét. Például ahelyett, hogy a Microsoft a bérlői kulcsát (az alapértelmezettet) kezelhesse, a saját bérlői kulcsát úgy kezelheti, hogy megfeleljen a szervezetére vonatkozó egyes előírásoknak. A saját bérlői kulcs kezelése más néven a saját kulcs használata vagy a BYOK.
 
@@ -128,7 +128,7 @@ Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolat
 - [Key Vault a Storage-fiók kulcsainak áttekintése](key-vault-ovw-storage-keys.md) az Azure Storage-fiókokhoz tartozó Key Vault-integrációs fiókok kulcsait ismerteti.
 - [Key Vault biztonsági világok](key-vault-ovw-security-worlds.md) ismertetik a régiók és a biztonsági területek közötti kapcsolatokat.
 
-## <a name="social"></a>Közösségi
+## <a name="social"></a>Közösség
 
 - [Key Vault blog](https://aka.ms/kvblog)
 - [Key Vault fórum](https://aka.ms/kvforum)

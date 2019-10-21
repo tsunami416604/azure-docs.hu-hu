@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: ef46c1a631a79dd1c50b2bf7d263538298de233f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3305590f2d8abf0d894bc1df42b84edcc96a2b2d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333312"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598223"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -54,16 +54,26 @@ Látogasson el a Network Watcher-összetevők [díjszabási oldalára](https://a
 ### <a name="which-regions-is-network-watcher-available-in"></a>Mely régiókban Network Watcher érhető el?
 Az [Azure szolgáltatás rendelkezésre állási lapján](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) megtekintheti a legújabb regionális elérhetőséget.
 
+### <a name="what-are-resource-limits-on-network-watcher"></a>Mik a Network Watcher erőforrás-korlátai?
+Tekintse meg az összes korlátot a [szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-subscription-service-limits#network-watcher-limits) lapon.  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Miért csak egyetlen példányban engedélyezett Network Watcher régiónként?
+Network Watcher csak egyszer kell engedélyezni ahhoz, hogy az előfizetése működjön, ez a szolgáltatás nem megengedett.
+
 ## <a name="nsg-flow-logs"></a>NSG
 
 ### <a name="what-does-nsg-flow-logs-do"></a>Mit jelentenek a NSG flow-naplók?
 Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview)segítségével lehet egyesíteni és felügyelni. A NSG flow-naplók lehetővé teszik az 5 rekordos adatfolyamok naplózását a NSG keresztüli összes forgalomról. A nyers flow-naplók egy Azure Storage-fiókba íródnak, ahonnan szükség szerint további feldolgozásra, elemzésre, lekérdezésre vagy exportálásra kerülhet sor.
 
-### <a name="are-there-caveats-for-using-nsg-flow-logs"></a>Vannak a NSG flow-naplók használatára vonatkozó figyelmeztetések?
+### <a name="are-there-any-caveats-to-using-nsg-flow-logs"></a>Vannak kikötések a NSG flow-naplók használatára?
 A NSG flow-naplók használatához nincsenek előfeltételek. Van azonban két korlátozás
 - A **szolgáltatási végpontok nem lehetnek jelen a VNET**: a NSG-adatfolyamok a virtuális gépeken lévő ügynökökből vannak kibocsátva a Storage-fiókokba. Jelenleg azonban csak a naplókat lehet közvetlenül a Storage-fiókokba kibocsátani, és nem használhat a VNET hozzáadott szolgáltatási végpontot.
 
-Ezt a problémát kétféleképpen háríthatja el:
+- A **Storage-fióknak nem szabad tűzfallal rendelkeznie**: a belső korlátozások miatt a Storage-fiókoknak elérhetőnek kell lenniük a nyilvános interneten keresztül a NSG-flow naplófájljainak használatához. A forgalom továbbra is az Azure-on keresztül lesz átirányítva, és nem fog megjelenni az extra kimenő költségek.
+
+A problémák megoldásával kapcsolatos útmutatásért tekintse meg a következő két kérdést. A következő korlátozásokat a rendszer január 2020-én tárgyalja.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints"></a>Hogyan NSG-flow-naplókat használ a szolgáltatási végpontokkal?
 
 *1. lehetőség: konfigurálja újra a NSG-folyamatok naplóit az Azure Storage-fiókba VNET-végpontok nélkül*
 
@@ -88,8 +98,7 @@ Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbé
 
 Ha a Microsoft.Storage szolgáltatásvégpontokat mindenképpen használni kell, le kell tiltania az NSG-forgalom naplóit.
 
-
-- A **Storage-fiókokat nem szabad tűzfalon**átvenni: a belső korlátozások miatt a Storage-fiókoknak elérhetőnek kell lenniük a nyilvános interneten a NSG folyamat naplófájljainak használatához. A forgalom továbbra is az Azure-on keresztül lesz átirányítva, és nem fog megjelenni az extra kimenő költségek.
+### <a name="how-do-i-disable-the--firewall-on-my-storage-account"></a>Hogyan letiltani a tűzfalat a saját Storage-fiókomban?
 
 A probléma megoldásához engedélyezze a "minden hálózat" lehetőséget a Storage-fiók eléréséhez:
 
@@ -97,8 +106,6 @@ A probléma megoldásához engedélyezze a "minden hálózat" lehetőséget a St
 * Lépjen a tárfiókhoz a tárfiók nevét a portál globális keresési eszközébe beírva
 * A **BEÁLLÍTÁSOK** szakaszban válassza a **Tűzfalak és virtuális hálózatok** elemet
 * Válassza az **Összes hálózat** lehetőséget, és mentse a beállítást. Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
-
-A következő korlátozásokat a rendszer január 2020-én tárgyalja.
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
 A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

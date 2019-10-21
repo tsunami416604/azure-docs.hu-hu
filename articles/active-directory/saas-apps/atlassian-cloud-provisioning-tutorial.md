@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Atlassian-felhő beállítása az automatikus felhasználó-kiépítés Azure Active Directory | Microsoft Docs'
+title: 'Oktatóanyag: a Atlassian-felhő konfigurálása automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt a felhasználói fiókok automatikus üzembe helyezéséhez és kiépítéséhez a Atlassian-felhőben.
 services: active-directory
 documentationcenter: ''
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c3173841de25a30b84870332c7334a81773e84d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 10/18/2019
 ms.locfileid: "68561592"
 ---
-# <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Oktatóanyag: A Atlassian-felhő beállítása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Atlassian-felhő konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
 Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a Atlassian-felhőben és a Azure Active Directoryban (Azure AD) az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a Felhőbeli Atlassian.
 
@@ -49,11 +49,11 @@ Mielőtt Atlassian a felhőt az Azure AD-vel való automatikus felhasználói ü
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![A Azure Active Directory gomb](common/select-azuread.png)
 
 2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
 
@@ -65,7 +65,7 @@ Mielőtt Atlassian a felhőt az Azure AD-vel való automatikus felhasználói ü
 
 ## <a name="assigning-users-to-atlassian-cloud"></a>Felhasználók Atlassian-felhőhöz rendelése
 
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+Azure Active Directory a *hozzárendelések* nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
 
 Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése előtt döntse el, hogy az Azure AD mely felhasználóinak és/vagy csoportjai férhetnek hozzá a Atlassian-felhőhöz. Miután eldöntötte, ezeket a felhasználókat és/vagy csoportokat hozzárendelheti a Atlassian felhőhöz az alábbi utasításokat követve:
 
@@ -94,7 +94,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az Atlassian Felhőbeli hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a kiépítés lapot.
+3. Válassza ki a **kiépítés** lapot.
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/provisioning-tab.png)
 
@@ -102,15 +102,15 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/credentials.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Atlassian-felhő fiókjának **bérlői URL-címét** és titkos jogkivonatát. Ilyen értékek például a következők:
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Atlassian-felhő fiókjának **bérlői URL-címét** és **titkos jogkivonatát** . Ilyen értékek például a következők:
 
    * A **bérlői URL-cím** mezőben adja meg a Atlassian kapott adott bérlői végpontot a 6. lépésben leírtak szerint. Például: `https://api.atlassian.com/scim/directory/{directoryId}`.
 
    * A **titkos jogkivonat** mezőben töltse ki a titkos jogkivonatot a 6. lépésben leírtak szerint.
 
-6. Navigáljon a [Atlassian Organization Manager](https://admin.atlassian.com) **> a felhasználó kiépítése** elemre, és kattintson a **Jogkivonat létrehozása**lehetőségre. Másolja a **könyvtár alap URL-címét** és a tulajdonosi jogkivonatot a **bérlői URL** -címre és a **titkos jogkivonat** mezőibe.
+6. Navigáljon a [Atlassian Organization Manager](https://admin.atlassian.com) **> a felhasználó kiépítése** elemre, és kattintson a **Jogkivonat létrehozása**lehetőségre. Másolja a **könyvtár alap URL-címét** és a **tulajdonosi jogkivonatot** a **bérlői URL** -címre és a **titkos jogkivonat** mezőibe.
 
-    ![Atlassian Cloud kiépítés](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian Felhőbeli kiépítés](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
+    ![Atlassian a felhő kiépítés ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Atlassian a felhő kiépítés ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
@@ -136,7 +136,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/provision-groups.png)
 
-13. Tekintse át az Azure AD-ből szinkronizált Atlassian az attribútumok leképezése szakaszban . Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Atlassian-felhőben lévő csoportok egyeztetésére használhatók frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+13. Tekintse át az Azure AD-ből szinkronizált Atlassian az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Atlassian-felhőben lévő csoportok egyeztetésére használhatók frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/group-mapping.png)
 
@@ -146,7 +146,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/provisioning-on.png)
 
-16. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket ki szeretne építeni a Atlassian-felhőbe úgy, hogy a Settings ( **Beállítások** ) szakaszban kiválasztja a kívánt értékeket a **hatókörben** .
+16. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket ki szeretne építeni a Atlassian-felhőbe úgy, hogy a **Settings (beállítások** ) szakaszban kiválasztja a kívánt értékeket a **hatókörben** .
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/provisioning-options.png)
 
@@ -154,9 +154,9 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Atlassian-felhő kiépítés](./media/atlassian-cloud-provisioning-tutorial/save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz hatókörében meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek a Atlassian-felhőben az Azure ad-kiépítési szolgáltatás által végrehajtott műveleteket ismertetik.
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek a Atlassian-felhőben az Azure ad-kiépítési szolgáltatás által végrehajtott műveleteket ismertetik.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="connector-limitations"></a>Összekötő korlátozásai
 
@@ -169,7 +169,7 @@ Az Azure AD létesítési naplók olvasása további információkért lásd: [-
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)
 

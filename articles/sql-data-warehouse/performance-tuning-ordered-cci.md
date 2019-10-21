@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0acdf1496151df57d4097ce5bc71d782dc465873
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: 37d8f17e825daa3a1c160509b1a38f8c70256d1c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554550"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595366"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-Finomhangolás a rendezett fürtözött oszlopcentrikus indextel  
 
@@ -125,10 +125,6 @@ A rendezett CCI létrehozása offline művelet.  A partíciókat nem tartalmazó
 4.  Futtassa az ALTER INDEX < Ordered_CCI_Index > < Table_B > Újraépítés partíció = < Partition_ID > a B táblán a bekapcsolt partíció újraépítéséhez.  
 5.  Ismételje meg a 3. és a 4. lépést a Table_A minden partícióján.
 6.  Ha az összes partíciót Table_A-ről Table_B-re váltották át, a rendszer újraépíti, elvetette a Table_A, és átnevezi a Table_B a Table_A. 
-
->[!NOTE]
->Az Azure SQL Data Warehouse rendezett fürtözött oszlopcentrikus indexének (CCI) előnézetében ismétlődő adatmennyiség hozható létre, ha a rendezett CCI létrehozása vagy újraépítése egy particionált táblán létrehozott FÜRTÖZÖTT OSZLOPCENTRIKUS INDEX használatával történik. Nincs adatvesztés. A probléma megoldása hamarosan elérhető lesz. Megkerülő megoldásként a felhasználók létrehozhatnak rendezett CCI-ket egy particionált táblán a CTAS parancs használatával.
-
 
 ## <a name="examples"></a>Példák
 

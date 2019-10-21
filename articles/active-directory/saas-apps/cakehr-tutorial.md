@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/19/2019
+ms.date: 10/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34ef0497b5cacb66ccf92079e740acd98a05021a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c0860411c95e48a16d75df4aeeedf3405a5b1835
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026437"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CakeHR
 
@@ -67,10 +67,10 @@ Konfigurálja és tesztelje az Azure AD SSO-t a CakeHR a **B. Simon**nevű teszt
 Az Azure AD SSO és a CakeHR konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[CAKEHR SSO konfigurálása](#configure-cakehr-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre CakeHR-teszt felhasználót](#create-cakehr-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-CakeHR rendelkezik.
+    * **[Hozzon létre CakeHR-teszt felhasználót](#create-cakehr-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-CakeHR rendelkezik.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -87,7 +87,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourcakedomain>.cake.hr/`
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<yourcakedomain>.cake.hr/services/saml/consume`
+    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourcakedomain>.cake.hr/services/saml/consume`
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CakeHR ügyfélszolgálati [csapatához](mailto:info@cake.hr) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
@@ -103,19 +103,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a CakeHR.
 
@@ -123,7 +123,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Az alkalmazások listában válassza a **CakeHR**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -135,25 +135,33 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-cakehr-sso"></a>CakeHR SSO konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a CakeHR vállalati webhelyre rendszergazdaként.
+1. A CakeHR belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-2. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások**pontra.
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
+
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **CakeHR beállítása** elemre, majd a CakeHR alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a CakeHR való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
+
+    ![Telepítési konfiguráció](common/setup-sso.png)
+
+1. Ha manuálisan szeretné beállítani a CakeHR, nyisson meg egy új böngészőablakot, és jelentkezzen be a CakeHR vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+
+1. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások**pontra.
 
     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config01.png)
 
-3. A menüsáv bal oldalán kattintson az **integrációk** > **SAML SSO** elemre, és hajtsa végre a következő lépéseket:
+1. A menüsáv bal oldalán kattintson az **integrációk**  > **SAML SSO** elemre, és hajtsa végre a következő lépéseket:
 
-     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config02.png)
+    ![CakeHR-konfiguráció](./media/cakehr-tutorial/config02.png)
 
-     a. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `cake.hr`.
+    a. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `cake.hr`.
 
-     b. A **hitelesítés URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    b. A **hitelesítés URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
-     c. A **kulcs ujjlenyomata (SHA1 formátuma)** szövegmezőbe illessze be a Azure Portalból másolt **ujjlenyomat** -értéket.
+    c. A **kulcs ujjlenyomata (SHA1 formátuma)** szövegmezőbe illessze be a Azure Portalból másolt **ujjlenyomat** -értéket.
 
-     d. Jelölje be az **egyszeri bejelentkezés engedélyezése** jelölőnégyzetet.
+    d. Jelölje be az **egyszeri bejelentkezés engedélyezése** jelölőnégyzetet.
 
-     e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="create-cakehr-test-user"></a>CakeHR-tesztelési felhasználó létrehozása
 
@@ -163,7 +171,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ca
 
 1. Jelentkezzen be a CakeHR biztonsági rendszergazdaként.
 
-2. A menüsáv bal oldalán kattintson a **vállalati**@no__t – 1**Hozzáadás**elemre.
+2. A menüsáv bal oldalán kattintson a **vállalati**  > **Hozzáadás**elemre.
 
     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config03.png)
 
@@ -173,13 +181,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ca
 
     a. A **teljes név** szövegmezőbe írja be a felhasználó nevét, például: B. Simon.
 
-    b. A **munkahelyi e-mailek** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: `B.Simon@contoso.com`.
+    b. A **munkahelyi e-mailek** szövegmezőbe írja be a (z) `B.Simon@contoso.com` felhasználó e-mail-címét.
 
     c. Kattintson a **fiók létrehozása**lehetőségre.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a CakeHR csempére kattint, automatikusan be kell jelentkeznie arra a CakeHR, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -192,4 +200,3 @@ Ha a hozzáférési panelen a CakeHR csempére kattint, automatikusan be kell je
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A CakeHR kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-

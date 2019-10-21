@@ -1,27 +1,26 @@
 ---
 layout: HubPage
 hide_bc: false
-title: Az Azure Monitor Log-adatok – dokumentáció |} A Microsoft Docs
-description: Az Azure monitorral gyűjtése a különböző forrásokból naplóadatokat, és tárolhatja összefüggések keresésére és elemzése a lekérdezési nyelv használatával.
-services: azure-monitor
-author: mgoedtel
-manager: carmonm
+title: Az Azure Monitor log-adatdokumentációja | Microsoft Docs
+description: A Azure Monitor különböző forrásokat gyűjthet a naplózási adatok alapján, és a lekérdezési nyelv használatával tárolhatja a korrelációt és az elemzést.
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: hub-page
-ms.date: 01/29/2019
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: ced88f973ff26f7c8990c1c80bf8532949ef9ae8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 01/29/2019
+ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60640106"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597320"
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1>Az Azure Monitor log adatokat – dokumentáció</h1>
-        <p>Az Azure monitorral gyűjtése a különböző forrásokból naplóadatokat, és tárolhatja összefüggések keresésére és elemzése a lekérdezési nyelv használatával.</p>
-        <p>Vizsgálja meg a legnépszerűbb tartalom hogyan tervezi, összegyűjtheti és elemezheti a naplófájlok adatait.</p>
+        <h1>Azure Monitor naplózási adatdokumentáció</h1>
+        <p>A Azure Monitor különböző forrásokat gyűjthet a naplózási adatok alapján, és a lekérdezési nyelv használatával tárolhatja a korrelációt és az elemzést.</p>
+        <p>Ismerkedjen meg a legnépszerűbb tartalommal a naplózási adatok tervezésével, gyűjtésével és elemzésével.</p>
         <hr style="margin: 30px 0;" />
         <ul class="pivots">
             <li>
@@ -46,12 +45,12 @@ ms.locfileid: "60640106"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Ismerkedjen meg a</h3> 
+                                                                    <h3>A fundamentumok megismerése</h3> 
                                                                     <p> 
                                                                         <a href="/azure/azure-monitor/overview">Mi az Azure Monitor?</a><br/>
-                                                                        <a href="/azure/azure-monitor/azure-monitor-rebrand">Márkajelzési változásai</a><br/>
+                                                                        <a href="/azure/azure-monitor/azure-monitor-rebrand">Védjegyezési változások</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/data-sources">Adatforrások figyelése</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/service-providers">Kialakítási szempontok a szolgáltatók számára</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/service-providers">A szolgáltatók kialakításával kapcsolatos szempontok</a><br/>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -70,18 +69,18 @@ ms.locfileid: "60640106"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3>Biztonsági ismertetése</h3> 
+                                                                    <h3>A biztonság ismertetése</h3> 
                                                                     <p>
-                                                                        <a href="/azure/azure-monitor/platform/data-security">Naplóadatok</a><br/>
-                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">Napló személyes adatok kezelése</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/data-security">Naplózási adatgyűjtés</a><br/>
+                                                                        <a href="/azure/azure-monitor/platform/personal-data-mgmt">Személyes naplózási adatkezelés</a><br/>
                                                                         <a href="/azure/azure-monitor/platform/roles-permissions-security">Szerepkör-engedélyek és biztonság</a><br/>
                                                                     </p>
                                                                     <br>
                                                                      <h3>Munkaterület kezelése</h3>
                                                                     <p>
-                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Munkaterület létrehozása az Azure Portalon</a><br/>
+                                                                    <a href="/azure/azure-monitor/learn/quick-create-workspace">Munkaterület létrehozása a Azure Portalban</a><br/>
                                                                     <a href="/azure/azure-monitor/learn/quick-create-workspace-cli">Munkaterület létrehozása az Azure CLI-vel</a><br/>
-                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Munkaterület létrehozása az Azure PowerShell használatával</a><br/>
+                                                                   <a href="/azure/azure-monitor/learn/quick-create-workspace-posh">Munkaterület létrehozása Azure PowerShell</a><br/>
                                                                   <a href="/azure/azure-monitor/platform/delete-workspace">Munkaterület törlése</a><br/>
                                                                  </p>
                                                                 </div>
@@ -97,17 +96,17 @@ ms.locfileid: "60640106"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                    <h3>Figyelés</h3>
+                                                    <h3>Monitoring</h3>
                                                         <p>
                                                             <a href="/azure/azure-monitor/platform/data-collection">Metrikák és naplók</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Naplózási adatok feldolgozási idő</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-ingestion-time">Adatfeldolgozási idő naplózása</a><br/>
                                                         </p>
                                                         <br>
                                                         <h3>Adatforrások</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/data-sources">– Áttekintés<br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources">Overview<br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-windows-events">Windows-események</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Windows és Linux-teljesítményszámlálók</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/data-sources-performance-counters">Windows-és Linux-teljesítményszámlálók</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-linux-applications">Linux-alkalmazások teljesítménye</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-json">Egyéni JSON-adatok</a><br/>
                                                             <a href="/azure/azure-monitor/platform/data-sources-collectd">Összegyűjtött teljesítményadatok</a><br/>
@@ -135,19 +134,19 @@ ms.locfileid: "60640106"
                                                     <div class="cardText">
                                                         <h3>Adatok elemzése</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/log-query/get-started-queries">Lekérdezések használatának első lépései</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/search-queries">Naplólekérdezések ismertetése</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/portals">Napló lekérdezés portálok</a><br/>
-                                                            <a href="/azure/azure-monitor/log-query/query-language">Napló lekérdezési nyelv leírása</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/get-started-queries">Ismerkedés a lekérdezésekkel</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/search-queries">A naplózási lekérdezések ismertetése</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/portals">Napló lekérdezési portálok</a><br/>
+                                                            <a href="/azure/azure-monitor/log-query/query-language">A naplózási lekérdezés nyelvi referenciája</a><br/>
                                                             <a href="/azure/azure-monitor/log-query/cross-workspace-query">Erőforrások közötti lekérdezés</a><br/>
                                                         </p>
                                                         <br>
-                                                        <h3>Incidensmegoldás</h3>
+                                                        <h3>Incidensek kezelése</h3>
                                                         <p>
-                                                            <a href="/azure/azure-monitor/platform/alerts-overview">Riasztások – áttekintés</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-overview">Riasztások áttekintése</a><br/>
                                                             <a href="/azure/azure-monitor/platform/autoscale-overview">Automatikus méretezés</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Naplóriasztások</a><br/>
-                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">A tevékenységnapló-riasztások</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-unified-log">Riasztások naplózása</a><br/>
+                                                            <a href="/azure/azure-monitor/platform/alerts-activity-log">Műveletnapló riasztásai</a><br/>
                                                             <a href="/azure/azure-monitor/platform/action-groups">Műveletcsoportok</a><br/>
                                                         </p>
                                                     </div>

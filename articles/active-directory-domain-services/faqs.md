@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 64e1095466f9494ccd8aa052a739729542920784
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305039"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596421"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
@@ -47,7 +47,7 @@ A klasszikus virtuális hálózatok nem támogatottak új központi telepítése
 Igen. Azure AD Domain Services engedélyezhető Azure Resource Manager virtuális hálózaton. Új felügyelt tartomány létrehozásakor a klasszikus Azure-beli virtuális hálózatok már nem támogatottak.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Áttelepíthetem a meglévő felügyelt tartományt egy klasszikus virtuális hálózatról egy Resource Manager-alapú virtuális hálózatra?
-Jelenleg nem. A meglévő felügyelt tartományok egy klasszikus virtuális hálózatról Resource Manager-alapú virtuális hálózatra való migrálása folyamatban van.
+Igen, ez a funkció előzetes verzióban érhető el. További információ: [Azure AD Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe (előzetes verzió)] [Migrálás a Klasszikusból-vnet.md]
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Engedélyezhető a Azure AD Domain Services egy Azure CSP-előfizetésben?
 Igen. További információ: [Azure ad Domain Services engedélyezése az Azure CSP-előfizetésekben](csp.md).
@@ -139,11 +139,11 @@ Nem. A Azure AD Domain Services egy utólagos elszámolású Azure-szolgáltatá
 ### <a name="what-azure-regions-is-the-service-available-in"></a>Milyen Azure-régiók érhetők el a szolgáltatásban?
 Az Azure- [szolgáltatások régiónként](https://azure.microsoft.com/regions/#services/) lapon megtekintheti az Azure-régiók listáját, ahol a Azure ad Domain Services elérhető.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 A Azure AD Domain Services konfigurálásával és felügyeletével kapcsolatos gyakori problémák megoldásához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Azure AD Domain Servicesről, tekintse meg a [Mi az a Azure Active Directory Domain Services?](overview.md)című témakört.
 

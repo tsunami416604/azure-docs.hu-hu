@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 9a21242cbb16466ed4c12746ff64bd7352925fed
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330768"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592795"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -67,7 +67,7 @@ A hozzáfűzési effektushoz csak a **részletek** tömbje szükséges. A **rés
 
 ### <a name="append-examples"></a>Példák hozzáfűzése
 
-1\. példa: egyetlen **mező/érték** pár, amely egy nem **[\*]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** az IP-szabályok tárolási fiókra való beállításához. Ha a nem **[\*]** alias egy tömb, a hatás a teljes tömbként hozzáfűzi az **értéket** . Ha a tömb már létezik, megtagadási esemény következik be az ütközésből.
+1\. példa: egy **mező/érték** pár egy nem **[\*]** [aliast](definition-structure.md#aliases) használ egy tömb **értékkel** az IP-szabályok tárolási fiókra való beállításához. Ha a nem **[\*]** alias egy tömb, a hatás a teljes tömbként hozzáfűzi az **értéket** . Ha a tömb már létezik, megtagadási esemény következik be az ütközésből.
 
 ```json
 "then": {
@@ -152,7 +152,7 @@ Az **Operations** Property Array lehetővé teszi több címke különböző mó
         {
             "operation": "addOrReplace",
             "field": "tags['Dept']",
-            "field": "[parameters('DeptName')]"
+            "value": "[parameters('DeptName')]"
         }
     ]
 }
@@ -275,7 +275,7 @@ A AuditIfNotExists-effektusok **részletek** tulajdonsága az összes olyan altu
   - Ha a **details. Type** egy erőforrástípus az **IF** feltétel erőforrása alatt, a szabályzat a kiértékelt erőforrás hatókörén belül lekérdezi az ilyen **típusú** erőforrásokat. Ellenkező esetben a házirend-lekérdezések a kiértékelt erőforrással megegyező erőforráscsoport alatt vannak.
 - **Név** (nem kötelező)
   - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
-  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]` értéknek kell lennie. A [naplózási](#audit) hatást azonban figyelembe kell venni.
+  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]`nak kell lennie. A [naplózási](#audit) hatást azonban figyelembe kell venni.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.
@@ -346,7 +346,7 @@ A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altul
   - A parancs elindítja az erőforrás lekérését az **IF** feltétel erőforrása alatt, majd az adott erőforráscsoporthoz tartozó, az **IF** feltétel erőforrással rendelkező lekérdezéseket.
 - **Név** (nem kötelező)
   - Megadja az egyező erőforrás pontos nevét, és a megadott típus összes erőforrása helyett egy adott erőforrás beolvasását okozza.
-  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]` értéknek kell lennie.
+  - Ha a feltétel értéke **if. Field. Type** , **majd. details. Type** egyezés, akkor a **név** _szükséges_ lesz, és `[field('name')]`nak kell lennie.
 - **ResourceGroupName** (nem kötelező)
   - Lehetővé teszi a kapcsolódó erőforrás megfeleltetését egy másik erőforráscsoporthoz.
   - Nem alkalmazható, ha a **típus** olyan erőforrás, amely az **IF** feltétel erőforrása alá esik.

@@ -15,66 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 41e0bdc1f04c9491ebe939f46b59ae4eb2bc7ab6
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261804"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592409"
 ---
-# <a name="service-bus-diagnostic-logs"></a>Diagnosztikai naplók Service Bus
+# <a name="enable-diagnostic-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése Service Bushoz
 
-A Azure Service Bus kétféle naplót tekinthet meg:
-* **[Tevékenységek naplói](../azure-monitor/platform/activity-logs-overview.md)** . Ezek a naplók a feladatokon végrehajtott műveletekkel kapcsolatos információkat tartalmazzák. A naplók mindig engedélyezve van.
-* **[Diagnosztikai naplók](../azure-monitor/platform/resource-logs-overview.md)** . A diagnosztikai naplókat megadhatja a feladatokon belül megjelenő összes adatról. Diagnosztikai naplók cover tevékenységek a feladat jön létre, amíg a feladat törli, beleértve a frissítéseket és a tevékenységek a feladat futása közben előforduló kezdve.
+Ha megkezdi a Azure Service Bus névteret, érdemes figyelnie, hogyan és mikor hozza létre, törli vagy eléri a névteret. Ez a cikk az összes elérhető operatív/diagnosztikai napló áttekintését tartalmazza.
 
-## <a name="turn-on-diagnostic-logs"></a>Kapcsolja be a diagnosztikai naplók
+A Azure Service Bus jelenleg olyan tevékenység-/működési naplókat támogat, amelyek rögzítik a Azure Service Bus névtéren végrehajtott **felügyeleti műveleteket** . Ezek a naplók pontosan rögzítik a művelet típusát, beleértve a várólista létrehozását, a felhasznált erőforrásokat és a művelet állapotát.
 
-A diagnosztikai naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez hajtsa végre a következő lépéseket:
+## <a name="operational-logs-schema"></a>Operatív naplók sémája
 
-1.  Az a [az Azure portal](https://portal.azure.com)alatt **Monitoring + Management**, kattintson a **diagnosztikai naplók**.
+Az összes napló JavaScript Object Notation (JSON) formátumban van tárolva az alábbi 2 helyen.
 
-    ![paneles navigáció a diagnosztikai naplókhoz](./media/service-bus-diagnostic-logs/image1.png)
+- **AzureActivity** – naplókat jelenít meg a portálon vagy Azure Resource Manager sablonon keresztül végrehajtott műveletekről/műveletekről.
+- **AzureDiagnostics** – megjeleníti a névterekben az API használatával vagy a Language SDK felügyeleti ügyfelein keresztül végrehajtott műveletek/műveletek naplóit.
 
-2. Kattintson a figyelni kívánt erőforrásra.  
+Az operatív napló JSON-karakterláncai az alábbi táblázatban felsorolt elemeket tartalmazzák:
 
-3.  Kattintson a **Diagnosztika bekapcsolása** elemre.
-
-    ![Diagnosztikai naplók bekapcsolása](./media/service-bus-diagnostic-logs/image2.png)
-
-4.  A **állapot**, kattintson a **a**.
-
-    ![állapot-diagnosztikai naplók módosítása](./media/service-bus-diagnostic-logs/image3.png)
-
-5.  Állítsa be a kívánt archiválási célt; például egy Storage-fiók, egy Event hub vagy egy Azure Monitor napló.
-
-6.  Az új diagnosztikai beállítások mentéséhez.
-
-Új beállítások érvénybe léptetéséhez körülbelül 10 perc múlva. Ezután a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
-
-Konfiguruje se diagnostika kapcsolatos további információkért lásd: a [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/resource-logs-overview.md).
-
-## <a name="diagnostic-logs-schema"></a>Diagnosztikai naplók séma
-
-Az összes napló JavaScript Object Notation (JSON) formátumban vannak tárolva. Minden bejegyzés tartalmaz egy karakterlánc-mezőt, amely a következő szakaszban ismertetett formátumot használja.
-
-## <a name="operational-logs-schema"></a>Műveleti naplók séma
-
-A **OperationalLogs** kategóriába tartozó naplók rögzítik, hogy mi történik Service Bus műveletek során. Ezek a naplók pontosan rögzítik a művelet típusát, beleértve a várólista létrehozását, a felhasznált erőforrásokat és a művelet állapotát.
-
-Műveleti napló JSON-sztringek az alábbi táblázatban felsorolt elemeket tartalmazza:
-
-Name (Név) | Leírás
-------- | -------
-Tevékenységazonosító | A nyomon követéshez használt belső azonosító
-EventName | Művelet neve           
-resourceId | Erőforrás-azonosító Azure Resource Manager
-SubscriptionId | Előfizetés azonosítója
-EventTimeString | Működési idő
-EventProperties | Művelet tulajdonságai
-State | Művelet állapota
-Caller | A művelet hívója (Azure Portal vagy felügyeleti ügyfél)
-category | OperationalLogs
+| Név | Leírás |
+| ------- | ------- |
+| Tevékenységazonosító | A megadott tevékenység azonosítására szolgáló belső azonosító |
+| eventName | Művelet neve |
+| ResourceId | Erőforrás-azonosító Azure Resource Manager |
+| SubscriptionId | Subscription ID (Előfizetés azonosítója) |
+| EventTimeString | Működési idő |
+| EventProperties | Művelet tulajdonságai |
+| Állapot | Művelet állapota |
+| Hívó | A művelet hívója (Azure Portal vagy felügyeleti ügyfél) |
+| Kategória | OperationalLogs |
 
 Példa egy operatív napló JSON-karakterláncára:
 
@@ -92,7 +65,55 @@ Példa egy operatív napló JSON-karakterláncára:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="what-eventsoperations-are-captured-in-operational-logs"></a>Milyen eseményeket/műveleteket rögzít a rendszer a műveleti naplókban?
+
+A műveleti naplók rögzítik a Azure Service Bus névtéren végrehajtott összes felügyeleti műveletet. Az adatműveletek nem lesznek rögzítve, mert a Azure Service Buson végrehajtott nagy mennyiségű adatművelet miatt.
+
+> [!NOTE]
+> Az adatműveletek jobb nyomon követéséhez ajánlott az ügyféloldali nyomkövetés használata.
+
+Az üzemeltetési naplók az alábbi felügyeleti műveleteket rögzítik – 
+
+| Hatókör | Művelet|
+|-------| -------- |
+| Névtér | <ul> <li> Névtér létrehozása</li> <li> Névtér frissítése </li> <li> Névtér törlése </li>  </ul> | 
+| Queue | <ul> <li> Várólista létrehozása</li> <li> Üzenetsor frissítése</li> <li> Üzenetsor törlése </li> </ul> | 
+| Témakör | <ul> <li> Témakör létrehozása </li> <li> Témakör frissítése </li> <li> Témakör törlése </li> </ul> |
+| Előfizetés | <ul> <li> Előfizetés létrehozása </li> <li> Előfizetés frissítése </li> <li> Előfizetés törlése </li> </ul> |
+
+> [!NOTE]
+> Az **olvasási** műveletek jelenleg nincsenek nyomon követve az operatív naplókban.
+
+## <a name="how-to-enable-operational-logs"></a>Hogyan lehet engedélyezni a műveleti naplókat?
+
+Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez hajtsa végre a következő lépéseket:
+
+1. A [Azure Portal](https://portal.azure.com)navigáljon a Azure Service Bus névtérhez, és a **figyelés**területen kattintson a **diagnosztikai beállítások**elemre.
+
+   ![paneles navigáció a diagnosztikai naplókhoz](./media/service-bus-diagnostic-logs/image1.png)
+
+2. A diagnosztikai beállítások konfigurálásához kattintson a **diagnosztikai beállítás hozzáadása** elemre.  
+
+   ![diagnosztikai naplók bekapcsolása](./media/service-bus-diagnostic-logs/image2.png)
+
+3. A diagnosztikai beállítások konfigurálása
+   1. Adjon meg egy **nevet** a diagnosztikai beállítások azonosításához.
+   2. Válasszon célhelyet a diagnosztika számára.
+      - Ha kiválasztja a **Storage-fiókot**, konfigurálnia kell azt a Storage-fiókot, ahol a diagnosztika el lesz tárolva.
+      - Ha az **Event hubokat**választja, konfigurálnia kell a megfelelő Event hub-t, ahol a diagnosztikai beállítások továbbítva lesznek.
+      - Ha **log Analytics**választ, meg kell adnia, hogy a diagnosztika melyik példánya lesz elküldve a log Analytics.
+    3. **OperationalLogs**-keresés.
+
+       ![állapot-diagnosztikai naplók módosítása](./media/service-bus-diagnostic-logs/image3.png)
+
+4. Kattintson a **Save** (Mentés) gombra.
+
+
+Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezután a naplók megjelennek a konfigurált archiválási célhelyen a **diagnosztikai naplók** panelen.
+
+A diagnosztika konfigurálásával kapcsolatos további információkért tekintse meg az [Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md)című témakört.
+
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő hivatkozásokat, amelyekkel többet is megtudhat a Service Bus:
 

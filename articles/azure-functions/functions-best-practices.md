@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad2f56388b49692d799202d06ed3dc0123f272e5
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ad7bdfd3abc4d3b4b672f5471ea826d4cef0f3fc
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294365"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596888"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions teljesítményének és megbízhatóságának optimalizálása
 
-Ez a cikk útmutatást nyújt a [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function-alkalmazások teljesítményének és megbízhatóságának javításához. 
+Ez a cikk útmutatást nyújt a [kiszolgáló](https://azure.microsoft.com/solutions/serverless/) nélküli Function-alkalmazások teljesítményének és megbízhatóságának javításához.  
 
 ## <a name="general-best-practices"></a>Általános ajánlott eljárások
 
@@ -100,7 +100,7 @@ Az aszinkron programozás ajánlott eljárás. Azonban mindig ne hivatkozzon a `
 
 Egyes eseményindítók, például az Event hub lehetővé teszik egy köteg üzenet fogadását egyetlen meghíváskor.  A kötegelt üzenetek sokkal jobb teljesítményt biztosítanak.  A `host.json` fájlban a maximális batch-méretet a [Host. JSON dokumentációjában](functions-host-json.md) részletesen konfigurálhatja.
 
-A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például @no__t – 0 helyett a metódus aláírása `EventData[] sensorEvent` lehet.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságot a `many` értékre, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
+A C# függvények esetében a típust erősen gépelt tömbre módosíthatja.  Például ahelyett, hogy `EventData sensorEvent` a metódus aláírását `EventData[] sensorEvent`.  Más nyelvek esetében explicit módon be kell állítania a `function.json` kardinális tulajdonságot a `many` értékre, hogy az [itt látható módon](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)engedélyezze a kötegelt feldolgozást.
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>A gazdagép viselkedésének konfigurálása a Egyidejűség jobb kezelésére
 

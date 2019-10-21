@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: c77d1d1a66d3ee92f5ad3f2016d2160831fa3ad9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 9b44db3e8ffc02d211f7f97404f0cdd8d319fe03
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299307"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597487"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Kapcsolódás adatforrásokhoz Azure Databricks
 
@@ -31,9 +31,9 @@ Az alábbi lista az Azure-ban használható adatforrásokat tartalmazza, amelyek
 - [Azure SQL Database](https://docs.azuredatabricks.net/spark/latest/data-sources/sql-databases.html)
 
     Ez a hivatkozás a DataFrame API-t biztosítja az SQL-adatbázisokhoz való csatlakozáshoz a JDBC használatával, valamint az olvasások párhuzamosságának vezérlését a JDBC felületen keresztül. Ez a témakör részletes példákat tartalmaz a Scala API-val, valamint a rövidített Python és Spark SQL-példákkal.
-- [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
+- [Azure Data Lake Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)
 
-    Ez a hivatkozás példákat tartalmaz arra, hogyan használhatja a Azure Active Directory egyszerű szolgáltatást a Data Lake Store való hitelesítéshez. Emellett útmutatást nyújt arról, hogyan férhet hozzá a Data Lake Store lévő adatokhoz Azure Databricksból.
+    Ez a hivatkozás példákat tartalmaz arra, hogyan használhatja a Azure Active Directory egyszerű szolgáltatást a Azure Data Lake Storage való hitelesítéshez. Emellett útmutatást nyújt arról, hogyan férhet hozzá a Azure Data Lake Storage lévő adatokhoz Azure Databricksból.
 
 - [Azure Blob Storage](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html)
 

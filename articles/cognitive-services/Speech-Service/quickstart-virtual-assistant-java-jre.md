@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: Egyéni hang – első virtuális asszisztens (előzetes verzió), Java (Windows, Linux) – Speech Service'
+title: 'Gyors útmutató: egyéni hang – első virtuális asszisztens (előzetes verzió), Java (Windows, Linux) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Cognitive Services Speech szoftverfejlesztői készletet (SDK) Java-konzolos alkalmazásokban. Megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás egy korábban létrehozott bot Framework-robothoz úgy, hogy a közvetlen vonalas beszédfelismerési csatornát használja, és lehetővé tegye a hang-első virtuális asszisztensi élményt.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Cognitive Services Speech SDK-t Java-konzolos alkalmazásokban. Megtudhatja, hogyan csatlakoztatható az ügyfélalkalmazás egy korábban létrehozott bot Framework-robothoz úgy, hogy a közvetlen vonalas beszédfelismerési csatornát használja, és lehetővé tegye a hang-első virtuális asszisztensi élményt.
 services: cognitive-services
 author: bidishac
 manager: nitinme
@@ -10,31 +10,31 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: ca3d650f9a53f536a00f2a11aca37b2a61556129
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71800037"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675542"
 ---
-# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Gyors útmutató: Hozzon létre egy hang-első virtuális asszisztenst a Speech SDK, a Java használatával
+# <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>Rövid útmutató: hang-első virtuális asszisztens létrehozása a Speech SDK-val, Java
 
-A gyors üzembe helyezési lehetőség a [beszéd-szöveg](quickstart-java-jre.md), a [szöveg és a beszéd](quickstart-text-to-speech-java-jre.md) [fordítására](quickstart-translate-speech-java-jre.md)is használható.
+A gyors útmutató [szöveg](quickstart-java-jre.md), [szöveg és beszéd](quickstart-text-to-speech-java-jre.md) [fordítás](quickstart-translate-speech-java-jre.md)céljából is elérhető.
 
-Ebben a cikkben egy Java-konzol alkalmazást hoz létre a [Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás csatlakozni fog egy korábban létrehozott robothoz, amely a közvetlen vonal beszédfelismerési csatornájának használatára, hangkérés küldésére és hangválasztó tevékenység visszaküldésére van konfigurálva (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Ubuntu Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
+Ebben a cikkben egy Java-konzol alkalmazást hoz létre az [Azure Cognitive Services SPEECH SDK](speech-sdk.md)használatával. Az alkalmazás egy korábban létrehozott robothoz van konfigurálva, amely a közvetlen sortörési csatornát használja, hangkérést küld, és visszaadja a hangválaszi tevékenységet (ha be van állítva). Az alkalmazás a Speech SDK Maven-csomaggal és az Eclipse Java IDE Windows, Ubuntu Linux vagy macOS rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
-* Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64 bites), vagy macOS 10,13 vagy újabb
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
-* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com).
-* A bot Framework 4,2-es vagy újabb verziójának használatával létrehozott, előre konfigurált robot. A robotnak a hangbemenetek fogadásához elő kell fizetnünk az új "Direct line Speech" csatornára.
+* Operációs rendszer: Windows (64 bites), Ubuntu Linux 16.04/18.04 (64 bites), vagy macOS 10,13 vagy újabb.
+* [Eclipse Java ide](https://www.eclipse.org/downloads/).
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
+* Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be az egyiket ingyenesen](get-started.md) , vagy hozza létre a [Azure Portalban](https://portal.azure.com).
+* A bot Framework 4,2-es vagy újabb verziójának használatával létrehozott előre konfigurált robot. A robotnak elő kell fizetnünk az új közvetlen vonalas beszéd csatornára a hangbemenetek fogadásához.
 
     > [!NOTE]
-    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#Voice-first virtual assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
+    > A Direct line Speech Preview jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensek számára](regions.md#voice-first-virtual-assistants), és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
 Ha Ubuntu 16.04/18.04-t futtat, győződjön meg róla, hogy ezek a függőségek telepítve vannak az Eclipse elindítása előtt:
 
@@ -43,18 +43,18 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
-Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítette a platformhoz készült Microsoft vizualizációs C++ terjeszthető csomagját:
+Ha Windows rendszert futtat (64 bites), győződjön meg arról, hogy telepítette a platformhoz készült Microsoft vizualizációs C++ terjeszthető csomagot:
 * [A Visual Studio C++ 2017-hoz készült Microsoft vizualizációs terjeszthető csomag letöltése](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
-## <a name="optional-get-started-fast"></a>Nem kötelező: Gyors első lépések
+## <a name="optional-get-started-fast"></a>Opcionális: gyors kezdés
 
-Ez a rövid útmutató részletesen leírja, hogyan lehet egy egyszerű ügyfélalkalmazás számára csatlakozni a beszédfelismerést támogató robothoz. Ha inkább a betöltést választja, az ebben a rövid útmutatóban használt teljes, előkészített forráskód a `quickstart` mappában található [SPEECH SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
+Ez a rövid útmutató részletesen ismerteti, hogyan lehet egy egyszerű ügyfélalkalmazás segítségével csatlakozni a beszédfelismerést támogató robothoz. Ha közvetlenül a-ben szeretne felmerülni, az ebben a rövid útmutatóban használt teljes, használatra kész forráskód a `quickstart` mappában található [SPEECH SDK-mintákban](https://aka.ms/csspeech/samples) érhető el.
 
 ## <a name="create-and-configure-project"></a>Projekt létrehozása és konfigurálása
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy az tartalmazza a következő függőséget.
+Emellett a naplózás engedélyezéséhez frissítse a *Pom. XML* fájlt, hogy az tartalmazza a következő függőséget:
 
    ```xml
     <dependency>
@@ -68,11 +68,11 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
 
 1. Ha új, üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **File** > **New** > **Class** (Fájl, Új, Osztály) lehetőséget.
 
-1. A **New Java Class** (Új Java-osztály) ablakban írja be a **speechsdk.quickstart** kifejezést a **Package** (Csomag), a **Main** (Fő) kifejezést pedig a **Név** mezőbe.
+1. Az **új Java-osztály** ablakban adja meg a *speechsdk.* gyors értéket a **csomag** mezőben *és a* főértékben a **név** mezőben.
 
    ![A New Java Class varázsló képernyőképe](media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Nyissa meg az **újonnan létrehozott** főosztályt, és cserélje le a `Main.java` fájl tartalmát a következő kiindulási kóddal.
+1. Nyissa meg az újonnan létrehozott `Main` osztályt, és cserélje le a `Main.java` fájl tartalmát a következő kiindulási kóddal:
 
     ```java
     package speechsdk.quickstart;
@@ -139,58 +139,58 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
     }
     ```
 
-1. A **Main** metódusban először konfigurálja a `DialogServiceConfig`-et, és használja egy `DialogServiceConnector` példány létrehozásához. Ezzel csatlakozni fog a közvetlen vonalas beszéd csatornához a robottal való interakcióhoz. A hangbemenet forrásának megadásához egy `AudioConfig` példány is használható. Ebben a példában az alapértelmezett mikrofon a `AudioConfig.fromDefaultMicrophoneInput()` értékkel van használatban.
+1. A `main` metódusban először konfigurálja a `DialogServiceConfig`, és egy `DialogServiceConnector` példány létrehozásához használja azt. Ez a példány csatlakozik a közvetlen vonalas beszédfelismerési csatornához, hogy együttműködjön a robottal. A hangbemenet forrásának megadásához egy `AudioConfig` példány is használható. Ebben a példában az alapértelmezett mikrofont használja a `AudioConfig.fromDefaultMicrophoneInput()`.
 
-    * Cserélje le a `YourSubscriptionKey` karakterláncot az előfizetési kulcsra, amelyet [itt](get-started.md)érhet el.
+    * Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal, amelyet a [webhelyről](get-started.md)szerezhet be.
     * Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](regions.md) .
-    * Cserélje le a `YourChannelSecret` karakterláncot a Direct line Speech Channel titkos kódjára.
+    * Cserélje le a `YourChannelSecret` karakterláncot a Direct line Speech Channel Secret kifejezésre.
 
     > [!NOTE]
-    > A közvetlen vonalas beszéd (előzetes verzió) jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensekhez](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
+    > A Direct line Speech Preview jelenleg a Speech Services-régiók egy részhalmazában érhető el. Tekintse meg [a támogatott régiók listáját a hangvezérelt virtuális asszisztensek számára](regions.md#voice-first-virtual-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
     ```java
     final String channelSecret = "YourChannelSecret"; // Your channel secret
     final String subscriptionKey = "YourSubscriptionKey"; // Your subscription key
-    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: only a subset of regions are currently supported
+    final String region = "YourServiceRegion"; // Your speech subscription service region. Note: Only a subset of regions are currently supported.
     final DialogServiceConfig botConfig = DialogServiceConfig.fromBotSecret(channelSecret, subscriptionKey, region);
 
-    // Configure audio input from microphone.
+    // Configure audio input from a microphone.
     final AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 
-    // Create a DialogServiceConnector instance
+    // Create a DialogServiceConnector instance.
     final DialogServiceConnector connector = new DialogServiceConnector(botConfig, audioConfig);
     ```
 
-1. a `DialogServiceConnector` számos eseményre támaszkodik, hogy a robot tevékenységeit, beszédfelismerési eredményeit és egyéb információkat kommunikáljanak. Adja hozzá ezeket az esemény-figyelőket a következőhöz.
+1. Az összekötő `DialogServiceConnector` több eseményre támaszkodik a robot tevékenységekkel, a beszédfelismerés eredményeivel és egyéb információkkal való kommunikációhoz. Adja hozzá ezeket az esemény-figyelőket a következőhöz.
 
     ```java
-    // Recognizing will provide the intermediate recognized text while an audio stream is being processed
+    // Recognizing will provide the intermediate recognized text while an audio stream is being processed.
     connector.recognizing.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognizing speech event text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // Recognized will provide the final recognized text once audio capture is completed
+    // Recognized will provide the final recognized text once audio capture is completed.
     connector.recognized.addEventListener((o, speechRecognitionResultEventArgs) -> {
         log.info("Recognized speech event reason text: {}", speechRecognitionResultEventArgs.getResult().getText());
     });
 
-    // SessionStarted will notify when audio begins flowing to the service for a turn
+    // SessionStarted will notify when audio begins flowing to the service for a turn.
     connector.sessionStarted.addEventListener((o, sessionEventArgs) -> {
         log.info("Session Started event id: {} ", sessionEventArgs.getSessionId());
     });
 
-    // SessionStopped will notify when a turn is complete and it's safe to begin listening again
+    // SessionStopped will notify when a turn is complete and it's safe to begin listening again.
     connector.sessionStopped.addEventListener((o, sessionEventArgs) -> {
         log.info("Session stopped event id: {}", sessionEventArgs.getSessionId());
     });
 
-    // Canceled will be signaled when a turn is aborted or experiences an error condition
+    // Canceled will be signaled when a turn is aborted or experiences an error condition.
     connector.canceled.addEventListener((o, canceledEventArgs) -> {
         log.info("Canceled event details: {}", canceledEventArgs.getErrorDetails());
         connector.disconnectAsync();
     });
 
-    // ActivityReceived is the main way your bot will communicate with the client and uses bot framework activities.
+    // ActivityReceived is the main way your bot will communicate with the client and uses Bot Framework activities.
     connector.activityReceived.addEventListener((o, activityEventArgs) -> {
         final String act = activityEventArgs.getActivity().serialize();
             log.info("Received activity {} audio", activityEventArgs.hasAudio() ? "with" : "without");
@@ -200,7 +200,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
         });
     ```
 
-1. A `connectAsync()` metódus meghívásával kapcsolódjon a `DialogServiceConnector` és a közvetlen vonal beszédéhez. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett a `sendActivityAsync` metódussal is elküldheti az egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a robot által a beszélgetés során használt adatait is megadhatják.
+1. A `connectAsync()` metódus meghívásával csatlakozhat a `DialogServiceConnector`hoz a közvetlen vonalas beszédhez. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett a `sendActivityAsync` metódussal is elküldheti az egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a beszélgetés során használt adatait is megadhatják.
 
     ```java
     connector.connectAsync();
@@ -213,11 +213,11 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
 
 1. Mentse a `Main` fájl módosításait.
 
-1. A válaszok lejátszásának támogatásához hozzá kell adnia egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez a ActivityAudioStream egy speciális osztály, amely a "Direct line Speech Channel" hang-válaszait fogja kezelni. Biztosítja a hozzáférést a lejátszáshoz szükséges hangformátum-információk lekéréséhez: Ehhez válassza a **fájl** > **új** > **osztály**elemet.
+1. A válaszok lejátszásának támogatásához adjon hozzá egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez a `ActivityAudioStream` egy speciális osztály, amely a Direct line Speech Channel hangválaszait kezeli. Hozzáférést biztosít a lejátszáshoz szükséges hangformátum-információk lekéréséhez. Ehhez válassza a **fájl**  > **új**  > **osztály**elemet.
 
-1. Az **új Java-osztály** ablakban írja be a **speechsdk.** rövid útmutatót a **csomag** mezőbe, és **ActivityAudioStream** a **név** mezőbe.
+1. Az **új Java-osztály** ablakban írja be a *Speechsdk. Gyorsindítás* nevet a **csomag** mezőbe, és a *ActivityAudioStream* értéket a **név** mezőbe.
 
-1. Nyissa meg az újonnan létrehozott **ActivityAudioStream** osztályt, és cserélje le az alább megadott kóddal.
+1. Nyissa meg az újonnan létrehozott `ActivityAudioStream` osztályt, és cserélje le a következő kódra:
 
     ```java
     package com.speechsdk.quickstart;
@@ -230,11 +230,11 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
 
     public final class ActivityAudioStream extends InputStream {
         /**
-         * The number of samples played per second. (16 kHz)
+         * The number of samples played per second (16 kHz).
          */
         public static final long SAMPLE_RATE = 16000;
         /**
-         * The number of bits in each sample of a sound that has this format. (16 bits)
+         * The number of bits in each sample of a sound that has this format (16 bits).
          */
         public static final int BITS_PER_SECOND = 16;
         /**
@@ -294,7 +294,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
         }
 
         /**
-         * Reads up to a specified maximum number of bytes of data from the activity audio stream
+         * Reads up to a specified maximum number of bytes of data from the activity audio stream,
          * putting them into the given byte array.
          *
          * @param b the buffer into which the data is read
@@ -348,7 +348,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
         }
 
         /**
-         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample and the # channels
+         * Fetch the audio format for the ActivityAudioStream. The ActivityAudioFormat defines the sample rate, bits per sample, and the # channels.
          *
          * @return instance of the ActivityAudioFormat associated with the stream
          */
@@ -361,7 +361,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
          * audio input stream without blocking.
          *
          * @return the number of bytes that can be read from this audio input stream without blocking.
-         * As this implementation does not buffer this will be defaulted to 0
+         * As this implementation does not buffer, this will be defaulted to 0
          */
         @Override
         public int available() {
@@ -444,7 +444,7 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
         }
 
         /**
-         * Enum defining the types of audio encoding supported by this stream
+         * Enum defining the types of audio encoding supported by this stream.
          */
         public enum AudioEncoding {
             PCM_SIGNED("PCM_SIGNED");
@@ -463,19 +463,20 @@ Emellett a naplózás engedélyezéséhez frissítse a **Pom. XML** fájlt, hogy
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
-Ezen a ponton megjelenik egy üzenet, amely szerint a "mondja el valami" üzenetet, egy angol nyelvű kifejezéssel vagy mondattal fog megjelenni. A beszédfelismerés a közvetlen vonalas beszéd csatornán keresztül lesz továbbítva a robotba, ahol a rendszer felismeri, feldolgozza a robotot, és a válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a `AudioPlayer` osztály használatával lesz visszajátszva.
+Válassza az F11 lehetőséget, vagy válassza a **futtatás**  > **hibakeresés**lehetőséget.
+A konzolon megjelenik a "Say valami" üzenet.
+Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet a robotja tud megérteni. A beszédet a robot a közvetlen vonalas beszéd csatornán keresztül továbbítja, ahol a robot felismeri és dolgozza fel. A válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a `AudioPlayer` osztály használatával lesz visszajátszva.
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-java-jre-08-console-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon további minták is elérhetők, például a hangfájlok beszédének olvasása.
 
 > [!div class="nextstepaction"]
 > [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [A Voice – First virtuális asszisztensek ismertetése](voice-first-virtual-assistants.md)
 - [Ingyenes Speech Services-előfizetési kulcs beszerzése](get-started.md)

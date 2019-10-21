@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a828d03093c73d5c65a92ccf899fbaa1ef622bd6
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016507"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598303"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -30,8 +30,8 @@ ms.locfileid: "69016507"
 ## <a name="overview"></a>Áttekintés
 Azure Media Services (AMS) esetében a **csatorna** az élő adatfolyam tartalmának feldolgozására szolgáló folyamatot jelöli. A **csatorna** az élő bemeneti streameket kétféleképpen fogadja el:
 
-* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy az alábbi formátumok egyikével Media Services élő kódolást végezzen el: RTMP vagy Smooth Streaming (darabolt MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
-* A helyszíni élő kódoló egy többszörös sávszélességű **RTMP** -t vagy **Smooth streaming** (darabolt MP4) küld a csatornára, amely nincs engedélyezve az AMS-mel végzett élő kódoláshoz. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a **Channel**s-ben. Ezt a metódustáteresztőnek nevezzük. A többszörös sávszélességű Smooth Streaming kimenetét a következő élő kódolók használatával végezheti el: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimeneti RTMP-kimenete: Az Adobe Flash Media Live Encoder (FMLE), a Wirecast, a Haivision, a Teradek és a Tricaster kódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló egy átviteli sebességű streamet küld a csatornának, amely lehetővé teszi, hogy élő kódolást végezzen Media Services az alábbi formátumok valamelyikével: RTMP vagy Smooth Streaming (töredezett MP4). A csatorna ezután a bejövő egyfajta sávszélességű adatfolyamot élő kódolás útján többféle sávszélességű (adaptív) video-adatfolyammá alakítja. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
+* A helyszíni élő kódoló egy többszörös sávszélességű **RTMP** -t vagy **Smooth streaming** (darabolt MP4) küld a csatornára, amely nincs engedélyezve az AMS-mel végzett élő kódoláshoz. A betöltött adatfolyamok további feldolgozás nélkül haladnak át a **Channel**s-ben. Ezt a metódust **áteresztőnek**nevezzük. Használhatja a következő élő kódolókat, amelyek a többszörös sávszélességű Smooth Streaming: MediaExcel, Ateme, Imagine Communications, envivio, Cisco és Elemental. A következő élő kódolók kimenete RTMP: Adobe Flash Media Live Encoder (FMLE), upstream Wirecast, Haivision, Teradek és Tricaster kódolók.  Az élő kódolók olyan csatornákra is tudnak egyféle sávszélességű adatfolyamot küldeni, amelyeken az élő kódolás nincs engedélyezve, ez azonban nem ajánlott. Kérés esetén a Media Services továbbítja az adatfolyamot az ügyfeleknek.
 
   > [!NOTE]
   > Az átmenő módszer használata a leggazdaságosabb módja az élő közvetítésnek.
@@ -40,18 +40,18 @@ Azure Media Services (AMS) esetében a **csatorna** az élő adatfolyam tartalm�
 
 A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja, hogy a csatorna milyen módon kapja meg a bemeneti adatfolyamot, és hogy szeretné-e, hogy a csatorna élő kódolást végezzen a streamben. Erre két lehetősége van:
 
-* **Nincs** – adja meg ezt az értéket, ha helyszíni élő kódolót szeretne használni, amely a többszörös átviteli sebességű streamet (egy csatlakoztatott adatfolyamot) fogja kiadni. Ebben az esetben a bejövő adatfolyam kódolás nélkül lett átadva a kimenetnek. Ez egy csatorna viselkedése a 2,10 kiadás előtt.  További információ az ilyen típusú csatornák használatáról: [élő közvetítés több sávszélességű streamet létrehozó](media-services-live-streaming-with-onprem-encoders.md)helyszíni kódolókkal.
+* **Nincs** – adja meg ezt az értéket, ha helyszíni élő kódolót szeretne használni, amely a többszörös átviteli sebességű streamet (egy csatlakoztatott adatfolyamot) fogja kiadni. Ebben az esetben a bejövő adatfolyam kódolás nélkül lett átadva a kimenetnek. Ez egy csatorna viselkedése a 2,10 kiadás előtt.  További információ az ilyen típusú csatornák használatáról: [élő közvetítés több sávszélességű streamet létrehozó helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 * **Standard** – válassza ezt az értéket, ha azt tervezi, hogy Media Services használatával kódolja az egyszeres sávszélességű adatfolyamot a többszörös átviteli sebességű streambe. Vegye figyelembe, hogy az élő kódoláshoz van egy számlázási hatás, és ne feledje, hogy a "Running" állapotú élő kódolási csatorna elhagyása esetén a számlázási költségek is felmerülnek.  Azt javasoljuk, hogy az élő közvetítési esemény befejezése után azonnal állítsa le a futó csatornákat, hogy elkerülje a felesleges óradíjat.
 
 > [!NOTE]
-> Ez a témakör azokat a csatornákat ismerteti, amelyek engedélyezve vannak az élő kódolás végrehajtásához (**szabványos** kódolási típus). További információ az élő kódoláshoz nem engedélyezett csatornák használatáról: [élő közvetítés](media-services-live-streaming-with-onprem-encoders.md)a többtényezős streameket létrehozó helyszíni kódolókkal.
+> Ez a témakör azokat a csatornákat ismerteti, amelyek engedélyezve vannak az élő kódolás végrehajtásához (**szabványos** kódolási típus). További információ az élő kódoláshoz nem engedélyezett csatornák használatáról: [élő közvetítés a többtényezős streameket létrehozó helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 > 
 > Ügyeljen rá, hogy ellenőrizze a [szempontok](media-services-manage-live-encoder-enabled-channels.md#Considerations) szakaszt.
 > 
 > 
 
 ## <a name="billing-implications"></a>Számlázási következmények
-Az élő kódolási csatorna azonnal elkezdi a számlázást, amint az az API-n keresztül a "Running" állapotra vált.   Az állapotot a Azure Portal vagy a Azure Media Services Explorer eszközben is megtekintheti (https://aka.ms/amse).
+Az élő kódolási csatorna azonnal elkezdi a számlázást, amint az az API-n keresztül a "Running" állapotra vált.   Megtekintheti az állapotot a Azure Portal vagy a Azure Media Services Explorer eszközben (https://aka.ms/amse).
 
 Az alábbi táblázat azt mutatja be, hogyan képezhetők le a csatornák az API-ban és Azure Portal a számlázási állapotokra. Az állapotok kis mértékben eltérnek az API és a Portal UX között. Amint a csatorna "Running" állapotban van az API-n keresztül, vagy a Azure Portal "Ready" vagy "streaming" állapotban van, a számlázás aktív lesz.
 Ha a csatornát továbbra is le szeretné állítani a számlázási adatokból, le kell állítania a csatornát az API-n vagy a Azure Portal.
@@ -70,8 +70,8 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázási? |
 | --- | --- | --- |
-| Indítás |Indítás |Nem (átmeneti állapot) |
-| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |IGEN |
+| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
+| Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 
@@ -89,11 +89,13 @@ A következő ábra egy élő adatfolyam-továbbítási munkafolyamatot jelöl, 
 A leggyakrabban használt streamelési alkalmazások kialakításához általában az alábbi lépések szükségesek.
 
 > [!NOTE]
-> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen. Az élő kódolással kapcsolatos számlázásra van hatással, és ne feledje, hogy a "Running" állapotú élő kódolási csatorna elhagyása óradíjas díjat von maga után.  Azt javasoljuk, hogy az élő közvetítési esemény befejezése után azonnal állítsa le a futó csatornákat, hogy elkerülje a felesleges óradíjat. 
+> Jelenleg az élő események maximálisan ajánlott időtartama 8 óra.
+>
+> Az élő kódolással kapcsolatos számlázásra van hatással, és ne feledje, hogy a "Running" állapotú élő kódolási csatorna elhagyása óradíjas díjat von maga után. Azt javasoljuk, hogy az élő közvetítési esemény befejezése után azonnal állítsa le a futó csatornákat, hogy elkerülje a felesleges óradíjat. 
 
-1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy helyszíni élő kódolót, amely a következő protokollok egyikében képes **egyetlen** sávszélességű adatfolyamot kimenetként: RTMP vagy Smooth Streaming. 
+1. Csatlakoztasson egy videokamerát a számítógéphez. Indítson el és konfiguráljon egy helyszíni élő kódolót, amely **egyetlen** sávszélesség-adatfolyamot tud kiállítani a következő protokollok egyikében: RTMP vagy Smooth streaming. 
 
-    Ezt a lépést a csatorna létrehozása után is elvégezheti.
+    Ezt a lépést a csatorna létrehozása után is el lehet végezni.
 2. Hozzon létre és indítson el egy csatornát. 
 3. Kérje le a csatorna feldolgozó URL-címét. 
 
@@ -113,7 +115,7 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 
 7. Indítsa el a programot, ha készen áll az adatfolyam-továbbításra és az archiválásra.
 8. További lehetőségként jelzést adhat a valós idejű kódolónak egy hirdetés elindítására. A hirdetés a kimeneti adatfolyamba lesz beszúrva.
-9. Állítsa le a programot, ha szeretné megállítani az adatfolyam-továbbítást, és archiválni kívánja az eseményt.
+9. Amikor le kívánja állítani az esemény streamelését és az archiválását, állítsa le a programot.
 10. Törölje a programot (esetlegesen törölje az adategységet is).   
 
 > [!NOTE]
@@ -139,7 +141,7 @@ Szempontok:
 * Alapkonfiguráció, fő, magas profil (8 bites 4:2:0)
 * Magas 10 profil (10 bites 4:2:0)
 * Magas 422-profil (10 bites 4:2:2)
-* MPEG-2 AAC-LC Audio
+* MPEG-2 AAC-LC hang
 * Monó, sztereó, surround (5,1, 7,1)
 * 44,1 kHz mintavételi sebesség
 * MPEG-2 stílusú ADTS csomagolás
@@ -163,7 +165,7 @@ Ugyanaz, mint az [egyetlen BITRÁTA RTMP](media-services-manage-live-encoder-ena
 ### <a name="ingest-urls-endpoints"></a>Betöltési URL-címek (végpontok)
 A csatorna egy bemeneti végpontot (betöltési URL-címet) biztosít az élő kódolóban, így a kódoló leküldheti a streameket a csatornákra.
 
-A betöltési URL-címeket a csatorna létrehozása után kérheti le. Az URL-címek lekéréséhez a csatornának nem kell **futó** állapotban lennie. Ha készen áll arra, hogy elindítsa az adatküldést a csatornán , a futtatási állapotban kell lennie. Miután a csatorna megkezdi az adatfeldolgozást, megtekintheti a streamet az előnézet URL-címén.
+A betöltési URL-címeket a csatorna létrehozása után kérheti le. Az URL-címek lekéréséhez a csatornának nem kell **futó** állapotban lennie. Ha készen áll arra, hogy elindítsa az adatküldést a csatornán, a **futtatási** állapotban kell lennie. Miután a csatorna megkezdi az adatfeldolgozást, megtekintheti a streamet az előnézet URL-címén.
 
 Lehetősége van a töredezett MP4 (Smooth Streaming) élő streamek betöltésére egy SSL-kapcsolaton keresztül. Az SSL betöltéséhez frissítse a betöltési URL-címet HTTPS-re. Az AMS jelenleg nem támogatja az SSL-t az egyéni tartományokkal.  
 
@@ -211,13 +213,11 @@ A hangadatfolyam nyelvi azonosítója, amely megfelel az ISO 639-2-nek, példáu
 ### <a id="preset"></a>Rendszerszintű beállításkészlet
 Meghatározza azt a készletet, amelyet az élő kódoló használ a csatornán belül. Jelenleg az egyetlen megengedett érték a **Default720p** (alapértelmezett).
 
-Vegye figyelembe, hogy ha egyéni beállításkészletre van szüksége, vegye amshelp@microsoft.comfel a kapcsolatot.
-
 A **Default720p** a következő 6 rétegbe kódolja a videót.
 
 #### <a name="output-video-stream"></a>Kimeneti videó stream
 
-| Sávszélességű | Szélesség | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
+| Sávszélességű | Szélessége | Magasság | MaxFPS | Profil | Kimeneti adatfolyam neve |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
 | 2200 |960 |540 |30 |Magas |Video_960x540_2200kbps |
@@ -240,7 +240,7 @@ Ha a csatorna Live Encoding engedélyezve van, akkor a folyamat egy olyan össze
 
 A következő tulajdonságokat állíthatja be a hirdetmények jelzése során. 
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Időtartam
 A kereskedelmi szünet időtartama (másodpercben). A kereskedelmi szünet elindításához nem nulla értékű pozitív értéknek kell lennie. Ha egy kereskedelmi szünet folyamatban van, és az időtartam nullára van állítva a CueId, amely megfelel a folyamatos kereskedelmi szünetnek, akkor a rendszer megszakítja a megszakítást.
 
 ### <a name="cueid"></a>CueId
@@ -256,11 +256,11 @@ A csatornán belüli élő kódoló jelzéssel jelezhető, hogy átvált egy pal
 
 Az élő kódoló beállítható úgy, hogy egy pala-képre váltson, és bizonyos helyzetekben elrejtse a beérkező videó jelét (például egy ad-szünet során). Ha egy ilyen betöltés nincs konfigurálva, a bemeneti videó nem kerül maszkolásra az ad-szünet során.
 
-### <a name="duration"></a>Duration
+### <a name="duration"></a>Időtartam
 A teljes pala időtartama másodpercben. A pala indításához nem nulla pozitív értéknek kell lennie. Ha van folyamatban lévő pala, és a nulla időtartam van megadva, akkor a folyamatban lévő pala leáll.
 
-### <a name="insert-slate-on-ad-marker"></a>Befutó vagy hirdetésjelző beszúrása
-Ha igaz értékre van állítva, akkor ez a beállítás úgy konfigurálja az élő kódolót, hogy az ad-szünet során beszúrjon egy pala-rendszerképet. Az alapértelmezett érték: igaz. 
+### <a name="insert-slate-on-ad-marker"></a>Pala beszúrása az ad-jelölőre
+Ha igaz értékre van állítva, akkor ez a beállítás úgy konfigurálja az élő kódolót, hogy az ad-szünet során beszúrjon egy pala-rendszerképet. Az alapértelmezett érték TRUE (igaz). 
 
 ### <a id="default_slate"></a>Alapértelmezett Slate-eszköz azonosítója
 
@@ -270,13 +270,12 @@ Választható. Megadja a Media Services objektum azonosítóját, amely tartalma
 > [!NOTE] 
 > A csatorna létrehozása előtt a következő megkötésekkel rendelkező, dedikált eszközként feltöltött képet kell feltölteni (más fájloknak ebben az objektumban kell lennie). Ezt a rendszerképet csak akkor használja a rendszer, ha az élő kódoló egy ad-töréspont miatt beszúrt egy Palat, vagy explicit módon beszúrta egy pala beszúrására. Jelenleg nincs lehetőség egyéni rendszerkép használatára, ha az élő kódoló "bemeneti jel elveszett" állapotba kerül. [Itt](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel)szavazhat erre a szolgáltatásra.
 
-
 * A legtöbb 1920 × 1080 a megoldásban.
 * Legfeljebb 3 MB méretű.
 * A fájl nevének *. jpg kiterjesztéssel kell rendelkeznie.
 * A képet fel kell tölteni egy adategységbe, amely az adott eszköz egyetlen AssetFile, és ezt a AssetFile elsődleges fájlként kell megjelölni. Az eszköz nem lehet titkosított tároló.
 
-Ha az **alapértelmezett Slate-azonosító** nincs megadva, és a **Beszúrás az ad** -jelölőre beállítás értéke **true (igaz**), akkor a rendszer az alapértelmezett Azure Media Services rendszerképet használja a bemeneti videó adatfolyamának elrejtéséhez. A hang a pala során is elnémul. 
+Ha az **alapértelmezett Slate-azonosító** nincs megadva, és a **Beszúrás az ad-jelölőre** beállítás értéke **true (igaz**), akkor a rendszer az alapértelmezett Azure Media Services rendszerképet használja a bemeneti videó adatfolyamának elrejtéséhez. A hang a pala során is elnémul. 
 
 ## <a name="channels-programs"></a>Csatorna programjai
 A csatornákhoz programok vannak társítva. Ezek lehetővé teszik az élő stream szegmenseinek közzétételét és tárolását. A programokat a csatornák kezelik. A csatorna és a program kapcsolata nagyon hasonlít a hagyományos médiához, ahol a csatornán állandó tartalom található, és a program hatóköre az adott csatornán futó eseményekre vonatkozik.
@@ -313,7 +312,7 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 
 | Csatorna állapota | Jelzése a portál kezelőfelületén | Számlázandó? |
 | --- | --- | --- |
-| Indítás |Indítás |Nem (átmeneti állapot) |
+| Indulás alatt |Indulás alatt |Nem (átmeneti állapot) |
 | Fut |Üzemkész (nincs futó program)<br/>vagy<br/>Streamelés (legalább egy futó program) |Igen |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
@@ -326,12 +325,12 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 ## <a id="Considerations"></a>Szempontok
 * Ha a **standard** kódolási típus egy csatornája a bemeneti forrás/a hozzájárulási adatcsatorna elvesztését tapasztalja, kompenzálja azt a forrásként szolgáló videó/hang lecserélésekor a hiba lappal és a csendtel. A csatorna továbbra is kibocsátja a betöltést, amíg a bemeneti/hozzájárulási hírcsatorna újra nem indul. Azt javasoljuk, hogy egy élő csatorna ne maradjon ilyen állapotban 2 óránál hosszabb ideig. Ezen a ponton túl a csatorna viselkedése a bemeneti újrakapcsolódáson nem garantált, és nem az alaphelyzetbe állítási parancsra adott válasz. A csatornát le kell állítania, törölni kell, és létre kell hoznia egy újat.
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
-* Minden alkalommal, amikor újrakonfigurálja az élő kódolót, hívja meg az alaphelyzetbe állítási módszert a csatornán. A csatorna alaphelyzetbe állítása előtt le kell állítania a programot. A csatorna alaphelyzetbe állítása után indítsa újra a programot.
+* Minden alkalommal, amikor újrakonfigurálja az élő kódolót, hívja meg az **alaphelyzetbe állítási** módszert a csatornán. A csatorna alaphelyzetbe állítása előtt le kell állítania a programot. A csatorna alaphelyzetbe állítása után indítsa újra a programot.
 * Egy csatornát csak akkor lehet leállítani, ha fut állapotban van, és a csatornán lévő összes program le lett állítva.
-* Alapértelmezés szerint csak 5 csatornát adhat hozzá a Media Services-fiókjához. Ez egy enyhe kvóta az összes új fiókra vonatkozóan. További információ: kvóták [és korlátozások](media-services-quotas-and-limitations.md).
+* Alapértelmezés szerint csak 5 csatornát adhat hozzá a Media Services-fiókjához. Ez egy enyhe kvóta az összes új fiókra vonatkozóan. További információ: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 * Ha a csatorna vagy a hozzá tartozó programok már elindultak, a bemeneti protokoll nem módosítható. Ha más protokollt szeretne használni, hozzon létre külön-külön csatornákat az egyes bemeneti protokollokhoz.
 * Csak akkor számítunk fel díjat, ha a csatorna **fut** állapotban van. További információkért tekintse meg [ezt](media-services-manage-live-encoder-enabled-channels.md#states) a szakaszt.
-* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amshelp@microsoft.com e-mail-címen.
+* Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. 
 * Győződjön meg arról, hogy az adatfolyam-végpont, amelyről a tartalmat a **futó** állapotban szeretné továbbítani.
 * A kódolási beállításkészlet a "maximális Képkockasebesség" fogalmát használja 30 fps-ként. Tehát ha a bemenet 60fps/59.94 i, a bemeneti keretek el lesznek dobva/delapoltan 30/29.97 fps. Ha a bemenet 50fps/50I, a bemeneti képkockákat a rendszer eldobta/visszaváltotta a 25 fps-ra. Ha a bemenet 25 fps, a kimenet 25 fps marad.
 * Ha elkészült, ne felejtse el leállítani a CSATORNÁKat. Ha nem, a számlázás folytatódni fog.
@@ -341,7 +340,12 @@ Az alábbi táblázat azt ismerteti, hogy az egyes csatornaállapotok esetében 
 * A pala lemezképeknek meg kell felelniük az [itt](media-services-manage-live-encoder-enabled-channels.md#default_slate)ismertetett korlátozásoknak. Ha egy olyan csatornát próbál létrehozni, amely a 1920 × 1080 nagyobb méretű alapértelmezett lappal rendelkezik, a kérelem végül kikerül a hibába.
 * mégegyszer.... Ne felejtse el leállítani a CSATORNÁKat, amikor befejezte a folyamatos átvitelt. Ha nem, a számlázás folytatódni fog.
 
+## <a name="need-help"></a>Segítség
+
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+
 ## <a name="next-step"></a>Következő lépés
+
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

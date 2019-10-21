@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 5fc9262dd53f390dbc43646626cc324d8655f1de
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 124b52d920ef36b373eef895187727499068f3eb
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387776"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596520"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Adatfolyam-transzformáció
 
@@ -61,6 +61,10 @@ Az automatikus leképezés kikapcsolásakor lehetősége van az oszlop alapú le
 Ha a szabály alapú leképezést választja, akkor a rendszer az ADF-et arra utasítja, hogy értékelje a megfelelő kifejezést a bejövő mintázat szabályainak megfelelően, és adja meg a kimenő mezők nevét. A mezők és a szabályokon alapuló leképezések tetszőleges kombinációját felveheti. A mezőneveket a forrástól érkező bejövő metaadatok alapján, az ADF futásidőben generálja a rendszer. A generált mezők neve a hibakeresés során és az adatelőnézet panelen tekinthető meg.
 
 A minta egyeztetésével kapcsolatos részletek az [oszlop mintájának dokumentációjában](concepts-data-flow-column-pattern.md)találhatók.
+
+A reguláris kifejezési mintákat is megadhatja a szabályokon alapuló egyeztetéshez a sor kibontásával és a "név egyezések:" melletti reguláris kifejezés beírásával.
+
+![Regex-leképezés](media/data-flow/scdt1g4.png "Regex-leképezés")
 
 ## <a name="file-name-options"></a>Fájlnév beállításai
 

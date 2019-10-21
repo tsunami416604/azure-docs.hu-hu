@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000323"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597162"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Szabályzatok indexelése a Azure Cosmos DBban
 
@@ -26,20 +26,20 @@ Bizonyos helyzetekben érdemes lehet felülbírálni ezt az automatikus viselked
 
 A Azure Cosmos DB két indexelési módot támogat:
 
-- **Konzisztens**: Az index az elemek létrehozásakor, frissítésekor vagy törlésekor szinkron módon frissül. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
-- **Nincs**: Az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) a befejezésig figyelhető.
+- **Konzisztens**: az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
+- **Nincs**: az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) a befejezésig figyelhető.
 
 > [!NOTE]
-> A Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Emellett a tömeges műveletek esetében a "None" helyett a lusta indexelés használata sem biztosít előnyt, mert az index mód bármilyen módosítása az index eldobását és újbóli létrehozását eredményezi. Ezen okok miatt javasoljuk, hogy az ügyfeleket használja. A tömeges műveletek teljesítményének növeléséhez állítsa az index módot a none értékre, majd térjen vissza konzisztens módba `IndexTransformationProgress` , és figyelje a tárolóban lévő tulajdonságot a befejezésig.
+> A Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Emellett a tömeges műveletek esetében a "None" helyett a lusta indexelés használata sem biztosít előnyt, mert az index mód bármilyen módosítása az index eldobását és újbóli létrehozását eredményezi. Ezen okok miatt javasoljuk, hogy az ügyfeleket használja. A tömeges műveletek teljesítményének növeléséhez állítsa az index módot a none értékre, majd térjen vissza konzisztens módba, és figyelje a tároló `IndexTransformationProgress` tulajdonságát a befejezésig.
 
-Alapértelmezés szerint az indexelési házirend a `automatic`következőre van beállítva:. Ez úgy érhető el, ha `automatic` `true`a tulajdonságot az indexelési házirendben a értékre állítja. Ennek a tulajdonságnak `true` a beállításával engedélyezheti, hogy az Azure CosmosDB automatikusan indexelje a dokumentumokat írásuk szerint.
+Alapértelmezés szerint az indexelési házirend `automatic` értékre van állítva. Ez úgy érhető el, hogy az indexelési házirendben az `automatic` tulajdonságot `true`re állítja. Ha ezt a tulajdonságot úgy állítja be, hogy `true`, az Azure CosmosDB automatikusan indexeli a dokumentumokat írásuk szerint.
 
 ## <a name="including-and-excluding-property-paths"></a>Tulajdonságok elérési útjának belefoglalása és kizárása
 
 Az egyéni indexelési házirend megadhatja az indexelésből explicit módon befoglalt vagy kizárt tulajdonságokat. Az indexelt elérési utak számának optimalizálásával csökkentheti a tároló által használt tárterület méretét, és javíthatja az írási műveletek késését. Ezek az elérési utak az [indexelés áttekintése szakaszban leírt módszer](index-overview.md#from-trees-to-property-paths) szerint vannak meghatározva, a következő kiegészítésekkel:
 
-- egy skaláris értékhez (sztringhez vagy számhoz) vezető útvonal végződik`/?`
-- egy tömb elemeit a rendszer a `/[]` jelöléssel együtt tárgyalja (a `/1` `/0`helyett stb.).
+- egy skaláris értékhez (sztringhez vagy számhoz) vezető elérési út végződik `/?`
+- egy tömb elemeit a `/[]` jelöléssel együtt kell kezelni (nem `/0`, `/1` stb.).
 - a `/*` helyettesítő karakterrel a csomópont alatti elemek is megegyeznek
 
 Ugyanezt a példát még egyszer kell megtennie:
@@ -58,32 +58,32 @@ Ugyanezt a példát még egyszer kell megtennie:
     }
 ```
 
-- az `headquarters`elérésiútja `employees``/headquarters/employees/?`
+- a `headquarters` `employees` elérési útja `/headquarters/employees/?`
 
-- az `locations`elérésiút `country``/locations/[]/country/?`
+- a `locations` "`country` elérési útja `/locations/[]/country/?`
 
-- az elérési út `headquarters``/headquarters/*`
+- a `headquarters` alatt található bármilyen elérési út `/headquarters/*`
 
-Például belefoglalhatjuk az `/headquarters/employees/?` elérési utat. Ez az elérési út biztosítaná, hogy indexeljük az alkalmazottak tulajdonságot, de nem indexelik a további beágyazott JSON-t ezen a tulajdonságon belül.
+Például belefoglalhatjuk a `/headquarters/employees/?` elérési utat. Ez az elérési út biztosítaná, hogy indexeljük az alkalmazottak tulajdonságot, de nem indexelik a további beágyazott JSON-t ezen a tulajdonságon belül.
 
 ## <a name="includeexclude-strategy"></a>Belefoglalási/kizárási stratégia
 
-Minden indexelési házirendnek tartalmaznia kell a gyökér `/*` elérési útját, vagy egy belefoglalt vagy kizárt elérési utat.
+Az indexelési házirendnek tartalmaznia kell a gyökér elérési útját `/*` vagy egy belefoglalt vagy kizárt elérési utat.
 
 - Adja meg a gyökér elérési útját az indexelni nem kívánt elérési utak szelektív kizárásához. Ez az ajánlott módszer, mivel lehetővé teszi, hogy Azure Cosmos DB proaktív módon indexelje a modellbe felvehető új tulajdonságokat.
 - Zárja ki a gyökér elérési útját, hogy szelektíven szerepeljenek az indexelni kívánt elérési utak.
 
-- A normál karaktereket tartalmazó elérési utak esetében: alfanumerikus karakterek és _ (aláhúzás), nem kell elmenekülnie az elérésiút-karakterláncot idézőjelek közé (például "/Path/?"). Más speciális karaktereket tartalmazó elérési utak esetén el kell kerülnie az elérésiút-karakterláncot az idézőjelek között (például\": "/\"Path-ABC/?"). Ha az elérési úton speciális karaktereket vár, a biztonság érdekében minden elérési utat eljuthat. Funkcionálisan nem tesz különbséget, ha minden elérési utat és csak a speciális karaktereket tartalmazó útvonalat használ.
+- A normál karaktereket tartalmazó elérési utak esetében: alfanumerikus karakterek és _ (aláhúzás), nem kell elmenekülnie az elérésiút-karakterláncot idézőjelek közé (például "/Path/?"). Más speciális karaktereket tartalmazó elérési utak esetén el kell kerülnie az elérésiút-karakterláncot az idézőjelek között (például: "/\"path-ABC \"/?"). Ha az elérési úton speciális karaktereket vár, a biztonság érdekében minden elérési utat eljuthat. Funkcionálisan nem tesz különbséget, ha minden elérési utat és csak a speciális karaktereket tartalmazó útvonalat használ.
 
 - A "ETAG" rendszertulajdonság alapértelmezés szerint ki van zárva az indexelésből, kivéve, ha a ETAG hozzá lett adva a befoglalt útvonalhoz az indexeléshez.
 
 Az útvonalak belefoglalása és kizárása esetén a következő attribútumok jelenhetnek meg:
 
-- `kind``range` lehet vagy `hash`. A Range index funkció biztosítja a kivonatoló index összes funkcióját, ezért javasoljuk, hogy használjon egy tartomány-indexet.
+- `kind` lehet `range` vagy `hash`. A Range index funkció biztosítja a kivonatoló index összes funkcióját, ezért javasoljuk, hogy használjon egy tartomány-indexet.
 
-- `precision`a befoglalt elérési utakhoz tartozó index szintjén definiált szám. A érték a `-1` maximális pontosságot jelzi. Azt javasoljuk, hogy mindig állítsa be `-1`ezt az értéket.
+- `precision` a befoglalt elérési utak index szintjén definiált szám. @No__t_0 értéke a maximális pontosságot jelzi. Javasoljuk, hogy mindig állítsa be ezt az értéket `-1`ra.
 
-- `dataType``String` lehet vagy `Number`. Ez azt jelzi, hogy milyen típusú JSON-tulajdonságok lesznek indexelve.
+- `dataType` lehet `String` vagy `Number`. Ez azt jelzi, hogy milyen típusú JSON-tulajdonságok lesznek indexelve.
 
 Ha nincs megadva, ezek a tulajdonságok a következő alapértelmezett értékek lesznek:
 
@@ -97,7 +97,7 @@ Tekintse meg [ezt a szakaszt](how-to-manage-indexing-policy.md#indexing-policy-e
 
 ## <a name="spatial-indexes"></a>Térbeli indexek
 
-Ha a térbeli elérési utat definiálja az indexelési házirendben, meg kell ```type``` határoznia, hogy melyik indexet kell alkalmazni az adott elérési útra. A térbeli indexek lehetséges típusai a következők:
+Ha a térbeli elérési utat definiálja az indexelési házirendben, meg kell határoznia, hogy melyik indexet kell alkalmazni ```type``` az adott elérési útra. A térbeli indexek lehetséges típusai a következők:
 
 * Pont
 
@@ -111,7 +111,7 @@ Alapértelmezés szerint a Azure Cosmos DB nem hoz létre térbeli indexeket. Ha
 
 ## <a name="composite-indexes"></a>Összetett indexek
 
-A két vagy több tulajdonsággal rendelkező záradékkalrendelkezőlekérdezésekösszetettindexetigényelnek.`ORDER BY` Megadhat egy összetett indexet is, amellyel javítható számos Esélyegyenlőségi és tartományon belüli lekérdezés teljesítménye. Alapértelmezés szerint a rendszer nem definiál összetett indexeket, ezért szükség szerint [összetett indexeket kell hozzáadnia](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+A két vagy több tulajdonsággal rendelkező `ORDER BY` záradékkal rendelkező lekérdezések összetett indexet igényelnek. Megadhat egy összetett indexet is, amellyel javítható számos Esélyegyenlőségi és tartományon belüli lekérdezés teljesítménye. Alapértelmezés szerint a rendszer nem definiál összetett indexeket, ezért szükség szerint [összetett indexeket kell hozzáadnia](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
 
 Az összetett index meghatározásakor a következőket kell megadnia:
 
@@ -120,15 +120,15 @@ Az összetett index meghatározásakor a következőket kell megadnia:
 - A sorrend (növekvő vagy csökkenő).
 
 > [!NOTE]
-> Összetett index hozzáadásakor – más típusú indexekhez hasonlóan – a lekérdezések inkonzisztens eredményeket adnak vissza, mivel az index frissítése folyamatban van.
+> Összetett index hozzáadásakor a lekérdezés a meglévő tartomány-indexeket fogja használni, amíg az új összetett index hozzáadása be nem fejeződik. Ezért összetett index hozzáadásakor előfordulhat, hogy nem veszi figyelembe azonnal a teljesítménnyel kapcsolatos fejlesztéseket. Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
 
 ### <a name="order-by-queries-on-multiple-properties"></a>Rendezés több tulajdonság lekérdezésével:
 
-A következő szempontokat kell használni, ha összetett indexeket használ a lekérdezésekhez `ORDER BY` két vagy több tulajdonsággal rendelkező záradékkal:
+A következő szempontokat kell használni, ha összetett indexeket használ `ORDER BY` záradékkal rendelkező lekérdezésekhez két vagy több tulajdonsággal:
 
 - Ha az összetett index elérési útjai nem egyeznek a `ORDER BY` záradékban szereplő tulajdonságok sorrendjével, akkor az összetett index nem támogatja a lekérdezést.
 
-- Az összetett index elérési útjának (növekvő vagy csökkenő) sorrendjét is meg kell `order` egyeznie `ORDER BY` a záradékban szereplővel.
+- Az összetett index elérési útjának (növekvő vagy csökkenő) sorrendjének meg kell egyeznie a `ORDER BY` záradékban szereplő `order`ával is.
 
 - Az összetett index egy `ORDER BY` záradékot is támogat az ellenkező sorrendben az összes elérési úton.
 
@@ -143,9 +143,9 @@ Vegye figyelembe a következő példát, ahol összetett index van definiálva a
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC, timestamp ASC``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC``` | ```No```            |
 
-Az indexelési szabályzatot testre szabhatja, hogy az összes `ORDER BY` szükséges lekérdezést kiszolgálja.
+Az indexelési szabályzatot testre szabhatja, hogy kiszolgálja az összes szükséges `ORDER BY` lekérdezést.
 
-### <a name="queries-with-filters-on-multiple-properties"></a>Lekérdezések több tulajdonsággal rendelkező szűrőkkel
+### <a name="queries-with-filters-on-multiple-properties"></a>A több tulajdonság alapján szűrt lekérdezések
 
 Ha egy lekérdezés két vagy több tulajdonságon is tartalmaz szűrőket, hasznos lehet összetett indexet létrehozni ezekhez a tulajdonságokhoz.
 
@@ -157,7 +157,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 Ez a lekérdezés hatékonyabb lesz, kevesebb időt vesz igénybe, és kevesebb RU-t használ, ha a (z) (név ASC, Age ASC) összetett indexet képes kihasználni.
 
-A tartományhoz tartozó szűrőkkel rendelkező lekérdezések összetett indexszel is optimalizálható. A lekérdezés azonban csak egyetlen tartományból álló szűrőt tartalmazhat. A tartományhoz `>`tartozó `<`szűrők `<=`a `>=`következők: `!=`,,, és. A tartomány szűrőt az összetett indexben kell megadni.
+A tartományhoz tartozó szűrőkkel rendelkező lekérdezések összetett indexszel is optimalizálható. A lekérdezés azonban csak egyetlen tartományból álló szűrőt tartalmazhat. A tartományhoz tartozó szűrők közé tartoznak a `>`, a `<`, a `<=`, a `>=` és a `!=`. A tartomány szűrőt az összetett indexben kell megadni.
 
 Vegye figyelembe a következő lekérdezést mind az esélyegyenlőségi, mind a tartományos szűrőkkel:
 
@@ -171,8 +171,8 @@ A következő szempontokat kell figyelembe venni összetett indexek létrehozás
 
 - A lekérdezés szűrője tulajdonságainak meg kell egyezniük az összetett indexben szereplő tulajdonságokkal. Ha egy tulajdonság az összetett indexben szerepel, de nem szerepel a lekérdezésben szűrőként, a lekérdezés nem fogja használni az összetett indexet.
 - Ha egy lekérdezés olyan további tulajdonságokkal rendelkezik a szűrőben, amelyek nem lettek definiálva egy összetett indexben, akkor a lekérdezés kiértékeléséhez az összetett és a tartomány indexek kombinációját fogja használni a rendszer. Ehhez kevesebb RU-t kell használni, mint a csak a tartomány indexeket.
-- Ha egy tulajdonság tartomány-szűrővel (`>` `<=`, `<` `>=`,, vagy `!=`) rendelkezik, akkor ezt a tulajdonságot az összetett indexben kell megadni. Ha egy lekérdezés több tartományból álló szűrővel rendelkezik, nem fogja használni az összetett indexet.
-- Összetett index létrehozásakor, ha több szűrőkkel optimalizálja a lekérdezéseket, `ORDER` az összetett index nem lesz hatással az eredményekre. Ez a tulajdonság nem kötelező.
+- Ha egy tulajdonság tartomány-szűrővel rendelkezik (`>`, `<`, `<=`, `>=` vagy `!=`), akkor ezt a tulajdonságot az összetett indexben kell megadni. Ha egy lekérdezés több tartományból álló szűrővel rendelkezik, nem fogja használni az összetett indexet.
+- Összetett index létrehozásakor, ha több szűrőkkel optimalizálja a lekérdezéseket, az összetett index `ORDER` nem lesz hatással az eredményekre. Ez a tulajdonság nem kötelező.
 - Ha nem definiál összetett indexet egy lekérdezéshez több tulajdonságra vonatkozó szűrőkkel, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető.
 
 Tekintse át az alábbi példákat, amelyekben összetett index van meghatározva a tulajdonságok neve, kora és időbélyeg:
@@ -186,9 +186,9 @@ Tekintse át az alábbi példákat, amelyekben összetett index van meghatározv
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Lekérdezés szűrővel és ORDER BY záradékkal
+### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>A szűrőt és egy ORDER BY záradékot is tartalmazó lekérdezések
 
-Ha a lekérdezés egy vagy több tulajdonságra vonatkozik `ORDER BY` , és az ORDER BY záradékban eltérő tulajdonságokkal rendelkezik, hasznos lehet a szűrőben szereplő tulajdonságokat felvenni a záradékba.
+Ha egy lekérdezés egy vagy több tulajdonságra vonatkozik, és az ORDER BY záradékban eltérő tulajdonságokkal rendelkezik, hasznos lehet a szűrőben szereplő tulajdonságokat felvenni a `ORDER BY` záradékba.
 
 Ha például a szűrőben lévő tulajdonságokat hozzáadja a ORDER BY záradékhoz, a következő lekérdezés újraírható egy összetett index kihasználása érdekében:
 
@@ -218,11 +218,11 @@ Lekérdezés összetett index használatával:
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
 ```
 
-A következő szempontokat kell használni összetett indexek létrehozásához egy szűrővel és `ORDER BY` záradékkal rendelkező lekérdezés optimalizálásához:
+Összetett indexek létrehozásakor a következő szempontokat kell használni egy szűrővel és `ORDER BY` záradékkal rendelkező lekérdezés optimalizálásához:
 
-* Ha a lekérdezés a tulajdonságok alapján szűri, ezeket a `ORDER BY` záradékban elsőként kell szerepeltetni.
-* Ha nem definiál összetett indexet egy olyan lekérdezéshez, amely egy tulajdonságra vonatkozó szűrővel rendelkezik, `ORDER BY` és egy külön záradékot használ egy másik tulajdonság használatával, a lekérdezés továbbra is sikeres lesz. A lekérdezés ru-díja azonban egy összetett indexszel is csökkenthető, különösen akkor, ha a `ORDER BY` záradékban szereplő tulajdonság magas fokú.
-* Az összetett indexek `ORDER BY` több tulajdonsággal rendelkező lekérdezésekhez való létrehozásával, valamint a több tulajdonság szűrőit tartalmazó lekérdezésekkel kapcsolatos megfontolások továbbra is érvényesek.
+* Ha a lekérdezés a tulajdonságok alapján szűri a szűrőket, előbb szerepelnie kell a `ORDER BY` záradékban.
+* Ha nem definiál összetett indexet egy olyan lekérdezéshez, amely egy tulajdonságra vonatkozó szűrővel rendelkezik, és külön `ORDER BY` záradékot használ egy másik tulajdonság használatával, a lekérdezés továbbra is sikeres lesz. A lekérdezés RU-díja azonban egy összetett indexszel is csökkenthető, különösen akkor, ha a `ORDER BY` záradékban található tulajdonság magas fokú.
+* A több tulajdonsággal rendelkező `ORDER BY` lekérdezésekhez, valamint a több tulajdonság szűrőit tartalmazó lekérdezésekhez tartozó összetett indexek létrehozásával kapcsolatos megfontolások továbbra is érvényesek.
 
 
 | **Összetett index**                      | **Példa `ORDER BY` lekérdezésre**                                  | **Támogatja az összetett index?** |
@@ -238,7 +238,7 @@ A következő szempontokat kell használni összetett indexek létrehozásához 
 Egy tároló indexelési házirendjét bármikor frissítheti [a Azure Portal vagy a támogatott SDK-k egyikével](how-to-manage-indexing-policy.md). Az indexelési házirend frissítése elindítja a régi indexről az új verzióra történő átalakítást, amely online és helyben történik (így a művelet során nincs szükség további tárolóhelyre). A régi szabályzat indexét a rendszer hatékonyan átalakítja az új szabályzatra anélkül, hogy az hatással lenne az írási rendelkezésre állásra vagy a tárolón kiosztott átviteli sebességre. Az index transzformáció egy aszinkron művelet, és a befejezéshez szükséges idő a kiépített átviteli sebességtől, az elemek számától és méretétől függ.
 
 > [!NOTE]
-> Míg az újraindexelés folyamatban van, előfordulhat, hogy a lekérdezések nem adják vissza az összes egyező eredményt, és így nem kell hibát visszaadnia. Ez azt jelenti, hogy előfordulhat, hogy a lekérdezési eredmények nem konzisztensek, amíg az index átalakítása be nem fejeződik. Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
+> A tartomány vagy a térbeli index hozzáadásakor a lekérdezések nem adják vissza az összes egyező eredményt, így a hibák visszaküldése nélkül is megtörténnek. Ez azt jelenti, hogy előfordulhat, hogy a lekérdezési eredmények nem konzisztensek, amíg az index átalakítása be nem fejeződik. Az indexek átalakításának előrehaladását az SDK-k [egyikével](how-to-manage-indexing-policy.md)követheti nyomon.
 
 Ha az új indexelési házirend mód konzisztens értékre van állítva, akkor a rendszer nem alkalmazhat más indexelési házirendet, amíg az index átalakítás folyamatban van. A futó index-transzformáció megszakítható úgy, hogy az indexelési házirend mód értékét a none értékre állítja (amely azonnal eldobja az indexet).
 
@@ -253,9 +253,9 @@ Olyan esetekben, ahol nem szükséges a tulajdonság elérési útjának indexel
 
 - az indexelési mód konzisztens értékre van beállítva, és
 - nincs belefoglalt elérési út, és
-- `/*`az egyetlen kizárt elérési út.
+- `/*` az egyetlen kizárt elérési út.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az indexeléssel kapcsolatban az alábbi cikkekben olvashat bővebben:
 

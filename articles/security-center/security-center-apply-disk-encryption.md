@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71822277"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592498"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Lemez titkosításának alkalmazása Azure Security Center
 Azure Security Center azt javasolja, hogy a lemez titkosítását akkor alkalmazza, ha olyan Windows vagy Linux rendszerű virtuálisgép-lemezekkel rendelkezik, amelyek nincsenek titkosítva Azure Disk Encryption használatával. A lemezek titkosítása lehetővé teszi a Windows-és Linux-IaaS virtuálisgép-lemezek titkosítását.  A titkosítás elvégzése az operációs rendszer és az adatkötetek esetében egyaránt javasolt a virtuális gépen.
@@ -43,15 +43,15 @@ A Security Center által azonosított Azure-Virtual Machines titkosításhoz val
 * Szerezze be és futtassa a Azure Disk Encryption előfeltételek Azure PowerShell parancsfájlt.
 * Titkosítsa a virtuális gépeket.
 
-[A Windows IAAS virtuális gépek titkosítása Azure PowerShell](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) végigvezeti Önt ezen lépések végrehajtásán. Ez a témakör azt feltételezi, hogy olyan Windows-ügyfélszámítógépet használ, amelyről a lemez titkosítását konfigurálja.
+[A Windows IAAS virtuális gépek titkosítása Azure PowerShell](../virtual-machines/windows/disk-encryption-powershell-quickstart.md) végigvezeti Önt ezen lépések végrehajtásán. Ez a témakör azt feltételezi, hogy olyan Windows-ügyfélszámítógépet használ, amelyről a lemez titkosítását konfigurálja.
 
-Számos módszer használható az Azure Virtual Machines. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. További információ ezekről az egyéb megközelítésekről: az [Azure Disk Encryption](../security/azure-security-disk-encryption.md).
+Számos módszer használható az Azure Virtual Machines. Ha Ön jól ismeri az Azure PowerShell vagy az Azure parancssori felületét, érdemes lehet más megközelítést választani. További információ ezekről az egyéb megközelítésekről: az [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 Ebből a dokumentumból megtudhatta, hogyan implementálhatja a "lemez titkosításának alkalmazása" Security Center javaslatot. A lemezek titkosításával kapcsolatos további tudnivalókért tekintse meg a következőket:
 
-* [Titkosítás és kulcskezelő Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (videó, 36 perc 39 másodperc) – megtudhatja, hogyan használhatja a IaaS-alapú virtuális gépek és Azure Key Vault lemezes titkosítását az adatai védelméhez és védelméhez.
-* [Azure Disk Encryption](../security/azure-security-disk-encryption-overview.md) (dokumentum) – megtudhatja, hogyan engedélyezheti a lemezek titkosítását Windows és Linux rendszerű virtuális gépeken.
+* [Titkosítás és kulcskezelő Azure Key Vaultokkal](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (videó, 36 perc 39 másodperc) – megtudhatja, hogyan használhatja a IaaS-alapú virtuális gépeket és az adatvédelmet a lemezes titkosítás kezelésével az adatai védelméhez és Azure Key Vault.
+* [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) (dokumentum) – megtudhatja, hogyan engedélyezhető a lemez titkosítása Windows és Linux rendszerű virtuális gépeken.
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 

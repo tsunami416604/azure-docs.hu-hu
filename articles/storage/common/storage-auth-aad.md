@@ -9,12 +9,12 @@ ms.date: 08/02/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: caf72d4af390956391fdab133cf0897abbee4633
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673155"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598105"
 ---
 # <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure-blobok és-várólisták hozzáférésének engedélyezése Azure Active Directory használatával
 
@@ -34,7 +34,7 @@ Az engedélyezési lépés megköveteli, hogy egy vagy több RBAC-szerepkört ho
 
 Az Azure blobnak vagy Queue szolgáltatásnak kéréseket kérő natív alkalmazások és webalkalmazások is engedélyezhetik az Azure AD-vel való hozzáférést. Ha meg szeretné tudni, hogyan kérhet hozzáférési jogkivonatot, és hogyan engedélyezheti a blob-vagy üzenetsor-adatokra vonatkozó kérelmeket, tekintse meg az Azure [Storage-hoz való hozzáférés engedélyezése Azure Storage-alkalmazásból](storage-auth-aad-app.md)című témakört.
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>RBAC-szerepkörök kiosztása hozzáférési jogosultságokhoz
+## <a name="assign-rbac-roles-for-access-rights"></a>Hozzáférési jogosultságok RBAC-szerepköreinek kiosztása
 
 Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével engedélyezi a hozzáférési jogokat a biztonságos erőforrásokhoz. Az Azure Storage olyan beépített RBAC-szerepköröket határoz meg, amelyek a blob-és üzenetsor-adateléréshez használt engedélyek közös készleteit foglalják magukban. Egyéni szerepköröket is meghatározhat a blob-és üzenetsor-adataihoz való hozzáféréshez.
 
@@ -82,7 +82,7 @@ Azure CLI-és PowerShell-támogatás az Azure AD-beli hitelesítő adatokkal val
 
 Azure Files támogatja az Azure AD-t az SMB protokollon keresztül a tartományhoz csatlakoztatott virtuális gépek esetében (előzetes verzió). Ha szeretné megtudni, hogyan használhatja az Azure AD-t az SMB protokollon keresztül a Azure Fileshoz, tekintse meg [az Azure Active Directory engedélyezésének áttekintése az SMB-ben Azure Files (előzetes verzió](../files/storage-files-active-directory-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Blobok és várólisták hozzáférésének engedélyezése Azure Active Directory és felügyelt identitásokkal az Azure-erőforrásokhoz](storage-auth-aad-msi.md)
 - [Engedélyezés Azure Active Directory alkalmazásból a blobokhoz és várólistákhoz való hozzáféréshez](storage-auth-aad-app.md)

@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a7a67e98d87850e2fc90df3ce7ba15e5e60da517
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056351"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596751"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Webes API-kat meghívó Daemon-alkalmazás – webes API meghívása az alkalmazásból
 
@@ -68,9 +68,23 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Több API meghívása
 
-A Daemon-alkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. Nem lesz növekményes beleegyezik a Daemon-alkalmazásokkal (nincs felhasználói beavatkozás). A bérlői rendszergazdának előre jóvá kell hagynia az alkalmazást és az összes API-engedélyt. Ha több API-t szeretne meghívni, minden alkalommal `AcquireTokenForClient`meg kell adnia egy jogkivonatot minden egyes erőforráshoz. A MSAL az alkalmazás-jogkivonat gyorsítótárát fogja használni a szükségtelen szolgáltatási hívások elkerülése érdekében.
+A Daemon-alkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. Nem lesz növekményes beleegyezik a Daemon-alkalmazásokkal (nincs felhasználói beavatkozás). A bérlői rendszergazdának előre jóvá kell hagynia az alkalmazást és az összes API-engedélyt. Ha több API-t szeretne meghívni, minden egyes erőforráshoz meg kell adnia egy jogkivonatot, minden alkalommal, amikor meghívja a `AcquireTokenForClient`. A MSAL az alkalmazás-jogkivonat gyorsítótárát fogja használni a szükségtelen szolgáltatási hívások elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon-alkalmazás – áttérés éles környezetbe](./scenario-daemon-production.md)
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+> [!div class="nextstepaction"]
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+> [!div class="nextstepaction"]
+> [Daemon-alkalmazás – áttérés éles környezetbe](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+
+---

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 10/19/2019
 ms.author: victorh
-ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130226"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596781"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -40,7 +40,7 @@ Ennek a modellnek az előnye, hogy a különböző előfizetésekben található
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Hogyan telepíthetem a Azure Firewall?
 
-Azure Firewall a Azure Portal, a PowerShell, a REST API vagy a sablonok használatával állítható be. Lásd [az oktatóanyagot: Azure Firewall üzembe helyezése és konfigurálása a](tutorial-firewall-deploy-portal.md) Azure Portal használatával lépésenkénti útmutatót.
+Azure Firewall a Azure Portal, a PowerShell, a REST API vagy a sablonok használatával állítható be. Lásd [az oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása](tutorial-firewall-deploy-portal.md) című témakört, amely részletes útmutatást nyújt a Azure Portal.
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Mik azok a Azure Firewall fogalmak?
 
@@ -48,9 +48,9 @@ Azure Firewall támogatja a szabályokat és a szabályok gyűjteményeit. A sza
 
 Háromféle típusú szabálygyűjtemény létezik:
 
-* *Alkalmazási szabályok*: Olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
-* *Hálózati szabályok*: Adja meg a forrásoldali címeket, a protokollokat, a célport és a cél címét tartalmazó szabályokat.
-* *NAT-szabályok*: Konfigurálja a DNAT-szabályokat a bejövő kapcsolatok engedélyezéséhez.
+* *Alkalmazási szabályok*: olyan teljes tartománynevek (FQDN-EK) konfigurálása, amelyek egy alhálózatból érhetők el.
+* *Hálózati szabályok*: a forrás-, protokoll-, célport-és célcím-szabályokat tartalmazó szabályok konfigurálása.
+* *NAT-szabályok*: KONFIGURÁLJA a DNAT szabályokat a bejövő kapcsolatok engedélyezéséhez.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja Azure Firewall a bejövő forgalom szűrését?
 
@@ -58,7 +58,7 @@ Azure Firewall támogatja a bejövő és a kimenő szűrést. A bejövő védele
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Mely naplózási és elemzési szolgáltatásokat támogatja a Azure Firewall?
 
-Azure Firewall integrálva van Azure Monitor a tűzfalak megtekintésére és elemzésére. Naplók küldhetők Log Analyticsba, Azure Storage-ba vagy Event Hubsba. Ezek Log Analytics vagy különböző eszközök, például az Excel és a Power BI segítségével elemezhetők. További információ [: oktatóanyag: Figyelje Azure Firewall naplókat](tutorial-diagnostics.md).
+Azure Firewall integrálva van Azure Monitor a tűzfalak megtekintésére és elemzésére. Naplók küldhetők Log Analyticsba, Azure Storage-ba vagy Event Hubsba. Ezek Log Analytics vagy különböző eszközök, például az Excel és a Power BI segítségével elemezhetők. További információ: [oktatóanyag Azure Firewall-naplók figyelése](tutorial-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Hogyan működik a Azure Firewall eltérően a meglévő szolgáltatások, például a NVA a piactéren?
 
@@ -86,7 +86,7 @@ Lásd: [Azure Firewall díjszabása](https://azure.microsoft.com/pricing/details
 
 ## <a name="how-can-i-stop-and-start-azure-firewall"></a>Hogyan állíthatom le és indíthatja el Azure Firewall?
 
-Használhatja Azure PowerShell felszabadítási és lefoglalási metódusokat.
+Használhatja Azure PowerShell felszabadítási és *lefoglalási* metódusokat.
 
 Példa:
 
@@ -145,7 +145,7 @@ Nem. A NAT-szabályok implicit módon hozzáadnak egy megfelelő hálózati szab
 
 Ha a * **. contoso.com**konfigurálja, akkor a *anyvalue*. contoso.com, de nem contoso.com (a tartomány csúcspontja) használatát teszi lehetővé. Ha engedélyezni szeretné a tartomány csúcspontját, explicit módon konfigurálnia kell célként megadott FQDN-ként.
 
-## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent *a kiépítési állapot: Sikertelen* jelentés?
+## <a name="what-does-provisioning-state-failed-mean"></a>Mit jelent a *kiépítési állapot: nem sikerült* ?
 
 Ha egy konfigurációs változást alkalmaz, Azure Firewall megkísérli frissíteni az összes mögöttes háttér-példányt. Ritka esetekben előfordulhat, hogy az egyik ilyen háttérbeli példány nem tud frissíteni az új konfigurációval, és a frissítési folyamat leáll sikertelen kiépítési állapottal. A Azure Firewall továbbra is működőképes, de az alkalmazott konfiguráció inkonzisztens állapotba kerülhet, ahol egyes példányok esetében az előző konfiguráció szerepel, ahol mások rendelkeznek a frissített szabálykészlet megadásával. Ha ez történik, próbálja meg még egyszer frissíteni a konfigurációt, amíg a művelet nem sikerül, és a tűzfal *sikeres* kiépítési állapotban van.
 
@@ -154,7 +154,7 @@ A Azure Firewall egy aktív-aktív konfigurációban számos háttér-csomópont
 
 ## <a name="is-there-a-character-limit-for-a-firewall-name"></a>Létezik a tűzfal neve?
 
-Igen. A tűzfal neve 50 karakterre van korlátozva.
+Igen. A tűzfal neveként 50 karakteres korlát van.
 
 ## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Miért van Azure Firewall a/26 alhálózat méretét?
 
@@ -163,6 +163,14 @@ A Azure Firewallnak több virtuálisgép-példányt kell kiépítenie. A/26 cím
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Meg kell változtatni a tűzfal alhálózatának méretét a szolgáltatás léptékének megfelelően?
 
 Nem. Azure Firewall a/26-nál nagyobb alhálózatra nincs szükség.
+
+## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan javíthatom a tűzfal átviteli sebességét?
+
+Azure Firewall kezdeti átviteli kapacitása 2,5 – 3 GB/s. A vertikális felskálázás jelenleg csak a CPU-használaton alapul. Bizonyos esetekben a hálózati szabályokkal rendelkező tűzfal csak az átviteli sebesség növelése érdekében nem méretezhető, mert a hálózati szabályok nem befolyásolják jelentősen a CPU-használatot. Ha a tűzfalnál nagyobb átviteli sebességre van szüksége, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
+
+## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi időt vesz igénybe a Azure Firewall felskálázása?
+
+Jelenleg a Azure Firewall a vertikális felskálázás érdekében öt – hét percet vesz igénybe. Ha olyan törtek vannak, amelyek gyorsabb autoskálázást igényelnek, forduljon az ügyfélszolgálathoz, és növelje a tűzfal kezdeti átviteli kapacitását.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Alapértelmezés szerint a Azure Firewall engedélyezi a Active Directory hozzáférését?
 

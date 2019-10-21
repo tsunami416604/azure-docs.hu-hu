@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 9d95e23cf92c7ee98291831d60088d610c3e5c52
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 661e1b6e3811ff2b5ae25e4fd59764a69e9ebe48
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377693"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596641"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedjen meg Azure Cost Management partnerekkel
 
-A Azure Cost Management natív módon elérhető azon partnereink számára, akik Microsoft-ügyfél szerződésbe vettek be ügyfeleiket. Ez a cikk azt ismerteti, hogyan használják a partnerek a [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) funkciókat. Azt is leírja, hogy a partnerek hogyan engedélyezhetik Cost Management hozzáférését ügyfeleiknek. A CSP-ügyfelek a CSP-partnerük által engedélyezett Cost Management funkciókat is használhatják.
+A Azure Cost Management natív módon elérhető azon partnereink számára, akik Microsoft-ügyfél szerződésbe vettek be ügyfeleiket. Ez a cikk azt ismerteti, hogyan használják a partnerek a [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) funkciókat. Azt is leírja, hogy a partnerek hogyan engedélyezhetik Cost Management hozzáférését ügyfeleiknek. Az ügyfelek a CSP-partnerük által engedélyezett Cost Management funkciókat is használhatják.
 
 A CSP-partnerek a következő Cost Management használják:
 
@@ -29,11 +29,19 @@ A CSP-partnerek a következő Cost Management használják:
 - Az értesítések és az automatizálás beállítása programozott [költségvetésekkel](tutorial-acm-create-budgets.md) és riasztásokkal, ha a költségek meghaladják a költségvetést.
 - Engedélyezze a Azure Resource Manageri házirendet, amely hozzáférést biztosít az ügyfelek számára Cost Management-adathozzáféréshez. Az ügyfelek ezt követően megtekinthetik az előfizetésük használati költségeit az utólagos elszámolású [díjszabás](https://azure.microsoft.com/pricing/calculator/)alapján.
 
+Az alábbi példa az összes ügyfél költségeit mutatja be.
+![Example az összes ügyfél költségeinek megjelenítése ](./media/get-started-partners/customer-costs1.png)
+
+Az alábbi példa egy adott ügyfél költségeit mutatja be.
+egyetlen ügyfél költségeinek megjelenítése ![Example ](./media/get-started-partners/customer-costs2.png)
+
 A Azure Cost Managementban elérhető összes funkció REST API-kkal is elérhető. Az API-k segítségével automatizálhatja a Cost Management feladatait.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure Cost Management olvasási jogosultsággal kell rendelkeznie a számlázási fiókjához vagy előfizetéséhez. A hozzáférés bármely szinten megadható az erőforrások felett, a számlázási fióktól vagy egy felügyeleti csoporttól egészen az egyes erőforráscsoportokig, ahol kezelheti az alkalmazásokat. Ahhoz, hogy az előfizetéshez tartozó felhasználók megtekintsék a díjszabást és a költségeket, engedélyezni kell a hozzáférési díjakat a számlázási fiókjához. További információ a Azure Cost Management való hozzáférés engedélyezéséről és hozzárendeléséről: az [adatokhoz való hozzáférés kiosztása](assign-access-acm-data.md). A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md).
+Azure Cost Management olvasási jogosultsággal kell rendelkeznie a számlázási fiókjához vagy előfizetéséhez. A hozzáférés bármely szinten megadható az erőforrások felett, a számlázási fióktól vagy egy felügyeleti csoporttól egészen az egyes erőforráscsoportokig, ahol kezelheti az alkalmazásokat. A számlázási fiókok Azure Cost Managementhoz való hozzáférés engedélyezésével és hozzárendelésével kapcsolatos további információkért lásd: [felhasználói szerepkörök és engedélyek](/partner-center/permissions-overview)kiosztása. A **globális rendszergazda** és a **rendszergazdai ügynök** szerepkörei kezelhetik a számlázási fiókok költségeit.
+
+A támogatott fióktípus teljes listájának megtekintéséhez lásd: Cost Management- [adat megismerése](understand-cost-mgt-data.md).
 
 
 ## <a name="how-cost-management-uses-scopes"></a>A Cost Management hatókörök használata
@@ -48,9 +56,9 @@ Az ügyfelek Microsoft-szerződésbe való bevezetését követően az alábbi _
 
 ### <a name="billing-account-scope"></a>Számlázási fiók hatóköre
 
-A Számlázási fiók hatókörével megtekintheti az ügyfelek és a számlázási profilok adózás előtti költségeit. A számlázási költségeket a Microsoft ügyfél-szerződésben szereplő ügyfelek számára is megtekintheti a fogyasztáson alapuló termékeknél. A számlázási költségeket a Microsoft ügyfél-szerződésben és a CSP-ajánlatban található ügyfelek számára vásárolt termékek is mutatják. Jelenleg a hatókörben a költségek megtekintéséhez az alapértelmezett pénznem az USA dollár. A hatókörhöz beállított költségkeretek USD-ben is elérhetők.
+A Számlázási fiók hatókörével megtekintheti az ügyfelek és a számlázási profilok adózás előtti költségeit. A számlázási költségek csak a Microsoft ügyfél-szerződésben szereplő, fogyasztáson alapuló termékek esetében jelennek meg. A számlázási költségek azonban a Microsoft ügyfél-szerződésben és a CSP-ajánlatban szereplő vásárlók számára is megjelennek a vásárolt termékeken. Jelenleg a hatókörben a költségek megtekintéséhez az alapértelmezett pénznem az USA dollár. A hatókörhöz beállított költségkeretek USD-ben is elérhetők.
 
-Az ügyfél által számlázott pénznemtől függetlenül a partnerek az ügyfelek, előfizetések, erőforrások és erőforráscsoportok esetében a hatókör segítségével állíthatják be a költségvetéseket és kezelhetik a költségeket USD-ben.
+A különböző ügyfelek által számlázott pénznemtől függetlenül a partnerek a Számlázási fiók hatókörét használják a költségvetések megadásához és a költségek kezeléséhez USD-ben az ügyfelek, előfizetések, erőforrások és erőforráscsoportok tekintetében.
 
 A partnerek a Cost Analysis nézetben egy adott számlázási pénznemben is szűrhetik a költségeket. Válassza ki a **tényleges költségek** listáját a támogatott ügyfél számlázási pénznemek költségeinek megtekintéséhez.
 
@@ -62,17 +70,17 @@ A számlázási hatókörökben az elszámolt [költségek nézet](quick-acm-cos
 
 A számlázási profil hatókörével megtekintheti a számlázási pénznemben az összes ügyfélnél a számlán szereplő összes termékre és előfizetésre vonatkozó adózás előtti költségeket. A **InvoiceID** szűrő használatával szűrheti a költségeket egy adott számla számlázási profiljában. A szűrő egy adott számla fogyasztási és termék-vásárlási költségeit jeleníti meg. A számlán egy adott ügyfél költségeit is szűrheti az adózás előtti költségek megtekintéséhez.
 
-Miután bevezette az ügyfeleket egy Microsoft-ügyfél szerződésbe, egy ügyfél-számla jelenik meg, amely a jogosultságok és a megvásárolt termékek, például az SaaS, az Azure Marketplace és a foglalások díjait jeleníti meg. Ha a számlázás ugyanabban a számlázási pénznemben történik, akkor a számla az új Microsoft ügyfél-szerződésben nem szereplő ügyfelek díját is megjeleníti.
+Miután bevezette az ügyfeleket egy Microsoft-ügyfél szerződésbe, egy olyan számlát kap, amely tartalmazza az ügyfelek számára a Microsoft ügyfél-szerződésben szereplő összes termékre vonatkozó díjat (felhasználás, beszerzések és jogosultságok). Ha a számlázás ugyanabban a pénznemben történik, akkor ezek a számlák tartalmazzák a jogosultságok és a megvásárolt termékek, például az SaaS, az Azure Marketplace és az olyan ügyfelek foglalásait is, akik még szerepelnek a CSP-ajánlatban.
 
 A számlázási profil hatóköre lehetővé teszi a díjak összeegyeztetését az ügyfél számláján, így megtekintheti az ügyfelek számláján felmerülő összes költséget. A számlához hasonlóan a hatókör az új Microsoft ügyfél-szerződésben szereplő összes ügyfél költségeit is megjeleníti. A hatókör a jelenlegi CSP-ajánlatban még mindig az ügyfél-jogosultsági termékek díját is megjeleníti.
 
-A számlázási profil és a Számlázási fiók hatóköre az egyetlen, amely a jogosultsági és a vásárlási alapú termékek díját mutatja.
+A számlázási profil és a Számlázási fiók hatóköre az egyetlen érvényes hatókör, amely a jogosultsági és vásárlási alapú termékek, például az Azure Marketplace és a foglalások díjait jeleníti meg.
 
-A számlázási profilok határozzák meg a számlán szereplő előfizetéseket. A számlázási profilok a nagyvállalati szerződés beléptetésének funkcionális megfelelői. A regisztráció az a hatókör, amelyet a számlák generálnak. Hasonlóképpen, a nem használaton alapuló, például az Azure Marketplace és a Reservations vásárlások csak a számlázási profil hatókörében érhetők el.
+A számlázási profilok határozzák meg a számlán szereplő előfizetéseket. A számlázási profilok a nagyvállalati szerződés beléptetésének funkcionális megfelelői. A számlázási profil az a hatókör, amelyben a számlák jönnek létre.
 
-Az ügyfél számlázási pénzneme jelenleg az alapértelmezett pénznem, amikor a számlázási profil hatókörében megtekinti a költségeket. A számlázási profil hatókörében beállított költségvetések számlázási pénznemben vannak megadva.
+Az ügyfél számlázási pénzneme jelenleg az alapértelmezett pénznem, amikor a számlázási profil hatókörében megtekinti a költségeket. A számlázási profil hatókörében beállított költségvetések a számlázási pénznemben vannak megadva.
 
-A partnerek a hatókör használatával is összehangolják a számlákat. Továbbá a hatókör használatával határozzák meg a költségvetést a számlázási pénznemben a következőhöz:
+A partnerek a hatókör használatával is összehangolják a számlákat. Továbbá a hatókör használatával határozzák meg a költségkereteket a számlázási pénznemben a következő elemek esetében:
 
 - Adott szűrt számla
 - Ügyfél
@@ -87,7 +95,7 @@ A partnerek a hatókör használatával is összehangolják a számlákat. Tová
 
 A partnerek a hatókör használatával kezelik a Microsoft ügyfél-szerződésbe bekészített ügyfelekhez kapcsolódó költségeket. A hatókör lehetővé teszi, hogy a partnerek megtekintsék az adózás előtti költségeket egy adott ügyfél esetében. Egy adott előfizetés, erőforráscsoport vagy erőforrás adózás előtti költségeit is szűrheti.
 
-Az ügyfél hatóköre nem tartalmazza azokat az ügyfeleket, akik a jelenlegi CSP-ajánlatban szerepelnek. A jogosultsági költségek, nem az Azure-használat, az aktuális CSP-ajánlathoz tartozó ügyfelek a Számlázási fiók és a számlázási profil hatókörében érhetők el az ügyfél szűrő alkalmazása során.
+Az ügyfél hatóköre nem tartalmazza azokat az ügyfeleket, akik a jelenlegi CSP-ajánlatban szerepelnek. A hatókör csak a Microsoft ügyfél-szerződéssel rendelkező ügyfeleket tartalmazza. A jogosultsági költségek, nem az Azure-használat, az aktuális CSP-ajánlathoz tartozó ügyfelek a Számlázási fiók és a számlázási profil hatókörében érhetők el az ügyfél szűrő alkalmazása során.
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partneri hozzáférés a számlázási hatókörökhöz Cost Management
 
@@ -114,7 +122,7 @@ Az ügyfelek listájában válassza ki azt az ügyfelet, aki számára engedély
 A **Beállítások**területen kattintson a **házirendek**elemre.
 
 A kiválasztott ügyfél előfizetéséhez tartozó **Azure-használati** díjak esetében az aktuális költség-láthatósági szabályzat jelenik meg.
-![Policy, amely lehetővé teszi, hogy az ügyfelek megtekintsék az utólagos elszámolású díjakat @ no__t-1
+![Policy lehetővé teszi, hogy az ügyfelek megtekintsék az utólagos elszámolású díjakat ](./media/get-started-partners/cost-management-billing-policies.png)
 
 Ha a házirend **nem**értékre van állítva, Azure Cost Management nem érhető el az ügyfélhez társított előfizetési felhasználók számára. Hacsak a partner nem engedélyezte, a Cost láthatósági szabályzata alapértelmezés szerint le van tiltva az összes előfizetés felhasználója számára.
 
@@ -141,22 +149,22 @@ Az elszámolt nézetek és a fenntartott példányok tényleges költségei a RB
 
 A partnerek megvizsgálják és elemezhetik a költségeket a költségek elemzéséhez az ügyfeleken egy adott ügyfélhez vagy egy számlához. A szűrési és csoportosítási funkciók lehetővé teszik a költségek több mező alapján történő elemzését, beleértve a következőket:
 
-| **Mező** | **Leírás** | **Egyenértékű oszlop a partner Centerben** |
-| --- | --- | --- |
-| PartnerTenantID | A partner Azure Active Directory bérlő azonosítója | A partner Azure Active Directory TenantID hívják. GUID formátumban. |
-| PartnerName | A partner Azure Active Directory bérlő neve | Partner neve |
-| CustomerTenantID | Az ügyfél előfizetése Azure Active Directory bérlő azonosítója | Az ügyfél szervezeti azonosítója. Például az ügyfél Azure Active Directory TenantID. |
-| Customername ( | Az ügyfél előfizetését tartalmazó Azure Active Directory bérlő neve | Az ügyfél szervezetének neve, ahogy az a partner Centerben szerepel. Fontos: a számla egyeztetése a rendszeradatokkal. |
-| ResellerMPNID | Az előfizetéshez társított viszonteladó MPNID | Az előfizetéshez tartozó rekord viszonteladójának MPN-azonosítója. Nem érhető el az aktuális tevékenységhez. |
-| subscription ID | Az Azure-előfizetés egyedi, Microsoft által generált azonosítója | – |
-| subscriptionName | Az Azure-előfizetés neve | – |
-| billingProfileID | A számlázási profil azonosítója. Egyetlen számlázási pénznemben csoportosítja a számlákat a különböző ügyfeleken. | A MCAPI partner számlázási csoportjának azonosítója. API-kérelmekben használatos, de a válaszokban nem szerepel. |
-| invoiceID | A számla azonosítója azon a számlán, ahol az adott tranzakció megjelenik | A megadott tranzakciót tartalmazó számla száma. |
-| resourceGroup | Az Azure-erőforráscsoport neve. Erőforrás-életciklus-felügyelethez használatos. | Az erőforráscsoport neve. |
-| partnerEarnedCreditRate | Kedvezményes díjszabás akkor alkalmazható, ha a partner rendszergazdai kapcsolati hozzáférése alapján egy partner által létrehozott kredit (PEC) van. | A partner által létrehozott kreditek (PEC) aránya. Például: 0% vagy 15%. |
-| partnerEarnedCreditApplied | Azt jelzi, hogy alkalmazva lett-e a partner által létrehozott kredit. | – |
+| **Mező** | **Leírás** |
+| --- | --- |
+| PartnerTenantID | A partner Azure Active Directory bérlő azonosítója |
+| PartnerName | A partner Azure Active Directory bérlő neve |
+| CustomerTenantID | Az ügyfél előfizetése Azure Active Directory bérlő azonosítója |
+| Customername ( | Az ügyfél előfizetését tartalmazó Azure Active Directory bérlő neve |
+| ResellerMPNID | Az előfizetéshez társított viszonteladó MPNID |
+| subscription ID | Az Azure-előfizetés egyedi, Microsoft által generált azonosítója |
+| subscriptionName | Az Azure-előfizetés neve |
+| billingProfileID | A számlázási profil azonosítója. Egyetlen számlázási pénznemben csoportosítja a számlákat a különböző ügyfeleken.
+| invoiceID | A számla azonosítója azon a számlán, ahol az adott tranzakció megjelenik |
+| resourceGroup | Az Azure-erőforráscsoport neve. Erőforrás-életciklus-felügyelethez használatos. |
+| partnerEarnedCreditRate | Kedvezményes díjszabás akkor alkalmazható, ha a partner rendszergazdai kapcsolati hozzáférése alapján egy partner által létrehozott kredit (PEC) van. |
+| partnerEarnedCreditApplied | Azt jelzi, hogy alkalmazva lett-e a partner által létrehozott kredit. |
 
-A [Cost Analysis](quick-acm-cost-analysis.md) nézetben a nézetek és az adatexportálás [CSV-vagy PNG-](quick-acm-cost-analysis.md#automation-and-offline-analysis) fájlokba is [menthetők](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) .
+A [Cost Analysis](quick-acm-cost-analysis.md) nézetben a nézetek és az adatexportálás [CSV-vagy PNG-fájlokba](quick-acm-cost-analysis.md#automation-and-offline-analysis)is [menthetők](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) .
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Partner által létrehozott kredit (PEC) erőforrás-költségek megtekintése
 
@@ -183,11 +191,14 @@ A **PartnerEarnedCreditApplied** tulajdonság a **csoportosítási** lehetőség
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST API-k
 
-A partnerek, a közvetett szolgáltatók és az ügyfelek a gyakori feladatokhoz a következő szakaszokban ismertetett Cost Management API-kat használhatják.
+A partnerek és az ügyfelek az alábbi szakaszokban ismertetett Cost Management API-kat használhatják a gyakori feladatokhoz.
 
-### <a name="azure-cost-management-apis-for-partners"></a>Azure Cost Management API-k a partnereknek
+### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management API-k – közvetlen és közvetett szolgáltatók
 
-A partner bérlői számlázási hatókörökhöz hozzáféréssel rendelkező partnerek és felhasználók a következő API-kat használhatják.
+A partner bérlői számlázási hatókörökhöz hozzáféréssel rendelkező partnerek a következő API-kkal tekinthetik meg a számlázott költségeket.
+
+Az előfizetések hatókörében lévő API-k meghívhatók partnertől függetlenül, ha hozzáféréssel rendelkeznek az előfizetéshez. Az előfizetéshez hozzáférő más felhasználók (például az ügyfél vagy a viszonteladó) csak akkor hívhatják meg az API-kat, ha a partner engedélyezi az ügyfél bérlője számára a díjszabási szabályzatot.
+
 
 #### <a name="to-get-a-list-of-billing-accounts"></a>Számlázási fiókok listájának beolvasása
 
@@ -198,111 +209,94 @@ armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-0
 #### <a name="to-get-a-list-of-customers"></a>Ügyfelek listájának lekérése
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers?api-version=2019-10-01-preview"
+armclient get "providers/Microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers?api-version=2019-10-01-preview"
 ```
 #### <a name="to-get-a-list-of-subscriptions"></a>Az előfizetések listájának lekérése
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/billingSubscriptions?api-version=2019-10-01-preview"
-```
-
-#### <a name="to-create-new-subscription"></a>Új előfizetés létrehozása
-
-```
-armclient post "/providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub.json -verbose
-```
-
-#### <a name="to-get-or-download-usage-for-azure-services"></a>Az Azure-szolgáltatások használatának beolvasása vagy letöltése
-
-```
-armclient GET /providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
-```
-
-#### <a name="to-get-a-list-of-billing-profiles"></a>Számlázási profilok listájának beolvasása
-
-```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/billingProfiles?api-version=2019-10-01-preview
-```
-
-#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>A felhasznált Azure-szolgáltatások árlista beszerzése vagy letöltése
-
-```
-armclient post "/providers/Microsoft.Billing/BillingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/BillingProfiles/JUT6-EU3Q-BG7-TGB/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
-```
-
-#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>Az ügyfelek költségeinek lekérése az elmúlt két hónapban, hónap szerint rendezve
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
-```
-
-#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Az Azure-előfizetések költségeinek beszerzése az elmúlt két hónapban, hónap szerint rendezve
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
-```
-
-#### <a name="to-get-daily-costs-for-the-current-month"></a>Napi költségek beszerzése az aktuális hónapra
-
-```
-armclient post providers/microsoft.billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+armclient get "/providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/billingSubscriptions?api-version=2019-10-01-preview"
 ```
 
 #### <a name="to-get-the-policy-for-customers-to-view-costs"></a>A szabályzat lekérése az ügyfelek számára a költségek megtekintéséhez
 
 ```
-armclient get "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview"
+armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview"
 ```
 
 #### <a name="to-set-the-policy-for-customers-to-view-costs"></a>A szabályzat beállítása az ügyfelek számára a költségek megtekintéséhez
 
 ```
-armclient put "providers/Microsoft.Billing/billingAccounts/99a13315-2f87-5b46-9dbd-606071106352:1d100e69-2833-4677-a5d4-8ad35035d9a3_2019-05-31/customers/9553eda2-2bd7-4ae6-a1f8-6a19eb40be22/policies/default?api-version=2019-10-01-preview" @policy.json
+armclient put "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/policies/default?api-version=2019-10-01-preview" @policy.json
 ```
 
-### <a name="azure-cost-management-apis-for-indirect-providers"></a>Azure Cost Management API-k közvetett szolgáltatók számára
-
-Az ügyfél bérlői RBAC-hatókörökhöz hozzáféréssel rendelkező közvetett szolgáltatók a következő API-kat használhatják. Első lépésként jelentkezzen be felhasználóként vagy egy egyszerű szolgáltatással.
-
-#### <a name="to-get-the-billing-account-information"></a>A Számlázási fiók adatainak beolvasása
+#### <a name="to-get-azure-service-usage-for-a-billing-account"></a>Az Azure-szolgáltatás használati számlázási fiókhoz való beszerzése
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts?api-version=2019-10-01-preview"
+armclient GET /providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.Consumption/usageDetails?api-version=2019-10-01
 ```
 
-#### <a name="to-get-a-list-of-customers"></a>Ügyfelek listájának lekérése
+#### <a name="to-download-a-customers-azure-service-usage"></a>Ügyfél Azure-szolgáltatásbeli használatának letöltése
+
+A következő Get hívás egy aszinkron művelet.
 
 ```
-armclient get "providers/Microsoft.billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers?api-version=2019-10-01-preview"
+armclient get providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-#### <a name="to-get-a-list-of-resellers-associated-with-the-customer"></a>Az ügyfélhez társított viszonteladók listájának lekérése
+Hívja meg a válaszban visszaadott `Location` URI-t a művelet állapotának vizsgálatához. Az állapot *befejezése után*a `downloadUrl` tulajdonság egy hivatkozást tartalmaz, amely a generált jelentés letöltésére használható.
+
+
+#### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>A felhasznált Azure-szolgáltatások árlista beszerzése vagy letöltése
+
+Először használja a következő bejegyzést.
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db?api-version=2019-10-01-preview&$expand=resellers
+armclient post "/providers/Microsoft.Billing/BillingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheet/default/download?api-version=2019-10-01-preview&format=csv" -verbose
 ```
 
-#### <a name="to-get-a-list-of-subscriptions-with-reseller-information"></a>A viszonteladói információkkal rendelkező előfizetések listájának lekérése
+Ezután hívja meg az aszinkron művelet tulajdonság értékét. Példa:
 
 ```
-armclient get "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/billingSubscriptions?api-version=2019-10-01-preview
+armclient get "providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/billingProfiles/YYYY-YYYY-YYY-YYYY-YYY/pricesheetDownloadOperations/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX?sessiontoken=0:11186&api-version=2019-10-01-preview"
 ```
+Az előző Get hívás az árlistát tartalmazó letöltési hivatkozást adja vissza.
 
-#### <a name="to-create-a-subscription"></a>Előfizetés létrehozása
-
-```
-armclient post "/providers/Microsoft.Billing/billingAccounts/ec1b88ba-5681-517e-f657-4cc6a4a407cb:52f143a9-6524-4e5e-9d4a-120c7a79ca65_2019-05-31/customers/b51df1fa-62fa-4c92-9a74-fe860016d4db/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview" @createsub_reseller.json
-```
-
-### <a name="azure-cost-management-apis-for-customers"></a>Azure Cost Management API-k ügyfelek számára
-
-Az ügyfelek az alábbi információkat használják az API-k eléréséhez. Első lépésként jelentkezzen be felhasználóként.
-
-#### <a name="to-get-or-download-azure-consumption-usage-information-with-retail-rates"></a>Az Azure-használati adatok kiskereskedelmi díjszabással való lekérése vagy letöltése
+#### <a name="to-get-customer-costs-for-the-last-two-months-sorted-by-month"></a>Az ügyfelek költségeinek lekérése az elmúlt két hónapban, hónap szerint rendezve
 
 ```
-armclient post /subscriptions/66bada28-271e-4b7a-aaf5-c0ead63923d7/providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryCustomer.json
 ```
+
+#### <a name="to-get-azure-subscription-costs-for-the-last-two-months-sorted-by-month"></a>Az Azure-előfizetések költségeinek beszerzése az elmúlt két hónapban, hónap szerint rendezve
+
+```
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQuerySubscription.json
+```
+
+#### <a name="to-get-daily-costs-for-the-current-month"></a>Napi költségek beszerzése az aktuális hónapra
+
+```
+armclient post providers/microsoft.billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31//providers/microsoft.costmanagement/query?api-version=2019-10-01 @CCMQueryDaily.json
+```
+
+#### <a name="create-a-budget-for-a-partner"></a>Költségvetés létrehozása partner számára
+
+```
+armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01 @budgetCreate.json
+```
+
+
+#### <a name="create-a-budget-for-a-customer"></a>Költségvetés létrehozása az ügyfél számára
+
+```
+armclient put providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/customers/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/providers/Microsoft.Consumption/budgets/test-partner-demo?api-version=2019-10-01 @budgetCreate.json
+```
+#### <a name="delete-a-budget"></a>Költségvetés törlése
+
+```
+armclient delete providers/Microsoft.Billing/billingAccounts/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX:XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXXXXXXX_2019-05-31/providers/Microsoft.CostManagement/budgets/partnerworkshopbudget?api-version=2019-10-01
+```
+
 
 ## <a name="next-steps"></a>Következő lépések
 - A [költségek elemzésének Megkezdése](quick-acm-cost-analysis.md) Cost Management

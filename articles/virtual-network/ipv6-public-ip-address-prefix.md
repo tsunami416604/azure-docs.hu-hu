@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/15/2019
 ms.author: kumud
-ms.openlocfilehash: 514248446798e8c806252707cc5b332a7d1a4f87
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2d00ccdeb89ba5d983e4a3e089e78a8d748e4092
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518537"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597957"
 ---
-# <a name="reserved-public-ipv6-address-prefix"></a>Fenntartott nyilvános IPv6-cím előtagja
+# <a name="reserved-public-ipv6-address-prefix-preview"></a>Fenntartott nyilvános IPv6-cím előtagja (előzetes verzió)
 
 Az Azure-ban a kettős verem (IPv4 és IPv6) virtuális hálózatok (VNet) és a virtuális gépek (VM-EK) alapértelmezés szerint biztonságosak, mivel nem rendelkeznek internetkapcsolattal. Az Azure-ból beszerezhető nyilvános IPv6-címekkel könnyedén hozzáadhat IPv6-alapú internetkapcsolatot az Azure Load Balancerhez és a virtuális gépekhez.
 
@@ -29,6 +29,9 @@ A fenntartott nyilvános IP-címek a választott Azure-régióval és az Azure-e
 > A nyilvános IP-címek véletlen törléséhez használja a figyelmeztetést. Egy nyilvános IP-cím törlése eltávolítja az előfizetésből, és nem fogja tudni visszaállítani (még az Azure-támogatás segítségével sem).
 
 Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is fenntarthatja a használatra.  Az egyes IP-címekhez hasonlóan a fenntartott előtagok egy Ön által választott Azure-régióhoz, valamint az Azure-előfizetéshez kapcsolódnak. Egy előre jelezhető, összefüggő címtartomány megőrzése számos felhasználási területtel rendelkezik. Nagymértékben leegyszerűsítheti például az Azure által üzemeltetett alkalmazások IP- *engedélyezési* feltételeit a vállalat és az ügyfelek számára, mivel a statikus IP-címtartományok a helyszíni tűzfalakra is könnyen beprogramozhatók.  Igény szerint létrehozhat egyéni nyilvános IP-címeket az IP-előtagból, és törölheti azokat az egyes nyilvános IP-címeket, amelyeket a fenntartott tartományba *visszaadottak* , így később újra felhasználhatja őket. Az IP-előtagban lévő összes IP-cím a kizárólagos használatra van fenntartva, amíg el nem távolítja az előtagot.
+
+> [!Important]
+> Az Azure Virtual Networkhez készült IPv6 jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6-előtag mérete
 A következő nyilvános IP-előtag-méretek érhetők el:

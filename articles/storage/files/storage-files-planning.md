@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6361814a30cc7d1bc9703dae8ddb14d955c1582d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514658"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72598041"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 
@@ -219,13 +219,13 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |USA nyugati régiója *        |LRS     |
 |USA 2. nyugati régiója      |LRS, ZRS|
 
-az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot.
+az új fiókok \* támogatottak, nem minden meglévő fiók végezte el a frissítési folyamatot. Megtekintheti, hogy a meglévő Storage-fiókok elvégezték-e a frissítési folyamatot a [nagyméretű fájlmegosztás engedélyezésére](storage-files-how-to-create-large-file-share.md)tett kísérlet során.
 
 Kérjük, töltse ki ezt a [kérdőívet](https://aka.ms/azurefilesatscalesurvey)az új régiók és szolgáltatások rangsorolása érdekében.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Nagyobb fájlmegosztás engedélyezése és létrehozása
 
-A nagyobb fájlmegosztás használatának megkezdéséhez tekintse meg a [nagyméretű fájlmegosztás engedélyezése](storage-files-how-to-create-large-file-share.md)című cikket.
+A nagyobb fájlmegosztás használatának megkezdéséhez tekintse meg a [nagyméretű fájlmegosztás engedélyezésével és létrehozásával](storage-files-how-to-create-large-file-share.md)kapcsolatos cikket.
 
 ## <a name="data-growth-pattern"></a>Adatmennyiség növekedési mintája
 

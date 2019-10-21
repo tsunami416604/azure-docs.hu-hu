@@ -1,22 +1,18 @@
 ---
 title: Az Azure felügyelete és az Operations Management Suite (OMS) | Microsoft Docs
 description: Az Azure-alkalmazások felügyeleti területeinek, valamin olyan Azure felügyeleti eszközökre mutató erőforrások hivatkozásainak áttekintése, amelyek korábban az Operations Management Suite (OMS) csomagban szerepeltek.
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: tysonn
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/07/2018
+ms.subservice: ''
+ms.topic: conceptual
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 4096ee477dc1d40ff6b98b20dd384c6ffad17e5f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 09/07/2018
+ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779274"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597350"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 
@@ -46,7 +42,7 @@ Az irányítás azokat a mechanizmusok és folyamatokat biztosítja, amelyekre a
 Az alkalmazások, erőforrások és adatok biztonságának felügyeletébe beletartozik a fenyegetések értékelése, a biztonsági adatok gyűjtése és elemzése, valamint annak biztosítása, hogy az alkalmazások és erőforrások kialakítása és konfigurációja biztonságos legyen.  A biztonsági monitorozással és a fenyegetések elemzésével az [Azure Security Center](../security-center/security-center-intro.md) foglalkozik, amely egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz.  Az [Azure biztonsági megoldásait ismertető](../security/fundamentals/overview.md) témakör részletesen foglalkozik az Azure biztonsági kérdéseivel, és az Azure-erőforrások biztonságos konfigurálásához is útmutatást nyújt.
 
 
-## <a name="protect"></a>védelme
+## <a name="protect"></a>Védelem
 A védelem annak garantálását jelenti, hogy az alkalmazások és adatok mindig rendelkezésre álljanak, olyan leállások esetén is, amelyeknek a bekövetkeztére Ön nincsen hatással.  Az Azure-ban erről a védelemről két szolgáltatás gondoskodik.  Az [Azure Backup](../backup/backup-introduction-to-azure-backup.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja.    Az [Azure Site Recovery](../site-recovery/site-recovery-overview.md) az alkalmazások magas rendelkezésre állásáról gondoskodik, garantálva az üzletmenet folytonosságát és az azonnali vészhelyreállítást.
 
 ## <a name="migrate"></a>Migrate (Áttelepítés) 

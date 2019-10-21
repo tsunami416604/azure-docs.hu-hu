@@ -11,20 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 2e9008d039f014c95d473f3197b48651bdaa5a45
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 1f4760713eccd612014f6b75a1623dd9ad0c8c0f
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019367"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595503"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Áttelepítés Windows Azure Media Encoderról Media Encoder Standardre
 
 Ez a cikk a régi Windows Azure Media Encoder (Tamás) adathordozó-processzorról való Migrálás lépéseit ismerteti, amely 2019 november 30-án megszűnik a Media Encoder Standard Media Processor számára.
 
-A Tamás-mel rendelkező fájlok kódolásakor az ügyfelek általában egy megnevezett előre `H264 Adaptive Bitrate MP4 Set 1080p`definiált karakterláncot használnak, például:. A Migrálás érdekében a kódot frissíteni kell, hogy a Tamás helyett a **Media Encoder standard** Media processzort használja, és az egyik egyenértékű [rendszer](media-services-mes-presets-overview.md) -előállítson, `H264 Multiple Bitrate 1080p`például:. 
+A Tamás-val rendelkező fájlok kódolásakor az ügyfelek általában egy megnevezett előre definiált karakterláncot (például `H264 Adaptive Bitrate MP4 Set 1080p`) használnak. A Migrálás érdekében a kódot frissíteni kell, hogy a Tamás helyett a **Media Encoder standard** Media processzort használja, és az egyik egyenértékű rendszer- [beállításkészlet](media-services-mes-presets-overview.md) , például a `H264 Multiple Bitrate 1080p`. 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Áttelepítés Media Encoder Standardre
 
@@ -64,7 +64,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>Speciális forgatókönyvek 
 
-Ha a Tamás a saját sémája alapján hozta létre a saját kódolási beállításkészletét, akkor a [Media Encoder standard egyenértékű sémával](media-services-mes-schema.md)rendelkezik. Ha kérdése van, hogy miként képezhető le a régebbi beállítások az új kódolóhoz, forduljon hozzánk a következőn keresztülmailto:amshelp@microsoft.com  
+Ha a Tamás a saját sémája alapján hozta létre a saját kódolási beállításkészletét, akkor a [Media Encoder standard egyenértékű sémával](media-services-mes-schema.md)rendelkezik.
 
 ## <a name="known-differences"></a>Ismert különbségek 
 
@@ -74,7 +74,11 @@ Media Encoder Standard robusztusabb, megbízhatóbb, jobb teljesítményű, és 
 * A Media Encoder Standard összetevőket, például a [bemeneti fájl metaadatait](media-services-input-metadata-schema.md) és a [kimeneti fájl (oka) metaadatokat](media-services-output-metadata-schema.md)tartalmazó fájlokat hoz létre.
 * A [díjszabási oldalon](https://azure.microsoft.com/pricing/details/media-services/#encoding) (különösen a gyakori kérdések szakaszban) a videók Media Encoder standard használatával történő kódolásakor a rendszer a kimenetként létrehozott fájlok időtartamán alapul. A Tamás a bemeneti videó fájl (ok) és a kimeneti videofájl mérete alapján számítjuk fel a díjat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="need-help"></a>Segítség
+
+A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Örökölt összetevők](legacy-components.md)
 * [Díjszabási oldal](https://azure.microsoft.com/pricing/details/media-services/#encoding)

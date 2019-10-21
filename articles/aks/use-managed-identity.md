@@ -8,80 +8,91 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
-ms.openlocfilehash: a5717d8ee44e4d2e086a6e7bc1b7c3d0deb614c8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77655f08350419f0d102c9927b3e09b87edba341
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827545"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72592871"
 ---
 # <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Előzetes verzió – felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
-Jelenleg a felhasználóknak meg kell adniuk egy egyszerű szolgáltatásnevet, vagy az AK-t az Ön nevében, hogy az AK-fürt (különösen a Kubernetes Cloud Provider) olyan további erőforrásokat hozzon létre, mint például a terheléselosztó és a felügyelt lemezek az Azure-ban. Az egyszerű szolgáltatások általában lejárati dátummal jönnek létre. A fürtök végül olyan állapotba kerülnek, amelyben a szolgáltatásnevet meg kell újítani, ellenkező esetben a fürt nem fog működni. Az egyszerű szolgáltatások kezelése bonyolultságot biztosít. A felügyelt identitások lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. További információ a [felügyelt identitásokról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) .
+Jelenleg egy Azure Kubernetes Service (ak) fürt (pontosabban a Kubernetes Cloud Provider) megköveteli, hogy az *egyszerű szolgáltatás* olyan további erőforrásokat hozzon létre, mint a terheléselosztó és a felügyelt lemezek az Azure-ban. Meg kell adnia egy egyszerű szolgáltatásnevet, vagy az AK-t az Ön nevében. Az egyszerű szolgáltatások általában lejárati dátummal rendelkeznek. A fürtök végül olyan állapotot érnek el, amelyben az egyszerű szolgáltatásnevet meg kell újítani a fürt működésének megtartása érdekében. Az egyszerű szolgáltatások kezelése bonyolultságot biztosít.
 
-Az AK két felügyelt identitást hoz létre, amelyek egy rendszerhez rendelt felügyelt identitást és a másik felhasználó által hozzárendelt identitást alkotnak. A kubernetes Cloud Provider egy rendszerhez rendelt felügyelt identitást használ az Azure-erőforrások létrehozásához a felhasználó nevében. A rendszerhez rendelt felügyelt identitás életciklusa a fürthöz van kötve, és a fürt törlése után törlődik. Az AK létrehoz egy felhasználóhoz rendelt felügyelt identitást is, amely a fürtben a ACR-EK elérésére, az Azure-ból származó metaadatok beszerzésére és a kubelet való hozzáférés engedélyezésére szolgál.
+A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ismertető témakört.
 
-Ebben az előzetes verzióban még egy egyszerű szolgáltatásnév szükséges. Ez a bővítmények, például a figyelés, a virtuális csomópont, az Azure-házirend és a http-alkalmazás útválasztása engedélyezésére szolgál. Folyamatban van a bővítmények függőségének eltávolítása az SPN-ben, és végül az AK-ban lévő SPN-re vonatkozó követelmény teljesen el lesz távolítva.
+Az AK két felügyelt identitást hoz létre:
+
+- **Rendszer által hozzárendelt felügyelt identitás**: az az identitás, amelyet a Kubernetes a felhasználó nevében az Azure-erőforrások létrehozásához használ. A rendszer által hozzárendelt identitás életciklusa a fürthöz van kötve. A rendszer törli az identitást a fürt törlésekor.
+- **Felhasználó által hozzárendelt felügyelt identitás**: az engedélyezéshez használt identitás a fürtben. A felhasználó által hozzárendelt identitás például feljogosítja az AK-t a hozzáférés-vezérlési rekordok (ACR-EK) használatára, vagy ha engedélyezi a kubelet számára, hogy metaadatokat szerezzen az Azure-ból.
+
+Ebben az előzetes verzióban még egy egyszerű szolgáltatásnév szükséges. Ez a bővítmények, például a figyelés, a virtuális csomópontok, a Azure Policy és a HTTP-alkalmazások útválasztásának engedélyezéséhez használatos. Folyamatban van a bővítmények függőségének eltávolítása az egyszerű szolgáltatásnév (SPN) nevében. Végül az AK-ban lévő egyszerű szolgáltatásnév követelménye teljesen el lesz távolítva.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói az önkiszolgáló, a választható lehetőségek alapján érhetők el. Az előzetes verziók az "adott állapotban" és "elérhetőként" jelennek meg, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A kétrészes előzetes verziókra az ügyfélszolgálat a lehető leghatékonyabban vonatkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért lásd a következő támogatási cikkeket:
 >
-> * [AK-támogatási szabályzatok](support-policies.md)
-> * [Azure-támogatás – gyakori kérdések](faq.md)
+> - [AK-támogatási szabályzatok](support-policies.md)
+> - [Azure-támogatás – gyakori kérdések](faq.md)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-A következőkkel kell rendelkeznie:
+A következő erőforrásokat kell telepítenie:
 
-* Szüksége lesz az Azure CLI 2.0.70 vagy újabb verziójára, valamint az AK-előnézet 0.4.14-bővítményre
+- Az Azure CLI, 2.0.70 vagy újabb verzió
+- Az AK – előzetes verziójú 0.4.14 bővítmény
 
-## <a name="install-latest-aks-cli-preview-extension"></a>A legújabb AK CLI előnézet bővítmény telepítése
-
-Szüksége lesz az **AK-előnézet 0.4.14-** bővítményre vagy újabb verzióra.
+A következő Azure CLI-parancsokkal telepítheti a 0.4.14-bővítményt vagy újabb verziót:
 
 ```azurecli
-az extension update --name aks-preview 
+az extension update --name aks-preview
 az extension list
 ```
 
 > [!CAUTION]
-> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
+> Miután regisztrált egy szolgáltatást egy előfizetéshez, jelenleg nem tudja törölni a szolgáltatást. Az előzetes verziójú funkciók engedélyezésekor az alapértelmezett beállítások az előfizetésben később létrehozott AK-fürtökhöz is használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Ehelyett használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name MSIPreview --namespace Microsoft.ContainerService
 ```
 
-A *regisztrált*állapot megjelenítéséhez több percet is igénybe vehet. A regisztrációs állapotot az [az Feature List] [az-Feature-List] parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/en-us/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva van, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az [az Provider Register] [az-Provider-Register] parancs használatával:
+Ha az állapot regisztrálva értékre van állítva, frissítse a `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/en-us/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identity"></a>AK-fürt létrehozása felügyelt identitással
+## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal
 
-Most már létrehozhat egy AK-fürtöt a felügyelt identitásokkal a következő CLI-parancs használatával
+Most már létrehozhat egy AK-fürtöt a felügyelt identitásokkal a következő CLI-parancsok használatával.
+
+Először hozzon létre egy Azure-erőforráscsoportot:
+
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location westus2
 ```
 
-## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
+Ezután hozzon létre egy AK-fürtöt:
+
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-## <a name="get-credentials-to-access-the-cluster"></a>Hitelesítő adatok beszerzése a fürt eléréséhez
+Végül kapjon hitelesítő adatokat a fürt eléréséhez:
+
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
-Ha a fürtöt néhány percen belül létrehozták, üzembe helyezheti az alkalmazás számítási feladatait, és használhatja azt, ahogy az egyszerű szolgáltatásnév-fürtökkel rendelkezik. 
+
+A fürtöt néhány percen belül létrehozza a rendszer. Ezután üzembe helyezheti az alkalmazás számítási feladatait az új fürtön, és ugyanúgy kezelheti, mint a Service-Principal-alapú AK-fürtökkel.
 
 > [!IMPORTANT]
-> * A felügyelt identitásokkal rendelkező AK-fürtök csak a fürt létrehozásakor engedélyezhetők
-> * A meglévő AK-fürtök nem frissíthetők/nem frissíthetők a felügyelt identitások engedélyezéséhez
+>
+> - A felügyelt identitásokkal rendelkező AK-fürtök csak a fürt létrehozásakor engedélyezhetők.
+> - A meglévő AK-fürtök nem frissíthetők és nem frissíthetők a felügyelt identitások engedélyezéséhez.

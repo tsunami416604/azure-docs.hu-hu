@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 10/17/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374484"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597084"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -132,6 +132,7 @@ A Microsoft Customer Agreement számlázási fiókjai a következő hatókörök
 
 Az EA számlázási hatóköröktől eltérően az ügyfél-szerződés számlázási fiókjai egyetlen címtárhoz _vannak_ kötve, és több Azure ad-címtárban nem lehetnek előfizetések.
 
+Az ügyfél-szerződés számlázási hatóköre nem vonatkozik a partnerekre. A partneri szerepkörök és engedélyek dokumentálva vannak a [felhasználói szerepkörök és engedélyek hozzárendelésével](/partner-center/permissions-overview)kapcsolatban.
 
 Az ügyfél-szerződés számlázási hatókörei a következő szerepköröket támogatják:
 
@@ -159,11 +160,25 @@ Az AWS-integráció befejezése után tekintse meg az [AWS-integráció beállí
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>A Cloud Solution Provider (CSP) hatókörök
 
-A felhőalapú megoldások szolgáltatói (CSP) partnerei Cost Management jelenleg nem támogatottak. Ehelyett használhatja a [partner centert](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+A következő hatókörök támogatottak a Microsoft ügyfél-szerződésben lévő ügyfelekkel rendelkező CSP-ket:
+
+- **Számlázási fiók** – több Microsoft-termékhez és-szolgáltatáshoz tartozó ügyfél-szerződést jelent. Az ügyfél-szerződés számlázási fiókjai nem ugyanúgy működnek, mint az EA-regisztrációk. Az EA-regisztrációk szorosabban illeszkednek a számlázási profilokhoz.
+
+    Erőforrás típusa: `Microsoft.Billing/billingAccounts (accountType = Organization)`
+
+- **Számlázási profil** – a számlán szereplő előfizetéseket határozza meg. A számlázási profilok az EA-regisztráció funkcionális megfelelői, mivel ez a hatókör, amelyet a számlák generálnak. Hasonlóképpen, a nem használaton alapuló (például a piactér és a foglalások) vásárlások csak ezen a hatókörön érhetők el.
+
+    Erőforrás típusa: `Microsoft.Billing/billingAccounts/billingProfiles`
+
+- **Ügyfél** – olyan előfizetések egy csoportját jelöli, amelyek egy adott ügyfélhez tartoznak, amely egy partner által készített Microsoft-ügyfél-szerződéshez tartozik.
+
+Csak a *globális rendszergazdai* és *rendszergazdai ügynök* szerepkörökkel rendelkező felhasználók kezelhetik és tekinthetik meg a számlázási fiókok, a számlázási profilok és az ügyfelek költségeit közvetlenül a partner Azure-bérlője számára. A partner Center szerepköreivel kapcsolatos további információkért lásd: [felhasználói szerepkörök és engedélyek kiosztása](/partner-center/permissions-overview).
+
+A Azure Cost Management csak akkor támogatja a CSP-partneri ügyfeleket, ha az ügyfelek Microsoft-ügyfél szerződéssel rendelkeznek. A Microsoft ügyfél-szerződésben még nem szereplő, CSP által támogatott ügyfelekért lásd: [partner Center](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Váltás hatókörök között Cost Management
 
-A Azure Portal összes Cost Management nézete tartalmaz egy **hatókör** -kiválasztási pirulát a nézet bal felső részén. Ezzel gyorsan módosíthatja a hatókört. Kattintson a **hatókör** pirulára a hatókör-választó megnyitásához. Megjeleníti a számlázási fiókokat, a legfelső szintű felügyeleti csoportot, valamint azokat az előfizetéseket, amelyek nincsenek beágyazva a gyökérszintű felügyeleti csoportba. Hatókör kiválasztásához kattintson a háttérre, és válassza ki a kívánt elemet, majd kattintson az alul található **kijelölés** elemre. A beágyazott hatókörök, például az előfizetéshez tartozó erőforráscsoportok részletezéséhez kattintson a hatókör neve hivatkozásra. Ha a szülő hatókört bármely beágyazott szinten szeretné kijelölni, kattintson a **válassza ezt a &lt;scope @ no__t-2 elemet** a hatókör-választó tetején.
+A Azure Portal összes Cost Management nézete tartalmaz egy **hatókör** -kiválasztási pirulát a nézet bal felső részén. Ezzel gyorsan módosíthatja a hatókört. Kattintson a **hatókör** pirulára a hatókör-választó megnyitásához. Megjeleníti a számlázási fiókokat, a legfelső szintű felügyeleti csoportot, valamint azokat az előfizetéseket, amelyek nincsenek beágyazva a gyökérszintű felügyeleti csoportba. Hatókör kiválasztásához kattintson a háttérre, és válassza ki a kívánt elemet, majd kattintson az alul található **kijelölés** elemre. A beágyazott hatókörök, például az előfizetéshez tartozó erőforráscsoportok részletezéséhez kattintson a hatókör neve hivatkozásra. Ha a szülő hatókört bármely beágyazott szinten szeretné kijelölni, kattintson a **&lt;scope &gt; kijelölése** lehetőségre a hatókör-választó tetején.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Hatókör erőforrás-AZONOSÍTÓjának azonosítása
 

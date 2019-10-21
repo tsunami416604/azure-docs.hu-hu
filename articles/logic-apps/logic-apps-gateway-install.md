@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 09/01/2019
-ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.date: 10/18/2019
+ms.openlocfilehash: 7533b391917175fd9dea395f58906a9f78a61488
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309857"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675689"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése Azure Logic Apps
 
@@ -31,17 +31,21 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
+* Azure-fiók és -előfizetés. Ha nem rendelkezik előfizetéssel rendelkező Azure-fiókkal, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-  * Az átjáró telepítéséhez és felügyeletéhez ugyanazt az Azure-fiókot kell használnia. A telepítés során ezzel az Azure-fiókkal társíthatja az átjárót a számítógépén egy Azure-előfizetéssel. Később ugyanazt az Azure-fiókot használja, amikor Azure-erőforrást hoz létre a Azure Portal az átjáró telepítéséhez. 
+  * Ugyanazt az Azure-fiókot kell használnia az átjáró telepítéséhez és felügyeletéhez a helyi számítógépen.
 
-  * Be kell jelentkeznie munkahelyi fiókkal vagy iskolai fiókkal, más néven *szervezeti* fiókkal, amely a következőképpen néz ki `username@contoso.com`:. Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat @outlook.com, például @hotmail.com vagy.
+    Az átjáró telepítése során jelentkezzen be az Azure-fiókjával, amely összekapcsolja az átjáró telepítését az Azure-fiókjával, és csak ezt a fiókot. Később, a Azure Portalban ugyanazt az Azure-fiókot kell használnia ahhoz, hogy létrehozzon egy Azure Gateway-erőforrást, amely regisztrálja és kéri az átjáró telepítését. Azure Logic Apps a helyszíni eseményindítók és műveletek a helyszíni adatforrásokhoz való kapcsolódáshoz az átjáró-erőforrást használják.
+
+    > [!NOTE]
+    > Egy átjárót és egy Azure Gateway-erőforrást is összekapcsolhat egymással. Ugyanahhoz az átjáróhoz tartozó telepítést nem lehet több Azure-fiókhoz vagy Azure Gateway-erőforráshoz kapcsolni. Az Azure-fiókok azonban több átjáró-telepítéshez és Azure Gateway-erőforrásokhoz is csatolhatók. Helyszíni trigger vagy művelet esetén választhat a különböző Azure-előfizetések közül, majd kiválaszthat egy társított átjáró-erőforrást.
+
+  * Be kell jelentkeznie egy munkahelyi fiókkal vagy iskolai fiókkal, más néven *szervezeti* fiókkal, amely a következőhöz hasonlóan néz ki: `username@contoso.com`. Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com.
 
     > [!TIP]
-    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat `username@domain.onmicrosoft.com`, hogy a címe hasonlít. A fiókját egy Azure Active Directory (Azure AD) bérlőn belül tárolja a rendszer. A legtöbb esetben az Azure AD-fiókhoz tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
+    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, akkor előfordulhat, hogy a cím a következőhöz hasonlóan néz ki: `username@domain.onmicrosoft.com`. A fiókját egy Azure Active Directory (Azure AD) bérlőn belül tárolja a rendszer. A legtöbb esetben az Azure AD-fiókhoz tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
     >
-    > Ha egy Microsoft-fiókhoz társított [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy bérlőt az Azure ad-ben](../active-directory/develop/quickstart-create-new-tenant.md), vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg, hogy a felhasználó hozzáférjen az előfizetéséhez. 
-    > Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
+    > Ha egy Microsoft-fiókhoz csatolt [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy bérlőt az Azure ad-ben](../active-directory/develop/quickstart-create-new-tenant.md) , vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg a felhasználónak az Azure-előfizetését. Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
 
 * A helyi számítógépekre vonatkozó követelmények:
 
@@ -75,7 +79,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
   * Az átjárónak két módja van: a standard mód és a személyes mód, amely csak a Power BIre vonatkozik. Ugyanazon a számítógépen nem lehet egynél több olyan átjáró, amely ugyanazon a módban fut.
 
-  * Azure Logic Apps támogatja az írási műveleteket, beleértve a lapkákat és a frissítéseket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps támogatja az olvasási és írási műveleteket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -95,13 +99,13 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
    ![A követelmények áttekintése és a használati feltételek elfogadása](./media/logic-apps-gateway-install/accept-terms.png)
 
-1. Az átjáró sikeres telepítése után adja meg az e-mail-címet a szervezeti fiókhoz, majd válassza a **Bejelentkezés**lehetőséget, például:
+1. Az átjáró sikeres telepítése után adja meg az Azure-fiókhoz tartozó e-mail-címet, majd válassza a **Bejelentkezés**lehetőséget, például:
 
    ![Bejelentkezés munkahelyi vagy iskolai fiókkal](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   Most bejelentkezett a fiókjába.
+   Az átjáró telepítése csak egy Azure-fiókra hivatkozhat.
 
-1. Jelölje be az **új átjáró regisztrálása ezen a számítógépen** > jelölőnégyzetet **.** Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
+1. Válassza **az új átjáró regisztrálása ezen a számítógépen** > **elemet.** Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
 
    ![Átjáró regisztrálása](./media/logic-apps-gateway-install/register-gateway.png)
 
@@ -155,7 +159,7 @@ A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../servi
 
 Ha el szeretné kerülni a helyszíni adathozzáféréshez szükséges egyetlen meghibásodási pontot, a különböző számítógépeken egyszerre több átjáró telepíthető (csak standard módban), és beállíthatja őket fürtként vagy csoportként. Így ha az elsődleges átjáró nem érhető el, az adatkérések átirányítva a második átjáróra, és így tovább. Mivel a számítógépen csak egy standard átjáró telepíthető, a fürtben lévő minden további átjárót telepíteni kell egy másik számítógépen. A helyszíni adatátjáróval működő összes összekötő támogatja a magas rendelkezésre állást.
 
-* A telepítéshez már legalább egy Azure-előfizetéshez tartozó átjárót kell telepítenie, mint az elsődleges átjárót és a helyreállítási kulcsot.
+* Rendelkeznie kell legalább egy olyan átjáró-telepítéssel, amely ugyanazzal az Azure-fiókkal rendelkezik, mint az elsődleges átjáró, valamint az adott telepítés helyreállítási kulcsa.
 
 * Az elsődleges átjárónak az átjáró frissítését november 2017 vagy újabb verzióra kell futtatnia.
 
@@ -175,7 +179,7 @@ Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepíté
 
 1. A telepítő megnyitása után jelentkezzen be ugyanazzal az Azure-fiókkal, amelyet az átjáró telepítéséhez használt.
 
-1. Válassza a >  **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele** **lehetőséget, például**:
+1. Válassza a **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele**  >  a**következő**lehetőséget, például:
 
    ![Válassza a "meglévő átjáró migrálása, visszaállítása vagy átvétele" lehetőséget.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -195,7 +199,7 @@ Az Azure AD-bérlőben található összes helyszíni adatátjáró megismerés�
 
 ## <a name="restart-gateway"></a>Átjáró újraindítása
 
-Alapértelmezés szerint az átjáró helyi számítógépen történő telepítése a "helyszíni adatátjáró szolgáltatás" nevű Windows-szolgáltatásfiókként fut. Az átjáró telepítése azonban a `NT SERVICE\PBIEgwService` "Bejelentkezés mint" fiók hitelesítő adatait használja, és "Bejelentkezés szolgáltatásként" engedélyekkel rendelkezik.
+Alapértelmezés szerint az átjáró helyi számítógépen történő telepítése a "helyszíni adatátjáró szolgáltatás" nevű Windows-szolgáltatásfiókként fut. Az átjáró telepítése azonban a "Bejelentkezés mint" fiók hitelesítő adatainak `NT SERVICE\PBIEgwService` nevét használja, és "Bejelentkezés szolgáltatásként" jogosultságokkal rendelkezik.
 
 > [!NOTE]
 > A Windows-szolgáltatásfiók eltér a helyszíni adatforrásokhoz való csatlakozáshoz használt fióktól és az Azure-fióktól, amelyet a Cloud Services szolgáltatásba való bejelentkezéskor használ.
@@ -235,19 +239,19 @@ Ezek a lépések azt írják le, hogy mi történik, ha egy helyszíni adatforr�
 
 A rendszer egy tárolt hitelesítő adatokat használ az átjáróról a helyszíni adatforrásokhoz való kapcsolódáshoz. A felhasználótól függetlenül az átjáró a tárolt hitelesítő adatokat használja a kapcsolódáshoz. Bizonyos szolgáltatások, például a DirectQuery és a LiveConnect Analysis Services esetében hitelesítési kivételek lehetnek Power BI.
 
-### <a name="azure-active-directory"></a>Azure Active Directory
+### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-A Microsoft Cloud Services [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md) használatával hitelesíti a felhasználókat. Az Azure AD-bérlő felhasználóneveket és biztonsági csoportokat tartalmaz. A bejelentkezéshez használt e-mail-cím általában megegyezik a fiók egyszerű felhasználónevével (UPN).
+A Microsoft Cloud Services az [Azure ad](../active-directory/fundamentals/active-directory-whatis.md) használatával hitelesíti a felhasználókat. Az Azure AD-bérlő felhasználóneveket és biztonsági csoportokat tartalmaz. A bejelentkezéshez használt e-mail-cím általában megegyezik a fiók egyszerű felhasználónevével (UPN).
 
 ### <a name="what-is-my-upn"></a>Mi az UPN?
 
-Ha nem tartományi rendszergazda, akkor előfordulhat, hogy nem ismeri az egyszerű felhasználónevet. A fiók UPN-értékének megkereséséhez futtassa `whoami /upn` a parancsot a munkaállomásról. Bár az eredmény egy e-mail-címre hasonlít, az eredmény a helyi tartományi fiók UPN-je.
+Ha nem tartományi rendszergazda, akkor előfordulhat, hogy nem ismeri az egyszerű felhasználónevet. A fiók UPN-értékének megkereséséhez futtassa a `whoami /upn` parancsot a munkaállomásról. Bár az eredmény egy e-mail-címre hasonlít, az eredmény a helyi tartományi fiók UPN-je.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-active-directory"></a>Helyszíni Active Directory szinkronizálása Azure Active Directory
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Helyszíni Active Directory szinkronizálása az Azure AD-vel
 
-A helyszíni Active Directory fiókokhoz és az Azure AD-fiókokhoz tartozó UPN-nek azonosnak kell lennie. Ezért győződjön meg arról, hogy minden helyszíni Active Directory fiók megfelel az Azure AD-fiókjának. A Cloud Services csak az Azure AD-n belüli fiókokat ismeri. Ezért nem kell hozzáadnia egy fiókot a helyszíni Active Directoryhoz. Ha a fiók nem létezik az Azure AD-ben, akkor nem használhatja ezt a fiókot. 
+A helyszíni Active Directory fiókokhoz és az Azure AD-fiókokhoz tartozó UPN-nek azonosnak kell lennie. Ezért győződjön meg arról, hogy minden helyszíni Active Directory fiók megfelel az Azure AD-fiókjának. A Cloud Services csak az Azure AD-n belüli fiókokat ismeri. Ezért nem kell hozzáadnia egy fiókot a helyszíni Active Directoryhoz. Ha a fiók nem létezik az Azure AD-ben, akkor nem használhatja ezt a fiókot.
 
-Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az Azure AD-vel. 
+Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az Azure AD-vel.
 
 * Fiókok manuális hozzáadása az Azure AD-hez.
 
@@ -270,7 +274,7 @@ További információkért tekintse meg a következő témaköröket:
 * [Helyszíni adatátjáróval kapcsolatos hibák](/data-integration/gateway/service-gateway-tshoot)
 * [Az átjáró teljesítményének figyelése és optimalizálása](/data-integration/gateway/service-gateway-performance)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolódás a helyszíni adatokhoz a Logic appsből](../logic-apps/logic-apps-gateway-connection.md)
 * [Vállalati integrációs funkciók](../logic-apps/logic-apps-enterprise-integration-overview.md)

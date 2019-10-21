@@ -1,29 +1,24 @@
 ---
 title: Azure Monitor szolgáltatási korlátok | Microsoft Docs
 description: A Azure Monitor különböző területein lévő korlátozásokat listázza.
-author: bwren
-manager: carmonm
-editor: tysonn
-services: azure-monitor
-documentationcenter: azure-monitor
 ms.service: azure-monitor
+ms.subservice: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/10/2019
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 0386700c238c213fd9cde3ca1b49e5e598d05bfd
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 06/10/2019
+ms.openlocfilehash: 37401a8eb2a8da82cef4854ab41e40b81ba429fa
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405664"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597272"
 ---
 # <a name="azure-monitor-service-limits"></a>Azure Monitor szolgáltatási korlátok
 
 Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat sorolja fel.
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-alerts.md)]
 
@@ -43,7 +38,7 @@ Ez a cikk a Azure Monitor különböző területein lévő korlátozásokat soro
 
 [!INCLUDE [monitoring-limits](../../includes/azure-monitor-limits-app-insights.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Díjszabás Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/)
 - [A használat és a becsült költségek figyelése Azure Monitor](platform/usage-estimated-costs.md)

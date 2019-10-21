@@ -1,11 +1,11 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AcquireIO |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és AcquireIO között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AcquireIO | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és AcquireIO között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
-ms.reviewer: celested
+ms.reviewer: barbkess
 ms.assetid: 97815e13-32ec-4470-b075-1253f5814f4f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -13,170 +13,184 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75a92e78e7293316cad6e567ae49c4998299415c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 17cc6df651a82b416e670ee5ca5683c428eac6b5
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544269"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596277"
 ---
-# <a name="tutorial-integrate-acquireio-with-azure-active-directory"></a>Oktatóanyag: AcquireIO integrálása az Azure Active Directoryval
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AcquireIO
 
-Ebben az oktatóanyagban elsajátíthatja a AcquireIO integrálása az Azure Active Directory (Azure AD) lesz. AcquireIO integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a AcquireIO a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az AcquireIO-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá AcquireIO Azure AD-ben.
-* Engedélyezze a felhasználóknak, hogy lehet automatikusan bejelentkezve AcquireIO az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A AcquireIO-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a AcquireIO az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként szüksége van a következő elemek:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, hozzájuthat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* AcquireIO egyszeri bejelentkezés (SSO) engedélyezve van az előfizetésben.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* AcquireIO egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD SSO-t egy tesztkörnyezetben. Támogatja a AcquireIO **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-## <a name="adding-acquireio-from-the-gallery"></a>AcquireIO hozzáadása a katalógusból
+* A AcquireIO támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
 
-Az Azure AD integrálása a AcquireIO konfigurálásához hozzá kell AcquireIO a katalógusból a felügyelt SaaS-alkalmazások listájára.
+## <a name="adding-acquireio-from-the-gallery"></a>AcquireIO hozzáadása a gyűjteményből
+
+A AcquireIO Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a AcquireIO a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatás.
-1. Navigáljon a **vállalati alkalmazások** majd **minden alkalmazás**.
-1. Új alkalmazás hozzáadásához válassza **új alkalmazás**.
-1. Az a **Hozzáadás a katalógusból** területén írja be a **AcquireIO** kifejezést a keresőmezőbe.
-1. Válassza ki **AcquireIO** az eredmények panelen, és vegye fel az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőn.
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **AcquireIO** kifejezést a keresőmezőbe.
+1. Válassza ki a **AcquireIO** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on-for-acquireio"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a AcquireIO
 
-Konfigurálás és tesztelés az Azure AD SSO nevű tesztfelhasználó használata AcquireIO **B.Simon**. Az SSO működjön kell AcquireIO az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Konfigurálja és tesztelje az Azure AD SSO-t a AcquireIO a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a AcquireIO-ben.
 
-Az Azure AD SSO AcquireIO tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD SSO és a AcquireIO konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Az Azure AD SSO konfigurálása](#configure-azure-ad-sso)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Konfigurálja a AcquireIO](#configure-acquireio)**  alkalmazás oldalán az egyszeri bejelentkezési beállításainak konfigurálására.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az B.Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  B.Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre AcquireIO tesztfelhasználót](#create-acquireio-test-user)**  van egy megfelelője a B.Simon AcquireIO, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-sso)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[ACQUIREIO SSO konfigurálása](#configure-acquireio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre AcquireIO-teszt felhasználót](#create-acquireio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-AcquireIO rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Kövesse az alábbi lépéseket az Azure AD egyszeri bejelentkezés engedélyezése az Azure Portalon.
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **AcquireIO** alkalmazás integráció lapon keresse meg a **kezelése** szakaszt, és válassza **egyszeri bejelentkezési**.
-1. Az a **egyszeri bejelentkezési módszer** lapra, jelölje be **SAML**.
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lap, kattintson a Szerkesztés/toll ikonra a **alapszintű SAML-konfigurációja** beállításait módosíthatja.
+1. A [Azure Portal](https://portal.azure.com/) **AcquireIO** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre a következő lépést:
+1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://app.acquire.io/ad/<acquire_account_uid>`
+    A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.acquire.io/ad/<acquire_account_uid>`
 
     > [!NOTE]
-    > Az érték nem valódi. A tényleges válasz URL-cím a később ismertetett fog kapni a **konfigurálása AcquireIO** az oktatóanyag szakaszában. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Az érték nem valódi. Megjelenik a tényleges válasz URL-címe, amelyet később az oktatóanyag **AcquireIO konfigurálása** című szakaszában ismertetünk. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén található **tanúsítvány (Base64)** válassza **letöltése** töltse le a tanúsítványt, és menti azt a számítógépet.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
-   ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. Az a **AcquireIO beállítása** területén másolja a megfelelő URL-címe szerint.
+1. A **AcquireIO beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-   ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-acquireio"></a>AcquireIO konfigurálása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-1. Egy másik böngészőablakban jelentkezzen be AcquireIO rendszergazdaként.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-2. A menüt a bal oldali menüjében kattintson a **App Store**.
-
-     ![AcquireIO konfiguráció](./media/acquireio-tutorial/config01.png)
-
-3. Görgessen lefelé legfeljebb **Active Directory** , majd kattintson a **telepítése**.
-
-    ![AcquireIO konfiguráció](./media/acquireio-tutorial/config02.png)
-
-4. Az Active Directory előugró ablakban hajtsa végre az alábbi lépéseket:
-
-    ![AcquireIO konfiguráció](./media/acquireio-tutorial/config03.png)
-
-    a. Kattintson a **másolási** a válasz URL-cím a példány másolja és illessze be azt a **válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
-
-    b. Az a **bejelentkezési URL-cím** szövegmezőbe, illessze be az értéket a **bejelentkezési URL-cím**, az Azure Portalról másolt.
-
-    c. Nyissa meg a Base64-kódolású tanúsítványt a Jegyzettömbben, másolja a tartalmat, és illessze be a **X.509-tanúsítvány** szövegmezőben.
-
-    d. Kattintson a **azonnali kapcsolódás**.
-
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
-
-Ebben a szakaszban az Azure Portalon B.Simon nevű tesztfelhasználó fog létrehozni.
-
-1. Az Azure Portal bal oldali panelén válassza **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. Az a **felhasználói** tulajdonságok, kövesse az alábbi lépéseket:
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. Az a **felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-   1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a  **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban B.Simon által biztosított hozzáférés AcquireIO Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a AcquireIO.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
-1. Az alkalmazások listájában jelölje ki a **AcquireIO**.
-1. Az alkalmazás áttekintése lapon keresse meg a **kezelés** szakaszt, és válassza **felhasználók és csoportok**.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **AcquireIO**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**, majd **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** párbeszédablakban válassza **B.Simon** a felhasználók listájából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-1. Ha a SAML helyességi feltétel, a szerepkör értéket vár a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználóhoz a listából, és kattintson a **kiválasztása** gombra a képernyő alján.
-1. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-acquireio-test-user"></a>AcquireIO tesztfelhasználó létrehozása
+## <a name="configure-acquireio-sso"></a>AcquireIO SSO konfigurálása
 
-Ahhoz, hogy az Azure AD-felhasználók AcquireIO bejelentkezni, akkor ki kell építeni AcquireIO be. AcquireIO a kiépítés manuális feladat.
+1. A AcquireIO belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-1. Egy másik böngészőablakban jelentkezzen be AcquireIO rendszergazdaként.
+1. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **AcquireIO beállítása**elemre, amely a AcquireIO alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat a AcquireIO való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
 
-2. A menüt a bal oldali menüjében kattintson az **profilok** , és keresse meg **profil hozzáadása**.
+    ![Telepítési konfiguráció](common/setup-sso.png)
 
-     ![AcquireIO konfiguráció](./media/acquireio-tutorial/config04.png)
+1. Ha manuálisan szeretné beállítani a AcquireIO, egy másik böngészőablakban jelentkezzen be a AcquireIO-be rendszergazdaként.
 
-3. Az a **Hozzáadás ügyfél** előugró ablakban hajtsa végre az alábbi lépéseket:
+1. A menü bal oldalán kattintson az **App Store**elemre.
 
-    ![AcquireIO konfiguráció](./media/acquireio-tutorial/config05.png)
+     ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config01.png)
 
-    a. A **neve** szöveget adja meg például a felhasználó nevét **B.simon**.
+1. Görgessen le upto **Active Directory** és kattintson a **telepítés**gombra.
 
-    b. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **B.simon@contoso.com** .
+    ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config02.png)
 
-    c. Kattintson a **Submit** (Küldés) gombra.
+1. A Active Directory előugró ablakában hajtsa végre a következő lépéseket:
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+    ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config03.png)
 
-A AcquireIO csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a AcquireIO, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+    a. A **Másolás** gombra kattintva másolja a példányhoz tartozó válasz URL-címét, és illessze be a **Válasz URL** -szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal.
+
+    b. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
+
+    c. Nyissa meg a Base64-kódolású tanúsítványt a Jegyzettömbben, másolja ki a tartalmát, és illessze be az **X. 509 tanúsítvány** szövegmezőbe.
+
+    d. Kattintson a **kapcsolat most**lehetőségre.
+
+### <a name="create-acquireio-test-user"></a>AcquireIO-tesztelési felhasználó létrehozása
+
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a AcquireIO, a AcquireIO kell kiépíteni őket. A AcquireIO-ben a kiépítés manuális feladat.
+
+**Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
+
+1. Egy másik böngészőablakban jelentkezzen be a AcquireIO rendszergazdaként.
+
+1. A menü bal oldalán kattintson a **profilok** elemre, és navigáljon a **Profil hozzáadása**lehetőségre.
+
+     ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config04.png)
+
+1. Az **ügyfél hozzáadása** felugró ablakban végezze el a következő lépéseket:
+
+    ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config05.png)
+
+    a. A **név** szövegmezőbe írja be a felhasználó nevét, például: **B. Simon**.
+
+    b. Az **e-mail** szövegmezőbe írja be a felhasználó (például **B.simon@contoso.com** ) e-mail-címét.
+
+    c. Kattintson a **Submit (Küldés**) gombra.
+
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+
+Ha a hozzáférési panelen a AcquireIO csempére kattint, automatikusan be kell jelentkeznie arra a AcquireIO, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A AcquireIO kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)

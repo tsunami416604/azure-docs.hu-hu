@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7fc3508f7f672e277577f92218ff1860b676cb
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: f54382d652c3fc59b8ff462d41ec8c0fbdbe8498
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559475"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596696"
 ---
 # <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>A Privileged Identity Management problémáinak elhárítása
 
@@ -28,7 +28,7 @@ Problémát tapasztal a Privileged Identity Management (PIM) Azure Active Direct
 
 ### <a name="problem"></a>Probléma
 
-Ha az Azure AD-rendszergazdai szerepkörhöz szeretne hozzáférni, és nem fér hozzá az Azure-erőforrásokhoz Privileged Identity Management alatt, akkor hibaüzenet jelenik meg. Nem fér hozzá az Azure-erőforrásokhoz a Privileged Identity Management alatt, még akkor is, ha Ön globális rendszergazda, és az előfizetés tulajdonosa.
+Az Azure-erőforrásokhoz tartozó aktív tulajdonosi vagy felhasználói hozzáférési rendszergazdaként megtekintheti az erőforrást Privileged Identity Managementon belül, de nem végezhet olyan műveleteket, mint például a jogosult hozzárendelés vagy a szerepkör-hozzárendelések listájának megtekintése az erőforrásból áttekintő lap A műveletek bármelyike hitelesítési hibát eredményez.
 
 ### <a name="cause"></a>Ok
 

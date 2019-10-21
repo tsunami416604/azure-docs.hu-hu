@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bdb0322083f842922359f0c91da77f5df81613cb
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201633"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675809"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -41,15 +41,15 @@ A következő részekben azok a támogatott kiszolgálói operációs rendszerek
 
 ### Windows Server operációs rendszerek<a name="os-windows"></a>
 
-* A Windows Server 2019
-* Windows Server 2016
-* Windows Server 2012 R2
-* Windows Server 2012
-* Windows Server 2008 R2
-* Windows Server 2008
-
-> [!NOTE]
-> A Microsoft Defender ATP szolgáltatással való integráció csak a Windows Server 2012 R2 és a Windows Server 2016 rendszert támogatja.
+[!div class="mx-tableFixed"]
+|Operációs rendszer|Támogatja Azure Security Center|A Microsoft Defender ATP-integráció támogatása|
+|---|---|---|
+|Windows Server 2019|✔|X|
+|Windows Server 2016|✔|✔|
+|Windows Server 2012 R2|✔|✔|
+|Windows Server 2012|✔|✔|
+|Windows Server 2008 R2|✔|✔|
+|Windows Server 2008 rendszeren|✔|✔|
 
 A fent felsorolt Windows operációs rendszerek támogatott szolgáltatásaival kapcsolatos további tudnivalókért lásd: [virtuális gépek/kiszolgálók által támogatott szolgáltatások](security-center-services.md##vm-server-features).
 
@@ -94,34 +94,34 @@ A Azure Security Center az alábbi Azure-beli, a következő Azure-erőforrások
 * MySQL
 * CosmosDB
 * Tárfiók
-* App Service-ben
+* App Service
 * Függvény
 * Felhőszolgáltatás
-* Virtuális hálózat
-* Subnet
+* VNet
+* Alhálózat
 * Hálózati adapter
 * NSG
 * Batch-fiók
 * Service Fabric-fiók
 * Automation-fiók
-* Terheléselosztó
-* Keresés
+* Load Balancer
+* Search
 * Service Bus-névtér
-* Streamelemzés
+* Stream Analytics
 * Eseményközpont-névtér
 * Logikai alkalmazások
 * Redis
 * Data Lake Analytics
 * Data Lake Store
-* Kulcstartó
+* Key Vault
 
 Ha többet szeretne megtudni a Pásti-erőforrások fenti listája által támogatott funkciókról, tekintse meg a [Pásti szolgáltatások által támogatott funkciók](security-center-services.md#paas-services)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan gyűjt Security Center adatokat és a log Analytics ügynököt](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).
-- Megtudhatja, hogyan tervezheti meg [és értelmezheti a Azure Security Center](security-center-planning-and-operations-guide.md)elfogadásához szükséges tervezési szempontokat.
+- Megtudhatja, hogyan [tervezheti meg és értelmezheti a Azure Security Center elfogadásához szükséges tervezési szempontokat](security-center-planning-and-operations-guide.md).
 - Ismerje meg [a különböző felhőalapú környezetekhez elérhető szolgáltatásokat](security-center-services.md).
 - További információ a [Azure Security Center-beli virtuális gépek & kiszolgálói veszélyforrások észleléséről](security-center-alerts-iaas.md).
 - [Gyakori kérdések a Azure Security Center használatáról](security-center-faq.md).

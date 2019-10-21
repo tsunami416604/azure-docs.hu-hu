@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: aef9eaebc2da12e322ab6eda97385aa9cf14998a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c7d18ab6e9018511915e9b77ea02ac60b1277c12
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387765"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596494"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamhoz 
 
@@ -53,6 +53,8 @@ Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beá
 
 **Mintavételezés:** A mintavétel engedélyezése a forrás sorainak számának korlátozásához. Akkor használja ezt a beállítást, ha hibakeresési célból teszteli vagy felveszi az adatait a forrásból.
 
+**Többsoros sorok:** Válassza a többsoros sorok lehetőséget, ha a forrás szövegfájl olyan karakterlánc-értékeket tartalmaz, amelyek több sorra kiterjednek, azaz egy értéken belül sortöréseket.
+
 Ha ellenőrizni szeretné, hogy a forrás megfelelően van-e konfigurálva, kapcsolja be a hibakeresési módot, és olvassa be az adatelőnézett. További információ: [hibakeresési mód](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
@@ -72,12 +74,12 @@ Helyettesítő karakteres példák:
 
 * a ```*``` a karakterek tetszőleges halmazát jelöli.
 * a ```**``` a rekurzív könyvtár beágyazását jelöli
-* @no__t – 0 egy karaktert cserél
-* ```[]``` a zárójelben szereplő több karakternek felel meg.
+* ```?``` egy karaktert cserél le
+* ```[]``` a zárójelben szereplő további karakterek egyikének felel meg
 
-* @no__t – 0 – az összes CSV-fájl beolvasása a/Data/Sales alatt
-* @no__t – 0 a 20. század összes fájljának beolvasása
-* ```/data/sales/2004/*/12/[XY]1?.csv``` lekérdezi az összes CSV-fájlt a 2004-as verzióban, a két számjegyből álló X vagy Y előtaggal kezdődően.
+* ```/data/sales/**/*.csv``` lekéri az összes CSV-fájlt a/Data/Sales alatt
+* ```/data/sales/20??/**``` beolvassa az összes fájlt a 20. században
+* ```/data/sales/2004/*/12/[XY]1?.csv``` beolvassa az összes CSV-fájlt a 2004-as verzióban, amely egy kétjegyű számú X vagy Y előtaggal kezdődik.
 
 **Partíció gyökerének elérési útja:** Ha a forrásfájl particionált mappája ```key=value``` formátumú (például év = 2019), akkor a partíciós mappa fájának legfelső szintjét hozzárendelheti az adatáramlási adatfolyamban található oszlop neveként.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315981"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596919"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.
@@ -31,8 +31,8 @@ A Redis-hez készült Azure cache a [Redis-ben implementált Redis-](https://red
 
 * Lehetővé teszi az adatkészlet automatikus felosztását több csomópont között. 
 * A műveletek folytatásának lehetősége, ha a csomópontok egy részhalmaza hibát észlel, vagy nem tud kommunikálni a fürt többi részével. 
-* További átviteli sebesség: Az átviteli sebesség a szegmensek számának növelésével lineárisan növekszik. 
-* További memória mérete: A szegmensek számának növelésével lineárisan növekszik.  
+* További átviteli sebesség: az átviteli sebesség a szegmensek számának növelésével lineárisan növekszik. 
+* További memória mérete: a szegmensek számának növelésével lineárisan növekszik.  
 
 A fürtözés nem fokozza a fürtözött gyorsítótár számára elérhető kapcsolatok számát. A mérettel, az átviteli sebességgel és a sávszélességgel kapcsolatos további információkért lásd: [Mi az Azure cache a Redis-ajánlathoz és a mérethez?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
@@ -109,9 +109,9 @@ Az alábbi lista az Azure cache szolgáltatással történő Redis-fürtözésse
 * Ha a Redis ASP.NET-szolgáltatót használja, a 2.0.1-es vagy újabb verzióját kell használnia. Lásd: használhatok [fürtözést a Redis ASP.NET munkamenet-állapotához és a kimeneti gyorsítótárazási szolgáltatókhoz?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Hogyan történik a kulcsok elosztása a fürtben?
-A Redis [kulcsok terjesztési modellje](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentációja: A kulcs területe 16384 bővítőhelyre van bontva. Az egyes kulcsok kivonatolása és hozzárendelése az egyik ilyen tárolóhelyhez történik, amelyek a fürt csomópontjai között oszlanak meg. Beállíthatja, hogy a kulcs melyik részét használja a rendszer a kivonattal annak biztosítására, hogy több kulcs is ugyanabban a szegmensben legyen a kivonatoló címkék használatával.
+A Redis- [kulcsok terjesztési modellje](https://redis.io/topics/cluster-spec#keys-distribution-model) dokumentációja: a kulcs területe 16384 bővítőhelyre van bontva. Az egyes kulcsok kivonatolása és hozzárendelése az egyik ilyen tárolóhelyhez történik, amelyek a fürt csomópontjai között oszlanak meg. Beállíthatja, hogy a kulcs melyik részét használja a rendszer a kivonattal annak biztosítására, hogy több kulcs is ugyanabban a szegmensben legyen a kivonatoló címkék használatával.
 
-* Kivonatoló címkével ellátott kulcsok – ha a kulcs bármely része be `{` van zárva a és `}`a rendszerbe, akkor a kulcs kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban `{key}1`a szegmensben található:, `{key}2` `key` , és `{key}3` mivel csak a név része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
+* Kulcsok egy kivonatoló címkével – ha a kulcs bármely része `{` és `}` van lefoglalva, akkor a kulcs kivonatának meghatározásakor a rendszer csak a kulcs egy részét használja kivonatként. A következő 3 kulcs például ugyanabban a szegmensben található: `{key}1`, `{key}2` és `{key}3`, mert csak a név `key` része kerül kivonatolásra. A kulcsok kivonatoló címke specifikációinak teljes listáját lásd: [kulcsok kivonatának](https://redis.io/topics/cluster-spec#keys-hash-tags)címkéje.
 * Kivonatoló címke nélküli kulcsok – a rendszer a teljes kulcs nevét használja a kivonatoláshoz. Ez statisztikailag egyenletes eloszlást eredményez a gyorsítótár szegmensei között.
 
 A legjobb teljesítmény és átviteli sebesség érdekében javasoljuk, hogy egyenletesen osztja el a kulcsokat. Ha kivonatoló címkével rendelkező kulcsokat használ, akkor az alkalmazás feladata annak biztosítása, hogy a kulcsok egyenletesen legyenek elosztva.
@@ -124,9 +124,9 @@ A fürtözés és a kulcsok megkeresése a StackExchange. Redis ügyféllel cím
 A prémium gyorsítótár legnagyobb mérete 120 GB. Akár 10 szegmenst is létrehozhat, amelyek maximális mérete 1,2 TB GB. Ha nagyobb méretre van szüksége, [további kérések](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)is megadhatók. További információt az [Azure cache Redis díjszabását](https://azure.microsoft.com/pricing/details/cache/)ismertető témakörben talál.
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Az összes Redis-ügyfél támogatja a fürtözést?
-Jelenleg nem minden ügyfél támogatja a Redis-fürtözést. A StackExchange. Redis egy olyan, amely támogatja a használatát. További információ a többi ügyfélről: a [Redis-fürt oktatóanyagának](https://redis.io/topics/cluster-tutorial) [fürttel való lejátszása](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) . 
+Nem minden ügyfél támogatja a Redis-fürtözést! Ellenőrizze a használt könyvtár dokumentációját, és ellenőrizze, hogy a fürtözést támogató könyvtárat és verziót használ-e. A StackExchange. Redis egy olyan függvénytár, amely támogatja a fürtözést az újabb verziókban. További információ a többi ügyfélről: a [Redis-fürt oktatóanyagának](https://redis.io/topics/cluster-tutorial) [fürttel való lejátszása](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) . 
 
-A Redis-fürtszolgáltatási protokoll megköveteli minden ügyfél számára, hogy közvetlenül a fürtözési módban kapcsolódjon az egyes szegmensekhez. Ha olyan ügyfelet próbál meg használni, amely nem támogatja a fürtözést, valószínűleg sok [áthelyezett átirányítási kivételt](https://redis.io/topics/cluster-spec#moved-redirection)fog eredményezni.
+A Redis-fürtszolgáltatási protokollhoz minden ügyfélnek hozzá kell kapcsolódnia az egyes szegmensekhez közvetlenül a fürtözési módban, valamint új hibaüzeneteket is definiál, például az "áthelyezett" Na "CROSSSLOTS". Ha olyan ügyfelet próbál meg használni, amely nem támogatja a fürtözési módú gyorsítótárazást, akkor az [áthelyezett átirányítási kivételek nagy részét képezik](https://redis.io/topics/cluster-spec#moved-redirection), vagy csak akkor szakíthatja meg az alkalmazást, ha több-kulcsot használó többkulcsos kérelmeket hajt végre.
 
 > [!NOTE]
 > Ha a StackExchange. Redis ügyfelet használja, ügyeljen arra, hogy a [StackExchange. Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 vagy újabb verziójának legújabb verzióját használja a fürtözés megfelelő működéséhez. Ha problémák merülnek fel a kivételek áthelyezésével kapcsolatban, tekintse meg a [kivételek áthelyezése](#move-exceptions) című témakört.
@@ -137,7 +137,7 @@ A Redis-fürtszolgáltatási protokoll megköveteli minden ügyfél számára, h
 A gyorsítótárhoz a fürtözést nem engedélyező gyorsítótárhoz való csatlakozáskor használt [végpontok](cache-configure.md#properties), [portok](cache-configure.md#properties)és [kulcsok](cache-configure.md#access-keys) használatával csatlakozhat. A Redis kezeli a fürtözést a háttérben, így nem kell az ügyféltől kezelnie.
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Csatlakozhatok közvetlenül a gyorsítótár egyedi szegmenséhez?
-A fürtözési protokoll megköveteli, hogy az ügyfél a megfelelő szegmensű kapcsolatokat hozza létre. Így az ügyfélnek megfelelően kell ezt megtennie Önnek. Ez azt jelenti, hogy az egyes szegmensek egy elsődleges/replika gyorsítótár pár, a közösen gyorsítótár-példányként ismertek. A Redis-CLI segédprogrammal csatlakozhat ezekhez a gyorsítótár-példányokhoz a GitHubon a Redis-tárház [instabil](https://redis.io/download) ágában. Ez a verzió alapszintű támogatást valósít meg a `-c` kapcsolóval való elinduláskor. További információ: a [fürttel](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) való lejátszás a Redis- [fürt oktatóanyagában](https://redis.io/topics/cluster-tutorial).
+A fürtözési protokoll megköveteli, hogy az ügyfél a megfelelő szegmensű kapcsolatokat hozza létre. Így az ügyfélnek megfelelően kell ezt megtennie Önnek. Ez azt jelenti, hogy az egyes szegmensek egy elsődleges/replika gyorsítótár pár, a közösen gyorsítótár-példányként ismertek. A Redis-CLI segédprogrammal csatlakozhat ezekhez a gyorsítótár-példányokhoz a GitHubon a Redis-tárház [instabil](https://redis.io/download) ágában. Ez a verzió alapszintű támogatást valósít meg a `-c` kapcsolóval való elindulásakor. További információ: a [https://redis.io](https://redis.io) - [fürttel való lejátszás](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) a [Redis-fürt oktatóanyagában](https://redis.io/topics/cluster-tutorial).
 
 Nem SSL esetén használja az alábbi parancsokat.
 
@@ -147,10 +147,13 @@ Nem SSL esetén használja az alábbi parancsokat.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Az SSL esetében cserélje `1300N` le `1500N`a következőt:.
+Az SSL esetében cserélje le a `1300N`t a `1500N`ra.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Beállíthat fürtszolgáltatást egy korábban létrehozott gyorsítótárhoz?
-Jelenleg csak gyorsítótár létrehozásakor engedélyezheti a fürtözést. A fürt méretét a gyorsítótár létrehozása után módosíthatja, de nem adhat hozzá fürtözést prémium szintű gyorsítótárhoz, vagy a gyorsítótár létrehozása után eltávolíthatja a fürtözést a prémium szintű gyorsítótárból. Egy prémium szintű gyorsítótár, amely lehetővé teszi a fürtözést, és csak egy szegmens különbözik az azonos méretű, fürtözés nélküli prémium szintű gyorsítótártól.
+Igen. Először ellenőrizze, hogy a gyorsítótár prémium szintű-e, ha nem. Ezután meg kell tudnia tekinteni a fürtkonfiguráció beállításait, beleértve a clsuter engedélyezésének lehetőségét is. A fürt méretét a gyorsítótár létrehozása után, vagy a fürtözés első alkalommal történő engedélyezése után módosíthatja.
+
+   >[!IMPORTANT]
+   >A fürtözés engedélyezése nem vonható vissza. És egy olyan gyorsítótár, amelyen engedélyezve van a fürtözés, és csak egy szegmens működik *, mint az* azonos méretű, fürtözés *nélküli* gyorsítótár.
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Konfigurálható az alapszintű vagy a standard szintű gyorsítótár fürtözése?
 A fürtözés csak a prémium szintű gyorsítótárak esetében érhető el.
@@ -162,9 +165,9 @@ A fürtözés csak a prémium szintű gyorsítótárak esetében érhető el.
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Kivételeket kapok a StackExchange. Redis és fürtözési műveletek használatakor?
-Ha StackExchange. Redis-t használ, és `MOVE` kivételeket kap a fürtözés használatakor, győződjön meg arról, hogy a [StackExchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) vagy újabb verziót használja. A .NET-alkalmazások StackExchange. Redis használatára való konfigurálásával kapcsolatos utasításokért lásd: [a gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Ha a StackExchange. Redis-t használja, és a fürtözés használatakor `MOVE` kivételeket kap, győződjön meg arról, hogy a [StackExchange. Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) vagy újabb verziót használja. A .NET-alkalmazások StackExchange. Redis használatára való konfigurálásával kapcsolatos utasításokért lásd: [a gyorsítótár-ügyfelek konfigurálása](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
 * [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)

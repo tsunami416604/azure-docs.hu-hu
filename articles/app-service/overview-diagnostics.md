@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: c9d6bc8802b54e970fe863ed6a7283f01c947916
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
+ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066853"
+ms.lasthandoff: 10/20/2019
+ms.locfileid: "72675203"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service diagnosztika áttekintése
 
@@ -33,7 +33,7 @@ App Service diagnosztika nem csak a Windows rendszeren futó alkalmazás, hanem 
 
 App Service diagnosztika eléréséhez navigáljon a App Service webalkalmazáshoz vagy App Service Environment a [Azure Portal](https://portal.azure.com). A bal oldali navigációs sávon kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
-Azure Functions esetében navigáljon a Function alkalmazáshoz, és a felső navigációs sávon kattintson a **platform szolgáltatásai**lehetőségre, és válassza a **diagnosztizálás és megoldás** az **erőforrás** -kezelésről szakaszban.
+Azure Functions esetében navigáljon a Function alkalmazáshoz, és a felső navigációs sávon kattintson a **platform szolgáltatásai**lehetőségre, és válassza a **diagnosztizálás és megoldás** az **erőforrás-kezelésről** szakaszban.
 
 A App Service Diagnostics kezdőlapján kiválaszthatja azt a kategóriát, amely a legjobban leírja az alkalmazással kapcsolatos problémát az egyes homepage-csempék kulcsszavai segítségével. Ezen a lapon a Windows-alkalmazások **diagnosztikai eszközei** is megtalálhatók. Lásd: [diagnosztikai eszközök (csak Windows-alkalmazáshoz)](#diagnostic-tools-only-for-windows-app).
 
@@ -45,9 +45,9 @@ Miután kiválasztott egy Kezdőlap kategóriát, amely a legjobban megfelel az 
 
 ![Csempe parancsikonjai](./media/app-service-diagnostics/tile-shortcuts-2.png)
 
-A csempére való kattintás után megtekintheti a csempén bemutatott problémával kapcsolatos témakörök listáját. Ezek a témakörök a teljes jelentésből származó jelentős információk részleteit tartalmazzák. A témakörök bármelyikére kattintva megvizsgálhatja a problémákat. Emellett a **teljes jelentés megtekintése** lehetőségre kattintva megtekintheti az összes témakört egyetlen oldalon.
+A csempére való kattintás után megtekintheti a csempén bemutatott problémával kapcsolatos témakörök listáját. Ezek a témakörök a teljes jelentésből származó jelentős információk részleteit tartalmazzák. A témakörök bármelyikére kattintva megvizsgálhatja a problémákat. Emellett a **teljes jelentés megtekintése lehetőségre kattintva megtekintheti** az összes témakört egyetlen oldalon.
 
-![Témakörök](./media/app-service-diagnostics/application-logs-insights-3.png)
+![Üzenettémák](./media/app-service-diagnostics/application-logs-insights-3.png)
 
 ![Teljes jelentés megtekintése](./media/app-service-diagnostics/view-full-report-4.png)
 
@@ -78,7 +78,7 @@ Mivel sok alkalmazási probléma kapcsolódik az alkalmazás kódjában felmerü
 
 ![Application Insights](./media/app-service-diagnostics/application-insights-7.png)
 
-A Application Insights kivételek és függőségek megtekintéséhez válassza ki a webalkalmazást **le** vagy a **webalkalmazás lassú** csempe parancsikonjait.
+A Application Insights kivételek és függőségek megtekintéséhez válassza ki a **webalkalmazást le** vagy a **webalkalmazás lassú** csempe parancsikonjait.
 
 ### <a name="troubleshooting-steps-only-for-windows-app"></a>Hibaelhárítási lépések (csak Windows-alkalmazás esetén)
 
@@ -92,21 +92,21 @@ A diagnosztikai eszközök több speciális diagnosztikai eszközt is tartalmazn
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktív CPU-figyelés
 
-A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál.
+A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál. További információ: [a CPU-problémák enyhítése, mielőtt azok történnek](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál.
 
 ![Proaktív CPU-figyelés](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 
 ### <a name="auto-healing-and-proactive-auto-healing"></a>Automatikus gyógyulás és proaktív automatikus javítás
 
-Az automatikus javítás olyan kockázatcsökkentő művelet, amelyet akkor használhat, ha az alkalmazás váratlan viselkedést tapasztal. A kockázatcsökkentő műveletek elindításához a kérelmek száma, a lassú kérés, a memória korlátja és a HTTP-állapotkód alapján állíthatja be a saját szabályait. Az eszköz használatával átmenetileg csökkentheti a váratlan viselkedést, amíg meg nem találja a kiváltó okot.
+Az automatikus javítás olyan kockázatcsökkentő művelet, amelyet akkor használhat, ha az alkalmazás váratlan viselkedést tapasztal. A kockázatcsökkentő műveletek elindításához a kérelmek száma, a lassú kérés, a memória korlátja és a HTTP-állapotkód alapján állíthatja be a saját szabályait. Az eszköz használatával átmenetileg csökkentheti a váratlan viselkedést, amíg meg nem találja a kiváltó okot. További információ: [az App Service Diagnostics új automatikus gyógyulási élményének bejelentése](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html).
 
 ![Automatikus javítás](./media/app-service-diagnostics/auto-healing-10.png)
 
-A proaktív CPU-figyeléshez hasonlóan az proaktív automatikus gyógyulás egy kulcsrakész megoldás, amely csökkenti az alkalmazás váratlan viselkedését. Az proaktív automatikus javítás újraindítja az alkalmazást, ha App Service megállapítja, hogy az alkalmazás helyreállíthatatlan állapotban van. További információ: [az App Service Diagnostics új automatikus gyógyulási élményének](https://azure.github.io/AppService/2018/09/10/Announcing-the-New-Auto-Healing-Experience-in-App-Service-Diagnostics.html)bejelentése.
+A proaktív CPU-figyeléshez hasonlóan az proaktív automatikus gyógyulás egy kulcsrakész megoldás, amely csökkenti az alkalmazás váratlan viselkedését. Az proaktív automatikus javítás újraindítja az alkalmazást, ha App Service megállapítja, hogy az alkalmazás helyreállíthatatlan állapotban van. További információ: az [proaktív automatikus gyógyítás bemutatása](https://azure.github.io/AppService/2017/08/17/Introducing-Proactive-Auto-Heal.html).
 
 ## <a name="navigator-and-change-analysis-only-for-windows-app"></a>Navigátor és változás elemzése (csak Windows-alkalmazás esetén)
 
-A folyamatos integrációval rendelkező nagyméretű csapatokban, ahol az alkalmazás számos függőséggel rendelkezik, nehéz lehet kijelölni a nem kifogástalan működést okozó változást. A navigátor az alkalmazás topológiájának megjelenítését segíti, és az adott előfizetésben található összes erőforrást automatikusan leképezi. A navigátor segítségével megtekintheti az alkalmazás és a függőségei által végrehajtott módosítások összevont listáját, és leszűkítheti a nem kifogástalan viselkedést okozó változást. A Kezdőlap csempe-Navigátoron keresztül érhető el , és az első használata előtt engedélyezni kell. További információ: betekintést [nyerhet az alkalmazás függőségeibe](https://azure.github.io/AppService/2019/08/06/Bring-visibility-to-your-app-and-its-dependencies-with-Navigator.html)a Navigátorban.
+A folyamatos integrációval rendelkező nagyméretű csapatokban, ahol az alkalmazás számos függőséggel rendelkezik, nehéz lehet kijelölni a nem kifogástalan működést okozó változást. A navigátor az alkalmazás topológiájának megjelenítését segíti, és az adott előfizetésben található összes erőforrást automatikusan leképezi. A navigátor segítségével megtekintheti az alkalmazás és a függőségei által végrehajtott módosítások összevont listáját, és leszűkítheti a nem kifogástalan viselkedést okozó változást. A Kezdőlap csempe- **Navigátoron** keresztül érhető el, és az első használata előtt engedélyezni kell. További információ: betekintést [nyerhet az alkalmazás függőségeibe a Navigátorban](https://azure.github.io/AppService/2019/08/06/Bring-visibility-to-your-app-and-its-dependencies-with-Navigator.html).
 
 ![Navigátor alapértelmezett lapja](./media/app-service-diagnostics/navigator-default-page-11.png)
 

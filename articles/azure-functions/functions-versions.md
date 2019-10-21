@@ -1,138 +1,144 @@
 ---
-title: Az Azure Functions runtime verziók áttekintése
-description: Az Azure Functions futtatókörnyezet több verzióit támogatja. Ismerje meg azokat, és hogyan választható ki a másik pedig az Önnek megfelelő közötti különbségeket.
-services: functions
-documentationcenter: ''
+title: Azure Functions futtatókörnyezet-verziók áttekintése
+description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/03/2018
+ms.date: 10/10/2019
 ms.author: glenga
-ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036270"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72597378"
 ---
-# <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
+# <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
- Nincsenek az Azure Functions runtime két fő verziói: az 1.x és a 2.x. A jelenlegi verziót, ahol új funkció a munkahelyi és fejlesztések kerül sor az 2.x, abban az esetben, ha mindkét üzemi forgatókönyvek esetén támogatottak.  Az alábbi részletek néhány különbséget a két, hogyan hozhat létre minden egyes verziója, és frissítse a 1.x a 2.x-es.
+Az Azure Functions futtatókörnyezet főverziói a futtatókörnyezet alapjául szolgáló .NET-verzióhoz kapcsolódnak. A következő táblázat a futtatókörnyezet aktuális verzióját, a kiadási szintet és a kapcsolódó .NET-verziót mutatja. 
 
-> [!NOTE]
-> Ez a cikk az Azure Functions felhőalapú szolgáltatásra vonatkozik. Az előzetes verzióban üzemel, amely lehetővé teszi Azure Functions helyi futtatását kapcsolatos információkért tekintse meg a [Azure Functions Runtime áttekintése](functions-runtime-overview.md).
+| Futtatókörnyezet verziója | <sup>1</sup> . kiadási szint | .NET-verzió | 
+| --------------- | ------------- | ------------ |
+| 3. x  | előzetes verzió | .NET Core 3. x | 
+| 2. x | FE | .NET Core 2.2 |
+| 1. x | <sup>2</sup> . ga | .NET-keretrendszer 4,6<sup>3</sup> |
 
-## <a name="cross-platform-development"></a>Platformfüggetlen fejlesztés
+<sup>1</sup> A GA-kiadások éles környezetben is támogatottak.   
+<sup>2</sup> Az 1. x verzió karbantartási módban van. A fejlesztéseket csak a későbbi verziókban biztosítjuk.   
+<sup>3</sup> A csak a Azure Portal és a Windows rendszerű számítógépeken való helyi fejlesztést támogatja.
 
-A verzió 2.x verziójú futtatókörnyezet futtat a .NET Core 2, amely lehetővé teszi, hogy a .NET Core, beleértve a macOS és Linux által támogatott platformokon futtatható. .NET Core-on futó lehetővé teszi a platformfüggetlen fejlesztésekhez és a szolgáltatási forgatókönyvek esetében.
+>[!NOTE]  
+> A functions Runtime 3. x verziója előzetes verzióban érhető el, és éles környezetekben nem támogatott. A 3. x verzió kipróbálásával kapcsolatos további információkért tekintse meg [ezt a közleményt](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
 
-Ezzel a verzió 1.x modul fejlesztési és üzemeltetési az Azure Portalon vagy a Windows-számítógépeken csak támogatja.
+Ez a cikk a különböző verziók közötti különbségeket ismerteti, hogyan hozhatja létre az egyes verziókat, és hogyan módosíthatja a verziókat.
 
-## <a name="languages"></a>Languages
+## <a name="languages"></a>Nyelvek
 
-A verzió 2.x verziójú futtatókörnyezet új nyelvi bővíthetőségi modellt használ. A verzió 2.x-es, a függvényalkalmazás a függvények meg kell osztani ugyanazt a nyelvet. A függvényalkalmazás a függvények kiválasztott az alkalmazás létrehozásakor.
+A 2. x verziótól kezdődően a futtatókörnyezet nyelvi bővíthetőségi modellt használ, és a Function app összes funkciójának ugyanazzal a nyelvvel kell rendelkeznie. A functions alkalmazásban a függvények nyelve az alkalmazás létrehozásakor van kiválasztva, és a [\_WORKER \_RUNTIME](functions-app-settings.md#functions_worker_runtime) -beállításban található functions. 
 
-Az Azure Functions 1.x kísérleti nyelvek kell használni az új modell 2.x-es nem támogatottak azok nem frissülnek. Az alábbi táblázat azt jelzi, hogy minden egyes modul verzióját a jelenleg támogatott programozási nyelvek.
+Azure Functions 1. x kísérleti nyelvek nem használhatják az új modellt, így azok nem támogatottak 2. x-ben. A következő táblázat azt mutatja be, hogy mely programozási nyelvek támogatottak az egyes futtatókörnyezet-verziókban.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
 További információk: [Támogatott nyelvek](supported-languages.md).
 
-## <a name="creating-1x-apps"></a>Futtassa a verzió 1.x
+## <a name="creating-1x-apps"></a>Futtatás adott verzión
 
-Alapértelmezés szerint az Azure Portalon létrehozott függvényalkalmazás verzióra vannak beállítva 2.x. Ha lehetséges, használjon a futtatókörnyezet verziója hol kerül sor az új funkció-befektetéseit. Ha kell, 1.x verzió modulban továbbra is futtathatja a függvényalkalmazást. A függvényalkalmazás létrehozása után, de függvényeinek hozzáadása előtt a futtatókörnyezet-verzió csak módosíthatja. A futtatókörnyezet 1.x verzióra rögzítése kapcsolatban lásd: [megtekintése és frissítése az aktuális futtatókörnyezet-verzió](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Alapértelmezés szerint a Azure Portal és az Azure CLI-ben létrehozott Function apps a 2. x verzióra van beállítva. Ha lehetséges, használja ezt a futásidejű verziót. Ha szükséges, továbbra is futtathat egy Function alkalmazást az 1. x verzió futtatókörnyezetén. A futásidejű verziót csak a Function app létrehozása után, de a függvények hozzáadása előtt is módosíthatja. Ha szeretné megtudni, hogyan rögzítheti a futásidejű verziót 1. x-re, tekintse meg [a jelenlegi futtatókörnyezet-verzió megtekintése és frissítése](set-runtime-version.md#view-and-update-the-current-runtime-version)című témakört.
 
-## <a name="migrating-from-1x-to-2x"></a>Áttelepítés a 2.x 1.x
+Az előzetes verzióban elérhető futtatókörnyezet 3. x verziójára is frissíthet. Ezt akkor hajtsa végre, ha a functions szolgáltatást a .NET Core 3. x verzióban kell tudnia futtatni. A 3. x verzióra történő frissítéssel kapcsolatos további információkért lásd: [az aktuális futtatókörnyezet verziójának megtekintése és frissítése](set-runtime-version.md#view-and-update-the-current-runtime-version).
 
-Dönthet úgy, hogy használja inkább a verzió a verzió 1.x futtatókörnyezet használatával írt, meglévő alkalmazások áttelepítéséhez 2.x. A legtöbb végre kell hajtania a módosításokat a nyelvi futtatókörnyezetet, például C# API .NET Core 2 és a .NET-keretrendszer 4.7 között a módosításához kapcsolódó. Is kell, hogy a kód és a szalagtárak kompatibilisek-e a választott nyelvi futtatókörnyezetet. Végül mindenképpen vegye figyelembe a módosításokat az eseményindító, kötéseit és emelve a funkciók. A legjobb eredmények áttelepítési hozzunk létre egy új függvényalkalmazást verzió 2.x és port, a meglévő verzió 1.x függvény kód az új alkalmazáshoz.  
+## <a name="migrating-from-1x-to-later-versions"></a>Migrálás 1. x verzióról a későbbi verziókra
 
-### <a name="changes-in-triggers-and-bindings"></a>Eseményindítók és kötések változásai
+Dönthet úgy, hogy áttelepít egy meglévő alkalmazást, hogy az 1. x futtatókörnyezetet használja helyette a 2. x verzió használatára. A szükséges módosítások többsége a nyelvi futtatókörnyezet változásaihoz kapcsolódik, például az C# API-változásokat a .NET-keretrendszer 4,7 és a .net Core 2 között. Azt is ellenőriznie kell, hogy a kód és a kódtárak kompatibilisek-e a kiválasztott nyelvi futtatókörnyezettel. Végezetül jegyezze fel a trigger, a kötések és az alábbiakban kiemelt funkciók változásait. A legjobb áttelepítési eredményekhez hozzon létre egy új Function alkalmazást a 2. x verzióhoz, és a meglévő 1-es verziójú. x függvény kódját adja meg az új alkalmazásnak.  
 
-Verzió 2.x meghatározott eseményindítók és kötések az alkalmazás a functions által használt a bővítmények telepítését igényli. A HTTP- és időzítő eseményindítóik, amelyek a bővítmény nem igénylik az egyetlen kivétel.  További információkért lásd: [regisztrálása és a kötési bővítményeket telepítse](./functions-bindings-register.md).
+### <a name="changes-in-triggers-and-bindings"></a>Az eseményindítók és kötések változásai
 
-Vált továbbá néhány módosításával a `function.json` vagy attribútumok verziók között a függvénynek. Ha például az Event Hubs `path` tulajdonság már `eventHubName`. Tekintse meg a [létező kötés táblázat](#bindings) dokumentáció minden kötéshez mutató hivatkozásokat.
+A 2. x verzióhoz telepítenie kell a bővítményeket az alkalmazásban szereplő függvények által használt egyes eseményindítók és kötések számára. Az egyetlen kivétel a HTTP-és időzítő-eseményindítók esetében, amelyek nem igényelnek kiterjesztést.  További információ: [kötési bővítmények regisztrálása és telepítése](./functions-bindings-register.md).
 
-### <a name="changes-in-features-and-functionality"></a>Szolgáltatások és funkciók változásai
+A függvények `function.json` vagy attribútumai is módosultak a verziók között. Például az Event hub `path` tulajdonsága már `eventHubName`. Az egyes kötésekhez kapcsolódó dokumentációra mutató hivatkozásokat a [meglévő kötési táblázat](#bindings) tartalmazza.
 
-Néhány funkcióval, amely szintén el lettek távolítva, frissített vagy az új verzióban cserélni. Ez a szakasz részletesen verzió látható a módosítások után kellene használt verzió 2.x 1.x.
+### <a name="changes-in-features-and-functionality"></a>A szolgáltatások és a funkciók változásai
 
-A verzió 2.x-es, a következő változások történtek:
+Néhány szolgáltatás, amely az új verzióban is el lett távolítva, frissítve vagy lecserélve. Ez a szakasz az 1. x verzió használata után a 2. x verzióban megjelenő módosításokat részletezi.
 
-* A HTTP-végpontok hívása kulcsok mindig tárolja titkosított formában az Azure Blob storage-ban. Verzió 1.x, kulcsokat is tárolja az Azure File storage lehet alapértelmezett. Ha egy alkalmazás-es verzióról 1.x verzió 2.x, file storage-ban már meglévő titkokat alapértékre állnak vissza.
+A 2. x verzióban a következő módosítások történtek:
 
-* A verzió 2.x verziójú futtatókörnyezet nem tartalmaz beépített támogatást nyújt a webhook-szolgáltatók. Ez a változás történt a teljesítmény javítása. A webhookok végpontként továbbra is használhatja a HTTP-eseményindítók.
+* A HTTP-végpontok hívásához szükséges kulcsokat az Azure Blob Storage-ban mindig titkosítva tárolja a rendszer. Az 1. x verzióban a kulcsok tárolása az Azure file Storage-ban alapértelmezett. Ha az 1. x verzióról a 2. x verzióra frissít egy alkalmazást, a file Storage-ban lévő meglévő titkos kulcsok alaphelyzetbe állnak.
 
-* A gazdagép-konfigurációs fájl (host.json) legyen üres vagy tartalmazza a következő karakterláncot `"version": "2.0"`.
+* A 2. x verziójú futtatókörnyezet nem tartalmaz beépített támogatást a webhook-szolgáltatók számára. Ez a változás a teljesítmény javítása érdekében történt. A HTTP-eseményindítók továbbra is használhatók webhookok végpontként.
 
-* Figyelés, a WebJobs-irányítópulttal, a portálon használt javítása érdekében a [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) beállítás váltja fel az Azure Application insights segítségével, amely használja a [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) beállítás. További információkért lásd: [figyelése az Azure Functions](functions-monitoring.md).
+* A gazdagép konfigurációs fájljának (host. JSON) üresnek kell lennie, vagy a karakterláncnak `"version": "2.0"`nak kell lennie.
 
-* A függvényalkalmazás a függvények kell osztani ugyanazt a nyelvet. Amikor létrehoz egy függvényalkalmazást, ki kell választania egy futtatókörnyezeti verem az alkalmazáshoz. A futtatókörnyezeti verem által meghatározott a [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) értékét az alkalmazás beállításait. Ez a követelmény csökkenthetik a méretük és indítási lett hozzáadva. Amikor helyileg fejlesztésével, ezt a beállítást is fel kell a [local.settings.json fájljában](functions-run-local.md#local-settings-file).
+* A figyelés javítása érdekében a webjobs-irányítópultot a portálon, amely a [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) beállítást használta, a [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) beállítást használó Azure Application Insights helyére kerül. További információ: [Azure functions figyelése](functions-monitoring.md).
 
-* A functions az App Service-csomag alapértelmezett időtúllépési érték 30 perc értékre módosul. Manuálisan módosíthatja az időtúllépési vissza a korlátlan használatával a [functionTimeout](functions-host-json.md#functiontimeout) host.json beállítását.
+* A Function alkalmazás összes függvényének ugyanazt a nyelvet kell megosztania. Function-alkalmazás létrehozásakor ki kell választania egy futásidejű veremet az alkalmazáshoz. A futásidejű verem értékét az Alkalmazásbeállítások [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) értéke határozza meg. Ez a követelmény a lábnyom és az indítási idő javítására lett hozzáadva. Helyi fejlesztés esetén ezt a beállítást a [Local. Settings. JSON fájlban](functions-run-local.md#local-settings-file)is fel kell venni.
 
-* HTTP-egyidejűség szabályozások vannak megvalósítva, példányonként 100 egyidejű kérelmek alapértelmezés szerint a használatalapú csomag funkciók alapértelmezés szerint. Ez az a [ `maxConcurrentRequests` ](functions-host-json.md#http) beállítása a host.json fájlban.
+* Egy App Service csomagban lévő függvények alapértelmezett időtúllépése 30 percre módosul. A Host. JSON fájl [functionTimeout](functions-host-json.md#functiontimeout) beállításával manuálisan módosíthatja az időtúllépést a korlátlan értékre.
 
-* Mert [.NET core korlátozások](https://github.com/Azure/azure-functions-host/issues/3414), támogatja a F# parancsfájl (.fsx) funkciók el lettek távolítva. Lefordított F# függvények (.fs) továbbra is támogatottak.
+* A HTTP-párhuzamosságok szabályozása alapértelmezés szerint a használati terv funkcióival valósul meg, alapértelmezés szerint a 100 egyidejű kérések száma. Ezt a Host. JSON fájlban lévő [`maxConcurrentRequests`](functions-host-json.md#http) beállításban módosíthatja.
 
-* Event Grid eseményindító webhookok URL-cím formátuma módosult `https://{app}/runtime/webhooks/{triggerName}`.
+* A [.net Core korlátozásai](https://github.com/Azure/azure-functions-host/issues/3414)miatt a rendszer F# eltávolította a script (. fsx) függvények támogatását. A F# lefordított függvények (. FS) továbbra is támogatottak.
 
-### <a name="migrating-a-locally-developed-application"></a>Áttelepítés egy helyi fejlesztésű alkalmazás
+* Event Grid trigger-webhookok URL-formátuma `https://{app}/runtime/webhooks/{triggerName}`ra módosult.
 
-Előfordulhat, hogy meglévő függvény használatával helyben 1.x verzió futásidejű fejlesztett alkalmazás projektek. Verzióra való frissítéshez 2.x, hozzunk létre helyi függvényalkalmazás-projekt verziója elleni 2.x és port, a meglévő kód az új alkalmazásba. Sikerült manuálisan frissíti a meglévő projekt és a kód, a "helyszíni" frissítés egy rendezés alapjaként. Vannak azonban egyéb fejlesztések verziója számos 1.x és verzió 2.x, győződjön meg arról, hogy továbbra is szükséges. Például a C#-ban a hibakeresési objektum módosult `TraceWriter` való `ILogger`. Létrehoz egy új verzió 2.x projektet, először a legújabb verzió 2.x sablonok alapján, frissített funkciókkal.
+### <a name="migrating-a-locally-developed-application"></a>Helyileg fejlesztett alkalmazások áttelepítése
 
-#### <a name="visual-studio-runtime-versions"></a>A Visual Studio futtatókörnyezet verziója
+Előfordulhat, hogy az 1. x verzióban helyileg fejlesztett, meglévő Function app-projekteket használ. A 2. x verzióra való frissítéshez létre kell hoznia egy helyi function alkalmazás-projektet a 2. x verzióra, és a meglévő kódot az új alkalmazásba kell bejelentkeznie. Manuálisan frissítheti a meglévő projektet és kódot, a "helyi" frissítést. Az 1. x és a 2. x verzió között azonban még számos további újításra lehet szükség. C# A hibakeresési objektum például `TraceWriter`ról `ILogger`ra módosult. Egy új 2-es verziójú. x projekt létrehozásával a legújabb 2. x verziójú sablonok alapján kezdi meg a frissített funkciókat.
 
-A Visual Studióban, válassza ki a futtatókörnyezet-verzió a projekt létrehozásakor. Az Azure Functions tools for Visual Studio támogatja a mindkét fő futásidejű verzióját. A megfelelő verziójú akkor használatos, ha a Hibakeresés és közzétételi projekt beállításai alapján. A verzió beállítások vannak meghatározva a `.csproj` fájlt a következő tulajdonságokkal:
+#### <a name="visual-studio-runtime-versions"></a>Visual Studio Runtime-verziók
 
-##### <a name="version-1x"></a>Verzió 1.x
+A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnyezet verzióját. Azure Functions Tools for Visual Studio támogatja a főbb futtatókörnyezet-verziókat is. A megfelelő verzió a projekt beállításai alapján történő hibakeresés és közzététel során használatos. A verzió beállításait a `.csproj` fájlban a következő tulajdonságok határozzák meg:
+
+##### <a name="version-1x"></a>1\. x verzió
 
 ```xml
 <TargetFramework>net461</TargetFramework>
 <AzureFunctionsVersion>v1</AzureFunctionsVersion>
 ```
 
-##### <a name="version-2x"></a>Verzió 2.x
+##### <a name="version-2x"></a>2-es verzió. x
 
 ```xml
 <TargetFramework>netcoreapp2.2</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-Hibakeresés és a projekt közzétételekor, a futásidejű megfelelő verziója szolgál.
+A projekt hibakeresése vagy közzététele során a rendszer a futtatókörnyezet megfelelő verzióját használja.
 
-#### <a name="vs-code-and-azure-functions-core-tools"></a>A VS Code és az Azure Functions Core Tools
+#### <a name="vs-code-and-azure-functions-core-tools"></a>VS kód és Azure Functions Core Tools
 
-[Az Azure Functions Core Tools](functions-run-local.md) parancssori fejlesztési és a is szolgál a [Azure Functions bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) a Visual Studio Code. Verzió elleni fejleszthet 2.x-es, a telepítés verzió 2.x verzióját az Core Tools. Verzió 1.x fejlesztési verziója szükséges a Core Tools 1.x-es. További információkért lásd: [az Azure Functions Core Tools telepítése](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure functions Core Tools](functions-run-local.md) a parancssori fejlesztéshez, valamint a Visual Studio Code-hoz készült [Azure functions-bővítményhez](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) is használható. A 2. x verzióval való fejlesztéshez telepítse a Core Tools 2. x verzióját. Az 1. x verzió fejlesztéséhez a Core Tools 1. x verziója szükséges. További információ: [install the Azure functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
 
-A Visual Studio Code-fejlesztéshez is szükség lehet a felhasználó vonatkozó beállításainak frissítéséhez a `azureFunctions.projectRuntime` telepített eszközök verziójának megfelelő.  Ez a beállítás is frissíti a sablonokat és a függvény létrehozása során használt nyelv.
+A Visual Studio Code fejlesztéséhez szükség lehet a `azureFunctions.projectRuntime` felhasználói beállításának frissítésére is, hogy megfeleljen a telepített eszközök verziójának.  Ezzel a beállítással a Function app létrehozásakor használt sablonokat és nyelveket is frissíti.
 
-### <a name="changing-version-of-apps-in-azure"></a>Az Azure-beli alkalmazások verziója módosítása
+### <a name="changing-version-of-apps-in-azure"></a>Alkalmazások verziójának módosítása az Azure-ban
 
-A Functions futtatókörnyezete az Azure-ban közzétett alkalmazások által használt verziójának szabja a [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) nastavení aplikace. Érték `~2` célozza meg, a verzió 2.x verziójú futtatókörnyezet és `~1` 1.x verzió futásidejű célozza. Tetszőlegesen ne módosítsa ezt a beállítást, mert más alkalmazás-beállítások módosításai és a kód módosításait az a funkciók valószínűleg szüksége. A függvényalkalmazás át egy másik futtatókörnyezet-verzió ajánlott módja kapcsolatos további információkért lásd: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
+Az Azure-ban közzétett alkalmazások által használt functions futtatókörnyezet verzióját a [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version) alkalmazás-beállítás határozza meg. @No__t_0 érték a 2. x verziójú futtatókörnyezetet célozza meg, és `~1` az 1. x verziójú futtatókörnyezetet célozza meg. Ne módosítsa ezt a beállítást, mert valószínű, hogy más alkalmazás-beállításokat módosítanak, és a függvények programkódjának módosításai valószínűleg szükségesek. A Function app különböző futtatókörnyezet-verzióra való áttelepítésének ajánlott módjáról a következő témakörben talál további információt: [Azure functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md).
 
 ## <a name="bindings"></a>Kötések
 
-A verzió 2.x verziójú futtatókörnyezet használja egy új [bővíthetőségi modell kötése](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) , amely ezeket az előnyöket kínálja:
+A 2. x verziótól kezdődően a futtatókörnyezet egy új [kötési bővíthetőségi modellt](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) használ, amely a következő előnyöket kínálja:
 
-* Támogatás a külső kötési bővítményeket.
+* Harmadik féltől származó kötési bővítmények támogatása.
 
-* Elválasztás futtatókörnyezeti és a kötéseket. Ez a változás lehetővé teszi, hogy a rendszerverzióval ellátott és egymástól függetlenül kiadott kötési bővítményeket. Például kérheti egy bővítmény, amely az alapul szolgáló SDK újabb verziója támaszkodik a verzióra frissíteni.
+* Futtatókörnyezet és kötések leválasztása. Ez a módosítás lehetővé teszi, hogy a kötési bővítmények verziója és kiadása egymástól függetlenül történjen. Például megadhatja, hogy a bővítmény olyan verziójára frissítsen, amely egy mögöttes SDK újabb verziójára támaszkodik.
 
-* Egy világosabb végrehajtási környezetet, ahol csak a használatban lévő kötéseket ismertek és a futtatókörnyezet által betöltött.
+* Egy világosabb végrehajtási környezet, ahol csak a használatban lévő kötések ismertek és töltődnek be a futtatókörnyezet.
 
-HTTP- és időzítő eseményindító kivételével minden kötések kell explicit módon hozzá a függvényalkalmazás projektjét, vagy regisztrálva a portálon. További információkért lásd: [regisztrálja a kötési bővítményeket](./functions-bindings-expressions-patterns.md).
+A HTTP-és időzítő-eseményindítók kivételével az összes kötést explicit módon fel kell venni a Function app-projektbe, vagy regisztrálni kell a portálon. További információ: [kötési bővítmények regisztrálása](./functions-bindings-expressions-patterns.md).
 
-Az alábbi táblázat mutatja, melyik kötések támogatottak a minden egyes modul verzióját.
+A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen kötéseket támogatnak.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 
 * [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
-* [Az Azure Functions runtime verziók bemutatásához](set-runtime-version.md)
-* [Kibocsátási megjegyzések](https://github.com/Azure/azure-functions-host/releases)
+* [A Azure Functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md)
+* [Kiadási megjegyzések](https://github.com/Azure/azure-functions-host/releases)

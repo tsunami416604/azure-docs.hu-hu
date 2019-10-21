@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 03fb21197b2e71603b8078945e16ccd69f151577
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
-ms.translationtype: HT
+ms.openlocfilehash: a5674658fa237e44c7caea45c8f6d587a471b981
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555779"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595637"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 
@@ -263,11 +263,18 @@ A következő YAML egy példa a Conda függőségeinek fájlra:
 name: project_environment
 dependencies:
   - python=3.6.2
+  - scikit-learn=0.20.0
   - pip:
     - azureml-defaults
-    - scikit-learn==0.20.0
     - inference-schema[numpy-support]
 ```
+
+> [!IMPORTANT]
+> Ha a függőség a Conda és a PIP (a PyPi) szolgáltatáson keresztül érhető el, a Microsoft a Conda-verzió használatát javasolja, mivel a Conda-csomagok jellemzően olyan előre elkészített bináris fájlokkal rendelkeznek, amelyek megbízhatóbb telepítést tesznek elérhetővé.
+>
+> További információ: a [Conda és a pip ismertetése](https://www.anaconda.com/understanding-conda-and-pip/).
+>
+> Ha szeretné megnézni, hogy a függőség elérhető-e a Conda-on keresztül, használja a `conda search <package-name>` parancsot, vagy használja a csomag indexeit [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) és [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo).
 
 Ha automatikus séma-generálást szeretne használni, a bejegyzési parancsfájlnak importálnia kell a `inference-schema` csomagokat.
 

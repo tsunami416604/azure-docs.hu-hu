@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 25d8588f8e2c968dc2516938263aaa7d6ddcff13
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 01a1dba18e21a38695146560bbf85cf1a042ba02
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387858"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596574"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory leképezési adatfolyam keresési transzformációja
 
@@ -29,6 +29,20 @@ A keresési átalakítás a bal oldali külső illesztés megfelelőjét hajtja 
 
 A keresési átalakítás után a következő átalakításokkal vizsgálhatja meg az egyes egyeztetési sorok eredményét a `isMatch()` Expression függvény használatával, hogy további döntéseket lehessen tenni a logikában attól függően, hogy a keresés egy sor egyezését eredményezte-e, vagy sem.
 
+![Keresési minta](media/data-flow/lookup111.png "Keresési minta")
+
+A keresési transzformáció használata után hozzáadhat egy feltételes felosztású átalakítási felosztást a ```isMatch()``` függvényhez. A fenti példában a sorok egyeztetése a felső streamen és a nem egyező sorokon halad végig a ```NoMatch``` adatfolyamon.
+
+## <a name="first-or-last-value"></a>Első vagy utolsó érték
+
+Ha a Keresés több egyezést is tartalmaz, érdemes lehet csökkenteni a több egyező sort az első vagy az utolsó egyezés kiválasztásával. Ezt a keresés után egy összesített átalakítással végezheti el.
+
+Ebben az esetben egy ```PickFirst``` nevű összesített átalakítás használatos a keresési egyezések első értékének kiválasztásához.
+
+![Keresési összesítés](media/data-flow/lookup333.png "Keresési összesítés")
+
+![Első keresés](media/data-flow/lookup444.png "Első keresés")
+
 ## <a name="optimizations"></a>Optimalizálás
 
 Data Factory az adatfolyamatok kibővített Spark-környezetekben futnak. Ha az adatkészlet elfér a munkavégző csomópont memóriájában, optimalizálhatja a keresési teljesítményt.
@@ -45,4 +59,5 @@ Az adatparticionálást úgy is megadhatja, ha a keresési átalakítás optimal
 
 ## <a name="next-steps"></a>Következő lépések
 
-A [Csatlakozás](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások hasonló feladatokat hajtanak végre az ADF-leképezési adatforgalomban. Tekintse meg a következő átalakításokat.
+* A [Csatlakozás](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások hasonló feladatokat hajtanak végre az ADF-leképezési adatforgalomban. Tekintse meg a következő átalakításokat.
+* [Feltételes felosztás](data-flow-conditional-split.md) és ```isMatch()``` használata sorok felosztásához a megfeleltetési és a nem egyező értékekhez

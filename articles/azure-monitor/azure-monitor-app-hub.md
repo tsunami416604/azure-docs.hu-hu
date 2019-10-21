@@ -3,19 +3,18 @@ layout: HubPage
 hide_bc: false
 title: Azure Monitor Application ininsight-dokumentáció – oktatóanyagok és API-referenciák | Microsoft Docs
 description: Azure Monitor Application Insights részletes programkód-szintű alkalmazás teljesítmény-figyelést biztosít.
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
 ms.service: application-insights
-ms.topic: landing-page
-ms.date: 01/15/2019
+ms.subservice: ''
+ms.topic: hub-page
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 6f35bf82e1c3275772bc9f5ccdcaceed024bd7d9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 01/15/2019
+ms.openlocfilehash: 254cd4e67c0c64ba9b21133e957ae2cacfefe7a7
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967794"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72596816"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -77,7 +76,7 @@ ms.locfileid: "68967794"
                                                             <a href="./learn/dotnetcore-quick-start.md">ASP.NET Core</a><br>
                                                             <a href="./learn/nodejs-quick-start.md">Node.js</a><br>
                                                             <a href="./learn/mobile-center-quickstart.md">Mobileszköz</a><br>
-                                                            <a href="./app/website-monitoring.md">Böngésző/ügyféloldali figyelés</a>
+                                                            <a href="./app/website-monitoring.md">Böngésző/ügyféloldali figyelés</a> 
                                                         </p>
                                                         <br><br>
                                                         <h3>Oktatóanyagok</h3>
@@ -86,7 +85,7 @@ ms.locfileid: "68967794"
                                                             <a href="./learn/tutorial-performance.md">Teljesítményproblémák észlelése és diagnosztizálása</a><br>
                                                             <a href="./learn/tutorial-alert.md">Alkalmazásállapot-figyelés és riasztások</a><br>
                                                             <a href="./learn/tutorial-users.md">A felhasználó viselkedésének megértése</a><br>
-                                                            <a href="./learn/tutorial-app-dashboards.md">Egyéni irányítópultok létrehozása</a>
+                                                            <a href="./learn/tutorial-app-dashboards.md">Egyéni irányítópultok létrehozása</a> 
                                                             </p>
                                                         <br><br>
                                                         <h3>Elosztott nyomkövetés</h3>
@@ -94,7 +93,7 @@ ms.locfileid: "68967794"
                                                             <a href="./app/distributed-tracing.md">Mi az elosztott nyomkövetés?</a><br>
                                                             <a href="./app/opencensus-python.md">OpenCensus a Pythonhoz</a><br>
                                                             <a href="./app/opencensus-go.md">OpenCensus for go</a><br>
-                                                            <a href="./app/opencensus-local-forwarder.md">Helyi továbbító</a>
+                                                            <a href="./app/opencensus-local-forwarder.md">Helyi továbbító</a> 
                                                             </p>
                                                         <br><br>
                                                         <h3>Automatikus intelligens észlelés</h3>
@@ -107,10 +106,10 @@ ms.locfileid: "68967794"
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">Alacsony CPU-kihasználtság</a><br>
                                                             <a href="./app/proactive-application-security-detection-pack.md">Biztonsági problémák</a><br>
                                                             <a href="./app/proactive-cloud-services.md">Azure Cloud Services</a><br>
-                                                            <a href="./app/proactive-arm-config.md">Intelligens észlelés kezelése sablonokkal</a>
+                                                            <a href="./app/proactive-arm-config.md">Intelligens észlelés kezelése sablonokkal</a> 
                                                         </p>
                                                         <br><br>
-                                                        <h3>Hivatkozás</h3>
+                                                        <h3>Leírások</h3>
                                                         <p>
                                                             <a href="./app/auto-collect-dependencies.md">Függőség automatikus gyűjtése</a><br>
                                                             <a href="./app/correlation.md">Telemetriai korreláció</a><br>
@@ -138,7 +137,7 @@ ms.locfileid: "68967794"
                                                             <a href="./app/api-custom-events-metrics.md">Egyéni események és a mérőszámok</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
 ">Config. XML</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Nyílt forráskódú Java SDK GitHub-tárház</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-Java">Nyílt forráskódú Java SDK GitHub</a> -tárház 
                                                         </p>
                                                         <br><br>
                                                         <h3>.NET-alkalmazások</h3>
@@ -148,7 +147,7 @@ ms.locfileid: "68967794"
                                                             <a href="./app/azure-web-apps.md">App Service figyelés</a><br>
                                                             <a href="./app/azure-vm-vmss-apps.md">Virtuális gépek és virtuálisgép-méretezési csoport alkalmazásának figyelése</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Egyéni események és a mérőszámok</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Nyílt forráskódú .NET SDK GitHub-tárház</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-dotnet">Nyílt forráskódú .net SDK GitHub</a> -tárház 
                                                         </p>
                                                         <br><br>
                                                           <h3>.NET Core-alkalmazások</h3>
@@ -156,14 +155,14 @@ ms.locfileid: "68967794"
                                                             <a href="./app/asp-net-core.md">Részletes figyelési konfiguráció</a><br>
                                                             <a href="./app/profiler-aspnetcore-linux.md">Profilkészítés ASP.NET Core</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Egyéni események és a mérőszámok</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Nyílt forráskódú .NET Core SDK GitHub-tárház</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-aspnetcore">Nyílt forráskódú .net Core SDK GitHub</a> -tárház 
                                                         </p>
                                                         <br><br>
                                                           <h3>Node. js-alkalmazások</h3>
                                                         <p>
                                                             <a href="./app/nodejs.md">Részletes figyelési konfiguráció</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Egyéni események és a mérőszámok</a><br>
-                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Nyílt forráskódú Node. js SDK GitHub-tárház</a>
+                                                            <a href="https://github.com/Microsoft/ApplicationInsights-node.js">Nyílt forráskódú Node. js SDK GitHub</a> -tárház 
                                                         </p>
                                                         <br><br>
                                                         <h3>Ügyfél/böngésző oldali figyelés</h3>
@@ -191,28 +190,28 @@ ms.locfileid: "68967794"
                                                             <a href="./app/usage-cohorts.md">Kohorszok</a><br>
                                                             <a href="./app/usage-impact.md">Hatás</a><br>
                                                             <a href="./app/usage-retention.md">Megőrzés</a><br>
-                                                            <a href="./app/usage-flows.md">Felhasználókövetés</a>
+                                                            <a href="./app/usage-flows.md">Felhasználókövetés</a> 
                                                         </p>
                                                         <br><br>
                                                         <h3>Valós idejű figyelés,<br> vizualizáció, &amp; elemzés</h3>
                                                         <p>
-                                                            <a href="./app/overview-dashboard.md">Irányítópult- &amp; alkalmazás áttekintése – irányítópult</a><br>
+                                                            <a href="./app/overview-dashboard.md">Áttekintés irányítópult &amp; alkalmazás-irányítópult</a><br>
                                                             <a href="./app/monitor-web-app-availability.md">Globális rendelkezésre állás figyelése</a><br>
                                                             <a href="./app/live-stream.md">Élő mérőszámok streamje</a><br>
                                                             <a href="./app/app-map.md">Elosztott alkalmazások leképezése</a><br>
                                                             <a href="../monitoring-and-diagnostics/resource-group-insights.md">Erőforráscsoport-szint figyelése</a><br>
                                                             <a href="./app/usage-workbooks.md">Interaktív jelentéskészítés</a><br>
                                                             <a href="./app/export-power-bi.md">Power BI integráció</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Metrikák vizsgálata</a>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-metric-charts">Metrikák vizsgálata</a> 
                                                         </p>
                                                         <br><br>
-                                                        <h3>Adatvédelem, biztonság, használati &amp; díjak</h3>
+                                                        <h3>Adatvédelem, biztonság, használati &amp;i díj</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Személyes adatkezelés</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Adatgyűjtés, megőrzés, &amp; tárolás</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Adatgyűjtés, megőrzés, &amp; tárterület</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Szerepköralapú hozzáférés</a><br>
-                                                            <a href="./app/ip-addresses.md">IP- &amp; cím-tűzfal kivételei</a><br>
-                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Használat és becsült költségek</a>
+                                                            <a href="./app/ip-addresses.md">IP-cím &amp; tűzfal kivételei</a><br>
+                                                            <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Használat és becsült költségek</a> 
                                                         </p>
                                                         <br><br>
                                                         <h3>Adatmodell</h3>
@@ -224,7 +223,7 @@ ms.locfileid: "68967794"
                                                             <a href="./app/data-model-trace-telemetry.md">Nyomkövetés</a><br>
                                                             <a href="./app/data-model-event-telemetry.md">Esemény</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metrika</a><br>
-                                                            <a href="./app/data-model-context.md">Összefüggésben</a>
+                                                            <a href="./app/data-model-context.md">Környezeti</a> 
                                                             </p>
                                                         </p>
                                                     </div>

@@ -5,89 +5,58 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c75a13a20c1dbb222db69145e24838deb111fb66
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671326"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595211"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Felhasználói delegálási SAS létrehozása tárolóhoz vagy blobhoz .NET-tel (előzetes verzió)
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatai egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz a [.net-hez készült Azure Storage ügyféloldali kódtár](https://www.nuget.org/packages/Azure.Storage.Blobs)használatával.
+Ez a cikk bemutatja, hogyan használhatók a Azure Active Directory (Azure AD) hitelesítő adatai egy felhasználói delegálási SAS létrehozásához egy tárolóhoz vagy blobhoz a .NET-hez készült Azure Storage ügyféloldali kódtár használatával.
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
+## <a name="authenticate-with-the-azure-identity-library-preview"></a>Hitelesítés az Azure Identity Library (előzetes verzió) használatával
+
+Az Azure Identity .NET-hez készült ügyféloldali kódtára (előzetes verzió) egy rendszerbiztonsági tag hitelesítésére szolgál. Ha a kód az Azure-ban fut, a rendszerbiztonsági tag felügyelt identitás az Azure-erőforrásokhoz.
+
+Ha a kód a fejlesztési környezetben fut, a hitelesítés automatikusan kezelhető, vagy szükség lehet egy böngészőbeli bejelentkezésre, attól függően, hogy melyik eszközt használja. A Microsoft Visual Studio támogatja az egyszeri bejelentkezést (SSO), így az aktív Azure AD-felhasználói fiók automatikusan használatos a hitelesítéshez. További információ az egyszeri bejelentkezésről: [egyszeri bejelentkezés az alkalmazásokba](../../active-directory/manage-apps/what-is-single-sign-on.md).
+
+Más fejlesztői eszközök megkérhetik a bejelentkezést egy webböngészőn keresztül. Az egyszerű szolgáltatásnév használatával is végezheti el a hitelesítést a fejlesztési környezetből. További információkért lásd: [identitás létrehozása az Azure-alkalmazáshoz a portálon](../../active-directory/develop/howto-create-service-principal-portal.md).
+
+A hitelesítés után az Azure Identity Client Library megkapja a jogkivonat hitelesítő adatait. Ezt a jogkivonat hitelesítő adatait a rendszer az Azure Storage szolgáltatással kapcsolatos műveletek elvégzéséhez létrehozott szolgáltatási ügyfél objektumba ágyazza be. A könyvtár zökkenőmentesen kezeli ezt a megfelelő jogkivonat-hitelesítő adatok beszerzésével.
+
+Az Azure Identity ügyféloldali függvénytárával kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+
+## <a name="assign-rbac-roles-for-access-to-data"></a>RBAC-szerepkörök kiosztása az adathoz való hozzáféréshez
+
+Amikor egy Azure AD rendszerbiztonsági tag megpróbál hozzáférni a blob-adatforráshoz, a rendszerbiztonsági tag engedélyekkel kell rendelkeznie az erőforráshoz. Azt jelzi, hogy a rendszerbiztonsági tag felügyelt identitás-e az Azure-ban vagy egy olyan Azure AD-felhasználói fiók, amely kódot futtat a fejlesztési környezetben, a rendszerbiztonsági tag számára olyan RBAC-szerepkört kell hozzárendelni, amely hozzáférést biztosít az Azure Storage-beli blob- Az engedélyek **RBAC-n** keresztüli hozzárendelésével kapcsolatos információkért tekintse meg az [Azure-blobok és-várólisták hozzáférésének engedélyezése a Azure Active Directory használatával](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)című témakör című szakaszát.
+
 ## <a name="install-the-preview-packages"></a>Az előzetes verziójú csomagok telepítése
 
-A jelen cikkben szereplő példák az Azure Storage ügyféloldali kódtár legújabb előzetes verzióját használják a blob Storage-hoz. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
+A jelen cikkben szereplő példák az [Azure Storage ügyféloldali kódtár](https://www.nuget.org/packages/Azure.Storage.Blobs)legújabb előzetes verzióját használják a blob Storage-hoz. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
-```
+```powershell
 Install-Package Azure.Storage.Blobs -IncludePrerelease
 ```
 
-A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb előzetes verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. Az Azure Identity Client Library egy rendszerbiztonsági tag hitelesítésére szolgál. A hitelesített rendszerbiztonsági tag ezután létrehozhatja a felhasználói delegálási SAS-t. Az Azure Identity ügyféloldali függvénytárával kapcsolatos további információkért lásd: az [Azure Identity ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+A cikkben szereplő példák a [.net-hez készült Azure Identity Client Library](https://www.nuget.org/packages/Azure.Identity/) legújabb előzetes verzióját is használják az Azure ad-beli hitelesítő adatokkal való hitelesítéshez. Az előnézeti csomag telepítéséhez futtassa a következő parancsot a NuGet Package Manager konzolról:
 
-```
+```powershell
 Install-Package Azure.Identity -IncludePrerelease
 ```
 
-## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
-
-Ha az Azure AD-beli hitelesítő adatokkal szeretne hitelesítést végezni az Azure Identity ügyféloldali kódtár használatával, a kód helyétől függően adjon meg egy egyszerű szolgáltatásnevet vagy egy felügyelt identitást a rendszerbiztonsági tagként. Ha a kód fejlesztési környezetben fut, tesztelési célokra használjon egyszerű szolgáltatásnevet. Ha a kód az Azure-ban fut, használjon felügyelt identitást. Ez a cikk azt feltételezi, hogy a fejlesztési környezetből származó kódot futtat, és bemutatja, hogyan lehet egyszerű szolgáltatásnév használatával létrehozni a felhasználói delegálási SAS-t.
-
-Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. A szerepkörnek tartalmaznia kell a **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** műveletet. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
-
-Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az egyszerű szolgáltatásnév létrehozza a felhasználói delegálási kulcsot, amely a Storage-fiók szintjén végrehajtott művelet, így a szerepkör-hozzárendelés hatókörét a Storage-fiók, az erőforráscsoport vagy az előfizetés szintjén kell végrehajtani. A felhasználói delegálási SAS létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a [felhasználói delegálási sas (REST API) létrehozása](/rest/api/storageservices/create-user-delegation-sas)a RBAC a **RBAC** című szakaszát.
-
-Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
-
-Az alábbi példa az Azure CLI-t használja egy új egyszerű szolgáltatásnév létrehozásához, és hozzárendeli a **Storage blob Adatolvasói** szerepkört a fiók hatóköréhez
-
-```azurecli-interactive
-az ad sp create-for-rbac \
-    --name <service-principal> \
-    --role "Storage Blob Data Reader" \
-    --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
-```
-
-A `az ad sp create-for-rbac` parancs JSON formátumban adja vissza a szolgáltatásnév tulajdonságainak listáját. Másolja ezeket az értékeket, hogy felhasználhassa a szükséges környezeti változókat a következő lépésben.
-
-```json
-{
-    "appId": "generated-app-ID",
-    "displayName": "service-principal-name",
-    "name": "http://service-principal-uri",
-    "password": "generated-password",
-    "tenant": "tenant-ID"
-}
-```
-
-> [!IMPORTANT]
-> A RBAC szerepkör-hozzárendelések eltartása néhány percet is igénybe vehet.
-
-## <a name="set-environment-variables"></a>Környezeti változók beállítása
-
-Az Azure Identity ügyféloldali függvénytár három környezeti változóból olvassa be az értékeket az egyszerű szolgáltatásnév hitelesítéséhez. A következő táblázat az egyes környezeti változókhoz beállított értéket ismerteti.
-
-|Környezeti változó|Value
-|-|-
-|`AZURE_CLIENT_ID`|Az egyszerű szolgáltatáshoz tartozó alkalmazás azonosítója
-|`AZURE_TENANT_ID`|Az egyszerű szolgáltatás Azure AD-bérlői azonosítója
-|`AZURE_CLIENT_SECRET`|Az egyszerű szolgáltatásnév számára létrehozott jelszó
-
-> [!IMPORTANT]
-> A környezeti változók beállítása után zárjuk be és nyissa meg újra a konzolablak ablakát. Ha a Visual studiót vagy más fejlesztési környezetet használ, előfordulhat, hogy újra kell indítania a fejlesztési környezetet ahhoz, hogy regisztrálni lehessen az új környezeti változókat.
-
 ## <a name="add-using-directives"></a>Hozzáadás irányelvekkel
 
-Adja hozzá a következő `using` direktívát a kódhoz, hogy az Azure Identity és az Azure Storage ügyféloldali kódtára előzetes verzióit használja.
+Adja hozzá a következő `using`-irányelveket a kódjához az Azure Identity és az Azure Storage ügyféloldali kódtárainak előzetes verziójának használatához.
 
 ```csharp
 using System;
@@ -100,11 +69,11 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 ```
 
-## <a name="authenticate-the-service-principal"></a>Az egyszerű szolgáltatás hitelesítése
+## <a name="get-an-authenticated-token-credential"></a>Hitelesített jogkivonat hitelesítő adatainak beolvasása
 
-Az egyszerű szolgáltatás hitelesítéséhez hozzon létre egy példányt a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztályból. A `DefaultAzureCredential` konstruktor beolvassa a korábban létrehozott környezeti változókat.
+Ha meg szeretné kapni a jogkivonat hitelesítő adatait, amelyet a kód használhat az Azure Storage-ba irányuló kérések engedélyezéséhez, hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát.
 
-A következő kódrészlet bemutatja, hogyan kérheti le a hitelesített hitelesítő adatokat, és hogyan hozhat létre szolgáltatási ügyfelet a blob Storage-hoz
+A következő kódrészlet bemutatja, hogyan kérheti le a hitelesített jogkivonat hitelesítő adatait, és hogyan hozhat létre szolgáltatási ügyfelet a blob Storage-hoz:
 
 ```csharp
 string blobEndpoint = string.Format("https://{0}.blob.core.windows.net", accountName);
@@ -165,7 +134,7 @@ UriBuilder fullUri = new UriBuilder()
 };
 ```
 
-## <a name="example-get-a-user-delegation-sas"></a>Példa: Felhasználói delegálási SAS beszerzése
+## <a name="example-get-a-user-delegation-sas"></a>Példa: felhasználói delegálási SAS beszerzése
 
 A következő példa a rendszerbiztonsági tag hitelesítéséhez és a felhasználói delegálás SAS létrehozásához használható teljes kódot mutatja be:
 
@@ -221,7 +190,7 @@ async static Task<Uri> GetUserDelegationSasBlob(string accountName, string conta
 }
 ```
 
-## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Példa: BLOB beolvasása felhasználói delegálási SAS-vel
+## <a name="example-read-a-blob-with-a-user-delegation-sas"></a>Példa: blob beolvasása felhasználói delegálási SAS-vel
 
 A következő példa egy szimulált ügyfélalkalmazás által az előző példában létrehozott felhasználói delegálási SAS tesztelését teszteli. Ha az SAS érvényes, az ügyfélalkalmazás el tudja olvasni a blob tartalmát. Ha az SAS érvénytelen, például ha lejárt, az Azure Storage a 403-as hibakódot (tiltott) adja vissza.
 
@@ -273,7 +242,7 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Felhasználói delegálási kulcs műveletének beolvasása](/rest/api/storageservices/get-user-delegation-key)
 - [Felhasználói delegálási SAS létrehozása (REST API)](/rest/api/storageservices/create-user-delegation-sas)

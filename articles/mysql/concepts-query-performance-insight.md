@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/27/2019
-ms.openlocfilehash: f6c74582760d77ae4318739c74f77d0bcd0501fe
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.date: 10/17/2019
+ms.openlocfilehash: b7395a8ab71e860c2e584339dcd581077a4f4020
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950363"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72595450"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Lekérdezési terheléselemző a Azure Database for MySQL
 
@@ -59,7 +59,7 @@ Kattintással és húzással egy adott időablakra szűkítheti a diagramot. Azt
 ### <a name="wait-statistics"></a>Várakozási statisztika
 
 > [!NOTE]
-> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva.
+> A várakozási statisztikák a lekérdezések teljesítményével kapcsolatos problémák elhárításához szükségesek. Javasoljuk, hogy csak hibaelhárítási célokra legyen bekapcsolva. <br>Ha a következő hibaüzenet jelenik meg: "*a Microsoft. DBforMySQL" hibába ütközött "a probléma" Azure Portal. a kérés nem teljesíthető. Ha a probléma továbbra is fennáll, vagy váratlan, forduljon az ügyfélszolgálathoz az információval.* " a várakozási statisztikák megtekintése közben használjon kisebb időtartamot.
 
 A várakozási statisztikák áttekintést nyújtanak az adott lekérdezés végrehajtása során bekövetkezett várakozási eseményekről. További információ a várakozási események típusairól a [MySQL-motor dokumentációjában](https://go.microsoft.com/fwlink/?linkid=2098206).
 
@@ -69,6 +69,6 @@ A várakozási Statisztika nézetben megjelenő lekérdezések csoportosítása 
 
 ![Lekérdezési terheléselemző vár statisztikái](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MySQL [figyeléséről és hangolásáról](concepts-monitoring.md) .

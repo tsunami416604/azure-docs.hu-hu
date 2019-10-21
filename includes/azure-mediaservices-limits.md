@@ -4,17 +4,17 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: de3fd8dc0d45ea10e64af8e2258682a9e98639dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: e61b804c20063e87c19df4484291f81fdbb03a7b
+ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67179500"
+ms.lasthandoff: 10/18/2019
+ms.locfileid: "72600968"
 ---
 >[!NOTE]
 >A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
 
-| Resource | Alapértelmezett korlát | 
+| Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
 | Egyetlen előfizetésben lévő fiókok Azure Media Services | 25 (rögzített) |
 | Media szolgáltatás számára fenntartott egységek száma Media Services fiókban |25 (S1)<br/>10 (S2, S3)<sup>1</sup> | 
@@ -30,7 +30,7 @@ ms.locfileid: "67179500"
 | Leállított vagy futó adatfolyam-végpontok Media Services fiókban|2|
 | Streamelési egységek streamvégpontonként |10 |
 | Tárfiókok | 1000<sup>5</sup> (rögzített) |
-| Házirendek | 1,000,000<sup>6</sup> |
+| Irányelvek | 1,000,000<sup>6</sup> |
 | Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret megengedett. <sup>7</sup> |
 
 <sup>1</sup> Ha megváltoztatja például az S2 és S1 közötti értéket, a rendszer alaphelyzetbe állítja a fenntartott egységek maximális korlátját.
@@ -52,7 +52,7 @@ ms.locfileid: "67179500"
 
 <sup>7</sup> Az egyes Blobok maximális mérete jelenleg legfeljebb 5 TB lehet az Azure Blob Storageban. A további korlátozások a szolgáltatás által használt virtuálisgép-méretek alapján Media Services vonatkoznak. A méretkorlát a feltöltött fájlokra, valamint a Media Services feldolgozás (kódolás vagy elemzés) eredményeképpen generált fájlokra is vonatkozik. Ha a forrásfájl mérete meghaladja a 260 GB-ot, a feladat valószínűleg sikertelen lesz. 
 
-Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4k-tartalommal rendelkezik, amely nagyobb, mint az S3-as Media szolgáltatás számára fenntartott egységek 260 GB amshelp@microsoft.com -os korlátja, lépjen kapcsolatba velünk a forgatókönyvben rejlő lehetséges megoldásokkal.
+Az alábbi táblázat az S1, S2 és S3 Media szolgáltatás számára fenntartott egységek korlátozásait mutatja be. Ha a forrásfájl nagyobb a táblázatban megadott korlátoknál, a kódolási feladata meghiúsul. Ha hosszú ideig kódolja a 4K-feloldási forrásokat, a szükséges teljesítmény eléréséhez S3 Media szolgáltatás számára fenntartott egységeket kell használnia. Ha olyan 4K-tartalommal rendelkezik, amely nagyobb, mint az S3 Media szolgáltatás számára fenntartott egységek 260 GB-os korlátja, nyisson meg egy támogatási jegyet.
 
 |Media szolgáltatás számára fenntartott egység típusa   |Maximális bemeneti méret (GB)|
 |---|---|
