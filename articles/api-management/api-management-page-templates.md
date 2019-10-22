@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1189689566da84df6d6b8845bf7c81bd8aa5f1ab
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072227"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Lapok az Azure API Management
@@ -97,12 +97,12 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 </div>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [basic-signin](api-management-page-controls.md#basic-signin)  
+-   [alapszintű – bejelentkezési](api-management-page-controls.md#basic-signin)  
   
--   [Szolgáltatók](api-management-page-controls.md#providers)  
+-   [szolgáltatók](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>Adatmodell  
  [Felhasználó bejelentkezési](api-management-template-data-model-reference.md#UseSignIn) entitása.  
@@ -156,10 +156,10 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 </div>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  Ez a sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [sign-up](api-management-page-controls.md#sign-up)  
+-   [regisztráció](api-management-page-controls.md#sign-up)  
   
 ### <a name="data-model"></a>Adatmodell  
  [Felhasználói regisztráció](api-management-template-data-model-reference.md#UserSignUp) entitása.  
@@ -186,7 +186,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 ##  <a name="PageNotFound"></a>A lap nem található  
  A **lap nem található** sablon lehetővé teszi az oldal nem található oldalának testreszabását a fejlesztői portálon.  
   
- ![Nem található lap] A (./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM nem található a fejlesztői portál sablonjai")  
+ ![Nem található lap](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "A APIM nem található a fejlesztői portál sablonjai")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -220,18 +220,18 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 </p>  
 ```  
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A sablon nem használhat [oldal vezérlőelemeket](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Type (Típus)|Leírás|  
 |--------------|----------|-----------------|  
-|referenceCode|Karakterlánc|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
-|errorCode|Karakterlánc|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
-|emailBody|Karakterlánc|Az e-mail-szövegtörzs akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
-|requestedUrl|Karakterlánc|A lap nem található a kért URL-cím.|  
-|referrerUrl|Karakterlánc|A kért URL-címhez tartozó hivatkozó URL-cím.|  
+|referenceCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|ErrorCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|emailBody|sztring|Az e-mail-szövegtörzs akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
+|requestedUrl|sztring|A lap nem található a kért URL-cím.|  
+|referrerUrl|sztring|A kért URL-címhez tartozó hivatkozó URL-cím.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -245,5 +245,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

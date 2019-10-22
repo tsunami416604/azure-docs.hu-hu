@@ -11,10 +11,10 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 802a4e9c6191d33051eb075543691845595bc9c3
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69656694"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Cosmos DB indexelése Azure Search indexelő használatával
@@ -25,17 +25,17 @@ ms.locfileid: "69656694"
 >
 > Az SQL API általánosan elérhető.
 
-Ebből a cikkből megtudhatja, hogyan [](search-indexer-overview.md) konfigurálhat egy Azure Cosmos db indexelő a tartalom kinyeréséhez és a Azure Search kereshetővé tételéhez. Ez a munkafolyamat létrehoz egy Azure Search indexet, és betölti azt a Azure Cosmos DBból kinyert meglévő szöveggel. 
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy Azure Cosmos db [Indexelő](search-indexer-overview.md) a tartalom kinyeréséhez és a Azure Search kereshetővé tételéhez. Ez a munkafolyamat létrehoz egy Azure Search indexet, és betölti azt a Azure Cosmos DBból kinyert meglévő szöveggel. 
 
 Mivel a terminológia zavaró lehet, érdemes megjegyezni, hogy [Azure Cosmos db indexelés](https://docs.microsoft.com/azure/cosmos-db/index-overview) és [Azure Search indexelés](search-what-is-an-index.md) különböző művelet, amely egyedi az egyes szolgáltatásokhoz. Azure Search indexelésének megkezdése előtt a Azure Cosmos DB-adatbázisnak már léteznie kell, és tartalmaznia kell az adatait.
 
-A Cosmos-tartalmak [](#cosmos-indexer-portal)indexeléséhez használhatja a portált, a REST API-kat vagy a .net SDK-t is. A Cosmos DB indexelő Azure Search képes az alábbi protokollokon keresztül elért [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) feltérképezésére:
+A Cosmos-tartalmak indexeléséhez használhatja a [portált](#cosmos-indexer-portal), a REST API-kat vagy a .net SDK-t is. A Cosmos DB indexelő Azure Search képes az alábbi protokollokon keresztül elért [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) feltérképezésére:
 
-* [SQL API-HOZ](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
+* [SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [MongoDB API (előzetes verzió)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)
 
 > [!Note]
-> A felhasználó hangja meglévő elemeket tartalmaz a további API-támogatáshoz. Szavazzon az Azure Search támogatott Cosmos API-khoz: [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4), [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
+> A felhasználó hangja meglévő elemeket tartalmaz a további API-támogatáshoz. Szavazást készíthet a Cosmos API-k számára, amelyeket a Azure Search: [Table API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab), [Graph API](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4) [Apache Cassandra API](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu).
 >
 
 <a name="cosmos-indexer-portal"></a>
@@ -50,24 +50,24 @@ Azt javasoljuk, hogy ugyanazt az Azure-előfizetést használja Azure Search és
 
 Rendelkeznie kell egy Cosmos-fiókkal, egy Azure Cosmos-adatbázissal, amely az SQL API vagy a MongoDB API-ra van leképezve, valamint egy JSON-dokumentum tárolója. 
 
-Győződjön meg arról, hogy a Cosmos DB adatbázisa tartalmaz adatait. Az [adatok importálása varázsló](search-import-data-portal.md) beolvassa a metaadatokat, és elvégzi az adatok mintavételezését az index sémájának következtetéséhez, de az adatokat a Cosmos DBból is betölti. Ha az adatok hiányoznak, a varázsló ezzel a hibával leáll "hiba történt az index sémájának észlelése az adatforrásból: Nem lehetett létrehozni egy prototípus-indexet, mert a (z) emptycollection adatforrás nem adott vissza adatforrást.
+Győződjön meg arról, hogy a Cosmos DB adatbázisa tartalmaz adatait. Az [adatok importálása varázsló](search-import-data-portal.md) beolvassa a metaadatokat, és elvégzi az adatok mintavételezését az index sémájának következtetéséhez, de az adatokat a Cosmos DBból is betölti. Ha az adatok hiányoznak, a varázsló ezzel a hibával leáll: "hiba történt az index sémájának észlelése az adatforrásból: nem sikerült létrehozni a prototípus-indexet, mert a (z)" emptycollection "adatforrás nem adott vissza értéket".
 
 ### <a name="2---start-import-data-wizard"></a>2 – az adatimportálás megkezdése varázsló
 
-A varázsló elindításához a Azure Search szolgáltatás lapján, vagy a Storage-fiók bal oldali navigációs paneljének **Beállítások** szakaszában a **Azure Search hozzáadása** elemre kattintva is elindíthatja [a varázslót](search-import-data-portal.md) .
+A varázsló elindításához a Azure Search szolgáltatás lapján, vagy a Storage-fiók bal oldali navigációs paneljének **Beállítások** szakaszában a **Azure Search hozzáadása** elemre kattintva is [elindíthatja a varázslót](search-import-data-portal.md) .
 
    ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
 ### <a name="3---set-the-data-source"></a>3 – az adatforrás beállítása
 
 > [!NOTE] 
-> A **MongoDB** -adatforrások jelenleg nem hozhatók létre és nem szerkeszthetők Azure Portal vagy a .net SDK használatával. A portálon azonban nyomon követheti a MongoDB indexek végrehajtási előzményeit.
+> A **MongoDB** -adatforrások jelenleg nem hozhatók létre és nem szerkeszthetők Azure Portal vagy a .net SDK használatával. A portálon **azonban nyomon** követheti a MongoDB indexek végrehajtási előzményeit.
 
-Az adatforrás lapon a forrásnak **Cosmos DBnak**kell lennie, a következő jellemzőkkel:
+**Az adatforrás lapon a** forrásnak **Cosmos DBnak**kell lennie, a következő jellemzőkkel:
 
 + A **név** az adatforrás-objektum neve. A létrehozás után kiválaszthatja más számítási feladatokhoz is.
 
-+ **Cosmos db fióknak** az elsődleges vagy a másodlagos kapcsolatok karakterláncának kell lennie Cosmos DBból `AccountEndpoint` , `AccountKey`és a és a is. A fiók meghatározza, hogy az adatgyűjtés SQL API-ként vagy Mongo DB API-ként történik-e
++ **Cosmos db fióknak** a Cosmos db elsődleges vagy másodlagos, `AccountEndpoint` és `AccountKey` értékűnek kell lennie. A fiók meghatározza, hogy az adatgyűjtés SQL API-ként vagy Mongo DB API-ként történik-e
 
 + Az **adatbázis** egy meglévő adatbázis a fiókból. 
 
@@ -93,23 +93,23 @@ Ebből az oldalból kihagyhatja az index testreszabását.
 
 Az **index** lapon meg kell jelennie egy adattípusú mezők listájának, valamint egy sor jelölőnégyzet az index attribútumainak beállításához. A varázsló metaadatok alapján és a forrásadatok mintavételezésével hozhatja meg a mezők listáját. 
 
-Az attribútumok tömeges kiválasztásához kattintson az attribútum oszlop tetején található jelölőnégyzetre. Válassza a beolvasható és **kereshető** lehetőséget minden olyan mező esetében, amelyet vissza kell adni egy ügyfélalkalmazás számára, és a teljes szöveges keresés feldolgozására is érvényes. Megfigyelheti, hogy az egész számok nem teljes szöveges vagy zavaros kereshetők (a számok szó szerint vannak kiértékelve, és gyakran hasznosak a szűrőkben).
+Az attribútumok tömeges kiválasztásához kattintson az attribútum oszlop tetején található jelölőnégyzetre. Válassza a **beolvasható** és **kereshető** lehetőséget minden olyan mező esetében, amelyet vissza kell adni egy ügyfélalkalmazás számára, és a teljes szöveges keresés feldolgozására is érvényes. Megfigyelheti, hogy az egész számok nem teljes szöveges vagy zavaros kereshetők (a számok szó szerint vannak kiértékelve, és gyakran hasznosak a szűrőkben).
 
 További információkért tekintse át az [index attribútumainak](https://docs.microsoft.com/rest/api/searchservice/create-index#bkmk_indexAttrib) és a [nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) leírását. 
 
 Szánjon egy kis időt a kiválasztott elemek áttekintésére. A varázsló futtatása után a rendszer létrehozza a fizikai adatstruktúrákat, és nem tudja szerkeszteni ezeket a mezőket az összes objektum eldobása és újbóli létrehozása nélkül.
 
-   ![Cosmos db index definíciója](media/search-howto-index-cosmosdb/cosmosdb-index-schema.png "Cosmos db index definíciója")
+   ![Cosmos DB index definíciója](media/search-howto-index-cosmosdb/cosmosdb-index-schema.png "Cosmos DB index definíciója")
 
 ### <a name="6---create-indexer"></a>6 – indexelő létrehozása
 
 Teljes mértékben meg van adva, a varázsló három különböző objektumot hoz létre a keresési szolgáltatásban. Az adatforrás-objektumok és az index objektumok elnevezett erőforrásokként lesznek mentve a Azure Search szolgáltatásban. Az utolsó lépés egy indexelő objektumot hoz létre. Az indexelő elnevezése lehetővé teszi, hogy önálló erőforrásként is használható legyen, amelyet az index és az adatforrás objektumtól függetlenül ütemezhet és kezelhet, amely ugyanabban a varázsló-sorozatban jön létre.
 
-Ha nem ismeri az indexelő funkciót, az *Indexelő* egy olyan erőforrás, Azure Search, amely egy külső adatforrást mutat be a kereshető tartalomhoz. Az adatimportálás varázsló kimenete egy indexelő, amely feltérképezi a Cosmos DB adatforrást, Kinyeri a kereshető tartalmat, és importálja azt egy Azure Search indexbe.
+Ha nem ismeri az indexelő funkciót, az *Indexelő* egy olyan erőforrás, Azure Search, amely egy külső adatforrást mutat be a kereshető tartalomhoz. Az **adatimportálás** varázsló kimenete egy indexelő, amely feltérképezi a Cosmos DB adatforrást, Kinyeri a kereshető tartalmat, és importálja azt egy Azure Search indexbe.
 
-Az alábbi képernyőfelvételen az alapértelmezett indexelő konfiguráció látható. Ha **egyszer** szeretné futtatni az indexelő, váltson egyszerre. Kattintson a **Submit** (elküldés) gombra a varázsló futtatásához és az összes objektum létrehozásához. Az indexelés azonnal megkezdődik.
+Az alábbi képernyőfelvételen az alapértelmezett indexelő konfiguráció látható. Ha egyszer szeretné futtatni az indexelő, váltson **egyszerre** . Kattintson a **Submit (elküldés** ) gombra a varázsló futtatásához és az összes objektum létrehozásához. Az indexelés azonnal megkezdődik.
 
-   ![Cosmos db indexelő definíciója](media/search-howto-index-cosmosdb/cosmosdb-indexer.png "Cosmos db indexelő definíciója")
+   ![Cosmos DB indexelő definíciója](media/search-howto-index-cosmosdb/cosmosdb-indexer.png "Cosmos DB indexelő definíciója")
 
 Az adatimportálást a portál oldalain lehet figyelni. Az állapotjelző értesítések az indexelési állapotot és a feltöltött dokumentumok számát jelzik. 
 
@@ -124,16 +124,16 @@ Az indexelés befejezésekor a [Search Explorer](search-explorer.md) használat�
 
 A REST API használatával indexelheti a Azure Cosmos DB-adatforrást, amely a következő három részből álló munkafolyamatot követve az összes indexelő Azure Search: adatforrás létrehozása, index létrehozása, indexelő létrehozása. A Cosmos-tárolóból kinyert adatok akkor következnek be, amikor elküldi az index-létrehozási kérelmet. A kérés befejezését követően lekérdezhető index jelenik meg. 
 
-Ha kiértékeli a MongoDB, a REST `api-version=2019-05-06-Preview` -et kell használnia az adatforrás létrehozásához.
+Ha kiértékeli a MongoDB, az adatforrás létrehozásához a REST `api-version=2019-05-06-Preview` kell használnia.
 
 A Cosmos DB-fiókban megadhatja, hogy a gyűjtemény automatikusan indexelje-e az összes dokumentumot. Alapértelmezés szerint az összes dokumentum automatikusan indexelve van, de ki is kapcsolhatja az automatikus indexelést. Ha az indexelés ki van kapcsolva, a dokumentumok csak az önhivatkozások vagy a dokumentumok AZONOSÍTÓjának használatával érhetők el. A Azure Search megköveteli Cosmos DB Automatikus indexelés bekapcsolását a gyűjteményben, amelyet Azure Search fog indexelni. 
 
 > [!WARNING]
-> Azure Cosmos DB a DocumentDB következő generációja. Korábban a **2017-11-11** -es API-verzióval `documentdb` használhatja a szintaxist. Ez azt jelentette, hogy az adatforrás típusát a következőként `cosmosdb` adja `documentdb`meg: vagy. Az API **2019-05-06** -es verziójától kezdve a Azure Search API-k és `cosmosdb` a portál csak a jelen cikkben leírtaknak megfelelően támogatja a szintaxist. Ez azt jelenti, hogy az adatforrás típusának a Cosmos db-végponthoz való kapcsolódáshoz is csatlakoznia kell `cosmosdb` .
+> Azure Cosmos DB a DocumentDB következő generációja. Az **2017-11-11** -es API-verzióval korábban a `documentdb` szintaxist használhatja. Ez azt jelentette, hogy az adatforrás típusát `cosmosdb` vagy `documentdb`ként is megadhatja. Az API **2019-05-06** -es verziójától kezdve a Azure Search API-k és a portál csak a jelen cikkben leírtaknak megfelelően támogatja a `cosmosdb` szintaxist. Ez azt jelenti, hogy az adatforrás típusának `cosmosdb` kell lennie, ha egy Cosmos DB-végponthoz szeretne csatlakozni.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – bemenetek összegyűjtése a kérelemhez
 
-Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot a Azure Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A Poster [](search-get-started-postman.md) használatával http-kéréseket küldhet a Azure Searchnak.
+Minden kérelem esetében meg kell adnia a szolgáltatás nevét és a rendszergazdai kulcsot a Azure Search (a POST fejlécben), valamint a blob Storage-hoz tartozó Storage-fiók nevét és kulcsát. A [Poster](search-get-started-postman.md) használatával http-kéréseket küldhet a Azure Searchnak.
 
 Másolja a következő négy értéket a Jegyzettömbbe, hogy beillessze őket egy kérelembe:
 
@@ -151,7 +151,7 @@ Ezeket az értékeket a portálon találja:
 
 ### <a name="2---create-a-data-source"></a>2 – adatforrás létrehozása
 
-Az adatforrások az index, a hitelesítő adatok és az adatok változásainak azonosítására szolgáló szabályzatokat határozzák meg (például módosított vagy törölt dokumentumok a gyűjteményen belül). Az adatforrás független erőforrásként van definiálva, így több indexelő is használható.
+Az **adatforrások** az index, a hitelesítő adatok és az adatok változásainak azonosítására szolgáló szabályzatokat határozzák meg (például módosított vagy törölt dokumentumok a gyűjteményen belül). Az adatforrás független erőforrásként van definiálva, így több indexelő is használható.
 
 Adatforrás létrehozásához hozzon létre egy POST-kérést:
 
@@ -176,18 +176,18 @@ A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalma
 
 | Mező   | Leírás |
 |---------|-------------|
-| **name** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
-|**type**| Kötelező. Kell lennie `cosmosdb`. |
-|**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/>SQL-gyűjtemények esetén a kapcsolatok karakterláncai ebben a formátumban vannak:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, Azure Search nem fogja tudni indexelni a Azure Cosmos DB-adatbázist.|
-| **container** | A következő elemeket tartalmazza: <br/>**név**: Kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: Nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amely Azure Search indexelhető.<br/>A MongoDB-gyűjtemények esetében a lekérdezések nem támogatottak. |
+| **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
+|**type**| Kötelező. @No__t_0nak kell lennie. |
+|**hitelesítő adatok** | Kötelező. Cosmos DB-kapcsolatok karakterláncának kell lennie.<br/>SQL-gyűjtemények esetén a következő formátumú kapcsolatok karakterláncai: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>A MongoDB-gyűjtemények esetében adja hozzá a **ApiKind = MongoDB** karakterláncot a kapcsolódási sztringhez:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Kerülje a portok számát a végpont URL-címében. Ha a portszámot is tartalmazza, Azure Search nem fogja tudni indexelni a Azure Cosmos DB-adatbázist.|
+| **tároló** | A következő elemeket tartalmazza: <br/>**név**: kötelező. Az indexelni kívánt adatbázis-gyűjtemény AZONOSÍTÓjának meghatározása.<br/>**lekérdezés**: nem kötelező. Megadhat egy lekérdezést, amely egy tetszőleges JSON-dokumentumot lelapul egy olyan egyszerű sémába, amely Azure Search indexelhető.<br/>A MongoDB-gyűjtemények esetében a lekérdezések nem támogatottak. |
 | **dataChangeDetectionPolicy** | Ajánlott. Lásd: [módosított dokumentumok indexelése](#DataChangeDetectionPolicy) szakasz.|
-|**dataDeletionDetectionPolicy** | Nem kötelező. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakasz.|
+|**dataDeletionDetectionPolicy** | Választható. Lásd: [törölt dokumentumok indexelése](#DataDeletionDetectionPolicy) szakasz.|
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Indexelt adatformátumok használata lekérdezések használatával
 Megadhat egy SQL-lekérdezést a beágyazott tulajdonságok vagy tömbök, a Project JSON-tulajdonságok és az indexelni kívánt adatszűréshez. 
 
 > [!WARNING]
-> Az egyéni lekérdezések nem támogatottak a **MongoDB** - `container.query` gyűjtemények esetében: a paramétert NULL értékűre vagy elhagyott értékre kell beállítani. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
+> Az egyéni lekérdezések nem támogatottak a **MongoDB** -gyűjtemények esetében: `container.query` paramétert NULL értékűre vagy elhagyott értékre kell beállítani. Ha egyéni lekérdezést kell használnia, kérjük, tudassa velünk a [felhasználói hangon](https://feedback.azure.com/forums/263029-azure-search).
 
 Példa dokumentumra:
 
@@ -248,20 +248,20 @@ Ha még nem rendelkezik ilyennel, [hozzon létre egy cél Azure Search indexet](
 Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrás JSON-dokumentumok sémájával vagy az egyéni lekérdezési leképezés kimenetével.
 
 > [!NOTE]
-> Particionált gyűjtemények esetén az alapértelmezett dokumentum kulcsa Azure Cosmos db `_rid` tulajdonsága, amely Azure Search automatikusan átnevezi `rid` , mert a mezőnevek nem kezdődhetnek undescore karakterrel. Emellett Azure Cosmos db `_rid` értékek olyan karaktereket tartalmaznak, amelyek Azure Search kulcsokban érvénytelenek. Emiatt az `_rid` értékek Base64 kódolású.
+> A particionált gyűjtemények esetében az alapértelmezett dokumentum kulcsa Azure Cosmos DB `_rid` tulajdonsága, amely Azure Search automatikusan átnevezi `rid`, mert a mezőnevek nem kezdődhetnek undescore karakterrel. Emellett Azure Cosmos DB `_rid` értékek olyan karaktereket tartalmaznak, amelyek Azure Search kulcsokban érvénytelenek. Emiatt a `_rid` értékek Base64 kódolású.
 > 
-> A MongoDB-gyűjtemények esetében a Azure Search automatikusan átnevezi `_id` a `doc_id`tulajdonságot a következőre:.  
+> A MongoDB-gyűjtemények esetében a Azure Search automatikusan átnevezi a `_id` tulajdonságot a következőre: `doc_id`.  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>A JSON-adattípusok és az Azure Search adattípusok közötti megfeleltetés
 | JSON-adattípus | Kompatibilis cél index típusú mezők |
 | --- | --- |
-| Bool |Edm.Boolean, Edm.String |
-| Egész számokhoz hasonló számok |Edm.Int32, Edm.Int64, Edm.String |
-| A lebegő pontokhoz hasonló számok |Edm.Double, Edm.String |
+| bool |EDM. Boolean, EDM. String |
+| Egész számokhoz hasonló számok |EDM. Int32, EDM. Int64, EDM. String |
+| A lebegő pontokhoz hasonló számok |EDM. Double, EDM. String |
 | Sztring |Edm.String |
 | Egyszerű típusok tömbje, például ["a", "b", "c"] |Collection(Edm.String) |
-| A dátumokhoz hasonló karakterláncok |Edm.DateTimeOffset, Edm.String |
-| GeoJSON objektumok, például {"type": "Pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
+| A dátumokhoz hasonló karakterláncok |EDM. DateTimeOffset, EDM. String |
+| GeoJSON objektumok, például {"type": "pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
 | Egyéb JSON-objektumok |– |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – az indexelő konfigurálása és futtatása
@@ -289,16 +289,16 @@ Az indexelő-ütemtervek definiálásával kapcsolatos további információkér
 
 Az általánosan elérhető .NET SDK teljes paritással rendelkezik az általánosan elérhető REST API. Javasoljuk, hogy tekintse át az előző REST API szakaszt a fogalmak, a munkafolyamatok és a követelmények megismeréséhez. A következő .NET API-referenciák dokumentációjában a JSON-indexelő implementálása felügyelt kódban végezhető el.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. models. datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. models. indexelő](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 
 ## <a name="indexing-changed-documents"></a>Módosított dokumentumok indexelése
 
-Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat `High Water Mark` a Azure Cosmos db által megadott `_ts` (timestamp) tulajdonságot használó házirend, amely a következőképpen van megadva:
+Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a `High Water Mark` szabályzat, amely a Azure Cosmos DB által megadott `_ts` (timestamp) tulajdonságot használja, amely a következőképpen van megadva:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
@@ -307,7 +307,7 @@ Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a
 
 A szabályzat használata kifejezetten ajánlott a megfelelő indexelő teljesítmény biztosításához. 
 
-Ha egyéni lekérdezést használ, győződjön meg arról, hogy a `_ts` lekérdezés a tulajdonságot kitervezte.
+Ha egyéni lekérdezést használ, győződjön meg arról, hogy a lekérdezés a `_ts` tulajdonságot használja.
 
 <a name="IncrementalProgress"></a>
 
@@ -315,9 +315,9 @@ Ha egyéni lekérdezést használ, győződjön meg arról, hogy a `_ts` lekérd
 
 Az indexelés során fellépő növekményes előrehaladás biztosítja, hogy ha az indexelő végrehajtását átmeneti hibák vagy végrehajtási időkorlát miatt megszakítja, az indexelő elvégezheti, hogy a legközelebb Mikor fusson, és ne kelljen újraindexelni a teljes gyűjteményt. Ez különösen fontos a nagyméretű gyűjtemények indexelése során. 
 
-Ha egyéni lekérdezés használatakor szeretné engedélyezni a növekményes előrehaladást, győződjön meg arról, hogy a `_ts` lekérdezés az oszlop alapján rendeli az eredményeket. Ez lehetővé teszi, hogy a Azure Search a meghibásodások jelenlétében növekményes előrehaladást biztosítson az időszakos ellenőrzés során.   
+Ha egyéni lekérdezés használatakor szeretné engedélyezni a növekményes előrehaladást, győződjön meg arról, hogy a lekérdezés az `_ts` oszlop alapján rendeli az eredményeket. Ez lehetővé teszi, hogy a Azure Search a meghibásodások jelenlétében növekményes előrehaladást biztosítson az időszakos ellenőrzés során.   
 
-Bizonyos esetekben, még akkor is, ha a lekérdezés `ORDER BY [collection alias]._ts` tartalmaz egy záradékot, Azure Search előfordulhat, hogy nem következtet arra, `_ts`hogy a lekérdezés a által megrendelt. Megadhatja, Azure Search, hogy az eredmények a `assumeOrderByHighWaterMarkColumn` Configuration tulajdonság használatával legyenek rendezve. A célzás megadásához az alábbi módon hozza létre vagy frissítse az indexelő: 
+Bizonyos esetekben, még akkor is, ha a lekérdezés `ORDER BY [collection alias]._ts` záradékot tartalmaz, Azure Search előfordulhat, hogy nem következtet rá, hogy a lekérdezés a `_ts` szerint van rendezve. Megadhatja Azure Search, hogy az eredmények a `assumeOrderByHighWaterMarkColumn` konfigurációs tulajdonság használatával legyenek rendezve. A célzás megadásához az alábbi módon hozza létre vagy frissítse az indexelő: 
 
     {
      ... other indexer definition properties
@@ -329,7 +329,7 @@ Bizonyos esetekben, még akkor is, ha a lekérdezés `ORDER BY [collection alias
 
 ## <a name="indexing-deleted-documents"></a>Törölt dokumentumok indexelése
 
-Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeket a sorokat a keresési indexből is. Az adattörlési észlelési szabályzat célja, hogy hatékonyan azonosítsa a törölt adatelemeket. Jelenleg az egyetlen támogatott házirend a házirend ( `Soft Delete` a törlés egy bizonyos rendezési jelzővel van megjelölve), amely a következőképpen van megadva:
+Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeket a sorokat a keresési indexből is. Az adattörlési észlelési szabályzat célja, hogy hatékonyan azonosítsa a törölt adatelemeket. Jelenleg az egyetlen támogatott házirend a `Soft Delete` házirend (a törlés egy bizonyos rendezési jelzővel van megjelölve), amely a következőképpen van megadva:
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
@@ -337,7 +337,7 @@ Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeke
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
 
-Ha egyéni lekérdezést használ, győződjön meg arról, hogy a által `softDeleteColumnName` hivatkozott tulajdonság a lekérdezés szerint van-e kiválasztva.
+Ha egyéni lekérdezést használ, győződjön meg arról, hogy az `softDeleteColumnName` által hivatkozott tulajdonságot a lekérdezés tervezi.
 
 Az alábbi példa egy olyan adatforrást hoz létre, amely egy törlési szabályzattal rendelkezik:
 

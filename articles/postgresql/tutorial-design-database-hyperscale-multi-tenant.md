@@ -10,10 +10,10 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70163981"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Oktatóanyag: több-bérlős adatbázis tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) (előzetes verzió) használatával
@@ -130,7 +130,7 @@ A több-bérlős alkalmazások csak bérlők számára kényszerítik az egyedis
 
 A nagy kapacitású központi telepítése a különböző csomópontokon lévő táblázat sorait egy felhasználó által kijelölt oszlop értéke alapján tárolja. Ez a "terjesztési oszlop" jelzi, hogy melyik bérlő tulajdonosa a soroknak.
 
-Állítsa be a terjesztési oszlopot vállalati\_azonosítóként, a bérlő azonosítójának megadásával. A psql-ben futtassa a következő függvényeket:
+Állítsa be, hogy a terjesztési oszlop legyen a vállalat \_id, a bérlő azonosítója. A psql-ben futtassa a következő függvényeket:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -166,7 +166,7 @@ Ezek az adatfeldolgozó csomópontok között lesznek elosztva.
 
 ## <a name="query-tenant-data"></a>Bérlői adatbázis lekérdezése
 
-Ha az alkalmazás egyetlen bérlő számára kér le adatkérést, akkor az adatbázis egyetlen feldolgozó csomóponton hajthatja végre a lekérdezést. Az egybérlős lekérdezések egyetlen bérlői azonosító alapján szűrhetők. A következő lekérdezési szűrők `company_id = 5` például a hirdetéseket és a benyomásokat jelenítik meg. Próbálja meg futtatni a psql az eredmények megtekintéséhez.
+Ha az alkalmazás egyetlen bérlő számára kér le adatkérést, akkor az adatbázis egyetlen feldolgozó csomóponton hajthatja végre a lekérdezést. Az egybérlős lekérdezések egyetlen bérlői azonosító alapján szűrhetők. Például a következő lekérdezési szűrők `company_id = 5` a hirdetéseket és a megjelenítéseket. Próbálja meg futtatni a psql az eredmények megtekintéséhez.
 
 ```sql
 SELECT a.campaign_id,
@@ -185,7 +185,7 @@ ORDER BY a.campaign_id, n_impressions desc;
 
 ## <a name="share-data-between-tenants"></a>Az adatmegosztás a bérlők között
 
-Addig is `company_id`, amíg az összes táblát el nem terjesztette, de bizonyos adatok természetesen nem "tartoznak" egyetlen bérlőhöz sem, és megoszthatók. Előfordulhat például, hogy az ad platform összes vállalata az IP-címek alapján földrajzi adatokat szeretne kapni a célközönségnek.
+Addig is, amíg az összes táblát nem terjesztette `company_id`, de bizonyos adatok természetesen nem "tartoznak" egyetlen bérlőhöz sem, és megoszthatók. Előfordulhat például, hogy az ad platform összes vállalata az IP-címek alapján földrajzi adatokat szeretne kapni a célközönségnek.
 
 Hozzon létre egy táblázatot a közös földrajzi információk tárolásához. Futtassa a következő parancsokat a psql:
 
@@ -199,7 +199,7 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Ezután hozzon `geo_ips` egy "hivatkozási táblázatot" a tábla egy példányának tárolásához minden munkavégző csomóponton.
+A következő lépésben `geo_ips` egy "hivatkozási táblázatot" a tábla másolatának tárolásához minden munkavégző csomóponton.
 
 ```sql
 SELECT create_reference_table('geo_ips');
@@ -211,7 +211,7 @@ Töltse be például az adathalmazt. Ne felejtse el futtatni ezt a parancsot a p
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-A Clicks táblázat a Geo\_IP-címekkel való csatlakoztatása minden csomóponton hatékonyan működik.
+A Clicks táblázat és a Geo \_ips közötti csatlakozás minden csomóponton hatékony.
 Itt találja az ad-ra rákattintott mindenki helyét
 290. Próbálja meg futtatni a lekérdezést a psql-ben.
 
@@ -227,7 +227,7 @@ SELECT c.id, clicked_at, latlon
 
 Előfordulhat, hogy minden bérlőnek a mások számára nem szükséges speciális adatokat kell tárolnia. Azonban minden bérlő közös infrastruktúrát oszt meg azonos adatbázis-sémával. Hol lehet a további adatvesztés?
 
-Az egyik trükk az, hogy egy nyílt végű típusú oszlopot, például a PostgreSQL JSONB használja.  A séma tartalmaz egy JSONB mezőt a `clicks` híváshoz `user_data`.
+Az egyik trükk az, hogy egy nyílt végű típusú oszlopot, például a PostgreSQL JSONB használja.  A séma tartalmaz egy `user_data` nevű `clicks` JSONB mezőt.
 Egy vállalat (mondjuk az öt vállalat) az oszlopot használva nyomon követheti, hogy a felhasználó mobil eszközön van-e.
 
 A következő lekérdezésből megtudhatja, hogy ki és Mikor szeretne többet: mobil vagy hagyományos látogató.
@@ -269,7 +269,7 @@ SELECT id
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport *Áttekintés* lapján kattintson a *Törlés* gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges *Törlés* gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a bérlők között és között is lekérdezze az adatlekérdezést, valamint a séma személyre szabását a bérlőn belül.
 

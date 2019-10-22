@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: heidist
 ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71937271"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>Azure Search index létrehozása a portálon
@@ -27,7 +27,7 @@ Az index tervezője csak egyetlen megközelítés az index létrehozásához. Az
 
 2. Kattintson az **index hozzáadása** hivatkozásra az oldal tetején található parancssáv alatt.
 
-   ![Index hivatkozás hozzáadása a]parancssáv(media/search-create-index-portal/add-index.png "index hozzáadása hivatkozásához a parancssáv")
+   ![Index hivatkozás hozzáadása a parancssáv](media/search-create-index-portal/add-index.png "Index hivatkozás hozzáadása a parancssáv")
 
 3. Adjon nevet az Azure Search-indexnek. Az indexek nevei az indexelési és lekérdezési műveletekben vannak hivatkozva. Az index neve része lesz az indexhez való kapcsolódáshoz és az Azure Search REST API-ban HTTP-kérelmek küldéséhez használt végpont URL-címének.
 
@@ -49,7 +49,7 @@ Az index összeállításához tartozik egy *Mezőkollekció*, amely az indexben
 
     Az Azure Search API dokumentációja egy egyszerű *szálloda*-indexet használó kódpéldákat is tartalmaz. Az alábbi képernyőképen látható az index definíciója, beleértve az index definíciójában megadott francia nyelvű elemzőt is, amelyet a portálon az eljárás gyakorlatának megfelelően újra létrehozhat.
 
-    ![Hotels bemutató]index(media/search-create-index-portal/field-definitions.png "Hotels – bemutató index")
+    ![A Hotels bemutató indexe](media/search-create-index-portal/field-definitions.png "A Hotels bemutató indexe")
 
 1. Ha elkészült, kattintson a **Létrehozás** gombra az index mentéséhez és létrehozásához.
 
@@ -74,13 +74,13 @@ A mezőtulajdonságok határozzák meg egy mező használati módját, például
 |**key**|Kulcs – Az indexen belüli dokumentumok egyedi azonosítója. Kulcsmezőként egyetlen `Edm.String` típusú mezőt kell megadni.|  
 |**retrievable**|Lekérdezhető – Megadja, hogy a mező visszaadható-e egy keresési eredményben. Ez akkor hasznos, ha egy mező (például *nyereség*) szűrésre, rendezésre vagy értékelésre szolgál, de a végfelhasználó számára nem kell megjelennie. Ennek a tulajdonságnak az értéke `key` tulajdonságú mezők esetén csak `true` lehet.|  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután létrehozott egy Azure Search-indexet, folytathatja a következő lépéssel, ami a [kereshető adatok feltöltése az indexbe](search-what-is-data-import.md).
 
-Azt is megteheti, hogy [mélyebben megtekinti az indexeket](search-what-is-an-index.md). Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál füles lapokat biztosít a leggyakoribb elemek definiálásához: Mezők, elemzők és javaslatok. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
+Azt is megteheti, hogy [mélyebben megtekinti az indexeket](search-what-is-an-index.md). Az indexek a Mezőkollekción kívül megadják az elemzőket, javaslattevőket, értékelési profilokat és CORS-beállításokat is. A portál lapokra osztott oldalakat kínál a leggyakrabban használt elemek: a mezők, elemzők és javaslattevők megadására. Más elemek létrehozására vagy módosítására a REST API vagy a .NET SDK használható.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
  [A teljes szöveges keresés működése](search-lucene-query-architecture.md)  
  [Keresési szolgáltatás REST API](https://docs.microsoft.com/rest/api/searchservice/) [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)

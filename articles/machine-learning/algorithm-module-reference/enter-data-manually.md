@@ -1,5 +1,5 @@
 ---
-title: 'Adja meg manuálisan az adatbevitelt: Modul-hivatkozás'
+title: 'Adja meg manuálisan az adatbevitelt: modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja az adatok manuális megadása modult a Azure Machine Learning szolgáltatásban egy kisebb adatkészlet létrehozásához az értékek beírásával. Az adatkészlet több oszloppal is rendelkezhet.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: bd5fb636dbf79534e84a21a461f8912ceb6d9633
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128839"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693164"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
 
@@ -32,7 +32,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
 
 ## <a name="enter-data-manually"></a>Manuális adatbevitel 
   
-1.  Adja hozzá az [adatbevitel manuálisan](./enter-data-manually.md) modult a kísérlethez. Ezt a modult a Azure Machine Learning **adatbevitel és kimenet** kategóriájában találja. 
+1.  Adja hozzá az [adatbevitel manuálisan](./enter-data-manually.md) modult a folyamathoz. Ezt a modult a Azure Machine Learning **adatbevitel és kimenet** kategóriájában találja. 
   
 2.  A **DataFormat**területen válassza az alábbi lehetőségek egyikét. Ezek a beállítások határozzák meg, hogy az Ön által megadott információ hogyan legyen elemezve. Az egyes formátumokra vonatkozó követelmények nagy mértékben különböznek, ezért mindenképpen olvassa el a kapcsolódó témaköröket.  
   
@@ -46,23 +46,23 @@ Ez a modul a következő helyzetekben lehet hasznos:
 
      Ha olyan formátumot választ, amely nem felel meg a formátum specifikációjának, futásidejű hiba történik.
   
-3.  Az adatbevitel megkezdéséhez kattintson az adatszövegmezőbe. A következő formátumok különleges figyelmet igényelnek:  
+3.  Az adatbevitel megkezdéséhez **kattintson az** adatszövegmezőbe. A következő formátumok különleges figyelmet igényelnek:  
   
-    - **CSV**:  Több oszlop létrehozásához illessze be a vesszővel tagolt szövegbe, vagy írjon be több oszlopot a mezők közötti vesszők használatával.
-  
-        Ha a **HasHeader** lehetőséget választja, az értékek első sorát használhatja oszlop fejlécként.  
-  
-        Ha kijelöli ezt a beállítást, a rendszer az oszlopok nevét, a Col1, a Col2 és így tovább lehetőséget használja. Az oszlopok nevét később is hozzáadhatja vagy módosíthatja a [metaadatok szerkesztése](./edit-metadata.md)paranccsal.  
-  
-    - **TSV**: Több oszlop létrehozásához illessze be a tabulátorral tagolt szöveget, vagy írjon be több oszlopot a mezők közötti fülek használatával.  
+    - **CSV**: több oszlop létrehozásához illessze be a vesszővel tagolt szövegbe, vagy írjon be több oszlopot a mezők közötti vesszők használatával.
   
         Ha a **HasHeader** lehetőséget választja, az értékek első sorát használhatja oszlop fejlécként.  
   
         Ha kijelöli ezt a beállítást, a rendszer az oszlopok nevét, a Col1, a Col2 és így tovább lehetőséget használja. Az oszlopok nevét később is hozzáadhatja vagy módosíthatja a [metaadatok szerkesztése](./edit-metadata.md)paranccsal.  
   
-    -   **ARFF**:  Illessze be egy meglévő ARFF formátumú fájlt. Ha közvetlenül ír be értékeket, ügyeljen arra, hogy az adatok elején adja hozzá az opcionális fejlécet és a kötelező attribútum mezőket. 
+    - **TSV**: több oszlop létrehozásához illessze be a tabulátorral tagolt szöveget, vagy írjon be több oszlopot a mezők közötti fülek használatával.  
+  
+        Ha a **HasHeader** lehetőséget választja, az értékek első sorát használhatja oszlop fejlécként.  
+  
+        Ha kijelöli ezt a beállítást, a rendszer az oszlopok nevét, a Col1, a Col2 és így tovább lehetőséget használja. Az oszlopok nevét később is hozzáadhatja vagy módosíthatja a [metaadatok szerkesztése](./edit-metadata.md)paranccsal.  
+  
+    -   **ARFF**: beillesztés meglévő ARFF-formátumú fájlba. Ha közvetlenül ír be értékeket, ügyeljen arra, hogy az adatok elején adja hozzá az opcionális fejlécet és a kötelező attribútum mezőket. 
     
-        A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce `SampleText`:.
+        A következő fejléc-és attribútum-sorok például hozzáadhatók egy egyszerű listához. Az oszlop fejléce `SampleText`.
     
         ```text
         % Title: SampleText.ARFF  
@@ -72,7 +72,7 @@ Ez a modul a következő helyzetekben lehet hasznos:
         \<type first data row here>  
         ```
 
-    -   **SVMLight**: Írja be vagy illessze be az értékeket a SVMLight formátum használatával.  
+    -   **SVMLight**: írja be vagy illessze be az értékeket a SVMLight formátum használatával.  
   
         Az alábbi minta például a véradási adatkészlet első pár sorát jelöli a SVMight formátumban:  
   
@@ -100,6 +100,6 @@ Ez a modul a következő helyzetekben lehet hasznos:
 5.  Kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása** lehetőséget, hogy elemezze az adatokat, és betöltse azt a munkaterületre adatkészletként.  
   
      Az adatkészlet megtekintéséhez kattintson a kimeneti portra, majd válassza a **Megjelenítés**lehetőséget.  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

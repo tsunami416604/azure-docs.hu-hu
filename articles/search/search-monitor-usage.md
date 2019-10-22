@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
 ms.openlocfilehash: fe8061f8e99742f9dc5c1181235c4203aaad82ca
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72331216"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Az erőforrás-felhasználás és a lekérdezési tevékenységek figyelése Azure Search
@@ -30,8 +30,8 @@ Az Áttekintés lapon beépített **használati** és **figyelési** szakaszt az
 
 A **használat** lapon az erőforrások rendelkezésre állása az aktuális [határértékekhez](search-limits-quotas-capacity.md)viszonyítva jelenik meg. Az alábbi ábra az ingyenes szolgáltatás, amely az egyes típusok 3 objektumára, illetve 50 MB tárterületre van korlátozva. Egy alapszintű vagy standard szolgáltatás magasabb korláttal rendelkezik, és ha megnöveli a partíciók számát, a maximális tárterület arányosan növekszik.
 
-A ![használati állapot a hatályos határértékek](./media/search-monitor-usage/usage-tab.png
- "használati állapotához viszonyítva, a hatályos határértékekhez képest")
+![A használati állapot a hatályos határértékekhez képest](./media/search-monitor-usage/usage-tab.png
+ "A használati állapot a hatályos határértékekhez képest")
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Másodpercenkénti lekérdezések (QPS) és egyéb mérőszámok
 
@@ -40,7 +40,7 @@ A *keresési késés* azt az időtartamot, ameddig a keresési szolgáltatás a 
 
 Ezek a számok közelítve jelennek meg, és arra szolgálnak, hogy a rendszer milyen jól szolgálja ki a karbantartási kérelmeket. A tényleges QPS lehet magasabb vagy alacsonyabb, mint a portálon jelentett szám.
 
-![Lekérdezések]másodpercenkénti tevékenység-(./media/search-monitor-usage/monitoring-tab.png "lekérdezések") másodpercenként
+![Lekérdezések másodpercenkénti tevékenysége](./media/search-monitor-usage/monitoring-tab.png "Lekérdezések másodpercenkénti tevékenysége")
 
 ## <a name="activity-logs"></a>Tevékenységnaplók
 
@@ -78,13 +78,13 @@ Ez a szakasz azt ismerteti, hogyan használható a blob Storage a naplózott ese
 
 2. Nyissa meg a keresési szolgáltatás áttekintés lapját. A bal oldali navigációs panelen görgessen lefelé a **figyelés** elemre, és kattintson a **figyelés engedélyezése**lehetőségre.
 
-   ![](./media/search-monitor-usage/enable-monitoring.png "Figyelés") engedélyezésének engedélyezése
+   ![Figyelés engedélyezése](./media/search-monitor-usage/enable-monitoring.png "Monitorozás engedélyezése")
 
 3. Válassza ki az exportálni kívánt adatokat: naplók, metrikák vagy mindkettő. Átmásolhatja egy Storage-fiókba, elküldheti egy Event hubhoz, vagy exportálhatja Azure Monitor naplókba.
 
    A blob Storage-hoz való archiváláshoz csak a Storage-fióknak kell léteznie. A rendszer a tárolók és Blobok létrehozásához szükség lesz a naplófájlok exportálására.
 
-   ![Blob Storage-Archívum]konfigurálása(./media/search-monitor-usage/configure-blob-storage-archive.png "blob Storage-Archívum konfigurálása")
+   ![BLOB Storage-Archívum konfigurálása](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB Storage-Archívum konfigurálása")
 
 4. Mentse a profilt.
 

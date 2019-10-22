@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71262782"
 ---
-# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure Security and Compliance Blueprint: A brit hivatalos számítási feladatokhoz tartozó Péter webalkalmazás-üzemeltetés
+# <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure Security and Compliance Blueprint: az Egyesült Királyság hivatalos számítási feladataihoz tartozó Péter webalkalmazás üzemeltetése
 
 ## <a name="azure-security-and-compliance-blueprints"></a>Azure biztonsági és megfelelőségi tervek
 
@@ -39,7 +39,7 @@ Ez a terv egy biztonságos alapplatform kiépítésére koncentrál, amely a nyi
 
 Ez a terv egy Foundation-architektúra. Ügyfeleink a webes munkaterhelések hivatalos besorolásának alapjaként használhatják ezt a tervrajzot, és a saját igényeik szerint bővíthetik a sablonokat és az erőforrásokat. Ez a tervezet az [Egyesült királyságbeli, harmadik rétegbeli IaaS web Applications tervezet](https://aka.ms/ukofficial-iaaswa) alapelveire épül, és lehetővé tenné ügyfeleinknek a webalapú munkaterhelések üzemeltetésére szolgáló [infrastruktúra-szolgáltatás (IaaS)](https://azure.microsoft.com/overview/what-is-iaas/) és a Pásti-megvalósítási döntések meghozatalát.
 
-A terv üzembe helyezéséhez Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, gyorsan és egyszerűen, díjmentesen regisztrálhat: Ismerkedjen meg az Azure-val. Kattintson [ide](https://aka.ms/ukofficial-paaswa-repo/) az üzembe helyezési utasításokhoz.
+A terv üzembe helyezéséhez Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, bármikor regisztrálhat gyorsan és egyszerűen díjmentesen: az Azure használatának első lépései. Kattintson [ide](https://aka.ms/ukofficial-paaswa-repo/) az üzembe helyezési utasításokhoz.
 
 ## <a name="architecture-and-components"></a>Architektúra és összetevők
 
@@ -53,7 +53,7 @@ Ez a megoldás az alábbi Azure-szolgáltatásokat használja. Az üzembe helyez
 
 - Azure Active Directory
 - App Service
-- Webalkalmazás
+- Web App
 - API App
 - Azure DNS
 - Key Vault
@@ -78,7 +78,7 @@ Az alábbi technológiák az Azure-környezet Identitáskezelés-kezelési funkc
 
 - [Azure Active Directory (Azure ad)](https://azure.microsoft.com/services/active-directory/) a Microsoft több-bérlős felhőalapú címtár-és Identitáskezelés-kezelési szolgáltatása. A megoldás összes felhasználója Azure Active Directory-ban lett létrehozva, beleértve a SQL Databasehoz hozzáférő felhasználókat is.
 - Az Azure AD használatával végezheti el a hitelesítést az Azure-erőforrások felügyeletére szolgáló webalkalmazáshoz és hozzáféréshez. További információ: [alkalmazások integrálása a Azure Active Directorysal](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
-- Az adatbázis oszlopának titkosítása az Azure AD használatával hitelesíti az alkalmazást Azure SQL Database. További információkért lásd [: Always encrypted: Bizalmas adatok védelme SQL Databaseban](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
+- Az adatbázis oszlopának titkosítása az Azure AD használatával hitelesíti az alkalmazást Azure SQL Database. További információ [: Always encrypted: bizalmas adatok védelme SQL Databaseokban](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault).
 - Az állampolgárok felé néző webalkalmazás nyilvános hozzáférésre van konfigurálva. Ha engedélyezni szeretné a fiókok létrehozását és hitelesítését az Active Directoryn vagy a közösségi hálózati identitás-szolgáltatókon keresztül, [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) szükség esetén integrálható.
 - [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview.md) észleli a potenciális biztonsági réseket és a kockázatos fiókokat, javaslatokat tesz a szervezete identitásának biztonsági helyzetének növelésére, az észlelt gyanús automatikus válaszokat konfigurálja. a szervezete identitásával kapcsolatos műveletek, valamint a gyanús incidensek kivizsgálására és a szükséges műveletek elvégzésére.
 - Az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) lehetővé teszi az Azure-hoz való, pontosan célzott hozzáférés-vezérlést. Az előfizetés-hozzáférés az előfizetés rendszergazdájára korlátozódik, és Azure Key Vault hozzáférés csak azokra a felhasználókra korlátozódik, akiknek kulcskezelő hozzáférésre van szükségük.
@@ -110,7 +110,7 @@ Az alapszintű, standard és prémium csomagok éles számítási feladatokhoz h
 Ez a sablon a következő App Service szolgáltatásokat telepíti:
 
 - [Standard szintű](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service csomag szintje
-- Több App Service [üzembe helyezési bővítőhely](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Dev, Preview, QA, ellenőrzését és természetesen éles üzemben (alapértelmezett tárolóhely).
+- Több App Service [üzembe helyezési](https://docs.microsoft.com/azure/app-service/deploy-staging-slots)pont: dev, Preview, QA, ellenőrzését és Course Production (alapértelmezett tárolóhely).
 - [Felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/app-service/overview-managed-identity) a [Azure Key Vaulthoz](https://azure.microsoft.com/services/key-vault/) való kapcsolódáshoz (ez a szolgáltatás a [Azure SQL Databasehoz](https://azure.microsoft.com/services/sql-database/) való hozzáférés biztosítására is használható. 
 - Az [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) integrációja a teljesítmény figyeléséhez
 - [Diagnosztikai naplók](../../azure-monitor/platform/resource-logs-overview.md) 
@@ -145,7 +145,7 @@ Ez a sablon a következő Azure Storage-összetevőket használja:
 - [Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) 
 - Csak HTTPS-kapcsolatok engedélyezése
 
-#### <a name="data-at-rest"></a>Inaktív adat
+#### <a name="data-at-rest"></a>Inaktív adatok
 
 A [Storage Service encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) az Azure Storage-ba írt összes adatmennyiséget 256 bites AES-titkosítással titkosítja, amely az egyik legerősebb blokk titkosítási algoritmus. Használhatja a Microsoft által felügyelt titkosítási kulcsokat az SSE-mel, vagy használhat [saját titkosítási kulcsokat](../../storage/common/storage-encryption-keys-portal.md)is.
 
@@ -174,10 +174,10 @@ Az Azure Storage biztonságossá tételével kapcsolatos részletes információ
 
 #### <a name="azure-monitor-logs-in-this-blueprint"></a>A terv Azure Monitor naplófájljai
 
-- SQL-értékelés
+- SQL-elemzés
 - Key Vault diagnosztika
 - Application Insights-kapcsolatok
-- Azure-tevékenységnapló
+- Azure-tevékenység naplója
 
 #### <a name="application-insights"></a>Application Insights
 
@@ -191,7 +191,7 @@ Ez a sablon a következő Application Insights összetevőket használja:
 
 #### <a name="azure-activity-logs"></a>Azure-tevékenység naplói
 
-Az [Azure-tevékenység naplójának](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) naplózása vezérlő – az előfizetések esetében a sík eseményei. A műveletnapló segítségével meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az előfizetésében lévő erőforrásokon. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is.
+Az [Azure-tevékenység naplójának](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) naplózása vezérlő – az előfizetések esetében a sík eseményei. A műveletnapló segítségével meghatározhatja a "mit, ki és mikor" típusú írási műveleteket (PUT, POST, DELETE) az előfizetésében lévő erőforrásokon. Emellett megismerheti a művelet állapotát és az egyéb kapcsolódó tulajdonságokat is.
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
@@ -201,7 +201,7 @@ Az [Azure-tevékenység naplójának](https://docs.microsoft.com/azure/azure-mon
 
 Az ehhez a hivatkozási architektúrához tartozó Adatfolyam-diagram [letölthető](https://aka.ms/ukofficial-paaswa-tm) , vagy a következő címen érhető el. Ez a modell lehetővé teszi az ügyfeleknek, hogy a módosítások végrehajtása során megértsék a rendszerinfrastruktúra lehetséges kockázatait.
 
-![Pásti webalkalmazás-üzemeltetés az Egyesült Királyság hivatalos] számítási feladatait érintő veszélyforrások modelljében (images/ukofficial-paaswa-threat-model.png?raw=true "Pásti webalkalmazás-üzemeltetés az Egyesült Királyság hivatalos") számítási feladatait érintő veszélyforrások modelljében
+![Pásti webalkalmazás-üzemeltetés az Egyesült Királyság hivatalos számítási feladatait érintő veszélyforrások modelljében](images/ukofficial-paaswa-threat-model.png?raw=true "Pásti webalkalmazás-üzemeltetés az Egyesült Királyság hivatalos számítási feladatait érintő veszélyforrások modelljében")
 
 ## <a name="ncsc-cloud-security-principles-compliance-documentation"></a>A NCSC Cloud Security alapelvei – megfelelőségi dokumentáció
 
@@ -229,9 +229,9 @@ Ez az Azure Security and Compliance Blueprint-automatizálás olyan JSON-konfigu
 Három megközelítés van megadva az üzembe helyezéshez; Egy egyszerű "Expressz" [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) alkalmas a tesztkörnyezet gyors létrehozására. a paraméteres [Azure CLI 2](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) megközelítés nagyobb konfigurációt biztosít a munkaterhelés-környezetekhez; valamint egy Azure Portal-alapú telepítés, amelyben az operátor megadhatja a telepítési paramétereket a Azure Portalon keresztül. 
 
 1.  [A GitHub-](https://aka.ms/ukofficial-paaswa-repo) tárház klónozása vagy letöltése a helyi munkaállomásra.
-2.  Tekintse át [az 1. módszert: Az Azure CLI 2 (Express verzió](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) ) és a megadott parancsok végrehajtása.
-3.  Felülvizsgálati [módszer 1a: Azure CLI 2 (az üzemelő példány konfigurálása parancsfájl-](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) argumentumokkal) és a megadott parancsok végrehajtása
-4.  Felülvizsgálati [módszer 2: Azure Portal telepítési folyamat](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) és a felsorolt parancsok végrehajtása
+2.  Tekintse át az [1. módszert: Azure CLI 2 (Express verzió)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) , és hajtsa végre a megadott parancsokat.
+3.  Felülvizsgálati [módszer 1a: Azure CLI 2 (az üzemelő példány konfigurálása parancsfájl-argumentumokkal)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) és a megadott parancsok végrehajtása
+4.  A [2. módszer áttekintése: Azure Portal telepítési folyamat](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) és a felsorolt parancsok végrehajtása
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
 

@@ -11,19 +11,19 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 10a10882efe05ef9e6bb86e54fcfcf8c5d73d225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70098741"
 ---
 # <a name="source-control-integration-for-azure-sql-data-warehouse"></a>Verziókövetés integrációja Azure SQL Data Warehouse
 
 Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz-(SSDT-) adatbázis-projekt a verziókövetés használatával.  A verziókövetés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat kiépítéséhez SQL Data Warehousesal. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-- Regisztráció [Azure DevOps](https://azure.microsoft.com/services/devops/) -szervezetre
+- Regisztráció [Azure DevOps-szervezetre](https://azure.microsoft.com/services/devops/)
 - A [Létrehozás és összekapcsolás](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal) oktatóanyag átugrása
 -  [A Visual Studio 2019 telepítése](https://visualstudio.microsoft.com/vs/older-downloads/) 
 
@@ -37,11 +37,11 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
    ![Kapcsolatok kezelése](media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
-   ![Csatlakozási kapcsolat](media/sql-data-warehouse-source-control-integration/3-connect.png "Csatlakozási kapcsolat")
+   ![Kapcsolódás](media/sql-data-warehouse-source-control-integration/3-connect.png "Kapcsolódás")
 
 3. Az Azure-tárház klónozása a projektből a helyi gépre
 
-   ![Klónozási] tárház (media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási") tárház
+   ![Klónozási tárház](media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klónozási tárház")
 
 ## <a name="create-and-connect-your-project"></a>Projekt létrehozása és összekapcsolása
 
@@ -55,15 +55,15 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
 3. A Visual Studióban a Team Explorerben véglegesítse az összes módosítást a helyi git-tárházban 
 
-   ![Véglegesítés](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Véglegesítés")  
+   ![Véglegesítése](media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Véglegesítés")  
 
 4. Most, hogy már elvégezte a módosításokat a klónozott tárházban helyileg, szinkronizálja és leküldheti a módosításokat az Azure-beli DevOps-projektben.
 
    ![Szinkronizálás és leküldéses előkészítés](media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Szinkronizálás és leküldéses előkészítés")
 
-   ![Szinkronizálás és] leküldés (media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Szinkronizálás és") leküldés  
+   ![Szinkronizálás és leküldés](media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Szinkronizálás és leküldés")  
 
-## <a name="validation"></a>Érvényesítés
+## <a name="validation"></a>Ellenőrzés
 
 1. Ellenőrizze, hogy a módosítások az Azure-tárházba lettek-e küldve az adatbázis-projektben lévő Table oszlop frissítésével a Visual Studio SQL Server Data Tools (SSDT) használatával
 
@@ -71,15 +71,15 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Adateszköz
 
 2. Véglegesítse és küldje le a változást a helyi adattárból az Azure-tárházba
 
-   ![Leküldéses módosítások](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Leküldéses módosítások")
+   ![Leküldéses módosítások](media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Módosítások leküldése")
 
 3. Ellenőrizze, hogy a változást leküldte-e az Azure-tárház adattárában
 
-   ![Ellenőrzés](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
+   ![Ellenőrizze](media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
 4. (Nem**kötelező**) Séma összevetése és a cél adattárház változásainak frissítése a SSDT használatával annak biztosítása érdekében, hogy az Azure-tárházban és a helyi adattárban lévő objektumok definíciói az adattárházat tükrözzék
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Fejlesztés Azure SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
 

@@ -127,12 +127,18 @@
   href: storage-resource-deletion-errors.md
 - name: Klasszikus tárerőforrások törlésekor jelentkező hibák
   href: storage-classic-cannot-delete-storage-account-container-vhd.md
-- name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
-  href: unexpected-reboots-attached-vhds.md
-- name: A Windows aktiválásával kapcsolatos problémák
-  href: troubleshoot-activation-problems.md
-- name: Aktiválási probléma kényszerített bújtatással
-  href: custom-routes-enable-kms-activation.md
+- name: Virtuális gép újraindítási problémáinak elhárítása
+  items:
+    - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
+      href: unexpected-reboots-attached-vhds.md
+    - name: Rendszer-újraindítás ismertetése
+      href: understand-vm-reboot.md
+- name: A Windows aktiválása
+  items:
+    - name: A Windows aktiválásával kapcsolatos problémák
+      href: troubleshoot-activation-problems.md
+    - name: Aktiválási probléma kényszerített bújtatással
+      href: custom-routes-enable-kms-activation.md
 - name: Alkalmazás-hozzáféréssel kapcsolatos problémák
   href: troubleshoot-app-connection.md
 - name: Új virtuális gépek üzembe helyezése
@@ -188,8 +194,6 @@
   href: troubleshooting-throttling-errors.md
 - name: Beágyazott virtualizálás használata
   href: troubleshoot-vm-by-use-nested-virtualization.md
-- name: Rendszer-újraindítás ismertetése
-  href: understand-vm-reboot.md
 - name: Távoli hibaelhárítási eszközök
   href: remote-tools-troubleshoot-azure-vm-issues.md
 - name: Virtuális gép javítása

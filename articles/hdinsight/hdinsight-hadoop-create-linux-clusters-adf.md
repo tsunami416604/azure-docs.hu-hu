@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.openlocfilehash: 00937197536ede7d6eed168e0a84bad294800159
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72264525"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával
@@ -187,7 +187,7 @@ Ebben a cikkben a struktúra tevékenységét konfigurálja egy igény szerinti 
 
 2. A bal oldali menüben navigáljon a **+ erőforrás létrehozása** > **Analitika** > **Data Factory**.
 
-    ![Azure Data Factory]a portálon(./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
+    ![Azure Data Factory a portálon](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-azure-portal.png "Azure Data Factory a portálon")
 
 3. Adja meg vagy válassza ki a következő értékeket az **új adatok gyári** csempéhez:
 
@@ -200,7 +200,7 @@ Ebben a cikkben a struktúra tevékenységét konfigurálja egy igény szerinti 
     |Földrajzi egység | A helyet a rendszer automatikusan a megadott helyre állítja be a korábban létrehozott erőforráscsoport létrehozásakor. Ebben az oktatóanyagban a hely az **USA keleti**régiójában van beállítva. |
     |GIT engedélyezése|Törölje a jelet a jelölőnégyzetből.|
 
-    ![Azure Data Factory létrehozása a Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "create Azure Data Factory használatával Azure Portal")
+    ![Azure Data Factory létrehozása a Azure Portal használatával](./media/hdinsight-hadoop-create-linux-clusters-adf/create-data-factory-portal.png "Azure Data Factory létrehozása a Azure Portal használatával")
 
 4. Kattintson a **Létrehozás** gombra. Az adatelőállítók létrehozása 2 – 4 perc közötti időt is igénybe vehet.
 
@@ -225,11 +225,11 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 2. Válassza a **kapcsolatok** lehetőséget az ablak bal alsó sarkában, majd válassza az **+ új**lehetőséget.
 
-    ![Kapcsolatok létrehozása Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "kapcsolatok létrehozása a Azure Data Factory")
+    ![Kapcsolatok létrehozása Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-create-new-connection.png "Kapcsolatok létrehozása Azure Data Factory")
 
 3. Az **új társított szolgáltatás** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás**gombra.
 
-    ![Azure Storage-beli társított szolgáltatás létrehozása a Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Azure Storage társított szolgáltatás létrehozása a Data Factoryhoz")
+    ![Azure Storage-beli társított szolgáltatás létrehozása Data Factoryhoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service.png "Azure Storage-beli társított szolgáltatás létrehozása Data Factoryhoz")
 
 4. Adja meg a következő értékeket a Storage társított szolgáltatáshoz:
 
@@ -241,7 +241,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     Válassza a **kapcsolatok tesztelése** és sikeres, majd a **Létrehozás**lehetőséget.
 
-    ![Adja meg az Azure Storage társított szolgáltatás]nevét(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Az Azure Storage társított szolgáltatás") számára
+    ![Adja meg az Azure Storage társított szolgáltatás nevét](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-storage-linked-service-details.png "Adja meg az Azure Storage társított szolgáltatás nevét")
 
 ### <a name="create-an-on-demand-hdinsight-linked-service"></a>Igény szerinti HDInsight társított szolgáltatás létrehozása
 
@@ -251,7 +251,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 3. Válassza az **Azure HDInsight**lehetőséget, majd kattintson a **Continue (folytatás**) gombra.
 
-    ![HDInsight társított szolgáltatás létrehozása a Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight társított szolgáltatás létrehozása a Azure Data Factoryhoz")
+    ![HDInsight társított szolgáltatás létrehozása a Azure Data Factoryhoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service.png "HDInsight társított szolgáltatás létrehozása a Azure Data Factoryhoz")
 
 4. Az **új társított szolgáltatás** ablakban adja meg a következő értékeket, és hagyja a többi értéket alapértelmezettként:
 
@@ -269,26 +269,26 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
     | Erőforráscsoport kiválasztása | Válassza ki a korábban használt PowerShell-parancsfájl részeként létrehozott erőforráscsoportot.|
     | Operációs rendszer típusa/fürt SSH-felhasználóneve | Adjon meg egy SSH-felhasználónevet, amely általában `sshuser`. |
     | Operációs rendszer típusa/fürt SSH-jelszava | Adja meg az SSH-felhasználó jelszavát |
-    | Operációs rendszer típusa/fürt felhasználóneve | Adja meg a fürt felhasználónevet, amely gyakran @no__t – 0. |
+    | Operációs rendszer típusa/fürt felhasználóneve | Adja meg a fürt felhasználói nevét, amely általában `admin`. |
     | Operációs rendszer típusa/fürt jelszava | Adja meg a fürt felhasználójának jelszavát. |
 
     Ezután kattintson a **Létrehozás** elemre.
 
-    ![Értékek megadása a HDInsight társított szolgáltatás]számára(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "a HDInsight társított szolgáltatás értékeinek") megadása
+    ![Adja meg a HDInsight társított szolgáltatás értékeit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-linked-service-details.png "Adja meg a HDInsight társított szolgáltatás értékeit")
 
 ## <a name="create-a-pipeline"></a>Folyamat létrehozása
 
 1. Válassza a **+** (plusz) gombot, majd a **Folyamat** elemet.
 
-    ![Folyamat létrehozása Azure Data Factory]folyamat(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "létrehozása Azure Data Factory")
+    ![Folyamat létrehozása Azure Data Factoryban](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-create-pipeline.png "Folyamat létrehozása Azure Data Factoryban")
 
 2. A **tevékenységek** eszközkészletben bontsa ki a **HDInsight**csomópontot, és húzza a **kaptár** tevékenységet a folyamat tervező felületére. Az **általános** lapon adja meg a tevékenység nevét.
 
-    ![Tevékenységek hozzáadása a Data Factory folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "tevékenységek hozzáadása Data Factory folyamathoz")
+    ![Tevékenységek hozzáadása Data Factory folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-add-hive-pipeline.png "Tevékenységek hozzáadása Data Factory folyamathoz")
 
 3. Győződjön meg arról, hogy a kaptár tevékenység van kiválasztva, válassza ki a **HDI-fürt** fület, majd a **HDInsight társított szolgáltatás** legördülő listából válassza ki a korábban létrehozott társított szolgáltatást a HDInsight **HDInsightLinkedService**.
 
-    ![Adja meg a HDInsight-fürt adatait a folyamathoz], és adja meg a(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "HDInsight-fürt adatait")
+    ![HDInsight-fürt adatainak megadása a folyamathoz](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "HDInsight-fürt adatainak megadása a folyamathoz")
 
 4. Válassza a **szkript** fület, és végezze el a következő lépéseket:
 
@@ -296,25 +296,25 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     1. A **fájl elérési útja**területen válassza a **Tallózás tároló** lehetőséget, és navigáljon arra a helyre, ahol a minta struktúra-parancsfájl elérhető. Ha korábban futtatta a PowerShell-parancsfájlt, ennek a helynek `adfgetstarted/hivescripts/partitionweblogs.hql` értékűnek kell lennie.
 
-        ![A folyamathoz tartozó kaptár-parancsfájl részleteinek]megadása(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "a folyamathoz")
+        ![A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "A folyamathoz tartozó struktúra-parancsfájl részleteinek megadása")
 
     1. A **speciális** > **Paraméterek**területen válassza **az automatikus kitöltés parancsfájlból**lehetőséget. Ez a beállítás minden olyan paramétert megkeres a kaptár-parancsfájlban, amely futásidőben értéket igényel. A használt szkript (**partitionweblogs. HQL**) **kimeneti** paraméterrel rendelkezik. Adja meg a `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` formátumú **értéket** , hogy az Azure Storage egy meglévő mappájára mutasson. Az elérési út megkülönbözteti a kis- és nagybetűket. Ez az az elérési út, ahol a rendszer a parancsfájl kimenetét tárolja. A `wasbs` sémára azért van szükség, mert a Storage-fiókok mostantól alapértelmezés szerint engedélyezve vannak a biztonságos átvitelre.
     
-        ![Paraméterek megadása a]kaptár parancsfájlhoz(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "paraméterek megadása a kaptár parancsfájlhoz")
+        ![Adja meg a kaptár parancsfájl paramétereit](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Adja meg a kaptár parancsfájl paramétereit")
 
 1. A folyamat érvényesítéséhez kattintson az **Érvényesítés** elemre. Az érvényesítési ablak bezárásához kattintson a **>>** (jobbra mutató nyíl) gombra.
 
-    ![A Azure Data Factory folyamat]ellenőrzése(./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "a Azure Data Factory folyamat ellenőrzése")
+    ![A Azure Data Factory folyamat ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-validate-all.png "A Azure Data Factory folyamat ellenőrzése")
 
 1. Végül válassza az **összes közzététele** lehetőséget az összetevők közzétételéhez Azure Data Factory.
 
-    ![A](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "Azure Data Factory folyamat") közzététele a Azure Data Factory-folyamatban
+    ![A Azure Data Factory-folyamat közzététele](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-publish-pipeline.png "A Azure Data Factory-folyamat közzététele")
 
 ## <a name="trigger-a-pipeline"></a>Folyamat elindítása
 
 1. A tervező felület eszköztárán válassza az **trigger hozzáadása** > **trigger most**lehetőséget.
 
-    ![A Azure Data Factory folyamat elindítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "a Azure Data Factory folyamat elindítása")
+    ![A Azure Data Factory folyamat elindítása](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "A Azure Data Factory folyamat elindítása")
 
 2. Válassza a **Befejezés** lehetőséget a felugró oldali sávon.
 
@@ -322,13 +322,13 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
 1. Váltson a bal oldali **Monitorozás** lapra. Ekkor a folyamat futása megjelenik a **Pipeline Runs** (Folyamatfuttatások) listában. Figyelje meg a Futtatás állapotát az **állapot** oszlopban.
 
-    ![A](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "Azure Data Factory-folyamat") figyelése Azure Data Factory
+    ![A Azure Data Factory folyamat figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline.png "A Azure Data Factory folyamat figyelése")
 
 1. Az állapot frissítéséhez kattintson a **Frissítés** gombra.
 
 1. Azt is megteheti, hogy kijelöli a **tevékenység** futtatása ikont, hogy megjelenjen-e a folyamathoz társított tevékenység. Az alábbi képernyőképen csak egy tevékenység fut, mivel a létrehozott folyamatnak csak egy tevékenysége van. Ha vissza szeretne térni az előző nézetre, válassza a **folyamatok** lehetőséget az oldal tetején.
 
-    A ![Azure Data Factory folyamat figyelése tevékenység](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "figyelése a Azure Data Factory folyamat tevékenységében")
+    ![A Azure Data Factoryi folyamat tevékenységének figyelése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "A Azure Data Factoryi folyamat tevékenységének figyelése")
 
 ## <a name="verify-the-output"></a>Kimenet ellenőrzése
 
@@ -340,7 +340,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     - Megjelenik egy olyan **adfjobs** -tároló, amely tartalmazza a Azure Data Factory feladatok naplóit.  
 
-        ![Ellenőrizze, hogy a Azure Data Factory folyamat kimenete](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "ellenőrizze-e a Azure Data Factory folyamat kimenetét")
+        ![A Azure Data Factory folyamat kimenetének ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "A Azure Data Factory folyamat kimenetének ellenőrzése")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -356,7 +356,7 @@ Másik lehetőségként törölheti az oktatóanyaghoz létrehozott teljes erőf
 1. Az **erőforrások** csempén az alapértelmezett Storage-fiókkal és az adatelőállítóval kell rendelkeznie, hacsak nem osztja meg az erőforráscsoportot más projektekkel.
 1. Válassza az **Erőforráscsoport törlése** elemet. Ezzel törli a Storage-fiókot és a Storage-fiókban tárolt adatfájlokat.
 
-    Erőforráscsoport törlésének ![Azure Portal]erőforráscsoport(./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "törlése")
+    ![Erőforráscsoport törlése Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Erőforráscsoport törlése")
 
 1. Adja meg az erőforráscsoport nevét a törlés megerősítéséhez, majd válassza a **Törlés**lehetőséget.
 

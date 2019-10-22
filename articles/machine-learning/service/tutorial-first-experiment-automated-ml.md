@@ -11,13 +11,13 @@ author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
 ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72035677"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: Az első besorolási modell létrehozása automatizált gépi tanulással
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhatja létre első automatizált gépi tanulási kísérletét a munkaterület kezdőlapján (előzetes verzió) anélkül, hogy egyetlen sor kódot kellene írnia. Ez a példa egy besorolási modellt hoz létre, amely azt jelzi, hogy az ügyfél egy pénzügyi intézmény által rögzített értékű letétbe kerül.
 
@@ -26,7 +26,7 @@ Az automatizált gépi tanulás segítségével automatizálhatja az időigénye
 Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
 
 > [!div class="checklist"]
-> * Az Azure Machine Learning-munkaterület létrehozása.
+> * Hozzon létre egy Azure Machine Learning munkaterületet.
 > * Futtasson automatizált gépi tanulási kísérletet.
 > * A kísérlet részleteinek megtekintése.
 > * A modell üzembe helyezése.
@@ -37,7 +37,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 * Töltse le az [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) adatfájlt. Az **y** oszlop azt jelzi, hogy az ügyfél egy rögzített lejáratú befizetésre fizetett-e, amelyet később a jelen oktatóanyagban megjelenő előrejelzések céljának oszlopa azonosítottak. 
 
-## <a name="create-a-workspace"></a>Munkaterület létrehozása
+## <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
 Az Azure Machine Learning munkaterület a felhőben található alapvető erőforrás, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használható. Az Azure-előfizetést és az erőforráscsoportot egy könnyen felhasználható objektumhoz fűzi a szolgáltatásban. 
 
@@ -73,7 +73,7 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
    Mező | Leírás | Az oktatóanyag értéke
    ----|---|---
    Számítási név |A számítási környezet azonosítására szolgáló egyedi név.|automl – számítás
-   Virtuális @ no__t-0machine @ no__t-1size| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
+   Virtuális &nbsp;machine &nbsp;size| Válassza ki a virtuális gép méretét a számítási feladatokhoz.|Standard_DS12_V2
    Csomópontok minimális/maximális száma (speciális beállításokban)| A profilhoz legalább 1 csomópontot kell megadnia.|Minimális csomópontok: 1<br>Csomópontok maximális száma: 6
 
    >[!NOTE]
@@ -102,10 +102,10 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
         Mező|Leírás| Az oktatóanyag értéke
         ---|---|---
         Fájl formátuma|Meghatározza a fájlban tárolt adatelrendezést és-típust.| Tagolt
-        Elválasztó karakter|Egy vagy több karakter a @ no__t-0 különálló, egyszerű szöveges vagy más adatfolyamok közötti határ megadásához. |Vesszővel
+        Elválasztó|Egy vagy több karakter, amely &nbsp; különálló, egyszerű szöveges vagy más adatfolyamokban lévő független régiók közötti határ megadását határozza meg. |Vesszővel
         Encoding|Meghatározza, hogy az adatkészletek olvasásához milyen bitet kell használni a séma-tábla.| UTF-8
-        Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájl azonos fejléccel rendelkezik
-        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| Nincsenek
+        Oszlopfejlécek| Azt jelzi, hogy a rendszer hogyan kezeli az adatkészlet fejléceit (ha van ilyen).| Minden fájlnak azonos fejléce van
+        Sorok kihagyása | Azt jelzi, hogy az adatkészletben hány, ha van ilyen, a sorok kimaradnak.| None
     
         ![Előnézet lap konfigurációja](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
@@ -118,14 +118,14 @@ A következő kísérlet beállítása és futtatása lépések a munkaterület 
    >[!NOTE]
    > Ebben az oktatóanyagban nem fog mérőszám-pontszámot vagy maximális magot megadni iterációs küszöbértékként. És nem fogja letiltani az algoritmusok tesztelését.
    
-   Speciális @ no__t – 0settings|Leírás|Érték @ no__t-0for @ no__t-1tutorial
+   Speciális &nbsp;settings|Leírás|Érték &nbsp;for &nbsp;tutorial
    ------|---------|---
    Elsődleges metrika| Az értékelési metrika, amelyet a Machine learning algoritmusa fog mérni.|AUC_weighted
-   Kilépési feltételek| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Képzés @ no__t-0job @ no__t-1time: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-3iterations&#58;10
+   Kilépési feltételek| Ha teljesülnek a feltételek, a betanítási feladatok leállnak. |Képzés &nbsp;job &nbsp;time: 5 <br> <br> Max &nbsp; # &nbsp;of &nbsp;iterations&#58;10
    Előfeldolgozás| Lehetővé teszi az automatikus gépi tanulás által végzett előfeldolgozást. Ez magában foglalja az automatikus adattisztítást, előkészítést és átalakítást a szintetikus funkciók létrehozásához.| Engedélyezés
    Érvényesítés típusa | Válasszon egy több ellenőrzési típust.|K-szeres keresztek ellenőrzése
    Érvényességek száma | Tesztek száma. | 2 érvényességi értékek 
-   Egyidejűség| Az egyidejű ismétlések maximális száma.|5
+   Párhuzamosság| Az egyidejű ismétlések maximális száma.|5
    
 1. A kísérlet futtatásához kattintson a **Start** gombra. A kísérlet előkészítésének megkezdéséhez egy képernyő jelenik meg egy állapotjelző üzenettel.
 
@@ -144,7 +144,7 @@ A következő táblázat a diagramokat és a futtatási mérőszámokat mutatja 
 
 ![Iteráció részleteinek futtatása](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
-## <a name="deploy-the-model"></a>A modell üzembe helyezése
+## <a name="deploy-the-model"></a>A modell rendszerbe állítása
 
 Az automatizált gépi tanulás a munkaterület kezdőlapján lehetővé teszi a legjobb modell üzembe helyezését webszolgáltatásként néhány lépésben. Az üzembe helyezés a modell integrációja, így előre jelezhető az új adatmennyiség, és azonosíthatók a lehetséges lehetőségek is. Ebben a kísérletben a webszolgáltatások üzembe helyezése azt jelenti, hogy a pénzügyi intézmény immár egy iterációs és méretezhető webes megoldást kínál a lehetséges rögzített lejáratú ügyfelek azonosítására. 
 
@@ -156,7 +156,7 @@ Ebben a kísérleti kontextusban a **VotingEnsemble** a **AUC_weighted** metrika
 
 1. Töltse fel a **legjobb modell üzembe helyezése** panelt az alábbiak szerint:
 
-    Mező| Value
+    Mező| Value (Díj)
     ----|----
     Központi telepítés neve| My-automl – üzembe helyezés
     Központi telepítés leírása| Az első automatizált gépi tanulási kísérlet üzembe helyezése
@@ -187,7 +187,7 @@ Ha az erőforráscsoportot és a munkaterületet más oktatóanyagok és feltár
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlapját használta egy besorolási modell létrehozásához és üzembe helyezéséhez. További információkat és további lépéseket a következő cikkekben talál:
 
@@ -200,5 +200,5 @@ Ebben az automatizált gépi tanulási oktatóanyagban a munkaterület kezdőlap
 + A besorolási mérőszámokkal és diagramokkal kapcsolatos további információkért tekintse meg az [automatikus gépi tanulás eredményeinek megismerése](how-to-understand-automated-ml.md#classification) című cikket.
 
 >[!NOTE]
-> Ez a bank marketing-adatkészlet elérhetővé válik a [Creative Commonsban (CCO: Nyilvános tartomány) licenc @ no__t-0. Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
+> Ezt a bank marketing-adatkészletet a [Creative Commons (CCO: Public Domain) licence](https://creativecommons.org/publicdomain/zero/1.0/)keretében lehet elérni. Az adatbázis egyéni tartalmában minden jogosultság az [adatbázis tartalma licenc](https://creativecommons.org/publicdomain/zero/1.0/) alatt érhető el, és elérhető a [Kaggle](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)-on. Ez az adatkészlet eredetileg az [UCI Machine learning adatbázisban](https://archive.ics.uci.edu/ml/datasets/bank+marketing)volt elérhető.<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez és P. Rita. Adatvezérelt megközelítés a banki telemarketing sikerességének előrejelzéséhez. Döntési támogatási rendszerek, Elsevier, 62:22-31, június 2014.

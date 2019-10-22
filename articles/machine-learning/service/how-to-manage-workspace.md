@@ -12,19 +12,19 @@ author: shivp950
 ms.date: 05/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 511c737e160c0f0753e570314c9b29346972cb04
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71269250"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning munkaterületek létrehozása és kezelése a Azure Portal
 
 Ebben a cikkben [**Azure Machine learning munkaterületeket**](concept-workspace.md) hoz létre, tekinthet meg és törölhet a [Azure Machine learning](overview-what-is-azure-ml.md)Azure Portal.  A portál a legegyszerűbb módszer a munkaterületek használatának megkezdésére, de az igények változásának vagy az automatizálási követelmények növelésének megkezdéséhez létrehozhat és törölhet munkaterületeket [a parancssori felület használatával](reference-azure-machine-learning-cli.md), [Python-kóddal](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) vagy [a vs Code bővítménnyel](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code).
 
-## <a name="create-a-workspace"></a>Munkaterület létrehozása
+## <a name="create-a-workspace"></a>Munkaterületek létrehozása
 
-Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+Munkaterület létrehozásához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -41,7 +41,7 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
 ## <a name="view"></a>Munkaterület megtekintése
 
-1. A bal felső sarkában a portálon, válassza ki **minden szolgáltatás**.
+1. A portál bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
 
 1. A **minden szolgáltatás** szűrő mezőbe írja be a **Machine learning szolgáltatás**értéket.  
 
@@ -49,14 +49,14 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
    ![Azure Machine Learning munkaterület keresése](media/how-to-manage-workspace/all-services.png)
 
-1. Nézze át a találhatók munkaterületek listáját. Szűrhet előfizetés alapján, erőforráscsoportok és helyek.  
+1. Tekintse át a talált munkaterületek listáját. Az előfizetés, az erőforráscsoportok és a helyszínek alapján szűrhet.  
 
 1. Válasszon ki egy munkaterületet a tulajdonságainak megjelenítéséhez.
-   ![Munkaterület tulajdonságai](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
+   ![Workspace tulajdonságok ](media/how-to-manage-workspace/allservices_view_workspace_full.PNG)
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 
-Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
+Használja a törölni kívánt munkaterület tetején található Törlés gombot.
 
   ![Törlés gomb](media/how-to-manage-workspace/delete-workspace.png)
 
@@ -64,9 +64,9 @@ Használja a Törlés gombra, hogy törölni kívánja a munkaterület tetején.
 
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse a teljes hosszúságú oktatóanyagot, amelyből megtudhatja, hogyan hozhat létre, taníthat és helyezhet üzembe modelleket Azure Machine Learning használatával a munkaterületen.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Modellek betanítása](tutorial-train-models-with-aml.md)
+> [Oktatóanyag: modellek betanítása](tutorial-train-models-with-aml.md)

@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: heidist
 ms.openlocfilehash: ffa20599ae57908f9b0ea848ab68f41a3d0e2a14
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72176040"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>Rövid útmutató: Azure Search index létrehozása a Poster-ben REST API-k használatával
@@ -47,7 +47,7 @@ A REST-hívásokhoz minden kérésének tartalmaznia kell a szolgáltatás URL-c
 
 1. A **beállítások** > **kulcsok**területen szerezze be a szolgáltatásra vonatkozó teljes körű jogosultságokat. Az üzletmenet folytonossága érdekében két, egymással megváltoztathatatlan rendszergazdai kulcs áll rendelkezésre. Az objektumok hozzáadására, módosítására és törlésére vonatkozó kérésekhez használhatja az elsődleges vagy a másodlagos kulcsot is.
 
-![Http-végpont és hozzáférési kulcs]beszerzése(media/search-get-started-postman/get-url-key.png "http-végpont és elérési kulcs beolvasása")
+![HTTP-végpont és elérési kulcs beszerzése](media/search-get-started-postman/get-url-key.png "HTTP-végpont és elérési kulcs beszerzése")
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kéréshez. Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -68,7 +68,7 @@ A kérelem fejlécének összetétele két elemet tartalmaz: a tartalom típusá
 
 A Poster-ben állítson össze egy, az alábbi képernyőképen láthatóhoz hasonló kérelmet. Válassza a **beolvasás** művelet lehetőséget, adja meg az URL-címet, majd kattintson a **Küldés**gombra. Ez a parancs csatlakozik a Azure Searchhoz, beolvassa az indexek gyűjteményt, és visszaadja a 200-es HTTP-állapotkódot egy sikeres kapcsolaton. Ha a szolgáltatás már rendelkezik indexekkel, a válasz tartalmazni fog index-definíciókat is.
 
-![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "postára vonatkozó kérelem URL-címe és fejléce")
+![Poster-kérelem URL-címe és fejléce](media/search-get-started-postman/postman-url.png "Poster-kérelem URL-címe és fejléce")
 
 ## <a name="1---create-an-index"></a>1 – Index létrehozása
 
@@ -86,7 +86,7 @@ Ehhez tegye a következőket:
 
 4. Kattintson a **Küldés**gombra.
 
-![JSON-dokumentum indexelése a]kérelem törzsében a(media/search-get-started-postman/postman-request.png "JSON-dokumentum indexelése a kérelem törzsében")
+![JSON-dokumentum indexelése a kérelem törzsében](media/search-get-started-postman/postman-request.png "JSON-dokumentum indexelése a kérelem törzsében")
 
 ### <a name="index-definition"></a>Index definíciója
 
@@ -140,7 +140,7 @@ Ehhez tegye a következőket:
 
 4. Kattintson a **Küldés**gombra.
 
-![JSON-dokumentumok a kérelem]törzsében lévő(media/search-get-started-postman/postman-docs.png "JSON-dokumentumokban")
+![JSON-dokumentumok a kérelem törzsében](media/search-get-started-postman/postman-docs.png "JSON-dokumentumok a kérelem törzsében")
 
 ### <a name="json-documents-to-load-into-the-index"></a>Az indexbe betöltendő JSON-dokumentumok
 
@@ -253,7 +253,7 @@ Ehhez tegye a következőket:
 
 Ez a lekérdezés üres, és a keresési eredményekben szereplő dokumentumok számát adja vissza. A kérésnek és a válasznak a Poster következő képernyőképéhez hasonlóan kell kinéznie, miután rákattintott a **Send (Küldés**) gombra. Az állapotkódnak 200-nak kell lennie.
 
- ![Keresési karakterlánc beolvasása az URL-]cím(media/search-get-started-postman/postman-query.png "lekérdezése keresési karakterlánccal az URL-címen")
+ ![Keresési karakterlánc beolvasása az URL-címen](media/search-get-started-postman/postman-query.png "Keresési karakterlánc beolvasása az URL-címen")
 
 Néhány további lekérdezési példát is kipróbálhat a szintaxis megszerzéséhez. Megteheti a karakterláncos keresést, a Verbatim $filter lekérdezéseket, korlátozhatja az eredmények készletét, kihasználhatja a keresést adott mezőkre, és így tovább.
 
@@ -284,7 +284,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 Ha `/stats` értéket ad hozzá az URL-címhez, az index információit adja vissza. A Postmanben a kérelem az alábbihoz fog hasonlítani, a válaszban pedig szerepleni fog a dokumentumok száma és a felhasznált lemezterület mérete bájtban megadva.
 
- ![Index]információinak lekérése(media/search-get-started-postman/postman-system-query.png "index információi")
+ ![Index információinak lekérése](media/search-get-started-postman/postman-system-query.png "Index információinak lekérése")
 
 Figyelje meg, hogy az api-version szintaxisa eltér. Ebben a kérelemben a `?` karakterrel fűzheti hozzá az api-version paramétert. A `?` elválasztja az URL elérési útját a lekérdezési karakterlánctól, míg a & elválasztja a lekérdezési karakterláncban szereplő "Name = Value" párokat. Ebben a lekérdezésben az api-version az első és egyetlen lekérdezési sztring.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Csatlakozás az adatkezeléshez: Modul-hivatkozás'
+title: 'Csatlakozás az adatkezeléshez: modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan egyesítheti az adatkészleteket az Azure Machine Learning szolgáltatás JOIN JOIN adatmoduljának használatával.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
-ms.openlocfilehash: 5fdb822a445e8a62cd36e6dd05aa218b9b41ce9e
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: ec9de6975931219ae45543833421234c4d71e6af
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128740"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693094"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
@@ -24,11 +24,11 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning szolgált
 
 Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak kell kapcsolódnia. A több oszlopot használó összetett kulcsok is támogatottak. 
 
-1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **illesztési adat** modult a kísérletbe. 
+1. Adja hozzá az egyesíteni kívánt adatkészleteket, majd húzza az **illesztési adat** modult a folyamatba. 
 
-    A modult az Adatátalakítási kategóriában, a **manipuláció**szakaszban találja.
+    A modult az **Adatátalakítási** kategóriában, a **manipuláció**szakaszban találja.
 
-1. Csatlakoztassa az adatkészleteket az adategyesítési modulhoz. 
+1. Csatlakoztassa az adatkészleteket az **adategyesítési** modulhoz. 
  
 1. Válassza az **oszlop indítása lehetőséget** , hogy kiválassza a kulcs oszlop (oka) t. Ne felejtse el kiválasztani a bal és a jobb oldali bemenetek oszlopait.
 
@@ -47,25 +47,25 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
    
 1. Az **összekapcsolás típusa** legördülő listával adhatja meg, hogy az adatkészletek hogyan legyenek egyesítve.  
   
-    * **Belső illesztés**: A *belső illesztés* a leggyakoribb csatlakozási művelet. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
+    * **Belső illesztés**: a leggyakoribb csatlakozási művelet a *belső* illesztés. Az egyesített sorokat csak akkor adja vissza, ha a kulcs oszlopainak értékei egyeznek.  
   
-    * **Bal külső illesztés**: A *bal oldali külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
+    * **Bal külső illesztés**: a bal oldali *külső illesztés* a bal oldali tábla összes sorához csatlakoztatott sorokat ad vissza. Ha a bal oldali tábla egyik sora nem rendelkezik egyező sorokkal a jobb oldali táblában, a visszaadott sor a jobb oldali táblából származó összes oszlophoz hiányzó értékeket tartalmaz. A hiányzó értékekhez helyettesítő értéket is megadhat.  
   
-    * **Teljes külső illesztés**: A *teljes külső illesztés* a bal oldali táblából (**tábla1**) és a jobb oldali táblából (**table2**) származó összes sort adja vissza.  
+    * **Teljes külső illesztés**: a *teljes külső illesztés* a bal oldali táblából (**tábla1**) és a jobb oldali táblából (**table2**) származó összes sort adja vissza.  
   
          A másik tábla minden olyan sorához, amely nem rendelkezik egyező sorokkal, az eredmény tartalmaz egy sort, amely a hiányzó értékeket tartalmazza.  
   
-    * **Bal oldali fél csatlakozás**: A *bal oldali illesztés* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
+    * **Bal oldali félig illesztés**: a *bal oldali fél* csak a bal oldali tábla értékeit adja vissza, ha a kulcs oszlopainak értéke megegyezik.  
 
 1. A **jobb oldali kulcsok oszlopai az összekapcsolt táblában**:
 
     * Ezzel a beállítással mindkét bemeneti táblából megtekintheti a kulcsokat.
     * Törölje a jelölést, hogy csak a bal oldali bemenetből származó kulcs oszlopokat adja vissza.
 
-1. Futtassa a kísérletet, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
+1. Futtassa a folyamatot, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
 
-1. Az eredmények megtekintéséhez kattintson a jobb gombbal az adategyesítési > **eredmények** > adatkészletének**megjelenítése**elemre.
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **illesztési adatokat**  > **results adatkészlet**  > **Megjelenítés**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

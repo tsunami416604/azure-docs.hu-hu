@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
 ms.openlocfilehash: 0a26cfc578f12044cb5834f202a0fed5d0a30274
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69647369"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Alapszintű index létrehozása a Azure Searchban
@@ -28,11 +28,11 @@ Létrehozhat egy indexet a portálon, [REST API](search-create-index-rest-api.md
 
 A jobb oldali index kialakításának megérkezése általában több iteráción keresztül történik. Az eszközök és API-k kombinációjának használatával gyorsan véglegesítheti a kialakítást.
 
-1. Állapítsa meg, hogy használható- [](search-indexer-overview.md#supported-data-sources)e indexelő. Ha a külső adatai a támogatott adatforrások egyike, akkor az adatimportálás varázsló használatával prototípust és [](search-import-data-portal.md) betöltést is beállíthat.
+1. Állapítsa meg, hogy használható-e [Indexelő](search-indexer-overview.md#supported-data-sources). Ha a külső adatai a támogatott adatforrások egyike, akkor az [**adatimportálás**](search-import-data-portal.md) varázsló használatával prototípust és betöltést is beállíthat.
 
-2. Ha nem tudja használniaz importálási adatmennyiséget, akkor továbbra is [létrehozhat egy kezdeti indexet a portálon](search-create-index-portal.md), mezők hozzáadásával, adattípusokkal és attribútumok hozzárendelésével az **index hozzáadása** lap Vezérlők használatával. A portálon láthatja, hogy mely attribútumok érhetők el különböző adattípusokhoz. Ha most ismerkedik az index kialakításával, ez hasznos lehet.
+2. Ha nem tudja használni az **importálási adatmennyiséget**, akkor továbbra is [létrehozhat egy kezdeti indexet a portálon](search-create-index-portal.md), mezők hozzáadásával, adattípusokkal és attribútumok hozzárendelésével az **index hozzáadása** lap Vezérlők használatával. A portálon láthatja, hogy mely attribútumok érhetők el különböző adattípusokhoz. Ha most ismerkedik az index kialakításával, ez hasznos lehet.
 
-   ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti] meg (media/search-create-index-portal/field-attributes.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti") meg
+   ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg](media/search-create-index-portal/field-attributes.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg")
   
    Amikor a **Létrehozás**gombra kattint, az indexet támogató összes fizikai struktúra létrejön a keresési szolgáltatásban.
 
@@ -46,7 +46,7 @@ A jobb oldali index kialakításának megérkezése általában több iteráció
 
 6. Folytassa a kód használatát a terv megismétléséhez.  
 
-Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az indexek eldobása és újbóli [létrehozása](search-howto-reindex.md) akkor szükséges, ha egy meglévő mező definíciójában lényeges módosításokat végez. Ez azt jelenti, hogy a fejlesztés során érdemes megtervezni a gyakori újraépítést. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
+Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása akkor szükséges, ha egy meglévő mező definíciójában lényeges módosításokat végez. Ez azt jelenti, hogy a fejlesztés során érdemes megtervezni a gyakori újraépítést. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
 
 A portál megközelítése helyett a kód használata javasolt az ismétlődő kialakításhoz. Ha a portálon az index definícióját használja, ki kell töltenie az index definícióját minden egyes Újraépítés során. Alternatív megoldásként az olyan eszközök, mint [a Poster és a REST API](search-get-started-postman.md) hasznosak lehetnek a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
 
@@ -146,7 +146,7 @@ A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb r
 A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
 
 ### <a name="data-types"></a>Adattípusok
-| Type | Leírás |
+| Type (Típus) | Leírás |
 | --- | --- |
 | *Edm.String* |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
 | *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
@@ -154,7 +154,7 @@ A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és 
 | *Edm.Int32* |32 bites egész számok. |
 | *Edm.Int64* |64 bites egész számok. |
 | *Edm.Double* |Kétszeres pontosságú numerikus adatok. |
-| *Edm.DateTimeOffset* |A dátum- `yyyy-MM-ddTHH:mm:ss.fffZ` és időértékek a OData v4 formátumban (például vagy `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`) jelennek meg. |
+| *Edm.DateTimeOffset* |A OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`) megadott dátum-idő értékek. |
 | *Edm.GeographyPoint* |A pont egy konkrét földrajzi helyet jelöl. |
 
 Részletesebb információkat az Azure Search által [támogatott adattípusokról itt](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) talál.
@@ -165,7 +165,7 @@ Az index pontosan egy mezőjének a kijelölt **kulcs** mezőnek kell lennie, am
 
 Más attribútumok határozzák meg, hogyan használják a mezőket egy alkalmazásban. A **kereshető** attribútum például minden olyan mezőhöz hozzá van rendelve, amelynek szerepelnie kell egy teljes szöveges keresésben. 
 
-Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például **kereshető** és lekérdezhető, hogy a karakterlánc mezőinél igaz legyen), és gyakran csak be kell állítani őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
+Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például **kereshető** és lekérdezhető, hogy a karakterlánc mezőinél **igaz legyen)** , és gyakran csak be kell állítani őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
 
 | Attribútum | Leírás |
 | --- | --- |
@@ -181,18 +181,18 @@ Az indexek létrehozásához használt API-k eltérő alapértelmezett viselked�
 
 A kiválasztott attribútumok hatással vannak a tárterületre. Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be.
 
-Az index a [beépített Real Estate Sample](search-get-started-portal.md) adatforráson alapul, amelyet a portálon indexelheti és lekérdezheti. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* indexben a **kereshető** attribútum van kiválasztva, és semmi mást sem, a *Realestate* lekérhető index a beolvasható attribútum van kiválasztva, semmi más, és így tovább.
+Az index a [beépített Real Estate Sample](search-get-started-portal.md) adatforráson alapul, amelyet a portálon indexelheti és lekérdezheti. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* indexben a **kereshető** attribútum van kiválasztva, és semmi mást sem, a *Realestate* lekérhető index a **beolvasható** attribútum van kiválasztva, semmi más, és így tovább.
 
 ![Index mérete az attribútumok kijelölése alapján](./media/search-what-is-an-index/realestate-index-size.png "Index mérete az attribútumok kijelölése alapján")
 
-Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. Beállítja a lekérdezhető növelési index méretét? Nem. Növeli a mezők hozzáadását egy javaslathoz az index méretének növelése érdekében? Igen.
+Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. **Beállítja a** lekérdezhető növelési index méretét? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen.
 
 A szűrést és rendezést támogató indexek a csak teljes szöveges keresést támogató indexek arányosan nagyobbak. Ennek az az oka, hogy a szűrés és a rendezés lekérdezése pontos egyezéseket eredményez, így a dokumentumok érintetlenül tárolódnak. Ezzel szemben a teljes szöveges és a zavaros keresést támogató kereshető mezők invertált indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok.
 
 > [!Note]
 > A tárolási architektúra a Azure Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
 
-## <a name="suggesters"></a>Javaslattevők
+## <a name="suggesters"></a>Javaslatok
 A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában részleges keresési karakterláncokat küld a [javaslatoknak (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) , miközben a felhasználó keresési lekérdezést ír be, és az API a javasolt kifejezések egy halmazát adja vissza. 
 
 A rendszer a javaslathoz hozzáadott mezőket használja a típus előtti keresési feltételek kiépítéséhez. Az összes keresési kifejezés az indexelés során jön létre, és külön tárolja őket. A javaslati struktúra létrehozásával kapcsolatos további információkért lásd: [javaslatok hozzáadása](index-add-suggesters.md).
@@ -213,17 +213,17 @@ Az ügyféloldali JavaScriptek alapértelmezés szerint nem hívhatnak meg API-k
 
 A következő beállítások állíthatók be a CORS:
 
-+ **allowedOrigins** (kötelező): Ez az az eredetek listája, amely hozzáférést kap az indexhez. Ez azt jelenti, hogy az ezektől az eredettől kiszolgált JavaScript-kódok lehetővé teszik az index lekérdezését (feltéve, hogy a megfelelő API-kulcsot biztosítja). Az egyes eredetek általában az `protocol://<fully-qualified-domain-name>:<port>` űrlapból `<port>` származnak, bár gyakran kimaradnak. További részletekért tekintse meg a több [eredetű erőforrás-megosztás (wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) című témakört.
++ **allowedOrigins** (kötelező): Ez azoknak a forrásoknak a listája, amelyek hozzáférést kapnak az indexhez. Ez azt jelenti, hogy az ezektől az eredettől kiszolgált JavaScript-kódok lehetővé teszik az index lekérdezését (feltéve, hogy a megfelelő API-kulcsot biztosítja). Az egyes eredetek általában az űrlapon vannak, `protocol://<fully-qualified-domain-name>:<port>` bár a `<port>` gyakran kimaradnak. További részletekért tekintse meg a több [eredetű erőforrás-megosztás (wikipedia)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) című témakört.
 
-  Ha engedélyezni szeretné az összes eredet elérését, a `*` **allowedOrigins** tömb egyetlen elemeként adja meg. *Ez az üzemi keresési szolgáltatások esetében nem ajánlott* , de gyakran hasznos a fejlesztéshez és a hibakereséshez.
+  Ha engedélyezni szeretné a hozzáférést az összes forráshoz, vegyen fel `*` egyetlen elemként a **allowedOrigins** tömbbe. *Ez az üzemi keresési szolgáltatások esetében nem ajánlott* , de gyakran hasznos a fejlesztéshez és a hibakereséshez.
 
-+ **maxAgeInSeconds** (nem kötelező): A böngészők ezt az értéket használják a CORS-elővizsgálati válaszok gyorsítótárazásának időtartamára (másodpercben). Ennek nem negatív egész számnak kell lennie. Minél nagyobb ez az érték, annál jobb lesz a teljesítmény, de minél hosszabb ideig tart a CORS-szabályzat módosításainak érvénybe léptetése. Ha nincs beállítva, a rendszer az alapértelmezett 5 perces időtartamot használja.
++ **maxAgeInSeconds** (nem kötelező): a böngészők ezt az értéket használják annak meghatározására, hogy mennyi ideig (másodpercben) kell gyorsítótárazni a CORS elővizsgálati válaszokat. Ennek nem negatív egész számnak kell lennie. Minél nagyobb ez az érték, annál jobb lesz a teljesítmény, de minél hosszabb ideig tart a CORS-szabályzat módosításainak érvénybe léptetése. Ha nincs beállítva, a rendszer az alapértelmezett 5 perces időtartamot használja.
 
 ## <a name="encryption-key"></a>Titkosítási kulcs
 
 Noha az összes Azure Search-index a Microsoft által felügyelt kulcsok használatával van titkosítva, az indexek úgy konfigurálhatók, hogy a Key Vault-ben **felügyelt kulccsal** titkosítva legyenek. További információ: [titkosítási kulcsok kezelése Azure Searchban](search-security-manage-encryption-keys.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását.
 

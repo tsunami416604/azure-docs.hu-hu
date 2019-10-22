@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 09/14/2019
-ms.openlocfilehash: 0465dcba5130f3b2dc5c615c884bfa0d3b138eb7
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.date: 10/10/2019
+ms.openlocfilehash: f5136084530c48815fd6a9f9e25b7358df00af07
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514933"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692535"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
@@ -112,6 +112,14 @@ A [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/over
 Egy Azure Machine Learning munkaterülethez egy Azure ML-folyamat van társítva, és egy folyamat lépés társítva van egy, az adott munkaterületen belül elérhető számítási célhoz. További információ: Azure Machine Learning- [munkaterületek létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) , illetve [Mik a Azure Machine learning számítási céljai?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)
 
 Azure Machine Learning a számítási cél az a környezet, amelyben egy ML-fázis történik. A szoftveres környezet lehet távoli virtuális gép, Azure Machine Learning számítás, Azure Databricks, Azure Batch stb. A hardveres környezet nagy mértékben is változhat, a GPU-támogatástól, a memóriától, a tárterülettől és így tovább. Megadhatja az egyes lépésekhez tartozó számítási célt, amely részletesen szabályozza a költségeket. A projekt adott műveletéhez, adatmennyiségéhez és teljesítményéhez szükséges több vagy kevésbé hatékony erőforrásokat is használhat. 
+
+## <a name="how-do-i-build-pipelines-using-the-azure-machine-learning-visual-interface"></a>Hogyan folyamatokat a Azure Machine Learning Visual Interface használatával?
+
+A vizuális tervezési felületet előnyben részesített fejlesztők a Azure Machine Learning vizuális felületet használhatják a folyamatok létrehozásához. Ehhez az eszközhöz a munkaterület kezdőlapján, a **vizuális kezelőfelület** kiválasztásával férhet hozzá.  A vizualizáció felület lehetővé teszi, hogy a lépéseket a tervezési felületre húzza. A gyors fejlesztés érdekében a meglévő modulokat a ML-feladatok spektrumán keresztül használhatja; a meglévő modulok az adatok átalakítását és az algoritmus kiválasztását is lefedik az üzembe helyezéshez. Vagy létrehozhat egy teljesen egyéni folyamatot a Python-szkriptekben definiált saját lépések kombinálásával.
+
+A folyamatok vizuális megtervezése során láthatók a lépések bemenetei és kimenetei. Az adatkapcsolatok húzásával gyorsan megismerheti és módosíthatja a folyamat adatfolyam.
+ 
+![Példa a Visual Interface Azure Machine Learning](./media/concept-ml-pipelines/visual-design-surface.gif)
 
 ### <a name="understanding-the-execution-graph"></a>A végrehajtási gráf ismertetése
 

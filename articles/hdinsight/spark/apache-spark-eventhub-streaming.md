@@ -9,10 +9,10 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
 ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266198"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Oktatóanyag: tweetek feldolgozása az Azure Event Hubs és a HDInsight-Apache Spark használatával
@@ -74,7 +74,7 @@ Ezt az Event hub-t használja a tweetek tárolásához.
 
 3. **A dolgok internete**területen válassza a **Event Hubs**lehetőséget. 
 
-    ![Event hub létrehozása Spark streaming-hoz példa](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "az Event hub létrehozása Spark streaming-hoz példa")
+    ![Event hub létrehozása Spark streaming-példaként](./media/apache-spark-eventhub-streaming/hdinsight-create-event-hub-for-spark-streaming.png "Event hub létrehozása Spark streaming-példaként")
 
 4. Válassza a **+ Hozzáadás** lehetőséget.
 
@@ -90,7 +90,7 @@ Ezt az Event hub-t használja a tweetek tárolásához.
     |Automatikus felfújás engedélyezése (nem kötelező) |Az automatikus feltöltés automatikusan méretezi a Event Hubs-névtérhez rendelt átviteli egységek számát, ha a forgalom túllépi a hozzá rendelt átviteli egységek kapacitását.  |
     |Maximális átviteli egységek automatikus felfújása (nem kötelező)|Ez a csúszka csak akkor jelenik meg, ha bejelöli az **automatikus feltöltés engedélyezése**.  |
 
-    ![Adjon meg egy Event hub-nevet a Spark streaming]-hoz példa a(./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Spark streaming példájának egy Event hub-nevét adja meg")
+    ![Adjon meg egy Event hub-nevet a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-name-for-spark-streaming.png "Adjon meg egy Event hub-nevet a Spark streaming példához")
 
 6. A névtér létrehozásához válassza a **Létrehozás** elemet.  Az üzembe helyezés néhány percen belül befejeződik.
 
@@ -112,7 +112,7 @@ Hozzon létre egy Event hubot az Event Hubs névtér üzembe helyezése után.  
 
     - **Üzenet megőrzése**: 1.   
    
-      ![Az Event hub részletes adatainak megadása a Spark streaming]-hoz példa:(./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Event hub-részletek a Spark streaming példához")
+      ![Az Event hub részletes adatainak megadása a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-provide-event-hub-details-for-spark-streaming-example.png "Az Event hub részletes adatainak megadása a Spark streaming példához")
 
 1. Kattintson a **Létrehozás** gombra.  A központi telepítésnek néhány másodpercen belül el kell végeznie, és a rendszer visszaküldi a Event Hubs névtér oldalára.
 
@@ -120,11 +120,11 @@ Hozzon létre egy Event hubot az Event Hubs névtér üzembe helyezése után.  
 
 1. Válassza a **RootManageSharedAccessKey**lehetőséget.
     
-     ![Event hub-szabályzatok beállítása a Spark streaming példához]a Spark streaming példájának(./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "beállítása az Event hub-szabályzatok számára")
+     ![Event hub-szabályzatok beállítása a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-set-event-hub-policies-for-spark-streaming-example.png "Event hub-szabályzatok beállítása a Spark streaming példához")
 
 1. Mentse az **elsődleges kulcs** és a **kapcsolódási karakterlánc elsődleges kulcsának** értékeit az oktatóanyag későbbi részében való használatra.
 
-     ![Az Event hub-szabályzatok kulcsai a Spark streaming példájának](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "megtekintéséhez")
+     ![Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához](./media/apache-spark-eventhub-streaming/hdinsight-view-event-hub-policy-keys.png "Az Event hub-szabályzatok kulcsainak megtekintése a Spark streaming példához")
 
 
 ## <a name="send-tweets-to-the-event-hub"></a>Tweetek küldése az Event hub-nak
@@ -252,7 +252,7 @@ A HDInsight az adatait az Azure Storage vagy a Azure Data Lake Storage tárolja,
 
 Nyissa meg az Azure Portalon a fürtöt, és válassza a **Törlés** lehetőséget.
 
-![HDInsight az Azure Portalon törölje a fürt](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "törlése HDInsight-fürtöt")
+![HDInsight Azure Portal – fürt törlése](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésekor a rendszer a HDInsight Spark-fürtöt és az alapértelmezett tárfiókot is törli.
 

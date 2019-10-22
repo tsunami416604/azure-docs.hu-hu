@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.openlocfilehash: f78b8c3b9619b7eea92b6a4f04ed4f6543916efe
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71265516"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Készségkészlet létrehozása a dúsítási folyamatban
 
-A kognitív keresés kinyeri és gazdagítja az adatgyűjtést Azure Searchban kereshetővé teszi. A kinyerési és bővítési lépéseket a *kognitív képességek*, az indexelés során hivatkozott *készségkészlet* együtt hívjuk. A készségkészlet [beépített képességeket](cognitive-search-predefined-skills.md) vagy egyéni képességeket használhatnak (lásd [A példát: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md) további információért.
+A kognitív keresés kinyeri és gazdagítja az adatgyűjtést Azure Searchban kereshetővé teszi. A kinyerési és bővítési lépéseket a *kognitív képességek*, az indexelés során hivatkozott *készségkészlet* együtt hívjuk. A készségkészlet [beépített képességeket](cognitive-search-predefined-skills.md) vagy egyéni képességeket használhat (lásd [például: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md) további információk).
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre a használni kívánt képességek bővítési folyamatát. A készségkészlet egy Azure Search indexelő [](search-indexer-overview.md)van csatolva. A folyamat kialakításának egyik része, amely ebben a cikkben is szerepel, a készségkészlet maga hozza létre. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre a használni kívánt képességek bővítési folyamatát. A készségkészlet egy Azure Search [Indexelő](search-indexer-overview.md)van csatolva. A folyamat kialakításának egyik része, amely ebben a cikkben is szerepel, a készségkészlet maga hozza létre. 
 
 > [!NOTE]
 > A folyamat kialakításának egy másik része a [következő lépésben](#next-step)lefedett indexelő megadása. Az indexelő definíciója a készségkészlet mutató hivatkozást, valamint a bemenetek a célként megadott indexben való csatlakoztatásához használt mező-hozzárendeléseket is tartalmazza.
@@ -36,9 +36,9 @@ Az ajánlott kezdeti lépés azt határozza meg, hogy mely adatok legyenek kinye
 
 Tegyük fel, hogy több pénzügyi elemzői Megjegyzés feldolgozását érdekli. Minden fájlhoz ki kell bontania a vállalatok nevét és a megjegyzések általános hangulatát. Érdemes lehet olyan egyéni dúsítást is írni, amely a Bing Entity Search szolgáltatást használja a vállalattal kapcsolatos további információk megkereséséhez, például arról, hogy a vállalat milyen üzleti tevékenységet folytat. Lényegében a következőhöz hasonló adatokat szeretne kinyerni az egyes dokumentumok indexeléséhez:
 
-| record-text | vállalatok | Hangulatelemzés | a cég leírása |
+| rekord – szöveg | vállalatok | hangulatelemzés | a cég leírása |
 |--------|-----|-----|-----|
-|sample-record| ["Microsoft", "LinkedIn"] | 0.99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
+|minta – rekord| ["Microsoft", "LinkedIn"] | 0,99 | ["A Microsoft Corporation egy amerikai multinacionális technológiai cég...", "a LinkedIn egy üzleti és foglalkoztatás-orientált közösségi hálózat..."]
 
 Az alábbi ábrán egy feltételezett alkoholtartalom-növelési folyamat látható:
 
@@ -126,7 +126,7 @@ Content-Type: application/json
 
 ## <a name="create-a-skillset"></a>Képességcsoport létrehozása
 
-Készségkészlet létrehozásakor megadhat egy leírást, amely lehetővé teszi a készségkészlet öndokumentálása. A leírás nem kötelező, de hasznos, ha nyomon szeretné követni, hogy mi a készségkészlet. Mivel a készségkészlet egy JSON-dokumentum, amely nem engedélyezi a megjegyzéseket, ezt a `description` elemet kell használnia.
+Készségkészlet létrehozásakor megadhat egy leírást, amely lehetővé teszi a készségkészlet öndokumentálása. A leírás nem kötelező, de hasznos, ha nyomon szeretné követni, hogy mi a készségkészlet. Mivel a készségkészlet egy JSON-dokumentum, amely nem engedélyezi a megjegyzéseket, `description` elemet kell használnia ehhez.
 
 ```json
 {
@@ -163,23 +163,23 @@ Nézzük meg az első szakértelmet, amely a beépített [entitás-felismerési 
     }
 ```
 
-* Minden beépített képesség a, `odata.type` `input`a és `output` a tulajdonságokkal rendelkezik. A szaktudás-specifikus tulajdonságok további információkat biztosítanak az adott szakértelmet illetően. Az entitások felismerése `categories` esetében az egyik entitás egy rögzített típusú entitás, amelyet az előre betanított modell képes felismerni.
+* Minden beépített szakértelem `odata.type`, `input` és `output` tulajdonságokkal rendelkezik. A szaktudás-specifikus tulajdonságok további információkat biztosítanak az adott szakértelmet illetően. Az entitások felismeréséhez `categories` az entitások egy rögzített készlete, amelyet az előre ellátott modell képes felismerni.
 
-* Minden egyes szaktudásnak ```"context"```rendelkeznie kell egy. A környezet a műveletek elvégzésének szintjét jelöli. A fenti szaktudásban a kontextus a teljes dokumentum, ami azt jelenti, hogy az entitás-felismerési képességet dokumentum szerint egyszer kell meghívni. A kimenetek ezen a szinten is előállíthatók. Pontosabban ```"/document"```a atagjaként```"organizations"``` jön létre. Az alárendelt szakismeretekben ezt az újonnan létrehozott információt ```"/document/organizations"```tekintheti meg.  Ha a ```"context"``` mező nincs explicit módon beállítva, az alapértelmezett környezet a dokumentum.
+* Minden egyes szaktudásnak rendelkeznie kell egy ```"context"```. A környezet a műveletek elvégzésének szintjét jelöli. A fenti szaktudásban a kontextus a teljes dokumentum, ami azt jelenti, hogy az entitás-felismerési képességet dokumentum szerint egyszer kell meghívni. A kimenetek ezen a szinten is előállíthatók. Konkrétabban ```"organizations"``` a ```"/document"``` tagjaként jön létre. Az alárendelt szakismeretekben ezt az újonnan létrehozott információt ```"/document/organizations"``` tekintheti meg.  Ha a ```"context"``` mező nincs explicit módon beállítva, az alapértelmezett környezet a dokumentum.
 
-* A skill egy "text" nevű bemenettel rendelkezik, amelyhez forrás bemenet van beállítva ```"/document/content"```. A skill (Entity Recognition) minden dokumentum *tartalom* mezőjében működik, amely az Azure Blob indexelő által létrehozott szabványos mező. 
+* A szakértelem egy "text" nevű bemenettel rendelkezik, és a forrás bemenete ```"/document/content"```ra van beállítva. A skill (Entity Recognition) minden dokumentum *tartalom* mezőjében működik, amely az Azure Blob indexelő által létrehozott szabványos mező. 
 
-* A szakértelem egy kimenettel ```"organizations"```rendelkezik. A kimenetek csak a feldolgozás során léteznek. Ha ezt a kimenetet egy alsóbb rétegbeli képesség bemenetéhez szeretné felvenni ```"/document/organizations"```, hivatkozzon a kimenetre a következőre:.
+* A szakértelem egy ```"organizations"``` nevű kimenettel rendelkezik. A kimenetek csak a feldolgozás során léteznek. Ha a kimenetet egy alsóbb rétegbeli képesség bemenetéhez szeretné felvenni, a kimenetet ```"/document/organizations"```ként kell megadnia.
 
-* Egy adott dokumentum esetében az értéke ```"/document/organizations"``` a szövegből kinyert szervezetek tömbje. Példa:
+* Egy adott dokumentum esetében ```"/document/organizations"``` értéke a szövegből kinyert szervezetek tömbje. Példa:
 
   ```json
   ["Microsoft", "LinkedIn"]
   ```
 
-Bizonyos helyzetekben a tömb egyes elemeinek külön való hivatkozását kell meghívni. Tegyük fel például, hogy az egyes elemeket ```"/document/organizations"``` különállóan szeretné átadni egy másik képességre (például az egyéni Bing Entity Search-gazdagabbá). A tömb egyes elemeire úgy tekintheti meg, hogy egy csillagot ad hozzá az elérési úthoz:```"/document/organizations/*"``` 
+Bizonyos helyzetekben a tömb egyes elemeinek külön való hivatkozását kell meghívni. Tegyük fel például, hogy a ```"/document/organizations"``` minden elemét egy másikra szeretné átadni (például az egyéni Bing Entity Search-gazdagabbá). A tömb egyes elemeire úgy tekintheti meg, hogy egy csillagot ad hozzá a következő elérési úthoz: ```"/document/organizations/*"``` 
 
-Az érzelmek kinyerésének második szaktudása ugyanaz a minta, mint az első gazdagabbá. Bemenetként ```"/document/content"``` fog megjelenni, és az egyes tartalom-példányok esetében a hangulati pontszámot adja vissza. Mivel a ```"context"``` mező explicit módon nem lett beállítva, a kimenet (mySentiment) már ```"/document"```gyermeke.
+Az érzelmek kinyerésének második szaktudása ugyanaz a minta, mint az első gazdagabbá. A ```"/document/content"``` bemenetként vesz igénybe, és az egyes tartalom-példányok hangulati pontszámát adja vissza. Mivel a ```"context"``` mezőt explicit módon nem állította be, a kimenet (mySentiment) már ```"/document"``` gyermeke.
 
 ```json
     {
@@ -229,9 +229,9 @@ Hívja fel az egyéni Bing Entity Search gazdagabbáer struktúráját:
 
 Ez a definíció egy [Egyéni képesség](cognitive-search-custom-skill-web-api.md) , amely webes API-t hív meg a dúsítási folyamat részeként. Az entitások felismerése által azonosított minden szervezet számára ez a képesség meghívja a webes API-t, hogy megkeresse a szervezet leírását. A webes API meghívásának, valamint a kapott információk folyamatának előkészítését a dúsítási motor belsőleg kezeli. Azonban az egyéni API meghívásához szükséges inicializálást meg kell adni a JSON-ban (például URI, httpHeaders és a várt bemenetek). Az egyéni webes API-k bővítési folyamathoz való létrehozásával kapcsolatos útmutatásért lásd: [Egyéni felület definiálása](cognitive-search-custom-skill-interface.md).
 
-Figyelje meg, hogy a "Context" mező csillaggal van beállítva, ami azt jelenti, hogy a dúsítási lépést ```"/document/organizations/*"``` ```"/document/organizations"``` *minden egyes* szervezethez meg kell hívni. 
+Figyelje meg, hogy a "Context" mező úgy van beállítva, hogy az ```"/document/organizations/*"``` csillaggal, ami azt jelenti, hogy a dúsítási lépést a ```"/document/organizations"``` alatt *minden szervezet számára* meghívja. 
 
-A kimenet, ebben az esetben a vállalat leírása minden azonosított szervezethez létrejön. Ha egy alsóbb rétegbeli lépésben (például a Key kifejezés kibontásakor) hivatkozik a leírásra, az elérési utat ```"/document/organizations/*/description"``` kell használnia. 
+A kimenet, ebben az esetben a vállalat leírása minden azonosított szervezethez létrejön. Ha egy alsóbb rétegbeli lépésben (például a Key kifejezés kibontásakor) hivatkozik a leírásra, az elérési utat ```"/document/organizations/*/description"``` erre a célra. 
 
 ## <a name="add-structure"></a>Struktúra hozzáadása
 
@@ -275,6 +275,6 @@ Dönthet úgy, hogy a dúsított dokumentumokat táblázatként vagy a blob Stor
 
 <a name="next-step"></a>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a dúsítási folyamatot és a szakértelmével, folytassa a [jegyzetek készségkészlet való hivatkozását](cognitive-search-concept-annotations-syntax.md) , illetve a [kimeneteknek az index mezőire való leképezését](cognitive-search-output-field-mapping.md). 

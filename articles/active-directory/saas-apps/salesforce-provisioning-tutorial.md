@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Salesforce konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+title: 'Oktatóanyag: a Salesforce konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Salesforce között.
 services: active-directory
 documentationCenter: na
@@ -16,13 +16,13 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68825778"
 ---
-# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: Salesforce konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
+# <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Salesforce konfigurálása
 
 Ennek az oktatóanyagnak a célja, hogy megmutassa a Salesforce és az Azure AD végrehajtásához szükséges lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a Salesforce.
 
@@ -58,7 +58,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 Ez a szakasz végigvezeti az Azure AD-nek a Salesforce felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és Salesforce alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!Tip]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce, a Azure Portalban megadott [](https://portal.azure.com)utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Salesforce, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="configure-automatic-user-account-provisioning"></a>a felhasználói fiókok automatikus üzembe helyezésének konfigurálása
 
@@ -68,11 +68,11 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 2. Ha már konfigurálta a Salesforce az egyszeri bejelentkezéshez, keresse meg a Salesforce-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **Salesforce** az alkalmazás-gyűjteményben. Válassza a Salesforce lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
 
-3. Válassza ki a Salesforce példányát, majd válassza a kiépítés lapot.
+3. Válassza ki a Salesforce példányát, majd válassza a **kiépítés** lapot.
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![kiépítés folyamatban](./media/salesforce-provisioning-tutorial/provisioning.png)
+    ![kiépítési](./media/salesforce-provisioning-tutorial/provisioning.png)
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a következő konfigurációs beállításokat:
 
@@ -82,21 +82,21 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 6. A Salesforce biztonsági jogkivonat beszerzéséhez nyisson meg egy új lapot, és jelentkezzen be ugyanahhoz a Salesforce-rendszergazdai fiókba. A lap jobb felső sarkában kattintson a nevére, majd a **Beállítások**elemre.
 
-    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó") -kiépítés engedélyezése
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat**alaphelyzetbe állítása elemre.
+7. A bal oldali navigációs panelen kattintson a **személyes adatok** elemre a kapcsolódó szakasz kibontásához, majd kattintson a **biztonsági jogkivonat alaphelyzetbe állítása**elemre.
   
-    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó") -kiépítés engedélyezése
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatikus felhasználó-kiépítés engedélyezése")
 
-8. A **biztonsági jogkivonat** alaphelyzetbe állítása lapon kattintson a **biztonsági jogkivonat** alaphelyzetbe állítása gombra.
+8. A **biztonsági jogkivonat alaphelyzetbe állítása** lapon kattintson a **biztonsági jogkivonat alaphelyzetbe állítása** gombra.
 
-    ![Automatikus felhasználó] -kiépítés engedélyezése (./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó") -kiépítés engedélyezése
+    ![Automatikus felhasználó-kiépítés engedélyezése](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatikus felhasználó-kiépítés engedélyezése")
 
 9. Keresse meg a rendszergazdai fiókhoz társított e-mailek mappáját. Keressen egy e-mailt az új biztonsági jogkivonatot tartalmazó Salesforce.com.
 
 10. Másolja ki a tokent, nyissa meg az Azure AD-ablakot, és illessze be a **titkos jogkivonat** mezőbe.
 
-11. A **bérlői URL-címet** meg kell adni, ha a Salesforce példánya a Salesforce Government felhőben van. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-címet a "\<https://a-\>instance. my.Salesforce.com" formátumban \<, és cserélje\> le a példányt a Salesforce-példány nevére.
+11. A **bérlői URL-címet** meg kell adni, ha a Salesforce példánya a Salesforce Government felhőben van. Ellenkező esetben nem kötelező. Adja meg a bérlői URL-címet a "https://\<your-instance \>. my.salesforce.com" formátumban, a \<your példány \> helyett a Salesforce-példány nevét.
 
 12. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a Salesforce-alkalmazáshoz.
 
@@ -106,9 +106,9 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 15. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Salesforce lehetőséget.**
 
-16. Az **attribútum** -hozzárendelések szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+16. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az Salesforce-be szinkronizált felhasználói attribútumokat. Vegye figyelembe, hogy az **egyező** tulajdonságokként kiválasztott attribútumok a Salesforce felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
 
-17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a kiépítési **állapotot** a következőre a beállítások szakaszban:
+17. Az Azure AD-kiépítési szolgáltatás Salesforce való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a beállítások **szakaszban:**
 
 18. Kattintson a **Mentés gombra.**
 
@@ -117,7 +117,7 @@ Ennek a szakasznak a célja annak ismertetése, hogyan engedélyezhető Active D
 
 Ezzel elindítja a felhasználók és csoportok szakaszban Salesforce rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. Vegye figyelembe, hogy a kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek leírják a kiépítési szolgáltatás által a Salesforce alkalmazásban végrehajtott összes műveletet.
 
-Az Azure AD létesítési naplók olvasása további információkért lásd: [-jelentések automatikus felhasználói fiók kiépítése](../manage-apps/check-status-user-account-provisioning.md).
+Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../manage-apps/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="additional-resources"></a>További források
 

@@ -9,14 +9,14 @@ ms.date: 07/27/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 0d5c3b55d20be19d4aeb92b82d6e44d417259a7b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "67178945"
 ---
-1. Nyisson meg egy parancssort emelt szintű jogosultságokkal kattintson a jobb gombbal a **parancssor** és kiválasztásával **Futtatás rendszergazdaként**.
-2. A parancssorban futtassa a következő parancsokat:
+1. Nyisson meg egy parancssort emelt szintű jogosultságokkal. ehhez kattintson a jobb gombbal a parancssorra, és válassza a **Futtatás rendszergazdaként** **parancsot.**
+2. Futtassa a következő parancsokat a parancssorban:
 
    ```
    reg add HKLM\SYSTEM\CurrentControlSet\Services\RasMan\PPP\EAP\13 /v TlsVersion /t REG_DWORD /d 0xfc0
@@ -30,8 +30,8 @@ ms.locfileid: "67178945"
    * [KB2977292](https://www.catalog.update.microsoft.com/Search.aspx?q=KB2977292)
 
 4. Indítsa újra a számítógépet.
-5. Csatlakozás a VPN-hez.
+5. Kapcsolódjon a VPN-hez.
 
 > [!NOTE]
-> Ha Windows 10-es (10240) egy régebbi verzióját futtatja, állítsa be a fenti beállításjegyzék-kulcsot kell.
+> Ha a Windows 10 régebbi verzióját (10240) futtatja, akkor a fenti beállításkulcsot kell beállítania.
 >

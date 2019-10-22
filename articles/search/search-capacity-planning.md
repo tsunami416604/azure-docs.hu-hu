@@ -10,16 +10,16 @@ ms.date: 07/01/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c048dcf31d8f434f742d2da9351ef9b46f0a71d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69650063"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Partíciók és replikák méretezése a lekérdezési és indexelési feladatokhoz Azure Search
-Miután [kiválasztotta a díjszabási szintet](search-sku-tier.md) , és kiépít [egy keresési szolgáltatást](search-create-service-portal.md), a következő lépés a szolgáltatás által használt replikák vagy partíciók számának megadása. Az egyes szintek rögzített számú számlázási egységet biztosítanak. Ez a cikk bemutatja, hogyan oszthatja ki ezeket az egységeket olyan optimális konfiguráció eléréséhez, amely kiegyenlíti a lekérdezések végrehajtásához, indexeléséhez és tárolásához szükséges követelményeket.
+Miután [kiválasztotta a díjszabási szintet](search-sku-tier.md) , és [kiépít egy keresési szolgáltatást](search-create-service-portal.md), a következő lépés a szolgáltatás által használt replikák vagy partíciók számának megadása. Az egyes szintek rögzített számú számlázási egységet biztosítanak. Ez a cikk bemutatja, hogyan oszthatja ki ezeket az egységeket olyan optimális konfiguráció eléréséhez, amely kiegyenlíti a lekérdezések végrehajtásához, indexeléséhez és tárolásához szükséges követelményeket.
 
-Az erőforrás-konfiguráció akkor érhető el, ha az alapszintű vagy a [standard vagy a Storage optimalizált szintjein](search-limits-quotas-capacity.md)állít be szolgáltatást. [](https://aka.ms/azuresearchbasic) Ezen rétegek szolgáltatásai esetében a kapacitás a *keresési egységek* (SUs) növekményei között vásárolható meg, ahol az egyes partíciók és replikák egy Su-ként számítanak. 
+Az erőforrás-konfiguráció akkor érhető el, ha az [alapszintű](https://aka.ms/azuresearchbasic) vagy a [standard vagy a Storage optimalizált szintjein](search-limits-quotas-capacity.md)állít be szolgáltatást. Ezen rétegek szolgáltatásai esetében a kapacitás a *keresési egységek* (SUs) növekményei között vásárolható meg, ahol az egyes partíciók és replikák egy Su-ként számítanak. 
 
 Ha kevesebb SUs-eredményt kíván használni, egy arányosan alacsonyabb számlán kell lennie. A számlázás mindaddig érvényes, amíg a szolgáltatás be van állítva. Ha átmenetileg nem használ szolgáltatást, a számlázás elkerülésének egyetlen módja, ha törli a szolgáltatást, majd újra létrehozza azt, amikor szüksége van rá.
 
@@ -29,7 +29,7 @@ Ha kevesebb SUs-eredményt kíván használni, egy arányosan alacsonyabb száml
 ## <a name="terminology-replicas-and-partitions"></a>Terminológia: replikák és partíciók
 A replikák és partíciók a keresési szolgáltatást támogató elsődleges erőforrások.
 
-| Resource | Meghatározás |
+| Erőforrás | Meghatározás |
 |----------|------------|
 |*Partíciók* | Az írási és olvasási műveletekhez (például az indexek újraépítésekor vagy frissítésekor) index-tárolót és I/O-t biztosít.|
 |*Replikák* | A keresési szolgáltatás azon példányai, amelyek elsődlegesen a lekérdezési műveletek terheléselosztására szolgálnak. Minden replika mindig az index egy példányát tárolja. 12 replika esetén a szolgáltatásban betöltött összes index 12 példánya lesz.|
@@ -52,7 +52,7 @@ A replikák és partíciók kiosztásának növeléséhez vagy módosításához
 
    Az alábbi képernyőfelvételen egy replikával és partícióval kiépített szabványos szolgáltatás látható. A lenti képlet azt jelzi, hogy hány keresési egység van használatban (1). Ha az egység ára $100 (nem valós díj), akkor a szolgáltatás futtatásának havi költsége átlagosan $100.
 
-   Az ![aktuális értékeket mutató méretezési oldal] Az (media/search-capacity-planning/1-initial-values.png "aktuális értékeket mutató méretezési oldal")
+   ![Az aktuális értékeket mutató méretezési oldal](media/search-capacity-planning/1-initial-values.png "Az aktuális értékeket mutató méretezési oldal")
 
 3. A csúszka használatával növelheti vagy csökkentheti a partíciók számát. A lenti képlet azt jelzi, hogy hány keresési egységet használ a rendszer.
 
@@ -92,7 +92,7 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 | **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
 | **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
 | **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 replika** |12 SU |24 SU |36 SU |– |N/A |– |
+| **12 replika** |12 SU |24 SU |36 SU |– |– |– |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).
 
@@ -141,6 +141,6 @@ A közel valós idejű adatfrissítést igénylő alkalmazások kereséséhez a 
 A nagyobb indexek lekérése hosszabb időt vesz igénybe. Ezért előfordulhat, hogy a partíciók növekményes növekedésének a replikák kisebb, de arányos növekedése szükséges. A lekérdezések és a lekérdezési kötetek összetettsége azt eredményezi, hogy milyen gyorsan történik a lekérdezés végrehajtása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Válasszon árképzési szintet Azure Search](search-sku-tier.md)

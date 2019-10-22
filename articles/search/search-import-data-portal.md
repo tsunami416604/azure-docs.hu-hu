@@ -10,10 +10,10 @@ ms.date: 10/03/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 89f43227cfca3519a4985c5c961cf0b3c5774177
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71936911"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Adatimportálási varázsló Azure Search
@@ -62,10 +62,10 @@ Csak egyetlen táblából, adatbázis-nézetből vagy ezzel egyenértékű adats
 
 A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy nézetet, és tartalmaznia kell a tartalmat. Nyilvánvaló okok miatt nem érdemes az **adatimportálás** varázslót üres adatforráson futtatni.
 
-|  Választás | Leírás |
+|  Kiválasztás | Leírás |
 | ---------- | ----------- |
 | **Meglévő adatforrás** |Ha már van definiálva indexelő a keresési szolgáltatásban, lehet, hogy van egy meglévő adatforrás-definíciója, amelyet újra használhat. Azure Search az adatforrás-objektumokat csak indexelő használják. Az adatforrás-objektumokat programozott módon vagy az **adatimportálás** varázslóval is létrehozhatja, és igény szerint újra felhasználhatja őket.|
-| **Példák**| A Azure Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használatosak: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
+| **Minták**| A Azure Search két beépített minta adatforrást biztosít, amelyek az oktatóanyagokban és a gyors útmutatókban használatosak: egy ingatlan SQL Database-adatbázis és egy Cosmos DB-on üzemeltetett Hotels-adatbázis. A Hotels-minta alapján történő átjáráshoz tekintse meg az [index létrehozása a Azure Portal](search-get-started-portal.md) rövid útmutatóban. |
 | [**Azure SQL Database**](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet.|
 | **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Részletes útmutatásért lásd az [SQL virtuális gép az Azure Search-höz történő csatlakoztatását](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismertető témakört. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Megadhat egy lekérdezést, amely lelapul vagy szűrheti a sorhalmazt, vagy hagyja üresen a lekérdezést. A varázslóban nincs szükség lekérdezésre.|
@@ -76,7 +76,7 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 
 A varázsló a háttérben hozza létre, konfigurálja és hívja meg a következő objektumokat. A varázsló futtatása után megkeresheti a kimenetét a portál oldalain. A szolgáltatás Áttekintés lapja indexek, indexelő, adatforrások és szakértelmével listáját tartalmazza. Az index-definíciók teljes JSON-ben megtekinthetők a portálon. Más definíciók esetén a [REST API](https://docs.microsoft.com/rest/api/searchservice/) használatával kérhet le konkrét objektumokat.
 
-| Object | Leírás | 
+| Objektum | Leírás | 
 |--------|-------------|
 | [Adatforrás](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Megtartja a kapcsolódási adatokat a forrásadatok, beleértve a hitelesítő adatokat is. Az adatforrás-objektumok kizárólag indexelő alkalmazással használhatók. | 
 | [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | A teljes szöveges kereséshez és más lekérdezésekhez használt fizikai adatstruktúra. | 
@@ -92,7 +92,7 @@ Az adatok importálása varázsló a szolgáltatás Áttekintés lapjának paran
 
 2. A felül található szolgáltatás áttekintése lapon kattintson az **adatimportálás**elemre.
 
-   ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "indítsa el az adatimportálás varázslót") .
+   ![Adatimportálási parancs a portálon](./media/search-import-data-portal/import-data-cmd2.png "Az adatimportálás varázsló elindítása")
 
 Más Azure-szolgáltatásokból is indíthat **importálási adatok** , például Azure Cosmos DB, Azure SQL Database és az Azure Blob Storage. Keresse meg a **hozzáadás Azure Search** a bal oldali navigációs ablaktáblán a szolgáltatás áttekintése oldalon.
 
@@ -129,7 +129,7 @@ A varázsló létrehoz egy hiányos indexet, amely a bemeneti adatforrásból be
 1. Szüksége van typeahead funkcióra automatikus kiegészítés vagy javasolt eredmények formájában? Jelölje be a **javaslat** a jelölőnégyzetet a [typeahead lekérdezési javaslatainak és az automatikus kiegészítésnek](index-add-suggesters.md) a kijelölt mezőkön való engedélyezéséhez. A javaslat a tokenes kifejezések számát adja hozzá az indexhez, így több tárterületet használ fel.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A varázsló előnyeinek és korlátainak megismeréséhez a legjobb módszer a lépés. Az alábbi rövid útmutató végigvezeti az egyes lépéseken.
 

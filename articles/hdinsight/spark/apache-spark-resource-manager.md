@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
 ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71001785"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight 
@@ -44,7 +44,7 @@ A Spark History Server a Spark-alkalmazások befejezéséhez és futtatásához 
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    Cserélje `<ClusterName>` le a nevet a Spark-fürt nevére.
+    Cserélje le a `<ClusterName>`t a Spark-fürt nevére.
 
 A Spark History-kiszolgáló webes felhasználói felülete a következőképpen néz ki:
 
@@ -64,7 +64,7 @@ A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Fürtök optimalizálása Spark-alkalmazásokhoz
 
-A Spark konfigurálásához használható három kulcsfontosságú paraméter az alkalmazás követelményeitől `spark.executor.instances` `spark.executor.cores`függően a, a és `spark.executor.memory`a. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. A feldolgozó csomóponton fut, és feladata az alkalmazás feladatainak elvégzése. A végrehajtók és a végrehajtói méretek alapértelmezett számának kiszámítása a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket az információkat a rendszer `spark-defaults.conf` a fürt fő csomópontjain tárolja.
+Az alkalmazás követelményeitől függően a Spark konfigurálásához használható három fő paraméter `spark.executor.instances`, `spark.executor.cores` és `spark.executor.memory`. A végrehajtó egy Spark-alkalmazáshoz indított folyamat. A feldolgozó csomóponton fut, és feladata az alkalmazás feladatainak elvégzése. A végrehajtók és a végrehajtói méretek alapértelmezett számának kiszámítása a munkavégző csomópontok száma és a munkavégző csomópont mérete alapján történik. Ezeket az adatokat a rendszer `spark-defaults.conf` tárolja a fürt fő csomópontjain.
 
 A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a fürtön futó összes alkalmazás esetében), illetve az egyes alkalmazásokhoz is megadható.
 
@@ -81,7 +81,7 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
     ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter notebookon futó alkalmazás paramétereinek módosítása
-A Jupyter notebookon futó alkalmazások esetén a `%%configure` Magic használatával módosíthatja a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, a `-f` paramétert kell használnia. Ezzel azonban az alkalmazás minden folyamata elvész.
+A Jupyter notebookon futó alkalmazások esetében a `%%configure` Magic használatával módosíthatja a konfigurációt. Ideális esetben az első kódrészlet futtatása előtt el kell végeznie az ilyen módosításokat az alkalmazás elején. Ezzel biztosíthatja, hogy a rendszer a konfigurációt a Livy-munkamenetre alkalmazza, amikor a rendszer létrehozza. Ha az alkalmazás egy későbbi szakaszában szeretné módosítani a konfigurációt, akkor a `-f` paramétert kell használnia. Ezzel azonban az alkalmazás minden folyamata elvész.
 
 A következő kódrészlet azt mutatja be, hogyan lehet módosítani egy Jupyter-ben futó alkalmazás konfigurációját.
 
@@ -91,7 +91,7 @@ A következő kódrészlet azt mutatja be, hogyan lehet módosítani egy Jupyter
 A konfigurációs paramétereket JSON-karakterláncként kell átadni, és a Magic után a következő sorban kell szerepelniük, ahogy az a példában látható oszlopban látható.
 
 ### <a name="change-the-parameters-for-an-application-submitted-using-spark-submit"></a>A Spark-Submit használatával elküldött alkalmazások paramétereinek módosítása
-A következő parancs egy példa arra, hogyan lehet módosítani a használatával `spark-submit`elküldött batch-alkalmazás konfigurációs paramétereit.
+A következő parancs egy példa arra, hogyan módosíthatja a `spark-submit` használatával elküldött batch-alkalmazás konfigurációs paramétereit.
 
     spark-submit --class <the application class to execute> --executor-memory 3072M --executor-cores 4 –-num-executors 10 <location of application jar file> <application parameters>
 
@@ -103,14 +103,14 @@ A következő parancs egy példa arra, hogyan módosíthatja a cURL használatá
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>A paraméterek módosítása a Spark takarékossági kiszolgálón
 A Spark takarékossági kiszolgáló JDBC/ODBC-hozzáférést biztosít egy Spark-fürthöz, és a Spark SQL-lekérdezések kiszolgálására szolgál. Eszközök, például Power BI, tabló stb. az ODBC protokoll használatával kommunikálhat a Spark takarékosság-kiszolgálóval a Spark SQL-lekérdezések Spark-alkalmazásként való végrehajtásához. Spark-fürt létrehozásakor a Spark takarékossági kiszolgáló két példánya indul el, egyet az egyes fő csomópontokon. Az egyes Spark-takarékossági kiszolgálók Spark-alkalmazásként láthatók a fonal felhasználói felületén.
 
-A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalását `spark.executor.instances` használja, ezért a nincs használatban. Ehelyett a Spark `spark.dynamicAllocation.minExecutors` -takarékos kiszolgáló és `spark.dynamicAllocation.maxExecutors` a végrehajtók számának megadására szolgál. A konfigurációs paraméterek `spark.executor.cores` `spark.executor.memory` a végrehajtó méretének módosítására szolgálnak. Ezeket a paramétereket a következő lépésekben látható módon módosíthatja:
+A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalását használja, ezért a `spark.executor.instances` nincs használatban. Ehelyett a Spark takarékosság-kiszolgáló a `spark.dynamicAllocation.minExecutors` és a `spark.dynamicAllocation.maxExecutors` használja a végrehajtók számának megadásához. A rendszer a `spark.executor.cores` és `spark.executor.memory` konfigurációs paramétereket használja a végrehajtó méretének módosításához. Ezeket a paramétereket a következő lépésekben látható módon módosíthatja:
 
-* Bontsa ki a **speciális Spark-takarékosság-sparkconf** kategóriát, `spark.dynamicAllocation.minExecutors`és `spark.dynamicAllocation.maxExecutors`frissítse a `spark.executor.memory`paramétereket, és.
+* Bontsa ki a **speciális Spark-takarékosság-sparkconf** kategóriát, és frissítse a paramétereket `spark.dynamicAllocation.minExecutors`, `spark.dynamicAllocation.maxExecutors` és `spark.executor.memory`.
 
-    A ![Spark takarékosság-kiszolgáló konfigurálása] A (./media/apache-spark-resource-manager/spark-thrift-server-1.png "Spark takarékosság-kiszolgáló konfigurálása")
-* A paraméter `spark.executor.cores`frissítéséhez bontsa ki az **Egyéni Spark-takarékosság-sparkconf** kategóriát.
+    ![A Spark takarékosság-kiszolgáló konfigurálása](./media/apache-spark-resource-manager/spark-thrift-server-1.png "A Spark takarékosság-kiszolgáló konfigurálása")
+* A `spark.executor.cores` paraméter frissítéséhez bontsa ki az **Egyéni Spark-takarékosság-sparkconf** kategóriát.
 
-    A ![Spark takarékosság Server paraméter konfigurálása] A (./media/apache-spark-resource-manager/spark-thrift-server-2.png "Spark takarékosság Server paraméter konfigurálása")
+    ![A Spark takarékosság Server paraméter konfigurálása](./media/apache-spark-resource-manager/spark-thrift-server-2.png "A Spark takarékosság Server paraméter konfigurálása")
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>A Spark takarékosság-kiszolgáló illesztőprogram-memóriájának módosítása
 A Spark-kiszolgáló illesztőprogram-memóriája a fő csomópont RAM-méretének 25%-ában van konfigurálva, ha a fő csomópont teljes RAM-mérete meghaladja a 14 GB-ot. A Ambari felhasználói felületén módosíthatja az illesztőprogram-memória konfigurációját, ahogy az alábbi képernyőképen is látható:
@@ -125,13 +125,13 @@ A Spark dinamikus kiosztása miatt a takarékossági kiszolgáló által felhasz
 1. A Ambari felhasználói felületén, a bal oldali ablaktáblán kattintson a **Spark**elemre.
 2. A következő lapon kattintson a **Spark takarékosság-kiszolgálók**elemre.
 
-    A ![takarékos Kiszolgáló1 újraindítása] A (./media/apache-spark-resource-manager/restart-thrift-server-1.png "takarékos Kiszolgáló1 újraindítása")
+    ![A takarékos Kiszolgáló1 újraindítása](./media/apache-spark-resource-manager/restart-thrift-server-1.png "A takarékos Kiszolgáló1 újraindítása")
 3. Ekkor meg kell jelennie a két átjárócsomópontokkal, amelyen a Spark-takarékossági kiszolgáló fut. Kattintson a átjárócsomópontokkal egyikére.
 
-    A ![gazdaságosság Kiszolgáló2 újraindítása] A (./media/apache-spark-resource-manager/restart-thrift-server-2.png "gazdaságosság Kiszolgáló2 újraindítása")
+    ![A gazdaságosság Kiszolgáló2 újraindítása](./media/apache-spark-resource-manager/restart-thrift-server-2.png "A gazdaságosság Kiszolgáló2 újraindítása")
 4. A következő oldalon az adott átjárócsomóponthoz futó összes szolgáltatás látható. A listában kattintson a Spark takarékosság-kiszolgáló melletti legördülő gombra, majd kattintson a **Leállítás**elemre.
 
-    A ![gazdaságosság Server3 újraindítása] A (./media/apache-spark-resource-manager/restart-thrift-server-3.png "gazdaságosság Server3 újraindítása")
+    ![A gazdaságosság Server3 újraindítása](./media/apache-spark-resource-manager/restart-thrift-server-3.png "A gazdaságosság Server3 újraindítása")
 5. Ismételje meg ezeket a lépéseket a többi átjárócsomóponthoz is.
 
 ## <a name="restart-the-jupyter-service"></a>A Jupyter szolgáltatás újraindítása
@@ -153,13 +153,13 @@ Indítsa el a fonal felhasználói felületét a cikk elején látható módon. 
 
     ![App2 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 leölése")
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
 
 ### <a name="for-data-analysts"></a>Adatelemzők számára
 
-* [Apache Spark a Machine Learningkal: A Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark a Machine Learningkal: Az élelmiszer-vizsgálati eredmények előrejelzése a Spark in HDInsight használatával](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 * [Az Application Insight telemetria-adatelemzési szolgáltatásának használata a HDInsight-ben Apache Spark](apache-spark-analyze-application-insight-logs.md)
 * [A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz](apache-spark-deep-learning-caffe.md)

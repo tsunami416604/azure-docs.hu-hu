@@ -13,15 +13,15 @@ ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
 ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69616423"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 
-Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre a Node. js-alkalmazásokat expressz és szögletes módon, és hogyan csatlakoztatható hozzá a [Cosmos db API-MongoDB konfigurált Cosmos](mongodb-introduction.md)-fiókhoz. Ez a cikk az oktatóanyag 5. részét ismerteti, és a [4](tutorial-develop-mongodb-nodejs-part4.md). részre épül.
+Ez a többrészes oktatóanyag bemutatja, hogyan hozhat létre a Node. js-alkalmazásokat expressz és szögletes módon, és hogyan csatlakoztatható hozzá a [Cosmos db API-MongoDB konfigurált Cosmos-fiókhoz](mongodb-introduction.md). Ez a cikk az oktatóanyag 5. részét ismerteti, és a [4. részre](tutorial-develop-mongodb-nodejs-part4.md)épül.
 
 Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 
@@ -88,7 +88,7 @@ A mongúz egy Object adatmodellezési (ODM) függvénytár a MongoDB és a Node.
     
 1. Az Explorer ablaktábla **kiszolgáló**területén hozzon létre egy **környezet**nevű mappát. A **környezet** mappában hozzon létre egy **Environment. js**nevű fájlt.
 
-1. A Mongo. js fájlból meg kell adnia a `dbName`, a `key`és a `cosmosPort` paraméterek értékeit. Másolja a következő kódot a **Environment. js** fájlba:
+1. A Mongo. js fájlból a `dbName`, a `key` és a `cosmosPort` paraméterek értékét is meg kell adni. Másolja a következő kódot a **Environment. js** fájlba:
 
     ```javascript
     // TODO: replace if yours are different
@@ -106,13 +106,13 @@ Az alkalmazás Azure Cosmos DBhoz való összekapcsolásához frissítenie kell 
 
 1. A Azure Portal adja meg a portszámot, Azure Cosmos DB a fiók nevét és az elsődleges kulcs értékeit a Azure Cosmos DB-fiókhoz.
 
-1. A **Environment. js** fájlban módosítsa a értéket a 10255 értékre `port` . 
+1. A **Environment. js** fájlban módosítsa `port` értékét a 10255 értékre. 
 
     ```javascript
     const port = 10255;
     ```
 
-1. A **Environment. js** fájlban módosítsa a értékét `accountName` az oktatóanyag 4. [részében](tutorial-develop-mongodb-nodejs-part4.md) létrehozott Azure Cosmos db fiók nevére. 
+1. A **Environment. js** fájlban módosítsa `accountName` értékét az oktatóanyag [4. részében](tutorial-develop-mongodb-nodejs-part4.md) létrehozott Azure Cosmos db-fiók nevére. 
 
 1. Kérje le az Azure Cosmos DB-fiók elsődleges kulcsát az alábbi parancssori paranccsal a terminálablakban: 
 
@@ -120,9 +120,9 @@ Az alkalmazás Azure Cosmos DBhoz való összekapcsolásához frissítenie kell 
     az cosmosdb list-keys --name <cosmosdb-name> -g myResourceGroup
     ```    
     
-    \<a cosmosdb neve > az oktatóanyag [4](tutorial-develop-mongodb-nodejs-part4.md) . részében létrehozott Azure Cosmos db fiók neve.
+    \<cosmosdb-Name > az oktatóanyag [4. részében](tutorial-develop-mongodb-nodejs-part4.md) létrehozott Azure Cosmos db fiók neve.
 
-1. Másolja az elsődleges kulcsot a **Environment. js** fájlba `key` az értékként.
+1. Másolja az elsődleges kulcsot a **Environment. js** fájlba `key` értékként.
 
 Most az alkalmazás minden szükséges információt tartalmaz a Azure Cosmos DBhoz való kapcsolódáshoz. 
 
@@ -171,8 +171,8 @@ A Hero modell létrehozása után meg kell határoznia egy szolgáltatást az ad
 
    * Lekéri a létrehozott modellt.
    * Csatlakozik az adatbázishoz.
-   * Egy olyan `docquery` változót hoz létre `hero.find` , amely a metódus használatával definiál egy lekérdezést, amely az összes hősöket visszaadja.
-   * Futtat egy lekérdezést `docquery.exec` a függvénnyel, és megígéri, hogy beolvassa az összes olyan hősök listáját, ahol a válasz állapota 200. 
+   * Létrehoz egy `docquery` változót, amely a `hero.find` metódust használja egy olyan lekérdezés definiálásához, amely az összes hősöket visszaadja.
+   * Egy olyan lekérdezést futtat a `docquery.exec` függvénnyel, amely az összes hősök listáját tartalmazza, ahol a válasz állapota 200. 
    * A hibaüzenetet küldi vissza, ha az állapota 500.
    * Beolvassa a hősöket, mert modulokat használunk. 
 
@@ -199,11 +199,11 @@ A Hero modell létrehozása után meg kell határoznia egy szolgáltatást az ad
    };
    ```
 
-## <a name="configure-routes"></a>Útvonalak beállítása
+## <a name="configure-routes"></a>Útvonalak konfigurálása
 
 Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a DELETE kérelmek URL-címeinek kezeléséhez. Az útválasztási módszerek a visszahívási függvényeket (más néven _kezelő függvények_) adják meg. Ezeket a függvényeket akkor hívja meg a rendszer, amikor az alkalmazás egy kérést kap a megadott végpont és HTTP-metódus számára. A következő lépésekkel adhatja hozzá a Hero szolgáltatást, és meghatározhatja az útvonalakat:
 
-1. A Visual Studio Code-ban a **Routes. js** fájlban tegye megjegyzésbe `res.send` a minta Hero-adatokat küldő függvényt. Ehelyett adjon hozzá egy sort a `heroService.getHeroes` függvény meghívásához.
+1. A Visual Studio Code-ban a **Routes. js** fájlban tegye megjegyzésbe az `res.send` függvényt, amely a minta Hero-adatokat küldi el. Ehelyett adjon hozzá egy sort a `heroService.getHeroes` függvény meghívásához.
 
     ```javascript
     router.get('/heroes', (req, res) => {
@@ -214,13 +214,13 @@ Ezután be kell állítania az útvonalakat a Get, a Create, az olvasás és a D
     });
     ```
 
-1. A **Routes. js** fájlban `require` a Hero szolgáltatás:
+1. A **Routes. js** fájlban `require` a Hero szolgáltatást:
 
     ```javascript
     const heroService = require('./hero.service'); 
     ```
 
-1. A **Hero. Service. js** fájlban frissítse a `getHeroes` függvényt, hogy a és `req` `res` a paramétereket az alábbiak szerint végezze el:
+1. A **Hero. Service. js** fájlban frissítse a `getHeroes` függvényt, hogy a `req` és a `res` paramétereket az alábbiak szerint végezze el:
 
     ```javascript
     function getHeroes(req, res) {
@@ -232,9 +232,9 @@ Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást.
 
 Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
-1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a hibakeresés gomb ![hibakeresés ikonját a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png)-ban, majd kattintson a **hibakeresés indítása** gombra ![hibakeresés ikon a Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)-ban.
+1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a **hibakeresés** gomb ![Debug ikont a Visual Studio Code-ban ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png), majd kattintson a **hibakeresés indítása** gombra ![Debug ikon a Visual Studio Code ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png)ban.
 
-1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. `http://localhost:3000`Itt láthatja az alkalmazást.
+1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. Nyissa meg a `http://localhost:3000`t, és itt láthatja az alkalmazást.
 
     ![Új Azure Cosmos DB-fiók az Azure Portalon](./media/tutorial-develop-mongodb-nodejs-part5/azure-cosmos-db-heroes-app.png)
 
@@ -248,9 +248,9 @@ Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot
  1. Válassza az **Erőforráscsoport törlése** elemet.
  1. Erősítse meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa az oktatóanyag 6. részével, hogy hozzáadja a post, Put és DELETE függvényeket az alkalmazáshoz:
 
 > [!div class="nextstepaction"]
-> [6. rész: Post, Put és DELETE függvények hozzáadása az alkalmazáshoz](tutorial-develop-mongodb-nodejs-part6.md)
+> [6. rész: a post, Put és DELETE függvények hozzáadása az alkalmazáshoz](tutorial-develop-mongodb-nodejs-part6.md)

@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ed509ac8fea43a9c011bbbf76c1dc433cd78d43c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298945"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693313"
 ---
-# <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
 Ez a témakör a OData-lekérdezési lehetőségeket és a tördelési támogatást ismerteti Azure Media Services v3 entitások listázásakor.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* A DateTime típusú entitások tulajdonságai mindig UTC formátumban jelennek meg.
-* A lekérdezési karakterláncban található üres területnek URL-kódolással kell rendelkeznie a kérelem elküldése előtt.
+* A `Datetime` típusú entitások tulajdonságai mindig UTC formátumban vannak.
+* A lekérdezési karakterláncban található üres területnek URL-kódolással kell rendelkeznie, mielőtt elküld egy kérést.
 
 ## <a name="comparison-operators"></a>Összehasonlító operátorok
 
@@ -34,21 +34,21 @@ A következő operátorok segítségével hasonlíthatja össze a mezőket egy �
 
 Esélyegyenlőségi operátorok:
 
-- `eq`: annak tesztelése, hogy egy mező **egyenlő-** e egy konstans értékkel
-- `ne`: annak tesztelése, hogy egy mező **nem egyenlő-** e állandó értékkel
+- `eq`: annak tesztelése, hogy egy mező *egyenlő-* e egy konstans értékkel.
+- `ne`: ellenőrzi, hogy egy mező *nem egyenlő-* e állandó értékkel.
 
 Tartomány operátorai:
 
-- `gt`: annak tesztelése, hogy egy mező nagyobb-e, **mint** egy konstans érték
-- `lt`: annak tesztelése, hogy egy mező kisebb-e, **mint** egy konstans érték
-- `ge`: annak tesztelése, hogy egy mező **nagyobb-e vagy egyenlő** -e állandó értékkel
-- `le`: annak tesztelése, hogy egy mező értéke **kisebb vagy egyenlő** -e állandó értékkel
+- `gt`: azt teszteli, hogy egy mező nagyobb-e, *mint* egy konstans érték.
+- `lt`: azt teszteli, hogy egy mező kisebb-e, *mint* egy konstans érték.
+- `ge`: megvizsgálhatja, hogy egy mező értéke *nagyobb-e, vagy egyenlő-* e az állandóval. érték
+- `le`: ellenőrzi, hogy egy mező értéke *kisebb vagy egyenlő-e, mint* egy konstans érték.
 
 ## <a name="filter"></a>Szűrő
 
-**$Filter** – szűrő használatával adja meg a OData szűrő paramétert, hogy csak azokat az objektumokat találja meg, amelyekre kíváncsi.
+A `$filter` használatával adja meg a OData szűrő paramétert, hogy csak azokat az objektumokat keresse meg, amelyekre kíváncsi.
 
-A következő REST-példa szűrők egy eszköz alternateId:
+A következő REST-példák szűrői egy eszköz `alternateId` értékére:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
@@ -63,7 +63,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Rendezési sorrend
 
-**$OrderBy** – ezzel a művelettel rendezheti a visszaadott objektumokat a megadott paraméter alapján. Példa:    
+A visszaadott objektumok a megadott paraméterrel való rendezéséhez használja a `$orderby`. Példa:    
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -73,18 +73,18 @@ Az eredmények növekvő vagy csökkenő sorrendbe rendezéséhez fűzze hozzá 
 
 ## <a name="skip-token"></a>Token kihagyása
 
-**$skiptoken** – ha egy lekérdezés válasza sok elemet tartalmaz, a szolgáltatás visszaadja az eredmények következő oldalának beolvasásához használt kihagyó token (`@odata.nextLink`) értéket. Ez a teljes eredményhalmaz használatával végezhető el.
+Ha egy lekérdezés válasza sok elemet tartalmaz, a szolgáltatás egy `$skiptoken` (`@odata.nextLink`) értéket ad vissza, amelyet az eredmények következő oldalának beolvasásához használ. A teljes eredményhalmaz használatával használhatja a lapot.
 
-A Media Services V3 esetében nem konfigurálható az oldalméret. Az oldalméret az entitás típusától függően változik, kérjük, olvassa el a részleteket követő egyes szakaszokat.
+A Media Services V3 esetében nem konfigurálható az oldalméret. Az oldalméret az entitás típusától függően változik. Olvassa el a részleteket követő egyes szakaszokat.
 
-Ha entitásokat hoz létre vagy töröl a gyűjteményen belüli lapozás során, a módosítások megjelennek a visszaadott eredményekben (ha ezek a módosítások a gyűjtemény azon részén találhatók, amely nem lett letöltve). 
+Ha entitásokat hoznak létre vagy törölnek a gyűjteményen belüli lapozás során, a módosítások megjelennek a visszaadott eredményekben (ha ezek a módosítások a gyűjtemény azon részén találhatók, amely nem lett letöltve). 
 
 > [!TIP]
-> Mindig a `nextLink` értéket kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől.
+> Mindig `nextLink` kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől.
 >
-> A `nextLink` csak akkor jelenik meg, ha az entitások egynél több lapja van.
+> A `nextLink` érték csak akkor jelenik meg, ha az entitások több oldala is van.
 
-Vegye figyelembe a következő példát, ahol a $skiptoken használatban van. Ügyeljen rá, hogy a *amstestaccount* cserélje le a fiók nevére, és állítsa be az *API-Version* értéket a legújabb verzióra.
+Vegye figyelembe a következő példát, ahol a `$skiptoken` használatban van. Ügyeljen rá, hogy a *amstestaccount* cserélje le a fiók nevére, és állítsa be az *API-Version* értéket a legújabb verzióra.
 
 Ha a következőhöz hasonló eszközök listáját kéri:
 
@@ -94,7 +94,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-A következőhöz hasonló választ kaphat:
+Ehhez hasonló választ fog kapni:
 
 ```
 HTTP/1.1 200 OK
@@ -136,7 +136,7 @@ while (currentPage.NextPageLink != null)
 
 ## <a name="using-logical-operators-to-combine-query-options"></a>A logikai operátorok használata a lekérdezési beállítások egyesítéséhez
 
-A Media Services v3 támogatja a következőt: "vagy", "és" logikai operátorok. 
+Media Services v3 támogatja a **vagy** a és **a és a** logikai operátorokat. 
 
 A következő REST-példa ellenőrzi a feladatok állapotát:
 
@@ -153,7 +153,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 ## <a name="filtering-and-ordering-options-of-entities"></a>Entitások szűrése és rendezési lehetőségei
 
-A következő táblázat bemutatja, hogyan alkalmazhatók a szűrési és a rendezési beállítások a különböző entitásokra:
+A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
 |Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
 |---|---|---|---|

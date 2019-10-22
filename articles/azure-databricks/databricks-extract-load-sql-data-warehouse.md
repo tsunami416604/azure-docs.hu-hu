@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 228b0fff7231af811206d5c477b63ed70706939b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72329769"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával
@@ -23,7 +23,7 @@ A jelen oktatóanyagban szereplő lépések az Azure Databricks SQL Data Warehou
 
 Az alábbi ábrán az alkalmazásfolyam látható:
 
-![Az Azure Databricks a Data Lake Store-ral és az SQL Data Warehouse-szal](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Az Azure Databricks a Data Lake Store-ral és az SQL Data Warehouse-szal")
+![Azure Databricks Data Lake Store és SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks Data Lake Store és SQL Data Warehouse")
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 
@@ -91,7 +91,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
 1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Elemzés** > **Azure Databricks** elemet.
 
-    ![Databricks az Azure Portalon](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks az Azure Portalon")
+    ![Databricks Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png "Databricks Azure Portal")
 
 2. A **Azure Databricks szolgáltatás**területen adja meg a következő értékeket egy Databricks szolgáltatás létrehozásához:
 
@@ -113,17 +113,17 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
 2. A rendszer átirányítja a Azure Databricks portálra. A portálon válassza a **Fürt** elemet.
 
-    ![Databricks az Azure-on](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks az Azure-on")
+    ![Databricks az Azure-ban](./media/databricks-extract-load-sql-data-warehouse/databricks-on-azure.png "Databricks az Azure-ban")
 
 3. Az **Új fürt** lapon adja meg a fürt létrehozásához szükséges értékeket.
 
-    ![Databricks Spark-fürt létrehozása az Azure-on](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-on")
+    ![Databricks Spark-fürt létrehozása az Azure-ban](./media/databricks-extract-load-sql-data-warehouse/create-databricks-spark-cluster.png "Databricks Spark-fürt létrehozása az Azure-ban")
 
 4. Adjon meg értékeket a következő mezőkben, és fogadja el az alapértelmezett értékeket a többi mezőben:
 
     * Adjon egy nevet a fürtnek.
 
-    * Győződjön meg arról, hogy a **Befejezés után \_ @ no__t-2 perc inaktivitás** jelölőnégyzetet választja. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
+    * Győződjön meg arról, hogy a **megszakítás \_ \_ perc inaktivitás után** jelölőnégyzet be van állítva. Ha a fürt nincs használatban, adjon meg egy időtartamot (percben) a fürt megszakításához.
 
     * Válassza a **Fürt létrehozása** lehetőséget. A fürt futása után jegyzetfüzeteket csatolhat a fürthöz, és futtathatja a Spark-feladatokat.
 
@@ -135,11 +135,11 @@ Ebben a szakaszban egy jegyzetfüzetet hoz létre Azure Databricks munkaterület
 
 2. A bal oldalon válassza a **munkaterület**lehetőséget. A **Munkaterület** legördülő menüből válassza a **Létrehozás** > **Jegyzetfüzet** lehetőséget.
 
-    ![Jegyzetfüzet létrehozása a Databricks](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
+    ![Jegyzetfüzet létrehozása a Databricks-ben](./media/databricks-extract-load-sql-data-warehouse/databricks-create-notebook.png "Jegyzetfüzet létrehozása a Databricks-ben")
 
 3. A **Jegyzetfüzet létrehozása** párbeszédpanelen adja meg a jegyzetfüzet nevét. Válassza a **Scala** nyelvet, majd válassza ki a korábban létrehozott Spark-fürtöt.
 
-    A ![Databricks található jegyzetfüzet részleteinek]megadása a(./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "Databricks")
+    ![A Databricks lévő jegyzetfüzet részleteinek megadása](./media/databricks-extract-load-sql-data-warehouse/databricks-notebook-details.png "A Databricks lévő jegyzetfüzet részleteinek megadása")
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -371,11 +371,11 @@ Ahogy korábban említettük, az SQL Data Warehouse-összekötő az Azure Blob S
 
 6. Kapcsolódjon az SQL-adatbázishoz, és ellenőrizze, hogy megjelenik-e a **SampleTable**nevű adatbázis.
 
-   ![A minta tábla](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "ellenőrzésének") ellenőrzése
+   ![A minta táblázat ellenőrzése](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table.png "Minta tábla ellenőrzése")
 
 7. Futtasson egy választó lekérdezést a tábla tartalmának ellenőrzéséhez. A táblának ugyanazzal az adattal kell rendelkeznie, mint a **renamedColumnsDF** dataframe.
 
-    ![A](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "") minta táblázat tartalmának ellenőrzése
+    ![A minta táblázat tartalmának ellenőrzése](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "A minta táblázat tartalmának ellenőrzése")
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -383,7 +383,7 @@ Az oktatóanyag befejezése után leállíthatja a fürtöt. A Azure Databricks 
 
 ![Databricks-fürt leállítása](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Databricks-fürt leállítása")
 
-Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte a **megszakítást \_ @ no__t-2 perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
+Ha nem állítja be manuálisan a fürtöt, az automatikusan leáll, ha a fürt létrehozásakor bejelölte **\_ \_ perc inaktivitás után** jelölőnégyzetet. Ebben az esetben a fürt automatikusan leáll, ha a megadott ideig inaktív volt.
 
 ## <a name="next-steps"></a>Következő lépések
 
