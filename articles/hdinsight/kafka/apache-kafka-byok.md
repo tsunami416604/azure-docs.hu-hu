@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71122688"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Saját kulcs használata az Azure HDInsight Apache Kafka
@@ -59,7 +59,7 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 
         b. Adja **meg a** kívánt nevet a kulcs **létrehozásához** és megadásához.
 
-        Az ![Apache Kafka létrehozza a kulcs nevét](./media/apache-kafka-byok/apache-kafka-create-key.png "Kulcs nevének előállítása")
+        ![Az Apache Kafka létrehozza a kulcs nevét](./media/apache-kafka-byok/apache-kafka-create-key.png "Kulcs nevének előállítása")
 
         c. Válassza ki a kulcsok listájából létrehozott kulcsot.
 
@@ -146,7 +146,7 @@ Ha a fürt elveszti a kulcs elérését, a figyelmeztetések az Apache Ambari po
 
    A Kafka BYOK minden nyilvános felhőben elérhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../../key-vault/key-vault-overview.md)?
 * A Azure Key Vault megkezdéséhez lásd: [első lépések a Azure Key Vault](../../key-vault/key-vault-overview.md).

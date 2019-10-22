@@ -1,5 +1,5 @@
 ---
-title: 'Metaadatok szerkesztése: Segédanyagok a modulokhoz'
+title: 'Metaadatok szerkesztése: modulok leírása'
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja a metaadatok szerkesztése modult a Azure Machine Learning szolgáltatásban az adatkészlet oszlopaihoz társított metaadatok módosításához.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b6e28577fefe4892d719e211e16edafed1504e87
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128869"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693826"
 ---
 # <a name="edit-metadata-module"></a>Metaadat-modul szerkesztése
 
@@ -40,7 +40,7 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 ## <a name="configure-edit-metadata"></a>Metaadatok szerkesztésének konfigurálása
   
-1. A Azure Machine Learningban adja hozzá a metaadatok szerkesztése modult a kísérlethez, és kapcsolódjon a frissíteni kívánt adatkészlethez. Az adatkészletet a manipulálás kategóriában találja az **adatátalakítás** alatt.
+1. A Azure Machine Learningban adja hozzá a metaadatok szerkesztése modult a folyamathoz, és kapcsolódjon a frissíteni kívánt adatkészlethez. Az adatkészletet a **manipulálás** kategóriában találja az **adatátalakítás** alatt.
   
 1. Válassza az oszlopok **elindítása** lehetőséget, majd válassza ki az oszlopot vagy az oszlopok készletét, hogy működjön a használatával. Az oszlopokat egyenként is kiválaszthatja név vagy index alapján, vagy az oszlopok csoportját típus szerint is kiválaszthatja.  
   
@@ -63,9 +63,9 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. Ha módosítani szeretné a modellben található adatAzure Machine Learning, használja a **mezők** beállítást.
 
-    + **Szolgáltatás**: Ezzel a beállítással az oszlopokat szolgáltatásként jelölheti meg a modulokban, amelyek csak a szolgáltatások oszlopaiban működnek. Alapértelmezés szerint a rendszer az összes oszlopot szolgáltatásként kezeli.  
+    + **Szolgáltatás**: ezzel a beállítással az oszlopokat szolgáltatásként jelölheti meg a modulokban, amelyek csak a szolgáltatás oszlopaiban működnek. Alapértelmezés szerint a rendszer az összes oszlopot szolgáltatásként kezeli.  
   
-    + **Címke**: Ezzel a beállítással jelölheti meg a címkét, amely a kiszámítható attribútum vagy a célként megadott változó néven is ismert. Számos modulhoz szükség van az adatkészlet pontosan egy felirat oszlopának megjelölésére.
+    + **Címke**: ezzel a beállítással jelölheti meg a címkét, amely a kiszámítható attribútum vagy a célként megadott változó néven is ismert. Számos modulhoz szükség van az adatkészlet pontosan egy felirat oszlopának megjelölésére.
 
         Sok esetben Azure Machine Learning következtetni, hogy egy oszlop tartalmaz egy osztály címkét. A metaadatok beállításával gondoskodhat arról, hogy az oszlop helyesen legyen azonosítva. Ez a beállítás nem változtatja meg az adatértékeket. Csak úgy változik, hogy egyes gépi tanulási algoritmusok kezelik az adatmennyiséget.
   
@@ -76,13 +76,13 @@ A metaadatok tipikus változásai a következők lehetnek:
   
 1. Az alábbi beállításokkal törölheti a korábbi beállításokat, és visszaállíthatja a metaadatokat az alapértelmezett értékekre.  
   
-    + **Szolgáltatás törlése**: Ezzel a beállítással távolíthatja el a szolgáltatás jelzőjét.  
+    + **Funkció törlése**: ezzel a beállítással távolíthatja el a funkció jelzőjét.  
   
          Az összes oszlopot kezdetben szolgáltatásként kezeli a rendszer. A matematikai műveleteket végző modulok esetén ezt a beállítást kell használni ahhoz, hogy megakadályozza a numerikus oszlopok változóként való kezelését.
   
-    + **Címke törlése**: Ezzel a beállítással távolíthatja el a **címke** metaadatait a megadott oszlopból.  
+    + **Címke törlése**: ezzel a beállítással távolíthatja el a **címke** metaadatait a megadott oszlopból.  
   
-    + **Pontszám törlése**: Ezzel a beállítással távolíthatja el a **pontszám** metaadatait a megadott oszlopból.  
+    + **Pontszám törlése**: ezzel a beállítással távolíthatja el a **pontszám** metaadatait a megadott oszlopból.  
   
          Jelenleg nem lehet explicit módon megjelölni egy oszlopot a Azure Machine Learning pontszáma alapján. Egyes műveletek azonban egy oszlopként jelennek meg, amely a pontszám belső jelölését eredményezi. Emellett az egyéni R-modulok is kihasználhatják a pontszám értékeit.
 
@@ -94,8 +94,8 @@ A metaadatok tipikus változásai a következők lehetnek:
   
     + Az összes kijelölt oszlopot át kell jelölni. Az oszlopokat nem lehet kihagyni vagy kihagyni.  
   
-1. Futtassa a kísérletet.  
+1. A folyamat futtatása.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a Azure Machine Learning szolgáltatás [számára elérhető modulok készletét](module-reference.md) .

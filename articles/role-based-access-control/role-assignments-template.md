@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950063"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692911"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Azure-erőforrásokhoz való hozzáférés kezelése RBAC és Azure Resource Manager sablonok használatával
 
@@ -33,7 +33,7 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 A sablon használatához a következőket kell tennie:
 
 - Új JSON-fájl létrehozása és a sablon másolása
-- Cserélje le a `<your-principal-id>` értéket egy olyan felhasználó, csoport vagy alkalmazás egyedi azonosítójával, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`
+- Cserélje le a `<your-principal-id>`t egy olyan felhasználó, csoport vagy alkalmazás egyedi azonosítójával, amelyhez hozzá szeretné rendelni a szerepkört. Az azonosító formátuma: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -160,7 +160,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 ```
 
 > [!NOTE]
-> Ez a sablon nem idempotens, kivéve, ha ugyanaz a `roleNameGuid` érték van megadva paraméterként a sablon minden egyes telepítéséhez. Ha nincs megadva @no__t – 0, a rendszer alapértelmezés szerint új GUID azonosítót hoz létre az egyes központi telepítések esetében, és a további központi telepítések sikertelenek lesznek `Conflict: RoleAssignmentExists` hiba esetén.
+> Ez a sablon nem idempotens, kivéve, ha ugyanazt a `roleNameGuid` értéket paraméterként megadja a sablon minden egyes telepítéséhez. Ha nincs `roleNameGuid` megadva, alapértelmezés szerint minden egyes központi telepítéshez új GUID-azonosító jön létre, és a további központi telepítések sikertelenek lesznek `Conflict: RoleAssignmentExists` hiba esetén.
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Szerepkör-hozzárendelés létrehozása erőforrás-hatókörben
 
@@ -232,7 +232,7 @@ A sablon használatához a következő bemeneteket kell megadnia:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(variables('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -261,7 +261,7 @@ A következő példa a közreműködői szerepkör hozzárendelését mutatja be
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Szerepkör-hozzárendelés létrehozása egy új egyszerű szolgáltatáshoz
 
-Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az adott szolgáltatáshoz ugyanahhoz a Azure Resource Manager-sablonhoz, előfordulhat, hogy a szerepkör-hozzárendelés sikertelen lesz. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet. Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot `ServicePrincipal` értékre kell állítani a szerepkör-hozzárendelés létrehozásakor.
+Ha létrehoz egy új szolgáltatásnevet, és azonnal megpróbál hozzárendelni egy szerepkört az egyszerű szolgáltatáshoz, a szerepkör-hozzárendelés bizonyos esetekben sikertelen lehet. Ha például létrehoz egy új felügyelt identitást, majd megpróbál hozzárendelni egy szerepkört az adott szolgáltatáshoz ugyanahhoz a Azure Resource Manager-sablonhoz, előfordulhat, hogy a szerepkör-hozzárendelés sikertelen lesz. A hiba oka valószínűleg a replikálás késése. Az egyszerű szolgáltatás egy régióban jön létre; a szerepkör-hozzárendelés azonban egy másik régióban is előfordulhat, amely még nem replikálta a szolgáltatásnevet. Ennek a forgatókönyvnek a megoldásához a `principalType` tulajdonságot úgy kell beállítani, hogy `ServicePrincipal` a szerepkör-hozzárendelés létrehozásakor.
 
 A következő sablon a következőket mutatja be:
 
@@ -327,9 +327,9 @@ Az alábbi példa a közreműködői szerepkör hozzárendelését mutatja be eg
 
 ![Szerepkör-hozzárendelés egy új felügyelt identitás egyszerű szolgáltatásnév számára](./media/role-assignments-template/role-assignment-template-msi.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Rövid útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése a Azure Portal @ no__t-0 használatával
+- [Rövid útmutató: Azure Resource Manager-sablon létrehozása és üzembe helyezése az Azure Portalon](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten](../azure-resource-manager/deploy-to-subscription.md)
 - [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/?term=rbac)

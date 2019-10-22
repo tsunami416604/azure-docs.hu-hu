@@ -1,133 +1,129 @@
 ---
-title: 'Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen'
+title: 'Oktatóanyag: gépi tanulási modell üzembe helyezése a vizualizációs felületen'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning vizuális felületén. Gépi tanulási modell betanítása, pontszáma és üzembe helyezése a drag and drop modulok használatával. Ez az oktatóanyag egy kétrészes sorozat második része, amely az autók árának lineáris regresszió használatával történő előrejelzését ismerteti.
+description: Megtudhatja, hogyan hozhat létre prediktív elemzési megoldást a Azure Machine Learning Visual Interface-ben. Gépi tanulási modell betanítása, pontszáma és üzembe helyezése a drag and drop modulok használatával.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 07/11/2019
-ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.date: 10/09/2019
+ms.openlocfilehash: ff3ffe4b68d7b5d74ee3a84ca9c59a13d445f43b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128981"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692987"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: Gépi tanulási modell üzembe helyezése a vizualizációs felületen
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a vizualizációs felületen
 
-Annak érdekében, hogy az [oktatóanyag első részében](ui-tutorial-automobile-price-train-score.md)kifejlesztett prediktív modellt használják mások számára, üzembe helyezhető Azure-webszolgáltatásként. Eddig a modell tanításával kísérletezett. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket végezheti el:
+Annak érdekében, hogy az [oktatóanyag első részében](ui-tutorial-automobile-price-train-score.md)kifejlesztett prediktív modellt is használhassa, valós idejű végpontként telepítheti. Az 1. részben betanítja a modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket végezheti el:
 
 > [!div class="checklist"]
-> * Modell előkészítése üzembe helyezéshez
-> * Webszolgáltatás üzembe helyezése
-> * Webszolgáltatás tesztelése
-> * Webszolgáltatás kezelése
-> * A webszolgáltatás felhasználása
+> * Valós idejű végpont üzembe helyezése
+> * Következtetési fürt létrehozása
+> * Valós idejű végpont tesztelése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az [oktatóanyag első részében](ui-tutorial-automobile-price-train-score.md) megismerheti, hogyan végezheti el a gépi tanulási modellek betanítását és kiértékelését a vizuális felületen.
 
-## <a name="prepare-for-deployment"></a>Üzembe helyezés előkészítése
+## <a name="deploy-a-real-time-endpoint"></a>Valós idejű végpont üzembe helyezése
 
-A kísérlet webszolgáltatásként való üzembe helyezése előtt először alakítsa át a *betanítási kísérletet* egy *prediktív kísérletbe*.
+A folyamat üzembe helyezéséhez a következőket kell tennie:
 
-1. Válassza a **prediktív kísérlet létrehozása*** elemet a kísérlet vászon alján.
+1. Alakítsa át a betanítási folyamatot egy valós idejű következtetési folyamatba, amely eltávolítja a betanítási modulokat, és bemeneteket és kimeneteket ad a következtetésekhez.
+1. A következtetési folyamat üzembe helyezése.
 
-    ![Animált GIF – a betanítási kísérlet automatikus átalakítása prediktív kísérletre](./media/ui-tutorial-automobile-price-deploy/deploy-web-service.gif)
+### <a name="create-a-real-time-inference-pipeline"></a>Valós idejű következtetési folyamat létrehozása
 
-    Ha a **prediktív kísérlet létrehozása**lehetőséget választja, több dolog történik:
+1. A folyamat vászon tetején válassza a **következtetési folyamat létrehozása**  > **valós idejű következtetési folyamat** lehetőséget.
+
+    Ha a **prediktív folyamat létrehozása**lehetőséget választja, több dolog történik:
     
-    * A betanított modellt a modul palettáján a **betanított modell** modulként tárolja a rendszer. Megtalálhatja a **betanított modellekben**.
-    * A betanításhoz használt modulok törlődnek; pontosabban:
-      * Modell betanítása
-      * Adatok felosztása
-      * Modell értékelése
-    * A rendszer visszaadja a mentett betanított modellt a kísérlethez.
-    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok határozzák meg, hogy a felhasználói adattípusok hol fognak belépni a modellbe.
+    * A betanított modellt a modul palettáján **adatkészlet** -modulként tárolja a rendszer. **Az adatkészletek**szakaszban találja.
+    * A képzéshez használt modulok, például a betanítási **modell** és a **felosztott adategységek**el lesznek távolítva.
+    * A rendszer visszaadja a mentett betanított modellt a folyamatba.
+    * A **webszolgáltatás bemeneti** és **webszolgáltatás-kimeneti** moduljai hozzáadódnak a szolgáltatáshoz. Ezek a modulok határozzák meg, hogy a felhasználói adattípusok hol lépnek be a modellbe, és hol lesznek visszaadva.
 
-    A **betanítási kísérlet** továbbra is a kísérlet vászon felső részén található új lapok alatt lesz mentve.
+    > [!Note]
+    > A **betanítási folyamat** a folyamat vászonjának tetején található új lapon lesz mentve. A vizuális felületen közzétett folyamatként is megtalálhatók.
+    >
 
-1. **Futtassa** a kísérletet.
+    A folyamatnak most így kell kinéznie:  
 
-1. Válassza ki a **pontszám modell** modul kimenetét, és válassza az **eredmények megtekintése** lehetőséget annak ellenőrzéséhez, hogy a modell továbbra is működik-e. Láthatja az eredeti adatmegjelenítést, valamint az előre jelzett árat ("pontozásos címkék").
+   ![Képernyőfelvétel a folyamat várható konfigurációjának megjelenítéséről az üzembe helyezés előkészítése után](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
 
-A kísérletnek most így kell kinéznie:  
+1. Válassza a **Futtatás** lehetőséget, és használja ugyanazt a számítási célt, és kísérletezzen, amelyet az 1. részben használt.
 
-![A kísérlet várható konfigurációját bemutató képernyőkép a telepítés előkészítése után](./media/ui-tutorial-automobile-price-deploy/predictive-graph.png)
+1. Válassza ki a **pontszám modell** modult.
 
-## <a name="deploy-the-web-service"></a>A webszolgáltatás üzembe helyezése
+1. A Tulajdonságok ablaktáblán válassza a **kimenetek**  > **Megjelenítés** elemet annak ellenőrzéséhez, hogy a modell továbbra is működik-e. Láthatja, hogy az eredeti adatértékek az előre jelzett árral ("pontozásos címkék") együtt jelennek meg.
 
-1. Válassza a **webszolgáltatás üzembe helyezése** a vászon alatt lehetőséget.
+1. Válassza az **Üzembe helyezés** lehetőséget.
 
-1. Válassza ki a webszolgáltatás futtatásához használni kívánt **számítási célt** .
+### <a name="create-an-inferencing-cluster"></a>Következtetési fürt létrehozása
 
-    A vizualizációs felület jelenleg csak az Azure Kubernetes Service (ak) számítási célokhoz való üzembe helyezést támogatja. Az elérhető AK számítási célok közül választhat a Machine learning szolgáltatás munkaterületén, vagy konfigurálhat egy új AK-környezetet a megjelenő párbeszéd lépéseinek használatával.
+A megjelenő párbeszédpanelen kiválaszthatja a munkaterületen meglévő Azure Kubernetes Service (ak) fürtöket a modell üzembe helyezéséhez. Ha nem rendelkezik AK-fürttel, a következő lépésekkel hozhat létre egyet.
 
-    ![Az új számítási cél lehetséges konfigurációját ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/deploy-compute.png)
+1. Válassza a **számítás** lehetőséget a párbeszédpanelen a **számítási** oldal megnyitásához.
 
-1. Válassza a **webszolgáltatás telepítése**lehetőséget. Az üzembe helyezés befejezésekor a következő értesítés jelenik meg. Az üzembe helyezés néhány percet is igénybe vehet.
+1. A navigációs menüszalagon válassza a **következtetési fürtök**  >  **+ új**lehetőséget.
 
-    ![A sikeres telepítés megerősítő üzenetét bemutató képernyőkép.](./media/ui-tutorial-automobile-price-deploy/deploy-succeed.png)
+    ![Az új következtetési fürt panel megnyitását bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
-## <a name="test-the-web-service"></a>A webszolgáltatás teszteléséhez
+1. A következtetési fürt ablaktáblán konfigurálja az új Kubernetes szolgáltatást.
 
-A **webszolgáltatások** lapon navigálva tesztelheti és kezelheti a Visual Interface Web Services szolgáltatást.
+1. Adja meg a **számítási név**"AK-számítás" oszlopát.
+    
+1. Válasszon egy közeli elérhető **régiót**.
 
-1. Nyissa meg a webszolgáltatás szakaszt. Ekkor megjelenik a webszolgáltatást, amelyet a Name (név) **oktatóanyaggal telepített – a személygépkocsi árának előrejelzése [prediktív exp]** .
+1. Kattintson a **Létrehozás** gombra.
 
-     ![Képernyőfelvétel: a webszolgáltatás lap, amely a közelmúltban létrehozott webszolgáltatás Kiemelt](./media/ui-tutorial-automobile-price-deploy/web-services.png)
+    > [!Note]
+    > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot a **következtetési fürtök** oldalon tekintheti meg
+    >
 
-1. További részletek megtekintéséhez válassza ki a webszolgáltatás nevét.
+### <a name="deploy-the-real-time-endpoint"></a>A valós idejű végpont üzembe helyezése
+
+Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós idejű következtetési folyamatra az üzembe helyezés befejezéséhez.
+
+1. Válassza a vászon fölötti **üzembe helyezés** lehetőséget.
+
+1. Válassza az **új valós idejű végpont telepítése**lehetőséget. 
+
+1. Válassza ki a létrehozott AK-fürtöt.
+
+1. Válassza az **Üzembe helyezés** lehetőséget.
+
+    [! Képernyőfelvétel: új valós idejű végpont beállítása](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+
+    Ha az üzembe helyezés befejeződik, a rendszer a vászon fölötti sikeres értesítést jeleníti meg, néhány percet is igénybe vehet.
+
+## <a name="test-the-real-time-endpoint"></a>A valós idejű végpont tesztelése
+
+A valós idejű végpontot a bal oldali munkaterület navigációs paneljének **végpontok** lapjára kattintva ellenőrizheti.
+
+1. A **végpontok** lapon válassza ki a telepített végpontot.
+
+    ![Képernyőfelvétel: a valós idejű végpontok lap, amely a legutóbb létrehozott végpontot mutatja](./media/ui-tutorial-automobile-price-deploy/web-services.png)
 
 1. Válassza a **teszt**lehetőséget.
 
-    [![A webszolgáltatás tesztelési lapját ábrázoló képernyőfelvétel](./media/ui-tutorial-automobile-price-deploy/web-service-test.png)](./media/ui-tutorial-automobile-price-deploy/web-service-test.png#lightbox)
-
 1. Adja meg a bemeneti tesztelési adatokat, vagy használja az kitöltött mintaadatok használatát, és válassza a **teszt**lehetőséget.
 
-    A tesztelési kérelem a webszolgáltatásnak van elküldve, és az eredmények a lapon jelennek meg. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
+    A rendszer elküldte a tesztelési kérelmet a végpontnak, és az eredmények megjelennek a lapon. Bár a bemeneti adatokhoz érték jön létre, a rendszer nem használja fel az előrejelzési érték generálására.
 
-## <a name="consume-the-web-service"></a>A webszolgáltatás felhasználása
-
-A felhasználók mostantól API-kérelmeket küldhetnek az Azure-webszolgáltatásnak, és eredményeket kaphatnak az új személygépkocsik árának előrejelzéséhez.
-
-**Kérelem/válasz** – a felhasználó egy vagy több sornyi mobil-adatokat küld a szolgáltatásnak HTTP protokoll használatával. A szolgáltatás egy vagy több eredménnyel válaszol.
-
-A REST-hívásokat a webszolgáltatás részletei lap **felhasználás lapján** találhatja meg.
-
-   ![Képernyőkép: a felhasználók által a felhasználás lapon megtalálható minta REST-hívás](./media/ui-tutorial-automobile-price-deploy/web-service-consume.png)
-
-További API-részletekért keresse fel az **API doc** lapot.
-
-## <a name="manage-models-and-deployments"></a>Modellek és központi telepítések kezelése
-
-A vizuális felületen létrehozott modellek és webszolgáltatás-telepítések a Azure Machine Learning munkaterületről is kezelhetők.
-
-1. Nyissa meg a munkaterületet a [Azure Portalban](https://portal.azure.com/).  
-
-1. A munkaterületen válassza a **modellek**elemet. Ezután válassza ki a létrehozott kísérletet.
-
-    ![A Azure Portalban található kísérletek elérését bemutató képernyőkép](./media/ui-tutorial-automobile-price-deploy/portal-models.png)
-
-    Ezen az oldalon további részleteket láthat a modellről.
-
-1. Válassza a **központi telepítések**lehetőséget, majd listázza a modellt használó webszolgáltatásokat. Válassza ki a webszolgáltatás nevét, majd nyissa meg a webszolgáltatások részletei lapot. Ezen az oldalon részletesebb információkhoz juthat a webszolgáltatásról.
-
-    [![Képernyőkép – részletes futtatási jelentés](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
-
-Ezeket a modelleket és központi telepítéseket a munkaterület kezdőlapjának **modellek** és **végpontok** szakaszában [(előzetes verzió)](https://ml.azure.com)is megtalálhatja.
+    ![Képernyőfelvétel: a valós idejű végpont és az emelt szintű címke tesztelése](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre, helyezhet üzembe és vehet fel gépi tanulási modellt a vizualizációs felületen. Ha többet szeretne megtudni arról, hogyan használhatja a vizuális felületet más típusú problémák megoldására, tekintse meg az egyéb példákat.
+Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre, helyezhet üzembe és vehet fel gépi tanulási modellt a vizualizációs felületen. Ha többet szeretne megtudni arról, hogyan használhatja a vizuális felületet más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 
 > [!div class="nextstepaction"]
 > [Hitelkockázat besorolási minta](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

@@ -9,10 +9,10 @@ ms.date: 10/11/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: eba0c6a8932a8c6d50bd98d94712c95516519274
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72300332"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
@@ -89,7 +89,7 @@ A biztonság egyéb szempontjainak beállításával kapcsolatos további tudniv
 
 Ez a szakasz kiemeli a különböző adatforrásokat, valamint azokat a különböző módokat, amelyekben az adott adatot betöltheti egy Data Lake Storage Gen2-fiókba.
 
-Betöltheti az adatbevitelt ![Data Lake Storage Gen2]az adatbevitelt(./media/data-lake-storage-data-scenarios/ingest-data.png "a Data Lake Storage Gen2ba")
+![Adatbevitel a Data Lake Storage Gen2ba](./media/data-lake-storage-data-scenarios/ingest-data.png "Adatbevitel a Data Lake Storage Gen2ba")
 
 ### <a name="ad-hoc-data"></a>Ad hoc adatszolgáltatások
 
@@ -165,7 +165,7 @@ Az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Az
 
 Ha az adatai elérhetők a Data Lake Storage Gen2ban, a támogatott big data alkalmazásokkal is futtathatja az elemzést. 
 
-Az adatelemzés ![Data Lake Storage Gen2 a](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2ban tárolt adatelemzések") során
+![Data Lake Storage Gen2ban lévő adatelemzés](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2ban lévő adatelemzés")
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével adatelemzési feladatokat futtathat az Data Lake Storage Gen2 tárolt adatokon.
 
@@ -178,7 +178,7 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével ada
 
 A szolgáltatások együttes használatával a Data Lake Storage Gen2ban tárolt adatvizualizációk is létrehozhatók.
 
-![Adatmegjelenítés Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage Gen2")
+![Az Data Lake Storage Gen2ban lévő adatmegjelenítés](./media/data-lake-storage-data-scenarios/visualize-data.png "Az Data Lake Storage Gen2ban lévő adatmegjelenítés")
 
 * A Azure Data Factory használatával elindíthatja az [adatok áthelyezését Data Lake Storage Gen2ról Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md)
 * Ezt követően [integrálhatja a Power BIt Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) segítségével vizuálisan jelenítheti meg az adatmegjelenítést.
@@ -191,7 +191,7 @@ Előfordulhat, hogy a következő forgatókönyvek esetében is szeretné letöl
 
 * Az alkalmazások prototípusának kiépítése során az IDE-környezetekben tárolt adatfeldolgozási folyamatokat a helyi számítógépre töltheti le.
 
-![Kimenő adatok Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "kimenő adatokból Data Lake Storage Gen2")
+![Kimenő adatok Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/egress-data.png "Kimenő adatok Data Lake Storage Gen2")
 
 Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel adatok tölthetők le a Data Lake Storage Gen2ról.
 

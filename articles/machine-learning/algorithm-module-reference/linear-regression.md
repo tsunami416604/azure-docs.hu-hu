@@ -1,7 +1,7 @@
 ---
-title: 'Lineáris regresszió: Modul-hivatkozás'
+title: 'Lineáris regresszió: modul-hivatkozás'
 titleSuffix: Azure Machine Learning service
-description: Megtudhatja, hogyan használható a lineáris regressziós modul a Azure Machine Learning szolgáltatásban egy lineáris regressziós modell létrehozásához egy kísérletben.
+description: Megtudhatja, hogyan használhatja a lineáris regressziós modult Azure Machine Learning szolgáltatásban egy lineáris regressziós modell létrehozásához egy folyamaton belül.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 506f37a2e01f428ccadc0368bd2efb6b58c9106c
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9c1dc34743d3fe65d50559d1b75aab1a0530d24c
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128677"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693696"
 ---
 # <a name="linear-regression-module"></a>Lineáris regressziós modul
 Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előzetes verzió) modulját ismerteti.
 
-Ezzel a modullal létrehozhat egy lineáris regressziós modellt, amely egy kísérletben használható.  Lineáris regressziós kísérlet egy lineáris kapcsolat létrehozására egy vagy több független változó és egy numerikus eredmény, vagy egy függő változó között. 
+Ezzel a modullal lineáris regressziós modellt hozhat létre a folyamatokban való használatra.  Lineáris regressziós kísérlet egy lineáris kapcsolat létrehozására egy vagy több független változó és egy numerikus eredmény, vagy egy függő változó között. 
 
 Ezzel a modullal lineáris regressziós módszert határozhat meg, majd elvégezheti a modell tanítását egy címkézett adatkészlet használatával. Ezt követően a betanított modell segítségével előrejelzéseket készíthet.
 
@@ -31,17 +31,17 @@ A Azure Machine Learning a lineáris regresszió mellett számos regressziós mo
 
 + A klasszikus regressziós probléma egyetlen független változót és egy függő változót is magában foglal. Ezt nevezzük *egyszerű regressziónak*.  Ez a modul támogatja az egyszerű regressziót.
 
-+ *Több lineáris regresszió* két vagy több olyan független változót foglal magában, amelyek egyetlen függő változóhoz járulnak hozzá. Azok a problémák, amelyekben a rendszer több bemenetet használ egy numerikus eredmény előrejelzésére, más néven többváltozós *lineáris regressziónak*is nevezik.
++ *Több lineáris regresszió* két vagy több olyan független változót foglal magában, amelyek egyetlen függő változóhoz járulnak hozzá. Azok a problémák, amelyekben a rendszer több bemenetet használ egy numerikus eredmény előrejelzésére, más néven *többváltozós lineáris regressziónak*is nevezik.
 
     A **lineáris regressziós** modul megoldja ezeket a problémákat, csakúgy, mint a többi regressziós modul többségét.
 
-+ A többcímkés *regresszió* a több függő változó egy adott modellen belüli előrejelzésének feladata. A többcímkés logisztikai regresszió esetében például a minta több különböző címkéhez is hozzárendelhető. (Ez különbözik az egy osztály változón belüli több szint előrejelzésének feladattól.)
++ A *többcímkés regresszió* a több függő változó egy adott modellen belüli előrejelzésének feladata. A többcímkés logisztikai regresszió esetében például a minta több különböző címkéhez is hozzárendelhető. (Ez különbözik az egy osztály változón belüli több szint előrejelzésének feladattól.)
 
     Az ilyen típusú regresszió nem támogatott a Azure Machine Learningban. Több változó előrejelzéséhez hozzon létre egy külön tanulót minden előre jelezni kívánt kimenethez.
 
 Az évek statisztikusai egyre fejlettebb módszereket fejlesztenek a regresszióhoz. Ez még a lineáris regresszió esetén is igaz. Ez a modul két módszert támogat a hibák mérésére és a regressziós vonal igazítására: a legkisebb négyzetes metódust és a színátmenetes leereszkedést.
 
-- A **színátmenet** -leereszkedés olyan metódus, amely a modell betanítási folyamatának egyes lépéseiben minimálisra csökkentheti a hibák mennyiségét. Széles körben vizsgálták a színátmenetek és a különböző tanulási problémák optimalizálásának számos változatát. Ha ezt a lehetőséget választja a **megoldási módszerhez**, számos paramétert állíthat be a lépés méretének, a tanulási aránynak és így tovább. Ez a beállítás támogatja az integrált paraméteres sweep használatát is.
+- A **színátmenet-leereszkedés** olyan metódus, amely a modell betanítási folyamatának egyes lépéseiben minimálisra csökkentheti a hibák mennyiségét. Széles körben vizsgálták a színátmenetek és a különböző tanulási problémák optimalizálásának számos változatát. Ha ezt a lehetőséget választja a **megoldási módszerhez**, számos paramétert állíthat be a lépés méretének, a tanulási aránynak és így tovább. Ez a beállítás támogatja az integrált paraméteres sweep használatát is.
 
 - A **szokásos legkisebb négyzet** a lineáris regresszió egyik leggyakrabban használt módszere. Például a legalacsonyabb négyzet az a módszer, amelyet a Microsoft Excel Analysis ToolPak használ.
 
@@ -63,28 +63,28 @@ Ez a modul két módszert támogat a regressziós modellek beépítéséhez, kü
 
 ## <a name="bkmk_OrdinaryLeastSquares"></a>Regressziós modell létrehozása a legkisebb négyzetek használatával
 
-1. Vegye fel a **lineáris regressziós modell** modult a kísérletbe az illesztőfelületen.
+1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz az illesztőfelületen.
 
-    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, majd húzza a **lineáris regressziós modell** modult a kísérletbe.
+    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, majd húzza a **lineáris regressziós modell** modult a folyamatba.
 
 2. A **Tulajdonságok** ablaktábla **megoldási módszer** legördülő listájában válassza a **szokásos legalacsonyabb négyzeteket**. Ez a beállítás határozza meg a regressziós vonal megkereséséhez használt számítási módszert.
 
 3. Az **L2 regularizációs súlyozásnál**adja meg az L2 regularizációs súlyozásához használandó értéket. Azt javasoljuk, hogy ne használjon nullától eltérő értéket a túlilleszkedés elkerüléséhez.
 
-     Ha többet szeretne megtudni arról, hogy a regularizációs hogyan befolyásolja a modellek beépítését, tekintse meg ezt a cikket: [A Machine Learning L1 és L2 Regularizációs](https://msdn.microsoft.com/magazine/dn904675.aspx)
+     Ha többet szeretne megtudni arról, hogy a regularizációs hogyan befolyásolja a modellek beépítését, tekintse meg ezt a cikket: [L1 és L2 regularizációs for Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
 
-4. Ha meg szeretné tekinteni az elfogáshoz tartozó kifejezést, válassza az elfogási **kifejezés**belefoglalása lehetőséget.
+4. Ha meg szeretné tekinteni az elfogáshoz tartozó kifejezést, válassza az **elfogási kifejezés belefoglalása**lehetőséget.
 
     Törölje ezt a beállítást, ha nem kell áttekintenie a regressziós képletet.
 
 5. A **véletlenszerű számú magok**esetében igény szerint beírhat egy értéket a modell által használt véletlenszám-generátor kivetéséhez.
 
-    A magok értékének használata akkor hasznos, ha ugyanazokat az eredményeket szeretné megtartani ugyanazon kísérlet különböző futtatásai között. Ellenkező esetben az alapértelmezett érték a rendszerórát használó érték használata.
+    A magok értékének használata akkor lehet hasznos, ha ugyanazokat az eredményeket szeretné fenntartani ugyanazon folyamat különböző futtatásai között. Ellenkező esetben az alapértelmezett érték a rendszerórát használó érték használata.
 
 
-7. Adja hozzá a betanítási [modell](./train-model.md) modult a kísérlethez, és csatlakoztasson egy címkézett adatkészletet.
+7. Adja hozzá a [Train Model](./train-model.md) modult a folyamathoz, és csatlakoztasson egy címkézett adatkészletet.
 
-8. Futtassa a kísérletet.
+8. A folyamat futtatása.
 
 ## <a name="results-for-ordinary-least-squares-model"></a>A legkevesebb négyzetes modell eredményei
 
@@ -97,15 +97,15 @@ A betanítás befejezése után:
 
 ## <a name="bkmk_GradientDescent"></a>Regressziós modell létrehozása online átmenetes leereszkedés használatával
 
-1. Vegye fel a **lineáris regressziós modell** modult a kísérletbe az illesztőfelületen.
+1. Adja hozzá a **lineáris regressziós modell** modult a folyamathoz az illesztőfelületen.
 
-    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, és húzza a **lineáris regressziós modell** modult a kísérletbe
+    Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **modell inicializálása**, majd a **regresszió**csomópontot, és húzza a **lineáris regressziós modell** modult a folyamatba.
 
 2. A **Tulajdonságok** ablaktábla **megoldási módszer** legördülő listájában válassza ki az **online átmenetes ereszkedést** a regressziós vonal megtalálásához használt számítási módszerként.
 
 3. Az **oktatói mód létrehozásához**jelezze, hogy a modellt előre definiált paraméterekkel kívánja-e betanítani, vagy ha a modellt a sweep paraméter használatával szeretné optimalizálni.
 
-    + **Egyetlen paraméter**: Ha tudja, hogyan szeretné konfigurálni a lineáris regressziós hálózatot, megadhatja az értékek adott készletét argumentumként.
+    + **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a lineáris regressziós hálózatot, megadhatja az értékek adott készletét argumentumként.
 
    
 4. A **tanulási arány**beállításnál határozza meg a sztochasztikus színátmenet-optimalizáló kezdeti tanulási arányát.
@@ -120,19 +120,19 @@ A betanítás befejezése után:
 
 7. Az **L2 regularizációs súlyozásnál**adja meg az L2 regularizációs súlyozásához használandó értéket. Azt javasoljuk, hogy ne használjon nullától eltérő értéket a túlilleszkedés elkerüléséhez.
 
-    Ha többet szeretne megtudni arról, hogy a regularizációs hogyan befolyásolja a modellek beépítését, tekintse meg ezt a cikket: [A Machine Learning L1 és L2 Regularizációs](https://msdn.microsoft.com/magazine/dn904675.aspx)
+    Ha többet szeretne megtudni arról, hogy a regularizációs hogyan befolyásolja a modellek beépítését, tekintse meg ezt a cikket: [L1 és L2 regularizációs for Machine learning](https://msdn.microsoft.com/magazine/dn904675.aspx)
 
 
 9. Válassza a tanulási arány **csökkentése**lehetőséget, ha azt szeretné, hogy a tanulási ráta az ismétlések előrehaladásával csökkenjen.  
 
-10. A **véletlenszerű számú magok**esetében igény szerint beírhat egy értéket a modell által használt véletlenszám-generátor kivetéséhez. A magok értékének használata akkor hasznos, ha ugyanazokat az eredményeket szeretné megtartani ugyanazon kísérlet különböző futtatásai között.
+10. A **véletlenszerű számú magok**esetében igény szerint beírhat egy értéket a modell által használt véletlenszám-generátor kivetéséhez. A magok értékének használata akkor lehet hasznos, ha ugyanazokat az eredményeket szeretné fenntartani ugyanazon folyamat különböző futtatásai között.
 
 
 12. Adjon hozzá egy címkézett adatkészletet és egy betanítási modult.
 
     Ha nem használja a paramétert, használja a [Train Model](train-model.md) modult.
 
-13. Futtassa a kísérletet.
+13. A folyamat futtatása.
 
 ## <a name="results-for-online-gradient-descent"></a>Az online átmenetes ereszkedés eredményei
 
@@ -141,6 +141,6 @@ A betanítás befejezése után:
 + Az előrejelzések létrehozásához csatlakoztassuk a betanított modellt a [pontszám modell](./score-model.md) modulhoz, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

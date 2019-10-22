@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70072268"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Sablonok kiadása az Azure API Management
@@ -35,7 +35,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 ##  <a name="IssueList"></a>Problémák listája  
  A **probléma lista** sablon lehetővé teszi a fejlesztői portálon a probléma-lista oldal törzsének testreszabását.  
   
- A ![fejlesztői portálon a probléma listázása](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-probléma listázása fejlesztői portál")  
+ ![A fejlesztői portálon a probléma listázása](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-probléma listázása fejlesztői portál")  
   
 ### <a name="default-template"></a>Alapértelmezett sablon  
   
@@ -89,20 +89,20 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 </div>
 ```
   
-### <a name="controls"></a>Szabályzók  
+### <a name="controls"></a>Vezérlők  
  A `Issue list` sablon a következő [lap vezérlőit](api-management-page-controls.md)használhatja.  
   
--   [paging-control](api-management-page-controls.md#paging-control)  
+-   [Lapozás – vezérlés](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Leírás|  
+|Tulajdonság|Type (Típus)|Leírás|  
 |--------------|----------|-----------------|  
 |`Issues`|[Kiállító](api-management-template-data-model-reference.md#Issue) entitások gyűjteménye.|Az aktuális felhasználó számára látható problémák.|  
 |`Paging`|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|Az alkalmazások gyűjteményének lapozási adatai.|  
-|`IsAuthenticated`|boolean|Azt jelzi, hogy az aktuális felhasználó bejelentkezett-e a fejlesztői portálra.|  
-|`CanReportIssues`|boolean|Azt határozza meg, hogy az aktuális felhasználónak van-e engedélye a probléma fájljának megadására.|  
-|`Search`|Karakterlánc|Ez a tulajdonság elavult, és nem használható.|  
+|`IsAuthenticated`|logikai|Azt jelzi, hogy az aktuális felhasználó bejelentkezett-e a fejlesztői portálra.|  
+|`CanReportIssues`|logikai|Azt határozza meg, hogy az aktuális felhasználónak van-e engedélye a probléma fájljának megadására.|  
+|`Search`|sztring|Ez a tulajdonság elavult, és nem használható.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -135,5 +135,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

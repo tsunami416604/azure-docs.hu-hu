@@ -7,48 +7,47 @@ ms.custom: include file
 ms.topic: include
 author: sgilley
 ms.author: sgilley
-ms.date: 05/06/2019
-ms.openlocfilehash: 623e993dfbe6bbb3297fa6470865ab1a04f55b37
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 10/16/2019
+ms.openlocfilehash: 0071b0df2c2e173eced1722372f88b1de2708afa
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179536"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692427"
 ---
 >[!IMPORTANT]
->Az Ön által létrehozott erőforrások más az Azure Machine Learning szolgáltatás oktatóanyagok és útmutatók előfeltételei is használhatja.
+>A létrehozott erőforrásokat használhatja más Azure Machine Learning szolgáltatás-oktatóanyagok és-útmutatók előfeltételeiként.
 
+### <a name="delete-everything"></a>Mindent törölni
 
-### <a name="delete-everything"></a>Teljes tartalmának törlése
+Ha nem tervezi a létrehozott bármit használni, törölje a teljes erőforráscsoportot, így nem számítunk fel díjat:
 
-Ha nem szeretné használni, amelyeket létrehozott, teljes erőforráscsoportot törölni, így nem kell díjat fizetniük:
-
-1. Az Azure Portalon válassza ki a **erőforráscsoportok** az ablak bal oldalán.
+1. A Azure Portal az ablak bal oldalán válassza az **erőforráscsoportok** lehetőséget.
  
    ![Erőforráscsoport törlése az Azure Portalon](./media/aml-ui-cleanup/delete-resources.png)
 
-1. A listában válassza ki a létrehozott erőforráscsoportot.
+1. A listából válassza ki a létrehozott erőforráscsoportot.
 
-1. Az ablak jobb oldalán válassza a három pont gombra ( **...** ).
+1. Az ablak jobb oldalán kattintson a három pontot ábrázoló gombra ( **...** ).
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-A vizuális felületen létrehozott összes erőforrást is az erőforráscsoport törlése törli.  
+Az erőforráscsoport törlése a vizualizációs felületen létrehozott összes erőforrást is törli.  
 
-### <a name="delete-only-the-compute-target"></a>Csak a számítási tároló törlése
+### <a name="delete-only-the-compute-target"></a>Csak a számítási cél törlése
 
-Az itt létrehozott számítási célnak *automatikusan elvégzi az automatikus skálázást* nulla csomópontokra, amikor nincs használatban. Ez a költségek minimalizálása érdekében. Ha törölni szeretné a számítási célnak, ezeket a lépéseket:
+Az itt létrehozott számítási cél *automatikusan automatikus méretezést* végez a nulla csomópontokra, amikor az nincs használatban. Ez a költségek csökkentése. Ha törölni szeretné a számítási célt, hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com), nyissa meg a munkaterületet.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a munkaterületet.
 
-    ![Törölje a számítási célnak](./media/aml-ui-cleanup/delete-compute-target.png)
+    ![A számítási cél törlése](./media/aml-ui-cleanup/delete-compute-target.png)
 
-1. Az a **számítási** szakasz a munkaterületet, válassza ki az erőforrást.
+1. A munkaterület **számítási** szakaszában válassza ki az erőforrást.
 
 1. Válassza a **Törlés** elemet.
 
-### <a name="delete-individual-assets"></a>Egyes eszközök törlése
+### <a name="delete-individual-assets"></a>Egyedi eszközök törlése
 
-A vizuális felületen, ahol létrehozta a kísérlethez, törölje egyes eszközök jelölje ki őket, és válassza a **törlése** gombra.
+A kísérletet létrehozó vizualizációs felületen törölje az egyes eszközöket, majd válassza a **Törlés** gombot. Az adatkészletek törölhető a munkaterületről az egyes adatkészletek kiválasztásával, majd a **regisztráció megszüntetése**lehetőség kiválasztásával.
 
-![Kísérletek törlése](./media/aml-ui-cleanup/delete-experiment.png)
+![Eszközök törlése](./media/aml-ui-cleanup/delete-asset.png)

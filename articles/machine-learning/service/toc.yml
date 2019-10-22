@@ -297,7 +297,15 @@
         - name: Adatbemenet és -kimenet
           items:
             - name: Adatok importálása
-              href: ../algorithm-module-reference/import-data.md
+              items:
+                - name: Adatok importálása
+                  href: ../algorithm-module-reference/import-data.md
+                - name: Importálás webes URL-ről HTTP-kapcsolaton keresztül
+                  href: ../algorithm-module-reference/import-from-web-url-via-http.md
+                - name: Importálás Azure Blob Storage-modulból
+                  href: ../algorithm-module-reference/import-from-azure-blob-storage.md
+                - name: Importálás Azure SQL Database-ből
+                  href: ../algorithm-module-reference/import-from-azure-sql-database.md
             - name: Adatok exportálása
               href: ../algorithm-module-reference/export-data.md
             - name: Manuális adatbevitel
@@ -330,6 +338,10 @@
               href: ../algorithm-module-reference/normalize-data.md
             - name: Partíció és minta
               href: ../algorithm-module-reference/partition-and-sample.md
+            - name: Értékek levágása
+              href: ../algorithm-module-reference/clip-values.md
+            - name: SQL-átalakítás alkalmazása
+              href: ../algorithm-module-reference/apply-sql-transformation.md
         - name: Gépi tanulás
           items:
             - name: Relevanciamodell
@@ -382,6 +394,12 @@
               href: ../algorithm-module-reference/create-python-model.md
             - name: R-szkript végrehajtása
               href: ../algorithm-module-reference/execute-r-script.md
+        - name: Statisztikai függvények
+          items:
+            - name: Matematikai művelet alkalmazása
+              href: ../algorithm-module-reference/apply-math-operation.md
+            - name: Adatok összegzése
+              href: ../algorithm-module-reference/summarize-data.md
         - name: Hibaüzenetek és -kódok
           href: ../algorithm-module-reference/machine-learning-module-error-codes.md
 - name: További források

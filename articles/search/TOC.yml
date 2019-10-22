@@ -237,6 +237,8 @@
               href: cognitive-search-custom-skill-interface.md
             - name: Példa – Azure Functions
               href: cognitive-search-create-custom-skill-example.md
+            - name: Példa – Teljesítménybeli képességek
+              href: 'https://aka.ms/powerskills'
             - name: Példa – Tárolók
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Hibaelhárítási tippek
