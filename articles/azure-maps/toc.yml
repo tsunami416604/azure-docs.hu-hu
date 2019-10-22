@@ -53,8 +53,6 @@
       href: supported-languages.md
     - name: Támogatott térképstílusok
       href: supported-map-styles.md
-    - name: A webes SDK által támogatott böngészők
-      href: supported-browsers.md
     - name: Nagyítási szintek és csemperács
       href: zoom-levels-and-tile-grid.md
     - name: Mobilitási szolgáltatás adatstruktúrája
@@ -147,6 +145,8 @@
               href: map-get-information-from-coordinate.md
             - name: Útvonal megjelenítése A-ból B-be
               href: map-route.md
+        - name: A webes SDK által támogatott böngészők
+          href: supported-browsers.md
     - name: Fejlesztés az Android SDK-val
       items:
         - name: Az androidos térképvezérlő használatának első lépései

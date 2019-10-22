@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.openlocfilehash: ecb393ea1f64897f17ce73170da1673886ef8916
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71266182"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Apache Spark számítási feladatok teljesítményének javítása az Azure HDInsight IO cache használatával
@@ -27,9 +27,9 @@ A legtöbb SSD több mint 1 GByte-t biztosít a sávszélesség másodpercenkén
 
 Az i/o-gyorsítótár használata az Azure Blob Storageból beolvasott feladatok teljesítményének növelését teszi lehetővé.
 
-Nem kell módosítania a Spark-feladatokat, hogy a teljesítmény megnövekszik az IO-gyorsítótár használatakor. Ha az IO-gyorsítótár le van tiltva, akkor ez a Spark-kód távolról is `spark.read.load('wasbs:///myfolder/data.parquet').count()`beolvashatja az adatait az Azure Blob Storage:. Ha az IO-gyorsítótár aktiválva van, akkor az IO-gyorsítótárból való beolvasás során ugyanez a kód okozza a gyorsítótárazást. A következő olvasások során az adatok helyileg olvashatók az SSD-ről. A HDInsight-fürtön futó munkavégző csomópontok helyileg csatlakoztatott, dedikált SSD-meghajtókkal vannak ellátva. A HDInsight IO cache ezeket a helyi SSD-ket használja a gyorsítótárazáshoz, ami a legalacsonyabb késést és maximalizálja a sávszélességet.
+Nem kell módosítania a Spark-feladatokat, hogy a teljesítmény megnövekszik az IO-gyorsítótár használatakor. Ha az IO-gyorsítótár le van tiltva, akkor ez a Spark-kód távolról is beolvashatja az adatait az Azure Blob Storage: `spark.read.load('wasbs:///myfolder/data.parquet').count()`. Ha az IO-gyorsítótár aktiválva van, akkor az IO-gyorsítótárból való beolvasás során ugyanez a kód okozza a gyorsítótárazást. A következő olvasások során az adatok helyileg olvashatók az SSD-ről. A HDInsight-fürtön futó munkavégző csomópontok helyileg csatlakoztatott, dedikált SSD-meghajtókkal vannak ellátva. A HDInsight IO cache ezeket a helyi SSD-ket használja a gyorsítótárazáshoz, ami a legalacsonyabb késést és maximalizálja a sávszélességet.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="getting-started"></a>Bevezetés
 
 Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van az előzetes verzióban. Az i/o-gyorsítótár elérhető az Azure HDInsight 3.6 + Spark-fürtökön, amelyek Apache Spark 2,3-et futtatnak.  Az i/o-gyorsítótár aktiválásához tegye a következőket:
 
@@ -48,7 +48,7 @@ Az Azure HDInsight IO gyorsítótára alapértelmezés szerint inaktiválva van 
 >[!NOTE]  
 > Annak ellenére, hogy az állapotjelző sáv aktiválva van, az i/o-gyorsítótár valójában nincs engedélyezve, amíg újra nem indítja a többi érintett szolgáltatást.
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
   
 Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel a Spark-feladatok futtatásakor. Ezek a hibák azért fordulnak elő, mert a Spark helyi lemezes tárolást is használ az adatok tárolásához a csoszogó műveletek során. Az i/o-gyorsítótár engedélyezése után a Spark kifogyhat az SSD-ről, és a Spark Storage területe csökkent. Az i/o-gyorsítótár által használt terület mérete alapértelmezés szerint a teljes SSD-terület felére mutat. Az i/o-gyorsítótár lemezterület-használata a Ambari-ben konfigurálható. Ha lemezterület-hibákat kap, csökkentse az IO-gyorsítótárhoz használt SSD-terület mennyiségét, majd indítsa újra a szolgáltatást. Az i/o-gyorsítótárhoz beállított terület módosításához tegye a következő lépéseket:
 
@@ -68,7 +68,7 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 1. Kattintson a jobb felső sarokban található **Mentés** gombra.
 
-1. Válassza az újraindítási**újraindítás minden érintett**elemet. > 
+1. Válassza az **újraindítás**  > **az összes érintett újraindítása**lehetőséget.
 
     ![Az Apache Ambari újraindítása minden érintett](./media/apache-spark-improve-performance-iocache/ambariui-restart-all-affected.png "Az összes érintett újraindítása")
 
@@ -76,6 +76,6 @@ Az IO-gyorsítótár engedélyezése után lemezterület-hibák merülhetnek fel
 
 Ha ez nem működik, tiltsa le az IO cache-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ az IO cache-ről, beleértve a teljesítménnyel kapcsolatos teljesítményteszteket ebben a blogbejegyzésben: [Apache Spark a feladatok akár 9x sebességgel HDInsight IO-gyorsítótárral](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)
+- További információ az IO cache-ről, beleértve a teljesítménnyel kapcsolatos teljesítményteszteket ebben a blogbejegyzésben: [Apache Spark a feladatok akár 9x sebességre is felgyorsítják a HDINSIGHT IO cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/) -t

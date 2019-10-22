@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70983498"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
-    - **A naplók** - naplózása rendszertevékenység-[információkat biztosít a](concept-audit-logs.md) felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
+    - **Naplók**  -  a[naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
     - **Naplók** kiosztása – rendszertevékenység nyújtása az Azure ad-kiépítési szolgáltatás által kiépített felhasználókkal, csoportokkal és szerepkörökkel kapcsolatban. 
 
 - **Biztonság** 
@@ -60,7 +60,7 @@ A kiépítési naplók a következő kérdésekre adnak választ:
 
 A kiépítési naplókat úgy érheti el, ha kijelöli a **kiépítési** naplókat a [Azure Portal](https://portal.azure.com) **Azure Active Directory** paneljének **figyelés** szakaszában. Akár két órát is igénybe vehet, hogy egyes kiépítési rekordok megjelenjenek a portálon.
 
-![Naplók kiépítés](./media/concept-provisioning-logs/access-provisioning-logs.png "Naplók kiépítés")
+![Naplók kiépítés](./media/concept-provisioning-logs/access-provisioning-logs.png "Üzembehelyezési naplók")
 
 
 A kiépítési napló egy alapértelmezett listanézet, amely a következőket jeleníti meg:
@@ -92,12 +92,12 @@ Részletesebb információkhoz jelöljön ki egy elemet a listanézet nézetben.
 
 A jelentett adat leszűkíthető egy olyan szintre, amely az Ön számára működik, a következő alapértelmezett mezők használatával szűrheti a kiépítési adatait. Vegye figyelembe, hogy a szűrőkben szereplő értékek dinamikusan vannak feltöltve a bérlő alapján. Ha például nem rendelkezik létrehozási eseményekkel a bérlőben, a létrehozáshoz nem lesz szűrő lehetőség.
 
-- Identitás
-- Action
+- Identitáskezelés
+- Műveletek
 - Forrásoldali rendszerek
 - Célrendszer
-- State
-- Date
+- Állapot
+- Dátum
 
 
 ![Szűrő](./media/concept-provisioning-logs/filter.png "Szűrő")
@@ -110,21 +110,21 @@ A célként megadott rendszerszűrő segítségével megadhatja, hogy az identit
 
 Az **állapot** szűrő segítségével a következőket választhatja ki:
 
-- Összes
+- Mind
 - Sikeres
 - Hiba
-- Kihagyva
+- Kimarad
 
 A **művelet** szűrője lehetővé teszi a következő szűrését:
 
-- Hozzon létre 
-- frissítés
+- Létrehozás 
+- Frissítés
 - Törlés
 - Letiltás
 - Egyéb
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
-Lehetséges értékek a következők:
+Lehetséges értékek:
 
 - 1 hónap
 - 7 nap
@@ -158,7 +158,7 @@ A részletek a következő kategóriák alapján vannak csoportosítva:
 
 - Módosított tulajdonságok
 
-- Összegzés
+- Összefoglalás
 
 
 ![Szűrő](./media/concept-provisioning-logs/provisioning-tabs.png "Lapok")
@@ -190,7 +190,7 @@ A **hibakeresés és javaslatok** lap a hibakódot és az okot adja meg. A hiba 
 A **módosított tulajdonságok** a régi értéket és az új értéket jelenítik meg. Olyan esetekben, amikor nincs régi érték, a régi érték oszlop üres. 
 
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonosítókat tartalmaz a forrás és a cél rendszer objektumához. 
 
@@ -206,7 +206,7 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 - Amikor egy alkalmazás környezetében fér hozzá a kiépítési naplókhoz, nem szűri automatikusan az eseményeket az adott alkalmazáshoz a naplók módon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A felhasználó kiépítési állapotának megtekintése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)

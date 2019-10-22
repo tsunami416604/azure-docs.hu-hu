@@ -121,15 +121,8 @@
           href: paas-applications-using-storage.md
         - name: Ajánlott DB-eljárások a PaaS-hez
           href: paas-applications-using-sql.md
-    - name: IoT
-      href: iot-overview.md
     - name: Az Azure Service Fabric biztonsága
-      href: service-fabric-overview.md
-      items:
-        - name: Ajánlott eljárások
-          href: service-fabric-best-practices.md
-        - name: Biztonsági ellenőrzőlista
-          href: service-fabric-checklist.md
+      href: service-fabric-best-practices.md
 - name: 'Monitorozás, naplózás és műveletek'
   href: management-monitoring-overview.md
   items:
