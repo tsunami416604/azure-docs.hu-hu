@@ -1,5 +1,5 @@
 ---
-title: 'Döntési erdő regressziója: Modul-hivatkozás'
+title: 'Döntési erdő regressziója: modul leírása'
 titleSuffix: Azure Machine Learning service
 description: Megtudhatja, hogyan használhatja a Azure Machine Learning szolgáltatásban a kétosztályos átlagú Perceptron modult gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 369974e52cb3585e4333b6033573b433e0a1a41a
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128423"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693632"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagú Perceptron modul
 
@@ -22,7 +22,7 @@ Ez a cikk a Azure Machine Learning szolgáltatás vizuális felületének (előz
 
 Ezzel a modullal gépi tanulási modellt hozhat létre az átlagos perceptron algoritmus alapján.  
   
-Ez a besorolási algoritmus felügyelt tanulási módszer, és olyan *címkézett*adatkészletet igényel, amely tartalmaz egy címke oszlopot. A modellt úgy is betaníthatja, hogy a modell és a címkézett adatkészlet bemenetként adja meg a betanítási [modellt](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.  
+Ez a besorolási algoritmus felügyelt tanulási módszer, és olyan *címkézett adatkészletet*igényel, amely tartalmaz egy címke oszlopot. A modellt úgy is betaníthatja, hogy a modell és a címkézett adatkészlet bemenetként adja meg a [betanítási modellt](./train-model.md). A betanított modell ezután felhasználható az új bemeneti példák értékeinek előrejelzésére.  
 
 ### <a name="about-averaged-perceptron-models"></a>Az átlagos perceptron modellek
 
@@ -32,11 +32,11 @@ Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulá
 
 ## <a name="how-to-configure-two-class-averaged-perceptron"></a>Kétosztályos átlagú Perceptron konfigurálása
 
-1.  Adja hozzá a kétosztályos **átlagú Perceptron-** modult a kísérlethez.  
+1.  Adja hozzá a **kétosztályos átlagú Perceptron-** modult a folyamathoz.  
 
 2.  Határozza meg, hogyan kívánja képezni a modellt az **oktatói mód létrehozása** lehetőség beállításával.  
   
-    -   **Egyetlen paraméter**: Ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
+    -   **Egyetlen paraméter**: ha tudja, hogyan szeretné konfigurálni a modellt, adjon meg egy adott értékeket argumentumként.
   
 3.  A **tanulási arány**mezőben határozza meg a *képzési arány*értékét. A tanulási arány értéke a modell minden egyes tesztelésekor és javításakor a sztochasztikus gradiensben használt lépés méretét szabályozza.
   
@@ -46,19 +46,19 @@ Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulá
   
      A korai leállítás gyakran jobb általánosítást biztosít. Az ismétlések számának növelése növeli a beilleszkedés kockázatát.
   
-5.  A **véletlenszerű számú magok**esetében szükség esetén adjon meg egy egész számot, amelyet magként kíván használni. A magok használata ajánlott, ha biztosítani szeretné a kísérletek reprodukálhatóságát a futtatások között.  
+5.  A **véletlenszerű számú magok**esetében szükség esetén adjon meg egy egész számot, amelyet magként kíván használni. A magok használata ajánlott, ha biztosítani szeretné, hogy a folyamat megismételhetősége fusson.  
   
 1.  Csatlakoztasson egy betanítási adatkészletet és egy betanítási modult:
   
     -   Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](train-model.md) modult.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
 + Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett funkciók súlyozását, kattintson a jobb gombbal a [vonat modell](./train-model.md)kimenetére.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning szolgáltatás számára elérhető modulok készletét](module-reference.md) . 

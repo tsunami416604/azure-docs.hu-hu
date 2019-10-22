@@ -1,5 +1,5 @@
 ---
-title: 'Példa: Egyéni kognitív képesség létrehozása a Bing Entity Search API-Azure Search'
+title: 'Példa: egyéni kognitív képesség létrehozása a Bing Entity Search API-Azure Search'
 description: A Bing Entity Search szolgáltatás használatát mutatja be egy, a kognitív keresési indexelési folyamathoz Azure Search-ben leképezett egyéni szakértelemben.
 manager: nitinme
 author: luiscabrer
@@ -8,14 +8,14 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ab2f9e8859fba0c906e181727aab923254e9b620
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266333"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692201"
 ---
-# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: Egyéni képesség létrehozása a Bing Entity Search API használatával
+# <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Példa: egyéni képesség létrehozása a Bing Entity Search API használatával
 
 Ebből a példából megtudhatja, hogyan hozhat létre egyéni webes API-képességet. Ez a képesség elfogadja a helyszíneket, a nyilvános adatokat és a szervezeteket, valamint a hozzájuk tartozó leírásokat. A példa egy [Azure-függvényt](https://azure.microsoft.com/services/functions/) használ a [Bing Entity Search API](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) becsomagolásához, hogy az megvalósítsa az egyéni ügyességi felületet.
 
@@ -33,9 +33,9 @@ Bár ez a példa egy Azure-függvényt használ a webes API-k üzemeltetéséhez
 
 ### <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. A Visual Studióban válassza a Fájl menü **új** > **projekt** elemét.
+1. A Visual Studióban válassza a Fájl menü **új**  > **projekt** elemét.
 
-1. Az új projekt párbeszédpanelen válassza a **telepített**elemet, majd **a C#Visual**   >  **Cloud**elemet, válassza a **Azure functions**lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function alkalmazás nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
+1. Az új projekt párbeszédpanelen válassza a **telepített**, a  **C# vizualizáció**  >  a**felhő**elemet, válassza a **Azure functions**lehetőséget, írja be a projekt nevét, majd kattintson **az OK gombra**. A Function alkalmazás nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más, nem alfanumerikus karaktereket.
 
 1. Válassza a **Azure functions v2 (.net Core)** lehetőséget. Azt is megteheti az 1. verzióban, de az alább írt kód a v2-sablonon alapul.
 
@@ -311,11 +311,11 @@ namespace SampleSkills
 }
 ```
 
-Ügyeljen arra, hogy a saját *kulcs* értékét az `key` állandó értéken adja meg a Bing Entity Search API-ra való regisztráció során kapott kulcs alapján.
+Ügyeljen arra, hogy a saját *kulcs* értékét a `key` konstansban adja meg a Bing Entity Search API-ra való regisztráció során kapott kulcs alapján.
 
-Ez a minta minden szükséges kódot tartalmaz egyetlen fájlban a kényelem érdekében. [Az energiagazdálkodási képességek tárházában](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Text/BingEntitySearch)megtalálhatja ugyanezen képességek egy kicsit strukturált verzióját is.
+Ez a minta minden szükséges kódot tartalmaz egyetlen fájlban a kényelem érdekében. Megtalálhatja ugyanezen képességek egy kicsit strukturált verzióját, valamint az [energiagazdálkodási ismeretek tárházában](https://aka.ms/entity-search-power-skill)található egyéni ismereteket is.
 
-Természetesen előfordulhat, `Function1.cs` hogy `BingEntitySearch.cs`átnevezi a fájlt a verzióra.
+Természetesen előfordulhat, hogy átnevezi a fájlt `Function1.cs`ról `BingEntitySearch.cs`ra.
 
 ## <a name="test-the-function-from-visual-studio"></a>A függvény tesztelése a Visual studióból
 
@@ -375,7 +375,7 @@ Az alábbi példához hasonló válasznak kell megjelennie:
 
 Ha elégedett a funkció működésével, közzéteheti.
 
-1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az **új** > **Közzététel**létrehozása lehetőséget.
+1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. Válassza az új  > **Közzététel** **létrehozása** lehetőséget.
 
 1. Ha még nem csatlakoztatta a Visual studiót az Azure-fiókjához, válassza a **fiók hozzáadása...** lehetőséget.
 
@@ -383,7 +383,7 @@ Ha elégedett a funkció működésével, közzéteheti.
 
 1. A telepítés befejezése után figyelje meg a webhely URL-címét. Ez az Azure-beli Function-alkalmazás címe. 
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon az erőforráscsoporthoz, és keresse meg a `EntitySearch` közzétett funkciót. A **kezelés** szakaszban látnia kell a gazdagép kulcsait. Válassza ki az *alapértelmezett* gazda kulcs **másolási** ikonját.  
+1. A [Azure Portal](https://portal.azure.com)navigáljon az erőforráscsoporthoz, és keresse meg a közzétett `EntitySearch`-függvényt. A **kezelés** szakaszban látnia kell a gazdagép kulcsait. Válassza ki az *alapértelmezett* gazda kulcs **másolási** ikonját.  
 
 ## <a name="test-the-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
@@ -393,7 +393,7 @@ Most, hogy rendelkezik az alapértelmezett gazdagép kulccsal, tesztelje a függ
 POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?code=[enter default host key here]
 ```
 
-### <a name="request-body"></a>Kérelem törzse
+### <a name="request-body"></a>A kérelem törzse
 ```json
 {
     "values": [
@@ -418,7 +418,7 @@ POST https://[your-entity-search-app-name].azurewebsites.net/api/EntitySearch?co
 Ebben a példában ugyanazt az eredményt kell megadnia, amelyet korábban a függvény a helyi környezetben való futtatásakor látott.
 
 ## <a name="connect-to-your-pipeline"></a>Kapcsolódás a folyamathoz
-Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a készségkészlet. Az alábbi példa azt mutatja be, hogyan hívhatja meg a képességet, hogy leírást adjon hozzá a szervezetekhez a dokumentumban (ezt kiterjesztheti a helyszíneken és személyeken is.) A `[your-entity-search-app-name]` helyére írja be az alkalmazás nevét.
+Most, hogy már rendelkezik egy új egyéni képességgel, hozzáadhatja a készségkészlet. Az alábbi példa azt mutatja be, hogyan hívhatja meg a képességet, hogy leírást adjon hozzá a szervezetekhez a dokumentumban (ezt kiterjesztheti a helyszíneken és személyeken is.) Cserélje le a `[your-entity-search-app-name]`t az alkalmazás nevére.
 
 ```json
 {
@@ -475,9 +475,10 @@ Itt számítjuk fel a beépített [entitás-felismerési képességet](cognitive
 },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Gratulálunk! Létrehozta az első egyéni gazdagabbá. Mostantól ugyanezt a mintát követheti saját egyéni funkcióinak hozzáadásával is. 
 
++ [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
 + [Egyéni képesség hozzáadása egy kognitív keresési folyamathoz](cognitive-search-custom-skill-interface.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)

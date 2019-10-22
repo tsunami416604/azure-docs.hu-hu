@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
 ms.openlocfilehash: 9768191d98bf1987ac24564869107cdd6bf19e8d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69032130"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
@@ -79,7 +79,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 ## <a name="use-logs-data-for-server"></a>A kiszolgálók naplófájljainak használata
  A naplók részletes lekérdezési nyelvet biztosítanak, amely lehetővé teszi az Application Insights által összegyűjtött összes adatok elemzését. Ezzel a funkcióval részletes elemzéseket végezhet a kérések és a teljesítmény adatairól.
 
-1. Térjen vissza a művelet részletei panelre, ![és kattintson a naplók ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)** elemre.
+1. Térjen vissza a művelet részletei panelre, és kattintson ![Logs ikon](media/tutorial-performance/app-viewinlogs-icon.png)**nézet a naplókban (Analitika)**
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél.  Ezeket a lekérdezéseket futtathatja alapértelmezetten, vagy módosíthat rajtuk az igényei szerint.  Az első lekérdezés megjeleníti ennek a műveletnek a teljes időtartamát.
 
@@ -89,7 +89,7 @@ Az Application Insights teljesítményadatokat gyűjt az alkalmazás különböz
 ## <a name="identify-slow-client-operations"></a>Lassú ügyfélműveletek azonosítása
 Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érdekében, az Application Insights az ügyfélböngészők szempontjából is képes elemzést végezni.  Így megtalálhatja a javítási lehetőségeket az ügyfél összetevői számára, és különböző böngészők vagy helyek problémáit is megtalálhatja.
 
-1. A **vizsgálat** területen válassza a böngésző **teljesítménye** elemet, vagy válassza a **teljesítmény** lehetőséget a **vizsgálat** szakaszban, majd váltson a **böngésző** lapra a jobb felső sarokban található kiszolgáló/böngésző váltógomb gombra kattintva Nyissa meg a böngésző teljesítményének összegzését. Ez egy vizuális összefoglalást nyújt az alkalmazása különböző telemetriáiról a böngésző szempontjából.
+1. A **vizsgálat** **területen válassza a** böngésző **teljesítménye** elemet, vagy válassza a **teljesítmény** lehetőséget a **vizsgálat** szakaszban, majd váltson a **böngésző** lapra a jobb felső sarokban található kiszolgáló/böngésző váltógomb gombra kattintva Nyissa meg a böngésző teljesítményének összegzését. Ez egy vizuális összefoglalást nyújt az alkalmazása különböző telemetriáiról a böngésző szempontjából.
 
     ![Böngésző összefoglalása](media/tutorial-performance/8-browser.png)
 
@@ -100,18 +100,18 @@ Amellett, hogy azonosítja a kiszolgálói folyamatokat az optimalizálás érde
 ## <a name="use-logs-data-for-client"></a>Az ügyfél naplófájljainak használata
 A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application Insights az összes ügyfél-adat számára elérhetővé teszi a mélyreható elemzést a naplók használatával.
 
-1. Térjen vissza a böngésző összegzéséhez, ![és kattintson](media/tutorial-performance/app-viewinlogs-icon.png) a naplók ikon **nézet a naplókban (Analitika)** elemre.
+1. Térjen vissza a böngésző összegzéséhez, és kattintson ![Logs ikonra ](media/tutorial-performance/app-viewinlogs-icon.png) **View in logs (Analytics)**
 
 2. A naplók megnyílik egy lekérdezéssel a panel egyes nézeteinél. Az első lekérdezés a különböző oldalmegtekintések időtartamát jeleníti meg az idő függvényében.
 
-    ![Naplólekérdezés](media/tutorial-performance/10-page-view-logs.png)
+    ![naplók lekérdezése](media/tutorial-performance/10-page-view-logs.png)
 
 3.  Az intelligens diagnosztika a naplók egyik funkciója, amely az adat egyedi mintáit azonosítja. Ha rákattint az Intelligens Diagnosztika pontjára a vonaldiagramon, ugyanaz a lekérdezés fut le az anomáliát okozó rekordok nélkül. Ezeknek a rekordoknak a részletei a lekérdezés megjegyzéseket tartalmazó részében láthatók, így azonosíthatja azoknak az oldalmegtekintéseknek a tulajdonságait, amelyek a hosszú időtartamért felelősek.
 
     ![Naplók az intelligens diagnosztika szolgáltatással](media/tutorial-performance/11-page-view-logs-dsmart.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan hozhat létre riasztásokat a hibákhoz.
 
 > [!div class="nextstepaction"]

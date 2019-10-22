@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71203693"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Az OPC Vault Certificate Management szolgáltatás használata
@@ -31,20 +31,20 @@ Ha még nem tette meg, hozza létre a kiállító HITELESÍTÉSSZOLGÁLTATÓI ta
 
 ## <a name="secure-opc-ua-applications"></a>Biztonságos OPC UA-alkalmazások
 
-### <a name="step-1-register-your-opc-ua-application"></a>1\. lépés: Az OPC UA-alkalmazás regisztrálása 
+### <a name="step-1-register-your-opc-ua-application"></a>1\. lépés: az OPC UA-alkalmazás regisztrálása 
 
 > [!IMPORTANT]
 > Egy alkalmazás regisztrálásához az író szerepkör szükséges.
 
-1. Nyissa meg a tanúsítványszolgáltatásokat a (z) helyen `https://myResourceGroup-app.azurewebsites.net`, és jelentkezzen be.
+1. Nyissa meg a tanúsítványszolgáltatásokat `https://myResourceGroup-app.azurewebsites.net` címen, és jelentkezzen be.
 2. Lépjen az **új regisztrálása**gombra. Egy alkalmazás regisztrálásához a felhasználónak legalább a hozzárendelt író szerepkörrel kell rendelkeznie.
 2. A nevezési űrlap az OPC UA elnevezési konvencióit követi. Az alábbi képernyőképen látható, hogy az OPC ua- [hivatkozási kiszolgáló](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) mintája az OPC ua .NET Standard stackben jelenik meg:
 
-   ![Az UA-hivatkozási kiszolgáló regisztrációjának képernyőképe](media/howto-opc-vault-secure/reference-server-registration.png "Ua-hivatkozási kiszolgáló regisztrálása")
+   ![Az UA-hivatkozási kiszolgáló regisztrációjának képernyőképe](media/howto-opc-vault-secure/reference-server-registration.png "UA-hivatkozási kiszolgáló regisztrálása")
 
 5. Válassza a **regisztráció** lehetőséget, ha regisztrálni szeretné az alkalmazást a Certificate Service Application adatbázisban. A munkafolyamat közvetlenül a következő lépéssel irányítja a felhasználót, hogy aláírt tanúsítványt kérjen az alkalmazáshoz.
 
-### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>2\. lépés: Az alkalmazás biztonságossá tétele HITELESÍTÉSSZOLGÁLTATÓI aláírású alkalmazás tanúsítványával
+### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>2\. lépés: az alkalmazás biztonságossá tétele HITELESÍTÉSSZOLGÁLTATÓI aláírású alkalmazás tanúsítványával
 
 Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási kérelem (CSR) alapján kell kibocsátani egy aláírt tanúsítványt. Azt is megteheti, hogy új kulcspárt kér, amely egy új titkos kulcsot tartalmaz PFX vagy PEM formátumban. Az alkalmazás által támogatott módszerekről az OPC UA-eszköz dokumentációjában olvashat bővebben. Általánosságban elmondható, hogy a CSR-módszer használata ajánlott, mert nincs szükség arra, hogy a titkos kulcs átvitele a hálózaton keresztül történjen.
 
@@ -71,7 +71,7 @@ Az OPC UA-alkalmazás biztonságossá tételéhez tanúsítvány-aláírási ké
 8. A titkos kulcs letöltése és biztonságos tárolása után kiválaszthatja a **titkos kulcs törlése**lehetőséget. A nyilvános kulccsal rendelkező tanúsítvány jövőbeli használatra továbbra is elérhető marad.
 9. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és a tanúsítvány-visszavonási lista (CRL) is letölthető.
 
-Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A hitelesítésszolgáltató tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, míg az alkalmazás tanúsítványának nyilvános és titkos kulcsa a tanúsítványtároló `own` egyik mappájára lesz alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
+Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, az alkalmazás tanúsítványának nyilvános és titkos kulcsát pedig a tanúsítványtároló egyik `own` mappájára alkalmazza a rendszer. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
 #### <a name="request-a-new-certificate-with-a-csr"></a>Új tanúsítvány igénylése CSR-sel 
 
@@ -96,13 +96,13 @@ Most az OPC UA-eszköztől függ, hogyan alkalmazza az új kulcspárt. A hiteles
 10. A tanúsítvány letöltése és biztonságos tárolása után válassza a **tanúsítvány törlése**lehetőséget.
 11. A CA által aláírt tanúsítvány használata miatt a HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t is le kell tölteni.
 
-Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A hitelesítésszolgáltató tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, miközben az alkalmazás tanúsítványa `own` a tanúsítványtároló egyik mappájára van alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
+Most az OPC UA-eszköztől függ, hogyan alkalmazza az új tanúsítványt. A HITELESÍTÉSSZOLGÁLTATÓ tanúsítványát és a CRL-t általában egy `trusted` mappába másolja a rendszer, míg az alkalmazás tanúsítványa a tanúsítványtároló egyik `own` mappájára van alkalmazva. Előfordulhat, hogy egyes eszközök már támogatják a kiszolgálók leküldését a tanúsítvány frissítéseire. Tekintse át az OPC UA-eszköz dokumentációját.
 
-### <a name="step-4-device-secured"></a>4\. lépés: Eszköz biztosítva
+### <a name="step-4-device-secured"></a>4\. lépés: biztonságos eszköz
 
 Az OPC UA-eszköz most már készen áll arra, hogy a CA által aláírt tanúsítványok által védett más OPC UA-eszközökkel tudjon kommunikálni további konfiguráció nélkül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC UA-eszközök biztonságossá tételét, a következőket teheti:
 

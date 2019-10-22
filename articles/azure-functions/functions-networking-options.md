@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 967988d802a1b3d33ff50f578650e44794015583
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9fe7147325b2e14a7ae6bb4b31aa941fb4059b11
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72550855"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72690827"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions hálózati beállítások
 
@@ -36,7 +36,7 @@ A Function apps több módon is üzemeltethető:
 |[Bejövő IP-korlátozások & Private site Access](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
 |[Virtuális hálózat integrációja](#virtual-network-integration)|❌No|✅Yes (regionális)|✅Yes (regionális és átjáró)|✅Yes|
 |[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌No| ❌No|✅Yes|✅Yes|
-|[Hibrid kapcsolatok](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
+|[Hibrid kapcsolatok](#hybrid-connections)|❌No|✅Yes|✅Yes|✅Yes|
 |[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌No| ❌No|❌No|✅Yes|
 
 
@@ -127,11 +127,11 @@ Tekintse meg [ezt a listát az összes nem http-eseményindítóról](./function
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-[Hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay szolgáltatása, amellyel más hálózatokban is elérheti az alkalmazás erőforrásait. Hozzáférést biztosít az alkalmazástól az alkalmazások végpontja számára. Nem használhatja az alkalmazást az alkalmazás elérésére. A Hibrid kapcsolatok egy [app Service](functions-scale.md#app-service-plan) -csomagban és egy [app Service Environment](../app-service/environment/intro.md)futtatott függvények számára érhető el.
+[Hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay szolgáltatása, amellyel más hálózatokban is elérheti az alkalmazás erőforrásait. Hozzáférést biztosít az alkalmazástól az alkalmazások végpontja számára. Nem használhatja az alkalmazást az alkalmazás elérésére. A Hibrid kapcsolatok az összes, de a felhasználási tervben futó függvények számára elérhető.
 
 A Azure Functionsban használt módon minden hibrid csatlakozás egyetlen TCP-gazdagéphez és porthoz kapcsolódik. Ez azt jelenti, hogy a hibrid kapcsolatok végpontja bármely operációs rendszeren és alkalmazáson is lehet, ha a TCP-figyelési porthoz fér hozzá. A Hibrid kapcsolatok funkció nem tudja, vagy nem érdekli az alkalmazás protokollja, vagy hogy mi fér hozzá. Egyszerűen hálózati hozzáférést biztosít.
 
-További információkért tekintse meg a [Hibrid kapcsolatok app Service dokumentációját](../app-service/app-service-hybrid-connections.md), amely támogatja az App Service-csomagban található függvényeket.
+További információkért tekintse meg a [Hibrid kapcsolatok app Service dokumentációját](../app-service/app-service-hybrid-connections.md), amely az azonos konfigurációs lépéseken keresztül támogatja a függvényeket.
 
 ## <a name="outbound-ip-restrictions"></a>Kimenő IP-korlátozások
 

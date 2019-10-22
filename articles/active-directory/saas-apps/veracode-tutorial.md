@@ -17,10 +17,10 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 50056e6b201313805e7b9253e7a962e096b9df65
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "72372975"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Veracode
@@ -109,13 +109,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A felső menüben kattintson a **Beállítások**, majd a **rendszergazda**elemre.
    
-    ![Adminisztrációs](./media/veracode-tutorial/ic802911.png "felügyelet")
+    ![Felügyeleti](./media/veracode-tutorial/ic802911.png "Felügyelet")
 
 1. Kattintson az **SAML** fülre.
 
 1. A **szervezet SAML-beállításai** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Adminisztrációs](./media/veracode-tutorial/ic802912.png "felügyelet")
+    ![Felügyeleti](./media/veracode-tutorial/ic802912.png "Felügyelet")
 
     a.  A **kiállító** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -125,7 +125,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **Önregisztráció beállításai** szakaszban hajtsa végre az alábbi lépéseket, majd kattintson a **Save (Mentés**) gombra:
 
-    ![Adminisztrációs](./media/veracode-tutorial/ic802913.png "felügyelet")
+    ![Felügyeleti](./media/veracode-tutorial/ic802913.png "Felügyelet")
 
     a. **Új felhasználói aktiválás**esetén válassza a **nincs szükség aktiválásra**lehetőséget.
 

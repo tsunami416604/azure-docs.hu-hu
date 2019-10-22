@@ -8,18 +8,18 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: b5529babfae37fa0d9f4de46018bb3b107ce4eae
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2c4af40886a81cbf8f8e11318737db05f570a1f0
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265825"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692193"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Egyéni szakértelem hozzáadása egy kognitív keresési folyamathoz
 
 A Azure Searchban található [kognitív keresési folyamat](cognitive-search-concept-intro.md) az [előre definiált ismeretekből](cognitive-search-predefined-skills.md) , valamint a folyamathoz személyesen létrehozott és hozzáadott [Egyéni képességekkel](cognitive-search-custom-skill-web-api.md) is összeállítható. Ebből a cikkből megtudhatja, hogyan hozhat létre olyan egyéni képességet, amely lehetővé teszi, hogy egy olyan felületet biztosítson, amely egy kognitív keresési folyamat részét képezi. 
 
-Az egyéni képességek létrehozása lehetővé teszi, hogy a tartalom egyedi átalakításokat helyezzen be. Az egyéni képességek egymástól függetlenül hajthatók végre, a szükséges alkoholtartalom-növelési lépés alkalmazásával. Meghatározhatja például a mezőkre vonatkozó egyéni entitásokat, egyéni besorolási modelleket hozhat létre az üzleti és pénzügyi szerződések és dokumentumok megkülönböztetéséhez, vagy hozzáadhat egy beszédfelismerési képességet a hangfájlok mélyebb eléréséhez a releváns tartalmakhoz. Lépésről lépésre példaként lásd [: példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
+Az egyéni képességek létrehozása lehetővé teszi, hogy a tartalom egyedi átalakításokat helyezzen be. Az egyéni képességek egymástól függetlenül hajthatók végre, a szükséges alkoholtartalom-növelési lépés alkalmazásával. Meghatározhatja például a mezőkre vonatkozó egyéni entitásokat, egyéni besorolási modelleket hozhat létre az üzleti és pénzügyi szerződések és dokumentumok megkülönböztetéséhez, vagy hozzáadhat egy beszédfelismerési képességet a hangfájlok mélyebb eléréséhez a releváns tartalmakhoz. Lépésről lépésre példaként tekintse meg a következő [példát: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md).
 
  Bármilyen egyéni képességre van szükség, van egy egyszerű és egyértelmű felület, amellyel egy egyéni képességet csatlakoztathat a többi bővítési folyamathoz. A [készségkészlet](cognitive-search-defining-skillset.md) való felvétel egyetlen követelménye az, hogy képes legyen a bemenetek fogadására és kimenetek kibocsátására olyan módokon, amelyek a készségkészlet belül a teljes használatra készek. Ennek a cikknek a célja a dúsítási folyamat által igényelt bemeneti és kimeneti formátum.
 
@@ -36,17 +36,17 @@ Egyéni WebAPI-képzettségi végpontok alapértelmezett időtúllépéssel, ha 
 
 Jelenleg az egyéni képességekkel való interakció egyetlen mechanizmusa egy webes API-felületen keresztül történik. A webes API-nak meg kell felelnie az ebben a részben ismertetett követelményeknek.
 
-### <a name="1--web-api-input-format"></a>1.  Webes API bemeneti formátuma
+### <a name="1--web-api-input-format"></a>1. webes API bemeneti formátuma
 
 A webes API-nak el kell fogadnia a feldolgozandó rekordok tömbjét. Minden rekordnak tartalmaznia kell egy "tulajdonság táska" karaktert, amely a webes API-hoz megadott bemenet. 
 
 Tegyük fel, hogy létre szeretne hozni egy egyszerű gazdagító, amely azonosítja a szerződés szövegében említett első dátumot. Ebben a példában a skill egyetlen bemeneti *contractText* fogad el a szerződés szövegeként. A szakértelem egyetlen kimenettel is rendelkezik, amely a szerződés dátuma. Ahhoz, hogy a gazdagodás még érdekesebb legyen, ezt a *contractDate* egy többrészes összetett típus alakjában adja vissza.
 
-A webes API-nak készen kell állnia a bemeneti rekordok kötegének fogadására. Az Values tömb minden tagja az adott rekord bemenetét jelöli. Minden rekordhoz a következő elemek szükségesek:
+A webes API-nak készen kell állnia a bemeneti rekordok kötegének fogadására. Az *Values* tömb minden tagja az adott rekord bemenetét jelöli. Minden rekordhoz a következő elemek szükségesek:
 
 + Egy *recordId* -tag, amely egy adott rekord egyedi azonosítója. Ha a dúsítás visszaadja az eredményeket, meg kell adnia ezt a *recordId* ahhoz, hogy a hívó megegyezzen a rekord eredményével a bemeneten.
 
-+ Egy adattag, amely lényegében egy, az egyes rekordok beviteli mezőinek egy zacskója.
++ Egy *adattag,* amely lényegében egy, az egyes rekordok beviteli mezőinek egy zacskója.
 
 A fenti példa alapján a webes API-nak a következőhöz hasonló kérelmeket kell várnia:
 
@@ -81,7 +81,7 @@ A fenti példa alapján a webes API-nak a következőhöz hasonló kérelmeket k
 ```
 A valóságban a szolgáltatás több száz vagy több ezer rekorddal is meghívható, és nem csak az itt látható háromat.
 
-### <a name="2-web-api-output-format"></a>2. Webes API kimeneti formátuma
+### <a name="2-web-api-output-format"></a>2. webes API kimeneti formátuma
 
 A kimenet formátuma egy *recordId*tartalmazó rekordok halmaza, és egy tulajdonság táska 
 
@@ -152,9 +152,10 @@ Webes API-gazdagító létrehozásakor a kérés részeként a HTTP-fejléceket 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-+ [Példa: Egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
++ [Energiaellátási készségek: az egyéni képességek tárháza](https://aka.ms/powerskills)
++ [Példa: egyéni képesség létrehozása a kognitív kereséshez](cognitive-search-create-custom-skill-example.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
 + [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [A dúsított mezők leképezése](cognitive-search-output-field-mapping.md)

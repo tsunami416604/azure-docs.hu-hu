@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
 ms.openlocfilehash: 4622a8575d7b6a38226ee3a980c05f143c128356
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "68963538"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple-eszköz biztonságos telepítése és üzemeltetése
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png)
-![olvassa el a biztonsági](./media/storsimple-safety/IC740885.png) értesítés ikonját **, olvassa el a biztonsági és egészségvédelmi információkat**
+![Warning ikon ](./media/storsimple-safety/IC740879.png)
+ ![Read biztonsági figyelmeztetés ikon ](./media/storsimple-safety/IC740885.png) **OLVASÁSI biztonsági és egészségvédelmi információk**
 
 Olvassa el a cikkben szereplő összes biztonsági és egészségvédelmi információt, amely a Microsoft Azure StorSimple eszközre vonatkozik. A StorSimple-eszközzel szállított összes nyomtatott útmutató későbbi használatra megtartható. Az utasítások követésének és a megfelelő beállításának, használatának és kezelésének elmulasztása növelheti a súlyos sérülés vagy halál kockázatát, illetve az eszköz vagy az eszközök sérülését. Az [útmutató letölthető verziója](https://www.microsoft.com/download/details.aspx?id=44233) szintén elérhető.
 
@@ -35,18 +35,18 @@ Itt láthatja az ikonokat, amelyekkel megtekintheti a Microsoft Azure StorSimple
 
 | Ikon | Leírás |
 |:--- |:--- |
-| ![Veszélyforrás ikon](./media/storsimple-safety/IC740879.png) **veszélye!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
-| ![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
-| ![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png) figyelmeztetése |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
-| ![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
-| ![Elektromos áramütés ikon](./media/storsimple-safety/IC740882.png) áramütési **kockázat** |Magas feszültségű |
-| ![Nagy súly ikon](./media/storsimple-safety/IC740883.png) **nagy súlya** | |
-| ![Nincs felhasználó által szervizelhető rész](./media/storsimple-safety/IC740879.png) ikonja **nem rendelkezik felhasználó** által szervizelhető részekkel |A megfelelő képzés hiányában ne legyen hozzáférés. |
-| ![Biztonsági értesítés ikonjának beolvasása –](./media/storsimple-safety/IC740885.png)**első lépések** | |
-| ![Tipp kockázati ikon](./media/storsimple-safety/IC740886.png) **Tipp – kockázat** | |
+| ![Danger ikon ](./media/storsimple-safety/IC740879.png) **veszély!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. Ezt a jelet a legszélsőségesebb helyzetekre kell korlátozni. |
+| ![Warning ikon ](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – halált vagy súlyos sérülést eredményezhet. |
+| ![Warning ikon ](./media/storsimple-safety/IC740879.png) **Vigyázat!** |Olyan veszélyes helyzetet jelez, amely – ha nem kerül elkerülésre – kisebb vagy mérsékelt sérülést eredményezhet. |
+| ![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:** |A fontosnak tartott információkat jelöli, de nem kapcsolódik a veszélyforráshoz. |
+| ![Electrical áramütés ikon ](./media/storsimple-safety/IC740882.png) áramütés **veszélye** |Magas feszültségű |
+| ![Heavy súly ikon ](./media/storsimple-safety/IC740883.png) **nagy súly** | |
+| ![No a felhasználó által szervizelhető részek ikonja nem ](./media/storsimple-safety/IC740879.png) a **felhasználó által szervizelhető részek** |A megfelelő képzés hiányában ne legyen hozzáférés. |
+| ![Read biztonsági értesítés ikonja](./media/storsimple-safety/IC740885.png)**először olvassa el az összes utasítást** | |
+| ![Tip veszélyforrás ikon ](./media/storsimple-safety/IC740886.png) **Tipp veszélyessége** | |
 
 ## <a name="handling-precautions"></a>Óvintézkedések feldolgozása
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png) ![nagy súly ikon](./media/storsimple-safety/IC740883.png) **Figyelmeztetés!** 
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Heavy Weight ikon ](./media/storsimple-safety/IC740883.png) **Figyelmeztetés!** 
 
 A sérülés kockázatának csökkentése:
 
@@ -55,7 +55,7 @@ A sérülés kockázatának csökkentése:
 * Ne szüntesse meg a burkolatot az egység hátsó részén található energiagazdálkodási és hűtési modulok (PCMs) fogantyúi alapján. Ezeket nem a súlyozásra tervezték.
 
 ## <a name="connection-precautions"></a>A kapcsolatok óvintézkedései
-![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png) ![áramütés ikonja](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Electrical Shock ikon ](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
 
 A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 
@@ -65,7 +65,7 @@ A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 * Győződjön meg arról, hogy az energiaellátás mindig le van választva a PCM a zárt rendszerből való eltávolítása előtt.
 * Mivel a tápkábel csatlakoztatása a fő leválasztási eszköz, győződjön meg arról, hogy a szoftvercsatorna-egységek a berendezés közelében találhatók, és könnyen elérhetők.
 
-![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png) ![áramütés ikonja](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Electrical Shock ikon ](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
 
 Az elektromos kapcsolatok túlmelegedésének vagy a tűz kialakulásának valószínűsége:
 
@@ -74,7 +74,7 @@ Az elektromos kapcsolatok túlmelegedésének vagy a tűz kialakulásának való
 * A megfelelő biztonsági, kibocsátási és termikus követelményeknek való megfelelés érdekében a rendszer nem távolít el a mellékleteket, és az összes öblöt be kell tölteni a beépülő Modulos modulok vagy a meghajtó üresen.
 * Győződjön meg arról, hogy a berendezés a gyártó által megadott módon van használatban. Ha ezt a berendezést a gyártó által nem meghatározott módon használják, előfordulhat, hogy a berendezés által biztosított védelem nem megfelelő.
 
-![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:**
+![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:**
 
 A berendezések megfelelő működéséhez és a termékek károsodásának megakadályozásához:
 
@@ -85,7 +85,7 @@ A berendezések megfelelő működéséhez és a termékek károsodásának mega
 ## <a name="rack-system-precautions"></a>Állványrendszer-óvintézkedések
 A következő biztonsági követelményeket kell figyelembe venni, amikor csatlakoztatja az eszközt egy rack szekrényben.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png) ![tipp kockázati ikon](./media/storsimple-safety/IC740886.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Tip kockázati ikon ](./media/storsimple-safety/IC740886.png) **Figyelmeztetés!**
 
 Egy tippből származó sérülés valószínűségének csökkentése:
 
@@ -93,7 +93,7 @@ Egy tippből származó sérülés valószínűségének csökkentése:
 * Állvány betöltése esetén töltse ki az állványt az alulról felfelé, majd a felülről lefelé.
 * Ne csúsztassa el egyszerre egynél több bekerítést a rackből, hogy elkerülje a rackre való feltöltés veszélyét.
 
-![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png) ![áramütés ikonja](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Electrical Shock ikon ](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
 
 A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 
@@ -102,7 +102,7 @@ A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 * Az elektromos elosztó rendszer kialakításának figyelembe kell vennie a teljes, az összes energiaellátási szolgáltatásból származó összes beszivárgást az összes házban. Vegye figyelembe, hogy az egyes házakban az egyes tápegységek az 1,0 mA maximális 264, 60 Hz. A rack a "nagy SZIVÁRGÁSú ÁRAMmal" való címkézést igényelhet. A földi (föld) kapcsolat elengedhetetlen a szolgáltatás összekapcsolásához. "
 * Az állványnak, ha a házakkal van konfigurálva, meg kell felelnie az UL 60950-1 és az IEC 60950-1/EN 60950-1 biztonsági követelményeinek.
 
-![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:**
+![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:**
 
 A rack rendszer megfelelő hűtéséhez:
 
@@ -112,13 +112,13 @@ A rack rendszer megfelelő hűtéséhez:
 ## <a name="power-cooling-module-pcm-precautions"></a>Power hűtési modul (PCM) óvintézkedések
 Az eszköz két PCMs való működésre lett tervezve. Minden PCMs van egy tápegység és egy Kéttengelyes ventilátor. Kritikus feltétele esetén a rendszer lehetővé teszi egy energiaellátás meghibásodását, miközben folytatja a normál működést. A két PCMs (és így az energiaellátási szolgáltatásokat) mindig telepíteni kell. Egyetlen PCM nem biztosít redundáns teljesítményt. Ezért az is előfordulhat, hogy akár egy PCM meghibásodása állásidőt vagy adatvesztést eredményezhet.
 
-![Figyelmeztető ikon](./media/storsimple-safety/IC740879.png) ![áramütés ikonja](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) ![Electrical Shock ikon ](./media/storsimple-safety/IC740882.png) **Figyelmeztetés!**
 
 A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 
 * Ne távolítsa el a borítókat a PCM-ből. Áramütést jelent a belső áramütés. A PCM visszaküldéséhez és a csere megszerzéséhez [forduljon Microsoft ügyfélszolgálatahoz](storsimple-contact-microsoft-support.md).
 
-![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:**
+![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:**
 
 A berendezések megfelelő működéséhez és a termékek károsodásának megakadályozásához:
 
@@ -126,7 +126,7 @@ A berendezések megfelelő működéséhez és a termékek károsodásának mega
 * Ne távolítsa el a PCM-t, hacsak nem lehet azonnal telepíteni a cserét. A bekerítést nem szabad az összes modul nélkül üzemeltetni.
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>Elektrosztatikus kisülés (ESD) óvintézkedések
-![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:**
+![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:**
 
 Figyelje meg a következő ESD-vel kapcsolatos óvintézkedéseket.
 
@@ -138,7 +138,7 @@ Figyelje meg a következő ESD-vel kapcsolatos óvintézkedéseket.
 ## <a name="battery-disposal-precautions"></a>Akkumulátor-kivezetési óvintézkedések
 A tápegység egy speciális akkumulátort használ, amely az ideiglenes, rövid távú áramkimaradások során biztosítja a memória tartalmát. Az akkumulátor a PCM-ben van. Tartsa szem előtt az alábbi információkat az akkumulátorról.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!**
+![Warning ikon ](./media/storsimple-safety/IC740879.png) **Figyelmeztetés!**
 
 A rövidnadrág, tűz, robbanás, sérülés vagy halál kockázatának csökkentése:
 
@@ -146,13 +146,13 @@ A rövidnadrág, tűz, robbanás, sérülés vagy halál kockázatának csökken
 * A 60 Celsius-fok (140 fokos Fahrenheit) vagy az elégetése után ne szerelje szét, ne törje fel vagy melegítsük fel. Cserélje le a PCM akkumulátort csak a megadott akkumulátorra. Egy másik akkumulátor használata a tűz vagy a robbanás kockázatát jelenthetheti.
 * Ha ezek el vannak távolítva az áramellátásból, használja az akkumulátorok védelmi végpontját.
 
-![Értesítés ikonjának](./media/storsimple-safety/IC740881.png) **megjegyzése:**
+![Notice ikon ](./media/storsimple-safety/IC740881.png) **Figyelmeztetés:**
 
-Az akkumulátorok légi úton történő szállítása vagy egyéb módon történő átvitele esetén kövesse az IATA lítium akkumulátor-útmutató dokumentumát[https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Az akkumulátorok légi úton történő szállítása vagy egyéb módon történő átvitele esetén kövesse az IATA lítium akkumulátor-útmutató dokumentumát [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
 Miután áttekintette ezeket a biztonsági értesítéseket, a következő lépés az eszköz kicsomagolása, összekötése és csatlakoztatása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az 8100-es eszközökön válassza a [StorSimple 8100 eszköz telepítése](storsimple-8100-hardware-installation.md)lehetőséget.
 * Az 8600-es eszközökön válassza a [StorSimple 8600 eszköz telepítése](storsimple-8600-hardware-installation.md)lehetőséget.
 

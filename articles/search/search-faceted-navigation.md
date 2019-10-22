@@ -10,10 +10,10 @@ ms.date: 05/13/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 8e325abf1f58458d2fa035c8c8f081173efb0e65
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69649895"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
@@ -27,7 +27,7 @@ A sokoldalú navigáció megvalósítása különböző keresési technológiák
 
 -   Az alkalmazás által létrehozott lekérdezésekben a lekérdezésnek meg kell küldenie a *dimenzió lekérdezési paramétereit* , hogy lekérje a dokumentumhoz tartozó eredményhalmaz elérhető dimenzióinak értékeit.
 
--   A dokumentum-eredményhalmaz tényleges kivágásához az alkalmazásnak egy `$filter` kifejezést is alkalmaznia kell.
+-   A dokumentum-eredményhalmaz tényleges kivágásához az alkalmazásnak `$filter` kifejezést is alkalmaznia kell.
 
 Az alkalmazásfejlesztés során a lekérdezéseket alkotó kód megírása a munka nagy részét képezi. A szolgáltatás számos olyan alkalmazási viselkedést is tartalmaz, amelyeket a sokoldalú navigálástól elvár, beleértve a tartományok definiálásának és a dimenziók eredményeinek beszerzésének beépített támogatását is. A szolgáltatás olyan ésszerű alapértékeket is tartalmaz, amelyek segítenek elkerülni a nem nehézkes navigációs struktúrákat. 
 
@@ -36,9 +36,9 @@ Ez a cikk a feladatok keresési portálját használja példaként. A példa ASP
 
 -   Tekintse meg és tesztelje a munkahelyi bemutatót a [Azure Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
 
--   Töltse le a kódot az [Azure-Samples repóból](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)a githubon.
+-   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 Ha még nem ismeri a fejlesztést, a legjobb módszer a sokoldalú navigálásra, hogy a saját irányított keresés lehetőségeit jelenítse meg. Az előre meghatározott szűrők alapján részletezett keresési élményt nyújt, amely a keresési eredmények gyors, pont-és kattintásos műveletekkel való szűkítéséhez használható. 
 
 ### <a name="interaction-model"></a>Interakciós modell
@@ -47,19 +47,19 @@ A sokoldalú Navigálás keresési felülete iterációs megoldás, ezért kezdj
 
 A kiindulási pont egy olyan alkalmazási oldal, amely sokoldalú navigálást tesz lehetővé, jellemzően a periférián helyezi el. A sokoldalú Navigálás gyakran faszerkezetes, az egyes értékekhez tartozó jelölőnégyzetekkel vagy a szövegre kattintva. 
 
-1. Azure Search eljuttatott lekérdezés megadja a részletes navigációs struktúrát egy vagy több aspektus lekérdezési paraméter használatával. Előfordulhat például, hogy a lekérdezés tartalmazhat `facet=Rating`, például egy `:values` vagy `:sort` lehetőséggel, hogy tovább pontosítsa a bemutatót.
+1. Azure Search eljuttatott lekérdezés megadja a részletes navigációs struktúrát egy vagy több aspektus lekérdezési paraméter használatával. Előfordulhat például, hogy a lekérdezés `facet=Rating` tartalmaz, például `:values` vagy `:sort` lehetőséggel, hogy tovább pontosítsa a bemutatót.
 2. A megjelenítési réteg olyan keresési oldalt jelenít meg, amely sokoldalú navigálást tesz lehetővé a kérésben megadott aspektusok használatával.
 3. A minősítést tartalmazó, sokoldalú navigációs struktúra esetén a "4" gombra kattintva jelezheti, hogy csak a 4-es vagy magasabb minősítésű termékek jelennek meg. 
-4. Válaszként az alkalmazás egy lekérdezést küld, amely tartalmazza a következőket:`$filter=Rating ge 4` 
+4. Válaszként az alkalmazás olyan lekérdezést küld, amely tartalmazza a `$filter=Rating ge 4` 
 5. A megjelenítési réteg frissíti az oldalt, amely egy csökkentett eredményhalmazt mutat, amely csak azokat az elemeket tartalmazza, amelyek megfelelnek az új feltételeknek (ebben az esetben a 4. és az összes termék).
 
 A dimenzió egy lekérdezési paraméter, de nem tévesztendő össze a lekérdezési bevitelsel. A lekérdezésben soha nem használjuk kiválasztási feltételként. Ehelyett a dimenzió lekérdezési paramétereit a válaszban visszakapott navigációs struktúra bemenetként kell megtekintenie. Az egyes megadott dimenziós lekérdezési paraméterek esetében Azure Search kiértékeli, hogy hány dokumentum szerepel a részleges eredményekben az egyes dimenziós értékeknél.
 
-Figyelje meg `$filter` a 4. lépését. A szűrő a sokoldalú Navigálás fontos aspektusa. Bár a dimenziók és a szűrők függetlenek az API-ban, mindkét esetben a kívánt élményt kell biztosítania. 
+Figyelje meg a 4. lépésben szereplő `$filter`. A szűrő a sokoldalú Navigálás fontos aspektusa. Bár a dimenziók és a szűrők függetlenek az API-ban, mindkét esetben a kívánt élményt kell biztosítania. 
 
 ### <a name="app-design-pattern"></a>Alkalmazás kialakítási mintája
 
-Az alkalmazás kódjában a minta a dimenzió lekérdezési paramétereit használja a csiszolt navigációs struktúra, valamint a dimenziós eredmények, valamint egy $filter kifejezés visszaadására.  A szűrési kifejezés kezeli a Click eseményt a Face értéken. Gondolja át `$filter` , hogy a kifejezés a megjelenítési rétegbe visszaadott keresési eredmények tényleges vágása mögötti kód. A színek aspektusa, a vörös színre való kattintás olyan `$filter` kifejezésen keresztül történik, amely csak a piros színnel jelölt elemeket jelöli ki. 
+Az alkalmazás kódjában a minta a dimenzió lekérdezési paramétereit használja a csiszolt navigációs struktúra, valamint a dimenziós eredmények, valamint egy $filter kifejezés visszaadására.  A szűrési kifejezés kezeli a Click eseményt a Face értéken. Gondolja át a `$filter` kifejezést, mint a megjelenítési rétegbe visszaadott keresési eredmények tényleges vágása mögötti kódot. A színek aspektusa a vörös színre való kattintás egy `$filter` kifejezésen keresztül történik, amely csak a piros színnel jelölt elemeket jelöli ki. 
 
 ### <a name="query-basics"></a>Lekérdezés alapjai
 
@@ -67,11 +67,11 @@ Azure Search a kérelem egy vagy több lekérdezési paraméterrel van megadva (
 
 A nem releváns találatok kiszűrésének lehetősége a következő kifejezések egyikén vagy mindkettőn keresztül érhető el:
 
--   **search=**  
-    A paraméter értéke képezi a keresési kifejezést. Lehet, hogy egyetlen szövegrész vagy egy összetett keresési kifejezés, amely több kifejezést és operátort is tartalmaz. A kiszolgálón a teljes szöveges kereséshez keresési kifejezés használható, kereshető mezők lekérdezése az indexben a megfelelő feltételekhez, az eredmények rangsorban való visszaadása. Ha NULL értékűre van állítva `search` , a lekérdezés végrehajtása a teljes indexnél (azaz `search=*`) történik. Ebben az esetben a lekérdezés más elemei `$filter` , például egy vagy pontozási profil a visszaadott `($filter`dokumentumokat érintő elsődleges tényezők, és milyen sorrendben (`scoringProfile` vagy `$orderby`).
+-   **Keresés =**  
+    A paraméter értéke képezi a keresési kifejezést. Lehet, hogy egyetlen szövegrész vagy egy összetett keresési kifejezés, amely több kifejezést és operátort is tartalmaz. A kiszolgálón a teljes szöveges kereséshez keresési kifejezés használható, kereshető mezők lekérdezése az indexben a megfelelő feltételekhez, az eredmények rangsorban való visszaadása. Ha a `search` NULL értékre állítja, a lekérdezés végrehajtása a teljes index felett van (azaz `search=*`). Ebben az esetben a lekérdezés más elemei, például egy `$filter` vagy pontozási profil, azok az elsődleges tényezők, amelyek hatással vannak a dokumentumok `($filter`ére) és milyen sorrendben (`scoringProfile` vagy `$orderby`).
 
--   **$filter=**  
-    A szűrők hatékony mechanizmust biztosítanak a keresési eredmények méretének korlátozására az adott dokumentum attribútumainak értékei alapján. A `$filter` kiértékelése először történik, majd az egyes értékekhez tartozó, a rendelkezésre álló értékeket és a hozzájuk tartozó számadatokat generáló aspektusi logika.
+-   **$filter =**  
+    A szűrők hatékony mechanizmust biztosítanak a keresési eredmények méretének korlátozására az adott dokumentum attribútumainak értékei alapján. Először a rendszer kiértékeli a `$filter`, majd az egyes értékekhez tartozó, a rendelkezésre álló értékeket és a hozzájuk tartozó számokat generáló aspektusokat.
 
 Az összetett keresési kifejezések csökkentik a lekérdezés teljesítményét. Ha lehetséges, használjon jól felépített szűrési kifejezéseket a pontosság növeléséhez és a lekérdezési teljesítmény javításához.
 
@@ -91,13 +91,13 @@ A sokoldalú navigációt tartalmazó alkalmazásokban ügyeljen arra, hogy az e
 ## <a name="build-a-faceted-navigation-app"></a>Sokoldalú navigációs alkalmazás készítése
 A keresési kérést felépítő alkalmazás kódjában Azure Searchokkal is megvalósítható a navigációs felület. A sokoldalú Navigálás a séma azon elemein alapul, amelyeket a korábban definiált.
 
-A keresési indexben előre definiált `Facetable [true|false]` index attribútum a kiválasztott mezőkre van beállítva, hogy az engedélyezze vagy tiltsa le a használatukat egy sokoldalú navigációs struktúrában. A `"Facetable" = true`nélkül nem használható mező a dimenziós navigálásban.
+A keresési indexben előre megadott érték a `Facetable [true|false]` index attribútum, amely a kiválasztott mezőkön állítható be, és lehetővé teszi a használatuk kikapcsolását egy sokoldalú navigációs struktúrában. @No__t_0 nélkül nem használható mező a dimenziós navigálásban.
 
 A kódban a megjelenítési réteg biztosítja a felhasználói élményt. Tartalmaznia kell a csiszolt navigációs elemek, például a felirat, az értékek, a jelölőnégyzetek és a darabszám alkotóelemeit. A Azure Search REST API a platform agnosztikus, ezért a kívánt nyelvet és platformot kell használnia. A lényeg a növekményes frissítést támogató felhasználói felületi elemek belefoglalása, a felhasználói felület frissített állapota, mivel minden további aspektus ki van választva. 
 
-A lekérdezés időpontjában az alkalmazás kódja létrehoz egy kérelmet, `facet=[string]`amely tartalmaz egy olyan kérési paramétert, amely a mezőt a dimenzióhoz adja. Egy lekérdezésnek több aspektusa is lehet, például `&facet=color&facet=category&facet=rating`a, amelyek mindegyike egy jel (&) karakterrel elválasztható.
+A lekérdezési időpontnál az alkalmazás kódja olyan kérést hoz létre, amely tartalmazza a `facet=[string]`t, egy olyan kérési paramétert, amely a mező számára a dimenziót biztosítja. Egy lekérdezés több dimenzióval is rendelkezhet, például `&facet=color&facet=category&facet=rating`, amelyek mindegyike egy jellel (&) karakterrel elválasztható.
 
-Az alkalmazás kódjának meg kell `$filter` adnia egy kifejezést is, amely kezeli a kattintási eseményeket a sokoldalú navigálásban. A `$filter` csökkenti a keresési eredményeket, a dimenzió értékének szűrési feltételként való használatával.
+Az alkalmazás kódjának meg kell adnia egy `$filter` kifejezést is, amely a kattintásos navigációban lévő eseményeket kezeli. A `$filter` csökkenti a keresési eredményeket, a dimenzió értékének a szűrési feltételként való használatával.
 
 Azure Search a keresési eredményeket adja vissza egy vagy több megadott kifejezés alapján, valamint a sokoldalú navigációs szerkezet frissítéseivel. Azure Search a sokoldalú Navigálás egy egyszintű kialakítás, amelynek a dimenzió értékeit, valamint az egyes eredmények eredményének számát mutatja.
 
@@ -106,10 +106,10 @@ A következő szakaszokban alaposabban megvizsgáljuk, hogyan hozhat létre egye
 <a name="buildindex"></a>
 
 ## <a name="build-the-index"></a>Az index összeállítása
-A Tagolás az index ezen index attribútumán keresztül, a mező szerint mező alapján van engedélyezve: `"Facetable": true`.  
-Alapértelmezés szerint az összes olyan mezőtípus, amely felhasználható a `Facetable` sokoldalú navigálásban. Ilyen típusú mezők például `Edm.String`a `Edm.DateTimeOffset`következők:, és az összes numerikus mezőtípus (lényegében az összes mezőtípus látható, kivéve `Edm.GeographyPoint`a nem használható, sokoldalú navigálásban). 
+Az adatbontás engedélyezve van az indexben, a következő index attribútumon keresztül: `"Facetable": true`.  
+Alapértelmezés szerint az összes olyan mezőtípus, amely felhasználható a sokoldalú navigálásban, `Facetable`. Ilyen típusú mezők például a következők: `Edm.String`, `Edm.DateTimeOffset` és az összes numerikus mezőtípus (lényegében az összes mezőtípus látható, kivéve a `Edm.GeographyPoint`, amely nem használható sokoldalú navigáláskor). 
 
-Az indexek létrehozásakor az ajánlott eljárás a sokoldalú navigáláshoz, ha explicit módon kikapcsolja azokat a mezőket, amelyeket soha nem szabad dimenzióként használni.  Az egyedi értékek (például azonosítók vagy Terméknév) karakterlánc-mezőinek beállításával `"Facetable": false` megakadályozható, hogy a véletlen (és nem hatékony) használatba kerüljön a csiszolatlan navigálás. Ha nincs szüksége a méretezésre, nem kell megtartania az index méretét, és általában javítja a teljesítményt.
+Az indexek létrehozásakor az ajánlott eljárás a sokoldalú navigáláshoz, ha explicit módon kikapcsolja azokat a mezőket, amelyeket soha nem szabad dimenzióként használni.  Az egyedi értékek, például az AZONOSÍTÓk vagy a terméknév karakterlánc-mezőinek beállítását úgy kell beállítani, hogy a `"Facetable": false` a véletlen (és nem hatékony) használatát a sokoldalú navigálásban. Ha nincs szüksége a méretezésre, nem kell megtartania az index méretét, és általában javítja a teljesítményt.
 
 A következő része a feladatütemezés bemutató minta alkalmazásának sémája, néhány attribútum kivágása a méret csökkentése érdekében:
 
@@ -139,10 +139,10 @@ A következő része a feladatütemezés bemutató minta alkalmazásának sémá
 }
 ```
 
-Ahogy a minta sémában látható, `Facetable` ki van kapcsolva a sztring mezőkhöz, amelyek nem használhatók dimenzióként, például azonosító értékként. Ha nincs szüksége a méretezésre, nem kell megtartania az index méretét, és általában javítja a teljesítményt.
+Ahogy a minta sémában látható, `Facetable` ki van kapcsolva olyan karakterlánc-mezőkhöz, amelyek nem használhatók dimenzióként, például azonosító értékként. Ha nincs szüksége a méretezésre, nem kell megtartania az index méretét, és általában javítja a teljesítményt.
 
 > [!TIP]
-> Ajánlott eljárásként adja meg az összes mező index-attribútumának teljes készletét. Bár `Facetable` a alapértelmezés szerint majdnem az összes mezőhöz be van kapcsolva, az egyes attribútumok szándékosan való beállítása segíthet az egyes sémák megdöntésének következményein. 
+> Ajánlott eljárásként adja meg az összes mező index-attribútumának teljes készletét. Bár a `Facetable` alapértelmezés szerint majdnem az összes mezőhöz be van kapcsolva, az egyes attribútumok szándékosan beállításával az egyes séma-döntések következményei is segítenek. 
 
 <a name="checkdata"></a>
 
@@ -169,7 +169,7 @@ A sokoldalú navigáció szempontjából a web vagy az alkalmazás oldal megjele
 
 A webalkalmazások esetében az AJAX általában a bemutató rétegben használatos, mivel lehetővé teszi a növekményes módosítások frissítését. Használhatja a ASP.NET MVC-t vagy bármely más vizualizációs platformot is, amely képes HTTP-n keresztül kapcsolódni egy Azure Search szolgáltatáshoz. A jelen cikk során hivatkozott minta alkalmazás – a **Azure Search Job Portal bemutatója** – egy ASP.net MVC-alkalmazás.
 
-A példában a csiszolt navigáció a keresési eredmények oldalon van beépítve. A minta alkalmazás `index.cshtml` fájlja alapján a következő példa a statikus HTML-struktúra megjelenítését mutatja be a keresési eredmények oldalon. A metszetek listája dinamikusan lett létrehozva vagy újraépítve, amikor beküld egy keresési kifejezést, vagy kijelöl vagy töröl egy dimenziót.
+A példában a csiszolt navigáció a keresési eredmények oldalon van beépítve. Az alábbi példa a minta alkalmazás `index.cshtml` fájljában a statikus HTML-struktúrát jeleníti meg a keresési eredmények lapon a csiszolatlan Navigálás megjelenítéséhez. A metszetek listája dinamikusan lett létrehozva vagy újraépítve, amikor beküld egy keresési kifejezést, vagy kijelöl vagy töröl egy dimenziót.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -196,7 +196,7 @@ A példában a csiszolt navigáció a keresési eredmények oldalon van beépít
 </div>
 ```
 
-Az `index.cshtml` oldal következő kódrészlete dinamikusan létrehozza a HTML-t az első aspektus, az üzleti cím megjelenítéséhez. A hasonló függvények dinamikusan felépítik a HTML-ket a többi aspektushoz. Az egyes dimenziók címkével és számmal rendelkeznek, amely megjeleníti az adott aspektus eredményéhez tartozó elemek számát.
+A `index.cshtml` oldal következő kódrészlete dinamikusan létrehozza a HTML-t az első aspektus, az üzleti cím megjelenítéséhez. A hasonló függvények dinamikusan felépítik a HTML-ket a többi aspektushoz. Az egyes dimenziók címkével és számmal rendelkeznek, amely megjeleníti az adott aspektus eredményéhez tartozó elemek számát.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -210,7 +210,7 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> A keresési eredmények oldal tervezésekor ne felejtsen el felvenni egy mechanizmust a dimenziók törléséhez. Ha jelölőnégyzeteket ad hozzá, egyszerűen megtekintheti a szűrők törlésének módját. Más elrendezésekhez szükség lehet egy morzsa-mintára vagy egy másik kreatív megközelítésre. Például a feladatok keresési portál minta alkalmazásban kattintson a `[X]` kijelölt aspektus után lehetőségre a dimenzió törléséhez.
+> A keresési eredmények oldal tervezésekor ne felejtsen el felvenni egy mechanizmust a dimenziók törléséhez. Ha jelölőnégyzeteket ad hozzá, egyszerűen megtekintheti a szűrők törlésének módját. Más elrendezésekhez szükség lehet egy morzsa-mintára vagy egy másik kreatív megközelítésre. A feladatok keresési portál minta alkalmazásban például rákattinthat a `[X]`ra, miután egy kiválasztott aspektus törli a dimenziót.
 
 <a name="buildquery"></a>
 
@@ -219,7 +219,7 @@ A lekérdezések létrehozásához írt kódnak meg kell adnia egy érvényes le
 
 Figyelje meg, hogy az aspektusok szerves részét képezik ebben a minta alkalmazásban. A Job Portal-bemutató keresési felülete a navigációs és a szűrési feladatok köré épül. Az oldalon a sokoldalú Navigálás Kiemelt elhelyezése mutatja be a jelentőségét. 
 
-Egy példa gyakran jó kiindulópont. A fájlból származó következő példa egy `JobsSearch.cs` olyan kérést hoz létre, amely az üzleti cím, a hely, a feladás típusa és a minimális fizetés alapján létrehoz egy dimenziós navigálást. 
+Egy példa gyakran jó kiindulópont. A `JobsSearch.cs` fájlból származó következő példa olyan kérést hoz létre, amely az üzleti cím, a hely, a feladás típusa és a minimális fizetés alapján létrehoz egy dimenziós navigálást. 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -230,11 +230,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Egy dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól `count:<integer>`függően további paramétert adhat meg a vesszővel tagolt lista `interval:<integer>`, `sort:<>`amely a következőket tartalmazza: `values:<list>`,, és. A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
+A dimenzióérték-lekérdezési paraméter egy mezőre van beállítva, és az adattípustól függően további paramétert adhat meg a vesszővel tagolt lista, amely tartalmazza `count:<integer>`, `sort:<>`, `interval:<integer>` és `values:<list>`. A tartományok beállításakor az értékek listája a numerikus adatok esetében támogatott. A használat részleteiért tekintse meg a [dokumentumok keresése (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) című témakört.
 
-Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket tesz elérhetővé, mint a *színek, a gyártók és a különböző típusú kerékpárok típusai?* . A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?* . Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza `$filter=Color eq ‘Red’`a-t.
+Az egyes aspektusokkal együtt az alkalmazás által létrehozott kérelemnek olyan szűrőket is kell kiépítenie, amelyekkel szűkítheti a jelölt dokumentumok készletét egy adott dimenzió érték kiválasztása alapján. A bike Store-ban a sokoldalú Navigálás olyan kérdéseket *tesz elérhetővé, mint a színek, a gyártók és a különböző típusú kerékpárok típusai?* . A szűrés olyan kérdésekre ad választ, mint a *pontos kerékpárok piros, Mountain Bikes, ebben az árakban?* . Ha a "vörös" gombra kattint, hogy csak a vörös termékek jelenjenek meg, az alkalmazás által küldött következő lekérdezés tartalmazza a `$filter=Color eq ‘Red’`.
 
-Az `JobsSearch.cs` oldal következő kódrészlete hozzáadja a kiválasztott üzleti címet a szűrőhöz, ha az üzleti cím dimenzióból kiválaszt egy értéket.
+A `JobsSearch.cs` oldal következő kódrészlete hozzáadja a kiválasztott üzleti címet a szűrőhöz, ha az üzleti cím dimenzióból választ ki egy értéket.
 
 ```cs
 if (businessTitleFacet != "")
@@ -248,7 +248,7 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Indexelési tippek
 **Az indexelés hatékonyságának növelése, ha nem használ keresőmezőt**
 
-Ha az alkalmazás csak a sokoldalú navigációt használja (azaz nincs keresőmező), akkor a mezőt `searchable=false`megjelölheti úgy, `facetable=true` hogy egy kompakt indexet hozzon létre. Az indexelés továbbá csak az egész dimenziós értékeken fordul elő, a többszavas értékek összetevőinek nem megfelelő szövegének vagy indexelésének megadásával.
+Ha az alkalmazás kizárólag csiszolt navigációt használ (azaz nincs keresőmező), akkor a mezőt `searchable=false`ként jelölheti meg, `facetable=true` a tömörítési index létrehozásához. Az indexelés továbbá csak az egész dimenziós értékeken fordul elő, a többszavas értékek összetevőinek nem megfelelő szövegének vagy indexelésének megadásával.
 
 **Annak meghatározása, hogy mely mezők használhatók dimenzióként**
 
@@ -256,16 +256,16 @@ Ne felejtse el, hogy az index sémája határozza meg, hogy mely mezők használ
 
 Az egyes címkék alatt megjelenő értékeket az indexből kéri le a rendszer. Ha például a dimenzió mező *színe*, a további szűréshez elérhető értékek az adott mezőhöz tartozó értékek: vörös, fekete és így tovább.
 
-Csak numerikus és DateTime érték esetén explicit módon adhat meg értékeket a dimenzió mezőben (például `facet=Rating,values:1|2|3|4|5`:). Ezeknél a típusú mezőknél az értékek listája leegyszerűsítheti a dimenziók eredményeinek folytonos tartományba való elkülönítését (a numerikus értékek vagy időszakok alapján megadható tartományok). 
+A numerikus és a DateTime érték esetén explicit módon megadhatja az értékeket a dimenzió mezőben (például `facet=Rating,values:1|2|3|4|5`). Ezeknél a típusú mezőknél az értékek listája leegyszerűsítheti a dimenziók eredményeinek folytonos tartományba való elkülönítését (a numerikus értékek vagy időszakok alapján megadható tartományok). 
 
 **Alapértelmezés szerint csak egy szinttel rendelkező navigáció lehet** 
 
-Ahogy azt említettük, nincs közvetlen támogatás az aspektusok hierarchiában való beágyazásához. Alapértelmezés szerint a Azure Search csiszolatlan Navigálás csak egy szintű szűrőt támogat. A megkerülő megoldások azonban léteznek. Hierarchiában egy belépési ponttal is kódolhat `Collection(Edm.String)` hierarchikus dimenziós struktúrát. Ennek a megkerülő megoldásnak a megvalósítása meghaladja a jelen cikk hatókörét. 
+Ahogy azt említettük, nincs közvetlen támogatás az aspektusok hierarchiában való beágyazásához. Alapértelmezés szerint a Azure Search csiszolatlan Navigálás csak egy szintű szűrőt támogat. A megkerülő megoldások azonban léteznek. Hierarchikus dimenziós struktúrát is használhat egy `Collection(Edm.String)` egyetlen belépési ponttal a hierarchiában. Ennek a megkerülő megoldásnak a megvalósítása meghaladja a jelen cikk hatókörét. 
 
 ### <a name="querying-tips"></a>Tippek lekérdezése
 **Mezők érvényesítése**
 
-Ha a dimenziók listáját dinamikusan hozza létre a nem megbízható felhasználói bevitel alapján, ellenőrizze, hogy érvényesek-e a csiszolt mezők nevei. Az URL-címek kiépítésekor a .net-ben `Uri.EscapeDataString()` vagy a megfelelő platformon is megadhatja a neveket.
+Ha a dimenziók listáját dinamikusan hozza létre a nem megbízható felhasználói bevitel alapján, ellenőrizze, hogy érvényesek-e a csiszolt mezők nevei. Vagy az URL-címek kiépítésekor a .NET-ben lévő `Uri.EscapeDataString()` vagy a megfelelő platformon megjelenő nevek kiválasztásával.
 
 ### <a name="filtering-tips"></a>Szűrési tippek
 **A keresési pontosság fokozása szűrőkkel**
@@ -282,7 +282,7 @@ A részletes részletezés során általában csak olyan dokumentumokat szeretne
 
 **Aspektusok eredményeinek további szűrőkkel való kivágása**
 
-A dimenziós eredmények olyan keresési eredményekben található dokumentumok, amelyek megfelelnek egy aspektus kifejezésének. A következő példában a *felhőalapú számítástechnika*keresési eredményeiben a 254-es elemek *belső specifikációval* is rendelkeznek, mint a tartalom típusa. Az elemek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel mindkét szűrő feltételeinek, akkor a rendszer minden egyesnek számít. Ez az ismétlődés akkor lehetséges, ha a `Collection(Edm.String)` mezőkre van szükség, amelyek gyakran a dokumentumok címkézésének megvalósítására használatosak.
+A dimenziós eredmények olyan keresési eredményekben található dokumentumok, amelyek megfelelnek egy aspektus kifejezésének. A következő példában a *felhőalapú számítástechnika*keresési eredményeiben a 254-es elemek *belső specifikációval* is rendelkeznek, mint a tartalom típusa. Az elemek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel mindkét szűrő feltételeinek, akkor a rendszer minden egyesnek számít. Ez az ismétlődés akkor lehetséges, ha `Collection(Edm.String)` mezőket használ, amelyek gyakran a dokumentumok címkézésének megvalósítására használatosak.
 
         Search term: "cloud computing"
         Content type
@@ -297,23 +297,23 @@ A dimenziós eredmények olyan keresési eredményekben található dokumentumok
 
 A navigációs fa minden egyes csiszolt mezőjénél van egy alapértelmezett korlát 10 értéknél. Ez az alapértelmezett beállítás a navigációs struktúrákra vonatkozik, mivel az értékek listáját kezelhető méretre tartja. Az alapértelmezett érték felülbírálásához rendeljen hozzá egy értéket.
 
-* `&facet=city,count:5`azt határozza meg, hogy csak a legfelső rangsorolt eredményekben található első öt város lesz visszaadva. Vegyünk példaként egy "repülőtér" keresési kifejezéssel és 32-es egyezéssel rendelkező mintát. Ha a lekérdezés azt `&facet=city,count:5`adja meg, csak a keresési eredményekben a legtöbb dokumentumot tartalmazó első öt egyedi város szerepel a dimenzió eredményei között.
+* `&facet=city,count:5` azt adja meg, hogy a rendszer csak a legfelső rangsorolt eredményekben található első öt várost adja vissza dimenziós eredményként. Vegyünk példaként egy "repülőtér" keresési kifejezéssel és 32-es egyezéssel rendelkező mintát. Ha a lekérdezés `&facet=city,count:5`t határoz meg, akkor a rendszer csak az első öt egyedi várost tartalmazza a keresési eredményekben található legtöbb dokumentummal együtt.
 
 Figyelje meg, hogy különbséget tesz a dimenzió eredményei és a keresési eredmények között. A keresési eredmények az összes olyan dokumentum, amely megfelel a lekérdezésnek. A dimenziók eredményei az egyes dimenziók értékeinek felelnek meg. A példában a keresési eredmények közé tartoznak azok a városok neve, amelyek nem szerepelnek a Face besorolási listán (5 a példánkban). A sokoldalú Navigálás során kiszűrt eredmények láthatóvá válnak, ha törli a dimenziókat, vagy más aspektusokat választ a város mellett. 
 
 > [!NOTE]
-> Megbeszélheti, `count` ha több típus is zavaró lehet. Az alábbi táblázat röviden összefoglalja, hogyan használják a kifejezést Azure Search API-ban, a mintakódben és a dokumentációban. 
+> @No__t_0 megvitatása, ha egynél több típus is zavaró lehet. Az alábbi táblázat röviden összefoglalja, hogyan használják a kifejezést Azure Search API-ban, a mintakódben és a dokumentációban. 
 
 * `@colorFacet.count`<br/>
   A megjelenítési kódban a Faces paramétert kell látni a dimenzióban, amelyet a rendszer a Faces eredmények számának megjelenítésére használ. A dimenzió eredményei között a Count (dimenzió) érték jelzi, hogy hány dokumentum felel meg az adott aspektusnak vagy tartománynak.
 * `&facet=City,count:12`<br/>
-  Egy dimenzióérték-lekérdezésben megadhatja a Count értéket.  Az alapértelmezett érték 10, de magasabb vagy alacsonyabb értéket is beállíthat. A `count:12` beállítás az első 12 egyezést jeleníti meg a dimenzió eredményei között a dokumentumok száma alapján.
-* "`@odata.count`"<br/>
+  Egy dimenzióérték-lekérdezésben megadhatja a Count értéket.  Az alapértelmezett érték 10, de magasabb vagy alacsonyabb értéket is beállíthat. A beállítás `count:12` beolvassa az első 12 találatot a dimenzió eredményei között a dokumentumok száma szerint.
+* „`@odata.count`”<br/>
   A lekérdezési válaszban ez az érték a keresési eredményekben szereplő egyező elemek számát jelzi. Átlagosan ez nagyobb, mint az összes aspektusi eredmény összesített összege, a keresési kifejezésnek megfelelő elemek jelenléte miatt, de a dimenzió értéke nem egyezik.
 
 **Számok beolvasása a dimenzió eredményei között**
 
-Ha szűrőket ad hozzá egy sokoldalú lekérdezéshez, érdemes megtartania a Face utasítást (például `facet=Rating&$filter=Rating ge 4`:). Technikailag, dimenzió = minősítés nem szükséges, de a megtartás után a 4. vagy magasabb minősítések dimenzió értékeinek számát adja vissza. Ha például a "4" elemre kattint, és a lekérdezés a "4" értéknél nagyobb vagy egyenlő szűrőt tartalmaz, a rendszer az egyes 4 és annál nagyobb minősítések számát adja vissza.  
+Ha szűrőket ad hozzá egy sokoldalú lekérdezéshez, érdemes megtartania a Face utasítást (például `facet=Rating&$filter=Rating ge 4`). Technikailag, dimenzió = minősítés nem szükséges, de a megtartás után a 4. vagy magasabb minősítések dimenzió értékeinek számát adja vissza. Ha például a "4" elemre kattint, és a lekérdezés a "4" értéknél nagyobb vagy egyenlő szűrőt tartalmaz, a rendszer az egyes 4 és annál nagyobb minősítések számát adja vissza.  
 
 **Győződjön meg róla, hogy pontos dimenziók száma**
 
@@ -321,7 +321,7 @@ Bizonyos körülmények között előfordulhat, hogy a dimenziók száma nem egy
 
 A metszeti architektúra miatt pontatlan lehet a dimenziók száma. Minden keresési indexnek több szegmense van, és az egyes szegmensek az első N aspektust jelentik a dokumentumok száma alapján, amelyet aztán egyetlen eredménybe egyesít. Ha egyes szegmensek több egyező értékkel rendelkeznek, míg mások kevesebbet tartalmaznak, előfordulhat, hogy bizonyos aspektusok hiányoznak, vagy az eredmények között szerepelnek.
 
-Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, akkor a darabszámot mesterségesen megnöveli:\<a szám > nagy számra, hogy kikényszerítse az egyes szegmensek teljes jelentéskészítését. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
+Bár ez a viselkedés bármikor megváltozhat, ha ez a viselkedés még ma tapasztalható, a darabszám mesterséges feltöltésével: \<number > nagy számra, hogy az egyes szegmensek teljes jelentéskészítését kikényszerítse. Ha a Count érték értéke: nagyobb vagy egyenlő, mint a mezőben szereplő egyedi értékek száma, akkor a pontos eredmények garantáltak. Ha azonban a dokumentumok száma magas, akkor teljesítménybeli szankció van, ezért ezt a beállítást megfontoltan kell használni.
 
 ### <a name="user-interface-tips"></a>Felhasználói felülettel kapcsolatos tippek
 **Címkék hozzáadása az egyes mezőkhöz a dimenziós navigációban**
@@ -335,11 +335,11 @@ Az értékek tartományán alapuló aspektus egy gyakori keresési alkalmazásra
 
 Azure Search egyszerűsíti a tartomány-kialakítást azáltal, hogy két módszert biztosít a különböző számítási felépítéshez. Mindkét módszer esetében Azure Search létrehozza a megfelelő tartományokat a megadott bemenetek alapján. Ha például 10 | 20 | 30 tartomány értéket ad meg, akkor a automatikusan 0-10, 10-20, 20-30 tartományt hoz létre. Az alkalmazás opcionálisan eltávolíthatja az összes olyan intervallumot, amely üres. 
 
-**1. módszer: Az intervallum paraméter használata**  
-Az $10-es számú érték megadásához a következőket kell megadnia:`&facet=price,interval:10`
+**1. módszer: az intervallum paraméter használata**  
+Az $10-es növekmények értékének megadásához adja meg a következőt: `&facet=price,interval:10`
 
-**2. módszer: Értékek listájának használata**  
-Numerikus adatok esetében az értékek listáját használhatja.  Vegye fontolóra egy `listPrice` mező dimenzióérték-tartományát, amely a következőképpen jelenik meg:
+**2. módszer: értéklista használata**  
+Numerikus adatok esetében az értékek listáját használhatja.  Vegye figyelembe a `listPrice` mezőhöz tartozó dimenzió tartományát, amely a következőképpen jelenik meg:
 
   ![Sample Values lista](media/search-faceted-navigation/Facet-5-Prices.PNG "Sample Values lista")
 
@@ -350,7 +350,7 @@ Ha meg szeretné adni az előző képernyőképen látható egyik dimenziót, ha
 Az egyes tartományok kiindulási pontként, a listában szereplő értékekkel és végpontként, majd az előző tartományból kivágással, különálló időközök létrehozásához lettek létrehozva. Azure Search ezeket a dolgokat a csiszolatlan Navigálás részeként. Az egyes intervallumok strukturálásához nem kell kódot írnia.
 
 ### <a name="build-a-filter-for-a-range"></a>Szűrő létrehozása tartományhoz
-A dokumentumok a kiválasztott tartomány alapján történő szűréséhez használhatja a `"ge"` és `"lt"` a Filter operátort egy kétrészes kifejezésben, amely meghatározza a tartomány végpontját. Ha például egy `listPrice` mezőhöz a 10-25 tartományt választja, a szűrő a következő lesz `$filter=listPrice ge 10 and listPrice lt 25`:. A mintakód **priceFrom** és **priceTo** paramétereket használ a végpontok beállításához. 
+A dokumentumok a kiválasztott tartomány alapján történő szűréséhez használhatja a `"ge"` és `"lt"` szűrési operátorokat egy kétrészes kifejezésben, amely meghatározza a tartomány végpontját. Ha például az 10-25 tartományt választja egy `listPrice` mezőhöz, a szűrő `$filter=listPrice ge 10 and listPrice lt 25`. A mintakód **priceFrom** és **priceTo** paramétereket használ a végpontok beállításához. 
 
   ![Lekérdezés számos értékhez](media/search-faceted-navigation/Facet-6-buildfilter.PNG "Lekérdezés számos értékhez")
 
@@ -368,16 +368,16 @@ A szűrési példákat a [OData kifejezés szintaxisában (Azure Search)](query-
 
 <a name="tryitout"></a>
 
-## <a name="try-the-demo"></a>Próbálja ki a demót
+## <a name="try-the-demo"></a>A bemutató kipróbálása
 A Azure Search Job Portal bemutatója a cikkben hivatkozott példákat tartalmazza.
 
 -   Tekintse meg és tesztelje a munkahelyi bemutatót a [Azure Search Job Portal bemutatójában](https://azjobsdemo.azurewebsites.net/).
 
--   Töltse le a kódot az [Azure-Samples repóból](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)a githubon.
+-   Töltse le a kódot az [Azure-Samples repóból a githubon](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérdezés-kialakítás változásairól. Ez az alkalmazás úgy működik, hogy az egyes elemekhez tartozó dimenziókat hozzáfűzi az URI-hoz.
 
-1. A bemutató alkalmazás leképezési funkciójának használatához szerezze be a Bing Maps-kulcsot a [Bing Maps fejlesztői](https://www.bingmapsportal.com/)központjából. Illessze be a `index.cshtml` lap meglévő kulcsára. A `BingApiKey` `Web.config` fájl beállítása nincs használatban. 
+1. A bemutató alkalmazás leképezési funkciójának használatához szerezze be a Bing Maps-kulcsot a [Bing Maps fejlesztői központjából](https://www.bingmapsportal.com/). Illessze be a meglévő kulcs fölé a `index.cshtml` oldalon. A `Web.config` fájl `BingApiKey` beállítása nincs használatban. 
 
 2. Futtassa az alkalmazást. Tegye meg a választható bemutatót, vagy zárja be a párbeszédpanelt.
    
@@ -391,15 +391,15 @@ Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérd
    
    ![Keresési eredmények az aspektusok kiválasztása után](media/search-faceted-navigation/faceted-search-after-facets.png "Keresési eredmények az aspektusok kiválasztása után")
 
-5. A sokoldalú lekérdezés törléséhez, hogy kipróbáljon különböző lekérdezési viselkedéseket, `[X]` kattintson a kijelölt aspektusok után a dimenziók törléséhez.
+5. A sokoldalú lekérdezés törléséhez, hogy kipróbáljon különböző lekérdezési viselkedéseket, kattintson a `[X]` a dimenziók törléséhez.
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>További információ
 Tekintse meg [Azure Search a Deep divet](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
 
 A részletes Navigálás tervezési alapelveivel kapcsolatos további információk a következő hivatkozásokat ajánljuk:
 
-* [Tervezési minták: Sokoldalú navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
+* [Tervezési minták: csiszolt navigáció](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [A részletes keresés megvalósítása során felmerülő előzetesek – 1. rész](https://articles.uie.com/faceted_search2/)
 

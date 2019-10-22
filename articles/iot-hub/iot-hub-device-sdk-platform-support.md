@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169018"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72693337"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -56,11 +56,13 @@ Az [Azure IoT hub C ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-c)
 
 Az [Azure IoT hub Python-eszköz SDK](https://github.com/Azure/azure-iot-sdk-python) -val tesztelve van, és a következő konfigurációkat támogatja.
 
-| Operációs rendszer                  | Fordítóprogram                       |
-|---------------------|--------------------------------|
-| Linux               | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
-| MacOS magas Sierra   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
-| Windows 10 termékcsalád   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| Operációs rendszer                  | Fordítóprogram                          |
+|---------------------|-----------------------------------|
+| Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| MacOS magas Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| Windows 10 termékcsalád   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+
+\* Csak a Python 3.5.3 vagy újabb verziója támogatja az aszinkron API-kat, javasoljuk, hogy 3,7-es vagy újabb verziót használjon.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -70,6 +72,8 @@ Az [Azure IoT hub .net (C#) eszközoldali SDK](https://github.com/Azure/azure-io
 |--------------------------------------|------------------------------------------------------------|
 | Linux                                | .NET Core 2.1                                              |
 | Windows 10 asztali és kiszolgálói SKU   | .NET Core 2,1, .NET-keretrendszer 4.5.1 vagy .NET-keretrendszer 4,7 |
+
+A .NET SDK a Windows IoT Core-ban is használható az [Azure-eszköz ügynökével](https://github.com/ms-iot/azure-client-tools/blob/master/docs/device-agent/device-agent.md) vagy [olyan egyéni NTService, amely az RPC használatával képes kommunikálni a UWP-alkalmazásokkal](https://docs.microsoft.com/samples/microsoft/windows-iotcore-samples/ntservice-rpc/).
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 

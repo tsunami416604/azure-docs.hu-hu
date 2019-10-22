@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9c9d6d13efaa07bff2a1eaabe05725a3257cf895
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70095693"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
@@ -35,10 +35,10 @@ Ebből a cikkből megtudhatja, hogyan tölthet fel és kezelhet alkalmazás-csom
 > Az itt leírt alkalmazáscsomag-szolgáltatás felülbírálja a szolgáltatás korábbi verzióiban elérhető batch Apps szolgáltatást.
 
 ## <a name="application-package-requirements"></a>Alkalmazáscsomag követelményei
-Az alkalmazáscsomag használatához [egy Azure Storage-fiókot](#link-a-storage-account) kell összekapcsolnia a Batch-fiókkal.
+Az alkalmazáscsomag használatához [egy Azure Storage-fiókot kell összekapcsolnia](#link-a-storage-account) a Batch-fiókkal.
 
 ## <a name="about-applications-and-application-packages"></a>Tudnivalók az alkalmazásokról és az alkalmazási csomagokról
-Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Az *alkalmazáscsomag* a bináris fájlok egy adott készletére hivatkozik, és az alkalmazás egy adott *verzióját* jelöli.
+Azure Batchon belül egy *alkalmazás* olyan verziószámú bináris fájlokra hivatkozik, amelyek automatikusan letöltődnek a készlet számítási csomópontjaira. Az *alkalmazáscsomag* a bináris fájlok egy adott *készletére* hivatkozik, és az alkalmazás egy adott *verzióját* jelöli.
 
 ![Alkalmazások és alkalmazáscsomag magas szintű diagramja][1]
 
@@ -109,9 +109,9 @@ A menüpont kiválasztásával megnyílik az **alkalmazások** ablak:
 
 Ez az ablak a fiókban lévő egyes alkalmazások AZONOSÍTÓját, valamint a következő tulajdonságokat jeleníti meg:
 
-* **Csomagok**: Az alkalmazáshoz társított verziók száma.
-* **Alapértelmezett verzió**: Az alkalmazás verziója telepítve van, ha nem jelöli meg a készlethez tartozó alkalmazás megadásakor használt verziót. Ez a beállítás nem kötelező.
-* **Frissítések engedélyezése**: Az érték, amely megadja, hogy a csomagok frissítései, törlése és kiegészítései engedélyezettek-e. Ha ez a **nem**értékre van állítva, a csomagok frissítései és törlése le van tiltva az alkalmazásban. Csak új alkalmazáscsomag-verziók vehetők fel. Az alapértelmezett érték az **Igen**.
+* **Csomagok**: az alkalmazáshoz társított verziók száma.
+* **Alapértelmezett verzió**: az alkalmazás verziója telepítve van, ha nem jelöli meg a készlethez tartozó alkalmazás megadásakor használt verziót. Ez a beállítás nem kötelező.
+* **Frissítések engedélyezése**: az érték, amely megadja, hogy a csomagok frissítései, törlése és kiegészítései engedélyezettek-e. Ha ez a **nem**értékre van állítva, a csomagok frissítései és törlése le van tiltva az alkalmazásban. Csak új alkalmazáscsomag-verziók vehetők fel. Az alapértelmezett érték az **Igen**.
 
 Ha szeretné megtekinteni az alkalmazáscsomag felépítését a számítási csomóponton, keresse meg a Batch-fiókját a portálon. A Batch-fiókban navigáljon a **készletek**elemre. Válassza ki azt a készletet, amely a kívánt számítási csomópont (oka) t tartalmazza.
 
@@ -128,9 +128,9 @@ Egy alkalmazás részleteinek megtekintéséhez válassza ki az alkalmazást az 
 
 Az alkalmazás részleteiben a következő beállításokat állíthatja be az alkalmazáshoz.
 
-* **Frissítések engedélyezése**: Annak megadása, hogy az alkalmazás csomagjai frissíthetők vagy törölhetők. A cikk későbbi részében tekintse meg a "alkalmazáscsomag frissítése vagy törlése" című részt.
-* **Alapértelmezett verzió**: A számítási csomópontokra telepítendő alapértelmezett alkalmazáscsomag meghatározása.
-* **Megjelenítendő név**: Adjon meg egy rövid nevet, amelyet a Batch-megoldás használhat az alkalmazással kapcsolatos információk megjelenítéséhez, például egy olyan szolgáltatás felhasználói felületén, amelyet az ügyfelek számára a Batch használatával biztosít.
+* **Frissítések engedélyezése**: megadhatja, hogy az alkalmazás csomagjai frissíthetők vagy törölhetők. A cikk későbbi részében tekintse meg a "alkalmazáscsomag frissítése vagy törlése" című részt.
+* **Alapértelmezett verzió**: a számítási csomópontokra telepítendő alapértelmezett alkalmazáscsomag meghatározása.
+* **Megjelenítendő név**: adjon meg egy rövid nevet, amelyet a Batch-megoldás használhat az alkalmazással kapcsolatos információk megjelenítéséhez, például egy olyan szolgáltatás felhasználói felületén, amelyet az ügyfeleknek a Batch használatával biztosít.
 
 ### <a name="add-a-new-application"></a>Új alkalmazás hozzáadása
 Új alkalmazás létrehozásához adjon hozzá egy alkalmazáscsomag-csomagot, és adjon meg egy új, egyedi alkalmazás-azonosítót. Az új alkalmazás-AZONOSÍTÓval hozzáadott első alkalmazáscsomag szintén létrehozza az új alkalmazást.
@@ -171,7 +171,7 @@ Miután kiválasztott egy fájlt, kattintson **az OK** gombra az Azure Storage-b
 > 
 
 ### <a name="add-a-new-application-package"></a>Új alkalmazáscsomag hozzáadása
-Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** ablakában, majd kattintson a **csomagok** > **Hozzáadás**elemre.
+Egy meglévő alkalmazás alkalmazáscsomag-verziójának hozzáadásához válasszon ki egy alkalmazást az **alkalmazások** Windowsban, és kattintson a **csomagok**  > **Hozzáadás**gombra.
 
 ![Alkalmazáscsomag hozzáadása panel Azure Portal][8]
 
@@ -225,12 +225,12 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Ha egy alkalmazáscsomag üzembe helyezése bármilyen okból meghiúsul, a Batch szolgáltatás [használhatatlanként][net_nodestate]jelöli meg a csomópontot, és a csomóponton nem ütemezhető feladatok végrehajtásra. Ebben az esetben a csomag központi telepítésének újraindításához **újra** kell indítania a csomópontot. A csomópont újraindítása azt is lehetővé teszi, hogy a feladatütemezés ismét elérhető legyen a csomóponton.
+> Ha egy alkalmazáscsomag üzembe helyezése bármilyen okból meghiúsul, a Batch szolgáltatás [használhatatlanként][net_nodestate]jelöli meg a csomópontot, és a csomóponton nem ütemezhető feladatok végrehajtásra. Ebben az esetben a csomag központi telepítésének újraindításához **újra kell indítania** a csomópontot. A csomópont újraindítása azt is lehetővé teszi, hogy a feladatütemezés ismét elérhető legyen a csomóponton.
 > 
 > 
 
 ### <a name="install-task-application-packages"></a>Task Application-csomagok telepítése
-A készlethez hasonlóan a tevékenységhez tartozó alkalmazáscsomag -referenciák is megadhatók. Ha egy adott tevékenység egy csomóponton való futásra van ütemezve, a csomag letöltése és kibontása közvetlenül a Feladat parancssorának végrehajtása előtt történik. Ha egy adott csomag és verzió már telepítve van a csomóponton, a csomag nem töltődik le, és a rendszer a meglévő csomagot használja.
+A készlethez hasonlóan a tevékenységhez tartozó alkalmazáscsomag- *referenciák* is megadhatók. Ha egy adott tevékenység egy csomóponton való futásra van ütemezve, a csomag letöltése és kibontása közvetlenül a Feladat parancssorának végrehajtása előtt történik. Ha egy adott csomag és verzió már telepítve van a csomóponton, a csomag nem töltődik le, és a rendszer a meglévő csomagot használja.
 
 A Task alkalmazáscsomag telepítéséhez konfigurálja a feladat [CloudTask][net_cloudtask]. [ApplicationPackageReferences][net_cloudtask_pkgref] tulajdonság:
 
@@ -251,7 +251,7 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 ```
 
 ## <a name="execute-the-installed-applications"></a>A telepített alkalmazások végrehajtása
-A készlethez vagy feladathoz megadott csomagokat a rendszer letölti és kicsomagolja a csomóponton belüli `AZ_BATCH_ROOT_DIR` megnevezett könyvtárba. A Batch egy környezeti változót is létrehoz, amely a nevesített könyvtár elérési útját tartalmazza. A feladat parancssori sorai ezt a környezeti változót használják a csomóponton lévő alkalmazásra való hivatkozáskor. 
+A készlethez vagy feladathoz megadott csomagokat a rendszer letölti és kicsomagolja egy elnevezett könyvtárba a csomópont `AZ_BATCH_ROOT_DIR`ján belül. A Batch egy környezeti változót is létrehoz, amely a nevesített könyvtár elérési útját tartalmazza. A feladat parancssori sorai ezt a környezeti változót használják a csomóponton lévő alkalmazásra való hivatkozáskor. 
 
 Windows-csomópontokon a változó formátuma a következő:
 
@@ -267,7 +267,7 @@ Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID`és `version` olyan értékek, amelyek megfelelnek az üzembe helyezéshez megadott alkalmazás-és csomag-verziónak. Ha például az alkalmazás- *turmixgép* 2,7-es verzióját kell telepíteni Windows-csomópontokon, a feladat parancssora ezt a környezeti változót fogja használni a fájlokhoz való hozzáféréshez:
+`APPLICATIONID` és `version` olyan értékek, amelyek megfelelnek az üzembe helyezéshez megadott alkalmazás-és csomag-verziónak. Ha például az alkalmazás- *turmixgép* 2,7-es verzióját kell telepíteni Windows-csomópontokon, a feladat parancssora ezt a környezeti változót fogja használni a fájlokhoz való hozzáféréshez:
 
 ```
 Windows:
@@ -344,9 +344,9 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>Becsomagolás
 Az alkalmazáscsomag segítségével az ügyfelek számára kiválaszthatja a feladataikat, és megadhatja a pontos verziót, amelyet a feladatok a Batch-kompatibilis szolgáltatással végzett feldolgozásakor kell használni. Lehetősége van arra is, hogy az ügyfelek feltöltsék és nyomon kövessék saját alkalmazásaikat a szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [Batch REST API][api_rest] Emellett támogatást biztosít az alkalmazáscsomag működéséhez. Például tekintse meg a [készlet hozzáadása egy fiókhoz][rest_add_pool] című témakör [applicationPackageReferences][rest_add_pool_with_packages] elemét, amely arról nyújt tájékoztatást, hogyan kell megadnia a telepítendő csomagokat a REST API használatával. Az alkalmazás adatainak a Batch REST API használatával történő beszerzésével kapcsolatos további információkért lásd: [alkalmazások][rest_applications] .
-* Ismerje meg, hogyan felügyelheti [Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
+* Ismerje meg, hogyan [felügyelheti Azure batch fiókokat és kvótákat a Batch Management .net-](batch-management-dotnet.md)tel. A [Batch Management .net][api_net_mgmt] -függvénytár lehetővé teheti a fiókok létrehozási és törlési funkcióit a Batch-alkalmazáshoz vagy-szolgáltatáshoz.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet

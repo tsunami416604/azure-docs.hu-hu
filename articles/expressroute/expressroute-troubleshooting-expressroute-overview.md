@@ -1,5 +1,5 @@
 ---
-title: 'Kapcsolat ellenőrzése – ExpressRoute hibaelhárítási útmutatója: Azure| Microsoft Docs'
+title: 'Kapcsolat ellenőrzése – ExpressRoute hibaelhárítási útmutatója: Azure | Microsoft Docs'
 description: Ez az oldal útmutatást nyújt a ExpressRoute-áramkör végpontok közötti kapcsolatának hibaelhárításához és ellenőrzéséhez.
 services: expressroute
 author: rambk
@@ -9,16 +9,16 @@ ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
 ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "71123441"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute, amely a helyszíni hálózatot kiterjeszti a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet egy kapcsolat szolgáltatója tesz lehetővé, a következő három különálló hálózati zónát foglalja magában:
 
--   Ügyfélhálózat
+-   Ügyfél hálózata
 -   Szolgáltatói hálózat
 -   Microsoft Datacenter
 
@@ -40,10 +40,10 @@ Az előző ábrán a számok a legfontosabb hálózati pontokat jelölik. A hál
 A ExpressRoute kapcsolati modelljétől (a felhőalapú Exchange közös elhelyezésének, pont-pont típusú Ethernet-kapcsolatnak vagy bármely-a-minden (IPVPN)) függően a 3. és 4. hálózati pont lehet kapcsolók (2. rétegbeli eszközök). A legfontosabb hálózati pontok a következők:
 
 1.  Ügyfél-számítási eszköz (például kiszolgáló vagy számítógép)
-2.  CEs Ügyfél peremhálózati útválasztói 
-3.  PEs (CE-vel szemben): A szolgáltató peremhálózati útválasztói/kapcsolói, amelyek az ügyfél peremhálózati útválasztói felé néznek. Ez a dokumentum PE-CEs néven szerepel.
-4.  PEs (MSEE szembenézve): A Msee felé irányuló szolgáltatói peremhálózati útválasztók/kapcsolók. Ez a dokumentum PE-Msee néven szerepel.
-5.  Msee Microsoft Enterprise Edge (MSEE) ExpressRoute útválasztók
+2.  CEs: ügyfél peremhálózati útválasztói 
+3.  PEs (CE felé irányuló): Provider Edge-útválasztók/kapcsolók, amelyek az ügyfél peremhálózati útválasztói felé néznek. Ez a dokumentum PE-CEs néven szerepel.
+4.  PEs (MSEE szembenézve): Provider Edge-útválasztók/kapcsolók, amelyek a Msee felé néznek. Ez a dokumentum PE-Msee néven szerepel.
+5.  Msee: Microsoft Enterprise Edge (MSEE) ExpressRoute útválasztók
 6.  Virtual Network (VNet) átjáró
 7.  Számítási eszköz az Azure VNet
 
@@ -80,7 +80,7 @@ A Azure Portal egy ExpressRoute áramkör állapotát a bal oldali menüsoron, m
 
 A ExpressRoute Essentialsben az áramkör *állapota* az áramkör állapotát jelzi a Microsoft oldalon. A *szolgáltató állapota* azt jelzi, hogy az áramkör üzembe helyezése */kiépítés nem* történt-e meg a szolgáltatói oldalon. 
 
-Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* kell az *áramköri állapotot* , és a szolgáltatói *állapotot* kell kiépíteni.
+Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* kell az *áramköri állapotot* , és a *szolgáltatói állapotot* kell *kiépíteni*.
 
 > [!NOTE]
 > Ha az *áramkör állapota* nincs engedélyezve, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha a *szolgáltató állapota* nincs kiépítve, forduljon a szolgáltatóhoz.
@@ -157,7 +157,7 @@ A minta válasza:
     Sku                              : Standard
     Status                           : Enabled
 
-Annak ellenőrzéséhez, hogy a ExpressRoute áramkör működik-e, különös figyelmet fordít a következő mezőkre: ServiceProviderProvisioningState : Kiépített állapot: Enabled
+Annak ellenőrzéséhez, hogy az ExpressRoute áramkör működik-e, különös figyelmet fordít a következő mezőkre: ServiceProviderProvisioningState: kiépített állapot: engedélyezve
 
 > [!NOTE]
 > Ha az *állapot* nincs engedélyezve, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha a *ServiceProviderProvisioningState* nincs kiépítve, forduljon a szolgáltatóhoz.
@@ -165,7 +165,7 @@ Annak ellenőrzéséhez, hogy a ExpressRoute áramkör működik-e, különös f
 >
 
 ## <a name="validate-peering-configuration"></a>Egyenrangú konfiguráció ellenőrzése
-Miután a szolgáltató befejezte a ExpressRoute áramkör kiépítési folyamatát, a MSEE-PRs (4) és a Msee (5) közötti ExpressRoute áramkörön létrehozhat útválasztási konfigurációt. Minden ExpressRoute-áramkörhöz engedélyezve van egy, kettő vagy három útválasztási környezet: Azure Private-peering (az Azure-beli privát virtuális hálózatok felé irányuló forgalom), az Azure nyilvános társítása (a nyilvános IP-címekre irányuló forgalom az Azure-ban) és Microsoft-partnerek (az Office 365-es adatforgalom). Az útválasztási konfiguráció létrehozásával és módosításával kapcsolatos további információkért tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című cikket.
+Miután a szolgáltató befejezte a ExpressRoute áramkör kiépítési folyamatát, a MSEE-PRs (4) és a Msee (5) közötti ExpressRoute áramkörön létrehozhat útválasztási konfigurációt. Minden ExpressRoute áramkörhöz engedélyezve van egy, kettő vagy három útválasztási környezet: Azure Private-kapcsolat (az Azure-beli virtuális hálózatok felé irányuló forgalom), Azure nyilvános kapcsolat (nyilvános IP-címekre irányuló forgalom az Azure-ban) és Microsoft-partneri kapcsolat (az Office 365-es adatforgalom). Az útválasztási konfiguráció létrehozásával és módosításával kapcsolatos további információkért tekintse meg a [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]című cikket.
 
 ### <a name="verification-via-the-azure-portal"></a>Ellenőrzés a Azure Portal használatával
 
@@ -295,7 +295,7 @@ A parancsra adott válasz például a sikeres forgatókönyvben:
                  113             On-Prem       10.0.0.1           e8ed.f335.4ca9
                    0           Microsoft       10.0.0.2           7c0e.ce85.4fc9
 
-Hasonlóképpen, az *elsődleges*/*másodlagos elérési* úton lévő MSEE is megtekintheti az ARP-táblázatot a*nyilvános*/*Microsoft* -partnerek számára./
+Hasonlóképpen megtekintheti az ARP-táblázatot a MSEE *elsődleges* /*másodlagos* elérési útjában *, a* nyilvános /*nyilvános* /*Microsoft* -társak esetében.
 
 Az alábbi példa azt szemlélteti, hogy a parancs válasza nem létezik a társításhoz.
 
@@ -352,7 +352,7 @@ A parancs sikeres kimenetele például a következő:
          10.2.0.0/16            10.0.0.1                                       0    #### ##### #####
     ...
 
-Hasonlóképpen, az *elsődleges*/*másodlagos elérési* úton található MSEE is megtekintheti az útválasztási táblázatot,/ anyilvánosMicrosoftatársikörnyezethez/.
+Hasonlóképpen megtekintheti az útválasztási táblázatot az *elsődleges* /*másodlagos* elérési úton lévő MSEE, a nyilvános */* *nyilvános* / a*Microsoft* egy egyenrangú kontextusban.
 
 Az alábbi példa azt szemlélteti, hogy a parancs válasza nem létezik a társításhoz:
 
@@ -378,15 +378,15 @@ A nem létező társításhoz tartozó parancs mintájának kimenete a következ
         + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
-## <a name="next-steps"></a>További lépések
-További információ vagy a Súgó tekintse meg az alábbi hivatkozásokat:
+## <a name="next-steps"></a>Következő lépések
+További információért és segítségért tekintse meg az alábbi hivatkozásokat:
 
 - [Microsoft ügyfélszolgálata][Support]
 - [Az ExpressRoute-kapcsolatcsoport létrehozása és módosítása][CreateCircuit]
 - [ExpressRoute-áramkör útválasztásának létrehozása és módosítása][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png  "Logikai expressz útvonal kapcsolata"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "logikai expressz útvonal-kapcsolat"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "Minden erőforrás ikon"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "Áttekintés ikon"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "A ExpressRoute Essentials minta képernyőképe"

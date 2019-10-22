@@ -6,29 +6,30 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
-ms.date: 05/15/2019
-ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+author: xiaoharper
+ms.author: zhanxia
+ms.date: 9/23/2019
+ms.openlocfilehash: a23f123c6ffadaad4f830e1f4eab3820e6ef56f6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128805"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72692227"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Mi a Azure Machine Learning vizuális felülete? 
 
 A Azure Machine Learning vizuális felülete (előzetes verzió) lehetővé teszi a gépi tanulási modellek előkészítését, használatát, tesztelését, üzembe helyezését, kezelését és nyomon követését programkód írása nélkül.
 
-Nincs szükség programozásra, vizuálisan összekapcsolhatók az [adatkészletek](#dataset) és [modulok](#module) a modell létrehozásához.
+Nincs szükség programozásra, vizuálisan összekapcsolhatók az [adatkészletek](#datasets) és [modulok](#module) a modell létrehozásához.
 
 A vizuális felület a Azure Machine Learning [munkaterületét](concept-workspace.md) használja a következőhöz:
 
-+ Az írási összetevők a munkaterületen [futnak.](#experiment)
-+ Hozzáférési [adatkészletek](#dataset).
-+ A kísérlet futtatásához használja a munkaterület [számítási erőforrásait](#compute) . 
++ [Folyamatok](#pipeline) létrehozása, szerkesztése és futtatása a munkaterületen.
++ Hozzáférési [adatkészletek](#datasets).
++ A folyamat futtatásához használja a munkaterület [számítási erőforrásait](#compute) . 
 + [Modellek](concept-azure-machine-learning-architecture.md#models)regisztrálása.
-+ A modelleket webszolgáltatásként [helyezheti üzembe](#deployment) a munkaterületen lévő számítási erőforrásokon.
++ Folyamatok [közzététele](#publish) Rest-végpontként.
++ A modelleket [üzembe helyezheti](#deployment) folyamat-végpontként (a Batch-következtetésekhez) vagy a valós idejű végpontokat a munkaterületen lévő számítási erőforrásokon.
 
 ![A vizuális felület áttekintése](media/ui-concept-visual-interface/overview.png)
 
@@ -36,18 +37,19 @@ A vizuális felület a Azure Machine Learning [munkaterületét](concept-workspa
 
 A vizuális felület interaktív, vizualizációs vászon használatával gyorsan kiépítheti, tesztelheti és megismételheti a modelleket. 
 
-+ A vászonra húz és húzhatja a [modulokat](#module) .
-+ A modulok összekapcsolása [kísérlet](#experiment)létrehozásához.
-+ Futtassa a kísérletet a Machine Learning szolgáltatás munkaterület számítási erőforrásának használatával.
-+ A kísérlet szerkesztésével és újbóli futtatásával ismételje meg a modell kialakítását.
-+ Ha elkészült, alakítsa át a **betanítási kísérletet** egy **prediktív kísérletbe**.
-+ A prediktív kísérletet webszolgáltatásként [helyezheti üzembe](#deployment) , hogy a modell mások számára is elérhető legyen.
++ A vászonra húzhatja az [adatkészleteket](#datasets) és a [modulokat](#module) .
++ Összekapcsolhatja a modulokat egy [folyamat](#pipeline)létrehozásához.
++ Futtassa a folyamatot a Machine Learning szolgáltatás munkaterület számítási erőforrásának használatával.
++ Ismételje meg a modell kialakítását a folyamat szerkesztésével és az újbóli futtatásával.
++ Ha elkészült, alakítsa át a **betanítási** folyamatot egy **következtetési folyamatra**.
++ [Tegye közzé](#publish) a folyamatot Rest-végpontként, ha újra el szeretné küldeni a Python-kód nélkül.
++ A következtetési folyamat [üzembe helyezése](#deployment) folyamat-végpontként vagy valós idejű végpontként, hogy a modell mások számára is elérhető legyen.
 
-## <a name="experiment"></a>Kísérlet
+## <a name="pipeline"></a>Folyamat
 
-Hozzon létre egy kísérletet a semmiből, vagy használjon egy meglévő minta kísérletet sablonként.  Minden alkalommal, amikor kísérletet futtat, az összetevők a munkaterületen tárolódnak.
+Hozzon létre egy teljesen [új ml-](concept-azure-machine-learning-architecture.md#ml-pipelines) folyamatot, vagy használjon sablonként egy meglévő mintát. Minden alkalommal, amikor futtat egy folyamatot, az összetevők a munkaterületen tárolódnak. A folyamat-futtatások [kísérletekbe](concept-azure-machine-learning-architecture.md#experiments)vannak csoportosítva.
 
-A kísérlet olyan adatkészleteket és analitikai modulokat tartalmaz, amelyek egy modell összeállításához kapcsolódnak. Az érvényes kísérletek a következő jellemzőkkel rendelkeznek:
+A folyamatok adatkészleteket és analitikai modulokból állnak, amelyek egy modell összeállításához kapcsolódnak. Pontosabban, egy érvényes folyamat a következő jellemzőkkel rendelkezik:
 
 * Az adatkészletek csak modulokhoz csatlakoztathatók.
 * A modulok lehetnek adatkészletekhez vagy más modulokhoz csatlakoztathatók.
@@ -55,11 +57,11 @@ A kísérlet olyan adatkészleteket és analitikai modulokat tartalmaz, amelyek 
 * Az egyes modulokhoz szükséges összes paramétert be kell állítani.
 
 
-A vizuális felület megismeréséhez tekintse [meg az oktatóanyag: Az autó árának előrejelzése a vizualizációs](ui-tutorial-automobile-price-train-score.md)felületen.
+A vizuális felület megismeréséhez lásd [: oktatóanyag: az autó árának előrejelzése a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md).
 
-## <a name="dataset"></a>Adathalmaz
+## <a name="datasets"></a>Adathalmazok
 
-Az adatkészlet olyan adatokat tartalmaz, amelyeket a rendszer feltöltött a vizualizációs felületen a modellezési folyamatban való használatra. Több minta adatkészletet is tartalmaz a kipróbáláshoz, és több adatkészletet is feltölthet, ahogy szüksége van rájuk.
+A Machine learning-adatkészlet megkönnyíti az adataihoz való hozzáférést és azokkal való munkavégzést. A vizuális kezelőfelület számos minta adatkészletet tartalmaz, amelyekkel kísérletezhet. A szükségesnél több adatkészletet is [regisztrálhat](./how-to-create-register-datasets.md) .
 
 ## <a name="module"></a>Modul
 
@@ -73,30 +75,40 @@ Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtára köz�
 
 ## <a name="compute"></a>Számítási erőforrások
 
-A munkaterületen lévő számítási erőforrások használatával futtathatja a kísérletet, vagy üzemeltetheti a telepített modelleket webszolgáltatásként. A támogatott számítási célnak a következők:
+A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-
-| Számítási célt | Képzés | Környezet |
+| Számítási cél | Képzés | Üzembe helyezés |
 | ---- |:----:|:----:|
-| Az Azure Machine Learning compute | ✓ | |
+| Azure Machine Learning számítás | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
 A számítási célok a Machine Learning [munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a munkaterületen a [Azure Portal](https://portal.azure.com) vagy a munkaterület kezdőlapján [(előzetes verzió)](https://ml.azure.com)kezelheti.
 
-## <a name="deployment"></a>Környezet
+## <a name="publish"></a>Közzététel
 
-Miután a prediktív elemzési modell elkészült, üzembe helyezheti azt webszolgáltatásként közvetlenül a vizualizáció felületéről.
+Ha elkészült egy folyamattal, közzéteheti REST-végpontként. A [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) a létrehozott Python-kód nélkül is elküldhető.
 
-A webszolgáltatások felületet biztosítanak egy alkalmazás és a pontozási modell között. Egy külső alkalmazás valós időben tud kommunikálni a pontozási modellel. A webszolgáltatás felé irányuló hívások visszaküldik az előrejelzési eredményeket egy külső alkalmazásnak. A webszolgáltatások felé irányuló hívások indításához át kell adnia azt az API-kulcsot, amelyet a webszolgáltatás üzembe helyezésekor hozott létre. A webszolgáltatások a webes programozási projektek számára népszerű architektúrán alapulnak.
+Emellett a PublishedPipeline a különböző PipelineParameter értékekkel és bemenetekkel rendelkező folyamatok újraküldésére is használható.
 
-A modell üzembe helyezésének megismeréséhez tekintse [meg az oktatóanyag: Helyezzen üzembe egy gépi tanulási modellt a vizuális felületen](ui-tutorial-automobile-price-deploy.md).
+## <a name="deployment"></a>Üzembe helyezés
 
-## <a name="next-steps"></a>További lépések
+Ha a prediktív modell elkészült, telepítse azt egy folyamat-végpontként vagy a valós idejű végpontként közvetlenül a vizualizáció felületéről.
 
-* Ismerkedjen meg a prediktív elemzés és a gépi tanulás [alapjaival az Oktatóanyaggal: Az autó árának előrejelzése a vizuális felületen](ui-tutorial-automobile-price-train-score.md)
+A folyamat végpontja egy [PublishedPipeline, amely elküldheti a folyamat futását különböző PipelineParameter értékekkel és bemenetekkel a Batch-következtetésekhez.
+
+A valós idejű végpont az alkalmazás és a pontozási modell közötti felületet biztosít. Egy külső alkalmazás valós időben tud kommunikálni a pontozási modellel. A valós idejű végpontok hívása egy külső alkalmazásnak adja vissza az előrejelzési eredményeket. Egy valós idejű végpont hívásához át kell adnia egy API-kulcsot, amelyet a rendszer a végpont üzembe helyezésekor hozott létre. A végpont egy REST-alapú, népszerű architektúra a webes programozási projektekhez.
+
+A modell üzembe helyezésével kapcsolatos további információkért lásd [: oktatóanyag: Machine learning-modell üzembe helyezése a vizualizációs felületen](ui-tutorial-automobile-price-deploy.md).
+
+## <a name="next-steps"></a>Következő lépések
+
+* A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a vizualizációs felületen](ui-tutorial-automobile-price-train-score.md)
 * Használja az egyik mintát, és módosítsa az igényeinek megfelelően:
-    * [1. példa – regresszió: Előre jelzett ár](how-to-ui-sample-regression-predict-automobile-price-basic.md)
-    * [2. minta – regresszió: Előrejelzési ár és összehasonlítási algoritmusok](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [3. példa – besorolás: Hitelkockázat előrejelzése](how-to-ui-sample-classification-predict-credit-risk-basic.md)
-    * [4. minta – besorolás: Hitelkockázat (Cost szenzitív)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [5. példa – besorolás: A forgalom előrejelzése, a szolgáltatóváltást és az értékesítés](how-to-ui-sample-classification-predict-churn.md)
+
+    * [1. példa – regresszió: előrejelzési ár](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [2. minta – regresszió: előrejelzési ár és összehasonlítási algoritmusok](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [3. példa – besorolás: hitelkockázat előrejelzése](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [4. minta – besorolás: a hitelkockázat előrejelzése (a Cost szenzitív)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [5. példa – besorolás: forgalom előrejelzése, szolgáltatóváltást és értékesítés](how-to-ui-sample-classification-predict-churn.md)
+    * [6. példa – besorolás: repülési késések előrejelzése](how-to-ui-sample-classification-predict-flight-delay.md)
+

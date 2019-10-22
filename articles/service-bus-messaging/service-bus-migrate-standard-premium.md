@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
 ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "69611921"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Meglévő Azure Service Bus standard névterek migrálása a prémium szintre
@@ -30,12 +30,12 @@ Ez a cikk bemutatja, hogyan telepítheti át a meglévő standard szintű névte
 
 Néhány Megjegyzés: 
 - Az áttelepítés célja, hogy megtörténjen, ami azt jelenti, hogy a meglévő küldő és fogadó alkalmazások **nem igénylik a kód vagy a konfiguráció módosítását**. A meglévő kapcsolódási sztring automatikusan az új prémium névtérre mutat.
-- A **prémium** névtérnek **nem** lehetnek entitásai az áttelepítés sikerességéhez. 
-- A standard névtérben lévő összes entitást az áttelepítési folyamat során a prémium névtérre **másolja** a rendszer. 
-- A Migrálás a prémium **szinten 1 000 entitást** támogat az üzenetkezelési egységenként. Annak megállapításához, hogy hány üzenetkezelési egységre van szüksége, kezdje az aktuális standard névtérben található entitások számával. 
+- A **prémium** névtérnek **nem lehetnek entitásai** az áttelepítés sikerességéhez. 
+- A standard névtérben lévő összes **entitást** az áttelepítési folyamat során a prémium névtérre **másolja** a rendszer. 
+- A Migrálás a prémium **szinten 1 000 entitást támogat az üzenetkezelési egységenként** . Annak megállapításához, hogy hány üzenetkezelési egységre van szüksége, kezdje az aktuális standard névtérben található entitások számával. 
 - Az alapszintű **csomagról** a **Premier szintre**nem telepíthet közvetlenül áttelepítést, de az alapszintű és a standard közötti áttelepítéssel, majd a következő lépésben a standard és a prémium szintjével is megteheti.
 
-## <a name="migration-steps"></a>A migrálás lépései
+## <a name="migration-steps"></a>Migrálási lépések
 Bizonyos feltételek az áttelepítési folyamathoz vannak társítva. Ismerkedjen meg az alábbi lépésekkel a hibák lehetőségének csökkentése érdekében. Ezek a lépések körvonalazzák az áttelepítési folyamatot, és a részletes részletek a következő szakaszokban vannak felsorolva.
 
 1. Hozzon létre egy új, prémium szintű névteret.
@@ -94,30 +94,30 @@ Ha az Azure CLI vagy a PowerShell eszköz használatával szeretné áttelepíte
 A Azure Portal használatával végzett Migrálás ugyanazzal a logikai folyamattal rendelkezik, mint a parancsok használatával történő áttelepítés. Az alábbi lépéseket követve áttelepítheti a Azure Portal használatával.
 
 1. A bal oldali ablaktábla **navigációs** menüjében válassza az **áttelepítés prémiumra**lehetőséget. Kattintson az **első lépések** gombra a következő lapra való továbblépéshez.
-    ![Áttelepítési Kezdőlap][]
+    ![Migration Kezdőlap ][]
 
 1. Fejezze be a **telepítést**.
-   ![Telepítési névtér][]
+   ![Setup névtér ][]
    1. Hozza létre és rendelje hozzá a prémium névteret a meglévő standard névtér áttelepítéséhez.
-        ![Névtér beállítása – prémium szintű névtér létrehozása][]
+        ![Setup névtér – prémium szintű névtér létrehozása ][]
    1. Válassza ki az **áttelepítés utáni nevet**. Ezt a nevet fogja használni a standard névtér eléréséhez az áttelepítés befejeződése után.
-        ![Névtér beállítása – a kivételezés utáni áttelepítés neve][]
+        ![Setup névtér – az áttelepítés utáni név kiválasztása ][]
    1. A folytatáshoz válassza a **Next (tovább** ) lehetőséget.
 1. Entitások szinkronizálása a standard és a prémium szintű névterek között.
-    ![Telepítési névtér – entitások szinkronizálása – indítás][]
+    ![Setup névtér – entitások szinkronizálása – indítás ][]
 
    1. Az entitások szinkronizálásának megkezdéséhez kattintson a **szinkronizálás indítása** elemre.
    1. Válassza az **Igen** lehetőséget a párbeszédpanelen a szinkronizálás megerősítéséhez és elindításához.
    1. Várjon, amíg a szinkronizálás be nem fejeződik. Az állapot az állapotsoron érhető el.
-        ![Telepítési névtér – entitások szinkronizálása – folyamat][]
+        ![Setup névtér – szinkronizálási entitások – folyamat ][]
         >[!IMPORTANT]
         > Ha bármilyen okból meg kell szakítania az áttelepítést, tekintse át a jelen dokumentum GYIK szakaszának megszakítási folyamatát.
    1. A szinkronizálás befejeződése után kattintson a **Tovább gombra** a lap alján.
 
 1. Tekintse át a módosításokat az összefoglalás lapon. Válassza az **áttelepítés befejezése** lehetőséget a névterek váltásához és az áttelepítés befejezéséhez.
-    ![Névtér váltása – váltás menü][]  
+    ![Switch névtér – váltás menü ][]  
     A megerősítő lap az áttelepítés befejezésekor jelenik meg.
-    ![Névtér váltása – sikeres][]
+    ![Switch névtér – sikeres ][]
 
 ## <a name="caveats"></a>Figyelmeztetések
 
@@ -169,9 +169,9 @@ Az alkalmazás által tapasztalt állásidő arra a időre korlátozódik, amedd
 Nem, az áttelepítés elvégzéséhez nincs szükség kód-vagy konfigurációs módosításra. A küldő és fogadó alkalmazások által a standard névtér eléréséhez használt kapcsolati sztring automatikusan leképezve lesz, hogy aliasként működjön a prémium szintű névtérben.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Mi történik az áttelepítés megszakításakor?
-Az áttelepítés a `Abort` paranccsal vagy a Azure Portal használatával szakítható meg. 
+Az áttelepítés a `Abort` parancs vagy a Azure Portal használatával szakítható meg. 
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```azurecli
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
@@ -179,8 +179,8 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure Portal
 
-![Folyamat megszakítása – a][]
-szinkronizálás![megszakítása folyamat megszakítása – Befejezés megszakítása][]
+![Abort folyamat – a szinkronizálás megszakítása ][]
+ ![Abort a folyamat megszakítása – Befejezés ][]
 
 Az áttelepítési folyamat megszakadása esetén a megszakítja az entitások (témakörök, előfizetések és szűrők) másolásának folyamatát a standard és a prémium névtér között, és megszakítja a párosítást.
 
@@ -191,7 +191,7 @@ Azonban nem törli az entitásokat a prémium szintű névtérből, vagy törli 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy megszakítja az áttelepítést, törölje az áttelepítés során kiépített prémium névteret, hogy ne kelljen fizetnie az erőforrásért.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nem szeretném lecsapolni az üzeneteket. Mit tegyek?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nem szeretném lecsapolni az üzeneteket. Mi a teendő?
 
 Előfordulhat, hogy a küldő alkalmazások elküldik az üzeneteket, és az áttelepítés véglegesítése előtt a standard névtérben lévő tárterületre kötelezik őket.
 
@@ -209,7 +209,7 @@ Ha azonban egy tervezett karbantartási/kitakarítási időszakban is át tud t�
     >
     > Az áttelepítés befejezése után a fogadó alkalmazások le lesznek választva a standard névtérből, és automatikusan csatlakoznak a prémium szintű névtérhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információk a [standard és a prémium szintű üzenetkezelés közötti különbségekről](./service-bus-premium-messaging.md).
 * Ismerje meg a [prémium szintű Service Bus magas rendelkezésre állását és a földrajzi katasztrófa utáni helyreállítási szempontokat](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium).

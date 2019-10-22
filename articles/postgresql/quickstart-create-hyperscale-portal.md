@@ -9,13 +9,13 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.openlocfilehash: fe981167249e24a43a8cb14c51c9b7c1eb081225
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 10/21/2019
 ms.locfileid: "70164018"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) a Azure Portal
+# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-preview-in-the-azure-portal"></a>Gyors útmutató: hozzon létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verzió) a Azure Portal
 
 Az Azure Database for PostgreSQL egy felügyelt szolgáltatás, amely lehetővé teszi magas rendelkezésre állású PostgreSQL-adatbázisok futtatását, felügyeletét és skálázását a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Database for PostgreSQL-nagy kapacitású (Citus) (előzetes verziójú) kiszolgálói csoportot a Azure Portal használatával. Tekintse át az elosztott adatmennyiségeket: a csomópontok közötti horizontális skálázást, a mintaadatok betöltését és a több csomóponton futtatott lekérdezések futtatását.
 
@@ -62,7 +62,7 @@ CREATE TABLE github_users
 );
 ```
 
-`payload` A`github_events` mezőhöz JSONB adattípus tartozik. A JSONB a postgres bináris formátumú JSON-adattípusa. Az adattípussal könnyedén tárolhat egy rugalmas sémát egyetlen oszlopban.
+@No__t_1 `payload` mezője JSONB adattípussal rendelkezik. A JSONB a postgres bináris formátumú JSON-adattípusa. Az adattípussal könnyedén tárolhat egy rugalmas sémát egyetlen oszlopban.
 
 Az postgres létrehozhat egy `GIN` indexet ezen a típuson, amely a benne található összes kulcsot és értéket indexeli. Az indextel gyorsan és egyszerűen lekérdezheti a hasznos adatokat különböző feltételekkel. Nézzük meg, és hozzon létre néhány indexet az adatbetöltése előtt. A psql-ben:
 
@@ -71,7 +71,7 @@ CREATE INDEX event_type_index ON github_events (event_type);
 CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 ```
 
-Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát `user_id`is a következőre fogjuk bemutatni:
+Ezután ezeket a postgres táblázatokat a koordinátori csomóponton fogjuk kiadni, és megmondjuk, hogy nagy kapacitású a feldolgozók között. Ehhez le kell futtatni egy lekérdezést minden olyan táblára vonatkozóan, amely megadja, hogy a kulcs a szegmensbe kerüljön. Az aktuális példában az eseményeket és a felhasználók táblát is a `user_id`juk:
 
 ```sql
 SELECT create_distributed_table('github_events', 'user_id');
@@ -96,13 +96,13 @@ SET CLIENT_ENCODING TO 'utf8';
 
 ## <a name="run-queries"></a>Lekérdezések futtatása
 
-Itt az ideje, hogy a szórakoztató rész ténylegesen futtasson néhány lekérdezést. Kezdjük egy egyszerű `count (*)` megtekinteni a betöltött adatmennyiséget:
+Itt az ideje, hogy a szórakoztató rész ténylegesen futtasson néhány lekérdezést. Kezdjük egy egyszerű `count (*)` a betöltött adatmennyiség megtekintéséhez:
 
 ```sql
 SELECT count(*) from github_events;
 ```
 
-Ez szépen működött. Egy kicsit vissza fogunk térni erre a fajta összesítésre, de most nézzük meg néhány más lekérdezést. A JSONB `payload` oszlopon belül van egy jó kis mennyiség, de az esemény típusa alapján változhat. `PushEvent`az események olyan méretet tartalmaznak, amely tartalmazza a leküldés különböző véglegesítő feltételeit. A felhasználható, hogy megkeresse az óránkénti véglegesítés teljes számát:
+Ez szépen működött. Egy kicsit vissza fogunk térni erre a fajta összesítésre, de most nézzük meg néhány más lekérdezést. A JSONB `payload` oszlopban van egy jó kis mennyiségű adattípus, de az esemény típusa alapján változhat. `PushEvent` események olyan méretet tartalmaznak, amely tartalmazza a leküldések eltérő véglegesítő számát. A felhasználható, hogy megkeresse az óránkénti véglegesítés teljes számát:
 
 ```sql
 SELECT date_trunc('hour', created_at) AS hour,
@@ -113,9 +113,9 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-Eddig a lekérdezések kizárólag a GitHub\_-eseményeket érintették, de ezeket az információkat a GitHub\_-felhasználókkal kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) el, és könnyedén csatlakoztathatók.
+Eddig a lekérdezések a GitHub-\_eventst is felvettek, de ezeket az információkat a GitHub-\_users kombináljuk. Mivel a felhasználókat és az eseményeket ugyanazon az azonosítón (`user_id`) osztottuk fel, a megfelelő felhasználói azonosítókkal rendelkező táblák sorai ugyanazon adatbázis-csomópontokon [helyezkednek el](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation) , és könnyen csatlakoztathatók.
 
-Ha csatlakozik a `user_id`szolgáltatáshoz, a nagy kapacitású a munkavégző csomópontokon párhuzamosan hajthatja végre a csatlakozás végrehajtását a szegmensekben. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
+Ha `user_id` csatlakozunk, a nagy kapacitású a munkavégző csomópontokon párhuzamosan végezheti el a csatlakozás végrehajtását a szegmensekre. Például keresse meg a legtöbb tárházat létrehozó felhasználókat:
 
 ```sql
 SELECT gu.login, count(*)
@@ -132,7 +132,7 @@ SELECT gu.login, count(*)
 
 Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsoport számára. Ha nem várható, hogy a jövőben szüksége lesz ezekre az erőforrásokra, törölje a kiszolgálót. A kiszolgálócsoport **Áttekintés** lapján kattintson a **Törlés** gombra. Amikor a rendszer rákérdez egy előugró oldalra, erősítse meg a kiszolgálócsoport nevét, és kattintson a végleges **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet.
 
