@@ -1,75 +1,71 @@
 ---
-title: Az Azure Application Insights Telemetriai adatokat modell - Telemetriai kérelem |} A Microsoft Docs
-description: Application Insights-adatmodell – kéréstelemetria
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Telemetria adatmodell – kérelem telemetria | Microsoft Docs
+description: Application Insights adatmodell a kérelem telemetria
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff7b52cbd88e4927db275dee4d7fbc4691ad076b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900533"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677328"
 ---
-# <a name="request-telemetry-application-insights-data-model"></a>Kérelmek telemetriai adatai: Application Insights-adatmodell
+# <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
 
-A kérelemben szereplő telemetriai elem (a [Application Insights](../../azure-monitor/app/app-insights-overview.md)) az alkalmazás külső kérelem által kiváltott végrehajtás logikai sorrendben jelöli. Minden kérelem végrehajtásának azonosítja egyedi `ID` és `url` tartalmazó összes végrehajtás paramétert. Kérelmek logikai szerint csoportosíthatók `name` , és meghatározhatja a `source` , ezt a kérelmet. Végrehajtás eredményezhet `success` vagy `fail` és a egy bizonyos rendelkezik `duration`. Mind a sikeres és Sikertelen végrehajtások csoportosíthatók további korlátozásokat `resultCode`. Kezdési ideje a kérelmek telemetriai adatai, meghatározott boríték szintjén.
+A kérelem telemetria eleme ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) az alkalmazás külső kérelme által aktivált végrehajtás logikai sorozatot jelöli. Minden kérelem végrehajtását egyedi `ID` és az összes végrehajtási paramétert tartalmazó `url` azonosítja. A kérelmeket logikai `name` alapján csoportosíthatja, és megadhatja a kérelem `source`ét. A kód végrehajtása `success` vagy `fail` eredményezhet, és egy bizonyos `duration`. A sikeres és a sikertelen végrehajtás is a `resultCode` szerint csoportosítható. A kérés telemetria megadott kezdési ideje.
 
-Telemetria támogatja a standard szintű bővíthetőségi modell segítségével egyéni kérelem `properties` és `measurements`.
+A telemetria kérése az egyéni `properties` és `measurements` használatával támogatja a standard bővíthetőségi modellt.
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Név
 
-A kérés neve a kérés feldolgozásához igénybe vett kódelérési út jelöli. Alacsony cardinality értéke, hogy jobban kérelmek csoportosítása. A HTTP-kérések azt jelöli, a HTTP-metódus és egy URL-cím elérési út sablont, például `GET /values/{id}` nélkül a tényleges `id` értéket.
+A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL-cím elérési útját adja meg, például `GET /values/{id}` a tényleges `id` érték nélkül.
 
-Application Insights webes SDK kérelem neve "adott állapotában" küldi a nagybetűk meg. A felhasználói felület a csoportosítás akkor kis-és nagybetűket, `GET /Home/Index` külön számít a `GET /home/INDEX` annak ellenére, hogy milyen gyakran eredményeznek ugyanazon vezérlő és a művelet végrehajtását. Amelyek oka, hogy vannak-e az általános URL-címek [kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Tekintse meg, ha az összes érdemes `404` történt kisbetűvel írt URL-címek esetében. Több a kérés a tenantnév-gyűjtemény által az ASP.NET Web SDK-olvashat a [blogbejegyzés](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights web SDK a "as is" nevű kérelem nevét küldi el a Letter eset tekintetében. A felhasználói felületen való csoportosítás megkülönbözteti a kis-és nagybetűket, így a `GET /Home/Index` a `GET /home/INDEX`tól függetlenül számít, bár gyakran ugyanazt a vezérlőt és műveletet hajtják végre. Ennek az az oka, hogy az URL-címek általában [megkülönböztetik a kis-és nagybetűket](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Érdemes megtekinteni, hogy az összes `404` a nagybetűvel beírt URL-címeknél történt-e. A ASP.NET web SDK-val kapcsolatos további információk a kérelmek neve gyűjteményben olvashatók a [blogbejegyzésben](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
-Maximális hossz: 1024 karakternél
+Maximális hossz: 1024 karakter
 
-## <a name="id"></a>azonosító
+## <a name="id"></a>ID (Azonosító)
 
-Egy kérelem hívás példány azonosítója. Kérelem és egyéb telemetriát elemek között használt. Lehet, hogy globálisan egyedi azonosítója. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
+Egy kérelem hívási példányának azonosítója. A kérelem és az egyéb telemetria elemek közötti korrelációhoz használatos. Az AZONOSÍTÓnak globálisan egyedinek kell lennie. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
-Maximális hossz: 128 karakter hosszú lehet
+Maximális hossz: 128 karakter
 
-## <a name="url"></a>URL
+## <a name="url"></a>URL-cím
 
-Kérelem URL-címe és az összes lekérdezési karakterlánc paramétert.
+Kérelem URL-címe az összes lekérdezési karakterlánc paraméterrel.
 
-Maximális hossz: 2048 karakternél
+Maximális hossz: 2048 karakter
 
-## <a name="source"></a>source
+## <a name="source"></a>Forrás
 
-A kérelem forrását. Példák a kialakítási kulcsot a hívó vagy a hívó ip-címét. További információkért lásd: [korrelációs](../../azure-monitor/app/correlation.md) lapot.
+A kérelem forrása. Ilyenek például a hívó rendszerállapot-kulcsa vagy a hívó IP-címe. További információ: [korrelációs](../../azure-monitor/app/correlation.md) oldal.
 
-Maximális hossz: 1024 karakternél
+Maximális hossz: 1024 karakter
 
 ## <a name="duration"></a>Időtartam
 
-Kérelem időtartama a formátumban: `DD.HH:MM:SS.MMMMMM`. Pozitív, és kisebbnek kell lennie, mint `1000` nap. Ez a mező megadása kötelező, a kérelmek telemetriai adatai jelenti. a művelet kezdete és vége.
+Kérelem időtartama (formátum: `DD.HH:MM:SS.MMMMMM`). Nem lehet pozitív, és `1000` napnál rövidebbnek kell lennie. Erre a mezőre azért van szükség, mert a Request telemetria a művelet kezdetét és végét jelöli.
 
-## <a name="response-code"></a>Válaszkód
+## <a name="response-code"></a>Válasz kódja
 
-Egy kérelem végrehajtásának eredménye. HTTP-állapotkódot a HTTP-kéréseket. Ez lehet `HRESULT` más kéréstípusok érték vagy a kivétel típusát.
+A kérelem végrehajtásának eredménye. A HTTP-kérelmek HTTP-állapotkódot. Előfordulhat, hogy más típusú kérelmek esetében `HRESULT` érték vagy kivétel típusú.
 
-Maximális hossz: 1024 karakternél
+Maximális hossz: 1024 karakter
 
-## <a name="success"></a>Siker
+## <a name="success"></a>Sikeres
 
-A sikeres vagy sikertelen hívás megjelölése. Ez a mező kitöltése kötelező. Ha nincs beállítva az explicit módon `false` -kérelem sikeres számít. Ez az érték `false` Ha művelet kivétel által megszakított vagy a következő eredmény hibakódot adta vissza.
+A sikeres vagy sikertelen hívás megjelölése. A mező kitöltése kötelező. Ha nincs explicit módon beállítva a `false`re, a rendszer sikeresnek tekinti a kérelmet. Állítsa be ezt az értéket úgy, hogy `false`, ha a művelet kivétel miatt megszakadt, vagy a hiba eredményének kódját adta vissza.
 
-A webalkalmazások esetén az Application Insights meghatározni egy kérelmet, a sikeres a válaszkód esetén kevesebb mint `400` vagy egyenlő `401`. Azonban előfordulhatnak olyan esetek, amikor az alapértelmezett leképezés nem egyezik a kérelem a szemantikai. Válaszkód `404` utalhat a "nincs rekordok" rendszeres folyamat része lehet. Azt is jelentheti egy megszakadt hivatkozás. A hibás hivatkozást talál még akkor is Megvalósíthat az összetettebb logika. Csak akkor, ha a hivatkozások URL-cím hivatkozó elemzésével ugyanazon a helyen található kódhibáiként jelölheti meg hibás hivatkozást talál. Vagy hibák során érhető el, amely a vállalat mobilalkalmazás megjelölni. Hasonlóképpen `301` és `302` azt jelzi, hogy a hiba, amikor az ügyfél, amely nem támogatja az átirányítási érik el.
+A webalkalmazások esetében Application Insights sikeres kérést adjon meg, ha a válasz kódja kisebb, mint `400` vagy egyenlő `401`. Vannak azonban olyan esetek, amikor ez az alapértelmezett leképezés nem egyezik az alkalmazás szemantikai állapotával. A válasz kódja `404` a "No Records" kifejezésre utalhat, amely a normál folyamat része lehet. Emellett hibás hivatkozást is jelezhet. A hibás hivatkozások esetében még összetettebb logika is megvalósítható. A hibás hivatkozásokat csak akkor lehet hibákként megjelölni, ha a hivatkozások ugyanazon a helyen találhatók, a hivatkozó URL-cím elemzésével. Vagy megjelölheti őket meghibásodásként a vállalat mobil alkalmazásából való hozzáféréskor. Hasonlóképpen `301` és `302` az átirányítást nem támogató ügyféltől való hozzáférés hibáját jelzi.
 
-Részlegesen elfogadta a tartalom `206` előfordulhat, hogy egy átfogó kérelem sikertelenségét jelzik. Például az Application Insights-végpont telemetriai kötegelt egyetlen kérést kap. Adja vissza, `206` mikor a kötegben lévő egyes elemek nem sikerült feldolgozni. Növekvő mértékű `206` , meg kell vizsgálni kapcsolatos problémát jelez. Hasonló a logika vonatkozik `207` több állapota, ahol sikeres lehet, hogy külön válaszkódok legrosszabb.
+A részben elfogadott tartalom `206` a teljes kérelem meghibásodását jelezhetik. A Application Insights végpont például egyetlen kérelemként fogadja a telemetria elemek kötegét. @No__t_0 ad vissza, ha a köteg egyes elemeit nem sikerült feldolgozni. A `206` növekvő aránya azt a problémát jelzi, amelyet meg kell vizsgálni. A hasonló logika `207` többállapotú, ahol a siker lehet a különböző válasz-kódokhoz tartozó legrosszabb.
 
-Tudjon meg több a kérés eredménye kód és az állapotkódot az [blogbejegyzés](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+További információ: kérelem eredményének kódja és állapotkód a [blogbejegyzésben](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
@@ -79,9 +75,9 @@ Tudjon meg több a kérés eredménye kód és az állapotkódot az [blogbejegyz
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [A kérelem egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
-- Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
-- Ismerje meg, hogyan [konfigurálhatja az ASP.NET Core](../../azure-monitor/app/asp-net.md) alkalmazáshoz az Application insights segítségével.
-- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.
+- [Egyéni kérelem telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Megtudhatja, hogyan [konfigurálhat ASP.net Core](../../azure-monitor/app/asp-net.md) alkalmazást Application Insights használatával.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

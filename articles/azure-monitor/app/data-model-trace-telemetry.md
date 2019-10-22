@@ -1,46 +1,42 @@
 ---
-title: Az Azure Application Insights Telemetria adatmodell – Híváslánc-Telemetria |} A Microsoft Docs
-description: Application Insights-adatmodell híváslánc-telemetria
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Telemetria adatmodell – nyomkövetési telemetria | Microsoft Docs
+description: Application Insights adatmodell nyomkövetési telemetria
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: df85aafc81b199610c02f0faecb06e804fda24bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 855a93d8a6350c625fe0820fae83644aec3459ed
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899289"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678115"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Híváslánc-telemetria: Application Insights-adatmodell
+# <a name="trace-telemetry-application-insights-data-model"></a>Nyomkövetési telemetria: Application Insights adatmodell
 
-Nyomkövetési telemetriai adatok (a [Application Insights](../../azure-monitor/app/app-insights-overview.md)) jelöli `printf` stílus nyomkövetési utasításokat, amelyek szöveget keres. `Log4Net`, `NLog`, és más szöveges naplófájl-bejegyzéseket fordítja az ilyen típusú példányok. A nyomkövetés nincs mérések,-bővíthetőségi.
+A nyomkövetési telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) a szöveg által keresett, `printf` stílusú nyomkövetési utasításokat jelöli. a `Log4Net`, `NLog` és más szöveg alapú naplófájl-bejegyzések ilyen típusú példányokra vannak lefordítva. A nyomkövetés nem rendelkezik bővíthetőségi mértékkel.
 
-## <a name="message"></a>Message
+## <a name="message"></a>Üzenet
 
 Nyomkövetési üzenet.
 
-Maximális hossz: 32768 karaktert
+Maximális hossz: 32768 karakter
 
 ## <a name="severity-level"></a>Súlyossági szint
 
-Nyomon követheti a súlyossági szintet. Az érték lehet `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Nyomkövetés súlyossági szintje Az érték lehet `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Ismerkedés a .NET hívásláncnaplók megtekintése az Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
-- [Ismerje meg a nyomkövetési naplók az Application Insights Java](../../azure-monitor/app/java-trace-logs.md).
-- Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
-- [A nyomkövetési egyéni telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
-- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.
+- [Ismerkedjen meg a .net-nyomkövetési naplók Application Insights](../../azure-monitor/app/asp-net-trace-logs.md).
+- [Ismerkedjen meg a Java-nyomkövetési naplók Application Insights](../../azure-monitor/app/java-trace-logs.md).
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- [Egyéni nyomkövetési telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

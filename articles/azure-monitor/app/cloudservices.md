@@ -1,24 +1,18 @@
 ---
 title: Azure Cloud Services-Application Insights | Microsoft Docs
 description: Webes és feldolgozói szerepkörök hatékony figyelése az Application Insightsszal
-services: application-insights
-documentationcenter: ''
-keywords: WAD2AI, Azure Diagnostics
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 5c7a5b34-329e-42b7-9330-9dcbb9ff1f88
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.workload: tbd
-ms.date: 09/05/2018
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.date: 09/05/2018
+ms.openlocfilehash: d77bbe355b3f6a2666f46246d1d12cfb2e43e559
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933010"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677575"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -80,7 +74,7 @@ A telemetria a megfelelő erőforrásokhoz való elküldéséhez beállíthatja 
 
 Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](../../azure-monitor/app/powershell.md).
 
-1. A [Azure Portal][portal]válassza az **új** > **fejlesztői szolgáltatások** > **Application Insights**lehetőséget.  
+1. A [Azure Portal][portal]válassza az **új**  > **fejlesztői szolgáltatások**  > **Application Insights**lehetőséget.  
 
     ![Application Insights ablaktábla](./media/cloudservices/01-new.png)
 
@@ -92,7 +86,7 @@ Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség leh
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
 Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. A webes szerepkörök esetében ez a beállítás a teljesítmény figyelését, a riasztásokat, a diagnosztika és a használat elemzését teszi lehetővé. Más szerepkörök esetében olyan Azure Diagnostics kereshet és figyel, mint például az újraindítás, a teljesítményszámlálók és a System. Diagnostics. Trace hívása. 
 
-1. A Visual Studio megoldáskezelő >   **\<YourCloudService >** **szerepkörök**területén nyissa meg az egyes szerepkörök tulajdonságait.
+1. A Visual Studio Megoldáskezelő **\<YourCloudService >**  > **szerepkörök**területen nyissa meg az egyes szerepkörök tulajdonságait.
 
 1. A **konfiguráció**területen jelölje be a **diagnosztikai adatküldés Application Insightsba** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
 
@@ -100,7 +94,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 ![Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
 
-Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a *ServiceConfiguration nevű fájlba\*. cscfg*. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a *ServiceConfiguration. \*. cscfg*nevű fájlokba. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)teheti meg.
 
@@ -142,7 +136,7 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
 
 Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL-lekérdezéseket szeretne rögzíteni. 
 
-1. A `\*.csdef` fájlban az [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) hozzáadása a következőhöz hasonló szerepkörökhöz: 
+1. @No__t_0 fájlban a következőhöz hasonló szerepkörökhöz tartozó [indítási feladat](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks) hozzáadása: 
 
     ```xml
     <Startup>
@@ -157,7 +151,7 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
     </Startup>
     ```
     
-2. Töltse le a [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)fájlt, `AppInsightsAgent` és helyezze azokat az egyes szerepkör-projektek mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
+2. Töltse le a [InstallAgent. bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és a [InstallAgent. ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1)fájlt, és helyezze azokat az egyes szerepkör-projektek `AppInsightsAgent` mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
 
 3. A feldolgozói szerepkörökben adja hozzá a környezeti változókat: 
 
@@ -230,7 +224,7 @@ A feldolgozói szerepkörök esetében kétféleképpen követheti a kivételeke
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A rendszer alapértelmezés szerint az alábbi számlálókat gyűjti:
 
-* \Process(??APP_WIN32_PROC??)\% A processzor kihasználtsága
+* \Process(?? APP_WIN32_PROC??) \% processzoridő
 * \Memory\Available Bytes
 * \.NET CLR-kivételek (??APP_CLR_PROC??)\# az összes kivétel közül másodpercenként
 * \Process(??APP_WIN32_PROC??)\Private Bytes
@@ -281,7 +275,7 @@ A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Diagnostics-diagnosztikák Application Insightsba való küldésének konfigurálása](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Application Insights erőforrások automatikus létrehozása](../../azure-monitor/app/powershell.md)
 * [Azure Diagnostics automatizálása](../../azure-monitor/app/powershell-azure-diagnostics.md)

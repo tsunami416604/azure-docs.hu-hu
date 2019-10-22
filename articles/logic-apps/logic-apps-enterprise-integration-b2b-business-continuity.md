@@ -1,6 +1,6 @@
 ---
-title: B2B-integrációs fiókok – Azure Logic Apps vészhelyreállítása |} A Microsoft Docs
-description: Felkészülés a régiók közötti vész-helyreállítási az Azure Logic Appsben
+title: Vész-helyreállítás az integrációs fiókok esetében – Azure Logic Apps
+description: Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,239 +8,238 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.openlocfilehash: ac29ef7f0599cc41924ba1a5a00e46b0292e7e9b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 321bfb673bab748176d75db7bcf21d76ddf0c819
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967744"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680396"
 ---
-# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vészhelyreállítása az Azure Logic Apps B2B-integrációs fiókok
+# <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 
-B2B pénzt tranzakciók, például a rendeléseket és számlákat telepítse. A vész-helyreállítási esemény során, egy vállalati kritikus fontosságú a gyors helyreállítás megfelelni a vállalati szintű SLA-k teljesítésével partnereikkel. Ez a cikk bemutatja, hogyan hozhat létre egy üzletmenet folytonosságát biztosító terve B2B számítási feladatokhoz. 
+A B2B munkaterhelések olyan pénz-tranzakciókat tartalmaznak, mint a megrendelések és a számlák. A katasztrófák során kritikus fontosságú, hogy a vállalatok gyorsan visszaállítsák a partnereinkkel megállapodott üzleti szintű SLA-kat. Ez a cikk bemutatja, hogyan hozhat létre egy üzletmenet-folytonossági tervet a B2B munkaterhelésekhez. 
 
-* Vész-helyreállítási készültségi 
-* Feladatátvételt egy vész-helyreállítási esemény során másodlagos régióba 
-* Térhet vissza az elsődleges régióban egy vész-helyreállítási esemény után
+* Vész-helyreállítási készültség 
+* Feladatátvétel a másodlagos régióba katasztrófa esetén 
+* Visszatérés az elsődleges régióba egy katasztrófa utáni esemény után
 
-## <a name="disaster-recovery-readiness"></a>Vész-helyreállítási készültségi  
+## <a name="disaster-recovery-readiness"></a>Vész-helyreállítási készültség  
 
-1. Egy másodlagos régióba azonosításához, és hozzon létre egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a másodlagos régióban.
+1. Azonosítson egy másodlagos régiót, és hozzon létre egy [integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a másodlagos régióban.
 
-2. Adja hozzá a partnerek, sémákkal és szerződések, ahol a Futási állapot kell replikálni a másodlagos régióba integrációs fiók szükséges üzenet folyamatokhoz.
+2. Vegyen fel partnereket, sémákat és szerződéseket azokhoz a szükséges üzenet-folyamatokhoz, amelyekben a futtatási állapotot replikálni kell a másodlagos régió integrációs fiókjába.
 
    > [!TIP]
-   > Ellenőrizze, hogy nincs konzisztencia az integrációs fiók összetevő az elnevezési konvenciót régiók között elosztva. 
+   > Győződjön meg arról, hogy konzisztens az integrációs fiók összetevője a régiók közötti elnevezési konvencióban. 
 
-3. Kérje le a futtatási állapotát az elsődleges régióban, hozzon létre egy logikai alkalmazást a másodlagos régióban. 
+3. A futtatási állapot elsődleges régióból való lekéréséhez hozzon létre egy logikai alkalmazást a másodlagos régióban. 
 
-   Ez a logikai alkalmazás rendelkeznie kell egy *eseményindító* és a egy *művelet*. 
-   Az eseményindító kapcsolódjon az elsődleges régió integrációs fiók, és a másodlagos régióba integrációs fiók csatlakozik a műveletet. 
-   Az időintervallum alapján, az eseményindító kérdezze le az elsődleges régió állapot tábla futtassa, és lekéri az új bejegyzések, ha van ilyen. A művelet frissíti őket a másodlagos régióba integrációs fiókban. 
-   Ez segít növekményes futásidejű állapot kérhet elsődleges régió másodlagos régióba.
+   A logikai alkalmazásnak *triggerrel* és *művelettel*kell rendelkeznie. 
+   Az triggernek csatlakoznia kell az elsődleges régió integrációs fiókjához, és a műveletnek csatlakoznia kell a másodlagos régió integrációs fiókjához. 
+   Az időintervallum alapján az trigger lekérdezi az elsődleges régió futási állapotát, és lekéri az új rekordokat, ha vannak ilyenek. A művelet frissíti őket a másodlagos régió integrációs fiókjába. 
+   Ez segítséget nyújt a növekményes futtatókörnyezet állapotának az elsődleges régióból a másodlagos régióba való beszerzéséhez.
 
-4. A Logic Apps integrációs fiókban lévő üzletmenet-folytonossági célja, hogy támogatja a B2B-protokollok - X12, és az AS2, EDIFACT alapján. Részletes lépéseket megkereséséhez válassza ki a megfelelő hivatkozásokat.
+4. Logic Apps integrációs fiókban az üzletmenet folytonossága a B2B protokollok – X12, AS2 és EDIFACT alapján történő támogatásra lett tervezve. A részletes lépések megkereséséhez válassza ki a megfelelő hivatkozásokat.
 
-5. A javaslat az erőforrások üzembe helyezése minden elsődleges régióban egy másodlagos régióban túl. 
+5. A javaslat az összes elsődleges régió-erőforrás üzembe helyezése egy másodlagos régióban is. 
 
-   Elsődleges régió erőforrások közé tartoznak, az Azure SQL Database vagy Azure Cosmos DB, Azure Service Bus és az Azure Event Hubs-üzenetkezelés, Azure API Management és az Azure Logic Apps szolgáltatás az Azure App Service-ben használt.   
+   Az elsődleges régió erőforrásai közé tartozik az üzenetküldéshez, az Azure API Managementhoz és a Azure Logic apps Azure App Service szolgáltatáshoz használt Azure SQL Database vagy Azure Cosmos DB, Azure Service Bus és Azure Event Hubs.   
 
-6. Kapcsolat létrehozása egy elsődleges régióról egy másodlagos régióba. Kérje le a Futási állapot egy elsődleges régióban, hozzon létre egy logikai alkalmazást egy másodlagos régióban. 
+6. Hozzon létre kapcsolatot egy elsődleges régióból egy másodlagos régióba. A futtatási állapot elsődleges régióból való lekéréséhez hozzon létre egy logikai alkalmazást egy másodlagos régióban. 
 
-   A logikai alkalmazás egy eseményindítót és műveletet kell rendelkeznie. 
-   Az eseményindító csatlakozik egy elsődleges régióban integrációs fiókban. 
-   A művelet csatlakozzon egy másodlagos régióba integrációs fiókban. 
-   Az időintervallum alapján, az eseményindító kérdezze le az elsődleges régió állapot tábla futtassa, és lekéri az új bejegyzések, ha van ilyen. 
-   A művelet frissíti őket egy másodlagos régióba integrációs fiókba. 
-   Ez a folyamat segít növekményes futásidejű állapot beolvasása az elsődleges régióból a másodlagos régióba.
+   A logikai alkalmazásnak triggerrel és művelettel kell rendelkeznie. 
+   Az triggernek csatlakoznia kell egy elsődleges régió integrációs fiókjához. 
+   A műveletnek csatlakoznia kell egy másodlagos régió integrációs fiókjához. 
+   Az időintervallum alapján az trigger lekérdezi az elsődleges régió futási állapotát, és lekéri az új rekordokat, ha vannak ilyenek. 
+   A művelet frissíti őket egy másodlagos régió integrációs fiókjába. 
+   Ez a folyamat segítséget nyújt a növekményes futtatókörnyezet állapotának lekéréséhez az elsődleges régióból a másodlagos régióba.
 
-A Logic Apps integrációs fiókban lévő üzletmenet-folytonossági támogatja a B2B-protokollok X12, AS2 és EDIFACT alapján. A X12 és az AS2 részletes lépéseiért lásd: [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) és [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) ebben a cikkben.
+Logic Apps integrációs fiókban az üzletmenet folytonossága a X12, az AS2 és a EDIFACT B2B-protokollok alapján nyújt támogatást. A X12 és az AS2 használatának részletes lépéseiért lásd a jelen cikk [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) és [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) című témakörét.
 
-## <a name="fail-over-to-a-secondary-region-during-a-disaster-event"></a>Feladatátvételt egy vész-helyreállítási esemény során egy másodlagos régióba
+## <a name="fail-over-to-a-secondary-region-during-a-disaster-event"></a>Feladatátvétel egy másodlagos régióba katasztrófa esetén
 
-Során vész-helyreállítási esemény, ha az elsődleges régióban nem érhető el az üzletmenet folytonosságának forgalmat a másodlagos régióba. A partnerek által teljesítésével egy másodlagos régióba segítséget nyújt egy üzleti függvények gyors felel meg az RPO/RTO történő helyreállításához. A minimálisra csökkenti a feladatátvételt egy másik régióban egy adott régióban található erőfeszítéseket is. 
+Katasztrófa esetén, ha az elsődleges régió nem érhető el az üzletmenet folytonossága érdekében, a másodlagos régió felé irányuló közvetlen forgalom. Egy másodlagos régió segíti a vállalkozásokat a funkciók gyors helyreállításában, hogy azok megfeleljenek a partnerek által elfogadott RPO/RTO. Emellett az egyik régióból egy másik régióba történő feladatátvételre irányuló erőfeszítéseket is csökkentheti. 
 
-Nincs a várható késés ellenőrzőszámok másolása egy elsődleges régióról egy másodlagos régióba közben. Az ajánlás az ismétlődő létrehozott ellenőrzőszámok partnereknek küldenek egy vész-helyreállítási esemény elkerüléséhez, az ellenőrzőszámok növekszik a másodlagos régióba szerződés használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
+Az elsődleges régióból a másodlagos régióba való másolás során várható késés történt. Ha el szeretné kerülni, hogy a rendszer elküldje a duplikált vezérlőelemeket a partnereknek a katasztrófa-események során, a másodlagos régión belüli szerződésekben a [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje a vezérlőelem-számokat.
 
-## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Visszatérés egy elsődleges régióban utáni vész-helyreállítási esemény
+## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Visszatérés egy elsődleges régióba, a katasztrófa utáni esemény után
 
-Visszaállni egy elsődleges régióban elérhetővé válik, kövesse az alábbi lépéseket:
+Ha elérhetővé kívánja tenni az elsődleges régiót, kövesse az alábbi lépéseket:
 
-1. A másodlagos régió partnerektől származó üzenetek fogadását.  
+1. A másodlagos régióban lévő partnerektől érkező üzenetek fogadásának leállítása.  
 
-2. Növelje a generált ellenőrzőszámok az elsődleges régió-megállapodásokat használatával [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
+2. A [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje az összes elsődleges régióra vonatkozó szerződés generált vezérlőelem-számát.  
 
-3. Közvetlen forgalmat a másodlagos régióból az elsődleges régióba.
+3. Közvetlen forgalom a másodlagos régióból az elsődleges régióba.
 
-4. Ellenőrizze, hogy engedélyezve van-e a logikai alkalmazás futtatási állapota az elsődleges régióból történő beolvasás a másodlagos régióban létrehozott.
+4. Győződjön meg arról, hogy a másodlagos régióban létrehozott logikai alkalmazás az elsődleges régióból való kihúzási állapotot engedélyezte.
 
 ## <a name="x12"></a>X12 
 
-X 12 dokumentumok EDI az üzletmenet-folytonossági ellenőrzőszámok alapul:
+Az EDI-X12 dokumentumok üzleti folytonossága az ellenőrzési számokon alapul:
 
 > [!TIP]
-> Is használhatja a [X12 quick start sablon](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) logikai alkalmazásokat hozhat létre. Az elsődleges és másodlagos integrációs fiókok létrehozását is a sablon használatának előfeltételei. A sablon segítségével hozhat létre két a logic apps, az egyik az ellenőrzőszámok kapott, és egy másikat a létrehozott ellenőrzőszámok. Megfelelő triggereket és műveleteket jönnek létre a logic Apps, az eseményindító csatlakozik az elsődleges integrációs fiók és a műveletet úgy, hogy a másodlagos integrációs fiókban.
+> A logikai alkalmazások létrehozásához használhatja a [X12 gyors üzembe helyezési sablonját](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) is. Az elsődleges és a másodlagos integrációs fiókok létrehozása a sablon használatának előfeltételei. A sablon segítségével két logikai alkalmazást hozhat létre, amelyek közül az egyik a kapott vezérlőelemek száma, a másik a generált vezérlőelemek száma. A rendszer a logikai alkalmazásokban hozza létre a megfelelő eseményindítókat és műveleteket, és csatlakoztatja az eseményindítót az elsődleges integrációs fiókhoz és a műveletet a másodlagos integrációs fiókhoz.
 
 **Előfeltételek**
 
-Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplikált ellenőrzési beállításokat a X12 szerződés fogadási beállítások.
+A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a X12-szerződés fogadási beállításai között található ismétlődő ellenőrzési beállításokat.
 
 ![Ismétlődő ellenőrzési beállítások kiválasztása](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy másodlagos régióban.    
+1. [Logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) létrehozása másodlagos régióban.    
 
-2. A Keresés **X12**, és válassza ki **X12 – egy ellenőrzőszám módosításakor**.   
+2. Keressen rá a **X12**elemre, és válassza **a X12 elemet – ha módosítani kívánja a vezérlőelem számát**.   
 
    ![X12 keresése](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
-   Az eseményindító kéri, hogy egy kapcsolatot egy integrációs fiókban. 
-   Az eseményindító csatlakozniuk kell egy elsődleges régióban integrációs fiókban.
+   Az trigger arra kéri, hogy hozzon létre kapcsolatot egy integrációs fiókkal. 
+   Az triggert egy elsődleges régió integrációs fiókjához kell csatlakoztatni.
 
-3. Adja meg a kapcsolat nevét, és válassza ki a *elsődleges régió integrációs fiók* a listából, és válassza a **létrehozás**.   
+3. Adja meg a kapcsolatok nevét, válassza ki az *elsődleges régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.   
 
-   ![Elsődleges régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
+   ![Elsődleges régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. A **ellenőrzőszám szinkronizálásának indítási dátuma és ideje** beállítás nem kötelező. A **gyakorisága** állítható **nap**, **óra**, **perc**, vagy **második** időközzel.   
+4. A **vezérlési szám szinkronizálásának megkezdéséhez szükséges dátum és** idő beállítás nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.   
 
-   ![Dátum és idő és a gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![DateTime és gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-5. Válassza ki **új lépés** > **művelet hozzáadása**.
+5. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.
 
-   ![Új lépés, a művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Új lépés, művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-6. A Keresés **X12**, és válassza ki **X12 – a hozzáadandó vagy frissítendő ellenőrzőszámok**.   
+6. Keressen rá a **X12**, és válassza a **X12**lehetőséget.   
 
-   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
+   ![Vezérlőelem-számok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**. 
+7. Ha egy műveletet egy másodlagos régió integrációs fiókjához szeretne csatlakoztatni, válassza a **kapcsolat módosítása**  > **új kapcsolat hozzáadása** lehetőséget az elérhető integrációs fiókok listájához. Adja meg a kapcsolatok nevét, válassza ki a *másodlagos régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget. 
 
-   ![Másodlagos régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Másodlagos régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-8. Nyers bemenetek váltson a jobb felső sarokban lévő ikonra kattintva.
+8. Váltson a nyers bemenetekre a jobb felső sarokban lévő ikonra kattintva.
 
-   ![Váltson át a nyers bemenetek](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Váltás nyers bemenetekre](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
-9. Válassza ki a szervezet a dinamikus tartalom választóból, és mentse a logikai alkalmazást.
+9. Válassza ki a dinamikus tartalom-választó törzsét, és mentse a logikai alkalmazást.
 
-   ![Dinamikus tartalom mezők](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
+   ![Dinamikus tartalom mezői](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
 
-   Az időintervallum alapján, az eseményindító kérdezze le az elsődleges régióba érkezett vezérlő tábla száma, és lekéri az új rekordokat. 
-   A művelet frissíti a rekordokat a másodlagos régióba integrációs fiókban. 
-   Ha nincsenek frissítések, az eseményindító állapotú **kihagyva**.   
+   Az adott időintervallum alapján az trigger lekérdezi az elsődleges régió vezérlési szám tábláját, és lekéri az új rekordokat. 
+   A művelet frissíti a rekordokat a másodlagos régió integrációs fiókjában. 
+   Ha nincsenek frissítések, az trigger állapota **kihagyva**jelenik meg.   
 
-   ![Vezérlő a tábla száma](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+   ![Vezérlő száma tábla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-Az időintervallum alapján, a növekményes futásidejű állapotát egy elsődleges régióról egy másodlagos régióba replikálja. Során vész-helyreállítási esemény, ha az elsődleges régió nem elérhető, közvetlen forgalmat a másodlagos régióba az üzletmenet folytonosságáról. 
+Az időintervallum alapján a növekményes futtatókörnyezet állapota egy elsődleges régióból egy másodlagos régióba replikálódik. Katasztrófa esetén, ha az elsődleges régió nem érhető el, az üzletmenet folytonossága érdekében a másodlagos régió felé irányuló közvetlen forgalom. 
 
 ## <a name="edifact"></a>EDIFACT 
 
-Üzletmenet-folytonossági EDI EDIFACT-dokumentumok ellenőrzőszámok alapul.
+Az EDI-EDIFACT dokumentumok üzleti folytonossága a vezérlőelemek számán alapul.
 
 **Előfeltételek**
 
-Ahhoz, hogy a vész-helyreállítási bejövő üzenetek, válassza ki a duplikált ellenőrzési beállításokat az EDIFACT-egyezmény fogadási beállítások.
+A bejövő üzenetek vész-helyreállításának engedélyezéséhez válassza a EDIFACT-szerződés fogadási beállításai között található ismétlődő ellenőrzési beállításokat.
 
 ![Ismétlődő ellenőrzési beállítások kiválasztása](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) egy másodlagos régióban.    
+1. [Logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) létrehozása másodlagos régióban.    
 
-2. A Keresés **EDIFACT**, és válassza ki **EDIFACT - egy ellenőrzőszám módosításakor**.
+2. Keressen rá a **EDIFACT**elemre, és válassza **a EDIFACT elemet – ha módosítani kívánja a vezérlőelem számát**.
 
    ![EDIFACT keresése](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
-   Az eseményindító kéri, hogy egy kapcsolatot egy integrációs fiókban. 
-   Az eseményindító csatlakozniuk kell egy elsődleges régióban integrációs fiókban. 
+   Az trigger arra kéri, hogy hozzon létre kapcsolatot egy integrációs fiókkal. 
+   Az triggert egy elsődleges régió integrációs fiókjához kell csatlakoztatni. 
 
-3. Adja meg a kapcsolat nevét, és válassza ki a *elsődleges régió integrációs fiók* a listából, és válassza a **létrehozás**.    
+3. Adja meg a kapcsolatok nevét, válassza ki az *elsődleges régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.    
 
-   ![Elsődleges régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
+   ![Elsődleges régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. A **ellenőrzőszám szinkronizálásának indítási dátuma és ideje** beállítás nem kötelező. A **gyakorisága** állítható **nap**, **óra**, **perc**, vagy **második** időközzel.    
+4. A **vezérlési szám szinkronizálásának megkezdéséhez szükséges dátum és** idő beállítás nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.    
 
-   ![Dátum és idő és a gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
+   ![DateTime és gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
-6. Válassza ki **új lépés** > **művelet hozzáadása**.    
+6. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.    
 
-   ![Új lépés, a művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
+   ![Új lépés, művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn4.png)
 
-7. A Keresés **EDIFACT**, és válassza ki **EDIFACT - hozzáadandó vagy frissítendő ellenőrzőszámok**.   
+7. Keressen rá a **EDIFACT**, és válassza a **EDIFACT**lehetőséget.   
 
-   ![A hozzáadandó vagy frissítendő ellenőrzőszámok](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
+   ![Vezérlőelem-számok hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. Szeretne egy másodlagos régióba integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**.
+8. Ha egy műveletet egy másodlagos régió integrációs fiókjához szeretne csatlakoztatni, válassza a **kapcsolat módosítása**  > **új kapcsolat hozzáadása** lehetőséget az elérhető integrációs fiókok listájához. Adja meg a kapcsolatok nevét, válassza ki a *másodlagos régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.
 
-   ![Másodlagos régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
+   ![Másodlagos régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-9. Nyers bemenetek váltson a jobb felső sarokban lévő ikonra kattintva.
+9. Váltson a nyers bemenetekre a jobb felső sarokban lévő ikonra kattintva.
 
-   ![Váltson át a nyers bemenetek](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Váltás nyers bemenetekre](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
-10. Válassza ki a szervezet a dinamikus tartalom választóból, és mentse a logikai alkalmazást.   
+10. Válassza ki a dinamikus tartalom-választó törzsét, és mentse a logikai alkalmazást.   
 
-   ![Dinamikus tartalom mezők](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
+   ![Dinamikus tartalom mezői](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
-   Az időintervallum alapján, az eseményindító kérdezze le az elsődleges régióba érkezett vezérlő tábla száma, és lekéri az új rekordokat.
-   A művelet frissíti a rekordokat a másodlagos régióba integrációs fiókba. 
-   Ha nincsenek frissítések, az eseményindító állapotú **kihagyva**.
+   Az adott időintervallum alapján az trigger lekérdezi az elsődleges régió vezérlési szám tábláját, és lekéri az új rekordokat.
+   A művelet frissíti a rekordokat a másodlagos régió integrációs fiókjába. 
+   Ha nincsenek frissítések, az trigger állapota **kihagyva**jelenik meg.
 
-   ![Vezérlő a tábla száma](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
+   ![Vezérlő száma tábla](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-Az időintervallum alapján, a növekményes futásidejű állapotát egy elsődleges régióról egy másodlagos régióba replikálja. Során vész-helyreállítási esemény, ha az elsődleges régió nem elérhető, közvetlen forgalmat a másodlagos régióba az üzletmenet folytonosságáról. 
+Az időintervallum alapján a növekményes futtatókörnyezet állapota egy elsődleges régióból egy másodlagos régióba replikálódik. Katasztrófa esetén, ha az elsődleges régió nem érhető el, az üzletmenet folytonossága érdekében a másodlagos régió felé irányuló közvetlen forgalom. 
 
 ## <a name="as2"></a>AS2 
 
-Az AS2-protokollt használó dokumentumok üzletmenet-folytonossági az Üzenetazonosító, és a MIC-érték alapján.
+Az AS2 protokollt használó dokumentumok üzletmenet-folytonossága az üzenet azonosítója és a MIC érték alapján történik.
 
 > [!TIP]
-> Is használhatja a [AS2 gyors üzembe helyezési sablon](https://github.com/Azure/azure-quickstart-templates/pull/3302) logikai alkalmazásokat hozhat létre. Az elsődleges és másodlagos integrációs fiókok létrehozását is a sablon használatának előfeltételei. A sablon segítségével hozzon létre egy logikai alkalmazást, amely rendelkezik egy eseményindítót és műveletet. A logikai alkalmazás létrehoz egy kapcsolatot egy eseményindítóból egy elsődleges integrációs fiók és a egy olyan műveletet, egy másodlagos integrációs fiókban.
+> A logikai alkalmazások létrehozásához az [AS2 gyors üzembe helyezési sablonját](https://github.com/Azure/azure-quickstart-templates/pull/3302) is használhatja. Az elsődleges és a másodlagos integrációs fiókok létrehozása a sablon használatának előfeltételei. A sablon segítséget nyújt egy triggerrel és egy művelettel rendelkező logikai alkalmazás létrehozásához. A logikai alkalmazás létrehoz egy kapcsolódást egy triggerből egy elsődleges integrációs fiókhoz, és egy műveletet egy másodlagos integrációs fiókhoz.
 
-1. Hozzon létre egy [logikai alkalmazás](../logic-apps/quickstart-create-first-logic-app-workflow.md) a másodlagos régióban.  
+1. Hozzon létre egy [logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md) a másodlagos régióban.  
 
-2. A Keresés **AS2**, és válassza ki **AS2 - amikor egy MIC-érték létrehozása**.   
+2. Keressen rá az **AS2**-ra, és válassza **az AS2 – a MIC-érték**létrehozásakor lehetőséget.   
 
    ![AS2 keresése](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
-   Eseményindító kéri, hogy egy kapcsolatot egy integrációs fiókban. 
-   Az eseményindító csatlakozniuk kell egy elsődleges régióban integrációs fiókban. 
+   Egy trigger arra kéri, hogy hozzon létre kapcsolatot egy integrációs fiókkal. 
+   Az triggert egy elsődleges régió integrációs fiókjához kell csatlakoztatni. 
    
-3. Adja meg a kapcsolat nevét, és válassza ki a *elsődleges régió integrációs fiók* a listából, és válassza a **létrehozás**.
+3. Adja meg a kapcsolatok nevét, válassza ki az *elsődleges régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.
 
-   ![Elsődleges régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
+   ![Elsődleges régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. A **MIC-érték szinkronizálásának indítási dátuma és ideje** beállítás nem kötelező. A **gyakorisága** állítható **nap**, **óra**, **perc**, vagy **második** időközzel.   
+4. A **MIC-érték szinkronizálásának kezdési dátuma** nem kötelező. A **gyakoriság** beállítható **nap**, **óra**, **perc**vagy **másodperc** értékre egy intervallummal.   
 
-   ![Dátum és idő és a gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
+   ![DateTime és gyakoriság](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
-5. Válassza ki **új lépés** > **művelet hozzáadása**.  
+5. Válassza az **Új lépés** > **Művelet hozzáadása** lehetőséget.  
 
-   ![Új lépés, a művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
+   ![Új lépés, művelet hozzáadása](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid4.png)
 
-6. A Keresés **AS2**, és válassza ki **AS2 - hozzáadandó vagy frissítendő MIC-tartalmak**.  
+6. Keressen az **AS2**-on, és válassza az **AS2 – MIC-tartalom hozzáadása vagy frissítése**elemet.  
 
-   ![MIC hozzáadása vagy frissítése](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
+   ![MIC-Hozzáadás vagy-frissítés](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Szeretne egy másodlagos integrációs fiók művelet csatlakozni, válassza ki a **kapcsolat módosítása** > **új kapcsolat hozzáadása** a rendelkezésre álló integrációs fiókok listáját. Adja meg a kapcsolat nevét, és válassza ki a *másodlagos régióba integrációs fiók* a listából, és válassza a **létrehozás**.
+7. Ha egy műveletet egy másodlagos integrációs fiókhoz szeretne csatlakoztatni, válassza a **kapcsolat módosítása**  > **új kapcsolat hozzáadása** lehetőséget az elérhető integrációs fiókok listájához. Adja meg a kapcsolatok nevét, válassza ki a *másodlagos régió integrációs fiókját* a listából, és válassza a **Létrehozás**lehetőséget.
 
-   ![Másodlagos régió integrációs fiók neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
+   ![Másodlagos régió integrációs fiókjának neve](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
-8. Nyers bemenetek váltson a jobb felső sarokban lévő ikonra kattintva.
+8. Váltson a nyers bemenetekre a jobb felső sarokban lévő ikonra kattintva.
 
-   ![Váltson át a nyers bemenetek](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2rawinputs.png)
+   ![Váltás nyers bemenetekre](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2rawinputs.png)
 
-9. Válassza ki a szervezet a dinamikus tartalom választóból, és mentse a logikai alkalmazást.   
+9. Válassza ki a dinamikus tartalom-választó törzsét, és mentse a logikai alkalmazást.   
 
    ![Dinamikus tartalom](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
-   Az időintervallum alapján, az eseményindító kérdezze le az elsődleges régió tábla, és lekéri az új rekordokat. A művelet frissíti őket a másodlagos régióba integrációs fiókba. 
-   Ha nincsenek frissítések, az eseményindító állapotú **kihagyva**.  
+   Az időintervallum alapján az trigger lekérdezi az elsődleges régió táblázatát, és lekéri az új rekordokat. A művelet frissíti őket a másodlagos régió integrációs fiókjába. 
+   Ha nincsenek frissítések, az trigger állapota **kihagyva**jelenik meg.  
 
    ![Elsődleges régió tábla](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 
-Az időintervallum alapján, a növekményes futásidejű állapot az elsődleges régióból a másodlagos régióba replikálja. Során vész-helyreállítási esemény, ha az elsődleges régió nem elérhető, közvetlen forgalmat a másodlagos régióba az üzletmenet folytonosságáról. 
+Az időtartam alapján a növekményes futtatókörnyezet állapota az elsődleges régióból a másodlagos régióba replikálódik. Katasztrófa esetén, ha az elsődleges régió nem érhető el, az üzletmenet folytonossága érdekében a másodlagos régió felé irányuló közvetlen forgalom. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md)
 

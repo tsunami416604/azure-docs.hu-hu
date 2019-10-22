@@ -1,6 +1,6 @@
 ---
-title: EDIFACT-üzenetek UNH 2,5 segements – Azure Logic Apps kezelésére |} A Microsoft Docs
-description: EDIFACT-dokumentumok kezelése UNH2.5 szegmens az Azure Logic Appsben és Enterprise Integration Pack-megoldásához
+title: UNH 2,5-szegmensek EDIFACT-üzenetekben – Azure Logic Apps
+description: A EDIFACT-üzenetek feloldása a Azure Logic Apps 2.5-ös UNH rendelkező szegmensekkel Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,45 +8,62 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.openlocfilehash: 926c9ebe8675d8b50d4544be813ae0b15492ae35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c30c35375a45171c938f80e94dd7d9be4c3ee8b1
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60681672"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679926"
 ---
-# <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Az Azure Logic Apps UNH2.5 szegmens EDIFACT-dokumentumok
+# <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>EDIFACT-dokumentumok kezelése UNH 2.5-es szegmensekkel Azure Logic Apps
 
-UNH2.5 szerepel az EDIFACT-dokumentumok, ha azt használja a keresési séma. 
+Ha egy UNH 2.5-ös szegmens létezik egy EDIFACT-dokumentumban, a rendszer a szegmenst használja a séma kereséséhez. Ebben a példában a EDIFACT-üzenetben a UNH mező `EAN008`:
 
-Példa: A UNH mező **EAN008** az EDIFACT-üzenet  
-UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
+`UNH+SSDD1+ORDERS:D:03B:UN:EAN008`
 
-Teendők, az üzenet kezeléséhez 
-1. A séma frissítése
-2. A szerződés beállításainak ellenőrzése  
+Az üzenet kezeléséhez kövesse az alábbi lépéseket:
+
+1. Frissítse a sémát.
+
+1. Keresse meg a szerződés beállításait.
 
 ## <a name="update-the-schema"></a>A séma frissítése
-Az üzenet feldolgozására is telepíteni kell egy séma UNH2.5 neve.  A példaként megadott, a legfelső szintű sémanév lenne **EFACT_D03B_ORDERS_EAN008**  
 
-Az egyes D03B_ORDERS egy másik kezelése UNH2.5 szegmens használatával meg kellene egy egyedi séma üzembe helyezése.  
+Az üzenet feldolgozásához olyan sémát kell központilag telepíteni, amely rendelkezik a UNH 2.5-ös gyökértartomány-névvel. Például a minta UNH mezőhöz tartozó gyökér neve `EFACT_D03B_ORDERS_EAN008`. Minden olyan `D03B_ORDERS` esetében, amely eltérő UNH 2.5-es szegmenssel rendelkezik, telepítenie kell egy különálló sémát.
 
-## <a name="add-schema-to-the-edifact-agreement"></a>Az EDIFACT-egyezmény séma hozzáadása
-### <a name="edifact-decode"></a>EDIFACT-dekódolást.
-A bejövő üzenet dekódolása, konfigurálja a séma az EDIFACT szerződés kap beállításai
-1. Adja hozzá a sémát az integrációs fiókba    
-2. A séma konfigurálásához az EDIFACT szerződés kap beállításait. 
-3. EDIFACT-egyezmény válassza ki, és kattintson a **Szerkesztés JSON-ként**.  UNH2.5 érték hozzáadása a kap szerződés **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
+## <a name="add-schema-to-edifact-agreement"></a>Séma hozzáadása a EDIFACT-szerződéshez
 
-### <a name="edifact-encode"></a>EDIFACT-kódolást
-A bejövő üzenet kódolására, konfigurálja a séma az EDIFACT-megállapodás küldési beállításaiban
-1. Adja hozzá a sémát az integrációs fiókba    
-2. Adja meg a sémában az EDIFACT-megállapodás küldési beállításai. 
-3. EDIFACT-egyezmény válassza ki, és kattintson a **Szerkesztés JSON-ként**.  UNH2.5 érték hozzáadása a Küldés szerződés **schemaReferences**
-![](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
+### <a name="edifact-decode"></a>EDIFACT dekódolása
 
-## <a name="next-steps"></a>További lépések
-* [További információ az integrációs fiók megállapodások](../logic-apps/logic-apps-enterprise-integration-agreements.md "megismerheti a vállalati integrációs szerződések")  
+A bejövő üzenet dekódolásához állítsa be a sémát a EDIFACT-szerződés fogadási beállításaiban:
+
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az integrációs fiókját.
+
+1. Adja hozzá a sémát az integrációs fiókhoz.
+
+1. Konfigurálja a sémát a EDIFACT-szerződés fogadási beállításai között.
+
+1. Válassza ki a EDIFACT szerződést, és válassza a **Szerkesztés JSON-ként**lehetőséget. Adja hozzá a UNH 2.5 értéket a fogadási megállapodás `schemaReferences` szakaszához:
+
+   ![UNH 2.5 hozzáadása a szerződés fogadásához](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image1.png)
+
+### <a name="edifact-encode"></a>EDIFACT kódolása
+
+A bejövő üzenet kódolásához konfigurálja a sémát a EDIFACT-szerződés küldési beállításai között.
+
+1. A [Azure Portal](https://portal.azure.com)nyissa meg az integrációs fiókját.
+
+1. Adja hozzá a sémát az integrációs fiókhoz.
+
+1. Konfigurálja a sémát a EDIFACT-szerződés küldési beállításai között.
+
+1. Válassza ki a EDIFACT szerződést, és kattintson **a Szerkesztés JSON-ként**elemre.  UNH 2.5 érték hozzáadása a szerződés küldése **schemaReferences**
+
+1. Válassza ki a EDIFACT szerződést, és válassza a **Szerkesztés JSON-ként**lehetőséget. Adja hozzá a UNH 2.5 értéket a küldési szerződés `schemaReferences` szakaszához:
+
+   ![A UNH 2.5 hozzáadása a szerződés elküldéséhez](./media/logic-apps-enterprise-integration-edifact_inputfile_unh2.5/image2.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+* További információ az [integrációs fiókokra vonatkozó szerződésekről](../logic-apps/logic-apps-enterprise-integration-agreements.md)

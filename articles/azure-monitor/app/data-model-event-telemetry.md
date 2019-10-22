@@ -1,33 +1,29 @@
 ---
-title: Az Azure Application Insights Telemetria adatmodell - esemény Telemetriát |} A Microsoft Docs
-description: Application Insights-adatmodell az esemény telemetriát
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Telemetria adatmodell – Event telemetria | Microsoft Docs
+description: Az Event telemetria Application Insights adatmodellje
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 8e519e5a5e5fe6b893fa5663e1426630f46f885f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900850"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678145"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Telemetriai esemény: Application Insights-adatmodell
+# <a name="event-telemetry-application-insights-data-model"></a>Event telemetria: Application Insights adatmodell
 
-Létrehozhat event telemetriai elem (a [Application Insights](../../azure-monitor/app/app-insights-overview.md)) jelölésére, hogy az alkalmazás a következő esemény. Ez általában egy felhasználói beavatkozás például gombra kattintson, vagy a order checkout. Az inicializálás vagy a konfiguráció módosítása alkalmazás életciklusa eseményt is lehet. 
+Az telemetria ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)) létrehozhat egy eseményt, amely az alkalmazásban bekövetkezett események ábrázolására használható. Általában ez egy felhasználói beavatkozás, például a Button Click vagy a Order pénztár. Az alkalmazás életciklus-eseménye (például inicializálás vagy konfiguráció frissítése) is lehet. 
 
-Események szemantikailag, előfordulhat, hogy, vagy nem feleltethető kérelmekre. Viszont ha megfelelően használja, esemény telemetriát, fontosabb, mint a kérések vagy a nyomkövetéseket. Események üzleti telemetriát, és a kevésbé agresszív lehet egy külön, tulajdonos [mintavételi](../../azure-monitor/app/api-filtering-sampling.md).
+Szemantikailag előfordulhat, hogy az események nem korrelálnak a kérelmekkel. Ha azonban megfelelően van használatban, az Event telemetria fontosabb, mint a kérelmek vagy a Nyomkövetések. Az események üzleti telemetria jelentenek, és külön, kevésbé agresszív [mintavételezéssel](../../azure-monitor/app/api-filtering-sampling.md)kell rendelkezniük.
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Név
 
-Esemény neve. Ahhoz, hogy a megfelelő csoportosítási és hasznos metrikákat, korlátozza az alkalmazás, hogy létrejöjjön egy kis számú külön esemény nevét. Például ne használja az esemény minden egyes létrehozott példány külön nevét.
+Esemény neve. A megfelelő csoportosítás és a hasznos mérőszámok engedélyezéséhez korlátozza az alkalmazást, hogy az csak kis számú különböző eseményt generáljon. Például ne használjon külön nevet az esemény minden egyes generált példánya számára.
 
 Maximális hossz: 512 karakter
 
@@ -39,8 +35,8 @@ Maximális hossz: 512 karakter
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
-- [Egyéni esemény telemetriát írhat](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
-- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- [Egyéni Event telemetria írása](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

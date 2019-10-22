@@ -1,6 +1,6 @@
 ---
-title: Késleltetett ablakos eseményindító – Azure Logic Apps az ismétlődő feladatok ütemezése
-description: Az Azure Logic Appsben a késleltetett ablak eseményindítóval ismétlődő automatikus feladatokkal és munkafolyamatokkal futtatásához és ütemezéséhez
+title: A összefüggő adatok kezelésére szolgáló feladatok ütemezett Azure Logic Apps
+description: Összefüggő adatok kezelésére szolgáló ismétlődő feladatok létrehozása és futtatása a Azure Logic Apps a csúszó ablakok használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,73 +9,73 @@ ms.author: estfan
 ms.reviewer: deli, klam, LADocs
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 44944955019fcf81fb0d296592577e2b00a15928
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0312d9480d00d4430cd5d42dc22ef9dac005ee2e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299502"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679064"
 ---
-# <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-sliding-window-trigger-in-azure-logic-apps"></a>Létrehozhatja, ütemezheti és ismétlődő feladatok és munkafolyamatok futtatása az Azure Logic Apps késleltetett ablak eseményindítót a
+# <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>A folytonos adatokhoz tartozó feladatok ütemezett és futtatásához használja a csúszó ablakos triggert Azure Logic Apps
 
-Feladatok, folyamatok és feladatok, amelyek kell kezelni a folytonos adattömbökre az adatokat rendszeresen futtatásához, a logikai alkalmazás munkafolyamatának a megkezdése a **késleltetett ablak - ütemezés** eseményindító. Dátum és idő, valamint az időzóna indítása a munkafolyamat és a egy ismétlődési, hogy a munkafolyamat ismétlődő állíthatja be. Ismétlődések valamilyen okból nem talált a rendszer, ha ez az eseményindító ezeket kihagyott ismétlődések dolgozza fel. Például az adatbázis és a biztonsági mentési tár közötti szinkronizálásakor használja a késleltetett eseményindító, hogy az adatok beolvasása szinkronizálása, hézagok nélkül. További információ a beépített ütemezési eseményindítók és műveletek: [ütemezés és Futtatás ismétlődő, automatizált, feladatok és az Azure Logic Apps munkafolyamat](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Ahhoz, hogy rendszeresen futtasson olyan feladatokat, folyamatokat vagy feladatokat, amelyeknek összefüggő adattömbökben kell kezelnie az adatok kezelését, elindíthatja a logikai alkalmazás munkafolyamatát a **csúszó ablakos** trigger használatával. Megadhat egy dátumot és időpontot, valamint egy időzónát a munkafolyamat elindításához és a munkafolyamat ismétlődésének megismétléséhez. Ha az ismétlődések valamilyen okból kimaradnak, az eseményindító feldolgozza ezeket a kihagyott ismétlődéseket. Ha például szinkronizálja az adatokat az adatbázis és a biztonsági mentési tároló között, akkor a csúszó ablak triggert használva, hogy az adatokat a rendszer hézagok nélkül szinkronizálja. A beépített ütemezett eseményindítókkal és műveletekkel kapcsolatos további információkért lásd: [ismétlődő automatizált, feladatok és munkafolyamatok ütemezett és futtatott Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-Az alábbiakban néhány mintákat, amelyek az eseményindító támogatja:
+Íme néhány példa, amelyet ez az trigger támogat:
 
-* Azonnal futtatni, és ismételje meg minden *n* másodperc, perc vagy órák száma.
+* Azonnal fusson, és ismételje meg az *n* másodpercenkénti számát, percet vagy órát.
 
-* Indítsa el a megadott dátummal és időponttal, majd futtassa, és ismételje meg minden *n* másodperc, perc vagy órák száma. A triggerrel egy kezdő időpontja múltbeli időpont, amely futtatja az összes korábbi ismétlődések is megadhat.
+* Kezdjen egy adott dátummal és időponttal, majd futtasson és ismételje meg az *n* másodpercenkénti számát, percet vagy órát. Ezzel az eseményindítóval megadhatja a múltbeli kezdési időt, amely minden korábbi ismétlődést futtat.
 
-* Késleltetés az egyes ismétlődési konkrét időtartamot futtatása előtt.
+* Egy adott időtartamra vonatkozó ismétlődések késleltetése a Futtatás előtt.
 
-Ez az eseményindító és az ismétlődési eseményindító közötti különbségek vagy további információt a munkafolyamat ismétlődő ütemezés esetén lásd: [ütemezése és futtatása ismétlődő, automatizált feladatokat, folyamatokat és munkafolyamatokat az Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Az eseményindító és az ismétlődési eseményindító közötti különbségek, illetve az ismétlődő munkafolyamatok ütemezésével kapcsolatos további információkért lásd: [ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezése és futtatása a Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 > [!TIP]
-> Ha a logikai alkalmazás elindításához, és csak egyetlen alkalommal fussanak a jövőbeli, tekintse meg a kívánt [Futtatás feladat csak egyszer](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once).
+> Ha szeretné elindítani a logikai alkalmazást, és csak egyszer kell futtatnia a jövőben, tekintse meg a [feladatok futtatása csak](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once)egyszer című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, akkor az [regisztráljon egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztrálhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
 
-* Alapvető ismeretek szerezhetők [a logic apps](../logic-apps/logic-apps-overview.md). Ha most ismerkedik a logic apps, [az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* A [Logic apps](../logic-apps/logic-apps-overview.md)alapszintű ismerete. Ha most ismerkedik a Logic apps szolgáltatással, Ismerje meg, [hogyan hozhatja létre az első logikai alkalmazását](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="add-sliding-window-trigger"></a>Késleltetett eseményindító hozzáadása
+## <a name="add-sliding-window-trigger"></a>Csúszó ablakos trigger hozzáadása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
-1. Miután Logikaialkalmazás-Tervező jelenik meg, a Keresés mezőbe írja be a "csúszóablakban" szűrőként. Az eseményindítók listában jelölje ki a logikai alkalmazás munkafolyamatának első lépéseként erre az eseményindítóra: **Csúszóablakszerűen történik**
+1. A Logic app Designer megjelenése után a keresőmezőbe írja be szűrőként a "csúszó ablak" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót a logikai alkalmazás munkafolyamatának első lépéseként: **ablak** behúzása
 
-   ![Válassza ki a "késleltetett" eseményindító](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
+   ![Válassza a "csúszó ablak" triggert](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
-1. Adja meg az ismétlés időközét és gyakoriságát. Ebben a példában állítsa be ezeket a tulajdonságokat a munkafolyamatot hetente futtatni.
+1. Adja meg az ismétlés időközét és gyakoriságát. Ebben a példában ezeket a tulajdonságokat úgy állítsa be, hogy hetente futtassák a munkafolyamatot.
 
-   ![Set időközét és gyakoriságát](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
+   ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
+   | Tulajdonság | Szükséges | JSON-név | Type (Típus) | Leírás |
    |----------|----------|-----------|------|-------------|
-   | **Intervallum** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy milyen gyakran a munkafolyamat futtatása gyakorisága alapján. Az alábbiakban a minimális és maximális időközönként: <p>– Óra: 1 – 12 000 óra </br>– Perc: 1 – 72,000 perc </br>-Másodperc: 1 – 9,999,999 másodperc<p>Például ha a időköz 6, és a gyakoriság "Hour", majd az ismétlődést, 6 óránként. |
-   | **Gyakoriság** | Igen | frequency | String | Az időegység, az Ismétlődés: **Második**, **perc**, vagy **óra** |
+   | **Intervallum** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Hour", akkor az ismétlődés 6 óránként történik. |
+   | **Gyakoriság** | Igen | frequency | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**vagy **óra** |
    ||||||
 
    ![Speciális ismétlődési beállítások](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   További ismétlődési beállítások, nyissa meg a **új paraméter hozzáadása** listája. 
-   Minden kiválasztott beállítások kiválasztása után jelennek meg az eseményindító.
+   További ismétlődési lehetőségekért nyissa meg az **új paraméterek hozzáadása** listát. 
+   A kiválasztott lehetőségek megjelennek az triggeren a kijelölés után.
 
-   | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
+   | Tulajdonság | Szükséges | JSON-név | Type (Típus) | Leírás |
    |----------|----------|-----------|------|-------------|
-   | **Delay** | Nem | delay | String | Egyes ismétlődési használatával késleltetés idejére a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
-   | **Időzóna** | Nem | timeZone | String | Csak amikor Ön megadja a kezdési időt, mert ez az eseményindító nem fogadja el érvényes [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az időzónát, amely a alkalmazni szeretné. |
-   | **Kezdési idő** | Nem | startTime | String | Adja meg a kezdő dátum és idő a következő formátumban: <p>ÉÉÉÉ-hh-nnTóó: pp: Ha egy időzóna <p>– vagy – <p>ÉÉÉÉ-hh-DDThh:mm:ssZ, ha nem adja meg a időzóna <p>Így például, ha azt szeretné, 2017. szeptember 18., 2:00-kor, majd adja meg "2017-09-18T14:00:00", és válassza ki az időzónát, például a csendes-óceáni téli idő. Másik lehetőségként adja meg "2017-09-18T14:00:00Z" időzóna nélkül. <p>**Megjegyzés:** Hajtsa végre a kezdő időpont a [ISO 8601 dátum-idő specifikáció](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) a [UTC idő dátumformátum](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de egy [posun UTC místního](https://en.wikipedia.org/wiki/UTC_offset). Ne válassza ki az időzónát, ha hozzá kell adnia a levél "Z", a végén szóközök nélkül. A "Z" hivatkozik az azzal egyenértékű [hajózási idő](https://en.wikipedia.org/wiki/Nautical_time). <p>Egyszerű ütemezések esetében a kezdési időpont az első előfordulás a speciális ismétlődések, az eseményindító nem indul el minden korábban, a kezdési időpontnál. [*Mik azok a módon, hogy a kezdő dátum és idő használható?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Késedelem** | Nem | késedelem | Sztring | Az egyes ismétlődések késleltetésének időtartama az [ISO 8601 dátum-idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Durations) használatával |
+   | **Időzóna** | Nem | timeZone | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
+   | **Kezdési idő** | Nem | startTime | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Így például, ha a szeptember 18., 2017 at 2:00 PM-t szeretné használni, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ennek a kezdési időpontnak meg kell felelnie az [ISO 8601 dátum-idő specifikációjának](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemezések esetében a kezdő időpont az első előfordulás, míg a speciális ismétlődések esetében az eseményindító nem indul el a kezdési időpontnál hamarabb. [*Milyen módon használhatom a kezdő dátumot és időt?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    |||||
 
-1. Most már létrehozhatja a fennmaradó munkafolyamatot más műveletekkel. Hozzáadhat további műveleteket, lásd: [Azure Logic Apps összekötői](../connectors/apis-list.md).
+1. Most hozza létre a hátralévő munkafolyamatot más műveletekkel. További felvehető műveletekért lásd: [összekötők Azure Logic Appshoz](../connectors/apis-list.md).
 
-## <a name="workflow-definition---sliding-window"></a>Munkafolyamat-definíció – késleltetett ablak
+## <a name="workflow-definition---sliding-window"></a>Munkafolyamat-definíció – ablak csúsztatása
 
-A logikai alkalmazás alapjául szolgáló munkafolyamat-definíciót, amely JSON-t használ, a késleltetett ablak eseményindító meghatározása a választott beállításokkal is megtekintheti. Ez a definíció megtekintéséhez a Tervező eszköztárán válassza **Kódnézet**. Térjen vissza a tervezőben, válassza az entitástervező eszköztár **Designer**.
+A logikai alkalmazás mögöttes munkafolyamat-definíciójában, amely JSON-t használ, megtekintheti a csúszó ablak trigger definícióját a kiválasztott beállításokkal. A definíció megtekintéséhez a tervező eszköztárán válassza a **kód nézet**lehetőséget. A tervezőhöz való visszatéréshez válassza a tervező eszköztárán a **tervező elemet.**
 
-Ez a példa megmutatja, hogy milyen egy késleltetett ablak eseményindító meghatározása előfordulhat, hogy az alapul szolgáló munkafolyamat-definíció ahol minden egyes ismétlődés késleltetési idő legyen-e öt másodpercenként egy óránkénti Ismétlődés:
+Ebből a példából megtudhatja, hogyan jelenhet meg a csúszó ablak eseményindítójának definíciója egy mögöttes munkafolyamat-definícióban, ahol az ismétlődések késése öt másodperc az óránkénti ismétlődésnél:
 
 ``` json
 "triggers": {
@@ -96,7 +96,7 @@ Ez a példa megmutatja, hogy milyen egy késleltetett ablak eseményindító meg
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A munkafolyamatokban a következő művelet késleltetése](../connectors/connectors-native-delay.md)
-* [A Logic Apps összekötői](../connectors/apis-list.md)
+* [A következő művelet késleltetése a munkafolyamatokban](../connectors/connectors-native-delay.md)
+* [Logic Apps-összekötők](../connectors/apis-list.md)

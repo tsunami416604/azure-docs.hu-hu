@@ -1,35 +1,30 @@
 ---
-title: Még több előny az Azure Application Insights |} A Microsoft Docs
-description: Ismerkedés az Application insights szolgáltatással, miután itt található egy összefoglaló megismerheti a szolgáltatást.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 7ec10a2d-c669-448d-8d45-b486ee32c8db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Ismerje meg az Azure-Application Insightst | Microsoft Docs
+description: A Application Insights megkezdése után itt találja a felderíthető funkciók összegzését.
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 02/03/2017
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 7e62efb0b64b0b882b36126af4a1f9d520d92475
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/03/2017
+ms.openlocfilehash: 8c51745c43ced8ad3031a6a01096261ef72b33fc
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230639"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678353"
 ---
-# <a name="more-telemetry-from-application-insights"></a>További telemetria az Application Insightsból
-Miután [hozzá az Application Insights az ASP.NET-kódban](../../azure-monitor/app/asp-net.md), akkor megteheti, hogy további telemetriai adatokat néhány dolgot. 
+# <a name="more-telemetry-from-application-insights"></a>Application Insights további telemetria
+Miután [hozzáadta Application Insightst a ASP.net-kódhoz](../../azure-monitor/app/asp-net.md), néhány dolog elvégezhető, hogy még több telemetria kapjon. 
 
-| Műveletek | Amihez jut|
+| Műveletek | Az ajándékok|
 |---|---|
-|(Az IIS-kiszolgálókkal) [Állapotfigyelő telepítése](https://go.microsoft.com/fwlink/?LinkId=506648) az összes kiszolgálón.<br/>(Az azure web apps) A webalkalmazás Azure Vezérlőpulton nyissa meg az Application Insights paneljén.| [**Teljesítményszámlálók**](../../azure-monitor/app/performance-counters.md)<br/>[**Kivételek** ](asp-net-exceptions.md) – részletes veremkiíratásokat<br/>[**Függőségek**](../../azure-monitor/app/asp-net-dependencies.md)|
-|[A JavaScript-kódrészletet a weboldalakhoz hozzáadása](../../azure-monitor/app/javascript.md)|[Teljesítmény lapon](../../azure-monitor/app/usage-overview.md), böngészőbeli kivételekkel, az AJAX teljesítménye. Egyéni ügyféloldali telemetria.|
-|[Rendelkezésre állási webes tesztek létrehozása](../../azure-monitor/app/monitor-web-app-availability.md)|Riasztásokat kaphat, ha a webhely elérhetetlenné válik.|
-|[Győződjön meg, hogy buildinfo.config](https://msdn.microsoft.com/library/dn449058.aspx) MSBuild által generált|[A mérőszám-diagramok jegyzetek létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
-|[Egyéni események és metrikák írása](../../azure-monitor/app/api-custom-events-metrics.md)|Üzleti eseményeket és mérőszámokat száma, nyomon követheti a részletes használati és egyebek.|
-|[Az élő webhelyet profil](https://aka.ms/AIProfilerPreview)|Az élő webalkalmazását részletes függvény időzítés|
+|(IIS-kiszolgálók) [Telepítse a Állapotmonitort](https://go.microsoft.com/fwlink/?LinkId=506648) az egyes kiszolgálókon.<br/>(Azure Web Apps) A webalkalmazáshoz tartozó Azure-vezérlőpulton nyissa meg a Application Insights panelt.| [**Teljesítményszámlálók**](../../azure-monitor/app/performance-counters.md)<br/>[**Kivételek**](asp-net-exceptions.md) – részletes verem-nyomkövetés<br/>[**Függőségek**](../../azure-monitor/app/asp-net-dependencies.md)|
+|[A JavaScript-kódrészlet hozzáadása a weblapokhoz](../../azure-monitor/app/javascript.md)|[Oldal teljesítmény](../../azure-monitor/app/usage-overview.md), böngészőbeli kivételek, Ajax-teljesítmény. Egyéni ügyféloldali telemetria.|
+|[Rendelkezésre állási webes tesztek létrehozása](../../azure-monitor/app/monitor-web-app-availability.md)|Riasztások kérése, ha a webhely elérhetetlenné válik|
+|Győződjön meg arról, hogy az MSBuild létrehozta a [buildinfo. config fájlt.](https://msdn.microsoft.com/library/dn449058.aspx)|[Jegyzetek létrehozása metrikus diagramokban](https://docs.microsoft.com/azure/azure-monitor/app/annotations)
+|[Egyéni események és metrikák írása](../../azure-monitor/app/api-custom-events-metrics.md)|Megszámolhatja az üzleti eseményeket és mérőszámokat, nyomon követheti a részletes használatot és egyebeket.|
+|[Az élő webhely profilja](https://aka.ms/AIProfilerPreview)|Részletes függvények időzítése az élő webalkalmazásból|
 
 
 

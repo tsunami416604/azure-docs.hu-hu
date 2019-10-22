@@ -1,41 +1,39 @@
 ---
-title: Az Azure Application Insights nyomkövetésére elosztott |} A Microsoft Docs
-description: A Microsoft támogatásával kapcsolatos információkat biztosít a helyi továbbító és a partneri kapcsolat a OpenCensus projekt az elosztott nyomkövetést
-services: application-insights
-keywords: ''
+title: Elosztott nyomkövetés az Azure Application Insightsban | Microsoft Docs
+description: Tájékoztatást nyújt a Microsoft által az elosztott nyomkövetés támogatásáról a helyi továbbító és a OpenCensus-projektben való együttműködés révén
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
-ms.reviewer: mbullwin
 ms.date: 09/17/2018
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7bc04748f2a5b8caa8f589140dd46f0650b7b390
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: mbullwin
+ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60898846"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677120"
 ---
-# <a name="what-is-distributed-tracing"></a>Mi az az elosztott nyomkövetési?
+# <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
-A modern felhőalapú megjelenésével és [mikroszolgáltatások](https://azure.com/microservices) architektúrák növekedését egyszerű, függetlenül üzembe helyezhető szolgáltatások, amelyek segítségével csökkentheti a költségeket a rendelkezésre állási és az átviteli sebesség növelése mellett. Azonban amíg ezek áthelyezések száma – az egyes szolgáltatások végzett megérteni a teljes, igazi érdeme, átfogó rendszerek nehezebb kapcsolatos okból és a hibakereséshez.
+A modern felhő-és a [Service](https://azure.com/microservices) -architektúrák megjelenése olyan egyszerű, egymástól függetlenül telepíthető szolgáltatásokat eredményezett, amelyek segíthetnek csökkenteni a költségeket a rendelkezésre állás és az átviteli sebesség növelése mellett. De bár ezek a mozgások az egyes szolgáltatásokat könnyebben megértették, a teljes rendszerek megnehezítik a rendszert és a hibakeresést.
 
-A monolitikus architektúrák közben használtunk a hívási hibakereséséről. Hívási azok ragyogó eszközök megjelenítéséhez, a folyamat-végrehajtás (módszer A hívott metódus B, c. módszer neve), valamint a részletek és a paraméterek egyes ezeket a hívásokat. Ez a nagyszerű kódtömbök vagy egyetlen folyamat futó szolgáltatások esetén, de hogyan tegye azt debug mikor a hívás nem egy folyamat határán, nem csak a helyi veremben hivatkozást? 
+A monolitikus architektúrákban a hívási veremekkel való hibakereséshez kaptunk felhasználva. A hívási verem olyan briliáns eszközök, amelyekkel megjeleníthető a végrehajtás folyamata (metódus A "B" metódus, amely a C módszernek nevezett), valamint az egyes hívásokra vonatkozó részletek és paraméterek. Ez nagyszerűen használható a monolitok vagy a szolgáltatások esetében, amelyek egyetlen folyamaton futnak, de hogyan lehet hibakeresést végezni, ha a hívás egy folyamat határán kívül esik, nem csupán a helyi veremre mutató hivatkozást? 
 
-Ez hol elosztott nyomkövetést érhető el.  
+Ez az a hely, ahol az elosztott nyomkövetés bekerül.  
 
-Elosztott nyomkövetést megegyezik a modern felhő- és mikroszolgáltatás-architektúrák, a hívás halmok egy egyszerűsített teljesítmény-Profilkészítő lépett fel igény szerinti hozzáadásával. Az Azure monitorban a két megközelítés elosztott nyomkövetési adatok felhasználásához biztosítunk. Az első az [tranzakció diagnosztikája](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) hasonlóan a hívási veremben egy time dimenzió az új funkció a nézetben. A tranzakció diagnosztikája nézet egyetlen tranzakció/kérelemként rálátást biztosít, és hasznos megbízhatósággal kapcsolatos problémákat és a egy kérelem történik a teljesítmény szűk a kiváltó okok kimutatásához.
+Az elosztott nyomkövetés a modern felhő-és a szolgáltatás-architektúrák hívási helyeinek megfelelője, és a rendszer leegyszerűsíti a teljesítményt. Azure Monitor két, az elosztott nyomkövetési adat felhasználására szolgáló élményt biztosítunk. Az első a [tranzakciós diagnosztika](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) nézete, amely olyan, mint a hívási verem, amelyhez egy idődimenzió van hozzáadva. A tranzakciós diagnosztika nézet egyetlen tranzakció/kérelem megjelenítését teszi lehetővé, és hasznos lehet a megbízhatósági problémák kiváltó okának és a teljesítmény szűk keresztmetszetének megkeresésére a kérelmek alapján.
 
-Az Azure Monitor is biztosít egy [alkalmazástérkép](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) nézetet, amelyben a rendszerek együttműködését, és Mik azok az átlagos teljesítmény és a hibák gyakoriságát topológiai nézetével megjeleníthető sok tranzakció összesíti. 
+A Azure Monitor egy [alkalmazás-hozzárendelési](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) nézetet is kínál, amely számos tranzakciót összesít, hogy a rendszer hogyan befolyásolja a rendszerek működését, és hogy az átlagos teljesítmény és a hibák milyen arányban jelenjenek meg. 
 
-## <a name="how-to-enable-distributed-tracing"></a>Elosztott nyomkövetést engedélyezése
+## <a name="how-to-enable-distributed-tracing"></a>Az elosztott nyomkövetés engedélyezése
 
-Elosztott nyomkövetést engedélyezése egy alkalmazás szolgáltatásban szúrni a megfelelő SDK-t vagy a könyvtár összes szolgáltatás alapján a nyelv, a szolgáltatás implementálva lett.
+Az elosztott nyomkövetés engedélyezése egy alkalmazás szolgáltatásaiban olyan egyszerű, mintha a megfelelő SDK-t vagy tárat hozzáadja az egyes szolgáltatásokhoz, a szolgáltatás által megvalósított nyelv alapján.
 
-## <a name="enabling-via-application-insights-sdks"></a>Application Insights SDK-k használatával engedélyezése
+## <a name="enabling-via-application-insights-sdks"></a>Engedélyezés Application Insights SDK-n keresztül
 
-Az Application Insights SDK-k a .NET, .NET Core, Java, Node.js és JavaScript összes támogatja a natív módon az elosztott nyomkövetési. Útmutatás telepítéséhez, és minden Application Insights SDK konfigurálása alatt érhetők el:
+A .NET, a .NET Core, a Java, a Node. js és a JavaScript Application Insights SDK-k támogatják az elosztott nyomkövetés natív módon történő használatát. Az egyes Application Insights SDK-hoz történő telepítésére és konfigurálására vonatkozó utasítások alább érhetők el:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
@@ -43,20 +41,20 @@ Az Application Insights SDK-k a .NET, .NET Core, Java, Node.js és JavaScript ö
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 
-A megfelelő Application Insights SDK telepítése és konfigurálása, a nyomkövetés automatikusan gyűjt adatokat a népszerű keretrendszereket, könyvtárak és technológiák SDK függőségi auto-gyűjtők által. A támogatott technológiák teljes listája megtalálható [a függőségi az automatikus gyűjtés dokumentáció](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
+A megfelelő Application Insights SDK telepítésével és konfigurálásával az SDK-függőségi automatikus gyűjtők automatikusan gyűjtik a nyomkövetési információkat a népszerű keretrendszerek, könyvtárak és technológiák számára. A támogatott technológiák teljes listája [a függőségi automatikus gyűjtemény dokumentációjában](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)érhető el.
 
- Emellett minden olyan technológia nyomon követhetők manuálisan hívásával [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) a a [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics).
+ Emellett a technológia manuálisan is nyomon követhető a [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) hívásával.
 
-## <a name="enable-via-opencensus"></a>Keresztül OpenCensus engedélyezése
+## <a name="enable-via-opencensus"></a>Engedélyezés a OpenCensus-n keresztül
 
-Az Application Insights SDK-k mellett az Application Insights is támogatja keresztül elosztott nyomkövetést [OpenCensus](https://opencensus.io/). OpenCensus egy nyílt forráskódú, gyártófüggetlen, egyetlen terjesztési kódtárak metrikák gyűjtési és elosztott nyomkövetést a szolgáltatások biztosítása érdekében. Emellett lehetővé teszi a nyílt forráskódú fejlesztői Közösség elosztott nyomkövetést, Redis, a Memcached, vagy a MongoDB népszerű technológiáival engedélyezéséhez. [A Microsoft együttműködnek a OpenCensus számos más figyelési és a felhő partnerek](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
+A Application Insights SDK-k mellett Application Insights is támogatja az elosztott nyomkövetést a [OpenCensus](https://opencensus.io/)-en keresztül. A OpenCensus egy nyílt forráskódú, szállítói-agnosztikus, a könyvtárak egyetlen eloszlása, amely metrikák gyűjtését és elosztott nyomkövetését biztosítja a szolgáltatásokhoz. Emellett lehetővé teszi a nyílt forráskódú közösség számára, hogy lehetővé tegye az elosztott nyomkövetést olyan népszerű technológiákkal, mint a Redis, a Memcached vagy a MongoDB. [A Microsoft számos más monitorozási és felhőalapú partnerrel együttműködve együttműködik a OpenCensus](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-Elosztott nyomkövetést képességek hozzáadása alkalmazáshoz való hozzárendelésként az OpenCensus, először [telepítése és konfigurálása az Application Insights helyi továbbító](./../../azure-monitor/app/opencensus-local-forwarder.md). Itt konfigurálhatja a OpenCensus elosztott nyomkövetési adatokat a helyi továbbító keresztül irányíthatja. Mindkét [Python](./../../azure-monitor/app/opencensus-python.md) és [Go](./../../azure-monitor/app/opencensus-go.md) támogatottak.
+Ha elosztott nyomkövetési képességeket szeretne hozzáadni egy alkalmazáshoz a OpenCensus-ben, először [telepítse és konfigurálja az Application Insights helyi továbbítót](./../../azure-monitor/app/opencensus-local-forwarder.md). Az elosztott nyomkövetési adatok helyi továbbítón keresztül történő átirányításához konfigurálja a OpenCensus. A [Python](./../../azure-monitor/app/opencensus-python.md) és a [Go](./../../azure-monitor/app/opencensus-go.md) is támogatott.
 
-A OpenCensus webhely fenntartja API referenciadokumentációt tartalmaz a [Python](https://opencensus.io/api/python/trace/usage.html) és [Go](https://godoc.org/go.opencensus.io), különféle különböző útmutatók a OpenCensus valamint. 
+A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [OpenCensus Python – használati útmutató](https://opencensus.io/api/python/trace/usage.html)
-* [Alkalmazástérkép](./../../azure-monitor/app/app-map.md)
-* [Teljes körű alkalmazásteljesítmény-figyelés](./../../azure-monitor/learn/tutorial-performance.md)
+* [OpenCensus Python használati útmutató](https://opencensus.io/api/python/trace/usage.html)
+* [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
+* [Végpontok közötti teljesítmény figyelése](./../../azure-monitor/learn/tutorial-performance.md)

@@ -4,23 +4,22 @@ description: Megtudhatja, hogyan telepíthet át egy élő webhelyhez már hozz�
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: erikre
-editor: jimbe
+manager: gwallace
 tags: top-support-issue
 ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 10/21/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 703a151f801f65b968ecf93eaa97640c22a71bd2
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5f11173c7b7f7396a8cf5cda4b9c8975cd7bb38e
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073091"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679801"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név átmigrálása Azure App Service
 
@@ -49,23 +48,23 @@ Ha végül áttelepíti az egyéni DNS-nevet a régi helyről a App Service alka
 
 ### <a name="create-domain-verification-record"></a>Tartomány-ellenőrzési rekord létrehozása
 
-A tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy TXT-rekordot. A TXT rekord leképezi a _awverify.&lt; altartomány >_  _&lt;AppName >. azurewebsites. net_. 
+A tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy TXT-rekordot. A TXT rekord leképezi a _awverify. &lt;subdomain >_ _&lt;appname >. azurewebsites. net_fájlra. 
 
-A szükséges TXT-rekord az áttelepíteni kívánt DNS-rekordtól függ. Példákat a következő táblázat tartalmaz (`@` általában a legfelső szintű tartományt jelenti):
+A szükséges TXT-rekord az áttelepíteni kívánt DNS-rekordtól függ. Példákat a következő táblázat tartalmaz (`@` általában a legfelső szintű tartományt jelöli):
 
 | Példa DNS-rekordra | TXT-gazdagép | TXT-érték |
 | - | - | - |
-| \@legfelső szintű | _awverify_ | _&lt;AppName >. azurewebsites. net_ |
-| www (Sub) | _awverify.www_ | _&lt;AppName >. azurewebsites. net_ |
-| \*helyettesítő | _awverify.\*_ | _&lt;AppName >. azurewebsites. net_ |
+| \@ (root) | _awverify_ | _&lt;appname >. azurewebsites. net_ |
+| www (Sub) | _awverify. www_ | _&lt;appname >. azurewebsites. net_ |
+| \* (helyettesítő karakter) | _awverify. \*_ | _&lt;appname >. azurewebsites. net_ |
 
 A DNS-rekordok oldalon jegyezze fel az áttelepíteni kívánt DNS-név bejegyzéstípusát. A App Service támogatja a CNAME és A rekordok leképezését.
 
 > [!NOTE]
-> Bizonyos szolgáltatók (például a cloudflare `awverify.*` ) nem érvényes rekordok. Csak `*` Ehelyett használja.
+> Bizonyos szolgáltatók (például a CloudFlare) esetében a `awverify.*` nem érvényes rekord. Ehelyett csak `*` használjon.
 
 > [!NOTE]
-> A `*` helyettesítő rekordok nem ellenőrzik az altartományokat egy meglévő CNAME rekordkal. You may need to explicitly create a TXT record for each subdomain.
+> A helyettesítő karakterek `*` rekordok nem ellenőrzik az altartományokat egy meglévő CNAME rekordkal. Előfordulhat, hogy explicit módon létre kell hoznia egy TXT-rekordot mindegyik altartományhoz.
 
 
 ### <a name="enable-the-domain-for-your-app"></a>Az alkalmazás tartományának engedélyezése
@@ -74,11 +73,11 @@ A [Azure Portal](https://portal.azure.com)az alkalmazás lap bal oldali navigác
 
 ![Egyéni tartomány menü](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-Az **Egyéni tartományok** lapon jelölje be az **+** **állomásnév hozzáadása**jelölőnégyzetet.
+Az **Egyéni tartományok** lapon válassza az **állomásnév hozzáadása**elem melletti **+** ikont.
 
 ![Gazdagépnév hozzáadása](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Írja be a TXT- `www.contoso.com`rekordhoz hozzáadott teljes tartománynevet (például). Helyettesítő karakteres tartományhoz ( \*például. contoso.com) bármilyen DNS-nevet használhat, amely megfelel a helyettesítő karakteres tartománynak. 
+Írja be a TXT-rekordhoz hozzáadott teljes tartománynevet (például `www.contoso.com`). Helyettesítő karakteres tartományhoz (például \*. contoso.com) bármilyen DNS-nevet használhat, amely megfelel a helyettesítő karakteres tartománynak. 
 
 Válassza az **Érvényesítés** lehetőséget.
 
@@ -104,7 +103,7 @@ Az egyetlen teendő, hogy átirányítja az aktív DNS-rekordot, hogy App Servic
 
 ### <a name="copy-the-apps-ip-address-a-record-only"></a>Az alkalmazás IP-címének másolása (csak rekord)
 
-If you are remapping a CNAME record, skip this section. 
+Ha egy CNAME rekordot újra hozzárendel, ugorja át ezt a szakaszt. 
 
 Egy rekord átadásához szüksége lesz a App Service alkalmazás külső IP-címére, amely az **Egyéni tartományok** lapon látható.
 
@@ -118,19 +117,25 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 
 A tartományi szolgáltató DNS-rekordok lapján válassza ki a felvenni kívánt DNS-rekordot.
 
-`contoso.com` A legfelső szintű tartományhoz például a következő táblázatban szereplő példákhoz hasonló módon kell felvennie az a vagy a CNAME rekordot: 
+A `contoso.com` gyökértartomány esetében például a következő táblázatban szereplő példáknak megfelelően a (z) vagy a CNAME rekord újratársítása: 
 
-| Példa FQDN-re | Rekordtípus | Gazdagép | Value |
+| Példa FQDN-re | Rekordtípus | Gazdagép | Value (Díj) |
 | - | - | - | - |
-| contoso.com (root) | J | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-| www\.-contoso.com (Sub) | CNAME | `www` | _&lt;AppName >. azurewebsites. net_ |
-| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;AppName >. azurewebsites. net_ |
+| contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
+| www \.contoso. com (Sub) | CNAME | `www` | _&lt;appname >. azurewebsites. net_ |
+| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;appname >. azurewebsites. net_ |
 
 Mentse a beállításokat.
 
 A DNS-lekérdezések a DNS-propagálás megkezdése után azonnal megoldják a App Service alkalmazás feloldását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="active-domain-in-azure"></a>Aktív tartomány az Azure-ban
+
+Áttelepítheti az aktív egyéni tartományt az Azure-ban, előfizetések között vagy ugyanazon az előfizetésen belül. A leállás nélküli áttelepítés esetében azonban a forrásoldali alkalmazásnak és a célként megadott alkalmazásnak egy adott időpontban ugyanahhoz az egyéni tartományhoz kell rendelnie. Ezért győződjön meg arról, hogy a két alkalmazás nincs telepítve ugyanarra a központi telepítési egységre (belső nevén webtárhely). A tartománynév csak egy alkalmazáshoz rendelhető hozzá minden egyes telepítési egységben.
+
+Az alkalmazás üzembe helyezési egységét az FTP/S URL-cím `<deployment-unit>.ftp.azurewebsites.windows.net`jának tartománynevével tekintheti meg. Ellenőrizze, hogy a telepítési egység különbözik-e a forrásoldali alkalmazás és a cél alkalmazás között. Az alkalmazás központi telepítési egységét az [app Service-csomag](overview-hosting-plans.md) határozza meg. Az Azure véletlenszerűen választja ki a csomag létrehozásakor, és nem módosítható. Az Azure-ban csak két csomag van ugyanabban a telepítési egységben, amikor [ugyanabban az erőforráscsoportban *és* ugyanabban a régióban hozza létre őket](app-service-plan-manage.md#create-an-app-service-plan), de nem rendelkezik logikai értékkel, hogy a csomagok különböző üzembe helyezési egységekben legyenek. Az egyetlen módja, ha egy másik üzembe helyezési egységben is létrehoz egy csomagot, hogy egy új erőforráscsoport vagy régió számára hozzon létre egy csomagot, amíg egy másik üzembe helyezési egységet nem kap.
+
+## <a name="next-steps"></a>Következő lépések
 
 Útmutató egyéni SSL-tanúsítvány kötéséhez App Servicehoz.
 

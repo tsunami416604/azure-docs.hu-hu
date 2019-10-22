@@ -1,6 +1,6 @@
 ---
-title: Automatizált munkafolyamatok létrehozása a Visual Studióval – Azure Logic Apps
-description: A vállalati integrációhoz szükséges feladatok, üzleti folyamatok és munkafolyamatok automatizálása a Azure Logic Apps és a Visual Studio használatával
+title: Munkafolyamatok automatizálása a Visual Studióval – Azure Logic Apps
+description: Ismétlődő munkafolyamatok létrehozása, ütemezett és futtatása a vállalati integrációhoz Azure Logic Apps és a Visual Studio használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,18 +8,17 @@ ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
-ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d02f0bf8cc880dd39f7bdf0c953fcb130df2e23a
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165916"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680572"
 ---
-# <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Gyors útmutató: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic Apps-Visual Studióval
+# <a name="quickstart-automate-tasks-processes-and-workflows-by-using-azure-logic-apps-and-visual-studio"></a>Gyors útmutató: feladatok, folyamatok és munkafolyamatok automatizálása a Azure Logic Apps és a Visual Studio használatával
 
 Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Visual Studio segítségével munkafolyamatokat hozhat létre olyan feladatok és folyamatok automatizálására, amelyek alkalmazásokat, adatokat, rendszereket és szolgáltatásokat integrálnak vállalatok és intézmények között. Ez a rövid útmutató bemutatja, hogyan alakíthatja ki és építheti fel ezeket a munkafolyamatokat a Visual Studióban logikai alkalmazások létrehozásával és az alkalmazások Azure-ba történő üzembe helyezésével. Bár ezeket a feladatokat a Azure Portal is elvégezheti, a Visual Studio lehetővé teszi a logikai alkalmazások hozzáadását a verziókövetés számára, különböző verziók közzétételét, valamint Azure Resource Manager sablonok létrehozását különböző központi telepítési környezetekhez.
 
@@ -85,7 +84,7 @@ Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azu
    ![Azure erőforráscsoport-projekt létrehozása](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
-   > Az erőforráscsoportok nevei csak betűket, számokat, pontokat (`.`), aláhúzást (`_`), kötőjelet (`-`) és zárójeleket (`(`, `)`) tartalmazhatnak, de nem *végződhet* ponttal (`.`).
+   > Az erőforráscsoport neve csak betűket, számokat, pontokat (`.`), aláhúzást (`_`), kötőjelet (`-`) és zárójeleket (`(`, `)`) tartalmazhat, de nem *végződhet* ponttal (`.`).
    >
    > Ha a **felhő** vagy az **Azure-erőforráscsoport** nem jelenik meg, győződjön meg róla, hogy telepíti a Visual studióhoz készült Azure SDK-t.
 

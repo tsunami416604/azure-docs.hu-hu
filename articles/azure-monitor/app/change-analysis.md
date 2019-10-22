@@ -1,21 +1,18 @@
 ---
 title: Alkalmazás-módosítási elemzés használata a Azure Monitor webalkalmazásokkal kapcsolatos problémák kereséséhez | Microsoft Docs
 description: Az alkalmazással kapcsolatos problémák elhárításához használja a Azure Monitor az alkalmazások változási elemzését Azure App Service.
-services: application-insights
-author: cawams
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/07/2019
+author: cawams
 ms.author: cawa
-ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 05/07/2019
+ms.openlocfilehash: 3805d7b39c25bcb213a1d4f110161dcd00eb3630
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033388"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678252"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -38,7 +35,7 @@ A változások elemzése a App Service webalkalmazásban a **problémák diagnos
 
 ### <a name="azure-resource-manager-deployment-changes"></a>Azure Resource Manager telepítési változások
 
-Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A Change Analysis képes azonosítani például az IP-konfigurációs szabályok, a felügyelt identitások és az SSL-beállítások változásait. Tehát ha egy címkét egy webalkalmazáshoz ad hozzá, az elemzés változása a változást tükrözi. Ez az információ mindaddig elérhető, amíg az `Microsoft.ChangeAnalysis` erőforrás-szolgáltató engedélyezve van az Azure-előfizetésben.
+Az [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview)használatával a Change Analysis egy korábbi rekordot biztosít arról, hogy az alkalmazás által üzemeltetett Azure-erőforrások mennyi idő alatt változtak. A Change Analysis képes azonosítani például az IP-konfigurációs szabályok, a felügyelt identitások és az SSL-beállítások változásait. Tehát ha egy címkét egy webalkalmazáshoz ad hozzá, az elemzés változása a változást tükrözi. Ez az információ mindaddig elérhető, amíg a `Microsoft.ChangeAnalysis` erőforrás-szolgáltató engedélyezve van az Azure-előfizetésben.
 
 ### <a name="changes-in-web-app-deployment-and-configuration"></a>A webalkalmazások telepítésének és konfigurálásának változásai
 
@@ -50,14 +47,14 @@ A Change Analysis egy alkalmazás központi telepítési és konfigurációs ál
 
 Az erőforrás-függőségek változásai a webalkalmazások hibáit is okozhatják. Ha például egy webalkalmazás meghívja a Redis cache-t, a Redis cache SKU hatással lehet a webalkalmazás teljesítményére. A függőségek változásainak észleléséhez a Change Analysis ellenőrzi a webalkalmazás DNS-rekordját. Így minden olyan alkalmazás-összetevő változását azonosítja, amely problémákat okozhat.
 Jelenleg a következő függőségek támogatottak:
-- Web Apps
+- Webalkalmazások
 - Azure Storage
 - Azure SQL
 
 
 ## <a name="change-analysis-for-the-web-apps-feature"></a>Web Apps szolgáltatás elemzésének módosítása
 
-Azure Monitor a Change Analysis jelenleg az önkiszolgáló diagnosztizálása és a **problémák megoldása** terén van beépítve. Ezt a felhasználói élményt a App Service alkalmazás **Áttekintés** lapjáról érheti el.
+Azure Monitor a Change Analysis jelenleg az önkiszolgáló **diagnosztizálása és a problémák megoldása** terén van beépítve. Ezt a felhasználói élményt a App Service alkalmazás **Áttekintés** lapjáról érheti el.
 
 ![Az "áttekintés" gomb és a "problémák diagnosztizálása és megoldása" gomb képernyőképe](./media/change-analysis/change-analysis.png)
 
@@ -75,12 +72,12 @@ Azure Monitor a Change Analysis jelenleg az önkiszolgáló diagnosztizálása �
 
    ![Képernyőkép az "alkalmazás-összeomlások" lehetőségeiről](./media/change-analysis/enable-changeanalysis.png)
 
-1. Kapcsolja be az elemzést, és válassza a **Mentés**lehetőséget.
+1. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget.
 
     ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
 
-1. A Change Analysis szolgáltatás eléréséhez válassza a **diagnosztizálás és megoldás problémák** > **rendelkezésre állása és** > a teljesítménybeli**alkalmazások összeomlása**lehetőséget. Ekkor megjelenik egy gráf, amely összegzi a változások típusát az idő múlásával együtt a változások részleteivel együtt:
+1. A Change Analysis szolgáltatás eléréséhez válassza a **problémák diagnosztizálása és megoldása**  >  a**rendelkezésre állás és a teljesítmény**  >  az**alkalmazás összeomlik**lehetőséget. Ekkor megjelenik egy gráf, amely összegzi a változások típusát az idő múlásával együtt a változások részleteivel együtt:
 
      ![Képernyőkép a Change diff nézetről](./media/change-analysis/change-view.png)
 
@@ -90,7 +87,7 @@ Azure Monitor a Change Analysis jelenleg az önkiszolgáló diagnosztizálása �
 Ha az előfizetése számos webalkalmazást tartalmaz, a webalkalmazás szintjén a szolgáltatás engedélyezése nem hatékony. Futtassa az alábbi parancsfájlt az előfizetésben lévő összes webalkalmazás engedélyezéséhez.
 
 Előfeltételek:
-* PowerShell az Module. Kövesse [az Azure PowerShell modul telepítésének](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) utasításait
+* PowerShell az Module. Kövesse [az Azure PowerShell modul telepítésének](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0) utasításait
 
 Futtassa a következő parancsfájlt:
 
@@ -121,7 +118,7 @@ foreach ($webapp in $webapp_list)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

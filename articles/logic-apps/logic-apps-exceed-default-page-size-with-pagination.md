@@ -1,6 +1,6 @@
 ---
-title: További adatok, cikkek és tördelés – Azure Logic Apps-rekordok beolvasása
-description: Tördelés beállítása túllépni az alapértelmezett oldal mérete legfeljebb az Azure Logic Apps összekötő-műveletek
+title: További elemek vagy rekordok beolvasása tördeléssel – Azure Logic Apps
+description: A tördelés beállítása az összekötő műveleteinek alapértelmezett méretének túllépése Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,26 +9,26 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 04/11/2019
-ms.openlocfilehash: 2d1bcf2cf83fab106f79120c3caacc424f839836
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e86600312490c77ed492cb28a359add0fed90596
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64476541"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679891"
 ---
-# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>További adatok, cikkek és rekordok első tördelés Azure Logic Apps használatával
+# <a name="get-more-data-items-or-records-by-using-pagination-in-azure-logic-apps"></a>További adatok, elemek vagy rekordok beolvasása a Azure Logic Apps tördelésének használatával
 
-Amikor kérheti le az adatok, cikkek és rekordok egy összekötő művelet használatával [Azure Logic Apps](../logic-apps/logic-apps-overview.md), rendkívül nagy méretűek, hogy a művelet nem ad vissza az összes eredmény egy időben kaphat eredményhalmazt. Az egyes műveletek az eredmények száma meghaladhatja az összekötő alapértelmezett lapméret. Ebben az esetben a művelet csak az első oldal eredményeket adja vissza. Ha például oldalméret alapértelmezés szerint az SQL Server-összekötő **sorok beolvasása** művelet 2048, de más beállítások alapján változhat.
+Amikor adatokat, elemeket vagy rekordokat olvas be [Azure Logic Appsban](../logic-apps/logic-apps-overview.md)összekötő művelettel, akkor előfordulhat, hogy az eredményhalmaz olyan nagy méretű, hogy a művelet nem adja vissza az összes eredményt egyszerre. Bizonyos műveletek esetében az eredmények száma túllépheti az összekötő alapértelmezett méretét. Ebben az esetben a művelet csak az eredmények első oldalát adja vissza. Például az SQL Server összekötőhöz tartozó **sorok beolvasása** művelet alapértelmezett oldalméret 2048, de más beállításoktól függően változhat.
 
-Bizonyos műveletek lehetővé teszik, hogy egy *tördelés* beállítást, hogy a logikai alkalmazás a tördelés korlátig további eredmények lekéréséhez, de eredmények visszaadása, egy üzenet, a művelet végeztével. Tördelés használatakor meg kell adnia egy *küszöbérték* érték, amely a cél azt szeretné, hogy a művelet visszaadandó eredmények száma. A művelet eredménye a megadott küszöbértéket eléréséig kérdezi le. Ha az elemek száma kisebb a megadott küszöbértéknél, a művelet az összes eredmény kérdezi le.
+Egyes műveletek lehetővé teszik egy *tördelési* beállítás bekapcsolását, hogy a logikai alkalmazás több eredményt Kérjen a tördelési korlátig, de az eredményeket egyetlen üzenetként adja vissza, amikor a művelet befejeződik. Ha tördelést használ, meg kell adnia egy *küszöbértéket* , amely a művelet által visszaadni kívánt találatok számát határozza meg. A művelet lekérdezi az eredményeket, amíg eléri a megadott küszöbértéket. Ha az elemek teljes száma kisebb a megadott küszöbértéknél, a művelet lekérdezi az összes eredményt.
 
-Az eredmények alapján egy összekötő oldalméret tördelés beállítás beolvasása oldalak bekapcsolásával. Ez a viselkedés, az azt jelenti, hogy egyes esetekben előfordulhat, hogy további eredményeket kap a megadott küszöbértéknél. Ha az SQL Server használata esetén például **sorok beolvasása** művelet, amely támogatja a tördelés beállítás:
+A tördelési beállítás bekapcsolásával az eredmények lapjait az összekötő oldalméret alapján kérdezi le. Ez azt jelenti, hogy időnként előfordulhat, hogy a megadott küszöbértéknél több eredményt fog kapni. Például a SQL Server **sorok beolvasása** művelet használatakor, amely támogatja a tördelési beállítást:
 
-* A művelet alapértelmezett oldal mérete 2048 rekordok száma oldalanként.
-* Tegyük fel, hogy 10 000 rekordot rendelkezik, és adja meg a minimális 5000 rekordokat.
-* Tördelés lekéri a rekordokat úgy, hogy legalább a megadott minimális érték első oldalát, a művelet 6144 rekordjait (3 oldalak x 2048 rekord), nem 5000 rekordokat adja vissza.
+* A művelet alapértelmezett oldalának mérete 2048 rekord/oldal.
+* Tegyük fel, hogy 10 000-es rekordja van, és legalább a 5000-es rekordot megadja.
+* A tördelés megkeresi a rekordok lapjait, így legalább a megadott minimális érték beolvasása után a művelet 6144 rekordokat ad vissza (3 lap x 2048 rekord), nem 5000 rekordokat.
 
-Ez egy lista csupán néhány az összekötők, ahol túllépheti az adott műveletek oldalméret alapértelmezés szerint:
+Az alábbi lista néhány olyan összekötőt mutat be, amelyeken túllépheti az adott műveletek alapértelmezett méretét:
 
 * [Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/)
 * [Dynamics 365](https://docs.microsoft.com/connectors/dynamicscrmonline/)
@@ -43,29 +43,29 @@ Ez egy lista csupán néhány az összekötők, ahol túllépheti az adott műve
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetésem, [regisztráljon egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* A logikai alkalmazás és az elvégzendő ahol tördelés bekapcsolása. Ha a logikai alkalmazás nem rendelkezik, tekintse meg [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* A logikai alkalmazás és az a művelet, amelyben be szeretné kapcsolni a tördelést. Ha nem rendelkezik logikai alkalmazással, tekintse [meg az első logikai alkalmazás létrehozását](../logic-apps/quickstart-create-first-logic-app-workflow.md)ismertető útmutatót.
 
 ## <a name="turn-on-pagination"></a>Tördelés bekapcsolása
 
-Annak megállapításához, hogy művelet támogatja-e a Logic App Designerben tördelés, ellenőrizze a művelet beállításait a **tördelés** beállítás. Ez a példa bemutatja, hogyan kapcsolja be az SQL Server tördelés **sorok beolvasása** művelet.
+Annak megállapításához, hogy egy művelet támogatja-e a tördelést a Logic app Designerben, ellenőrizze a művelet beállításait a **tördelési** beállításhoz. Ez a példa azt mutatja be, hogyan kapcsolható be a tördelés a SQL Server **sorok beolvasása** művelettel.
 
-1. A művelet jobb felső sarokban, válassza a három pontra ( **...** ) gombra, és válassza **beállítások**.
+1. A művelet jobb felső sarkában válassza a három pontot ( **..** .), és válassza a **Beállítások**lehetőséget.
 
-   ![Nyissa meg a művelet beállításai](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
+   ![A művelet beállításainak megnyitása](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings.png)
 
-   Ha a művelet tördelés támogatja, a művelet mutatja a **tördelés** beállítás.
+   Ha a művelet támogatja a tördelést, a művelet megjeleníti a **tördelési** beállítást.
 
-1. Módosítsa a **tördelés** beállítást **ki** való **a**. Az a **küszöbérték** tulajdonság, adjon meg egy egész számot, amely azt szeretné, hogy a művelet visszaadandó eredmények cél számát.
+1. Módosítsa a **tördelési** beállítást **kikapcsolva** értékről **.** A **küszöbérték** tulajdonságban megadhat egy egész értéket azon eredmények megadásához, amelyekre vissza szeretné állítani a műveletet.
 
-   ![Adja meg a visszaadandó eredmények minimális száma](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
+   ![A visszaadni kívánt eredmények minimális számának meghatározása](./media/logic-apps-exceed-default-page-size-with-pagination/sql-action-settings-pagination.png)
 
-1. Amikor elkészült, válassza ki a **kész**.
+1. Ha elkészült, válassza a **kész**lehetőséget.
 
-## <a name="workflow-definition---pagination"></a>Munkafolyamat-definíció - tördelési
+## <a name="workflow-definition---pagination"></a>Munkafolyamat-definíció – tördelés
 
-Egy műveletet, amely támogatja ezt a lehetőséget a tördelés bekapcsolásakor tartalmazza-e a logikai alkalmazás munkafolyamat-definíció a `"paginationPolicy"` a tulajdonság a `"minimumItemCount"` tulajdonság frissítése az adott művelet `"runtimeConfiguration"` tulajdonságához; például:
+Ha bekapcsolja a funkciót támogató művelet tördelését, a logikai alkalmazás munkafolyamat-definíciója tartalmazza a `"paginationPolicy"` tulajdonságot a művelet `"runtimeConfiguration"` tulajdonságának `"minimumItemCount"` tulajdonságával együtt, például:
 
 ```json
 "actions": {

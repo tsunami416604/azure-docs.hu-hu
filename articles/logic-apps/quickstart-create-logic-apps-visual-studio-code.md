@@ -1,6 +1,6 @@
 ---
-title: Munkafolyamatok létrehozása és kezelése a Visual Studio Code-Azure Logic Apps
-description: Rövid útmutató – Logic app JSON-definíciók létrehozása és kezelése a Visual Studio Code-ban (VS Code)
+title: Munkafolyamatok automatizálása a Visual Studio Code-Azure Logic Apps
+description: Logikai alkalmazás alapjául szolgáló JSON-definíciók létrehozása vagy szerkesztése a Visual Studio Code-ban (VS Code)
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,16 +12,16 @@ ms.reviewer: klam, deli, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 34de50517580c84c78ee1f192daa908b3f262670
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: a1387ca4d94410bafb1b1024345b5e307e215e6f
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035445"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679153"
 ---
-# <a name="quickstart-create-and-manage-logic-app-definitions-by-using-visual-studio-code"></a>Gyors útmutató: Logic app-definíciók létrehozása és kezelése a Visual Studio Code használatával
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-with-visual-studio-code"></a>Gyors útmutató: logikai alkalmazások munkafolyamat-definícióinak létrehozása és kezelése a Visual Studio Code-ban
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code használatával olyan logikai alkalmazásokat hozhat létre és kezelhet, amelyek segítségével automatizálhatja a feladatokat, munkafolyamatokat és folyamatokat az alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a szervezetek és a vállalatok között. Ez a rövid útmutató bemutatja, hogyan hozhat létre és szerkeszthet logikai alkalmazás-munkafolyamati definíciókat, ha a JavaScript Object Notation (JSON) munkafolyamat-definíciós sémájának használatával programkód-alapú felhasználói felületen keresztül dolgozik. Az Azure-ban már üzembe helyezett meglévő logikai alkalmazások is dolgozhatnak.
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code használatával olyan logikai alkalmazásokat hozhat létre és kezelhet, amelyek segítségével automatizálhatja a feladatokat, munkafolyamatokat és folyamatokat az alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a szervezetek és a vállalatok között. Ez a rövid útmutató bemutatja, hogyan hozhatja létre és szerkesztheti az alapul szolgáló munkafolyamat-definíciókat, amelyek JavaScript Object Notation (JSON) használnak a Logic apps számára a kód alapú felhasználói felületeken keresztül. Az Azure-ban már üzembe helyezett meglévő logikai alkalmazások is dolgozhatnak.
 
 Habár ugyanezeket a feladatokat a [Azure Portal](https://portal.azure.com) és a Visual Studióban is elvégezheti, gyorsabban megkezdheti a Visual Studio Code-ban, ha már ismeri a Logic app-definíciókat, és közvetlenül a kódban szeretne dolgozni. Például letilthatja, engedélyezheti, törölheti és frissítheti a már létrehozott Logic apps-alkalmazásokat. Emellett a Logic apps és az integrációs fiókok bármilyen fejlesztői platformon használhatók, ahol a Visual Studio Code fut, például a Linux, a Windows és a Mac.
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik az alábbi elemekk
 
 * Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Alapszintű ismeretek a [Logic app-munkafolyamatok meghatározásáról](../logic-apps/logic-apps-workflow-definition-language.md) és azok struktúrájáról, amely JavaScript Object Notationt (JSON) használ
+* Alapszintű ismeretek a [Logic app-munkafolyamatok definícióinak](../logic-apps/logic-apps-workflow-definition-language.md) és a JSON-vel leírt struktúrájáról
 
   Ha még nem ismeri a Logic Appst, próbálja [ki ezt a](../logic-apps/quickstart-create-first-logic-app-workflow.md)rövid útmutatót, amely létrehozza az első logikai alkalmazásait a Azure Portalban, és jobban összpontosít az alapfogalmakra.
 
@@ -222,7 +222,7 @@ Az Azure-ban közzétett logikai alkalmazások működéséhez a logikai alkalma
 
    ![A módosítások feltöltése a Logic app-definícióba](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > * [Logikai alkalmazások létrehozása a Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

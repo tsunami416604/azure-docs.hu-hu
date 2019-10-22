@@ -1,23 +1,19 @@
 ---
 title: Azure Application Insights – Azure Functions támogatott funkciók | Microsoft Docs
 description: A Azure Functions által támogatott szolgáltatások Application Insights
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: ''
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: reference
+author: TimothyMothra
+ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.author: tilee
-ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 31f962ca96ca5c47d18f9250e567abb8f4024e6f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372441"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677555"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
 
@@ -30,27 +26,27 @@ A Azure Functions [beépített integrációt](../../azure-functions/functions-mo
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatikus gyűjtemény**        |                 |                   |               
-| @no__t – 0 kérelem                     | Igen             | Igen               | 
-| @no__t – 0 kivétel                   | Igen             | Igen               | 
-| @no__t – 0 teljesítményszámlálók         | Igen             | Igen               |
-| @no__t – 0 függőség                   |                   |                   |               
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Igen               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Igen               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Igen               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Igen               | 
+| &bull; kérelmek                     | Igen             | Igen               | 
+| Kivételek &bull;                   | Igen             | Igen               | 
+| Teljesítményszámlálók &bull;         | Igen             | Igen               |
+| &bull; függőségek                   |                   |                   |               
+| &nbsp; &nbsp; &nbsp; &mdash; HTTP      |                 | Igen               | 
+| &nbsp; &nbsp; &nbsp; &mdash; ServiceBus|                 | Igen               | 
+| &nbsp; &nbsp; &nbsp; &mdash; EventHub  |                 | Igen               | 
+| &nbsp; &nbsp; &nbsp; &mdash; SQL       |                 | Igen               | 
 | | | | 
 | **Támogatott funkciók**                |                   |                   |               
-| @no__t – 0 QuickPulse/LiveMetrics       | Igen             | Igen               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 biztonságos vezérlési csatorna|                 | Igen               | 
-| @no__t – 0 mintavételezés                     | Igen             | Igen               | 
-| @no__t – 0 szívverés                   |                 | Igen               | 
+| &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
+| &nbsp; &nbsp; &nbsp; &mdash; biztonságos vezérlési csatornát|                 | Igen               | 
+| &bull; mintavételezés                     | Igen             | Igen               | 
+| &bull; szívverések                   |                 | Igen               | 
 | | | | 
 | **Korrelációs**                       |                   |                   |               
-| @no__t – 0 ServiceBus                     |                   | Igen               | 
-| @no__t – 0 EventHub                       |                   | Igen               | 
+| &bull; ServiceBus                     |                   | Igen               | 
+| &bull; EventHub                       |                   | Igen               | 
 | | | | 
 | **Konfigurálható**                      |                   |                   |           
-| @no__t – a 0Fully konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
+| &bull;Fully konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók

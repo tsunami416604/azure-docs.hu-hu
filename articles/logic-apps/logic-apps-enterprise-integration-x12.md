@@ -1,6 +1,6 @@
 ---
-title: B2B vállalati integráció – Azure Logic Apps üzenetek X12 |} A Microsoft Docs
-description: Az Exchange X12 üzenetek B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack EDI formátumban
+title: X12-üzenetek a B2B-integrációhoz – Azure Logic Apps
+description: Az Exchange X12-üzeneteinek összevonása EDI formátumban a VÁLLALATKÖZI vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,160 +8,159 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bc5c458240925af1fdd74ebc9b2d4c3db71fb05
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64728755"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679998"
 ---
-# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack Exchange X12 üzenete
+# <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
-Mielőtt X12 is cserél üzeneteket az Azure Logic Apps, létre kell hoznia X12 szerződés és az integrációs fiókban lévő megállapodás tárolja. X12 létrehozásának lépései a következők szerződés.
+Mielőtt X12 üzeneteket Azure Logic Appshoz, létre kell hoznia egy X12-szerződést, és az integrációs fiókban tárolnia kell a szerződést. Az alábbi lépéseket követve hozhat létre X12-szerződéseket.
 
 > [!NOTE]
-> A lap tartalmazza a X12 szolgáltatások Azure Logic Apps. További információkért lásd: [EDIFACT](logic-apps-enterprise-integration-edifact.md).
+> Ez az oldal a Azure Logic Apps X12 funkcióit ismerteti. További információ: [EDIFACT](logic-apps-enterprise-integration-edifact.md).
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A következő szükséges elemek:
+Az alábbi elemek szükségesek:
 
-* Egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , amely már definiált és az Azure-előfizetéséhez társított
-* Legalább két [partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) , és határozza meg az integrációs fiókban lévő konfigurálva a X12 azonosítóját a **üzleti identitások**    
-* Egy kötelező [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , feltöltheti az integrációs fiók
+* Az Azure-előfizetéshez már definiált és társított [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md)
+* Legalább két, az integrációs fiókban definiált [partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amely a X12 azonosítóval van konfigurálva az **üzleti identitások** területen    
+* Egy szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , amelyet feltöltheti az integrációs fiókjába
 
-Miután [integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [partnerek felvétele](logic-apps-enterprise-integration-partners.md), és egy [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , hogy a használni kívánt, létrehozhat X12 szerződést a következő lépésekkel.
+Miután [létrehozott egy integrációs fiókot](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), [partnerek hozzáadásával](logic-apps-enterprise-integration-partners.md)és a használni kívánt [sémával](../logic-apps/logic-apps-enterprise-integration-schemas.md) rendelkezik, a következő lépésekkel hozhat létre X12-szerződést.
 
-## <a name="create-an-x12-agreement"></a>Hozzon létre X12 szerződés
+## <a name="create-an-x12-agreement"></a>X12-szerződés létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com "Azure Portal"). 
 
-2. Az Azure fő menüjéből válassza **minden szolgáltatás**. 
-   A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.  
+2. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. 
+   A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok**elemet.  
 
-   ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![Integrációs fiók megkeresése](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
    > [!TIP]
-   > Ha **minden szolgáltatás** nem jelenik meg, lehetséges, hogy először bontsa ki a menüben. A összecsukott menü tetején válassza **Megjelenítés menü**.
+   > Ha az **összes szolgáltatás** nem jelenik meg, lehetséges, hogy először ki kell bontania a menüt. Az összecsukott menü tetején válassza a **Megjelenítés menü**lehetőséget.
 
-3. A **integrációs fiókok**, válassza ki az integrációs fiók, ahol szeretne hozzáadni a szerződést.
+3. Az **integrációs fiókok**területen válassza ki azt az integrációs fiókot, amelyhez hozzá szeretné adni a szerződést.
 
-   ![Integrációs fiók hová hozza létre a szerződés kiválasztása](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![Válassza ki az integrációs fiókot, ahol létre kívánja hozni a szerződést](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
-4. Válassza ki **áttekintése**, majd válassza ki a **szerződések** csempére. 
-   Ha nem rendelkezik egy szerződés-csempét, először adja hozzá a csempét. 
+4. Válassza az **Áttekintés**, majd a **szerződések** csempét. 
+   Ha nem rendelkezik szerződések csempével, először adja hozzá a csempét. 
 
-   ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
-5. A **szerződések**, válassza a **Hozzáadás**.
+5. A **szerződések**területen válassza a **Hozzáadás**lehetőséget.
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
-6. Alatt **Hozzáadás**, adjon meg egy **neve** esetében a szerződés hatálya alá. 
-   A szerződés típusának kiválasztása **X12**. 
-   Válassza ki a **Gazdagéppartner**, **gazdagép-identitás**, **Vendégpartner**, és **Vendégidentitás** esetében a szerződés hatálya alá. 
-   Tulajdonság kapcsolatos további információkért lásd az ebben a lépésben a táblában.
+6. A **Hozzáadás**területen adja meg a szerződés **nevét** . 
+   A szerződés típusa mezőben válassza a **X12**lehetőséget. 
+   Válassza ki a **gazdagép partnerét**, a **gazdagép identitását**, a **vendég partnert**és a **vendég identitását** a szerződéshez. 
+   További részletekért tekintse meg az ebben a lépésben található táblázatot.
 
-    ![Adja meg a szerződés részletei](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
+    ![Szerződés részleteinek megadása](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    | Name (Név) |A Szerződés neve |
-    | Szerződés típusa | X12 kell lennie. |
-    | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
-    | Gazdagép-identitás |A gazdagéppartner azonosítója |
-    | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
-    | Vendégidentitás |A vendégpartner azonosítója |
-    | Beállítások |Ezek a tulajdonságok vonatkoznak az összes, a szerződés által fogadott üzeneteket. |
-    | Küldési beállítások |Ezek a tulajdonságok a szerződés által küldött összes üzenet vonatkozik. |  
+    | Név |A szerződés neve |
+    | Szerződés típusa | X12 kell lennie |
+    | Gazda partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
+    | Gazdagép identitása |A gazdagép-partner azonosítója |
+    | Vendég partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöli. |
+    | Vendég identitás |A vendég partner azonosítója |
+    | Fogadási beállítások |Ezek a tulajdonságok a szerződések által fogadott összes üzenetre érvényesek. |
+    | Küldési beállítások |Ezek a tulajdonságok a Szerződés által küldött összes üzenetre érvényesek. |  
 
    > [!NOTE]
-   > Szerződés attól függ, a feladó minősítője és azonosítója, és a címzett minősítője és a partnerek és a bejövő üzenet meghatározott azonosító megfelelő X12 feloldása. Ha ezeket az értékeket módosítsa a partner, frissítse túl a megállapodás.
+   > Az X12-szerződés megoldása függ a küldő minősítőtől és azonosítótól, valamint a partner és a bejövő üzenetben definiált fogadó minősítőtől és azonosítótól. Ha ezek az értékek megváltoznak a partner esetében, frissítse a szerződést is.
 
-## <a name="configure-how-your-agreement-handles-received-messages"></a>Hogyan fogadja a szerződés kezeli az üzenetek konfigurálása
+## <a name="configure-how-your-agreement-handles-received-messages"></a>Annak konfigurálása, hogy a szerződés hogyan kezelje a fogadott üzeneteket
 
-Most, hogy beállította a megállapodás tulajdonságai, konfigurálhatja, hogyan azonosítja a jelen szerződés, és kezeli a partner a jelen szerződés keretében kapott bejövő üzenetek.
+Most, hogy beállította a szerződés tulajdonságait, beállíthatja, hogy a jelen Szerződés hogyan azonosítsa és kezeli a partnertől érkező bejövő üzeneteket a jelen szerződés alapján.
 
-1.  A **Hozzáadás**válassza **fogadási beállítások**.
-Konfigurálja ezeket a tulajdonságokat a partnerrel, amely az üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
+1.  A **Hozzáadás**területen válassza a **fogadási beállítások**lehetőséget.
+Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, amely üzeneteket cserél Önnel. A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
-    **Beállítások** van szakaszokba rendeztük: Azonosítók, nyugtázása, sémákat, borítékok, Ellenőrzőszámok, ellenőrzés és belső beállítások.
+    A **fogadási beállítások** a következő csoportokba vannak rendezve: azonosítók, visszaigazolások, sémák, borítékok, ellenőrzési számok, érvényességek és belső beállítások.
 
-2. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
+2. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
 
-Most a szerződés elkészült kezelje a bejövő üzenetek, amelyek megfelelnek a kiválasztott beállításokat.
+A szerződés most már készen áll a kiválasztott beállításoknak megfelelő bejövő üzenetek kezelésére.
 
 ### <a name="identifiers"></a>Azonosítók
 
-![Azonosító tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![Azonosító tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| ISA1 (engedélyezési minősítő) |Válassza ki az engedélyezési minősítő értéket a legördülő listából. |
-| ISA2 |Választható. Engedélyezési információkat értéket adjon meg. ISA1 megadott érték kívül 00 esetén adjon meg legalább egy alfanumerikus karakter és legfeljebb 10. |
-| ISA3 (biztonsági minősítő) |Válassza ki a biztonsági minősítő értéket a legördülő listából. |
-| ISA4 |Választható. Adja meg a biztonsági információinak értékét. ISA3 megadott érték kívül 00 esetén adjon meg legalább egy alfanumerikus karakter és legfeljebb 10. |
+| ISA1 (engedélyezési minősítő) |Válassza ki az engedélyezési minősítő értékét a legördülő listából. |
+| ISA2 |Választható. Adja meg az engedélyezési információ értékét. Ha a ISA1 megadott érték nem a 00, adjon meg legalább egy alfanumerikus karaktert és legfeljebb 10 értéket. |
+| ISA3 (biztonsági minősítő) |Válassza ki a biztonsági minősítő értékét a legördülő listából. |
+| ISA4 |Választható. Adja meg a biztonsági információ értékét. Ha a ISA3 megadott érték nem a 00, adjon meg legalább egy alfanumerikus karaktert és legfeljebb 10 értéket. |
 
-### <a name="acknowledgment"></a>Nyugtázása
+### <a name="acknowledgment"></a>Tudomásul vétele
 
-![Nyugtázás tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+![Nyugtázási tulajdonságok beállítása](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Várt érték: TA1 |Visszaadja a műszaki visszaigazolás adatcsere feladójának |
-| Várt érték: FA |A működési visszaigazolás adatcsere feladójának adja vissza. Ezután válassza ki, hogy a, vagy 999 997 visszaigazolások, a sémaverzió alapján |
-| Például: AK2-/ IK2-hurok |Povoluje generování událostí: AK2 hurkokat a működési nyugták az elfogadott tranzakciókészletekhez |
+| Várt TA1 |Technikai nyugtát ad vissza az adatcsere küldőjének |
+| A FA várható |Funkcionális visszaigazolást ad vissza az adatcsere feladójának. Ezután válassza ki, hogy a 997-es vagy az 999-es nyugtát szeretné-e használni a séma verziószáma alapján. |
+| AK2/IK2 hurok belefoglalása |Lehetővé teszi a AK2-hurkok létrehozását a funkcionális visszaigazolásokban az elfogadott tranzakciótípusok esetében |
 
 ### <a name="schemas"></a>Sémák
 
-Válassza ki az egyes tranzakciótípus (ST1) és a küldő alkalmazás (GS2) sémát. A fogadási folyamat visszafejti a bejövő üzenetben az egyező értékeket ST1 és GS2 bejövő üzenetben az itt megadott értékeket, és a sémát a sémát a bejövő üzenet itt.
+Válasszon sémát az egyes tranzakciótípusok (ST1-EK) és a küldő alkalmazások (GS2) számára. A fogadási folyamat kibontja a bejövő üzenetet úgy, hogy az itt megadott értékekkel egyezteti a bejövő üzenet ST1 és GS2 értékeit, valamint a beérkező üzenet sémáját az itt beállított sémával.
 
-![Válassza ki a sémát](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
+![Séma kiválasztása](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Version |Válassza ki a X12 verzió |
-| Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
-| Sender Application (GS02) |Válassza ki a küldő alkalmazást |
-| Séma |Válassza ki a használni kívánt fájl. Sémákat az integrációs fiók kerülnek. |
+| Verzió |Válassza ki a X12 verzióját |
+| Tranzakció típusa (ST01) |Válassza ki a tranzakció típusát |
+| Küldő alkalmazás (GS02) |Feladó alkalmazás kiválasztása |
+| Séma |Válassza ki a használni kívánt sémafájl-fájlt. A sémák bekerülnek az integrációs fiókjába. |
 
 > [!NOTE]
-> Konfigurálja a szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) töltenek fel, amely a [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Konfigurálja az [integrációs fiókba](../logic-apps/logic-apps-enterprise-integration-accounts.md)feltöltött szükséges [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) .
 
-### <a name="envelopes"></a>Borítékok
+### <a name="envelopes"></a>Borítékoknak
 
-![Adja meg az elválasztó egy tranzakciókészlet: válassza a szabványos azonosító vagy ismétlődés-elválasztó](./media/logic-apps-enterprise-integration-x12/x12-34.png)
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| ISA11 Usage |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
-
-### <a name="control-numbers"></a>Ellenőrzőszámok
-
-![Válassza ki az ellenőrző szám ismétlődések kezelése](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+![Adja meg az elválasztót egy tranzakciónaplóban: válassza a standard azonosítót vagy a ismétlődési elválasztó elemet.](./media/logic-apps-enterprise-integration-x12/x12-34.png)
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Adatcsere ellenőrzőszám ismétlődésének letiltása |Ismétlődő adatcsere letiltása. Az adatcsere ellenőrzőszáma (ISA13) ellenőrzi a beérkezett adatcsere-ellenőrzőszám. Egyezés észlelése esetén a fogadási folyamat nem dolgozza fel az adatcsere. Megadhatja, hogy hány napig értékét, így az ellenőrzés végrehajtásához *ismétlődő ISA13 ellenőrzésének gyakorisága (napokban)* . |
-| Csoport-ellenőrzőszám ismétlődésének |Blokk felcserélődések a duplikált csoportokhoz ellenőrzőszámok. |
-| Tranzakció csoport-ellenőrzőszám ismétlődésének |Blokk felcserélődések az ismétlődő tranzakciókészlet set ellenőrzőszámok. |
+| ISA11-használat |Meghatározza a tranzakciónaplóban használandó elválasztó karaktert: <p>Válassza a **szabványos azonosító** lehetőséget, hogy egy pontot (.) használjon decimális jelöléshez, nem pedig a bejövő dokumentum decimális jelölését az EDI fogadási folyamatában. <p>Válassza a **ismétlő elválasztó** lehetőséget egy egyszerű adatelem vagy ismétlődő adatstruktúra ismétlődő előfordulásainak megadásához. Például általában a Carat (^) van használatban ismétlődési elválasztóként. HIPAA sémák esetében csak a Carat használatát használhatja. |
 
-### <a name="validations"></a>Ellenőrzések
+### <a name="control-numbers"></a>Vezérlőelemek száma
 
-![A fogadott üzenetek érvényesítési tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
-
-Után minden érvényesítési sorban, egy másik automatikusan hozzáadja. Ha nem ad meg szabályokat, érvényesítési az "Alapértelmezett" sort használ.
+![Válassza ki, hogyan szeretné kezelni a vezérlési szám ismétlődéseit](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki az EDI-üzenet típusa. |
-| EDI-ellenőrzés |Hajtsa végre a séma EDI tulajdonságok, mezőhossz-korlátozásai, üres adatelem és záró elválasztók által meghatározott adattípusok EDI-ellenőrzés. |
-| Bővített ellenőrzés |Ha az adattípus nem EDI, ellenőrzés be van kapcsolva az elem követelménynek és ismétlődési, enumerálások és az adatok elem hossza érvényesítési (minimális/maximális) engedélyezett. |
-| Kezdő/záró nullák engedélyezése |A többi kezdő vagy záró nulla megőrzi, és szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Kezdő/záró nullák Trim |Távolítsa el a kezdő vagy záró nulla, a térköz karaktereket. |
-| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** időtartamig záró elválasztó karakterek és a kapott adatcsere elválasztók. Ha az adatcsere záró elválasztó karakterek és elválasztók, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** vagy a záró elválasztó karakterek és elválasztók nélkül érték elfogadásához. <p>Válassza ki **kötelező** mikor kell rendelkeznie az adatcsere, záró elválasztó karakterek és elválasztók. |
+| Az adatcsere-vezérlési szám másodpéldányának letiltása |Duplikált változások blokkolása. Ellenőrzi a beérkező adatcsere-vezérlő számát (ISA13). Ha a rendszer egyezést észlel, a fogadási folyamat nem dolgozza fel az adatcserét. Megadhatja, hogy az ellenőrzés végrehajtásához hány nap elteltével adjon meg egy értéket az *ismétlődő ISA13 (nap) ellenőrzéséhez*. |
+| Csoport vezérlőelem-szám másodpéldányának letiltása |Duplikált csoport típusú vezérlőelemekkel rendelkező adatmódosítások letiltása. |
+| A tranzakciónapló-vezérlők számának duplikálása nem engedélyezett |Duplikált tranzakciós csoport vezérlőelem-számokkal rendelkező változások blokkolása. |
+
+### <a name="validations"></a>Érvényesítések
+
+![Fogadott üzenetek érvényesítési tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+
+Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
+
+| Tulajdonság | Leírás |
+| --- | --- |
+| Üzenet típusa |Válassza ki az EDI-üzenet típusát. |
+| EDI-ellenőrzés |A séma EDI-tulajdonságai, a hossz-korlátozások, az üres adatelemek és a záró elválasztók által definiált adattípusokra vonatkozó EDI-érvényesítés végrehajtása. |
+| Kiterjesztett ellenőrzés |Ha az adattípus nem EDI, az érvényesítés az adatelem követelménye és az engedélyezett ismétlődés, enumerálás és adatelem hossza ellenőrzés (min/max) alapján történik. |
+| Kezdő/záró nullák engedélyezése |Tartsa meg a további kezdő vagy záró nulla és szóköz karaktereket. Ne távolítsa el ezeket a karaktereket. |
+| A kezdő/záró nullák körülvágása |A kezdő vagy záró nulla és a szóköz karakter eltávolítása. |
+| Záró elválasztó házirend |Záró elválasztók előállítása. <p>Válassza a **nem engedélyezett** lehetőséget a záró határolójelek és elválasztók tiltásához a fogadott adatcserében. Ha a csomópont záró határolójeleket és elválasztó karaktereket tartalmaz, a rendszer érvénytelenként deklarálja a csomópontot. <p>Válassza a **választható** lehetőséget, ha el szeretné fogadni a módosításokat a záró határolójelekkel és elválasztókkal együtt vagy anélkül. <p>Válassza a **kötelező** lehetőséget, ha a csomópontnak záró határolójelekkel és elválasztókkal kell rendelkeznie. |
 
 ### <a name="internal-settings"></a>Belső beállítások
 
@@ -169,138 +168,138 @@ Után minden érvényesítési sorban, egy másik automatikusan hozzáadja. Ha n
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| "Nn" decimális formátum konvertálása alap 10 numerikus értéket |10-es numerikus értékké "Nn" formátumban megadott EDI számot alakít át. |
-| Üres XML-címkék létrehozása, ha a záró elválasztók engedélyezve vannak |Válassza ki ezt a jelölőnégyzetet, hogy közé tartozik a záró elválasztók üres XML-címkéinek adatcsere feladójának. |
-| Adatcsere felosztása tranzakciókészletekre – tranzakciókészletek felfüggesztése hiba esetén|Minden tranzakció beállítása egy külön dokumentu XML-adatcsere a megfelelő boríték alkalmaz a tranzakciókészlet elemzi. Ha az ellenőrzés nem sikerül felfüggeszti csak a tranzakciók. |
-| Adatcsere felosztása tranzakciókészletekre – adatcsere felfüggesztése hiba esetén|Minden tranzakció beállítása egy külön dokumentu XML-adatcsere úgy, hogy alkalmazza a megfelelő boríték elemzi. Felfüggeszti a teljes adatcsere, ha egy vagy több tranzakciókészletek az adatcsere érvényesítése sikertelen. | 
-| Adatcsere megőrzése – tranzakciókészletek felfüggesztése hiba esetén |Az adatcsere érintetlenül hagyja, az XML-dokumentumok teljes kötegelt adatcserét hoz létre. Csak a sikertelen érvényesítést, miközben továbbra is az összes többi tranzakciókészletek feldolgozni tranzakciókészletek felfüggesztése. |
-| Adatcsere megőrzése – adatcsere felfüggesztése hiba esetén |Az adatcsere érintetlenül hagyja, az XML-dokumentumok teljes kötegelt adatcserét hoz létre. Felfüggeszti a teljes adatcsere közben, ha egy vagy több tranzakciókészletek az adatcsere érvényesítése sikertelen. |
+| A feltételes decimális formátum "nn" értékének konvertálása egy 10 számértékre |Egy "nn" formátumú, alap-10 numerikus értékre alakítja át az "nn" formátummal megadott EDI-számot. |
+| Üres XML-címkék létrehozása, ha a záró elválasztók engedélyezettek |Jelölje be ezt a jelölőnégyzetet, ha azt szeretné, hogy az adatcsere küldője üres XML-címkéket tartalmazzon a záró elválasztók számára. |
+| Adatcsere felosztása tranzakciónaplóként – hiba esetén a tranzakciós készletek felfüggesztése|A rendszer az adatcsere során beállított összes tranzakciót egy külön XML-dokumentumba elemezve a megfelelő borítékot alkalmazza a tranzakciós készletre. Csak azokat a tranzakciókat felfüggeszti, amelyekben az ellenőrzés sikertelen. |
+| Adatcsere felosztása tranzakciós készletként – hiba miatti adatcsere felfüggesztése|A megfelelő boríték alkalmazásával elemzi az egyes csomópontokon beállított összes tranzakciót egy külön XML-dokumentumba. Felfüggeszti a teljes áttelepítést, ha egy vagy több tranzakció-készlet nem sikerül érvényesítést hajt végre. | 
+| Adatcsere megőrzése – tranzakciók felfüggesztése hiba esetén |Érintetlenül hagyja az adatcserét, egy XML-dokumentumot hoz létre a teljes kötegelt átváltáshoz. Csak azokat a tranzakciós készleteket felfüggeszti, amelyek sikertelenek az ellenőrzés során, miközben folytatja az összes többi tranzakció feldolgozását. |
+| Adatcsere megőrzése – az adatcsere felfüggesztése hiba esetén |Érintetlenül hagyja az adatcserét, egy XML-dokumentumot hoz létre a teljes kötegelt átváltáshoz. Felfüggeszti a teljes adatcsomópontot, ha egy vagy több tranzakciós készlet nem sikerül érvényesítést hajt végre. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Hogyan a szerződéshez küldi az üzeneteket konfigurálása
+## <a name="configure-how-your-agreement-sends-messages"></a>Annak konfigurálása, hogy a szerződés hogyan küldjön üzeneteket
 
-Beállíthatja, hogyan azonosítja a jelen szerződés, és kezeli a partner a jelen szerződés keretében küldött kimenő üzenetek.
+Beállíthatja, hogy a jelen Szerződés hogyan azonosítsa és kezeli a partnernek e szerződés keretében küldött kimenő üzeneteket.
 
-1.  A **Hozzáadás**válassza **küldési beállítások**.
-Konfigurálja ezeket a tulajdonságokat a partnerrel, aki adatcseréihez használható üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
+1.  A **Hozzáadás**területen válassza a **küldési beállítások**lehetőséget.
+Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, akik üzeneteket cserélnek Önnel. A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
-    **Küldési beállítások** van szakaszokba rendeztük: Azonosítók, visszaigazoló, sémákat, borítékok, karakterkészletek és elválasztók, Ellenőrzőszámok és érvényesítési.
+    A **küldési beállítások** a következő részekre vannak rendezve: azonosítók, visszaigazolások, sémák, borítékok, karakterkészletek és elválasztók, vezérlőelemek száma és érvényesítése.
 
-2. Miután elkészült, ügyeljen arra, hogy a beállítások mentéséhez kiválasztásával **OK**.
+2. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
 
-Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválasztott beállításokat kimenő üzenetek.
+A szerződés most már készen áll a kiválasztott beállításoknak megfelelő kimenő üzenetek kezelésére.
 
 ### <a name="identifiers"></a>Azonosítók
 
-![Azonosító tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![Azonosító tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Engedélyezési minősítő (ISA1) |Válassza ki az engedélyezési minősítő értéket a legördülő listából. |
-| ISA2 |Engedélyezési információkat értéket adjon meg. Ha ez az érték nem 00, majd adja meg, legalább egy alfanumerikus karakter és legfeljebb 10. |
-| Biztonsági minősítő (ISA3) |Válassza ki a biztonsági minősítő értéket a legördülő listából. |
-| ISA4 |Adja meg a biztonsági információinak értékét. Ha ez az érték nem a 00 érték (ISA4) szövegmező, majd adja meg, legalább egy alfanumerikus érték és a egy legfeljebb 10. |
+| Engedélyezési minősítő (ISA1) |Válassza ki az engedélyezési minősítő értékét a legördülő listából. |
+| ISA2 |Adja meg az engedélyezési információ értékét. Ha ez az érték nem 00, akkor adjon meg legalább egy alfanumerikus karaktert és legfeljebb 10 értéket. |
+| Biztonsági minősítő (ISA3) |Válassza ki a biztonsági minősítő értékét a legördülő listából. |
+| ISA4 |Adja meg a biztonsági információ értékét. Ha ez az érték nem a 00, az érték (ISA4) szövegmezőnél adjon meg legalább egy alfanumerikus értéket és legfeljebb 10 értéket. |
 
-### <a name="acknowledgment"></a>Nyugtázása
+### <a name="acknowledgment"></a>Tudomásul vétele
 
-![Nyugtázás tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Nyugtázási tulajdonságok beállítása](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Várt érték: TA1 |A technikai visszaigazolás (TA1) térjen vissza az adatcsere feladójának. Ez a beállítás meghatározza, hogy a gazdagép-partnerrel, aki az üzenetet küld egy visszaigazoló kérelmek egyezményben vendégként partnertől. Ezek a nyugták a szerződés kap beállításai alapján a gazdagép-partner által várt. |
-| Várt érték: FA |Adatcsere feladójának térjen vissza a működési visszaigazolás (be). Válassza ki, hogy a, vagy 999 997 nyugtázások, a alapján séma dolgozik. Ezek a nyugták a szerződés kap beállításai alapján a gazdagép-partner által várt. |
-| FA verziója |Válassza ki a FA verziója |
+| Várt TA1 |Technikai nyugtázás (TA1) visszaküldése a bankközi feladónak. Ez a beállítás azt határozza meg, hogy az üzenetet küldő gazda partner visszaigazolást kér a szerződésben szereplő vendég partnertől. Ezeket a nyugtákat a fogadó partner a szerződés fogadási beállításai alapján várta. |
+| A FA várható |Funkcionális nyugtázás (FA) visszaadása az adatcsere küldőjének. Válassza ki, hogy a 997-es vagy az 999-es nyugtát szeretné-e használni a séma azon verziói alapján, amelyeken dolgozik. Ezeket a nyugtákat a fogadó partner a szerződés fogadási beállításai alapján várta. |
+| FA verziója |Válassza ki a be verziót |
 
 ### <a name="schemas"></a>Sémák
 
-![Válassza ki a használni kívánt sémájának](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+![Válassza ki a használni kívánt sémát](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Version |Válassza ki a X12 verzió |
-| Tranzakció típusa (ST01) |Jelölje be a tranzakció típusa |
-| SCHEMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. Ha először válassza ki a sémát, a rendszer automatikusan beállítja verziója és a tranzakció típusa  |
+| Verzió |Válassza ki a X12 verzióját |
+| Tranzakció típusa (ST01) |Válassza ki a tranzakció típusát |
+| SÉMA |Válassza ki a használni kívánt sémát. A sémák az integrációs fiókban találhatók. Ha először a séma lehetőséget választja, a automatikusan konfigurálja a verziót és a tranzakció típusát  |
 
 > [!NOTE]
-> Konfigurálja a szükséges [séma](../logic-apps/logic-apps-enterprise-integration-schemas.md) töltenek fel, amely a [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-accounts.md).
+> Konfigurálja az [integrációs fiókba](../logic-apps/logic-apps-enterprise-integration-accounts.md)feltöltött szükséges [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) .
 
-### <a name="envelopes"></a>Borítékok
+### <a name="envelopes"></a>Borítékoknak
 
-![Adja meg az elválasztó egy tranzakciókészlet: válassza a szabványos azonosító vagy ismétlődés-elválasztó](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
-
-| Tulajdonság | Leírás |
-| --- | --- |
-| ISA11 Usage |A tranzakciókészlet használandó elválasztó határozza meg: <p>Válassza ki **szabványos azonosító** decimális jelölés használandó ponttal (.), ahelyett, hogy a bejövő dokumentum az EDI a decimális jelölés kap a folyamatot. <p>Válassza ki **ismétlődés-elválasztó** az elválasztó egy egyszerű adatelemének vagy ismétlődő adatstruktúra ismételt előfordulásának a megadásához. Ha például általában a karátot (^) szolgál a ismétlődési elválasztóként. A HIPAA sémák a karátot csak használhatja. |
-
-### <a name="control-numbers"></a>Ellenőrzőszámok
-
-![Adja meg az ellenőrzőszám tulajdonságai](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![Adja meg az elválasztót egy tranzakciónaplóban: válassza a standard azonosítót vagy a ismétlődési elválasztó elemet.](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Ellenőrző-verziószám (ISA12) |Válassza ki a standard szintű X12 verzióját |
-| Használati mutató (ISA15) |Válassza ki az adatcsere keretében.  Az értékek információkat, termelési adatok, vagy vizsgálati adatok |
-| Séma |Létrehoz egy X12-kódolású tévő, a Küldés folyamat elküldi a GS és ST szegmensek |
-| GS1 |Nem kötelező megadni, válassza ki a megfelelő értéket a legördülő listából a működési kód |
-| GS2 |Nem kötelező, csak alkalmazás-feladó |
-| GS3 |Nem kötelező, csak alkalmazás fogadó |
-| GS4 |Nem kötelező, válassza ki a CCYYMMDD, vagy a ÉÉHHNN |
-| GS5 |Nem kötelező megadni, jelölje be HHMM, HHMMSS vagy HHMMSSdd |
-| GS7 |Nem kötelező megadni, válassza ki a megfelelő értéket a legördülő listából a felelős hivatal |
-| GS8 |A dokumentum nem kötelező, csak verzióját |
-| Adatcsere Ellenőrzőszáma (ISA13) |Szükség esetén adjon meg egy tartományt az adatcsere-ellenőrzőszám. Adjon meg egy numerikus értéket legalább 1 és legfeljebb 999999999 |
-| Csoport Ellenőrzőszáma (GS06) |Számok számos szükséges, adja meg a csoport-ellenőrzőszám. Adjon meg egy numerikus értéket legalább 1 és legfeljebb 999999999 |
-| Tranzakciókészlet Ellenőrzőszáma (ST02) |A tranzakció beállítása ellenőrzőszám számok számos szükséges, adja meg. Adja meg a numerikus értékek tartományát legalább 1 és legfeljebb 999999999 |
-| Körzetszám |Kijelölt tranzakció set ellenőrzőszámok használatban vétele címtartománya nem kötelező. Adja meg a középső két mező numerikus értékét, és a egy alfanumerikus érték (ha szükséges) a előtagokkal és utótagokkal mezőket. A középső mezők szükség, és az ellenőrzőszám minimális és maximális értékeit tartalmazza |
-| Utótag |Kijelölt tranzakció beállítása egy visszaigazoló használt ellenőrzőszámok címtartománya nem kötelező. Adja meg a középső két mező numerikus értékét, és a egy alfanumerikus érték (ha szükséges) a előtagokkal és utótagokkal mezőket. A középső mezők szükség, és az ellenőrzőszám minimális és maximális értékeit tartalmazza |
+| ISA11-használat |Meghatározza a tranzakciónaplóban használandó elválasztó karaktert: <p>Válassza a **szabványos azonosító** lehetőséget, hogy egy pontot (.) használjon decimális jelöléshez, nem pedig a bejövő dokumentum decimális jelölését az EDI fogadási folyamatában. <p>Válassza a **ismétlő elválasztó** lehetőséget egy egyszerű adatelem vagy ismétlődő adatstruktúra ismétlődő előfordulásainak megadásához. Például általában a Carat (^) van használatban ismétlődési elválasztóként. HIPAA sémák esetében csak a Carat használatát használhatja. |
+
+### <a name="control-numbers"></a>Vezérlőelemek száma
+
+![Vezérlőelem számának tulajdonságainak megadása](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+
+| Tulajdonság | Leírás |
+| --- | --- |
+| Vezérlő verziószáma (ISA12) |Válassza ki a X12 standard verzióját |
+| Használati jelző (ISA15) |Válassza ki a csomópont környezetét.  Az értékek az adatok, a termelési adatok vagy a tesztelési adatok. |
+| Séma |A GS és a ST szegmenseket hozza létre egy X12-kódolású adatcsere számára, amelyet a küldési folyamatnak küld. |
+| GS1 |Nem kötelező, válassza ki a funkcionális kód értékét a legördülő listából. |
+| GS2 |Nem kötelező, az alkalmazás küldője |
+| GS3 |Opcionális, alkalmazás-fogadó |
+| GS4 |Nem kötelező, válassza a CCYYMMDD vagy a ÉÉHHNN lehetőséget. |
+| GS5 |Nem kötelező, válassza a óópp, a HHMMSS vagy a HHMMSSdd lehetőséget. |
+| GS7 |Nem kötelező, válasszon egy értéket a felelős ügynökség számára a legördülő listából. |
+| GS8 |A dokumentum verziója nem kötelező |
+| Adatcsere-vezérlési szám (ISA13) |Kötelező megadni az adatcsere-vezérlő számának tartományát. Adjon meg egy numerikus értéket legalább 1 értékkel, legfeljebb 999999999 |
+| Csoport vezérlőelem száma (GS06) |Kötelező megadni a csoport vezérlőelem számának tartományát. Adjon meg egy numerikus értéket legalább 1 értékkel, legfeljebb 999999999 |
+| Tranzakciónapló-vezérlő száma (ST02) |Kötelező, adja meg a tranzakciónapló-vezérlő számának tartományát. Adja meg a numerikus értékek tartományát legalább 1 értékkel, legfeljebb 999999999 |
+| Körzetszám |Nem kötelező, amelyet a rendszer a visszaigazoláshoz használt tranzakciótípusok vezérlőelem-számok tartományához jelöl. Adjon meg egy numerikus értéket a középső két mezőhöz, valamint egy alfanumerikus értéket (ha szükséges) az előtag és az utótag mezőhöz. A középső mezőket kötelező megadni, és tartalmaznia kell a vezérlő számának minimális és maximális értékét. |
+| Utótag |Nem kötelező, amelyet a rendszer a visszaigazolásban használt tranzakciótípusok vezérlőelem-számok tartományához jelöl. Adjon meg egy numerikus értéket a középső két mezőhöz, és egy alfanumerikus értéket (ha szükséges) az előtag és az utótag mezőhöz. A középső mezőket kötelező megadni, és tartalmaznia kell a vezérlő számának minimális és maximális értékét. |
 
 ### <a name="character-sets-and-separators"></a>Karakterkészletek és elválasztók
 
-Eltérő a karakterkészletet, a elválasztó külön készletét adja meg mindegyik üzenet típusa. Ha egy karakterkészlet egy adott üzenet-séma nincs megadva, az alapértelmezett karakterkészlet szolgál.
+A karakterkészleten kívül más határolójeleket is megadhat az egyes üzenetek típusaihoz. Ha egy karakterkészlet nincs megadva egy adott üzenet sémához, akkor a rendszer az alapértelmezett karakterkészletet használja.
 
-![Adja meg az üzenetek elválasztó karaktereket](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+![Határolójelek megadása az üzenetek típusaihoz](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Használandó karakterkészlet |A tulajdonságait, válassza ki a X12 karakterkészlet ellenőrzése. A beállítások a következők: alapszintű, bővített és UTF8. |
-| Séma |A legördülő listából válassza ki a sémát. Miután végzett az egyes sorok, a rendszer automatikusan hozzáadja az új sort. A kiválasztott séma, az elválasztók készletének kiválasztása, amelyet szeretne használni, az alábbi elválasztó leírása alapján. |
-| Bemenet típusa |Válassza ki egy bemeneti típusát a legördülő listából. |
-| Összetevő-elválasztó |Összetett adatok elemek elválasztásához, adja meg egy egyetlen karaktert. |
-| Adatelem-elválasztó |Összetett adatok egyszerű elemek elválasztásához, adjon meg egy egyetlen karaktert. |
-| Helyettesítő karakter |Adjon meg egy helyettesítő karaktert, és cserélje le a hasznos adatok összes elválasztó karakter, a kimenő X12 létrehozásakor használt üzenet. |
-| Szegmenslezáró |Jelezheti az EDI-szegmens, adjon meg egy egyetlen karaktert. |
-| Utótag |Válassza ki a szegmens azonosítóját használt karakter. Ha egy utótagot ad meg, majd a szegmens lezáró adatelem lehet üres. Ha a szegmenslezáró üres, majd ki kell jelölnie egy utótagot. |
+| Használandó karakterkészlet |A tulajdonságok érvényesítéséhez válassza ki a X12 karakterkészletet. A lehetőségek az alapszintű, a kiterjesztett és az UTF8. |
+| Séma |Válasszon ki egy sémát a legördülő listából. Az egyes sorok elvégzése után automatikusan létrejön egy új sor. A kiválasztott séma esetében válassza ki a használni kívánt elválasztó készletet az alábbi elválasztó leírások alapján. |
+| Bemenet típusa |Válasszon egy bemeneti típust a legördülő listából. |
+| Összetevő-elválasztó |Az összetett adatelemek elkülönítéséhez adjon meg egyetlen karaktert. |
+| Adatelem-elválasztó |Az összetett adatelemeken belüli egyszerű adatelemek elkülönítéséhez adjon meg egyetlen karaktert. |
+| Helyettesítő karakter |Adja meg azt a helyettesítő karaktert, amellyel a rendszer az összes elválasztó karaktert lecseréli a hasznos adatokhoz a kimenő X12 üzenet létrehozásakor. |
+| Szegmens vége |Egy EDI-szegmens végének jelzéséhez adjon meg egy karaktert. |
+| Utótag |Válassza ki a szegmens azonosítójával használt karaktert. Ha kijelöl egy utótagot, a szegmens lezáró adatelem üres is lehet. Ha a szegmens lezáró üresen marad, akkor meg kell jelölnie egy utótagot. |
 
 > [!TIP]
-> Speciális karakter használata szükséges értékeket ad meg, hogy a JSON-fájlként szerződés szerkesztése, és adja meg az ASCII érték a speciális karaktert.
+> Speciális karakteres értékek biztosításához szerkessze a szerződést JSON-ként, és adja meg a speciális karakter ASCII-értékét.
 
 ### <a name="validation"></a>Ellenőrzés
 
-![Üzenetek küldése érvényesítési tulajdonságainak beállítása](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+![Az üzenetek küldéséhez szükséges ellenőrzési tulajdonságok megadása](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
 
-Után minden érvényesítési sorban, egy másik automatikusan hozzáadja. Ha nem ad meg szabályokat, érvényesítési az "Alapértelmezett" sort használ.
+Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Üzenet típusa |Válassza ki az EDI-üzenet típusa. |
-| EDI-ellenőrzés |Hajtsa végre a séma EDI tulajdonságok, mezőhossz-korlátozásai, üres adatelem és záró elválasztók által meghatározott adattípusok EDI-ellenőrzés. |
-| Bővített ellenőrzés |Ha az adattípus nem EDI, ellenőrzés be van kapcsolva az elem követelménynek és ismétlődési, enumerálások és az adatok elem hossza érvényesítési (minimális/maximális) engedélyezett. |
-| Kezdő/záró nullák engedélyezése |A többi kezdő vagy záró nulla megőrzi, és szóköz karakter. Ne távolítsa el ezeket a karaktereket. |
-| Kezdő/záró nullák Trim |Távolítsa el a felesleges kezdő vagy záró nulla karakter. |
-| Záróelválasztó-szabályzat |Záró elválasztók készítése. <p>Válassza ki **nem engedélyezett** időtartamig záró elválasztó karakterek és az elküldött adatcsere elválasztók. Ha az adatcsere záró elválasztó karakterek és elválasztók, az adatcsere van deklarálva nem érvényes. <p>Válassza ki **nem kötelező** érték, vagy a záró elválasztó karakterek és elválasztók nélkül küldhet. <p>Válassza ki **kötelező** az elküldött adatcsere záró elválasztó karakterek és elválasztók kell rendelkeznie. Ha. |
+| Üzenet típusa |Válassza ki az EDI-üzenet típusát. |
+| EDI-ellenőrzés |A séma EDI-tulajdonságai, a hossz-korlátozások, az üres adatelemek és a záró elválasztók által definiált adattípusokra vonatkozó EDI-érvényesítés végrehajtása. |
+| Kiterjesztett ellenőrzés |Ha az adattípus nem EDI, az érvényesítés az adatelem követelménye és az engedélyezett ismétlődés, enumerálás és adatelem hossza ellenőrzés (min/max) alapján történik. |
+| Kezdő/záró nullák engedélyezése |Tartsa meg a további kezdő vagy záró nulla és szóköz karaktereket. Ne távolítsa el ezeket a karaktereket. |
+| A kezdő/záró nullák körülvágása |A kezdő vagy záró nulla karakterek eltávolítása. |
+| Záró elválasztó házirend |Záró elválasztók előállítása. <p>Válassza a **nem engedélyezett** lehetőséget a záró elválasztók és elválasztók tiltásához az eljuttatott adatcserében. Ha a csomópont záró határolójeleket és elválasztó karaktereket tartalmaz, a rendszer érvénytelenként deklarálja a csomópontot. <p>Válassza a **választható** lehetőséget, ha az egymás utáni határolójeleket és elválasztókat is el szeretné küldeni. <p>Válassza a **kötelező** lehetőséget, ha az eljuttatott adatcsere záró határolójelekkel és elválasztókkal kell rendelkeznie. |
 
-## <a name="find-your-created-agreement"></a>Keresse meg a létrehozott szerződés
+## <a name="find-your-created-agreement"></a>A létrehozott szerződés megkeresése
 
-1.  A megállapodás tulajdonságai a beállítás befejezése után a **Hozzáadás** lapon a **OK** véglegesítse a szerződés hatálya alá, és térjen vissza az integrációs fiókban.
+1.  Miután befejezte az összes szerződési tulajdonság beállítását, a **Hozzáadás** lapon kattintson az **OK** gombra a szerződés létrehozásához és az integrációs fiókhoz való visszatéréshez.
 
-    Az újonnan hozzáadott szerződés most már megjelenik a **szerződések** listája.
+    Az újonnan hozzáadott szerződés most megjelenik a **szerződések** listájában.
 
-2.  Az integrációs fiókok áttekintése is megtekintheti a szerződéseket. Az integrációs fiók menüjében válassza a **áttekintése**, majd válassza ki a **szerződések** csempére.
+2.  A szerződéseit az integrációs fiók áttekintésében is megtekintheti. Az integrációs fiók menüben válassza az **Áttekintés**, majd a **szerződések** csempét.
 
-    ![Válassza a "Szerződés" csempe](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>A swagger megtekintése
-Tekintse meg a [részletek swagger](/connectors/x12/). 
+## <a name="view-the-swagger"></a>A hencegés megtekintése
+Tekintse meg a [hencegés részleteit](/connectors/x12/). 
 
-## <a name="learn-more"></a>Részletek
-* [További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")  
+## <a name="learn-more"></a>További információ
+* [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
 

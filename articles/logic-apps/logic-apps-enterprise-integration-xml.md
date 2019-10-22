@@ -1,6 +1,6 @@
 ---
-title: XML-üzenetek B2B vállalati integráció – Azure Logic Apps |} A Microsoft Docs
-description: Feldolgozásához, ellenőrzése, átalakítás és bővítés az Azure Logic Appsben az Enterprise Integration Pack csomag B2B-megoldásoktól az XML-üzenetek
+title: XML-üzenetek és egyszerű fájlok – Azure Logic Apps
+description: XML-üzenetek feldolgozása, ellenőrzése és átalakítása Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,30 +8,34 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 730adf3e6ef3ddab5a8b0e927f94ffe3725358f4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996574"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679907"
 ---
-# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-üzenetek, és az Azure Logic Appsben és Enterprise Integration Pack egybesimított fájlok
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-üzenetek és Azure Logic Apps Enterprise Integration Pack
 
-Logic apps használata esetén, hogy a számítógép XML üzenetek küldése és fogadása. Ez a funkció az Enterprise Integration Pack részét képezi. Azoknak a felhasználóknak a BizTalk Server háttérrel az Enterprise Integration Pack biztosít hasonló funkciókat vehetnek igénybe, átalakítása és üzenetek érvényesíti, egybesimított fájlok használata, és akár az XPath bővítését, vagy konkrét tulajdonságok kinyerése egy üzenetet. 
+A [Azure Logic apps](logic-apps-overview.md)a Enterprise Integration Pack által küldött és fogadott XML-üzeneteket dolgozhatja fel. Ha BizTalk Server használta, az Enterprise Integration Pack hasonló képességeket biztosít az üzenetek átalakításához és ellenőrzéséhez, az egyszerű fájlokhoz való munka és az XPath használatával, hogy egy üzenetből gazdagítsa vagy kinyerje az adott tulajdonságokat. Ha most ismerkedik a területtel, ezek a funkciók kibővítik, hogyan dolgozza fel az üzeneteket a logikai alkalmazás munkafolyamatában. Ha például vállalatközi (B2B) forgatókönyvet használ, és adott XML-sémákkal dolgozik, akkor a Enterprise Integration Pack segítségével növelheti, hogy a vállalat hogyan dolgozza fel ezeket az üzeneteket.
 
-Azoknak a felhasználóknak nem ismerő felhasználók érdekében ez a terület ezeket a funkciókat bontsa ki, hogyan-üzenetek feldolgozása a munkafolyamaton belül. Például ha vannak olyan vállalatok forgatókönyvben, és dolgozhat adott az XML-sémák, majd az Enterprise Integration Pack használatával javíthatja a miként a vállalat dolgozza fel ezeket az üzeneteket. 
+A Enterprise Integration Pack például a következő funkciókat tartalmazza:
 
-Az Enterprise Integration Pack tartalmazza: 
+* [XML-érvényesítés](logic-apps-enterprise-integration-xml-validation.md): egy bejövő vagy kimenő XML-üzenet érvényesítése egy adott sémán.
 
-* [XML-érvényesítés](logic-apps-enterprise-integration-xml-validation.md "további információ üzenet XML-érvényesítés") – egy bejövő vagy kimenő XML-üzenet egy adott séma érvényesítése.
-* [XML-átalakításhoz](../logic-apps/logic-apps-enterprise-integration-transform.md "megismerheti a XML-üzenet átalakítások vagy a térképek") – konvertálni, vagy testre szabhatja egy XML-üzenet, a követelmények, vagy egy partneri követelményei alapján.
-* [Egybesimított fájl kódolása és egybesimított fájl dekódolása](logic-apps-enterprise-integration-flatfile.md "megismerheti a egybesimított fájl kódolása és dekódolása") – kódolása, vagy egy egybesimított fájl dekódolása. Például az SAP fogad el, és egybesimított fájl formátumú IDOC-fájlok küldése. Számos integrációs platform XML-üzenetek, beleértve a logikai alkalmazások létrehozása. Így hozhat létre egy logikai alkalmazást, amely a flat file encoder "átalakítása" XML-fájlok egybesimított fájlok. 
-* [XPath](https://msdn.microsoft.com/library/mt643789.aspx) - üzenet bővítését, és konkrét tulajdonságok kinyerni az üzenetet. Ezután használhatja a kinyert tulajdonságait az üzenet célba, vagy egy köztes végpontot irányíthatja.
+* [XML-transzformáció](logic-apps-enterprise-integration-transform.md): az XML-üzenetek konvertálása vagy testreszabása a követelmények vagy a partnerek követelményei alapján Maps használatával.
 
-## <a name="try-it-out"></a>Próbálja ki!
-[Egy teljesen működőképes logikai alkalmazás üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-minta) az Azure Logic Appsben az XML-funkciók használatával.
+* A [lapos fájl kódolása és a lapos fájl dekódolása](logic-apps-enterprise-integration-flatfile.md): egy egyszerű fájl kódolása vagy visszafejtése.
 
-## <a name="learn-more"></a>Részletek
-[További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")
+  Az SAP például a IDOC-fájlokat egyszerű fájlformátumban fogadja el és küldi el. Számos integrációs platform XML-üzeneteket hoz létre, beleértve a Logic Apps. Így létrehozhat egy logikai alkalmazást, amely a sima fájl kódolóját használja az XML-fájlok konvertálása egyszerű fájlokba.
+
+* [XPath](workflow-definition-language-functions-reference.md#xpath): az üzenet gazdagítása és a megadott tulajdonságok kinyerése. Ezután a kibontott tulajdonságok segítségével átirányíthatja az üzenetet egy célhelyre vagy egy köztes végpontra.
+
+## <a name="sample"></a>Minta
+
+[Helyezzen üzembe egy teljesen működőképes Logic app-alkalmazást](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-mintát) a Azure Logic apps XML-szolgáltatásainak használatával.
+
+## <a name="next-steps"></a>Következő lépések
+
+További információ a [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

@@ -1,23 +1,18 @@
 ---
 title: Webalkalmazás-elemzés beállítása az ASP.NET-hez az Azure Application Insights segítségével | Microsoft Docs
 description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.NET-webhely teljesítmény-, rendelkezésre állási és felhasználói viselkedési elemzési eszközeit.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d0eee3c0-b328-448f-8123-f478052751db
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 05/08/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 73f62ff8c95fae694a43df48aa99b696fb05d131
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 05/08/2019
+ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916263"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677675"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -34,18 +29,18 @@ Ha hozzá kívánja adni az Application Insights megoldást ASP.NET-webhelyéhez
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="ide"></a>1. lépés: A Application Insights SDK hozzáadása
+## <a name="ide"></a> 1. lépés: Az Application Insights SDK hozzáadása
 
 > [!IMPORTANT]
 > Az ebben a példában szereplő Képernyőképek a Visual Studio 2017 15.9.9 és újabb verzióján alapulnak. A Application Insights hozzáadásának élménye a Visual Studio és a ASP.NET-sablon típusának különböző verzióiban is változhat. Előfordulhat, hogy a régebbi verziók helyettesítő szöveggel rendelkeznek, például "configure Application Insights".
 
-Kattintson a jobb gombbal a webalkalmazás nevére a megoldáskezelő, majd válassza a **Hozzáadás** > **Application Insights telemetria**
+Kattintson a jobb gombbal a webalkalmazás nevére a Megoldáskezelő, majd válassza a  >  **hozzáadása** lehetőséget**Application Insights telemetria**
 
 ![A Solution Explorer (Megoldáskezelő) képernyőképe, a kiemelt Configure Application Insights (Application Insights konfigurálása) elemmel](./media/asp-net/add-telemetry-new.png)
 
 (Az Application Insights SDK verziójától függően a rendszer felkérheti, hogy frissítsen az SDK legújabb kiadására. Ebben az esetben válassza az **Update SDK** (SDK frissítése) lehetőséget.)
 
-![Képernyőkép A Microsoft Application Insights SDK új verziója érhető el. Az SDK frissítési lehetőség kiemelve](./media/asp-net/0002-update-sdk.png)
+![Képernyőkép: Elérhető a Microsoft Application Insights SDK egy új verziója. Az SDK frissítési lehetőség kiemelve](./media/asp-net/0002-update-sdk.png)
 
 Az Application Insights konfigurációs képernyőjén:
 
@@ -59,20 +54,20 @@ Ha szeretné beállítani az erőforráscsoportot vagy az adatok tárolásának 
 
 ![Képernyőkép az alkalmazásregisztrációs szakaszról az Application Insights oldalon](./media/asp-net/00005-register-ed.png)
 
- Válassza a **Project** > **NuGet-csomagok** > kezelése**csomag forrása: nuget.org** > ellenőrizze, hogy az Application Insights SDK legújabb stabil kiadása van-e.
+ Válassza a **projekt**  > **NuGet-csomagok kezelése**  > **csomag forrása: nuget.org** > ellenőrizze, hogy rendelkezik-e az Application Insights SDK legújabb stabil kiadásával.
 
  A telemetria az [Azure Portalra](https://portal.azure.com) lesz küldve a hibakeresés során és az alkalmazás közzététele után is.
 > [!NOTE]
 > Ha a hibakeresés során nem szeretne telemetriát küldeni a portálra, adja hozzá az Application Insights SDK-t az alkalmazáshoz, de ne konfiguráljon erőforrást a portálon. A telemetria a hibakeresés során a Visual Studióban lesz megtekinthető. Később visszatérhet erre a konfigurációs oldalra, vagy megvárhatja az alkalmazás üzembe helyezését, és [bekapcsolhatja a telemetriát a futtatás során](../../azure-monitor/app/monitor-performance-live-website-now.md).
 
-## <a name="run"></a>2. lépés: Az alkalmazás futtatása
+## <a name="run"></a> 2. lépés: Az alkalmazás futtatása
 Futtassa az alkalmazást az F5 billentyűvel. Nyisson meg több lapot, hogy létrejöjjön valamennyi telemetria.
 
 A Visual Studióban láthatja a naplózott események számát.
 
 ![A Visual Studio képernyőképe. Megjelenik az Application Insights gomb a hibakeresés alatt.](./media/asp-net/00006-Events.png)
 
-## <a name="step-3-see-your-telemetry"></a>3\. lépés: Tekintse meg a telemetria
+## <a name="step-3-see-your-telemetry"></a>3\. lépés: A telemetria megtekintése
 A telemetriát a Visual Studióban vagy az Application Insights webportálon tekintheti meg. A telemetria keresése a Visual Studióban segíti az alkalmazás hibakeresését. A teljesítményt és a használatot a webes portálon figyelheti, amikor a rendszer élesben működik. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Telemetria megtekintése a Visual Studióban
@@ -101,7 +96,7 @@ A portál az alkalmazásából származó telemetriai adatok nézetével nyílik
 
 A portálon az egyik csempére vagy diagramra kattintva további részleteket tekinthet meg.
 
-## <a name="step-4-publish-your-app"></a>4\. lépés: Alkalmazás közzététele
+## <a name="step-4-publish-your-app"></a>4\. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
 A telemetria a Application Insights portálon épül fel, ahol nyomon követheti a metrikákat, és megkeresheti a telemetria. A hatékony [Kusto lekérdezési nyelvet](/azure/kusto/query/) használhatja a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához is.
@@ -129,7 +124,7 @@ Ha az ApplicationInsights.config fájlt testreszabta, mentse el egy példányát
 
 * Külső lépésenkénti videó arról, hogyan [konfigurálható a Application Insights egy .net-alkalmazásból a semmiből](https://www.youtube.com/watch?v=blnGAVgMAfA).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További témaköröket is elolvashat, ha a következők érdeklik:
 
@@ -148,11 +143,11 @@ További témaköröket is elolvashat, ha a következők érdeklik:
 * **[Az Application Insights használata a Visual Studióban](../../azure-monitor/app/visual-studio.md)**<br/>A telemetriával végzett hibakereséssel, diagnosztikai kereséssel és a kódig való részletezés lefúrással kapcsolatos információkat tartalmaz.
 * **[Elemzés](../../azure-monitor/log-query/get-started-portal.md)** – Erőteljes lekérdezési nyelv.
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
-* [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket annak biztosításához, hogy a webhely látható legyen a weben.
-* [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, így nem kell bármit beállítania. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
-* [Metrikai riasztások](../../azure-monitor/app/alerts.md): Riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
+* [Rendelkezésre állási tesztek](../../azure-monitor/app/monitor-web-app-availability.md): Hozzon létre teszteket, hogy megbizonyosodjon róla, oldala látható a weben.
+* [Intelligens diagnosztika](../../azure-monitor/app/proactive-diagnostics.md): Ezek a tesztek automatikusan futnak, a beállításukhoz semmit sem kell tennie. Értesítést kap, ha az alkalmazásában szokatlanul magas a meghiúsult kérelmek száma.
+* [Metrikai riasztások](../../azure-monitor/app/alerts.md): riasztások beállítása, amely figyelmezteti, ha egy metrika átlépi a küszöbértéket. Az alkalmazás kódjába beépített egyedi metrikákhoz is állíthat be riasztásokat.
 
 ### <a name="automation"></a>Automation
 

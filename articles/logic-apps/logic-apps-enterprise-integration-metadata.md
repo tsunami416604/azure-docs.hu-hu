@@ -1,6 +1,6 @@
 ---
-title: Integrációs fiók összetevő metaadatai – Azure Logic Apps-alkalmazások kezelése |} A Microsoft Docs
-description: Adja hozzá, vagy kérjen összetevő metaadatai Azure Logic Apps Enterprise Integration Pack-integrációs fiókok
+title: Integrációs fiók összetevő-metaadatainak kezelése – Azure Logic Apps
+description: Az Azure Logic Apps integrációs fiókjainak hozzáadása vagy beolvasása az Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,103 +8,102 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
-ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8e2daf1de9223766c8cec835f7718007a8cf309
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60846201"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679974"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Összetevő metaadatai a az Azure Logic Apps és az Enterprise Integration Pack-integrációs fiókok kezelése
+# <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>Az összetevők metaadatainak kezelése az integrációs fiókokban Azure Logic Apps és Enterprise Integration Pack
 
-Egyéni összetevők metaadatainak megadása az integrációs fiókok, és a metaadatok beolvasása a logikai alkalmazás használata során. Például megadhat metaadat-összetevők, például a partnerek, szerződések, sémákat és a maps - kulcs-érték párok metaadatait az összes áruház. 
+Megadhat egyéni metaadatokat az összetevőkhöz az integrációs fiókokban, és lekérheti a metaadatokat a Futtatás közben a logikai alkalmazás használatára. Például megadhatja az összetevők metaadatait, például a partnereket, a szerződéseket, a sémákat és a térképeket – az összes tároló-metaadatot a kulcs-érték párokkal. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
-* Egy alapszintű [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely rendelkezik az összetevők hol szeretne adja hozzá a metaadatokat, például: 
+* Olyan alapszintű [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely rendelkezik olyan összetevőkkel, amelyekhez metaadatokat kíván hozzáadni, például: 
 
   * [Partner](logic-apps-enterprise-integration-partners.md)
-  * [Szerződés](logic-apps-enterprise-integration-agreements.md)
-  * [séma](logic-apps-enterprise-integration-schemas.md)
+  * [Megállapodás](logic-apps-enterprise-integration-agreements.md)
+  * [Séma](logic-apps-enterprise-integration-schemas.md)
   * [Térkép](logic-apps-enterprise-integration-maps.md)
 
-* Egy logikai alkalmazást, amely kapcsolódik az integrációs fiók és az összetevő metaadatai szeretné használni. Ha a logikai alkalmazás nem már össze van kapcsolva, további [a logic apps és integrációs fiókok összekapcsolása](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
+* Az integrációs fiókhoz és a használni kívánt összetevő-metaadatokhoz kapcsolódó logikai alkalmazás. Ha a logikai alkalmazás még nincs összekapcsolva, ismerkedjen meg a [Logic apps integrációs fiókokkal való összekapcsolásával](logic-apps-enterprise-integration-create-integration-account.md#link-account). 
 
-  Ha még nem rendelkezik egy logikai alkalmazást, további [létrehozása a logic apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
-  Adja hozzá az eseményindító és az összetevő metaadatai kezeléséhez használni kívánt műveleteket. Vagy próbálkozás csinálni, adjon hozzá egy eseményindító például **kérelem** vagy **HTTP** a logikai alkalmazáshoz.
+  Ha még nem rendelkezik logikai alkalmazással, Ismerje meg, [hogyan hozhat létre logikai alkalmazásokat](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+  Adja meg az összetevő-metaadatok kezeléséhez használni kívánt triggert és műveleteket. Vagy ha csak ki szeretné próbálni a dolgokat, adjon hozzá egy triggert, például a **kérést** vagy a **http** -t a logikai alkalmazáshoz.
 
-## <a name="add-metadata-to-artifacts"></a>Adja hozzá a metaadatokat az összetevőket
+## <a name="add-metadata-to-artifacts"></a>Metaadatok hozzáadása az összetevőkhöz
 
-1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival. Keresse meg és nyissa meg az integrációs fiókot.
+1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival. Keresse meg és nyissa meg az integrációs fiókját.
 
-1. Válassza ki az összetevőben, ahol szeretné ad hozzá metaadatokat, és válassza a **szerkesztése**. Adja meg, hogy metaadatokat adott összetevő, például:
+1. Válassza ki azt az összetevőt, amelyhez metaadatokat szeretne felvenni, majd válassza a **Szerkesztés**lehetőséget. Adja meg az adott összetevő metaadat-részleteit, például:
 
-   ![Enter metadata](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
+   ![Metaadatok megadása](media/logic-apps-enterprise-integration-metadata/add-partner-metadata.png)
 
-1. Ha elkészült, válassza ki a **OK**.
+1. Ha elkészült, kattintson **az OK gombra**.
 
-1. Az integrációs fiók JavaScript Object Notation (JSON) definíciója a metaadatok megtekintéséhez válassza **Szerkesztés JSON-ként** úgy, hogy a JSON-szerkesztő megnyitása: 
+1. Ha meg szeretné tekinteni a metaadatokat az integrációs fiókhoz tartozó JavaScript Object Notation (JSON) definíciójában, válassza a **Szerkesztés JSON-ként** lehetőséget a JSON-szerkesztő megnyitásához: 
 
-   ![A partner metaadatokat JSON](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
+   ![JSON a partner metaadatainak](media/logic-apps-enterprise-integration-metadata/partner-metadata.png)
 
 ## <a name="get-artifact-metadata"></a>Összetevők metaadatainak beolvasása
 
-1. Az Azure Portalon nyissa meg a logikai alkalmazás, amely kapcsolódik a kívánt integrációs fiókban. 
+1. A Azure Portal nyissa meg a kívánt integrációs fiókhoz csatolt logikai alkalmazást. 
 
-1. A Logic App Designerben, ha a lépés a trigger vagy az utolsó művelet alatt metaadatok beolvasása a munkafolyamat számára, válasszon **új lépés** > **művelet hozzáadása**. 
+1. Ha a Logic app Designerben hozzáadja a metaadatok beolvasásához szükséges lépést a munkafolyamat trigger vagy utolsó művelete alatt, válassza az **új lépés**  > **művelet hozzáadása lehetőséget**. 
 
-1. A Keresés mezőbe írja be az "integrációs fiók". A keresőmező alatt válassza ki a **összes**. A műveletek listából válassza a következő műveletet: **Integrációs fiók Összetevőkeresése - integrációs fiók**
+1. A keresőmezőbe írja be az "integrációs fiók" kifejezést. A keresőmező alatt válassza az **összes**lehetőséget. A műveletek listából válassza a következő műveletet: **integrációs fiók összetevő keresése – integrációs fiók**
 
-   ![Válassza ki a "Integrációs fiók Összetevőkeresése"](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
+   ![Az "integrációs fiók összetevő-keresés" kiválasztása](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
-1. Adja meg a keresett összetevőre információkat:
+1. Adja meg ezt az információt a keresett összetevőhöz:
 
-   | Tulajdonság | Szükséges | Value | Leírás | 
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás | 
    |----------|---------|-------|-------------| 
-   | **Összetevő típusa** | Igen | **Séma**, **térkép**, **Partner**, **szerződés**, vagy egy egyéni típus | A kívánt összetevő típusa | 
-   | **Összetevő neve** | Igen | <*artifact-name*> | A kívánt összetevő neve | 
+   | **Összetevő típusa** | Igen | **Séma**, **Térkép**, **partner**, **Szerződés**vagy egyéni típus | A kívánt összetevő típusa | 
+   | **Összetevő neve** | Igen | < összetevő*neve* > | A kívánt összetevő neve | 
    ||| 
 
-   Például tegyük fel, hogy a metaadatok lekérése egy kereskedelmi partneri összetevő:
+   Tegyük fel például, hogy egy kereskedelmi partneri összetevő metaadatait szeretné lekérni:
 
-   ![Válassza ki az összetevő típusa, és adja meg az összetevő neve](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
+   ![Válassza ki az összetevő típusát, és adja meg az összetevő nevét](media/logic-apps-enterprise-integration-metadata/artifact-lookup-information.png)
 
-1. Adja hozzá a műveletre, amelyet az adott metaadatokat, például:
+1. Adja hozzá azt a műveletet, amelyet a metaadatok kezelésére kíván használni, például:
 
-   1. Alatt a **integrációs fiók Összetevőkeresése** műveletet, válassza a **következő lépés**, és válassza ki **művelet hozzáadása**. 
+   1. Az **integrációs fiók összetevője keresési** művelet területen válassza a **következő lépés**lehetőséget, majd válassza a **művelet hozzáadása**lehetőséget. 
 
-   1. A Keresés mezőbe írja be a "http". A keresőmező alatt válassza ki a **Built-ins**, és válassza a következő műveletet: **HTTP - HTTP**
+   1. A keresőmezőbe írja be a "http" kifejezést. A keresőmezőbe válassza a **beépített modulok**elemet, majd válassza a következő műveletet: **http-http**
 
       ![HTTP-művelet hozzáadása](media/logic-apps-enterprise-integration-metadata/http-action.png)
 
-   1. Az összetevő metaadatai kezelni kívánt információkat biztosítanak. 
+   1. Adja meg a kezelni kívánt összetevő-metaadatok adatait. 
 
-      Tegyük fel például, hogy szeretne a `routingUrl` témakör korábbi szakaszában felvett metaadatait. Az alábbiakban megadhatja a tulajdonságértékek: 
+      Tegyük fel például, hogy szeretné beolvasni a témakör korábbi részében hozzáadott `routingUrl` metaadatokat. A következő tulajdonságértékek adhatók meg: 
 
-      | Tulajdonság | Szükséges | Value | Leírás | 
+      | Tulajdonság | Szükséges | Value (Díj) | Leírás | 
       |----------|----------|-------|-------------| 
-      | **Metódus** | Igen | <*operation-to-run*> | A HTTP-műveletből a lehívandó összetevő fusson. Például a HTTP-művelet használja a **első** metódust. | 
-      | **URI-T** | Igen | <*metadata-location*> | Hozzáférés a `routingUrl` metaadatok értéket az összetevőben, beolvassa, egy kifejezés használható, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **Fejlécek** | Nem | <*header-values*> | Bármilyen fejlécet jelenít meg a HTTP-művelet át szeretné a trigger által. Például adja át az eseményindító `headers` tulajdonság értéke: kifejezés, például használhatja: <p>`@triggeroutputs()['headers']` | 
-      | **Törzs** | Nem | <*body-content*> | A HTTP-művelet keresztül átadni kívánt egyéb tartalmat `body` tulajdonság. Ez a példa továbbítja a lehívandó összetevő `properties` értékeket cserélheti le a HTTP-művelet: <p>1. Kattintson a **törzs** tulajdonság, így a dinamikus tartalmak listája jelenik meg. Ha nincsenek megadva tulajdonságok jelennek meg, válassza ki a **Továbbiak**. <br>2. A dinamikus tartalmú listából alatt **integrációs fiók Összetevőkeresése**válassza **tulajdonságok**. | 
+      | **Metódus** | Igen | <*művelet – futtatás* > | Az összetevőn futtatandó HTTP-művelet. Ez a HTTP-művelet például a **Get** metódust használja. | 
+      | **URI** | Igen | <*metaadatok – hely* > | A `routingUrl` metaadatok értékének a beolvasott összetevőből való eléréséhez használhat egy kifejezést, például: <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **Fejlécek** | Nem | <*header-values* > | Minden olyan fejléc kimenete a triggerből, amelyet át szeretne adni a HTTP-műveletbe. Ha például át szeretné adni az trigger `headers` tulajdonságának értékét: használhat kifejezéseket, például: <p>`@triggeroutputs()['headers']` | 
+      | **Törzs** | Nem | <*törzs – tartalom* > | Minden más olyan tartalom, amelyet át szeretne adni a HTTP-művelet `body` tulajdonságán. Ez a példa a lelet `properties` értékeit adja át a HTTP-műveletnek: <p>1. kattintson a **Body (törzs** ) tulajdonságra, hogy a dinamikus tartalom lista megjelenjen. Ha nem jelenik meg a tulajdonságok, válassza a **továbbiak**lehetőséget. <br>2. a dinamikus tartalom listából válassza a **Tulajdonságok**lehetőséget az **integrációs fiók**összetevőinek keresése területen. | 
       |||| 
 
       Példa:
 
-      ![Adja meg az értékeket, és a HTTP-művelet a kifejezések](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
+      ![Értékek és kifejezések megadása HTTP-művelethez](media/logic-apps-enterprise-integration-metadata/add-http-action-values.png)
 
-   1. A HTTP-művelet a megadott információk ellenőrzéséhez tekintse meg a logikai alkalmazás JSON-definícióját. Logikaialkalmazás-Tervező eszköztárán válassza a **Kódnézet** így az alkalmazás JSON-definíció jelenik meg, például:
+   1. A HTTP-művelethez megadott információk megtekintéséhez tekintse meg a logikai alkalmazás JSON-definícióját. A Logic app Designer eszköztárán válassza a **kód nézet** lehetőséget, hogy az alkalmazás JSON-definíciója megjelenjen, például:
 
-      ![Logikai alkalmazás JSON-definíció](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
+      ![Logikai alkalmazás JSON-definíciója](media/logic-apps-enterprise-integration-metadata/finished-logic-app-definition.png)
 
-      Miután, váltson vissza a Logikaialkalmazás-Tervező, használt kifejezéseket most jelennek meg feloldani, például:
+      A Logic app Designerre való váltás után a már használt kifejezések megoldódott, például:
 
-      ![Logic App Designerben megoldott kifejezések](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
+      ![Megoldott kifejezések a Logic app Designerben](media/logic-apps-enterprise-integration-metadata/resolved-expressions.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További tudnivalók a szerződések](logic-apps-enterprise-integration-agreements.md)
+* [További információ a szerződésekről](logic-apps-enterprise-integration-agreements.md)

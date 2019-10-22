@@ -1,39 +1,34 @@
 ---
 title: Az Application Insightsban lévő események számlálói | Microsoft Docs
 description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése Application Insightsban.
-services: application-insights
-documentationcenter: ''
-author: cithomas
-manager: carmonm
-ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 09/20/2019
+author: cithomas
 ms.author: cithomas
-ms.openlocfilehash: fc9148d4f4c5920210b9218ca70f270bae3b663b
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 09/20/2019
+ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273939"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677153"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
-`EventCounter`a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést `EventCounters` nyújt és példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
+a `EventCounter` a .NET/.NET Core mechanizmus a számlálók vagy statisztikák közzétételéhez és felhasználásához. [Ez](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt `EventCounters`okról és példákról a közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
 
-Míg a felhasználók bármilyen egyéni személyt `EventCounters` közzétehetnek az igényeinek megfelelően, a .net Core 3,0 futtatókörnyezet alapértelmezés szerint közzéteszi ezeket a számlálókat. A dokumentum végigvezeti a begyűjtéséhez és megtekintéséhez `EventCounters` (rendszer által definiált vagy felhasználó által definiált) az Azure Application Insights.
+Míg a felhasználók bármilyen egyéni `EventCounters` közzétehetnek az igényeinek megfelelően, a .NET Core 3,0 Runtime alapértelmezés szerint közzéteszi ezeket a számlálókat. A dokumentum végigvezeti az Azure Application Insights `EventCounters` (rendszer által definiált vagy felhasználó által definiált) összegyűjtéséhez és megtekintéséhez szükséges lépéseken.
 
 ## <a name="using-application-insights-to-collect-eventcounters"></a>A Application Insights használata a EventCounters gyűjtéséhez
 
-Application Insights támogatja a `EventCounters` begyűjtést a alkalmazással `EventCounterCollectionModule`, amely a [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)újonnan kiadott nuget-csomag részét képezi. `EventCounterCollectionModule`automatikusan engedélyezve van a [AspNetCore](asp-net-core.md) vagy a [WorkerService](worker-service.md)használatakor. `EventCounterCollectionModule`a nem konfigurálható adatgyűjtési gyakorisággal (60 másodperc) gyűjti a számlálókat. A EventCounters gyűjtéséhez nincs szükség különleges engedélyekre.
+A Application Insights támogatja a `EventCounters` begyűjtését annak `EventCounterCollectionModule`ével, amely a [Microsoft. ApplicationInsights. EventCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventCounterCollector)újonnan kiadott nuget-csomag részét képezi. a [AspNetCore](asp-net-core.md) vagy a [WorkerService](worker-service.md)használatakor a rendszer automatikusan engedélyezi a `EventCounterCollectionModule`. a `EventCounterCollectionModule` a nem konfigurálható gyűjtemények 60 másodperces gyakoriságát gyűjti a számlálókat. A EventCounters gyűjtéséhez nincs szükség különleges engedélyekre.
 
 ## <a name="default-counters-collected"></a>Összegyűjtött alapértelmezett számlálók
 
 A .NET Core 3,0-ben futó alkalmazások esetében az SDK automatikusan összegyűjti a következő számlálókat. A számlálók neve "Category |" formában jelenik meg. Számláló ".
 
-|Category | Számláló|
+|Kategória | Számláló|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |
@@ -64,7 +59,7 @@ A .NET Core 3,0-ben futó alkalmazások esetében az SDK automatikusan összegy�
 
 ## <a name="customizing-counters-to-be-collected"></a>A gyűjteni kívánt számlálók testreszabása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlálókat. Ezt a testreszabást az alkalmazás metódusa fogja elvégezni, miután Application Insights telemetria `ConfigureServices` `AddApplicationInsightsTelemetry()` -gyűjtemény engedélyezve lett a vagy `AddApplicationInsightsWorkerService()`a használatával. A következő példa egy ASP.NET Core alkalmazásból származó kódot mutat be. Más típusú alkalmazások esetében tekintse meg [ezt](worker-service.md#configuring-or-removing-default-telemetrymodules) a dokumentumot.
+Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlálókat. Ezt a testreszabást az alkalmazás `ConfigureServices` metódusa fogja elvégezni, miután Application Insights telemetria-gyűjtemény engedélyezve lett `AddApplicationInsightsTelemetry()` vagy `AddApplicationInsightsWorkerService()` használatával. A következő példa egy ASP.NET Core alkalmazásból származó kódot mutat be. Más típusú alkalmazások esetében tekintse meg [ezt](worker-service.md#configuring-or-removing-default-telemetrymodules) a dokumentumot.
 
 ```csharp
     using Microsoft.ApplicationInsights.Extensibility.EventCounterCollector;
@@ -103,7 +98,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlál�
 Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután a EventCounter-metrikák a PerformanceCounter kategóriában jelennek meg.
 
 > [!div class="mx-imgBorder"]
-> ![Application Insightsban jelentett események számlálói](./media/event-counters/metrics-explorer-counter-list.png)
+> ![Event a Application Insightsban jelentett számlálók ](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Az elemzési események számlálói
 
@@ -116,7 +111,7 @@ performanceCounters | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
-> ![Application Insightsban jelentett események számlálói](./media/event-counters/analytics-event-counters.png)
+> ![Event a Application Insightsban jelentett számlálók ](./media/event-counters/analytics-event-counters.png)
 
 Egy adott számláló diagramjának lekéréséhez (például: `ThreadPool Completed Work Item Count`) a legutóbbi időszak alatt futtassa a következő lekérdezést.
 
@@ -128,11 +123,11 @@ performanceCounters
 | render timechart
 ```
 > [!div class="mx-imgBorder"]
-> ![Csevegés egyetlen számlálóról Application Insights](./media/event-counters/analytics-completeditems-counters.png)
+> egyetlen számláló ![Chat Application Insights ](./media/event-counters/analytics-completeditems-counters.png)
 
-A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy `cloud_RoleInstance` oszlopot, amely jelzi annak a gazdagép-példánynak az identitását, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
+A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy olyan `cloud_RoleInstance` oszlopot, amely a gazdagép azon példányának identitását jelzi, amelyen az alkalmazás fut. A fenti lekérdezés a számláló értékét jeleníti meg, és felhasználható a különböző kiszolgálói példányok teljesítményének összehasonlítására.
 
-## <a name="alerts"></a>Riasztások
+## <a name="alerts"></a>Értesítések
 Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/app/alerts.md) , amely figyelmezteti, ha egy esemény számlálója a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -145,11 +140,11 @@ Az élő metrikák nem jelenítik meg a EventCounters a mai naptól. A telemetri
 
 A EventCounter nem igényel speciális engedélyeket, és a .NET Core 3,0 összes platformján támogatott. Az érintett műveletek közé tartoznak az alábbiak:
 
-* **Operációs rendszer**: Windows, Linux vagy macOS.
-* **Üzemeltetési módszer**: Folyamatban vagy folyamatban.
-* **Üzembe helyezési módszer**: A keretrendszer függő vagy önálló.
+* **Operációs rendszer**: Windows, Linux vagy MacOS.
+* **Üzemeltetési módszer**: folyamatban vagy folyamatban.
+* **Üzembe helyezési módszer**: keretrendszer függő vagy önálló.
 * **Webkiszolgáló**: IIS (Internet Information Server) vagy vércse.
-* **Üzemeltetési platform**: A Azure App Service, az Azure VM, a Docker, az Azure Kubernetes szolgáltatás (ak) Web Apps funkciója stb.
+* **Üzemeltetési platform**: az Azure app Service, az Azure VM, a Docker, az Azure Kubernetes Service (ak) Web Apps funkciója stb.
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Engedélyeztem Application Insights az Azure Web App Portalon. De nem látom a EventCounters.?
 

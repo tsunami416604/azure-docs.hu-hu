@@ -1,6 +1,6 @@
 ---
-title: B2B-üzenetek monitorozása Azure Monitor naplókkal – Azure Logic Apps | Microsoft Docs
-description: AS2-, X12-és EDIFACT-üzenetek figyelése integrációs fiókokhoz és Azure Logic Apps és diagnosztikai naplózás beállítása Azure Monitor naplókkal
+title: B2B-üzenetek monitorozása Azure Monitor-Azure Logic Apps
+description: Diagnosztikai naplózás beállítása AS2-, X12-és EDIFACT-üzenetekhez a Azure Logic Appsban Azure Monitor használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,14 +9,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261205"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680202"
 ---
-# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>B2B-üzenetek monitorozása Azure Monitor-naplókkal Azure Logic Apps
+# <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Diagnosztikai naplózás beállítása a Azure Logic Appsban lévő B2B-üzenetekhez Azure Monitor használatával
 
 Miután beállította a VÁLLALATKÖZI kommunikációt a kereskedelmi partnerek között az integrációs fiókban, ezek a partnerek egymással is cserélhetnek üzeneteket. Annak ellenőrzéséhez, hogy ez a kommunikáció a várt módon működik-e, figyelheti az AS2-, X12-és EDIFACT-üzeneteket, és beállíthatja a diagnosztikai naplózást az integrációs fiókhoz [Azure monitor naplók](../log-analytics/log-analytics-overview.md)használatával. Ez a szolgáltatás figyeli a Felhőbeli és a helyszíni környezeteket, segít megőrizni a rendelkezésre állást és a teljesítményt, és gyűjti a futtatókörnyezet részleteit és eseményeit a gazdagabb hibakereséshez. Ezeket az adattárakat más szolgáltatásokkal is használhatja, mint például az Azure Storage és az Azure Event Hubs.
 
@@ -39,19 +39,19 @@ A naplózást közvetlenül az integrációs fiókjából vagy [a Azure monitor 
 
 ### <a name="turn-on-logging-from-integration-account"></a>Naplózás bekapcsolása integrációs fiókból
 
-1. A [Azure Portalban](https://portal.azure.com)keresse meg és válassza ki az integrációs fiókját. A **figyelés**válassza **diagnosztikai beállítások**.
+1. A [Azure Portalban](https://portal.azure.com)keresse meg és válassza ki az integrációs fiókját. A **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
 
    ![Az integrációs fiók megkereséséhez és kiválasztásához válassza a "diagnosztikai beállítások" lehetőséget.](media/logic-apps-monitor-b2b-message/find-integration-account.png)
 
 1. Most keresse meg és válassza ki az integrációs fiókját. A szűrőlisták területen válassza ki az integrációs fiókra vonatkozó értékeket.
 Ha elkészült, válassza a **diagnosztikai beállítás hozzáadása**elemet.
 
-   | Tulajdonság | Érték | Leírás | 
+   | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiókjához társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Azure-resource-group-name*> | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve* > | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-Erőforrás típusa, amelyen be szeretné kapcsolni a naplózást | 
-   | **Erőforrás** | <*integration-account-name*> | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
+   | **Erőforrás** | <*integráció – fiók neve* > | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
    ||||  
 
    Példa:
@@ -88,12 +88,12 @@ Ha elkészült, válassza a **diagnosztikai beállítás hozzáadása**elemet.
 1. Most keresse meg és válassza ki az integrációs fiókját. A szűrőlisták területen válassza ki az integrációs fiókra vonatkozó értékeket.
 Ha elkészült, válassza a **diagnosztikai beállítás hozzáadása**elemet.
 
-   | Tulajdonság | Érték | Leírás | 
+   | Tulajdonság | Value (Díj) | Leírás | 
    |----------|-------|-------------|
    | **Előfizetés** | <*Azure-előfizetés-neve*> | Az integrációs fiókjához társított Azure-előfizetés | 
-   | **Erőforráscsoport** | <*Azure-resource-group-name*> | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
+   | **Erőforráscsoport** | <*Azure-Erőforrás-csoport neve* > | Az integrációs fiókhoz tartozó Azure-erőforráscsoport | 
    | **Erőforrás típusa** | **Integrációs fiókok** | Az Azure-Erőforrás típusa, amelyen be szeretné kapcsolni a naplózást | 
-   | **Erőforrás** | <*integration-account-name*> | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
+   | **Erőforrás** | <*integráció – fiók neve* > | Annak az Azure-erőforrásnak a neve, amelyen be szeretné kapcsolni a naplózást | 
    ||||  
 
    Példa:
@@ -144,7 +144,7 @@ Az Azure támogatja ezeket a követési sémákat, amelyek mindegyike rögzítet
 * [X12-követési séma](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [B2B-üzenetek nyomon követése Azure Monitor-naplókban](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "B2B-üzenetek nyomon követése Azure Monitor-naplókban")
 * [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")

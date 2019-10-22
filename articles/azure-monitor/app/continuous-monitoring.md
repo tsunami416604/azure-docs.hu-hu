@@ -1,20 +1,18 @@
 ---
 title: DevOps-kiadási folyamat folyamatos figyelése Azure-folyamatokkal és Azure-Application Insightsokkal | Microsoft Docs
 description: Útmutatást nyújt a folyamatos figyelés beállításához Application Insights
-services: application-insights
-keywords: ''
+ms.service: azure-monitor
+ms.subservice: application-insights
+ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/16/2019
-ms.service: application-insights
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c39a2f75fe74b61463af464078b4446bba07dec0
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277728"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677520"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés hozzáadása a kiadási folyamathoz
 
@@ -26,7 +24,7 @@ A folyamatos figyeléssel a kiadási folyamatok Application Insights és más Az
 
 1. Az [Azure DevOps](https://dev.azure.com)válassza ki a szervezet és a projekt elemet.
    
-1. A projekt lap bal oldali menüjében válassza a **folyamatok** > **kiadások**elemet. 
+1. A projekt lap bal oldali menüjében válassza a **folyamatok**  > **kiadások**elemet. 
    
 1. Húzza le a nyilat az **új** elem melletti nyílra, és válassza az **új kiadási folyamat**lehetőséget. Ha még nem rendelkezik folyamattal, a megjelenő oldalon válassza az **új folyamat** elemet.
    
@@ -40,9 +38,9 @@ A folyamatos figyeléssel a kiadási folyamatok Application Insights és más Az
 
 1. Az **1. fázis** konfigurációs ablaktábláján hajtsa végre a következő mezőket: 
 
-    | Paraméter        | Value |
+    | Paraméter        | Value (Díj) |
    | ------------- |:-----|
-   | **Szakasz neve**      | Adja meg a fázis nevét, vagy hagyja meg az **1**. fázisban. |
+   | **Szakasz neve**      | Adja meg a fázis nevét, vagy hagyja meg az **1. fázisban**. |
    | **Azure-előfizetés** | Legördülő menüből válassza ki a használni kívánt társított Azure-előfizetést.|
    | **Alkalmazás típusa** | Legördülő menüből válassza ki az alkalmazás típusát. |
    | **App Service neve** | Adja meg a Azure App Service nevét. |
@@ -53,7 +51,7 @@ A folyamatos figyeléssel a kiadási folyamatok Application Insights és más Az
 
 ## <a name="modify-alert-rules"></a>Riasztási szabályok módosítása
 
-A folyamatos figyelési sablonnal **rendelkező Azure app Service** üzemelő példánynak négy riasztási szabálya van: **Rendelkezésre állás**, **Sikertelen kérelmek**, **kiszolgáló válaszideje**és **kiszolgálói kivételek**. További szabályokat adhat hozzá, vagy módosíthatja a szabályok beállításait, hogy azok megfeleljenek a szolgáltatási szint igényeinek. 
+A **folyamatos figyelési sablonnal rendelkező Azure app Service üzemelő példánynak** négy riasztási szabálya van: **rendelkezésre állás**, **Sikertelen kérelmek**, **kiszolgáló válaszideje**és **kiszolgálói kivételek**. További szabályokat adhat hozzá, vagy módosíthatja a szabályok beállításait, hogy azok megfeleljenek a szolgáltatási szint igényeinek. 
 
 A riasztási szabály beállításainak módosítása:
 
@@ -79,7 +77,7 @@ Amikor üzembe helyezési kapukat ad hozzá a kiadási folyamathoz, a beállíto
    
    ![Üzembe helyezés előtti feltételek](media/continuous-monitoring/004.png)
    
-1. A **központi telepítés előtti feltételek** konfigurációs ablaktáblán állítsa be  a kapuk beállítást **engedélyezve**értékűre.
+1. A **központi telepítés előtti feltételek** konfigurációs ablaktáblán állítsa be a **kapuk** beállítást **engedélyezve**értékűre.
    
 1. Az **üzembe helyezési kapuk**mellett válassza a **Hozzáadás**lehetőséget.
    
@@ -87,7 +85,7 @@ Amikor üzembe helyezési kapukat ad hozzá a kiadási folyamathoz, a beállíto
    
    ![Azure Monitor riasztások lekérdezése](media/continuous-monitoring/005.png)
    
-1. A **kiértékelési beállítások**szakaszban adja meg azokat az értékeket, amelyeket meg szeretne adni a Gates újraértékelése és **a Gates meghibásodása utáni időtúllépési** **idő között** . 
+1. A **kiértékelési beállítások**szakaszban adja meg azokat az értékeket, amelyeket meg szeretne adni a **Gates újraértékelése** és **a Gates meghibásodása utáni időtúllépési**idő között. 
 
 ## <a name="view-release-logs"></a>Kiadási naplók megtekintése
 
@@ -103,6 +101,6 @@ Megtekintheti a telepítési kapu viselkedését és a kiadási naplók egyéb k
    
    ![Kiadási naplók megtekintése](media/continuous-monitoring/006.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-folyamatokkal kapcsolatos további információkért tekintse meg az [Azure-folyamatok dokumentációját](https://docs.microsoft.com/azure/devops/pipelines).

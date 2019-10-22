@@ -1,6 +1,6 @@
 ---
-title: B2B vállalati integráció – Azure Logic Apps RosettaNet üzenete
-description: Az Azure Logic Appsben és Enterprise Integration Pack RosettaNet üzeneteket
+title: RosettaNet-üzenetek a B2B-integrációhoz – Azure Logic Apps
+description: Exchange-RosettaNet üzenetek Azure Logic Appsban Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,255 +9,255 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 88e02f3fbbca8007fdf479bb973f50c42a878d6e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 570c7907f320b881e2db0bd45cdce311490f4f45
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67333023"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680336"
 ---
-# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Az Azure Logic Apps B2B-vállalati integráció RosettaNet alkalmazásközi 
+# <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-üzenetek a B2B vállalati integrációhoz Azure Logic Apps
 
-[RosettaNet](https://resources.gs1us.org) van egy nonprofit consortium hozott létre az üzleti adatok megosztása a szabványos folyamatokat. Ezeknek a szabványoknak gyakran használják az ellátási lánc folyamatok és széles körben elterjedt az félvezető electronics és logisztikai iparágban. A RosettaNet consortium hozza létre, és a partneri kapcsolat folyamatok (maggal), minden RosettaNet üzenetváltásokban közös üzleti folyamatok definíciók biztosító kezeli. RosettaNet XML-alapú, és határozza meg az üzenet irányelveket, az üzleti folyamatok felületek és megvalósítási keretrendszerek vállalatok közötti kommunikációhoz.
+A [RosettaNet](https://resources.gs1us.org) egy non-profit konzorcium, amely az üzleti információk megosztására szolgáló szabványos folyamatokat alakított ki. Ezeket a szabványokat általában az ellátási lánc folyamataihoz használják, és széleskörűek a félvezető-, elektronikai és logisztikai iparágakban. A RosettaNet konzorcium létrehozza és karbantartja a partneri felületi folyamatokat (maggal), amelyek közös üzleti folyamat-definíciókat biztosítanak az összes RosettaNet-üzenet cseréjéhez. A RosettaNet az XML protokollon alapul, és meghatározza az üzenetek irányelveit, az üzleti folyamatokhoz kapcsolódó interfészeket, valamint a vállalatok közötti kommunikáció megvalósítási keretrendszereit.
 
-A [Azure Logic Apps](../logic-apps/logic-apps-overview.md), a RosettaNet-összekötő segítségével létrehozhatja az integrációs megoldásokat, amelyek támogatják a RosettaNet szabványoknak. Az összekötő a RosettaNet megvalósítási keretrendszer (RNIF) verzió 2.0.01 alapul. RNIF egy megnyitott hálózati alkalmazás-keretrendszer, amely lehetővé teszi az üzleti partnerek RosettaNet magokat elősegítése érdekében futtatásához. Ezt a keretrendszert az üzenet struktúra, a visszaigazolások, Multipurpose Internet Mail Extensions (MIME) kódolás és a digitális aláírás határozza meg.
+[Azure Logic apps](../logic-apps/logic-apps-overview.md)a RosettaNet-összekötő segítségével olyan integrációs megoldásokat hozhat létre, amelyek támogatják a RosettaNet-szabványokat. Az összekötő a RosettaNet implementációs keretrendszer (RNIF) 2.0.01-verzióján alapul. A RNIF egy nyílt hálózati alkalmazás-keretrendszer, amely lehetővé teszi az üzleti partnerek számára, hogy a RosettaNet-pip-ket futtassák. Ez a keretrendszer határozza meg az üzenet szerkezetét, a nyugták, a Multipurpose Internet Mail Extensions (MIME) kódolás és a digitális aláírás szükségességét.
 
-Az összekötő, ezeket a képességeket biztosítja:
+Pontosabban, az összekötő a következő funkciókat biztosítja:
 
-* Kódolás, vagy RosettaNet üzeneteket fogadni.
-* Dekódolandó vagy RosettaNet üzeneteket küldeni.
-* Várjon, amíg a válasz és értesítés a hiba generációja.
+* RosettaNet-üzenetek kódolása vagy fogadása.
+* RosettaNet üzenetek dekódolása vagy elküldése.
+* Várja meg, amíg a válasz és a sikertelen értesítés generálása megtörtént.
 
-Ezek a képességek az összekötő támogatja az összes magokat RNIF 2.0.01 által meghatározott. A partner folytatott kommunikáció lehet szinkron vagy aszinkron.
+Ezekhez a funkciókhoz az összekötő a RNIF 2.0.01 által meghatározott összes pip-et támogatja. A partnerrel folytatott kommunikáció szinkron vagy aszinkron lehet.
 
 ## <a name="rosettanet-concepts"></a>RosettaNet fogalmak
 
-Íme, néhány fogalmakat és feltételek, amelyek egyediek a RosettaNet specifikációinak, és fontos RosettaNet-alapú Integrációk készítése során:
+Íme néhány olyan fogalom és kifejezés, amely egyedi a RosettaNet-specifikációban, és fontos a RosettaNet-alapú integrációk létrehozásakor:
 
 * **PIP**
 
-  A RosettaNet szervezet hozza létre, és a partneri kapcsolat folyamatok (maggal), minden RosettaNet üzenetváltásokban közös üzleti folyamatok definíciók biztosító kezeli. Minden egyes PIP specifikáció biztosít egy dokumentum típusa (DTD) csomagdefiníciós fájl és a egy üzenet iránymutatás dokumentumot. A DTD-fájlt a tartalom üzenet struktúrát határozza meg. Üzenet-iránymutatás dokumentum, amely egy olyan emberek számára olvasható HTML-fájl, megadja az elem szintű megkötések. Ezeket a fájlokat, az üzleti folyamat teljes definíciókat tartalmazzák.
+  A RosettaNet-szervezet létrehozza és karbantartja a partneri felületi folyamatokat (maggal), amelyek közös üzleti folyamat-definíciókat biztosítanak az összes RosettaNet-üzenet cseréjéhez. Mindegyik PIP-specifikáció egy Document Type Definition (DTD) fájlt és egy üzenet-útmutató dokumentumot tartalmaz. A DTD-fájl határozza meg a szolgáltatás tartalmi üzenetének szerkezetét. Az üzenet – útmutató dokumentum, amely egy emberi olvasásra alkalmas HTML-fájl, az elem szintű korlátozásokat határozza meg. Ezekkel a fájlokkal együtt az üzleti folyamat teljes definícióját is megadhatja.
 
-   Magokat egy magas szintű üzleti függvény vagy fürt, és a egy alfüggvény vagy a szegmens szerint vannak kategóriába. Például "3A4" a PIP beszerzési rendelés, "3" közben a rendelést kezelő funkció, pedig "3A" az ajánlat & sorrend bejegyzés alfüggvény. További információkért lásd: a [RosettaNet hely](https://resources.gs1us.org).
+   A pip-ket egy magas szintű üzleti funkció, egy fürt, egy alfüggvény vagy egy szegmens kategorizálja. Például a "3A4" a beszerzési sorrend PIP-je, míg a "3" a megrendelés felügyeleti funkciója, a "3A" pedig az idézőjel & Order Entry alfüggvény. További információ: [RosettaNet-webhely](https://resources.gs1us.org).
 
 * **Művelet**
 
-  Része a pipet, a művelet üzeneteket üzleti partnerek között továbbított üzeneteket is.
+  A PIP részét képező műveleti üzenetek olyan üzleti üzenetek, amelyek a partnerek között váltanak át.
 
-* **Signal**
+* **Jel**
 
-   Része a pipet jel üzenetek olyan, a művelet üzeneteket válaszként küldött.
+   A PIP részét képező üzenet a műveleti üzenetekre adott válaszként küldött nyugták.
 
-* **Egyetlen művelet, és dupla művelet**
+* **Egyszeri művelet és dupla művelet**
 
-  A single-művelet a PIP, a válasz csak az nyugtázása jel üzenet. A double-művelet PIP a kezdeményező kap egy válaszüzenetet, és egyetlen műveleti Üzenetáramlás mellett nyugtázás-válaszok.
+  Egyetlen művelettel kapcsolatos PIP esetén az egyetlen válasz a nyugtázás jelzésére szolgáló üzenet. A kétlépéses PIP esetén a kezdeményező válaszüzenetet kap, és az egyszeres művelettel kapcsolatos üzeneteken kívül visszaigazolja a válaszokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetésem, [regisztráljon egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a szerződés és más B2B összetevők tárolására. Az integrációs fiók az Azure-előfizetése társítva kell lennie.
+* [Integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a szerződés és más B2B-összetevők tárolásához. Ezt az integrációs fiókot hozzá kell rendelni az Azure-előfizetéséhez.
 
-* Legalább két [partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) , amely az integrációs fiók megadott és a "DUNS" minősítő alatt konfigurált **üzleti identitások**
+* Legalább két, az integrációs fiókban definiált [partner](../logic-apps/logic-apps-enterprise-integration-partners.md) , amely a "Duns" minősítéssel van konfigurálva az **üzleti identitások** alatt
 
-* A PIP folyamat beállítása, üzeneteket küldeni vagy fogadni RosettaNet, az integrációs fiók szükséges. A folyamat konfigurációs tárolja a PIP konfigurációs jellemzőit. Ez a konfiguráció egy szerződést, a partnerrel való létrehozásakor majd hivatkozhat. Az integrációs fiókban lévő PIP folyamat konfiguráció létrehozása: [hozzáadása PIP folyamat konfigurációs](#add-pip).
+* Egy PIP-folyamat konfigurációja, amely a RosettaNet üzenetek küldéséhez vagy fogadásához szükséges az integrációs fiókban. A folyamat konfigurációja a PIP összes konfigurációs jellemzőjét tárolja. Ezután hivatkozhat erre a konfigurációra, ha szerződést hoz létre a partnerrel. A PIP folyamat konfigurációjának az integrációs fiókban való létrehozásával kapcsolatban lásd: a [pip-folyamat konfigurációjának hozzáadása](#add-pip).
 
-* Nem kötelező [tanúsítványok](../logic-apps/logic-apps-enterprise-integration-certificates.md) titkosítása, visszafejtése vagy az integrációs fiók feltöltött üzenetek aláírását. Tanúsítványokra szükség, ha a használati aláírási vagy titkosítási.
+* Nem kötelező [tanúsítványok](../logic-apps/logic-apps-enterprise-integration-certificates.md) az integrációs fiókba feltöltött üzenetek titkosításához, visszafejtéséhez vagy aláírásához. A tanúsítványok csak akkor szükségesek, ha aláírást vagy titkosítást használ.
 
 <a name="add-pip"></a>
 
-## <a name="add-pip-process-configuration"></a>A PIP folyamat konfiguráció hozzáadása
+## <a name="add-pip-process-configuration"></a>PIP-folyamat konfigurációjának hozzáadása
 
-A PIP folyamat konfiguráció az integrációs fiók hozzáadásához kövesse az alábbi lépéseket:
+A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadásához kövesse az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiókot.
+1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókját.
 
-1. Az a **áttekintése** panelen válassza a **RosettaNet PIP** csempére.
+1. Az **Áttekintés** panelen válassza a **RosettaNet pip** csempét.
 
    ![RosettaNet csempe kiválasztása](media/logic-apps-enterprise-integration-rosettanet/select-rosettanet-tile.png)
 
-1. A **RosettaNet PIP**, válassza a **Hozzáadás**. Adja meg a PIP-adatokat.
+1. A **ROSETTANET pip**területen válassza a **Hozzáadás**lehetőséget. Adja meg a PIP részleteit.
 
-   ![RosettaNet PIP adatainak hozzáadása](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
+   ![RosettaNet PIP részleteinek hozzáadása](media/logic-apps-enterprise-integration-rosettanet/add-rosettanet-pip.png)
 
    | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
    | **Name (Név)** | Igen | A PIP neve |
-   | **A PIP-kód** | Igen | A PIP három számjegyű kód. További információkért lásd: [RosettaNet magokat](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
-   | **A PIP verzióját** | Igen | A PIP verziószámot, amely a kijelölt PIP kód alapján |
+   | **PIP-kód** | Igen | A PIP háromjegyű kód. További információ: [RosettaNet maggal](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **PIP verziója** | Igen | A PIP verziószáma, amely a kiválasztott PIP-kód alapján érhető el |
    ||||
 
-   Ezek a PIP-tulajdonságokkal kapcsolatos további információkért látogasson el a [RosettaNet webhely](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
+   A PIP-tulajdonságokkal kapcsolatos további információkért látogasson el a [RosettaNet webhelyére](https://resources.gs1us.org/RosettaNet-Standards/Standards-Library/PIP-Directory#1043208-pipsreg).
 
-1. Ha elkészült, válassza ki **OK**, amely a PIP-konfigurációt hoz létre.
+1. Ha elkészült, kattintson az **OK gombra**, amely létrehozza a pip-konfigurációt.
 
-1. Megtekinteni vagy szerkeszteni a folyamatot konfiguráció, jelölje ki a PIP, és válassza a **Szerkesztés JSON-ként**.
+1. A folyamat konfigurációjának megtekintéséhez vagy szerkesztéséhez válassza ki a PIP-et, és válassza a **Szerkesztés JSON-ként**lehetőséget.
 
-   A konfigurációs beállításokat a PIP specifikációk származnak az összes folyamat. A Logic Apps a beállításokat az alapértelmezett értékekre, amelyek a leggyakrabban használt értékek ezeket a tulajdonságokat a legtöbb tölti fel.
+   Az összes folyamat konfigurációs beállítása a PIP specifikációi alapján érhető el. Logic Apps a beállítások többségét a tulajdonságok leggyakrabban használt értékeivel tölti fel.
 
    ![RosettaNet PIP-konfiguráció szerkesztése](media/logic-apps-enterprise-integration-rosettanet/edit-rosettanet-pip.png)
 
-1. Győződjön meg arról, hogy a beállításokat az értékeket a megfelelő PIP specifikációban megfelelnek-e, és az üzleti igényeknek. Ha szükséges, frissítse az értékeket a JSON-ban, és menti a módosításokat.
+1. Győződjön meg arról, hogy a beállítások megfelelnek a megfelelő PIP-specifikáció értékeinek, és megfeleljenek az üzleti igényeknek. Ha szükséges, frissítse a JSON-értékeket, és mentse a módosításokat.
 
-## <a name="create-rosettanet-agreement"></a>RosettaNet-egyezmény létrehozása
+## <a name="create-rosettanet-agreement"></a>RosettaNet-szerződés létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg és nyissa meg az integrációs fiók, ha nem már megnyitásához.
+1. A [Azure Portalban](https://portal.azure.com)keresse meg és nyissa meg az integrációs fiókot, ha még nincs megnyitva.
 
-1. Az a **áttekintése** panelen válassza a **szerződések** csempére.
+1. Az **Áttekintés** panelen válassza a **szerződések** csempét.
 
-   ![Szerződések csempe kiválasztása](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
+   ![Szerződések kiválasztása csempe](media/logic-apps-enterprise-integration-rosettanet/select-agreement-tile.png)
 
-1. A **szerződések**, válassza a **Hozzáadás**. Adja meg a szerződés részletei.
+1. A **szerződések**területen válassza a **Hozzáadás**lehetőséget. Adja meg a szerződés részleteit.
 
-   ![Szerződés adatainak hozzáadása](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
+   ![Szerződés részleteinek hozzáadása](media/logic-apps-enterprise-integration-rosettanet/add-agreement-details.png)
 
    | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Igen | A Szerződés neve |
-   | **Szerződés típusa** | Igen | Válassza ki **RosettaNet**. |
-   | **Gazdagéppartner** | Igen | Létrejött egy gazdagép és Vendég partner van szükség. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
-   | **Gazdagép-identitás** | Igen | A gazdagéppartner azonosítója |
-   | **Vendégpartner** | Igen | Létrejött egy gazdagép és Vendég partner van szükség. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
-   | **Vendégidentitás** | Igen | A vendégpartner azonosítója |
-   | **Beállítások** | Változó | Ezek a tulajdonságok vonatkoznak, a fogadó partner által fogadott összes üzenet |
-   | **Küldési beállítások** | Változó | Ezek a tulajdonságok vonatkoznak, a fogadó partner által küldött összes üzenet |  
-   | **RosettaNet PIP referenciák** | Igen | A PIP hivatkozásokat a szerződés. Üzenetek RosettaNet PIP konfigurációk van szükség. |
+   | **Name (Név)** | Igen | A szerződés neve |
+   | **Szerződés típusa** | Igen | Válassza a **RosettaNet**lehetőséget. |
+   | **Gazda partner** | Igen | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
+   | **Gazdagép identitása** | Igen | A gazdagép-partner azonosítója |
+   | **Vendég partner** | Igen | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöli. |
+   | **Vendég identitás** | Igen | A vendég partner azonosítója |
+   | **Fogadási beállítások** | Változó | Ezek a tulajdonságok a gazda partner által fogadott összes üzenetre érvényesek. |
+   | **Küldési beállítások** | Változó | Ezek a tulajdonságok a gazda partner által küldött összes üzenetre érvényesek. |  
+   | **RosettaNet PIP-hivatkozások** | Igen | A szerződéshez tartozó PIP-hivatkozások. Minden RosettaNet-üzenethez PIP-konfigurációk szükségesek. |
    ||||
 
-1. A szerződés, a bejövő üzenetek fogadása a vendégpartner beállítani, válassza ki a **fogadási beállítások**.
+1. Ha úgy szeretné beállítani a szerződést, hogy fogadja a vendég partnertől érkező üzeneteket, válassza a **fogadási beállítások**lehetőséget.
 
-   ![Beállítások](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
+   ![Fogadási beállítások](media/logic-apps-enterprise-integration-rosettanet/add-agreement-receive-details.png)
 
-   1. Aláírási vagy titkosítási bejövő üzenetek engedélyezése a **üzenetek**válassza **üzenetet alá kell írni** vagy **üzenetnek titkosítottnak kell lennie** jelölik.
+   1. A bejövő üzenetek aláírásának vagy titkosításának engedélyezéséhez az **üzenetek**területen válassza az **üzenet aláírását** vagy az **üzenet** titkosítását.
 
       | Tulajdonság | Szükséges | Leírás |
       |----------|----------|-------------|
-      | **Üzenet alá kell írni** | Nem | A kiválasztott tanúsítványhoz bejövő üzenetek aláírását. |
-      | **Tanúsítvány** | Igen, ha engedélyezve van a aláírása | Az aláíráshoz használandó tanúsítványt |
-      | **Üzenettitkosítás engedélyezése** | Nem | A kiválasztott tanúsítványhoz bejövő üzenetek titkosítására. |
-      | **Tanúsítvány** | Igen, ha a titkosítás engedélyezve | A titkosításhoz használandó tanúsítványt |
+      | **Az üzenetet alá kell írni** | Nem | A bejövő üzenetek aláírása a kiválasztott tanúsítvánnyal. |
+      | **Tanúsítvány** | Igen, ha engedélyezve van az aláírás | Az aláíráshoz használandó tanúsítvány |
+      | **Üzenetek titkosításának engedélyezése** | Nem | A bejövő üzenetek titkosítása a kiválasztott tanúsítvánnyal. |
+      | **Tanúsítvány** | Igen, ha engedélyezve van a titkosítás | A titkosításhoz használandó tanúsítvány |
       ||||
 
-   1. Minden elem alatt válassza ki a megfelelő [tanúsítvány](./logic-apps-enterprise-integration-certificates.md), amely korábban hozzáadott, az integrációs fiók, az aláírási vagy titkosítási.
+   1. Az egyes beállítások területen válassza ki a megfelelő [tanúsítványt](./logic-apps-enterprise-integration-certificates.md), amelyet korábban az integrációs fiókjához adott hozzá az aláíráshoz vagy a titkosításhoz.
 
-1. A vendégpartner üzenetek küldéséhez a szerződéshez, válassza ki **küldési beállítások**.
+1. Ha úgy szeretné beállítani a szerződést, hogy üzeneteket küldjön a vendég partnernek, válassza a **Beállítások küldése**lehetőséget.
 
    ![Küldési beállítások](media/logic-apps-enterprise-integration-rosettanet/add-agreement-send-details.png)
 
-   1. Aláírási vagy titkosítási kimenő üzenetek engedélyezése a **üzenetek**válassza **üzenetek aláírásának engedélyezése** vagy **üzenettitkosítás engedélyezése** jelölik. Minden elem alatt válassza ki a megfelelő algoritmus és [tanúsítvány](./logic-apps-enterprise-integration-certificates.md), amely korábban hozzáadott, az integrációs fiók, az aláírási vagy titkosítási.
+   1. A kimenő üzenetek aláírásának vagy titkosításának engedélyezéséhez az **üzenetek**területen válassza az üzenetek **aláírásának engedélyezése** vagy az üzenetek **titkosításának engedélyezése** lehetőséget. Az egyes beállítások területen válassza ki a megfelelő algoritmust és [tanúsítványt](./logic-apps-enterprise-integration-certificates.md), amelyet korábban az integrációs fiókjához adott hozzá az aláíráshoz vagy a titkosításhoz.
 
       | Tulajdonság | Szükséges | Leírás |
       |----------|----------|-------------|
-      | **Üzenetek aláírásának engedélyezése** | Nem | A kiválasztott aláíró algoritmus és tanúsítvány kimenő üzenetek aláírását. |
-      | **Aláíró algoritmus** | Igen, ha engedélyezve van a aláírása | A kiválasztott tanúsítvány alapján szeretne használni, az aláírási algoritmus |
-      | **Tanúsítvány** | Igen, ha engedélyezve van a aláírása | Az aláíráshoz használandó tanúsítványt |
-      | **Üzenettitkosítás engedélyezése** | Nem | A kiválasztott titkosítási algoritmus és tanúsítvány kimenő a titkosítást. |
-      | **Titkosítási algoritmus** | Igen, ha a titkosítás engedélyezve | A titkosítási algoritmust használ, a kiválasztott tanúsítvány alapján |
-      | **Tanúsítvány** | Igen, ha a titkosítás engedélyezve | A titkosításhoz használandó tanúsítványt |
+      | **Üzenetek aláírásának engedélyezése** | Nem | A kimenő üzenetek aláírása a kiválasztott aláírási algoritmussal és tanúsítvánnyal. |
+      | **Aláírási algoritmus** | Igen, ha engedélyezve van az aláírás | A használni kívánt aláíró algoritmus a kiválasztott tanúsítvány alapján |
+      | **Tanúsítvány** | Igen, ha engedélyezve van az aláírás | Az aláíráshoz használandó tanúsítvány |
+      | **Üzenetek titkosításának engedélyezése** | Nem | A kimenő fájlok titkosítása a kiválasztott titkosítási algoritmus és tanúsítvány használatával. |
+      | **Titkosítási algoritmus** | Igen, ha engedélyezve van a titkosítás | A használni kívánt titkosítási algoritmus a kiválasztott tanúsítvány alapján |
+      | **Tanúsítvány** | Igen, ha engedélyezve van a titkosítás | A titkosításhoz használandó tanúsítvány |
       ||||
 
-   1. A **végpontok**, adja meg a szükséges URL-címek műveleti üzenetek és nyugták küldéséhez használt.
+   1. A **végpontok**területen határozza meg a műveleti üzenetek és a nyugták küldéséhez használandó szükséges URL-címeket.
 
       | Tulajdonság | Szükséges | Leírás |
       |----------|----------|-------------|
-      | **A művelet URL-címe** |  Igen | A művelet üzenetek küldéséhez használt URL-címe. Az URL-cím mező kitöltése kötelező a szinkron és aszinkron üzeneteket is. |
-      | **Visszaigazoló URL-címe** | Igen | Visszaigazoló üzenetek küldéséhez használt URL-címe. Az URL-cím mező kitöltése kötelező az aszinkron üzenetekkel. |
+      | **Művelet URL-címe** |  Igen | A műveleti üzenetek küldéséhez használt URL-cím. Az URL-cím kötelező mező a szinkron és aszinkron üzenetek esetében is. |
+      | **Nyugtázás URL-címe** | Igen | A visszaigazolási üzenetek küldéséhez használandó URL-cím. Az URL-cím az aszinkron üzenetek kötelező mezője. |
       ||||
 
-1. A szerződés RosettaNet PIP hivatkozásokat a partnerek számára, válassza ki **RosettaNet PIP hivatkozik**. A **PIP neve**, válassza ki a korábban létrehozott PIP nevét.
+1. Ha meg szeretné határozni a RosettaNet PIP-referenciákkal rendelkező szerződést a partnerek számára, válassza a **ROSETTANET pip-referenciák**lehetőséget. A **pip neve**területen válassza ki a korábban létrehozott pip nevét.
 
-   ![A PIP-hivatkozások](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
+   ![PIP-hivatkozások](media/logic-apps-enterprise-integration-rosettanet/add-agreement-pip-details.png)
 
-   A kijelölt tölti fel a többi tulajdonság, és az integrációs fiókjában állítsa be a PIP alapulnak. Ha szükséges, módosíthatja a **PIP szerepkör**.
+   A kijelölés feltölti a fennmaradó tulajdonságokat, amelyek az integrációs fiókban beállított PIP-re épülnek. Szükség esetén módosíthatja a **pip szerepkört**.
 
-   ![Kiválasztott PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
+   ![Kijelölt PIP](media/logic-apps-enterprise-integration-rosettanet/add-agreement-selected-pip.png)
 
-Miután végrehajtotta ezeket a lépéseket, készen áll RosettaNet üzeneteket küldeni vagy fogadni.
+A lépések elvégzése után készen áll a RosettaNet üzenetek küldésére és fogadására.
 
-## <a name="rosettanet-templates"></a>RosettaNet sablonok
+## <a name="rosettanet-templates"></a>RosettaNet-sablonok
 
-Gyorsabb fejlesztés és integrációs minták, logic app-sablonok használata dekódolása és kódolása RosettaNet üzeneteket. Amikor létrehoz egy logikai alkalmazást, a Logic App Designerben sablonkatalógus közül választhat. Ezeket a sablonokat a is megkeresheti a [GitHub-tárházat az Azure Logic Apps a](https://github.com/Azure/logicapps).
+A fejlesztés felgyorsításához és az integrációs minták támogatásához logikai alkalmazás-sablonokat használhat a RosettaNet-üzenetek dekódolásához és kódolásához. Logikai alkalmazás létrehozásakor kiválaszthatja a Logic app Designer sablon-gyűjteményét. Ezeket a sablonokat az [Azure Logic apps GitHub-tárházában](https://github.com/Azure/logicapps)is megtalálhatja.
 
-![RosettaNet sablonok](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
+![RosettaNet-sablonok](media/logic-apps-enterprise-integration-rosettanet/decode-encode-rosettanet-templates.png)
 
-## <a name="receive-or-decode-rosettanet-messages"></a>Fogadni, vagy RosettaNet-üzenetek dekódolása
+## <a name="receive-or-decode-rosettanet-messages"></a>RosettaNet üzenetek fogadása vagy dekódolása
 
-1. [Hozzon létre egy üres logikai alkalmazás](quickstart-create-first-logic-app-workflow.md).
+1. [Hozzon létre egy üres logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-1. [Az integrációs fiókot](logic-apps-enterprise-integration-create-integration-account.md#link-account) a logikai alkalmazáshoz.
+1. [Kapcsolja össze integrációs fiókját](logic-apps-enterprise-integration-create-integration-account.md#link-account) a logikai alkalmazással.
 
-1. Egy olyan műveletet, a RosettaNet-üzenet dekódolása hozzáadása előtt hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása.
+1. Ahhoz, hogy hozzá lehessen adni egy műveletet a RosettaNet-üzenet dekódolásához, hozzá kell adnia egy triggert a logikai alkalmazás indításához, például egy kérelem elindításához.
 
-1. Válassza az eseményindító felvett **új lépés**.
+1. Az trigger hozzáadása után válassza az **új lépés**lehetőséget.
 
-   ![Kérelem típusú trigger hozzáadása](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
+   ![Kérelem-trigger hozzáadása](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-1. A keresőmezőbe írja be a "rosettanet", és válassza a következő műveletet: **RosettaNet-dekódolást.**
+1. A keresőmezőbe írja be a "RosettaNet" kifejezést, és válassza a következő műveletet: **RosettaNet dekódolása**
 
-   ![Keresse meg és válassza a "RosettaNet dekódolása" művelet](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
+   ![A "RosettaNet dekódolása" művelet megkeresése és kiválasztása](media/logic-apps-enterprise-integration-rosettanet/select-decode-rosettanet-action.png)
 
-1. Adja meg az adatait a művelet tulajdonságait:
+1. Adja meg a művelet tulajdonságainak adatait:
 
-   ![Adja meg a művelet részletei](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
-
-   | Tulajdonság | Szükséges | Leírás |
-   |----------|----------|-------------|
-   | **üzenet** | Igen | A RosettaNet üzenet dekódolása  |
-   | **Fejlécek** | Igen | A HTTP-fejléceket, adja meg a verziót, amely az RNIF verziója, és a válasz típusát, amely azt jelzi, hogy a kommunikáció típusát, a partnerek között, és lehet szinkron vagy aszinkron az értékét |
-   | **Szerepkör** | Igen | A fogadó partner a PIP szerepe |
-   ||||
-
-   A RosettaNet dekódolása műveletet, a kimenetet, és egyéb tulajdonságokat tartalmaz **kimenő jelzés**, amely lehet váltani, kódolása és térjen vissza a partner, vagy bármilyen más műveletet végrehajthat, hogy a kimenet.
-
-## <a name="send-or-encode-rosettanet-messages"></a>Küldés vagy RosettaNet-üzenetek kódolása
-
-1. [Hozzon létre egy üres logikai alkalmazás](quickstart-create-first-logic-app-workflow.md).
-
-1. [Az integrációs fiókot](logic-apps-enterprise-integration-create-integration-account.md#link-account) a logikai alkalmazáshoz.
-
-1. Hozzáadhat egy műveletet a RosettaNet üzenet kódolására, hozzá kell adnia egy eseményindítót a logikai alkalmazást, például a kérelem-eseményindítóval indítása.
-
-1. Válassza az eseményindító felvett **új lépés**.
-
-   ![Kérelem típusú trigger hozzáadása](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
-
-1. A keresőmezőbe írja be a "rosettanet", és válassza a következő műveletet: **RosettaNet kódolása**
-
-   ![Keresse meg és válassza a "RosettaNet kódolása" művelet](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
-
-1. Adja meg az adatait a művelet tulajdonságait:
-
-   ![Adja meg a művelet részletei](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
+   ![Művelet részleteinek megadása](media/logic-apps-enterprise-integration-rosettanet/decode-action-details.png)
 
    | Tulajdonság | Szükséges | Leírás |
    |----------|----------|-------------|
-   | **üzenet** | Igen | A RosettaNet üzenet kódolása  |
-   | **Gazdagéppartner** | Igen | A partner neve |
-   | **Vendégpartner** | Igen | A Vendég-partner neve |
-   | **A PIP-kód** | Igen | A PIP kódot |
-   | **A PIP verzióját** | Igen | A PIP verzióját |  
-   | **A PIP rendszerszolgáltatásipéldány-identitás** | Igen | A PIP üzenet egyedi azonosítója |  
-   | **Üzenet típusa** | Igen | Az üzenet kódolására típusa |  
-   | **Szerepkör** | Igen | A gazdagéppartner szerepe |
+   | **Üzenetet** | Igen | A dekódolni kívánt RosettaNet-üzenet  |
+   | **Fejlécek** | Igen | Azok a HTTP-fejlécek, amelyek megadja a verzió értékeit, amely a RNIF verziója, valamint a válasz típusa, amely a partnerek közötti kommunikációs típust jelzi, és szinkron vagy aszinkron lehet |
+   | **Szerepkör** | Igen | A gazda partner szerepe a PIP-ben |
    ||||
 
-   A kódolt üzenet küldése a partnernek készen áll.
+   A RosettaNet dekódolása műveletből a kimenet, valamint más tulajdonságok is tartalmazzák a **kimenő jeleket**, amelyekkel kódolhat és visszatérhet a partnernek, vagy bármilyen egyéb műveletet végrehajthat a kimeneten.
 
-1. Ez a példa a kódolt üzenetet küldeni, használja a **HTTP** művelet, amely "a HTTP - partner üzenet küldése kódolású" átnevezték.
+## <a name="send-or-encode-rosettanet-messages"></a>RosettaNet üzenetek küldése vagy kódolása
 
-   ![HTTP-művelet RosettaNet üzenetek küldéséhez](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
+1. [Hozzon létre egy üres logikai alkalmazást](quickstart-create-first-logic-app-workflow.md).
 
-   / RosettaNet szabványok üzleti tranzakciók minősülnek teljes csak akkor, ha teljesülnek a PIP által meghatározott összes lépését.
+1. [Kapcsolja össze integrációs fiókját](logic-apps-enterprise-integration-create-integration-account.md#link-account) a logikai alkalmazással.
 
-1. Miután a gazdagép a kódolt üzenetet küld a partner, a gazdagép megvárja, amíg a jel, valamint visszajelzés. Ennek a feladatnak, adja hozzá a **RosettaNet Várakozás a válaszra** művelet.
+1. Ahhoz, hogy hozzá lehessen adni egy műveletet a RosettaNet-üzenet kódolásához, hozzá kell adnia egy triggert a logikai alkalmazás indításához, például egy kérelem elindításához.
 
-   !["Válasz RosettaNet várja" művelet hozzáadása](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
+1. Az trigger hozzáadása után válassza az **új lépés**lehetőséget.
 
-   Az időtartam, Várakozás, és az újrapróbálkozások számát az integrációs fiók a PIP-konfigurációt alapulnak. Ha nem érkezik válasz, ez a művelet létrehoz egy értesítés sikertelen. Az újrapróbálkozások kezelésére, mindig helyezze a **Encode** és **válaszra** műveletek egy **mindaddig, amíg** ciklus.
+   ![Kérelem-trigger hozzáadása](media/logic-apps-enterprise-integration-rosettanet/request-trigger.png)
 
-   ![UNTIL ciklus RosettaNet műveletekhez](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
+1. A keresőmezőbe írja be a "RosettaNet" kifejezést, majd válassza a következő műveletet: **RosettaNet kódolása**
 
-## <a name="next-steps"></a>További lépések
+   ![A "RosettaNet kódolás" művelet megkeresése és kiválasztása](media/logic-apps-enterprise-integration-rosettanet/select-encode-rosettanet-action.png)
 
-* Ismerje meg, hogyan érvényesítéséhez, alakítson át, és a többi üzenet műveletek a a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
-* További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+1. Adja meg a művelet tulajdonságainak adatait:
+
+   ![Művelet részleteinek megadása](media/logic-apps-enterprise-integration-rosettanet/encode-action-details.png)
+
+   | Tulajdonság | Szükséges | Leírás |
+   |----------|----------|-------------|
+   | **Üzenetet** | Igen | A kódolni kívánt RosettaNet-üzenet  |
+   | **Gazda partner** | Igen | A gazda partner neve |
+   | **Vendég partner** | Igen | A vendég partner neve |
+   | **PIP-kód** | Igen | A PIP-kód |
+   | **PIP verziója** | Igen | A PIP verziója |  
+   | **PIP-példány identitása** | Igen | A PIP-üzenet egyedi azonosítója |  
+   | **Üzenet típusa** | Igen | A kódolni kívánt üzenet típusa |  
+   | **Szerepkör** | Igen | A gazda partner szerepe |
+   ||||
+
+   A kódolt üzenet most már készen áll a partnernek való küldésre.
+
+1. A kódolt üzenet elküldéséhez a példa a **http** -műveletet használja, amelyet a rendszer a "http-kódolású üzenet küldése a partnernek" névvel nevez át.
+
+   ![HTTP-művelet RosettaNet-üzenet küldéséhez](media/logic-apps-enterprise-integration-rosettanet/send-rosettanet-message-to-partner.png)
+
+   A RosettaNet-szabványok szerint az üzleti tranzakciók csak akkor tekinthetők befejezettnek, ha a PIP által meghatározott összes lépés befejeződött.
+
+1. Miután a gazdagép elküldi a kódolt üzenetet a partnernek, a gazdagép megvárja a jelzést és a nyugtát. A feladat végrehajtásához adja hozzá a **RosettaNet várakozás a válaszhoz** műveletet.
+
+   !["RosettaNet Wait for Response" művelet hozzáadása](media/logic-apps-enterprise-integration-rosettanet/rosettanet-wait-for-response-action.png)
+
+   A várakozási idő és az újrapróbálkozások száma az integrációs fiókban lévő PIP-konfiguráció alapján történik. Ha a válasz nem érkezik meg, a művelet sikertelen értesítést generál. Az újrapróbálkozások kezeléséhez mindig helyezze el a **kódolást** , és várjon, **amíg** a rendszer a **válaszadási** műveleteket a hurokban.
+
+   ![RosettaNet műveletekkel való hurokig](media/logic-apps-enterprise-integration-rosettanet/rosettanet-loop.png)
+
+## <a name="next-steps"></a>Következő lépések
+
+* Megtudhatja, hogyan érvényesítheti, átalakíthatja és más üzenetkezelési műveleteket a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

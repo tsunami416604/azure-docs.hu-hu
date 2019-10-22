@@ -1,25 +1,21 @@
 ---
 title: Azure Application Insights Telemetria adatmodell – metrikus telemetria | Microsoft Docs
 description: Application Insights adatmodell metrikus telemetria
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: 0973c86d055ff4ebbe7e5a3c4a2ca4e3dcabc6a0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 816fa37ea052b18dab80bcc0d5c1528cd3d9a014
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60900460"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678131"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights-adatmodell
+# <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights adatmodell
 
 A [Application Insights](../../azure-monitor/app/app-insights-overview.md)kétféle metrikai telemetria támogat: egyetlen mérési és előre aggregált metrika. Az egyszeres mérés csak a név és az érték. Az előre aggregált metrika a metrika minimális és maximális értékét adja meg az összesítési intervallumban és a szórásban.
 
@@ -41,15 +37,15 @@ A rendszerszintű és a folyamat számlálóit jelölő metrika:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Munka folyamatban... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | kérelmek átlagos végrehajtási ideje
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Munka folyamatban... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | a várólistán való feldolgozásra váró kérelmek száma
 
-## <a name="name"></a>Name (Név)
+## <a name="name"></a>Név
 
 A Application Insights Portálon és felhasználói felületen megjelenő metrika neve. 
 
-## <a name="value"></a>Value
+## <a name="value"></a>Value (Díj)
 
 Egy érték a méréshez. Az összesítéshez tartozó egyedi mérések összege.
 
-## <a name="count"></a>Count
+## <a name="count"></a>Mennyiség
 
 Az összesített metrika metrikájának súlya Nem szabad beállítani a mérést.
 
@@ -57,22 +53,22 @@ Az összesített metrika metrikájának súlya Nem szabad beállítani a mérés
 
 Az összesített metrika minimális értéke. Nem szabad beállítani a mérést.
 
-## <a name="max"></a>Max
+## <a name="max"></a>Maximum
 
 Az összesített metrika maximális értéke. Nem szabad beállítani a mérést.
 
-## <a name="standard-deviation"></a>Standard szórás
+## <a name="standard-deviation"></a>Szórás
 
 Az összesített metrika szórása. Nem szabad beállítani a mérést.
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
-Az egyéni tulajdonsággal `CustomPerfCounter` `true` beállított metrika azt jelzi, hogy a metrika a Windows-teljesítményszámláló értékét jelöli. Ezek a metrikák a performanceCounters táblában vannak elhelyezve. Nem a customMetrics. A metrika neve a kategória, a számláló és a példányok neveinek kinyeréséhez is értelmezve lesz.
+A metrika az egyéni tulajdonsággal `CustomPerfCounter` beállítása `true` azt jelzi, hogy a metrika a Windows teljesítményszámláló értékét jelöli. Ezek a metrikák a performanceCounters táblában vannak elhelyezve. Nem a customMetrics. A metrika neve a kategória, a számláló és a példányok neveinek kinyeréséhez is értelmezve lesz.
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan használhatja [a Application INSIGHTS API-t egyéni eseményekhez és mérőszámokhoz](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
-- Lásd [](data-model.md) : adatmodell Application Insights típusokhoz és adatmodellekhez.
-- Tekintse [](../../azure-monitor/app/platforms.md) meg Application Insights által támogatott platformokat.
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: A Python és a TensorFlow használata Azure Functions a Machine learning-következtetések készítéséhez | Microsoft Docs'
+title: 'Oktatóanyag: a Python és a TensorFlow használata a Azure Functionsban a Machine learning-következtetések elvégzéséhez | Microsoft Docs'
 description: Ez az oktatóanyag bemutatja, hogyan alkalmazhat TensorFlow Machine learning-modelleket Azure Functions
 services: functions
 author: anthonychu
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: abc7302ee59103a9cbab156b95a41b77eb95d474
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e243fd2f5c4a90e45f424ce39a97913df2332b2b
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729175"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677877"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: Gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
 Ez a cikk azt mutatja be, hogyan Azure Functions lehetővé teszi a Python és a TensorFlow gépi tanulási modellel való használatát a rendszerképeknek a tartalom alapján történő besorolásához.
 
@@ -52,10 +52,10 @@ cd functions-python-tensorflow-tutorial
 
 A tárház néhány mappát tartalmaz.
 
-- *kezdés*:  Ez a munkahelyi mappa az oktatóanyaghoz
-- *Befejezés*: Ez a hivatkozás végső eredménye és teljes megvalósítása
-- *erőforrások*: A Machine learning-modellt és a segítő kódtárakat tartalmazza
-- előtér: Egy webhely, amely meghívja a Function alkalmazást
+- *Indítás*: ez az oktatóanyaghoz tartozó munkahelyi mappa
+- *Befejezés*: ez az utolsó eredmény és teljes megvalósítás a referenciához
+- *erőforrások*: a Machine learning-modellt és a segítő kódtárakat tartalmazza
+- előtér *: olyan*webhely, amely meghívja a Function alkalmazást
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Python virtuális környezet létrehozása és aktiválása
 
@@ -79,7 +79,7 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-A terminál-parancssor már előre van rögzítve, `(.venv)` amely azt jelzi, hogy sikeresen aktiválta a virtuális környezetet. Győződjön meg `python` arról, hogy a virtuális környezetben valóban a Python 3.6. x.
+A terminál-kérést a rendszer előre rögzíti `(.venv)` amely azt jelzi, hogy sikeresen aktiválta a virtuális környezetet. Győződjön meg arról, hogy a virtuális környezetben lévő `python` valóban Python 3.6. x.
 
 ```console
 python --version
@@ -98,9 +98,9 @@ func init --worker-runtime python
 
 A Function alkalmazás egy vagy több Azure Functions tartalmaz. Nyissa meg a *Start* mappát egy szerkesztőben, és vizsgálja meg a tartalmat.
 
-- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): Helyi fejlesztéshez használt Alkalmazásbeállítások
-- [*Host. JSON*](functions-host-json.md): A Azure Functions gazdagép és a bővítmények beállításait tartalmazza
-- [*követelmények. txt*](functions-reference-python.md#python-version-and-package-management): Az alkalmazás által igényelt Python-csomagokat tartalmazza
+- [*Local. Settings. JSON*](functions-run-local.md#local-settings-file): a helyi fejlesztéshez használt alkalmazás-beállításokat tartalmazza
+- [*Host. JSON*](functions-host-json.md): a Azure functions gazdagép és bővítmények beállításait tartalmazza
+- [*követelmények. txt*](functions-reference-python.md#python-version-and-package-management): az alkalmazás által igényelt Python-csomagokat tartalmazza
 
 ## <a name="create-an-http-function"></a>HTTP-függvény létrehozása
 
@@ -114,8 +114,8 @@ func new --language python --template HttpTrigger --name classify
 
 Létrejön egy *besorolás* nevű új mappa, amely két fájlt tartalmaz.
 
-- *init.a\_: \_ \_\_* A fő függvény fájlja
-- *function. JSON*:  A függvény triggerét és a hozzá tartozó bemeneti és kimeneti kötéseket leíró fájl
+- *\_ \_init \_ \_.* a: a fő függvény fájlja
+- *function. JSON*: a függvény triggerét és a hozzá tartozó bemeneti és kimeneti kötéseket leíró fájl
 
 ### <a name="run-the-function"></a>A függvény futtatása
 
@@ -131,7 +131,7 @@ Nyisson meg egy böngészőt, és navigáljon a következő URL-címre. A függv
 http://localhost:7071/api/classify?name=Azure
 ```
 
-A `Ctrl-C` Function alkalmazás leállításához használja a következőt:.
+A Function app leállításához használja a `Ctrl-C`.
 
 ## <a name="import-the-tensorflow-model"></a>A TensorFlow-modell importálása
 
@@ -140,7 +140,7 @@ Egy előre elkészített TensorFlow modellt fog használni, amely az Azure Custo
 > [!NOTE]
 > Ha a Custom Vision Service ingyenes szintjével szeretné létrehozni a sajátját, kövesse a [minta projekt adattárának utasításait](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-A modell két fájlból áll a *< REPOSITORY_ROOT >/Resources/Model* mappában: *Model. db* és *labels. txt*. Másolja őket a *besorolási* függvény mappájába.
+A modell két fájlból áll a *< REPOSITORY_ROOT >/Resources/Model* mappában: *Model. PB* és *labels. txt*. Másolja őket a *besorolási* függvény mappájába.
 
 #### <a name="linux-and-macos"></a>Linux és macOS:
 
@@ -154,11 +154,11 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Ügyeljen arra, hogy tartalmazza \* a fenti parancs utasításait. Győződjön meg arról, hogy a *besorolás* most a *Model. PB* és a *labels. txt*nevű fájlokat tartalmazza.
+Ügyeljen arra, hogy a fenti parancsban szerepeljen a \*. Győződjön meg arról, hogy a *besorolás* most a *Model. PB* és a *labels. txt*nevű fájlokat tartalmazza.
 
 ## <a name="add-the-helper-functions-and-dependencies"></a>Segítő függvények és függőségek hozzáadása
 
-Egyes segítő függvények a bemeneti rendszerkép előkészítéséhez és a TensorFlow használatával történő előrejelzéshez a *Predict.py* nevű fájlban találhatók a Resources mappában. Másolja ezt a fájlt a *besorolási* függvény mappájába.
+Egyes segítő függvények a bemeneti rendszerkép előkészítéséhez és a TensorFlow használatával történő előrejelzéshez a *Predict.py* nevű fájlban találhatók a *Resources* mappában. Másolja ezt a fájlt a *besorolási* függvény mappájába.
 
 #### <a name="linux-and-macos"></a>Linux és macOS:
 
@@ -179,7 +179,7 @@ Győződjön meg arról, hogy a *besorolás* most tartalmaz egy *Predict.py*nev�
 A Segéd-függvénytárban vannak olyan függőségek, amelyeket telepíteni kell. Nyissa meg a *Start/követelmények. txt* fájlt a szerkesztőben, és adja hozzá a következő függőségeket a fájlhoz.
 
 ```txt
-tensorflow
+tensorflow==1.15
 Pillow
 requests
 ```
@@ -194,13 +194,13 @@ pip install --no-cache-dir -r requirements.txt
 
 ### <a name="caching-the-model-in-global-variables"></a>A modell gyorsítótárazása globális változókban
 
-A szerkesztőben nyissa meg a *Predict.py* , és `_initialize` tekintse meg a fájl tetején található függvényt. Figyelje meg, hogy a TensorFlow modell betöltődik a lemezről a függvény első futtatásakor és globális változókba mentésekor. A rendszer kihagyja a lemezről történő betöltést a `_initialize` függvény későbbi végrehajtásakor. A memóriabeli modell gyorsítótárazása ezzel a technikával felgyorsítja a későbbi előrejelzéseket.
+A szerkesztőben nyissa meg a *Predict.py* , és tekintse meg a `_initialize` függvényt a fájl teteje közelében. Figyelje meg, hogy a TensorFlow modell betöltődik a lemezről a függvény első futtatásakor és globális változókba mentésekor. A rendszer kihagyja a lemezről való betöltést az `_initialize` függvény későbbi végrehajtásakor. A memóriabeli modell gyorsítótárazása ezzel a technikával felgyorsítja a későbbi előrejelzéseket.
 
 A globális változókra vonatkozó további információkért tekintse meg a [Azure functions Python fejlesztői útmutatóját](functions-reference-python.md#global-variables).
 
 ## <a name="update-function-to-run-predictions"></a>Frissítési függvény az előrejelzések futtatásához
 
-Nyissa meg a *\_besorolás/\_init\_\_.* a szerkesztőt. Importálja a korábban ugyanahhoz a mappához hozzáadott *előrejelző* könyvtárat. Adja hozzá a `import` következő utasításokat a már a fájlban lévő többi importálás alatt.
+Nyissa meg az *osztályozás/\_ \_init \_ \_. a.* a szerkesztőben. Importálja a korábban ugyanahhoz a mappához hozzáadott *előrejelző* könyvtárat. Adja hozzá a következő `import` utasításokat a fájlban már szereplő többi importálás alatt.
 
 ```python
 import json
@@ -221,14 +221,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Győződjön meg arról, hogy a módosítások mentéséhez.
+Ügyeljen arra, hogy mentse a módosításokat.
 
-Ez a függvény egy nevű `img`lekérdezési karakterlánc-paraméterben fogadja a RENDSZERKÉP URL-címét. Meghívja `predict_image_from_url` a segítő könyvtárat, amely letölti a rendszerképet, és visszaadja az előrejelzést a TensorFlow-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel.
+Ez a függvény egy `img` nevű lekérdezési karakterlánc-paraméterben fogad egy képurl-címet. Meghívja az `predict_image_from_url`t a segítő könyvtárból, amely letölti a képet, és visszaadja az előrejelzést a TensorFlow-modell használatával. A függvény ezután egy HTTP-választ ad vissza az eredményekkel.
 
-Mivel a http-végpontot egy másik tartományban található weblap hívja meg, a http-válasz egy `Access-Control-Allow-Origin` fejlécet tartalmaz, amely megfelel a böngésző eltérő eredetű erőforrás-megosztási (CORS) követelményeinek.
+Mivel a HTTP-végpontot egy másik tartományban található weblap hívja meg, a HTTP-válasz egy `Access-Control-Allow-Origin` fejlécet tartalmaz, amely kielégíti a böngésző eltérő eredetű erőforrás-megosztási (CORS) követelményeit.
 
 > [!NOTE]
-> Éles alkalmazásban váltson `*` a weblap speciális forrására a további biztonság érdekében.
+> Éles alkalmazásokban a további biztonság érdekében módosítsa `*` a weblap speciális forrására.
 
 ### <a name="run-the-function-app"></a>A Function alkalmazás futtatása
 
@@ -278,7 +278,7 @@ Amikor a Submit (küldés) gombra kattint, a rendszer meghívja a Function alkal
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Az oktatóanyag teljes egészében helyileg fut a gépen, így nincs szükség Azure-erőforrásokra vagy-szolgáltatásokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre és szabhat testre egy HTTP API-t Azure Functions segítségével, hogy előrejelzéseket TensorFlow modell használatával. Azt is megtanulta, hogyan hívhatja meg az API-t egy webalkalmazásból.
 

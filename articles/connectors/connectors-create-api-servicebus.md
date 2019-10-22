@@ -1,6 +1,6 @@
 ---
-title: Üzenetek küldése és fogadása Azure Service Bus-Azure Logic Apps
-description: Vállalati felhőalapú üzenetkezelés beállítása Azure Service Bus és Azure Logic Apps használatával
+title: Exchange-üzenetek Azure Service Bus-Azure Logic Apps
+description: Üzenetek küldése és fogadása Azure Service Bus használatával Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,16 +9,15 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/19/2019
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 tags: connectors
-ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0cf5486e77e69f83973f7e62669e5ab45d1c94a2
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120915"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679190"
 ---
-# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Exchange-üzenetek a felhőben a Azure Logic Apps és a Azure Service Bus használatával
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és az [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) -összekötővel automatizált feladatokat és munkafolyamatokat hozhat létre, amelyek adatátvitelt, például értékesítési és beszerzési rendeléseket, naplókat és leltározási mozgásokat végeznek a szervezete alkalmazásaiban. Az összekötő nem csak az üzenetek figyelését, küldését és kezelését végzi, hanem a várólistákkal, munkamenetekkel, témakörökkel, előfizetésekkel és egyéb műveletekkel is végrehajtja a műveleteket, például:
 
@@ -49,7 +48,7 @@ Olyan eseményindítókat is használhat, amelyek Service Bus válaszokat kapnak
 
 Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus névtér eléréséhez szükséges engedélyekkel.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
@@ -64,7 +63,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
       ![Service Bus névtérbeli kapcsolatok karakterláncának másolása](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath`  paraméterhez tartozó kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
+   > Annak ellenőrzéséhez, hogy a kapcsolódási karakterlánc társítva van-e a Service Bus névteréhez vagy egy üzenetküldési entitáshoz, például egy várólistához, keresse meg a `EntityPath`  parameter a kapcsolódási karakterláncot. Ha megtalálta ezt a paramétert, a kapcsolódási karakterlánc egy adott entitásra vonatkozik, és nem a megfelelő karakterláncot használja a logikai alkalmazáshoz.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger hozzáadása
 
@@ -160,6 +159,6 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakaríthat a Service Bus és az összekötő gyorsítótára között. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/servicebus/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

@@ -1,25 +1,21 @@
 ---
 title: Webalkalmazás monitorozása többlépéses webes tesztekkel és Azure-Application Insightsokkal | Microsoft Docs
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
-services: application-insights
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 07/25/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: a836e4cf66bf1e957f7b3779e21ec6a0296f7abe
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881449"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678234"
 ---
-# <a name="multi-step-web-tests"></a>Többlépéses webtesztek
+# <a name="multi-step-web-tests"></a>Többlépéses webes teszt
 
 A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-címek és interakciók rögzített sorozatát. Ebből a cikkből megtudhatja, hogyan hozhat létre többlépéses webes tesztet a Visual Studio Enterprise használatával.
 
@@ -31,7 +27,7 @@ A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-c
 * Visual Studio 2017 Enterprise vagy újabb.
 * A Visual Studio webes teljesítmény-és terhelés-tesztelési eszközei.
 
-Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el **a Visual Studio telepítő** > **egyes összetevőit** >  **, és tesztelje** > a**webes teljesítményt és a terheléses tesztelési eszközöket**.
+Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa el a **Visual Studio telepítőjét**  > **egyes összetevőket**  > **hibakeresés és tesztelés**  > **webes teljesítmény és terhelés tesztelési eszközei**.
 
 ![Képernyőfelvétel a Visual Studio telepítő felhasználói felületéről a webes teljesítmény és a terhelés-tesztelési eszközök elem melletti jelölőnégyzettel jelölt egyedi összetevőkkel](./media/availability-multistep/web-performance-load-testing.png)
 
@@ -48,11 +44,11 @@ Többlépéses teszt létrehozásához rögzíteni kell a forgatókönyvet a Vis
 
 A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
-1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl** > **új** **projekt** **vizualizációs C#** tesztelése >  >   > 
+1. Hozzon létre egy webes teljesítmény-és terhelési teszt projektet. **Fájl**  > **új**  > **Project**  > **Visual C#**   > **test**
 
     ![Visual Studio – új projekt felhasználói felülete](./media/availability-multistep/vs-web-performance-and-load-test.png)
 
-2. Nyissa `.webtest` meg a fájlt, és kezdje meg a rögzítést.
+2. Nyissa meg a `.webtest` fájlt, és kezdje meg a rögzítést.
 
     ![A Visual Studio test Recording felhasználói felülete](./media/availability-multistep/open-web-test.png)
 
@@ -73,7 +69,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 
-1. A rendelkezésre állás ablaktáblán a Application Insights portálon > válassza a tesztelési**teszt típusa** > többlépéses**webes teszt**lehetőséget.
+1. A rendelkezésre állási ablaktáblán található Application Insights-portálon válassza a **teszt létrehozása**  > **tesztelési típus**  >  a**többlépéses webes teszt**lehetőséget.
 
 2. A tesztelési helyszínek, a gyakoriság és a riasztás paramétereinek megadása.
 
@@ -84,7 +80,7 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 |**Tesztelési gyakoriság**| Beállítja, hogy a teszt milyen gyakran fusson az egyes tesztelési helyekről. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
 |**Tesztelési helyszínek**| Azok a helyek, ahonnan a kiszolgálók webes kéréseket küldenek az URL-címre. Az **ajánlott tesztelési helyszínek minimális száma öt** annak biztosítására, hogy a hálózati problémák alapján megkülönböztetni tudja a webhelyén felmerülő problémákat. Legfeljebb 16 hely választható ki.
 
-### <a name="success-criteria"></a>Sikeresség feltétele
+### <a name="success-criteria"></a>Sikerességi feltételek
 
 |Beállítás| Magyarázat
 |----|----|----|
@@ -92,13 +88,13 @@ A webes munkamenet rögzítéséhez használja a Visual Studio Enterprise-t.
 | **HTTP-válasz** | A visszaadott állapotkód, amely sikeresnek számít. A 200-as kód jelzi, hogy normál weblap lett visszaküldve.|
 | **Tartalom egyezése** | Egy karakterlánc, például "Welcome!" Teszteljük, hogy minden válaszban előfordul-e a kis- és nagybetűket figyelembe véve is pontos egyezés. Egyszerű sztringnek kell lennie helyettesítő karakterek nélkül. Ne feledje, hogy ha a laptartalom megváltozik, lehet, hogy ezt is frissíteni kell. **A tartalmi egyezés csak az angol karaktereket támogatja** |
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
 |Beállítás| Magyarázat
 |----|----|----|
 |**Közel valós idejű (előzetes verzió)** | Javasoljuk, hogy a közel valós idejű riasztásokat használja. Az ilyen típusú riasztások konfigurálása a rendelkezésre állási teszt létrehozása után történik.  |
 |**Klasszikus** | Már nem ajánlott klasszikus riasztásokat használni az új rendelkezésre állási tesztekhez.|
-|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke** =  **– 2, legalább öt tesztelési hely.**|
+|**Riasztási hely küszöbértéke**|Legalább 3/5 helyet ajánlunk. A riasztási hely küszöbértéke és a tesztelési helyek száma közötti optimális kapcsolat a **riasztási hely küszöbértéke**  =  a**tesztelési helyek száma – 2, legalább öt tesztelési hellyel.**|
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -153,7 +149,7 @@ Minden esetben ajánlott létrehozni egy fiókot az alkalmazásában tesztelési
 
 Itt egy alkalmazáskulcsot használó Azure-webalkalmazás webes tesztelésre találhat példát:
 
-![Mintaképernyőkép](./media/availability-multistep/client-secret.png)
+![Minta képernyőkép](./media/availability-multistep/client-secret.png)
 
 Szerezze be a tokent az AAD-ből a titkos ügyfélkulcs használatával (AppKey).
 Nyerje ki a tulajdonosi jogkivonatot a válaszból.
@@ -171,11 +167,11 @@ A különböző munkamenetek összehasonlításával azonosítsa a hitelesítés
 Rögzítsen egy webes tesztet a Visual Studióval.
 Paraméterezze a tokeneket. Ehhez állítsa be a paramétereket, amikor a hitelesítő visszaküldi a tokent, és használja a webhely felé indított lekérdezésben. (A Visual Studio megpróbálja paraméterezni a tesztet, de a tokeneket nem paraméterezi megfelelően.)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendelkezésre állási riasztások](availability-alerts.md)
 * [URL pingelése webes tesztek](monitor-web-app-availability.md)

@@ -1,40 +1,35 @@
 ---
 title: Hibák és kivételek diagnosztizálása a webalkalmazásokban az Azure Application Insightsban | Microsoft Docs
 description: A ASP.NET-alkalmazásokból származó kivételek rögzítése a kérelem telemetria együtt.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 07/11/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: c8d46ddc834cb12aa63720673c83d745ab53ab4d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.date: 07/11/2019
+ms.openlocfilehash: 90f03baa35d0bf2b63ec480a23db30409df3845f
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226875"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677760"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>A webalkalmazások kivételeinek diagnosztizálása a Application Insights
 Az élő webalkalmazásban lévő kivételeket [Application Insights](../../azure-monitor/app/app-insights-overview.md). A sikertelen kérelmeket a kivételekkel és más eseményekkel is összekapcsolhatja az ügyfélen és a kiszolgálón is, így gyorsan diagnosztizálhatja az okokat.
 
 ## <a name="set-up-exception-reporting"></a>A kivételek jelentésének beállítása
 * A kiszolgálói alkalmazás által jelentett kivételek:
-  * Azure Web Apps: A [Application Insights bővítmény](../../azure-monitor/app/azure-web-apps.md) hozzáadása
-  * Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai: Az [alkalmazás-figyelési bővítmény](../../azure-monitor/app/azure-vm-vmss-apps.md) hozzáadása
+  * Azure Web Apps: a [Application Insights bővítmény](../../azure-monitor/app/azure-web-apps.md) hozzáadása
+  * Azure-beli virtuális gépek és Azure virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazások: az [alkalmazás figyelési bővítményének](../../azure-monitor/app/azure-vm-vmss-apps.md) hozzáadása
   * Telepítse [Application INSIGHTS SDK](../../azure-monitor/app/asp-net.md) -t az alkalmazás kódjába, vagy
   * IIS-webkiszolgálók: [Application Insights ügynök](../../azure-monitor/app/monitor-performance-live-website-now.md)futtatása; vagy
-  * Java-webalkalmazások: A [Java-ügynök](../../azure-monitor/app/java-agent.md) telepítése
-* Telepítse a [JavaScript](../../azure-monitor/app/javascript.md) -kódrészletet a weboldalain a böngészőbeli kivételek elfogásához.
+  * Java-webalkalmazások: telepítse a [Java-ügynököt](../../azure-monitor/app/java-agent.md)
+* Telepítse a [JavaScript-kódrészletet](../../azure-monitor/app/javascript.md) a weboldalain a böngészőbeli kivételek elfogásához.
 * Néhány alkalmazás-keretrendszerben vagy bizonyos beállításokkal további lépéseket kell elvégeznie, hogy több kivételt kapjon:
   * [Webes űrlapok](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1.*](#web-api-1x)
-  * [Web API 2.*](#web-api-2x)
+  * [Webes API 1. *](#web-api-1x)
+  * [Webes API 2. *](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Kivételek diagnosztizálása a Visual Studióval
@@ -80,11 +75,11 @@ Több lehetőség közül választhat:
 * A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) általában a használati minták figyelésére használatos, de az általa küldött adatok is megjelennek az egyéni események szakaszban a diagnosztikai keresésben. Az események neve, és a karakterlánc-tulajdonságokat és numerikus mérőszámokat is végezhet, amelyeken [szűrheti a diagnosztikai kereséseket](../../azure-monitor/app/diagnostic-search.md).
 * A [TrackTrace ()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) lehetővé teszi, hogy több adatot, például post-adatokat küldjön.
 * A [TrackException () verem-](#exceptions) nyomkövetéseket küld. [További információ a kivételekről](#exceptions).
-* Ha már olyan naplózási keretrendszert használ, mint például a Log4Net vagy a NLog, [rögzítheti ezeket](asp-net-trace-logs.md) a naplókat, és megtekintheti azokat a diagnosztikai keresésben a kérelem és a kivétel adatai mellett.
+* Ha már olyan naplózási keretrendszert használ, mint például a Log4Net vagy a NLog, [rögzítheti ezeket a naplókat](asp-net-trace-logs.md) , és megtekintheti azokat a diagnosztikai keresésben a kérelem és a kivétel adatai mellett.
 
 Az események megjelenítéséhez nyissa meg a bal oldali menü [Keresés](../../azure-monitor/app/diagnostic-search.md) elemét, válassza a legördülő menü **eseménytípus**lehetőséget, majd válassza az egyéni esemény, nyomkövetés vagy kivétel lehetőséget.
 
-![Áthatoló részletezést](./media/asp-net-exceptions/customevents.png)
+![Részletezés](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
 > Ha az alkalmazása sok telemetriát hoz létre, az adaptív mintavételezési modul automatikusan csökkenti a portálra küldött mennyiséget, és csupán az eseményeket megjelenítő töredékeket küld. Az azonos művelet részét képező események ki lesznek választva, vagy ki lesznek választva a csoportnak, így a kapcsolódó események között lehet navigálni. [További tudnivalók a mintavételezésről.](../../azure-monitor/app/sampling.md)
@@ -101,7 +96,7 @@ A kérelem részletei nem tartalmazzák az alkalmazásba egy POST-hívásban tov
 ## <a name="exceptions"></a>Kivételek és kapcsolódó diagnosztikai adat rögzítése
 Először nem jelenik meg a portálon az alkalmazás hibáit okozó kivételek. A böngészőre vonatkozó kivételek jelennek meg (ha a [JavaScript SDK](../../azure-monitor/app/javascript.md) -t használja a weboldalain). Az IIS azonban a legtöbb kiszolgálói kivételt felveszi, és egy kódot kell megírnia, hogy megtekintse őket.
 
-A következőket teheti:
+Előnyök:
 
 * A kivételek jelentéséhez szúrja be a kivételeket úgy, hogy a kivételeket a kód beszúrásával **explicit módon naplózza** .
 * A **kivételek automatikus rögzítése** a ASP.NET-keretrendszer konfigurálásával. A szükséges hozzáadások eltérőek a különböző típusú keretrendszerekhez.
@@ -159,12 +154,12 @@ A legegyszerűbb módszer a TrackException () hívásának beszúrása egy kivé
     End Try
 ```
 
-A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de hasznos lehet a [szűréshez és](../../azure-monitor/app/diagnostic-search.md) további információk hozzáadásához. Ha például olyan alkalmazással rendelkezik, amely több játékot is futtathat, megtalálhatja az adott játékhoz kapcsolódó összes kivételről szóló jelentést. Az egyes szótárakhoz tetszőleges számú elemet adhat hozzá.
+A tulajdonságok és a mérések paramétereinek megadása nem kötelező, de hasznos lehet a [szűréshez és további információk hozzáadásához](../../azure-monitor/app/diagnostic-search.md) . Ha például olyan alkalmazással rendelkezik, amely több játékot is futtathat, megtalálhatja az adott játékhoz kapcsolódó összes kivételről szóló jelentést. Az egyes szótárakhoz tetszőleges számú elemet adhat hozzá.
 
 ## <a name="browser-exceptions"></a>Böngészőkivételek
 A legtöbb böngészőbeli kivételt jelenteni kell.
 
-Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a ```crossorigin="anonymous"```parancsfájl címkéje rendelkezik az attribútummal, és hogy a kiszolgáló [CORS](https://enable-cors.org/)-fejléceket küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
+Ha a weblap parancsfájlokat tartalmaz a Content Delivery Networks vagy más tartományokból, győződjön meg arról, hogy a parancsfájl címkéje ```crossorigin="anonymous"``` attribútummal rendelkezik, és hogy a kiszolgáló [CORS-fejléceket](https://enable-cors.org/)küld. Ez lehetővé teszi, hogy lekérje a verem nyomon követését és részleteit a nem kezelt JavaScript-kivételekről ezekből az erőforrásokból.
 
 ## <a name="reuse-your-telemetry-client"></a>A telemetria-ügyfél újrafelhasználása
 
@@ -216,12 +211,12 @@ Számos esetben a kivétel szűrői nem kezelhetik. Példa:
 * Kivétel történt a háttérben végzett feladatokban.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
-A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a `ResultCode` 500-es megfelelő kérelem telemetria nyomon követheti, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
+A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, a rendszer az `ResultCode` 500-as számú megfelelő kérelem telemetria nyomon követi, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha a Application Insights web SDK 2,5-as (és korábbi) MVC 4 (és korábbi) változatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.
 
-Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) `Off`-konfiguráció, akkor a kivételek lesznek elérhetők a [http-modul](https://msdn.microsoft.com/library/ms178468.aspx) összegyűjtéséhez. Ha `RemoteOnly` azonban az (alapértelmezett) vagy `On`a, akkor a rendszer törli a kivételt, és nem lesz elérhető Application Insights számára az automatikus gyűjtéshez. A [System. Web. MVC. HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
+Ha a [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) -konfiguráció `Off`, akkor a rendszer kivételeket fog kiszolgálni a [http-modul](https://msdn.microsoft.com/library/ms178468.aspx) összegyűjtéséhez. Ha azonban `RemoteOnly` (alapértelmezett) vagy `On`, akkor a kivétel törölve lesz, és nem érhető el a Application Insights automatikus begyűjtéséhez. A [System. Web. MVC. HandleErrorAttribute osztály](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)felülbírálásával és a felülbírált osztály alkalmazásával az alábbi, a különböző MVC-verzióknál ([GitHub-forrás](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)) látható módon kijavíthatja a következőt:
 
 ```csharp
     using System;
@@ -265,7 +260,7 @@ Cserélje le a HandleError attribútumot a vezérlők új attribútumára.
 [Minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
-Regisztrálás `AiHandleErrorAttribute` globális szűrőként a Global.asax.cs-ben:
+@No__t_0 regisztrálása globális szűrőként a Global.asax.cs-ben:
 
 ```csharp
     public class MyMvcApplication : System.Web.HttpApplication
@@ -308,13 +303,13 @@ Számos esetben a kivétel szűrői nem kezelhetik. Példa:
 * Kivétel történt a háttérben végzett feladatokban.
 
 Az alkalmazás által *kezelt* összes kivételt manuálisan kell nyomon követni.
-A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, azt a 500-es `ResultCode` megfelelő kérelem telemetria nyomon követheti, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
+A vezérlőkből származó nem kezelt kivételek általában 500 "belső kiszolgálóhiba" választ eredményeznek. Ha az ilyen választ a kezelt kivétel (vagy egyáltalán nem kivétel) eredményeképpen manuálisan készíti el, a rendszer a `ResultCode` 500-as számú megfelelő kérelem telemetria nyomon követi, azonban Application Insights SDK nem tudja követni a megfelelő kivételt.
 
 ### <a name="prior-versions-support"></a>Korábbi verziók támogatása
 Ha Application Insights web SDK 2,5 (és korábbi) WebAPI 1 (és korábbi) használatát használja, a kivételek nyomon követéséhez tekintse meg az alábbi példákat.
 
-#### <a name="web-api-1x"></a>Web API 1.x
-Override System.Web.Http.Filters.ExceptionFilterAttribute:
+#### <a name="web-api-1x"></a>Webes API 1. x
+Felülbírálja a System. Web. http. Filters. ExceptionFilterAttribute:
 
 ```csharp
     using System.Web.Http.Filters;
@@ -363,7 +358,7 @@ Ezt a felülbírált attribútumot adott vezérlőkhöz hozzáadhatja, vagy hozz
 
 [Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-#### <a name="web-api-2x"></a>Web API 2.x
+#### <a name="web-api-2x"></a>Webes API 2. x
 Adja hozzá a Iexceptionlogger felület implementációját:
 
 ```csharp
@@ -489,7 +484,7 @@ Add the attribute to the service implementations:
 [Minta](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Kivételi teljesítményszámlálók
-Ha telepítette [a Application Insights ügynököt](../../azure-monitor/app/monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.
+Ha [telepítette a Application Insights ügynököt](../../azure-monitor/app/monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.
 
 Nyisson meg egy mérőszám-kezelő lapot, adjon hozzá egy új diagramot, és válassza a **kivételek aránya**elemet a teljesítményszámlálók területen.
 
@@ -497,7 +492,7 @@ A .NET-keretrendszer kiszámítja az arányt a kivételek számának és az inte
 
 Ez eltér a "kivételek" számával, amelyet a Application Insights-portál a TrackException jelentéseinek számlálása alapján számít ki. A mintavételi időközök eltérőek, és az SDK nem küld TrackException-jelentéseket az összes kezelt és nem kezelt kivételhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A REST, az SQL és más függőségek hívásának figyelése](../../azure-monitor/app/asp-net-dependencies.md)
 * [Az oldal betöltési idejének, a böngésző kivételeinek és az AJAX-hívások figyelése](../../azure-monitor/app/javascript.md)
 * [Teljesítményszámlálók figyelése](../../azure-monitor/app/performance-counters.md)

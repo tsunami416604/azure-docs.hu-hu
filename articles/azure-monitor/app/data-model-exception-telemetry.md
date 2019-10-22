@@ -1,41 +1,37 @@
 ---
-title: Az Azure Application Insights Telemetria Data Model – Kivételtelemetria |} A Microsoft Docs
-description: Application Insights-adatmodell – kivételtelemetria
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights Telemetria adatmodell – kivétel telemetria | Microsoft Docs
+description: Application Insights adatmodell a kivételek telemetria
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.author: mbullwin
-ms.openlocfilehash: efd7ad43ee9a2206f474621612eca7dfe5079f99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ba1c94ee8dc78b937d650cff32e1518a7ca5a12
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60908065"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677419"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Telemetria. kivétel: Application Insights-adatmodell
+# <a name="exception-telemetry-application-insights-data-model"></a>Kivétel telemetria: Application Insights adatmodell
 
-A [Application Insights](../../azure-monitor/app/app-insights-overview.md), kivétel példányát jelöli egy kezelt vagy nem kezelt kivétellel, hogy a figyelt alkalmazásban végrehajtása közben lépett fel.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md)a kivétel egy példánya egy kezelt vagy nem kezelt kivételt jelöl, amely a figyelt alkalmazás végrehajtása során fordult elő.
 
 ## <a name="problem-id"></a>Probléma azonosítója
 
-Azonosítója, ahol a kivétel lépett fel a kódban. Csoportosítás kivételek használja. Általában kombinációját kivétel típusát és a egy függvény érkezett a hívási veremben.
+A kivétel kódjában való kidobásának azonosítója. A kivételek csoportosításához használatos. Jellemzően a kivétel típusának és a függvénynek a hívási veremből való kombinációja.
 
-Maximális hossz: 1024 karakternél
+Maximális hossz: 1024 karakter
 
 ## <a name="severity-level"></a>Súlyossági szint
 
-Nyomon követheti a súlyossági szintet. Az érték lehet `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Nyomkövetés súlyossági szintje Az érték lehet `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="exception-details"></a>Kivétel részletei
 
-(A kiterjesztett)
+(Kiterjeszthető)
 
 ## <a name="custom-properties"></a>Egyéni tulajdonságok
 
@@ -45,8 +41,8 @@ Nyomon követheti a súlyossági szintet. Az érték lehet `Verbose`, `Informati
 
 [!INCLUDE [application-insights-data-model-measurements](../../../includes/application-insights-data-model-measurements.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Lásd: [adatmodell](data-model.md) Application Insights és modellhez.
-- Ismerje meg, hogyan [az Application insights segítségével a webalkalmazások kivételeinek diagnosztizálása](../../azure-monitor/app/asp-net-exceptions.md).
-- Tekintse meg [platformok](../../azure-monitor/app/platforms.md) Application Insights által támogatott.
+- Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.
+- Ismerje meg, hogyan [diagnosztizálhatja a webalkalmazások kivételeit Application Insights](../../azure-monitor/app/asp-net-exceptions.md)használatával.
+- Tekintse meg Application Insights által támogatott [platformokat](../../azure-monitor/app/platforms.md) .

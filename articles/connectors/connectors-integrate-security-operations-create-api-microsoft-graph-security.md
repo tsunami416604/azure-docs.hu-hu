@@ -1,6 +1,6 @@
 ---
-title: Biztonsági műveletek integrálása a Microsoft Graph-biztonság – Azure Logic Apps
-description: Növelheti a veszélyforrások elleni védelem, észlelés és válasz képességek az alkalmazás kezelése a Microsoft Graph biztonsági & Azure Logic Apps biztonsági műveletek
+title: Biztonsági műveletek integrálása és kezelése – Azure Logic Apps & Microsoft Graph biztonság
+description: Javítsa az alkalmazás veszélyforrások elleni védelmét, észlelését és válaszát Microsoft Graph biztonsági & Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,114 +10,114 @@ ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 845f57d84f49bdd964cc6f61790faff093f59466
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60448047"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72679098"
 ---
-# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Veszélyforrások elleni védelem növelheti a biztonsági műveletek integrálása a Microsoft Graph biztonság és az Azure Logic Apps
+# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
 
-A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Graph biztonsági](https://docs.microsoft.com/graph/security-concept-overview) -összekötő, javíthatja, hogyan észleli az alkalmazását, védi és válaszol fenyegetések-való integrálásához Microsoft automatizált munkafolyamatok létrehozásával biztonsági termékek, szolgáltatások és partnerek. Létrehozhat például [forgatókönyvek az Azure Security Center](../security-center/security-center-playbooks.md) , amelyek figyelése és kezelése a Microsoft Graph-Security-entitásokkal, például a riasztások. Íme néhány a Microsoft Graph-Security-összekötő által támogatott forgatókönyveket:
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Graph biztonsági](https://docs.microsoft.com/graph/security-concept-overview) összekötővel javíthatja az alkalmazás által észlelt, védett és a fenyegetésekre való reagálást a Microsoft biztonsági termékeinek, szolgáltatásainak és partnereinek integrálására szolgáló automatizált munkafolyamatok létrehozásával. Létrehozhat például olyan [Azure Security Center](../security-center/security-center-playbooks.md) forgatókönyveket, amelyek Microsoft Graph biztonsági entitások, például riasztások figyelésére és kezelésére szolgálnak. Az Microsoft Graph biztonsági összekötő által támogatott néhány forgatókönyv:
 
-* Alapján lekérdezések vagy által riasztási értesítéseket kaphat Például kaphat egy listát, amely tartalmazza a magas súlyossági szintű riasztások.
-* Riasztások frissítése. Például frissítheti a riasztás hozzárendeléseket, megjegyzéseket fűzhet a riasztások, vagy riasztások megjelölése.
-* Figyelő észleli, ha a riasztások rendszer által létrehozott vagy módosított létrehozása [riasztási előfizetések (webhookok)](https://docs.microsoft.com/graph/api/resources/webhooks).
-* A riasztási előfizetések kezelése. Például aktív előfizetések beolvasása, kiterjesztheti a lejárati időt egy előfizetést, vagy az előfizetések törlése.
+* Riasztások lekérése lekérdezés vagy riasztási azonosító alapján. Lekérhet például egy olyan listát, amely nagy súlyosságú riasztásokat tartalmaz.
+* Riasztások frissítése. Például frissítheti a riasztási hozzárendeléseket, megjegyzéseket fűzhet a riasztásokhoz, vagy címkézheti a riasztásokat.
+* A riasztási [előfizetések (webhookok)](https://docs.microsoft.com/graph/api/resources/webhooks)létrehozásával figyelheti a riasztások létrehozását vagy módosítását.
+* A riasztási előfizetések kezelése. Lekérheti például az aktív előfizetéseket, kiterjesztheti az előfizetés lejárati idejét, vagy törölhet előfizetéseket.
 
-A logikai alkalmazás munkafolyamat használhatja a műveleteket, választ kaphat a Microsoft Graph-Security-összekötőről származó, és elérhetővé teheti, hogy a kimeneti egyéb műveleteket hajthat végre a munkafolyamatban. A munkafolyamat használja a Microsoft Graph biztonsági összekötő-műveletek kimenete más műveleteket is lehet. Például ha a Microsoft Graph-Security-összekötő segítségével magas súlyossági szintű riasztások, elküldheti ezeket a riasztásokat egy e-mail üzenet az Outlook-összekötő használatával. 
+A logikai alkalmazás munkafolyamata olyan műveleteket is használhat, amelyek válaszokat kapnak a Microsoft Graph biztonsági összekötőtől, és ezt a kimenetet a munkafolyamat más műveletei számára is elérhetővé teszik. A munkafolyamatban más műveletek is megadhatók a Microsoft Graph biztonsági összekötő műveleteiből származó kimenet használatával. Ha például magas súlyosságú riasztásokat kap a Microsoft Graph biztonsági összekötőn keresztül, az Outlook Connector használatával e-mailben elküldheti ezeket a riasztásokat egy e-mail-üzenetben. 
 
-Microsoft Graph-biztonsággal kapcsolatos további információkért tekintse meg a [áttekintése a Microsoft Graph API-val biztonsági](https://aka.ms/graphsecuritydocs). Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Ha a Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a folyamat?](https://flow.microsoft.com/) vagy [Mi a PowerApps?](https://powerapps.microsoft.com/)
+A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](https://aka.ms/graphsecuritydocs)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a flow?](https://flow.microsoft.com/) című témakört. vagy [Mi a PowerApps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Microsoft Graph-Security-összekötő használatához rendelkeznie kell *explicit módon megadott* része az Azure Active Directory (AD) bérlő rendszergazdai jóváhagyást, a [Microsoft Graph biztonsági hitelesítési követelmények ](https://aka.ms/graphsecurityauth). A jóváhagyás szükséges, a Microsoft Graph Security connector Alkalmazásazonosítót és nevet, amely is található a [az Azure portal](https://portal.azure.com):
+* A Microsoft Graph biztonsági összekötő használatához *explicit módon* meg kell adnia Azure Active Directory (ad) bérlői rendszergazdai beleegyezését, amely a [Microsoft Graph biztonsági hitelesítési követelményeinek](https://aka.ms/graphsecurityauth)részét képezi. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value (Díj) |
    |----------|-------|
    | **Alkalmazás neve** | `MicrosoftGraphSecurityConnector` |
    | **Alkalmazás azonosítója** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
    |||
 
-   Az összekötő hozzájárulását, az Azure AD-Bérlői rendszergazda vagy ezeket a lépéseket kövesse:
+   Az összekötő engedélyezéséhez az Azure AD-bérlő rendszergazdája a következő lépéseket hajthatja végre:
 
-   * [Adja meg az Azure AD-alkalmazások bérlői rendszergazdai jóváhagyást](../active-directory/develop/v2-permissions-and-consent.md).
+   * [Adja meg a bérlői rendszergazdai jóváhagyást az Azure ad-alkalmazásokhoz](../active-directory/develop/v2-permissions-and-consent.md).
 
-   * Során a logikai alkalmazás első futtatása, az alkalmazás használói kérhetnek jóváhagyási keresztül az Azure AD-Bérlői rendszergazda a [alkalmazás jóváhagyási felületen](../active-directory/develop/application-consent-experience.md).
+   * A logikai alkalmazás első futtatásakor az alkalmazás beleegyezett az Azure AD-bérlő rendszergazdájától az [alkalmazás-beleegyező felhasználói](../active-directory/develop/application-consent-experience.md)felületen keresztül.
    
-* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* A logikai alkalmazás, ahol szeretné elérni a Microsoft Graph biztonsági entitások, például a riasztások. Jelenleg ez az összekötő nem tartozik eseményindító. Tehát egy Microsoft Graph biztonsági műveletet használja, indítsa el a logikai alkalmazás egy eseményindítóval, például a **ismétlődési** eseményindító.
+* Az a logikai alkalmazás, amelyhez el szeretné érni Microsoft Graph biztonsági entitásait, például a riasztásokat. Ez az összekötő jelenleg nem rendelkezik eseményindítókkal. Ha tehát Microsoft Graph biztonsági műveletet szeretne használni, indítsa el a logikai alkalmazást egy eseményindítóval, például az **Ismétlődés** eseményindítóját.
 
-## <a name="connect-to-microsoft-graph-security"></a>Csatlakozás a Microsoft Graph-biztonság 
+## <a name="connect-to-microsoft-graph-security"></a>Kapcsolódás Microsoft Graph biztonsághoz 
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/), és nyissa meg a logikai alkalmazás a Logikaialkalmazás-Tervező, ha nem, nyissa meg a már.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
 
-1. Üres logikai alkalmazások esetében adja hozzá az eseményindító és bármely más olyan műveleteket, amelyeket a Microsoft Graph biztonsági művelet hozzáadása előtt.
-
-   – vagy –
-
-   Meglévő logic Apps alkalmazások, az utolsó lépés egy Microsoft Graph biztonsági műveletet, amelyre a válasszon **új lépés**.
+1. Az üres logikai alkalmazások esetében adja hozzá a triggert és minden egyéb műveletet, amelyet a Microsoft Graph biztonsági művelet hozzáadása előtt szeretne használni.
 
    – vagy –
 
-   Lépések közötti művelet hozzáadása, helyezze az egérmutatót a nyíl lépések között. 
-   Válassza a plusz jelre (+), amely akkor jelenik meg, és válassza ki **művelet hozzáadása**.
+   Meglévő Logic apps esetén az utolsó lépésben, amelyhez Microsoft Graph biztonsági műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be a "a microsoft graph biztonság" szűrőként. Jelölje ki az elvégzendő műveletek listájában.
+   – vagy –
 
-1. Jelentkezzen be a Microsoft Graph biztonsági hitelesítő adataival.
+   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. 
+   Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
 
-1. Adja meg a szükséges adatokat a kiválasztott művelet, és továbbra is használhatja a logic app-munkafolyamatot.
+1. A keresőmezőbe írja be a "Microsoft Graph Security" kifejezést a szűrőként. A műveletek listából válassza ki a kívánt műveletet.
+
+1. Jelentkezzen be Microsoft Graph biztonsági hitelesítő adataival.
+
+1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
 
 ## <a name="add-actions"></a>Műveletek hozzáadása
 
-Az alábbiakban elérhető különböző műveletek használatával a Microsoft Graph-Security-összekötővel kapcsolatos részletesebb információt.
+Az alábbiakban részletesebb információkat talál a Microsoft Graph biztonsági összekötővel elérhető különböző műveletek használatáról.
 
 ### <a name="manage-alerts"></a>Riasztások kezelése
 
-Szűrési, rendezni, vagy a legutóbbi eredményt, adja meg *csak* a [ODATA-lekérdezésparamétereket támogatja a Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Ne adjon meg* a teljes alap URL-cím vagy a HTTP-művelet, például `https://graph.microsoft.com/v1.0/security/alerts`, vagy a `GET` vagy `PATCH` műveletet. Íme egy olyan példát, amely megjeleníti a paramétereket egy **értesítéseket kaphat** művelet, ha azt szeretné, hogy a magas súlyossági szintű riasztások listáját:
+A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például `https://graph.microsoft.com/v1.0/security/alerts`, vagy a `GET` vagy `PATCH` műveletet. Íme egy konkrét példa, amely a **riasztások beolvasása** művelet paramétereit jeleníti meg, ha nagy súlyosságú riasztásokkal rendelkező listát szeretne:
 
 `Filter alerts value as Severity eq 'high'`
 
-Ezzel az összekötővel használhatja a lekérdezésekkel kapcsolatos további információkért lásd: a [Microsoft Graph biztonsági riasztások referenciadokumentációt](https://docs.microsoft.com/graph/api/alert-list). Ezzel az összekötővel fokozott élményt hozhat létre, tudjon meg többet a [séma tulajdonságok riasztások](https://docs.microsoft.com/graph/api/resources/alert) , hogy az összekötő támogatja.
+Az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg a [Microsoft Graph biztonsági riasztások dokumentációját](https://docs.microsoft.com/graph/api/alert-list). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt olvashat az összekötő által támogatott [séma-tulajdonságok riasztásokról](https://docs.microsoft.com/graph/api/resources/alert) .
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Riasztások beolvasása** | Get riasztások alapján szűrt egy vagy több [riasztási tulajdonságok](https://docs.microsoft.com/graph/api/resources/alert), például: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
-| **Beolvasása azonosító alapján riasztása** | Beolvasása egy adott riasztás alapján a riasztás azonosítója. | 
-| **Riasztás frissítése** | A riasztási azonosító alapján adott riasztás frissítése <p>Ahhoz, hogy a szükséges és szerkeszthető tulajdonságait adja át a kérést, tekintse meg a [riasztások tartozik szerkeszthető tulajdonság](https://docs.microsoft.com/graph/api/alert-update). Például, hogy hozzárendel egy riasztást a biztonsági elemző, így azok segítségével megvizsgálhatja, frissítheti a riasztás **rendelt** tulajdonság. |
+| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások lekérése, például: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Riasztás beolvasása azonosító alapján** | Egy adott riasztást kap a riasztás azonosítója alapján. | 
+| **Riasztás frissítése** | Egy adott riasztás frissítése a riasztás azonosítója alapján. <p>A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [riasztások szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/alert-update). Ha például riasztást szeretne hozzárendelni egy biztonsági elemzőhöz, hogy el lehessen végezni a vizsgálatot, frissítheti a riasztáshoz **rendelt** tulajdonságot. |
 |||
 
-### <a name="manage-alert-subscriptions"></a>Értesítés-előfizetések kezelése
+### <a name="manage-alert-subscriptions"></a>Riasztás-előfizetések kezelése
 
-Támogatja a Microsoft Graph [ *előfizetések*](https://docs.microsoft.com/graph/api/resources/subscription), vagy [ *webhookok*](https://docs.microsoft.com/graph/api/resources/webhooks). Szeretne kapni, frissítés, vagy az előfizetések törlése, adja meg a [ODATA-lekérdezésparamétereket támogatja a Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph-entitást létrehozni, és tartalmazzák `security/alerts` az ODATA-lekérdezés követ. 
-*Nem tartalmazzák a* az alap URL-CÍMÉT, például `https://graph.microsoft.com/v1.0`. Ehelyett használja a formátumot ebben a példában:
+Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/graph/api/resources/subscription)vagy [*webhookokat*](https://docs.microsoft.com/graph/api/resources/webhooks). Az előfizetések lekéréséhez, frissítéséhez vagy törléséhez adja meg a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph entitás-létrehozáshoz, és adja meg a `security/alerts`, amelyet a ODATA-lekérdezés követ. 
+*Ne adja* meg az alap URL-címet, például `https://graph.microsoft.com/v1.0`. Ehelyett használja az ebben a példában szereplő formátumot:
 
 `security/alerts?$filter=status eq 'New'`
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Előfizetések létrehozása** | [Hozzon létre egy előfizetést](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , értesítést küld a módosításokat. Szűrheti a kívánt riasztási típus ehhez az előfizetéshez. Például létrehozhat egy előfizetést, amely értesíti, magas súlyossági szintű riasztások is. |
-| **Aktív előfizetések beolvasása** | [Lejárt az előfizetések beolvasása](https://docs.microsoft.com/graph/api/subscription-list). | 
-| **Előfizetés frissítése** | [Előfizetés frissítése](https://docs.microsoft.com/graph/api/subscription-update) azáltal, hogy az előfizetés azonosítóját. Például az előfizetés kiterjeszteni, frissítheti az előfizetéshez tartozó `expirationDateTime` tulajdonság. | 
-| **Előfizetés törlése** | [Töröl egy előfizetést](https://docs.microsoft.com/graph/api/subscription-delete) azáltal, hogy az előfizetés azonosítóját. | 
+| **Előfizetések létrehozása** | [Hozzon létre egy előfizetést](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , amely értesítést küld a változásokról. Ezt az előfizetést szűrheti a kívánt riasztási típusokra. Létrehozhat például egy olyan előfizetést, amely értesíti a nagy súlyosságú riasztásokról. |
+| **Aktív előfizetések beolvasása** | [Lejárt előfizetések beolvasása](https://docs.microsoft.com/graph/api/subscription-list). | 
+| **Előfizetés frissítése** | [Előfizetés frissítése](https://docs.microsoft.com/graph/api/subscription-update) az előfizetés-azonosító megadásával. Az előfizetés kiterjesztéséhez például frissítheti az előfizetés `expirationDateTime` tulajdonságát. | 
+| **Előfizetés törlése** | [Előfizetés törlése](https://docs.microsoft.com/graph/api/subscription-delete) az előfizetés-azonosító megadásával. | 
 ||| 
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További technikai részletek korlátok, eseményindítók és műveletek, amely ismerteti az összekötő OpenAPI által (korábbi nevén Swagger) leírását, tekintse át az összekötő [referencialapja](https://aka.ms/graphsecurityconnectorreference).
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](https://aka.ms/graphsecurityconnectorreference).
 
 ## <a name="get-support"></a>Támogatás kérése
 
 A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 A funkciókkal kapcsolatos ötletek elküldéséhez vagy megszavazásához látogasson el a [Logic Apps felhasználói visszajelzéseinek oldalára](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információk egyéb [Logic Apps-összekötők](../connectors/apis-list.md)
+További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

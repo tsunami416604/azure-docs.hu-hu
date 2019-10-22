@@ -1,6 +1,6 @@
 ---
-title: Kereskedelmipartner-egyezmények – Azure Logic Apps elindíthatók
-description: Létrehozása és kezelése a kereskedelmi partnerekkel az Azure Logic Apps és az Enterprise Integration Pack között létrejött megállapodások
+title: Kereskedelmi partneri szerződések – Azure Logic Apps
+description: Szerződések létrehozása és kezelése a kereskedelmi partnerek között Azure Logic Apps és Enterprise Integration Pack használatával
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,101 +9,101 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 4bfee4ec442c9e7b0351b0fd0c6a2b8e163a2541
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
+ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330306"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72680421"
 ---
-# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Létrehozásához és kezeléséhez kereskedelmipartner-egyezmények az Azure Logic Appsben
+# <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Kereskedelmi partneri szerződések létrehozása és kezelése Azure Logic Apps
 
-A [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) 
-*szerződés* segítségével a szervezetek és vállalatok egymással zökkenőmentesen szolgáltatásbusszal használni kívánt konkrét szabványos protokollt definiálásával vállalatközi (B2B) üzenet. Szerződés előnyei közös, például:
+A [kereskedelmi partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md)  
+*szerződése* révén a szervezetek és a vállalatok zökkenőmentesen kommunikálhatnak egymással azáltal, hogy meghatározzák a vállalat és a vállalat közötti (B2B) üzenetek cseréjekor használandó egyedi, iparági szabványnak megfelelő protokollt. A szerződések közös előnyöket biztosítanak, például:
 
-* Engedélyezze a szervezetek számára, hogy az exchange-adatokat egy jól ismert formátum használatával.
-* Hatékonyságnövelés B2B-tranzakciók során.
-* Is egyszerűen létrehozása, kezelése és használata a vállalati integrációs megoldások létrehozása.
+* Lehetővé teheti a szervezetek számára, hogy a jól ismert formátum használatával kicseréljék az adatokat.
+* Növelje a hatékonyságot a B2B-tranzakciók végrehajtásakor.
+* Egyszerűen létrehozhatók, kezelhetők és használhatók vállalati integrációs megoldások létrehozásához.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy AS2, EDIFACT vagy X12, amelyet használhat a B2B-forgatókönyvekhez integrációs megoldások létrehozását, nagyvállalati szerződés a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) és [Azure Logic Apps](../logic-apps/logic-apps-overview.md). Miután egy szerződést hoz létre, akkor használhatja az AS2, EDIFACT vagy X12 B2B-üzenetek kicserélni az összekötőket.
+Ez a cikk bemutatja, hogyan hozhat létre olyan AS2-, EDIFACT-vagy X12-szerződést, amelyet a [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) és [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával vállalati integrációs megoldások LÉTREHOZÁSához használhat a B2B-forgatókönyvekhez. A szerződések létrehozása után az AS2, a EDIFACT vagy a X12 összekötőt használhatja a B2B-üzenetek cseréjéhez.
 
-Szerződések RosettaNet üzenetváltásokban létrehozásával kapcsolatban lásd: [Exchange RosettaNet üzenetek](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
+A RosettaNet-üzenetek cseréjére vonatkozó szerződések létrehozásával kapcsolatban lásd: [Exchange RosettaNet-üzenetek](../logic-apps/logic-apps-enterprise-integration-rosettanet.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetésem, [regisztráljon egy ingyenes Azure-fiókkal](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha még nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a szerződés és más B2B összetevők tárolására. Az integrációs fiók az Azure-előfizetése társítva kell lennie.
+* [Integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) a szerződés és más B2B-összetevők tárolásához. Ezt az integrációs fiókot hozzá kell rendelni az Azure-előfizetéséhez.
 
-* Legalább két [kereskedelmi partnerek](../logic-apps/logic-apps-enterprise-integration-partners.md) már létrehozott az integrációs fiókban. Egy szerződést egy fogadó partner és a egy vendégpartner is szükség van. Mindkét partner kell használnia az azonos "üzleti identitás" minősítő szeretne létrehozni, például az AS2, X 12 vagy EDIFACT a szerződés szerint.
+* Legalább két, az integrációs fiókban már létrehozott [kereskedelmi partner](../logic-apps/logic-apps-enterprise-integration-partners.md) . A szerződésekhez egy fogadó partner és egy vendég partner is szükséges. Mindkét partnernek ugyanazt az "üzleti identitás" minősítést kell használnia, mint a létrehozni kívánt szerződés, például AS2, X12 vagy EDIFACT.
 
-* Nem kötelező: A logikai alkalmazás, ahol szeretné használni, a szerződés és a egy eseményindítót, amely elindítja a logikai alkalmazás munkafolyamat. Az integrációs fiók és a B2B összetevők csak létrehozásának, nem kell egy logikai alkalmazást. Azonban ahhoz a logikai alkalmazás a B2B-összetevőket az integrációs fiókban lévő, hozzá kell rendelnie az integrációs fiók a logikai alkalmazáshoz. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Nem kötelező: az a logikai alkalmazás, amelyben a szerződést és a logikai alkalmazás munkafolyamatát indító triggert szeretné használni. Az integrációs fiók és a B2B-összetevők létrehozásához nincs szükség logikai alkalmazásra. Azonban ahhoz, hogy a logikai alkalmazás használhassa a B2B-összetevőket az integrációs fiókjában, csatolnia kell az integrációs fiókot a logikai alkalmazáshoz. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a [Mi az Azure Logic apps](../logic-apps/logic-apps-overview.md) és a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)lehetőséget.
 
 ## <a name="create-agreements"></a>Szerződések létrehozása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-Az Azure fő menüjéből válassza **minden szolgáltatás**. A keresőmezőbe írja be szűrőként "integráció névre". Az eredmények közül válassza ki az ehhez az erőforráshoz: **Integrációs fiókok**
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
-   ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
+   ![Integrációs fiók megkeresése](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. A **integrációs fiókok**, válassza ki az integrációs fiók, ahol szeretné létrehozni a szerződést.
+1. Az **integrációs fiókok**területen válassza ki azt az integrációs fiókot, amelyben létre szeretné hozni a szerződést.
 
-   ![Válassza ki az integrációs fiók, hová hozza létre a szerződés](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
+   ![Válassza ki azt az integrációs fiókot, ahol létre szeretné hozni a szerződést](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. A jobb oldali ablaktáblán a **összetevők**, válassza ki a **szerződések** csempére.
+1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
 
-   ![Válassza a "Szerződés"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+   ![Válassza a "szerződések" lehetőséget](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. A **szerződések**, válassza a **Hozzáadás**. Az a **Hozzáadás** panelen adja meg például a szerződéssel kapcsolatos információk:
+1. A **szerződések**területen válassza a **Hozzáadás**lehetőséget. A **Hozzáadás** ablaktáblán adja meg a szerződésre vonatkozó információkat, például:
 
-   ![Válassza az "Add"](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+   ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Tulajdonság | Szükséges | Value | Leírás |
+   | Tulajdonság | Szükséges | Value (Díj) | Leírás |
    |----------|----------|-------|-------------|
-   | **Name (Név)** | Igen | <*agreement-name*> | A Szerződés neve |
-   | **Szerződés típusa** | Igen | **AS2**, **X12**, vagy **EDIFACT** | A szerződés protokoll típusa. A szerződés fájl létrehozásakor a tartalmat, az adott fájlban meg kell egyeznie a szerződés típusának. | |  
-   | **Gazdagéppartner** | Igen | <*host-partner-name*> | A gazdagéppartner jelöli a szervezet, amely meghatározza a szerződés |
-   | **Gazdagép-identitás** | Igen | <*host-partner-identifier*> | A gazdagéppartner azonosítója |
-   | **Vendégpartner** | Igen | <*guest-partner-name*> | A vendégpartner a szervezet, amely a fogadó partner üzleti jelenti. |
-   | **Vendégidentitás** | Igen | <*Vendég-partner-azonosító*> | A vendégpartner azonosítója |
-   | **Beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg, hogyan a fogadó partner a vendégpartner a szerződés minden bejövő üzenetet kap. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
-   | **Küldési beállítások** | Változó | Változó | Ezeket a tulajdonságokat adja meg, hogyan a fogadó partner a vendégpartner a szerződés minden kimenő üzeneteket küld. További információkért tekintse meg a megfelelő típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT-üzenetek beállításai](logic-apps-enterprise-integration-edifact.md) <br>- [X12 üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
+   | **Name (Név)** | Igen | <*Szerződés – név* > | A szerződés neve |
+   | **Szerződés típusa** | Igen | **AS2**, **X12**vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. | |  
+   | **Gazda partner** | Igen | <*gazdagép-partner-név* > | A fogadó partner a szerződést megadó szervezetet jelöli. |
+   | **Gazdagép identitása** | Igen | <*gazdagép – partner-azonosító* > | A gazda partner azonosítója |
+   | **Vendég partner** | Igen | <*vendég-partner-név* > | A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöl |
+   | **Vendég identitás** | Igen | <*vendég-partner-azonosító* > | A vendég partner azonosítója |
+   | **Fogadási beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan fogadja az összes bejövő üzenetet a szerződésben szereplő vendég partnertől. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>[EDIFACT -  üzenet beállításai](logic-apps-enterprise-integration-edifact.md) <br>[X12 -  üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
+   | **Küldési beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan küldi el az összes kimenő üzenetet a szerződésben szereplő vendég partnernek. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenetek beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>[EDIFACT -  üzenet beállításai](logic-apps-enterprise-integration-edifact.md) <br>[X12 -  üzenet beállításai](logic-apps-enterprise-integration-x12.md) |
    |||||
 
-1. Ha befejezte a szerződés létrehozása a **Hozzáadás** lapon a **OK**, és térjen vissza az integrációs fiók.
+1. Amikor elkészült a szerződés létrehozásával, az Add ( **Hozzáadás** ) lapon kattintson az **OK gombra**, és térjen vissza az integrációs fiókjához.
 
-   A **szerződések** listában láthatók az új szerződés.
+   A **szerződések** listája most már az új szerződést mutatja.
 
-## <a name="edit-agreements"></a>Szerződés szerkesztése
+## <a name="edit-agreements"></a>Szerződések szerkesztése
 
-1. Az a [az Azure portal](https://portal.azure.com), az Azure fő menüjéből válassza **minden szolgáltatás**.
+1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként "integráció névre". Az eredmények közül válassza ki az ehhez az erőforráshoz: **Integrációs fiókok**
+1. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
-1. A **integrációs fiókok**, válassza ki az integrációs fiók, amely rendelkezik a megállapodás szerkesztéséhez.
+1. Az **integrációs fiókok**területen válassza ki a szerkeszteni kívánt szerződést tartalmazó integrációs fiókot.
 
-1. A jobb oldali ablaktáblán a **összetevők**, válassza ki a **szerződések** csempére.
+1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
 
-1. A **szerződések**, válassza ki a szerződését, és válassza a **szerkesztése**.
+1. A **szerződések**területen válassza ki a szerződést, és válassza a **Szerkesztés**lehetőséget.
 
-1. Győződjön meg arról, és mentse a módosításokat.
+1. Végezze el, majd mentse a módosításokat.
 
-## <a name="delete-agreements"></a>A szerződések törlése
+## <a name="delete-agreements"></a>Szerződések törlése
 
-1. Az a [az Azure portal](https://portal.azure.com), az Azure fő menüjéből válassza **minden szolgáltatás**.
+1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget.
 
-1. A keresőmezőbe írja be szűrőként "integráció névre". Az eredmények közül válassza ki az ehhez az erőforráshoz: **Integrációs fiókok**
+1. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
-1. A **integrációs fiókok**, válassza ki az integrációs fiók, amely rendelkezik a megállapodás törli.
+1. Az **integrációs fiókok**területen válassza ki a törölni kívánt szerződést tartalmazó integrációs fiókot.
 
-1. A jobb oldali ablaktáblán a **összetevők**, válassza ki a **szerződések** csempére.
+1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
 
-1. A **szerződések**, válassza ki a szerződését, és válassza a **törlése**.
+1. A **szerződések**területen válassza ki a szerződést, és válassza a **Törlés**lehetőséget.
 
-1. Győződjön meg arról, hogy szeretné-e a kiválasztott szerződés törlése.
+1. Erősítse meg, hogy törölni kívánja a kijelölt szerződést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [AS2-üzenetek váltása](logic-apps-enterprise-integration-as2.md)
-* [EDIFACT-üzenetek](logic-apps-enterprise-integration-edifact.md)
-* [Az Exchange X12 üzenetek](logic-apps-enterprise-integration-x12.md)
+* [Exchange AS2-üzenetek](logic-apps-enterprise-integration-as2.md)
+* [Exchange-EDIFACT üzenetei](logic-apps-enterprise-integration-edifact.md)
+* [Exchange-X12 üzenetei](logic-apps-enterprise-integration-x12.md)

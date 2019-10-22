@@ -1,20 +1,18 @@
 ---
 title: Az Azure app Services teljesítményének figyelése | Microsoft Docs
 description: Az alkalmazások teljesítményének figyelése az Azure app Servicesben. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 10/04/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: ec741c0051ccd8020b7d7ab689e15add3ad716bd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 10/04/2019
+ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286170"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677659"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service teljesítményének figyelése
 
@@ -71,7 +69,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 
 3. Az olyan beállítások konfigurálásához, mint például a mintavételezés, amelyet korábban a applicationinsights. config fájlon keresztül kezelhet, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
-    * Például a kezdeti mintavételi százalék módosításához létrehozhat egy alkalmazás-beállítást: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage`, `100` értékkel.
+    * Például a kezdeti mintavételi százalék módosításához létrehozhat egy alkalmazás-beállítást: `MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage` és `100` értéket.
 
     * A támogatott adaptív mintavételi telemetria processzor-beállításainak listájáért tekintse meg a [kódot](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) és a [kapcsolódó dokumentációt](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
@@ -103,7 +101,7 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 * **Beállítások** kiválasztása > * * * * alkalmazás beállításai * * * *
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
-     Név: @no__t – 0
+     Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `true`
 
@@ -122,7 +120,7 @@ Ha valamilyen oknál fogva le szeretné tiltani az ügyféloldali figyelést:
 * **Beállítások**kiválasztása  > **alkalmazás beállításai**
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
-     név: @no__t – 0
+     név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `false`
 
@@ -304,7 +302,7 @@ A verzióról történő verziófrissítés automatikusan történik, további m
 
 Annak a kiterjesztésnek a megkereséséhez, amelyen a bővítmény fut `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-![Az URL-cím elérési útjának képernyőképe @no__t – 0](./media/azure-web-apps/extension-version.png)
+![Az URL-cím elérési útjának képernyőképe http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
 
 ### <a name="upgrade-from-versions-100---265"></a>Verziófrissítés a következő verziókról: 1.0.0-2.6.5
 
@@ -330,7 +328,7 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 > A ASP.NET Core 3,0 alkalmazások nem támogatottak. A ASP.NET Core 3,0-es alkalmazások kódján keresztül kövesse a [manuális](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) rendszerállapot-vezérlést.
 
 1. Ellenőrizze, hogy az alkalmazást `ApplicationInsightsAgent` használatával figyeli-e a rendszer.
-    * Győződjön meg arról, hogy a `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.
+    * Győződjön meg arról, hogy `ApplicationInsightsAgent_EXTENSION_VERSION` alkalmazás beállítása "~ 2" értékre van állítva.
 2. Győződjön meg arról, hogy az alkalmazás megfelel a figyelni kívánt követelményeknek.
     * Tallózással keresse meg `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: db54c7886f5256dab41325cd12f1b893be732d72
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 6d8ad27766e85568cc759af84cc586476ad3ef9a
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529046"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678441"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Teljes szöveges keresés hozzáadása az Azure-Blobok adataihoz Azure Search használatával
 
@@ -70,5 +70,5 @@ A több állandó megoldás a lekérdezési bemenetek összegyűjtése és a vá
 
 ## <a name="next-steps"></a>Következő lépések
 
-> [!div class="nextstepaction"]
-> [BLOB-indexelő beállítása](search-howto-indexing-azure-blob-storage.md) 
++ [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [BLOB-indexelő beállítása (Azure Search)](search-howto-indexing-azure-blob-storage.md) 

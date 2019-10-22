@@ -1,26 +1,21 @@
 ---
 title: Alkalmazás-hozzárendelés az Azure Application Insightsban | Microsoft Docs
 description: Összetett alkalmazás-topológiák figyelése az alkalmazás-hozzárendeléssel
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: f895aa9aa4bc66c32f10d290b7ee708345be8c9b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 49efad50b988da263a715c1aba9d53ad4b4a7121
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983764"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678391"
 ---
-# <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: Elosztott alkalmazások osztályozása
+# <a name="application-map-triage-distributed-applications"></a>Alkalmazás-hozzárendelés: elosztott alkalmazások osztályozása
 
 Az alkalmazás-hozzárendeléssel a teljesítmény szűk keresztmetszetek vagy meghibásodási pontok fordulnak elő az elosztott alkalmazás összes összetevőjénél. A Térkép minden csomópontja egy alkalmazás-összetevőt vagy annak függőségeit jelöli. és az állapot KPI és a riasztások állapota. A bármely összetevőtől kezdve a részletesebb diagnosztika, például a Application Insights események elemre kattintva végezhető el. Ha az alkalmazás az Azure-szolgáltatásokat használja, akkor az Azure Diagnostics szolgáltatásra is kattinthat, például SQL Database Advisor javaslatokat.
 
@@ -66,15 +61,15 @@ A teljesítménnyel kapcsolatos problémák elhárításához válassza a **telj
 
 ![A teljesítmény élményét bemutató képernyőkép](media/app-map/performance.png)
 
-### <a name="go-to-details"></a>Részletek megnyitása
+### <a name="go-to-details"></a>Ugrás a részletekre
 
-Válassza az **Ugrás** a részletekhez lehetőséget a végpontok közötti tranzakciós élmény megismeréséhez, amely a hívási verem szintjéhez nyújt nézeteket.
+Válassza az **Ugrás a részletekhez** lehetőséget a végpontok közötti tranzakciós élmény megismeréséhez, amely a hívási verem szintjéhez nyújt nézeteket.
 
 ![Képernyőkép a részletekről gomb](media/app-map/go-to-details.png)
 
 ![Képernyőkép a végpontok közötti tranzakció részleteiről](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Megtekintés az Analyticsben
+### <a name="view-in-analytics"></a>Megtekintés az elemzésekben
 
 Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson **a megtekintés az elemzésekben**lehetőségre.
 
@@ -82,7 +77,7 @@ Az alkalmazások adatai lekérdezéséhez és kivizsgálásához kattintson **a 
 
 ![Képernyőkép az elemzési élményről](media/app-map/analytics.png)
 
-### <a name="alerts"></a>Riasztások
+### <a name="alerts"></a>Értesítések
 
 Az aktív riasztások és a riasztások indítását kiváltó alapul szolgáló szabályok megtekintéséhez válassza a **riasztások**lehetőséget.
 
@@ -119,7 +114,7 @@ namespace CustomInitializer.Telemetry
 }
 ```
 
-**ASP.NET alkalmazások: Inicializálás betöltése az aktív TelemetryConfiguration**
+**ASP.NET-alkalmazások: az inicializáló betöltése az aktív TelemetryConfiguration**
 
 A ApplicationInsights. config fájlban:
 
@@ -147,11 +142,11 @@ A webalkalmazások ASP.NET alternatív módszere az inicializáló létrehozása
 ```
 
 > [!NOTE]
-> Az inicializálás `ApplicationInsights.config` a vagy a használatával `TelemetryConfiguration.Active` való hozzáadása ASP.net Core alkalmazások esetében nem érvényes. 
+> Az inicializálás `ApplicationInsights.config` vagy `TelemetryConfiguration.Active` használatával történő hozzáadása nem érvényes ASP.NET Core alkalmazásokhoz. 
 
-**ASP.NET Core alkalmazások: Inicializáló betöltése a TelemetryConfiguration**
+**ASP.NET Core alkalmazások: az inicializáló betöltése a TelemetryConfiguration**
 
-[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadását a függőségi injektálási tárolóba való hozzáadásával végezheti el, az alább látható módon. Ez az `ConfigureServices` `Startup.cs` osztály metódusában történik.
+[ASP.net Core](asp-net-core.md#adding-telemetryinitializers) alkalmazások esetében az új `TelemetryInitializer` hozzáadásához vegye fel azt a függőség-injektálási tárolóba, az alábbi ábrán látható módon. Ez a `Startup.cs` osztály `ConfigureServices` metódusában történik.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -210,7 +205,7 @@ A **Felhőbeli szerepkör nevének**megismerése érdekében hasznos lehet megte
 
 ![Alkalmazás-Térkép képernyőképe](media/app-map/cloud-rolename.png)
 
-Az alkalmazás-hozzárendelés a zöld mezőkben található nevek felett a Felhőbeli szerepkörök neve értékek az adott elosztott alkalmazás különböző szempontjaihoz. Így ehhez az alkalmazáshoz a szerepkörei a következők `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+Az alkalmazás-hozzárendelés a zöld mezőkben található nevek felett a Felhőbeli szerepkörök neve értékek az adott elosztott alkalmazás különböző szempontjaihoz. Így az alkalmazás szerepkörei a következőkből állnak: `Authentication`, `acmefrontend`, `Inventory Management`, `Payment Processing Worker Role`. 
 
 Ebben az alkalmazásban a Felhőbeli szerepkörök nevei egy másik egyedi Application Insights erőforrást is jelentenek a saját kialakítási kulcsaik használatával. Mivel ennek az alkalmazásnak a tulajdonosa a négy különböző Application Insights erőforráshoz fér hozzá, az Application Map képes összekeverni az alapul szolgáló kapcsolatok térképét.
 
@@ -226,13 +221,13 @@ A [hivatalos definíciók](https://github.com/Microsoft/ApplicationInsights-dotn
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-A **Felhőbeli szerepkör-példány** hasznos lehet olyan helyzetekben, ahol a Felhőbeli **szerepkör neve** azt jelzi, hogy a probléma valahol a webes kezelőfelületen fut, de előfordulhat, hogy a webes kezelőfelület több elosztott terhelésű kiszolgálón fut, így Kusto-lekérdezések révén mélyebben végezheti el a részletezést, és megtudhatja, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos.
+A **Felhőbeli szerepkör-példány** hasznos lehet olyan helyzetekben, ahol a **Felhőbeli szerepkör neve** azt jelzi, hogy a probléma valahol a webes kezelőfelületen fut, de előfordulhat, hogy a webes kezelőfelület több elosztott terhelésű kiszolgálón fut, így Kusto-lekérdezések révén mélyebben végezheti el a részletezést, és megtudhatja, hogy a probléma hatással van-e az összes webes előtér-kiszolgálóra/példányra, vagy csak egy rendkívül fontos.
 
 Egy olyan forgatókönyv, amelyben érdemes lehet felülbírálni a Felhőbeli szerepkör példányának értékét, ha az alkalmazás egy olyan tárolóban fut, ahol az egyes kiszolgálók nem feltétlenül elegendő információval szolgálnak az adott probléma megtalálásához.
 
-További információ arról, [hogyan bírálható felül a Felhőbeli szerepkör Name tulajdonsága a telemetria inicializálók használatával: tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
+További információ arról, hogyan bírálható felül a Felhőbeli szerepkör Name tulajdonsága a telemetria inicializálók használatával [: tulajdonságok hozzáadása: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Hibaelhárítás
+## <a name="troubleshooting"></a>Hibakeresés
 
 Ha nem tudja, hogy az alkalmazás-hozzárendelés a várt módon működjön, próbálja meg a következő lépéseket:
 
@@ -270,7 +265,7 @@ A visszajelzések megadásához használja a visszajelzés lehetőséget.
 
 ![MapLink – 1 rendszerkép](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a korreláció működéséről Application Insights tekintse meg a [telemetria korrelációs cikkét](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
 * A [végpontok közötti tranzakció diagnosztikai felülete](transaction-diagnostics.md) összekapcsolja az összes Application Insights figyelt összetevőből származó kiszolgálóoldali telemetria egyetlen nézetbe.

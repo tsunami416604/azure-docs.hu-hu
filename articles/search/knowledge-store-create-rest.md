@@ -7,12 +7,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: b67f0cf60d279c7bc52b4114d29c37847f5c57f1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 68808a2ea99c8fccd7e64f15e97f2ee6ec84d1a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244468"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678454"
 ---
 # <a name="create-an-azure-search-knowledge-store-by-using-rest"></a>Azure Search Knowledge Store létrehozása REST használatával
 
@@ -30,7 +30,7 @@ Hozza létre a következő szolgáltatásokat:
 
 - Hozzon létre egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) a mintaadatok és a Tudásbázis tárolására. A Storage-fióknak ugyanazt a helyet kell használnia (például az USA nyugati régióját) a Azure Search szolgáltatáshoz. A **fióktípus** értékének a következőnek kell lennie: **StorageV2 (általános célú v2)** (alapértelmezett) vagy **Storage (általános célú v1)** .
 
-- Ajánlott: szerezze be a [Poster Desktop alkalmazást](https://www.getpostman.com/) , amely a kérelmeket Azure Searchba küldi. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására. Ebben a cikkben a Poster-t használjuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) a kérelmek Poster-gyűjteményét is tartalmazza. 
+- Ajánlott: szerezze be a [Poster Desktop alkalmazást](https://www.getpostman.com/) , amely a kérelmeket Azure Searchba küldi. A REST API bármely olyan eszközzel használható, amely képes a HTTP-kérések és válaszok kezelésére. A Poster jó választás a REST API-k feltárására. Ebben a cikkben a Poster-t használjuk. A cikk [forráskódja](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store) a kérelmek Poster-gyűjteményét is tartalmazza. 
 
 ## <a name="store-the-data"></a>Az adattárolás
 
@@ -46,11 +46,11 @@ Töltse be a Hotel a CSV-fájlt az Azure Blob Storage-ba, hogy az egy Azure Sear
 1. A blob-tároló létrehozásához kattintson **az OK gombra** .
 1. Nyissa meg az új **hotelek – áttekintés** tárolót, válassza a **feltöltés**lehetőséget, majd válassza ki az első lépésben letöltött HotelReviews-Free. csv fájlt.
 
-    ![Töltse fel]az(media/knowledge-store-create-portal/upload-command-bar.png "adatfeltöltés a szállodai felülvizsgálatokat")
+    ![Adatok feltöltése](media/knowledge-store-create-portal/upload-command-bar.png "A szállodai értékelések feltöltése")
 
 1. Válassza a **feltöltés** lehetőséget a CSV-fájl Azure Blob Storage-ba történő importálásához. Az új tároló megjelenik:
 
-    ![A blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "a blob-tároló") létrehozása
+    ![A blob-tároló létrehozása](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "A blob-tároló létrehozása")
 
 ## <a name="configure-postman"></a>Postman konfigurálása
 
@@ -63,14 +63,14 @@ A Poster telepítése és beállítása.
 1. Válassza a **gyűjtemények** fület, majd kattintson a **...** (három pont) gombra.
 1. Válassza a **Szerkesztés** elemet. 
    
-   ![Poster-alkalmazás, amely azt mutatja],(media/knowledge-store-create-rest/postman-edit-menu.png "hogy a navigációs menü Szerkesztés menüjében")
+   ![Navigációt bemutató Poster-alkalmazás](media/knowledge-store-create-rest/postman-edit-menu.png "Ugrás a Poster szerkesztési menüjére")
 1. A **Szerkesztés** párbeszédpanelen válassza a **változók** lapot. 
 
 A **változók** lapon olyan értékeket adhat hozzá a Poster-feladatokhoz, amelyek minden alkalommal felvesznek egy adott változót a kettős zárójelek között. Például a Poster helyettesíti a `{{admin-key}}` szimbólumot a `admin-key` értékhez beállított aktuális értékkel. A Poster lehetővé teszi a helyettesítést az URL-címek, a fejlécek, a kérés törzse és így tovább. 
 
 A `admin-key` értékének lekéréséhez lépjen a Azure Search szolgáltatásra, és válassza a **kulcsok** fület. módosítsa a `search-service-name` és a `storage-account-name` értéket a [szolgáltatások létrehozása](#create-services)területen kiválasztott értékekre. A Storage-fiók **hozzáférési kulcsok** lapján található érték használatával állítsa be a `storage-connection-string` értéket. A többi értéknél meghagyhatja az alapértelmezett értékeket.
 
-![Poster alkalmazás-változók lap]–(media/knowledge-store-create-rest/postman-variables-window.png "a Poster változói ablaka")
+![Poster-alkalmazás változók lapja](media/knowledge-store-create-rest/postman-variables-window.png "A Poster változói ablaka")
 
 
 | Változó    | Honnan szerezheti be |
@@ -170,7 +170,7 @@ A következő lépés a készségkészlet megadása, amely meghatározza az alka
 
 Két nagyméretű legfelső szintű objektum létezik: `skills` és `knowledgeStore`. A `skills` objektumon belüli összes objektum egy dúsítási szolgáltatás. Minden dúsítási szolgáltatás `inputs` és `outputs`. A `LanguageDetectionSkill` kimeneti `targetName` `Language`. Ennek a csomópontnak az értékét a más képességek többsége használja bemenetként. A forrás `document/Language`. Egy csomópont kimenetének egy másikhoz való bevitelének lehetősége még nyilvánvalóbb a `ShaperSkill` értékben, amely meghatározza, hogy az adatok hogyan áramlanak be a Knowledge Store tábláiba.
 
-A `knowledge_store` objektum a `{{storage-connection-string}}` Poster változón keresztül csatlakozik a Storage-fiókhoz. a `knowledge_store` a tudásbázisban található bővített dokumentum és táblák és oszlopok közötti leképezések készletét tartalmazza. 
+A `knowledge_store` objektum a `{{storage-connection-string}}` Poster változón keresztül csatlakozik a Storage-fiókhoz. `knowledge_store` a tudásbázisban található bővített dokumentum és táblák és oszlopok közötti leképezések készletét tartalmazza. 
 
 A készségkészlet létrehozásához kattintson a Poster **Send (Küldés** ) gombjára a kérelem elvégzéséhez:
 

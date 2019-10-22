@@ -1,23 +1,19 @@
 ---
 title: Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 description: Egyéni napi/heti/havi jelentések automatizálása Azure Application Insights-adatokat
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 2b23374972a071421b59bedf0eb5b9358b37d7a9
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146747"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72677625"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -78,7 +74,7 @@ availabilityResults
 
 ## <a name="application-insights-scheduled-digest-report"></a>Ütemezett kivonatoló jelentés Application Insights
 
-1. A Azure Portal válassza az **erőforrás** > létrehozása**számítási** > **függvényalkalmazás**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  > **számítási**  > **függvényalkalmazás**lehetőséget.
 
    ![Azure-erőforrás létrehozása függvényalkalmazás képernyőkép](./media/automate-custom-reports/function-app-01.png)
 
@@ -95,7 +91,7 @@ availabilityResults
 5. Válassza ki a **_Application Insights ütemezett kivonatoló sablont_** .
 
      > [!NOTE]
-     > Alapértelmezés szerint a Function apps a Runtime 2. x verziójával jön létre. Az Application Insights ütemezett kivonatoló sablon használatához a Azure Functions Runtime **1. x** [verzióját kell megcéloznia](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) .  ![futtatókörnyezet képernyőképe](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+     > Alapértelmezés szerint a Function apps a Runtime 2. x verziójával jön létre. Az Application Insights ütemezett kivonatoló sablon használatához a Azure Functions Runtime **1. x** [verzióját kell megcéloznia](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) .  ![runtime képernyőkép ](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
 
 
 
@@ -105,11 +101,11 @@ availabilityResults
 
    ![A Function Settings képernyőképe](./media/automate-custom-reports/function-app-05.png)
 
-7. Válassza ki a **függvényalkalmazás** > **platform funkciók** > **Alkalmazásbeállítások**elemet.
+7. Válassza ki **függvényalkalmazás**  > **Platform funkcióit**  > **Alkalmazásbeállítások**.
 
     ![Az Azure Function alkalmazás beállításainak képernyőképe](./media/automate-custom-reports/function-app-07.png)
 
-8. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel ``AI_APP_ID`` ``AI_APP_KEY``, és ``SendGridAPI``. Kattintson a **Mentés** gombra.
+8. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel ``AI_APP_ID``, ``AI_APP_KEY`` és ``SendGridAPI``. Kattintson a **Mentés** gombra.
 
      ![Function Integration Interface – képernyőfelvétel](./media/automate-custom-reports/function-app-08.png)
     
@@ -150,7 +146,7 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
      ![A beállítások API-kulcs képernyőképe](./media/automate-custom-reports/function-app-14.png)
 
-3. Ekkor elindul a SendGrid webhelye. Válassza a **Beállítások** > **API-kulcsok**elemet.
+3. Ekkor elindul a SendGrid webhelye. Válassza a **beállítások**  > **API-kulcsok**elemet.
 
      ![API-kulcs alkalmazásának létrehozása és megtekintése képernyőkép](./media/automate-custom-reports/function-app-15.png)
 
@@ -162,7 +158,7 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
    ![Az API-kulcs másolása képernyőfelvétel](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)

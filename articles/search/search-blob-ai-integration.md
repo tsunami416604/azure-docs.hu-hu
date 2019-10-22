@@ -1,5 +1,5 @@
 ---
-title: A Blobok használatának ismertetése a mesterséges intelligenciával
+title: A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
 titleSuffix: Azure Search
 description: Szemantikai, természetes nyelvi feldolgozási és képelemzési adatok hozzáadása az Azure-blobokhoz a Azure Search mesterséges intelligencia-gazdagító folyamatával.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: search
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.openlocfilehash: f7e264be9a02514972f9c9702adec8fa55a157bd
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 1a8840aca71daacc08cf85b178668e42ff9f796c
+ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529378"
+ms.lasthandoff: 10/21/2019
+ms.locfileid: "72678420"
 ---
-# <a name="use-ai-to-understand-blob-data"></a>A Blobok használatának ismertetése a mesterséges intelligenciával
+# <a name="use-ai-to-understand-blob-storage-data"></a>A blob Storage-beli adatkezelési szolgáltatással való Ismerkedés
 
 Az Azure Blob Storage-ban tárolt adatokat gyakran különböző strukturálatlan tartalmak, például képek, hosszú szöveges, PDF-és Office-dokumentumok. A Azure Search AI-képességeinek használatával számos módon megismerheti és kinyerheti a Blobok értékes információit. Példák a mesterséges intelligenciát tartalmazó tartalom alkalmazására:
 
@@ -112,7 +112,8 @@ A folyamat végén található dúsított dokumentumok eltérnek az eredeti beme
 
 A mesterséges intelligenciával sokkal többet is megtudhat az Azure Storage-ban tárolt adatairól, többek között a Cognitive Services különböző módokon történő kombinálásával, valamint egyéni ismeretek készítésével olyan esetekre, amikor a forgatókönyvhöz nem áll rendelkezésre kognitív szolgáltatás. Az alábbi hivatkozásokra kattintva többet is megtudhat.
 
-> [!div class="nextstepaction"]
-> [AI](cognitive-search-concept-intro.md)-bővítés áttekintése  
-> [készségkészlet létrehozása](cognitive-search-defining-skillset.md)
-> [Térkép csomópontok egy jegyzet fájában](cognitive-search-output-field-mapping.md)
++ [Blobok feltöltése, letöltése és listázása a Azure Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [BLOB-indexelő beállítása (Azure Search)](search-howto-indexing-azure-blob-storage.md) 
++ [AI-dúsítás áttekintése (Azure Search)](cognitive-search-concept-intro.md) 
++ [Készségkészlet létrehozása (Azure Search)](cognitive-search-defining-skillset.md)
++ [Csomópontok leképezése a jegyzet fájában (Azure Search)](cognitive-search-output-field-mapping.md)
