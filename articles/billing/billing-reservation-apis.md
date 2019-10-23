@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 50de654fb9222951a7380a322160496421006e7a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 57e38888249de448f5286baa1b5ebb0e2c01bda9
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719681"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757420"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k az Azure-foglalás automatizálásához
 
@@ -26,7 +26,7 @@ Az Azure API-k használatával programozott módon kérhet le információkat a 
 
 A foglalási javaslat API-javaslatokat ad arra vonatkozóan, hogy mely foglalási csomagokat érdemes megvásárolni a szervezet használati adatai alapján. További információk: [Foglalási javaslatok kérése](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Emellett elemezheti saját erőforrás-használatát a használatai API használati adatai segítségével. További információk: [Használati adatok – Lista a számlázási időszakra számlázási fiók szerint](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). A legtöbb esetben elsősorban a folyamatosan használt Azure-erőforrásokat érdemes lefoglalni.
+Emellett elemezheti saját erőforrás-használatát a használatai API használati adatai segítségével. További információk: [Használati adatok – Lista a számlázási időszakra számlázási fiók szerint](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod-legacy). A legtöbb esetben elsősorban a folyamatosan használt Azure-erőforrásokat érdemes lefoglalni.
 
 ## <a name="buy-a-reservation"></a>Foglalás vásárlása
 

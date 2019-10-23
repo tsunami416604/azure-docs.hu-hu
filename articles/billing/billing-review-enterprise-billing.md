@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 3ff1a119ed87c8bffff227679bec41bc653c0c42
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 47668169841cc2b180995808349487cefed02391
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718772"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754308"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Nagyvállalati regisztráció számlázásának áttekintése REST API-kkal
 
@@ -78,7 +78,7 @@ Sikeres válasz esetén a rendszer a 200-as (OK) állapotkódot adja vissza, ame
 }
 ```  
 
-Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [számlázási fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) kapcsolatos szakaszban találja.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [számlázási fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
 ## <a name="department-billing"></a>Részleg számlázása 
 
@@ -134,7 +134,7 @@ Az alábbi példa az `1234` részleg REST API-jának kimenetét mutatja be.
 }
 ```  
 
-Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [részlegek használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) kapcsolatos szakaszban találja.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [részlegek használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#departmentusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
 ## <a name="enrollment-account-billing"></a>Regisztrációs fiók számlázása
 
@@ -187,7 +187,7 @@ Az alábbi példa az `1234` vállalati regisztráció REST API-jának kimenetét
 }
 ``` 
 
-Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [regisztrációs fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) kapcsolatos szakaszban találja.
+Ez a példa rövidítve van; a válaszmezők és a hibakezelés teljes leírását a [regisztrációs fiókok használati adatainak lekérésével](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy) kapcsolatos szakaszban találja.
 
 ## <a name="next-steps"></a>További lépések 
 - Tekintse meg [a vállalati jelentéskészítés áttekintését](https://docs.microsoft.com/azure/billing/billing-enterprise-api) ismertető szakaszt
