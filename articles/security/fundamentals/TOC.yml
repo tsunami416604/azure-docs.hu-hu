@@ -3,10 +3,6 @@
 - name: Architektúra és kialakítás
   href: overview.md
   expanded: false
-  items: null
-- name: Architektúra és kialakítás
-  href: overview.md
-  expanded: false
   items:
     - name: Megosztott feladatkörök a felhőben
       href: shared-responsibility.md
@@ -232,16 +228,12 @@
   href: 'https://azure.microsoft.com/resources/whitepapers/search/?term=security&type=WhitePaperResource'
 - name: Azure biztonsági szolgáltatások
   href: services-technologies.md
-- name: Műszaki áttekintések
-  href: overviews.md
 - name: Ajánlott eljárások
   href: best-practices-and-patterns.md
 - name: További források
   items:
     - name: Beépített biztonsági vezérlők
       href: security-controls.md
-    - name: Azure biztonsági MVP program
-      href: mvp.md
     - name: Kiberbiztonsági tanácsadás
       href: cyber-services.md
     - name: Biztonsági eseményekről szóló támogatási jegyek rögzítése

@@ -98,13 +98,13 @@
     - name: Diagnosztika és hibaelhárítás
       items:
         - name: Redis-kiszolgáló hibaelhárítása
-          href: cache-how-to-troubleshoot-server.md
+          href: cache-troubleshoot-server.md
         - name: Redis-ügyfél hibaelhárítása
-          href: cache-how-to-troubleshoot-client.md
+          href: cache-troubleshoot-client.md
         - name: Időtúllépések elhárítása
-          href: cache-how-to-troubleshoot-timeouts.md
+          href: cache-troubleshoot-timeouts.md
         - name: Adatvesztés elhárítása
-          href: cache-how-to-troubleshoot-data-loss.md
+          href: cache-troubleshoot-data-loss.md
     - name: Méretezés
       items:
         - name: Módosítás más méretre és szintre
