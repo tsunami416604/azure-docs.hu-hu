@@ -599,8 +599,10 @@
       items:
         - name: Bevezetés
           href: mongodb-introduction.md
-        - name: Vonalprotokoll-támogatás
+        - name: Vonalprotokoll-támogatás (3.2)
           href: mongodb-feature-support.md
+        - name: Vonalprotokoll-támogatás (3.6)
+          href: mongodb-feature-support-36.md
         - name: Gyors útmutatók
           items:
             - name: .NET

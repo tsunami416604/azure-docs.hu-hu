@@ -5,13 +5,13 @@ ms.author: rimman
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1bfa7104425b5013f9cdf36ff3c1dd88107d3ec7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
-ms.translationtype: MT
+ms.date: 08/01/2019
+ms.openlocfilehash: e80e548ceae2149fe7061da42c71ee8b61f00a72
+ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467859"
+ms.lasthandoff: 08/01/2019
+ms.locfileid: "68717558"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Particionálás Azure Cosmos DB
 
@@ -19,7 +19,7 @@ A Azure Cosmos DB particionálás használatával méretezi az egyes tárolókat
 
 Egy tároló például elemeket tárol. Minden egyes tétel egyedi értékkel rendelkezik a `UserID` tulajdonsághoz. Ha `UserID` a tárolóban lévő elemek partíciós kulcsaként szolgál, és 1 000 egyedi `UserID` érték van, akkor a rendszer 1 000 logikai partíciókat hoz létre a tárolóhoz.
 
-Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az elem AZONOSÍTÓjának kombinálásával létrejön az elem indexe, amely egyedileg azonosítja az adott tételt.
+Egy olyan partíciós kulcs mellett, amely meghatározza az elem logikai partícióját, a tároló minden eleméhez tartozik egy *elem azonosítója* (egyedi logikai partíción belül). A partíciós kulcs és az elem AZONOSÍTÓjának kombinálásával létrejön azelem indexe, amely egyedileg azonosítja az adott tételt.
 
 [A partíciós kulcs kiválasztása](partitioning-overview.md#choose-partitionkey) fontos döntés, amely hatással lesz az alkalmazás teljesítményére.
 
@@ -39,7 +39,7 @@ A következő hasznos útmutatást nyújt a partíciós kulcs kiválasztásához
 
 * Egyetlen logikai partíció 10 GB-os felső korláttal rendelkezik.  
 
-* Az Azure Cosmos-tárolók minimális átviteli sebessége 400 másodpercenként (RU/s). Az ugyanahhoz a partíciós kulcshoz küldött kérések nem léphetik túl a partícióhoz lefoglalt átviteli sebességet. Ha a kérések túllépik a lefoglalt átviteli sebességet, a kérések száma korlátozott. Ezért fontos, hogy olyan partíciós kulcsot válasszon, amely nem eredményez "forró pontokat" az alkalmazáson belül.
+* Az Azure Cosmos-tárolók minimális átviteli sebessége 400 másodpercenként (RU/s). Ha az átviteli sebesség egy adatbázison van kiépítve, a tárolók minimális száma másodpercenként 100 (RU/s). Az ugyanahhoz a partíciós kulcshoz küldött kérések nem léphetik túl a partícióhoz lefoglalt átviteli sebességet. Ha a kérések túllépik a lefoglalt átviteli sebességet, a kérések száma korlátozott. Ezért fontos, hogy olyan partíciós kulcsot válasszon, amely nem eredményez "forró pontokat" az alkalmazáson belül.
 
 * Válasszon egy olyan partíciós kulcsot, amely az értékek és a hozzáférési minták széles körét és a logikai partíciók közötti egyenletes eloszlást tartalmaz. Ez segít a tárolóban lévő adatok és tevékenységek elosztásában a logikai partíciók készletében, így az adattárolásra és az átviteli sebességre vonatkozó erőforrások eloszthatók a logikai partíciók között.
 

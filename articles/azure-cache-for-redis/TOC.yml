@@ -28,19 +28,17 @@
     - name: Azure Cache for Redis-minták
       href: cache-redis-samples.md
     - name: Azure PowerShell
-      href: cache-howto-manage-redis-cache-powershell.md
+      href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások
-      items:
-        - name: Ajánlott eljárások az Azure Cache for Redis használatához
-          href: cache-best-practices.md
-        - name: Azure-architektúra ajánlott eljárásai gyorsítótárazáshoz
-          href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-    - name: A feladatátvétel és a javítás értelmezése
+      href: cache-best-practices.md
+    - name: Feladatátvétel és javítás
       href: cache-failover.md
+    - name: Architektúra ajánlott eljárásai gyorsítótárazáshoz
+      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Útmutatók
   items:
     - name: Felkészülés
@@ -58,19 +56,25 @@
     - name: Automatizálás
       items:
         - name: Üzembe helyezés és kezelés az Azure PowerShell használatával
-          href: cache-howto-manage-redis-cache-powershell.md
+          href: cache-how-to-manage-redis-cache-powershell.md
         - name: Üzembe helyezés és kezelés az Azure CLI használatával
           href: cli-samples.md
         - name: Az Azure Cache for Redis üzembe helyezése
           href: cache-redis-cache-arm-provision.md
         - name: Webalkalmazás létrehozása Azure Cache for Redisszel
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: Integráció az ASP.NET-tel
+    - name: Integrálás alkalmazással
       items:
-        - name: Munkamenetállapot-szolgáltató
-          href: cache-aspnet-session-state-provider.md
-        - name: Kimeneti gyorsítótár-szolgáltató
-          href: cache-aspnet-output-cache-provider.md
+        - name: ASP.NET
+          items:
+            - name: Munkamenetállapot-szolgáltató használata
+              href: cache-aspnet-session-state-provider.md
+            - name: Kimeneti gyorsítótár-szolgáltató használata
+              href: cache-aspnet-output-cache-provider.md
+        - name: Java Spring
+          items:
+            - name: A Spring Boot Initializer használata
+              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: Kezelés
       items:
         - name: Konfigurálás az Azure Portalon
@@ -85,24 +89,28 @@
           href: 'cache-administration.md#schedule-updates'
         - name: A redis-cli.exe hozzáférésének konfigurálása
           href: cache-how-to-redis-cli-tool.md
-    - name: Figyelés és hibaelhárítás
+    - name: Figyelés
       items:
         - name: Monitorozás az Azure Portalon
           href: cache-how-to-monitor.md
-        - name: Gyorsítótárral kapcsolatos problémák megoldása
-          href: cache-how-to-troubleshoot.md
         - name: Riasztások beállítása kivételekhez
           href: 'cache-how-to-monitor.md#operations-and-alerts'
+    - name: Diagnosztika és hibaelhárítás
+      items:
+        - name: Redis-kiszolgáló hibaelhárítása
+          href: cache-how-to-troubleshoot-server.md
+        - name: Redis-ügyfél hibaelhárítása
+          href: cache-how-to-troubleshoot-client.md
+        - name: Időtúllépések elhárítása
+          href: cache-how-to-troubleshoot-timeouts.md
+        - name: Adatvesztés elhárítása
+          href: cache-how-to-troubleshoot-data-loss.md
     - name: Méretezés
       items:
         - name: Módosítás más méretre és szintre
           href: cache-how-to-scale.md
         - name: Vertikális és horizontális leskálázás Redis-fürttel
           href: cache-how-to-premium-clustering.md
-    - name: Integráció a Spring Boottal
-      items:
-        - name: Spring Boot inicializáló alkalmazás használata Azure Cache for Redisszel
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
 - name: Referencia
   items:
     - name: Kódminták

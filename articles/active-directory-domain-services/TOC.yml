@@ -9,8 +9,10 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Felügyelt tartomány létrehozása
+    - name: Alapszintű felügyelt tartomány létrehozása
       href: tutorial-create-instance.md
+    - name: A virtuális hálózat konfigurálása alkalmazásokhoz
+      href: tutorial-configure-networking.md
     - name: Windows Server rendszerű virtuális gép csatlakoztatása tartományhoz
       href: join-windows-vm.md
     - name: Felügyeleti eszközök telepítése
@@ -19,6 +21,8 @@
       href: tutorial-configure-ldaps.md
     - name: Jelszókivonat szinkronizálásának konfigurálása
       href: tutorial-configure-password-hash-sync.md
+    - name: Speciális felügyelt tartomány létrehozása
+      href: tutorial-create-instance-advanced.md
 - name: Példák
   items:
     - name: Felügyelt tartomány létrehozása az Azure PowerShell használatával

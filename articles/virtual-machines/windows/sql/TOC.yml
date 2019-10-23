@@ -64,9 +64,9 @@
           href: virtual-machines-windows-ps-sql-create.md
     - name: Regisztráció az erőforrás-szolgáltatónál
       href: virtual-machines-windows-sql-register-with-resource-provider.md
-    - name: SQL-alapú virtuális gépek licencelési modelljének módosítása
+    - name: Licencelési modell módosítása
       href: virtual-machines-windows-sql-ahb.md
-    - name: Váltás másik SQL Server-kiadásra
+    - name: Kiadás módosítása
       href: virtual-machines-windows-sql-change-edition.md
     - name: Migrate (Áttelepítés)
       items:
@@ -103,7 +103,7 @@
             - name: Közvetlen tárolóhelyekkel
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
             - name: Prémium fájlmegosztással
-              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md
 - name: Referencia
   items:
     - name: Azure PowerShell

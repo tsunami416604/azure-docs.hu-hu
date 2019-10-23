@@ -68,6 +68,8 @@
               href: end-user-experiences.md
     - name: Felhasználók automatikus üzembe helyezése
       items:
+        - name: Automatikus felhasználóátadást használó üzembe helyezés tervezése
+          href: plan-auto-user-provisioning.md
         - name: Automatikus üzembe helyezés SCIM-kompatibilis alkalmazásokhoz
           href: use-scim-to-provision-users-and-groups.md
     - name: Alkalmazásproxy helyszíni alkalmazásokhoz
