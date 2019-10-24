@@ -3,19 +3,19 @@ title: Mérsékelt szöveg a szöveges moderálási API használatával – Cont
 titleSuffix: Azure Cognitive Services
 description: Tesztelje a szöveg moderálását a Text moderációs API használatával az online konzolon.
 services: cognitive-services
-author: sanjeev3
-ms.author: sajagtap
+author: PatrickFarley
+ms.author: pafarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 49047c21f86530aac6ed3e0138a643fd08c35af8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561185"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754205"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Mérsékelt szöveg az API-konzolból
 
@@ -27,7 +27,7 @@ Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfiz
 
 ## <a name="navigate-to-the-api-reference"></a>Navigáljon az API-referenciához
 
-Nyissa meg a [szöveges MODERÁLÁS API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)-referenciáját. 
+Nyissa meg a [szöveges MODERÁLÁS API-referenciáját](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
   Megnyílik a **szöveges képernyő** oldal.
 
@@ -46,11 +46,11 @@ Az **Open API Testing Console**esetében válassza ki azt a régiót, amely a le
 Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv**) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép  által támogatott besorolási válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendeljen `eng`, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
-Az **Automatikus javítás**, a személyes adatok és a **besorolás (előzetes verzió)** beállításnál válassza az **igaz**lehetőséget. Hagyja üresen a **ListId** mezőt.
+Az **Automatikus javítás** **, a**személyes adatok és a **besorolás (előzetes verzió)** beállításnál válassza az **igaz**lehetőséget. Hagyja üresen a **ListId** mezőt.
 
   ![Szöveges képernyős konzol lekérdezési paraméterei](images/text-api-console-inputs.PNG)
 
@@ -174,6 +174,6 @@ Az alábbi válasz az API különböző bepillantást jeleníti meg. A szolgált
 
 A JSON-válasz összes részének részletes ismertetését a [szöveges moderálás](text-moderation-api.md) fogalmi útmutatójában találja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Használja az REST API a kódban, vagy Kezdje a [szöveges moderálási .net](text-moderation-quickstart-dotnet.md) gyors útmutatóval az alkalmazásba való integráláshoz.

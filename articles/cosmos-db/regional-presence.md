@@ -1,48 +1,48 @@
 ---
-title: Az Azure Cosmos DB regionális jelenlét
-description: Ez a cikk ismerteti az Azure Cosmos DB és a különböző környezetekben regionális meglétét.
-author: rimman
+title: Regionális jelenlét Azure Cosmos DB
+description: Ez a cikk a Azure Cosmos DB és a különböző felhőalapú környezetek regionális jelenlétét ismerteti.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 775ca8c57a9a444df2f7d0a4df4224b7eba9d677
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 95b9a9804fe1a9473d226912f178284f701a1547
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384039"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753225"
 ---
-# <a name="regional-presence-with-azure-cosmos-db"></a>Az Azure Cosmos DB regionális jelenlét
+# <a name="regional-presence-with-azure-cosmos-db"></a>Regionális jelenlét Azure Cosmos DB
 
-Azure Cosmos DB az Azure alapszintű szolgáltatása, és alapértelmezés szerint minden régióban elérhető, ahol az Azure elérhető. Az Azure jelenleg elérhető [54 régiók](https://azure.microsoft.com/global-infrastructure/regions/) világszerte. 
+Azure Cosmos DB az Azure alapszintű szolgáltatása, és alapértelmezés szerint minden régióban elérhető, ahol az Azure elérhető. Az Azure jelenleg világszerte [54 régióban](https://azure.microsoft.com/global-infrastructure/regions/) érhető el. 
 
-[![Régiók, ahol elérhető Azure Cosmos DB](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
+[![régiók, ahol Azure Cosmos DB elérhető](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
 
-A cosmos DB összes öt különböző Azure-felhőbeli környezetek érhetők el ügyfeleink számára érhető el:
+A Cosmos DB az ügyfelek számára elérhető öt különböző Azure Cloud-környezetben elérhető:
 
 * **Azure nyilvános** felhő, amely globálisan elérhető.
 
 * Az **Azure China 21Vianet** a Microsoft és a 21Vianet közötti egyedi partneri kapcsolaton keresztül érhető el, amely az ország egyik legnagyobb internetszolgáltatója Kínában.
 
-* **Az Azure Germany** alatt egy megbízott adatkezelői modell, amely biztosítja, hogy a vásárlói adatok marad Németországban a T-Systems International GmbH, a Deutsche távközlési, leányvállalata vezérlése alatt a német megbízott adatkezelő átjáróként szolgáltatásokat biztosít.
+* Az **Azure Germany** egy adatkezelői modell keretében nyújt szolgáltatásokat, amely biztosítja, hogy a vásárlói adat Németországban maradjon a T-Systems International GmbH, a Deutsche Telecom leányvállalata, a német adatkezelő nevében.
 
-* **Az Azure Government** négy régióban az Egyesült Államokban, az USA kormányügynökségei és partnereik számára érhető el. 
+* **Azure Government** a Egyesült Államok négy régiójában érhető el az USA kormányzati szervei és azok partnerei számára. 
 
 * A **védelmi minisztérium (DoD) Azure Government** a Egyesült Államok két régiójában érhető el az USA védelmi Minisztériuma számára.
 
-## <a name="regional-presence-with-global-distribution"></a>A globális terjesztés regionális jelenlét
+## <a name="regional-presence-with-global-distribution"></a>Regionális jelenlét globális terjesztéssel
 
 Alapértelmezés szerint minden Azure-régióban elérhetők a Azure Cosmos DB (beleértve az SQL, a MongoDB, a Cassandra, a Gremlin és a Table) által közzétett API-k. Előfordulhat például, hogy a MongoDB és a Cassandra API-kat a Azure Cosmos DB nem csak az összes globális Azure-régióban, hanem olyan szuverén felhőkben is elérhetővé teszi, mint például Kína, Németország, kormányzat és védelmi minisztérium (DoD) régiói.
 
-A Azure Cosmos DB egy [globálisan elosztott](distribute-data-globally.md) adatbázis-szolgáltatás. Az Azure Cosmos-fiók is társíthat tetszőleges számú Azure-régiók és a rendszer automatikusan és transzparens módon replikálja az adatokat. Adja hozzá, vagy egy régióban, az Azure Cosmos-fiók bármikor eltávolíthatja. A kulcsrakész globális terjesztés funkciót és a többszörös egyedalakzatokkal replikációs protokoll, az Azure Cosmos DB kínálja, kevesebb mint 10 ms és olvasása és írása az késleltetések 99 százalékon 99,999 írási és olvasási, rugalmasan méretezhető kiépítve az átviteli sebesség beolvassa és az Azure Cosmos-fiókhoz társított összes régióban. Az Azure Cosmos DB is öt jól definiált konzisztenciamodelleket kínál, és dönthet úgy, hogy egy meghatározott konzisztenciamodellt alkalmazni az adatokon. Végezetül Azure Cosmos DB az iparág egyetlen adatbázis-szolgáltatása, amely átfogó [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) biztosít a kiépített átviteli sebesség, a késés a esetek 99% percentilis, a magas rendelkezésre állás és a konzisztencia terén. A fenti képességek az összes Azure-felhőben elérhetők.
+A Azure Cosmos DB egy [globálisan elosztott](distribute-data-globally.md) adatbázis-szolgáltatás. Tetszőleges számú Azure-régiót társíthat az Azure Cosmos-fiókjához, és az adatai automatikusan és transzparens módon replikálódnak. Bármikor hozzáadhat vagy eltávolíthat egy régiót az Azure Cosmos-fiókjához. A kulcsrakész globális elosztási képességgel és a többplatformos replikációs protokollal Azure Cosmos DB kevesebb, mint 10 MS olvasási és írási késést biztosít a esetek 99% percentilis esetében, 99,999 olvasási és írási rendelkezésre állást, valamint rugalmasan méretezhető kiépített képességet az olvasási és írási teljesítmény az Azure Cosmos-fiókhoz társított összes régióban. A Azure Cosmos DB öt jól meghatározott konzisztencia-modellt is kínál, és dönthet úgy is, hogy egy adott konzisztencia-modellt alkalmaz az adataira. Végezetül Azure Cosmos DB az iparág egyetlen adatbázis-szolgáltatása, amely átfogó [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) biztosít a kiépített átviteli sebesség, a késés a esetek 99% percentilis, a magas rendelkezésre állás és a konzisztencia terén. A fenti képességek az összes Azure-felhőben elérhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most megismerheti a Azure Cosmos DB alapvető fogalmait a következő cikkekkel:
 
-* [Globális terjesztés](distribute-data-globally.md)
-* [Az Azure Cosmos DB-fiók kezelése](manage-account.md)
-* [Az Azure Cosmos-tárolók és adatbázisok kiépítése átviteli](set-throughput.md)
+* [Globális adateloszlás](distribute-data-globally.md)
+* [Azure Cosmos DB-fiók kezelése](manage-account.md)
+* [Adatforgalom kiépítése az Azure Cosmos-tárolók és-adatbázisok számára](set-throughput.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -3,19 +3,19 @@ title: Moderálási munkafolyamatok definiálása a REST API-konzollal – Conte
 titleSuffix: Azure Cognitive Services
 description: Az Azure Content Moderator Review API-k segítségével egyéni munkafolyamatokat és küszöbértékeket határozhat meg a tartalmi szabályzatok alapján.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: sajagtap
-ms.openlocfilehash: cb93cf1b7a5338058c6f2d93b4bb27f60286882e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881204"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754183"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Moderálási munkafolyamatok definiálása és használata (REST)
 
@@ -35,15 +35,15 @@ Munkafolyamatok létrehozásához vagy frissítéséhez lépjen a **[munkafolyam
 
 Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**értékeket:
 
-- **csapat**: A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
-- **workflowname**: A hozzáadni kívánt új munkafolyamat neve (vagy egy meglévő név, ha frissíteni kíván egy meglévő munkafolyamatot).
-- **Ocp-Apim-Subscription-Key**: Az Content Moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
+- **csapat**: a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
+- **workflowname**: a hozzáadandó új munkafolyamat neve (vagy egy meglévő név, ha frissíteni kíván egy meglévő munkafolyamatot).
+- **OCP-APIM-előfizetés-kulcs**: a Content moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
 
 ![Munkafolyamat – konzol lekérdezési paramétereinek és fejlécének létrehozása vagy frissítése](images/workflow-console-parameters.PNG)
 
 ### <a name="enter-a-workflow-definition"></a>Munkafolyamat-definíció megadása
 
-1. A **kérelem törzse** mező szerkesztésével adja meg a JSON-kérést a **Leírás** és a `Image` **típus** részleteivel (vagy `Text`).
+1. A **kérelem törzse** mező szerkesztésével adja meg a JSON-kérést a **Leírás** és a **típus** részleteivel (`Image` vagy `Text`).
 2. A **kifejezés**mezőben másolja az alapértelmezett munkafolyamat JSON-kifejezését. A végső JSON-sztringnek így kell kinéznie:
 
 ```json
@@ -80,11 +80,11 @@ Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**érté
 
 ### <a name="submit-your-request"></a>Kérelem elküldése
   
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig megjelenik `true`.
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig `true`jelenik meg.
 
 ### <a name="examine-the-new-workflow"></a>Vizsgálja meg az új munkafolyamatot
 
-A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások** > munkafolyamatok lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
+A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások** > **munkafolyamatok**lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
 
 ![A munkafolyamatok listájának áttekintése](images/workflow-console-new-workflow.PNG)
 
@@ -94,7 +94,7 @@ Válassza ki a munkafolyamat **szerkesztési** beállítását, és nyissa meg a
 
 ## <a name="get-workflow-details"></a>Munkafolyamat részleteinek beolvasása
 
-Egy meglévő munkafolyamat részleteinek lekéréséhez nyissa meg a **[munkafolyamat-](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** beolvasás API-referenciát, és válassza ki a régióhoz tartozó gombot (az a régió, amelyben a kulcsot felügyeli).
+Egy meglévő munkafolyamat részleteinek lekéréséhez nyissa meg a **[munkafolyamat-beolvasás API-](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** referenciát, és válassza ki a régióhoz tartozó gombot (az a régió, amelyben a kulcsot felügyeli).
 
 ![Munkafolyamat – régió kiválasztásának beolvasása](images/test-drive-region.png)
 
@@ -102,7 +102,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Győz
 
 ![Lekérdezési paraméterek és fejlécek lekérése](images/workflow-get-default.PNG)
 
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **Válasz tartalmának** mezője pedig JSON formátumban jeleníti meg a munkafolyamatot, a következőhöz hasonlóan:
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, és a **válasz tartalma** JSON formátumban jeleníti meg a munkafolyamatot, a következőhöz hasonlóan:
 
 ```json
 {
@@ -137,6 +137,6 @@ Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota**
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Megtudhatja, hogyan használhatja a [tartalmi moderálási](try-review-api-job.md)feladatokkal rendelkező munkafolyamatokat.
+- Megtudhatja, hogyan használhatja a [tartalmi moderálási feladatokkal](try-review-api-job.md)rendelkező munkafolyamatokat.

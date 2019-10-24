@@ -4,31 +4,31 @@ description: Egyéni Azure AD-szerepkör hozzárendelése hozzárendelési Privi
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
-ms.service: role-based-access-control
+ms.service: active-directory
 ms.devlang: na
-ms.topic: overview
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a3f6eb815677133f3d7fe6ce07d6abf23db1f04
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1c4963e6563db166566cff41d381295a8a9e576b
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947337"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756356"
 ---
 # <a name="assign-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör kiosztása Privileged Identity Management
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Privileged Identity Management (PIM) alkalmazást az alkalmazások kezeléséhez létrehozott egyéni szerepkörökhöz az Azure Active Directory (Azure AD) felügyeleti felhasználói felületén.
 
 - További információ az Azure AD-ben az alkalmazások felügyeletének delegálására szolgáló egyéni szerepkörök létrehozásáról: [Azure Active Directory (előzetes verzió) – egyéni rendszergazdai szerepkörök](../users-groups-roles/roles-custom-overview.md).
-- Ha még nem használta Privileged Identity Management, további információt a [PIM használatának első](pim-getting-started.md)lépéseiben olvashat.
-- További információ arról, hogyan lehet egy másik rendszergazdai hozzáférést biztosítani a Privileged Identity Management kezeléséhez: [hozzáférés biztosítása más rendszergazdák számára a PIM kezeléséhez](pim-how-to-give-access-to-pim.md).
+- Ha még nem használta Privileged Identity Management, további információt a [Privileged Identity Management használatának első](pim-getting-started.md)lépéseiben olvashat.
+- További információ a Privileged Identity Management kezeléséhez szükséges további rendszergazdai hozzáférésről: [hozzáférés biztosítása más rendszergazdák számára a Privileged Identity Management kezeléséhez](pim-how-to-give-access-to-pim.md).
 
 > [!NOTE]
 > Az Azure AD egyéni szerepkörei nincsenek integrálva az előzetes verzióban a beépített címtárbeli szerepkörökbe. Miután a képesség általánosan elérhetővé válik, a szerepkör-kezelés a beépített szerepkörök felületén történik.
@@ -71,11 +71,11 @@ A Privileged Identity Management a Azure Active Directory (Azure AD) alkalmazás
 1. Ha az **állandó** jelölőnégyzet be van kapcsolva és elérhető (a szerepkör beállításaitól függően), megadhatja, hogy a hozzárendelés állandó-e. Jelölje be a jelölőnégyzetet, hogy a hozzárendelés tartósan jogosult vagy véglegesen hozzá legyen rendelve. Törölje a jelölőnégyzet jelölését a hozzárendelés időtartamának megadásához.
 1. Az új szerepkör-hozzárendelés létrehozásához kattintson a **Mentés** , majd a **Hozzáadás**elemre. Megjelenik egy értesítés a hozzárendelési folyamat állapotáról.
 
-A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések** > hozzárendelés lehetőséget, és ellenőrizze, hogy a szerepkör-hozzárendelés megfelelően van-e azonosítva a jogosult vagy az aktív módon.
+A szerepkör-hozzárendelés ellenőrzéséhez nyisson meg egy nyitott szerepkört, válassza a **hozzárendelések** ** > hozzárendelés lehetőséget, és** győződjön meg arról, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként van azonosítva.
 
  ![Ellenőrizze, hogy a szerepkör-hozzárendelés jogosultként vagy aktívként jelenik-e meg](./media/azure-ad-custom-roles-assign/verify-assignments.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör aktiválása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

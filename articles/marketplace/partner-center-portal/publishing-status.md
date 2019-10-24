@@ -7,12 +7,12 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ec2a174c365e31520fe99ca0b505bbb62faad8c6
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 84e8f1d7b723bb86b31abb1ff60bce5351d7d996
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883405"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750157"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlat közzétételi állapotának megtekintése
 
@@ -50,7 +50,7 @@ Ebben a lépésben az előző lépésben a tesztelési meghajtó adatai és funk
 
 Ebben a lépésben megerősítjük, hogy a vezető felügyeleti rendszer az ajánlat beállítása során megadott adatok alapján fogadja az ügyfeleket. Ez a lépés csak az érdeklődők felügyeletét engedélyező ajánlatokra alkalmazható.
 
-## <a name="certification"></a>Tanúsítvány
+## <a name="certification"></a>Minősítés
 
 Közzététel előtt a partner Centerben a kereskedelmi Piactérnek küldött ajánlatokat hitelesíteni kell. Az elküldött ajánlatok szigorú tesztelésen mennek keresztül, néhány automatizált és egyéb kézikönyvtel, beleértve az [Azure Marketplace minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/general-policies)ellenőrzését is. A közzétételi folyamat következő lépésének megkezdése előtt meg kell jelölni az ajánlati beadványok minősítését.
 
@@ -106,7 +106,7 @@ Az **előzetes verziójú létrehozási** lépés során az ajánlat egy verzió
 
 Ebben a lépésben e-mailben küldünk egy kérést, amellyel áttekintheti és jóváhagyhatja az ajánlat előzetes verzióját a végső közzétételi lépés előtt.
 
-Ha úgy döntött, hogy az ajánlatot a Microsofton keresztül értékesíti, tesztelheti az ajánlat beszerzését és üzembe helyezését annak érdekében, hogy megfeleljen az előfizetésre vonatkozó előírásoknak. Ajánlata még nem lesz elérhető a ágyéki piactéren. Az előzetes verzió tesztelése és jóváhagyása után válassza a **Go-Live** lehetőséget az [**ajánlat áttekintése**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) irányítópulton.
+Ha úgy döntött, hogy az ajánlatot a Microsofton keresztül értékesíti, tesztelheti az ajánlat beszerzését és üzembe helyezését annak érdekében, hogy megfeleljen az előfizetésre vonatkozó előírásoknak. Ajánlata még nem lesz elérhető a nyilvános piactéren. Az előzetes verzió tesztelése és jóváhagyása után válassza a **Go-Live** lehetőséget az [**ajánlat áttekintése**](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) irányítópulton.
 
 Ha az előnézeti fázisban módosítani kívánja az ajánlatot, szerkesztheti és újból elküldheti az új előzetes verzió közzétételét. További részletekért tekintse meg a [meglévő Piactéri ajánlatok frissítése](#update-existing-marketplace-offers) című cikket.
 
@@ -144,6 +144,6 @@ Ebben a lépésben biztosítjuk, hogy az ajánlat nyilvánosan elérhetővé vá
 
 Ha módosítani szeretné egy már közzétett ajánlatot, először frissítenie kell a meglévő ajánlatot, majd újra közzé kell tennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

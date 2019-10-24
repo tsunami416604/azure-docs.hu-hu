@@ -1,17 +1,17 @@
 ---
 title: A kérelmek egységének optimalizálása és a Azure Cosmos DB-lekérdezések futtatásának díja
 description: Megtudhatja, hogyan értékelheti ki a lekérdezésekre vonatkozó kérések egységeit, és hogyan optimalizálhatja a lekérdezést a teljesítmény és a költség tekintetében.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: rimman
-ms.openlocfilehash: bdf223e60015c4e5d96416f95c410854a057c02c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 376c1a32a70951448b35a4c02022719229a3aad2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717018"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753306"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>A lekérdezési díjak optimalizálása Azure Cosmos DB
 
@@ -27,13 +27,13 @@ A Azure Cosmos DB lekérdezéseit általában a leggyorsabb/leghatékonyabb ért
 
 * Lekérdezés szűrő nélkül.
 
-Az egy vagy több partícióból beolvasott lekérdezések nagyobb késéssel járnak, és nagyobb számú kérést használnak fel. Mivel minden partíció automatikus indexelést tartalmaz az összes tulajdonsághoz, a lekérdezés hatékonyan kiszolgálható az indexből. A párhuzamossági beállítások használatával több partíciót használó lekérdezéseket is készíthet. Particionálás és a partíciókulcsok kapcsolatos további információkért lásd: [az Azure Cosmos DB particionálási](partitioning-overview.md).
+Az egy vagy több partícióból beolvasott lekérdezések nagyobb késéssel járnak, és nagyobb számú kérést használnak fel. Mivel minden partíció automatikus indexelést tartalmaz az összes tulajdonsághoz, a lekérdezés hatékonyan kiszolgálható az indexből. A párhuzamossági beállítások használatával több partíciót használó lekérdezéseket is készíthet. A particionálással és a partíciós kulcsokkal kapcsolatos további tudnivalókért lásd: [particionálás Azure Cosmos DBban](partitioning-overview.md).
 
 ## <a name="evaluate-request-unit-charge-for-a-query"></a>Lekérdezési egységre vonatkozó kérések kiértékelése
 
 Ha az Azure Cosmos-tárolókban tárolt néhány adattal, a lekérdezések létrehozásához és futtatásához a Azure Portal Adatkezelő is használhatja. A lekérdezések költségeit az adatkezelővel is lekérheti. Ezzel a módszerrel a rendszer által támogatott tipikus lekérdezésekkel és műveletekkel kapcsolatos tényleges költségek is megadhatók.
 
-Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a `x-ms-request-charge` DELETE, a REST API használatakor vizsgálja meg a fejlécet. Ha a .NET-et vagy a Java SDK-t használja `RequestCharge` , a tulajdonság az egyenértékű tulajdonság a kérési díj beszerzéséhez, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül szerepel.
+Az SDK-k segítségével programozott módon is lekérheti a lekérdezések költségeit. Az olyan műveletek terhelésének méréséhez, mint például a létrehozás, az Update vagy a DELETE, a REST API használatakor vizsgálja meg a `x-ms-request-charge` fejlécét. Ha a .NET-et vagy a Java SDK-t használja, a `RequestCharge` tulajdonság a kérések díjainak megfelelő tulajdonság, és ez a tulajdonság a ResourceResponse vagy a FeedResponse belül található.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -99,7 +99,7 @@ Vegye figyelembe a következő ajánlott eljárásokat a lekérdezések a Cost s
 
    A kérelem fejlécében visszaadott kérelem díja jelzi az adott lekérdezés költségeit. Ha például egy lekérdezés 1000 1 – KB elemet ad vissza, a művelet díja 1000. Mint ilyen, egy másodpercen belül a kiszolgáló csak két ilyen kérést értékel ki a későbbi kérelmek korlátozása előtt. További információ: a [kérelmek egységei](request-units.md) cikk és a kérési egység kalkulátora. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

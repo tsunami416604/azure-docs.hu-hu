@@ -12,22 +12,21 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/11/2019
+ms.date: 10/21/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0ab25b7a6d723ed5f2e74ad60ff54f9bf6d0fe4c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bcd27378039d539e36c72cf6e8fec7e8a1425e54
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300553"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72750342"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
-Az Azure különböző típusú tárhelyeket biztosít, amelyek a SAP HANA rendszert futtató Azure-beli virtuális gépekhez használhatók. A SAP HANA központi telepítések listájához hasonló Azure Storage-típusok, például: 
+Az Azure különböző típusú tárhelyeket biztosít, amelyek a SAP HANA rendszert futtató Azure-beli virtuális gépekhez használhatók. A **SAP HANA minősített Azure Storage-típusok** , amelyek a SAP HANA központi telepítések listájához vehetők figyelembe, például: 
 
-- Standard SSD lemezmeghajtók (SSD)
-- Prémium szintű állapotú meghajtók (SSD)
+- Azure-prémium SSD  
 - [Ultravékony lemez](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
@@ -37,13 +36,13 @@ Az Azure két üzembe helyezési módszert kínál a VHD-k számára az Azure st
 
 A IOPS és a tárolási átviteli sebességű tárolási típusok listáját és SLA-kat a [felügyelt lemezek Azure-dokumentációjában](https://azure.microsoft.com/pricing/details/managed-disks/)tekintheti meg.
 
-A HANA-vel való használathoz a következő három típusú tárterületet kell hitelesíteni az SAP-val:
+A különböző tárolási típusok minimális SAP HANA tanúsított feltételei a következők: 
 
-- Azure Premium Storage – a/Hana/log az Azure-ba kell gyorsítótárazni [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)
-- Azure Ultra Disk
-- A/Hana/log és a/Hana/Data Azure NetApp Files-re épülő NFS v 4.1-kötetek
+- Azure prémium SSD – a/Hana/log-t az Azure [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)-mel kell gyorsítótárazni. A/Hana/Data-kötetet prémium SSD Azure írásgyorsító vagy Ultra Disk nélkül helyezhető el
+- Legalább a/Hana/log-kötethez tartozó Azure Ultra Disk. A/Hana/Data-kötet az Azure írásgyorsító nélküli prémium SSD helyezhető el, vagy a gyorsabb újraindítási idő (Ultra Disk) használatával
+- A/Hana/log és a/Hana/Data Azure NetApp Files-re épülő **NFS v 4.1** **-** kötetek
 
-Egyes tárolási típusok kombinálhatók. Például a/Hana/Data Premium Storagere helyezhetők, és a/Hana/log a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Nem ajánlott azonban az NFS-kötetek (például a/Hana/Data) összekeverése, és a/Hana/log-hez tartozó más hitelesített tárolási típusok egyikének használata.
+Egyes tárolási típusok kombinálhatók. Például lehetséges, hogy a/Hana/Data-t a Premium Storageba helyezi, és a/Hana/log a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Nem ajánlott azonban az NFS-kötetek (például a/Hana/Data) összekeverése, és a/Hana/log-hez tartozó más hitelesített tárolási típusok egyikének használata.
 
 A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és képességeivel. Ennek az az oka, hogy a készülék gyártójának meg kell győződnie arról, hogy a minimális tárolási követelmények teljesülnek SAP HANA esetén. Ha saját maga hozza létre az Azure-infrastruktúrát, vegye figyelembe a követelmények némelyikét. A minimális átviteli sebességre vonatkozó követelmények közül néhányat a következőknek kell megadnia:
 
@@ -86,7 +85,7 @@ Az alábbi gyorsítótárazási javaslatok feltételezik, hogy a lista SAP HANA 
 **Javaslat: a megfigyelt I/O-mintázatok miatt SAP HANA szerint a különböző kötetek gyorsítótárazását az Azure Premium Storage használatával kell beállítani, például:**
 
 - **/Hana/Data** – nincs gyorsítótárazás
-- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozat esetében, ahol a írásgyorsító gyorsítótárazási funkcióként van engedélyezve
+- **/Hana/log** – nincs gyorsítótárazás – kivétel az M-és Mv2 sorozat esetében, ahol a írásgyorsító az olvasási gyorsítótárazás nélkül kell engedélyezni. 
 - **/Hana/Shared** – olvasási gyorsítótárazás
 
 ### <a name="production-recommended-storage-solution"></a>Éles környezetben ajánlott tárolási megoldás
@@ -147,19 +146,19 @@ Az alábbi táblázat azon virtuálisgép-típusok konfigurációját mutatja be
 | DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
 | E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| E64v3 | 432 GiB | 1200 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
-| GS5 | 448 GiB | 2000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| E64v3 | 432 GiB | 1 200 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| GS5 | 448 GiB | 2 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
 | M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
-| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
-| M64s | 1000 GiB | 1000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
-| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
-| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
-| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
-| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
-| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
+| M64ls | 512 GiB | 1 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
+| M64s | 1 000 GiB | 1 000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
+| M128s | 2 000 GiB | 2 000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416ms_v2 | 11400 GiB | 2 000 MB/s | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
 
 
 A Microsoft a M416xx_v2 virtuális gépek típusát még nem tette elérhetővé a nyilvánosság számára. A kisebb, 3 x P20 rendelkező virtuálisgép-típusokhoz ajánlott lemezek túlméretezettek az [SAP TDI tárolási](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)tanulmánya alapján a tárhelyre vonatkozó ajánlásokat érintő köteteken. Azonban a táblázatban megjelenő választási lehetőség a SAP HANA megfelelő lemez-átviteli sebességének biztosítására szolgál. Ha módosítania kell a **/Hana/Backup** kötetét, amely a memória mennyiségét kétszer ábrázoló biztonsági másolatok tárolásához szükséges, nyugodtan módosítsa.   
@@ -174,7 +173,7 @@ Győződjön meg arról, hogy a különböző javasolt kötetek tárolási átvi
 >  
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Az Azure ultrakönnyű lemezes tárolásának konfigurációja SAP HANA
-A Microsoft egy [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)nevű új Azure Storage-típust mutat be. Az Azure Storage eddigi nagy különbsége, hogy a lemez képességei már nem kötődnek a lemez méretétől. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
+A Microsoft egy [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)nevű új Azure Storage-típust mutat be. Az Azure Storage által kínált eddigi jelentős különbség az, hogy a lemez képességei többé nincsenek a lemez méretéhez kötve. Ügyfélként meghatározhatja ezeket a képességeket az ultra Disk számára:
 
 - Lemez mérete 4 GiB-ról 65 536 GiB-ig
 - A IOPS tartománya 100 IOPS – 160K IOPS (a maximum a virtuálisgép-típusoktól függ)
@@ -192,18 +191,18 @@ Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek külön maradnak. 
 
 | VM SKU | RAM | Legfeljebb VM I/O<br /> Adatforgalom | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
-| M64ls | 512 GiB | 1000 MB/s | 600 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M64s | 1000 GiB | 1 000 MB/s |  1200 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M64ms | 1750 GiB | 1 000 MB/s | 2100 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2500 |
-| M128s | 2000 GiB | 2 000 MB/s |2400 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 3000 | 
-| M128ms | 3800 GiB | 2 000 MB/s | 4800 GB | 1200 MBps |9000 | 512 GB | 800 MBps  | 3000 | 
-| M208s_v2 | 2850 GiB | 1 000 MB/s | 3500 GB | 1000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
-| M208ms_v2 | 5700 GiB | 1 000 MB/s | 7200 GB | 1000 MBps | 9000 | 512 GB | 400 MBps  | 2500 | 
-| M416s_v2 | 5700 GiB | 2 000 MB/s | 7200 GB | 1500MBps | 9000 | 512 GB | 800 MBps  | 3000 | 
-| M416ms_v2 | 11400 GiB | 2 000 MB/s | 14400 GB | 1500 MBps | 9000 | 512 GB | 800 MBps  | 3000 |   
+| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2 000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2 000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2 000 |
+| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2 500 |
+| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2 500 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MBps | 7500 | 512 GB | 400 MBps  | 2 500 |
+| M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MBps |9 000 | 512 GB | 800 MBps  | 3,000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 MBps |9 000 | 512 GB | 800 MBps  | 3,000 | 
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MBps | 9 000 | 512 GB | 400 MBps  | 2 500 | 
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 1 000 MBps | 9 000 | 512 GB | 400 MBps  | 2 500 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 500 MBps | 9 000 | 512 GB | 800 MBps  | 3,000 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MBps | 9 000 | 512 GB | 800 MBps  | 3,000 |   
 
 A Microsoft a M416xx_v2 virtuális gépek típusát még nem tette elérhetővé a nyilvánosság számára. A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket. Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.   
 
@@ -219,14 +218,14 @@ Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek ugyanazon a lemeze
 | M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MBps | 9 500 | 
 | M32ls | 256 GiB | 500 MB/s | 600 GB | 400 MBps | 9 500 | 
 | M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MBps | 10,000 | 
-| M64s | 1000 GiB | 1 000 MB/s |  1 700 GB | 900 MBps | 10,000 | 
-| M64ms | 1750 GiB | 1 000 MB/s | 2 600 GB | 900 MBps | 10,000 | 
-| M128s | 2000 GiB | 2 000 MB/s |2 900 GB | 1 800 MBps |12 000 | 
-| M128ms | 3800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MBps |12 000 |  
-| M208s_v2 | 2850 GiB | 1 000 MB/s | 4 000 GB | 900 MBps | 10,000 |  
-| M208ms_v2 | 5700 GiB | 1 000 MB/s | 7 700 GB | 900 MBps | 10,000 | 
-| M416s_v2 | 5700 GiB | 2 000 MB/s | 7 700 GB | 1\.800MBps | 12 000 |  
-| M416ms_v2 | 11400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MBps | 12 000 |    
+| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MBps | 10,000 | 
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MBps | 10,000 | 
+| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MBps |12 000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MBps |12 000 |  
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MBps | 10,000 |  
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MBps | 10,000 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1\.800MBps | 12 000 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MBps | 12 000 |    
 
 A Microsoft a M416xx_v2 virtuális gépek típusát még nem tette elérhetővé a nyilvánosság számára. A felsorolt értékek kiindulási pontként szolgálnak, és a valós igények alapján kell kiértékelni őket. Az Azure Ultra Disk előnye, hogy a IOPS és az átviteli sebesség értékei a virtuális gép leállításának vagy a rendszeren alkalmazott számítási feladatok leállításának szükségessége nélkül módosíthatók.  
 
@@ -236,16 +235,64 @@ A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a/Hana/S
 > [!IMPORTANT]
 > a Azure NetApp Fileson implementált NFS v3 protokoll nem támogatott a/Hana/Shared, a/Hana/Data és a/Hana/log esetében.
 
-A tárolási késésre vonatkozó követelmények teljesítése érdekében elengedhetetlen, hogy a SAP HANA NFS-köteteket használó virtuális gépek a ANF-infrastruktúrához legyenek közel. Ennek érdekében a virtuális gépeket a ANF-infrastruktúra közelében a Microsoft segítségére kell helyezni. Ahhoz, hogy a Microsoft el tudja végezni a közelséget, a Microsoft közzé fog tenni egy űrlapot, amely rákérdez az adatokra és az üres Azure-beli rendelkezésre állási csoportra. A Microsoft ezután a rendelkezésre állási készletet a ANF-infrastruktúrához közelebb helyezi, ahol szükséges. 
+### <a name="important-considerations"></a>Fontos szempontok
+Az SAP NetWeaver és SAP HANA Azure NetApp Filesének megfontolása során vegye figyelembe a következő fontos szempontokat:
 
-A ANF-infrastruktúra különböző teljesítmény-kategóriákat biztosít. Ezek a kategóriák a [Azure NetApp Files szolgáltatási szintjein](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)vannak dokumentálva. 
+- A minimális kapacitási készlet 4 TiB.  
+- A minimális kötet mérete 100 GiB
+- Azure NetApp Files és az összes olyan virtuális gép, amelyben Azure NetApp Files köteteket csatlakoztatni kell, ugyanabban az Azure-Virtual Network vagy egymással azonos régióban lévő [virtuális hálózatokban](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kell lennie.  
+- A kiválasztott virtuális hálózatnak rendelkeznie kell egy, a Azure NetApp Files delegált alhálózattal.
+- Az Azure NetApp-kötetek átviteli sebessége a mennyiségi kvóta és a szolgáltatási szint függvénye, a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)dokumentálva. A HANA Azure NetApp-kötetek méretezése esetén győződjön meg arról, hogy az eredményül kapott átviteli sebesség megfelel a HANA rendszerkövetelményeinek.  
+- Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási & írás, csak olvasható stb.). 
+- Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.  
+- Fontos, hogy az Azure NetApp-tároló közelében üzembe helyezett virtuális gépek alacsony késéssel rendelkezzenek. Az alacsony késésű SAP HANA munkaterhelések esetében kritikus fontosságú. A Microsoft képviselőjével együttműködve biztosíthatja, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen.  
+- A <b>SID</b>adm felhasználói azonosítójának és a virtuális gépek `sapsys`jának azonosítójának meg kell egyeznie Azure NetApp Files-konfigurációval. 
+
+> [!IMPORTANT]
+> Az alacsony késésű SAP HANA munkaterhelések esetében kritikus fontosságú. A Microsoft képviselőjével együttműködve biztosíthatja, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen.  
+
+> [!IMPORTANT]
+> Ha eltérés van a <b>SID</b>adm felhasználói azonosítójának és a virtuális gép és az Azure NetApp-konfiguráció közötti `sapsys` csoportazonosító között, akkor az Azure NetApp-köteteken található, a virtuális gépekhez csatlakoztatott fájlok engedélyei `nobody`ként jelennek meg. Ügyeljen arra, hogy a <b>SID</b>adm helyes felhasználói azonosítóját és a `sapsys` csoport azonosítóját határozza meg, amikor [egy új rendszer](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) bekerül a Azure NetApp Filesba.
+
+### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
+
+Az Azure NetApp-kötetek átviteli sebessége a kötet méretének és a szolgáltatási szintnek a függvénye, amely a [Azure NetApp Files szolgáltatási szintjén](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)van dokumentálva. 
+
+Az Azure-beli SAP-infrastruktúra megtervezése során tisztában kell lennie az SAP által meghatározott minimális tárolási követelményekkel, amelyek a minimális átviteli sebességre fordíthatók le:
+
+- Írási/olvasási műveletek engedélyezése 250 MB/s/Hana/log 1 MB I/O-mérettel  
+- Legalább 400 MB/s olvasási tevékenység engedélyezése a/Hana/Data 16 MB és 64 MB I/O méret esetén  
+- Az írási tevékenység engedélyezése legalább 250 MB/s/Hana/Data 16 MB és 64 MB I/O méret esetén  
+
+A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) 1 TiB-ra vetítve:
+- Premium Storage szintű 64 MiB/s  
+- Ultra Storage-réteg – 128 MiB/s  
+
+Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítéséhez, valamint a `/hana/shared` iránymutatásainak megfelelően az ajánlott méretek a következőképpen néznek ki:
+
+| Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek |
+| --- | --- | --- |
+| /hana/log/ | 4 TiB | 2 TiB |
+| /hana/data | 6,3 TiB | 3,2 TiB |
+| /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont |
+
+A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files Ultra Storage-rétegek használatával a következőképpen néz ki:
+
+| Kötet | Méret<br /> Ultra Storage-rétegek |
+| --- | --- |
+| /hana/log/mnt00001 | 2 TiB |
+| /hana/log/mnt00002 | 2 TiB |
+| /hana/data/mnt00001 | 3,2 TiB |
+| /hana/data/mnt00002 | 3,2 TiB |
+| /hana/shared | 2 TiB |
 
 > [!NOTE]
-> A/Hana/Data és a/Hana/log. ANF Ultra Storage-kategóriájának használata javasolt A/Hana/Shared esetében a standard vagy a prémium kategória elegendő
+> Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP expresss infrastruktúra-szolgáltatók felé irányuló minimális követelményeknek. A valós ügyfelek központi telepítései és munkaterhelési forgatókönyvek esetében nem lehet elég. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  
 
-A ANF-alapú NFS-kötetek ajánlott átviteli sebességére vonatkozó javaslatok hamarosan közzé lesznek téve.
+> [!TIP]
+> Azure NetApp Files kötetek átméretezése dinamikusan elvégezhető, anélkül, hogy le kellene `unmount` a köteteket, le kell állítania a virtuális gépeket, vagy le kell állítania SAP HANA. Ez lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás elvárásainak és a várhatóan nem várt átviteli igényeknek.
 
-Az n + m HANA kibővítő konfigurációk létrehozását ismertető dokumentáció hamarosan közzé lesz téve.
+A ANF szolgáltatásban üzemeltetett, SAP HANA kibővített konfigurációk készenléti csomóponttal való üzembe helyezéséről szóló dokumentáció az [Azure-beli virtuális gépek készenléti csomópontján SAP HANA kibővítve, az Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)használatával érhető el.
 
 
 ## <a name="next-steps"></a>Következő lépések

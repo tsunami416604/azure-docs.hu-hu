@@ -3,19 +3,19 @@ title: Közepes méretű képek egyéni listával és az API-konzollal – Conte
 titleSuffix: Azure Content Moderator
 description: Az Azure Content Moderator listázási API-ját egyéni képlisták létrehozására használhatja.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: sajagtap
-ms.openlocfilehash: 2b2ab138945d32ca874dc20576d412c862965dc9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.author: pafarley
+ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564367"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757193"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>Mérsékelt és egyéni képlista az API-konzolon
 
@@ -42,7 +42,7 @@ Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfiz
 
 Miután módosította a Képlista módosításait, frissítenie kell az indexét, hogy a módosítások szerepeljenek a későbbi vizsgálatokban. Ez a lépés hasonló ahhoz, ahogy a keresőmotor az asztalon (ha engedélyezve van), vagy egy webkeresőmotor folyamatosan frissíti az indexét új fájlok vagy lapok felvételéhez.
 
-1. A [képlista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)-referenciában a bal oldali menüben válassza a **képlisták**lehetőséget, majd kattintson a **keresési index frissítése**elemre.
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták**lehetőséget, majd kattintson a **keresési index frissítése**elemre.
 
    Megnyílik a **képek listája – keresési index frissítése** lap.
 
@@ -50,7 +50,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
  
     ![Képlista – keresési index frissítése oldal régiójának kiválasztása](images/test-drive-region.png)
 
-    Megnyílik a képlisták **– a keresési indexelés API-** konzoljának frissítése.
+    Megnyílik a **Képlisták – a keresési indexelés API-** konzoljának frissítése.
 
 3. A **listId** mezőben adja meg a lista azonosítóját. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
@@ -59,7 +59,7 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
 
 ## <a name="create-an-image-list"></a>Rendszerkép-lista létrehozása
 
-1. Lépjen a [képlista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)-referenciához.
+1. Lépjen a [képlista kezelése API-referenciához](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672).
 
    Megnyílik a **képek listája – létrehozás** lap. 
 
@@ -105,15 +105,15 @@ Miután módosította a Képlista módosításait, frissítenie kell az indexét
  
 10. A **listId** mezőbe írja be a GENERÁLT lista azonosítóját, majd adja meg a hozzáadni kívánt rendszerkép URL-címét. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
-11. Annak ellenőrzéséhez, hogy a rendszerkép hozzá lett-e adva a listához, a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza az **összes rendszerkép-azonosító**lekérése lehetőséget.
+11. Annak ellenőrzéséhez, hogy a rendszerkép hozzá lett-e adva a listához, a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza az **összes rendszerkép-azonosító lekérése**lehetőséget.
 
-    Megnyílik a rendszerkép **– az összes** képazonosítós API-konzol beolvasása.
+    Megnyílik a rendszerkép **– az összes Képazonosítós API-konzol beolvasása** .
   
 12. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Kattintson a **Küldés** gombra.
 
     ![Kép – az összes rendszerkép-azonosító konzol válaszának tartalma mező felsorolja a beírt képeket](images/try-image-list-create-11.png)
  
-10. Adjon hozzá még néhány képet. Most, hogy létrehozta a lemezképek egyéni listáját, próbálja [](try-image-api.md) meg kiértékelni a lemezképeket az egyéni lemezképek listájának használatával. 
+10. Adjon hozzá még néhány képet. Most, hogy létrehozta a lemezképek egyéni listáját, próbálja meg [kiértékelni a lemezképeket](try-image-api.md) az egyéni lemezképek listájának használatával. 
 
 ## <a name="delete-images-and-lists"></a>Képek és a menük törlése
 
@@ -125,7 +125,7 @@ Egy rendszerkép vagy lista törlése egyszerű. Az API használatával a követ
 
 Ez a példa egyetlen rendszerképet töröl:
 
-1. A [képlista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)-referenciában a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza a **Törlés**lehetőséget. 
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **rendszerkép**lehetőséget, majd válassza a **Törlés**lehetőséget. 
 
    Megnyílik a **rendszerkép – törlés** lap.
 
@@ -135,19 +135,19 @@ Ez a példa egyetlen rendszerképet töröl:
  
    Megnyílik a **rendszerkép-delete API-** konzol.
  
-3. A **listId** mezőben adja meg annak a listának az azonosítóját, amelyből a képet törölni szeretné.  Ezt a számot adja vissza a rendszerképben – a MyList **összes rendszerkép-azonosítójának** lekérése konzol. Ezután adja meg a törölni kívánt rendszerkép **ImageId** . 
+3. A **listId** mezőben adja meg annak a listának az azonosítóját, amelyből a képet törölni szeretné.  Ezt a számot adja vissza a **rendszerképben – a MyList összes rendszerkép-azonosítójának lekérése** konzol. Ezután adja meg a törölni kívánt rendszerkép **ImageId** . 
 
 A példánkban a lista azonosítója **58953**, a **ContentSource**értéke. A rendszerkép azonosítója **59021**, a **ContentIds**értéke.
 
 1. Adja meg az előfizetési kulcsot, majd válassza a **Küldés**lehetőséget.
 
-1. Annak ellenőrzéséhez, hogy a rendszerkép törölve lett-e, használja a rendszerkép **– az összes rendszerkép-azonosító** beolvasása konzolt.
+1. Annak ellenőrzéséhez, hogy a rendszerkép törölve lett-e, használja a rendszerkép **– az összes rendszerkép-azonosító beolvasása** konzolt.
  
 ## <a name="change-list-information"></a>Lista adatainak módosítása
 
 Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
 
-1. A [képlista kezelése API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)-referenciában a bal oldali menüben válassza a **képlisták**lehetőséget, majd válassza a **részletek frissítése**elemet. 
+1. A [képlista kezelése API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f672)a bal oldali menüben válassza a **képlisták**lehetőséget, majd válassza a **részletek frissítése**elemet. 
 
    Megnyílik a **képek listája – részletek frissítése** oldal.
 
@@ -164,6 +164,6 @@ Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
    ![Képlista – a details konzolra vonatkozó kérelem törzsének módosítása](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [képet a .net](image-lists-quickstart-dotnet.md) rövid útmutatóval.

@@ -3,23 +3,23 @@ title: Tartalom-felülvizsgálatok használata a felülvizsgálati eszközön �
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogy a felülvizsgálati eszköz hogyan teszi lehetővé az emberi moderátorok számára a képek áttekintését egy webes portálon.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: sajagtap
-ms.openlocfilehash: 065d3cd80f93753eb91571d4ada4fe7151258ec0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882658"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754264"
 ---
 # <a name="create-human-reviews"></a>Emberi felülvizsgálatok létrehozása
 
-Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#reviews) felülvizsgálatokat a felülvizsgálati eszköz webhelyén. A értékelések az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. A moderátorok módosíthatják az alkalmazott címkéket, és szükség szerint alkalmazhatják a saját egyéni címkéit. Amikor a felhasználó befejezi a felülvizsgálatot, a rendszer elküldi az eredményeket egy megadott visszahívási végpontnak, és eltávolítja a tartalmat a helyről.
+Ebből az útmutatóból megtudhatja, hogyan állíthat be [felülvizsgálatokat a felülvizsgálati](../review-api.md#reviews) eszköz webhelyén. A értékelések az emberi moderátorok számára az értékelés céljából tárolják és jelenítik meg a tartalmakat. A moderátorok módosíthatják az alkalmazott címkéket, és szükség szerint alkalmazhatják a saját egyéni címkéit. Amikor a felhasználó befejezi a felülvizsgálatot, a rendszer elküldi az eredményeket egy megadott visszahívási végpontnak, és eltávolítja a tartalmat a helyről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +34,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#r
 
     A képek az automatikus moderálási folyamat által hozzárendelt címkékkel jelennek meg. A felülvizsgálati eszközön keresztül elküldött rendszerképek nem láthatók más felülvizsgálók számára.
 
-1. A képernyőn megjelenő képek számának beállításához áthelyezheti az értékeléseket (1). Kattintson a **címkézett** vagy **címkézetlen** gombokra (2) a képek megfelelő rendezéséhez. Kattintson a címke panelre (3) a be-vagy kikapcsolásához.
+1. A képernyőn megjelenő képek számának beállításához áthelyezheti az **értékeléseket** (1). Kattintson a **címkézett** vagy **címkézetlen** gombokra (2) a képek megfelelő rendezéséhez. Kattintson a címke panelre (3) a be-vagy kikapcsolásához.
 
     ![Chrome-böngésző, amely a felülvizsgálati eszközt tartalmazza a címkézett rendszerképekkel a felülvizsgálathoz](images/review-images-2.png)
 
@@ -46,7 +46,7 @@ Ebből az útmutatóból megtudhatja, hogyan állíthat be [](../review-api.md#r
 
     ![Egy külön ablaktáblán felsorolt moderálási részleteket tartalmazó rendszerkép](images/review-images-4.png)
 
-1. Miután áttekintette és frissítette a címke-hozzárendeléseket, kattintson a **tovább** gombra a felülvizsgálatok elküldéséhez. A beküldést követően öt másodpercre van szüksége, hogy az előző gombra kattintva térjen vissza az előző képernyőre, és tekintse át a lemezképeket. Ezt követően a lemezképek már nem szerepelnek a küldési várólistában, és az **előző** gomb már nem érhető el.
+1. Miután áttekintette és frissítette a címke-hozzárendeléseket, kattintson a **tovább** gombra a felülvizsgálatok elküldéséhez. A beküldést követően öt másodpercre van szüksége, hogy **az előző gombra kattintva** térjen vissza az előző képernyőre, és tekintse át a lemezképeket. Ezt követően a lemezképek már nem szerepelnek a küldési várólistában, és az **előző** gomb már nem érhető el.
 
 ## <a name="text-reviews"></a>Szövegekre vonatkozó vélemények
 
@@ -54,6 +54,6 @@ A szöveges értékelések hasonlóan működnek a képelemzésekhez. A tartalom
 
 ![Képernyőkép a megjelöléssel ellátott szövegről egy Chrome-böngészőablakban](../images/reviewresults_text.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan állíthat be és használhat felülvizsgálatokat a Content Moderator [felülvizsgálati eszközből](https://contentmoderator.cognitive.microsoft.com). Ezután tekintse meg a [REST API útmutatót](../try-review-api-review.md) vagy a [.net SDK útmutatóját](../moderation-reviews-quickstart-dotnet.md) , amelyből megtudhatja, hogyan hozhat létre programozott módon az értékeléseket.

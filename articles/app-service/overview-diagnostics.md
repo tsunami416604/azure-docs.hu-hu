@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: 5631b34fee64c6ad0917b95ec68fcd586717a1b0
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: 2919c7a2fa3a8912de0272af5131583988184704
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675203"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755527"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service diagnosztika áttekintése
 
@@ -92,7 +92,7 @@ A diagnosztikai eszközök több speciális diagnosztikai eszközt is tartalmazn
 
 ### <a name="proactive-cpu-monitoring"></a>Proaktív CPU-figyelés
 
-A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál. További információ: [a CPU-problémák enyhítése, mielőtt azok történnek](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html). A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál.
+A proaktív CPU-figyelés lehetővé teszi, hogy egyszerű, proaktív módon végezze el a műveletet, ha az alkalmazás vagy a gyermek folyamata magas CPU-erőforrásokat használ. Megadhatja a saját CPU-küszöbértékeit, hogy a rendszer átmenetileg csökkentse a PROCESSZORok nagy hányadát, amíg a nem várt probléma valódi okot nem talál. További információ: [a CPU-problémák enyhítése, mielőtt azok történnek](https://azure.github.io/AppService/2019/10/07/Mitigate-your-CPU-problems-before-they-even-happen.html).
 
 ![Proaktív CPU-figyelés](./media/app-service-diagnostics/proactive-cpu-monitoring-9.png)
 

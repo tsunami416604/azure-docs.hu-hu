@@ -1,5 +1,5 @@
 ---
-title: 'Funkciók: Művelet és környezet – személyre szabás'
+title: 'Funkciók: művelet és kontextus – személyre szabott'
 titleSuffix: Azure Cognitive Services
 description: A személyre szabott javaslatokat a testre szabható funkciók, a műveletek és a kontextus információi alapján végezheti el. A funkciók lehetnek általánosak vagy egy elemre jellemzőek.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: diberry
-ms.openlocfilehash: db54a71a6bd252c1ca60ae356cbf340bc660d142
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2147ca2565d5977e3e47d5182627483aa3d8d1b2
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989089"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756104"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -25,8 +25,8 @@ A személyre szabott **funkciók**az **aktuális környezettel** kapcsolatos inf
 
 Előfordulhat például, hogy a következő **funkcióval** rendelkezik:
 
-* A _felhasználó persona_ , például `Sports_Shopper`a. Ez nem lehet egyedi felhasználói azonosító. 
-* A _tartalom_ , például ha egy videó az a `Documentary`, a `Movie`vagy a `TV Series`, vagy hogy elérhető-e egy kereskedelmi elem a tárolóban.
+* A _felhasználó persona_ , például egy `Sports_Shopper`. Ez nem lehet egyedi felhasználói azonosító. 
+* A _tartalom_ , például ha egy videó egy `Documentary`, egy `Movie`vagy egy `TV Series`, illetve hogy elérhető-e kiskereskedelmi elem a tárolóban.
 * Az _aktuális_ idő, például a hét napja.
 
 A személyre szabott funkció nem írja elő, korlátozza vagy kijavítja a műveletekhez és környezetekhez elküldhető szolgáltatásokat:
@@ -43,8 +43,8 @@ A személyre szabás a sztring, a numerikus és a logikai típusok funkcióit t�
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>A szolgáltatás típusának kiválasztása a személyre szabás Machine Learningét érinti
 
-* **Karakterláncok**: A karakterlánc-típusok esetében a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
-* **Numerikus**: Numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
+* **Karakterláncok**: karakterlánc-típusok esetén a kulcs és érték minden kombinációja új súlyozást hoz létre a személyre szabott gépi tanulási modellben. 
+* **Numerikus**értékek: numerikus értékeket kell használnia, ha a számnak arányosan kell érintenie a személyre szabási eredményt. Ez a forgatókönyv függ. Egy egyszerűsített példában például a kiskereskedelmi élmény személyre szabása esetén a NumberOfPetsOwned olyan funkció lehet, amely numerikus, ha 2 vagy 3 személyre szabottan szeretné, hogy a megszemélyesítési eredmények kétszer vagy háromszor legyenek felhasználva, mint 1 kisállat. A numerikus egységeken alapuló, de ha a jelentés nem lineáris – például az életkor, a hőmérséklet vagy a személy magassága – a legjobb karakterláncként kódolva, és a szolgáltatás minősége általában tartományok használatával javítható. Például a kor kódolása "Age": "0-5", "Age": "6-10" stb.
 * A "false" értékkel ellátott **logikai** értékek úgy vannak megadva, mintha egyáltalán nem küldték el őket.
 
 A nem jelen lévő funkciókat ki kell hagyni a kérelemből. Kerülje a funkciók NULL értékkel történő küldését, mert az a modell betanításakor a meglévőként és a "NULL" értékkel lesz feldolgozva.
@@ -56,12 +56,12 @@ A személyre szabás a névterekben rendezett funkciókat veszi igénybe. Ön ha
 Az alábbi példák az alkalmazások által használt szolgáltatások névtereit mutatják be:
 
 * User_Profile_from_CRM
-* Time
+* Idő
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
 * UserDeviceInfo
-* Időjárás
+* Weather
 * Product_Recommendation_Ratings
 * current_time
 * NewsArticle_TextAnalytics
@@ -69,7 +69,7 @@ Az alábbi példák az alkalmazások által használt szolgáltatások névterei
 A szolgáltatás névtereit a saját konvenciói szerint nevezheti el, feltéve, hogy érvényes JSON-kulcsok vannak. A névterek a funkciók különálló készletekre való rendszerezésére, valamint a hasonló névvel rendelkező funkciók egyértelműsítse szolgálnak. A névtereket "előtagként" tekintheti meg, amelyet a rendszer a szolgáltatás neveként ad hozzá. A névterek nem ágyazhatók egymásba.
 
 
-A következő JSON `user` `state`-ban a, a `device` és a szolgáltatás névtereket tartalmaz. Nyilvános előzetes Megjegyzés: Jelenleg erősen ajánlott az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek neveinek használata. Például `user` `device` `d`:,, és kezdje a `u` következővel:,és.`s` `state` A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
+A következő JSON-, `user`-, `state`-és `device` a szolgáltatás névtereit. Nyilvános előzetes Megjegyzés: jelenleg az UTF-8-alapú és más betűvel ellátott szolgáltatásbeli névterek nevének használatát javasoljuk. Például `user`, `state`és `device` a `u`, `s`és `d`. A jelenleg azonos első karakterrel rendelkező névterek ütközést okozhatnak a gépi tanuláshoz használt indexekben.
 
 A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tulajdonságokat/értékeket is. Egy tömb csak akkor szerepelhet, ha a tömb elemei számokból állnak. 
 
@@ -98,6 +98,13 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 }
 ```
 
+### <a name="restrictions-in-character-sets-for-namespaces"></a>A névterekhez tartozó karakterkészletek korlátozásai
+
+A névtér elnevezéséhez használt karakterláncnak bizonyos korlátozásokat kell követnie: 
+* Nem lehet Unicode.
+* A névterek neveihez < 256 kóddal ellátott nyomtatható szimbólumokat használhat. 
+* Nem használhat szimbólumokat < 32 (nem nyomtatható), 32 (szóköz), 58 (Colon), 124 (pipe) és 126 – 140 kóddal.
+
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>A funkciók hatékonyabbvé tétele a személyre szabáshoz
 
 Egy jó szolgáltatáskészlet segít személyre szabni, hogyan jósolhatja meg a legmagasabb jutalmat eredményező műveletet. 
@@ -106,7 +113,7 @@ Vegye fontolóra a funkciók küldését a személyre szabási rangsor API-ra, a
 
 * A személyre szabáshoz elegendő funkció áll rendelkezésre. Minél pontosabban célozza meg a tartalmat, annál több szolgáltatásra van szükség.
 
-* Számos különféle sűrűségű funkció létezik. A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
+* Számos különféle *sűrűségű*funkció létezik. A szolgáltatás *sűrű* , ha sok elem van csoportosítva néhány gyűjtőn. Több ezer videó például "Long" (5 percnél hosszabb) és "Short" (5 percnél hosszabb) besorolású lehet. Ez egy *nagyon sűrű* funkció. Másfelől ugyanezen ezer elemnek egy "title" nevű attribútummal is rendelkezhet, amely szinte soha nem lesz ugyanaz az érték az egyik elemből a másikba. Ez egy nagyon nem sűrű vagy *ritka* funkció.  
 
 A nagy sűrűségű funkciókkal a személyre szabott kikövetkeztethető az egyik elemről a másikra. Ha azonban csak néhány funkció van, és túl sűrű, a személyre szabott felhasználó megpróbál pontosan megcélozni a tartalmat, és csak néhány gyűjtő közül választhat.
 
@@ -168,7 +175,7 @@ A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyr
 
 Néhány példa:
 
-|Cél|Action|
+|Rendeltetés|Műveletek|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
@@ -184,7 +191,7 @@ A következő példák a műveletek funkcióinak megfelelő példáit mutatják 
 
 * Funkciók a műveletek jellemzőivel. Például film vagy TV-sorozat?
 * Azon funkciók, amelyekkel a felhasználók a múltban is felhasználhatták ezt a műveletet. Például ezt a filmet többnyire az A vagy B demográfiai személyek látják, általában csak egyszer játszanak egyszerre.
-* A felhasználók által a műveletek végrehajtásának jellemzőit ismertető funkciók. Például a miniatűrben látható film posztere arcok, autók vagy tájak?
+* *A felhasználók által* a műveletek végrehajtásának jellemzőit ismertető funkciók. Például a miniatűrben látható film posztere arcok, autók vagy tájak?
 
 ### <a name="load-actions-from-the-client-application"></a>Műveletek betöltése az ügyfélalkalmazás alapján
 
@@ -267,7 +274,7 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 
 ## <a name="examples-of-context-information"></a>Példák a környezeti információkra
 
-A kontextusra vonatkozó információk az egyes alkalmazásokról és a használati esetekről függenek, de általában olyan információkat is tartalmazhatnak, mint például a következők:
+A _kontextusra_ vonatkozó információk az egyes alkalmazásokról és a használati esetekről függenek, de általában olyan információkat is tartalmazhatnak, mint például a következők:
 
 * A felhasználóval kapcsolatos demográfiai és profilbeli információk.
 * HTTP-fejlécből kinyert információk, például felhasználói ügynök vagy HTTP-adatokból származtatott adatok, például az IP-címeken alapuló fordított földrajzi keresések.
@@ -309,6 +316,6 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megerősítő tanulás](concepts-reinforcement-learning.md) 

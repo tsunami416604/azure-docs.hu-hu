@@ -5,14 +5,14 @@ services: service-fabric
 author: athinanthny
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: dcffc1ba783b49343bf3380b62c3d4085f5aa347
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b9a3534c24649e71385cd8fdc8b4981ac471cf90
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390097"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72752306"
 ---
 # <a name="what-is-the-service-fabric-application-resource-model"></a>Mi a Service Fabric alkalmazás-erőforrás modellje?
 Azt javasoljuk, hogy az Service Fabric alkalmazások Azure Resource Manager használatával legyenek telepítve a Service Fabric-fürtön. Ez a módszer lehetővé teszi a JSON-alkalmazások és-szolgáltatások leírását, és azokat ugyanabban a Resource Manager-sablonban telepíteni, mint a fürtöt. Az alkalmazások PowerShell vagy Azure CLI használatával történő üzembe helyezése és kezelése helyett nem kell megvárnia, hogy a fürt készen álljon. Az alkalmazásregisztráció, -kiépítés és -üzembehelyezés folyamata mind egy lépésben valósulhat meg. Ez a fürtbéli alkalmazás-életciklusok kezelésének ajánlott eljárása. További információkért tekintse meg az [ajánlott eljárásokat](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
@@ -41,8 +41,14 @@ Az alkalmazások Resource Manager-sablonból való üzembe helyezéséhez Storag
 ![Create a storage account][CreateStorageAccount]
 
 ### <a name="configure-storage-account"></a>Storage-fiók konfigurálása 
-A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal Navigáljon arra a Storage-fiókra, amelyet az alkalmazásai tárolására szeretne használni. Válassza a **Blobok** panelt, majd kattintson a **tároló hozzáadása** gombra. Új tároló hozzáadása blob nyilvános hozzáférési szinttel.
-   
+A Storage-fiók létrehozása után létre kell hoznia egy BLOB-tárolót, amelyben az alkalmazások elhelyezhetők. A Azure Portal Navigáljon arra a Storage-fiókra, amelyet az alkalmazásai tárolására szeretne használni. Válassza a **Blobok** panelt, majd kattintson a **tároló hozzáadása** gombra. A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáférési szint magánjellegűre állításával lehetséges. A hozzáférés több módon is megadható:
+* [Blobokhoz és várólistákhoz való hozzáférés engedélyezése Azure Active Directory](../storage/common/storage-auth-aad-app.md)
+* [Hozzáférés biztosítása Azure-blobok és -üzenetsorok adataihoz RBAC használatával az Azure Portalon](../storage/common/storage-auth-aad-rbac-portal.md)
+* [Hozzáférés delegálása közös hozzáférésű aláírással (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
+)
+
+ Ebben a példában a Blobok névtelen olvasási hozzáférését fogjuk használni.
+
 ![BLOB létrehozása][CreateBlob]
 
 ### <a name="stage-application-in-a-storage-account"></a>Alkalmazás előkészítése egy Storage-fiókban
@@ -51,10 +57,10 @@ Az alkalmazás üzembe helyezése előtt a blob Storage-ban kell lennie. Ebben a
 1. A Visual Studióban kattintson a jobb gombbal a szavazási projektre, és válassza a csomag lehetőséget.   
 ![Alkalmazáscsomag][PackageApplication]  
 2. Nyissa meg az imént létrehozott **.\service-Fabric-DotNet-quickstart\Voting\pkg\Debug** könyvtárat, és zip-fájlt egy **szavazás. zip** nevű fájlba, hogy a ApplicationManifest. xml fájl a zip-fájl gyökerében legyen.  
-@no__t 0Zip-alkalmazás @ no__t-1  
+![zip-alkalmazás][ZipApplication]  
 3. Nevezze át a fájlt. zip kiterjesztését a **. sfpkg**névre.
 4. A Azure Portal a Storage-fiók **alkalmazások** tárolójában kattintson a **feltöltés** és a **szavazás. sfpkg**feltöltése elemre.  
-@no__t 0Upload-alkalmazáscsomag @ no__t-1
+Alkalmazáscsomag feltöltése ![][UploadAppPkg]
 
 Az alkalmazás most már előkészítés alatt áll. Most már készen áll a Azure Resource Manager sablon létrehozására az alkalmazás üzembe helyezéséhez.      
    

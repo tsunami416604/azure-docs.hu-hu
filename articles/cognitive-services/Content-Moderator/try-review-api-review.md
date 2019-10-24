@@ -3,19 +3,19 @@ title: Moderálási felülvizsgálatok létrehozása REST API-konzollal – Cont
 titleSuffix: Azure Cognitive Services
 description: Az Azure Content Moderator Review API-k használatával képeket vagy szöveges értékeléseket hozhat létre az emberi moderáláshoz.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882348"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72757142"
 ---
 # <a name="create-human-reviews-rest"></a>Emberi értékelések létrehozása (REST)
 
@@ -35,17 +35,17 @@ A felülvizsgálat létrehozásához nyissa meg a **[felülvizsgálat – API-hi
 
 Adja meg a **csapatnév**és a **OCP-APIM-Subscription-Key**értékeket:
 
-- **csapatnév**: A [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
-- **Ocp-Apim-Subscription-Key**: Az Content Moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
+- **csapatnév**: a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) fiókjának beállításakor létrehozott csoport azonosítója (a felülvizsgálati eszköz hitelesítő adatai képernyő **azonosító** mezőjében található).
+- **OCP-APIM-előfizetés-kulcs**: a Content moderator kulcsa. Ez a [felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com) **Beállítások** lapján található.
 
 ### <a name="enter-a-review-definition"></a>Adja meg a felülvizsgálati definíciót
 
 Szerkessze a **kérelem törzsét** , és adja meg a JSON-kérést a következő mezőkkel:
 
-- **Metaadatok**: Egyéni kulcs-érték párok, amelyeket vissza kell adni a visszahívási végpontnak. Ha a kulcs egy rövid kód, amely a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)van meghatározva, a címkeként jelenik meg.
-- **Tartalom**: Képek és videók tartalma esetén ez egy URL-karakterlánc, amely a tartalomra mutat. Szöveges tartalom esetén ez a tényleges szöveges karakterlánc.
-- **ContentId**: Egyéni azonosító sztring. Ezt a karakterláncot a rendszer átadja az API-nak, és visszaküldi a visszahívást. Hasznos lehet belső azonosítók vagy metaadatok társítására egy moderálási feladatok eredményeivel.
-- **CallbackEndpoint**: Választható A visszahívási információk fogadására szolgáló URL-cím a felülvizsgálat befejezésekor.
+- **Metaadatok**: egyéni kulcs-érték párok, amelyeket vissza kell adni a visszahívási végpontnak. Ha a kulcs egy rövid kód, amely a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)van meghatározva, a címkeként jelenik meg.
+- **Tartalom**: a képek és videók tartalma esetén ez egy URL-karakterlánc, amely a tartalomra mutat. Szöveges tartalom esetén ez a tényleges szöveges karakterlánc.
+- **ContentId**: egyéni azonosító sztring. Ezt a karakterláncot a rendszer átadja az API-nak, és visszaküldi a visszahívást. Hasznos lehet belső azonosítók vagy metaadatok társítására egy moderálási feladatok eredményeivel.
+- **CallbackEndpoint**: (nem kötelező) a visszahívási információk fogadására szolgáló URL-cím a felülvizsgálat befejezésekor.
 
 Az alapértelmezett kérelem törzse példákat mutat be a létrehozható különböző típusú felülvizsgálatokra:
 
@@ -129,13 +129,13 @@ Az alapértelmezett kérelem törzse példákat mutat be a létrehozható külö
 
 ### <a name="submit-your-request"></a>Kérelem elküldése
   
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, és a **válasz tartalma** mezőben megjelenik egy azonosító a felülvizsgálathoz. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
 ![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Vizsgálja meg az új felülvizsgálatot
 
-/A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)válassza a képszöveg > /videó ellenőrzése lehetőséget (a használt tartalomtól függően). A feltöltött tartalomnak szerepelnie kell az emberi felülvizsgálatra készen.
+A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)válassza a > **rendszerkép** **ellenőrzése**/**szöveg**/**videó** (a használt tartalomtól függően) lehetőséget. A feltöltött tartalomnak szerepelnie kell az emberi felülvizsgálatra készen.
 
 ![A Soccer Ball-eszköz képének áttekintése](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben
 
 ![Ellenőrzés – a konzol létrehozási eredményeinek létrehozása](images/test-drive-review-3.PNG)
   
-Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
+Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, és a **Válasz tartalmának** mezője a felülvizsgálati adatokat JSON formátumban jeleníti meg, például a következőket:
 
 ```json
 {  
@@ -186,10 +186,10 @@ Kattintson a **Küldés** gombra. Ha a művelet sikeres, a **Válasz állapota**
 
 Jegyezze fel a válaszban a következő mezőket:
 
-- **status**
-- **reviewerResultTags**: Ez akkor jelenik meg, ha az emberi felülvizsgálati csapat manuálisan hozzáadta a címkéket (a **createdBy** mező látható).
+- **állapota**
+- **reviewerResultTags**: Ez akkor jelenik meg, ha az emberi felülvizsgálati csapat manuálisan hozzáadta a címkéket (ez a **createdBy** mező látható).
 - **metaadatok**: Itt láthatók azok a címkék, amelyeket először a felülvizsgálatban adtak hozzá, mielőtt az emberi felülvizsgálati csapat megváltoztatta volna a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan hozhat létre a tartalom-moderálási felülvizsgálatokat a REST API használatával. Ezután integrálja a felülvizsgálatokat egy végpontok közötti moderálási forgatókönyvbe, például az [E-kereskedelmi moderálási](./ecommerce-retail-catalog-moderation.md) oktatóanyagba.

@@ -1,31 +1,31 @@
 ---
 title: A többrégiós üzemelő példányok díjainak optimalizálása Azure Cosmos DB
 description: Ez a cikk azt ismerteti, hogyan kezelhető a többrégiós telepítések költségei a Azure Cosmos DBban.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: rimman
-ms.openlocfilehash: 233eab1fc49d7ce4cbb1e5b98b67eda9a64aa195
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e0a24b52c12bce6a8e016a926dfa64a1e36a7cc6
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667594"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72753319"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Többrégiós díj optimalizálása Azure Cosmos DB
 
-Bármikor hozzáadhat és eltávolíthat régiókat az Azure Cosmos-fiókjához. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség (ru/s) az Azure Cosmos-fiókhoz tartozó összes adatbázisban és tárolóban konfigurálva van `T` , és az adatbázis- `N`fiókhoz társított Azure-régiók száma, akkor a teljes a Cosmos-fiók kiépített átviteli sebessége egy adott órában egyenlő:
+Az Azure Cosmos-fiókjához bármikor hozzáadhat újabb régiókat, és el is távolíthatja azokat. A különböző Azure Cosmos-adatbázisokhoz és-tárolóhoz konfigurált átviteli sebesség a fiókhoz társított minden régióban le van foglalva. Ha az óránként kiépített átviteli sebesség, akkor az Azure Cosmos-fiókhoz tartozó összes adatbázisban és tárolóban konfigurált RU/s összege `T`, és az adatbázis-fiókhoz társított Azure-régiók száma `N`, akkor a teljes a Cosmos-fiók kiépített átviteli sebessége egy adott órában egyenlő:
 
-1. `T x N RU/s`Ha az Azure Cosmos-fiókja egyetlen írási régióval van konfigurálva. 
+1. `T x N RU/s`, hogy az Azure Cosmos-fiók egyetlen írási régióval van-e konfigurálva. 
 
-1. `T x (N+1) RU/s`Ha az Azure Cosmos-fiókja minden olyan régióval konfigurálva van, amely képes az írási műveletek feldolgozására. 
+1. `T x (N+1) RU/s`, ha az Azure Cosmos-fiók minden olyan régióval konfigurálva van, amely képes az írási műveletek feldolgozására. 
 
-Az egyszeri írási régióval kiépített átviteli sebesség 0.008/óra/100 RU/s, a kiépített átviteli sebesség pedig több írható régióval együtt a 0.016/óra/óra 100 RU/s. További információt a Azure Cosmos DB díjszabását ismertető [oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál.
+Az egyszeri írási régióval kiépített átviteli sebesség 0.008/óra/100 RU/s, a kiépített átviteli sebesség pedig több írható régióval együtt a 0.016/óra/óra 100 RU/s. További információt a Azure Cosmos DB [díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/cosmos-db/)talál.
 
 ## <a name="costs-for-multiple-write-regions"></a>Több írási régió díja
 
-A több főkiszolgálós rendszerekben az írási műveletekhez rendelkezésre álló, a `N` net számára `N` elérhető, az írási régiók száma növekszik. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatniuk kell az ütközés feloldását. Az írók munkaterhelésének mennyisége nőtt. A költségmegtakarítás szempontjából, ha `M` ru/s értékre van szükség a globális írásokhoz, az M `RUs` -t egy tárolóban vagy adatbázis szintjén kell kiépíteni. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is `M` felhasználhatja a globális írási műveletek elvégzéséhez. 
+A több főkiszolgálós rendszerekben az írási műveletekhez rendelkezésre álló, a net számára elérhető, az írási műveletek `N` időpontot növelik, ahol `N` az írási régiók száma. Az egyrégiós írásokkal ellentétben az egyes régiók már írhatók, és támogatniuk kell az ütközés feloldását. Az írók munkaterhelésének mennyisége nőtt. A költségmegtakarítási szempontból `M` RU/s értékű írások végrehajtásához a világ minden pontján el kell végeznie az M `RUs` a tárolóban vagy az adatbázis szintjén. Ezt követően annyi régiót adhat hozzá, amennyit csak szeretne, és ezeket az írásokhoz is felhasználhatja a globális írási `M` 
 
 ### <a name="example"></a>Példa
 
@@ -49,7 +49,7 @@ Ha nem hatékony kihasználtságot használ, például egy vagy több, a haszná
 
 3. A régiókban figyelheti a tevékenységeket, és igény szerint hozzáadhat és eltávolíthat régiókat az olvasási és írási sebesség méretezéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

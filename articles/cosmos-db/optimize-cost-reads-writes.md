@@ -1,58 +1,58 @@
 ---
-title: Költségeinek optimalizálása beolvassa, és az Azure Cosmos DB-ben
-description: Ez a cikk azt ismerteti, azt ismerteti, hogyan lehet Azure Cosmos DB végrehajtásakor olvasási és írási műveletek az adatokon.
-author: rimman
+title: Az olvasási és írási díj optimalizálása Azure Cosmos DB
+description: Ez a cikk azt ismerteti, hogyan csökkenthető a Azure Cosmos DB költségek az olvasási és írási műveletek végrehajtásakor az adatokon.
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.author: rimman
-ms.openlocfilehash: 13ce5ee8b0e2a5d9cc84ea1a408ebba152b46050
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 934853b80c6e6377923df4c2b5cce7b7d7d57d7c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967401"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72754928"
 ---
-# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Olvasási és írási, az Azure Cosmos DB költségek optimalizálása
+# <a name="optimize-reads-and-writes-cost-in-azure-cosmos-db"></a>Olvasási és írási díjak optimalizálása Azure Cosmos DB
 
-Ez a cikk bemutatja, hogyan kerül kiszámításra a költsége az Azure Cosmos DB az adatok írását és olvasását. Olvasási műveletnek számítanak többek között a cikkek a get műveletek, és az írási műveletek közé tartozik az insert, replace, delete és upsert elemek.  
+Ez a cikk azt ismerteti, hogy a rendszer hogyan számítja ki a Azure Cosmos DB adatok olvasásához és írásához szükséges költségeket. Az olvasási műveletek közé tartozik a Get művelet az elemeken és az írási műveletekben: INSERT, replace, DELETE és upsert of items.  
 
-## <a name="cost-of-reads-and-writes"></a>Olvasási és írási költség
+## <a name="cost-of-reads-and-writes"></a>Olvasási és írási díj
 
-Az Azure Cosmos DB garantálja, hogy a kiszámítható teljesítmény szempontjából teljesítménye és adatelérési sebessége a kiosztott átviteli sebesség modell használatával. Az átviteli sebesség kiosztott részéért, hogy jelölt [kérelemegység](request-units.md) másodpercenként vagy RU/s. Egy ilyen kérelemegység (RU) egy logikai absztrakciós a számítási erőforrások, például a Processzor, memória, IO, stb. a kérés végrehajtásához szükséges. A kiosztott átviteli sebesség (RU) elkülönített és dedikált a tároló vagy adatbázist biztosít, kiszámítható teljesítménye és adatelérési sebessége. Kiosztott átviteli sebesség lehetővé teszi, hogy az Azure Cosmos DB garantáltan alacsony késéssel és magas rendelkezésre állás bármilyen méretben kiszámítható és következetes teljesítményt biztosít. Kérelemegység képviseli, amely leegyszerűsíti az indoklást hány erőforrásokról egy alkalmazásnak kell normalizált pénznem. 
+Azure Cosmos DB garantálja a kiszámítható teljesítményt az átviteli sebesség és a késés tekintetében egy kiépített átviteli sebességi modell használatával. A kiépített átviteli sebesség a [kérelmek](request-units.md) száma másodpercenként, vagy ru/s. A kérési egység (RU) olyan számítási erőforrások (például CPU, memória, IO stb.) logikai absztrakciója, amelyek szükségesek a kérelem végrehajtásához. A kiépített átviteli sebesség (RUs) be van állítva, és a tárolóra vagy az adatbázisra van beállítva, hogy kiszámítható teljesítményt és késést biztosítson. A kiépített átviteli sebesség lehetővé teszi, hogy a Azure Cosmos DB kiszámítható és konzisztens teljesítményt, garantált alacsony késést és magas rendelkezésre állást biztosítson bármilyen méretben. A kérelmek egységei a normalizált pénznemet jelentik, amely leegyszerűsíti az alkalmazás által igényelt erőforrások számának okát. 
 
-Nem kell állításoknak sokoldalúbbá kérelemegység olvasási és írási között. Kérelemegység egységes pénznem modelljét növelhető a hatékonyság az olvasásokat és az írásokat az azonos átviteli kapacitás felcserélhető használandó hoz létre. Az alábbi táblázat olvasások költségeit mutatja, és írás tekintetében RU/s a elemek 1 KB-os és 100 KB-nál.
+Az olvasási és írási műveletek között nem kell megkülönböztetnie a kérelmek egységeit. A kérelmek egységének egyesített pénznem-modellje a beolvasások és az írások esetében is ugyanazt az átviteli kapacitást használja. A következő táblázat a beolvasások és írások árát mutatja be az RU/s értékekben az 1 KB-os és 100 KB méretű elemek esetében.
 
-|**Elem mérete**  |**Egy olvasási költsége** |**Egy írási költsége**|
+|**Elemek mérete**  |**Egy olvasási díj** |**Egy írás díja**|
 |---------|---------|---------|
-|1 KB |1 RU |5 Kérelemegységet |
-|100 KB |10 RU |50 kérelemegység |
+|1 KB |1 RU |5 RUs |
+|100 KB |10 RU |50 RUs |
 
-Egy elem, amely 1 KB méretű költségek egy RU olvasása. Egy elem, amely 1 KB-os írása költségek öt fenntartott egységek. Az alapértelmezett munkamenet használata esetén alkalmazandók, az olvasási és írási költségek [konzisztenciaszint](consistency-levels.md).  A fenntartott egységek körül szempontok közé tartoznak: mérete, a tulajdonság száma, az adatkonzisztencia, a indexelt tulajdonságok, indexelést, elemet, és minták lekérdezése.
+1 KB méretű elemek olvasása egy RU. Egy 1 KB-os, öt RUs értékű elemek írása. Az olvasási és írási költségek akkor érvényesek, ha az alapértelmezett munkamenet- [konzisztenciai szintet](consistency-levels.md)használja.  A következő szempontokat kell figyelembe venni: az elemek mérete, a tulajdonságok száma, az adatkonzisztencia, az indexelt tulajdonságok, az indexelés és a lekérdezési minták.
 
-## <a name="normalized-cost-for-1-million-reads-and-writes"></a>1 millió normalizált költsége olvasási és írási
+## <a name="normalized-cost-for-1-million-reads-and-writes"></a>1 000 000 olvasás és írás normalizált díja
 
-Kiépítés 1000 RU/s a rendszer lefordítja arra 3.6-os millió RU/óra és fogja terhelni az órát 0,08 (az USA és Európa). Egy 1 KB-os elem esetében 3.6-os millió olvasási vagy írási 0,72 millió hajthat végre (Ez az érték a következő képlettel: `3.6 million RU / 5`) a létesített átviteli sebesség révén óránként. Egy millió olvasási és írási normalizálva, a költség lenne $0,022 1 millió olvasási (Ez az érték a következő képlettel: $0.08/3.6 millió) és 1 millió írást a 0.111 $ (ezt az értéket a következő képlettel: $0.08/0.72 millió).
+1 000 RU/s kiépítés a 3 600 000 RU/Hour értékre, az óra ára pedig $0,08 lesz (az USA-ban és Európában). Egy 1 KB-os elem esetében 3 600 000 olvasási vagy 720 000 írást hajthat végre (ezt az értéket: `3.6 million RU / 5`) óránként, ezzel a kiosztott átviteli sebességgel. Egy millió olvasásra és írásra normalizálva a Cost $0,022 az 1 000 000 olvasáshoz (ezt az értéket a következőképpen számítjuk ki: $0,08/3.6 millió) és $0,111 for 1 000 000 writes (ez az érték a következőképpen számítható ki: $0,08/0,72 millió).
 
-## <a name="number-of-regions-and-the-request-units-cost"></a>Régiók és a költségek kérelemegységek számát
+## <a name="number-of-regions-and-the-request-units-cost"></a>A régiók száma és a kérelmek egységének díja
 
-Az írások költsége attól függetlenül, az Azure Cosmos-fiókjához társított régiók számának állandó. Más szóval egy 1 KB-os írási ára a fiókhoz társított régiók számának független öt fenntartott egységek. Nincs egy nem triviális replikál, elfogadása és minden régióban az adatreplikációs forgalmat feldolgozó töltött erőforrás-mennyiséggel. Többrégiós költségek optimalizálása kapcsolatos részletekért lásd: [többrégiós Cosmos-fiókok költségeinek optimalizálása](optimize-cost-regions.md) cikk.
+Az írási díj állandó, függetlenül az Azure Cosmos-fiókhoz társított régiók számától. Ez azt jelenti, hogy egy 1 KB-os írás a fiókhoz társított régiók számától függetlenül öt RUs-t fog fizetni. A replikálási forgalom replikálásához, elfogadásához és feldolgozásához az összes régióban nem triviális mennyiségű erőforrás áll rendelkezésre. A többrégiós költségmegtakarítással kapcsolatos részletekért lásd: [a többrégiós Cosmos-fiókok díjainak optimalizálása](optimize-cost-regions.md) című cikk.
 
-## <a name="optimize-the-cost-of-writes-and-reads"></a>Írási és olvasási optimalizálása
+## <a name="optimize-the-cost-of-writes-and-reads"></a>Az írási és olvasási díj optimalizálása
 
-Írási műveletek elvégzésekor, támogatásához szükséges másodpercenként írások száma elegendő kapacitással kell kiépítenie. A kiosztott átviteli sebesség SDK,-val növelheti az írási műveletek végrehajtása előtt a CLI-portálon, és csökkentse az átviteli sebességet, az írási műveletek után. Az átviteli sebességet, az írási időszak, a minimális átviteli sebesség az adott adat szükséges, valamint a Beszúrás munkaterhelés feltéve nincs más számítási feladatok futnak a szükséges átviteli sebességtől. 
+Írási műveletek végrehajtásakor elegendő kapacitást kell kiépíteni a másodpercenkénti írások számának támogatásához. Az írások végrehajtása előtt növelheti a kiépített átviteli sebességet az SDK, a portál, a CLI használatával, majd az írások befejezése után csökkentheti az átviteli sebességet. Az írási időszakra vonatkozó átviteli sebesség a megadott adatokhoz szükséges minimális átviteli sebesség, valamint a munkaterhelések beszúrásához szükséges átviteli sebesség, feltéve, hogy más számítási feladatok nem futnak. 
 
-Ha egyéb számítási feladatokat egy időben futnak, például lekérdezési/olvasása/frissítése/törlése, hozzá kell adnia az ezekhez a műveletekhez szükséges túl kérelemegységeket. Ha az írási műveletek sebessége korlátozott, testre szabható az újrapróbálkozási/leállítási házirendet az Azure Cosmos DB SDK-k használatával. Növelheti például a terhelés, mindaddig, amíg egy kis méretű kérések másodpercenkénti száma lekérdezi sebessége korlátozott. Sebességkorlát-történik, ha az ügyfélalkalmazás készítsen a sebességhatárolt található a megadott újrapróbálkozási időköz kérelmeket. Mielőtt újra próbálkozna írást, az újrapróbálkozások közötti időkülönbség mennyisége minimális kell rendelkeznie. Újrapróbálkozási házirend támogatási SQL .NET, Java, Node.js, és a Python SDK-k és a támogatott verziók a .NET Core SDK-k tartalmazza. 
+Ha egyidejűleg más munkaterheléseket futtat, például lekérdezés/olvasás/frissítés/törlés, adja hozzá a műveletekhez szükséges további kérési egységeket is. Ha az írási műveletek száma korlátozott, az újrapróbálkozási/leállítási szabályzatot Azure Cosmos DB SDK-k használatával szabhatja testre. Megnövelheti például a terhelést, amíg a kisebb kérelmek aránya korlátozott. Ha a díjszabási korlát történik, az ügyfélalkalmazás a megadott újrapróbálkozási időintervallumra vonatkozó kérelmek korlátozására vonatkozó kérések miatt vissza kell térnie. Az újrapróbálkozások megkezdése előtt az újrapróbálkozások között minimális idő alatt kell állnia. Az újrapróbálkozási szabályzat támogatása az SQL .NET, a Java, a Node. js és a Python SDK-k, valamint a .NET Core SDK-k összes támogatott verziója része. 
 
-Tömeges beszúrás adatokat az Azure Cosmos DB-be vagy is másolása az adatok bármely támogatott forrásadattárból az Azure Cosmos DB használatával [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Az Azure Data Factory natív módon integrálható az Azure Cosmos DB tömeges API ír adatokat a legjobb teljesítmény érdekében szolgáltatni.
+Az adatok tömegesen szúrhatók be a Azure Cosmos DBba, vagy bármely támogatott forrásból származó adatok másolása a [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md)használatával Azure Cosmos db. A Azure Data Factory natív módon integrálható a Azure Cosmos DB tömeges API-val a legjobb teljesítmény biztosításához, amikor adatírást végez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ezután folytassa további tudnivalók a költségek optimalizálása az Azure Cosmos DB az alábbi cikkeket:
+A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 
-* Tudjon meg többet [optimalizálása fejlesztéshez és teszteléshez](optimize-dev-test.md)
-* Tudjon meg többet [az Azure Cosmos DB-elszámolások ismertetése](understand-your-bill.md)
-* Tudjon meg többet [átviteli költségek optimalizálása](optimize-cost-throughput.md)
-* Tudjon meg többet [tárolási költségek optimalizálása](optimize-cost-storage.md)
-* Tudjon meg többet [lekérdezések költségeinek optimalizálása](optimize-cost-queries.md)
-* Tudjon meg többet [többrégiós Azure Cosmos-fiókok költségeinek optimalizálása](optimize-cost-regions.md)
+* További információ a [fejlesztés és a tesztelés optimalizálásáról](optimize-dev-test.md)
+* További információ [a Azure Cosmos db-számla megismeréséről](understand-your-bill.md)
+* További információ az [átviteli sebesség optimalizálásáról](optimize-cost-throughput.md)
+* További információ a [tárolási díjak optimalizálásáról](optimize-cost-storage.md)
+* További információ [a lekérdezések díjszabásának optimalizálásáról](optimize-cost-queries.md)
+* További információ [a több régióból álló Azure Cosmos-fiókok díjainak optimalizálásáról](optimize-cost-regions.md)
