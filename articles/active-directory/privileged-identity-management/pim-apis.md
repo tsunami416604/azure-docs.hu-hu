@@ -14,23 +14,25 @@ ms.date: 11/13/2018
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c7f42d536880f2578c62c6c4866b21be1cc9dc
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 49d49f42e0d705981a5b4e41630b425fcb02e940
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804555"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756263"
 ---
-# <a name="microsoft-graph-apis-for-pim-preview"></a>Microsoft Graph a PIM-hez készült API-k (előzetes verzió)
+# <a name="microsoft-graph-apis-for-privileged-identity-management-preview"></a>Privileged Identity Management API-k Microsoft Graph (előzetes verzió)
 
-Az Azure Active Directory (Azure AD) Privileged Identity Management (PIM) által a Azure Portal használatával elvégezhető feladatok többsége a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview)-k használatával is végrehajtható. Ez a cikk néhány fontos fogalmat ismertet a PIM Microsoft Graph API-k használatakor. A Microsoft Graph API-kkal kapcsolatos részletekért tekintse meg a [Azure ad PRIVILEGED Identity Management API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
+Az összes Privileged Identity Management feladatot a Azure Active Directory [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) -k használatával hajthatja végre. Ez a cikk a Privileged Identity Management Microsoft Graph API-k használatára vonatkozó fontos fogalmakat ismerteti.
+
+A Microsoft Graph API-kkal kapcsolatos részletekért tekintse meg a [Azure ad PRIVILEGED Identity Management API-referenciát](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root).
 
 > [!IMPORTANT]
 > A Microsoft Graph/Beta verziója alatti API-k előzetes verzióban érhetők el, és változhatnak. Az API-k üzemi alkalmazásokban való használata nem támogatott.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-A PIM Microsoft Graph API-k meghívásához a következő engedélyek **közül egyet vagy többet** kell megadnia:
+A Privileged Identity Management Microsoft Graph API-k meghívásához a következő engedélyek **közül egyet vagy többet** kell megadnia:
 
 - `Directory.AccessAsUser.All`
 - `Directory.Read.All`
@@ -39,7 +41,7 @@ A PIM Microsoft Graph API-k meghívásához a következő engedélyek **közül 
 
 ### <a name="set-permissions"></a>Engedélyek beállítása
 
-Ahhoz, hogy az alkalmazások meghívja a PIM Microsoft Graph API-jait, rendelkeznie kell a szükséges engedélyekkel. A szükséges engedélyek megadásának legegyszerűbb módja az [Azure ad-beli engedélyezési keretrendszer](../develop/consent-framework.md)használata.
+Ahhoz, hogy az alkalmazások meg tudják hívni a Privileged Identity Management Microsoft Graph API-jait, rendelkeznie kell a szükséges engedélyekkel. A szükséges engedélyek megadásának legegyszerűbb módja az [Azure ad-beli engedélyezési keretrendszer](../develop/consent-framework.md)használata.
 
 ### <a name="set-permissions-in-graph-explorer"></a>Engedélyek beállítása a Graph Explorerben
 
@@ -51,12 +53,12 @@ Ha a Graph Explorer segítségével teszteli a hívásokat, megadhatja az enged�
 
     ![Graph Explorer – engedélyek módosítása](./media/pim-apis/graph-explorer.png)
 
-1. Jelölje be a jelölőnégyzeteket a felvenni kívánt engedélyek mellett. `PrivilegedAccess.ReadWrite.AzureAD`még nem érhető el a Graph Explorerben.
+1. Jelölje be a jelölőnégyzeteket a felvenni kívánt engedélyek mellett. a `PrivilegedAccess.ReadWrite.AzureAD` még nem érhető el a Graph Explorerben.
 
     ![Graph Explorer – engedélyek módosítása](./media/pim-apis/graph-explorer-modify-permissions.png)
 
 1. Kattintson az **engedélyek módosítása** elemre az engedély módosításának alkalmazásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure AD Privileged Identity Management API-hivatkozás](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)

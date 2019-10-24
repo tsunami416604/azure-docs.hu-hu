@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
 description: Ismerje meg, hogyan hozhat létre erőforrás-jogkivonatokat, és hogyan használhatja őket a Graph-adatbázis eléréséhez.
-author: olignat
+author: luisbosquez
+ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
-ms.author: olignat
-ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 443b6ea2583c7c8a1c633cf1825e83cc02bd168c
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105024"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756068"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Azure Cosmos DB erőforrás-tokenek használata a Gremlin SDK-val
 
@@ -24,13 +24,13 @@ Az Apache TinkerPop Gremlin SDK nem rendelkezik olyan API-val, amely erőforrás
 
 Az erőforrás-tokenek feletti objektummodell-hierarchia a következő vázlatban látható:
 
-- **Azure Cosmos db fiók** – a legfelső szintű entitás, amelyhez DNS társítva van (például `contoso.gremlin.cosmos.azure.com`:).
+- **Azure Cosmos db fiók** – a legfelső szintű entitás, amelyhez DNS társítva van (például `contoso.gremlin.cosmos.azure.com`).
   - **Adatbázis Azure Cosmos DB**
     - **Felhasználói**
       - **Engedéllyel**
         - **Token** – A Permission objektum tulajdonsága, amely azt jelzi, hogy milyen műveleteket lehet engedélyezni vagy megtagadni.
 
-Az erőforrás-jogkivonat a következő formátumot használja `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`:. Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen kell használni módosítás vagy értelmezés nélkül.
+Az erőforrás-jogkivonat a következő formátumot használja: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Ez a karakterlánc nem átlátszó az ügyfelek számára, és a következőképpen kell használni módosítás vagy értelmezés nélkül.
 
 ```csharp
 // Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
@@ -95,12 +95,12 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Korlát
 
-Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfeljebb 100 tokent használhat egyszerre 1 órán belül. Ha egy alkalmazás túllépi a jogkivonat-korlátot óránként, a rendszer megtagadja a hitelesítési kérést, és a következő hibaüzenetet kapja: "Túllépte az engedélyezett erőforrás-jogkivonat 100-os korlátját, amely egyszerre használható." Nem működik olyan aktív kapcsolatok bezárásához, amelyek adott jogkivonatokat használnak az új tokenekhez tartozó tárolóhelyek felszabadításához. A Azure Cosmos DB Gremlin adatbázismotor a hitelesítési kérelem előtt közvetlenül az óra alatt nyomon követi az egyedi jogkivonatokat.
+Egyetlen Gremlin-fiókkal korlátlan számú tokent adhat ki. Ugyanakkor legfeljebb 100 tokent használhat egyszerre 1 órán belül. Ha egy alkalmazás túllépi a jogkivonat-korlátot óránként, a rendszer megtagadja a hitelesítési kérést, és a következő hibaüzenet jelenik meg: "túllépte az engedélyezett erőforrás-jogkivonat 100-os korlátját, amely egyidejűleg használható." Nem működik olyan aktív kapcsolatok bezárásához, amelyek adott jogkivonatokat használnak az új tokenekhez tartozó tárolóhelyek felszabadításához. A Azure Cosmos DB Gremlin adatbázismotor a hitelesítési kérelem előtt közvetlenül az óra alatt nyomon követi az egyedi jogkivonatokat.
 
 ## <a name="permission"></a>Engedély
 
 Gyakori hiba, hogy az alkalmazások az erőforrás-jogkivonatok használata közben jelentkeznek, "nincs elegendő jogosultsága az engedélyezési fejlécben a megfelelő kéréshez. Próbálkozzon újra egy másik engedélyezési fejléccel. " Ezt a hibát akkor adja vissza a rendszer, amikor egy Gremlin bejárási kísérletet tesz egy Edge vagy egy csúcspont írására, de az erőforrás-jogkivonat csak *olvasási* jogosultságot biztosít. Vizsgálja meg a bejárást, és ellenőrizze, hogy a következő lépések bármelyikét tartalmazza-e: *. addV ()* , *. addE ()* , *. drop ()* , vagy *. Property ()* .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Szerepköralapú hozzáférés-vezérlés](role-based-access-control.md) a Azure Cosmos DBban
 * [Megtudhatja, hogyan védheti meg Azure Cosmos db az adathozzáférését](secure-access-to-data.md)

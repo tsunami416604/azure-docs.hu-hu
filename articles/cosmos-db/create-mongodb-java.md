@@ -1,22 +1,22 @@
 ---
-title: 'Gyors útmutató: Hozzon létre egy webalkalmazást az Azure API-val a Mongo DB és a Java SDK használatával – Azure Cosmos DB'
+title: 'Gyors útmutató: Webalkalmazás létrehozása a Mongo DB-hez és Java SDK-hoz készült Azure API-val – Azure Cosmos DB'
 description: Egy Java-mintakód, amely a Azure Cosmos DB API-MongoDB való kapcsolódáshoz és lekérdezéshez használható.
-author: rimman
+author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.author: rimman
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7129819b6cec068420b0b265d878078622721812
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: bfded407790d01d65feec0b6e069c23739064e97
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70965392"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72756923"
 ---
-# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: Hozzon létre egy, a Java és a MongoDB API-t használó Console-alkalmazást Azure Cosmos DB
+# <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Gyors útmutató: konzolos alkalmazás létrehozása Javával és a MongoDB API-val Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -52,9 +52,9 @@ Az új adatbázis neve legyen **db**, az új gyűjteményé pedig **coll**.
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most hozzon létre egy alkalmazást a GitHubról, állítsa be a kapcsolatok karakterláncát, és futtassa. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -80,7 +80,7 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Az alábbi kódrészletek mind a Program.java fájlból származnak.
 
-* A DocumentClient inicializálva van.
+* A rendszer inicializálja a DocumentClient ügyfelet.
 
     ```java
     MongoClientURI uri = new MongoClientURI("FILLME");`
@@ -134,7 +134,7 @@ Ezentúl a [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongochef.md)
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Cosmos-fiókot, hogyan hozhat létre gyűjteményt, és hogyan futtathat egy konzolos alkalmazást. Mostantól további adatait is importálhatja a Cosmos-adatbázisba.
 

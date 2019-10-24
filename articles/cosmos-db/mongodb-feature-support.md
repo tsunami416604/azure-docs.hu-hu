@@ -1,30 +1,31 @@
 ---
-title: A Azure Cosmos DB API használata a MongoDB funkcióinak támogatásához
-description: Ismerje meg, hogy a Azure Cosmos DB API-MongoDB a MongoDB 3,4-es verziójának támogatását nyújtja.
+title: Azure Cosmos DB API a MongoDB-hez (3,2-es verzió) támogatott funkciók és szintaxis
+description: Ismerkedjen meg Azure Cosmos DB API-MongoDB (3,2 verzió) támogatott funkciókkal és szintaxissal.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 05/21/2019
+ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 999b9ed88b6ff2c14defd3424c0fb541b7cf5d8e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050090"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755005"
 ---
-# <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB API-MongoDB: támogatott funkciók és szintaxis
+# <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB API a MongoDB-hez (3,2-es verzió): támogatott funkciók és szintaxis
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-ját a nyílt forráskódú MongoDB-ügyfelek bármelyikének használatával kommunikálhat. [](https://docs.mongodb.org/ecosystem/drivers) A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-ját a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
 
 A MongoDB-hez készült Azure Cosmos DB API-val élvezheti a használt MongoDB előnyeit, és az összes, a Cosmos DB által nyújtott vállalati képességgel rendelkezik: [globális terjesztés](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állás és késés garantálja az összes mező, a titkosítás és a biztonsági másolatok automatikus indexelését, és még sok más.
 
+> [!NOTE]
+> Ez a cikk a MongoDB 3,2-hez készült Azure Cosmos DB API-ját ismerteti. Az 3,6-es verzió MongoDB lásd: a [MongoDB 3,6 támogatott szolgáltatásai és szintaxisa](mongodb-feature-support-36.md).
+
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB Azure Cosmos DB API-je alapértelmezés szerint kompatibilis a MongoDB Server **3,2** -es verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. A MongoDB **3.4**-es verziójának új funkciói és lekérdezési operátorai jelenleg előzetes verzióként érhetők el. Minden olyan ügyfél-illesztőprogram, amely ismeri ezeket a protokollokat, képesnek kell lennie csatlakozni a Azure Cosmos DB API-MongoDB.
-
-A [MongoDB összesítési folyamata](#aggregation-pipeline) jelenleg szintén elérhető egy különálló előzetes verzióban.
+A Azure Cosmos DB API-MongoDB tartozó összes új fiók kompatibilis a MongoDB Server **3,6**-es verziójával. Ez a cikk a 3,2-es MongoDB-verziót ismerteti. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfél-illesztőprogram, amely ismeri ezeket a protokollokat, képesnek kell lennie csatlakozni a Azure Cosmos DB API-MongoDB.
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
@@ -35,6 +36,7 @@ A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezé
 Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezési és írási műveletek parancsai
+
 - delete
 - find
 - findAndModify
@@ -44,15 +46,17 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 - update
 
 ### <a name="authentication-commands"></a>Hitelesítési parancsok
-- logout
+
+- kijelentkezés
 - authenticate
 - getnonce
 
 ### <a name="administration-commands"></a>Adminisztrációs parancsok
+
 - dropDatabase
 - listCollections
 - drop
-- create
+- létrehozás
 - filemd5
 - createIndexes
 - listIndexes
@@ -61,6 +65,7 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 - reIndex
 
 ### <a name="diagnostics-commands"></a>Diagnosztikai parancsok
+
 - buildInfo
 - collStats
 - dbStats
@@ -72,14 +77,16 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 ## <a name="aggregation-pipelinea"></a>Összesítési folyamat</a>
 
-A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzióban. A nyilvános előzetes verzióra való regisztrációval kapcsolatos útmutatásért tekintse meg az [Azure blogot](https://aka.ms/mongodb-aggregation).
+A Cosmos DB a nyilvános előzetes verzióban támogatja a MongoDB 3,2-es összesítési folyamatát. A nyilvános előzetes verzióra való regisztrációval kapcsolatos útmutatásért tekintse meg az [Azure blogot](https://aka.ms/mongodb-aggregation).
 
 ### <a name="aggregation-commands"></a>Összesítési parancsok
+
 - aggregate
 - count
 - distinct
 
 ### <a name="aggregation-stages"></a>Összesítési fázisok
+
 - $project
 - $match
 - $limit
@@ -96,11 +103,13 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 ### <a name="aggregation-expressions"></a>Összesítő kifejezések
 
 #### <a name="boolean-expressions"></a>Logikai kifejezések
+
 - $and
 - $or
 - $not
 
 #### <a name="set-expressions"></a>Halmazkifejezések
+
 - $setEquals
 - $setIntersection
 - $setUnion
@@ -110,6 +119,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $allElementsTrue
 
 #### <a name="comparison-expressions"></a>Összehasonlító kifejezések
+
 - $cmp
 - $eq
 - $gt
@@ -119,6 +129,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $ne
 
 #### <a name="arithmetic-expressions"></a>Aritmetikai kifejezések
+
 - $abs
 - $add
 - $ceil
@@ -136,6 +147,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $trunc
 
 #### <a name="string-expressions"></a>Sztringkifejezések
+
 - $concat
 - $indexOfBytes
 - $indexOfCP
@@ -150,6 +162,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $toUpper
 
 #### <a name="array-expressions"></a>Tömbkifejezések
+
 - $arrayElemAt
 - $concatArrays
 - $filter
@@ -162,6 +175,7 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $in
 
 #### <a name="date-expressions"></a>Dátumkifejezések
+
 - $dayOfYear
 - $dayOfMonth
 - $dayOfWeek
@@ -176,10 +190,12 @@ A Cosmos DB támogatja az összesítési folyamatot a nyilvános előzetes verzi
 - $isoWeek
 
 #### <a name="conditional-expressions"></a>Feltételes kifejezések
+
 - $cond
 - $ifNull
 
 ## <a name="aggregation-accumulators"></a>Összesítő gyűjtők
+
 - $sum
 - $avg
 - $first
@@ -212,7 +228,7 @@ Alább a támogatott operátorok láthatók a használatukat bemutató megfelel�
 }
 ```
 
-Operator | Példa |
+Művelet | Példa |
 --- | --- |
 $eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
 $gt | `{ "Elevation": { $gt: 4000 } }` |  | -
@@ -234,12 +250,15 @@ $regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 ### <a name="notes"></a>Megjegyzések
 
 A $regex lekérdezésekben a balra horgonyzott kifejezések engedélyezik az indexben való keresést. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
-Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni. Például ha az eredeti lekérdezés a következő: ```find({x:{$regex: /^abc$/})```, a következőképpen kell módosítani: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket. A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni.
+Például ha az eredeti lekérdezés a következő: ```find({x:{$regex: /^abc$/})```, a következőképpen kell módosítani: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket.
+A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
 
 ### <a name="update-operators"></a>Frissítési operátorok
 
 #### <a name="field-update-operators"></a>Mezőfrissítő operátorok
+
 - $inc
 - $mul
 - $rename
@@ -251,6 +270,7 @@ Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumok
 - $currentDate
 
 #### <a name="array-update-operators"></a>Tömbfrissítő operátorok
+
 - $addToSet
 - $pop
 - $pullAll
@@ -263,11 +283,12 @@ Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumok
 - $position
 
 #### <a name="bitwise-update-operator"></a>Bitenként frissítő operátor
+
 - $bit
 
 ### <a name="geospatial-operators"></a>Térinformatikai operátorok
 
-Operator | Példa | |
+Művelet | Példa | |
 --- | --- | --- |
 $geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Igen |
 $geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
@@ -282,16 +303,17 @@ $box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 4
 $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
 
 ## <a name="sort-operations"></a>Rendezési műveletek
-A `findOneAndUpdate` művelet használatakor a rendezési műveletek egyetlen mező esetén támogatottak, de a rendezési műveletek több mezőn nem támogatottak.
+
+A `findOneAndUpdate` művelet használatakor a rendezési műveletek egyetlen mezőben támogatottak, de a rendezési műveletek több mezőn nem támogatottak.
 
 ## <a name="additional-operators"></a>További operátorok
 
-Operator | Példa | Megjegyzések 
+Művelet | Példa | Megjegyzések
 --- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` | 
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` | 
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` | 
+$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
+$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |
+$size | ```{ "Location.coordinates": { $size: 2 } }``` |
+$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
 $text |  | Nem támogatott. A $regex használható helyette.
 
 ## <a name="unsupported-operators"></a>Nem támogatott operátorok
@@ -304,13 +326,13 @@ A következő metódusok támogatottak:
 
 #### <a name="cursor-methods"></a>Kurzormetódusok
 
-Módszer | Példa | Megjegyzések 
+Módszer | Példa | Megjegyzések
 --- | --- | --- |
 cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | A rendszer nem adja vissza a rendezési kulccsal nem rendelkező dokumentumokat
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
-A Cosmos DB indexeli az összes olyan mezőt, amely alapértelmezés szerint az adatbázisba íródik. Az egyedi indexek biztosítják, hogy egy adott mező ne rendelkezzen duplikált értékekkel a gyűjtemény minden dokumentumában, hasonlóképpen ahhoz, ahogy az alapértelmezett „_id” kulcs is megőrzi az egyediséget. A createIndex parancs használatával egyéni indexeket hozhat létre Cosmos DBban, beleértve az "egyedi" korlátozást is.
+A Cosmos DB indexeli az összes olyan mezőt, amely alapértelmezés szerint az adatbázisba íródik. Az egyedi indexek biztosítják, hogy egy adott mező ne legyen duplikált érték a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett `_id` kulcson. A createIndex parancs használatával egyéni indexeket hozhat létre Cosmos DBban, beleértve az "egyedi" korlátozást is.
 
 A MongoDB Azure Cosmos DB API-ját használó Cosmos-fiókok esetében egyedi indexek érhetők el.
 
@@ -322,7 +344,7 @@ A Cosmos DB a dokumentum időbélyegzője alapján támogatja a élettartamot (T
 
 A Cosmos DB még nem támogatja a felhasználókat és a szerepköröket. A Cosmos DB azonban támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), valamint az írási és olvasási és csak olvasható jelszavakat/kulcsokat, amelyeket a [Azure Portal](https://portal.azure.com) (kapcsolati karakterlánc oldalon) lehet megszerezni.
 
-## <a name="replication"></a>Replikálás
+## <a name="replication"></a>Replikáció
 
 Cosmos DB támogatja az automatikus és a natív replikálást a legalacsonyabb rétegeken. A rendszer az alacsony késésű, globális replikáció elérése érdekében kiterjeszti ezt a logikát. A Cosmos DB nem támogatja a manuális replikálási parancsokat.
 
@@ -334,10 +356,10 @@ Egyes alkalmazások [írási aggodalomra](https://docs.mongodb.com/manual/refere
 
 Az Azure Cosmos DB támogatja az automatikus, kiszolgálóoldali horizontális skálázást. A szegmensek létrehozását, elhelyezését és kiegyensúlyozását automatikusan kezeli. Azure Cosmos DB nem támogatja a manuális horizontális skálázási parancsokat, ami azt jelenti, hogy nem kell olyan parancsokat meghívnia, mint például a shardCollection, a addShard, a balancerStart, a moveChunk stb. A tárolók létrehozásakor vagy az adatlekérdezés során csak a szegmens kulcsát kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.
-- Ismerkedjen [](mongodb-samples.md) meg a MongoDB-mintákkal Azure Cosmos db API-val a MongoDB.
+- Ismerkedjen meg a MongoDB- [mintákkal](mongodb-samples.md) Azure Cosmos db API-val a MongoDB.
 
-<sup>Megjegyzés: Ez a cikk az Azure Cosmos DB egy olyan szolgáltatását ismerteti, amely a MongoDB-adatbázisokkal kompatibilis huzal protokollt biztosít. A Microsoft nem futtat MongoDB-adatbázisokat a szolgáltatás biztosításához. Azure Cosmos DB nem kapcsolódik a MongoDB, Inc. szolgáltatáshoz.</sup>
+<sup>Megjegyzés: Ez a cikk az Azure Cosmos DB egy olyan szolgáltatását ismerteti, amely a MongoDB-adatbázisokkal való, vezetékes protokoll-kompatibilitást biztosít. A Microsoft nem futtat MongoDB-adatbázisokat a szolgáltatás biztosításához. Azure Cosmos DB nem kapcsolódik a MongoDB, Inc. szolgáltatáshoz.</sup>

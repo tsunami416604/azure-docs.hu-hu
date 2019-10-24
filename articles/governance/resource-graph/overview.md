@@ -3,15 +3,15 @@ title: Az Azure Resource Graph áttekintése
 description: Ismerje meg, hogyan teszi lehetővé az Azure Resource Graph szolgáltatás az erőforrások összetett lekérdezését nagy léptékben.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/06/2019
+ms.date: 10/21/2019
 ms.topic: overview
 ms.service: resource-graph
-ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 45853e3c8986cec58f27d785af31f174aff21b2e
+ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976818"
+ms.lasthandoff: 10/22/2019
+ms.locfileid: "72755886"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Az Azure Resource Graph szolgáltatás áttekintése
 
@@ -25,8 +25,8 @@ Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrá
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph a Azure Portal keresési sávjára, az új "minden erőforrás" felületre, valamint a Azure Policy [változási előzményeire](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _Visual diff_-re mutat. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
+> Az Azure Resource Graph a Azure Portal keresési sávjára, az új "minden erőforrás" felületre, valamint a Azure Policy [változási előzményeire](../policy/how-to/determine-non-compliance.md#change-history-preview) 
+>  a_Visual diff_-re vonatkozóan. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -34,7 +34,7 @@ Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 Azure Resource Manager jelenleg a lekérdezéseket támogatja az alapszintű erőforrások mezőin, különösen az erőforrás neve, az azonosító, a típus, az erőforráscsoport, az előfizetés és a hely alapján. A Resource Manager emellett olyan létesítményeket is biztosít, amelyekkel az egyes erőforrás-szolgáltatók meghívhatók a részletes tulajdonságok egy erőforrással egyidejűleg.
 
-Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [teljes módú központi telepítések táblázatának erőforrásait](../../azure-resource-manager/complete-mode-deletion.md) **ismertető részében** tekintheti meg. A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
+Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [teljes módú központi telepítések táblázatának erőforrásait](../../azure-resource-manager/complete-mode-deletion.md) **ismertető részében** tekintheti meg. További erőforrástípusok találhatók a kapcsolódó [Resource Graph-táblákban](./concepts/query-language.md#resource-graph-tables). A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
 
 Az Azure Resource Graph segítségével a következőket teheti:
 
@@ -45,6 +45,9 @@ Az Azure Resource Graph segítségével a következőket teheti:
 
 Az Azure-erőforrások frissítésekor a változás erőforrás-kezelője értesíti az erőforrás-diagramot.
 Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf emellett normál _teljes vizsgálatot_is végez. Ez a vizsgálat biztosítja, hogy az erőforrás-gráf-adat aktuális, ha kimaradt értesítések vannak, vagy ha egy erőforrást a Resource Manageren kívülről frissítenek.
+
+> [!NOTE]
+> Az erőforrás-diagram a tulajdonságok és értékek összegyűjtéséhez az egyes erőforrás-szolgáltatók legújabb, nem előzetes verziójú API-ját használja `GET`. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálva lett, hogy az eredményekben még több aktuális vagy széles körben használt tulajdonság legyen elérhető. A környezet teljes listájáért tekintse meg az [API-verzió megjelenítése az egyes erőforrástípus](./samples/advanced.md#apiversion) -mintákhoz című témakört.
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
@@ -62,18 +65,18 @@ A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie 
 > [!NOTE]
 > Az erőforrás-diagram a rendszerbiztonsági tag számára elérhető előfizetéseket használja a bejelentkezés során. Egy aktív munkamenet során hozzáadott új előfizetés erőforrásainak megtekintéséhez a rendszerbiztonsági tag frissítenie kell a környezetet. Ez a művelet automatikusan megtörténik a kijelentkezéskor és vissza.
 
-Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– lista](/rest/api/resources/resourcegroups/list) \- – az Ön által elérhetővé tett erőforráscsoportok beolvasása anélkül, hogy az eredmény részleges lenne.
+Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– lista](/rest/api/resources/resourcegroups/list) \- beolvassa azokat az erőforráscsoportok, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
 Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
-## <a name="throttling"></a>Szabályozás
+## <a name="throttling"></a>Throttling
 
 Ingyenes szolgáltatásként az erőforrás-gráfra irányuló lekérdezések szabályozva vannak, így biztosítva a legjobb élményt és a válaszadási időt az összes ügyfél számára. Ha a szervezet a nagyméretű és gyakori lekérdezésekhez Graph API erőforrást szeretné használni, használja a "visszajelzés" lehetőséget az erőforrás- [gráf portál oldalon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
 Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a visszajelzéshez" jelölőnégyzetet, hogy a csapat felvegye Önnel a kapcsolatot.
 
 Az erőforrás-gráf a lekérdezéseket a felhasználói szinten szabályozza. A szolgáltatás válasza a következő HTTP-fejléceket tartalmazza:
 
-- @no__t – 0 (int): A felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
-- @no__t – 0 (óó: PP: SS): Az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
+- `x-ms-user-quota-remaining` (int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- `x-ms-user-quota-resets-after` (óó: PP: SS): az időtartam, ameddig a felhasználó kvótájának felhasználását vissza nem állítja
 
 További információ: [útmutatás a szabályozott kérelmekhez](./concepts/guidance-for-throttled-requests.md).
 
@@ -87,7 +90,7 @@ Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez ké
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
 - Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
